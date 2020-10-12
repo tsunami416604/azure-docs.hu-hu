@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74789451"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Ismerkedés a OneDrive for Business-összekötővel
@@ -24,7 +24,7 @@ Ha logikai alkalmazásokat szeretne létrehozni a OneDrive for Business használ
 
 | Tulajdonság | Kötelező | Leírás |
 | --- | --- | --- |
-| Jogkivonat |Yes |OneDrive megadása üzleti hitelesítő adatokhoz |
+| Jogkivonat |Igen |OneDrive megadása üzleti hitelesítő adatokhoz |
 
 A kapcsolatok létrehozása után a használatával végrehajthatja a műveleteket, és figyelheti a cikkben ismertetett eseményindítókat.
 

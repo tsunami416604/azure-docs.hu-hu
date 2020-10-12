@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792472"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Az integrációs fiókok összetevői metaadatainak kezelése az Azure Logic Apps és az Enterprise Integration Pack segítségével
@@ -61,10 +61,10 @@ Az integrációs fiókokban megadhatja az összetevők egyéni metaadatait, és 
 
 1. Adja meg ezt az információt a keresett összetevőhöz:
 
-   | Tulajdonság | Kötelező | Érték | Description | 
+   | Tulajdonság | Kötelező | Érték | Leírás | 
    |----------|---------|-------|-------------| 
-   | **Összetevő típusa** | Yes | **Séma**, **Térkép**, **partner**, **Szerződés**vagy egyéni típus | A kívánt összetevő típusa | 
-   | **Összetevő neve** | Yes | <*összetevő – név*> | A kívánt összetevő neve | 
+   | **Összetevő típusa** | Igen | **Séma**, **Térkép**, **partner**, **Szerződés**vagy egyéni típus | A kívánt összetevő típusa | 
+   | **Összetevő neve** | Igen | <*összetevő – név*> | A kívánt összetevő neve | 
    ||| 
 
    Tegyük fel például, hogy egy kereskedelmi partneri összetevő metaadatait szeretné lekérni:
@@ -83,12 +83,12 @@ Az integrációs fiókokban megadhatja az összetevők egyéni metaadatait, és 
 
       Tegyük fel például, hogy szeretné lekérni a `routingUrl` témakör korábbi részében hozzáadott metaadatokat. A következő tulajdonságértékek adhatók meg: 
 
-      | Tulajdonság | Kötelező | Érték | Description | 
+      | Tulajdonság | Kötelező | Érték | Leírás | 
       |----------|----------|-------|-------------| 
-      | **Metódus** | Yes | <*művelet – Futtatás*> | Az összetevőn futtatandó HTTP-művelet. Ez a HTTP-művelet például a **Get** metódust használja. | 
-      | **URI** | Yes | <*metaadatok – hely*> | Ha a `routingUrl` metaadatok értékét a beolvasott összetevőből szeretné elérni, használhat egy kifejezést, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Fejlécek** | No | <*fejléc – értékek*> | Minden olyan fejléc kimenete a triggerből, amelyet át szeretne adni a HTTP-műveletbe. Ha például át szeretné adni az trigger `headers` tulajdonságának értékét: használhat kifejezéseket, például: <p>`@triggeroutputs()['headers']` | 
-      | **Törzs** | No | <*törzs – tartalom*> | Minden más olyan tartalom, amelyet át szeretne adni a HTTP-művelet `body` tulajdonságán. Ez a példa a leletek `properties` értékeit a http-műveletnek adja át: <p>1. kattintson a **Body (törzs** ) tulajdonságra, hogy a dinamikus tartalom lista megjelenjen. Ha nem jelenik meg a tulajdonságok, válassza a **továbbiak**lehetőséget. <br>2. a dinamikus tartalom listából válassza a **Tulajdonságok**lehetőséget az **integrációs fiók**összetevőinek keresése területen. | 
+      | **Metódus** | Igen | <*művelet – Futtatás*> | Az összetevőn futtatandó HTTP-művelet. Ez a HTTP-művelet például a **Get** metódust használja. | 
+      | **URI** | Igen | <*metaadatok – hely*> | Ha a `routingUrl` metaadatok értékét a beolvasott összetevőből szeretné elérni, használhat egy kifejezést, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Fejlécek** | Nem | <*fejléc – értékek*> | Minden olyan fejléc kimenete a triggerből, amelyet át szeretne adni a HTTP-műveletbe. Ha például át szeretné adni az trigger `headers` tulajdonságának értékét: használhat kifejezéseket, például: <p>`@triggeroutputs()['headers']` | 
+      | **Törzs** | Nem | <*törzs – tartalom*> | Minden más olyan tartalom, amelyet át szeretne adni a HTTP-művelet `body` tulajdonságán. Ez a példa a leletek `properties` értékeit a http-műveletnek adja át: <p>1. kattintson a **Body (törzs** ) tulajdonságra, hogy a dinamikus tartalom lista megjelenjen. Ha nem jelenik meg a tulajdonságok, válassza a **továbbiak**lehetőséget. <br>2. a dinamikus tartalom listából válassza a **Tulajdonságok**lehetőséget az **integrációs fiók**összetevőinek keresése területen. | 
       |||| 
 
       Például:

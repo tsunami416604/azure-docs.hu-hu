@@ -4,10 +4,10 @@ description: A Azure Backup Server használatával biztonsági mentést készít
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378321"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
@@ -219,7 +219,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     ![MABS SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
-## <a name="switching-the-front-end-web-server"></a>Az előtér-webkiszolgáló váltása
+## <a name="switching-the-front-end-web-server"></a>A Front-End webkiszolgáló váltása
 
 Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a MABS által a farm védeleméhez használt kiszolgálót, kövesse az alábbi utasításokat:
 

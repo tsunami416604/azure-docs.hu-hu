@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre olyan összetevőket, amelyekkel 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270682"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Egyéni összetevők létrehozása a DevTest Labs virtuális géphez
@@ -54,7 +54,7 @@ A következő példa egy definíciós fájl alapszerkezetét alkotó szakaszt mu
 | parameters |Nem |Azok az értékek, amelyek akkor jelennek meg, amikor az összetevő telepítési parancsa fut a gépen. Ez segít testreszabni az összetevőt. |
 | ParancsFuttatása |Igen |A virtuális gépen végrehajtott telepítési parancs. |
 
-### <a name="artifact-parameters"></a>Összetevő paramétereinek
+### <a name="artifact-parameters"></a>Összetevő paraméterei
 A definíciós fájl parameters (paraméterek) részében adja meg, hogy a felhasználó mely értékeket vihet be az összetevők telepítésekor. Ezeket az értékeket az összetevő telepítési parancsában tekintheti meg.
 
 Paraméterek definiálásához használja az alábbi struktúrát:
@@ -148,5 +148,5 @@ Az alábbi példa bemutatja, hogyan használhatók kifejezések és függvények
 * [Az összetevők hibáinak diagnosztizálása a DevTest Labs szolgáltatásban](devtest-lab-troubleshoot-artifact-failure.md)
 * [Virtuális gép csatlakoztatása meglévő Active Directory tartományhoz egy Resource Manager-sablonnal a DevTest Labs szolgáltatásban](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [adhat hozzá egy git-](devtest-lab-add-artifact-repo.md)összetevőt a laborhoz.

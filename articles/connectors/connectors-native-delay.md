@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74787336"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>A következő művelet futásának késleltetése Azure Logic Apps
@@ -50,10 +50,10 @@ Ha azt szeretné, hogy a logikai alkalmazás a következő művelet futtatása e
 
    ![A késleltetés időtartamának megadása](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
    |----------|-----------|----------|------|-------------|
-   | Darabszám | count | Yes | Egész szám | A késleltetni kívánt időegységek száma |
-   | Unit (Egység) | egység | Yes | Sztring | Az idő mértékegysége, például:,,,, `Second` `Minute` `Hour` `Day` `Week` , vagy`Month` |
+   | Darabszám | count | Igen | Egész szám | A késleltetni kívánt időegységek száma |
+   | Egység | egység | Igen | Sztring | Az idő mértékegysége, például:,,,, `Second` `Minute` `Hour` `Day` `Week` , vagy `Month` |
    ||||||
 
 1. Adja meg a munkafolyamatban futtatni kívánt egyéb műveleteket.
@@ -76,9 +76,9 @@ Ha azt szeretné, hogy a logikai alkalmazás a következő művelet futtatása e
 
    ![Időbélyeg megadása a késleltetés befejezéséhez](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
    |----------|-----------|----------|------|-------------|
-   | Időbélyeg | időbélyeg | Yes | Sztring | A munkafolyamat ezen formátummal való folytatásának befejezési dátuma és időpontja: <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ <p>Tehát ha például a 2017-es szeptember 18-án, 2:00 ÓRAKOR, a "2017-09-18T14:00:00Z" parancsot kell megadnia. <p>**Megjegyzés:** Ebben az időformátumban az [ISO 8601 dátum és idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell megfelelnie az [UTC dátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)és idő formátumban, de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Időzóna nélkül fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. |
+   | Timestamp | időbélyeg | Igen | Sztring | A munkafolyamat ezen formátummal való folytatásának befejezési dátuma és időpontja: <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ <p>Tehát ha például a 2017-es szeptember 18-án, 2:00 ÓRAKOR, a "2017-09-18T14:00:00Z" parancsot kell megadnia. <p>**Megjegyzés:** Ebben az időformátumban az [ISO 8601 dátum és idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell megfelelnie az [UTC dátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)és idő formátumban, de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Időzóna nélkül fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. |
    ||||||
 
 1. Adja meg a munkafolyamatban futtatni kívánt egyéb műveleteket.

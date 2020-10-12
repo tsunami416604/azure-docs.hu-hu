@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514237"
 ---
 # <a name="upstream-settings"></a>Felsőbb rétegbeli beállítások
@@ -34,13 +34,13 @@ Ha a megadott esemény bekövetkezik, egy elem szabályait egyenként kell ellen
 
 A különböző mintázatok támogatásához parametrizálja az URL-címet. Három előre definiált paraméter létezik:
 
-|Előre definiált paraméter|Description|
+|Előre definiált paraméter|Leírás|
 |---------|---------|
 |hub| A hub az Azure Signaler szolgáltatás fogalma. A hub elkülönítési egység. A felhasználók és az üzenetek kézbesítési köre korlátozott egy hubhoz.|
 |Kategória| A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: kapcsolat élettartamának eseményei. Az ügyfél kapcsolata csatlakoztatva van vagy le van választva. Ide tartozik a csatlakoztatott és a leválasztott események is.</li><li>**üzenetek**: akkor aktiválódik, amikor az ügyfelek egy központi metódust hív meg. Minden egyéb eseményt tartalmaz, kivéve a **kapcsolatok** kategóriájában lévőket.</li></ul>|
 |esemény| Az **üzenetek** kategória esetében az esemény a cél egy [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) , amelyet az ügyfelek küldenek. A kapcsolatok kategória esetében csak a *csatlakoztatott* és a *leválasztott* **kapcsolat** van használatban.|
 
-Ezeket az előre definiált paramétereket az URL-mintában lehet használni. A felsőbb rétegbeli URL-cím kiértékelése során a paraméterek egy megadott értékkel lesznek lecserélve. Például: 
+Ezeket az előre definiált paramétereket az URL-mintában lehet használni. A felsőbb rétegbeli URL-cím kiértékelése során a paraméterek egy megadott értékkel lesznek lecserélve. Példa: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
@@ -82,7 +82,7 @@ Ha kiválasztja `ManagedIdentity` , a felügyelt identitást előre kell engedé
 3. URL-címek hozzáadása a **felsőbb rétegbeli URL-minta**alatt. Ezután a beállítások, például a **hub-szabályok** az alapértelmezett értéket fogják megjeleníteni.
 4. A **hub-szabályok**, az **események**, a **Kategória-szabályok**és a **felsőbb rétegbeli hitelesítés**beállításainak megadásához válassza ki a **hub-szabályok**értékét. Megjelenik egy olyan oldal, amely lehetővé teszi a beállítások szerkesztését:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Felsőbb rétegbeli beállítás részletei":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Felsőbb rétegbeli beállítások":::
 
 5. A **felsőbb rétegbeli hitelesítés**beállításához először engedélyezze a felügyelt identitást. Ezután válassza a **felügyelt identitás használata**lehetőséget. Az igényeknek megfelelően az **Auth erőforrás-azonosító**területen bármelyik lehetőség közül választhat. További részletekért lásd: [felügyelt identitások az Azure signaler szolgáltatáshoz](howto-use-managed-identity.md) .
 
@@ -145,7 +145,7 @@ Content-Type: Application/JSON
 
 Content-Type: `application/json`
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |Hiba |sztring |Egy lezárt kapcsolatok hibaüzenete. Üres, ha a kapcsolatok hiba nélkül zárulnak.|
 
@@ -153,7 +153,7 @@ Content-Type: `application/json`
 
 Content-Type: `application/json` vagy `application/x-msgpack`
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |InvocationId |sztring | Egy Meghívási üzenetet jelölő, nem kötelező karakterlánc. Részletek keresése a [hívásokban](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cél |sztring | Ugyanaz, mint a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)szereplő esemény és a cél. |

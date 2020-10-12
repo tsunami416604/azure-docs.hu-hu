@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851828"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Egyéni parancsok – fogalmak és definíciók
@@ -40,7 +40,7 @@ Az interakciós szabályok további szabályok, amelyek az összetettebb vagy ö
 
 A paraméterek a feladatok végrehajtásához szükséges parancsok. Összetett forgatókönyvekben a paramétereket az egyéni műveleteket kiváltó feltételek definiálására is használhatja.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Name (Név)
 A Name tulajdonság azonosítja a paramétereket. Mindig adjon egy leíró nevet a paraméternek. A paraméterek több szakaszban is szerepelhetnek, például a feltételek, a beszédfelismerési válaszok vagy más műveletek összeállításakor.
  
 ### <a name="isglobal"></a>IsGlobal
@@ -68,7 +68,7 @@ A Configuration paraméter csak a karakterlánc típusú tulajdonsághoz van def
 * **Előre megadott bemeneti értékek elfogadása belső katalógusból**: ez az érték egy olyan paraméter konfigurálására szolgál, amely néhány értéket feltételez. Ebben az esetben az értékeket a Speech Studióban kell konfigurálni.
 
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 Az érvényesítés olyan paraméterekre vonatkozik, amelyek lehetővé teszik a paraméterek értékére vonatkozó korlátozások konfigurálását. Az egyéni parancsok jelenleg a következő típusparaméter-típusok érvényességét támogatják:
 
 * DateTime

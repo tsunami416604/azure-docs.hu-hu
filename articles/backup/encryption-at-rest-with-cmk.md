@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait a
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378287"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
@@ -31,7 +31,7 @@ Ez a cikk a következőket ismerteti:
 
 - Ez a funkció jelenleg nem **támogatja a Mars-ügynök használatával történő biztonsági mentést**, és előfordulhat, hogy nem fogja tudni használni a CMK-titkosítású tárolót. A MARS-ügynök felhasználói jelszó-alapú titkosítást használ. A szolgáltatás emellett nem támogatja a klasszikus virtuális gépek biztonsági mentését.
 
-- Ez a funkció nem kapcsolódik a [Azure Disk Encryptionhoz](../security/fundamentals/azure-disk-encryption-vms-vmss.md), amely a virtuális gép lemezei számára a BitLocker (Windows rendszeren) és a dm-crypt (for Linux) rendszerhez készült vendég-alapú titkosítást használja.
+- Ez a funkció nem kapcsolódik a [Azure Disk Encryptionhoz](../security/fundamentals/azure-disk-encryption-vms-vmss.md), amely a virtuális gép lemezei a BitLocker (Windows) és a DM-Crypt (Linux rendszerhez) rendszerhez készült vendég-alapú titkosítását használják.
 
 - Az Recovery Services-tároló csak az **ugyanabban a régióban**található, Azure Key Vaultban tárolt kulcsokkal titkosítható. Emellett a kulcsok csak **RSA 2048 kulcsok** lehetnek, és **engedélyezve** állapotban kell lenniük.
 
@@ -160,7 +160,7 @@ A kulcs hozzárendeléséhez:
 
         ![Kulcs kiválasztása a Key vaultból](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. **A titkosítási kulcs frissítésének nyomon követési folyamata:** A kulcs hozzárendelésének előrehaladását a Recovery Services-tárolóban található **műveletnapló** használatával követheti nyomon. Az állapotnak hamarosan **sikeresre**kell váltania. A tár mostantól a megadott kulccsal titkosítja az összes adathalmazt.
 

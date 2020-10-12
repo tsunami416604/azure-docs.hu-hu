@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084549"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Azure Event Grid tartományok áthelyezése másik régióba
@@ -37,10 +37,10 @@ Első lépésként exportáljon egy Resource Manager-sablont a tartományhoz.
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="Event Grid tartományok keresése és kiválasztása":::
 3. Válassza ki azt a **tartományt** , amelyet Resource Manager-sablonba szeretne exportálni. 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Válassza ki a tartományt":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Event Grid tartományok keresése és kiválasztása":::   
 4. A **Event Grid tartomány** lapon a bal oldali menüben válassza a **sablon exportálása** **lehetőséget,** majd válassza a **Letöltés** lehetőséget az eszköztáron. 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Sablon exportálása – > Letöltés" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Event Grid tartományok keresése és kiválasztása" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > A tartomány-és tartományi témakörök exportálása megtörtént. A tartományi témakörök előfizetései nem lesznek exportálva. Ezért létre kell hoznia az előfizetéseket a tartományi témakörökhöz, miután áthelyezte a tartományi témákat. 
@@ -71,9 +71,9 @@ A sablon üzembe helyezésével hozza létre a tartomány és a tartomány téma
     1. Válasszon ki egy meglévő **erőforráscsoportot** a célként megadott régióban, vagy hozzon létre egyet. 
     1. A **régió**mezőben válassza ki a kívánt régiót. Ha kiválasztott egy meglévő erőforráscsoportot, ez a beállítás csak olvasható. 
     1. A **tartománynév**mezőben adjon meg egy új nevet a tartomány számára. 
-    1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
+    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Sablon üzembe helyezése":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Event Grid tartományok keresése és kiválasztása":::        
     1. Miután a sablon érvényesítése sikeres volt, a lap alján található **Létrehozás** gombra kattintva telepítheti az erőforrást. 
     1. Az üzembe helyezés sikerességét követően válassza az **Ugrás az erőforráscsoporthoz** lehetőséget az erőforráscsoport oldalának megnyitásához. Győződjön meg arról, hogy az erőforráscsoport tartománya van. Válassza ki a tartományt. Ellenőrizze, hogy vannak-e tartományi témakörök a tartományban. 
 

@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289769"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Az Azure Defender beállítása a Storage szolgáltatáshoz
@@ -69,7 +69,7 @@ Az Azure Defender mostantól engedélyezve van az előfizetésben található ö
 1. Nyissa meg a tárfiókot. A **Beállítások**területen válassza a **fokozott biztonság**lehetőséget.
 1. Válassza **Az Azure Defender engedélyezése a tárolóhoz**lehetőséget.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Az Azure Defender Azure Storage-fiókhoz való engedélyezését bemutató képernyőkép":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
 Az Azure Defender mostantól engedélyezve van ehhez a Storage-fiókhoz.
 
@@ -84,15 +84,15 @@ Egy Azure Policy használatával engedélyezheti az Azure Defender számára a S
 1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot.
 1. Keresse meg az **Azure Defender üzembe helyezése a Storage-fiókokra** vonatkozó házirendet.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Házirend alkalmazása az Azure Defender Storage-fiókok engedélyezéséhez":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
 1. Válasszon ki egy Azure-előfizetést vagy erőforráscsoportot.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Válassza ki az előfizetést vagy az erőforráscsoportot a házirend hatóköréhez ":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
 1. Rendelje hozzá a szabályzatot.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Házirend kiosztása az Azure Defender tárterületének engedélyezéséhez":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -125,11 +125,11 @@ Ha a tárolási tevékenységek rendellenességeket tapasztalnak, e-mailben ért
 
 Az e-mail emellett tartalmazza a lehetséges okokat és az ajánlott műveleteket is a lehetséges fenyegetések kivizsgálásához és enyhítéséhez.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Azure Defender tárolási riasztási e-mail":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
 Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági riasztások csempéről](../../security-center/security-center-managing-and-responding-alerts.md)tekintheti meg és kezelheti. Ha egy adott riasztásra kattint, a rendszer részletesen ismerteti az aktuális fenyegetés kivizsgálásával és a jövőbeli fenyegetésekkel kapcsolatos műveleteket.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Azure Defender tárolási riasztás":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 

@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961720"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
@@ -201,7 +201,7 @@ Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúz�
 
 Ötleteit a [Web Apps visszajelzési fórumában](https://aka.ms/webapps-uservoice)küldheti el. Adja hozzá a "[Linux]" címet az ötlete címéhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi a Linux Azure App Service?](overview.md#app-service-on-linux)
 - [Átmeneti környezetek beállítása az Azure App Service-ben](deploy-staging-slots.md)

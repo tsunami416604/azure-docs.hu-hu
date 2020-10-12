@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: bea32b3b60c9013ea223513c95629092b9ab231b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203334"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Magas rendelkezésre állás a Azure Database for MariaDBban
@@ -60,12 +60,12 @@ Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek 
 
 | **Forgatókönyv** | **Helyreállítási terv** |
 | ---------- | ---------- |
-| <b>Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](howto-read-replicas-portal.md) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
-| <b>Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](concepts-backup.md) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha az adatbázis-kiszolgáló összes adatbázisa helyett csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani, az adatbázis-kiszolgálót visszaállíthatja egy új példányban, exportálhatja a táblázat (oka) t a [mysqldump](howto-migrate-dump-restore.md)-on keresztül, majd a [visszaállítás](howto-migrate-dump-restore.md#restore-your-mariadb-database) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
+| <b> Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](howto-read-replicas-portal.md) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
+| <b> Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](concepts-backup.md) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha az adatbázis-kiszolgáló összes adatbázisa helyett csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani, az adatbázis-kiszolgálót visszaállíthatja egy új példányban, exportálhatja a táblázat (oka) t a [mysqldump](howto-migrate-dump-restore.md)-on keresztül, majd a [visszaállítás](howto-migrate-dump-restore.md#restore-your-mariadb-database) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
 
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A Azure Database for MariaDB gyors újraindítási képességet biztosít az adatbázis-kiszolgálók, a redundáns tárolók és a hatékony útválasztás számára az átjáróról. További adatvédelem esetén a biztonsági mentések földrajzilag replikálva konfigurálhatók, és egy vagy több olvasási replika is üzembe helyezhető más régiókban. A magas rendelkezésre állási képességekkel rendelkező Azure Database for MariaDB a leggyakoribb kimaradások miatt védi az adatbázisokat, és piacvezető, pénzügyi támogatású, [99,99%-os üzemidőt](https://azure.microsoft.com/support/legal/sla/MariaDB)biztosít. Mindezek a rendelkezésre állási és megbízhatósági képességek lehetővé teszik az Azure számára, hogy ideális platformot biztosítson a kritikus fontosságú alkalmazások futtatásához.
 

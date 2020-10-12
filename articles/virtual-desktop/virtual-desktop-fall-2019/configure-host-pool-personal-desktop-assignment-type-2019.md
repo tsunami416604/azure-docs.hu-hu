@@ -7,10 +7,10 @@ ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008508"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>A személyes asztali címkészlet hozzárendelési típusának konfigurálása a Windows rendszerű virtuális asztali gépekhez (klasszikus)
@@ -86,7 +86,7 @@ Remove-RdsSessionHost
 
 Ha újra hozzá kell adnia a munkamenet-gazdagépet a személyes asztali gazdagéphez, távolítsa el a Windows rendszerű virtuális asztalt a gépen, majd kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell-2019.md) -lel a munkamenet-gazdagép újbóli regisztrálásához című témakör lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy konfigurálta a személyes asztal hozzárendelési típusát, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti azt egy felhasználói munkamenet részeként. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

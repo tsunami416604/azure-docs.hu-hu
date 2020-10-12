@@ -4,13 +4,13 @@ description: A VMware virtuális gépek feladatátvétel utáni visszavételéne
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847740"
 ---
-# <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>A VMware virtuális gépek ismételt védelmének és feladat-visszavételének előkészítése
+# <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>VMware rendszerű virtuális gépek védelmének újbóli beállítása és feladat-visszavétele
 
 A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba történő [feladatátvétele](site-recovery-failover.md) után a feladatátvételt követően létrehozott Azure-beli virtuális gépeket újra kell védetté tenni, hogy azok a helyszíni helyre replikálódnak. Az Azure-ból a helyszíni környezetbe való replikálással visszatérhet, ha készen áll az Azure-ból a helyszíni feladatátvételre.
 

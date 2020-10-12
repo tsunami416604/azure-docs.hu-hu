@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417878"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
@@ -63,13 +63,13 @@ Tulajdonság | Leírás | Megengedett értékek | Kötelező
 **törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Igen |
 **hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Nem |
 **időtúllépés** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d*TimeSpan formátumban jelennek meg. *óó*:*PP*:*ss*mm. | Sztring | Nem |
-**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai | Nem |
+**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai érték | Nem |
 
 ## <a name="authentication"></a>Hitelesítés
 
 A webhook-tevékenység a következő hitelesítési típusokat támogatja.
 
-### <a name="none"></a>None
+### <a name="none"></a>Nincs
 
 Ha nincs szükség hitelesítésre, ne adja meg a **hitelesítési** tulajdonságot.
 

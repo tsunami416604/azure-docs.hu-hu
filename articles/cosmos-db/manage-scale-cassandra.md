@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
 ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87486510"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
@@ -38,7 +38,7 @@ Ha csökkentenie kell a késést, számos lehetőség áll rendelkezésre a mér
 
 A következő szakaszokban az egyes megközelítések előnyeit és hátrányait ismertetjük. Ezután eldöntheti, hogy a legmegfelelőbb stratégia a rendszer skálázási igényeinek, a megoldás általános költségeit és hatékonysági igényeit is kiegyensúlyozza.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>A Azure Portal használata
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Az Azure Portal használata
 
 A Azure Portal használatával méretezheti Azure Cosmos DB Cassandra API fiók erőforrásait. További információ: az [átviteli sebesség kiépítése a tárolók és adatbázisok](set-throughput.md)számára. Ez a cikk az átviteli sebességnek a Azure Portal [adatbázisban](set-throughput.md#set-throughput-on-a-database) vagy [tároló](set-throughput.md#set-throughput-on-a-container) szintjén való beállításának relatív előnyeit ismerteti. Az ezekben a cikkekben említett "adatbázis" és "tároló" kifejezések a Cassandra API a "space" és a "Table" kifejezéssel jelennek meg.
 

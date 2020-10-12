@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008780"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürtözési és fejlesztői ajánlott eljárások az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások létrehozásához és kezeléséhez
@@ -73,6 +73,6 @@ Az ajánlott eljárások egyes funkcióinak és összetevőinek megismeréséhez
 * [Tárolási lehetőségek](concepts-storage.md)
 * [Skálázási beállítások](concepts-scale.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg kell kezdenie az AK-t, kövesse az egyik rövid útmutatót, amely az [Azure CLI](kubernetes-walkthrough.md) vagy a [Azure Portal](kubernetes-walkthrough-portal.md)használatával helyez üzembe egy Azure KUBERNETES-szolgáltatási (ak-) fürtöt.

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008593"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Oktatóanyag: gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
@@ -56,7 +56,7 @@ Az Azure Marketplace ajánlatának futtatása új címkészlet kiépítéséhez:
 
 Ezután kövesse a következő szakaszban található utasításokat a megfelelő lapokra vonatkozó információk megadásához.
 
-### <a name="basics"></a>Alapbeállítások
+### <a name="basics"></a>Alapvető beállítások
 
 Az **alapok** lapon a következő műveleteket végezheti el:
 
@@ -65,7 +65,7 @@ Az **alapok** lapon a következő műveleteket végezheti el:
 1. Válasszon **régiót**.
 1. Adja meg a Windows rendszerű virtuális asztali bérlőn belül egyedi alkalmazáskészlet nevét.
 1. Válassza az **asztal típusa**lehetőséget. Ha a **személyes**lehetőséget választja, a gazdagéphez csatlakozó összes felhasználó véglegesen hozzá van rendelve egy virtuális géphez.
-1. Adja meg azokat a felhasználókat, akik bejelentkezhetnek a Windows rendszerű virtuális asztali ügyfelekbe, és hozzáférnek az asztalhoz. Vesszővel tagolt lista használata. Ha például a hozzárendelést és a hozzáférést szeretné használni `user1@contoso.com` `user2@contoso.com` , írja be a következőt:*`user1@contoso.com,user2@contoso.com`*
+1. Adja meg azokat a felhasználókat, akik bejelentkezhetnek a Windows rendszerű virtuális asztali ügyfelekbe, és hozzáférnek az asztalhoz. Vesszővel tagolt lista használata. Ha például a hozzárendelést és a hozzáférést szeretné használni `user1@contoso.com` `user2@contoso.com` , írja be a következőt: *`user1@contoso.com,user2@contoso.com`*
 1. A **szolgáltatás metaadatainak helye**területen válassza ki a virtuális hálózattal megegyező helyet, amely kapcsolódik a Active Directory-kiszolgálóhoz.
 
    >[!IMPORTANT]
@@ -155,7 +155,7 @@ A jelenleg támogatott ügyfelek:
 * [Távoli asztal ügyfél a Windows 7 és a Windows 10 rendszerhez](connect-windows-7-10-2019.md)
 * [Windows rendszerű virtuális asztali webes ügyfél](connect-web-2019.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy gazdagépet, és hozzárendelt felhasználókat az asztalához való hozzáféréshez. A gazdagép-készletet a RemoteApp-programokkal töltheti fel. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg ezt az oktatóanyagot:
 

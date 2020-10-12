@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4fa281f6435013e9feb6808aab04ffa69c5f96c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008610"
 ---
 # <a name="windows-virtual-desktop-classic-environment"></a>Windows rendszerű virtuális asztali (klasszikus) környezet
@@ -57,7 +57,7 @@ A Windows virtuális asztal szolgáltatásban a Windows rendszerű virtuális as
 
 Miután hozzárendelte a felhasználókat az alkalmazás csoportjaihoz, csatlakozhatnak a Windows rendszerű virtuális asztali környezethez a Windows rendszerű virtuális asztali ügyfelek bármelyikével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a delegált hozzáférésről és a szerepkörök felhasználókhoz való hozzárendeléséről a [Windows Virtual Desktopban](delegated-access-virtual-desktop-2019.md).
 

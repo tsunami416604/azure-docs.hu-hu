@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78296116"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
@@ -59,4 +59,4 @@ Ez a rendszerfunkció kihasználja a [térinformatikai index](index-policy.md#sp
 
 - [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)

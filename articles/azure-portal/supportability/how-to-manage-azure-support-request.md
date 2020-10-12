@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: mblythe
 ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85852296"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure-támogatáskérés kezelése
@@ -45,17 +45,17 @@ Ezen a lapon megkeresheti, szűrheti és rendezheti a támogatási kérelmeket. 
 
 1. A **támogatási kérelem** lapon válassza a **módosítás**lehetőséget.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="A támogatási kérelem súlyosságának módosítása":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Minden támogatási kérelem":::
 
 1. A Azure Portal a két képernyő egyikét jeleníti meg attól függően, hogy a kérés már hozzá van-e rendelve egy támogatási szakemberhez:
 
     - Ha a kérelem még nincs hozzárendelve, a következőhöz hasonló képernyő jelenik meg. Válasszon új súlyossági szintet, majd kattintson a **módosítás**gombra.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Új súlyossági szint kiválasztása":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Minden támogatási kérelem":::
 
     - Ha a kérelem hozzá van rendelve, a következőhöz hasonló képernyő jelenik meg. Kattintson **az OK gombra**, majd hozzon létre egy [új üzenetet](#send-a-message) a súlyossági szint módosításának kéréséhez.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Új súlyossági szint nem választható ki":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Minden támogatási kérelem":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Diagnosztikai információk megosztása az Azure-támogatással
 
@@ -69,7 +69,7 @@ Ha támogatási kérelmet hoz létre, alapértelmezés szerint a **megosztás di
     
     1. A **támogatási kérelem** lapon válassza az **engedély megadása**lehetőséget, majd válassza az **Igen** , majd **az OK gombot**.
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Engedélyek megadása diagnosztikai adatokhoz":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Minden támogatási kérelem":::
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 
@@ -79,7 +79,7 @@ A file upload (fájlfeltöltés) lehetőséggel feltölthet olyan diagnosztikai 
 
 1. A **támogatási kérelem** oldalon tallózással keresse meg a fájlt, majd válassza a **feltöltés**lehetőséget. Ha több fájllal rendelkezik, ismételje meg a folyamatot.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Fájl feltöltése":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Minden támogatási kérelem":::
 
 ### <a name="file-upload-guidelines"></a>Fájlfeltöltés-irányelvek
 
@@ -96,24 +96,24 @@ A fájlfeltöltés lehetőség használata esetén kövesse az alábbi irányelv
 | .7z         | . dat  | .hwl        | . ODX  | . rar     | . TDB       | .xlam   |
 | . a          | . db   | . ics        | . gyakran  | . rdl     | . TDF       | . XLR    |
 | . ABC        | . Eszközkezelő pont –  | . ini        | . régi  | . RDLC    | . Text      | .xls    |
-| . adm        | . do_  | .java       | . egy  | . re_     | .thmx      | .xlsb   |
+| . adm        | .do_  | .java       | . egy  | .re_     | .thmx      | .xlsb   |
 | . aspx       | .doc  | .jpg        | . OSD  | . reg     | .tif       | .xlsm   |
 | . ATF        | .docm | . LDF        | . KI  | . Eltávolítás  | . TRC       | .xlsx   |
 | . b          | .docx | . levélpapírfejléc | . P1   | . ren     | . TTD       | .xlt    |
-| . ba_        | .dotm | . lnk        | . Pcap | . Átnevezés  | . tx_       | .xltx   |
-| . bak        | .dotx | . lo_        | . pdb  | . RFT     | .txt       | .xml    |
+| .ba_        | .dotm | . lnk        | . Pcap | . Átnevezés  | .tx_       | .xltx   |
+| . bak        | .dotx | .lo_        | . pdb  | . RFT     | .txt       | .xml    |
 | .bat        | .dtsx | . log        | .pdf  | . RPT     | .uccapilog | . XMLA   |
 | . blg        | . EDS  | . LPK        | . Piz  | . RTE     | .uccplog   | .xps    |
-| . CA_        | . EMF  | . manifest   | .pmls | .rtf     | . udcx      | . xsd    |
-| . CAB        | . EML  | . Master     | .png  | . Run     | . vb_       | . xsn    |
-| . Cap        | . a. a  | . mdmp       | .potx | . saz     | . vbs_      | . xxx    |
-| .catx       | . err  | . MOF        | .ppt  | .sql     | . vcf       | . z_     |
+| .CA_        | . EMF  | . manifest   | .pmls | .rtf     | . udcx      | . xsd    |
+| . CAB        | . EML  | . Master     | .png  | . Run     | .vb_       | . xsn    |
+| . Cap        | . a. a  | . mdmp       | .potx | . saz     | .vbs_      | . xxx    |
+| .catx       | . err  | . MOF        | .ppt  | .sql     | . vcf       | .z_     |
 | . CFG        | . etl  | . mp3        | .pptm | .sqlplan | . vsd       | . Z01    |
 | . tömörített | . evt  | . mpg        | .pptx | . stp     | . wdb       | .z02    |
-| . Config     | . evtx | . ms_        | . prn  | .svclog  | . WKS       | . zi     |
-| . CPK        | . PÉLDÁUL   | . msg        | . PSF  |   -       | . WMA       | . zi_    |
-| . cpp        | . ex_  | .msi        | . pst  |  -        | . wmv       | .zip    |
-| .cs         | .ex0  | . MSO        | . pub  | -         | . WMZ       | . zip_   |
+| . Config     | . evtx | .ms_        | . prn  | .svclog  | . WKS       | . zi     |
+| . CPK        | . PÉLDÁUL   | . msg        | . PSF  |   -       | . WMA       | .zi_    |
+| . cpp        | .ex_  | .msi        | . pst  |  -        | . wmv       | .zip    |
+| .cs         | .ex0  | . MSO        | . pub  | -         | . WMZ       | .zip_   |
 | . CSV        | . FRD  | . msu        | -      |-          | . wps       | .zipp   |
 | . CVR        | .gif  | . nfo        | -      |-          | . WPT       | . zip |
 | -            | . GUID | -            | -      | -         | . WSDL      | . villámgyors  |

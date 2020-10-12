@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
 ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88263985"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Adatok összekapcsolása az Azure Web Application Firewall (WAF) szolgáltatással
@@ -52,7 +52,7 @@ Az Azure WAF-naplókat az Azure Sentinelhez is összekapcsolhatja, így megtekin
         | CDN WAF szabályzat      | WebApplicationFirewallLogs |
         |
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="next-steps-tab"></a>Következő lépések lap
 
@@ -64,7 +64,7 @@ Az Azure WAF-naplókat az Azure Sentinelhez is összekapcsolhatja, így megtekin
 >
 > Ezzel az adatösszekötővel a kapcsolati állapot mutatói (az adatösszekötők katalógusában és az adattípusok neve melletti kapcsolati ikonokban lévő színcsíkok) csak akkor jelennek *meg, ha* az adatok betöltése az elmúlt két hétben egy bizonyos pontján történik. Ha két hét telt el az adatfeldolgozás nélkül, az összekötő leválasztva jelenik meg. Minél több információ érkezik, a *csatlakoztatott* állapot vissza fog térni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az Azure WAF-naplók az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

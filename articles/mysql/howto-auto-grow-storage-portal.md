@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: d4dc5c2690be7b9abbda685e78ea562878626b5c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902850"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>A tároló automatikus növekedése Azure Database for MySQL a Azure Portal használatával
@@ -38,7 +38,7 @@ A MySQL Server Storage automatikus növekedésének beállításához kövesse a
 
 5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve lett.
 
-    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-success.png" alt-text="Azure Database for MySQL – az automatikus növekedés sikere":::
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-success.png" alt-text="Azure Database for MySQL-Settings_Pricing_tier – automatikus növekedés":::
 
 ## <a name="next-steps"></a>Következő lépések
 

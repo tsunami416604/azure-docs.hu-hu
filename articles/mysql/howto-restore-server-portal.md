@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902793"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for MySQL a Azure Portal használatával
@@ -37,11 +37,11 @@ Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási r�
 További információ ezekről az értékekről a létrehozás során: [Azure Database for MySQL Server](quickstart-create-mysql-server-database-using-azure-portal.md)gyors üzembe helyezése.
 
 A biztonsági másolatok megőrzési időszaka a kiszolgálón a következő lépésekkel módosítható:
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 2. Válassza ki a Azure Database for MySQL-kiszolgálót. Ez a művelet megnyitja az **Áttekintés** lapot.
 3. Válassza ki az **árképzési szintet** a menü **Beállítások**területén. A csúszka használatával megváltoztathatja a **biztonsági mentés megőrzési időtartamát** 7 és 35 nap között.
 Az alábbi képernyőképen a 34 napra nőtt.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="A biztonsági másolatok megőrzési időszaka nagyobb":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
 4. A módosítás megerősítéséhez kattintson **az OK** gombra.
 
@@ -57,11 +57,11 @@ A következő lépésekkel állíthatja vissza a kiszolgálót egy időpontra:
 
 2. A kiszolgáló **Áttekintés** lapjának eszköztárán válassza a **visszaállítás**lehetőséget.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – áttekintés – visszaállítás gomb":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
 3. Töltse ki a Visszaállítás űrlapot a szükséges információkkal:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL – adatok visszaállítása":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
    - **Visszaállítási pont**: válassza ki azt az időpontot, amelyet vissza szeretne állítani.
    - **Célkiszolgáló**: adja meg az új kiszolgáló nevét.
    - **Hely**: nem választhatja ki a régiót. Alapértelmezés szerint ugyanaz, mint a forráskiszolgáló.
@@ -86,13 +86,13 @@ Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta,
 
 1. Válassza az **erőforrás létrehozása** gombot (+) a portál bal felső sarkában. Válassza az **adatbázisok**  >  **Azure Database for MySQL**elemet.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Navigáljon Azure Database for MySQL.":::
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
  
 2. Adja meg az előfizetést, az erőforráscsoportot és az új kiszolgáló nevét. 
 
 3. **Adatforrásként**válassza a **biztonsági mentés** lehetőséget. Ez a művelet betölti a legördülő listát, amely felsorolja azokat a kiszolgálókat, amelyeken engedélyezve vannak a Geo redundáns biztonsági másolatok.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Válassza ki az adatforrást.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
     
    > [!NOTE]
    > A kiszolgálók első létrehozásakor előfordulhat, hogy a Geo-visszaállításhoz nem lesz azonnal elérhető. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
@@ -100,21 +100,21 @@ Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta,
 
 4. Válassza ki a **biztonsági mentés** legördülő menüt.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Válassza a biztonsági mentés legördülő menüt.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
 5. Válassza ki a visszaállítani kívánt forráskiszolgáló-kiszolgálót.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Válassza a biztonsági mentés lehetőséget.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
-6. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás**lehetőséget. 
+6. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás** lehetőséget. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Folytassa a biztonsági mentéssel.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
 
 7. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet**kiválaszthatja.
 
     A hely kiválasztása után a **kiszolgáló konfigurálása** lehetőség kiválasztásával frissítheti a **számítási generációt** (ha elérhető a kiválasztott régióban), a **virtuális mag**, a **biztonsági mentés megőrzési idejét**és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Űrlap kitöltése"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása"::: 
 
 8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. 
 

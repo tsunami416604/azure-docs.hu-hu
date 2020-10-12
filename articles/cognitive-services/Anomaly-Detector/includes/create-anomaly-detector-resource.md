@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 8f93e0ffe74ade79059fc845788faf36ab5b4f13
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91025237"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
@@ -23,7 +23,7 @@ ms.locfileid: "91025237"
 
     |Beállítás|Érték|
     |--|--|
-    |Név|Kívánt név (2-64 karakter)|
+    |Name (Név)|Kívánt név (2-64 karakter)|
     |Előfizetés|Válassza ki a megfelelő előfizetést|
     |Hely|Válasszon ki egy közeli és elérhető helyet|
     |Tarifacsomag|`F0` – a minimális díjszabási réteg|

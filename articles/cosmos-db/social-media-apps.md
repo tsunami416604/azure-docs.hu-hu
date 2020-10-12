@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850693"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi Azure Cosmos DB
@@ -171,7 +171,7 @@ Vegyük például a felhasználói adatokat:
 
 Ennek az információnak a megtekintésével gyorsan észlelhető, hogy melyik a kritikus információ, ami nem így van, így a "létra" létrehozása is megtörténik:
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="A létra mintájának ábrája" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
 
 A legkisebb lépés neve UserChunk, a felhasználó azonosítására szolgáló minimális információ, amely az adatok ismétlődésére szolgál. Ha csökkenti a duplikált adatok méretét, hogy csak a "show" adatokat fogja megjeleníteni, csökkentse a tömeges frissítések lehetőségét.
 
@@ -248,7 +248,7 @@ Cosmos DB az összes partíció transzparens módon futtatja a lekérdezéseket 
 
 Az idő múlásával végül növekedni fog a forgalom, és az erőforrás-fogyasztás (az [RUs](request-units.md)-ben vagy a kérelmek egységében mérve) nő. A felhasználói alapszintű növekedéshez gyakrabban kell olvasnia és írnia. A felhasználói alap több tartalom létrehozását és olvasását is megkezdi. Így létfontosságú az **átviteli sebesség skálázása** . Az RUs növelése egyszerű. Ezt elvégezheti néhány kattintással a Azure Portal vagy az API-n [keresztüli parancsok kiadásával](/rest/api/cosmos-db/replace-an-offer).
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Partíciós kulcs skálázása és definiálása":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="A relatív rokonsági modellt bemutató diagram":::
 
 Mi történik, ha a dolgok egyre jobbak maradnak? Tegyük fel, hogy egy másik régióból, országból vagy kontinensből származó felhasználók észlelik a platformot, és elkezdik használni azt. Mi a nagyszerű meglepetés!
 
@@ -258,13 +258,13 @@ Cosmos DB lehetővé teszi [az adatok globális és átlátható replikálását
 
 Amikor globálisan replikálja az adatait, meg kell győződnie arról, hogy az ügyfelek kihasználhatják. Ha webes felületet használ vagy API-kat fér hozzá a mobil ügyfelektől, üzembe helyezheti az [Azure Traffic Managert](https://azure.microsoft.com/services/traffic-manager/) , és megnyithatja a Azure app Servicet az összes kívánt régióban, a teljesítmény-konfigurációval, hogy támogassa a kiterjesztett globális lefedettséget. Amikor az ügyfelek hozzáférnek a előtérben vagy az API-khoz, a rendszer a legközelebbi App Service irányítja, amely viszont a helyi Cosmos DB replikához fog csatlakozni.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Globális lefedettség hozzáadása a közösségi platformhoz" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
 
 ## <a name="conclusion"></a>Összegzés
 
 Ez a cikk néhány fényt mutat be a közösségi hálózatok teljes körű létrehozására az Azure-ban alacsony díjszabású szolgáltatásokkal. Ennek eredményeképpen a többrétegű tárolási megoldások és a "ladder" elnevezésű adateloszlás használatát ösztönözheti.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Az Azure-szolgáltatások közösségi hálózatkezeléssel való interakciójának ábrája" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
 
 Az igazság az, hogy az ilyen forgatókönyvek esetében nincs ilyen típusú ezüst-felsorolásjel. Ez a nagyszerű szolgáltatások kombinációja által létrehozott szinergia, amely lehetővé teszi számunkra, hogy nagyszerű tapasztalatokat építsünk ki: a Azure Cosmos DB gyorsasága és szabadsága, hogy kiváló közösségi alkalmazást, az intelligenciát egy olyan első osztályú keresési megoldás mögött, mint az Azure Cognitive Search, a rugalmasság az Azure-App Services, hogy még a nem egyenletes nyelvezetű alkalmazásokat, de hatékony háttér-folyamatokat, valamint a bővíthető Azure Storage-t és Azure SQL Database nagy mennyiségű adat tárolásához és az Azure Machine analitikai teljesítményének biztosításához. Tanuljon olyan tudást és intelligenciát létrehozni, amely visszajelzést tud adni a folyamatokról, és segít a megfelelő tartalomnak a megfelelő felhasználók számára történő továbbításában.
 

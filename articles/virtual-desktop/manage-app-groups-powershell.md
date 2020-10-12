@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008644"
 ---
 # <a name="manage-app-groups-using-powershell"></a>Alkalmazás-csoportok kezelése a PowerShell-lel
@@ -76,7 +76,7 @@ RemoteApp-csoport létrehozása a PowerShell-lel:
    Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
    ```
 
-4. A következő parancsmag futtatásával telepítheti az alkalmazást a alapján `AppAlias` . `AppAlias`a 3. lépés kimenetének futtatásakor láthatóvá válik.
+4. A következő parancsmag futtatásával telepítheti az alkalmazást a alapján `AppAlias` . `AppAlias` a 3. lépés kimenetének futtatásakor láthatóvá válik.
 
    ```powershell
    New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require>
@@ -101,6 +101,6 @@ RemoteApp-csoport létrehozása a PowerShell-lel:
    New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha ezt az útmutatót az oktatóanyagokból olvassa be, tekintse meg [a gazdagépek létrehozása a szolgáltatás frissítéseinek](create-validation-host-pool.md)ellenőrzéséhez című témakört. Az ellenőrzési gazdagépek segítségével figyelheti a szolgáltatás frissítéseit, mielőtt az éles környezetbe helyezné őket.

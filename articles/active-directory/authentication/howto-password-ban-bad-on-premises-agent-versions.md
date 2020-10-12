@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74847849"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszavas védelmi ügynök korábbi verziói
@@ -34,17 +34,17 @@ Kiadás dátuma: 3/22/2019
 
 Kiadás dátuma: 3/13/2019
 
-* A Get-AzureADPasswordProtectionProxy és a Get-AzureADPasswordProtectionDCAgent parancsmagok mostantól a szoftver verzióját és az aktuális Azure-bérlőt jelentik a következő korlátozásokkal:
+* A Get-AzureADPasswordProtectionProxy és Get-AzureADPasswordProtectionDCAgent parancsmagok mostantól a szoftver verzióját és az aktuális Azure-bérlőt jelentik a következő korlátozásokkal:
   * A szoftver verziója és az Azure-bérlői adatközpont csak a 1.2.116.0 vagy újabb verziót futtató TARTOMÁNYVEZÉRLŐk és proxyk esetében érhető el.
   * Előfordulhat, hogy az Azure-bérlői adatforgalmi jelentés nem jelent meg, amíg a proxy vagy az erdő újbóli regisztrálása (vagy megújítása) be nem következik.
 * A proxy szolgáltatáshoz most már telepítve kell lennie a .NET 4,7-nek.
   * A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha ez nem igaz, töltse le és futtassa a következőt: a [.NET-keretrendszer 4,7-es offline telepítője a Windowshoz](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * A Server Core rendszerekben szükség lehet a/q jelző megadására a .NET 4,7 telepítőre, hogy a sikeres legyen.
 * A proxy szolgáltatás mostantól támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Alapértelmezés szerint az automatikus frissítés be van kapcsolva.
-* Az automatikus frissítés a set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le.
+* Az automatikus frissítés a Set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le.
 * A DC Agent szolgáltatáshoz tartozó bináris fájl átnevezve lett AzureADPasswordProtectionDCAgent.exera.
 * A proxy szolgáltatáshoz tartozó bináris fájl át lett nevezve AzureADPasswordProtectionProxy.exera. Előfordulhat, hogy a tűzfalszabályok módosítására van szükség, ha egy külső gyártótól származó tűzfal van használatban.
-  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, akkor a frissítés után átnevezni kell ( *proxyservice.exe.configról* *AzureADPasswordProtectionProxy.exe.config*).
+  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, akkor a frissítés után átnevezni kell ( *proxyservice.exe.configról * *AzureADPasswordProtectionProxy.exe.config*).
 * Az összes időkorlátos funkció-ellenőrzés el lett távolítva a DC-ügynökből.
 * A kisebb hibák javításai és naplózási funkciói.
 
@@ -55,11 +55,11 @@ Kiadás dátuma: 2/1/2019
 Változások
 
 * A DC-ügynök és a proxy szolgáltatás mostantól támogatott a Server Core-ban. A Mininimum operációs rendszerre vonatkozó követelmények nem változnak a következő előtt: Windows Server 2012 for DC Agents, és Windows Server 2012 R2 for proxys.
-* A Register-AzureADPasswordProtectionProxy és a Register-AzureADPasswordProtectionForest parancsmag mostantól támogatja az eszköz-kód alapú Azure-hitelesítési módokat.
-* A Get-AzureADPasswordProtectionDCAgent parancsmag figyelmen kívül hagyja az összekeveredett és/vagy a szolgáltatási kapcsolatok érvénytelen pontjait. Ez javítja azt a hibát, amelyben a tartományvezérlők időnként többször is megjelennek a kimenetben.
-* A Get-AzureADPasswordProtectionSummaryReport parancsmag figyelmen kívül hagyja az összekeveredett és/vagy a szolgáltatási kapcsolatok érvénytelen pontjait. Ez javítja azt a hibát, amelyben a tartományvezérlők időnként többször is megjelennek a kimenetben.
+* A Register-AzureADPasswordProtectionProxy és Register-AzureADPasswordProtectionForest parancsmag mostantól támogatja az eszköz-kód alapú Azure-hitelesítési módokat.
+* Az Get-AzureADPasswordProtectionDCAgent parancsmag figyelmen kívül hagyja az összekeveredett és/vagy a szolgáltatási kapcsolatok érvénytelen pontjait. Ez javítja azt a hibát, amelyben a tartományvezérlők időnként többször is megjelennek a kimenetben.
+* Az Get-AzureADPasswordProtectionSummaryReport parancsmag figyelmen kívül hagyja az összekeveredett és/vagy a szolgáltatási kapcsolatok érvénytelen pontjait. Ez javítja azt a hibát, amelyben a tartományvezérlők időnként többször is megjelennek a kimenetben.
 * A proxy PowerShell-modul már regisztrálva van a%ProgramFiles%\WindowsPowerShell\Modules. A gép PSModulePath környezeti változója már nem módosul.
-* Új Get-AzureADPasswordProtectionProxy parancsmag lett hozzáadva a regisztrált proxyk egy erdőben vagy tartományban való felfedéséhez.
+* Új Get-AzureADPasswordProtectionProxy parancsmag lett hozzáadva a regisztrált proxyk egy erdőben vagy tartományban való felfedésének támogatásához.
 * A tartományvezérlő ügynöke egy új mappát használ a SYSVOL megosztásban a jelszóházirend és más fájlok replikálásához.
 
    Régi mappa helye:
@@ -110,8 +110,8 @@ Kiadás dátuma: 8/17/2018
 
 Hibajavítások
 
-* A Register-AzureADPasswordProtectionProxy és a Register-AzureADPasswordProtectionForest mostantól támogatja a többtényezős hitelesítést
-* A regisztráláshoz a AzureADPasswordProtectionProxy WS2012 vagy újabb tartományvezérlő szükséges a tartományban a titkosítási hibák elkerülése érdekében.
+* A Register-AzureADPasswordProtectionProxy és Register-AzureADPasswordProtectionForest mostantól támogatja a többtényezős hitelesítést
+* Register-AzureADPasswordProtectionProxy a titkosítási hibák elkerülése érdekében WS2012 vagy újabb tartományvezérlőt igényel a tartományban.
 * A DC Agent szolgáltatás megbízhatóbb az Azure-beli új jelszóházirend indításkor történő kérésekor.
 * A DC Agent szolgáltatás szükség esetén minden órában új jelszóházirend-szabályzatot kér az Azure-ban, de ezt követően véletlenszerűen kiválasztott kezdési időpontban fog megjelenni.
 * A DC Agent szolgáltatás a továbbiakban nem eredményez határozatlan késleltetést az új TARTOMÁNYVEZÉRLŐi hirdetményben, ha az előléptetésük előtt egy kiszolgálóra van telepítve.

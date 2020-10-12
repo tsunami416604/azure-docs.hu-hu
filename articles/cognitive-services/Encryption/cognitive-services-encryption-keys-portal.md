@@ -1,5 +1,5 @@
 ---
-title: Ügyfél által felügyelt kulcsok Cognitive Services
+title: Cognitive Services Customer-Managed kulcsai
 titleSuffix: Cognitive Services
 description: Megtudhatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat a Azure Key Vault segítségével a Azure Portal használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
 services: cognitive-services
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310699"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault Cognitive Services
 
-Az ügyfél által felügyelt kulcsok Azure Key Vault használatával történő engedélyezésének folyamata Cognitive Services változó termék alapján. A következő hivatkozásokat használhatja a szolgáltatásra vonatkozó utasításokhoz:
+A Customer-Managed kulcsoknak a Cognitive Services Azure Key Vault használatával történő engedélyezésének folyamata termékenként változó. A következő hivatkozásokat használhatja a szolgáltatásra vonatkozó utasításokhoz:
 
 ## <a name="vision"></a>Látás
 
@@ -39,4 +39,4 @@ Az ügyfél által felügyelt kulcsok Azure Key Vault használatával történő
 ## <a name="next-steps"></a>További lépések
 
 * [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Cognitive Services ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
+* [Cognitive Services Customer-Managed kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)

@@ -4,10 +4,10 @@ description: Hivatkozás egy Azure Container registryben található webhook-ké
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74455975"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Webhook-hivatkozás Azure Container Registry
@@ -36,7 +36,7 @@ A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adatt
 
 ### <a name="push-event-payload"></a>Leküldéses esemény hasznos adatai
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -46,7 +46,7 @@ A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adatt
 
 ### <a name="target"></a><a name="target"></a>cél
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`size`|Int32|A tartalom bájtjainak száma. Ugyanaz, mint a Length mező.|
@@ -57,7 +57,7 @@ A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adatt
 
 ### <a name="request"></a><a name="request"></a>kérelem
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`id`|Sztring|Az eseményt kezdeményező kérelem azonosítója.|
 |`host`|Sztring|A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott.|
@@ -100,7 +100,7 @@ A webhook akkor aktiválódik, ha egy Helm-diagramot egy adattárba küldenek.
 
 ### <a name="chart-push-event-payload"></a>Diagram leküldéses eseményének adattartalma
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -109,7 +109,7 @@ A webhook akkor aktiválódik, ha egy Helm-diagramot egy adattárba küldenek.
 
 ### <a name="target"></a><a name="helm_target"></a>cél
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`size`|Int32|A tartalom bájtjainak száma.|
@@ -150,7 +150,7 @@ A webhook akkor aktiválódik, amikor egy rendszerkép-tárházat vagy jegyzékf
 
 ### <a name="delete-event-payload"></a>Esemény-adattartalom törlése
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -158,17 +158,17 @@ A webhook akkor aktiválódik, amikor egy rendszerkép-tárházat vagy jegyzékf
 |[cél](#delete_target)|Összetett típus|A webhook eseményt kiváltó esemény célpontja.|
 |[kérelem](#delete_request)|Összetett típus|A webhook eseményt létrehozó kérelem.|
 
-### <a name="target"></a><a name="delete_target"></a>cél
+### <a name="target"></a><a name="delete_target"></a> cél
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`digest`|Sztring|A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg.|
 |`repository`|Sztring|A tárház neve.|
 
-### <a name="request"></a><a name="delete_request"></a>kérelem
+### <a name="request"></a><a name="delete_request"></a> kérelem
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`id`|Sztring|Az eseményt kezdeményező kérelem azonosítója.|
 |`host`|Sztring|A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott.|
@@ -212,16 +212,16 @@ A webhook egy Helm-diagram vagy-adattár törlésekor aktiválódik.
 
 ### <a name="chart-delete-event-payload"></a>Diagram törlése esemény hasznos adatai
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
 |`action`|Sztring|A webhook eseményt indító művelet.|
 |[cél](#chart_delete_target)|Összetett típus|A webhook eseményt kiváltó esemény célpontja.|
 
-### <a name="target"></a><a name="chart_delete_target"></a>cél
+### <a name="target"></a><a name="chart_delete_target"></a> cél
 
-|Elem|Típus|Description|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`size`|Int32|A tartalom bájtjainak száma.|

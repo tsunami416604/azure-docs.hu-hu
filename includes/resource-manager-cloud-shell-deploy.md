@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74451528"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Sablon üzembe helyezése a Cloud Shellből
@@ -33,7 +33,7 @@ A sablon üzembe helyezéséhez a [Cloud Shell](../articles/cloud-shell/overview
 
    ![Tároló hozzáadása](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Adja meg a tároló nevét és hozzáférési szintjét. A cikkben szereplő sablon nem tartalmaz bizalmas adatokat, ezért engedélyezze a névtelen olvasási hozzáférést. Válassza az **OK** lehetőséget.
+1. Adja meg a tároló nevét és hozzáférési szintjét. A cikkben szereplő sablon nem tartalmaz bizalmas adatokat, ezért engedélyezze a névtelen olvasási hozzáférést. Kattintson az **OK** gombra.
 
    ![Tároló értékeinek megadása](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 

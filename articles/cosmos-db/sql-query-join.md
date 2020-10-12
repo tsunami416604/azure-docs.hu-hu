@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74871142"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Illesztések Azure Cosmos DB
@@ -23,7 +23,7 @@ A belső illesztések az illesztésben részt vevő készletek teljes termékét
 
 A nyelv támogatja a szintaxist `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` . Ez a lekérdezés egy rekordok-készletet ad vissza `N` értékekkel. Az egyes rekordhalmazok értékeit az összes tároló aliasnevének megismétlésével állítjuk be a megfelelő készleteken. 
 
-Nézzük meg a következő FROM záradékot:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Nézzük meg a következő FROM záradékot: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Minden forrás definiálásának engedélyezése `input_alias1, input_alias2, …, input_aliasN` . Ez a FROM záradék N-rekordok-készletet ad vissza (N értékkel rendelkező rekord). Az egyes rekordhalmazok értékeit az összes tároló aliasnevének megismétlésével állítjuk be a megfelelő készleteken.  
   
@@ -33,11 +33,11 @@ Nézzük meg a következő FROM záradékot:`<from_source1> JOIN <from_source2> 
   
 - `<from_source2>`A dokumentumokra szűkített viszonyítási input_alias1 és a készleteket jelölő csoportok:  
   
-    {1, 2} a következőhöz:`input_alias1 = A,`  
+    {1, 2} a következőhöz: `input_alias1 = A,`  
   
-    {3}a`input_alias1 = B,`  
+    {3} a `input_alias1 = B,`  
   
-    {4, 5} a következőhöz:`input_alias1 = C,`  
+    {4, 5} a következőhöz: `input_alias1 = C,`  
   
 - A FROM záradék `<from_source1> JOIN <from_source2>` a következő rekordok eredményezi:  
   
@@ -51,17 +51,17 @@ Nézzük meg a következő FROM záradékot:`<from_source1> JOIN <from_source2> 
   
 - `<from_source2>`A dokumentumokra szűkített referenciák és az azokra vonatkozó `input_alias1` készletek:  
   
-    {1, 2} a következőhöz:`input_alias1 = A,`  
+    {1, 2} a következőhöz: `input_alias1 = A,`  
   
-    {3}a`input_alias1 = B,`  
+    {3} a `input_alias1 = B,`  
   
-    {4, 5} a következőhöz:`input_alias1 = C,`  
+    {4, 5} a következőhöz: `input_alias1 = C,`  
   
 - `<from_source3>`A dokumentumokra szűkített referenciák és az azokra vonatkozó `input_alias2` készletek:  
   
-    {100, 200} a következőhöz:`input_alias2 = 1,`  
+    {100, 200} a következőhöz: `input_alias2 = 1,`  
   
-    {300}a`input_alias2 = 3,`  
+    {300} a `input_alias2 = 3,`  
   
 - A FROM záradék `<from_source1> JOIN <from_source2> JOIN <from_source3>` a következő rekordok eredményezi:  
   
@@ -80,17 +80,17 @@ Nézzük meg a következő FROM záradékot:`<from_source1> JOIN <from_source2> 
   
 - <from_source2> dokumentumokra szűkíthető viszonyítási input_alias1, és beállítja a készleteket:  
   
-    {1, 2} a következőhöz:`input_alias1 = A,`  
+    {1, 2} a következőhöz: `input_alias1 = A,`  
   
-    {3}a`input_alias1 = B,`  
+    {3} a `input_alias1 = B,`  
   
-    {4, 5} a következőhöz:`input_alias1 = C,`  
+    {4, 5} a következőhöz: `input_alias1 = C,`  
   
 - Legyen `<from_source3>` a hatóköre `input_alias1` és a halmazok jelölése:  
   
-    {100, 200} a következőhöz:`input_alias2 = A,`  
+    {100, 200} a következőhöz: `input_alias2 = A,`  
   
-    {300}a`input_alias2 = C,`  
+    {300} a `input_alias2 = C,`  
   
 - A FROM záradék `<from_source1> JOIN <from_source2> JOIN <from_source3>` a következő rekordok eredményezi:  
   
@@ -224,7 +224,7 @@ Az előző példa alábbi bővítménye dupla illesztést hajt végre. A termék
     }
 ```
 
-`AndersenFamily`van egy gyermeke, aki rendelkezik egy kisállattal, így a Cross termék egy sort (1 1 1 \* \* ) eredményez ebből a családból. `WakefieldFamily`két gyermeke van, akik közül csak az egyik rendelkezik háziállattal, de a gyermeknek két háziállata van. A családhoz tartozó több termék 1 – \* \* 2 = 2 sort eredményez.
+`AndersenFamily` van egy gyermeke, aki rendelkezik egy kisállattal, így a Cross termék egy sort (1 1 1 \* \* ) eredményez ebből a családból. `WakefieldFamily` két gyermeke van, akik közül csak az egyik rendelkezik háziállattal, de a gyermeknek két háziállata van. A családhoz tartozó több termék 1 – \* \* 2 = 2 sort eredményez.
 
 A következő példában egy további szűrő van `pet` , amely kizárja az összes olyan rekordok, ahol a PET neve nem `Shadow` . A tömbökből létrehozhat rekordok, szűrheti a rekord bármelyik elemét, és az elemek bármely kombinációját kialakíthatja.
 

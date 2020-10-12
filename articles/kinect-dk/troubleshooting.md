@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: hibaelhárítás, frissítés, hiba, Kinect, visszajelzés, helyreállítás, naplózás, tippek
 ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277608"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure-beli Kinect ismert problémák és hibaelhárítás
@@ -134,7 +134,7 @@ Ha nem, akkor hajtsa végre a [gyári beállítások visszaállítását](https:
 - A képminőséggel kapcsolatos problémák a csapattal való megosztásához a következőket teheti:
 
 1) Az [Azure Kinect Viewer](azure-kinect-viewer.md) szüneteltetési nézetének elkészítése és képernyőkép készítése
-2) Felvétel készítése az [Azure Kinect Recorder](azure-kinect-recorder.md)használatával, például:`k4arecorder.exe -l 5 -r 5 output.mkv`
+2) Felvétel készítése az [Azure Kinect Recorder](azure-kinect-recorder.md)használatával, például: `k4arecorder.exe -l 5 -r 5 output.mkv`
 
 ## <a name="inconsistent-or-unexpected-device-timestamps"></a>Inkonzisztens vagy váratlan eszköz időbélyegei
 

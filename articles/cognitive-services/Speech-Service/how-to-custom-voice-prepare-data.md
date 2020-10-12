@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74805977"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Az adatelőkészítés egyéni hang létrehozásához
@@ -53,7 +53,7 @@ Jó hangbetűkészlet létrehozásához hozzon létre egy csendes helyen, magas 
 
 ### <a name="audio-files"></a>Hangfájlok
 
-Minden hangfájlnak tartalmaznia kell egy teljes (egyetlen mondatot vagy egy párbeszédpanelrendszer egyetlen bekapcsolását), amely kevesebb, mint 15 másodperc. Minden fájlnak ugyanabban a kimondott nyelven kell lennie. A többnyelvű egyéni szöveg-beszéd hangok nem támogatottak, kivéve a kínai – angol nyelveket. Minden hangfájlnak egyedi numerikus fájlnevet kell tartalmaznia, a fájlnév kiterjesztésével. wav.
+Minden hangfájlnak tartalmaznia kell egy teljes (egyetlen mondatot vagy egy párbeszédpanelrendszer egyetlen bekapcsolását), amely kevesebb, mint 15 másodperc. Minden fájlnak ugyanabban a kimondott nyelven kell lennie. A többnyelvű egyéni szöveg-beszéd hangok nem támogatottak, kivéve a Chinese-English bi nyelvi változatát. Minden hangfájlnak egyedi numerikus fájlnevet kell tartalmaznia, a fájlnév kiterjesztésével. wav.
 
 A hang előkészítésekor kövesse az alábbi irányelveket.
 
@@ -61,7 +61,7 @@ A hang előkészítésekor kövesse az alábbi irányelveket.
 | -------- | ----- |
 | Fájlformátum | RIFF (. wav), egy. zip fájlba csoportosítva |
 | Mintavételezési arány | Legalább 16 000 Hz |
-| Minta formátuma | PCM, 16 bites |
+| Minták formátuma | PCM, 16 bites |
 | Fájlnév | Numerikus,. wav kiterjesztéssel. Nem engedélyezettek az ismétlődő fájlnevek. |
 | Hang hossza | 15 másodpercnél rövidebb |
 | Archív formátum | .zip |
@@ -112,7 +112,7 @@ Kövesse az alábbi irányelveket a hanganyagok szegmentálására való felkés
 | Archív formátum | .zip |
 | Archiválás maximális mérete | 2048 MB |
 
-Az összes hangfájlt zip-fájlba kell csoportosítani. A. wav fájlok és az. mp3 fájlok egyetlen hangzip-fájlba helyezhetők. Feltölthet például egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, 45-másodpercet, és egy "queenstory. mp3" nevű másik hanganyagot, 200-Second-Long. A rendszer az összes. MP3 fájlt a feldolgozás után. wav formátumúvá alakítja át.
+Az összes hangfájlt zip-fájlba kell csoportosítani. A. wav fájlok és az. mp3 fájlok egyetlen hangzip-fájlba helyezhetők. Feltölthet például egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, 45-másodpercet, és egy "queenstory.mp3", 200-Second-Long nevű hangot. A rendszer az összes. MP3 fájlt a feldolgozás után. wav formátumúvá alakítja át.
 
 ### <a name="transcripts"></a>Átiratát
 
@@ -126,7 +126,7 @@ Az átiratokat fel kell készülnie az ebben a táblázatban szereplő specifik�
 | Kimondott szövegek száma soronként | Korlátlan |
 | Maximális fájlméret | 2048 MB |
 
-Az adattípusban található összes átirat fájlnak egy zip-fájlba kell csoportosítva lennie. Például feltöltött egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, a 45 másodpercet, és egy másikat, a "queenstory. mp3" nevet, 200 másodpercet. Fel kell töltenie egy másik, két átiratot tartalmazó zip-fájlt, amely egy "kingstory. txt" nevű, a másik pedig "queenstory. txt". Minden egyszerű szövegfájlon belül meg kell adnia a megfelelő hang teljes átírását.
+Az adattípusban található összes átirat fájlnak egy zip-fájlba kell csoportosítva lennie. Például feltöltött egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, a 45 másodpercet, egy másikat pedig "queenstory.mp3", 200 másodperc hosszú. Fel kell töltenie egy másik, két átiratot tartalmazó zip-fájlt, amely egy "kingstory.txt" nevű, a másik pedig a "queenstory.txt". Minden egyszerű szövegfájlon belül meg kell adnia a megfelelő hang teljes átírását.
 
 Az adatkészlet sikeres feltöltése után segítséget nyújtunk a hangfájlnak a megadott átirat alapján történő hosszúságú kimondott szöveg. Az adatkészlet letöltésével a szegmentált hosszúságú kimondott szöveg és a megfelelő átiratokat is megtekintheti. A szegmentált hosszúságú kimondott szöveg automatikusan egyedi azonosítók lesznek hozzárendelve. Fontos, hogy az Ön által megadott átiratok 100%-ban pontosak legyenek. Az átiratokban előforduló hibák csökkenthetik a hangszegmentálási pontosságot, és továbbra is bevezethetik a minőség elvesztését a betanítási fázisban, amely később következik be.
 

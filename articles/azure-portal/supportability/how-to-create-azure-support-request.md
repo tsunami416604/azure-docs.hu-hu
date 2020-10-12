@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
 ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851853"
 ---
 # <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
@@ -23,9 +23,9 @@ Az Azure-ban támogatási kérelmeket, más néven támogatási jegyeket hozhat 
 > [!NOTE]
 > A Azure Portal URL-cím kifejezetten arra az Azure-felhőre vonatkozik, ahol a szervezete telepítve van.
 >
->* A kereskedelmi felhasználásra Azure Portal a következő:[https://portal.azure.com](https://portal.azure.com)
->* Németország Azure Portal:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* A Egyesült Államok Government Azure Portal a következő:[https://portal.azure.us](https://portal.azure.us)
+>* A kereskedelmi felhasználásra Azure Portal a következő: [https://portal.azure.com](https://portal.azure.com)
+>* Németország Azure Portal: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* A Egyesült Államok Government Azure Portal a következő: [https://portal.azure.us](https://portal.azure.us)
 
 A támogatási kérések tapasztalatai a következő három fő célkitűzésre összpontosítanak:
 
@@ -39,7 +39,7 @@ Az Azure korlátlan támogatást biztosít az előfizetés-kezeléshez, amely ma
 
 A Azure Portal Súgó és **támogatás** szolgáltatását is elérheti. A szolgáltatás a Azure Portal menüjéből, a globális fejlécből vagy a szolgáltatások erőforrás-menüjéből érhető el. Ha támogatási kérést szeretne beküldeni, rendelkeznie kell a megfelelő engedélyekkel.
 
-### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-control/built-in-roles.md#owner), [közreműködőnek](../../role-based-access-control/built-in-roles.md#contributor) kell lennie, vagy a [támogatási kérelem közreműködői](../../role-based-access-control/built-in-roles.md#support-request-contributor) szerepköréhez kell rendelni az előfizetés szintjén. Ha előfizetést nem tartalmazó támogatási kérelmet szeretne létrehozni, például egy Azure Active Directory-forgatókönyv [, rendszergazdának](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)kell lennie.
 
@@ -47,7 +47,7 @@ Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-
 
 Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
-1. Válassza ki a **?** elemet. a globális fejlécben. Ezután válassza a **Súgó + támogatás**lehetőséget.
+1. Jelölje be a **?** a globális fejlécben. Ezután válassza a **Súgó + támogatás**lehetőséget.
 
    ![Súgó és támogatás](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -95,7 +95,7 @@ A következő lépés a problémával kapcsolatos további részletek begyűjté
 
 1. Ezután végezze el a **kapcsolattartási adatok** szakaszt, hogy tudjuk, hogyan kell felvenni Önnel a kapcsolatot.
 
-### <a name="review--create"></a>Felülvizsgálat + létrehozás
+### <a name="review--create"></a>Ellenőrzés és létrehozás
 
 Fejezze be az összes szükséges információt az egyes lapokon, majd válassza a **felülvizsgálat + létrehozás**elemet. Tekintse át a támogatáshoz küldendő adatokat. Ha szükséges, lépjen vissza bármelyik lapra, és végezze el a módosítást. Ha meggyőződött arról, hogy a támogatási kérelem elkészült, válassza a **Létrehozás**lehetőséget.
 

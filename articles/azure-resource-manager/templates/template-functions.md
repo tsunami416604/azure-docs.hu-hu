@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban az értékek beolvasására, a k
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378406"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
@@ -40,14 +40,14 @@ A Resource Manager számos funkciót biztosít a tömbök használatához.
 
 * [array](template-functions-array.md#array)
 * [concat](template-functions-array.md#concat)
-* [contains](template-functions-array.md#contains)
+* [tartalmaz](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [üres](template-functions-array.md#empty)
 * [első](template-functions-array.md#first)
 * [kereszteződés](template-functions-array.md#intersection)
 * [utolsó](template-functions-array.md#last)
 * [length](template-functions-array.md#length) (hossz)
-* [p](template-functions-array.md#min)
+* [min](template-functions-array.md#min)
 * [Max](template-functions-array.md#max)
 * [tartomány](template-functions-array.md#range)
 * [kihagyása](template-functions-array.md#skip)
@@ -128,7 +128,7 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [p](template-functions-numeric.md#min)
+* [min](template-functions-numeric.md#min)
 * [Max](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -140,7 +140,7 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 
 A Resource Manager számos funkciót biztosít az objektumok használatához.
 
-* [contains](template-functions-object.md#contains)
+* [tartalmaz](template-functions-object.md#contains)
 * [üres](template-functions-object.md#empty)
 * [kereszteződés](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
@@ -215,7 +215,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [concat](template-functions-string.md#concat)
-* [contains](template-functions-string.md#contains)
+* [tartalmaz](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [üres](template-functions-string.md#empty)

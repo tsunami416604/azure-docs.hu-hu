@@ -12,10 +12,10 @@ ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87488771"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy felhasználói folyamaton keresztül az alkalmazáshoz Azure Active Directory B2C
@@ -54,6 +54,6 @@ Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy 
 
     ![Dekódolású token a jwt.ms-ben idp_access_token blokk kiemelve](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure ad B2C tokenek áttekintése](tokens-overview.md).
