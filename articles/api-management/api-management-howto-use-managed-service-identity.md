@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
 ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85558030"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure-ban API Management
@@ -279,9 +279,9 @@ Ha felügyelt identitást szeretne beállítani a portálon, először létre ke
 1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
 2. Válassza a **felügyelt identitások**lehetőséget.
 3. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás**lehetőséget.
-4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** elemet.
+4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Felhasználó által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="A rendszer által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

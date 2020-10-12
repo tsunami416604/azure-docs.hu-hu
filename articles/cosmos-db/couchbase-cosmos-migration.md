@@ -8,10 +8,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87366721"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
@@ -187,7 +187,7 @@ A N1QL lekérdezések a lekérdezéseknek a Couchbase való definiálásának m�
 
 |N1QL-lekérdezés | Azure CosmosDB-lekérdezés|
 |-------------------|-------------------|
-|Válassza a META ( `TravelDocument` ). ID azonosítót, `TravelDocument` . * elemet, `TravelDocument` ahol `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India", a vízumok pedig minden m. type = = "Multi-Entry" és m. Country in ["India", Bhután "] Order by ` Validity` desc limit 25 eltolás 0   | Válassza a c elemet. azonosító, c – c csatlakozás m-ben c. Country = "India", ahol c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
+|Válassza a META ( `TravelDocument` ). ID azonosítót, `TravelDocument` . * elemet, `TravelDocument` ahol `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India", a vízumok pedig minden m. type = = "Multi-Entry" és m. Country in ["India", Bhután "] Order by ` Validity` desc limit 25 eltolás 0   | Válassza ki a c. id, a c értéket a c: c. ország = "India", ahol c._type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
 
 A N1QL-lekérdezésekben a következő változások láthatók:
 
@@ -311,7 +311,7 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
 
 1. Ügyeljen arra, hogy a "/ID" elsődleges kulcs legyen, amely biztosítja, hogy a keresési művelet közvetlenül az adott partíción legyen végrehajtva. Hozzon létre egy gyűjteményt, és válassza a "/ID" lehetőséget partíciós kulcsként.
 
-1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt**, válassza ki az **adatbázist** és a **tárolót**. Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az **indexelési házirendet**. Az indexelési szabályzat jelenleg a következőhöz hasonlít:
+1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt**, válassza ki az **adatbázist** és a **tárolót**. Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az  **indexelési házirendet**. Az indexelési szabályzat jelenleg a következőhöz hasonlít:
     
    ```json
    {
@@ -435,7 +435,7 @@ Az adatmigrálás kétféleképpen végezhető el.
 
 * **Használja a Azure Cosmos db adatimportálási eszközt:** Ez a beállítás ajánlott a kisebb mennyiségű adattal rendelkező virtuális gépek használatával történő áttelepítésre. A részletes lépésekért lásd az [adatimportálót](./import-data.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A teljesítmény teszteléséhez lásd: [teljesítmény-és méretezési tesztelés Azure Cosmos db](./performance-testing.md) cikkel.
 * A kód optimalizálásához tekintse meg [Azure Cosmos db cikk teljesítményével kapcsolatos tippeket](./performance-tips-async-java.md) .

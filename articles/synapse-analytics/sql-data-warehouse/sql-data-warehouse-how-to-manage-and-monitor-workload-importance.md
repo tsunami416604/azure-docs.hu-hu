@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211969"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>A számítási feladatok fontosságának kezelése és figyelése az Azure szinapszis Analyticsben
@@ -24,7 +24,7 @@ Az Azure Szinapszisban az DMV-és katalógus-nézetek segítségével kezelheti 
 
 ## <a name="monitor-importance"></a>Figyelés fontossága
 
-Figyelje meg a fontosságot az új fontosság oszlop használatával a [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamikus felügyeleti nézetében.
+Figyelje meg a fontosságot a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamikus kezelés nézet új fontossági oszlopának használatával.
 Az alábbi figyelési lekérdezés a lekérdezések küldési idejét és kezdési idejét jeleníti meg. Tekintse át a beküldési időt és a kezdési időpontot, és tekintse meg a fontosságot az ütemezés fontosságának meghatározásához
 
 ```sql
@@ -39,7 +39,7 @@ A lekérdezések időzítésének további megkereséséhez használja a kataló
 
 ## <a name="manage-importance-with-catalog-views"></a>Fontosság kezelése a katalógus nézeteivel
 
-A sys. workload_management_workload_classifiers katalógus nézet az osztályozók információit tartalmazza. Ha ki szeretné zárni az erőforrás-osztályokra leképezett rendszer által definiált osztályozók körét, hajtsa végre a következő kódot:
+Az sys.workload_management_workload_classifiers Catalog nézet az osztályozók információit tartalmazza. Ha ki szeretné zárni az erőforrás-osztályokra leképezett rendszer által definiált osztályozók körét, hajtsa végre a következő kódot:
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-A (z) [sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)katalógus nézete az osztályozó létrehozásakor használt paraméterekkel kapcsolatos információkat tartalmaz.  Az alábbi lekérdezés azt mutatja, hogy a ExecReportsClassifier a paraméterben lett létrehozva a ```membername``` ExecutiveReports értékkel:
+A katalógus nézet, [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), az osztályozó létrehozásakor használt paraméterekről tartalmaz információkat.  Az alábbi lekérdezés azt mutatja, hogy a ExecReportsClassifier a paraméterben lett létrehozva a ```membername``` ExecutiveReports értékkel:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value

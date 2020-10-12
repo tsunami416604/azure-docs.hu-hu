@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 2e27c54b6d5a95de92f77e61f5a1e11e1fd53ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416907"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Adatok másolása Magento használatával Azure Data Factory (előzetes verzió)
@@ -56,7 +56,7 @@ A Magento társított szolgáltatás a következő tulajdonságokat támogatja:
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -116,9 +116,9 @@ Az adatok Magento-ból való másolásához állítsa a forrás típusát a más
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MagentoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Customers"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Customers"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

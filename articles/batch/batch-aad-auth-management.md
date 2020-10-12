@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88930213"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
@@ -112,7 +112,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 A hitelesítő adatok megadása után a minta alkalmazás folytathatja a hitelesített kérések kiküldését a Batch Management szolgáltatásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [AccountManagement-minta alkalmazás](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement)futtatásával kapcsolatos további információkért lásd: [Batch-fiókok és kvóták kezelése a .net-hez készült batch Management ügyféloldali kódtár használatával](batch-management-dotnet.md).
 - Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](../active-directory/index.yml).

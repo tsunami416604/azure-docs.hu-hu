@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88586392"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
@@ -67,7 +67,7 @@ Használjon címkéket úgy, hogy a kulcs-érték több verzióját hozza létre
 
 Minden kulcs-érték egyedileg azonosítható a kulcsa és a címkéje, amely lehet `\0` . Egy alkalmazás-konfigurációs tárolót kérdez le a kulcs-értékekhez egy minta megadásával. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs-értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
 
-| Kulcs | Description |
+| Kulcs | Leírás |
 |---|---|
 | `key` nincs megadva vagy `key=*` | Az összes kulcs egyezése |
 | `key=abc` | Pontosan megfelel az **ABC** -kulcs nevének |
@@ -76,7 +76,7 @@ Minden kulcs-érték egyedileg azonosítható a kulcsa és a címkéje, amely le
 
 A következő címke mintákat is tartalmazhatja:
 
-| Címke | Description |
+| Címke | Leírás |
 |---|---|
 | `label` nincs megadva vagy `label=*` | Megfelel bármely címkének, amely tartalmazza a következőket `\0` |
 | `label=%00` | Egyezések `\0` címkéje |
@@ -94,7 +94,7 @@ A kulcsokhoz rendelt értékek szintén Unicode karakterláncok. Az értékekhez
 ### <a name="use-content-type"></a>Tartalom típusának használata
 Az alkalmazás konfigurációjában minden kulcs-érték egy Content-Type attribútummal rendelkezik. Ezt az attribútumot igény szerint tárolhatja egy olyan kulcs-érték típusú értékről, amely segít az alkalmazásnak megfelelően feldolgozni. Bármilyen formátumot használhat a Content-Type típushoz. Az alkalmazás konfigurációja [adathordozó-típusokat]( https://www.iana.org/assignments/media-types/media-types.xhtml) (más néven MIME-típusokat) használ a beépített adattípusokhoz, például a szolgáltatás-jelzők, a Key Vault referenciák és a JSON-kulcsok értékeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adott időpontban készült pillanatképek](./concept-point-time-snapshot.md)
 * [Funkciókezelés](./concept-feature-management.md)

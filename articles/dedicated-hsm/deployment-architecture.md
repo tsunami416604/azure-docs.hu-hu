@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88586605"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Az Azure Dedicated HSM üzembe helyezési architektúrája
@@ -63,7 +63,7 @@ A magas rendelkezésre állás eléréséhez az ügyfélnek két HSM-eszközt ke
 
 A dedikált HSM-eszközök jellemzően olyan alkalmazások támogatásához vannak telepítve, amelyeknek a fő tárterületet és a kulcsfontosságú lekérési műveleteket kell végrehajtaniuk. A dedikált HSM-eszközök 10 partíciót biztosítanak a független alkalmazások támogatásához. Az eszköz helyének a szolgáltatást használó összes alkalmazás átfogó nézetén kell alapulnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az üzembe helyezési architektúra meghatározása után az architektúra megvalósításához szükséges legtöbb konfigurációs tevékenységet a Gemalto fogja biztosítani. Ez magában foglalja az eszközök konfigurálását, valamint az alkalmazás-integrációs forgatókönyveket is. További információkért használja a [Gemalto ügyfélszolgálati](https://supportportal.gemalto.com/csm/) portálját, és töltse le az adminisztrációs és konfigurációs útmutatókat. A Microsoft partner webhelyének számos integrációs útmutatója van.
 Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot, az eszköz kiépítése vagy az alkalmazások tervezése és üzembe helyezése előtt jól megértse.

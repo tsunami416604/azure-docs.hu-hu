@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190154"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1-ben
@@ -222,8 +222,8 @@ A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van �
 
 | umask-összetevő     | Numerikus alak | Rövid alak | Értelmezés |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
-| umask. owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
+| umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
+| umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask. other         |    7         |   `RWX`      | Egyéb esetben távolítsa el az összes engedélyt a gyermek hozzáférési ACL-jéhez |
 
 Az Azure Data Lake Storage Gen1 által használt umask-érték azt jelenti, hogy a többi soha nem kerül be alapértelmezés szerint az új gyermekekre – függetlenül attól, hogy mit jelez az alapértelmezett ACL. 

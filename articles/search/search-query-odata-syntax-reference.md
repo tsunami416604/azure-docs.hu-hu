@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928853"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája
@@ -34,7 +34,7 @@ Ez a cikk a OData kifejezések ezen formáit mutatja be formális nyelvtan haszn
 
 ## <a name="formal-grammar"></a>Formális nyelvtan
 
-Az Azure Cognitive Search által támogatott OData-nyelv részhalmazát az EBNF ([bővített Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával tudjuk leírni. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legbonyolultabb kifejezésekkel, és az összetettebb kifejezéseket lebontva. A tetején az Azure Cognitive Search REST API adott paramétereinek megfelelő nyelvtani szabályok szerepelnek:
+Leírjuk az Azure Cognitive Search által támogatott OData-nyelv részhalmazát egy EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legbonyolultabb kifejezésekkel, és az összetettebb kifejezéseket lebontva. A tetején az Azure Cognitive Search REST API adott paramétereinek megfelelő nyelvtani szabályok szerepelnek:
 
 - [`$filter`](search-query-odata-filter.md), amelyet a szabály határoz meg `filter_expression` .
 - [`$orderby`](search-query-odata-orderby.md), amelyet a szabály határoz meg `order_by_expression` .

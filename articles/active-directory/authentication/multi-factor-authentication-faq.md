@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706268"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication – gyakran ismételt kérdések
@@ -254,7 +254,7 @@ A *0x800434D4L* hiba akkor fordul elő, ha egy helyi számítógépen telepítet
 
 Ennek a hibának a megkerülő megoldás, ha külön felhasználói fiókkal rendelkezik a rendszergazdai és a nem rendszergazdai műveletekhez. Később a rendszergazdai fiók és a nem rendszergazdai fiók között is csatolhat postaládákat, így a nem rendszergazdai fiókkal is bejelentkezhet az Outlookba. A megoldással kapcsolatos további információkért tekintse meg, hogy a [rendszergazda hogyan nyithatja meg és tekintheti meg a felhasználó postaládájának tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a kérdés itt nem válaszol, a következő támogatási lehetőségek érhetők el:
 

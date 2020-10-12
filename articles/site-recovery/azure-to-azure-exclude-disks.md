@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135810"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Lemezek kizárása az Azure-beli virtuális gépek PowerShell-replikálásával
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan zárhat ki lemezeket az Azure-beli virtuális gépek
 Előkészületek:
 
 - Győződjön meg arról, hogy ismeri a vész [-helyreállítási architektúrát és összetevőket](azure-to-azure-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](azure-to-azure-support-matrix.md).
+- Tekintse át az összes összetevő [támogatási követelményeit](azure-to-azure-support-matrix.md) .
 - Győződjön meg arról, hogy az AzureRm PowerShell "az" modulja van. A PowerShell telepítéséhez vagy frissítéséhez tekintse meg [a Azure PowerShell modul telepítését](/powershell/azure/install-az-ps)ismertető témakört.
 - Győződjön meg arról, hogy legalább egyszer létrehozta a Recovery Services-tárolót és a védett virtuális gépeket. Ha még nem tette meg ezeket a dolgokat, kövesse az [Azure-beli virtuális gépek vész-helyreállításának beállítása Azure PowerShell használatával](azure-to-azure-powershell.md)című eljárást.
 - Ha további információt szeretne arról, hogyan adhat hozzá lemezeket egy replikációra alkalmas Azure-beli virtuális géphez, [tekintse át ezt a cikket](azure-to-azure-enable-replication-added-disk.md).
@@ -134,6 +134,6 @@ A replikálási folyamat a helyreállítási régióban található virtuális g
 
 A kezdeti replikálás befejeződése után a replikálás a különbözeti szinkronizálási fázisra lép. Ezen a ponton a virtuális gép védett. A védett virtuális gép kiválasztásával ellenőrizze, hogy a lemezek ki vannak-e zárva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [a feladatátvételi teszt futtatásáról](site-recovery-test-failover-to-azure.md).

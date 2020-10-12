@@ -7,10 +7,10 @@ ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77152992"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
@@ -145,14 +145,14 @@ A helyi git üzembe helyezésének engedélyezése az alkalmazáshoz Azure-folya
 
 A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával tesz közzé egy App Service alkalmazást az Azure-ban:
 
-|Üzenet|Ok|Megoldás:
+|Üzenet|Ok|Feloldás
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Az alkalmazás nem működik.|Indítsa el az alkalmazást a Azure Portal. A git-telepítés nem érhető el a webalkalmazás leállításakor.|
 |`Couldn't resolve host 'hostname'`|Az "Azure" távoli adatcímeinek adatai helytelenek.|A `git remote -v` parancs használatával listázhatja az összes távoli, valamint a hozzá tartozó URL-címet. Győződjön meg arról, hogy az "Azure" távoli URL-címe helyes. Ha szükséges, távolítsa el, majd hozza létre újra a távoli elérést a megfelelő URL-cím használatával.|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nem adott meg ágat a alatt `git push` , vagy nem állította be a `push.default` értéket `.gitconfig` .|Futtassa `git push` újra a főág megadását: `git push azure master` .|
 |`src refspec [branchname] does not match any.`|A főkiszolgálón kívül más ágat próbált meg elküldeni az "Azure" távoli gépen.|Futtassa `git push` újra a főág megadását: `git push azure master` .|
-|`RPC failed; result=22, HTTP code = 5xx.`|Ez a hiba akkor fordulhat elő, ha egy nagyméretű git-tárházat próbál leküldeni HTTPS-kapcsolaton keresztül.|Módosítsa a git-konfigurációt a helyi gépen, hogy minél `postBuffer` nagyobb legyen. Példa: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Egy Node.js alkalmazást telepített egy _package.jsa_ fájlon, amely további szükséges modulokat határoz meg.|A hiba előtt tekintse át a hibaüzeneteket `npm ERR!` , hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó üzenetek a következők `npm ERR!` :<br /><br />**Helytelenül formázott package.jsa következő fájlon**:`npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />vagy <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`RPC failed; result=22, HTTP code = 5xx.`|Ez a hiba akkor fordulhat elő, ha egy nagyméretű git-tárházat próbál leküldeni HTTPS-kapcsolaton keresztül.|Módosítsa a git-konfigurációt a helyi gépen, hogy minél `postBuffer` nagyobb legyen. Például: `git config --global http.postBuffer 524288000`.|
+|`Error - Changes committed to remote repository but your web app not updated.`|Egy Node.js alkalmazást telepített egy _package.jsa_ fájlon, amely további szükséges modulokat határoz meg.|A hiba előtt tekintse át a hibaüzeneteket `npm ERR!` , hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó üzenetek a következők `npm ERR!` :<br /><br />**Helytelenül formázott package.jsa következő fájlon**: `npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />vagy <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>További források
 

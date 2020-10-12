@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan kezelheti Azure Resource Manager műveletekhez 
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75485259"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Managerhoz társított személyes adatai kezelése
@@ -30,7 +30,7 @@ Az előzményekben lévő **központi telepítések** listázásához használja
 
 Az előzményekből való **központi telepítés** törléséhez használja a következőt:
 
-* [Szabályzat](/rest/api/resources/deployments/delete)
+* [Törlés](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [az az Group Deployment delete](/cli/azure/group/deployment#az-group-deployment-delete)
 
@@ -46,7 +46,7 @@ Az **erőforráscsoportok**listázásához használja a következőt:
 
 Az **erőforráscsoportok**törléséhez használja a következőt:
 
-* [Szabályzat](/rest/api/resources/resourcegroups/delete)
+* [Törlés](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
@@ -62,7 +62,7 @@ A címkék nevei és értékei mindaddig megmaradnak, amíg nem törli vagy nem 
 
 **Címkék**törléséhez használja a következőt:
 
-* [Szabályzat](/rest/api/resources/tags/delete)
+* [Törlés](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [az tag delete](/cli/azure/tag#az-tag-delete)
 

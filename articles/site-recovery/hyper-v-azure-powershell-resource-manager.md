@@ -7,13 +7,13 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132516"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával
+# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Hyper-V virtuális gépek Azure-ba történő vészhelyreállításának beállítása a PowerShell és az Azure Resource Manager használatával
 
 A [Azure site Recovery](site-recovery-overview.md) az Azure Virtual Machines (VM) és a helyszíni virtuális gépek és a fizikai kiszolgálók replikálásának, feladatátvételének és helyreállításának összehangolása révén járul hozzá az üzletmenet-folytonossági és vész-helyreállítási (BCDR) stratégiához.
 
@@ -46,7 +46,7 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
 
 1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókba való bejelentkezéshez. A parancsmag egy weboldalt hoz létre, amely a fiók hitelesítő adatait kéri: `Connect-AzAccount` .
    - Másik lehetőségként a fiók hitelesítő adatait a parancsmag paraméterként is megadhatja a `Connect-AzAccount` **hitelesítőadat** -paraméter használatával.
-   - Ha Ön egy bérlő nevében dolgozó CSP-partner, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Például:`Connect-AzAccount -Tenant "fabrikam.com"`
+   - Ha Ön egy bérlő nevében dolgozó CSP-partner, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Például: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Társítsa a fiókhoz használni kívánt előfizetést, mivel egy fiók több előfizetéssel is rendelkezhet:
 
    ```azurepowershell
@@ -130,7 +130,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 Ha a Hyper-V Core-kiszolgálót futtatja, töltse le a telepítőfájlt, és kövesse az alábbi lépéseket:
 
-1. A következő parancs futtatásával bontsa ki a fájlokat a _AzureSiteRecoveryProvider.exeból_ egy helyi könyvtárba:
+1. A következő parancs futtatásával bontsa ki a fájlokat a _AzureSiteRecoveryProvider.exeból _ egy helyi könyvtárba:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -263,6 +263,6 @@ A Kezdés előtt a megadott Storage-fióknak ugyanabban az Azure-régióban kell
    $TFjob = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](/powershell/module/az.recoveryservices) információ a Azure site Recovery Azure Resource Manager PowerShell-parancsmagokkal.

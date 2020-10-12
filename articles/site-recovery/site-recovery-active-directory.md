@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132326"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vész-helyreállítás beállítása a Active Directory és a DNS-hez
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre vész-helyreállítási megoldá
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha az Azure-ba replikálódik, [készítse elő az Azure-erőforrásokat](tutorial-prepare-azure.md), például egy előfizetést, egy Azure-Virtual Network, egy Storage-fiókot és egy Recovery Services-tárolót.
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](./vmware-physical-azure-support-matrix.md).
+- Tekintse át az összes összetevő [támogatási követelményeit](./vmware-physical-azure-support-matrix.md) .
 
 ## <a name="replicate-the-domain-controller"></a>A tartományvezérlő replikálása
 
@@ -79,7 +79,7 @@ A legtöbb alkalmazáshoz tartományvezérlő vagy DNS-kiszolgáló jelenléte s
 1. Hozzon létre egy elkülönített hálózatot. Az Azure-ban létrehozott bármely virtuális hálózat alapértelmezés szerint el van különítve más hálózatokból. Azt javasoljuk, hogy használja ugyanazt az IP-címtartományt ehhez a hálózathoz, amelyet az üzemi hálózatában használ. Ne engedélyezze a helyek közötti kapcsolatot ezen a hálózaton.
 1. Adjon meg egy DNS IP-címet az elkülönített hálózatban. Használja azt az IP-címet, amelyre a DNS-virtuális gép beolvasása várható. Ha az Azure-ba végzi a replikálást, adja meg a feladatátvételhez használt virtuális gép IP-címét. Az IP-cím megadásához a replikált virtuális gép **számítási és hálózati** beállításainál válassza ki a **cél IP-** beállításokat.
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure test Network":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure-hálózat":::
 
    > [!TIP]
    > Site Recovery a virtuális gép **számítási és hálózati** beállításaiban megadott IP-cím használatával megkísérli létrehozni a teszt virtuális gépeket egy azonos nevű alhálózatban. Ha az azonos nevű alhálózat nem érhető el a feladatátvételi teszthez megadott Azure-beli virtuális hálózaton, a teszt virtuális gép a betűrendbe szedett első alhálózatban jön létre.
@@ -118,21 +118,21 @@ Ha a virtualizálási garanciákat egy feladatátvételi teszt után indítja el
 
 - A **GenerationID** értéke megváltozik:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Létrehozás-azonosító módosítása":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure-hálózat":::
 
 - A **InvocationID** értéke megváltozik:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Meghívási azonosító változása":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure-hálózat":::
 
-- `SYSVOL`a mappa és a `NETLOGON` megosztások nem érhetők el.
+- `SYSVOL` a mappa és a `NETLOGON` megosztások nem érhetők el.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL mappa megosztása":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure-hálózat":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL mappa":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure-hálózat":::
 
 - A rendszer törli a DFSR-adatbázisokat.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR-adatbázisok törölve":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure-hálózat":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Tartományvezérlői hibák elhárítása a feladatátvételi teszt során
 
@@ -206,6 +206,6 @@ Ha a DNS nem ugyanazon a virtuális gépen található, mint a tartományvezérl
    dnscmd /config contoso.com /allowupdate 1
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](site-recovery-workload.md) információ a vállalati munkaterhelések Azure site Recoverysal való védelméről.

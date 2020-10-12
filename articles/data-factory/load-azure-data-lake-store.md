@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415853"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Betöltés az Azure Data Lake Storage Gen1ba Azure Data Factory használatával
@@ -44,7 +44,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 * Data Lake Storage Gen1 fiók: Ha nem rendelkezik Data Lake Storage Gen1-fiókkal, tekintse meg a [Data Lake Storage Gen1 fiók létrehozása](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)című témakör utasításait.
 * Amazon S3: Ez a cikk bemutatja, hogyan másolhat adatok az Amazon S3-ból. A hasonló lépéseket követve más adattárakat is használhat.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
    
@@ -57,10 +57,10 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
     * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a \" LoadADLSG1Demo nem érhető el" hibaüzenet jelenik \" meg, adjon meg egy másik nevet az adatelőállító számára. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
     * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: válassza a **v2**elemet.
+    * **Verzió**: Válassza a **V2** lehetőséget.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Storage Gen1, Azure Storage, Azure SQL Database stb.
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható: 
    
    ![Data factory kezdőlap](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -86,11 +86,11 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 4. Az **Amazon S3-kapcsolatok meghatározása** oldalon hajtsa végre a következő lépéseket: 
    1. Itt adhatja meg a **hozzáférési kulcs azonosítójának** értékét.
    2. A **titkos hozzáférési kulcs** értékének megadása.
-   3. Válassza a **Befejezés** gombot.
+   3. Válassza a **Befejezés** lehetőséget.
    
       ![Amazon S3-fiók meghatározása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Ekkor megjelenik egy új-kapcsolatok. Válassza a **Tovább** lehetőséget.
+   4. Ekkor megjelenik egy új-kapcsolatok. Kattintson a **Tovább** gombra.
    
    ![Amazon S3-fiók meghatározása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -110,7 +110,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
    1. Válassza ki Data Lake Storage Gen1 fiókját a **Data Lake Store-fiók nevéhez**.
    2. Adja meg a **bérlőt**, és válassza a Befejezés lehetőséget.
-   3. Válassza a **Tovább** lehetőséget.
+   3. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
    > Ebben az útmutatóban egy felügyelt identitást használ az Azure-erőforrásokhoz az Data Lake Storage Gen1-fiók hitelesítéséhez. Ügyeljen arra, hogy az MSI-t a megfelelő engedélyekkel adja meg Data Lake Storage Gen1 az alábbi [utasításokat](connector-azure-data-lake-store.md#managed-identity)követve.

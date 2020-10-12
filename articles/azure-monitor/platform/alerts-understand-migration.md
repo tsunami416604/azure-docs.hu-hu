@@ -7,10 +7,10 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852395"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Az új riasztások áttelepítési lehetőségeinek megismerése
@@ -171,16 +171,16 @@ Application Insights esetén az egyenértékű mérőszámok az alábbiak szerin
 | clientPerformance. receiveRequest. Value | browserTimings/receiveDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | clientPerformance. SendRequest hívás. Value | browserTimings/sendDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | clientPerformance. Total. Value | browserTimings/totalDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| performanceCounter. available_bytes. Value | performanceCounters/memoryAvailableBytes|   |
-| performanceCounter. io_data_bytes_per_sec. Value | performanceCounters/processIOBytesPerSecond|   |
-| performanceCounter. number_of_exceps_thrown_per_sec. Value | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter. percentage_processor_time_normalized. Value | performanceCounters/processCpuPercentage|   |
-| performanceCounter. percentage_processor_time. Value | performanceCounters/processCpuPercentage| A küszöbértéket megfelelő módon módosítani kell, mivel az eredeti metrika az összes mag esetében módosult, és az új metrika egy mag szerint van normalizálva. Az áttelepítési eszköz nem változtatja meg a küszöbértékeket.  |
-| performanceCounter. percentage_processor_total. Value | performanceCounters/processorCpuPercentage|   |
-| performanceCounter. process_private_bytes. Value | performanceCounters/processPrivateBytes|   |
-| performanceCounter. request_execution_time. Value | performanceCounters/requestExecutionTime|   |
-| performanceCounter. requests_in_application_queue. Value | performanceCounters/requestsInQueue|   |
-| performanceCounter. requests_per_sec. Value | performanceCounters/requestsPerSecond|   |
+| performanceCounter.available_bytes. Value | performanceCounters/memoryAvailableBytes|   |
+| performanceCounter.io_data_bytes_per_sec. Value | performanceCounters/processIOBytesPerSecond|   |
+| performanceCounter.number_of_exceps_thrown_per_sec. Value | performanceCounters/exceptionsPerSecond|   |
+| performanceCounter.percentage_processor_time_normalized. Value | performanceCounters/processCpuPercentage|   |
+| performanceCounter.percentage_processor_time. Value | performanceCounters/processCpuPercentage| A küszöbértéket megfelelő módon módosítani kell, mivel az eredeti metrika az összes mag esetében módosult, és az új metrika egy mag szerint van normalizálva. Az áttelepítési eszköz nem változtatja meg a küszöbértékeket.  |
+| performanceCounter.percentage_processor_total. Value | performanceCounters/processorCpuPercentage|   |
+| performanceCounter.process_private_bytes. Value | performanceCounters/processPrivateBytes|   |
+| performanceCounter.request_execution_time. Value | performanceCounters/requestExecutionTime|   |
+| performanceCounter.requests_in_application_queue. Value | performanceCounters/requestsInQueue|   |
+| performanceCounter.requests_per_sec. Value | performanceCounters/requestsPerSecond|   |
 | kérelem. időtartam | kérelmek/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | kérelem. arány | kérelmek/díjszabás|   |
 | requestFailed. Count | kérelmek/sikertelen| `aggregationType`A "Sum" helyett használja a "Count" értéket.   |

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524743"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>A Azure Maps rajzolási hiba láthatóvá tesző használata
@@ -54,7 +54,7 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 4. Töltse le a rajzolási csomag hibájának láthatóvá tételét `HTTP-GET` az URL-címre vonatkozó kérelem elküldésével `diagnosticPackageLocation` .
 
-## <a name="setup"></a>Előkészületek
+## <a name="setup"></a>Telepítés
 
 A hivatkozáson belül a letöltött tömörített csomagban `diagnosticPackageLocation` két fájl található.
 
@@ -80,15 +80,15 @@ Miután elindította a rajzolási hiba megjelenítő eszközét, megjelenik a fe
 
 :::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Rajzolási hiba-megjelenítő alkalmazás – Kezdőlap":::
 
-A fájl _ConversionWarningsAndErrors.js_ a letöltött könyvtár gyökeréhez lett helyezve. A _ConversionWarningsAndErrors.jsa_ betöltéséhez húzza & dobja a fájlt a mezőbe, vagy kattintson a mezőre, keresse meg a fájlt a Fájlkezelőben, majd töltse fel a fájlt.
+A fájl  _ConversionWarningsAndErrors.js_ a letöltött könyvtár gyökeréhez lett helyezve. A _ConversionWarningsAndErrors.jsa_ betöltéséhez húzza & dobja a fájlt a mezőbe, vagy kattintson a mezőre, keresse meg a fájlt a Fájlkezelőben, majd töltse fel a fájlt.
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Rajzolási hiba megjeleníthető alkalmazás – húzással betöltheti az adatterhelést":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Rajzolási hiba-megjelenítő alkalmazás – Kezdőlap":::
 
 Ha a fájl _ConversionWarningsAndErrors.js_ betöltődik, megjelenik a rajzolási csomagok hibái és figyelmeztetései listája. Az egyes hibákat vagy figyelmeztetéseket a réteg, a szint és a részletes üzenet határozza meg. A hiba vagy figyelmeztetés részletes adatainak megtekintéséhez kattintson a **részletek** hivatkozásra. Egy megoldhatatlan szakasz jelenik meg a lista alatt. Mostantól megtekintheti az egyes hibákat, és további információkat tudhat meg a hiba megoldásával kapcsolatban.
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Rajzolási hiba – az alkalmazás – hibák és figyelmeztetések":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Rajzolási hiba-megjelenítő alkalmazás – Kezdőlap":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a [rajzfájl megfelel a követelményeknek](drawing-requirements.md), a [Azure Maps adatkészlet szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a rajzi csomagot egy adatkészletbe. Ezután használhatja a beltéri térképek webes modult az alkalmazás fejlesztéséhez. További információért olvassa el a következő cikkeket:
 

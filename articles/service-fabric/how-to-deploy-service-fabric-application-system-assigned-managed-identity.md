@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan rendelhet hozzá egy rendszerhez rendel
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415653"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Service Fabric alkalmazás központi telepítése rendszer által hozzárendelt felügyelt identitással
@@ -88,7 +88,7 @@ Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt ide
     ```
     Ez egy, a fentiekben leírtak szerint a szolgáltatás azonosságának megfelelő leképezése, de a szolgáltatás definíciójának szemszögéből. Az identitást itt `WebAdmin` tekintheti meg az alkalmazás jegyzékfájljában deklarált rövid névvel ().
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Felügyelt identitások támogatásának](./concepts-managed-identity.md) áttekintése az Azure Service Fabric
 * [Új telepítése](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-fürt felügyelt identitások támogatásával 
 * [Felügyelt identitás engedélyezése](./configure-existing-cluster-enable-managed-identity-token-service.md) meglévő Azure Service Fabric-fürtben

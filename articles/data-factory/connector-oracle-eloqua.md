@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416854"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Adatok másolása Oracle-Eloqua Azure Data Factory használatával (előzetes verzió)
@@ -51,13 +51,13 @@ Az Oracle Eloqua társított szolgáltatás a következő tulajdonságokat támo
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **Eloqua** | Igen |
 | endpoint | A Eloqua-kiszolgáló végpontja. A Eloqua több adatközpontot is támogat, a végpont meghatározásához jelentkezzen be a https://login.eloqua.com hitelesítő adataival, majd másolja az **alapszintű URL-** címet az ÁTIRÁNYÍTott URL-ből a mintázatával `xxx.xxx.eloqua.com` . | Igen |
-| felhasználónév | A Eloqua-fiókhoz tartozó hely neve és felhasználóneve a (z) formában: `SiteName\Username` például `Eloqua\Alice` .  | Igen |
+| username | A Eloqua-fiókhoz tartozó hely neve és felhasználóneve a (z) formában: `SiteName\Username` például `Eloqua\Alice` .  | Igen |
 | jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -115,9 +115,9 @@ Az adatok Oracle-Eloqua való másolásához állítsa a forrás típusát a má
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **EloquaSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

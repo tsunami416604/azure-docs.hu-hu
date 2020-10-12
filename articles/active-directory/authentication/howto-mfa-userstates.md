@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 1b1ff8a54037392ac01402056ada0f3040dbd123
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068932"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Az Azure Multi-Factor Authentication felhasználónkénti engedélyezése a bejelentkezési események biztonságossá tételéhez

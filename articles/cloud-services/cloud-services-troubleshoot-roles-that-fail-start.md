@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460116"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Nem indítható Cloud Service-szerepkörök – problémamegoldás
@@ -77,7 +77,7 @@ A webhelyre való navigálás ekkor több explicit hibaüzenetet ad vissza:
 * Leírás: kezeletlen kivétel történt az aktuális webes kérelem végrehajtása során. A hibával kapcsolatos további információkért tekintse át a verem nyomkövetését, és hogy honnan származik a kód.
 * Kivétel részletei: System. IO. FIleNotFoundException: nem tölthető be a következő fájl vagy szerelvény: "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = semleges, PublicKeyToken = 31bf856ad364e35" vagy annak valamelyik függősége. A megadott fájl nem található.
 
-Például:
+Példa:
 
 ![Explicit Kiszolgálóhiba a következő alkalmazásban: "/".](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 

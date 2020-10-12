@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461374"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrás-osztályok átalakítása munkaterhelés-csoportokra
@@ -27,7 +27,7 @@ A munkaterhelés-csoportok olyan mechanizmust biztosítanak, amely elkülöníti
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>A meglévő erőforrás-osztály konfigurációjának ismertetése
 
-A munkaterhelési csoportokhoz a (z) nevű paramétert kell `REQUEST_MIN_RESOURCE_GRANT_PERCENT` megadni, amely meghatározza, hogy a rendszer hány összesített rendszererőforrást igényel.  Az erőforrás-hozzárendelés erőforrás- [osztályok](resource-classes-for-workload-management.md#what-are-resource-classes) számára a párhuzamossági bővítőhelyek kiosztásával történik.  A következőhöz használandó érték meghatározásához `REQUEST_MIN_RESOURCE_GRANT_PERCENT` használja a sys. dm_workload_management_workload_groups_stats DMV-t <link tbd> .  Az alábbi lekérdezési lekérdezés például egy értéket ad vissza, amely a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` paraméterhez használható a staticrc40-hoz hasonló munkaterhelési csoport létrehozásához.
+A munkaterhelési csoportokhoz a (z) nevű paramétert kell `REQUEST_MIN_RESOURCE_GRANT_PERCENT` megadni, amely meghatározza, hogy a rendszer hány összesített rendszererőforrást igényel.  Az erőforrás-hozzárendelés erőforrás- [osztályok](resource-classes-for-workload-management.md#what-are-resource-classes) számára a párhuzamossági bővítőhelyek kiosztásával történik.  A számára megadni kívánt érték meghatározásához `REQUEST_MIN_RESOURCE_GRANT_PERCENT` használja a sys.dm_workload_management_workload_groups_stats <link tbd> DMV-t.  Az alábbi lekérdezési lekérdezés például egy értéket ad vissza, amely a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` paraméterhez használható a staticrc40-hoz hasonló munkaterhelési csoport létrehozásához.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent

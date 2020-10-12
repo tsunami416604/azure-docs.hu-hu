@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
 ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462377"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
@@ -57,7 +57,7 @@ ms.locfileid: "89462377"
     | `fr-CA` | Sylvie |
     | `fr-FR` | Denise |
     | `ja-JP` | Nanami |
-    | `ko-KR` | Sun – Hi |
+    | `ko-KR` | Sun-Hi |
 
 ### <a name="bug-fixes"></a>Hibajavítások
 
@@ -177,7 +177,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
+    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
@@ -293,7 +293,7 @@ Egészségesek maradjanak!
  - A DialogServiceConnector mostantól támogatja az opcionális "bot ID" paramétert a BotFrameworkConfig. Ez a paraméter lehetővé teszi, hogy egyetlen Azure Speech-erőforrással több közvetlen vonalas beszédfelismerési robotot használjon. A megadott paraméter nélkül a rendszer a következő alapértelmezett robotot használja: (a Direct line Speech Channel konfigurációs lapja határozza meg).
  - A DialogServiceConnector most már rendelkezik egy SpeechActivityTemplate tulajdonsággal. A JSON-karakterlánc tartalmát a közvetlen vonalas beszéd fogja használni, hogy előre töltse fel a támogatott mezők széles körét az összes olyan tevékenységben, amelyek a közvetlen sortörési robothoz jutnak, beleértve a beszédfelismerésre adott eseményekre adott válaszként automatikusan generált tevékenységeket is.
  - A TTS mostantól előfizetési kulcsot használ a hitelesítéshez, így csökkentve az első szintézis eredményének első bájtos késését a szintetizátor létrehozása után.
- - Frissített beszédfelismerési modellek 19 területi beállításhoz az átlagos Word-hibák 18,6%-os csökkenéséhez (es-ES, es-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, PT-BR, zh-CN, ZH-HK, NB-NO, fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, PT-PT, TR-TR). Az új modellek jelentős mértékben javítják a különböző tartományokat, beleértve a diktálást, a Call-Center átírást és a videó indexelési forgatókönyveit.
+ - Frissített beszédfelismerési modellek 19 területi beállításhoz az átlagos Word-hibák 18,6%-os csökkenéséhez (es-ES, es-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, PT-BR, zh-CN, ZH-HK, NB-NO, fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, PT-PT, TR-TR). Az új modellek jelentős mértékben javítják a különböző tartományokat, beleértve a diktálást, az átírási és a videó-indexelési forgatókönyvek Call-Center.
 
 **Hibajavítások**
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88926830"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
@@ -32,7 +32,7 @@ ms.locfileid: "88926830"
 
 ## <a name="syntax"></a>Syntax
 
-A **$OrderBy** paraméter legfeljebb 32 **ORDER-BY záradék**vesszővel tagolt listáját fogadja el. Az ORDER-BY záradék szintaxisát a következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) írja le:
+A **$OrderBy** paraméter legfeljebb 32 **ORDER-BY záradék**vesszővel tagolt listáját fogadja el. Az ORDER-BY záradék szintaxisát a következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) írja le:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -88,7 +88,7 @@ A szállodákat csökkenő sorrendbe rendezheti kereséssel. pontszám és ért�
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

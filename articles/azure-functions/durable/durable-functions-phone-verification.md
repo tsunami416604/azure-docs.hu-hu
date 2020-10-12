@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80335747"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi interakció Durable Functions – telefonos ellenőrzési minta
@@ -19,7 +19,7 @@ Ez a példa egy SMS-alapú telefonos ellenőrzési rendszert valósít meg. Az i
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
 A telefonos ellenőrzés segítségével ellenőrizheti, hogy az alkalmazás végfelhasználói nem levélszemétek-e, és hogy kik azok, akik azt mondják. A többtényezős hitelesítés gyakori használati eset a felhasználói fiókok támadók általi védelméhez. A saját telefonos ellenőrzés megvalósításának kihívása az, hogy a rendszer **állapot-nyilvántartó interakciót** igényel egy emberi lényrel. A végfelhasználók általában bizonyos kódokat (például egy 4 számjegyű számot) adnak meg, és **ésszerű**időn belül válaszolni kell rájuk.
 

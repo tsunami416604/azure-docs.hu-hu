@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189727"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás-környezet beállítása a VMware – Azure replikáláshoz
@@ -33,7 +33,7 @@ A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
 3. A **védelmi cél**  >  ,**ahol a gépek találhatók**, válassza **a**helyszíni lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
-5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ez után válassza az **OK** gombot.
+5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ezután válassza az **OK** gombot.
 
 ## <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526435"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Gyakori hibák az Azure soros konzolon belül
@@ -34,7 +34,7 @@ Hiba                             |   Kockázatcsökkentés
 A virtuális gép rendszerindítási diagnosztikai tárolási fiókjához való hozzáférés "tiltott" választ észlelt. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nem rendelkezik fiók-tűzfallal. A soros konzol működéséhez elérhető rendszerindítási diagnosztikai Storage-fiók szükséges. A Serial console by design nem tud működni a rendszerindítási diagnosztika Storage-fiókjában engedélyezve lévő Storage-fiók tűzfalakkal.
 Nem rendelkezik a virtuális gép soros konzollal való használatához szükséges engedélyekkel. Győződjön meg arról, hogy legalább a virtuális gép közreműködői szerepkörének engedélyei vannak.| A soros konzolhoz való hozzáféréshez a virtuális gép vagy a virtuálisgép-méretezési csoport közreműködői szintű hozzáférésének vagy újabb verziójának kell lennie. További információkért tekintse meg az [Áttekintés oldalt](serial-console-overview.md).
 Nem található a virtuális gépen a rendszerindítási diagnosztika használatára szolgáló "" Storage-fiók. Ellenőrizze, hogy engedélyezve van-e a rendszerindítási diagnosztika a virtuális gépen, ez a Storage-fiók nem lett törölve, és hozzáfér-e ehhez a Storage-fiókhoz. | Ellenőrizze, hogy nem törölte-e a virtuális gép vagy virtuálisgép-méretezési csoport rendszerindítási diagnosztikai fiókját
-A soros konzol a virtuális géphez való kapcsolata hibát észlelt: "hibás kérelem" (400) | Ez akkor fordulhat elő, ha a rendszerindítási diagnosztikai URI-ja helytelen. A "https://" helyett például "http://" volt használatban. A rendszerindítási diagnosztikai URI-t a következő paranccsal lehet megjavítani:`az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
+A soros konzol a virtuális géphez való kapcsolata hibát észlelt: "hibás kérelem" (400) | Ez akkor fordulhat elő, ha a rendszerindítási diagnosztikai URI-ja helytelen. A "https://" helyett például "http://" volt használatban. A rendszerindítási diagnosztikai URI-t a következő paranccsal lehet megjavítani: `az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 Nem rendelkezik a virtuális gép rendszerindítási diagnosztikai tárolási fiókjába való íráshoz szükséges engedélyekkel. Győződjön meg arról, hogy legalább a virtuális gép közreműködői engedélyekkel rendelkezik | Serial console hozzáféréshez közreműködői szintű hozzáférés szükséges a rendszerindítási diagnosztika Storage-fiókhoz. További információkért tekintse meg az [Áttekintés oldalt](serial-console-overview.md).
 Nem határozható meg a rendszerindítási diagnosztikai fiók * &lt; STORAGEACCOUNTNAME &gt; *tartozó erőforráscsoport. Ellenőrizze, hogy engedélyezve van-e a rendszerindítási diagnosztika ehhez a virtuális géphez, és hozzáfér-e ehhez a Storage-fiókhoz. | Serial console hozzáféréshez közreműködői szintű hozzáférés szükséges a rendszerindítási diagnosztika Storage-fiókhoz. További információkért tekintse meg az [Áttekintés oldalt](serial-console-overview.md).
 A virtuális gép üzembe helyezése még nem sikerült. Győződjön meg arról, hogy a virtuális gép teljesen telepítve van, majd próbálja megismételni a soros konzol kapcsolatát. | Lehetséges, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport továbbra is kiépíthető. Várjon egy kis időt, és próbálkozzon újra.
@@ -42,6 +42,6 @@ A webes szoftvercsatorna be van zárva, vagy nem nyitható meg. | Előfordulhat,
 A Serial console a Azure Data Lake Storage Gen2 hierarchikus névtereket használó Storage-fiókkal nem működik. | Ez egy ismert probléma a hierarchikus névterek esetében. A megoldáshoz győződjön meg arról, hogy a virtuális gép rendszerindítási diagnosztikai tárolási fiókja nem Azure Data Lake Storage Gen2 használatával jön létre. Ez a beállítás csak a Storage-fiók létrehozásakor állítható be. Előfordulhat, hogy létre kell hoznia egy különálló rendszerindítási diagnosztikai Storage-fiókot anélkül, hogy Azure Data Lake Storage Gen2 engedélyezve lenne a probléma enyhítése érdekében.
 A soros konzol kapcsolata a virtuális géppel hibát észlelt: "tiltott" (SubscriptionNotEnabled) – az előfizetés nem definiált neve, az azonosító \<subscription id> nem engedélyezett állapotú, nincs definiálva | Ez a probléma akkor fordulhat elő, ha az előfizetés, amellyel a felhasználó létrehozta Cloud Shell Storage-fiókját, le van tiltva. A megoldás elindításához indítsa el Cloud Shell, és [hajtsa végre a szükséges lépéseket](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1) ahhoz, hogy a jelenlegi előfizetésben Cloud Shell a biztonsági mentést végző fiók újralétesítéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [Linux rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-linux.md)
 * További információ a [Windows rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-windows.md)

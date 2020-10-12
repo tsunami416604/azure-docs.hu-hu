@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: a29d36c5ba6fdd51de27afa3ab4dfe1258332200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85208416"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>Forgatókönyv: RpcTimeoutException for Apache Spark takarékossági kiszolgáló az Azure HDInsight
@@ -27,7 +27,7 @@ org.apache.spark.rpc.RpcTimeoutException: Futures timed out after [120 seconds].
  at org.apache.spark.rpc.RpcTimeout.org$apache$spark$rpc$RpcTimeout$$createRpcTimeoutException(RpcTimeout.scala:48)
 ```
 
-`OutOfMemoryError`és a `overhead limit exceeded` hibák a következő példában is szerepelhetnek `sparkthriftdriver.log` :
+`OutOfMemoryError` és a `overhead limit exceeded` hibák a következő példában is szerepelhetnek `sparkthriftdriver.log` :
 
 ```
 WARN  [rpc-server-3-4] server.TransportChannelHandler: Exception in connection from /10.0.0.17:53218
@@ -38,7 +38,7 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 Ezeket a hibákat az adatfeldolgozás során rendelkezésre álló memória-erőforrások hiánya okozza. Ha a Java-adatgyűjtési folyamat elindul, előfordulhat, hogy a Spark-alkalmazás nem válaszol. A lekérdezések megkezdik az időkorlátot, és leállítják a feldolgozást. A `Futures timed out` hiba súlyos terhelés alatt álló fürtöt jelez.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 Növelje a fürt méretét több munkavégző csomópont hozzáadásával vagy a meglévő fürtcsomópontok memória-kapacitásának növelésével. Az adatfolyamatot úgy is beállíthatja, hogy csökkentse a egyszerre feldolgozott adatmennyiséget.
 

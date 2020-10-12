@@ -8,10 +8,10 @@ ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 5c1e6f3f6c4ee0abe1a25d5a9182f6e4e1a9d0f4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929227"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
@@ -53,7 +53,7 @@ A Application Insights SDK-k mellett Application Insights is támogatja az elosz
 
 A OpenCensus webhely a [Python](https://opencensus.io/api/python/trace/usage.html) és a [Go](https://godoc.org/go.opencensus.io)API-referenciájának dokumentációját, valamint a OpenCensus használatának különböző útmutatóit tartalmazza. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [OpenCensus Python használati útmutató](https://opencensus.io/api/python/trace/usage.html)
 * [Alkalmazás-hozzárendelés](./app-map.md)

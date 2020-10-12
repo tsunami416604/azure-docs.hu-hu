@@ -12,10 +12,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030310"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
@@ -32,7 +32,7 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, ahol az engedélyezési
 
 Ez a táblázat a Microsoft Identity platformon az alkalmazások regisztrálásához felvehető átirányítási URI-k maximális számát jeleníti meg.
 
-| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Description |
+| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
 |--------------------------|---------------------------------|-------------|
 | Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience` az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
 | Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |

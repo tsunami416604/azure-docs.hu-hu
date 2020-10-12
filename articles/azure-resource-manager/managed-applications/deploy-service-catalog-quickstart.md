@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81391713"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Gyors útmutató: Service Catalog-alkalmazás üzembe helyezése Azure Portal
@@ -28,15 +28,15 @@ A Azure Portal hajtsa végre a következő lépéseket:
 
    ![Service Catalog-alkalmazás keresése](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. Ekkor megjelenik a felügyelt alkalmazás szolgáltatás leírása. Válassza a **Létrehozás** lehetőséget.
+1. Ekkor megjelenik a felügyelt alkalmazás szolgáltatás leírása. Kattintson a **Létrehozás** gombra.
 
    ![Kattintás a Létrehozás gombra](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. A portálon a felügyelt alkalmazás-definíciók láthatók, amelyekhez hozzáférése van. Az elérhető definíciók közül válassza ki azt, amelyet telepíteni kíván. Ebben a rövid útmutatóban az előző rövid útmutatóban létrehozott **felügyelt Storage-fiók** definícióját használja. Válassza a **Létrehozás** lehetőséget.
+1. A portálon a felügyelt alkalmazás-definíciók láthatók, amelyekhez hozzáférése van. Az elérhető definíciók közül válassza ki azt, amelyet telepíteni kíván. Ebben a rövid útmutatóban az előző rövid útmutatóban létrehozott **felügyelt Storage-fiók** definícióját használja. Kattintson a **Létrehozás** gombra.
 
    ![Telepítendő definíció kiválasztása](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. Adja meg az **alapok** lap értékeit. Válassza ki azt az Azure-előfizetést, amelybe telepíteni szeretné a Service Catalog alkalmazást a alkalmazásban. Hozzon létre egy **alkalmazáscsoport**nevű új erőforráscsoportot. Válassza ki az alkalmazás helyét. Ha elkészült, kattintson **az OK gombra**.
+1. Adja meg az **alapok** lap értékeit. Válassza ki azt az Azure-előfizetést, amelybe telepíteni kívánja a Service Catalog alkalmazást. Hozzon létre egy **alkalmazáscsoport**nevű új erőforráscsoportot. Válassza ki az alkalmazás helyét. Ha elkészült, kattintson **az OK gombra**.
 
    ![Alapszintű értékek megadása](./media/deploy-service-catalog-quickstart/provide-basics.png)
 

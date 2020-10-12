@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337942"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -108,7 +108,7 @@ A MXChip IoT fejlesztői készlet csatlakozik a számítógéphez:
 > [!NOTE]
 > A Azure Portal: IoT hub- \> IoT Devices- \> *\<your device\>*  - \> Device Twin-eszközökön láthatók a Twin eszközök nyers adatkészletei.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtanulta a következőket:
 - Csatlakoztasson egy MXChip-IoT fejlesztői készlet-eszközt az Azure IoT távoli figyelési megoldásának gyorsító eszközéhez.

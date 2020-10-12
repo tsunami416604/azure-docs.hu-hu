@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588194"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
@@ -178,7 +178,7 @@ Az 3,0-es verziótól kezdődően a rendszer a Storage Emulator indításakor me
 
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
-### <a name="options"></a>Beállítások
+### <a name="options"></a>Lehetőségek
 
 A beállítások listájának megtekintéséhez írja be a `/help` parancsot a parancssorba.
 
@@ -323,7 +323,7 @@ Nincsenek eltérések az emulátorban található üzenetsor-tároláshoz.
 ### <a name="version-30"></a>3,0-es verzió
 
 * Az Azure Storage-emulátor már nem ugyanarra a csomagba kerül, mint a Compute Emulator.
-* A Storage Emulator grafikus felhasználói felülete elavult. Egy parancsfájl-parancssori felület váltotta fel. A parancssori felület részletes ismertetését lásd a Storage Emulator parancssori eszköz dokumentációjában. A grafikus felület továbbra is megtalálható a 3,0-es verzióban, de csak akkor érhető el, ha a számítási emulátor telepítve van, ha a jobb gombbal a rendszertálca ikonra kattint, és kiválasztja a Storage Emulator felhasználói felületének megjelenítése lehetőséget.
+* A Storage Emulator grafikus felhasználói felülete elavult. Egy parancsfájl-parancssori felület váltotta fel. A parancssori felületen a további tudnivalókat lásd: Storage Emulator Command-Line Tool Reference. A grafikus felület továbbra is megtalálható a 3,0-es verzióban, de csak akkor érhető el, ha a számítási emulátor telepítve van, ha a jobb gombbal a rendszertálca ikonra kattint, és kiválasztja a Storage Emulator felhasználói felületének megjelenítése lehetőséget.
 * Az Azure Storage-szolgáltatások 2013-08-15-es verziója már teljes mértékben támogatott. (Ezt a verziót korábban csak a Storage Emulator 2.2.1 előzetes verziója támogatja.)
 
 ## <a name="next-steps"></a>További lépések

@@ -8,10 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90029461"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
@@ -130,7 +130,7 @@ Miután konfigurálta a figyelési adatok gyűjtését egy virtuális géphez, t
 
 ![Figyelés a Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Menüpont | Description |
+| Menüpont | Leírás |
 |:---|:---|
 | Áttekintés | Megjeleníti a virtuális gép gazdagépének [platform metrikáit](../platform/data-platform-metrics.md) . Kattintson egy gráfra, hogy működjön együtt ezekkel az adatokkal a [mérőszámok Explorerben](../platform/metrics-getting-started.md). |
 | Tevékenységnapló | Az aktuális virtuális gép számára szűrt [tevékenység-naplóbejegyzések](../platform/activity-log.md#view-the-activity-log) . |
@@ -148,7 +148,7 @@ A metrikák a virtuális gép menüjéből **való megnyitásával** elemezheti 
 
 A virtuális gépek három névteret használnak a metrikák számára:
 
-| Névtér | Description | Követelmény |
+| Névtér | Leírás | Követelmény |
 |:---|:---|:---|
 | Virtuálisgép-gazda | Az összes Azure-beli virtuális gép számára automatikusan összegyűjtött gazdagép-metrikák. A metrikák részletes listája a [Microsoft. számítás/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatikusan összegyűjtött konfiguráció nélkül. |
 | Vendég (klasszikus) | A vendég operációs rendszerek és az alkalmazások teljesítményének korlátozott készlete. Elérhető a metrikák Explorerben, de nem más Azure Monitor-funkciók, például a metrikus riasztások.  | A [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) telepítve van. Az adatok beolvasása az Azure Storage-ból történik.  |

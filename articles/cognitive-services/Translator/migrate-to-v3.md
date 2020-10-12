@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523978"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 – v3 Migrálás
@@ -30,7 +30,7 @@ A dokumentum vége hasznos hivatkozásokat tartalmaz, amelyekről további infor
 
 ## <a name="summary-of-features"></a>Funkciók összefoglalása
 
-* Nincs nyomkövetési v3 – a nyomkövetés nem vonatkozik a Azure Portal összes díjszabási szintjére. Ez a funkció azt jelenti, hogy a V3 API-nak nem küldött szöveg a Microsoft által lesz mentve.
+* A Azure Portal összes díjszabási szintjére nem vonatkozik nyomkövetés – a v3 No-Trace. Ez a funkció azt jelenti, hogy a V3 API-nak nem küldött szöveg a Microsoft által lesz mentve.
 * A JSON-XML-t a JSON váltja fel. A szolgáltatásnak küldött és a szolgáltatástól kapott összes adatok JSON formátumúak.
 * Több célnyelv egyetlen kérelemben – a fordítási módszer több "to" nyelvet is elfogad egyetlen kérelemben való fordításhoz. Egy kérés például lehet "from" angol és "–" német, spanyol, Japán vagy más nyelvi csoport.
 * Kétnyelvű szótár – egy kétnyelvű szótári metódus lett hozzáadva az API-hoz. Ez a metódus a "lookup" és a "példák" kifejezéseket tartalmazza.
@@ -141,9 +141,9 @@ A fordító egyik verziója sem hoz létre egy rekordot a fordításokról. A fo
 
 * [A Microsoft adatvédelmi szabályzata](https://privacy.microsoft.com/privacystatement)
 * [Jogi információk Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Online szolgáltatások használati feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Online Szolgáltatások Feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A V 3.0 dokumentációjának megtekintése](reference/v3-0-reference.md)

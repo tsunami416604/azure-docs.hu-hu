@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462275"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
@@ -23,7 +23,7 @@ A struktúra lehetővé teszi a nagy strukturálatlan adatmennyiségek struktúr
 
 A HDInsight többféle típusú fürtöt biztosít, amelyek meghatározott számítási feladatokhoz vannak hangolva. A következő típusú fürtök leggyakrabban a kaptár-lekérdezésekhez használatosak:
 
-|Fürt típusa |Description|
+|Fürt típusa |Leírás|
 |---|---|
 |Interaktív lekérdezés|Hadoop-fürt, amely [kis késleltetésű analitikai feldolgozási (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkciókat biztosít az interaktív lekérdezések válaszideje érdekében. További információ: az [interaktív lekérdezés elindítása a HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentumban.|
 |Hadoop|Hadoop-fürt, amely a kötegelt feldolgozási feladatokhoz van beállítva. További információ: [Start with apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) Document.|

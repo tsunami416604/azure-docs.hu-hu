@@ -8,10 +8,10 @@ ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88587633"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
@@ -103,7 +103,7 @@ Az életciklussal kapcsolatos értesítések a következők esetén aktiválódn
 
 Az életciklus-értesítés törzsének mezői.
 
-| Name | Érték |
+| Name (Név) | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` minden különböző esemény esetében egyedi. |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -189,7 +189,7 @@ A **kapcsolat változásával kapcsolatos értesítések** akkor aktiválódnak,
 
 Itt láthatók az Edge Change-értesítések törzsének mezői.
 
-| Name    | Érték |
+| Name (Név)    | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
 | `source` | Az Azure Digital Twins-példány neve, például *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -245,7 +245,7 @@ A digitális **kettős változásokról szóló értesítéseket** a rendszer ak
 
 Itt láthatók a digitális kettős változásokról szóló értesítés törzsének mezői.
 
-| Name    | Érték |
+| Name (Név)    | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*
@@ -297,7 +297,7 @@ A megfelelő értesítés (ha a szolgáltatás szinkron módon hajtja végre, mi
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan hozhatók létre végpontok és útvonalak az események kézbesítéséhez:
 * [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)

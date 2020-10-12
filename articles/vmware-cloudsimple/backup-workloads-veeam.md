@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86525041"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B&R használatával
@@ -54,7 +54,7 @@ A 30 TB-nál kevesebb környezet esetén a CloudSimple a következő konfigurác
 
 * A Veeam a biztonsági mentési kiszolgáló és a proxykiszolgáló ugyanarra a virtuális gépre van telepítve a privát felhőben.
 * Egy Linux-alapú elsődleges biztonsági mentési tárház az Azure-ban, amely a biztonsági mentési feladatok céljaként van konfigurálva.
-* `azcopy`az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
+* `azcopy` az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
 
 ![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ A 30 TB-nál több biztonsági mentést végző környezetek esetén a CloudSimp
 * Egy proxykiszolgáló a vSAN-fürtben, a Veeam által javasolt módon.
 * A Windows-alapú elsődleges biztonsági mentési tárház a privát felhőben a gyors visszaállítások öt napjainak gyorsítótárazásához.
 * Linux Backup-tárház az Azure-ban, mint a hosszabb időtartamú adatmegőrzési feladatok biztonsági másolatának célhelye. Ezt a tárházat kibővíthető biztonsági mentési tárházként kell konfigurálni.
-* `azcopy`az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
+* `azcopy` az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
 
 ![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-advanceddeployment.png)
 
@@ -264,7 +264,7 @@ A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjeszt
 
 ### <a name="cloudsimple-references"></a>CloudSimple-referenciák
 
-* [Magánfelhő létrehozása](create-private-cloud.md)
+* [Privát felhő létrehozása](create-private-cloud.md)
 * [VLAN-ok/alhálózatok létrehozása és kezelése](create-vlan-subnet.md)
 * [vCenter-identitás forrása](set-vcenter-identity.md)
 * [A számítási feladatok DNS-és DHCP-beállítása](dns-dhcp-setup.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929438"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>SSH-kulcsok generálása és tárolása a Azure Portal
@@ -48,7 +48,7 @@ Az SSH-kulcsok Linux rendszerű virtuális gépekkel való létrehozásával és
 
 1. Ekkor megjelenik egy előugró ablak, válassza a **titkos kulcs letöltése és az erőforrás létrehozása**lehetőséget. Ezzel letölti az SSH-kulcsot. PEM-fájlként.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="A titkos kulcs letöltése. PEM-fájlként":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Új erőforráscsoport létrehozása és SSH-kulcspár létrehozása":::
 
 1. Ha letöltötte a. PEM-fájlt, előfordulhat, hogy valahol a számítógépén szeretné áthelyezni, ahol könnyen rámutathat az SSH-ügyfélre.
 
@@ -74,7 +74,7 @@ Feltöltheti az Azure-ban tárolt nyilvános SSH-kulcsot is. Az SSH-kulcspár l�
 
 1. Az **SSH-kulcs** lapon válassza a **Létrehozás**lehetőséget.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Az Azure-ban tárolandó nyilvános SSH-kulcs feltöltése":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Új erőforráscsoport létrehozása és SSH-kulcspár létrehozása":::
 
 1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és hozzon létre egy új erőforráscsoportot a kulcsok tárolásához. Adja meg az erőforráscsoport nevét, majd kattintson **az OK gombra**.
 
@@ -98,12 +98,12 @@ A portálon létrehozott SSH-kulcsokat erőforrásként tárolja a rendszer, íg
 1. A szűrők területen válassza a **típus**lehetőséget, majd törölje a jelölést az **összes kijelölése** lehetőséggel a lista törléséhez.
 1. Írja be az **SSH** -t a szűrőbe, és válassza az **SSH-kulcs**lehetőséget.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Képernyőkép arról, hogyan szűrheti a listát az összes SSH-kulcs megtekintéséhez.":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Új erőforráscsoport létrehozása és SSH-kulcspár létrehozása":::
 
 ## <a name="get-the-public-key"></a>A nyilvános kulcs beszerzése
 
 Ha a nyilvános kulcsra van szüksége, egyszerűen másolhatja a kulcsot a portál oldaláról. Csak sorolja fel a kulcsokat (az utolsó szakasz folyamatával), majd válasszon ki egy kulcsot a listából. Megnyílik a kulcs oldala, és a másolás a **vágólapra** ikonra kattintva a kulcs melletti Másolás gombra kattinthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az SSH-kulcsok Azure-beli virtuális gépekkel való használatáról: [ssh-kulcsok használata a Linux rendszerű virtuális gépekhez való kapcsolódáshoz](./linux/ssh-from-windows.md).

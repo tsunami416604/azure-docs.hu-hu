@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jingwang
 ms.openlocfilehash: c044208699bf5bebb6383cfef00bf53b744369d0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522439"
 ---
 # <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Támogatott fájlformátumok és tömörítési kodekek másolási tevékenységgel Azure Data Factory
@@ -33,9 +33,9 @@ Emellett egy adott formátumú fájlokat is elemezheti vagy létrehozhatja. Pél
 * Adatok másolása gzip tömörített szövegfájlba (CSV) az Azure Blob Storage-ból, és a Azure SQL Databasebe írás.
 * Számos további tevékenység, amelyek szerializálást/deszerializálást vagy tömörítést/kibontást igényelnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Másolási tevékenység teljesítménye](copy-activity-performance.md)
