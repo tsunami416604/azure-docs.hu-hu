@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
 ms.openlocfilehash: 6bb3b8dbc7887419f7901a52b56c25f60c869abb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995858"
 ---
 # <a name="application-development-on-intel-sgx"></a>Alkalmazásfejlesztés az Intel SGX ENKLÁVÉHOZ 
@@ -59,5 +59,5 @@ Ez a nyílt forráskódú keretrendszer lehetővé teszi a magas szintű és ré
 
 
 ## <a name="next-steps"></a>Következő lépések 
-- [Bizalmas számítástechnikai DCsv2-sorozatú virtuális gép üzembe helyezése](quick-create-portal.md)
+- [Bizalmas számítástechnikai DCsv2-Series virtuális gép üzembe helyezése](quick-create-portal.md)
 - [Töltse le és telepítse az OE SDK-t, és indítsa el az alkalmazások fejlesztését](https://github.com/openenclave/openenclave)

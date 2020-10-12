@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704728"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
@@ -109,11 +109,11 @@ Bizonyos esetekben konfigurálnia kell a betanítási időszakokat, hogy azok az
 
 ## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Alacsony prioritású virtuális gépek használata
 
-Az Azure-ban a virtuálisgép-méretezési csoportok, a Batch és a Machine Learning szolgáltatás által biztosított alacsony prioritású virtuális gépek nem használhatnak feleslegesen kihasználatlan kapacitást. Ezek a foglalások előre emptible, de kedvezményes áron érhetők el a dedikált virtuális gépekhez képest. Általánosságban ajánlott alacsony prioritású virtuális gépeket használni a Batch-munkaterhelésekhez. Azokat is érdemes használni, ahol a megszakítások az Újraküldés (a Batch-következtetések esetében) vagy az újraindítások (az ellenőrzőpontokkal folytatott mély tanulási képzések esetén) helyreállítására használhatók.
+Az Azure-ban a virtuális gépek méretezési csoportjaiban, a Batchben és a Machine Learning szolgáltatásban Low-Priority virtuális gépeken túl nem használt kapacitást használhat. Ezek a foglalások előre emptible, de kedvezményes áron érhetők el a dedikált virtuális gépekhez képest. Általánosságban elmondható, hogy Low-Priority virtuális gépek használatát javasoljuk a Batch-munkaterhelésekhez. Azokat is érdemes használni, ahol a megszakítások az Újraküldés (a Batch-következtetések esetében) vagy az újraindítások (az ellenőrzőpontokkal folytatott mély tanulási képzések esetén) helyreállítására használhatók.
 
-Az alacsony prioritású virtuális gépek egyetlen kvótával rendelkeznek a dedikált kvóta értéktől, amely a VM-család. [További információ a AmlCompute-kvótákkal kapcsolatban](how-to-manage-quotas.md).
+Low-Priority virtuális gépek egyetlen kvótával rendelkeznek a dedikált kvóta értéktől, amely a VM-család. [További információ a AmlCompute-kvótákkal kapcsolatban](how-to-manage-quotas.md).
 
- Az alacsony prioritású virtuális gépek nem működnek a számítási példányok esetében, mivel az interaktív notebook-élmények támogatásához szükségesek.
+ Low-Priority virtuális gépek nem működnek számítási példányok esetén, mert támogatniuk kell az interaktív notebook-élményt.
 
 ## <a name="use-reserved-instances"></a>Fenntartott példányok használata
 

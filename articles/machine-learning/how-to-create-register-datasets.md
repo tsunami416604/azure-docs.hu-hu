@@ -13,10 +13,10 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.openlocfilehash: 18904987d409f526c2bbd6cd917558e8ce6f751c
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842631"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása

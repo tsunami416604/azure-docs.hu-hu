@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
 ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995738"
 ---
-# <a name="import-threat-intelligence-into-azure-sentinel"></a>Fenyegetési intelligencia importálása az Azure Sentinelbe
+# <a name="import-threat-intelligence-into-azure-sentinel"></a>Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
 
 ## <a name="introduction-to-threat-intelligence"></a>A fenyegetések felderítésének bemutatása
 
@@ -78,7 +78,7 @@ Ez az információ mindig a Azure Active Directory származik az **alkalmazás-r
 
 1. Válassza ki az alkalmazás regisztrációjának nevét, válassza az **egybérlős** választógombot, és válassza a **regisztráció**lehetőséget.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Egy alkalmazás regisztrálása":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 1. Az eredményül kapott képernyőn másolja az **alkalmazás (ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosítójának** értékeit. Ezek az első két információ, amelyekre később szüksége lesz a tipp vagy az egyéni megoldás konfigurálásához, hogy veszélyforrási mutatókat küldjön az Azure Sentinelnek.
 
@@ -96,13 +96,13 @@ Ez az információ mindig a Azure Active Directory származik az **alkalmazás-r
 
 1. Válassza a **ThreatIndicators. ReadWrite. OwnedBy** lehetőséget, majd az **engedélyek hozzáadása** gombra kattintva adja hozzá ezt az engedélyt az alkalmazás engedélyeinek listájához.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Engedélyek megadása":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 **A szervezet jóváhagyásának beszerzése az engedélyek megadásához**
 
 1. A jóváhagyás megadásához egy Azure Active Directory globális rendszergazdának kell lennie, hogy az alkalmazás API-engedélyeinek lapján válassza a **bérlő gombra vonatkozó rendszergazdai jóváhagyás megadása** lehetőséget. Ha nem rendelkezik a globális rendszergazdai szerepkörrel a fiókjában, akkor ez a gomb nem érhető el, és a feladat elvégzéséhez globális rendszergazdát kell kérnie a szervezettől.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Hozzájárulás megadása":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 1. Miután beleegyezett az alkalmazásba, egy zöld pipa jelenik meg az **állapot**területen.
  
@@ -114,7 +114,7 @@ Most, hogy az alkalmazás regisztrálva van, és engedélyt kapott, az utolsó d
 
 1. Válassza ki a **tanúsítványok & Secrets** elemet a menüből, majd az **új ügyfél titka** gombra kattintva szerezze be az alkalmazáshoz tartozó titkos kulcsot (API-kulcs).
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Ügyfél titkos kulcsának beolvasása":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 1. Kattintson a **Hozzáadás** gombra, és **Győződjön meg róla, hogy az ügyfél titkos kulcsát másolja**, mert nem tudja újra beolvasni ezt a titkot, ha az oldalról navigál. Erre az értékre szüksége lesz a tipp vagy az egyéni megoldás konfigurálásakor.
 
@@ -145,7 +145,7 @@ Néhány percen belül megkezdődik a veszélyforrások beáramlása ebbe az Azu
 
 A veszélyforrások felderítésének a legszélesebb körben elfogadott iparági szabványa a [Stix adatformátum és a TAXII protokoll kombinációja](https://oasis-open.github.io/cti-documentation/). Ha a szervezet az aktuális STIX/TAXII-verziót (2,0 vagy 2,1) támogató megoldásoktól származó veszélyforrásokat észlel, akkor a **Threat Intelligence-TAXII** adatösszekötővel használhatja a veszélyforrások mutatóit az Azure Sentinel szolgáltatásba. A Threat Intelligence-TAXII adatösszekötője lehetővé teszi, hogy az Azure Sentinelben egy beépített TAXII-ügyfél importálja a fenyegetések felderítését a TAXII 2. x kiszolgálókról.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="TAXII importálási útvonala":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
  
 A következő lépésekkel importálhatja a STIX formátumú veszélyforrások kijelzőit az Azure Sentinel TAXII-kiszolgálóról:
 
@@ -287,7 +287,7 @@ Az alábbi lépéseket követve importálhatja a veszélyforrások kijelzőit az
 
 1. Adja meg a TAXII-kiszolgáló gyűjteményének **nevét** , az **API-gyökér URL-címét**, a **gyűjtemény azonosítóját**, a **felhasználónevet** (ha szükséges) és a **jelszót** (ha szükséges), majd kattintson a **Hozzáadás** gombra.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXII-kiszolgálók konfigurálása":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
  
 Meg kell erősítenie, hogy a TAXII-kiszolgálóval létesített kapcsolat sikeresen létrejött, és a fenti 4. lépés többször is megismételhető, ha több gyűjteményhez szeretne csatlakozni ugyanazon vagy különböző TAXII-kiszolgálókról.
 
@@ -307,7 +307,7 @@ Most, hogy sikeresen importálta a fenyegetési mutatókat az Azure Sentinel-be 
 
 Az eredményeknek az alább látható mintavételi veszélyforráshoz hasonlóan kell kinéznie:
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Mintául szolgáló lekérdezési adatgyűjtés":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
  
 ## <a name="manage-your-threat-indicators-in-the-new-threat-intelligence-area-of-azure-sentinel"></a>Az Azure Sentinel új veszélyforrások elleni intelligencia területén kezelheti a veszélyforrások mutatóit
 
@@ -322,7 +322,7 @@ Nézzük meg a leggyakoribb feladatok közül kettőt, és hozzon létre új ves
 
 1. A lap felső menüjében kattintson az **új hozzáadása** gombra.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Új veszélyforrások mutatójának hozzáadása" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Fenyegetési intelligencia importálási útvonala" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
 
 1. Válassza ki a kijelző típusát, majd töltse ki a piros csillaggal (*) jelölt kötelező mezőket az **új kijelző** panelen.
 
@@ -330,7 +330,7 @@ Nézzük meg a leggyakoribb feladatok közül kettőt, és hozzon létre új ves
 
 A veszélyforrások címkézésével egyszerűen csoportosíthatja őket, így könnyebben megtalálhatja őket. A címkét jellemzően egy adott incidenshez kapcsolódó mutatókra, illetve egy adott ismert szereplő vagy egy jól ismert támadási kampány fenyegetéseit képviselő mutatókra alkalmazhatja. Megcímkézheti a veszélyforrások kijelzőit egyenként, vagy egyszerre több kiválaszthatja a jelölőket, és megcímkézheti őket. Az alábbiakban látható egy példa arra, hogy több mutatót is megcímkéz egy incidens-AZONOSÍTÓval. Mivel a címkézés ingyenes, a javasolt eljárás a fenyegetést jelző címkék szabványos elnevezési konvencióinak létrehozása. Az egyes mutatókhoz több címkét is alkalmazhat.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Címkék alkalmazása a veszélyforrások mutatói számára" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Fenyegetési intelligencia importálási útvonala" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>Az elemzések révén a veszélyforrások a potenciális fenyegetések észlelése érdekében működnek
 
@@ -350,11 +350,11 @@ Vessünk egy pillantást az alábbi sablonok egyikére, és ismerkedjen meg a sz
 
 1. Navigáljon a **ti Map IP-entitás AzureActivity** , és győződjön meg arról, hogy az alább látható módon csatlakoztatta az összes szükséges adatforrást.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Szükséges adatforrások":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 1. Válassza ki ezt a szabályt, és kattintson a **szabály létrehozása** gombra. Ekkor megnyílik egy varázsló a szabály konfigurálásához. Itt hajtsa végre a beállításokat, és válassza a **következő: szabály logikai >ának beállítása ** gombot.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Elemzési szabály létrehozása":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 1. A varázsló szabály logikájának része a következőket tartalmazza:
     - A szabályban használt lekérdezés.
@@ -397,7 +397,7 @@ Nézzük meg, hogyan lehet megkeresni az Azure Sentinelben elérhető veszélyfo
 
 1. Navigáljon a **fenyegetés intelligencia** nevű munkafüzethez, és ellenőrizze, hogy vannak-e adatok a **ThreatIntelligenceIndicator** táblában az alábbi ábrán látható módon.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Az adatok ellenőrzése":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
  
 1. Kattintson a **Save (Mentés** ) gombra, és válasszon egy Azure-helyet a munkafüzet tárolásához. Erre a lépésre akkor van szükség, ha bármilyen módon módosítani fogja a munkafüzetet, és menti a módosításokat.
 
@@ -417,7 +417,7 @@ Nézzük meg, hogyan lehet megkeresni az Azure Sentinelben elérhető veszélyfo
 
 1. Válassza a **kész szerkesztés** gombot. Létrehozott egy új diagramot a munkafüzethez.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Sávdiagram":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Fenyegetési intelligencia importálási útvonala":::
 
 A munkafüzetek hatékony interaktív irányítópultokat biztosítanak, amelyek betekintést nyújtanak az Azure Sentinel valamennyi aspektusára. A munkafüzetek teljes egészében elvégezhető, és a megadott sablonok nagyszerű kiindulási pontként használhatók, érdemes lehet bemutatni és testreszabni ezeket a sablonokat, vagy új irányítópultokat létrehozni, amelyek számos különböző adatforrást egyesítenek, így egyedi módon jelenítheti meg az adatait. Mivel az Azure Sentinel-munkafüzetek Azure Monitor munkafüzeteken alapulnak, már széles körű dokumentáció áll rendelkezésre, és számos további sablon is elérhető. Ez a cikk azt ismerteti, hogyan [hozhatók létre interaktív jelentések Azure monitor munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával. 
 

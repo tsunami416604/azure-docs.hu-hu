@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: e64e6b6abc921b1db6614ed36ba2e9c04fc86b1f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87451103"
 ---
 Ez a cikk az Azure Virtual Machines biztonsági javaslatait tartalmazza. Kövesse ezeket az ajánlásokat a modellben ismertetett biztonsági kötelezettségek teljesítéséhez a közös felelősség érdekében. A javaslatok a webalkalmazás-megoldások általános biztonságának javításához is segítséget nyújtanak. További információ arról, hogy a Microsoft miként teljesíti a szolgáltatói felelősségeket, lásd: [a felhőalapú számítástechnika megosztott feladatai](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
@@ -29,7 +29,7 @@ A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi 
 | Tartsa naprakészen a virtuális gépeket. | Az Azure-ban lévő Windows-és Linux-számítógépeken az operációs rendszer frissítéseinek kezeléséhez használhatja a Azure Automation [Update Management](../articles/automation/update-management/update-mgmt-overview.md) megoldását. | [Igen](../articles/security-center/security-center-apply-system-updates.md) |
 | Készítse elő a virtuális gépek biztonsági mentését. | [Azure Backup](../articles/backup/backup-overview.md) segít az alkalmazásadatok védelme terén, és minimális működési költségekkel jár. Az alkalmazások hibái sérültek az adataikat, és az emberi hibák hibákat okozhatnak az alkalmazásaiban. Azure Backup védi a Windows és a Linux rendszerű virtuális gépeket. | - |
 | Több virtuális gép használata nagyobb rugalmasság és rendelkezésre állás érdekében. | Ha a virtuális gép olyan alkalmazásokat futtat, amelyek számára elérhetőnek kell lennie, használjon több virtuális gépet vagy [rendelkezésre állási készletet](../articles/virtual-machines/windows/manage-availability.md). | - |
-| Egy üzletmenet-folytonossági és vész-helyreállítási (BCDR) stratégiát kell alkalmaznia. | Azure Site Recovery lehetővé teszi az üzletmenet folytonosságának támogatására szolgáló különböző lehetőségek kiválasztását. Különböző replikációs és feladatátvételi forgatókönyveket támogat. További információ: [About site Recovery](../articles/site-recovery/site-recovery-overview.md). | - |
+| Egy üzletmenet-folytonossági és vész-helyreállítási (BCDR) stratégiát kell alkalmaznia. | Azure Site Recovery lehetővé teszi az üzletmenet folytonosságának támogatására szolgáló különböző lehetőségek kiválasztását. Különböző replikációs és feladatátvételi forgatókönyveket támogat. További információ:  [About site Recovery](../articles/site-recovery/site-recovery-overview.md). | - |
 
 ## <a name="data-security"></a>Adatbiztonság
 
@@ -60,6 +60,6 @@ A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi 
 | A felügyeleti portok elérésének korlátozása. | A támadók nyilvános Felhőbeli IP-tartományokat vizsgálnak meg a nyílt felügyeleti portok számára, és megkísérlik a közös jelszavakat, valamint az ismert, nem javított biztonsági réseket. Igény szerinti [(JIT)](../articles/security-center/security-center-just-in-time.md) virtuálisgép-hozzáférést használhat az Azure-beli virtuális gépek bejövő forgalmának zárolására, így csökkentve a támadásoknak való kitettséget, miközben egyszerű kapcsolatokat biztosít a virtuális gépekhez, amikor szükségesek. | - |
 | Korlátozza a hálózati hozzáférést. | A hálózati biztonsági csoportok lehetővé teszik a hálózati hozzáférés korlátozását és a kitett végpontok számának szabályozását. További információ: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](../articles/virtual-network/manage-network-security-group.md). | - |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A további biztonsági követelmények megismeréséhez forduljon az alkalmazás-szolgáltatóhoz. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd: a [biztonságos fejlesztés dokumentációja](../articles/security/fundamentals/abstract-develop-secure-apps.md).

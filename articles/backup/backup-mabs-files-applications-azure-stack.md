@@ -4,10 +4,10 @@ description: A Azure Backup használatával biztonsági mentést készíthet, va
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180983"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése Azure Stack
@@ -52,13 +52,13 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
     Az **online védelem kívánt**lehetőség kiválasztásához először válassza **a rövid távú védelmet szeretnék a következő használatával:** Disk (lemez) lehetőséget. Azure Backup Server nem véd a szalagra, ezért a rövid távú védelem érdekében a lemez az egyetlen választás.
 
-5. A **rövid távú célok megadása** képernyőn válassza ki, hogy mennyi ideig szeretné megőrizni a lemezre mentett helyreállítási pontokat, és hogy mikor mentse a növekményes biztonsági mentéseket. Kattintson a **Tovább** gombra.
+5. A **Short-Term célok megadása** képernyőn válassza ki, hogy mennyi ideig szeretné megőrizni a lemezre mentett helyreállítási pontokat, és hogy mikor mentse a növekményes biztonsági mentéseket. Kattintson a **Tovább** gombra.
 
     > [!IMPORTANT]
     > A Azure Backup Server csatolt lemezeken több mint öt napig **ne** őrizze meg az operatív helyreállítási (biztonsági mentési) adatait.
     >
 
-    ![Rövid távú célok megadása](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Short-Term célok megadása](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     A növekményes biztonsági mentések intervallumának kiválasztása helyett az expressz teljes biztonsági mentést csak az egyes ütemezett helyreállítási pontok előtt válassza **közvetlenül a helyreállítási pont előtt**. Ha az alkalmazások munkaterheléseit védi, Azure Backup Server helyreállítási pontokat hoz létre a szinkronizálás gyakoriságának ütemezésekor (ha az alkalmazás támogatja a növekményes biztonsági mentéseket). Ha az alkalmazás nem támogatja a növekményes biztonsági mentéseket, Azure Backup Server expressz teljes biztonsági mentést futtat.
 
@@ -129,7 +129,7 @@ A Azure Portal Azure Backup Server entitások megtekintéséhez kövesse az alá
 2. Válassza a biztonsági mentési infrastruktúra lehetőséget.
 3. A biztonságimásolat-felügyeleti kiszolgálók megtekintése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Backup Server használatáról más számítási feladatok ellátásához: a következő cikkek egyike:
 

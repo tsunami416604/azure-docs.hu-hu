@@ -8,10 +8,10 @@ ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997217"
 ---
 # <a name="use-the-change-feed-estimator"></a>A módosítási hírcsatorna kalkulátor használata
@@ -59,7 +59,7 @@ Ezt a becslést elküldheti a figyelési megoldásnak, és azt is megtudhatja, h
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 

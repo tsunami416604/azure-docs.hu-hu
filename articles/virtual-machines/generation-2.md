@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
 ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322976"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
@@ -67,7 +67,7 @@ A 2. generációs virtuális gépek a következő Piactéri rendszerképeket tá
 * Oracle Linux 7,7, 7,7-CI
 
 > [!NOTE]
-> Az adott virtuálisgép-méretek (például a Mv2-sorozat) csak a lemezképek egy részhalmazát támogatják – a teljes részletekért tekintse meg a megfelelő virtuálisgép-méret dokumentációját.
+> Az adott virtuálisgép-méretek, például a Mv2-Series csak a lemezképek egy részhalmazát támogatják – a részletekért tekintse meg a megfelelő virtuálisgép-méret dokumentációját.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Helyszíni és Azure 2. generációs virtuális gépek
 
@@ -85,7 +85,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. generációs, 2. generációs funkciók
 
-| Jellemző | 1. generációs | 2. generációs |
+| Szolgáltatás | 1. generációs | 2. generációs |
 |---------|--------------|--------------|
 | Indítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
@@ -93,7 +93,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. generációs, 2. generációs képességek
 
-| A képességeik | 1. generációs | 2. generációs |
+| Képesség | 1. generációs | 2. generációs |
 |------------|--------------|--------------|
 | OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
 | Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
@@ -117,7 +117,7 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. Kattintson az **összes** megjelenítése az Azure Marketplace-ről lehetőségre a bal oldalon.
 1. Válasszon olyan képet, amely támogatja a Gen2.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
 1. Az **alapvető beállítások** lap **példány részletei**területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
 1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).

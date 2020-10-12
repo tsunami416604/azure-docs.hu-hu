@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565507"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Csoport törlése Azure Active Directory használatával
@@ -36,7 +36,7 @@ A Azure Active Directory (Azure AD) csoport tetszőleges számú okból törölh
 
 3. A **csoportok – minden csoport** lapon keresse meg és válassza ki a törölni kívánt csoportot. Ezekben a lépésekben a **Mdm Policy-East**használatát fogjuk használni.
 
-    ![Csoportok – minden csoport lap, csoport neve kiemelve](media/active-directory-groups-delete-group/group-all-groups-screen.png)
+    ![Groups-All csoportok lap, csoport neve kiemelve](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 
 4. A **Mdm házirend – Kelet áttekintése** lapon válassza a **Törlés**lehetőséget.
 

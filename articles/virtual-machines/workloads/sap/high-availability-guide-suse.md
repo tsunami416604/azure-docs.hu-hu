@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 01a450c045c996cdcb49b8fbfdf1ce572ee2d1df
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760600"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz
@@ -167,11 +167,11 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
 1. Rendelkezésre állási csoport létrehozása  
    Maximális frissítési tartomány beállítása
 1. 1. virtuális gép létrehozása  
-   Használjon legalább SLES4SAP 12 SP1-et, ebben a példában a SLES4SAP 12 SP1 rendszerképethttps://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
+   Használjon legalább SLES4SAP 12 SP1-et, ebben a példában a SLES4SAP 12 SP1 rendszerképet https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
    SLES for SAP Applications 12 SP1 használata  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. 2. virtuális gép létrehozása  
-   Használjon legalább SLES4SAP 12 SP1-et, ebben a példában a SLES4SAP 12 SP1 rendszerképethttps://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
+   Használjon legalább SLES4SAP 12 SP1-et, ebben a példában a SLES4SAP 12 SP1 rendszerképet https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
    SLES for SAP Applications 12 SP1 használata  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. Adjon hozzá legalább egy adatlemezt mindkét virtuális géphez  
@@ -252,7 +252,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -403,7 +403,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    > - A SLES 15/15 SP1 esetében a verziónak legalább Resource-Agent-4.3.0184.6 ee15eb2-4.13.1 kell lennie.  
    >
    > Vegye figyelembe, hogy a módosítás rövid állásidőt igényel.  
-   > Meglévő pacemaker-fürtök esetén, ha a konfigurációt már úgy módosították, hogy a socat használja az [Azure Load-Balancer észlelésének megerősítése](https://www.suse.com/support/kb/doc/?id=7024128)című cikkben leírtak szerint, nem kell azonnal váltania az Azure-LB erőforrás-ügynökre.
+   > Meglévő pacemaker-fürtök esetén, ha a konfigurációt már úgy módosították, hogy a socat használja az [azure Load-Balancer észlelésének megerősítése](https://www.suse.com/support/kb/doc/?id=7024128)című cikkben leírtak szerint, nem kell azonnal váltania az Azure-LB erőforrás-ügynökre.
 
    <pre><code>sudo crm node standby <b>nw1-cl-1</b>
    
@@ -1232,7 +1232,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a SUSE ajá
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](./high-availability-guide-suse-multi-sid.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

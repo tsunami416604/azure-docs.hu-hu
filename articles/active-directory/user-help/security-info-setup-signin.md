@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798499"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Biztonsági adatok beállítása bejelentkezési kérésből
@@ -34,7 +34,7 @@ A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzés
 | ------ | -------- |
 | Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
-| Telefonhívások | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| Telefonbeszélgetések | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | Biztonsági kulcs | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | E-mail fiók | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
 | Biztonsági kérdések | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
@@ -148,7 +148,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
     ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A biztonsági adatok alapértelmezett módszereinek módosításához, törléséhez vagy frissítéséhez lásd:
 

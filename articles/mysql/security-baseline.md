@@ -8,10 +8,10 @@ ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 80a7067b1d8d5417a6a448ee8a3be563344e9a72
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89420251"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL Azure biztonsági alapterve
@@ -28,7 +28,7 @@ További információ: [Azure Security](../security/benchmarks/security-baseline
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
-**Útmutató**: privát hivatkozás konfigurálása Azure Database for MySQL magánhálózati végpontokkal. A privát hivatkozás lehetővé teszi, hogy egy privát végponton keresztül kapcsolódjon az Azure-beli különböző Pásti-szolgáltatásokhoz. Az Azure Private link lényegében az Azure-szolgáltatásokat a privát Virtual Networkon (VNet) belül hozza elérhetővé. A virtuális hálózat és a MySQL-példány közötti forgalom a Microsoft gerinc hálózatán halad át.
+**Útmutató**: privát hivatkozás konfigurálása Azure Database for MySQL magánhálózati végpontokkal. A privát kapcsolat lehetővé teszi, hogy privát végponton keresztül csatlakozzon az Azure különböző PaaS-szolgáltatásaihoz. Az Azure Private Link lényegében elérhetővé teszi az Azure-szolgáltatásokat a virtuális magánhálózaton belül. A virtuális hálózat és a MySQL-példány közötti forgalom a Microsoft gerinc hálózatán halad át.
 
 Azt is megteheti, hogy Virtual Network szolgáltatás-végpontokat használ a Azure Database for MySQL-implementációk hálózati hozzáférésének a megóvására és korlátozására. A virtuális hálózati szabályok egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy a Azure Database for MySQL-kiszolgáló fogadja-e a virtuális hálózatok egyes alhálózatai által továbbított kommunikációt.
 
@@ -968,7 +968,7 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
-**Útmutató**: a Azure Database for MySQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárterülettől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálót) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+**Útmutató**: a Azure Database for MySQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárterülettől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálót) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva.
 
 - [Azure Database for MySQL biztonsági mentések ismertetése](concepts-backup.md)
 
@@ -1008,7 +1008,7 @@ A Azure Database for MySQL példányok visszaállításának rendszeres tesztel�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: a Azure Database for MySQL teljes, differenciált és tranzakciós naplóbeli biztonsági mentést készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
+**Útmutató**: a Azure Database for MySQL teljes, differenciált és tranzakciós naplóbeli biztonsági mentést készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
 - [A Azure Database for MySQL biztonsági mentésének és visszaállításának ismertetése](concepts-backup.md)
 

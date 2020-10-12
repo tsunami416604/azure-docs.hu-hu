@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401367"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
@@ -51,9 +51,9 @@ Ebben a szakaszban két virtuális gépet hoz létre *myEndpointVMEastUS* és *M
 
     |Beállítás|Érték|
     |---|---|
-    |Név|myIISVMEastUS|
+    |Name (Név)|myIISVMEastUS|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
-    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Erőforráscsoport| Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM1* nevet.|
     |Hely| Válassza az **USA keleti régiója** lehetőséget.|
     |||
@@ -64,7 +64,7 @@ Ebben a szakaszban két virtuális gépet hoz létre *myEndpointVMEastUS* és *M
     |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet1* kifejezést, az alhálózat nevének pedig a * mySubnet* kifejezést.|
-    |Hálózati biztonsági csoport|Válassza az **Alapszintű** lehetőséget, majd a **Nyilvános bejövő portok kiválasztása** legördülő menüben válassza a **HTTP** és az **RDP** lehetőségeket |
+    |Hálózati biztonsági csoporttal|Válassza az **Alapszintű** lehetőséget, majd a **Nyilvános bejövő portok kiválasztása** legördülő menüben válassza a **HTTP** és az **RDP** lehetőségeket |
     |Rendszerindítási diagnosztika|Válassza a **Letiltva** lehetőséget.|
     |||
 
@@ -137,9 +137,9 @@ Ebben a szakaszban létrehoz egy virtuális gépet (*mVMEastUS* és *myVMWestEur
 
     |Beállítás|Érték|
     |---|---|
-    |Név|myVMEastUS|
+    |Name (Név)|myVMEastUS|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
-    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Erőforráscsoport| Válassza a **Meglévő**, majd a *myResourceGroupTM1* lehetőséget.|
     |||
 
@@ -149,7 +149,7 @@ Ebben a szakaszban létrehoz egy virtuális gépet (*mVMEastUS* és *myVMWestEur
     |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet3* kifejezést, az alhálózat nevének pedig a * mySubnet3* kifejezést.|
-    |Hálózati biztonsági csoport|Válassza az **Alapszintű** lehetőséget, majd a **Nyilvános bejövő portok kiválasztása** legördülő menüben válassza a **HTTP** és az **RDP** lehetőségeket |
+    |Hálózati biztonsági csoporttal|Válassza az **Alapszintű** lehetőséget, majd a **Nyilvános bejövő portok kiválasztása** legördülő menüben válassza a **HTTP** és az **RDP** lehetőségeket |
     |Rendszerindítási diagnosztika|Válassza a **Letiltva** lehetőséget.|
     |||
 
@@ -174,7 +174,7 @@ Létrehozhat egy Traffic Manager-profilt, amellyel a kérés forrás IP-címe al
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Név                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
+    | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
     | Útválasztási metódus          | Válassza a **Subnet** útválasztási metódust.                                       |
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza a **Meglévő** lehetőséget, majd írja be a *myResourceGroupTM1* kifejezést. |
@@ -194,7 +194,7 @@ Adja hozzá az IIS-kiszolgálók- *myIISVMEastUS*myIISVMWEurope futtató két vi
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Azure-végpont                                   |
-    | Name           | myTestWebSiteEndpoint                                        |
+    | Name (Név)           | myTestWebSiteEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |  Alhálózat útválasztási beállításai    |   Adja hozzá a *myVMEastUS* -teszt virtuális gép IP-címét. A virtuális gépről származó összes felhasználói lekérdezés a *myTestWebSiteEndpoint*lesz átirányítva.    |

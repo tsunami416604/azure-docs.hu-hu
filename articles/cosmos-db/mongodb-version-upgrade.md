@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
 ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409663"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>A Azure Cosmos DB API-MongoDB-fiók MongoDB-verziójának frissítése
@@ -62,27 +62,27 @@ A meglévő végpontot le kell cserélnie az alkalmazásokban és az ezzel az ad
 
 2. A bal oldali beállítások közül válassza ki a panelt `Features` . Ez az adatbázis-fiókhoz elérhető fiók szintű funkciókat mutatja be.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés a funkciók panel kiemelésével" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
 3. Kattintson a `Upgrade to Mongo server version 3.6` sorra. Ha nem látja ezt a lehetőséget, előfordulhat, hogy a fiókja nem jogosult erre a frissítésre. Ha ez a helyzet, küldjön [egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Funkciók panel a beállításokkal." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
 4. Tekintse át az adott frissítéssel kapcsolatban megjelenő információkat. Vegye figyelembe, hogy a frissítés csak akkor lesz végrehajtva, ha az alkalmazások a frissített végpontot használják, az ebben a szakaszban leírtak szerint. Kattintson a gombra, amint `Enable` készen áll a folyamat elindítására.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Bővített frissítési útmutató." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
 5. A folyamat elindítása után a `Features` menü megjeleníti a frissítés állapotát. Az állapot a, a `Pending` és a `In Progress` értékre fog esni `Upgraded` . Ez a folyamat nem befolyásolja az adatbázis-fiók meglévő funkcióit vagy műveleteit.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="A frissítés állapota az indítás után." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
 6. A frissítés befejezése után az állapot a következő lesz: `Upgraded` . Kattintson ide, ha többet szeretne megtudni a folyamat véglegesítéséhez szükséges következő lépésekről és műveletekről. Ha hiba történt a kérelem feldolgozása során, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/en-us/support/create-ticket/) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="A fiók frissített állapota." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
 7. Az **adatbázis-fiók frissített verziójának használatának megkezdéséhez**lépjen vissza a panelre `Overview` , és másolja az alkalmazásban használandó új kapcsolódási karakterláncot. Az alkalmazások az új végponthoz való kapcsolódáskor azonnal elkezdik használni a frissített verziót. A meglévő kapcsolatok nem lesznek megszakítva, és a szolgáltatás kényelmesen frissíthető. Az egységes élmény biztosítása érdekében minden alkalmazásnak az új végpontot kell használnia.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Új áttekintés panel." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
 

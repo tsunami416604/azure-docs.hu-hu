@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336513"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Azure HDInsight Hadoop fürtök használata
@@ -813,7 +813,7 @@ A lekérdezés futtatása a kaptár könyvtárának parancssorából:
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-Most már van egy belső tábla, a **nyctaxidb. nyctaxi_downsampled_dataset**, amely a Machine learning [adatok importálása][import-data] moduljának használatával érhető el. Emellett ezt az adatkészletet használhatja Machine Learning modellek létrehozásához.  
+Most már van egy belső tábla, **nyctaxidb.nyctaxi_downsampled_dataset**, amely a Machine learning [adatimportálási][import-data] moduljának használatával érhető el. Emellett ezt az adatkészletet használhatja Machine Learning modellek létrehozásához.  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>A Machine Learning adatimportálási moduljának használata a lefelé mintavételezéssel ellátható adatértékek eléréséhez
 A Machine Learning adatimportálási moduljában a kaptár-lekérdezések [kiküldéséhez][import-data] hozzáféréssel kell rendelkeznie egy Machine learning-munkaterülethez. Emellett hozzá kell férnie a fürt és a hozzá tartozó Storage-fiók hitelesítő adataihoz is.

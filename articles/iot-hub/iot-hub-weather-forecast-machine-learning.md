@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
 ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777156"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning Studio (klasszikus)
@@ -170,7 +170,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Bemenet hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-input-stream-analytics-job.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -189,7 +189,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Kimenet hozzáadása a Stream Analytics feladatokhoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-output-stream-analytics-job.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Függvény hozzáadása a Stream Analytics feladathoz a telepített webszolgáltatás meghívásához
 
@@ -204,7 +204,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Függvény hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-function-stream-analytics-job.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -248,7 +248,7 @@ Futtassa az ügyfélalkalmazás a hőmérséklet és a páratartalom adatok IoT 
 
    ![Időjárás-előrejelzési eredmény beolvasása Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Sikeresen használta a Azure Machine Learning Studio (klasszikus) szolgáltatást, hogy az IoT hub hőmérséklet-és páratartalom-adatai alapján előkészítse az eső esélyét.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89008386"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
@@ -253,6 +253,6 @@ A deszerializáló megvalósítását követően a Közösséggel megoszthatja m
 
 Ha a bemenet protopuf formátumú, és a MapField típusú sémát tartalmazza, nem fog tudni egyéni deszerializáló megvalósítani. Dolgozunk ezen típus támogatásán.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [.NET-alapú egyéni deszerializálók Azure Stream Analytics felhőalapú feladatokhoz](custom-deserializer.md)

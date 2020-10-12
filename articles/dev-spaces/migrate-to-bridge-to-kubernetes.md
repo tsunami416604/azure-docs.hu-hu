@@ -1,18 +1,18 @@
 ---
-title: Migrálás a Kubernetes
+title: Migrálás a Bridge to Kubernetesre
 services: azure-dev-spaces
 ms.date: 09/21/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
 ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995521"
 ---
-# <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Kubernetes
+# <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
 A Bridge to Kubernetes az Azure dev Spaces szolgáltatással működő számos fejlesztési forgatókönyv esetén is enyhébb súlyozást biztosít. A Bridge to Kubernetes egy ügyféloldali élmény, amely a [Visual Studióban][vs]   és a [Visual Studio Code][vsc]-ban lévő bővítményeket használja.  
 
@@ -34,7 +34,7 @@ A Kubernetes híd lehetővé teszi a fejlesztők számára, hogy közvetlenül a
 
 Az Azure dev Spaces és a Bridge to Kubernetes hasonló funkciókkal rendelkezik, több területen is különböznek:
 
-| Követelmény  | Azure Dev Spaces  | Híd Kubernetes  |
+| Követelmény  | Azure Dev Spaces  | Bridge to Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes Service | 15 Azure-régióban | Bármely AK szolgáltatási régió    |
 | **Biztonság** |

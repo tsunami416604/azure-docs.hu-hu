@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323294"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
@@ -21,7 +21,7 @@ A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kérése
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Egy alkalmazás vagy szolgáltatás monitorozásának beállításához a következő feladatokat kell elvégezni.
 
@@ -374,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Több Application Insights-erőforrást is létrehozhat, és a megfelelő kialakítási kulcsaik ("rendszerállapotkulcsot") használatával különböző adatforrásokat küldhet mindegyiknek.
 
- Például:
+ Példa:
 
 ```javascript
 let appInsights = require("applicationinsights");

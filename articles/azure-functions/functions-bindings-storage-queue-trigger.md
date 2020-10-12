@@ -7,10 +7,10 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
 ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89376638"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure üzenetsor-tárolási trigger a Azure Functionshoz
@@ -311,11 +311,11 @@ public class QueueTriggerDemo {
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `QueueTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n.a.| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**irányba**| n.a. | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n.a. |Annak a változónak a neve, amely a függvény kódjában található üzenetsor-elemek tartalmát tartalmazza.  |
+|**típusa** | n/a| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**irányba**| n/a | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a |Annak a változónak a neve, amely a függvény kódjában található üzenetsor-elemek tartalmát tartalmazza.  |
 |**queueName** | **QueueName**| A lekérdezni kívánt várólista neve. |
 |**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .|
 
@@ -363,7 +363,7 @@ A [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger
 
 A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tagjai.
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor-üzenet tartalma egy karakterlánc, akkor a `QueueTrigger` `name` *function.js*tulajdonságban megnevezett változóval megegyező értékkel rendelkezik.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|

@@ -4,10 +4,10 @@ description: Ismerje meg az egyéni lemezképek és a képletek közötti külö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287531"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Egyéni rendszerképek és képletek összehasonlítása a DevTest Labs szolgáltatásban
@@ -43,5 +43,5 @@ A képletek dinamikus módszert biztosítanak a virtuális gépek létrehozásá
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 * [Egyéni lemezképek vagy képletek?](./devtest-lab-faq.md#blog-post)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [DevTest Labs – gyakori kérdések](devtest-lab-faq.md)

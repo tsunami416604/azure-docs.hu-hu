@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91287049"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
@@ -67,7 +67,7 @@ Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisz
 
 5. A **Létrehozás** lapon adja meg a felhasználói folyamat **nevét** . Vegye figyelembe, hogy a név automatikusan **B2X_1_**.
 6. Az **Identity Providers** listán válasszon ki egy vagy több olyan identitás-szolgáltatót, amelyet a külső felhasználók használhatnak az alkalmazásba való bejelentkezéshez. A **Azure Active Directory regisztráció** alapértelmezés szerint ki van választva. (Lásd [még](#before-you-begin) a jelen cikk korábbi részében ismertetett tudnivalókat az identitás-szolgáltatók hozzáadásának megismeréséhez.)
-7. A **felhasználói attribútumok**területen válassza ki a felhasználótól gyűjteni kívánt attribútumokat. További attribútumok esetén válassza a **továbbiak megjelenítése**lehetőséget. Válassza például a **továbbiak megjelenítése**lehetőséget, majd az **ország/régió**, a **megjelenítendő név**és az **Irányítószám**elemnél válassza az attribútumok és jogcímek lehetőséget. Válassza az **OK** lehetőséget.
+7. A **felhasználói attribútumok**területen válassza ki a felhasználótól gyűjteni kívánt attribútumokat. További attribútumok esetén válassza a **továbbiak megjelenítése**lehetőséget. Válassza például a **továbbiak megjelenítése**lehetőséget, majd az **ország/régió**, a **megjelenítendő név**és az **Irányítószám**elemnél válassza az attribútumok és jogcímek lehetőséget. Kattintson az **OK** gombra.
 
    ![Új felhasználói folyamat létrehozása lap](media/self-service-sign-up-user-flow/create-user-flow.png)
 

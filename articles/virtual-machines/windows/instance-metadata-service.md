@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086708"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
@@ -164,7 +164,7 @@ API | Alapértelmezett adatformátum | Egyéb formátumok
 /instance | json | szöveg
 /scheduledevents | json | Nincs
 
-A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Például:
+A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Példa:
 
 ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -239,7 +239,7 @@ API | Leírás | Verzió bevezetése
 
 A példány API elérhetővé teszi a virtuálisgép-példányok fontos metaadatait, beleértve a virtuális gépet, a hálózatot és a tárolót. A következő kategóriák érhetők el példányon/számításon keresztül:
 
-Adatok | Description | Verzió bevezetése
+Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
 azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
 customData | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
@@ -433,7 +433,7 @@ A felhő és az Azure-környezet értékei az alábbiakban láthatók.
 
 A hálózati metaadatok a példány API részét képezik. A következő hálózati kategóriák érhetők el a példány/hálózat végponton keresztül.
 
-Adatok | Description | Verzió bevezetése
+Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
 IPv4/Privateipaddress tulajdonságot | A virtuális gép helyi IPv4-címe | 2017-04-02
 IPv4/publicIpAddress | A virtuális gép nyilvános IPv4-címe | 2017-04-02
@@ -501,7 +501,7 @@ A virtuális gépek tárolási profilja három kategóriára oszlik: képhivatko
 
 A képhivatkozási objektum a következő információkat tartalmazza az operációsrendszer-lemezképpel kapcsolatban:
 
-Adatok    | Description
+Adatok    | Leírás
 --------|-----------------
 id      | Erőforrás-azonosító
 offer   | A platform vagy a piactér rendszerképének ajánlata
@@ -511,7 +511,7 @@ version | A platform vagy a piactér rendszerképének verziója
 
 Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
 
-Adatok    | Description
+Adatok    | Leírás
 --------|-----------------
 gyorsítótárazás | Gyorsítótárazási követelmények
 createOption | Információk a virtuális gép létrehozásáról
@@ -527,7 +527,7 @@ writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator
 
 Az adatlemezek tömb tartalmazza a virtuális géphez csatolt adatlemezek listáját. Minden adatlemez-objektum a következő információkat tartalmazza:
 
-Adatok    | Description
+Adatok    | Leírás
 --------|-----------------
 gyorsítótárazás | Gyorsítótárazási követelmények
 createOption | Információk a virtuális gép létrehozásáról
@@ -688,7 +688,7 @@ Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMD
 Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Ez tartalmazza az aláíráshoz használt tanúsítványt, valamint bizonyos virtuálisgép-specifikus részleteket. ARM virtuális gépek esetén ez magában foglalja az vmId, az SKU, az alkalom, a subscriptionId, a dokumentum létrehozásának és lejáratának időbélyegét, valamint a rendszerképre vonatkozó terv adatait. A csomag adatai csak az Azure Marketplace-lemezképek esetében vannak kitöltve. A klasszikus (nem ARM) virtuális gépek esetében csak a vmId garantáltan kell feltölteni. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
 A dokumentum a következő mezőket tartalmazza:
 
-Adatok | Description
+Adatok | Leírás
 -----|------------
 egyszeri | Egy karakterlánc, amely opcionálisan megadható a kérelemben. Ha nem adta meg a megadott időpontot, a rendszer az aktuális UTC-időbélyeget használja.
 csomag | Az [Azure Marketplace-rendszerkép terve](/rest/api/compute/virtualmachines/createorupdate#plan). A csomag azonosítóját (név), a termék rendszerképét vagy az ajánlatot (terméket) és a közzétevő azonosítóját (kiadó) tartalmazza.
@@ -837,7 +837,7 @@ Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
 ## <a name="error-and-debugging"></a>Hiba és hibakeresés
 
-Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Például:
+Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Példa:
 
 HTTP-állapotkód | Ok
 -----------------|-------

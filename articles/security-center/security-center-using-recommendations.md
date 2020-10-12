@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322138"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Az Azure Security Center javaslatainak használata a biztonság növelése érdekében
@@ -29,7 +29,7 @@ Security Center automatikusan folyamatos vizsgálatokat futtat az Azure-erőforr
 - Az operációs rendszer biztonsági konfigurációs javaslatai 48 órán belül frissülnek
 - A Endpoint Protection kapcsolatos javaslatok 8 órán belül frissülnek
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 Ebből a forgatókönyvből megtudhatja, Security Center Hogyan csökkentheti a biztonsági incidensek esélyét a Security Center javaslatok figyelésével és a műveletek elvégzésével. A forgatókönyv a Security Center [tervezési és üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)ismertetett fiktív vállalatot, contosot és szerepköröket használja. Ebben a forgatókönyvben a következő personák szerepköreire koncentrálunk:
 
 ![Forgatókönyv szerepkörei](./media/security-center-using-recommendations/scenario-roles.png)

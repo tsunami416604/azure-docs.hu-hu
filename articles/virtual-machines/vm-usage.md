@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322923"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure-beli virtuális gépek használatának ismertetése
@@ -31,7 +31,7 @@ A kezdéshez [töltse le a használati adatokat](../cost-management-billing/mana
 | Meter Sub-Category | A kiszámlázott mérő azonosítója. <br><br> A számítási órák használata esetén a rendszer minden virtuálisgép-mérethez (Windows, nem Windows) és régióhoz tartozó mérőszámot használ. <br><br> A prémium szintű szoftverek használata esetén minden egyes szoftver esetében van egy mérőszám. A prémium szintű szoftverek többsége minden alapmérethez különböző mérőszámokat tartalmaz. További információért látogasson el a [számítási díjszabás oldalára](https://azure.microsoft.com/pricing/details/virtual-machines/) .</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
 | Meter Name| Ez az egyes Azure-szolgáltatásokra jellemző. A számítási feladatokhoz mindig "Üzemóra".| `Compute Hours`|
 | Meter Region| Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ.|  `JA East`|
-| Unit (Egység)| A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.| `Hours`|
+| Egység| A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.| `Hours`|
 | Consumed (Felhasznált mennyiség)| Az adott napra felhasznált erőforrás mennyisége. A számítási feladatokhoz minden percben a virtuális gép egy adott órában futott (legfeljebb 6 tizedesjegy pontossággal).| `1, 0.5`|
 | Resource Location (Erőforrás helye)  | Az az adatközpont, amelyen az erőforrás fut.| `JA East`|
 | Consumed Service | Az Azure platform szolgáltatás, amelyet használt.| `Microsoft.Compute`|
@@ -59,7 +59,7 @@ Az Azure-katalógusban található egyes rendszerképeknél a kép típusa a tov
 - Windows Server előzetes verzió 
 
 ## <a name="service-type"></a>Szolgáltatástípus
-A további információ mezőben a szolgáltatás típusa mező a telepített virtuális gép méretének felel meg. A Premium Storage virtuális gépek (SSD-alapú) és a nem prémium szintű Storage-beli virtuális gépek (HDD-alapú) díjszabása azonos. Ha SSD-alapú méretet (például standard \_ DS2 \_ v2) helyez üzembe, a nem SSD méret () érték jelenik meg a `Standard\_D2\_v2 VM` mérési alkategória OSZLOPBAN és az SSD-Size ( `Standard\_DS2\_v2` ) a további információ mezőben.
+A további információ mezőben a szolgáltatás típusa mező a telepített virtuális gép méretének felel meg. A Premium Storage virtuális gépek (SSD-alapú) és a nem prémium szintű Storage-beli virtuális gépek (HDD-alapú) díjszabása azonos. Ha SSD-alapú méretet (például standard \_ DS2 \_ v2) helyez üzembe, a nem SSD méret () jelenik meg a `Standard\_D2\_v2 VM` mérő Sub-Category OSZLOPBAN és az SSD-Size () elemnél `Standard\_DS2\_v2` a további információ mezőben.
 
 ## <a name="region-names"></a>Régiók nevei
 A használati adatok erőforrás helye mezőjében kitöltött régió neve eltér a Azure Resource Manager használt régió nevétől. Itt látható a régiók értékei közötti leképezés:

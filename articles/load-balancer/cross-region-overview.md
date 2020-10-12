@@ -14,10 +14,10 @@ ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
 ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336530"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
@@ -55,7 +55,7 @@ Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legk�
 
 A régiók közötti terheléselosztó állapotának vizsgálata 20 másodpercenként adatokat gyűjt a rendelkezésre állásról. Ha egy regionális terheléselosztó a rendelkezésre állását 0-ra, a régiók közötti terheléselosztó a hibát fogja felderíteni. A regionális terheléselosztó ezt követően kikerül a rotációból. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="A globális régió forgalmi nézetének ábrája." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Régiók közötti Load Balancer diagramja" border="true":::
 
 ### <a name="ultra-low-latency"></a>Rendkívül alacsony késés
 
@@ -101,7 +101,7 @@ A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van he
 * USA nyugati régiója
 * Nyugat-Európa
 * Délkelet-Ázsia
-* Az USA középső régiója
+* USA középső régiója
 * Észak-Európa
 * Kelet-Ázsia
 

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 260125b5e7aa4537c6e204d93263b65be042793a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540744"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Windows rendszerű virtuális asztali (klasszikus) címkészlet RDP protokoll tulajdonságainak testreszabása
@@ -49,7 +49,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![A Get-RDSRemoteApp PowerShell-parancsmag képernyőképe az egyéni R D P-tulajdonságok szerkesztésére kijelölt névvel és FriendlyName.](../media/singlecustomrdpproperty.png)
+> ![A PowerShell-parancsmag képernyőképe Get-RDSRemoteApp az egyéni R D P-tulajdonságok szerkesztéséhez kijelölt név-és FriendlyName.](../media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Több egyéni RDP-tulajdonság hozzáadása vagy szerkesztése
 
@@ -61,7 +61,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve egy egyéni R D P tulajdonság szerkesztéséhez.](../media/multiplecustomrdpproperty.png)
+> ![A PowerShell-parancsmag képernyőképe Set-RDSRemoteApp az egyéni R D P-tulajdonságok szerkesztéséhez kijelölt név-és FriendlyName.](../media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>Az összes egyéni RDP-tulajdonság alaphelyzetbe állítása
 
@@ -72,9 +72,9 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](../media/resetcustomrdpproperty.png)
+> ![A PowerShell-parancsmag képernyőképe Get-RDSRemoteApp a Name és a FriendlyName kiemelve.](../media/resetcustomrdpproperty.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

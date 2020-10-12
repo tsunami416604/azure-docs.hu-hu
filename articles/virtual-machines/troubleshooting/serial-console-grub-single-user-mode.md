@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439540"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és a single-user mód eléréséhez
@@ -166,7 +166,7 @@ Alapértelmezés szerint az Ubuntu-lemezképek nem jelenítik meg automatikusan 
 1. Egy szövegszerkesztőben nyissa meg a */etc/default/grub*.
 1. Megjegyzés a `GRUB_HIDDEN_TIMEOUT=1` sorban.
 1. Győződjön meg arról, hogy van egy `GRUB_TIMEOUT_STYLE=menu` sor.
-1. Futtassa az `sudo update-grub` parancsot.
+1. A `sudo update-grub` parancs futtatása.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Single-user mód az Ubuntuban
 Ha az Ubuntu nem indítható el rendesen, akkor a rendszer automatikusan egy egyszeri felhasználói üzemmódba helyezi az adatvesztést. Az egyfelhasználós mód manuális megadásához tegye a következőket:
@@ -240,7 +240,7 @@ A Oracle Linux a GRUB engedélyezve van a dobozból. A GRUB megadásához futtas
 ### <a name="single-user-mode-in-oracle-linux"></a>Egyfelhasználós mód a Oracle Linuxban
 Az egyfelhasználós üzemmód Oracle Linuxban való engedélyezéséhez kövesse a RHEL korábbi utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A soros konzolról további információt a következő témakörben talál:
 * [A Linux soros konzol dokumentációja](serial-console-linux.md)
 * [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)

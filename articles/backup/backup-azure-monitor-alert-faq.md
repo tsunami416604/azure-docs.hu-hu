@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181493"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
@@ -48,7 +48,7 @@ Igen, megtekintheti a jelentéseket a tárakban és az előfizetésekben, valami
 
 Ha Ön [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) -felhasználó, aki delegált hozzáféréssel rendelkezik ügyfelei előfizetéséhez vagy a La munkaterületekhez, a biztonsági mentési jelentések segítségével megtekintheti az összes bérlő adatait.
 
-## <a name="recovery-services-vault"></a>Helyreállítási tár
+## <a name="recovery-services-vault"></a>Recovery Services-tároló
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi ideig tart a Azure Backup ügynök feladatainak állapota, hogy tükrözze a portálon?
 
@@ -66,7 +66,7 @@ Igen. A következő helyzetekben az értesítések nem lesznek elküldve:
 * Feladat megszakításakor
 * Ha egy második biztonsági mentési művelet meghiúsul, mert az eredeti biztonsági mentési feladata folyamatban van
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

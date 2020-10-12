@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87447041"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect konfigurációs beállítások importálása és exportálása (nyilvános előzetes verzió)
@@ -40,7 +40,7 @@ Előzőleg exportált beállítások importálása:
 1. Telepítse a **Azure ad Connectt** egy új kiszolgálóra.
 1. Válassza a **Testreszabás** lehetőséget az **üdvözlő** oldal után.
 1. Válassza a **szinkronizálási beállítások importálása**lehetőséget. Tallózással keresse meg a korábban exportált JSON-beállításokat tartalmazó fájlt.
-1. Válassza a **Telepítés** lehetőséget.
+1. Válassza a **Telepítés** gombot.
 
    ![A szükséges összetevők telepítése képernyőt megjelenítő képernyőkép](media/how-to-connect-import-export-config/import1.png)
 

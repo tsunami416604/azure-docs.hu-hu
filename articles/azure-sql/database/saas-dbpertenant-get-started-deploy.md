@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618939"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Olyan több-bérlős SaaS-alkalmazás üzembe helyezése és feltárása, amely az adatbázis-bérlői mintát használja Azure SQL Database
@@ -104,7 +104,7 @@ A parancsfájlok futtatása előtt frissítse az erőforráscsoportot és a felh
 
 Ezek az értékek szinte minden parancsfájlban hivatkoznak rá.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Az alkalmazás az eseményeket üzemeltető helyszíneket mutatja be. A helyszín típusok közé tartoznak a koncert termek, a jazz klubok és a sport klubok. Wingtip-jegyek esetén a helyszínek bérlőként vannak regisztrálva. A bérlők egyszerű lehetőséget biztosítanak az események listázására és a jegyek értékesítésére az ügyfeleknek. Minden helyszín egy személyre szabott webhelyet kap az események listázásához és jegyek eladásához.
 
@@ -187,7 +187,7 @@ A *Demo-LoadGenerator.ps1* az ügyfelek tranzakcióinak aktív terhelését utá
 
 4. Ha `$OneTime = $false` a Load Generator elindítja a háttérben futó feladatokat, és folytatja a futtatást. Minden 10 másodpercenként figyeli a kiépített új bérlőket. Ha be van állítva `$OneTime = $true` , a LoadGenerator elindítja a háttérben futó feladatokat, majd leállítja a futtatást az előtérben. Ebben az oktatóanyagban hagyja a következőt: `$OneTime = $false` .
 
-   Ha szeretné leállítani vagy újraindítani a Load Generatort, használja a CTRL-C vagy a Leállítás művelet Ctrl-Break billentyűkombinációt.
+   Ha szeretné leállítani vagy újraindítani a Load Generatort, használja a CTRL-C vagy a stop művelet Ctrl-Break.
 
    Ha a Load Generatort az előtérben futtatja, egy másik PowerShell ISE-példánnyal is futtathat más PowerShell-parancsfájlokat.
 
@@ -258,7 +258,7 @@ A két diagram azt szemlélteti, hogy a rugalmas készletek és a SQL Databaseek
 - A rugalmas feladatokkal kapcsolatos további tudnivalókért tekintse meg a kibővített [felhőalapú adatbázisok kezelése](../../sql-database/elastic-jobs-overview.md)című témakört.
 - A több-bérlős SaaS-alkalmazásokkal kapcsolatos további információkért lásd: [tervezési minták több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 
