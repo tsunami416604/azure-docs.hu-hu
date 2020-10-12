@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575384"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945532"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Oktatóanyag: IoT csatlakoztatása a Windows rendszeren futó több összetevőt használó Plug and Play IoT Hub (C#)
 
@@ -33,7 +33,7 @@ Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a köve
 
 Ha befejezte a gyors üzembe helyezést [: csatlakoztasson egy IoT Plug and Play Windows rendszerű eszközt IoT hub (C#)](quickstart-connect-device-csharp.md), már klónozotta a tárházat.
 
-A mintákat a .NET GitHub-tárház Microsoft Azure IoT SDK-ból klónozott. Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa a következő parancsot a .NET GitHub-tárház [Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához:
+A minták klónozása az Azure IoT-mintákból a C# GitHub-tárházba. Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa a következő parancsot a .NET GitHub-tárház [Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git

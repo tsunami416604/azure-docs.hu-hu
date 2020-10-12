@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426333"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrálás az Orchestratorből az Azure Automationbe (bétaverzió)
@@ -73,7 +73,7 @@ ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <s
 * Modul – a runbookok lévő tevékenységeket tartalmazó integrációs modulok vesszővel tagolt listája.
 * OutputFolder – a mappa elérési útja a konvertált grafikus runbookok létrehozásához.
 
-A következő példában szereplő parancs átalakítja a runbookok egy **MyRunbooks. ois_export**nevű exportálási fájlba.  Ezek a runbookok a Active Directory és Data Protection Manager integrációs csomagokat használják.
+A következő példában szereplő parancs egy **MyRunbooks.ois_export**nevű exportálási fájlba konvertálja a runbookok.  Ezek a runbookok a Active Directory és Data Protection Manager integrációs csomagokat használják.
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"

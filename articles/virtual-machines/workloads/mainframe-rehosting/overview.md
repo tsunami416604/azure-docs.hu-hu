@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835527"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>A nagyszámítógépek Azure-beli virtuális gépeken való üzemeltetése
@@ -33,7 +33,7 @@ Egyes nagyszámítógép-munkaterhelések áttelepíthetők az Azure-ba viszonyl
 
 ## <a name="mainframe-migration"></a>Nagyszámítógép migrálása
 
-Újrafuttatja, újraépíti, lecseréli vagy kivonja? IaaS vagy Péter? A nagyvállalati alkalmazások megfelelő áttelepítési stratégiájának meghatározásához tekintse meg a [Nagyszámítógépi áttelepítési](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) útmutatót a Azure Architecture Center.
+Újrafuttatja, újraépíti, lecseréli vagy kivonja? IaaS vagy Péter? A nagyvállalati alkalmazások megfelelő áttelepítési stratégiájának meghatározásához tekintse meg a [Nagyszámítógépi áttelepítési](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)  útmutatót a Azure Architecture Center.
 
 ## <a name="micro-focus-rehosting-platform"></a>A Micro Focus platform újraüzemeltetése
 
@@ -110,7 +110,7 @@ Azure Government egy ideiglenes hatóságot (P-ATO) kapott ahhoz, hogy a FedRAMP
 
 Első lépésként töltse le [Microsoft Azure Government felhőt a nagyszámítógépek alkalmazásaihoz](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérje [partnereit](partner-workloads.md) , hogy segítsenek áttelepíteni vagy áthelyezni a nagyszámítógépű alkalmazásokat. 
 

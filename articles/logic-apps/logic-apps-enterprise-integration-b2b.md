@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542376"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-üzenetek fogadása és megerősítése Azure Logic Apps és Enterprise Integration Pack használatával
@@ -178,7 +178,7 @@ Ezzel befejezte a B2B logikai alkalmazás beállítását. Egy valós alkalmazá
 
 Saját LOB-alkalmazások összekapcsolásához és az API-k a logikai alkalmazásban való használatához további műveleteket adhat hozzá, vagy [Egyéni API-kat írhat](../logic-apps/logic-apps-create-api-app.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő HTTPS-hívások fogadása és megválaszolása](../connectors/connectors-native-reqres.md)
 * [Exchange AS2-üzenetek a B2B vállalati integrációhoz](../logic-apps/logic-apps-enterprise-integration-as2.md)

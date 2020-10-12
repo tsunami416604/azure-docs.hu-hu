@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662388"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása
@@ -64,7 +64,7 @@ A szinkronizálási szolgáltatás két összetevőből áll, a helyszíni **Azu
 | **További információk és hivatkozások** | |
 | [Portok](reference-connect-ports.md) |Felsorolja, hogy mely portokat kell megnyitni a Szinkronizáló motor és a helyszíni címtárak és az Azure AD között. |
 | [Az Azure Active Directoryval szinkronizált attribútumok](reference-connect-sync-attributes-synchronized.md) |Felsorolja az összes, a helyszíni AD és az Azure AD között szinkronizált attribútumot. |
-| [Functions – referencia](reference-connect-sync-functions-reference.md) |A deklaratív kiépítés során elérhető összes függvény listája. |
+| [Függvények referenciája](reference-connect-sync-functions-reference.md) |A deklaratív kiépítés során elérhető összes függvény listája. |
 
 ## <a name="additional-resources"></a>További források
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

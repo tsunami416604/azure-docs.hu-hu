@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831226"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>A gyakori hibaüzenetek ismertetése a virtuális gépek kezelésekor az Azure-ban
@@ -79,7 +79,7 @@ Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteke
 |  DiskBlobAlreadyInUseByAnotherDisk  |  A blobot {0} már egy másik, a (z) virtuális géphez tartozó lemez használja {1} . Megvizsgálhatja a lemezre vonatkozó hivatkozási információk blob-metaadatait.  |
 |  DiskBlobNotFound  |  Nem található a (z) "" lemez URI-azonosítóját tartalmazó VHD-blob {0} {1} .  |
 |  DiskBlobNotFound  |  A VHD-blob nem található URI-val {0} .  |
-|  DiskEncryptionKeySecretMissingTags  |  {0}a titkos kód nem rendelkezik {1} címkékkel. Frissítse a titkos verziót, adja hozzá a szükséges címkéket, majd próbálkozzon újra.  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} a titkos kód nem rendelkezik {1} címkékkel. Frissítse a titkos verziót, adja hozzá a szükséges címkéket, majd próbálkozzon újra.  |
 |  DiskEncryptionKeySecretUnwrapFailed  |  Nem sikerült kicsomagolni a titkos {0} értéket a kulcs használatával {1} .  |
 |  DiskImageNotReady  |  A lemezkép {0} állapotban van {1} . Próbálkozzon újra, ha a rendszerkép elkészült.  |
 |  DiskPreparationError  |  Egy vagy több hiba történt a VM-lemezek előkészítése során. Részletekért lásd a lemez példányának nézetét.  |
@@ -91,7 +91,7 @@ Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteke
 |  IncorrectImageBlobType  |  A lemezes Blobok csak oldal típusú Blobok lehetnek. A (z) {0} "" lemezhez tartozó blob {1} blokk típusú blob.  |
 |  IncorrectImageBlobType  |  A lemezes Blobok csak oldal típusú Blobok lehetnek. {0}A blob típusa " {1} ".  |
 |  InternalOperationError  |  Nem oldható fel a Storage-fiók {0} . Győződjön meg arról, hogy a tárolási erőforrás-szolgáltatón keresztül lett létrehozva a számítási erőforrással megegyező helyen.  |
-|  InternalOperationError  |  {0}nem sikerült felkeresni a feladatokat.  |
+|  InternalOperationError  |  {0} nem sikerült felkeresni a feladatokat.  |
 |  InternalOperationError  |  Hiba történt a (z) "" virtuális gép hálózati profiljának ellenőrzésekor {0} .  |
 |  InvalidAccountType  |  A AccountType {0} érvénytelen.  |
 |  InvalidParameter  |  A paraméter értéke {0} érvénytelen.  |
@@ -110,7 +110,7 @@ Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteke
 |  InvalidParameter  |  A tartalék tartományok megadott számának {0} a tartományba kell esnie {1} {2} .  |
 |  InvalidParameter  |  A licenc típusa {0} érvénytelen. Az érvényes licencfeltételek a következők: Windows_Client vagy Windows_Server, megkülönböztetve a kis-és nagybetűket.  |
 |  InvalidParameter  |  A Linux-állomásnév nem lehet hosszabb {0} karakternél, vagy a következő karaktereket tartalmazza: {1} .  |
-|  InvalidParameter  |  Az SSH nyilvános kulcsok céljának elérési útja jelenleg az alapértelmezett értékre van korlátozva, a {0} Linux-kiépítési ügynök ismert hibája miatt.  |
+|  InvalidParameter  |  Az SSH nyilvános kulcsok céljának elérési útja jelenleg az alapértelmezett értékre van korlátozva, a {0}  Linux-kiépítési ügynök ismert hibája miatt.  |
 |  InvalidParameter  |  Már létezik lemez a LUN-ban {0} .  |
 |  InvalidParameter  |  A kérelem előfizetésének {0} meg kell egyeznie a {1} felügyelt lemez azonosítójában szereplő előfizetéssel.  |
 |  InvalidParameter  |  A OSProfile lévő egyéni adatmennyiségnek Base64 kódolással kell rendelkeznie, és legfeljebb karakter hosszúnak kell lennie {0} .  |
@@ -171,13 +171,13 @@ Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteke
 |  OperationNotAllowed  |  Nem lehet átméretezni a virtuális gépet, mert a kért méret {0} nem érhető el abban a fürtben, ahol a rendelkezésre állási csoport jelenleg le van foglalva. A rendelkezésre álló méretek a következők: {1} . További információk a virtuális gépek átméretezésével kapcsolatos stratégiáról: https://aka.ms/azure-resizevm .  |
 |  OperationNotAllowed  |  Nem lehet átméretezni a virtuális gépet, mert a kért méret {0} nem érhető el abban a fürtben, amelyben a virtuális gép jelenleg le van foglalva. Ha szeretné átméretezni a virtuális gépet, hogy {1} felszabadítsa a lefoglalást (ez a leállítási művelet a Azure Portal), majd próbálja megismételni az átméretezési műveletet. További információk a virtuális gépek átméretezésével kapcsolatos stratégiáról: https://aka.ms/azure-resizevm .  |
 |  OSProvisioningClientError  |  Az operációs rendszer üzembe helyezése nem sikerült a (z) "" virtuális géphez, {0} mert a vendég operációs rendszer jelenleg ki van építve.  |
-|  OSProvisioningClientError  |  A (z) "" virtuális gép operációs rendszerének üzembe helyezése {0} nem sikerült. Hiba részletei: Győződjön meg {1} arról, hogy a rendszerkép megfelelően előkészített (általánosított). <ul><li>Windows-utasítások:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  Az SSH-gazda kulcsának létrehozása sikertelen volt. Hiba részletei: {0} . A probléma megoldásához ellenőrizze, hogy a Linux-ügynök megfelelően van-e beállítva. <ul><li>Az utasításokat a következő helyen tekintheti meg:https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  A (z) "" virtuális gép operációs rendszerének üzembe helyezése {0} nem sikerült. Hiba részletei: Győződjön meg {1} arról, hogy a rendszerkép megfelelően előkészített (általánosított). <ul><li>Windows-utasítások: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  Az SSH-gazda kulcsának létrehozása sikertelen volt. Hiba részletei: {0} . A probléma megoldásához ellenőrizze, hogy a Linux-ügynök megfelelően van-e beállítva. <ul><li>Az utasításokat a következő helyen tekintheti meg: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  A virtuális géphez megadott Felhasználónév érvénytelen ehhez a Linux-disztribúcióhoz. Hiba részletei: {0} .  |
 |  OSProvisioningInternalError  |  Belső hiba miatt nem sikerült a (z) "" virtuális gép operációs rendszerének üzembe helyezése {0} .  |
 |  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A virtuális gép továbbra is befejezheti a kiépítés sikerességét. A kiépítési állapotot később ellenőrizze.  |
 |  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A virtuális gép továbbra is befejezheti a kiépítés sikerességét. A kiépítési állapotot később ellenőrizze. Győződjön meg arról is, hogy a rendszerkép megfelelően előkészített (általánosított).   <ul><li>[Windows]( ../windows/upload-generalized-managed.md)-utasítások.</li><li> [Linux](../linux/capture-image.md) -utasítások</li></ul>  |
-|  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A rendszer azonban a virtuális gép vendég ügynökét észlelte. Ez azt sugallja, hogy a vendég operációs rendszer nem lett megfelelően felkészülve a virtuálisgép-rendszerképként való használatra (CreateOption = FromImage). A probléma megoldásához használja a VHD-t a következő módon: CreateOption = csatolja vagy készítse el megfelelően a rendszerképként való használatra:   <ul><li>Windows-utasítások:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux-utasítások:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A rendszer azonban a virtuális gép vendég ügynökét észlelte. Ez azt sugallja, hogy a vendég operációs rendszer nem lett megfelelően felkészülve a virtuálisgép-rendszerképként való használatra (CreateOption = FromImage). A probléma megoldásához használja a VHD-t a következő módon: CreateOption = csatolja vagy készítse el megfelelően a rendszerképként való használatra:   <ul><li>Windows-utasítások: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux-utasítások: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  A virtuális gép szükséges mérete jelenleg nem érhető el a kiválasztott helyen.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Az erőforrás jelenleg nem frissíthető, mert folyamatban van a platform frissítése. Próbálkozzon újra később.  |
 |  StorageAccountLimitation  |  A (z) "" Storage-fiók {0} nem támogatja a lemezek létrehozásához szükséges Blobok használatát.  |
@@ -215,5 +215,5 @@ Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteke
 |  VMStartTimedOut  |  A (z) "" virtuális gép {0} nem indult el a megadott időn belül. A virtuális gép továbbra is sikeresen elindulhat. Ellenőrizze a Power állapotot később.  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure [-szakértőkkel az MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

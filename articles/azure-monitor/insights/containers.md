@@ -7,10 +7,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
 ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326902"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Tároló-figyelési megoldás a Azure Monitor
@@ -360,7 +360,7 @@ Kiválaszthatja, hogy omsagent-DaemonSets hoz létre a titkokkal vagy anélkül.
         KEY:    88 bytes
         ```
 
-    5. Hozza létre a omsagent démont a futtatásával```sudo kubectl create -f omsagent-ds-secrets.yaml```
+    5. Hozza létre a omsagent démont a futtatásával ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Ellenőrizze, hogy a Log Analytics ügynök Daemonset elemet fut-e, a következőhöz hasonlóan:
 
@@ -404,7 +404,7 @@ A Windows Kubernetes parancsfájl használatával létrehozhatja a YAML-fájlt a
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Hozza létre a omsagent démont a futtatásával```kubectl create -f omsagentsecret.yaml```
+    3. Hozza létre a omsagent démont a futtatásával ```kubectl create -f omsagentsecret.yaml```
     4. A következő futtatásával ellenőrizhető:
 
         ```
@@ -431,7 +431,7 @@ A Windows Kubernetes parancsfájl használatával létrehozhatja a YAML-fájlt a
         KEY:    88 bytes
         ```
 
-    5. Hozza létre a omsagent démont a futtatásával```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. Hozza létre a omsagent démont a futtatásával ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. Ellenőrizze, hogy a Log Analytics ügynök Daemonset elemet fut-e, a következőhöz hasonlóan:
 
@@ -447,7 +447,7 @@ A Windows Kubernetes parancsfájl használatával létrehozhatja a YAML-fájlt a
 
 A következő lépésekkel végezheti el a Log Analytics ügynök üzembe helyezését a Linux Kubernetes-környezetben.
 
-1. Hozza létre a omsagent démont a futtatásával```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. Hozza létre a omsagent démont a futtatásával ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Az eredmény az alábbihoz hasonlóan fog kinézni:
 
     ```
@@ -602,7 +602,7 @@ Log Analytics egy tárolót **sikertelenként** jelöl meg, ha nem nulla kilép�
    ![sikertelen tárolók](./media/containers/containers-state-failed-select.png)  
 1. Futtassa a lekérdezést, majd az eredmények egyik sorát kibontva tekintse meg a rendszerkép AZONOSÍTÓját.  
    ![sikertelen tárolók](./media/containers/containers-state-failed.png)  
-1. Írja be a következőt a napló lekérdezésbe. `ContainerImageInventory | where ImageID == <ImageID>`a rendszerkép részleteit, például a képméretet és a leállított és sikertelen lemezképek számát tekintheti meg.  
+1. Írja be a következőt a napló lekérdezésbe. `ContainerImageInventory | where ImageID == <ImageID>` a rendszerkép részleteit, például a képméretet és a leállított és sikertelen lemezképek számát tekintheti meg.  
    ![sikertelen tárolók](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>Adattárolók lekérdezési naplói
@@ -620,7 +620,7 @@ Ha egy adott hibával kapcsolatos hibaelhárítást végez, a segítségével me
 
 ### <a name="to-query-logs-for-container-data"></a>A tárolók adatnaplóinak lekérdezése
 
-* Válasszon egy olyan rendszerképet, amelyről tudja, hogy nemrég meghiúsult, és keresse meg a naplófájlokat. Kezdje azzal, hogy megkeresi az adott képet futtató **ContainerInventory** -kereséssel rendelkező tároló nevét. Például keressen rá a következőre:`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
+* Válasszon egy olyan rendszerképet, amelyről tudja, hogy nemrég meghiúsult, és keresse meg a naplófájlokat. Kezdje azzal, hogy megkeresi az adott képet futtató **ContainerInventory** -kereséssel rendelkező tároló nevét. Például keressen rá a következőre: `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Ubuntu-tárolók keresése](./media/containers/search-ubuntu.png)
 
   Bontsa ki az eredmények bármelyik sorát a tároló részleteinek megtekintéséhez.

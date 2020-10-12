@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401741"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
@@ -42,18 +42,18 @@ Az előző ábrán a számok a legfontosabb hálózati pontokat jelölik. Ezeket
 
 1.  Ügyfél-számítási eszköz (például kiszolgáló vagy számítógép)
 2.  CEs: ügyfél peremhálózati útválasztói 
-3.  PEs (CE felé irányuló): Provider Edge-útválasztók/kapcsolók, amelyek az ügyfél peremhálózati útválasztói felé néznek. Ez a dokumentum PE-CEs néven szerepel.
-4.  PEs (MSEE szembenézve): Provider Edge-útválasztók/kapcsolók, amelyek a Msee felé néznek. Ez a dokumentum PE-Msee néven szerepel.
+3.  PEs (CE felé irányuló): Provider Edge-útválasztók/kapcsolók, amelyek az ügyfél peremhálózati útválasztói felé néznek. A jelen dokumentum PE-CEs néven szerepel.
+4.  PEs (MSEE szembenézve): Provider Edge-útválasztók/kapcsolók, amelyek a Msee felé néznek. A jelen dokumentum PE-MSEEs néven szerepel.
 5.  Msee: Microsoft Enterprise Edge (MSEE) ExpressRoute útválasztók
 6.  Virtual Network (VNet) átjáró
 7.  Számítási eszköz az Azure VNet
 
 Ha a felhőalapú Exchange közös helye, pont-pont típusú Ethernet vagy közvetlen kapcsolati modell van használatban, a CEs (2) létrehozza a BGP-társat a Msee (5). 
 
-Ha a bármely-a-bármelyik (IPVPN) kapcsolati modellt használja, a PE-Msee (4) BGP-társat hoz létre a Msee (5) használatával. PE-Msee a Microsofttól kapott útvonalakat a IPVPN szolgáltató hálózatán keresztül propagálja az ügyfél hálózatának.
+Ha a bármely (IPVPN) kapcsolati modellt használja, PE-MSEEs (4) a BGP-társak létrehozása a Msee (5) használatával. PE-MSEEs propagálja a Microsofttól kapott útvonalakat a IPVPN szolgáltató hálózatán keresztül az ügyfél hálózatának.
 
 > [!NOTE]
->A magas rendelkezésre állás érdekében a Microsoft teljesen redundáns párhuzamos kapcsolatot létesít a Msee (5) és a PE-Msee (4) párok között. A rendszer a teljes mértékben redundáns párhuzamos hálózati elérési utat is javasolja a Customer Network és a PE-CEs párok között. A magas rendelkezésre állással kapcsolatos további információkért tekintse meg a [magas rendelkezésre állás tervezése a ExpressRoute][HA] -ben című cikket.
+>A magas rendelkezésre állás érdekében a Microsoft teljesen redundáns párhuzamos kapcsolatot létesít a Msee (5) és PE-MSEEs (4) párok között. A rendszer a teljes mértékben redundáns párhuzamos hálózati elérési utat is javasolja az ügyfél-hálózat és a PE-CEs pár között. A magas rendelkezésre állással kapcsolatos további információkért tekintse meg a [magas rendelkezésre állás tervezése a ExpressRoute][HA] -ben című cikket.
 >
 >
 
@@ -319,7 +319,7 @@ StatusCode: 400
 ## <a name="next-steps"></a>Következő lépések
 További információért és segítségért tekintse meg az alábbi hivatkozásokat:
 
-- [Microsoft támogatási szolgálat][Support]
+- [Microsoft ügyfélszolgálata][Support]
 - [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása][CreateCircuit]
 - [ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása][CreatePeering]
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893724"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Szabály-hierarchia definiálása Azure Firewall házirend használatával
@@ -48,7 +48,7 @@ Szabályzatok létrehozása az egyes alkalmazási csapatokhoz:
 - Egy adatbázis-tűzfal házirend. Az adatbázis-tűzfal házirendje örökli az alapszintű tűzfal házirendjét.
 - Egy mérnöki tűzfal házirendje. A mérnöki tűzfal házirendje szintén örökli az alapszintű tűzfal-házirendet.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Házirend-hierarchia" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Csapatok és követelmények" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Egyéni szerepkörök létrehozása a szabálygyűjtemény-csoportok eléréséhez 
 
@@ -59,10 +59,10 @@ Egyéni szerepkörök definiálásához használja a következő magas szintű e
 1. Előfizetés beszerzése:
 
    `Select-AzSubscription -SubscriptionId xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx`
-2. Futtassa a következő parancsot:
+2. Futtassa az alábbi parancsot:
 
    `Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize`
-3. Használja a Get-AzRoleDefinition parancsot az olvasói szerepkör JSON formátumban való exportálásához. 
+3. Az olvasó szerepkör JSON formátumban való kimenetéhez használja a Get-AzRoleDefinition parancsot. 
 
    `Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json`
 4. Nyissa meg a ReaderSupportRole.jsfájlt egy szerkesztőben.
@@ -128,15 +128,15 @@ A JSON-fájlnak az alábbi példához hasonlóan kell kinéznie:
 
 ### <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-Az összes egyéni szerepkör listázásához a Get-AzRoleDefinition parancsot használhatja:
+Az összes egyéni szerepkör listázásához használhatja a Get-AzRoleDefinition parancsot:
 
    `Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom`
 
 A Azure Portal egyéni szerepkörei is megtekinthetők. Nyissa meg az előfizetését, és válassza a **hozzáférés-vezérlés (iam)**, majd a **szerepkörök**lehetőséget.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Csapatok és követelmények":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy olvasási engedélye":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Csapatok és követelmények":::
 
 További információ: [oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](../role-based-access-control/tutorial-custom-role-powershell.md).
 
@@ -151,7 +151,7 @@ A portálon felhasználókat adhat hozzá a AZFM-szabályok gyűjtési csoportj�
 
 Ismételje meg ezt az eljárást a többi tűzfal-házirendnél.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az egyéni RBAC rendelkező tűzfalszabályok mostantól szelektív hozzáférést biztosítanak a tűzfalszabályok szabály-gyűjtési csoportjaihoz.
 

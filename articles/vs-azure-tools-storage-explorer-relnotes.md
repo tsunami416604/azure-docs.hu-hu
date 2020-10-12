@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828778"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
@@ -1031,7 +1031,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 ### <a name="new"></a>Új
 * A statikus webhelyek által használt $web tárolók elérése mostantól támogatott. Így könnyedén feltöltheti és kezelheti a webhely által használt fájlokat és mappákat. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * A macOS-ben lévő alkalmazás-sáv újra lett rendszerezve. A változtatások közé tartozik a Fájl menü, néhány billentyűparancs, valamint az alkalmazás menüjében számos új parancs. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Az Azure US Governmentbe való bejelentkezéshez használt szolgáltatói végpont a következőre változott:https://login.microsoftonline.us/
+* Az Azure US Governmentbe való bejelentkezéshez használt szolgáltatói végpont a következőre változott: https://login.microsoftonline.us/
 * Kisegítő lehetőségek: Ha egy képernyőolvasó aktív, a billentyűzetes Navigálás már együttműködik a jobb oldalon található elemek megjelenítéséhez használt táblázatokkal. A nyílbillentyűk segítségével navigáljon a sorokhoz és az oszlopokhoz, és az alapértelmezett műveletek meghívásához adja meg a helyi menüt, és nyissa meg az elemhez tartozó helyi menüt, és váltson át vagy vezérelje a többkijelölést. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Javítások

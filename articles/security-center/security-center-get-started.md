@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447164"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946015"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Gyors útmutató: Azure Security Center beállítása
 
@@ -33,7 +33,7 @@ A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkez
 Az Azure Defender előfizetésre való engedélyezéséhez hozzá kell rendelnie az előfizetés tulajdonosa, az előfizetés közreműködője vagy a biztonsági rendszergazda szerepkört.
 
 
-## <a name="open-security-center-for-the-first-time"></a>Első Security Center megnyitása
+## <a name="enable-security-center-on-your-azure-subscription"></a>Security Center engedélyezése az Azure-előfizetésben
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
 
@@ -54,6 +54,8 @@ A Security Center első indítása után néhány percen belül a következők j
 
 A Security Center teljes kihasználása érdekében az Azure Defender engedélyezéséhez és a Log Analytics-ügynök telepítéséhez végre kell hajtania az alábbi lépéseket.
 
+> [!TIP]
+> Ha a felügyeleti csoportban lévő összes előfizetéshez Security Center szeretne engedélyezni, tekintse [meg a Security Center engedélyezése több Azure-előfizetésben](onboard-management-group.md)című témakört.
 
 ## <a name="enable-azure-defender"></a>Az Azure Defender engedélyezése
 
@@ -80,7 +82,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
 1. Válassza ki az adott előfizetést.
 1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a**következőre:.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Security Center áttekintése irányítópult":::
 

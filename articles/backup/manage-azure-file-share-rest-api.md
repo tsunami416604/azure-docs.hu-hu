@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan kezelheti és figyelheti az Azure Backup által
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88892847"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Azure-fájlmegosztás biztonsági mentésének kezelése REST API
@@ -166,7 +166,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 'Content-Length': '0'
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával a GET paranccsal:
+Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy a Azure-AsyncOperation fejléc használatával a GET paranccsal:
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01
@@ -209,6 +209,6 @@ DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f4
 A védelem törlése aszinkron művelet. A művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 204 (nincs tartalom), amikor a művelet befejeződik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató az [Azure-fájlmegosztás biztonsági mentésének konfigurálása során felmerülő problémák elhárításához](troubleshoot-azure-files.md).

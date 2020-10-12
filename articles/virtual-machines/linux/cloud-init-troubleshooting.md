@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434639"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>A virtuális gépek üzembe helyezésének hibaelhárítása a Cloud-init használatával
@@ -89,7 +89,7 @@ Itt talál további információt arról, hogy mit kell keresni az egyes Cloud-i
 
 Alapértelmezés szerint az összes olyan felhő-inicializálási esemény, amelynek prioritása hibakeresés vagy magasabb, a következőre íródik: `/var/log/cloud-init.log` . Ez részletes naplókat biztosít a Cloud-init inicializálásakor előforduló összes eseményről. 
 
-Például:
+Példa:
 
 ```console
 2019-10-10 04:51:25,321 - util.py[DEBUG]: Failed mount of '/dev/sr0' as 'auto': Unexpected error while running command.
@@ -124,7 +124,7 @@ Ha továbbra sem tudja elkülöníteni, hogy miért nem sikerült kiépíteni a 
 
 
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>4. lépés: annak vizsgálata, hogy a konfiguráció miért nincs alkalmazva
-A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha például a `runcmd` modult egy Cloud-init konfigurációban használja, akkor a futtatott parancsból nem nulla kilépési kód jelenik meg, mert a virtuális gép üzembe helyezése sikertelen lesz. Ennek az az oka, hogy az alapszintű üzembe helyezési funkció után fut, amely a Cloud-init első 3 fázisában történik. A konfiguráció által nem alkalmazott hibák megoldásához tekintse át a 3. lépésben és a Cloud-init modulok naplóit manuálisan. Például:
+A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha például a `runcmd` modult egy Cloud-init konfigurációban használja, akkor a futtatott parancsból nem nulla kilépési kód jelenik meg, mert a virtuális gép üzembe helyezése sikertelen lesz. Ennek az az oka, hogy az alapszintű üzembe helyezési funkció után fut, amely a Cloud-init első 3 fázisában történik. A konfiguráció által nem alkalmazott hibák megoldásához tekintse át a 3. lépésben és a Cloud-init modulok naplóit manuálisan. Példa:
 
 - `runcmd` – a parancsfájlok hibák nélkül futnak? Futtassa manuálisan a konfigurációt a terminálról, hogy biztosan a várt módon fussanak.
 - Csomagok telepítése – a virtuális gép hozzáférhet a csomagok tárházához?

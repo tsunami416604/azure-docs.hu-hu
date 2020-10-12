@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728488"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893356"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -25,7 +25,7 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | 1. az egyszerű szolgáltatásnév vagy a közzétételi profil beolvasása. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Létrehozás** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
+|**Építeni** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
 |**Telepítés** | 1. Telepítse a tároló lemezképét. |
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -84,7 +84,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Illessze be a JSON-kimenet tartalmát a titkos változó értékeként. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
 
 ```yaml
 - uses: azure/login@v1
@@ -100,7 +100,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Az [alkalmazás szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a letöltött közzétételi profil tartalmát a titkos kulcs érték mezőjébe. Nevezze el a titkot `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Például:
+A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Példa:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -114,7 +114,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 [Felhasználói szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
 
 ```yaml
 - uses: azure/login@v1
@@ -137,10 +137,6 @@ Adja meg a Docker bejelentkezési művelettel használni kívánt titkokat.
 ## <a name="build-the-container-image"></a>A tároló rendszerképének összeállítása
 
 Az alábbi példa egy Node.JS Docker-rendszerképet felépítő munkafolyamat egy részét mutatja be. A [Docker-bejelentkezés](https://github.com/azure/docker-login) használatával jelentkezzen be egy privát tároló-beállításjegyzékbe. Ez a példa Azure Container Registry használ, de ugyanez a művelet más beállításjegyzékek esetében is működik. 
-
-# <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
-
-Ebből a példából megtudhatja, hogyan hozhat létre Node.JS Docker-rendszerképet egy közzétételi profil használatával a hitelesítéshez.
 
 
 ```yaml
@@ -191,41 +187,6 @@ jobs:
         docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
-# <a name="service-principal"></a>[Egyszerű szolgáltatásnév](#tab/service-principal)
-
-Ez a példa bemutatja, hogyan hozhat létre Node.JS Docker-rendszerképet egy egyszerű szolgáltatásnév használatával a hitelesítéshez. 
-
-```yaml
-on: [push]
-
-name: Linux_Container_Node_Workflow
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}   
-    - uses: azure/docker-login@v1
-      with:
-        login-server: mycontainer.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}  
-    - run: |
-        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}      
-    - name: Azure logout
-      run: |
-        az logout
-```
-
----
 
 ## <a name="deploy-to-an-app-service-container"></a>Üzembe helyezés App Service tárolón
 
@@ -237,7 +198,7 @@ Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíten
 | **közzétételi profil** | Választható Profil fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban |
 | **képek** | Teljesen minősített tároló-rendszerkép (ek) neve. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós forgatókönyv esetén több tároló KépNeve is biztosítható (többsoros elválasztva) |
 | **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
-| **konfigurációs fájl** | Választható A Docker-levélírás fájljának elérési útja |
+| **konfigurációs fájl** | Választható A Docker-Compose fájl elérési útja |
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 
@@ -310,7 +271,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

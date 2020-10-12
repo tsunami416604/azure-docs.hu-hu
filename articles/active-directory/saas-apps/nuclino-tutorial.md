@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554294"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Nuclino
 
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -155,15 +155,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Kattintson az **ikonra**.
 
-    ![Nuclino-konfiguráció](./media/nuclino-tutorial/configure1.png)
+    ![Képernyőkép, amely az "Azure A D S s O" elem melletti "Menu" ikont jeleníti meg.](./media/nuclino-tutorial/configure1.png)
 
 5. Kattintson az **Azure ad SSO** elemre, és válassza a **csoport beállításai** lehetőséget a legördülő menüből.
 
-    ![Nuclino-konfiguráció](./media/nuclino-tutorial/configure2.png)
+    ![Képernyőfelvétel: az "Azure A D S s O" legördülő menüből válassza ki a "csapat beállításai" lehetőséget.](./media/nuclino-tutorial/configure2.png)
 
 6. Válassza a bal oldali navigációs ablaktábla **hitelesítés** elemét.
 
-    ![Nuclino-konfiguráció](./media/nuclino-tutorial/configure3.png)
+    ![A "hitelesítés" lehetőséget megjelenítő képernyőkép.](./media/nuclino-tutorial/configure3.png)
 
 7. A **hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 

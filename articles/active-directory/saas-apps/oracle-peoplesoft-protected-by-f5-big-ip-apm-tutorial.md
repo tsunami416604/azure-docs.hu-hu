@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
 ms.openlocfilehash: 7d2dc1d5d02f1a371d6d94f9eeddf395d49126d7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620137"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Oracle PeopleSoft-mel – védett az F5 BIG-IP APM használatával
@@ -73,8 +73,8 @@ Az Azure AD SSO konfigurálásához és teszteléséhez az F5 BIG-IP APM által 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. Az **[F5 Big-IP APM SSO-védelemmel ellátott Oracle PeopleSoft konfigurálása](#configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. Az **[F5 Big-IP APM-teszt felhasználó által védett Oracle PeopleSoft létrehozása](#create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user)** – hogy az Oracle PeopleSoft által védett B. Simon partnere legyen az F5 Big-IP APM, amely a felhasználó Azure ad-képviseletéhez van társítva.
+1. Az **[Oracle PeopleSoft-Protected konfigurálása az F5 Big-IP APM SSO használatával](#configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Oracle-PeopleSoft-Protected létrehozása az F5 Big-IP APM test User használatával](#create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user)** – hogy az Oracle PeopleSoft által védett B. Simon partnere legyen az F5 Big-IP APM, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<FQDN>.peoplesoft.f5.com/`
 
     > [!NOTE]
-    >Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval, válasz URL-címmel és kijelentkezési URL-címmel. Vegye fel a kapcsolatot az [Oracle PeopleSoft által védett F5 Big-IP APM ügyfél-támogatási csapattal](https://support.f5.com) az érték beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    >Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval, válasz URL-címmel és kijelentkezési URL-címmel. Vegye fel a kapcsolatot az [Oracle PeopleSoft által védett F5 Big-IP APM ügyfél-támogatási csapattal](https://support.f5.com) az érték beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az F5 BIG-IP APM-alkalmazás által védett Oracle PeopleSoft az SAML-jogkivonatokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútum-hozzárendeléseket adjon hozzá az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -140,7 +140,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso"></a>Az F5 BIG-IP APM SSO által védett Oracle PeopleSoft konfigurálása
+## <a name="configure-oracle-peoplesoft-protected-by-f5-big-ip-apm-sso"></a>Az Oracle PeopleSoft-Protected konfigurálása F5 BIG-IP APM SSO használatával
 
 ### <a name="f5-saml-sp-configuration"></a>F5 SAML SP-konfiguráció
 
@@ -259,25 +259,25 @@ A **getWWWAuthConfig ()** függvényben cserélje le a **&defaultUserId** hozzá
 
 ## <a name="setting-up-f5-big-ip-apm-to-populate-ps_sso_uid-http-header-with-the-peoplesoft-user-id"></a>Az F5 Big-IP APM beállítása a "PS_SSO_UID" HTTP-fejléc feltöltésére a PeopleSoft felhasználói azonosítójával
 
-### <a name="configuring-per-request-policy"></a>Kérelmekre vonatkozó házirend konfigurálása
-1. Navigáljon a **> profil/szabályzatok > kérelmekre**, majd kattintson a **Létrehozás**gombra, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
+### <a name="configuring-per-request-policy"></a>Per-Request házirend konfigurálása
+1. Navigáljon a **> profil/szabályzatok > Per-Request házirendek**elemre, kattintson a **Létrehozás**gombra, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
 
     * Név: `<Name>`
     * Profil típusa: ALL
     * Nyelvek `<Language>`
 
-    ![Kérelmekre vonatkozó házirend konfigurálása ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/per-request.png)
+    ![Per-Request házirend konfigurálása ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/per-request.png)
 
-1. Kattintson a kérelmekre vonatkozó **szabályzat szerkesztése házirend** - `<Name>` ![ PeopleSoftSSO szerkesztésére ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso.png)
+1. Kattintson **a Per-Request házirend szerkesztése** `<Name>` ![ Per-Request szabályzat PeopleSoftSSO elemre. ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso.png)
 
     `Header Name: <Header Name>`   
     `Header Value: <Header Value>`
 
-### <a name="assign-per-request-policy-to-the-virtual-server"></a>Kérelmekre vonatkozó szabályzatok társítása a virtuális kiszolgálóhoz
+### <a name="assign-per-request-policy-to-the-virtual-server"></a>Per-Request házirend társítása a virtuális kiszolgálóhoz
 
-Navigáljon a **helyi forgalom > Virtual servers > a virtuális kiszolgálók listája > a PeopleSoftApp beállítását** `<Name>` a kérelmekre vonatkozó szabályzatként
+Navigáljon a **helyi forgalom > virtuális kiszolgálók > Virtual Server List > PeopleSoftApp** `<Name>` Per-Request házirendként
 
-![PeopleSoftSSO-szabályzat ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso-1.png)
+![PeopleSoftSSO Per-Request szabályzatként ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-sso-1.png)
 
 ## <a name="setting-up-f5-big-ip-apm-to-support-single-logout-from-peoplesoft-application"></a>Az F5 Big-IP APM beállítása a PeopleSoft-alkalmazásból való egyszeri kijelentkezés támogatásához
 
@@ -311,9 +311,9 @@ Ha egyetlen kijelentkezési támogatást szeretne hozzáadni az összes PeopleSo
         ![_iRule_PeopleSoftApp befejezve](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/common-irule.png)
 
 
-### <a name="create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user"></a>Az F5 BIG-IP APM tesztelési felhasználó által védett Oracle PeopleSoft létrehozása
+### <a name="create-oracle-peoplesoft-protected-by-f5-big-ip-apm-test-user"></a>Oracle-PeopleSoft-Protected létrehozása az F5 BIG-IP APM test User használatával
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az Oracle PeopleSoft által védett F5 BIG-IP APM használatával. Az [F5 Big-IP APM-támogatással védett Oracle PeopleSoft](https://support.f5.com) használata az F5 Big-IP APM platform által védett Oracle PeopleSoft-védelemmel ellátott felhasználók hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az Oracle PeopleSoft-Protected az F5 BIG-IP APM használatával. Az [F5 Big-IP APM-támogatással rendelkező Oracle-PeopleSoft-Protectedokkal](https://support.f5.com) az F5 Big-IP APM platform használatával adhatja hozzá a felhasználókat az Oracle PeopleSoft-Protectedhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -321,15 +321,15 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="sp-initiated"></a>Az SP inicializálva:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez a folyamat az F5 BIG-IP APM bejelentkezési URL-címen keresztül átirányítja az Oracle PeopleSoft által védett URL-címet, ahol elindíthatja a bejelentkezési folyamatot.  
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja az Oracle PeopleSoft-Protected az F5 BIG-IP APM bejelentkezési URL-cím, amelyen kezdeményezheti a bejelentkezési folyamatot.  
 
-* Nyissa meg az Oracle PeopleSoft által védett F5 BIG-IP APM bejelentkezési URL-címet, és indítsa el innen a bejelentkezési folyamatot.
+* Nyissa meg az Oracle PeopleSoft-Protected az F5 BIG-IP APM bejelentkezési URL-címet, és indítsa el innen a bejelentkezési folyamatot.
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az Oracle PeopleSoft által védett F5 Big-IP APM-be, amelyhez be kell állítania az egyszeri bejelentkezést 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az Oracle PeopleSoft-Protected az F5 Big-IP APM-be, amelyhez be kell állítania az egyszeri bejelentkezést 
 
-A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen az F5 BIG-IP APM-csempével védett Oracle-védelemmel van ellátva, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az Oracle PeopleSoft által védett F5 BIG-IP APM-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen az F5 BIG-IP APM csempére PeopleSoft-Protected kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az Oracle PeopleSoft-Protectedba az F5 BIG-IP APM használatával, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>További lépések

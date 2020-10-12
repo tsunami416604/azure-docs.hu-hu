@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 8eafd99f07c64c20565a954216341f3dea9541b0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442657"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Ügyféloldali kódtár Elastic Database Entity Framework
@@ -271,7 +271,7 @@ Az egyik lehetséges, hogy használta az alaposztálytól örökölt konstruktor
 A jelen dokumentumban ismertetett megközelítések néhány korlátozást foglalnak magukban:
 
 * Az **LocalDb** -t használó EF-alkalmazásoknak először rendszeres SQL Server adatbázisba kell áttérniük a rugalmas adatbázis-ügyféloldali kódtár használata előtt. Az alkalmazások horizontális méretezéssel történő horizontális felskálázása nem lehetséges a **LocalDb**. Vegye figyelembe, hogy a fejlesztés továbbra is használhatja a **LocalDb**-t.
-* Az alkalmazásnak az adatbázis-sémát érintő változásait az összes szegmensen el kell végezni az EF-Migrálás során. Ennek a dokumentumnak a mintakód nem mutatja be ennek módját. Érdemes lehet az Update-Database-t egy ConnectionString paraméterrel megismételni az összes szegmensnél. vagy bontsa ki a T-SQL-szkriptet a függőben lévő áttelepítéshez a Update-Database használatával a-script kapcsolóval, és alkalmazza a T-SQL-szkriptet a szegmensekre.  
+* Az alkalmazásnak az adatbázis-sémát érintő változásait az összes szegmensen el kell végezni az EF-Migrálás során. Ennek a dokumentumnak a mintakód nem mutatja be ennek módját. Érdemes lehet egy ConnectionString paraméterrel Update-Database használni az összes szegmensre való iterációhoz. vagy bontsa ki a T-SQL-szkriptet a függőben lévő áttelepítéshez Update-Database használatával a-script kapcsolóval, és alkalmazza a T-SQL-szkriptet a szegmensekre.  
 * A kérést a rendszer feltételezi, hogy az összes adatbázis-feldolgozás egy szegmensen belül található, amelyet a kérelem által biztosított horizontális kulcs azonosít. Ez a feltételezés azonban nem mindig igaz. Például, ha nem lehet elérhetővé tenni egy horizontális Felskálázási kulcsot. Ennek megoldásához az ügyféloldali kódtár biztosítja a **MultiShardQuery** osztályt, amely egy kapcsolati absztrakciót valósít meg több szegmensben való lekérdezéshez. A **MultiShardQuery** és az EF együttes használatának megismerése a jelen dokumentum hatókörén kívül esik
 
 ## <a name="conclusion"></a>Összegzés

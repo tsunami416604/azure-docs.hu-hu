@@ -1,5 +1,5 @@
 ---
-title: Kurátori környezetek
+title: Válogatott környezetek
 titleSuffix: Azure Machine Learning
 description: A Azure Machine Learningban elérhető kurátori környezetek gyűjteménye
 services: machine-learning
@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662079"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning kurátori környezetek
@@ -24,7 +24,7 @@ Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomag
 > [!NOTE]
 > Ez a lista szeptember 2020-én frissül. Használja a Python SDK-t a legfrissebb lista beszerzéséhez. További információ a [környezetekről szóló cikkben](./how-to-use-environments.md#use-a-curated-environment)található.
 
-## <a name="azureml-automl"></a>AzureML – AutoML
+## <a name="azureml-automl"></a>AzureML-AutoML
 
 **Csomagok csatornái:**
 
@@ -262,7 +262,7 @@ Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomag
 * jupyterlab
 * lz4
 * mpi4py
-* notebook
+* jegyzetfüzet
 * pyarrow
 
 ## <a name="azureml-dask-gpu"></a>AzureML-Dask-GPU
@@ -290,7 +290,7 @@ Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomag
 * jupyterlab
 * lz4
 * mpi4py
-* notebook
+* jegyzetfüzet
 * pyarrow
 
 ## <a name="azureml-hyperdrive-forecastdnn"></a>AzureML-HyperDrive-ForecastDNN
@@ -311,7 +311,7 @@ Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomag
 * azureml-train-automl-runtime
 * azureml-automl-DNN-előrejelzés
 
-## <a name="azureml-minimal"></a>AzureML – minimális
+## <a name="azureml-minimal"></a>AzureML-Minimal
 
 **Csomagok csatornái:**
 
@@ -937,7 +937,7 @@ Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomag
 * tensorflow – GPU
 * horovod
 
-## <a name="azureml-tutorial"></a>AzureML – oktatóanyag
+## <a name="azureml-tutorial"></a>AzureML-Tutorial
 
 **Csomagok csatornái:**
 
