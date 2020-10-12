@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan hozhat létre egyéni Azure Resource Ma
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526578"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Egyéni Azure Resource Manager szerepkör létrehozása és hozzárendelés az egyszerű szolgáltatáshoz
@@ -179,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Paraméterek:
 
-|Paraméterek|Description| 
+|Paraméterek|Leírás| 
 |---|---|
 |--role |Egyéni szerepkör neve vagy azonosítója. A mi esetünkben: "LVAEdge user".|
 |--megbízott-Object-ID|A használni kívánt szolgáltatásnév objektumazonosító.|

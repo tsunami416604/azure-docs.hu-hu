@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 8597b3e4ffab44672e88374010fa829211fbc18b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88507327"
 ---
 # <a name="upload-a-document"></a>Dokumentum feltöltése
@@ -84,7 +84,7 @@ A feltöltési Előzmények lapon megtekintheti az összes dokumentum feltölté
 
 3. Kattintson a feltöltési előzmények rekordra. A feltöltési előzmények részletei lapon megtekintheti a fájl feltöltése, feltöltött állapotának részeként feltöltött fájlokat, a fájl nyelvét és a hibaüzenetet (ha bármilyen hiba van a feltöltés során).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kinyert mondatok listájának áttekintéséhez használja a [dokumentum részletei lapot](how-to-view-document-details.md) .
 - [Modell betanítása](how-to-train-model.md).

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006024"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
@@ -39,7 +39,7 @@ A Storage kezelése mellett a StorSimple adatvédelmi funkciói lehetővé teszi
 ## <a name="why-use-storsimple"></a>Miért érdemes használni a StorSimple?
 Az alábbi táblázat a Microsoft Azure StorSimple által biztosított főbb előnyöket ismerteti.
 
-| Funkció | Előny |
+| Szolgáltatás | Előny |
 | --- | --- |
 | Transzparens integráció |Az iSCSI protokollt használja az adattárolási létesítmények láthatatlan csatolásához. Ez biztosítja, hogy a felhőben, az adatközpontban vagy távoli kiszolgálókon tárolt adattárolók egyetlen helyen legyenek tárolva. |
 | Csökkentett tárolási költségek |Elegendő helyi vagy Felhőbeli tárterületet foglal le a jelenlegi igények kielégítéséhez, és csak szükség esetén terjeszti ki a felhőalapú tárhelyet. A szolgáltatás tovább csökkenti a tárolási követelményeket és a költségeket azáltal, hogy megszünteti az azonos adatmennyiségek redundáns verzióit (deduplikálás) és a tömörítést. |
@@ -210,10 +210,10 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 
 | Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Együttműködés |Fájlmegosztás |Yes | |Az összes verzió |
-| Együttműködés |Elosztott fájlmegosztás |Yes | |Az összes verzió |
+| Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
+| Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
 | Együttműködés |SharePoint |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
-| Archiválási |Egyszerű fájl archiválása |Yes | |Az összes verzió |
+| Archiválási |Egyszerű fájl archiválása |Igen | |Az összes verzió |
 | Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Adatbázis |SQL |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Videó-megfigyelés |Videó-megfigyelés |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |2. frissítés és újabb |
@@ -237,7 +237,7 @@ A következő lista a StorSimple által támogatott infrastruktúra-összetevők
 
 | Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Általános kérdések |Express Route |Yes | |Az összes verzió |
+| Általános kérdések |Express Route |Igen | |Az összes verzió |
 | Általános kérdések |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
 | Általános kérdések |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
 | Általános kérdések |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
@@ -258,7 +258,7 @@ A következő lista felsorolja azokat a szoftvereket, amelyeket a StorSimple a m
 A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hogy tekintse át a következő feltételeket és definíciókat.
 
 ### <a name="key-terms-and-definitions"></a>A legfontosabb feltételek és definíciók
-| Kifejezés (betűszó vagy rövidítés) | Description |
+| Kifejezés (betűszó vagy rövidítés) | Leírás |
 | --- | --- |
 | hozzáférés-vezérlési rekord (ACR) |A Microsoft Azure StorSimple eszközön lévő kötethez társított rekord, amely meghatározza, hogy mely gazdagépek csatlakozhatnak hozzá. A meghatározás a StorSimple-eszközhöz csatlakozó gazdagépek (ACR-ben található) iSCSI minősített nevén (IQN) alapul. |
 | AES-256 |256 bites Advanced Encryption Standard (AES) algoritmus a felhőbe irányuló és onnan áthelyezett adatok titkosításához. |

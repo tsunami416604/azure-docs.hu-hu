@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84693112"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Az Azure-szolgáltatás egyéni tartományi beállításainak megadása a Azure DNS használatával
@@ -38,12 +38,12 @@ Jegyezze fel az aktuális URL-címet az **Egyéni tartományok** panelen, ez a c
 
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
-|Tulajdonság  |Érték  |Description  |
+|Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Name (Név)     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
-|Élettartam     | 1        | 1 óra használatos        |
-|TTL mértékegysége     | Óra        | A rendszer órákat használ az idő méréséhez         |
+|TTL     | 1        | 1 óra használatos        |
+|TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | adatumfunction.azurewebsites.net        | Az aliast létrehozó DNS-név, ebben a példában ez a adatumfunction.azurewebsites.net DNS-név, amely alapértelmezés szerint a Function alkalmazáshoz van megadva.        |
 
 Váltson vissza a Function alkalmazásra, kattintson a **platform szolgáltatásai**lehetőségre, majd a **hálózat** területen kattintson az **Egyéni tartományok**lehetőségre, majd az **Egyéni állomásnevek** elemre, végül az **állomásnév hozzáadása**lehetőségre.
@@ -63,12 +63,12 @@ Navigáljon a **hálózat**  >  **nyilvános IP-címéhez**, válassza ki a nyil
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
-|Tulajdonság  |Érték  |Description  |
+|Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Name (Név)     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | A        | Használjon egy rekordot, mert az erőforrás egy IP-cím.        |
-|Élettartam     | 1        | 1 óra használatos        |
-|TTL mértékegysége     | Óra        | A rendszer órákat használ az idő méréséhez         |
+|TTL     | 1        | 1 óra használatos        |
+|TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |IP-cím     | `<your ip address>`       | A nyilvános IP-cím.|
 
 ![rekord létrehozása](./media/dns-custom-domain/arecord.png)
@@ -90,12 +90,12 @@ Jegyezze fel az aktuális URL-címet az **Egyéni tartományok** panelen, ez a c
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
-|Tulajdonság  |Érték  |Description  |
+|Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Name (Név)     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával. Ha az erőforrás IP-címet használt, a rendszer egy rekordot fog használni.        |
-|Élettartam     | 1        | 1 óra használatos        |
-|TTL mértékegysége     | Óra        | A rendszer órákat használ az idő méréséhez         |
+|TTL     | 1        | 1 óra használatos        |
+|TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | webserver.azurewebsites.net        | Az aliast létrehozó DNS-név, ebben a példában ez a webserver.azurewebsites.net DNS-név, amely alapértelmezés szerint a webalkalmazáshoz van megadva.        |
 
 
@@ -126,19 +126,19 @@ Navigáljon a **Storage**  >  **Storage-fiókok**elemre, válassza ki a Storage-
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
-|Tulajdonság  |Érték  |Description  |
+|Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name     | asverify. mystorageaccount        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Name (Név)     | asverify. mystorageaccount        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
-|Élettartam     | 1        | 1 óra használatos        |
-|TTL mértékegysége     | Óra        | A rendszer órákat használ az idő méréséhez         |
+|TTL     | 1        | 1 óra használatos        |
+|TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Az aliast létrehozó DNS-név, ebben a példában ez a asverify.adatumfunctiona9ed.blob.core.windows.net DNS-név, amely alapértelmezés szerint a Storage-fiókhoz van megadva.        |
 
 A Storage-fiókok elemre **kattintva térjen**vissza a Storage-fiókra  >  **Storage Accounts**, válassza ki a Storage-fiókját, és kattintson az **egyéni tartomány**lehetőségre. Írja be a asverify előtag nélkül létrehozott aliast a szövegmezőbe, jelölje be a **közvetett CNAME ellenőrzés használata**jelölőnégyzetet, majd kattintson a **Mentés**gombra. Ha ez a lépés elkészült, térjen vissza a DNS-zónához, és hozzon létre egy CNAME-rekordot a asverify előtag nélkül.  Ezután nyugodtan törölheti a CNAME-rekordot a cdnverify előtaggal.
 
 ![BLOB Storage – egyéni tartomány](./media/dns-custom-domain/indirectvalidate.png)
 
-DNS-feloldás ellenőrzése futtatásával`nslookup`
+DNS-feloldás ellenőrzése futtatásával `nslookup`
 
 További információ az egyéni tartomány blob Storage-végpontra való leképezéséről [: Egyéni tartománynév beállítása a blob Storage-végponthoz](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
 
@@ -154,12 +154,12 @@ Válassza ki azt a végpontot, amellyel dolgozik, és kattintson az **+ egyéni 
 
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
-|Tulajdonság  |Érték  |Description  |
+|Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Name     | cdnverify. mycdnendpoint        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
+|Name (Név)     | cdnverify. mycdnendpoint        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
-|Élettartam     | 1        | 1 óra használatos        |
-|TTL mértékegysége     | Óra        | A rendszer órákat használ az idő méréséhez         |
+|TTL     | 1        | 1 óra használatos        |
+|TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Az aliast létrehozó DNS-név, ebben a példában ez a cdnverify.adatumcdnendpoint.azureedge.net DNS-név, amely alapértelmezés szerint a Storage-fiókhoz van megadva.        |
 
 Váltson vissza a CDN-végpontra a **hálózati**  >  **CDN-profilok**elemre kattintva, és válassza ki a CDN-profilját. Kattintson az **+ egyéni tartomány** lehetőségre, és adja meg a CNAME rekord aliasát a cdnverify előtag nélkül, majd kattintson a **Hozzáadás**gombra.

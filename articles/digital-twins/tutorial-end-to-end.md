@@ -8,10 +8,10 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292680"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
@@ -59,11 +59,11 @@ A minta projekt egy interaktív engedélyezési összetevőt is tartalmaz. A pro
 
 Először a *AdtSampleApp* megoldást fogja használni a mintául szolgáló projektből a végpontok közötti forgatókönyv (**a szakasz**) Azure digitális Twins-darabjának létrehozásához:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Egy részlet a teljes építési forgatókönyv grafikus kiemelési szakasza, az Azure Digital Twins-példány":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 A _**AdtE2ESample**_ -projektet megnyitó Visual Studio-ablakban futtassa a projektet az eszköztáron ezzel a gombbal:
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="A Visual Studio Start gombja (SampleClientApp projekt)":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Megnyílik a konzol ablaka, majd hajtsa végre a hitelesítést, és várjon egy parancsot. Ebben a konzolban futtassa a következő parancsot a minta Azure digitális Twins-megoldás létrehozásához.
 
@@ -78,7 +78,7 @@ A parancs kimenete egy megerősítő üzenet, amely három [**digitális ikreket
 
 Ezek kapcsolaton keresztül kapcsolódnak a következő [**Twin gráfhoz**](concepts-twins-graph.md). A Twin gráf a környezet egészét jelöli, beleértve azt is, hogy az entitások hogyan hatnak egymással, és hogyan kapcsolódnak egymáshoz.
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="Egy gráf, amely azt mutatja, hogy a floor1 tartalmaz room21, és a room21 tartalmaz thermostat67" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása." border="false":::
 
 A következő parancs futtatásával ellenőrizheti a létrehozott ikreket, amely lekérdezi a csatlakoztatott Azure Digital Twins-példányt az összes olyan digitális ikrek esetében, amely tartalmazza a következőket:
 
@@ -114,52 +114,44 @@ Az alkalmazás közzététele előtt érdemes meggyőződni arról, hogy a függ
 
 A *megoldáskezelő* ablaktáblán bontsa ki a *SampleFunctionsApp > függőségek*elemet. Kattintson a jobb gombbal a *csomagok* elemre, és válassza a *NuGet-csomagok kezelése...* lehetőséget.
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: NuGet-csomagok kezelése a SampleFunctionsApp projekthez" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása." border="false":::
 
 Ekkor megnyílik a NuGet Package Manager. Válassza a *frissítések* fület, és ha vannak olyan csomagok, amelyeket frissíteni szeretne, jelölje be a jelölőnégyzetet az *összes csomag kiválasztásához*. Ezután nyomja meg a *frissítés*.
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: a NuGet csomagkezelő összes csomagjának frissítésének kiválasztása":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 ### <a name="publish-the-app"></a>Az alkalmazás közzététele
 
 Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitva, a *megoldáskezelő* ablaktáblán kattintson a jobb gombbal a _**SampleFunctionsApp**_ -projektfájl elemre, majd kattintson a **Közzététel**elemre.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio: projekt közzététele":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Az alábbi *közzétételi* oldalon hagyja meg az **Azure** alapértelmezett céljának kijelölését, és kattintson a *Tovább gombra*. 
 
 Egy adott célpont esetében válassza az **Azure függvényalkalmazás (Windows)** lehetőséget, és kattintson a *Tovább gombra*.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Azure-függvény közzététele a Visual Studióban: konkrét cél":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 A *functions példány* lapon válassza ki az előfizetését. A mezőnek fel kell töltenie egy mezőt az előfizetésében található *erőforráscsoportok* alapján.
 
 Válassza ki a példánya erőforráscsoportot, és nyomja meg az *+ új Azure-függvény létrehozása...* lehetőséget.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Azure-függvény közzététele a Visual Studióban: functions-példány (a Function app előtt)":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása." gombot.
 
-A *függvényalkalmazás (Windows) – új ablak létrehozása* ablakban töltse ki a mezőket a következő módon:
-* A **Name (név** ) annak a használati tervnek a neve, amelyet az Azure a Azure functions alkalmazás üzemeltetéséhez fog használni. Ez lesz a függvény alkalmazásának neve is, amely a tényleges függvényt tárolja. Megadhatja a saját egyedi értékét, vagy meghagyhatja az alapértelmezett javaslatot.
-* Győződjön meg arról, hogy az **előfizetés** megfelel a használni kívánt előfizetésnek 
-* Győződjön meg arról, hogy az **erőforráscsoport** a használni kívánt erőforráscsoporthoz van
-* A **csomag típusának** elhagyása *felhasználásként*
-* Válassza ki azt a **helyet** , amely megfelel az erőforráscsoport helyének.
-* Hozzon létre egy új **Azure Storage** -erőforrást az *új.* .. hivatkozás használatával. Állítsa be úgy a helyet, hogy egyezzen az erőforráscsoporthoz, használja a többi alapértelmezett értéket, és nyomja meg az "OK" gombot.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Azure-függvény közzététele a Visual Studióban: függvényalkalmazás (Windows) – új létrehozása":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Ezután kattintson a **Létrehozás** elemre.
 
 Ekkor vissza kell térnie a *functions-példány* lapra, ahol az új Function alkalmazás már látható az erőforráscsoport alatt. Nyomja meg a *Finish (Befejezés*).
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Azure-függvény közzététele a Visual Studióban: functions instance (a Function app után)":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződjön meg arról, hogy az összes információ helyesnek tűnik, majd válassza a **Közzététel**lehetőséget.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Azure-függvény közzététele a Visual Studióban: közzététel":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 > [!NOTE]
-> Ha a következőhöz hasonló előugró ablak jelenik meg: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Az Azure-függvény közzététele a Visual Studióban: hitelesítő adatok közzététele" border="false":::
+> Ha a következőhöz hasonló előugró ablak jelenik meg: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása." border="false":::
 > Válassza a **kísérlet a hitelesítő adatok lekérése az Azure-ból és a** **Mentés**lehetőséget.
 >
 > Ha a *functions verziójának frissítése az Azure* -ban vagy a *functions Runtime verziója nem egyezik az Azure-ban futó verzióval*:
@@ -198,7 +190,7 @@ Ebben a lépésben egy szimulált termosztátos eszközt fog összekötni [IoT h
 
 Ez a végpontok közötti forgatókönyv (**B nyíl**) ezen részén történik:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a B nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Az eszköz kapcsolódásának beállításához a következő műveleteket kell végrehajtania:
 1. Hozzon létre egy IoT hub-t, amely a szimulált eszközt felügyeli
@@ -229,18 +221,18 @@ Ehhez létre kell hoznia egy esemény- **előfizetést** a IoT hub, és az Azure
 
 A [Azure Portal](https://portal.azure.com/)navigáljon az újonnan létrehozott IoT hubhoz a felső keresési sávban megkeresve a nevét. Válassza az *események* lehetőséget a központi menüben, majd válassza az *+ esemény-előfizetés*lehetőséget.
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Azure Portal: IoT Hub esemény-előfizetés":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Ekkor megjelenik az esemény- *előfizetés létrehozása* lap.
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure Portal: esemény-előfizetés létrehozása":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Töltse ki a mezőket a következőképpen (az alapértelmezés szerint kitöltött mezők nincsenek megemlítve):
 * *esemény-előfizetés részletei*  >  **Név**: adjon nevet az esemény-előfizetésnek.
 * *témakör részletei*  >  **Rendszertéma neve**: adjon meg egy nevet a rendszer témakörhöz. 
 * *események típusai*  >  **Szűrés az események típusai**között: válassza az *eszközök telemetria* lehetőséget a menüpontok közül.
 * *VÉGPONT részletei*  >  **Végpont típusa**: válassza az *Azure Function* lehetőséget a menüpontok közül.
-* *VÉGPONT részletei*  >  **Végpont**: nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal esemény-előfizetés: válassza az Azure-függvény lehetőséget" border="false"::: .
+* *VÉGPONT részletei*  >  **Végpont**: nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása." border="false"::: .
     - Töltse ki az **előfizetést**, az **erőforráscsoportot**, a **Function app** és a Function (*ProcessHubToDTEvents*) **függvényt** . Ezek némelyike az előfizetés kiválasztása után automatikusan feltölthető.
     - Nyomja **meg a megerősítés jóváhagyása elemet**.
 
@@ -292,11 +284,11 @@ Mentse a fájlt.
 
 Most, hogy megtekintse a beállított adatszimulálás eredményét, futtassa a **DeviceSimulator** projektet ezzel a gombbal az eszköztáron:
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="A Visual Studio Start gombja (DeviceSimulator projekt)":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Ekkor megnyílik egy konzolablak szimulált hőmérsékleti telemetria üzenetek. Ezeket a rendszer elküldje IoT Hubba, ahol az Azure-függvény felveszi és feldolgozza azokat.
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Az eszköz-szimulátor konzoljának kimenete, amely az elküldött hőmérsékleti telemetria jeleníti meg":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Ebben a konzolban nem kell mást tennie, de a következő lépések elvégzése után ne futtassa.
 
@@ -314,7 +306,7 @@ ObserveProperties thermostat67 Temperature
 
 Az *Azure Digital Twins-példány* élő frissített hőmérsékletét 10 másodpercenként kell megtekinteni a konzolon.
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Konzol kimenete, amely a digitális Twin thermostat67 származó hőmérsékleti üzenetek naplóját jeleníti meg":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Miután ellenőrizte, hogy ez sikeresen működik, leállíthatja mindkét projekt futtatását. Tartsa nyitva a Visual Studio ablakait, ahogy az oktatóanyag további részében is használni fogja őket.
 
@@ -324,7 +316,7 @@ Ebből az oktatóanyagból megtudhatta, hogyan frissíthetik az Azure digitális
 
 Ehhez használja a *ProcessDTRoutedData* Azure-függvényt, hogy frissítsen egy különálló *szobát* , amikor a csatlakoztatott *termosztátot* tartalmazó Twin frissítés frissül. Ez a végpontok közötti forgatókönyv (**C nyíl**) ezen részében fordul elő:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Egy részlet a teljes építési forgatókönyvből, grafikus kiemeléssel C, az Azure Digital Twins utáni elemek: a Event Grid és a második Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Az alábbi műveleteket hajthatja végre az adatfolyamatok beállításához:
 1. Hozzon létre egy Azure digitális Twins-végpontot, amely összekapcsolja a példányt Event Grid
@@ -368,7 +360,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 Keresse meg a `provisioningState` kimenetben a mezőt, és ellenőrizze, hogy az érték "sikeres". Azt is megteheti, hogy "kiépítés", ami azt jelenti, hogy a végpont létrehozása még folyamatban van. Ebben az esetben várjon néhány másodpercet, és futtassa újra a parancsot, és győződjön meg arról, hogy a művelet sikeresen befejeződött.
 
-:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="A végpont-lekérdezés eredménye, amely a sikeres provisioningState rendelkező végpontot mutatja":::
+:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Mentse az Event Grid-témakörbe és az Azure Digital Twins-végpontba kapott neveket. Ezeket később fogja használni.
 
@@ -395,7 +387,7 @@ Ehhez létre kell hoznia egy Event Grid- **előfizetést** az Event Grid-témak�
 
 A [Azure Portalban](https://portal.azure.com/)keresse meg az Event Grid-témakört úgy, hogy a felső keresési sávban keresi a nevét. Válassza a *+ Esemény-előfizetés* lehetőséget.
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure Portal: Event Grid esemény-előfizetés":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Az esemény-előfizetés létrehozásának lépései hasonlóak ahhoz, amikor előfizetett az első Azure-függvényre, hogy IoT Hub az oktatóanyag korábbi részében. Ezúttal nem kell megadnia az *eszköz telemetria* a figyelni kívánt esemény típusaként, és egy másik Azure-függvényhez fog csatlakozni.
 
@@ -414,7 +406,7 @@ Most már futtathatja az Eszközkezelőt, hogy elindítsa a beállított új ese
 
 Ahogy korábban futtatta az eszköz-szimulátort, megnyílik egy konzolablak, amely szimulált hőmérsékletű telemetria-üzeneteket jelenít meg. Ezek az események a korábban beállított folyamaton keresztül frissítik a *thermostat67* , majd a közelmúltban beállított folyamaton keresztül frissítik a *room21* Twin-et, hogy azok megfeleljenek.
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Az eszköz-szimulátor konzoljának kimenete, amely az elküldött hőmérsékleti telemetria jeleníti meg":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Ebben a konzolban nem kell mást tennie, de a következő lépések elvégzése után ne futtassa.
 
@@ -428,7 +420,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 Az *Azure Digital Twins-példány* élő frissített hőmérsékletét 10 másodpercenként kell megtekinteni a konzolon. Figyelje meg, hogy a *room21* hőmérséklete frissül, hogy megfeleljen a *thermostat67*frissítéseinek.
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Konzol kimenete, amely a hőmérsékleti üzenetek naplóját mutatja egy termosztátból és egy helyiségből":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
 Miután ellenőrizte, hogy ez sikeresen működik, leállíthatja mindkét projekt futtatását. Bezárhatja a Visual Studio Windowst is, mivel az oktatóanyag már elkészült.
 
@@ -463,7 +455,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 

@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 824516a327d45feb5b6a084a113633bd3a486abe
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88508357"
 ---
 # <a name="train-a-model"></a>Modell betanítása
@@ -72,6 +72,6 @@ A modell neve a modell részletei lapon módosítható.
 
 6. Kattintson a Mentés gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja [, hogyan tekintheti meg a modell részleteit](how-to-view-model-details.md).

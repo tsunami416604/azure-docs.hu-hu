@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 52e305f9d50ab0f383810778be681ac41be97c72
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509788"
 ---
 # <a name="view-model-details"></a>Modell részleteinek megtekintése
@@ -91,6 +91,6 @@ A modell lapon két lap található: képzés részletei és tesztelés.
 
 2.  **Teszt:** Ezen a lapon látható a sikeres betanítási teszt részletei.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [teszteredmények](how-to-view-system-test-results.md) eredményeit, és elemezze a képzési eredményeket.

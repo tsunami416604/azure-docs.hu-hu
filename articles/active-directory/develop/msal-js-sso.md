@@ -14,15 +14,15 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84690778"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Egyszeri bejelentkezés az MSAL.js-sel
 
-Az egyszeri bejelentkezés (SSO) lehetővé teszi, hogy a felhasználók a bejelentkezéshez egyszer megadják a hitelesítő adataikat, és olyan munkamenetet hozzanak létre, amely többször is felhasználható a több alkalmazás között anélkül, hogy újra kellene hitelesíteni a hitelesítést. Ez zökkenőmentes felhasználói élményt nyújt a felhasználónak, és csökkenti a hitelesítő adatok ismételt megadását.
+Az egyszeri Sign-On (SSO) lehetővé teszi, hogy a felhasználók egyszer megadják a hitelesítő adataikat a bejelentkezéshez, és olyan munkamenetet hozzon létre, amely többször is felhasználható több alkalmazásban anélkül, hogy újra kellene hitelesíteni. Ez zökkenőmentes felhasználói élményt nyújt a felhasználónak, és csökkenti a hitelesítő adatok ismételt megadását.
 
 Az Azure AD egyszeri bejelentkezéses képességeket biztosít az alkalmazásokhoz, ha beállítja a munkamenet-cookie-t, amikor a felhasználó első alkalommal hitelesíti magát. A MSAL.js könyvtár segítségével az alkalmazások többféleképpen is kihasználhatják ezt.
 

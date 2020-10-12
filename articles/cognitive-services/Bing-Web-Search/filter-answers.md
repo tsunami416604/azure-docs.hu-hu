@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84696711"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési választ tartalmazó válaszok szűrése  
@@ -115,9 +115,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 
 Ha korlátozni szeretné a webválaszok eredményeit arra a weblapra, amelyet a Bing adott időszakban észlelt, állítsa a [frissesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) lekérdezési paraméterét a következő kis-és nagybetűket megkülönböztető értékek egyikére:
 
-* `Day`– A Bing által az elmúlt 24 órában felderített weblapok visszaküldése
-* `Week`– A Bing által az elmúlt 7 napban felderített weblapok visszaküldése
-* `Month`– Az elmúlt 30 napban felderített weblapok visszaküldése
+* `Day` – A Bing által az elmúlt 24 órában felderített weblapok visszaküldése
+* `Week` – A Bing által az elmúlt 7 napban felderített weblapok visszaküldése
+* `Month` – Az elmúlt 30 napban felderített weblapok visszaküldése
 
 Ezt a paramétert egy egyéni dátumtartomány is megadhatja az űrlapon `YYYY-MM-DD..YYYY-MM-DD` . 
 

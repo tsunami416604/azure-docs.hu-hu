@@ -8,10 +8,10 @@ ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252833"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
@@ -37,7 +37,7 @@ Ezeket a részleteket a [Azure Portal](https://portal.azure.com) a példány be�
 
 Válassza ki a példányát az eredmények közül, és tekintse meg a példány részletek lapját:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Képernyőkép a ADT-példány részleteiről." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Képernyőkép: Azure Portal keresési sáv." border="false":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Végpont létrehozása az Azure Digital Twins számára
 
@@ -62,11 +62,11 @@ A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Event Grid_ típ
 
 Ezután hozza létre a végpontot a _Save (Mentés_) parancs megnyomásával.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Képernyőkép: Event Grid típusú végpont létrehozása.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
 
 Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg az értesítés ikont a felső Azure Portal sávban: 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Képernyőkép az értesítésről a végpont létrehozásának ellenőrzéséhez." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Képernyőkép: Azure Portal keresési sáv." border="false":::
 
 Megtekintheti az Azure Digital Twins-példány *végpontok* lapján létrehozott végpontot is.
 
@@ -88,7 +88,7 @@ A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Event hub_ típu
 
 Ezután hozza létre a végpontot a _Save (Mentés_) parancs megnyomásával.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Képernyőkép: Event Hubs típusú végpont létrehozása.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
 
 Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg az értesítés ikont a felső Azure Portal sávban. 
 
@@ -110,7 +110,7 @@ A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Service Bus_ tí
 
 Ezután hozza létre a végpontot a _Save (Mentés_) parancs megnyomásával.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Képernyőkép: Service Bus típusú végpont létrehozása.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
 
 Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg az értesítés ikont a felső Azure Portal sávban. 
 
@@ -149,7 +149,7 @@ A megnyíló *esemény-útvonal létrehozása* oldalon válassza a minimum:
 
 Ahhoz, hogy az útvonal engedélyezve legyen, legalább **egy esemény-útválasztási szűrőt is hozzá** kell adnia `true` . (Az alapértelmezett érték kihagyása `false` esetén az útvonalat hozza létre, de a rendszer nem küldi el az eseményeket.) Ehhez állítsa be a kapcsolót a _speciális szerkesztő_ számára az engedélyezéshez, majd írja `true` be a *szűrőt a szűrő* mezőbe.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Képernyőkép a példányhoz tartozó esemény-útvonal létrehozásáról." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Képernyőkép: Azure Portal keresési sáv." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 Ha elkészült, nyomja meg a _Save (Mentés_ ) gombot az esemény útvonalának létrehozásához.
 
@@ -175,7 +175,7 @@ Az alapszintű szűrők használatához bontsa ki az _eseménytípus_ lehetősé
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Képernyőkép egy alapszintű szűrővel rendelkező esemény-útvonal létrehozásáról. Az események jelölőnégyzetének bejelölése.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -185,7 +185,7 @@ Ezzel automatikusan feltölti a szűrő szövegmezőt a kiválasztott szűrő sz
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Képernyőkép egy alapszintű szűrővel rendelkező esemény-útvonal létrehozásáról. Az automatikusan feltöltött szűrő szövegének megjelenítése az események kiválasztása után.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -199,7 +199,7 @@ Ha speciális szűrési beállításokkal szeretne eseményvezérelt útvonalat 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Képernyőkép egy speciális szűrővel rendelkező esemény-útvonal létrehozásáról.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
     :::column-end:::
     :::column:::
     :::column-end:::

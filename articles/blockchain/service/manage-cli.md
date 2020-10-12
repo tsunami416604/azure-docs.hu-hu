@@ -5,10 +5,10 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87170865"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
@@ -25,19 +25,19 @@ Ha a parancssori felület helyi telepítését és használatát szeretné haszn
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
-1. Bejelentkezés lehetőséget.
+1. Jelentkezzen be.
 
-    Jelentkezzen be az az [login](/cli/azure/reference-index#az-login) paranccsal, ha a parancssori felület helyi telepítését használja.
+    Jelentkezzen be az [az login](/cli/azure/reference-index#az-login) paranccsal, ha a CLI helyi telepítését használja.
 
     ```azurecli
     az login
     ```
 
-    A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+    A terminálon megjelenő utasítások alapján végezze el a hitelesítési folyamatot.
 
 1. Telepítse az Azure CLI-bővítményt.
 
-    Ha az Azure CLI-hez készült bővítmény-referenciákkal dolgozik, először telepítenie kell a bővítményt.  Az Azure CLI-bővítmények hozzáférést biztosítanak olyan kísérleti és előzetes kiadású parancsokhoz, amelyeket még nem szállítottak el az alapszintű CLI részeként.  További információ a bővítmények frissítéséről és eltávolításáról: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+    Ha az Azure CLI bővítményhivatkozásaival dolgozik, először telepítenie kell a bővítményt.  Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva.  A bővítményekről, beleértve azok frissítését és eltávolítását is, a [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview) című cikkben olvashat.
 
     Telepítse az [Azure Blockchain szolgáltatás bővítményét](/cli/azure/ext/blockchain/blockchain) a következő parancs futtatásával:
 
@@ -214,7 +214,7 @@ az role assignment create \
 | **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
 | **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
-**Például**
+**Példa**
 
 Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain- **tag**számára:
 
@@ -225,7 +225,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Például**
+**Példa**
 
 Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain **tranzakciós csomópontja**számára:
 
@@ -250,7 +250,7 @@ az role assignment create \
 | **megbízott – objektum-azonosító** | Azure AD-csoport azonosítója vagy az alkalmazás azonosítója. |
 | **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
-**Például**
+**Példa**
 
 Csomópont-hozzáférés megadása az **alkalmazási szerepkörhöz**
 

@@ -8,24 +8,24 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132840"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
-A Cognitive Services gépi tanulási képességeket biztosít olyan általános problémák megoldásához, mint például a szöveg elemzése az érzelmi hangulathoz, illetve a képek elemzése az objektumok vagy arcok felismeréséhez. Ezeknek a szolgáltatásoknak a használatához nincs szükség speciális gépi tanulási vagy adatelemzési ismeretekre. 
+A Cognitive Services gépi tanulási képességeket biztosít olyan általános problémák megoldásához, mint például a szöveg elemzése az érzelmi hangulathoz, illetve a képek elemzése az objektumok vagy arcok felismeréséhez. Ezen szolgáltatások használatához nincs szükség különleges gépi tanulási vagy adatelemzési ismeretekre. 
 
 [Cognitive Services](welcome.md) a szolgáltatások egy csoportja, amelyek mindegyike különböző, általánosított előrejelző képességeket támogat. A szolgáltatások különböző kategóriákba vannak osztva, így könnyebben megtalálhatja a megfelelő szolgáltatást. 
 
 |Szolgáltatáskategória|Cél|
 |--|--|
 |[Döntés](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.|
-|[Nyelv](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Segítségével az alkalmazások előre elkészített szkriptekkel dolgozhatnak fel természetes nyelvi elemeket, valamint értékelhetik a hangulatot, és megtanulhatják felismerni a felhasználói igényeket.|
+|[Nyelv](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Engedélyezheti alkalmazásai számára a természetes nyelv előre beépített szkriptekkel történő feldolgozását, kiértékelheti a hangulatot, valamint megtudhatja, hogyan ismerheti fel, hogy mit szeretnének a felhasználók.|
 |[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|A Bing Search API-jait az alkalmazásaihoz adva több milliárd weboldalt, képet, videót és hírt fésülhet át egyetlen API-hívással.|
-|[Beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|A beszédet szöveggé, a szöveget pedig természetesen hangzó beszéddé alakíthatja. Egyik nyelvtől a másikra fordíthat, valamint engedélyezheti a beszélő ellenőrzését és felismerését.|
+|[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|A beszédet szöveggé, a szöveget pedig természetesen hangzó beszéddé alakíthatja. Egyik nyelvtől a másikra fordíthat, valamint engedélyezheti a beszélő ellenőrzését és felismerését.|
 |[Látás](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Felismerheti, azonosíthatja, feliratozhatja, indexelheti és moderálhatja képeit, videóit és digitális szabadkézi tartalmait.|
 ||||
 
@@ -38,7 +38,7 @@ Használjon másik gépi tanulási megoldást, ha:
 
 * Ki kell választania az algoritmust, és nagyon konkrét adatfeldolgozásra van szükség.
 
-## <a name="what-is-machine-learning"></a>Mi az a gépi tanulás?
+## <a name="what-is-machine-learning"></a>Mit jelent a gépi tanulás?
 
 A Machine learning egy olyan fogalom, amelyben összegyűjtheti az adatgyűjtést és egy algoritmust a konkrét igények megoldásához. Ha az adatokat és az algoritmust betanítják, a kimenet egy olyan modell, amelyet újra használhat a különböző adatmennyiséggel. A betanított modell az új adatelemzések alapján nyújt elemzéseket. 
 
@@ -90,7 +90,7 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |Kognitív szolgáltatás|Nincs szükség betanítási adatgyűjtésre|Megadhat egy vagy több betanítási adatkészletet|Valós idejű vagy közel valós idejű adatgyűjtés|
 |--|--|--|--|
 |[Anomáliadetektor](./Anomaly-Detector/overview.md)|x|x|x|
-|Bing Search |x|||
+|Bing kereső |x|||
 |[Computer Vision](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
@@ -104,9 +104,9 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[Beszélő felismerő](./speaker-recognition/home.md)||x||
 |[Beszédfelismerési szöveg – beszéd (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Beszéd-beszéd – szöveg (STT)](speech-service/speech-to-text.md)|x|x||
-|[Speech Translation](speech-service/speech-translation.md)|x|||
+|[Beszéd fordítása](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Fordító](./translator/translator-info-overview.md)|x|||
 |[Translator-Custom Translator](./translator/custom-translator/overview.md)||x||
 
 * A megszemélyesítő csak a szolgáltatás által gyűjtött betanítási adatokat igényli (valós időben működik) a szabályzat és az adatok kiértékeléséhez. A személyre szabott beállításhoz nincs szükség nagyméretű korábbi adatkészletekre a kezdeti vagy a kötegelt képzéshez. 
@@ -129,7 +129,7 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Architektúra-útmutató – Mik a gépi tanulási termékek a Microsoftnál?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Gépi tanulás – a Deep learning és a Machine learning bemutatása](../machine-learning/concept-deep-learning-vs-machine-learning.md)

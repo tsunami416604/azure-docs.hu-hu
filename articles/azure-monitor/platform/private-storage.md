@@ -7,10 +7,10 @@ author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526425"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által felügyelt Storage-fiókok használata Azure Monitor Log Analytics
@@ -94,7 +94,7 @@ A Storage-fiókok bizonyos terhelésű olvasási és írási kérelmeket képese
 A Storage-fiókokat a tárolt adatmennyiség, a tároló típusa és a redundancia típusa alapján számítjuk fel. Részletekért lásd: a [Blobok díjszabásának](https://azure.microsoft.com/pricing/details/storage/blobs) és a [Table Storage díjszabásának](https://azure.microsoft.com/pricing/details/storage/tables)blokkolása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók az [Azure Private-hivatkozás használatáról a hálózatok Azure monitorhoz való biztonságos csatlakoztatásához](private-link-security.md)
 - Ismerkedjen meg [Azure monitor ügyfél által felügyelt kulcsokkal](customer-managed-keys.md)

@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509685"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
@@ -100,7 +100,7 @@ A központi telepítési beállítások frissítése:
 >[!Note]
 >Ha az összes régió esetében a nem **telepített** lehetőséget választja, a modell nem települ minden régióból, és nem telepített állapotba kerül. A szolgáltatás már nem érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.
 - Megtudhatja, [Hogyan kezelhet beállításokat](how-to-manage-settings.md) a munkaterület megosztásához, az előfizetési kulcs kezeléséhez.

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -8,10 +8,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87133846"
 ---
 Cognitive Services két természetes nyelvi feldolgozási szolgáltatást biztosít, [Language Understanding](../luis/what-is-luis.md) és [QnA Maker](../qnamaker/overview/overview.md), amelyek mindegyike más célra szolgál. Ismerje meg, hogy mikor kell használni az egyes szolgáltatásokat, és hogyan kell egymással kiegészíteni őket.
@@ -33,7 +33,7 @@ Ha a csevegési robot megkapja a szöveget `How do I get to the Human Resources 
 |Szolgáltatás|Ügyfélalkalmazás határozza meg|
 |--|--|
 |LUIS|**Meghatározza a felhasználó szövegének szándékát** – a szolgáltatás nem adja vissza a kérdésre adott választ. Ez a szöveg például a szándéknak megfelelőként van osztályozva `FindLocation` .<br>|
-|QnA Maker|Egy egyéni Tudásbázisból származó **kérdésre adott válasz visszaadása** . Ez a szöveg például a statikus szöveges válaszával kapcsolatos kérdésként van meghatározva `Get on the #9 bus and get off at Franklin street` .|
+|QnA Maker|Egy egyéni Tudásbázisból származó **kérdésre adott válasz visszaadása** . Ez a szöveg például a statikus szöveges válaszával kapcsolatos kérdésként van meghatározva  `Get on the #9 bus and get off at Franklin street` .|
 |||
 
 > [!div class="mx-imgBorder"]

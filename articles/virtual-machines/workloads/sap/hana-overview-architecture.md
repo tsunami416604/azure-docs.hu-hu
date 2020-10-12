@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171132"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
@@ -56,7 +56,7 @@ A HANA nagyméretű példányok különböző dokumentumai a következő terüle
 - [SAP HANA (nagyméretű példányok) hibaelhárítás és monitorozás az Azure-ban](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával](./ha-setup-with-stonith.md)
 - [Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához](./os-backup-type-ii-skus.md)
-- [Mentés SAP HANA Large Instances Azure-foglalással](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
+- [Megtakarítás a SAP HANA nagyméretű példányaival Azure-foglalás segítségével](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **Következő lépések**
 - Tekintse át [a feltételeket](hana-know-terms.md)

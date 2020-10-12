@@ -4,10 +4,10 @@ description: Az Azure Service Fabric a Docker-összeállítás formátumát, íg
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84691288"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-összeállítás támogatása az Azure Service Fabric (előzetes verzió)
@@ -35,7 +35,7 @@ Hozzon létre egy Service Fabric összeállítási telepítést egy Docker-compo
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName`és `RegistryPassword` tekintse meg a tároló beállításjegyzékének felhasználónevét és jelszavát. Az üzembe helyezés befejezése után a következő paranccsal ellenőrizhető az állapota:
+`RegistryUserName` és `RegistryPassword` tekintse meg a tároló beállításjegyzékének felhasználónevét és jelszavát. Az üzembe helyezés befejezése után a következő paranccsal ellenőrizhető az állapota:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp

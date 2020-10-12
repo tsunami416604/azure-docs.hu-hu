@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurác
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88756690"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
@@ -62,7 +62,7 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis.
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Név|Verziók|
+|Publisher|Name (Név)|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|

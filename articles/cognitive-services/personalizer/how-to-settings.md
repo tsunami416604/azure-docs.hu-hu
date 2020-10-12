@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292608"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Személyre szabott tanulási hurok konfigurálása
@@ -45,7 +45,7 @@ Konfigurálja a szolgáltatást a tanulási ciklusban a jutalmak használatára.
 > [!div class="mx-imgBorder"]
 > ![Adja meg a visszajelzési hurok jutalmazási értékeit](media/settings/configure-model-reward-settings.png)
 
-|Érték|Rendeltetés|
+|Érték|Cél|
 |--|--|
 |Jutalom várakozási ideje|Meghatározza azt az időtartamot, ameddig a személynek a rangsorolási híváshoz tartozó jutalmazási értékeket kell gyűjtenie a rangsor meghívásának pillanatától kezdve. Ezt az értéket úgy állítja be a rendszer, hogy megkérdezi, hogy mennyi ideig kell megvárnia a személyre szabási hívásokat? Az ablak beérkezését követően bekövetkező minden jutalom bekerül, de nem használható a tanuláshoz.|
 |Alapértelmezett jutalom|Ha nem fogadja el a személyre szabott jutalmat a rangsorolási várakozási idő időszaka alatt, a személyre szabási híváshoz rendelt jutalmazási időablakban az alapértelmezett jutalom lesz hozzárendelve. Alapértelmezés szerint a legtöbb esetben az alapértelmezett jutalom nulla (0).|
@@ -69,7 +69,7 @@ Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 A **modell frissítési gyakorisága** határozza meg, hogy a modell milyen gyakran legyen betanítva.
 
-|Gyakorisági beállítás|Rendeltetés|
+|Gyakorisági beállítás|Cél|
 |--|--|
 |1 perc|Az egyperces frissítési gyakoriságok akkor hasznosak, ha az alkalmazás kódját a személyre szabás, a demók **vagy a gépi** tanulási szempontok interaktív tesztelése során végzi.|
 |15 perc|A magas modell-frissítési gyakoriságok olyan helyzetekben hasznosak, amikor **szorosan nyomon szeretné követni** a felhasználói viselkedések változásait. Ilyenek például az élő Hírek, a vírusos tartalmak vagy az élő termékek ajánlattételi helyei. Ezeket a forgatókönyveket 15 perces gyakorisággal használhatja. |

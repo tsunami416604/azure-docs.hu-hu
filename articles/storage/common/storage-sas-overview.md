@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509858"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
@@ -80,7 +80,7 @@ Az SAS-jogkivonat egy olyan karakterlánc, amelyet az ügyfél oldalán állít 
 
 Ha egy ügyfélalkalmazás egy kérelem részeként egy SAS URI-t biztosít az Azure Storage-hoz, a szolgáltatás ellenőrzi a SAS paramétereit és aláírását annak ellenőrzéséhez, hogy érvényes-e a kérelem engedélyezésére. Ha a szolgáltatás ellenőrzi, hogy érvényes-e az aláírás, akkor a kérelem engedélyezve lesz. Ellenkező esetben a kérelem elutasítása a 403-as hibakódtal (tiltott) történik.
 
-Íme egy példa a Service SAS URI-ra, amely az erőforrás URI azonosítóját és az SAS-tokent mutatja:
+Az alábbi egy példa a szolgáltatásban használt SAS URI-kra, amelyek magukban foglalják az adott erőforrás URI-azonosítóját és SAS-jogkivonatát:
 
 ![A Service SAS URI összetevői](./media/storage-sas-overview/sas-storage-uri.png)
 
@@ -147,7 +147,7 @@ A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS
 
 - [Fiók SAS létrehozása a .NET-tel](storage-account-sas-create-dotnet.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférés delegálása közös hozzáférési aláírással (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

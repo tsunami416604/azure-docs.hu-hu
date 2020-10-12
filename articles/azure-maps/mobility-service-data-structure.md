@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033223"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Adatstruktúrák a Azure Maps mobilitási szolgáltatásban
@@ -25,7 +25,7 @@ A mobilitási szolgáltatáshoz tartozó adatterületek támogatott Metro-terül
 
 A `metroID` egy Metro-körzet azonosítója, amellyel hívható meg a [beolvasás Metro környék info API](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Használja a "Metro beolvasása" API-t, hogy átAzure Maps tekintse az átviteli típusokat, az átléptető irodákat, az aktív riasztásokat és a kiválasztott Metro további részleteit. A támogatott Metro-területeket és metroIDs is kérheti. A Metro-területek azonosítói változhatnak.
 
-**metroID:** 522 **neve:** Seattle-Tacoma-Bellevue
+**metroID:** 522   **neve:** Seattle-Tacoma-Bellevue
 
 ![Seattle – Metro-térség](./media/mobility-service-data-structure/seattle-metro.png)
 
@@ -52,7 +52,7 @@ A fentiekben leírtak szerint az egyes sorok egy sor halmazból állnak. Az egye
 Első lépésként a [beolvasás vonal API](https://aka.ms/AzureMapsMobilityTransitLine)-val kérheti a sorokra vonatkozó kérelmeket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
 

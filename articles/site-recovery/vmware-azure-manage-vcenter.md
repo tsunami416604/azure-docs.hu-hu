@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84692519"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server kezelése
@@ -38,7 +38,7 @@ Ha a helyszíni VMware virtuális gépekhez állít be vész-helyreállítást, 
 
 ### <a name="account-permissions"></a>Fiók engedélyei
 
-|**Tevékenység** | **Fiók** | **Engedélyek** | **Részletek**|
+|**Feladat** | **Fiók** | **Engedélyek** | **Részletek**|
 |--- | --- | --- | ---|
 |**Virtuális gép felderítése/migrálása (feladat-visszavétel nélkül)** | Legalább egy csak olvasási jogosultsággal rendelkező felhasználói fiók. | Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozásához rendelje hozzá a **nincs hozzáférési** szerepkört a **propagálás a gyermek** objektumhoz (vSphere gazdagépek, adattárolók, virtuális gépek és hálózatok).|
 |**Replikálás/feladatátvétel** | Legalább egy csak olvasási jogosultsággal rendelkező felhasználói fiók. | Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozásához rendelje hozzá a **nincs hozzáférési** szerepkört a **propagálás a gyermek** objektumhoz (vSphere gazdagépek, adattárolók, virtuális gépek és hálózatok).<br/><br/> Áttelepítési célokra hasznos, de nem teljes replikáció, feladatátvétel, feladat-visszavétel.|
@@ -53,7 +53,7 @@ A helyszíni VMware virtuális gépekhez tartozó vész-helyreállítás beáll�
 1. A **vCenter hozzáadása**területen adjon meg egy rövid nevet a vSphere-gazdagép vagy a vCenter-kiszolgáló számára.
 1. Itt adhatja meg a kiszolgáló IP-címét vagy teljes tartománynevét.
 1. A 443-as portot csak akkor módosítsa, ha a VMware-kiszolgálók úgy vannak konfigurálva, hogy más porton figyeljék a kéréseket.
-1. Válassza ki a VMware vCenter vagy vSphere ESXi-kiszolgálóhoz való kapcsolódáshoz használt fiókot. Ezt követően kattintson az **OK** gombra.
+1. Válassza ki a VMware vCenter vagy vSphere ESXi-kiszolgálóhoz való kapcsolódáshoz használt fiókot. Ezután kattintson az **OK** gombra.
 
 ## <a name="modify-credentials"></a>Hitelesítő adatok módosítása
 

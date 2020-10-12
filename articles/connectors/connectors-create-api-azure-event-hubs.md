@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88031433"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események monitorozása, fogadása és küldése az Azure Event Hubs és az Azure Logic Apps használatával
@@ -79,23 +79,23 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Eseményközpont neve** | Yes | A figyelni kívánt Event hub neve |
-   | **Tartalom típusa** | No | Az esemény tartalomtípusa. A mező alapértelmezett értéke: `application/octet-stream`. |
-   | **Fogyasztói csoport neve** | No | Az események olvasásához használandó [Event hub-beli fogyasztói csoport neve](../event-hubs/event-hubs-features.md#consumer-groups) . Ha nincs megadva, a rendszer az alapértelmezett fogyasztói csoportot használja. |
-   | **Események maximális száma** | No | Az események maximális száma. Az trigger az egyik és a tulajdonság által megadott események száma közötti értéket adja vissza. |
-   | **Intervallum** | Yes | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján |
-   | **Gyakoriság** | Yes | Az ismétlődés időegysége |
+   | **Eseményközpont neve** | Igen | A figyelni kívánt Event hub neve |
+   | **Tartalom típusa** | Nem | Az esemény tartalomtípusa. A mező alapértelmezett értéke: `application/octet-stream`. |
+   | **Fogyasztói csoport neve** | Nem | Az események olvasásához használandó [Event hub-beli fogyasztói csoport neve](../event-hubs/event-hubs-features.md#consumer-groups) . Ha nincs megadva, a rendszer az alapértelmezett fogyasztói csoportot használja. |
+   | **Események maximális száma** | Nem | Az események maximális száma. Az trigger az egyik és a tulajdonság által megadott események száma közötti értéket adja vissza. |
+   | **Intervallum** | Igen | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján |
+   | **Gyakoriság** | Igen | Az ismétlődés időegysége |
    ||||
 
    **További tulajdonságok**
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Tartalmi séma** | No | Az Event hub-ból beolvasni kívánt események JSON-tartalmának sémája. Ha például megadja a tartalmi sémát, a logikai alkalmazást csak azokhoz az eseményekhez aktiválhatja, amelyek megfelelnek a sémának. |
-   | **Minimális partíciós kulcs** | No | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosító minimális értéket. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
-   | **Partíció maximális kulcsa** | No | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) maximális azonosítóját. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
-   | **Időzóna** | No | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el UTC-eltolást. Válassza ki az alkalmazni kívánt időzónát. <p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
-   | **Kezdési idő** | No | Adja meg a kezdő időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ<p>-vagy-<p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát<p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
+   | **Tartalmi séma** | Nem | Az Event hub-ból beolvasni kívánt események JSON-tartalmának sémája. Ha például megadja a tartalmi sémát, a logikai alkalmazást csak azokhoz az eseményekhez aktiválhatja, amelyek megfelelnek a sémának. |
+   | **Minimális partíciós kulcs** | Nem | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosító minimális értéket. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
+   | **Partíció maximális kulcsa** | Nem | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) maximális azonosítóját. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
+   | **Időzóna** | Nem | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el UTC-eltolást. Válassza ki az alkalmazni kívánt időzónát. <p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
+   | **Kezdési idő** | Nem | Adja meg a kezdő időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ<p>-vagy-<p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát<p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
    ||||
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
@@ -130,10 +130,10 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Eseményközpont neve** | Yes | Az Event hub, ahová el szeretné küldeni az eseményt |
-   | **Tartalom** | No | Az elküldeni kívánt esemény tartalma |
-   | **Tulajdonságok** | No | A küldendő alkalmazás tulajdonságai és értékei |
-   | **Partíciókulcs** | No | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
+   | **Eseményközpont neve** | Igen | Az Event hub, ahová el szeretné küldeni az eseményt |
+   | **Tartalom** | Nem | Az elküldeni kívánt esemény tartalma |
+   | **Tulajdonságok** | Nem | A küldendő alkalmazás tulajdonságai és értékei |
+   | **Partíciókulcs** | Nem | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
    ||||
 
    Elküldheti például a kimenetet a Event Hubs eseményindítóból egy másik Event hubhoz:
@@ -152,11 +152,11 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
-   | **Event Hubs névtér** | Yes | <*Event-hubok – névtér*> | Válassza ki a használni kívánt Event Hubs névteret. |
+   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
+   | **Event Hubs névtér** | Igen | <*Event-hubok – névtér*> | Válassza ki a használni kívánt Event Hubs névteret. |
    |||||  
 
-   Például:
+   Példa:
 
    ![Event hub-kapcsolat létrehozása](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
@@ -176,6 +176,6 @@ A technikai részleteket, például az eseményindítókat, a műveleteket és a
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
