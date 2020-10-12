@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: a9f050bb25873e4b6ede234c800b00f2c34085d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085276"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>A HDInsight Apache Hadoop Services által használt portok
@@ -34,22 +34,22 @@ Ha további gépeket szeretne csatlakoztatni a virtuális hálózathoz, előszö
 
 Egy HDInsight-fürt összes csomópontja egy Azure-Virtual Network található. A csomópontok nem érhetők el közvetlenül az internetről. A nyilvános átjárók a következő portokhoz biztosítanak internet-hozzáférést, amelyek az összes HDInsight esetében közösek.
 
-| Szolgáltatás | Port | Protokoll | Description |
+| Szolgáltatás | Port | Protokoll | Leírás |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |Összekapcsolja az ügyfeleket az sshd-vel az elsődleges átjárócsomóponthoz. További információ: az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Összekapcsolja az ügyfeleket az sshd-vel a peremhálózati csomóponton. További információ: az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |SSH |Összekapcsolja az ügyfeleket az sshd-vel a másodlagos átjárócsomóponthoz. További információ: az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Ambari webes felhasználói felület. Lásd: [a HDInsight kezelése az Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari REST API. Lásd: [a HDInsight kezelése az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API. Lásd: [a MapReduce használata a curl használatával](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API. Lásd:  [a MapReduce használata a curl használatával](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Csatlakozás a Kaptárhoz ODBC használatával. Lásd: [az Excel és a HDInsight összekötése a Microsoft ODBC-illesztővel](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
 | HiveServer2 |443 |JDBC |Csatlakozás a ApacheHive a JDBC használatával. Lásd: [kapcsolódás Apache Hive a HDInsight a kaptár JDBC-illesztőprogram használatával](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 A következő típusok érhetők el adott fürtökhöz:
 
-| Szolgáltatás | Port | Protokoll | Fürt típusa | Description |
+| Szolgáltatás | Port | Protokoll | Fürt típusa | Leírás |
 | --- | --- | --- | --- | --- |
-| `Stargate` |443 |HTTPS |HBase |HBase REST API. Lásd: [az Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |A HBase |HBase REST API. Lásd: [az Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API. Lásd: [Apache Spark feladatok távoli elküldése az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md) |
 | Spark-takarékos kiszolgáló |443 |HTTPS |Spark |A Spark-takarékossági kiszolgáló a kaptár-lekérdezések elküldésére szolgál. Lásd: [a beeline Apache Hive használata a HDInsight-on](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm webes felhasználói felület. Lásd: [Apache Storm-topológiák üzembe helyezése és kezelése a HDInsight-](storm/apache-storm-deploy-monitor-topology-linux.md) ben |
@@ -81,11 +81,11 @@ Az interneten nyilvánosan elérhető összes szolgáltatást hitelesíteni kell
 
 Példák:
 
-* Ambari REST API:`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+* Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>HDFS-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | NameNode webes felhasználói felület |Fő csomópontok |30070 |HTTPS |Az állapot megtekintésére szolgáló webes KEZELŐFELÜLET |
 | NameNode metaadat-szolgáltatás |fő csomópontok |8020 |IPC |Fájlrendszer metaadatainak |
@@ -96,7 +96,7 @@ Példák:
 
 ### <a name="yarn-ports"></a>FONALas portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | Resource Manager webes felhasználói felület |Fő csomópontok |8088 |HTTP |A Resource Manager webes felhasználói felülete |
 | Resource Manager webes felhasználói felület |Fő csomópontok |8090 |HTTPS |A Resource Manager webes felhasználói felülete |
@@ -110,20 +110,20 @@ Példák:
 
 ### <a name="hive-ports"></a>Struktúra portjai
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Fő csomópontok |10001 |Takarékosság |Szolgáltatás a Kaptárhoz való csatlakozáshoz (takarékosság/JDBC) |
 | Hive-metaadattár |Fő csomópontok |9083 |Takarékosság |Szolgáltatás a kaptár-metaadatokhoz való csatlakozáshoz (takarékosság/JDBC) |
 
 ### <a name="webhcat-ports"></a>Webhcaten-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | Webhcaten-kiszolgáló |Fő csomópontok |30111 |HTTP |Webes API a HCatalog és más Hadoop-szolgáltatásokhoz |
 
 ### <a name="mapreduce-ports"></a>MapReduce-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | JobHistory |Fő csomópontok |19888 |HTTP |MapReduce JobHistory webes felhasználói felület |
 | JobHistory |Fő csomópontok |10020 |&nbsp; |MapReduce JobHistory-kiszolgáló |
@@ -131,21 +131,21 @@ Példák:
 
 ### <a name="oozie"></a>Oozie
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | Oozie-kiszolgáló |Fő csomópontok |11000 |HTTP |Oozie-szolgáltatás URL-címe |
 | Oozie-kiszolgáló |Fő csomópontok |11001 |HTTP |Oozie-rendszergazda portja |
 
 ### <a name="ambari-metrics"></a>Ambari-metrikák
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | Idősor (alkalmazás előzményei) |Fő csomópontok |6188 |HTTP |Az idővonal-szolgáltatás webes felhasználói felülete |
 | Idősor (alkalmazás előzményei) |Fő csomópontok |30200 |RPC |Az idővonal-szolgáltatás webes felhasználói felülete |
 
 ### <a name="hbase-ports"></a>HBase-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | HMaster |Fő csomópontok |16000 |&nbsp; |&nbsp; |
 | HMaster-információ webes felhasználói felülete |Fő csomópontok |16010 |HTTP |A HBase Master webes felhasználói felületének portja |
@@ -154,7 +154,7 @@ Példák:
 
 ### <a name="kafka-ports"></a>Kafka-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
 | Bróker |Munkavégző csomópontok |9092 |Kafka-huzal protokoll |Ügyfél-kommunikációhoz használatos |
 | &nbsp; |Zookeeper-csomópontok |2181 |&nbsp; |Az ügyfelek által a Zookeeper való csatlakozáshoz használt port |
@@ -162,7 +162,7 @@ Példák:
 
 ### <a name="spark-ports"></a>Spark-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | URL-cím elérési útja | Description |
+| Szolgáltatás | Csomópontok | Port | Protokoll | URL-cím elérési útja | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | Spark-kiszolgálók |Fő csomópontok |10002 |Takarékosság | &nbsp; | Szolgáltatás a Spark SQL-hez való csatlakozáshoz (takarékosság/JDBC) |
 | Livy-kiszolgáló | Fő csomópontok | 8998 | HTTP | &nbsp; | Az utasítások, feladatok és alkalmazások futtatására szolgáló szolgáltatás |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053051"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) HEVC vonatkozó módosítása 
@@ -40,11 +40,11 @@ A következő kifejezések definiálva vannak az *[MS-Glos]* alkalmazásban:
 
 A következő kifejezések a dokumentumra vonatkoznak:
 
->  **összeállítás időpontja:** Az az időpont, amikor egy minta megjelenik az ügyfélen, az [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)definícióban meghatározott módon.
+>  **összeállítás időpontja:** Az az időpont, amikor egy minta megjelenik az ügyfélen, az   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)definícióban meghatározott módon.
 > 
 >   **CENC**: Common encryption, az [ISO/IEC 23001-7] második kiadásban meghatározottak szerint.
 > 
->   **dekódolási idő:** A minta a (z) [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)által definiált, az ügyfélen való dekódolásához szükséges idő.
+>   **dekódolási idő:** A minta a (z)   [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)által definiált, az ügyfélen való dekódolásához szükséges idő.
 
 **töredék:** Egy vagy több **mintát**tartalmazó, független módon letölthető **adathordozó** .
 
@@ -54,9 +54,9 @@ A következő kifejezések a dokumentumra vonatkoznak:
 > 
 >   **bemutató:** Az összes **stream** és az ahhoz kapcsolódó metaadatok készlete, amely egyetlen film lejátszásához szükséges. **kérelem:** Az ügyfél és a kiszolgáló között a (z [) [RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **válaszban** meghatározott HTTP-üzenet, amely a kiszolgálóról az ügyfélnek küldött HTTP-üzenet, a következő módon: [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) .
 > 
->   **minta:** A legkisebb alapvető egység (például keret), amelyben a rendszer tárolja és feldolgozza az **adathordozót** .
+>   **minta:** A legkisebb alapvető egység (például keret), amelyben a rendszer tárolja és feldolgozza az   **adathordozót** .
 > 
->   **lehet** , hogy nem kell: Ezek a kifejezések (az összes sapkában) a [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) című témakörben leírtak szerint jelennek meg, a választható viselkedés bármely utasítása pedig lehet, hogy vagy nem.
+>   **lehet** , hogy nem kell: Ezek a kifejezések (az összes sapkában) a   [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) című témakörben leírtak szerint jelennek meg, a választható viselkedés bármely utasítása pedig lehet, hogy vagy nem.
 
 ## <a name="12-references"></a>1,2-referenciák
 
@@ -72,23 +72,23 @@ A következő kifejezések a dokumentumra vonatkoznak:
 >   [ISO/IEC 14496-15] Nemzetközi Szabványügyi Szervezet, "információtechnológia – hangvezérelt objektumok kódolása – 15. rész: a külső egység strukturált Videójának szállítása az ISO-alapú adathordozó-fájlformátumban", ISO 14496-15:2015, 3. kiadás.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Információtechnológia – nagy hatékonyságú kódolás és média-kézbesítés heterogén környezetekben – 2. rész: nagy hatékonyságú videó kódolása: 2013 vagy legújabb kiadás<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Információtechnológia – nagy hatékonyságú kódolás és média-kézbesítés heterogén környezetekben – 2. rész: nagy hatékonyságú videó kódolása: 2013 vagy legújabb kiadás   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Információs technológia – MPEG Systems Technologies – 7. rész: általános titkosítás az ISO-alapú médiafájl formátumú fájlokban, CENC-kiadás 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Információs technológia – MPEG Systems Technologies – 7. rész: általános titkosítás az ISO-alapú médiafájl formátumú fájlokban, CENC-kiadás 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, "a" kód "és a" profilok "paraméter a" vödör "adathordozó-típusokhoz"<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, "a" kód "és a" profilok "paraméter a" vödör "adathordozó-típusokhoz" <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] Az MP4 regisztrációs szolgáltató, "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] Az MP4 regisztrációs szolgáltató, "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "az RFC-k által a követelmények szintjének jelzésére használt kulcsszavak", BCP 14, RFC 2119, március 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "az RFC-k által a követelmények szintjének jelzésére használt kulcsszavak", BCP 14, RFC 2119, március 1997,   [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 – tájékoztató referenciák 
 
 >   [MS-GLOS] Microsoft Corporation, "*Windows-protokollok fő szószedete*"
 > 
->   [RFC3548] Josefsson, S., Ed., "a Base16, a Base32 és a Base64 adatkódolások", RFC 3548, július 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "a Base16, a Base32 és a Base64 adatkódolások", RFC 3548, július 2003, [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed., és Overell, P., "kibővített BNF a szintaxis specifikációi: ABNF", STD 68, RFC 5234, január 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., és Overell, P., "kibővített BNF a szintaxis specifikációi: ABNF", STD 68, RFC 5234, január 2008,   [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1,3 – áttekintés 
@@ -215,7 +215,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 > 
 >   Megjegyzés: Ez elkerüli a videó-szinkronizálási hibát, amely a videó lemaradó hangjának a legnagyobb dekódolású képpuffer eltávolítási késleltetésével egyenlő, és a bemutató időzítését is fenntartja az alternatív töredékek között, amelyek eltérő eltávolítási késésekkel rendelkezhetnek.
 > 
->   Az ebben a szakaszban megadott, a ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) részben meghatározott mezők szintaxisa változatlan marad, kivéve a következőt:
+>   Az ebben a szakaszban megadott, a ABNF   [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) részben meghatározott mezők szintaxisa változatlan marad, kivéve a következőt:
 > 
 >   SampleCompositionTimeOffset = SIGNED_INT32
 
@@ -240,7 +240,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 >   **CompatibleBrands (változó):** Az MPEG-4 támogatott márkákat határozza meg.
 >   Tartalmaznia kell a következőket: "CCFF" és "iso8".
 > 
->   Az ebben a szakaszban a ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) mezőben meghatározott mezők szintaxisa a következő:
+>   Az ebben a szakaszban a ABNF   [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) mezőben meghatározott mezők szintaxisa a következő:
 
 ```properties
 FileType = MajorBrand MinorVersion CompatibleBrands
@@ -324,7 +324,7 @@ TimeScale = 90000
 
 ##### <a name="3113-fragment-reference-description"></a>3.1.1.3-töredék leírása 
 
-###### <a name="31131-track-specific-fragment-reference-description"></a>3.1.1.3.1 követése – specifikus kódrészlet leírása 
+###### <a name="31131-track-specific-fragment-reference-description"></a>3.1.1.3.1 Track-Specific részlet leírása 
 
 #### <a name="3112-fragment-description"></a>3.1.1.2-töredék leírása 
 
@@ -334,7 +334,7 @@ TimeScale = 90000
 
 ### <a name="313-initialization"></a>3.1.3 inicializálás 
 
-### <a name="314-higher-layer-triggered-events"></a>3.1.4 rendszerű, magasabb réteg által aktivált események 
+### <a name="314-higher-layer-triggered-events"></a>3.1.4 Higher-Layer indított események 
 
 #### <a name="3141-open-presentation"></a>3.1.4.1 – nyitott bemutató 
 

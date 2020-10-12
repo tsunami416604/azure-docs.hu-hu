@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639681"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-fürtök létrehozása Azure-beli virtuális gépeken
@@ -67,6 +67,6 @@ Más típusú MATLAB Distributed Computing Server-fürtökhöz hasonlóan a MATL
 
 ![Fürterőforrás-kezelő](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A MATLAB Distributed Computing Server-fürtök az Azure-ban való üzembe helyezésével és felügyeletével kapcsolatos részletes utasításokért tekintse meg a sablonokat és parancsfájlokat tartalmazó [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) -tárházat.
 * Nyissa meg a [MathWorks webhelyét](https://www.mathworks.com/) a MATLAB és a MATLAB Distributed Computing Server részletes dokumentációjában.

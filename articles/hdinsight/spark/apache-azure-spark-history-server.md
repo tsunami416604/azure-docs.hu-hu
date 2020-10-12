@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079292"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>A Apache Spark History Server kiterjesztett funkcióinak használata a Spark-alkalmazások hibakereséséhez és diagnosztizálásához
@@ -26,7 +26,7 @@ A Spark History-kiszolgáló a Spark-alkalmazások befejezéséhez és futtatás
 ### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>Nyissa meg a Spark History Server webes FELÜLETét a Azure Portal
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a Spark-fürtöt. További információ: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. A **fürt irányítópultok**területen válassza a **Spark-előzmények kiszolgáló**elemet. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
+2. A **fürt irányítópultok**területen válassza a  **Spark-előzmények kiszolgáló**elemet. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
 
     ![Indítsa el a Spark History-kiszolgálót a Azure Portal.](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark-előzmények kiszolgálója")
 
@@ -97,13 +97,13 @@ Válassza ki a feladatsort, majd az adatnézet megjelenítéséhez válassza az 
    ![A Spark-alkalmazás & a feladatok Gráfjának lapja.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Szín |Description |
+    |Szín |Leírás |
     |---|---|
     |Zöld|A feladatot sikeresen befejezte.|
     |Narancssárga|A feladat nem sikerült, de ez nem befolyásolja a feladat végső eredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeznek, amelyek később is sikeresek lehetnek.|
     |Kék|A feladat fut.|
     |Fehér|A feladat futásra vár, vagy a szakasz kimaradt.|
-    |Vörös|A feladat nem sikerült.|
+    |Piros|A feladat nem sikerült.|
 
      ![Feladat futtatása a Spark-alkalmazás & a feladat gráf lapján.](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
@@ -130,7 +130,7 @@ Válassza ki a feladatsort, majd az adatnézet megjelenítéséhez válassza az 
     ![Az elferdített feladat ikon a Spark-alkalmazás & a feladatok gráfja oldalon.](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + A feladatütemezés csomópontja a következő információkat jeleníti meg az egyes szakaszokról:
-  + ID
+  + ID (Azonosító)
   + Név vagy Leírás
   + Feladat teljes száma
   + Olvasott adatok: a bemeneti méret és a shuffle olvasási méret összege
@@ -310,7 +310,7 @@ Ha gyorsjavítással szeretné frissíteni, használja a következő parancsfáj
     |Tulajdonság |Érték |
     |---|---|
     |Parancsfájl típusa|– Egyéni|
-    |Name|UpgradeJar|
+    |Name (Név)|UpgradeJar|
     |Bash-parancsfájl URI-ja|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |Csomópont típusa (i)|Head, Worker|
     |Paraméterek|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|

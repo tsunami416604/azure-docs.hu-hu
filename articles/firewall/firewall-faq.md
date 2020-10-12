@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88611177"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – gyakori kérdések
@@ -62,7 +62,7 @@ A webalkalmazási tűzfal (WAF) a Application Gateway szolgáltatása, amely a w
 
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Mi a különbség a hálózati biztonsági csoportok (NSG) és a Azure Firewall között?
 
-A Azure Firewall szolgáltatás kiegészíti a hálózati biztonsági csoport funkcióit. Együttesen jobb "védelmi mélyreható" hálózati biztonságot nyújtanak. A hálózati biztonsági csoportok elosztott hálózati rétegbeli forgalmi szűrést biztosítanak az egyes előfizetésekben található virtuális hálózatokon belüli erőforrások forgalmának korlátozására. A Azure Firewall egy teljes körűen kiszolgált, központosított hálózati tűzfal, amely hálózati és alkalmazás-szintű védelmet biztosít a különböző előfizetések és virtuális hálózatok között.
+A Azure Firewall szolgáltatás kiegészíti a hálózati biztonsági csoport funkcióit. Együttesen jobb "védelmi mélyreható" hálózati biztonságot nyújtanak. A hálózati biztonsági csoportok elosztott hálózati rétegbeli forgalomszűrést biztosítanak az egyes előfizetésekben található virtuális hálózatok erőforrásaira irányuló forgalom korlátozására. A Azure Firewall egy teljes körűen kiszolgált, központosított hálózati tűzfal, amely hálózati és alkalmazás-szintű védelmet biztosít a különböző előfizetések és virtuális hálózatok között.
 
 ## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Támogatottak-e a hálózati biztonsági csoportok (NSG) a AzureFirewallSubnet?
 

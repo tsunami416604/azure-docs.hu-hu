@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085361"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez
@@ -33,8 +33,8 @@ Konfigurálnia kell egy HDInsight-fürtöt, hogy Azure Monitor naplókat haszná
 Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
 
 1. Nyissa meg a HDInsight-fürthöz társított Log Analytics munkaterületet a Azure Portal.
-1. Az **általános**területen válassza a **naplók**lehetőséget.
-1. Írja be a következő lekérdezést a keresőmezőbe, hogy megkeresse az összes rendelkezésre álló metrikát a Azure Monitor naplók használatára konfigurált összes HDInsight-fürthöz, majd válassza a **Futtatás**lehetőséget. Itt tekintheti meg a művelet eredményét.
+1. Az **Általános** területen válassza a **Naplók** elemet.
+1. Írja be a következő lekérdezést a keresőmezőbe, hogy megkeresse az összes rendelkezésre álló metrikát a Azure Monitor naplók használatára konfigurált összes HDInsight-fürthöz, majd válassza a **Futtatás**lehetőséget. Tekintse át az eredményeket.
 
     ```kusto
     search *
@@ -94,7 +94,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezése, amely alapján a riasztás aktiválva van. Bármely olyan lekérdezést használhat, amelyhez riasztást szeretne létrehozni.
 
 1. Nyissa meg a HDInsight-fürthöz társított Log Analytics munkaterületet a Azure Portal.
-1. Az **általános**területen válassza a **naplók**lehetőséget.
+1. Az **Általános** területen válassza a **Naplók** elemet.
 1. Futtassa a következő lekérdezést, amelyen riasztást szeretne létrehozni, majd válassza a **Futtatás**lehetőséget.
 
     ```kusto
@@ -129,5 +129,5 @@ További információ: [metrikus riasztások létrehozása, megtekintése és ke
 
 ## <a name="see-also"></a>Lásd még
 
-* [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
+* [Ismerkedés az Azure Monitor-naplólekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
 * [Egyéni nézetek létrehozása a Azure Monitor View Designer használatával](../azure-monitor/platform/view-designer.md)

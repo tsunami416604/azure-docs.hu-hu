@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797666"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Biztonsági kulcs beállítása ellenőrzési módszerként
@@ -35,7 +35,7 @@ A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzés
 | ------ | -------- |
 | Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
-| Telefonhívások | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| Telefonbeszélgetések | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | Biztonsági kulcs | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | E-mail fiók | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
 | Biztonsági kérdések | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
@@ -160,7 +160,7 @@ Létrehozhat egy új biztonsági kulcsot tartalmazó PIN-kódot a biztonsági ku
 
 Egy biztonsági kulcs regisztrálásához legalább egy további, a biztonsági ellenőrzési módszer regisztrálása szükséges. További információért tekintse meg az [Áttekintés szakaszt](./security-info-setup-auth-app.md) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A jelszóval nem rendelkező ellenőrzési módszerekkel kapcsolatos további információkért olvassa el a [Microsoft Azure ad nyilvános előzetes kiadását a FIDO2 biztonsági kulcsaihoz, amely engedélyezi a jelszóval nem rendelkező bejelentkezések](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogját, vagy olvassa el a [Mi az Microsoft Authenticator alkalmazás? és a](user-help-auth-app-overview.md) [Windows Hello áttekintő](https://www.microsoft.com/windows/windows-hello) cikkeket.
 

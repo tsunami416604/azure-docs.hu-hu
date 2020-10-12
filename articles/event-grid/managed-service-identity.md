@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolg
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534243"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Esemény kézbesítése felügyelt identitással
@@ -26,7 +26,7 @@ Egy témakörhöz vagy tartományhoz is engedélyezheti a rendszerhez rendelt id
 
 ![Identitás engedélyezése témakör létrehozásakor](./media/managed-service-identity/create-topic-identity.png)
 
-### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="use-the-azure-cli"></a>Az Azure CLI használata
 Az Azure CLI-vel olyan témakört vagy tartományt is létrehozhat, amely rendszerhez rendelt identitással rendelkezik. Használja a parancsot a következőhöz `az eventgrid topic create` `--identity` beállított paraméterrel: `systemassigned` . Ha nem ad meg értéket ehhez a paraméterhez, a rendszer az alapértelmezett értéket `noidentity` használja. 
 
 ```azurecli-interactive
@@ -53,7 +53,7 @@ A következő eljárás bemutatja, hogyan engedélyezheti a rendszer által fel�
 
 Az Event Grid-tartomány identitásának engedélyezéséhez hasonló lépések használhatók.
 
-### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="use-the-azure-cli"></a>Az Azure CLI használata
 Használja a parancsot a következőre `az eventgrid topic update` `--identity` : beállítással `systemassigned` engedélyezheti a rendszerhez rendelt identitást egy meglévő témakörhöz. Ha le szeretné tiltani az identitást, állítsa be `noidentity` értékként. 
 
 ```azurecli-interactive
@@ -72,7 +72,7 @@ Az Azure Event Grid jelenleg a rendszerhez rendelt felügyelt identitással konf
 | ----------- | --------- | 
 | Várólisták és témakörök Service Bus | [Adatfeladó Azure Service Bus](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs adatfeladó](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob Storage | [Storage blob adatközreműködői](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure Blob Storage | [Storage-blobadatok közreműködője](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
 | Azure Queue Storage |[Tárolási várólista adatüzenetének küldője](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
 ## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Identitás hozzáadása az Azure-szerepkörökhöz célhelyeken
@@ -93,7 +93,7 @@ Az alábbi példa egy **msitesttopic** nevű Event Grid-témakörhöz tartozó f
 
 A lépések hasonlóak az identitásnak a táblázatban említett más szerepkörökhöz való hozzáadásához. 
 
-### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="use-the-azure-cli"></a>Az Azure CLI használata
 Az ebben a szakaszban szereplő példa bemutatja, hogyan adhat identitást Azure-szerepkörhöz az Azure CLI használatával. A mintául szolgáló parancsok az Event Grid-témakörökre vonatkoznak. Az Event Grid-tartományok parancsai hasonlóak. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>A témakör rendszeridentitásának elsődleges AZONOSÍTÓjának beolvasása 
@@ -281,5 +281,5 @@ az eventgrid event-subscription create
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felügyelt szolgáltatás identitásával kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md). 

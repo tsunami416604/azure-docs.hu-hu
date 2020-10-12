@@ -4,10 +4,10 @@ description: Ez a cikk a Microsoft Azure Service Bus AMQP kérelmek/válasz alap
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064414"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 Microsoft Azure Service Bus: kérelem-válasz alapú műveletek
@@ -16,7 +16,7 @@ Ez a cikk Microsoft Azure Service Bus kérelmek/válaszok alapú műveletek list
   
 Az 1,0-as részletes AMQP, amely elmagyarázza, hogy Service Bus hogyan valósítja meg és építheti fel az OASIS AMQP technikai specifikációját, tekintse meg a [AMQP 1,0 a Azure Service Bus és a Event Hubs]a[AMQP 1,0 protokoll]útmutatójában.  
   
-## <a name="concepts"></a>Fogalmak  
+## <a name="concepts"></a>Alapelvek  
   
 ### <a name="entity-description"></a>Entitás leírása  
 
@@ -136,7 +136,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
 > A zárolási tokenek a `DeliveryTag` fogadott üzenetek tulajdonsága. Tekintse meg a következő példát a [.net SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) -ban, amely lekéri ezeket. A jogkivonat a "DeliveryAnnotations" x-opt-Lock-token néven is szerepelhet, ez azonban nem garantált, és a `DeliveryTag` előnyben részesítettnek kell lennie. 
 > 
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -171,7 +171,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |`from-sequence-number`|hosszú|Igen|A betekintési kezdési sorszám.|  
 |`message-count`|int|Igen|A bepillantható üzenetek maximális száma.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -215,13 +215,13 @@ Az üzenetet jelölő térképnek a következő bejegyzéseket kell tartalmaznia
   
 |Kulcs|Érték típusa|Kötelező|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|üzenet-azonosító|sztring|Igen|`amqpMessage.Properties.MessageId`karakterláncként|  
+|üzenet-azonosító|sztring|Igen|`amqpMessage.Properties.MessageId` karakterláncként|  
 |munkamenet-azonosító|sztring|No|`amqpMessage.Properties.GroupId as string`|  
 |partíció – kulcs|sztring|No|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
 |partíción keresztüli kulcs|sztring|No|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|bájtok tömbje|Igen|AMQP 1,0 dróttal kódolt üzenet.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -255,7 +255,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |---------|----------------|--------------|--------------------|  
 |sorozatszámok|hosszú tömb|Igen|A megszakítani kívánt ütemezett üzenetek sorozatszámai.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -285,7 +285,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |---------|----------------|--------------|--------------------|  
 |munkamenet-azonosító|sztring|Igen|Munkamenet-azonosító.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -321,7 +321,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |üzenetek száma|int|Igen|A bepillantható üzenetek maximális száma.|  
 |munkamenet-azonosító|sztring|Igen|Munkamenet-azonosító.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -362,7 +362,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |munkamenet-azonosító|sztring|Igen|Munkamenet-azonosító.|  
 |munkamenet-állapot|bájtok tömbje|Igen|Átlátszatlan bináris adatértékek.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -390,7 +390,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |---------|----------------|--------------|--------------------|  
 |munkamenet-azonosító|sztring|Igen|Munkamenet-azonosító.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -426,7 +426,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |kihagyása|int|Igen|Több munkamenet kihagyása.|  
 |top|int|Igen|A munkamenetek maximális száma.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -496,7 +496,7 @@ Az **SQL-Rule-Action** térképnek tartalmaznia kell a következő bejegyzéseke
 |---------|----------------|--------------|--------------------|  
 |kifejezés|sztring|Igen|SQL-művelet kifejezése|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -522,7 +522,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |---------|----------------|--------------|--------------------|  
 |szabály neve|sztring|Igen|Szabály neve, nem tartalmazza az előfizetés és a témakör nevét.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -549,7 +549,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |top|int|Igen|Az oldalon beolvasni kívánt szabályok száma.|  
 |kihagyása|int|Igen|A kihagyni kívánt szabályok száma. Meghatározza a szabályok listájának kezdő indexét (+ 1). | 
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 A válaszüzenet a következő tulajdonságokat tartalmazza:
 
@@ -562,17 +562,17 @@ A tömb minden leképezési bejegyzése a következő tulajdonságokat tartalmaz
 
 |Kulcs|Érték típusa|Kötelező|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|szabály – Leírás|leírt objektumok tömbje|Igen|`com.microsoft:rule-description:list`a AMQP-ben leírt kód 0x0000013700000004| 
+|szabály – Leírás|leírt objektumok tömbje|Igen|`com.microsoft:rule-description:list` a AMQP-ben leírt kód 0x0000013700000004| 
 
-`com.microsoft.rule-description:list`a a leírt objektumok tömbje. A tömb a következőket tartalmazza:
+`com.microsoft.rule-description:list` a a leírt objektumok tömbje. A tömb a következőket tartalmazza:
 
 |Index|Érték típusa|Kötelező|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-| 0 | leírt objektumok tömbje | Igen | `filter`az alább megadott módon. |
-| 1 | a leírt objektum tömbje | Igen | `ruleAction`az alább megadott módon. |
+| 0 | leírt objektumok tömbje | Igen | `filter` az alább megadott módon. |
+| 1 | a leírt objektum tömbje | Igen | `ruleAction` az alább megadott módon. |
 | 2 | sztring | Igen | a szabály neve. |
 
-`filter`a következő típusok egyike lehet:
+`filter` a következő típusok egyike lehet:
 
 | Leíró neve | Leíró kódja | Érték |
 | --- | --- | ---|
@@ -581,13 +581,13 @@ A tömb minden leképezési bejegyzése a következő tulajdonságokat tartalmaz
 | `com.microsoft:true-filter:list` | 0x000001370000007 | Igaz szűrő, amely 1 = 1 értéket jelöl |
 | `com.microsoft:false-filter:list` | 0x000001370000008 | Hamis szűrő, amely az 1 = 0 értéket jelöli |
 
-`com.microsoft:sql-filter:list`a egy leírt tömb, amely a következőket tartalmazza:
+`com.microsoft:sql-filter:list` a egy leírt tömb, amely a következőket tartalmazza:
 
 |Index|Érték típusa|Kötelező|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 | 0 | sztring | Igen | SQL-szűrő kifejezése |
 
-`com.microsoft:correlation-filter:list`a egy leírt tömb, amely a következőket tartalmazza:
+`com.microsoft:correlation-filter:list` a egy leírt tömb, amely a következőket tartalmazza:
 
 |Index (ha létezik)|Érték típusa|Érték tartalma|  
 |---------|----------------|--------------|
@@ -601,14 +601,14 @@ A tömb minden leképezési bejegyzése a következő tulajdonságokat tartalmaz
 | 7 | sztring | Tartalom típusa |
 | 8 | Térkép | Alkalmazás által definiált tulajdonságok leképezése |
 
-`ruleAction`a következő típusok egyike lehet:
+`ruleAction` a következő típusok egyike lehet:
 
 | Leíró neve | Leíró kódja | Érték |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Üres szabály művelet – nincs szabály-művelet |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL-szabály művelete |
 
-`com.microsoft:sql-rule-action:list`a olyan leírt objektumok tömbje, amelyek első bejegyzése egy olyan karakterlánc, amely tartalmazza az SQL-szabály műveletének kifejezését.
+`com.microsoft:sql-rule-action:list` a olyan leírt objektumok tömbje, amelyek első bejegyzése egy olyan karakterlánc, amely tartalmazza az SQL-szabály műveletének kifejezését.
 
 ## <a name="deferred-message-operations"></a>Késleltetett üzenetküldési műveletek  
   
@@ -632,7 +632,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |sorozatszámok|hosszú tömb|Igen|Sorozatszámok.|  
 |fogadó – rendezés – üzemmód|ubyte|Igen|A **fogadó rendezési** módja a AMQP Core 1.0-s verzióban megadott módon.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -677,7 +677,7 @@ A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely eg
 |kézbesítetlen levelek – Leírás|sztring|No|Akkor állítható be, ha a törlési állapot **felfüggesztve**értékre van állítva.|  
 |tulajdonságok – módosítás|map|Nem|A módosítani kívánt Service Bus felügyelt üzenet tulajdonságainak listája.|  
   
-#### <a name="response"></a>Válasz  
+#### <a name="response"></a>Reagálás  
 
 A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat:  
   
@@ -686,7 +686,7 @@ A válaszüzenetnek tartalmaznia kell a következő alkalmazás-tulajdonságokat
 |statusCode|int|Igen|HTTP-válasz kódja [RFC2616]<br /><br /> 200: OK – sikeres, máskülönben sikertelen|  
 |statusDescription|sztring|No|Az állapot leírása.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a AMQP és a Service Busről, látogasson el a következő hivatkozásokra:
 

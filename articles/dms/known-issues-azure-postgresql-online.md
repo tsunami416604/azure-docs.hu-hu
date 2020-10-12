@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330315"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online áttelepítéssel a PostgreSQL-hez készült Azure DB-be
@@ -44,7 +44,7 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
 - A felhasználónak rendelkeznie kell a replikációs szerepkörrel a forrás-adatbázist üzemeltető kiszolgálón.
 - A forrás-és a célként megadott adatbázis-sémáknak egyezniük kell.
-- A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
+- A PostgreSQL-Single-kiszolgáló cél Azure-adatbázisában lévő séma nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
 
     ```
                                 SELECT Queries.tablename
@@ -75,7 +75,7 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
     Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
 
-- A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet eseményindítókkal. A következő paranccsal tilthatja le az eseményindítókat a célként megadott adatbázisban:
+- A cél Azure-adatbázis PostgreSQL-Single-kiszolgáló sémája nem rendelkezhet eseményindítókkal. A következő paranccsal tilthatja le az eseményindítókat a célként megadott adatbázisban:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

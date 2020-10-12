@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513689"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: nyilvános SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
@@ -37,7 +37,7 @@ Az alábbi parancs egy SSH-kulcspárt hoz létre RSA-titkosítással és 4096-es
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Ha az [Azure CLI](/cli/azure) használatával hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal, lehetősége van az SSH nyilvános és titkos kulcs fájljainak megadására a `--generate-ssh-keys` lehetőség használatával. A kulcs fájljait a ~/.ssh könyvtárban tárolja a rendszer, hacsak másként nincs megadva a `--ssh-dest-key-path` kapcsoló. Ha egy SSH-kulcspár már létezik, és a `--generate-ssh-keys` kapcsolót használja, a rendszer nem generál új kulcspárt, hanem a meglévő kulcspárt fogja használni. A következő parancsban cserélje le a *VMname* és a *RGname* értéket a saját értékeire:
+Ha az [Azure CLI](/cli/azure) használatával hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal, lehetősége van az SSH nyilvános és titkos kulcs fájljainak megadására a `--generate-ssh-keys` lehetőség használatával. A kulcs fájljait a ~/.ssh könyvtárban tárolja a rendszer, hacsak másként nincs megadva a `--ssh-dest-key-path` kapcsoló. Ha egy SSH-kulcspár már létezik, és a  `--generate-ssh-keys` kapcsolót használja, a rendszer nem generál új kulcspárt, hanem a meglévő kulcspárt fogja használni. A következő parancsban cserélje le a *VMname* és a *RGname* értéket a saját értékeire:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 

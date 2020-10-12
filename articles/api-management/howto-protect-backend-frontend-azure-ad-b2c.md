@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253694"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
@@ -99,7 +99,7 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
 
 ## <a name="build-the-function-api"></a>A Function API létrehozása
 1. Váltson vissza a standard Azure AD-bérlőre a Azure Portal, hogy az előfizetésben lévő elemeket újra be lehessen állítani 
-1. Lépjen a Azure Portal Function apps paneljére, nyissa meg az üres Function alkalmazást, majd hozzon létre egy új, a portálon elérhető webhook + API funkciót a gyors útmutatóban.
+1. Lépjen a Azure Portal Function apps paneljére, nyissa meg az üres Function alkalmazást, majd hozzon létre egy új, In-Portal "webhook + API" függvényt a rövid útmutató segítségével.
 1. Illessze be az alábbi kódrészletet a Run. CSX fölé a megjelenő meglévő kód fölé.
 
    ```csharp
@@ -118,7 +118,7 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
    ```
 
    > [!NOTE]
-   > Az imént beillesztett c# parancsfájl-függvény kódja egyszerűen naplóz egy sort a függvények naplóiba, és a ""Helló világ!"alkalmazás" szöveget adja vissza néhány dinamikus adattal (a dátummal és idővel).
+   > Az imént beillesztett c# parancsfájl-függvény kódja egyszerűen naplóz egy sort a függvények naplóiba, és a "„Helló világ!” alkalmazás" szöveget adja vissza néhány dinamikus adattal (a dátummal és idővel).
 
 3. Válassza az "integrálás" lehetőséget a bal oldali panelen, majd válassza a "Speciális szerkesztő" lehetőséget a panel jobb felső sarkában.
 4. Illessze be az alábbi mintakód-kódot a meglévő JSON fölé.
@@ -457,7 +457,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 ## <a name="and-were-done"></a>És készen vagyunk
 A fenti lépések módosíthatók és szerkeszthetők úgy, hogy a Azure AD B2C számos különböző felhasználási igényét lehetővé tegyék a API Management.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 * További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
 * A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](api-management-howto-mutual-certificates.md).

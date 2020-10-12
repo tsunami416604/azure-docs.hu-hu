@@ -4,10 +4,10 @@ description: Az ACR-feladatok YAML kapcsolatos feladatok definiálásának refer
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067583"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
@@ -79,7 +79,7 @@ A feladat tulajdonságai általában egy fájl tetején jelennek meg `acr-task.y
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | sztring | Igen | Az `acr-task.yaml` ACR Tasks szolgáltatás által elemzett fájl verziója. Míg az ACR-feladatok a visszamenőleges kompatibilitás fenntartására törekednek, ez az érték lehetővé teszi az ACR-feladatok számára a kompatibilitás fenntartását egy meghatározott verzión belül. Ha nincs megadva, az alapértelmezett érték a legújabb verzió. | Nem | Nincs |
 | `stepTimeout` | int (másodperc) | Igen | A lépés által futtatható másodpercek maximális száma. Ha a tulajdonság meg van adva egy feladathoz, az az `timeout` összes lépés alapértelmezett tulajdonságát állítja be. Ha a `timeout` tulajdonságot egy lépésben adja meg, a felülbírálja a feladat által megadott tulajdonságot. | Igen | 600 (10 perc) |
-| `workingDirectory` | sztring | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az `workingDirectory` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `c:\workspace`Windows vagy `/workspace` Linux rendszeren |
+| `workingDirectory` | sztring | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az `workingDirectory` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `c:\workspace` Windows vagy `/workspace` Linux rendszeren |
 | `env` | [karakterlánc, karakterlánc,...] | Igen |  A `key=value` feladathoz tartozó környezeti változókat meghatározó karakterláncok tömbje. Ha a tulajdonság meg van adva egy feladathoz, az az `env` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, akkor felülbírálja a feladatból örökölt környezeti változókat. | Igen | Nincs |
 | `secrets` | [titok, titkos kód,...] | Igen | [Titkos](#secret) objektumok tömbje. | Nem | Nincs |
 | `networks` | [hálózat, hálózat,...] | Igen | [Hálózati](#network) objektumok tömbje. | Nem | Nincs |
@@ -143,8 +143,8 @@ A `build` lépés típusa a következő táblázatban szereplő paramétereket t
 
 | Paraméter | Leírás | Választható |
 | --------- | ----------- | :-------: |
-| `-t`&#124;`--image` | Meghatározza a beépített rendszerkép teljes körű minősítését `image:tag` .<br /><br />Mivel a lemezképek belső feladatokhoz használhatók, például a funkcionális tesztek, nem minden rendszerképhez szükséges `push` egy beállításjegyzék. Ahhoz azonban, hogy egy adott rendszerkép egy adott feladat végrehajtásán belül legyen, a képnek hivatkoznia kell erre a névre.<br /><br />`az acr build`Az ACR-feladatok futtatása ellentétben nem biztosítja az alapértelmezett leküldéses viselkedést. Az ACR-feladatok esetében az alapértelmezett forgatókönyv feltételezi, hogy képes felépíteni, érvényesíteni, majd leküldeni egy rendszerképet. Lásd: [leküldés](#push) , hogyan lehet leküldeni a létrehozott rendszerképeket. | Igen |
-| `-f`&#124;`--file` | Megadja az átadott Docker `docker build` . Ha nincs megadva, a rendszer a környezet gyökerében lévő alapértelmezett Docker feltételezi. Docker megadásához adja át a fájlnevet a környezet gyökeréhez képest. | Igen |
+| `-t` &#124; `--image` | Meghatározza a beépített rendszerkép teljes körű minősítését `image:tag` .<br /><br />Mivel a lemezképek belső feladatokhoz használhatók, például a funkcionális tesztek, nem minden rendszerképhez szükséges `push` egy beállításjegyzék. Ahhoz azonban, hogy egy adott rendszerkép egy adott feladat végrehajtásán belül legyen, a képnek hivatkoznia kell erre a névre.<br /><br />`az acr build`Az ACR-feladatok futtatása ellentétben nem biztosítja az alapértelmezett leküldéses viselkedést. Az ACR-feladatok esetében az alapértelmezett forgatókönyv feltételezi, hogy képes felépíteni, érvényesíteni, majd leküldeni egy rendszerképet. Lásd: [leküldés](#push) , hogyan lehet leküldeni a létrehozott rendszerképeket. | Igen |
+| `-f` &#124; `--file` | Megadja az átadott Docker `docker build` . Ha nincs megadva, a rendszer a környezet gyökerében lévő alapértelmezett Docker feltételezi. Docker megadásához adja át a fájlnevet a környezet gyökeréhez képest. | Igen |
 | `context` | Az átadott gyökérkönyvtár `docker build` . Az egyes feladatok gyökérkönyvtára egy megosztott [workingDirectory](#task-step-properties)van beállítva, és tartalmazza a társított git klónozott könyvtár gyökerét. | Nem |
 
 ### <a name="properties-build"></a>Tulajdonságok: létrehozás
@@ -404,7 +404,7 @@ Az egyes lépésekhez tartozó típusok több, a típusához megfelelő tulajdon
 | `timeout` | int (másodperc) | Igen | A lépés megszakítása előtt legfeljebb ennyi másodpercig futhat. | 600 |
 | [`when`](#example-when) | [karakterlánc, karakterlánc,...] | Igen | A feladat egy vagy több lépésének függőségét konfigurálja. | Nincs |
 | `user` | sztring | Igen | Egy tároló felhasználóneve vagy UID azonosítója | Nincs |
-| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `c:\workspace`Windows vagy `/workspace` Linux rendszeren |
+| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `c:\workspace` Windows vagy `/workspace` Linux rendszeren |
 
 ### <a name="volumemount"></a>volumeMount
 
@@ -432,8 +432,8 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 A `when` tulajdonság határozza meg a lépés függőségét a feladat egyéb lépésein belül. A két paraméter értékét támogatja:
 
-* `when: ["-"]`– Más lépésektől eltérő függőséget jelez. Egy lépés megadásával `when: ["-"]` azonnal megkezdődik a végrehajtás, és lehetővé teszi az egyidejű lépések végrehajtását.
-* `when: ["id1", "id2"]`-Azt jelzi, hogy a lépés a `id` "ID1" és a `id` "ID2" lépésektől függ. Ez a lépés nem hajtható végre, amíg a "ID1" és a "ID2" lépések nem állnak készen.
+* `when: ["-"]` – Más lépésektől eltérő függőséget jelez. Egy lépés megadásával `when: ["-"]` azonnal megkezdődik a végrehajtás, és lehetővé teszi az egyidejű lépések végrehajtását.
+* `when: ["id1", "id2"]` -Azt jelzi, hogy a lépés a `id` "ID1" és a `id` "ID2" lépésektől függ. Ez a lépés nem hajtható végre, amíg a "ID1" és a "ID2" lépések nem állnak készen.
 
 Ha `when` nincs megadva egy lépésben, ez a lépés a fájl előző lépésének befejeződésétől függ `acr-task.yaml` .
 
@@ -615,7 +615,7 @@ alias:
 [...]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A többlépéses feladatok áttekintését a [több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-feladatokban](container-registry-tasks-multi-step.md)című témakörben tekintheti meg.
 

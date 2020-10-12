@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan határozhat meg egy erőforráscsoportot a virt
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483363"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Válasszon erőforráscsoportot a tesztkörnyezet virtuális gépei számára Azure DevTest Labs
@@ -105,7 +105,7 @@ Ez a beállítás a laborban létrehozott új virtuális gépekre vonatkozik. A 
 Az API használata:
 - Az API-verzió **2018_10_15_preview**használata.
 - Ha új erőforráscsoportot ad meg, győződjön meg arról, hogy rendelkezik **írási engedéllyel** az előfizetésben található erőforráscsoportok számára. Ha nem rendelkezik írási engedélyekkel, az új virtuális gépek létrehozása a megadott erőforráscsoporthoz sikertelen lesz.
-- Az API használata közben adja át a **teljes erőforráscsoport-azonosítót**. Példa: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Győződjön meg arról, hogy az erőforráscsoport ugyanabban az előfizetésben van, mint a labor. 
+- Az API használata közben adja át a **teljes erőforráscsoport-azonosítót**. Például: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Győződjön meg arról, hogy az erőforráscsoport ugyanabban az előfizetésben van, mint a labor. 
 
 
 ## <a name="next-steps"></a>További lépések

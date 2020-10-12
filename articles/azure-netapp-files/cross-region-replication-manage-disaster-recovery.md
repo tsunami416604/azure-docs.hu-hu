@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708788"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Vész-helyreállítás kezelése a régiók közötti replikációval 
@@ -103,5 +103,5 @@ Miután befejeződött az újraszinkronizálási művelet a célhelyről a forr�
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
-* [Régiók közötti replikáció – problémamegoldás](troubleshoot-cross-region-replication.md)
+* [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 

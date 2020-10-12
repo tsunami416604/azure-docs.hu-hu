@@ -4,10 +4,10 @@ description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639885"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
@@ -67,7 +67,7 @@ A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service szol
 - A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 - A Futtatás a csomagból nem kompatibilis a telepítés testreszabási beállításával ( `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ), a rendszer figyelmen kívül hagyja a Build lépést az üzembe helyezés során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)

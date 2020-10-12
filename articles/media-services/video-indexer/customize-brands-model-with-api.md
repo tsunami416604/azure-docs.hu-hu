@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
 ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047286"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Brands-modell testreszabása a Video Indexer API-val
@@ -94,7 +94,7 @@ A válasz az alábbi példa formátumát követve információt nyújt a kereset
 ```
 
 > [!NOTE]
-> `enabled`a beállítás azt `true` jelzi, hogy a márka szerepel a *befoglalási* listán a video Indexer észleléséhez, és a `enabled` hamis érték azt jelzi, hogy a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
+> `enabled` a beállítás azt `true` jelzi, hogy a márka szerepel a *befoglalási* listán a video Indexer észleléséhez, és a `enabled` hamis érték azt jelzi, hogy a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
 
 ## <a name="update-a-specific-brand"></a>Adott márka frissítése
 
@@ -178,7 +178,7 @@ A válasz azt jelzi, hogy a Bing márkák engedélyezve vannak-e az alábbi pél
 ```
 
 > [!NOTE]
-> `useBuiltIn`az igaz érték azt jelenti, hogy a Bing-márkák engedélyezve vannak. Ha `useBuiltin` a hamis, a Bing-márkák le vannak tiltva. Az `state` érték figyelmen kívül hagyható, mert elavult.
+> `useBuiltIn` az igaz érték azt jelenti, hogy a Bing-márkák engedélyezve vannak. Ha `useBuiltin` a hamis, a Bing-márkák le vannak tiltva. Az `state` érték figyelmen kívül hagyható, mert elavult.
 
 ## <a name="update-brands-model-settings"></a>A Brands modell beállításainak frissítése
 

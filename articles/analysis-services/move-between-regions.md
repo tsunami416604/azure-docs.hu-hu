@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050358"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services áthelyezése másik régióba
@@ -203,7 +203,7 @@ Ha új kiszolgálói erőforrást szeretne üzembe helyezni egy másik régióba
 
 7. Ellenőrizze, hogy a sablon-szerkesztő megjeleníti-e az új célkiszolgáló helyes tulajdonságait.
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 9. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
@@ -278,9 +278,9 @@ Nem kötelező: a modell-adatbázis visszaállítása után dolgozza fel a model
 
 Opcionális: a [Alm Toolkit](http://alm-toolkit.com/) egy *nyílt forráskódú* eszköz Power bi adatkészletek összehasonlításához és kezeléséhez *, valamint* a táblázatos modell-adatbázisok Analysis Servicesához. Az eszközkészlet használatával csatlakozhat a forrás-és a célkiszolgáló adatbázisaihoz, és összehasonlíthatja azokat. Ha az adatbázis-áttelepítés sikeres, a Model Objects ugyanaz lesz a definíció. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS beszerzése":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Miután meggyőződött arról, hogy az ügyfélalkalmazások csatlakozni tudnak az új kiszolgálóhoz, és az Automation-parancsfájlok megfelelően vannak végrehajtva, törölje a forráskiszolgáló-kiszolgálót. 
 
@@ -292,7 +292,7 @@ A forráskiszolgáló **Áttekintés** lapján válassza a **Törlés**lehetős�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A forráskiszolgáló PowerShell használatával történő törléséhez használja a Remove-AzAnalysisServicesServer parancsot.
+A forráskiszolgáló a PowerShell használatával történő törléséhez használja a Remove-AzAnalysisServicesServer parancsot.
 
 ```azurepowershell-interactive
 Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"

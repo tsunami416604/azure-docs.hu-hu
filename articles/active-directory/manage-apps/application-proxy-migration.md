@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706664"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
@@ -32,7 +32,7 @@ Azure Active Directory Application Proxy a Microsoft által kínált két tável
 
 Ebből a táblázatból megtudhatja, hogyan hasonlíthatja össze a veszélyforrások kezelési átjáróját (TMG), az egységes hozzáférési átjárót (UAG), a webalkalmazás-proxyt (WAP) és az Azure AD Application Proxy (AP) egymással.
 
-| Funkció | TMG | UAG | WAP | AP |
+| Szolgáltatás | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | Tanúsítványhitelesítés | Igen | Igen | - | - |
 | Böngészőalapú alkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
@@ -62,6 +62,6 @@ Az Azure AD Application Proxy a hasonló termékekhez képest egyedi előnyöket
 - Az egyik My apps oldal, amellyel a felhasználók az összes alkalmazáshoz hozzáférhetnek, többek között a Microsoft 365, az Azure AD integrált SaaS-alkalmazásaihoz és a helyszíni webalkalmazásokhoz. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-alkalmazás használata biztonságos távoli hozzáférés biztosításához a helyszíni alkalmazásokhoz](application-proxy.md)

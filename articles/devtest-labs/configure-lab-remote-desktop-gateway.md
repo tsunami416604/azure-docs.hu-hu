@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy t�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288082"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
@@ -21,9 +21,9 @@ Ez a megközelítés biztonságosabb, mert a tesztkörnyezet közvetlenül az á
 
 1. Az [RDP-fájl tartalmának beolvasása](/rest/api/dtl/virtualmachines/getrdpfilecontents) műveletet a **Csatlakozás** gomb kiválasztásakor hívja meg a rendszer. 1. 
 1. Az RDP-fájl beolvasása művelet meghívja a `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` hitelesítési jogkivonat igénylését.
-    1. `{gateway-hostname}`az átjáró állomásneve van megadva a labor **Beállítások** oldalán a laborhoz a Azure Portal. 
-    1. `{lab-machine-name}`annak a gépnek a neve, amelyhez csatlakozni próbál.
-    1. `{port-number}`az a port, amelyen a kapcsolódást el kell végezni. Ez a port általában 3389. Ha a labor virtuális gép a DevTest Labs [megosztott IP-](devtest-lab-shared-ip.md) szolgáltatását használja, a port eltérő lesz.
+    1. `{gateway-hostname}` az átjáró állomásneve van megadva a labor **Beállítások** oldalán a laborhoz a Azure Portal. 
+    1. `{lab-machine-name}` annak a gépnek a neve, amelyhez csatlakozni próbál.
+    1. `{port-number}` az a port, amelyen a kapcsolódást el kell végezni. Ez a port általában 3389. Ha a labor virtuális gép a DevTest Labs [megosztott IP-](devtest-lab-shared-ip.md) szolgáltatását használja, a port eltérő lesz.
 1. A távoli asztali átjáró elhalasztja a hívást `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` egy Azure-függvénynek a hitelesítési jogkivonat létrehozásához. A DevTest Labs szolgáltatás automatikusan tartalmazza a függvény kulcsát a kérelem fejlécében. A funkcióbillentyű a tesztkörnyezet kulcstartójában menthető. Az adott titok neve, amely **átjáró-jogkivonat titka** lesz a labor **Beállítások** lapján a laborban.
 1. Az Azure-függvénynek egy jogkivonat-tokent kell visszaadnia a tanúsítványalapú jogkivonat hitelesítéséhez az átjáró számítógépén.  
 1. Az RDP-fájl beolvasása művelet ezután visszaadja a teljes RDP-fájlt, beleértve a hitelesítési adatokat is.
@@ -82,7 +82,7 @@ Konfigurálja a labort a jogkivonat-hitelesítés használatára az alábbi lép
     > A **Save (Mentés**) gombra kattintva elfogadja [Távoli asztali átjáró licencfeltételeket](https://www.microsoft.com/licensing/product-licensing/products). A távoli átjáróval kapcsolatos további információkért tekintse meg a távoli asztali környezet [Távoli asztali szolgáltatásokét](https://aka.ms/rds) és [üzembe helyezését](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ismertető témakört.
 
 
-Ha a labor automatizáláson keresztüli konfigurálását részesíti előnyben, tekintse meg a minta PowerShell-parancsfájl [Set-DevTestLabGateway.ps1át](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) az **átjáró állomásneve** és az **átjáró-jogkivonat titkos** beállításainak beállításához. A [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestlab) egy Azure Resource Manager sablont is biztosít, amely létrehoz vagy frissít egy labort az **átjárói állomásnév** és az **átjáró-jogkivonat titkos** beállításainak használatával.
+Ha a labor automatizáláson keresztüli konfigurálását részesíti előnyben, tekintse meg a minta PowerShell-parancsfájl [Set-DevTestLabGateway.ps1át ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) az **átjáró állomásneve** és az **átjáró-jogkivonat titkos** beállításainak beállításához. A [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestlab) egy Azure Resource Manager sablont is biztosít, amely létrehoz vagy frissít egy labort az **átjárói állomásnév** és az **átjáró-jogkivonat titkos** beállításainak használatával.
 
 ## <a name="configure-network-security-group"></a>Hálózati biztonsági csoport konfigurálása
 A labor további biztonságossá tételéhez hálózati biztonsági csoportot (NSG) adhat hozzá a labor virtuális gépek által használt virtuális hálózathoz. A NSG beállításával kapcsolatos útmutatásért lásd: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](../virtual-network/manage-network-security-group.md).
@@ -157,5 +157,5 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
 
     Ha az átjárót és a labort is konfigurálta **, akkor a kapcsolódáskor** létrehozott kapcsolatfájl automatikusan tartalmazza a jogkivonat-hitelesítés használatával történő kapcsolódáshoz szükséges információkat.     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Távoli asztali szolgáltatások: [Távoli asztali szolgáltatások dokumentációjának](/windows-server/remote/remote-desktop-services/Welcome-to-rds) megismeréséhez tekintse meg a következő cikket.

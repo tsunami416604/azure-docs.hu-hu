@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533937"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Adatok betöltése a Azure Data Lake Storageról a szinapszis SQL-hez
@@ -124,7 +124,7 @@ Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyosz
 
 ## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
 
-Sikeresen betöltötte az adatait az adattárházba. Szép munka!
+Sikeresen betöltötte az adatait az adattárházba. Remek!
 
 ## <a name="next-steps"></a>További lépések
 Az adatraktár-megoldás az Azure szinapszis Analytics használatával történő fejlesztésének első lépése az adatgyűjtés. Tekintse meg fejlesztési erőforrásait.

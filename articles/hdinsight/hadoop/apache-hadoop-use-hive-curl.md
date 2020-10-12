@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085548"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a REST használatával
@@ -48,7 +48,7 @@ Szerkessze az alábbi szkriptet úgy, hogy lecseréli a `PASSWORD` tényleges je
 export password='PASSWORD'
 ```  
 
-**B. a PowerShell** végrehajtja az alábbi kódot, és az előugró ablakban adja meg a hitelesítő adatait:
+**B. PowerShell** Hajtsa végre az alábbi kódot, és adja meg a hitelesítő adatait az előugró ablakban:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -98,8 +98,8 @@ $clusterName
 
     Ezen parancs paraméterei a következők:
 
-    * `-u`– A kérelem hitelesítéséhez használt Felhasználónév és jelszó.
-    * `-G`– Azt jelzi, hogy ez a kérelem lekéréses művelet.
+    * `-u` – A kérelem hitelesítéséhez használt Felhasználónév és jelszó.
+    * `-G` – Azt jelzi, hogy ez a kérelem lekéréses művelet.
 
 1. Az URL-cím elejének `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` megegyeznek az összes kérelemnél. Az elérési út `/status` azt jelzi, hogy a kérés visszaadja a kiszolgáló webhcaten (más néven Templeton) állapotát. A kaptár verzióját a következő parancs használatával is kérheti:
 
@@ -140,23 +140,23 @@ $clusterName
 
     Ez a kérelem a POST metódust használja, amely az adatokat a kérelem részeként küldi el a REST API. A kérelem a következő adatértékeket küldi el:
 
-     * `user.name`– A parancsot futtató felhasználó.
-     * `execute`– A végrehajtandó HiveQL-utasítások.
-     * `statusdir`– Az a könyvtár, amelyre a feladatokhoz tartozó állapot íródik.
+     * `user.name` – A parancsot futtató felhasználó.
+     * `execute` – A végrehajtandó HiveQL-utasítások.
+     * `statusdir` – Az a könyvtár, amelyre a feladatokhoz tartozó állapot íródik.
 
    Ezek az utasítások a következő műveleteket hajtják végre:
 
-   * `DROP TABLE`– Ha a tábla már létezik, törölve lett.
-   * `CREATE EXTERNAL TABLE`-Új "külső" táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.
+   * `DROP TABLE` – Ha a tábla már létezik, törölve lett.
+   * `CREATE EXTERNAL TABLE` -Új "külső" táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.
 
      > [!NOTE]  
      > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy automatizált adatfeltöltési folyamat vagy egy másik MapReduce művelet.
      >
      > Egy külső tábla eldobása **nem** törli az adatforrást, csak a tábla definícióját.
 
-   * `ROW FORMAT`-Az adat formázása. Az egyes naplók mezői szóközzel vannak elválasztva.
-   * `STORED AS TEXTFILE LOCATION`– Az adattárolás helye (a példa/adatkönyvtár), valamint a szövegként tárolt érték.
-   * `SELECT`– Kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
+   * `ROW FORMAT` -Az adat formázása. Az egyes naplók mezői szóközzel vannak elválasztva.
+   * `STORED AS TEXTFILE LOCATION` – Az adattárolás helye (a példa/adatkönyvtár), valamint a szövegként tárolt érték.
+   * `SELECT` – Kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
 
      > [!NOTE]  
      > Figyelje meg, hogy a HiveQL utasítások közötti szóközöket a `+` karakter váltja fel a curl használatával. A szóközt (például az elválasztót) tartalmazó idézőjeles értékeket nem szabad lecserélni `+` .

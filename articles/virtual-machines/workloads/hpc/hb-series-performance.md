@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016282"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB sorozatú virtuális gépek méretei
@@ -22,7 +22,7 @@ Több teljesítményteszt is fut a HB sorozatos méretekben. A teljesítmény te
 | Számítási feladat                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | Hármas ADATFOLYAM                                    | 260 GB/s (32-33 GB/s/CCX)  |
-| Nagy teljesítményű Linpack (HPL)                  | 1 000 GigaFLOPS (Rpeak), 860 GigaFLOPS (RMAX) |
+| High-Performance Linpack (HPL)                  | 1 000 GigaFLOPS (Rpeak), 860 GigaFLOPS (RMAX) |
 | RDMA késés & sávszélesség                        | 1,27-s, 99,1 GB/s   |
 | FIO helyi NVMe SSD-vel                           | 1,7 GB/s olvasás, 1,0 GB/s írások      |  
 | IOR 4 * Azure prémium SSD (P30 Managed Disks, RAID0) * *  | 725 MB/s olvasás, 780 MB/írás   |
@@ -46,7 +46,7 @@ A OSU-es teljesítményteszt-csomagból származó MPI sávszélesség-teszt fut
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI-sávszélesség az Azure HB-ban.":::
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI-késés az Azure HB-ban.":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

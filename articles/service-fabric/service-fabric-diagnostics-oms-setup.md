@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258659"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor naplók beállítása fürthöz
@@ -32,7 +32,7 @@ Ha egy fürt üzembe helyezése után szeretne hozzáadni egy Log Analytics munk
 
 2. **Service Fabric Analytics**keresése. Válassza ki a megjelenő erőforrást.
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
     ![Service Fabric Analytics a piactéren](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -121,7 +121,7 @@ Ha elkészült, kövesse az előző szakasz lépéseit Azure Monitor naplók a m
 
 Emellett további megoldásokat is hozzáadhat, vagy egyéb módosításokat végezhet a Log Analytics munkaterületen a PowerShell használatával. További információ: [Azure monitor naplók kezelése a PowerShell használatával](../azure-monitor/platform/powershell-workspace-configuration.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A log Analytics-ügynök üzembe helyezése](service-fabric-diagnostics-oms-agent.md) a csomópontokon a teljesítményszámlálók összegyűjtéséhez, valamint a tárolók Docker-statisztikáinak és naplóinak összegyűjtéséhez
 * Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal
 * [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../azure-monitor/platform/view-designer.md)

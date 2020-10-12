@@ -8,10 +8,10 @@ ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007689"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
@@ -133,12 +133,12 @@ Használja a **szinkronizálási** műveletet.
 Visszatérési állapotkódok:
 
 
-|Code  |Description  |
+|Code  |Leírás  |
 |---------|---------|
 |-1     |  Érvénytelen       |
 |0     | Replikáló        |
 |1     |  Rehidratálása       |
-|2     |   Befejeződött       |
+|2     |   Befejezve       |
 |3     |   Sikertelen      |
 |4     |    Véglegesítése     |
 |||

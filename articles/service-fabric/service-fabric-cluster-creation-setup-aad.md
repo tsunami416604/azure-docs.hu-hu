@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure A
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258766"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
@@ -133,7 +133,7 @@ Igen. Azonban ne felejtse el felvenni a Service Fabric Explorer URL-címét a f�
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Miért van szükség a kiszolgálói tanúsítványra, amíg az Azure AD engedélyezve van?
 A FabricClient és a FabricGateway kölcsönös hitelesítést hajt végre. Az Azure AD-hitelesítés során az Azure AD-integráció ügyfél-identitást biztosít a kiszolgálónak, és a kiszolgáló tanúsítványát az ügyfél használja a kiszolgáló identitásának ellenőrzéséhez. További információ a Service Fabric tanúsítványokról: [X. 509 tanúsítványok és Service Fabric][x509-certificates-and-service-fabric].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Active Directory alkalmazások beállítása és szerepkörök beállítása a felhasználók számára, [a fürt konfigurálása és üzembe helyezése](service-fabric-cluster-creation-via-arm.md).
 
 

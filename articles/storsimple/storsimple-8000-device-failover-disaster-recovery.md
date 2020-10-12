@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511806"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Feladatátvétel és vészhelyreállítás StorSimple 8000 sorozatú eszközök esetében
@@ -55,7 +55,7 @@ Tegyük fel, hogy van két biztonsági mentési szabályzat, a *defaultPol* és 
 
 Ebben az esetben a StorSimple rangsorolja az összeomlás-konzisztencia szolgáltatást, és a *customPol* használja, mivel több kötetet tartalmaz. A szabályzat legutóbbi biztonsági másolata az adatok visszaállítására szolgál. A biztonsági mentési szabályzatok létrehozásával és kezelésével kapcsolatos további információkért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a biztonsági mentési házirendek kezeléséhez](storsimple-8000-manage-backup-policies-u2.md).
 
-## <a name="common-considerations-for-device-failover"></a>Az eszközök feladatátvételének gyakori szempontjai
+## <a name="common-considerations-for-device-failover"></a>Gyakori megfontolandó szempontok az eszköz-feladatátvétellel kapcsolatban
 
 Az eszköz feladatátvétele előtt tekintse át a következő információkat:
 

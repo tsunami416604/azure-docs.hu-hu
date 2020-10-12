@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89013758"
 ---
 # <a name="get-started-with-device-twins-net"></a>Ismerkedés az eszközökhöz készült ikrek (.NET) használatával
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban a következő .NET-konzolos alkalmazásokat hozza létr
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -65,7 +65,7 @@ Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával,
 
 1. Megoldáskezelő kattintson a jobb gombbal a **AddTagsAndQuery** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza a **Telepítés** lehetőséget.
+1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza a **Telepítés** gombot.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
@@ -145,7 +145,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
 
 1. Megoldáskezelő kattintson a jobb gombbal a **ReportConnectivity** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** lehetőséget.
+1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 

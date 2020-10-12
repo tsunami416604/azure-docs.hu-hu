@@ -13,10 +13,10 @@ ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395889"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitás-adattárolás a Azure Active Directory európai ügyfelei számára
@@ -36,7 +36,7 @@ Felhőalapú Azure-Multi-Factor Authentication esetén a hitelesítés a felhasz
 
 További információ arról, hogy az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és a felhőalapú Azure MFA milyen felhasználói adatokat gyűjt, lásd: [azure multi-Factor Authentication felhasználói adatok gyűjtése](../authentication/howto-mfa-reporting-datacollection.md).
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jelszó-alapú egyszeri bejelentkezés vállalati alkalmazásokhoz
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jelszó-alapú egyszeri Sign-On vállalati alkalmazásokhoz
  
 Ha egy ügyfél létrehoz egy új vállalati alkalmazást (akár az Azure AD-katalóguson, akár a nem katalóguson keresztül), és engedélyezi a jelszó-alapú egyszeri bejelentkezést, az alkalmazás bejelentkezési URL-címe és az egyéni rögzítési bejelentkezési mezők a Egyesült Államok tárolódnak. A szolgáltatással kapcsolatos további információkért tekintse meg a [jelszó alapú egyszeri bejelentkezés konfigurálását](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) ismertető témakört.
 
@@ -67,7 +67,7 @@ Az Azure AD-vel integrált szolgáltatások és alkalmazások hozzáférhetnek a
 
 A Microsoft-szolgáltatások adattárolási helyével kapcsolatban a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszában találhat további információt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fent ismertetett szolgáltatásokkal és funkciókkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Mi az a többtényezős hitelesítés?](../authentication/concept-mfa-howitworks.md)
 

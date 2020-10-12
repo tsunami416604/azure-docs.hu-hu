@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 89c276ffe6059a61323755eaf928d525ab5ea416
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085293"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
@@ -195,7 +195,7 @@ Több optimalizálási módszer is megvizsgálható, például:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben több általános kaptár-lekérdezés optimalizálási módszerét is megtanulta. További információt a következő cikkekben talál:
+Ebben a cikkben több általános kaptár-lekérdezés optimalizálási módszerét is megtanulta. További tudnivalókért olvassa el a következő cikket:
 
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
 * [Az Apache Hive optimalizálása](./optimize-hive-ambari.md)

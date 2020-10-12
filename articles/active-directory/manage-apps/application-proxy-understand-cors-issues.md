@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759929"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Application Proxy CORS kapcsolatos problémák megismerése és megoldása
@@ -116,5 +116,5 @@ Bizonyos CORS problémák nem oldhatók fel, például amikor az alkalmazás át
 
 ## <a name="see-also"></a>Lásd még
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md) 
-- [Azure AD Application Proxy üzemelő példány megtervezése](application-proxy-deployment-plan.md) 
+- [Azure AD alkalmazás-proxy telepítési útmutató](application-proxy-deployment-plan.md) 
 - [Helyi alkalmazásokhoz való távoli hozzáférés Azure Active Directory Application Proxy](application-proxy.md) 

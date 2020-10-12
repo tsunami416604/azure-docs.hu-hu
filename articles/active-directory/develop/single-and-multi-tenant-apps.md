@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395906"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Bérlet Azure Active Directory
@@ -46,6 +46,6 @@ A nagyszerű, több-bérlős alkalmazások kiépítése kihívást jelenthet, me
 * A minimális felhasználói hozzáférés elve alapján győződjön meg arról, hogy az alkalmazás csak a ténylegesen szükséges engedélyeket kéri. 
 * Adja meg az alkalmazás részeként közzétett engedélyek megfelelő nevét és leírását. Ez segíti a felhasználókat és a rendszergazdákat arról, hogy mit fogadnak el az alkalmazás API-jai használatának megkísérlése során. További információ: az [engedélyek útmutatójának](v2-permissions-and-consent.md)ajánlott eljárások szakasza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazások átalakítása több-bérlővé](howto-convert-app-to-be-multi-tenant.md)

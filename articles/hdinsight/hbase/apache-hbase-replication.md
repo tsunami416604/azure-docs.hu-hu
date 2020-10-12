@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085611"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks szolgáltatásban
@@ -104,7 +104,7 @@ Az utolsó szakaszban a sablon létrehoz egy Ubuntu-alapú virtuális gépet a k
 
 A kötés telepítéséhez a Yon-nek meg kell keresnie a két DNS virtuális gép nyilvános IP-címét.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. A DNS virtuális gép megnyitásához válassza az **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]** elemet.  Az erőforráscsoport neve az utolsó eljárásban létrehozott csoport. Az alapértelmezett DNS-beli virtuális gépek nevei a következők: *vnet1DNS* és *vnet2NDS*.
 3. Válassza a **Tulajdonságok** lehetőséget a virtuális hálózat Tulajdonságok lapjának megnyitásához.
 4. Jegyezze fel a **nyilvános IP-címet**, és ellenőrizze a **magánhálózati IP-címet**is.  A magánhálózati IP-címet a vnet2DNS vnet1DNS és **10.2.0.4** **10.1.0.4** kell megadni.  
@@ -305,11 +305,11 @@ A következő lépések azt ismertetik, hogyan hívható meg a parancsfájl műv
       >
       > Ez az útmutató feltételezi, hogy az hn1 aktív átjárócsomóponthoz. Ellenőrizze, hogy a fürt azonosítsa-e az aktív fő csomópontot.
 
-6. Válassza a **Létrehozás** lehetőséget. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
+6. Kattintson a **Létrehozás** gombra. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
 
 Szükséges argumentumok:
 
-|Name|Description|
+|Név|Leírás|
 |----|-----------|
 |-s,--src-cluster | Megadja a forrás HBase-fürt DNS-nevét. Például:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Megadja a cél (replika) HBase-fürt DNS-nevét. Például:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -318,7 +318,7 @@ Szükséges argumentumok:
 
 Nem kötelező argumentumok:
 
-|Name|Description|
+|Név|Leírás|
 |----|-----------|
 |-Su,--src-ambari-User | A Ambari rendszergazdai felhasználónevét adja meg a forrás HBase-fürtön. Az alapértelmezett érték a **rendszergazda**. |
 |-du,--DST-ambari-User | A Ambari rendszergazdai felhasználónevét adja meg a cél HBase-fürtön. Az alapértelmezett érték a **rendszergazda**. |

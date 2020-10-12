@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
 ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291100"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Virtuális gép áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
@@ -61,5 +61,5 @@ Ha a rendszer arra kéri, hogy erősítse meg, hogy szeretné-e áthelyezni a me
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

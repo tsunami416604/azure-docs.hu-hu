@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086211"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Apache Spark folyamatos átviteli feladatok létrehozása a FONALral
@@ -21,7 +21,7 @@ ms.locfileid: "86086211"
 
 A Spark streaming olyan hosszan futó feladatokat hoz létre, amelyekben az adatok átalakítását el tudja végezni, majd az eredményeket elküldheti a fájlrendszer, az adatbázisok, az irányítópultok és a konzol számára. A Spark streaming az adatok mikro-kötegeit dolgozza fel, és először egy adott időintervallumban gyűjti össze az események kötegét. Ezt követően a köteg feldolgozásra és kimenetre lesz küldve. A Batch-időintervallumok általában egy másodperc töredékében vannak meghatározva.
 
-![Spark streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -123,4 +123,4 @@ Ha az ellenőrzőpontok és a WAL + megbízható fogadók használatával szeret
 * [Apache Spark streaming-feladatok létrehozása pontosan egyszer az események feldolgozásával](apache-spark-streaming-exactly-once.md)
 * [Hosszú ideig futó Apache Spark streaming-feladatok a FONALon](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/)
 * [Strukturált streaming: hibatűrő szemantika](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Diszkretizált Streams: hibatűrő modell a skálázható adatfolyamok feldolgozásához](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Diszkretizált Streams: A skálázható adatfolyamok feldolgozására szolgáló Fault-Tolerant modell](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

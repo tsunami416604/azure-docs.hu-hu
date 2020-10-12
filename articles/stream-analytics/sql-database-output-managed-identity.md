@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460641"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
@@ -124,7 +124,7 @@ Győződjön meg arról, hogy létrehozott egy táblát a SQL Database a megfele
 
 1. Adja meg a többi tulajdonságot. SQL Database kimenet létrehozásával kapcsolatos további tudnivalókért tekintse meg [a SQL Database kimenet létrehozása stream Analytics](sql-database-output.md)használatával című témakört. Ha elkészült, válassza a **Mentés**lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md)

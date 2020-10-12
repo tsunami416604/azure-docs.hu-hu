@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313620"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése
@@ -53,7 +53,7 @@ A kép hatókörét a következőként kell olvasni: (részleg = IT és ország 
 
 A hatókör-modul a következő műveleteket támogatja.
 
-| Művelet | Description |
+| Művelet | Leírás |
 | --- | --- |
 | EGYENLŐ, NOTEQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték egyenlő-e az attribútum értékével. A többértékű attribútumok esetében lásd: ISIN és ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték kisebb-e, mint az attribútumban szereplő érték. |

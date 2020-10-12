@@ -12,10 +12,10 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706357"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
@@ -52,7 +52,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - E-mailek Microsoft 365 használata.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -255,7 +255,7 @@ Több egyező attribútumot is beállíthat, és hozzárendelheti a megfeleltet�
 
 Alapértelmezés szerint a kiépítési összekötő alkalmazás a HR felhasználói profil állapotát az Active Directory vagy az Azure AD felhasználói fiókjának állapotára képezi le, hogy eldöntse, hogy engedélyezi vagy letiltja a felhasználói fiókot.
 
-Az összekapcsolhatók – kimaradók folyamat indításakor a következő követelményeket kell összegyűjtenie.
+A Joiners-Leavers folyamat indításakor a következő követelményeket kell összegyűjtenie.
 
 | Folyamat | Követelmények |
 | - | - |
@@ -413,7 +413,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 - [A kezelői frissítési műveletek naplóinak ismertetése](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
 - [Gyakran előforduló hibák elhárítása](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 - [Kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md)
 - [Az Azure AD szinkronizációs API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

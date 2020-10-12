@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514194"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Hálózati útválasztási beállítások konfigurálása az Azure Storage-hoz (előzetes verzió)
@@ -46,7 +46,7 @@ Például a "StorageAccountA" internetes útvonal-specifikus végpontjának köz
 | Tárolási szolgáltatás        | Útvonal-specifikus végpont                                  |
 | :--------------------- | :------------------------------------------------------- |
 | Blob szolgáltatás           | `StorageAccountA-internetrouting.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
+| 2. generációs Data Lake Storage | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `StorageAccountA-internetrouting.file.core.windows.net`  |
 | Statikus webhelyek        | `StorageAccountA-internetrouting.web.core.windows.net`   |
 
@@ -55,7 +55,7 @@ Ha rendelkezik egy olvasási hozzáféréssel rendelkező geo-redundáns tárol�
 | Tárolási szolgáltatás        | Útvonal-specifikus írásvédett másodlagos végpont                        |
 | :--------------------- | :----------------------------------------------------------------- |
 | Blob szolgáltatás           | `StorageAccountA-internetrouting-secondary.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
+| 2. generációs Data Lake Storage | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `StorageAccountA-internetrouting-secondary.file.core.windows.net`  |
 | Statikus webhelyek        | `StorageAccountA-internetrouting-secondary.web.core.windows.net`   |
 

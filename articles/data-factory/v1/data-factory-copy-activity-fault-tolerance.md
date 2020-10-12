@@ -12,10 +12,10 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436391"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hibatűrés hozzáadása a másolási tevékenységhez inkompatibilis sorok kihagyása
@@ -71,10 +71,10 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | A nem kompatibilis sorok kihagyásának engedélyezése a másolás során vagy nem. | Igaz<br/>False (alapértelmezett) | No |
-| **redirectIncompatibleRowSettings** | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | No |
-| **linkedServiceName** | Az Azure Storage társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás neve, amely arra a tárolási példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | No |
-| **elérési útja** | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg azt a blob Storage-elérési útvonalat, amelyet a nem kompatibilis adatértékek naplózásához használni kíván. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No |
+| **enableSkipIncompatibleRow** | A nem kompatibilis sorok kihagyásának engedélyezése a másolás során vagy nem. | Igaz<br/>False (alapértelmezett) | Nem |
+| **redirectIncompatibleRowSettings** | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem |
+| **linkedServiceName** | Az Azure Storage társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás neve, amely arra a tárolási példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | Nem |
+| **elérési útja** | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg azt a blob Storage-elérési útvonalat, amelyet a nem kompatibilis adatértékek naplózásához használni kíván. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
 
 ## <a name="monitoring"></a>Figyelés
 A másolási tevékenység futtatása után a figyelés szakaszban látható a kihagyott sorok száma:

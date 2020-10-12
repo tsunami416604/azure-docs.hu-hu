@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257668"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
@@ -100,7 +100,7 @@ A Kusto lekérdezési nyelve nagy teljesítményű. Egy másik értékes lekérd
 
 ![Események lekérdezése/csomópont](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az infrastruktúra figyelésének engedélyezéséhez, azaz a teljesítményszámlálók létrehozásához lépjen [a log Analytics-ügynök hozzáadásához](service-fabric-diagnostics-oms-agent.md). Az ügynök gyűjti a teljesítményszámlálókat, és hozzáadja őket a meglévő munkaterülethez.
 * Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy a [számítógépek internetkapcsolat nélküli csatlakoztatása Azure monitor naplókhoz a log Analytics átjáró használatával](../azure-monitor/platform/gateway.md).

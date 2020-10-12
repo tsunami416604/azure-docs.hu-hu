@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068272"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Az Azure rendszerkép-készítő szolgáltatás DevOps feladata
@@ -139,12 +139,12 @@ A **létrehozási útvonal** gombra kattintva válassza ki a képre helyezni kí
 
 A következő példa a működésének módját mutatja be:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Hierarchia megjelenítésére szolgáló címtár-struktúra.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Válassza az összetevő hozzáadása lehetőséget a kiadási folyamatban.":::
 
 
 * Windows-fájlok találhatók a-ben `C:\` . A rendszer létrehoz egy nevű könyvtárat `buildArtifacts` , amely tartalmazza a `webapp` könyvtárat.
 
-* Linux-fájlok léteznek a alkalmazásban `/tmp` . A `webapp` rendszer létrehozza a könyvtárat, amely tartalmazza az összes fájlt és könyvtárat. A fájlokat a címtárból kell áthelyeznie. Ellenkező esetben a rendszer törli, mert az ideiglenes könyvtárban van.
+* Linux-fájlok léteznek a alkalmazásban  `/tmp` . A `webapp` rendszer létrehozza a könyvtárat, amely tartalmazza az összes fájlt és könyvtárat. A fájlokat a címtárból kell áthelyeznie. Ellenkező esetben a rendszer törli, mert az ideiglenes könyvtárban van.
 
 #### <a name="inline-customization-script"></a>Beágyazott testreszabási parancsfájl
 
@@ -154,7 +154,7 @@ A következő példa a működésének módját mutatja be:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – Linux rendszereken a Build összetevők a `/tmp` könyvtárba kerülnek. Sok Linux OSs esetében azonban a rendszer újraindításkor törli a/tmp könyvtár tartalmát. Ha azt szeretné, hogy az összetevők a képen is elérhetők legyenek, létre kell hoznia egy másik könyvtárat, és át kell másolnia őket.  Például:
+* Linux – Linux rendszereken a Build összetevők a `/tmp` könyvtárba kerülnek. Sok Linux OSs esetében azonban a rendszer újraindításkor törli a/tmp könyvtár tartalmát. Ha azt szeretné, hogy az összetevők a képen is elérhetők legyenek, létre kell hoznia egy másik könyvtárat, és át kell másolnia őket.  Példa:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ A következő példa a működésének módját mutatja be:
 > A rendszerkép-szerkesztő nem távolítja el automatikusan a Build-összetevőket, erősen azt javasoljuk, hogy mindig legyen kód a Build-összetevők eltávolításához.
 > 
 
-* A Windows-rendszerkép-szerkesztő telepíti a fájlokat a `c:\buildArtifacts` könyvtárba. A könyvtár megmarad, el kell távolítania a könyvtárat. Eltávolíthatja azt a futtatott szkriptből. Például:
+* A Windows-rendszerkép-szerkesztő telepíti a fájlokat a `c:\buildArtifacts` könyvtárba. A könyvtár megmarad, el kell távolítania a könyvtárat. Eltávolíthatja azt a futtatott szkriptből. Példa:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ A következő példa a működésének módját mutatja be:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – a Build összetevők bekerülnek a `/tmp` könyvtárba. Számos Linux OSs esetében azonban az újraindításkor `/tmp` törlődik a könyvtár tartalma. Azt javasoljuk, hogy a tartalom eltávolításához legyen kód, és ne használja az operációs rendszert a tartalom eltávolításához. Például:
+* Linux – a Build összetevők bekerülnek a `/tmp` könyvtárba. Számos Linux OSs esetében azonban az újraindításkor `/tmp` törlődik a könyvtár tartalma. Azt javasoljuk, hogy a tartalom eltávolításához legyen kód, és ne használja az operációs rendszert a tartalom eltávolításához. Példa:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -312,9 +312,9 @@ Nem. A rendszer a sablon egyedi nevét használja, majd törli.
 
 Ha felépítési hiba történik, a DevOps feladat nem törli az előkészítési erőforráscsoportot. Elérheti a Build testreszabási naplóját tartalmazó átmeneti erőforrás-csoportot.
 
-Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Például:
+Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Példa:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Példa DevOps-feladatra, amely hibát jelez.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Válassza az összetevő hozzáadása lehetőséget a kiadási folyamatban.":::
 
 A hibaelhárítással kapcsolatos további információkért lásd: az [Azure rendszerkép-készítő szolgáltatás hibaelhárítása](image-builder-troubleshoot.md). 
 
@@ -333,6 +333,6 @@ template name:  t_1556938436xxx
 A rendszerkép sablonjának erőforrás-összetevője a tevékenységben kezdetben megadott erőforráscsoport. Ha elkészült a hibaelhárítással, törölje az összetevőt. Ha a Azure Portal használatával törli az erőforráscsoportot, válassza a **rejtett típusok megjelenítése**lehetőséget az összetevő megtekintéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).

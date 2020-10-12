@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: e5d346a6f412b5764400a42e2bebbafec610009b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89015424"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
@@ -455,7 +455,7 @@ FROM simulation /* output trade simulation to PBI */
 ![PNL Power BI diagram vizualizáció](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure Stream Analyticsben valósághű nagy gyakoriságú kereskedelmi modellt hozhatunk létre egy közepesen összetett lekérdezéssel. A beépített lineáris regressziós funkció hiánya miatt le kell egyszerűsítenünk a modellt úgy, hogy öt bemeneti változó helyett csak kettőt használjon. Az eltökélt felhasználók számára azonban a több dimenzióval rendelkező és kifinomultabb algoritmusok implementálhatóak JavaScript UDA-ként is. 
 
 Érdemes megjegyezni, hogy a legtöbb lekérdezés (a JavaScript UDA kivételével) tesztelése és hibakeresése elvégezhető a [Visual Studióhoz készült Azure Stream Analytics](stream-analytics-tools-for-visual-studio-install.md) eszközökkel a Visual Studióban. A kezdeti lekérdezés megírását követően a szerző kevesebb mint 30 percet töltött teszteléssel és hibakereséssel a Visual Studióban. 

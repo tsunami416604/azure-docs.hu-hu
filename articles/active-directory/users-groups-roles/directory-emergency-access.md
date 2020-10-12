@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88795391"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
@@ -109,7 +109,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 
         ![riasztási logika](./media/directory-emergency-access/alert-image2.png)
 
-    1. Válassza a **Kész** lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
+    1. Válassza a **Done** (Kész) lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
 1. Válassza ki a riasztás által bejelentendő felhasználók műveleti csoportját. Ha létre szeretne hozni egyet, tekintse meg [a műveleti csoport létrehozása](#create-an-action-group)című témakört.
 1. Ha testre szeretné szabni a műveleti csoport tagjainak küldött e-mailes értesítést, a műveletek **testreszabása**területen válassza a műveletek lehetőséget.
 1. A **riasztás részletei**területen adja meg a riasztási szabály nevét, és adjon hozzá egy opcionális leírást.
@@ -150,7 +150,7 @@ Ezeket a lépéseket rendszeres időközönként és a legfontosabb változások
 - Ha a közelmúltban módosult az informatikai személyzet, például a feladatok változása, a távozás vagy egy új bérlet
 - Ha a szervezet Azure AD-előfizetései megváltoztak
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](directory-admin-roles-secure.md)
 - [Felhasználók hozzáadása az Azure ad használatával](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó társítása a globális rendszergazdai szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md)

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395770"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
@@ -27,7 +27,7 @@ Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgál
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A szerepköralapú Access Control (RBAC) részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. A RBAC használatával csak a feladataik elvégzéséhez szükséges hozzáférés mennyiségét adhatja meg a felhasználóknak. A RBAC segítségével biztosíthatja, hogy amikor a felhasználók elhagyják a szervezetet, elvesztik a felhőben lévő erőforrásokhoz való hozzáférést.
+A Role-Based Access Control (RBAC) részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. A RBAC használatával csak a feladataik elvégzéséhez szükséges hozzáférés mennyiségét adhatja meg a felhasználóknak. A RBAC segítségével biztosíthatja, hogy amikor a felhasználók elhagyják a szervezetet, elvesztik a felhőben lévő erőforrásokhoz való hozzáférést.
 
 További információ:
 

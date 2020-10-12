@@ -5,10 +5,10 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260117"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric Mesh kérdésekről
@@ -42,7 +42,7 @@ Igen. Az egyes előfizetések kvótái a következők:
 
 Az alkalmazások élettartama jelenleg két napra korlátozódik. Ez az előzetes verzióhoz lefoglalt ingyenes magok használatának maximalizálása érdekében. Ennek eredményeképpen csak a 48 órán át folyamatosan futtathat egy adott üzembe helyezést, amely után a rendszer leállítja a leállítási időt.
 
-Ha ez megtörténik, ellenőrizheti, hogy a rendszer le van-e állítva az `az mesh app show` Azure CLI-ben a parancs futtatásával. Ellenőrizze, hogy visszaadja-e a függvényt`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Ha ez megtörténik, ellenőrizheti, hogy a rendszer le van-e állítva az `az mesh app show` Azure CLI-ben a parancs futtatásával. Ellenőrizze, hogy visszaadja-e a függvényt `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Például: 
 
@@ -75,7 +75,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 Az erőforráscsoport törléséhez használja az `az group delete <nameOfResourceGroup>` parancsot.
 
-## <a name="deployments"></a>Üzemelő példányok
+## <a name="deployments"></a>Központi telepítés
 
 ### <a name="what-container-images-are-supported"></a>Milyen tároló-lemezképek támogatottak?
 
@@ -127,7 +127,7 @@ A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával ka
 
 Előfordulhat, hogy a ServiceFabric hálózati NAT eltűnnek az alkalmazás helyi gépen való futtatásakor. Annak diagnosztizálásához, hogy ez történt-e, futtassa a következő parancsot egy parancssorból:
 
-`docker network ls`Figyelje meg, hogy szerepel-e `servicefabric_nat` a lista.  Ha nem, futtassa a következő parancsot:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` Figyelje meg, hogy szerepel-e `servicefabric_nat` a lista.  Ha nem, futtassa a következő parancsot: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Ez akkor is problémát jelent, ha az alkalmazás már helyileg és nem kifogástalan állapotban van telepítve.
 
@@ -135,7 +135,7 @@ Ez akkor is problémát jelent, ha az alkalmazás már helyileg és nem kifogás
 
 Előfordulhat, hogy a CPU rendelkezésre állása és a korlátozások az összes alkalmazásban rögzítettek. Az alábbiak enyhítése:
 - Hozzon létre egy öt csomópontos fürtöt.
-- A szolgáltatások CPU-használatának csökkentése a telepített alkalmazások között. A szolgáltatás Service. YAML fájljában `cpu: 1.0` például a következőre váltson:`cpu: 0.5`
+- A szolgáltatások CPU-használatának csökkentése a telepített alkalmazások között. A szolgáltatás Service. YAML fájljában `cpu: 1.0` például a következőre váltson: `cpu: 0.5`
 
 Több alkalmazás nem telepíthető egyetlen csomópontos fürtre. Az alábbiak enyhítése:
 - Használjon öt csomópontos fürtöt, ha több alkalmazást helyez üzembe egy helyi fürtön.
@@ -167,6 +167,6 @@ Az alkalmazás modelljében használja a hálózatok és kötetek teljes erőfor
 
 Ez egy hiba, és a javítás megvalósítása folyamatban van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az [áttekintést](service-fabric-mesh-overview.md).

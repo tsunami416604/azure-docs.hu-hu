@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706251"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
@@ -148,7 +148,7 @@ Minden olyan Microsoft Cloud Service, amely elfogadja a Access Control által ki
 
 A SharePoint 2013, a 2016 és a SharePoint Online ügyfelei hosszú ideig használják az ACS-t a felhőben, a helyszínen és a hibrid forgatókönyvekben használt hitelesítési célokra. A SharePoint egyes funkcióit és használati eseteit az ACS-nyugdíjazás fogja érinteni, míg mások nem. Az alábbi táblázat az ACS-t használó legnépszerűbb SharePoint-funkciók áttelepítési Útmutatóját foglalja össze:
 
-| Funkció | Útmutató |
+| Szolgáltatás | Útmutató |
 | ------- | -------- |
 | Felhasználók hitelesítése az Azure AD-ből | Korábban az Azure AD nem támogatta a SharePoint által a hitelesítéshez szükséges SAML 1,1-tokeneket, és az ACS-t olyan közvetítőként használták, amely az Azure AD-tokenek formátumával kompatibilis a SharePoint rendszerrel. Mostantól [közvetlenül kapcsolódhat a sharepointhoz az Azure ad-hez az Azure ad alkalmazás Gallery SharePoint helyszíni alkalmazás használatával](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Alkalmazás-hitelesítés & kiszolgáló – kiszolgáló hitelesítés a helyszíni SharePointban](/SharePoint/security-for-sharepoint-server/authentication-overview) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. | 
@@ -181,7 +181,7 @@ Az Azure AD emellett nem feltétlenül támogatja ugyanazokat a hitelesítési p
 
 Az Azure AD azonban számos lehetséges előnyt biztosít az ügyfelek Access Control. Natív módon támogatja a felhőben üzemeltetett Microsoft munkahelyi vagy iskolai fiókokat, amelyeket Access Control ügyfelek általában használnak. 
 
-Az Azure AD-bérlők a helyszíni Active Directory egy vagy több példányához is összevonhatók AD FS használatával. Így az alkalmazás képes hitelesíteni a helyszínen üzemeltetett felhőalapú felhasználókat és felhasználókat. Emellett támogatja a WS-Federation protokollt is, ami viszonylag egyszerűvé teszi a webes alkalmazásokkal való integrálást a WIF használatával.
+Az Azure AD-bérlők a helyszíni Active Directory egy vagy több példányához is összevonhatók AD FS használatával. Így az alkalmazás képes hitelesíteni a helyszínen üzemeltetett felhőalapú felhasználókat és felhasználókat. Emellett támogatja a WS-Federation protokollt is, ami viszonylag egyszerűvé teszi a webalkalmazások integrálását a WIF használatával.
 
 A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgáltatásokkal kapcsolatos webalkalmazásokhoz kapcsolódó Access Control funkcióit. 
 
@@ -214,7 +214,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 
 Ha úgy dönt, hogy az Azure AD az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, akkor az alkalmazás Azure AD-vel való integrálásának két módját kell figyelembe vennie.
 
-Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is használható legyen, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)című témakörben ismertetett megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
+Ha WS-Federation vagy WIF szeretne használni az Azure AD-vel való integrációhoz, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)című témakörben leírt megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
 
 - Az Azure AD-jogkivonat testreszabásának teljes rugalmassága. Testreszabhatja az Azure AD által kiállított jogcímeket, hogy azok megfeleljenek az Access Control által kiadott jogcímeknek. Ez különösen magában foglalja a felhasználói azonosító vagy a név-azonosító jogcímet. Ahhoz, hogy a felhasználók a technológiák módosítása után is konzisztens felhasználói azonosítókat kapjanak, győződjön meg arról, hogy az Azure AD által kiállított felhasználói azonosítók megegyeznek a Access Control által kiállított azonosítókkal.
 - Az alkalmazásra jellemző jogkivonat-aláíró tanúsítvány, valamint az Ön által vezérelt élettartam is konfigurálható.
@@ -243,7 +243,7 @@ A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Ac
 | **Fiókok típusai** | | |
 | Microsoft munkahelyi vagy iskolai fiókok | Támogatott | Egyéni szabályzatok használatával támogatott  |
 | Fiókok a Windows Server Active Directory és AD FS | Közvetlen összevonás által támogatott AD FS | SAML-összevonás által támogatott egyéni szabályzatok használatával |
-| Más vállalati Identitáskezelés-felügyeleti rendszerekből származó fiókok | Közvetlen összevonás által támogatott a WS-Federation használatával | SAML-összevonás által támogatott egyéni szabályzatok használatával |
+| Más vállalati Identitáskezelés-felügyeleti rendszerekből származó fiókok | Közvetlen összevonás útján támogatott WS-Federation | SAML-összevonás által támogatott egyéni szabályzatok használatával |
 | Személyes használatra készült Microsoft-fiókok | Támogatott | Támogatott | 
 | Facebook, Google, Yahoo-fiókok | Támogatott | A Facebook és a Google natív módon támogatott, a Yahoo az OpenID Connect-összevonás segítségével egyéni szabályzatok használatával támogatott |
 | **Protokollok és SDK-kompatibilitás** | | |
@@ -266,15 +266,15 @@ A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Ac
 Ha úgy dönt, hogy Azure AD B2C az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, kezdje a következő erőforrásokkal:
 
 - [Azure AD B2C dokumentáció](../../active-directory-b2c/overview.md)
-- [Egyéni szabályzatok Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
+- [Azure AD B2C – egyéni szabályzatok](../../active-directory-b2c/custom-policy-overview.md)
 - [Díjszabás Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Áttelepítés a ping Identity vagy Auth0
 
 Bizonyos esetekben előfordulhat, hogy az Azure AD és a Azure AD B2C nem elegendő ahhoz, hogy a webalkalmazásokban a nagy programkód módosítása nélkül cserélje le a Access Control. Néhány gyakori példa a következőkre utalhat:
 
-- WIF vagy WS-Federation szolgáltatást használó webalkalmazások a közösségi identitás-szolgáltatók, például a Google vagy a Facebook szolgáltatásban való bejelentkezéshez.
-- Webalkalmazások, amelyek közvetlen összevonást végeznek a vállalati identitás-szolgáltató felé a WS-Federation protokollon keresztül.
+- A WIF-t vagy WS-Federationt használó webalkalmazások a közösségi identitás-szolgáltatók, például a Google vagy a Facebook szolgáltatásban való bejelentkezéshez.
+- Webalkalmazások, amelyek közvetlen összevonást végeznek a vállalati identitás-szolgáltatóhoz a WS-Federation protokollon keresztül.
 - Olyan webalkalmazások, amelyek megkövetelik a közösségi identitás-szolgáltató (például a Google vagy a Facebook) által kiadott hozzáférési jogkivonatot a Access Control által kiállított jogkivonatok jogcímeként.
 - Az Azure AD vagy Azure AD B2C által nem reprodukálható összetett jogkivonat-átalakítási szabályokkal rendelkező webalkalmazások.
 - Az ACS-t használó több-bérlős webalkalmazások, amelyek számos különböző Identitáskezelő számára központilag kezelik az összevonási szolgáltatásokat
