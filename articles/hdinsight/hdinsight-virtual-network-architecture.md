@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81390208"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuális hálózati architektúra
@@ -40,7 +40,7 @@ Ezek a teljes tartománynevek az űrlapból lesznek `<node-type-prefix><instance
 
 A `<node-type-prefix>` lesz *HN* a átjárócsomópontokkal, a *wn* feldolgozói csomópontok és a *Zn* Zookeeper-csomópontok számára.
 
-Ha csak az állomásnévre van szüksége, csak a teljes tartománynév első részét használja:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
+Ha csak az állomásnévre van szüksége, csak a teljes tartománynév első részét használja: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Alapszintű virtuális hálózati erőforrások
 

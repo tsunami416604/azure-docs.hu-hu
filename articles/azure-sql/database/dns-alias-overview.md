@@ -12,10 +12,10 @@ ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
 ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86145660"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>A Azure SQL Database DNS-aliasa
@@ -61,7 +61,7 @@ A következő tulajdonságok a kiszolgáló minden DNS-aliasára érvényesek:
   - A kiszolgálók eldobásakor az Azure-rendszer a kiszolgálóra hivatkozó összes DNS-aliast is eldobja.
 - *Nincs a régióhoz kötve:* A DNS-aliasok nincsenek régióhoz kötve. Bármely DNS-alias frissíthető úgy, hogy egy olyan kiszolgálóra hivatkozzon, amely bármely földrajzi régióban található.
   - Ha azonban egy alias frissítése egy másik kiszolgálóra hivatkozik, mindkét kiszolgálónak ugyanabban az Azure- *előfizetésben*kell lennie.
-- *Engedélyek:* A DNS-aliasok kezeléséhez a felhasználónak *kiszolgálói közreműködői* engedélyekkel kell rendelkeznie vagy magasabbnak kell lennie. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../../role-based-access-control/overview.md).
+- *Engedélyek:* A DNS-aliasok kezeléséhez a felhasználónak *kiszolgálói közreműködői* engedélyekkel kell rendelkeznie vagy magasabbnak kell lennie. További információ: [az Role-Based Access Control első lépései a Azure Portal](../../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>A DNS-aliasok kezelése
 

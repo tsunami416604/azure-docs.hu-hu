@@ -5,10 +5,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921895"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Újdonságok az Azure Blockchain szolgáltatásban?
@@ -123,7 +123,7 @@ Ha lehetséges, használjon egy konzervatív gáz értéket a tranzakciók elkü
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Az intelligens szerződések nem kötött hurkoi csökkentik a teljesítményt
 
-Kerülje a nem kötött hurkokat az intelligens szerződésekben, mivel azok csökkenthetik a teljesítményt. További információkért lásd a következőket:
+Kerülje a nem kötött hurkokat az intelligens szerződésekben, mivel azok csökkenthetik a teljesítményt. További információkat találhat az alábbi forrásokban:
 
 - [A nem kötött hurkok elkerülése](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [Az intelligens szerződéssel kapcsolatos ajánlott biztonsági eljárások](https://github.com/ConsenSys/smart-contract-best-practices)

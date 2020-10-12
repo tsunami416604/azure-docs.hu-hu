@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85857118"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával REST API
@@ -18,7 +18,7 @@ ms.locfileid: "85857118"
 > * [A Java használata](data-lake-store-service-to-service-authenticate-java.md)
 > * [A .NET SDK használata](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-service-to-service-authenticate-python.md)
-> * [A REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
 > 
 > 
 

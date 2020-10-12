@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800091"
 ---
 # <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
@@ -74,11 +74,11 @@ A JSON-kivonat következő kivonata egy példa kimenetet mutat be:
 
 ### <a name="explanation"></a>Magyarázat
 
-- `Category1`olyan nyelv lehetséges jelenlétét jelenti, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
-- `Category2`olyan nyelv lehetséges jelenlétére utal, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
-- `Category3`olyan nyelv lehetséges jelenlétére utal, amely bizonyos helyzetekben sértőnek minősülhet.
-- `Score`0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez a funkció egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
-- `ReviewRecommended`értéke igaz vagy hamis, a belső pontszám küszöbértékének függvényében. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
+- `Category1` olyan nyelv lehetséges jelenlétét jelenti, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
+- `Category2` olyan nyelv lehetséges jelenlétére utal, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
+- `Category3` olyan nyelv lehetséges jelenlétére utal, amely bizonyos helyzetekben sértőnek minősülhet.
+- `Score` 0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez a funkció egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
+- `ReviewRecommended` értéke igaz vagy hamis, a belső pontszám küszöbértékének függvényében. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
 
 ## <a name="personal-data"></a>Személyes adatok
 
@@ -159,6 +159,6 @@ A következő példa a megfelelő lista AZONOSÍTÓját mutatja be:
 
 A Content Moderator egy [kifejezés-lista API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) -t biztosít az egyéni kifejezések listáinak kezelésére szolgáló műveletekkel. Kezdje a [kifejezést a lists API-konzolra](try-terms-list-api.md) , és használja a REST API kódot. Tekintse meg a [.net](term-lists-quickstart-dotnet.md) gyors útmutató listáját is, ha ismeri a Visual studiót és a C#-ot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tesztelje az API-kat a [text moderációs API-konzollal](try-text-api.md). Tekintse meg az [értékeléseket, a munkafolyamatokat és a feladatokat](./review-api.md) , amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat.

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273007"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure arc-kompatibilis PostgreSQL-nagy kapacitású létrehozása Azure Data Studio használatával
@@ -56,7 +56,7 @@ _A **kiszolgáló-csoport neve** a következő lépésben telepítendő kiszolg�
 A OpenShift SCCs kapcsolatos további információkért tekintse meg a [OpenShift dokumentációját](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html).
 Most már megvalósíthatja a következő lépést.
 
-## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport létrehozása
 
 1. Azure Data Studio elindítása
 1. A kapcsolatok lapon kattintson a bal felső sarokban található három pontra, és válassza az "új központi telepítés" lehetőséget.
@@ -91,7 +91,7 @@ Néhány percen belül sikeresen befejeződött a létrehozás.
 
     > \* A fenti dokumentumokban hagyja ki a **bejelentkezett szakaszt a Azure Portalba**, & **hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus)**. Implementálja az Azure arc üzembe helyezésének hátralévő lépéseit. Ezek a részek Azure Database for PostgreSQL az Azure-felhőben nagy kapacitású (Citus) jellemzőek, de a dokumentumok egyéb részei közvetlenül alkalmazhatók az Azure arc-kompatibilis PostgreSQL-nagy kapacitású.
 
-- [A Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoport felskálázása](scale-out-postgresql-hyperscale-server-group.md)
+- [A rugalmas skálázású Azure Database for PostgreSQL-kiszolgálócsoport horizontális felskálázása](scale-out-postgresql-hyperscale-server-group.md)
 - [Tárolási konfiguráció és Kubernetes-tárolási fogalmak](storage-configuration.md)
 - [Kubernetes erőforrás-modell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

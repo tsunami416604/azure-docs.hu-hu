@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205554"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
@@ -109,7 +109,7 @@ Kilenc kimenő portra vonatkozó követelmény van. Az ezekben a tartományokban
 | 10221-10231 |Kimenő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) | (Redis alhálózat) |
 | 20226 |Kimenő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
 | 13000-13999 |Kimenő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
-| 15000-15999 |Kimenő |TCP |Belső kommunikáció a Redis és a Geo-replikáláshoz | (Redis alhálózat) |(Redis alhálózat) (Geo-replika társ alhálózat) |
+| 15000-15999 |Kimenő |TCP |Belső kommunikáció a Redis és a Geo-Replication | (Redis alhálózat) |(Redis alhálózat) (Geo-replika társ alhálózat) |
 | 6379-6380 |Kimenő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
 
 <sup>1</sup> a "AzureKeyVault" szolgáltatási címkét a Resource Manager hálózati biztonsági csoportjaival használhatja.
@@ -133,7 +133,7 @@ Nyolc bejövő porttartomány-követelmény van. Az ezekben a tartományokban l�
 | 8500 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
 | 10221-10231 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat), Azure Load Balancer |
 | 13000-13999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure-terheléselosztás | (Redis alhálózat) |Virtual Network, Azure Load Balancer |
-| 15000-15999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure terheléselosztás és geo-replikáció | (Redis alhálózat) |Virtual Network, Azure Load Balancer, (Geo-replika társ alhálózat) |
+| 15000-15999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure terheléselosztás és Geo-Replication | (Redis alhálózat) |Virtual Network, Azure Load Balancer, (Geo-replika társ alhálózat) |
 | 16001 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
 | 20226 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
 
@@ -159,7 +159,7 @@ Ha a portra vonatkozó követelmények az előző szakaszban leírtak szerint va
 
 - [Indítsa újra](cache-administration.md#reboot) az összes gyorsítótár-csomópontot. Ha az összes szükséges gyorsítótár-függőség nem érhető el (a [bejövő portokra vonatkozó követelmények](cache-how-to-premium-vnet.md#inbound-port-requirements) és a [kimenő portokra vonatkozó követelmények](cache-how-to-premium-vnet.md#outbound-port-requirements)dokumentálása alapján), a gyorsítótár nem fog tudni újraindulni.
 - A gyorsítótár-csomópontok újraindítása után (ahogy a gyorsítótár állapota a Azure Portalban szerepel) a következő teszteket végezheti el:
-  - Pingelje a gyorsítótár-végpontot (az 6380-as port használatával) egy olyan gépről, amely a gyorsítótárral azonos VNET található, a [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Például:
+  - Pingelje a gyorsítótár-végpontot (az 6380-as port használatával) egy olyan gépről, amely a gyorsítótárral azonos VNET található, a [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Példa:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -182,7 +182,7 @@ Kerülje a következő kapcsolódási karakterlánchoz hasonló IP-cím használ
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint `sslHost` amelyeket a StackExchange. Redis ügyfél biztosít. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Például:
+Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint `sslHost` amelyeket a StackExchange. Redis ügyfél biztosít. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Példa:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

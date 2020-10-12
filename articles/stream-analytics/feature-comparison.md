@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885559"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics szolgáltatások összehasonlítása
@@ -23,7 +23,7 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 ## <a name="cloud-job-features"></a>Cloud Job-funkciók
 
 
-|Funkció  |Portál  |Visual Studio  |Visual Studio Code  |
+|Szolgáltatás  |Portál  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Platformfüggetlen     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |Parancsfájlok készítése     |Igen         |Igen         |Igen         |
@@ -45,7 +45,7 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |JavaScript UDF és UDA     |Igen         |Igen         |Csak Windowson         |
 |Machine Learning szolgáltatás     |Igen        |Igen         |Nem         |
 |Machine Learning Studio     |Igen, de a lekérdezés nem tesztelhető        |Igen |Nem         |
-|Kompatibilitási szint     |1,0</br>1,1</br>1,2 (alapértelmezett)         |1,0</br>1,1</br>1,2 (alapértelmezett)           |1,0</br>1,1</br>1,2 (alapértelmezett)           |
+|Kompatibilitási szint     |1.0</br>1,1</br>1,2 (alapértelmezett)         |1.0</br>1,1</br>1,2 (alapértelmezett)           |1.0</br>1,1</br>1,2 (alapértelmezett)           |
 |Beépített ML-alapú anomáliák észlelési funkciói     |Igen         |Igen         |Igen         |
 |Beépített térinformatikai függvények     |Igen         |Igen         |Igen         |
 
@@ -53,7 +53,7 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 
 ## <a name="iot-edge-job-features"></a>IoT Edge feladatok funkciói
 
-|Funkció  |Portál  |Visual Studio  |Visual Studio Code  |
+|Szolgáltatás  |Portál  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Feladatok készítése     |Igen         |Igen         |Nem         |
 |Verziókövetés     |Nem         |Igen         |Nem         |
@@ -63,8 +63,8 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |C# UDF     |Nem         |Igen         |Nem         |
 |Feladatok elküldése     |Igen         |Igen         |Nem         |
 |Feladatok listázása és feladat-entitások megtekintése     |Igen         |Igen         |Nem         |
-|Feladatok metrikáinak és diagramjának megtekintése     |Yes         |Részleges         |No         |
-|Feladatok futásidejű hibáinak megtekintése     |Yes         |Részleges         |No         |
+|Feladatok metrikáinak és diagramjának megtekintése     |Igen         |Részleges         |Nem         |
+|Feladatok futásidejű hibáinak megtekintése     |Igen         |Részleges         |Nem         |
 |CI/CD-támogatás     |Nem         |Nem         |Nem         |
 
 

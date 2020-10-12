@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270440"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
@@ -58,8 +58,8 @@ A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményha
 
 Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
-source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
+adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
+source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
 firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]

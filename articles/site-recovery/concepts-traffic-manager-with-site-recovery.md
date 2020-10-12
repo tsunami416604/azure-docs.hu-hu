@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86134951"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
@@ -115,7 +115,7 @@ Emellett optimalizálhatja a Traffic Manager profilhoz tartozó DNS-élettartam 
 
 Az ügyfél által tapasztalt TTL nem növekszik, ha a DNS-feloldók száma az ügyfél és a mérvadó DNS-kiszolgáló között növekszik. A DNS-feloldók "Count Down" az ÉLETTARTAMot, és csak a rekord gyorsítótárazása óta eltelt időt tükröző TTL-értéket továbbítanak. Ez biztosítja, hogy a DNS-rekord a TTL után frissül az ügyfélen, függetlenül attól, hogy hány DNS-feloldó van a láncban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a Traffic Manager [útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).
 - További információ a [beágyazott Traffic Manager-profilokról](../traffic-manager/traffic-manager-nested-profiles.md).
 - További információ a [végpontok figyeléséről](../traffic-manager/traffic-manager-monitoring.md).

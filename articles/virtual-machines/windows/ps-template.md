@@ -8,10 +8,10 @@ ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89072298"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Windows rendszerű virtuális gép létrehozása Resource Manager-sablonból
@@ -68,7 +68,7 @@ Néhány további információforrás:
 
 Az előző parancsfájl utolsó PowerShell-parancsa megjeleníti a virtuális gép nevét. A virtuális géphez való kapcsolódáshoz lásd: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](./connect-logon.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha probléma merült fel az üzembe helyezéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítását Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
 - Megtudhatja, hogyan hozhat létre és kezelhet virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

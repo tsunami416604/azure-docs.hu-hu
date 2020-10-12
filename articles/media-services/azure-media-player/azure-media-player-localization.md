@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087288"
 ---
 # <a name="azure-media-player-localization"></a>Honosítás Azure Media Player #
@@ -36,7 +36,7 @@ A Azure Media Player jelenleg a következő nyelveket támogatja a megfelelő ny
 | Dán              | da   | Japán                | Japán     | Orosz                 | ru           |
 | Német              | de   | Kazak                  | KK     | Svéd                 | Sv           |
 | Görög               | el   | Koreai                  | Ko     | Thai                    | adik           |
-| Spanyol             | Igen   | Litván              | lt     | Tagalog                 | TL           |
+| spanyol             | es   | Litván              | lt     | Tagalog                 | TL           |
 | Észt            | et   | Lett                 | lv     | Török                 | TR           |
 | Baszk              | EU   | Malajziai               | MS     | Ukrán               | uk           |
 | Perzsa               | h   | Norvég – BokmÃ ¥ l     | NB     | urdu                    | a           |
@@ -50,6 +50,6 @@ A Azure Media Player jelenleg a következő nyelveket támogatja a megfelelő ny
 > [!NOTE]
 > Ha nem szeretné, hogy a honosítása ne történjen meg, az angol nyelvre kell kényszeríteni a nyelvet
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

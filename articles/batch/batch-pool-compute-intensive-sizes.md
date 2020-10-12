@@ -4,10 +4,10 @@ description: A HPC és a GPU virtuálisgép-méretek kihasználása Azure Batch 
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147340"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
@@ -156,7 +156,7 @@ A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet a r
 | **Rendszerkép típusa** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |
 | **Ajánlat** | CentOS – HPC |
-| **SKU** | 7.4 |
+| **SKU** | 7,4 |
 | **Csomópont mérete** | H16r standard |
 | **Csomópontok közötti kommunikáció engedélyezve** | Igaz |
 | **Feladatok maximális száma/csomópont** | 1 |

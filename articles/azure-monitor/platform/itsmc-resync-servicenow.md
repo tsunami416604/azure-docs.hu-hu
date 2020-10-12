@@ -7,10 +7,10 @@ author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
 ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087934"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow-szinkronizálási problémák manuális javítása
@@ -50,6 +50,6 @@ A következő szinkronizálási folyamat használatával aktiválja újra a kapc
 
 f.    Tekintse át az értesítéseket, és ellenőrizze, hogy a folyamat sikeresen befejeződött-e 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [IT Service Management-kapcsolatokról](itsmc-connections.md)

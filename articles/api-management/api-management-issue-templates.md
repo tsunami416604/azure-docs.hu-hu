@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846856"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sablonok kiadása az Azure API Management
@@ -34,7 +34,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="issue-list"></a><a name="IssueList"></a>Problémák listája  
+##  <a name="issue-list"></a><a name="IssueList"></a> Problémák listája  
  A **probléma lista** sablon lehetővé teszi a fejlesztői portálon a probléma-lista oldal törzsének testreszabását.  
   
  ![A fejlesztői portálon a probléma listázása](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-probléma listázása fejlesztői portál")  
@@ -98,12 +98,12 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`Issues`|[Kiállító](api-management-template-data-model-reference.md#Issue) entitások gyűjteménye.|Az aktuális felhasználó számára látható problémák.|  
 |`Paging`|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|Az alkalmazások gyűjteményének lapozási adatai.|  
-|`IsAuthenticated`|logikai|Azt jelzi, hogy az aktuális felhasználó bejelentkezett-e a fejlesztői portálra.|  
-|`CanReportIssues`|logikai|Azt határozza meg, hogy az aktuális felhasználónak van-e engedélye a probléma fájljának megadására.|  
+|`IsAuthenticated`|boolean|Azt jelzi, hogy az aktuális felhasználó bejelentkezett-e a fejlesztői portálra.|  
+|`CanReportIssues`|boolean|Azt határozza meg, hogy az aktuális felhasználónak van-e engedélye a probléma fájljának megadására.|  
 |`Search`|sztring|Ez a tulajdonság elavult, és nem használható.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  

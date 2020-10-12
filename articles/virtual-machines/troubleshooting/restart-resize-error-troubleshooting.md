@@ -14,10 +14,10 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526554"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Üzembehelyezési hibák elhárítása meglévő Windows rendszerű virtuális gép újraindításakor vagy átméretezésekor az Azure-ban
@@ -61,5 +61,5 @@ A virtuális gép átméretezésére irányuló kérelmet a Cloud Service-t futt
   2. Az összes virtuális gép leállítása után méretezze át a kívánt virtuális gépet nagyobb méretre.
   3. Jelölje ki az átméretezett virtuális gépet, és kattintson a **Start**gombra, majd indítsa el az egyes leállított virtuális gépeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha problémákba ütközik az új Windowsos virtuális gép Azure-beli létrehozásakor, tekintse meg az [üzembe helyezési problémák elhárítása új Windowsos virtuális gép létrehozása az Azure-ban](./troubleshoot-deployment-new-vm-windows.md)című témakört.

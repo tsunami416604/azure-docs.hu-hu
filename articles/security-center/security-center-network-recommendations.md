@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883913"
 ---
 # <a name="protect-your-network-resources"></a>A hálózati erőforrások megóvása
@@ -48,7 +48,7 @@ A hálózati Térkép megnyitása:
 
 1. A Security Center menüjében nyissa meg az Azure Defender irányítópultját, és válassza a **hálózati Térkép**lehetőséget.
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Hálózati Térkép megnyitása az Azure Defender irányítópultján" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Tárgyieszköz-leltár hálózati erőforrás-típusai" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. Válassza a **rétegek** menüt, majd a **topológia**lehetőséget.
  

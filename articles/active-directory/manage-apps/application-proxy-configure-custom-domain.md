@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88587769"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
@@ -82,7 +82,7 @@ Az alkalmazás közzététele az Application proxyn keresztül egyéni tartomán
    
 4. A **külső URL-cím** mezőben adja le a listát, és válassza ki a használni kívánt egyéni tartományt.
    
-5. Válassza a **Hozzáadás** elemet.
+5. Válassza a **Hozzáadás** lehetőséget.
    
    ![Egyéni tartomány kiválasztása](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -137,7 +137,7 @@ A tanúsítvány feltöltése után a rendszer automatikusan alkalmazza azokat a
 
 Egy tanúsítvány lejáratakor figyelmeztető üzenet jelenik meg, amely egy másik tanúsítvány feltöltését kéri. Ha a tanúsítványt visszavonják, a felhasználók biztonsági figyelmeztetést kaphatnak az alkalmazáshoz való hozzáféréskor. Egy alkalmazás tanúsítványának frissítéséhez navigáljon az **alkalmazás alkalmazásproxy** lapjára, válassza a **tanúsítvány**lehetőséget, és töltsön fel egy új tanúsítványt. Ha a régi tanúsítványt más alkalmazások nem használják, azt a rendszer automatikusan törli. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Engedélyezze az egyszeri bejelentkezést](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokban az Azure ad-hitelesítéssel.
 * [Feltételes hozzáférés](../conditional-access/concept-conditional-access-cloud-apps.md) a közzétett felhőalapú alkalmazásokhoz.

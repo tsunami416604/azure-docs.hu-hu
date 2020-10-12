@@ -6,10 +6,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
 ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85801029"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Szolgáltatás üzembehelyezési problémáinak elhárítása
@@ -28,7 +28,7 @@ Egy csomópont regisztrálva van Azure Automationban, és az operációs rendsze
 
 A regisztrált csomópontok átnevezése nem frissíti a csomópont nevét a Azure Automationban.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Törölje a csomópont regisztrációját Azure Automation állapot-konfigurációból, majd regisztrálja újra. A szolgáltatásban közzétett jelentések már nem lesznek elérhetők.
 
@@ -42,7 +42,7 @@ Ha olyan proxyn keresztül csatlakozik, amely megszakítja a HTTPS-forgalmat, ma
 
 Azure Automation nem támogatja a forgalom titkosításához használt tanúsítványok újraaláírását.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Ehhez a hibához jelenleg nincs Áthidaló megoldás.
 
@@ -66,7 +66,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 Ezt a hibát a virtuális gép vagy munkaterület, illetve a felhasználó számára helytelen vagy hiányzó engedélyek okozzák.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy a [szolgáltatás központi telepítési engedélyei](../automation-role-based-access-control.md#feature-setup-permissions)megfelelőek, majd próbálja meg újra telepíteni a szolgáltatást. Ha a hibaüzenet jelenik meg `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , tekintse meg a következő [hibaelhárítási információkat](update-management.md#failed-to-enable-error).
 
@@ -84,7 +84,7 @@ Failed to configure automation account for diagnostic logging
 
 Ez a hiba akkor okozható, ha a díjszabási csomag nem egyezik az előfizetés számlázási modelljével. További információ: [a használat figyelése és a becsült költségek Azure monitorban](https://aka.ms/PricingTierWarning).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Hozza létre manuálisan a Log Analytics munkaterületet, és ismételje meg a szolgáltatás központi telepítési folyamatát a létrehozott munkaterület kiválasztásához.
 
@@ -98,7 +98,7 @@ Ez a hibakód azt jelenti, hogy a mentett keresés számítógépcsoport-lekérd
 
 Lehetséges, hogy módosította a lekérdezést, vagy megváltoztatta a rendszeren.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Törölheti a szolgáltatás lekérdezését, majd ismét engedélyezheti a szolgáltatást, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterület **mentett keresések**területén található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított szolgáltatás neve. Ha több funkció is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések**alatt.
 
@@ -112,7 +112,7 @@ Ez a hibakód azt jelzi, hogy a központi telepítés egy vagy több házirend m
 
 Egy házirend megakadályozza a művelet befejezését.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A szolgáltatás sikeres üzembe helyezéséhez meg kell fontolnia a jelzett házirend módosítását. Mivel számos különböző típusú szabályzat definiálható, a szükséges módosítások a megsértett házirendtől függenek. Ha például egy olyan erőforráscsoport-házirend van meghatározva, amely megtagadja az egyes foglalt erőforrások tartalmának módosítására vonatkozó engedélyt, a következő javítások közül választhat:
 
@@ -137,7 +137,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 Ez a hiba akkor fordul elő, ha továbbra is aktív funkciók vannak a Log Analytics munkaterületen, amely az Automation-fióktól függ, és Log Analytics a munkaterület csatolva van.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha ezeket használja, távolítsa el a munkaterület következő funkcióinak erőforrásait:
 
@@ -182,7 +182,7 @@ A hiba lehetséges okai a következők:
 * A virtuális gépen konfigurált proxyk csak bizonyos portokat engedélyeznek.
 * A tűzfalbeállítások letiltotta a szükséges portokhoz és címekhez való hozzáférést.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy a megfelelő portok és címek nyitva vannak a kommunikációhoz. A portok és címek listáját a [hálózat megtervezése](../automation-hybrid-runbook-worker.md#network-planning)című témakörben tekintheti meg.
 
@@ -213,7 +213,7 @@ A hiba lehetséges okai a következők:
 * Egy másik telepítés folyamatban van.
 * A rendszer újraindítást kezdeményez a sablon üzembe helyezésekor.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Ez a hiba átmeneti jellegű. Próbálja megismételni a telepítést a bővítmény telepítéséhez.
 
@@ -233,7 +233,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 Ez a típusú hiba azért fordul elő, mert a virtuális gép a telepítés során nagy terhelés alatt áll.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha a virtuális gép alacsonyabb terhelés alatt van, próbálja meg telepíteni a Windows-bővítmény Log Analytics-ügynökét.
 

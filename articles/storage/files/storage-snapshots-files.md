@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84235608"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Az Azure Files megosztási pillanatképeinek áttekintése
@@ -32,7 +32,7 @@ Tegyük fel, hogy egy szövegfájlon dolgozik egy fájlmegosztásban. A szövegf
 
 A fájlmegosztás létrehozása után rendszeresen létrehozhatja annak megosztási pillanatképét, amelyeket felhasználhat az adatok biztonsági mentéséhez. A rendszeresen készített pillanatképpel megőrizhetők az adatok korábbi verziói, amelyek későbbi naplózási követelményekhez vagy vészhelyreállításhoz is felhasználhatók. Javasoljuk, hogy az [Azure fájlmegosztás biztonsági mentését](../../backup/azure-file-share-backup-overview.md) biztonsági mentési megoldásként használja a pillanatképek készítéséhez és kezeléséhez. A pillanatképeket saját kezűleg is elvégezheti és kezelheti a CLI vagy a PowerShell használatával.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 A megosztási pillanatkép az adatok egy időponthoz tartozó, írásvédett másolata. A pillanatképeket a REST API használatával hozhatja létre, törölheti és kezelheti. Ugyanezek a képességek az ügyféloldali függvénytárban, az Azure CLI-ben és a Azure Portal is elérhetők. 
 

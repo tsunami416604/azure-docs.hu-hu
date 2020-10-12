@@ -10,10 +10,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84047544"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
@@ -22,7 +22,7 @@ ms.locfileid: "84047544"
 A **Elastic Database** eszközök használatával könnyedén felskálázást készíthet Azure SQL Database adatbázisaiban. Ezek az eszközök és szolgáltatások lehetővé teszik a **Azure SQL Database** adatbázis-erőforrásainak használatát a tranzakciós számítási feladatokhoz és különösen a szolgáltatott szoftverekhez (SaaS) készült megoldások létrehozásához. Elastic Database szolgáltatások a következőkből állnak:
 
 * [Elastic Database ügyféloldali kódtár](elastic-database-client-library.md): az ügyféloldali kódtár olyan szolgáltatás, amely lehetővé teszi a szilánkokra osztott adatbázisok létrehozását és karbantartását.  Lásd: [Elastic Database-eszközök első lépései](elastic-scale-get-started.md).
-* [Elastic Database felosztási-egyesítési eszköz](elastic-scale-overview-split-and-merge.md): áthelyezi az adatátvitelt a felosztott adatbázisok között. Ez az eszköz akkor hasznos, ha egy több-bérlős adatbázisból egy egybérlős adatbázisba helyezi át az adatáthelyezést (vagy fordítva). Lásd: [rugalmas adatbázis felosztása – egyesítési eszköz oktatóanyaga](elastic-scale-configure-deploy-split-and-merge.md).
+* [Elastic Database felosztási-egyesítési eszköz](elastic-scale-overview-split-and-merge.md): áthelyezi az adatátvitelt a felosztott adatbázisok között. Ez az eszköz akkor hasznos, ha egy több-bérlős adatbázisból egy egybérlős adatbázisba helyezi át az adatáthelyezést (vagy fordítva). Lásd: [rugalmas adatbázis Split-Merge eszközének oktatóanyaga](elastic-scale-configure-deploy-split-and-merge.md).
 * [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md): a feladatok segítségével nagy számú adatbázist kezelhet Azure SQL Databaseokban. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
 * [Elastic Database Query](elastic-query-overview.md) (előzetes verzió): lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely több adatbázisra is kiterjed. Ez lehetővé teszi, hogy a rendszer olyan jelentéskészítő eszközöket létesítsen, mint például az Excel, a Power BI, a tabló stb.).
 * [Rugalmas tranzakciók](elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy több adatbázisra kiterjedő tranzakciókat futtasson. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx)használatával.
@@ -67,7 +67,7 @@ A legtöbb felhőalapú adatbázis-alkalmazás a két stratégia kombinációjá
 
 ## <a name="sharding"></a>Sharding
 
-A *horizontális méretezéssel* nagy mennyiségű azonos struktúrájú adatot oszthat el több független adatbázis között. Ez különösen népszerű a felhőalapú fejlesztők számára a végfelhasználók és a vállalkozások számára szolgáltatott szoftver-(SAAS-) ajánlatok létrehozásához. Ezeket a végfelhasználókat gyakran "bérlőknek" nevezzük. A horizontális skálázás tetszőleges számú okból szükséges lehet:  
+A horizontális *skálázás olyan technika* , amellyel nagy mennyiségű, egymástól független adatbázisba tartozó strukturált adategység terjeszthető ki. Ez különösen népszerű a felhőalapú fejlesztők számára a végfelhasználók és a vállalkozások számára szolgáltatott szoftver-(SAAS-) ajánlatok létrehozásához. Ezeket a végfelhasználókat gyakran "bérlőknek" nevezzük. A horizontális skálázás tetszőleges számú okból szükséges lehet:  
 
 * A teljes adatmennyiség túl nagy ahhoz, hogy az egyes adatbázisok korlátain belül elfér
 * A teljes munkaterhelés tranzakciós sebessége meghaladja az egyes adatbázisok képességeit
@@ -89,7 +89,7 @@ Más forgatókönyvek esetén több bérlőt is becsomagolhat adatbázisokba, é
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Adatok áthelyezése többről egybérlős adatbázisokba
 SaaS-alkalmazások létrehozásakor jellemző, hogy a leendő ügyfelek számára a szoftver próbaverzióját kínálja. Ebben az esetben költséghatékony, ha több-bérlős adatbázist használ az adatkezeléshez. Ha azonban az ügyfél válik elérhetővé, akkor egy egybérlős adatbázis jobb, mivel jobb teljesítményt nyújt. Ha az ügyfél a próbaidőszak alatt hozta létre az adatait, a [Split-Merge eszközzel](elastic-scale-overview-split-and-merge.md) helyezheti át a több-bérlő adatait az új egybérlős adatbázisba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az ügyféloldali függvénytárat bemutató minta alkalmazáshoz lásd: Ismerkedés [a Elastic Database eszközökkel](elastic-scale-get-started.md).
 
 Ha a meglévő adatbázisokat az eszközök használatára szeretné átalakítani, tekintse meg a [meglévő adatbázisok áttelepítésének felskálázását](elastic-convert-to-use-elastic-tools.md)ismertető témakört.

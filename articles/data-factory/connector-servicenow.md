@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415351"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása a ServiceNow a Azure Data Factory használatával
@@ -49,7 +49,7 @@ A ServiceNow társított szolgáltatás a következő tulajdonságokat támogatj
 | típus | A Type tulajdonságot a következőre kell beállítani: **ServiceNow** | Igen |
 | endpoint | A ServiceNow-kiszolgáló () végpontja `http://<instance>.service-now.com` .  | Igen |
 | authenticationType | A használni kívánt hitelesítési típus. <br/>Az engedélyezett értékek a következők: **Alapszintű**, **OAuth2** | Igen |
-| felhasználónév | Az alap-és OAuth2 hitelesítéshez a ServiceNow-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév.  | Igen |
+| username | Az alap-és OAuth2 hitelesítéshez a ServiceNow-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév.  | Igen |
 | jelszó | Az alapszintű és a OAuth2 hitelesítéshez tartozó felhasználónévhez tartozó jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | ügyfél-azonosító | A OAuth2-hitelesítés ügyfél-azonosítója.  | Nem |
 | clientSecret | A OAuth2-hitelesítéshez használt ügyfél titka. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
@@ -57,7 +57,7 @@ A ServiceNow társított szolgáltatás a következő tulajdonságokat támogatj
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -116,7 +116,7 @@ Az adatok ServiceNow való másolásához állítsa a forrás típusát a másol
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ServiceNowSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Actual.alm_asset"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Actual.alm_asset"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 A lekérdezésben a ServiceNow sémájának és oszlopának megadásakor vegye figyelembe a következőket, és **tekintse meg a [teljesítményre vonatkozó tippeket](#performance-tips) a másolás teljesítményének következményeiről**.
 
@@ -127,7 +127,7 @@ A lekérdezésben a ServiceNow sémájának és oszlopának megadásakor vegye f
  `SELECT col_value FROM Actual.alm_asset` VAGY 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

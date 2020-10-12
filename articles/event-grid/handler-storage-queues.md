@@ -3,11 +3,11 @@ title: Tárolási várólista Azure Event Grid eseményekhez tartozó eseményke
 description: Leírja, hogyan használhatja az Azure Storage-várólistákat Azure Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fdbc292f066a3eb06f17fd144d26d484d2a25f21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270185"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Tárolási várólista Azure Event Grid eseményekhez tartozó eseménykezelőként
@@ -136,9 +136,6 @@ Tekintse meg a következő oktatóanyagot, amely példát mutat be a várólista
     }
 }
 ```
-
-> [!NOTE]
-> Az események egy **másik bérlőben** lévő Azure Storage-várólistára való továbbítása nem támogatott. 
 
 ## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

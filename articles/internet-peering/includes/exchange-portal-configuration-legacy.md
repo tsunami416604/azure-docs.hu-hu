@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81678550"
 ---
 1. A társítás **létrehozása** lap **konfiguráció** lapján adja meg az itt látható mezőket.
@@ -31,7 +31,7 @@ ms.locfileid: "81678550"
         > Az örökölt kapcsolati kapcsolatok beállításai nem módosíthatók. Ha további összekapcsolási kapcsolatokat szeretne hozzáadni a Microsofthoz a kiválasztott **metró** helyén, válassza az **új létrehozása**lehetőséget. További információ: [Exchange-társ létrehozása vagy módosítása a portál használatával](../howto-exchange-portal.md).
         >
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató*üzenet...
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató*üzenet...
 
     > [!div class="mx-imgBorder"]
     > ![Társ-ellenőrzés lap](../media/setup-direct-review-tab-validation.png)

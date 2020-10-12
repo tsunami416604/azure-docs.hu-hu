@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590115"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
@@ -68,13 +68,13 @@ A törölt fájlmegosztás visszaállítása:
 
     Ez megjeleníti a jelenleg **törölt** állapotban lévő megosztásokat is.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Ha az Állapot oszlop, a Name (név) oszlop melletti oszlop törölve értékre van állítva, akkor a fájlmegosztás nem megfelelő törlésű állapotban van. És véglegesen törölve lesz a megadott megőrzési idő után.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Képernyőfelvétel a Storage-fiók Soft delete Settings panelről. A fájlmegosztás kiemelése szakasz, a váltás engedélyezése, a megőrzési időtartam beállítása és a mentés. Ezzel a megoldással engedélyezheti a Storage-fiókban lévő összes fájlmegosztás helyreállítható törlését.":::
 
 1. Válassza ki a megosztást, és válassza a **Törlés**visszavonása lehetőséget, ezzel visszaállítja a megosztást.
 
     Megerősítheti a megosztás visszaállítását, mivel az állapota **aktívra**vált.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Ha az Állapot oszlopban a Name (név) oszlop melletti oszlop aktív értékre van állítva, akkor a fájlmegosztás vissza lett állítva.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Képernyőfelvétel a Storage-fiók Soft delete Settings panelről. A fájlmegosztás kiemelése szakasz, a váltás engedélyezése, a megőrzési időtartam beállítása és a mentés. Ezzel a megoldással engedélyezheti a Storage-fiókban lévő összes fájlmegosztás helyreállítható törlését.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -95,7 +95,7 @@ Ha szeretné leállítani a Soft delete használatát, vagy véglegesen töröln
 1. A **fájlmegosztás területen válassza a** **Letiltva** lehetőséget a fájlmegosztás helyreállítható **törléséhez**.
 1. A **Mentés** gombra kattintva erősítse meg az adatmegőrzési beállításokat.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="A Soft delete letiltásával azonnal és véglegesen törölheti a Storage-fiókban lévő összes fájlmegosztást a szabadidőben.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Képernyőfelvétel a Storage-fiók Soft delete Settings panelről. A fájlmegosztás kiemelése szakasz, a váltás engedélyezése, a megőrzési időtartam beállítása és a mentés. Ezzel a megoldással engedélyezheti a Storage-fiókban lévő összes fájlmegosztás helyreállítható törlését.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

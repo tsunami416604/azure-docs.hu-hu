@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195067"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>A csoportos adatelemzési folyamat adatgyűjtési és-megértési szakasza
@@ -47,7 +47,7 @@ Ebben a szakaszban három fő feladat foglalkozik:
 ### <a name="ingest-the-data"></a>Az adatfeldolgozás
 Állítsa be, hogy az adatok a forrás helyeiről a célhelyre legyenek áthelyezve az elemzési műveletek, például a képzés és az előrejelzések futtatásához. Az adatok különböző Azure-adatszolgáltatásokkal való áthelyezésével kapcsolatos technikai részletekért lásd: [adatok betöltése tárolási környezetbe elemzés céljából](ingest-data.md). 
 
-### <a name="explore-the-data"></a>Az adatok vizsgálata
+### <a name="explore-the-data"></a>Az adatok feltárása
 A modellek betanítása előtt ki kell alakítania az adatelemzést. A valós adathalmazok gyakran zajosak, hiányoznak az értékek, vagy más eltéréseket tartalmaznak. Az adatösszesítés és a vizualizáció használatával naplózhatja az adatok minőségét, és megadhatja az adatok feldolgozásához szükséges adatokat, mielőtt készen áll a modellezésre. Ez a folyamat gyakran ismétlődő.
 
 A TDSP egy [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)nevű automatizált segédprogramot biztosít az adatmegjelenítéshez és az adatösszegző jelentések előkészítéséhez. Javasoljuk, hogy első lépésként kezdje el az ismereteket, hogy a kezdeti adatfelismerést interaktív módon fejlessze a kódolás nélkül. Ezután egyéni kódot írhat az adatfeltáráshoz és a vizualizációhoz. Az adatok tisztításával kapcsolatos útmutatásért lásd: [feladatok az adatok előkészítéséhez a továbbfejlesztett gépi tanuláshoz](prepare-data.md).  

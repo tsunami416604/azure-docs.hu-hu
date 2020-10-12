@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan vihet be az adatok egy Azure Notebooks Preview-
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85834114"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Adatfájlok használata Azure Notebooks előzetes verziójú projektekben
@@ -114,4 +114,4 @@ Kiválaszthat egy fájlt is, és használhatja a **Letöltés** parancsot (bille
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felhőbeli adatok elérése egy jegyzetfüzetben](access-data-resources-jupyter-notebooks.md)
+- [Felhőbeli adat elérése jegyzetfüzetben](access-data-resources-jupyter-notebooks.md)

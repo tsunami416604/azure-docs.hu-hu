@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367733"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
@@ -45,7 +45,7 @@ A helyettesítő karakterekkel rendelkező alkalmazásokat közzéteheti, ha a b
 
 > http (s)://*.\<domain\>
 
-Példa: `http(s)://*.adventure-works.com`.
+Például: `http(s)://*.adventure-works.com`.
 
 Míg a belső és külső URL-címek különböző tartományokat használhatnak, az ajánlott eljárásnak megfelelőnek kell lennie. Az alkalmazás közzétételekor hibaüzenet jelenik meg, ha az URL-címek egyike nem tartalmaz helyettesítő karaktert.
 
@@ -68,7 +68,7 @@ Biztonsági okokból ez nehéz követelmény, és nem támogatjuk a helyettesít
 
 ### <a name="dns-updates"></a>DNS-frissítések
 
-Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a külső URL-címhez (például) egy CNAME rekorddal, amely az `*.adventure-works.com` alkalmazásproxy-végpont külső URL-címére mutat. Helyettesítő karakteres alkalmazások esetén a CNAME rekordnak a megfelelő külső URL-címekre kell mutatnia:
+Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a külső URL-címhez (például) egy CNAME rekorddal, amely az  `*.adventure-works.com` alkalmazásproxy-végpont külső URL-címére mutat. Helyettesítő karakteres alkalmazások esetén a CNAME rekordnak a megfelelő külső URL-címekre kell mutatnia:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
@@ -132,7 +132,7 @@ Mindhárom alkalmazás:
 
 A helyettesítő karakteres alkalmazást közzéteheti az [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)című témakörben ismertetett lépésekkel. Ez a forgatókönyv a következőket feltételezi:
 
-- Egy bérlő a következő AZONOSÍTÓval:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Egy bérlő a következő AZONOSÍTÓval: `000aa000-11b1-2ccc-d333-4444eee4444e`
 - Egy nevű ellenőrzött tartomány `adventure-works.com` konfigurálva lett.
 - A rendszer létrehoz egy **CNAME** bejegyzést, amely a következőre mutat `*.adventure-works.com` `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` :.
 
@@ -156,7 +156,7 @@ A konfiguráció a következő struktúrát valósítja meg:
 
 ![Megjeleníti a példa konfigurációjában megvalósított struktúrát](./media/application-proxy-wildcard/05.png)
 
-| Szín | Description |
+| Szín | Leírás |
 | ---   | ---         |
 | Kék  | A Azure Portal explicit módon közzétett és látható alkalmazások. |
 | Szürke  | A fölérendelt alkalmazás segítségével elérhető alkalmazások. |

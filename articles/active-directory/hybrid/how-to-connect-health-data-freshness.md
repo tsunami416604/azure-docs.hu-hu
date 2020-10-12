@@ -16,10 +16,10 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85359228"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Az állapotfigyelő szolgáltatás nem naprakész állapotú riasztás
@@ -41,14 +41,14 @@ A **riasztás részletei** panelen látható, hogy mikor történt a riasztás, 
  
 A következő táblázat a megfelelő adattípusokhoz rendeli a szolgáltatási típusokat:
 
-| Szolgáltatás típusa | Ügynök (Windows-szolgáltatás neve) | Szerep | Adattípus létrehozva  |
+| Szolgáltatás típusa | Ügynök (Windows-szolgáltatás neve) | Cél | Adattípus létrehozva  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (szinkronizálás) | Azure AD Connect Health Sync Insights szolgáltatás | HRE-kapcsolatra vonatkozó információk gyűjtése (összekötők, szinkronizálási szabályok stb.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService – összekötők <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+| Azure AD Connect (szinkronizálás) | Azure AD Connect Health Sync Insights szolgáltatás | HRE-kapcsolatra vonatkozó információk gyűjtése (összekötők, szinkronizálási szabályok stb.) | – AadSyncService-SynchronizationRules <br />  – AadSyncService-Connectors <br /> – AadSyncService-GlobalConfigurations  <br />  – AadSyncService-RunProfileResults <br /> – AadSyncService-ServiceConfigurations <br /> – AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync Monitoring szolgáltatás | HRE-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések, fájlok gyűjtése | Teljesítményszámláló |
 | AD DS | Azure AD Connect Health AD DS Insights szolgáltatás | Szintetikus tesztek végrehajtása, topológiai információk gyűjtése, replikációs metaadatok |  -Add-TopologyInfo-JSON <br /> -Common-TestData-JSON (létrehozza a teszt eredményeit)   | 
 |  | Azure AD Connect Health AD DS Monitoring szolgáltatás | A Hozzáadás-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések és-fájlok gyűjtése | – Teljesítményszámláló  <br /> -Common-TestData-JSON (feltölti a teszt eredményeit)  |
 | AD FS | Azure AD Connect Health AD FS Diagnostics szolgáltatás | Szintetikus tesztek végrehajtása | TestResult (a tesztek eredményeinek létrehozása) | 
-| | Azure AD Connect Health AD FS Insights szolgáltatás  | ADFS használati metrikáinak összegyűjtése | ADFS – UsageMetrics |
+| | Azure AD Connect Health AD FS Insights szolgáltatás  | ADFS használati metrikáinak összegyűjtése | Adfs-UsageMetrics |
 | | Azure AD Connect Health AD FS Monitoring szolgáltatás | ADFS-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések, fájlok gyűjtése | TestResult (a tesztek eredményeinek feltöltése) |
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések 
@@ -58,8 +58,8 @@ A probléma diagnosztizálásához szükséges lépések alább láthatók. Az e
 > [!IMPORTANT] 
 > Ez a riasztás a kapcsolati állapot [adatmegőrzési szabályzatát](reference-connect-health-user-privacy.md#data-retention-policy) követi
 
-* Győződjön meg arról, hogy az ügynökök legújabb verziói vannak telepítve. [Kiadási előzmények](reference-connect-health-version-history.md)megtekintése. 
-* Győződjön meg arról, hogy a Azure AD Connect Health Agent Services **fut** a gépen. A AD FShoz tartozó kapcsolati állapotnak például három szolgáltatással kell rendelkeznie.
+* Ellenőrizze, hogy telepítve vannak-e az ügynökök legújabb verziói. Tekintse meg a [kiadások előzményeit](reference-connect-health-version-history.md). 
+* Győződjön meg arról, hogy az Azure AD Connect Health Agents-szolgáltatások **futnak** a gépen. Az AD FS-hez készült Connect Healthnek például három szolgáltatással kell rendelkeznie.
   ![Az Azure AD Connect Health ellenőrzése](./media/how-to-connect-health-agent-install/install5.png)
 
 * Győződjön meg arról, hogy átugorja és megfelel a [követelmények szakasznak](how-to-connect-health-agent-install.md#requirements).

@@ -15,10 +15,10 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272395"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server biztonsági szempontjai Virtual Machines
@@ -59,7 +59,7 @@ Végezetül vegye fontolóra a titkosított kapcsolatok engedélyezését az Azu
 
 ## <a name="encryption"></a>Titkosítás
 
-A Managed Disks szolgáltatás kiszolgálóoldali titkosítást és Azure Disk Encryption biztosít. A [kiszolgálóoldali titkosítás](/azure/virtual-machines/windows/disk-encryption) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) a BitLocker vagy a dm-crypt technológiát használja, és integrálja a Azure Key Vault az operációs rendszer és az adatlemezek titkosításához. 
+A felügyelt lemezek Server-Side titkosítást kínálnak, és Azure Disk Encryption. A [kiszolgálóoldali titkosítás](/azure/virtual-machines/windows/disk-encryption) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. A [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) BitLocker-vagy DM-Crypt-technológiát használ, és integrálja a Azure Key Vault az operációs rendszer és az adatlemezek titkosítására. 
 
 ## <a name="use-a-non-default-port"></a>Nem alapértelmezett port használata
 

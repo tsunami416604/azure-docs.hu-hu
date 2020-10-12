@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416937"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
@@ -56,7 +56,7 @@ Ezt a HTTP-összekötőt a következő célra használhatja:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -184,7 +184,7 @@ A HTTP a következő tulajdonságokat támogatja a `location` Formátum-alapú a
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -231,7 +231,7 @@ A HTTP a következő tulajdonságokat támogatja a `storeSettings` Format-alapú
 | httpRequestTimeout           | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**. | Nem       |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem       |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -291,7 +291,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
 | requestBody | A HTTP-kérelem törzse. | Nem |
 | formátumban | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Formátum**alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek: **optimális** és **leggyorsabb**. |Nem |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek:  **optimális** és **leggyorsabb**. |Nem |
 
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.

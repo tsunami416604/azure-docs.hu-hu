@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387881"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>WeiBo-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
@@ -28,24 +28,24 @@ Ha a WeiBo-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgál
 
 1. Jelentkezzen be a [WeiBo fejlesztői portálra](https://open.weibo.com/) a WeiBo-fiókja hitelesítő adataival.
 1. A bejelentkezést követően válassza ki a megjelenítendő nevet a jobb felső sarokban.
-1. A legördülő menüben válassza a**编辑开发者信息**(fejlesztői adatok szerkesztése) elemet.
-1. Adja meg a szükséges adatokat, és válassza a**提交**(elküldés) lehetőséget.
+1. A legördülő menüben válassza a **编辑开发者信息** (fejlesztői adatok szerkesztése) elemet.
+1. Adja meg a szükséges adatokat, és válassza a **提交** (elküldés) lehetőséget.
 1. Fejezze be az e-mail ellenőrzési folyamatát.
 1. Nyissa meg a [személyazonosság-ellenőrző lapot](https://open.weibo.com/developers/identity/edit).
-1. Adja meg a szükséges adatokat, és válassza a**提交**(elküldés) lehetőséget.
+1. Adja meg a szükséges adatokat, és válassza a **提交** (elküldés) lehetőséget.
 
 ### <a name="register-a-weibo-application"></a>WeiBo-alkalmazás regisztrálása
 
 1. Nyissa meg az [új WeiBo-alkalmazás regisztrációs lapját](https://open.weibo.com/apps/new).
 1. Adja meg a szükséges alkalmazás-információkat.
-1. Válassza a**创建**(létrehozás) lehetőséget.
+1. Válassza a **创建** (létrehozás) lehetőséget.
 1. Másolja az **alkalmazás kulcsának** és az **alkalmazás titkos**kódjának értékét. Mindkét példányhoz hozzá kell adnia az identitás-szolgáltatót a bérlőhöz.
 1. Töltse fel a szükséges fényképeket, és adja meg a szükséges információkat.
-1. Válassza a**保存以上信息**(Mentés) lehetőséget.
-1. Válassza a**高级信息**(speciális információ) lehetőséget.
-1. Válassza a**编辑**(Szerkesztés) lehetőséget a OAuth 2.0**授权设置**(átirányítási URL-cím) mező mellett.
-1. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a OAuth 2.0**授权设置**(átirányítási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
-1. Válassza a**提交**(elküldés) lehetőséget.
+1. Válassza a **保存以上信息** (Mentés) lehetőséget.
+1. Válassza a **高级信息** (speciális információ) lehetőséget.
+1. Válassza a **编辑** (Szerkesztés) lehetőséget a OAuth 2.0 **授权设置** (átirányítási URL-cím) mező mellett.
+1. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a OAuth 2.0 **授权设置** (átirányítási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. Válassza a **提交** (elküldés) lehetőséget.
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>WeiBo-fiók konfigurálása identitás-szolgáltatóként
 
@@ -56,4 +56,4 @@ Ha a WeiBo-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgál
 1. Adjon meg egy **nevet**. Például: *WeiBo*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott WeiBo alkalmazás alkalmazás-kulcsát.
 1. Az **ügyfél titka**mezőben adja meg a rögzített alkalmazás titkát.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

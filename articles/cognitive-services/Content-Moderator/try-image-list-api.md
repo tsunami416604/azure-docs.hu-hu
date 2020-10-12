@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800148"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Mérsékelt és egyéni képlista az API-konzolon
@@ -91,7 +91,7 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
 
    Adja hozzá a lista metaadatait kulcs-érték párokként, nem pedig a tényleges képeket.
  
-7. Válassza a **Küldés**lehetőséget. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Ehhez az AZONOSÍTÓhoz más képlista-felügyeleti függvények szükségesek.
+7. Válassza a **Küldés** lehetőséget. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Ehhez az AZONOSÍTÓhoz más képlista-felügyeleti függvények szükségesek.
 
    ![Képlisták – a konzol válaszának létrehozása mező megjeleníti a lista AZONOSÍTÓját](images/try-terms-list-create-2.png)
  
@@ -111,7 +111,7 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
 
     Megnyílik a rendszerkép **– az összes Képazonosítós API-konzol beolvasása** .
   
-12. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Válassza a **Küldés**lehetőséget.
+12. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Válassza a **Küldés** lehetőséget.
 
     ![Kép – az összes rendszerkép-azonosító konzol válaszának tartalma mező felsorolja a beírt képeket](images/try-image-list-create-11.png)
  
@@ -166,6 +166,6 @@ Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
    ![Képlista – a details konzolra vonatkozó kérelem törzsének módosítása](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazással való integrációhoz használja a kódban szereplő REST API, vagy Kezdje a [képet a .net](image-lists-quickstart-dotnet.md) rövid útmutatóval.

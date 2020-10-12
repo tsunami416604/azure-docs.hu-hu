@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81260241"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>POP-helyszínek Azure CDN rövidítéssel
@@ -30,7 +30,7 @@ ms.locfileid: "81260241"
 
 Ez a cikk pop-rövidítések alapján listázza a **Verizon Azure CDNeit**.
 
-Rövidítés | Hely | Régió
+Rövidítés | Hely | Region
 | --- | --- | --- |
 AGA | Atlanta, Georgia, USA | Észak-Amerika: Kelet-Coast USA
 AGB | Atlanta, Georgia, USA | Észak-Amerika: Kelet-Coast USA

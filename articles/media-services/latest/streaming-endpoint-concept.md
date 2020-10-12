@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297195"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
@@ -51,9 +51,9 @@ A folyamatos átviteli egység maximális korlátja általában 10. Lépjen kapc
 
 A táblázat a típusokat írja le:
 
-|Típus|Skálázási egységek|Description|
+|Típus|Skálázási egységek|Leírás|
 |--------|--------|--------|  
-|**Standard**|0|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely módosítható a prémium típusra `scaleUnits` .|
+|**Normál**|0|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely módosítható a prémium típusra `scaleUnits` .|
 |**Prémium**|>0|**Prémium** szintű A streaming-végpontok speciális számítási feladatokhoz és dedikált és skálázható sávszélesség-kapacitás biztosításához alkalmasak. A **prémium** típusra a `scaleUnits` (folyamatos átviteli egységek) beállításával léphet be. `scaleUnits` dedikált kimenő kapacitást kínál, amely 200 Mbps-os növekményekben vásárolható meg. A **prémium** típus használata esetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
 
 > [!NOTE]
@@ -63,7 +63,7 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="comparing-streaming-types"></a>Adatfolyam-típusok összehasonlítása
 
-Jellemző|Standard|Prémium
+Szolgáltatás|Standard|Prémium
 ---|---|---
 Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.

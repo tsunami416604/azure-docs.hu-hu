@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 646b95e7e106b8657f8aeec2426b88cd6da20357
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885648"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure Spring Cloud-alkalmazáshoz való összekapcsolásához
@@ -28,7 +28,7 @@ Azure Key Vault a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz 
 * [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
 * [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key Vault és a Spring Cloud karaktert is tartalmazza az az [Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create): paranccsal.
 
 ```azurecli-interactive
@@ -227,7 +227,7 @@ A Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a tokenekhez, 
 
     A következő üzenet jelenik meg: "sikerült a titkos teszt értéke Key Vault https://<a-kulcstartó-neve>. vault.azure.net: sikeres". 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Storage-Blobok elérése felügyelt identitással az Azure Spring Cloud-ban](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
 * [A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)

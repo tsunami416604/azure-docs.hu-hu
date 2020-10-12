@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: victorh
 ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85602533"
 ---
 # <a name="create-ip-groups"></a>IP-csoportok létrehozása
@@ -22,8 +22,8 @@ Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-címeinek csoport
 
 1. Az Azure Portal kezdőlapján válassza az **erőforrás létrehozása**lehetőséget.
 2. A keresés szövegmezőbe írja be az **IP-csoportok** kifejezést, majd válassza az **IP-csoportok**lehetőséget.
-3. Válassza a **Létrehozás** lehetőséget.
-4. Válassza ki az előfizetését.
+3. Kattintson a **Létrehozás** gombra.
+4. Válassza ki előfizetését.
 5. Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat.
 6. Adjon egyedi nevet az IP-csoportnak, majd válasszon ki egy régiót.
 
@@ -39,7 +39,7 @@ Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-címeinek csoport
    Ha IP-címet ad meg, a portál ellenőrzi, hogy az átfedések, ismétlődések és formázási problémák ellenőrzéséhez szükségesek-e.
 
 5. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
-6. Válassza a **Létrehozás** lehetőséget.
+6. Kattintson a **Létrehozás** gombra.
 
 
 ## <a name="next-steps"></a>További lépések

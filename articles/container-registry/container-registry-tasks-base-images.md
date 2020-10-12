@@ -4,10 +4,10 @@ description: Tudnivalók az alkalmazás-tárolók rendszerképeinek alapképeir�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85918501"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Az ACR-feladatok alaprendszerképének frissítései

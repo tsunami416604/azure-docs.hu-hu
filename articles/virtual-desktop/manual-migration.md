@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 74527f57340f850b60dd00dcd054992c423a49c7
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039048"
 ---
 # <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>Migrálás manuálisan a Windows virtuális asztalról (klasszikus)
@@ -35,7 +35,7 @@ A probléma ellenére továbbra is fontos az áttelepítés a klasszikus verzió
 - A Windows virtuális asztal kezelése a Azure Portal használatával.
 - Azure Active Directory (AD) felhasználói csoportok társítása az alkalmazási csoportokhoz.
 - A továbbfejlesztett Log Analytics funkció használatával elháríthatja az üzemelő példányt.
-- A rendszergazdai hozzáférés felügyeletéhez használja az Azure-natív szerepköralapú hozzáférés-vezérlést.
+- A rendszergazdai hozzáférés kezeléséhez használjon Azure-natív Role-Based hozzáférés-vezérlést.
 
 ## <a name="when-should-i-migrate"></a>Mikor érdemes migrálni?
 

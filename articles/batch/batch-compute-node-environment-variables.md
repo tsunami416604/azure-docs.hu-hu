@@ -4,10 +4,10 @@ description: A feladat futásidejű környezeti változóinak útmutatója és r
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85960911"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
@@ -36,7 +36,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-| Változó neve                     | Description                                                              | Rendelkezésre állás | Példa |
+| Változó neve                     | Leírás                                                              | Rendelkezésre állás | Példa |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Annak a Batch-fióknak a neve, amelyhez a feladat tartozik.                  | Minden feladat.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | A Batch-fiók URL-címe. | Minden feladat. | `https://myaccount.westus.batch.azure.com` |
@@ -52,7 +52,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 | AZ_BATCH_NODE_ID                | Annak a csomópontnak az azonosítója, amelyhez a feladat hozzá van rendelve. | Minden feladat. | TVM-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Ha `true` az aktuális csomópont egy dedikált csomópont. Ha `false` Ez egy [alacsony prioritású csomópont](batch-low-pri-vms.md). | Minden feladat. | `true` |
 | AZ_BATCH_NODE_LIST              | A [többpéldányos feladat][multi_instance] számára a formátumban lefoglalt csomópontok listája `nodeIP;nodeIP` . | Több példányos elsődleges és alfeladatok. | `10.0.0.4;10.0.0.5` |
-| AZ_BATCH_NODE_MOUNTS_DIR        | A csomópont szintű [fájlrendszer csatlakoztatási](virtual-file-mount.md) helyének teljes elérési útja, ahol az összes csatlakoztatási könyvtár található. A Windows-fájlmegosztás meghajtóbetűjelet használ, így a Windows esetében a csatlakoztatási meghajtó az eszközök és meghajtók részét képezi.  |  Minden feladat, beleértve az indítási feladatot, hozzáférhet a felhasználóhoz, mivel a felhasználó ismeri a csatlakoztatott könyvtár csatlakoztatási engedélyeit. | Az Ubuntuban például a hely a következő:`/mnt/batch/tasks/fsmounts` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | A csomópont szintű [fájlrendszer csatlakoztatási](virtual-file-mount.md) helyének teljes elérési útja, ahol az összes csatlakoztatási könyvtár található. A Windows-fájlmegosztás meghajtóbetűjelet használ, így a Windows esetében a csatlakoztatási meghajtó az eszközök és meghajtók részét képezi.  |  Minden feladat, beleértve az indítási feladatot, hozzáférhet a felhasználóhoz, mivel a felhasználó ismeri a csatlakoztatott könyvtár csatlakoztatási engedélyeit. | Az Ubuntuban például a hely a következő: `/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | A csomóponton lévő összes [Batch-könyvtár][files_dirs] gyökerének teljes elérési útja. | Minden feladat. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | A csomóponton a [megosztott könyvtár][files_dirs] teljes elérési útja. A csomóponton végrehajtandó összes feladat olvasási/írási hozzáféréssel rendelkezik ehhez a címtárhoz. A más csomópontokon végrehajtandó feladatok nem rendelkeznek távoli hozzáféréssel ehhez a címtárhoz (nem "megosztott" hálózati könyvtár). | Minden feladat. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | A csomóponton a [Start feladat könyvtárának][files_dirs] teljes elérési útja. | Minden feladat. | C:\user\tasks\startup |
@@ -61,7 +61,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 | AZ_BATCH_TASK_ID                | Az aktuális tevékenység azonosítója. | Minden feladat, kivéve a kezdési feladatot. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Egy [többpéldányos feladat][multi_instance]elsődleges feladatához és minden feladatához azonos könyvtár elérési útja. Az elérési út minden olyan csomóponton létezik, amelyen a többpéldányos feladat fut, és az olvasási/írási hozzáférés az adott csomóponton futó feladatok parancsai számára (a [koordinációs parancs][coord_cmd] és az [alkalmazási parancs][app_cmd]is). Az alfeladatok vagy a más csomópontokon végrehajtandó elsődleges feladatok nem rendelkeznek távoli hozzáféréssel ehhez a címtárhoz (nem "megosztott" hálózati könyvtár). | Több példányos elsődleges és alfeladatok. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | A csomóponton a [feladat munkakönyvtárának][files_dirs] teljes elérési útja. A jelenleg futó feladat írási/olvasási hozzáféréssel rendelkezik ehhez a címtárhoz. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
-| CCP_NODES                       | A [többpéldányos feladathoz][multi_instance]lefoglalt csomópontok és magok száma. A csomópontok és a magok formátuma az alábbiak szerint jelenik meg:`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, ahol a csomópontok számát egy vagy több csomópont IP-címe, valamint a magok száma követi. |  Több példányos elsődleges és alfeladatok. |`2 10.0.0.4 1 10.0.0.5 1` |
+| CCP_NODES                       | A [többpéldányos feladathoz][multi_instance]lefoglalt csomópontok és magok száma. A csomópontok és a magok formátuma az alábbiak szerint jelenik meg: `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, ahol a csomópontok számát egy vagy több csomópont IP-címe, valamint a magok száma követi. |  Több példányos elsődleges és alfeladatok. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: ./files-and-directories.md
 [multi_instance]: ./batch-mpi.md

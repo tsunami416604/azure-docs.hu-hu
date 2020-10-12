@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850965"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-hivatkozás
@@ -134,7 +134,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncBasicReadPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncBasicReadPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Tulajdonság-hozzáférés beolvasása az összes leszármazott számítógép-objektum összes attribútumán
 2.
@@ -307,7 +307,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncExchangeHybridPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncExchangeHybridPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Olvasási/írási tulajdonságok hozzáférése az összes leszármazott felhasználói objektum összes attribútumához
 2.
@@ -475,7 +475,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncExchangeMailPublicFolderPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncExchangeMailPublicFolderPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Tulajdonságok beolvasása a publicfolder összes leszármazott objektumához
 
@@ -636,7 +636,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncMsDsConsistencyGuidPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncMsDsConsistencyGuidPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Olvasási/írási tulajdonság-hozzáférés az mS-DS-ConsistencyGuid attribútumhoz az összes leszármazott felhasználói objektumhoz
 
@@ -796,7 +796,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncPasswordHashSyncPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncPasswordHashSyncPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Címtárbeli módosítások replikálása
 2.
@@ -918,7 +918,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncPasswordWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncPasswordWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Jelszó alaphelyzetbe állítása a leszármazott felhasználói objektumokon
 2.
@@ -1078,14 +1078,14 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncRestrictedPermissions függvény szigorítja az engedélyeket a megadott fiókkal.
+A Set-ADSyncRestrictedPermissions függvény szigorítja az engedélyeket a megadott fiókkal.
 Az engedélyek szigorítása a következő lépésekkel jár:
 1. Öröklés letiltása a megadott objektumon
 2. Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket.
 Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 3. Rendelje hozzá ezeket a konkrét engedélyeket:
 
-   | Típus | Name | Access | Érvényesség |
+   | Típus | Name (Név) | Hozzáférés | Érvényesség |
    |------|------|--------|------------|
    | Engedélyezés | RENDSZER | Teljes hozzáférés | Ez az objektum |
    | Engedélyezés | Vállalati rendszergazdák | Teljes hozzáférés | Ez az objektum |
@@ -1205,7 +1205,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A set-ADSyncUnifiedGroupWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
+A Set-ADSyncUnifiedGroupWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
 Általános olvasási/írási, törlési, törlési és Create\Delete gyermek az összes csoport típusú objektumhoz és alobjektumhoz
 
@@ -1347,7 +1347,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="show-adsyncadobjectpermissions"></a>ADSyncADObjectPermissions megjelenítése
+## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Megjeleníti egy megadott AD-objektum engedélyeit.

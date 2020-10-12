@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932797"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Az Azure Cognitive Search IP-tűzfalának konfigurálása
@@ -39,7 +39,7 @@ A fejlesztés egyszerűsítése érdekében a Azure Portal segíti az ügyfélsz
 
 A portál automatikusan észleli az ügyfél IP-címét. Ez lehet a számítógép vagy a hálózati átjáró ügyfél IP-címe. Mielőtt éles környezetben üzembe helyezi a munkaterhelést, mindenképp távolítsa el ezt az IP-címet.
 
-Ha a jelenlegi IP-címet az IP-címek listájához szeretné felvenni, **akkor az ügyfél IP-címét adja meg**. Kattintson a **Mentés** gombra.
+Ha a jelenlegi IP-címet az IP-címek listájához szeretné felvenni, **akkor az ügyfél IP-címét adja meg**. Ez után válassza a **Mentés** lehetőséget.
 
 ![Képernyőfelvétel az IP-tűzfalbeállítások konfigurálásáról az aktuális IP-cím engedélyezéséhez](./media/service-configure-firewall/enable-current-ip.png)
 
@@ -55,7 +55,7 @@ Az Azure Cognitive Search szolgáltatás IP-hozzáférés-vezérlési házirendj
 
 Ha az SDK-ból olyan gépekről fér hozzá az Azure Cognitive Search Service-hez, amelyek nem szerepelnek az engedélyezési listán, a rendszer általános **403 Tiltott** választ ad vissza további részletek nélkül. Ellenőrizze az engedélyezett IP-listát a fiókjához, és győződjön meg arról, hogy a megfelelő konfiguráció frissült a keresési szolgáltatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A keresési szolgáltatás privát kapcsolaton keresztüli elérésével kapcsolatos további információkért tekintse meg a következő cikket:
 

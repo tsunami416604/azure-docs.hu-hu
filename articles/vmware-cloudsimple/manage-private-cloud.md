@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524996"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Saját Felhőbeli erőforrások és tevékenységek kezelése
@@ -88,7 +88,7 @@ A saját felhőben jelenleg konfigurált VMware felügyeleti erőforrások és v
 
 ![Saját felhőalapú vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171669"
 ---
 # <a name="event-grid-configuration"></a>Event Grid konfiguráció
@@ -65,7 +65,7 @@ A szolgáltatás általános megismeréséhez lásd: [kézbesítés és újrapr�
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Az alapértelmezett érték 30.
-| `broker__defaultEventTimeToLiveInSeconds` | Élettartam (TTL) másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Az alapértelmezett érték **7200** másodperc
+| `broker__defaultEventTimeToLiveInSeconds` | Élettartam (TTL) másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Az alapértelmezett érték  **7200** másodperc
 
 ## <a name="output-batching"></a>Kimenet kötegelése
 
@@ -73,12 +73,12 @@ Ha többet szeretne megtudni erről a szolgáltatásról, olvassa el a [tovább�
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | A forgatógomb számára engedélyezett maximális érték `ApproxBatchSizeInBytes` Az alapértelmezett érték: `1_058_576` .
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | A forgatógomb számára engedélyezett maximális érték `MaxEventsPerBatch` Az alapértelmezett érték: `50` .
-| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak meg `MaxEventsPerBatch` van adva. Az alapértelmezett érték: `1_058_576` .
-| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak meg `MaxBatchSizeInBytes` van adva. Az alapértelmezett érték: `10` .
+| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | A forgatógomb számára engedélyezett maximális érték `ApproxBatchSizeInBytes` Az alapértelmezett érték `1_058_576`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | A forgatógomb számára engedélyezett maximális érték `MaxEventsPerBatch` Az alapértelmezett érték `50`.
+| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak meg `MaxEventsPerBatch` van adva. Az alapértelmezett érték `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak meg `MaxBatchSizeInBytes` van adva. Az alapértelmezett érték `10`.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 Ha szeretné megtudni, hogyan használhatja a metrikákat a IoT Edge Event Grid, tekintse meg a [témakörök és előfizetések figyelése](monitor-topics-subscriptions.md)
 
