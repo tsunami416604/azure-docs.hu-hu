@@ -11,10 +11,10 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541713"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
@@ -326,7 +326,7 @@ rl_estimator = ReinforcementLearningEstimator(
 
 A [bejegyzési parancsfájl](https://aka.ms/azure-rl-pong-script) `pong_rllib.py` egy neurális hálózatot hajt a [OpenAI Gym-környezettel](https://github.com/openai/gym/) `PongNoFrameSkip-v4` . A OpenAI-tornatermek szabványosított felületek a megerősítő tanulási algoritmusok tesztelésére a klasszikus Atari-játékoknál.
 
-Ez a példa egy [Impala](https://arxiv.org/abs/1802.01561) (a fontos súlyozott Actor-learning Architecture) néven ismert képzési algoritmust használ. A IMPALA parallelizes az egyes tanulók számos számítási csomópontra kiterjedő skáláját a sebesség vagy a stabilitás feláldozása nélkül.
+Ez a példa [Impala](https://arxiv.org/abs/1802.01561) -ként ismert képzési algoritmust használ (fontosság súlyozott Actor-Learner architektúra). A IMPALA parallelizes az egyes tanulók számos számítási csomópontra kiterjedő skáláját a sebesség vagy a stabilitás feláldozása nélkül.
 
 A [Ray Tune összehangolja](https://ray.readthedocs.io/en/latest/tune.html) az Impala Worker feladatait.
 
@@ -431,6 +431,6 @@ Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log.txt fá
 
 Rövid idő alatt több számítási erőforrást is megtanult a megerősítő tanulási ügynök betanítására, hogy nagyon jól játszhasson.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan taníthat meg egy megerősítéses oktatási ügynököt egy IMPALA learning-ügynök használatával. Ha további példákat szeretne látni, ugorjon a [Azure Machine learning megerősítése learning GitHub-tárházra](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).

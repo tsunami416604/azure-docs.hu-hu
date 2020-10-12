@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 – Számítás konfigurálása
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: '9A – Hozzáadás, csatlakozás a megosztáshoz'
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: '9B – Hozzáadás, csatlakozás a tárfiókokhoz'
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Alapelvek
       items:
         - name: Követelmények áttekintése
@@ -87,6 +83,8 @@
               items:
                 - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: C#-modul fejlesztése
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: Azure Arc használatával (előzetes verzió)
               items:
                 - name: Az Arc engedélyezése a Kubernetes-fürtön
@@ -123,12 +121,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Tanúsítványhibák elhárítása
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: C#-modul fejlesztése
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Peremhálózati számítás felügyelete
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Tárhelyátjáró felügyelete
           items:
+            - name: 'Hozzáadás, csatlakozás a megosztáshoz'
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 'Hozzáadás, csatlakozás a tárfiókokhoz'
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: Megosztások
               href: azure-stack-edge-j-series-manage-shares.md
             - name: Felhasználók
@@ -149,6 +149,10 @@
               href: azure-stack-edge-return-device.md
             - name: Eszköz cseréje
               href: azure-stack-edge-replace-device.md
+            - name: Előzetes felkészülés az eszközhibákra
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: Helyreállítás eszközhibák esetén
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: Figyelés
           items:
             - name: Metrikadiagramok használata

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934970"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Magas rendelkezésre állási fogalmak Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
@@ -18,7 +18,7 @@ ms.locfileid: "90934970"
 > [!IMPORTANT] 
 > Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) lehetővé teszi a magas rendelkezésre állás konfigurálását automatikus feladatátvételsel a **zóna redundáns** magas rendelkezésre állási lehetőségével. A zónák redundáns konfigurációjában való üzembe helyezéskor a rugalmas kiszolgáló automatikusan kiépíti és felügyeli a készenléti replikát egy másik rendelkezésre állási zónában. A tárolási szintű replikáció használatával a rendszer **szinkron módon replikálja** az adatátvitelt a másodlagos zónában lévő készenléti kiszolgálóra, hogy a feladatátvétel után zéró adatvesztést engedélyezzen. A feladatátvétel teljesen átlátszó az ügyfélalkalmazás számára, és nincs szükség felhasználói műveletekre. A készenléti kiszolgáló semmilyen olvasási vagy írási művelethez nem érhető el, de a gyors feladatátvétel engedélyezéséhez passzív készenléti állapotban van. A feladatátvételi idők jellemzően 60-120 másodperctől eltérnek.
+Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) lehetővé teszi a magas rendelkezésre állás konfigurálását automatikus feladatátvételsel a **zóna redundáns** magas rendelkezésre állási lehetőségével. Amikor zónaredundáns konfigurációban van üzembe helyezve, a rugalmas kiszolgáló automatikusan kiépít és felügyel egy készenléti replikát egy másik rendelkezésreállási zónában. A tárolási szintű replikáció használatával a rendszer **szinkron módon replikálja** az adatátvitelt a másodlagos zónában lévő készenléti kiszolgálóra, hogy a feladatátvétel után zéró adatvesztést engedélyezzen. A feladatátvétel teljesen átlátszó az ügyfélalkalmazás számára, és nincs szükség felhasználói műveletekre. A készenléti kiszolgáló semmilyen olvasási vagy írási művelethez nem érhető el, de a gyors feladatátvétel engedélyezéséhez passzív készenléti állapotban van. A feladatátvételi idők jellemzően 60-120 másodperctől eltérnek.
 
 A zóna redundáns magas rendelkezésre állási konfigurációja lehetővé teszi az automatikus feladatátvételt a tervezett események, például a felhasználó által kezdeményezett méretezési műveletek, valamint a nem tervezett események, például a mögöttes hardver-és szoftver-hibák, a hálózati hibák és a rendelkezésre állási zónák meghibásodása esetén.
 

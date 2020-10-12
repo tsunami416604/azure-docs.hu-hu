@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826211"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logikai alkalmazás erőforrásainak áthelyezése más Azure-erőforráscsoportok,-régiók vagy-előfizetések között
@@ -108,6 +108,6 @@ A Visual studióból beolvasott sablon csak a logikai alkalmazás erőforrás-de
 
 1. Nyissa meg és szerkessze a sablont, hogy parametrizálja a szükséges értékeket az üzembe helyezéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-erőforrások áthelyezése új erőforráscsoportok vagy előfizetések](../azure-resource-manager/management/move-resource-group-and-subscription.md)

@@ -6,15 +6,15 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/28/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: a729d470cccd4121523c767ada9077a51361c061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b346c24b6a363e66e56f6c16b70058df3864c88
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181976"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945828"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő áttekintése
 
@@ -52,7 +52,7 @@ A Azure Data Factory a következő fájlformátumokat támogatja. A formátum-al
 - [Parquet formátum](format-parquet.md)
 - [XML formátum](format-xml.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység](copy-activity-overview.md)
 - [Leképezési adatfolyam](concepts-data-flow-overview.md)

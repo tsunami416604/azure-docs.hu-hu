@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404722"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945787"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Az ork formátuma Azure Data Factory
 
@@ -59,7 +59,7 @@ Alább látható egy példa az Azure Blob Storage-beli ork-adatkészletre:
 
 Vegye figyelembe a következő szempontokat:
 
-* Az összetett adattípusok nem támogatottak (STRUCT, Térkép, lista, UNION).
+* Az összetett adattípusok (például a Térkép, a lista, a STRUCT) jelenleg csak adatforgalomban támogatottak, nem a másolási tevékenységekben. Ha összetett típusokat szeretne használni az adatfolyamatokban, ne importálja az adatkészletben a sémát, így a séma üres marad az adatkészletben. Ezután a forrás-átalakításban importálja a leképezést.
 * Az oszlopnév nem támogatja az üres helyet.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -172,7 +172,7 @@ A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializál
 
 Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` . A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg `Xmx` a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a memóriával fog elindulni, `Xms` és a memória maximális mennyiségét fogja tudni használni `Xmx` . Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)

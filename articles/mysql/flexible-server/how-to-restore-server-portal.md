@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935053"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL rugalmas kiszolgáló időponthoz való visszaállítása (előzetes verzió)
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve állíthatja vissza a rugalmas kiszolgálót a k
 
 6.  Adja meg az új kiszolgáló nevét a **visszaállítás új kiszolgálóként** mezőben. 
    
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="megtekintés áttekintése":::
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Legkorábbi visszaállítási idő":::
  
 7.  Kattintson az **OK** gombra.
 

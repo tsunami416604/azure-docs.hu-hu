@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.openlocfilehash: e37b35e3473b2da397904d01be5e65cf8cafbbe5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541118"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A végpontok kvótájának kezelése Microsoft Azure Traffic Manager használatával a kulcsok között
@@ -76,7 +76,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Name|Luis-profil-eastus|Traffic Manager neve Azure Portal|
     |– ResourceGroupName|Luis – Traffic Manager|Létrehozva az előző szakaszban|
@@ -95,7 +95,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
     ```
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |– Végpontneve|Luis – Kelet – végpont|A profil alatt megjelenő végpont neve|
     |-TrafficManagerProfile|$eastprofile|Az 1. lépésben létrehozott profil objektum használata|
@@ -144,7 +144,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Name|Luis-profil-westus|Traffic Manager neve Azure Portal|
     |– ResourceGroupName|Luis – Traffic Manager|Létrehozva az előző szakaszban|
@@ -164,7 +164,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |– Végpontneve|Luis-Nyugat-végpont|A profil alatt megjelenő végpont neve|
     |-TrafficManagerProfile|$westprofile|Az 1. lépésben létrehozott profil objektum használata|
@@ -211,7 +211,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Name|Luis-profil-Parent|Traffic Manager neve Azure Portal|
     |– ResourceGroupName|Luis – Traffic Manager|Létrehozva az előző szakaszban|
@@ -231,7 +231,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |– Végpontneve|gyermek-végpont – USEast|Kelet-profil|
     |-TrafficManagerProfile|$parentprofile|A végpont hozzárendeléséhez használandó profil|
@@ -268,7 +268,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |– Végpontneve|gyermek-végpont – USWest|Nyugat-profil|
     |-TrafficManagerProfile|$parentprofile|A végpont hozzárendeléséhez használandó profil|
@@ -369,7 +369,7 @@ Engedélyezze a [diagnosztikai naplókat](../../traffic-manager/traffic-manager-
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Távolítsa el a két LUIS Endpoint Key, a három Traffic Manager profilt és az öt erőforrást tartalmazó erőforráscsoportot. Ez a Azure Portalból történik. Törli az öt erőforrást az erőforrások listából. Ezután törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Botframework témakörben v4 [middleware](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) -beállításait, hogy megtudja, hogyan vehetők fel ez a Traffic Management kód egy botframework témakörben-robotba.
 

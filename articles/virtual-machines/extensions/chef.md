@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082613"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
@@ -67,26 +67,26 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ### <a name="core-property-values"></a>Alapvető tulajdonságok értékei
 
-| Name | Érték/példa | Adattípus
+| Name (Név) | Érték/példa | Adattípus
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | karakterlánc (dátum) |
 | közzétevő | `Chef.Bootstrap.WindowsAzure` | sztring |
-| típus | `LinuxChefClient`(Linux), `ChefClient` (Windows) | sztring |
+| típus | `LinuxChefClient` (Linux), `ChefClient` (Windows) | sztring |
 | typeHandlerVersion | `1210.13` | karakterlánc (dupla) |
 
 ### <a name="settings"></a>Beállítások
 
-| Name | Érték/példa | Adattípus | Kötelező?
+| Name (Név) | Érték/példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
-| beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (URL) | Y |
-| beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | Y |
-| beállítások/Runlist | `recipe[mycookbook::default]` | sztring | Y |
+| beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (URL) | I |
+| beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
+| beállítások/Runlist | `recipe[mycookbook::default]` | sztring | I |
 
 ### <a name="protected-settings"></a>Védett beállítások
 
-| Name | Példa | Adattípus | Kötelező?
+| Name (Név) | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| Protectedsettingsfromkeyvault/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | Y |
+| Protectedsettingsfromkeyvault/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
 
 <!--
 ### Linux-specific settings

@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321258"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával
@@ -99,7 +99,7 @@ Ha a folyamat néhány részével hibaüzenetet kap, vegye figyelembe a követke
 
 ## <a name="view-your-metrics"></a>Metrikák megtekintése 
 
-1. Jelentkezzen be az Azure Portalra. 
+1. Jelentkezzen be az Azure portálra. 
 
 1. A bal oldali menüben válassza a **figyelő**elemet. 
 

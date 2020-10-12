@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326813"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
@@ -197,16 +197,16 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>Ügyfélszéf
 
-[A Ügyfélszéf for Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) egy felületet biztosít az ügyfelek számára, hogy áttekintsék, jóváhagyják vagy elutasítsák az ügyféladatok hozzáférési kérelmeit. Ez olyan esetekben használatos, amikor egy Microsoft mérnöknek egy támogatási kérelem során hozzá kell férnie az ügyféladatok eléréséhez. További információ a Ügyfélszéf kérelmek elindításáról, nyomon követéséről és a későbbi felülvizsgálatok és auditálások tárolásáról: [Ügyfélszéf](../security/fundamentals/customer-lockbox-overview.md). 
+[A Ügyfélszéf for Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) egy felületet biztosít az ügyfelek számára, hogy áttekintsék, jóváhagyják vagy elutasítsák az ügyféladatok hozzáférési kérelmeit. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz. További információ a Ügyfélszéf kérelmek elindításáról, nyomon követéséről és a későbbi felülvizsgálatok és auditálások tárolásáról: [Ügyfélszéf](../security/fundamentals/customer-lockbox-overview.md). 
 
 Ügyfélszéf érhető el ehhez a kognitív szolgáltatáshoz:
 
-* Translator
+* Fordító
 
 A következő szolgáltatások esetében a Microsoft Engineers nem fér hozzá a E0-szinten található összes ügyfél-adatszolgáltatáshoz: 
 
 * Language Understanding
-* Face
+* Arcfelismerés
 * Tartalommoderátor
 * Personalizer
 

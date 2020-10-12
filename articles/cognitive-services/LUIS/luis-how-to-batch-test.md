@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540948"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-tesztelés példaként megadott hosszúságú kimondott szöveg
@@ -34,7 +34,7 @@ ms.locfileid: "91540948"
 
 3. Az **adatkészlet neve** mezőben adja meg az adatkészlet fájljának nevét. Az adatkészlet-fájl a **hosszúságú kimondott szöveg tömbjét tartalmazza,** beleértve a *címkézett szándékot* és az *entitásokat*. Tekintse át a [példaként szolgáló batch-fájlt](luis-concept-batch-test.md#batch-file-format) szintaxisként.
 
-4. Válassza a **Kész** lehetőséget. Az adatkészlet fájlja hozzá van adva.
+4. Válassza a **Done** (Kész) lehetőséget. Az adatkészlet fájlja hozzá van adva.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Adatkészlet futtatása, átnevezése, exportálása vagy törlése
 
@@ -93,7 +93,7 @@ A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás teljesítményét.
 

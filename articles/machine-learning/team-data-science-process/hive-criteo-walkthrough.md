@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336649"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
@@ -607,12 +607,12 @@ Most már készen áll arra, hogy az átalakított adatkészleteket használó A
 #### <a name="choice-of-learner"></a>A tanuló kiválasztása
 Először ki kell választania egy tanulót. A tanulónk kétosztályos, megnövelt döntési fát használ. A tanuló alapértelmezett beállításai a következők:
 
-![Kétosztályos megnövelt döntési fa paraméterei](./media/hive-criteo-walkthrough/bH3ST2z.png)
+![Two-Class a döntési fa paramétereinek kiemelése](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
 A kísérlethez válassza az alapértelmezett értékeket. Az alapértelmezett értékek az értelmesek, és jó módszer a gyors alapkonfigurációk beszerzésére a teljesítményre. Ha az alaptervet választja, a teljesítmény növelése a paraméterek elindításával végezhető el.
 
 #### <a name="train-the-model"></a>A modell betanítása
-A betanításhoz egyszerűen hívja meg a **betanítási modell** modulját. A két kategóriába tartozó bemenetek a kétosztályos kibővített döntési fa-tanulók és a vonat adatkészletei. Ez itt látható:
+A betanításhoz egyszerűen hívja meg a **betanítási modell** modulját. A két bemenet a Two-Class növelt döntési fa tanuló és a vonat adatkészlete. Ez itt látható:
 
 ![Betanítási modell modul](./media/hive-criteo-walkthrough/2bZDZTy.png)
 

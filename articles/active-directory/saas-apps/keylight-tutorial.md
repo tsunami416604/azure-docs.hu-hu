@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0832fe9ba65ac0df5dbff60b01b7a5eb91a2c3a2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535837"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Oktatóanyag: Azure Active Directory integráció az LockPath-nal
 
@@ -133,15 +133,15 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
     b. A felső menüben kattintson a **személy**elemre, majd válassza a **minitelepítés beállítása**lehetőséget.
 
-    ![Egyetlen Sign-On konfigurálása](./media/keylight-tutorial/401.png)
+    ![Képernyőfelvétel: a "személy" ikon kiválasztva és "a" hangjelzés beállítása "beállítás a legördülő menüből.](./media/keylight-tutorial/401.png)
 
     c. A bal oldali TreeView vezérlőben kattintson az **SAML**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/keylight-tutorial/402.png)
+    ![Képernyőkép, amely a fanézetben kiválasztott "S A M L" jelölést jeleníti meg.](./media/keylight-tutorial/402.png)
 
     d. A **SAML-beállítások** párbeszédpanelen kattintson a **Szerkesztés**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/keylight-tutorial/404.png)
+    ![A "szerkesztés" gomb kiválasztásával megjelenő "S M L beállítások" ablak](./media/keylight-tutorial/404.png)
 
 1. Az **SAML-beállítások szerkesztése** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -197,7 +197,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

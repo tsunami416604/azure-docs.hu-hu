@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87286087"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure-beli virtuális gépek közötti kapcsolatok hibaelhárítása
@@ -41,7 +41,7 @@ Egy Azure-beli virtuális gép nem tud csatlakozni egy másik Azure-beli virtuá
 6. [Annak ellenőrzéséhez, hogy a rendszer letiltja-e a forgalmat a klasszikus virtuális gép ACL-jei](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
 7. [Annak megállapítása, hogy a végpont létrejött-e a klasszikus virtuális gép számára](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
 8. [Próbáljon meg csatlakozni a virtuális gép hálózati megosztásához](#step-8-try-to-connect-to-a-vm-network-share)
-9. [Vnet közötti kapcsolat ellenőrzése](#step-9-check-inter-vnet-connectivity)
+9. [Inter-Vnet kapcsolat ellenőrzése](#step-9-check-inter-vnet-connectivity)
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
@@ -67,7 +67,7 @@ További információ: [hálózati adapterek hozzáadása vagy eltávolítása a
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2. lépés: Győződjön meg arról, hogy a NSG vagy a UDR blokkolja-e a hálózati forgalmat
 
-[Network Watcher IP-flow ellenőrzése](../network-watcher/network-watcher-ip-flow-verify-overview.md) és [NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) használatával ellenőrizze, hogy van-e olyan hálózati biztonsági csoport (NSG) vagy felhasználó által megadott útvonal (UDR), amely zavarja a forgalmat.
+[Network Watcher IP-flow ellenőrzése](../network-watcher/network-watcher-ip-flow-verify-overview.md) és [NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) használatával állapítsa meg, hogy van-e olyan hálózati biztonsági csoport (NSG) vagy User-Defined útvonal (UDR), amely zavarja a forgalmat.
 
 ### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>3. lépés: annak ellenőrzése, hogy a virtuálisgép-tűzfal blokkolja-e a hálózati forgalmat
 
@@ -109,9 +109,9 @@ Az Azure-ban a klasszikus üzemi modell használatával létrehozott összes vir
 
 Ha nem tud kapcsolódni egy virtuálisgép-hálózati megosztáshoz, a problémát a virtuális gép nem elérhető hálózati adapterei okozzák. A nem elérhető hálózati adapterek törlését lásd: [a nem elérhető hálózati adapterek törlése](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>9. lépés: a vnet-kapcsolat ellenőrzése
+### <a name="step-9-check-inter-vnet-connectivity"></a>9. lépés: Inter-Vnet kapcsolat ellenőrzése
 
-[Network Watcher IP-flow ellenőrzése](../network-watcher/network-watcher-ip-flow-verify-overview.md) és [NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) használatával ellenőrizze, hogy van-e olyan NSG vagy UDR, amely zavarja a forgalom áramlását. A vnet-konfigurációt [itt](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)is ellenőrizheti.
+[Network Watcher IP-flow ellenőrzése](../network-watcher/network-watcher-ip-flow-verify-overview.md) és [NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) használatával ellenőrizze, hogy van-e olyan NSG vagy UDR, amely zavarja a forgalom áramlását. [Itt](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)ellenőrizheti a Inter-Vnet konfigurációját is.
 
 ### <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

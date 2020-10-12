@@ -16,10 +16,10 @@ ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91408874"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
@@ -131,10 +131,10 @@ A tesztelési csoportba felvett összes forrás, cél és tesztelési konfigurá
 | 6 | B | T | 2. konfiguráció |
 | 7 | B | E | 1. konfiguráció |
 | 8 | B | E | 2. konfiguráció |
-| 9 | C# | T | 1. konfiguráció |
-| 10 | C# | T | 2. konfiguráció |
-| 11 | C# | E | 1. konfiguráció |
-| 12 | C# | E | 2. konfiguráció |
+| 9 | C | T | 1. konfiguráció |
+| 10 | C | T | 2. konfiguráció |
+| 11 | C | E | 1. konfiguráció |
+| 12 | C | E | 2. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -199,7 +199,7 @@ A listát a következő alapján szűrheti:
 * **Állapot-alapú szűrők** – a Csatlakozáskezelő, a test Group vagy a test állapota alapján szűrhet. Lásd a 2. négyzetet az alábbi képen.
 * **Riasztáson alapuló szűrő** – a figyelő erőforráson alapuló riasztások szűrése. Az alábbi képen látható 3. mező.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="A kapcsolódási figyelők, a tesztelési csoportok és a tesztek nézeteinek szűrését bemutató képernyőkép (előzetes verzió)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
 Ha például meg szeretné tekinteni az összes tesztet a 10.192.64.56 (előzetes verzió), ahol a forrás IP-címe a következő:
 1. Módosítsa a nézetet a **tesztre**.
@@ -218,16 +218,16 @@ Csak a sikertelen tesztek megjelenítése a outlook.office365.com (előzetes ver
 1. A Keresés mezőbe írja be a *Outlook.office365.com*
 1. A legfelső szintű szűrő **hatókörében** válassza a **Célhelyek**lehetőséget.
   
-  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Képernyőfelvétel: a szűrt nézetet megjelenítő nézet, amely csak a Outlook.Office365.com célhelyének sikertelen teszteit jeleníti meg" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
 Ha tudni szeretné, hogy a Csatlakozáskezelő vagy a tesztelési csoport vagy a teszt meghibásodása miért nem sikerült, kattintson az OK nevű oszlopra.  Ez azt jelzi, hogy a (z)%-os vagy RTT sikertelen ellenőrzések milyen küszöbértéket észleltek, és kapcsolódó diagnosztikai üzenetek
   
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="A Csatlakozáskezelő, tesztelési vagy tesztelési csoport meghibásodásának okát bemutató képernyőkép" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
     
 A RTT trendjeinek és a sikertelen ellenőrzések százalékos arányának megtekintéséhez:
 1. Válassza ki a vizsgálni kívánt kapcsolódási figyelőt.
 
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="A Csatlakozáskezelő metrikáit bemutató képernyőkép, amelyet a test Group megjelenít" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
 1. A következő részeket fogja látni  
     1. Essentials – a kiválasztott figyelő erőforrás-specifikus tulajdonságai 
@@ -237,7 +237,7 @@ A RTT trendjeinek és a sikertelen ellenőrzések százalékos arányának megte
     1. A tesztelési csoportok, a források, a célhelyek és a tesztelési konfigurációk lapjai – a Csatlakozáskezelő tesztelési csoportjait, forrásait vagy célhelyeit sorolja fel. A tesztek ellenőrzése nem sikerült, az összesített RTT és az ellenőrzések sikertelenek voltak% érték.  Az adatgyűjtés ideje alatt is visszatérhet. 
     1. Problémák – a kapcsolati figyelő egyes teszteléseinak ugrási szintű problémái. 
 
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="A kapcsolati figyelő metrikáit ábrázoló képernyőkép, a 2. rész tesztelési csoport" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
 1. képes vagy
     * Kattintson az összes teszt megtekintése lehetőségre a kapcsolódási figyelő összes tesztének megtekintéséhez
@@ -247,7 +247,7 @@ A RTT trendjeinek és a sikertelen ellenőrzések százalékos arányának megte
 1. Az összes teszt nézetből a következőket teheti:
     * Válassza a tesztek lehetőséget, majd kattintson az összehasonlítás gombra.
     
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="2 teszt összehasonlítását bemutató képernyőkép" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
     
     * A fürt használatával bontsa ki az összetett erőforrásokat, például a VNET, az alhálózatokat a gyermek erőforrásaihoz
     * Az összes teszt topológiájának megtekintése a topológia lehetőségre kattintva.
@@ -259,7 +259,7 @@ A RTT trendjeinek és a tesztelési csoport sikertelen ellenőrzésének százal
 A RTT trendjeinek és a tesztek sikertelen ellenőrzésének százalékos arányának megtekintéséhez:
 1. Válassza ki a vizsgálni kívánt tesztet. A rendszer a hálózati topológiát és a végpontok közötti trend-diagramokat fogja látni a következő ellenőrzésekhez: nem sikerült% és a kerekítési idő. Az azonosított problémák megjelenítéséhez a topológiában válassza ki az ugrást az elérési úton. (Ezek a komló Azure-erőforrások.) Ez a funkció jelenleg nem érhető el a helyszíni hálózatokhoz
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Egy teszt topológiai nézetét bemutató képernyőkép" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Lekérdezések naplózása Log Analytics
 
@@ -269,7 +269,7 @@ A Log Analytics használatával egyéni nézeteket hozhat létre a figyelési ad
 
 A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létrehozott AverageRoundtripMs a következő négy metrika érhető el:% Probes sikertelen,, ChecksFailedPercent (előzetes) és RoundTripTimeMs (előzetes verzió). A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott hálózati figyelők esetében az adatok csak a *(előzetes)* címkével megjelölt mérőszámokhoz érhetők el.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="A Csatlakozáskezelő metrikáit bemutató képernyőkép (előzetes verzió)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
@@ -277,8 +277,8 @@ Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Ne
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |
-| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Metrika-alapú riasztások a kapcsolatok figyelője számára
 
@@ -300,7 +300,7 @@ A következő módszerekkel metrikai riasztásokat hozhat létre a kapcsolatok f
     1. Adja meg a riasztás részleteit.
     1. Hozzon létre egy riasztási szabályt.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Képernyőfelvétel a Azure Monitor szabály létrehozása területén. A forrás címe és a forrás végpontjának neve kiemelve" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>A hálózatban felmerülő problémák diagnosztizálása
 

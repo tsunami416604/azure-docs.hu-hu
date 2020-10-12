@@ -9,10 +9,10 @@ ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: bf2531536796965f145a9ac3e6a23cbb6634852a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88817674"
 ---
 # <a name="use-the-azure-portal-to-enable-double-encryption-at-rest-for-managed-disks"></a>A Azure Portal használatával engedélyezze a kettős titkosítást a felügyelt lemezeken.
@@ -39,7 +39,7 @@ Azure Disk Storage támogatja a kettős titkosítást a felügyelt lemezeken. A 
 
 1. Válassza a **+ Hozzáadás** lehetőséget.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-add-disk-encryption-set.png" alt-text="Képernyőkép a lemez titkosítási készlet paneljéről, a + Hozzáadás elem ki van emelve.":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-add-disk-encryption-set.png" alt-text="Képernyőfelvétel a fő Azure Portalról a lemezes titkosítási csoportok ki vannak emelve a keresősáv számára.":::
 
 1. Válasszon egyet a támogatott régiók közül.
 1. A **titkosítás típusa**beállításnál válassza a **dupla titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal**lehetőséget.
@@ -49,19 +49,19 @@ Azure Disk Storage támogatja a kettős titkosítást a felügyelt lemezeken. A 
 
 1. Adja meg a hátralévő információt.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-create-disk-encryption-set-blade.png" alt-text="Képernyőfelvétel: a lemez titkosítási készletének létrehozási panelje, a régiók és a kettős titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal kiemelve.":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-create-disk-encryption-set-blade.png" alt-text="Képernyőfelvétel a fő Azure Portalról a lemezes titkosítási csoportok ki vannak emelve a keresősáv számára.":::
 
 1. Válasszon ki egy Azure Key Vault és egy kulcsot, vagy hozzon létre egy újat, ha szükséges.
 
     > [!NOTE]
     > Ha Key Vault példányt hoz létre, engedélyeznie kell a Soft delete és a kiürítési védelmet. Ezek a beállítások akkor kötelezőek, ha Key Vault használ a felügyelt lemezek titkosításához, és a véletlen törlés miatt megóvja az adatok elvesztését.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Képernyőkép a Key Vault létrehozási paneljéről.":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Képernyőfelvétel a fő Azure Portalról a lemezes titkosítási csoportok ki vannak emelve a keresősáv számára.":::
 
 1. Kattintson a **Létrehozás** gombra.
 1. Navigáljon a létrehozott lemezes titkosítási készlethez, és válassza ki a megjelenített hibát. Ezzel a beállítással beállíthatja, hogy a lemez titkosítása működjön.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="Képernyőfelvétel: a lemez titkosítási készlete hibaüzenetet jelenít meg, a hiba szövege: egy lemez, lemezkép vagy pillanatkép ehhez a lemezes titkosítási készlethez való hozzárendeléséhez engedélyeket kell adnia a kulcstartónak.":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="Képernyőfelvétel a fő Azure Portalról a lemezes titkosítási csoportok ki vannak emelve a keresősáv számára.":::
 
     Egy értesítésnek a beugró és sikeres. Ezzel lehetővé teszi a lemezes titkosítási készlet használatát a kulcstartóval.
     
@@ -73,7 +73,7 @@ Azure Disk Storage támogatja a kettős titkosítást a felügyelt lemezeken. A 
 1. Válassza ki a lemez titkosítási készletét.
 1. Válassza a **Mentés**lehetőséget.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="Képernyőkép a felügyelt lemez titkosítási paneljéről, a fenti titkosítási típus ki van emelve.":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="Képernyőfelvétel a fő Azure Portalról a lemezes titkosítási csoportok ki vannak emelve a keresősáv számára.":::
 
 A felügyelt lemezen már engedélyezte a kettős titkosítást a REST-ben.
 

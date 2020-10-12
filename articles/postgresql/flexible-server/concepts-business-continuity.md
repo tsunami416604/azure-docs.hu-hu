@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 264bb8c66510c90fecf12d2e4e68bd969b4fb474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935789"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL-rugalmas kiszolgálóval
@@ -32,7 +32,7 @@ A rugalmas kiszolgáló olyan szolgáltatásokat biztosít, amelyek az adatvéde
 Az alábbi táblázat a rugalmas kiszolgáló által kínált funkciókat mutatja be.
 
 
-| **Funkció** | **Leírás** | **Megfontolások** |
+| **Szolgáltatás** | **Leírás** | **Megfontolások** |
 | ---------- | ----------- | ------------ |
 | **Automatikus biztonsági mentések** | A rugalmas kiszolgáló automatikusan elvégzi az adatbázisfájlok napi biztonsági mentését, és folyamatosan készíti el a tranzakciónaplókat. A biztonsági mentések 7 napig, akár 35 napig is megmaradnak. Az adatbázis-kiszolgálót bármikor visszaállíthatja a biztonsági másolatok megőrzési időszakán belüli bármely időpontra. A RTO a visszaállítani kívánt adatok méretétől és a naplók helyreállításának idejétől függ. Akár 12 óráig is eltarthat. További részletekért lásd: [fogalmak – biztonsági mentés és visszaállítás](./concepts-backup-restore.md). |A biztonsági mentési adatterületek a régión belül maradnak. |
 | **Zóna redundáns magas rendelkezésre állása** | A rugalmas kiszolgáló a zóna redundáns magas rendelkezésre állású (HA) konfigurációjában helyezhető üzembe, amelyben az elsődleges és a készenléti kiszolgálók két különböző rendelkezésre állási zónában vannak üzembe helyezve egy adott régióban. Ez a HA-konfiguráció védelmet nyújt az adatbázisai számára a zóna szintű hibáktól, és a tervezett és nem tervezett leállási események során csökkenti az alkalmazások leállását is. Az elsődleges kiszolgálóról származó adatok szinkron módban vannak replikálva a készenléti replikába. Az elsődleges kiszolgáló megszakítása esetén a kiszolgáló automatikusan feladatátvételt végez a készenléti replikára. A legtöbb esetben a RTO a várt érték 60 – 120s. A RPO várhatóan nulla (Nincs adatvesztés). További információ: [fogalmak – magas rendelkezésre állás](./concepts-high-availability.md). | Az általános célú és a memóriára optimalizált számítási szintek támogatottak. Csak olyan régiókban érhető el, ahol több zóna is elérhető. |

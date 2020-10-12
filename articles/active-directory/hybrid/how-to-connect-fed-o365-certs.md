@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661455"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 és Azure Active Directory összevonási tanúsítványainak megújítása
@@ -69,13 +69,13 @@ Get-Adfsproperties
 ![Autocertificaterollover beállítást](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
 >[!NOTE] 
->Ha a AD FS 2,0-et használja, először futtassa az Add-PSSnapin parancsmaggal Microsoft. ADFS. PowerShell parancsot.
+>Ha a AD FS 2,0-et használja, először futtassa Add-Pssnapin Microsoft. ADFS. PowerShell eszközt.
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>2. lépés: annak ellenőrzése, hogy a AD FS és az Azure AD szinkronban van-e
 A AD FS-kiszolgálón nyissa meg a MSOnline PowerShell-parancssort, és kapcsolódjon az Azure AD-hez.
 
 > [!NOTE]
-> A MSOL-parancsmagok a MSOnline PowerShell-modul részét képezik.
+> MSOL-Cmdlets a MSOnline PowerShell-modul részét képezik.
 > A MSOnline PowerShell-modult közvetlenül a PowerShell-galéria töltheti le.
 > 
 >
@@ -104,11 +104,11 @@ Ha a ujjlenyomatai megfelelnek mindkét kimenet egyezik, a tanúsítványok szin
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>3. lépés: Ellenőrizze, hogy a tanúsítvány hamarosan lejár-e
 A Get-MsolFederationProperty vagy a Get-AdfsCertificate kimenetében keresse meg a "nem után" dátumot. Ha a dátum kevesebb, mint 30 nap, el kell végeznie a műveletet.
 
-| Autocertificaterollover beállítást | Az Azure AD-vel szinkronizált tanúsítványok | Az összevonási metaadatok nyilvánosan elérhetők | Érvényességi | Műveletek |
+| Autocertificaterollover beállítást | Az Azure AD-vel szinkronizált tanúsítványok | Az összevonási metaadatok nyilvánosan elérhetők | Érvényességi | Művelet |
 |:---:|:---:|:---:|:---:|:---:|
 | Igen |Igen |Igen |- |Nincs szükség művelet végrehajtására. Lásd: [jogkivonat-aláíró tanúsítvány automatikus megújítása](#autorenew). |
 | Igen |Nem |- |Kevesebb, mint 15 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
-| No |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
+| Nem |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
 
 \[-] Nem számít
 
@@ -152,7 +152,7 @@ Ha viszont az **autocertificaterollover beállítást** értéke **true (igaz**)
     PS C: \> Get-ADFSCertificate – CertificateType jogkivonat – aláírás
 
    > [!NOTE]
-   > Ha a AD FS 2,0-et használja, először futtassa az Add-PSSnapin parancsmaggal Microsoft. ADFS. PowerShell eszközt.
+   > Ha a AD FS 2,0-et használja, először futtassa Add-Pssnapin Microsoft. ADFS. PowerShell eszközt.
    >
    >
 3. Tekintse meg a parancs kimenetét a felsorolt tanúsítványokban. Ha AD FS új tanúsítványt generált, akkor két tanúsítványt kell látnia a kimenetben: az egyiket, amelynél a **IsPrimary** értéke **igaz** , és a közelmúltbeli dátum 5 napon **belül van,** és az egyik, hogy a **IsPrimary** **hamis** , **és a** legkésőbbi egy évig.
@@ -167,9 +167,9 @@ Frissítse Microsoft 365 a megbízhatósághoz használni kívánt új jogkivona
 
 1. Nyissa meg a Microsoft Azure Active Directory modult a Windows PowerShellhez.
 2. Futtassa $cred = Get-hitelesítő adatokat. Ha ez a parancsmag kéri a hitelesítő adatok megadását, írja be a Cloud Service rendszergazdai fiókjának hitelesítő adatait.
-3. Futtassa a kapcsolat-MsolService – hitelesítő $cred. Ez a parancsmag csatlakozik a Cloud Service-hez. Az eszköz által telepített további parancsmagok futtatása előtt a Cloud Service-hez csatlakozó környezet létrehozása szükséges.
-4. Ha ezeket a parancsokat olyan számítógépen futtatja, amely nem a AD FS elsődleges összevonási kiszolgáló, akkor futtassa a set-MSOLAdfscontext-Computer &lt; AD FS elsődleges kiszolgálót &gt; , ahol a &lt; AD FS elsődleges kiszolgáló az &gt; elsődleges AD FS-kiszolgáló belső FQDN-neve. Ez a parancsmag olyan környezetet hoz létre, amely összekapcsolja a AD FS.
-5. Futtassa az Update-MSOLFederatedDomain – tartománynév &lt; tartományt &gt; . Ez a parancsmag a AD FS beállításait a Cloud Service-be frissíti, és konfigurálja a két közötti megbízhatósági kapcsolatot.
+3. Futtassa Connect-MsolService – hitelesítő adatok $cred. Ez a parancsmag csatlakozik a Cloud Service-hez. Az eszköz által telepített további parancsmagok futtatása előtt a Cloud Service-hez csatlakozó környezet létrehozása szükséges.
+4. Ha ezeket a parancsokat olyan számítógépen futtatja, amely nem a AD FS elsődleges összevonási kiszolgáló, akkor futtassa Set-MSOLAdfscontext-Computer &lt; AD FS elsődleges kiszolgálót &gt; , ahol a &lt; AD FS elsődleges kiszolgáló az &gt; elsődleges AD FS-kiszolgáló belső FQDN-neve. Ez a parancsmag olyan környezetet hoz létre, amely összekapcsolja a AD FS.
+5. Update-MSOLFederatedDomain – tartománynév &lt; tartomány futtatása &gt; . Ez a parancsmag a AD FS beállításait a Cloud Service-be frissíti, és konfigurálja a két közötti megbízhatósági kapcsolatot.
 
 > [!NOTE]
 > Ha több legfelső szintű tartományt is támogatnia kell (például contoso.com és fabrikam.com), akkor a **SupportMultipleDomain** kapcsolót minden parancsmaggal együtt kell használnia. További információ: [több felső szintű tartomány támogatása](how-to-connect-install-multiple-domains.md).

@@ -9,10 +9,10 @@ ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
 ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527207"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Az Azure IoT-eszközök gyártóinak biztonsági eljárásai
@@ -184,7 +184,7 @@ Miután az eszköz megérkezett a végső helyükre, az automatikus kiépítés 
 
 További információ: [kiépítés](about-iot-dps.md#provisioning-process) és TPM- [igazolás](concepts-tpm-attestation.md). 
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 A jelen cikkben ajánlott biztonsági eljárások mellett az Azure IoT olyan erőforrásokat biztosít, amelyek segítséget nyújtanak a biztonságos hardver kiválasztásában és a biztonságos IoT-telepítések létrehozásában: 
 - Az Azure IoT [biztonsági javaslatai](../iot-fundamentals/security-recommendations.md) az üzembe helyezési folyamat irányításához. 

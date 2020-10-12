@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081865"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator megkötések
@@ -30,12 +30,12 @@ A következő táblázat példákat mutat be olyan API-kra, amelyeket el kell ke
 
 | API-kategória | Ok | Áthidaló megoldás |
 | ------------ | ------ | ---------- |
-| Dátumok és időpontok  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja az `CurrentUtcDateTime` API-t a .net-ben vagy az `currentUtcDateTime` API-t a JavaScriptben, amelyek biztonságosak a visszajátszás számára. |
+| Dátum és idő  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja az `CurrentUtcDateTime` API-t a .net-ben vagy az `currentUtcDateTime` API-t a JavaScriptben, amelyek biztonságosak a visszajátszás számára. |
 | GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | `NewGuid` `newGuid` Véletlenszerű GUID azonosítók biztonságos létrehozásához használja a .net-ben vagy a JavaScriptben. |
 | Véletlenszerű számok | A véletlenszerű számokat visszaadó API-k determinált, mert a generált érték különbözik az egyes ismétlésekhez. | Egy tevékenység függvénnyel véletlenszerű számokat adhat vissza egy előkészítési művelethez. A tevékenység-függvények visszatérési értékei mindig biztonságosak a visszajátszás esetén. |
 | Kötések | A bemeneti és kimeneti kötések általában I/O-műveletek, és determinált. A Orchestrator függvénynek nem szabad közvetlenül használnia még a koordináló [ügyfelet](durable-functions-bindings.md#orchestration-client) és az [entitás-ügyfél](durable-functions-bindings.md#entity-client) kötéseit. | Bemeneti és kimeneti kötések használata az ügyfélen vagy a tevékenységi függvényeken belül. |
 | Network (Hálózat) | A hálózati hívások külső rendszereket érintenek, és determinált. | Hálózati hívások létrehozásához használja a Activity functions funkciót. Ha HTTP-hívást kell létrehoznia a Orchestrator függvényből, használhatja a [tartós http API-kat](durable-functions-http-features.md#consuming-http-apis)is. |
-| API-k blokkolása | Az API-k, például `Thread.Sleep` a .net és a hasonló API-k blokkolása a Orchestrator függvények teljesítmény-és méretezési problémáit okozhatja, és kerülni kell. A Azure Functions fogyasztási tervben a szükségtelen futtatókörnyezeti díjakat is eredményezhetnek. | A rendelkezésre álló API-k blokkolására alternatívákat használhat. Például a használatával `CreateTimer` késéseket vezethet be a hangszerelés végrehajtásához. A [tartós időzítő](durable-functions-timers.md) késései nem számítanak bele egy Orchestrator függvény végrehajtási idejébe. |
+| API-k blokkolása | Az API-k, például `Thread.Sleep` a .net és a hasonló API-k blokkolása a Orchestrator függvények teljesítmény-és méretezési problémáit okozhatja, és kerülni kell. A Azure Functions fogyasztási tervben a szükségtelen futtatókörnyezeti díjakat is eredményezhetnek. | A rendelkezésre álló API-k blokkolására alternatívákat használhat. Például a használatával  `CreateTimer` késéseket vezethet be a hangszerelés végrehajtásához. A [tartós időzítő](durable-functions-timers.md) késései nem számítanak bele egy Orchestrator függvény végrehajtási idejébe. |
 | Aszinkron API-k | A Orchestrator-kódnak soha nem kell elindítania az aszinkron műveleteket, kivéve az `IDurableOrchestrationContext` API-t vagy az `context.df` objektum API-ját. Nem használhatja például a `Task.Run` , `Task.Delay` `HttpClient.SendAsync` a és a a .net vagy `setTimeout` a és `setInterval` a JavaScript használatát. Az állandó feladatok keretrendszere egyetlen szálon futtatja a Orchestrator-kódot. Más aszinkron API-k által hívható más szálakkal nem tud működni. | A Orchestrator függvény csak tartós aszinkron hívásokat hajt végre. A Activity functions szolgáltatásnak más aszinkron API-hívásokat kell végeznie. |
 | Aszinkron JavaScript-függvények | A JavaScript Orchestrator függvények nem deklarálható, `async` mert az node.js futtatókörnyezet nem garantálja, hogy az aszinkron függvények determinisztikus. | A JavaScript-Orchestrator funkcióinak deklarálása szinkron létrehozó függvényekként. |
 | Többszálú API-k | Az állandó feladat-keretrendszer egyetlen szálon futtatja az Orchestrator-kódot, és nem tud más szálakkal kommunikálni. Az új szálaknak egy előkészítési folyamatba való bevezetéséhez determinált végrehajtás vagy holtpont is vezethet. | A Orchestrator függvények szinte soha nem használhatnak többszálú API-kat. A .NET-ben például Kerülje a használatát `ConfigureAwait(continueOnCapturedContext: false)` ; Ez biztosítja, hogy a feladat folytatása a Orchestrator függvény eredeti példányán fusson `SynchronizationContext` . Ha ilyen API-k szükségesek, csak a tevékenységi funkciókra korlátozzák a használatukat. |

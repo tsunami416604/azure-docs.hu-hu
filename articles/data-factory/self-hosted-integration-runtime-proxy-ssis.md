@@ -13,10 +13,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/09/2020
 ms.openlocfilehash: d135320d8dd9f86fbc313b17b8b55ed3c609e9dc
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595020"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű IR konfigurálása proxyként egy Azure-SSIS IRhoz Azure Data Factory
@@ -72,7 +72,7 @@ A saját üzemeltetésű IR-és Azure Blob Storage-hez társított szolgáltatá
 
 1. A **Speciális beállítások** szakaszban tegye a következőket:
 
-   1. Jelölje be a saját üzemeltetésű **Integration Runtime beállítása Azure-SSIS Integration Runtime proxyként** jelölőnégyzetet. 
+   1. Jelölje be a **Self-Hosted Integration Runtime beállítása proxyként a Azure-SSIS Integration Runtime** jelölőnégyzetet. 
 
    1. A saját üzemeltetésű **Integration Runtime** legördülő listában válassza ki a meglévő, saját üzemeltetésű IR-t a Azure-SSIS IRhoz.
 
@@ -80,7 +80,7 @@ A saját üzemeltetésű IR-és Azure Blob Storage-hez társított szolgáltatá
 
    1. Az **átmeneti útvonal** mezőben adja meg a BLOB-tárolót a kiválasztott Azure Blob Storage-fiókban, vagy hagyja üresen, hogy az alapértelmezett beállítást használja az átmeneti tároláshoz.
 
-   1. Válassza a **Folytatás**lehetőséget.
+   1. Válassza a **Folytatás** lehetőséget.
 
    ![Speciális beállítások önkiszolgáló IR-vel](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 

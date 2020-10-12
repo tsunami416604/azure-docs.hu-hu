@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934909"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>A zóna redundáns magas rendelkezésre állásának kezelése rugalmas kiszolgálón
@@ -35,24 +35,24 @@ Ez a szakasz részletesen ismerteti a HA kapcsolódó mezőket. Az alábbi lép�
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Előfizetés és régió megtekintése":::
 
 2.  Válassza ki a **rendelkezésre állási zónát**. Ez akkor lehet hasznos, ha az alkalmazást ugyanabban a rendelkezésre állási zónában szeretné rézvezetékes végezhet, mint az adatbázist a késés csökkentése érdekében. Ha azt szeretné, hogy a rugalmas kiszolgáló minden rendelkezésre állási zónán üzembe helyezhető, válassza a **Nincs beállítás** lehetőséget.
-    ![AZ AZ Selection ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="rendelkezésre állási zóna kiválasztása":::  
+    ![AZ AZ Selection ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Előfizetés és régió megtekintése":::  
 
 3.  A rendelkezésre állási lehetőségnél kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetére.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Magas rendelkezésre állás jelölőnégyzet":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Előfizetés és régió megtekintése":::
 
 4.  Ha módosítani szeretné az alapértelmezett számítási és tárolási tárterületet, kattintson a  **kiszolgáló konfigurálása**elemre.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="kiszolgáló konfigurálása – számítás és tárolás":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Előfizetés és régió megtekintése":::  
 
 5.  Ha a magas rendelkezésre állás beállítás be van jelölve, a feltört szint nem lesz elérhető a választáshoz. Kiválaszthatja az **általános célú** vagy a **memóriára optimalizált** számítási szinteket is. Ezután kiválaszthatja a kívánt **számítási méretet** a legördülő listából.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Számítási rétegek kiválasztása":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Előfizetés és régió megtekintése":::  
 
 
 6.  A kicsúsztatható sáv használatával válassza ki a **Storage-méretet** , és válassza ki a **biztonsági mentés megőrzési időtartamát** 7 nap és 35 nap között.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Tároló biztonsági mentése"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Előfizetés és régió megtekintése"::: 
 
 7. Kattintson a **Mentés** gombra. 
 
@@ -64,11 +64,11 @@ A meglévő rugalmas kiszolgáló magas rendelkezésre állásának engedélyez�
 
 2.  A rugalmas kiszolgáló lapon kattintson a **magas rendelkezésre állás** lehetőségre a bal oldali panelen a magas rendelkezésre állási lap megnyitásához.
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Bal oldali panel kijelölése"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Előfizetés és régió megtekintése"::: 
 
 3.  Kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetre a beállítás **engedélyezéséhez** , majd kattintson a **Mentés**gombra   a módosítás mentéséhez.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Magas rendelkezésre állás engedélyezése"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Előfizetés és régió megtekintése"::: 
 
 4.  A megerősítő párbeszédpanel azt jelzi, hogy a magas rendelkezésre állás engedélyezésével a további kiszolgáló-és tárterület-telepítés miatt növekedni fog a díj.
 
@@ -84,11 +84,11 @@ A következő lépésekkel letilthatja a rugalmas kiszolgáló magas rendelkezé
 
 2.  A rugalmas kiszolgáló lapon kattintson a **magas rendelkezésre állás** lehetőségre az előlapon a magas rendelkezésre állású lap megnyitásához.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Bal oldali panel kijelölése"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Előfizetés és régió megtekintése"::: 
 
 3.  A beállítás **letiltásához** kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetre. Ezután kattintson a **Save (Mentés**   ) gombra a módosítás mentéséhez.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Magas rendelkezésre állás letiltása"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Előfizetés és régió megtekintése"::: 
 
 4.  Ekkor megjelenik egy megerősítő párbeszédpanel, ahol ellenőrizheti A magas rendelkezésre állást.
 

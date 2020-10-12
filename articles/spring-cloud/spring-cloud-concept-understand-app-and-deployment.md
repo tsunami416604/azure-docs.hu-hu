@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323637"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Az alkalmazások és az üzembe helyezés ismertetése az Azure Spring Cloud-ban
@@ -29,25 +29,25 @@ Az Azure Spring Cloud standard csomag lehetővé teszi, hogy egy alkalmazás egy
 ## <a name="app"></a>Alkalmazás
 Az alkalmazás szintjén az alábbi funkciók/tulajdonságok vannak meghatározva.
 
-| Funkciók | Description |
+| Szolgáltatások | Leírás |
 |:--|:----------------|
 | Nyilvános</br>Végpont | Az alkalmazás eléréséhez használt URL-cím |
 | Egyéni</br>Tartomány | Az egyéni tartomány védelmét biztosító CNAME-rekord |
 | Szolgáltatás</br>Kötés | Egyéb Azure-szolgáltatásokkal létesített kapcsolatok |
 | Felügyelt</br>Identitás | A felügyelt identitás Azure Active Directory lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vault |
-| Állandó</br>Tárolás | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
+| Állandó</br>Storage | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
 
 ## <a name="deployment"></a>Üzembe helyezés
 
 A következő funkciók/tulajdonságok a telepítési szinten vannak meghatározva, és az üzemi/átmeneti telepítés cseréjekor lesznek kicserélve.
 
-| Funkciók | Leírás |
+| Szolgáltatások | Leírás |
 |:--|:----------------|
 | CPU | Virtuális mag-példányok száma |
 | Memória | GB memória/alkalmazás példánya|
 | Példány</br>Darabszám | Az alkalmazás példányainak száma, manuális vagy automatikus beállítás |
 | Automatikus méretezés | A példányok számának automatikus méretezése előre definiált szabályok és ütemtervek alapján |
-| JVM</br>Beállítások | JVM beállítások megadása  |
+| JVM</br>Lehetőségek | JVM beállítások megadása  |
 | Környezet</br>Változók | Környezeti változók beállítása |
 | Futtatókörnyezet</br>Verzió | Java 8/Java 11|
 
@@ -55,7 +55,7 @@ A következő funkciók/tulajdonságok a telepítési szinten vannak meghatároz
 
 * Az **alkalmazásnak rendelkeznie kell egy éles üzembe helyezéssel**: az üzemi környezet törlését az API blokkolja. A törlés előtt ki kell cserélni az átmeneti állapotba.
 * **Egy alkalmazás legfeljebb két üzemelő példányban lehet**: a kettőnél több üzemelő példány létrehozása le van tiltva az API-ban. Telepítse az új bináris fájlt a meglévő éles környezetbe vagy átmeneti üzembe helyezésre.
-* **Az üzembe helyezési felügyelet az alapszintű szinten nem érhető el**: standard szintű csomag használata a kék-zöld üzembe helyezési lehetőséghez.
+* Az **üzembe helyezési felügyelet alapszintű szinten nem érhető el**: a standard szintű csomag használata Blue-Green üzembe helyezési lehetőséghez.
 
 ## <a name="see-also"></a>Lásd még
 * [Átmeneti környezet beállítása az Azure Spring Cloud-ban](spring-cloud-howto-staging-environment.md)

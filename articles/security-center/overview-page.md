@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f7298ec7bba82eaddc4a002723f44bc5da68433
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447681"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945345"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Security Center áttekintése lap
 
@@ -40,7 +40,7 @@ A lap közepén **négy központi csempe**található, melyek mindegyike egy ded
 - **Biztonságos pontszám** – a Security Center folyamatosan értékeli az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákhoz. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint. [További információk](secure-score-security-controls.md).
 - **Megfelelőség** – a Security Center az Azure-környezet folyamatos felmérése alapján betekintést nyújt a megfelelőségi állapotba. A Security Center az ajánlott biztonsági eljárásoknak megfelelően elemzi a hibrid felhőalapú környezet kockázati tényezőit. Ezek az értékelések a megfelelőségi vezérlőkre vannak leképezve a szabványok támogatott készletében. [További információ](security-center-compliance-dashboard.md).
 - **Azure Defender** – ez a felhőalapú munkaterhelés-védelmi platform (CWPP), amely az Azure-beli és a hibrid számítási feladatok speciális, intelligens és védett Security Centeron belül van integrálva. A csempén látható a csatlakoztatott erőforrások (a jelenleg kiválasztott előfizetések esetében) és a legutóbbi riasztások lefedettsége, súlyosság szerint kódolva. [További információk](azure-defender.md).
-- **Leltár** – a csempe a nem figyelt virtuális gépek számát és a biztonsági CenterBen által figyelt erőforrások egyszerű barométerét jeleníti meg. [További információk](asset-inventory.md).
+- **Leltár** – a csempe a nem figyelt virtuális gépek számát és a Security Center által figyelt erőforrások egyszerű barométerét jeleníti meg. [További információk](asset-inventory.md).
 
 
 Az **Áttekintés** panel testreszabott elemeket kínál a környezethez, többek között a következőket:

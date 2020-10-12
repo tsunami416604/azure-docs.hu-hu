@@ -8,10 +8,10 @@ ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319983"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
@@ -34,7 +34,7 @@ Egy naptári nap minden órájában csak egy használati eseményt lehet kiáll�
 
 Erőforráson belül egy naptári nap minden órájában csak egy használati esemény lehet kibocsátva. Ha egy órában több egység is használatban van, akkor az óránként felhasznált összes egységet összesíti, majd egyetlen esemény keretében bocsátja ki. A használati események csak az elmúlt 24 órában állíthatók elő. Ha 8:00 és 8:59:59 közötti időszakban bármikor bocsát ki használati eseményt, és a 8:00 és az 8:59:59 közötti időszakra vonatkozó további eseményt küld, akkor azt a rendszer duplikálja.
 
-**Post**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -65,7 +65,7 @@ Erőforráson belül egy naptári nap minden órájában csak egy használati es
 ```
 
 >[!NOTE]
->`resourceId`az SaaS-alkalmazás és az egyéni fogyasztásmérőt kibocsátó felügyelt alkalmazások esetében eltérő jelentéssel rendelkezik. 
+>`resourceId` az SaaS-alkalmazás és az egyéni fogyasztásmérőt kibocsátó felügyelt alkalmazások esetében eltérő jelentéssel rendelkezik. 
 
 Az Azure Application Managed apps-csomagok esetében a a `resourceId` `resourceUsageId` `billingDetails` felügyelt alkalmazás metaadatainak objektuma alatt található. Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található. 
 
@@ -95,7 +95,7 @@ Kód: 400 <br>
 Hibás kérelem.
 
 * Hiányzó vagy érvénytelen kérelem-információ.
-* `effectiveStartTime`több mint 24 órával régebben. Az esemény lejárt.
+* `effectiveStartTime` több mint 24 órával régebben. Az esemény lejárt.
 * Az SaaS-előfizetés nem előfizetett állapotban van.
 
 Válasz hasznos adat például: 
@@ -189,7 +189,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 ```
 
 >[!NOTE]
->`resourceId`az SaaS-alkalmazás és az egyéni fogyasztásmérőt kibocsátó felügyelt alkalmazások esetében eltérő jelentéssel rendelkezik. 
+>`resourceId` az SaaS-alkalmazás és az egyéni fogyasztásmérőt kibocsátó felügyelt alkalmazások esetében eltérő jelentéssel rendelkezik. 
 
 Az Azure Application Managed apps-csomagok esetében a a `resourceId` `resourceUsageId` `billingDetails` felügyelt alkalmazás metaadatainak objektuma alatt található. Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található. 
 

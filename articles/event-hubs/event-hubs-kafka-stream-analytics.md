@@ -4,10 +4,10 @@ description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan dolgozhatja fel az Event
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531287"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
@@ -110,7 +110,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     2. Válassza ki az **Azure-előfizetését**.
     3. Válassza ki a korábban létrehozott **Event hub-névteret** . 
     4. Válassza ki az **Event hub** **tesztjét** . 
-    5. Válassza a **Mentés** lehetőséget. 
+    5. Kattintson a **Mentés** gombra. 
 
         ![Event hub-beli bemeneti konfiguráció](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -123,7 +123,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     2. Válassza ki az Azure- **előfizetését**. 
     3. Válassza ki az **Azure Storage-fiókját**. 
     4. Adja meg annak a **tárolónak a nevét** , amely a stream Analytics lekérdezésből származó kimeneti adatokat tárolja.
-    5. Válassza a **Mentés** lehetőséget.
+    5. Kattintson a **Mentés** gombra.
 
         ![Blob Storage kimeneti konfiguráció](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
@@ -170,5 +170,5 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan végezheti el a Event Hubs továbbítását a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Ha többet szeretne megtudni a Apache Kafka Event Hubsről, tekintse meg [Az Azure Event Hubs Apache Kafka fejlesztői útmutató](apache-kafka-developer-guide.md)című témakört. 

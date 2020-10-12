@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541322"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 – v2 áttelepítési útmutató LUIS-alkalmazásokhoz
@@ -165,7 +165,7 @@ A v1 engedélyezett címkével ellátott hosszúságú kimondott szöveg a szó 
 ## <a name="common-reasons-for-http-response-status-codes"></a>A HTTP-válasz állapotkódok gyakori okai
 Lásd: [Luis API Response Codes](luis-reference-response-codes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A v2 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS- [végpontra](https://go.microsoft.com/fwlink/?linkid=2092356) és a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-kra.
 

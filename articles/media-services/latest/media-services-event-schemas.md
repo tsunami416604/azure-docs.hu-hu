@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336428"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services eseményekhez Azure Event Grid sémák
@@ -136,7 +136,7 @@ Az alábbi példa a **JobStateChange** esemény sémáját mutatja be:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | previousState | sztring | A feladattípus állapota az esemény előtt. |
 | állapot | sztring | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
@@ -206,7 +206,7 @@ Az egyes végső feladatok állapotának változásaihoz (például JobFinished,
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | kimenetek | Tömb | A feladatok kimenetének beolvasása.|
 
@@ -322,7 +322,7 @@ Az alábbi példa a **LiveEventConnectionRejected** esemény sémáját mutatja 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
@@ -358,7 +358,7 @@ Az alábbi példa a **LiveEventEncoderConnected** esemény sémáját mutatja be
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél felelős azért, hogy ezt az azonosítót a betöltési URL-címben adja meg. |
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |
@@ -392,7 +392,7 @@ Az alábbi példa a **LiveEventEncoderDisconnected** esemény sémáját mutatja
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
 | ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
@@ -404,7 +404,7 @@ A hibák eredményének kódjait az [élő események](live-event-error-codes.md
 
 A kecses leválasztási eredmények kódjai a következők:
 
-| Eredménykód | Description |
+| Eredménykód | Leírás |
 | ----------- | ----------- |
 | S_OK | A kódoló leválasztása sikeresen megtörtént. |
 | MPE_CLIENT_TERMINATED_SESSION | A kódoló leválasztva (RTMP). |
@@ -442,7 +442,7 @@ Az alábbi példa a **LiveEventIncomingDataChunkDropped** esemény sémáját mu
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A pálya neve. |
@@ -482,7 +482,7 @@ Az alábbi példa a **LiveEventIncomingStreamReceived** esemény sémáját muta
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
@@ -521,7 +521,7 @@ Az alábbi példa a **LiveEventIncomingStreamsOutOfSync** esemény sémáját mu
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | minLastTimestamp | sztring | Az összes műsorszám (hang vagy videó) utolsó időbélyegének minimális száma. |
 | typeOfTrackWithMinLastTimestamp | sztring | A pálya (hang vagy videó) minimális utolsó időbélyeg-típusa. |
@@ -557,7 +557,7 @@ Az alábbi példa a **LiveEventIncomingVideoStreamsOutOfSync** esemény sémáj�
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | firstTimestamp | sztring | A videó típusú számok/minőségi szintek egyikéhez tartozó időbélyeg érkezett. |
 | firstDuration | sztring | Az adathalmaz időtartama az első időbélyeggel. |
@@ -599,7 +599,7 @@ Az alábbi példa a **LiveEventIngestHeartbeat** esemény sémáját mutatja be:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
@@ -643,7 +643,7 @@ Az alábbi példa a **LiveEventTrackDiscontinuityDetected** esemény sémáját 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | sztring | A pálya típusa (hang/videó). |
 | trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
@@ -657,7 +657,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A EventGrid témakör. Ez a tulajdonság a Media Services fiók erőforrás-azonosítójával rendelkezik. |
 | tulajdonos | sztring | A Media Services fiók Media Servicesi csatornájának erőforrás-elérési útja. A témakör és a tárgy összefűzésével megadhatja a feladatokhoz tartozó erőforrás-azonosítót. |

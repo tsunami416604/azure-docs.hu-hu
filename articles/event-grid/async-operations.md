@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89011684"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Az aszinkron Azure-műveletek nyomon követése Event Grid
@@ -31,10 +31,10 @@ Tekintse meg az [REST API dokumentációját](/rest/api/) , hogy láthassa a vé
 Az aszinkron REST-műveletek adja vissza a fejléc értékeit, amelyek segítségével meghatározhatja a művelet állapotát. A megvizsgálható három fejléc-érték is lehetséges:
 
 * `Azure-AsyncOperation` -URL a művelet folyamatos állapotának ellenőrzéséhez. Ha a művelet visszaadja ezt az értéket, mindig használja (hely helyett) a művelet állapotának nyomon követéséhez.
-* `Location` -A művelet befejezését meghatározó URL-cím. Ezt az értéket csak akkor használja, ha az Azure-AsyncOperation nem ad vissza.
+* `Location` -A művelet befejezését meghatározó URL-cím. Ezt az értéket csak akkor használja, ha a Azure-AsyncOperation nem adja vissza.
 * `Retry-After` – Az aszinkron művelet állapotának ellenőrzése előtt megvárni kívánt másodpercek száma.
 
-Azonban nem minden aszinkron művelet adja vissza ezeket az értékeket. Előfordulhat például, hogy ki kell értékelnie az Azure-AsyncOperation fejléc értékét egy művelethez, és egy másik műveletnél a Location fejléc értékét. 
+Azonban nem minden aszinkron művelet adja vissza ezeket az értékeket. Előfordulhat például, hogy ki kell értékelnie egy művelet Azure-AsyncOperation fejlécének értékét és egy másik művelet Helykód értékét. 
 
 A fejléc értékeinek lekérése a kérelem fejlécének bármely értékének lekérése esetén. A C# nyelvben például lekéri a fejléc értékét egy `HttpWebResponse` nevű objektumból `response` a következő kóddal:
 
@@ -44,7 +44,7 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation kérelem és válasz
 
-Az aszinkron művelet állapotának lekéréséhez küldjön egy GET kérelmet az URL-címre az Azure-AsyncOperation header Value értékben.
+Az aszinkron művelet állapotának lekéréséhez küldjön egy GET kérelmet az URL-címre Azure-AsyncOperation fejléc értékében.
 
 A művelettől kapott válasz törzse információkat tartalmaz a műveletről. A következő példa a művelet által visszaadott lehetséges értékeket mutatja:
 

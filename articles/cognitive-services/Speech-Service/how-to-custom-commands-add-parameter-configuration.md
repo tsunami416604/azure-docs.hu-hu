@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
 ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284183"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>Konfigurációk hozzáadása parancsparaméterekhez
@@ -43,7 +43,7 @@ Ehhez először adjon hozzá egy új webes végpontot. Nyissa meg a **webes vég
 
 | Beállítás | Ajánlott érték |
 |----|----|
-| Név | `getDevices` |
+| Name (Név) | `getDevices` |
 | URL-cím | `https://aka.ms/speech/cc-sampledevices` |
 | Metódus | GET |
 
@@ -103,7 +103,7 @@ Az **érvényesítések** bizonyos paraméterekre érvényesek, amelyek lehetőv
 Kipróbálhatja az érvényességeket a **SetTemperature** parancs használatával. A következő lépésekkel adhat hozzá egy érvényesítést a **hőmérséklet** paraméterhez.
 
 1. A bal oldali panelen válassza a **SetTemperature** parancsot.
-1. Válassza a **hőmérséklet** elemet a középső ablaktáblán.
+1. Válassza a  **hőmérséklet** elemet a középső ablaktáblán.
 1. Válassza a jobb oldali ablaktáblán található **Érvényesítés hozzáadása** elemet.
 1. Az **új érvényesítési** ablakban adja meg az érvényesítést az alábbiak szerint, majd válassza a **Létrehozás**lehetőséget.
 
@@ -112,7 +112,7 @@ Kipróbálhatja az érvényességeket a **SetTemperature** parancs használatáv
     | ---- | ---- | ---- |
     | Minimális érték | `60` | A szám paraméternél a paraméter által feltételezhető minimális érték |
     | Maximális érték | `80` | A szám paraméternél a paraméter által feltételezhető maximális érték |
-    | Sikertelen válasz |  Az egyszerű szerkesztő > az első változatot >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Új érték kérése, ha az érvényesítés sikertelen |
+    | Sikertelen válasz |  Az egyszerű szerkesztő > az első változatot > `Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Új érték kérése, ha az érvényesítés sikertelen |
 
     > [!div class="mx-imgBorder"]
     > ![Tartomány érvényesítésének hozzáadása](media/custom-commands/add-validations-temperature.png)
