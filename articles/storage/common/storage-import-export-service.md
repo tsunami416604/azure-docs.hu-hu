@@ -9,10 +9,10 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185383"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
@@ -120,7 +120,7 @@ Az Azure import/export szolgáltatás lehetővé teszi az adatok másolását az
 
 |Ország/régió  |Ország/régió  |Ország/régió  |Ország/régió  |
 |---------|---------|---------|---------|
-|USA keleti régiója    | Észak-Európa        | Central India        |US Gov Iowa         |
+|USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
 |USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
 |USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD – Középső régió        |
 |USA 2. nyugati régiója     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |

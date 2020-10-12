@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80986714"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-ügyfelek
@@ -92,7 +92,7 @@ ms.locfileid: "80986714"
 
 9. Ha nem látja a **Másolás az OpenVPN-be** lehetőséget, koppintson a **továbbiak** elemre.
 
-    ![Kibontás](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
+    ![Továbbiak](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
 
 10. Koppintson a **Másolás az OpenVPN-** re lehetőségre 
 

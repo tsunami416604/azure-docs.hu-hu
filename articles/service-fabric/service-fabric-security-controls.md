@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75645429"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Az Azure Service Fabric biztonsági vezérlői
@@ -22,35 +22,35 @@ Ez a cikk az Azure Service Fabric beépített biztonsági vezérlőket dokument�
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
-| Szolgáltatás végpontjának támogatása| Yes |  |
-| VNet-befecskendezés támogatása| Yes |  |
-| Hálózati elkülönítés és tűzfalak támogatása| Yes | Hálózati biztonsági csoportok (NSG) használata. |
-| Kényszerített bújtatás támogatása| Yes | Az Azure Networking kényszerített bújtatást biztosít. |
+| Szolgáltatás végpontjának támogatása| Igen |  |
+| VNet-befecskendezés támogatása| Igen |  |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen | Hálózati biztonsági csoportok (NSG) használata. |
+| Kényszerített bújtatás támogatása| Igen | Az Azure Networking kényszerített bújtatást biztosít. |
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Yes | Az Azure monitoring támogatás és a harmadik féltől származó támogatás használata. |
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Yes | A vezérlési sík műveletei a naplózási és jóváhagyási folyamatokon keresztül futnak. |
-| Adatsíkok naplózása és naplózása| N.A. | Az ügyfél tulajdonosa a fürt.  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Az Azure monitoring támogatás és a harmadik féltől származó támogatás használata. |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A vezérlési sík műveletei a naplózási és jóváhagyási folyamatokon keresztül futnak. |
+| Adatsíkok naplózása és naplózása| N/A | Az ügyfél tulajdonosa a fürt.  |
 
 ## <a name="identity"></a>Identitás
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Hitelesítés| Yes | A hitelesítés Azure Active Directoryon keresztül történik. |
-| Engedélyezés| Yes | Az identitás-és hozzáférés-kezelés (IAM) a SFRP-on keresztüli hívásokhoz. A közvetlenül a fürt végpontja felé irányuló hívások két szerepkört támogatnak: felhasználó és rendszergazda. Az ügyfél bármely szerepkörhöz hozzárendelheti az API-kat. |
+| Hitelesítés| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |
+| Engedélyezés| Igen | Az identitás-és hozzáférés-kezelés (IAM) a SFRP-on keresztüli hívásokhoz. A közvetlenül a fürt végpontja felé irányuló hívások két szerepkört támogatnak: felhasználó és rendszergazda. Az ügyfél bármely szerepkörhöz hozzárendelheti az API-kat. |
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Yes | Az ügyfél tulajdonosa a fürt és a virtuálisgép-méretezési csoport, amelyen a fürt épül. Az Azure Disk Encryption szolgáltatás a virtuálisgép-méretezési csoporton engedélyezhető. |
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Yes | Az ügyfél tulajdonosa a fürt és a virtuálisgép-méretezési csoport, amelyen a fürt épül. Az Azure Disk Encryption szolgáltatás a virtuálisgép-méretezési csoporton engedélyezhető. |
-| Oszlop szintű titkosítás (Azure Data Services)| N.A. |  |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Yes |  |
-| Titkosított API-hívások| Yes | Service Fabric API-hívások Azure Resource Manageron keresztül történnek. Érvényes JSON webes jogkivonat (JWT) szükséges. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Az ügyfél tulajdonosa a fürt és a virtuálisgép-méretezési csoport, amelyen a fürt épül. Az Azure Disk Encryption szolgáltatás a virtuálisgép-méretezési csoporton engedélyezhető. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél tulajdonosa a fürt és a virtuálisgép-méretezési csoport, amelyen a fürt épül. Az Azure Disk Encryption szolgáltatás a virtuálisgép-méretezési csoporton engedélyezhető. |
+| Oszlop szintű titkosítás (Azure Data Services)| N/A |  |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen |  |
+| Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageron keresztül történnek. Érvényes JSON webes jogkivonat (JWT) szükséges. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

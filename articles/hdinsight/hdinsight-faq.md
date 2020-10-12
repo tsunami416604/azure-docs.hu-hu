@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84022214"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Gyakori kérdések
@@ -190,7 +190,7 @@ A naplózási követelményekhez a Microsoft javasolja, hogy engedélyezze az Az
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>Le lehet tiltani `Clamscan` a fürtön?
 
-`Clamscan`a a HDInsight-fürtön futó víruskereső szoftver, amelyet az Azure Security (azsecd) használ a fürtök vírusfertőzés elleni védelme érdekében. A Microsoft nyomatékosan javasolja, hogy a felhasználók ne végezzenek változást az alapértelmezett `Clamscan` konfigurációban.
+`Clamscan` a a HDInsight-fürtön futó víruskereső szoftver, amelyet az Azure Security (azsecd) használ a fürtök vírusfertőzés elleni védelme érdekében. A Microsoft nyomatékosan javasolja, hogy a felhasználók ne végezzenek változást az alapértelmezett `Clamscan` konfigurációban.
 
 Ez a folyamat nem zavarja vagy nem hajtja végre a más folyamatokból származó ciklusokat. Ez mindig más folyamatnak fog történni. A CPU-tüskéket `Clamscan` csak akkor kell látni, ha a rendszer üresjáratban van.  
 
@@ -229,7 +229,7 @@ Hajtsa végre az alábbi műveletek egyikét:
 
 - [A PowerShell használata](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 
-- A/User/Hive/. méretének megkeresése * *A HDInsight-fürt Kuka/mappája a következő parancssor használatával:
+- A/User/Hive/. méretének megkeresése * * A HDInsight-fürt Kuka/mappája a következő parancssor használatával:
   
   `hdfs dfs -du -h /user/hive/.Trash/`
 

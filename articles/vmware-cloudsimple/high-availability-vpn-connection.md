@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025265"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Magas rendelkezésre állású kapcsolat konfigurálása a helyszínről a VPN Gateway CloudSimple
@@ -141,7 +141,7 @@ Az alábbiakban a használt NAT-szabály szerepel. Győződjön meg arról, hogy
 
 ## <a name="configure-on-premises-palo-alto-networks-firewall"></a>Helyszíni Palo Alto hálózati tűzfal konfigurálása
 
-Az ebben a szakaszban szereplő utasítások a Palo Alto Networks 7,1-es és újabb verzióira vonatkoznak. Ebben a konfigurációban a Palo Alto Networks VM-sorozatú szoftververzió 8.1.0 IKEv1 módban van üzembe állítva és konfigurálva.
+Az ebben a szakaszban szereplő utasítások a Palo Alto Networks 7,1-es és újabb verzióira vonatkoznak. Ebben a konfigurációs példában a Palo Alto Networks VM-Series 8.1.0 IKEv1 módban van telepítve és konfigurálva.
 
 Ahhoz, hogy a helyek közötti VPN működjön, engedélyeznie kell az UDP 500/4500 és az ESP (IP protokoll 50) szolgáltatást a CloudSimple elsődleges és másodlagos nyilvános IP-címéről (társ IP) a helyszíni Palo Alto Networks Gateway külső felületén.
 

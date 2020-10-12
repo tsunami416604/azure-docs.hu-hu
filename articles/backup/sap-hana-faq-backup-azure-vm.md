@@ -4,10 +4,10 @@ description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Back
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86513506"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
@@ -77,7 +77,7 @@ Jelenleg nincs lehetőség arra, hogy a megoldást a virtuális IP-címekre áll
 
 A Azure Backup jelenleg nem képes megérteni egy HSR beállítását. Ez azt jelenti, hogy a HSR elsődleges és másodlagos csomópontjai két önálló, nem kapcsolódó virtuális gépre lesznek kezelve. Először konfigurálnia kell a biztonsági mentést az elsődleges csomóponton. Ha feladatátvétel történik, a biztonsági mentést a másodlagos csomóponton kell konfigurálni (amely most az elsődleges csomópont lesz). Nincs automatikus feladatátvétel a másik csomópontra történő biztonsági mentésből.
 
-Ha az aktív (elsődleges) csomópontról szeretne biztonsági másolatot készíteni egy adott időpontra vonatkozóan, **átválthatja a védelmet** a másodlagos csomópontra, amely most már az elsődleges feladatátvétel után válik elérhetővé.
+Ha az aktív (elsődleges) csomópontról szeretne biztonsági másolatot készíteni egy adott időpontra vonatkozóan, **átválthatja a védelmet**  a másodlagos csomópontra, amely most már az elsődleges feladatátvétel után válik elérhetővé.
 
 Az alábbi lépéseket követve hajthatja végre a **kapcsoló védelmét**:
 
@@ -125,6 +125,6 @@ A jelenleg támogatott visszaállítási típusok megtekintéséhez tekintse meg
 
 Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használatával visszaállíthatja egy RHEL HANA rendszerre, és fordítva. Ez azt jelenti, hogy a rendszer a folyamatos átviteli biztonsági mentést is lehetővé teszi. Azonban győződjön meg arról, hogy a HANA rendszer, amelyet vissza szeretne állítani, és a visszaállításhoz használt HANA-rendszer egyaránt kompatibilis az SAP alapján történő visszaállítással. Tekintse meg SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148) , hogy mely típusú visszaállítási típusok kompatibilisek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést](./backup-azure-sap-hana-database.md) az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról.

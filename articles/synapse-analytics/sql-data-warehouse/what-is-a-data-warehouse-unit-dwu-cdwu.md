@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461986"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adatraktár-egységek (DWU)
@@ -108,7 +108,7 @@ Az aktuális DWU-beállítás megtekintése:
 
 1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
 2. Kapcsolódjon a logikai SQL-kiszolgálóhoz társított Master adatbázishoz.
-3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Alább bemutatunk egy példát:
+3. Válasszon a sys.database_service_objectives dinamikus felügyeleti nézetből. Alább bemutatunk egy példát:
 
 ```sql
 SELECT  db.name [Database]

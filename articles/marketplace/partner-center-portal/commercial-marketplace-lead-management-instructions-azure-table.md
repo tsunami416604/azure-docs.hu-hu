@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
 ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030797"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
@@ -38,7 +38,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
 1. A Azure Portal **kezdőlapján** válassza az **összes erőforrás** megjelenítése lehetőséget a Storage-fiók eléréséhez. Kiválaszthatja az **összes erőforrás** lehetőséget is a Azure Portal bal oldali menüjében.
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Nyissa meg az Azure Storage-fiókját.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure Storage-fiók létrehozásának lépései.":::
 
 1. A Storage-fiók ablaktáblán válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kulcshoz tartozó **kapcsolati sztring** értéket. Mentse ezt az értéket, mert ez a **Storage-fiók kapcsolódási karakterláncának** értéke, amelyet a közzétételi portálon kell megadnia az Azure Marketplace-ajánlathoz tartozó érdeklődők fogadásához.
 
@@ -48,7 +48,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure Storage-kulcs.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure Storage-fiók létrehozásának lépései.":::
 
 
 1. A Storage-fiók ablaktáblán válassza a **táblák**lehetőséget, majd a táblázat létrehozásához válassza a **+ Table** elemet. Adja meg a tábla nevét, majd kattintson **az OK gombra**. Mentse ezt az értéket, mert szüksége lesz rá, ha be szeretne állítani egy folyamatot, amely e-mail-értesítéseket fogad, ha az érdeklődők érkeznek.
@@ -185,7 +185,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Azure Storage-fiók létrehozásának lépései.":::
 
 1. A **kapcsolat részletei** előugró ablakban válassza ki az **Azure Table** elemet az **érdeklődő célhelyéhez**. 
      ![Érdeklődők felügyelete, kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
@@ -195,7 +195,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. **Kapcsolattartási e-mail cím**: adja meg az e-maileket a vállalatnál, akinek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapnia. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77087125"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>VPN-kapcsolat konfigurálása saját CloudSimple-felhőhöz
@@ -26,7 +26,7 @@ A VPN-átjárók lehetővé teszik, hogy a helyszíni hálózatról és egy ügy
 
 Egy régióban létrehozhat egy helyek közötti VPN-átjárót és egy pont – hely típusú VPN-átjárót.
 
-## <a name="point-to-site-vpn"></a>Pont–hely VPN
+## <a name="point-to-site-vpn"></a>Pont – hely típusú VPN
 
 Pont – hely típusú VPN-átjáró létrehozásával kapcsolatban lásd: [pont – hely típusú VPN-átjáró létrehozása](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
@@ -37,7 +37,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
-4. Válassza a **felhasználók**lehetőséget.
+4. Válassza a **Felhasználók** lehetőséget.
 5. Kattintson a **saját VPN-konfiguráció letöltése** elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)

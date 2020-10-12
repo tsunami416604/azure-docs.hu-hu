@@ -9,10 +9,10 @@ ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
 ms.openlocfilehash: 1e2558074275f9b97bd4a2fd9a3d111c5de02948
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87853415"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
@@ -26,7 +26,7 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Az erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
@@ -555,7 +555,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 3. Mentse a *myPythonProject.py*.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 1. A konzol alkalmazás futtatásához kattintson a **Start** gombra a Visual Studióban.
 

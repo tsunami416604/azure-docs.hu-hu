@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133824"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
@@ -181,5 +181,5 @@ A feladat-visszavétel végrehajtásával kapcsolatos további információkért
 ## <a name="summary"></a>Összefoglalás
 Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet a Dynamics AX-alkalmazáshoz. Megszakítás esetén másodpercek alatt kezdeményezheti a feladatátvételt, és percek alatt üzembe helyezheti és futtathatja az alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a vállalati munkaterhelések Site Recovery használatával történő védelméről, tekintse meg a [milyen számítási feladatokat?](site-recovery-workload.md)című témakört.

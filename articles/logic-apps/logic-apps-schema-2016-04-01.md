@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86520715"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Séma frissítései Azure Logic Apps – június 1-től 2016
@@ -21,7 +21,7 @@ A Azure Logic Apps [frissített sémája](https://schema.management.azure.com/sc
 
 * A [hatókörök](#scopes) lehetővé teszik műveletek gyűjteményként történő csoportosítását vagy beágyazását.
 * A [feltételek és a hurkok](#conditions-loops) mostantól az első osztályú műveletek.
-* Pontosabb sorrend a műveletek futtatásához a `runAfter` tulajdonsággal, lecserélve`dependsOn`
+* Pontosabb sorrend a műveletek futtatásához a `runAfter` tulajdonsággal, lecserélve `dependsOn`
 
 A logikai alkalmazások 2015-as augusztus 1-től a 2016-es verzióra való frissítéséhez tekintse [meg a frissítés szakaszt](#upgrade-your-schema).
 
@@ -172,7 +172,7 @@ A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperti
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Munkafolyamat-definíciók létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-author-definitions.md)
 * [A logikai alkalmazás üzemelő példányának automatizálása](logic-apps-azure-resource-manager-templates-overview.md)

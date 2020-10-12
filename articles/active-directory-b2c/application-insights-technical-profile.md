@@ -12,10 +12,10 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201412"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Application Insights műszaki profil definiálása egy Azure AD B2C egyéni házirendben
@@ -32,9 +32,9 @@ A Azure Active Directory B2C (Azure AD B2C) a Azure AD B2C számára biztosítot
 
 ## <a name="protocol"></a>Protokoll
 
-A **protokoll** elem **Name** attribútumát be kell állítani `Proprietary` . A **kezelő** attribútumnak tartalmaznia kell a Azure AD B2C által Application Insights számára használt protokollkezelő-szerelvény teljes nevét:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+A **protokoll** elem **Name** attribútumát be kell állítani `Proprietary` . A **kezelő** attribútumnak tartalmaznia kell a Azure AD B2C által Application Insights számára használt protokollkezelő-szerelvény teljes nevét: `Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Az alábbi példa a közös Application Insights műszaki profilt mutatja be. Az egyéb Application Insights technikai profilok közé tartozik a AzureInsights, hogy kihasználja a konfigurációját.  
+Az alábbi példa a közös Application Insights műszaki profilt mutatja be. Az egyéb Application Insights technikai profilok közé tartozik az AzureInsights-Common, hogy kihasználja a konfigurációját.  
 
 ```xml
 <TechnicalProfile Id="AzureInsights-Common">
@@ -75,9 +75,9 @@ A CryptographicKeys elem nincs használatban.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| InstrumentationKey| Yes | A Application Insights kialakítási [kulcs](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), amely az események naplózására szolgál majd. | 
-| DeveloperMode| No | Logikai érték, amely jelzi, hogy engedélyezve van-e a fejlesztői mód. Lehetséges értékek: `true` vagy `false` (alapértelmezett). Ez a metaadatok azt vezérlik, hogy az események hogyan legyenek puffereltek. A minimális méretű eseménnyel rendelkező fejlesztési környezetekben a fejlesztői üzemmód engedélyezésekor a rendszer azonnal elvégzi az események küldését Application Insights.|  
-|DisableTelemetry |No |Logikai érték, amely azt jelzi, hogy engedélyezni kell-e a telemetria. Lehetséges értékek: `true` vagy `false` (alapértelmezett).| 
+| InstrumentationKey| Igen | A Application Insights kialakítási [kulcs](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), amely az események naplózására szolgál majd. | 
+| DeveloperMode| Nem | Logikai érték, amely jelzi, hogy engedélyezve van-e a fejlesztői mód. Lehetséges értékek: `true` vagy `false` (alapértelmezett). Ez a metaadatok azt vezérlik, hogy az események hogyan legyenek puffereltek. A minimális méretű eseménnyel rendelkező fejlesztési környezetekben a fejlesztői üzemmód engedélyezésekor a rendszer azonnal elvégzi az események küldését Application Insights.|  
+|DisableTelemetry |Nem |Logikai érték, amely azt jelzi, hogy engedélyezni kell-e a telemetria. Lehetséges értékek: `true` vagy `false` (alapértelmezett).| 
 
 
 ## <a name="next-steps"></a>További lépések

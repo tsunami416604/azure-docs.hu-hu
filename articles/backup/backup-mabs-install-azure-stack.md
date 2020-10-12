@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970233"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
@@ -255,7 +255,7 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
    > Javasoljuk, hogy Windows Update átirányítást a Microsoft Updatera, amely biztonsági és fontos frissítéseket kínál a Windows és más termékek, például a Microsoft Azure Backup-kiszolgáló számára.
    >
 
-    ![Microsoft Update opt-in Screen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Microsoft Update Opt-In képernyő](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. Tekintse át a *Beállítások összegzését* , és válassza a **telepítés**lehetőséget.
 

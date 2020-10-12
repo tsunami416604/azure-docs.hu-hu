@@ -8,10 +8,10 @@ ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848125"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Az egyesített riasztási & figyelése Azure Monitor helyettesíti a klasszikus riasztási & figyelését
@@ -54,7 +54,7 @@ A korábban leírtaknak megfelelően a régebbi klasszikus figyelési és riaszt
 - A régebbi (klasszikus) platform és a Application Insights egyéni metrikái, valamint a Azure Portal [riasztások (klasszikus) szakasza](./alerts-classic.overview.md) által jelenleg elérhetővé vált riasztások, valamint a [Microsoft. alertrules](/rest/api/monitor/alertrules) erőforrás
 - A régebbi (klasszikus) meghibásodási rendellenességek riasztása jelenleg a Azure Portal [Application Insightson belüli intelligens észlelésként](../app/proactive-diagnostics.md) érhető el; a Azure Portal [riasztások (klasszikus) szakaszában](./alerts-classic.overview.md) látható riasztások vannak konfigurálva
 
-Ez a következőket jelenti:
+Ez a következőkkel jár:
 
 - A klasszikus figyelési és riasztási szolgáltatás megszűnik, és az új riasztási szabályok létrehozására már nem lesz elérhető.
 - Minden olyan riasztási szabály, amely továbbra is létezik a riasztásokban (klasszikus), továbbra is végrehajtja és leküldi az értesítéseket.

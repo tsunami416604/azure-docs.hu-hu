@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
 ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515784"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windows rendszerű virtuális gép Azure Resource Manager-sablonjának használatával
@@ -40,7 +40,7 @@ Ebben a példában egy nyilvánosan elérhető minta sablont használhat. A kezd
 
 - A **Azuredeploy.json** egy előre konfigurált Resource Manager-sablon a virtuális gépek telepítéséhez.
 
-- **AAzuredeploy.parameters.json** paraméter olyan adatokat tárol, mint például a virtuális géphez beállítani kívánt Felhasználónév és jelszó. Az üzembe helyezés során a Resource Manager-sablon a fájlban beállított paramétereket használja.
+- ** AAzuredeploy.parameters.json** paraméter olyan adatokat tárol, mint például a virtuális géphez beállítani kívánt Felhasználónév és jelszó. Az üzembe helyezés során a Resource Manager-sablon a fájlban beállított paramétereket használja.
 
 Töltse le és mentse a fájlokat helyileg.
 
@@ -284,5 +284,5 @@ A Resource Manager-sablon üzembe helyezéséhez kihasználjuk a Azure PowerShel
 7. A metrikák legördülő menüben válassza a **memória \% által véglegesített bájtok használatban**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.

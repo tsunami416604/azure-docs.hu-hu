@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464700"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
@@ -31,7 +31,7 @@ A fürtben lévő gépek esetében érdemes összegyűjteni a következő teljes
 | Fizikai lemez (lemezenként) | Lemez olvasási sebessége (bájt/s) |
 | Fizikai lemez (lemezenként) | Írási sebesség (írás/mp) |
 | Fizikai lemez (lemezenként) | Lemez írási sebessége (bájt/s) |
-| Memory (Memória) | Rendelkezésre álló memória (MB) |
+| Memória | Rendelkezésre álló memória (megabájt) |
 | PagingFile | %-Os használat |
 | Processzor (összesen) | A processzor kihasználtsága (%) |
 | Folyamat (szolgáltatásként) | A processzor kihasználtsága (%) |

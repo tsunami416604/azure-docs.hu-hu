@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 43ba14845765230b9a54c2b34dbc7ccd53af950b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969993"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: rendellenességek észlelése a szélén a távoli figyelési megoldás gyorsítása révén
@@ -45,7 +45,7 @@ A IoT Edge eszközön:
 
 Ez az oktatóanyag egy linuxos virtuális gépet használ IoT Edge eszközként. Egy peremhálózati modult is telepít, amely szimulálja az olaj-szivattyú Jack-eszközét.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -83,7 +83,7 @@ Annak érdekében, hogy könnyebben kezelje a megoldás IoT Edge eszközeit, hoz
     | Feladat     | Címkék  |
     | Feladat neve | AddEdgeTag |
     | Kulcs     | IsOilPump |
-    | Érték   | Y     |
+    | Érték   | I     |
     | Típus    | Szöveg  |
 
     [![Címke hozzáadása](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
@@ -99,7 +99,7 @@ Annak érdekében, hogy könnyebben kezelje a megoldás IoT Edge eszközeit, hoz
     | Név    | OilPumps |
     | Mező   | Címkék. IsOilPump |
     | Operátor | = Egyenlő |
-    | Érték    | Y |
+    | Érték    | I |
     | Típus     | Szöveg |
 
     [![Eszközcsoport létrehozása](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
@@ -329,7 +329,7 @@ Ha a küszöbérték elérésekor értesíteni szeretné a kezelőket, létrehoz
 
 1. Navigáljon az **irányítópult** lapra. Egy riasztás a **riasztások** panelen jelenik meg, ha az **olaj-szivattyú** eszköz hőmérséklete 300-ra csökken.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat egy IoT Edge eszközt a távoli figyelési megoldás gyorsító eszközében. Ha többet szeretne megtudni a IoT Edge-csomagok a távoli figyelési megoldásban való használatáról, tekintse meg a következő útmutatókat:
 

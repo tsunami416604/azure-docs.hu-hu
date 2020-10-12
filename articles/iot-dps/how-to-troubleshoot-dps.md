@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75646472"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
@@ -27,12 +27,12 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 
 2. Keresse meg a IoT Hub Device Provisioning Service.
 
-3. Válassza a **Metrika** lehetőséget.
+3. Válassza a **Metrikák** lehetőséget.
 
 4. Válassza ki a kívánt metrikát. 
    <br />A DPS jelenleg három mérőszámot biztosít:
 
-    | Metrika neve | Description |
+    | Metrika neve | Leírás |
     |-------|------------|
     | Igazolási kísérletek | Az eszköz kiépítési szolgáltatásával hitelesíteni próbált eszközök száma|
     | Regisztrációs kísérletek | A sikeres hitelesítés után IoT Hub regisztrálni próbált eszközök száma|
@@ -58,7 +58,7 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 5. A kívánt naplók összegyűjtésének engedélyezése.
 
-    | Napló neve | Description |
+    | Napló neve | Leírás |
     |-------|------------|
     | DeviceOperations | Eszköz-kapcsolódási eseményekhez kapcsolódó naplók |
     | ServiceOperations | A Service SDK-val kapcsolatos eseménynaplók (például regisztrációs csoportok létrehozása vagy frissítése)|
@@ -75,10 +75,10 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 ## <a name="common-error-codes"></a>Gyakori hibakódok
 Ez a táblázat a gyakori hibák megismerésére és megoldására használható.
 
-| Hibakód| Description | HTTP-állapotkód |
+| Hibakód| Leírás | HTTP-állapotkód |
 |-------|------------|------------|
 | 400 | A kérelem törzse nem érvényes; például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni.| 400 helytelen formátum |
-| 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 jogosulatlan|
+| 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 Nem engedélyezett|
 | 404 | Az eszköz kiépítési szolgáltatásának példánya vagy egy erőforrás (például egy beléptetés) nem létezik. |404 Nem található |
 | 412 | A kérelemben szereplő ETag nem felel meg a meglévő erőforrás ETag, a RFC7232. | 412 előfeltétel sikertelen |
 | 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 túl sok kérés |

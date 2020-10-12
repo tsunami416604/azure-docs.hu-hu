@@ -9,10 +9,10 @@ ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069272"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: a bejövő internetes forgalom szűrése Azure Firewall DNAT a Azure Portal használatával
@@ -94,11 +94,11 @@ Most társítsa a két virtuális hálózatot.
 1. Válassza ki a **vn-hub** virtuális hálózatot.
 2. A **Beállítások** **területen válassza a**társítások lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget.
-4. Írja be a következőt: **társ-HubSpoke** a **vn-hub és a vn-küllő közötti társítás neve**számára.
+4. Írja be a **társ-HubSpoke** **nevet a VN-Hubról a vn-küllőre**.
 5. A virtuális hálózatnál válassza a **VN-Spoke** lehetőséget.
-6. Írja be a következőt: **peer-SpokeHub** a **vn – küllő – vn-hub névre**.
-7. A **vn által továbbított forgalom engedélyezett állapotba való továbbításának engedélyezése – küllős – a vn-hub** Select **engedélyezve**.
-8. Kattintson az **OK** gombra.
+6. Írja be a **társ-SpokeHub** **nevet a VN-Spoke és a vn-hub között**.
+7. A **VN-Spokeról a vn-hub-ra való továbbított forgalom engedélyezéséhez** válassza az **engedélyezve**lehetőséget.
+8. Válassza az **OK** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -117,7 +117,7 @@ Hozzon létre egy virtuális gépet a számítási feladat futtatásához, és h
 1. Válassza a **Tovább: lemezek**lehetőséget.
 
 **Lemezek**
-1. Válassza a **Tovább: hálózatkezelés**lehetőséget.
+1. Válassza a **Tovább: Hálózatkezelés** lehetőséget.
 
 **Hálózat**
 
@@ -154,7 +154,7 @@ Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálóza
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: VN-Hub|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
-5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 6. Tekintse át az összegzést, majd válassza a **Létrehozás** lehetőséget a tűzfal létrehozásához.
 
    Az üzembe helyezés néhány percet vesz igénybe.
@@ -177,7 +177,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 10. Válassza ki az **alhálózatok**elemet, majd válassza a **hozzárendelés**lehetőséget.
 11. Válassza a **virtuális hálózat**lehetőséget, majd válassza a **vn-küllő**elemet.
 12. Az **Alhálózat** mezőnél válassza az **SN-Workload** lehetőséget.
-13. Kattintson az **OK** gombra.
+13. Válassza az **OK** lehetőséget.
 14. Válassza az **útvonalak**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 15. Az **Útvonal neve** mezőbe írja be következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
@@ -185,7 +185,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-19. Kattintson az **OK** gombra.
+19. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-a-nat-rule"></a>NAT-szabály konfigurálása
 

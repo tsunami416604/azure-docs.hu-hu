@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883708"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
@@ -79,7 +79,7 @@ Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
 
 1. Válassza ki, hogy melyik eseményazonosító ([az összes, a Common vagy a minimum](#event-sets)) legyen továbbítva.
 
-1. Kattintson a **Frissítés** lehetőségre.
+1. Kattintson a **Frissítés** parancsra.
 
 1. Ha a Windows biztonsági eseményeihez a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityEvent` a lekérdezési ablakba:.
 

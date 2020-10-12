@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191286"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnosztikai naplók – Azure Content Delivery Network
@@ -52,7 +52,7 @@ Kövesse az alábbi lépéseket a Azure CDN végpont naplózásának engedélyez
 
 3. Válassza ki a **diagnosztikai naplókat** a **figyelés** szakaszban:
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Válassza ki a diagnosztikai naplókat." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Naplózás engedélyezése az Azure Storage-ban
 
@@ -69,9 +69,9 @@ Ha Storage-fiókot szeretne használni a naplók tárolásához, kövesse az al�
 
 4. Válassza ki az előfizetést és a Storage-fiókot a naplókhoz.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Diagnosztikai naplók – tárterület." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek
 
@@ -86,9 +86,9 @@ A naplók Log Analytics használatához kövesse az alábbi lépéseket:
 
 3. Válassza ki az előfizetést és Log Analytics munkaterületet a naplókhoz.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Diagnosztikai naplók – Log Analytics." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
 
@@ -103,9 +103,9 @@ Ha egy Event hub-t szeretne használni a naplókhoz, kövesse az alábbi lépés
 
 3. Válassza ki az előfizetést és az Event hub-névteret a naplókhoz.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Diagnosztikai naplók – Event hub." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 
 ## <a name="enable-logging-with-powershell"></a>Naplózás engedélyezése a PowerShell-lel
@@ -210,8 +210,8 @@ Az alapvető elemzési naplók óránként jönnek létre, és az adatok gyűjt�
 |Erőforráscsoport neve |Azon erőforráscsoport neve, amelyhez a CDN-erőforrások tartoznak.|
 |Profilnév |A CDN-profil neve|
 |Végpont neve |A CDN-végpont neve|
-|Év|  Az év négyjegyű ábrázolása, például 2017|
-|Hónap| A hónap számának kétszámjegyű ábrázolása. 01 = Január... 12 = december|
+|Year|  Az év négyjegyű ábrázolása, például 2017|
+|Month (hónap)| A hónap számának kétszámjegyű ábrázolása. 01 = Január... 12 = december|
 |Nap|   A hónap napjának kétszámjegyű ábrázolása|
 |PT1H.jsbekapcsolva| Az elemzési adatokat tároló tényleges JSON-fájl|
 
@@ -265,7 +265,7 @@ Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen elté
 | RequestCountCacheHit | A gyorsítótárban találatot eredményező kérések száma. Az eszköz közvetlenül a POP-ból a-ügyfélhez lett kézbesítve. | Igen | Igen | Nem  |
 | RequestCountCacheMiss | A gyorsítótárból kihagyott összes kérelem száma. A gyorsítótár-kihagyás azt jelenti, hogy az eszköz nem található az ügyfélhez legközelebb lévő POP-ban, és a forrásból lett beolvasva. | Igen | Igen | Nem |
 | RequestCountCacheNoCache | Az eszközre irányuló, a peremhálózati felhasználói konfiguráció miatt nem gyorsítótárazott kérelmek száma. | Igen | Igen | Nem |
-| RequestCountCacheUncacheable | Azon eszközökre irányuló kérelmek száma, amelyeket az eszköz gyorsítótár-vezérlése nem gyorsítótárazhat, és a fejlécek lejárnak. Ez a szám azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
+| RequestCountCacheUncacheable | Azon eszközökre irányuló kérelmek száma, amelyek megakadályozták az objektum Cache-Control gyorsítótárazását és a fejlécek lejáratát. Ez a szám azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
 | RequestCountCacheOthers | Az összes olyan kérelem száma, amelynél a gyorsítótár állapota nem szerepel a fentiekben. | Nem | Igen | Nem  |
 | EgressTotal | Kimenő adatforgalom GB-ban | Igen |Igen |Igen |
 | EgressHttpStatus2xx | Kimenő adatátvitel * a 2xx HTTP-állapotkódok GB-ban való kitöltéséhez. | Igen | Igen | Nem  |
@@ -276,7 +276,7 @@ Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen elté
 | EgressCacheHit | Kimenő adatforgalom a CDN-gyorsítótárban/-éleken közvetlenül a CDN-gyorsítótárból továbbított válaszok esetében. | Igen | Igen | Nem |
 | EgressCacheMiss. | Kimenő adatforgalom a legközelebbi POP-kiszolgálón nem található válaszok esetében, és a rendszer lekéri a forrás-kiszolgálóról. | Igen | Igen | Nem |
 | EgressCacheNoCache | A kimenő adatforgalom olyan eszközök esetében, amelyek a peremhálózat felhasználói konfigurációja miatt nem gyorsítótárazva vannak. | Igen | Igen | Nem |
-| EgressCacheUncacheable | Kimenő adatforgalom olyan eszközökön, amelyeket az objektum cache-Control és a fejlécek lejárta miatt nem gyorsítótárazhat. Azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
+| EgressCacheUncacheable | Kimenő adatforgalom olyan eszközökön, amelyeket nem sikerült gyorsítótárazni az objektum Cache-Control és a fejlécek lejárata miatt. Azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
 | EgressCacheOthers | Kimenő adatforgalom más gyorsítótár-forgatókönyvekhez. | Nem | Igen | Nem |
 
 * A kimenő adatátvitel a CDN POP-kiszolgálókról az ügyfélnek továbbított forgalomra utal.

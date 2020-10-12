@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77084055"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
@@ -46,8 +46,8 @@ A MSAL nyilvános API fontos változásokat vezet be, beleértve a következőke
   - A hatóságok már nem lesznek érvényesítve a Futtatás ideje alatt. Ehelyett a fejlesztő deklarálja az "ismert hatóságok" listáját a fejlesztés során.
 - Token API módosításai:
   - A ADAL-ben `AcquireToken()` először csendes kérést tesznek elérhetővé. Ha ezt elmulasztja, interaktív kérelmet készít. Ez a viselkedés néhány olyan fejlesztőt eredményezett, akik csak a-re támaszkodtak `AcquireToken` , ami azt eredményezte, hogy a felhasználó időnként váratlanul kéri a hitelesítő adatok megadását. A MSAL használatához a fejlesztőknek szándékosnak kell lennie, amikor a felhasználó felhasználói FELÜLETi kérést kap.
-    - `AcquireTokenSilent`mindig egy csendes kérést eredményez, amely sikeres vagy sikertelen.
-    - `AcquireToken`mindig olyan kérést eredményez, amely felhasználói felületen keresztül kéri a felhasználót.
+    - `AcquireTokenSilent` mindig egy csendes kérést eredményez, amely sikeres vagy sikertelen.
+    - `AcquireToken` mindig olyan kérést eredményez, amely felhasználói felületen keresztül kéri a felhasználót.
 - A MSAL egy alapértelmezett böngészőből vagy egy beágyazott webes nézetből támogatja a bejelentkezést:
   - Alapértelmezés szerint a rendszer az eszköz alapértelmezett böngészőjét használja. Ez lehetővé teszi a MSAL számára, hogy egy vagy több bejelentkezett fiók esetében már jelen lehet a hitelesítési állapot (cookie-k) használata. Ha nincs hitelesítő állapot, az MSAL-n keresztül történő hitelesítés során a rendszer a hitelesítési állapot (cookie-k) segítségével hozza létre az adott böngészőben használni kívánt egyéb webalkalmazások előnyeit.
 - Új kivétel modellje:
@@ -146,11 +146,11 @@ Vegyünk egy bankszámlát. Több fiókkal is rendelkezhet több pénzügyi int�
 
 Az analógia, például a pénzügyi intézmény fiókjai esetében a Microsoft Identity platform fiókjai a hitelesítő adatok használatával érhetők el. Ezek a hitelesítő adatok regisztrálva vannak a-ban vagy a-ben, a Microsoft számára. Vagy a Microsoft által a szervezet nevében.
 
-Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Íme egy példa:
+Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Bemutatunk egy példát:
 
 A Sam Contoso.com működik, de a Fabrikam.com-hoz tartozó Azure-beli virtuális gépeket kezeli. Ahhoz, hogy a Sam felügyelje a fabrikam virtuális gépeket, engedélyezni kell az elérését. Ez a hozzáférés a Sam-fiók Fabrikam.com való hozzáadásával, valamint a fióknak a virtuális gépekkel való együttműködését lehetővé tevő szerepkör megadásával adható meg. Ezt a Azure Portal fogja elvégezni.
 
-Ha Sam Contoso.com-fiókját a Fabrikam.com tagjaként adja hozzá, egy új rekordot hoz létre a fabrikam. com Azure Active Directory a Sam számára. A Sam rekordja a Azure Active Directoryban felhasználói objektumként ismert. Ebben az esetben ez a felhasználói objektum a Sam felhasználói objektumára mutat vissza a Contoso.com-ben. Sam a fabrikam felhasználói objektuma a Sam helyi ábrázolása, és a Sam-hoz társított fiók adatainak tárolására szolgál a Fabrikam.com környezetében. A Contoso.com-ben a Sam 's title vezető DevOps-tanácsadó. A fabrikam-ben a Sam címe a kivitelező – Virtual Machines. A Contoso.com-ben a Sam nem felelős a virtuális gépek kezeléséhez. A Fabrikam.com-ben ez az egyetlen feladat funkciója. A Sam még mindig csak egy hitelesítő adatokkal rendelkezik, amelyekkel nyomon követheti a Contoso.com által kiadott hitelesítő adatokat.
+Ha Sam Contoso.com-fiókját a Fabrikam.com tagjaként adja hozzá, egy új rekordot hoz létre a fabrikam. com Azure Active Directory a Sam számára. A Sam rekordja a Azure Active Directoryban felhasználói objektumként ismert. Ebben az esetben ez a felhasználói objektum a Sam felhasználói objektumára mutat vissza a Contoso.com-ben. Sam a fabrikam felhasználói objektuma a Sam helyi ábrázolása, és a Sam-hoz társított fiók adatainak tárolására szolgál a Fabrikam.com környezetében. A Contoso.com-ben a Sam 's title vezető DevOps-tanácsadó. A fabrikam-ben a Sam címe Contractor-Virtual gép. A Contoso.com-ben a Sam nem felelős a virtuális gépek kezeléséhez. A Fabrikam.com-ben ez az egyetlen feladat funkciója. A Sam még mindig csak egy hitelesítő adatokkal rendelkezik, amelyekkel nyomon követheti a Contoso.com által kiadott hitelesítő adatokat.
 
 A sikeres `acquireToken` hívás után egy olyan objektumra mutató hivatkozás jelenik meg, `IAccount` amely a későbbi kérelmekben is felhasználható `acquireTokenSilent` .
 
@@ -240,7 +240,7 @@ A MSAL-ben van egy kivételek hierarchiája, és mindegyikhez tartozik egy adott
 
 MSAL-kivételek listája
 
-|Kivétel  | Description  |
+|Kivétel  | Leírás  |
 |---------|---------|
 | `MsalException`     | A MSAL által kiváltott alapértelmezett kivétel.  |
 | `MsalClientException`     | Kidobás, ha a hiba ügyféloldali. |

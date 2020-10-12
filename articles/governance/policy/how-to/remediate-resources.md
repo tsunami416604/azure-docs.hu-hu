@@ -4,10 +4,10 @@ description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésé
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269845"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Nem megfelelő erőforrások szervizelése Azure Policy
@@ -129,11 +129,11 @@ Az értékelés során a szabályzat-hozzárendelés **deployIfNotExists** vagy 
 
 1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 1. Válassza a **szervizelés** elemet a Azure Policy lap bal oldalán.
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Képernyőfelvétel a szabályzat lap szervizelési csomópontról." border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 1. A nem megfelelő erőforrásokkal rendelkező szabályzat-hozzárendelések minden **deployIfNotExists** és **módosítása** a lap és az adattábla **szervizeléséhez** szükséges. Válasszon olyan házirendet, amelynek erőforrásai nem megfelelőek. Megnyílik az **új szervizelési feladat** lap.
 
@@ -142,17 +142,17 @@ Az értékelés során a szabályzat-hozzárendelés **deployIfNotExists** vagy 
 
 1. Az **új szervizelési feladat** lapon a **hatóköri** ellipszisek használatával szűrheti a kijavítani kívánt erőforrásokat, hogy kiválassza a gyermek erőforrásokat, amelyekről a szabályzat hozzá van rendelve (beleértve az egyes erőforrás-objektumokat is). Emellett az erőforrások további szűréséhez használja a **helyszínek** legördülő listát. Csak a táblázatban felsorolt erőforrások lesznek szervizelve.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Képernyőkép a Szervizelési csomópontról és a szervizeléshez szükséges erőforrások rácsáról." border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 1. Indítsa el a Szervizelési feladatot az erőforrások szűrése után a **szervizelés**lehetőség kiválasztásával. A szabályzat megfelelősége lap megnyílik a **szervizelési feladatok** lapra, hogy megjelenjen a feladatok állapota. A Szervizelési feladat által létrehozott központi telepítések azonnal megkezdődik.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Képernyőfelvétel a Szervizelési feladatok lapról, valamint a meglévő szervizelési feladatok előrehaladásáról." border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 1. Válassza ki a **szervizelési feladatot** a szabályzat megfelelősége lapon a folyamat részleteinek megismeréséhez. A feladathoz használt szűrés megjelenik a szervizelt erőforrások listájával együtt.
 
 1. A **szervizelési feladat** lapon kattintson a jobb gombbal egy erőforrásra a Szervizelési feladat központi telepítésének vagy erőforrásának megtekintéséhez. A sor végén válassza a **kapcsolódó események** lehetőséget a részletek, például a hibaüzenetek megjelenítéséhez.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Képernyőkép a Szervizelési feladat lap erőforrásának helyi menüjéről." border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Képernyőkép egy olyan deployIfNotExists-házirendről, amelyből hiányzik egy meghatározott engedély a felügyelt identitáson." border="false":::
 
 A **szervizelési feladattal** üzembe helyezett erőforrások hozzáadódnak a szabályzat megfelelősége lap **telepített erőforrások** lapjához.
 

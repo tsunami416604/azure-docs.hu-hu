@@ -15,10 +15,10 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: devx-track-python
 ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851714"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
@@ -46,7 +46,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="api-list"></a><a name="APIList"></a>API-lista  
+## <a name="api-list"></a><a name="APIList"></a> API-lista  
  Az **API-lista** sablon lehetővé teszi, hogy testreszabja az API-lista oldalának törzsét a fejlesztői portálon.  
   
  ![Fejlesztői portál API-listája](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM fejlesztői portál sablonok API-listája")  
@@ -114,7 +114,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a>Művelet  
+## <a name="operation"></a><a name="Product"></a> Művelet  
  A **műveleti** sablon lehetővé teszi a műveleti oldal törzsének testreszabását a fejlesztői portálon.  
   
  ![Fejlesztői portál műveleti lapja](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM fejlesztői portál sablonjainak műveleti lapja")  
@@ -644,7 +644,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 }  
 ```  
   
-## <a name="code-samples"></a><a name="CodeSamples"></a>Kód mintái  
+## <a name="code-samples"></a><a name="CodeSamples"></a> Kód mintái  
  A következő sablonok segítségével testre szabhatja az egyes kódrészletek törzsét a művelet lapon.  
   
  ![Fejlesztői portál sablonok kódjának mintái](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM fejlesztői portál sablonok kód minták")  
@@ -665,7 +665,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 -   [Ruby](#Ruby)  
   
-### <a name="curl"></a><a name="Curl"></a>Curl  
+### <a name="curl"></a><a name="Curl"></a> Curl  
  A **DocumentationSamplesCurl** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -718,7 +718,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="c"></a><a name="CSharp"></a>C #  
+### <a name="c"></a><a name="CSharp"></a> C #  
  A **DocumentationSamplesCsharp** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -897,7 +897,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="java"></a><a name="Stub"></a>Java  
+### <a name="java"></a><a name="Stub"></a> Java  
  A **DocumentationSamplesJava** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -993,7 +993,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  A **DocumentationSamplesJs** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -1082,7 +1082,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="objective-c"></a><a name="ObjectiveC"></a>C célkitűzés  
+### <a name="objective-c"></a><a name="ObjectiveC"></a> C célkitűzés  
  A **DocumentationSamplesObjc** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -1194,7 +1194,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="php"></a><a name="PHP"></a>PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  A **DocumentationSamplesPhp** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -1284,7 +1284,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="python"></a><a name="Python"></a>Python  
+### <a name="python"></a><a name="Python"></a> Python  
  A **DocumentationSamplesPython** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -1402,7 +1402,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="ruby"></a><a name="Ruby"></a>Ruby  
+### <a name="ruby"></a><a name="Ruby"></a> Ruby  
  A **DocumentationSamplesRuby** sablon lehetővé teszi, hogy testreszabja a kód mintáját a művelet lap kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  

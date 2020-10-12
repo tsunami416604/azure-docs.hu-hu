@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291466"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
@@ -60,7 +60,7 @@ Tekintse meg a .NET-kód példáját a [MediaV3LiveApp](https://github.com/Azure
 
 ![élő kódolás Media Services példa diagrammal](./media/live-streaming/live-encoding.svg)
 
-Ha a Media Services élő kódolást használ, a helyszíni élő kódolót úgy konfigurálja, hogy egyetlen bitráta-videót küldjön az élő eseménynek (RTMP vagy darabolt MP4 protokollt használó) hozzájárulási csatornának. Ezután beállíthat egy élő eseményt úgy, hogy az a bejövő egyszeri sávszélességű adatfolyamot [több bitrátás videó streambe](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kódolja, és elérhetővé teszi a kimenetet a továbbításhoz az eszközökön, például az MPEG-Dash, a HLS és a Smooth streaming protokollok használatával.
+Ha a Media Services élő kódolást használ, a helyszíni élő kódolót úgy konfigurálja, hogy egyetlen bitráta-videót küldjön az élő eseménynek (RTMP vagy Fragmented-Mp4 protokollt használó) hozzájárulási csatornának. Ezután beállíthat egy élő eseményt úgy, hogy az a bejövő egyszeri sávszélességű adatfolyamot [több bitrátás videó streambe](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kódolja, és elérhetővé teszi a kimenetet a továbbításhoz az eszközökön, például az MPEG-Dash, a HLS és a Smooth streaming protokollok használatával.
 
 Ha élő kódolást használ, a hozzájárulási csatornát csak a 30 képkocka/másodperces képkocka sebességű felbontásban, a H. 264/AVC Video Codec és az AAC (AAC-LC, it-AACv1 vagy AACv2) hangkodek használatával küldheti el. Vegye figyelembe, hogy az áteresztő élő események a 60-es képkockán/másodpercen belüli 4K-os felbontást támogatják. További információ: [élő események típusai összehasonlítás](live-event-types-comparison.md).
 
@@ -71,7 +71,7 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 
 ## <a name="creating-live-events"></a>Élő események létrehozása
 
-### <a name="options"></a>Beállítások
+### <a name="options"></a>Lehetőségek
 
 Élő események létrehozásakor a következő beállításokat adhatja meg:
 

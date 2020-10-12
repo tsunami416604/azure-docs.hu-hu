@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88930060"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes vagy feldolgozói szerepkör életciklusának testreszabása a .NET-ben
@@ -75,7 +75,7 @@ A **futtatási** metódus felülbírálása nem kötelező; az alapértelmezett 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>A ASP.NET életciklus-módszereinek megvalósítása webes szerepkörhöz
 A **RoleEntryPoint** osztály által biztosított ASP.net-életciklusi módszerek mellett a webes szerepkörök inicializálási és leállítási folyamatait is kezelheti. Ez a kompatibilitási célokra hasznos lehet, ha meglévő ASP.NET-alkalmazást PORTOL az Azure-ba. A ASP.NET életciklusának metódusait a rendszer a **RoleEntryPoint** metódusok alapján hívja meg. Az **alkalmazás \_ indítási** módszerét a **RoleEntryPoint. OnStart** metódus befejeződése után hívja meg a rendszer. Az **alkalmazás \_ befejezési** metódusát a rendszer a **RoleEntryPoint. OnStop** metódus meghívása előtt hívja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [hozhat létre Cloud Service-csomagot](cloud-services-model-and-package.md).
 
 

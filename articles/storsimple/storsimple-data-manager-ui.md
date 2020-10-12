@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184535"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>A StorSimple Data Manager szolgáltatás kezelése Azure Portal
@@ -48,7 +48,7 @@ StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alább
     
    5. Ha a szolgáltatásra mutató hivatkozást szeretne kapni az irányítópulton, válassza a **rögzítés az irányítópulton**lehetőséget.
     
-   6. Kattintson a **Create** (Létrehozás) gombra.
+   6. Kattintson a **Létrehozás** lehetőségre.
 
       ![StorSimple Data Manager szolgáltatás létrehozása 3](./media/storsimple-data-manager-ui/create-service-4.png)
 

@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368149"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban
@@ -276,14 +276,14 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 | `keyVaultName` | A létrehozott Key Vault neve |  |  |
 | `enableAzure` | Az Azure Cloud Provider engedélyezése | true <br> hamis | true |
 | `aadClientId` | Azure Active Directory ügyfél-azonosító más néven az egyszerű szolgáltatásnév alkalmazás-azonosítója |  |  |
-| `domainName` | A használni kívánt egyéni tartománynév neve (ha van ilyen). A "None" értékre van állítva, ha nincs teljesen privát fürt üzembe helyezése |  | nincs |
+| `domainName` | A használni kívánt egyéni tartománynév neve (ha van ilyen). A "None" értékre van állítva, ha nincs teljesen privát fürt üzembe helyezése |  | Nincs |
 | `masterClusterDnsType` | A OpenShift webkonzol tartományának típusa. az "default" a Master infra nyilvános IP-cím DNS-címkéjét fogja használni. az "egyéni" beállítással saját nevet adhat meg | alapértelmezett <br> egyéni | alapértelmezett |
-| `masterClusterDns` | A OpenShift webkonzolhoz való hozzáféréshez használt egyéni DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz:`masterClusterDnsType` |  | console.contoso.com |
+| `masterClusterDns` | A OpenShift webkonzolhoz való hozzáféréshez használt egyéni DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz: `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Ha a "nipio" értékre van állítva, a `routingSubDomain` NIP.IO-t fogja használni.  Ha az útválasztáshoz használni kívánt saját tartományt használ, használja az "egyéni" lehetőséget. | nipio <br> egyéni | nipio |
-| `routingSubDomain` | Az útválasztáshoz használni kívánt helyettesítő DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz:`routingSubDomainType` |  | apps.contoso.com |
+| `routingSubDomain` | Az útválasztáshoz használni kívánt helyettesítő DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz: `routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Válassza ki, hogy meglévő Virtual Network szeretne-e használni, vagy új Virtual Network szeretne létrehozni | meglévő <br> Új | Új |
-| `virtualNetworkResourceGroupName` | Az új Virtual Network erőforráscsoport neve, ha az "új" lehetőséget választotta a következőhöz:`virtualNetworkNewOrExisting` |  | resourceGroup (). név |
-| `virtualNetworkName` | A létrehozandó új Virtual Network neve, ha az "új" lehetőséget választotta a következőhöz:`virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `virtualNetworkResourceGroupName` | Az új Virtual Network erőforráscsoport neve, ha az "új" lehetőséget választotta a következőhöz: `virtualNetworkNewOrExisting` |  | resourceGroup (). név |
+| `virtualNetworkName` | A létrehozandó új Virtual Network neve, ha az "új" lehetőséget választotta a következőhöz: `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Az új virtuális hálózat címzési előtagja |  | 10.0.0.0/14 |
 | `masterSubnetName` | A fő alhálózat neve |  | mastersubnet |
 | `masterSubnetPrefix` | A fő alhálózathoz használt CIDR – a addressPrefix részhalmazának kell lennie. |  | 10.1.0.0/16 |
@@ -295,9 +295,9 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 | `existingInfraSubnetReference` | Teljes hivatkozás az infra-csomópontok meglévő alhálózatára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
 | `existingCnsSubnetReference` | Teljes hivatkozás a meglévő alhálózatra a CNS-csomópontok számára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
 | `existingNodeSubnetReference` | Teljes hivatkozás a meglévő alhálózatra a számítási csomópontok számára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
-| `masterClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános főkiszolgálói csomópontokat használ-e. Ha a Private lehetőséget választotta, a fő csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a`masterPrivateClusterIp` | public <br> titkos | public |
+| `masterClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános főkiszolgálói csomópontokat használ-e. Ha a Private lehetőséget választotta, a fő csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a `masterPrivateClusterIp` | nyilvános <br> titkos | nyilvános |
 | `masterPrivateClusterIp` | Ha a titkos főcsomópontok ki vannak választva, akkor meg kell adni egy magánhálózati IP-címet a főcsomópontok belső terheléselosztó általi használatra. Ennek a statikus IP-nek a főalhálózat CIDR-blokkjában kell lennie, és még nincs használatban. Ha a nyilvános főkiszolgálói csomópontok ki vannak választva, ez az érték nem lesz használatban, de még meg kell adni. |  | 10.1.0.200 |
-| `routerClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános infra-csomópontokat használ-e. Ha a Private lehetőséget választotta, az infra-csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a`routerPrivateClusterIp` | public <br> titkos | public |
+| `routerClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános infra-csomópontokat használ-e. Ha a Private lehetőséget választotta, az infra-csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a `routerPrivateClusterIp` | nyilvános <br> titkos | nyilvános |
 | `routerPrivateClusterIp` | Ha privát infra-csomópontok vannak kiválasztva, akkor meg kell adni egy magánhálózati IP-címet, amelyet az infra-csomópontok belső terheléselosztó használ. Ennek a statikus IP-nek az infra-alhálózat CIDR-blokkjában kell lennie, és még nincs használatban. Ha a nyilvános infra-csomópontok ki vannak választva, ez az érték nem lesz használatban, de továbbra is meg kell adni. |  | 10.2.0.200 |
 | `routingCertType` | Egyéni tanúsítvány használata az útválasztási tartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az **Egyéni tanúsítványok** szakasz utasításait. | selfsigned <br> egyéni | selfsigned |
 | `masterCertType` | Egyéni tanúsítvány használata a főtartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az **Egyéni tanúsítványok** szakasz utasításait. | selfsigned <br> egyéni | selfsigned |

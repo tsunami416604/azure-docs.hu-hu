@@ -12,10 +12,10 @@ ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88584964"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a mailjet
@@ -162,7 +162,7 @@ Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://sendgrid.com/
     1. A **Tárgy**mezőben adja meg a tárgy alapértelmezett értékét. A mailjet ezt az értéket használja, ha az API nem tartalmaz tárgy paramétert.
     1. A **név**mezőbe írja be a vállalat nevét.
     1. A **cím**mezőben válassza ki az e-mail-címét
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 1. A jobb felső sarokban válassza a **mentés & közzététel**, majd az **Igen, a módosítások közzététele** lehetőséget.
 1. Jegyezze fel a létrehozott sablon **azonosítóját** egy későbbi lépésben való használatra. Ezt az azonosítót kell megadnia [a jogcím-átalakítás hozzáadásakor](#add-the-claims-transformation).
 
@@ -503,7 +503,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </InputClaimsTransformations>
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzatot:
 

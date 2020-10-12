@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021857"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database biztonsági funkciók    
@@ -40,14 +40,14 @@ Az átjáró tűzfala korlátozhatja a címeket, ami lehetővé teszi, hogy az �
 Az ügyfelek felügyeleti portál használatával vagy programozott módon érhetik el a tűzfal konfigurációját a Azure SQL Database felügyeleti REST API használatával. A Azure SQL Database-átjáró tűzfal alapértelmezés szerint megakadályozza az összes ügyfél TDS-hozzáférését a Azure SQL Databasehoz. Az ügyfeleknek hozzáférés-vezérlési listákkal (ACL-ekkel) kell konfigurálniuk a hozzáférést, hogy a forrás-és cél-internetes címek, protokollok és portszámok alapján Azure SQL Database kapcsolatokat.
 
 ### <a name="dosguard"></a>DoSGuard
-A szolgáltatásmegtagadási (DoS) támadásokat egy DoSGuard nevű SQL Database Gateway szolgáltatás csökkenti. A DoSGuard aktívan nyomon követi a sikertelen bejelentkezéseket az IP-címekről. Ha egy adott IP-címről több sikertelen bejelentkezés történt egy adott időtartamon belül, az IP-cím blokkolva lesz a szolgáltatásban lévő összes erőforráshoz egy előre meghatározott időszakra vonatkozóan.
+A szolgáltatásmegtagadási (DoS-) támadások mennyiségét a DoSGuard nevű SQL Database-átjáró csökkenti. A DoSGuard aktívan nyomon követi a sikertelen bejelentkezések IP-címeit. Ha egy adott IP-címről több sikertelen bejelentkezés történt egy adott időtartamon belül, az IP-cím blokkolva lesz a szolgáltatásban lévő összes erőforráshoz egy előre meghatározott időszakra vonatkozóan.
 
 Továbbá a Azure SQL Database átjáró a következőket hajtja végre:
 
 - Biztonságos csatorna-képességgel kapcsolatos tárgyalások a TDS FIPS 140-2 ellenőrzött titkosított kapcsolatok megvalósításához, amikor az adatbázis-kiszolgálókhoz csatlakozik.
 - Állapot-nyilvántartó TDS-csomagok ellenőrzése, miközben az ügyfelektől érkező kapcsolatokat fogad. Az átjáró ellenőrzi a kapcsolódási adatokat, és továbbítja a TDS-csomagokat a megfelelő fizikai kiszolgálóra a kapcsolódási karakterláncban megadott adatbázis neve alapján.
 
-Az Azure SQL Database ajánlat hálózati biztonságának átfogó elve, hogy csak a szolgáltatás működésének engedélyezéséhez szükséges kapcsolatot és kommunikációt engedélyezzük. Alapértelmezés szerint az összes többi port, protokoll és kapcsolat le van tiltva. A virtuális helyi hálózatok (VLAN-ok) és a hozzáférés-vezérlési listák használatával a hálózati kommunikációt a forrás-és a célkiszolgáló, a protokollok és a portszámok alapján korlátozhatja.
+Az Azure SQL Database elsődleges hálózati biztonsági alapelve, hogy kizárólag azokat a kapcsolatokat és kommunikációt engedélyezi, amelyek a szolgáltatás működéséhez szükségesek. Minden más port, protokoll és kapcsolat alapértelmezés szerint le van tiltva. A virtuális helyi hálózatok (VLAN-ok) és a hozzáférés-vezérlési listák használatával a hálózati kommunikációt a forrás-és a célkiszolgáló, a protokollok és a portszámok alapján korlátozhatja.
 
 A hálózat alapú ACL-ek megvalósítására jóváhagyott mechanizmusok közé tartoznak az útválasztók és a terheléselosztó ACL-jei. Ezeket a mechanizmusokat az Azure Networking, a vendég virtuálisgép-tűzfal és a Azure SQL Database az ügyfél által konfigurált tűzfalszabályok szabályozzák.
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928683"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure-szerepkörök beállítása az Azure-beli rendszergazdai hozzáféréshez Cognitive Search
@@ -26,7 +26,7 @@ Az Azure [globális szerepköralapú engedélyezési modellt](../role-based-acce
 
 Az Azure Cognitive Search esetében a szerepkörök a következő felügyeleti feladatokat támogató jogosultsági szintekhez vannak társítva:
 
-| Szerepkör | Tevékenység |
+| Szerepkör | Feladat |
 | --- | --- |
 | Tulajdonos |Hozza létre vagy törölje a szolgáltatást vagy a szolgáltatás bármely objektumát, beleértve az API-kulcsokat, az indexeket, az indexelő, az indexelő adatforrásokat és az indexelő-ütemterveket.<p>A szolgáltatás állapotának megtekintése, beleértve a darabszámot és a tárterület méretét.<p>Szerepkör-tagság hozzáadása vagy törlése (csak a tulajdonosok kezelhetik a szerepkör-tagságot).<p>Az előfizetés-rendszergazdák és a szolgáltatás tulajdonosai automatikus tagsággal rendelkeznek a tulajdonosi szerepkörben. |
 | Közreműködő |Azonos szintű hozzáférés tulajdonosként, mínusz az Azure szerepkör-kezelés. A közreműködők például létrehozhatnak vagy törölhetnek objektumokat, vagy megtekinthetik és újragenerálják az [API-kulcsokat](search-security-api-keys.md), de nem módosíthatják a szerepkör-tagságokat. |
@@ -54,4 +54,4 @@ Az alábbi táblázat összefoglalja az Azure Cognitive Searchban engedélyezett
 
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás az Azure Cognitive Search](search-performance-optimization.md)
-+ [Ismerkedjen meg a Azure Portal szerepköralapú Access Controlával](../role-based-access-control/overview.md).
++ [Ismerkedjen meg a Azure Portal Role-Based Access Controlával](../role-based-access-control/overview.md).

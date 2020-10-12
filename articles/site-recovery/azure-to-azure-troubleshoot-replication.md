@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130397"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Az Azure-beli virtuális gép vész-helyreállítási replikációjának elhárítása
@@ -35,7 +35,7 @@ Az esemény- **adatváltozási arányt a támogatott korlátokon felül**kell l�
 
 Ha kijelöli az eseményt, a lemez pontos adatait kell megjelennie:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Az adatváltozási arányt esemény részleteit megjelenítő oldal.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Azure Site Recovery lap, amely túl magas adatváltozási sebességet mutat.":::
 
 ### <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
 
@@ -56,7 +56,7 @@ Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | 1684
 
 A Azure Site Recovery a lemez típusától függően korlátozza az adatváltozások sebességét. Ha szeretné megtudni, hogy ez a probléma ismétlődő vagy ideiglenes, keresse meg az érintett virtuális gép adatváltozási arányát. Nyissa meg a forrás virtuális gépet, keresse meg a **figyelés**területen található mérőszámokat, és adja hozzá a metrikákat az alábbi képernyőképen látható módon:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Az adatváltozási arány megkeresésének három lépésből álló folyamatát bemutató oldal.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Azure Site Recovery lap, amely túl magas adatváltozási sebességet mutat.":::
 
 1. Válassza a **metrika hozzáadása**lehetőséget, és adja hozzá az **operációsrendszer-lemezt írási sebesség (bájt/s** ) és **az adatlemez írási sebessége (bájt/s**)
 1. Figyelje meg a nyársat a képernyőképen látható módon.
@@ -65,7 +65,7 @@ A Azure Site Recovery a lemez típusától függően korlátozza az adatváltoz�
 Az adatváltozási arányban előforduló csúcsok időnként adattörésből származhatnak. Ha az adatváltozás sebessége nagyobb, mint 10 MB/s (prémium szintű) vagy 2 MB/s (standard), és a rendszer leállítja a replikálást, a replikáció felveszi. Ha a forgalom folyamatosan meghaladja a támogatott korlátot, vegye figyelembe a következő lehetőségek egyikét:
 
 - Zárja ki a nagy adatváltozási arányt okozó lemezt: először tiltsa le a replikálást. Ezután kizárhatja a lemezt a [PowerShell](azure-to-azure-exclude-disks.md)használatával.
-- A vész-helyreállítási tároló lemezének módosítása: Ez a beállítás csak akkor lehetséges, ha a lemezes adatforgalom kevesebb, mint 20 MB/s. Például egy P10-lemezzel rendelkező virtuális gépnek 8 MB/s-nál nagyobb adatváltozása van, de kevesebb, mint 10 MB/s. Ha az ügyfél a védelem során P30-lemezt használhat a célként szolgáló tárolóhoz, akkor a probléma megoldható. Ez a megoldás csak Premium-Managed Disks használó gépek esetén lehetséges. Kövesse az alábbi lépéseket:
+- A vész-helyreállítási tároló lemezének módosítása: Ez a beállítás csak akkor lehetséges, ha a lemezes adatforgalom kevesebb, mint 20 MB/s. Például egy P10-lemezzel rendelkező virtuális gépnek 8 MB/s-nál nagyobb adatváltozása van, de kevesebb, mint 10 MB/s. Ha az ügyfél a védelem során P30-lemezt használhat a célként szolgáló tárolóhoz, akkor a probléma megoldható. Ez a megoldás csak Premium-Managed lemezeket használó gépek esetében lehetséges. Kövesse az alábbi lépéseket:
 
   1. Nyissa meg az érintett replikált gép **lemezeit** , és másolja a replika lemez nevét.
   1. Nyissa meg a felügyelt lemez ezen replikáját.
