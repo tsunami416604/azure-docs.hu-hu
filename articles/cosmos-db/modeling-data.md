@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136039"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Adatmodellezés Azure Cosmos DB
@@ -299,7 +299,7 @@ A fenti példában eldobta a nem kötött gyűjteményt a közzétevői dokument
 Egy relációs adatbázisban *: sok* kapcsolat gyakran az illesztési táblázatokkal van modellezve, ami csak a többi táblázat rekordjait egyesíti.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Táblák csatlakoztatása" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Rokon adatbázis-modell" border="false":::
 
 Lehet, hogy megkísértette ugyanazt a dolgot a dokumentumok használatával, és olyan adatmodellt hoz létre, amely a következőhöz hasonlóan néz ki.
 
@@ -442,4 +442,4 @@ Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg a szolgáltatá
 
 Ha meg szeretné tudni, hogyan osztható fel az adatai több partícióra, tekintse meg az [Adatparticionálást Azure Cosmos DBban](sql-api-partition-data.md).
 
-Ha szeretné megtudni, hogyan modellezheti és particionálhatja Azure Cosmos DB a valós példa használatával, tekintse meg az [adatmodellezést és particionálást – egy valós példát](how-to-model-partition-example.md).
+Ha meg szeretné tudni, hogyan modellezheti és particionálhatja Azure Cosmos DB a valós példa használatával, tekintse át az [ adatmodellezés és particionálás – egy Real-World példát](how-to-model-partition-example.md).

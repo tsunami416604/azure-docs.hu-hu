@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543673"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Az Azure Disk Encryption használata virtuális gépeken és virtuálisgép-méretezési csoportokban
@@ -25,7 +25,7 @@ A következő cikkek útmutatást nyújtanak a linuxos virtuális gépek titkos�
 ### <a name="current-version-of-azure-disk-encryption"></a>A Azure Disk Encryption aktuális verziója
 
 - [A Linux rendszerű virtuális gépekhez készült Azure Disk Encryption áttekintése](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Linux rendszerű virtuális gép létrehozása és titkosítása az Azure CLI-vel](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Linux rendszerű virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Linux rendszerű virtuális gép létrehozása és titkosítása az Azure Portallal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
@@ -75,8 +75,8 @@ A következő cikkek útmutatást nyújtanak a virtuálisgép-méretezési csopo
 - [Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz](../../virtual-machine-scale-sets/disk-encryption-key-vault.md)
 - [A Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének előkészítésével](../../virtual-machine-scale-sets/disk-encryption-extension-sequencing.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-titkosítás áttekintése](encryption-overview.md)
-- [Inaktív adatok titkosítása](encryption-atrest.md)
+- [Adat-titkosítás inaktív állapotban](encryption-atrest.md)
 - [Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások](data-encryption-best-practices.md)

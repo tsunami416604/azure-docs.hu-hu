@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000781"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Biztonságos hozzáférés a felügyelt HSM
@@ -79,10 +79,10 @@ A következő táblázat összefoglalja a csoportokra és erőforrásokra vonatk
 | Szerepkör | Felügyeleti sík szerepkör | Adatsík szerepkör |
 | --- | --- | --- |
 | Biztonsági csapat | Felügyelt HSM-közreműködő | Felügyelt HSM-rendszergazda |
-| Fejlesztők és üzemeltetők | Nincsenek | Nincsenek |
-| Ellenőrök | Nincsenek | Felügyelt HSM titkosítási auditor |
-| Az alkalmazás által használt virtuális gép felügyelt azonosítása| Nincsenek | Felügyelt HSM kriptográfiai felhasználó |
-| Az alkalmazás által használt Storage-fiók felügyelt identitása| Nincsenek| Felügyelt HSM szolgáltatás titkosítása |
+| Fejlesztők és üzemeltetők | Nincs | Nincs |
+| Ellenőrök | Nincs | Felügyelt HSM titkosítási auditor |
+| Az alkalmazás által használt virtuális gép felügyelt azonosítása| Nincs | Felügyelt HSM kriptográfiai felhasználó |
+| Az alkalmazás által használt Storage-fiók felügyelt identitása| Nincs| Felügyelt HSM szolgáltatás titkosítása |
 
 A három csapat szerepkörhöz a felügyelt HSM-engedélyek mellett más erőforrásokhoz is hozzá kell férnie. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek `Contributor` hozzá kell férniük az ilyen típusú erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, amelyben a felügyelt HSM-naplókat tárolják.
 
@@ -132,13 +132,13 @@ Ez az oktatóanyag csak a legtöbb esetben a hozzáférés-vezérléssel kapcsol
 
 Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli forgatókönyvek összetettebbek lehetnek. Az engedélyeket a Key Vault igényei szerint módosíthatja. Feltételezzük, hogy a biztonsági csapat biztosítja a kulcs-és titkos referenciákat (URI-k és ujjlenyomatai megfelelnek), amelyeket az DevOps munkatársai használnak az alkalmazásaikban. A fejlesztőknek és az operátoroknak nincs szükségük adatsíkon való hozzáférésre. A Key Vault biztonságossá tételére koncentrálunk. [A virtuális gépek, a](https://azure.microsoft.com/services/virtual-machines/security/) [Storage-fiókok](../../storage/blobs/security-recommendations.md)és az egyéb Azure-erőforrások biztonságossá tételéhez hasonló szempontokat kell figyelembe venni.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 - [Az Azure RBAC dokumentációja](../../role-based-access-control/overview.md)
 - [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
 - [Azure-RBAC kezelése az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépéseket ismertető oktatóanyagért lásd: [Mi a felügyelt HSM?](overview.md).
 

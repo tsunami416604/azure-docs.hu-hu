@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336411"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
@@ -51,7 +51,7 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló
 
 | Név | Leírás |
 | --- | --- |
-| **Id**<br /> Kötelező |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. <br /><br />Például: `"Id": 1`|
+| **ID**<br /> Kötelező |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. <br /><br />Például: `"Id": 1`|
 | **FourCC**<br />Kötelező | Az FFmpeg által jelentett video codec FourCC-kód.  <br /><br />Például: `"FourCC": "avc1"`|
 | **Profil** |H264-profil (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Profile": "High"` |
 | **Szintű** |H264-szint (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Level": "3.2"`|
@@ -69,7 +69,7 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelel�
 
 | Név  | Leírás |
 | --- | --- |
-| **Id**<br />Kötelező  |A hangsávok nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül az MP4-fájlokban használt TrackID.  <br /><br />Például: `"Id": 2`|
+| **ID**<br />Kötelező  |A hangsávok nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül az MP4-fájlokban használt TrackID.  <br /><br />Például: `"Id": 2`|
 | **Codec**  |Hangsávok kodekének karakterlánca  <br /><br />Például: `"Codec": "aac"`|
 | **Nyelv**|Például: `"Language": "eng"`|
 | **Csatornák**<br />Kötelező|Hangcsatornák száma  <br /><br />Például: `"Channels": 2`|

@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962247"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás üzembe helyezése az Azure-ban Azure SQL Database
@@ -141,11 +141,11 @@ Adatbázis létrehozása előtt [logikai SQL Serverre](../azure-sql/database/log
 
    * Tartsa meg a **Database Name** (Adatbázisnév) alapértelmezés szerint létrehozott értékét.
    * A **Connection String Name** (Kapcsolati sztring neve) mezőben írja be a *MyDbConnection* nevet. Ennek a névnek meg kell egyeznie a *Models/MyDatabaseContext.cs* fájlban hivatkozott kapcsolati sztringgel.
-   * Kattintson az **OK** gombra.
+   * Válassza az **OK** lehetőséget.
 
     ![Adatbázis konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Create** (Létrehozás) gombra.
+2. A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Létrehozás** elemre.
 
    ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 

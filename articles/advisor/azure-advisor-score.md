@@ -4,10 +4,10 @@ description: Az Advisor pontszám használata a legtöbbet kihasználhatja az Az
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335619"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Azure-beli számítási feladatok optimalizálása az Advisor score használatával
@@ -17,11 +17,11 @@ ms.locfileid: "91335619"
 Azure Advisor a számítási feladatokra vonatkozó ajánlott eljárásokat nyújt. Ezek a javaslatok személyre szabottak, és a következőkhöz nyújtanak segítséget:
 * A számítási feladatok testtartásának javítása és az Azure-beli üzembe helyezések optimalizálása
 * Az ajánlott eljárások követésével proaktív módon megelőzheti a leggyakoribb problémákat
-* Mérje fel Azure-beli számítási feladatait a [Microsoft Azure jól](https://docs.microsoft.com/azure/architecture/framework/) felépített keretrendszer öt pillére
+* Mérje fel Azure-beli számítási feladatait a [Microsoft Azure Well-Architected-keretrendszer](https://docs.microsoft.com/azure/architecture/framework/) öt pillérére
 
 Az Advisor alapszolgáltatásként az **Advisor pontszáma** úgy van kialakítva, hogy segítsen a célok hatékony és hatékony elérésében. 
 
-Ahhoz, hogy a legtöbbet hozza ki az Azure-ból, fontos tisztában lennie azzal, hogy hol van a számítási feladatok optimalizálási útja, mely szolgáltatásokat/erőforrásokat jól használják, és amelyek nem. Emellett érdemes tudnia, hogyan rangsorolhatja a műveleteit a javaslatok alapján, hogy maximalizálja a végeredményt. Fontos, hogy nyomon kövesse és jelentse a folyamat előrehaladását ebben az optimalizálási úton. Az **Advisor pontszám**használatával egyszerűen elvégezheti ezeket a dolgokat az új gamification-felülettel. Személyre szabott felhőalapú tanácsadóként Azure Advisor folyamatosan vizsgálja a használat telemetria és az erőforrás-konfigurációt az iparági ajánlott eljárások ellenőrzése érdekében. Az Advisor ezt követően egyetlen pontszámban összesíti az eredményeit, így megtudhatja, ha a szükséges lépéseket a megbízható, biztonságos és költséghatékony megoldások létrehozásához hajtja végre. Az Advisor pontszám egy összesített pontszámból áll, amely tovább bontható öt kategóriára, egy-egy Azure Advisor kategóriára, amely a jól felépített keretrendszer öt oszlopát jelöli. A napi, heti és havi trendekkel nyomon követheti a folyamat előrehaladását, és megtekintheti a pontszámokat és a kategóriát, valamint megadhatja a célok eléréséhez szükséges teljesítményteszteket is. 
+Ahhoz, hogy a legtöbbet hozza ki az Azure-ból, fontos tisztában lennie azzal, hogy hol van a számítási feladatok optimalizálási útja, mely szolgáltatásokat/erőforrásokat jól használják, és amelyek nem. Emellett érdemes tudnia, hogyan rangsorolhatja a műveleteit a javaslatok alapján, hogy maximalizálja a végeredményt. Fontos, hogy nyomon kövesse és jelentse a folyamat előrehaladását ebben az optimalizálási úton. Az **Advisor pontszám**használatával egyszerűen elvégezheti ezeket a dolgokat az új gamification-felülettel. Személyre szabott felhőalapú tanácsadóként Azure Advisor folyamatosan vizsgálja a használat telemetria és az erőforrás-konfigurációt az iparági ajánlott eljárások ellenőrzése érdekében. Az Advisor ezt követően egyetlen pontszámban összesíti az eredményeit, így megtudhatja, ha a szükséges lépéseket a megbízható, biztonságos és költséghatékony megoldások létrehozásához hajtja végre. Az Advisor pontszám egy összesített pontszámból áll, amely tovább bontható öt kategóriára, egy-egy Azure Advisor kategóriára, amely a Well-Architected keretrendszer öt oszlopát jelöli. A napi, heti és havi trendekkel nyomon követheti a folyamat előrehaladását, és megtekintheti a pontszámokat és a kategóriát, valamint megadhatja a célok eléréséhez szükséges teljesítményteszteket is. 
 
  ![Az Advisor pontszámának felhasználói felülete](./media/advisor-score-1.png)
 

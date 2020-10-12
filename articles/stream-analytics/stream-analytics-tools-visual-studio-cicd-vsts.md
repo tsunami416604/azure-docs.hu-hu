@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903834"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
@@ -121,7 +121,7 @@ Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://a
     |**Beállítás**  |**Ajánlott érték**  |
     |---------|---------|
     |Előfizetés  |  Válassza ki az előfizetését.   |
-    |Műveletek  |  Erőforráscsoport létrehozása vagy frissítése   |
+    |Művelet  |  Erőforráscsoport létrehozása vagy frissítése   |
     |Erőforráscsoport  |  Adja meg az erőforráscsoport nevét.   |
     |Sablon  | [Saját megoldás elérési útja]\bin\Debug\Deploy\\[Saját projekt neve].JobTemplate.json   |
     |Sablon paraméterei  | [Saját megoldás elérési útja]\bin\Debug\Deploy\\[Saját projekt neve].JobTemplate.parameters.json   |
@@ -160,7 +160,7 @@ Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos �
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan használhatók a Visual Studio Azure Stream Analytics eszközei a folyamatos integrációs és üzembe helyezési folyamat beállításához, folytassa a következőt: CI/CD-folyamatok beállítása.
 

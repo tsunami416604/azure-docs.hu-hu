@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
 ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870017"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
@@ -46,7 +46,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Kimeneti alias  |  CallStream – PowerBI  |
+   |Kimeneti alias  |  CallStream-PowerBI  |
    |Adatkészlet neve  |   SA-adatkészlet  |
    |Tábla neve |  csalárd – hívások  |
 
@@ -59,7 +59,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-8. Kattintson a **Create** (Létrehozás) gombra.
+8. Kattintson a **Létrehozás** elemre.
 
 Az adatkészlet a következő beállításokkal jön létre:
 
@@ -113,7 +113,7 @@ Ez a szakasz nem kötelező, de ajánlott.
 
     * Nyisson meg egy parancssort.
     * Lépjen arra a mappára, ahol a telcogenerator.exe és a módosított telcodatagen.exe.config fájlok találhatók.
-    * Futtassa a következő parancsot:
+    * Futtassa az alábbi parancsot:
 
        `telcodatagen.exe 1000 .2 2`
 
@@ -227,7 +227,7 @@ Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba 
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Stream Analytics kimenetek](stream-analytics-define-outputs.md)

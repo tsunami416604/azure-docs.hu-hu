@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300006"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945209"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Oktatóanyag: Azure Active Directory SSO-integráció a Kemp LoadMaster Azure AD-integrációval
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -145,7 +145,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A virtuális szolgáltatás paramétereinek megadása.
 
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-1.png)
+    ![Képernyőkép, amely a "adja meg a virtuális szolgáltatás paramétereit" lapon a példákban szereplő értékeket tartalmazza.](./media/kemp-tutorial/kemp-1.png)
 
     a. Virtuális címe
     
@@ -161,7 +161,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Határozza meg a valódi kiszolgáló paramétereit.
     
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-2.png)
+    ![Képernyőkép: a "Kérjük, adja meg a valódi kiszolgáló paramétereit" oldalon a példákban szereplő értékek szerepelnek a mezőkben.](./media/kemp-tutorial/kemp-2.png)
 
     a. Válassza ki a távoli címek engedélyezése lehetőséget.
     
@@ -203,7 +203,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Kattintson az SSL-Tulajdonságok elemre (amely a 7. rétegben működik).
     
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-3.png)
+    ![Képernyőkép, amely az "s L Properties" szakaszt jelölte be, és kijelöl egy példaként kijelölt tanúsítványt.](./media/kemp-tutorial/kemp-3.png)
     
     a. Kattintson az Engedélyezve lehetőségre az SSL-gyorsításban.
     
@@ -222,7 +222,7 @@ Ugrás a Kemp LoadMaster Azure AD integrációs webkonzolra
 
 1. Kattintson a köztes tanúsítványok a tanúsítványok és a szolgáltató területen.
 
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-6.png)
+    ![A "jelenleg telepített köztes tanúsítványok" szakaszt bemutató képernyőkép, amely egy példaként kiválasztott tanúsítvánnyal rendelkezik.](./media/kemp-tutorial/kemp-6.png)
 
     a. Kattintson az új köztes tanúsítvány hozzáadása lehetőségre a fájl kiválasztása elemre.
     
@@ -238,7 +238,7 @@ Ugrás a Kemp LoadMaster Azure AD integrációs webkonzolra
  
 Nyissa meg az SSO kezelése virtuális szolgáltatások alatt lehetőséget.
 
-   ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-7.png)
+   ![Képernyőkép, amely megjeleníti az "S S O" oldalt.](./media/kemp-tutorial/kemp-7.png)
    
    a. A név megadása után kattintson az új ügyféloldali konfiguráció hozzáadása lehetőségre a Hozzáadás elemre.
 
@@ -268,7 +268,7 @@ A Kemp LoadMaster Azure AD-integrációs webkonzolján
 
 1. Kattintson a módosítás gombra, és navigáljon az ESP-beállításokhoz.
     
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-8.png)
+    ![A "szolgáltatások megtekintése/módosítása" lapot megjelenítő képernyőkép, amely kibontja az "ESP-beállítások" és a "valódi kiszolgálók" című szakaszt.](./media/kemp-tutorial/kemp-8.png)
 
     a. Kattintson az ESP engedélyezése lehetőségre.
     
@@ -286,7 +286,7 @@ Keresse meg az alkalmazás URL-címét
 
 A nem hitelesített hozzáférés helyett a bérlőhöz tartozó bejelentkezési oldalt kell látnia. 
 
-![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-9.png)
+![A bérlő "Bejelentkezés" lapját bemutató képernyőkép.](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>Kerberos-alapú hitelesítés konfigurálása 
  
@@ -294,7 +294,7 @@ A nem hitelesített hozzáférés helyett a bérlőhöz tartozó bejelentkezési
 
 1. Hozzon létre egy felhasználói fiókot (ebben a példában AppDelegation).
     
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-10.png)
+    ![Képernyőfelvétel: a "fiók" lapon kijelölt "kcd-felhasználó tulajdonságai" ablak.](./media/kemp-tutorial/kemp-10.png)
 
 
     a. Válassza az Attribútumszerkesztő lapot.
@@ -311,7 +311,7 @@ A nem hitelesített hozzáférés helyett a bérlőhöz tartozó bejelentkezési
 
 1. Válassza a Delegálás lapot.
 
-    ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-11.png)
+    ![Képernyőfelvétel: a "delegálás" lapon kijelölt "kcd-felhasználó tulajdonságai" ablak.](./media/kemp-tutorial/kemp-11.png)
 
     a. Válassza A felhasználóval csak megadott szolgáltatások delegálhatók lehetőséget.
 
@@ -332,7 +332,7 @@ A nem hitelesített hozzáférés helyett a bérlőhöz tartozó bejelentkezési
 
 Nyissa meg a Kemp LoadMaster Azure AD-integrációs webkonzolját > Virtual Services > az egyszeri bejelentkezés kezelése.
 
-![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-12.png)
+![Képernyőkép, amely a "s S O-Manage Domain kezelése" lapot mutatja.](./media/kemp-tutorial/kemp-12.png)
 
 a. Navigáljon a kiszolgálóoldali egyszeri bejelentkezési konfigurációkhoz.
 

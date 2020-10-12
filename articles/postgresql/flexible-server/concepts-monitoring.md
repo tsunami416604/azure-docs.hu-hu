@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707846"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Metrikák figyelése Azure Database for PostgreSQL-rugalmas kiszolgálón
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL különböző mérőszámokat biztosít, amelyek b
 A következő mérőszámok érhetők el a PostgreSQL rugalmas kiszolgálóhoz:
 
 
-|Metrika|Metrika megjelenítendő neve|Egység|Description|
+|Metrika|Metrika megjelenítendő neve|Egység|Leírás|
 |---|---|---|---|
 | active_connections | Aktív kapcsolatok | Darabszám | A kiszolgálóval létesített kapcsolatok száma. | 
 | backup_storage_used | Felhasznált biztonsági mentési tár | Bájt | A felhasznált biztonsági mentési tár mennyisége. Ez a metrika a teljes adatbázis biztonsági mentése, a különbözeti biztonsági másolatok és a naplózott biztonsági mentések által felhasznált tárterület összegét jelöli, amelyet a kiszolgáló számára beállított biztonsági másolatok megőrzési időtartama alapján tartanak fenn. A biztonsági mentések gyakorisága a szolgáltatás által felügyelt. A földrajzilag redundáns tároláshoz a biztonsági mentési tárterület a helyileg redundáns tárolásnál kétszer szerepel. |

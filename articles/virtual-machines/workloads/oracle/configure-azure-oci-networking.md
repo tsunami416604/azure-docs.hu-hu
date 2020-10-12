@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776578"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Közvetlen kapcsolat beállítása az Azure és az Oracle Cloud Infrastructure között  
@@ -66,7 +66,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
     * A **szolgáltatói szolgáltatás kulcsában**illessze be a ExpressRoute szolgáltatás kulcsát.
     * Az első/30 magánhálózati IP-címtartomány kifaragva az **elsődleges BGP IP-címére** és a **másodlagos BGP IP** -címéhez tartozó második/30 magánhálózati IP-címtartomány használatára.
         * Rendelje hozzá a két tartomány első használható címét az Oracle BGP IP-címéhez (elsődleges és másodlagos) és a második címet az ügyfél BGP IP-címéhez (FastConnect perspektívából). Az első használható IP-cím a/30 címtartomány második IP-címe (az első IP-cím a Microsoft számára van fenntartva).
-    * Kattintson a **Create** (Létrehozás) gombra.
+    * Kattintson a **Létrehozás** lehetőségre.
 1. A FastConnect a dinamikus útválasztási átjárón keresztül, az útválasztási táblázat használatával kapcsolja össze a virtuális felhőalapú hálózattal.
 1. Navigáljon az Azure-hoz, és ellenőrizze, hogy a ExpressRoute áramkör **szolgáltatói állapota** **kiépítve** értékre változott-e, és hogy van-e kiépítve egy **Azure Private** típusú társ. Ez a következő lépések előfeltétele.
 
@@ -88,7 +88,7 @@ A Microsoft Terraform parancsfájlokat hozott létre a hálózati összekötő a
 
 A Terraform-parancsfájlok és a kapcsolódó dokumentáció a kapcsolaton keresztüli kapcsolódás központi telepítéséhez ebben a [GitHub-adattárban](https://aka.ms/azureociinterconnecttf)található.
 
-## <a name="monitoring"></a>Nyomon követés
+## <a name="monitoring"></a>Figyelés
 
 Ha az ügynököket mindkét felhőkre telepíti, használhatja az Azure [Network Performance monitor (NPM)](../../../expressroute/how-to-npm.md) szolgáltatást a végpontok közötti hálózat teljesítményének figyelésére. A NPM megkönnyíti a hálózati problémák azonosítását, és segít a hibák elhárításában.
 

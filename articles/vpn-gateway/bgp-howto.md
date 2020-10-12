@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995371"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>A BGP konfigurálása Azure VPN Gateway-átjárók esetén
@@ -45,7 +45,7 @@ Ebben a szakaszban egy virtuális hálózatot hoz létre és konfigurál, valami
 
 **2. ábra**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="A virtuális hálózati átjáró beállításait bemutató ábra" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. TestVNet1 létrehozása és konfigurálása
 
@@ -53,11 +53,11 @@ Ebben a lépésben létrehozza és konfigurálja a TestVNet1. Az Azure Virtual N
 
 * Virtuális hálózat:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="TestVNet1 a megfelelő címek előtagjaival":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 * Alhálózatok:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1 alhálózatok":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. a TestVNet1 VPN Gateway létrehozása BGP-paraméterekkel
 
@@ -67,11 +67,11 @@ Ebben a lépésben létrehoz egy VPN-átjárót a megfelelő BGP-paraméterekkel
 
 1. Adja meg a paramétereket az alább látható módon:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="VNG1 létrehozása":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 1. A lap Kiemelt **BGP-konfiguráció** szakaszában adja meg a következő beállításokat:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="A BGP konfigurálása":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
    * Válassza a **BGP konfigurálása**  -  **engedélyezve** lehetőséget a BGP konfigurációs szakasz megjelenítéséhez.
 
@@ -96,7 +96,7 @@ Az átjáró létrehozása után beszerezheti a BGP-társ IP-címeit az Azure VP
 
 1. Navigáljon a virtuális hálózati átjáró erőforráshoz, és válassza a **konfiguráció** lapot a BGP konfigurációs adatainak megtekintéséhez, ahogy az alábbi képernyőképen is látható. Ezen az oldalon megtekintheti az Azure-beli VPN-átjárón található összes BGP-konfigurációs információt: az ASN-t, a nyilvános IP-címet, valamint a kapcsolódó BGP-társ IP-címeket az Azure oldalon (alapértelmezett és APIPA).
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP-átjáró":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 1. A **konfiguráció** lapon a következő konfigurációs módosításokat végezheti el:
 
@@ -111,13 +111,13 @@ Létesítmények közötti kapcsolat létrehozásához létre kell hoznia egy *h
 
 **3. ábra**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Az IPsec-t bemutató diagram" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. a BGP konfigurálása a helyi hálózati átjárón
 
 Ebben a lépésben a BGP-t konfigurálja a helyi hálózati átjárón. Példaként használja az alábbi képernyőképet. A képernyőképen a helyi hálózati átjáró (site5) látható a 3. ábrán megadott paraméterekkel.
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="A BGP konfigurálása a helyi hálózati átjáróhoz":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 #### <a name="important-configuration-considerations"></a>Fontos konfigurációs szempontok
 
@@ -130,7 +130,7 @@ Ebben a lépésben a BGP-t konfigurálja a helyi hálózati átjárón. Példak�
 
 Ez a példa egy APIPA-címet (169.254.100.1) használ a helyszíni BGP-társ IP-címeként:
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Helyi hálózati átjáró APIPA és BGP":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. S2S-alapú kapcsolatok konfigurálása BGP-kompatibilis
 
@@ -140,13 +140,13 @@ Ebben a lépésben létrehoz egy új, BGP-t használó-kapcsolatokat. Ha már va
 
 Ha a BGP-vel való új kapcsolódást szeretne létrehozni, akkor a **Kapcsolódás hozzáadása** lapon adja meg az értékeket, majd jelölje be a **BGP** engedélyezése beállítást a következő kapcsolatban:. A kapcsolat létrehozásához válassza az **OK** lehetőséget.
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="IPsec létesítmények közötti kapcsolatok BGP-vel":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>Meglévő kapcsolatok frissítése
 
 Ha módosítani szeretné a BGP beállítást egy kapcsolatban, lépjen a kapcsolódási erőforrás **konfiguráció** lapjára, majd a következő példában látható módon állítsa be a **BGP** kapcsolót. A módosítások mentéséhez kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="A BGP frissítése egy kapcsolatban":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>3. rész: a BGP konfigurálása VNet-VNet kapcsolatokra
 
@@ -160,7 +160,7 @@ A **4. ábrára**hivatkozó kontextus esetében, ha a BGP-t le kell tiltani a Te
 
 **4. ábra**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Teljes hálózatot bemutató diagram" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="A hálózati architektúrát és a beállításokat bemutató ábra" border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
 

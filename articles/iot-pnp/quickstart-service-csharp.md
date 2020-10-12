@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759169"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945376"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Gyors útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play eszköz használata (C#)
 
@@ -34,7 +34,7 @@ A rövid útmutató Windows rendszeren való elvégzéséhez a következő szoft
 
 Ha befejezte a gyors üzembe helyezést [: csatlakoztasson egy IoT Plug and Play Windows rendszerű eszközt IoT hub (C#)](quickstart-connect-device-csharp.md), már klónozotta a tárházat.
 
-A mintákat a .NET GitHub-tárház Microsoft Azure IoT SDK-ból klónozott. Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa a következő parancsot a .NET GitHub-tárház [Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához:
+A minták klónozása az Azure IoT-mintákból a C# GitHub-tárházba. Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa a következő parancsot a .NET GitHub-tárház [Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -48,14 +48,13 @@ Ebben a rövid útmutatóban egy C# nyelven írt minta termosztátot használ a 
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
     | IOTHUB_DEVICE_DPS_ID_SCOPE | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | saját PnP-eszköz |
     | IOTHUB_DEVICE_DPS_DEVICE_KEY | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
-
 
 1. Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módban futtathatja.
 
@@ -74,16 +73,16 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a C#-ban, hogy eg
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | saját PnP-eszköz |
     | IOTHUB_CONNECTION_STRING | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
 
 1. Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módban futtathatja.
 
-### <a name="get-digital-twin"></a>Digitális dupla Letöltés
+### <a name="get-device-twin"></a>Eszköz dupla beolvasása
 
-A következő kódrészlet azt mutatja be, hogy a szolgáltatásalkalmazás hogyan kérdezi le a digitális IKeret:
+A következő kódrészlet azt mutatja be, hogy a szolgáltatásalkalmazás hogyan kérdezi le az eszközt (Twin):
 
 ```C#
 // Get a Twin and retrieves model Id set by Device client
@@ -92,7 +91,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> Ez a példa a **Microsoft. Azure. Devices. Client;** névteret használja a **IoT hub szolgáltatás ügyfelétől**. A modell AZONOSÍTÓjának beolvasásával kapcsolatos további tudnivalókért tekintse meg a [fejlesztői útmutató](concepts-developer-guide-service.md)című témakört.
+> Ez a példa a **Microsoft. Azure. Devices. Client** névteret használja a **IoT hub szolgáltatás ügyfelétől**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
 
 Ez a kód a következő kimenetet hozza létre:
 
@@ -101,7 +100,7 @@ Ez a kód a következő kimenetet hozza létre:
       Model Id of this Twin is: dtmi:com:example:Thermostat;1
 ```
 
-A következő kódrészlet azt mutatja be, hogyan használható egy *javítás* a tulajdonságok frissítésére a digitális Twin használatával:
+A következő kódrészlet azt mutatja be, hogyan használható egy javítás a tulajdonságok frissítéséhez az eszköz két *példányán* keresztül:
 
 ```C#
 // Update the twin
@@ -157,7 +156,7 @@ Ez a kód a következő kimenetet hozza létre az eszközről, amikor a szolgál
       Command: MaxMinReport since 21/09/2020 11:25:58: maxTemp=32, minTemp=32, avgTemp=32, startTime=21/09/2020 11:25:59, endTime=21/09/2020 11:26:04
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

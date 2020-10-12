@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 3d999375d746bb359acdccf9bf48f8b77d509776
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000777"
 ---
 # <a name="full-backup-and-restore"></a>Teljes biztonsági mentés és visszaállítás
@@ -99,6 +99,6 @@ sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-nam
 az keyvault restore start --hsm-name mhsmdemo2 --storage-account-name mhsmdemobackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas --backup-folder mhsm-mhsmdemo-2020083120161860
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Lásd: [felügyelt HSM kezelése az Azure CLI használatával](key-management.md).
 - További információ a [felügyelt HSM biztonsági tartományról](security-domain.md)

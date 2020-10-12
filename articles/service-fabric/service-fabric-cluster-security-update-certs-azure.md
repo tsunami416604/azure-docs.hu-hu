@@ -4,10 +4,10 @@ description: Útmutatás új tanúsítványok hozzáadásához, az átváltási 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869745"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Tanúsítványok hozzáadása és törlése Service Fabric-fürtön az Azure-ban
@@ -197,7 +197,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-Telepítse a sablont az erőforráscsoporthoz. Használja ugyanazt az erőforráscsoportot, amelyben a fürt jelenleg telepítve van. Futtassa a New-AzResourceGroupDeployment parancsot. Nem kell megadnia a módot, mert az alapértelmezett érték **növekményes**.
+Telepítse a sablont az erőforráscsoporthoz. Használja ugyanazt az erőforráscsoportot, amelyben a fürt jelenleg telepítve van. Futtassa az New-AzResourceGroupDeployment parancsot. Nem kell megadnia a módot, mert az alapértelmezett érték **növekményes**.
 
 > [!NOTE]
 > Ha a mód be van állítva, akkor véletlenül törölheti a sablonban nem szereplő erőforrásokat. Ezt ne használja ebben a forgatókönyvben.
@@ -263,7 +263,7 @@ Kétféle ügyféltanúsítványt vehet fel – rendszergazda vagy csak olvashat
 Tetszőleges számú ügyféltanúsítványt is megadhat. Minden hozzáadás/törlés a Service Fabric-fürt konfigurációs frissítését eredményezi.
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Ügyféltanúsítványok hozzáadása – rendszergazda vagy csak olvasható a portálon keresztül
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Ügyféltanúsítványok hozzáadása – rendszergazda vagy Read-Only a portálon keresztül
 
 1. Navigáljon a biztonság szakaszra, és válassza a "+ hitelesítés" gombot a biztonság szakasz tetején.
 2. A "hitelesítés hozzáadása" szakaszban válassza a "hitelesítés típusa"-"írásvédett ügyfél" vagy a "rendszergazda ügyfél" lehetőséget.
@@ -271,7 +271,7 @@ Tetszőleges számú ügyféltanúsítványt is megadhat. Minden hozzáadás/tö
 
 ![Ügyféltanúsítvány hozzáadása][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Ügyféltanúsítványok törlése – rendszergazda vagy csak olvasható a portál használatával
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Ügyféltanúsítványok törlése – rendszergazda vagy Read-Only a portál használatával
 
 Ha el szeretne távolítani egy másodlagos tanúsítványt a fürt biztonságához, navigáljon a biztonság szakaszhoz, és válassza a Törlés lehetőséget az adott tanúsítvány helyi menüjében.
 

@@ -15,10 +15,10 @@ ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 354f7fad2d7c0b4de273f9fe3420addb464472b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336071"
 ---
 # <a name="create-an-azure-monitor-vm-with-powershell"></a>Azure Monitor virtuális gép létrehozása a PowerShell-lel
@@ -62,7 +62,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) | Egy virtuálisgép-bővítményt ad hozzá a virtuális géphez. Ebben az esetben a Log Analytics-ügynökbővítmény telepíti a Log Analytics-ügynököt, és regisztrálja a virtuális gépet egy Log Analytics-munkaterületen. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

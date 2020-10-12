@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888714"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945396"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -45,7 +45,7 @@ USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA dé
 Az Azure Spring Cloud a következő ismert korlátozásokkal rendelkezik:
     
 * `spring.application.name` a rendszer felülbírálja az egyes alkalmazások létrehozásához használt alkalmazás nevét.
-* `server.port` az alapértelmezett érték a 1025-es port. Ha bármilyen más értéket alkalmaz, a rendszer felülbírálja a 1025-re.
+* `server.port` az alapértelmezett érték a 1025-es port. Ha más értéket alkalmaz, a rendszer felülbírálja. Vegye figyelembe ezt a beállítást is, és ne adja meg a kiszolgáló portját a kódban.
 * A Azure Portal és Azure Resource Manager sablonok nem támogatják az alkalmazáscsomag feltöltését. Az alkalmazás csomagjait csak az Azure CLI-n keresztüli üzembe helyezésével töltheti fel.
 
 ### <a name="what-pricing-tiers-are-available"></a>Milyen díjszabási szintek érhetők el? 
@@ -206,6 +206,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

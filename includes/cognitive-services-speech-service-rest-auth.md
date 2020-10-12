@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88864914"
 ---
 ## <a name="authentication"></a>Hitelesítés
@@ -20,7 +20,7 @@ Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat azt szem
 | Ocp-Apim-Subscription-Key | Igen | Nem |
 | Engedélyezés: tulajdonos | Igen | Igen |
 
-A fejléc használatakor `Ocp-Apim-Subscription-Key` csak az előfizetési kulcsot kell megadnia. Például:
+A fejléc használatakor `Ocp-Apim-Subscription-Key` csak az előfizetési kulcsot kell megadnia. Példa:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
 ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404918"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel
@@ -221,7 +221,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
     > [!IMPORTANT]
     > Ügyeljen arra, hogy a **felosztott adatokat** tartalmazó bal oldali kimeneti portok a **betanítási modellhez**kapcsolódjanak. A bal oldali port tartalmazza a betanítási készletet. A megfelelő port tartalmazza a tesztelési készletet.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Oszlop kijelölése":::
 
 1. Válassza ki a **Train Model** modult.
 
@@ -236,7 +236,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     A folyamatnak így kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Oszlop kijelölése":::
 
 ### <a name="add-the-score-model-module"></a>A pontszám modell modul hozzáadása
 
@@ -256,7 +256,7 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
     Az utolsó folyamatnak a következőképpen kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Oszlop kijelölése":::
 
 ## <a name="submit-the-pipeline"></a>A folyamat elküldése
 
@@ -285,7 +285,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Oszlop kijelölése":::
 
 ### <a name="evaluate-models"></a>Modellek kiértékelése
 
@@ -309,7 +309,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

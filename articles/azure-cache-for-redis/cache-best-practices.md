@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007913"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
@@ -61,7 +61,7 @@ A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet
 ## <a name="when-is-it-safe-to-retry"></a>Mikor biztonságos az Újrapróbálkozás?
 Sajnos nincs egyszerű válasz.  Minden alkalmazásnak el kell döntenie, hogy milyen műveleteket lehet újrapróbálni, és nem.  Az egyes műveletek különböző követelményekkel és a kulcsok közötti függőségekkel rendelkeznek.  Íme néhány dolog, amit érdemes figyelembe vennie:
 
- * Az ügyféloldali hibák akkor is beszerezhetők, ha a Redis sikeresen futtatta a futtatni kívánt parancsot.  Például:
+ * Az ügyféloldali hibák akkor is beszerezhetők, ha a Redis sikeresen futtatta a futtatni kívánt parancsot.  Példa:
      - Az időtúllépés egy ügyféloldali fogalom.  Ha a művelet elérte a kiszolgálót, a kiszolgáló akkor is futtatja a parancsot, ha az ügyfél várakozik.  
      - Ha a szoftvercsatorna-kapcsolaton hiba történik, nem lehet tudni, hogy a művelet ténylegesen futott-e a kiszolgálón.  A kapcsolati hiba például akkor fordulhat elő, ha a kiszolgáló feldolgozta a kérést, de az ügyfél megkapja a választ.
  *  Hogyan reagál az alkalmazás, ha véletlenül kétszer ugyanazt a műveletet futtatom?  Például mi a teendő, ha egy egész számot kétszer kell megnövelni a helyett?  Az alkalmazásom ugyanarra a kulcsra ír több helyről?  Mi a teendő, ha az újrapróbálkozási logika felülírja az alkalmazás egy másik része által beállított értéket?
@@ -74,14 +74,14 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
  * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Példa a PowerShell parancsprogramra:
-     >PowerShell-ExecutionPolicy korlátozás nélküli engedélyezés-NetAdapterRSS-Name (Get-NetAdapter). név 
+     >PowerShell-ExecutionPolicy korlátlan Enable-NetAdapterRSS-Name (Get-NetAdapter). név 
      
  * **Érdemes lehet prémium szintű Redis-példányokat használni**.  Ezek a gyorsítótár-méretek jobb hálózati késést és átviteli sebességet biztosítanak, mivel a processzor és a hálózat számára is jobb hardveren futnak.
  
      > [!NOTE]
      > A megfigyelt teljesítmény eredményei [itt jelennek](cache-planning-faq.md#azure-cache-for-redis-performance) meg a referenciában.   Ügyeljen arra is, hogy az SSL/TLS felvesz némi terhelést, így eltérő késést és/vagy átviteli sebességet érhet el, ha átviteli titkosítást használ.
  
-### <a name="redis-benchmark-examples"></a>Redis – teljesítményteszt-példák
+### <a name="redis-benchmark-examples"></a>Redis-Benchmark példák
 **Tesztelés előtti beállítás**: Készítse elő a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.
 > Redis-benchmark-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 

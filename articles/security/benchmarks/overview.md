@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777105"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Az Azure biztonsági teljesítményteszt áttekintése (v2)
@@ -22,7 +22,7 @@ Az Azure Security benchmark (ASB) az Azure-ban a munkaterhelések, az adatok és
 Ez a teljesítményteszt egy átfogó biztonsági útmutató részét képezi, amely a következőket is tartalmazza:
 
 - **Felhőalapú bevezetési keretrendszer** – útmutatás a biztonsághoz, beleértve a [stratégiát](/azure/cloud-adoption-framework/strategy/define-security-strategy), a [szerepköröket és a felelősségeket](/azure/cloud-adoption-framework/organize/cloud-security), az [Azure Top 10 ajánlott biztonsági eljárásait](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)és a [hivatkozások megvalósítását](/azure/cloud-adoption-framework/ready/enterprise-scale/).
-- **Azure-** beli, jól összeállítható keretrendszer – útmutató az Azure-beli számítási [feladatok biztonságossá](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) tételéhez.
+- **Azure Well-Architected Framework** – útmutató az Azure-beli számítási [feladatok biztonságossá](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) tételéhez.
 - **Microsoft Security – ajánlott eljárások** – az Azure-beli példákkal. [recommendations](/security/compass/microsoft-security-compass-introduction)
 
  Az Azure biztonsági teljesítményteszt a felhő-központú ellenőrzési területekre koncentrál. Ezek a vezérlők összhangban vannak a jól ismert biztonsági referenciaértékekkel, például a Center for Internet Security (CIS) vezérli az 7,1-es és a National Institute of Standards and Technology (NIST) SP800 – 53-as verzióját.

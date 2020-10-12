@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ea88ad4d349d6a7aedd4e1e3bc8dc804683292
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 952d0acb00a25fe7d84738825cbad017e5b18029
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326082"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892693"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetés az Azure Storage-ban
 
@@ -60,7 +60,7 @@ A felhasználók a webhely nyilvános URL-címének használatával tekinthetik 
 Ha a kiszolgáló 404 hibát ad vissza, és nem adott meg hibaüzenetet a webhely engedélyezésekor, akkor a rendszer az alapértelmezett 404 lapot adja vissza a felhasználónak.
 
 > [!NOTE]
-> A statikus webhely nem támogatja a [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
+> A statikus webhely nem támogatja az [CORS-támogatást az Azure Storage-](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) hoz.
 
 ### <a name="regional-codes"></a>Regionális kódok
 

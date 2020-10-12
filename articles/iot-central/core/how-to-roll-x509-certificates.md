@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 76e2b9542d20b5788a2875dec89d447ce38276a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122021"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>X. 509 eszköz tanúsítványának legördülő IoT Central alkalmazásban
@@ -30,7 +30,7 @@ Saját X. 509 tanúsítványokat is létrehozhat egy olyan eszközzel, mint az O
 
 Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretné frissíteni, a következő módszert kell használnia, amely azonnal frissíti az aktuális tanúsítványt:
 
-1. Navigáljon a **felügyelet** elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre.
+1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre.
 
 2. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában.
 
@@ -52,7 +52,7 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 Ha a tanúsítványok lejáratának kezelésére a tanúsítványokat végzi, a következő módszer használatával azonnal frissítheti az aktuális tanúsítványt:
 
-1. Navigáljon a **felügyelet** elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre. 
+1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre. 
 
 2. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában.
 
@@ -108,7 +108,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 5. Később, amikor az elsődleges tanúsítvány lejárt, térjen vissza az elsődleges tanúsítványra, és frissítse azt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan lehet X. 509 tanúsítványokat beolvasni az Azure IoT Central alkalmazásban, csatlakozhat [az azure IoT Centralhoz](concepts-get-connected.md).
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855390"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>IoT Edge modulok méretezése a Azure Portal használatával
@@ -115,7 +115,7 @@ Ha Azure Stream Analytics-modult szeretne hozzáadni, kövesse az alábbi lépé
 
 Miután hozzáadta a modult egy központi telepítéshez, kiválaszthatja a nevét, és megnyithatja a **IoT Edge modul frissítése** lapot. Ezen az oldalon szerkesztheti a modul beállításait, a környezeti változókat, a létrehozási beállításokat és a modult. Ha hozzáadta a modult a piactéren, előfordulhat, hogy már rendelkezik a paraméterekkel.
 
-Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. hozzon létre egy új **Module Twin tulajdonságot** , amely egy alszakaszhoz tartozó egyedi névvel rendelkezik, például a különálló modul kívánt tulajdonságai között `properties.desired.settings` . Ha csak a mezőben adja meg a tulajdonságokat `properties.desired` , akkor a rendszer felülírja az alacsonyabb prioritású központi telepítésekben definiált modul kívánt tulajdonságait.
+Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. Hozzon létre egy új **Module Twin tulajdonságot** , amely egy egyedi névvel rendelkezik egy alszakaszhoz a modul Twin kívánt tulajdonságai között, például: `properties.desired.settings` . Ha csak a mezőben adja meg a tulajdonságokat `properties.desired` , akkor a rendszer felülírja az alacsonyabb prioritású központi telepítésekben definiált modul kívánt tulajdonságait.
 
 ![A modul Twin tulajdonságának beállítása rétegzett központi telepítéshez](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -183,7 +183,7 @@ Amikor módosít egy központi telepítést, a módosítások azonnal replikál�
 
 1. Az IoT központban válassza a bal oldali ablaktábla menüjének **IoT Edge** elemét.
 1. Válassza a **IoT Edge központi telepítések** fület, majd válassza ki a konfigurálni kívánt központi telepítést.
-1. Válassza ki a **cél feltételt** lapon. módosítsa a **cél feltételt** a kívánt eszközök célzására. Módosíthatja a **prioritást**is.  Kattintson a **Mentés** gombra.
+1. Válassza ki a **cél feltétel** lapot. Módosítsa a **cél feltételt** a kívánt eszközök célzásához. Módosíthatja a **prioritást**is.  Kattintson a **Mentés** gombra.
 
     Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
 

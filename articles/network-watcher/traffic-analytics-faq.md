@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87479846"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
@@ -56,7 +56,7 @@ Az előfizetéshez felhasználóhoz rendelt szerepkörök ellenőrzését:
 
 2. Válassza ki a szükséges előfizetést a **Select-AzSubscription**használatával. 
 
-3. Az adott felhasználóhoz rendelt összes szerepkör listázásához használja a **Get-AzRoleAssignment-SignInName [felhasználói e-mail]-IncludeClassicAdministrators**lehetőséget. 
+3. Az adott felhasználóhoz rendelt összes szerepkör listázásához használja a  **Get-AzRoleAssignment-SignInName [felhasználói e-mail]-IncludeClassicAdministrators**lehetőséget. 
 
 Ha nem lát kimenetet, forduljon a megfelelő előfizetés-rendszergazdához, és kérjen hozzáférést a parancsok futtatásához. További részletekért lásd: [szerepköralapú hozzáférés-vezérlés kezelése Azure PowerShellsal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
@@ -355,7 +355,7 @@ A földrajzi Térkép oldal két fő szakaszt tartalmaz:
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Billentyűzet-navigáció bármely fázisban
     
-- `Esc`a kibontott kijelölés összecsukása.
+- `Esc` a kibontott kijelölés összecsukása.
 - A `Up-arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Esc` . A `Down arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Enter` .
 - A nagyításhoz és a kicsinyítéshez használja a `Shift+Plus` következőt: `Shift+Minus` .
 

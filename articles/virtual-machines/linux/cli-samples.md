@@ -8,17 +8,17 @@ ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 63c420a7ae082cbf38b529e71d8324550a84b7bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319168"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Azure CLI-minták Linux rendszerű virtuális gépekhez
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Script | Description |
+| Script | Leírás |
 |---|---|
 |**Virtuális gépek létrehozása**||
 | [Virtuális gép létrehozása](./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Egy minimális konfigurációval rendelkező linuxos virtuális gépet hoz létre. |

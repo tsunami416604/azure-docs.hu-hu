@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617179"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez
@@ -178,7 +178,7 @@ Egyszerűen meghatározhatja az automatikusan letiltott szabályok jelenlétét,
 
 A SOC-kezelőknek rendszeresen ellenőriznie kell a szabályok listáját az automatikusan letiltott szabályok meglétének ellenőrzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával.
 
