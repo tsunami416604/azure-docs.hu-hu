@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924753"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box Disk felügyelete az Azure Portal használatával
@@ -128,12 +128,12 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 |Szállítás alatt     |A visszaküldött csomagot a futár átvette. <br> A szállítás az Azure-adatközpontban való fogadása után automatikusan feltölti az Azure-ba.         |
 |Megérkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
 |Adatok átmásolva     |Az adatok másolása folyamatban van.<br> Várjon, amíg az adatok másolása befejeződik.         |
-|Befejeződött       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
+|Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a feltöltési naplókat az **áttekintésben**megadott elérési út használatával. További információt a [feltöltési hibák naplóinak letöltése](data-box-disk-troubleshoot-upload.md#download-logs)című témakörben olvashat.   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza.     |
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [a Data Box Disk-hibák elhárításának](data-box-disk-troubleshoot.md) módját.

@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631290"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
@@ -57,7 +57,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy „/get” műveletet, amelyet 
 2. Kattintson a **+ Művelet hozzáadása** elemre.
 3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/get*” karakterláncot az erőforrás mezőjébe.
 4. A **Megjelenített név** mezőbe írja be a következőt: „*FetchData*”.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="test-an-operation"></a>Műveletek tesztelése
 
@@ -79,7 +79,7 @@ Ez a szakasz bemutatja, hogyan adhat hozzá egy paramétert használó művelete
 2. Kattintson a **+ Művelet hozzáadása** elemre.
 3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/status/{code}*” karakterláncot az erőforrás mezőjébe. Lehetősége van megadni a paraméterhez kapcsolódó információkat. A **TÍPUS** értéke például lehet „*Szám*”, az **ÉRTÉKEK** értéke pedig lehet „*200*” (az alapértelmezett érték).
 4. A **Megjelenített név** mezőbe írja be a következőt: „GetStatus”.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="test-the-operation"></a>A művelet tesztelése 
 

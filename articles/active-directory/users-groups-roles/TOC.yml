@@ -183,6 +183,8 @@
                   href: roles-custom-available-permissions.md
                 - name: Nagyvállalati alkalmazás engedélyei
                   href: custom-enterprise-app-permissions.md
+                - name: Alkalmazás hozzájárulási engedélyei
+                  href: custom-consent-permissions.md
             - name: Alkalmazás rendszergazdai engedélyeinek delegálása
               href: roles-delegate-app-roles.md
         - name: Csoportok használata szerepkör-hozzárendelések kezeléséhez

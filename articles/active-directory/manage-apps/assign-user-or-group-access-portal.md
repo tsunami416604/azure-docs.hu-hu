@@ -12,10 +12,10 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604325"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Alkalmazás felhasználó-hozzárendelésének kezelése Azure Active Directory
@@ -151,7 +151,7 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
 - [Azure AD-beli alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
 - [Az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)

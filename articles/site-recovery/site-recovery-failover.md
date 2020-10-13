@@ -5,10 +5,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317888"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Feladatátvétel futtatása a helyszíni rendszerről az Azure-ba
@@ -32,7 +32,7 @@ Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH hasz
 
 **Feladatátvétel után** | **Hely** | **Műveletek**
 --- | --- | ---
-**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
+**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
 **Linux rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 
 
@@ -138,7 +138,7 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
     - Azonos IP-cím megőrzése: az Azure-beli virtuális gépen ugyanazt az IP-címet használhatja, mint a helyszíni gép számára.
     - Eltérő IP-cím használata: használhat másik IP-címet az Azure-beli virtuális géphez.
     - [További](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) információ a belső IP-címek beállításáról.
-- **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információ](concepts-public-ip-address-with-site-recovery.md).
+- **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információk](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

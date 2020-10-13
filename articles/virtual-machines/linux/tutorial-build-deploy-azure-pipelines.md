@@ -12,10 +12,10 @@ ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
 ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320200"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
@@ -295,7 +295,7 @@ A környezet üzembe helyezési nézete biztosítja a véglegesítés és a munk
   
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Folytathatja az imént létrehozott [folyamat testreszabását](/azure/devops/pipelines/customize-pipeline) .
 - Ha szeretné megtudni, hogy mit tehet a YAML-folyamatokban, tekintse meg a [YAML-séma referenciáját](/azure/devops/pipelines/yaml-schema).
 - Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.

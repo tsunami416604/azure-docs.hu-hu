@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921928"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
@@ -123,7 +123,7 @@ Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek ko
 
 Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesítési mechanizmusokkal rendelkezhetnek mind a végfelhasználói, mind a rendszergazdai hozzáféréshez, míg mások az Azure AD előnyeit használják ki. Attól függően, hogy hitelesítő adatokat von össze Active Directory összevonási szolgáltatások (AD FS) segítségével, címtár-szinkronizálást használ, vagy csak a felhőben kezeli a felhasználói fiókokat, a [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) használata segít az identitás-életciklusok erőforrások közötti kezelésében.
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolat
 Az Azure virtuális hálózataihoz való ügyfélkapcsolatok biztonságossá tételének céljából több mechanizmus áll rendelkezésre. Ezen mechanizmusok közül kettő, a [helyek közötti VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) és a [pont-hely típusú VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S) lehetővé teszik az iparági szabványnak megfelelő IPsec (S2S) vagy a [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) használatát titkosítás és alagútkezelés céljából. A nyilvánosan elérhető Azure-szolgáltatásokhoz (pl. Azure Portal) való csatlakozáshoz az Azure-nak HTTPS-kapcsolatra van szüksége.
 
 Az olyan önálló megerősített munkaállomás esetében, amely nem RD-átjárón keresztül csatlakozik az Azure-hoz, javasolt, hogy SSTP alapú pont-hely típusú VPN-nel hozza létre az Azure Virtual Networkkel kialakított kezdeti kapcsolatot, majd az egyes virtuális gépekhez vezető RDP-kapcsolatokat a VPN-alagútból alakítsa ki.
@@ -206,10 +206,10 @@ A rendszergazdák által a megerősített munkaállomásokon végezhető feladat
 * Titkosítás. Győződjön meg róla, hogy a felügyeleti munkaállomásai rendelkeznek TPM-mel, a [titkosított fájlrendszer](https://technet.microsoft.com/library/cc700811.aspx)(EFS) és a BitLocker biztonságosabb üzembe helyezésének érdekében.
 * Irányítás. Az AD DS csoportházirend-objektumok használatával ellenőrzés alatt tarthatja a rendszergazdák összes Windows-felületét, mint például a fájlmegosztást. Terjessze ki a naplózási és megfigyelési folyamatokat a felügyeleti munkaállomásokra. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A megerősített munkaállomás-konfiguráció Azure-felhőszolgáltatások, virtuális gépek és szolgáltatások felügyeletére való használata segíthet számos olyan kockázatok és fenyegetések elkerülésében, amelyek a kritikus informatikai infrastruktúrák távfelügyeletével járhatnak. Az Azure és a Windows is kínál a kommunikáció, hitelesítés és ügyfélviselkedés védelmére és ellenőrzésére alkalmas mechanizmusokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő források általánosabb információkat kínálnak az Azure-ról és a kapcsolódó Microsoft-szolgáltatásokról, az ebben a dokumentumban bemutatott konkrét elemek mellett:
 
 * [Az emelt szintű hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – itt technikai részleteket olvashat az Azure-felügyelethez használt biztonságos felügyeleti munkaállomás tervezéséről és kiépítéséről.

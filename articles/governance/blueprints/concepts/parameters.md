@@ -4,10 +4,10 @@ description: Ismerje meg a statikus és dinamikus paramétereket, valamint azt, 
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651949"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
@@ -51,7 +51,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statikus paraméterek beállítása a portálon
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
@@ -65,7 +65,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 1. Az összetevő **szerkesztése** oldalon a kiválasztott összetevőnek megfelelő érték beállítások jelennek meg. Az összetevő minden paramétere rendelkezik egy címmel, egy érték mezővel és egy jelölőnégyzettel. Jelölje be a jelölőnégyzetet, hogy ne legyen bejelölve **statikus paraméterként**. Az alábbi példában csak a _hely_ **statikus paraméter** , mert nincs bejelölve, és az _erőforráscsoport neve_ be van jelölve.
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Képernyőkép a statikus paraméterekről egy tervrajz-összetevőn." border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Képernyőkép a terv meghatározásáról és a Kiemelt Y paraméterek X-ről." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Statikus paraméterek beállítása REST API
 
@@ -168,7 +168,7 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Dinamikus paraméterek beállítása a portálon
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
@@ -176,7 +176,7 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 1. A **terv kiosztása** lapon keresse meg az összetevő **paramétereinek** szakaszát. Minden olyan összetevő, amely legalább egy **dinamikus paraméterrel** rendelkezik, megjeleníti az összetevőt és a konfigurációs beállításokat. Adja meg a szükséges értékeket a paraméterekhez a terv kiosztása előtt. Az alábbi példában a _Name_ egy **dinamikus paraméter** , amelyet meg kell határozni a terv hozzárendelésének befejezéséhez.
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Képernyőfelvétel: dinamikus paraméterek beállítása a terv hozzárendelésekor." border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Képernyőkép a terv meghatározásáról és a Kiemelt Y paraméterek X-ről." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dinamikus paraméterek beállítása REST API
 

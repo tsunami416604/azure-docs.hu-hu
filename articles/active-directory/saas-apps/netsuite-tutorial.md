@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554515"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
@@ -79,7 +79,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A [Azure Portal](https://portal.azure.com/)a **NetSuite** Application Integration oldalon keresse meg a **kezelés** szakaszt, majd válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** ablaktáblán válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-** panelen való beállítása lapon válassza az **ALAPszintű SAML-konfiguráció**melletti **Szerkesztés** ("ceruza") ikont.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza az **ALAPszintű SAML-konfiguráció**melletti **Szerkesztés** ("ceruza") ikont.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -222,7 +222,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Válassza a **Mentés** lehetőséget.
+    e. Kattintson a **Mentés** gombra.
 
     f. A felső navigációs sávon válassza az **engedélyek**lehetőséget. Ezután válassza a **telepítés**lehetőséget.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     : Válassza az **SAML egyszeri bejelentkezés**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
-    h. Válassza a **Mentés** lehetőséget.
+    h. Kattintson a **Mentés** gombra.
 
     i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő**lehetőséget.
 
@@ -248,7 +248,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Válassza a **Mentés** lehetőséget.
+    m. Kattintson a **Mentés** gombra.
 
 ### <a name="create-the-netsuite-test-user"></a>A NetSuite test felhasználó létrehozása
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037405"
 ---
 # <a name="geofencing-geojson-data"></a>Geokerítések GeoJSON-adatbázis
@@ -24,9 +24,9 @@ A geokerítésen vagy geofences vonatkozó adatmennyiséget `Feature` objektum �
 * A GeoJSON objektum típusa lehet `Feature` objektum vagy `FeatureCollection` objektum.
 * A geometria objektum típusa lehet a,,,,, `Point` `MultiPoint` `LineString` `MultiLineString` `Polygon` `MultiPolygon` és `GeometryCollection` .
 * A szolgáltatás összes tulajdonságának tartalmaznia kell a `geometryId` -t, amely a geokerítésen azonosítására szolgál.
-* A-ben a, a, `Point` `MultiPoint` `LineString` `MultiLineString` `radius` a tulajdonságban szerepelnie kell a szolgáltatásnak. `radius`az érték mérése méterben történik, az `radius` érték 1-től 10000-ig terjed.
+* A-ben a, a, `Point` `MultiPoint` `LineString` `MultiLineString` `radius` a tulajdonságban szerepelnie kell a szolgáltatásnak. `radius` az érték mérése méterben történik, az `radius` érték 1-től 10000-ig terjed.
 * A `polygon` és a `multipolygon` geometria típusú szolgáltatáshoz nem tartozik RADIUS-tulajdonság.
-* `validityTime`a egy nem kötelező tulajdonság, amely lehetővé teszi a felhasználó számára a geokerítésen-adatmennyiség érvényességi időtartamának és érvényességi idejének beállítását. Ha nincs megadva, az adatértékek soha nem járnak le, és mindig érvényesek.
+* `validityTime` a egy nem kötelező tulajdonság, amely lehetővé teszi a felhasználó számára a geokerítésen-adatmennyiség érvényességi időtartamának és érvényességi idejének beállítását. Ha nincs megadva, az adatértékek soha nem járnak le, és mindig érvényesek.
 * A a `expiredTime` geokerítések-adatok lejárati dátuma és időpontja. Ha a kérelemben szereplő érték későbbi ennél az `userTime` értéknél, a megfelelő geokerítésen-adatmennyiség lejárt adatként minősül, és a rendszer nem kérdezi le. Ekkor a geokerítésen-geometryId a `expiredGeofenceGeometryId` geokerítésen-válaszban található tömbbe kerül.
 * A a `validityPeriod` geokerítésen érvényességi időtartamának listája. Ha a `userTime` kérelemben szereplő érték az érvényességi időtartamon kívül esik, a megfelelő geokerítésen-adatmennyiség érvénytelennek minősül, és nem lesz lekérdezve. A geokerítésen-geometryId a `invalidPeriodGeofenceGeometryId` geokerítésen-válaszon belüli tömb tartalmazza. A következő táblázat a validityPeriod elem tulajdonságait mutatja be.
 
@@ -34,15 +34,15 @@ A geokerítésen vagy geofences vonatkozó adatmennyiséget `Feature` objektum �
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | Az érvényességi időtartam kezdő dátumának időpontja. |
 | endTime   | Datetime  | true |  Az érvényességi időszak befejezési dátumának időpontja. |
-| naptárkivételhez RecurrenceType érték | string | hamis |   Az időszak ismétlődési típusa Az érték lehet:,, `Daily` `Weekly` `Monthly` vagy `Yearly` . Az alapértelmezett érték: `Daily` .|
-| businessDayOnly | Logikai | hamis |  Jelezze, hogy az adatai csak munkanapokon érvényesek-e. Az alapértelmezett érték: `false` .|
+| naptárkivételhez RecurrenceType érték | sztring | hamis |   Az időszak ismétlődési típusa Az érték lehet:,, `Daily` `Weekly` `Monthly` vagy `Yearly` . Az alapértelmezett érték `Daily`.|
+| businessDayOnly | Logikai | hamis |  Jelezze, hogy az adatai csak munkanapokon érvényesek-e. Az alapértelmezett érték `false`.|
 
 
 * Az összes koordináta-érték [hosszúság, szélesség] szerint van megadva a ben `WGS84` .
 * Minden olyan szolgáltatás esetében, amely tartalmazza a, a, `MultiPoint` `MultiLineString` `MultiPolygon` vagy `GeometryCollection` a tulajdonságokat, a rendszer az összes elemre alkalmazza a tulajdonságokat. például: a (z) minden pontja `MultiPoint` ugyanazt a sugarat fogja használni, hogy több kör alakú geokerítésen.
 * A pont-kör forgatókönyvben a kör alakú geometria egy geometriai objektum használatával ábrázolható, `Point` amely a [GeoJSON geometriák kiterjesztésével lett kibővítve](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
 
-A következő példa egy minta-kérelem törzse, amely egy geokerítésen és egy sugarat használó kör alakú geokerítésen geometriát jelöl `GeoJSON` . A geokerítésen-adatok érvényes időtartama 2018-10-22, 9:00 és 17:00 között, a hétvégén kívül minden nap megismétlődik. `expiredTime`azt jelzi, hogy ez a geokerítésen-érték lejártnak minősül, ha `userTime` a kérelem későbbi, mint `2019-01-01` .  
+A következő példa egy minta-kérelem törzse, amely egy geokerítésen és egy sugarat használó kör alakú geokerítésen geometriát jelöl `GeoJSON` . A geokerítésen-adatok érvényes időtartama 2018-10-22, 9:00 és 17:00 között, a hétvégén kívül minden nap megismétlődik. `expiredTime` azt jelzi, hogy ez a geokerítésen-érték lejártnak minősül, ha `userTime` a kérelem későbbi, mint `2019-01-01` .  
 
 ```json
 {

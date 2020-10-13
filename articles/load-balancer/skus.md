@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
 ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631443"
 ---
 # <a name="azure-load-balancer-skus"></a>SKU Azure Load Balancer
@@ -58,7 +58,7 @@ További információ: [Load Balancer korlátok](https://docs.microsoft.com/azur
   - Az erőforráscsoport-áthelyezési műveletek (ugyanazon az előfizetésen belül) a standard Load Balancer és a standard nyilvános IP-címek esetében **is támogatottak** . 
   - Az [előfizetési csoport áthelyezési műveletei](../azure-resource-manager/management/move-support-resources.md) **nem** támogatottak standard Load Balancer és standard nyilvános IP-erőforrások esetén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - Tudnivalók a [standard Load Balancer és a Availability Zones](load-balancer-standard-availability-zones.md)használatáról.

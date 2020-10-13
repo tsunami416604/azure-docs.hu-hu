@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 56e8212d60494d469e225c25edbbd331c601ea6b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804160"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB mellékletek
@@ -158,7 +158,7 @@ namespace attachments
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet) szolgáltatással
 - Hivatkozások a mellékletek használatára [Azure Cosmos db .net SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet&preserve-view=true) használatával

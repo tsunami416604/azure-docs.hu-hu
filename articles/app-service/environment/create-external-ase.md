@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961788"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása
@@ -65,7 +65,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 2. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
-3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha szerepköralapú Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
+3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha Role-Based Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
 4. Válassza ki az operációs rendszerét (Windows, Linux vagy Docker). 
 
@@ -103,7 +103,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 1. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
-1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha szerepköralapú Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
+1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha Role-Based Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
 1. Válassza ki a App Service tervet, majd válassza az **új létrehozása**lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
 

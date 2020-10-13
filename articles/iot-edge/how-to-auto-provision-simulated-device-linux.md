@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95dc5b70174cd738104260aac2e175c0657d9c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447808"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966202"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
@@ -178,11 +178,36 @@ Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet autom
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható. Telepítse a IoT Edge futtatókörnyezetet a virtuális gépre.
 
-Az eszköz típusának megfelelő cikk megkezdése előtt Ismerje meg a DPS- **azonosító hatókörét** és az eszköz **regisztrációs azonosítóját** . Ha telepítette az Ubuntu-kiszolgálót, használja az **x64** -es utasításokat. Győződjön meg arról, hogy a IoT Edge futtatókörnyezet automatikus, nem manuális, kiépítés esetén van konfigurálva.
+Az eszköz kiépítéséhez kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit, majd térjen vissza ehhez a cikkhez.
 
-Ha a biztonsági démon konfigurálásának lépését választja, ügyeljen rá, hogy a [2. lehetőség automatikus kiépítés](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning) és konfigurálás a TPM-igazoláshoz lehetőséget válassza.
+## <a name="configure-the-device-with-provisioning-information"></a>Az eszköz konfigurálása az üzembe helyezési adatokkal
 
-[A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)
+Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszközt az általa használt információval az eszköz kiépítési szolgáltatásához való kapcsolódáshoz és a IoT Hubához.
+
+1. Ismerje meg a DPS- **azonosító hatókörét** és az eszköz **regisztrációs azonosítóját** , amely az előző fejezetekben lett összegyűjtve.
+
+1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+1. A fájl kiépítési konfigurációk szakaszának megkeresése. Jegyezze fel a TPM-kiépítés sorait, és győződjön meg arról, hogy az egyéb kiépítési sorok megjegyzése megtörténik.
+
+   A `provisioning:` sornak nem lehetnek korábbi szóközök, és a beágyazott elemeket két szóközzel kell behúzni.
+
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "tpm"
+       registration_id: "<REGISTRATION_ID>"
+   ```
+
+1. Frissítse a és a értékét a `scope_id` `registration_id` DPS és az eszköz adataival.
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge hozzáférés biztosítása a TPM-hez
 

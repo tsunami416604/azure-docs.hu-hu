@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574279"
 ---
-# <a name="iot-plug-and-play-components-in-models"></a>IoT Plug and Play-összetevők a modellekben
+# <a name="iot-plug-and-play-components-in-models"></a>Modellekben lévő IoT Plug and Play-összetevők
 
-A IoT Plug and Play konvenciók esetében az eszköz egy IoT Plug and Play-eszköz, ha a digitális Twins Definition Language (DTDL) modell AZONOSÍTÓját mutatja be, amikor egy IoT hubhoz csatlakozik.
+Az IoT Plug and Playhez kapcsolódó konvenciók szerint az eszköz egy IoT Plug and Play-eszköz, ha bemutatja a DTDL- (Digital Twins Definition Language-) modellazonosítóját, amikor IoT hubhoz csatlakozik.
 
-A következő kódrészlet példákat mutat be a modellek azonosítói:
+Az alábbi kódrészlet a modellazonosítók néhány példáját mutatják be:
 
 ```json
  "@id": "dtmi:com:example:TemperatureController;1"
@@ -114,7 +114,7 @@ Több összetevővel rendelkező DTDL-modell esetén két vagy több összetevő
 
 Ebben a modellben három összetevő van definiálva a tartalom szakaszban – két `Thermostat` összetevő és egy `DeviceInformation` összetevő. Létezik egy alapértelmezett összetevő is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a modell-összetevőket, néhány további erőforrást is talál:
 

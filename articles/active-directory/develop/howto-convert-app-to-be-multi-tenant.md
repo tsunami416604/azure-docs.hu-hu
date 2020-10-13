@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631307"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
@@ -141,7 +141,7 @@ Előfordulhat, hogy az alkalmazásnak több rétege is van, amelyek mindegyike a
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Több réteg egyetlen bérlőn
 
-Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. Ennek a viselkedésnek az engedélyezéséhez az erőforrás alkalmazás-regisztrációjának tartalmaznia kell az ügyfél alkalmazás-AZONOSÍTÓját az `knownClientApplications` [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Például:
+Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. Ennek a viselkedésnek az engedélyezéséhez az erőforrás alkalmazás-regisztrációjának tartalmaznia kell az ügyfél alkalmazás-AZONOSÍTÓját az `knownClientApplications` [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Példa:
 
 ```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
@@ -188,9 +188,9 @@ A több-bérlős alkalmazások hozzáférési tokeneket is kérhetnek az Azure A
 * [Az engedélyezési keretrendszer áttekintése][AAD-Consent-Overview]
 * [Az API-engedélyek hatókörének Microsoft Graph][MSFT-Graph-permission-scopes]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri bejelentkezést (SSO) az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások (például Microsoft 365) által elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot. Ha többet szeretne megtudni az Azure AD-hez és Microsoft 365 szolgáltatásokhoz, például az Exchange, a SharePoint, a OneDrive, a OneNote és más rendszerekhez, látogasson el [Microsoft Graph API][MSFT-Graph-overview]-ra.
+Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri Sign-On (SSO) használatát az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások, például a Microsoft 365 számára elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot. Ha többet szeretne megtudni az Azure AD-hez és Microsoft 365 szolgáltatásokhoz, például az Exchange, a SharePoint, a OneDrive, a OneNote és más rendszerekhez, látogasson el [Microsoft Graph API][MSFT-Graph-overview]-ra.
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

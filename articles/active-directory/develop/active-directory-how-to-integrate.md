@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631409"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integráció a Microsoft Identity platformmal
@@ -88,7 +88,7 @@ A Microsoft Identity platformmal való integráció olyan előnyökkel jár, ame
 
 **Az Azure AD a világ különböző pontjain üzemelő adatközpontokban van üzembe helyezve, és az óra körül felügyelhető és figyelhető.**  Az Azure AD a Microsoft Azure és a Microsoft 365 Identity Management rendszer, amely a világ 28 adatközpontjában üzemel. A címtáradatok legalább három adatközpontba való replikálásra vannak garantálva. A globális Load Balancer biztosítja, hogy a felhasználók hozzáférjenek az Azure AD legközelebbi példányához, amely tartalmazza az adatmennyiséget, és ha problémát észlel, automatikusan átirányítja a kéréseket más adatközpontokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [kód írásának megkezdése](v2-overview.md#getting-started).
 

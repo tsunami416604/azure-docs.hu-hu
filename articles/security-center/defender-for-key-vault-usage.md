@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448332"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
@@ -66,7 +66,7 @@ Ha lefordította a gyanús felhasználó vagy alkalmazás által elért titkok, 
     1. Ha a feltört hitelesítő adatokat használták, az alkalmazás tulajdonosának azonosítania kell az elért adatokat, és csökkentenie kell a hatását.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oldal azt ismerteti, hogyan lehet reagálni az Azure Defender és a Key Vault közötti riasztásokra. A kapcsolódó információk a következő lapokon találhatók:
 

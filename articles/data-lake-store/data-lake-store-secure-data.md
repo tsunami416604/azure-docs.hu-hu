@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574143"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme
@@ -147,7 +147,7 @@ Ha a biztonsági csoport ACL-jeit egy Data Lake Storage Gen1 fájlrendszerből t
    
     ![Képernyőkép a hozzáférés panelről, az adatmérnöki lehetőséggel és a hozzáférés részletei panelen, az Eltávolítás lehetőséggel.](./media/data-lake-store-secure-data/adl.remove.acl.png "Engedélyek kiosztása a csoportnak")
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

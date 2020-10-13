@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9a68ec82ea5e924916cbe8b07c11a4f8f62199a7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317956"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: konfiguráció kezelése | Enyhítését 
@@ -214,7 +214,7 @@ Vegye figyelembe, hogy a kérelem-ellenőrzési funkció nem támogatott, és ne
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [IE8 biztonsági rész V: átfogó védelem](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection), [MIME-típus](https://en.wikipedia.org/wiki/Mime_type) |
-| **Lépések** | Az X-Content-Type-Options fejléc egy HTTP-fejléc, amely lehetővé teszi a fejlesztők számára, hogy a tartalmuk ne legyenek MIME-szippantva. Ez a fejléc a MIME-szippantás elleni támadások enyhítésére szolgál. Minden olyan oldal esetében, amely tartalmazhatja a felhasználó által ellenőrizhető tartalmat, az X-Content-Type-Options: deszippantás HTTP-fejlécet kell használnia. Ha az alkalmazás összes oldalához globálisan szeretné engedélyezni a szükséges fejlécet, a következők egyikét teheti:|
+| **Lépések** | Az X-Content-Type-Options fejléc egy HTTP-fejléc, amely lehetővé teszi a fejlesztők számára, hogy a tartalmuk ne legyenek MIME-szippantva. Ez a fejléc a MIME-Sniffing támadások enyhítésére szolgál. Minden olyan oldal esetében, amely tartalmazhatja a felhasználó által ellenőrizhető tartalmat, az X-Content-Type-Options: deszippantás HTTP-fejlécet kell használnia. Ha az alkalmazás összes oldalához globálisan szeretné engedélyezni a szükséges fejlécet, a következők egyikét teheti:|
 
 ### <a name="example"></a>Példa
 Adja hozzá a fejlécet a web.config fájlban, ha az alkalmazást Internet Information Services (IIS) 7-től futtatja. 

@@ -11,10 +11,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036844"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
@@ -65,7 +65,7 @@ Miután az alkalmazás hozzáférési jogkivonatot kap, az SDK és/vagy az alkal
 | Engedélyezés  | Tulajdonos eyJ0e.... HNIVN |
 
 > [!NOTE]
-> `x-ms-client-id`a Azure Maps fiók-alapú GUID, amely megjelenik a Azure Maps hitelesítés lapon.
+> `x-ms-client-id` a Azure Maps fiók-alapú GUID, amely megjelenik a Azure Maps hitelesítés lapon.
 
 Íme egy példa egy Azure Maps Route-kérelemre, amely egy Azure AD OAuth-tulajdonosi jogkivonatot használ:
 
@@ -90,7 +90,7 @@ Az Azure RBAC konfigurálásakor ki kell választania egy rendszerbiztonsági ta
 
 A következő szerepkör-definíciós típusok léteznek az alkalmazási forgatókönyvek támogatásához.
 
-| Azure-szerepkör definíciója       | Description                                                                                              |
+| Azure-szerepkör definíciója       | Leírás                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Adatolvasó Azure Maps      | Hozzáférést biztosít a nem változtatható Azure Maps REST API-khoz.                                                       |
 | Azure Maps adatközreműködő | Hozzáférést biztosít a megváltoztathatatlan Azure Maps REST API-khoz. A változékonyság a műveletek: írás és törlés művelet határozza meg. |
@@ -114,7 +114,7 @@ Ezt követően az egyéni szerepkör-definíció bármely rendszerbiztonsági ta
 
 Íme néhány példa arra, hogy az egyéni szerepkörök Hogyan javíthatják az alkalmazások biztonságát.
 
-| Eset                                                                                                                                                                                                                 | Egyéni szerepkörre vonatkozó adatművelet (ek)                                                                                                                  |
+| Forgatókönyv                                                                                                                                                                                                                 | Egyéni szerepkörre vonatkozó adatművelet (ek)                                                                                                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | Nyilvános vagy interaktív bejelentkezési weblap, amely alapszintű Térkép csempével és más REST API-kkal nem rendelkezik.                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | Olyan alkalmazás, amely csak fordított helymeghatározáshoz és más REST API-k használatát igényli.                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |
@@ -129,7 +129,7 @@ Ha hozzárendel egy szerepkör-hozzárendelést egy erőforráscsoporthoz, a hoz
 > [!TIP]
 > A Microsoft általános javaslata, hogy hozzáférést kell rendelnie a Azure Maps fiók hatóköréhez, mert megakadályozza, hogy az azonos Azure-előfizetésben létező **más Azure Maps fiókokhoz való nem kívánt hozzáférést biztosít** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a RBAC:
 > [!div class="nextstepaction"]

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504304"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Kis méretű adathalmazok átvitele kis vagy közepes hálózati sávszélességen
@@ -55,9 +55,9 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 | Grafikus felület | Igen | Igen | Nem | Nem |
 | Támogatott platformok | Windows, Mac, Linux | Webes alapú |Windows, Mac, Linux |Minden platform |
 | Engedélyezett blob Storage-műveletek<br>blobok és mappák esetén | Feltöltés<br>Letöltés<br>Kezelés | Feltöltés<br>Letöltés<br>Kezelés |Feltöltés<br>Letöltés<br>Kezelés | Igen, testreszabható |
-| Engedélyezett Data Lake Gen1-tároló<br>fájlok és mappák műveletei | Feltöltés<br>Letöltés<br>Kezelés | No |Feltöltés<br>Letöltés<br>Kezelés                   | No |
+| Engedélyezett Data Lake Gen1-tároló<br>fájlok és mappák műveletei | Feltöltés<br>Letöltés<br>Kezelés | Nem |Feltöltés<br>Letöltés<br>Kezelés                   | Nem |
 | Engedélyezett file Storage-műveletek<br>fájlok és könyvtárak esetén | Feltöltés<br>Letöltés<br>Kezelés | Feltöltés<br>Letöltés<br>Kezelés   |Feltöltés<br>Letöltés<br>Kezelés | Igen, testreszabható |
-| Engedélyezett Table Storage-műveletek<br>táblákhoz |Kezelés | No |Tábla-támogatás a AzCopy v7-ben |Igen, testreszabható|
+| Engedélyezett Table Storage-műveletek<br>táblákhoz |Kezelés | Nem |Tábla-támogatás a AzCopy v7-ben |Igen, testreszabható|
 | Engedélyezett üzenetsor-tárolás | Kezelés | Nem  |Nem | Igen, testreszabható|
 
 

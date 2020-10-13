@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 15270a998aff174c04acf2969d984eb022852635
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117362"
 ---
 # <a name="how-application-consent-works"></a>Az alkalmazások jóváhagyásának működése
@@ -29,5 +29,5 @@ Ebből a cikkből megtudhatja, hogyan működik az Azure AD-keretrendszer, így 
 - További részletekért tekintse meg, [Hogyan használhatják a több-bérlős alkalmazások a](./howto-convert-app-to-be-multi-tenant.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, és támogatják a fejlettebb többrétegű alkalmazás-mintákat.
 - További részletekért tekintse meg, [Hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll-rétegben az engedélyezési kód engedélyezése folyamat során.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

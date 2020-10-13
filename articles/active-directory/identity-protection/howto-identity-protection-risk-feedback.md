@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 939ffc9e2a8fb8ce3a25dc212e3df34dc6bb2ec1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950357"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Útmutató: kockázati visszajelzés küldése Azure AD Identity Protection
@@ -45,7 +45,7 @@ Az Azure AD a Visszajelzésével frissíti az alapul szolgáló felhasználó é
 
 Az alábbi forgatókönyvek és mechanizmusok az Azure AD-re vonatkozó kockázati visszajelzéseket biztosítanak.
 
-| Használati eset | Hogyan adhat visszajelzést? | Mi történik a motorháztető alatt? | Jegyzetek |
+| Forgatókönyv | Hogyan adhat visszajelzést? | Mi történik a motorháztető alatt? | Jegyzetek |
 | --- | --- | --- | --- |
 | **Bejelentkezés nem sérült (hamis pozitív)** <br> A "kockázatos bejelentkezések" jelentésben a kockázatos bejelentkezés [kockázati állapot = veszélyeztetett] látható, de a bejelentkezés nem sérült meg. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés biztonságos megerősítése" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, hogy egyik sem [kockázati állapot = megerősített biztonság; Kockázati szint (aggregált) =-], és megfordítja a felhasználói kockázatra gyakorolt hatását. | Jelenleg a "bejelentkezési biztonság megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
 | **Bejelentkezés feltört (igaz pozitív)** <br> A "kockázatos bejelentkezések" jelentés a kockázatos bejelentkezési [kockázati állapot = kockázat] értéket jeleníti meg, alacsony kockázatú [kockázati szint (aggregált) = alacsony], és a bejelentkezés valóban sérült. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés megerősítése – feltört" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, és a kockázat a magas [kockázat állapot = megerősítve: sérült; Kockázati szint = magas]. | Jelenleg a "megerősítő bejelentkezés megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
@@ -58,6 +58,6 @@ A rendszer offline állapotba állítja a felhasználói kockázat észlelésév
 
 ![Kockázat-feldolgozási állapot a kockázatos felhasználói jelentéshez](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Active Directory Identity Protection kockázati észlelések referenciája](./concept-identity-protection-risks.md)

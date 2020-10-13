@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448984"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>A GCP-fiókok összekapcsolásának Azure Security Center
@@ -73,7 +73,7 @@ További információ a [Security Command Center API](https://cloud.google.com/s
 1. Válassza a **szolgáltatásfiók létrehozása**lehetőséget.
 1. Adja meg a fiók nevét, majd válassza a **Létrehozás**lehetőséget.
 1. Adja meg a **szerepkört** **Security Center felügyeleti megjelenítőként**, és válassza a **Folytatás**lehetőséget.
-1. A **szolgáltatásfiók-hozzáférés engedélyezése a felhasználóknak** nem kötelező. Válassza a **Kész** lehetőséget.
+1. A **szolgáltatásfiók-hozzáférés engedélyezése a felhasználóknak** nem kötelező. Válassza a **Done** (Kész) lehetőséget.
 1. Másolja a létrehozott szolgáltatásfiók **e-mail-értékét** , és mentse későbbi használatra.
 1. A **navigációs menü** **iam & felügyeleti** beállítások területén válassza a **iam** lehetőséget.
     1. Váltson a szervezeti szintre.
@@ -119,7 +119,7 @@ Ha az erőforrás típusa szerint szeretné megtekinteni az összes aktív javas
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján"::: 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GCP-fiók csatlakoztatása a Azure Security Centerben elérhető többfelhős felület része. A kapcsolódó információk a következő oldalon találhatók:
 

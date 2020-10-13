@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319877"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata a Azure AD Connect Sync Service Manager
@@ -67,7 +67,7 @@ A keresési összekötő területe művelet hasznos lehet objektumok kereséséh
 
 Először válasszon ki egy **hatókört**. Kereshet az objektum (RDN, DN, Anchor, Sub-Tree) vagy az objektum állapota alapján (az összes többi lehetőség).  
 ![A "hatókör" legördülő menüt megjelenítő képernyőkép.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Ha például faszerkezetes keresést végez, az összes objektum egy szervezeti egységben fog megjelenni.  
+Ha például Sub-Tree keresést végez, az összes objektum egy szervezeti egységben fog megjelenni.  
 ![A "Sub-Tree" keresési példát bemutató képernyőkép.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Ebből a rácsból kiválaszthat egy objektumot, kiválaszthatja a **tulajdonságokat**, és [követheti azt](tshoot-connect-object-not-syncing.md) a forrás-összekötő területéről, a metaverse használatával és a cél összekötő területéhez.
 

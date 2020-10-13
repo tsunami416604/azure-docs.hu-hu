@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
 ms.openlocfilehash: d0fee044506a9a19e09478ef8d70b3719ecc167a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554258"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Azure-hoz készült NS1 SSO-val
@@ -94,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. A válasz URL-címének frissítése a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a ns1 SSO-val az [Azure ügyfél-támogatási csapatával](mailto:techops@nsone.net) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az Azure-alkalmazásokhoz készült NS1 egyszeri bejelentkezés egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit a **felhasználói attribútumok & jogcímek** szakaszban találja az alkalmazás-integráció lapon. Az **egyszeri bejelentkezés SAML** használatával lapon válassza a ceruza ikont a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+1. Az Azure-alkalmazásokhoz készült NS1 egyszeri bejelentkezés egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit a **felhasználói attribútumok & jogcímek** szakaszban találja az alkalmazás-integráció lapon. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza a ceruza ikont a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![Képernyőkép a felhasználói attribútumok & a jogcímek szakaszról, a ceruza ikon kiemelve](./media/ns1-sso-for-azure-tutorial/attribute-edit-option.png)
 
@@ -114,9 +114,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Válassza a **User. userPrincipalName** elemet az **1. paraméterként**.
 
-    1. Válassza a **Hozzáadás** elemet.
+    1. Válassza a **Hozzáadás** lehetőséget.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot. Ekkor a rendszer átmásolja az **alkalmazás-összevonási metaadatok URL-címét** , és menti azt a számítógépre.
 

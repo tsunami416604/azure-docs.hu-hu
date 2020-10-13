@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630566"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Oktatóanyag: termék létrehozása és közzététele  
@@ -44,7 +44,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Megjelenített név             | A név, ahogy szeretné, hogy megjelenjen a [fejlesztői portálon](api-management-howto-developer-portal.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | Leírás              | Adja meg a termékkel kapcsolatos információkat, például a célját, az API-kat, amelyek hozzáférést biztosítanak a szolgáltatáshoz és egyéb részletekhez.                                                                                                                                               |
-    | Állapot                    | Válassza a **közzétett** elemet, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a  **rendszergazdák** csoport számára láthatók.                                                                                      |
+    | Állam                    | Válassza a **közzétett** elemet, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a  **rendszergazdák** csoport számára láthatók.                                                                                      |
     | Előfizetés szükséges    | Válassza ki, hogy a termék használatához szükség van-e a felhasználó előfizetésére.                                                                                                                                                                                                                                   |
     | Jóváhagyást igényel        | Jelölje be, ha azt szeretné, hogy a rendszergazda áttekintse és elfogadja vagy elutasítja az előfizetési kísérleteket a termékre. Ha nincs bejelölve, a rendszer automatikusan jóváhagyja az előfizetési kísérleteket.                                                                                                                         |
     | Előfizetések számának korlátozása | Opcionálisan korlátozhatja több egyidejű előfizetés számát.                                                                                                                                                                                                                                |

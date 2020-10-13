@@ -8,10 +8,10 @@ ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729134"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
@@ -45,7 +45,7 @@ Ha például az Azure Maps is használja, és szeretné összekapcsolni a helyet
 
 Azt is megtudhatja, hogyan irányíthatja az adatútvonalat hasonló módon a Time Series Insights, a [*How-to: Integration with Time Series Insights*](how-to-integrate-time-series-insights.md)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a végpontokról és az útválasztási eseményekről a külső szolgáltatásokra:
 * [*Fogalmak: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md)

@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595988"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
@@ -45,7 +45,7 @@ Ha helyszíni alkalmazást hoz létre, helyi fejlesztést végez, vagy más mód
 
 ### <a name="how-can-i-give-the-ad-group-access-to-the-key-vault"></a>Hogyan biztosíthatom az AD-csoport számára a Key Vault elérését?
 
-Az Azure CLI `az keyvault set-policy` -parancs vagy a Azure PowerShell set-AzKeyVaultAccessPolicy parancsmag segítségével adja meg az ad-csoportnak a kulcstartóhoz tartozó engedélyeket. Lásd: [hozzáférési szabályzat társítása –](assign-access-policy-cli.md) parancssori felület és [hozzáférési szabályzat társítása – PowerShell](assign-access-policy-powershell.md).
+Az Azure CLI- `az keyvault set-policy` parancs vagy a Azure PowerShell Set-AzKeyVaultAccessPolicy parancsmag használatával adja meg az ad-csoportnak a kulcstartóhoz tartozó engedélyeket. Lásd: [hozzáférési szabályzat társítása –](assign-access-policy-cli.md) parancssori felület és [hozzáférési szabályzat társítása – PowerShell](assign-access-policy-powershell.md).
 
 Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt identitás-és hozzáférés-kezelési (IAM) szerepkörre is. Ellenkező esetben nem fog tudni bejelentkezni, és nem lesz megfelelő jogosultsága az előfizetéshez való hozzáféréshez. A felügyelt identitásokkal rendelkező Azure AD-csoportok akár nyolc óráig is megkövetelhetik a tokenek frissítését, és érvénybe lépnek.
 
@@ -64,6 +64,6 @@ Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáfé
 ### <a name="what-are-the-best-practices-i-should-implement-when-key-vault-is-getting-throttled"></a>Milyen bevált eljárásokat kell megvalósítani a Key Vault szabályozásakor?
 Kövesse az [itt](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits) dokumentált ajánlott eljárásokat
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan lehet elhárítani a Key Vault hitelesítési hibáit: [Key Vault hibaelhárítási útmutató](rest-error-codes.md).

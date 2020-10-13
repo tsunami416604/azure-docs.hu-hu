@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448465"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
@@ -548,7 +548,7 @@ A Microsoft a Service Map szolgáltatás használatával automatikusan gyűjti a
 
 További információ az adatok gyűjtéséről és használatáról: a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Log Analytics [naplóbeli keresésekről](../log-query/log-query-overview.md) Service Map által összegyűjtött adatok lekéréséhez.
 

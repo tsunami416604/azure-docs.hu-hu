@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117736"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
@@ -144,8 +144,8 @@ Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogk
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
 | állítás |kötelező | A kérelemben használt jogkivonat értéke. |
 | client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
-| client_assertion_type |kötelező |Az értéknek meg kell felelnie`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |kötelező | Az Ön által létrehozott és az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező JSON Web Token. Tekintse meg a [tanúsítvány hitelesítő adatait](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , és Ismerje meg a tanúsítvány regisztrálásának módját.|
+| client_assertion_type |kötelező |Az értéknek meg kell felelnie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |kötelező | Az Ön által létrehozott és az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező JSON Web Token. Tekintse meg a  [tanúsítvány hitelesítő adatait](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , és Ismerje meg a tanúsítvány regisztrálásának módját.|
 | erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
 | requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
 | scope |kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
@@ -282,16 +282,16 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 - expires_in: 3296
 - ext_expires_in: 0
 - expires_on: 1529627844
-- erőforrás`https://api.contoso.com`
-- access_token:\<SAML assertion\>
+- erőforrás `https://api.contoso.com`
+- access_token: \<SAML assertion\>
 - issued_token_type: urn: IETF: params: OAuth: token-Type: egy saml2
-- refresh_token:\<Refresh token\>
+- refresh_token: \<Refresh token\>
 
 ## <a name="client-limitations"></a>Ügyfél korlátozásai
 
 A helyettesítő karakteres válasz URL-címekkel rendelkező nyilvános ügyfelek nem használhatják az `id_token` OBO-folyamatokat. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OAuth 2,0 protokollról és egy másik módszer az ügyfél-hitelesítő adatokat használó szolgáltatás-szolgáltatás hitelesítés végrehajtásához:
 

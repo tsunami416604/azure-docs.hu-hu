@@ -9,10 +9,10 @@ ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
 ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91739935"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
@@ -114,6 +114,6 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | Általános hiba  | A hitelesítő kulcs beolvasása sikertelen.| Ez egy általános hiba. A hiba megoldásához forduljon a Microsoft ügyfélszolgálatahoz, és határozza meg a következő lépéseket.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az Azure Key Vault](../key-vault/general/overview.md)?

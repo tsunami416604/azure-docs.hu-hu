@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protectio
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968299"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
@@ -183,7 +183,7 @@ A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon, ```$se
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer``` és a ```-ProxyPort``` , ```-ProxyUsername``` valamint a ```ProxyPassword``` [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting) parancsmaggal végzett paraméterek használatával végezheti el. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
 
@@ -340,7 +340,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM-replika méretének módosítása & helyreállítási pont kötete
 
-A DPM-replika kötetét és az árnyékmásolat-kötet méretét a [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) parancsmaggal is módosíthatja a következő példában látható módon: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-ProtectionGroup $mpg-Manual-ReplicaArea (2GB) – ShadowCopyArea (2GB)
+A DPM-replika kötetét és az árnyékmásolat-kötet méretét a [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) parancsmaggal is megváltoztathatja a következő példában látható módon: Get-DatasourceDiskAllocation-datasource $DS Set-DatasourceDiskAllocation-DataSource $DS-ProtectionGroup $mpg-Manual-ReplicaArea (2GB)-ShadowCopyArea (2GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>A védelmi csoport módosításainak véglegesítése
 

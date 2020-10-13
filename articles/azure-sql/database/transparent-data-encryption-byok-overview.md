@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
 ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602669"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
@@ -187,11 +187,11 @@ További szempontok a naplófájlok számára: a biztonsági másolatba mentett 
 
 Olyan esetekben, amikor nincs konfigurálva geo-redundancia a kiszolgáló számára, javasoljuk, hogy konfigurálja úgy a kiszolgálót, hogy két különböző Key vaultot használjon két különböző régióban ugyanazzal a kulcsfontosságú anyaggal. Egy TDE-védő létrehozásával a-kiszolgálóval azonos régióban található elsődleges kulcstartóval, a kulcs pedig egy másik Azure-régióban lévő kulcstartóba klónozással végezhető el, így a kiszolgáló egy második kulcstartóhoz fér hozzá, ezért az elsődleges Key Vault leáll, miközben az adatbázis működik.
 
-Használja a Backup-AzKeyVaultKey parancsmagot a kulcs titkosított formátumban való lekéréséhez az elsődleges Key vaultból, majd használja a Restore-AzKeyVaultKey parancsmagot, és adja meg a második régióban található kulcstartót a kulcs klónozásához. Azt is megteheti, hogy a Azure Portal a kulcs biztonsági mentésére és visszaállítására használja. A másik régió másodlagos kulcstartójában lévő kulcs nem lehet TDE-védőként megjelölve, és nem is engedélyezett.
+Használja az Backup-AzKeyVaultKey parancsmagot a kulcs titkosított formátumban való lekéréséhez az elsődleges Key vaultból, majd használja a Restore-AzKeyVaultKey parancsmagot, és adja meg a második régióban a Key vaultot a kulcs klónozásához. Azt is megteheti, hogy a Azure Portal a kulcs biztonsági mentésére és visszaállítására használja. A másik régió másodlagos kulcstartójában lévő kulcs nem lehet TDE-védőként megjelölve, és nem is engedélyezett.
 
 Ha van olyan leállás, amely hatással van az elsődleges Key vaultra, és csak ezután, a rendszer automatikusan átvált a másik csatolt kulcsra ugyanazzal az ujjlenyomattal a másodlagos kulcstartóban, ha létezik. Vegye figyelembe, hogy ha a TDE-védelem visszavont hozzáférési jogosultságok miatt nem érhető el, vagy mert a kulcs vagy kulcstartó törölve van, mivel előfordulhat, hogy az ügyfél szándékosan szeretné korlátozni a kiszolgáló hozzáférését a kulcshoz.
 
-![Egy kiszolgáló, HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
+![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>Geo-DR és ügyfél által felügyelt TDE
 
@@ -209,7 +209,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 

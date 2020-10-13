@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
 ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651838"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
@@ -77,16 +77,16 @@ Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel t�
 
 **Feladat** | **Részletek**
 --- | ---
-**Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
+**Azure Migrate-projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
 
-1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Az Azure Portalon nyissa meg az előfizetést, majd válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
 2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
 3. **Közreműködői** vagy **tulajdonosi** engedélyekkel kell rendelkeznie.
-    - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
-    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
+    - Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa.
+    - Ha nem Ön az előfizetés tulajdonosa, akkor a tulajdonossal együttműködve rendelje hozzá a szerepkört.
 
 ### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyeinek kiosztása
 
@@ -135,7 +135,7 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 3. Az **Áttekintés** területen kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
 4. A **kiszolgálók felderítése, felmérése és migrálása**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
 
-    ![Kiszolgálók felderítése és értékelése](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
+    ![Kiszolgálók felderítése és kiértékelése](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
 
 5. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
 6. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
@@ -143,7 +143,7 @@ Készítse elő a berendezés központi telepítését a következőképpen:
     - A projekt földrajza csak az AWS-gépekről gyűjtött metaadatok tárolására szolgál.
     - Migrálás futtatása során bármilyen célrégiót választhat.
 
-    ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
+    ![Azure Migrate-projekt létrehozása](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
 8. Az **Értékelési eszköz kiválasztása** területen válassza **Az értékelési eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
 9. A **Migrálási eszköz kiválasztása** területen válassza az **Azure Migrate: Kiszolgáló migrálása** > **Tovább** lehetőséget.
@@ -185,7 +185,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
     9,8 a **telepítés helye**területen a **tovább** gombra kattintva fogadja el az alapértelmezett értéket.  
     9,9 a **hálózat kiválasztása**területen válassza a **tovább** lehetőséget az alapértelmezett érték elfogadásához.  
     9,10 az **Összefoglalás**területen válassza a **telepítés**lehetőséget.   
-    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra.   
+    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Válassza az **OK** lehetőséget.   
     9,12 következő lépésként egy ablak egy üzenetet jelenít meg a konfigurációs kiszolgáló hozzáférési jelszavával kapcsolatban. Másolja a jelszót a vágólapra, és mentse a jelszót egy ideiglenes szövegfájlba a forrásként szolgáló virtuális gépeken. Ezt a jelszót később kell megadnia a mobilitási szolgáltatás telepítési folyamata során.
 10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:. A következő adatok megadásával hozhatja létre a "vendég" nevet a "username" névvel, a felhasználónévvel és a jelszóval a fiók jelszavaként. Ezt a dummy-fiókot fogja használni a replikálás engedélyezése szakaszban. 
 11. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése**lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása**területen, majd kattintson a **regisztráció véglegesítése**lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.
@@ -366,8 +366,8 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
@@ -410,6 +410,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 **Válasz:** Az Amazon Linux rendszerű virtuális gépek nem telepíthetők át, mert az Amazon Linux operációs rendszer csak az AWS-t támogatja.
 Az Amazon Linux rendszeren futó munkaterhelések áttelepítéséhez egy CentOS/RHEL virtuális gépet is üzembe helyezhet az Azure-ban, és áttelepítheti az AWS linuxos gépen futó munkaterhelést a megfelelő munkaterhelés-áttelepítési módszer használatával. Például a munkaterheléstől függően előfordulhat, hogy a munkaterhelés-specifikus eszközök az áttelepítést segítik – például a webkiszolgálók adatbázisai vagy központi telepítési eszközei esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

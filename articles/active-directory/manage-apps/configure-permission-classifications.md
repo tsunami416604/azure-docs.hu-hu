@@ -12,13 +12,13 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0add5001e2e62e26d448b06927210c14f17729f1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804313"
 ---
-# <a name="configure-permission-classifications"></a>Engedélyek besorolásának konfigurálása
+# <a name="configure-permission-classifications"></a>Engedélyosztályozások konfigurálása
 
 Az engedélyek besorolása lehetővé teszi annak a meghatározását, hogy a különböző engedélyek milyen hatással vannak a szervezet szabályzatai és a kockázatértékelések alapján. Az engedélyezési házirendekben szereplő engedélyek besorolásával például azonosíthatja azokat az engedélyeket, amelyeket a felhasználók jóváhagynak.
 
@@ -114,7 +114,7 @@ Az engedélyek besorolásához használhatja a legújabb Azure AD PowerShell el�
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 

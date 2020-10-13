@@ -17,10 +17,10 @@ ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360352"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
@@ -249,7 +249,7 @@ Az Azure-ban az SAP magas rendelkezésre állása három típusba különíthet�
 
 * **SAP-alkalmazás magas rendelkezésre állása**: 
 
-    Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Például:
+    Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Példa:
     * Redundáns SAP-alkalmazás-kiszolgálók.
     * Egyedi összetevők. Ilyen lehet például egy meghibásodási pont (SPOF) összetevő (például egy SAP ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer).
 
@@ -267,7 +267,7 @@ A számítás alapja havi 30 nap, vagy 43 200 perc. Például a 0,05%-os állás
 
 (Rendelkezésre állási szolgáltatás #1/100) * (rendelkezésre állási szolgáltatás #2/100) * (rendelkezésre állási szolgáltatás #3/100) \* ...
 
-Például:
+Példa:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 vagy a 99,75% teljes rendelkezésre állása.
 
@@ -334,7 +334,7 @@ További információ erről a megközelítésről: [Az Azure-infrastruktúra vi
 
 ## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> SAP-alkalmazások magas rendelkezésre állása az Azure IaaS
 
-Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Például:
+Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Példa:
   * Redundáns SAP-alkalmazás-kiszolgálók.
   * Egyedi összetevők. Ilyen lehet például egy meghibásodási pont (SPOF) összetevő (például egy SAP ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer).
 

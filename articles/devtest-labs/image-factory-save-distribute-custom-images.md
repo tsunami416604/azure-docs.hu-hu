@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan mentheti az egyéni lemezkép
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476240"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Egyéni rendszerképek mentése és továbbítása több tesztkörnyezetbe
@@ -78,7 +78,7 @@ A cikkben korábban látott lépéseket követve hozzáadhat egy további **Azur
 
 ![Lemezképek terjesztésére szolgáló feladat létrehozása](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
-A paraméterek a következők:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
+A paraméterek a következők: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
 Ez a feladat a rendszerkép-előállítóban található összes egyéni rendszerképet elküldi a fájl Labs.jsjában meghatározott laboroknak.
 

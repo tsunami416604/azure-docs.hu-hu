@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631511"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
@@ -266,7 +266,7 @@ További információ erről a hivatkozási architektúráról: az [Azure-HDInsi
 > [!NOTE]
 > A nyilvános IP-címmel rendelkező virtuális hálózatok PowerApps-vagy API-kezelésének Azure App Service Environmenti nem natív módon támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megosztott feladatkörök a felhőben](shared-responsibility.md)
 * [Azure DDoS Protection termék lapja](https://azure.microsoft.com/services/ddos-protection/)

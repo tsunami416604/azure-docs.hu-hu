@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: daperlov
 ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905289"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Közös adatmodell-formátum a Azure Data Factoryban
@@ -37,7 +37,7 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni`cdm` | igen | `cdm` | formátumban |
+| Formátum | A formátumot kötelező megadni `cdm` | igen | `cdm` | formátumban |
 | Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a model.jslehetőséget. | Igen | `'manifest'` vagy `'model'` | manifestType |
 | Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
 | Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | igen | Sztring | folderPath |
@@ -114,7 +114,7 @@ Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepe
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni`cdm` | igen | `cdm` | formátumban |
+| Formátum | A formátumot kötelező megadni `cdm` | igen | `cdm` | formátumban |
 | Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
 | Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | igen | Sztring | folderPath |
 | Manifest-fájl: entitás elérési útja | Az entitás mappájának elérési útja a gyökérkönyvtáron belül | nem | Sztring | entityPath |
@@ -127,7 +127,7 @@ Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepe
 | Corpus-entitás | Entitás hivatkozásának elérési útja | igen | Sztring | entitás |
 | Partíció elérési útja | A partíció írásának helye | nem | Sztring | partitionPath |
 | Mappa törlése | Ha a célmappa az írás előtt törlődik | nem | `true` vagy `false` | truncate |
-| Formátum típusa | Válassza a parketta formátumának megadása lehetőséget. | nem | `parquet`Ha meg van adva | alformátum |
+| Formátum típusa | Válassza a parketta formátumának megadása lehetőséget. | nem | `parquet` Ha meg van adva | alformátum |
 | Oszlop elválasztója | Ha DelimitedText ír, az oszlopok lehatároló módja | igen, ha írás a DelimitedText | Sztring | columnDelimiter |
 | Első sor fejlécként | DelimitedText használata esetén, hogy az oszlopnevek fejlécként vannak-e hozzáadva | nem | `true` vagy `false` | columnNamesAsHeader |
 

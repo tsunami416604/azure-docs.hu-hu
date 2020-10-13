@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120575"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
@@ -229,7 +229,7 @@ Az Azure számos tapasztalatot biztosít az Azure-erőforrások,-alkalmazások �
 
 Az Azure két lehetőséget biztosít az alkalmazások és szolgáltatások parancssorból való kezelésére. Használhat olyan eszközöket, mint például a bash, a Terminal, a parancssor vagy az Ön által választott parancssori eszköz. A parancssorból általában ugyanazok a feladatok végezhetők el, mint például a virtuális gépek, Azure Portal a virtuális hálózatok, a Web Apps és más szolgáltatások létrehozása és konfigurálása.
 
--   [Azure parancssori felület (CLI)](../../xplat-cli-install.md): lehetővé teszi az Azure-előfizetéshez való kapcsolódást és az Azure-erőforrásokkal kapcsolatos különböző feladatok végrehajtását a parancssorból.
+-   [Azure Command-Line Interface (CLI)](../../xplat-cli-install.md): lehetővé teszi az Azure-előfizetéshez való kapcsolódást és az Azure-erőforrásokkal kapcsolatos különböző feladatok végrehajtását a parancssorból.
 
 -   [Azure PowerShell](../../powershell-install-configure.md): az Azure-erőforrások Windows PowerShell használatával történő felügyeletét lehetővé tevő parancsmagokkal rendelkező modulok készletét biztosítja.
 

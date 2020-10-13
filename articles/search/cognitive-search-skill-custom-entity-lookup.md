@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936112"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
@@ -69,7 +69,7 @@ Ha a definíciót beágyazottként adták meg, akkor azt a *inlineEntitiesDefini
 
 ### <a name="csv-format"></a>CSV-formátum
 
-A vesszővel tagolt (CSV) fájlokban megkeresheti az egyéni entitások definícióját, ha megadja a fájl elérési útját, és beállítja azt a *entitiesDefinitionUri*  skill paraméterben. Az elérési útnak HTTPS-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
+Megadhatja az egyéni entitások definícióját Comma-Separated érték (CSV) fájlban való kereséshez, ha megadja a fájl elérési útját, és beállítja azt a *entitiesDefinitionUri*  skill paraméterben. Az elérési útnak HTTPS-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
 
 A CSV formátum egyszerű. Minden sor egy egyedi entitást képvisel, ahogy az alábbi ábrán látható:
 

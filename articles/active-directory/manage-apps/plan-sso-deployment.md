@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603339"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
@@ -158,8 +158,8 @@ A következő szakasz részletesen ismerteti az adott alkalmazás konfigurálás
 Az összes előre integrált SaaS-alkalmazáshoz a Microsoft egy oktatóanyagot biztosít, és nem lesz szüksége ezekre az információkra. Ha az alkalmazás nem szerepel az alkalmazás-piactéren/katalóguson, akkor előfordulhat, hogy az alábbi adatokat kell összegyűjtenie:
 
 - **Az alkalmazás által az egyszeri bejelentkezéshez használt aktuális identitás-szolgáltató, ha van ilyen** , például: AD FS, PingFederate, okta
-- **A cél alkalmazás által támogatott protokollok** – például SAML 2,0, OpenID Connect, OAuth, űrlapalapú hitelesítés, ws-fed, ws-Trust
-- A **protokoll az Azure ad-vel van konfigurálva** (például SAML 2,0 vagy 1,1, OpenID Connect, OAuth, Form-BASED, ws-Fed)
+- **A cél alkalmazás által támogatott protokollok** – például SAML 2,0, OpenID Connect, OAuth, Forms-Based Auth, ws-Fed, WS-Trust
+- A **protokoll az Azure ad-vel van konfigurálva** , például SAML 2,0 vagy 1,1, OpenID Connect, OAuth, Forms-Based, WS-Fed
 
 ### <a name="attribute-requirements"></a>Attribútumokra vonatkozó követelmények
 
@@ -235,11 +235,11 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincsenek |
+| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincs |
 | Identity admin | Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
+| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
+| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
 
 Javasoljuk, hogy az [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
 
@@ -303,7 +303,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SAML-alapú SSO hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
@@ -313,7 +313,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 [Egyszeri bejelentkezéses SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-[Egyszeri kijelentkezési SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Egy Sign-Out SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
 [Azure ad B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (külső felhasználóknak, például partnereknek és szállítóknak)
 
