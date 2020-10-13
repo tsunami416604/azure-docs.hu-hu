@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964685"
 ---
 # <a name="unsupported-language-deployments"></a>Nem támogatott nyelvű környezetek
@@ -47,7 +47,7 @@ Az elküldés után a modell többé nem lesz elérhető a nem **kérelmezett k�
 
 ## <a name="whats-next"></a>A következő lépések
 
-A központi telepítéshez kiválasztott modelleket a rendszer a központ leszerelése és az összes modell üzembe helyezése után menti.  A nem támogatott modellek üzembe helyezésére vonatkozó kérések elküldésére május 24-én van lehetőség.  Ezeket a modelleket június 15-én fogjuk üzembe helyezni, ekkor a Translator v3 használatával lesznek elérhetők.  Emellett a Translator v2-en keresztül is elérhetők lesznek a július 1-től.  
+A központi telepítéshez kiválasztott modelleket a rendszer a központ leszerelése és az összes modell üzembe helyezése után menti.  A nem támogatott modellek üzembe helyezésére vonatkozó kérések elküldésére május 24-én van lehetőség.  Ezeket a modelleket június 15-én fogjuk üzembe helyezni, ekkor a Translator V3 API-n keresztül lesznek elérhetők.  Ezen kívül a v2 API-n keresztül lesznek elérhetők az 1. július 1-jéig.  
 
 További információ a központ elavulása a fontos dátumokról [itt](https://www.microsoft.com/translator/business/hub/)található.
 Az üzembe helyezést követően a szokásos üzemeltetési díjak érvényesek.  A részletekért tekintse meg a [díjszabást](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  
@@ -57,4 +57,4 @@ A standard egyéni fordítói modellektől eltérően a hub-modellek csak egyetl
 ## <a name="next-steps"></a>További lépések
 
 - [Modell betanítása](how-to-train-model.md).
-- Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)-n keresztül.
+- Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.

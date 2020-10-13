@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91571564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932413"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
@@ -31,7 +31,7 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
   A Azure NetApp Files mostantól támogatja a régiók közötti replikálást. Ezzel az új vész-helyreállítási képességgel gyorsan és költséghatékonyan replikálhatja Azure NetApp Files köteteit az egyik Azure-régióból a másikba, így az adatok az előre nem látható regionális meghibásodások miatt is védelmet biztosíthatnak. Azure NetApp Files a régiók közötti replikáció a NetApp SnapMirror® Technology technológiát használja; a rendszer csak a megváltozott blokkokat tömörített, hatékony formátumban továbbítja a hálózaton. Ez a szabadalmaztatott technológia minimálisra csökkenti a régiók közötti replikáláshoz szükséges adatok mennyiségét, így az adatátviteli költségeket is megtakaríthatja. Emellett lerövidíti a replikálási időt, így elérheti a kisebb visszaállítási pontok célját (RPO) is.
 
-* [Kézi QoS-kapacitás készlete](manage-manual-qos-capacity-pool.md) (előzetes verzió)  
+* [Kézi QoS-kapacitás készlete](manual-qos-capacity-pool-introduction.md) (előzetes verzió)  
 
     A manuális QoS-kapacitás készletében a kötetek kapacitását és átviteli sebességét egymástól függetlenül lehet hozzárendelni. A manuális QoS-kapacitási készlettel létrehozott kötetek teljes átviteli sebességét a készlet teljes átviteli sebessége korlátozza. Ezt a készlet méretének és a szolgáltatási szintű átviteli sebességnek a kombinációja határozza meg. Azt is megteheti, hogy a kapacitás-készlet [QoS-típusa](azure-netapp-files-understand-storage-hierarchy.md#qos_types) automatikus (automatikus), amely az alapértelmezett. Egy automatikus QoS-kapacitási készletben a rendszer automatikusan hozzárendeli az átviteli sebességet a készletben lévő kötetekhez, a kötetekhez rendelt mérethez viszonyítva.
 
@@ -83,6 +83,6 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
     Azure NetApp Files lehetővé teszi olyan további fiókok hozzáadását, amelyek emelt szintű jogosultságokat igényelnek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál. A biztonsági mentési házirend felhasználói szolgáltatás jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Mi az az Azure NetApp Files?](azure-netapp-files-introduction.md)
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md) 

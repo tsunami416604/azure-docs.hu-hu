@@ -1,6 +1,6 @@
 ---
 title: A Windows rendszerű virtuális asztali MSIX alkalmazás csatolásának áttekintése – Azure
-description: Mi a MSIX-alkalmazás csatolása? Ismerje meg ezt a cikket.
+description: Mit jelent az MSIX-alkalmazás csatolása? Ismerje meg ezt a cikket.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,13 +9,13 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556279"
 ---
-# <a name="what-is-msix-app-attach"></a>Mi a MSIX-alkalmazás csatolása?
+# <a name="what-is-msix-app-attach"></a>Mit jelent az MSIX-alkalmazás csatolása?
 
 A MSIX egy új csomagolási formátum, amely számos funkciót kínál, amelyek célja az összes Windows-alkalmazás csomagolási élményének javítása. A MSIX kapcsolatos további tudnivalókért tekintse meg a [MSIX áttekintését](/windows/msix/overview).
 
@@ -45,7 +45,7 @@ A MSIX-alkalmazás csatolását VDI vagy SBC-n kívül kell megadni.
 
 A következő táblázat összehasonlítja a MSIX-alkalmazások csatolásának és az alkalmazások rétegződésének főbb funkcióit.
 
-| Funkció | Hagyományos alkalmazás-réteg  | MSIX-alkalmazás csatolása  |
+| Szolgáltatás | Hagyományos alkalmazás-réteg  | MSIX-alkalmazás csatolása  |
 |-----|-----------------------------|--------------------|
 | Formátum               | Az alkalmazás-réteg különböző technológiáinak különböző tulajdonosi formátumokra van szükségük. | A natív MSIX-csomagolási formátummal működik.        |
 | Terhelés újracsomagolása | A szabadalmaztatott formátumokhoz frissítés szükséges az előkészítéshez és az újracsomagoláshoz.         | A MSIX-ként közzétett alkalmazások nem igényelnek újracsomagolást. Ha azonban a MSIX csomag nem érhető el, az újracsomagolási terhelés továbbra is érvényes lesz. |
@@ -54,6 +54,6 @@ A következő táblázat összehasonlítja a MSIX-alkalmazások csatolásának �
 | Felügyelet       | Karbantartást és frissítést igényel   | Egyszerűsíti az alkalmazások frissítéseit |
 | Felhasználó felület      | A felhasználó bejelentkezési idejét befolyásolja. A határ az operációs rendszer állapota, az alkalmazás állapota és a felhasználói adat között van.  | A továbbított alkalmazások nem különböztethetők meg a helyileg telepített alkalmazásokból. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a MSIX-alkalmazás csatolásáról, tekintse meg a [szószedetet](app-attach-glossary.md) és a [gyakori kérdéseket](app-attach-faq.md). Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514606"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Módosítsa az adat0 hálózati adapter beállításait a StorSimple 8000 Series eszközön
@@ -47,10 +47,10 @@ A 0. hálózati beállítások újrakonfigurálásához csatlakozzon a StorSimpl
 > [!NOTE]
 > A rögzített vezérlők IP-címeit újra kell konfigurálni a Azure Portal StorSimple eszközének **hálózati beállítások** paneljén. További információért lépjen a [hálózati adapterek módosítása](storsimple-8000-modify-device-config.md#modify-network-interfaces)elemre.
 
-## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>AZ adat0 hálózati beállítások módosítása a set-HcsNetInterface parancsmag használatával
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>AZ adat0 hálózati beállítások módosítása Set-HcsNetInterface parancsmag használatával
 Az adat0 hálózati adapter újrakonfigurálásának másik módja a `Set-HcsNetInterface` parancsmag használata. A parancsmagot a rendszer a StorSimple-eszköz Windows PowerShell felületéről hajtja végre. Ha ezt az eljárást használja, a vezérlő rögzített IP-címei is konfigurálhatók itt. Az adatok 0 beállítások módosításához hajtsa végre a következő lépéseket: 
 
-#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Az adat0 hálózati beállítások módosítása a set-HcsNetInterface parancsmag használatával
+#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Az adat0 hálózati beállítások módosítása a Set-HcsNetInterface parancsmaggal
 1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Amikor a rendszer kéri, adja meg az eszköz rendszergazdai jelszavát. Az alapértelmezett jelszó: `Password1` .
 2. A parancssorba írja be a következőt:
    

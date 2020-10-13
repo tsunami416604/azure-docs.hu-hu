@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962349"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
@@ -63,7 +63,7 @@ A webalkalmazás kiszolgálói időzónájának beállítása:
 2. Az **Alkalmazásbeállítások**területen adja hozzá a következő beállítást:
     * Kulcs = WEBSITE_TIME_ZONE
     * Value = *a kívánt időzóna*
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: America/Adak.
 

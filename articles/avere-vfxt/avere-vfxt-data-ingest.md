@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505596"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Adatáthelyezés a vFXT-fürtbe – párhuzamos adatfeldolgozás
@@ -185,7 +185,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Az eredmény átirányítása fájlba:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Az eredmény átirányítása fájlba: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Ezután megismételheti a jegyzékfájlt, ha BASH-parancsokat használ a fájlok számlálásához és az alkönyvtárak méretének meghatározásához:
 
@@ -280,13 +280,13 @@ Ez a módszer egyszerű és időigényes módszer az adatkészletek számára a 
 
 Az ``msrsync`` eszköz segítségével áthelyezheti az adatátvitelt a avere-fürtön lévő háttérbeli alapszintű filerbe. Ez az eszköz úgy lett kialakítva, hogy több párhuzamos folyamat futtatásával optimalizálja a sávszélesség-használatot ``rsync`` . A GitHubon érhető el <https://github.com/jbd/msrsync> .
 
-``msrsync``elkülöníti a forrás könyvtárat külön "gyűjtő" értékre, majd minden gyűjtőn futtatja az egyes ``rsync`` folyamatokat.
+``msrsync`` elkülöníti a forrás könyvtárat külön "gyűjtő" értékre, majd minden gyűjtőn futtatja az egyes ``rsync`` folyamatokat.
 
 A négy Magos virtuális géppel végzett előzetes tesztelés az 64-es folyamatok használatakor a legjobb hatékonyságot mutatja. A következő ``msrsync`` beállítással ``-p`` állíthatja be a folyamatok számát 64-re.
 
 Használhatja az ``--inplace`` argumentumot is a ``msrsync`` parancsokkal. Ha ezt a beállítást használja, érdemes lehet egy második parancsot futtatni (mint a fent ismertetett [rsync](#use-a-two-phase-rsync-process)esetében) az adatok integritásának biztosításához.
 
-``msrsync``csak a helyi kötetek és a között lehet írni. A forrásnak és a célhelynek elérhetőnek kell lennie helyi csatlakoztatásként a fürt virtuális hálózatában.
+``msrsync`` csak a helyi kötetek és a között lehet írni. A forrásnak és a célhelynek elérhetőnek kell lennie helyi csatlakoztatásként a fürt virtuális hálózatában.
 
 Az Azure-beli ``msrsync`` Felhőbeli kötetek avere-fürttel való feltöltéséhez kövesse az alábbi utasításokat:
 

@@ -3,15 +3,15 @@ title: RDP-tulajdonságok testreszabása a PowerShell használatával – Azure
 description: A Windows rendszerű virtuális asztal RDP-tulajdonságainak testreszabása PowerShell-parancsmagokkal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462224"
+ms.locfileid: "91930696"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP protokoll (RDP) tulajdonságainak testreszabása
 
@@ -28,8 +28,8 @@ Az RDP-fájlok alapértelmezés szerint a következő tulajdonságokkal rendelke
 
 |RDP-tulajdonság|Asztali számítógépen|RemoteAppként|
 |---|---|---|
-|Többszörös figyelési mód|Engedélyezve|N.A.|
-|Meghajtó-átirányítások engedélyezve|Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák|Meghajtók, vágólap és nyomtatók|
+|Többszörös figyelési mód|Disabled (Letiltva)|Engedélyezve|
+|Meghajtó-átirányítások engedélyezve|Meghajtók, vágólap, nyomtatók, COM-portok és intelligens kártyák|Meghajtók, vágólap és nyomtatók|
 |Távoli hang mód|Helyi lejátszás|Helyi lejátszás|
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -45,8 +45,9 @@ Az RDP-tulajdonságok konfigurálása a Azure Portalban:
 3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet.
 4. A Windows rendszerű virtuális asztal lapon a képernyő bal oldalán található menüben válassza a **gazdagép-készletek** elemet.
 5. Válassza ki a frissíteni kívánt **gazdagép-készlet nevét** .
-6. A képernyő bal oldalán található menüben válassza a **Tulajdonságok** lehetőséget.
-7. Az RDP-tulajdonságok szerkesztésének megkezdéséhez a **Tulajdonságok** lapon válassza az **RDP-beállítások lehetőséget** . A tulajdonságokat pontosvesszővel tagolt formátumban kell megadni, például a PowerShell-példákat.
+6. A képernyő bal oldalán található menüben válassza az **RDP-tulajdonságok** lehetőséget.
+7. Állítsa be a kívánt tulajdonságot.
+   - Másik lehetőségként megnyithatja a **speciális** fület, és az RDP-tulajdonságokat pontosvesszővel tagolt formátumban is hozzáadhatja, például a következő részekben található PowerShell-példákkal.
 8. Ha elkészült, kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 A következő szakaszban megtudhatja, hogyan szerkesztheti manuálisan az egyéni RDP-tulajdonságokat a PowerShellben.

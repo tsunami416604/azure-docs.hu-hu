@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 07a0581cd7fe2e7a9c13f860c862e34da3cfd1ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998288"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazások számára az Azure-ban Notification Hubs
@@ -165,7 +165,7 @@ Ha gyorsan le szeretné tesztelni, hogyan fogadja az alkalmazás az értesítés
 2. A **Tesztküldés** ablakban hajtsa végre az alábbi műveleteket:
     1. A **Platformok** beállításnál válassza a **Windows** lehetőséget.
     2. Az **Értesítés típusa** beállításnál válassza a **Bejelentés** lehetőséget.
-    3. Kattintson a **Küldés** gombra.
+    3. Válassza a **Küldés** lehetőséget.
 
         ![A Tesztküldés panel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 3. A Küldés művelet eredményét az ablak alján található **Eredmény** listában láthatja. Emellett egy figyelmeztető üzenet is megjelenik.
@@ -175,7 +175,7 @@ Ha gyorsan le szeretné tesztelni, hogyan fogadja az alkalmazás az értesítés
 
     ![Értesítési üzenet](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A portálon vagy a konzolon keresztül küldött értesítéseket küldött az összes Windows-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]

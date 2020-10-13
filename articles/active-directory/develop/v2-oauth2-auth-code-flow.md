@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612316"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
@@ -136,7 +136,7 @@ Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `e
 | `login_required` | Túl sok vagy nem található felhasználó | Az ügyfél csendes hitelesítést ( `prompt=none` ) kért, de egyetlen felhasználó nem található. Ez azt jelentheti, hogy több felhasználó is aktív a munkamenetben, vagy nincsenek felhasználók. Ez a kiválasztott bérlőt veszi figyelembe (például ha két Azure AD-fiók aktív és egy Microsoft-fiók van `consumers` kiválasztva, a csendes hitelesítés működni fog). |
 | `interaction_required` | A kérés felhasználói beavatkozást igényel. | További hitelesítési lépés vagy beleegyező engedély szükséges. Próbálkozzon újra a kérelem nélkül `prompt=none` . |
 
-## <a name="request-an-access-token"></a>Hozzáférési jogkivonat igénylése
+## <a name="request-an-access-token"></a>Hozzáférési jogkivonat kérése
 
 Most, hogy beszerzett egy authorization_code, és engedélyt kapott a felhasználótól, beválthatja az `code` `access_token` -t a kívánt erőforráshoz. Ehhez egy `POST` kérést kell küldenie a `/token` végpontnak:
 

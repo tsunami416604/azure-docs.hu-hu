@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829873"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Saját felhőalapú környezet biztonságossá tétele
@@ -39,7 +39,7 @@ A rendszer létrehoz egy alapértelmezett felhasználót `CloudOwner@cloudsimple
 
 1. A **CloudOwner \@ cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
 2. Jelentkezzen be a vCenter **CloudOwner \@ cloudsimple. local** használatával
-3. [VCenter egyszeri bejelentkezési felhasználók hozzáadása](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
+3. [VCenter egyetlen Sign-On felhasználó hozzáadása](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Felhasználók hozzáadása az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 Az előre definiált szerepkörökkel és csoportokkal kapcsolatos további információkért lásd: [CloudSimple Private Cloud Permission Model of VMware vCenter](learn-private-cloud-permissions.md) cikk.

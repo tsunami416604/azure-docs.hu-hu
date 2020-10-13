@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322699"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node.js Webalkalmazás létrehozása a JavaScript SDK használatával egy SQL API-fiók kezeléséhez a Azure Cosmos DB 
@@ -439,7 +439,7 @@ Most, hogy létrehozta az alkalmazást, helyileg futtathatja a következő lép�
 
 1. Az alkalmazás helyi gépen való teszteléséhez futtassa a parancsot `npm start` a terminálon az alkalmazás elindításához, majd frissítse a `http://localhost:3000` böngésző lapját. Az oldalnak az alábbi képernyőképen látható módon kell kinéznie:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban":::
 
     > [!TIP]
     > Ha a layout. Jade fájl vagy az index. Jade fájl behúzásával kapcsolatos hibaüzenetet kap, győződjön meg arról, hogy mindkét fájl első két sora balra van igazítva, szóközök nélkül. Ha az első két sor előtt szóközök vannak, távolítsa el őket, mentse mindkét fájlt, majd frissítse a böngészőablakot. 
@@ -448,7 +448,7 @@ Most, hogy létrehozta az alkalmazást, helyileg futtathatja a következő lép�
 
 3. Az oldal ekkor frissül, és megjeleníti az újonnan létrehozott elemet a teendőlistában.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Képernyőfelvétel az alkalmazásról és a teendőlista új eleméről":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban":::
 
 4. Egy feladat végrehajtásához jelölje be a teljes oszlopban található jelölőnégyzetet, majd válassza a **feladatok frissítése**lehetőséget. Ez frissíti a már létrehozott dokumentumot, és eltávolítja a nézetből.
 
@@ -478,7 +478,7 @@ Az alkalmazás helyi sikeres végrehajtása után az alábbi lépéseket követv
 
 Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a><a name="_Toc395637775"></a>Következő lépések
+## <a name="next-steps"></a><a name="_Toc395637775"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Mobilalkalmazások létrehozása a Xamarin és az Azure Cosmos DB használatával](mobile-apps-with-xamarin.md)

@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321713"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Oktatóanyag: útvonal-utasítások megjelenítése a Azure Maps Route Service és a Map Control használatával
@@ -174,7 +174,7 @@ Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni
 
 3. Mentse **MapRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Útvonalak megnézetének kezdete és vége a térképen":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
 
 <a id="getroute"></a>
 
@@ -216,11 +216,11 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Direct
 
 3. Mentse a **MapRoute.html** fájlt, és frissítse a webböngészőt. A térképnek most az elejétől a végpontig kell megjelenítenie az útvonalat.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure Map Control és Route Service":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
 
 A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)találhat egy élő mintát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő oktatóanyag bemutatja, hogyan hozhat létre egy korlátozásokkal rendelkező útvonal-lekérdezést, például az utazási módot vagy a rakomány típusát. Ezután több útvonal is megjeleníthető ugyanazon a térképen.
 

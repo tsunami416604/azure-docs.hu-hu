@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 06d29d428b3d117a08e0b3bf766123bd64be3d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Oktatóanyag: Azure Active Directory a Mercer BenefitsCentral (MBC) integrációját
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Merce
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Mercer BenefitsCentral (MBC) használatával a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a Mercer BenefitsCentral (MBC) egyszeri bejelentkezést](#configure-mercer-benefitscentral-mbc-single-sign-on)** az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
+2. **[Konfigurálja a Mercer BenefitsCentral (MBC) egyszeri bejelentkezést](#configure-mercer-benefitscentral-mbc-single-sign-on)** az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy Mercer BenefitsCentral (MBC) teszt felhasználót](#create-mercer-benefitscentral-mbc-test-user)** – hogy a Britta Simon (a Mercer BenefitsCentral-ben), amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -93,11 +93,11 @@ Az Azure AD egyszeri bejelentkezés a Mercer BenefitsCentral (MBC) szolgáltatá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![A Mercer BenefitsCentral (MBC) tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés a Mercer BenefitsCentral (MBC) szolgáltatá
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a [Mercer BenefitsCentral (MBC) ügyfél-támogatási csapatához](https://www.mercer.com/contact-us.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés a Mercer BenefitsCentral (MBC) szolgáltatá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-mercer-benefitscentral-mbc-single-sign-on"></a>A Mercer BenefitsCentral (MBC) egyszeri bejelentkezésének konfigurálása
+### <a name="configure-mercer-benefitscentral-mbc-single-sign-on"></a>A Mercer BenefitsCentral (MBC) egyszeri Sign-On konfigurálása
 
 Ha be szeretné állítani az egyszeri bejelentkezést a **Mercer BenefitsCentral (MBC)** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Mercer BenefitsCentral (MBC) támogatási csapatának](https://www.mercer.com/contact-us.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -149,7 +149,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

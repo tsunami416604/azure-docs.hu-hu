@@ -2,15 +2,13 @@
 title: Azure Monitor Application Insights munkaterület-alapú erőforrás-sémája
 description: Ismerkedjen meg a Azure Monitor Application Insights munkaterület-alapú erőforrások új táblázatos struktúrájával és sémájával.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323179"
+ms.locfileid: "91931053"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Munkaterület-alapú erőforrás-változások (előzetes verzió)
 
@@ -407,7 +405,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
 |message|sztring|Üzenet|sztring|
-|method|sztring|Metódus|sztring|
+|method|sztring|Módszer|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -464,7 +462,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
 |user_Id|sztring|UserId (Felhasználóazonosító)|sztring|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)
