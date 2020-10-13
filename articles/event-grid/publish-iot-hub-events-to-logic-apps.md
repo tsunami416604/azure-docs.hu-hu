@@ -9,10 +9,10 @@ ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604595"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése az Event Grid és a Logic Apps használatával
@@ -29,7 +29,7 @@ Ez a cikk egy IoT Hub és Event Grid használó minta-konfigurációt mutat be. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 Az Azure Cloud Shell terminál használatával gyorsan létrehozhat egy új IoT hubot a portálon.
 
@@ -69,7 +69,7 @@ Ezután hozzon létre egy logikai alkalmazást, és adjon hozzá egy HTTP Event 
 
    ![A logikai alkalmazás létrehozására szolgáló mezők](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 1. Ellenőrizze a beállításokat, majd válassza a **Létrehozás**lehetőséget.
 

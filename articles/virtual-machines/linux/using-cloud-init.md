@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
 ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869269"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
@@ -35,7 +35,7 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 
 ### <a name="canonical"></a>Canonical
-| Közzétevő/verzió| Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió| Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Canonical 20,04 |UbuntuServer |18,04 – LTS |legújabb |igen | igen |
 |Canonical 18,04 |UbuntuServer |18,04 – LTS |legújabb |igen | igen |
@@ -43,10 +43,10 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 |Canonical 14,04|UbuntuServer |14.04.5-LTS |legújabb |igen | igen |
 
 ### <a name="rhel"></a>RHEL
-| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2 – 1.el7_6.2*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N/A |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
@@ -59,9 +59,9 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 ### <a name="centos"></a>CentOS
 
-| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N/A |
 |OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
@@ -75,9 +75,9 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 ### <a name="oracle"></a>Oracle
 
-| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init használatát | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
+|Oracle 7,7 |Oracle-Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init használatát | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
 
 ### <a name="suse-sles"></a>SUSE SLES
 Ezek a SLES-lemezképek a Cloud-init használatával lettek kiépítve, a Gen2 lemezkép változatait is frissítették.
@@ -95,7 +95,7 @@ Ezek a SLES-lemezképek a Cloud-init használatával lettek kiépítve, a Gen2 l
 
 
 ### <a name="debian"></a>Debian
-| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Debian (Gen1) |Debian – 10 | 10 – cloudinit |Cloud-init – előzetes verzió| Igen (csak előzetes verzió) | Nem, előzetes verzióban. |
 | Debian (Gen2) |Debian – 10 | 10 – cloudinit – Gen2 |Cloud-init – előzetes verzió| Igen (csak előzetes verzió) | Nem, előzetes verzióban. |

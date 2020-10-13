@@ -9,10 +9,10 @@ ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89052450"
 ---
 Az alábbi lépéseket követve létrehozhat egy VNet a Resource Manager-alapú üzemi modellel és a Azure Portal. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../articles/virtual-network/virtual-networks-overview.md)).
@@ -22,7 +22,7 @@ Az alábbi lépéseket követve létrehozhat egy VNet a Resource Manager-alapú 
 >
 >
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A **keresési erőforrások, szolgáltatások és dokumentumok (G +/)** területen írja be a *virtuális hálózat*kifejezést.
 
    ![Virtual Network erőforrás oldalának megkeresése](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Virtuális hálózati erőforrás keresése lap")
@@ -38,7 +38,7 @@ Az alábbi lépéseket követve létrehozhat egy VNet a Resource Manager-alapú 
    ![Alapbeállítások lap](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Alapbeállítások lap") A mezők kitöltése után zöld pipa jelenik meg, ha a mezőben megadott karaktereket érvényesíti a rendszer. Néhány érték autofilled, amelyet a saját értékeivel helyettesíthet:
 
    - **Előfizetés**: Ellenőrizze, hogy a felsorolt előfizetés megfelelő-e. Az előfizetéseket a legördülő menüben módosíthatja.
-   - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új létrehozása** lehetőségre egy új létrehozásához. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../articles/azure-resource-manager/management/overview.md#resource-groups)).
+   - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új létrehozása** lehetőségre egy új létrehozásához. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/management/overview.md#resource-groups).
    - **Név**: adja meg a virtuális hálózat nevét.
    - **Régió**: válassza ki a VNet helyét. A hely határozza meg, hogy az adott VNet üzembe helyezett erőforrások hol fognak élni.
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313416"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Frissítés a DirSync szolgáltatásról
@@ -40,7 +40,7 @@ Ha nem a DirSync szolgáltatásról frissít, tekintse meg az egyéb forgatókö
 ## <a name="upgrade-from-dirsync"></a>Frissítés a DirSync szolgáltatásról
 A DirSync jelenleg aktív üzemelő példányától függően több lehetőség is létezik a frissítésre. Ha a várt frissítési idő kevesebb mint három óra, akkor a helyben történő frissítés javasolt. Ha a várt frissítési idő több mint három óra, akkor a párhuzamos üzembe helyezés javasolt egy másik kiszolgálón. A becslések szerint 50 000-nél több objektum esetén a frissítés több mint három órát vesz igénybe.
 
-| Használati eset |
+| Forgatókönyv |
 | --- |
 | [Frissítés helyben](#in-place-upgrade) |
 | [Párhuzamos üzembe helyezés](#parallel-deployment) |

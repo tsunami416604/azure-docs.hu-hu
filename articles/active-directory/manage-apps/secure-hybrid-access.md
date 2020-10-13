@@ -12,21 +12,21 @@ ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087084"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Biztonságos hibrid hozzáférés: az örökölt alkalmazások védelme Azure Active Directory
 
 Mostantól a helyszíni és a Felhőbeli örökölt hitelesítési alkalmazásokat a következővel érheti el Azure Active Directory (AD) szolgáltatáshoz való csatlakoztatásával:
 
-- [Azure-AD Application Proxy](#secure-hybrid-access-sha-through-azure-ad-application-proxy)
+- [Azure AD-alkalmazásproxy](#secure-hybrid-access-sha-through-azure-ad-application-proxy)
 
 - [Meglévő alkalmazás-kézbesítési vezérlők és hálózatok](#sha-through-networking-and-delivery-controllers)
 
-- [Virtuális magánhálózati (VPN) és szoftveresen megadott peremhálózati (SDP) alkalmazások](#sha-through-vpn-and-sdp-applications)
+- [Virtuális magánhálózati (VPN) és Software-Defined peremhálózati (SDP) alkalmazások](#sha-through-vpn-and-sdp-applications)
 
 Az Azure ad-funkciókkal, például az Azure AD [feltételes hozzáféréssel](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) és az Azure ad [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)szolgáltatással áthidalhatja a szakadékot, és megerősítheti a biztonsági helyzeteket az összes alkalmazásban.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Computer Vision 2,1 és 3,0 – nyomtatott és kézzel írott szöveg kinyerése – REST, Java'
+title: 'Gyors útmutató: Computer Vision 2,1 és 3,1 – nyomtatott és kézzel írott szöveg kinyerése – REST, Java'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a Computer Vision API Java használatával.
 services: cognitive-services
@@ -11,20 +11,19 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: e9f31a16434c8b54e13f4d52a412afbc90fb5c6b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6a7cc5338a77ece59c625a9b72adcc45bf135f24
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760886"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969126"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API és a Java használatával
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával Kinyeri a nyomtatott és a kézírásos szöveget egy képből. Az [olvasás](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) és [olvasás eredményének](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) megadására szolgáló metódusokkal azonosíthatja a képek szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával Kinyeri a nyomtatott és a kézírásos szöveget egy képből. Az [olvasás](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) és [olvasás eredményének](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) megadására szolgáló metódusokkal azonosíthatja a képek szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba.
 
-Az [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` Válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API beolvasása lehetőséget jelöli, és az olvasási metódus hívásának eredményét is megtekintheti.
+Az [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` Válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) API beolvasása lehetőséget jelöli, és az olvasási metódus hívásának eredményét is megtekintheti.
 
----
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,7 +75,7 @@ public class Main {
     private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
     private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
-    private static String uriBase = endpoint + "/vision/v3.0/read/analyze";
+    private static String uriBase = endpoint + "/vision/v3.1/read/analyze";
 
     private static String imageToAnalyze =
             "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg";
@@ -189,7 +188,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,

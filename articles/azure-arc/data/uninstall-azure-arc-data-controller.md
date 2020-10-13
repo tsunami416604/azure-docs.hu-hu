@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a040200c5746defcaee84a951521d5919c0c4d28
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91660676"
 ---
 # <a name="delete-azure-arc-data-controller"></a>Azure arc-adatkezelő törlése
@@ -102,4 +102,4 @@ kubectl delete ns <nameSpecifiedDuringCreation>
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Mik azok az Azure arc-kompatibilis adatszolgáltatások?](overview.md)
+[Mik azok az Azure Arc-kompatibilis adatszolgáltatások?](overview.md)

@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec8e40c0908855cd06d647bdd9121106e3553c11
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88918910"
 ---
 # <a name="test-your-custom-commands-application"></a>Egyéni parancsok alkalmazás tesztelése
@@ -52,7 +52,7 @@ Más programozási nyelvekhez és platformokhoz:
 - [Beszédfelismerési SDK programozási nyelvek, platformok, forgatókönyvek kapacitása](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)
 - [A hangsegéd mintáinak kódjai](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)

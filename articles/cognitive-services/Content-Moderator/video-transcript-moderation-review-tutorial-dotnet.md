@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919289"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
@@ -61,7 +61,7 @@ A `Program` osztály a `Program.cs` fájlban a videomoderálási alkalmazás fő
 
 ### <a name="methods-of-program-class"></a>A program osztály metódusai
 
-|Módszer|Leírás|
+|Metódus|Leírás|
 |-|-|
 |`Main`|Elemzi a parancssort, felhasználói adatokat gyűjt, és megkezdi a feldolgozást.|
 |`ProcessVideo`|Videoértékeléseket tömörít, tölt fel és moderál.|
@@ -237,7 +237,7 @@ A `CreateVideoReviewInContentModerator()` számos egyéb metódust meghív a kö
 > [!NOTE]
 > A konzolalkalmazás az [FFmpeg](https://ffmpeg.org/) könyvtárat használja a miniatűrök létrehozásához. Ezek a miniatűrök (képek) a videomoderálási kimenet képkockáihoz tartozó időbélyegeknek felelnek meg.
 
-|Tevékenység|Metódusok|Fájl|
+|Feladat|Metódusok|Fájl|
 |-|-|-|
 |Kinyeri a kulcskockákat a videóból, és miniatűr képeket hoz létre róluk|`CreateVideoFrames()`<br>`GenerateFrameImages()`|`FrameGeneratorServices.cs`|
 |Átvizsgálja a szöveges átiratot (amennyiben elérhető), és felnőtt vagy kényes hangtartalmat keres|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
@@ -253,7 +253,7 @@ Az oktatóanyagban használt kódok eddig a vizuális tartalmakhoz tartoztak. A 
 
 Az alkalmazás a következő feladatokat hajtja végre:
 
-|Tevékenység|Metódusok|Fájl|
+|Feladat|Metódusok|Fájl|
 |-|-|-|
 |Meghatározza, hogy szükséges-e szöveges átiratok készítése|`Main()`<br>`GetUserInputs()`|`Program.cs`|
 |Ha igen, hozzáad egy átírás feladatot a moderálás részeként|`ConfigureTranscriptTask()`|`VideoModerator.cs`|

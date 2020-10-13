@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e55968f94df820f4d1e2708c0b52283aed3cc903
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 49225fe535e8e4f05874444b285ced41a9085894
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87835187"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969194"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API a go használatával
 
@@ -63,7 +63,7 @@ func main() {
     subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
     endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-    uriBase := endpoint + "vision/v3.0/generateThumbnail"
+    uriBase := endpoint + "vision/v3.1/generateThumbnail"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
     const params = "?width=100&height=100&smartCropping=true"
@@ -121,7 +121,7 @@ func main() {
 
 A sikeres válasz tartalmazza a miniatűrkép bináris adatait. Ha a kérés meghiúsul, a válasz tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Computer Vision API a képek elemzéséhez, a hírességek és tereptárgyak észleléséhez, a miniatűr létrehozásához, valamint a nyomtatott és a kézírásos szöveg kinyeréséhez. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

@@ -8,56 +8,63 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/28/2020
-ms.openlocfilehash: 9f5f4b2b069ebc65430fba4bc31a9891ed61fedf
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/09/2020
+ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450112"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940358"
 ---
 # <a name="convert-to-image-directory"></a>Átalakítás képkönyvtárrá
 
-Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a Képkönyvtár típusú adattípusra a képfájl konvertálása a rendszerkép-címtárba, amely szabványosított adatformátumot tartalmaz a rendszerképekhez kapcsolódó feladatokban, például a képbesorolásban Azure Machine Learning Designerben.
+Ez a cikk bemutatja, hogyan alakíthatja át a képkészletet a rendszerkép-adattípusra a rendszerkép konvertálása a *képkönyvtárba* modul használatával, amely szabványosított adatformátumot tartalmaz a képekhez kapcsolódó feladatokban, például a képbesorolásban Azure Machine learning Designerben.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Az átalakítás Rendszerképbeli könyvtárba való használata  
 
-1.  Adja hozzá az **átalakítás a rendszerképhez könyvtárba** modult a vászonra. Ezt a modult a "Computer Vision/képadatok átalakítása" kategóriában találja a modul listában. 
+1. Először készítse elő a rendszerkép-adatkészletet. 
 
-2.  A **Képkönyvtári modulba való konvertálás** bemenetének fájl-adatkészletnek kell lennie. [Regisztrálja a rendszerkép-adatkészletet](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) , és kapcsolja össze a modul bemeneti portjával. Ellenőrizze, hogy van-e rendszerkép a bemeneti adatkészletben. A Designer jelenleg nem támogatja a képadatkészlet megjelenítését.
- 
-    A következő adatkészlet-formátumok támogatottak:
+    A felügyelt tanuláshoz meg kell adnia a betanítási adatkészlet címkéjét. A rendszerkép-adatkészlet fájljának a következő struktúrában kell lennie:
+    
+    ```
+    Your_image_folder_name/Category_1/xxx.png
+    Your_image_folder_name/Category_1/xxy.jpg
+    Your_image_folder_name/Category_1/xxz.jpeg
+    
+    Your_image_folder_name/Category_2/123.png
+    Your_image_folder_name/Category_2/nsdf3.png
+    Your_image_folder_name/Category_2/asd932_.png
+    ```
+    
+    A rendszerkép-adatkészlet mappában több almappa is található. Minden almappa egy kategóriába tartozó képeket tartalmaz. Az almappák nevei olyan feladatok címkéi, mint a képbesorolás. További információkért tekintse meg a [torchvision adatkészletek](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) című témakört.
 
-    - Tömörített fájl a következő kiterjesztésekben: ". zip", ". tar", ". gz", ". bz2".
-    - Képeket tartalmazó mappa. **Javasoljuk, hogy először tömörítse a mappát, majd használja a tömörített fájlt adatkészletként**.
+    > [!WARNING]
+    > A tervező nem támogatja az adatfeliratokból exportált adatkészletek jelenleg nem támogatottak.
+
+    A következő kiterjesztésű (kisbetűs) képek támogatottak: ". jpg", ". jpeg", ". png", ". ppm", ". bmp", ". PGM", ". tif", ". TIFF", ". WebP". Egy mappában több típusú képet is használhat. Az egyes kategóriák mappájában nem szükséges azonos számú lemezképet tartalmaznia.
+
+    Használhatja a ". zip", a ". tar", a ". gz" és a ". bz2" kiterjesztésű mappát vagy tömörített fájlt. **A jobb teljesítmény érdekében a tömörített fájlok használata javasolt.** 
+    
+    ![Képminta-adatkészlet](./media/module/image-sample-dataset.png)
+
+    Pontozás esetén a rendszerkép adatkészlet mappájának csak nem besorolt képeket kell tartalmaznia.
+
+1. [Regisztrálja a rendszerkép-adatkészletet](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) a munkaterületen található fájl adatkészletként, mivel a képkönyvtári modulba való konvertálás bemenetének **fájl-adatkészletnek**kell lennie.
+
+1. Adja hozzá a regisztrált rendszerkép-adatkészletet a vászonhoz. A regisztrált adatkészletet a vászon bal oldalán található modul lista **adatkészletek** kategóriájában találja. A Designer jelenleg nem támogatja a képadatkészlet megjelenítését.
 
     > [!WARNING]
     > Az **adatimportálási** modul **nem** használható a képadatkészlet importálására, mert az **adatimportálási** modul kimeneti típusa DataFrame könyvtár, amely csak a fájl elérési útja karakterláncot tartalmazza.
-    
 
-    > [!NOTE]
-    > - Ha a képkészletet felügyelt tanulásban használja, meg kell adnia a betanítási adatkészlet címkéjét.
-    > - Képbesorolási feladat esetén a címke a modul kimenetében a "Category" képként hozható létre, ha a képkészletet torchvision ImageFolder formátumban rendezi. Ellenkező esetben a rendszer csak a képeket címke nélkül menti. Az alábbi példa bemutatja, hogyan rendezheti a képkészletet a címke beolvasásához, ha a képkategóriát almappa neveként használja. 
-    > - Az egyes kategóriák mappájában nem kell azonos számú lemezképet feltöltenie.
-    > - A következő kiterjesztésű (kisbetűs) képek támogatottak: ". jpg", ". jpeg", ". png", ". ppm", ". bmp", ". PGM", ". tif", ". TIFF", ". WebP". Egy mappában több típusú képet is használhat.    
-    > - További információért tekintse meg a [torchvision adatkészleteket](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
-    >
-    > ```
-    > Your_image_folder_name/Category_1/xxx.png
-    > Your_image_folder_name/Category_1/xxy.jpg
-    > Your_image_folder_name/Category_1/xxz.jpeg
-    >
-    > Your_image_folder_name/Category_2/123.png
-    > Your_image_folder_name/Category_2/nsdf3.png
-    > Your_image_folder_name/Category_2/asd932_.png
-    > ```
-    > - Ha a képkészletet használja a pontozáshoz, a modul bemeneti fájljának adatkészlete nem minősített képeket tartalmazhat.
+1. Adja hozzá az **átalakítás a rendszerképhez könyvtárba** modult a vászonra. Ezt a modult a "Computer Vision/képadatok átalakítása" kategóriában találja a modul listában. Csatlakoztatása a rendszerkép-adatkészlethez.
     
 3.  A folyamat elküldése. Ezt a modult a GPU vagy a CPU is futtathatja.
 
 ## <a name="results"></a>Results (Eredmények)
 
-A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formátumú, és csatlakoztatható más rendszerképhez kapcsolódó modulokhoz, amelyekben a bemeneti port formátuma is a rendszerkép könyvtára.
+A Képkönyvtár-modulba **való átalakítás** kimenete **Képkönyvtár** formátumú, és más rendszerképhez kapcsolódó modulokhoz is csatlakoztatható, amelyekben a bemeneti port formátuma is a rendszerkép könyvtára.
+
+![Konvertálás rendszerkép-könyvtár kimenetére](./media/module/convert-to-image-directory-output.png)
 
 ## <a name="technical-notes"></a>Technikai megjegyzések 
 
@@ -73,6 +80,6 @@ A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formát
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754973"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969704"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS-lemezek biztonsági mentése és vész-helyreállítás
 
@@ -48,7 +48,7 @@ Ennek az architektúrának az az oka, hogy az Azure nagyvállalati szintű tart�
 
 A számítási gazdagépen vagy a tárolási platformon a honosított hardverhiba miatt előfordulhat, hogy a virtuális gép átmenetileg nem érhető el, mert az [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) a virtuális gépek rendelkezésre állására vonatkozik. Az Azure piacvezető SLA-t is biztosít az Azure Premium SSD-ket használó egyetlen VM-példányhoz.
 
-Ha az alkalmazások számítási feladatait a lemez vagy a virtuális gép ideiglenes leállása miatt szeretné biztosítani az állásidőtől, az ügyfelek használhatják a [rendelkezésre állási csoportokat](windows/manage-availability.md). A rendelkezésre állási csoportba tartozó két vagy több virtuális gép redundanciát biztosít az alkalmazás számára. Az Azure ezt követően külön tartalék tartományokban hozza létre ezeket a virtuális gépeket és lemezeket különböző energiaellátási, hálózati és kiszolgáló-összetevőkkel.
+Ha az alkalmazások számítási feladatait a lemez vagy a virtuális gép ideiglenes leállása miatt szeretné biztosítani az állásidőtől, az ügyfelek használhatják a [rendelkezésre állási csoportokat](./manage-availability.md). A rendelkezésre állási csoportba tartozó két vagy több virtuális gép redundanciát biztosít az alkalmazás számára. Az Azure ezt követően külön tartalék tartományokban hozza létre ezeket a virtuális gépeket és lemezeket különböző energiaellátási, hálózati és kiszolgáló-összetevőkkel.
 
 Ezen különálló tartalék tartományok miatt a honosított hardverhiba általában nem érinti a készletben lévő több virtuális gépet. A különálló tartalék tartományok magas rendelkezésre állást biztosítanak az alkalmazás számára. A rendelkezésre állási csoportok használata jó gyakorlatnak minősül, ha magas rendelkezésre állásra van szükség. A következő szakasz a vész-helyreállítási aspektust ismerteti.
 
@@ -77,7 +77,7 @@ Vegyünk a magas rendelkezésre állást támogató éles adatbázis-kiszolgál�
 - Az adatvédelemre és helyreállításra van szükség.
 - A kiszolgálónak elérhetőnek kell lennie a használatra.
 
-Előfordulhat, hogy a vész-helyreállítási terv az adatbázis replikájának megőrzését igényli egy másik régióban biztonsági másolatként. A kiszolgáló rendelkezésre állásának és az adatok helyreállításának követelményeitől függően előfordulhat, hogy a megoldás egy aktív-aktív vagy aktív-passzív replika-helyről az adatok rendszeres offline biztonsági mentései közé esik. A rokon adatbázisok, például a SQL Server és az Oracle, különböző replikációs lehetőségeket biztosítanak. SQL Server esetén a magas rendelkezésre állás érdekében használja a [SQL Server AlwaysOn rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx) .
+Előfordulhat, hogy a vész-helyreállítási terv az adatbázis replikájának megőrzését igényli egy másik régióban biztonsági másolatként. A kiszolgáló rendelkezésre állásának és az adatok helyreállításának követelményeitől függően előfordulhat, hogy a megoldás egy aktív-aktív vagy aktív-passzív replika-helyről az adatok rendszeres offline biztonsági mentései közé esik. A rokon adatbázisok, például a SQL Server és az Oracle, különböző replikációs lehetőségeket biztosítanak. SQL Server esetén a magas rendelkezésre állás érdekében használja a [SQL Server AlwaysOn rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) .
 
 A NoSQL-adatbázisok, például a MongoDB, támogatják a redundancia- [replikákat](https://docs.mongodb.com/manual/replication/) is. A magas rendelkezésre állású replikák használatban vannak.
 
@@ -201,7 +201,7 @@ Egy másik lehetőség, hogy konzisztens biztonsági másolatokat hozzon létre 
 
 1. Hozzon létre egy pillanatképet minden egyes virtuális merevlemez-blobról, amely csak néhány másodpercet vesz igénybe.
 
-    Pillanatkép létrehozásához használhatja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.storage), az [Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), az [Azure CLI](/cli/azure/)-t vagy az Azure Storage ügyféloldali kódtárait, például [a Storage ügyféloldali kódtárat a .net-hez](https://msdn.microsoft.com/library/azure/hh488361.aspx).
+    Pillanatkép létrehozásához használhatja a [PowerShellt](/powershell/module/az.storage), az [Azure Storage REST API](/rest/api/storageservices/Snapshot-Blob), az [Azure CLI](/cli/azure/)-t vagy az Azure Storage ügyféloldali kódtárait, például [a Storage ügyféloldali kódtárat a .net-hez](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 1. Indítsa el a virtuális gépet, amely befejezi az állásidőt. Általában a teljes folyamat néhány percen belül befejeződik.
 
@@ -224,7 +224,7 @@ Az Azure-beli, nem [felügyelt virtuálisgép-lemezek biztonsági mentése növe
 
 ### <a name="recovery-from-snapshots"></a>Helyreállítás pillanatképekről
 
-Pillanatkép lekéréséhez másolja azt egy új blob létrehozásához. Ha a pillanatképet az elsődleges fiókból másolja át, a pillanatképet átmásolhatja a pillanatkép alap blobba. Ez a folyamat visszaállít egy lemezt a pillanatképbe. Ezt a folyamatot nevezzük a pillanatkép népszerűsítésének. Ha egy másodlagos fiókból másolja a pillanatkép biztonsági mentését, egy olvasási hozzáférésű geo-redundáns Storage-fiók esetében át kell másolnia azt egy elsődleges fiókba. A pillanatképeket a [PowerShell](https://docs.microsoft.com/powershell/module/az.storage) vagy a AzCopy segédprogram használatával másolhatja. További információ: [adatok átvitele a AzCopy parancssori segédprogrammal](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
+Pillanatkép lekéréséhez másolja azt egy új blob létrehozásához. Ha a pillanatképet az elsődleges fiókból másolja át, a pillanatképet átmásolhatja a pillanatkép alap blobba. Ez a folyamat visszaállít egy lemezt a pillanatképbe. Ezt a folyamatot nevezzük a pillanatkép népszerűsítésének. Ha egy másodlagos fiókból másolja a pillanatkép biztonsági mentését, egy olvasási hozzáférésű geo-redundáns Storage-fiók esetében át kell másolnia azt egy elsődleges fiókba. A pillanatképeket a [PowerShell](/powershell/module/az.storage) vagy a AzCopy segédprogram használatával másolhatja. További információ: [adatok átvitele a AzCopy parancssori segédprogrammal](../storage/common/storage-use-azcopy-v10.md).
 
 Több lemezzel rendelkező virtuális gépek esetén az azonos koordinált visszaállítási pont részét képező összes pillanatképet át kell másolnia. A pillanatképek írható VHD-blobokra másolását követően a Blobokkal újból létrehozhatja a virtuális gépet a virtuális gép sablonjának használatával.
 
@@ -259,10 +259,9 @@ Ha úgy tűnik, hogy jelentős leállás következik be, az Azure-csapat elindí
 
 További információk: [Mi a Mi a teendő az Azure Storage leállása esetén](../storage/common/storage-disaster-recovery-guidance.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: Azure-beli nem [felügyelt virtuálisgép-lemezek biztonsági mentése növekményes pillanatképekkel](linux/incremental-snapshots.md).
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-

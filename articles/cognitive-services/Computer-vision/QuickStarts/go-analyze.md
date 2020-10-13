@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6d7e9f37c794349e9f61b9c822e63a9b48984e91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1f7e5b75f95bbb6475051402f541ced0897c4130
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87835272"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969262"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Gyors útmutató: távoli rendszerkép elemzése a Computer Vision REST API a go használatával
 
@@ -60,7 +60,7 @@ func main() {
     subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
     endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-    uriBase := endpoint + "vision/v3.0/analyze"
+    uriBase := endpoint + "vision/v3.1/analyze"
     const imageUrl =
         "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
 
@@ -170,7 +170,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

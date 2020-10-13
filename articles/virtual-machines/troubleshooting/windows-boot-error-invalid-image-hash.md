@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89447809"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969602"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows rendszerindítási kezelő – hiba – a 0xC0000428 állapota érvénytelen képkivonat
 
@@ -28,7 +28,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel megoldhatók az előzetes
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőkép a Windows rendszerindítási kezelőt jeleníti meg a következő üzenettel:
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőkép a Windows rendszerindítási kezelőt jeleníti meg a következő üzenettel:
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ Az előzetes verziójú rendszerkép lejárati dátumát nem tudja meghosszabbí
 
 ## <a name="solution"></a>Megoldás
 
-Ha a rendszerkép egy előnézeti kép, nem lehet kiterjeszteni a használt lemezkép lejárati idejét, hanem egy [új virtuális gépet kell telepítenie](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) egy nem előzetes verziójú lemezkép használatával. Az alábbi lépések segítséget nyújtanak annak azonosításában, hogy az előnézeti képet használta-e, valamint olyan erőforrásokat biztosít, amelyek segítséget nyújtanak az adatoknak a virtuális gépről egy új virtuális gépre való átvitelében. Ha pozitívan azonosította a rendszerképet előzetes képként, a rendszerkép nem helyreállítható, mert már lejárt.
+Ha a rendszerkép egy előnézeti kép, nem lehet kiterjeszteni a használt lemezkép lejárati idejét, hanem egy [új virtuális gépet kell telepítenie](../windows/quick-create-portal.md) egy nem előzetes verziójú lemezkép használatával. Az alábbi lépések segítséget nyújtanak annak azonosításában, hogy az előnézeti képet használta-e, valamint olyan erőforrásokat biztosít, amelyek segítséget nyújtanak az adatoknak a virtuális gépről egy új virtuális gépre való átvitelében. Ha pozitívan azonosította a rendszerképet előzetes képként, a rendszerkép nem helyreállítható, mert már lejárt.
 
 A beállításoktól függően a Azure PowerShell vagy az Azure CLI segítségével lekérdezheti a rendszerképet, és megállapíthatja, hogy az előnézeti kép-e. Ezekkel a parancsokkal ellenőrizheti, hogy a rendszerkép előnézeti kép-e.
 
@@ -103,7 +103,7 @@ A beállításoktól függően a Azure PowerShell vagy az Azure CLI segítségé
 
 ### <a name="query-using-the-azure-cli"></a>Lekérdezés az Azure CLI használatával
 
-1. Ha még nem tette meg, akkor [telepítenie kell az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t.
+1. Ha még nem tette meg, akkor [telepítenie kell az Azure CLI](/cli/azure/install-azure-cli)-t.
 1. A letöltés után a parancssor vagy a PowerShell használatával írja be a `az login` parancsot, majd jelentkezzen be a fiókja hitelesítő adataival.
 1. Miután bejelentkezett, adja meg a következő parancsokat:
 

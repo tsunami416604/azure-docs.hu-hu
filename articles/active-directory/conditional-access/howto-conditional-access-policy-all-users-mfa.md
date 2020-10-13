@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a45ce7bee04716612431effe77315d739f328dba
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049298"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: MFA megkövetelése minden felhasználó számára
@@ -50,7 +50,7 @@ A következő lépések segítenek létrehozni egy feltételes hozzáférési sz
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó** lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
    1. A **kizárás**területen válassza ki azokat az alkalmazásokat, amelyek nem igénylik a többtényezős hitelesítést.
 1. Az **Conditions**  >  **ügyfélalkalmazások (előzetes verzió)** feltételek alatt **válassza ki a házirend** hatálya alá tartozó ügyfélalkalmazások kiválasztása lehetőséget az összes kijelölt alapértelmezett érték elhagyásához, majd válassza a **kész**lehetőséget.
@@ -68,8 +68,8 @@ A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem ig
    1. Konfigurálja az **Igen értéket**.
    1. Adjon meg **bármilyen helyet**.
    1. **Az összes megbízható helyszín**kizárása.
-   1. Válassza a **Kész** lehetőséget.
-1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. Válassza a **Done** (Kész) lehetőséget.
 1. **Mentse** a szabályzat módosításait.
 
 ## <a name="next-steps"></a>Következő lépések

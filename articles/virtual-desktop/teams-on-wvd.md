@@ -7,16 +7,16 @@ ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88922565"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
 >[!IMPORTANT]
->A csapatok multimédia-optimalizálása Microsoft 365 Government (GCC) környezetekben támogatott. A csapatoknak szóló média-optimalizálás a GCC-High vagy a DoD esetében nem támogatott.
+>A csapatok multimédia-optimalizálása Microsoft 365 Government (GCC) környezetekben támogatott. A Teams szolgáltatáshoz való multimédia-optimalizálás GCC-High vagy DoD esetében nem támogatott.
 
 >[!NOTE]
 >A Microsoft Teams szolgáltatáshoz készült média-optimalizálás csak Windows 10-es gépeken futó Windows asztali ügyfélprogram esetében érhető el. A média-optimalizáláshoz a Windows asztali ügyfél verziója 1.2.1026.0 vagy újabb verzió szükséges.
@@ -42,7 +42,7 @@ Ebből a szakaszból megtudhatja, hogyan telepítheti a Teams Desktop alkalmazá
 
 A csapatok számára a média optimalizálásának engedélyezéséhez állítsa be a következő beállításkulcsot a gazdagépen:
 
-1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
+1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**.
 2. Hozza létre a következő értéket a csapatok kulcsához:
 
 | Név             | Típus   | Az adatértékek/értékek  |
@@ -94,7 +94,7 @@ A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti tel
 
         Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 64 bites operációs rendszeren, valamint egy 32 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
 
-        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a csapatok számítógép-szintű telepítője megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows-beállításokban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat.
+        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a Teams Machine-Wide telepítőjének megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows beállításaiban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat.
 
         > [!NOTE]
         > A felhasználók és a rendszergazdák jelenleg nem tudják letiltani a csapatok automatikus indítását a bejelentkezés során.

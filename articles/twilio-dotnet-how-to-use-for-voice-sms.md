@@ -14,10 +14,10 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021136"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>A Twilio használata a hang-és SMS-funkciókhoz az Azure-ban
@@ -57,7 +57,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza.  Ismerje meg a 
 ### <a name="twiml"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
+Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -180,7 +180,7 @@ Amikor az alkalmazás kezdeményezi a Twilio API-t, például a **CallResource. 
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza. Ez a témakör feltételezi, hogy az URL-címet egy ASP.NET általános kezelője fogja üzemeltetni.
 
-A következő ASP.NET-kezelő olyan TwiML választ, amely a híváson **"Helló világ!" alkalmazás** .
+A következő ASP.NET-kezelő olyan TwiML választ, amely a híváson **„Helló világ!” alkalmazás** .
 
 ```csharp
 using System.Text;

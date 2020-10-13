@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ff20dbdd0dac5b56d0f746733b14dfe44803e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554655"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Oktatóanyag: Azure Active Directory integráció a moconavi
 
@@ -151,7 +151,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -191,15 +191,15 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a moconavi-b
 
 3. Kattintson a **beállítás** gombra.
 
-    ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing1.png)
+    ![Képernyőfelvétel: a moconavi gomb megjelenítése.](./media/moconavi-tutorial/testing1.png)
 
 4. Adja meg `https://mcs-admin.moconavi.biz/gateway` a **Kapcsolódás az URL-címhez** szövegmezőt, majd kattintson a **kész** gombra.
 
-    ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing2.png)
+    ![A képernyőképen a kapcsolódás U R L Box és a kész gomb látható.](./media/moconavi-tutorial/testing2.png)
 
 5. Az alábbi képernyőképen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing3.png)
+    ![Képernyőfelvétel: a moconavi lap, amelyen megadhatja a leírt értékeket.](./media/moconavi-tutorial/testing3.png)
 
     a. Adja meg a **bemeneti hitelesítési kulcsot**: `azureAD` **bemeneti hitelesítési kulcs** szövegmezőbe.
 
@@ -209,11 +209,11 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a moconavi-b
 
 6. Adja meg az Azure AD-jelszót a **jelszó** szövegmezőben, majd kattintson a **login (bejelentkezés** ) gombra.
 
-    ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing4.png)
+    ![Képernyőfelvétel: Itt adhatja meg, hogy hol adja meg az Azure-beli jelszavát.](./media/moconavi-tutorial/testing4.png)
 
 7. Az Azure AD-hitelesítés a menü megjelenésekor sikeres.
 
-    ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing5.png)
+    ![A képernyőképen a moconavi található telefon ikon látható.](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>További források
 

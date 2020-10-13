@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e62da791e8c60f884855fba16315a03fe22cecb5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450713"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940327"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure Load Balancer Azure biztonsági alapterve
 
@@ -98,7 +98,7 @@ A Security Center (standard szint) a virtuális gépek igény szerinti elérés�
 A Security Center adaptív hálózatának megerősítése funkció segítségével a hálózati biztonsági csoportok konfigurációit a tényleges forgalom és a fenyegetések felderítése alapján korlátozhatja a portok és a forrás IP-címek korlátozására.
  
 
-- [Azure DDoS Protection standard kezelése a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-network/manage-ddos`protection)
+- [Azure DDoS Protection standard kezelése a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [Azure Firewall fenyegetés intelligencia-alapú szűrés](https://docs.microsoft.com/azure/firewall/threat-intel)
 

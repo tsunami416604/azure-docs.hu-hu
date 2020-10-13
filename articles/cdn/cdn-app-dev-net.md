@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919488"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>Ismerkedés a .NET-hez készült Azure CDN-függvénytárral
@@ -336,7 +336,7 @@ Ezután megerősítheti a kéréseket, hogy futtassa a program többi részét.
 
 ![Program befejezése](./media/cdn-app-dev-net/cdn-program-running-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha meg szeretné tekinteni a kész projektet ebből az útmutatóból, [töltse le a mintát](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
 Ha további dokumentációt szeretne keresni a .NET-hez készült Azure CDN Management Library-hez, tekintse meg az MSDN-beli [referenciát](/dotnet/api/overview/azure/cdn).

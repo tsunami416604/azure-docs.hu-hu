@@ -3,12 +3,12 @@ title: Élő videó elemzése a IoT Edge és az Azure élő videó-elemzésével
 description: Megtudhatja, hogyan használhatja a Custom Visiont olyan tárolós modell kiépítéséhez, amely képes észlelni a játékok teherautóját, és az élő videó-elemzések AI-bővíthetőségi funkcióját használja a IoT Edge (LVA) szolgáltatásban a modellnek az élő videó streamből való észlelésére.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 7989b3636fe953b8110e356506a5867fefd2d8b6
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804146"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940174"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -56,14 +56,14 @@ Az oktatóanyag előfeltételei a következők:
 
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
-Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv/) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a CTRL + N billentyűkombinációt, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintéséhez vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer-teherautók észleléséhez és a kapcsolódó következtetési események közzétételéhez IoT Edge hubhoz.
+Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a CTRL + N billentyűkombinációt, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintéséhez vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer-teherautók észleléséhez és a kapcsolódó következtetési események közzétételéhez IoT Edge hubhoz.
 
 ## <a name="overview"></a>Áttekintés
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Custom Vision áttekintése":::
 
-Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modulok](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) egy valós idejű Streaming Protocol-(RTSP-) kiszolgálót üzemeltető IP-kamerát szimulálnak. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontját elérő video stream képkockasebességét.
+Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontját elérő video stream képkockasebességét.
 A HTTP-bővítmény csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a Custom Vision használatával létrehozott Toy Truck detektor modell. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision Toy Detection-modell létrehozása és üzembe helyezése 
@@ -298,11 +298,11 @@ Vegye figyelembe a következőket a fenti üzenetekben:
 * a "Body" az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, ezért a törzs az "előrejelzések" elnevezésű következtetések tömbjét tartalmazza.
 * a "jóslatok" szakasz azon előrejelzések listáját tartalmazza, ahol a Toy Delivery Truck (címke = szállítási teherautó) található a keretben. Ahogy azt szeretné, a szállítási kamion az egyéni címkét adja meg, amelyet a Toy Truck számára a saját betanított modelljéhez adott meg, és a modell a játék teherautóját a különböző valószínűségi megbízhatósági pontszámokkal rendelkező bemeneti videóban azonosítja.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha szeretné kipróbálni a más oktatóanyagokat vagy gyors útmutatókat, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

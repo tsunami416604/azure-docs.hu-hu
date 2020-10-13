@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612120"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
@@ -136,7 +136,7 @@ Az ügyfél-kijelentések bárhol használhatók, ha az ügyfél titkos kulcsát
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Ez egy rögzített érték, amely azt jelzi, hogy a tanúsítvány hitelesítő adatait használja. |
 |`client_assertion`| JWT |Ez a fent létrehozott JWT. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [MSAL.net-függvénytár ezt a forgatókönyvet](msal-net-client-assertions.md) egyetlen sorban kezeli.
 

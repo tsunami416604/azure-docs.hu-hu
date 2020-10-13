@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757605"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969075"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Rövid útmutató: ExpressRoute-kör létrehozása és módosítása az Azure CLI használatával
 
@@ -112,7 +112,7 @@ A válasz a következő példához hasonló:
 
 Ellenőrizze a választ, hogy megjelenik-e a kapcsolat szolgáltatója. Jegyezze fel a következő információkat, amelyekre szüksége lesz az áramkör létrehozásakor:
 
-* Name (Név)
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -347,7 +347,7 @@ ExpressRoute áramkör megszüntetéséhez és törléséhez ellenőrizze, hogy 
 * Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés vagy **kiépítve** **van,** akkor a szolgáltatóval kell együttműködni, hogy kiépítse az áramkört a saját oldalán. Továbbra is fenntartjuk az erőforrásokat és számlázunk, amíg a szolgáltató befejezi az áramkör kiépítését, és értesítést küld nekünk.
 * Ha a szolgáltató kivette az áramkört, ami azt jelenti, hogy a szolgáltató kiépítési állapota **nem kiépítve**értékre van állítva, akkor törölheti az áramkört. Az áramkör számlázása ezután leáll.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A ExpressRoute-áramkört a következő parancs futtatásával törölheti:
 

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
 ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266700"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
@@ -55,7 +55,7 @@ Négy különböző leképezési típus támogatott:
 - **Direct (közvetlen** ) – a TARGET attribútum az Azure ad-ben csatolt objektum attribútumának értékével van feltöltve.
 - **Konstans** – a TARGET attribútum egy megadott karakterlánccal van feltöltve.
 - **Kifejezés** – a cél attribútum a parancsfájl-szerű kifejezés eredménye alapján van feltöltve.
-  További információ: [kifejezések írása az attribútumhoz – leképezések Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
+  További információ: [kifejezések írása Attribute-Mappingshoz Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 - **Nincs** – a cél attribútum változatlan marad. Ha azonban a cél attribútum még mindig üres, akkor a rendszer a megadott alapértelmezett értékkel tölti fel.
 
 A négy alaptípussal együtt az egyéni attribútum-hozzárendelések az opcionális **alapértelmezett** érték-hozzárendelés fogalmát támogatják. Az alapértelmezett érték-hozzárendelés biztosítja, hogy a TARGET attribútum értéke akkor legyen feltöltve, ha nincs érték az Azure AD-ben vagy a TARGET objektumon. A leggyakoribb beállítás az, ha üresen hagyja ezt a beállítást.

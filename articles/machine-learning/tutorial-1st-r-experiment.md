@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fe9b0e9d2e2e46c7c4d04549777a5c27df6bdf18
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906738"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940106"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával (előzetes verzió)
 
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Előrejelzési végpont üzembe helyezése
 > * A modell tesztelése az R-ből
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -68,7 +68,7 @@ Az oktatóanyag futtatásához használja az RStudio-t egy Azure ML számítási
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>A minta matricák klónozása 
 
-A https://github.com/azure/azureml-sdk-for-r GitHub-tárház klónozása az oktatóanyagban futtatni kívánt matrica-fájlok egy példányához.
+A https://github.com/Azure/azureml-sdk-for-r GitHub-tárház klónozása az oktatóanyagban futtatni kívánt matrica-fájlok egy példányához.
 
 1. A RStudio-ben navigáljon a "Terminal" (terminál) lapra, és a CD-t abba a könyvtárba, ahová az adattárat szeretné klónozott.
 
@@ -369,7 +369,7 @@ A webszolgáltatás HTTP-végpontját is beolvashatja, amely fogadja a REST-ügy
 aci_service$scoring_uri
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége rájuk, törölje az erőforrásokat. Ne töröljön olyan erőforrást, amelyet még használni szeretne. 
 

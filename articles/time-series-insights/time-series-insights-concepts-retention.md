@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535689"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Az adatmegőrzés ismertetése Azure Time Series Insights Gen1
@@ -98,7 +98,7 @@ Ha az eseményforrás () egyik tulajdonság sincs konfigurálva `timeStampProper
 
 Olvassa el, [Hogyan méretezheti Azure Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md) úgy, hogy a környezetét a további kapacitásra vagy a megőrzési időtartamra növelje.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatmegőrzési beállítások konfigurálásával és módosításával kapcsolatos információkért tekintse át [az adatmegőrzés konfigurálása Azure Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
 

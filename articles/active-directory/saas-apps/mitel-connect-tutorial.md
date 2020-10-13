@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552602"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Oktatóanyag: Azure Active Directory integráció a Mitel MiCloud csatlakozással vagy a CloudLink platformmal
 
@@ -112,7 +112,7 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 4. A Azure Portal válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció** szakaszban.
    
-    ![image](common/edit-urls.png)
+    ![Képernyőfelvétel: az egyszeri Sign-On beállítása az SAML-oldallal lapon a Szerkesztés ikon kiválasztva.](common/edit-urls.png)
 
     Megjelenik az alapszintű SAML-konfiguráció párbeszédpanel.
 
@@ -120,7 +120,7 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 6. Másolja az URL-címet a válasz URL-címéből **(az állítási fogyasztói szolgáltatás URL-címe)** a Mitel-fiók portálon, és illessze be a **Válasz URL-címébe (a felhasználói szolgáltatás URL-címe)** mezőben a Azure Portal.
 
-   ![image](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
+   ![Képernyőfelvétel: alapszintű SAML-konfiguráció a Azure Portal és az Identitáskezelő beállítása szakasz a Mitel-fiók portálon a köztük lévő kapcsolatot jelző vonalakkal.](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
 7. A **bejelentkezési URL-cím** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
@@ -134,11 +134,11 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 9. A Azure Portal **SAML-alapú bejelentkezési** lapján az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** lehetőséget az **aláíró tanúsítvány** letöltéséhez és a számítógépbe való mentéséhez.
 
-    ![image](./media/mitel-connect-tutorial/azure-signing-certificate.png)
+    ![Képernyőfelvétel: az SAML aláíró tanúsítvány panel, ahol letöltheti a tanúsítványokat.](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
 10. Nyissa meg az aláíró tanúsítványfájl egy szövegszerkesztőben, másolja a fájlban található összes adatfájlt, majd illessze be az adattípust a Mitel-fiók portál **aláíró tanúsítvány** mezőjébe. 
 
-      ![image](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
+      ![A képernyőképen az aláíró tanúsítvány mező látható.](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. A Azure Portal **SAML-alapú bejelentkezési** oldalán, a **Mitel-kapcsolat beállítása** szakaszban:
 
@@ -146,7 +146,7 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
      1. Másolja az URL-címet az **Azure ad-azonosító** mezőjéből, és illessze be a Mitel-fiók-portál **entitás-azonosító** mezőjébe.
          
-         ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
+         ![Képernyőfelvétel: a Azure Portal és a Mitel-fiók portál SAML-alapú bejelentkezési lapja közötti kapcsolat.](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
 12. Válassza a **Mentés** lehetőséget a Mitel-fiók portálon az **egyszeres Sign-On beállítások összekapcsolása** párbeszédpanelen.
 
@@ -241,7 +241,7 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
     
        Megnyílik az **SAML-alapú bejelentkezési** oldal, amely megjeleníti az **alapszintű SAML-konfiguráció** szakaszát.
 
-       ![image](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
+       ![Képernyőfelvétel: az SAML-alapú bejelentkezési oldal, amely alapszintű SAML-konfigurációt mutat be.](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
 2. Az **Azure ad egyszeri bejelentkezés** konfigurációs paneljének eléréséhez a CloudLink-fiókok portálján:
 
@@ -251,33 +251,33 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
 
     1. Válassza ki a **harmadik féltől származó** lapot. Megjelenik a támogatott harmadik féltől származó alkalmazások listája. Válassza az **Azure ad egyszeri bejelentkezéshez**társított **Hozzáadás** gombot, és válassza a **kész**lehetőséget.
 
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
+       ![Képernyőfelvétel: az integrációs oldal, amelyen hozzáadhatja az Azure D egyszeri bejelentkezést.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
        Az **Azure ad egyszeri bejelentkezés** engedélyezve van az ügyfél fiókjához, és a rendszer hozzáadja a **fiók adatai** lap **integrációk** szakaszához.   
 
    1. Válassza a **telepítés befejezése**lehetőséget.
     
-      ![image](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
+      ![A képernyőképen az Azure A D egyszeri bejelentkezéshez használható teljes telepítési lehetőség látható.](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
       Megnyílik az **Azure ad egyszeri bejelentkezés** konfigurációs panelje.
       
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
+       ![A képernyőfelvételen az Azure A D-Sign-On konfigurációja látható.](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
        
        A Mitel azt javasolja, hogy a **Mitel hitelesítő adatok engedélyezése (nem kötelező)** jelölőnégyzet ne legyen bejelölve a **választható Mitel hitelesítő adatok** szakaszban. Jelölje be ezt a jelölőnégyzetet, ha azt szeretné, hogy a felhasználó a Mitel hitelesítő adataival jelentkezzen be a CloudLink alkalmazásba az egyszeri bejelentkezés lehetőség mellett.
 
 3. A Azure Portal az **SAML-alapú bejelentkezési** oldalon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció** szakaszban. Megnyílik az **alapszintű SAML-konfiguráció** panel.
 
-    ![image](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
+    ![A képernyőképen az alapszintű SAML-konfiguráció ablaktábla látható, ahol a Szerkesztés ikon van kiválasztva.](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
  
  4. Másolja az URL-címet a CloudLink-fiókok portál Mitel-azonosító **(Entity ID)** mezőjéből, és illessze be a Azure Portal **azonosító (entitás azonosítója)** mezőjébe.
 
  5. Másolja az URL-címet a CloudLink-fiókok portál **Válasz URL-címe (a fogyasztói szolgáltatás URL-címe)** mezőből, és illessze be a **Válasz URL-címébe (a felhasználói szolgáltatás URL-címe)** mezőben a Azure Portal.  
     
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
+    ![A képernyőképen látható a CloudLink-fiókok és a Azure Portal lapjai közötti kapcsolat.](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
 
  6. A **bejelentkezési URL** szövegmezőbe írja be azt az URL-címet, `https://accounts.mitel.io` amely a CloudLink-fiókok portált használja alapértelmezett Mitel-alkalmazásként.
      
-     ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
+     ![A képernyőképen a bejelentkezés U R L szövegmező jelenik meg.](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
   
      > [!NOTE]
      > Az alapértelmezett Mitel alkalmazás az az alkalmazás, amely akkor nyílik meg, amikor a felhasználó kiválasztja a Mitel csatlakozás csempét a hozzáférési panelen. Ez az alkalmazás akkor is elérhető, amikor a felhasználó az Azure AD-ből konfigurál egy teszt-beállítást.
@@ -286,14 +286,14 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
 
 8. Az Azure Portal **SAML-alapú bejelentkezési** lapján az **SAML aláíró tanúsítvány** szakaszban a **tanúsítvány (Base64)** melletti **Letöltés** lehetőségre kattintva töltse le az **aláíró tanúsítványt**. Mentse a tanúsítványt a számítógépére.
   
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
+    ![A képernyőfelvételen az SAML aláíró tanúsítvány szakasza látható, ahol letöltheti a Base64-tanúsítványt.](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
 9. Nyissa meg az aláíró tanúsítványfájl egy szövegszerkesztőben, másolja a fájlban található összes adatfájlt, majd illessze be az adatbevitelt a CloudLink-fiókok portál **aláíró tanúsítvány** mezőjébe.  
 
     > [!NOTE]
     > Ha egynél több tanúsítványa van, azt javasoljuk, hogy illessze be őket egymás után. 
        
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
+    ![A képernyőképen az eljárás második lépése látható, amely az Azure A D-integrációban található értékeket tölti ki.](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
 
 10. A Azure Portal **SAML-alapú bejelentkezési** lapján a **Mitel-kapcsolat beállítása** szakaszban:
 
@@ -301,7 +301,7 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
 
      1. Másolja az URL-címet az **Azure ad azonosító** mezőjéből, és illessze be a CloudLink-fiókok portál **identitásszolgáltató-azonosító (Entity ID)** mezőjébe.
      
-        ![image](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
+        ![A képernyőképen az itt ismertetett értékek forrása látható a Mintel-kapcsolatban.](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
 11. Válassza a **Mentés** lehetőséget az **Azure ad egyszeri bejelentkezés** paneljén a CloudLink-fiókok portálján.
 

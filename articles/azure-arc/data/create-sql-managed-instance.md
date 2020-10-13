@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a931b1a3c3f88af1abec4fd1810aae09c849c48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940857"
 ---
 # <a name="create-an-azure-sql-managed-instance-on-azure-arc"></a>Azure SQL felügyelt példány létrehozása az Azure arc-ban
@@ -62,7 +62,7 @@ azdata arc sql mi create -n sqldemo --storage-class-data managed-premium --stora
 >
 >  A memória kiosztásának és a virtuális mag kiosztásának megadásakor használja ezt a képletet a létrehozás sikerességének biztosításához – mindegyik 1 virtuális mag legalább 4 GB RAM kapacitást kell biztosítania azon a Kubernetes-csomóponton, ahol az SQL felügyelt példány Pod fut.
 >
->  SQL-példány létrehozásakor az Azure-ban való üzembe helyezéskor ne használja a nagybetűket a névben
+>  SQL-példányok létrehozásakor az Azure-ban történő kiépítéskor ne használjon a nagybetűket a névben.
 >
 >  Az elérhető tárolási osztályok listázása a Kubernetes-fürtben `kubectl get storageclass` 
 

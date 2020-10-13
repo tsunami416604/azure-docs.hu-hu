@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050199"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
@@ -78,7 +78,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Name | Szerepkör | Műveletek |
+| Name (Név) | Szerepkör | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapat képviselője, amely meghatározza, hogyan igazíthatja ezt a változást a szervezeten belüli alapvető Identity Management-infrastruktúrával. | SO/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a csapatuk Privileged Identity Managementának bevezetésében. | SO/R/I |
@@ -88,7 +88,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Érdekelt felek: Privileged Identity Management Azure-szerepkörökhöz
 
-| Name | Szerepkör | Műveletek |
+| Name (Név) | Szerepkör | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
 | Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
@@ -240,9 +240,9 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 
 | Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincs | n.a. | 3 hónap |
-| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincs | 1 óra | Nincs | n.a. | 3 hónap |
-| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincs | 3 óra | Nincs | n.a. | 6 hónap |
+| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincs | n/a | 3 hónap |
+| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincs | 1 óra | Nincs | n/a | 3 hónap |
+| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincs | 3 óra | Nincs | n/a | 6 hónap |
 
 Az alábbi táblázat az egyes beállításokat ismerteti.
 

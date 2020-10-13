@@ -12,10 +12,10 @@ ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536239"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Az OCR Docker-tárolók olvasásának konfigurálása
@@ -62,7 +62,7 @@ Ez a beállítás a következő helyen érhető el:
 
 Ne felejtse el hozzáadni az `vision/v1.0` útválasztást a VÉGPONT URI-hoz az alábbi táblázatban látható módon. 
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja<br><br>Példa:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -90,7 +90,7 @@ A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztat�
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Név | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -193,6 +193,6 @@ Logging:Console:LogLevel:Default=Information
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A tárolók telepítésének és futtatásának](computer-vision-how-to-install-containers.md)áttekintése.

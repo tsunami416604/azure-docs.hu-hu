@@ -4,10 +4,10 @@ description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését i
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316841"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
@@ -66,11 +66,11 @@ Az összes többi verzió esetében javítsa ki az engedélyeket a következő l
 
       ![A bejelentkezés – új párbeszédpanelen válassza a keresés lehetőséget.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben**látható módon. Válassza **a Névellenőrzés lehetőséget** a név feloldásához. Válassza az **OK** lehetőséget.
+  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben**látható módon. Válassza **a Névellenőrzés lehetőséget** a név feloldásához. Kattintson az **OK** gombra.
 
       ![Az ismeretlen szolgáltatásnév feloldásához válassza a Névellenőrzés lehetőséget](./media/backup-azure-sql-database/check-name.png)
 
-  5. A **kiszolgálói szerepkörök**területen ellenőrizze, hogy ki van-e választva a **sysadmin (rendszergazda** ) szerepkör. Válassza az **OK** lehetőséget. A szükséges engedélyeknek már léteznie kell.
+  5. A **kiszolgálói szerepkörök**területen ellenőrizze, hogy ki van-e választva a **sysadmin (rendszergazda** ) szerepkör. Kattintson az **OK** gombra. A szükséges engedélyeknek már léteznie kell.
 
       ![Győződjön meg arról, hogy a sysadmin kiszolgálói szerepkör van kiválasztva](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
