@@ -8,10 +8,10 @@ ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86501602"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Karbantartási vezérlőelemek konfigurációjának áthelyezése másik régióba
@@ -68,6 +68,6 @@ A konfigurációk áthelyezése után hasonlítsa össze az új régióban lév�
 Az áthelyezést követően érdemes törölni az áthelyezett karbantartási konfigurációkat a forrás régióban, a [PowerShellben](../virtual-machines/maintenance-control-powershell.md#remove-a-maintenance-configuration)vagy a [parancssori](../virtual-machines/maintenance-control-cli.md#delete-a-maintenance-configuration)felületen.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse [ezeket az utasításokat](move-region-maintenance-configuration-resources.md) , ha a karbantartási konfigurációkhoz társított erőforrásokat kell áthelyeznie. 

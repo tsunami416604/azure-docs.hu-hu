@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan futtathat egy gyors diagnosztikai parancsot az 
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245383"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry állapotának megtekintése
@@ -19,7 +19,7 @@ Első diagnosztikai lépésként futtassa az az [ACR renézz-Health][az-acr-chec
 A beállításjegyzék további hibaelhárítási útmutatóját a következő témakörben talál:
 * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md)
 * [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
-* [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
+* [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Futtatás az ACR ellenõrzés-Health
 
@@ -38,7 +38,7 @@ az acr check-health
 
 ### <a name="check-the-environment-and-a-target-registry"></a>A környezet és a cél beállításjegyzékének keresése
 
-A beállításjegyzékhez való hozzáférés ellenőrzéséhez, valamint a helyi környezet-ellenőrzések végrehajtásához adja meg a cél-beállításjegyzék nevét. Például:
+A beállításjegyzékhez való hozzáférés ellenőrzéséhez, valamint a helyi környezet-ellenőrzések végrehajtásához adja meg a cél-beállításjegyzék nevét. Példa:
 
 ```azurecli
 az acr check-health --name myregistry
@@ -77,7 +77,7 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az az ACR Return [-Health][az-acr-check-health] parancs által visszaadott hibakódokkal kapcsolatos részletekért tekintse meg az [állapot-ellenőrzési hiba referenciáját](container-registry-health-error-reference.md).
 

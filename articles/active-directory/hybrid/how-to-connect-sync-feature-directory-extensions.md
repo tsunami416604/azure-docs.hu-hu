@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662487"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: címtárszolgáltatás-bővítmények
@@ -87,7 +87,7 @@ A hasznos forgatókönyvek egyike az, hogy ezeket az attribútumokat a dinamikus
 
    ![Képernyőkép a felhasználói felületen megjelenített új attribútumokról](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   Fejezze be a kifejezést az igényeinek megfelelően. A példánkban a szabály a következőre van beállítva: **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales and marketing")**.
+   Fejezze be a kifejezést az igényeinek megfelelően. A példánkban a szabály a következőre van beállítva: **(User.extension_9d98ed114c4840d298fad781915f27e4_division EQ "Sales and marketing")**.
 
 4. A csoport létrehozása után adjon meg némi időt az Azure AD számára a tagok feltöltéséhez, majd tekintse át a tagokat.
 

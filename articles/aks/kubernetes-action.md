@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564100"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
@@ -24,7 +24,7 @@ Az AK-t tartalmazó munkafolyamatok esetében a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | Bejelentkezés a Private Container registrybe (ACR) |
-|**Létrehozás** | Build & a tároló rendszerképének leküldése  |
+|**Építeni** | Build & a tároló rendszerképének leküldése  |
 |**Telepítés** | 1. a cél AK-fürt beállítása |
 | |2. hozzon létre egy általános/Docker-beállításjegyzékbeli titkot a Kubernetes-fürtben  |
 ||3. üzembe helyezés a Kubernetes-fürtön|
@@ -129,7 +129,7 @@ jobs:
           demo-k8s-secret
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon különböző adattárakban találhatja meg a műveleteket, melyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub a CI/CD-hez való használatához és az alkalmazások Azure-beli üzembe helyezéséhez.
 

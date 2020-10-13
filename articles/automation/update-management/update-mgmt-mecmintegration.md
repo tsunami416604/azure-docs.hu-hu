@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 09c8ef818428157c7de8c3a87bcce8a7b80e62ea
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245910"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Update Management integrálása a Microsoft Endpoint Configuration Manager
@@ -50,6 +50,6 @@ A Microsoft Endpoint Configuration Manager ügyfelekhez tartozó Windows Server-
 
 A konfigurációs módosítás elvégzése után hozzon létre egy új központi telepítést a [frissítés központi telepítésének létrehozása](update-mgmt-deploy-updates.md#schedule-an-update-deployment) című témakörben ismertetett lépéseket követve, és válassza a **típus** legördülő menüből az **importált csoportok** lehetőséget a megfelelő Microsoft Endpoint Configuration Manager gyűjtemény kiválasztásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az integrációs ütemterv beállításával kapcsolatban lásd: [frissítések központi telepítésének ütemezett](update-mgmt-deploy-updates.md#schedule-an-update-deployment)beállítása.

@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040452"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
@@ -38,7 +38,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Prioritás | Name | Port | Protokoll | Forrás | Cél | Műveletek |
+| Prioritás | Name (Név) | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | Engedélyezés |
@@ -52,7 +52,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Prioritás | Name | Port | Protokoll | Forrás | Cél | Műveletek |
+| Prioritás | Name (Név) | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |

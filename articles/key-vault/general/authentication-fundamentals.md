@@ -8,13 +8,13 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604333"
 ---
-# <a name="key-vault-authentication-fundamentals"></a>A Key Vault hitelesítési alapjai
+# <a name="key-vault-authentication-fundamentals"></a>Key Vault – hitelesítési alapok
 
 A Azure Key Vault lehetővé teszi az alkalmazások hitelesítő adatainak, például a titkok, kulcsok és tanúsítványok biztonságos tárolását és kezelését egy központi és biztonságos Felhőbeli tárházban. Key Vault szükségtelenné teszi a hitelesítő adatok tárolását az alkalmazásokban. Az alkalmazások a hitelesítő adatok lekéréséhez futtatás közben Key Vault a hitelesítést.
 

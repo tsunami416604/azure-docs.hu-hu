@@ -7,10 +7,10 @@ ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
 ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597792"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
@@ -833,7 +833,7 @@ Ha már telepítette a projektet a Azure Portalba, kövesse az alábbi lépések
 
 1. Az **érték** mezőbe írja be a következő értéket: `WithStatelessRunHistory`
 
-   Például:
+   Példa:
 
    ![Képernyőfelvétel: a Azure Portal és Logic app (előzetes verzió) erőforrás "Configuration" > "új Alkalmazásbeállítás" < "alkalmazás hozzáadása/szerkesztése" panel megnyitása és a "munkafolyamatok". {yourWorkflowName}. A "OperationOptions" beállítás "WithStatelessRunHistory" értékre van állítva.](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 
@@ -979,7 +979,7 @@ Bár a [Azure Logic apps számos meglévő korlátja](../logic-apps/logic-apps-l
 
   * A kód futtatásának korlátja öt másodperc és 15 másodperc közötti értékre nő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Örömmel vesszük a véleményét a nyilvános előzetes verzióval kapcsolatos tapasztalatairól!
 

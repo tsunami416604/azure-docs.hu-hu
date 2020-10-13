@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564361"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
@@ -152,7 +152,7 @@ Az élő frissítés hőmérsékletének megtekintéséhez kövesse az alábbi l
 
 Mindkét minta egy kompatibilis tartományba küldi a hőmérsékletet, ezért 30 másodpercenként a térképen a 121-es frissítés színét kell látnia.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Egy Office-Térkép, amely színes narancssárga termet 121":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Az Azure-szolgáltatások egy teljes körű forgatókönyvből álló nézete, amely kiemeli a beltéri térképek integrációs részletét":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>A Maps-információk tárolása az Azure Digital Twinsban
 
@@ -162,7 +162,7 @@ Az adott példához tartozó megoldás a legfelső szintű helyek frissítését
 
 A topológia konfigurációjától függően a három attribútumot a Térkép részletességéhez képest különböző szinteken fogja tudni tárolni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 

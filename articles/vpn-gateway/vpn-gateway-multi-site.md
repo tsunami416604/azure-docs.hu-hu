@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441578"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Helyek közötti kapcsolat hozzáadása egy VNet meglévő VPN Gateway-kapcsolattal (klasszikus)
@@ -174,7 +174,7 @@ Importálja a hálózati konfigurációs fájlt. Ha ezt a fájlt a módosításo
 ## <a name="6-download-keys"></a>6. kulcsok letöltése
 Az új alagutak hozzáadása után a "Get-AzureVNetGatewayKey" PowerShell-parancsmag használatával lekérheti az egyes alagutakhoz tartozó IPsec/IKE előmegosztott kulcsokat.
 
-Például:
+Példa:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

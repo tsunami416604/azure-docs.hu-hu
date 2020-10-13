@@ -8,10 +8,10 @@ ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 9956ca0ca9c0957557e7ee74883a75c074ff22f8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797972"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Adatok visszaállítása biztonsági másolatból Azure Cosmos DB
@@ -50,7 +50,7 @@ Az adatok visszaállítása után ellenőrizze és ellenőrizze a visszaállíto
 
 Javasoljuk, hogy azonnal törölje a tárolót vagy az adatbázist az áttelepítés után. Ha nem törli a visszaállított adatbázisokat vagy tárolókat, a kérések egysége, a tárterület és a kimenő forgalom költségeit is felszámítjuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekből megtudhatja, hogyan telepítheti vissza az adatait az eredeti fiókjába:
 

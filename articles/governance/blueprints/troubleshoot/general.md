@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan lehet elhárítani a tervezetek létrehozásáv
 ms.date: 06/29/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651332"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
@@ -18,7 +18,7 @@ A tervrajzok létrehozásakor, kiosztásakor vagy eltávolításakor hibák lép
 
 Számos hiba lesz a terv egy hatókörhöz való hozzárendelésének eredménye. Ha egy hozzárendelés meghiúsul, a terv részletesen ismerteti a sikertelen telepítés részleteit. Ez az információ azt jelzi, hogy a probléma kijavítható, és a következő telepítés sikeres lesz.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
 1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról, és a keresőmező segítségével szűrje a terv-hozzárendeléseket a sikertelen hozzárendelés megkereséséhez. A hozzárendelések tábláját a **kiépítési állapot** oszlopban is rendezheti, ha az összes sikertelen hozzárendelést együtt szeretné látni.
 

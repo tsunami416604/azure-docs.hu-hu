@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081202"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Adatforrások felderítése Azure Data Catalog
@@ -56,7 +56,7 @@ Az alapértelmezett csempe nézetben a keresési eredményekben megjelenő össz
 
  ![Találatok kiemelése és keresési egyezések a Azure Data Catalog portálon](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Mivel az adatforrások Data Catalog példányokkal való regisztrálása az adatforrásból a katalógus-szolgáltatásba másolja a strukturális és leíró metaadatokat, az adatforrás könnyebben felderíthető és értelmezhető lesz. Miután regisztrált egy adatforrást, az Data Catalog-portálon található szűrés és keresés használatával derítheti fel.
 

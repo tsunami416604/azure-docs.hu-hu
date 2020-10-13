@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326137"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
@@ -129,7 +129,7 @@ NetworkMonitoring
  | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
 ```
 
-Microsoftos társhálózat-létesítés
+Microsoftos társviszony
 
 ```kusto
 NetworkMonitoring
@@ -238,7 +238,7 @@ Ez akkor fordulhat elő, ha a gazdagép tűzfala vagy a köztes tűzfal (hálóz
 * Most futtassa a parancsot a cél csomópontról a forrás csomópont IP-címére.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Az A csomópont veszteséget okoz a B csomóponton, de a B csomópontból nem. miért?
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Az A csomópont veszteséget okoz, de a B csomópontból nem.
 Mivel az A és B közötti hálózati elérési utak a B és A közötti hálózati útvonalaktól eltérőek lehetnek, a veszteségek és késések különböző értékei figyelhetők meg.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Miért nem észlelhetők a ExpressRoute-áramkörök és a társ-összekapcsolási kapcsolatok?

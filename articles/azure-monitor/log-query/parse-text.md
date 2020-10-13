@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86505703"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Szöveges adatelemzés Azure Monitor naplókban
@@ -120,7 +120,7 @@ Vegyünk fel egy egyéni naplófájlt az alábbi CSV-formátumban.
 2018-03-10 01:31:34, 303,Error,Application lost connection to database
 ```
 
-A következő lekérdezés elemezni fogja ezeket az adatelemzéseket, és összesíti a számított tulajdonságok közül kettőt. Az első sor a _RawData_ tulajdonságot egy karakterlánc-tömbre osztja fel. A következő sorok mindegyike egy nevet ad az egyes tulajdonságoknak, és hozzáadja őket a kimenethez függvények használatával, hogy a megfelelő adattípusra alakítsa őket.
+A következő lekérdezés elemezni fogja ezeket az adatelemzéseket, és összesíti a számított tulajdonságok közül kettőt. Az első sor a  _RawData_ tulajdonságot egy karakterlánc-tömbre osztja fel. A következő sorok mindegyike egy nevet ad az egyes tulajdonságoknak, és hozzáadja őket a kimenethez függvények használatával, hogy a megfelelő adattípusra alakítsa őket.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -141,7 +141,7 @@ Ha az adatok egy ismert struktúrában vannak formázva, az előre definiált st
 - [IPv4](/azure/kusto/query/parse-ipv4function)
 - [URL-cím](/azure/kusto/query/parseurlfunction)
 - [URL-lekérdezés](/azure/kusto/query/parseurlqueryfunction)
-- [Elérési út](/azure/kusto/query/parsepathfunction)
+- [Fájl elérési útja](/azure/kusto/query/parsepathfunction)
 - [Felhasználói ügynök](/azure/kusto/query/parse-useragentfunction)
 - [Verzió karakterlánca](/azure/kusto/query/parse-versionfunction)
 
@@ -187,5 +187,5 @@ MyCustomCSVLog
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](log-query-overview.md) .

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
 ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044481"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Adatvezérelt hibakeresés a feladatábra használatával
@@ -75,7 +75,7 @@ Ha a fenti lekérdezési lépés egy bemeneti processzor, a bemeneti metrikák s
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Az adatolvasás mögött vannak?
 
-*   A **bemeneti események várakozó (összesen)** jelzi, hogy hány üzenetet kell olvasni a Event Hubs és az Azure IoT hub bemenetek esetében. Ha ez a szám nagyobb, mint 0, az azt jelenti, hogy a feladatainak nem sikerült gyorsan feldolgoznia az adatfeldolgozást. Ebben az esetben szükség lehet a folyamatos átviteli egységek számának növelésére és/vagy annak biztosítására, hogy a feladatok párhuzamosak legyenek. Erről a [lekérdezési párhuzamos oldalon](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)talál további információt. 
+*   A **bemeneti események várakozó (összesen)** jelzi, hogy hány üzenetet kell olvasni a Event Hubs és az Azure IoT hub bemenetek esetében. Ha ez a szám nagyobb, mint 0, az azt jelenti, hogy a feladatainak nem sikerült gyorsan feldolgoznia az adatfeldolgozást. Ebben az esetben szükség lehet a folyamatos átviteli egységek számának növelésére és/vagy annak biztosítására, hogy a feladatok párhuzamosak legyenek. Erről a  [lekérdezési párhuzamos oldalon](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)talál további információt. 
 
 
 ## <a name="get-help"></a>Segítség kérése

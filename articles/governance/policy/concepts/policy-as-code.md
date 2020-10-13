@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-defi
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598217"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
@@ -146,7 +146,7 @@ Ezekben az esetekben az alkalmazás vagy az infrastruktúra üzembe helyezését
 
 Ez a cikk ismerteti a szabályzatok általános munkafolyamatát, valamint azt is, hogy a szabályzatok kiértékelése más üzembe helyezési munkafolyamatok része legyen. Ezt a munkafolyamatot bármely olyan környezetben felhasználhatja, amely támogatja a parancsfájlokon alapuló lépéseket és az automatizálást az eseményindítók alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.

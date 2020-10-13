@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080590"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Virtuálisgép-méretezési csoport automatikus méretezése a Azure Portal
@@ -46,7 +46,7 @@ Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lé
     | *Idő összesítése*     | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag        |
     | *Metrika neve*          | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat |
     | *Időfelbontási szint statisztikája* | Azt határozza meg, hogy az összegyűjtött mérőszámok hogyan legyenek összesítve az elemzéshez.                             | Átlag        |
-    | *Művelet*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb   |
+    | *Művelet*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
     | *Küszöbérték*            | Az az érték, amelynek hatására az autoskálázási szabály elindítja a műveletet.                                                 | 70             |
     | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam. Nem tartalmazza a lehűtési időszakot.                                   | 10 perc     |
     | *Művelet*            | Meghatározza, hogy a méretezési csoport fel vagy le legyen-e méretezve a szabály alkalmazása és a növekmény alapján.                        | Százalék növelésének aránya |
@@ -70,7 +70,7 @@ Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a 
     
     | Paraméter              | Magyarázat                                                                                                          | Érték          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb   |
+    | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb, mint   |
     | *Küszöbérték*            | Az az érték, amelynek hatására az autoskálázási szabály elindítja a műveletet.                                                 | 30             |
     | *Művelet*            | Meghatározza, hogy a méretezési csoport fel-vagy leskálázása legyen, ha a szabály érvényes, és milyen növekmény                         | Százalék csökkentése a következővel: |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                             | 20             |
@@ -83,7 +83,7 @@ Az autoskálázási profilnak meg kell határoznia a virtuálisgép-példányok 
 
 1. Adja meg a következő példányok korlátait:
 
-    | Minimális | Maximum | Alapértelmezett|
+    | Minimum | Maximum | Alapértelmezett|
     |---------|---------|--------|
     | 2       | 10      | 2      |
 

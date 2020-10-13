@@ -4,10 +4,10 @@ description: Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelye
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531445"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hibrid kapcsolatok protokoll
@@ -137,7 +137,7 @@ A lekérdezési karakterlánc paraméterének beállításai a következők.
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Igen      | A figyelő szerepkörhöz a paraméternek **SB-HC-Action = figyeljnek** kell lennie.
 | `{path}`         | Igen      | Az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja a figyelő regisztrálásához. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
-| `sb-hc-token`    | Igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
+| `sb-hc-token`    | igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
 | `sb-hc-id`       | Nem       | Ez az ügyfél által megadott opcionális azonosító lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést.
 
 Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolati útvonal regisztrálása nem történik meg, vagy egy érvénytelen vagy hiányzó jogkivonat vagy valamilyen más hiba történt, a rendszer a hibaüzenetet a normál HTTP 1,1 állapot-visszajelzési modell használatával adja meg. Az állapot leírása olyan nyomkövetési azonosítót tartalmaz, amely az Azure-támogatási munkatársakkal is közölhető:
@@ -427,7 +427,7 @@ A lekérdezési karakterlánc paraméterének beállításai a következők:
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Igen       | A küldő szerepkör esetében a paraméternek a következőnek kell lennie: `sb-hc-action=connect` .
 | `{path}`       | Igen       | (lásd a következő bekezdést)
-| `sb-hc-token`  | Igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
+| `sb-hc-token`  | igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
 | `sb-hc-id`     | Nem        | Egy opcionális azonosító, amely lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést, és elérhetővé válik a figyelő számára az elfogadási kézfogás során.
 
  A az `{path}` előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A `path` kifejezés kiterjeszthető egy utótaggal és egy lekérdezési karakterlánc kifejezéssel a további kommunikációhoz. Ha a hibrid kapcsolatok az elérési úton vannak regisztrálva `hyco` , a `path` kifejezést `hyco/suffix?param=value&...` követheti az itt definiált lekérdezési karakterlánc paraméterei is. A teljes kifejezés a következő lehet:
@@ -496,7 +496,7 @@ Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat. Azt jelz
 | 503  | Hibás átjáró     | A kérést nem lehet átirányítani a figyelőhöz.
 | 504  | Átjáró időtúllépése | A rendszer átirányítja a kérést egy figyelőhöz, de a figyelő nem ismerte fel a beérkezést a szükséges időn belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Relay – gyakori kérdések](relay-faq.md)
 * [Névtér létrehozása](relay-create-namespace-portal.md)

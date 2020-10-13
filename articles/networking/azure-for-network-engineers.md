@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85516263"
 ---
 # <a name="azure-for-network-engineers"></a>Azure hálózattervezőknek
@@ -35,7 +35,7 @@ Ha IP-címet rendel hozzá egy gazdagéphez, az IP-címeket egy hálózati adapt
 - Nyilvános IP-címek – a bejövő és kimenő (hálózati címfordítás (NAT) nélküli) kommunikációhoz használható az internettel és más Azure-erőforrásokkal, amelyek nem csatlakoznak virtuális hálózathoz. Nem kötelező nyilvános IP-címet rendelni egy hálózati adapterhez. A nyilvános IP-címek a Microsoft IP-címe területhez tartoznak.
 - Magánhálózati IP-címek – virtuális hálózaton, a helyszíni hálózaton és az interneten (NAT) belüli kommunikációhoz használható. A virtuális hálózatban definiált IP-címtartomány a nyilvános IP-címtartomány konfigurálásakor is magánjellegűnek számít. A Microsoft nem hirdeti meg ezt a helyet az interneten. Legalább egy magánhálózati IP-címet hozzá kell rendelni egy virtuális géphez.
 
-A fizikai gazdagépekhez vagy eszközökhöz hasonlóan kétféleképpen lehet IP-címet lefoglalni egy erőforráshoz – dinamikus vagy statikus. Az Azure-ban az alapértelmezett kiosztási módszer a dinamikus, ahol a virtuális gép létrehozásakor és a leállított virtuális gépek indításakor a rendszer IP-címet foglal le. Az IP-cím akkor szabadul fel, ha leállítja vagy törli a virtuális gépet. A lefoglalási módszert állíthatja statikusra is, hogy a virtuális géphez tartozó IP-címek változatlanok maradjanak. Ebben az esetben a rendszer azonnal hozzárendel egy IP-címet. Az IP-cím csak akkor szabadul fel, ha törli a virtuális gépet, vagy dinamikusra változtatja a lefoglalási módszert. 
+A fizikai gazdagépekhez vagy eszközökhöz hasonlóan kétféleképpen lehet IP-címet lefoglalni egy erőforráshoz – dinamikus vagy statikus. Az Azure-ban az alapértelmezett kiosztási módszer a dinamikus, ahol a virtuális gép létrehozásakor és a leállított virtuális gépek indításakor a rendszer IP-címet foglal le. Az IP-cím akkor szabadul fel, ha leállítja vagy törli a virtuális gépet. A lefoglalási módszert állíthatja statikusra is, hogy a virtuális géphez tartozó IP-címek változatlanok maradjanak. Ebben az esetben a rendszer azonnal kioszt egy IP-címet. Az IP-cím csak akkor szabadul fel, ha törli a virtuális gépet, vagy dinamikusra változtatja a lefoglalási módszert. 
 
 A magánhálózati IP-címek kiosztása a virtuális hálózaton belül definiált alhálózatokból történik. Egy virtuális gép esetében válasszon egy alhálózatot az IP-foglaláshoz. Ha egy virtuális gép több hálózati adaptert is tartalmaz, választhat egy másik alhálózatot az egyes hálózati adapterekhez.
 

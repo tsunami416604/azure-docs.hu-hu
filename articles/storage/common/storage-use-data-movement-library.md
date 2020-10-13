@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89001876"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Adatok átvitele az adatátviteli kódtárral
@@ -46,7 +46,7 @@ Ebből a dokumentumból megtudhatja, hogyan hozhat létre Windows, Linux és mac
 4. Telepítse a [C#-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) a Visual Studio Code Piactérről. Indítsa újra a Visual Studio Code-ot.
 5. Ekkor két kérdést kell látnia. Az egyik a "szükséges eszközök létrehozása és hibakeresése". Kattintson az Igen gombra. Egy másik kérdés a feloldatlan függőségek visszaállítása. Kattintson a visszaállítás gombra.
 6. A `launch.json` alatt módosítsa `.vscode` a külső terminál használata konzolként lehetőséget. Ennek a beállításnak a következőképpen kell beolvasnia `"console": "externalTerminal"`
-7. A Visual Studio Code lehetővé teszi a .NET Core-alkalmazások hibakeresését. `F5`Futtassa az alkalmazást, és ellenőrizze, hogy a telepítés működik-e. A ""Helló világ!"alkalmazás!" kifejezésnek kell megjelennie kinyomtatva a konzolra.
+7. A Visual Studio Code lehetővé teszi a .NET Core-alkalmazások hibakeresését. `F5`Futtassa az alkalmazást, és ellenőrizze, hogy a telepítés működik-e. A "„Helló világ!” alkalmazás!" kifejezésnek kell megjelennie kinyomtatva a konzolra.
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>Adatátviteli függvénytár hozzáadása a projekthez
 

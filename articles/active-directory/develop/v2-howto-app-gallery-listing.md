@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439744"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
@@ -72,7 +72,7 @@ Egy alkalmazás az Azure AD-katalógusban való listázásához végre kell hajt
 
 A következő táblázat összehasonlítja a fő szabványokat: nyílt hitelesítés 2,0 (OAuth 2,0) az OpenID Connect (OIDC), a Security Assertion Markup Language (SAML) és a Web Services Federation (WS-Fed) használatával.
 
-| A képességeik| OAuth/OIDC| SAML/WS-fed |
+| Képesség| OAuth/OIDC| SAML/WS-Fed |
 | - |-|-|
 | Webalapú egyszeri bejelentkezés| √| √ |
 | Webalapú egyszeri kijelentkezés| √| √ |
@@ -96,7 +96,7 @@ A OAuth 2,0 egy [iparági szabványnak](https://oauth.net/2/) megfelelő protoko
 **Néhány megfontolandó szempont**
 - Ha már végrehajtotta az SAML-alapú egyszeri bejelentkezést az alkalmazáshoz, akkor előfordulhat, hogy nem szeretne új szabványt megvalósítani az alkalmazásnak a katalógusban való beszerzéséhez.
 
-### <a name="saml-20-or-ws-fed"></a>SAML 2,0 vagy WS-fed
+### <a name="saml-20-or-ws-fed"></a>SAML 2,0 vagy WS-Fed
 
 Az SAML egy érett és széles körben elfogadott, [egyszeri bejelentkezéses standard](https://www.oasis-open.org/standards#samlv2.0) a webalkalmazásokhoz. Ha többet szeretne megtudni arról, hogy az Azure hogyan használja az SAML-t, tekintse meg, [hogyan használja az Azure az SAML protokollt](active-directory-saml-protocol-reference.md). 
 
@@ -135,7 +135,7 @@ Az egyes példák áttekintését lásd: [Microsoft Identity platform Code Sampl
 A Mobile-specifikus példák áttekintését lásd: 
 * [Android](quickstart-v2-android.md)
 * [iOS](quickstart-v2-ios.md)
-* [Universal Windows Platform](quickstart-v2-uwp.md)
+* [Univerzális Windows-platform](quickstart-v2-uwp.md)
 
 ### <a name="implement-saml-20"></a>SAML 2,0 implementálása
 
@@ -143,8 +143,8 @@ Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül integrálható 
 
 A Microsoft nem biztosít vagy ajánlja az SAML-implementációk függvénytárait. Számos nyílt forráskódú függvénytár érhető el.
 
-### <a name="implement-ws-fed"></a>WS-fed implementálása
-Ha többet szeretne megtudni a ASP.NET Core WS-fed szolgáltatásáról, tekintse meg a következőt: [felhasználók hitelesítése a WS-Federation használatával ASP.net Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+### <a name="implement-ws-fed"></a>WS-Fed implementálása
+Ha többet szeretne megtudni a ASP.NET Core WS-Fedről, tekintse meg a [felhasználók hitelesítése a WS-Federation használatával ASP.net Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>A jelszó-tároló implementálása
 
@@ -238,7 +238,7 @@ Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katal�
 
 Ha az **saml 2,0** vagy a **ws-fed**használatával szeretné felvenni az alkalmazást a katalógusba, válassza az **SAML 2.0/ws-fed** lehetőséget, amint az látható.
 
-![SAML 2,0 vagy WS-fed alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
+![SAML 2,0-vagy WS-Fed-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 
 Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használatával, válassza a **jelszó egyszeri bejelentkezés** lehetőséget.
 
@@ -260,7 +260,7 @@ A [Microsoft Application Network portálon](https://microsoft.sharepoint.com/tea
 
 ### <a name="timelines"></a>Idősorok
 
-Az SAML 2,0 vagy WS-fed alkalmazás a katalógusban való listázásának ütemterve 7 – 10 munkanap.
+Az SAML 2,0 vagy WS-Fed alkalmazás a katalógusban való listázásának ütemterve 7 – 10 munkanap.
 
 ![Az SAML-alkalmazások katalógusban való listázásának ütemterve](./media/howto-app-gallery-listing/timeline.png)
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
 ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562485"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Application Gateway konfigurálása belső terheléselosztó (ILB) végponttal
@@ -59,7 +59,7 @@ Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szük
 10. Válassza **a háttérbeli készlet hozzáadása**lehetőséget.
 11. A **név**mezőbe írja be a következőt: *appGatewayBackendPool*.
 12. Ha a **háttér-készletet célok nélkül**kívánja hozzáadni, válassza az **Igen**lehetőséget. Később hozzáadja a célokat.
-13. Válassza a **Hozzáadás** elemet.
+13. Válassza a **Hozzáadás** lehetőséget.
 14. Válassza a **Tovább: konfigurálás**lehetőséget.
 15. Az **útválasztási szabályok**területen válassza **a szabály hozzáadása**elemet.
 16. A **szabály neve**mezőbe írja be a következőt: *Rrule-01*.
@@ -153,6 +153,6 @@ Ehhez tegye a következőket:
     ![A képernyőképen látható az előtér-IP-konfigurációk ablaktábla, ahol a privát típus ki van emelve.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Másolja a magánhálózati IP-címet, majd illessze be a böngésző címsorába egy olyan virtuális gépen, amely az adott VNet kapcsolódik, és próbálja meg elérni Application Gateway a VNet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha figyelni szeretné a háttér állapotát, tekintse meg a [háttér állapotáról és a diagnosztikai naplókat a Application Gateway](application-gateway-diagnostics.md).

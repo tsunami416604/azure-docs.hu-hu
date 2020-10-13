@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532550"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Erőforrások kizárása a javaslatokból és a biztonságos pontszámból
@@ -77,7 +77,7 @@ Azure Policy segítségével nyomon követheti az összes kivételt a **kivétel
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan mentesített egy erőforrást egy javaslatból, hogy az ne befolyásolja a biztonságos pontszámot. A biztonságos pontszámról további információt a következő témakörben talál:
 

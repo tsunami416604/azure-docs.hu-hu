@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86042074"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Mélyebb búvárkodás a Cloud-init használatával
@@ -21,7 +21,7 @@ Ha többet szeretne megtudni a [Cloud-init](https://cloudinit.readthedocs.io/en/
 Ha a Cloud-init egy általánosított rendszerkép részét képezi, és egy virtuális gép jön létre ebből a rendszerképből, a rendszer feldolgozza a konfigurációkat, és a kezdeti rendszerindítás során 5 fázisban futtatja őket. Ezek a szakaszok azt mutatják be, hogy a Cloud-init milyen ponton fogja alkalmazni a konfigurációkat. 
 
 
-## <a name="understand-cloud-init-configuration"></a>A Cloud-init konfiguráció ismertetése
+## <a name="understand-cloud-init-configuration"></a>Cloud-Init konfiguráció ismertetése
 Ha egy virtuális gépet egy platformon futtat, a Cloud-init alkalmazásnak több konfigurációt kell alkalmaznia, mint a képfogyasztót, a `User data` (customData), amely támogatja a több formátumot, ezek dokumentálva vannak. [here](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats) A további konfigurációkhoz parancsfájlokat (/var/lib/Cloud/Scripts) is hozzáadhat és futtathat, az alábbi témakör részletesebben tárgyalja.
 
 Néhány konfiguráció már be van építve az Azure Marketplace-re, amely a Cloud-init használatával érkezik, például:
@@ -71,9 +71,9 @@ A Cloud-init használatával történő kiépítés esetén a rendszerindításn
 5. A [Cloud-init végleges szakasza](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#final): az utolsó szakaszban a/etc/Cloud/Cloud.cfg-ben felsorolt modulokat `cloud_final_modules` futtatja a rendszer. Itt a rendszerindítási folyamat futtatásához későn kell futtatni a modulokat, például a csomagok telepítését és a parancsfájlok futtatását. 
 
    -   Ebben a szakaszban parancsfájlokat futtathat, ha a következő könyvtárakba helyezi őket `/var/lib/cloud/scripts` :
-   - `per-boot`-parancsfájlok ebben a könyvtárban, Futtatás minden újraindításkor
-   - `per-instance`– a könyvtáron belüli parancsfájlok futtatása új példány első indításakor
-   - `per-once`– a könyvtárban lévő parancsfájlok csak egyszer futnak
+   - `per-boot` -parancsfájlok ebben a könyvtárban, Futtatás minden újraindításkor
+   - `per-instance` – a könyvtáron belüli parancsfájlok futtatása új példány első indításakor
+   - `per-once` – a könyvtárban lévő parancsfájlok csak egyszer futnak
 
 ## <a name="next-steps"></a>További lépések
 

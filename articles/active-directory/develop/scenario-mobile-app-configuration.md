@@ -13,10 +13,10 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89442751"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Webes API-kat meghívó mobil alkalmazás konfigurálása
@@ -27,7 +27,7 @@ Az alkalmazás létrehozása után megtudhatja, hogyan konfigurálhatja a kódot
 
 A következő Microsoft Authentication Library-(MSAL-) típusok támogatják a Mobile Apps szolgáltatást.
 
-MSAL | Description
+MSAL | Leírás
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Hordozható alkalmazások fejlesztéséhez használatos. A MSAL.NET a következő platformokat támogatja a Mobile-alkalmazások létrehozásához: Univerzális Windows-platform (UWP), Xamarin. iOS és Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Natív iOS-alkalmazások fejlesztésére szolgál Objective-C vagy SWIFT használatával.

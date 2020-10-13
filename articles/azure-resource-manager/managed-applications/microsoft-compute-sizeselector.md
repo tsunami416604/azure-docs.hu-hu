@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063664"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. számítás. SizeSelector FELHASZNÁLÓIFELÜLET-elem
@@ -59,7 +59,7 @@ A vezérlő kiválasztása után a felhasználó az elérhető méretek kibőví
 }
 ```
 
-## <a name="sample-output"></a>Példa kimenet
+## <a name="sample-output"></a>Példakimenet
 
 ```json
 "Standard_D1"
@@ -67,12 +67,12 @@ A vezérlő kiválasztása után a felhasználó az elérhető méretek kibőví
 
 ## <a name="remarks"></a>Megjegyzések
 
-- `recommendedSizes`legalább egy méretnek kell lennie. A rendszer az első ajánlott méretet használja alapértelmezettként. Az elérhető méretek listája nem a javasolt állapot szerint van rendezve. A felhasználó az ajánlott állapot alapján kiválaszthatja az adott oszlopot.
+- `recommendedSizes` legalább egy méretnek kell lennie. A rendszer az első ajánlott méretet használja alapértelmezettként. Az elérhető méretek listája nem a javasolt állapot szerint van rendezve. A felhasználó az ajánlott állapot alapján kiválaszthatja az adott oszlopot.
 - Ha a kiválasztott helyen nem érhető el javasolt méret, a rendszer automatikusan kihagyja a méretet. Ehelyett a következő javasolt méretet használjuk.
-- `constraints.allowedSizes`és `constraints.excludedSizes` mindkettő nem kötelező, de nem használható egyszerre. Az elérhető méretek listája az [előfizetéshez tartozó elérhető virtuálisgép-méretek](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)meghívásával határozható meg. A nem megadott méret `constraints.allowedSizes` rejtett, és a nem megadott méret `constraints.excludedSizes` jelenik meg.
-- `osPlatform`kötelező megadni, és lehet **Windows** vagy **Linux**. A virtuális gépek hardveres költségeinek meghatározására szolgál.
-- `imageReference`a rendszer kihagyja az első féltől származó rendszerképeket, de a harmadik féltől származó képekhez van megadva. A virtuális gépek szoftveres költségeinek meghatározására szolgál.
-- `count`az elem megfelelő szorzójának beállítására szolgál. Egy statikus értéket, például **2**vagy egy másik elemből származó dinamikus értéket támogat, például: `[steps('step1').vmCount]` . Az alapértelmezett érték **1**.
+- `constraints.allowedSizes` és `constraints.excludedSizes` mindkettő nem kötelező, de nem használható egyszerre. Az elérhető méretek listája az [előfizetéshez tartozó elérhető virtuálisgép-méretek](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)meghívásával határozható meg. A nem megadott méret `constraints.allowedSizes` rejtett, és a nem megadott méret `constraints.excludedSizes` jelenik meg.
+- `osPlatform` kötelező megadni, és lehet **Windows** vagy **Linux**. A virtuális gépek hardveres költségeinek meghatározására szolgál.
+- `imageReference` a rendszer kihagyja az első féltől származó rendszerképeket, de a harmadik féltől származó képekhez van megadva. A virtuális gépek szoftveres költségeinek meghatározására szolgál.
+- `count` az elem megfelelő szorzójának beállítására szolgál. Egy statikus értéket, például **2**vagy egy másik elemből származó dinamikus értéket támogat, például: `[steps('step1').vmCount]` . Az alapértelmezett érték **1**.
 - A `numAvailabilityZonesRequired` lehet 1, 2 vagy 3.
 - Alapértelmezés szerint `hideDiskTypeFilter` **hamis**. A lemez típusa szűrő lehetővé teszi a felhasználó számára az összes lemez típusának vagy csak SSD megjelenítését.
 

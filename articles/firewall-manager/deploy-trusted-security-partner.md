@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85611577"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Biztonságipartner-szolgáltató üzembe helyezése
@@ -39,10 +39,10 @@ Ugorja át ezt a szakaszt, ha egy külső szolgáltatót egy meglévő hubhoz te
    > A biztonsági partner-szolgáltatók VPN Gateway alagutak használatával csatlakoznak a hubhoz. Ha törli a VPN Gateway, a biztonsági partner-szolgáltatók kapcsolatai megszakadnak.
 9. Ha Azure Firewall szeretné központilag telepíteni a privát forgalmat, valamint a külső szolgáltatót az internetes forgalom szűrésére, válassza ki a szabályzatot a Azure Firewallhoz. Tekintse meg a [támogatott forgatókönyveket](trusted-security-partners.md#key-scenarios).
 10. Ha csak egy külső gyártótól származó biztonsági szolgáltatót szeretne üzembe helyezni a központban, válassza a **Azure Firewall: engedélyezve/letiltva** lehetőséget a **Letiltva**beállításhoz. 
-11. Válassza a Next (tovább) lehetőséget **: biztonsági partner szolgáltatója**.
+11. Válassza a Next (tovább) lehetőséget  **: biztonsági partner szolgáltatója**.
 12. Állítsa be a **biztonsági partner szolgáltatóját** az **engedélyezéshez**. 
 13. Válasszon partnert. 
-14. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet. 
+14. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre. 
 15. Tekintse át a tartalmat, majd válassza a **Létrehozás**lehetőséget.
 
 A VPN-átjáró üzembe helyezése több mint 30 percet is igénybe vehet.
@@ -101,7 +101,7 @@ A virtuális központ VPN Gatewayhoz tartozó alagutak beállításához a harma
 5. Ki kell választania a **biztonságos kapcsolatokat** , és ki kell választania azokat a kapcsolatokat, amelyeken ezeket az útvonalakat be kell állítani. Ez azt jelzi, hogy mely virtuális hálózatok/ágak indíthatják el az internetes forgalmat a külső szolgáltató felé.
 6. Az **útvonal beállításai**területen válassza a **biztonságos kapcsolatok** az internetes forgalom alatt lehetőséget, majd válassza ki a VNet vagy az ágakat (virtuális WAN-*helyeket* ) a biztonság érdekében. Válassza a **biztonságos internetes forgalom**lehetőséget.
    ![Biztonságos internetes forgalom](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Váltson vissza a hubok lapra. A központ **biztonsági partnere szolgáltatójának** állapota most már **védett**.
+7. Váltson vissza a hubok lapra. A központ **biztonsági partnere szolgáltatójának** állapota most már  **védett**.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Harmadik féltől származó szolgáltatással történő internetes forgalom ág-vagy VNet
 

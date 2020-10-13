@@ -11,10 +11,10 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719274"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
@@ -79,7 +79,7 @@ Ha az előző javaslatok nem elégek, és nem tud beolvasni egy olyan virtuális
 
 Az alábbi táblázat a kód-preferencia vagy az adatméret alapján Azure Machine Learningba integrált elosztott keretrendszerek használatát javasolja.
 
-Élmény vagy adatméret | Javaslat
+Élmény vagy adatméret | Ajánlás
 ------|------
 Ha már ismeri a `Pandas`| `Modin` vagy `Dask` dataframe
 Ha szeretné `Spark` | `PySpark`

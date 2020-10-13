@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532153"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása az Azure Logic Appsbe
@@ -232,7 +232,7 @@ Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai
    |---------|-------|
    | **Probléma típusa** | **Műszaki** |
    | **Előfizetés** | <*saját Azure-előfizetés*> |
-   | **Szolgáltatás** | A **figyelés &** felügyelet területen válassza az **ütemező**lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
+   | **Service** | A **figyelés &** felügyelet területen válassza az **ütemező**lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
    ||| 
 
 1. Válassza ki a kívánt támogatási lehetőséget. Ha fizetős támogatási csomaggal rendelkezik, válassza a **tovább**lehetőséget.
@@ -242,6 +242,6 @@ Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai
 * [A Microsoft Q&egy kérdés oldalt Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendszeresen futó feladatok és munkafolyamatok létrehozása Azure Logic Apps](../connectors/connectors-native-recurrence.md)

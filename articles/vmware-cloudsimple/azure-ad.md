@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532528"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Az Azure AD használata identitás-szolgáltatóként a vCenter a CloudSimple Private Cloud szolgáltatásban
@@ -98,7 +98,7 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
 
 3. A jogosultságok kiterjesztését követően jelentkezzen be a saját Felhőbeli vCenter.
 4. A Azure Active Directory identitás forrásaként való beállításához kövesse az [Identity forrás hozzáadása a vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) az előző lépésekben szereplő értékek alapján című témakör utasításait.
-5. Felhasználók/csoportok hozzáadása az Azure AD-ből vCenter-csoportokhoz a VMware-témakörben leírtak szerint a [Tagok hozzáadása egy vCenter egyszeri bejelentkezési csoporthoz](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+5. Felhasználók/csoportok hozzáadása az Azure AD-ből vCenter-csoportokhoz a következő témakörben leírtak szerint: [Tagok hozzáadása vCenter egyetlen Sign-On csoporthoz](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 > [!CAUTION]
 > Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  Csak a *rendszergazdák* csoporthoz kell tartoznia a szolgáltatásfiókok hozzáadásához.

@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441714"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Mi a logikai SQL Server Azure SQL Database és az Azure szinapszis?
@@ -102,7 +102,7 @@ Kiszolgálók, adatbázisok és tűzfalak Azure PowerShell használatával tört
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Egy kiszolgáló tűzfalszabályok beolvasása|
 |[Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|Tűzfalszabály módosítása egy kiszolgálón|
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|Tűzfalszabály törlése egy kiszolgálóról.|
-| Új – AzSqlServerVirtualNetworkRule | Létrehoz egy [*virtuális hálózati szabályt*](vnet-service-endpoint-rule-overview.md), amely egy Virtual Network szolgáltatási végponton alapuló alhálózat. |
+| New-AzSqlServerVirtualNetworkRule | Létrehoz egy [*virtuális hálózati szabályt*](vnet-service-endpoint-rule-overview.md), amely egy Virtual Network szolgáltatási végponton alapuló alhálózat. |
 
 > [!TIP]
 > PowerShell-útmutató: [adatbázis létrehozása Azure SQL Database a PowerShell használatával](single-database-create-quickstart.md). A PowerShell-parancsfájlok esetében lásd: [a PowerShell használatával hozzon létre egy adatbázist a Azure SQL Databaseban, és konfiguráljon egy tűzfalszabály használatát](scripts/create-and-configure-database-powershell.md) , és [Figyelje meg és méretezze át az adatbázist a Azure SQL Database a PowerShell használatával](scripts/monitor-and-scale-database-powershell.md).
@@ -152,16 +152,16 @@ Kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával törté
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Módosítja az adatbázist vagy a rugalmas készletet. |
 |[ALTER DATABASE (Azure szinapszis Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Módosít egy adatraktár-adatbázist az Azure Szinapszisban.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Visszaadja a kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét (ha van ilyen) egy adatbázishoz. Ha bejelentkezett a kiszolgáló főadatbázisára, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis esetében csatlakoznia kell a Master adatbázishoz.|
-|[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| A CPU-t, az i/o-t és a memória-felhasználást adja vissza egy Azure SQL Database adatbázisában. 15 másodpercenként egy sor létezik, még akkor is, ha nincs tevékenység az adatbázisban.|
-|[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Egy adatbázis CPU-használati és tárolási adatait adja vissza Azure SQL Database. Az adatok gyűjtése és összesítése öt percen belül történik.|
-|[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|A Azure SQL Database adatbázis-csatlakozási eseményeinek statisztikáit tartalmazza, áttekintést nyújtva az adatbázis-kapcsolat sikerességéről és a hibákról. |
-|[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|A sikeres Azure SQL Database adatbázis-kapcsolatok, csatlakozási hibák és a Azure SQL Database holtpontok visszaadása. Ezen információk segítségével nyomon követheti és elháríthatja az adatbázis-tevékenységeket.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Visszaadja a kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét (ha van ilyen) egy adatbázishoz. Ha bejelentkezett a kiszolgáló főadatbázisára, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis esetében csatlakoznia kell a Master adatbázishoz.|
+|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| A CPU-t, az i/o-t és a memória-felhasználást adja vissza egy Azure SQL Database adatbázisában. 15 másodpercenként egy sor létezik, még akkor is, ha nincs tevékenység az adatbázisban.|
+|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Egy adatbázis CPU-használati és tárolási adatait adja vissza Azure SQL Database. Az adatok gyűjtése és összesítése öt percen belül történik.|
+|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|A Azure SQL Database adatbázis-csatlakozási eseményeinek statisztikáit tartalmazza, áttekintést nyújtva az adatbázis-kapcsolat sikerességéről és a hibákról. |
+|[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|A sikeres Azure SQL Database adatbázis-kapcsolatok, csatlakozási hibák és a Azure SQL Database holtpontok visszaadása. Ezen információk segítségével nyomon követheti és elháríthatja az adatbázis-tevékenységeket.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Létrehozza vagy frissíti a kiszolgáló szintű tűzfalbeállítások beállításait a kiszolgálón. Ez a tárolt eljárás csak a főadatbázisban érhető el a kiszolgálói szintű rendszerbiztonsági tag-bejelentkezéshez. A kiszolgálói szintű tűzfalszabályok csak akkor hozhatók létre a Transact-SQL használatával, ha az első kiszolgálói szintű tűzfalszabály az Azure-szintű engedélyekkel rendelkező felhasználó által lett létrehozva.|
-|[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|A kiszolgálóhoz társított kiszolgálói szintű tűzfalbeállítások adatait adja vissza.|
+|[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|A kiszolgálóhoz társított kiszolgálói szintű tűzfalbeállítások adatait adja vissza.|
 |[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Eltávolítja a kiszolgáló szintű tűzfal beállításait a kiszolgálóról. Ez a tárolt eljárás csak a főadatbázisban érhető el a kiszolgálói szintű rendszerbiztonsági tag-bejelentkezéshez.|
 |[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Az adatbázis-szintű tűzfalszabályok létrehozása vagy frissítése Azure SQL Database-adatbázisban. Az adatbázis-tűzfalszabályok konfigurálhatók a Master adatbázishoz, valamint SQL Database felhasználói adatbázisaihoz. Az adatbázis-tűzfalszabályok a tárolt adatbázis-felhasználók használata esetén hasznosak. Az adatbázis-tűzfalszabályok nem támogatottak az Azure Szinapszisban.|
-|[sys. database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Az adatbázis-szintű tűzfalbeállítások adatait adja vissza Azure SQL Databaseban. |
+|[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Az adatbázis-szintű tűzfalbeállítások adatait adja vissza Azure SQL Databaseban. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Az adatbázis-szintű tűzfalbeállítások eltávolítása az Ön Azure SQL Database-adatbázisához. |
 
 > [!TIP]

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: e2451796cb99f57501ed74aba1dc7a3077b51881
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441612"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Riasztások beállítása az erőforrás-naplózási eseményekről VPN Gateway
@@ -39,39 +39,39 @@ A következő példa egy riasztást hoz létre egy olyan leválasztási esemény
 
 2. Válassza a **Létrehozás** lehetőséget a **log Analytics** oldalon.
 
-   ![Log Analytics lap létrehozás gombbal](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Válassza ezt:")
+   ![Log Analytics lap létrehozás gombbal](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Kiválasztás")
 
 3. Válassza az **új létrehozása** lehetőséget, és adja meg a részleteket.
 
-   ![Log Analytics munkaterület létrehozásával kapcsolatos részletek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Válassza ezt:")
+   ![Log Analytics munkaterület létrehozásával kapcsolatos részletek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Kiválasztás")
 
 4. Keresse meg a VPN-átjárót a **figyelő**  >  **diagnosztika beállításai** panelen.
 
-   ![A VPN Gateway diagnosztikai beállításokban való keresésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Válassza ezt:")
+   ![A VPN Gateway diagnosztikai beállításokban való keresésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Kiválasztás")
 
 5. A diagnosztika bekapcsolásához kattintson duplán az átjáróra, majd válassza a **diagnosztika bekapcsolása**elemet.
 
-   ![A diagnosztika bekapcsolásának kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Válassza ezt:")
+   ![A diagnosztika bekapcsolásának kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Kiválasztás")
 
 6. Adja meg a részleteket, és győződjön meg arról, hogy a **küldés log Analytics** és **TunnelDiagnosticLog** be van jelölve. Válassza ki a 3. lépésben létrehozott Log Analytics munkaterületet.
 
-   ![Bejelölt jelölőnégyzetek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Válassza ezt:")
+   ![Bejelölt jelölőnégyzetek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Kiválasztás")
 
    > [!NOTE]
    > Az adat kezdeti megjelenítéséhez több óráig is eltarthat.
 
 7. Nyissa meg a virtuális hálózati átjáró erőforrásának áttekintését, és a **figyelés** lapon válassza a **riasztások** lehetőséget. Ezután hozzon létre egy új riasztási szabályt, vagy szerkesszen egy meglévő riasztási szabályt.
 
-   ![Új riasztási szabály létrehozásának kijelölése](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Válassza ezt:")
+   ![Új riasztási szabály létrehozásának kijelölése](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Kiválasztás")
 
-   ![pont – hely kapcsolat](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Válassza ezt:")
+   ![pont – hely kapcsolat](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Kiválasztás")
 8. Válassza ki a Log Analytics munkaterületet és az erőforrást.
 
-   ![Munkaterület és erőforrás kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Válassza ezt:")
+   ![Munkaterület és erőforrás kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Kiválasztás")
 
 9. Válassza az **egyéni naplók keresése** lehetőséget a **feltétel hozzáadása**alatt lévő jel logikaként.
 
-   ![Egyéni naplók keresésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Válassza ezt:")
+   ![Egyéni naplók keresésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Kiválasztás")
 
 10. Adja meg az alábbi lekérdezést a **Keresési lekérdezés** szövegmezőben. Szükség szerint cserélje le a <> és a TimeGenerated értékeit.
 
@@ -88,15 +88,15 @@ A következő példa egy riasztást hoz létre egy olyan leválasztási esemény
 
     Állítsa 0 értékre a küszöbértéket, és válassza a **kész**lehetőséget.
 
-    ![Lekérdezés megadása és küszöbérték kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Válassza ezt:")
+    ![Lekérdezés megadása és küszöbérték kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Kiválasztás")
 
 11. A **szabály létrehozása** lapon válassza az **új létrehozása** lehetőséget a **műveleti csoportok** szakaszban. Adja meg a részleteket, és kattintson **az OK gombra**.
 
-    ![Új műveleti csoport részletei](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Válassza ezt:")
+    ![Új műveleti csoport részletei](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Kiválasztás")
 
 12. A **szabály létrehozása** lapon adja meg a **műveletek testreszabásának** részleteit, és győződjön meg arról, hogy a megfelelő név jelenik meg a **műveleti csoport neve** szakaszban. A szabály létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
-    ![Szabály létrehozására szolgáló kiválasztások](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Válassza ezt:")
+    ![Szabály létrehozására szolgáló kiválasztások](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Kiválasztás")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>Riasztások beállítása a PowerShell használatával
 

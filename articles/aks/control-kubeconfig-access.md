@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009290"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Az Azure szerepköralapú hozzáférés-vezérlés használata a Kubernetes konfigurációs fájlhoz való hozzáférés definiálásához az Azure Kubernetes szolgáltatásban (ak)
@@ -71,7 +71,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Ha engedélyeket szeretne hozzárendelni egy Azure AD-csoporthoz, frissítse az `--assignee` előző példában látható paramétert a *csoport* objektum-azonosítójával, nem pedig *felhasználóként*. Egy csoport objektumazonosítóának beszerzéséhez használja az az [ad Group show][az-ad-group-show] parancsot. A következő példa a *appdev*nevű Azure ad-csoport OBJEKTUMAZONOSÍTÓ-azonosítóját kapja:`az ad group show --group appdev --query objectId -o tsv`
+> Ha engedélyeket szeretne hozzárendelni egy Azure AD-csoporthoz, frissítse az `--assignee` előző példában látható paramétert a *csoport* objektum-azonosítójával, nem pedig *felhasználóként*. Egy csoport objektumazonosítóának beszerzéséhez használja az az [ad Group show][az-ad-group-show] parancsot. A következő példa a *appdev*nevű Azure ad-csoport OBJEKTUMAZONOSÍTÓ-azonosítóját kapja: `az ad group show --group appdev --query objectId -o tsv`
 
 Szükség szerint módosíthatja az előző hozzárendelést a *fürt felhasználói szerepköréhez* .
 
@@ -133,7 +133,7 @@ A szerepkör-hozzárendelések eltávolításához használja az az [role hozzá
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK-fürtökhöz való hozzáférés fokozott biztonsága érdekében [integrálja Azure Active Directory hitelesítést][aad-integration].
 

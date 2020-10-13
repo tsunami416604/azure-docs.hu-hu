@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e9ce523efd12ce372d7bfef6c653e95f6689415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eae7a44d77d63641ba9ad062c504aaf624582668
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856959"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969211"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -78,7 +78,7 @@ IoT Edge-eszköz:
 >
 > Ez a rövid útmutató az egyszerűség kedvéért egy Windows rendszerű virtuális gépet használ. További információ arról, hogy mely Windows operációs rendszerek érhetők el általánosan az éles környezetekben: [Azure IoT Edge támogatott rendszerek](support.md).
 >
-> Ha készen áll a IoT Edgehoz tartozó saját Windows-eszköz konfigurálására, beleértve az IoT Core-ot futtató eszközöket, kövesse a [Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című témakör lépéseit.
+> Ha a IoT Edge saját Windows-eszközét szeretné konfigurálni, kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit.
 
 ## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
@@ -142,9 +142,7 @@ Az ebben a szakaszban foglalt lépések mindegyike a IoT Edge eszközön törté
 
 Az IoT Edge-futtatókörnyezet letöltése és telepítése a PowerShell használatával történik. Az eszköz konfigurálásához az IoT Hubról lekért eszközkapcsolati sztringet használja.
 
-1. Ha még nem tette meg, kövesse az [új Azure IoT Edge eszköz regisztrálása](how-to-register-device.md) az eszköz regisztrálásához és az eszköz kapcsolódási karakterláncának beolvasásához című témakör lépéseit.
-
-2. A virtuális gépen futtassa a PowerShellt rendszergazdaként.
+1. A virtuális gépen futtassa a PowerShellt rendszergazdaként.
 
    >[!NOTE]
    >A PowerShell AMD64-munkamenetének használatával telepítse a IoT Edge, nem a PowerShellt (x86). Ha nem biztos abban, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
@@ -153,25 +151,25 @@ Az IoT Edge-futtatókörnyezet letöltése és telepítése a PowerShell haszná
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, letölti a Moby Runtime-t, majd letölti a IoT Edge futtatókörnyezetet.
+2. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, letölti a Moby Runtime-t, majd letölti a IoT Edge futtatókörnyezetet.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Előfordulhat, hogy a gép automatikusan újraindul. Ha a Deploy-IoTEdge parancs kéri az újraindítást, tegye meg most.
+3. Előfordulhat, hogy a gép automatikusan újraindul. Ha a Deploy-IoTEdge parancs kéri az újraindítást, tegye meg most.
 
-5. Futtassa újra a PowerShellt rendszergazdaként.
+4. Futtassa újra a PowerShellt rendszergazdaként.
 
-6. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés.
+5. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. Ha a rendszer a **DeviceConnectionString** megadására kéri, akkor illessze be az előző szakaszból átmásolt sztringet. A kapcsolati sztring elé és után ne írjon idézőjeleket.
+6. Ha a rendszer a **DeviceConnectionString** megadására kéri, akkor illessze be az előző szakaszból átmásolt sztringet. A kapcsolati sztring elé és után ne írjon idézőjeleket.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
 
@@ -234,7 +232,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
@@ -255,7 +253,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

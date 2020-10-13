@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
 ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86117115"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>A Salesforce vezető felügyeletének konfigurálása
@@ -80,7 +80,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés**lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533961"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobok indexelése több keresési dokumentum létrehozásához
@@ -66,7 +66,7 @@ Amikor létrehoz egy indexelő, és a **parsingMode** úgy állítja be `jsonLin
 
 Ez a beállítás azt eredményezi, hogy az Azure Cognitive Search index a következő adatokat tartalmazza (a Base64 kódolású azonosító lerövidíti a rövid időpontot)
 
-| ID | hőmérséklet | nyomás | időbélyeg |
+| ID (Azonosító) | hőmérséklet | nyomás | időbélyeg |
 |----|-------------|----------|-----------|
 | aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
@@ -112,7 +112,7 @@ Ha explicit mező-hozzárendelést szeretne beállítani, győződjön meg arró
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
 Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/). Ha segítségre van szüksége a meglévő szolgáltatás használatához, tegye fel a kérdését [stack Overflowra](https://stackoverflow.microsoft.com/questions/tagged/18870).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az Azure [blob Storage indexelését az azure Cognitive Search](search-howto-index-json-blobs.md) . A különböző blob-tartalomtípusok elemzési módjaival kapcsolatos további információkért tekintse át a következő cikkeket.
 

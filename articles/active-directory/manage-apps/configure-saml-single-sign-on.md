@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597916"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés ismertetése
@@ -81,7 +81,7 @@ Az Azure AD egy tanúsítványt használ az alkalmazásnak küldött SAML-tokene
 > [!IMPORTANT]
 > Számos alkalmazás már előre konfigurálva van, és az alkalmazás-katalógusban nem kell belefoglalni a tanúsítványokra. A gyors üzembe helyezési [sorozat](add-application-portal.md) végigvezeti az alkalmazások hozzáadásának és konfigurálásának lépésein.
 
-Az Azure AD-ből az aktív tanúsítvány Base64 vagy RAW formátumban tölthető le közvetlenül az **SAML-t tartalmazó fő set egyszeri bejelentkezéssel** . Azt is megteheti, hogy az aktív tanúsítványt letölti az alkalmazás metaadatainak XML-fájljának használatával vagy az alkalmazás-összevonás metaadat-URL-címével. Ha szeretné megtekinteni, létrehozni vagy letölteni a tanúsítványokat (aktív vagy inaktív), kövesse az alábbi lépéseket.
+Az Azure AD-ből az aktív tanúsítvány Base64 vagy RAW formátumban tölthető le közvetlenül a fő **beállítás egyetlen Sign-On az SAML** -oldalról. Azt is megteheti, hogy az aktív tanúsítványt letölti az alkalmazás metaadatainak XML-fájljának használatával vagy az alkalmazás-összevonás metaadat-URL-címével. Ha szeretné megtekinteni, létrehozni vagy letölteni a tanúsítványokat (aktív vagy inaktív), kövesse az alábbi lépéseket.
 
 Néhány gyakori dolog a tanúsítvány ellenőrzéséhez: 
    - *A helyes lejárati dátum.* A lejárati dátumot akár három évig is beállíthatja a jövőbe.
@@ -128,9 +128,9 @@ Ha hibaüzenet jelenik meg, hajtsa végre a következő lépéseket:
 További információ: [SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban](../azuread-dev/howto-v1-debug-saml-sso-issues.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
 - [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-- [Egyszeri bejelentkezéses SAML protokoll](../develop/single-sign-on-saml-protocol.md)
+- [Egy Sign-On SAML protokoll](../develop/single-sign-on-saml-protocol.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91595524"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Az idősor-azonosító kiválasztásának ajánlott eljárásai
@@ -82,7 +82,7 @@ A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
   > A Azure Portalban ne adja meg a tulajdonságok vesszővel tagolt nevét egy texbox, ellenkező esetben a rendszer egyetlen, vesszőt tartalmazó tulajdonságnévként kezeli azt.
   > Adja meg a tulajdonságok nevét a saját texbox.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a0d2bd6a07cfc9e5ebe205322550c9e898022846
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008440"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) a macOS-ügyféllel
@@ -43,6 +43,6 @@ Miután bejelentkezett, megjelenik az elérhető erőforrások listája.
 
 Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A macOS-ügyféllel kapcsolatos további tudnivalókért tekintse meg a macOS-ügyfél dokumentációjának első [lépéseit](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) .

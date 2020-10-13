@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor – ügyfél által kezelt kulcs
-description: Információk és lépések az ügyfél által felügyelt kulcs (CMK) konfigurálásához a Log Analytics-munkaterületeken lévő adatok Azure Key Vault kulcs használatával történő titkosításához.
+description: Az Customer-Managed Key (CMK) konfigurálásához szükséges információk és lépések a Log Analytics-munkaterületen lévő adatok Azure Key Vault kulcs használatával történő titkosításához.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
 ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657307"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
@@ -78,7 +78,7 @@ Az eljárás nem támogatott Azure Portal és a kiépítés PowerShell-vagy REST
 > [!IMPORTANT]
 > A REST-kérelmeknek tartalmaznia kell egy tulajdonosi engedélyezési jogkivonatot a kérelem fejlécében.
 
-Például:
+Példa:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-08-01
@@ -240,7 +240,7 @@ Az identitást a rendszer a *fürt* erőforrásához rendeli hozzá a létrehoz�
 
 Míg a Log Analytics-fürt üzembe helyezése egy ideig tart, a kiépítési állapotot kétféleképpen is megtekintheti:
 
-1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
+1. Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
 2. Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *provisioningState* értéket. A kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
 
 ```rst
@@ -337,7 +337,7 @@ A "KeyVaultProperties" a Key Vault kulcs azonosítójának részleteit tartalmaz
 
 200 OK és fejléc.
 A kulcs azonosítójának elvégzése néhány percet vesz igénybe. A frissítési állapotot kétféleképpen is megtekintheti:
-1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
+1. Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
 2. Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *KeyVaultProperties* tulajdonságait. A válaszban a legutóbb frissített kulcs-azonosító részleteit kell visszaadnia.
 
 A *fürt* erőforrására vonatkozó kérésre adott válasznak a következőhöz hasonlóan kell kinéznie:
@@ -406,7 +406,7 @@ Content-type: application/json
 
 A betöltött adatait a rendszer a társítási művelet után titkosítja a felügyelt kulccsal, ami akár 90 percet is igénybe vehet. A munkaterület-társítási állapotot kétféleképpen tekintheti meg:
 
-1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
+1. Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
 2. [Munkaterületek küldése –](/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz betartása a társított munkaterületen a "szolgáltatások" clusterResourceId lesz.
 
 ```rest
@@ -664,7 +664,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](https://docs.microso
 
   A leválasztott adatmennyiséget a rendszer Log Analytics tárolóban tárolja, ez a művelet 90 percet is igénybe vehet. A munkaterület-társítási állapotot kétféleképpen is megtekintheti:
 
-  1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
+  1. Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. [Munkaterületek küldése –](/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz megtekintése, a nem társított munkaterület nem rendelkezik a *szolgáltatások* *clusterResourceId* .
 
 - **Munkaterület társítási állapotának megtekintése**
@@ -744,7 +744,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](https://docs.microso
 - Ha Key Vaultban frissíti a kulcs verzióját, és nem frissíti az új kulcs-azonosító részleteit a *fürterőforrás* -ben, a log Analytics-fürt továbbra is az előző kulcsot fogja használni, és az adatai elérhetetlenné válnak. Frissítse az új kulcs-azonosító részleteit a *fürterőforrás* -ben az adatok feldolgozásának folytatásához és az adatok lekérdezési képességéhez.
 
 - Bizonyos műveletek hosszúak, és eltarthat egy ideig – ezek a *fürtök* létrehozása, a *fürt* kulcsának frissítése és a *fürt* törlése. A művelet állapotát kétféleképpen tekintheti meg:
-  1. a REST használatakor másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
+  1. a REST használatakor másolja az Azure-AsyncOperation URL értéket a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. GET kérelem küldése a *fürtnek* vagy a munkaterületnek, és figyelje meg a választ. A nem társított munkaterület például nem rendelkezik a szolgáltatások *clusterResourceId* . *features*
 
 - Az ügyfél által felügyelt kulccsal kapcsolatos támogatásért és segítségért használja a Microsoft-partnereit.

@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482799"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Rendelkezésre állási csoport konfigurálása SQL Server Azure-beli virtuális gépen (Azure Portal – előzetes verzió)
@@ -58,7 +58,7 @@ Ha már rendelkezik fürttel, ugorja át ezt a szakaszt, és térjen át a [megl
 
 Ha még nem rendelkezik meglévő fürttel, hozza létre a Azure Portal használatával a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
 1. Válassza az **+ új Windows Server feladatátvevő fürt** lehetőséget a **Windows feladatátvevő fürt konfigurálása** lap megnyitásához.  
@@ -67,18 +67,11 @@ Ha még nem rendelkezik meglévő fürttel, hozza létre a Azure Portal használ
 
 1. Nevezze el a fürtöt, és adjon meg egy Felhőbeli tanúsító használandó Storage-fiókot. Használjon meglévő Storage-fiókot, vagy válassza az **új létrehozása** lehetőséget egy új Storage-fiók létrehozásához. A Storage-fiók nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Adja meg a fürt nevét, a Storage-fiókot és a hitelesítő adatokat.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Bontsa ki a **Windows Server feladatátvételi fürt hitelesítő adatait** a SQL Server szolgáltatásfiók, valamint a fürt operátora és a rendszerindítási fiókok [hitelesítő adatainak](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) megadásához, ha azok eltérnek a SQL Server szolgáltatáshoz használt fióktól. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Adja meg az SQL-szolgáltatásfiók, a Fürtfelügyelő-fiók és a fürt rendszerindítási fiókjának hitelesítő adatait.":::
-
-1. Válassza ki azokat a SQL Server virtuális gépeket, amelyeket hozzá szeretne adni a fürthöz. Vegye figyelembe, hogy újraindításra van szükség, és körültekintően járjon el. Csak az SQL VM erőforrás-szolgáltatóban regisztrált virtuális gépek teljes kezelhetőségi módban vannak, és ugyanazon a helyen, tartományban és ugyanazon a virtuális hálózaton találhatók, mint az elsődleges SQL Server VM láthatók. 
-1. A fürt létrehozásához kattintson az **alkalmaz** gombra. A központi telepítés állapotát a **tevékenység naplójában** tekintheti meg, amely a felső navigációs sávon harang ikonján keresztül érhető el. 
-1. A Microsoft által támogatott feladatátvevő fürtökön át kell adni a fürt érvényesítését. Kapcsolódjon a virtuális géphez a kívánt módszerrel (például RDP protokoll (RDP)), és ellenőrizze, hogy a fürt megfelel-e az érvényesítésnek a folytatás előtt. Ennek elmulasztása esetén a fürt nem támogatott állapotban hagyható. A fürtöt Feladatátvevőfürt-kezelő (FCM) vagy a következő PowerShell-parancs használatával ellenőrizheti:
-
-    ```powershell
-    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon"
     ```
     
 
@@ -89,12 +82,12 @@ Ha már van egy fürt konfigurálva a SQL Server VM-környezetben, akkor a Azure
 
 Ehhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
 1. Válassza a **meglévő Windows Server feladatátvételi fürt** beléptetése lehetőséget a **Windows Server feladatátvételi fürt** bevezetési oldalának megnyitásához. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Meglévő fürt beléptetése az SQL Virtual Machines erőforrás magas rendelkezésre állási oldaláról":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Tekintse át a fürt beállításait. 
 1. Válassza az alkalmaz elemet a fürt **beléptetéséhez** , majd a folytatáshoz válassza az **Igen** lehetőséget.
@@ -106,26 +99,26 @@ Ehhez kövesse az alábbi lépéseket:
 
 A fürt létrehozása vagy előkészítése után hozza létre a rendelkezésre állási csoportot a Azure Portal használatával. Ehhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
 1. Válassza az **+ új always on rendelkezésre állási csoport** lehetőséget a **rendelkezésre állási csoport létrehozása** lap megnyitásához.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Válassza az új always on rendelkezésre állási csoport lehetőséget a rendelkezésre állási csoport létrehozása lap megnyitásához.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Adja meg a rendelkezésre állási csoport nevét. 
 1. Válassza a **figyelő beállítása** lehetőséget a **rendelkezésre állási csoport figyelője beállítása** lap megnyitásához. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Adja meg a rendelkezésre állási csoport nevét, és állítson be egy figyelőt.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Töltse ki az értékeket, vagy használjon egy meglévő terheléselosztó-t, vagy válassza az **új létrehozása** lehetőséget egy új terheléselosztó létrehozásához.  Kattintson az **alkalmaz** gombra a beállítások mentéséhez és a figyelő és a terheléselosztó létrehozásához. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Töltse ki az űrlap értékeit az új figyelő és a terheléselosztó létrehozásához":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Válassza a **+ replika lehetőséget** a **rendelkezésre állási csoport replikáinak konfigurálása** lap megnyitásához.
 1. Válassza ki a rendelkezésre állási csoportba felvenni kívánt virtuális gépeket, és válassza ki az üzleti igényeinek leginkább megfelelő rendelkezésre állási csoport beállításait. A beállítások mentéséhez kattintson az **alkalmaz** gombra. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Válassza ki a rendelkezésre állási csoportba felvenni kívánt virtuális gépeket, és konfigurálja a vállalata számára megfelelő beállításokat":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Ellenőrizze a rendelkezésre állási csoport beállításait, majd válassza az **alkalmaz** lehetőséget a rendelkezésre állási csoport létrehozásához. 
 
@@ -147,7 +140,7 @@ Ha SQL Server Management Studio használatával szeretne adatbázisokat felvenni
 1. Bontsa ki az **Always on magas rendelkezésre állást** **Object Explorer**.
 1. Bontsa ki a **rendelkezésre állási csoportok**csomópontot, kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza az **adatbázis hozzáadása lehetőséget.**
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Kattintson a jobb gombbal a rendelkezésre állási csoportra az Object Explorerben, és válassza az adatbázis hozzáadása elemet.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Az utasításokat követve válassza ki a rendelkezésre állási csoportba felvenni kívánt adatbázis (oka) t. 
 1. Kattintson az **OK** gombra a beállítások mentéséhez és az adatbázis a rendelkezésre állási csoportba való felvételéhez. 
@@ -155,22 +148,22 @@ Ha SQL Server Management Studio használatával szeretne adatbázisokat felvenni
 
 Az adatbázisok hozzáadása után megtekintheti a rendelkezésre állási csoport állapotát a Azure Portalban: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Tekintse meg a rendelkezésre állási csoport állapotát a magas rendelkezésre állás lapon a Azure Portal az adatbázisok szinkronizálása után.":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 ## <a name="add-more-vms"></a>További virtuális gépek hozzáadása
 
 Ha további SQL Server virtuális gépeket szeretne hozzáadni a fürthöz, kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások**területen. 
 1. Válassza a **Windows Server feladatátvevő fürt konfigurálása** elemet a **Windows Server feladatátvevő fürt konfigurálása** lap megnyitásához. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Válassza a Windows Server feladatátvevő fürt beállítása lehetőséget a virtuális gépek fürthöz való hozzáadásához.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 1. Bontsa ki a **Windows Server feladatátvételi fürt hitelesítő adatait** , és adja meg a SQL Server szolgáltatáshoz, a fürthöz és a fürthöz tartozó rendszertöltő fiókokhoz használt fiókokat. 
 1. Válassza ki azokat a SQL Server virtuális gépeket, amelyeket hozzá szeretne adni a fürthöz. 
-1. Válassza az **Alkalmaz** lehetőséget. 
+1. Kattintson az **Alkalmaz** gombra. 
 
 A központi telepítés állapotát a **tevékenység naplójában** tekintheti meg, amely a felső navigációs sávon harang ikonján keresztül érhető el. 
 
@@ -180,7 +173,7 @@ A központi telepítés állapotát a **tevékenység naplójában** tekintheti 
 
 **További replikákat adhat hozzá** a rendelkezésre állási csoporthoz, **konfigurálhatja a figyelőt**, vagy **törölheti a figyelőt** a Azure Portal **magas rendelkezésre állási** lapjáról a rendelkezésre állási csoport melletti három pontra (...) kattintva: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Jelölje ki a rendelkezésre állási csoport melletti három pontot, majd válassza a replika hozzáadása lehetőséget a rendelkezésre állási csoport további replikáinak hozzáadásához.":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon":::
 
 ## <a name="remove-cluster"></a>Fürt eltávolítása
 
@@ -249,13 +242,13 @@ A fürt és a rendelkezésre állási csoport a portálon keresztüli módosít�
 
 Ha meg szeretné tekinteni a központi telepítés naplóit, és tekintse meg az üzembe helyezési előzményeket, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 1. Navigáljon az erőforráscsoporthoz.
 1. A **Beállítások**területen válassza a **központi telepítések** lehetőséget.
 1. A központi telepítéssel kapcsolatos további információért válassza ki a kívánt központi telepítést. 
 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Válassza ki azt a központi telepítést, amelyre kíváncsi." :::
+   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Hozzon létre új fürtöt az + új fürt kiválasztásával a portálon" :::
 
 ### <a name="common-errors"></a>Gyakori hibák
 

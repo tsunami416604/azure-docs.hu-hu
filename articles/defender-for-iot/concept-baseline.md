@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936298"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender a IoT alapkonfigurációhoz és egyéni ellenőrzésekhez
@@ -62,7 +62,7 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 
 ## <a name="baseline-custom-check-properties"></a>Alapterv egyéni ellenőrzési tulajdonságai
 
-| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Boolean** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|

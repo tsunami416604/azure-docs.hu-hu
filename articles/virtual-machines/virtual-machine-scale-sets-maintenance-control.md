@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532638"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>Előzetes verzió: Azure-beli virtuálisgép-méretezési csoportok karbantartási ellenőrzése 
@@ -22,7 +22,7 @@ A karbantartási vezérléssel eldöntheti, hogy mikor alkalmazza a frissítése
 
 A karbantartási konfigurációk az előfizetések és az erőforráscsoportok között működnek.
 
-A teljes munkafolyamat a következő lépésekből áll: 
+A teljes munkafolyamat ezekből a lépésekből áll: 
 - Hozzon létre egy karbantartási konfigurációt.
 - Virtuálisgép-méretezési csoport hozzárendelése karbantartási konfigurációhoz.
 - Az operációs rendszer automatikus frissítéseinek engedélyezése.
@@ -48,7 +48,7 @@ A karbantartási konfigurációkat a következő lehetőségek bármelyikével h
 - [Azure PowerShell](virtual-machine-scale-sets-maintenance-control-powershell.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan szabályozhatja, hogy az Azure-beli virtuálisgép-méretezési csoportokra hogyan kell karbantartani a karbantartást és a PowerShellt.
 

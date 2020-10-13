@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509120"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
@@ -128,7 +128,7 @@ Válassza ki a rendelkezésre állási csoport fürtjét támogató méretet. Az
 Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő rendelkezésre állási csoporthoz. További információ: [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
 Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

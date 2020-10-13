@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jafreebe
 ms.openlocfilehash: 2465b2f260ed6c174b762fcf64a71100a148254d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86106711"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service Event Grid forrásként
@@ -48,11 +48,11 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 |     Tulajdonság          |     Típus     |     Leírás                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    témakör              |    sztring    |    Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg.                                      |
-|    tulajdonos            |    sztring    |    Közzétevő által megadott elérési út az esemény tárgya számára.                                                                                              |
+|    tárgy            |    sztring    |    Közzétevő által megadott elérési út az esemény tárgya számára.                                                                                              |
 |    eventType          |    sztring    |    Az eseményforrás egyik regisztrált eseménytípus.                                                                                  |
 |    eventTime          |    sztring    |    Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor.                                                                         |
 |    id                 |    sztring    |    Az esemény egyedi azonosítója.                                                                                                            |
-|    adatok               |    objektum    |    BLOB Storage-események                                                                                                                    |
+|    adatok               |    object    |    BLOB Storage-események                                                                                                                    |
 |    dataVersion        |    sztring    |    Az adatobjektum séma-verziója. A sémaverziót a közzétevő határozza meg.                                                          |
 |    metadataVersion    |    sztring    |    Az esemény metaadatainak séma-verziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Event Grid megadja ezt az értéket.    |
 
@@ -83,8 +83,8 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 |    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
-|    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
+|    appEventTypeDetail      |    object    |    Az alkalmazás műveletének részletei                                                                                       |
+|    művelet                  |    sztring    |    A művelet műveletének típusa                                                                                   |
 |    name                    |    sztring    |    az eseményt tartalmazó webhely neve                                                                          |
 |    ügyfélkérelem         |    sztring    |    Az eseményt kiváltó hely API-művelethez az App Service által generált ügyfél-kérelem azonosítója         |
 |    correlationRequestId    |    sztring    |    Az eseményt kiváltó hely API-művelethez tartozó app Service által generált korrelációs kérelem azonosítója    |
@@ -121,8 +121,8 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 |    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
-|    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
+|    appEventTypeDetail      |    object    |    Az alkalmazás műveletének részletei                                                                                       |
+|    művelet                  |    sztring    |    A művelet műveletének típusa                                                                                   |
 |    name                    |    sztring    |    az eseményt tartalmazó webhely neve                                                                          |
 |    ügyfélkérelem         |    sztring    |    Az eseményt kiváltó hely API-művelethez az App Service által generált ügyfél-kérelem azonosítója         |
 |    correlationRequestId    |    sztring    |    Az eseményt kiváltó hely API-művelethez tartozó app Service által generált korrelációs kérelem azonosítója    |
@@ -159,8 +159,8 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 |    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
-|    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
+|    appEventTypeDetail      |    object    |    Az alkalmazás műveletének részletei                                                                                       |
+|    művelet                  |    sztring    |    A művelet műveletének típusa                                                                                   |
 |    name                    |    sztring    |    az eseményt tartalmazó webhely neve                                                                          |
 |    ügyfélkérelem         |    sztring    |    Az eseményt kiváltó hely API-művelethez az App Service által generált ügyfél-kérelem azonosítója         |
 |    correlationRequestId    |    sztring    |    Az eseményt kiváltó hely API-művelethez tartozó app Service által generált korrelációs kérelem azonosítója    |
@@ -198,8 +198,8 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 |    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
-|    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
+|    appEventTypeDetail      |    object    |    Az alkalmazás műveletének részletei                                                                                       |
+|    művelet                  |    sztring    |    A művelet műveletének típusa                                                                                   |
 |    name                    |    sztring    |    az eseményt tartalmazó webhely neve                                                                          |
 |    ügyfélkérelem         |    sztring    |    Az eseményt kiváltó hely API-művelethez az App Service által generált ügyfél-kérelem azonosítója         |
 |    correlationRequestId    |    sztring    |    Az eseményt kiváltó hely API-művelethez tartozó app Service által generált korrelációs kérelem azonosítója    |
@@ -236,8 +236,8 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 |    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
-|    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
+|    appEventTypeDetail      |    object    |    Az alkalmazás műveletének részletei                                                                                       |
+|    művelet                  |    sztring    |    A művelet műveletének típusa                                                                                   |
 |    name                    |    sztring    |    az eseményt tartalmazó webhely neve                                                                          |
 |    ügyfélkérelem         |    sztring    |    Az eseményt kiváltó hely API-művelethez az App Service által generált ügyfél-kérelem azonosítója         |
 |    correlationRequestId    |    sztring    |    Az eseményt kiváltó hely API-művelethez tartozó app Service által generált korrelációs kérelem azonosítója    |
@@ -283,17 +283,17 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 |    Tulajdonság                         |    Típus      |    Leírás                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appServicePlanEventTypeDetail    |    objektum    |    Az App Service-csomag műveletének részletei                                                                          |
+|    appServicePlanEventTypeDetail    |    object    |    Az App Service-csomag műveletének részletei                                                                          |
 |    stampKind                        |    sztring    |    Olyan környezet, amelyben az App Service-csomag                                                                     |
-|    action                           |    sztring    |    Az App Service-csomag műveletének típusa                                                                            |
+|    művelet                           |    sztring    |    Az App Service-csomag műveletének típusa                                                                            |
 |    status                           |    sztring    |    Az App Service-csomag műveletének állapota                                                                   |
-|    SKU                              |    objektum    |    az App Service-csomag SKU-jának száma                                                                                       |
+|    SKU                              |    object    |    az App Service-csomag SKU-jának száma                                                                                       |
 |    name                             |    sztring    |    az App Service-csomag neve                                                                                      |
 |    Szint                             |    sztring    |    az App Service-csomag szintje                                                                                      |
 |    Méret                             |    sztring    |    az App Service-csomag mérete                                                                                      |
 |    Family (Család)                           |    sztring    |    App Service-csomag családja                                                                                        |
 |    Kapacitás                         |    sztring    |    az App Service-csomag kapacitása                                                                                      |
-|    action                           |    sztring    |    A művelet műveletének típusa                                                                                   |
+|    művelet                           |    sztring    |    A művelet műveletének típusa                                                                                   |
 |    name                             |    sztring    |    az eseményt tartalmazó webhely neve                                                                          |
 |    ügyfélkérelem                  |    sztring    |    Az eseményt kiváltó hely API-művelethez az App Service által generált ügyfél-kérelem azonosítója         |
 |    correlationRequestId             |    sztring    |    Az eseményt kiváltó hely API-művelethez tartozó app Service által generált korrelációs kérelem azonosítója    |

@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
 ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307279"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
@@ -120,7 +120,7 @@ További információ: az [erőforrás-függőségek meghatározása](../../azur
 
 ## <a name="identity"></a>Identitás
 
-Kötelező – ahhoz, hogy a rendszerkép-készítő jogosult legyen a képek olvasására/írására, az Azure Storage-ban lévő parancsfájlok olvasására, létre kell hoznia egy Azure-felhasználó által hozzárendelt identitást, amely jogosult az egyes erőforrásokra. A rendszerkép-szerkesztő engedélyeinek működéséről és a vonatkozó lépésekről a [dokumentációban](image-builder-user-assigned-identity.md)olvashat bővebben.
+Kötelező – ahhoz, hogy a rendszerkép-készítő jogosult legyen a képek olvasására/írására, az Azure Storage-ban lévő parancsfájlok olvasására, létre kell hoznia egy Azure User-Assigned-identitást, amely rendelkezik az egyes erőforrásokhoz szükséges engedélyekkel. A rendszerkép-szerkesztő engedélyeinek működéséről és a vonatkozó lépésekről a [dokumentációban](image-builder-user-assigned-identity.md)olvashat bővebben.
 
 
 ```json
@@ -133,7 +133,7 @@ Kötelező – ahhoz, hogy a rendszerkép-készítő jogosult legyen a képek ol
 ```
 
 
-A rendszerkép-szerkesztő támogatja a felhasználó által hozzárendelt identitást:
+Rendszerkép-szerkesztő támogatása User-Assigned identitáshoz:
 * Csak egyetlen identitást támogat
 * Nem támogatja az egyéni tartományneveket
 

@@ -1,23 +1,23 @@
 ---
 title: Mi az az Azure Reservations?
-description: Megismerheti az Azure Reservationst és annak díjszabását a virtuális gépek, az SQL Database-adatbázisok, az Azure Cosmos DB és más erőforrások költségeinek csökkentéséhez.
+description: Megismerheti az Azure Reservationst és annak díjszabását a virtuális gépek, az SQL Database-adatbázisok, az Azure Cosmos DB és más erőforrások fenntartott példányaira vonatkozó költségek csökkentéséhez.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682586"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652363"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
-Az Azure Reservationszel csökkentheti költségeit, ha több termékre is egy vagy három évre előre kötelezettséget vállal. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára. A foglalás megvásárlása után a rendszer automatikusan alkalmazza a kedvezményt az annak megfelelő erőforrásokra.
+Az Azure Reservationszel csökkentheti költségeit, ha több termékre is egy vagy három évre előre kötelezettséget vállal. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára. A foglalás megvásárlása után a rendszer automatikusan alkalmazza a kedvezményt az annak megfelelő erőforrásokra.
 
 A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 
@@ -50,9 +50,9 @@ További információkért lásd:  [A megvásárolni kívánt foglalás kivál
 
 Foglalásokat az Azure Portalon, API-kkal, a PowerShellben és a parancssori felületen vásárolhat. 
 
-Lépjen az Azure Portalra a vásárláshoz (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+Nyissa meg az [Azure Portalt](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) a vásárláshoz.
 
-További információkért lásd:  [Foglalás vásárlása](prepare-buy-reservation.md) 
+További információért lásd:  [Foglalás vásárlása](prepare-buy-reservation.md).
 
 ## <a name="how-is-a-reservation-billed"></a>Hogy történik a foglalás számlázása? 
 
@@ -106,7 +106,7 @@ Szoftvercsomagok:
 
 - **SUSE Linux** – A foglalás a szoftvercsomag költségeit foglalja magában. A kedvezmények csak a SUSE-mérőszámokra vonatkoznak, a virtuálisgép-használatra nem.
 - **Red Hat-csomagok** – A foglalás a szoftvercsomag költségeit foglalja magában. A kedvezmények csak a RedHat-mérőszámokra vonatkoznak, a virtuálisgép-használatra nem.
-- **VMware Solution by CloudSimple** – A foglalás a VMWare CloudSimple-csomópontokat foglalja magában. További szoftverköltségek is felmerülhetnek.
+- **Azure VMware Solution by CloudSimple** – A foglalás a VMware CloudSimple-csomópontokat foglalja magában. További szoftverköltségek is felmerülhetnek.
 - **Azure Red Hat OpenShift** – A foglalás az OpenShift-költségeket foglalja magában, az Azure-infrastruktúra költségeit nem.
 
 A Windows rendszerű virtuális gépek és az SQL Database esetében a foglalási kedvezmény nem vonatkozik a szoftverek költségeire. A licencelési költségeket az [Azure Hybrid Benefittel](https://azure.microsoft.com/pricing/hybrid-benefit/) fedezheti.

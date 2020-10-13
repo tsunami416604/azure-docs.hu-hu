@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498678"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Figyelési megoldások célzása Azure Monitorban (előzetes verzió)
@@ -38,7 +38,7 @@ Miután létrehozta a számítógépcsoportot a munkaterületen, akkor azt egy h
  3. Új hatókör-konfiguráció létrehozásához kattintson a **Hozzáadás** gombra.
  4. Adja meg a hatókör-konfiguráció **nevét** .
  5. Kattintson a **számítógépcsoportok kiválasztása**elemre.
- 6. Válassza ki a létrehozott számítógépcsoportot, és opcionálisan bármely más csoportot, amelyet hozzá szeretne adni a konfigurációhoz.  Válassza a **Kiválasztás** lehetőséget.  
+ 6. Válassza ki a létrehozott számítógépcsoportot, és opcionálisan bármely más csoportot, amelyet hozzá szeretne adni a konfigurációhoz.  Kattintson a **Kiválasztás** elemre.  
  6. A hatókör-konfiguráció létrehozásához kattintson **az OK** gombra. 
 
 
@@ -67,6 +67,6 @@ A megoldások célzása nem használható a következő megoldásokkal annak ell
 
 - Agent Health Értékelés
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a figyelési megoldásokról, beleértve a környezetében telepítendő megoldásokat az [Azure log Analytics-figyelési megoldások hozzáadása a munkaterülethez](solutions.md)lehetőségre.
 - További információ a számítógépcsoportok számítógép [-csoportokon való létrehozásáról Azure monitor log lekérdezésekben](../platform/computer-groups.md).

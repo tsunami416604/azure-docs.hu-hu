@@ -4,10 +4,10 @@ description: A Linux rendszerű virtuális gépek alkalmazás-konzisztens bizton
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999240"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure-beli linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentése
@@ -78,8 +78,8 @@ Győződjön meg arról, hogy a megfelelő naplózást adja hozzá a parancsfáj
 | ScriptNotFound utáni |A parancsfájl nem található a konfigurációs fájlban **VMSnapshotScriptPluginConfig.js** megadott helyen. |Győződjön meg arról, hogy a parancsfájl a konfigurációs fájlban megadott elérési úton van, hogy biztosítsa az alkalmazás-konzisztens biztonsági mentést.|
 | IncorrectPluginhostFile |A VmSnapshotLinux-bővítményhez tartozó **pluginhost fájlja** -fájl sérült, ezért a parancsfájl előtti és utáni parancsfájl nem futtatható, és a biztonsági mentés nem lesz alkalmazás-konzisztens.| Távolítsa el a **VmSnapshotLinux** bővítményt, és a rendszer automatikusan újratelepíti a következő biztonsági mentéssel a probléma megoldásához. |
 | IncorrectJSONConfigFile | A fájl **VMSnapshotScriptPluginConfig.jsa** helytelen, ezért a parancsfájl előtti és utáni parancsfájl nem futtatható, és a biztonsági mentés nem lesz az alkalmazás-konzisztens. | Töltse le a másolatot a [githubról](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) , és konfigurálja újra. |
-| InsufficientPermissionforPre – parancsfájl | A parancsfájlok futtatásához a "root" felhasználónak a fájl tulajdonosának kell lennie, és a fájlnak "700" engedélyekkel kell rendelkeznie (azaz csak a "tulajdonos" legyen "READ", "Write" és "EXECUTE" engedélyekkel). | Győződjön meg arról, hogy a "root" felhasználó a parancsfájl tulajdonosa, és hogy csak a "tulajdonos" rendelkezik "READ", "Write" és "EXECUTE" engedélyekkel. |
-| InsufficientPermissionforPost – parancsfájl | A parancsfájlok futtatásához a legfelső szintű felhasználónak a fájl tulajdonosának kell lennie, és a fájlnak "700" engedélyekkel kell rendelkeznie (azaz csak a "tulajdonos" legyen "READ", "Write" és "EXECUTE" engedélyekkel). | Győződjön meg arról, hogy a "root" felhasználó a parancsfájl tulajdonosa, és hogy csak a "tulajdonos" rendelkezik "READ", "Write" és "EXECUTE" engedélyekkel. |
+| InsufficientPermissionforPre-Script | A parancsfájlok futtatásához a "root" felhasználónak a fájl tulajdonosának kell lennie, és a fájlnak "700" engedélyekkel kell rendelkeznie (azaz csak a "tulajdonos" legyen "READ", "Write" és "EXECUTE" engedélyekkel). | Győződjön meg arról, hogy a "root" felhasználó a parancsfájl tulajdonosa, és hogy csak a "tulajdonos" rendelkezik "READ", "Write" és "EXECUTE" engedélyekkel. |
+| InsufficientPermissionforPost-Script | A parancsfájlok futtatásához a legfelső szintű felhasználónak a fájl tulajdonosának kell lennie, és a fájlnak "700" engedélyekkel kell rendelkeznie (azaz csak a "tulajdonos" legyen "READ", "Write" és "EXECUTE" engedélyekkel). | Győződjön meg arról, hogy a "root" felhasználó a parancsfájl tulajdonosa, és hogy csak a "tulajdonos" rendelkezik "READ", "Write" és "EXECUTE" engedélyekkel. |
 | Előzetes ScriptTimeout | Az alkalmazás-konzisztens biztonsági mentés előzetes parancsfájljának végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje a **VMSnapshotScriptPluginConfig.js** a **/etc/Azure**címen található fájlban lévő időkorlátot. |
 | ScriptTimeout utáni | Az alkalmazás-konzisztens biztonsági mentési parancsfájl végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje a **VMSnapshotScriptPluginConfig.js** a **/etc/Azure**címen található fájlban lévő időkorlátot. |
 

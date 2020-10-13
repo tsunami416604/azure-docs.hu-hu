@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653213"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
@@ -64,7 +64,7 @@ Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfig
 
 ### <a name="federated-environment"></a>Összevont környezet
 
-Egy összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely támogatja a WS-Trust és a WS-fed protokollokat:
+Az összevont környezetnek rendelkeznie kell egy WS-Trust és WS-Fed protokollt támogató identitás-szolgáltatóval:
 
 - **Ws-Fed:** Ez a protokoll az eszköz Azure AD-hez való csatlakoztatásához szükséges.
 - **Ws-Trust:** Ez a protokoll egy Azure AD-hez csatlakoztatott eszközre való bejelentkezéshez szükséges.
