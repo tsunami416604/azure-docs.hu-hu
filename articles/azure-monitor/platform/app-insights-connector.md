@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449420"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
@@ -247,7 +247,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Típus | ApplicationInsights |
 | TelemetryType | Kérés |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
-| RequestSuccess | Sikert vagy hibát jelez. TRUE (igaz) vagy FALSE (hamis). |
+| RequestSuccess | Sikert vagy hibát jelez. Igaz vagy hamis. |
 | RequestID | AZONOSÍTÓ a kérelem egyedi azonosításához |
 | RequestName | GET/POST + URL-cím alapja |
 | RequestDuration | A kérelem időtartamának ideje (másodpercben) |
@@ -316,7 +316,7 @@ Lekérheti az alkalmazások listáját is, ha egy napló lekérdezést használ:
 ApplicationInsights | summarize by ApplicationName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../log-query/log-query-overview.md) .
 

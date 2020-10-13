@@ -127,6 +127,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure Resource Manager
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: Beépített szabályzat
+              href: nsg-flow-logs-policy-portal.md
         - name: NSG-folyamatnapló tárolóblobjainak törlése
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG-forgalom naplóinak elemzése

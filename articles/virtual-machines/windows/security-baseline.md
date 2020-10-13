@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400381"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978020"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines Azure biztonsági alapterve
 
@@ -32,7 +32,7 @@ További információ: [Azure Security](../../security/benchmarks/security-basel
 
 Ha a központosított tűzfalhoz adott használati esettel rendelkezik, Azure Firewall is felhasználhatja ezeket a követelményeket.
 
-* [Virtuális hálózatok és virtuális gépek az Azure-ban](./network-overview.md)
+* [Virtuális hálózatok és virtuális gépek az Azure-ban](../network-overview.md)
 
 * [Virtual Network létrehozása](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ A Azure Security Center igény szerinti hálózati hozzáférésével korlátozh
 
 * [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../../security-center/threat-protection.md)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../../security-center/azure-defender.md)
 
 * [Azure Security Center adaptív hálózat megerősítésének ismertetése](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ A Azure Security Center igény szerinti hálózati hozzáférésével korlátozh
 
 * [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minták a hálózatkezeléshez](/azure/governance/policy/samples/#network)
+* [Azure Policy minták a hálózatkezeléshez](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint létrehozása](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ A Azure Policy segítségével érvényesítheti (és/vagy szervizelheti) a Wind
 
 * [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minták a hálózatkezeléshez](/azure/governance/policy/samples/#network)
+* [Azure Policy minták a hálózatkezeléshez](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -252,7 +252,7 @@ Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virt
 
 **Útmutató**: gondoskodjon arról, hogy a virtuális gépek naplófájljainak tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
 
-* [Virtuális gépek figyelése az Azure-ban](./monitor.md)
+* [Virtuális gépek figyelése az Azure-ban](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 * [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/log-query/get-started-queries.md)
 
-* [Virtuális gépek figyelése az Azure-ban](./monitor.md)
+* [Virtuális gépek figyelése az Azure-ban](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -508,7 +508,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 * [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../../governance/management-groups/create.md)
+* [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: a Azure Security Center ajánlásainak követése az Azure-Virtual Machines a sebezhetőségi felmérések végrehajtása során. A virtuális gépek sebezhetőségi felmérésének elvégzéséhez használja az Azure Security által ajánlott vagy harmadik féltől származó megoldást.
 
-* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -692,7 +692,7 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 * [További Azure-előfizetések létrehozása](../../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../../governance/management-groups/create.md)
+* [Management Groups létrehozása](../../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 
 * [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](../../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -817,13 +817,13 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 
 **Útmutató**: az Azure-környezetben üzembe helyezett magas kockázatú alkalmazások elkülöníthetők a virtuális hálózatok, az alhálózatok, az előfizetések, a felügyeleti csoportok stb. számára, és megfelelően biztonságosak a Azure Firewall, a webalkalmazási TŰZFAL (WAF) vagy a hálózati biztonsági csoport (NSG) használatával.
 
-* [Virtuális hálózatok és virtuális gépek az Azure-ban](./network-overview.md)
+* [Virtuális hálózatok és virtuális gépek az Azure-ban](../network-overview.md)
 
 * [Azure Firewall áttekintése](../../firewall/overview.md)
 
 * [Webalkalmazási tűzfal – áttekintés](../../web-application-firewall/overview.md)
 
-* [Hálózati biztonság áttekintése](../../virtual-network/security-overview.md)
+* [Hálózati biztonság áttekintése](../../virtual-network/network-security-groups-overview.md)
 
 * [Az Azure Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 

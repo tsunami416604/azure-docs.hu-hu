@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324552"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js mongúz-alkalmazás összekötése Azure Cosmos DB
@@ -197,7 +197,7 @@ Ez a szakasz ismerteti, hogyan érheti el ezt Azure Cosmos DB API-MongoDB. Ez a 
 
 1. Most, hogy bekerül a Azure Portalba, két, Cosmos DBban létrehozott gyűjteményt láthat.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js oktatóanyag – képernyőkép a Azure Portalről, amely egy Azure Cosmos DB fiókot jelenít meg, és több gyűjtemény neve van kiemelve – csomópont-adatbázis":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js oktatóanyag – a Azure Portal képernyőképe, amely bemutatja, hogyan hozhat létre egy adatbázist a Adatkezelő egy Azure Cosmos DB-fiókhoz, a mongúz csomópont-modullal való használathoz":::
 
 1. Végül olvassa el Cosmos DB adatait. Mivel az alapértelmezett Mongoose működési modellt használjuk, az olvasások megegyeznek bármely más Mongoose olvasással.
 
@@ -302,7 +302,7 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
 
 1. Ha most visszatér az Azure Portalra, láthatja, hogy egyetlen gyűjteménye van ```alldata``` néven, amelyben a „Family” (Család) és a „VacationDestinations” (Nyaralási úti célok) adatai is szerepelnek.
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js oktatóanyag – képernyőkép a Azure Portalról, amely egy Azure Cosmos DB fiókot jelenít meg a kiválasztott gyűjtemény neve – csomópont-adatbázis":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js oktatóanyag – a Azure Portal képernyőképe, amely bemutatja, hogyan hozhat létre egy adatbázist a Adatkezelő egy Azure Cosmos DB-fiókhoz, a mongúz csomópont-modullal való használathoz":::
 
 1. Azt is észreveheti, hogy minden objektum rendelkezik egy másik, ```__type``` nevű attribútummal, amely segít megkülönböztetni a két különböző objektummodellt.
 

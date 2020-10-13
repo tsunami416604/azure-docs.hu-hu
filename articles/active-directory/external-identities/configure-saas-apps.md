@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705510"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-alkalmazások B2B-együttműködéshez
@@ -98,7 +98,7 @@ Az SAML protokollon alapuló összevonás használatával engedélyezheti a felh
 
 A Dropbox meghívásokhoz hasonlóan a Box-meghívásoknak is be kell váltaniuk a meghívót a Box alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

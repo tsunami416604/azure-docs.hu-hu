@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322330"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: képmetaadatok előállítása a Computer Vision használatával az Azure Storage-ban
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Metaadatok csatolása az Azure Storage-lemezképekhez
 > * Képmetaadatok keresése Azure Storage Explorer használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt nekikezdene a feladatok elvégzésének. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -144,7 +144,7 @@ Ha továbbra is szeretne dolgozni a webalkalmazáson, tekintse meg a [következ�
 
 Az erőforráscsoport törléséhez nyissa meg az **erőforráscsoportok** fület a portálon, navigáljon a projekthez használt erőforráscsoporthoz, és kattintson a nézet tetején található **erőforráscsoport törlése** elemre. A rendszer megkéri, hogy írja be az erőforráscsoport nevét annak megerősítéséhez, hogy törölni kívánja, mert a törlés után egy erőforráscsoport nem állítható helyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban beállítja az Azure Computer Vision szolgáltatását egy meglévő webalkalmazásban, hogy automatikusan hozzon létre feliratokat és kulcsszavakat a blob-képekhez a feltöltésük során. Ezután tekintse meg az Azure Storage Lab, 6. gyakorlatát, hogy megtudja, hogyan adhat hozzá keresési funkciókat a webalkalmazáshoz. Ez kihasználja a Computer Vision szolgáltatás által generált keresési kulcsszavakat.
 

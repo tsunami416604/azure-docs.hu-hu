@@ -8,10 +8,10 @@ ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707594"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
@@ -233,7 +233,7 @@ Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, t
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)](storage-files-faq.md)

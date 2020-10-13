@@ -1,14 +1,14 @@
 ---
 title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91538956"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873914"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -72,16 +72,16 @@ Az Azure Policy több engedéllyel (más néven művelettel) rendelkezik két er
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft. PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Számos beépített szerepkör oszt ki engedélyeket Azure Policy-erőforrásoknak. Az **erőforrás-házirend közreműködői** szerepkör a legtöbb Azure Policy műveletet tartalmazza. A **tulajdonos** teljes körű jogosultságokkal rendelkezik. Mind a **közreműködő** , mind az **olvasó** hozzáfér az összes _olvasási_ Azure Policy művelethez. A **közreműködő** erőforrás-szervizelést indíthat, de nem _hozhat létre_ definíciókat vagy hozzárendeléseket.
+Számos beépített szerepkör oszt ki engedélyeket Azure Policy-erőforrásoknak. Az **erőforrás-házirend közreműködői** szerepkör a legtöbb Azure Policy műveletet tartalmazza. A **tulajdonos** teljes körű jogosultságokkal rendelkezik. Mind a **közreműködő** , mind az **olvasó** hozzáfér az összes _olvasási_ Azure Policy művelethez. A **közreműködő** erőforrás-szervizelést indíthat, de nem _hozhat létre_ definíciókat vagy hozzárendeléseket. A **felhasználói hozzáférés rendszergazdájának** meg kell adnia a felügyelt identitást a **deployIfNotExists** , vagy **módosítania** kell a hozzárendelésekhez szükséges engedélyeket.
 
 Ha egyik beépített szerepkör sem tartalmazza a szükséges engedélyeket, hozzon létre egy [egyéni szerepkört](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> A **deployIfNotExists** házirend-hozzárendelés felügyelt identitásának elegendő engedélyre van szüksége a sablonban található erőforrások létrehozásához vagy frissítéséhez. További információ: szabályzat- [definíciók konfigurálása szervizeléshez](./how-to/remediate-resources.md#configure-policy-definition).
+> A **deployIfNotExists** felügyelt identitásának vagy a házirend-hozzárendelés **módosításának** elegendő engedélyre van szüksége a célzott erőforrások létrehozásához vagy frissítéséhez. További információ: szabályzat- [definíciók konfigurálása szervizeléshez](./how-to/remediate-resources.md#configure-policy-definition).
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy által érintett erőforrások
 
-Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/general/overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
+Azure Policy kiértékeli az összes erőforrást az Azure-ban és az ív engedélyezett erőforrásaiban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/general/overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Javaslatok a szabályzatok kezeléséhez
 
@@ -94,7 +94,7 @@ Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőfor
 - Javasoljuk, hogy egyetlen házirend-definícióhoz is hozzon létre és rendeljen hozzá kezdeményezési definíciókat.
   Például megadhatja a szabályzat-definíció _policyDefA_ , és létrehozhatja azt a Initiative definition _initiativeDefC_alatt. Ha később új szabályzat-definíciót hoz létre a _definícióéhoz_ -hoz a _policyDefA_hasonló célokkal, akkor hozzáadhatja azt a _initiativeDefC_ alatt, és nyomon követheti azokat.
 
-- Miután létrehozott egy kezdeményezés-hozzárendelést, a kezdeményezéshez hozzáadott szabályzat-definíciók is részévé válnak a kezdeményezések hozzárendeléseinek.
+- A kezdeményezési hozzárendelés létrehozása után a kezdeményezéshez hozzáadott szabályzat-definíciók is részévé válnak a kezdeményezés hozzárendeléseinek.
 
 - A kezdeményezési hozzárendelés kiértékelése után a rendszer a kezdeményezésen belüli összes szabályzatot is kiértékeli.
   Ha egy házirendet külön kell kiértékelnie, akkor jobb, ha nem szeretné belefoglalni egy kezdeményezésbe.
@@ -103,16 +103,15 @@ Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőfor
 
 ### <a name="policy-definition"></a>Szabályzatdefiníció
 
-Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyamata egy szabályzatdefiníció létrehozásával kezdődik. Minden szabályzat-definíció rendelkezik olyan feltételekkel, amelyek érvényben vannak. Továbbá egy meghatározott hatással van, amely a feltételek teljesülése esetén zajlik.
+Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyamata egy szabályzatdefiníció létrehozásával kezdődik. Mindegyik szabályzatdefiníció feltételekkel rendelkezik, amelyek teljesülése esetén életbe lép. Továbbá egy meghatározott hatással van, amely a feltételek teljesülése esetén zajlik.
 
-Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Például:
+Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Példa:
 
 - **Engedélyezett Storage-fiók SKU** -jának (megtagadás): meghatározza, hogy az üzembe helyezett Storage-fiók SKU-méreteken belül van-e. Ennek hatására az összes olyan Storage-fiók megtagadható, amely nem felel meg a definiált SKU-méretek készletének.
 - **Engedélyezett erőforrástípus** (megtagadás): meghatározza az üzembe helyezhető erőforrástípusok típusát. Ennek hatására az összes olyan erőforrást meg kell tagadni, amely nem része ennek a definiált listának.
 - **Engedélyezett helyszínek** (megtagadás): korlátozza az új erőforrásokhoz elérhető helyekre vonatkozó korlátozásokat. Biztosítja a földrajzi megfelelőségi követelmények betartását.
 - **Engedélyezett virtuálisgép-SKU** -EK (megtagadás): az üzembe helyezhető virtuálisgép-SKU-készletet határozza meg.
 - **Címke hozzáadása az erőforrásokhoz** (módosítás): a kötelező címkét és az alapértelmezett értéket alkalmazza, ha azt nem az üzembe helyezési kérelem adja meg.
-- **Hozzáfűzési címke és az alapértelmezett értéke** (Hozzáfűzés): egy kötelező címke és annak értéke egy erőforráshoz való érvényesítése.
 - **Nem engedélyezett erőforrástípusok** (megtagadás): megakadályozza, hogy a rendszer ne telepítse az erőforrástípusok listáját.
 
 A szabályzat-definíciók (beépített és egyéni definíciók) megvalósításához hozzá kell rendelnie őket. Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
@@ -173,7 +172,7 @@ A hozzárendelések portálon keresztüli beállításával kapcsolatos további
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 

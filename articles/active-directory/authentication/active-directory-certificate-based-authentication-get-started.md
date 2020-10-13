@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051343"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965624"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
 
@@ -226,7 +226,7 @@ Az EAS-profilok a mobileszköz-felügyelet (MDM), például az Intune használat
 1. Konfiguráljon egy EAS-profilt az alkalmazásban, amely megfelel az előző szakaszban foglalt követelményeknek.
 2. Nyissa meg az alkalmazást, és ellenőrizze, hogy a levelek szinkronizálása folyamatban van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a tanúsítványalapú hitelesítésről Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
 

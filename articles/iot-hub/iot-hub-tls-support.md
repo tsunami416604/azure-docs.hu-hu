@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jlian
 ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90006040"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
@@ -94,7 +94,7 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 
 | Nyelv | A TLS 1,2-et támogató verziók | Dokumentáció |
 |----------|------------------------------------|---------------|
-| C#        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| C        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | 2.0.0 vagy újabb verzió             | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | 1.21.4 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |

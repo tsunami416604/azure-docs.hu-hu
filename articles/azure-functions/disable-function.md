@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91661023"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
@@ -20,7 +20,7 @@ A függvények letiltásának ajánlott módja a következő formátumban beáll
 > [!NOTE]  
 > Ha letilt egy HTTP által aktivált függvényt a jelen cikkben ismertetett módszerekkel, a végpont továbbra is elérhető, ha a helyi számítógépen fut.  
 
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+## <a name="use-the-azure-cli"></a>Az Azure CLI használata
 
 Az Azure CLI-ben a [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal hozhatja létre és módosíthatja az alkalmazás beállításait. A következő parancs letiltja a nevű függvényt, `QueueTrigger` Ha létrehoz egy nevű alkalmazást a beállításhoz `AzureWebJobs.QueueTrigger.Disabled` `true` . 
 

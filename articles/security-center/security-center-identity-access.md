@@ -11,59 +11,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894562"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946220"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
-> [!TIP]
-> Március 2020-én a Azure Security Center identitás-és hozzáférési javaslatai szerepelnek az ingyenes díjszabási szinten található összes előfizetésben. Ha van előfizetése az ingyenes szinten, a rendszer a biztonságos pontszámot fogja érinteni, mivel azokat korábban nem értékelték a személyazonosságuk és a hozzáférésük biztonsága szempontjából. 
+A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. Ezzel a fejlesztéssel a biztonság kevésbé foglalkozik a hálózat védelmével, és többet tudhat meg az alkalmazások, az információk és a felhasználók biztonságának kezeléséről.
 
-Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
+Az identitással kapcsolatos tevékenységek és konfigurációs beállítások figyelésével proaktív műveleteket hajthat végre az incidensek megkezdése előtt, illetve a megkísérelt támadások leállításához szükséges reaktív műveleteket.
 
-A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. A biztonság kevesebb információt nyújt a hálózat védelméről és az adatai védelméről, valamint az alkalmazások és a felhasználók biztonságának kezeléséről. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
+## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>Milyen identitási és hozzáférési óvintézkedéseket Security Center nyújtani? 
 
-Az Identity tevékenységek figyelésével proaktív műveleteket hajthat végre az incidensek megkezdése előtt, vagy a támadási kísérlet leállítására irányuló reaktív műveletekkel. Előfordulhat például, hogy Security Center elavult fiókokat (fiókokat, amelyek már nem szükségesek, és Azure Active Directory) való bejelentkezéskor blokkolva van. 
+Azure Security Center két dedikált biztonsági vezérlővel rendelkezik, amelyekkel biztosíthatja, hogy megfeleljen a szervezete identitásának és biztonsági követelményeinek: 
 
-Példák a Azure Security Center az **identitás és hozzáférés erőforrás-** biztonság szakaszában esetlegesen megjelenő javaslatokra:
+ - **Hozzáférés és engedélyek kezelése** – javasoljuk, hogy fogadja el a [legkevésbé privilegizált hozzáférési modellt](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) , és gondoskodjon arról, hogy a felhasználók csak a feladataik elvégzéséhez szükséges hozzáférést biztosítsanak. Ez a vezérlő a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) megvalósítására vonatkozó javaslatokat is tartalmaz az erőforrásokhoz való hozzáférés szabályozásához.
+ 
+ - Többtényezős hitelesítés **engedélyezése** – az [MFA](https://www.microsoft.com/security/business/identity/mfa) engedélyezve van, a fiókok biztonságosabbak, és a felhasználók továbbra is elvégezhetik az egyszeri bejelentkezéssel szinte bármilyen alkalmazást.
+
+### <a name="example-recommendations-for-identity-and-access"></a>Példa az identitásra és a hozzáférésre vonatkozó javaslatok
+
+Példák a Security Center **ajánlásai** oldalon látható két vezérlőre:
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- Az elavult fiókokat el kell távolítani az előfizetésből
+- Az elavult fiókokat el kell távolítani az előfizetésből (az elavult fiókok olyan fiókok, amelyek már nem szükségesek, és a bejelentkezés nem engedélyezett Azure Active Directory)
 
-A javaslatokkal kapcsolatos további információkért, valamint az itt megjelenő javaslatok teljes listájáért tekintse meg az [identitás-és hozzáférési javaslatok](recommendations-reference.md#recs-identity)című témakört.
+> [!TIP]
+> További információ ezekről az ajánlásokról és a vezérlőkben esetlegesen megjelenő további információkról: [identitás-és hozzáférési javaslatok](recommendations-reference.md#recs-identity).
 
-> [!NOTE]
-> Ha az előfizetése több mint 600-fiókkal rendelkezik, Security Center nem tudja futtatni az identitással kapcsolatos ajánlásokat az előfizetésében. A nem futtatott javaslatok az alábbi "nem elérhető értékelések" alatt találhatók.
-A Security Center nem tudja futtatni az identitásra vonatkozó javaslatokat a Cloud Solution Provider (CSP) partner rendszergazdai ügynökeit.
->
+### <a name="limitations"></a>Korlátozások
 
+A Security Center identitás-és hozzáférés-védelmének bizonyos korlátai vannak:
 
-Az összes identitási és hozzáférési javaslat a **javaslatok** oldalon két biztonsági vezérlőn belül érhető el:
+- Az Identity javaslatok nem érhetők el több mint 600 fiókkal rendelkező előfizetésekhez. Ilyen esetekben ezek a javaslatok a "nem elérhető értékelések" területen jelennek meg.
+- Az identitásra vonatkozó javaslatok nem érhetők el a Cloud Solution Provider (CSP) partner rendszergazdai ügynökei számára.
+- Az identitással kapcsolatos javaslatok nem azonosítják azokat a fiókokat, amelyeket a rendszer az emelt szintű Identity Management (PIM) rendszerrel felügyel. Ha PIM-eszközt használ, pontatlan eredmények jelenhetnek meg a **hozzáférés és engedélyek kezelése** vezérlőelemben.
 
-- Hozzáférés és engedélyek kezelése 
-- MFA engedélyezése
+## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-Factor Authentication (MFA) és Azure Active Directory 
 
-![A két biztonsági ellenőrzés az identitással és hozzáféréssel kapcsolatos javaslatokkal](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
-
-
-## <a name="enable-multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA) engedélyezése
-
-Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)szükségesek. 
+Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](../active-directory/users-groups-roles/directory-assign-admin-roles.md)szükségesek.
 
 - Ha prémium szintű AD-kiadással rendelkezik, a [feltételes hozzáférés](../active-directory/conditional-access/concept-conditional-access-policy-common.md)használatával engedélyezze az MFA-t.
+- Ha az AD ingyenes kiadást használja, engedélyezze a **biztonsági alapértelmezéseket** a [Azure Active Directory dokumentációjában](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)leírtak szerint.
 
-- Ha az AD ingyenes kiadást használja, engedélyezze a Azure Active Directory **biztonsági alapértelmezéseit** az ad- [dokumentációban](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)leírtak szerint.
+## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>A multi-Factor Authentication (MFA) engedélyezése nélküli fiókok azonosítása
+
+A következő Azure Resource Graph-lekérdezéssel megtekintheti, hogy mely fiókok esetében nem engedélyezett az MFA használata. A lekérdezés az összes nem megfelelő erőforrást adja vissza – a "MFA engedélyezése az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokban". 
+
+1. Nyissa meg az **Azure Resource Graph Explorert**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Az Azure Resource Graph Explorer * * ajánlási oldalának elindítása" :::
+
+1. Adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
+
+    ```kusto
+    securityresources
+     | where type == "microsoft.security/assessments"
+     | where properties.displayName == "MFA should be enabled on accounts with owner permissions on your subscription"
+     | where properties.status.code == "Unhealthy"
+    ```
+
+1. A `additionalData` tulajdonság felfedi az MFA által kényszerített fiókokhoz tartozó fiókazonosító-azonosítók listáját. 
+
+    > [!NOTE]
+    > A fiókok neve helyett objektumazonosítókként jelennek meg a fiókok tulajdonosainak védelme érdekében.
+
+> [!TIP]
+> Alternatív megoldásként használhatja a Security Center REST API metódusának [értékelését – Get](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
 
 
-## <a name="next-steps"></a>Következő lépések
-Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>További lépések
+Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikket:
 
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)

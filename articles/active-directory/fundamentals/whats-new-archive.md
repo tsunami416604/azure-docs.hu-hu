@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449988"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
@@ -136,19 +136,19 @@ A **termék képességei:** Identitás-biztonsági & védelme
 **Szolgáltatás kategóriája:** Alkalmazás kiépítés  
 A **termék képességei:** Identitás-életciklus kezelése
  
-Az Azure AD-kiépítési szolgáltatás a konfigurációs képességek széles körét biztosítja. Az ügyfeleknek el kell tudniuk menteni a konfigurációt, hogy később is hivatkozhatnak rá, vagy visszatérhetnek egy ismert jó verzióra. Lehetőség van arra, hogy a kiépítési konfigurációt JSON-fájlként töltse le, és töltse fel, amikor szüksége van rá. [További információ](../app-provisioning/export-import-provisioning-configuration.md).
+Az Azure AD-kiépítési szolgáltatás a konfigurációs képességek széles körét biztosítja. Az ügyfeleknek el kell tudniuk menteni a konfigurációt, hogy később is hivatkozhatnak rá, vagy visszatérhetnek egy ismert jó verzióra. Lehetőség van arra, hogy a kiépítési konfigurációt JSON-fájlként töltse le, és töltse fel, amikor szüksége van rá. [További információk](../app-provisioning/export-import-provisioning-configuration.md).
 
 ---
  
 ### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>A SSPR (önkiszolgáló jelszó-visszaállítás) mostantól két kaput igényel a rendszergazdák számára a 21Vianet által üzemeltetett Microsoft Azureban (Azure China 21Vianet) 
 
 **Írja be a következőt:** Módosított funkció  
-**Szolgáltatás kategóriája:** Önkiszolgáló jelszó-visszaállítás  
+**Szolgáltatás kategóriája:** Self-Service jelszó alaphelyzetbe állítása  
 A **termék képességei:** Identitás-biztonsági & védelme
  
 Korábban Microsoft Azure a 21Vianet (Azure China 21Vianet) által működtetett, az önkiszolgáló jelszó-visszaállítást (SSPR) használó rendszergazdák a saját jelszavaik visszaállításához csak egy "kaput" (Challenge) szükségesek az identitásuk bizonyításához. A nyilvános és más országos felhőkben a rendszergazdáknak általában két kaput kell használniuk, hogy igazolják identitásukat a SSPR használatakor. Mivel azonban nem támogatjuk az SMS-t és a telefonhívásokat az Azure China 21Vianet, a rendszergazdák az egykapus jelszó-visszaállítást engedélyezték.
 
-SSPR-szolgáltatás paritást hozunk létre az Azure China 21Vianet és a nyilvános felhő között. A jövőben a rendszergazdáknak két kaput kell használniuk a SSPR használatakor. Az SMS, a telefonhívások és a hitelesítő alkalmazások értesítései és kódjai is támogatottak lesznek. [További információ](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences).
+SSPR-szolgáltatás paritást hozunk létre az Azure China 21Vianet és a nyilvános felhő között. A jövőben a rendszergazdáknak két kaput kell használniuk a SSPR használatakor. Az SMS, a telefonhívások és a hitelesítő alkalmazások értesítései és kódjai is támogatottak lesznek. [További információk](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences).
 
 ---
 
@@ -197,7 +197,7 @@ A **termék képességei:** Identitás-biztonsági & védelme
  
 Azt tervezzük, hogy lecseréljük a jelenlegi egyéni vezérlők előzetesét egy olyan megközelítéssel, amely lehetővé teszi, hogy a partner által biztosított hitelesítési funkciók zökkenőmentesen működjenek a Azure Active Directory-rendszergazda és a végfelhasználói élményben. Napjainkban a partner MFA-megoldások a következő korlátozásokkal szembesülnek: csak jelszó megadása után működnek. más kulcsfontosságú helyzetekben nem szolgálnak MFA-ként a lépésenkénti hitelesítéshez; és nem integrálják a végfelhasználói vagy a rendszergazdai hitelesítő adatok kezelési funkcióit. Az új implementáció lehetővé teszi, hogy a partner által biztosított hitelesítési tényezők a főbb forgatókönyvek beépített tényezői mellett működjenek, beleértve a regisztrációt, a használatot, az MFA-jogcímeket, a hitelesítés lépéseit, a jelentéskészítést és a naplózást. 
 
-Az egyéni vezérlők továbbra is támogatottak az előzetes verzióban az új terv mellett, amíg az általános rendelkezésre állást nem éri el. Ezen a ponton biztosítjuk az ügyfeleknek az új tervbe való Migrálás idejét. Az aktuális megközelítés korlátai miatt nem fogunk új szolgáltatókat bevezetni, amíg az új terv elérhetővé nem válik. Szorosan együttműködünk az ügyfelekkel és a szolgáltatókkal, és a lehető legszorosabban tájékoztatjuk az ütemtervet. [További információ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
+Az egyéni vezérlők továbbra is támogatottak az előzetes verzióban az új terv mellett, amíg az általános rendelkezésre állást nem éri el. Ezen a ponton biztosítjuk az ügyfeleknek az új tervbe való Migrálás idejét. Az aktuális megközelítés korlátai miatt nem fogunk új szolgáltatókat bevezetni, amíg az új terv elérhetővé nem válik. Szorosan együttműködünk az ügyfelekkel és a szolgáltatókkal, és a lehető legszorosabban tájékoztatjuk az ütemtervet. [További információk](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
 
 ---
 
@@ -532,7 +532,7 @@ További információ: a [Google hozzáadása identitás-szolgáltatóként a B2
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
 A **termék képességei:** Identitás-biztonsági & védelme
 
-Az iOS és Android rendszerhez készült Microsoft Edge Azure AD mostantól támogatja az Azure AD egyszeri bejelentkezést és a feltételes hozzáférést:
+Az iOS és Android rendszerhez készült Microsoft Edge Azure AD mostantól támogatja az Azure AD egyszeri Sign-On és a feltételes hozzáférést:
 
 - **Microsoft Edge egyszeri bejelentkezés (SSO):** Az egyszeri bejelentkezés mostantól a natív ügyfeleken (például a Microsoft Outlookban és a Microsoft Edge-ben) is elérhető az összes Azure AD-hez kapcsolódó alkalmazáshoz.
 
@@ -1256,7 +1256,7 @@ További információ: [Azure ad Domain Services biztonsági naplózásának eng
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** B2B- **termék funkció:** B2B/B2C
 
-A közvetlen összevonás segít megkönnyíteni az olyan partnerekkel való munkavégzést, akik felügyelt identitási megoldását nem az Azure AD, az SAML-vagy WS-fed szabványokat támogató Identity Systems használatával. Miután létrehozott egy közvetlen összevonási kapcsolatot egy partnerrel, az adott tartományból meghívó új vendég-felhasználók a meglévő szervezeti fiókkal dolgozhatnak, így a vendégek zökkenőmentesen használhatják a felhasználói élményt.
+A közvetlen összevonás segít megkönnyíteni az olyan partnerekkel való munkavégzést, akik felügyelt identitási megoldását nem az Azure AD, az SAML-vagy WS-Fed-szabványokat támogató Identity Systems használatával. Miután létrehozott egy közvetlen összevonási kapcsolatot egy partnerrel, az adott tartományból meghívó új vendég-felhasználók a meglévő szervezeti fiókkal dolgozhatnak, így a vendégek zökkenőmentesen használhatják a felhasználói élményt.
 
 További információ: [közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználók számára (előzetes verzió)](../external-identities/direct-federation.md).
 
@@ -1344,7 +1344,7 @@ További információ: [kockázatkezelési API-dokumentáció](/graph/api/resour
 
 2019 júniusában a következő 22 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
 
-[Azure ad SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN Client](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), [Helper Helper](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz in-Car Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [Oracle felhő-infrastruktúra konzol](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML-hitelesítés](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise os](https://proptimise.co.uk/software/), [VTIGER CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager for Oracle kiskereskedelmi merchandising, Oracle Access Manager for Oracle e-Business Suite, Oracle IDCS for E-Business Suite, Oracle IDCS for PeopleSoft, Oracle IDCS for JD Edwards
+[Azure ad SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN-ügyfél](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), [Helper Helper](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [Oracle felhőalapú infrastruktúra konzol](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML-hitelesítés](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise os](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager for Oracle kiskereskedelmi értékesítés, Oracle-hozzáférés-kezelő az Oracle E-Business Suite-hoz
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
@@ -1942,7 +1942,7 @@ További információ: az [e-mailek egyszeri jelszavas hitelesítése (előzetes
 
 Három új cookie-beállítást vezettünk be, amelyek elérhetők az Application proxyn keresztül közzétett alkalmazások számára:
 
-- **Használjon csak HTTP-alapú cookie-t.** Beállítja a **HTTPOnly** jelzőt az alkalmazásproxy-hozzáférési és munkamenet-cookie-kra. A beállítás bekapcsolása további biztonsági előnyöket biztosít, például segít megakadályozni a cookie-k másolását vagy módosítását az ügyféloldali parancsfájlok használatával. Javasoljuk, hogy kapcsolja be ezt a jelzőt (válassza az **Igen**lehetőséget) a hozzáadott előnyökhöz.
+- **Használjon HTTP-Only cookie-t.** Beállítja a **HTTPOnly** jelzőt az alkalmazásproxy-hozzáférési és munkamenet-cookie-kra. A beállítás bekapcsolása további biztonsági előnyöket biztosít, például segít megakadályozni a cookie-k másolását vagy módosítását az ügyféloldali parancsfájlok használatával. Javasoljuk, hogy kapcsolja be ezt a jelzőt (válassza az **Igen**lehetőséget) a hozzáadott előnyökhöz.
 
 - **Használjon biztonságos cookie-t.** Beállítja az alkalmazásproxy-hozzáférési és munkamenet-cookie-k **biztonságos** jelölőjét. A beállítás bekapcsolása további biztonsági előnyöket biztosít, mivel a cookie-k továbbítása csak TLS-alapú biztonságos csatornákon keresztül történik (például HTTPS). Javasoljuk, hogy kapcsolja be ezt a jelzőt (válassza az **Igen**lehetőséget) a hozzáadott előnyökhöz.
 
@@ -2250,11 +2250,11 @@ További információ: [dinamikus csoport létrehozása és állapotának ellen�
 
 ---
 
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>A harmadik féltől származó alkalmazások egyszerűsített egyszeri bejelentkezési (SSO) konfigurációs beállításai
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Egyszerűsített egyszeri Sign-On (SSO) konfigurációs beállítások egyes harmadik féltől származó alkalmazásokhoz
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** vállalati alkalmazások **termék képesség:** SSO
 
-Tisztában vagyunk azzal, hogy az egyszeri bejelentkezés (SSO) a szolgáltatott szoftver (SaaS) alkalmazásokhoz való beállítása az egyes alkalmazások konfigurációjának egyedi jellege miatt kihívást jelenthet. A következő külső SaaS-alkalmazásokhoz készült SSO-konfigurációs beállítások automatikus feltöltéséhez készítettünk egy egyszerűsített konfigurációs élményt:
+Tisztában vagyunk azzal, hogy az egyes alkalmazások konfigurációjának egyedi jellegéből adódóan az egyszeri Sign-On (SSO) a szolgáltatott szoftver (SaaS) alkalmazásokhoz való beállítása kihívást jelenthet. A következő külső SaaS-alkalmazásokhoz készült SSO-konfigurációs beállítások automatikus feltöltéséhez készítettünk egy egyszerűsített konfigurációs élményt:
 
 - Zendesk
 
@@ -2323,7 +2323,7 @@ További információkért lásd:
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Új támogatás az önkiszolgáló jelszó-visszaállításhoz a Windows 7/8/8.1 zárolási képernyőjéről
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Új támogatás Self-Service jelszó visszaállításához a Windows 7/8/8.1 zárolási képernyőjéről
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** SSPR **termék funkció:** felhasználói hitelesítés
 
@@ -2361,7 +2361,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmaz
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** vállalati alkalmazások **termék képesség:** SSO
 
-Bevezetjük az új jogcím-átalakítási módszereket, ToLower () és ToUpper (), amelyek az SAML-tokenekre alkalmazhatók az SAML-alapú **egyszeri bejelentkezés konfigurációs** oldaláról.
+Bevezetjük az új jogcím-átalakítási módszereket, ToLower () és ToUpper (), amelyek az SAML-jogkivonatokra alkalmazhatók az SAML-alapú **önálló Sign-On konfiguráció** oldaláról.
 
 További információ: [az SAML-tokenben kiadott jogcímek testreszabása az Azure ad-ben nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md)
 
@@ -2431,7 +2431,7 @@ Ez egy nyilvános előzetes verzió. A rendszergazdák bekapcsolhatják az új f
 
 ---
 
-### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Új, csak HTTP-alapú cookie-k beállítása az Azure AD Application proxy-alkalmazásokban
+### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Új HTTP-Only cookie-k beállítása az Azure AD Application proxy-alkalmazásokban
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** app proxy **termék képesség:** Access Control
 
@@ -2439,7 +2439,7 @@ Létezik egy új beállítás, amely **csak HTTP-cookie-kat** használ az alkalm
 
 Ez a beállítás nem kompatibilis az olyan alkalmazásokkal, amelyek ActiveX-vezérlőket használnak, például Távoli asztal. Ha ebben a helyzetben van, javasoljuk, hogy kapcsolja ki ezt a beállítást.
 
-A csak HTTP-alapú cookie-k beállításával kapcsolatos további információkért lásd: [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-add-on-premises-application.md).
+További információ a HTTP-Only cookie-kra vonatkozó beállításról: [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-add-on-premises-application.md).
 
 ---
 
@@ -2607,7 +2607,7 @@ A Azure AD Connect legújabb kiadása a következőket tartalmazza:
 
 - Hibajavítások és támogatási frissítések
 
-- A ping-összevonása integráció általános elérhetősége
+- A Ping-Federate integrációjának általános elérhetősége
 
 - A legújabb SQL 2012-ügyfél frissítései
 
@@ -3359,8 +3359,8 @@ Az új parancsmagok a következők:
 - Get-AzureADApplicationProxyConnectorGroup
 - Get-AzureADApplicationProxyConnectorGroupMembers
 - Get-AzureADApplicationProxyConnectorMemberOf
-- Új – AzureADApplicationProxyApplication
-- Új – AzureADApplicationProxyConnectorGroup
+- New-AzureADApplicationProxyApplication
+- New-AzureADApplicationProxyConnectorGroup
 - Remove-AzureADApplicationProxyApplication
 - Remove-AzureADApplicationProxyApplicationConnectorGroup
 - Remove-AzureADApplicationProxyConnectorGroup
@@ -3382,15 +3382,15 @@ A AzureAD PowerShell-modul legújabb kiadása parancsmagokat tartalmaz a csoport
 A jelenleg általánosan elérhetővé tett csoport-parancsmagok a következők:
 
 - Get-AzureADMSGroup
-- Új – AzureADMSGroup
+- New-AzureADMSGroup
 - Remove-AzureADMSGroup
 - Set-AzureADMSGroup
 - Get-AzureADMSGroupLifecyclePolicy
-- Új – AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Alaphelyzetbe állítás – AzureADMSLifeCycleGroup
+- Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
 ---
@@ -3428,7 +3428,7 @@ Ez a kiadás a következő frissítésekkel és módosításokkal rendelkezik:
 
 - Az eszköz visszaírási-konfigurációs műveletei és egy folyamatjelző sáv lett hozzáadva az oldal inicializálásához.
 
-- Továbbfejlesztett általános diagnosztika HTML-jelentéssel és teljes adatgyűjtéssel egy ZIP-text/HTML-jelentésben.
+- Továbbfejlesztett általános diagnosztika a HTML-jelentéssel és a teljes adatgyűjtéssel egy ZIP-Text/HTML-jelentésben.
 
 - Az automatikus frissítés jobb megbízhatósága és további telemetria hozzáadása a kiszolgáló állapotának megállapításához.
 

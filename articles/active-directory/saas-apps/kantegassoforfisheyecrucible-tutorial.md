@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6742253ad815ab8058a9c05d82200e77d9d18a43
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546927"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Oktatóanyag: Azure Active Directory integráció a Kantega SSO-val a FishEye/tégelyek esetében
 
@@ -99,7 +99,7 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Kantega egyszeri bejelentkezés a halszem/tégelyek tartományhoz és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S A M L konfiguráció" szakaszt jeleníti meg az "azonosító" és a "válasz U R L" szövegmezőben, és a "Mentés" gomb van kiválasztva.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,43 +134,43 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 1. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
+    ![Képernyőfelvétel: a "fogaskerék" ikon és a "bővítmények" be van jelölve.](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
 1. A rendszerbeállítások szakaszban kattintson az **új bővítmények keresése**elemre. 
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
+    ![Képernyőfelvétel: a "rendszerbeállítások" szakasz, amely a "új bővítmények keresése" elemet mutatja.](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
 1. Keressen **KANTEGA SSO-t a tégelyekhez** , majd kattintson a **telepítés** gombra az új SAML beépülő modul telepítéséhez.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
+    ![Képernyőkép: a "Kantega S O for tégely" nevű "Attlasian Marketplace for FishEye" oldal, és a "telepítés" gomb kiválasztva.](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
 1. Elindul a beépülő modul telepítése. 
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
+    ![A beépülő modul "telepítés" párbeszédpanelét bemutató képernyőkép.](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
 1. A telepítés befejezését követően. Kattintson a **Bezárás** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
+    ![Képernyőkép, amely megjeleníti a "telepített és készen áll" párbeszédpanelt, és a "Bezárás" gomb van kiválasztva.](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
 1.  Kattintson a **Kezelés** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
+    ![Képernyőfelvétel: a "Kantega S S O for tégelyek" a "M L & Kerberos" alkalmazás lap és a "kezelés" gomb kiválasztva.](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
 1. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre. 
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
+    ![Képernyőkép a "felhasználó által telepített bővítmények" oldal és a "Konfigurálás" gomb kiválasztásáról.](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
 1. Az **SAML** szakaszban. Válassza az **Azure Active Directory (Azure ad)** elemet az **identitás-szolgáltató hozzáadása** legördülő listából.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
+    ![Képernyőfelvétel: az "add-ons-Kantega egyszeri bejelentkezés" oldal, amelyen az "Identity Provider hozzáadása" legördülő menü és a "Azure Active Directory (Azure AD)" lehetőség van kiválasztva. ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
 1. Válassza az előfizetési szint **alapszintű**lehetőséget.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
+    ![Képernyőkép: "alapszintű", "alapszintű", "az Azure A D" szakaszának előkészítése.](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
 1. Az **alkalmazás tulajdonságai** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
+    ![Képernyőfelvétel: az "alkalmazás tulajdonságai" szakasz az "app I D U R I" szövegmező és a másolás gomb kiválasztásával.](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
     a. Másolja az **alkalmazás-azonosító URI** -értékét, és használja **azonosítóként, válasz URL-címként és Sign-On URL-címként** a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
@@ -178,7 +178,7 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 1. A **Metaadatok importálása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
+    ![A "Metaadatok importálása" szakaszt a "metaadatok a számítógépen" elemre kiválasztva képernyőkép jelenik meg.](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
     a. Válassza ki a **metaadatokat a számítógépen**, és töltse fel a metaadat-fájlt, amelyet a Azure Portalról töltött le.
 
@@ -186,7 +186,7 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 1. A **név és az SSO hely** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
+    ![Képernyőfelvétel: a "név és S S O-hely" a "személyazonosság-szolgáltató neve" szövegmezővel és a "tovább" gomb kiválasztásával jelenik meg.](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
     a. Adja hozzá az Identitáskezelő nevét a **személyazonosság-szolgáltató neve** szövegmezőben (például Azure ad).
 
@@ -194,11 +194,11 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**gombra.   
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
+    ![Képernyőkép, amely az "aláírás-ellenőrzés" szakaszt és a "Next" gombot mutatja.](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
 1. A **halszem felhasználói fiókok** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
+    ![Képernyőkép, amely a "felhasználói fiókok létrehozása a FishEye belső könyvtárában" lehetőséget és a "Next" (tovább) gombot választja.](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
     a. Ha szükséges, válassza a **felhasználók létrehozása a FishEye belső könyvtárában** lehetőséget, és írja be a csoport megfelelő nevét a felhasználók számára (több nem lehet. a csoportok vesszővel elválasztva).
 
@@ -206,11 +206,11 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 1. Kattintson a **Finish** (Befejezés) gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
+    ![A "Befejezés" gomb kiválasztásával megjelenő "Summary" (összefoglalás) szakaszt bemutató képernyőkép.](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
 1. Az **Azure ad ismert tartományai** szakaszban hajtsa végre a következő lépéseket:  
 
-    ![Egyetlen Sign-On konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
+    ![A "Mentés" gomb kiválasztásával megjelenő képernyőkép, amely az "ismert tartományok az Azure A D számára" szakaszt jeleníti meg.](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
     a. Az oldal bal oldali paneljén válassza az **ismert tartományok** elemet.
 
@@ -240,7 +240,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -278,11 +278,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók a FishEye/tégelybe j
 
 1. Mutasson a fogaskerékre, majd kattintson a **felhasználók**elemre.
 
-    ![Alkalmazott hozzáadása](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
+    ![Képernyőkép, amely megjeleníti a "fogaskerék" ikont, a "felhasználók" lehetőséget pedig a legördülő listából.](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
 1. A **felhasználók** lap szakaszban kattintson a **felhasználó hozzáadása**elemre.
 
-    ![Alkalmazott hozzáadása](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
+    ![A "felhasználók" szakaszt tartalmazó képernyőkép, amely a "felhasználó hozzáadása" gomb kiválasztásával jelenik meg.](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
 1. Az **új felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 

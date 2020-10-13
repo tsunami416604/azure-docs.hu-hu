@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 948cf3c65dfdc912f2f807dfac34076985f1bc89
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449196"
 ---
 # <a name="routing-architecture-overview"></a>Útválasztási architektúra – áttekintés
@@ -41,6 +41,6 @@ Ha a bejárati ajtó megfelelt egy bejövő kérelem útválasztási szabályán
 ## <a name="forwarding-the-request-to-your-application-backend"></a>A kérelem továbbítása az alkalmazás-háttérbe
 Végül, ha a gyorsítótárazás nincs konfigurálva, a rendszer továbbítja a felhasználói kérelmet az [útválasztási módszer](front-door-routing-methods.md) konfigurációja alapján a "legjobb" háttérbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

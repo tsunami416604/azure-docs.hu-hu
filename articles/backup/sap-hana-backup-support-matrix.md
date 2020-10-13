@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és k
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: e3bfc5ab9a91ae3aee73d7ed24161acae60211ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ad68fcaaa820daca842d567ecd40f011df729f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022326"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946365"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
@@ -32,7 +32,7 @@ A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-
 | **HANA-adatbázis mérete**     | HANA-adatbázisok mérete <= 2 TB (ez nem a HANA-rendszerek memóriájának mérete)               |                                                              |
 | **Biztonsági másolatok típusai**           | Teljes, különbözeti és naplózott biztonsági másolatok                          | Növekményes, Pillanatképek                                       |
 | **Visszaállítási típusok**          | A támogatott visszaállítási típusokról a [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP HANA megjegyzésben tájékozódhat. |                                                              |
-| **Biztonsági mentési korlátok**          | Akár 2 TB teljes biztonsági mentési méret SAP HANA példányban         |                                                              |
+| **Biztonsági mentési korlátok**          | Akár 2 TB teljes biztonsági mentési méret SAP HANA példányban (Soft limit)         |                                                              |
 | **Speciális konfigurációk** |                                                              | SAP HANA + dinamikus rétegek <br>  Klónozás a láma használatával        |
 
 ------
@@ -45,7 +45,7 @@ A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-
 > [!NOTE]
 > Mostantól nyomon követheti a Azure Portal a HANA natív ügyfelektől (SAP HANA Studio/cockpit/DBA pilótafülke) indított [biztonsági mentési és visszaállítási](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) feladatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést SAP HANA Azure-beli virtuális gépeken futó adatbázisokról](./backup-azure-sap-hana-database.md)
 * Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](./sap-hana-db-restore.md)

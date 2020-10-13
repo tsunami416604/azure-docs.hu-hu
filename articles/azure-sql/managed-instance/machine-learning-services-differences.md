@@ -13,10 +13,10 @@ ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 05/27/2020
 ms.openlocfilehash: 9ff2de18042c466bdd8fa6c71194fff4286c820d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325096"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>A felügyelt Azure SQL-példányon és az SQL Serveren elérhető Machine Learning Services közötti fő eltérések
@@ -45,7 +45,7 @@ Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatj
 
   | Rendszer               | Python | R     |
   |----------------------|--------|-------|
-  | SQL Managed Instance | 3.7.1  | 3.5.2 |
+  | Felügyelt SQL-példány | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
 - Nincs szükség a-on keresztül történő konfigurálásra `external scripts enabled` `sp_configure` . Miután [regisztrált](machine-learning-services-overview.md#signup) az előzetes verzióra, a Machine learning engedélyezve van az Azure SQL felügyelt példányain.

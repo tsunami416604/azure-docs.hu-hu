@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370878"
+ms.locfileid: "91874832"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -260,6 +260,10 @@ Ha literális értékeket használ a csatlakoztatási feladatokban, vagy több e
 #### <a name="sorting-before-joins"></a>Rendezés az illesztések előtt
 
 Az egyesítési illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, az illesztési átalakítás nem kötelező egyesítő illesztési művelet. Az illesztési kulcsok nem igénylik a rendezést az átalakítás előtt. Az Azure Data Factory csapat nem javasolja a rendezési átalakítások használatát a leképezési adatfolyamatokban.
+
+### <a name="window-transformation-performance"></a>Ablak-átalakítási teljesítmény
+
+Az átalakítási beállításokban a záradék részeként kiválasztott oszlopokban az [Adatátalakítási](data-flow-window.md) adatbázis az adatmennyiséget adja meg érték szerint ```over()``` . Számos népszerű összesített és analitikai funkció érhető el a Windows átalakításban. Ha azonban a használati eset a teljes adatkészlethez tartozó ablak létrehozása a rangsor ```rank()``` vagy a sor számának céljára ```rowNumber()``` , ajánlott inkább a [rangsor átalakítását](data-flow-rank.md) és a [helyettesítő kulcs átalakítását](data-flow-surrogate-key.md)használni. Ezek az átalakítások a függvények használatával hatékonyabban fogják elvégezni a teljes adatkészlet-műveleteket.
 
 ### <a name="repartitioning-skewed-data"></a>Ferde adatpartíciók újraparticionálása
 

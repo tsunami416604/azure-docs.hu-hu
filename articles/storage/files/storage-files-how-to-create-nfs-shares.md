@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705231"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS-megosztás létrehozása
@@ -160,7 +160,7 @@ az storage share-rm create \
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy NFS-megosztást, a használatához csatlakoztatnia kell azt a Linux-ügyfélen. Részletekért lásd: [NFS-megosztás csatlakoztatása](storage-files-how-to-mount-nfs-shares.md).
 

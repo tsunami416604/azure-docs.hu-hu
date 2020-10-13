@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297358"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
@@ -64,7 +64,7 @@ A Azure Database Migration Service példány leállításakor a következő hiba
 
 | Ok         | Feloldás |
 | ------------- | ------------- |
-| Ez a hiba akkor jelenik meg, ha a leállítani próbált szolgáltatási példány olyan tevékenységeket tartalmaz, amelyek továbbra is futnak, vagy amelyek az áttelepítési projektekben szerepelnek. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek olyan tevékenységek, amelyek a leállítani kívánt Azure Database Migration Service példányán futnak. A szolgáltatás leállításának megkísérlése előtt törölheti a tevékenységeket vagy a projekteket is. Az alábbi lépések bemutatják, hogyan távolíthat el projekteket az áttelepítési szolgáltatás példányának tisztításához az összes futó feladat törlésével:<br>1. install-Module-Name AzureRM. DataMigration <br>2. bejelentkezés – AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -szolgáltatásnév \<serviceName> -DeleteRunningTask |
+| Ez a hiba akkor jelenik meg, ha a leállítani próbált szolgáltatási példány olyan tevékenységeket tartalmaz, amelyek továbbra is futnak, vagy amelyek az áttelepítési projektekben szerepelnek. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek olyan tevékenységek, amelyek a leállítani kívánt Azure Database Migration Service példányán futnak. A szolgáltatás leállításának megkísérlése előtt törölheti a tevékenységeket vagy a projekteket is. Az alábbi lépések bemutatják, hogyan távolíthat el projekteket az áttelepítési szolgáltatás példányának tisztításához az összes futó feladat törlésével:<br>1. Install-Module neve: AzureRM. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-név \<projectName> -ResourceGroupName \<rgName> -szolgáltatásnév \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Hiba történt a Azure Database Migration Service indításakor
 

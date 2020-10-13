@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: e9491757852b42faef40c107540e0ce3da3c7f99
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650901"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérdezése Azure Time Series Insights Gen2
@@ -24,7 +24,7 @@ Azure Time Series Insights Gen2 lehetővé teszi az adatok lekérdezését a kö
 A Azure Time Series Insights Gen2 három elsődleges API-kategória érhető el:
 
 * **Környezeti API**-k: ezek az API-k lehetővé teszik a Azure Time Series Insights Gen2-környezet lekérdezéseit. Ezek összegyűjthetők azon környezetek listáját, amelyekhez a hívó hozzáfér és környezeti metaadatokat használ.
-* **Idősorozat-modell – Query (TSM-Q) API-k**: lehetővé teszi a létrehozási, olvasási, frissítési és törlési (szifilisz) műveleteket a környezet idősorozat-modelljében tárolt metaadatokon. Ezek a példányok, típusok és hierarchiák eléréséhez és szerkesztéséhez használhatók.
+* **Time Series Model-Query (TSM-Q) API-k**: lehetővé teszi a létrehozási, olvasási, frissítési és törlési (szifilisz-) műveleteket a környezet idősorozat-modelljében tárolt metaadatokon. Ezek a példányok, típusok és hierarchiák eléréséhez és szerkesztéséhez használhatók.
 * **Idősorozat-lekérdezés (TSQ) API-k**: lehetővé teszi a telemetria és az események adatainak lekérését a forrás szolgáltató által rögzített módon, és lehetővé teszi a teljesítménybeli számítások és összesítések használatát az adatokhoz a speciális skaláris és összesítő függvények használatával.
 
 Azure Time Series Insights a Gen2 egy Rich string-alapú kifejezési nyelvet, [idősorozat-kifejezést (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)használ az [Idősorozat-változókhoz](./concepts-variables.md)tartozó számítások kifejezésére.
@@ -41,7 +41,7 @@ A következő alapvető API-k támogatottak.
 * [Környezetek rendelkezésre állási API-k beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): az események számának eloszlását adja vissza az esemény időbélyegén `$ts` . Ez az API segít meghatározni, hogy van-e olyan esemény a környezetben, amely az események számát időintervallumra bontva adja vissza, ha vannak ilyenek.
 * [Event Schema API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): egy adott keresési span esemény-séma metaadatainak beolvasása. Ez az API segít beolvasni a sémában elérhető összes metaadatot és tulajdonságot a megadott keresési tartományhoz.
 
-## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model – Query (TSM-Q) API-k
+## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model-Query (TSM-Q) API-k
 
 Ezen API-k többsége támogatja a Batch-végrehajtási műveletet, hogy több idősorozatos modell entitáson engedélyezze a Batch-SZIFILISZi műveleteket:
 

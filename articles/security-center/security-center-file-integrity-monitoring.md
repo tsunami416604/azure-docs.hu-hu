@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541169"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946093"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritásának figyelése Azure Security Center
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
@@ -29,28 +29,32 @@ Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FI
 |Szempont|Részletek|
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
-|Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
+|Árképzési|[Az Azure Defender kiszolgálót igényli a kiszolgálókhoz](defender-for-servers-introduction.md).<br>A FIM feltölti az adatokat a Log Analytics munkaterületre. Az adatforgalmi díjak a feltöltött adatok mennyiségétől függően érvényesek. További információkért tekintse meg a [log Analytics díjszabását](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Szükséges szerepkörök és engedélyek:|A **munkaterület tulajdonosa** engedélyezheti vagy letilthatja a FIM-t (További információ: [log Analytics Azure-szerepkörök](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>Az **olvasó** megtekintheti az eredményeket.|
-|Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov<br>![Nem ](./media/icons/no-icon.png) China gov, más gov<br>Csak olyan régiókban támogatott, ahol a Azure Automation Change Tracking megoldás elérhető.<br>Lásd: [a csatolt log Analytics munkaterület támogatott régiói](../automation/how-to/region-mappings.md).<br>[További információ a Change Tracking szolgáltatásról](../automation/change-tracking.md) |
+|Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov<br>![Nem ](./media/icons/no-icon.png) China gov, más gov<br>Csak olyan régiókban támogatott, ahol a Azure Automation Change Tracking megoldás elérhető.<br>Lásd: [a csatolt log Analytics munkaterület támogatott régiói](../automation/how-to/region-mappings.md).<br>[További információ a Change Tracking](../automation/change-tracking.md)szolgáltatásról.|
 |||
 
-
-
-
-
 ## <a name="what-is-fim-in-security-center"></a>Mi az a FIM in Security Center?
-A fájlok integritásának figyelése (FIM), más néven a változás figyelése, megvizsgálja az operációs rendszer, az alkalmazás szoftvere és mások által a támadásra utaló módosításokat. A rendszer összehasonlító módszert használ annak megállapítására, hogy a fájl aktuális állapota eltér-e a fájl legutóbbi vizsgálatával. Ezt az összehasonlítást kihasználva megállapíthatja, hogy érvényes vagy gyanús módosítások történtek-e a fájlokban.
+A fájlok integritásának figyelése (FIM), más néven változások figyelése, megvizsgálja az operációs rendszer fájljait, a Windows-nyilvántartásokat, az alkalmazás szoftvereit, a Linux rendszerfájlokat és egyebeket a támadásra utaló változásokhoz. 
 
-Security Center a fájl integritásának figyelése ellenőrzi a Windows-fájlok, a Windows-beállításjegyzék és a Linux-fájlok integritását. A FIM engedélyezésével kiválaszthatja a figyelni kívánt fájlokat. Security Center a FIM-mel rendelkező fájlokat figyeli a következő tevékenységekkel:
+Security Center azt javasolja, hogy az entitások a FIM használatával figyeljenek, és saját FIM-szabályzatokat vagy entitásokat is megadhat a figyeléshez. A FIM riasztást küld a gyanús tevékenységekről, például:
 
-- Fájl-és beállításjegyzék-létrehozás és-eltávolítás
+- Fájl-és beállításjegyzék-kulcs létrehozása vagy eltávolítása
 - Fájl módosításai (a fájlméret változásai, a hozzáférés-vezérlési listán és a tartalom kivonata)
 - Beállításjegyzék-módosítások (méret módosítása, hozzáférés-vezérlési listában, típus és tartalom)
 
-Security Center javasolja az entitások figyelését, amelyekkel egyszerűen engedélyezheti a FIM-t. Megadhatja saját FIM-házirendjeit vagy a figyelni kívánt entitásokat is. Ez az útmutató bemutatja, hogyan.
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
-> [!NOTE]
-> A Windows és Linux rendszerű számítógépek és virtuális gépek esetében a file Integrity monitoring (FIM) szolgáltatás működik, és csak akkor érhető el, ha az **Azure Defender for Servers** engedélyezve van. További információkért tekintse meg a [díjszabást](security-center-pricing.md) . A FIM feltölti az adatokat a Log Analytics munkaterületre. Az adatforgalmi díjak a feltöltött adatok mennyiségétől függően érvényesek. További információkért tekintse meg a [log Analytics díjszabását](https://azure.microsoft.com/pricing/details/log-analytics/) .
+> [!div class="checklist"]
+> * A FIM-vel figyelt javasolt entitások listájának áttekintése
+> * Saját, egyéni FIM-szabályok definiálása
+> * A figyelt entitások változásainak naplózása
+> * Használjon helyettesítő karaktereket a címtárak közötti nyomkövetés leegyszerűsítéséhez
+
+
+## <a name="how-does-fim-work"></a>Hogyan működik a FIM?
+
+Az elemek aktuális állapotának és az előző vizsgálat állapotának összehasonlításával a FIM riasztást küld, ha gyanús módosítások történnek.
 
 A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás**típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtési gyakoriság részleteivel kapcsolatban lásd az Azure Change Trackingre vonatkozó [változáskövetési adatgyűjtés részleteit](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
@@ -58,11 +62,11 @@ A FIM az Azure Change Tracking megoldást használja a környezet változásaina
 > Ha eltávolítja a **change Tracking** -erőforrást, a Security Center a fájl sértetlenségének figyelése funkciót is letiltja.
 
 ## <a name="which-files-should-i-monitor"></a>Mely fájlokat kell figyelni?
-Gondolja át a rendszer és az alkalmazások szempontjából kritikus fontosságú fájlokat a figyelni kívánt fájlok kiválasztásakor. Érdemes lehet olyan fájlokat választania, amelyeket nem várható a tervezés nélkül módosítani. Az alkalmazások vagy az operációs rendszer által gyakran módosított fájlok (például a naplófájlok és szövegfájlok) kiválasztásával nagy mennyiségű zaj hozható létre, ami megnehezíti a támadás azonosítását.
+A figyelni kívánt fájlok kiválasztásakor vegye figyelembe, hogy mely fájlok kritikus fontosságúak a rendszer és az alkalmazások számára. Figyelje azokat a fájlokat, amelyeket nem várható a tervezés nélkül módosítani. Ha az alkalmazások vagy az operációs rendszer által gyakran módosított fájlokat (például a naplófájlokat és a szövegfájlokat) választja, nagy mennyiségű zajt hoz létre, ami megnehezíti a támadás azonosítását.
 
-A Security Center az alábbi, az ismert támadási minták alapján figyelt elemek listáját tartalmazza. Ezek közé tartoznak a fájlok és a Windows-beállításkulcsok. A kulcsok az HKEY_LOCAL_MACHINE (HKLM) alatt találhatók a táblában.)
+A Security Center az alábbi, az ismert támadási minták alapján figyelt elemek listáját tartalmazza.
 
-|**Linux-fájlok**|**Windows-fájlok**|**Windows-beállításkulcsok**|
+|Linux-fájlok|Windows-fájlok|Windows-beállításkulcsok (HKLM = HKEY_LOCAL_MACHINE)|
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
@@ -96,6 +100,8 @@ A Security Center az alábbi, az ismert támadási minták alapján figyelt elem
 
 
 ## <a name="enable-file-integrity-monitoring"></a>A fájlok integritásának figyelésének engedélyezése 
+
+A FIM csak a Azure Portal Security Center lapjairól érhető el. A FIM használata jelenleg nem REST API.
 
 1. Az **Azure Defender** irányítópultjának **speciális védelmi** területén válassza a **fájl integritásának figyelése**elemet.
 
@@ -251,7 +257,7 @@ A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a körny
 
 4. A letiltáshoz válassza az **Eltávolítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figyelését (FIM) a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Biztonsági házirendek beállítása](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.

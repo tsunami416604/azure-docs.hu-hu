@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
 ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653553"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
 A Mv2 sorozat nagy átviteli sebességű, kis késleltetésű platformot használ egy Hyper-threaded Intel® Xeon® Platinum 8180M 2.5 GHz-es (Skylake) processzoron, amely a 2,5 GHz-es és a max. 3,8 GHz-es maximális Turbo-gyakorisággal rendelkezik. A Mv2 sorozatú virtuálisgép-méretek standard és prémium szintű állandó lemezeket is használhatnak. A Mv2 sorozat példányai a memóriára optimalizált virtuálisgép-méretek, amelyek páratlan számítási teljesítményt biztosítanak a nagy memóriában lévő adatbázisok és munkaterhelések támogatásához, és magas memória-CPU aránnyal rendelkeznek, amely ideális a kapcsolódó adatbázis-kiszolgálók, a nagyméretű gyorsítótárak és a memóriabeli elemzések számára.
 
-A Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
+Az Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
 
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>

@@ -4,10 +4,10 @@ description: A Azure Migrate készülék támogatásának összegzését tartalm
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450046"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
@@ -84,7 +84,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Támogatott központi telepítés** | Telepítsen dedikált fizikai gépet vagy virtuális gépet egy PowerShell telepítési parancsfájl használatával. A szkript letölthető a portálról.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felderítési korlátok** | A berendezések akár 1000 fizikai kiszolgálót is felfedezhetnek.
-**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller.ps1) egy tömörített mappában a portálról, vagy [innen.](https://go.microsoft.com/fwlink/?linkid=2140334) [További információ](tutorial-discover-physical.md).<br/><br/> A letöltési méret 85,8 MB.
+**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller.ps1) egy tömörített mappában a portálról, vagy [innen.](https://go.microsoft.com/fwlink/?linkid=2140334) [További információk](tutorial-discover-physical.md).<br/><br/> A letöltési méret 85,8 MB.
 **Szoftver/hardver** |  A készüléknek a gépen kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolással.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.<br/>_(Jelenleg a készülék központi telepítése csak Windows Server 2016 rendszeren támogatott.)_
 **Kivonat értéke** | [Ellenőrizze](tutorial-discover-physical.md#verify-security) a PowerShell-parancsfájl kivonatának értékeit.
 
@@ -180,7 +180,7 @@ IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Név | tároló. GetType (). név
+Name (Név) | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
@@ -227,7 +227,7 @@ Itt találja azokat a funkciókat, amelyeket a készülék az alkalmazások feld
 
 **Adatok**  | **PowerShell-parancsmag** | **Tulajdonság**
 --- | --- | ---
-Név  | Get-WindowsFeature  | Név
+Name (Név)  | Get-WindowsFeature  | Name (Név)
 Szolgáltatás típusa | Get-WindowsFeature  | FeatureType
 Szülő  | Get-WindowsFeature  | Szülő
 
@@ -237,7 +237,7 @@ Itt találja azokat az SQL Server-metaadatokat, amelyeket a készülék a Micros
 
 **Adatok**  | **Beállításjegyzékbeli hely**  | **Kulcs**
 --- | --- | ---
-Név  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
+Name (Név)  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
 Kiadás  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Kiadás 
 Szervizcsomag  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verzió  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verzió 
@@ -248,7 +248,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 Adatok  | WMI-osztály  | WMI-osztály tulajdonsága
 --- | --- | ---
-Név  | Win32_operatingsystem  | Képaláírás
+Name (Név)  | Win32_operatingsystem  | Képaláírás
 Verzió  | Win32_operatingsystem  | Verzió
 Architektúra  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Itt láthatók a telepített alkalmazásadatok, amelyeket a készülék az alkal
 
 Adatok  | Parancs
 --- | --- 
-Név | RPM, dpkg-Query, Snap
+Name (Név) | RPM, dpkg-Query, Snap
 Verzió | RPM, dpkg-Query, Snap
 Szolgáltató | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 **Adatok**  | **Parancs** 
 --- | --- | ---
-Név <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name (Név) <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektúra | uname
 
 
@@ -454,7 +454,7 @@ A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynö
 ### <a name="turn-off-auto-update"></a>Automatikus frissítés kikapcsolása
 
 1. A készüléket futtató gépen nyissa meg a beállításszerkesztőt.
-2. Navigáljon **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**.
+2. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Az automatikus frissítés kikapcsolásához hozzon létre egy, a 0 DWORD értékű beállításkulcs- **frissítési** kulcsot.
 
     ![Beállításkulcs beállítása](./media/migrate-appliance/registry-key.png)
@@ -464,13 +464,13 @@ A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynö
 
 Az automatikus frissítés bekapcsolható a következő módszerek bármelyikével:
 
-- Az AutoUpdate beállításkulcs törlésével HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance.
+- Az AutoUpdate beállításkulcs HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureApplianceból való törlésével.
 - Az automatikus frissítés bekapcsolásához kattintson a **berendezések megtekintése** lehetőségre a legújabb frissítési ellenőrzésekben az **Előfeltételek beállítása** panelen.
 
 A beállításkulcs törlése:
 
 1. A készüléket futtató gépen nyissa meg a beállításszerkesztőt.
-2. Navigáljon **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**.
+2. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Törölje az **automatikus frissítés**kikapcsolásához korábban létrehozott beállításkulcsot.
 
 A berendezés Configuration Manager bekapcsolásához a felderítés befejezése után:
@@ -522,7 +522,7 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a készüléket a VMware rendszerhez.
 - [Ismerje meg, hogyan](how-to-set-up-appliance-hyper-v.md) állíthatja be a készüléket a Hyper-V-hez.

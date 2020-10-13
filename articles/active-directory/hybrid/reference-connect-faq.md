@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90014633"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
@@ -32,7 +32,7 @@ A Microsoft azt javasolja, hogy a Azure AD Connect kiszolgáló megerősítse a 
 
 * Azure AD Connect üzembe helyezése egy tartományhoz csatlakoztatott kiszolgálón, és a rendszergazdai hozzáférés korlátozása a tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok számára
 
-További tudnivalókért lásd: 
+További információ: 
 
 * [Rendszergazdák csoportok biztonságossá tétele](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 

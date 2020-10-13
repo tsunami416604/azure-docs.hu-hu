@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324144"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz
@@ -68,9 +68,9 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Nincsenek | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |

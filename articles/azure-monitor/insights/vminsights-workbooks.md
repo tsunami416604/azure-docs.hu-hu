@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449786"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
@@ -240,7 +240,7 @@ Egy munkafüzetre mutató hivatkozás rögzítése egy Azure-irányítópulton:
 2. Kattintson a "..." a rögzíteni kívánt munkafüzet melletti gomb
 3. Kattintson **a rögzítés az irányítópulton**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A korlátozások és a virtuális gépek teljes teljesítményének azonosításához lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
 

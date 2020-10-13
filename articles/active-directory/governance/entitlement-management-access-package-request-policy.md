@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449977"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek beállításainak módosítása az Azure AD-jogosultságok kezelésében
@@ -39,7 +39,7 @@ Például egyetlen házirend nem használható belső és külső felhasználók
 
 ### <a name="how-many-policies-will-i-need"></a>Hány házirendre van szükségem?
 
-| Használati eset | Szabályzatok száma |
+| Forgatókönyv | Szabályzatok száma |
 | --- | --- |
 | Szeretném, hogy a címtárban lévő összes felhasználó ugyanazzal a kéréssel és jóváhagyási beállításokkal rendelkezzen a hozzáférési csomaghoz | Eggyel |
 | Azt szeretném, hogy az egyes csatlakoztatott szervezetek összes felhasználója hozzáférhessen egy hozzáférési csomag igényléséhez | Eggyel |
@@ -204,7 +204,7 @@ Egy hozzáférési csomag kérésének és jóváhagyási beállításainak mód
 
 1. Ha szerkeszt egy házirendet, kattintson a **frissítés**gombra. Ha új szabályzatot ad hozzá, kattintson a **Létrehozás**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag jóváhagyási beállításainak módosítása](entitlement-management-access-package-approval-policy.md)
 - [Hozzáférési csomag életciklus-beállításainak módosítása](entitlement-management-access-package-lifecycle-policy.md)

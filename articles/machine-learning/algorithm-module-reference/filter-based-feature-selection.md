@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893801"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945702"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
 
@@ -90,8 +90,14 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
 
     - Ha kevesebb eredményt ad meg, mint a szolgáltatások oszlopai, a szolgáltatások csökkenő pontszám szerint vannak rangsorolva. A rendszer csak a legfontosabb funkciókat adja vissza. 
 
-7.  Küldje el a folyamatot, vagy válassza ki a szűrésen alapuló funkció kiválasztási modulját, majd válassza a **kijelölt futtatása**lehetőséget.
+7.  A folyamat elküldése.
 
+> [!IMPORTANT]
+> Ha a lekérdezésen **alapuló funkció kiválasztását** fogja használni a következtetésben, akkor az [Oszlopok kiválasztása átalakítót](./select-columns-transform.md) kell használnia a szolgáltatás kiválasztott eredményének tárolására, és az [átalakítás alkalmazásával](./apply-transformation.md) alkalmaznia kell a szolgáltatás kiválasztott átalakítását a pontozási adatkészletre.
+>
+> A folyamat létrehozásához tekintse meg a következő képernyőképet, amely biztosítja, hogy az Oszlopok kiválasztása azonos legyen a pontozási eljáráshoz.
+> [!div class="mx-imgBorder"]
+> ![Mintavételezési folyamat](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Results (Eredmények)
 
@@ -133,7 +139,7 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 -   Ha egy szolgáltatásként kijelölt oszlop minden hiányzó értékkel rendelkezik, a modul nulla pontszámot rendel hozzá.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

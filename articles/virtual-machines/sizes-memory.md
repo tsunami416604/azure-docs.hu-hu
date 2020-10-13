@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ea58eeac5a77f2e1eaf2a7756de6d36a3fc0626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f18f830b690acdca67058da6ed6a0907406e66c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825497"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945967"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Memória-optimalizált virtuális gépek méretei
 
@@ -36,7 +36,7 @@ A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt k
 
 - A [Ev4 és a Esv4 sorozat](ev4-esv4-series.md) a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokat futtatja egy Hyper-threaded konfigurációban, ideális választás a különböző, nagy mennyiségű, nagyvállalati alkalmazások számára, és akár 504 GIB RAM-ot is tartalmaz. Az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)funkciókkal rendelkezik. A Ev4 és a Esv4 sorozat nem tartalmaz helyi Temp lemezt. További információkért tekintse meg a  [helyi Temp Disk nélküli Azure](azure-vms-no-temp-disk.md)-beli virtuális gépek méretét.
 
-- A [Edv4 és a Edsv4 sorozat](edv4-edsv4-series.md) a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut, ideális a rendkívül nagy méretű adatbázisokhoz vagy más alkalmazásokhoz, amelyek nagy vCPU számítanak és nagy mennyiségű memóriát foglalnak magukban. Emellett ezek a virtuálisgép-méretek gyors és nagyobb helyi SSD-tárolót tartalmaznak olyan alkalmazások esetében, amelyek alacsony késésű, nagy sebességű helyi tárterületet foglalnak magukban. A szolgáltatás az összes 3,4 GHz-es, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading technológia](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)számára fenntartott, teljes körű órajelet tartalmaz.
+- A [Edv4 és a Edsv4 sorozat](edv4-edsv4-series.md) a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut, ideális a rendkívül nagy méretű adatbázisokhoz vagy más alkalmazásokhoz, amelyek nagy vCPU számítanak és nagy mennyiségű memóriát foglalnak magukban. Emellett ezek a virtuálisgép-méretek gyors és nagyobb helyi SSD-tárolót tartalmaznak olyan alkalmazások esetében, amelyek alacsony késésű, nagy sebességű helyi tárterületet foglalnak magukban. A szolgáltatás a 3,4 GHz-es és az Intel [ &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading technológia](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)minden alapvető Turbo órajelét tartalmazza.
 
 - Az [M sorozat](m-series.md) magas vCPU (akár 128 vCPU) és nagy mennyiségű memóriát (legfeljebb 3,8 TiB) kínál. Emellett ideális a rendkívül nagy méretű adatbázisok vagy más alkalmazások számára, amelyek nagy vCPU és nagy mennyiségű memóriát foglalnak magukban.
 
@@ -53,7 +53,7 @@ Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amely
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
 

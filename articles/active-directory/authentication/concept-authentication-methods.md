@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ae0e0d312aa9a959b114d576f887bfa5072f49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965505"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -58,16 +58,16 @@ Egyes hitelesítési módszerek elsődleges tényezőként használhatók egy al
 
 A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszert használni a bejelentkezési esemény során:
 
-| Módszer                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
+| Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| Vállalati Windows Hello     | Igen                    | MFA                       |
+| Vállalati Windows Hello     | Yes                    | MFA                       |
 | A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
-| FIDO2 biztonsági kulcs (előzetes verzió)   | Igen                    | MFA                       |
-| A hardver-tokenek ESKÜje (előzetes verzió) | Nem                     | MFA                       |
-| Az eskü szoftver jogkivonatai           | Nem                     | MFA                       |
+| FIDO2 biztonsági kulcs (előzetes verzió)   | Yes                    | MFA                       |
+| A hardver-tokenek ESKÜje (előzetes verzió) | No                     | MFA                       |
+| Az eskü szoftver jogkivonatai           | No                     | MFA                       |
 | SMS                            | Igen (előzetes verzió)          | MFA és SSPR              |
-| Hanghívás                     | Nem                     | MFA és SSPR              |
-| Jelszó                       | Igen                    |                           |
+| Hanghívás                     | No                     | MFA és SSPR              |
+| Jelszó                       | Yes                    |                           |
 
 Az összes hitelesítési módszer konfigurálható a Azure Portalban, és egyre inkább a [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)használatával.
 

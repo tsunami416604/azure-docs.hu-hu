@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544196"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Oktatóanyag: Azure Active Directory integráció a HackerOne
 
@@ -126,11 +126,11 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
 2. A felső menüben kattintson a **Beállítások**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![Képernyőfelvétel: a menüben kiválasztott beállítások.](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. Navigáljon a **hitelesítéshez** , és kattintson az **SAML-beállítások hozzáadása**lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![A "hitelesítési beállítások" oldalt megjelenítő képernyőkép, amely a "S A M. L-beállítások hozzáadása" gombot jeleníti meg.](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. Az **SAML-beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
 5. A hitelesítési beállítások párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![A "hitelesítési beállítások" párbeszédpanelt a "futtatási teszt" gomb kiválasztásával ábrázoló képernyőkép.](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. Kattintson a **teszt futtatása**gombra.
 
@@ -181,7 +181,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

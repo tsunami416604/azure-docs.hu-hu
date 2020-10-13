@@ -12,10 +12,10 @@ ms.date: 09/28/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
 ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665412"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services tárolók
@@ -56,7 +56,7 @@ Cognitive Services erőforrások elérhetők [Microsoft Azureon](https://azure.m
 
 Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosítják, amelyek mindegyike az Azure-beli szolgáltatások funkcióinak egy részhalmazát tartalmazza Cognitive Services:
 
-| Szolgáltatás | Támogatott árképzési szintek | Tároló | Description |
+| Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
 |--|--|--|--|
 | [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Olvasás** OCR ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található.<br>[Hozzáférés kérése][request-access] |
@@ -80,10 +80,10 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánlati**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás-kulcsokat. Egyetlen Cognitive Services is létrehozhat egy teljes körű erőforrást, és ugyanazt a számlázási kulcsot használhatja a támogatott szolgáltatások között a következő szolgáltatásokhoz:
 
-* Computer Vision
-* Face
+* Számítógépes látástechnológia
+* Arcfelismerés
 * LUIS
-* Text Analytics
+* Szövegelemzés
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 

@@ -12,10 +12,10 @@ ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18, devx-track-azurecli
 ms.openlocfilehash: c43a18f1dcb4122eb6c1407ca11b7c60653594c4
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89323191"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Felügyelt lemez exportálása/másolása egy Storage-fiókba az Azure CLI használatával
@@ -41,7 +41,7 @@ A szkript a következő parancsokat használja egy felügyelt lemez SAS URI-azon
 | [az disk grant-access](/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | Létrehoz egy írásvédett SAS-t, amelynek használatával a mögöttes VHD-fájl átmásolható egy tárfiókba, vagy letölthető a helyszíni rendszerre  |
 | [az storage blob copy start](/cli/azure/storage/blob/copy) | Aszinkron módon átmásol egy blobot egy tárfiókból egy másikba. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felügyelt lemez létrehozása VHD-ből](virtual-machines-cli-sample-create-managed-disk-from-vhd.md)
 

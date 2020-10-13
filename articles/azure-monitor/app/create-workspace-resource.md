@@ -2,13 +2,13 @@
 title: Új Azure Monitor Application Insights munkaterület-alapú erőforrás létrehozása | Microsoft Docs
 description: Ismerkedjen meg az új Azure Monitor Application Insights munkaterület-alapú erőforrások engedélyezéséhez szükséges lépésekkel.
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 29fa9f1dc401ac4132d9c6c0d8c054b3f4a154ac
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932430"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945413"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások
 
@@ -205,7 +205,11 @@ A Application Insights erőforrás ablaktáblán válassza a **Tulajdonságok** 
 
 A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-alapú erőforrások esetében. Ehelyett válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás** lehetőséget a Application Insights erőforráson belül. Kiválaszthatja az összes táblát vagy a táblák egy részhalmazát, hogy archiválja a Storage-fiókba, vagy egy Azure Event hub-ba továbbítson.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> A telemetria-exportáláshoz jelenleg nem számítunk fel további díjakat. A szolgáltatás díjszabási információi a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)érhetők el.  A számlázás megkezdése előtt a rendszer értesítést küld. Ha úgy dönt, hogy továbbra is használja <feature name> a hirdetményt, akkor a megfelelő díjszabás alapján számítjuk fel a díjat. 
+ 
+
+## <a name="next-steps"></a>További lépések
 
 * [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)

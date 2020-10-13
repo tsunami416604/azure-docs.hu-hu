@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e70586fc2000e90b00d06d16bf5ba8df0bf5442f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761328"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944982"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Gyors útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play-eszköz (Java) használata
 
@@ -76,7 +76,7 @@ A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóan
 Ebben a rövid útmutatóban egy Java-ban írt minta IoT-megoldást használ, amely az imént beállított minta eszközzel kommunikál.
 
 > [!NOTE]
-> Ez a példa a **com. microsoft. Azure. SDK. IOT. Service. *;** névteret használja a **IoT hub szolgáltatás ügyfelétől**. A modell AZONOSÍTÓjának beolvasásával kapcsolatos további tudnivalókért tekintse meg a [fejlesztői útmutató](concepts-developer-guide-service.md)című témakört.
+> Ez a példa a **com. microsoft. Azure. SDK. IOT. Service** névteret használja a **IoT hub szolgáltatás ügyfelétől**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
 
 1. Nyisson meg egy másik Terminálablak **szolgáltatást a szolgáltatás** -terminálként való használatra.
 
@@ -88,7 +88,7 @@ Ebben a rövid útmutatóban egy Java-ban írt minta IoT-megoldást használ, am
     mvm exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.service.Thermostat"
     ```
 
-### <a name="get-digital-twin"></a>Digitális dupla Letöltés
+### <a name="get-device-twin"></a>Eszköz dupla beolvasása
 
 A következő kódrészlet bemutatja, hogyan kérhető le a szolgáltatásban a Twin eszköz:
 
@@ -99,9 +99,9 @@ twinClient.getTwin(twin);
 System.out.println("Model Id of this Twin is: " + twin.getModelId());
 ```
 
-### <a name="update-a-digital-twin"></a>Digitális iker frissítése
+### <a name="update-a-device-twin"></a>Eszköz kettős frissítése
 
-A következő kódrészletből megtudhatja, hogyan használhatja a *javítást* a tulajdonságok frissítéséhez a digitális Twin használatával:
+A következő kódrészletből megtudhatja, hogyan használhatja a *javítást* a tulajdonságok frissítéséhez az eszköz Twin:
 
 ```java
 String propertyName = "targetTemperature";
@@ -137,7 +137,7 @@ System.out.println("Method result status is: " + result.getStatus());
 
 Az eszköz kimenete azt mutatja, hogy az eszköz hogyan válaszol erre a parancsra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906840"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945447"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -210,6 +210,8 @@ Ha a Spring boot 2,1-et használja, vegye fel a következő dependenciy a pom.xm
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Ne adja meg `server.port` a konfigurációt. Az Azure Spring Cloud ezt a beállítást egy rögzített Overide fogja beállítani. Vegye figyelembe ezt a beállítást is, és ne adja meg a kiszolgáló portját a kódban.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Egyéb ajánlott függőségek az Azure Spring Cloud funkcióinak engedélyezéséhez
 
@@ -227,6 +229,7 @@ A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának haszn
 ```
 
 A szolgáltatás beállításjegyzék-kiszolgálójának végpontját a rendszer automatikusan környezeti változóként adja meg az alkalmazásban. Az alkalmazások regisztrálhatják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient jegyzet
 
@@ -308,7 +311,7 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

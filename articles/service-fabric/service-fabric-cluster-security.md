@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatók�
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261073"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946195"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
 
@@ -134,7 +134,7 @@ A biztonságos fürtök létrehozásának koncepciója ugyanaz, függetlenül at
 
 ### <a name="client-authentication-certificates-optional"></a>Ügyfél-hitelesítési tanúsítványok (nem kötelező)
 
-A rendszergazda vagy a felhasználói ügyfél műveleteihez tetszőleges számú további tanúsítvány is megadható. Az ügyfél akkor használhatja ezt a tanúsítványt, ha kölcsönös hitelesítésre van szükség. Az ügyféltanúsítványok általában nem harmadik féltől származó HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítványok. Ehelyett az aktuális felhasználói hely személyes tárolója általában tartalmaz egy legfelső szintű hitelesítésszolgáltató által elhelyezett ügyféltanúsítványt. A tanúsítványnak az **ügyfél-hitelesítés** **kívánt céljának** kell lennie.  
+A rendszergazda vagy a felhasználói ügyfél műveleteihez tetszőleges számú további tanúsítvány is megadható. Az ügyfél használhatja ezeket a tanúsítványokat, ha kölcsönös hitelesítésre van szükség. Az ügyféltanúsítványok általában nem harmadik féltől származó HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítványok. Ehelyett az aktuális felhasználói hely személyes tárolója általában tartalmaz egy legfelső szintű hitelesítésszolgáltató által elhelyezett ügyféltanúsítványt. A tanúsítványnak az **ügyfél-hitelesítés** **kívánt céljának** kell lennie.  
 
 Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokkal rendelkezik. Ezek a további Ügyféltanúsítványok nem telepíthetők a fürtbe, de a fürt konfigurációjában engedélyezettként vannak megadva.  Az ügyféltanúsítványt azonban telepíteni kell az ügyfélszámítógépekre a fürthöz való kapcsolódáshoz és a műveletek elvégzéséhez.
 

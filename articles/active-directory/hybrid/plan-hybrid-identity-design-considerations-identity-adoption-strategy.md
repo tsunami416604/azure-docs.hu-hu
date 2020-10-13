@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294867"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Hibrid identitás-bevezetési stratégia definiálása
@@ -82,7 +82,7 @@ A használt stratégia a felhasználó bejelentkezési élményét fogja diktál
 
 Ha az 1. feladatból azt állapította meg, hogy rendelkezik harmadik féltől származó identitásszolgáltató, vagy az egyiket fogja használni az Azure AD-vel való összevonás biztosításához, akkor a következő támogatott képességekre van szüksége:
 
-* Az SP-Lite-profilnak megfelelő SAML 2,0-szolgáltatók támogatják az Azure AD-hez és a kapcsolódó alkalmazásokhoz való hitelesítést.
+* A SP-Lite profilnak megfelelő SAML 2,0-szolgáltatók támogatják az Azure AD-hez és a kapcsolódó alkalmazásokhoz való hitelesítést.
 * Támogatja a passzív hitelesítést, amely megkönnyíti az OWA, a Spongya stb. hitelesítését.
 * Az Exchange Online-ügyfelek a SAML 2,0 bővített ügyféloldali profil (ECP) használatával támogatottak
 
