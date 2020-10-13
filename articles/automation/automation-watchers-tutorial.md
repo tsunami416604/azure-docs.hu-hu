@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185653"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Frissített fájlok követése figyelő feladattal
@@ -64,7 +64,7 @@ Ezt a runbook a portál Automation-fiókjába is importálhatja a következő l�
 Az [Automation változó](./shared-resources/variables.md) az előző runbook által beolvasott és az egyes fájlokban tárolt időbélyegek tárolására szolgál.
 
 1. Válasszon **változókat** a **megosztott erőforrások** területen, majd kattintson **a + változó hozzáadása**lehetőségre.
-1. Adja meg a NewFileTimestamp nevet a név mezőben.
+1. Adja meg Watch-NewFileTimestamp nevét.
 1. A típushoz válassza a DateTime értéket.
 1. Az Automation-változó létrehozásához kattintson a **Létrehozás** gombra.
 

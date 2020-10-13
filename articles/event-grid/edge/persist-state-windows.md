@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171465"
 ---
 # <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
@@ -35,7 +35,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Példa:
+    Például:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -46,7 +46,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Példa:
+    Például:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -77,7 +77,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     1. A *Felhasználók engedélyei*területen válassza a **módosítás**lehetőséget, majd kattintson **az OK gombra**.
 1. **Kötések** használata a kötet csatlakoztatásához és Event Grid modul újbóli üzembe helyezéséhez Azure Portal
 
-   Példa:
+   Például:
 
     ```json
         {
@@ -113,7 +113,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
    >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C: \\ app \\ metadataDb**.
 
 
-    Példa:
+    Például:
 
     ```json
     {
@@ -156,7 +156,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
    mkdir <your-directory-name-here>
    ```
 
-   Példa:
+   Például:
 
    ```sh
    mkdir C:\myhostdir
@@ -176,7 +176,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
     >[!IMPORTANT]
     >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C: \\ app \\ metadataDb**.
 
-    Példa:
+    Például:
 
     ```json
     {

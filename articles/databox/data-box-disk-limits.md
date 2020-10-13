@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203511"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
@@ -84,7 +84,7 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 | Entitás                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tárolók nevei a blob és az oldal blobja számára <br> Azure Files fájlmegosztás neve | Érvényes DNS-névnek kell lennie, amely 3 – 63 karakter hosszú lehet. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
-| Az Azure Files címtár-és fájlnevei     |<li> Kis-és nagybetűket megőrző, kis-és nagybetűk megkülönböztetése, és legfeljebb 255 karakter hosszú lehet. </li><li> A perjel (/) nem végződhet. </li><li>Ha meg van adni, a rendszer automatikusan eltávolítja. </li><li> A következő karakterek nem engedélyezettek:<code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> A nem engedélyezett URL-címek elérési útja nem megengedett. \\A kódok, például a uE000 nem érvényes Unicode-karakterek. Bizonyos ASCII-vagy Unicode-karakterek, például a vezérlési karakterek (kell lennie 0x00 – 0x1F, \\ u0081 stb.) nem engedélyezettek. A Unicode karakterláncokat a HTTP/1.1-es verzióra vonatkozó szabályoknál lásd: RFC 2616, 2,2. szakasz, alapszintű szabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, dot Character (.), és két pont (...).</li>|
+| Az Azure Files címtár-és fájlnevei     |<li> Kis-és nagybetűket megőrző, kis-és nagybetűk megkülönböztetése, és legfeljebb 255 karakter hosszú lehet. </li><li> A perjel (/) nem végződhet. </li><li>Ha meg van adni, a rendszer automatikusan eltávolítja. </li><li> A következő karakterek nem engedélyezettek: <code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> A nem engedélyezett URL-címek elérési útja nem megengedett. \\A kódok, például a uE000 nem érvényes Unicode-karakterek. Bizonyos ASCII-vagy Unicode-karakterek, például a vezérlési karakterek (kell lennie 0x00 – 0x1F, \\ u0081 stb.) nem engedélyezettek. A Unicode karakterláncokat a HTTP/1.1-es verzióra vonatkozó szabályoknál lásd: RFC 2616, 2,2. szakasz, alapszintű szabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, dot Character (.), és két pont (...).</li>|
 | Blobnevek blokkblob és lapblob esetén      | A blobnevek megkülönböztetik a kis- és nagybetűket, illetve bármilyen karakterkombinációt tartalmazhatnak <br> A blob nevének 1–1024 karakter hosszúságúnak kell lennie. <br> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. <br>A blob nevét alkotó részleges útvonalak száma legfeljebb 254 lehet. A részleges útvonalak két elválasztókarakter (pl. a perjel „/”) közötti sztringek, amelyek megegyeznek egy virtuális könyvtár nevével. |
 
 ## <a name="managed-disk-naming-conventions"></a>Felügyelt lemez elnevezési konvenciói

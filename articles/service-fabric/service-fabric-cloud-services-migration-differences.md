@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836734"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Ismerkedjen meg Cloud Services és Service Fabric közötti különbségekkel az alkalmazások áttelepítése előtt.
@@ -91,7 +91,7 @@ Ugyanez a kommunikációs modell használható Service Fabricban. Ez akkor lehet
 | RoleInstance. GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | Szűrés a csomópontnév, és a frissítési tulajdonság használata |
 | RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationContext vagy Naming (ResolveService) | CodePackageActivationContext, amelyet a FabricRuntime. GetActivationContext és a replikák a ServiceInitializationParameters. CodePackageActivationContext használatával biztosítanak. Inicializálása |
 | RoleEnvironment.GetRoles | FabricClient. QueryManager. GetNodeList | Ha ugyanazokat a szűrési típust szeretné elvégezni, a FabricClient. ClusterManager. GetClusterManifest használatával lekérheti a csomópont-típusok listáját a fürt jegyzékfájljában. |
-| RoleEnvironment.GetIsAvailable | Kapcsolódás – WindowsFabricCluster vagy egy adott csomópontra mutató FabricRuntime létrehozása | * |
+| RoleEnvironment.GetIsAvailable | Egy adott csomópontra mutató FabricRuntime Connect-WindowsFabricCluster vagy létrehozása | * |
 | RoleEnvironment.GetLocalResource | CodePackageActivationContext. log/Temp/Work | * |
 | RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext. log/Temp/Work | * |
 | LocalResource.GetRootPath | CodePackageActivationContext. log/Temp/Work | * |

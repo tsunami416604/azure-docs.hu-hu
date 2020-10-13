@@ -4,10 +4,10 @@ description: Application Insights konfigurációjának automatizálása a metrik
 ms.topic: conceptual
 ms.date: 07/23/2016
 ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322465"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
@@ -100,7 +100,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
 
 Ugyanez a szabály használható egy másik nyomkövetési hívás (például TrackEvent vagy trackPageView) [mérési paramétere](./api-custom-events-metrics.md#properties) használatával jelentett metrika esetében.
 
-## <a name="metric-names"></a>Metrikák nevei
+## <a name="metric-names"></a>Metrikanevek
 | Metrika neve | Képernyő neve | Leírás |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
@@ -138,7 +138,7 @@ A metrikákat különböző telemetria-modulok küldik:
 ## <a name="webhooks"></a>Webhookok
 [A riasztásra adott válasz automatizálható](../platform/alerts-webhooks.md). Az Azure meghívja a választott webcímet, ha riasztást vált ki.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Application Insights konfigurálására szolgáló parancsfájl](./create-new-resource.md#creating-a-resource-automatically)
 * [Application Insights-és webes tesztelési erőforrások létrehozása sablonokból](powershell.md)
 * [Összekapcsolási Microsoft Azure Diagnostics automatizálása Application Insights](powershell-azure-diagnostics.md)

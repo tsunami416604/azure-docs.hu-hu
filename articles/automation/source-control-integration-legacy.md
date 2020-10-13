@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187336"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>A verziókövetés integrációjának használata Azure Automation örökölt
@@ -115,7 +115,7 @@ Az adattár-szinkronizálás lapon található szinkronizálás gomb lehetővé 
 
     ![Szinkronizálás gomb üzenettel, amely megerősíti, hogy minden runbookok szinkronizálva lesz](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. A Sync elindítja a **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** runbook, amely csatlakozik a githubhoz, és lekéri a tárházban bekövetkező változásokat a Azure Automation. Ehhez a művelethez egy új feladatot kell megjelennie az adattár szinkronizációs lapján. A szinkronizálási feladattal kapcsolatos részletek megtekintéséhez kattintson a feladatok részletei lap megnyitásához.  
+2. A Sync elindítja a  **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** runbook, amely csatlakozik a githubhoz, és lekéri a tárházban bekövetkező változásokat a Azure Automation. Ehhez a művelethez egy új feladatot kell megjelennie az adattár szinkronizációs lapján. A szinkronizálási feladattal kapcsolatos részletek megtekintéséhez kattintson a feladatok részletei lap megnyitásához.  
 
     ![Egy GitHub-adattár szinkronizálási feladatainak szinkronizálási eredményeit bemutató ablak](media/source-control-integration-legacy/automation-SyncRunbook.png)
 

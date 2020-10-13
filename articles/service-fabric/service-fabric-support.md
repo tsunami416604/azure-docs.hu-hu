@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256968"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
@@ -45,7 +45,7 @@ További információk:
 
 Egy GitHub-tárházat állítottunk be a Service Fabric problémák jelentéséhez.  A következő fórumokon is aktívan figyelik.
 
-### <a name="github-repo"></a>GitHub-adattár 
+### <a name="github-repo"></a>GitHub-tárház 
 
 Azure Service Fabric-problémák jelentése a [Service-Fabric-problémák git-](https://github.com/Azure/service-fabric-issues)tárházban. Ez a tárház az Azure-Service Fabricokkal kapcsolatos problémák jelentéskészítésére és nyomon követésére, valamint a kisméretű szolgáltatásokra vonatkozó kérelmek készítésére szolgál. Ne **használja az élő helyekkel kapcsolatos problémák jelentését**.
 
@@ -62,7 +62,7 @@ A [Service Fabric Azure visszajelzési fóruma][uservoice-forum] a legjobb hely 
 Időről időre olyan verziókat szabadítunk fel, amelyek olyan jelentős funkciókkal rendelkeznek, melyeket előzetes verzióként adnak meg. Ezek az előzetes verziók csak tesztelési célokra használhatók. Az üzemi fürtnek mindig támogatott, stabil Service Fabric verziót kell futtatnia. Az előzetes verzió verziója mindig a fő és alverziószám 255-as számú. Ha például megjelenik egy Service Fabric 255.255.5703.949-verzió, akkor a kiadási verzió csak tesztelési fürtökben használható, és előzetes verzióban érhető el. Ezek az előzetes verziók a [Service Fabric csapat blogjában](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) is bejelentve lesznek, és a szolgáltatással kapcsolatos részleteket is tartalmaznak.
 Ezekhez az előzetes verzióhoz nem biztosítunk fizetős támogatási lehetőséget. A kérdésekkel kapcsolatos kérdések és visszajelzések megadásához használja az [Azure-Service Fabrici problémák című](#report-azure-service-fabric-issues) részben felsorolt lehetőségek egyikét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Támogatott Service Fabric verziók](service-fabric-versions.md)
 

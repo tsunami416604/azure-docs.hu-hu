@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186656"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
@@ -31,9 +31,9 @@ A kapcsolatok létrehozásakor meg kell adnia egy kapcsolattípus-típust. A kap
 
 A Azure Automation a következő beépített kapcsolattípus-típusokat teszi elérhetővé:
 
-* `Azure`– A klasszikus erőforrások kezeléséhez használt kapcsolatokat jelöli.
-* `AzureServicePrincipal`– Az Azure-beli futtató fiók által használt kapcsolatokat jelöli.
-* `AzureClassicCertificate`– A klasszikus Azure-beli futtató fiók által használt kapcsolatokat jelöli.
+* `Azure` – A klasszikus erőforrások kezeléséhez használt kapcsolatokat jelöli.
+* `AzureServicePrincipal` – Az Azure-beli futtató fiók által használt kapcsolatokat jelöli.
+* `AzureClassicCertificate` – A klasszikus Azure-beli futtató fiók által használt kapcsolatokat jelöli.
 
 A legtöbb esetben nem kell létrehoznia egy kapcsolódási erőforrást, mert a [futtató fiók](manage-runas-account.md)létrehozásakor jön létre.
 

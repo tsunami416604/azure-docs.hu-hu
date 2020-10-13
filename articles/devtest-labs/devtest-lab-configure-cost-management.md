@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet nyomon követni a labor (havi
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283826"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Laborhoz kapcsolódó költségek nyomon követése Azure DevTest Labs
@@ -86,7 +86,7 @@ Ezzel a funkcióval egyszerűen azonosíthatók azok az erőforrások, amelyek a
 
 Az [automatikus leállítási szabályzat](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) segít csökkenteni a költségeket azáltal, hogy a nap adott időpontjában leállítja a labor virtuális gépeket. A labor felhasználó azonban letilthatja a leállítási szabályzatot, ami növeli a virtuális gép futtatásának költségeit. Kiválaszthat egy virtuális gépet a táblázatban, hogy megtudja, van-e kiválasztva az automatikus leállítási házirendből. Ebben az esetben a virtuális gép tulajdonosával megtudhatja, miért választotta ki a virtuális gépet a szabályzatból.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő néhány dolgot érdemes kipróbálni:
 
 * [Tesztkörnyezet-házirendek meghatározása](devtest-lab-set-lab-policy.md) – útmutató a tesztkörnyezet és a virtuális gépek használatának szabályozásához használt különböző szabályzatok beállításához. 

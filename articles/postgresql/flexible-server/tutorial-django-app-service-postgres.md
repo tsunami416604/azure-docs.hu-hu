@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946581"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Oktatóanyag: a Django alkalmazás üzembe helyezése App Service és Azure Database for PostgreSQL rugalmas kiszolgálóval (előzetes verzió)
@@ -194,11 +194,11 @@ python manage.py runserver
 ```
 A webalkalmazás teljes betöltését követően a Django fejlesztői kiszolgáló a helyi alkalmazás URL-címét biztosítja a "fejlesztési kiszolgáló indítása a következő helyen" című üzenetben: http://127.0.0.1:8000/ . Lépjen ki a kiszolgálóról a CTRL-BREAK billentyűkombinációval.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére&quot;:::
 
 Tesztelje az alkalmazást helyileg a következő lépésekkel:
 
-1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a "nincs elérhető lekérdezés" üzenetet jeleníti meg.
+1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a &quot;nincs elérhető lekérdezés" üzenetet jeleníti meg.
 
 1. Lépjen a *http: \/ /localhost: 8000/admin* webpontra, és jelentkezzen be a korábban létrehozott rendszergazda felhasználó használatával. A **lekérdezések**területen ismét válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 
@@ -270,11 +270,19 @@ Keresse meg a *http: \/ / \<app-name> . azurewebsites.net* , és tesztelje újra
 
 A [Azure Portal](https://portal.azure.com)keresse meg az alkalmazás nevét, és válassza ki az alkalmazást az eredmények között.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Navigáljon a Python Django alkalmazáshoz a Azure Portal":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére&quot;:::
+
+Tesztelje az alkalmazást helyileg a következő lépésekkel:
+
+1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a &quot;nincs elérhető lekérdezés":::
 
 Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jeleníti meg, amely általános teljesítményt nyújt. Itt olyan alapszintű felügyeleti feladatokat is elvégezhet, mint a Tallózás, Leállítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="A Python Django-alkalmazás kezelése a Azure Portal áttekintés lapján":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére&quot;:::
+
+Tesztelje az alkalmazást helyileg a következő lépésekkel:
+
+1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a &quot;nincs elérhető lekérdezés":::
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -287,7 +295,7 @@ az group delete -g myresourcegroup
 
 A parancs az *. Azure/config* fájlban gyorsítótárazott erőforráscsoport-nevet használja. Az erőforráscsoport törlésével felszabadítja és törli az abban található összes erőforrást is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan képezhető le egyéni DNS-név az alkalmazáshoz:
 

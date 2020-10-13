@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: f4dcec5e58cb10850e22d3006b0ecd41f6d013fd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86202276"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Az Azure SQL Server Stretch Database Service összes témaköre
@@ -31,7 +31,7 @@ Ez a témakör felsorolja az Azure **SQL Server stretch Database** szolgáltatá
 |[Stretch Database áttekintése](sql-server-stretch-database-overview.md) |Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe. |
 |[Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása](sql-server-stretch-database-wizard.md) |Ebből a cikkből megtanulhatja, hogyan konfigurálhatja adatbázisait a Stretch Database-zel való használatra az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatásával. |
 
-## <a name="enable"></a>Bekapcsolás
+## <a name="enable"></a>Engedélyezés
 | Cím | Leírás |
 |:--- |:--- |
 |[Enable Stretch Database for a database (A Stretch Database használatának engedélyezése adatbázisokon)](sql-server-stretch-database-enable-database.md) |Megtudhatja, hogyan konfigurálhat egy adatbázist a Stretch Databasehoz. |

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940776"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Az Azure arc használatára képes SQL felügyelt példány funkciói és képességei
@@ -33,25 +33,25 @@ Az Azure arc használatára képes SQL felügyelt példány közös programkódo
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS magas rendelkezésre állása  
   
-|Funkció|Azure arc-kompatibilis SQL felügyelt példány|
+|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
 |-------------|----------------|
-|Naplóküldés|Yes| 
-|Biztonsági másolatok tömörítése|Yes|
-|Adatbázis-pillanatkép|Yes|
+|Naplóküldés|Igen| 
+|Biztonsági másolatok tömörítése|Igen|
+|Adatbázis-pillanatkép|Igen|
 |Always On feladatátvevő fürt<sup>1</sup> . példánya| Nem alkalmazható. Hasonló funkciók érhetők el |
 |Always On rendelkezésre állási csoportok<sup>2</sup>|HA a szolgáltatások tervezése megtörténik.|
 |Alapszintű rendelkezésre állási csoportok <sup>2</sup>|HA a szolgáltatások tervezése megtörténik.|
 |A replika minimális végrehajtási rendelkezésre állási csoportja <sup>2</sup>|HA a szolgáltatások tervezése megtörténik.|
-|Fürt nélküli rendelkezésre állási csoport|Yes|
-|Online oldal és fájl visszaállítása|Yes|
-|Online indexelés|Yes|
-|Visszafolytatható online index-Újraépítés|Yes|
-|Online séma módosítása|Yes|
-|Gyors helyreállítás|Yes|
-|Tükrözött biztonsági másolatok|Yes|
-|Gyors memória-és CPU-Hozzáadás|Yes|
-|Titkosított biztonsági mentés|Yes|
-|Hibrid biztonsági mentés az Azure-ba (biztonsági mentés az URL-címre)|Yes|
+|Fürt nélküli rendelkezésre állási csoport|Igen|
+|Online oldal és fájl visszaállítása|Igen|
+|Online indexelés|Igen|
+|Visszafolytatható online index-Újraépítés|Igen|
+|Online séma módosítása|Igen|
+|Gyors helyreállítás|Igen|
+|Tükrözött biztonsági másolatok|Igen|
+|Gyors memória-és CPU-Hozzáadás|Igen|
+|Titkosított biztonsági mentés|Igen|
+|Hibrid biztonsági mentés az Azure-ba (biztonsági mentés az URL-címre)|Igen|
 
 <sup>1</sup> abban a forgatókönyvben, ahol a pod meghibásodása van, egy új SQL felügyelt példány indul el, és újra csatolva lesz az adatait tartalmazó állandó kötethez. [További információ az állandó kötetek Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
@@ -59,96 +59,96 @@ Az Azure arc használatára képes SQL felügyelt példány közös programkódo
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS méretezhetőség és teljesítmény  
 
-|Funkció|Azure arc-kompatibilis SQL felügyelt példány|
+|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
 |-------------|----------------|
-|Oszlopcentrikus|   Yes|
-|Nagyméretű objektumok bináris fájljai fürtözött oszlopcentrikus indexekben|    Yes|
-|Online nem fürtözött oszlopcentrikus index újraépítése| Yes|
-|Memóriában tárolt OLTP|    Yes|
-|Állandó fő memória|    Yes|
-|Tábla-és indexelési particionálás|  Yes
-|Adattömörítés|  Yes|
-|Resource Governor| Yes|
-|Particionált tábla párhuzamossága| Yes|
-|NUMA-Aware és nagyméretű oldal memóriája és puffer-tömb kiosztása|  Yes|
-|IO-erőforrás szabályozása|    Yes|
-|Késleltetett tartósság|    Yes|
-|Automatikus finomhangolás|  Yes|
-|Kötegelt módú adaptív illesztések| Yes|
-|Kötegelt üzemmód memória-engedélyezési visszajelzés|  Yes|
-|Többutasításos táblázat értékű függvények egymással megszakított végrehajtása|  Yes|
-|Tömeges Beszúrás – tökéletesítések   |Yes|
+|Oszlopcentrikus|   Igen|
+|Nagyméretű objektumok bináris fájljai fürtözött oszlopcentrikus indexekben|    Igen|
+|Online nem fürtözött oszlopcentrikus index újraépítése| Igen|
+|Memóriában tárolt OLTP|    Igen|
+|Állandó fő memória|    Igen|
+|Tábla-és indexelési particionálás|  Igen
+|Adattömörítés|  Igen|
+|Resource Governor| Igen|
+|Particionált tábla párhuzamossága| Igen|
+|NUMA-Aware és nagyméretű oldal memóriája és puffer-tömb kiosztása|  Igen|
+|IO-erőforrás szabályozása|    Igen|
+|Késleltetett tartósság|    Igen|
+|Automatikus finomhangolás|  Igen|
+|Kötegelt módú adaptív illesztések| Igen|
+|Kötegelt üzemmód memória-engedélyezési visszajelzés|  Igen|
+|Többutasításos táblázat értékű függvények egymással megszakított végrehajtása|  Igen|
+|Tömeges Beszúrás – tökéletesítések   |Igen|
 
 ###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS biztonság  
-|Funkció|Azure arc-kompatibilis SQL felügyelt példány|
+|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
 |-------------|----------------|
-|Sorszintű biztonság|    Yes|
-|Always Encrypted|  Yes|
-|Always Encrypted biztonságos Enklávékkal| No|
-|Dinamikus adatmaszkolás|  Yes|
-|Alapszintű naplózás|    Yes|
-|Részletes naplózás| Yes|
-|Transzparens adatbázis-titkosítás|   Yes|
-|Felhasználó által definiált szerepkörök|    Yes|
-|Tartalmazott adatbázisok|   Yes|
-|Biztonsági másolatok titkosítása|    Yes|
+|Sorszintű biztonság|    Igen|
+|Always Encrypted|  Igen|
+|Always Encrypted biztonságos Enklávékkal| Nem|
+|Dinamikus adatmaszkolás|  Igen|
+|Alapszintű naplózás|    Igen|
+|Részletes naplózás| Igen|
+|Transzparens adatbázis-titkosítás|   Igen|
+|Felhasználó által definiált szerepkörök|    Igen|
+|Tartalmazott adatbázisok|   Igen|
+|Biztonsági másolatok titkosítása|    Igen|
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS kezelhetősége  
 
-|Funkció|Azure arc-kompatibilis SQL felügyelt példány|
+|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
 |-------------|----------------|
-|Dedikált rendszergazdai kapcsolatok|    Yes|
-|PowerShell-parancsfájlok támogatása|  Yes|
-|Az adatrétegbeli alkalmazás-összetevő műveleteinek támogatása – kinyerés, üzembe helyezés, frissítés, törlés| Yes
-|Házirend-automatizálás (ellenőrzési ütemterv és módosítás)   |Yes|
-|Teljesítményadatokat gyűjtő|    Yes|
-|Normál teljesítményű jelentések   |Yes|
-|Útmutatók tervezése és a tervek befagyasztásának megtervezése| Yes|
-|Indexelt nézetek közvetlen lekérdezése (a deexpand mutató használatával)|   Yes|
-|Automatikus indexelt nézetek karbantartása    |Yes|
-|Elosztott particionált nézetek| Yes|
-|Párhuzamos indexelt műveletek    |Yes|
-|Indexelt nézet automatikus használata lekérdezés-optimalizáló használatával|  Yes|
-|Párhuzamos konzisztencia-ellenőrzés |Yes|
+|Dedikált rendszergazdai kapcsolatok|    Igen|
+|PowerShell-parancsfájlok támogatása|  Igen|
+|Az adatrétegbeli alkalmazás-összetevő műveleteinek támogatása – kinyerés, üzembe helyezés, frissítés, törlés| Igen
+|Házirend-automatizálás (ellenőrzési ütemterv és módosítás)   |Igen|
+|Teljesítményadatokat gyűjtő|    Igen|
+|Normál teljesítményű jelentések   |Igen|
+|Útmutatók tervezése és a tervek befagyasztásának megtervezése| Igen|
+|Indexelt nézetek közvetlen lekérdezése (a deexpand mutató használatával)|   Igen|
+|Automatikus indexelt nézetek karbantartása    |Igen|
+|Elosztott particionált nézetek| Igen|
+|Párhuzamos indexelt műveletek    |Igen|
+|Indexelt nézet automatikus használata lekérdezés-optimalizáló használatával|  Igen|
+|Párhuzamos konzisztencia-ellenőrzés |Igen|
 
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programozhatóság  
 
-|Funkció|Azure arc-kompatibilis SQL felügyelt példány|
+|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
 |-------------|----------------|
 |JSON|  Igen |       |
-|Lekérdezéstár    |Yes    |       
-|Historikus|  Yes |       
-|Natív XML-támogatás|    Yes |       
-|XML-indexelés   |Yes    |       
-|& UPSERT-képességek EGYESÍTÉSe|   Yes |       
-|Dátum és idő adattípus    |Yes    |       
-|Honosítási támogatás|  Yes |       
-|Teljes szöveges és szemantikai keresés |    No      |
-|A nyelv meghatározása a lekérdezésben |Yes        |   
-|Service Broker (üzenetküldés)|    Yes     |   
-|Transact-SQL-végpontok|    Yes |       
-|Graph| Yes |   
-|Machine Learning Services| No  |   
-|PolyBase| No   |
+|Lekérdezéstár    |Igen    |       
+|Historikus|  Igen |       
+|Natív XML-támogatás|    Igen |       
+|XML-indexelés   |Igen    |       
+|& UPSERT-képességek EGYESÍTÉSe|   Igen |       
+|Dátum és idő adattípus    |Igen    |       
+|Honosítási támogatás|  Igen |       
+|Teljes szöveges és szemantikai keresés |    Nem      |
+|A nyelv meghatározása a lekérdezésben |Igen        |   
+|Service Broker (üzenetküldés)|    Igen     |   
+|Transact-SQL-végpontok|    Igen |       
+|Graph| Igen |   
+|Machine Learning Services| Nem  |   
+|PolyBase| Nem   |
 
 
 ### <a name="tools"></a>Eszközök
 
 Az Azure arc használatára képes SQL felügyelt példány különböző adateszközöket támogat, amelyek segítségével kezelheti adatait.
 
-| **Eszköz** | Azure arc-kompatibilis SQL felügyelt példány|
+| **Eszköz** | Azure Arc-kompatibilis, felügyelt SQL-példány|
 | --- | --- | --- |
-| Azure Portal <sup>1</sup> | No |
-| Azure CLI | No |
-| [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes |
-| Azure PowerShell | Yes |
-| [BACPAC-fájl (exportálás)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |
-| [BACPAC-fájl (importálás)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Yes |
-| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Yes |
+| Azure Portal <sup>1</sup> | Nem |
+| Azure CLI | Nem |
+| [Azure Data Studio](/sql/azure-data-studio/what-is) | Igen |
+| Azure PowerShell | Igen |
+| [BACPAC-fájl (exportálás)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen |
+| [BACPAC-fájl (importálás)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen |
+| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Igen |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Igen |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Igen |
 
 <sup>1</sup> a Azure Portal csak olvasható módban tekintheti meg az Azure arc használatára képes SQL felügyelt példányokat az előzetes verzió használatakor.
 

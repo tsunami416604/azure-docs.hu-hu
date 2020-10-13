@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86205762"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management-példány frissítése és méretezése  
@@ -33,7 +33,7 @@ Az egyes egységek és a rendelkezésre álló funkciók (például a többrégi
 
 A cikk lépéseinek követéséhez a következőket kell tennie:
 
-+ Aktív Azure-előfizetéssel rendelkezik.
++ Aktív Azure-előfizetés
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ A cikk lépéseinek követéséhez a következőket kell tennie:
 
 ## <a name="upgrade-and-scale"></a>Frissítés és skálázás  
 
-Négy szint közül választhat: **fejlesztői**, **alapszintű**, **standard**és **prémium**. A **fejlesztői** szintet a szolgáltatás kiértékeléséhez kell használni; nem használható éles környezetben. A **fejlesztői** szint nem rendelkezik SLA-val, és nem méretezheti ezt a szintet (egység hozzáadása/eltávolítása). 
+Négy szint közül választhat: **fejlesztői**, **alapszintű**,  **standard**és **prémium**. A **fejlesztői** szintet a szolgáltatás kiértékeléséhez kell használni; nem használható éles környezetben. A **fejlesztői** szint nem rendelkezik SLA-val, és nem méretezheti ezt a szintet (egység hozzáadása/eltávolítása). 
 
 Az **alapszintű**, a **standard**és a **prémium** a SLA-val rendelkező, és méretezhető. Az alapszintű **csomag** egy SLA-val rendelkező legolcsóbb szint, amely akár két egységig is méretezhető, a **standard** szint pedig akár négy egységig is méretezhető. A **prémium** szinthez tetszőleges számú egységet adhat hozzá.
 

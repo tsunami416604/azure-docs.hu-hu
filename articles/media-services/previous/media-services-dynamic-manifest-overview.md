@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266918"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
@@ -77,14 +77,14 @@ Példa egy jegyzékfájlra:
 ```
 
 ### <a name="dynamic-manifests"></a>Dinamikus jegyzékek
-Előfordulhat, hogy az ügyfélnek több rugalmasságra van [szüksége, mint](media-services-dynamic-manifest-overview.md#scenarios) amit az alapértelmezett adategység jegyzékfájljában ismertetünk. Például:
+Előfordulhat, hogy az ügyfélnek több rugalmasságra van [szüksége, mint](media-services-dynamic-manifest-overview.md#scenarios) amit az alapértelmezett adategység jegyzékfájljában ismertetünk. Példa:
 
 * Eszköz-specifikus: csak a megadott kiadatások és/vagy a megadott nyelvi sávok továbbítására szolgál, amelyek a tartalom lejátszásához használhatók ("kiadatási szűrés"). 
 * Csökkentse a jegyzékfájlt az élő események ("alklipek szűrése") alklipének megjelenítéséhez.
 * Egy videó elejének vágása ("videó vágása").
 * A bemutató ablak (DVR) módosítása annak érdekében, hogy korlátozott hosszúságú legyen a DVR ablak a lejátszóban ("bemutató ablakának módosítása").
 
-Ennek a rugalmasságnak a megvalósításához Media Services az előre definiált [szűrők](media-services-dynamic-manifest-overview.md#filters)alapján **dinamikus jegyzékfájlokat** kínál.  Miután definiálta a szűrőket, az ügyfelek felhasználhatják a videó egy adott kiadatásának vagy alvideoklipének továbbítására. A szűrő (ka) t a folyamatos átviteli URL-címben határozzák meg. A szűrők alkalmazhatók a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)által támogatott adaptív sávszélességű adatfolyam-továbbítási protokollokra: HLS, MPEG-DASH és Smooth streaming. Például:
+Ennek a rugalmasságnak a megvalósításához Media Services az előre definiált [szűrők](media-services-dynamic-manifest-overview.md#filters)alapján **dinamikus jegyzékfájlokat** kínál.  Miután definiálta a szűrőket, az ügyfelek felhasználhatják a videó egy adott kiadatásának vagy alvideoklipének továbbítására. A szűrő (ka) t a folyamatos átviteli URL-címben határozzák meg. A szűrők alkalmazhatók a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)által támogatott adaptív sávszélességű adatfolyam-továbbítási protokollokra: HLS, MPEG-DASH és Smooth streaming. Példa:
 
 MPEG DASH URL-cím szűrővel
 
@@ -110,7 +110,7 @@ Az eszközök két típusa létezik:
 
 A globális és a helyi szűrési típusok pontosan ugyanazok a tulajdonságok. A kettő között a fő különbség, hogy mely forgatókönyvek esetében alkalmasabb a Filer-típus. A globális szűrők általában az eszközök profiljaihoz (kiadatási szűréshez) alkalmasak, ahol helyi szűrők használhatók egy adott eszköz kivágására.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Gyakori forgatókönyvek
+## <a name="common-scenarios"></a><a id="scenarios"></a>Gyakori helyzetek
 Ahogy korábban is említettük, a tartalomnak az ügyfeleknek való továbbításakor (élő események vagy igény szerinti videó közvetítése) a cél az, hogy magas színvonalú videót nyújtson be különböző hálózati körülmények között különböző eszközökre. Emellett előfordulhat, hogy egyéb követelmények is vannak, amelyek az eszközök szűrését és a **dinamikus jegyzékfájlok**használatát igénylik. A következő részekben rövid áttekintést talál a különböző szűrési forgatókönyvekről.
 
 * Csak a hang-és videó-továbbítások egy részhalmazát adhatja meg, amelyeket bizonyos eszközök kezelhetnek (az objektumhoz társított összes kiadatás helyett). 

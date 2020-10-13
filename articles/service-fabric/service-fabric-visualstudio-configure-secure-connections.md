@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256093"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolatok konfigurálása egy Service Fabric-fürthöz a Visual studióból
@@ -31,13 +31,13 @@ A **Service Fabric alkalmazás közzététele** párbeszédpanel automatikusan e
 
 ### <a name="to-connect-to-a-secure-cluster"></a>Kapcsolódás biztonságos fürthöz
 1. Győződjön meg arról, hogy a cél fürt által megbízhatónak ítélt Ügyféltanúsítványok egyikét is elérheti. A tanúsítvány általában személyes információcsere (. pfx) fájlként van megosztva. Lásd: [Service Fabric-fürt beállítása a Azure Portalból](service-fabric-cluster-creation-via-portal.md) , hogy miként konfigurálhatja a kiszolgálót egy ügyfélhez való hozzáférés biztosításához.
-2. Telepítse a megbízható tanúsítványt. Ehhez kattintson duplán a. pfx fájlra, vagy használja az import-PfxCertificate PowerShell-parancsfájlt a tanúsítványok importálásához. Telepítse a tanúsítványt a következő tanúsítványra **: \ LocalMachine\My**. A tanúsítvány importálása során az összes alapértelmezett beállítást el kell fogadnia.
+2. Telepítse a megbízható tanúsítványt. Ehhez kattintson duplán a. pfx fájlra, vagy használja a PowerShell-parancsfájlt Import-PfxCertificate a tanúsítványok importálásához. Telepítse a tanúsítványt a következő tanúsítványra **: \ LocalMachine\My**. A tanúsítvány importálása során az összes alapértelmezett beállítást el kell fogadnia.
 3. A projekt helyi menüjében válassza a **Publish...** parancsot az **Azure-alkalmazás közzététele** párbeszédpanel megnyitásához, majd válassza ki a célként megadott fürtöt. Az eszköz automatikusan feloldja a kapcsolatokat, és menti a biztonságos kapcsolatok paramétereit a közzétételi profilban.
 4. Nem kötelező: a közzétételi profil szerkesztésével megadhat egy biztonságos fürtöt.
    
    Mivel manuálisan módosítja a közzétételi profil XML-fájlját a tanúsítvány adatainak megadásához, jegyezze fel a tanúsítványtároló nevét, az áruház helyét és a tanúsítvány ujjlenyomatát. Ezeket az értékeket meg kell adnia a tanúsítvány tárolójának és tárolási helyének. További információt a [tanúsítvány ujjlenyomatának beolvasása](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) című témakörben talál.
    
-   A *ClusterConnectionParameters* paraméterrel megadhatja a Service Fabric-fürthöz való csatlakozáskor használandó PowerShell-paramétereket. Az érvényes paraméterek tetszőlegesek, amelyeket a ServiceFabricCluster parancsmag fogad el. A rendelkezésre álló paraméterek listáját a [Csatlakozás – ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) című részben tekintheti meg.
+   A *ClusterConnectionParameters* paraméterrel megadhatja a Service Fabric-fürthöz való csatlakozáskor használandó PowerShell-paramétereket. Az érvényes paramétereket a Connect-ServiceFabricCluster parancsmag fogadja el. A rendelkezésre álló paraméterek listáját a [Csatlakozás – ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) című részben tekintheti meg.
    
    Ha távoli fürtöt tesz közzé, meg kell adnia a megfelelő paramétereket az adott fürthöz. A következő példa egy nem biztonságos fürthöz való csatlakozásra mutat be:
    
@@ -57,7 +57,7 @@ A **Service Fabric alkalmazás közzététele** párbeszédpanel automatikusan e
    ```
 5. Szerkessze az egyéb szükséges beállításokat, például a frissítési paramétereket és az alkalmazás paramétereinek helyét, majd tegye közzé az alkalmazást a Visual Studióban a **közzététel Service Fabric alkalmazásban** párbeszédpanelen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Fabric-fürtök elérésével kapcsolatos további információkért lásd: [a fürt megjelenítése Service Fabric Explorer használatával](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->

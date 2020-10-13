@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887206"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Az Apache HBase Master (HMaster) nem indul el az Azure HDInsight
@@ -30,7 +30,7 @@ Az indítási folyamat során a HMaster számos inicializálási lépést hajt v
 
 A HMaster egy alapszintű List parancsot tartalmaz a WAL-mappákon. Ha bármikor, a HMaster egy nem várt fájlt lát ezen mappák valamelyikében, kivételt jelez, és nem indul el.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ellenőrizze a hívási veremet, és próbálja meg megállapítani, hogy melyik mappa okozza a problémát (például lehet, hogy a WAL-mappa vagy a. tmp mappa). Ezután a Cloud Explorerben vagy a HDFS parancsok használatával próbálja megkeresni a problémát tartalmazó fájlt. Ez általában egy `*-renamePending.json` fájl. (A `*-renamePending.json` fájl egy olyan naplófájl, amely az atomi átnevezési művelet megvalósítására szolgál a WASB-illesztőprogramban. Az ebben a megvalósításban található hibák miatt ezek a fájlok a folyamat összeomlása után is megmaradhatnak, és így tovább.) Kényszerítse a fájl törlését a Cloud Explorerben vagy a HDFS parancsok használatával.
 
@@ -50,7 +50,7 @@ Előfordulhat, hogy egy üzenet jelenik meg, amely azt jelzi, hogy a `hbase: met
 
 A HMaster nem tudott inicializálni a HBase újraindítása után.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. A HBase-rendszerhéjban írja be a következő parancsokat (módosítsa a tényleges értékeket, ha vannak ilyenek):
 
@@ -81,7 +81,7 @@ A HMaster időtúllépést okoz a következőhöz hasonló végzetes kivétel mi
 
 Ez a probléma akkor fordulhat elő, ha sok olyan táblája és régiója van, amely nem lett kiürítve a HMaster-szolgáltatások újraindításakor. Az időtúllépés a HMaster ismert hibája. Az általános fürt indítási feladatai hosszú időt vehetnek igénybe. A HMaster leállt, ha még nincs hozzárendelve a névtér tábla. A hosszadalmas indítási feladatok akkor fordulnak elő, amikor nagy mennyiségű kiürítetlen adat létezik, és az 5 perces időkorlát nem elegendő.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Az Apache Ambari felhasználói felületén nyissa meg a **HBase**  >  **konfigurációit**. Az egyéni `hbase-site.xml` fájlban adja hozzá a következő beállítást:
 
@@ -109,7 +109,7 @@ A csomópontok rendszeres újraindítása. A régió-kiszolgáló naplóiban a k
 
 Hosszú `regionserver` JVM GC szüneteltetése. A Szüneteltetés `regionserver` nem válaszol, és a ZK-munkamenet 40-es időkorlátján belül nem küldheti el a szívverést a HMaster. `regionserver`A HMaster nem fog elpusztulni, és a rendszer megszakítja az `regionserver` újraindítást.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Módosítsa a Zookeeper-munkamenet időtúllépését, nem csak a `hbase-site` beállítást, `zookeeper.session.timeout` hanem a Zookeeper `zoo.cfg` beállítást is `maxSessionTimeout` .
 
@@ -135,7 +135,7 @@ A HMasters nem tudott bejutni egy HBase-fürtre.
 
 A másodlagos HDFS és HBase beállításai helytelenül vannak konfigurálva.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Állítsa be a hbase. rootdir: wasb://@.blob.core.windows.net/hbase programot, és indítsa újra a szolgáltatásokat a Ambari-on.
 

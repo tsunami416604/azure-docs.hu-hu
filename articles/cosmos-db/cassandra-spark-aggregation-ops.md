@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 5db5cc515e2fbecfaeb58b9e1c02dd0bc6eda375
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86503353"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Sparkból származó Azure Cosmos DB Cassandra API-táblák összesítési műveletei 
@@ -364,7 +364,7 @@ readBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_name
 select book_name,book_price from books_vw order by book_price desc limit 3;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A táblázatos másolási műveletek végrehajtásához tekintse meg a következőt:
 

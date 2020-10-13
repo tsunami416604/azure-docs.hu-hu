@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86201810"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
@@ -60,7 +60,7 @@ A gyorsítótárazás olyan módon működik, mint a CDN, amely felgyorsítja a 
 
 A gyorsítótárazás egy webböngészőben való implementálása hasonlóan azt is szabályozhatja, hogyan történjen a gyorsítótárazás a CDN-ben a gyorsítótár-direktíva fejlécek elküldésével. A cache-direktíva fejlécek a HTTP-fejlécek, amelyeket általában a forráskiszolgáló ad hozzá. Bár a fejlécek többségét eredetileg az ügyféloldali böngészők gyorsítótárazására tervezték, mostantól az összes köztes gyorsítótár, például a CDNs is használja őket. 
 
-A gyorsítótár frissességének meghatározásához két fejléc használható: `Cache-Control` és `Expires` . `Cache-Control`több aktuális, és elsőbbséget élvez `Expires` , ha mindkettő létezik. Az érvényesítéshez (ún. validatorok) két típusú fejléc is használatos: `ETag` és `Last-Modified` . `ETag`több aktuális, és elsőbbséget élvez `Last-Modified` , ha mindkettő definiálva van.  
+A gyorsítótár frissességének meghatározásához két fejléc használható: `Cache-Control` és `Expires` . `Cache-Control` több aktuális, és elsőbbséget élvez `Expires` , ha mindkettő létezik. Az érvényesítéshez (ún. validatorok) két típusú fejléc is használatos: `ETag` és `Last-Modified` . `ETag` több aktuális, és elsőbbséget élvez `Last-Modified` , ha mindkettő definiálva van.  
 
 ## <a name="cache-directive-headers"></a>Cache-direktíva fejlécek
 
@@ -90,7 +90,7 @@ Azure CDN támogatja a következő HTTP-gyorsítótár-direktívák fejléceit, 
    - A Azure CDN alapértelmezés szerint nem tartja tiszteletben.
    - A HTTP 1,0-ben bevezetett örökölt fejléc visszamenőleges kompatibilitás esetén támogatott.
    - Ügyfél-kérelem fejlécként használatos az alábbi direktívával: `no-cache` . Ez az irányelv arra utasítja a kiszolgálót, hogy az erőforrás új verzióját kézbesítse.
-   - `Pragma: no-cache`egyenértékű a következővel: `Cache-Control: no-cache` .
+   - A `Pragma: no-cache` és a `Cache-Control: no-cache` kifejezés egyenértékű.
 
 ## <a name="validators"></a>Érvényesítőket
 
@@ -98,7 +98,7 @@ Ha a gyorsítótár elavult, a HTTP-gyorsítótár-érvényesítő használatáv
 
 **ETAG**
 - Alapértelmezés szerint a Verizon által támogatott **standard/prémium szintű Azure CDN** `ETag` , míg a **Microsofttól Azure CDN standard** , a **Akamai pedig Azure CDN standard** .
-- `ETag`egy olyan karakterláncot határoz meg, amely minden fájl és verzió esetében egyedi. Például: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- `ETag` egy olyan karakterláncot határoz meg, amely minden fájl és verzió esetében egyedi. Például: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - A HTTP 1,1-ben lett bevezetve, és a jelenleginél nagyobb `Last-Modified` . Akkor hasznos, ha az utolsó módosítás dátuma nehéz megállapítani.
 - Az erős érvényesítést és a gyenge ellenőrzést is támogatja; Azure CDN azonban csak erős ellenőrzést támogat. Erős ellenőrzés esetén a két erőforrás-ábrázolásnak azonos bájt-bájtnak kell lennie. 
 - A gyorsítótár egy olyan fájlt érvényesít, amely egy `ETag` vagy több érvényesítő utasítással elküld egy `If-None-Match` fejlécet `ETag` a kérelemben. Például: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Ha a kiszolgáló verziószáma megegyezik `ETag` a listán szereplő validatorokkal, a válaszában a 304 (nem módosított) állapotkódot küldi el. Ha a verzió eltérő, a kiszolgáló a 200-as (OK) állapotkódot és a frissített erőforrást válaszolja meg.
@@ -127,7 +127,7 @@ Az alábbi táblázat a Azure CDN termékek alapértelmezett gyorsítótárazás
 |    | Microsoft: általános webes kézbesítés | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagyméretű fájl letöltése | Akamai: általános vagy VOD média streaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **A becsület forrása**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Igen    |
-| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincsenek | 7 nap | Nincsenek | 1 nap | 1 év |
+| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincs | 7 nap | Nincs | 1 nap | 1 év |
 
 **Becsület forrása**: Megadja, hogy a rendszer a támogatott gyorsítótár-direktíva fejléceket adja-e meg, ha azok szerepelnek a forráskiszolgáló http-válaszában.
 

@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271960"
 ---
 # <a name="retrieve-offers"></a>Ajánlatok lekérése
@@ -27,7 +27,7 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 
 | **Név**         |  **Leírás**                         |  **Adattípus** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Közzétevő azonosítója, például:`contoso` |   Sztring    |
+|  publisherId     | Közzétevő azonosítója, például: `contoso` |   Sztring    |
 |  api-verzió     | Az API legújabb verziója                    |    Dátum        |
 |  |  |
 
@@ -77,10 +77,10 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 
 | **Kód**  |  **Leírás**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`– A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.  |
-|  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                                    |
-|  403      | `Forbidden`– Az ügyfél nem fér hozzá a megadott névtérhez.                                          |
-|  404      | `Not found`– A megadott entitás nem létezik.                                                                 |
+|  200      | `OK` – A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.  |
+|  400      | `Bad/Malformed request` – A hiba-válasz törzse több információt is tartalmazhat.                                    |
+|  403      | `Forbidden` – Az ügyfél nem fér hozzá a megadott névtérhez.                                          |
+|  404      | `Not found` – A megadott entitás nem létezik.                                                                 |
 |  |  |
 
 ### <a name="offer-status"></a>Ajánlat állapota
@@ -90,7 +90,7 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 |  NeverPublished              | Az ajánlatot még soha nem tették közzé.                  |
 |  NotStarted                  | Az ajánlat új, de nem indult el.                 |
 |  WaitingForPublisherReview   | Az ajánlat a közzétevő jóváhagyására vár.         |
-|  Fut                     | Az ajánlatok beküldése folyamatban van.             |
+|  Futó                     | Az ajánlatok beküldése folyamatban van.             |
 |  Sikeres                   | Az ajánlat küldése befejeződött a feldolgozás során.       |
 |  Megszakítva                    | Az ajánlat beküldését megszakították.                   |
 |  Sikertelen                      | Az ajánlat küldése nem sikerült.                         |

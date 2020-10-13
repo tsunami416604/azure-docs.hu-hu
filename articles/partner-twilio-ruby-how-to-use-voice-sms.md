@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86170700"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>A Twilio használata a hang-és SMS-funkciókhoz a Rubyban
@@ -36,7 +36,7 @@ A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az al
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML olyan XML-alapú utasításokat tartalmaz, amelyek tájékoztatják a Twilio a hívások vagy SMS-üzenetek feldolgozásáról.
 
-Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
+Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
 ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506553"
 ---
 # <a name="how-an-application-gateway-works"></a>Az Application Gateway működése
@@ -64,6 +64,6 @@ Az x által továbbított-proto érvényes értékei HTTP vagy HTTPS. X – tov�
 
 Az Application Gateway beállítható úgy, hogy módosítsa a kérések és válaszok fejléceit és URL-címét a [HTTP-fejlécek és URL-cím újraírásával](rewrite-http-headers-url.md) , vagy az URI elérési útjának módosításához egy elérésiút-felülbírálási beállítás használatával. Ha azonban erre nincs konfigurálva, az összes bejövő kérelem a háttérbe kerül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tudnivalók az Application Gateway összetevőiről](application-gateway-components.md)

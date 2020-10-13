@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259959"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
@@ -131,7 +131,7 @@ A Service Fabric-fürt jegyzékfájljának beolvasása. A fürtcsomópont a für
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl-fürt művelete – Mégse
 Egy felhasználó által okozott hiba műveletének megszakítása.
 
-A következő API-k indítják el a CancelOperation \: StartDataLoss, a StartQuorumLoss, a StartPartitionRestart és a StartNodeTransition használatával megszakított hibákkal kapcsolatos műveleteket. Ha a kényszerített érték hamis, akkor a rendszer szabályosan leállítja és törli a megadott felhasználó által okozott műveletet.  Ha a Force értéke TRUE (igaz), a parancs meg lesz szakítva, és egy belső állapot is maradhat.  A True érték megadásával körültekintően kell megadnia a kényszerített értéket. Ha ezt az API-t igaz értékre állítja, akkor nem engedélyezett, amíg ezt az API-t már nem hívták meg ugyanarra a teszt parancsra, amelynél a Force false értékre van állítva, vagy ha a test parancs már rendelkezik a OperationState. RollingBack OperationState. A pontosítás \: OperationState. RollingBack azt jelenti, hogy a rendszer a parancs végrehajtása miatt a belső rendszerállapot tisztítását végzi.  Ha a tesztelési parancs adatvesztést okoz, nem fogja visszaállítani az adatvesztést.  Ha például meghívja a StartDataLoss-t, akkor hívja meg ezt az API-t, a rendszer csak a belső állapotot fogja törölni a parancs futtatásával. Nem állítja vissza a megcélzott partíción lévő adatmennyiséget, ha a parancs elég messzire ért, hogy adatvesztést okozzon. Fontos megjegyezni \: , hogy ha az API-t a Force = = true értékkel hívja meg, a belső állapot maradhat.
+A következő API-k indítják el a CancelOperation \: StartDataLoss, a StartQuorumLoss, a StartPartitionRestart és a StartNodeTransition használatával megszakított hibákkal kapcsolatos műveleteket. Ha a kényszerített érték hamis, akkor a rendszer szabályosan leállítja és törli a megadott felhasználó által okozott műveletet.  Ha a Force értéke TRUE (igaz), a parancs meg lesz szakítva, és egy belső állapot is maradhat.  A True érték megadásával körültekintően kell megadnia a kényszerített értéket. Ha ezt az API-t igaz értékre állítja, akkor nem engedélyezett, amíg ezt az API-t már nem hívták meg ugyanarra a teszt parancsra, amelynél a Force false értékre van állítva, vagy ha a test parancs már rendelkezik a OperationState. RollingBack OperationState. A pontosítás \: OperationState. RollingBack azt jelenti, hogy a rendszer a parancs végrehajtása miatt a belső rendszerállapot tisztítását végzi.  Ha a tesztelési parancs adatvesztést okoz, nem fogja visszaállítani az adatvesztést.  Ha például meghívja a StartDataLoss-t, akkor hívja meg ezt az API-t, a rendszer csak a belső állapotot fogja törölni a parancs futtatásával. Nem állítja vissza a megcélzott partíción lévő adatmennyiséget, ha a parancs elég messzire ért, hogy adatvesztést okozzon. Fontos megjegyezni \:  , hogy ha az API-t a Force = = true értékkel hívja meg, a belső állapot maradhat.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -452,6 +452,6 @@ Frissítse a Service Fabric-fürt frissítésének paramétereit.
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

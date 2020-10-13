@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75775497"
 ---
 # <a name="internet-peering---faqs"></a>Internetes társközi – gyakori kérdések
@@ -27,10 +27,10 @@ Az egyenrangú szolgáltatás olyan szolgáltatás, amely nagyvállalati szintű
 
 A Azure PowerShell használatával beállított egyenrangú kapcsolatok Azure-erőforrásként kezelhetők. A múltban beállított összekapcsolási kapcsolatokat a rendszer olyan örökölt társításként tárolja, amelyet az Azure-erőforrásként való átalakításra is választhat.
 
-**A New-AzPeeringDirectConnectionObject meghívásakor milyen IP-címek vannak megadva a Microsoft és a társ-eszközök számára?**
+**New-AzPeeringDirectConnectionObject neve esetén milyen IP-címek vannak megadva a Microsoft és a társ-eszközök számára?**
 
-A New-AzPeeringDirectConnectionObject parancsmag meghívásakor a/31 (a. b. c. d/31) vagy a/30 (a. b. c. d/30) címeket kell megadni. A rendszer az első IP-címet (a. b. c. d + 0) adja meg a társ eszközének és második IP-címének (a. b. c. d + 1) a Microsoft-eszköz számára.
+New-AzPeeringDirectConnectionObject parancsmag meghívásakor az a/31 (a. b. c. d/31) vagy a/30 (a. b. c. d/30) címnek van megadva. A rendszer az első IP-címet (a. b. c. d + 0) adja meg a társ eszközének és második IP-címének (a. b. c. d + 1) a Microsoft-eszköz számára.
 
-**Mi az a MaxPrefixesAdvertisedIPv4 és a MaxPrefixesAdvertisedIPv6 paraméter a New-AzPeeringDirectConnectionObject parancsmagban?**
+**Mi a MaxPrefixesAdvertisedIPv4 és a MaxPrefixesAdvertisedIPv6 paraméter a New-AzPeeringDirectConnectionObject parancsmagban?**
 
 A MaxPrefixesAdvertisedIPv4 és a MaxPrefixesAdvertisedIPv6 paraméterek azon IPv4-és IPv6-előtagok maximális számát jelölik, amelyeknek a társának el kívánja fogadni a Microsoftot. Ezeket a paramétereket bármikor módosíthatja.
