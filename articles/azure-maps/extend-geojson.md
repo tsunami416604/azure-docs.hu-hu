@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037456"
 ---
 # <a name="extended-geojson-geometries"></a>Kiterjesztett GeoJSON geometriák
@@ -98,7 +98,7 @@ A `Rectangle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy `GeoJ
 }
 
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps GeoJSON-adatainak használatáról:
 

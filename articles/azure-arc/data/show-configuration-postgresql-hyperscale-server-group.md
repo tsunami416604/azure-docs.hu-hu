@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: ceab9af7e6556b2d957fafce8cd89d4a0daf9508
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940773"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport konfigurációjának megjelenítése
@@ -36,7 +36,7 @@ A postgres típusú Kubernetes-erőforrások listázása. Futtassa a következő
 kubectl get postgresqls [-n <namespace name>]
 ```
 
-A parancs kimenete a létrehozott kiszolgálócsoportok listáját jeleníti meg. Mindegyik esetében a hüvelyek számát jelzi. Például:
+A parancs kimenete a létrehozott kiszolgálócsoportok listáját jeleníti meg. Mindegyik esetében a hüvelyek számát jelzi. Példa:
 
 ```output
 NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
@@ -54,7 +54,7 @@ Futtassa a következőt:
 kubectl get pods [-n <namespace name>]
 ```
 
-Ez visszaadja a hüvelyek listáját. A kiszolgálócsoportok által használt hüvelyek az adott kiszolgálócsoportok számára megadott nevek alapján jelennek meg. Például:
+Ez visszaadja a hüvelyek listáját. A kiszolgálócsoportok által használt hüvelyek az adott kiszolgálócsoportok számára megadott nevek alapján jelennek meg. Példa:
 
 ```console 
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -108,7 +108,7 @@ Alapértelmezés szerint a PVC nevének előtagja a használatot jelzi:
 - `data-`...: az adatfájlok számára használt PVC
 - `logs-`...: a tranzakciós naplókhoz és a WAL-fájlokhoz használt PVC
 
-Például:
+Példa:
 
 ```output
 NAME                   STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
@@ -183,7 +183,7 @@ A parancs általános formátuma a következő:
 kubectl describe <CRD name>/<server group name> [-n <namespace name>]
 ```
 
-Például:
+Példa:
 
 ```console
 kubectl describe postgresql-12/postgres02
@@ -271,7 +271,7 @@ A parancs általános formátuma:
 azdata arc postgres server show -n <server group name>
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server show -n postgres02
@@ -369,4 +369,4 @@ Az alábbi kimenetet adja vissza a kubectl által visszaadott formátum és tart
 - [További információ a tárolási konfigurációról](storage-configuration.md)
 - [Olvassa el az adatbázis-példányok figyelését ismertető témakört.](monitor-grafana-kibana.md)
 - [PostgreSQL-bővítmények használata az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [Az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport biztonságának konfigurálása](configure-security-postgres-hyperscale.md)
+- [Biztonság konfigurálása az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport számára](configure-security-postgres-hyperscale.md)

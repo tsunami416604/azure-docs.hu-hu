@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743726"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939017"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
 
@@ -58,7 +58,7 @@ Számlázási információk: a [felügyelt lemez díjszabása](https://azure.mic
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-A felügyelt lemezek teljesítményének beállítása jelenleg csak a prémium szintű SSD-k esetében érhető el az USA nyugati középső régiójában. 
+A felügyelt lemezek teljesítményi szintjének módosítása jelenleg csak a prémium szintű SSD-k esetében érhető el az USA 2. keleti régiójában, az USA déli középső régiójában, az USA nyugati középső régiójában, Dél-Ausztrália keleti régiójában.
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Hozzon létre egy üres adatlemezt, amely az alapcsomagnál magasabb szintű.
 
