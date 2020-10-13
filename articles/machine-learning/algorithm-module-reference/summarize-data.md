@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898211"
 ---
 # <a name="summarize-data"></a>Adatok összegzése
@@ -48,13 +48,13 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
 
 |Oszlop neve|Leírás|
 |------|------|  
-|**Funkció**|Az oszlop neve|
-|**Száma**|Az összes sor száma|
+|**Szolgáltatás**|Az oszlop neve|
+|**Darabszám**|Az összes sor száma|
 |**Egyedi értékek száma**|Egyedi értékek száma az oszlopban|
 |**Hiányzó értékek száma**|Egyedi értékek száma az oszlopban|
 |**Min**|Legalacsonyabb érték az oszlopban|  
 |**Max**|Legmagasabb érték az oszlopban|
-|**Középérték**|Az összes oszlop értékének középértéke|
+|**Értem**|Az összes oszlop értékének középértéke|
 |**Középérték szórása**|Oszlop értékeinek szórása|
 |**1. kvartilis**|Érték az első kvartilis|
 |**Medián**|Medián oszlop értéke|

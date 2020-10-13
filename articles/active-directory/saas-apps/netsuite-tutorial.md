@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554515"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940786"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -96,7 +96,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
     * Az **<`Instance ID`>** értéket a NetSuite konfigurációs szakaszban találja meg, amelyet később az oktatóanyagban, a NetSuite-konfiguráció alatt, a 8. lépésben ismertetünk. Itt megtalálja a pontos tartományt (például system.na0.netsuite.com ebben az esetben).
 
-        ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/domain-value.png)
+        ![Képernyőfelvétel: SAML-telepítési oldal, ahol a tartományt szerezheti be.](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > Az előző URL-címek értékei nem valósak. Frissítse őket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a [NetSuite ügyfél-támogatási csapathoz](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
@@ -107,7 +107,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum |
+    | Name (Név) | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -164,31 +164,31 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
 2. A felső navigációs sávon válassza a **beállítás**lehetőséget, majd válassza a **vállalat**  >  **engedélyezése funkciók**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![A képernyőképen a vállalattól kiválasztott szolgáltatások engedélyezése látható.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. Az oldal közepén található eszköztáron válassza a **SuiteCloud**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![A képernyőképen a kiválasztott SuiteCloud látható.](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. A **hitelesítés kezelése**területen jelölje be az **SAML egyszeri bejelentkezés** jelölőnégyzetet az SAML egyszeri bejelentkezés beállítás engedélyezéséhez a NetSuite-ban.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![Képernyőfelvétel: az SAML egyszeri bejelentkezés kiválasztásához használható hitelesítés kezelése.](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. A felső navigációs sávon válassza a **telepítés**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-setup.png)
+    ![Képernyőfelvétel: a rendszer a NETSUITE navigációs sávon kiválasztott telepítőt jeleníti meg.](./media/NetSuite-tutorial/ns-setup.png)
 
 6. A **beállítási feladatok** listában válassza az **integráció**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-integration.png)
+    ![A képernyőképen a telepítési feladatokból kiválasztott integráció látható.](./media/NetSuite-tutorial/ns-integration.png)
 
 7. A **hitelesítés kezelése**területen válassza az **SAML egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-saml.png)
+    ![Képernyőfelvétel: a beállítási feladatok integrációs eleméből kiválasztott SAML egyszeri bejelentkezés.](./media/NetSuite-tutorial/ns-saml.png)
 
 8. Az **SAML beállítása** ablaktábla **NetSuite konfigurálása**területén tegye a következőket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![Képernyőfelvétel: SAML-beállítás, ahol megadhatja a leírt értékeket.](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. Jelölje be az **elsődleges hitelesítési módszer** jelölőnégyzetet.
 
@@ -198,9 +198,9 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
 9. A NetSuite felső navigációs sávban válassza a **beállítás**, majd a **vállalati**  >  **vállalati adatok**elemet.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-com.png)
+    ![A képernyőképen a vállalattól kiválasztott vállalati információk láthatók.](./media/NetSuite-tutorial/ns-com.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-account-id.png)
+    ![Képernyőfelvétel: az a panel, amelyen megadhatja a leírt értékeket.](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. A **Vállalati információk** ablaktáblán, a jobb oldali oszlopban másolja ki a **fiókazonosító** értékét.
 
@@ -210,23 +210,23 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     a. A felső navigációs sávon válassza a **telepítés**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-setup.png)
+    ![Képernyőfelvétel: a rendszer a NETSUITE navigációs sávon kiválasztott telepítőt jeleníti meg.](./media/NetSuite-tutorial/ns-setup.png)
 
     b. A bal oldali ablaktáblán válassza a **felhasználók/szerepkörök**, majd a **Szerepkörök kezelése**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![Képernyőfelvétel: a Szerepkörök kezelése panel, ahol új szerepkört választhat.](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. Válassza az **Új szerepkör**lehetőséget.
 
     d. Adja meg az új szerepkör **nevét** .
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-new-role.png)
+    ![Képernyőfelvétel: a telepítéskezelő, ahol megadhatja a szerepkör nevét.](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. Kattintson a **Mentés** gombra.
 
     f. A felső navigációs sávon válassza az **engedélyek**lehetőséget. Ezután válassza a **telepítés**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-sso.png)
+    ![Képernyőfelvétel: a telepítés lap, amelyen megadhatja a leírt értékeket.](./media/NetSuite-tutorial/ns-sso.png)
 
     : Válassza az **SAML egyszeri bejelentkezés**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
@@ -234,19 +234,19 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-setup.png)
+    ![Képernyőfelvétel: a rendszer a NETSUITE navigációs sávon kiválasztott telepítőt jeleníti meg.](./media/NetSuite-tutorial/ns-setup.png)
 
     j. A bal oldali ablaktáblán válassza a **felhasználók/szerepkörök**lehetőséget, majd válassza a **felhasználók kezelése**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![Képernyőfelvétel: a felhasználók kezelése panel, ahol kiválaszthatja a Suite demó csapatát.](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. Válasszon ki egy teszt felhasználót, válassza a **Szerkesztés**lehetőséget, majd válassza a **hozzáférés** lapot.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![Képernyőfelvétel: a felhasználók kezelése panel, ahol a szerkesztés lehetőséget választhatja.](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. A **szerepkörök** ablaktáblán rendelje hozzá a létrehozott megfelelő szerepkört.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-add-role.png)
+    ![A képernyőképen az alkalmazottak közül kiválasztott rendszergazda látható.](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. Kattintson a **Mentés** gombra.
 

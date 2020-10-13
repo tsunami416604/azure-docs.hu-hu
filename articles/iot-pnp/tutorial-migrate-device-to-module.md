@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761277"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Oktatóanyag: IoT Plug and Play eszköz konvertálása modulba (C#)
@@ -98,7 +98,7 @@ A minta projekt megnyitása és előkészítése:
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | connectionString |
     | IOTHUB_MODULE_CONNECTION_STRING | A modul-összekapcsolási karakterlánc, amelyet korábban jegyzett készített |
@@ -173,7 +173,7 @@ A szolgáltatás SDK-k lehetővé teszik a csatlakoztatott IoT Plug and Play esz
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | saját modul – eszköz |
     | IOTHUB_CONNECTION_STRING | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
@@ -233,7 +233,7 @@ Az Azure IoT Explorer eszköz használatával a következőket tekintheti meg:
 * IoT Edge modul Twin Property frissítései a IoT Plug and Play értesítéseket aktiválják.
 * A IoT Edge modul reagál a IoT Plug and Play parancsokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hub-modulhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

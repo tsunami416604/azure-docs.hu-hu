@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900286"
 ---
 # <a name="configure-speech-service-containers"></a>Beszédfelismerési szolgáltatás tárolóinak konfigurálása
@@ -50,7 +50,7 @@ Ez a beállítás a következő helyen érhető el:
 
 - Azure Portal: **beszédfelismerés** áttekintése, címkézett `Endpoint`
 
-| Kötelező | Name | Adattípus | Leírás |
+| Kötelező | Name (Név) | Adattípus | Leírás |
 | -------- | ---- | --------- | ----------- |
 | Igen | `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](speech-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -78,7 +78,7 @@ A normál beszédfelismerési tárolók nem használnak bemeneti vagy kimeneti c
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](speech-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek.
 
-| Választható | Name | Adattípus | Leírás |
+| Választható | Name (Név) | Adattípus | Leírás |
 | -------- | ---- | --------- | ----------- |
 | Nem engedélyezett | `Input` | Sztring | A normál beszédfelismerési tárolók nem használják ezt. Az egyéni beszédfelismerési tárolók a [mennyiségi csatlakoztatásokat](#volume-mount-settings)használják.                                                                                    |
 | Választható | `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output` |
@@ -130,7 +130,7 @@ Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 A következő Docker-példák a beszédfelismerési tárolóra vonatkoznak.
 
-## <a name="speech-to-text"></a>[Beszéd – szöveg](#tab/stt)
+## <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>Alapszintű példa a beszédfelismerési szövegre
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speech"></a>[Szöveg – beszéd](#tab/tss)
+## <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>Alapszintű példa szövegről beszédre
 

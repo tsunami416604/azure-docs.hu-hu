@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761141"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
@@ -58,7 +58,7 @@ A fájlmegosztás gyökérkönyvtárában a következő engedélyek szerepelnek:
 - NT AUTHORITY\SYSTEM: (F)
 - LÉTREHOZÓ TULAJDONOS: (OI) (CI) (IO) (F)
 
-|Felhasználók|Meghatározás|
+|Felhasználók|Definíció|
 |---|---|
 |BUILTIN\Rendszergazdák|Minden olyan felhasználó, aki a helyszíni AD DS környezet tartományi rendszergazdái.
 |BUILTIN\Users|Beépített biztonsági csoport az AD-ben. Alapértelmezés szerint NT AUTHORITY\Authenticated-felhasználókat tartalmaz. A hagyományos fájlkiszolgálók esetében kiszolgálónként konfigurálhatja a tagság definícióját. Azure Files esetében nem létezik egy üzemeltetési kiszolgáló, ezért a BUILTIN\Users ugyanazokat a felhasználókat tartalmazza, mint az NT AUTHORITY\Authenticated-felhasználók.|
@@ -102,7 +102,7 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 1. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
 1. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
 1. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a cél felhasználónevet, amely számára engedélyezni kívánja az engedélyek megadását az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-1.    Válassza az **OK** lehetőséget.
+1.    Kattintson az **OK** gombra.
 1.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
 1.    Kattintson az **Alkalmaz** gombra.
 

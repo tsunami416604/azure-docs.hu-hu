@@ -1,7 +1,7 @@
 ---
 title: DNS kezelése Azure AD Domain Serviceshoz | Microsoft Docs
 description: Ismerje meg, hogyan telepítheti a DNS-kiszolgálói eszközöket a DNS kezelésére, és hogyan hozhat létre feltételes továbbítókat egy Azure Active Directory Domain Services felügyelt tartományhoz.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: af321f4e9ef9e340026852a759bb70b9f03c77f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: b347f8043216d4347099d68ff1c62156410582a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722942"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963176"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>DNS felügyelete és feltételes továbbítók létrehozása Azure Active Directory Domain Services felügyelt tartományban
 
@@ -105,7 +105,7 @@ Ha feltételes továbbítót szeretne létrehozni a felügyelt tartományban, ha
 
 A felügyelt tartományhoz csatlakoztatott virtuális gépekről származó más névterekben lévő erőforrások névfeloldását mostantól megfelelően fel kell oldani. A feltételes továbbítóban konfigurált DNS-tartomány lekérdezéseit a rendszer a megfelelő DNS-kiszolgálókhoz továbbítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A DNS kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [DNS-eszközök cikk a TechNeten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753579(v=ws.11)).
 

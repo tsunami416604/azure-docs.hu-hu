@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090635"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963244"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek teljesítménydiagnosztikája
 
@@ -61,7 +61,7 @@ A teljesítmény-diagnosztika közvetlenül a Azure Portal futtatható, ahol át
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>A teljesítmény-diagnosztika telepítése és futtatása a virtuális gépen
 
-A teljesítmény-diagnosztika olyan virtuálisgép-bővítményt telepít, amely egy PerfInsights nevű diagnosztikai eszközt futtat. A PerfInsights [Windows](https://aka.ms/perfinsights) és [Linux](https://aka.ms/perfinsightslinux)rendszereken egyaránt elérhető. A teljesítmény-diagnosztika telepítéséhez és futtatásához kövesse az alábbi lépéseket:
+A teljesítmény-diagnosztika olyan virtuálisgép-bővítményt telepít, amely egy PerfInsights nevű diagnosztikai eszközt futtat. A PerfInsights [Windows](./how-to-use-perfinsights.md) és [Linux](./how-to-use-perfinsights-linux.md)rendszereken egyaránt elérhető. A teljesítmény-diagnosztika telepítéséhez és futtatásához kövesse az alábbi lépéseket:
 
 1. A parancsok bal oldali oszlopában válassza a **virtuális gépek**lehetőséget.
 1. A virtuális gépek neveinek listájából válassza ki azt a virtuális gépet, amelyen diagnosztikát kíván futtatni.
@@ -91,16 +91,16 @@ A teljesítmény-diagnosztika olyan virtuálisgép-bővítményt telepít, amely
 A következő elemzési forgatókönyvek érhetők el a Azure Portal. A teljesítménnyel kapcsolatos problémától függően válasszon ki egy elemzést. Adja meg az elemzéshez szükséges időtartamot és nyomkövetési beállításokat.
 
 * **Gyors teljesítmény elemzése**  
-    Ellenőrzi az ismert problémákat, elemzi az ajánlott eljárásokat, és gyűjti a diagnosztikai adatokat. Ez az elemzés több percet is igénybe vehet. További információ Windows vagy [Linux](https://aka.ms/perfinsightslinux/quick) [rendszerről](https://aka.ms/perfinsights/quick)
+    Ellenőrzi az ismert problémákat, elemzi az ajánlott eljárásokat, és gyűjti a diagnosztikai adatokat. Ez az elemzés több percet is igénybe vehet. További információ Windows vagy [Linux](./how-to-use-perfinsights-linux.md) [rendszerről](./how-to-use-perfinsights.md)
 
 * **Teljesítmény elemzése**  
-    A a gyors teljesítmény elemzését és a nagy erőforrás-használatot figyelő összes ellenőrzést tartalmazza. Ezzel a verzióval elháríthatja az általános teljesítménnyel kapcsolatos problémákat, például a nagy CPU-, memória-és lemezhasználat-használatot. Ez az elemzés 30 másodperctől 15 percet vesz igénybe a kiválasztott időtartamtól függően. További információ Windows vagy [Linux](https://aka.ms/perfinsightslinux/vmslow) [rendszerről](https://aka.ms/perfinsights/vmslow)
+    A a gyors teljesítmény elemzését és a nagy erőforrás-használatot figyelő összes ellenőrzést tartalmazza. Ezzel a verzióval elháríthatja az általános teljesítménnyel kapcsolatos problémákat, például a nagy CPU-, memória-és lemezhasználat-használatot. Ez az elemzés 30 másodperctől 15 percet vesz igénybe a kiválasztott időtartamtól függően. További információ Windows vagy [Linux](./how-to-use-perfinsights-linux.md) [rendszerről](./how-to-use-perfinsights.md)
 
 * **Fejlett teljesítmény-elemzés**`*`  
-    A a teljesítmény elemzésének összes ellenőrzését tartalmazza, és egy vagy több nyomkövetést gyűjt, ahogy az a következő részekben is látható. Ez a forgatókönyv a további nyomkövetést igénylő összetett problémák elhárítására használható. A forgatókönyv hosszabb időszakokra való futtatása a virtuális gép méretétől és a kiválasztott nyomkövetési beállításoktól függően növeli a diagnosztika kimenetének teljes méretét. Ez az elemzés 30 másodperctől 15 percet vesz igénybe, a kiválasztott időtartamtól függően. [További információ](https://aka.ms/perfinsights/advanced)
+    A a teljesítmény elemzésének összes ellenőrzését tartalmazza, és egy vagy több nyomkövetést gyűjt, ahogy az a következő részekben is látható. Ez a forgatókönyv a további nyomkövetést igénylő összetett problémák elhárítására használható. A forgatókönyv hosszabb időszakokra való futtatása a virtuális gép méretétől és a kiválasztott nyomkövetési beállításoktól függően növeli a diagnosztika kimenetének teljes méretét. Ez az elemzés 30 másodperctől 15 percet vesz igénybe, a kiválasztott időtartamtól függően. [További információ](./how-to-use-perfinsights.md)
 
 * **Azure Files elemzése**`*`  
-    A teljesítmény elemzésének összes ellenőrzését tartalmazza, és rögzíti a hálózati nyomkövetési és SMB-számlálókat. Ez a forgatókönyv az Azure Files teljesítményének hibakeresésére használható. Ez az elemzés 30 másodperctől 15 percet vesz igénybe, a kiválasztott időtartamtól függően. [További információ](https://aka.ms/perfinsights/azurefiles)
+    A teljesítmény elemzésének összes ellenőrzését tartalmazza, és rögzíti a hálózati nyomkövetési és SMB-számlálókat. Ez a forgatókönyv az Azure Files teljesítményének hibakeresésére használható. Ez az elemzés 30 másodperctől 15 percet vesz igénybe, a kiválasztott időtartamtól függően. [További információ](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] Ezek az elemzési forgatókönyvek csak Windows rendszeren támogatottak.

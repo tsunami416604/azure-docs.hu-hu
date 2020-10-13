@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707815"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Google Cloud (G Suite) összekötővel
@@ -160,7 +160,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     ```
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A Google Cloud (G Suite) összekötő nem ad meg entitás-azonosító/azonosító értéket az egyszeri bejelentkezés konfigurációjában, így ha törli a **tartományi specifikus kiállítói** beállítást, az azonosító értéke a következő lesz: `google.com` . Ha bejelöli a **tartományra jellemző kiállítói** lehetőséget, az lesz `google.com/a/<yourdomainname.com>` . A **tartomány-specifikus kiállítói** beállítás bejelöléséhez vagy a kijelölés kikapcsolásához lépjen a **Google Cloud (G Suite)-összekötő egyszeri bejelentkezésre szolgáló SSO** szakaszra, amelyet az oktatóanyag későbbi részében ismertet. További információért forduljon a [Google Cloud (G Suite) Connector ügyfél-támogatási csapatához](https://www.google.com/contact/).
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel és azonosítóval. A Google Cloud (G Suite) összekötő nem ad meg entitás-azonosító/azonosító értéket az egyszeri bejelentkezés konfigurációjában, így ha törli a **tartományi specifikus kiállítói** beállítást, az azonosító értéke a következő lesz: `google.com` . Ha bejelöli a **tartományra jellemző kiállítói** lehetőséget, az lesz `google.com/a/<yourdomainname.com>` . A **tartomány-specifikus kiállítói** beállítás bejelöléséhez vagy a kijelölés kikapcsolásához lépjen a **Google Cloud (G Suite)-összekötő egyszeri bejelentkezésre szolgáló SSO** szakaszra, amelyet az oktatóanyag későbbi részében ismertet. További információért forduljon a [Google Cloud (G Suite) Connector ügyfél-támogatási csapatához](https://www.google.com/contact/).
 
 1. A Google Cloud (G Suite) Connector-alkalmazás megadott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. A következő képernyőképen egy példa látható. Az **egyedi felhasználói azonosító** alapértelmezett értéke a **User. userPrincipalName** , de a Google Cloud (G Suite) összekötő arra vár, hogy a felhasználó e-mail-címével legyen leképezve. Ehhez használhatja a **User. mail** attribútumot a listából, vagy használhatja a megfelelő attribútumot a szervezeti konfiguráció alapján.
 
@@ -185,7 +185,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

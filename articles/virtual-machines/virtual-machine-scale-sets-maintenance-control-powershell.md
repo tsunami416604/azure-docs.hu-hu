@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 62b2fd0554c218b733501805779745049d3b8c92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8acab17e9d8dfc078b46f6a279cc671a70b0a50
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532641"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974838"
 ---
 # <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Előzetes verzió: az operációsrendszer-rendszerkép frissítésének karbantartási szabályozása Azure-beli virtuálisgép-méretezési csoportokon a PowerShell használatával
 
@@ -44,7 +44,7 @@ Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárbó
 
 ## <a name="connect-to-an-azure-account"></a>Kapcsolódás Azure-fiókhoz
 
-Kapcsolódjon a kívánt Azure-fiókhoz a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) és a [set-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext)használatával.
+Kapcsolódjon a kívánt Azure-fiókhoz a [AzAccount](/powershell/module/az.accounts/connect-azaccount) és a [set-AzAccount](/powershell/module/az.accounts/set-azcontext)használatával.
 
 ```azurepowershell-interactive
 Connect-AzAccount

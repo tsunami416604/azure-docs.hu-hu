@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549092"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941058"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Mimecast Personal Portalon
 
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | Region  |  Érték | 
+    | Régió  |  Érték | 
     | --------------- | --------------- |
     | Európa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Egyesült Államok   | `https://us-api.mimecast.com/sso/<accountcode>`|
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
 
-    | Region  |  Érték |
+    | Régió  |  Érték |
     | --------------- | --------------- |
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
@@ -105,7 +105,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet:
 
-    | Region  |  Érték |
+    | Régió  |  Érték |
     | --------------- | --------------- |
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
@@ -129,7 +129,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -155,23 +155,23 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Navigáljon a **felügyeleti**  >  **szolgáltatások**  >  **alkalmazásaihoz**.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/services.png)
+    ![Képernyőfelvétel: a Mimecast ablak megjelenítése a kiválasztott alkalmazásokkal.](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. Kattintson a **hitelesítési profilok** fülre.
     
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![A képernyőképen a kiválasztott hitelesítési profilok alkalmazás lap látható.](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. Kattintson az **új hitelesítési profil** fülre.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![A képernyőképen a kiválasztott új hitelesítési profil látható.](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. Adjon meg egy érvényes leírást a **Leírás** szövegmezőben, és válassza az **SAML-hitelesítés kikényszerítés a Mimecast személyes portálon** jelölőnégyzetet.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![A képernyőképen a kiválasztott új hitelesítési profil látható.](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. A **Mimecast Personal Portal SAML-konfigurációja** lapon hajtsa végre a következő lépéseket:
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![A képernyőképen látható, hogy hol válassza ki az SAML-hitelesítés kikényszerített felügyeleti konzolját.](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. A **szolgáltatónál**válassza a legördülő listából a **Azure Active Directory** elemet.
 
@@ -189,19 +189,19 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Navigáljon az **adminisztrációs**  >  **könyvtárak**  >  **belső könyvtáraihoz**.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![A képernyőfelvételen a Mimecast személyes portál SAML-konfigurációja látható, ahol megadhatja a leírt értékeket.](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. Válassza ki a tartományt, ha a tartomány alább szerepel, máskülönben hozzon létre egy új tartományt az **új tartományra**kattintva.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![A képernyőképen a Mimecast ablak látható, amelyen belső könyvtárak vannak kiválasztva.](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. Kattintson az **új címek** fülre.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![Képernyőfelvétel: a kiválasztott tartomány.](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. Adja meg a szükséges felhasználói adatokat a következő oldalon:
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![Képernyőfelvétel: az a lap, amelyen megadhatja a leírt értékeket.](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. Az **E-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például: `B.Simon@yourdomainname.com` .
 
@@ -215,7 +215,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     f. Ha szerepköröket szeretne hozzárendelni a felhasználóhoz, kattintson a **szerepkör szerkesztése** lehetőségre, és rendelje hozzá a szükséges szerepkört a felhasználóhoz a szervezete követelményeinek megfelelően.
 
-    ![Mimecast személyes portál konfigurálása](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![A képernyőfelvételen megtekintheti a szerepkör-szerkesztés lehetőséget.](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 

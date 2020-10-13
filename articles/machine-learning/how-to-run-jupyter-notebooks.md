@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
 ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460033"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
@@ -145,7 +145,7 @@ Válassza az **ellenőrzőpontok** lehetőséget a notebook menüben egy elnevez
 
 ### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
 
-|Billentyűzet  |Műveletek  |
+|Billentyűzet  |Művelet  |
 |---------|---------|
 |SHIFT + ENTER     |  Cella futtatása       |
 |CTRL + SZÓKÖZ | IntelliSense aktiválása |
@@ -185,14 +185,14 @@ A notebook eszköztár lehetővé teszi, hogy megváltoztassa a környezetet, am
 
 Ezek a műveletek nem változtatják meg a jegyzetfüzet állapotát vagy a jegyzetfüzetben lévő változók értékeit:
 
-|Műveletek  |Eredmény  |
+|Művelet  |Eredmény  |
 |---------|---------| --------|
 |A kernel leállítása     |  Leállítja a futó cellákat. A cella futtatása automatikusan újraindítja a rendszermagot. |
 |Navigáljon egy másik munkaterület szakaszhoz     |     A futó cellák le vannak állítva. |
 
 Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a jegyzetfüzetben lévő összes változót visszaállítják.
 
-|Műveletek  |Eredmény  |
+|Művelet  |Eredmény  |
 |---------|---------| --------|
 | A kernel módosítása | A jegyzetfüzet új kernelt használ |
 | Számítás váltása    |     A jegyzetfüzet automatikusan az új számítást használja. |
@@ -247,7 +247,7 @@ A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
 A számítási példányok részleteit a [Studióban](https://ml.azure.com), a **számítási** oldalon találhatja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az első kísérlet futtatása](tutorial-1st-experiment-sdk-train.md)
 * [A file Storage biztonsági mentése pillanatképekkel](../storage/files/storage-snapshots-files.md)

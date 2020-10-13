@@ -9,10 +9,10 @@ ms.date: 9/24/2020
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 0b99ce2afcdb5fd7462827fb9893e34577fc6c02
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371201"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
@@ -23,7 +23,7 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 A következő Azure File Sync-ügynök verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott |
 | 2020. május kumulatív frissítés – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | Május 19., 2020 | Támogatott |
@@ -35,7 +35,7 @@ A következő Azure File Sync-ügynök verziói támogatottak:
 ## <a name="unsupported-versions"></a>Nem támogatott verziók
 A következő Azure File Sync ügynök verziói lejártak, és már nem támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
 | V7-kiadás | 7.0.0.0 - 7.2.0.0 | N.A. | Nem támogatott – az ügynök verziói 2020 szeptember 1-jén elévültek |
 | V6-os kiadás | 6.0.0.0 – 6.3.0.0 | N.A. | Nem támogatott – az ügynök verziószáma 2020. április 21-én lejárt |
@@ -175,8 +175,8 @@ A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójá
  
         A hálózati kapcsolati teszt futtatásához futtassa a következő PowerShell-parancsokat: 
  
-        "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll" modul importálása  
-        Teszt – StorageSyncNetworkConnectivity
+        Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"  
+        Test-StorageSyncNetworkConnectivity
  
 - A kiszolgálói végpontok javításának eltávolítása, ha engedélyezve van a felhőalapú rétegek használata 
     - Ahogy korábban is, a kiszolgálói végpont eltávolítása nem eredményezi a fájlok eltávolítását az Azure-fájlmegosztás során. A helyi kiszolgálón található újraelemzési pontok viselkedése azonban megváltozott. A kiszolgálói végpontok eltávolításakor a rendszer törli az újraelemzési pontokat (a kiszolgálón nem helyi fájlok mutatóit). A teljes gyorsítótárban lévő fájlok a kiszolgálón maradnak. Ezzel a fejlesztéssel megakadályozható, hogy a rendszer az [árva rétegekből álló fájlokat](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) a kiszolgálói végpontok eltávolításakor megakadályozza. Ha a kiszolgálói végpontot újra létrehozza, a rendszer újból létrehozza a lépcsőzetes fájlok újraelemzési pontjait a kiszolgálón.  

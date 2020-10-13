@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611112"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
@@ -80,7 +80,7 @@ Ha le szeretné tölteni az oktatóanyagban felépített alkalmazás befejezett 
 
 7. A képernyő felső részén található **új felület** kiválasztásával nyissa meg az új alkalmazás regisztrációs élményét, majd válassza az **+ új regisztráció**  >  **+ platform hozzáadása**  >  **iOS/MacOS**lehetőséget.
     - Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, akkor ez a következő: `com.microsoft.identitysample.MSALiOS` . Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
-8. Válassza ki `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később az alkalmazás konfigurálásakor is megadhatja. Válassza a **Kész** lehetőséget.
+8. Válassza ki `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később az alkalmazás konfigurálásakor is megadhatja. Válassza a **Done** (Kész) lehetőséget.
 
 ## <a name="add-msal"></a>MSAL hozzáadása
 

@@ -14,10 +14,10 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91529830"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
@@ -58,18 +58,18 @@ Ezért az ügyfélnek kell elolvasnia az SAP HANAhoz kapcsolódó SAP-megjegyzé
 
 Pontosan vizsgálja meg a következő paramétereket, és végül a következőhöz igazodva:
 
-- net. Core. rmem_max = 16777216
-- net. Core. wmem_max = 16777216
-- net. Core. rmem_default = 16777216
-- net. Core. wmem_default = 16777216
-- net. Core. optmem_max = 16777216
-- net. IPv4. tcp_rmem = 65536 16777216 16777216
-- net. IPv4. tcp_wmem = 65536 16777216 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
+- net.core.rmem_default = 16777216
+- net.core.wmem_default = 16777216
+- net.core.optmem_max = 16777216
+- net.ipv4.tcp_rmem = 65536 16777216 16777216
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
 A SLES12 SP1 és a RHEL 7,2 verziótól kezdődően ezeket a paramétereket be kell állítani egy konfigurációs fájlban a/etc/sysctl.d könyvtárban. Például létre kell hozni egy 91-NetApp-HANA. conf nevű konfigurációs fájlt. A régebbi SLES és RHEL kiadások esetében ezeket a paramétereket a/etc/sysctl. conf fájlban kell megadni.
 
 A RHEL 6,3-től kezdődően az összes RHEL-kiadás esetében vegye figyelembe a következőket: 
-- A sunrpc. tcp_slot_table_entries = 128 paramétert a/etc/modprobe. d/sunrpc-local. conf fájlban kell megadni. Ha a fájl nem létezik, először létre kell hoznia a bejegyzést a következő bejegyzés hozzáadásával: 
+- A sunrpc.tcp_slot_table_entries = 128 paramétert be kell állítani a/etc/modprobe. d/sunrpc-local. conf fájlban. Ha a fájl nem létezik, először létre kell hoznia a bejegyzést a következő bejegyzés hozzáadásával: 
     - beállítások sunrpc tcp_max_slot_table_entries = 128
 
 Az **ötödik lépés** a HANA nagyméretű példány-egység rendszeridejének ellenõrzése. A példányok rendszer-időzónával vannak telepítve. Ez az időzóna annak az Azure-régiónak a helyét jelöli, amelyben a HANA nagyméretű példányának bélyegzője található. Módosíthatja a saját példányok rendszeridejét vagy időzónáját. 

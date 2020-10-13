@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554464"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az új ereklye fiókkal
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -134,7 +134,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüben kattintson a **Fiókbeállítások**lehetőségre.
    
-    ![Fiókbeállítások](./media/new-relic-tutorial/ic797036.png "Fiókbeállítások")
+    ![Képernyőfelvétel: a kiválasztott fiók beállításait tartalmazó üdvözlő oldal.](./media/new-relic-tutorial/ic797036.png "Fiókbeállítások")
 
 3. Kattintson a **Biztonság és hitelesítés** lapra, majd kattintson az **egyszeri bejelentkezés** fülre.
    
@@ -158,11 +158,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüben kattintson a **Fiókbeállítások**lehetőségre.
    
-    ![Fiókbeállítások](./media/new-relic-tutorial/ic797040.png "Fiókbeállítások")
+    ![A képernyőképen az üdvözlőlapon kiválasztott Fiókbeállítások láthatók.](./media/new-relic-tutorial/ic797040.png "Fiókbeállítások")
 
 3. A bal oldali **fiók** ablaktáblán kattintson az **Összefoglalás**, majd a **felhasználó hozzáadása**elemre.
    
-    ![Fiókbeállítások](./media/new-relic-tutorial/ic797041.png "Fiókbeállítások")
+    ![Képernyőfelvétel: az összefoglalás panel, ahol kiválaszthatja a felhasználó hozzáadása elemet.](./media/new-relic-tutorial/ic797041.png "Fiókbeállítások")
 
 4. Az **aktív felhasználók** párbeszédpanelen hajtsa végre a következő lépéseket:
    

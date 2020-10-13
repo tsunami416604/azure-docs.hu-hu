@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756690"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974719"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -62,7 +62,7 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis.
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Name (Név)|Verziók|
+|Publisher|Name|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|
@@ -116,9 +116,7 @@ A vendég-konfigurációs házirendek a **AuditIfNotExists** hatást használjá
 A **AuditIfNotExists** szabályzatok nem adják vissza a megfelelőségi eredményeket, amíg az összes követelmény nem teljesül a gépen. A követelményekről az Azure-beli [virtuális gépek üzembe helyezési követelményei](#deploy-requirements-for-azure-virtual-machines) című szakaszban olvashat.
 
 > [!IMPORTANT]
-> A vendég konfigurációjának előzetes kiadásában egy kezdeményezésre volt szükség a **DeployIfNoteExists** és a **AuditIfNotExists** -definíciók összevonásához. A **DeployIfNotExists** -definíciók már nem szükségesek. A definíciók és a intiaitives címkével vannak ellátva, `[Deprecated]` de a meglévő hozzárendelések továbbra is működni fognak.
->
-> Manuális lépésre van szükség. Ha korábban már hozzárendelte a házirend-kezdeményezéseket a kategóriában `Guest Configuration` , törölje a szabályzat-hozzárendelést, és rendelje hozzá az új definíciót. A vendég-konfigurációs szabályzatok neve a következő: `Audit <Windows/Linux> machines that <non-compliant condition>`
+> A vendég konfigurációjának előzetes kiadásában egy kezdeményezésre volt szükség a **DeployIfNoteExists** és a **AuditIfNotExists** -definíciók összevonásához. A **DeployIfNotExists** -definíciók már nem szükségesek. A definíciók és a intiaitives címkével vannak ellátva, `[Deprecated]` de a meglévő hozzárendelések továbbra is működni fognak. További információért lásd a következő blogbejegyzéset: a [vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure Policy a vendég konfigurációja erőforrás-szolgáltató **complianceStatus** tulajdonságot **használja a megfelelőségi csomópont** megfelelőségének jelentéséhez. További információ: a [megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md).
 
@@ -195,7 +193,7 @@ A vendég konfiguráció beépített házirendjének mintái a következő helys
 - [Beépített kezdeményezések – vendég konfigurációja](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan tekintheti meg az egyes beállításokat a [vendég konfiguráció megfelelősége nézetből](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

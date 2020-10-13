@@ -2,19 +2,19 @@
 title: Csoportos csevegési minta
 titleSuffix: An Azure Communication Services sample overview
 description: Az Azure kommunikációs szolgáltatásokat használó csevegési Hero-minta áttekintése, amely lehetővé teszi a fejlesztők számára, hogy többet tudjanak megtudni a minta belső működéséről, és megtudja, hogyan módosíthatja azt.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0a01036eb4856d9fd306a50958285bd469791f24
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823873"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962989"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -82,7 +82,6 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 2. `git clone https://github.com/Azure/Communication.git`
 3. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
 4. A `Connection String` hozzáadását követően adja hozzá a kapcsolódási karakterláncot a csevegés mappájában található **appsettings.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
-5. Frissítse a ENVIRONMENT_URLt `./Chat/ClientApp/src/constants.tsx` az erőforrás helyeként. (például https://<RESOURCE_NAME>. communication.azure.com)
 
 ### <a name="local-run"></a>Helyi futtatás
 
@@ -101,7 +100,7 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 2. Hozzon létre egy új közzétételi profilt, és válassza ki az Azure-előfizetését.
 3. A közzététel előtt adja hozzá a (z `Edit App Service Settings` ) és a (z), és adja meg a `ResourceConnectionString` (z) kulcsot, és adja meg a (appsettings.json) értéket a (z) értékként.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
@@ -110,7 +109,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - Tudnivalók a [csevegési fogalmakról](../concepts/chat/concepts.md)
 - Ismerkedjen meg a [csevegő ügyféloldali függvénytárával](../concepts/chat/sdk-features.md)

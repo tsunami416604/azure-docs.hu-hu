@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552560"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Oktatóanyag: Azure Active Directory integráció N2F-költségelszámolás
 
@@ -99,11 +99,11 @@ Az Azure AD egyszeri bejelentkezés N2F-jelentésekkel való konfigurálásához
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, a felhasználónak nem kell végrehajtania a lépéseket, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-    ![N2F – a költségekről szóló jelentések tartománya és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
+    ![Képernyőfelvétel: az SAML-alapú bejelentkezési oldal, amely alapszintű SAML-konfigurációt mutat be.](common/preintegrated.png)
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![N2F – a költségekről szóló jelentések tartománya és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: az integrációs oldal, amelyen hozzáadhatja az Azure D egyszeri bejelentkezést.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://www.n2f.com/app/`
 
@@ -127,23 +127,23 @@ Az Azure AD egyszeri bejelentkezés N2F-jelentésekkel való konfigurálásához
 
 2. Kattintson a **Beállítások** elemre, majd válassza a legördülő menüből az **előre megadott beállítások** lehetőséget.
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Képernyőfelvétel: kijelölt speciális beállítások.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Válassza a **Fiókbeállítások** lapot.
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/configure2.png)
+    ![Képernyőfelvétel: kiválasztott Fiókbeállítások.](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. Válassza a **hitelesítés** lehetőséget, majd válassza **a + hitelesítési módszer hozzáadása** fület.
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/configure3.png)
+    ![Képernyőfelvétel: a fiók beállításának hitelesítése, amely a hitelesítési módszer hozzáadására használható.](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. Hitelesítési módszerként válassza az **SAML Microsoft Office 365** lehetőséget.
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/configure4.png)
+    ![A képernyőfelvételen az SAML Microsoft Office 365 kiválasztva jelenik meg a hitelesítési módszer.](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. A **hitelesítési módszer** szakaszban hajtsa végre a következő lépéseket:
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/configure5.png)
+    ![Képernyőfelvétel: a hitelesítési módszer, ahol megadhatja a leírt értékeket.](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. Az **entitás-azonosító** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 
@@ -174,7 +174,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -212,19 +212,19 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a N2
 
 2. Kattintson a **Beállítások** elemre, majd válassza a legördülő menüből az **előre megadott beállítások** lehetőséget.
 
-    ![N2F – felhasználói költség hozzáadása](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Képernyőfelvétel: kijelölt speciális beállítások.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Válassza a **felhasználók** fület a bal oldali navigációs panelen.
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/user1.png)
+    ![Képernyőfelvétel: a kiválasztott felhasználók.](./media/n2f-expensereports-tutorial/user1.png)
 
 4. Válassza az **+ új felhasználó** fület.
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/user2.png)
+    ![A képernyőképen az új felhasználói lehetőség látható.](./media/n2f-expensereports-tutorial/user2.png)
 
 5. A **felhasználó** szakaszban hajtsa végre a következő lépéseket:
 
-    ![N2F – költségekkel kapcsolatos jelentések konfigurálása](./media/n2f-expensereports-tutorial/user3.png)
+    ![Képernyőfelvétel: az a szakasz, ahol megadhatja a leírt értékeket.](./media/n2f-expensereports-tutorial/user3.png)
 
     a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például **brittasimon \@ contoso.com**.
 

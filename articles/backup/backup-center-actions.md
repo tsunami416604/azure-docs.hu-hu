@@ -7,7 +7,7 @@ ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854426"
 ---
 # <a name="perform-actions-using-backup-center"></a>Műveletek végrehajtása a Backup Center használatával
@@ -134,7 +134,7 @@ Igény szerinti biztonsági mentés elindításához navigáljon a Backup Center
 
 [További információ a Azure Database for PostgreSQL-kiszolgáló biztonsági mentésének leállításáról](backup-azure-database-postgresql.md#stop-protection)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonsági másolatok figyelése és üzemeltetése](backup-center-monitor-operate.md)
 * [A biztonsági mentési hagyaték szabályozása](backup-center-govern-environment.md)

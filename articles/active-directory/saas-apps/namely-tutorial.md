@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552473"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Oktatóanyag: Azure Active Directory integráció a következőkkel
 
@@ -128,19 +128,19 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
 
 2. A felső eszköztáron kattintson a **vállalat**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Képernyőfelvétel: a kiválasztott vállalat értéke.](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. Kattintson a **Beállítások** fülre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Képernyőfelvétel: a vállalati beállítások lap van kiválasztva.](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. Kattintson az **SAML**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Képernyőfelvétel: SAML kiválasztva.](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. Az **SAML-beállítások** lapon hajtsa végre a következő lépéseket:
    
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Képernyőfelvétel: SAML-beállítások, ahol megadhatja a leírt értékeket.](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Kattintson az **SAML engedélyezése**lehetőségre. 
 
@@ -173,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -211,15 +211,15 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót, azaz.
 
 2. A felső eszköztáron kattintson a **személyek**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![A képernyőfelvételen a kiválasztott személyek érték látható.](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. Kattintson a **könyvtár** fülre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Képernyőfelvétel: a People (személyek) lap van kiválasztva.](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. Kattintson az **új személy hozzáadása**lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/namely-tutorial/tutorial_namely_12.png)
+    ![A képernyőképen az új személy hozzáadása lehetőség látható.](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. Az **új személy hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 

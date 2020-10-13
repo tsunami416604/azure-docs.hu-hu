@@ -2,20 +2,20 @@
 title: Erőforrás-erdővel kapcsolatos fogalmak a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogy milyen erőforrás-erdő van Azure Active Directory Domain Servicesban, és hogy miként használják a céget a korlátozott felhasználói hitelesítési lehetőségekkel vagy biztonsági kérdésekkel rendelkező hibrid környezetben.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 1f8c09e7e260d22aa6864327d6a890ef3beaa039
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396399"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962513"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
 
