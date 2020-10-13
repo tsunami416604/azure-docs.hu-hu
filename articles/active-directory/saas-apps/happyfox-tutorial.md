@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550720"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Oktatóanyag: Azure Active Directory integráció a HappyFox
 
@@ -132,19 +132,19 @@ Az Azure AD egyszeri bejelentkezés HappyFox való konfigurálásához hajtsa v�
 
 2. Navigáljon a **kezelés**elemre, majd kattintson az **integrációk** fülre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/happyfox-tutorial/header.png) 
+    ![Képernyőfelvétel: a "Manage" (kezelés) lap, amelyen az "integrációk" lap van kiválasztva.](./media/happyfox-tutorial/header.png) 
 
 3. Az integrációk lapon kattintson a **Konfigurálás** az **SAML-integráció** alatt elemre az egyszeri bejelentkezés beállításainak megnyitásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/happyfox-tutorial/configure.png)
+    ![Képernyőkép, amely az "S A M L Integration" beállítást mutatja be a "Konfigurálás" művelet kiválasztásával.](./media/happyfox-tutorial/configure.png)
 
 4. Az SAML-konfiguráció szakaszban illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal az **SSO cél URL-címe** szövegmezőbe másolt.
 
-    ![Egyetlen Sign-On konfigurálása](./media/happyfox-tutorial/targeturl.png)
+    ![Képernyőfelvétel: "S A M L konfiguráció" szakasz, az "S S O cél U R L" szövegmező kiemelve.](./media/happyfox-tutorial/targeturl.png)
 
 5. Nyissa meg Azure Portal a Jegyzettömbben letöltött tanúsítványt, és illessze be a tartalmát a **identitásszolgáltató Signature** szakaszba.
 
-    ![Egyetlen Sign-On konfigurálása](./media/happyfox-tutorial/cert.png)
+    ![Képernyőfelvétel: a "I d P-aláírás" szakasz kiemelve.](./media/happyfox-tutorial/cert.png)
 
 6. Kattintson a **Beállítások mentése** gombra.
 
@@ -173,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
 ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448803"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
@@ -88,7 +88,7 @@ Ha a Azure Portal használatával kívánja helyreállítani az adatbázist egy 
 
   ![Képernyőkép a SQL Database adatbázis-visszaállítási lehetőségeiről.](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 Felügyelt példány adatbázisának egy időpontra történő helyreállításához a Azure Portal segítségével nyissa meg az adatbázis-áttekintés lapot, és válassza a **visszaállítás** lehetőséget az eszköztáron. Válassza ki azt az időponthoz tartozó biztonsági mentési pontot, amelyből új adatbázist kíván létrehozni.
 
@@ -114,7 +114,7 @@ Ha a törölt adatbázist a Azure Portal használatával szeretné visszaállít
 
   ![Képernyőfelvétel a törölt adatbázis visszaállításáról](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 Felügyelt adatbázis helyreállításához a Azure Portal segítségével nyissa meg a felügyelt példányok áttekintése lapot, és válassza a **törölt adatbázisok**lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
 
@@ -128,7 +128,7 @@ A következő parancsfájlokkal visszaállíthat egy törölt adatbázist SQL Da
 
 A törölt adatbázisok Azure SQL Database-ben való visszaállítását bemutató minta PowerShell-parancsfájlhoz lásd: [adatbázis visszaállítása a PowerShell használatával](scripts/restore-database-powershell.md).
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 A törölt példányok adatbázisának visszaállítását bemutató minta PowerShell-parancsfájlhoz lásd: [példány-adatbázis visszaállítása a PowerShell használatával](../managed-instance/point-in-time-restore.md#restore-a-deleted-database)
 
@@ -163,7 +163,7 @@ Az alábbi lépéseket követve geo-vissza lehet állítani egyetlen adatbázist
 
 Fejezze be az új adatbázis biztonsági másolatból való létrehozásának folyamatát. Amikor Azure SQL Databaseban hoz létre adatbázist, a visszaállított geo-visszaállítási biztonsági másolatot tartalmazza.
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 Felügyelt példányok adatbázisának geo-visszaállítása a Azure Portal egy meglévő felügyelt példányra egy tetszőleges régióban, válassza ki azt a felügyelt példányt, amelyen vissza kívánja állítani az adatbázist. Kövesse az alábbi lépéseket:
 
@@ -182,7 +182,7 @@ Fejezze be az új adatbázis létrehozásának folyamatát. A példány-adatbáz
 
 Egy olyan PowerShell-parancsfájl esetében, amely bemutatja, hogyan végezhető el a Geo-visszaállítás egyetlen adatbázishoz, lásd: [a PowerShell használata egy adott adatbázis egy korábbi időpontra való visszaállításához](scripts/restore-database-powershell.md).
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 A felügyelt példányok adatbázisának geo-visszaállítását bemutató PowerShell-szkriptet a következő témakörben talál: a [felügyelt példányok adatbázisának visszaállítása másik földrajzi régióra a PowerShell használatával](../managed-instance/scripts/restore-geo-backup.md).
 
@@ -221,7 +221,7 @@ A helyreállításhoz Azure PowerShell vagy a REST API is használhatja. A köve
   > [!TIP]
   > Az adatbázisok egy adott időpontban történő visszaállítását bemutató minta PowerShell-parancsfájlt az [adatbázis visszaállítása a PowerShell használatával](scripts/restore-database-powershell.md)című témakörben talál.
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 A felügyelt példányok adatbázisának visszaállításával kapcsolatban lásd: [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
@@ -246,11 +246,11 @@ Adatbázis visszaállítása a REST API használatával:
 
 Az adatbázis az Azure CLI használatával történő visszaállításához lásd [az az SQL db Restore (az SQL adatbázis visszaállítása](/cli/azure/sql/db#az-sql-db-restore)) című témakört.
 
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
+#### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 A felügyelt példányok adatbázisának az Azure CLI használatával történő visszaállításához lásd [az az SQL MidB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
 

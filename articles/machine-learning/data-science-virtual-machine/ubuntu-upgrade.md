@@ -11,13 +11,13 @@ ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828567"
 ---
-# <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Data Science Virtual Machine frissítése Ubuntu 18,04-re
+# <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Adatelemzési virtuális gép frissítése az Ubuntu 18.04-es verziójára
 
 Ha olyan Data Science Virtual Machine fut, amely egy régebbi kiadást futtat, például Ubuntu 16,04 vagy CentOS, akkor telepítse át a DSVM Ubuntu 18,04-ra. Az áttelepítés során a rendszer a legújabb operációsrendszer-javításokat, illesztőprogramokat, előre telepített szoftvereket és a könyvtár verzióit fogja beszerezni. Ebből a dokumentumból megtudhatja, hogyan telepítheti át az Ubuntu régebbi verzióiról vagy a CentOS-ről. 
 

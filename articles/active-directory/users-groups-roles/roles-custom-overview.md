@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 09/12/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8a57f340710144d9c92063d7a181181c3bd7237e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90975555"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971234"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Egyéni rendszergazdai szerepkörök a Azure Active Directoryban (előzetes verzió)
 
-Ez a cikk azt ismerteti, hogyan értelmezhető az Azure AD egyéni szerepkörei a Azure Active Directory (Azure AD) szerepkör-alapú hozzáférés-vezérléssel és erőforrás-hatókörökkel. Az egyéni Azure AD-szerepkörök a [beépített szerepkörök](directory-assign-admin-roles.md)alapjául szolgáló engedélyeket felhasználva hozhatják létre és rendszerezheti saját egyéni szerepköreiket. Ez a megközelítés lehetővé teszi a hozzáférés részletesebb használatát a beépített szerepköröknél, amikor szükségesek. Az Azure AD egyéni szerepköreinek első kiadása magában foglalja az alkalmazások regisztrálásához szükséges engedélyek hozzárendelésére szolgáló szerepkör létrehozását. Idővel a szervezeti erőforrásokhoz (például vállalati alkalmazásokhoz, felhasználókhoz és eszközökhöz) további engedélyek lesznek hozzáadva.  
+Ez a cikk azt ismerteti, hogyan értelmezhető az Azure AD egyéni szerepkörei a Azure Active Directory (Azure AD) szerepkör-alapú hozzáférés-vezérléssel és erőforrás-hatókörökkel. Az egyéni Azure AD-szerepkörök a [beépített szerepkörök](directory-assign-admin-roles.md)alapjául szolgáló engedélyeket felhasználva hozhatják létre és rendszerezheti saját egyéni szerepköreiket. Ez a megközelítés lehetővé teszi a hozzáférés részletesebb használatát a beépített szerepköröknél, amikor szükségesek. Az Azure AD egyéni szerepköreinek első kiadása az alkalmazások regisztrációjának és a vállalati alkalmazások kezelésének engedélyeit tartalmazza. Az idő múlásával további engedélyek is megadhatók más szervezeti erőforrásokhoz.  
 
 Az Azure AD egyéni szerepkörei emellett a hagyományos, szervezeti szintű hozzárendeléseken kívül a hozzárendeléseket is támogatják az erőforrások alapján. Ez a megközelítés lehetővé teszi, hogy hozzáférést biztosítson bizonyos erőforrásokhoz (például egy alkalmazás regisztrálásához) anélkül, hogy hozzáférést kellene adni az összes erőforráshoz (az összes alkalmazás regisztrációja).
 
@@ -34,7 +34,7 @@ Az egyéni Azure AD-szerepkörök használatával történő engedélyek megadá
 
 A szerepkör-definíció létrehozása után hozzárendelheti azt egy felhasználóhoz egy szerepkör-hozzárendelés létrehozásával. A szerepkör-hozzárendelések egy adott hatókörben lévő szerepkör-definícióban lévő engedélyeket biztosítanak a felhasználónak. Ez a kétlépéses folyamat lehetővé teszi, hogy egyetlen szerepkör-definíciót hozzon létre, és több alkalommal rendeljen hozzá különböző hatókörökben. A hatókör határozza meg azon Azure AD-erőforrások készletét, amelyekhez a szerepkör tagja hozzáfér. A leggyakoribb hatókör az egész szervezetre kiterjedő (szervezeti szintű) hatókör. Az egyéni szerepkör a szervezeti szintű hatókörhöz rendelhető, ami azt jelenti, hogy a szerepkör tagja rendelkezik a szervezet összes erőforrásához szükséges szerepkör-jogosultságokkal. Az objektumok hatóköréhez egyéni szerepkör is hozzárendelhető. Egy objektum hatóköre például egyetlen alkalmazás lehet. Ugyanazt a szerepkört hozzárendelheti egy felhasználóhoz a szervezeten belüli összes alkalmazáshoz, majd egy másik felhasználóhoz, amely csak a contoso költségelszámolás alkalmazás hatókörével rendelkezik.  
 
-Az Azure AD beépített és egyéni szerepkörei az [Azure szerepköralapú hozzáférés-vezérléshez (Azure RBAC)](../../role-based-access-control/overview.md)hasonló fogalmakon működnek. A [két szerepköralapú hozzáférés-vezérlési rendszer közötti különbség](../../role-based-access-control/rbac-and-directory-admin-roles.md) az, hogy az Azure RBAC az Azure-erőforrásokhoz, például a virtuális gépekhez vagy a tárolóhoz való hozzáférést az Azure Resource Management használatával szabályozza, az Azure ad egyéni szerepkörei pedig az Azure ad-erőforrásokhoz való hozzáférést Graph API használatával szabályozzák. Mindkét rendszer kihasználja a szerepkör-definíciók és a szerepkör-hozzárendelések fogalmát.
+Az Azure AD beépített és egyéni szerepkörei az [Azure szerepköralapú hozzáférés-vezérléshez (Azure RBAC)](../../role-based-access-control/overview.md)hasonló fogalmakon működnek. A [két szerepköralapú hozzáférés-vezérlési rendszer közötti különbség](../../role-based-access-control/rbac-and-directory-admin-roles.md) az, hogy az Azure RBAC az Azure-erőforrásokhoz, például a virtuális gépekhez vagy a tárolóhoz való hozzáférést az Azure Resource Management használatával szabályozza, az Azure ad egyéni szerepkörei pedig az Azure ad-erőforrásokhoz való hozzáférést Graph API használatával szabályozzák. Mindkét rendszer kihasználja a szerepkör-definíciók és a szerepkör-hozzárendelések fogalmát. Az Azure AD RBAC engedélyei nem szerepelhetnek az Azure RBAC szerepköreiben, és fordítva.
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Hogyan határozza meg az Azure AD, hogy egy felhasználó hozzáfér-e egy erőforráshoz
 
@@ -89,7 +89,7 @@ A hatókör egy adott Azure AD-erőforrásra vonatkozó engedélyezett művelete
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyéni szerepkör-hozzárendelések létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](roles-create-custom.md) használatával
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](roles-view-assignments.md#view-assignments-of-single-application-scope)

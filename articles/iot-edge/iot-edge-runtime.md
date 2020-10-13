@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan kezeli a IoT Edge Runtime a modulokat, a bizton
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016954"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971693"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése
 
@@ -71,7 +71,7 @@ Ha üzenetet szeretne kapni, regisztráljon egy olyan visszahívást, amely egy 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)vagy [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 A megoldás fejlesztői feladata azoknak a szabályoknak a meghatározása, amelyek meghatározzák, hogy IoT Edge hub hogyan továbbít üzeneteket a modulok között. Az útválasztási szabályok a felhőben vannak meghatározva, és leküldve IoT Edge hubhoz a moduljában. A IoT Hub útvonalakhoz tartozó szintaxis a Azure IoT Edge moduljai közötti útvonalak definiálására szolgál. További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
@@ -124,6 +124,22 @@ A IoT Edge ügynök kritikus szerepet játszik egy IoT Edge-eszköz biztonságá
 
 A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](iot-edge-security-manager.md)című témakört.
 
+## <a name="runtime-quality-telemetry"></a>Futtatókörnyezet minőségi telemetria
+
+Az IoT Edge a termék minőségének javítása érdekében névtelen telemetria gyűjt a gazda futtatókörnyezetből és a rendszermodulokból. Ezt az információt futtatókörnyezeti minőségi telemetria (RQT) nevezik. A RQT-t a rendszer az eszközről a felhőbe irányuló üzenetekként küldi el IoT Hub a IoT Edge-ügynöktől. A RQT-üzenetek nem jelennek meg az ügyfél normál telemetria, és nem használják fel az üzenetek kvótáját.
+
+A edgeAgent és a edgeHub által gyűjtött metrikák teljes listája elérhető a [hozzáférési IoT Edge futtatókörnyezeti mérőszámok cikk elérhető metrikák szakaszában](how-to-access-built-in-metrics.md#available-metrics). A metrikák egy részhalmazát a IoT Edge ügynök gyűjti a RQT részeként. A RQT részeként gyűjtött mérőszámok tartalmazzák a címkét `ms_telemetry` .
+
+A névtelenítésével részeként a feltöltés előtt a rendszer eltávolítja a személyes vagy szervezet által azonosítható adatokat, például az eszközök és a modulok nevét.
+
+A RQT alapértelmezett gyakorisága egy üzenet, amely IoT Hub 24 óránként, a helyi gyűjtemény pedig óránként edgeAgent.
+
+Ha szeretné letiltani a RQT, kétféleképpen teheti meg:
+
+* Állítsa a `SendRuntimeQualityTelemetry` környezeti változót `false` a **edgeAgent**, vagy
+* Az üzembe helyezés során törölje a Azure Portal kapcsolót.
+
 ## <a name="next-steps"></a>Következő lépések
 
-[Az Azure IoT Edge-modulok ismertetése](iot-edge-modules.md)
+* [Az Azure IoT Edge-modulok ismertetése](iot-edge-modules.md)
+* [Tudnivalók a IoT Edge futtatókörnyezeti mérőszámokról](how-to-access-built-in-metrics.md)

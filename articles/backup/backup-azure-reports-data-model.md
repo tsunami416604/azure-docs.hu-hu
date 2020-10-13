@@ -4,10 +4,10 @@ description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) t�
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569592"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez
@@ -38,9 +38,9 @@ Ez a táblázat az alapszintű biztonsági mentési entitásokkal, például a t
 | BackupManagementServerOSVersion   | Szöveg          | A biztonságimásolat-felügyeleti kiszolgáló operációs rendszerének verziója                   |
 | BackupManagementServerVersion     | Szöveg          | A biztonságimásolat-felügyeleti kiszolgáló verziója                      |
 | LatestRecoveryPointLocation       | Szöveg          | A biztonsági mentési tétel legutóbbi helyreállítási pontjának helye    |
-| LatestRecoveryPointTime           | Dátum/idő      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
+| LatestRecoveryPointTime           | DateTime      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
 | OldestRecoveryPointLocation       | Szöveg          | A biztonsági mentési tétel legrégebbi helyreállítási pontjának helye    |
-| OldestRecoveryPointTime           | Dátum/idő      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
+| OldestRecoveryPointTime           | DateTime      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
 | PolicyUniqueId                    | Szöveg          | A szabályzat azonosítására szolgáló egyedi azonosító                             |
 | ProtectedContainerFriendlyName    | Szöveg          | A védett kiszolgáló rövid neve                        |
 | ProtectedContainerLocation        | Szöveg          | A védett tároló a helyszínen vagy az Azure-ban található-e |
@@ -74,7 +74,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | Kategória                       | Szöveg          | Azure Monitor naplókba leküldett diagnosztikai adatkategóriák – AddonAzureBackupAlerts |
 | AlertCode                      | Szöveg          | Riasztás típusának egyedi azonosítására szolgáló kód                     |
 | AlertConsolidationStatus       | Szöveg          | Annak megállapítása, hogy a riasztás konszolidált riasztás-e, vagy sem         |
-| AlertOccurrenceDateTime        | Dátum/idő      | A riasztás létrehozásának dátuma és időpontja                     |
+| AlertOccurrenceDateTime        | DateTime      | A riasztás létrehozásának dátuma és időpontja                     |
 | AlertRaisedOn                  | Szöveg          | A riasztást kiváltó entitás típusa                        |
 | AlertSeverity                  | Szöveg          | A riasztás súlyossága. Például kritikus                 |
 | AlertStatus                    | Szöveg          | A riasztás állapota. Például: aktív                     |
@@ -130,12 +130,12 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | JobFailureCode                 | Szöveg          | Hiba történt a hibakód karakterlánca miatt, mert a művelet sikertelen volt    |
 | JobOperation                   | Szöveg          | A művelet, amelynek a feladata fut, például biztonsági mentés, visszaállítás, biztonsági mentés konfigurálása |
 | JobOperationSubType            | Szöveg          | A feladat műveletének altípusa. Például: "log", a napló biztonsági mentési feladata esetén |
-| JobStartDateTime               | Dátum/idő      | A feladatok futtatásának dátuma és időpontja                       |
+| JobStartDateTime               | DateTime      | A feladatok futtatásának dátuma és időpontja                       |
 | Feladat állapota                      | Szöveg          | A Befejezett feladatok állapota, például befejezett, sikertelen   |
 | JobUniqueId                    | Szöveg          | A feladatot azonosító egyedi azonosító                                |
 | ProtectedContainerUniqueId     | Szöveg          | A feladathoz társított védett kiszolgáló egyedi azonosítója |
 | RecoveryJobDestination         | Szöveg          | A helyreállítási feladatok célja, amelyben az adatok helyreállítása történik   |
-| RecoveryJobRPDateTime          | Dátum/idő      | A helyreállított helyreállítási pont létrehozásának dátuma és időpontja |
+| RecoveryJobRPDateTime          | DateTime      | A helyreállított helyreállítási pont létrehozásának dátuma és időpontja |
 | RecoveryJobLocation            | Szöveg          | A helyreállított helyreállítási pont tárolási helye |
 | RecoveryLocationType           | Szöveg          | A helyreállítási hely típusa                                |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |

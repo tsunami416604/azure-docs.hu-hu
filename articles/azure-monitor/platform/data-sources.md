@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
 ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802063"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
@@ -190,7 +190,7 @@ Az alkalmazások standard szintjein kívül előfordulhat, hogy figyelnie kell m
 
 ![Egyéni gyűjtemény](media/data-sources/custom.png)
 
-| Cél | Metódus | Leírás | Referencia |
+| Cél | Módszer | Leírás | Referencia |
 |:---|:---|:---|:---|
 | Azure Monitor-naplók | Data Collector API | Gyűjtsön adatokat a REST-ügyfélről, és tárolja Log Analytics munkaterületen. | [Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)](data-collector-api.md) |
 | Azure Monitor metrikák | Egyéni metrikák API | Metrikus adatokat gyűjthet a REST-ügyfélről, és Azure Monitor metrikák adatbázisában tárolja őket. | [Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával](metrics-store-custom-rest-api.md) |
@@ -205,7 +205,7 @@ Az Azure egyéb szolgáltatásai a Azure Monitor adatplatformba írnak be adatf�
 | [Azure Sentinel](../../sentinel/index.yml) | Azure Monitor-naplók | Az Azure Sentinel a különböző adatforrásokból gyűjtött adatokat egy Log Analytics munkaterületen tárolja, amely lehetővé teszi, hogy a rendszer a Azure Monitor által gyűjtött egyéb naplózási adatokkal elemezze.  | [Adatforrások csatlakoztatása](../../sentinel/quickstart-onboard.md) |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor által gyűjtött megfigyelési adatok típusairól](data-platform.md) , valamint az adatok megtekintésének és elemzésének módjáról.
 - Sorolja fel azokat a [különböző helyeket, amelyekben az Azure-erőforrások tárolják az adattárolási](data-locations.md) és elérési módját. 

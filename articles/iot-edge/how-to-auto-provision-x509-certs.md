@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447741"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
@@ -279,7 +279,7 @@ A IoT Edge Windows rendszeren való telepítésével kapcsolatos további inform
    ```
 
    >[!TIP]
-   >A config. YAML fájl a tanúsítvány és a kulcs adatait fájl URI-ként tárolja. Az inicializálási IoTEdge parancs azonban kezeli ezt a formázási lépést, így megadhatja az eszközön a tanúsítvány és a kulcs fájljainak abszolút elérési útját.
+   >A config. YAML fájl a tanúsítvány és a kulcs adatait fájl URI-ként tárolja. Azonban a Initialize-IoTEdge parancs kezeli ezt a formázási lépést, így megadhatja a tanúsítvány és a kulcs fájljainak abszolút elérési útját az eszközön.
 
 ## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
 

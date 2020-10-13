@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876209"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -200,6 +200,41 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | ajaxPerfLookupDelay | 25 | Az alapértelmezett érték 25 MS. Az a várakozási idő, ameddig a rendszer újra megkísérli megkeresni a Windowst. a kérelmek teljesítményének időzítése `ajax` ezredmásodpercben történik, és közvetlenül a setTimeout () függvénynek lesz átadva.
 | enableUnhandledPromiseRejectionTracking | hamis | Ha az értéke igaz, a nem kezelt ígéretek elutasítása automatikusan történik, és JavaScript-hibaként fog jelenteni. Ha a disableExceptionTracking értéke igaz (ne kövesse nyomon a kivételeket), a rendszer figyelmen kívül hagyja a konfigurációs értéket, és nem kezeli az ígéretek elutasítását.
 
+## <a name="enable-time-on-page-tracking"></a>Időbeli nyomon követés engedélyezése
+
+A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](../platform/metrics-custom-overview.md) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](../platform/metrics-getting-started.md) "napló alapú metrika" néven látható.
+
+## <a name="enable-correlation"></a>Korreláció engedélyezése
+
+A korreláció olyan adatokat hoz létre és küld, amelyek lehetővé teszik az elosztott nyomkövetést, valamint az [alkalmazás-hozzárendelést](../app/app-map.md), a [végpontok közötti tranzakciós nézetet](../app/app-map.md#go-to-details)és más diagnosztikai eszközöket.
+
+Az alábbi példa a korreláció engedélyezéséhez szükséges összes lehetséges konfigurációt mutatja, az alábbi forgatókönyvekre vonatkozó megjegyzésekkel:
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+Ha az ügyfél által kommunikáló külső kiszolgálók közül bármelyik nem fogadja el a és a `Request-Id` `Request-Context` fejlécet, és nem tudja frissíteni a konfigurációját, akkor a konfigurációs tulajdonsággal kell őket egy kizárási listára helyeznie `correlationHeaderExcludeDomains` . Ez a tulajdonság támogatja a helyettesítő karaktereket.
+
+A kiszolgálónak képesnek kell lennie a kapcsolatok fogadására a jelen fejlécekben. A kiszolgálóoldali `Access-Control-Allow-Headers` konfigurációtól függően gyakran szükséges a kiszolgálóoldali lista kiterjesztése a és a manuális hozzáadásával `Request-Id` `Request-Context` .
+
+Hozzáférés-vezérlés engedélyezése – fejlécek: `Request-Id` , `Request-Context` , `<your header>`
+
+> [!NOTE]
+> Ha 2020-es vagy újabb kiadásban kiadott OpenTelemtry-vagy Application Insights SDK-kat használ, javasoljuk, hogy használja a [WC3 nyomkövetési környezet –](https://www.w3.org/TR/trace-context/)-t. [Itt](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)találja a konfigurációs útmutatást.
+
 ## <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
 Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez hozzáadhat a `enableAutoRouteTracking: true` telepítési konfigurációhoz.
@@ -208,10 +243,6 @@ Jelenleg egy külön [reakciós beépülő modult](javascript-react-plugin.md)is
 > [!NOTE]
 > Csak akkor használja `enableAutoRouteTracking: true` , ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
 
-## <a name="configuration-autotrackpagevisittime"></a>Konfiguráció: autoTrackPageVisitTime
-
-A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](../platform/metrics-custom-overview.md) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](../platform/metrics-getting-started.md) "napló alapú metrika" néven látható.
-
 ## <a name="extensions"></a>Bővítmények
 
 | Bővítmények |
@@ -219,38 +250,6 @@ A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az 
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](javascript-angular-plugin.md) |
-
-## <a name="correlation"></a>Korreláció
-
-Az ügyfél és a kiszolgálóoldali korreláció a következő esetén támogatott:
-
-- X/s/AJAX-kérelmek 
-- Kérelmek beolvasása 
-
-Az ügyfél és a kiszolgálóoldali korreláció **nem támogatott** a `GET` és a `POST` kérelmek esetében.
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Az AJAX-és a kiszolgálói kérelmek közötti kereszthivatkozások engedélyezése
-
-`CORS`A korreláció engedélyezéséhez az ügyfélnek két további kérelem-fejlécet kell küldenie, és `Request-Id` `Request-Context` a kiszolgálónak képesnek kell lennie a kapcsolatok fogadására a jelen fejlécekben. A fejlécek küldését `enableCorsCorrelation: true` a JavaScript SDK konfigurációján belül engedélyezheti. 
-
-A kiszolgálóoldali `Access-Control-Allow-Headers` konfigurációtól függően gyakran szükséges a kiszolgálóoldali lista kiterjesztése a és a manuális hozzáadásával `Request-Id` `Request-Context` .
-
-Hozzáférés-vezérlés engedélyezése – fejlécek: `Request-Id` , `Request-Context` , `<your header>`
-
-Ha az ügyfél által kommunikáló külső kiszolgálók közül bármelyik nem fogadja el a és a `Request-Id` `Request-Context` fejlécet, és nem tudja frissíteni a konfigurációját, akkor a konfigurációs tulajdonsággal kell őket egy kizárási listára helyeznie `correlationHeaderExcludeDomains` . Ez a tulajdonság támogatja a helyettesítő karaktereket.
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
 
 ## <a name="explore-browserclient-side-data"></a>Böngésző-és ügyféloldali adat megismerése
 

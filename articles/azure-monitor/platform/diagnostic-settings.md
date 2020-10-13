@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
 ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449327"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
@@ -81,7 +81,7 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
 
    - A tevékenység naplójában kattintson a **Azure monitor** menüben a **tevékenység napló** elemre, majd a **diagnosztikai beállítások**lehetőségre. Győződjön meg arról, hogy letiltja a tevékenység naplójának örökölt konfigurációját. További részletek: a [meglévő beállítások letiltása](./activity-log.md#legacy-collection-methods) .
 
-        ![Képernyőfelvétel a Azure Monitor menüjéről és a tevékenység naplójának kiválasztásáról, valamint a figyelési tevékenység naplója menüsorban Kiemelt diagnosztikai beállításokról.](media/diagnostic-settings/menu-activity-log.png)
+        ![Képernyőfelvétel a Azure Monitor menüjéről és a tevékenységek naplójának kiválasztásáról és a diagnosztikai beállításokról a Monitor-Activity log menüsávban.](media/diagnostic-settings/menu-activity-log.png)
 
 2. Ha nem találhatók beállítások a kiválasztott erőforráson, a rendszer kéri, hogy hozzon létre egy beállítást. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 

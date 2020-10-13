@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: webalkalmazás migrálása a Bing Maps szolgáltatásból | Microsoft Azure térképek'
-description: Webalkalmazások áttelepítése a Bing Mapsből Microsoft Azure Maps-be.
+description: Útmutató a webalkalmazások Bing Maps szolgáltatásból Microsoft Azure Maps rendszerbe való áttelepítéséhez.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319739"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876515"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>Webalkalmazás migrálása a Bing Maps szolgáltatásból
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Oktatóanyag – webalkalmazás migrálása a Bing Maps szolgáltatásból
 
 A Bing Maps szolgáltatást használó webalkalmazások gyakran a Bing Maps V8 JavaScript SDK-t használják. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi, hogy az interaktív térképeket saját tartalmakkal és képekkel testreszabja a webes vagy mobil alkalmazásaiban való megjelenítéshez. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával.
 
@@ -59,7 +59,7 @@ Az alábbi táblázat a Bing Maps V8 JavaScript SDK legfontosabb API-funkcióit 
 | Utcai-képek       | Tervezve                                                                                |
 | GeoJSON-támogatás          | ✓                                                                                      |
 | GeoXML-támogatás           | ✓                                                                                      |
-| Jól ismert szöveges támogatás  | ✓                                                                                      |
+| Well-Known szöveg támogatása  | ✓                                                                                      |
 | Egyéni Térkép stílusa        | Részleges                                                                                |
 
 A Azure Maps számos további [nyílt forráskódú modult is tartalmaz a webes SDK](open-source-projects.md#open-web-sdk-modules) -hoz, amely kibővíti a képességeit.
@@ -932,7 +932,7 @@ A Azure Mapsban az adatforrások felveszik és kezelik az adatforrásokat. A ré
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve               | Típus    | Description                                    |
+| Tulajdonság neve               | Típus    | Leírás                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e.     |
 | `cluster_id`                | sztring  | A fürt egyedi azonosítója, amely az `DataSource` osztályokkal `getClusterExpansionZoom` , valamint a függvények használatával használható `getClusterChildren` `getClusterLeaves` . |
@@ -941,7 +941,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Funkció       | Visszatérési típus        | Description     |
+| Függvény       | Visszatérési típus        | Leírás     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyermekek alakzatokat és alfürtöket is tartalmazhatnak. Az alfürtök a fürt tulajdonságaival egyező tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |
@@ -1409,7 +1409,7 @@ Azure Maps a georeferens képeket a osztály használatával lehet betakarni `at
 
 ### <a name="add-kml-data-to-the-map"></a>KML-adatértékek hozzáadása a térképhez
 
-Mind az Azure-, mind a Bing Maps-ben a KML, a KMZ, a GeoRSS, a GeoJSON és a well-known Text (WKT) típusú adathalmazok is importálhatók a térképen. A Azure Maps támogatja a GPX, a GML, a térbeli CSV-fájlok, a webes leképezési szolgáltatások (WMS), a webes leképezési szolgáltatások (WMTS) és a web feature Services (WFS) használatát is.
+Mind az Azure-, mind a Bing Maps képes a KML-, KMZ-, GeoRSS-, GeoJSON-és Well-Known Text (WKT) típusú adatleképezések importálására és megjelenítésére. A Azure Maps támogatja a GPX, a GML, a térbeli CSV-fájlok, a Web-Mapping-szolgáltatások (WMS), a Web-Mapping csempe-szolgáltatások (WMTS) és a web feature Services (WFS) használatát is.
 
 **Előtte: Bing Maps**
 

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93fde2d20aaa5b7bac4adc6f1d7fb076569e4bb8
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613774"
+ms.locfileid: "91893560"
 ---
 # <a name="color-materials"></a>Színes anyagok
 
@@ -36,6 +36,8 @@ Ezek a tulajdonságok az összes anyagnál közösek:
 * **useVertexColor:** Ha a háló :::no-loc text="vertex"::: színeket tartalmaz, és ez a beállítás engedélyezve van, a rácsvonalak :::no-loc text="vertex"::: színe megszorozva a *AlbedoColor* és a *albedoMap*. Alapértelmezés szerint a *useVertexColor* le van tiltva.
 
 * **isDoubleSided:** Ha a kétoldalas megjelenítés értéke TRUE (igaz), akkor az ezzel az anyaggal rendelkező háromszögek akkor is jelennek meg, ha a kamera a háttérben néz. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [ :::no-loc text="Single-sided"::: renderelés](single-sided-rendering.md).
+
+* **TransparencyWritesDepth:** Ha az TransparencyWritesDepth jelző be van állítva az anyagra, és az anyag átlátszó, akkor az ezt az anyagot használó objektumok is hozzájárulnak a végső mélységi pufferhez. A következő szakaszban tekintse meg a Color Material tulajdonság *transparencyMode* . A funkció engedélyezése akkor ajánlott, ha a használati esetnek a teljes transzparens jelenetek [kivetítésének valószínűbb késői fázisára](late-stage-reprojection.md) van szüksége. Vegyes átlátszatlan/transzparens jelenetek esetén ez a beállítás nem valószínűsíthető újravetítési viselkedést vagy újravetítési összetevőket vezethet be. Ezért az általános használati eset alapértelmezett és ajánlott beállítása a jelző letiltása. A rendszer a kamerához legközelebb eső objektum képpont mélységi rétegében található írásos mélységi értékeket veszi figyelembe.
 
 ## <a name="color-material-properties"></a>Színanyag tulajdonságai
 

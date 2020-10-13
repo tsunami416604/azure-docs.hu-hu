@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/12/2020
 ms.author: victorh
-ms.openlocfilehash: 56e0d40bcbfb97f57b63dc82da1a6604f83dffad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c840bf9e82b8dcdb1fbf9b380ea847b3d1b08dd9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85563629"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948068"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>Mi az a biztonságos virtuális központ?
 
@@ -20,9 +20,9 @@ A virtuális központ egy Microsoft által felügyelt virtuális hálózat, amel
 
 A *biztonságos* virtuális központ egy Azure-beli [virtuális WAN-központ](../virtual-wan/virtual-wan-about.md#resources) , amely a Azure Firewall Manager által konfigurált biztonsági és útválasztási házirendekkel rendelkezik. A biztonságos virtuális hubok használatával könnyedén hozhat létre olyan sugaras és tranzitív architektúrákat, amelyek natív biztonsági szolgáltatásokat biztosítanak a forgalom szabályozásához és védelméhez. 
 
-A biztonságos virtuális központ felügyelt központi VNet is használható, helyszíni kapcsolat nélkül. Lecseréli azokat a központi VNet, amelyekre korábban szükség volt egy Azure Firewall központi telepítéshez. Mivel a biztonságos virtuális központ automatikus útválasztást biztosít, nincs szükség a saját UDR (felhasználó által megadott útvonalak) konfigurálására a tűzfalon keresztüli forgalom irányításához.
+Biztonságos virtuális központ használatával szűrheti a virtuális hálózatok (V2V), a virtuális hálózatok és a fiókirodák (B2V) és az internet felé irányuló forgalom közötti forgalmat (B2I/V2I). A biztonságos virtuális központ automatizált útválasztást biztosít. Nincs szükség a saját UDR (felhasználó által megadott útvonalak) konfigurálására a tűzfalon keresztüli forgalom irányításához.
 
-A biztonságos virtuális hubok a teljes virtuális WAN-architektúra részeként is használhatók. Ez az architektúra biztonságos, optimalizált és automatizált ág-kapcsolatot biztosít az Azure-ban és az-n keresztül. Kiválaszthatja a hálózati forgalom védelméhez és szabályozásához szükséges szolgáltatásokat, beleértve a Azure Firewall és más, harmadik féltől származó biztonsági szolgáltatásokat (SECaaS) szolgáltatókat is.
+Kiválaszthatja a szükséges biztonsági szolgáltatókat a hálózati forgalom védelméhez és szabályozásához, beleértve a Azure Firewall, a harmadik féltől származó biztonsági szolgáltatásokat (SECaaS) szolgáltatókat vagy mindkettőt. A biztonságos központ jelenleg nem támogatja az ágak közötti (B2B) szűrést és szűrést több hubokon. További információ: [What is Azure Firewall Manager?](overview.md#known-issues). 
 
 ## <a name="create-a-secured-virtual-hub"></a>Biztonságos virtuális központ létrehozása
 

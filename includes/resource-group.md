@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: f82e66053585340e9b2d25b139fc9f64fefc6f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c6a7a1c92d1bb2e6899c1dc96322362baa190d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75370229"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971294"
 ---
 Az [erőforráscsoport](../articles/azure-resource-manager/management/overview.md#terminology) olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a webalkalmazásokat, adatbázisokat és a Storage-fiókokat. Dönthet úgy is például, hogy később egyetlen egyszerű lépésben törli a teljes erőforráscsoportot.

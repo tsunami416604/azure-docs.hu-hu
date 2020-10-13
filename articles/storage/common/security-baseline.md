@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715159"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
@@ -316,7 +316,7 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Felelősség**: ügyfél
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory egyszeri bejelentkezés (SSO) használata
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory egyszeri Sign-On (SSO) használata
 
 **Útmutató**: ha lehetséges, használja a Azure Active Directory SSO-t ahelyett, hogy egyéni, különálló hitelesítő adatokat konfiguráljon a szolgáltatáson kívül. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata. 
 
@@ -960,7 +960,7 @@ A kártevő szoftverek előzetes vizsgálatát is megteheti, mielőtt a nem szá
 
 Az Azure Automation szolgáltatással is engedélyezheti a Blobok rendszeres pillanatképeit.
 
-- [Az Azure Storage-redundancia és a szolgáltatási szintű szerződések ismertetése](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Az Azure Storage-redundancia és a Service-Level-szerződések ismertetése](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 - [BLOB pillanatképének létrehozása](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 
@@ -1113,7 +1113,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

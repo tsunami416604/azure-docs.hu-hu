@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
 ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448566"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor (előzetes verzió)
@@ -127,7 +127,7 @@ Mostantól az egyéni mezőt is használhatja, mint bármely más rekord tulajdo
 
 ![Csoportosítás lekérdezés szerint](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [lekérdezések létrehozásáról a](../log-query/log-query-overview.md) lekérdezésekhez egyéni mezők használatával a feltételekhez.
 * Egyéni mezők használatával elemzett [Egyéni naplófájlok](data-sources-custom-logs.md) figyelése.
 

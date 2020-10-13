@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204370"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961289"
 ---
 # <a name="json-claims-transformations"></a>JSON-jogcímek átalakítása
 
@@ -33,6 +33,8 @@ JSON-karakterlánc létrehozásához használja a jogcímek vagy állandók ért
 | InputClaim | Bármely, a pont jelölését követő karakterlánc | sztring | Annak a JSON-nek a JsonPath, amelybe a rendszer beszúrja a jogcím értékét. |
 | InputParameter | Bármely, a pont jelölését követő karakterlánc | sztring | Annak a JSON-nek a JsonPath, amelybe a rendszer beszúrja az állandó sztringet. |
 | OutputClaim | outputClaim | sztring | A generált JSON-karakterlánc. |
+
+### <a name="example-1"></a>1\. példa
 
 Az alábbi példa egy JSON-karakterláncot hoz létre az "e-mail" és az "OTP" jogcím értéke alapján, valamint állandó sztringeket is.
 
@@ -52,8 +54,6 @@ Az alábbi példa egy JSON-karakterláncot hoz létre az "e-mail" és az "OTP" j
   </OutputClaims>
 </ClaimsTransformation>
 ```
-
-### <a name="example"></a>Példa
 
 A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez, amely a SendGrid (egy külső gyártótól származó e-mail-szolgáltató) számára küldött kérelem törzse lesz. A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak.
 
@@ -87,6 +87,56 @@ A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez
   "from": {
     "email": "service@contoso.com"
   }
+}
+```
+
+### <a name="example-2"></a>2\. példa
+
+Az alábbi példa egy JSON-karakterláncot hoz létre a jogcím értékei és a konstans karakterláncok alapján.
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez, amely a kérés törzse lesz, amelyet egy REST API küld. A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak.
+
+- Bemeneti jogcímek:
+  - **e-mail**, átalakítási jogcím típusa  **customerEntity. email**: " john.s@contoso.com "
+  - **objectId**, átalakítási jogcím típusa **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
+  - **objectId**, átalakítási jogcím típusa **customerEntity. firstName** "John"
+  - **objectId**, átalakítási jogcím típusa **customerEntity. lastName** "Smith"
+- Bemeneti paraméter:
+  - **customerEntity.role.name**: "rendszergazda"
+  - 1. **customerEntity.role.id**
+- Kimeneti jogcím:
+  - **requestBody**: JSON-érték
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
 }
 ```
 
@@ -231,7 +281,7 @@ A JSON-adatok első elemének beolvasása.
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | sztring | A jogcím-átalakítás által az elemnek a JSON-adatokból való beolvasásához használt ClaimTypes. |
 | OutputClaim | kulcs | sztring | Az első elem kulcsa a JSON-ben. |
-| OutputClaim | érték | sztring | Az első elem értéke a JSON-ban. |
+| OutputClaim | value | sztring | Az első elem értéke a JSON-ban. |
 
 A következő példában a jogcím-átalakítás kibontja az első elemet (Utónév) a JSON-adatokból.
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449031"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
@@ -148,7 +148,7 @@ A bevezetéshez használni kívánt előfizetés **tulajdonosaként** hozzon lé
     1. Válassza ki azt az **erőforráscsoportot** és **Azure-régiót** , amelyet a felderített AWS-EC2s a kijelölt előfizetésbe fog bevezetni.
     1. Adja meg az Azure-ív egyszerű szolgáltatás- **azonosítóját** és az **egyszerű szolgáltatás ügyfél-titkos kulcsát** , az itt leírtak szerint [: egyszerű szolgáltatás létrehozása a méretezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Ha a gép egy proxykiszolgálón keresztül csatlakozik az internethez, adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép használ a proxykiszolgálóhoz való kommunikációhoz. Adja meg az értéket a formátumban ```http://<proxyURL>:<proxyport>```
-    1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
         Az összegző információk áttekintése
 
@@ -191,7 +191,7 @@ Támogatott operációs rendszer automatikus bevezetéshez az Azure arc for AWS-
 - Red Hat Enterprise Linux (RHEL) 7 (x64) – az SSM-et manuálisan kell telepíteni vagy külön előkészíteni
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AWS-fiók csatlakoztatása a Azure Security Centerban elérhető többfelhős élmény része. A kapcsolódó információk a következő oldalon találhatók:
 

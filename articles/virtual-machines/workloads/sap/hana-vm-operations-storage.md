@@ -16,10 +16,10 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449375"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
@@ -75,7 +75,7 @@ A Linux számos különböző I/O-ütemezési módot tartalmaz. A Linux-szállí
 Az Azure írásgyorsító egy olyan funkció, amely kizárólag az Azure M sorozatú virtuális gépekhez érhető el. A név szerint a funkció célja az, hogy javítsa az írási időt az Azure Premium Storage szolgáltatásban. SAP HANA esetén a rendszer csak a **/Hana/log** köteten használja írásgyorsító. Ezért a **/Hana/Data** és a **/Hana/log** különálló kötetek, amelyek az Azure-írásgyorsító támogatják a **/Hana/log** -kötetet. 
 
 > [!IMPORTANT]
-> Az Azure Premium Storage használatakor a **/Hana/log** -kötethez tartozó Azure [írásgyorsító](../../how-to-enable-write-accelerator.md) használata kötelező. A írásgyorsító a Premium Storage és az M-Series és a Mv2 sorozatú virtuális gépek esetében is elérhető. A írásgyorsító nem működik együtt más Azure-beli virtuálisgép-családokkal, például a Esv3 vagy a Edsv4-mel.
+> Az Azure Premium Storage használatakor a **/Hana/log** -kötethez tartozó Azure [írásgyorsító](../../how-to-enable-write-accelerator.md) használata kötelező. Írásgyorsító a Premium Storage és az M-Series és a Mv2-Series virtuális gépek esetében is elérhető. A írásgyorsító nem működik együtt más Azure-beli virtuálisgép-családokkal, például a Esv3 vagy a Edsv4-mel.
 
 Az alábbi Azure Premium-lemezekre vonatkozó gyorsítótárazási javaslatok feltételezik, hogy a lista SAP HANA I/O-jellemzői:
 
@@ -88,7 +88,7 @@ Az alábbi Azure Premium-lemezekre vonatkozó gyorsítótárazási javaslatok fe
 **Javaslat: a megfigyelt I/O-mintákat SAP HANA alapján a különböző kötetek gyorsítótárazását az Azure Premium Storage használatával kell beállítani, például:**
 
 - **/Hana/Data** – nincs gyorsítótárazás vagy olvasási gyorsítótárazás
-- **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2 sorozatú virtuális gépek esetében, amelyeknél engedélyezni kell az Azure írásgyorsító 
+- **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2-Series virtuális gépek esetében, amelyeknél engedélyezni kell az Azure írásgyorsító 
 - **/Hana/Shared** – olvasási gyorsítótárazás
 - **Operációsrendszer-lemez** – ne módosítsa az Azure által a virtuális gép létrehozási idején beállított alapértelmezett gyorsítótárazást
 

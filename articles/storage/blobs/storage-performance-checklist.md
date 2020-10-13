@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714821"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
@@ -284,7 +284,7 @@ A hozzáfűzési Blobok hasonlók a blokkokból álló Blobok blokkolásához. H
 
 Az oldal Blobok akkor megfelelőek, ha az alkalmazásnak véletlenszerű írást kell végeznie az adatokon. Az Azure-beli virtuális gépek lemezeit például blobként tárolja a rendszer. További információkért lásd: a [Blobok, a blobok és a Blobok hozzáfűzésének ismertetése](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449208"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>A kérések egyeztetése egy útválasztási szabállyal
@@ -52,16 +52,16 @@ A folyamat további ismertetéséhez tekintse meg az első ajtós útvonalak kon
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /Users/\* |
-| C# | www \. fabrikam.com, foo.Adventure-Works.com  | /\*, /images/\* |
+| C | www \. fabrikam.com, foo.Adventure-Works.com  | /\*, /images/\* |
 
 Ha a következő bejövő kérések a bejárati ajtóhoz lettek küldve, akkor a fenti útválasztási szabályoknak megfelelőek lesznek a következők:
 
 | Bejövő előtér-gazdagép | Egyeztetett útválasztási szabály (ok) |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
-| www- \. fabrikam.com | C# |
+| www- \. fabrikam.com | C |
 | images.fabrikam.com | 400-es hiba: hibás kérelem |
-| foo.adventure-works.com | C# |
+| foo.adventure-works.com | C |
 | contoso.com | 400-es hiba: hibás kérelem |
 | www- \. Adventure-Works.com | 400-es hiba: hibás kérelem |
 | www- \. northwindtraders.com | 400-es hiba: hibás kérelem |
@@ -82,7 +82,7 @@ További részletekért tekintse meg a következő példát:
 |-------|---------|----------|
 | A     | www- \. contoso.com | /        |
 | B     | www- \. contoso.com | /\*      |
-| C#     | www- \. contoso.com | /ab      |
+| C     | www- \. contoso.com | /ab      |
 | T     | www- \. contoso.com | /abc     |
 | E     | www- \. contoso.com | ABC    |
 | F     | www- \. contoso.com | ABC\*  |
@@ -95,7 +95,7 @@ A konfigurációtól függően a következő példában szereplő táblázat ere
 |---------------------|---------------|
 | www- \. contoso.com/            | A             |
 | www- \. contoso.com/a           | B             |
-| www- \. contoso.com/AB          | C#             |
+| www- \. contoso.com/AB          | C             |
 | www- \. contoso.com/ABC         | T             |
 | www- \. contoso.com/abzzz       | B             |
 | www- \. contoso.com/ABC/        | E             |
@@ -125,7 +125,7 @@ A konfigurációtól függően a következő példában szereplő táblázat ere
 ### <a name="routing-decision"></a>Útválasztási döntés
 Miután egyeztetett egy bejárati ajtó útválasztási szabályával, ki kell választania, hogyan kell feldolgozni a kérést. Ha az egyeztetett útválasztási szabályhoz a bejárati ajtón van egy gyorsítótárazott válasz, akkor ugyanazt a rendszer visszaküldi az ügyfélnek. Ellenkező esetben a következő dolog lesz kiértékelve, hogy beállította-e az [URL-újraírást (egyéni továbbítási útvonalat)](front-door-url-rewrite.md) a megfeleltetett útválasztási szabályhoz. Ha nincs definiálva egyéni továbbítási útvonal, akkor a kérés a megfelelő háttérbe kerül a konfigurált háttérrendszer-készletben. Más esetben a kérés elérési útja a megadott [Egyéni továbbítási útvonalon](front-door-url-rewrite.md) , majd a háttér felé továbbítva lesz frissítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
 ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448605"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
@@ -161,7 +161,7 @@ Példa JSON-törzsre:
 
 Ezek a paraméterek a runbook PowerShell-szkriptben vannak meghatározva.  A webes tevékenység végrehajtásakor az átadott JSON-adattartalom WEBHOOKDATA.
 
-Ez deszerializált, és PowerShell-paraméterekként tárolódik, amelyeket a Meghívási-ProcesASDatabase PowerShell-parancs használ.
+Ez deszerializált, és PowerShell-paraméterekként tárolódik, amelyeket a Invoke-ProcesASDatabase PowerShell-parancs használ.
 
 ![Deszerializált webhook](./media/analysis-services-refresh-azure-automation/20.png)
 
@@ -223,7 +223,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Példák](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

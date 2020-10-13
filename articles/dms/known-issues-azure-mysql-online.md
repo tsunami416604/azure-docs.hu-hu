@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330332"
+ms.locfileid: "91893747"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Az online áttelepítéssel kapcsolatos problémák & a MySQL-hez készült Azure-ADATBÁZISra vonatkozó korlátozásokat Azure Database Migration Service
 
@@ -82,12 +82,12 @@ A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek mérete nagy m�
 
     **Áthidaló megoldás**: cserélje le az elsődleges kulcsot más adattípusokra vagy nem LOB oszlopokra.
 
-- **Korlátozás**: Ha a nagyméretű objektum (LOB) oszlop hossza meghaladja a 32 KB-ot, a rendszer az adatmennyiséget csonkolja a célhelyen. A LOB-oszlop hosszát a következő lekérdezéssel tekintheti meg:
+- **Korlátozás**: Ha a nagyméretű objektum (LOB) oszlopának hossza nagyobb, mint a "LOB-méret korlátozása" paraméter (nem lehet nagyobb, mint 64 kb), a rendszer az adatmennyiséget csonkolja a célhelyen. A LOB-oszlop hosszát a következő lekérdezéssel tekintheti meg:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Megkerülő megoldás**: Ha olyan LOB-objektummal rendelkezik, amely meghaladja a 32 KB-ot, forduljon az [Azure-adatbázis áttelepítésének kérdéseit](mailto:AskAzureDatabaseMigrations@service.microsoft.com)ismertető csapathoz.
+    **Megkerülő megoldás**: Ha 64 KB-nál nagyobb LOB-objektummal rendelkezik, használja a "korlátlan LOB-méret engedélyezése" paramétert. Vegye figyelembe, hogy a "korlátlan LOB-méret engedélyezése" paraméterrel rendelkező áttelepítések lassabbak lesznek, mint a "LOB-méret korlátozása" paraméterrel.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Korlátozások az AWS RDS MySQL-ről való online áttelepítés során
 

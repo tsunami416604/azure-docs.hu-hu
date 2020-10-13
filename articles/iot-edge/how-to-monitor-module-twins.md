@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450168"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876158"
 ---
 # <a name="monitor-module-twins"></a>Ikermodulok monitorozása
 
@@ -168,15 +168,15 @@ Ha problémákat tapasztal az alsóbb rétegbeli eszközökkel kapcsolatban, ér
 
 Az egyéni modulok kapcsolatával kapcsolatos információkat a IoT Edge Agent modul Twin. Az egyéni modulhoz tartozó külön modult elsősorban a megoldáshoz tartozó adatkezeléshez használják. A deployment.jsfájlon megadott kívánt tulajdonságok a különálló modulban szerepelnek, és a modul szükség szerint frissítheti a jelentett tulajdonságértékeket.
 
-Az [Azure IoT hub Device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) -k használatával az előnyben részesített programozási nyelvet használhatja a modulban szereplő, a modulhoz tartozó alkalmazás kódjának megfelelően frissíteni kívánt tulajdonságértékek frissítéséhez. Az alábbi eljárás a .NET-hez készült Azure SDK-t használja erre a [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) modul kódjának használatával:
+Az [Azure IoT hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) -k használatával az előnyben részesített programozási nyelvet használhatja a modulban szereplő, a modulhoz tartozó alkalmazás kódjának megfelelően frissíteni kívánt tulajdonságértékek frissítéséhez. Az alábbi eljárás a .NET-hez készült Azure SDK-t használja erre a [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) modul kódjának használatával:
 
-1. Hozza létre a [ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) egy példányát a [CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) metódussal.
+1. Hozza létre a [ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) egy példányát a [CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) metódussal.
 
-1. Szerezze be a modul Twin tulajdonságainak gyűjteményét a [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) metódussal.
+1. Szerezze be a modul Twin tulajdonságainak gyűjteményét a [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) metódussal.
 
-1. Hozzon létre egy figyelőt (visszahívás átadásával) a kívánt tulajdonságok a [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet) metódussal való megváltoztatásához.
+1. Hozzon létre egy figyelőt (visszahívás átadásával) a kívánt tulajdonságok a [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) metódussal való megváltoztatásához.
 
-1. A visszahívási módszernél frissítse a [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) metódussal rendelkező modulban található jelentett tulajdonságokat, és adja át a beállítani kívánt [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) .
+1. A visszahívási módszernél frissítse a [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) metódussal rendelkező modulban található jelentett tulajdonságokat, és adja át a beállítani kívánt [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) .
 
 ## <a name="access-the-module-twins"></a>Az ikrek modul elérése
 
