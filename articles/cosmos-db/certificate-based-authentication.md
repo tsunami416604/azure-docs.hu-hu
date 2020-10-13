@@ -8,10 +8,10 @@ ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
 ms.openlocfilehash: 0b1fdec12b99edc952d24b0b3cc21bad24ec7554
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569736"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
@@ -28,7 +28,7 @@ A tanúsítványalapú hitelesítéssel az ügyfélalkalmazás ügyféltanúsít
 
 Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiókjában. Ezt az alkalmazást később a rendszer a Azure Cosmos DB-fiók kulcsainak olvasásához használja. Egy alkalmazás regisztrálásához kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 1. Nyissa meg az Azure **Active Directory** panelt, lépjen a **Alkalmazásregisztrációk** panelre, és válassza az **új regisztráció**lehetőséget. 
 
@@ -72,7 +72,7 @@ Ebben a lépésben telepíteni fogja az Azure AD PowerShell-modult. Ez a modul a
 
 ## <a name="sign-into-your-azure-ad"></a>Jelentkezzen be az Azure AD-be
 
-Jelentkezzen be az Azure AD-ba, ahol regisztrálta az alkalmazást. A AzureAD parancs használatával jelentkezzen be a fiókjába, és adja meg az Azure-fiókja hitelesítő adatait az előugró ablakban. 
+Jelentkezzen be az Azure AD-ba, ahol regisztrálta az alkalmazást. A Connect-AzureAD parancs használatával jelentkezzen be a fiókjába, és adja meg az Azure-fiókja hitelesítő adatait az előugró ablakban. 
 
 ```powershell
 Connect-AzureAD 
@@ -103,7 +103,7 @@ A fenti parancs az alábbi képernyőképhez hasonló kimenetet eredményez:
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Az Azure Cosmos-fiók konfigurálása az új identitás használatára
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **hozzáférés-vezérlés (iam) panelt** .
 
@@ -119,7 +119,7 @@ A tanúsítvány alapú hitelesítő adatokat társíthatja az Azure AD-beli üg
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 1. Nyissa meg az Azure **Active Directory** panelt, nyissa meg a **Alkalmazásregisztrációk** ablaktáblát, és nyissa meg az előző lépésben létrehozott minta alkalmazást. 
 

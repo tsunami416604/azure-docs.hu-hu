@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714988"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
@@ -171,11 +171,11 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 
 - [Azure PowerShell-parancsmagok a Storage-hoz](https://docs.microsoft.com/powershell/module/az.storage)
 - [Azure CLI-parancsmagok a Storage-hoz](https://docs.microsoft.com/cli/azure/storage)
-- [AzCopy parancssori segédprogram](https://aka.ms/downloadazcopy)
+- [AzCopy Command-Line segédprogram](https://aka.ms/downloadazcopy)
 - Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a Microsoft ingyenes, önálló alkalmazása, amellyel vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 - [Azure Storage-ügyféleszközök](../storage-explorers.md)
 - [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alapvető Azure Storage-szolgáltatásokkal való üzembe helyezéssel kapcsolatban lásd: [Storage-fiók létrehozása](storage-account-create.md).

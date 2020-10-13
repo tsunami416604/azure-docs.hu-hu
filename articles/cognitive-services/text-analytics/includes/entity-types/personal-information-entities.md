@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
 ms.openlocfilehash: eedfe4f24797a9b564479b2f8d3f4d04b0751272
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779765"
 ---
 > [!NOTE]
@@ -25,21 +25,21 @@ A rendszer a következő entitás-kategóriákat adja vissza, amikor kéréseket
 
 | Kategória   | Alkategória | Leírás                          | Modell verziójának indítása | Jegyzetek |
 |------------|-------------|--------------------------------------|------------------------|---|
-| Személy     | N/A         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
-| PersonType | N/A         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
-| PhoneNumber | N/A | Telefonszámok (csak az USA-beli és az EU-telefonszámok). | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-|Szervezet  | N/A | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek.  | `2019-10-01` | A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.  |
+| Személy     | N.A.         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
+| PersonType | N.A.         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
+| PhoneNumber | N.A. | Telefonszámok (csak az USA-beli és az EU-telefonszámok). | `2019-10-01` | Szintén visszaadott `domain=phi` . |
+|Szervezet  | N.A. | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek.  | `2019-10-01` | A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.  |
 |Szervezet | Orvosi | Orvosi vállalatok és csoportok. | `2020-04-01` |  |
 |Szervezet | Értéktőzsde | Tőzsdei csoportok. | `2020-04-01` |  |
 | Szervezet | Sport | Sporttal kapcsolatos szervezetek. | `2020-04-01` |  |
-| Cím | N/A | Teljes levelezési címek.  | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| EU GPS-koordináták | N/A | GPS-koordináták az Európai Unión belüli helyszínekhez.  | `2019-10-01` |  |
-| E-mail | N/A | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
-| URL-cím | N/A | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| IP | N/A | Hálózati IP-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| DateTime | N/A | Dátum és napszakok. | `2019-10-01` |  | 
+| Cím | N.A. | Teljes levelezési címek.  | `2020-04-01` | Szintén visszaadott `domain=phi` . |
+| EU GPS-koordináták | N.A. | GPS-koordináták az Európai Unión belüli helyszínekhez.  | `2019-10-01` |  |
+| E-mail | N.A. | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
+| URL-cím | N.A. | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
+| IP | N.A. | Hálózati IP-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
+| DateTime | N.A. | Dátum és napszakok. | `2019-10-01` |  | 
 | Dátum/idő | Date | Naptári dátumok. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| Mennyiség | N/A | Számok és numerikus mennyiségek. | `2019-10-01` |  |
+| Mennyiség | N.A. | Számok és numerikus mennyiségek. | `2019-10-01` |  |
 | Mennyiség | Életkor | Alábbi korhatárt szabja. | `2019-10-01` | | |
 
 ## <a name="azure-information"></a>Azure-információk

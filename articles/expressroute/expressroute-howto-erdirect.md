@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569850"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>A ExpressRoute Direct konfigurálása
@@ -288,6 +288,6 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

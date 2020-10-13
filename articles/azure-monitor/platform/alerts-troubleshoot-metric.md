@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
 ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715317"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
@@ -250,7 +250,7 @@ Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, ve
 - Minden feltételben csak egy értéket lehet kijelölni dimenzión belül.
 - Nem használhatja a "minden aktuális és jövőbeli érték kijelölése" lehetőséget (válassza ki \* ).
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (a vonatkozó feltételek között).
-Például:
+Példa:
     - Vegyünk egy olyan metrikai riasztási szabályt, amely egy Storage-fiókban van definiálva, és két feltételt figyel:
         * **Tranzakciók** összesen > 5
         * Átlagos **SuccessE2ELatency** > 250 MS
@@ -264,6 +264,6 @@ Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesíté
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

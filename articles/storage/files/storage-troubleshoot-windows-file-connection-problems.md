@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715987"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
@@ -154,7 +154,7 @@ Egy fájlmegosztás, könyvtár vagy fájl nyitott leíróinak megtekintéséhez
 Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához használja a [AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmagot.
 
 > [!Note]  
-> A Get-AzStorageFileHandle és a AzStorageFileHandle parancsmag az az PowerShell-modul 2,4-es vagy újabb verziójában szerepel. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Hiba: "nincs hozzáférés", amikor megpróbál hozzáférni vagy törölni egy Azure-fájlmegosztást  
@@ -193,7 +193,7 @@ Ha az SMB-ügyfelek lezárták az összes nyitott leírót, és a probléma tov�
 - A [AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmag használatával zárhatja be a megnyitott leírókat. 
 
 > [!Note]  
-> A Get-AzStorageFileHandle és a AzStorageFileHandle parancsmag az az PowerShell-modul 2,4-es vagy újabb verziójában szerepel. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>A fájlok az Azure Files szolgáltatásba vagy onnan máshová történő lassú másolása Windows rendszeren
@@ -332,7 +332,7 @@ Először is győződjön meg arról, hogy követte az [Azure Files ad-hitelesí
 
 Másodszor, próbálja meg [csatlakoztatni az Azure-fájlmegosztást a Storage-fiók kulcsaként](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Ha nem sikerült csatlakoztatni, töltse le [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , hogy segítsen ellenőrizni a környezetet futtató ügyfelet, és felismeri a nem kompatibilis ügyfél-konfigurációt, amely a Azure Files hozzáférési hibáját okozhatja, az önjavításra és a diagnosztikai Nyomkövetések gyűjtésére szolgáló részletes útmutatást nyújt.
 
-Harmadszor, futtathatja a Debug-AzStorageAccountAuth parancsmagot, amellyel alapszintű ellenőrzéseket végezhet az AD konfigurációjában a bejelentkezett AD-felhasználóval. Az [AzFilesHybrid v0.1.2+ verziója](https://github.com/Azure-Samples/azure-files-samples/releases) támogatja ezt a parancsmagot. A parancsmagot egy olyan AD-felhasználóval kell futtatnia, aki tulajdonosi engedéllyel rendelkezik a cél tárfiókon.  
+Harmadszor, a Debug-AzStorageAccountAuth parancsmag futtatásával elvégezheti az Active Directory-konfiguráción végzett alapszintű ellenőrzéseket a bejelentkezett AD-felhasználó használatával. Az [AzFilesHybrid v0.1.2+ verziója](https://github.com/Azure-Samples/azure-files-samples/releases) támogatja ezt a parancsmagot. A parancsmagot egy olyan AD-felhasználóval kell futtatnia, aki tulajdonosi engedéllyel rendelkezik a cél tárfiókon.  
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -360,7 +360,7 @@ Előfordulhat, hogy az alábbiakban ismertetett tüneteket tapasztalja, amikor a
 
 Javasoljuk, hogy a mappa/fájl szintű engedélyek megkerülő megoldásként való konfigurálásához használja a [icacls eszközt](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) . 
 
-## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>A JOIN-AzStorageAccountForAuth parancsmag futtatásakor fellépő hibák
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Hibák Join-AzStorageAccountForAuth parancsmag futtatásakor
 
 ### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Hiba: "a címtárszolgáltatás nem tudott relatív azonosítót lefoglalni"
 

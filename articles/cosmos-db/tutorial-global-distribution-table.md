@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
 ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568659"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a Table API-val
@@ -40,7 +40,7 @@ Ha nem határozza meg a `CurrentRegion` tulajdonságot, az SDK az aktuális ír�
 
 Ha például egy Azure Cosmos-fiók "nyugati USA" és "keleti USA" régiókban található. Ha a "West US" az írási régió, és az alkalmazás szerepel az "USA keleti régiójában". Ha a CurrentRegion tulajdonság nincs konfigurálva, az összes olvasási és írási kérelem mindig az "USA nyugati régiója" régiójába lesz irányítva. Ha a CurrentRegion tulajdonság konfigurálva van, az összes olvasási kérelem az "East US" régióból lesz kézbesítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

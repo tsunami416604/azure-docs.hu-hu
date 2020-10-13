@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
 ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121911"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
@@ -84,7 +84,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk
 
 4. Adja meg a **tároló nevét** és a Storage-fiókhoz tartozó, a következő utasításokat követve kapott **hálózati karakterláncot** .
 
-    * Példa a tároló nevére:`marketplaceleadcontainer`
+    * Példa a tároló nevére: `marketplaceleadcontainer`
     * A Storage-fiók kapcsolatainak karakterlánc-példája: a `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ kapcsolatok részletei](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Kattintson a **Mentés** gombra.

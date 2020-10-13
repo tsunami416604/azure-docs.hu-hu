@@ -9,10 +9,10 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334395"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
@@ -59,7 +59,7 @@ Az alábbi táblázat különböző SQL-lekérdezéseket és a kapcsolódó Java
 |Válassza<br>A docs-ból<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. id = "X998_Y998"|__. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;visszatérési doc.id = = = "X998_Y998";<br>});|Dokumentumok lekérdezése a következő predikátummal: azonosító = "X998_Y998".|
 |Válassza<br>A docs-ból<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Címkék, 123)|__. Filter (függvény (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;visszatérés x. Tags && x. Tags. indexOf (123) >-1;<br>});|A címkék tulajdonsággal rendelkező dokumentumok lekérdezései egy olyan tömb, amely a 123 értéket tartalmazza.|
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message AS msg<br>A docs-ból<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. id = "X998_Y998"|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visszatérési doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visszatérési<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|A dokumentumok lekérdezése predikátummal, azonosító = "X998_Y998", majd a projekt az azonosító és az üzenet (msg-ben alias).|
-|ÉRTÉK címke kiválasztása<br>A docs-ból<br>JOIN tag a docs-ban. Címkék<br>ORDER BY docs. _ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bizonylat visszaküldése Címkék && Array. isArray (doc). Címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bizonylat visszaküldése _ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. összeszed ("címkék")<br>&nbsp;&nbsp;&nbsp;&nbsp;. simítsa ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|A Array tulajdonsággal rendelkező dokumentumok szűrői, a címkék és az eredményül kapott dokumentumok rendezése a _ts timestamp System tulajdonsággal, majd a projects + lelapul a címkék tömbjét.|
+|ÉRTÉK címke kiválasztása<br>A docs-ból<br>JOIN tag a docs-ban. Címkék<br>ORDER BY docs._ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bizonylat visszaküldése Címkék && Array. isArray (doc). Címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc._ts visszaadása;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. összeszed ("címkék")<br>&nbsp;&nbsp;&nbsp;&nbsp;. simítsa ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|A Array tulajdonsággal rendelkező dokumentumok szűrői, a címkék és az eredményül kapott dokumentumok rendezése a _ts timestamp System tulajdonsággal, majd a projects + lelapul a címkék tömbjét.|
 
 ## <a name="next-steps"></a>Következő lépések
 

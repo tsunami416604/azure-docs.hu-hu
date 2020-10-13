@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: 8fba55dcca46b313c7b9a847412615215ad57c72
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118579"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Azure Database for MySQL adattitkosításának hibáinak megoldása
 
 Ez a cikk azt ismerteti, hogyan azonosíthatók és oldhatók meg a Azure Database for MySQLben előforduló gyakori problémák, ha az ügyfél által felügyelt kulcs használatával van konfigurálva adattitkosítással.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Ha úgy konfigurálja az adattitkosítást, hogy Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálók folyamatos hozzáférést igényelnek a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és úgy módosítja az állapotát, hogy az nem ***érhető*** el a Azure Portal.
 
@@ -51,12 +51,12 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 - `AzureKeyVaultMissingPermissionsMessage`
 - **Magyarázat**: a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
 
-### <a name="mitigation"></a>Kezelés
+### <a name="mitigation"></a>Kockázatcsökkentés
 
 - Győződjön meg arról, hogy az ügyfél által felügyelt kulcs megtalálható a kulcstartóban.
 - Azonosítsa a kulcstartót, majd nyissa meg a Azure Portal található kulcstartót.
 - Győződjön meg arról, hogy a kulcs URI-ja egy jelen lévő kulcsot azonosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Portal használatával állíthatja be az adattitkosítást az ügyfél által felügyelt kulccsal Azure Database for MySQL](howto-data-encryption-portal.md)

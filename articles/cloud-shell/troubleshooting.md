@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543452"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>A Azure Cloud Shell korlátozásának hibaelhárítása &
@@ -46,7 +46,7 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tárolási párbeszédpanel – hiba: 403 RequestDisallowedByPolicy
 
-- **Részletek**: Storage-fiók Cloud Shellon keresztüli létrehozásakor a rendszergazda által elhelyezett Azure Policy-hozzárendelés miatt sikertelen. A következő hibaüzenetet fogja tartalmazni:`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Részletek**: Storage-fiók Cloud Shellon keresztüli létrehozásakor a rendszergazda által elhelyezett Azure Policy-hozzárendelés miatt sikertelen. A következő hibaüzenetet fogja tartalmazni: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Megoldás**: vegye fel a kapcsolatot az Azure rendszergazdájával, és távolítsa el vagy frissítse a tároló létrehozását megtagadó Azure Policy-hozzárendelést.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Tárolási párbeszédpanel – hiba: 400 DisallowedOperation
@@ -80,10 +80,10 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 > [!NOTE]
 > Az Azure-beli virtuális gépeknek nyilvános IP-címmel kell rendelkezniük.
 
-- **Részletek**: a Rendszerfelügyeleti webszolgáltatások alapértelmezett Windows tűzfal-beállításai miatt a felhasználó a következő hibát tapasztalhatja:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Részletek**: a Rendszerfelügyeleti webszolgáltatások alapértelmezett Windows tűzfal-beállításai miatt a felhasználó a következő hibát tapasztalhatja: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Megoldás**: futtassa a parancsot a `Enable-AzVMPSRemoting` PowerShell távoli eljáráshívás összes aspektusának engedélyezéséhez a célszámítógépen.
 
-### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`nem frissíti az eredményt az Azure Drive-ban
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` nem frissíti az eredményt az Azure Drive-ban
 
 - **Részletek**: alapértelmezés szerint a felhasználói élmény optimalizálása érdekében a `dir` rendszer gyorsítótárazza az eredményeket az Azure Drive-ban.
 - **Megoldás**: egy Azure-erőforrás létrehozása, frissítése vagy eltávolítása után futtassa a parancsot az `dir -force` eredmények Azure-meghajtón való frissítéséhez.
@@ -196,4 +196,4 @@ PowerShell:
 A Azure Government Azure Cloud Shell csak a Azure Portalon keresztül érhető el.
 
 >[!Note]
-> Az Exchange Online-hoz való csatlakozás a GCC-hoz magas vagy kormányzati DoD-felhők esetében jelenleg nem támogatott.
+> Az Exchange Online-hoz GCC-High vagy kormányzati DoD-Felhőkhöz való csatlakozás jelenleg nem támogatott.

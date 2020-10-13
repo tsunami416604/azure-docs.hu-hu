@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934905"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-gyűjtemény operátorok az Azure Cognitive Searchban – `any` és `all`
@@ -32,7 +32,7 @@ Ha egy [OData-szűrési kifejezést](query-odata-filter-orderby-syntax.md) ír a
 
 ## <a name="syntax"></a>Syntax
 
-A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a vagy a által használt OData-kifejezés nyelvtanát határozza meg `any` `all` .
+A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a vagy a-t használó OData kifejezés nyelvtanát határozza meg `any` `all` .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -102,7 +102,7 @@ A szűrési kifejezések nem minden funkciója érhető el egy lambda kifejezés
 
 További információ ezekről a korlátozásokról és példákról: [gyűjtési szűrők hibaelhárítása Az Azure Cognitive Searchban](search-query-troubleshoot-collection-filters.md). További részletes információk a korlátozások létezéséről: a [gyűjtemény szűrőinek ismertetése az Azure Cognitive Searchban](search-query-understand-collection-filters.md).
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75466730"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -16,12 +16,12 @@ Az **Azure Storage társított szolgáltatása** lehetővé teszi, hogy egy Azur
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Yes |
-| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Igen |
+| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Igen |
 
 További információ a Storage-fiók hozzáférési kulcsainak beolvasásáról: a [Storage-fiók hozzáférési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
 
-**Példa:**  
+**Példa**  
 
 ```json
 {
@@ -42,17 +42,17 @@ A közös hozzáférésű jogosultságkód (SAS) delegált hozzáférést biztos
 > A Azure Data Factory mostantól csak a **Service sas** -t támogatja, de nem a fiók sas-t. Vegye figyelembe, hogy a SAS URL-generable Azure Portal vagy Storage Explorer egy fiók SAS, amely nem támogatott.
 
 > [!TIP]
-> Az alábbi PowerShell-parancsok futtatásával létrehozhat egy Service SAS-t a Storage-fiókjához (cserélje le a tulajdonosokat, és adja meg a szükséges engedélyt):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Az alábbi PowerShell-parancsok futtatásával létrehozhat egy Service SAS-t a Storage-fiókjához (cserélje le a tulajdonosokat, és adja meg a szükséges engedélyt): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Storage-fiók összekapcsolását egy Azure-beli adatgyárhoz egy közös hozzáférési aláírás (SAS) használatával. Az adat-előállítót a tárolóban lévő összes/meghatározott erőforrás (blob/tároló) számára korlátozott/időhöz kötött hozzáféréssel biztosítja. Az alábbi táblázat az Azure Storage SAS társított szolgáltatásához tartozó JSON-elemek leírását tartalmazza. 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Yes |
-| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Igen |
+| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Igen |
 
-**Példa:**
+**Példa**
 
 ```json
 {

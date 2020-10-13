@@ -5,10 +5,10 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567264"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
@@ -98,7 +98,7 @@ Beállíthatja az autoscale on
 | Szolgáltatás | Séma & docs |
 | --- | --- |
 | Web Apps |[Méretezés Web Apps](autoscale-get-started.md) |
-| Felhőszolgáltatások |[Felhőalapú szolgáltatás méretezése](../../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Cloud Services |[Felhőalapú szolgáltatás méretezése](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows-méretezési csoportok |[Virtuálisgép-méretezési csoportok méretezése a Windowsban](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |

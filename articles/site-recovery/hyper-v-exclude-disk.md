@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131247"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
@@ -47,5 +47,5 @@ A Kezdés előtt vegye figyelembe a következőket:
     ![Lemezek kizárása a replikációból](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](failover-failback-overview.md) a feladatátvételi különféle típusaival.

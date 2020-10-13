@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: alexeyo
 ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567162"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
@@ -86,7 +86,7 @@ Az egyidejű kérelmek korlátjának növelése **nem** befolyásolja közvetlen
 
 Az **Alap** -és **Egyéni** modellek egyidejű kérelmi korlátait **külön**kell módosítani.
 
-Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portal, parancssori eszközök vagy API-kérelmek használatával. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
+Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portalon, Command-Line eszközökön vagy API-kérelmeken keresztül. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
 
 >[!NOTE]
 >A [beszédfelismerési tárolók](speech-container-howto.md) nem igénylik az egyidejű kérelmek korlátjának növelését, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák.
@@ -94,9 +94,9 @@ Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható
 #### <a name="have-the-required-information-ready"></a>Készítse elő a szükséges információkat:
 - **Alapmodell**esetén:
   - Beszédfelismerési erőforrás azonosítója
-  - Region
+  - Régió
 - **Egyéni modell**esetén: 
-  - Region
+  - Régió
   - Egyéni végpont azonosítója
 
 - **Információk beszerzése (alapmodell)**:  
@@ -152,7 +152,7 @@ Alapértelmezés szerint az egyéni hangvégpontok egyidejű kérelmeinek száma
 
 Az egyidejű kérelmek korlátjának növelése **nem** befolyásolja közvetlenül a költségeit. A Speech Services "csak a ténylegesen használt funkciókért fizet" modellt használja. A korlát határozza meg, hogy a szolgáltatás milyen mértékben méretezhető, mielőtt megkezdi a kérelmek szabályozását.
 
-Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portal, parancssori eszközök vagy API-kérelmek használatával. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
+Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portalon, Command-Line eszközökön vagy API-kérelmeken keresztül. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
 
 >[!NOTE]
 >A [beszédfelismerési tárolók](speech-container-howto.md) nem igénylik az egyidejű kérelmek korlátjának növelését, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák.

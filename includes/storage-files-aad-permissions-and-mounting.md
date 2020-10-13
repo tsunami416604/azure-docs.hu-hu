@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779219"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek kiosztása identitáshoz
@@ -120,7 +120,7 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 3. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
 4. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
 5. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a célként megadott felhasználónevet, amelynek engedélyt szeretne adni az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-7.    Válassza az **OK** lehetőséget.
+7.    Kattintson az **OK** gombra.
 8.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
 9.    Kattintson az **Alkalmaz** gombra.
 

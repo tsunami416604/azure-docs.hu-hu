@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: c9ca3b98d01e44c0c899e165e5f892ab5d9a5954
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Oktatóanyag: Azure Active Directory integráció a Allbound SSO-val
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés Allbound SSO-vel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[ALLBOUND SSO egyszeri bejelentkezés konfigurálása](#configure-allbound-sso-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[ALLBOUND SSO egyszeri bejelentkezés konfigurálása](#configure-allbound-sso-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[ALLBOUND SSO-teszt felhasználó létrehozása](#create-allbound-sso-test-user)** – ha a felhasználó Azure ad-Britta kapcsolódó, a Allbound SSO-hoz tartozó "Simon"-t szeretné igénybe venni.
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés Allbound SSO-vel való konfigurálásához h
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Az Azure AD egyszeri bejelentkezés Allbound SSO-vel való konfigurálásához h
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [ALLBOUND SSO-ügyfél támogatási csapatával](mailto:engineering@allbound.com) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés Allbound SSO-vel való konfigurálásához h
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-allbound-sso-single-sign-on"></a>Allbound egyszeri bejelentkezéses egyszeri bejelentkezés konfigurálása
+### <a name="configure-allbound-sso-single-sign-on"></a>Allbound egyszeri bejelentkezéses egyszeri Sign-On konfigurálása
 
 Az egyszeri bejelentkezés **Allbound egyszeri bejelentkezéses** oldalon való konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-CÍMEKET a Azure Portal [Allbound SSO-támogatás csapatának](mailto:engineering@allbound.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

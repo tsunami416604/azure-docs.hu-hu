@@ -10,10 +10,10 @@ ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715116"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
@@ -245,7 +245,7 @@ Ha a Storage-fiók forgalmát értékeli, vegye figyelembe, hogy az [ügyfélalk
 
 Ha az előzetes verzióban nem engedélyezett a megosztott kulcshoz való hozzáférés a Storage-fiókhoz, a rendszer továbbra is engedélyezi a megosztott hozzáférési aláírásokat a várólista, tábla vagy Azure Files erőforrások számára. Ez a korlátozás mindkét szolgáltatás SAS-jogkivonatára és a fiók SAS-jogkivonatára vonatkozik. A SAS mindkét típusa megosztott kulccsal van hitelesítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Storage-beli adathozzáférés engedélyezése](storage-auth.md)
 - [Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával](storage-auth-aad.md)

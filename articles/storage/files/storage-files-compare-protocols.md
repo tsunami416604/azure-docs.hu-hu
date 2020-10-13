@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568471"
 ---
 # <a name="azure-file-share-protocols"></a>Azure fájlmegosztás protokollok
@@ -21,7 +21,7 @@ Azure Files két protokollt biztosít az Azure-fájlmegosztás csatlakoztatásá
 
 ## <a name="differences-at-a-glance"></a>Különbségek egy pillantással
 
-|Funkció  |NFS (előzetes verzió)  |SMB  |
+|Szolgáltatás  |NFS (előzetes verzió)  |SMB  |
 |---------|---------|---------|
 |Hozzáférési protokollok     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Támogatott operációs rendszer     |Linux kernel 4.3-as és újabb verziója         |Windows 2008 R2 +, Linux kernel 4.11 +         |
@@ -74,7 +74,7 @@ Az elérhető hálózati beállításokkal kapcsolatos további információkér
 
 Az SMB-vel csatlakoztatott Azure-fájlmegosztás további Azure Files funkciókat kínál, és nem rendelkezik Azure Files szolgáltatás korlátozásával, mivel általánosan elérhető.
 
-### <a name="features"></a>Funkciók
+### <a name="features"></a>Szolgáltatások
 
 - Azure-fájlok szinkronizálása
 - Identitás-alapú hitelesítés
