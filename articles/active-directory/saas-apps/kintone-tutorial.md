@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e966595422f353067d66483defa0b880874415
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535339"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Oktatóanyag: Azure Active Directory integráció a Kintone
 
@@ -145,7 +145,7 @@ Az Azure AD egyszeri bejelentkezés Kintone való konfigurálásához hajtsa vé
 
 1. Kattintson az **SAML-hitelesítés engedélyezése**lehetőségre.
 
-    ![SAML-hitelesítés](./media/kintone-tutorial/ic785882.png "SAML-hitelesítés")
+    ![Képernyőfelvétel: a "felhasználók & rendszerfelügyelet" lehetőség van kiválasztva.](./media/kintone-tutorial/ic785882.png "SAML-hitelesítés")
 
 1. Az SAML hitelesítés szakaszban hajtsa végre a következő lépéseket:
 
@@ -182,7 +182,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -232,7 +232,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ki
 
 1. Kattintson az **új felhasználó**elemre.
 
-    ![Új felhasználók](./media/kintone-tutorial/ic785889.png "Új felhasználók")
+    ![Képernyőkép, amely a "felhasználók" szakaszt jeleníti meg a kiválasztott "új felhasználó" művelettel.](./media/kintone-tutorial/ic785889.png "Új felhasználók")
 
 1. Az **új felhasználó** szakaszban hajtsa végre a következő lépéseket:
 

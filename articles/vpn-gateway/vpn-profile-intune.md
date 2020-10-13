@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578121"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Intune-profil létrehozása VPN-ügyféloldali profilok üzembe helyezéséhez
@@ -89,6 +89,6 @@ Ebben a szakaszban egy Microsoft Intune-profilt hoz létre egyéni beállításo
     :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Konfigurációs profilok":::
 1. Az egyéni profil létrehozása megtörtént. A profil üzembe helyezésének Microsoft Intune lépéseiért lásd: [felhasználói és eszköz profilok társítása](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a pont – hely kapcsolatról: [Tudnivalók a pont – hely](point-to-site-about.md)kapcsolatról.

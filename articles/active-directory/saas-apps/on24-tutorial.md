@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554272"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Oktatóanyag: Azure Active Directory integráció a ON24 virtuális környezet SAML-kapcsolataival
 
@@ -147,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés ON24 virtuális környezet SAML-kapcsolatban
 
 5.  Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    ![ON24 virtuális környezet SAML-kapcsolatok tartománya és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
+    ![Képernyőkép: "további U R ls beállítása" szakasz, a "Bejelentkezés U R L" szövegmező kiemelve.](common/both-signonurl.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://vshow.on24.com/vshow/<INSTANCENAME>`
 
@@ -195,7 +195,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

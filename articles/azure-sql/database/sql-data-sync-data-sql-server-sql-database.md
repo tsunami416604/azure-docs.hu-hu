@@ -15,7 +15,7 @@ ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856109"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
@@ -149,7 +149,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 
 #### <a name="unsupported-column-types"></a>Nem támogatott oszlopok típusai
 
-Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Például:
+Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Példa:
 
 - Számított oszlopok.
 - Rendszer által generált oszlopok az ideiglenes táblákhoz.
@@ -241,7 +241,7 @@ Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-
 
 A Dynamics 365 saját adatbázis-funkciója lehetővé teszi, hogy a rendszergazdák a saját Microsoft Azure SQL Database-be exportálják az alkalmazásból az adatentitásokat. Az adatszinkronizálás használatával más adatbázisokba is szinkronizálhatja ezeket az adatfájlokat, ha az adatexportálás **növekményes leküldéses** használatával történik (a teljes leküldéses funkció nem támogatott), és az **Eseményindítók engedélyezése a célként megadott adatbázisban** **Igen**értékre van állítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 

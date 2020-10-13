@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: reyandap
 ms.custom: references_pricing
 ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327957"
 ---
 # <a name="about-virtual-wan-pricing"></a>A Virtual WAN díjszabása
@@ -30,7 +30,7 @@ A virtuális WAN minden szolgáltatása díjszabás szerint történik. Ezért a
 
 ### <a name="what-is-a-scale-unit"></a><a name="scale-unit"></a>Mi az a méretezési egység?
 
-A **skálázási egység** biztosítja a helyek közötti (S2S), a pont – hely (P2S) és a EXPRESSROUTE (er) teljes kapacitásának egységét egy virtuális központban. Például:
+A **skálázási egység** biztosítja a helyek közötti (S2S), a pont – hely (P2S) és a EXPRESSROUTE (er) teljes kapacitásának egységét egy virtuális központban. Példa:
 
 * **1 a S2S VPN-méretezési egység** teljes kapacitást jelent a 500 Mbps-os VPN-átjáró számára (a kettős példányok a rugalmasság érdekében vannak üzembe helyezve) egy virtuális hub costing $0.361/óra.
 * **1 a skálázási egység** összesen 2 GB/s-os átjárót foglal magában a virtuális hub costing $0.42/HR-ben.
@@ -38,7 +38,7 @@ A **skálázási egység** biztosítja a helyek közötti (S2S), a pont – hely
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Mi az a kapcsolatok egysége?
 
-A **kapcsolati egység** minden olyan helyszíni/nem Microsoft-végpontra vonatkozik, amely az Azure-átjáróhoz csatlakozik. Helyek közötti VPN esetén ez az ágakat jelenti. A felhasználói VPN (pont – hely) esetén ez a távoli felhasználókra vonatkozik. A ExpressRoute esetében ez ExpressRoute áramköri kapcsolatokra utal.<br>Például:
+A **kapcsolati egység** minden olyan helyszíni/nem Microsoft-végpontra vonatkozik, amely az Azure-átjáróhoz csatlakozik. Helyek közötti VPN esetén ez az ágakat jelenti. A felhasználói VPN (pont – hely) esetén ez a távoli felhasználókra vonatkozik. A ExpressRoute esetében ez ExpressRoute áramköri kapcsolatokra utal.<br>Példa:
 
 * Egy fiókirodai kapcsolat, amely az Azure VPN-hez csatlakozik egy virtuális hubhoz, a $0,05/HR-költségekkel. 100 ezért az Azure-beli virtuális hubhoz csatlakozó fiókirodai kapcsolatok ára 0,05 * 100/óra.
 
@@ -56,7 +56,7 @@ Az alábbi táblázatok a következő rövidítéseket használják: {NAM: Észa
 
 **Kontinensen belüli díjszabás (*)**
 
-| Kontinensen belüli| Ár ($/GB)|
+| Intra-Continent| Ár ($/GB)|
 |---|---|
 | NAM – NAM|0,02 dollár |
 | EU – EU |0,02 dollár |

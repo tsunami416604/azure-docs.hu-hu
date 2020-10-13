@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577458"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
@@ -54,7 +54,7 @@ az login
 
 Az Azure CLI-hez készült Azure IoT-bővítmény használatához a következők szükségesek:
 
-- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 - Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-parancs használatával regisztrálhat egy eszközt, és a helyőrzőket cserélje le az `{YourIoTHubName}` `{YourDeviceID}` értékekre:
 
@@ -160,11 +160,11 @@ Tegyük fel például, hogy a modellt a következő AZONOSÍTÓval hozza nyilvá
 az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
 ```
 
-Modell közzétételéhez a következő követelményeknek kell teljesülniük:
+Modell közzétételéhez az alábbi követelményeknek kell megfelelni:
 
 - A vállalat vagy szervezet bérlője csak Microsoft-partner lehet. 
 - A felhasználónak vagy egyszerű szolgáltatásnak az adattár bérlője **közzétevő** szerepkörének tagjának kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure CLI-hez készült Azure IoT-bővítményt, hogy együttműködjön a IoT Plug and Play eszközeivel. A következő lépés azt ismerteti, hogyan használható az [Azure IoT Explorer az eszközeivel](./howto-use-iot-explorer.md).

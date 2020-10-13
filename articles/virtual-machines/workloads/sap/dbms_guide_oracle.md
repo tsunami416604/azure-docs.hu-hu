@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540710"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963533"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -376,10 +376,10 @@ A minimális konfiguráció a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
-| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch | Standard | Nincs | Nem szükséges |
+| \oracle \<SID> \oraarch | Standard | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 
@@ -389,13 +389,13 @@ A teljesítmény konfigurációja a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
-| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
+| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
@@ -444,7 +444,7 @@ Ebben az esetben javasoljuk, hogy telepítse vagy keresse meg az Oracle Home, a 
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
 
-Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy az [Azure Managed Diskson](../../managed-disks-overview.md)alapulnak.
+Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) vagy az [Azure Managed Diskson](../../managed-disks-overview.md)alapulnak.
 
 Oracle Linux UEK kernelek esetében az [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
 
@@ -468,10 +468,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
 | /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch | Standard | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /oraarch | Standard | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -482,13 +482,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
 | /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -508,7 +508,7 @@ Az Azure M sorozatú virtuális gépek esetében az Azure írásgyorsító haszn
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
 A biztonsági mentési/visszaállítási funkciók esetében az SAP BR * Tools for Oracle ugyanúgy támogatott, mint az operációs rendszer nélküli és a Hyper-V. Az Oracle Recovery Manager (Oláh Anna) szintén támogatott a lemezre történő biztonsági mentéshez és a lemezről történő visszaállításhoz.
 
-Az Oracle-adatbázisok biztonsági mentésére és helyreállítására szolgáló Azure Backup és Recovery Services használatával kapcsolatos további információkért lásd: [Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure Linux rendszerű virtuális gépen](../oracle/oracle-backup-recovery.md).
+Az Oracle-adatbázisok biztonsági mentésére és helyreállítására szolgáló Azure Backup és Recovery Services használatával kapcsolatos további információkért lásd: [Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure Linux rendszerű virtuális gépen](../oracle/oracle-overview.md).
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
 A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Az automatikus feladatátvétel az adatvédelemben való eléréséhez Fast-Start feladatátvételt (FSFA) kell használnia. A megfigyelő funkció (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat. További információ: Oracle- [Adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen](../oracle/configure-oracle-dataguard.md).
@@ -531,5 +531,3 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 A cikk elolvasása 
 
 - [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](dbms_guide_general.md)
- 
-

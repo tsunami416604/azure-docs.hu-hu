@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829016"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975382"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes linuxos virtuális gép létrehozása az Azure CLI-vel
 Virtuális gép (VM) gyors létrehozásához az Azure-ban használhat egyetlen Azure CLI-parancsot, amely az alapértelmezett értékeket használja a szükséges támogatási erőforrások létrehozásához. A rendszer automatikusan létrehozza az erőforrásokat, például a virtuális hálózatot, a nyilvános IP-címet és a hálózati biztonsági csoport szabályait. A környezet éles környezetben való használatának szabályozása érdekében érdemes lehet előre létrehozni ezeket az erőforrásokat, majd hozzáadni a virtuális gépeket. Ez a cikk végigvezeti a virtuális gépek és az egyes támogatási erőforrások egyenkénti létrehozásán.
@@ -434,7 +434,7 @@ A tartalék tartományok definiálják azokat a virtuális gépeket, amelyek kö
 
 A frissítési tartományok olyan virtuális gépek és mögöttes fizikai hardverek csoportjait jelölik, amelyek egy időben újraindíthatók. A tervezett karbantartás során előfordulhat, hogy a frissítési tartományok újraindítása nem szekvenciális, de egyszerre csak egy frissítési tartományt indít el a rendszer.
 
-Az Azure automatikusan elosztja a virtuális gépeket a hibák és a frissítési tartományok között, amikor rendelkezésre állási csoportba helyezi őket. További információ: [a virtuális gépek rendelkezésre állásának kezelése](manage-availability.md).
+Az Azure automatikusan elosztja a virtuális gépeket a hibák és a frissítési tartományok között, amikor rendelkezésre állási csoportba helyezi őket. További információ: [a virtuális gépek rendelkezésre állásának kezelése](../manage-availability.md).
 
 Hozzon létre egy rendelkezésre állási készletet a virtuális géphez az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set)paranccsal. Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 

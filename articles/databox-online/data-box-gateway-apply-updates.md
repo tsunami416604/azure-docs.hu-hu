@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 337c0c4434eb768ee45429d9b2d23536db4c3fc7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575452"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>A Azure Data Box Gateway frissítése
@@ -63,7 +63,7 @@ Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az es
 
     ![Képernyőkép az Azure Stack Edge Data Box Gateway kezdőlapján az Áttekintés lehetőséggel és a letöltött frissítések értesítési szalagcímével.](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** lehetőséget.
+    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** gombot.
   
     ![Képernyőkép – az eszköz frissítései párbeszédpanel, ahol a telepítési lehetőség látható.](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -152,6 +152,6 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 
    ![Képernyőfelvétel a Data Box Gateway helyi web U I és a szoftverfrissítési lehetőség, valamint a frissített aktuális szoftververzió üzenet.](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a Azure Data Box Gateway felügyeletéről](data-box-gateway-manage-users.md).

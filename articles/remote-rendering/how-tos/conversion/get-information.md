@@ -6,10 +6,10 @@ ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576625"
 ---
 # <a name="get-information-about-conversions"></a>Átalakításokkal kapcsolatos információk lekérése
@@ -161,7 +161,7 @@ Ez a szakasz a konvertált eszközről kiszámított adatokat rögzíti.
 A konverziós szolgáltatás a fájlokat `stdout.txt` és `stderr.txt` a kimeneti tárolót írja, és ezek a figyelmeztetések és hibák egyetlen forrása voltak.
 Ezek a fájlok már elavultak. Ehelyett használja az [eredményhalmaz fájljait](#information-about-a-conversion-the-result-file) erre a célra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [A modellátalakítás konfigurálása](configure-model-conversion.md)

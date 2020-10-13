@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
 ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649796"
 ---
 # <a name="outbound-connections"></a>Kimenő kapcsolatok
@@ -33,11 +33,11 @@ Azure Load Balancer különböző mechanizmusokon keresztül biztosítja a kimen
 
 ### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>Virtuális gép nyilvános IP-címmel
 
-| Szövetségek | Metódus | IP-protokollok |
+| Szövetségek | Módszer | IP-protokollok |
 | ---------- | ------ | ------------ |
 | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> A [Pat (port maszkolása)](#pat) nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
 
@@ -45,11 +45,11 @@ Egy virtuális géphez hozzárendelt nyilvános IP-cím 1:1-kapcsolat (nem 1: so
 
 ### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>Virtuális gép nyilvános IP-cím nélkül
 
-| Szövetségek | Metódus | IP-protokollok |
+| Szövetségek | Módszer | IP-protokollok |
 | ------------ | ------ | ------------ |
 | Nyilvános Load Balancer | A Load Balancer frontend használata a [SNAT](#snat) -hez a [Pat (port maszkolása)](#pat).| TCP </br> UDP |
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 A terheléselosztó erőforrása egy terheléselosztó-szabállyal van konfigurálva. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
 
@@ -65,11 +65,11 @@ Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Az SNA
 
 ### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>Virtuális gép nyilvános IP-cím nélkül, standard Load Balancer nélkül
 
-| Szövetségek | Metódus | IP-protokollok |
+| Szövetségek | Módszer | IP-protokollok |
 | ------------ | ------ | ------------ |
-|Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a [port maszkolásával (Pat)](#pat)| TCP </br> UDP | 
+|Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a [port maszkolásával (Pat)](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
 
@@ -375,7 +375,7 @@ A rendszer egy SNAT-portot használ minden egyes folyamathoz a cél IP-cím és 
 
 | Alkalmazható protokoll (ok) |
 |------------------------|
-| N/A |
+| N.A. |
 
 #### <a name="details"></a>Részletek
 

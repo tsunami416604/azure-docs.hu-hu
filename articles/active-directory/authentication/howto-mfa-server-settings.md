@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70777c80cdee99f13050d7cd342f22d59da13d73
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485608"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964110"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA-kiszolgáló beállításainak konfigurálása
 
@@ -66,6 +66,6 @@ A gyorsítótárazás beállításához hajtsa végre a következő lépéseket:
 1. Ha szükséges, válasszon ki egy hitelesítési típust, és adjon meg egy alkalmazást.
 1. Válassza a **Hozzáadás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az MFA-kiszolgáló további konfigurációs lehetőségei az MFA-kiszolgáló webkonzolján is elérhetők. [A magas rendelkezésre állás érdekében az Azure MFA-kiszolgálót is konfigurálhatja](howto-mfaserver-deploy-ha.md).

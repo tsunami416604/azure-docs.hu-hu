@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 05/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676b8b6fbb56536ec3a49100f5de1419ac417bb6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068915"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964145"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
 
@@ -119,7 +119,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Az alábbi táblázat segítséget nyújt az események hibaelhárításához az előző portál lépéseiből vagy a PowerShell-parancsokból származó tevékenységi jelentés letöltött verziójának használatával. Ezek az eredmények nem jelennek meg közvetlenül a Azure Portal.
 
-| Hívás eredménye | Leírás | Széles Leírás |
+| Hívás eredménye | Description | Széles Leírás |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PIN-kód megadva | A felhasználó PIN-kódot adott meg. Ha a hitelesítés sikeres volt, akkor a megfelelő PIN-kódot adtak meg. Ha a hitelesítés megtagadva, akkor helytelen PIN-kódot adtak meg, vagy a felhasználó normál módra van beállítva. |
 | SUCCESS_NO_PIN | Csak # megadott | Ha a felhasználó PIN módra van beállítva, és a hitelesítés megtagadva, ez azt jelenti, hogy a felhasználó nem adta meg a PIN-kódját, és csak a # értéket adta meg.  Ha a felhasználó szabványos módra van beállítva, és a hitelesítés sikeres, akkor a felhasználó csak a # paramétert adta meg, ami a helyes dolog a standard módban. |
@@ -171,7 +171,7 @@ Az alábbi táblázat segítséget nyújt az események hibaelhárításához az
 
 A következő további információk és jelentések érhetők el az MFA-eseményekhez, beleértve az MFA-kiszolgálókat:
 
-| Jelentés | Hely | Leírás |
+| Jelentés | Hely | Description |
 |:--- |:--- |:--- |
 | Letiltott felhasználói előzmények | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
 | Helyszíni összetevők használata | Azure AD > Security > MFA > tevékenység jelentés | Információt nyújt az MFA-kiszolgáló általános használatáról az NPS-bővítmény, az ADFS és az MFA-kiszolgáló használatával. |

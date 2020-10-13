@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: ed68e02be500ebd863eb7d6d54ddffe63873fe61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91774550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Oktatóanyag: Azure Active Directory integráció a szoftverek toborzásával
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD-alapú egyszeri bejelentkezés konfigurálásához és teszteléséhez a szoftverek toborzásával együtt kell végrehajtania a következő építőelemeket:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálhatja a szoftveres egyszeri bejelentkezést](#configure-comeet-recruiting-software-single-sign-on)** , hogy az egyszeri bejelentkezési beállításokat konfigurálja az alkalmazás oldalán.
+2. Az egySign-Onos beállítások az alkalmazás oldalán való konfigurálásával **[konfigurálhatja a szoftveres egyszeri bejelentkezést](#configure-comeet-recruiting-software-single-sign-on)** .
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy, a szoftveres tesztelést használó felhasználó felvétele](#create-comeet-recruiting-software-test-user)** – a Britta Simon partnere, amely a felhasználó Azure ad-képviseletéhez kapcsolódó szoftverek toborzását is kielégíti.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -114,13 +114,13 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.comeet.co`
 
-5. A munkatársak toborzása egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+5. A munkatársak toborzása egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![A "felhasználó attribútumai" szakaszt a "szerkesztés" gomb kiválasztásával ábrázoló képernyőkép.](common/edit-attribute.png)
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name (Név) |  Forrás attribútum|
+    | Név |  Forrás attribútum|
     | ---------------| --------------- |
     | nameidentifier | User. mail |
     | comeet_id | User. userPrincipalName |
@@ -143,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     : Kattintson a **Mentés** gombra.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -157,7 +157,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-comeet-recruiting-software-single-sign-on"></a>A szoftveres egyszeri bejelentkezéssel való közös megfelelés konfigurálása
+### <a name="configure-comeet-recruiting-software-single-sign-on"></a>Az egySign-Onos toborzási szoftver konfigurálása
 
 Ha be szeretné állítani az egyszeri bejelentkezést a **szoftverek toborzása** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalről, hogy azok [megfeleljenek a szoftveres támogatási csoport toborzásának](https://support.comeet.co/knowledgebase/adfs-single-sign-on/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -184,7 +184,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

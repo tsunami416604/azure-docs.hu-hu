@@ -12,7 +12,7 @@ ms.openlocfilehash: 44c87a3415a236f614510aa3163ad2e9cbd1f64f
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856177"
 ---
 # <a name="use-scp-with-apache-hadoop-in-azure-hdinsight"></a>SZOLGÁLTATÁSKAPCSOLÓDÁSI pont használata az Azure HDInsight Apache Hadoop
@@ -44,7 +44,7 @@ Adatok közvetlenül a HDFS-kompatibilis tárolóba való betöltésével kapcso
 * [HDInsight az Azure Storage használatával](hdinsight-hadoop-use-blob-storage.md).
 * [HDInsight Azure Data Lake Storage Gen1 használatával](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SSH használata a HDInsighttal](./hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Élcsomópontok használata a HDInsightban](hdinsight-apps-use-edge-node.md#access-an-edge-node)

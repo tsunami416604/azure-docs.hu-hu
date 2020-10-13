@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892893"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
@@ -57,7 +57,7 @@ Ha már rendelkezik virtuális hálózattal az Azure Spring Cloud Service-péld�
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Name             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
+    |Name (Név)             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
     |Hely         |Válassza ki az **USA keleti** régióját                                |
 
 1. Kattintson a **Tovább gombra: IP-címek >**. 
@@ -83,7 +83,7 @@ Válassza ki a korábban létrehozott *Azure-Spring-Cloud-vnet* virtuális hál�
     |Beállítás  |Érték                                             |
     |---------|--------------------------------------------------|
     |Szerepkör     |**Tulajdonos** kiválasztása                                  |
-    |Válassza ezt:   |Adja meg az *Azure Spring Cloud erőforrás-szolgáltatót*      |
+    |Kiválasztás   |Adja meg az *Azure Spring Cloud erőforrás-szolgáltatót*      |
 
     Ezután válassza az *Azure Spring Cloud erőforrás-szolgáltató*elemet, majd kattintson a **Mentés**gombra.
 
@@ -150,7 +150,7 @@ Ezek a hálózati erőforrások a fent létrehozott virtuális hálózathoz csat
    > [!Important]
    > Az erőforráscsoportok teljes mértékben az Azure Spring Cloud Service szolgáltatással kezelhetők. Ne törölje kézzel az erőforrást, vagy ne módosítsa a-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 

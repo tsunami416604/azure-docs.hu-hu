@@ -12,7 +12,7 @@ ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856194"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>A tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz
@@ -35,7 +35,7 @@ A következő táblázat összefoglalja a HDInsight különböző verziói álta
 |Azure Storage| Általános célú v2 | Objektum | Blob | Standard | Gyors elérésű, ritka elérésű Archívum | 3.6 + | Mind |
 |Azure Storage| Általános célú v1 | Objektum | Blob | Standard | N/A | Mind | Mind |
 |Azure Storage| Blob Storage * * | Objektum | BLOB letiltása | Standard | Gyors elérésű, ritka elérésű Archívum | Mind | Mind |
-|1. generációs Azure Data Lake Storage| N/A | Hierarchikus (fájlrendszer) | N.A. | N.A. | N.A. | 3,6 csak | A HBase kivételével |
+|1. generációs Azure Data Lake Storage| N.A. | Hierarchikus (fájlrendszer) | N.A. | N.A. | N.A. | 3,6 csak | A HBase kivételével |
 
 * * A HDInsight-fürtök esetében csak a másodlagos Storage-fiókok lehetnek BlobStorage, és az oldal Blobja nem támogatott tárolási lehetőség.
 
@@ -69,7 +69,7 @@ Az Azure HDInsight nem tárolja az ügyféladatokat. A fürt elsődleges tárol�
 
 Ellenőrizheti, hogy a HDInsight megfelelően van-e konfigurálva egyetlen régióban tárolt adattároláshoz, és gondoskodjon arról, hogy a HDInsight társított Storage-fiók LRS vagy egy másik tárolási beállítás legyen megemlítve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net).
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Storage áttekintése a HDInsight-ben](./overview-azure-storage.md)
 * [A HDInsight Azure Data Lake Storage Gen1 áttekintése](./overview-data-lake-storage-gen1.md)

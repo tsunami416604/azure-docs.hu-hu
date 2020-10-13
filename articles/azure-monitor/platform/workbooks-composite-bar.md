@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776357"
 ---
 # <a name="composite-bar-renderer"></a>Összetett sáv megjelenítő
@@ -91,13 +91,13 @@ Csoportosítási beállítások hozzáadása:
 
 ![Képernyőfelvétel a csoportosítási beállításokról.](./media/workbooks-composite-bar/group-by-settings.png)
 
-#### <a name="none"></a>Nincsenek
+#### <a name="none"></a>Nincs
 
 A none összesítés azt jelenti, hogy a csoportosítási sorok nem jelenítik meg az adott oszlopra vonatkozó eredményeket.
 
 ![Képernyőkép az összetett sáv és a nincs összesítés között.](./media/workbooks-composite-bar/none.png)
 
-#### <a name="sum"></a>Összeg
+#### <a name="sum"></a>Sum
 
 Ha az Összesítés beállítása Sum (összeg), akkor a csoportosítási sorban lévő oszlop a megjelenítéséhez használt oszlopok összegét használva megjeleníti az összetett sávot. A címke a benne szereplő oszlopok összegét is használja.
 

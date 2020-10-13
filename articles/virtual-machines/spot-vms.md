@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827825"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963363"
 ---
 # <a name="use-spot-vms-in-azure"></a>Helyszíni virtuális gépek használata az Azure-ban
 
@@ -58,7 +58,7 @@ A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve 
 Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
 
 -   Nagyvállalati Szerződés
--   Utólagos elszámolás
+-   Használatalapú fizetés
 -   Szponzorált
 - A felhőalapú szolgáltató (CSP) esetében forduljon a partnerhez
 
@@ -99,17 +99,17 @@ A portálon megtekintheti a korábbi díjszabást és a kizárási arányt egy a
 
 **K:** Hogyan kezelik a kvóta a helyszíni virtuális gépeket?
 
-**A:** A helyszíni virtuális gépek külön kvóta-készlettel rendelkeznek. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+**A:** A helyszíni virtuális gépek külön kvóta-készlettel rendelkeznek. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
 **K:** Igényelhetek további kvótát a helyszínen?
 
-**A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)keresztül.
+**A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](../azure-portal/supportability/per-vm-quota-requests.md)keresztül.
 
 
 **K:** Hol tehetek közzé kérdéseket?
 
-**A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Következő lépések
 Helyszíni virtuális gépek üzembe helyezéséhez használja a [CLI](./linux/spot-cli.md)-t, a [portált](spot-portal.md), az [ARM-sablont](./linux/spot-template.md)vagy a [PowerShellt](./windows/spot-powershell.md) .

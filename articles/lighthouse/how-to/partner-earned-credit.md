@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan rendelheti hozzá partner-AZONOSÍTÓját az Az
 ms.date: 10/05/2020
 ms.topic: how-to
 ms.openlocfilehash: 5caa205ce74152c7ec047952f66c1bf9188ddf02
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776170"
 ---
 # <a name="link-your-partner-id-to-enable-partner-earned-credit-on-delegated-resources"></a>Partner-azonosító csatolása a partner által a delegált erőforrásokon felhasználható kreditek engedélyezéséhez
@@ -20,7 +20,7 @@ Ha az [ügyfeleket Azure Resource Management-sablonok használatával](onboard-c
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Partner-azonosító hozzárendelése új ügyfelek bevezetéséhez
 
-Ha Azure Resource Manager-sablonok (ARM-sablonok) használatával készíti elő az ügyfeleket, az alábbi eljárással összekapcsolhatja a partner AZONOSÍTÓját, és engedélyezheti a partner által létrehozott kreditet. A lépések elvégzéséhez ismernie kell az [MPN-Partner azonosítóját](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Ügyeljen arra, hogy a partneri profilban látható **társított MPN-azonosítót** használja.
+Ha Azure Resource Manager-sablonok (ARM-sablonok) használatával készíti elő az ügyfeleket, az alábbi eljárással összekapcsolhatja a partner AZONOSÍTÓját, és engedélyezheti a partner által létrehozott kreditet. A lépések elvégzéséhez ismernie kell az [MPN-Partner azonosítóját](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Ügyeljen arra, hogy a partnerprofilon szereplő **társított MPN-azonosítót** használja.
 
 Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, csatolja a **társított MPN-azonosítóhoz**, majd minden ügyfél számára hozzáférést biztosítson a [PEC-re jogosult Azure beépített szerepkörhöz](https://docs.microsoft.com/partner-center/azure-roles-perms-pec).
 

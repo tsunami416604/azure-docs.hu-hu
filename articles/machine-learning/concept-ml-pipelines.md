@@ -10,10 +10,10 @@ author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: b0217766c92ddcd1907eca2c6702d91b02e06c03
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893641"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
@@ -36,7 +36,7 @@ Ezek az előnyök jelentősek lesznek, amint a gépi tanulási projekt a tiszta 
 
 Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más célra szolgál. A következő táblázat felsorolja a különböző folyamatokat, és azt, hogy mire szolgálnak:
 
-| Használati eset | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
+| Forgatókönyv | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | Modell-előkészítés (gépi tanulás) | Adattudós | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
 | Adat-előkészítés (adat-előkészítés) | Adatmérnök | [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache légáram | Adat>i adatszolgáltatások | Szigorúan beírt mozgás, adatközpontú tevékenységek |

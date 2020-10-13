@@ -4,10 +4,10 @@ description: Hozzon létre egy kódtárat egy virtuális gép üzembe helyezés�
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575811"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezéséhez az Azure VMware-megoldásban
@@ -90,7 +90,7 @@ Most, hogy létrehozta a kódtárat, hozzáadhat egy ISO-rendszerképet, amellye
 1. Ellenőrizze a beállításokat, majd kattintson a **Befejezés gombra**.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha hibrid felhőalapú bővítményt (HCX) kíván használni a virtuális gépek számítási feladatainak saját felhőbe való áttelepítéséhez, használja az [Azure VMware megoldás telepítése HCX](tutorial-deploy-vmware-hcx.md) .
 

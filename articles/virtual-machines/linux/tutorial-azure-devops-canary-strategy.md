@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510157"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963482"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – a Kanári üzembe helyezési stratégia konfigurálása az Azure Linux Virtual Machines
 
@@ -25,7 +25,7 @@ ms.locfileid: "86510157"
 
 Az Azure-folyamatok teljes körű CI/CD Automation-eszközöket biztosítanak a virtuális gépekhez való üzembe helyezéshez. Az Azure-beli virtuális gépek folyamatos kézbesítési folyamatát a Azure Portal is konfigurálhatja.
 
-Ez a cikk bemutatja, hogyan állíthat be egy olyan CI/CD-folyamatot, amely a MultiMachine-alapú üzembe helyezésre vonatkozó Kanári-stratégiát használja. A Azure Portal más olyan stratégiákat is támogat, mint például a [Rolling](https://aka.ms/AA7jlh8) és a [Blue-Green](https://aka.ms/AA83fwu).
+Ez a cikk bemutatja, hogyan állíthat be egy olyan CI/CD-folyamatot, amely a MultiMachine-alapú üzembe helyezésre vonatkozó Kanári-stratégiát használja. A Azure Portal más olyan stratégiákat is támogat, mint például a [Rolling](./tutorial-devops-azure-pipelines-classic.md) és a [Blue-Green](./tutorial-azure-devops-blue-green-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>CI/CD konfigurálása virtuális gépeken
 
@@ -72,8 +72,8 @@ A folyamatos kézbesítés lehetőséggel a Azure Portal a Kanári-telepítések
    ![A deployscripts mappában található deploy.sh mutató összetevők ablaktábla](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Egyéb központi telepítési stratégiák
-- [A működés közbeni üzembe helyezési stratégia konfigurálása](https://aka.ms/AA7jlh8)
-- [A kék-zöld telepítési stratégia konfigurálása](https://aka.ms/AA83fwu)
+- [A működés közbeni üzembe helyezési stratégia konfigurálása](./tutorial-devops-azure-pipelines-classic.md)
+- [A kék-zöld telepítési stratégia konfigurálása](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 
