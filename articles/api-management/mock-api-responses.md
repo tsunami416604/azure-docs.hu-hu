@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631130"
 ---
 # <a name="tutorial-mock-api-responses"></a>Oktatóanyag: API-válaszok modellezése
@@ -75,7 +75,7 @@ Az API-k egy vagy több műveletet tesznek elérhetővé. Ebben a szakaszban adj
 1. A jobb oldali **Ábrázolások** fejléc alatt válassza a **+ Ábrázolás hozzáadása** lehetőséget.
 1. Adja meg az *Application/JSON* kifejezést a keresőmezőbe, és válassza ki az **alkalmazás/JSON** tartalomtípust.
 1. A **Minta** szövegmezőbe írja be a következőt: `{ "sampleField" : "test" }`.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 :::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Kigúnyolt API-válasz" border="false":::
 
@@ -104,7 +104,7 @@ Bár ehhez a példához nem szükséges, az API-műveletek további beállítás
 
     :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Kigúnyolt API-válasz":::
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     > [!TIP]
     > Az API-val rendelkező sárga sáv **lehetővé** teszi, hogy a API Management küldött válaszok elküldjenek egy kigúnyoló szabályzatot, nem pedig a háttérrendszer tényleges válaszát.

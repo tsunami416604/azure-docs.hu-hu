@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
 ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91801418"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
@@ -20,7 +20,7 @@ Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére
 
 A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
@@ -239,7 +239,7 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
    ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
 * [A Azure Cosmos DB metrikáinak monitorozása és hibakeresése](use-metrics.md)

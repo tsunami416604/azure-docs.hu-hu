@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
 ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649575"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 és Esv3 sorozat
@@ -24,7 +24,7 @@ A Ev3 sorozat példányai Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel®
 
 Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához ESv3-méreteket vegyen igénybe. Az Esv3-méretek díjszabása és számlázási mérőszámai megegyeznek az Ev3-sorozatéval.
 
-A Ev3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája.
+Az Ev3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája.
 
 [ACU](acu.md): 160 – 190<br>
 [Premium Storage](premium-storage-performance.md): nem támogatott<br>
@@ -54,7 +54,7 @@ A Ev3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technol
 
 A Esv3 sorozat példányai Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz-es (Skylake) vagy Intel® Xeon® E5-2673 v4 2,3 GHz-es (Broadwell) processzorral, az Intel Turbo Boost Technology 2,0-vel és a Premium Storage használatával futnak. A Esv3 sorozat példányai ideálisak a nagyvállalati igényű vállalati alkalmazásokhoz.
 
-A Esv3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája.
+Az Esv3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): támogatott<br>

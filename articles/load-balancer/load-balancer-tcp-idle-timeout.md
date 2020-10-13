@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: allensu
 ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649830"
 ---
 # <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát konfigurálása Azure Load Balancerhoz
@@ -45,7 +45,7 @@ A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelm
 
 ## <a name="set-the-tcp-idle-timeout-on-rules"></a>A TCP Üresjárati időkorlát beállítása a szabályoknál
 
-A terheléselosztó üresjárati időkorlátjának beállításához a "IdleTimeoutInMinutes" beállítás van beállítva a terheléselosztási szabályhoz. Például:
+A terheléselosztó üresjárati időkorlátjának beállításához a "IdleTimeoutInMinutes" beállítás van beállítva a terheléselosztási szabályhoz. Példa:
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"

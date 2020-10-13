@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651190"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
@@ -94,9 +94,9 @@ Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Ariz
 
 ## <a name="december-2019"></a>2019. december
 
-Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Forrás – Assist CDN – a Meghívási funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
+Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Origin-Assist CDN-Prefetch funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Rendeltetés|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -337,7 +337,7 @@ Az új **átalakítási** objektum leegyszerűsíti a kódolási modellt. Az új
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory hitelesítés és RBAC
 
-Az Azure AD-hitelesítés és a szerepköralapú Access Control (RBAC) lehetővé teszik a biztonságos átalakításokat, LiveEvents, tartalmi kulcsokra vonatkozó szabályzatokat vagy eszközöket az Azure AD-ban lévő szerepkörök vagy felhasználók számára.
+Az Azure AD-hitelesítés és a Role-Based-Access Control (RBAC) lehetővé teszik a biztonságos átalakításokat, LiveEvents, tartalmi kulcsokra vonatkozó házirendeket vagy eszközöket az Azure AD-ban lévő szerepkörök vagy felhasználók számára.
 
 #### <a name="client-sdks"></a>Ügyfél-SDK-k  
 

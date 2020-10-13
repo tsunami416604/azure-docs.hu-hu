@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
 ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650289"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-rugalmas kiszolgáló korlátozásai (előzetes verzió)
@@ -67,7 +67,7 @@ A következők nem támogatottak:
 - Ezt a konfigurációt csak a kiszolgáló létrehozása során lehet beállítani.
 - A feltört számítási szint nem támogatja.
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 - A kapcsolódási módszer nem módosítható a kiszolgáló létrehozása után. Ha a kiszolgáló *magánhálózati hozzáféréssel (VNet-integrációval)* jön létre, a létrehozás után nem módosítható *nyilvános hozzáférésre (engedélyezett IP-címekre)* , és fordítva
 - A TLS/SSL alapértelmezés szerint engedélyezve van, és nem tiltható le.
 - A kiszolgáló által támogatott minimális TLS-verzió a TLS 1.2. További információért tekintse meg a [Kapcsolódás a TLS/SSL használatával](./how-to-connect-tls-ssl.md) című témakört.

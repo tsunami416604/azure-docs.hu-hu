@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649949"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
@@ -52,7 +52,7 @@ A helyszíni fájlkiszolgálók áttelepítésére vagy a Azure Files a Windows-
 
 Ha a Storage-fiók kulcsát szeretné használni az Azure-fájlmegosztás eléréséhez, javasoljuk, hogy használja a szolgáltatás-végpontokat a [hálózatkezelés](#networking) szakaszban leírtak szerint.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 Az Azure-fájlmegosztás bárhonnan elérhető a Storage-fiók nyilvános végpontján keresztül. Ez azt jelenti, hogy a hitelesített kérések, például a felhasználó bejelentkezési identitása által engedélyezett kérések, biztonságosan származhatnak az Azure-on belül vagy kívül is. Számos felhasználói környezetben a helyszíni munkaállomás Azure-fájlmegosztás kezdeti csatlakoztatása sikertelen lesz, noha az Azure-beli virtuális gépekről való csatlakoztatások sikeresek lesznek. Ennek az az oka, hogy számos szervezet és internetszolgáltató (ISP) blokkolja az SMB által a kommunikációhoz használt portot, a 445-es portot. A [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) összefoglalja, hogy mely internetszolgáltatók engedélyezik vagy tiltják a 445-ös porton keresztüli hozzáférést.
 
 Az Azure-fájlmegosztás elérésének feloldásához két fő lehetőség közül választhat:
@@ -195,7 +195,7 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
 Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.

@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637240"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure biztonsági alapkonfiguráció az Azure Kubernetes Service-hez
@@ -1235,9 +1235,9 @@ A biztonsági mentés előtt távolítsa el az állapotokat az alkalmazásokból
 
 A PowerShell-parancsokkal a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok rendszeres automatikus biztonsági mentését végezheti el. 
 
-Például:
+Példa:
 
-Backup – AzKeyVaultCertificate Backup – AzKeyVaultKey Backup – AzKeyVaultManagedStorageAccount Backup – AzKeyVaultSecret
+Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [Key Vault tanúsítványok biztonsági mentése](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1259,7 +1259,7 @@ Backup – AzKeyVaultCertificate Backup – AzKeyVaultKey Backup – AzKeyVaultM
 
 A PowerShell-parancsokkal rendszeres időközönként Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok adat-visszaállítását végzi. 
 
-Például:
+Példa:
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 
@@ -1281,11 +1281,11 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **Útmutató**: az adatai biztonsági mentése megfelelő eszköz használatával a tárolási típushoz (például Velero), amely képes biztonsági másolatot készíteni az állandó kötetekről, valamint további fürterőforrás-és konfigurációkkal. 
 
-Ha az Azure Kubernetes Service (ak) rendszerű telepítések során Azure Key Vault van használatban, engedélyezze a helyreállítható törlést a Key Vaultban a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához.
+Az Azure Kubernetes Service (ak) környezetekben Azure Key Vault használata esetén engedélyezze a kulcsok véletlen vagy rosszindulatú törléssel szembeni védettségét Key Vault Soft-Delete.
 
 - [Az Azure Storage Service Encryption ismertetése](../storage/common/storage-service-encryption.md)
 
-- [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft-Delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1377,7 +1377,7 @@ Tekintse meg a NIST kiadványát: útmutató a programok teszteléséhez, betan�
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

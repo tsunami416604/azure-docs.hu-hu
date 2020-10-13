@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be a labort a Azure Lab Services h
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631681"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához 
@@ -114,7 +114,7 @@ A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált r
 A sablon frissítve lett, és a rendszerképek szükségesek egy etikai hackelési bevezetési tesztelési osztályhoz, amely egy olyan eszközzel rendelkezik, amely a behatolási teszteket és egy másik, biztonsági réseket felderítő képet tartalmaz. A sablon képe mostantól közzétehető az osztályban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.
   
 
-## <a name="cost"></a>Költség  
+## <a name="cost"></a>Költségek  
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
  
 Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
@@ -126,7 +126,7 @@ További információ a díjszabásról: [Azure Lab Services díjszabása](https
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a tesztkörnyezet etikai feltörési osztályhoz való létrehozásának lépésein. Ez magában foglalja a beágyazott virtualizálás beállításának lépéseit két virtuális gép létrehozásához a gazda virtuális gépen az áthatoló tesztelés érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépések közösek a laborok beállításához:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

@@ -14,10 +14,10 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363120"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása SUSE rendszeren a STONITH használatával
@@ -75,7 +75,7 @@ A Microsoft Service Management ezt a karakterláncot adja meg. Módosítsa a fá
 
 ![Képernyőfelvétel: egy csomópont InitiatorName értékeit tartalmazó initiatorname-fájl.](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 módosítsa a */etc/iSCSI/iscsid.conf*: set *Node. Session. Timeo. replacement_timeout = 5* és *Node. Startup = automatikus*. Módosítsa a fájlt **mindkét** csomóponton.
+1,2 módosítsa a */etc/iSCSI/iscsid.conf*: állítsa be *Node.Session.Timeo.replacement_timeout = 5* és *Node. Startup = automatikus*beállítást. Módosítsa a fájlt **mindkét** csomóponton.
 
 1,3 a felderítési parancs végrehajtása négy munkamenetet mutat be. Futtassa azt mindkét csomóponton.
 
@@ -404,7 +404,7 @@ Kattintson a Next (Tovább) gombra.
 
 ![Képernyőfelvétel: a konzol ablaka a sikert jelző üzenettel jelenik meg.](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
-Kattintson a Befejezés gombra.
+Kattintson a Befejezés gombra
 
 Telepítenie kell a libqt4 és a libyui-QT csomagokat is.
 ```

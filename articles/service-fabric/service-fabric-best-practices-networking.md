@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
 ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630702"
 ---
-# <a name="networking"></a>Hálózatkezelés
+# <a name="networking"></a>Hálózat
 
 Az Azure Service Fabric-fürtök létrehozásakor és kezelésekor hálózati kapcsolatot biztosít a csomópontjai és alkalmazásai számára. A hálózati erőforrások közé tartozik az IP-címtartományok, a virtuális hálózatok, a terheléselosztó és a hálózati biztonsági csoportok. Ebben a cikkben az ezen erőforrásokkal kapcsolatos ajánlott eljárásokat ismerheti meg.
 
@@ -62,7 +62,7 @@ Az infrastruktúra horizontális felskálázása szükséges a gyorsított hál�
 Az alapvető szabályok itt az Azure által felügyelt Service Fabric-fürt biztonsági zárolásának minimális száma. Nem sikerült megnyitni a következő portokat, vagy az IP/URL-cím jóváhagyása megakadályozza a fürt megfelelő működését, és előfordulhat, hogy nem támogatott. Ezzel a szabállyal szigorúan szükséges az [operációs rendszer rendszerképének automatikus frissítése](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), ellenkező esetben további portokat kell megnyitnia.
 
 ### <a name="inbound"></a>Bejövő 
-|Prioritás   |Név               |Port        |Protokoll  |Forrás             |Cél       |Műveletek   
+|Prioritás   |Name (Név)               |Port        |Protokoll  |Forrás             |Cél       |Művelet   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |Internet           |VirtualNetwork    |Engedélyezés
 |3910       |Ügyfél             |19000       |TCP       |Internet           |VirtualNetwork    |Engedélyezés
@@ -97,7 +97,7 @@ További információ a bejövő biztonsági szabályokról:
 
 ### <a name="outbound"></a>Kimenő
 
-|Prioritás   |Név               |Port        |Protokoll  |Forrás             |Cél       |Műveletek   
+|Prioritás   |Name (Név)               |Port        |Protokoll  |Forrás             |Cél       |Művelet   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Network (Hálózat)            |Bármelyik         |TCP       |VirtualNetwork     |VirtualNetwork    |Engedélyezés
 |3910       |Erőforrás-szolgáltató  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Engedélyezés
@@ -123,7 +123,7 @@ A biztonsági zárolással kapcsolatos problémák nyomon követéséhez haszná
 
 * Azon gapped gépeken üzemeltetett Windows-tárolók esetében, amelyek nem tudnak lekérni alaprétegeket az Azure Cloud Storage-ból, felülbírálják a külső réteg viselkedését a [--Allow-nem terjeszthető összetevők](/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) jelző használatával a Docker-démonban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
