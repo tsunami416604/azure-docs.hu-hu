@@ -7,29 +7,29 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757792"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973444"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
 
 Az Azure Cognitive Search az adatok keresési indexbe történő importálásának [két alapvető megközelítését](search-what-is-data-import.md) *támogatja: az* adatok programozott módon történő továbbítása az indexbe, vagy az [Azure Cognitive Search indexelő](search-indexer-overview.md) használata egy támogatott adatforráson az adatok *lekéréséhez* .
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet hatékonyan indexelni az információkat a [leküldéses modellel](search-what-is-data-import.md#pushing-data-to-an-index) a kérelmek kötegelt feldolgozásával, valamint egy exponenciális leállítási újrapróbálkozási stratégiájának használatával. [Letöltheti és futtathatja az alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Ez a cikk ismerteti az alkalmazás legfontosabb szempontjait és azokat a tényezőket, amelyeket figyelembe kell venni az adatok indexelése során.
+Ez az oktatóanyag azt ismerteti, hogyan lehet hatékonyan indexelni az információkat a [leküldéses modellel](search-what-is-data-import.md#pushing-data-to-an-index) a kérelmek kötegelt feldolgozásával, valamint egy exponenciális leállítási újrapróbálkozási stratégiájának használatával. [A minta alkalmazást letöltheti és futtathatja](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Ez a cikk ismerteti az alkalmazás legfontosabb szempontjait és azokat a tényezőket, amelyeket figyelembe kell venni az adatok indexelése során.
 
 Ez az oktatóanyag a C# és a [.net SDK](/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Index létrehozása
 > * A leghatékonyabb méret meghatározásához tesztelje a különböző batch-méreteket
-> * Az adatindex aszinkron módon
+> * Kötegek indexelése aszinkron módon
 > * Több szál használata az indexelési sebesség növeléséhez
-> * Az exponenciális leállítási újrapróbálkozási stratégiájának használata a sikertelen elemek újrapróbálkozásához
+> * Az exponenciális leállítási újrapróbálkozási stratégiájának használata a sikertelen dokumentumok újrapróbálkozásához
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
@@ -45,7 +45,7 @@ Ehhez az oktatóanyaghoz a következő szolgáltatások és eszközök szükség
 
 ## <a name="download-files"></a>Fájlok letöltése
 
-Az oktatóanyag forráskódja az [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub-adattárban található [optimzize-adatindexelési](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) mappában található.
+Az oktatóanyag forráskódja az [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub-adattárban található [optimzize-adatindexelési/v11](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing/v11) mappában található.
 
 ## <a name="key-considerations"></a>Fő szempontok
 
@@ -79,12 +79,11 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. Indítsa el a Visual studiót, és nyissa meg a **OptimizeDataIndexing. SLN**.
 1. Megoldáskezelő a kapcsolódási adatok megadásához nyissa meg a **appsettings.js** .
-1. `searchServiceName`Ha a teljes URL-cím " https://my-demo-service.search.windows.net ", a szolgáltatás neve a következő: "My-demo-Service".
 
 ```json
 {
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+  "SearchServiceUri": "https://{service-name}.search.windows.net",
+  "SearchServiceAdminApiKey": "",
   "SearchIndexName": "optimize-indexing"
 }
 ```
@@ -112,7 +111,7 @@ Ez az egyszerű C# kódon-konzol alkalmazás a következő feladatokat hajtja v�
 
 ### <a name="creating-the-index"></a>Az index létrehozása
 
-Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja a [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy a C# adatmodell osztályból létrehozzon egy index-struktúrát.
+Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja az `FieldBuilder` osztályt egy C# adatmodell-osztályból származó index-struktúra létrehozásához.
 
 Az adatmodellt a Hotel osztály határozza meg, amely a címe osztályra mutató hivatkozásokat is tartalmaz. A FieldBuilder részletesen részletezi az indexek összetett adatstruktúrájának létrehozásához. A metaadatok címkéi az egyes mezők attribútumainak meghatározására szolgálnak, például hogy kereshetők vagy rendezve legyenek.
 
@@ -120,27 +119,25 @@ A **Hotel.cs** fájl következő kódrészletei azt mutatják be, hogyan adható
 
 ```csharp
 . . .
-[IsSearchable, IsSortable]
+[SearchableField(IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Address Address { get; set; }
 . . .
 ```
 
-Az **program.cs** -fájlban az index egy névvel és egy, a metódus által generált mező-gyűjteménysel van definiálva, `FieldBuilder.BuildForType<Hotel>()` majd a következőképpen jön létre:
+Az **program.cs** -fájlban az index egy névvel és egy, a metódus által generált mező-gyűjteménysel van definiálva, `FieldBuilder.Build(typeof(Hotel))` majd a következőképpen jön létre:
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address class is referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -148,11 +145,12 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 A **DataGenerator.cs** fájlban egy egyszerű osztályt kell megvalósítani, amely a teszteléshez hoz létre adatkészletet. Ennek az osztálynak egyetlen célja, hogy megkönnyítse a nagy számú, egyedi AZONOSÍTÓval rendelkező dokumentum létrehozását az indexeléshez.
 
-Az egyedi azonosítókkal rendelkező 100 000-Szállodák listájának lekéréséhez futtassa a következő két sornyi kódot:
+Az egyedi azonosítókkal rendelkező 100 000-Szállodák listájának lekéréséhez futtassa a következő kódrészleteket:
 
 ```csharp
+long numDocuments = 100000;
 DataGenerator dg = new DataGenerator();
-List<Hotel> hotels = dg.GetHotels(100000, "large");
+List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 ```
 
 Ebben a példában két különböző méretű Hotel érhető el: **kicsi** és  **nagy**.
@@ -164,7 +162,7 @@ Az index sémája jelentős hatással lehet az indexelési sebességre. Ennek a 
 Az Azure Cognitive Search a következő API-kat támogatja egy vagy több dokumentum indexbe való betöltéséhez:
 
 + [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction osztály](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) vagy [indexBatch osztály](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [IndexDocumentsAction osztály](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) vagy [IndexDocumentsBatch osztály](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
 
 A dokumentumok a kötegekben való indexelése jelentősen javítja az indexelési teljesítményt. Ezek a kötegek akár 1000-dokumentumok, akár 16 MB-onként is lehetnek.
 
@@ -178,7 +176,7 @@ Mivel az optimális batch-méret függ az indextől és az adataitól, a legjobb
 A következő függvény egy egyszerű megközelítést mutat be a Batch-méretek teszteléséhez.
 
 ```csharp
-public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
+public static async Task TestBatchSizesAsync(SearchClient searchClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
 {
     DataGenerator dg = new DataGenerator();
 
@@ -192,7 +190,7 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
             List<Hotel> hotels = dg.GetHotels(numDocs, "large");
 
             DateTime startTime = DateTime.Now;
-            await UploadDocuments(indexClient, hotels);
+            await UploadDocumentsAsync(searchClient, hotels).ConfigureAwait(false);
             DateTime endTime = DateTime.Now;
             durations.Add(endTime - startTime);
 
@@ -208,22 +206,24 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
         // Pausing 2 seconds to let the search service catch its breath
         Thread.Sleep(2000);
     }
+
+    Console.WriteLine();
 }
 ```
 
 Mivel nem minden dokumentum azonos méretű (bár ebben a mintában vannak), a keresési szolgáltatásnak küldött adatok méretét becsüljük. Ezt az alábbi függvény használatával hajtja végre, amely először átalakítja az objektumot a JSON-be, majd a mérete bájtban van meghatározva. Ezzel a technikával meghatározhatja, hogy melyik batch-méretek a leghatékonyabbak a MB/s indexelési sebesség szempontjából.
 
 ```csharp
+// Returns size of object in MB
 public static double EstimateObjectSize(object data)
 {
-    // converting data to json for more accurate sizing
-    var json = JsonConvert.SerializeObject(data);
-
     // converting object to byte[] to determine the size of the data
     BinaryFormatter bf = new BinaryFormatter();
     MemoryStream ms = new MemoryStream();
     byte[] Array;
 
+    // converting data to json for more accurate sizing
+    var json = JsonSerializer.Serialize(data);
     bf.Serialize(ms, json);
     Array = ms.ToArray();
 
@@ -234,10 +234,10 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-A függvénynek szüksége van egy `ISearchIndexClient` , valamint az egyes kötegek méretének tesztelésére irányuló próbálkozások számára. Mivel előfordulhat, hogy az egyes kötegek indexelési ideje változó lehet, a rendszer alapértelmezés szerint háromszor megpróbál minden köteget kipróbálni, hogy az eredmények statisztikailag jelentősebbek legyenek.
+A függvénynek szüksége van egy `SearchClient` , valamint az egyes kötegek méretének tesztelésére irányuló próbálkozások számára. Mivel előfordulhat, hogy az egyes kötegek indexelési ideje változó lehet, a rendszer alapértelmezés szerint háromszor megpróbál minden köteget kipróbálni, hogy az eredmények statisztikailag jelentősebbek legyenek.
 
 ```csharp
-await TestBatchSizes(indexClient, numTries: 3);
+await TestBatchSizesAsync(searchClient, numTries: 3);
 ```
 
 A függvény futtatásakor a konzolon az alábbihoz hasonló kimenetnek kell megjelennie:
@@ -250,8 +250,8 @@ Határozza meg, hogy melyik batch-méret a leghatékonyabb, majd az oktatóanyag
 
 Most, hogy azonosította a használni kívánt batch-méretet, a következő lépés az adatindex megkezdése. Az adatindexek hatékony indexeléséhez a következő példa:
 
-* Több szálat/feldolgozót használ.
-* Egy exponenciális leállítási újrapróbálkozási stratégiát valósít meg.
++ Több szálat/feldolgozót használ.
++ Egy exponenciális leállítási újrapróbálkozási stratégiát valósít meg.
 
 ### <a name="use-multiple-threadsworkers"></a>Több szál/feldolgozó használata
 
@@ -268,13 +268,16 @@ A keresési szolgáltatást elérve a kérések felfutásakor előfordulhat, hog
 
 Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbálkozási stratégiájának használatával újra](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)kell próbálkozni.
 
-Az Azure Cognitive Search .NET SDK automatikusan újrapróbálkozik a 503s és más sikertelen kérelmekkel, de a 207s újrapróbálkozásához saját logikát kell megvalósítani. A nyílt forráskódú eszközök, például a [Polly](https://github.com/App-vNext/Polly) is használható az újrapróbálkozási stratégia megvalósításához. 
+Az Azure Cognitive Search .NET SDK automatikusan újrapróbálkozik a 503s és más sikertelen kérelmekkel, de a 207s újrapróbálkozásához saját logikát kell megvalósítani. A nyílt forráskódú eszközök, például a [Polly](https://github.com/App-vNext/Polly) is használható az újrapróbálkozási stratégia megvalósításához.
 
 Ebben a példában a saját exponenciális leállítási újrapróbálkozási stratégiát Implementáljuk. Ennek a stratégiának a megvalósításához néhány változót is meg kell határozni, beleértve az `maxRetryAttempts` és a `delay` sikertelen kérések kezdeti értékét:
 
 ```csharp
 // Create batch of documents for indexing
-IndexBatch<Hotel> batch = IndexBatch.Upload(hotels);
+var batch = IndexDocumentsBatch.Upload(hotels);
+
+// Create an object to hold the result
+IndexDocumentsResult result = null;
 
 // Define parameters for exponential backoff
 int attempts = 0;
@@ -282,9 +285,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Fontos, hogy a [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) elkapjon, mivel ezek a kivételek azt jelzik, hogy az indexelési művelet csak részben sikeres (207s). A sikertelen elemeket újra meg kell próbálni a `FindFailedActionsToRetry` metódus használatával, amely megkönnyíti egy olyan új köteg létrehozását, amely csak a hibás elemeket tartalmazza.
+Az indexelési művelet eredményeit a változó tárolja `IndexDocumentResult result` . Ez a változó azért fontos, mert lehetővé teszi annak ellenőrzését, hogy a Batch bármelyik dokumentuma meghiúsult-e az alább látható módon. Ha részleges hiba történt, egy új köteg jön létre a sikertelen dokumentumok azonosítója alapján.
 
-A kivételeken kívül más kivételeket `IndexBatchException` is el kell látni, és a kérést nem sikerült teljesen megadnia. Ezek a kivételek kevésbé gyakoriak, különösen a .NET SDK-val, mivel az automatikusan újrapróbálkozik a 503s.
+`RequestFailedException` a kivételeket akkor is el kell látni, ha a kérést nem sikerült teljesen végrehajtani, és azt is újra kell próbálkozni.
 
 ```csharp
 // Implement exponential backoff
@@ -293,29 +296,46 @@ do
     try
     {
         attempts++;
-        var response = await indexClient.Documents.IndexAsync(batch);
-        break;
+        result = await searchClient.IndexDocumentsAsync(batch).ConfigureAwait(false);
+
+        var failedDocuments = result.Results.Where(r => r.Succeeded != true).ToList();
+
+        // handle partial failure
+        if (failedDocuments.Count > 0)
+        {
+            if (attempts == maxRetryAttempts)
+            {
+                Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("[Batch starting at doc {0} had partial failure]", id);
+                Console.WriteLine("[Retrying {0} failed documents] \n", failedDocuments.Count);
+
+                // creating a batch of failed documents to retry
+                var failedDocumentKeys = failedDocuments.Select(doc => doc.Key).ToList();
+                hotels = hotels.Where(h => failedDocumentKeys.Contains(h.HotelId)).ToList();
+                batch = IndexDocumentsBatch.Upload(hotels);
+
+                Task.Delay(delay).Wait();
+                delay = delay * 2;
+                continue;
+            }
+        }
+
+        return result;
     }
-    catch (IndexBatchException ex)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2}", attempts, maxRetryAttempts, ex.Message);
+        Console.WriteLine("[Batch starting at doc {0} failed]", id);
+        Console.WriteLine("[Retrying entire batch] \n");
 
         if (attempts == maxRetryAttempts)
+        {
+            Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
             break;
-
-        // Find the failed items and create a new batch to retry
-        batch = ex.FindFailedActionsToRetry(batch, x => x.HotelId);
-        Console.WriteLine("Retrying failed documents using exponential backoff...\n");
-
-        Task.Delay(delay).Wait();
-        delay = delay * 2;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2} \n", attempts, maxRetryAttempts, ex.Message);
-
-        if (attempts == maxRetryAttempts)
-            break;
+        }
 
         Task.Delay(delay).Wait();
         delay = delay * 2;
@@ -325,10 +345,10 @@ do
 
 Innen Becsomagoljuk az exponenciális leállítási kódot egy függvénybe, hogy könnyen meghívható legyen.
 
-Ekkor létrejön egy másik függvény az aktív szálak kezeléséhez. Az egyszerűség kedvéért ez a függvény nem szerepel itt, de a [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs)-ben is megtalálható. A függvény hívható a következő paranccsal `hotels` , ahol a feltölteni kívánt adatok, `1000` a köteg mérete, és `8` az egyidejű szálak száma:
+Ekkor létrejön egy másik függvény az aktív szálak kezeléséhez. Az egyszerűség kedvéért ez a függvény nem szerepel itt, de a [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs)-ben is megtalálható. A függvény hívható a következő paranccsal `hotels` , ahol a feltölteni kívánt adatok, `1000` a köteg mérete, és `8` az egyidejű szálak száma:
 
 ```csharp
-ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
+await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
 ```
 
 A függvény futtatásakor a következőhöz hasonló kimenetnek kell megjelennie:
@@ -337,7 +357,10 @@ A függvény futtatásakor a következőhöz hasonló kimenetnek kell megjelenni
 
 Ha a dokumentumok egy kötege meghibásodik, a rendszer kinyomtat egy hibaüzenetet, amely jelzi a hibát, és hogy a köteg újra próbálkozik:
 
-![Hiba az index adat függvényben](media/tutorial-optimize-data-indexing/index-data-error.png "A teszt batch-méret függvény kimenete")
+```
+[Batch starting at doc 6000 had partial failure]
+[Retrying 560 failed documents]
+```
 
 A függvény futásának befejeződése után ellenőrizheti, hogy az összes dokumentum hozzá lett-e adva az indexhez.
 
@@ -354,7 +377,7 @@ Két fő lehetőség áll rendelkezésre a dokumentumok számának ellenőrzés�
 A dokumentumok száma művelet lekérdezi a dokumentumok számának számát egy keresési indexben:
 
 ```csharp
-long indexDocCount = indexClient.Documents.Count();
+long indexDocCount = await searchClient.GetDocumentCountAsync();
 ```
 
 #### <a name="get-index-statistics"></a>Index statisztikáinak beolvasása
@@ -362,7 +385,7 @@ long indexDocCount = indexClient.Documents.Count();
 Az index statisztikai lekérdezése művelet visszaadja az aktuális index bizonylatszámát, valamint a tárterület használatát. Az index statisztikája hosszabb időt vesz igénybe, mint a frissítendő dokumentumok száma.
 
 ```csharp
-IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(configuration["SearchIndexName"]);
+var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -381,13 +404,13 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő indexeket, és tör
 
 Az indexek törléséhez használhatja a portált is.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri az adatfeldolgozási koncepciót, ismerkedjen meg közelebbről a Lucene lekérdezési architektúrával, és hogy a teljes szöveges keresés hogyan működik az Azure Cognitive Searchban.
 

@@ -5,23 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/21/2020
+ms.date: 10/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 7285325d92949a331833968b8f71fbeffd6543f4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperfq4, azuread-video-2020
+ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89437904"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962156"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
 A modern biztonsági területet mostantól a szervezet hálózatán kívül is kiterjesztheti a felhasználók és az eszközök azonosítására. A szervezetek a hozzáférés-vezérlési döntéseik részeként használhatják ezeket az identitási jeleket. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-AD-Conditional-Access/player]
 
 A feltételes hozzáférés az Azure Active Directory által használt eszköz, amely lehetővé teszi a jelek összekapcsolását, a döntések meghozatalát és a szervezeti házirendek betartatását. A feltételes hozzáférés az új Identity vezérelt vezérlő síkja szívében található.
 
@@ -98,7 +100,7 @@ Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes h
 
 A [bejelentkezési kockázathoz](concept-conditional-access-conditions.md#sign-in-risk) hozzáférés szükséges az [Identity Protection](../identity-protection/overview-identity-protection.md) szolgáltatáshoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
 - [A feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md)

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02755c164e72e3149497ee8e3c1fdc19141fd54f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450729"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973631"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
 
@@ -131,7 +131,7 @@ Ugyanez vonatkozik arra a kötetre, amelyet a teljes HANA-adatbázis biztonsági
  
 
 ## <a name="backup"></a>Backup
-A streaming Backups és az Azure back Service biztonsági mentése mellett SAP HANA adatbázisokat az [Virtual Machines Azure-beli SAP HANA biztonsági mentési útmutatója](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)című cikkben leírtak szerint Azure NetApp Files megnyithatja a tár-alapú Pillanatképek biztonsági mentésének lehetőségét. 
+A streaming Backups és az Azure back Service biztonsági mentése mellett SAP HANA adatbázisokat az [Virtual Machines Azure-beli SAP HANA biztonsági mentési útmutatója](./sap-hana-backup-guide.md)című cikkben leírtak szerint Azure NetApp Files megnyithatja a tár-alapú Pillanatképek biztonsági mentésének lehetőségét. 
 
 SAP HANA a következőket támogatja:
 
@@ -195,4 +195,4 @@ root # > azcopy sync '/hana/data/SID/mnt00001/.snapshot' 'https://azacsnaptmytes
 ## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikket:
 
-- [SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban](./sap-hana-availability-overview.md)

@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022180"
+ms.locfileid: "91893203"
 ---
 # <a name="late-stage-reprojection"></a>Újravetítés késői fázisban
 
@@ -34,7 +34,9 @@ Ha igen, az alkalmazás a mélységi LSR fogja használni, ellenkező esetben a 
 
 Ahhoz, hogy a részletes LSR működjön, az ügyfélalkalmazás érvényes mélységi puffert kell megadnia, amely tartalmazza az összes releváns geometriát, amelyet a LSR során figyelembe kell venni.
 
-A mélységi LSR megkísérli a képkeret stabilizálását a megadott mélységi puffer tartalma alapján. Ennek következményeként a nem a számára megjelenített tartalmak, például az átlátszó objektumok nem módosíthatók LSR, és instabilitási és újravetítési összetevőket is tartalmazhatnak.
+A mélységi LSR megkísérli a képkeret stabilizálását a megadott mélységi puffer tartalma alapján. Ennek következményeként a nem a számára megjelenített tartalmak, például az átlátszó objektumok nem módosíthatók LSR, és instabilitási és újravetítési összetevőket is tartalmazhatnak. 
+
+Az átlátszó objektumok visszavetítési instabilitásának enyhítéséhez kényszerítheti a mélységi puffer írását. Tekintse meg a [Color](color-materials.md) és a [pbr](pbr-materials.md) anyagokhoz tartozó *TransparencyWritesDepth* . Vegye figyelembe azonban, hogy az átlátszó/átlátszatlan objektumok interakciójának vizualizációs minősége a jelző engedélyezésekor romolhat.
 
 ## <a name="planar-lsr"></a>Síkbeli LSR
 
@@ -52,6 +54,6 @@ Saját maga is kiszámíthatja a fókuszt, bár érdemes lehet a távoli rendere
 
 A két egymást követő keretben számított fókusz pontok meglehetősen eltérőek lehetnek. Egyszerűen használhatja őket a-ként úgy, hogy a kiugróan megjelenő Hologramok. Ennek a viselkedésnek a megakadályozásához az előző és az aktuális fókusz pontok közötti interpoláció javasolt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kiszolgálóoldali teljesítménylekérdezések](performance-queries.md)

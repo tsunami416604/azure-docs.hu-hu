@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890666"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951604"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>A Azure Portal segítségével kezelheti a sávszélesség-ütemterveket a Azure Stack Edge Pro GPU-ban 
 
@@ -68,7 +68,7 @@ A sávszélesség-ütemezéseket az alábbi lépesek végrehajtásával szerkesz
 
 4. Az ütemezés módosítása után annak megfelelően frissül az ütemezések listája.
 
-    ![Felhasználó módosítása](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![Felhasználó módosítása 2](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>Ütemezés törlése
@@ -84,6 +84,6 @@ Az Azure Stack Edge Pro-eszközhöz társított sávszélesség-ütemterv törl�
 3. Az ütemezés törlése után frissül az ütemezések listája.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-j-series-manage-shares.md).

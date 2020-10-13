@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090516"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938339"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps Közösség – nyílt forráskódú projektek
 
@@ -39,8 +39,10 @@ Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek 
 |-|-|
 | [Azure Maps animációs modul](https://github.com/Azure-Samples/azure-maps-animations) | Az Azure Maps web SDK-val használható animációk gazdag könyvtára. |
 | [Azure Maps térinformatikai vezérlő modul](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely a böngésző Térinformatikai API-ját használja a felhasználó kereséséhez a térképen. |
+| [Azure Maps kockás-adatforrás modulja](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Egy modul a Azure Maps web SDK-hoz, amely olyan adatforrást biztosít, amely egy rácsos terület celláiba helyezi a fürtöket. Ezt a műveletet számos név, például a mozaikok, az adatdobozolási vagy a hexadecimális raktárhelyek is ismerik.  |
 | [Azure Maps teljes képernyős vezérlési modul](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Egy Azure Maps web SDK-modul, amely egy vezérlőt biztosít a Térkép teljes képernyős módban való megjelenítéséhez. |
 | [Azure Maps kiválasztási vezérlő modul](https://github.com/Azure-Samples/azure-maps-selection-control) | Egy Azure Maps web SDK-modul, amely a rajzeszközökkel vagy egy Route Range (sokszög) megadásával lehetővé teszi az adatforrásban lévő adatforrások kiválasztásának szabályozását. |
+| [Azure Maps elcsúsztatási Térkép modul](https://github.com/Azure-Samples/azure-maps-swipe-map) | Egy modul a Azure Maps web SDK-hoz, amely lehetővé teszi két egymást átfedő Térkép közötti leválasztást, ideális megoldás két átfedésben lévő adatkészlet összehasonlítására. |
 | [Azure Maps szinkronizálási Térkép modul](https://github.com/Azure-Samples/azure-maps-sync-maps) | Azure Maps web SDK-modul, amely két vagy több Térkép kameráit szinkronizálja. |
 | [Azure Maps Services FELHASZNÁLÓIFELÜLET-modul](https://github.com/Azure-Samples/azure-maps-services-ui) | Webes FELHASZNÁLÓIFELÜLET-vezérlők összessége, amelyek betakarják a Azure Maps REST-szolgáltatásokat. |
 

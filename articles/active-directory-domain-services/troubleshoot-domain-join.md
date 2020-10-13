@@ -2,20 +2,20 @@
 title: A tartományhoz való csatlakozás hibáinak megoldása – Azure AD Domain Services | Microsoft Docs
 description: Ismerje meg, hogy miként lehet elhárítani a gyakori problémákat, amikor egy virtuális géphez próbál csatlakozni, vagy egy alkalmazást csatlakoztat Azure Active Directory Domain Serviceshoz, és nem tud csatlakozni a felügyelt tartományhoz, illetve nem végezheti el a hitelesítést.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 4a472f0d1e31faea6b62eec004543b42e6add4fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: ee60b684d64ef49fbb669de8c98203e2df5268bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039687"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967511"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
@@ -58,7 +58,7 @@ A hitelesítő adatokkal kapcsolatos problémák elhárításához tekintse át 
 1. Próbáljon meg egy olyan felhasználói fiók hitelesítő adatait használni, amely a felügyelt tartomány részét képezi, hogy a virtuális gépeket a felügyelt tartományhoz csatlakoztassa.
 1. Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][enable-password-sync] , és elég sokáig várt a jelszó-szinkronizálás kezdeti befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tartományhoz való csatlakozás művelet részeként a Active Directory folyamatok mélyebb megismeréséhez tekintse meg a [csatlakoztatási és hitelesítési problémák][join-authentication-issues]című témakört.
 

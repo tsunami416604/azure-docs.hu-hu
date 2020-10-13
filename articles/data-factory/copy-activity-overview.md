@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 5eade0ad48dcdd1f0c18ef6e65e498a7b9c79c15
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946169"
+ms.locfileid: "91951680"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -186,10 +186,11 @@ Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-ty
 Az adatoknak a forrás adattárból a fogadóba való másolása mellett úgy is beállíthatja, hogy további adatoszlopokat is adjon hozzá a fogadóhoz való másoláshoz. Például:
 
 - Fájl alapú forrásból történő másoláskor a relatív fájl elérési útját egy további oszlopként tárolja, amelyből az adatokból származó fájl származik.
+- A megadott forrás oszlop duplikálása egy másik oszlopként. 
 - Adjon hozzá egy olyan oszlopot, amely ADF-kifejezéssel van ellátva, hogy csatolja az ADF rendszerváltozóit, például a folyamat nevét vagy a folyamat AZONOSÍTÓját, vagy más dinamikus értéket a felsőbb rétegbeli tevékenység kimenet
 - Adjon hozzá egy statikus értéket tartalmazó oszlopot az alsóbb rétegbeli fogyasztási igények kielégítéséhez.
 
-A másolási tevékenység forrása lapon a következő konfiguráció található: 
+A másolási tevékenység forrása lapon a következő konfiguráció található. Ezeket a további oszlopokat is leképezheti a másolási tevékenység [sémájának leképezése](copy-activity-schema-and-type-mapping.md#schema-mapping) során a szokásos módon a definiált oszlopnevek használatával. 
 
 ![További oszlopok hozzáadása a másolási tevékenységhez](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ Programozott módon történő konfigurálásához adja hozzá a `additionalColu
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A tömb alá tartozó minden objektum `additionalColumns` egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a pedig `value` jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`** – a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **Kifejezés**<br>- **Statikus érték** | Nem |
+| additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A tömb alá tartozó minden objektum `additionalColumns` egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a pedig `value` jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`** – a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **$ $Column: <source_column_name>** – a fenntartott változó mintája azt jelzi, hogy a megadott forrás oszlopot duplikálja egy másik oszlopként.<br>- **Kifejezés**<br>- **Statikus érték** | Nem |
 
 **Példa**
 
@@ -218,6 +219,10 @@ Programozott módon történő konfigurálásához adja hozzá a `additionalColu
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",

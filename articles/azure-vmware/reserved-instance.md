@@ -3,12 +3,12 @@ title: Költségek megtakarítása az Azure VMware-megoldás fenntartott példá
 description: Megtudhatja, hogyan vásárolhat fenntartott példányt az Azure VMware-megoldáshoz.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91492426"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951417"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Költségek megtakarítása Azure VMware-megoldással
 
@@ -22,7 +22,7 @@ A fenntartott példányok bizonyos kivételekkel érhetők el.
 
 -   Nem **elegendő kvóta**   – Az egyetlen/megosztott előfizetésre vonatkozó foglalásnak az új fenntartott példányra vonatkozó előfizetésben elérhetőnek kell lennie a gazdagépek számára. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](enable-azure-vmware-solution.md) .
 
--   **Ajánlati jogosultság**– szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)   a Microsofttal.
+-   **Ajánlati jogosultság**– szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md)   a Microsofttal.
 
 -   **Kapacitás korlátozásai**   – Ritka körülmények között az Azure korlátozza az Azure VMware Solution Host SKU-ra vonatkozó új foglalások megvásárlását, mivel a régió alacsony kapacitású.
 

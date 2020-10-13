@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020796"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950788"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>A Microsoft. Azure. Search (v10) használata .NET-alkalmazásokban
 
@@ -44,7 +44,7 @@ Ha visszajelzést szeretne küldeni az SDK jövőbeli frissítéséről, tekints
 
 Az `2019-05-06` [Azure Cognitive Search REST API](/rest/api/searchservice/).net SDK-példánya. Ebben a verzióban az Azure-Blobok indexelése során az [összetett típusok](search-howto-complex-data-types.md), az [AI](cognitive-search-concept-intro.md)-bővítés, az [automatikus kiegészítés](/rest/api/searchservice/autocomplete)és a [JsonLines-elemzési mód](search-howto-index-json-blobs.md) támogatása szerepel. 
 
-Ez az SDK nem támogatja a [felügyeleti műveleteket](/rest/api/searchmanagement/) , például a keresési szolgáltatások létrehozását és méretezését, valamint az API-kulcsok kezelését. Ha a keresési erőforrásokat egy .NET-alkalmazásból szeretné kezelni, használhatja az [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)-t.
+Ez az SDK nem támogatja a [felügyeleti műveleteket](/rest/api/searchmanagement/) , például a keresési szolgáltatások létrehozását és méretezését, valamint az API-kulcsok kezelését. Ha a keresési erőforrásokat egy .NET-alkalmazásból szeretné kezelni, használhatja az [Azure Cognitive Search .net Management SDK](/dotnet/api/overview/azure/search)-t.
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Frissítés az SDK legújabb verziójára
 Ha már használja az Azure Cognitive Search .NET SDK egy régebbi verzióját, és az általánosan elérhető legújabb verzióra szeretne frissíteni, [Ez a cikk](search-dotnet-sdk-migration-version-9.md) ismerteti, hogyan.
@@ -769,7 +769,7 @@ WriteDocuments(results);
 
 Ez a lépés befejezi az oktatóanyagot, de nem áll le itt. * * A következő lépések további forrásokat biztosítanak az Azure Cognitive Search megismeréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Nézze át a [.NET SDK](/dotnet/api/microsoft.azure.search) és a [REST API](/rest/api/searchservice/) referenciáit.
 * Tekintse át az [elnevezési konvenciókat](/rest/api/searchservice/Naming-rules) a különböző objektumok elnevezési szabályainak megismeréséhez.
 * Tekintse át az Azure Cognitive Search [támogatott adattípusait](/rest/api/searchservice/Supported-data-types) .

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91530459"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973121"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
 
@@ -65,10 +65,10 @@ Az alap és a memória a `--cpus` `--memory` Docker Run parancs részeként hasz
 >[!NOTE]
 > A MongoDB már nem támogatott a tároló 3. x verziójában. Ehelyett a tárolók támogatják az Azure Storage és az offline fájlrendszerek használatát.
 
-| Implementálás |  Szükséges futásidejű argumentum (ok) |
+| Implementálás |    Szükséges futásidejű argumentum (ok) |
 |---------|---------|
-|Fájl szintje (alapértelmezett)   | Nincs szükség futásidejű argumentumokra. `/share` a rendszer a könyvtárat fogja használni. |
-|Azure-blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|Fájl szintje (alapértelmezett)    | Nincs szükség futásidejű argumentumokra. `/share` a rendszer a könyvtárat fogja használni. |
+|Azure-blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>Üzenetsor-megvalósítások
 
@@ -78,7 +78,7 @@ A tároló v3. x verziójában a RabbitMQ jelenleg nem támogatott. A támogatot
 |---------|---------|-------|
 | A memóriában (alapértelmezett) | Nincs szükség futásidejű argumentumokra. | Fejlesztés és tesztelés |
 | Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Production |
-| RabbitMQ  | Nem érhető el | Production |
+| RabbitMQ    | Nem érhető el | Production |
 
 A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatósági időzítőt használ annak biztosítására, hogy a kérések sikeresen feldolgozhatók összeomlás esetén, ha egy többtárolós beállítás fut. 
 
@@ -86,10 +86,10 @@ A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatós
 
 | Alapértelmezett érték | Javasolt érték |
 |---------|---------|
-| 30000 |   120000 |
+| 30000 |    120000 |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
 * A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](overview.md)

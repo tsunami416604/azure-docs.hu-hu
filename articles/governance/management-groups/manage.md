@@ -3,12 +3,12 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531037"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951944"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -345,11 +345,11 @@ Ugyanazt a hatókörbeli elérési utat használja a rendszer a házirend-defin�
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
-- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](./create.md)
+- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](./create-management-group-portal.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](./manage.md)
 - [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
 - [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)

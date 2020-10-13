@@ -1,21 +1,21 @@
 ---
 title: Szolgáltatói tevékenység megtekintése
 description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolgáltatók által az Azure-beli delegált erőforrás-kezelésen keresztül végrehajtott műveletek megtekintéséhez.
-ms.date: 07/07/2020
+ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131467"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974311"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
 
 Azok az ügyfelek, akik az [Azure világítótoronyhoz](../overview.md) delegált előfizetésekkel rendelkeznek, [megtekinthetik az Azure-tevékenység naplójának](../../azure-monitor/platform/platform-logs-overview.md) adatait az összes végrehajtott művelet megtekintéséhez. Ez teljes körű láthatóságot biztosít az ügyfeleknek a szolgáltatók számára az Azure-beli [delegált erőforrás-kezelésen](../concepts/azure-delegated-resource-management.md)keresztül, valamint az ügyfél saját Azure Active Directory (Azure ad) bérlője által végzett műveletek végrehajtásával.
 
 > [!TIP]
-> Egy Azure Policy beépített szabályzat-definíciót is biztosítunk a hatókörök delegálásának naplózására egy felügyeleti bérlő számára. További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
+> Emellett Azure Policy beépített szabályzat-definíciókat is biztosítunk, amelyekkel [korlátozható a delegálás a bérlők kezelésére](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) , valamint a [hatókörök delegálásának naplózása egy adott bérlőre](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Tevékenységnapló adatainak megtekintése
 
@@ -43,7 +43,7 @@ Létrehozhat lekérdezéseket a naplózott tevékenység elemzéséhez, vagy ado
 
 További információ: [Azure monitorban található naplók áttekintése](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitorról](../../azure-monitor/index.yml).
 - Megtudhatja, hogyan [tekintheti meg és kezelheti](view-manage-service-providers.md) a szolgáltatói ajánlatokat a Azure Portalban.

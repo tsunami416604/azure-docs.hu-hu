@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324467"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971948"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 
-| Hitelesítési típusok | Leírás |
+| Hitelesítési típusok | Description |
 | ---------------------|-------------|
 |**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
@@ -93,7 +93,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
   
   * v1 (alapértelmezett érték)
 
-      A rendszer csak a metrikák *nevét* és *értékét* fogadja el. Példa:
+      A rendszer csak a metrikák *nevét* és *értékét* fogadja el. Például:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
 
   * v2
 
-      A metrikák *dimenzióit* és az *időbélyeget* is elfogadjuk. Példa:
+      A metrikák *dimenzióit* és az *időbélyeget* is elfogadjuk. Például:
       
       ``` JSON
       [
@@ -133,7 +133,7 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
-* **Kapcsolódási karakterlánc**: az Azure adatkezelő (Kusto) kapcsolódási karakterláncának beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) című témakört.
+* **Kapcsolatok karakterlánca**: a metrikák tanácsadója támogatja az Azure adatkezelő (Kusto) Azure ad-alkalmazás-hitelesítéssel való elérését. Létre kell hoznia és regisztrálnia kell egy Azure AD-alkalmazást, majd engedélyeznie kell egy Azure Adatkezelő-adatbázis elérését. A kapcsolódási karakterlánc beszerzéséhez tekintse meg az [Azure adatkezelő](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) dokumentációját.
 
 * **Lekérdezés**: a [Kusto lekérdezési nyelve](https://docs.microsoft.com/azure/data-explorer/kusto/query) a többdimenziós idősorozatok adatsoraiba való adatgyűjtéshez és-összeállításhoz. Használhatja a és a `@StartTime` `@EndTime` változókat a lekérdezésben. A következőket kell formázni: `yyyy-MM-dd HH:mm:ss` .
 
@@ -159,7 +159,7 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
   * `%h` az óra a következőképpen van formázva `HH`
   * `%M` a perc a következőképpen van formázva `mm`
 
-A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Példa:
+A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Például:
 
 ``` JSON
 [

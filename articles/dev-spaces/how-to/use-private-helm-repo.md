@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Használjon privát Helm-tárházat egy Azure fejlesztői tárhelyen.
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók, Helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240469"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960337"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Privát Helm-tárház használata az Azure dev Spaces szolgáltatásban
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 A [Helm][helm] a Kubernetes csomagkezelő. A Helm [diagram][helm-chart] formátumot használ a függőségek kicsomagolásához. A Helm-diagramok tárolása olyan tárházban történik, amely nyilvános vagy magánjellegű lehet. Az Azure dev Spaces csak az alkalmazás futtatásakor kéri le a nyilvános adattárakból származó Helm-diagramokat. Azokban az esetekben, amikor a Helm-adattár magán vagy az Azure dev Spaces nem fér hozzá, hozzáadhat egy diagramot az adott tárházból közvetlenül az alkalmazáshoz. A diagram közvetlen hozzáadása lehetővé teszi, hogy az Azure dev Spaces az alkalmazást anélkül futtassa, hogy hozzá kellene férnie a Private Helm-tárházhoz.
 

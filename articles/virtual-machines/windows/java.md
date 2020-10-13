@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827486"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973665"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
 
@@ -33,7 +33,7 @@ Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-1. Ha még nem tette meg, telepítse a [Java](https://aka.ms/azure-jdks)-t.
+1. Ha még nem tette meg, telepítse a [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support)-t.
 2. Telepítse a [mavent](https://maven.apache.org/download.cgi).
 3. Hozzon létre egy új mappát és a projektet:
     

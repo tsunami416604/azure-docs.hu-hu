@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335500"
+ms.locfileid: "91932634"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 
@@ -42,6 +42,7 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 -   A biztonsági definíciók figyelmen kívül lesznek hagyva.
 -   Az API-műveletekhez tartozó beágyazott séma-definíciók nem támogatottak. A séma-definíciók az API-hatókörben vannak meghatározva, és az API-műveleti kérelemben vagy a válasz hatókörében is szerepelhetnek.
 -   Egy meghatározott URL-paraméternek az URL-sablon részét kell képeznie.
+-   `server` az objektum nem támogatott az API-műveleti szinten.
 -   `Produces` a kulcsszó, amely leírja az API által visszaadott MIME-típusokat, nem támogatott. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI 2. verzió

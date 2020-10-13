@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426265"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973818"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -48,7 +48,7 @@ Beállíthatja, hogy a bővítmény az Azure Blob Storage hitelesítő adatait h
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból, akkor további tűzfal-és hálózati biztonsági csoportok portjait kell megnyitnia. Ha például a szkript az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést a [tároláshoz](../../virtual-network/security-overview.md#service-tags).
+Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból, akkor további tűzfal-és hálózati biztonsági csoportok portjait kell megnyitnia. Ha például a szkript az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést a [tároláshoz](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal-és hálózati biztonsági csoport portjainak megnyitására.
 
@@ -122,9 +122,9 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
+| apiVersion | 2015-06-15 | date |
 | közzétevő | Microsoft.Compute | sztring |
 | típus | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.10 | int |
@@ -344,7 +344,7 @@ ahol a `<n>` decimális egész szám, amely változhat a bővítmény végrehajt
 
 A parancs végrehajtásakor `commandToExecute` a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2` ) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát a tulajdonságon keresztül letöltött fájlok megkereséséhez `fileURIs` . Példákért tekintse meg az alábbi táblázatot.
 
-Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Példa:
+Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Például:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

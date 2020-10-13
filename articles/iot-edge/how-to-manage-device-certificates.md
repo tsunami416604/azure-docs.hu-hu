@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669026"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971795"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -33,10 +33,13 @@ Ha többet szeretne megtudni a tanúsítványok különböző típusairól és s
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* IoT Edge-eszköz, amely [Windows](how-to-install-iot-edge-windows.md) vagy [Linux](how-to-install-iot-edge-linux.md)rendszeren fut.
+* Egy IoT Edge eszköz.
+
+  Ha nincs beállítva IoT Edge eszköz, létrehozhat egyet egy Azure-beli virtuális gépen. A [virtuális Linux-eszköz létrehozásához](quickstart-linux.md) vagy [virtuális Windows-eszköz létrehozásához](quickstart.md)kövesse az egyik rövid útmutató lépéseit.
+
 * Rendelkeznie kell egy legfelső szintű hitelesítésszolgáltató (CA) tanúsítvánnyal, amely önaláírt vagy megbízható kereskedelmi hitelesítésszolgáltatótól vásárolt, például Baltimore, VeriSign, DigiCert vagy GlobalSign.
 
-Ha még nem rendelkezik legfelső szintű hitelesítésszolgáltatóval, de szeretné kipróbálni IoT Edge olyan szolgáltatásokat, amelyek éles tanúsítványokat igényelnek (például átjárói forgatókönyvek), létrehozhat [bemutató-tanúsítványokat a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md).
+  Ha még nem rendelkezik legfelső szintű hitelesítésszolgáltatóval, de szeretné kipróbálni IoT Edge olyan szolgáltatásokat, amelyek éles tanúsítványokat igényelnek (például átjárói forgatókönyvek), létrehozhat [bemutató-tanúsítványokat a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md).
 
 ### <a name="create-production-certificates"></a>Éles tanúsítványok létrehozása
 
@@ -72,7 +75,7 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
    * Windows `C:\ProgramData\iotedge\config.yaml`
    * Linux `/etc/iotedge/config.yaml`
 
-1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Példa:
+1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
    * Windows:
 
