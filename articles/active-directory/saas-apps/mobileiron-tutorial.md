@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554643"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Oktatóanyag: Azure Active Directory integráció a MobileIron
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés MobileIron való konfigurálásához hajtsa 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni:
 
-    ![MobileIron tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés MobileIron való konfigurálásához hajtsa 
 
     c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![MobileIron tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ Az Azure AD egyszeri bejelentkezés MobileIron való konfigurálásához hajtsa 
 
 2. Nyissa meg a **rendszergazdai**  >  **identitást** , és válassza a **HRE** lehetőséget a **Felhőbeli identitásszolgáltató beállítás** mezőjében.
 
-    ![Egyetlen Sign-On rendszergazdai gomb konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![A képernyőképen a MobileIron webhely adminisztrátor lapja látható, ahol a személyazonosság van kiválasztva.](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. Másolja ki a **kulcs** és a **gazdagép** értékeit, és illessze be őket az **alapszintű SAML-konfigurációs** szakasz url-címeinek befejezéséhez Azure Portal.
 
-    ![Egyetlen Sign-On rendszergazdai gomb konfigurálása](./media/mobileiron-tutorial/key.png)
+    ![A képernyőfelvételen látható az SAML beállítás beállítása egy kulcs és egy gazdagép értékkel.](./media/mobileiron-tutorial/key.png)
 
 4. A **metaadatok exportálása a HRE és az Importálás a MobileIron felhőbe mezőben** kattintson a **fájl kiválasztása** lehetőségre a letöltött metaadatoknak a Azure Portalból való feltöltéséhez. Kattintson a **kész** gombra a feltöltés után.
 
@@ -157,7 +157,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

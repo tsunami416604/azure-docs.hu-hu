@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894202"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro"></a>Oktatóanyag: Azure Stack Edge Pro telepítése
@@ -181,7 +181,7 @@ Azure Stack Edge Pro-eszközön:
 - A háttérrendszer redundáns tápegységeket (PSUs) tartalmaz.
 - A hátsó síkon hat hálózati adapter van:
 
-    - Két 1 GB/s illesztőfelület.
+    - 2 1 – Gbps felületek.
     - 4 25 – Gbps felületek, amelyek 10 GB/s illesztőfelületként is használhatók.
     - Egy alaplapi felügyeleti vezérlő (BMC).
 
@@ -211,7 +211,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
     - A PORT 2 csatlakoztatása esetén használja az RJ-45 hálózati kábelt.
     - A 10/25 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta Azure Stack Edge Pro-témaköröket, például a következőket:
 

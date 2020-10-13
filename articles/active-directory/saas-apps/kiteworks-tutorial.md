@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cb6a9691e1b3186e6493b4ae0b62857fb03f38c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549926"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944025"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Oktatóanyag: a Kiteworks és a Azure Active Directory integrálása
 
@@ -100,11 +100,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A felső eszköztáron kattintson a **Beállítások**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![Képernyőkép, amely a "beállítások" ikont jeleníti meg a kiválasztott eszköztáron.](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. A **hitelesítés és engedélyezés** szakaszban kattintson az **egyszeri bejelentkezés beállítása**elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    ![Képernyőfelvétel: a "S S O Setup" a "hitelesítés és engedélyezés" szakaszban van kiválasztva.](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 1. Az egyszeri bejelentkezés beállítása lapon hajtsa végre a következő lépéseket:
 
@@ -134,7 +134,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

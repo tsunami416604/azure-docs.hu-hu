@@ -2,13 +2,13 @@
 title: Sablonfüggvények
 description: A Azure Resource Manager-sablonban az értékek beolvasására, a karakterláncok és a numerikus karakterek használatára, valamint az üzembe helyezési adatok lekérésére használt függvények leírását ismerteti.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378406"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961170"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
 
@@ -47,7 +47,7 @@ A Resource Manager számos funkciót biztosít a tömbök használatához.
 * [kereszteződés](template-functions-array.md#intersection)
 * [utolsó](template-functions-array.md#last)
 * [length](template-functions-array.md#length) (hossz)
-* [min](template-functions-array.md#min)
+* [p](template-functions-array.md#min)
 * [Max](template-functions-array.md#max)
 * [tartomány](template-functions-array.md#range)
 * [kihagyása](template-functions-array.md#skip)
@@ -104,9 +104,11 @@ A Resource Manager a következő funkciókat biztosítja a logikai feltételekke
 
 * [and](template-functions-logical.md#and)
 * [logikai](template-functions-logical.md#bool)
+* [hamis](template-functions-logical.md#false)
 * [Ha](template-functions-logical.md#if)
 * [nem](template-functions-logical.md#not)
 * [vagy](template-functions-logical.md#or)
+* [igaz](template-functions-logical.md#true)
 
 <a id="add" aria-hidden="true"></a>
 <a id="copyindex" aria-hidden="true"></a>
@@ -128,7 +130,7 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
+* [p](template-functions-numeric.md#min)
 * [Max](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -141,10 +143,12 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 A Resource Manager számos funkciót biztosít az objektumok használatához.
 
 * [tartalmaz](template-functions-object.md#contains)
+* [createObject](template-functions-object.md#createobject)
 * [üres](template-functions-object.md#empty)
 * [kereszteződés](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
 * [length](template-functions-object.md#length) (hossz)
+* [NULL](template-functions-object.md#null)
 * [Union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
