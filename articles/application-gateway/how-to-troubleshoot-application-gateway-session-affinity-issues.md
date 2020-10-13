@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 02d1d78dae4f02ac53d535f6c404b15f8d98f008
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563743"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitással kapcsolatos problémák elhárítása
@@ -83,7 +83,7 @@ A probléma azonosításához kövesse az alábbi utasításokat:
     **Tipp** Ha nem tudja, hogyan használhatja a hegedűst, ellenőrizze a "**hálózati forgalom összegyűjtését és a web Debugger használatával történő elemzését**" lehetőséget a lap alján.
 
 2. Ellenőrizze és elemezze a munkamenetek naplóit annak megállapításához, hogy az ügyfél által biztosított cookie-k rendelkeznek-e a ARRAffinity részleteivel. Ha nem találja a ARRAffinity részleteit (például "**ARRAffinity =** *ARRAffinityValue*") a cookie-készleten belül, az azt jelenti, hogy az ügyfél nem válaszol az arra szolgáló cookie-val, amelyet a Application Gateway biztosít.
-    Például:
+    Példa:
 
     ![Képernyőfelvétel: a munkamenet-napló egyetlen bejegyzéssel van kiemelve.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -195,7 +195,7 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
    > [!NOTE]
    > Ez a ARRAffinity érték a cookie-azonosító, amelyet az ügyfél egy adott háttér-kiszolgálónak való elküldésekor Application Gateway állít be.
 
-   ![A képernyőképen egy példa látható a Set-Cookie értékkel jelölt naplóbejegyzés részleteire.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![A képernyőképen egy olyan naplóbejegyzés látható, amelyben a Set-Cookie érték van kiemelve.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **B példa:** A következő munkamenet-naplót, amelyet az előző követ, az ügyfél visszaválaszol a Application Gatewayra, amelyik beállította a ARRAAFFINITY. Ha a ARRAffinity cookie-azonosítója megegyezik, a csomagot a korábban használt háttér-kiszolgálónak kell elküldeni. Tekintse át a http-kommunikáció következő néhány sorát, és ellenőrizze, hogy módosul-e az ügyfél ARRAffinity-cookie-je.
 
@@ -206,6 +206,6 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
 
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

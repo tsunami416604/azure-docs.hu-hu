@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597119"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Felhők és régiók, amelyekben Azure Media Services v3 létezik
@@ -27,7 +27,7 @@ A Azure Media Services v3 a globális Azure-ban, a Azure Government, az Azure Ge
 
 ## <a name="feature-availability-in-azure-clouds"></a>Funkciók elérhetősége az Azure-felhőkben
 
-| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
@@ -44,7 +44,7 @@ A [LiveTranscription](live-transcription.md) a következő régiókban érhető 
 - Nyugat-Európa
 - Észak-Európa
 - USA keleti régiója
-- Az USA középső régiója
+- USA középső régiója
 - USA déli középső régiója
 - USA 2. nyugati régiója
 - Dél-Brazília
@@ -114,12 +114,12 @@ A következő végpontokat fontos tudni, hogy mikor csatlakozhat Media Services-
 | Hitelesítés | `https://login.chinacloudapi.cn/` |
 | Jogkivonat célközönsége |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure földrajzi területek](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure-beli helyszínek](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Media Services v3 – áttekintés](media-services-overview.md)

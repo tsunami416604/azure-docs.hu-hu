@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267057"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Saját felhő beállítása vész-helyreállítási célként a VMware Site Recovery Managerrel
@@ -111,7 +111,7 @@ Telepítse a vSphere-replikációs készüléket (vRA) a helyszíni környezetbe
 
 2. Telepítse a vRA a helyszíni környezetben a VR ISO-OVF a vmware.com-ből. A vRA 6,5 esetében [Ez a VMware-blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) rendelkezik a vonatkozó információkkal.
 
-3. Regisztrálja helyszíni vRA a vCenter-alapú egyszeri bejelentkezéssel a helyszíni helyen. A vSphere replikálás 6,5-es verziójának részletes ismertetését lásd: VMware-dokumentum [VMware vSphere replikáció 6,5 telepítés és konfigurálás](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+3. Regisztrálja helyszíni vRA a vCenter egyetlen Sign-On a helyszíni helyen. A vSphere replikálás 6,5-es verziójának részletes ismertetését lásd: VMware-dokumentum [VMware vSphere replikáció 6,5 telepítés és konfigurálás](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>VSphere-replikációs berendezés telepítése saját felhőalapú környezetben
 
@@ -137,7 +137,7 @@ A telepítés a következő magas szintű lépésekből áll:
 3. Készítse elő saját felhőalapú környezetét a vRA telepítéséhez.
 4. VRA üzembe helyezése saját felhőben a VR ISO-OVF a vmware.com-ből. A vRA 6,5 esetében [Ez a VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) releváns információkat tartalmaz.
 5. A vRA vonatkozó tűzfalszabályok konfigurálása. Az alábbiakban ismertetett [CloudSimple-portálon: tűzfalszabályok konfigurálása a vRA](#cloudsimple-portal-configure-firewall-rules-for-vra).
-6. Saját Felhőbeli vRA regisztrálása a vCenter egyszeri bejelentkezéssel a saját felhőalapú webhelyén.
+6. Saját Felhőbeli vRA regisztrálása a vCenter egyetlen Sign-On a saját felhőalapú webhelyén.
 7. Konfigurálja a vSphere replikálási kapcsolatait a két készülék között. Győződjön meg arról, hogy a szükséges portok meg vannak nyitva a tűzfalak között. Tekintse meg [ezt a VMware Tudásbázis-cikket](https://kb.vmware.com/s/article/2087769) azon portszámok listájáért, amelyeknek nyitva kell lenniük a vSphere-replikáció 6,5-es számú replikálásához.
 
 A vSphere-replikáció 6,5-es verziójának részletes telepítési utasításait a VMware-dokumentum [VMware vSphere a replikáció 6,5 telepítés és konfigurálás](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)című cikkben tekintheti meg.
@@ -227,7 +227,7 @@ Teljes körűen szabályozhatja a vSphere-replikációt és az SRM-szoftvereket 
 * [OVF-beállítások az vSphere-replikáció telepítésekor 6,5](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere replikáció 6,5 telepítés és konfigurálás](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [Előfeltételek és ajánlott eljárások az SRM 6,5-hez](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [Site Recovery Manager egy Kéthelyes topológiában a platform Services-vezérlő egy vCenter Server példányával](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [Site Recovery Manager egy Two-Site-topológiában a platform Services-vezérlő egy vCenter Server példányával](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
 * [VMware Site Recovery Manager 6,5 telepítési és konfigurációs útmutató](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
 * [VMware blog az SRM-ben tömb alapú replikációval és vSphere-replikációval](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
 * [VMware blog az SRM többhelyes beállításaiban](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)

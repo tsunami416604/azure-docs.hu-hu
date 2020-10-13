@@ -14,10 +14,10 @@ ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268774"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása az Azure CLI-vel
@@ -40,7 +40,7 @@ Az Azure-beli médiatartalmak titkosítása, kódolása, elemzése, kezelése é
 
 A Media Services-fióknak és az összes társított Storage-fióknak ugyanabban az Azure-előfizetésben kell lennie. Javasoljuk, hogy a késés és az adatforgalom költségeinek korlátozásához olyan tárolási fiókokat használjon, amelyek a Media Services-fiókkal azonos helyen vannak.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 ```azurecli-interactive
 az group create -n amsResourceGroup -l westus2
@@ -48,7 +48,7 @@ az group create -n amsResourceGroup -l westus2
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Ebben a példában egy általános célú v2 standard LRS-fiókot hozunk létre.
+Ebben a példában egy General-Purpose v2 standard szintű LRS-fiókot hozunk létre.
 
 Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha éles üzemben lévő SKU-t vesz fel, érdemes lehet használni `--sku Standard_RAGRS` , amely földrajzi replikációt biztosít az üzletmenet folytonossága érdekében. További információ: Storage- [fiókok](/cli/azure/storage/account).
 
@@ -352,6 +352,6 @@ Futtassa ezt az Azure CLI-parancsot:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Media Services áttekintése](media-services-overview.md)

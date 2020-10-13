@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318130"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
@@ -27,7 +27,7 @@ Annak érdekében, hogy a teljes környezeten belül betekintést nyerjen, enged
 
 - [Azure DevOps projects](../devops-project/overview.md) a meglévő kód-és git-tárház egyszerűsített élményét nyújtja, vagy választhat az egyik példa közül, hogy egy folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamatot hozzon létre az Azure-ba.
 - A [DevOps kiadási folyamat folyamatos figyelése](./app/continuous-monitoring.md) lehetővé teszi, hogy a figyelési adatain alapuló üzembe helyezést vagy visszaállítást.
-- [Állapotmonitor](./app/monitor-performance-live-website-now.md) lehetővé teszi egy élő .NET-alkalmazás üzembe helyezését a Windowsban az Azure Application Insights használatával anélkül, hogy módosítania vagy újra kellene telepítenie a kódot.
+- [Állapotmonitor](./app/monitor-performance-live-website-now.md)  lehetővé teszi egy élő .NET-alkalmazás üzembe helyezését a Windowsban az Azure Application Insights használatával anélkül, hogy módosítania vagy újra kellene telepítenie a kódot.
 - Ha rendelkezik hozzáféréssel az alkalmazás kódjához, akkor a Azure Monitor Application Insights SDK [.net](./learn/quick-monitor-portal.md)-, [Java](./app/java-get-started.md)-, [Node.js](./learn/nodejs-quick-start.md)-vagy [más programozási nyelvekre](./app/platforms.md)való telepítésével engedélyezze a [Application Insights](./app/app-insights-overview.md) teljes figyelését. Ez lehetővé teszi az alkalmazáshoz és a vállalathoz tartozó egyéni események, metrikák vagy oldalletöltések megadását.
 
 

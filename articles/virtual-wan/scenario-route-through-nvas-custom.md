@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267499"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Forgatókönyv: forgalom irányítása NVA – egyéni (előzetes verzió)
@@ -129,7 +129,7 @@ Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket 
 
 **2. ábra**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="2. ábra" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Következő lépések
 

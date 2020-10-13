@@ -7,10 +7,10 @@ description: Ismerje meg, hogyan használhatja a Kubernetes titkokat futtatásko
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 ms.custom: devx-track-js
 ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308724"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>A titkok kezelése az Azure fejlesztői területtel való munka során
@@ -26,7 +26,7 @@ Az Azure dev Spaces szolgáltatás két ajánlott, egyszerűbb lehetőséget biz
 
 ### <a name="using-valuesdevyaml"></a>A Values. dev. YAML használata
 
-Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, hozzon létre egy `values.dev.yaml` fájlt ugyanabban a mappában, mint a `azds.yaml` titkos kulcsok és értékek meghatározásához. Például:
+Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, hozzon létre egy `values.dev.yaml` fájlt ugyanabban a mappában, mint a `azds.yaml` titkos kulcsok és értékek meghatározásához. Példa:
 
 ```yaml
 secrets:
@@ -36,7 +36,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-Győződjön meg arról, hogy a `azds.yaml` fájl hivatkozásai nem `values.dev.yaml` választhatók a használatával `?` . Például:
+Győződjön meg arról, hogy a `azds.yaml` fájl hivatkozásai nem `values.dev.yaml` választhatók a használatával `?` . Példa:
 
 ```yaml
 install:
@@ -47,7 +47,7 @@ install:
 
 Ha további titkos fájlokkal rendelkezik, ezeket is hozzáadhatja.
 
-Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Például:
+Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Példa:
 
 ```javascript
 var redisPort = process.env.REDIS_PORT
@@ -72,7 +72,7 @@ kubectl get secret --namespace default -o yaml
 
 ### <a name="using-azdsyaml"></a>A azds. YAML használata
 
-Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, adja hozzá a titkos kulcsokat és az értékeket az *$PLACEHOLDER* szintaxissal a *konfigurációk területen. fejlessze. install. set* in `azds.yaml` . Például:
+Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, adja hozzá a titkos kulcsokat és az értékeket az *$PLACEHOLDER* szintaxissal a *konfigurációk területen. fejlessze. install. set* in `azds.yaml` . Példa:
 
 ```yaml
 configurations:
@@ -90,7 +90,7 @@ configurations:
 > [!NOTE]
 > A titkos értékeket közvetlenül a *$PLACEHOLDER* szintaxisának használata nélkül is megadhatja `azds.yaml` . Ez a megközelítés azonban nem ajánlott, mivel a `azds.yaml` forrás-vezérlőelemben van tárolva.
      
-Hozzon létre egy `.env` fájlt ugyanabban a mappában, mint a `azds.yaml` *$PLACEHOLDER* értékek meghatározásához. Például:
+Hozzon létre egy `.env` fájlt ugyanabban a mappában, mint a `azds.yaml` *$PLACEHOLDER* értékek meghatározásához. Példa:
 
 ```
 REDIS_PORT=3333
@@ -101,7 +101,7 @@ REDIS_KEY=myrediskey
 > [!IMPORTANT]
 > Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t használja, vegye fel `.env` a `.gitignore` fájlt a fájlba, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
 
-Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Például:
+Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Példa:
 
 ```javascript
 var redisPort = process.env.REDIS_PORT
@@ -125,7 +125,7 @@ kubectl get secret --namespace default -o yaml
 
 Az előző szakaszban megmutatta, hogyan tárolhat és használhat titkokat a tároló futási idején. A (z) használatával bármilyen titkos kulcsot is használhat a tároló létrehozási idején, például egy privát NuGet tartozó jelszót `azds.yaml` .
 
-A-ben `azds.yaml` állítsa be a konfigurációkban a létrehozási idő titkait. a szintaxis használatával *fejlessze a. Build. ARG* -t. `<variable name>: ${secret.<secret name>.<secret key>}` Például:
+A-ben `azds.yaml` állítsa be a konfigurációkban a létrehozási idő titkait. a szintaxis használatával *fejlessze a. Build. ARG* -t. `<variable name>: ${secret.<secret name>.<secret key>}` Példa:
 
 ```yaml
 configurations:
@@ -143,7 +143,7 @@ A fenti példában a *mynugetsecret* egy meglévő titkos kulcs, és a *pattoken
 >[!NOTE]
 > A titkos nevek és kulcsok tartalmazhatják a `.` karaktert. `\`A Escape használata a `.` titkokat Build argumentumként való átadásakor. Ha például egy *foo. bar* nevű titkos kulcsot szeretne átadni a *jogkivonat*kulcsaként: `MYTOKEN: ${secret.foo\.bar.token}` . Emellett a titkokat előtaggal és Postfix szöveggel is kiértékelheti. Például: `MYURL: eus-${secret.foo\.bar.token}-version1`. Emellett a szülő és a nagyszülő terekben elérhető titkokat Build argumentumként lehet átadni.
 
-A Docker használja az *ARG* direktívát a titkos kód felhasználásához, majd használja ugyanezt a változót később a Docker. Például:
+A Docker használja az *ARG* direktívát a titkos kód felhasználásához, majd használja ugyanezt a változót később a Docker. Példa:
 
 ```dockerfile
 ...

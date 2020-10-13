@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
 ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596844"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Az Azure Windows rendszerű virtuális gépek nagy CPU-problémáinak elhárítása
@@ -35,7 +35,7 @@ Az I/O-és a hálózati késési problémáktól eltekintve a processzor és a m
 
 A meglévő teljesítmény-hibaelhárító eszközök, például a perfmon vagy a Procmon nagy része az Azure Windows rendszerű virtuális gépeken fog működni. A PerfInsights azonban kifejezetten az Azure-beli virtuális gépekhez lett kialakítva, így több információ érhető el, például az Azure ajánlott eljárásai, az SQL ajánlott eljárásai, a nagy felbontású I/O-késési diagramok, a processzor és a memória lapjai stb.
 
-Függetlenül attól, hogy felhasználói vagy kernel módban fut-e, az aktív folyamatok minden szálához CPU-ciklus szükséges ahhoz, hogy futtatni lehessen az általa létrehozott kódot. Számos probléma közvetlenül kapcsolódik a munkaterheléshez. A kiszolgálón található erőforrás-felhasználás típusa, beleértve a PROCESSZORt is.
+Függetlenül attól, hogy User-Mode vagy kernel módban fut-e, az aktív folyamatok bármilyen szálához CPU-ciklus szükséges ahhoz, hogy a rendszer az általa létrehozott kódot futtassa. Számos probléma közvetlenül kapcsolódik a munkaterheléshez. A kiszolgálón található erőforrás-felhasználás típusa, beleértve a PROCESSZORt is.
 
 #### <a name="common-factors"></a>Gyakori tényezők
 
@@ -184,7 +184,7 @@ Ha kibontja az **eredményekkel** kapcsolatos eseményt, több kulcsfontosságú
 
 A **CPU** alatt található egy dedikált lapra, amely a részletes minták elemzéséhez, a mag-vagy a folyamatokhoz használható.
 
-A **felső CPU-fogyasztók** lap két külön részből áll, és itt tekintheti meg a processzor statisztikáit. Az alkalmazás kialakítása gyakran egyszálas vagy PIN-kód egyetlen processzorra is vonatkozik. Ebben a forgatókönyvben egy vagy több mag 100 százalékkal fut, míg más magok a várt szinteken futnak. Ezek a forgatókönyvek összetettebbek, mert a kiszolgáló átlagos PROCESSZORa úgy tűnik, hogy a várt módon fut, de a magas kihasználtságú magokon rögzített folyamatok a vártnál lassabbak lesznek.
+A **felső CPU-fogyasztók** lap két külön részből áll, és itt tekintheti meg a processzor statisztikáit. Az alkalmazás kialakítása gyakran Single-Threaded vagy egyetlen processzorhoz is PIN-kód. Ebben a forgatókönyvben egy vagy több mag 100 százalékkal fut, míg más magok a várt szinteken futnak. Ezek a forgatókönyvek összetettebbek, mert a kiszolgáló átlagos PROCESSZORa úgy tűnik, hogy a várt módon fut, de a magas kihasználtságú magokon rögzített folyamatok a vártnál lassabbak lesznek.
 
   ![magas CPU-használat](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 

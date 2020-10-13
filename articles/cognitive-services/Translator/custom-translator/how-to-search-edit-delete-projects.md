@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510354"
 ---
 # <a name="search-edit-and-delete-projects"></a>Projektek keresése, szerkesztése és törlése
@@ -62,6 +62,6 @@ Ha már nincs szüksége rá, törölheti a projektet. Győződjön meg arról, 
 
    ![Megerősítő párbeszédpanel törlése](media/how-to/how-to-delete-project-confirm.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dokumentumok feltöltése](how-to-upload-document.md) az egyéni fordítási modell létrehozásához.

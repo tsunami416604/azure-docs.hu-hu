@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399533"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
@@ -150,7 +150,7 @@ Az Azure-beli hozzáférés-vezérlés számlázási szempontból megkezdődik. 
 
 ![Biztonságos erőforrás-hozzáférés az Azure-ban](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
-Az előfizetések egy címtárral is társítva vannak. A címtár a felhasználók készletét határozza meg. Ezek lehetnek a címtárat létrehozó munkahelyi vagy iskolai felhasználók, vagy külső felhasználók is lehetnek (azaz Microsoft-fiókok). Az előfizetések azon felhasználók egy részhalmaza számára érhetők el, akik szolgáltatás-rendszergazdaként (SA) vagy társ-rendszergazdaként (CA) vannak hozzárendelve. az egyetlen kivétel az, hogy az örökölt okokból a Microsoft-fiókok (korábbi nevén Windows Live ID) a címtárban való jelenlét nélkül is hozzárendelhetők SA vagy CA-ként.
+Az előfizetések egy címtárral is társítva vannak. A címtár a felhasználók készletét határozza meg. Ezek lehetnek a címtárat létrehozó munkahelyi vagy iskolai felhasználók, vagy külső felhasználók is lehetnek (azaz Microsoft-fiókok). Az előfizetések azon felhasználók egy részhalmaza számára érhetők el, akik szolgáltatás-rendszergazdaként (SA) vagy Co-Administrator (CA) vannak hozzárendelve. az egyetlen kivétel az, hogy az örökölt okokból a Microsoft-fiókok (korábbi nevén Windows Live ID) a címtárban való jelenlét nélkül is hozzárendelhetők SA vagy CA-ként.
 
 A biztonsági irányultságú vállalatoknak arra kell összpontosítaniuk, hogy az alkalmazottaknak a rájuk vonatkozó pontos engedélyeket adják. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) részletes hozzáférés-kezelést nyújt az Azure-hoz a probléma megoldásához.
 
@@ -430,7 +430,7 @@ A Resource Manager számos előnyt kínál:
 > [!Note]
 > A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi üzemi modellt használta, és szeretne többet megtudni a változásokról, tekintse meg a [Resource Manager-telepítés és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/management/deployment-models.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonságról további információt a részletes biztonsági témakörökben talál:
 

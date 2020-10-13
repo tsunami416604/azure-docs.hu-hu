@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266034"
 ---
 # <a name="deliver-content-to-customers"></a>Tartalom továbbítása az ügyfeleknek
@@ -154,7 +154,7 @@ A streaming-végpont olyan folyamatos átviteli szolgáltatást jelent, amely k�
 
 ## <a name="known-issues"></a>Ismert problémák
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Smooth Streaming jegyzékfájl verziójának módosításai
-A júliusi 2016-es kiadás előtt – ha a Media Encoder Standard, Media Encoder Premium Workflow vagy a korábbi Azure Media Encodereket a dinamikus csomagolás használatával továbbították, akkor a visszaadott Smooth Streaming jegyzékfájl megfelel a 2,0-es verziónak. Az 2,0-es verzióban a töredékek időtartama nem használja az úgynevezett REPEAT ("r") címkéket. Például:
+A júliusi 2016-es kiadás előtt – ha a Media Encoder Standard, Media Encoder Premium Workflow vagy a korábbi Azure Media Encodereket a dinamikus csomagolás használatával továbbították, akkor a visszaadott Smooth Streaming jegyzékfájl megfelel a 2,0-es verziónak. Az 2,0-es verzióban a töredékek időtartama nem használja az úgynevezett REPEAT ("r") címkéket. Példa:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ A júliusi 2016-es kiadás előtt – ha a Media Encoder Standard, Media Encoder
 </SmoothStreamingMedia>
 ```
 
-A júliusi 2016-es kiadásban a generált Smooth Streaming jegyzékfájl az 2,2-es verzióra vonatkozik, és a töredékek időtartamát használja az ismételt címkék használatával. Például:
+A júliusi 2016-es kiadásban a generált Smooth Streaming jegyzékfájl az 2,2-es verzióra vonatkozik, és a töredékek időtartamát használja az ismételt címkék használatával. Példa:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

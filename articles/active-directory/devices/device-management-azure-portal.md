@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278856"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
@@ -177,7 +177,7 @@ A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a 
 
 - [Vállalati állapothordozás](enterprise-state-roaming-overview.md)
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
 
@@ -194,11 +194,11 @@ A napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
 - Egy tevékenység kezdeményezője/szereplője
 - A tevékenység (mi)
 
-![Auditnaplók](./media/device-management-azure-portal/63.png)
+![Naplók](./media/device-management-azure-portal/63.png)
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Auditnaplók](./media/device-management-azure-portal/64.png)
+![Naplók](./media/device-management-azure-portal/64.png)
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
@@ -211,7 +211,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
-![Auditnaplók](./media/device-management-azure-portal/65.png)
+![Naplók](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

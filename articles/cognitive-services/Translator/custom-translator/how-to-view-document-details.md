@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509566"
 ---
 # <a name="view-document-details"></a>Dokumentum részleteinek megtekintése
@@ -40,6 +40,6 @@ A dokumentum törléséhez a felhasználónak munkaterület-tulajdonosnak kell l
 
     ![Törlés megerősítése](media/how-to/how-to-delete-document-confirm.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [modellek betanításához](how-to-train-model.md).

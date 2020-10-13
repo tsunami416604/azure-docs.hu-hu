@@ -4,10 +4,10 @@ description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822189"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
@@ -23,7 +23,7 @@ Az Azure-beli csatlakoztatott gépi ügynök csomag számos logikai összetevőt
 
 * A hibrid példány metaadatainak szolgáltatása (HIMDS) kezeli az Azure-hoz és a csatlakoztatott gép Azure-identitásához való kapcsolódást.
 
-* A vendég konfigurációs ügynök a vendég házirend-és a vendég-konfigurációs funkciókat biztosítja, például annak felmérését, hogy a gép megfelel-e a szükséges házirendeknek.
+* A vendég konfigurációs ügynök In-Guest szabályzatot és a vendég konfigurációs funkcióját biztosítja, például azt, hogy a gép megfelel-e a szükséges házirendeknek.
 
     A leválasztott gép Azure Policy [vendég konfigurációjának](../../governance/policy/concepts/guest-configuration.md) következő viselkedését vegye figyelembe:
 
@@ -138,7 +138,7 @@ A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a kö
 > [!IMPORTANT]
 > A csatlakoztatott számítógép ügynöke nem telepíthető Azure Windows rendszerű virtuális gépre. Ha megkísérli a-t, a telepítés észleli ezt, és Visszagörgeti azt.
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 |--------|-------------|
 | Interaktív módon | Manuálisan telepítse az ügynököt egy vagy több gépen a [gépek Azure Portal-ból való összekapcsolása](onboard-portal.md)című témakör lépéseit követve.<br> A Azure Portal létrehozhat egy parancsfájlt, és végrehajthatja azt a gépen, hogy automatizálja az ügynök telepítésének és konfigurálásának lépéseit.|
 | Skálán | Telepítse és konfigurálja az ügynököt több gépen a [számítógépek összekapcsolását követően egy egyszerű szolgáltatásnév használatával](onboard-service-principal.md).<br> Ez a metódus létrehoz egy egyszerű szolgáltatást, amely nem interaktív módon csatlakozik a gépekhez.|
@@ -173,7 +173,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
     |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
-    |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |A kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, a vendég házirend megvalósítására szolgáló kód.|
+    |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |A kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló kód.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
@@ -224,7 +224,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
-    |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez az Azure-ban a kívánt State Configuration (DSC v2) kód, amely a vendég házirend megvalósítására szolgál.|
+    |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez a kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló rendszerbeállításai.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 

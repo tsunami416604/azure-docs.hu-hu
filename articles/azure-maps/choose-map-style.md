@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285162"
 ---
 # <a name="change-the-style-of-the-map"></a>A térkép stílusának módosítása
@@ -101,7 +101,7 @@ Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látha
 
 Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látható `list` .
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Style Picker-lista elrendezése":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Style Picker ikon elrendezése":::
 
 > [!IMPORTANT]
 > Alapértelmezés szerint a Style Picker vezérlő felsorolja az Azure Maps S0 díjszabási szintjénél elérhető összes stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a `mapStyle` Style Picker (stílus kiválasztása) lehetőséggel. Ha S1-et használ, és az összes elérhető stílust meg szeretné jeleníteni, állítsa a `mapStyles` Style Picker kapcsolót a következőre: `"all"` .

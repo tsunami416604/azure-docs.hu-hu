@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563896"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
@@ -34,7 +34,7 @@ Az eszközök Azure AD-be való integrálásának több módja is van:
 
 * [Hibrid Azure ad-csatlakozás létrehozása](concept-azure-ad-join-hybrid.md) a helyszíni Active Directory és az Azure ad-ban található eszközök között. 
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 Mielőtt elkezdené, győződjön meg róla, hogy már ismeri az [Eszközállapot-kezelés áttekintését](overview.md).
 
@@ -261,7 +261,7 @@ Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakoz�
 
 * [Hibrid Azure AD-csatlakozás a Windows Down szintű eszközökhöz – problémamegoldás](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD JOIN megvalósításának megtervezése](azureadjoin-plan.md)
 * [A hibrid Azure AD JOIN megvalósításának megtervezése](hybrid-azuread-join-plan.md)

@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87489515"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Az itsme OpenID Connect (OIDC) konfigurálása Azure Active Directory B2C
@@ -82,7 +82,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    |Tulajdonság | Érték |
    |------------ |------- |
-   | Név | itsme |
+   | Name (Név) | itsme |
    | Metaadatok URL-címe | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>hol `<environment>` van `e2e` vagy (tesztkörnyezet) vagy `prd` (éles környezet)  |
    | Ügyfélazonosító     | Az **ügyfél-azonosító**, más néven **partneri kód**  |
    | Titkos ügyfélkulcs | Az **client_secret** |

@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601307"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
@@ -156,7 +156,7 @@ Az alábbi táblázatból megtudhatja, hogy milyen típusú értesítéseket kü
 
 Szervezetek, amelyek az [Azure ad Smart zárolási](../authentication/concept-sspr-howitworks.md)szolgáltatásból közvetlenül az Azure ad-be való hitelesítéshez konfigurálják az alkalmazásokat. Ha AD FSt használ a Windows Server 2012 R2 rendszerben, implementálja AD FS [extranet zárolási védelmét](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Ha AD FSt használ a Windows Server 2016-es vagy újabb verziójára, implementálja az [extranetes intelligens zárolást](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Legalább azt javasoljuk, hogy engedélyezze az extranet zárolását a helyszíni Active Directory elleni találgatásos támadásokkal szemben. Ha azonban AD FS a Windows 2016-es vagy újabb verziójával, akkor engedélyeznie kell az extranetes intelligens zárolást is, amely segít enyhíteni a [jelszó-szórásos](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) támadásokat.
 
-Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpontot ki lehet kapcsolni a támadási felület minimalizálásához. Ha például AD FSt csak az Azure AD-hez használja, tiltsa le a WS-Trust végpontokat a **usernamemixed** és a **windowstransport**számára engedélyezett végpontokon kívül.
+Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpontot ki lehet kapcsolni a támadási felület minimalizálásához. Ha például AD FSt csak az Azure AD-hez használja, akkor a **usernamemixed** és a **windowstransport**számára engedélyezett végpontokon kívül le kell tiltania WS-Trust végpontokat.
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>A helyszíni identitás-összetevőket tartalmazó gépekhez való hozzáférés
 
@@ -184,6 +184,6 @@ A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista seg
 - AD FS zárolása.
 - A helyszíni identitás-összetevőkkel rendelkező gépekhez való hozzáférés zárolása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át az [Azure ad telepítési terveit](active-directory-deployment-plans.md) a nem telepített képességek megvalósítására vonatkozó részletekért.

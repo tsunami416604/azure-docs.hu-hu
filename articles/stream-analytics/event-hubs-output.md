@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295274"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics Event Hubs kimenete
@@ -62,7 +62,7 @@ A következő példában a mezők és a `DeviceId` `DeviceStatus` metaadatokhoz 
 
 Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)használatával megtekintett kimeneti üzenet várt tulajdonságai láthatók.
 
-:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Egyéni esemény tulajdonságai":::
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Tulajdonságok oszlopai":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531649"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>A Azure Time Series Insights Gen1 késésének csökkentése a szabályozás monitorozásával és enyhítésével
@@ -69,7 +69,7 @@ A riasztások segíthetnek a környezetében előforduló késési problémák d
    |**Beérkező üzenetek időeltolódása**   |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
    |**Bejövő fogadott üzenetek számának késése**   |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
 
-   Válassza a **Kész** lehetőséget.
+   Válassza a **Done** (Kész) lehetőséget.
 
 1. A kívánt jel logikájának konfigurálása után vizuálisan tekintse át a kiválasztott riasztási szabályt.
 
@@ -95,7 +95,7 @@ A szabályozás és a késések csökkentése érdekében a legjobb megoldás a 
 
 A késleltetés és a szabályozás elkerülése érdekében az elemezni kívánt adatmennyiséghez megfelelően konfigurálja a környezetet. Ha további információt szeretne arról, hogyan adhat hozzá kapacitást a környezethez, olvassa el [a környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Time Series Insights-környezetben felmerülő problémák diagnosztizálásáról és megoldásáról](time-series-insights-diagnose-and-solve-problems.md).
 

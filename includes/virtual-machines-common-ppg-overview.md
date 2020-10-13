@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376632"
 ---
 A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
@@ -58,7 +58,7 @@ A következő műveleteket végezheti el a közelségi elhelyezési csoportok ig
 
 - A közelségi elhelyezési csoport egyhelyes állapotát a portál, a CLI és a PowerShell használatával lehet megtekinteni.
 
-    -   A PowerShell használatakor a "-ColocationStatus" választható paraméterrel együtt a Get-AzProximityPlacementGroup parancsmag használatával is beszerezhetők a helyek közötti állapot.
+    -   A PowerShell használatakor a (z) Get-AzProximityPlacementGroup parancsmag használatával szerezhetők be a következő opcionális paraméterrel: "-ColocationStatus".
 
     -   A parancssori felület használatakor `az ppg show` a (z) a (z) használatával a (z) és a (z) választható paramétert is megadhatja.
 

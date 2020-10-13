@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715632"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939416"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -349,6 +349,40 @@ az storage account or-policy create \
 
 ---
 
+## <a name="check-the-replication-status-of-a-blob"></a>BLOB replikálási állapotának megkeresése
+
+A Azure Portal, a PowerShell vagy az Azure CLI használatával megtekintheti a Blobok replikálási állapotát a forrás fiókban. Az objektum-replikációs tulajdonságokat a rendszer nem tölti fel, amíg a replikáció nem fejeződött be vagy sikertelen.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Az alábbi lépéseket követve ellenőrizheti egy blob replikálási állapotát a Azure Portal forrásoldali fiókjában:
+
+1. Navigáljon a Azure Portal található forrásoldali fiókhoz.
+1. Keresse meg azt a tárolót, amely tartalmazza a forrás blobot.
+1. Válassza ki a blobot a tulajdonságainak megjelenítéséhez. Ha a blob replikációja sikeresen megtörtént, az **objektum-replikálás** szakaszban láthatja, hogy az állapot be van-e *fejezni*. A rendszer a replikációs házirend AZONOSÍTÓját és a tároló objektum-replikálását szabályozó szabály AZONOSÍTÓját is felsorolja.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N.A.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az Azure CLI-vel rendelkező blob replikálási állapotának megtekintéséhez szerezze be az objektum-replikációs **állapot** tulajdonság értékét az alábbi példában látható módon:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
+```
+
+---
+
 ## <a name="remove-a-replication-policy"></a>Replikációs házirend eltávolítása
 
 A replikációs házirend és a hozzá tartozó szabályok eltávolításához használja a Azure Portal, a PowerShell vagy a parancssori felületet.
@@ -396,7 +430,7 @@ az storage account or-policy delete \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Objektum-replikáció áttekintése](object-replication-overview.md)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

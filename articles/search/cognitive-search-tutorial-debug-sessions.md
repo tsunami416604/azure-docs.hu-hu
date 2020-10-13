@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397402"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Oktatóanyag: a készségkészlet változásainak diagnosztizálása, javítása és elutasítása
@@ -78,13 +78,13 @@ Ebben a szakaszban a Poster és egy megadott gyűjtemény használatával hozhat
 1. Adja meg a storageConnectionString az Azure Storage-fiók kulcsok oldaláról.
 1. Adja meg a Storage-fiókban létrehozott tároló containerName.
 
-> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="a Poster változóinak szerkesztése":::
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="HTTP-végpont és elérési kulcs beszerzése":::
 
 A gyűjtemény négy különböző REST-hívást tartalmaz, amelyek a szakasz végrehajtásához használatosak.
 
 Az első hívás létrehozza az adatforrást. `clinical-trials-ds`. A második hívás létrehozza a készségkészlet `clinical-trials-ss` . A harmadik hívás létrehozza az indexet `clinical-trials` . A negyedik és a végső hívás létrehozza az indexelő `clinical-trials-idxr` . Miután a gyűjtemény összes hívása befejeződött, zárjuk be a postát, és térjen vissza a Azure Portal.
 
-> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="az adatforrások létrehozása a Poster használatával":::
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="HTTP-végpont és elérési kulcs beszerzése":::
 
 ## <a name="check-the-results"></a>Az eredmények keresése
 
@@ -107,7 +107,7 @@ Térjen vissza a keresési szolgáltatás áttekintő képernyőjére.
 
 ## <a name="start-your-debug-session"></a>A hibakeresési munkamenet elindítása
 
-> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="új hibakeresési munkamenet elindítása":::
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="HTTP-végpont és elérési kulcs beszerzése":::
 
 1. Kattintson a hibakeresési munkamenetek (előzetes verzió) fülre.
 1. Válassza a + NewDebugSession
@@ -120,7 +120,7 @@ Térjen vissza a keresési szolgáltatás áttekintő képernyőjére.
 > [!Important]
 > Egy hibakeresési munkamenet csak egyetlen dokumentummal működik. Az adatkészletben található adott dokumentum > kiválasztható, vagy a munkamenet alapértelmezés szerint az első dokumentum lesz.
 
-> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="Az új hibakeresési munkamenet elindult":::
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="HTTP-végpont és elérési kulcs beszerzése":::
 
 Ha a hibakeresési munkamenet befejezte a végrehajtást, a munkamenet alapértelmezett értéke a mesterséges intelligenciák lap, amely kiemeli a skill Graphot.
 
@@ -140,81 +140,25 @@ A hibák/figyelmeztetések lapon hiba található a címkével ellátott művele
 1. Válassza ki a **</>** vonal elején található szimbólumot, és nyissa meg a kifejezés kiértékelését.
 1. A **kiértékelés** gombra kattintva erősítse meg, hogy a kifejezés hibát eredményez. A rendszer megerősíti, hogy a "languageCode" tulajdonság nem érvényes bemenet.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="Kifejezés kiértékelése":::
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" tulajdonságnak megfelelő leképezési útvonal.
 
-Ezt a hibát kétféleképpen lehet megkeresni a munkamenetben. Az első az a hely, ahol a bemenet származik – milyen képességgel kellene előállítani ezt az eredményt? A szakértelem részleteit tartalmazó ablaktábla végrehajtások lapján meg kell jelennie a bemenet forrásának. Ha nincs forrás, ez egy mező-hozzárendelési hibát jelez.
-
-1. Kattintson a **végrehajtások** lapra.
-1. Tekintse meg a BEMENETeket, és keresse meg a "languageCode" kifejezést. A megadott bemenethez nem található forrás. 
-1. Váltson a bal oldali panelre a dúsított adatstruktúra megjelenítéséhez. Nincs a "languageCode" tulajdonságnak megfelelő leképezési útvonal.
-
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Dúsított adatstruktúra":::
-
-Van egy leképezett elérési út a "Language" kifejezéshez. Szóval, van egy elírás a képességek beállításaiban. A "/Document/Language" kifejezéssel rendelkező #1-szakértelemben lévő kifejezés kijavításához frissíteni kell a kifejezést.
-
-1. Nyissa meg a kifejezés kiértékelését **</>** a "Language" elérési útra.
-1. Másolja a kifejezést. Zárja be az ablakot.
-1. Nyissa meg az #1 szakértelmet, és nyissa meg a kifejezés kiértékelését **</>** a "languageCode" bemenethez.
-1. Illessze be a "/Document/Language" nevű új értéket a kifejezés mezőbe, és kattintson az **értékelés**gombra.
-1. Meg kell jelennie az "en" helyes bemenetnek. A kifejezés frissítéséhez kattintson az Apply (alkalmaz) gombra.
-1. Kattintson a **Save (Mentés** ) gombra a jobb oldalon, a szakértelem részletei panelen.
-1. A munkamenet ablak menüjében kattintson a **Futtatás** elemre. Ez elindít egy másik végrehajtást a készségkészlet a dokumentum használatával. 
-
-A hibakeresési munkamenet végrehajtásának befejeződése után kattintson a hibák/figyelmeztetések lapra, és megjeleníti, hogy a "dúsítás. NerSkillV2. #1" címkével ellátott hiba megszűnt. Vannak azonban még két figyelmeztetés arról, hogy a szolgáltatás nem tudja leképezni a szervezetekhez és helyekhez tartozó kimeneti mezőket a keresési indexhez. Hiányoznak értékek: "/Document/merged_content/Organizations" és "/Document/merged_content/Locations".
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" és "/Document/merged_content/Locations".
 
 ## <a name="fix-missing-skill-output-values"></a>Hiányzó szaktudás-kimeneti értékek javítása
 
-> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hibák és figyelmeztetések":::
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" kifejezés jelenik meg.
 
-A szakértelemből hiányzó kimeneti értékek találhatók. Ha azonosítani szeretné a hibát, ugorjon a dúsított adatstruktúrára, keresse meg az érték nevét, és tekintse meg az eredeti forrását. A hiányzó szervezetek és helyszínek értéke esetén a rendszer a skill #1ból származó kimeneteket jelenít meg. Az egyes elérési utakhoz tartozó Expression értékelő </> megnyitásakor a "/Document/Content/Organizations" és a "/Document/Content/Locations" kifejezés jelenik meg.
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" szövegben.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="Expression értékelő szervezetek entitása":::
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" kimenetekhez.
 
-Az entitások kimenete üres, és nem lehet üres. Milyen bemenetek jönnek létre ez az eredmény?
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" entitás kifejezés-értékelőjét.
 
-1. Nyissa meg a **skill Graphot** , és válassza a skill #1 elemet.
-1. Válassza a **végrehajtások** fület a jobb képességek részletei panelen.
-1. Nyissa meg a kifejezés kiértékelését **</>** a "text" szövegben.
-
-> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Szöveg-képzettség bevitele":::
-
-A bemenet megjelenített eredménye nem hasonlít a szövegbeviteli adatokhoz. Úgy néz ki, mint egy új vonallal körülvett rendszerkép. A szöveg hiánya azt jelenti, hogy egyetlen entitás sem azonosítható. A készségkészlet hierarchiájának megtekintésekor a rendszer először a #6 (OCR) által dolgozza fel a tartalmat, majd átadja a #5 (Merge) szaktudásnak. 
-
-1. Válassza ki a #5 (egyesítés) képességet a **skill Graphban**.
-1. Válassza a **végrehajtás** fület a jobb képességek részletei panelen, és nyissa meg a kifejezés kiértékelését **</>** a "mergedText" kimenetekhez.
-
-> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Kimenet egyesítési képességhez":::
-
-Itt a szöveg párosítva van a képpel. A "/Document/merged_content" kifejezésben a "szervezetek" és a "Locations" elérési utakon található hiba látható a #1 skill számára. A "/Document/Content" helyett "/Document/merged_content"-t kell használnia a "text" bemenetekhez.
-
-1. Másolja ki a "mergedText" kimenethez tartozó kifejezést, és zárjuk be a kifejezés értékelési ablakát.
-1. Válassza a szakértelem #1 lehetőséget a **skill gráfban**.
-1. Válassza ki a **készségfejlesztés** lapot a megfelelő képzettség részletei panelen.
-1. Nyissa meg a kifejezés kiértékelését **</>** a "text" bemenethez.
-1. Illessze be az új kifejezést a mezőbe. Kattintson a **kiértékelés**lehetőségre.
-1. A hozzáadott szöveggel megjelenő helyes bemenetnek szerepelnie kell. Kattintson az **alkalmaz** gombra a képzettségi beállítások frissítéséhez.
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" kifejezésre.
 1. Kattintson a **Save (Mentés** ) gombra a jobb oldalon, a szakértelem részletei panelen.
 1. A munkamenetek ablak menüjében kattintson a **Futtatás** elemre. Ez elindít egy másik végrehajtást a készségkészlet a dokumentum használatával.
 
-Az indexelő futásának befejeződése után a hibák még mindig vannak. Lépjen vissza a skill #1 és vizsgálja meg. A képességhez megadott bemenet a tartalomból "merged_content" értékre lett javítva. Mik az entitások kimenetei a szakértelemben?
-
-1. Válassza az **AI-gazdagítók** fület.
-1. Válassza a **skill Graph** lehetőséget, majd kattintson a skill #1 lehetőségre.
-1. Keresse meg a **képességek beállításait** a "kimenetek" kereséséhez.
-1. Nyissa meg a **</>** "szervezetek" entitás kifejezés-értékelőjét.
-
-> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="A szervezetek entitásának kimenete":::
-
-A kifejezés eredményének kiértékelése a megfelelő eredményt adja. A szakértelem feladata az entitás, a "szervezetek" helyes értékének azonosítása. Az entitás elérési útjának kimeneti leképezése azonban továbbra is hibát jelez. A szakértelem kimeneti elérési útjának és a hiba kimeneti elérési útjának összevetésével a/Document/Content csomópontban lévő kimeneteket, szervezeteket és helyeket szülő képességgel. Míg a kimeneti mező leképezése az eredmények szülővé tételét várja a/Document/merged_content csomópont alatt. Az előző lépésben a bevitel "/Document/Content" értékről "/Document/merged_content" értékre változott. A szaktudás beállításainak környezetét módosítani kell annak érdekében, hogy a kimenet a megfelelő kontextussal legyen létrehozva.
-
-1. Válassza az **AI-gazdagítók** fület.
-1. Válassza a **skill Graph** lehetőséget, majd kattintson a skill #1 lehetőségre.
-1. A "kontextus" kifejezésre navigálva keresse meg a **képességek beállításait** .
-1. Kattintson duplán a "Context" beállításra, és szerkessze a "/Document/merged_content" kifejezésre.
-1. Kattintson a **Save (Mentés** ) gombra a jobb oldalon, a szakértelem részletei panelen.
-1. A munkamenetek ablak menüjében kattintson a **Futtatás** elemre. Ez elindít egy másik végrehajtást a készségkészlet a dokumentum használatával.
-
-> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Környezeti javítás a szaktudás beállításakor":::
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="HTTP-végpont és elérési kulcs beszerzése":::
 
 Az összes hiba megoldódott.
 

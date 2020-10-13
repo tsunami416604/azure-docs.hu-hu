@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534981"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
@@ -44,12 +44,12 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-| Region | Végpont |
+| Régió | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Az USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -242,7 +242,7 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 Ha a HTTP-állapot értéke `200 OK` , a válasz törzse egy hangfájlt tartalmaz a kért formátumban. Ezt a fájlt áthelyezték, pufferbe mentve vagy fájlba mentve lehet lejátszani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Aszinkron szintézis a hosszú formátumú hangokhoz](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)

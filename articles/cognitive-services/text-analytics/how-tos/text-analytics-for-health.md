@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
 ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309200"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
@@ -28,7 +28,7 @@ ms.locfileid: "91309200"
 
 A Text Analytics for Health egy olyan tárolós szolgáltatás, amely a strukturálatlan szövegektől, például az orvos megjegyzései, a mentesítési összefoglalók, a klinikai dokumentumok és az elektronikus egészségügyi jelentések alapján kinyeri és felcímkézi a kapcsolódó egészségügyi adatokat.  
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az állapot-tároló Text Analyticsa jelenleg elnevezett entitások felismerése, kapcsolat kibontása, entitások kivonása és az angol nyelvű szöveghez kapcsolódó entitások összekapcsolása a saját fejlesztési környezetében, amely megfelel az adott biztonsági és adatirányítási követelményeknek.
 

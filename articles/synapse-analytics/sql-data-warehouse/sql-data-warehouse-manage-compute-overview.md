@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204541"
 ---
 # <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Számítások kezelése az Azure szinapszis Analytics-adattárházban
@@ -36,7 +36,7 @@ A méretezési művelet végrehajtásához az SQL-készlet először megöli az 
 
 A következő táblázat azt mutatja be, hogy a számítási csomópontok hány eloszlása változik az adatraktár-egységek változásakor.  A DW30000c 60 számítási csomópontot biztosít, és sokkal nagyobb lekérdezési teljesítményt érhet el, mint a DW100c.
 
-| Adattárházegységek  | \#a számítási csomópontok | \#/csomópontok eloszlása |
+| Adattárházegységek  | \# a számítási csomópontok | \# /csomópontok eloszlása |
 | -------- | ---------------- | -------------------------- |
 | DW100c   | 1                | 60                         |
 | DW200c   | 1                | 60                         |

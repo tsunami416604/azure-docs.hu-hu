@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283453"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Oktatóanyag: az Blockchain-Data Manager használata az adatküldés Azure Cosmos DB
@@ -51,12 +51,12 @@ Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgált
 
     Beállítás | Példa | Leírás
     --------|---------|------------
-    Név | mywatcher | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager.
+    Name (Név) | mywatcher | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager.
     Tranzakciós csomópont | myblockchainmember | Válassza ki az előfeltételként létrehozott Azure Blockchain Service-tag alapértelmezett tranzakciós csomópontját.
     Kapcsolat neve | cosmosdb | Adja meg a kimenő kapcsolatok egyedi nevét, ahol a blockchain tranzakciós adatküldés történik.
     Event Grid-végpont | myTopic | Válassza ki az előfeltételként létrehozott Event Grid-témakört. Megjegyzés: a Blockchain Data Manager példányának és az Event Grid témakörnek ugyanahhoz az előfizetéshez kell tartoznia.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
     Egy Blockchain Data Manager példány létrehozásához kevesebb mint egy percet vesz igénybe. A példány üzembe helyezése után a rendszer automatikusan elindítja azt. Egy futó Blockchain Data Manager példány rögzíti a Blockchain eseményeket a tranzakciós csomópontból, és adatokat küld az Event Gridnek.
 
@@ -110,7 +110,7 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Név  | Nevezze el a tárolót. Például: *smartcontract* |
+    | Name (Név)  | Nevezze el a tárolót. Például: *smartcontract* |
     | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
 
 1. A tároló létrehozásához válassza az **OK** gombot.
@@ -146,11 +146,11 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
     Beállítás | Leírás
     --------|------------
-    Név | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
+    Name (Név) | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
     Egyezményes ABI | A szerződéses ABI-fájl URL-címének elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
     Szerződés bytecode | A bytecode fájl URL-elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
     Az alkalmazás létrehozása után az alkalmazás megjelenik a blockchain-alkalmazások listájában.
 
@@ -178,7 +178,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     | Tároló azonosítója | Adja meg az **üzeneteket** az új tároló neveként. |
     | Partíciókulcs | A **/MessageType** használata partíciós kulcsként. |
 
-1. Válassza az **OK** lehetőséget. A Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
+1. Kattintson az **OK** gombra. A Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
 
 ## <a name="create-logic-app"></a>Logikai alkalmazás létrehozása
 
@@ -292,7 +292,7 @@ Ha már nincs rá szükség, törölheti az oktatóanyaghoz használt erőforrá
 1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
 1. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a blockchain-főkönyvek integrálásáról.
 

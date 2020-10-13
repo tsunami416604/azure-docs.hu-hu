@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744287"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Boomi
@@ -152,7 +152,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson az **egyszeri bejelentkezés beállításai** lapra, és hajtsa végre az alábbi lépéseket.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/boomi-tutorial/tutorial_boomi_11.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/boomi-tutorial/tutorial_boomi_11.png)
 
     a. Jelölje be **az SAML egyszeri bejelentkezés engedélyezése** jelölőnégyzetet.
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231061"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Az Azure Active Directory jelentéskészítés késése
@@ -59,7 +59,7 @@ A biztonsági jelentések két típusa létezik:
 
 A következő táblázat a biztonsági jelentések késési információit sorolja fel.
 
-| Jelentés | Minimum | Average | Maximum |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Veszélyeztetett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
@@ -70,7 +70,7 @@ Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteke
 
 A következő táblázat a kockázati észlelések késési információit sorolja fel.
 
-| Jelentés | Minimum | Average | Maximum |
+| Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
 | Bejelentkezések névtelen IP-címről |5 perc |15 perc |2 óra |
 | Bejelentkezések ismeretlen helyekről |5 perc |15 perc |2 óra |

@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264303"
 ---
 # <a name="query-update-management-logs"></a>Update Management-naplók lekérdezése
@@ -31,7 +31,7 @@ Létrejön egy olyan típusú rekord, `RequiredUpdate` amely a gép által igén
 | Computer | A jelentéskészítő gép teljes tartományneve. |
 | KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. |
 | ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
-| Termék | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Product | Azok a termékek, amelyekhez a frissítés alkalmazható. |
 | PublishDate | Az a dátum, amikor a frissítés készen áll a letöltésre és telepítésre Windows Update. |
 | Kiszolgáló | | 
 | SourceHealthServiceId | A Log Analytics Windows-ügynök AZONOSÍTÓját jelképező egyedi azonosító. |
@@ -73,7 +73,7 @@ Létrejön egy olyan típusú rekord, `Update` amely az elérhető frissítések
 | Cím | A frissítés címe. |
 | PublishedDate (UTC) | Az a dátum, amikor a frissítés készen áll a letöltésre és telepítésre Windows Update.  |
 | UpdateState | A frissítés aktuális állapota. |
-| Termék | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Product | Azok a termékek, amelyekhez a frissítés alkalmazható. |
 | SubscriptionId | Az Azure-előfizetés egyedi azonosítója. |
 | ResourceGroup | Azon erőforráscsoport neve, amelyhez az erőforrás tartozik. |
 | ResourceProvider | Az erőforrás-szolgáltató. |
@@ -116,7 +116,7 @@ A rendszer létrehoz egy olyan típusú rekordot, `UpdateRunProgress` amely fris
 | KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. |
 | ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
 | OSType | Az operációs rendszer típusa. Az értékek Windows vagy Linux. |
-| Termék | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Product | Azok a termékek, amelyekhez a frissítés alkalmazható. |
 | Erőforrás | Az erőforrás neve. |
 | ResourceId | A rekordhoz társított erőforrás egyedi azonosítója. |
 | ResourceProvider | Az erőforrás-szolgáltató. |

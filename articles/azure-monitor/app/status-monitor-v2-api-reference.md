@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318997"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent API-referenciája
@@ -26,7 +26,7 @@ Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerSh
 > - A Instrumentation-motor további terhelést hoz létre, és alapértelmezés szerint ki van kapcsolva.
 
 
-## <a name="enable-instrumentationengine"></a>InstrumentationEngine engedélyezése
+## <a name="enable-instrumentationengine"></a>Enable-InstrumentationEngine
 
 A rendszerállapot-kezelő motor egyes kulcsainak beállításával engedélyezhető.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
@@ -62,7 +62,7 @@ Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="enable-applicationinsightsmonitoring"></a>ApplicationInsightsMonitoring engedélyezése
+## <a name="enable-applicationinsightsmonitoring"></a>Enable-ApplicationInsightsMonitoring
 
 Engedélyezi az IIS-alkalmazások kód alapú csatolásának figyelését a célszámítógépen.
 
@@ -84,10 +84,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
-- `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
-- `AppFilter='WebAppExclude'`rendszerállapot- `null` kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
-- `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `MachineFilter` az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
+- `AppFilter='WebAppExclude'` rendszerállapot- `null` kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppOne'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `AppFilter='WebAppTwo'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
 - Végezetül `AppFilter` a helyettesítő karaktert is használja a `'.*'` korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
 - A szóközök hozzáadódnak az olvashatósághoz.
 
@@ -181,7 +181,7 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>InstrumentationEngine letiltása
+## <a name="disable-instrumentationengine"></a>Disable-InstrumentationEngine
 
 Letiltja a rendszerállapot-kezelő motort néhány beállításkulcs eltávolításával.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
@@ -210,7 +210,7 @@ Registry: removing 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WAS[Env
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="disable-applicationinsightsmonitoring"></a>ApplicationInsightsMonitoring letiltása
+## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
 Letiltja a figyelést a célszámítógépen.
 Ez a parancsmag eltávolítja az IIS-applicationHost.config szerkesztését, és eltávolítja a beállításkulcsokat.
@@ -476,10 +476,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
-- `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
-- `AppFilter='WebAppExclude'`rendszerállapot- `null` kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
-- `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `MachineFilter` az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
+- `AppFilter='WebAppExclude'` rendszerállapot- `null` kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppOne'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `AppFilter='WebAppTwo'` egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
 - Végezetül `AppFilter` a helyettesítő karaktert is használja a `'.*'` korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
 - A szóközök hozzáadódnak az olvashatósághoz.
 
@@ -550,7 +550,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>Start – ApplicationInsightsMonitoringTrace
+## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
 A [ETW-eseményeket](/windows/desktop/etw/event-tracing-portal) gyűjti a kód-visszacsatolási futtatókörnyezetből. Ez a parancsmag egy alternatív megoldás a [perfview eszköz](https://github.com/microsoft/perfview)futtatására.
 
