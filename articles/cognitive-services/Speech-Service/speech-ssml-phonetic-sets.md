@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78675328"
 ---
 # <a name="speech-service-phonetic-sets"></a>Beszédfelismerési szolgáltatás fonetikus készletei
 
-A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket ("telefonos készleteket") határoz meg. `en-US` `fr-FR` `ja-JP` `zh-CN`,,,,, és `zh-TW`. `de-DE` `es-ES` A beszédfelismerési szolgáltatás telefonos beállítása általában a <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">nemzetközi fonetikus ábécé (IPA) <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>leképezésére szolgál. A beszédfelismerési szolgáltatás telefonos készletei a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)szolgáltatással együtt használatosak a szöveg-beszéd szolgáltatási ajánlat részeként. Ebből a cikkből megtudhatja, hogyan vannak leképezve ezek a telefonos készletek, és hogy mikor kell használni a beállított telefont.
+A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket ("telefonos készleteket") határoz meg. ,,,, `en-US` `fr-FR` `de-DE` `es-ES` `ja-JP` , `zh-CN` és `zh-TW` . A beszédfelismerési szolgáltatás telefonos beállítása általában a <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">nemzetközi fonetikus ábécé (IPA) <span class="docon docon-navigate-external x-hidden-focus"></span> </a>leképezésére szolgál. A beszédfelismerési szolgáltatás telefonos készletei a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)szolgáltatással együtt használatosak a szöveg-beszéd szolgáltatási ajánlat részeként. Ebből a cikkből megtudhatja, hogyan vannak leképezve ezek a telefonos készletek, és hogy mikor kell használni a beállított telefont.
 
 # <a name="en-us"></a>[en-US](#tab/en-US)
 
@@ -32,7 +32,7 @@ A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket
 
 ### <a name="english-vowels"></a>Angol magánhangzók
 
-| `sapi` | `ipa` | 1. példa     | 2. példa | 3. példa                   |
+| `sapi` | `ipa` | 1\. példa     | 2\. példa | 3\. példa                   |
 |--------|-------|---------------|-----------|-----------------------------|
 | iy     | `i`   | **EA**t       | f**EE**l  | vall**ey**                  |
 | IH     | `ɪ`   | **i**f        | f**i**ll  |                             |
@@ -53,7 +53,7 @@ A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket
 
 ### <a name="english-r-colored-vowels"></a>Angol R-színű magánhangzók
 
-| `sapi` | `ipa` | 1. példa    | 2. példa      | 3. példa  |
+| `sapi` | `ipa` | 1\. példa    | 2\. példa      | 3\. példa  |
 |--------|-------|--------------|----------------|------------|
 | r. IH   | `ɪɹ`  | **fül**s     | t**IR**-amisu   | n**fül**   |
 | Mi r   | `ɛɹ`  | **légi**sík | App**AR**-ently | SC**AR**e  |
@@ -67,14 +67,14 @@ A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket
 
 ### <a name="english-semivowels"></a>Angol Semivowels
 
-| `sapi` | `ipa` | 1. példa           | 2. példa  | 3. példa |
+| `sapi` | `ipa` | 1\. példa           | 2\. példa  | 3\. példa |
 |--------|-------|---------------------|------------|-----------|
 | w      | `w`   | **w**edik, s**UE**de | Al**w**ays |           |
 | é      | `j`   | **y**ARD, f**e**w   | **bekapcsolva**  |           |
 
 ### <a name="english-aspirated-oral-stops"></a>Az angol szívós szóbeli leáll
 
-| `sapi` | `ipa` | 1. példa | 2. példa   | 3. példa  |
+| `sapi` | `ipa` | 1\. példa | 2\. példa   | 3\. példa  |
 |--------|-------|-----------|-------------|------------|
 | P      | `p`   | **p**ut   | Ha**PP**en  | FLA**p**   |
 | b      | `b`   | **b**ig   | **b**számú er  | **b** . CRA   |
@@ -85,7 +85,7 @@ A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket
 
 ### <a name="english-nasal-stops"></a>Angol orr leáll
 
-| `sapi` | `ipa` | 1. példa        | 2. példa  | 3. példa   |
+| `sapi` | `ipa` | 1\. példa        | 2\. példa  | 3\. példa   |
 |--------|-------|------------------|------------|-------------|
 | m      | `m`   | **m**, Smash   | CA**m**Era | Roo**m**    |
 | p      | `n`   | **n**o, s**n**ow | te**n**t   | naposcsibe**n** |
@@ -93,9 +93,9 @@ A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket
 
 ### <a name="english-fricatives"></a>Angol fricatives
 
-| `sapi` | `ipa` | 1. példa   | 2. példa        | 3. példa  |
+| `sapi` | `ipa` | 1\. példa   | 2\. példa        | 3\. példa  |
 |--------|-------|-------------|------------------|------------|
-| nő      | `f`   | **f**ork    | le**f**t         | hal**f**   |
+| f      | `f`   | **f**ork    | le**f**t         | hal**f**   |
 | v      | `v`   | **v**alue   | e**v**ENT        | Lo**v**e   |
 | adik     | `θ`   | **th**    | EMPA**th**y      | Mon**th**  |
 | DH     | `ð`   | **th**en    | Mo**th**       | smoo**th** |
@@ -107,19 +107,19 @@ A beszédfelismerési szolgáltatás hét nyelvből álló fonetikus ábécéket
 
 ### <a name="english-affricates"></a>Angol affricates
 
-| `sapi` | `ipa` | 1. példa | 2. példa    | 3. példa  |
+| `sapi` | `ipa` | 1\. példa | 2\. példa    | 3\. példa  |
 |--------|-------|-----------|--------------|------------|
 | ch     | `tʃ`  | **CH**a  | **t**ure   | támadási**CH** |
 | JH     | `dʒ`  | **j**Oy   | Ori**g**inal | **g**e |
 
 ### <a name="english-approximants"></a>Angol approximants
 
-| `sapi` | `ipa` | 1. példa          | 2. példa  | 3. példa |
+| `sapi` | `ipa` | 1\. példa          | 2\. példa  | 3\. példa |
 |--------|-------|--------------------|------------|-----------|
 | l      | `l`   | **l**azonosító, g**l**ad  | PA**l**Ace | Chi**ll** |
 | r      | `ɹ`   | **r**ED, b**r** | Bo**RR**ow | ta**r**   |
 
-# <a name="fr-fr"></a>[fr-FR](#tab/fr-FR)
+# <a name="fr-fr"></a>[fr – FR](#tab/fr-FR)
 
 ### <a name="french-suprasegmentals"></a>Francia suprasegmentals
 
@@ -127,7 +127,7 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="french-vowels"></a>Francia magánhangzók
 
-| `sapi` | `ipa` | 1. példa     | 2. példa       | 3. példa |
+| `sapi` | `ipa` | 1\. példa     | 2\. példa       | 3\. példa |
 |--------|-------|---------------|-----------------|-----------|
 | a      | `a`   | **egy**rbre     | p**a**TTE       | IR**a**   |
 | aa     | `ɑ`   |               | p **,** te        | p**a**s   |
@@ -148,11 +148,11 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="french-consonants"></a>Francia mássalhangzók
 
-| `sapi` | `ipa` | 1. példa   | 2. példa     | 3. példa                        |
+| `sapi` | `ipa` | 1\. példa   | 2\. példa     | 3\. példa                        |
 |--------|-------|-------------|---------------|----------------------------------|
 | b      | `b`   | **b**ête    | Ha**b**– ille   | **b**. e. e                         |
 | n      | `d`   | **d**Ire    | **d**. Ron EUR   | **d**e                       |
-| nő      | `f`   | **f**Emme   | Su**FF**IXE   | Bo**f**                          |
+| f      | `f`   | **f**Emme   | Su**FF**IXE   | Bo**f**                          |
 | g      | `g`   | **g**auche  | é**g**ALE     | ba-**Gu**e                        |
 | ng     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)parkoló**ing** |
 | Hy     | `ɥ`   | h**u**Ile   | n**u**Ire     |                                  |
@@ -179,7 +179,7 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 **1** *csak bizonyos idegen szavak esetében.*
 
 > [!TIP]
-> A `fr-FR` beszédfelismerési szolgáltatás telefonos készlete nem támogatja a következő francia `n‿`liasions `t‿`:, `z‿`, és. Ha szükségesek, érdemes lehet az IPA használatát közvetlenül használni.
+> A `fr-FR` beszédfelismerési szolgáltatás telefonos készlete nem támogatja a következő francia liasions:,, `n‿` `t‿` és `z‿` . Ha szükségesek, érdemes lehet az IPA használatát közvetlenül használni.
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
@@ -192,7 +192,7 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="german-vowels"></a>Német magánhangzók
 
-| `sapi` | `ipa`     | 1. példa                             | 2. példa     | 3. példa                          |
+| `sapi` | `ipa`     | 1\. példa                             | 2\. példa     | 3\. példa                          |
 |--------|-----------|---------------------------------------|---------------|------------------------------------|
 | egy     | `aː`      | **Egy**BER                              | Maßst**b**   | Schem**a**                         |
 | a      | `a`       | **Egy**bfall                            | B**egy**CH      | Agath**a**                         |
@@ -218,7 +218,7 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="german-diphthong"></a>Német diphthong
 
-| `sapi` | `ipa`       | 1. példa    | 2. példa          | 3. példa |
+| `sapi` | `ipa`       | 1\. példa    | 2\. példa          | 3\. példa |
 |--------|-------------|--------------|--------------------|-----------|
 | Ay     | `ai`        | **ei**nsam   | Unabhängigk**ei**t | Abt**ei** |
 | AW     | `au`        | **au**-ßen    | ABB**au**St        | St**au**  |
@@ -226,19 +226,19 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="german-semivowels"></a>Német semivowels
 
-| `sapi` | `ipa` | 1. példa | 2. példa    | 3. példa  |
+| `sapi` | `ipa` | 1\. példa | 2\. példa    | 3\. példa  |
 |--------|-------|-----------|--------------|------------|
 | AX r   | `ɐ`   |           | abänd**n** | zárolás**er** |
 
 ### <a name="german-consonants"></a>Német mássalhangzók
 
-| `sapi` | `ipa` | 1. példa | 2. példa | 3. példa |
+| `sapi` | `ipa` | 1\. példa | 2\. példa | 3\. példa |
 |--|--|--|--|--|
 | b | `b` | **B**ANK |  | [<sup>1</sup>](#de-c-1) **B** . PU |  |
 | c | `ç` | **CH**zoli | mögli**CH**St | [<sup>2</sup>](#de-c-2)i**CH** |
 | n | `d` | **d**anken | [<sup>3</sup>](#de-c-3) Hossz**d**l | [<sup>4</sup>](#de-c-4) **D**e |  |
 | JH | `ʤ` | **J**EHA | gemana**g**t | [<sup>5</sup>](#de-c-5) Chan**g**e |
-| nő | `f` | **F**ahrtdauer | dühös**FF**slustig | **f** abbruchrei |  |
+| f | `f` | **F**ahrtdauer | dühös**FF**slustig | **f** abbruchrei |  |
 | g | `g` | **g**ut |  | [<sup>6</sup>](#de-c-6) GRE**g** |  |
 | ó | `h` | **H**ausanbau |  |  |  |
 | é | `j` | **J**od | Reakt**i** | hu**i** |  |
@@ -256,7 +256,7 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 | TS | `ts` | **Z**UG | AR**z**t | Ész.**z** |  |
 | ch | `tʃ` | **Tsch**echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
 | v | `v` | **w**inken | Q**u**Alle | [<sup>9</sup>](#de-c-9) Gr**OO**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) Ba**CH**erach | Ma**CH**t mögli**CH**St | Schma**CH** ' i**CH** |
+| x | [<sup>10</sup>](#de-c-10) `x` ,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) Ba**CH**erach | Ma**CH**t mögli**CH**St | Schma**CH** ' i**CH** |
 | z | `z` | **s**uper |  |  |  |
 | zh | `ʒ` | **G**enre | B**újra**ezinski | Edvi**g**e |
 
@@ -287,18 +287,18 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="german-oral-consonants"></a>Német szóbeli mássalhangzók
 
-| `sapi` | `ipa` | 1. példa                                  |
+| `sapi` | `ipa` | 1\. példa                                  |
 |--------|-------|--------------------------------------------|
 | ^      | `ʔ`   | beachtlich/b AX – ^ a 1 x t-l IH c/ |
 
 > [!NOTE]
-> Hozzá kell adni egy [GS\] -telefont két különböző magánhangzó között, a két magánhangzó kivételével a valódi diphthong. Ez a szóbeli mássalhangzó egy glottális leállása, további információért lásd <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">: glottális <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>leállítása.
+> Hozzá kell adni egy [GS \] -telefont két különböző magánhangzó között, a két magánhangzó kivételével a valódi diphthong. Ez a szóbeli mássalhangzó egy glottális leállása, további információért lásd: <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank"> glottális leállítása <span class="docon docon-navigate-external x-hidden-focus"> </a> </a> .
 
 # <a name="es-es"></a>[es-ES](#tab/es-ES)
 
 ### <a name="spanish-vowels"></a>Spanyol magánhangzók
 
-| `sapi` | `ipa` | 1. példa    | 2. példa     | 3. példa    |
+| `sapi` | `ipa` | 1\. példa    | 2\. példa     | 3\. példa    |
 |--------|-------|--------------|---------------|--------------|
 | a      | `a`   | **egy**LTO     | c**ntar**    | CAS**a**     |
 | i      | `i`   | **bérica**  | AV**i**Spa    | **i** . adó     |
@@ -308,14 +308,14 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 
 ### <a name="spanish-consonants"></a>Spanyol mássalhangzók
 
-| `sapi` | `ipa`      | 1. példa  | 2. példa      | 3. példa      |
+| `sapi` | `ipa`      | 1\. példa  | 2\. példa      | 3\. példa      |
 |--------|------------|------------|----------------|----------------|
 | b      | `b`        | **b**aobab |                | **b**        |
 |        | `β`        |            | Bao**b**AB     | **b** baoba     |
 | ch     | `tʃ`       | **CH**eque | Co**CH**e      | Marraque**CH** |
 | n      | `d`        | **d**Edo   |                | portlan**d**   |
 |        | `ð`        |            | de**d**o       | verda**d**     |
-| nő      | `f`        | **f**ácil  | ele-**f**ante   | Pu**f**        |
+| f      | `f`        | **f**ácil  | ele-**f**ante   | Pu**f**        |
 | g      | `g`        | **g**Anga  |                | dópin**g**     |
 |        | `ɣ`        |            | egy**g**ua       | tuare**g**     |
 | j      | `j`        | **i**Odo   | Cal**i**Ente   | újra**y**        |
@@ -336,11 +336,11 @@ A beszédfelismerési szolgáltatás telefonos beállítása a kihangsúlyozott 
 | x      | `x`        | **j**OTA   | a**j**o        | relo**j**      |
 
 > [!TIP]
-> A `es-ES` beszédfelismerési szolgáltatás telefonos készlete nem támogatja a következő spanyol `β`IPA `ð`-t `ɣ`,, és. Ha szükségesek, érdemes lehet az IPA használatát közvetlenül használni.
+> A `es-ES` beszédfelismerési szolgáltatás telefonos készlete nem támogatja a következő spanyol IPA-t,, `β` `ð` és `ɣ` . Ha szükségesek, érdemes lehet az IPA használatát közvetlenül használni.
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-A beszédfelismerési szolgáltatás telefonos készlete `zh-CN` a natív telefonos <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">pinjin <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -készleten alapul.
+A beszédfelismerési szolgáltatás telefonos készlete a `zh-CN` natív telefonos <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">pinjin <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -készleten alapul.
 
 ### <a name="tone"></a>Hangnem
 
@@ -360,9 +360,9 @@ A beszédfelismerési szolgáltatás telefonos készlete `zh-CN` a natív telefo
 | 累进        | lei 3 – Jin 4                 |
 | 西宅巷       | XI 1 – Zhai 2 – Xiang 4      |
 
-# <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
+# <a name="zh-tw"></a>[zh – TW](#tab/zh-TW)
 
-A beszédfelismerési szolgáltatáshoz beállított `zh-TW` telefon a natív telefonos <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -készleten alapul.
+A beszédfelismerési szolgáltatáshoz beállított telefon a `zh-TW` natív telefonos <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -készleten alapul.
 
 ### <a name="tone"></a>Hangnem
 
@@ -384,14 +384,14 @@ A beszédfelismerési szolgáltatáshoz beállított `zh-TW` telefon a natív te
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-A beszédfelismerő szolgáltatás telefonos készlete `ja-JP` a natív telefonos <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> készleten alapul.
+A beszédfelismerő szolgáltatás telefonos készlete `ja-JP` a natív telefonos <a href="https://en.wikipedia.org/wiki/Kana" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Kana</a> készleten alapul.
 
 ### <a name="stress"></a>Stressz
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ`mainstress |
-| `+`    | `ˌ`instress  |
+| `ˈ`    | `ˈ` mainstress |
+| `+`    | `ˌ` instress  |
 
 #### <a name="example"></a>Példa
 

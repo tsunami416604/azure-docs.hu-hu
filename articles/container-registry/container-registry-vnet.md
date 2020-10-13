@@ -4,10 +4,10 @@ description: Az Azure Container Registry elérésének korlátozása egy Azure-b
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488667"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
@@ -37,7 +37,7 @@ A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** 
 
 * Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és küldjön le egy minta képet, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t. 
 
-* Ha egy másik Azure-előfizetésben lévő szolgáltatás-végponttal szeretné korlátozni a beállításjegyzék-hozzáférést, regisztrálja az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
+* Ha egy másik Azure-előfizetésben lévő szolgáltatás-végponttal szeretné korlátozni a beállításjegyzék-hozzáférést, regisztrálja az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Példa:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -155,7 +155,7 @@ A beállításjegyzékhez konfigurált hálózati szabályok listájának megtek
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Minden konfigurált szabályhoz futtassa az az [ACR Network-Rule Remove][az-acr-network-rule-remove] parancsot az eltávolításához. Például:
+Minden konfigurált szabályhoz futtassa az az [ACR Network-Rule Remove][az-acr-network-rule-remove] parancsot az eltávolításához. Példa:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.

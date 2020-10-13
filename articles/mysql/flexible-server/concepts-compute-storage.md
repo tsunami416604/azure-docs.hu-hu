@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708679"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
@@ -32,7 +32,7 @@ A három különböző számítási réteg egyikében hozhat létre Azure Databa
 
 Számítási szintek kiválasztásához használja a következő táblázatot kiindulási pontként.
 
-| Számítási szintek | Kívánt teljesítményprofilok |
+| Számítási szint | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
 | Burstable | A legjobb olyan számítási feladatokhoz, amelyek folyamatosan nem igényelnek teljes CPU-t. |
 | Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web- és mobilalkalmazások üzemeltetésére szolgáló kiszolgálók, valamint az egyéb nagyvállalati alkalmazások.|

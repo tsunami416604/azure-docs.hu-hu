@@ -4,10 +4,10 @@ description: A beállításjegyzék méretének hatékony kezeléséről a táro
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403337"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure Container Registry tároló lemezképének törlése az Azure CLI használatával
@@ -154,7 +154,7 @@ fi
 
 Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) szakaszban is említettük, a módosított rendszerkép egy **meglévő címkével való** kihagyása a korábban lenyomott képpel, amely árva (vagy "lógó") képet eredményezett. A korábban leküldett rendszerkép jegyzékfájlja – és a rétegbeli adatok – a beállításjegyzékben maradnak. Vegye figyelembe a következő eseménysorozat-sorozatot:
 
-1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. A repository *ACR-HelloWorld*ellenőrzési jegyzékfájljának megtekintése:
 
    ```azurecli
@@ -175,7 +175,7 @@ Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) sz
    ```
 
 1. *ACR módosítása – HelloWorld* Docker
-1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Leküldéses képek *ACR – HelloWorld* a címkével **legújabb**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. A repository *ACR-HelloWorld*ellenőrzési jegyzékfájljának megtekintése:
 
    ```azurecli

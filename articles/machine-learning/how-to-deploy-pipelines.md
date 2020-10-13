@@ -12,10 +12,10 @@ ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302383"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Gépi tanulási folyamatok közzététele és nyomon követése
@@ -87,7 +87,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 A `json` post kérelem argumentumának tartalmaznia kell a `ParameterAssignments` kulcshoz a folyamat paramétereit és azok értékeit tartalmazó szótárt. Emellett az `json` argumentum a következő kulcsokat is tartalmazhatja:
 
-| Kulcs | Description |
+| Kulcs | Leírás |
 | --- | --- | 
 | `ExperimentName` | A végponthoz társított kísérlet neve |
 | `Description` | A végpontot leíró szabadkézi szöveg | 

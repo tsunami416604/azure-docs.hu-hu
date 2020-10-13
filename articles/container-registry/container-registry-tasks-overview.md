@@ -4,10 +4,10 @@ description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak eg
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488643"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
@@ -58,8 +58,8 @@ Az ACR-feladatok a következő eseményindítókat támogatják, amikor a git-t�
 
 | Eseményindító | Alapértelmezés szerint engedélyezett |
 | ------- | ------------------ |
-| Véglegesítés | Yes |
-| Lekéréses kérelem | No |
+| Véglegesítés | Igen |
+| Lekéréses kérelem | Nem |
 
 A forráskód-frissítési trigger konfigurálásához meg kell adnia a feladatot egy személyes hozzáférési jogkivonat (PAT) számára, hogy a webhookot a nyilvános vagy privát GitHub vagy az Azure DevOps-tárházban állítsa be.
 

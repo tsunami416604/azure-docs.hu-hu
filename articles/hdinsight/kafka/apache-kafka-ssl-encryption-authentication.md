@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082080"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-titkosítás és-hitelesítés beállítása Apache Kafkahoz az Azure HDInsight
@@ -52,7 +52,7 @@ A közvetítő telepítési folyamatának összefoglalása a következő:
 A következő részletes utasításokat követve hajthatja végre a Broker telepítését:
 
 > [!Important]
-> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és a vagy a megfelelő módon kell `wn0` helyettesíteni `wn1` `wn2` . `WorkerNode0_Name`és a `HeadNode0_Name` megfelelő gépek nevével kell helyettesíteni.
+> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és a vagy a megfelelő módon kell `wn0` helyettesíteni `wn1` `wn2` . `WorkerNode0_Name` és a `HeadNode0_Name` megfelelő gépek nevével kell helyettesíteni.
 
 1. Hajtsa végre a kezdeti beállítást a 0. fő csomóponton, amely a HDInsight kitölti a hitelesítésszolgáltató (CA) szerepkörét.
 
@@ -128,8 +128,8 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki az Azure HDInsight Apache Kafka-fürtöt.
 1. Nyissa meg a Ambari felhasználói felületét a **Ambari** elemre kattintva a **fürt irányítópultok**területén.
-1. A **Kafka-közvetítő** alatt állítsa be a **figyelők** tulajdonságot a következőre`PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. A **speciális Kafka-Broker** területen állítsa be a **Security. Inter. Broker. Protocol** tulajdonságot a következőre:`SSL`
+1. A **Kafka-közvetítő** alatt állítsa be a **figyelők** tulajdonságot a következőre `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. A **speciális Kafka-Broker** területen állítsa be a **Security. Inter. Broker. Protocol** tulajdonságot a következőre: `SSL`
 
     ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 

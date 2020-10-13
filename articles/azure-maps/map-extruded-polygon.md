@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: eedbbc0126adacc2a9bdc151aa6dbc27c7ba0750
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310254"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Sokszög-kihúzási réteg hozzáadása a térképhez
@@ -45,7 +45,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/eYYYNox'>extrudál
 
 ## <a name="add-a-circle-to-the-map"></a>Kör hozzáadása a térképhez
 
-Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)feljegyzett körök definícióját adja meg. Egy extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` tulajdonsággal rendelkező szolgáltatást, `subType` `Circle` valamint egy számozott `Radius` tulajdonságot, amely a sugarat a **méterben**jelöli. Például:
+Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)feljegyzett körök definícióját adja meg. Egy extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` tulajdonsággal rendelkező szolgáltatást, `subType` `Circle` valamint egy számozott `Radius` tulajdonságot, amely a sugarat a **méterben**jelöli. Példa:
 
 ```javascript
 {

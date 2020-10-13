@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083117"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Az Apache Zeppelin integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
@@ -78,14 +78,14 @@ A következő konfigurációk szükségesek ahhoz, hogy a Zeppelin-táblákat a 
     | Konfiguráció                 | Érték                                      |
     | ----------------------------- |:------------------------------------------:|
     | Livy. Spark. Hadoop. kaptár. llap. Daemon. Service. hosts | @llap0 |
-    | Livy. Spark. Security. hitelesítő adatok. hiveserver2. enabled | igaz |
-    | Livy. Spark. SQL. kaptár. llap | igaz |
-    | Livy. Spark. fonál. Security. hitelesítő adatok. hiveserver2. enabled | igaz |
+    | Livy. Spark. Security. hitelesítő adatok. hiveserver2. enabled | true |
+    | Livy. Spark. SQL. kaptár. llap | true |
+    | Livy. Spark. fonál. Security. hitelesítő adatok. hiveserver2. enabled | true |
     | Livy. főfelhasználók | Livy, Zeppelin |
     | Livy. Spark. tégelyek | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`.<br>Cserélje le a verziót az [első lépésekből](#getting-started)beszerzett értékekre. |
     | Livy. Spark. submit. pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`.<br>Cserélje le a verziót az [első lépésekből](#getting-started)beszerzett értékekre. |
     | Livy. Spark. SQL. Kas. hiveserver2. JDBC. URL | Állítsa be az interaktív lekérdezési fürt HiveServer2 interaktív JDBC URL-címére. |
-    | Spark. Security. hitelesítő adatok. hiveserver2. enabled | igaz |
+    | Spark. Security. hitelesítő adatok. hiveserver2. enabled | true |
 
 1. Csak ESP-fürtök esetén adja hozzá a következő konfigurációt:
 

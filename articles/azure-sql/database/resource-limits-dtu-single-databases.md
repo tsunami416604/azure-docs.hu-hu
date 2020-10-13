@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: 0bcc26c637e8ef6043589d963cfa9708b599a456
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619066"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával – Azure SQL Database
@@ -39,7 +39,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárterület (GB) | 2 |
 | Maximális tárterület (GB) | 2 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N/A |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N.A. |
 | Egyidejű feldolgozók maximális száma (kérelem) | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
@@ -105,7 +105,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 > [!NOTE]
 > A `tempdb` korlátokat lásd: [tempdb korlátok](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 - A rugalmas készletek virtuális mag erőforrás-korlátaival kapcsolatban lásd: [rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-elastic-pools.md)

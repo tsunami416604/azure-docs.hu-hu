@@ -12,10 +12,10 @@ ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 9a5749d115a4d5d9ce1e0ac454609c7b639c2f8e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309765"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Oktatóanyag: keresési javaslatok beszerzése weblapokon
@@ -350,7 +350,7 @@ Nyissa meg a weboldalt a böngészőben. Ha a rendszer kéri, adja meg a Bing Au
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Követelmények használata és megjelenítése](../UseAndDisplayRequirements.md)

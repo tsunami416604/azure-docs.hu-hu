@@ -1,5 +1,5 @@
 ---
-title: 'Példa: nagy léptékű funkció használata – Face'
+title: 'Példa: használja a Large-Scale funkciót – Face'
 titleSuffix: Azure Cognitive Services
 description: Ez az útmutató a meglévő PersonGroup és FaceList objektumok LargePersonGroup és LargeFaceList objektumokra való skálázásának lépéseit ismerteti.
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332389"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Példa: a nagyméretű szolgáltatás használata
@@ -269,7 +269,7 @@ Ebben az útmutatóban megtanulta, hogyan telepítheti át a meglévő PersonGro
 - A LargePersonGroup és a LargeFaceList hasonló módon működnek, mint a PersonGroup vagy a FaceList, azzal a különbséggel, hogy a LargeFaceList a vonatok műveletét igényli.
 - A nagyméretű adathalmazok dinamikus adatfrissítéséhez végezze el a megfelelő betanítási stratégiát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő útmutatóból megtudhatja, hogyan adhat hozzá arcokat egy PersonGroup, vagy hogyan írhat parancsfájlokat az azonosítási művelet PersonGroup való elvégzéséhez.
 

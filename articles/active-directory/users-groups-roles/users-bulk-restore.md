@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423337"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Törölt felhasználók tömeges visszaállítása Azure Active Directory
@@ -81,7 +81,7 @@ Ezután ellenőrizze, hogy a visszaállított felhasználók szerepelnek-e az Az
 
 ### <a name="view-users-with-powershell"></a>Felhasználók megtekintése a PowerShell-lel
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"
@@ -89,7 +89,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 Ekkor megjelenik a visszaállított felhasználók listája.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználók tömeges importálása](users-bulk-add.md)
 - [Felhasználók tömeges törlése](users-bulk-delete.md)
