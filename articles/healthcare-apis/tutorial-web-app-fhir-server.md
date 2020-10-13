@@ -10,12 +10,12 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b1dc7d7eee263b781d39c4beccf9388efbaa3d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb183b5c8aff018d4dc73819b938b24ad0daa934
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334137"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975790"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>JavaScript-alkalmazás üzembe helyezése a FHIR-szolgáltatásból származó adatok olvasásához
 Ebben az oktatóanyagban egy kis JavaScript-alkalmazást fog üzembe helyezni, amely adatokat olvas be egy FHIR-szolgáltatásból. Az oktatóanyag lépései a következők:
@@ -36,14 +36,14 @@ Az oktatóanyagok elindítása előtt a következő elemekre lesz szüksége:
 ## <a name="deploy-azure-api-for-fhir"></a>Az Azure API for FHIR üzembe helyezése
 Az oktatóanyag első lépéseként be kell szereznie az Azure API-t a FHIR telepítőjének megfelelően.
 
-1. A [FHIR készült Azure API](fhir-paas-portal-quickstart.md) üzembe helyezése
+1. Ha még nem tette meg, telepítse a [FHIR készült Azure API](fhir-paas-portal-quickstart.md)-t.
 1. Miután telepítette az Azure API-t a FHIR, konfigurálja a [CORS](configure-cross-origin-resource-sharing.md) BEÁLLÍTÁSAIT a FHIR Azure API-ban, majd válassza a CORS lehetőséget. 
     1. Az **eredet** beállítása *
     1. **Fejlécek** beállítása *
     1. A **módszerek**területen válassza **az összes kijelölése** lehetőséget.
     1. A **maximális kor** beállítása **600** -re
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már telepítette az Azure API-t a FHIR üzembe helyezéséhez, készen áll a nyilvános ügyfélalkalmazás regisztrálására.
 
 >[!div class="nextstepaction"]

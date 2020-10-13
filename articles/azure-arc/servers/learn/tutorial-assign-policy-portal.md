@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban a Azure Portal használatával hoz létre 
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826601"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Oktatóanyag: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
@@ -93,7 +93,7 @@ A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépések
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést. A házirend-definíció ellenőrzi, hogy a hatókör összes erőforrása megfelelő-e, és azonosítja, hogy melyek nem. Most már készen áll az Azure arc-kompatibilis kiszolgálók számítógépének figyelésére Azure Monitor for VMs használatával.
 

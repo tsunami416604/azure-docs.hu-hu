@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag a Azure Portal GPU-val való kapcsolódáshoz, konfiguráláshoz, aktiváláshoz Azure Stack Edge Pro-eszközhöz | Microsoft Docs
+title: Oktatóanyag a Azure Stack Edge Pro-eszköz csatlakoztatásához, konfigurálásához, aktiválásához a Azure Portal GPU-val | Microsoft Docs
 description: Az Azure Stack Edge Pro GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
 services: databox
 author: alkohli
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899630"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976067"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro eszköz beállításainak konfigurálása GPU-val
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro eszköz beállításainak konfigurálása GPU-val
 
 Ez az oktatóanyag azt ismerteti, hogyan konfigurálhatja az eszközhöz kapcsolódó beállításokat a Azure Stack Edge Pro-eszközhöz egy beépített GPU-val. Megadhatja az eszköz nevét, a frissítési kiszolgálót és az időkiszolgálót a helyi webes felületen keresztül.
 
@@ -67,7 +67,7 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
 
     5. A beállítások alkalmazása után válassza a **következő: kiszolgáló frissítése**lehetőséget.
 
-        ![Helyi webes felhasználói felület "eszköz" lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![Helyi webes felhasználói felület "eszköz" 3. oldala](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>Frissítés konfigurálása
 
@@ -79,7 +79,7 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
 
         A frissítéseket a **Windows Server Update Services** (WSUS) szolgáltatásból is telepítheti. Adja meg a WSUS-kiszolgáló elérési útját.
         
-        ![Helyi webes felhasználói felület "frissítési kiszolgáló" lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![Helyi webes felhasználói felület "frissítési kiszolgáló" 2. lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > Ha külön Windows Update kiszolgáló van konfigurálva, és ha a *https* protokollon keresztüli kapcsolódást választja ( *http*helyett), akkor szükség van a frissítési kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítványok aláírására. A tanúsítványok létrehozásáról és feltöltéséről a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)című témakörben olvashat bővebben. 
@@ -114,7 +114,7 @@ Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia
 2. A beállítások alkalmazása után válassza a **Tovább: tanúsítványok**lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

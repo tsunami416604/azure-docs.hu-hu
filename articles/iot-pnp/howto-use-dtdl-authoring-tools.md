@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91580424"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>A DTDL authoring Tools telepítése és használata
@@ -59,6 +59,6 @@ Ha telepítette a bővítményt, használja a DTDL-modell fájljainak létrehoz�
 
     :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Modell érvényesítése a VS Code-ban":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan használhatja a DTDL-bővítményeket a Visual Studio Code-hoz és a Visual Studio 2019-hoz a DTDL-modell fájljainak létrehozásához és érvényesítéséhez. A következő lépés az [Azure IoT Explorer és a modellek és eszközök](./howto-use-iot-explorer.md)használatának megismerése.

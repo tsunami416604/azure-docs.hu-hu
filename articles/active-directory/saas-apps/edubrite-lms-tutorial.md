@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: d753aef3c7cd855b1ab137e85a233a1bca27c25a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>Oktatóanyag: Azure Active Directory Integration with EduBrite LMS
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a EduBr
 Az Azure AD egyszeri bejelentkezés EduBrite LMS-sel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a EDUBRITE LMS egyszeri bejelentkezést](#configure-edubrite-lms-single-sign-on)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalán.
+2. **[Konfigurálja a EDUBRITE LMS egyszeri bejelentkezést](#configure-edubrite-lms-single-sign-on)** – az egyes Sign-On beállítások konfigurálásához az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre EDUBRITE LMS-teszt felhasználót](#create-edubrite-lms-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-Britta összekapcsolt, a EDUBRITE-LMS-ben található Simon-beli partnerrel.
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés az EduBrite LMS-sel való konfigurálásáho
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés az EduBrite LMS-sel való konfigurálásáho
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [EDUBRITE LMS ügyfél-támogatási csapatához](mailto:support@edubrite.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés az EduBrite LMS-sel való konfigurálásáho
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-edubrite-lms-single-sign-on"></a>EduBrite LMS egyszeri bejelentkezés konfigurálása
+### <a name="configure-edubrite-lms-single-sign-on"></a>A EduBrite LMS egyetlen Sign-On konfigurálása
 
 Az egyszeri bejelentkezés a **EDUBRITE LMS** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [EduBrite LMS támogatási csapatához](mailto:support@edubrite.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

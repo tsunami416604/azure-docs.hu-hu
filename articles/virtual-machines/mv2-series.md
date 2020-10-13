@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653553"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975756"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
@@ -35,7 +35,7 @@ Az Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techno
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 
-<sup>1</sup> a Mv2 sorozatú virtuális gépek csak 2. generációsak, és támogatják a 2. generációs támogatott lemezképek egy részhalmazát. A Mv2 sorozat által támogatott lemezképek teljes listáját alább találja. Ha Linuxot használ, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](./linux/generation-2.md) -ban című témakört, amely útmutatást nyújt a rendszerképek megkereséséhez és kiválasztásához. Ha Windows rendszert használ, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](./windows/generation-2.md) -ban című témakört, amely útmutatást nyújt a képek megkereséséhez és kiválasztásához. 
+<sup>1</sup> a Mv2 sorozatú virtuális gépek csak 2. generációsak, és támogatják a 2. generációs támogatott lemezképek egy részhalmazát. A Mv2 sorozat által támogatott lemezképek teljes listáját alább találja. Ha Linuxot használ, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](./generation-2.md) -ban című témakört, amely útmutatást nyújt a rendszerképek megkereséséhez és kiválasztásához. Ha Windows rendszert használ, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](./generation-2.md) -ban című témakört, amely útmutatást nyújt a képek megkereséséhez és kiválasztásához. 
 
 - Windows Server 2019 vagy újabb
 - SUSE Linux Enterprise Server 12 SP4 és újabb, vagy SUSE Linux Enterprise Server 15 SP1 és újabb verziók

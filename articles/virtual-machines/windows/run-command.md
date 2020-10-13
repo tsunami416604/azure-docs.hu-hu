@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 3393cb66735ffb881520a11bf9d1680c35d3d374
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c5e19a948298dead5ab3fc1183fb11b09acf455
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89424803"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976130"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Futtatás parancs használatával
 
@@ -43,7 +43,7 @@ A futtatási parancs használatakor a következő korlátozások érvényesek:
 * Nem ajánlott olyan parancsfájlt futtatni, amely a virtuálisgép-ügynök leállítását vagy frissítését eredményezi. Ez lehetővé teszi, hogy a bővítmény átmeneti állapotba kerüljön, ami időtúllépést okoz.
 
 > [!NOTE]
-> Ahhoz, hogy megfelelően működjön, futtassa a következő parancsot az Azure nyilvános IP-címeihez: kapcsolat (443-es port). Ha a bővítmény nem fér hozzá ezekhez a végpontokhoz, előfordulhat, hogy a parancsfájlok sikeresen futnak, de nem adják vissza az eredményeket. Ha blokkolja a forgalmat a virtuális gépen, a [címkék](../../virtual-network/security-overview.md#service-tags) használatával engedélyezheti az Azure nyilvános IP-címekre irányuló forgalmat a `AzureCloud` címkével.
+> Ahhoz, hogy megfelelően működjön, futtassa a következő parancsot az Azure nyilvános IP-címeihez: kapcsolat (443-es port). Ha a bővítmény nem fér hozzá ezekhez a végpontokhoz, előfordulhat, hogy a parancsfájlok sikeresen futnak, de nem adják vissza az eredményeket. Ha blokkolja a forgalmat a virtuális gépen, a [címkék](../../virtual-network/network-security-groups-overview.md#service-tags) használatával engedélyezheti az Azure nyilvános IP-címekre irányuló forgalmat a `AzureCloud` címkével.
 
 ## <a name="available-commands"></a>Elérhető parancsok
 

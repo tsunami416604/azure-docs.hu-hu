@@ -9,19 +9,20 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f6124227f5dd5c7735d300f71d5ae7d0c06b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852973"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975773"
 ---
 # <a name="client-application-registration"></a>Ügyfélalkalmazás regisztrálása
 Az előző oktatóanyagban üzembe helyezte és beállította az Azure API-t a FHIR-hez. Most, hogy már rendelkezik a FHIR-hez készült Azure API-val, regisztrálni fogjuk egy nyilvános ügyfélalkalmazás-alkalmazást. További részletekért és hibaelhárításért tekintse át a [nyilvános ügyfélalkalmazás teljes regisztrációját](register-public-azure-ad-client-app.md) ismertető útmutatót, de az alábbi oktatóanyag fő lépéseit ismertetjük.
 
 1. Navigáljon Azure Active Directory
 1. Válassza az **alkalmazás regisztrálása**  -->  **új regisztráció** lehetőséget
-1. Nevezze el az alkalmazást, és állítsa be az átirányítási URI-t a következőre https://www.getpostman.com/oauth2/callback
+1. Nevezze el az alkalmazást és se
+1. Válassza a **nyilvános ügyfél/natív (mobil & asztali)** lehetőséget, és állítsa be az átirányítási URI-t https://www.getpostman.com/oauth2/callback .
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Képernyőkép az alkalmazás regisztrálása panelről, valamint egy példa alkalmazás neve és átirányítási URL-címe.":::
 
@@ -55,7 +56,7 @@ Most, hogy beállította a megfelelő hitelesítést, állítsa be az API-enged�
 
 :::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Képernyőkép az alkalmazás regisztrálása panelről, valamint egy példa alkalmazás neve és átirányítási URL-címe.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már rendelkezik egy nyilvános ügyfélalkalmazás. A következő oktatóanyagban bemutatjuk a tesztelést és az alkalmazáshoz való hozzáférést a Poster használatával.
 
 >[!div class="nextstepaction"]

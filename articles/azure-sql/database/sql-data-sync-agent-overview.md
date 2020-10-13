@@ -15,7 +15,7 @@ ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858472"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL-adatszinkronizálás adatszinkronizálási ügynök
@@ -194,7 +194,7 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
   1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
   1. Válassza a **küldési ügynök kulcsa**lehetőséget.
   1. A rendelkezésre álló helyen illessze be a kulcsot a vágólapról.
-  1. Válassza az **OK** lehetőséget.
+  1. Kattintson az **OK** gombra.
   1. A program lezárása.
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> Az ügyfél ügynöke nem törölhető a portálról, ha a hozzá tartozó helyszíni adatbázis nem érhető el
@@ -315,7 +315,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -databaseName testdb -authentication windows -encryption true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
 

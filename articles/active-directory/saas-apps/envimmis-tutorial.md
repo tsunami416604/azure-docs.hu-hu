@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Azure Active Directory integráció a ENVI MMIS
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a ENVI 
 Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[ENVI MMIS egyszeri bejelentkezés konfigurálása](#configure-envi-mmis-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[ENVI MMIS-alapú egyszeri bejelentkezés konfigurálása](#configure-envi-mmis-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[ENVI-MMIS-teszt felhasználó létrehozása](#create-envi-mmis-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó ENVI-MMIS.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a ENVI MMIS-ügyfélszolgálati [csapatához](mailto:support@ioscorp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeri Sign-On beállítása az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-envi-mmis-single-sign-on"></a>ENVI-MMIS egyszeri bejelentkezés konfigurálása
+### <a name="configure-envi-mmis-single-sign-on"></a>ENVI-MMIS konfigurálása egyetlen Sign-On
 
 1. Egy másik böngészőablakban jelentkezzen be a ENVI MMIS-webhelyre rendszergazdaként.
 
@@ -160,7 +160,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
 7. A letöltött metaadat-fájl feltöltése után a mezők automatikusan feltöltve lesznek. Kattintson a **frissítés** gombra
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/envimmis-tutorial/configure6.png)
+    ![Egyetlen Sign-On mentés gomb konfigurálása](./media/envimmis-tutorial/configure6.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
