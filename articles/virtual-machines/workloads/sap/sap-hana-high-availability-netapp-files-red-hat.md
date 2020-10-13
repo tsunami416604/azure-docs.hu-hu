@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598080"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
@@ -80,13 +80,13 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 - [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
 - [SAP HANA rendszerreplikáció a pacemaker-fürtben.](https://access.redhat.com/articles/3004101)
 - Általános RHEL dokumentáció
-    - [Magas rendelkezésre állású bővítmény – áttekintés](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Magas rendelkezésre állású bővítmények felügyelete.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Magas rendelkezésre állású bővítmények leírása.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [SAP HANA rendszerreplikáció konfigurálása egy pacemaker-fürtön, ha a HANA-fájlrendszer NFS-megosztáson található.](https://access.redhat.com/solutions/5156571)
+    - [Magas rendelkezésre állású Add-On áttekintése](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Magas rendelkezésre állású Add-On felügyelet.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Magas rendelkezésre állású Add-On referenciája.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [SAP HANA rendszer-replikálás konfigurálása a Scale-Up egy pacemaker-fürtben, ha a HANA-fájlrendszerek NFS-megosztásokon találhatók](https://access.redhat.com/solutions/5156571)
 - Az Azure-specifikus RHEL dokumentációja:
     - [A magas rendelkezésre állású fürtök RHEL vonatkozó támogatási szabályzatok – Microsoft Azure Virtual Machines.](https://access.redhat.com/articles/3131341)
-    - [Red Hat Enterprise Linux 7,4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása Microsoft Azureon.](https://access.redhat.com/articles/3252491)
+    - [Red Hat Enterprise Linux 7,4 (és újabb) High-Availability fürt telepítése és konfigurálása Microsoft Azureon.](https://access.redhat.com/articles/3252491)
     - [A Microsoft Azure-ban való használathoz telepítse a SAP HANA Red Hat Enterprise Linux.](https://access.redhat.com/solutions/3193782)
     - [SAP HANA skálázási rendszer replikálása a pacemaker-fürtön, ha a HANA-fájlrendszerek NFS-megosztásokon találhatók](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával](https://www.netapp.com/us/media/tr-4746.pdf)
@@ -232,7 +232,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
         1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -245,7 +245,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
         1.  Válassza a TCP lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
     1.  Ezután hozza létre a terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például **Hana-LB**).
@@ -253,7 +253,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza a **hektár portok**lehetőséget.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
 
 > [!NOTE] 
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).
@@ -263,7 +263,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
         1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -271,12 +271,12 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza **a virtuális gép hozzáadása**lehetőséget.
         1.  Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
         1.  Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
     1.  SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**15).
@@ -284,7 +284,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
         1.  Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
     1.  SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -293,7 +293,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
         1.  Ismételje meg ezeket a lépéseket a 3.**03**. porton.
     1.  SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -302,13 +302,13 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Válassza az **OK** lehetőséget.
+        1.  Kattintson az **OK** gombra.
         1.  Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
 
 A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az [2388694](https://launchpad.support.sap.com/#/notes/2388694)-es SAP-megjegyzésben.
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek. Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek. Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>A Azure NetApp Files kötet csatlakoztatása
 
@@ -536,7 +536,7 @@ Ebben a példában mindegyik fürtcsomópont saját HANA NFS-fájlrendszerrel re
     ```
 
    > [!TIP]
-   > Ha a konfiguráció fájlrendszereket is tartalmaz, a csoporton kívül vagy a-ben, `hanadb1_nfs` `hanadb2_nfs` akkor adja meg a `sequential=false` beállítást, hogy a fájlrendszerek között ne legyenek rendezési függőségek. Az összes fájlrendszert előbb el kell indítani `hana_nfs1_active` , de nem kell egymáshoz viszonyított sorrendben elkezdeniük. További részletek: [Hogyan SAP HANA rendszerreplikáció konfigurálása a pacemaker-fürtön, ha a HANA-fájlrendszer NFS-megosztásokon van](https://access.redhat.com/solutions/5156571)
+   > Ha a konfiguráció fájlrendszereket is tartalmaz, a csoporton kívül vagy a-ben, `hanadb1_nfs` `hanadb2_nfs` akkor adja meg a `sequential=false` beállítást, hogy a fájlrendszerek között ne legyenek rendezési függőségek. Az összes fájlrendszert előbb el kell indítani `hana_nfs1_active` , de nem kell egymáshoz viszonyított sorrendben elkezdeniük. További részletek: [Hogyan SAP HANA rendszerreplikáció konfigurálása a pacemaker-fürt Scale-Upjában, ha a HANA-fájlrendszer NFS-megosztásokon van](https://access.redhat.com/solutions/5156571)
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA fürterőforrás konfigurálása
 

@@ -10,10 +10,10 @@ ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894019"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Network for Azure Stack Edge Pro konfigurálása GPU-val
@@ -154,7 +154,7 @@ Ez egy opcionális konfiguráció.
 2. A beállítások alkalmazása után kattintson a **Tovább gombra: eszköz**.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

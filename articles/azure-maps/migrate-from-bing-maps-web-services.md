@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: webszolgáltatások migrálása a Bing Maps szolgáltatásból | Microsoft Azure térképek'
-description: Webszolgáltatások migrálása a Bing Mapsből Microsoft Azure Maps-be.
+description: Útmutató a webszolgáltatások Bing Maps rendszerből Microsoft Azure Maps-be történő áttelepítéséhez.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 462befd505333902bd4560f8f1dafeecceffd27f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741669"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873778"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>Webszolgáltatás migrálása a Bing Mapsből
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Oktatóanyag – webszolgáltatás migrálása a Bing Mapsből
 
 Az Azure és a Bing Maps is hozzáférést biztosít a térbeli API-khoz a REST-alapú webszolgáltatásokon keresztül. A platformok API-felületei hasonló funkciókat hajtanak végre, de eltérő elnevezési konvenciókat és válasz-objektumokat használnak.
 
@@ -194,7 +194,7 @@ A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps API-param
 |------------------------------------------------------------|---------------------------------------------------|
 | `avoid`                                                    | `avoid`                                           |
 | `dateTime` (`dt`)                                          | `departAt` vagy `arriveAt`                          |
-| `distanceBeforeFirstTurn` (`dbft`)                         | N/A                                               |
+| `distanceBeforeFirstTurn` (`dbft`)                         | N.A.                                               |
 | `distanceUnit` (`du`)                                      | N/A – Azure Maps csak a metrikus rendszer használatát használja.     |
 | `heading` (`hd`)                                           | `vehicleHeading`                                  |
 | `maxSolutions` (`maxSolns`)                                | `maxAlternatives`, `alternativeType` , `minDeviationDistance` és `minDeviationTime`  |
@@ -203,7 +203,7 @@ A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps API-param
 | `routeAttributes` (`ra`)                                   | `instructionsType`                                |
 | `routePathOutput` (`rpo`)                                  | `routeRepresentation`                             |
 | `timeType` (`tt`)                                          | `departAt` vagy `arriveAt`                          |
-| `tolerances` (`tl`)                                        | N/A                                               |
+| `tolerances` (`tl`)                                        | N.A.                                               |
 | `travelMode`                                               | `travelMode`                                      |
 | `waypoint.n` ( `wp.n` ) vagy `viaWaypoint.n` (`vwp.n`)         | `query` – Koordináták formátumban `lat0,lon0:lat1,lon1….`   |
 | `key`                                                      | `subscription-key` – Lásd még a [hitelesítés Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) a dokumentációt. |
@@ -221,12 +221,12 @@ A Azure Maps Routing API a tehergépkocsi-útválasztást is támogatja ugyanazo
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **N/A**                                    |
+| `vehicleTrailers` (`vt`)                 | **N.A.**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **N/A**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **N/A**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **N/A**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **N/A**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **N.A.**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **N.A.**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **N.A.**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **N.A.**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -287,12 +287,12 @@ A Azure Maps Routing API a logikai útvonalak kiszámításának biztosítása �
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **N/A**                                    |
+| `vehicleTrailers` (`vt`)                | **N.A.**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **N/A**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **N/A**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **N/A**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **N/A**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **N.A.**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **N.A.**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **N.A.**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **N.A.**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -327,7 +327,7 @@ A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps API-param
 | `heading`                | N/A – A utcai nem támogatott.                |
 | `imagerySet`             | `layer` és `style` – lásd a [Térkép támogatott stílusainak](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) dokumentációját.   |
 | `mapArea` (`ma`)         | `bbox`                                         |
-| `mapLayer` (`ml`)        | N/A                                            |
+| `mapLayer` (`ml`)        | N.A.                                            |
 | `mapSize` (`ms`)         | `width` és `height` – akár 8192x8192 is lehet. |
 | `declutterPins` (`dcl`)  | N.A.                                            |
 | `dpi`                    | N.A.                                            |
@@ -339,7 +339,7 @@ A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps API-param
 | `query`                  | N/A – közép vagy határolókeret mezőt kell használni.     |
 | `highlightEntity` (`he`) | N.A.                                            |
 | `style`                  | N.A.                                            |
-| útvonal paraméterei         | N/A                                            |
+| útvonal paraméterei         | N.A.                                            |
 | `key`                    | `subscription-key` – Lásd még a [hitelesítés Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) a dokumentációt. |
 | `culture` (`c`)          | `language` – Lásd a [támogatott nyelvek](https://docs.microsoft.com/azure/azure-maps/supported-languages) dokumentációját.   |
 | `userRegion` (`ur`)      | `view` – Lásd a [támogatott nézetek](https://aka.ms/AzureMapsLocalizationViews) dokumentációját. |
@@ -484,7 +484,7 @@ A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps API-param
 | `endTime`               | `arriveAt`                                                  |
 | `startTime`             | `departAt`                                                  |
 | `travelMode`            | `travelMode`                                                |
-| `resolution`            | N/A                                                         |
+| `resolution`            | N.A.                                                         |
 | `distanceUnit`          | N/A – minden távolság méterben.                              |
 | `timeUnit`              | N/A – minden alkalommal másodpercben.                                 |
 | `key`                   | `subscription-key` – Lásd még a [hitelesítés Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) a dokumentációt. |
@@ -565,7 +565,7 @@ A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps Traffic A
 | Bing Maps API-paraméter  | Hasonló Azure Maps API-paraméter   |
 |--------------------------|---------------------------------------|
 | `mapArea`                | `boundingBox` és `boundingZoom`      |
-| `includeLocationCodes`   | N/A                                   |
+| `includeLocationCodes`   | N.A.                                   |
 | `severity` (`s`)         | N/A – minden visszaadott adat               |
 | `type` (`t`)             | N/A – minden visszaadott adat               |
 | `key`                    | `subscription-key` – Lásd még a [hitelesítés Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) a dokumentációt. |
@@ -662,7 +662,7 @@ Nyílt forráskódú ügyféloldali kódtárak más programozási nyelvekhez;
 
 -   .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps REST Services szolgáltatásról.
 

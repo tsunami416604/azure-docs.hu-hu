@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705367"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Az Azure AD-vel gyorsan reagálhat a biztonságos identitásokra
@@ -38,7 +38,7 @@ Ez az ellenőrzőlista segítséget nyújt a kritikus fontosságú ajánlott mű
 
 Ez az útmutató azt feltételezi, hogy a felhőben csak a hibrid identitások lettek létrehozva az Azure AD-ben. Az azonosító típus kiválasztásával kapcsolatos segítségért tekintse meg a [megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez a ellenőrzőlista egy biztonságos és biztonságos identitás-infrastruktúrára koncentrál, amely lehetővé teszi a felhasználók számára a távoli munkát. Az identitás védelme csak a biztonsági történet részét képezi, az adatok, az alkalmazások és az eszközök védelmét is figyelembe kell venni.
 
@@ -50,7 +50,7 @@ Számos javaslattal rendelkezik, amelyekkel az ingyenes Azure AD, az Office 365 
 - Microsoft 365 (üzleti alapszintű, vállalati alkalmazások, Business Standard, Business Premium, a1)
 - Ingyenes Azure AD (az Azure, a Dynamics 365, az Intune és a Power platform részeként)
 
-| Javasolt művelet | Részlet |
+| Javasolt művelet | Részletek |
 | --- | --- |
 | [Biztonsági alapértékek engedélyezése](concept-fundamentals-security-defaults.md) | Az összes felhasználói identitás és alkalmazás védetté tétele az MFA engedélyezésével és a régi hitelesítés blokkolásával |
 | [Jelszó-kivonat szinkronizálásának engedélyezése](../hybrid/how-to-connect-password-hash-synchronization.md) (hibrid identitások használata esetén) | Redundancia biztosítása a hitelesítéshez és a biztonság növelése (beleértve az intelligens zárolást, az IP-zárolást és a kiszivárgott hitelesítő adatok felderítésének lehetőségét) |
@@ -73,7 +73,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 - Enterprise Mobility + Security (EMS E3)
 - Microsoft 365 (M365 E3, a3, F1, F3)
 
-| Javasolt művelet | Részlet |
+| Javasolt művelet | Részletek |
 | --- | --- |
 | [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
@@ -103,7 +103,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 - Enterprise Mobility + Security (EMS E5)
 - Microsoft 365 (M365 E5, a5)
 
-| Javasolt művelet | Részlet |
+| Javasolt művelet | Részletek |
 | --- | --- |
 | [Az Azure MFA és a SSPR együttes regisztrációs felületének engedélyezése a felhasználói regisztráció egyszerűsítése érdekében](../authentication/howto-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. |
 | [A szervezet MFA-beállításainak konfigurálása](../authentication/howto-mfa-getstarted.md) | Gondoskodjon arról, hogy a fiókok védve legyenek a többtényezős hitelesítéssel |
@@ -128,7 +128,7 @@ A következő táblázat célja, hogy kiemelje a következő licenc-előfizetés
 | [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. |
 | [Privileged Identity Management engedélyezése](../privileged-identity-management/pim-configure.md) | Lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés felügyeletét, vezérlését és figyelését, valamint a rendszergazdák hozzáférését csak szükség esetén és jóváhagyással |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD egyes funkcióinak részletes üzembe helyezési útmutatóját az [Azure ad Project üzembehelyezési csomagjaiban](active-directory-deployment-plans.md)tekintheti meg.
 

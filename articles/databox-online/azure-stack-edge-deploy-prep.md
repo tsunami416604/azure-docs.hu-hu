@@ -10,10 +10,10 @@ ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894127"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro üzembe helyezésére  
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -163,7 +163,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > * Az aktiválási kulcs három nappal a létrehozása után lejár.
 > * Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte Azure Stack Edge Pro-témaköröket, például a következőket:
 

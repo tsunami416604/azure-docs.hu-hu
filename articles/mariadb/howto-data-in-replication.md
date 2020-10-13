@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
 ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598199"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
@@ -78,7 +78,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
       ```bash
       ping <output of step 2b>
       ``` 
-      Például: 
+      Példa: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -312,5 +312,5 @@ A replikálási hibák kihagyásához és a replikáció engedélyezéséhez has
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

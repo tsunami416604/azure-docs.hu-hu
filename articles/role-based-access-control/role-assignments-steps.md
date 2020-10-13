@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604318"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadásának lépései
@@ -62,7 +62,7 @@ A *hatókör* azon erőforrások készlete, amelyekre a hozzáférés vonatkozik
 
 ![Szerepkör-hozzárendelés hatóköre](./media/shared/rbac-scope.png)
 
-Amikor fölérendelt hatókörhöz rendel szerepkört, ezek az engedélyek a gyermek hatókörökre lesznek örökölve. Például:
+Amikor fölérendelt hatókörhöz rendel szerepkört, ezek az engedélyek a gyermek hatókörökre lesznek örökölve. Példa:
 
 - Ha az [olvasó](built-in-roles.md#reader) szerepkört a felügyeleti csoport hatókörében lévő felhasználóhoz rendeli, a felhasználó a felügyeleti csoportban lévő összes előfizetésben is elolvashatja a mindent.
 - Ha a [Számlázási olvasó](built-in-roles.md#billing-reader) szerepkört egy csoporthoz rendeli az előfizetés hatókörében, akkor a csoport tagjai elolvashatják az előfizetésben lévő összes erőforráscsoport és erőforrás számlázási adatait.
@@ -86,10 +86,10 @@ Ha ismeri a rendszerbiztonsági tag, a szerepkör és a hatókört, hozzárendel
 A szerepkör-hozzárendelések hozzáadásának részletes lépéseit az alábbi cikkekben tekintheti meg.
 
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](role-assignments-powershell.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](role-assignments-cli.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](role-assignments-powershell.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](quickstart-assign-role-user-portal.md)

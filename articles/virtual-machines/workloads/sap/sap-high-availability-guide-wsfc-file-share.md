@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361330"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>SAP ASCS-/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával
@@ -133,7 +133,7 @@ A kibővített fájlmegosztás használatához a rendszernek meg kell felelnie a
 * Javasoljuk, hogy a köteteket rugalmas fájlrendszer (ReFS) használatával formázza.
     * További információ: [SAP-megjegyzés 1869038 – SAP-támogatás a ReFs fájlrendszerhez][1869038] , valamint a kötetek megtervezése című cikk [fájlrendszerének kiválasztása][planning-volumes-s2d-choosing-filesystem] közvetlen tárolóhelyek.
     * Ügyeljen arra, hogy a [Microsoft KB4025334 összegző frissítését][kb4025334]telepítse.
-* A DS-vagy DSv2-sorozatú Azure-beli virtuálisgép-méreteket is használhatja.
+* DS-Series vagy DSv2-Series Azure-beli virtuálisgép-méreteket is használhat.
 * A virtuális gépek közötti megfelelő hálózati teljesítmény érdekében, amely Közvetlen tárolóhelyek lemezes szinkronizáláshoz szükséges, használjon olyan virtuálisgép-típust, amely legalább egy "magas" hálózati sávszélességgel rendelkezik.
     További információ: a [DSv2 sorozat][dv2-series] és a [DS-sorozat][ds-series] specifikációja.
 * Javasoljuk, hogy foglaljon le néhány le nem foglalt kapacitást a tárolóban. Ha a tárolóhelyen nem foglalt kapacitást ad meg, a kötetek lemezterületet biztosítanak a "helyben" javításhoz, ha a meghajtó meghibásodik. Ez javítja az adatbiztonságot és a teljesítményt.  További információ: a [kötet méretének kiválasztása][choosing-the-size-of-volumes-s2d].

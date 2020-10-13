@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
 ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598099"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
@@ -220,6 +220,6 @@ split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatfolyamatok megismerése az [adatfolyamatok áttekintése című cikkben](concepts-data-flow-overview.md) leírtak szerint

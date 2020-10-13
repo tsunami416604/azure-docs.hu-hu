@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923398"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Az `$filter` `$orderby` `$select` Azure Cognitive Search OData nyelvének áttekintése
@@ -46,7 +46,7 @@ A OData-kifejezések egyszerűen és nagyon összetettek, de minden közös elem
 
 ## <a name="field-paths"></a>Mező elérési útjai
 
-A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a mezők elérési útjának nyelvtanát határozzák meg.
+A következő EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a mezők elérési útjának nyelvtanát határozza meg.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -95,7 +95,7 @@ A mező elérési útjait az [Azure Cognitive Search REST API](/rest/api/searchs
 
 | API | Paraméter neve | Korlátozások |
 | --- | --- | --- |
-| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincsenek |
+| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincs |
 | Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
 | Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
 | [Search](/rest/api/searchservice/search-documents) | `search` Ha `queryType` a `full` | Csak **kereshető** mezőkre hivatkozhat |
@@ -135,7 +135,7 @@ Például egy formázatlan aposztróftal (például "Alice 's Car") jelölt kife
 
 ### <a name="constants-syntax"></a>Konstansok szintaxisa
 
-A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a fenti táblázatban látható állandók többségének nyelvtanát határozza meg. A Geo-térbeli típusok nyelvtana az [Azure Cognitive Search OData geo-térbeli függvények területén](search-query-odata-geo-spatial-functions.md)érhető el.
+A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a fenti táblázatban látható állandók többségének nyelvtanát határozza meg. A Geo-térbeli típusok nyelvtana az [Azure Cognitive Search OData geo-térbeli függvények területén](search-query-odata-geo-spatial-functions.md)érhető el.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ A mezők elérési útjai és állandói a OData egyik legalapvetőbb részét k
 
 Azonban a legtöbb esetben összetettebb kifejezésekre lesz szüksége, amelyek egynél több mezőre és állandóra hivatkoznak. Ezek a kifejezések a paramétertől függően különböző módokon vannak felépítve.
 
-A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$Filter**, **$OrderBy**és **$Select** paraméterek nyelvtanát határozza meg. Ezek az egyszerűbb kifejezésekből épülnek fel, amelyek a mező elérési útjaira és állandóra vonatkoznak:
+A következő EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$filter**, a **$OrderBy**és a **$Select** paraméterek nyelvtanát határozza meg. Ezek az egyszerűbb kifejezésekből épülnek fel, amelyek a mező elérési útjaira és állandóra vonatkoznak:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

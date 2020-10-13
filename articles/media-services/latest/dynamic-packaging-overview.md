@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
 ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598276"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
@@ -329,6 +329,6 @@ Tekintse meg [Azure Media Services közösségét](media-services-community.md) 
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

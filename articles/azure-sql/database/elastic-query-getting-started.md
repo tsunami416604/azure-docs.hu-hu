@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443316"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentés
@@ -133,7 +133,7 @@ Az **ügyfelek** tábla összes sora, amely különböző szegmensekben van tár
 
 Mostantól használhatja az Excel hatékony adatvizualizációs funkcióit. A kapcsolati sztringet használhatja a kiszolgáló nevével, az adatbázis nevével és a hitelesítő adatokkal a BI-és adatintegrációs eszközök a rugalmas lekérdezési adatbázishoz való csatlakoztatásához. Győződjön meg arról, hogy a SQL Server támogatott adatforrásként az eszköz számára. A rugalmas lekérdezési adatbázist és a külső táblákat ugyanúgy tekintheti meg, mint bármely más SQL Server adatbázishoz, és SQL Server táblákhoz, amelyeket az eszközhöz szeretne csatlakozni.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 A Elastic Database lekérdezési funkció használata nem díjköteles.
 
 A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/).

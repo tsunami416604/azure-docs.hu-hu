@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894582"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
@@ -86,7 +86,7 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 A biztonsági szabályzatokat a Azure Policy-portálon, REST API vagy a Windows PowerShell használatával szerkesztheti.
 
-A Security Center szerepköralapú Access Control (RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználók,-csoportok és-szolgáltatások számára. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő*vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
+A Security Center Role-Based Access Controlt (RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználókhoz,-csoportokhoz és-szolgáltatásokhoz. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő*vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
 
 - **Biztonsági olvasó**: jogosult a Security Center elemek, például javaslatok, riasztások, szabályzatok és állapotok megtekintésére. Nem lehet módosítani.
 - **Biztonsági rendszergazda**: a *biztonsági olvasóval*megegyező megtekintési jogosultsággal rendelkezik. A a biztonsági házirend frissítése és a riasztások elvetése is megtehető.

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269556"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése
@@ -71,7 +71,7 @@ A többtényezős hitelesítés megkövetelése legalább a rendszergazdák szá
    * **Felhasználónév** - `secure-ws-admin@identityitpro.com`
    * **Címtárbeli szerepkör**  -  **Korlátozott rendszergazda** , és válassza ki az **Intune rendszergazdai** szerepkört.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Ezután két csoportot hoz létre: munkaállomás-felhasználók és munkaállomás-eszközök.
 
@@ -86,14 +86,14 @@ A Azure Portal keresse meg **Azure Active Directory**  >  **csoportok**  >  **ú
 
 1. Adja hozzá a biztonságos munkaállomás rendszergazda felhasználóját: `secure-ws-admin@identityitpro.com`
 1. Hozzáadhat más felhasználókat is, akik a biztonságos munkaállomásokat kezelik.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. A munkaállomás-eszközök csoportban adja meg a következőt:
 
    * **Csoport típusa** – biztonság
    * **Csoport neve** – biztonságos munkaállomások
    * **Tagság típusa** – hozzárendelve
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD-eszköz konfigurációja
 
@@ -200,7 +200,7 @@ Az Azure Portalon:
    * Késleltetett újraindítási emlékeztető (nap) – **3**
    * Függőben lévő újraindítások határidejének megadása (nap) – **3**
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. A **hozzárendelések** lapon adja hozzá a **biztonságos munkaállomások** csoportot.
 
 Windows Update házirendekkel kapcsolatos további információkért lásd: [házirend CSP-Update](/windows/client-management/mdm/policy-csp-update).
@@ -251,7 +251,7 @@ Futtassa az Intune-adatexportálási parancsfájlt `DeviceConfiguration_Export.p
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>További konfigurációk és megerősítés a megfontoláshoz
 
-Az itt található útmutatást követve biztonságos munkaállomást helyezett üzembe. Érdemes azonban további vezérlőket is figyelembe venni. Például:
+Az itt található útmutatást követve biztonságos munkaállomást helyezett üzembe. Érdemes azonban további vezérlőket is figyelembe venni. Példa:
 
 * másodlagos böngészőkhöz való hozzáférés korlátozása
 * kimenő HTTP engedélyezése
@@ -290,7 +290,7 @@ Bizonyos helyzetekben a biztonságos munkaállomáson olyan alkalmazások szüks
 1. A **Azure Portal** tallózással keresse meg **Microsoft Intune**  >  **ügyfélalkalmazások**  >  **alkalmazások**  >  **Hozzáadás**lehetőséget.
 1. Az **alkalmazás típusa** **területen válassza az üzletági lehetőséget**.
 1. Az **alkalmazáscsomag fájl**területen válassza ki a `GoogleChromeStandaloneEnterprise64.msi` fájlt a kibontott helyről, és kattintson az **OK gombra**.
-1. Az **alkalmazásadatok területen adja**meg a leírást és a közzétevőt. Válassza az **OK** lehetőséget.
+1. Az **alkalmazásadatok területen adja**meg a leírást és a közzétevőt. Kattintson az **OK** gombra.
 1. Válassza a **Hozzáadás** lehetőséget.
 1. A **hozzárendelések** lapon válassza a **rendelkezésre álló lehetőséget a regisztrált eszközökhöz** a **hozzárendelés típusa**alatt.
 1. A **befoglalt csoportok**területen adja hozzá a **biztonságos munkaállomások** csoportot.
@@ -341,8 +341,8 @@ A Microsoft Scripting Center [SetDesktopBackground.ps1](https://gallery.technet.
 1. Adja meg a parancsfájl **nevét** , és adja meg a **parancsfájl helyét**.
 1. Válassza a **Konfigurálás** lehetőséget.
    1. **A parancsfájl futtatásának beállítása a bejelentkezett hitelesítő adatokkal** **Igen**értékre.
-   1. Válassza az **OK** lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget.
+   1. Kattintson az **OK** gombra.
+1. Kattintson a **Létrehozás** gombra.
 1. Válassza a **hozzárendelések**  >  **csoportok lehetőséget**.
    1. Adja hozzá a biztonsági csoport **biztonságos munkaállomásait**.
    1. Kattintson a **Mentés** gombra.
@@ -428,8 +428,8 @@ Az MMA-ügynök üzembe helyezése az Intune PowerShell-parancsfájllal
 1. Adja meg a parancsfájl **nevét** , és adja meg a **parancsfájl helyét**.
 1. Válassza a **Konfigurálás** lehetőséget.
    1. **A parancsfájl futtatásának beállítása a bejelentkezett hitelesítő adatokkal** **Igen**értékre.
-   1. Válassza az **OK** lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget.
+   1. Kattintson az **OK** gombra.
+1. Kattintson a **Létrehozás** gombra.
 1. Válassza a **hozzárendelések**  >  **csoportok lehetőséget**.
    1. Adja hozzá a biztonsági csoport **biztonságos munkaállomásait**.
    1. Kattintson a **Mentés** gombra.
@@ -458,7 +458,7 @@ Az alkalmazás naplózása a kiválasztott Log Analytics munkaterületen lesz el
 * [Végpontok észlelésének és válaszának](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response) kezelése
 * Profilok figyelése az [Intune-profilok figyelésével](/intune/device-profile-monitor).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Microsoft Intuneról](/intune/index).
 * Az [Azure ad](../index.yml)megismerése.

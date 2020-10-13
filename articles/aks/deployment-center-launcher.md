@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360837"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Az Azure Kubernetes üzembe helyezési központja
@@ -137,6 +137,6 @@ A Deployment Center automatikusan létrehozza és konfigurálja az Azure DevOps-
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a DELETE funkciót a DevOps Projects irányítópulton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Másik lehetőségként ezt a CI/CD modellt is használhatja sablonként a többi folyamathoz.

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893801"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
@@ -36,7 +36,7 @@ A megfelelő funkciók kiválasztásával növelheti a besorolás pontosságát 
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>Szolgáltatás kiválasztási mérőszámának kiválasztása
 
-A szűrésen alapuló funkció kiválasztási modulja számos mérőszámot biztosít az egyes oszlopokban található információ értékének értékeléséhez. Ez a szakasz az egyes mérőszámok általános leírását és alkalmazási módját ismerteti. További követelményeket is megtalálhat az egyes mérőszámok használatához a [technikai megjegyzésekben](#technical-notes) és az egyes modulok konfigurálásához szükséges [utasításokban](#how-to-configure-filter-based-feature-selection) .
+Az Filter-Based funkció kiválasztási modulja számos mérőszámot biztosít az egyes oszlopokban található információ értékének értékeléséhez. Ez a szakasz az egyes mérőszámok általános leírását és alkalmazási módját ismerteti. További követelményeket is megtalálhat az egyes mérőszámok használatához a [technikai megjegyzésekben](#technical-notes) és az egyes modulok konfigurálásához szükséges [utasításokban](#how-to-configure-filter-based-feature-selection) .
 
 -   **Pearson korreláció**  
 
@@ -52,11 +52,11 @@ A szűrésen alapuló funkció kiválasztási modulja számos mérőszámot bizt
 > [!TIP]
 > Ha az egyéni funkciók kiválasztási módszeréhez másik lehetőségre van szüksége, használja az [R-parancsfájl végrehajtása](execute-r-script.md) modult. 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>A szűrésen alapuló szolgáltatás kijelölésének konfigurálása
+## <a name="how-to-configure-filter-based-feature-selection"></a>Filter-Based szolgáltatás kijelölésének konfigurálása
 
 A standard statisztikai mérőszámot kell választania. A modul kiszámítja az egyes oszlopok közötti korrelációt: a Label oszlop és a szolgáltatás oszlopát.
 
-1.  Adja hozzá a szűrő alapú szolgáltatás kiválasztási modulját a folyamathoz. A tervezőben a **funkció kiválasztása** kategóriában található.
+1.  Adja hozzá a Filter-Based funkció kiválasztási modulját a folyamathoz. A tervezőben a **funkció kiválasztása** kategóriában található.
 
 2. Csatlakoztasson olyan bemeneti adatkészletet, amely legalább két olyan oszlopot tartalmaz, amelyek lehetséges funkciók.  
 
@@ -68,7 +68,7 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
     > Ha tudja, hogy egyes oszlopok helytelen funkciókat végeznek, akkor eltávolíthatja őket az oszlop kiválasztásával. A [metaadatok szerkesztése](edit-metadata.md) modullal is megjelölheti azokat **kategorikusként**. 
 3.  A **szolgáltatás pontozási módszere**esetében válassza az alábbi, a pontszámok kiszámításakor használandó statisztikai módszerek egyikét.  
 
-    | Metódus              | Követelmények                             |
+    | Módszer              | Követelmények                             |
     | ------------------- | ---------------------------------------- |
     | Pearson korreláció | A címke lehet szöveg vagy numerikus. A funkcióknak numerikusnak kell lenniük. |
     Chi négyzetes| A címkék és a szolgáltatások lehetnek szöveg vagy numerikus elemek. Használja ezt a módszert a számítási funkció fontosságához két kategorikus oszlop esetében.|

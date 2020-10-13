@@ -4,10 +4,10 @@ description: A Media Graph használatával egyszerűen kinyerheti az elemzéseke
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893043"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Élő videó elemzése rögzítés nélkül
@@ -33,14 +33,14 @@ Az alábbi ábrán egy [RTSP-forrás](media-graph-concept.md#rtsp-source) csomó
 Az alábbi ábra az élő videó streamek elemzését teszi lehetővé egy külön modulban csomagolt egyéni vizuális modell használatával. Az ilyen adathordozó-gráf gráf-topológiájának JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)található. [Itt](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis) néhány példát láthat a modellek becsomagolásával IoT Edge modulokra, amelyek egy következtetési szolgáltatásként futnak.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="Élő videó-elemzés egy külső viszonyítási modul alapján":::
+> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
 
 Ebben az adathordozó-gráfban a frame rate Filter processzor csomópont csökkenti a beérkező élő videó adatfolyamának képkockáját, mielőtt elküldené azt egy [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontjára, amely képkockákat (JPEG, BMP vagy PNG formátumban) küld a REST-alapú külső következtetési szolgáltatásnak. A külső következtetési szolgáltatásból származó eredményeket a HTTP-bővítmény csomópont kérdezi le, és a IoT Edge hubhoz IoT Hub Message mosogató csomóponton keresztül továbbítja. Az ilyen típusú adathordozó-diagramok számos különböző forgatókönyvhöz használhatók, például a gépjárművek idősorozat-eloszlásának megismerése, a kereskedelmi tárolóban lévő fogyasztói forgalmi minta megértése és így tovább.
 
 Ennek a példának a továbbfejlesztése egy mozgásérzékelős processzor használata a frame rate szűrő processzor-csomópontja előtt. Ez csökkenti a következtetést, mivel a rendszer csak akkor használja a szolgáltatás terhelését, ha a videóban mozgási tevékenység van használatban.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Élő videó-elemzés az észlelt képkockák alapján, külső viszonyítási modul használatával":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
 
 ## <a name="next-steps"></a>Következő lépések
 

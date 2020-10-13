@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919505"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása IIS-webalkalmazásokhoz
@@ -40,7 +40,7 @@ Az Azure MFA-kiszolgáló IIS-hitelesítés szakaszában engedélyezheti és kon
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
 2. Kattintson az **Űrlapalapú fülre**.
 3. Kattintson a **Hozzáadás** parancsra.
-4. A Felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-címet (például `https://localhost/contoso/auth/login.aspx` ) az űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, majd kattintson **az OK**gombra.
+4. A Felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-címet (például `https://localhost/contoso/auth/login.aspx` ) az Form-Based webhely automatikus konfigurálása párbeszédpanelen, majd kattintson **az OK**gombra.
 5. Jelölje be a **Multi-Factor Authentication felhasználói egyeztetés megkövetelése** jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a többtényezős hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 6. Ha az oldal változóit nem lehet automatikusan észlelni, kattintson a **Megadás manuálisan** lehetőségre az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen.
 7. Az Űrlapalapú webhely hozzáadása párbeszédpanelen adja meg a bejelentkezési oldal URL-címét a Küldési URL-cím mezőben, majd adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
@@ -74,7 +74,7 @@ Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhe
 
 Miután konfigurálta az űrlapalapú hitelesítés vagy a HTTP-hitelesítés URL-címeit és beállításait, válassza ki a helyeket, ahol az Azure Multi-Factor Authentication IIS beépülő modulokat betölteni és engedélyezni szeretné az IIS-ben. Kövesse az alábbi eljárást:
 
-1. Ha az IIS 6-os verzióját futtatja, kattintson az **ISAPI** fülre. Válassza ki azt a webhelyet, amelyen a webalkalmazás fut (például alapértelmezett webhely), hogy engedélyezze az Azure multi-Factor Authentication ISAPI-szűrő beépülő modult az adott webhelyhez.
+1. Ha az IIS 6-os verzióját futtatja, kattintson az **ISAPI** fülre. Válassza ki azt a webhelyet, amelyen a webalkalmazás fut (például alapértelmezett webhely) az Azure Multi-Factor Authentication ISAPI-szűrő beépülő modul engedélyezéséhez az adott helyen.
 2. Ha az IIS 7-es vagy újabb verzióját futtatja, kattintson a **natív modul** fülre. Válassza ki azokat a kiszolgálókat, webhelyeket vagy alkalmazásokat, amelyeknek engedélyezni szeretné az IIS beépülő modult a kívánt szinteken.
 3. Kattintson az **IIS-hitelesítés engedélyezése** jelölőnégyzetre a képernyő tetején. Az Azure Multi-Factor Authentication mostantól biztosítja a kiválasztott IIS-alkalmazás védelmét. Győződjön meg arról, hogy importálta a felhasználókat a kiszolgálóra.
 
