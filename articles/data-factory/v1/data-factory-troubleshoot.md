@@ -14,10 +14,10 @@ ms.reviewer: maghan
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195897"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
@@ -47,7 +47,7 @@ Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgál
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probléma: jogosulatlan hiba Data Factory parancsmag futtatásakor
 Valószínűleg nem a megfelelő Azure-fiókot vagy előfizetést használja az Azure PowerShell futtatásához. Az alábbi parancsmagokkal válassza ki a megfelelő Azure-fiókot és előfizetést az Azure PowerShell használatához.
 
-1. Kapcsolat – AzAccount – a megfelelő felhasználói azonosító és jelszó használata
+1. Connect-AzAccount – a megfelelő felhasználói azonosító és jelszó használata
 2. Get-AzSubscription – megtekintheti a fiókhoz tartozó összes előfizetést.
 3. Select-AzSubscription &lt; előfizetés neve &gt; – válassza ki a megfelelő előfizetést. Használja ugyanazt a szolgáltatást, amellyel létrehoz egy adatgyárat a Azure Portal.
 
@@ -56,7 +56,7 @@ Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy e
 
 * Használja az Internet Explorert vagy a Microsoft ClickOnce-kompatibilis webböngészőt.
 
-    Amennyiben Chrome böngészőt használ, keresse fel a [Chrome webáruházát](https://chrome.google.com/webstore/), keressen rá a „ClickOnce” kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, majd telepítse azt.
+    Ha a Chrome-ot használja, lépjen a [Chrome webáruházba](https://chrome.google.com/webstore/), keressen a "ClickOnce" kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, és telepítse.
 
     Tegye ugyanezt a Firefox esetében is (telepítse a bővítményt). Kattintson az eszköztár Menü megnyitása gombjára (három vízszintes csík a jobb felső sarokban). Kattintson a Kiegészítők menüpontra, keressen a „ClickOnce” kulcsszóra, jelöljön ki egy ClickOnce-bővítmény, és telepítse azt.
 * A portálon ugyanezen a panelen megjelenik a **manuális telepítési** hivatkozás. Ezt a módszert használja a telepítési fájl letöltésére és manuális futtatására. Miután a telepítés sikeres volt, megjelenik az adatkezelés átjáró konfigurációja párbeszédpanel. Másolja ki a **kulcsot** a Portál képernyőről, és a konfigurációkezelőben ezt használva regisztrálja az átjárót a szolgáltatásban.  

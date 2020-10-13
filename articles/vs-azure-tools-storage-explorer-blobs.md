@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033614"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése Storage Explorer
@@ -205,7 +205,7 @@ A következő lépések bemutatják, hogyan kezelhetők a Blobok (és mappák) a
      1. Válassza ki a letölteni kívánt blobot.
      2. A fő ablaktábla eszköztárán válassza a **Letöltés** elemet.
      3. A **letöltött blob mentési** helyének megadása párbeszédpanelen adja meg azt a helyet, ahol a blobot le szeretné tölteni, majd adja meg a kívánt nevet.  
-     4. Válassza a **Mentés** lehetőséget.
+     4. Kattintson a **Mentés** gombra.
    * **BLOB megnyitása a helyi számítógépen**
 
      1. Válassza ki a megnyitni kívánt blobot.
@@ -223,7 +223,7 @@ A következő lépések bemutatják, hogyan kezelhetők a Blobok (és mappák) a
      2. A fő ablaktábla eszköztárán válassza a **Törlés** parancsot.
      3. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
 * Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).

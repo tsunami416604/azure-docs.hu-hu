@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371524"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
@@ -153,7 +153,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
 
     ![kapcsolódás a kiszolgálóhoz](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Válassza a **Kapcsolódás** lehetőséget. Megnyílik az Object Explorer ablak az SSMS-ben.
+3. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben.
 
 4. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **mySampleDatabase** csomópontot az új adatbázisban található objektumok megtekintéséhez.
 
@@ -204,7 +204,7 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
 2. Gépelje be a teljes kiszolgálónevet, és adja meg a **LoaderRC20** felhasználónévként.  Adja meg a LoaderRC20-hoz tartozó jelszót.
 
-3. Válassza a **Kapcsolódás** lehetőséget.
+3. Kattintson a **Csatlakozás** gombra.
 
 4. Ha a kapcsolat készen áll, az Object Explorerben két kiszolgálói kapcsolat lesz látható. Az egyik kapcsolat ServerAdmin-ként, a másik pedig MedRCLogin-ként jelenik meg.
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálhatja Azure DevTest Labs környezeteit
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483023"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Környezetek integrálása az Azure DevOps CI/CD-folyamatokba
@@ -53,8 +53,8 @@ Az üzembe helyezés következő lépése a fejlesztési vagy tesztelési célok
 4. A **sablon neve**mezőben válassza ki a forráskód adattárba mentett környezet nevét. 
 5. A **labor neve**, a **tárház neve**és a **sablon neve** az Azure-erőforrás-azonosítók felhasználóbarát ábrázolása. Ha manuálisan adja meg a rövid nevet, a rendszer hibákat fog okozni, a legördülő lista segítségével pedig kiválaszthatja az adatokat.
 6. A **környezet neve**mezőben adjon meg egy nevet, amely egyedileg azonosítja a környezeti példányt a laboron belül.  Egyedinek kell lennie a laboron belül.
-7. A **paraméter fájl** és a **Paraméterek**lehetővé teszik az egyéni paraméterek átadását a környezetnek. A paraméterek értékeinek beállításához bármelyik vagy mindkettő használható. Ebben a példában a parameters (paraméterek) szakaszt fogjuk használni. Használja a környezetben meghatározott változók nevét, például:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. A környezeti sablonban található információk a sablon kimenet szakaszában adhatók át. A **környezeti sablon kimenete alapján tekintse meg a kimeneti változók létrehozását** , hogy más feladatok is használhassák az adatokat. `$(Reference name.Output Name)`a követendő minta. Például, ha a hivatkozás neve DTL volt, és a sablonban lévő kimenet neve a változó lenne `$(DTL.location)` .
+7. A **paraméter fájl** és a **Paraméterek**lehetővé teszik az egyéni paraméterek átadását a környezetnek. A paraméterek értékeinek beállításához bármelyik vagy mindkettő használható. Ebben a példában a parameters (paraméterek) szakaszt fogjuk használni. Használja a környezetben meghatározott változók nevét, például: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. A környezeti sablonban található információk a sablon kimenet szakaszában adhatók át. A **környezeti sablon kimenete alapján tekintse meg a kimeneti változók létrehozását** , hogy más feladatok is használhassák az adatokat. `$(Reference name.Output Name)` a követendő minta. Például, ha a hivatkozás neve DTL volt, és a sablonban lévő kimenet neve a változó lenne `$(DTL.location)` .
 
 ## <a name="delete-the-environment"></a>A környezet törlése
 Az utolsó lépés az Azure DevTest Labs-példányban üzembe helyezett környezet törlése. Általában törli a környezetet a fejlesztői feladatok végrehajtása vagy a szükséges tesztek futtatása után az üzembe helyezett erőforrásokon.

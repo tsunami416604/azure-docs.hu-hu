@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562876"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
@@ -54,7 +54,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil munkamenet-állapotának visszaállítása az [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md)használatával.
 1. A bemeneti jogcímek **átalakítása** – a bemeneti [jogcímek átalakításához](claimstransformations.md) tartozó bemeneti jogcímeket a rendszer a jogcím-csomagból használja fel.  A bemeneti jogcímek átalakításának kimeneti jogcímei a következő bemeneti jogcímek átalakításának bemeneti jogcímei lehetnek.
 1. **Bemeneti jogcímek** – a jogcímeket a rendszer a jogcímek táskájában keresi, és a technikai profilhoz használja. Egy [önérvényesített technikai profil](self-asserted-technical-profile.md) például a bemeneti jogcímek használatával előre feltölti a felhasználó által biztosított kimeneti jogcímeket. A REST API műszaki profilok a bemeneti jogcímek használatával küldenek bemeneti paramétereket a REST API végpontnak. A Azure Active Directory a bemeneti jogcímet egyedi azonosítóként használja egy fiók olvasásához, frissítéséhez vagy törléséhez.
-1. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Például:
+1. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Példa:
     - A bejelentkezés befejezéséhez irányítsa át a felhasználót az identitás-szolgáltatóra. A sikeres bejelentkezés után a felhasználó visszatér, és a technikai profil végrehajtása folytatódik.
     - REST API meghívása a paraméterek Szabályzattípushoz való elküldésekor és az információk OutputClaims való visszaszerzése közben.
     - Hozza létre vagy frissítse a felhasználói fiókot.

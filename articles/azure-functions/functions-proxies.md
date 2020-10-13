@@ -4,10 +4,10 @@ description: A Azure Functions-proxyk használatának áttekintése
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385874"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions-proxyk használata
@@ -28,7 +28,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre proxyt a functions portá
 3. Adja meg a proxy nevét.
 4. Konfigurálja a függvény alkalmazásban elérhető végpontot az **útválasztási sablon** és a **http-metódusok**megadásával. Ezek a paraméterek a [http-eseményindítók]szabályainak megfelelően viselkednek.
 5. Állítsa be a **háttérbeli URL-címet** egy másik végpontra. Ez a végpont lehet függvény egy másik Function alkalmazásban, vagy bármely más API lehet. Az értéknek nem kell statikusnak lennie, és az [alkalmazás beállításait] és [paramétereit is hivatkozhat az eredeti ügyfél-kérelemből].
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** elemre.
 
 A proxy már létezik új végpontként a Function alkalmazásban. Az ügyfél szemszögéből a Azure Functions egy HttpTrigger egyenértékű. Az új proxy kipróbálható úgy, hogy átmásolja a proxy URL-címét, és teszteli a kedvenc HTTP-ügyfelével.
 
@@ -55,7 +55,7 @@ A proxy konfigurációjának nem kell statikusnak lennie. Felkérheti, hogy az e
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Hivatkozás helyi függvények
 `localhost`A használatával közvetlenül is hivatkozhat egy függvényre ugyanazon a Function alkalmazáson belül, egy oda-és visszaúti kérelem nélkül.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"`egy helyi HTTP által aktivált függvényre hivatkozik az útvonalon`/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"` egy helyi HTTP által aktivált függvényre hivatkozik az útvonalon `/api/httptriggerC#1`
 
  
 >[!Note]  
@@ -142,7 +142,7 @@ Minden proxynak van egy felhasználóbarát neve, például a *proxy1* az előz�
 > [!NOTE] 
 > A Azure Functions-proxyk *Route* tulajdonsága nem tartja tiszteletben a függvényalkalmazás gazdagép konfigurációjának *routePrefix* tulajdonságát. Ha olyan előtagot szeretne szerepeltetni, mint például `/api` a, szerepelnie kell az *Route* tulajdonságban.
 
-### <a name="disable-individual-proxies"></a><a name="disableProxies"></a>Egyéni proxyk letiltása
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a> Egyéni proxyk letiltása
 
 Az egyes proxykat letilthatja a `"disabled": true` fájlban lévő proxyhoz való hozzáadásával `proxies.json` . Ennek hatására a matchCondition a 404-as visszaküldésére irányuló kérések lesznek.
 ```json
@@ -160,14 +160,14 @@ Az egyes proxykat letilthatja a `"disabled": true` fájlban lévő proxyhoz val�
 }
 ```
 
-### <a name="application-settings"></a><a name="applicationSettings"></a>Alkalmazásbeállítások
+### <a name="application-settings"></a><a name="applicationSettings"></a> Alkalmazásbeállítások
 
 A proxy viselkedését több Alkalmazásbeállítások is szabályozhatja. Ezek mind a [functions app Settings dokumentációjában](./functions-app-settings.md) szerepelnek.
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a>Fenntartott karakterek (karakterlánc formázása)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a> Fenntartott karakterek (karakterlánc formázása)
 
 A proxyk a \ Escape szimbólum használatával beolvassák az összes karakterláncot a JSON-fájlból. A proxyk a kapcsos zárójeleket is értelmezik. Tekintse meg az alábbi példák teljes listáját.
 

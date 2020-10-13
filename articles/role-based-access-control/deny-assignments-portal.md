@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790246"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure-beli megtagadási hozzárendelések listázása a Azure Portal használatával
@@ -32,7 +32,7 @@ Az [Azure-megtagadási hozzárendelések](deny-assignments.md) letiltják a felh
 
 A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a következőket kell tennie:
 
-- `Microsoft.Authorization/denyAssignments/read`a legtöbb [Azure beépített szerepkör](built-in-roles.md)részét képező engedély.
+- `Microsoft.Authorization/denyAssignments/read` a legtöbb [Azure beépített szerepkör](built-in-roles.md)részét képező engedély.
 
 ## <a name="list-deny-assignments"></a>Megtagadás-hozzárendelések felsorolása
 
@@ -56,7 +56,7 @@ Kövesse az alábbi lépéseket a megtagadási hozzárendelések listázásához
 
     |  |  |
     | --- | --- |
-    | **Name (Név)** | A megtagadási hozzárendelés neve. |
+    | **Név** | A megtagadási hozzárendelés neve. |
     | **Résztvevő típusa** | Felhasználó, csoport, rendszer által definiált csoport vagy egyszerű szolgáltatásnév. |
     | **Megtagadva**  | A megtagadási hozzárendelésben szereplő rendszerbiztonsági tag neve. |
     | **ID** | A megtagadási hozzárendelés egyedi azonosítója. |
@@ -90,7 +90,7 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
     ![Hozzárendelés-megtagadási engedélyek megtagadása](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Művelettípus | Description |
+    | Művelettípus | Leírás |
     | --- | --- |
     | **Műveletek**  | A rendszer megtagadta a felügyeleti műveleteket. |
     | **NotActions** | A megtagadott felügyeleti műveletből kizárt felügyeleti műveletek. |

@@ -1,16 +1,16 @@
 ---
-title: Beállításjegyzékbeli teljesítmény – problémamegoldás
+title: Regisztrációs adatbázis teljesítményproblémáinak elhárítása
 description: A beállításjegyzék teljesítményével kapcsolatos gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88227474"
 ---
-# <a name="troubleshoot-registry-performance"></a>Beállításjegyzékbeli teljesítmény – problémamegoldás
+# <a name="troubleshoot-registry-performance"></a>Regisztrációs adatbázis teljesítményproblémáinak elhárítása
 
 Ez a cikk segítséget nyújt az Azure Container Registry teljesítményével kapcsolatban felmerülő problémák elhárításában. 
 
@@ -80,7 +80,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="configure-dns-for-geo-replicated-registry"></a>A DNS konfigurálása a földrajzilag replikált beállításjegyzékhez
 
-Ha a földrajzilag replikált beállításjegyzékből lekéréses műveletek lassúak, a DNS-konfiguráció az ügyfélen egy földrajzilag távoli DNS-kiszolgálóra is feloldható. Ebben az esetben előfordulhat, hogy a Traffic Manager a DNS-kiszolgálóhoz, de az ügyféltől távol lévő replikához is útválasztási kérelmek érkeznek. Futtassa `nslookup` `dig` a (z) vagy (Linux rendszeren) eszközt, hogy meghatározza azt a replikát, Traffic Manager a beállításjegyzék-kérelmeket átirányítja. Például:
+Ha a földrajzilag replikált beállításjegyzékből lekéréses műveletek lassúak, a DNS-konfiguráció az ügyfélen egy földrajzilag távoli DNS-kiszolgálóra is feloldható. Ebben az esetben előfordulhat, hogy a Traffic Manager a DNS-kiszolgálóhoz, de az ügyféltől távol lévő replikához is útválasztási kérelmek érkeznek. Futtassa `nslookup` `dig` a (z) vagy (Linux rendszeren) eszközt, hogy meghatározza azt a replikát, Traffic Manager a beállításjegyzék-kérelmeket átirányítja. Példa:
 
 ```console
 nslookup myregistry.azurecr.io
@@ -107,7 +107,7 @@ Kapcsolódó hivatkozások:
 * [Container Registry – gyakori kérdések](container-registry-faq.md)
 * [Az Azure Container Registry ajánlott eljárásai](container-registry-best-practices.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
 

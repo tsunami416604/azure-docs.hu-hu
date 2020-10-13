@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935209"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Az Azure Sentinel-adatnormalizálás sémájának referenciája
@@ -41,11 +41,11 @@ Az értékeket az alábbi irányelvek alapján kell normalizálni. Ez a normaliz
 | Adattípus | Fizikai típus | Formátum és érték |
 | --------- | ------------- | ---------------- |
 | **Dátum és idő** | A betöltési módszer képességtől függően csökkenő prioritású:<ul><li>Log Analytics beépített datetime típusú</li><li>Egész szám típusú mező, amely Log Analytics datetime numerikus ábrázolást használ</li><li>Log Analytics datetime numerikus ábrázolást használó karakterlánc-mező</li></ul> | Log Analytics datetime-ábrázolás. <br></br>Log Analytics dátum & az időábrázolás hasonló a természetben, de eltér a UNIX-időbeli ábrázolástól. Tekintse át ezeket a konverziós irányelveket. <br></br>A dátum & az időzónát módosítani kell. |
-| **MAC-címe** | Sztring | Kettőspont – hexadecimális jelölés |
+| **MAC-címe** | Sztring | Colon-Hexadecimal jelölés |
 | **IP-cím** | IP-cím | A sémának nincs külön IPv4-és IPv6-címe. Bármely IP-cím mező tartalmazhat IPv4-címet vagy IPv6-címet:<ul><li>IPv4 pont-decimális jelöléssel</li><li>Az IPv6 8 hextets jelöléssel rendelkezik, amely lehetővé teszi az itt ismertetett rövid formák használatát.</li></ul> |
 | **Felhasználó** | Sztring | A következő 3 felhasználói mező érhető el:<ul><li>Felhasználónév</li><li>Felhasználói UPN</li><li>Felhasználói tartomány</li></ul> |
 | **Felhasználói azonosító** | Sztring | A következő két felhasználói azonosító jelenleg támogatott:<ul><li>Felhasználói SID</li><li>Azure Active Directory-azonosító</li></ul> |
-| **Eszköz** | Sztring | A következő 3 eszköz/állomás oszlop támogatott:<ul><li>ID (Azonosító)</li><li>Name</li><li>Teljes tartománynév (FQDN)</li></ul> |
+| **Eszköz** | Sztring | A következő 3 eszköz/állomás oszlop támogatott:<ul><li>ID (Azonosító)</li><li>Name (Név)</li><li>Teljes tartománynév (FQDN)</li></ul> |
 | **Ország** | Sztring | ISO 3166-1-et használó karakterlánc a következő prioritás szerint:<ul><li>Alpha-2 kódok (például a Egyesült Államok)</li><li>Alpha-3 kódok (azaz az Egyesült Államok a Egyesült Államok)</li><li>Rövid név</li></ul> |
 | **Régió** | Sztring | Az ország alosztásának neve az ISO 3166-2 használatával |
 | **City** | Sztring | |

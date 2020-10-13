@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328564"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure-beli privát hivatkozás Azure Data Factory
@@ -37,7 +37,7 @@ Telepítheti a saját üzemeltetésű integrációs modult egy helyszíni gépre
 
 A Azure Data Factory és az ügyfél virtuális hálózata között számos kommunikációs csatorna szükséges, ahogy az a következő táblázatban látható:
 
-| Tartomány | Port | Description |
+| Tartomány | Port | Leírás |
 | ---------- | -------- | --------------- |
 | `adf.azure.com` | 443 | Data Factory létrehozásához és figyeléséhez szükséges vezérlő síkja. |
 | `*.{region}.datafactory.azure.net` | 443 | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory szolgáltatáshoz való csatlakozáshoz. |

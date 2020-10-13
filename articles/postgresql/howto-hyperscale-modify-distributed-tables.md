@@ -8,13 +8,13 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
 ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136936"
 ---
-# <a name="distribute-and-modify-tables"></a>Táblázatok terjesztése és módosítása
+# <a name="distribute-and-modify-tables"></a>Táblák elosztása és módosítása
 
 ## <a name="distributing-tables"></a>Táblák terjesztése
 
@@ -144,7 +144,7 @@ A nem kapcsolódó tábláknak a saját közös elhelyezésű csoportjaiba való
 
 Ha a táblák valóban kapcsolódnak egymáshoz (például amikor csatlakozni fognak), érdemes lehet explicit módon megkeresni őket. A megfelelő elhelyezési költségek sokkal fontosabbak, mint bármely más terheléselosztás.
 
-Ha explicit módon több táblát szeretne elhelyezni, terjesszen egyet, majd helyezze el a többiet a közös elhelyezési csoportba. Például:
+Ha explicit módon több táblát szeretne elhelyezni, terjesszen egyet, majd helyezze el a többiet a közös elhelyezési csoportba. Példa:
 
 ```postgresql
 -- distribute stores

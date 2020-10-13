@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: ab72512b2e5d915dbd4b8a3d7d8446a5932eef9e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165447"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt az MVC-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)?
@@ -138,7 +138,7 @@ További változtatások a **Címtáradatok olvasása** lehetőség bejelölés�
 
 - Hozzáadva `Connected Services/AzureAD/ConnectedService.json` (Visual studio 2017) vagy `Service References/Azure AD/ConnectedService.json` (visual Studio 2015), amely azokat az információkat tartalmazza, amelyeket a Visual Studio használ a csatlakoztatott szolgáltatás hozzáadásának nyomon követésére.
 
-- Ha a **Címtáradatok olvasása** lehetőséget választotta, a rendszer hozzáadta `Models/ADALTokenCache.cs` és `Models/ApplicationDbContext.cs` a jogkivonat-gyorsítótárazást is támogatja. További vezérlőt is hozzáadhat, és megtekintheti a felhasználói profil adatainak az Azure Graph API-kkal való elérésének szemléltetését:, `Controllers/UserProfileController.cs` `Views/UserProfile/Index.cshtml` és`Views/UserProfile/Relogin.cshtml`
+- Ha a **Címtáradatok olvasása** lehetőséget választotta, a rendszer hozzáadta `Models/ADALTokenCache.cs` és `Models/ApplicationDbContext.cs` a jogkivonat-gyorsítótárazást is támogatja. További vezérlőt is hozzáadhat, és megtekintheti a felhasználói profil adatainak az Azure Graph API-kkal való elérésének szemléltetését:, `Controllers/UserProfileController.cs` `Views/UserProfile/Index.cshtml` és `Views/UserProfile/Relogin.cshtml`
 
 ### <a name="file-backup-visual-studio-2015"></a>Fájl biztonsági mentése (Visual Studio 2015)
 
@@ -160,7 +160,7 @@ A csatlakoztatott szolgáltatás hozzáadásakor a Visual Studio 2015 biztonság
 
 [További információ a Azure Active Directoryról](https://azure.microsoft.com/services/active-directory/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](./authentication-vs-authorization.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

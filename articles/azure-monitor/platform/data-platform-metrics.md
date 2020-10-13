@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325610"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
@@ -36,7 +36,7 @@ A következő táblázat felsorolja azokat a különböző módszereket, amelyek
 | **Riasztás** | Olyan [metrikai riasztási szabályt](alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
 | **Automatizálás** |  Az [autoscale](autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
 | **Exportálás** | [Átirányítja a metrikákat a naplókba](./resource-logs.md#send-to-azure-storage) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
-| **Beolvasni** | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](/powershell/module/az.applicationinsights) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a [CLI](/cli/azure/monitor/metrics)használatával. |
+| **Beolvasni** | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](/powershell/module/az.applicationinsights) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a  [CLI](/cli/azure/monitor/metrics)használatával. |
 | **Archívum** | Az erőforrás teljesítmény-vagy állapotadatok [archiválása](./platform-logs-overview.md) megfelelőségi, naplózási vagy offline jelentéskészítési célokra. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hogyan épülnek fel Azure Monitor mérőszámok adatai?

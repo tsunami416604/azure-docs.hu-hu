@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87462020"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
@@ -54,7 +54,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 1. Adja meg a tároló nevét, képét, tároló-létrehozási beállításait:
 
    * **Név**: eventgridmodule
-   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Tároló-létrehozási beállítások**:
 
     ```json
@@ -75,7 +75,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
         }
     ```    
 
- 1. Kattintson a **Mentés** gombra
+ 1. Kattintson a **Mentés** gombra.
  1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
 
     >[!IMPORTANT]
@@ -93,9 +93,9 @@ Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult
 1. Adja meg a tároló nevét, képét és tároló-létrehozási beállításait:
 
    * **Név**: előfizető
-   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Tároló-létrehozási beállítások**: nincs
-1. Kattintson a **Mentés** gombra
+1. Kattintson a **Mentés** gombra.
 1. Folytassa a következő szakasszal az Azure Blob Storage modul hozzáadásához
 
 ## <a name="deploy-azure-blob-storage-module"></a>Az Azure Blob Storage modul üzembe helyezése
@@ -146,7 +146,7 @@ Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe az Azure Blob Storag
      - Linux-tárolók esetén **a saját kötet:/blobroot**
      - Windows-tárolók esetén**a saját kötet: C:/BlobRoot**
 
-5. Kattintson a **Mentés** gombra
+5. Kattintson a **Mentés** gombra.
 6. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
     > [!NOTE]
@@ -193,8 +193,8 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
     ```
 
     > [!IMPORTANT]
-    > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
-    > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést a **MicrosoftStorage** témakörben.
     1. Hozzon létre blobsubscription.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
@@ -222,7 +222,7 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
        ```
 
        > [!IMPORTANT]
-       > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
        > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. A következő parancs futtatásával ellenőrizheti, hogy az előfizetés sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
@@ -251,8 +251,8 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
        ```
 
        > [!IMPORTANT]
-       > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-       > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Ha a HTTPS-folyamatnál az ügyfél-hitelesítés SAS-kulccsal van engedélyezve, akkor a korábban megadott SAS-kulcsot fejlécként kell hozzáadni. Ezért a curl-kérelem a következőket eredményezi: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
 3. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) letöltése és [a helyi tárolóhoz való kapcsolódása](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
@@ -339,7 +339,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a következők: `PutBlob` és`PutBlockList`</li><li>BlobDeleted – engedélyezett értékek: `DeleteBlob` `DeleteAfterUpload` és `AutoDelete` . <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete`az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
+| api | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a következők: `PutBlob` és `PutBlockList`</li><li>BlobDeleted – engedélyezett értékek: `DeleteBlob` `DeleteAfterUpload` és `AutoDelete` . <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete` az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
 | ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Részletekért lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
 | Kérelemazonosító | sztring | A szolgáltatás által generált kérelem azonosítója a tárolási API-művelethez. Felhasználható az Azure Storage diagnosztikai naplóinak a naplók "Request-ID-header" mezővel való összekapcsolására, és a rendszer az "x-MS-Request-id" fejlécben az API-hívás kezdeményezését adja vissza. Lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | sztring | Az az érték, amelyet a műveletek feltételes végrehajtásához használhat. |

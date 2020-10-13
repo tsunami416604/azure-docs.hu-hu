@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235808"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
@@ -64,7 +64,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 2. Válassza ki azt az alkalmazást, amelyhez az automatikus kiépítés konfigurálva van: például "ServiceNow".
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
 4. A **leképezések** szakaszban válassza ki azt a leképezést, amelyhez hatókör-szűrőt szeretne konfigurálni: például "Azure Active Directory felhasználók szinkronizálása a ServiceNow".
 

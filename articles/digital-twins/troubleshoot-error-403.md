@@ -7,10 +7,10 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
 ms.openlocfilehash: bc4fbbc265bef00be27c890c3f090a49591dc415
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562740"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>A szolgáltatási kérelem sikertelen. Állapot: 403 (tiltott)
@@ -77,7 +77,7 @@ Először ellenőrizze, hogy az Azure Digital Twins engedélyeinek beállítása
 
 Ha ezek bármelyike másképp jelenik meg, mint a leírtak között, kövesse az alkalmazások regisztrálásának beállítása című témakör útmutatását az [ *ügyfélalkalmazások hozzáférési engedélyeinek beállítása* című szakaszban](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) , *útmutató: példány és hitelesítés beállítása (parancssori felület vagy portál)*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a telepítési lépéseket az új Azure Digital Twins-példány létrehozásához és hitelesítéséhez:
 * [*Útmutató: példány és hitelesítés beállítása (CLI)*](how-to-set-up-instance-cli.md)

@@ -8,10 +8,10 @@ ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079553"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
@@ -21,7 +21,7 @@ ms.locfileid: "87079553"
 
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
-A [Azure monitor metrikái](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt számok sorozata. Léteznek standard (vagy "platform") mérőszámok és egyéni metrikák. A standard mérőszámokat maga az Azure platform kapja meg. A standard mérőszámok az Azure-erőforrások állapot-és használati statisztikáit tükrözik. Míg az egyéni metrikákat az alkalmazások az Application Insights API használatával küldik el az Azure-ba az [Egyéni eseményekhez és mérőszámokhoz](../app/api-custom-events-metrics.md), a [Windows Azure Diagnostics (wad) bővítményhez](./diagnostics-extension-overview.md)vagy [Azure monitor Rest APIhoz](./metrics-store-custom-rest-api.md).
+A [Azure monitor metrikái](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt számok sorozata. Léteznek standard (vagy "platform") mérőszámok és egyéni metrikák. A standard mérőszámokat maga az Azure platform kapja meg. A standard mérőszámok az Azure-erőforrások állapot-és használati statisztikáit tükrözik. Míg az egyéni metrikákat az alkalmazások az Application Insights API használatával küldik el az Azure-ba az [Egyéni eseményekhez és mérőszámokhoz](../app/api-custom-events-metrics.md), a  [Windows Azure Diagnostics (wad) bővítményhez](./diagnostics-extension-overview.md)vagy [Azure monitor Rest APIhoz](./metrics-store-custom-rest-api.md).
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Nézetek létrehozása több metrikával és diagrammal
 

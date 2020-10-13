@@ -14,10 +14,10 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306667"
 ---
 # <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
@@ -32,7 +32,7 @@ Az előző képen az *NIC1* és az *NIC2* az *AsgWeb* alkalmazásbiztonsági cso
 
 Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedélyezéséhez szükséges. Mivel az internetről bejövő forgalmat az alapértelmezett **DenyAllInbound** biztonsági szabály tiltja, az *AsgLogic* és az *AsgDb* alkalmazásbiztonsági csoportok esetében nincs szükség további szabályokra.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Engedélyezés |
 
@@ -40,7 +40,7 @@ Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedély
 
 Mivel az alapértelmezett **AllowVNetInBound** biztonsági szabály az azonos virtuális hálózaton lévő erőforrások között minden kommunikációt engedélyez, ez a szabály az összes erőforrástól érkező forgalom tiltásához szükséges.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Bármelyik | Megtagadás |
 
@@ -48,7 +48,7 @@ Mivel az alapértelmezett **AllowVNetInBound** biztonsági szabály az azonos vi
 
 Ez a szabály engedélyezi az *AsgLogic* alkalmazásbiztonsági csoportról az *AsgDb* alkalmazásbiztonsági csoportra irányuló forgalmat. A szabály prioritása magasabb a *Deny-Database-All* szabály prioritásánál. Ennek eredményeként ez a szabály a *Deny-Database-All* szabály előtt lesz kiértékelve, ezért az *AsgLogic* alkalmazásbiztonsági csoporttól érkező forgalom engedélyezve lesz, az összes többi forgalom pedig le lesz tiltva.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Engedélyezés |
 

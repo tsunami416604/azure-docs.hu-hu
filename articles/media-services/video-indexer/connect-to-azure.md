@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005931"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
-Video Indexer-fiók létrehozásakor kiválaszthat egy ingyenes próbaverziós fiókot (amely bizonyos számú ingyenes indexelési percet igénybe vehet) vagy egy fizetős lehetőséget (ha nem korlátozza a kvótát). Az ingyenes próbaverzióval a Video Indexer akár 600 perces ingyenes indexelést biztosít a webhely felhasználói számára, illetve akár 2400 perc ingyenes indexelést az API-felhasználók számára. A fizetős lehetőséggel létrehoz egy Video Indexer fiókot, amely az Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik. Az indexelt percek és a Media Accounting szolgáltatás díját is fizetni kell.
+A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőség használata esetén létrehoz egy Video Indexer-fiókot, amely össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal. Az indexelt perceket és a médiafiókkal kapcsolatos díjakat kell kifizetnie.
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéshez és egy Azure Media Services-fiókhoz kapcsolódó Video Indexer fiókot. A témakör lépéseit követve csatlakozhat az Azure-hoz az automatikus (alapértelmezett) folyamat használatával. Azt is bemutatja, hogyan csatlakozhat az Azure-hoz manuálisan (speciális).
 
@@ -144,7 +144,7 @@ A **video Indexer csatlakoztatása egy Azure-előfizetéshez** párbeszédpanel 
 
 A párbeszédpanelen adja meg a következő adatokat:
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |---|---|
 |Video Indexer fiók régiója|Az Video Indexer-fiók régiójának neve. A jobb teljesítmény és az alacsonyabb költségek érdekében javasoljuk, hogy adja meg annak a régiónak a nevét, ahol a Azure Media Services erőforrás és az Azure Storage-fiók található. |
 |Azure AD-bérlő|Az Azure AD-bérlő neve, például "contoso.onmicrosoft.com". A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó nevére a jobb felső sarokban. Keresse meg a **tartománytól**jobbra található nevet.|

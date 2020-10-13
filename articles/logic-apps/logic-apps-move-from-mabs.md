@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837380"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Alkalmazások és megoldások migrálása BizTalk Servicesról Azure Logic Apps
@@ -59,7 +59,7 @@ Alapértelmezés szerint minden egyes híd egy HTTP-végponttal rendelkezik, ame
 
 ## <a name="xml-processing-and-bridges"></a>XML-feldolgozás és-hidak
 
-BizTalk Services a hidak egy feldolgozási folyamathoz hasonlítanak. Egy híd elvégezheti az összekötőtől érkező adatok fogadását, elvégezheti a munkát az adatokkal, és elküldheti az eredményeket egy másik rendszernek. A Logic Apps ugyanazokat a folyamatokon alapuló interakciós mintákat támogatja, mint BizTalk Services, és egyéb integrációs mintákat is biztosít. Az [XML-kérelem – válasz-híd](/previous-versions/azure/hh689781(v=azure.100)) BIZTALK Services néven VETER folyamat, amely a következő feladatokat hajtja végre:
+BizTalk Services a hidak egy feldolgozási folyamathoz hasonlítanak. Egy híd elvégezheti az összekötőtől érkező adatok fogadását, elvégezheti a munkát az adatokkal, és elküldheti az eredményeket egy másik rendszernek. A Logic Apps ugyanazokat a folyamatokon alapuló interakciós mintákat támogatja, mint BizTalk Services, és egyéb integrációs mintákat is biztosít. A BizTalk Servicesban található [XML Request-Reply-HIDAT](/previous-versions/azure/hh689781(v=azure.100)) VETER-folyamatnak nevezzük, amely a következő feladatokat hajtja végre:
 
 * (V) ellenőrzés
 * (E) dúsítás
@@ -71,7 +71,7 @@ Ez a rendszerkép azt mutatja be, hogyan oszlik meg a feldolgozás a kérelem é
 
 ![Képernyőkép, amely bemutatja, hogyan oszlik meg a feldolgozás a kérelem és a válasz között.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
-Emellett az egyirányú XML-híd dekódolást és kódolási fázisokat is felhasznál a feldolgozás elején és végén. Az áteresztő híd egyetlen dúsítási szakaszt tartalmaz.
+Emellett egy XML One-Way-híd is hozzáadja a dekódolást és a kódolási fázisokat a feldolgozás elején és végén. A Pass-Through-híd egyetlen dúsítási szakaszt tartalmaz.
 
 ### <a name="message-processing-decoding-and-encoding"></a>Üzenetek feldolgozása, dekódolása és kódolása
 
@@ -133,7 +133,7 @@ A BizTalk Services magas rendelkezésre állása esetén a feldolgozási terhel�
 
 BizTalk Services a B2B-feldolgozáshoz a régión kívüli vész-helyreállításhoz biztonsági mentési és visszaállítási folyamat szükséges. Az üzletmenet folytonossága érdekében Logic Apps biztosítja a régión belüli aktív/passzív [Dr képességet](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md), amely lehetővé teszi a B2B-adatokat különböző régiókban lévő integrációs fiókokon keresztül szinkronizálni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az a Logic Apps?](../logic-apps/logic-apps-overview.md)
 * [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md), vagy a használat gyors megkezdése [előre elkészített sablonokkal](../logic-apps/logic-apps-create-logic-apps-from-templates.md)  

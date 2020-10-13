@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: aahi
 ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940644"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Útmutató: mérőszámok gráfjának létrehozása a kapcsolódó metrikák elemzéséhez
@@ -35,7 +35,7 @@ Ezután hozzá kell adnia egy másik csomópontot, és meg kell adnia egy kapcso
 
 Kattintson a **kapcsolat hozzáadása**lehetőségre, és választhat egy másik metrikát, és megadhatja a két csomópont közötti kapcsolat típusát. Adott dimenzió-szűrőket is alkalmazhat. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Csomópont és rokon hozzáadása":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Metrika kiválasztása":::
 
 A fenti lépések megismétlése után az összes kapcsolódó metrika közötti kapcsolatokat leíró metrikai diagramot fog tartalmazni.
 **Tipp a csomópontok színeit**
@@ -50,7 +50,7 @@ A metrikák gráfjának létrehozásakor a diagramon belüli mérőszámokon és
 
 Kattintson egy incidensre a gráfon belül, majd görgessen le a **több mérőszám elemzése**alá a diagnosztikai adatok alatt.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Kapcsolódó mérőszámok és rendellenességek megtekintése":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Metrika kiválasztása":::
 
 ## <a name="next-steps"></a>Következő lépések
 

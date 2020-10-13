@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439468"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
@@ -150,7 +150,7 @@ Alverzió |EUS-rendszerkép – példa              |EUS állapota              
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Az április 2019-es és újabb verzióiban közzétett lemezképek alapértelmezés szerint EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | A 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | A 2019-es és újabb verzióiban közzétett rendszerképek alapértelmezés szerint EUS. |
-RHEL 8,0      |N.A.                            | A Red Hat nem érhető el EUS.                               |
+RHEL 8,0      |N/A                            | A Red Hat nem érhető el EUS.                               |
 
 ### <a name="update-services-for-sap"></a>SAP-szolgáltatások frissítése
 
@@ -180,7 +180,7 @@ Egy adott rendszerkép-családban csak az aktuális alverziót frissítjük. Egy
 
 Az aktuális szabályzat az összes korábban közzétett rendszerkép megőrzése. Fenntartjuk a jogot arra, hogy olyan rendszerképeket távolítson el, amelyek bármilyen típusú problémát okozhatnak. Előfordulhat például, hogy a következő platform vagy összetevő frissítései miatt helytelen konfigurációval rendelkező lemezképek el lesznek távolítva. Az esetlegesen eltávolított lemezképek az aktuális Azure Marketplace-szabályzat alapján biztosítanak értesítést akár 30 nappal a lemezkép eltávolítása előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](https://aka.ms/rhui-update).

@@ -4,10 +4,10 @@ description: A Service Bus eseményekhez megadott tulajdonságokat ismerteti Azu
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121134"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus Event Grid forrásként
@@ -75,20 +75,20 @@ A kézbesítetlen levelek várólistája esemény sémája hasonló:
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | BLOB Storage-események |
+| adatok | object | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Namespacename tulajdonság | sztring | A Service Bus névtér, amelyben az erőforrás található. |
 | requestUri | sztring | Az eseményt kibocsátó adott üzenetsor vagy előfizetés URI azonosítója. |
@@ -103,7 +103,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
 | [Azure Service Bus az integráció Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

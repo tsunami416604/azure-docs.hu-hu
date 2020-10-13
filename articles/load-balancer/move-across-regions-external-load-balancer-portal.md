@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808716"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Külső Load Balancer áthelyezése másik régióba a Azure Portal használatával
@@ -182,7 +182,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
     1. Egy másik böngésző lapon vagy ablakban jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforráscsoportok**lehetőséget.
     2. Keresse meg azt a célként megadott erőforráscsoportot, amely az előző lépésekben áthelyezett nyilvános IP-címet tartalmazza. Válassza ki.
-    3. Válassza a **Beállítások**  >  **Tulajdonságok**lehetőséget.
+    3. Válassza a **Beállítások** > **Tulajdonságok** lehetőséget.
     4. A jobb oldali panelen jelölje ki az erőforrás- **azonosítót** , és másolja a vágólapra. Azt is megteheti, hogy kijelöli a **Másolás a vágólapra** lehetőséget az **erőforrás-azonosító** elérési útjának jobb oldalán.
     5. Illessze be az erőforrás-azonosítót a más böngészőablakban vagy lapon megnyitott **Parameters** Editor **Value (érték** ) tulajdonságba:
 

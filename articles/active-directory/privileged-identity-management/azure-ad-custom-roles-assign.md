@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87413153"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör kiosztása Privileged Identity Management
@@ -78,7 +78,7 @@ A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkö
 
  ![Ellenőrizze, hogy a szerepkör-hozzárendelés jogosultként vagy aktívként jelenik-e meg](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

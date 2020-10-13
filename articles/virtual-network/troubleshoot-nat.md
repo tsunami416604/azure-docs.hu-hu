@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836105"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
@@ -77,7 +77,7 @@ Egy új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "Atomic
 
 _**Megoldás:**_ A kimenő kapcsolatok méretezése az alábbiak szerint történik:
 
-| Eset | Bizonyíték |Kockázatcsökkentés |
+| Forgatókönyv | Bizonyíték |Kockázatcsökkentés |
 |---|---|---|
 | A SNAT-portok és a SNAT-portok kimerülése a magas kihasználtságú időszakok során tapasztalható. | A (z) Azure Monitor SNAT-kapcsolatok [metrikájának](nat-metrics.md) "sikertelen" kategóriája az idő és a magas csatlakozási kötet esetében átmeneti vagy állandó hibákat mutat be.  | Állapítsa meg, hogy adhat-e további nyilvános IP-cím erőforrásokat vagy nyilvános IP-előtag-erőforrásokat. Ez a Hozzáadás legfeljebb 16 IP-címet tesz lehetővé a NAT-átjáró számára. Ez a Hozzáadás további leltárt nyújt a rendelkezésre álló SNAT-portok (64 000/IP-címek) számára, és lehetővé teszi a forgatókönyv további skálázását.|
 | Már 16 IP-címet adott meg, és továbbra is SNAT a portok kimerülése. | További IP-cím hozzáadására tett kísérlet sikertelen. Az IP-címek teljes száma a nyilvános IP-címek erőforrásaiból vagy a nyilvános IP-előtag erőforrásaiból összesen meghaladja a 16 értéket. | Terjessze az alkalmazási környezetet több alhálózatra, és adjon meg egy NAT Gateway-erőforrást az egyes alhálózatokhoz.  A tervezési minta (ok) újraértékelése az előző [útmutatás](#design-patterns)alapján optimalizálható. |
@@ -115,7 +115,7 @@ A következőhöz hasonló eszközök használhatók az érvényesítéshez: Az 
 | Linux | NC (általános kapcsolatok tesztelése) | Curl (TCP-alkalmazás rétegének tesztelése) | alkalmazás-specifikus |
 | Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
 
-#### <a name="configuration"></a>Configuration
+#### <a name="configuration"></a>Konfiguráció
 
 A konfiguráció ellenőrzését:
 1. Van-e a NAT-átjáró-erőforrásnak legalább egy nyilvános IP-erőforrása vagy egy nyilvános IP-előtag-erőforrása? Legalább egy IP-címet szükséges a NAT-átjáróhoz rendelni ahhoz, hogy képes legyen kimenő kapcsolatot biztosítani.
@@ -196,15 +196,7 @@ Nem szükséges újraindítani a virtuális gépet a NAT-átjáró erőforrásá
 
 Ha továbbra is problémákba ütközött, nyisson meg egy támogatási esetet a további hibaelhárításhoz.
 
-### <a name="connection-setup-time"></a>A kapcsolatok beállításának ideje
-
-Mivel Load Balancer kimenő szabályok statikusan rendelik hozzá a SNAT-portok készleteit adott virtuális gépekhez, az új kimenő folyamatok létrehozása gyorsabb, mint a Virtual Network NAT használata. Ezért Load Balancer kimenő szabályokból való váltáskor az új kimenő kapcsolatok létrehozásakor nagyobb késés tapasztalható. Amint azt korábban említettük, az alkalmazás teljesítményének maximalizálása érdekében hosszú élettartamú folyamatokat kell használnia (például a TCP-kapcsolatok újrafelhasználását).
-
-_**Megoldás**_
-
-Ha elsősorban a minimális connnection-telepítési késés iránt érdeklődik, használja Load Balancer kimenő szabályokat.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
 * Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)

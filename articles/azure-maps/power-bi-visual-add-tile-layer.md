@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261943"
 ---
 # <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
@@ -51,11 +51,11 @@ A Azure Maps vizualizációban három különböző csempe-szolgáltatás elneve
 
 A csempe URL-címe egy, a csempe URL-sablonjának HTTPS-URL-címe, amely a következő paramétereket használja:
 
--   `{x}`-A csempe X pozíciója `{y}`A és a is szükséges `{z}` .
--   `{y}`-A csempe Y pozíciója `{x}`A és a is szükséges `{z}` .
--   `{z}`– A csempe nagyítási szintje `{x}`A és a is szükséges `{y}` .
--   `{quadkey}`– `quadkey` A csempe azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
--   `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
+-   `{x}` -A csempe X pozíciója `{y}`A és a is szükséges `{z}` .
+-   `{y}` -A csempe Y pozíciója `{x}`A és a is szükséges `{z}` .
+-   `{z}` – A csempe nagyítási szintje `{x}`A és a is szükséges `{y}` .
+-   `{quadkey}` – `quadkey` A csempe azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
+-   `{bbox-epsg-3857}` – Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
 
 Az alábbi példa egy formázott csempe-URL-címet mutat be a Azure Maps [időjárási radar csempe szolgáltatásához](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) . Vegye figyelembe, hogy a `[subscription-key]` Azure Maps előfizetési kulcsának helyőrzője.
 
@@ -63,7 +63,7 @@ Az alábbi példa egy formázott csempe-URL-címet mutat be a Azure Maps [időj�
 
 A Azure Maps csempe rendszerével kapcsolatos további információkért lásd: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További környezet hozzáadása a térképhez:
 

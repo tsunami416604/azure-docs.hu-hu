@@ -8,10 +8,10 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87903714"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
@@ -44,7 +44,7 @@ Azure File Sync az Azure-ba való belépést lehetővé tevő bármely eszközö
 ## <a name="proxy"></a>Proxy
 Azure File Sync támogatja az alkalmazás-specifikus és a számítógép-szintű proxybeállításokat.
 
-Az **alkalmazásspecifikus proxybeállítások** lehetővé teszik a proxy konfigurációját kifejezetten Azure file Sync forgalom számára. Az alkalmazásspecifikus proxybeállítások az ügynök 4.0.1.0 vagy újabb verziója esetén támogatottak, és az ügynök telepítése vagy a set-StorageSyncProxyConfiguration PowerShell-parancsmag használatával konfigurálhatók.
+Az **alkalmazásspecifikus proxybeállítások** lehetővé teszik a proxy konfigurációját kifejezetten Azure file Sync forgalom számára. Az alkalmazásspecifikus proxybeállítások az ügynök 4.0.1.0 vagy újabb verziója esetén támogatottak, és az ügynök telepítése vagy az Set-StorageSyncProxyConfiguration PowerShell-parancsmag használatával konfigurálhatók.
 
 alkalmazásspecifikus proxybeállítások konfigurálására alkalmas PowerShell-parancsok használatával konfigurálhatók:
 ```powershell
@@ -109,7 +109,7 @@ Ha &ast; a. AFS.Azure.net vagy &ast; a. One.microsoft.com túl széles, korláto
 
 Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előfordulhat, hogy az Azure-fájlmegosztást globálisan redundáns (GRS) Storage-fiókban adta meg. Ha ez az eset áll fenn, akkor az Azure-fájlmegosztás egy tartós regionális kimaradás esetén átveszi a feladatokat a párosított régióba. Azure File Sync ugyanazokat a regionális párosításokat használja, mint a Storage. Így ha GRS-fiókokat használ, engedélyeznie kell a további URL-címeket, hogy a kiszolgáló a párosított régióval beszéljen a Azure File Sync. Az alábbi táblázat ezt a "párosított régiót" hívja meg. Ezen kívül egy Traffic Manager-profil URL-címét is engedélyezni kell. Ez biztosítja, hogy a hálózati forgalom zökkenőmentesen átirányítható legyen a párosított régióba feladatátvétel esetén, és az alábbi táblázatban "felderítési URL-cím" néven jelenik meg.
 
-| Felhő  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
+| Felhőbeli  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
 |--------|--------|----------------------|---------------|---------------|
 | Nyilvános |Kelet-Ausztrália | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.microsoft.com | Délkelet-Ausztrália | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.microsoft.com |
 | Nyilvános |Délkelet-Ausztrália | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-AUS.One.microsoft.com | Kelet-Ausztrália | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-AUS.One.microsoft.com |
@@ -266,7 +266,7 @@ if ($found) {
 Ezután az IP-címtartományok használatával `$ipAddressRanges` frissítheti a tűzfalat. A tűzfal vagy a hálózati készülék webhelyének frissítésével kapcsolatos információkért olvassa el a tűzfal frissítését ismertető témakört.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Hálózati kapcsolat tesztelése a szolgáltatási végpontokhoz
-Ha egy kiszolgáló regisztrálva van a Azure File Sync szolgáltatásban, a test-StorageSyncNetworkConnectivity parancsmag és a ServerRegistration.exe segítségével tesztelheti a kiszolgálón található összes végponttal (URL-címmel) folytatott kommunikációt. Ez a parancsmag segít elhárítani a hiányos kommunikációt, ami megakadályozza, hogy a kiszolgáló teljes mértékben működjön a Azure File Sync, és használható a proxy és a tűzfal konfigurációjának finomhangolására.
+Ha egy kiszolgáló regisztrálva van a Azure File Sync szolgáltatásban, a Test-StorageSyncNetworkConnectivity-parancsmag és a ServerRegistration.exe használható a kiszolgálóra jellemző összes végponttal (URL-címmel) folytatott kommunikáció tesztelésére. Ez a parancsmag segít elhárítani a hiányos kommunikációt, ami megakadályozza, hogy a kiszolgáló teljes mértékben működjön a Azure File Sync, és használható a proxy és a tűzfal konfigurációjának finomhangolására.
 
 A hálózati kapcsolat teszt futtatásához telepítse a Azure File Sync Agent 9,1-es vagy újabb verzióját, és futtassa a következő PowerShell-parancsokat:
 ```powershell
@@ -280,6 +280,6 @@ A dokumentum korábbi listája tartalmazza azokat az URL-címeket, Azure File Sy
 A tartomány korlátozására vonatkozó tűzfalszabályok beállítása lehet egy mérték a biztonság növelése érdekében. Ha ezeket a tűzfal-konfigurációkat használja, az egyiknek figyelembe kell vennie, hogy az URL-címek fel lesznek véve, és akár idővel is változhatnak. Ebben a cikkben rendszeresen tájékozódhat.
 
 ## <a name="next-steps"></a>Következő lépések
-- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
+- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

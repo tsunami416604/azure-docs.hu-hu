@@ -13,17 +13,17 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b18279e44bc5a3fd668d2ec4af6be29229af1b6b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909801"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>B2B Collaboration Guest Users hozzáadása meghívó hivatkozás vagy e-mail küldése nélkül
 
 Most meghívhatja a vendég felhasználókat úgy, hogy [közvetlen hivatkozást](redemption-experience.md#redemption-through-a-direct-link) küld egy megosztott alkalmazáshoz. Ezzel a módszerrel a vendég felhasználóknak már nem kell a meghívó e-mailt használniuk, kivéve bizonyos speciális esetekben. A vendég felhasználó az alkalmazás hivatkozására kattint, megtekinti és elfogadja az adatvédelmi feltételeket, majd zökkenőmentesen hozzáfér az alkalmazáshoz. További információ: [vállalatközi együttműködés meghívásának beváltása](redemption-experience.md).
 
-Ahhoz, hogy ez az új metódus elérhetővé vált, a vendég felhasználókat a meghívót kérő e-mailek meghívása nélkül is meghívhatja a meghívó (a szervezet vagy a partner szervezete) és a **vendég meghívó** címtár szerepkörbe, majd a meghívóval a felhasználói felületen vagy a powershellen keresztül adhat hozzá vendégeket a címtárhoz, a csoporthoz vagy az alkalmazásokhoz. (Ha a PowerShellt használja, a meghívót tartalmazó e-mailt összesen is kihagyhatja). Például:
+Ahhoz, hogy ez az új metódus elérhetővé vált, a vendég felhasználókat a meghívót kérő e-mailek meghívása nélkül is meghívhatja a meghívó (a szervezet vagy a partner szervezete) és a **vendég meghívó** címtár szerepkörbe, majd a meghívóval a felhasználói felületen vagy a powershellen keresztül adhat hozzá vendégeket a címtárhoz, a csoporthoz vagy az alkalmazásokhoz. (Ha a PowerShellt használja, a meghívót tartalmazó e-mailt összesen is kihagyhatja). Példa:
 
 1. A gazda szervezet egyik felhasználója (például a WoodGrove) egy felhasználót hív meg a partner szervezettől (például Sam@litware.com ) vendégként.
 2. A gazdagép rendszergazdája olyan [házirendeket állít be](delegate-invitations.md) , amelyek lehetővé teszik a Sam számára a partner szervezet (Litware) más felhasználóinak azonosítását és hozzáadását. (A Sam-t fel kell venni a **vendég meghívó** szerepkörbe.)

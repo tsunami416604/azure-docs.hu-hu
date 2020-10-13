@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83123673"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
@@ -42,7 +42,7 @@ Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurál
 
 3. A GitHubon válassza a **AzureAppService engedélyezése**lehetőséget.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Engedélyezés Azure App Service":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service központi telepítési központ":::
 
     Adja meg a GitHub-jelszavát, majd kattintson a **Continue (folytatás**) gombra.
 
@@ -51,11 +51,11 @@ Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurál
     * **App Service Build szolgáltatás**: a legjobb, ha nincs szüksége buildre, vagy ha általános buildre van szüksége.
     * **Azure-folyamatok (előzetes verzió)**: a legjobb, ha nagyobb mértékű vezérlésre van szüksége a builden. Ez a szolgáltató jelenleg előzetes verzióban érhető el.
 
-    Válassza a **Folytatás** elemet.
+    Válassza a **Folytatás** lehetőséget.
 
 5. Konfigurálja a megadott verziókövetés-beállításra vonatkozó adatokat. A GitHub esetében meg kell adnia vagy ki kell választania a **szervezet**, a **tárház**és az **ág**értékeit. Az értékek a kód helyétől függenek. Ezután válassza a **Folytatás**lehetőséget.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="GitHub konfigurálása":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service központi telepítési központ":::
 
 6. Tekintse át az összes adatot, majd a **Befejezés** gombra kattintva fejezze be a telepítési konfigurációt.
 

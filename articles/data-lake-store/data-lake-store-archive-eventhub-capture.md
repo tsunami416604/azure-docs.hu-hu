@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578240"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Adatok rögzítése a Azure Data Lake Storage Gen1 használatával Event Hubs
@@ -117,6 +117,6 @@ Most tesztelheti a megoldást úgy, hogy adatokat küld az Azure Event hub-nak. 
 Ha az adatok Data Lake Storage Gen1, az adatok feldolgozásához és összegyűjtéséhez futtathat analitikai feladatokat. Lásd: [USQL Avro-példa](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) a Azure Data Lake Analytics használatával történő végrehajtásához.
   
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 * [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md)

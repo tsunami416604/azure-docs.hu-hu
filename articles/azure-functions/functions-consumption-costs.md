@@ -4,20 +4,20 @@ description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás A
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207777"
 ---
 # <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
 A Azure Functionsban futó alkalmazások esetében jelenleg háromféle üzemeltetési csomag létezik, és mindegyik csomag saját díjszabási modellel rendelkezik: 
 
-| Felkészülés | Description |
+| Felkészülés | Leírás |
 | ---- | ----------- |
 | [**Felhasználás**](functions-scale.md#consumption-plan) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
-| [**Prémium szintű**](functions-scale.md#premium-plan) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
+| [**Prémium**](functions-scale.md#premium-plan) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
 | [**Dedikált (App Service)**](functions-scale.md#app-service-plan) <br/>(alapszintű vagy magasabb) | Ha dedikált virtuális gépeken vagy elszigetelten kell futnia, használjon egyéni rendszerképeket, vagy szeretné használni a felesleges App Service csomag kapacitását. A [normál app Service csomag számlázását](https://azure.microsoft.com/pricing/details/app-service/)használja. A díjak a választott díjszabási szinten alapulnak.|
 
 Úgy döntött, hogy a legjobban támogatja a függvény teljesítményére és a költséghatékonyságra vonatkozó követelményeket. További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md).
@@ -208,7 +208,7 @@ performanceCounters
 
 Az eredmények a következő példához hasonlóan jelennek meg:
 
-| időbélyeg \[ UTC\]          | name          | value       |
+| időbélyeg \[ UTC\]          | name          | érték       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 am | Saját bájtok | 209 932 288 |
 | 9/12/2019, 1:06:14 \. 994 am | Saját bájtok | 212 189 184 |

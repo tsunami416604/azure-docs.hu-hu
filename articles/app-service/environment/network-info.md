@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962536"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
@@ -203,7 +203,7 @@ Ha ugyanazt az útvonalat manuálisan szeretné létrehozni, kövesse az alábbi
 
 3. Az útválasztási táblázat felhasználói felületén válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
 
-4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0**értékre. Válassza a **Mentés** lehetőséget.
+4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0**értékre. Kattintson a **Mentés** gombra.
 
     Ekkor a következőhöz hasonló jelenik meg:
 

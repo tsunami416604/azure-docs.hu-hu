@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327854"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
@@ -31,12 +31,12 @@ Ez a cikk azt ismerteti, hogyan frissítheti a régebbi Azure Cosmos DB Java SDK
 
 A következő táblázat felsorolja a különböző Azure Cosmos DB Java SDK-kat, a csomag nevét és a kiadási információkat:
 
-| Java SDK| Kiadás dátuma | Köteg API-k   | Maven jar  | Java-csomag neve  |API-hivatkozás   | Kibocsátási megjegyzések  |
+| Java SDK| Kiadás dátuma | Köteg API-k   | Maven jar  | Java-csomag neve  |API-referencia   | Kibocsátási megjegyzések  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Aszinkron 2. x. x  | 2018. június    | Aszinkron (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Kibocsátási megjegyzések](sql-api-sdk-async-java.md) |
 | 2. x. x szinkronizálása     | Szeptember 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Kibocsátási megjegyzések](sql-api-sdk-java.md)  |
 | 3. x. x    | 2019. július    | Aszinkron (reaktor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
-| 4.0   | 2020. június   | Aszinkron (reaktor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
+| 4,0   | 2020. június   | Aszinkron (reaktor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
 
 ## <a name="sdk-level-implementation-changes"></a>Az SDK-szint implementációjának módosításai
 
@@ -87,8 +87,8 @@ A Azure Cosmos DB Java SDK 3. x. x verziójában az `CosmosItemProperties` objek
 
 ### <a name="imports"></a>Importálja
 
-* A Azure Cosmos DB Java SDK 4,0 csomagok kezdete`com.azure.cosmos`
-  * Azure Cosmos DB Java SDK 3. x. x csomag kezdete`com.azure.data.cosmos`
+* A Azure Cosmos DB Java SDK 4,0 csomagok kezdete `com.azure.cosmos`
+  * Azure Cosmos DB Java SDK 3. x. x csomag kezdete `com.azure.data.cosmos`
 
 * Azure Cosmos DB Java SDK 4,0 több osztályt helyez el egy beágyazott csomagban `com.azure.cosmos.models` . A csomagok némelyike az alábbiakat tartalmazza:
 
@@ -100,7 +100,7 @@ A Azure Cosmos DB Java SDK 3. x. x verziójában az `CosmosItemProperties` objek
   * `FeedOptions`
   * `PartitionKey`
   * `IndexingPolicy`
-  * `IndexingMode`... stb.
+  * `IndexingMode` ... stb.
 
 ### <a name="accessors"></a>Elérőnek
 
@@ -371,7 +371,7 @@ SalesOrder salesOrder = new SalesOrder(
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Java-alkalmazás létrehozása](create-sql-api-java.md) Azure Cosmos db SQL API-alapú adatkezeléshez a v4 SDK használatával
 * Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) -k használatáról

@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141278"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>A webes API-kat meghívó mobil alkalmazások jogkivonatának beolvasása
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Kötelező paraméterek a MSAL.NET
 
-`AcquireTokenInteractive`csak egy kötelező paraméterrel rendelkezik: `scopes` . A `scopes` paraméter enumerálja azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatóköröket az egyes Microsoft Graph API-k API-referenciájában találja. A hivatkozásban lépjen az "engedélyek" szakaszra.
+`AcquireTokenInteractive` csak egy kötelező paraméterrel rendelkezik: `scopes` . A `scopes` paraméter enumerálja azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatóköröket az egyes Microsoft Graph API-k API-referenciájában találja. A hivatkozásban lépjen az "engedélyek" szakaszra.
 
 Ha például [a felhasználó névjegyeit szeretné listázni](/graph/api/user-list-contacts), használja a "user. Read", a "Contacts. Read" hatókört. További információ: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
@@ -225,19 +225,19 @@ A `WithPrompt()` paraméter a felhasználóval való interaktivitást vezérli e
 
 Az osztály a következő konstansokat határozza meg:
 
-- `SelectAccount`kényszeríti a biztonságijogkivonat-szolgáltatást (STS), hogy bemutassa a fiók – kijelölés párbeszédpanelt. A párbeszédpanel tartalmazza azokat a fiókokat, amelyekhez a felhasználó rendelkezik munkamenettel. Ezt a lehetőséget akkor használhatja, ha engedélyezni szeretné a felhasználó számára a különböző identitások közötti választást. Ezzel a beállítással a MSAL küldheti `prompt=select_account` az identitás-szolgáltatónak.
+- `SelectAccount` kényszeríti a biztonságijogkivonat-szolgáltatást (STS), hogy bemutassa a fiók – kijelölés párbeszédpanelt. A párbeszédpanel tartalmazza azokat a fiókokat, amelyekhez a felhasználó rendelkezik munkamenettel. Ezt a lehetőséget akkor használhatja, ha engedélyezni szeretné a felhasználó számára a különböző identitások közötti választást. Ezzel a beállítással a MSAL küldheti `prompt=select_account` az identitás-szolgáltatónak.
 
     Az `SelectAccount` állandó az alapértelmezett, és a rendelkezésre álló információk alapján hatékonyan biztosítja a lehető legjobb élményt. A rendelkezésre álló információk közé tartozhat a fiók, a felhasználó munkamenetének jelenléte stb. Ne módosítsa ezt az alapértelmezést, ha nem rendelkezik megfelelő indokkal.
-- `Consent`lehetővé teszi a felhasználó jóváhagyását akkor is, ha a beleegyezés megadását megelőzően megadták. Ebben az esetben a MSAL elküldi `prompt=consent` az identitás-szolgáltatónak.
+- `Consent` lehetővé teszi a felhasználó jóváhagyását akkor is, ha a beleegyezés megadását megelőzően megadták. Ebben az esetben a MSAL elküldi `prompt=consent` az identitás-szolgáltatónak.
 
     Előfordulhat, hogy az `Consent` állandót a biztonsággal célzott alkalmazásokban szeretné használni, ahol a szervezet irányításához a felhasználóknak az alkalmazás használatának minden egyes alkalmával meg kell tekinteniük a beleegyezikés párbeszédpanelt.
-- `ForceLogin`lehetővé teszi a szolgáltatás számára a hitelesítő adatok megadását a felhasználónak, még akkor is, ha a kérés nem szükséges.
+- `ForceLogin` lehetővé teszi a szolgáltatás számára a hitelesítő adatok megadását a felhasználónak, még akkor is, ha a kérés nem szükséges.
 
     Ez a beállítás akkor lehet hasznos, ha a jogkivonat-beszerzés sikertelen, és engedélyezni szeretné a felhasználó számára a bejelentkezést. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Érdemes lehet ezt a lehetőséget használni a biztonsággal irányított alkalmazásokban, ahol a szervezet irányításához a felhasználónak minden alkalommal be kell jelentkeznie, amikor az alkalmazás egyes részeihez hozzáférnek.
-- `Never`csak a .NET 4,5 és a Windows-futtatókörnyezet (WinRT) esetében érhető el. Ez a konstans nem kéri a felhasználót, de megpróbálja használni a rejtett beágyazott webes nézetben tárolt cookie-t. További információ: [webböngészők használata a MSAL.net](./msal-net-web-browsers.md).
+- `Never` csak a .NET 4,5 és a Windows-futtatókörnyezet (WinRT) esetében érhető el. Ez a konstans nem kéri a felhasználót, de megpróbálja használni a rejtett beágyazott webes nézetben tárolt cookie-t. További információ: [webböngészők használata a MSAL.net](./msal-net-web-browsers.md).
 
     Ha ez a beállítás sikertelen, akkor `AcquireTokenInteractive` kivételt jelez, hogy a felhasználói felületi interakcióra van szükség. Ezután egy másik paramétert kell használnia `Prompt` .
-- `NoPrompt`nem küld üzenetet az identitás-szolgáltatónak.
+- `NoPrompt` nem küld üzenetet az identitás-szolgáltatónak.
 
     Ez a beállítás csak a Azure Active Directory B2C szerkesztési profiljaihoz használható. További információ: B2C- [specifikusak](https://aka.ms/msal-net-b2c-specificities).
 

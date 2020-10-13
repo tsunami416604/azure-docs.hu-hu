@@ -5,15 +5,15 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: ce4cc68826b39b5707549afc799d2d214e8876c6
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639180"
 ---
 Ha HTTP-proxyt kell konfigurálnia a kimenő kérelmek végrehajtásához, használja a következő két argumentumot:
 
-| Name | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 |--|--|--|
 |HTTPS_PROXY|sztring|A használandó proxy, például: `https://proxy:8888`<br>`<proxy-url>`|
 |HTTPS_PROXY_CREDS|sztring|A proxyn való hitelesítéshez szükséges hitelesítő adatok, például Felhasználónév: jelszó.|

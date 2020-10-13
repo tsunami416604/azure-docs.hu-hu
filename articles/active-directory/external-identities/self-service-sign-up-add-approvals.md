@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165240"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
@@ -50,7 +50,7 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 
 9. Az **API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget, majd válassza az **Igen**lehetőséget.
 10. A bal oldali menü **kezelés** területén válassza a **tanúsítványok & titkok**lehetőséget, majd válassza az **új ügyfél titka**lehetőséget.
-11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_, és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár**. Ezután válassza a **Hozzáadás**lehetőséget.
+11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_, és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár**. Ezután válassza a **Hozzáadás** elemet.
 12. Másolja ki az ügyfél titkos kulcsának értékét.
 
     ![Az ügyfél titkos kulcsának másolása a jóváhagyási rendszerbe való használatra](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -386,7 +386,7 @@ Content-type: application/json
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.
 - Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows). 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fi
 ms.topic: article
 ms.date: 09/05/2018
 ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385857"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
@@ -88,7 +88,7 @@ A portált olyan számítógépről is használhatja, amely az alkalmazást futt
 
 A bejövő szabályok konfigurálásával kapcsolatos további információkért tekintse [meg az App Service Environment hálózatkezelési szempontjainak](../app-service/environment/network-info.md#network-security-groups)hálózati biztonsági csoportjai című szakaszát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a Function apps figyelését:
 

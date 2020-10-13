@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262064"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
@@ -31,12 +31,12 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 | DateTimePart | rövidítéseket        |
 | ------------ | -------------------- |
-| Year (év)         | "Year", "yyyy", "éé" |
+| Year         | "Year", "yyyy", "éé" |
 | Month (hónap)        | "hónap", "PP", "m"   |
 | Nap          | "Day", "dd", "d"     |
 | Óra         | "Hour", "hh"         |
-| Perc       | "minute", "mi", "n"  |
-| Második       | "Second", "ss", "s"  |
+| Minute       | "minute", "mi", "n"  |
+| Second       | "Second", "ss", "s"  |
 | Ezredmásodperces  | "ezredmásodperc", "MS"  |
 | Mikromásodperces  | "második", "MCS" |
 | NS   | "NS", "NS"   |
@@ -87,7 +87,7 @@ Egy UTC dátum és idő ISO 8601 sztring értékét adja vissza abban a formátu
 
 ## <a name="examples"></a>Példák
   
-Az alábbi példa 1 hónapot rendel hozzá a DateTime értékhez:`2020-07-09T23:20:13.4575530Z`
+Az alábbi példa 1 hónapot rendel hozzá a DateTime értékhez: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
@@ -101,7 +101,7 @@ SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
 ]
 ```  
 
-A következő példa kivonja 2 órával a DateTime:`2020-07-09T23:20:13.4575530Z`
+A következő példa kivonja 2 órával a DateTime: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
@@ -115,8 +115,8 @@ SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
 ]
 ```  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)

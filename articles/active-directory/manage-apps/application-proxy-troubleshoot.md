@@ -12,10 +12,10 @@ ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88640854"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása
@@ -47,7 +47,7 @@ Miután megtalálta az összekötő hibáját az eseménynaplóból, a gyakori h
 | Hiba | Javasolt lépések |
 | ----- | ----------------- |
 | Az összekötő regisztrálása nem sikerült: Győződjön meg arról, hogy engedélyezte az alkalmazásproxy használatát az Azure felügyeleti portálban, és hogy helyesen adta meg a Active Directory felhasználónevét és jelszavát. Hiba: egy vagy több hiba történt. | Ha bezárta a regisztrációs ablakot az Azure AD-be való bejelentkezés nélkül, futtassa újra az összekötő varázslót, és regisztrálja az összekötőt. <br><br> Ha megnyílik a regisztrációs ablak, majd azonnal bezárul anélkül, hogy bejelentkezne, valószínűleg ezt a hibát fogja kapni. Ez a hiba akkor fordul elő, ha hálózati hiba van a rendszeren. Győződjön meg arról, hogy a böngészőből nyilvános webhelyre lehet csatlakozni, és hogy a portok az [alkalmazásproxy előfeltételeiben](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)megadott módon vannak megnyitva. |
-| A törlési hiba a regisztrációs ablakban jelenik meg. Nem folytatható | Ha ezt a hibát látja, és az ablak bezárul, helytelen felhasználónevet vagy jelszót adott meg. próbáld újra. |
+| A törlési hiba a regisztrációs ablakban jelenik meg. Nem folytatható | Ha ezt a hibát látja, és az ablak bezárul, helytelen felhasználónevet vagy jelszót adott meg. Próbálkozzon újra. |
 | Az összekötő regisztrálása nem sikerült: Győződjön meg arról, hogy engedélyezte az alkalmazásproxy használatát az Azure felügyeleti portálban, és hogy helyesen adta meg a Active Directory felhasználónevét és jelszavát. Hiba: "AADSTS50059: nem található bérlő által azonosított információ sem a kérelemben, sem pedig a megadott hitelesítő adatok alapján történő keresés, és a szolgáltatás egyszerű URI általi keresése nem sikerült. | Microsoft-fiókkal próbál bejelentkezni, és nem egy olyan tartományba, amely tagja annak a címtárnak, amelyhez hozzáférni próbál. Győződjön meg arról, hogy a rendszergazda a bérlő tartományának azonos tartománynevéhez tartozik, például ha az Azure AD-tartomány contoso.com, a rendszergazdának kell lennie admin@contoso.com . |
 | Nem sikerült beolvasni a PowerShell-parancsfájlok futtatásának aktuális végrehajtási szabályzatát. | Ha az összekötő telepítése sikertelen, ellenőrizze, hogy nincs-e letiltva a PowerShell végrehajtási házirendje. <br><br>1. Nyissa meg a Csoportházirend szerkesztőt.<br>2. Lépjen a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Windows PowerShell** elemre, és kattintson duplán **a parancsfájlok végrehajtásának bekapcsolása**lehetőségre.<br>3. a végrehajtási házirend beállítható úgy, hogy **nincs konfigurálva** vagy **engedélyezve**. Ha az **engedélyezve**értékre van állítva, győződjön meg arról, hogy a beállítások területen a végrehajtási házirend a **helyi parancsfájlok és a távoli aláírású parancsfájlok engedélyezése** vagy az **összes parancsfájl engedélyezése**beállítást adja meg. |
 | Az összekötő nem tudta letölteni a konfigurációt. | Az összekötő ügyféltanúsítvány, amely a hitelesítéshez használatos, lejárt. Ez akkor is előfordulhat, ha az összekötőt proxy mögött telepítette. Ebben az esetben az összekötő nem fér hozzá az internethez, és nem fog tudni alkalmazásokat biztosítani a távoli felhasználók számára. A Windows PowerShell parancsmagjának használatával manuálisan újítsa meg a megbízhatósági kapcsolatot `Register-AppProxyConnector` . Ha az összekötő egy proxy mögött van, akkor internet-hozzáférést kell biztosítania a "hálózati szolgáltatások" és a "helyi rendszer" összekötő fiókjaihoz. Ezt úgy teheti meg, hogy hozzáférést biztosít számukra a proxyhoz, vagy a proxy megkerüléséhez beállítja őket. |

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: eab0a54d30f2cd2829779dbfc6081445f5be0a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83648840"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
@@ -83,8 +83,8 @@ A KEDA a következő Azure Function triggereket támogatja:
 
 Használhatja a HTTP-eseményindítókat közzétevő Azure Functionsokat, de a KEDA nem kezeli közvetlenül.  A KEDA Prometheus trigger kihasználható a [http-Azure functions 1 és *n* példány közötti méretezésére](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
 
-## <a name="next-steps"></a>Következő lépések
-További információkért lásd a következőket:
+## <a name="next-steps"></a>További lépések
+További információkat találhat az alábbi forrásokban:
 
 * [Függvény létrehozása egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md)
 * [Az Azure Functions helyi kódolása és tesztelése](functions-develop-local.md)

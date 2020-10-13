@@ -16,10 +16,10 @@ ms.date: 06/11/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89178671"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Az Azure-erőforrások felügyelt identitások használata az Azure Virtual Machines szolgáltatással
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan működnek a felügyelt identitások az Az
 ## <a name="how-it-works"></a>Működés
 
 Belsőleg a felügyelt identitások speciális típusú szolgáltatások, amelyek csak az Azure-erőforrásokkal használhatók. A felügyelt identitás törlése után a rendszer automatikusan eltávolítja a megfelelő egyszerű szolgáltatást.
-Emellett, ha a felhasználó által hozzárendelt vagy rendszerhez rendelt identitás létrejött, a felügyelt identitás erőforrás-szolgáltatója (MSRP) belső tanúsítványt bocsát ki az identitásnak. 
+Továbbá egy User-Assigned vagy System-Assigned identitás létrehozásakor a felügyelt identitás erőforrás-szolgáltatója (MSRP) belső tanúsítványt bocsát ki az identitásnak. 
 
 A kód a felügyelt identitások használatával hozzáférési jogkivonatokat igényelhet az Azure AD-hitelesítést támogató szolgáltatásokhoz. Az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok biztosításáról. 
 
@@ -87,7 +87,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure-erőforrások felügyelt identitásai szolgáltatással a következő rövid útmutatók segítségével:
 

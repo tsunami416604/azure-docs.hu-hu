@@ -15,10 +15,10 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120626"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
@@ -156,9 +156,9 @@ Ebben a forgatókönyvben bemutatjuk az esetet, amikor egy egyoldalas alkalmazá
 
 MSAL.jsban van néhány olyan függvény, amely tokeneket szerez be: `loginPopup()` , `acquireTokenSilent(...)` , `acquireTokenPopup(…)` és `acquireTokenRedirect(…)` .
 
-* `loginPopup()`egy interaktív bejelentkezési kéréssel szerzi be az azonosító jogkivonatot, de nem kap hozzáférési jogkivonatokat bármely szolgáltatáshoz (beleértve a feltételes hozzáférésű védett webes API-t).
-* `acquireTokenSilent(…)`Ezután egy hozzáférési jogkivonat csendes beszerzésére használható, ami azt jelenti, hogy nem jeleníti meg a felhasználói felületet semmilyen körülmények között.
-* `acquireTokenPopup(…)`a és `acquireTokenRedirect(…)` mindkét esetben az erőforrás-tokenek interaktív igénylésére szolgálnak, ami azt jelenti, hogy mindig bejelentkezési felhasználói felületet mutatnak.
+* `loginPopup()` egy interaktív bejelentkezési kéréssel szerzi be az azonosító jogkivonatot, de nem kap hozzáférési jogkivonatokat bármely szolgáltatáshoz (beleértve a feltételes hozzáférésű védett webes API-t).
+* `acquireTokenSilent(…)` Ezután egy hozzáférési jogkivonat csendes beszerzésére használható, ami azt jelenti, hogy nem jeleníti meg a felhasználói felületet semmilyen körülmények között.
+* `acquireTokenPopup(…)` a és `acquireTokenRedirect(…)` mindkét esetben az erőforrás-tokenek interaktív igénylésére szolgálnak, ami azt jelenti, hogy mindig bejelentkezési felhasználói felületet mutatnak.
 
 Ha egy alkalmazásnak hozzáférési tokenre van szüksége a webes API meghívásához, az megkísérli a-t `acquireTokenSilent(…)` . Ha a jogkivonat-munkamenet lejárt, vagy meg kell felelnie egy feltételes hozzáférési szabályzatnak, a *acquireToken* függvény meghiúsul, és az alkalmazás a vagy a alkalmazást használja `acquireTokenPopup()` `acquireTokenRedirect()` .
 

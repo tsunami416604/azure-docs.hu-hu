@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7d0844e699c012d987c23a75e2b0874005cf535a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87099247"
 ---
-# <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure CLI beállítása az Azure HPC cache-hez
+# <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure CLI beállítása az Azure HPC Cache-hez
 
 Az alábbi lépéseket követve előkészítheti a környezetet, mielőtt az Azure CLI-t használja az Azure HPC-gyorsítótár létrehozásához vagy kezeléséhez.
 
@@ -21,7 +21,7 @@ Az alábbi lépéseket követve előkészítheti a környezetet, mielőtt az Azu
 
 ## <a name="install-azure-cli"></a>Telepítse az Azure CLI-t
 
-Az Azure HPC cache az Azure CLI 2,7-es vagy újabb verzióját igényli. Futtassa `az --version` a parancsot a telepített verzió és a függő kódtárak megkereséséhez. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli).
+Az Azure HPC cache az Azure CLI 2,7-es vagy újabb verzióját igényli. Futtassa az `az --version` parancsot a telepített verzió és a függő kódtárak megállapításához. Telepítéshez vagy frissítéshez: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az --version
@@ -39,7 +39,7 @@ Az Azure HPC cache functions nem része a fő kód alapjának, ezért telepíten
     az login
     ```
 
-    A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+    A terminálon megjelenő utasítások alapján végezze el a hitelesítési folyamatot.
 
    > [!TIP]
    > Ha több előfizetéssel rendelkezik, ki kell választania egyet. Válassza ki, amikor elindít egy Cloud Shell-munkamenetet az Azure Portalon, vagy kövesse az [Azure CLI-vel](/cli/azure/get-started-with-azure-cli#sign-in) való első lépések című témakör utasításait az előfizetés parancssorból történő beállításához.

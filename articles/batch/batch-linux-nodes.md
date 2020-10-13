@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
 ms.openlocfilehash: 6cd8a13d67c1ce169e6c9300f7ee017fd3a59d96
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146334"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
@@ -37,7 +37,7 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 | --- | --- |
 | Publisher |Canonical |
 | Ajánlat |UbuntuServer |
-| Termékváltozat |18,04 – LTS |
+| SKU |18,04 – LTS |
 | Verzió |legújabb |
 
 > [!TIP]

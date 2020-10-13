@@ -13,10 +13,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195964"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Az adatáthelyezés a másolási tevékenység használatával
@@ -101,7 +101,7 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | &nbsp; | USA déli középső régiója | USA déli középső régiója |
 | &nbsp; | USA nyugati középső régiója | USA nyugati középső régiója |
 | &nbsp; | USA nyugati régiója | USA nyugati régiója |
-| &nbsp; | USA nyugati régiója, 2. | USA nyugati régiója, 2. |
+| &nbsp; | USA 2. nyugati régiója | USA 2. nyugati régiója |
 | Kanada | Kelet-Kanada | Közép-Kanada |
 | &nbsp; | Közép-Kanada | Közép-Kanada |
 | Brazília | Dél-Brazília | Dél-Brazília |

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306939"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
@@ -75,7 +75,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A New-AzMaintenanceConfiguration használatával karbantartási konfigurációt hozhat létre egy ütemezett ablaktal, amikor az Azure alkalmazza a frissítéseket az erőforrásokon. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
+A New-AzMaintenanceConfiguration használatával hozzon létre egy karbantartási konfigurációt egy ütemezett ablaktal, amikor az Azure alkalmazza a frissítéseket az erőforrásokon. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `

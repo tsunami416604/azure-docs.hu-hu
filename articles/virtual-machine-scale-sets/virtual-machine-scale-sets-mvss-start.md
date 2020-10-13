@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831498"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Tudnivalók a virtuálisgép-méretezési csoport sablonjairól
@@ -165,7 +165,7 @@ A következő kódrészletben használja a paramétereket, mielőtt beállítja 
 ### <a name="specify-vm-network-configuration"></a>Virtuálisgép-hálózat konfigurációjának meghatározása
 Végül adja meg a méretezési csoportba tartozó virtuális gépek hálózati konfigurációját. Ebben az esetben csak a korábban létrehozott alhálózat AZONOSÍTÓját kell megadnia. Ez azt jelzi, hogy a méretezési csoport a hálózati adaptereket ezen az alhálózaton helyezi el.
 
-Az alhálózatot tartalmazó virtuális hálózat AZONOSÍTÓját a sablon függvény használatával érheti el `resourceId` . Ez a függvény az erőforrás típusát és nevét veszi figyelembe, és az adott erőforrás teljes azonosítóját adja vissza. Ennek az AZONOSÍTÓnak a formája a következő:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+Az alhálózatot tartalmazó virtuális hálózat AZONOSÍTÓját a sablon függvény használatával érheti el `resourceId` . Ez a függvény az erőforrás típusát és nevét veszi figyelembe, és az adott erőforrás teljes azonosítóját adja vissza. Ennek az AZONOSÍTÓnak a formája a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
 A virtuális hálózat azonosítója azonban nem elég. Adja meg azt a megadott alhálózatot, amelyhez a méretezési csoport virtuális gépei tartoznak. Ehhez fűzze össze a `/subnets/mySubnet` virtuális hálózat azonosítóját. Az eredmény az alhálózat teljes azonosítója. Ezt az összefűzést a függvénnyel végezheti el `concat` , amely karakterláncok sorozatát veszi figyelembe, és visszaadja az összefűzését.
 

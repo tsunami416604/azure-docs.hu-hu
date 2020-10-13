@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236335"
 ---
 # <a name="design-for-querying"></a>Tervezés lekérdezéshez
@@ -41,7 +41,7 @@ A következő példák azt feltételezik, hogy a Table Service az alábbi strukt
 | **RowKey** (alkalmazott azonosítója) |Sztring |
 | **FirstName** |Sztring |
 | **LastName** |Sztring |
-| **Kor** |Egész szám |
+| **Életkor** |Egész szám |
 | **EmailAddress** |Sztring |
 
 Az [Azure Table Storage áttekintése című](table-storage-overview.md) cikk az Azure Table Service főbb funkcióit ismerteti, amelyek közvetlen hatással vannak a lekérdezés tervezésére. Ezek a következő általános irányelveket eredményezik Table service lekérdezések tervezéséhez. Vegye figyelembe, hogy az alábbi példákban használt szűrési szintaxis a Table service REST API, további információ: [lekérdezési entitások](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
@@ -96,7 +96,7 @@ Számos alkalmazás rendelkezik a különböző megrendelésekben tárolt adatok
 * [Partíciók közötti másodlagos index minta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző RowKey-értékekkel különálló partíciókban külön táblákban, amelyek lehetővé teszik a gyors és hatékony keresési és alternatív rendezési sorrendek használatát a különböző RowKey értékek használatával.
 * [Naplóbeli farok minta](table-storage-design-patterns.md#log-tail-pattern) – a partícióhoz legutóbb hozzáadott *n* entitások beolvasása egy **RowKey** értékkel, amely fordított dátum és idő sorrendbe rendezi.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Táblatervezési minták](table-storage-design-patterns.md)
 - [Kapcsolatok modellezése](table-storage-design-modeling.md)

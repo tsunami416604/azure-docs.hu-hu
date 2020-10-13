@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306395"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
@@ -41,7 +41,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 ## <a name="what-is-in-the-report"></a>Mi a jelentés?
 A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![ képernyőkép, amely egy kockázatos IP-jelentést jelenít meg az oszlopfejlécek kiemelésével.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Jelentéselem | Description |
+| Jelentéselem | Leírás |
 | ------- | ----------- |
 | Időbélyegző | Az észlelési időszak kezdetét jelző, az Azure Portal helyi ideje szerinti időbélyegző.<br /> Az összes napi eseményt UTC szerint éjfélkor állítja elő a rendszer. <br />Az óránkénti eseményeknél az időbélyeg az óra kezdetére van kerekítve. Az exportált fájlban a „firstAuditTimestamp” érték mutatja az első tevékenység kezdetét. |
 | Eseményindító típusa | Az észlelési időszak típusa. Az összesítési eseményindítók óránkénti és a napi típusúak lehetnek. Ez hasznos lehet a nagy gyakoriságú találgatásos támadások észlelésére a lassú támadásokkal szemben, ahol a kísérletek eloszlanak egy adott napon belül. |
@@ -68,7 +68,7 @@ A terheléselosztó összesítési bejelentkezési tevékenységei meghiúsultak
 ## <a name="download-risky-ip-report"></a>Kockázatos IP-jelentés letöltése 
 A **letöltési** funkcióval az összes kockázatos IP-cím listája exportálható a Connect Health portálról az elmúlt 30 napra vonatkozóan. Az exportált listában szerepel az egyes észlelési időszakokban előforduló összes sikertelen AD FS-bejelentkezési tevékenység, így az exportálás után testreszabhatja a szűrési feltételeket. A portálon kiemelt összesítések mellett az exportált lista IP-címekre lebontva további részleteket is tartalmaz a sikertelen bejelentkezési tevékenységekről:
 
-|  Jelentéselem  |  Description  | 
+|  Jelentéselem  |  Leírás  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | A sikertelen tevékenységek kezdetének első időbélyegzője az észlelési időszakon belül.  | 
 | lastAuditTimestamp | A sikertelen tevékenységek végének utolsó időbélyegzője az észlelési időszakon belül.  | 
@@ -83,7 +83,7 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 
 ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4d.png)
 
-| Küszöbértékelem | Description |
+| Küszöbértékelem | Leírás |
 | --- | --- |
 | (Helytelen felhasználónév/jelszó + extranet zárolás) naponta  | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **napi** száma meghaladja az értéket. |
 | (Helytelen felhasználónév/jelszó + extranet zárolás) óránként | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **óránkénti** száma meghaladja az értéket. |
