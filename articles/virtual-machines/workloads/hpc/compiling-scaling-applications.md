@@ -1,23 +1,18 @@
 ---
 title: HPC-alkalmazások méretezése – Azure Virtual Machines | Microsoft Docs
 description: Ismerje meg, hogyan méretezheti a HPC-alkalmazásokat az Azure-beli virtuális gépeken.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2c20fcf2624c1f620b68b46e56e0602f15041348
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87020111"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993834"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
 
@@ -84,6 +79,6 @@ A következő javaslatok alkalmazhatók az alkalmazások optimális méretezés�
 * Egyes alkalmazások, amelyek rendkívül érzékenyek a memória sávszélességére, kisebb számú magot használhatnak a CCX. Ezekhez az alkalmazásokhoz 3 vagy 2 mag/CCX használatával csökkentheti a memória sávszélességének növelését, és magasabb, valós teljesítményt vagy konzisztens méretezhetőséget eredményezhet. Az MPI-Allreduce különösen hasznosak lehetnek.
 * A nagyobb méretű méretezési futtatásokhoz javasolt az UD vagy a Hybrid RC + UD átvitel használata. Számos MPI-függvénytár/futásidejű kódtár végzi ezt belsőleg (például UCX vagy MVAPICH2). Ellenőrizze a nagy léptékű futtatások átviteli konfigurációit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-beli [HPC](/azure/architecture/topics/high-performance-computing/) -ről.

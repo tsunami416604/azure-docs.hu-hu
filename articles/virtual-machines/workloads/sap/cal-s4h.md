@@ -1,26 +1,18 @@
 ---
 title: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen | Microsoft Docs
 description: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen
-services: virtual-machines-linux
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 116de28501b77262ef126ed420982d853376da4e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77616210"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993398"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4HANA üzembe helyezése az Azure-ban
 Ez a cikk bemutatja, hogyan helyezhet üzembe S/4HANA az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3,0 használatával. Más SAP HANA-alapú megoldások, például a BW/4HANA üzembe helyezéséhez kövesse ugyanezeket a lépéseket.

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992753"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Az Azure Stack Edge Pro korlátai
 
@@ -27,12 +27,16 @@ Ezeket a korlátokat a Microsoft Azure Stack Edge Pro-megoldás üzembe helyezé
 
 Az alábbi táblázat az Azure Stack Edge Pro-eszköz korlátozásait ismerteti. 
 
+Az alábbi táblázat az Azure Stack Edge-eszközre vonatkozó korlátozásokat ismerteti.
+
 | Leírás | Érték |
 |---|---|
 |Nem. fájl/eszköz |100 000 000 |
-|Nem. a megosztások eszközönként |24 |
 |Nem. megosztások száma tárolóban |1 |
+|Maximum nem. a megosztási végpontok és a REST-végpontok eszközönként| 24 |
+|Maximum nem. a többszintes Storage-fiókok száma eszközönként| 24|
 |Megosztásba írt fájlok maximális mérete| 5 TB |
+|Erőforráscsoportok maximális száma eszközönként| 800 |
 
 ## <a name="azure-storage-limits"></a>Azure Storage-korlátok
 

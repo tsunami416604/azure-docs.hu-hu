@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992780"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler
 
@@ -107,7 +107,7 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
 
     ![A git-tárház beállítása](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-További üzembe helyezési lehetőségek: [app Service dokumentáció](https://docs.microsoft.com/azure/app-service).
+További üzembe helyezési lehetőségek: [app Service dokumentáció](../../app-service/index.yml).
 
 ## <a name="deploy-your-project"></a>A projekt üzembe helyezése
 
@@ -168,8 +168,7 @@ További üzembe helyezési lehetőségek: [app Service dokumentáció](https://
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha Azure App Service által üzemeltetett egyéni tárolókat használ, a Application Insights Profiler engedélyezéséhez kövesse az [ Service Profiler engedélyezése a tároló ASP.net Core alkalmazás számára](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) című témakör utasításait.
 
 Jelentse be a Application Insights GitHub-adattárral kapcsolatos problémákat vagy javaslatokat: [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
-

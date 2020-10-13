@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ec7cd2b0f573a9a74f82546da2367edcf721539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441449"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993260"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor üzembe helyezése méretezéssel Azure Policy használatával
 Néhány Azure Monitor funkció egyszer vagy korlátozott számú alkalommal van konfigurálva, másokat meg kell ismételni minden figyelni kívánt erőforrásnál. Ez a cikk azokat a módszereket ismerteti, amelyekkel a Azure Policy használatával méretezhetők a Azure Monitorek, így biztosítható, hogy az összes Azure-erőforrás monitorozása következetes legyen és pontosan legyen konfigurálva.
@@ -33,7 +33,7 @@ A Azure Policy a következő táblázatban szereplő objektumokból áll. Az egy
 | Hozzárendelés | Egy házirend-definíció vagy kezdeményezés csak akkor lép érvénybe, ha hozzá van rendelve egy hatókörhöz. Például hozzárendelhet egy szabályzatot egy erőforráscsoporthoz, hogy az az adott erőforrásban létrehozott összes erőforrásra alkalmazza azt, vagy alkalmazza azt egy előfizetésre, hogy alkalmazza az adott előfizetés összes erőforrására.  További részletekért tekintse meg [Azure Policy hozzárendelési struktúrát](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>A Azure Monitor beépített szabályzat-definíciói
-Azure Policy tartalmaz több, Azure Monitorhoz kapcsolódó előre összeépített definíciót is. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A **figyelés** kategóriájában található beépített szabályzat teljes listájáért lásd: [Azure Policy beépített házirend-definíciók a Azure monitorhoz](samples/policy-samples.md).
+Azure Policy tartalmaz több, Azure Monitorhoz kapcsolódó előre összeépített definíciót is. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A **figyelés** kategóriájában található beépített szabályzat teljes listájáért lásd: [Azure Policy beépített házirend-definíciók a Azure monitorhoz](./samples/policy-reference.md).
 
 A figyeléshez kapcsolódó beépített szabályzat-definíciók megtekintéséhez hajtsa végre a következőket:
 

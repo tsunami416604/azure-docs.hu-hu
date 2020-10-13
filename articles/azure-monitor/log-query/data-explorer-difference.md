@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585701"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993187"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor a naplózási lekérdezés nyelvi különbségeit
 
@@ -33,7 +33,7 @@ A következő szakaszok ismertetik a Kusto lekérdezési nyelvének azon elemeit
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
-* [adatbázis ()](/azure/kusto/query/databasefunction)
+* [database()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -54,7 +54,7 @@ A következő operátorok bizonyos Azure Monitor szolgáltatásokat támogatnak,
 * [alkalmazás ()](app-expression.md)
 * [munkaterület ()](workspace-expression.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A különböző erőforrásokra mutató hivatkozások beszerzése [Azure monitor napló lekérdezésének írásához](query-language.md).
+- A különböző erőforrásokra mutató hivatkozások beszerzése [Azure monitor napló lekérdezésének írásához](/azure/data-explorer/kusto/query/).
 - A [Kusto lekérdezési nyelvének teljes dokumentációjának](/azure/kusto/query/)elérése.

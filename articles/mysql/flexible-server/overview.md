@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993738"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -117,8 +117,19 @@ A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi 
 - **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközökkel, mint a mysqldump/mydumper, a lehető leggyorsabb módon telepíthetik az áttelepítést. A részletekért lásd: az áttelepítés a dump és a Restore használatával. 
 - **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) is kihasználható. 
 
+## <a name="azure-regions"></a>Azure-régiók
+
+A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A Azure Database for MySQL rugalmas kiszolgálója jelenleg a következő Azure-régiókban érhető el:
+
+- Észak-Európa
+- Délkelet-Ázsia
+- USA 2. keleti régiója
+- USA 2. nyugati régiója
+
+Hamarosan új kiszolgálók hozzáadásán dolgozunk.
+
 ## <a name="contacts"></a>Kapcsolattartók
-Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask a MySQL-hez készült Azure-adatbázis](mailto:AskAzureDBforMySQL@service.microsoft.com)). Ez az e-mail-cím nem technikai támogatási alias.
+Ha bármilyen kérdése vagy javaslata van Azure Database for MySQL rugalmas kiszolgálón, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask Az Azure db for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek). Ez az e-mail-cím nem technikai támogatási alias.
 
 Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030344"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993717"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása az Azure Monitor segítségével
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.
@@ -80,7 +80,7 @@ A diagnosztikai beállítások határozzák meg, hogy az adott erőforráshoz mi
 - Az [Event hubok](../platform/resource-logs.md#send-to-azure-event-hubs) külső rendszerekre, például harmadik féltől származó Siem-re és más log Analytics-megoldásokra továbbítják az adatátvitelt. 
 - [Azure Storage-fiók](../platform/resource-logs.md#send-to-azure-storage) , amely naplózásra, statikus elemzésre vagy biztonsági mentésre használható.
 
-Kövesse a diagnosztikai beállítások [létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../platform/diagnostic-settings.md) című eljárást a Azure Portalon keresztüli diagnosztikai beállítások létrehozásához és kezeléséhez. Lásd: [diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablonnal egy](../platform/diagnostic-settings-template.md) sablonban való definiáláshoz, valamint az erőforrások teljes figyelésének engedélyezése a létrehozáskor.
+Kövesse a diagnosztikai beállítások [létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../platform/diagnostic-settings.md) című eljárást a Azure Portalon keresztüli diagnosztikai beállítások létrehozásához és kezeléséhez. Lásd: [diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablonnal egy](../samples/resource-manager-diagnostic-settings.md) sablonban való definiáláshoz, valamint az erőforrások teljes figyelésének engedélyezése a létrehozáskor.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Figyelés a Azure Portal
@@ -160,5 +160,4 @@ Különböző típusú figyelési adattípusokat használ a riasztási szabályo
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A különböző Azure-szolgáltatásokhoz tartozó erőforrás-naplók részleteiért lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/resource-logs-schema.md) .  
-
+* A különböző Azure-szolgáltatásokhoz tartozó erőforrás-naplók részleteiért lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/resource-logs-schema.md) .

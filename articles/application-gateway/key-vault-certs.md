@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: c1f6cc21c7a45dbc5c7be7e3f3cc46b4ec4e8c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282347"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993639"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-lezárás Key Vault tanúsítványokkal
 
@@ -32,7 +32,7 @@ Application Gateway integrációja Key Vault számos előnnyel jár, többek kö
 - Meglévő tanúsítványok a Key vaultba való importálásának támogatása. Vagy Key Vault API-k használatával új tanúsítványokat hozhat létre és kezelhet bármely megbízható Key Vault-partnerrel.
 - A Key vaultban tárolt tanúsítványok automatikus megújításának támogatása.
 
-Application Gateway jelenleg csak a szoftveresen érvényesített tanúsítványokat támogatja. Hardveres biztonsági modul (HSM) – az érvényesített tanúsítványok nem támogatottak. Ha Application Gateway Key Vault tanúsítványok használatára van konfigurálva, a példányok lekérik a tanúsítványt a Key Vaultról, és helyileg telepítik a TLS-leállításhoz. A példányok is lekérdezik Key Vault 24 órás időközönként a tanúsítvány megújított verziójának lekéréséhez, ha van ilyen. Ha a rendszer frissített tanúsítványt talál, a rendszer automatikusan elforgatja a HTTPS-figyelőhöz társított TLS/SSL-tanúsítványt.
+Application Gateway jelenleg csak a szoftveresen érvényesített tanúsítványokat támogatja. Hardveres biztonsági modul (HSM) – az érvényesített tanúsítványok nem támogatottak. Ha Application Gateway Key Vault tanúsítványok használatára van konfigurálva, a példányok lekérik a tanúsítványt a Key Vaultról, és helyileg telepítik a TLS-leállításhoz. A példányok is lekérdezik Key Vault 4 órás időközönként a tanúsítvány megújított verziójának lekéréséhez, ha van ilyen. Ha a rendszer frissített tanúsítványt talál, a rendszer automatikusan elforgatja a HTTPS-figyelőhöz társított TLS/SSL-tanúsítványt.
 
 > [!NOTE]
 > A Azure Portal csak a kulcstartó tanúsítványait támogatja, a titkokat nem. Application Gateway továbbra is támogatja a kulcstartóra hivatkozó titkokat, de csak olyan nem portálon keresztüli erőforrásokon keresztül, mint például a PowerShell, a CLI, az API, az ARM-sablonok stb. 
@@ -72,6 +72,6 @@ Application Gateway integrációja Key Vault megköveteli a három lépésből �
 
    ![Key Vault-tanúsítványok](media/key-vault-certs/ag-kv.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A TLS-megszakítás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával](configure-keyvault-ps.md)

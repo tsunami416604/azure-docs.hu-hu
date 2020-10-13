@@ -4,12 +4,12 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759373"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992846"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -67,7 +67,7 @@ Ezen helyzet elkerülése érdekében hozzon létre külön erőforrásokat az e
 
 A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja a Application Insights SDK-t úgy, hogy az a létrehozási konfigurációtól függően egy másik kialakítási kulcsot is felvesz. 
 
-Megtudhatja, hogyan lehet [dinamikusan beállítani a kialakítási kulcsot](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) különböző fázisokban. 
+Megtudhatja, hogyan lehet [dinamikusan beállítani a kialakítási kulcsot](./separate-resources.md#dynamic-ikey) különböző fázisokban. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Application Insights-erőforrás létrehozása mindegyik szerepkörhöz
 
@@ -290,4 +290,3 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támo
 [qna]: ../faq.md
 [redfield]: ./monitor-performance-live-website-now.md
 [start]: ./app-insights-overview.md
-

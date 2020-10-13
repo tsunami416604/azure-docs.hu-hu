@@ -1,26 +1,18 @@
 ---
 title: Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez | Microsoft Docs
 description: Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: bburns
-editor: ''
-tags: azure-resource-manager
-keywords: SAP, adatbázis-kezelő, tárolás, ultrakönnyű lemez, Premium Storage
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974821"
+ms.locfileid: "91993291"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -76,7 +68,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 Bizonyos Microsoft-dokumentációk többek között egy kicsit másképpen ismertetik a létesítmények közötti forgatókönyveket, különösen a magas rendelkezésre állást biztosító adatbázis-konfigurációk esetében Az SAP-vel kapcsolatos dokumentumok esetében a létesítmények közötti forgatókönyv a telephelyek közötti vagy a privát [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -kapcsolatra, valamint egy, a helyszíni és az Azure közötti elosztott SAP-környezetre vezethető vissza.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 Az Azure-beli SAP-munkaterheléseken más cikkek is elérhetők. Az Azure-beli SAP-számítási [feladatok első lépései: első lépések](./get-started.md) , majd válassza ki a kívánt területét.
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területek tekintetében.

@@ -1,26 +1,18 @@
 ---
 title: SAP ide EHP7 SP3 telepítése az SAP ERP 6,0-hez az Azure-on | Microsoft Docs
 description: SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban
-services: virtual-machines-windows
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 56f5072c90a699270a92af317976c8f56bd3e2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536528"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993447"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy SQL Server és az Azure-beli Windows operációs rendszert futtató SAP ide-rendszert az SAP Cloud Appliance Library (SAP CAL) 3,0 használatával. A képernyőképen a lépésenkénti folyamat látható. Egy másik megoldás üzembe helyezéséhez kövesse ugyanezen lépéseket.
@@ -105,7 +97,7 @@ Sikeresen létrehozott egy SAP CAL-fiókot, amely a következőket teszi lehető
 
     ![SAP CAL alapszintű mód: példány létrehozása](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Kattintson a **Létrehozás** lehetőségre. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és készen áll a használatra: 
+1. Kattintson a **Létrehozás** gombra. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és készen áll a használatra: 
 
     ![SAP CAL-példányok](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

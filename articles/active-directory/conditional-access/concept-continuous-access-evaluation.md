@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266059"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992806"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -103,7 +103,7 @@ Ha nem használ CAE-kompatibilis ügyfeleket, akkor az alapértelmezett hozzáf�
 
 1. A CAE-kompatibilis ügyfelek bemutatják a hitelesítő adatokat vagy frissítési jogkivonatot az Azure AD-nek, amely bizonyos erőforrások hozzáférési jogkivonatát kéri.
 1. A rendszer a hozzáférési jogkivonatot más összetevőkkel együtt adja vissza az ügyfélnek.
-1. A rendszergazda explicit módon [visszavonja a felhasználó összes frissítési jogkivonatát](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). A rendszer visszavonási eseményt küld az erőforrás-szolgáltatónak az Azure AD-től.
+1. A rendszergazda explicit módon [visszavonja a felhasználó összes frissítési jogkivonatát](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). A rendszer visszavonási eseményt küld az erőforrás-szolgáltatónak az Azure AD-től.
 1. Az erőforrás-szolgáltató hozzáférési tokent mutat be. Az erőforrás-szolgáltató kiértékeli a jogkivonat érvényességét, és ellenőrzi, hogy van-e visszavonási esemény a felhasználó számára. Az erőforrás-szolgáltató ezt az információt használja annak eldöntésére, hogy hozzáférést biztosítson az erőforráshoz, vagy sem.
 1. Ebben az esetben az erőforrás-szolgáltató megtagadja a hozzáférést, és egy 401 + jogcím-feladatot küld vissza az ügyfélnek.
 1. A CAE-kompatibilis ügyfél tisztában van a 401 + jogcím kihívással. Megkerüli a gyorsítótárat, és visszakerül az 1. lépésre, és visszaküldi a frissítési tokent az Azure AD-re vonatkozó jogcím-kihívással együtt. Az Azure AD ezután újraértékeli az összes feltételt, és megkéri a felhasználót, hogy végezze el az újrahitelesítést ebben az esetben.
@@ -144,7 +144,7 @@ A CAE esetében csak az elnevezett IP-alapú, névvel ellátott helyszínekre vo
 
 ### <a name="ip-address-configuration"></a>IP-címkonfiguráció
 
-A személyazonosság-szolgáltató és az erőforrás-szolgáltatók különböző IP-címeket láthatnak. Ez az eltérés a szervezeten belüli hálózati proxy-implementációk vagy az identitás-szolgáltató és az erőforrás-szolgáltató közötti helytelen IPv4/IPv6-konfigurációk miatt fordulhat elő. Példa:
+A személyazonosság-szolgáltató és az erőforrás-szolgáltatók különböző IP-címeket láthatnak. Ez az eltérés a szervezeten belüli hálózati proxy-implementációk vagy az identitás-szolgáltató és az erőforrás-szolgáltató közötti helytelen IPv4/IPv6-konfigurációk miatt fordulhat elő. Például:
 
 - Az identitás-szolgáltató egy IP-címet lát az ügyféltől.
 - Az erőforrás-szolgáltató egy másik IP-címet lát az ügyféltől a proxyn keresztüli továbbítás után.
@@ -159,7 +159,7 @@ Ha ez a forgatókönyv a végtelen hurkok elkerülése érdekében a környezetb
 | Nagyvállalati csatorna Semi-Annual | Ha az engedélyezve vagy az 1 értékre van állítva, a CAE nem támogatott. | Ha az engedélyezve vagy az 1 értékre van állítva, a CAE nem támogatott. |
 | Aktuális csatorna <br> vagy <br> Havi nagyvállalati csatorna | A CAE a beállítástól függetlenül támogatott | A CAE a beállítástól függetlenül támogatott |
 
-Az Office frissítési csatornáinak ismertetését lásd: [Microsoft 365 alkalmazások frissítési csatornáinak áttekintése](https://docs.microsoft.com/deployoffice/overview-update-channels). Javasoljuk, hogy a szervezetek ne tiltsa le a web Account Managert (WAM).
+Az Office frissítési csatornáinak ismertetését lásd: [Microsoft 365 alkalmazások frissítési csatornáinak áttekintése](/deployoffice/overview-update-channels). Javasoljuk, hogy a szervezetek ne tiltsa le a web Account Managert (WAM).
 
 ### <a name="policy-change-timing"></a>Házirend-módosítás időzítése
 

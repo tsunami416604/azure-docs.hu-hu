@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 10/12/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116080"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993172"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -89,7 +89,7 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
 Az új naplók a Application Insightsban való megtekintése előtt rövid késleltetéssel, jellemzően kevesebb mint öt perc alatt elérhető.
 
 1. Nyissa meg a [Azure Portalban](https://portal.azure.com)létrehozott Application Insights erőforrást.
-1. Az **Áttekintés** menüben válassza az **elemzés**lehetőséget.
+1. Az **Áttekintés** lapon válassza a **naplók**lehetőséget.
 1. Nyisson meg egy új fület Application Insights.
 
 Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
@@ -103,7 +103,7 @@ Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb kere
 
 A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
 

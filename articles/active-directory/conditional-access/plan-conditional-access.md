@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258676"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992858"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) feltételes hozzáférés (CA) olyan jeleket
 
 A Microsoft a biztonsági [alapértékek](../fundamentals/concept-fundamentals-security-defaults.md) nevű szabványos feltételes házirendeket biztosít, amelyek biztosítják az alapszintű biztonságot. Előfordulhat azonban, hogy a szervezet nagyobb rugalmasságot igényel, mint a biztonsági alapértékek ajánlata. A feltételes hozzáférés segítségével testre szabhatja a biztonsági beállításokat, és részletesebben is testreszabhatja az igényeinek megfelelő új házirendeket.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 Mielőtt elkezdené, győződjön meg arról, hogyan működik a [feltételes hozzáférés](overview.md) , és hogy mikor érdemes használni.
 
@@ -89,7 +89,7 @@ A környezetében érdemes figyelembe vennie a szervezeti igényeket is.
 
 ### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és a projekt szerepkörei egyértelműek.
+A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és a projekt szerepkörei egyértelműek.
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 

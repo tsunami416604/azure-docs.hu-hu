@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 818ef3a29724f18cad5924bf1961b74afadfdb75
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939596"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993615"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
-A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. 
+Security Center nyomon követheti a nem Azure-beli számítógépek biztonsági állapotát, de először össze kell kapcsolni őket az Azure-ban. 
 
-A nem Azure-beli számítógépeket a következő módokon adhatja hozzá:
+A nem Azure-beli számítógépeket a következő módokon lehet összekötni:
 
 - Az Azure arc használata (**ajánlott**)
 - Security Center a Azure Portal oldalain (**első lépések** és **leltár**)
@@ -30,7 +30,7 @@ Ezek mindegyikét ezen a lapon mutatjuk be.
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Nem Azure-beli gépek hozzáadása az Azure Arcmal
 
-Az Azure arc használata a nem Azure-beli gépek Azure Security Centerhoz való hozzáadásának előnyben részesített módja.
+Az Azure arc a nem Azure-beli gépek Azure Security Centerhoz való hozzáadásának előnyben részesített módja.
 
 Az Azure arc engedélyezésével rendelkező gépek Azure-erőforrásként jelennek meg, és Security Center a többi Azure-erőforráshoz hasonló javaslatokkal jelennek meg. 
 
@@ -50,7 +50,7 @@ További információ az [Azure arcről](../azure-arc/servers/overview.md).
 
 ::: zone pivot="azure-portal"
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Nem Azure-beli gépek hozzáadása Security Center portál oldalairól
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Nem Azure-beli gépek hozzáadása a Azure Portal
 
 1. A Security Center menüjében nyissa meg az **első lépések** lapot.
 1. Válassza a **Bevezetés** lapot.

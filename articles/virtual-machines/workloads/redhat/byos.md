@@ -1,25 +1,18 @@
 ---
 title: Red Hat Enterprise Linux saját előfizetéssel rendelkező Azure-lemezképek | Microsoft Docs
 description: Ismerkedjen meg a saját előfizetésekkel kapcsolatos rendszerképekkel Red Hat Enterprise Linux Azure-ban.
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
-ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87052162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993333"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -215,7 +208,7 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
 - Ha az Automation használatával helyez üzembe virtuális gépeket a RHEL BYOS-lemezképből, meg kell adnia a minta parancsaiban láthatóhoz hasonló csomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Red Hat Cloud Access további információi a [Red Hat nyilvános felhő dokumentációjában](https://access.redhat.com/public-cloud) találhatók
 - A Felhőbeli hozzáférés részletes útmutatóját és a program részleteit a [Red Hat Cloud Access dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)találja.

@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322142"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993883"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -81,7 +81,7 @@ Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket a
      | **Erőforráscsoport**     | Egy új erőforráscsoport, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben létrehozza az új Application Insights-erőforrást |
    | **Hely** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-3. Kattintson a **Létrehozás** elemre.
+3. Kattintson a **Létrehozás** gombra.
 
 Ha az alkalmazás több platformot (iOS, Android stb.) támogat, érdemes minden platform számára külön Application Insights-erőforrást létrehozni.
 
@@ -124,7 +124,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
    1. Jelölje ki a lekérdezést úgy, hogy a lekérdezés egy tetszőleges pontjára kattint a szövegszerkesztőben.
    2. Ezután kattintson az **Indítás** lehetőségre a lekérdezés futtatásához. 
 
-   További információk az [Application Insights Analyticsről](../log-query/log-query-overview.md) és a [Log Analytics lekérdezési nyelvről](https://aka.ms/LogAnalyticsLanguageReference).
+   További információk az [Application Insights Analyticsről](../log-query/log-query-overview.md) és a [Log Analytics lekérdezési nyelvről](/azure/data-explorer/kusto/query/).
 
 
 2. **Szegmentálja és szűrje az egyéniesemény-telemetriát.** Az Application Insights **Áttekintés** oldalán a tartalomjegyzékből válassza ki a **Felhasználók** lehetőséget.
@@ -150,7 +150,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
    * **Munkafüzetek** – képi megjelenítések és szöveg megosztható jelentésbe való egyesítéséhez.
    * **Kohorszok** – az adott felhasználó- vagy eseménycsoportok elnevezéséhez és mentéséhez, hogy könnyen lehessen rájuk hivatkozni más elemzési eszközökből.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem szeretné tovább használni az Application Insightsot az App Centerrel, kapcsolja ki az exportálást az App Centerben, és törölje az Application Insights-erőforrást. Ez meg fogja akadályozni, hogy az Application Insights további díjakat számoljon fel ezért az erőforrásért.
 
@@ -164,8 +164,7 @@ Az Application Insights-erőforrás törlése:
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd válassza ki az erőforráscsoportot, amelyben az Application Insights-erőforrás létrejött.
 2. Nyissa meg a törölni kívánt Application Insights-erőforrást. Kattintson a **Törlés** gombra az erőforrás felső menüjében, és hagyja jóvá. Ez véglegesen törölni fogja az adatok Application Insightsba exportált másolatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan használják az ügyfelek az alkalmazást](../app/usage-overview.md)
-
