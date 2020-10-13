@@ -8,10 +8,10 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
 ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710617"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
@@ -90,7 +90,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Az
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -102,7 +102,7 @@ Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a pia
 
 Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). Ez a hosszú összefoglalás a piactér keresési eredményei között is felhasználható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

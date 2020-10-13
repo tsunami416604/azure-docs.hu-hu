@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.openlocfilehash: a09989e57729862cb18f148f95eb83f81a775b7d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542223"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
@@ -330,7 +330,7 @@ Videók:
 
 * [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
 * [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)

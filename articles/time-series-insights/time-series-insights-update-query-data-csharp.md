@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667843"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C Sharp használatával
@@ -65,7 +65,7 @@ A mintakód több szükséges függőséggel rendelkezik, amelyek megtekinthető
 
 Töltse le a csomagokat a Visual Studio 2019-ban a **Build**  >  **Build megoldás** kiválasztásával.
 
-Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www.nuget.org/)használatával. Például:
+Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www.nuget.org/)használatával. Példa:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 

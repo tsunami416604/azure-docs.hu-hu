@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627372"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz 
@@ -67,7 +67,7 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
 
     ![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - A Autoworkplace.exe nem tud csendes hitelesítést végezni az Azure AD-vel vagy AD FSval. Ezt okozhatja a hiányzó vagy helytelenül konfigurált AD FS (összevont tartományok esetében), illetve hiányzik vagy helytelenül van konfigurálva az Azure AD zökkenőmentes egyszeri bejelentkezés (felügyelt tartományokhoz) vagy hálózati problémák. 
+   - A Autoworkplace.exe nem tud csendes hitelesítést végezni az Azure AD-vel vagy AD FSval. Ezt okozhatja a hiányzó vagy helytelenül konfigurált AD FS (összevont tartományok esetében), illetve hiányzik vagy helytelenül konfigurált Azure AD zökkenőmentes önálló Sign-On (felügyelt tartományokhoz) vagy hálózati problémák. 
    - Előfordulhat, hogy a többtényezős hitelesítés (MFA) engedélyezve van/konfigurálva van a felhasználóhoz, és a WIAORMULTIAUTHN nincs konfigurálva a AD FS-kiszolgálón. 
    - Egy másik lehetőség, hogy a Home Realm Discovery (HRD) oldal a felhasználói interakcióra vár, ami megakadályozza, hogy **autoworkplace.exe** a jogkivonat csendes kérelmezését.
    - Előfordulhat, hogy a AD FS és az Azure AD URL-címei hiányoznak az IE intranet zónájában az ügyfélen.
@@ -102,6 +102,6 @@ Az állapotadatok az eseménynaplóban találhatók: **alkalmazások és szolgá
    - Vagy ha a tartomány felügyelt, akkor a zökkenőmentes egyszeri bejelentkezés nem lett konfigurálva vagy nem működik.
    - A felhasználó elérte az eszközök korlátját. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További kérdések: eszközkezelés – [Gyakori kérdések](faq.md)  

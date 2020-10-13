@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324229"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970129"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
 Jelenleg az Azure Digital Twins API-kkal való interakcióhoz az egyetlen közzétett adatsíkok-SDK a .NET (C#), a JavaScript és a Java. Ezekről az SDK-król és az API-król az [*útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)című témakörben olvashat bővebben. Ha más nyelven dolgozik, ebből a cikkből megtudhatja, hogyan hozhatja ki saját adatközpont SDK-t az Ön által választott nyelven az autorest használatával.
 
 >[!NOTE]
-> Az autorest használatával is létrehozhatja a Control Plane SDK-t, ha szeretné. Ehhez hajtsa végre a jelen cikkben ismertetett lépéseket az adatsík helyett a [Control Plane hencegő (OpenAPI) fájl](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) használatával.
+> Az autorest használatával is létrehozhatja a Control Plane SDK-t, ha szeretné. Ehhez hajtsa végre a jelen cikkben ismertetett lépéseket a legutóbbi **Control Plane hencegő** (OpenAPI) fájl használatával a [vezérlő síkja hencegő mappából]] ( https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) az adatsík helyett).
 
 ## <a name="set-up-your-machine"></a>A gép beállítása
 
 Az SDK létrehozásához a következőkre lesz szüksége:
 * Az [autorest](https://github.com/Azure/autorest), a Version 2.0.4413 (3-as verzió jelenleg nem támogatott)
 * [Node.js](https://nodejs.org) az autorest előfeltétele
-* Az Azure Digital Twins [adatsíkon Felhencegő (OpenAPI) fájl](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) , amely * adigitaltwins.js*, és a hozzá tartozó, a példákhoz kapcsolódó mappa. Töltse le a hencegő fájlt és a hozzá tartozó mappát a helyi gépre.
+* A legújabb Azure Digital Twins **adatsík hencegő** (OpenAPI) fájl az [adatsík hencegő mappájából](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)és a hozzájuk tartozó, példákat tartalmazó mappából.  Töltse le a hencegő fájlt *digitaltwins.json* és a saját helyi számítógépére.
 
 Ha a gép a fenti listából mindent megtesz, készen áll az autorest használatára az SDK létrehozásához.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828004"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz
@@ -115,7 +115,7 @@ Miután létrehozta a VPN-helyet, és csatlakozik a központhoz, a következő l
 1. Az **Azure Private IP-cím használatához**válassza az **Igen**lehetőséget. A beállítás úgy konfigurálja a hub VPN-átjárót, hogy a nyilvános IP-címek helyett magánhálózati IP-címeket használjon a hub-címtartomány ezen a kapcsolaton belül. Ezzel biztosíthatja, hogy a helyszíni hálózatról érkező forgalom a nyilvános Internet helyett a VPN-kapcsolaton keresztül áthaladjon a ExpressRoute privát elágazási útjain. A következő képernyőképen a beállítás látható:
 
    :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN over ExpressRoute" border="false":::
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A módosítások mentése után a hub VPN-átjáró a VPN-átjáró magánhálózati IP-címeivel hozza létre az IPsec/IKE-kapcsolatokat a helyszíni VPN-eszközzel a ExpressRoute-en keresztül.
 

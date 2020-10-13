@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630423"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoportok biztonsági mentése és visszaállítása
@@ -96,12 +96,12 @@ Ebben a példában:
 
 Ez a parancs egy elosztott teljes biztonsági mentést koordinál az összes olyan csomóponton, amely az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport részét képezi. Más szóval a koordinátor és a munkavégző csomópontok összes adatait biztonsági másolatot készít.
 
-Például:
+Példa:
 ```console
 azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
 ```
 
-A biztonsági mentés befejezésekor a rendszer a biztonsági másolat AZONOSÍTÓját, nevét és állapotát adja vissza. Például:
+A biztonsági mentés befejezésekor a rendszer a biztonsági másolat AZONOSÍTÓját, nevét és állapotát adja vissza. Példa:
 ```console
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
@@ -125,7 +125,7 @@ A visszaállítani kívánt biztonsági másolatok listázásához futtassa a k�
 azdata arc postgres backup list --server-name <servergroup name>
 ```
 
-Például:
+Példa:
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
@@ -151,7 +151,7 @@ Ebben a példában:
 - a Backup __-ID__ a Backup (biztonsági mentés) parancsban látható biztonsági másolat azonosítója (lásd a 3. lépést).
 Ez összehangolja az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport összes csomópontjának elosztott teljes visszaállítását. Más szóval a koordinátor és a munkavégző csomópontok összes adatait visszaállítja.
 
-Például:
+Példa:
 ```console
 azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```
@@ -215,6 +215,6 @@ A DELETE paranccsal kapcsolatos további információkért futtassa a következ�
 azdata arc postgres backup delete --help
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a kiszolgálócsoport [kibővítéséről (munkavégző csomópontok hozzáadásáról)](scale-out-postgresql-hyperscale-server-group.md)
 - További információ a kiszolgálócsoport [fel-vagy leskálázásáról (a memória/virtuális mag növelése/csökkentése)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)

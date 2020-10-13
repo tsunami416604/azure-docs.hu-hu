@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: e1e6f977d47d98e7c9f5300dc8165ee44a531499
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91564867"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: adatok lekérdezése Cassandra API-fiókból Azure Cosmos DB
@@ -108,7 +108,7 @@ Az alábbi lépéseket követve kérdezze le a Cassandra API-fiók adatait:
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan lehet lekérdezni egy Cassandra API fiók adatait a Azure Cosmos DBban. Továbbléphet a következő cikkre:
 

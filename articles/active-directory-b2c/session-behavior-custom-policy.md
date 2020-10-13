@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31257d795dbd06da65e3d07e18a16d9bdf7e782a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385263"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961102"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -26,9 +26,9 @@ Az [egyszeri bejelentkezés (SSO) munkamenet](session-overview.md) -kezelője Az
 A webalkalmazás-munkamenetek kezeléséhez a következő tulajdonságokat használhatja:
 
 - **Webalkalmazás-munkamenet élettartama (perc)** – sikeres hitelesítés után a felhasználó böngészőjében tárolt Azure ad B2C's-munkamenet-cookie élettartama.
-    - Alapértelmezett = 86400 másodperc (1440 perc).
-    - Minimum (inkluzív) = 900 másodperc (15 perc).
-    - Maximum (inkluzív) = 86400 másodperc (1440 perc).
+  - Alapértelmezett = 86400 másodperc (1440 perc).
+  - Minimum (inkluzív) = 900 másodperc (15 perc).
+  - Maximum (inkluzív) = 86400 másodperc (1440 perc).
 - **Webalkalmazás-munkamenet időtúllépése** – a [munkamenet lejárati típusa](session-overview.md#session-expiry-type), *működés közbeni*vagy *abszolút*értéke. 
 - **Egyszeri bejelentkezés konfigurálása** – az egyszeri bejelentkezés (SSO) viselkedési [hatóköre](session-overview.md#session-scope) több alkalmazás és felhasználói folyamat között a Azure ad B2C-bérlőben. 
 
@@ -44,18 +44,42 @@ A munkamenet-viselkedés és az SSO-konfigurációk módosításához adjon hozz
 </UserJourneyBehaviors>
 ```
 
-## <a name="single-sign-out"></a>Egyszeri kijelentkezés
+## <a name="configure-sign-out-behavior"></a>Kijelentkezési viselkedés konfigurálása
 
-### <a name="configure-the-applications"></a>Alkalmazások konfigurálása
+### <a name="secure-your-logout-redirect"></a>A kijelentkezési átirányítás biztonságossá tétele
+
+A kijelentkezés után a rendszer átirányítja a felhasználót a paraméterben megadott URI-ra `post_logout_redirect_uri` , az alkalmazáshoz megadott válasz URL-címektől függetlenül. Ha azonban érvényes `id_token_hint` értéket ad át, és a **kijelentkezési kérelmekhez szükséges azonosító jogkivonat** be van kapcsolva, Azure ad B2C ellenőrzi, hogy az adott `post_logout_redirect_uri` alkalmazás beállított átirányítási URI azonosítóinak egyike megfelel-e az átirányítás végrehajtása előtt. Ha nincs beállítva egyező válasz URL-cím az alkalmazáshoz, a rendszer hibaüzenetet jelenít meg, és a felhasználót nem irányítja át. 
+
+Ha azonosító tokent szeretne megadni a kijelentkezési kérelmekben, adjon hozzá egy **UserJourneyBehaviors** elemet a [RelyingParty](relyingparty.md) elemen belül. Ezután állítsa be a **SingleSignon** elem **EnforceIdTokenHintOnLogout** a következőre: `true` . A **UserJourneyBehaviors** elemnek a következő példához hasonlóan kell kinéznie:
+
+```xml
+<UserJourneyBehaviors>
+  <SingleSignOn Scope="Tenant" EnforceIdTokenHintOnLogout="true"/>
+</UserJourneyBehaviors>
+```
+
+Az alkalmazás kijelentkezési URL-címének konfigurálása:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki az alkalmazást.
+1. Válassza a **Hitelesítés** lehetőséget.
+1. A **kijelentkezési URL-cím** szövegmezőbe írja be a kijelentkezési ÁTirányítási URI-t, majd kattintson a **Mentés**gombra.
+
+### <a name="single-sign-out"></a>Egyszeri kijelentkezés
+
+#### <a name="configure-the-applications"></a>Alkalmazások konfigurálása
 
 Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra (a OAuth2 és az SAML protokollok esetében egyaránt), Azure AD B2C törli a felhasználó munkamenetét a böngészőből.  Az [egyszeri kijelentkezés](session-overview.md#single-sign-out)engedélyezéséhez állítsa be az `LogoutUrl` alkalmazást a Azure Portal:
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 1. A lap jobb felső sarkában található fiókra kattintva válassza ki a Azure AD B2C könyvtárat.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget, válassza a **Alkalmazásregisztrációk**elemet, majd válassza ki az alkalmazást.
-1. Válassza a **Beállítások**, majd a **Tulajdonságok**elemet, majd keresse meg a **kijelentkezési URL-címet** szövegmezőt. 
+1. Válassza a **Hitelesítés** lehetőséget.
+1. A **kijelentkezési URL-cím** szövegmezőbe írja be a kijelentkezési ÁTirányítási URI-t, majd kattintson a **Mentés**gombra.
 
-### <a name="configure-the-token-issuer"></a>A jogkivonat-kiállító konfigurálása 
+#### <a name="configure-the-token-issuer"></a>A jogkivonat-kiállító konfigurálása 
 
 Az egyszeri kijelentkezés támogatásához a token kiállítói technikai profiljainak mind a JWT, mind az SAML esetében meg kell adniuk a következőket:
 
@@ -101,6 +125,6 @@ Az alábbi példa a JWT és az SAML-jogkivonat kiállítóit mutatja be egyszeri
 </ClaimsProvider>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure ad B2C-munkamenetről](session-overview.md).

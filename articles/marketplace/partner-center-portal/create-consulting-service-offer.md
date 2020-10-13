@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709070"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
@@ -140,8 +140,8 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 3. Megoldási területek
 4. Iparágak
 5. Ajánlat neve
-6. Összegzés
-7. Description
+6. Összefoglalás
+7. Leírás
 8. Képernyőképek/videók
 
 <br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
@@ -155,12 +155,12 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 3. Termékek
 4. Iparágak
 5. Ajánlat neve
-6. Összegzés
-7. Description
+6. Összefoglalás
+7. Leírás
 8. Képernyőképek/videók
 9. Dokumentumok
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -174,7 +174,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

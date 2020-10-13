@@ -8,10 +8,10 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827619"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
@@ -62,7 +62,7 @@ Application Insights a [W3C nyomkövetési kontextusra](https://w3c.github.io/tr
 - `traceparent`: A hívás globálisan egyedi műveleti AZONOSÍTÓját és egyedi azonosítóját is végrehajtja.
 - `tracestate`: Rendszerspecifikus nyomkövetési környezetet végez.
 
-A Application Insights SDK legújabb verziója támogatja a nyomkövetési környezet protokollját, de előfordulhat, hogy be kell jelentkeznie. (A Application Insights SDK által támogatott korábbi korrelációs protokoll visszamenőleges kompatibilitása továbbra is fennáll.)
+A Application Insights SDK legújabb verziója támogatja a Trace-Context protokollt, de előfordulhat, hogy be kell jelentkeznie. (A Application Insights SDK által támogatott korábbi korrelációs protokoll visszamenőleges kompatibilitása továbbra is fennáll.)
 
 A [korrelációs HTTP protokoll, más néven a Request-ID is](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)elavult. Ez a protokoll két fejlécet definiál:
 
@@ -84,7 +84,7 @@ További információ: [Application Insights telemetria adatmodell](../../azure-
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése a .NET-alkalmazások számára
 
-A W3C nyomkövetési környezet –-alapú elosztott nyomkövetés alapértelmezés szerint engedélyezve van minden legújabb .NET-keretrendszerben/. NET Core SDK-ban, valamint visszamenőleges kompatibilitással az örökölt Request-ID protokollal.
+A W3C nyomkövetési környezet –-alapú elosztott nyomkövetés alapértelmezés szerint engedélyezve van az összes legújabb .NET-keretrendszerben/. NET Core SDK-ban, valamint visszamenőleges kompatibilitással az örökölt Request-Id protokollal.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése Java-alkalmazásokhoz
 
@@ -170,7 +170,7 @@ Hivatkozásként a OpenCensus adatmodellje [itt](https://github.com/census-instr
 
 ### <a name="incoming-request-correlation"></a>Bejövő kérelmek korrelációja
 
-A OpenCensus Python a beérkező kérelmektől a beérkező kérések által a kérelmekből generált felöleli a W3C nyomkövetési kontextus fejléceit. A OpenCensus ezt a népszerű webalkalmazás-keretrendszer integrációs szolgáltatásával automatikusan elvégzi: a lombik, a Django és a piramis. Csak a W3C nyomkövetési környezet fejléceit kell megadnia a [megfelelő formátumban](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) , és el kell küldenie őket a kérelemmel. Íme egy példa a lombik alkalmazásra, amely a következőket mutatja be:
+A OpenCensus Python összekapcsolja a W3C Trace-Context fejléceket a beérkező kérelmektől a kérelmekből generált felölelő adatoktól. A OpenCensus ezt a népszerű webalkalmazás-keretrendszer integrációs szolgáltatásával automatikusan elvégzi: a lombik, a Django és a piramis. Csak a W3C Trace-Context fejléceket kell megadnia a [megfelelő formátumban](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) , és el kell küldenie őket a kérelemmel. Íme egy példa a lombik alkalmazásra, amely a következőket mutatja be:
 
 ```python
 from flask import Flask

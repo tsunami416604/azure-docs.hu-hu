@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628672"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect Cloud kiépítés – gyakori kérdések
@@ -96,7 +96,7 @@ A rendszer törli és újból létrehozza a felhasználót.  Egy felhasználó o
 
 Semmit nem fogok észlelni.  A rendszer nem törli a felhasználókat, ha a szervezeti egységet átnevezték vagy áthelyezték.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

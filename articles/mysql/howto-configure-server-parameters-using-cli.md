@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dfb1d59335f2e35ce3d4661f043b6eed53d2a109
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627159"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MySQL az Azure CLI használatával
@@ -106,6 +106,6 @@ SET time_zone = 'US/Pacific';
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kiszolgáló paramétereinek konfigurálása Azure Portal](howto-server-parameters.md)

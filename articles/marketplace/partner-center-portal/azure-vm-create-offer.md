@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
 ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709016"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuáli
 
 Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>Az Azure Marketplace-en való közzététel előnyei
 
@@ -180,7 +180,7 @@ Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az aj
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
-#### <a name="name"></a>Név
+#### <a name="name"></a>Name (Név)
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező az ajánlat **aliasa** mezőben megadott névvel van feltöltve az ajánlat létrehozásakor. A nevet később módosíthatja. A név:
 
@@ -196,7 +196,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor használandó kapcsolattartási adatokat. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name (Név)
 - E-mail
 - Telefon
 
@@ -234,7 +234,7 @@ Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor hasz
 
 Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén használandó kapcsolattartási adatokat, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name (Név)
 - E-mail
 - Telefon
 
@@ -541,7 +541,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Description
+7. Leírás
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 

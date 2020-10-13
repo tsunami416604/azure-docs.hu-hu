@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
 ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627346"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
@@ -280,7 +280,7 @@ Az alábbi kiszolgálói paraméterek nem konfigurálhatók a szolgáltatásban:
 
 Az itt felsorolt egyéb változók az alapértelmezett MySQL beépített értékekre vannak beállítva. Az alapértelmezett értékekhez tekintse meg a MySQL docs [8,0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html), [5,7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)és [5,6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) verzióit. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket a Azure Portal használatával](./howto-server-parameters.md)
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket az Azure CLI használatával](./howto-configure-server-parameters-using-cli.md)

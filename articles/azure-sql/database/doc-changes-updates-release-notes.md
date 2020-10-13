@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950cc16cd8661ee4e509cf14d12f561cb29c4ea
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236573"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940705"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ---
 
-## <a name="sql-managed-instance-new-features-and-known-issues"></a>SQL felügyelt példány új funkciók és ismert problémák
+## <a name="new-features"></a>Új funkciók
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL felügyelt példány H2 2019-frissítések
 
@@ -93,10 +93,11 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
   - Az új beépített [példány-közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) lehetővé teszi a vám (SOD) megfelelőségének a biztonsági elvekkel való elválasztását, valamint a vállalati szabványoknak való megfelelést.
   - Az SQL felügyelt példánya a következő Azure Government régiókban érhető el a GA (US Gov Texas, US Gov Arizona), valamint a Észak-Kína 2 és Kelet-Kína 2 között. A következő nyilvános régiókban érhető el: Közép-Ausztrália, Közép-Ausztrália, Dél-Brazília, Dél-Franciaország, Egyesült Arab Emírségek, Észak-Európa, Dél-Afrika, Dél-Afrika, Nyugat-Európa.
 
-### <a name="known-issues"></a>Ismert problémák
+## <a name="known-issues"></a>Ismert problémák
 
-|Probléma  |Felderített dátum  |status  |Feloldás dátuma  |
+|Probléma  |Felderített dátum  |Állapot  |Feloldás dátuma  |
 |---------|---------|---------|---------|
+|[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) az Azure SQL-ben és `BACKUP` / `RESTORE` a felügyelt példányban lévő utasításban nem használható az Azure ad-kezelő identitása az Azure Storage-beli hitelesítéshez|Sep 2020|Megkerülő megoldás||
 |[Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV](#service-principal-cannot-access-azure-ad-and-akv)|Augusztus 2020|Megkerülő megoldás||
 |[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Feloldva|2020. június|
 |[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Feloldva|2020. június|
@@ -124,6 +125,21 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |Az adott időponthoz tartozó adatbázis-visszaállítás üzletileg kritikus rétegről általános célú szintjére nem lesz sikeres, ha a forrásadatbázis memóriában tárolt OLTP objektumokat tartalmaz.||Feloldva|TOT 2019|
 |Az adatbázis levelezési funkciója külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával||Feloldva|TOT 2019|
 |A felügyelt SQL-példányok nem támogatják a foglalt adatbázisokat.||Feloldva|Augusztus 2019|
+
+### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>A BULK INSERT és a BACKUP/Restore utasítások nem használhatnak felügyelt identitást az Azure Storage eléréséhez
+
+A tömeges beszúrási utasítás nem használható `DATABASE SCOPED CREDENTIAL` felügyelt identitással az Azure Storage-ban való hitelesítéshez. Áthidaló megoldásként váltson át a közös HOZZÁFÉRÉSű aláírás-hitelesítésre. Az alábbi példa nem fog működni az Azure SQL-ben (az adatbázis és a felügyelt példány esetében is):
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
+GO
+CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
+  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/curriculum', CREDENTIAL= msi_cred );
+GO
+BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
+```
+
+**Megkerülő megoldás**: használjon [megosztott hozzáférési aláírást a tárolóba való hitelesítéshez](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV
 

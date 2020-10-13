@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298711"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Egy prémium szintű fájlmegosztás (SQL Server Azure-beli virtuális gépeken) létrehozása
@@ -96,17 +96,7 @@ A fürt a felhasználói felületen való ellenőrzéséhez tegye a következők
 1. Kattintson a **Tovább** gombra.
 1. A **teszt kiválasztása**területen válassza a minden teszt lehetőséget a **tárolás** és a **közvetlen tárolóhelyek**kivételével, ahogy az itt látható:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Fürt-ellenőrzési tesztek kiválasztása":::
-
-1. Kattintson a **Tovább** gombra.
-1. A **megerősítés**területen válassza a **tovább**lehetőséget.
-
-A **Konfiguráció ellenőrzése** varázsló futtatja az ellenőrző teszteket.
-
-A fürt a PowerShell használatával történő ellenőrzéséhez futtassa a következő parancsfájlt egy rendszergazdai PowerShell-munkamenetből az egyik virtuális gépen:
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján"
    ```
 
 A fürt érvényesítése után hozza létre a feladatátvevő fürtöt.
@@ -151,7 +141,7 @@ Konfigurálja az üzleti igényeknek leginkább megfelelő kvórum megoldást. B
 
 Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban**kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az**alapszintű fürt erőforrásainak**  >  **kiválasztásához**, majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Fürt feladatátvételének tesztelése az alapvető erőforrás más csomópontokra való áthelyezésével":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján":::
 
 
 ## <a name="create-sql-server-fci"></a>Létrehozás SQL Server
@@ -172,7 +162,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
    Az adatkönyvtárak a prémium fájlmegosztás esetében szükségesek. Adja meg a megosztás teljes elérési útját a következő formátumban: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Megjelenik egy figyelmeztetés, amely arról tájékoztat, hogy a fájlkiszolgáló adatkönyvtárként van megadva. Ez a figyelmeztetés várható. Győződjön meg arról, hogy a fájlmegosztás megtartásakor a virtuális gép RDP-kapcsolaton keresztüli elérésére használt felhasználói fiók ugyanaz a fiók, amelyet a SQL Server szolgáltatás a lehetséges hibák elkerülése érdekében használ.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Fájlmegosztás használata SQL-adatkönyvtárakként":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján":::
 
 1. A varázsló lépéseinek elvégzése után a telepítő telepíti az első csomóponton egy SQL Server-t.
 

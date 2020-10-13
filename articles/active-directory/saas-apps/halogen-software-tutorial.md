@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1743908652a70667a368dced18b2e808ce590a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f60374a4e8f01af119d6e9c604b941e7c4950
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549993"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944240"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Saba TalentSpace
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -131,15 +131,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Kattintson a **Beállítások** fülre.
   
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-12.png)
+    ![Képernyőfelvétel: a "Saba TalentSpace" kezdőlapja, ahol a "beállítások" lap van kiválasztva.](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. A bal oldali navigációs ablaktáblán kattintson az **SAML-konfiguráció**elemre.
   
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-13.png)
+    ![Képernyőkép, amely a "felhasználói felület" bal oldali navigációs ablaktáblán a "S A M L konfiguráció" elemet jeleníti meg.](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. Az **SAML-konfiguráció** lapon hajtsa végre a következő lépéseket:
 
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-14.png)
+    ![Képernyőkép, amely a "beállítások" lehetőség kiemelésével megjelenő "S A M L konfiguráció" lapot jeleníti meg.](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. **Egyedi azonosítóként**válassza a **NameID**lehetőséget.
 
@@ -166,7 +166,7 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
 2. Kattintson a **felhasználói központ** fülre, majd a **felhasználó létrehozása**elemre.
 
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
+    ![Képernyőkép, amely a "felhasználói központ" fület és a "felhasználó létrehozása" elemet jeleníti meg.](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. Az **új felhasználó** párbeszédpanelen hajtsa végre a következő lépéseket:
 

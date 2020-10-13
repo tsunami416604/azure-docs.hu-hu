@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 052859e99ffd0082994d313508ebb6f0496d980b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710345"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple biztonsági mentési célként a Veeam
@@ -104,7 +104,7 @@ Az alábbi táblázatok az eszköz modell-architektúra kezdeti útmutatóját m
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
 | Elsődleges biztonsági mentés  | A helyi tárterületen tárolt legutóbbi biztonsági másolatok a helyreállítási időkorlát (RPO) kielégítése érdekében a gyors helyreállítás érdekében | A biztonsági mentési előzmények (RPO) a Felhőbeli kapacitásban is elférnek |
-| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N/A  |
+| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N.A.  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple elsődleges biztonsági mentési célként
 
@@ -308,7 +308,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 > [!IMPORTANT]
 > A felhőbe felkészített biztonsági mentésből származó adatok visszaállítása Felhőbeli sebességgel történik.
 
-Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonsági mentési feladathoz. Ebben az esetben az összes heti biztonsági mentés a szombat teljes lemezre mutat, a növekményes biztonsági mentések pedig a hétfő péntekig növekményes lemezeket képeznek. Az összes biztonsági mentés és visszaállítás egy StorSimple rétegű kötetről származik.
+Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonsági mentési feladathoz. Ebben az esetben az összes heti biztonsági mentés a szombat teljes lemezre mutat, a növekményes biztonsági mentések pedig Monday-Friday növekményes lemezeket képeznek. Az összes biztonsági mentés és visszaállítás egy StorSimple rétegű kötetről származik.
 
 ![Elsődleges biztonsági mentési cél konfigurációjának logikai diagramja](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
 
@@ -318,7 +318,7 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 
 | Gyakoriság/biztonsági mentés típusa | Összes | Növekményes (nap 1-5)  |   
 |---|---|---|
-| Hetente (1-4 hét) | Szombat | Hétfő – péntek |
+| Hetente (1-4 hét) | Szombat | Monday-Friday |
 | havonta  | Szombat  |   |
 | Évi | Szombat  |   |
 
@@ -349,7 +349,7 @@ Az elsődleges biztonsági mentési cél forgatókönyvhöz hozzon létre egy na
 
     ![Képernyőfelvétel a Veeam felügyeleti konzolról, pontosabban az új biztonsági mentési feladatok speciális beállításai oldal](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. A **tárterület** lapon törölje a jelet a **beágyazott adattörlés engedélyezése** jelölőnégyzetből. Jelölje be a **fájlok zárolásának kihagyása** jelölőnégyzetet, majd jelölje be a **törölt blokkok kizárása** jelölőnégyzetet. A **tömörítési szint** beállítása **none**értékre A kiegyensúlyozott teljesítmény és a deduplikálás érdekében állítsa be a **tárolási optimalizálást** a **LAN-célra**. Válassza az **OK** lehetőséget.
+6. A **tárterület** lapon törölje a jelet a **beágyazott adattörlés engedélyezése** jelölőnégyzetből. Jelölje be a **fájlok zárolásának kihagyása** jelölőnégyzetet, majd jelölje be a **törölt blokkok kizárása** jelölőnégyzetet. A **tömörítési szint** beállítása **none**értékre A kiegyensúlyozott teljesítmény és a deduplikálás érdekében állítsa be a **tárolási optimalizálást** a **LAN-célra**. Kattintson az **OK** gombra.
 
     ![Veeam felügyeleti konzol, új biztonsági mentési feladatok speciális beállítások lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -500,14 +500,14 @@ A Veeam használatával gyors, szemcsés, StorSimple-alapú helyreállítást é
 
 A katasztrófák számos tényezőt okozhatnak. A következő táblázat az általános vész-helyreállítási forgatókönyveket ismerteti.
 
-| Használati eset | Hatás | Helyreállítás | Jegyzetek |
+| Forgatókönyv | Hatás | Helyreállítás | Jegyzetek |
 |---|---|---|---|
 | StorSimple-eszköz meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a meghibásodott eszközt, és hajtsa végre a [StorSimple feladatátvételt és a vész-helyreállítást](storsimple-device-failover-disaster-recovery.md). | Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adathalmazok beolvasása a felhőből az új eszközre történik. Minden művelet Felhőbeli sebességgel történik. Az index és a katalógus újraellenőrzésének folyamata okozhatja az összes biztonságimásolat-készlet vizsgálatát és lekérését a felhő szintjéről a helyi eszköz rétegre, amely időigényes folyamat lehet. |
 | Veeam-kiszolgáló meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Hozza létre újra a biztonsági mentési kiszolgálót, és végezze el az adatbázis-visszaállítást a [Veeam súgójában (technikai dokumentáció)](https://www.veeam.com/documentation-guides-datasheets.html).  | A Veeam-kiszolgálót újra kell építenie vagy visszaállítani a vész-helyreállítási helyen. Állítsa vissza az adatbázist a legutóbbi pontra. Ha a visszaállított Veeam-adatbázis nincs szinkronban a legújabb biztonsági mentési feladatokkal, az indexelés és a katalogizálás szükséges. Az index és a katalógus újraellenőrzésének folyamata okozhatja, hogy az összes biztonságimásolat-készlet beolvasható, és a felhő szintjéről a helyi eszköz szintjére kell húzni. Ez további időigényesvé teszi. |
 | A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 

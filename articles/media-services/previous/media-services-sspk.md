@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
 ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710770"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése
@@ -32,7 +32,7 @@ Az alábbiakban látható egy magas szintű architektúra és IIS-Smooth Streami
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Leírás
 A SSPK a kiváló üzleti értékkel rendelkező feltételekkel rendelkezik. A SSPK-licenc a következőket biztosítja az iparág számára:
 
 * Smooth Streaming a Porting Kit forrása a C++-ban 

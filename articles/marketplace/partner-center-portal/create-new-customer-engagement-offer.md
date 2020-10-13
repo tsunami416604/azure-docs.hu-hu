@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 06/17/2020
 ms.openlocfilehash: bcb14c786ab652b1c51a3d3bf487e39fd0ebfdb6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710685"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
@@ -138,10 +138,10 @@ Itt adhatja meg az egyes nyelvekhez/piacokhoz tartozó piactér részleteit, pé
 4. Támogatási címe (hivatkozás)
 5. Használati feltételek címe (hivatkozás)
 6. Ajánlat neve
-7. Description
+7. Leírás
 8. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -149,7 +149,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

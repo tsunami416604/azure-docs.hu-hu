@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88861187"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970401"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és az Azure megosztott lemezzel
 
@@ -34,13 +34,13 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepíté
 
 Jelenleg az Azure prémium SSD-lemezeket Azure-beli megosztott lemezként használhatja az SAP ASCS/SCS-példányhoz. A következő korlátozások vannak érvényben:
 
--  Az [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) nem támogatott Azure-beli megosztott lemezként az SAP-munkaterhelésekhez. Jelenleg nem helyezhetők üzembe Azure-beli virtuális gépek a rendelkezésre állási csoportba tartozó Azure Ultra Disk használatával
--  Prémium SSD lemezzel rendelkező Azure-beli [megosztott lemez](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) csak a rendelkezésre állási csoportba tartozó virtuális gépek esetében támogatott. Availability Zones üzemelő példányban nem támogatott. 
--  Az Azure Shared Disk Value [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) meghatározza, hogy hány fürtcsomópont használhatja a megosztott lemezt. Az SAP ASCS/SCS-példány esetében általában két csomópontot fog konfigurálni a Windows feladatátvevő fürtben, ezért a értékét `maxShares` kettőre kell beállítani.
--  Az összes SAP-ASCS/SCS-fürt virtuális gépnek ugyanabban az Azure-beli [közelségi csoportban](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)kell lennie.   
+-  Az [Azure Ultra Disk](../../disks-types.md#ultra-disk) nem támogatott Azure-beli megosztott lemezként az SAP-munkaterhelésekhez. Jelenleg nem helyezhetők üzembe Azure-beli virtuális gépek a rendelkezésre állási csoportba tartozó Azure Ultra Disk használatával
+-  Prémium SSD lemezzel rendelkező Azure-beli [megosztott lemez](../../windows/disks-shared.md) csak a rendelkezésre állási csoportba tartozó virtuális gépek esetében támogatott. Availability Zones üzemelő példányban nem támogatott. 
+-  Az Azure Shared Disk Value [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) meghatározza, hogy hány fürtcsomópont használhatja a megosztott lemezt. Az SAP ASCS/SCS-példány esetében általában két csomópontot fog konfigurálni a Windows feladatátvevő fürtben, ezért a értékét `maxShares` kettőre kell beállítani.
+-  Az összes SAP-ASCS/SCS-fürt virtuális gépnek ugyanabban az Azure-beli [közelségi csoportban](../../windows/proximity-placement-groups.md)kell lennie.   
    Bár a Windows-fürt virtuális gépei a rendelkezésre állási csoportokban a PPG nélkül is üzembe helyezhetők az Azure-beli megosztott lemezzel, a PPG biztosítja az Azure-beli megosztott lemezek és a fürt virtuális gépei közel fizikai közelségét, így a virtuális gépek és a tárolási réteg közötti alacsonyabb késést.    
 
-Az Azure Shared Disk korlátozásával kapcsolatos további részletekért tekintse át az Azure Shared Disk dokumentációjának [korlátozások](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) című szakaszát.  
+Az Azure Shared Disk korlátozásával kapcsolatos további részletekért tekintse át az Azure Shared Disk dokumentációjának [korlátozások](../../linux/disks-shared.md#limitations) című szakaszát.  
 
 > [!IMPORTANT]
 > Ha az Azure megosztott lemezzel telepíti az SAP ASCS/SCS Windows feladatátvevő fürtöt, vegye figyelembe, hogy az üzemelő példány egyetlen megosztott lemezzel fog működni egyetlen tároló fürtben. Az SAP-ASCS/SCS-példány hatással lesz a Storage-fürttel kapcsolatos problémák esetén, ahol az Azure-beli megosztott lemez telepítve van.  
@@ -111,7 +111,7 @@ A sorba helyezni replikációs kiszolgáló 1 (ERS1) és a sorba helyezni Replic
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure belső terheléselosztó létrehozása
 
-Az SAP ASCS, az SAP SCS és az új SAP-ERS2 a virtuális állomásnév és a virtuális IP-címek használata. Az Azure-ban a virtuális IP-címek használatához [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) szükséges. Javasoljuk, hogy használja a [standard Load balancert](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). 
+Az SAP ASCS, az SAP SCS és az új SAP-ERS2 a virtuális állomásnév és a virtuális IP-címek használata. Az Azure-ban a virtuális IP-címek használatához [Load Balancer](../../../load-balancer/load-balancer-overview.md) szükséges. Javasoljuk, hogy használja a [standard Load balancert](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
 A második SAP SID ASCS/SCS/ERS példány **PR2**hozzá kell adnia egy konfigurációt a meglévő Load Balancerhez. Az első SAP SID- **PR1** konfigurációját már meg kell adni.  
 

@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626258"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway Azure biztonsági alapterve
@@ -784,7 +784,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

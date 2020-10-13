@@ -4,7 +4,7 @@
   items:
     - name: Mi az az ExpressRoute?
       href: expressroute-introduction.md
-- name: Első lépések
+- name: Rövid útmutatók
   items:
     - name: ExpressRoute-kapcsolatcsoport létrehozása – Portal
       href: expressroute-howto-circuit-portal-resource-manager.md

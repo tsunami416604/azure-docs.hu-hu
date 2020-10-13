@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894546"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások
 
 A munkaterület-alapú erőforrások a Application Insights és Log Analytics közötti teljes integrációt támogatják. Most már elküldheti Application Insights telemetria egy közös Log Analytics munkaterületre, amely teljes hozzáférést biztosít Log Analytics összes szolgáltatásához, miközben az alkalmazások, az infrastruktúra és a platformok naplóit egyetlen konszolidált helyen tartja.
 
-Ez lehetővé teszi a közös szerepköralapú Access Control (RBAC) használatát az erőforrások között, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
+Ez lehetővé teszi a közös Role-Based Access Control (RBAC) használatát az erőforrásokon, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
 
 > [!NOTE]
 > A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a Log Analytics munkaterületen történik, ahol az adatok találhatók. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.

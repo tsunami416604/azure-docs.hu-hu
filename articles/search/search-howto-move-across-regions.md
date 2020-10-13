@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
 ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629811"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search-szolgáltatás áthelyezése másik Azure-régióba
@@ -51,7 +51,7 @@ Alkalmanként előfordulhat, hogy az ügyfelek egy másik régióba helyezik át
 
 Törölje a régi szolgáltatást, ha az új szolgáltatás teljes körű tesztelése és működtetése megtörtént. A szolgáltatás törlése automatikusan törli a szolgáltatáshoz társított összes tartalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő hivatkozások segítséget nyújtanak a fenti lépések elvégzéséhez szükséges további információk megkereséséhez.
 

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613730"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
@@ -69,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>A standard SKU Load Balancer kimenő IP-címeinek megadása
 
-AK-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Például:
+AK-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Példa:
 
 ```azurecli-interactive
 az aks create \
@@ -121,7 +121,7 @@ A *0.0.0.0/32* -et is használhatja a paraméter megadásával *`--api-server-au
 
 ## <a name="disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok letiltása
 
-Az engedélyezett IP-címtartományok letiltásához használja az [az AK Update][az-aks-update] parancsot, és az API-kiszolgáló által engedélyezett IP-címtartományok letiltásához használjon üres tartományt. Például:
+Az engedélyezett IP-címtartományok letiltásához használja az [az AK Update][az-aks-update] parancsot, és az API-kiszolgáló által engedélyezett IP-címtartományok letiltásához használjon üres tartományt. Példa:
 
 ```azurecli-interactive
 az aks update \
@@ -156,7 +156,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 Ezt a címet a "mi az IP-cím" kifejezéssel keresheti meg egy böngészőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-tartományait. Ez a megközelítés a biztonságos AK-fürtök futtatásának egyik része.
 

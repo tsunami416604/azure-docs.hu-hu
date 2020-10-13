@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445895"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
@@ -166,7 +166,7 @@ A POA viselkedést az igényeinek megfelelően konfigurálhatja. Az alkalmazás 
 | WURescheduleCount     | Int <br> (Alapértelmezett: *5*)                  | A szolgáltatás által a Windows Update újraütemezett maximális száma, ha egy művelet tartósan leáll.          |
 | WURescheduleTimeInMinutes | Int <br>(Alapértelmezés: *30*) | Az az időtartam, amikor a szolgáltatás átütemezze a Windows-frissítéseket, ha a hiba továbbra is fennáll. |
 | WUFrequency           | Vesszővel tagolt karakterlánc (alapértelmezett: *hetente, szerda, 7:00:00*)     | A Windows-frissítések telepítésének gyakorisága. A formátum és a lehetséges értékek a következők: <br>-Havonta, NN, óó: PP: SS (példa: *havonta, 5, 12:22:32*). A _dd_ (nap) mező megengedett értékei _1 és 28_közötti számok. <br>-Hetente, naponta, óó: PP: SS (példa: *hetente, kedd, 12:22:32*)  <br>– Naponta, óó: PP: SS (példa: *napi, 12:22:32*)  <br>– Hét, nap, óó: PP: mm (példa: *2, péntek, 21:00:00,* 9:00 PM UTC a második hét minden hónapjának pénteken) <br>- A *none* érték azt jelzi, hogy a Windows-frissítések nem lesznek végrehajtva.  <br><br> Az időpontok UTC-ben vannak.|
-| AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: *true*) | A jelző beállításával az alkalmazás elfogadja a számítógép tulajdonosának nevében Windows Update végfelhasználói licencszerződést.              |
+| AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: *true*) | A jelző beállításával az alkalmazás elfogadja a számítógép tulajdonosának nevében Windows Update End-User licencszerződést.              |
 
 > [!TIP]
 > Ha azt szeretné, hogy a Windows-frissítések azonnal megtörténjenek, állítsa `WUFrequency` az alkalmazás központi telepítésének időpontjához képest. Tegyük fel például, hogy rendelkezik egy öt csomópontos tesztelési fürttel, és tervezi az alkalmazás üzembe helyezését a 5:00 PM UTC-kor. Ha azt feltételezi, hogy az alkalmazás frissítése vagy üzembe helyezése legfeljebb 30 percet vesz igénybe, állítsa a WUFrequency *naponta, 17:30:00-* re.
@@ -439,7 +439,7 @@ A: a POA Service Fabric javításkezelő használatával hoz létre javítási f
 
 ## <a name="disclaimers"></a>Felelősséget kizáró nyilatkozatok
 
-- A POA a felhasználó nevében fogadja el Windows Update végfelhasználói licencszerződését. Opcionálisan a beállítás kikapcsolható az alkalmazás konfigurációjában.
+- A POA elfogadja a End-User licencszerződését Windows Update a felhasználó nevében. Opcionálisan a beállítás kikapcsolható az alkalmazás konfigurációjában.
 
 - A POA a használat és a teljesítmény nyomon követésére szolgáló telemetria gyűjt. Az alkalmazás telemetria követi a Service Fabric futtatókörnyezet telemetria beállítását (amely alapértelmezés szerint be van kapcsolva).
 

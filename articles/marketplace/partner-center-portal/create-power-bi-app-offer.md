@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710651"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI-alkalmazásajánlat létrehozása
@@ -53,7 +53,7 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Ezen az oldalon látható az ajánlat közzétételéhez szükséges lépések vizuális ábrázolása (a befejezett és a közelgő is), valamint az egyes lépések befejezésének ideje.
 
-Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Például:
+Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Példa:
 
 - Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer)
 - Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -142,11 +142,11 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Összefoglalás
-10. Description
+9. Összegzés
+10. Leírás
 11. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -160,7 +160,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

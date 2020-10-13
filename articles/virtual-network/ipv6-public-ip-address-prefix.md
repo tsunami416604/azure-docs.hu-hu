@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666783"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>Fenntartott nyilvános IPv6-cím előtagja
@@ -38,7 +38,7 @@ A következő nyilvános IP-előtag-méretek érhetők el:
 -  IPv6-előtag minimális mérete:/127 = 2 cím
 -  IPv6-előtag maximális mérete:/124 = 16 cím
 
-Az előtag mérete osztály nélküli tartományok közötti útválasztási (CIDR) maszk méretként van megadva. Például a/128 maszkja egy egyedi IPv6-címet jelöl, mivel az IPv6-címek a 128 BITS-ből állnak.
+Az előtag mérete osztály nélküli Inter-Domain útválasztási (CIDR) maszk méretként van megadva. Például a/128 maszkja egy egyedi IPv6-címet jelöl, mivel az IPv6-címek a 128 BITS-ből állnak.
 
 ## <a name="pricing"></a>Díjszabás
  

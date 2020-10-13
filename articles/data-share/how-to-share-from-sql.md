@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 10/02/2020
 ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761923"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
@@ -242,7 +242,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Bájt [] |
-| bit |Logikai érték |
+| bit |Logikai |
 | char |Karakterlánc, char [] |
 | dátum |DateTime |
 | Datetime |DateTime |
@@ -250,7 +250,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | DateTimeOffset |DateTimeOffset |
 | Tizedesjegy |Tizedesjegy |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Float |Dupla |
+| Lebegőpontos értékek |Dupla |
 | image |Bájt [] |
 | int |Int32 |
 | pénzt |Tizedesjegy |

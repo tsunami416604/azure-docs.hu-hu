@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 720c5190bfc1b4b6a6c3e86052cfc329233c5ed2
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: bdab132d4d22dced97273e9d1d051f155f9d69b6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802480"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970724"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -32,6 +32,11 @@ A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúció
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>Prerequisities
+  - Key Vault példány tanúsítvánnyal. Lásd: [Key Vault létrehozása](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+  - A virtuális gépnek vagy VMSS hozzá kell rendelni a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  - Az Key Vault hozzáférési szabályzatot titkos kulcsokkal `get` és engedélyekkel kell beállítani a `list` virtuális gép/VMSS által felügyelt identitáshoz, hogy beolvassák a tanúsítvány egy részét. Tekintse meg, [Hogyan hitelesítheti Key Vault](/azure/key-vault/general/authentication) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](/azure/key-vault/general/assign-access-policy-cli).
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -80,9 +85,9 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | dátum |
+| apiVersion | 2019-07-01 | date |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
 | típus | KeyVaultForLinux | sztring |
 | typeHandlerVersion | 1.0 | int |
@@ -202,12 +207,10 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
         --vm-name "<vmName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
-
 Vegye figyelembe a következő korlátozásokat/követelményeket:
 - Key Vault korlátozások:
   - A telepítés időpontjában léteznie kell 
-  - A Key Vault hozzáférési szabályzatot felügyelt identitás használatával kell beállítani a VM/VMSS identitáshoz. Tekintse meg, [Hogyan hitelesítheti Key Vault](/azure/key-vault/general/authentication) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](/azure/key-vault/general/assign-access-policy-cli).
-
+  - A Key Vault hozzáférési szabályzatot felügyelt identitás használatával kell beállítani a VM/VMSS identitáshoz. Tekintse meg, [Hogyan hitelesítheti Key Vault](../../key-vault/general/authentication.md) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](../../key-vault/general/assign-access-policy-cli.md).
 
 ## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 

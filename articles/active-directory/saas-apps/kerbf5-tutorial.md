@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266071"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944278"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -72,15 +72,15 @@ Első lépésként a következő elemeket kell megadnia:
 
 2. Az **irányított konfiguráció** lapon kattintson az **irányított konfiguráció frissítése** elemre a bal felső sarokban.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure14.png) 
+    ![Képernyőkép, amely az "irányított konfiguráció" oldalt mutatja be a "vezérelt irányított konfiguráció" művelet kiválasztásával.](./media/kerbf5-tutorial/configure14.png) 
 
 3. A frissítési útmutató konfigurációjának pop képernyőjén válassza a **fájl kiválasztása** elemet a letöltött használati eset csomag feltöltéséhez, majd kattintson a **feltöltés és telepítés** gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure15.png) 
+    ![Képernyőfelvétel: "a fájl kiválasztása" és a "feltöltés és telepítés" beállítású előugró ablak "](./media/kerbf5-tutorial/configure15.png) 
 
 4. A frissítés befejezésekor kattintson a **Continue (folytatás** ) gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure16.png)
+    ![Képernyőfelvétel: az "irányított konfiguráció frissítése befejeződött" párbeszédpanel és a "Folytatás" gomb van kiválasztva.](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -174,7 +174,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -213,60 +213,60 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Navigáljon a **System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. Adja meg a **tanúsítvány nevét** (a konfiguráció későbbi részében lesz hivatkozva). A **tanúsítvány forrása**területen válassza a fájl feltöltése lehetőséget, hogy az SAML egyszeri bejelentkezés konfigurálásakor az Azure-ból letöltött tanúsítványt adja meg. Kattintson az **Importálás**gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure01.png) 
+    ![Képernyőkép, amely megjeleníti az "S S L tanúsítvány/kulcs forrása" lapot a "tanúsítvány neve" kiemelve, "fájl feltöltése" és az "Importálás" gomb kiválasztásával.](./media/kerbf5-tutorial/configure01.png) 
 
 1. Emellett **SSL-tanúsítványra lesz szüksége az alkalmazás állomásneve számára. Navigáljon a System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
     >A példában az alkalmazás neve az `Kerbapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnév `WildCard-SuperDemo.live`
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure02.png) 
+    ![Képernyőkép, amely megjeleníti az "S S L tanúsítvány/kulcs forrása" lapot a beírt értékekkel és az "Importálás" gomb kiválasztásával.](./media/kerbf5-tutorial/configure02.png) 
  
 1. Az Azure AD-összevonás és az alkalmazás-hozzáférés beállításához az interaktív élményt fogjuk használni. Ugrás az – F5 BIG-IP **Main** elemre, és válassza a **hozzáférés > irányított konfiguráció > összevonási > SAML-szolgáltató**elemet. Kattintson a **tovább** gombra, majd a konfigurálás megkezdéséhez kattintson a **tovább** gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure03.png) 
+    ![Képernyőkép, amely az "összevont konfiguráció" ikont jeleníti meg a Kiemelt "összevonás" ikonnal és az "S L Service Provider" kiválasztásával.](./media/kerbf5-tutorial/configure03.png) 
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure04.png)
+    ![Képernyőkép, amely a "Next" gomb kiválasztásával jeleníti meg az "irányított konfiguráció-S A M L Service Provider" lapot.](./media/kerbf5-tutorial/configure04.png)
 
 1. Adja meg a **konfiguráció nevét**. Határozza meg az **entitás azonosítóját** (ugyanaz, mint amit az Azure ad-alkalmazás konfigurációjában konfigurált). Adja meg az **állomásnév nevét**. Adja meg a hivatkozás **leírását** . Fogadja el a fennmaradó alapértelmezett bejegyzéseket, és válassza ki, majd kattintson a **mentés & tovább**gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure05.png) 
+    ![Képernyőfelvétel: "állomásnév" és "Description" szövegmezők, valamint a "Mentés & következő" gomb kiválasztásakor megjelenik a "szolgáltató tulajdonságai".](./media/kerbf5-tutorial/configure05.png) 
 
 1. Ebben a példában egy új virtuális kiszolgálót hozunk létre a 443-as port 192.168.30.200. A **célként megadott címben**válassza a virtuális kiszolgáló IP-címét. Válassza ki az ügyfél **SSL-profilját**, majd válassza az új létrehozása lehetőséget. Adja meg a korábban feltöltött alkalmazás tanúsítványát (a példában szereplő Wild Card-tanúsítványt) és a társított kulcsot, majd kattintson a **mentés & tovább**gombra.
 
     >[!NOTE]
     >Ebben a példában a belső webkiszolgáló a 80-as porton fut, és a 443-as verzióban szeretné közzétenni.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure06.png)
+    ![Képernyőkép, amely a "virtuális kiszolgáló tulajdonságai" lapot jeleníti meg a "cél címe" szövegmezővel, és a "Mentés & tovább" gomb van kiválasztva.](./media/kerbf5-tutorial/configure06.png)
 
 1. A **identitásszolgáltató-összekötő konfigurálásához válassza a módszer lehetőséget**, majd adja meg a metaadatokat, kattintson a fájl kiválasztása lehetőségre, és töltse fel az Azure ad-ből korábban letöltött metaadat-XML-fájlt. Adja meg az SAML IDENTITÁSSZOLGÁLTATÓ-összekötő egyedi **nevét** . Válassza ki a korábban feltöltött **metaadat-aláíró tanúsítványt** . Kattintson a **mentés & tovább**gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure07.png)  
+    ![Képernyőkép: a "külső identitás-szolgáltatói összekötő beállításai" oldal, a "név" szövegmező kiemelve és a "Mentés & tovább" gomb kiválasztásával.](./media/kerbf5-tutorial/configure07.png)  
 
 1. A **készlet kiválasztása**területen adja meg az **új létrehozása** elemet (másik lehetőségként válasszon egy már létező készletet). Hagyja, hogy a többi érték legyen alapértelmezett.    A készlet-kiszolgálók területen írja be az IP-címet az **IP-cím/csomópont neve**mezőbe. A **portot**határozza meg. Kattintson a **mentés & tovább**gombra.
  
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure08.png)
+    ![Képernyőkép, amely megjeleníti a "készlet tulajdonságai" lapot az "IP-cím/csomópont neve" és a "Port" szövegmezőben, valamint a "Mentés & tovább" gombot.](./media/kerbf5-tutorial/configure08.png)
 
-1. Az egyszeri bejelentkezés beállításai képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A **kiválasztott egyszeri bejelentkezés típusnál** válassza a **Kerberos**lehetőséget. Cserélje le a **Session. SAML. Last. Identity**  nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a **Felhasználónév forrása** mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Válassza a **Speciális beállítások megjelenítése**lehetőséget. A **Kerberos** tartomány mezőbe írja be a tartománynevet. A **fiók neve/fiók jelszava** területen adja meg az APM-delegálási fiókot és a jelszót. A **KDC** mezőben adhatja meg a tartományvezérlő IP-címét. Kattintson a **mentés & tovább**gombra.
+1. Az egyszeres Sign-On beállítások képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A **kiválasztott egyszeri Sign-On típusnál** válassza a **Kerberos**lehetőséget. Cserélje le a **Session. SAML. Last. Identity**  nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a **Felhasználónév forrása** mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Válassza a **Speciális beállítások megjelenítése**lehetőséget. A **Kerberos** tartomány mezőbe írja be a tartománynevet. A **fiók neve/fiók jelszava** területen adja meg az APM-delegálási fiókot és a jelszót. A **KDC** mezőben adhatja meg a tartományvezérlő IP-címét. Kattintson a **mentés & tovább**gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure09.png)   
+    ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" szöveggel kiemelve és a "Mentés & következő" gomb kiválasztásával.](./media/kerbf5-tutorial/configure09.png)   
 
 1. Ebben az útmutatóban kihagyjuk a végponti ellenőrzéseket.  További részletekért tekintse meg az F5 dokumentációját.  A képernyőn válassza a **mentés & tovább**lehetőséget.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure10.png) 
+    ![Képernyőfelvétel: a "végpont-ellenőrzések tulajdonságai" lap és a "Mentés & következő" gomb kijelölése.](./media/kerbf5-tutorial/configure10.png) 
 
 1. Fogadja el az alapértelmezett beállításokat, majd kattintson a **mentés & tovább**gombra. Az SAML-munkamenet-kezelési beállításokkal kapcsolatos részletekért olvassa el az F5 dokumentációját.
 
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure11.png) 
+    ![A "timeout Settings" (időtúllépési beállítások) lapot megjelenítő képernyőkép, amely a "Mentés & következő" gombra kattint.](./media/kerbf5-tutorial/configure11.png) 
  
 1. Tekintse át az összegző képernyőt, és válassza a **telepítés** lehetőséget a Big-IP konfigurálásához.
  
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure12.png)
+    ![Képernyőfelvétel: "az alkalmazás készen áll a központi telepítésre, és az" összefoglalás "szakasz és a" telepítés "gomb van kiválasztva.](./media/kerbf5-tutorial/configure12.png)
 
 1. Az alkalmazás konfigurálását követően kattintson a **Befejezés**gombra.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure13.png)
+    ![Képernyőfelvétel: "az alkalmazás üzembe helyezése" lap, amelyen a "Finish" (Befejezés) gomb van kiválasztva.](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -279,7 +279,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 1. A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2. Kattintson a **Létrehozás** lehetőségre. Megnyílik az új kiszolgáló tulajdonságai képernyő.
+2. Kattintson a **Létrehozás** gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
 3. A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
@@ -317,27 +317,27 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 15. Kattintson a **kész**gombra. Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót a Active Directory kiszolgálók listájához.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure17.png)
+    ![Képernyőkép, amely az "általános tulajdonságok" és a "konfiguráció" szakaszt jeleníti meg.](./media/kerbf5-tutorial/configure17.png)
 
 ### <a name="saml-configuration"></a>SAML-konfiguráció
 
 1. Importálnia kell a metaadat-tanúsítványt az F5 rendszerbe, amelyet később a telepítési folyamat során fog használni. Navigáljon a **System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure18.png)
+    ![Képernyőfelvétel: az "Importálás" gomb kiválasztásával megjelenik az "import S S L tanúsítvány/kulcs forrása" oldal.](./media/kerbf5-tutorial/configure18.png)
 
 2. Az SAML-IDENTITÁSSZOLGÁLTATÓ beállításához **navigáljon a > összevonási > SAML: szolgáltató > külső identitásszolgáltató-összekötők**lehetőségre, majd kattintson **a > létrehozása metaadatokból**elemre.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure19.png)
+    ![A "létrehozás" legördülő menüből kiválasztott "a metaadatokból" nevű, "S" M szolgáltatót megjelenítő képernyő.](./media/kerbf5-tutorial/configure19.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure20.png)
+    ![Képernyőfelvétel: az "új S A M L I d P-összekötő létrehozása" párbeszédpanel megjelenítése.](./media/kerbf5-tutorial/configure20.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure21.png)
+    ![Képernyőkép: a "General Settings" (általános beállítások) beállítású "M L I d o-összekötő" ablak megjelenítése.](./media/kerbf5-tutorial/configure21.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure22.png)
+    ![Képernyőfelvétel: az "egyszeri bejelentkezés szolgáltatás beállításai" beállítással megjelenítheti az "M L I d o-összekötő szerkesztése" ablakot.](./media/kerbf5-tutorial/configure22.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure23.png)
+    ![A "biztonsági beállítások" lehetőség kiválasztásával megjelenő képernyőkép, amely megjeleníti a](./media/kerbf5-tutorial/configure23.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure24.png)
+    ![Képernyőfelvétel: az "S l I d I d P-összekötő" ablak "S L O Service Settings" beállítással van kiválasztva.](./media/kerbf5-tutorial/configure24.png)
 
 1. Az SAML SP beállításához navigáljon a **hozzáférés > összevonási > SAML-szolgáltató > helyi SP-szolgáltatások** elemre, majd kattintson a **Létrehozás**gombra. Hajtsa végre a következő információkat, majd kattintson **az OK**gombra.
 
@@ -348,17 +348,17 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     * Gazdagép: kerbapp200. redemo. Live
     * Leírás: kerbapp200. redemo. Live
 
-     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure25.png)
+     ![Képernyőkép, amely a "General Settings" (általános beállítások) beállítással jeleníti meg az "M L S P szolgáltatás szerkesztése" ablakot.](./media/kerbf5-tutorial/configure25.png)
 
      b. Válassza ki az SP-konfigurációt, a KerbApp200SAML, majd kattintson a **identitásszolgáltató-összekötők kötése/** megszüntetése elemre.
 
-     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure26.png)
+     ![Képernyőkép, amely az "S M L Service Provider – local S P Services" lapot jeleníti meg a "KerbAPP200 S A M L" beállítással.](./media/kerbf5-tutorial/configure26.png)
 
-     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure27.png)
+     ![A "bind/szüntesse I d P-összekötők" gomb kiválasztását bemutató képernyőkép.](./media/kerbf5-tutorial/configure27.png)
 
      c. Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató-összekötőt** , kattintson a **frissítés**elemre, majd **az OK**gombra.
 
-     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure28.png)
+     ![Az "új sor hozzáadása" gomb kiválasztásával megjelenő "a s L I d I d PS-t használó, az" új sor hozzáadása "gombot megjelenítő képernyőkép.](./media/kerbf5-tutorial/configure28.png)
 
 1. A Kerberos SSO konfigurálásához navigáljon az **> egyszeri bejelentkezés > Kerberos**, teljes információ és kattintson a **kész**lehetőségre.
 
@@ -369,7 +369,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
     * **Felhasználói tartomány forrása**: Session. Logon. Last. domain
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure29.png)
+        ![Képernyőkép, amely Sign-On a "username Source" és a "felhasználói tartomány forrása" szövegmezőket jeleníti meg kiemelve.](./media/kerbf5-tutorial/configure29.png)
 
 1. A hozzáférési profil konfigurálásához navigáljon a hozzáférés **> profil/szabályzatok > hozzáférési profil (munkamenet-szabályzatok)** elemre, kattintson a **Létrehozás**gombra, végezze el a következő információkat, majd kattintson a **kész**gombra.
 
@@ -378,38 +378,38 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     * Profil hatóköre: profil
     * Nyelvek: angol
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure30.png)
+        ![Képernyőfelvétel: a "Name", "Profil típusa" és "nyelvi beállítások" szövegmezőket tartalmazó "profilok/házirendek – tulajdonságok" oldal.](./media/kerbf5-tutorial/configure30.png)
 
 1. Kattintson a névre, KerbApp200, végezze el a következő információkat, majd kattintson a **frissítés**gombra.
 
     * Tartományi cookie: főbemutató. élő
     * SSO-konfiguráció: KerAppSSO_sso
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure31.png)
+        ![Képernyőkép, amely a "tartomány cookie" szövegmezővel és a "S S O-konfigurációval" legördülő menüből és a "frissítés" gomb kiválasztásával jeleníti meg a "S S D/Auth Domains" lapot.](./media/kerbf5-tutorial/configure31.png)
 
 1. Kattintson a **hozzáférési házirend** elemre, majd kattintson a **hozzáférési szabályzat szerkesztése** elemre a "KerbApp200" profilhoz.
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure32.png)
+    ![Képernyőkép a "hozzáférési szabályzat" oldaláról, amelyen a "hozzáférési szabályzat szerkesztése a profil KerbApp200" művelet be van jelölve.](./media/kerbf5-tutorial/configure32.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure33.png)
+    ![A "hozzáférési szabályzat" oldalt és az "S A M L Authentication S P" párbeszédpanelt megjelenítő képernyőkép.](./media/kerbf5-tutorial/configure33.png)
 
-    ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure34.png)
+    ![A "hozzáférési szabályzat" oldalt és a "változó hozzárendelése" párbeszédpanelt a "hozzárendelés" szövegmezők kiemelésével ábrázoló képernyőkép.](./media/kerbf5-tutorial/configure34.png)
 
     * **Session. Logon. Last. usernameUPN kifejezés {[mcget {Session. SAML. Last. Identity}]}**
 
     * **Session. ad. lastactualdomain TEXT-bemutató. élő**
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure35.png)
+        ![Képernyőfelvétel: a "hozzáférési szabályzat" és a "Active Directory" párbeszédpanel, amely a "SearchFilter" szövegmezőt mutatja.](./media/kerbf5-tutorial/configure35.png)
 
     * **(userPrincipalName =% {Session. Logon. Last. usernameUPN})**
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure36.png)
+        ![Képernyőkép, amely az "A D lekérdezés – ág szabályok" párbeszédpanellel jeleníti meg a "hozzáférési szabályzat" lapot.](./media/kerbf5-tutorial/configure36.png)
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure37.png)
+        ![Képernyőkép, amely az "egyéni változó" és az "egyéni kifejezés" szövegmezőket jeleníti meg.](./media/kerbf5-tutorial/configure37.png)
 
     * **Session. Logon. Last. username kifejezés {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}**
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure38.png)
+        ![Képernyőkép, amely a "username from login Page" szövegmezőt jeleníti meg.](./media/kerbf5-tutorial/configure38.png)
 
     * **mcget {Session. Logon. Last. username}**
     * **mcget {Session. Logon. Last. password**
@@ -420,17 +420,17 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     * Leírás: KerbApp200
     * Címe: 192.168.20.200
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure39.png)
+        ![Képernyőkép, amely az "új csomópont" oldalt jeleníti meg a "név", a "Description" és a "címek" szövegmezőket kiemelve, a "befejezett" gombot pedig kiválasztva.](./media/kerbf5-tutorial/configure39.png)
 
 1. Új készlet létrehozásához navigáljon a **helyi forgalom > készletek > készlet listára, kattintson a Létrehozás gombra**, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
 
-    * Név: KerbApp200 – készlet
+    * Név: KerbApp200-Pool
     * Leírás: KerbApp200-Pool
     * Állapot-figyelők: http
     * Címe: 192.168.20.200
     * Szolgáltatási port: 81
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure40.png)
+        ![Képernyőfelvétel: az "új készlet" oldal és a megadott értékek, valamint a "befejezett" gomb van kiválasztva.](./media/kerbf5-tutorial/configure40.png)
 
 1. Virtuális kiszolgáló létrehozásához navigáljon a **helyi forgalom > virtuális kiszolgálók > Virtual Server List > +**, végezze el a következő információkat, majd kattintson a **kész**gombra.
 
@@ -440,9 +440,9 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     * Hozzáférési profil: KerbApp200
     * Az előző lépésben létrehozott hozzáférési profil megadása
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure41.png)
+        ![Képernyőkép, amely a "név", a "cél címe/maszk" és a "Service port" szövegmezőket jeleníti meg.](./media/kerbf5-tutorial/configure41.png)
 
-        ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure42.png)
+        ![A "virtuális kiszolgálók listája" oldalt megjelenítő képernyőkép, amely a "hozzáférési profil" legördülő menüvel jelenik meg.](./media/kerbf5-tutorial/configure42.png)
 
 ### <a name="setting-up-kerberos-delegation"></a>A Kerberos-delegálás beállítása 
 
@@ -456,7 +456,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
     * Sam-fiók neve: **Big-ipuser**
 
-    * New-ADUser-Name "APM delegálási fiók"-UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -sAMAccountName "Big-ipuser"-PasswordNeverExpires $True-Enabled $True-AccountPassword (read-Host-AsSecureString "password! 1234")
+    * New-ADUser neve "APM delegálási fiók"-UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -sAMAccountName "Big-ipuser"-PasswordNeverExpires $True-Enabled $True-AccountPassword (read-Host-AsSecureString "password! 1234")
 
 * **2. lépés:** SPN beállítása (az APM delegálási fiókján)
 

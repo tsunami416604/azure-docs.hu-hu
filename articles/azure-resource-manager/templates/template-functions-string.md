@@ -3,12 +3,12 @@ title: Sablon functions – sztring
 description: A Azure Resource Manager-sablonban a sztringekkel való együttműködéshez használt függvényeket ismerteti.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0733ffc790854c60dca46da3f763738b7820215
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962067"
+ms.locfileid: "91874713"
 ---
 # <a name="string-functions-for-arm-templates"></a>Karakterlánc-függvények ARM-sablonokhoz
 
@@ -27,6 +27,7 @@ A Resource Manager a következő funkciókat biztosítja a sztringek használat�
 * [formátumban](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
+* [JSON](#json)
 * [utolsó](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length) (hossz)
@@ -36,7 +37,7 @@ A Resource Manager a következő funkciókat biztosítja a sztringek használat�
 * [kihagyása](#skip)
 * [felosztása](#split)
 * [startsWith](#startswith)
-* [karakterlánc](#string)
+* [sztring](#string)
 * [substring](#substring)
 * [take](#take)
 * [toLower](#tolower)
@@ -894,6 +895,12 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | firstString | Int | 2 |
 | lastString | Int | 0 |
 | notFound | Int | -1 |
+
+## <a name="json"></a>json
+
+`json(arg1)`
+
+Egy érvényes JSON-karakterláncot alakít át JSON-adattípusra. További információ: JSON- [függvény](template-functions-object.md#json).
 
 ## <a name="last"></a>utolsó
 
@@ -2095,7 +2102,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | componentOutput | Sztring | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Sztring | `http://contoso.com/resources/nested/azuredeploy.json` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
 * Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.

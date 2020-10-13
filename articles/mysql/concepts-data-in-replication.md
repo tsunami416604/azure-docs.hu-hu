@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
 ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537157"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
@@ -25,7 +25,7 @@ A felhőbe irányuló replikálás használatának főbb forgatókönyvei:
  
 Áttelepítési forgatókönyvek esetén használja a [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
-## <a name="limitations-and-considerations"></a>Korlátozások és megfontolandó szempontok
+## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
 
 ### <a name="data-not-replicated"></a>Nem replikált adatértékek
 A forráskiszolgáló [*MySQL rendszeradatbázisa*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) nem replikálódik. A rendszer nem replikálja a fiókok és engedélyek módosításait a forráskiszolgálón. Ha létrehoz egy fiókot a forráskiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan hozza létre ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MySQL-kézikönyvet](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
@@ -50,7 +50,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 - A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md)
 - Tudnivalók [Az Azure-beli replikálásról olvasási replikákkal](concepts-read-replicas.md)
 - Az [adatáttelepítés minimális állásidővel való áttelepítésének ismertetése a DMS használatával](howto-migrate-online.md)

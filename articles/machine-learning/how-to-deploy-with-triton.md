@@ -10,10 +10,10 @@ author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 17260c3890df0bd78b1503a046ff39ab173712be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91622064"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
@@ -303,7 +303,7 @@ az ml service delete -n triton-densenet-onnx
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lásd: a Triton végpontok közötti mintái Azure Machine Learning](https://aka.ms/aml-triton-sample)
 * Ismerje meg a [Triton-ügyfelek példáit](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples)

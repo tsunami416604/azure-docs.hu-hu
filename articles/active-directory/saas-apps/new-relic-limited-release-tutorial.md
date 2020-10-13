@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: a1d74e79f2b375f481c6557c04deb80dcb929b99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62732f92d0739018863229da0a05646cfa817006
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554411"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-organization"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az új ereklye használatával (szervezet szerint)
 
@@ -82,15 +82,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Kattintson a **metaadat-fájl feltöltése**elemre.
 
-    ![image](common/upload-metadata.png)
+    ![Képernyőfelvétel: alapszintű SAML-konfiguráció a metaadatok feltöltése hivatkozással.](common/upload-metadata.png)
 
     b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Képernyőfelvétel: egy párbeszédpanel, amelyen kiválaszthatja és feltöltheti a fájlokat.](common/browse-upload-metadata.png)
 
     c. A metaadat-fájl feltöltése után a rendszer az alapszintű SAML-konfiguráció szakaszban automatikusan feltölti az **azonosítót** és a **Válasz URL-** értékeket:
 
-    ![image](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     > [!Note]
     > Ha az **azonosító** és a **Válasz URL-** értékei nem kapnak automatikus polulated, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
@@ -109,7 +109,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

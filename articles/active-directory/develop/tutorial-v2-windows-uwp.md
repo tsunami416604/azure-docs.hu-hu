@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627669"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
@@ -356,7 +356,7 @@ Az alkalmazás hitelesítésének konfigurálása:
 
 1. A [Azure Portal](https://portal.azure.com)vissza a **kezelés**alatt válassza a **hitelesítés**lehetőséget.
 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 API-engedélyek konfigurálása az alkalmazáshoz:
 

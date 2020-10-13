@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e49fc29f03269096bfc7d6bb6e905187bb8788ff
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551387"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944087"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hevederrel
 
@@ -104,7 +104,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -138,15 +138,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. A lap jobb felső részén kattintson a **folyamatos biztonsági**  >  **hozzáférés-kezelési**  >  **hitelesítési beállítások**elemre.
 
-    ![A hám konfigurálása](./media/harness-tutorial/configure01.png)
+    ![A "hozzáférés-kezelés" és a "hitelesítési beállítások" beállítással rendelkező "folyamatos biztonság" menüt megjelenítő képernyőkép.](./media/harness-tutorial/configure01.png)
 
 5. Az **SSO-szolgáltatók** szakaszban kattintson az SSO- **szolgáltatók**  >  **SAML**hozzáadása lehetőségre.
 
-    ![A hám konfigurálása](./media/harness-tutorial/configure03.png)
+    ![Képernyőfelvétel: "S S O Providers" a "+ Add S S O Providers-S A M L" kiválasztva.](./media/harness-tutorial/configure03.png)
 
 6. Az **SAML-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
 
-    ![A hám konfigurálása](./media/harness-tutorial/configure02.png)
+    ![Képernyőkép, amely megjeleníti az "U R L" és a "megjelenítendő név" mezőket, valamint a "fájl kiválasztása" és a "submit" gombokat.](./media/harness-tutorial/configure02.png)
 
     a. Másolja be az **SSO-szolgáltatót, engedélyezze az SAML-alapú bejelentkezést, majd adja meg a következő URL-példányt,** és illessze be a válasz URL-címe szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában.
 
@@ -166,11 +166,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ki
 
 1. A lap jobb felső részén kattintson a **folyamatos biztonsági**  >  **hozzáférés-kezelő**  >  **felhasználók**elemre.
 
-    ![A hám konfigurálása](./media/harness-tutorial/configure04.png)
+    ![Képernyőkép, amely a "hozzáférés-kezelés" és a "felhasználók" beállítású "folyamatos biztonság" menüt jeleníti meg.](./media/harness-tutorial/configure04.png)
 
 1. A lap jobb oldalán kattintson a **+ felhasználó hozzáadása**lehetőségre.
 
-    ![A hám konfigurálása](./media/harness-tutorial/configure05.png)
+    ![Képernyőkép, amely a "felhasználók" lapot jeleníti meg a "+ felhasználó hozzáadása" művelet kiválasztásával.](./media/harness-tutorial/configure05.png)
 
 1. A **felhasználó hozzáadása** előugró ablakban végezze el a következő lépéseket:
 

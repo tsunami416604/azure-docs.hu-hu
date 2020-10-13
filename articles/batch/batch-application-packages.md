@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277699"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
@@ -77,7 +77,7 @@ A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokko
 
 Ha szeretné megtekinteni az alkalmazásokat a Batch-fiókban, válassza az **alkalmazások** lehetőséget a bal oldali navigációs menüben.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Képernyőkép a Azure Portal alkalmazások menüjéről.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
 
 Ha ezt a menüelemet választja, megnyílik az **alkalmazások** ablak. Ez az ablak a fiókban lévő egyes alkalmazások AZONOSÍTÓját, valamint a következő tulajdonságokat jeleníti meg:
 
@@ -101,7 +101,7 @@ Egy alkalmazás részleteinek megtekintéséhez válassza ki azt az **alkalmazá
 
 A Batch-fiókban válassza az **alkalmazások** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Képernyőkép a Azure Portal új alkalmazás-létrehozási folyamatáról.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
 
 Adja meg a következő információkat:
 
@@ -128,7 +128,7 @@ Ahogy az új alkalmazásnál, adja meg az új csomag **verzióját** , töltse f
 
 Meglévő alkalmazáscsomag frissítéséhez vagy törléséhez válassza ki az alkalmazást a Batch-fiók **alkalmazások** szakaszában. Válassza ki a módosítani kívánt alkalmazáscsomag sorában található három pontot, majd válassza ki a végrehajtani kívánt műveletet.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Képernyőfelvétel a Azure Portal alkalmazás csomagjainak frissítési és törlési lehetőségeiről.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
 
 Ha a **frissítés**lehetőséget választja, feltöltheti egy új. zip fájlt. Ez felülírja az adott verzióhoz feltöltött előző. zip fájlt.
 
@@ -243,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>Készlet alkalmazáscsomagjainak frissítése
 
-Ha egy meglévő készlet már konfigurálva van egy alkalmazáscsomag használatával, megadhat egy új csomagot a készlethez. Ez a következőket jelenti:
+Ha egy meglévő készlet már konfigurálva van egy alkalmazáscsomag használatával, megadhat egy új csomagot a készlethez. Ez a következőkkel jár:
 
 - A Batch szolgáltatás telepíti az újonnan megadott csomagot az összes olyan új csomóponton, amely csatlakozik a készlethez, illetve az újraindított vagy rendszerképbe telepített meglévő csomópontokon.
 - A csomagok hivatkozásainak frissítésekor a készletben már szereplő számítási csomópontok nem telepítik automatikusan az új alkalmazáscsomag-csomagot. Ezeket a számítási csomópontokat újra kell indítani vagy rendszerképbe kell állítani az új csomag fogadásához.

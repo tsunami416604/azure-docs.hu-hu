@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629794"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943866"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -116,7 +116,7 @@ A biztonságos pontszám, amely a Center for Internet Security (CIS) vezérlők�
 **Részletek**: kövesse a Security Center kezdődő [biztonsági javaslatokat](../../security-center/security-center-recommendations.md) a legmagasabb prioritású elemekkel.
 
 **Ajánlott eljárás**: Security Center riasztások integrálása a biztonsági információk és az Event Management (SIEM) megoldásba.   
-**Részletek**: a legtöbb Siem-et használó szervezet központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által készített feldolgozott események közzé lesznek téve az Azure-tevékenység naplójában, amely az Azure Monitoron keresztül elérhető naplók egyike. A Azure Monitor összevont folyamatot biztosít a figyelési adatainak egy SIEM-eszközre történő átirányításához. Lásd: [biztonsági riasztások exportálása és javaslatok](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) az utasításokhoz. Ha az Azure Sentinelt használja, tekintse meg a [Azure Security Center összekapcsolását](../../sentinel/connect-azure-security-center.md)ismertető témakört.
+**Részletek**: a legtöbb Siem-et használó szervezet központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által készített feldolgozott események közzé lesznek téve az Azure-tevékenység naplójában, amely az Azure Monitoron keresztül elérhető naplók egyike. A Azure Monitor összevont folyamatot biztosít a figyelési adatainak egy SIEM-eszközre történő átirányításához. Útmutatásért lásd: [stream-riasztások egy Siem, SOAR vagy IT Service Management megoldáshoz](../../security-center/export-to-siem.md) . Ha az Azure Sentinelt használja, tekintse meg a [Azure Security Center összekapcsolását](../../sentinel/connect-azure-security-center.md)ismertető témakört.
 
 **Ajánlott eljárás**: az Azure-naplók integrálása a Siem-szel.   
 **Részletek**: [Azure monitor használata adatok gyűjtésére és exportálására](/azure/azure-monitor/overview#integrate-and-export-data). Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának engedélyezéséhez, és az online napló megtartásának korlátozása. Ha Azure Sentinelt használ, tekintse meg [az adatforrások összekapcsolását](../../sentinel/connect-data-sources.md)ismertető témakört.

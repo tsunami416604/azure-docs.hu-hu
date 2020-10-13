@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540584"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944223"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix NetScaler (fejléc-alapú hitelesítés)
 
@@ -392,7 +392,7 @@ A Citrix ADC fejléc-alapú hitelesítéshez való konfigurálásához végezze 
 
 1. A terheléselosztási **virtuális kiszolgáló** ablaktábla **Speciális beállítások**területén válassza a **házirendek**elemet. Az NetScaler-példányhoz konfigurált összes házirend megjelenik a listában.
  
-    ![Citrix NetScaler-konfiguráció – virtuális kiszolgáló terheléselosztása panel](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![A "név", "művelet" és "kifejezés" mezőket és a "Create" (létrehozás) gombot megjelenítő képernyőkép.](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Citrix NetScaler-konfiguráció – virtuális kiszolgáló terheléselosztása panel](./media/header-citrix-netscaler-tutorial/header06.png)
 

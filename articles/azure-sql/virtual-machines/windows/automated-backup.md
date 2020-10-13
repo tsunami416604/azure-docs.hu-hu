@@ -14,10 +14,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565139"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizált Backup v2 Azure-beli virtuális gépekhez (Resource Manager)
@@ -310,7 +310,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 A SQL Server 2016/2017-es automatikus biztonsági mentés figyeléséhez két fő lehetőség közül választhat. Mivel az automatikus biztonsági mentés a SQL Server felügyelt biztonsági mentési szolgáltatást használja, ugyanaz a figyelési módszer is érvényes mindkét eszközre.
 
-Először is lekérdezheti az állapotot a [msdb. managed_backup. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql)meghívásával. Vagy a [msdb. managed_backup. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) tábla értékű függvény lekérdezése.
+Először is lekérdezheti az állapotot a [msdb. managed_backup. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql)hívásával. Vagy a [msdb. managed_backup. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) tábla értékű függvény lekérdezése.
 
 Egy másik lehetőség, hogy kihasználja az értesítések beépített Database Mail funkciójának előnyeit.
 

@@ -15,10 +15,10 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d6c7ea0057553ea0052ded72353d22ade86b9d74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298915"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az Azure Virtual Machines szolgáltatásban SQL Server automatikus javítása (Resource Manager)
@@ -65,7 +65,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 ## <a name="settings"></a>Beállítások
 Az alábbi táblázat az automatikus javításhoz konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
-| Beállítás | Lehetséges értékek | Description |
+| Beállítás | Lehetséges értékek | Leírás |
 | --- | --- | --- |
 | **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja az Azure-beli virtuális gépek automatikus javítását. |
 | **Karbantartási ütemezés** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális géphez tartozó Windows-, SQL Server-és Microsoft-frissítések letöltésének és telepítésének ütemterve. |

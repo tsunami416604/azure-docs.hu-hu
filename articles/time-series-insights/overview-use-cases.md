@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666959"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 használati esetei
@@ -30,7 +30,7 @@ Ez a cikk a következő kérdésekre ad választ:
 
 A következő szakaszokban ismertetjük a használati forgatókönyvek áttekintését.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Azure Time Series Insights Gen2 egy végpontok közötti, szolgáltatásként nyújtott platformot kínál. A szolgáltatás a kifejezetten környezetfüggő, idősorozat-optimalizált IoT adatok gyűjtésére, feldolgozására, tárolására, elemzésére és lekérdezésére szolgál. Ideális megoldás az ad hoc adatfeltárásra és az operatív elemzésre. Azure Time Series Insights Gen2 egy egyedileg bővíthető, testreszabott szolgáltatás, amely megfelel az ipari IoT-telepítések széles körű igényeinek.
 

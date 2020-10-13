@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575197"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874798"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás figyelése és kezelése
 
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A Kezdés előtt a következőket kell elvégeznie:
 
-* A [Live Video Analytics-alkalmazás létrehozása az Azure IoT Central](./tutorial-video-analytics-create-app.md) oktatóanyagban.
+* Az egyik előző [Live Video Analytics-alkalmazás létrehozása az Azure-ban IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) vagy [egy videó-elemzés létrehozása az Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) oktatóanyagokban.
 * Az egyik előző [létrehoz egy IoT Edge példányt az élő videó elemzéséhez (linuxos virtuális gép)](tutorial-video-analytics-iot-edge-vm.md) , vagy [létrehoz egy IoT Edge-példányt az élő video Analytics (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md) oktatóanyagokhoz.
 
 A video Viewer alkalmazás futtatásához a [Docker](https://www.docker.com/products/docker-desktop) -t telepíteni kell a helyi gépre.
@@ -94,7 +94,7 @@ Használja az alapértelmezett értékeket, vagy módosítsa, ha testre kell sza
 | Megbízhatósági küszöb | A minősítés százalékos értéke annak megállapításához, hogy az objektum észlelése érvényes-e | 70 |
 | Következtetési keret mintavételi sebessége (FPS) | [Leírás itt] | 2 |
 
-Válassza a **Mentés** lehetőséget.
+Kattintson a **Mentés** gombra.
 
 Néhány másodperc elteltével megjelenik az egyes beállításokhoz tartozó **elfogadott** megerősítő üzenet:
 
@@ -178,7 +178,7 @@ Az alkalmazás-irányítópultok eredetileg a IoT Central szimulált eszközökr
     1. A **(z)% megbízhatósági%** az `AI Inference Interface/Inference/entity/tag/confidence` utolsó ismert értéket használja
     1. **Snapshot** A pillanatkép `AI Inference Interface/Inference Image` képként jelenik meg.
     1. A **következtetési esemény videó** `AI Inference Interface/Inference Event Video` hivatkozásként jelenik meg.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az **igazi kamera-figyelő** irányítópultja mostantól megjeleníti a valódi kamera-eszköz értékeit:
 
@@ -203,7 +203,7 @@ Ha végzett az alkalmazással, a következőképpen távolíthatja el az összes
 1. A Azure Portal törölje a **LVA-RG** erőforráscsoportot.
 1. A helyi gépen állítsa le az **amp-Viewer** Docker-tárolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most megtanulta, hogyan adhat hozzá kamerákat a IoT Central alkalmazáshoz, és hogyan konfigurálhatja őket az objektumok és a mozgásérzékelők észleléséhez.
 

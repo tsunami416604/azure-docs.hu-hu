@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362197"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hogyan működik a Hyper-V replikáció?
@@ -80,7 +80,7 @@ I
 Ha van tartalék sávszélesség a replikáláshoz, és szeretné megnövelni a feltöltéseket, növelheti a feltöltési feladathoz lefoglalt szálak számát a következőképpen:
 
 1. Nyissa meg a beállításjegyzéket a regedit szolgáltatással.
-2. Navigáljon a Key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+2. Navigáljon a kulcs HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
 3. Növelje az adatfeltöltéshez használt szálak számát az egyes replikáló virtuális gépek esetében. Az alapértelmezett érték 4, a maximális érték 32. 
 
 

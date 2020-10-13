@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361891"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Webszolgáltatás kezelése a Azure Machine Learning Studio (klasszikus) webszolgáltatások portál használatával
@@ -73,8 +73,8 @@ Kattintson az **irányítópult** fülre.
 Az irányítópulton megtekintheti a webszolgáltatás általános használatát egy adott időszakban. A használati diagramok jobb felső sarkában található időszak legördülő menüből kiválaszthatja a megtekinteni kívánt időszakot. Az irányítópult az alábbi információkat jeleníti meg:
 
 * Az **idő múlásával** a kérések száma a kiválasztott időszakra vonatkozó kérelmek számának gráfját jeleníti meg. Segít azonosítani, hogy észlelt-e tüskéket a használat során.
-* A **kérelem-válasz kérelmek** megjelenítik a szolgáltatás által a kiválasztott időszakban fogadott kérelmek és válaszok számát, valamint azt, hogy hány sikertelen volt.
-* A **kérések átlagos száma – a válasz számítási ideje** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
+* A **kérelem-válasz kérelmek** megjelenítik a szolgáltatás által a kiválasztott időszakban fogadott Request-Response hívások teljes számát, valamint azt, hogy hány sikertelen volt.
+* Az **átlagos Request-Response számítási idő** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
 * A **Batch-kérelmek** azon kötegelt kérelmek teljes számát jelenítik meg, amelyeket a szolgáltatás a kiválasztott időszakban fogadott el, és hány sikertelen volt.
 * A **feladatok átlagos késése** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
 * A **hibák** a webszolgáltatásra irányuló hívásokban történt hibák összesített számát jelenítik meg.
@@ -89,7 +89,7 @@ A következő tulajdonságokat frissítheti:
 * A **cím** lehetővé teszi a webszolgáltatás címének megadását
 * A **kulcsok** lehetővé teszik az elsődleges és a másodlagos API-kulcsok elforgatását.
 * A **Storage-fiók kulcsa** lehetővé teszi a webszolgáltatás változásaihoz társított Storage-fiók kulcsának frissítését. 
-* A **mintaadatok engedélyezése** lehetővé teszi a kérelem-válasz szolgáltatás teszteléséhez használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
+* A **mintaadatok engedélyezése** lehetővé teszi a Request-Response szolgáltatás tesztelésére használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
 
 ### <a name="managing-billing-plans"></a>Számlázási csomagok kezelése
 Kattintson a **csomagok** menüpontra a webszolgáltatások gyors lapja lapon. Az adott webszolgáltatáshoz társított tervet a terv kezelésére is használhatja.
@@ -140,8 +140,8 @@ Kattintson az **irányítópult** fülre.
 Az irányítópulton megtekintheti a webszolgáltatás általános használatát egy adott időszakban. A használati diagramok jobb felső sarkában található időszak legördülő menüből kiválaszthatja a megtekinteni kívánt időszakot. Az irányítópult az alábbi információkat jeleníti meg:
 
 * Az **idő múlásával** a kérések száma a kiválasztott időszakra vonatkozó kérelmek számának gráfját jeleníti meg. Segít azonosítani, hogy észlelt-e tüskéket a használat során.
-* A **kérelem-válasz kérelmek** megjelenítik a szolgáltatás által a kiválasztott időszakban fogadott kérelmek és válaszok számát, valamint azt, hogy hány sikertelen volt.
-* A **kérések átlagos száma – a válasz számítási ideje** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
+* A **kérelem-válasz kérelmek** megjelenítik a szolgáltatás által a kiválasztott időszakban fogadott Request-Response hívások teljes számát, valamint azt, hogy hány sikertelen volt.
+* Az **átlagos Request-Response számítási idő** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
 * A **Batch-kérelmek** azon kötegelt kérelmek teljes számát jelenítik meg, amelyeket a szolgáltatás a kiválasztott időszakban fogadott el, és hány sikertelen volt.
 * A **feladatok átlagos késése** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
 * A **hibák** a webszolgáltatásra irányuló hívásokban történt hibák összesített számát jelenítik meg.
@@ -154,6 +154,6 @@ A következő tulajdonságokat frissítheti:
 
 * A **Leírás** lehetővé teszi a webszolgáltatás leírásának megadását. A leírás mező kitöltése kötelező.
 * A **naplózással** engedélyezheti vagy letilthatja a hibák naplózását a végponton. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának](web-services-logging.md)engedélyezése.
-* A **mintaadatok engedélyezése** lehetővé teszi a kérelem-válasz szolgáltatás teszteléséhez használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
+* A **mintaadatok engedélyezése** lehetővé teszi a Request-Response szolgáltatás tesztelésére használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
 
 

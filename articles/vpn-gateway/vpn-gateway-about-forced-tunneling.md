@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5999ef8431ce1e128c3775450eedf13644505918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94a5459ade634f6a1de029808aa6bad4d16b9a5d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313535"
+ms.locfileid: "91874629"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Kényszerített bújtatás konfigurálása klasszikus üzemi modellel
 
@@ -57,12 +57,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 ### <a name="to-sign-in"></a>Bejelentkezés
 
-1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
-
-   ```powershell
-   azure config mode asm
-   ```
-2. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
+1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. Kapcsolódjon a fiókjához a következő példa használatával:
 
    ```powershell
    Add-AzureAccount

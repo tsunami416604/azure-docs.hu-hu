@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361925"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
@@ -314,7 +314,7 @@ A tanulmány kiegészíti az SAP-telepítési dokumentációt és az SAP-megjegy
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A felhő-számítástechnika egy széles körben használt kifejezés, amely egyre nagyobb jelentőséggel bír az informatikai iparban, a kisvállalkozásoktól egészen a nagy és a multinacionális vállalatokig.
 
 A Microsoft Azure a Microsoft Cloud Services platformja, amely az új lehetőségek széles spektrumát kínálja. Mostantól az ügyfelek gyorsan üzembe helyezhetik és kioszthatják az alkalmazásokat a felhőben, így azok nem korlátozódnak technikai vagy költségvetési korlátozásokra. Az idő és a költségvetés hardveres infrastruktúrába való befektetése helyett a vállalatok az alkalmazásra, az üzleti folyamatokra, valamint az ügyfelek és a felhasználók számára nyújtott előnyökre is koncentrálnak.
@@ -348,7 +348,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Források
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>További források
 [Itt](./get-started.md)található az Azure dokumentációjában az SAP-számítási feladatok belépési pontja. Ettől a belépési ponttól kezdve számos cikket talál, amelyek a következő témaköröket fedik le:
 
 - SAP NetWeaver és Business One az Azure-ban
@@ -963,7 +963,7 @@ A letöltés ideje alatt a VHD-k vagy a Managed Disks nem lehetnek aktívak. Mé
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  A Save-AzVhd parancsmaggal kapcsolatos további részletekért tekintse meg a következőt: <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
+  A Save-AzVhd parancsmag további részleteiért tekintse meg a következőt: <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
 #### <a name="azure-cli"></a>Azure CLI
 * A felügyelt lemez letöltéséhez először el kell érnie a felügyelt lemez mögöttes blobját. Ezután átmásolhatja az alapul szolgáló blobot egy új Storage-fiókba, és letöltheti a blobot ebből a Storage-fiókból.
@@ -998,7 +998,7 @@ Az adatlemezek Managed Disks is lehetnek. Ebben az esetben a felügyelt lemez ha
 
 ##### <a name="powershell"></a>PowerShell
 
-Azure PowerShell parancsmagok segítségével a [cikkben][storage-powershell-guide-full-copy-vhd]látható módon másolhat egy virtuális merevlemezt. Új felügyelt lemez létrehozásához használja a New-AzDiskConfig és a New-AzDisk az alábbi példában látható módon.
+Azure PowerShell parancsmagok segítségével a [cikkben][storage-powershell-guide-full-copy-vhd]látható módon másolhat egy virtuális merevlemezt. Új felügyelt lemez létrehozásához használja az alábbi példában látható New-AzDiskConfig és New-AzDisk.
 
 ```powershell
 $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
@@ -1168,7 +1168,7 @@ Az SAP üzemelő példányok tapasztalatai az elmúlt két évben néhány leck�
 >
 
 ---
-* A Premium Storage jelentős jobb teljesítményt mutat, különösen a kritikus tranzakciós naplók írásakor. Az olyan SAP-forgatókönyvek esetében, amelyek várhatóan az éles környezethez hasonló teljesítményt biztosítanak, erősen ajánlott olyan VM-sorozatot használni, amely képes az Azure Premium Storage használatára.
+* A Premium Storage jelentős jobb teljesítményt mutat, különösen a kritikus tranzakciós naplók írásakor. Az olyan SAP-forgatókönyvek esetében, amelyek várhatóan az éles környezethez hasonló teljesítményt biztosítanak, erősen ajánlott olyan VM-Series használni, amely képes az Azure Premium Storage használatára.
 
 Ne feledje, hogy az operációs rendszert tartalmazó lemez, és ahogy azt javasoljuk, az SAP és az adatbázis (alapszintű virtuális gép) bináris fájljai szintén nem korlátozódnak a 127 GB-ra. Most már legfeljebb 1 TB méretű lehet. Ennek elegendő helynek kell lennie az összes szükséges fájl (például az SAP batch-feladatok naplói) megtartásához.
 
@@ -1219,7 +1219,7 @@ Az Azure geo-Replication helyileg működik a virtuális gépek mindegyik virtu�
 >
 > Az automatikus csatlakoztatás beállításához tekintse meg a parancssori végrehajtható fájl dokumentációját diskpart.exe itt:
 >
-> * [A DiskPart parancssori kapcsolói](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
+> * [A DiskPart Command-Line beállításai](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
 > * [Automount](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc753703(v=ws.11))
 >
 > A Windows parancssori ablakát rendszergazdaként kell megnyitni.
@@ -1738,7 +1738,7 @@ Az SAP-hez készült Azure-bővítmény általános architektúrája a következ
 
 Az Azure-ban futó SAP-példányoknak elérhetőnek kell lenniük a SAProuter-től is.
 
-![SAP-útválasztó hálózati kapcsolatok][planning-guide-figure-2600]
+![SAP-Router hálózati kapcsolatok][planning-guide-figure-2600]
 
 A SAProuter lehetővé teszi a TCP/IP-kommunikációt a résztvevő rendszerek között, ha nincs közvetlen IP-kapcsolat. Ez biztosítja azt az előnyt, hogy a kommunikációs partnerek közötti végpontok közötti kapcsolatra nincs szükség hálózati szinten. A SAProuter alapértelmezés szerint a 3299-es portot figyeli.
 Az SAP-példányok SAProuter való összekapcsolásához meg kell adnia a SAProuter karakterláncot és az állomásnevet a kapcsolódási kísérletekkel.
@@ -1936,7 +1936,7 @@ Az SAP-példányok automatikus indításával kapcsolatban itt talál további i
 * [A HANA-adatbázis automatikus indításának engedélyezése](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Nagyobb 3 szintű SAP-rendszerek
-A 3 rétegbeli SAP-konfigurációk magas rendelkezésre állási szempontjai már a korábbi szakaszokban lettek megtárgyalva. De mi a helyzet azokon a rendszereken, amelyekben az adatbázis-kezelő kiszolgáló követelményei túl nagyok ahhoz, hogy az Azure-ban legyenek, de az SAP-alkalmazás rétege üzembe helyezhető az Azure-ban
+A 3 rétegbeli SAP-konfigurációk High-Availability szempontjai már a korábbi szakaszokban lettek megtárgyalva. De mi a helyzet azokon a rendszereken, amelyekben az adatbázis-kezelő kiszolgáló követelményei túl nagyok ahhoz, hogy az Azure-ban legyenek, de az SAP-alkalmazás rétege üzembe helyezhető az Azure-ban
 
 #### <a name="location-of-3-tier-sap-configurations"></a>A háromrétegű SAP-konfigurációk helye
 Nem támogatott az alkalmazási réteg, illetve az alkalmazás-és az adatbázis-kezelői réteg felosztása a helyszíni és az Azure között. Az SAP-rendszer telepítése vagy üzembe helyezése teljesen megtörtént a helyszínen vagy az Azure-ban. Az is előfordulhat, hogy néhány alkalmazás-kiszolgáló nem fut a helyszínen, és mások az Azure-ban. Ez a vitafórum kiindulási pontja. Nem támogatjuk az SAP-rendszer és a két különböző Azure-régióban üzembe helyezett SAP Application Server-réteg adatbázis-kezelői összetevőjének támogatását is. Például az USA nyugati régiójában és az SAP-alkalmazás rétegében, az USA középső régiójában. Az ilyen konfigurációk nem támogatásának oka az SAP NetWeaver architektúra késleltetési érzékenysége.

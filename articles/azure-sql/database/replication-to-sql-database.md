@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362129"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikálás Azure SQL Databasere
@@ -54,8 +54,8 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes | 
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen | 
+| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
 | [**Egyenrangú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
 | [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b18629a776dd98950f49b1f607cbc876abcd9c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628891"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Új konfiguráció létrehozása Azure AD Connect felhőalapú kiépítés számára
@@ -62,7 +62,7 @@ Az ügynök hatókörével a helyi Active Directory csoportok vagy szervezeti eg
 ## <a name="attribute-mapping"></a>Attribútumleképezés
 Azure AD Connect a felhő-kiépítés lehetővé teszi az attribútumok egyszerű leképezését a helyszíni felhasználói/csoport objektumai és az Azure AD objektumai között.  Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is.  További információ: [attribútumok leképezése](how-to-attribute-mapping.md).
 
-## <a name="on-demand-provisioning"></a>Igény szerinti kiépítés
+## <a name="on-demand-provisioning"></a>Igény szerinti üzembe helyezés
 Azure AD Connect a felhő-kiépítés lehetővé teszi a konfigurációs változások tesztelését, ha ezeket a módosításokat egyetlen felhasználóra vagy csoportra alkalmazza.  Ezzel ellenőrizheti, hogy a konfiguráción végrehajtott módosítások megfelelően lettek-e alkalmazva, és megfelelően szinkronizálva vannak-e az Azure AD-vel.  További információ: [igény szerinti kiépítés](how-to-on-demand-provision.md).
 
 ## <a name="restart-provisioning"></a>Kiépítés újraindítása 
@@ -92,7 +92,7 @@ A konfiguráció törléséhez kövesse az alábbi lépéseket.
 >A konfiguráció törlése előtt nincs megerősítés. Győződjön meg arról, hogy ezt a műveletet szeretné végrehajtani a **Törlés**kiválasztása előtt.
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

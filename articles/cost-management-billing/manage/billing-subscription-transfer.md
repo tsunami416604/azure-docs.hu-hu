@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ef497439d77fef63f4b0c902aee06428a30c5ff5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276730"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666109"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -56,7 +56,7 @@ Amikor regisztrál az Azure-ba, a rendszer létrehoz Önnek egy Azure Active Dir
 
 Amikor új előfizetést hoz létre, az a fiókja Azure AD-bérlőjén lesz tárolva. Ha másoknak kíván hozzáférést biztosítani az előfizetéshez vagy annak erőforrásaihoz, meg kell őket hívnia, hogy csatlakozzanak a bérlőjéhez. Így szabályozhatja az előfizetésekhez és az erőforrásokhoz való hozzáférést.
 
-Amikor az előfizetése számlázási tulajdonjogát egy másik Azure AD-bérlőn lévő fióknak adja át, az előfizetést is áthelyezheti az új fiók bérlőjére. Ha így tesz, akkor az összes korábbi [Azure-beli szerepkör-hozzárendeléssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetés és az előfizetés erőforrásainak kezeléséhez szükséges hozzáférést. Csak az új fiók átadást elfogadó felhasználójának lesz hozzáférése az erőforrások kezeléséhez. Az új tulajdonosnak manuálisan kell hozzáadnia ezeket a felhasználókat az előfizetéshez, ha hozzáférést kíván biztosítani az azt elveszítő felhasználónak. További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba (Előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
+Amikor az előfizetése számlázási tulajdonjogát egy másik Azure AD-bérlőn lévő fióknak adja át, az előfizetést is áthelyezheti az új fiók bérlőjére. Ha így tesz, akkor az összes korábbi [Azure-beli szerepkör-hozzárendeléssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetés és az előfizetés erőforrásainak kezeléséhez szükséges hozzáférést. Csak az új fiók átadást elfogadó felhasználójának lesz hozzáférése az erőforrások kezeléséhez. Az új tulajdonosnak manuálisan kell hozzáadnia ezeket a felhasználókat az előfizetéshez, ha hozzáférést kíván biztosítani az azt elveszítő felhasználónak. További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba](../../role-based-access-control/transfer-subscription.md).
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio- és a Microsoft Partner Network-előfizetések átadása
 

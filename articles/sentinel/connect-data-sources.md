@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
 ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627142"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
@@ -131,7 +131,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 ## <a name="map-data-types-with-azure-sentinel-connection-options"></a>Adattípusok leképezése Azure Sentinel-kapcsolatbeállításokkal
 
 
-| **Adattípus** | **Csatlakozás** | **Adatösszekötő?** | **Megjegyzések** |
+| **Adattípus** | **A kapcsolódás menete** | **Adatösszekötő?** | **Megjegyzések** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [Az AWS csatlakoztatása](connect-aws.md) | &#10003; | |
 | AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
@@ -165,7 +165,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Barracuda_CL | [A Barracuda csatlakoztatása](connect-barracuda.md) | &#10003; | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

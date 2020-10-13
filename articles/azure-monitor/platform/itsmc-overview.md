@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613764"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
@@ -65,7 +65,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSM-csatoló megoldást.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
 
-5. Kattintson a **Létrehozás** elemre.
+5. Kattintson a **Létrehozás** lehetőségre.
 
 A megoldás erőforrásának telepítésekor megjelenik egy értesítés az ablak jobb felső sarkában.
 
@@ -159,7 +159,7 @@ Az irányítópult információt nyújt az összekötő állapotáról is, amely
 
 Az érintett számítógépeken szinkronizált incidenseket is megjelenítheti a Service Map megoldáson belül.
 
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Használatával a kiszolgálók úgy jelennek meg, ahogyan Ön gondol rájuk: egymással összekapcsolt rendszerekként, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kapcsolatokat mindazon kiszolgálók, folyamatok és portok között, amelyek TCP-kapcsolattal összekötött architektúrában találhatóak, és ehhez nem szükséges semmilyen konfiguráció, csupán az ügynököt kell telepíteni. [További információ](../insights/service-map.md).
+Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Használatával a kiszolgálók úgy jelennek meg, ahogyan Ön gondol rájuk: egymással összekapcsolt rendszerekként, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kapcsolatokat mindazon kiszolgálók, folyamatok és portok között, amelyek TCP-kapcsolattal összekötött architektúrában találhatóak, és ehhez nem szükséges semmilyen konfiguráció, csupán az ügynököt kell telepíteni. [További információk](../insights/service-map.md).
 
 Ha a Service Map megoldást használja, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az alábbi példában látható módon:
 
@@ -186,7 +186,7 @@ ServiceDeskWorkItemType_s = "incidens"
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állapot
+- Állam
 - Sürgősség
 - Hatás
 - Prioritás
@@ -220,7 +220,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Cím
 - Típus
 - Kategória
-- Állapot
+- Állam
 - Eszkalálás
 - Ütközési állapot
 - Sürgősség
@@ -244,7 +244,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állapot |
+| IncidentState_s | Állam |
 | Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
@@ -272,7 +272,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állapot|
+| CRState_s|  Állam|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
@@ -310,6 +310,6 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 
 A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért és Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md).
 

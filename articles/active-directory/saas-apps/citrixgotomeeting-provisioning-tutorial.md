@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299697"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés GoToMeeting konfigurálása
@@ -48,7 +48,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 Ez a szakasz végigvezeti az Azure AD-nek a GoToMeeting felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és GoToMeeting alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a GoToMeeting, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri Sign-On a GoToMeeting számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="to-configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása:
 

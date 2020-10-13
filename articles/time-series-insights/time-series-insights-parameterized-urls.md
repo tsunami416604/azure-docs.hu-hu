@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665327"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
@@ -69,7 +69,7 @@ Az elfogadott értékek a Azure Time Series Insights Explorer **gyors idő** men
 
 A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan predikátum-kifejezéseket határoz meg, amelyek egy Azure Time Series Insights nézetben fognak megjelenni:
 
-| Paraméter | URL-tétel | Description |
+| Paraméter | URL-tétel | Leírás |
 | --- | --- | --- |
 | **név** | `\<string>` | A *kifejezés* neve. |
 | **splitBy** | `\<string>` | A *felosztás* alapjául szolgáló oszlop neve. |
@@ -86,7 +86,7 @@ A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan prediká
 * A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi az intervallum csúszkájának módosítását, hogy a diagram részletesebb vagy simább legyen.  
 * A `timezoneOffset=<integer>` paraméter lehetővé teszi, hogy beállítsa a diagram időzónáját, amelyet az UTC szerint kell megtekinteni.
 
-| Pár (ok) | Description |
+| Pár (ok) | Leírás |
 | --- | --- |
 | `multiChartStack=false` | `true` Alapértelmezés szerint engedélyezve van, ezért adja át `false` a stack-nek. |
 | `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  Alapértelmezés szerint ez a `false` `true` funkció lehetővé teszi ezt a funkciót. |

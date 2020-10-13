@@ -9,10 +9,10 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278634"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
@@ -71,7 +71,7 @@ Ha nyilvános IP-címet használ végpontként, a nyilvános IP-cím erőforrás
 
 A v2 SKU esetében nyissa meg a nyilvános IP-erőforrást, és válassza a **konfiguráció**lehetőséget. A DNS-név **címke (nem kötelező)** mezője elérhető a DNS-név konfigurálásához.
 
-### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Mik a Keep-Alive időkorlát és a TCP Üresjárati időkorlát beállításai?
+### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Mik a Keep-Alive időtúllépés és a TCP Üresjárati időkorlát beállításai?
 
 Az *életben tartási időkorlát* azt szabályozza, hogy a Application Gateway mennyi ideig várjon, amíg az ügyfél egy másik HTTP-kérést küld egy állandó kapcsolaton, mielőtt újra felhasználja vagy bezárja. A *TCP üresjárati időkorlátja* azt szabályozza, hogy a TCP-kapcsolatok mennyi ideig legyenek nyitva, ha nincs tevékenység. 
 

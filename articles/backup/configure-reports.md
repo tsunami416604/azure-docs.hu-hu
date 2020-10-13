@@ -4,10 +4,10 @@ description: Azure Backup jelentések konfigurálása és megtekintése Log Anal
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567434"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
@@ -71,7 +71,7 @@ Válassza ezt a hivatkozást a biztonsági mentési jelentés munkafüzetének m
 
 A jelentés különböző lapokat tartalmaz:
 
-##### <a name="summary"></a>Összefoglalás
+##### <a name="summary"></a>Összegzés
 
 Ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
 
