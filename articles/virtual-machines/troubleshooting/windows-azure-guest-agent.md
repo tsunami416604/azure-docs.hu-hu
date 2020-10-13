@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
 ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90561261"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>A Windows Azure Guest Agent hibaelhárítása
@@ -234,6 +234,6 @@ A Npcap visszacsatolási adapter a virtuális gépen a Wireshark használatával
 
 A WireShark valószínűleg telepíti a Npcap visszacsatolási adaptert. Próbálja meg letiltani, majd győződjön meg arról, hogy a probléma megoldódott-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A "Windows Azure Guest Agent ügynök nem működik" probléma megoldásához forduljon a [Microsoft ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

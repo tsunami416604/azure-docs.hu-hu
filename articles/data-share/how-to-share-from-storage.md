@@ -1,5 +1,5 @@
 ---
-title: Adatok megosztása és fogadása az Azure Blob Storage és Azure Data Lake Storage
+title: Adatok megosztása és fogadása az Azure Blob Storage-ból és az Azure Data Lake Storage-ból
 description: Ismerje meg, hogyan oszthat meg és fogadhat adatait az Azure Blob Storage és Azure Data Lake Storage
 author: jifems
 ms.author: jife
@@ -7,13 +7,13 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89270121"
 ---
-# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Adatok megosztása és fogadása az Azure Blob Storage és Azure Data Lake Storage
+# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Adatok megosztása és fogadása az Azure Blob Storage-ból és az Azure Data Lake Storage-ból
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
@@ -34,8 +34,8 @@ Ha a fájlrendszer, a tárolók vagy a mappák a pillanatkép-alapú megosztásb
 ### <a name="prerequisites-for-source-storage-account"></a>A forrásként szolgáló Storage-fiók előfeltételei
 
 * Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a közreműködő szerepkörben található.
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély létezik a tulajdonosi szerepkörben. 
+* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi.
+* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -58,7 +58,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Name (Név) | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -73,13 +73,13 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza **az adatmegosztás megkezdése**lehetőséget.
 
-1. Válassza a **Létrehozás** lehetőséget.   
+1. Kattintson a **Létrehozás** gombra.   
 
 1. Adja meg a megosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
 
     ![EnterShareDetails](./media/enter-share-details.png "Adja meg a megosztás részleteit") 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 1. Az adatkészletek megosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása**elemet. 
 
@@ -97,7 +97,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![AddRecipients](./media/add-recipient.png "Címzettek hozzáadása") 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 1. Ha kiválasztotta a pillanatkép-megosztás típusát, beállíthatja a pillanatkép-ütemtervet, hogy az adatokra vonatkozó frissítéseket biztosítson az adatfogyasztónak. 
 
@@ -105,9 +105,9 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza ki a kezdési időt és az ismétlődési időközt. 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
-1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Válassza a **Létrehozás** lehetőséget.
+1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** gombra.
 
 Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására. 
 
@@ -125,8 +125,8 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 ### <a name="prerequisites-for-target-storage-account"></a>A célként megadott Storage-fiók előfeltételei
 
 * Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)is. 
-* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a közreműködő szerepkörben található. 
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély létezik a tulajdonosi szerepkörben.  
+* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi. 
+* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi.  
 
 ### <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -192,6 +192,6 @@ Ezek a lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
 ### <a name="view-history"></a>Előzmények megtekintése
 Ez a lépés csak a pillanatkép-alapú megosztásra vonatkozik. A pillanatképek előzményeinek megtekintéséhez válassza az **Előzmények** fület. Itt megtalálhatja az elmúlt 30 napban létrehozott összes pillanatkép előzményeit. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait a Storage-fiókból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).
 

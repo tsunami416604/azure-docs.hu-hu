@@ -9,13 +9,13 @@ ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
 ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852488"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Szabályzatok biztonsága és használata virtuális gépeken az Azure-ban
 
 Fontos, hogy a virtuális gép (VM) biztonságos legyen a futtatott alkalmazások számára. A virtuális gépek biztonságossá tételéhez tartozhat egy vagy több olyan Azure-szolgáltatás és szolgáltatás, amely a virtuális gépek biztonságos elérését és az adatai biztonságos tárolását is magában foglalja. Ez a cikk a virtuális gép és az alkalmazások védelmét lehetővé tevő információkat tartalmaz.
 
@@ -67,7 +67,7 @@ Az Azure Active Directory (Azure AD) Azure-erőforrások felügyelt identitásai
 
 Az [Azure-szabályzatok](../governance/policy/overview.md) segítségével meghatározhatja a szervezet Windows-és Linux- [alapú](./windows/policy.md) [virtuális](./linux/policy.md)gépei kívánt viselkedését. A házirendek használatával a szervezetek különböző egyezményeket és szabályokat alkalmazhatnak a vállalaton belül. A kívánt viselkedés kényszerítésével csökkentheti a kockázatokat, miközben hozzájárul a szervezet sikeréhez.
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával elkülönítheti a feladatait a csapaton belül, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az [Azure CLI](https://docs.microsoft.com/cli/azure/role)vagy a[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával konfigurálhatja a [Azure Portal](../role-based-access-control/role-assignments-portal.md).
 

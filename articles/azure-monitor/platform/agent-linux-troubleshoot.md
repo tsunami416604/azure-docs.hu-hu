@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531190"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
@@ -193,7 +193,7 @@ A teljesítménnyel kapcsolatos hibák nem minden időben történnek, és nagyo
 
 ### <a name="resolution-step-by-step"></a>Megoldás (lépésről lépésre)
 
-1. Frissítse az NSS-PEM csomagot a következőre: [v 1.0.3-5. el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
+1. Frissítse az NSS-PEM csomagot a következőre: [v 1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
 `sudo yum upgrade nss-pem`
 
 2. Ha az NSS-PEM nem érhető el a frissítéshez (többnyire a CentOS-on történik), akkor a curl a 7.29.0-46 értékre vált. Ha tévedésben futtatja a "yum update" parancsot, akkor a curl a 7.29.0-51-re frissül, és a probléma újra megtörténik. <br/>
@@ -298,7 +298,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 * A program a következőhöz képest manuálisan frissített egy újabb verzióra, mint amit a Log Analytics Agent Linux-csomaggal telepített.
 * A DSC-erőforrás naplók *osztálya nem található* hibát a `omsconfig.log` naplófájlban
 * Log Analytics-ügynök biztonsági mentése
-* A DSC-naplók *jelenlegi konfigurációja nem létezik. Futtassa a Start-DscConfiguration parancsot a-Path paraméterrel egy konfigurációs fájl megadásához, és először hozzon létre egy aktuális konfigurációt.* a `omsconfig.log` naplófájlban nem található naplóbejegyzés a `PerformRequiredConfigurationChecks` műveletekről.
+* A DSC-naplók *jelenlegi konfigurációja nem létezik. Futtassa Start-DscConfiguration parancsot a-Path paraméterrel egy konfigurációs fájl megadásához, és először hozzon létre egy aktuális konfigurációt.* a `omsconfig.log` naplófájlban nem található naplóbejegyzés a `PerformRequiredConfigurationChecks` műveletekről.
 
 ### <a name="resolution"></a>Feloldás
 1. Telepítse az összes függőséget, például a naplózott csomagot.

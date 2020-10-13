@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88942378"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Oktatóanyag: Azure Media Services-események tárolása az Azure-ban Log Analytics
@@ -114,7 +114,7 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
 
 1. A másik böngésző lapon vagy ablakban illessze be a *munkaterület* kulcsát a **munkaterület kulcs** mezőjébe.
 
-1. Válassza a **Létrehozás** lehetőséget. Most létrehozza a JSON-kérés törzsét és az egyéni napló nevét.
+1. Kattintson a **Létrehozás** gombra. Most létrehozza a JSON-kérés törzsét és az egyéni napló nevét.
 
 1. Válassza a **JSON-kérelem törzse** mezőt.  Ekkor megjelenik a **dinamikus tartalom hozzáadására** szolgáló hivatkozás.
 
@@ -124,7 +124,7 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
     > [!div class="mx-imgBorder"]
     > ![Kiválasztott témakör](media/tutorial-events-log-analytics/topic-selected.png)
 
-1. Válassza ki a logikai alkalmazás **kódjának nézetét** . Keresse meg a bemeneteket és a napló típusú sorokat.
+1. Válassza ki a logikai alkalmazás **kódjának nézetét** . Keresse meg a bemeneteket és a Log-Type vonalakat.
     > [!div class="mx-imgBorder"]
     > ![Két sor kódjának nézete](media/tutorial-events-log-analytics/code-view-two-lines.png)
 
@@ -134,7 +134,7 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
     > [!div class="mx-imgBorder"]
     > ![Logic app JSON a módosítás után](media/tutorial-events-log-analytics/changed-lines.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Az ellenőrzéshez válassza a **Logic app Designer**elemet.
     > [!div class="mx-imgBorder"]
@@ -174,7 +174,7 @@ A tényleges működésének teszteléséhez hozzon létre egy élő eseményt A
 
 1. Válassza az **összes jogot a tartalom vagy fájl használatához** ... jelölőnégyzetet.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  Ekkor megjelennek az élő események listája, és megjelenik az élő esemény betöltési URL-címe.
 

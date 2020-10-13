@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
 ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799332"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez
@@ -327,7 +327,7 @@ A hívásakor `elevateAccess` létre kell hoznia egy szerepkör-hozzárendelést
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)

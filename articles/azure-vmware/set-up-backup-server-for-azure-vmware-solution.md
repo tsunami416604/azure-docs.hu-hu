@@ -4,10 +4,10 @@ description: Állítsa be az Azure VMware-megoldási környezetét a virtuális 
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 37fd74f9859813061ff5653fd2c2b0b6cad319e3
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91580514"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server beállítása Azure VMware-megoldáshoz
@@ -385,7 +385,7 @@ A Azure Backup Server v3 csak a tárolási köteteket fogadja el. Kötet hozzáa
 
 ![Elérhető kötetek hozzáadása](../backup/media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan konfigurálhatja az Azure VMware-megoldáson futó VMware virtuális gépek biztonsági mentését Azure Backup Server használatával.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
 ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440643"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
@@ -72,13 +72,13 @@ Ha bináris fájlokat másol a Storage Stores között, a következő módon eng
 ```
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-skipErrorFile | Az adatáthelyezés során kihagyni kívánt hibák típusait meghatározó tulajdonságok csoportja. | | No
-fileMissing | A skipErrorFile tulajdonság táska egyik kulcs-érték párja határozza meg, hogy szeretné-e kihagyni a fájlokat, amelyeket más alkalmazások törölnek, amikor az ADF-et időközben másolja. <br/> -True (igaz): a többi alkalmazás által törölt fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a fájlok törlése a forrás-áruházból történik az adatáthelyezés közepén. <br/>Ügyeljen arra, hogy ez a tulajdonság a True (igaz) értékre van beállítva. | True (alapértelmezett) <br/>Hamis | No
-fileForbidden | A skipErrorFile tulajdonság táska egyik kulcs-érték párokkal határozható meg, hogy ki szeretné-e hagyni az adott fájlokat, ha a fájlok vagy mappák ACL-jei magasabb jogosultsági szintet igényelnek, mint az ADF-ben konfigurált kapcsolatok. <br/> -True (igaz): a fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet a mappák vagy fájlok engedélyeinek lekérése után szeretné megszakítani. | Igaz <br/>False (alapértelmezett) | No
-dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a forrás-és a cél-tároló közötti inkonzisztens adatmennyiséget. <br/> -True (igaz): az inkonzisztens adatok kihagyásával szeretné átmásolni a REST-et. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a rendszer inkonzisztens adathalmazt talált. <br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha a validateDataConsistency értéke TRUE (igaz). | Igaz <br/>False (alapértelmezett) | No
-logStorageSettings  | A kihagyott objektumok nevének naplózásához megadható tulajdonságok csoportja. | &nbsp; | No
-linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | No
-path | A naplófájlok elérési útja. | A naplófájlok tárolásához használt elérési út megadása. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No
+skipErrorFile | Az adatáthelyezés során kihagyni kívánt hibák típusait meghatározó tulajdonságok csoportja. | | Nem
+fileMissing | A skipErrorFile tulajdonság táska egyik kulcs-érték párja határozza meg, hogy szeretné-e kihagyni a fájlokat, amelyeket más alkalmazások törölnek, amikor az ADF-et időközben másolja. <br/> -True (igaz): a többi alkalmazás által törölt fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a fájlok törlése a forrás-áruházból történik az adatáthelyezés közepén. <br/>Ügyeljen arra, hogy ez a tulajdonság a True (igaz) értékre van beállítva. | True (alapértelmezett) <br/>Hamis | Nem
+fileForbidden | A skipErrorFile tulajdonság táska egyik kulcs-érték párokkal határozható meg, hogy ki szeretné-e hagyni az adott fájlokat, ha a fájlok vagy mappák ACL-jei magasabb jogosultsági szintet igényelnek, mint az ADF-ben konfigurált kapcsolatok. <br/> -True (igaz): a fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet a mappák vagy fájlok engedélyeinek lekérése után szeretné megszakítani. | Igaz <br/>False (alapértelmezett) | Nem
+dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a forrás-és a cél-tároló közötti inkonzisztens adatmennyiséget. <br/> -True (igaz): az inkonzisztens adatok kihagyásával szeretné átmásolni a REST-et. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a rendszer inkonzisztens adathalmazt talált. <br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha a validateDataConsistency értéke TRUE (igaz). | Igaz <br/>False (alapértelmezett) | Nem
+logStorageSettings  | A kihagyott objektumok nevének naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | Nem
+path | A naplófájlok elérési útja. | A naplófájlok tárolásához használt elérési út megadása. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 > [!NOTE]
 > A következő a bináris fájlok másolásakor a hibatűrés engedélyezése a másolási tevékenységben.
@@ -187,10 +187,10 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | Igaz<br/>False (alapértelmezett) | No
-logStorageSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | No
-linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | No
-path | A kihagyott sorokat tartalmazó naplófájlok elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No
+enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | Igaz<br/>False (alapértelmezett) | Nem
+logStorageSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | Nem
+path | A kihagyott sorokat tartalmazó naplófájlok elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 ### <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
 A másolási tevékenység futtatása után a másolási tevékenység kimenetében a kihagyott sorok száma látható:
@@ -261,10 +261,10 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | Igaz<br/>False (alapértelmezett) | No
-redirectIncompatibleRowSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | No
-linkedServiceName | Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureStorage` vagy `AzureDataLakeStore` típusú társított szolgáltatás neve, amely arra a példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | No
-path | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No
+enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | Igaz<br/>False (alapértelmezett) | Nem
+redirectIncompatibleRowSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+linkedServiceName | Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureStorage` vagy `AzureDataLakeStore` típusú társított szolgáltatás neve, amely arra a példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | Nem
+path | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 ### <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
 A másolási tevékenység futtatása után a másolási tevékenység kimenetében a kihagyott sorok száma látható:

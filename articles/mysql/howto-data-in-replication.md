@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
 ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596491"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
       ```bash
       ping <output of step 2b>
       ``` 
-      Például: 
+      Példa: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -285,5 +285,5 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) . 

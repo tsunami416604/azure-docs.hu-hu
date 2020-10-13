@@ -7,10 +7,10 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815606"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek rendelkezésreállási beállításai
@@ -55,7 +55,7 @@ A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissít�
 
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A rendelkezésre állási csoport a virtuális gépek logikai csoportosítása az adatközponton belül, amely lehetővé teszi az Azure számára, hogy megtudja, hogyan épülnek fel az alkalmazás a redundancia és a rendelkezésre állás érdekében. Javasoljuk, hogy legalább két virtuális gépet hozzon létre egy rendelkezésre állási csoporton belül, hogy egy magasan elérhető alkalmazást biztosítson, és kielégítse a [99,95%-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-t. Magának a rendelkezésre állási csoportnak nincs díja, csak a létrehozott virtuálisgép-példányért kell fizetnie. Ha egyetlen virtuális gép használja az [Azure Premium SSD](./disks-types.md#premium-ssd)-ket, az Azure SLA a nem tervezett karbantartási eseményekre vonatkozik.
+A rendelkezésreállási csoport a virtuális gépek adatközponton belüli logikai csoportosítását jelenti, ami lehetővé teszi az Azure számára az alkalmazás felépítésének megértését a redundancia és a rendelkezésre állás biztosításához. Javasoljuk, hogy legalább két virtuális gépet hozzon létre egy rendelkezésre állási csoporton belül, hogy egy magasan elérhető alkalmazást biztosítson, és kielégítse a [99,95%-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-t. Magának a rendelkezésre állási csoportnak nincs díja, csak a létrehozott virtuálisgép-példányért kell fizetnie. Ha egyetlen virtuális gép használja az [Azure Premium SSD](./disks-types.md#premium-ssd)-ket, az Azure SLA a nem tervezett karbantartási eseményekre vonatkozik.
 
 A rendelkezésre állási csoportokban a virtuális gépek automatikusan el lesznek osztva ezen tartalék tartományok között. Ez a módszer korlátozza a potenciális hardvermeghibásodások, hálózatkimaradások vagy a tápellátás megszakadásának hatását.
 

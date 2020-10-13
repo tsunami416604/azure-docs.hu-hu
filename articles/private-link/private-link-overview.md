@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 7c647ba9a89fedf0d43bd8b10460fed101d166b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1ce0368bb86134bd52473b80eabbfaf87e36148d
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801395"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939647"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -38,7 +38,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 ## <a name="availability"></a>Rendelkezésre állás 
  A következő táblázat felsorolja a privát kapcsolati szolgáltatásokat, valamint azokat a régiókat, ahol elérhetők. 
 
-|Támogatott szolgáltatások  |Elérhető régiók | Néhány fontos megjegyzés | status  |
+|Támogatott szolgáltatások  |Elérhető régiók | Néhány fontos megjegyzés | Állapot  |
 |:-------------------|:-----------------|:----------------|:--------|
 |A standard Azure Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió  | standard Load Balancer támogatott | FE <br/> [Megtudhatja, hogyan hozhat létre privát hivatkozási szolgáltatást.](create-private-link-service-portal.md) |
 | Azure Blob Storage (beleértve a Data Lake Storage Gen2)       |  Összes nyilvános régió<br/> Minden kormányzati régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a blob Storage-hoz.](tutorial-private-endpoint-storage-portal.md)  |
@@ -62,7 +62,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 |Azure Service Bus | Minden nyilvános régió<br/>Minden kormányzati régió  | A prémium szintű Azure Service Bus támogatott. [Rétegek kiválasztása](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Service Bushoz.](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Relay | Összes nyilvános régió      |  | Előnézet <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Relayhoz.](https://docs.microsoft.com/azure/azure-relay/private-link-service)  |
 |Azure Event Grid| Összes nyilvános régió<br/> Minden kormányzati régió       |  | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Event Gridhoz.](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure-webalkalmazások | Összes nyilvános régió      | PremiumV2 Windows-és Linux-és rugalmas prémium szintű funkciókkal támogatott  | Előnézet   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure Web Appshoz.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
+|Azure-webalkalmazások | Összes nyilvános régió      | PremiumV2, PremiumV3 vagy Function Premium csomaggal támogatott  | FE   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure Web Appshoz.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
 |Azure Machine Learning | Összes nyilvános régió    |  | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Machine Learninghoz.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | Összes nyilvános régió |  | Előnézet </br> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Automationhoz.](https://docs.microsoft.com/azure/automation/how-to/private-link-security)| |
 | Azure IoT Hub | Összes nyilvános régió    |  | FE   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure IoT Hubhoz.](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
@@ -103,7 +103,7 @@ A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/manag
 ## <a name="service-level-agreement"></a>szolgáltatói szerződés
 SLA esetén lásd: [SLA az Azure Private linkhez](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: privát végpont létrehozása Azure Portal használatával](create-private-endpoint-portal.md)
 - [Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával](create-private-link-service-portal.md)

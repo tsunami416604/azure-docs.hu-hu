@@ -11,23 +11,22 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1414859d0735e75e2139dd79aab7dbba5b1e2f13
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710191"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939184"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
 
 Az adattárház-megoldás létrehozásához különböző piacvezető eszközök közül választhat. Ez a cikk az Azure szinapszis Analytics szolgáltatást hivatalosan támogató, az üzleti intelligencia (BI) megoldásokkal rendelkező Microsoft-partnereket emeli ki.
 
 ## <a name="our-business-intelligence-partners"></a>Üzleti intelligencia partnereink
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>A AtScale egyetlen, biztonságos és szabályozott munkaterületet biztosít az elosztott adatforgalomhoz. A AtScale felhőalapú OLAP-, autonóm adattervezési™ és az univerzális szemantikai réteg™ az üzleti intelligencia eredményeit gyorsabban, pontosabb üzleti döntéseket hozhatja. |[Termék lap](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>A Birst a teljes szervezetet összekapcsolja egy közös, közös analitikai hálóra épülő, összeszőtt virtualizált BI-példányok hálózatán.|[Termék lap](https://www.birst.com/)<br> |
-| ![ClearStory-adathalmazok](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory-adatszolgáltatások (folyamatos üzleti elemzések)**<br>A ClearStory adatai lehetővé teszik a gyors ciklusú elemzést a szinapszis SQL-készletben tárolt különböző adategységek között. A ClearStory integrált Spark-alapú platform-és elemzési alkalmazási sebessége adatelérést és a különböző adathalmazok harmonizálását is tartalmazza. Ezek lehetővé teszik a gyors, együttműködésen alapuló feltárást, amely támogatja az üzleti felhasználók számára a gyors bepillantást. |[Termék lap](https://www.clearstorydata.com/product/continuous-insights/)<br> |
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> Az elemzők és az adatszakértők a Dremio intuitív felhasználói felületén keresztül felfedezhetik, felfedezhetik és bemutatják az adataikat, miközben az irányítási és biztonsági funkciókat is kezelik. A Dremio megkönnyíti a ADLS való csatlakozást Blob Storage, Azure SQL Database, az Azure szinapszis SQL, a HDInsight és más szolgáltatásokkal. A Dremio Power BI-elemzők megkereshetik a ADLS-on tárolt új adatkészleteket, és azonnal hozzáférhetnek az adatPower BIhoz, ha nem készíti elő őket, vizualizációkat hoz létre, és valós időben iteratív a jelentések pontosítását. A és az elemzők olyan új jelentéseket hozhatnak létre, amelyek az ADLS és más adatbázisok közötti adategyesítést is tartalmazzák. |[Termék lap](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>A Dundas adatvizualizáció az üzleti intelligencia és az adatvizualizációs szoftverek egyik vezető, globális szolgáltatója.  A Dundas-irányítópultok, a jelentéskészítés és a vizualizációs adatelemzések zökkenőmentes integrációt biztosítanak az üzleti alkalmazásokhoz, így jobb döntéseket hozhatnak és gyorsabb elemzéseket nyerhetnek.|[Termék lap](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos-elemzés**<br>A Cognos Analytics olyan önkiszolgáló képességeket tartalmaz, amelyek egyszerű, egyértelmű és könnyen használható, akár tapasztalt üzleti elemzők, akár egy hatalmas ellátási láncot, akár egy kampányt optimalizáló marketingszakértőt vizsgálnak. A Cognos Analytics mesterséges intelligenciát és egyéb képességeket használ az adatfeltárás irányításához. Megkönnyíti a felhasználók számára, hogy megkapják a szükséges válaszokat|[Termék lap](https://www.ibm.com/products/cognos-analytics)<br>|

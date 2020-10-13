@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260150"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh-alkalmazás áthelyezése egy másik Azure-régióba
@@ -54,9 +54,9 @@ Miután megerősítette a Service Fabric Mesh alkalmazás egyenértékű funkci�
 
 A Service Fabric Mesh alkalmazás áthelyezésének befejezéséhez [törölje a forrásoldali alkalmazást és/vagy a szülő erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure-erőforrások áthelyezése régiók között](../azure-resource-manager/management/move-region.md)
+* [Azure-erőforrások áthelyezése másik régióba](../azure-resource-manager/management/move-region.md)
 * [Azure-erőforrások régiók közötti áthelyezésének támogatása](../azure-resource-manager/management/region-move-support.md)
 * [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [Erőforrás-áthelyezési műveletek támogatása](../azure-resource-manager/management/move-support-resources.md

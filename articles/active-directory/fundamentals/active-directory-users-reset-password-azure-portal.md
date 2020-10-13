@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797203"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Felhasználói jelszó visszaállítása az Azure Active Directoryval
@@ -51,7 +51,7 @@ Rendszergazdaként alaphelyzetbe állíthatja a felhasználó jelszavát, ha a j
     >[!Note]
     >Az ideiglenes jelszó soha nem jár le. Amikor a felhasználó legközelebb bejelentkezik, a jelszó továbbra is működni fog, függetlenül attól, hogy mennyi idő telt el az ideiglenes jelszó létrehozása óta.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználó jelszavának alaphelyzetbe állítása után a következő alapvető folyamatokat végezheti el:
 

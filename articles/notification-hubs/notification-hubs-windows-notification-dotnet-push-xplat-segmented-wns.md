@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 027bbebaaab0694cfa0157464d47ef2c8e08fbff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998220"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazást futtató adott eszközökre
@@ -246,7 +246,7 @@ Az alkalmazás ezzel elkészült. Az eszköz helyi tárolójában a kategóriák
 
 Futtassa az előző szakaszban létrehozott alkalmazást. A kijelölt kategóriák értesítései bejelentési értesítésként jelennek meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerhette a friss hírek kategóriák szerinti küldését. A háttérbeli alkalmazás leküldi a címkézett értesítéseket azokon az eszközökön, amelyek regisztrálva vannak a címkére vonatkozó értesítések fogadásához. Ha meg szeretné tudni, hogyan leküldéses értesítéseket küldhet az egyes felhasználóknak az általuk használt eszköztől függetlenül, folytassa a következő oktatóanyaggal:
 

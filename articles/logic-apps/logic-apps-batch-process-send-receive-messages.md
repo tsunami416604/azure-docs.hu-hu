@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458255"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Üzenetek küldése, fogadása és kötegelt feldolgozása Azure Logic Apps
@@ -48,7 +48,7 @@ A Batch-fogadónak és a Batch-küldőnek ugyanazt az Azure-előfizetést *és* 
 
 Ahhoz, hogy üzeneteket küldhessen egy kötegbe, a kötegnek először az üzeneteket küldő célhelyként kell lennie. Először létre kell hoznia a "batch-fogadó" logikai alkalmazást, amely a **Batch** -triggerrel kezdődik. Így a "batch Sender" logikai alkalmazás létrehozásakor kiválaszthatja a Batch-fogadó logikai alkalmazást. A Batch-fogadó folytatja az üzenetek gyűjtését, amíg a megadott feltételek teljesülnek az üzenetek felszabadításához és feldolgozásához. Habár a Batch-fogadóknak semmit nem kell tudniuk a Batch-küldők számára, a Batch-küldőknek ismerniük kell az üzeneteket küldő célhelyet.
 
-1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban hozzon létre egy logikai alkalmazást a következő névvel:`BatchReceiver`
+1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban hozzon létre egy logikai alkalmazást a következő névvel: `BatchReceiver`
 
 1. A Logic app Designerben adja hozzá a **Batch** -triggert, amely elindítja a logikai alkalmazás munkafolyamatát. A keresőmezőbe írja be a kifejezést `batch` , majd válassza ki a következő triggert: **Batch-üzenetek**
 
@@ -126,7 +126,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
 
 * Győződjön meg arról, hogy a Batch-fogadó és a Batch-küldő ugyanazzal az Azure-régióval *és Azure-* előfizetéssel rendelkezik. Ha nem, akkor nem választhatja ki a Batch-fogadót a Batch-feladó létrehozásakor, mert azok nem láthatók egymás számára.
 
-1. Hozzon létre egy másik logikai alkalmazást a következő névvel:`BatchSender`
+1. Hozzon létre egy másik logikai alkalmazást a következő névvel: `BatchSender`
 
    1. A keresőmezőbe írja be `recurrence` szűrőként a kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót: **Ismétlődés**
 

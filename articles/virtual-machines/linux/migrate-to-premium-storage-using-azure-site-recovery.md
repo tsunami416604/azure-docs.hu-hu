@@ -8,10 +8,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: 0cb7d1fa8dc9171c4baba09136d3a3c28d6c901c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86510650"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
@@ -205,7 +205,7 @@ Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa a
 * [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [A Microsoft Q&egy kérdés oldalt Microsoft Azure Site Recovery](/answers/topics/azure-site-recovery.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek esetében tekintse meg a következő forrásokat:
 

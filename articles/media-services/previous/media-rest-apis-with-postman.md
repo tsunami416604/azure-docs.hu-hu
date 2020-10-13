@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: juliako
 ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255511"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Poster konfigurálása Media Services v2 REST API hívásokhoz
@@ -60,6 +60,6 @@ Ez a környezet és gyűjtemény olyan cikkekben használatos, amelyek bemutatj�
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-import-collection.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [eszközök feltöltése](media-services-rest-upload-files.md) című cikket.  

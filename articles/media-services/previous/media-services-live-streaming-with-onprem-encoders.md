@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269624"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>A helyszíni kódolók többszörös átviteli sebességű streamjét fogadó csatornák használata
@@ -189,7 +189,7 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
 | **Indítás** |**Indítás** |Nem (átmeneti állapot) |
-| **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |
+| **Futó** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |
 | **Leállítás** |**Leállítás** |Nem (átmeneti állapot) |
 | **Leállítva** |**Leállítva** |Nem |
 

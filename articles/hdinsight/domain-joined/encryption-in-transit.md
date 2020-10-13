@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89668768"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-titkosítás az Azure HDInsight
@@ -42,7 +42,7 @@ Ha olyan új fürtöt szeretne létrehozni, amely a Azure Portal használatával
 
 1. A **Biztonság és hálózatkezelés** lapon kattintson a **titkosítás engedélyezése a továbbításkor** jelölőnégyzetre.
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Fürt létrehozása – engedélyezze a titkosítást az átvitelben.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Hozzon létre egy fürt – biztonság és hálózatkezelés lapot.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Az Azure CLI-n keresztül engedélyező, titkosítással rendelkező fürt létrehozása
 
@@ -50,7 +50,7 @@ Az átvitel közbeni titkosítás engedélyezve van a `isEncryptionInTransitEnab
 
 [Letöltheti a minta sablon és a paraméter fájlját](https://github.com/Azure-Samples/hdinsight-enterprise-security). A sablon és az Azure CLI-kódrészlet használata előtt cserélje le a következő helyőrzőket a megfelelő értékekre:
 
-| Helyőrző | Description |
+| Helyőrző | Leírás |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
 | `<RESOURCE_GROUP>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |

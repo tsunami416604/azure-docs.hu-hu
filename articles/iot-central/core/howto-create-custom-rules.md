@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
 ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018187"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kibővítése egyéni szabályokkal a Stream Analytics, az Azure Functions és a SendGrid használatával
@@ -46,7 +46,7 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
 | Címtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Region | A legközelebbi régió |
+| Régió | A legközelebbi régió |
 
 A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
@@ -62,7 +62,7 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név    | Adja meg a névtér nevét |
+| Name (Név)    | Adja meg a névtér nevét |
 | Tarifacsomag | Alapszintű |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
@@ -75,7 +75,7 @@ A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](ht
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név    | Válassza ki a feladatokhoz tartozó nevet |
+| Name (Név)    | Válassza ki a feladatokhoz tartozó nevet |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Hely | USA keleti régiója |
@@ -103,7 +103,7 @@ A [Azure Portal használatával hozzon létre egy SendGrid-fiókot](https://port
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név    | Válassza ki a SendGrid-fiók nevét |
+| Name (Név)    | Válassza ki a SendGrid-fiók nevét |
 | Jelszó | Jelszó létrehozása |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
@@ -300,7 +300,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
         RightSide.deviceid2 is NULL
     ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A Stream Analytics-feladatok elindításához válassza az **Áttekintés**, majd a **Start** **, majd a**Start lehetőséget, majd **indítsa**el a következőt:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)

@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325576"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor adatplatform
@@ -32,7 +32,7 @@ Az Azure-erőforrások jelentős mennyiségű figyelési adattal járnak. Azure 
 
 
 ### <a name="metrics"></a>Mérőszámok
-A [metrikák](data-platform-metrics.md) olyan numerikus értékek, amelyek egy adott rendszer bizonyos aspektusait írják le egy adott időpontban. Ezeket a rendszer rendszeres időközönként gyűjti, és egy időbélyeggel, egy névvel, egy értékkel és egy vagy több definiált címkével azonosítja. A metrikák különböző algoritmusok használatával, más metrikákkal összehasonlítva, az időbeli tendenciák elemzésével is összevonhatók. 
+A [metrikák](data-platform-metrics.md) olyan numerikus értékek, amelyek egy adott rendszer bizonyos aspektusait írják le egy adott időpontban. Rendszeres időközönként vannak gyűjtve, időbélyeggel, névvel, értékkel és egy vagy több definiáló címkével azonosítva. A metrikák sokféle algoritmussal összesíthetők, összehasonlíthatók más metrikákkal, és elemezhetők az időbeli trendjeik. 
 
 A Azure Monitor metrikáit egy idősorozat-adatbázisban tárolják, amely az időbélyegzővel ellátott adatok elemzésére van optimalizálva. Ez a mérőszámok különösen a riasztások és a problémák gyors észlelésére alkalmasak. Megtudhatják, hogyan végzi a rendszer működését, de általában a naplók használatával kell összekapcsolni a problémák kiváltó okát.
 
@@ -41,7 +41,7 @@ A metrikák interaktív elemzéshez érhetők el az [Azure Metrikaböngésző](.
 További információ a Azure Monitor mérőszámokról, beleértve a [Azure monitor metrikájában](data-platform-metrics.md)lévő adatforrásokat.
 
 ### <a name="logs"></a>Naplók
-A [naplók](data-platform-logs.md) a rendszeren belül bekövetkezett események. Különböző típusú adattípusokat tartalmazhatnak, és lehetnek strukturált vagy szabad formátumú szövegek időbélyeg használatával. Előfordulhat, hogy a környezetben időnként létrehozhatók olyan események, amelyek során a rendszer bejegyzéseket hoz létre, és a nagy terhelésű rendszerek általában több naplózási kötetet hoznak létre.
+A [naplók](data-platform-logs.md) a rendszeren belül bekövetkezett események. Különböző típusú adattípusokat tartalmazhatnak, és lehetnek strukturált vagy szabad formátumú szövegek időbélyeg használatával. Szórványosan állhatnak elő, amikor a környezetbeli események naplóbejegyzéseket generálnak, és egy erős terhelésű rendszer általában nagyobb naplókat állít elő.
 
 A Azure Monitor lévő naplókat az [Azure Adatkezelőon](/azure/data-explorer/) alapuló log Analytics munkaterületen tároljuk, amely hatékony elemzési motort és [gazdag lekérdezési nyelvet](/azure/kusto/query/)biztosít. A naplók általában elegendő információt biztosítanak az azonosított probléma teljes kontextusának biztosításához, és értékesek a problémák fő eseteinek azonosításához.
 

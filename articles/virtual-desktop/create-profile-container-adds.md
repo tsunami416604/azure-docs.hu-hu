@@ -7,10 +7,10 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88825613"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
@@ -96,7 +96,7 @@ A Storage-fiók elérési kulcsának beszerzése:
 
 6. Amikor bejelentkezett a virtuális gépre, futtassa a parancssort rendszergazdaként.
 
-7. Futtassa a következő parancsot:
+7. Futtassa az alábbi parancsot:
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -146,7 +146,7 @@ FSLogix-profil tárolójának konfigurálása:
 
 3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
-4. Válassza a **Telepítés** lehetőséget.
+4. Válassza a **Telepítés** gombot.
 
 5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files**  >  **FSLogix**  >  **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
 

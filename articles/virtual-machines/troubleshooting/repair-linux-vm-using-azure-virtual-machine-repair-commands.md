@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: bfd3b2351a280f423ba0ef0b15318449554b5e3b
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91595939"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Linux rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
@@ -73,13 +73,13 @@ További dokumentációt és útmutatást az [az VM Repair](/cli/azure/ext/vm-re
    az extension update -n vm-repair
    ```
 
-3. Futtassa az `az vm repair create` parancsot. Ezzel a paranccsal létrejön a nem működőképes virtuális géphez tartozó operációsrendszer-lemez másolata, létrehozhat egy új erőforráscsoport-javító virtuális gépet, és csatolhatja az operációsrendszer-lemez másolatát.  A javítási virtuális gép mérete és régiója megegyezik a megadott nem funkcionális virtuális géppel. Az erőforráscsoport és a virtuális gép neve az összes lépésben a nem funkcionális virtuális géphez lesz használva. Ha a virtuális gép Azure Disk Encryption használja, a parancs megkísérli a titkosított lemez zárolását, hogy az elérhető legyen a javítási virtuális géphez való csatlakozáskor.
+3. A `az vm repair create` parancs futtatása. Ezzel a paranccsal létrejön a nem működőképes virtuális géphez tartozó operációsrendszer-lemez másolata, létrehozhat egy új erőforráscsoport-javító virtuális gépet, és csatolhatja az operációsrendszer-lemez másolatát.  A javítási virtuális gép mérete és régiója megegyezik a megadott nem funkcionális virtuális géppel. Az erőforráscsoport és a virtuális gép neve az összes lépésben a nem funkcionális virtuális géphez lesz használva. Ha a virtuális gép Azure Disk Encryption használja, a parancs megkísérli a titkosított lemez zárolását, hogy az elérhető legyen a javítási virtuális géphez való csatlakozáskor.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Futtassa az `az vm repair run` parancsot. Ez a parancs a megadott javítási parancsfájlt futtatja a csatlakoztatott lemezen a javítási virtuális gépen keresztül. Ha a hibaelhárítási útmutató megadott Run-ID-t használ, használja itt, ellenkező esetben használhatja az az VM Repair List-Scripts parancsot az elérhető javítási parancsfájlok megjelenítéséhez. Az itt használt erőforráscsoport és virtuális gép neve a 3. lépésben használt nem funkcionális virtuális gép. A javítási parancsfájlokkal kapcsolatos további információkért tekintse meg a [javítási parancsfájl-függvénytárat](https://github.com/Azure/repair-script-library).
+4. A `az vm repair run` parancs futtatása. Ez a parancs a megadott javítási parancsfájlt futtatja a csatlakoztatott lemezen a javítási virtuális gépen keresztül. Ha a hibaelhárítási útmutató megadott Run-ID-t használ, használja itt, ellenkező esetben használhatja az az VM Repair List-Scripts parancsot az elérhető javítási parancsfájlok megjelenítéséhez. Az itt használt erőforráscsoport és virtuális gép neve a 3. lépésben használt nem funkcionális virtuális gép. A javítási parancsfájlokkal kapcsolatos további információkért tekintse meg a [javítási parancsfájl-függvénytárat](https://github.com/Azure/repair-script-library).
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id lin-hello-world --verbose
@@ -87,7 +87,7 @@ További dokumentációt és útmutatást az [az VM Repair](/cli/azure/ext/vm-re
 
    Opcionálisan a virtuális gép kijavításával, az 5. lépéssel elvégezheti a szükséges manuális kockázatcsökkentő lépéseket is.
 
-5. Futtassa az `az vm repair restore` parancsot. Ez a parancs felcseréli a javított operációsrendszer-lemezt a virtuális gép eredeti operációsrendszer-lemezére. Az itt használt erőforráscsoport és virtuális gép neve a 3. lépésben használt nem funkcionális virtuális gép.
+5. A `az vm repair restore` parancs futtatása. Ez a parancs felcseréli a javított operációsrendszer-lemezt a virtuális gép eredeti operációsrendszer-lemezére. Az itt használt erőforráscsoport és virtuális gép neve a 3. lépésben használt nem funkcionális virtuális gép.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
@@ -103,7 +103,7 @@ Azure CLI
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [Az Azure-beli virtuális gép RDP-kapcsolatainak hibaelhárítását](./troubleshoot-rdp-connection.md)ismertető témakört.
 * A virtuális GÉPEN futó alkalmazások elérésével kapcsolatos problémák: az [alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken](./troubleshoot-app-connection.md).

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
 ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145484"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
@@ -160,7 +160,7 @@ A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles]
 
 ## <a name="supported-skus"></a>Támogatott SKU-i
 
-| Publisher | Ajánlat | Termékváltozat | Azure Files megosztás | Blobfuse | NFS-csatlakoztatás | CIFS-csatlakoztatás |
+| Publisher | Ajánlat | SKU | Azure Files megosztás | Blobfuse | NFS-csatlakoztatás | CIFS-csatlakoztatás |
 |---|---|---|---|---|---|---|
 | kötegelt | renderelés – centos73 | renderelési | :heavy_check_mark: <br>Megjegyzés: kompatibilis a CentOS 7,7-mel</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04 – LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -173,7 +173,7 @@ A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles]
 | Microsoft – dsvm | Linux – adattudomány – virtuális gép – Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS – HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle – Linux | 7.6 | x | x | x | x |
+| Oracle | Oracle-Linux | 7.6 | x | x | x | x |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | x | x | x |
 
 ## <a name="next-steps"></a>Következő lépések

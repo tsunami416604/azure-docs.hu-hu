@@ -11,10 +11,10 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835484"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
@@ -31,7 +31,7 @@ Feltöltheti az általánosított és a speciális virtuális merevlemezeket is.
 >
 
 
-| Eset                                                                                                                         | Dokumentáció                                                                                                                       |
+| Forgatókönyv                                                                                                                         | Dokumentáció                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Meglévő AWS EC2-példányokkal rendelkezik, amelyeket felügyelt lemezek használatával szeretne áttelepíteni az Azure-beli virtuális gépekre                              | [Virtuális gép áthelyezése Amazon Web Servicesból (AWS) az Azure-ba](aws-to-azure.md)                           |
 | Van olyan virtuális gépe, amelyet egy másik virtualizációs platformon szeretne használni több Azure-beli virtuális gép létrehozásához. | [Töltse fel az általánosított virtuális merevlemezt, és használja az új virtuális gép létrehozásához az Azure-ban](upload-generalized-managed.md) |

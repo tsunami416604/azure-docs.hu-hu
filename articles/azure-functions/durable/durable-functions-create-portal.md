@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081916"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
@@ -40,19 +40,12 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
 3. A kudu-konzolon válassza a **hibakeresési konzol**, majd a **cmd**elemet.
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu hibakeresési konzol":::
-
-3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Lépjen a `site/wwwroot` mappába. Innen feltöltheti a fájlt úgy, hogy `package.json` áthúzza a fájl könyvtár ablakába. A minta a `package.json` következő:
-
-    ```json
-    {
-      "dependencies": {
-        "durable-functions": "^1.3.1"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Functions platform-funkciók kudu kiválasztása"
       }
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu feltöltési package.js":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Functions platform-funkciók kudu kiválasztása":::
 
 4. A `package.json` feltöltése után futtassa a parancsot a `npm install` kudu távoli végrehajtási konzolon.
 
@@ -64,7 +57,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
 1. Az **új függvény** lap keresés mezőjébe írja be a kifejezést `durable` , majd válassza ki a **Durable functions http-indító** sablont.
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Válassza ki Durable Functions HTTP Starter":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Functions platform-funkciók kudu kiválasztása":::
 
 1. Az **új függvény** neve mezőbe írja be a következőt: `HttpStart` , majd kattintson a **függvény létrehozása**elemre.
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064148"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>Áttelepítés a tár hozzáférési házirendjéből egy Azure szerepköralapú hozzáférés-vezérlés (előzetes verzió) engedélyezési modelljére
@@ -66,7 +66,7 @@ Hozzáférési szabályzatok előre definiált engedélyezési sablonjai:
 - Azure Information BYOK
 
 ### <a name="access-policies-templates-to-azure-roles-mapping"></a>Hozzáférési szabályzatok sablonjai az Azure-szerepkörök hozzárendeléséhez
-| Hozzáférési házirend sablonja | Üzemeltetés | Azure-szerepkör |
+| Hozzáférési házirend sablonja | Műveletek | Azure-szerepkör |
 | --- | --- | --- |
 | Kulcs, titok, Tanúsítványkezelő | Kulcsok: minden művelet <br>Tanúsítványok: minden művelet<br>Titkok: minden művelet | Key Vault rendszergazda (előzetes verzió) |
 | Kulcs & Secret Management | Kulcsok: minden művelet <br>Titkok: minden művelet| Key Vault titkosítási tisztviselő (előzetes verzió)<br> Key Vault Secrets Officer (előzetes verzió)|
@@ -75,11 +75,11 @@ Hozzáférési szabályzatok előre definiált engedélyezési sablonjai:
 | Titkos kód kezelése | Titkok: minden művelet| Key Vault Secrets Officer (előzetes verzió)|
 | Tanúsítványkezelés | Tanúsítványok: minden művelet | Key Vault Certificates Officer (előzetes verzió)|
 | SQL Server Connector | Kulcsok: Get, List, wrap Key, dewrap Key | Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)|
-| Azure Data Lake Storage vagy Azure Storage | Kulcsok: beolvasás, Listázás, kicsomagolási kulcs | N/A<br> Egyéni szerepkör szükséges|
-| Azure Backup | Kulcsok: beolvasás, Listázás, biztonsági mentés<br> Tanúsítvány: lekérés, Listázás, biztonsági mentés | N/A<br> Egyéni szerepkör szükséges|
+| Azure Data Lake Storage vagy Azure Storage | Kulcsok: beolvasás, Listázás, kicsomagolási kulcs | N.A.<br> Egyéni szerepkör szükséges|
+| Azure Backup | Kulcsok: beolvasás, Listázás, biztonsági mentés<br> Tanúsítvány: lekérés, Listázás, biztonsági mentés | N.A.<br> Egyéni szerepkör szükséges|
 | Exchange Online-ügyfél kulcsa | Kulcsok: Get, List, wrap Key, dewrap Key | Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)|
 | Exchange Online-ügyfél kulcsa | Kulcsok: Get, List, wrap Key, dewrap Key | Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)|
-| Azure Information BYOK | Kulcsok: beolvasás, visszafejtés, aláírás | N/A<br>Egyéni szerepkör szükséges|
+| Azure Information BYOK | Kulcsok: beolvasás, visszafejtés, aláírás | N.A.<br>Egyéni szerepkör szükséges|
 
 
 ## <a name="assignment-scopes-mapping"></a>Hozzárendelési hatókörök leképezése  

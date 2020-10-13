@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
 ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962328"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
@@ -34,7 +34,7 @@ A PHP-naplózás bekapcsolása:
 6. Adja meg a fájl nevét **.user.ini**.
 7. Válassza a **.user.ini**melletti ceruza ikont.
 8. A fájlban adja hozzá a következő kódot: `log_errors=on`
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 10. Válassza a **wp-config. php**melletti ceruza ikont.
 11. Módosítsa a szöveget a következő kódra:
     ```php

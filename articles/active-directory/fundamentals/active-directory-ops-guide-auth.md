@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601364"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
@@ -105,7 +105,7 @@ A hitelesítési lehetőségek jobb megismeréséhez tekintse [meg a megfelelő 
 
 ### <a name="programmatic-usage-of-credentials"></a>A hitelesítő adatok programozott használata
 
-A PowerShellt vagy az Microsoft Graph API-t használó alkalmazásokat használó Azure AD-parancsfájlok biztonságos hitelesítést igényelnek. A parancsfájlokat és eszközöket végrehajtó, helytelen hitelesítő adatok kezelése növelheti a hitelesítő adatok ellopásának kockázatát. Ha olyan parancsfájlokat vagy alkalmazásokat használ, amelyek nehezen kódolt jelszavakat vagy jelszó kérését használják, először tekintse át a jelszavakat a konfigurációs fájlokban vagy a forráskódban, majd cserélje le ezeket a függőségeket, és használja az Azure által felügyelt identitásokat, az integrált Windows-hitelesítést vagy a [tanúsítványokat](../reports-monitoring/tutorial-access-api-with-certificates.md) , amikor csak lehetséges. Az olyan alkalmazások esetében, amelyeknél az előző megoldások nem lehetségesek, érdemes lehet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)használni.
+A PowerShellt vagy az Microsoft Graph API-t használó alkalmazásokat használó Azure AD-parancsfájlok biztonságos hitelesítést igényelnek. A parancsfájlokat és eszközöket végrehajtó, helytelen hitelesítő adatok kezelése növelheti a hitelesítő adatok ellopásának kockázatát. Ha olyan parancsfájlokat vagy alkalmazásokat használ, amelyek nehezen kódolt jelszavakat vagy jelszó kérését használják, először tekintse át a jelszavakat a konfigurációs fájlokban vagy a forráskódban, majd cserélje le ezeket a függőségeket, és használja az Azure által felügyelt identitásokat, Integrated-Windows hitelesítést vagy [tanúsítványokat](../reports-monitoring/tutorial-access-api-with-certificates.md) , amikor csak lehetséges. Az olyan alkalmazások esetében, amelyeknél az előző megoldások nem lehetségesek, érdemes lehet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)használni.
 
 Ha azt állapítja meg, hogy vannak-e olyan egyszerű szolgáltatások, amelyek jelszavas hitelesítő adatokkal rendelkeznek, és nem biztos benne, hogy ezek a jelszavak hitelesítő adatai a parancsfájlok vagy alkalmazások által védettek, a használati minták jobb megismeréséhez lépjen kapcsolatba az alkalmazás tulajdonosával.
 
@@ -115,7 +115,7 @@ A Microsoft azt is javasolja, hogy vegye fel a kapcsolatot az alkalmazás tulajd
 
 ### <a name="on-premises-authentication"></a>Helyszíni hitelesítés
 
-Integrált Windows-hitelesítéssel (IWA) vagy zökkenőmentes egyszeri bejelentkezéssel (SSO) végzett, jelszó-kivonatoló szinkronizálással vagy átmenő hitelesítéssel végzett összevont hitelesítés a legjobb felhasználói élmény a vállalati hálózaton belül, a helyszíni tartományvezérlők számára. Ez csökkenti a hitelesítő adatok kérésének fáradtságát, és csökkenti annak a kockázatát, hogy a felhasználók az adathalászat elleni támadásoknak áldozatául esnek Ha már használja a PHS vagy a PTA felhőben felügyelt hitelesítést, de a felhasználóknak továbbra is be kell írniuk a jelszavukat a helyszíni hitelesítés során, azonnal [telepítenie kell a zökkenőmentes egyszeri bejelentkezést](../hybrid/how-to-connect-sso.md). Ha azonban jelenleg összevonta azokat a csomagokat, amelyeket végül a felhőben felügyelt hitelesítésre kíván áttelepíteni, akkor az áttelepítési projekt részeként zökkenőmentes egyszeri bejelentkezést kell megvalósítani.
+Az összevont hitelesítés integrált Windows-hitelesítéssel (IWA) vagy zökkenőmentes, egyszeri Sign-On (SSO) felügyelt hitelesítéssel, jelszó-kivonatolási szinkronizálással vagy átmenő hitelesítéssel a legjobb felhasználói élmény a vállalati hálózaton belül, a helyszíni tartományvezérlőkön. Ez csökkenti a hitelesítő adatok kérésének fáradtságát, és csökkenti annak a kockázatát, hogy a felhasználók az adathalászat elleni támadásoknak áldozatául esnek Ha már használja a PHS vagy a PTA felhőben felügyelt hitelesítést, de a felhasználóknak továbbra is be kell írniuk a jelszavukat a helyszíni hitelesítés során, azonnal [telepítenie kell a zökkenőmentes egyszeri bejelentkezést](../hybrid/how-to-connect-sso.md). Ha azonban jelenleg összevonta azokat a csomagokat, amelyeket végül a felhőben felügyelt hitelesítésre kíván áttelepíteni, akkor az áttelepítési projekt részeként zökkenőmentes egyszeri bejelentkezést kell megvalósítani.
 
 ### <a name="device-trust-access-policies"></a>Eszköz-megbízhatósági hozzáférési szabályzatok
 
@@ -309,7 +309,7 @@ Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálha
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Például:
+- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Példa:
 
 |Erőforrás | Engedély |
 | :- | :- |
@@ -389,6 +389,6 @@ A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segí
 - A felhasználók és a csoportok beállításainak zárolása.
 - Az Azure AD-naplók hosszú távú tárolásának engedélyezése a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [személyazonosság-irányítási operatív ellenőrzésekkel és műveletekkel](active-directory-ops-guide-govern.md).

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743828"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure Data Box Gateway-felhasználók kezelése az Azure Portalon
@@ -77,6 +77,6 @@ A törlés végrehajtása után annak megfelelően frissül a felhasználók lis
 ![Felhasználó törlése 3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](data-box-gateway-manage-bandwidth-schedules.md) talál.

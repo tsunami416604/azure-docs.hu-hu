@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327714"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Gyakori eset, ha az ilyen hiba akkor fordul elő, amikor a [arg_max ()](/azure/kusto/query/arg-max-aggfunction) a legutóbbi előfordulás megkeresésére szolgál. Például:
+Gyakori eset, ha az ilyen hiba akkor fordul elő, amikor a [arg_max ()](/azure/kusto/query/arg-max-aggfunction) a legutóbbi előfordulás megkeresésére szolgál. Példa:
 
 ```Kusto
 Perf

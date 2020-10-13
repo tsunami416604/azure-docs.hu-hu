@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88261888"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963295"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Virtuális gépek életciklusa és állapota
 
@@ -418,13 +418,13 @@ A művelet befejezését követően a virtuális gép a következő állapotok e
 
 ## <a name="vm-instance-view"></a>Virtuálisgép-példány nézet
 
-A példány nézet API a virtuális gép futtatásával kapcsolatos információkat biztosít. További információkért tekintse meg a [Virtual Machines-példány nézet](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API dokumentációját.
+A példány nézet API a virtuális gép futtatásával kapcsolatos információkat biztosít. További információkért tekintse meg a [Virtual Machines-példány nézet](/rest/api/compute/virtualmachines/instanceview) API dokumentációját.
 
 Az Azure Resources Explorer egyszerű KEZELŐFELÜLETet biztosít a virtuális gép futási állapotának megtekintéséhez: [erőforrás-kezelő](https://resources.azure.com/).
 
 A kiépítési állapotok a virtuális gép tulajdonságai és a példány nézetében láthatók. A Power állapotok a virtuális gép példány nézetében érhetők el.
 
-Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
+Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
 
 ## <a name="next-steps"></a>Következő lépések
 

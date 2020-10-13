@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
 ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87824528"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vész-helyreállítás beállítása SQL Serverhoz
@@ -161,7 +161,7 @@ SQL Server Site Recovery replikációját a frissítési garancia vész-helyreá
 
 Site Recovery az alkalmazás agnosztikus. A Site Recovery a támogatott operációs rendszereken telepített SQL Server bármely verziójának védelmére képes. További információ: a replikált gépek [helyreállításának támogatási mátrixa](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [site Recovery architektúráról](./azure-to-azure-architecture.md).
 * Az Azure-beli SQL Server a másodlagos Azure-régióban történő helyreállításhoz használható [magas rendelkezésre állási megoldásokról](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions) itt tájékozódhat.

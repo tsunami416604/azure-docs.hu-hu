@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935896"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Rugalmas kiszolgáló időponthoz történő visszaállítása
@@ -40,7 +40,7 @@ Az alábbi lépéseket követve állíthatja vissza a rugalmas kiszolgálót a k
 
 4.  Válassza ki a **legkorábbi visszaállítási pontot** , és adjon meg egy új kiszolgálónevet a **visszaállítás új kiszolgálóként** mezőben. Ekkor megjelenik a legkorábbi időbélyeg, amelyet vissza lehet állítani. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Legkorábbi visszaállítási idő":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Visszaállítás áttekintése":::
 
 5.  Kattintson az **OK** gombra.
 
@@ -61,7 +61,7 @@ Az alábbi lépéseket követve állíthatja vissza a rugalmas kiszolgálót a k
 
 5.  Válassza a dátum és idő lehetőséget, majd adjon meg egy új kiszolgálónevet a **visszaállítás új kiszolgálóként** mezőben. 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Egyéni visszaállítási idő":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Visszaállítás áttekintése":::
  
 6.  Kattintson az **OK** gombra.
 

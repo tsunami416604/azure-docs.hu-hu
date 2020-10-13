@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62d6d5527cd917304e4c8bc0c4740f4edb772218
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544026"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939171"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Netskope felhasználói hitelesítéssel
 
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > A bejelentkezési URL-címek értéke nem valódi. A bejelentkezési URL-cím értékének frissítése a tényleges bejelentkezési URL-címmel. A bejelentkezési URL-cím értékének beszerzéséhez lépjen kapcsolatba a [Netskope felhasználói hitelesítéssel](mailto:support@netskope.com) foglalkozó ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -110,7 +110,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -136,15 +136,15 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Kattintson az **aktív platform** fülre.
 
-    ![Netskope felhasználói hitelesítés konfigurációja](./media/netskope-user-authentication-tutorial/user1.png)
+    ![A képernyőképen a beállítások közül kiválasztott aktív platform látható.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Görgessen le a **proxy továbbításához** , és válassza az **SAML**lehetőséget.
 
-    ![Netskope felhasználói hitelesítés konfigurációja](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![A képernyőfelvételen az aktív platformról kiválasztott SAML látható.](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. Az **SAML-beállítások** lapon hajtsa végre a következő lépéseket:
 
-    ![Netskope felhasználói hitelesítés konfigurációja](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![Képernyőfelvétel: SAML-beállítások, ahol megadhatja a leírt értékeket.](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. Másolja az **SAML-entitás azonosítójának** értékét, és illessze be a Azure Portal **alapszintű SAML-konfiguráció** szakaszának **azonosító** szövegmezőbe.
 
@@ -152,11 +152,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Kattintson a **fiók hozzáadása**lehetőségre.
 
-    ![Netskope felhasználói hitelesítés konfigurációja](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![Képernyőfelvétel: a SAML ablaktáblán kiválasztott fiók hozzáadása.](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. Az **SAML-fiók hozzáadása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Netskope felhasználói hitelesítés konfigurációja](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![A képernyőképen az SAML-fiók hozzáadása látható, ahol megadhatja a leírt értékeket.](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. A **név** szövegmezőben adja meg a nevet, például az Azure ad-t.
 
@@ -174,23 +174,23 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Kattintson a bal oldali navigációs ablaktábla **Beállítások** fülére.
 
-    ![Netskope felhasználói hitelesítés felhasználói létrehozása](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![Képernyőfelvétel: a kiválasztott beállítás.](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. Kattintson az **aktív platform** fülre.
 
-    ![Netskope felhasználói hitelesítés felhasználói létrehozása](./media/netskope-user-authentication-tutorial/user1.png)
+    ![A képernyőképen a beállítások közül kiválasztott aktív platform látható.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. Kattintson a **felhasználók** fülre.
 
-    ![Netskope felhasználói hitelesítés felhasználói létrehozása](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![A képernyőképen az aktív platformról kiválasztott felhasználók láthatók.](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. Kattintson a **felhasználók hozzáadása**elemre.
 
-    ![Netskope felhasználói hitelesítés felhasználói létrehozása](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![Képernyőfelvétel: a felhasználók párbeszédpanel, amelyen a felhasználók hozzáadása lehetőséget választhatja.](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. Adja meg a hozzáadni kívánt felhasználó e-mail-címét, majd kattintson a **Hozzáadás**gombra.
 
-    ![Netskope felhasználói hitelesítés felhasználói létrehozása](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![Képernyőfelvétel: felhasználók hozzáadása, ahol megadhatja a felhasználók listáját.](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320241"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960643"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
-A Linux-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a következő támogatott ügyfelekkel, amelyeket a Linux rendszerű, vékony ügyfél partnereink biztosítanak. Számos partnerrel dolgozunk, hogy a támogatott Windowsos virtuális asztali ügyfelek több Linux-alapú operációs rendszeren és eszközön is elérhetők legyenek. Ha olyan linuxos platformra van szüksége a Windows virtuális asztali támogatáshoz, amely nem szerepel a listán, kérjük, tudassa velünk a [UserVoice oldalon](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
+A Linux-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a [webes ügyféllel](connect-web.md) vagy a következő támogatott ügyfelekkel, amelyeket a Linux-alapú vékony ügyféloldali partnereink biztosítanak. Számos partnerrel dolgozunk, hogy a támogatott Windowsos virtuális asztali ügyfelek több Linux-alapú operációs rendszeren és eszközön is elérhetők legyenek. Ha a virtuális asztali Windows-támogatásra van szüksége egy olyan linuxos platformon, amely itt nem szerepel, tudassa velünk a [UserVoice oldalon](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
 
 ## <a name="connect-with-your-linux-device"></a>A Linux-eszköz csatlakoztatása
 

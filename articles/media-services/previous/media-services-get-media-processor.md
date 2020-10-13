@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df89acb7d3686a478c87c12bbf8a42962597dca6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269386"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Útmutató: adathordozó-feldolgozó példány beszerzése
@@ -66,6 +66,6 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már tudja, hogyan szerezhet be egy Media Processor-példányt, ugorjon az adategységek [kódolása](media-services-dotnet-encode-with-media-encoder-standard.md) témakörre, amely bemutatja, hogyan kódolhat egy adategységet a Media Encoder standard használatával.
 

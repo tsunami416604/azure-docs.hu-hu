@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836530"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás a Azure Database for MariaDB
@@ -22,7 +22,7 @@ A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a p
 > [!NOTE]
 > A privát hivatkozás funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MariaDB-kiszolgálókon érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen díjszabási szintek egyikében található.
 
-## <a name="data-exfiltration-prevention"></a>Az adatkiszűrése megelőzése
+## <a name="data-exfiltration-prevention"></a>Adatkiszivárgás megelőzése
 
 Az adatok Azure Database for MariaDBban való szűrése akkor történik meg, amikor egy jogosult felhasználó, például egy adatbázis-rendszergazda képes az adatok kinyerésére egy rendszerből, és a szervezeten kívül más helyre vagy rendszerre helyezi át. A felhasználó például egy harmadik fél tulajdonában lévő Storage-fiókba helyezi át az adatátvitelt.
 
@@ -125,7 +125,7 @@ Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati vé
 
 Ha meg szeretné tudni, hogyan állíthatja be a Azure Database for MariaDB számára a **nyilvános hálózati hozzáférés Megtagadását** Azure Portal, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának konfigurálása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Database for MariaDB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -6,13 +6,13 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
 ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827673"
 ---
-# <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségben lévő elhelyezési csoportokban futó Azure-beli virtuális gépek replikálása egy másik régióba
+# <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségi elhelyezési csoportokban futó, Azure-alapú virtuális gépek replikálása egy másik régióba
 
 Ez a cikk azt ismerteti, hogyan replikálhatja, feladatátvételi és feladat-visszavételi pontokon futó virtuális gépeket egy másodlagos régióba helyezheti el egy közeli elhelyezési csoportban.
 
@@ -143,7 +143,7 @@ $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Protection
 $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 
-8. A Get-ASRReplicationProtectedItem parancsmaggal megtekintheti a virtuális gép replikációs állapotát és a replikáció állapotát.
+8. A Get-ASRReplicationProtectedItem parancsmaggal ellenőrizhető a virtuális gép replikációs állapotának és replikálásának állapota.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth

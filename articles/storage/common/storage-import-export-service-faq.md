@@ -9,10 +9,10 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399040"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export szolgáltatás: gyakori kérdések
@@ -155,6 +155,6 @@ Nem. A WAImportExport eszköz csak a 64 bites Windows operációs rendszerekkel 
 
 Igen. Az Azure import/export szolgáltatás AES-256 BitLocker-titkosítást használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az Azure Import/Export?](storage-import-export-service.md)

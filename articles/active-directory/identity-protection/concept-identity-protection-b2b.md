@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949196"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection- és B2B-felhasználók
@@ -49,7 +49,7 @@ Ha a saját címtárában lévő kockázatos B2B-felhasználót a kockázatkezel
 
 A szervezet kockázatalapú feltételes hozzáférési házirendjeinek B2B-felhasználóinak kizárásával megakadályozható, hogy a VÁLLALATKÖZI felhasználók kiértékeljék vagy letiltsák a kockázatértékelést. A B2B-felhasználók kizárásához hozzon létre egy csoportot az Azure AD-ben, amely az összes szervezet vendég felhasználóját tartalmazza. Ezt követően adja hozzá ezt a csoportot a beépített Identity Protection-felhasználói kockázat és a bejelentkezési kockázati szabályzatok kizárásához, valamint minden olyan feltételes hozzáférési szabályzatot, amely feltételként a bejelentkezési kockázatokat használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

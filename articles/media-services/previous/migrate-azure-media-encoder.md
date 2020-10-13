@@ -15,10 +15,10 @@ ms.date: 08/21/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 32eab0f729280ad25f45853e05ea982b60a6d9f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259336"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés Azure Media Encoderról Media Encoder Standard
@@ -75,7 +75,7 @@ Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményű, és 
 * Media Encoder Standard különböző elnevezési konvencióval rendelkező kimeneti fájlokat hoz létre, mint az AME.
 * A Media Encoder Standard összetevőket, például a [bemeneti fájl metaadatait](media-services-input-metadata-schema.md) és a [kimeneti fájl (oka) metaadatokat](media-services-output-metadata-schema.md)tartalmazó fájlokat hoz létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Örökölt összetevők](legacy-components.md)
 * [Díjszabás lap](https://azure.microsoft.com/pricing/details/media-services/#encoding)

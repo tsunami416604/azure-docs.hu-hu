@@ -4,10 +4,10 @@ description: A Azure Portal használatával exportálhat egy Azure Resource Mana
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423235"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
@@ -55,7 +55,7 @@ A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át k
 
 Ha egy olyan sablon exportálásakor figyelmeztető üzenet jelenik meg, amely azt jelzi, hogy az erőforrás típusa nem lett exportálva, akkor továbbra is felderítheti az adott erőforrás tulajdonságait. Az erőforrás-tulajdonságok megtekintésének különböző lehetőségeiről további információt az [Erőforrás-tulajdonságok felderítése](view-resources.md)című témakörben talál. Az erőforrás típusa az [Azure REST API](/rest/api/azure/) is megtekinthető.
 
-## <a name="export-template-from-a-resource-group"></a>Sablon exportálása erőforráscsoporthoz
+## <a name="export-template-from-a-resource-group"></a>Sablon exportálása erőforráscsoportból
 
 Egy vagy több erőforrás exportálása egy erőforráscsoporthoz:
 
@@ -119,7 +119,7 @@ Exportálhatja a meglévő erőforrások üzembe helyezéséhez használt sablon
 
    ![Sablon kiválasztása](./media/export-template-portal/show-template-from-history.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan exportálhat sablonokat az [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), a [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)vagy a [REST API](/rest/api/resources/resourcegroups/exporttemplate)használatával.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.

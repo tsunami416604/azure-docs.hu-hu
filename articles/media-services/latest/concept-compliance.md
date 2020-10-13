@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269726"
 ---
 # <a name="media-services-regulatory-compliance"></a>Media Services szabályozási megfelelőség
@@ -41,6 +41,6 @@ Ha a szervezetnek meg kell felelnie a globális, az Egyesült Államok kormánya
 
 Emellett további megfelelőségi erőforrásokat is talál, mint például a naplózási jelentések, az adatvédelem és a Általános adatvédelmi rendelet (GDPR), a megfelelőségi tervezetek, az országos és regionális irányelvek, a megvalósítás és a leképezések, valamint a tanulmányi és elemzői jelentések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [Az Azure Media Services áttekintése](media-services-overview.md)

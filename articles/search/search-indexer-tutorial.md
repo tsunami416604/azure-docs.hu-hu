@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399227"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
@@ -69,7 +69,7 @@ Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kez
 
 1. Jelölje ki a fájlt, és kattintson a **Megnyitás** lehetőségre. A szkriptnek az alábbi képernyőfelvételhez hasonlóan kell kinéznie:
 
-   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="SQL-szkript" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="Új adatbázis oldal" border="false":::
 
 1. Kattintson a **Futtatás** gombra a lekérdezés végrehajtásához. Az Eredmények ablaktáblán a „Sikeres lekérdezés” üzenetnek kell megjelennie 3 sorra vonatkozóan.
 
@@ -99,7 +99,7 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
+   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Új adatbázis oldal" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
 
@@ -201,7 +201,7 @@ Az indexelő objektum a platform-agnosztikus, ahol a konfiguráció, az ütemez�
 
 A megoldás létrehozásához és futtatásához nyomja le az F5 billentyűt. A program hibakeresési módban lesz végrehajtva. Az egyes műveletek állapota a konzolablakban látható.
 
-   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Konzolkimenet" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Új adatbázis oldal" border="false":::
 
 A kód helyileg fut a Visual Studióban, és csatlakozik a keresési szolgáltatáshoz az Azure-ban, amely összekapcsolja a Azure SQL Database és beolvassa az adatkészletet. Ezzel a sok művelettel több lehetséges meghibásodási pont is van. Ha hibaüzenetet kap, először ellenőrizze az alábbi feltételeket:
 
@@ -217,7 +217,7 @@ A Azure Portal használatával ellenőrizze az objektumok létrehozását, majd 
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon nyissa meg az egyes listákat, és ellenőrizze, hogy létrejött-e az objektum. Az **indexek**, az **Indexelő**és **az adatforrások** "Hotels", "Azure-SQL-indexelő" és "Azure-SQL" lesz.
 
-   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Indexelők és adatforrások csempéi" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Új adatbázis oldal" border="false":::
 
 1. Válassza ki a hotelek indexét. A szállodák lapon a **Search Explorer** az első lap. 
 
@@ -225,7 +225,7 @@ A Azure Portal használatával ellenőrizze az objektumok létrehozását, majd 
 
    A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
 
-   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Index lekérdezése" border="false":::
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Új adatbázis oldal" border="false":::
    
 1. A következő lépésben adja meg ezt a keresési sztringet: `search=river&$count=true`. 
 

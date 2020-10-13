@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3988bbb46782f6dbc703823135f5bda4e2539bd8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262260"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával
@@ -567,7 +567,7 @@ A következő szempontokat kell figyelembe venni:
   * Alapértékek: Start: {Best}
 * A kimeneti formátumot explicit módon meg kell adni az egyes képformátumokhoz: jpg/PNG/BmpFormat. Ha jelen van, a MES megfelel a JpgVideo JpgFormat, és így tovább. A OutputFormat egy új rendszerkép-kodek specifikus makrót ({index}) vezet be, amely a képkimeneti formátumok esetében (egyszer és egyszer) is szerepelnie kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [folyamat előrehaladását](media-services-check-job-progress.md) a kódolási feladatok függőben állapotában tekintheti meg.
 
