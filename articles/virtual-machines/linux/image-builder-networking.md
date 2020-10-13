@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068242"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969637"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Az Azure rendszerkép-készítő szolgáltatás hálózatkezelési beállításai
 
@@ -33,7 +33,7 @@ További információkért tekintse meg az alábbi példák egyikét:
 
 ### <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat?
 
-Az Azure Private-kapcsolat privát kapcsolatot biztosít egy virtuális hálózatról az Azure platform szolgáltatásként (Pásti), az ügyfél tulajdonában lévő vagy a Microsoft partner szolgáltatásaiba. A szolgáltatás leegyszerűsíti a hálózati architektúrát, és az Azure-beli végpontok közötti kapcsolatot a nyilvános internetre való adatvédelem megszüntetésével biztosítja. További információt a [Private link dokumentációjában](https://docs.microsoft.com/azure/private-link)talál.
+Az Azure Private-kapcsolat privát kapcsolatot biztosít egy virtuális hálózatról az Azure platform szolgáltatásként (Pásti), az ügyfél tulajdonában lévő vagy a Microsoft partner szolgáltatásaiba. A szolgáltatás leegyszerűsíti a hálózati architektúrát, és az Azure-beli végpontok közötti kapcsolatot a nyilvános internetre való adatvédelem megszüntetésével biztosítja. További információt a [Private link dokumentációjában](../../private-link/index.yml)talál.
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>Szükséges engedélyek egy meglévő VNET
 
@@ -68,7 +68,7 @@ Az üzembe helyezett proxy virtuálisgép-méret szabványos A1_v2 a Build VM me
 | subnetName | A megadott virtuális hálózaton belüli alhálózat neve. Csak akkor kell megadni, ha a *név* meg van adva. |
 | resourceGroupName | A megadott virtuális hálózatot tartalmazó erőforráscsoport neve. Csak akkor kell megadni, ha a *név* meg van adva. |
 
-A Private link Service-nek az adott VNET és alhálózatból származó IP-címet kell megadnia. Az Azure jelenleg nem támogatja a hálózati házirendeket ezeken az IP-címeken. Ezért a hálózati házirendeket le kell tiltani az alhálózaton. További információt a [Private link dokumentációjában](https://docs.microsoft.com/azure/private-link)talál.
+A Private link Service-nek az adott VNET és alhálózatból származó IP-címet kell megadnia. Az Azure jelenleg nem támogatja a hálózati házirendeket ezeken az IP-címeken. Ezért a hálózati házirendeket le kell tiltani az alhálózaton. További információt a [Private link dokumentációjában](../../private-link/index.yml)talál.
 
 ### <a name="checklist-for-using-your-vnet"></a>Ellenőrzőlista a VNET használatához
 

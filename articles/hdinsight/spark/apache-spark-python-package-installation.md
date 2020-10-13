@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
 ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823416"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
@@ -46,8 +46,8 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 |Beállítás |Python 2,7|Python 3,5|
 |----|----|----|
 |Elérési út|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark-verzió|Alapértelmezett érték 2,7|N/A|
-|Livy verziója|Alapértelmezett érték 2,7|N/A|
+|Spark-verzió|Alapértelmezett érték 2,7|N.A.|
+|Livy verziója|Alapértelmezett érték 2,7|N.A.|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése

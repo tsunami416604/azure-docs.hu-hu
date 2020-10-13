@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
 ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396858"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>A fájlmegosztás tartalmának migrálása a SharePoint Online-ba a Azure Data Box Heavy használatával
@@ -90,6 +90,6 @@ A legjobb teljesítmény és kapcsolat érdekében javasoljuk, hogy hozzon létr
 > - Az adatok SharePoint Online-ba való betöltésének gyorsasága számos tényezőt érint, függetlenül attól, hogy az adatok már az Azure-ban vannak-e. Ezen tényezők megismerése segít megtervezni és maximalizálni az áttelepítés hatékonyságát.  További információért látogasson el a [SharePoint Online-ba és a OneDrive áttelepítési sebességre](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).
 > - A SharePoint Online-ba való Migrálás során fennáll a veszélye, hogy a fájlokra vonatkozóan meglévő engedélyeket veszít. Előfordulhat, hogy bizonyos metaadatokat is elveszít, például a által *létrehozott* és *módosított dátummal*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Rendeljen Data Box Heavy](./data-box-heavy-deploy-ordered.md)

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: juliako
 ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268570"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Miniatűr sprite létrehozása
@@ -74,6 +74,6 @@ Alább bemutatunk egy példát:
 2.  A sprite-lemezképek közepes méretű JPEG-képekre való darabolása még nem támogatott. Ezért ügyelni kell a bélyegképek számának és méretének korlátozására, hogy az eredményül kapott összefűzött miniatűr sprite a 8P képpont vagy annál kisebb legyen.
 3.  A Azure Media Player támogatja a sprite-ket a Microsoft Edge, a Chrome és a Firefox böngészőkben. A IE11 nem támogatja a VTT-elemzést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tartalom kódolása](media-services-encode-asset.md)

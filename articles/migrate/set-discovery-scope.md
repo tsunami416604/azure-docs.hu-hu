@@ -4,10 +4,10 @@ description: Ismerteti, hogyan állítható be a felderítési hatókör a VMwar
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919726"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Felderítési hatókör beállítása a VMware virtuális gépekhez
@@ -58,6 +58,6 @@ A kiszolgáló-értékelési eszköz jelenleg nem tudja felderíteni a virtuáli
 A szerepköralapú hozzáférés-vezérlés beállítása biztosítja, hogy a megfelelő vCenter-felhasználói fiók csak a bérlők által meghatározott virtuális gépekhez férhessen hozzá.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A készülék beállítása](how-to-set-up-appliance-vmware.md)

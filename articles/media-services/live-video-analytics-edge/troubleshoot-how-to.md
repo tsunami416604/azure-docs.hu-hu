@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
 ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823196"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
@@ -326,7 +326,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
     > 2. Használja az alábbi parancsot, és cserélje le **$DEBUG _LOG_LOCATION** az előző lépésben használt helyre:  
     > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
     
-    d. Válassza a **Mentés** lehetőséget.
+    d. Kattintson a **Mentés** gombra.
 
 1. Reprodukálja a problémát.
 1. Kapcsolódjon a virtuális géphez a portál **IoT hub** oldaláról.

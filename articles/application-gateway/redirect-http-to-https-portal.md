@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89594815"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
@@ -125,7 +125,7 @@ Először adja hozzá a *myListener* nevű figyelőt a 80-es porthoz.
 6. **Átirányítási cél**esetén válassza a **figyelő**lehetőséget.
 7. Győződjön meg arról, hogy a **cél figyelő** **appGatewayHttpListener**van beállítva.
 8. A **belefoglalási lekérdezési karakterlánc** és az **elérési út** beállításnál válassza az *Igen*lehetőséget.
-9. Válassza a **Hozzáadás** elemet.
+9. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
@@ -156,13 +156,13 @@ A virtuálisgép-méretezési csoport portál felhasználói felülete létrehoz
 3. Válassza ki a **háttérbeli készletek**elemet.
 4. Válassza a **myAppGatewaymyvmss**lehetőséget.
 5. Válassza **a minden cél eltávolítása a háttér-készletből**lehetőséget.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 7. A folyamat befejezése után válassza ki a **myAppGatewaymyvmss** háttér-készletet, válassza a **Törlés** lehetőséget, majd kattintson az **OK gombra** a megerősítéshez.
 8. Válassza a **appGatewayBackendPool**lehetőséget.
 9. A **célok**területen válassza a **VMSS**lehetőséget.
 10. A **VMSS**területen válassza a **myvmss**elemet.
 11. A **hálózati adapter konfigurációja**területen válassza a **myvmssNic**lehetőséget.
-12. Válassza a **Mentés** lehetőséget.
+12. Kattintson a **Mentés** gombra.
 
 ### <a name="upgrade-the-scale-set"></a>A méretezési csoport frissítése
 

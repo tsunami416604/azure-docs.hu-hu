@@ -9,10 +9,10 @@ ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267023"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
@@ -46,7 +46,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * A webalkalmazások rosszindulatú robotoktól való ellátása az IP hírnévre vonatkozó szabályrendszert (előzetes verzió)
 
-### <a name="monitoring"></a>Nyomon követés
+### <a name="monitoring"></a>Figyelés
 
 * Valós idejű WAF-napló használatával figyelheti a webalkalmazások elleni támadásokat. A napló integrálva van [Azure monitor](../../azure-monitor/overview.md) a WAF-riasztások nyomon követésére és a trendek egyszerű figyelésére.
 
@@ -227,7 +227,7 @@ A díjszabási modellek a WAF_v1 és az WAF_v2 SKU esetében eltérőek. Tovább
 
 Az Azure webalkalmazási tűzfal újdonságait az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall)című témakör ismerteti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [WAF felügyelt szabályairól](application-gateway-crs-rulegroups-rules.md)
 - További információ az [Egyéni szabályokról](custom-waf-rules-overview.md)

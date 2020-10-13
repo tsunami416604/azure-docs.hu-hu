@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268604"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
@@ -40,7 +40,7 @@ Ahhoz, hogy egy Windows 10-es eszköz használhassa a Enterprise State Roaming s
 
 ## <a name="data-storage"></a>Adattárolás
 
-Enterprise State Roaming az adatai egy vagy több olyan [Azure-régióban](https://azure.microsoft.com/regions/) vannak tárolva, amelyek a legjobban megfelelnek a Azure Active Directory példányban beállított ország/régió értéknek. Enterprise State Roaming az adatai a három fő földrajzi régió alapján vannak particionálva: Észak-Amerika, EMEA és APAC. Enterprise State Roaming a bérlői adatai helyileg találhatók a földrajzi régióval, és nem replikálódnak a régiók között.  Például:
+Enterprise State Roaming az adatai egy vagy több olyan [Azure-régióban](https://azure.microsoft.com/regions/) vannak tárolva, amelyek a legjobban megfelelnek a Azure Active Directory példányban beállított ország/régió értéknek. Enterprise State Roaming az adatai a három fő földrajzi régió alapján vannak particionálva: Észak-Amerika, EMEA és APAC. Enterprise State Roaming a bérlői adatai helyileg találhatók a földrajzi régióval, és nem replikálódnak a régiók között.  Példa:
 
 | Ország/régió érték | a szolgáltatásban tárolt |
 | -------------------- | ------------------------ |
@@ -80,7 +80,7 @@ Az explicit törlés akkor történik meg, amikor egy Azure-rendszergazda törö
 
 ### <a name="stale-data-deletion"></a>Elavult adatok törlése
 
-Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülnek, és törölhetők a Microsoft Cloud-ból. A megőrzési időtartam változhat, de nem lesz kevesebb, mint 90 nap. Az elavult adatmennyiség lehet a Windows/Alkalmazásbeállítások vagy a felhasználó összes beállítása. Például:
+Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülnek, és törölhetők a Microsoft Cloud-ból. A megőrzési időtartam változhat, de nem lesz kevesebb, mint 90 nap. Az elavult adatmennyiség lehet a Windows/Alkalmazásbeállítások vagy a felhasználó összes beállítása. Példa:
 
 * Ha egyetlen eszköz sem fér hozzá egy adott beállítási gyűjteményhez (például egy alkalmazás el lesz távolítva az eszközről, vagy egy beállításcsoport, például a "téma" le van tiltva az összes felhasználó eszközén), akkor a gyűjtemény a megőrzési időtartam után elavult lesz, és törölhető. 
 * Ha a felhasználó minden eszközén kikapcsolta a beállítások szinkronizálását, akkor a rendszer nem fér hozzá a beállításokhoz, és az adott felhasználóhoz tartozó összes beállítási információ elavult lesz, és a megőrzési időszak után törölhető. 
@@ -90,7 +90,7 @@ Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülne
 
 Az adatmegőrzési szabályzat nem konfigurálható. Az adattörlést követően nem lehet helyreállítani az adatvesztést. A beállítások adatait azonban csak a Microsoft-felhőből, nem pedig a végfelhasználói eszközről törli a rendszer. Ha bármelyik eszköz később újracsatlakozik a Enterprise State Roaming szolgáltatáshoz, a beállítások újra szinkronizálhatók és tárolódnak a Microsoft Cloud-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Vállalati állapothordozás áttekintése](enterprise-state-roaming-overview.md)
 * [Beállítások és adatroaming GYIK](enterprise-state-roaming-faqs.md)

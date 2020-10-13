@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563862"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect Sync: az architektúra megismerése
@@ -256,7 +256,7 @@ A szinkronizálási motor tárolja az egyes átmeneti objektumok exportálási �
 
 Ha például a szinkronizálási motor exportálja a C attribútumot, amelynek értéke 5, egy csatlakoztatott adatforráshoz, a a C = 5 értéket tárolja az exportálási állapot memóriájában. Az objektum minden további exportálásakor a rendszer megkísérli a C = 5 exportálását a csatlakoztatott adatforrásba, mivel a Szinkronizáló motor azt feltételezi, hogy ez az érték nem lett tartósan alkalmazva az objektumra (azaz ha a csatlakoztatott adatforrásból nem történt meg a másik érték importálása). Az exportálási memória törlődik, ha a C = 5 fogadása az objektumon végzett importálási művelet során történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

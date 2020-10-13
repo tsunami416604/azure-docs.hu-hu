@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: zökkenőmentes egyszeri bejelentkezés – gyors üzembe helyezési útmutató | Microsoft Docs'
-description: Ez a cikk azt ismerteti, hogyan kezdheti el a Azure Active Directory zökkenőmentes egyszeri bejelentkezést
+title: 'Azure AD Connect: zökkenőmentes egyetlen Sign-On – gyors útmutató | Microsoft Docs'
+description: Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Active Directory zökkenőmentes egyetlen Sign-On
 services: active-directory
 keywords: Mi az Azure AD Connect, az Azure AD, az egyszeri bejelentkezéshez szükséges összetevők telepítése Active Directory
 documentationcenter: ''
@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295022"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
-## <a name="deploy-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés üzembe helyezése
+## <a name="deploy-seamless-single-sign-on"></a>Zökkenőmentes egyszeri Sign-On üzembe helyezése
 
-Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezés (zökkenőmentes SSO) automatikusan bejelentkezik a felhasználók számára, amikor azok a vállalati hálózathoz csatlakozó vállalati asztali számítógépeken vannak. A zökkenőmentes SSO lehetővé teszi, hogy a felhasználók könnyen hozzáférjenek a felhőalapú alkalmazásokhoz anélkül, hogy további helyszíni összetevőket kellene megadniuk.
+Azure Active Directory (Azure AD) zökkenőmentes, egyetlen Sign-On (zökkenőmentes SSO) automatikusan bejelentkezik a felhasználók számára, amikor a vállalati hálózathoz csatlakozó vállalati asztali számítógépeken vannak. A zökkenőmentes SSO lehetővé teszi, hogy a felhasználók könnyen hozzáférjenek a felhőalapú alkalmazásokhoz anélkül, hogy további helyszíni összetevőket kellene megadniuk.
 
 A zökkenőmentes egyszeri bejelentkezés telepítéséhez kövesse az alábbi lépéseket.
 
@@ -236,7 +236,7 @@ A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directo
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: a zökkenőmentes egyszeri bejelentkezési funkció működésének megismerése.
+- Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: az egyszerű Sign-On funkció működésének megismerése.
 - [Gyakori kérdések](how-to-connect-sso-faq.md): válaszokat kaphat a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.
-- [Hibaelhárítás](tshoot-connect-sso.md): a zökkenőmentes egyszeri bejelentkezés funkció gyakori problémáinak elhárítása.
+- [Hibaelhárítás](tshoot-connect-sso.md): megtudhatja, Hogyan oldhatók fel a zökkenőmentes egyszeri Sign-On szolgáltatással kapcsolatos gyakori problémák.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): használja a Azure Active Directory fórumot az új szolgáltatásokra vonatkozó kérelmek fájljának megjelenítéséhez.

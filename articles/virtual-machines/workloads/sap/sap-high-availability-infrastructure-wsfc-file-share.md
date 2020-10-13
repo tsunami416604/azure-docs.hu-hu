@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855365"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
@@ -218,8 +218,8 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 | --- | --- | --- | --- |
 | Első fürtcsomópont-ASCS/SCS-fürt | ASCs – 1 | 10.0.6.4 | ASCs – as |
 | Második fürtcsomópont-ASCS/SCS-fürt | ASCs – 2 | 10.0.6.5 | ASCs – as |
-| Fürt hálózatnév |ASCs – CL | 10.0.6.6 | n.a. |
-| SAP-PR1 ASCS-fürt hálózati neve |PR1 – ASCs | 10.0.6.7 | n.a. |
+| Fürt hálózatnév |ASCs – CL | 10.0.6.6 | n/a |
+| SAP-PR1 ASCS-fürt hálózati neve |PR1 – ASCs | 10.0.6.7 | n/a |
 
 
 **1. táblázat**: ASCS/SCS-fürt
@@ -236,10 +236,10 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 | Első fürtcsomópont | SOFs – 1 | 10.0.6.10 | SOFs – as |
 | Második fürtcsomópont | SOFs – 2 | 10.0.6.11 | SOFs – as |
 | Harmadik fürtcsomópont | SOFs – 3 | 10.0.6.12 | SOFs – as |
-| Fürt hálózatnév | SOFs – CL | 10.0.6.13 | n.a. |
-| SAP globális gazdagép neve | sapglobal | Az összes fürtcsomópont IP-címeinek használata | n.a. |
+| Fürt hálózatnév | SOFs – CL | 10.0.6.13 | n/a |
+| SAP globális gazdagép neve | sapglobal | Az összes fürtcsomópont IP-címeinek használata | n/a |
 
-**3. táblázat**: kibővíthető fájlkiszolgáló fürt
+**3. táblázat**: Scale-Out fájlkiszolgáló-fürt
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Virtuális gépek üzembe helyezése SAP ASCS/SCS-fürthöz, adatbázis-kezelő rendszer (adatbázisok) és SAP Application Server-példányok esetén
@@ -259,9 +259,9 @@ Az Azure-infrastruktúra előkészítéséhez végezze el a következőket:
 * A Windows Server 2016 használatakor javasoljuk, hogy konfigurálja az [Azure Cloud tanúsító][deploy-cloud-witness].
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>A Kibővíthető fájlkiszolgáló-fürt manuális üzembe helyezése 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Telepítse manuálisan a Scale-Out fájlkiszolgáló fürtöt 
 
-A Microsoft Kibővíthető fájlkiszolgáló-fürtöt manuálisan is telepítheti az Azure-beli blog [közvetlen tárolóhelyek][ms-blog-s2d-in-azure]az alábbi kód végrehajtásával:  
+Az alábbi kód végrehajtásával manuálisan telepítheti a Microsoft Scale-Out Fájlkiszolgálói fürtöt a blog [közvetlen tárolóhelyek az Azure-ban][ms-blog-s2d-in-azure]című témakörben leírtak szerint:  
 
 
 ```powershell
@@ -294,25 +294,25 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Kibővíthető fájlkiszolgáló automatikus üzembe helyezése
+## <a name="deploy-scale-out-file-server-automatically"></a>Scale-Out fájlkiszolgáló automatikus telepítése
 
-A Kibővíthető fájlkiszolgáló üzembe helyezését automatizálhatja egy meglévő virtuális hálózat és Active Directory környezet Azure Resource Manager sablonjainak használatával is.
+Scale-Out fájlkiszolgáló központi telepítését egy meglévő virtuális hálózat és Active Directory környezet Azure Resource Manager sablonjainak használatával is automatizálhatja.
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy három vagy több fürtcsomópont legyen Kibővíthető fájlkiszolgáló a háromutas tükrözéssel.
+> Azt javasoljuk, hogy három vagy több fürtcsomópont legyen a Scale-Out fájlkiszolgáló számára háromutas tükrözéssel.
 >
-> A Kibővíthető fájlkiszolgáló Resource Manager-sablon felhasználói felületén meg kell adnia a virtuális gépek darabszámát.
+> A Scale-Out Fájlkiszolgálói erőforrás-kezelő sablon felhasználói felületén meg kell adnia a virtuális gépek darabszámát.
 >
 
 ### <a name="use-managed-disks"></a>Felügyelt lemezek használata
 
-A Közvetlen tárolóhelyek és az Azure Managed Disks Kibővíthető fájlkiszolgáló üzembe helyezésére szolgáló Azure Resource Manager sablon elérhető a [githubon][arm-sofs-s2d-managed-disks].
+A Scale-Out fájlkiszolgáló Közvetlen tárolóhelyek és az Azure Managed Disks üzembe helyezésére szolgáló Azure Resource Manager sablon a [githubon][arm-sofs-s2d-managed-disks]érhető el.
 
 Javasoljuk, hogy használja a Managed Disks.
 
-![1. ábra: Kibővíthető fájlkiszolgáló Resource Manager-sablon felhasználói felületi képernyője felügyelt lemezekkel][sap-ha-guide-figure-8010]
+![1. ábra: Scale-Out Fájlkiszolgálói erőforrás-kezelő sablonjának felhasználói felületi képernyője felügyelt lemezekkel][sap-ha-guide-figure-8010]
 
-_**1. ábra**: kibővíthető fájlkiszolgáló Resource Manager-sablon felhasználói felületi képernyője felügyelt lemezekkel_
+_**1. ábra**: Scale-Out Fájlkiszolgálói erőforrás-kezelő sablonjának felhasználói felületi képernyője felügyelt lemezekkel_
 
 A sablonban tegye a következőket:
 1. A **virtuális gépek száma** mezőben adja meg a minimum **2**értéket.
@@ -322,17 +322,17 @@ A sablonban tegye a következőket:
 
 ### <a name="use-unmanaged-disks"></a>Nem felügyelt lemezek használata
 
-A Közvetlen tárolóhelyek és az Azure nem felügyelt lemezekkel való üzembe Kibővíthető fájlkiszolgáló helyezésére szolgáló Azure Resource Manager sablon a [githubon][arm-sofs-s2d-non-managed-disks]érhető el.
+A Scale-Out fájlkiszolgáló Közvetlen tárolóhelyek és Azure nem felügyelt lemezekkel való üzembe helyezésére szolgáló Azure Resource Manager sablon a [githubon][arm-sofs-s2d-non-managed-disks]érhető el.
 
-![2. ábra: a Kibővíthető fájlkiszolgáló Azure Resource Manager sablon felhasználói felületének képernyője felügyelt lemezek nélkül][sap-ha-guide-figure-8011]
+![2. ábra: a Scale-Out fájlkiszolgáló Azure Resource Manager sablonjának felhasználói felületi képernyője felügyelt lemezek nélkül][sap-ha-guide-figure-8011]
 
-_**2. ábra**: a kibővíthető fájlkiszolgáló Azure Resource Manager sablon felhasználói felületének képernyője felügyelt lemezek nélkül_
+_**2. ábra**: a Scale-Out fájlkiszolgáló Azure Resource Manager sablonjának felhasználói felületi képernyője felügyelt lemezek nélkül_
 
 A **Storage-fiók típusa** mezőben válassza a **Premium Storage**lehetőséget. Minden egyéb beállítás megegyezik a felügyelt lemezek beállításaival.
 
 ## <a name="adjust-cluster-timeout-settings"></a>A fürt időtúllépési beállításainak módosítása
 
-Miután sikeresen telepítette a Windows Kibővíthető fájlkiszolgáló-fürtöt, az Azure-beli feltételekhez igazíthatja a feladatátvételi észlelés időkorlátját. A módosítandó paraméterek leírása a [feladatátvevő fürt hálózati küszöbértékének finomhangolása][tuning-failover-cluster-network-thresholds]című dokumentumban található. Feltételezve, hogy a fürtözött virtuális gépek ugyanahhoz az alhálózathoz tartoznak, a következő paramétereket kell módosítania ezekre az értékekre:
+Miután sikeresen telepítette a Windows Scale-Out fájlkiszolgáló fürtöt, az Azure-beli feltételekhez igazíthatja a feladatátvételi észlelés időtúllépési küszöbértékeit. A módosítandó paraméterek leírása a [feladatátvevő fürt hálózati küszöbértékének finomhangolása][tuning-failover-cluster-network-thresholds]című dokumentumban található. Feltételezve, hogy a fürtözött virtuális gépek ugyanahhoz az alhálózathoz tartoznak, a következő paramétereket kell módosítania ezekre az értékekre:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15

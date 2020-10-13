@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356026"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
@@ -33,7 +33,7 @@ Ebben a projektben a következőket tanulhatja meg:
 
 Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
 
-* Csatlakoztassa a fejlesztői készlet a Wi-Fi-hez
+* A fejlesztői készlet csatlakoztatva van Wi-Fi
 * A fejlesztési környezet előkészítése
 
 ## <a name="open-the-project-folder"></a>A Project mappa megnyitása
@@ -70,7 +70,7 @@ A VS Code-ban kövesse ezt az eljárást a soros figyelő megnyitásához és be
   
 3. Az állapotsoron kattintson a Baud-arányt jelölő számra, és állítsa be a `115200` ![ következőre: képernyőkép a Bitsebesség beállítását mutatja a Visual Studio Code-ban.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
-A soros figyelő megjeleníti a minta vázlat által küldött összes üzenetet. A vázlat csatlakoztatja a fejlesztői készlet a Wi-Fi-hez. A Wi-Fi-kapcsolat sikeressége után a vázlat üzenetet küld a MQTT-közvetítőnek. Ezután a minta ismételten két "iot.eclipse.org" üzenetet küld a QoS 0 és a QoS 1 használatával.
+A soros figyelő megjeleníti a minta vázlat által küldött összes üzenetet. A vázlat csatlakoztatja a fejlesztői készlet a Wi-Fi-hez. Ha a Wi-Fi-kapcsolódás sikeres volt, a vázlat üzenetet küld a MQTT-közvetítőnek. Ezután a minta ismételten két "iot.eclipse.org" üzenetet küld a QoS 0 és a QoS 1 használatával.
 
 ![A képernyőfelvételen a vázlat által küldött üzeneteket megjelenítő soros figyelő látható.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 

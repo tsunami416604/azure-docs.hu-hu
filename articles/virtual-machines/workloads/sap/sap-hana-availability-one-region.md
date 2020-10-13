@@ -16,10 +16,10 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833317"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
@@ -118,7 +118,7 @@ A teljes konfiguráció a következőképpen néz ki:
 
 Dönthet úgy, hogy ezt a megoldást választja, mert lehetővé teszi egy RPO = 0 és egy alacsony RTO elérését. Konfigurálja a SAP HANA ügyfélkapcsolatot úgy, hogy a SAP HANA-ügyfelek a virtuális IP-címet használják a HANA rendszerreplikálási konfigurációhoz való csatlakozáshoz. Ilyen konfiguráció esetén nincs szükség az alkalmazás újrakonfigurálására, ha a másodlagos csomópontra feladatátvétel történik. Ebben az esetben az elsődleges és másodlagos virtuális gépekhez tartozó Azure VM SKU-nak azonosnak kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konfigurációk Azure-beli beállításával kapcsolatos részletes útmutatásért lásd:
 

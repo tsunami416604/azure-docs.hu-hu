@@ -7,10 +7,10 @@ ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
 ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356885"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sablonok fejlesztése a felhő konzisztenciájához
@@ -55,7 +55,7 @@ A Azure Resource Manager képességek mindig a globális Azure-ba lesznek beveze
 
 1. Ha már rendelkezik a tárház helyi klónozásával, kapcsolódjon a cél Azure Resource Manager a PowerShell-lel.
 
-1. Importálja a psm1 modult, és hajtsa végre a test-AzureRmTemplateFunctions parancsmagot:
+1. Importálja a psm1 modult, és hajtsa végre a Test-AzureRmTemplateFunctions parancsmagot:
 
    ```powershell
    # Import the module
@@ -487,7 +487,7 @@ Egy helyen elérhető virtuálisgép-rendszerképek listájának lekéréséhez 
 az vm image list -all
 ```
 
-Ugyanezt a listát a [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell parancsmaggal kérheti le, és a paraméterrel adhatja meg a kívánt helyet `-Location` . Például:
+Ugyanezt a listát a [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell parancsmaggal kérheti le, és a paraméterrel adhatja meg a kívánt helyet `-Location` . Példa:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Az adott régióhoz elérhető virtuálisgép-bővítmények (ebben a példában
 az vm extension image list --location myLocation
 ```
 
-Végrehajthatja a Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot is, és a használatával `-Location` megadhatja a virtuális gép rendszerképének helyét. Például:
+Végrehajthatja a Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot is, és a használatával `-Location` megadhatja a virtuális gép rendszerképének helyét. Példa:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

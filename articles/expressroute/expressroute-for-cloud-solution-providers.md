@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653638"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
@@ -112,7 +112,7 @@ Az alapértelmezett útválasztási tábla az alábbi útvonalakat tartalmazza:
 ![Az alapértelmezett útválasztási beállításokat megjelenítő diagram.](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Felhasználó által meghatározott útválasztás (UDR)
-A felhasználó által megadott útvonalak segítségével felügyelhető a hozzárendelt alhálózatról a többi alhálózatra irányuló kimenő forgalom a virtuális hálózatban vagy a többi előre definiált átjáró (ExpressRoute, internet vagy VPN) valamelyikén keresztül. A rendszer alapértelmezett útválasztási táblája lecserélhető a felhasználó által meghatározott útválasztási táblára, amely a benne lévő útvonalakat egyéni útvonalakra cseréli. A felhasználó által meghatározott útválasztás használatával az ügyfelek egyedi útvonalakat hozhatnak létre készülékekhez, például tűzfalakhoz vagy behatolás-észlelő készülékekhez, vagy blokkolhatják a hozzáférést megadott alhálózatokhoz azon alhálózatról, amelyen a felhasználó által megadott útvonal található. A felhasználó által megadott útvonalak áttekintését [itt](../virtual-network/virtual-networks-udr-overview.md)tekintheti meg. 
+A felhasználó által megadott útvonalak segítségével felügyelhető a hozzárendelt alhálózatról a többi alhálózatra irányuló kimenő forgalom a virtuális hálózatban vagy a többi előre definiált átjáró (ExpressRoute, internet vagy VPN) valamelyikén keresztül. A rendszer alapértelmezett útválasztási táblája lecserélhető a felhasználó által meghatározott útválasztási táblára, amely a benne lévő útvonalakat egyéni útvonalakra cseréli. A felhasználó által meghatározott útválasztás használatával az ügyfelek egyedi útvonalakat hozhatnak létre készülékekhez, például tűzfalakhoz vagy behatolás-észlelő készülékekhez, vagy blokkolhatják a hozzáférést megadott alhálózatokhoz azon alhálózatról, amelyen a felhasználó által megadott útvonal található. Az User-Defined útvonalak áttekintését [itt](../virtual-network/virtual-networks-udr-overview.md)tekintheti meg. 
 
 ## <a name="security"></a>Biztonság
 A használt modelltől – Szolgáltatóhoz való csatlakozás vagy Szolgáltatón keresztüli csatlakozás – függően az ügyfél a biztonsági házirendeket a vNetben határozza meg, vagy megadja a CSP-nek a biztonsági házirendekre vonatkozó követelményeket azok meghatározásához a vNetekben. A következő kritériumok határozhatók meg:

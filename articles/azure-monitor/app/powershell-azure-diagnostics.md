@@ -4,10 +4,10 @@ description: Automatizálja a Azure Diagnostics Application Insightsre való kon
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320357"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Azure-Application Insights beállítása a PowerShell használatával Cloud Services
@@ -37,7 +37,7 @@ Ha a webalkalmazás az Azure-ban található és Azure Resource Manager-sablonna
 ``` 
 
 * `nameOfAIAppResource`– az Application Insights-erőforrás neve
-* `myWebAppName`– a webalkalmazás azonosítója
+* `myWebAppName` – a webalkalmazás azonosítója
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
 A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Például:
@@ -123,7 +123,7 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](./cloudservices.md)
 * [Az Azure Diagnostics küldése az Application Insights-ba](../platform/diagnostics-extension-to-application-insights.md)
 * [Riasztások konfigurálásának automatizálása](powershell-alerts.md)

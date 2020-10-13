@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: a121751e71bffdb76341f6a7dc2a01a22240019b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534468"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Index létrehozása több nyelvhez az Azure-ban Cognitive Search
@@ -65,6 +65,6 @@ Előfordulhat, hogy a lekérdezést kiállító ügynök nyelve nem ismert, ebbe
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha .NET-fejlesztőként dolgozik, vegye figyelembe, hogy az [Azure Cognitive Search .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) és az [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer) tulajdonság használatával konfigurálhatja a nyelvi elemzőket.

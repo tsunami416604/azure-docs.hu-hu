@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869422"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics kimenet Azure SQL Database
@@ -39,7 +39,7 @@ A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, 
 
 - **Kerülje az egyedi kulcs megsértését** – ha [több kulcs megsértését jelző figyelmeztető üzenetet](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) kap a Azure stream Analyticsi tevékenység naplójában, ügyeljen arra, hogy a feladatot ne befolyásolja az egyedi korlátozás megsértése, amely valószínűleg a helyreállítási esetekben fog történni. Ennek elkerüléséhez állítsa be a [dup- \_ \_ kulcs mellőzése](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) beállítást az indexeken.
 
-## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory és memóriában tárolt táblák
+## <a name="azure-data-factory-and-in-memory-tables"></a>Táblázatok Azure Data Factory és In-Memory
 
 - Memóriában tárolt **tábla** – a memóriában lévő [táblák](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) , amelyek nagy sebességű adatterheléseket tesznek lehetővé, de az adatmennyiségnek a memóriában kell lennie. A Teljesítménytesztek egy memóriában tárolt táblázatból származó tömeges betöltést jelenítenek meg a lemezes táblákhoz képest, mint a közvetlen tömeges beszúrások egy azonosító oszlop és egy fürtözött index használatával történő, a lemezes táblába való közvetlen kihelyezése során. A tömeges beszúrási teljesítmény kihasználása érdekében állítson be egy [másolási feladatot olyan Azure Data Factory használatával](../data-factory/connector-azure-sql-database.md) , amely az adatok memóriából való másolása a lemez alapú táblába.
 
@@ -48,10 +48,10 @@ Az adatok tömeges beszúrása sokkal gyorsabb, mint az adatok betöltése egyet
 
 Ha a bejövő események aránya alacsony, könnyedén létrehozhat 100-nál kisebb méretű kötegeket, így a tömeges Beszúrás nem hatékony, és túl sok lemezterületet használ. A korlátozás megkerüléséhez a következő műveletek közül választhat:
 * Az [trigger](/sql/t-sql/statements/create-trigger-transact-sql) helyett hozzon létre egyszerű beszúrást az összes sorhoz.
-* Használjon az előző szakaszban leírtak szerint memóriában lévő ideiglenes táblázatot.
+* Használjon In-Memory Temp táblát az előző szakaszban leírtak szerint.
 
 Egy másik ilyen forgatókönyv akkor fordul elő, ha nem fürtözött oszlopcentrikus indexbe (NCCI) ír, ahol a kisebb tömeges beszúrások túl sok szegmenst hozhatnak létre, ami összeomlhat az indexben. Ebben az esetben az ajánlott, hogy fürtözött Oszlopcentrikus indexet használjon.
 
 ## <a name="summary"></a>Összegzés
 
-Összefoglalva, az SQL-kimenethez Azure Stream Analytics particionált kimeneti funkciójával, a feladatoknak a SQL Azure particionált táblájával való igazításával jelentős teljesítménybeli párhuzamos kell biztosítania. A memóriából származó táblázatokból a lemezes táblákba való adatáthelyezés előkészítésének Azure Data Factory kihasználása jelentős teljesítménybeli nyereségek sorrendjét eredményezheti. Ha lehetséges, az üzenetek sűrűségének javítása is jelentős tényező lehet a teljes átviteli sebesség javításában.
+Összefoglalva, az SQL-kimenethez Azure Stream Analytics particionált kimeneti funkciójával, a feladatoknak a SQL Azure particionált táblájával való igazításával jelentős teljesítménybeli párhuzamos kell biztosítania. A In-Memory táblából lemezes táblákba való adatáthelyezési Azure Data Factoryának kihasználása lehetővé teheti, hogy az adatátviteli teljesítmény megtörténjen. Ha lehetséges, az üzenetek sűrűségének javítása is jelentős tényező lehet a teljes átviteli sebesség javításában.

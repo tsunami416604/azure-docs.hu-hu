@@ -17,10 +17,10 @@ ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279414"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
@@ -93,7 +93,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 
 * AD FS-ügynök Azure AD Connect Health (verzió: 3.1.24.0)  
    1. Transport Layer Security (TLS) protokoll 1,2-es verziójának megfelelősége és kényszerítése
-   2. A ADFSRequestToken támogatása a honosított operációs rendszerekhez
+   2. Test-ADFSRequestToken támogatása honosított operációs rendszerekhez
    3. Megoldott diagnosztikai ügynök EventHandler zárolási hibája
    4. Rendszerállapot-ügynök regisztrációja – hibajavítások
 

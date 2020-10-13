@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265986"
 ---
 # <a name="conditional-access-block-access"></a>Feltételes hozzáférés: hozzáférés letiltása
@@ -49,7 +49,7 @@ Az első házirend blokkolja a hozzáférést az összes alkalmazáshoz, kivéve
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **Cloud apps vagy műveletek**területen válassza ki a következő beállításokat:
    1. A **Belefoglalás**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
    1. A **kizárás**területen válassza az **Office 365**lehetőséget, válassza a **kiválasztás**lehetőséget, majd válassza a **kész**lehetőséget.
@@ -58,7 +58,7 @@ Az első házirend blokkolja a hozzáférést az összes alkalmazáshoz, kivéve
       1. **Konfigurálás** beállítása **Igen** értékre
       1. A **Belefoglalás**területen válassza ki **a kívánt helyet**.
       1. A **kizárás**területen válassza ki **az összes megbízható helyet**.
-      1. Válassza a **Kész** lehetőséget.
+      1. Válassza a **Done** (Kész) lehetőséget.
    1. Az **ügyfélalkalmazások (előzetes verzió)** területen állítsa az **Igen**értékre a **configure** beállítást, majd válassza a **kész**, majd a **kész**lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.
@@ -71,7 +71,7 @@ Az alábbiakban egy második szabályzatot hozhat létre a többtényezős hitel
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **Cloud apps vagy műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**, az **Office 365**lehetőséget, majd a **kiválasztás**, majd a **kész**lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés engedélyezése**lehetőséget.
    1. Válassza a **többtényezős hitelesítés megkövetelése** és az **eszköz megfelelőként való megjelölésének megkövetelése** **jelölőnégyzetet.**

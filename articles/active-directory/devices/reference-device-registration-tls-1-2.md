@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268757"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>A TLS 1,2 alkalmazása az Azure AD regisztrációs szolgáltatáshoz
@@ -37,13 +37,13 @@ Az Azure AD-eszköz regisztrációs szolgáltatását vagy a proxyt használó W
 
 Győződjön meg arról, hogy a következő beállításjegyzék-karakterláncok konfigurálva vannak:
 
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél
   - "DisabledByDefault" = DWORD: 00000000
   - "Engedélyezve" = DWORD: 00000001
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ kiszolgáló
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ kiszolgáló
   - "DisabledByDefault" = DWORD: 00000000
   - "Engedélyezve" = DWORD: 00000001
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\. NETFramework\v4.0.30319
   - "Alatt" = DWORD: 00000001
 
 ## <a name="update-non-windows-proxies"></a>Nem Windows rendszerű proxyk frissítése
@@ -66,6 +66,6 @@ A következő ügyfelek ismertek, hogy nem tudják támogatni a TLS 1,2-et. Fris
 - Internet Explorer 10 Windows Phone-telefon 8,0
 - A Safari verziója 6.0.4 az OS X 10.8.4 és korábbi verziókban
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [TLS/SSL – áttekintés (Schannel SSP)](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)

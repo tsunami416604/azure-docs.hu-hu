@@ -4,13 +4,13 @@ description: Ismerteti, hogyan konfigurálhatja a folyamatos integrációt az Az
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653400"
 ---
-# <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure-folyamatokkal
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure Pipelines használatával
 
 A folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) érdekében integrálhatja Azure Resource Manager sablonokat (ARM-sablonokat) az Azure-folyamatokkal. Az [ARM-sablonok Azure-folyamatokkal való folyamatos integrációjának](deployment-tutorial-pipeline.md) oktatóanyaga azt mutatja be, hogyan használható az [ARM-sablon telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) a sablonnak a GitHub-tárházból való üzembe helyezéséhez. Ez a módszer akkor működik, ha közvetlenül egy adattárból kíván üzembe helyezni egy sablont.
 

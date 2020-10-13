@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869881"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
@@ -43,7 +43,7 @@ Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi
 * [Text Analytics](./text-analytics/text-analytics-supported-languages.md)
 * [Fordító](./translator/languages.md)
 
-## <a name="speech"></a>Speech
+## <a name="speech"></a>Beszéd
 
 * [Beszédfelismerési szolgáltatás: beszéd – szöveg](./speech-service/supported-languages.md#speech-to-text)
 * [Beszédfelismerési szolgáltatás: szövegről beszédre](./speech-service/supported-languages.md#text-to-speech)
