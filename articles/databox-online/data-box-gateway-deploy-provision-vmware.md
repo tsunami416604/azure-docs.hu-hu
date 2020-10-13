@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743947"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a VMware-ben
@@ -23,7 +23,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet Data Box Gatewayt kiépíteni egy
 
 A virtuális eszközök üzembe helyezéséhez és a hozzájuk való csatlakozáshoz rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A gazdagép minimális eszközkövetelményeknek való megfelelésének ellenőrzése
@@ -155,7 +155,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
     ![Beállítások testreszabása lap, ha VMware ESXi Server 6,7-et futtat](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
-18. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. Ellenőrizze a következőket: a CPU-k száma 4, a memória mérete 8192 MB, a hálózati adapter értéke 1, valamint a 2. merevlemez beállítása: IDE controller 0. Kattintson a **Befejezés** gombra.
+18. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. Ellenőrizze a következőket: a CPU-k száma 4, a memória mérete 8192 MB, a hálózati adapter értéke 1, valamint a 2. merevlemez beállítása: IDE controller 0. Kattintson a **Finish** (Befejezés) gombra.
    
     ![Készen áll a teljes oldalra ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
      ![ a 2. oldalon](./media/data-box-gateway-deploy-provision-vmware/image17.png)

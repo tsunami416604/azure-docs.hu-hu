@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600653"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
@@ -71,12 +71,12 @@ A [felügyelt identitás](../active-directory/managed-identities-azure-resources
 
 ### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Milyen felügyelt identitási engedélyek szükségesek az erőforrás-mozgató számára?
 
-Az Azure Resource mozgató felügyelt identitásnak legalább az alábbi engedélyekkel kell rendelkeznie: 
+Az Azure Resource Mover felügyelt identitásának eléréséhez legalább a következő engedélyekre van szükség: 
 
 - Engedély a felhasználói előfizetésben lévő erőforrások írásához/létrehozásához, amely a *közreműködő* szerepkörrel érhető el. 
-- Szerepkör-hozzárendelések létrehozásához szükséges engedély. Általában elérhető a *tulajdonos* vagy a *felhasználó hozzáférés-felügyeleti* szerepköreivel, illetve olyan egyéni szerepkörrel, amely rendelkezik a *Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély* hozzárendelésével. Ez az engedély nem szükséges, ha az adatmegosztási erőforrás felügyelt identitása már hozzáférést kap az Azure-adattárhoz. 
+- Engedély szerepkör-hozzárendelések létrehozásához. Általában elérhető a *tulajdonos* vagy a *felhasználó hozzáférés-felügyeleti* szerepköreivel, illetve olyan egyéni szerepkörrel, amely rendelkezik a *Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély* hozzárendelésével. Ez az engedély nem szükséges, ha az adatmegosztási erőforrás felügyelt identitása már hozzáférést kap az Azure-adattárhoz. 
  
-Amikor erőforrásokat ad hozzá a portál erőforrás-mozgató központja számára, az engedélyek automatikusan kezelhetők, ha a felhasználó rendelkezik a fent ismertetett engedélyekkel. Ha erőforrásokat ad hozzá a PowerShell-lel, manuálisan rendelje hozzá az engedélyeket.
+Amikor erőforrásokat ad hozzá a Resource Mover hubhoz a portálon, az engedélyek kezelése automatikus, ha a felhasználó rendelkezik a fent ismertetett engedélyekkel. Ha erőforrásokat ad hozzá a PowerShell-lel, manuálisan rendelje hozzá az engedélyeket.
 
 > [!IMPORTANT]
 > Kifejezetten azt javasoljuk, hogy ne módosítsa vagy távolítsa el az identitás szerepkör-hozzárendeléseit. 
@@ -94,6 +94,6 @@ Az előfizetés átkerült egy másik bérlőre. | Tiltsa le, majd engedélyezze
 
 Szükség szerint módosítsa a forrás-és a cél kombinációt a portálon a módosítás lehetőség használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](about-move-process.md) információ az erőforrás-mozgató összetevőkről és az áthelyezési folyamatról.

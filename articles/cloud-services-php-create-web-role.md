@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88892983"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Webes és feldolgozói PHP-szerepkörök létrehozása
@@ -184,7 +184,7 @@ PS C:\MyProject> Stop-AzureEmulator
 
 Az alkalmazás közzétételéhez először importálnia kell a közzétételi beállításokat az [import-AzurePublishSettingsFile](/powershell/module/servicemanagement/azure.service/import-azurepublishsettingsfile) parancsmag használatával. Ezután közzéteheti az alkalmazást a [publish-AzureServiceProject](/powershell/module/servicemanagement/azure.service/publish-azureserviceproject) parancsmag használatával. A bejelentkezéssel kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [php fejlesztői központ](https://azure.microsoft.com/develop/php/).
 

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936928"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
@@ -185,7 +185,7 @@ A [PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSha
 6. Amikor a rendszer kéri, hogy válassza ki a minta futtatásához használni kívánt adatmegőrzési technológiát, írja be a **2** értéket a minta futtatásához a Batch szolgáltatás API használatával a feladat kimenetének megőrzése érdekében.
 7. Ha szeretné, futtassa újra a mintát, és a **3** érték megadásával maradjon meg a Batch szolgáltatás API-val, és nevezze el a cél tárolót és a blob elérési útját a file Conventions standard utasításnak megfelelően.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni arról, hogy a rendszer hogyan őrzi meg a feladatokat a .NET-hez készült file Conventions Library használatával, tekintse meg [a feladatok és feladatok adatainak megőrzése az Azure Storage-ba a .net-hez készült batch file Conventions](batch-task-output-file-conventions.md)
 - Ha többet szeretne megtudni a Azure Batch kimeneti adatainak megőrzésével kapcsolatos egyéb megközelítésekről, tekintse meg a [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ba című témakört.

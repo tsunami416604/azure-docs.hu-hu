@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: tomfitz
 ms.openlocfilehash: 04f86883a75110985d1cbe050fe3fd3e0582986a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893773"
 ---
 # <a name="microsoftcommoneditablegrid-ui-element"></a>Microsoft. Common. EditableGrid felhasználói felületi elem
@@ -137,7 +137,7 @@ Táblázatos bevitel összegyűjtésének vezérlője. A rácson belüli összes
 - A `constraints.width` tulajdonság a rács teljes szélességének megadására szolgál. A lehetőségek _megteltek_, _közepes_és _kicsik_. Az alapértelmezett érték _megtelt_.
 - Az `width` oszlopok gyermekein lévő tulajdonság határozza meg az oszlopszélességet. A szélességeket olyan tört egységekkel határozzák meg, mint a _3FR_, és az oszlopokhoz arányos teljes terület van kiválasztva. Ha nincs megadva oszlopszélesség, az alapértelmezett érték a _1fr_.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 - A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

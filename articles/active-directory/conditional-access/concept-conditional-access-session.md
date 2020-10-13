@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601809"
 ---
 # <a name="conditional-access-session"></a>Feltételes hozzáférés: munkamenet
@@ -72,7 +72,7 @@ Az állandó böngésző-munkamenet lehetővé teszi a felhasználók számára,
 
 További információ: a [hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

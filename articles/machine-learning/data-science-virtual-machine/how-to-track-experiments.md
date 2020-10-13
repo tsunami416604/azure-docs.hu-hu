@@ -10,10 +10,10 @@ ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89254800"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Kísérletek követése és modellek üzembe helyezése Azure Machine Learning
@@ -202,6 +202,6 @@ print(output)
 
 Törölje az 1. lépésben létrehozott következtetési számítást, hogy ne legyenek folyamatos számítási költségek. A Azure Machine Learning Studio bal oldali menüjében kattintson a számítás >-fürtökre > a számítási > Törlés elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [modellek üzembe helyezéséről a AzureML-ben](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)

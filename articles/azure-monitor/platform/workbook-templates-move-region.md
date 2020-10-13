@@ -11,10 +11,10 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: f37550d914cf7efb0c75ed3dfa8854e1ec7be7e0
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88875680"
 ---
 # <a name="move-an-azure-workbook-template-to-another-region"></a>Azure munkafüzet-sablon áthelyezése másik régióba
@@ -53,7 +53,7 @@ Miután létrehozta a munkafüzet-sablont az új régióban, törölje az eredet
 
 Ha átnevezte a munkafüzet sablonját egy új régióba való importáláshoz, a munkafüzet sablonját átnevezheti az előző névre az eredeti elem törlése után az Azure munkafüzet-sablon erőforrás nézetének "Átnevezés" parancsával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sablon helyett egy munkafüzetet kell áthelyeznie? Lásd: [Azure-munkafüzetek áthelyezése másik régióba](./workbooks-move-region.md).
 

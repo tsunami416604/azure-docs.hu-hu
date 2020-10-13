@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9bab2a11ff9e7907621087e5027929e3e42eaf29
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744794"
 ---
-# <a name="connect-with-the-microsoft-store-client"></a>Az Microsoft Store-ügyféllel való kapcsolat
+# <a name="connect-with-the-microsoft-store-client"></a>Kapcsolódás a Microsoft Store-ügyfélhez
 
 >A következőkre vonatkozik: Windows 10.
 
@@ -47,6 +47,6 @@ Előfizetés munkaterületre:
 
 A munkaterületek hozzáadhatók, módosíthatók vagy eltávolíthatók a rendszergazda által végrehajtott módosítások alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Microsoft Store-ügyfél használatáról, tekintse meg [a Microsoft Store-ügyfél használatának első lépéseit](/windows-server/remote/remote-desktop-services/clients/windows/)ismertető témakört.
