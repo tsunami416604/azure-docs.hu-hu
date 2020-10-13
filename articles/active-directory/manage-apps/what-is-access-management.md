@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
 ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604104"
 ---
 # <a name="managing-access-to-apps"></a>Az alkalmazásokhoz való hozzáférés kezelése
 
-A folyamatos hozzáférés-kezelés, a használat kiértékelése és a jelentéskészítés továbbra is kihívást jelent, miután az alkalmazás integrálva van a szervezet identitási rendszerébe. Sok esetben a rendszergazdáknak vagy az ügyfélszolgálatnak folyamatosan aktív szerepkört kell betartania az alkalmazásaihoz való hozzáférés kezelésében. Időnként a hozzárendelést egy általános vagy egy részlegi informatikai csapat végzi. A hozzárendelési döntés gyakran arra szolgál, hogy az üzleti döntéshozónak legyen delegálva, mielőtt jóváhagyja a hozzárendelést.  Más szervezetek olyan meglévő automatizált identitás-és hozzáférés-kezelési rendszerbe fektetnek be integrációt, mint a szerepköralapú Access Control (RBAC) vagy az attribútum-alapú Access Control (ABAC). Az integráció és a szabályok fejlesztése is általában specializált és költséges. A felügyeleti megközelítés figyelése vagy jelentése a saját külön, költséges és összetett befektetés.
+A folyamatos hozzáférés-kezelés, a használat kiértékelése és a jelentéskészítés továbbra is kihívást jelent, miután az alkalmazás integrálva van a szervezet identitási rendszerébe. Sok esetben a rendszergazdáknak vagy az ügyfélszolgálatnak folyamatosan aktív szerepkört kell betartania az alkalmazásaihoz való hozzáférés kezelésében. Időnként a hozzárendelést egy általános vagy egy részlegi informatikai csapat végzi. A hozzárendelési döntés gyakran arra szolgál, hogy az üzleti döntéshozónak legyen delegálva, mielőtt jóváhagyja a hozzárendelést.  Más szervezetek egy meglévő automatizált identitás-és hozzáférés-kezelési rendszerrel (például Role-Based Access Control (RBAC) vagy Attribute-Based Access Control (ABAC) való integrációt fektetnek be. Az integráció és a szabályok fejlesztése is általában specializált és költséges. A felügyeleti megközelítés figyelése vagy jelentése a saját külön, költséges és összetett befektetés.
 
 ## <a name="how-does-azure-active-directory-help"></a>Hogyan segít a Azure Active Directory?
 
@@ -92,6 +92,6 @@ A felhasználók Office 365-portálon keresztül férhetnek hozzá Microsoft 365
 
 A vállalati alkalmazásokhoz hasonlóan a felhasználók bizonyos Microsoft-alkalmazásokhoz is [hozzárendelhetők](assign-user-or-group-access-portal.md) a Azure Portalon keresztül, vagy ha a portál lehetőség nem érhető el, a PowerShell használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Alkalmazások védelme feltételes hozzáféréssel](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Önkiszolgáló csoport kezelése/SSAA](../users-groups-roles/groups-self-service-management.md)

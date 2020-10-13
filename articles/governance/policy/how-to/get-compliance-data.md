@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596043"
+ms.locfileid: "91873625"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -161,14 +161,15 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 Egy hozzárendelésben az erőforrás **nem megfelelő** , ha nem követi a házirend-vagy kezdeményezési szabályokat, és nem _mentesül_. A következő táblázat bemutatja, hogyan működnek a különböző szabályzatok az eredményül kapott megfelelőségi állapotra vonatkozó feltételek kiértékelésével:
 
-| Erőforrás állapota | Hatás | Szabályzat kiértékelése | Megfelelőségi állapot |
+| Erőforrás-állapot | Hatás | Szabályzat-kiértékelés | Megfelelőségi állapot |
 | --- | --- | --- | --- |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Hamis | Megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelő |
+| Új vagy frissített | Naplózás, módosítás, AuditIfNotExist | Igaz | Nem megfelelő |
+| Új vagy frissített | Naplózás, módosítás, AuditIfNotExist | Hamis | Megfelelő |
+| Létezik | Megtagadás, naplózás, Hozzáfűzés, módosítás, DeployIfNotExist, AuditIfNotExist | Igaz | Nem megfelelő |
+| Létezik | Megtagadás, naplózás, Hozzáfűzés, módosítás, DeployIfNotExist, AuditIfNotExist | Hamis | Megfelelő |
 
-\* A módosítási, hozzáfűzési, DeployIfNotExist és AuditIfNotExist effektusok esetében az IF utasításnak IGAZnak kell lennie. Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
+> [!NOTE]
+> A DeployIfNotExist-és AuditIfNotExist-effektusok esetében az IF utasításnak IGAZnak kell lennie, és a létezési feltétel nem megfelelőnek kell lennie. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
 
 Tegyük fel például, hogy van egy erőforráscsoport – ContsoRG, és néhány Storage-fiók (piros színnel), amelyek nyilvános hálózatokon vannak kitéve.
 
@@ -189,7 +190,7 @@ A **megfelelő** és **nem megfelelő**szabályzatok és erőforrások mellett n
 - **Nem indult el**: a kiértékelési ciklus nem indult el a házirendhez vagy az erőforráshoz.
 - **Nincs regisztrálva**: a Azure Policy erőforrás-szolgáltató nincs regisztrálva, vagy a bejelentkezett fióknak nincs engedélye a megfelelőségi információk olvasásához.
 
-Azure Policy a definíció **típus** és **név** mezőjét használja annak megállapítására, hogy az erőforrás egyezik-e. Ha az erőforrás megfelel, a rendszer megfelelőnek tekinti, és állapota **megfelelő**, **nem megfelelő**vagy **adómentes**. Ha bármelyik **típus** vagy **név** a definíció egyetlen tulajdonsága, akkor a rendszer az összes belefoglalt és nem mentesített erőforrást is figyelembe veszi, és kiértékeli őket.
+Azure Policy a definíció **típus**, **név**vagy **típus** mezőjét használja annak megállapításához, hogy az erőforrás egyezik-e. Ha az erőforrás megfelel, a rendszer megfelelőnek tekinti, és állapota **megfelelő**, **nem megfelelő**vagy **adómentes**. Ha a definíció egyetlen tulajdonsága a **Type**, a **Name**vagy a **Kind** , akkor a rendszer az összes befoglalt és a nem mentesített erőforrást is figyelembe veszi, és kiértékeli őket.
 
 A megfelelőség százalékos arányát úgy határozzák meg, hogy a **megfelelő** és a **mentesített** erőforrásokat az _összes erőforrás_alapján osztja el. Az _összes erőforrás_ a **megfelelő**, **nem megfelelő**, **mentesített**és **ütköző** erőforrások összegeként van meghatározva. Az összesített megfelelőségi számok a **megfelelő** vagy a **kivétel** alá eső különálló erőforrások összege, amely az összes különálló erőforrás összegével egyenlő. Az alábbi képen 20 különálló erőforrás áll rendelkezésre, és csak az egyik **nem megfelelő**.
 A teljes erőforrás-megfelelőség 95% (19 – 20).
@@ -210,14 +211,14 @@ Mivel egy házirend vagy kezdeményezés különböző hatókörökhöz rendelhe
 :::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 Az **erőforrás-megfelelőség** lapon található erőforrások listája az aktuális hozzárendelés meglévő erőforrásainak kiértékelési állapotát jeleníti meg. A lap alapértelmezett értéke **nem megfelelő**, de szűrhető.
-Az erőforrás-létrehozási kérelem által aktivált események (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) az **események** lapon jelennek meg.
+Az erőforrás-létrehozási kérelem által aktivált események (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés, módosítás) az **események** lapon jelennek meg.
 
 > [!NOTE]
 > Az AK-motor házirendjének esetében a megjelenő erőforrás az erőforráscsoport.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
-[Erőforrás-szolgáltatói mód](../concepts/definition-structure.md#resource-provider-modes) erőforrásai esetében az **erőforrás-megfelelőség** lapon válassza ki az erőforrást, vagy kattintson a jobb gombbal a sorra, és válassza a **megfelelőség megtekintése részletei** lehetőséget. Ekkor megnyílik az összetevő megfelelőségi adatai. Ez a lap lapokat is kínál az ehhez az erőforráshoz, eseményekhez, összetevő-eseményekhez és változási előzményekhez rendelt házirendek megtekintéséhez.
+<a name="component-compliance"></a>[Erőforrás-szolgáltatói mód](../concepts/definition-structure.md#resource-provider-modes) erőforrásai esetében az **erőforrás-megfelelőség** lapon válassza ki az erőforrást, vagy kattintson a jobb gombbal a sorra, és válassza a **megfelelőség megtekintése részletei** lehetőséget. Ekkor megnyílik az összetevő megfelelőségi adatai. Ez a lap lapokat is kínál az ehhez az erőforráshoz, eseményekhez, összetevő-eseményekhez és változási előzményekhez rendelt házirendek megtekintéséhez.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 

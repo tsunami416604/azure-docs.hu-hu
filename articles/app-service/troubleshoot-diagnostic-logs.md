@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264371"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
@@ -62,7 +62,7 @@ Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A
 
 | Szint | Belefoglalt kategóriák |
 |-|-|
-|**Disabled** | Nincsenek |
+|**Disabled** | Nincs |
 |**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
 |**Tájékoztatás** | Információ, figyelmeztetés, hiba, kritikus|
@@ -188,12 +188,12 @@ A következő táblázat a támogatott naplózási típusokat és leírásokat t
 | Napló típusa | Windows | Windows-tároló | Linux | Linux-tároló | Leírás |
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | TBA | TBA | Igen | Igen | Standard kimenet és standard hiba |
-| AppServiceHTTPLogs | Yes | TBA | Igen | Igen | Webkiszolgáló-naplók |
-| AppServiceEnvironmentPlatformLogs | Yes | N.A. | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
-| AppServiceAuditLogs | Yes | TBA | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | Yes | TBA | TBA | TBA | A webhely tartalma módosult; csak a prémium szinthez és a fentiekhez érhető el |
+| AppServiceHTTPLogs | Igen | TBA | Igen | Igen | Webkiszolgáló-naplók |
+| AppServiceEnvironmentPlatformLogs | Igen | N.A. | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
+| AppServiceAuditLogs | Igen | TBA | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
+| AppServiceFileAuditLogs | Igen | TBA | TBA | TBA | A webhely tartalma módosult; csak a prémium szinthez és a fentiekhez érhető el |
 | AppServiceAppLogs | ASP .NET | TBA | Java SE & tomcat | Java SE & tomcat | Alkalmazás-naplók |
-| AppServiceIPSecAuditLogs  | Yes | TBA | Igen | Igen | IP-szabályoktól érkező kérések |
+| AppServiceIPSecAuditLogs  | Igen | TBA | Igen | Igen | IP-szabályoktól érkező kérések |
 | AppServicePlatformLogs  | TBA | TBA | Igen | Igen | Tároló műveleti naplói |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> További lépések

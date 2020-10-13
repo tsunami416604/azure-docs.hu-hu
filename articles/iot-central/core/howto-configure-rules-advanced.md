@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398578"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Munkafolyamatok használata az Azure IoT Central alkalmazás integrálásához más felhőalapú szolgáltatásokkal
@@ -66,16 +66,16 @@ Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása m
 1. A energiagazdálkodás automatizálása területen a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central* , és válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
-1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Ez után válassza a **Mentés** lehetőséget.
+1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
 
 Az **Azure IoT Central v3 – Preview** összekötő hozzáadása műveletként a Azure Logic Appsban:
 
 1. **Logic apps Designerben**a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
-1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Ez után válassza a **Mentés** lehetőséget.
+1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central v3-összekötőt, és válasszon egy műveletet":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central-Preview összekötőt, és válassza ki a triggert":::
 
 ## <a name="list-of-actions"></a>Műveletek listája
 
@@ -189,6 +189,6 @@ Ezzel a művelettel frissítheti egy adott eszköz írható tulajdonságainak é
 | Eszköz sablonja | Válasszon az IoT Central alkalmazásban található eszközök sablonjai közül. |
 | Írható tulajdonságok | Miután kiválasztotta az eszköz sablonját, a rendszer hozzáad egy mezőt a sablonban definiált minden egyes írható tulajdonsághoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egy speciális szabályt az Azure IoT Central alkalmazásban, megtudhatja, hogyan [elemezheti az eszköz adatait az azure IoT Central alkalmazásban](howto-create-analytics.md)

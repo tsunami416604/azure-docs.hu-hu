@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.openlocfilehash: 411e9a6e059075dfc2928ed09c0c604d600fd9be
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604155"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>A felhasználók Azure Active Directory alkalmazásokhoz való hozzárendelésének ismertetése
@@ -39,7 +39,7 @@ Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, előbb hozzá ke
 *  Egy [rendszergazda beleegyezett egy alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) , hogy az összes felhasználó használja, majd a felhasználó bejelentkezik az alkalmazásba
 * A felhasználó az alkalmazásba való bejelentkezéssel saját maga [is beleegyezik az alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Mi az alkalmazáskezelés?](what-is-application-management.md)
 * [Mi az az egyszeri bejelentkezés?](what-is-single-sign-on.md)

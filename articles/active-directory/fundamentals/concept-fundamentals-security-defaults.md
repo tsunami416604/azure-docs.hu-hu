@@ -13,10 +13,10 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705333"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
@@ -122,7 +122,7 @@ A következő további szempontok a biztonsági Alapértelmezések telepítésé
 
 Ezek az ingyenes biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
 
-| Metódus | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
+| Módszer | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
 | --- | --- | --- |
 | Értesítés a Mobile App használatával | X | X |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből | X * * | X |
@@ -175,6 +175,6 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem**értékre.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)

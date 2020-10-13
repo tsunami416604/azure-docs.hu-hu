@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Szinapszishoz tartozó oszlop szintű biztonság?
-description: Az oszlop szintű biztonság lehetővé teszi az ügyfelek számára, hogy az adatbázis-táblázat oszlopaihoz való hozzáférést a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák, leegyszerűsítve az alkalmazás biztonságának megtervezését és kódolását, és lehetővé teszik az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását.
+description: A Column-Level biztonság lehetővé teszi az ügyfelek számára, hogy az adatbázis-táblázat oszlopaihoz való hozzáférést a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák, leegyszerűsítve az alkalmazás biztonságának megtervezését és kódolását, és lehetővé teszi az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -13,15 +13,15 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259883"
 ---
 # <a name="column-level-security"></a>Oszlop szintű biztonság
 
-Az oszlop szintű biztonság lehetővé teszi, hogy az ügyfelek a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák a Table oszlopokhoz való hozzáférést.
+A Column-Level biztonság lehetővé teszi, hogy az ügyfelek a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák a táblákhoz való hozzáférést.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 Mivel ez a videó közzé lett téve, az Azure szinapszis számára elérhetővé vált a [sor szintjének biztonsága](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .

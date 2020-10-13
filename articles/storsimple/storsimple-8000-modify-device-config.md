@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514673"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962887"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz konfigurációjának módosításához
 
@@ -61,7 +61,7 @@ Az eszköz leírása általában segít azonosítani a tulajdonost és az eszkö
 
 Az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú tárolási szolgáltatóval. Használja az eszköz **általános beállítások** paneljét az eszköz időbeállításainak módosításához.
 
-![Az eszköz leírása az általános beállítások között](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Az eszköz leírása az általános beállításokban 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  Válassza ki az időzónát a legördülő listából. Akár két hálózati időprotokoll (NTP) kiszolgálót is megadhat:
 
@@ -165,7 +165,7 @@ A következő lépések végrehajtásával cserélje le vagy rendelje át a virt
 1. Törölje mindkét csatoló IP-címét.
 2. Az IP-címek törlése után rendelje hozzá az új IP-címeket a megfelelő interfészekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [konfigurálhatja az MPIO-t a StorSimple-eszközhöz](storsimple-8000-configure-mpio-windows-server.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2d6d00ea06bb362d82b5fbdff658b729eed17cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091704fabb7b50a0c83625c6ae46d9a807f01ffc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258984"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961034"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban
 
@@ -46,6 +46,24 @@ A webalkalmazás-munkamenetek kezeléséhez a következő tulajdonságokat haszn
     ![A munkamenet viselkedési tulajdonságának beállításai a Azure Portalban](./media/session-behavior/session-behavior.png)
 
 8. Kattintson a **Mentés** gombra.
+
+## <a name="configure-sign-out-behavior"></a>Kijelentkezési viselkedés konfigurálása
+
+### <a name="secure-your-logout-redirect"></a>A kijelentkezési átirányítás biztonságossá tétele
+
+A kijelentkezés után a rendszer átirányítja a felhasználót a paraméterben megadott URI-ra `post_logout_redirect_uri` , az alkalmazáshoz megadott válasz URL-címektől függetlenül. Ha azonban érvényes `id_token_hint` értéket ad át, és a **kijelentkezési kérelmekhez szükséges azonosító jogkivonat** be van kapcsolva, Azure ad B2C ellenőrzi, hogy az adott `post_logout_redirect_uri` alkalmazás beállított átirányítási URI azonosítóinak egyike megfelel-e az átirányítás végrehajtása előtt. Ha nincs beállítva egyező válasz URL-cím az alkalmazáshoz, a rendszer hibaüzenetet jelenít meg, és a felhasználót nem irányítja át. AZONOSÍTÓ jogkivonat megkövetelése a kijelentkezési kérelmekben:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza a **felhasználói folyamatok**lehetőséget.
+1. Nyissa meg a korábban létrehozott felhasználói folyamatot.
+1. Válassza ki a **Tulajdonságok** elemet.
+1. Engedélyezze az **azonosító jogkivonat megkövetelése lehetőséget a kijelentkezési kérelmekben**.
+1. Térjen vissza a  **Azure ad B2Cra**.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki az alkalmazást.
+1. Válassza a **Hitelesítés** lehetőséget.
+1. A **kijelentkezési URL-cím** szövegmezőbe írja be a kijelentkezési ÁTirányítási URI-t, majd kattintson a **Mentés**gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

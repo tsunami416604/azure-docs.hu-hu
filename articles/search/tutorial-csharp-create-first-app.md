@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2414570a1d483cd7630e628b13c92dbdc331370d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759135"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939722"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -69,7 +69,7 @@ Mivel a Microsoft által üzemeltetett nyilvános minta keresési indexet haszn�
 
 Ha egy működő alkalmazásra szeretne ugrani, kövesse az alábbi lépéseket a kész kód letöltéséhez és futtatásához.
 
-1. Keresse meg a mintát a GitHubon: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples/v11).
+1. Keresse meg a mintát a GitHubon: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11).
 
 1. A [gyökérkönyvtárban](https://github.com/Azure-Samples/azure-search-dotnet-samples)válassza a **kód**, majd a **klón** vagy a **zip letöltése** lehetőséget a projekt privát helyi másolatának létrehozásához.
 

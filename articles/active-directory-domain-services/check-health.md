@@ -2,7 +2,7 @@
 title: A Azure Active Directory Domain Services állapotának ellenõrzése | Microsoft Docs
 description: Megtudhatja, hogyan ellenőrizhető egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány állapota, és hogyan értelmezhető az állapotüzenetek a Azure Portal használatával.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 34f4ecfd4cc3432babbd26d65bd37ea4d1fb882c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040418"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962734"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartomány állapotának ellenőrzését
 
@@ -38,7 +38,7 @@ Az állapot lap *utolsó kiértékelt* időbélyege a felügyelt tartomány utol
 
 A jobb felső sarokban a felügyelt tartomány általános állapota látható. Az állapot a tartomány összes meglévő riasztását befolyásolja. Az alábbi táblázat az elérhető állapotjelzőket ismerteti:
 
-| status | Ikon | Magyarázat |
+| Állapot | Ikon | Magyarázat |
 | --- | :----: | --- |
 | Futó | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | A felügyelt tartomány megfelelően fut, és nem rendelkezik kritikus vagy figyelmeztető riasztásokkal. Előfordulhat, hogy a tartomány tájékoztató riasztásokkal rendelkezik. |
 | Figyelmet igényel (figyelmeztetés) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Nincsenek kritikus riasztások a felügyelt tartományon, de egy vagy több figyelmeztető riasztást kell kezelni. |
@@ -80,7 +80,7 @@ Az állapot riasztásai a következő súlyossági szintekre vannak kategorizál
  * A **figyelmeztető riasztások** értesítik a felügyelt tartományi műveletekkel kapcsolatos problémákról, ha a probléma továbbra is fennáll. Ezek a riasztások a felügyelt tartomány biztonságossá tételére vonatkozó javaslatokat is kínálnak.
  * Az **tájékoztató riasztások** olyan értesítések, amelyek negatív hatással vannak a felügyelt tartományra. Az tájékoztató riasztások betekintést nyújtanak a felügyelt tartományba tartozó adatokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az állapot lapon megjelenő riasztásokkal kapcsolatos további információkért lásd: [riasztások feloldása a felügyelt tartományon][troubleshoot-alerts]
 

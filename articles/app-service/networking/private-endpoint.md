@@ -4,19 +4,22 @@ description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoi
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 10/09/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857265"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873098"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Privát végpontok használata az Azure Web App-hoz
+
+> [!IMPORTANT]
+> A privát végpontok elérhetők a Windows-és Linux-webalkalmazásokhoz, amelyek tárolóban vannak, és nem az alábbi App Service-csomagokon futnak: **elkülönített**, **PremiumV2**, **PremiumV3**, **functions Premium** (más néven rugalmas Prémium csomag). 
 
 Az Azure-webalkalmazás privát végpontjának használatával engedélyezheti a magánhálózaton található ügyfelek számára, hogy biztonságosan hozzáférjenek az alkalmazáshoz privát kapcsolaton keresztül. A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lévő ügyfél és a webalkalmazás közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül történik, ami kiküszöböli a nyilvános internetről való kitettséget.
 
@@ -91,7 +94,7 @@ A névfeloldás például a következő lesz:
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – ezt a bejegyzést a DNS-rendszerben úgy kezelheti, hogy a magánhálózati végpont IP-címére mutasson.|
 
-A DNS-konfiguráció után a webalkalmazást a mywebappname.azurewebsites.net alapértelmezett névvel együtt érheti el.
+A DNS-konfiguráció után a webalkalmazást a mywebappname.azurewebsites.net alapértelmezett névvel együtt érheti el. Ezt a nevet kell használnia, mert a rendszer az alapértelmezett tanúsítványt adja ki a *. azurewebsites.net.
 
 
 Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az egyéni nevet úgy kell érvényesíteni, mint bármely egyéni nevet, a nyilvános DNS-feloldást használva. További információ: [Egyéni DNS-ellenőrzés][dnsvalidation].
@@ -115,13 +118,13 @@ Ha az Azure-függvényt privát végponttal rendelkező rugalmas prémium szint�
 
 Egy adott webalkalmazáshoz akár 100 magánhálózati végpontot is csatlakozhat.
 
-A Távoli hibakeresési funkció nem érhető el, ha a magánhálózati végpont engedélyezve van a webalkalmazáshoz. A javaslat a kód üzembe helyezése egy tárolóhelyre és a távoli hibakeresés.
+A bővítőhelyek nem használhatják a privát végpontot.
 
-A privát végpont PremiumV2, PremiumV3, Windows és Linux rendszerű webalkalmazáshoz, tárolóhoz vagy nem, valamint a Azure Functions prémium csomaghoz (más néven a rugalmas prémium csomaghoz) érhető el. 
+A Távoli hibakeresési funkció nem érhető el, ha a magánhálózati végpont engedélyezve van a webalkalmazáshoz. A javaslat a kód üzembe helyezése egy tárolóhelyre és a távoli hibakeresés.
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha privát végpontot szeretne telepíteni a webalkalmazáshoz a portálon keresztül, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás a portálon][howtoguide1] című témakört.
 - Ha privát végpontot szeretne üzembe helyezni a webalkalmazáshoz az Azure CLI használatával, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás az Azure CLI-vel][howtoguide2] című témakört.

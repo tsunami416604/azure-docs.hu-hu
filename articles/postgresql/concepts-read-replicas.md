@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710515"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939834"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -126,7 +126,7 @@ Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-
 ## <a name="failover"></a>Feladatátvétel
 Az elsődleges és a replika kiszolgálók között nincs automatikus feladatátvétel. 
 
-Mivel a replikáció aszinkron, az elsődleges és a replika között késés van. A késés mértékét számos tényező befolyásolja, például az elsődleges kiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika késése pár másodperc vagy pár perc. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
+Mivel a replikáció aszinkron, az elsődleges és a replika között késés van. A késés mértékét számos tényező befolyásolja, például az elsődleges kiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A tipikus esetekben a replika késése néhány másodperc és néhány perc között mozog. Azonban abban az esetben, ha az elsődleges alkalmazás nagyon nagy terheléseket futtat, és a replika nem elég gyors, a késés magasabb lehet. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
 
 > [!Tip]
 > Ha feladatátvételt végez a replikára, akkor a replika elsődlegesről való leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.

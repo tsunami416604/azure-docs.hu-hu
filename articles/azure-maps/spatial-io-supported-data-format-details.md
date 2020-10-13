@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310169"
 ---
 # <a name="supported-data-format-details"></a>Támogatott adatformátumokra vonatkozó részletek
 
-Ez a cikk az összes XML-címke és a jól ismert szöveg-geometriai típusok olvasási és írási támogatását ismerteti. Azt is részletezi, hogyan történik a tagolt térbeli adatok elemzése a térbeli IO-modulban.
+Ez a cikk az összes XML-címke olvasási és írási támogatását, valamint Well-Known szöveg-geometriai típusokat tartalmaz. Azt is részletezi, hogyan történik a tagolt térbeli adatok elemzése a térbeli IO-modulban.
 
 ## <a name="supported-xml-namespaces"></a>Támogatott XML-névterek
 
@@ -304,7 +304,7 @@ A térbeli IO-modul a következő GPX-elemeket támogatja.
 - A többpontos bontás az egyes iránypontokba kerül.
 - A sokszögeket és a többsokszögű fájlokat zeneszámként fogja írni. 
   
-## <a name="supported-well-known-text-geometry-types"></a>A jól ismert szöveges geometriai típusok támogatottak
+## <a name="supported-well-known-text-geometry-types"></a>Támogatott Well-Known szöveg geometriájának típusai
 
 | Geometria típusa | Olvasás | Írás |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ A térbeli IO-modul a következő GPX-elemeket támogatja.
 
 ## <a name="delimited-spatial-data-support"></a>Tagolt térbeli adattámogatás
 
-A tagolt térbeli adatok, például a vesszővel tagolt fájlok (CSV), gyakran tartalmaznak térbeli adatokkal rendelkező oszlopokat. Lehetnek például olyan oszlopok, amelyek szélességi és hosszúsági adatokat tartalmaznak. A jól ismert szöveges formátumban lehet olyan oszlop, amely térbeli geometriát tartalmaz.
+A tagolt térbeli adatok, például a vesszővel tagolt fájlok (CSV), gyakran tartalmaznak térbeli adatokkal rendelkező oszlopokat. Lehetnek például olyan oszlopok, amelyek szélességi és hosszúsági adatokat tartalmaznak. Well-Known szöveges formátumban olyan oszlop lehet, amely térbeli geometriát tartalmaz.
 
 ### <a name="spatial-data-column-detection"></a>Térbeli adatoszlopok észlelése
 
@@ -385,7 +385,7 @@ Térbeli értéket tartalmazó tagolt fájl olvasása esetén a rendszer elemzi 
 
 #### <a name="geography"></a>Földrajzi hely
 
-Az első adatsort a rendszer a jól ismert szöveges formátumú karakterláncok esetében ellenőrzi. 
+Az adatsorok a Well-Known szöveges formátumú karakterláncok esetén lesznek beolvasva. 
 
 ### <a name="delimited-data-column-types"></a>Tagolt adatoszlopok típusai
 

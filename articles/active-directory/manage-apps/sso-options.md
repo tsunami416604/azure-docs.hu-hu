@@ -12,10 +12,10 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604206"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Egyszeri bejelentkezési lehetőségek az Azure AD-ben
@@ -74,7 +74,7 @@ Az SAML-alapú egyszeri bejelentkezés a következő protokollok bármelyikét h
 
 Az SAML-alapú egyszeri bejelentkezéshez használható SaaS-alkalmazás konfigurálásával kapcsolatban lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md). Emellett számos szoftveres (SaaS) alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal](../saas-apps/tutorial-list.md) , amely VÉGIGVEZETI az SAML-alapú egyszeri bejelentkezés konfigurációjának lépésein.
 
-A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatót az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához. Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont Azure AD bejelentkezési URL-címét `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
+A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatót az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához. Az alkalmazás Azure AD-beli használatára való konfigurálásának lépéséhez le kell cserélnie az Azure AD bejelentkezési URL-címét a WS-Federation végponthoz `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 A helyszíni alkalmazások SAML-alapú egyszeri bejelentkezéshez való konfigurálásáról lásd: [SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy](application-proxy-configure-single-sign-on-on-premises-apps.md)használatával.
 
@@ -198,6 +198,6 @@ Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti partneri kapcso
 
 További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Egyszeri bejelentkezés üzembe helyezésének tervezése](plan-sso-deployment.md)

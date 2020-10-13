@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275982"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Adatelemzés Ubuntu-Data Science Virtual Machine az Azure-ban
@@ -30,7 +30,7 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). További információ a virtuális gép kiépítéséről: [az Ubuntu Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
 * A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információ](https://support.mozilla.org/questions/981140).
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információk](https://support.mozilla.org/questions/981140).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
 
@@ -478,9 +478,9 @@ A helyi kiszolgálóhoz való kapcsolódás beállítása:
 1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
 1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
 1. Adja meg a felhasználónevét és a jelszavát.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
-1. Válassza a **Kapcsolódás** lehetőséget.
+1. Kattintson a **Csatlakozás** gombra.
 
 Lekérdezések futtatása:
 

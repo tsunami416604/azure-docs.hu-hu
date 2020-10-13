@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458620"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure-titkosítás áttekintése
@@ -30,7 +30,7 @@ A REST-beli adatok Azure-ban való titkosításának részletes ismertetését l
 
 ## <a name="azure-encryption-models"></a>Azure titkosítási modellek
 
-Az Azure különböző titkosítási modelleket támogat, beleértve a kiszolgálóoldali titkosítást, amely a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat használja Key Vault vagy az ügyfél által felügyelt kulcsokat az ügyfél által vezérelt hardveren. Az ügyféloldali titkosítással a helyszíni vagy egy másik biztonságos helyen kezelheti és tárolhatja a kulcsokat.
+Az Azure különböző titkosítási modelleket támogat, beleértve a kiszolgálóoldali titkosítást, amely a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat használja Key Vault vagy az ügyfél által felügyelt kulcsokat az ügyfél által vezérelt hardveren. Ügyféloldali titkosítás esetén a kulcsok a helyszínen vagy más biztonságos helyen kezelhetők és tárolhatók.
 
 ### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
 
@@ -197,7 +197,7 @@ Ha többet szeretne megtudni az átvitt adattitkosításról Data Lakeban, tekin
 
 A kulcsok megfelelő védelme és kezelése nélkül a titkosítás használhatatlanná tehető. A Key Vault a Microsoft által ajánlott megoldás a Cloud Services által használt titkosítási kulcsok elérésének kezelésére és szabályozására. A kulcsok eléréséhez szükséges engedélyek a szolgáltatásokhoz vagy a felhasználókhoz Azure Active Directory fiókokon keresztül rendelhetők hozzá.
 
-Key Vault feloldja a szervezeteknek a hardveres biztonsági modulok (HSM) és a kulcskezelő szoftverek konfigurálását, javítását és karbantartását. Key Vault használatakor a vezérlést is megtarthatja. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel. A HSM-ben is importálhat és létrehozhat kulcsokat.
+A Key Vault leveszi a vállalatok válláról a hardveres biztonsági modulok (HSM-ek) és a kulcskezelő szoftverek konfigurálásának, frissítésének és karbantartásának terhét. Key Vault használatakor a vezérlést is megtarthatja. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel. A HSM-ben is importálhat és létrehozhat kulcsokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

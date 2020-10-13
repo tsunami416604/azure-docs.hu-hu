@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604070"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
@@ -140,9 +140,9 @@ Ez a gyorsjavítás-Build javít egy problémát a build 1.5.20.0, ha klónozott
 
 - Az mS-DS-ConsistencyGuid szolgáltatás támogatása a csoport objektumaihoz. Ez lehetővé teszi csoportok áthelyezését az erdők között, vagy a csoportok újracsatlakozását az AD-ben az Azure AD-ba, ahol az AD-csoport objectID megváltozott, például amikor egy AD-kiszolgáló újraépítése a szerencsétlenség után történik. További információ: [csoportok áthelyezése erdők között](how-to-connect-migrate-groups.md).
 - Az mS-DS-ConsistencyGuid attribútum automatikusan be van állítva az összes szinkronizált csoportra, és nem kell semmit tennie a funkció engedélyezéséhez. 
-- Eltávolította a Get-ADSyncRunProfile, mert már nincs használatban. 
+- A Get-ADSyncRunProfile el lett távolítva, mert már nincs használatban. 
 - Módosította a figyelmeztetést, amikor vállalati rendszergazdai vagy tartományi rendszergazdai fiókot próbál használni a AD DS Connector-fiókhoz, hogy több környezet biztosítható legyen. 
-- Új parancsmag hozzáadva az objektumok eltávolításához az összekötő területéről a régi CSDelete.exe eszköz törlődik, és az új Remove-ADSyncCSObject parancsmaggal lesz lecserélve. A Remove-ADSyncCSObject parancsmag bemenetként fogadja a CsObject. Ez az objektum a Get-ADSyncCSObject parancsmag használatával kérhető le.
+- Új parancsmag hozzáadva az objektumok eltávolításához a régi CSDelete.exe eszköz eltávolítására szolgáló összekötő területről, és az új Remove-ADSyncCSObject parancsmaggal lesz lecserélve. A Remove-ADSyncCSObject parancsmag bemenetként fogad egy CsObject. Ez az objektum a Get-ADSyncCSObject parancsmag használatával kérhető le.
 
 >[!NOTE]
 >A régi CSDelete.exe eszköz el lett távolítva, és az új Remove-ADSyncCSObject parancsmaggal lett lecserélve 
@@ -249,8 +249,8 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 > Ennek megoldásához importálnia kell a **AdSync** modult, majd futtatnia kell a `Set-ADSyncDirSyncConfiguration` PowerShell-parancsmagot a Azure ad Connect kiszolgálón.  A következő lépéseket hajthatja végre:
 >
 >1. Nyissa meg a PowerShellt rendszergazdai módban.
->2. Futtassa az `Import-Module "ADSync"` parancsot.
->3. Futtassa az `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
+>2. Futtatja a `Import-Module "ADSync"` parancsot.
+>3. Futtatja a `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
  
 ### <a name="release-status"></a>Kiadás állapota 
 
@@ -261,5 +261,5 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 - A Microsoft Azure Active Directory Connect build 1.3.20.0 található, a jogosultságok kiterjesztésével kapcsolatos sebezhetőség javítva.  Ez a biztonsági rés bizonyos körülmények között lehetővé teheti, hogy egy támadó egy kiemelt fiók környezetében két PowerShell-parancsmagot hajtson végre, és magas jogosultsági szintű műveleteket hajtson végre.  Ez a biztonsági frissítés a parancsmagok letiltásával oldja meg a problémát. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – a IoT Edge Live Video Analytics-modulok módosítása
+title: Oktatóanyag – a Azure IoT Edge Live Video Analytics-modulok módosítása
 description: Ebből az oktatóanyagból megtudhatja, hogyan módosíthatja és építheti ki az élő videó elemzési átjáró modulokat, amelyeket a video Analytics-Object és a Motion Detection alkalmazás sablonja használ.
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038372"
+ms.locfileid: "91873472"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Oktatóanyag: az élő videó elemzési átjáró moduljainak módosítása és összeállítása
 
@@ -50,7 +50,7 @@ Nyissa meg a local *Live-Video-Analytics* adattár MAPPÁT a vs Code használat�
 1. A `LvaEdgeGatewayModule` modul szakasz szerkesztésével adja meg a rendszerkép nevét és az AMS-fiók nevét a következőben: `env:amsAccountName:value` .
 1. Szerkessze a `lvaYolov3` modul szakaszt, és adja hozzá a rendszerkép nevét.
 1. Szerkessze a `lvaEdge` modul szakaszt, és adja hozzá a rendszerkép nevét.
-1. A konfiguráció végrehajtásával kapcsolatos további információkért tekintse meg a [video Analytics-alkalmazás létrehozása az Azure-ban IoT Central](tutorial-video-analytics-create-app.md) .
+1. A konfiguráció végrehajtásával kapcsolatos további információkért tekintse meg a [video Analytics-alkalmazás létrehozása az Azure-ban IoT Central](tutorial-video-analytics-create-app-yolo-v3.md) .
 
 ## <a name="build-the-code"></a>A kód létrehozása
 
@@ -74,7 +74,7 @@ Nyissa meg a local *Live-Video-Analytics* adattár MAPPÁT a vs Code használat�
 
 1. A **LvaEdgeGatewayModule** -rendszerkép verziója a Build befejeződése után minden alkalommal növekszik. Ezt a verziót kell használnia a telepítési jegyzékfájlban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a video Analytics – Object és a mozgásérzékelő alkalmazás sablonját, valamint a LVA IoT Edge modulokat, a javasolt következő lépés az alábbiak megismerése:
 

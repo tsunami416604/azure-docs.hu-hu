@@ -5,15 +5,15 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/30/2020
 ms.openlocfilehash: 14380dd781fc1eebfe7edb0a816ff8af0f2f17b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309428"
 ---
 A V3 API lekérdezési karakterlánc paraméterei a következők:
 
-|Lekérdezési paraméter|LUIS-portál neve|Típus|Verzió|Alapértelmezett|Rendeltetés|
+|Lekérdezési paraméter|LUIS-portál neve|Típus|Verzió|Alapértelmezett|Cél|
 |--|--|--|--|--|--|
 |`log`|Naplók mentése|boolean|V2 & V3|hamis|A lekérdezés tárolása a naplófájlban. Az alapértelmezett érték false (hamis).|
 |`query`|-|sztring|Csak v3|Nincs alapértelmezett – a GET kérelemben szükséges|A **v2-ben**az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|

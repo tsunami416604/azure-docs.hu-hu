@@ -2,20 +2,20 @@
 title: SLE-es virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakozhat egy SUSE Linux Enterprise rendszerű virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: iainfou
-ms.openlocfilehash: 9f50be95e456802c6ad403acd6a2f539780e53a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88251181"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962462"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -141,7 +141,7 @@ Miután a virtuális gépet regisztrálta a felügyelt tartományba, konfigurál
 
 1. A kezdőkönyvtár helyének értékét kell megadnia. Ha szeretné, hogy a kezdőkönyvtár */home/user_name*, használja a */Home/%u*. További információ a lehetséges változókról: sssd. conf Man Page ( `man 5 sssd.conf` ), szakasz *override_homedir*.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A módosítások mentéséhez kattintson **az OK gombra**. Ezután győződjön meg arról, hogy a megjelenített értékek helyesek. A párbeszédpanel elhagyásához válassza a **Mégse**lehetőséget.
 

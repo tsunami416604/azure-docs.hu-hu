@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 0540fa9c7a29456aaf343adce83509b2d0e390e4
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398920"
 ---
 # <a name="peering-service-connection"></a>Társ-szolgáltatási kapcsolatok
@@ -43,7 +43,7 @@ Az ügyfél a követelménynek megfelelően egyetlen kapcsolatot vagy több kapc
 > Az állapot szintje – a rendszer az ügyfél fizikai helyét veszi figyelembe, amikor a Kapcsolódás a Egyesült Államok található.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni a peering Service-kapcsolatok regisztrálásának lépéseiről, tekintse meg a következő témakört: [a társ-nyilvántartó szolgáltatás regisztrálása a Azure Portal használatával](azure-portal.md).
 
