@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264640"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása
@@ -69,11 +69,11 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 1. Az új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    | Name | Érték |
+    | Name (Név) | Érték |
     | --- | --- |
     | Sablon csoport |Telepített/sablonok/Visual C#/Windows Store |
     | Sablon |Üres alkalmazás (XAML) |
-    | Name |SSPlayer |
+    | Name (Név) |SSPlayer |
     | Hely |C:\SSTutorials |
     | Megoldás neve |SSPlayer |
     | Könyvtár létrehozása a megoldáshoz |kiválasztott |
@@ -85,7 +85,7 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Megoldáskezelő kattintson a jobb gombbal a **SSPlayer**elemre, majd kattintson a **hivatkozás hozzáadása**parancsra.
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-    | Name | Érték |
+    | Name (Név) | Érték |
     | --- | --- |
     | Hivatkozási csoport |Windows/bővítmények |
     | Referencia |Válassza a Microsoft Smooth Streaming ügyféloldali SDK Windows 8 és a Microsoft Visual C++ futtatókörnyezethez csomagot |
@@ -519,7 +519,7 @@ Ugyanezek az események az adaptív forrású jászol szintjén is elérhetők, 
    ```
 
    > [!NOTE]
-   > A CoreDispatcher a felhasználói felületi szál nem a felhasználói felületi szálból történő módosítására szolgál. Ha szűk keresztmetszetre van szükség a diszpécser szálon, a fejlesztő dönthet úgy, hogy a felhasználói felületi elem által biztosított diszpécsert használja.  Például:
+   > A CoreDispatcher a felhasználói felületi szál nem a felhasználói felületi szálból történő módosítására szolgál. Ha szűk keresztmetszetre van szükség a diszpécser szálon, a fejlesztő dönthet úgy, hogy a felhasználói felületi elem által biztosított diszpécsert használja.  Példa:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 

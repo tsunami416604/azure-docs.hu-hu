@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 606a4d753675475cf0138b688523e9029e6d3b0a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89260781"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Objektum kódolása a Media Encoder Standard használatával az Azure Portalon
@@ -50,7 +50,7 @@ A tartalom kódolása Media Encoder Standard használatával:
    Az erőforrások egyszerűbb kezelése érdekében lehetősége van módosítani a kimeneti objektum nevét, illetve a feladat nevét.
    
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. Válassza a **Létrehozás** lehetőséget.
+5. Kattintson a **Létrehozás** gombra.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -58,6 +58,6 @@ A tartalom kódolása Media Encoder Standard használatával:
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A [kódolási feladatok előrehaladásának figyelése](media-services-portal-check-job-progress.md) a Azure Portalban.  
 

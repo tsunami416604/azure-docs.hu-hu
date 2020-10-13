@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
 ms.openlocfilehash: 84d9253b865ddac6d97395af3d8632e29cc2ea24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323808"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce-programok fejlesztése a HDInsight Apache Hadoop
@@ -46,7 +46,7 @@ cd C:\HDI
 
     Ez a parancs egy könyvtárat hoz létre a `artifactID` paraméterben megadott névvel (ebben a példában a**wordcountjava** ). Ez a könyvtár a következő elemeket tartalmazza:
 
-    * `pom.xml`– A projekt felépítéséhez használt információkat és konfigurációs adatokat tartalmazó [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) .
+    * `pom.xml` – A projekt felépítéséhez használt információkat és konfigurációs adatokat tartalmazó [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) .
     * src\main\java\org\apache\hadoop\examples: az alkalmazás kódját tartalmazza.
     * src\test\java\org\apache\hadoop\examples: az alkalmazáshoz tartozó teszteket tartalmazza.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
 ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612778"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS) virtuális hálózatok támogatása
@@ -22,7 +22,7 @@ A legtöbb forgatókönyvben, ahol a DPS konfigurálva van egy VNET, a IoT Hub u
 
 
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Alapértelmezés szerint a DPS-gazdagépek egy nyilvánosan elérhető IP-címmel rendelkező nyilvános végponthoz rendelnek leképezést az interneten keresztül. Ez a nyilvános végpont minden ügyfél számára látható. A nyilvános végponthoz való hozzáférést a IoT-eszközök széles körű hálózatokon, illetve helyszíni hálózatokon is megpróbálkozhat.
 
@@ -150,7 +150,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg a DPS biztonsági funkcióiról:
 

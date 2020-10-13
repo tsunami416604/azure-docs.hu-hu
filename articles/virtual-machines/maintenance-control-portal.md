@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
 ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397283"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Frissítések vezérlése a karbantartási és a Azure Portal
@@ -97,6 +97,6 @@ Konfiguráció törléséhez nyissa meg a konfigurációs adatokat, és kattints
 ![A konfiguráció törlését bemutató képernyőkép.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [karbantartás és frissítések](maintenance-and-updates.md).

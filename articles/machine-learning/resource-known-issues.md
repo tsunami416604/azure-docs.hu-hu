@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
 ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667265"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
@@ -183,7 +183,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
   * Chrome (legújabb verzió)
   * Firefox (legújabb verzió)
 
-## <a name="set-up-your-environment"></a>Saját környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 * **Hiba történt a AmlCompute létrehozásakor**: ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
 

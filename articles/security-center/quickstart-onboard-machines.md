@@ -7,12 +7,13 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: 818ef3a29724f18cad5924bf1961b74afadfdb75
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612217"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939596"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
@@ -23,7 +24,9 @@ A nem Azure-beli számítógépeket a következő módokon adhatja hozzá:
 - Az Azure arc használata (**ajánlott**)
 - Security Center a Azure Portal oldalain (**első lépések** és **leltár**)
 
-Ezek mindegyike alább olvasható.
+Ezek mindegyikét ezen a lapon mutatjuk be.
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Nem Azure-beli gépek hozzáadása az Azure Arcmal
 
@@ -42,6 +45,10 @@ További információ az [Azure arcről](../azure-arc/servers/overview.md).
 
 > [!TIP]
 > AWS-gépek bevezetéséhez az AWS-hez való Security Center összekötője transzparens módon kezeli az Azure arc-telepítést. További információ az [AWS-fiókok Azure Security Center való összekapcsolásáról](quickstart-onboard-aws.md).
+
+::: zone-end
+
+::: zone pivot="azure-portal"
 
 ## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Nem Azure-beli gépek hozzáadása Security Center portál oldalairól
 
@@ -114,6 +121,7 @@ Ha elkészült, a **log Analytics ügynök** megjelenik a **Vezérlőpulton**. �
 
 Az ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek összekapcsolása](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
+::: zone-end
 
 ## <a name="verifying"></a>Ellenőrzése
 Gratulálunk! Az Azure-és a nem Azure-beli gépeket most már egyetlen helyen láthatja. Nyissa meg a [tárgyieszköz-leltár lapot](asset-inventory.md) , és a megfelelő erőforrástípusok alapján szűrje a szűrőt. Ezek az ikonok megkülönböztetik a típusokat:

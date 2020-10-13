@@ -8,10 +8,10 @@ ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836224"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez a Azure Portal használatával
@@ -42,10 +42,10 @@ Ez a cikk bemutatja, hogyan csatolhat új felügyelt adatlemezt egy Windows rend
 6. A **Lemezkezelés**ablak bezárásához.
 7. Megjelenik egy előugró ablak, amely értesíti, hogy az új lemezt a használata előtt kell formázni. Válassza a **lemez formázása**lehetőséget.
 8. Az **új lemez formázása** ablakban jelölje be a beállításokat, majd kattintson a **Start**gombra.
-9. Megjelenik egy figyelmeztetés, amely értesíti, hogy a lemezek formázása minden adat törlődik. Válassza az **OK** lehetőséget.
+9. Megjelenik egy figyelmeztetés, amely értesíti, hogy a lemezek formázása minden adat törlődik. Kattintson az **OK** gombra.
 10. Ha a formázás elkészült, kattintson **az OK gombra**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [adatlemezeket a PowerShell használatával is csatlakoztathatja](attach-disk-ps.md).
 - Ha az alkalmazásnak a *D:* meghajtót kell használnia az adattároláshoz, [módosíthatja a Windows ideiglenes lemez meghajtóbetűjelét](change-drive-letter.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372204"
+ms.locfileid: "91874288"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>Video Analytics – objektum-és mozgásérzékelő-észlelési alkalmazás architektúrája
 
@@ -41,4 +41,4 @@ A Media Graph lehetővé teszi, hogy meghatározza, hol kell rögzíteni az adat
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő lépés azt ismerteti, hogyan [hozhat létre egy video Analytics-alkalmazást az Azure IoT Centralban](tutorial-video-analytics-create-app.md).
+A következő lépés azt ismerteti, hogyan [helyezhet üzembe egy IoT Central alkalmazást a video Analytics-Object és a Motion Detection alkalmazás sablon használatával](tutorial-video-analytics-deploy.md).

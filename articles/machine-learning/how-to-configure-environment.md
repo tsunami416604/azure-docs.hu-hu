@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
 ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613713"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Machine Learninghoz
@@ -169,7 +169,7 @@ A DSVM használata fejlesztési környezetként
 
     * [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) -vagy [Windows](data-science-virtual-machine/provision-vm.md) -DSVM létrehozásához használja a Azure Portal.
     * [Hozzon létre egy DSVM ARM-sablonok használatával](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
-    * Az Azure parancssori felületének használata
+    * Az Azure CLI használata
 
         Ubuntu-DSVM létrehozásához használja a következő parancsot:
 
@@ -291,7 +291,7 @@ Próbálja ki:
 
 + Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a betanítási számításokat](how-to-create-your-first-pipeline.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -dokumentáció megtekintése

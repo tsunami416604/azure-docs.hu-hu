@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/17/2020
-ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 2ec1726056c7ab223f7d3de70a715a8254e95db4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907776"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940209"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
@@ -77,9 +77,9 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 
 A betanítás befejezése után:
 
-+ A sweep eredményeinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
++ A sweep eredményeinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget, vagy kattintson a jobb gombbal a modul bal oldali kimeneti portjára a megjelenítéshez.
 
-    A kimenet tartalmazza a modell típusára vonatkozó összes paraméter-áthúzási és pontossági mérőszámot, de a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell a "legjobb".
+    A **sweep eredmény** tartalmazza az összes paraméter-áthúzást és pontosságot, amely a modell típusára vonatkozik, és a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell a "legjobb".
 
 + A betanított modell pillanatképének mentéséhez válassza a **kimenetek + naplók** fület a **Train Model** modul jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 

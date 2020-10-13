@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554713"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Azure Active Directory integráció a mixpanel
 
@@ -130,15 +130,15 @@ Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához hajtsa v�
 
 3. Kattintson a **hozzáférési biztonság** fülre, majd a **beállítások módosítása**elemre.
    
-    ![Mixpanel-beállítások](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![Képernyőfelvétel: a hozzáférési Biztonság lap, ahol módosíthatja a beállításokat.](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. A **tanúsítvány módosítása** párbeszédpanelen kattintson a **fájl kiválasztása** lehetőségre a letöltött tanúsítvány feltöltéséhez, majd kattintson a **tovább**gombra.
    
-    ![Mixpanel-beállítások](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![Képernyőfelvétel: a tanúsítvány módosítása párbeszédpanel, ahol kiválaszthat egy tanúsítványfájl.](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  A hitelesítési URL **-cím módosítása** párbeszédpanel hitelesítés URL-címe szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét, majd kattintson a **tovább**gombra.
    
-    ![Mixpanel-beállítások](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![A képernyőképen a hitelesítés U R L panel módosítása látható, ahol átmásolhatja a login U R L-t.](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. Kattintson a **Kész** gombra.
 
@@ -165,7 +165,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -205,7 +205,7 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
 4. A **csapattag** szövegmezőbe írja be a Britta e-mail címét az Azure-ban.
    
-    ![Mixpanel-beállítások](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![Képernyőfelvétel: a csapat lap, amelyben a meghívott címeket adja meg.](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. Kattintson a **meghívás**gombra. 
 

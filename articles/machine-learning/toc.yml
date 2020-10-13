@@ -15,7 +15,7 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: Python 1. napi bevezetés
+    - name: Python-bevezetés (1. nap)
       expanded: true
       items:
         - name: 1. Helyi számítógép beállítása
@@ -188,6 +188,8 @@
             - name: Privát kapcsolat használata
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: Egyéni DNS használata
+              href: how-to-custom-dns.md
             - name: Biztonságos webszolgáltatások konfigurálása
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

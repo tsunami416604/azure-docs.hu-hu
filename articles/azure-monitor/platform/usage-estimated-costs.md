@@ -9,10 +9,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323400"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>A használat és a becsült költségek figyelése Azure Monitor
@@ -70,11 +70,11 @@ Innen kihasználhatja ezt a halmozott díjszabási összefoglalót, hogy minél 
 A használatról részletesebben is tájékozódhat, ha [letölti a használatot a Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). A letöltött számolótáblában napi Azure-erőforrás-használatot láthat. Ebben az Excel-táblázatban a Application Insights-erőforrásokkal való használat első szűréssel megtalálhatók a "Application Insights" és a "Log Analytics" megjelenítéséhez, majd hozzá kell adni egy szűrőt a "példány azonosítója" oszlophoz, amely "a Microsoft. bepillantást vagy összetevőket tartalmazza".  A legtöbb Application Insights-használat a Log Analytics mérőszám-kategóriával rendelkező fogyasztásmérőn szerepel, mivel az összes Azure Monitor összetevőhöz egyetlen naplós háttér tartozik.  A rendszer csak a régi árképzési szinteken és a többlépéses webes tesztek Application Insights erőforrásait jeleníti meg Application Insights fogyasztásmérő-kategóriája alapján.  A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részletek is elérhetők, ha [meg szeretné ismerni Microsoft Azure-számláját](../../cost-management-billing/understand/review-individual-bill.md). 
 
 > [!NOTE]
-> A **Cost Management** használata a **Azure Cost Management + számlázási** központban az előnyben részesített módszer a figyelési költségek széles körű megismerésére.  A **használat és a becsült költségek** a [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) és a [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) számára egyaránt lehetővé teszik a Azure monitor egyes részeinek mélyebb elemzését.
+> A **Cost Management** használata a **Azure Cost Management + számlázási** központban az előnyben részesített módszer a figyelési költségek széles körű megismerésére.  A **használat és a becsült költségek** a [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs)  és a [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) számára egyaránt lehetővé teszik a Azure monitor egyes részeinek mélyebb elemzését.
 
 Egy másik lehetőség a Azure Monitor használatának megtekintésére a figyelő központ **használati és becsült költségek** lapja. Ez az alapvető figyelési funkciók, például a [riasztások, a metrikák](https://azure.microsoft.com/pricing/details/monitor/), az értesítések, az [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)és az [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)használatát mutatja be. A 2018. április előtt elérhető díjszabási csomaggal rendelkező ügyfelek esetében az elemzések és az elemzési ajánlat keretében vásárolt Log Analytics használat is szerepel.
 
-Ezen a lapon a felhasználók megtekinthetik az elmúlt 31 napra vonatkozó erőforrás-használatot, az előfizetések összesített száma alapján. `Drill-ins`a használati trendek megjelenítése a 31 napos időszakban. Ehhez a becsléshez nagy mennyiségű adatra van szükség, ezért kérjük, legyen türelemmel az oldal betöltésekor.
+Ezen a lapon a felhasználók megtekinthetik az elmúlt 31 napra vonatkozó erőforrás-használatot, az előfizetések összesített száma alapján. `Drill-ins` a használati trendek megjelenítése a 31 napos időszakban. Ehhez a becsléshez nagy mennyiségű adatra van szükség, ezért kérjük, legyen türelemmel az oldal betöltésekor.
 
 Ez a példa a figyelési használatot és az eredményül kapott költségek becslését mutatja be:
 

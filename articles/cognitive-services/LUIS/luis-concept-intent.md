@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536103"
 ---
 # <a name="intents-in-your-luis-app"></a>Szándékok a LUIS-alkalmazásban
@@ -25,9 +25,9 @@ Adjon meg olyan leképezéseket, amelyek megfelelnek a felhasználók által az 
 Utazási alkalmazások leképezése   |   Példák kimondott szövegekre   |
 ------|------|
  RepülőjegyFoglalás     |   "Könyv készítése a Rio-ra a jövő héten" <br/> "Fly to Rio on 24" <br/> "A következő vasárnapra van szükségem a Rio de Janeiroban"    |
- Üdvözlés     |   Szia <br/>Hello <br/>"Jó reggel"  |
- CheckWeather | "Mi az időjárás, mint a Boston?" <br/> "A hétvégi előrejelzés megjelenítése" |
- Nincsenek         | "Cookie-recept beszerzése"<br>"A Lakers nyerte?" |
+ Üdvözlés     |   „Szia” <br/>„Helló” <br/>„Jó reggelt”  |
+ Időjárás-ellenőrzés | "Mi az időjárás, mint a Boston?" <br/> "A hétvégi előrejelzés megjelenítése" |
+ Nincs         | "Cookie-recept beszerzése"<br>"A Lakers nyerte?" |
 
 Minden alkalmazás a "[nincs](#none-intent)" előre definiált szándékkal, azaz a tartalék szándékkal van ellátva.
 
@@ -53,8 +53,8 @@ Hozzon létre egy szándékot, ha a felhasználó _szándéka_ egy műveletet in
 
 |Szándék   | Entitás | Példa kimondott szöveg   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "location", "Entity": "Seattle"}<br>{"type": "beépített. datetimeV2. Date", "entitás": "Tomorrow", "megoldás": "2018-05-23"} | Milyen időjárási viszonyok vannak `Seattle` `tomorrow` ? |
-| CheckWeather | {"type": "date_range", "entitás": "Ez a hétvége"} | Előrejelzés megjelenítése a következőhöz: `this weekend` |
+| Időjárás-ellenőrzés | {"type": "location", "Entity": "Seattle"}<br>{"type": "beépített. datetimeV2. Date", "entitás": "Tomorrow", "megoldás": "2018-05-23"} | Milyen időjárási viszonyok vannak `Seattle` `tomorrow` ? |
+| Időjárás-ellenőrzés | {"type": "date_range", "entitás": "Ez a hétvége"} | Előrejelzés megjelenítése a következőhöz: `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Előre elkészített tartományi leképezések
@@ -63,7 +63,7 @@ Az [előre elkészített tartományok](luis-how-to-use-prebuilt-domains.md) a ho
 
 ## <a name="none-intent"></a>A None szándék
 
-A rendszer nem hozza létre a **nincs** szándékot, de a célra üresen hagyta. A **none** cél a kötelező szándék, ezért nem törölhető és nem nevezhető át. Töltse ki a tartományon kívüli hosszúságú kimondott szöveg.
+A rendszer nem hozza létre a **nincs** szándékot, de a célra üresen hagyta. A **none** cél a kötelező szándék, ezért nem törölhető és nem nevezhető át. Ebbe töltheti fel a tartományon kívül eső beszédelemeket.
 
 A **none** cél a tartalék leképezés, amely minden alkalmazásban fontos, és az összes hosszúságú kimondott szöveg 10%-át kell tartalmaznia. Az alkalmazás-tartományba (a tárgy területére) nem fontos LUIS hosszúságú kimondott szöveg tanítani. Ha nem ad hozzá semmilyen hosszúságú kimondott szöveg a **none** szándékhoz, a Luis a tartományon kívüli teljes tartománynevet kényszeríti az egyik tartományon belüli leképezésre. Ez elferdíti az előrejelzési pontszámokat, ha a LUIS nem megfelelő szándékot tanít a kiíráshoz.
 
@@ -98,7 +98,7 @@ További információ a LUIS és a QnA Maker alkalmazások a [küldő modellel](
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>A jelentős számú szándékkal rendelkező alkalmazások súgójának kérése
 Ha csökkenti a leképezések számának csökkentését vagy a szándékok több alkalmazásba való felosztását, akkor forduljon az ügyfélszolgálathoz. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [entitásokról](luis-concept-entity-types.md), amelyek a szándékok szempontjából fontos szavakat mutatnak
 * Megtudhatja, hogyan [veheti fel és kezelheti a szándékait](luis-how-to-add-intents.md) a Luis-alkalmazásban.

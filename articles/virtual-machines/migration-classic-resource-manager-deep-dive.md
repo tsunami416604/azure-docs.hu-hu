@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855920"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970010"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 
@@ -135,7 +135,7 @@ Ez egy nem kötelező lépés, ha a módosításokat a klasszikus üzemi modellr
 Az ellenőrzés befejezése után véglegesítheti a migrálást. Az erőforrások már nem jelennek meg a klasszikus üzembe helyezési modellben, és csak a Resource Manager-alapú üzemi modellben érhetők el. A migrált erőforrások csak az új portálon kezelhetők.
 
 > [!NOTE]
-> Ez egy idempotens művelet. Ha nem sikerül, próbálja megismételni a műveletet. Ha továbbra is sikertelen, hozzon létre egy támogatási jegyet, vagy hozzon létre egy fórumot a [Microsoft Q&a](https://docs.microsoft.com/answers/index.html)
+> Ez egy idempotens művelet. Ha nem sikerül, próbálja megismételni a műveletet. Ha továbbra is sikertelen, hozzon létre egy támogatási jegyet, vagy hozzon létre egy fórumot a [Microsoft Q&a](/answers/index.html)
 >
 >
 
@@ -181,7 +181,7 @@ A következő táblázatban található erőforrások klasszikus üzemi modellj�
 Az erőforrások klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe való áttelepítésének részeként frissítenie kell a meglévő automatizálást vagy eszközöket, hogy az a Migrálás után is működjön.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Linux esetén:
 

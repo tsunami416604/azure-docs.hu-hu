@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
 ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074734"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
@@ -47,11 +47,11 @@ Az IP-szűrési beállítások lapon válassza a **hálózatkezelés**, a **nyil
 
 IP-szűrési szabály hozzáadásához válassza az **+ IP-szűrési szabály hozzáadása**lehetőséget.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IP-szűrési szabály hozzáadása egy IoT hubhoz":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
 Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően töltse ki a mezőket.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
 * Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` rendszer fogadja el.
 
@@ -61,7 +61,7 @@ Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően
 
 A mezők kitöltése után kattintson a **Mentés** gombra a szabály mentéséhez. Megjelenik egy riasztás, amely értesíti, hogy a frissítés folyamatban van.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Értesítés IP-szűrési szabály mentéséről":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
 A **Hozzáadás** lehetőség le van tiltva, amikor eléri a legfeljebb 10 IP-szűrési szabályt.
 
@@ -71,7 +71,7 @@ Meglévő szabály szerkesztéséhez válassza ki a módosítani kívánt adatai
 
 Ha törölni szeretne egy IP-szűrési szabályt, válassza a Kuka ikont az adott sorban, majd válassza a **Mentés**lehetőséget. A szabály el lett távolítva, és a módosítás mentve lesz.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub IP-szűrési szabály törlése":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 
@@ -161,7 +161,7 @@ Az IP-szűrési szabályok sorrendjét megváltoztathatja a rácson úgy, hogy a
 
 Az új IP-szűrési szabály sorrendjének mentéséhez kattintson a **Mentés**gombra.
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Az IoT HUb IP-szűrési szabályai sorrendjének módosítása":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
 ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274367"
 ---
-# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Milyen megoldások futnak az Oracle WebLogic Server Azure Virtual Machines-beli futtatásához?
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Melyik megoldásokkal futtatható az Oracle WebLogic Server az Azure Virtual Machinesben?
 
 Ez az oldal az Oracle WebLogic Server (WLS) Azure-beli virtuális gépeken való futtatásának megoldásait ismerteti. Ezeket a megoldásokat az Oracle és a Microsoft közösen fejleszti ki.
 
@@ -56,7 +56,7 @@ Ez az ajánlat egy magasan elérhető és méretezhető dinamikus fürtöt hoz l
 
 A megoldások az éles környezetben felépíthető üzembe helyezési architektúrák széles választékát teszik lehetővé. Az üzleti alkalmazások fejlesztésére összpontosítva az áttelepítési esetek többségét a lehető legtermelékenyebb módon lehet teljesíteni.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Az összetett WebLogic-kiszolgálók telepítése engedélyezve van az Azure-ban":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="A WebLogic-kiszolgáló Azure-beli üzembe helyezéséhez használhatja a Azure Portal":::
 
 A megoldások által automatikusan kiépített igényeken túl az ügyfelek rugalmasan testre szabhatják az üzembe helyezést. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a megoldások további tökéletesítéséről.
 

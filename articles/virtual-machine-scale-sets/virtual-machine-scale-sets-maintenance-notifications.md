@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837176"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok – tervezett karbantartás értesítései
@@ -106,7 +106,7 @@ A műveletnapló-riasztások konfigurálásával kapcsolatos további tudnivaló
 
 A karbantartással kapcsolatos részleteket a virtuálisgép-méretezési csoportok áttekintésében tekintheti meg. Ha a tervezett karbantartási hullám tartalmaz legalább egy virtuális gépet a virtuálisgép-méretezési csoportba, egy új értesítési menüszalag kerül hozzáadásra az oldal tetején. Válassza ki az értesítési menüszalagot a **karbantartás** lapra ugráshoz. 
 
-A **karbantartás** lapon láthatja, hogy a tervezett karbantartás milyen virtuálisgép-példányt érint. A karbantartás indításához jelölje be az érintett virtuális géphez tartozó jelölőnégyzetet. Ezután válassza a **karbantartás indítása**lehetőséget.
+A **karbantartás** lapon láthatja, hogy a tervezett karbantartás milyen virtuálisgép-példányt érint. A karbantartás indításához jelölje be az érintett virtuális géphez tartozó jelölőnégyzetet. Ezután válassza a  **karbantartás indítása**lehetőséget.
 
 A karbantartás megkezdése után a virtuálisgép-méretezési csoportba tartozó érintett virtuális gépek karbantartás alatt állnak, és átmenetileg nem érhetők el. Ha kihagyta az önkiszolgáló ablakot, akkor továbbra is megtekintheti az időablakot, amikor a virtuálisgép-méretezési készletet az Azure fogja karbantartani.
  
@@ -214,6 +214,6 @@ A magas rendelkezésre állással kapcsolatos további információkért lásd: 
    - Azt választotta, hogy leállítja (felszabadítja), majd újraindítja a virtuális gépet.
    - A virtuális gép **automatikus leállítása** be van kapcsolva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan regisztrálhat karbantartási eseményekre a virtuális gépen a [ütemezett események](../virtual-machines/windows/scheduled-events.md)használatával.

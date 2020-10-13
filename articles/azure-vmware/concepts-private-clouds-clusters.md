@@ -4,10 +4,10 @@ description: Ismerje meg az Azure VMware szoftver által meghatározott adatköz
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316868"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
@@ -38,7 +38,7 @@ A Hyper-konvergens, operációs rendszer nélküli infrastruktúra-csomópontok 
 
 | Állomás típusa              |             CPU             |   Memória (GB)   |  vSAN NVMe gyorsítótárazási szintje (TB, nyers)  |  vSAN SSD kapacitási szintje (TB, nyers)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| Magas vég (IT)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
+| High-End ()          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 A fürtök létrehozásához vagy méretezéséhez használt gazdagépek a gazdagépek elkülönített készletéből szerezhetők be. Ezek a gazdagépek hardveres teszteket kaptak, és a Flash-lemezekről minden adattal biztonságosan törölve lettek. Ha eltávolít egy gazdagépet egy fürtből, a belső lemezek biztonságosan törlődnek, és a gazdagépek a gazdagépek elkülönített készletére kerülnek. Amikor egy gazdagépet ad hozzá egy fürthöz, a rendszer az elkülönített készletből megtisztított gazdagépet használ.
 
@@ -61,7 +61,7 @@ Az Azure VMware Solution platform szoftverre vonatkozó általános frissítési
 
 A gazdagép-karbantartási és életciklus-felügyelet a privát felhőalapú fürtök kapacitására vagy teljesítményére gyakorolt hatás nélkül történik. Az automatizált gazdagépek karbantartására például a belső vezérlőprogram frissítése és a hardver javítása vagy cseréje tartozik.
 
-A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Az Azure VMware-megoldás saját Felhőbeli rendszergazdájaként Ön felelős a NSX-T SDN-konfigurációért. Ilyenek például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
+A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és a North-South útválasztás engedélyezése. Az Azure VMware-megoldás saját Felhőbeli rendszergazdájaként Ön felelős a NSX-T SDN-konfigurációért. Ilyenek például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
 
 > [!IMPORTANT]
 > Az Azure VMware-megoldás rendszergazdája nem módosíthatja az NSX-T Edge vagy a 0. rétegbeli átjáró konfigurációját. Ez a szolgáltatás elvesztését eredményezheti.

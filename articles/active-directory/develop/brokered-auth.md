@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760754"
 ---
 # <a name="brokered-authentication-in-android"></a>Felügyelt hitelesítés az Androidban
@@ -55,7 +55,7 @@ Ha egy eszközön még nincs telepítve Broker-alkalmazás, a MSAL arra utasítj
 
 Ha egy ügynök telepítve van egy eszközön, az összes további interaktív jogkivonat-kérést (hívásokat `acquireToken()` ) a közvetítő kezeli, nem pedig helyileg a MSAL. A MSAL számára korábban elérhető SSO-állapotok nem érhetők el a közvetítő számára. Ennek eredményeképpen a felhasználónak újra hitelesítenie kell magát, vagy ki kell választania egy fiókot az eszközön ismert fiókok meglévő listájából.
 
-A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException` több okból is elvégezhető, és interaktív módon kell feloldani. Például:
+A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException` több okból is elvégezhető, és interaktív módon kell feloldani. Példa:
 
 - A felhasználó megváltoztatta a fiókhoz társított jelszót.
 - A felhasználó fiókja már nem felel meg a feltételes hozzáférési szabályzatnak.

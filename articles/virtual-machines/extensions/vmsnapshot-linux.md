@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: 9fe50388e2fc21c28ca1f04035cc7c725e4f87ec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275047"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>VM-pillanatkép linuxos bővítménye Azure Backup
@@ -62,7 +62,7 @@ A következő JSON a virtuális gép pillanatkép-bővítményének sémáját m
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | sztring |

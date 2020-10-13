@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 49fc67bcd45d0c364f47276a9b47676a65f6d837
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268672"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Az eszközök kézbesítési házirendjeinek konfigurálása
@@ -282,7 +282,7 @@ Host: media.windows.net
 
 Ha a tartalmat a Widevine DRM használatával szeretné védelemmel ellátni, frissítse a AssetDeliveryConfiguration-értékeket a WidevineLicenseAcquisitionUrl használatára (amelynek értéke 7), és adja meg a licenc kézbesítési szolgáltatásának URL-címét. Az alábbi AMS-partnerek segítségével Widevine-licenceket biztosíthat: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
-Például: 
+Példa: 
 
 ```console
 {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}

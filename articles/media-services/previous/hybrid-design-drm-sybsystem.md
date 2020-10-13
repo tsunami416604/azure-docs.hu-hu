@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266901"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése
@@ -97,7 +97,7 @@ Az eszközök kézbesítési házirendjének konfigurálásával szabályozhatja
 
 Az előző szakaszban ismertetett magyarázat alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcsú** - **eszközök kézbesítési szabályzatának** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
 
-|**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Sample**|
+|**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Minta**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Igen|Igen|1. példa|
 |AMS|AMS|Harmadik féltől származó|Igen|Igen|2. példa|
@@ -137,7 +137,7 @@ A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében
 
 Összefoglalva, Azure Media Services DRM-összetevők rugalmasak, a jelen témakörben leírtaknak megfelelően a tartalom és az eszköz kézbesítési szabályzatának megfelelő konfigurálásával hibrid forgatókönyvekben is használhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtekintheti Media Services képzési útvonalakat.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

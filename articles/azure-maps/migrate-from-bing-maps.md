@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319605"
+ms.locfileid: "91873744"
 ---
-# <a name="migrate-from-bing-maps-to-azure-maps"></a>Migrálás a Bing Térképekből az Azure Mapsbe
+# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Oktatóanyag – Migrálás a Bing Mapsből a Azure Mapsba
 
 Ebből az útmutatóból megtudhatja, hogyan telepíthet át webes, mobil-és kiszolgáló-alapú alkalmazásokat a Bing Maps-ből a Azure Maps platformra. Ez az útmutató a Azure Mapsre való áttelepítéshez szükséges összehasonlító kód mintákat, áttelepítési javaslatokat és ajánlott eljárásokat tartalmazza.
 
@@ -52,7 +52,7 @@ Az alábbi táblázat a Bing Maps szolgáltatásainak magas szintű listáját �
 | Térbeli Data Services (SDS)           | Részleges            |
 | Időzóna                             | ✓                  |
 | Forgalmi incidensek                     | ✓                  |
-| Konfigurációs vezérelt térképek             | N/A                |
+| Konfigurációs vezérelt térképek             | N.A.                |
 
 A Bing Maps alapvető kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítést, valamint a nagyon biztonságos Azure Active Directory hitelesítést is biztosítja.
 
@@ -128,7 +128,7 @@ A következő lista a Bing Maps általános kifejezéseit sorolja fel, amelyeket
 | Navigációs sáv                    | Térkép stílusa Picker, nagyítás vezérlő, pitch Control, iránytű vezérlő |
 | Gombostű                           | Buborék réteg, szimbólum réteg vagy HTML-jelölő                      |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a Bing Maps-alkalmazásnak a következő cikkekkel való áttelepítésének részleteit:
 

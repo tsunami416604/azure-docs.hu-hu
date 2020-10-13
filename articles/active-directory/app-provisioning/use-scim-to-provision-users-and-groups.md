@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266649"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
@@ -98,7 +98,7 @@ Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás 
 |Részleg|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|
 | displayName |displayName |
 |Alkalmazottkód|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|
-| Fax – TelephoneNumber |phoneNumbers [type EQ "fax"]. Value |
+| Facsimile-TelephoneNumber |phoneNumbers [type EQ "fax"]. Value |
 | givenName |name.givenName |
 | Beosztás |cím |
 | Levelezés |emails[type eq "work"].value |

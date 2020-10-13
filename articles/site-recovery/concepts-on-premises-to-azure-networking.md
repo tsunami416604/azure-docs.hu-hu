@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568778"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Kapcsolódás Azure-beli virtuális gépekhez a helyszíni feladatátvétel után 
@@ -161,7 +161,7 @@ Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvé
 
     ![A NIC-konfiguráció szerkesztése](media/azure-to-azure-customize-networking/nic-drilldown.png)
 
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
 
 A Site Recovery mostantól tiszteletben tartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételen a virtuális gép a megfelelő IP-címen keresztül kapcsolódjon a kiválasztott erőforráshoz, ha az elérhető a cél IP-tartományban. Ebben az esetben nincs szükség a teljes alhálózat feladatátvételére. DNS-frissítésre lesz szükség a sikertelenül átadott gép rekordjainak frissítéséhez, hogy a virtuális gép új IP-címére mutasson.
 

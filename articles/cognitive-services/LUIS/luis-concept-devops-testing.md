@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
 ms.openlocfilehash: c41e9fe1f197334bce27241ab9f28309c92f7e0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316545"
 ---
 # <a name="testing-for-luis-devops"></a>A LUIS DevOps tesztelése
@@ -42,7 +42,7 @@ Ha teszteket ír, minden teszthez meg kell határoznia a következőket:
 * Várt szándék
 * Várt entitások.
 
-A LUIS [batch-fájl szintaxisával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) meghatározhatja a tesztek egy csoportját egy JSON-formátumú fájlban. Például:
+A LUIS [batch-fájl szintaxisával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) meghatározhatja a tesztek egy csoportját egy JSON-formátumú fájlban. Példa:
 
 ```JSON
 [

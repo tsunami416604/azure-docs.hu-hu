@@ -1,22 +1,22 @@
 ---
-title: Webszolgáltatások migrálása a Google Maps szolgáltatásból | Microsoft Azure térképek
-description: Webszolgáltatások migrálása a Google Maps szolgáltatásból Microsoft Azure Maps-be
+title: Oktatóanyag – webszolgáltatások migrálása a Google Maps szolgáltatásból | Microsoft Azure térképek
+description: Útmutató webszolgáltatások áttelepítéséhez a Google Maps szolgáltatásból Microsoft Azure Mapsbe
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319571"
+ms.locfileid: "91874458"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>Webszolgáltatás migrálása a Google Mapsből
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>Oktatóanyag – webszolgáltatás migrálása a Google Mapsből
 
 Az Azure és a Google Maps egyaránt hozzáférést biztosít a térbeli API-khoz a REST-alapú webszolgáltatásokon keresztül. Ezeknek a platformoknak a API-felületei hasonló funkciókat hajtanak végre. Azonban mindegyik különböző elnevezési konvenciókat és válasz objektumokat használ.
 
@@ -94,7 +94,7 @@ Ez a táblázat a Google Maps API paramétereit a Azure Maps hasonló API-param�
 | `key`                       | `subscription-key` – Lásd még a [hitelesítés Azure Maps](azure-maps-authentication.md) a dokumentációt. |
 | `language`                  | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *N/A*     |
+| `location_type`             | *N.A.*     |
 | `result_type`               | `entityType`    |
 
 Tekintse át [az ajánlott eljárásokat a kereséshez](how-to-use-best-practices-for-search.md).
@@ -138,9 +138,9 @@ A táblázat a Google Maps API paramétereit a hasonló Azure Maps API-paraméte
 
 | Google Maps API-paraméter | Hasonló Azure Maps API-paraméter |
 |---------------------------|-------------------------------------|
-| `fields`                  | *N/A*                               |
+| `fields`                  | *N.A.*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *N/A*                               |
+| `inputtype`               | *N.A.*                               |
 | `key`                     | `subscription-key` – Lásd még a [hitelesítés Azure Maps](azure-maps-authentication.md) a dokumentációt. |
 | `language`                | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `locationbias`            | `lat``lon`és`radius`<br/>`topLeft` és `btmRight`<br/>`countrySet`  |
@@ -157,13 +157,13 @@ A táblázat a Google Maps API paramétereit jeleníti meg az összehasonlíthat
 | `keyword`                   | `categorySet` és `brandSet`        |
 | `language`                  | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `location`                  | `lat` és `lon`                     |
-| `maxprice`                  | *N/A*                               |
-| `minprice`                  | *N/A*                               |
+| `maxprice`                  | *N.A.*                               |
+| `minprice`                  | *N.A.*                               |
 | `name`                      | `categorySet` és `brandSet`        |
-| `opennow`                   | *N/A*                               |
+| `opennow`                   | *N.A.*                               |
 | `pagetoken`                 | `ofs` és `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *N/A*                               |
+| `rankby`                    | *N.A.*                               |
 | `type`                      | `categorySet –` Lásd a [támogatott keresési kategóriák](supported-search-categories.md) dokumentációját.   |
 
 ## <a name="calculate-routes-and-directions"></a>Útvonalak és irányok kiszámítása
@@ -243,10 +243,10 @@ A táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paraméte
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *N/A* – ez egy helymeghatározáshoz-hez kapcsolódó szolgáltatás. Használja a `countrySet` paramétert, ha a Azure Maps HELYMEGHATÁROZÁSHOZ API-t használja.  |
-| `scale`                     | *N/A*                              |
+| `scale`                     | *N.A.*                              |
 | `size`                      | `width` és `height` – akár 8192x8192 is lehet. |
-| `style`                     | *N/A*                              |
-| `visible`                   | *N/A*                              |
+| `style`                     | *N.A.*                              |
+| `visible`                   | *N.A.*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

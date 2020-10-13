@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356196"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Eszközkapcsolati események megrendelése az Azure IoT Hubról az Azure Cosmos DB használatával
@@ -333,7 +333,7 @@ A végrehajtott tárolt eljárás eredményeit a Cosmos DB dokumentumban tekinth
 
    ![Az eredmény](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+## <a name="use-the-azure-cli"></a>Az Azure CLI használata
 
 A [Azure Portal](https://portal.azure.com)használata helyett a IoT hub lépéseket az Azure CLI használatával hajthatja végre. Részletekért lásd: Azure CLI-lapok az [esemény-előfizetések létrehozásához](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozásához](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
 

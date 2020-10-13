@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316987"
 ---
 # <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>VNN konfigurálása Azure Load Balancer (SQL Server Azure-beli virtuális gépeken)
@@ -92,7 +92,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
    - **Intervallum**: 5 másodperc.
    - Nem megfelelő **állapot küszöbértéke**: 2 egymást követő hiba.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="set-load-balancing-rules"></a>Terheléselosztási szabályok beállítása
 
@@ -112,7 +112,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
    - **Üresjárati időkorlát (perc)**: 4.
    - **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)**: engedélyezve.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="configure-cluster-probe"></a>A fürt mintavételének konfigurálása
 

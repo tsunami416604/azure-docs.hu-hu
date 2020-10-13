@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535831"
 ---
 # <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtaján
@@ -113,13 +113,13 @@ A következő fejlécek sorrendje határozza meg, hogy mennyi ideig tárolja a r
 2. Cache-Control: Max-Age =\<seconds>
 3. Lejár \<http-date>
 
-Cache-Control Response fejlécek, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, például a Cache-Control: Private, Cache-Control: no-cache és Cache-Control: No-Store tiszteletben.  Ha nincs gyorsítótár-vezérlőelem, az alapértelmezett viselkedés az, hogy az első ajtó gyorsítótárba helyezi az erőforrást X időtartamra, ahol az X véletlenszerűen, 1 és 3 nap között lesz kiválasztva.
+Cache-Control a válasz fejléceit, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, például a Cache-Control: Private, Cache-Control: no-cache és Cache-Control: No-Store tiszteletben.  Ha nincs Cache-Control, az alapértelmezett viselkedés az, hogy a bejárati ajtó gyorsítótárazza az erőforrást X időtartamra, ahol az X véletlenszerűen, 1 és 3 nap között lesz kiválasztva.
 
 ## <a name="request-headers"></a>Kérésfejlécek
 
 A következő kérések fejlécei nem lesznek továbbítva a háttérbe gyorsítótárazás használatakor.
 - Content-Length
-- Átvitel – kódolás
+- Transfer-Encoding
 
 ## <a name="cache-duration"></a>Gyorsítótár időtartama
 
@@ -127,7 +127,7 @@ A gyorsítótár időtartama a bejárati tervezőben és a szabályok motorjába
 
 A gyorsítótár időtartamának beállítása a Rules Engine használatával igaz gyorsítótár-felülbírálás, ami azt jelenti, hogy a felülbírálási értéket fogja használni, függetlenül attól, hogy milyen a forrás válaszának fejléce.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
