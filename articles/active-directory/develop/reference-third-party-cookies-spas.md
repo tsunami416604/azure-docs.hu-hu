@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87311755"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Az ITP kezelése a Safariban és más böngészőkben, ahol a harmadik féltől származó cookie-k blokkolva vannak
@@ -79,7 +79,7 @@ A frissítési jogkivonatok böngészőbe való kiállítása biztonsági probl�
 
 Ez a korlátozott élettartamú frissítési jogkivonat-minta a biztonság és a csökkentett teljesítményű UX rendszer közötti egyensúlyként lett kiválasztva. A frissítési tokenek vagy a harmadik féltől származó cookie-k nélkül az engedélyezési kód folyamata (ahogy azt a [OAuth Security aktuális gyakorlatainak tervezete](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)javasolja) megterheli, ha új vagy további tokenekre van szükség. Minden egyes jogkivonat esetében teljes oldal-átirányítás vagy előugró ablak szükséges, minden token lejáratakor (óránként általában a Microsoft Identity platform jogkivonatai esetében).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [engedélyezési kód folyamatáról](v2-oauth2-auth-code-flow.md).
 

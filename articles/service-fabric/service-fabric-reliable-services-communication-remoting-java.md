@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87316124"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Szolgáltatás-távelérés a javában Reliable Services
@@ -26,9 +26,9 @@ Olyan szolgáltatások esetén, amelyek nem kapcsolódnak egy adott kommunikáci
 Egy szolgáltatás távelérésének beállítása két egyszerű lépésben történik:
 
 1. Hozzon létre egy felületet a szolgáltatás megvalósításához. Ez az interfész határozza meg a szolgáltatásban távoli eljárás hívásához elérhető módszereket. A metódusoknak aszinkron metódusok tevékenység-visszaküldési módszereknek kell lenniük. A csatolónak meg kell valósítania `microsoft.serviceFabric.services.remoting.Service` annak jelzésére, hogy a szolgáltatásnak van-e távelérési felülete.
-2. Használjon távelérési figyelőt a szolgáltatásban. Ez egy olyan `CommunicationListener` implementáció, amely távelérési funkciókat biztosít. `FabricTransportServiceRemotingListener`a távelérés-figyelőt az alapértelmezett távelérési átviteli protokoll használatával lehet létrehozni.
+2. Használjon távelérési figyelőt a szolgáltatásban. Ez egy olyan `CommunicationListener` implementáció, amely távelérési funkciókat biztosít. `FabricTransportServiceRemotingListener` a távelérés-figyelőt az alapértelmezett távelérési átviteli protokoll használatával lehet létrehozni.
 
-A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén ""Helló világ!"alkalmazás" beolvasását teszi lehetővé.
+A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén "„Helló világ!” alkalmazás" beolvasását teszi lehetővé.
 
 ```java
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ A ServiceProxy létrehozása egy könnyű művelet, így tetszőleges számú ig
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory élettartama
 A [FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxyt. Ha API-t használ `ServiceProxyBase.create` a proxy létrehozásához, a Framework létrehoz egy-t `FabricServiceProxyFactory` .
 A [ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) tulajdonságainak felülbírálásához hasznos lehet manuálisan létrehozni.
-A gyár költséges művelet. `FabricServiceProxyFactory`megőrzi a kommunikációs ügyfelek gyorsítótárát.
+A gyár költséges művelet. `FabricServiceProxyFactory` megőrzi a kommunikációs ügyfelek gyorsítótárát.
 Az ajánlott eljárás a gyorsítótárazás `FabricServiceProxyFactory` a lehető leghosszabbra.
 
 ## <a name="remoting-exception-handling"></a>Távelérési kivételek kezelését

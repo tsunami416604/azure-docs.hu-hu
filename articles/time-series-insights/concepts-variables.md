@@ -7,10 +7,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: dc03a74bfad5b1417eb9cc20b5f211718cc08646
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653706"
 ---
 # <a name="time-series-model-variables"></a>Idősorozat-modell változói
@@ -29,7 +29,7 @@ Az alábbi táblázat az egyes változókhoz tartozó tulajdonságokat mutatja b
 
 ## <a name="numeric-variables"></a>Numerikus változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek, vagy az idősorozat-kifejezések használatával alakíthatók át. A numerikus típusú változóknak *dupla*típusúnak kell lenniük.|
@@ -59,7 +59,7 @@ A változók megfelelnek a következő JSON-példának:
 
 ## <a name="categorical-variables"></a>Kategorikus változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek. A kategorikus típus változóinak vagy *hosszúnak* vagy *sztringnek*kell lenniük. |
@@ -99,7 +99,7 @@ A változók megfelelnek a következő JSON-példának:
 
 ## <a name="aggregate-variables"></a>Összesített változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó összesítése | Számításokat hajthat végre a támogatott [összesítési függvényekben az összesített változó típusokhoz](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |

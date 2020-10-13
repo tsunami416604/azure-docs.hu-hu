@@ -1,22 +1,22 @@
 ---
-title: Android-alkalmazás migrálása | Microsoft Azure térképek
-description: Android-alkalmazások migrálása a Google Mapsből Microsoft Azure Maps-be
+title: Oktatóanyag – Android-alkalmazás migrálása | Microsoft Azure térképek
+description: Útmutató Android-alkalmazások Google Mapsből Microsoft Azure Maps rendszerbe való áttelepítéséhez
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319639"
+ms.locfileid: "91873880"
 ---
-# <a name="migrate-an-android-app-from-google-maps"></a>Android-alkalmazás migrálása a Google Mapsből
+# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Oktatóanyag – Android-alkalmazás migrálása a Google Mapsből
 
 A Azure Maps Android SDK egy olyan API-felülettel rendelkezik, amely hasonló a web SDK-hoz. Ha ezekkel az SDK-k valamelyikével fejlesztett ki, akkor az egyes fogalmak, ajánlott eljárások és architektúrák közül sokat alkalmazunk.
 

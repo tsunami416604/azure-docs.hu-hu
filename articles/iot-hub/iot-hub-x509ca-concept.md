@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308112"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban
@@ -69,9 +69,9 @@ A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megvásárlásának előnye, hogy e
 
 X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megvásárlásához a vállalat-X válasszon ki egy főtanúsítvány-szolgáltatási szolgáltatót. A "legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" kifejezéshez tartozó internetes keresés jó eredményeket fog eredményezni. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ útmutatást nyújt a céges X számára a nyilvános/titkos kulcspár létrehozásáról, valamint a szolgáltatásokhoz tartozó tanúsítvány-aláírási kérés (CSR) létrehozásáról. A CSR az a formális folyamat, amellyel a tanúsítványokat a hitelesítésszolgáltatótól kell alkalmazni. A vásárlás eredménye egy tanúsítvány, amely a hitelesítésszolgáltató tanúsítványa. Az X. 509 tanúsítványok elterjedtsége miatt a tanúsítvány valószínűleg az IETF RFC 5280 szabványnak megfelelően lett formázva.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Self-Signed X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása
 
-Az önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozási folyamata hasonló a vásárláshoz, kivéve, ha a külső gyártó, például a legfelső szintű hitelesítésszolgáltató. A példánkban a vállalat-X nem a legfelső szintű hitelesítésszolgáltató, hanem a hitelesítésszolgáltató tanúsítványát fogja aláírni. A vállalat – X esetén ezt a lehetőséget kiválaszthatja a teszteléshez, amíg készen nem áll a szolgáltatói tanúsítvány megvásárlására. A vállalat-X egy önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt is használhat éles környezetben, ha az intelligens X-widget nem a IoT Hub kívüli harmadik féltől származó szolgáltatásokhoz való kapcsolódásra szolgál.
+A Self-Signed X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásának folyamata hasonló a vásárláshoz, kivéve, ha a külső gyártó, például a legfelső szintű hitelesítésszolgáltató. A példánkban a vállalat-X nem a legfelső szintű hitelesítésszolgáltató, hanem a hitelesítésszolgáltató tanúsítványát fogja aláírni. A vállalat – X esetén ezt a lehetőséget kiválaszthatja a teszteléshez, amíg készen nem áll a szolgáltatói tanúsítvány megvásárlására. A vállalat-X egy önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt is használhat éles környezetben, ha az intelligens X-widget nem a IoT Hub kívüli harmadik féltől származó szolgáltatásokhoz való kapcsolódásra szolgál.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Regisztrálja az X. 509 tanúsítványt IoT Hub
 

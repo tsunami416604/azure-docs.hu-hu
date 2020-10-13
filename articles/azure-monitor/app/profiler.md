@@ -7,17 +7,17 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315637"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service alkalmazások Application Insights
 
 A Profilert futtathatja a ASP.NET-on, és ASP.NET Core a Azure App Service-on futó alkalmazások alapszintű vagy magasabb szintű használatát. A Profiler Linux rendszeren való engedélyezése jelenleg csak [ezen a metóduson](profiler-aspnetcore-linux.md)keresztül lehetséges.
 
-## <a name="enable-profiler-for-your-app"></a><a id="installation"></a>A Profiler engedélyezése az alkalmazáshoz
+## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> A Profiler engedélyezése az alkalmazáshoz
 A Profiler engedélyezéséhez kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatást futtat, akkor a Profiler más támogatott platformokon való engedélyezésével kapcsolatban itt talál útmutatást:
 * [Felhőszolgáltatások](./profiler-cloudservice.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Alkalmazások Service Fabric](./profiler-servicefabric.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
@@ -50,7 +50,7 @@ A Profiler engedélyezéséhez a következő beállítások szükségesek:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Ezeket az értékeket [Azure Resource Manager sablonok](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)és [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)használatával állíthatja be.
+Ezeket az értékeket [Azure Resource Manager sablonok](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)és  [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)használatával állíthatja be.
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>A Profiler engedélyezése más felhők számára manuálisan
 

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120949"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
@@ -36,7 +36,7 @@ Az alkalmazás hibáinak kezelésével kapcsolatos további információkért te
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
 
-A .NET-kivételek feldolgozásakor használhatja a kivétel típusát és a `ErrorCode` tagot a kivételek megkülönböztetésére. `ErrorCode`az értékek [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet)típusú állandók.
+A .NET-kivételek feldolgozásakor használhatja a kivétel típusát és a `ErrorCode` tagot a kivételek megkülönböztetésére. `ErrorCode` az értékek [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet)típusú állandók.
 
 Tekintse meg a [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)és a [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet)mezőit is.
 
@@ -48,7 +48,7 @@ Ha a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexc
 
 | Kivétel | Hibakód | Kockázatcsökkentés|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: a felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem használja a .NET Core-ot (amely nem rendelkezik webes felhasználói felülettel), hívja a (csak egyszer) hívást `AcquireTokeninteractive` . Ha a .NET Core-ot használja, vagy nem szeretné elvégezni `AcquireTokenInteractive` a használatát, a felhasználó megkeresheti az URL-címet a beleegyezés megadásához: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . hívás `AcquireTokenInteractive` :`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: a felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem használja a .NET Core-ot (amely nem rendelkezik webes felhasználói felülettel), hívja a (csak egyszer) hívást `AcquireTokeninteractive` . Ha a .NET Core-ot használja, vagy nem szeretné elvégezni `AcquireTokenInteractive` a használatát, a felhasználó megkeresheti az URL-címet a beleegyezés megadásához: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . hívás `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: a felhasználónak a [többtényezős hitelesítés (MFA)](../authentication/concept-mfa-howitworks.md)használatára van szüksége.| Nincs megoldás. Ha az MFA konfigurálva van a bérlőhöz, és Azure Active Directory (HRE) úgy dönt, hogy kikényszeríti azt, akkor egy interaktív folyamatra kell visszaesnie, például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode` .|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: a Grant típus nem támogatott a */gyakori hibák* -vagy */consumers* -végpontokon. Használja a */Organizations* vagy a bérlő-specifikus végpontot. A */gyakori hibák*használta.| Ahogy az az Azure AD-ban is szerepel, a szolgáltatónak Bérlővel vagy egyéb */Organizations*kell rendelkeznie.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: a kérelem törzsének tartalmaznia kell a következő paramétert: `client_secret or client_assertion` .| Ez a kivétel akkor fordulhat elő, ha az alkalmazása nincs nyilvános ügyfélalkalmazásként regisztrálva az Azure AD-ben. A Azure Portal szerkessze az alkalmazás jegyzékfájlját, és állítsa a következőre: `allowPublicClient` `true` . |
@@ -63,7 +63,7 @@ Az idő nagy részében `AcquireTokenSilent` , amikor a művelet meghiúsul, az 
 
 A beavatkozás célja, hogy a felhasználó műveletet hajtson végre. Bizonyos feltételek egyszerűen feloldhatók a felhasználók számára (például elfogadják a használati feltételeket egyetlen kattintással), és néhány nem oldható fel a jelenlegi konfigurációval (például a szóban forgó gépnek egy adott vállalati hálózathoz kell csatlakoznia). Némi segítség a felhasználónak a többtényezős hitelesítés beállításában, vagy a Microsoft Authenticator telepítését az eszközön.
 
-### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException`besorolások enumerálása
+### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` besorolások enumerálása
 
 A MSAL egy olyan mezőt tesz elérhetővé, amely lehetővé teszi, `Classification` hogy jobb felhasználói élményt nyújtson, például hogy tájékoztassa a felhasználót arról, hogy a jelszava lejárt, vagy hogy bizonyos erőforrások használatához meg kell adnia az engedélyt. A támogatott értékek az enumerálás részét képezik `UiRequiredExceptionClassification` :
 
@@ -244,13 +244,13 @@ A MSAL for Python esetében a kivételek ritkák, mivel a legtöbb hibát egy hi
 
 A Java-MSAL háromféle kivétel létezik: `MsalClientException` , `MsalServiceException` , és; az összes, `MsalInteractionRequiredException` amely az-tól származik `MsalException` .
 
-- `MsalClientException`akkor következik be, amikor olyan hiba fordul elő, amely helyi a könyvtár vagy az eszköz számára.
-- `MsalServiceException`akkor következik be, amikor a biztonságos jogkivonat szolgáltatás (STS) hibaüzenetet ad vissza, vagy más hálózati hiba történik.
-- `MsalInteractionRequiredException`akkor fordul elő, ha a sikeres hitelesítéshez felhasználói felületi interakció szükséges.
+- `MsalClientException` akkor következik be, amikor olyan hiba fordul elő, amely helyi a könyvtár vagy az eszköz számára.
+- `MsalServiceException` akkor következik be, amikor a biztonságos jogkivonat szolgáltatás (STS) hibaüzenetet ad vissza, vagy más hálózati hiba történik.
+- `MsalInteractionRequiredException` akkor fordul elő, ha a sikeres hitelesítéshez felhasználói felületi interakció szükséges.
 
 ### <a name="msalserviceexception"></a>MsalServiceException
 
-`MsalServiceException`a kérésekben visszaadott HTTP-fejlécek közzététele az STS-ben. Hozzáférés a`MsalServiceException.headers()`
+`MsalServiceException` a kérésekben visszaadott HTTP-fejlécek közzététele az STS-ben. Hozzáférés a `MsalServiceException.headers()`
 
 ### <a name="msalinteractionrequiredexception"></a>MsalInteractionRequiredException
 
@@ -260,13 +260,13 @@ Az idő nagy részében `AcquireTokenSilently` , amikor a művelet meghiúsul, a
 
 A hibát okozó bizonyos feltételek egyszerűen feloldhatók a felhasználók számára. Előfordulhat például, hogy el kell fogadniuk a használati feltételeket. Vagy lehet, hogy a kérés nem teljesíthető az aktuális konfigurációval, mert a gépnek egy adott vállalati hálózathoz kell kapcsolódnia.
 
-A MSAL egy mezőt tesz elérhetővé `reason` , amelynek segítségével jobb felhasználói élményt biztosíthat. Előfordulhat például, hogy a `reason` mező arra utasítja a felhasználót, hogy a jelszavuk lejárt, vagy hogy meg kell adnia az egyes erőforrások használatának beleegyezikét. A támogatott értékek az enumerálás részét képezik `InteractionRequiredExceptionReason` :
+A MSAL egy mezőt tesz elérhetővé `reason` , amelynek segítségével jobb felhasználói élményt biztosíthat. Előfordulhat például, hogy a `reason` mező arra utasítja a felhasználót, hogy a jelszavuk lejárt, vagy hogy meg kell adnia az egyes erőforrások használatának beleegyezikét. A támogatott értékek az enumerálás részét képezik  `InteractionRequiredExceptionReason` :
 
 | Ok | Értelmezés | Ajánlott kezelési |
 |---------|-----------|-----------------------------|
 | `BasicAction` | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | Hívás `acquireToken` interaktív paraméterekkel |
 | `AdditionalAction` | A feltételt az interaktív hitelesítési folyamaton kívüli rendszerrel folytatott további javító interakciók is megoldhatók. | Az `acquireToken` interaktív paraméterek megadásával megjeleníthető egy üzenet, amely leírja, hogy milyen javító műveletet kell végrehajtania. A hívó alkalmazás dönthet úgy, hogy elrejti azokat a folyamatokat, amelyek további műveletet igényelnek, ha a felhasználó nem valószínű, hogy befejezi a javító műveletet. |
-| `MessageOnly` | A feltétel jelenleg nem oldható fel. Interaktív hitelesítési folyamat elindítása a feltételt bemutató üzenet megjelenítéséhez. | `acquireToken`Az interaktív paraméterek megadásával megjeleníthető egy üzenet, amely ismerteti a feltételt. `acquireToken`a `UserCanceled` hibaüzenetet ad vissza, miután a felhasználó beolvassa az üzenetet, és bezárja az ablakot. Az alkalmazás dönthet úgy, hogy elrejti az üzenetet eredményező folyamatokat, ha a felhasználó nem valószínű, hogy kihasználja az üzenetet. |
+| `MessageOnly` | A feltétel jelenleg nem oldható fel. Interaktív hitelesítési folyamat elindítása a feltételt bemutató üzenet megjelenítéséhez. | `acquireToken`Az interaktív paraméterek megadásával megjeleníthető egy üzenet, amely ismerteti a feltételt. `acquireToken` a `UserCanceled` hibaüzenetet ad vissza, miután a felhasználó beolvassa az üzenetet, és bezárja az ablakot. Az alkalmazás dönthet úgy, hogy elrejti az üzenetet eredményező folyamatokat, ha a felhasználó nem valószínű, hogy kihasználja az üzenetet. |
 | `ConsentRequired`| A felhasználói beleegyezés hiányzik vagy vissza lett vonva. |`acquireToken`Az interaktív paraméterek megadásával megadhatja, hogy a felhasználó beleegyezik. |
 | `UserPasswordExpired` | A felhasználó jelszava lejárt. | Hívás `acquireToken` interaktív paraméterrel, hogy a felhasználó alaphelyzetbe állíthatja a jelszavát |
 | `None` |  További részletek. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | Hívás `acquireToken` interaktív paraméterekkel |

@@ -3,20 +3,29 @@ title: Azure-függvény Azure Event Grid események eseménykezelőként
 description: Leírja, hogyan használhatja az Azure functions-t Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: cd500eed180096388eede96f768f08b896ca6456
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629688"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873727"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-függvény Event Grid események eseménykezelőként
 
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő végrehajt egy műveletet az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure functions** az egyikük. 
 
-A kiszolgáló nélküli architektúrában **Azure functions** használatával válaszolhat a Event Grid eseményeire. Ha egy Azure-függvényt kezelőként használ, használja az általános HTTP-trigger helyett a Event Grid triggert. Event Grid automatikusan érvényesíti Event Grid eseményindítókat. Általános HTTP-eseményindítók esetén saját magának kell végrehajtania az [érvényesítési választ](webhook-event-delivery.md) .
 
-További információ: [Event Grid trigger a Azure functions](../azure-functions/functions-bindings-event-grid.md) számára az Event Grid trigger függvények használatával való használatának áttekintése.
+Ha Azure-függvényt szeretne használni az események kezelőjéként, kövesse az alábbi módszerek egyikét: 
+
+-   [Event Grid trigger](../azure-functions/functions-bindings-event-grid-trigger.md)használata.  Adja meg az **Azure-függvényt** **végpont típusaként**. Ezután adja meg az Azure Function alkalmazást és az eseményeket kezelő függvényt. 
+-   [Http-trigger](../azure-functions/functions-bindings-http-webhook.md)használata.  Adja meg a **Webhookot** **végpont típusaként**. Ezután adja meg annak az Azure-függvénynek az URL-címét, amely az eseményeket fogja kezelni. 
+
+Javasoljuk, hogy az első módszert (Event Grid triggert) használja, mivel a második módszernél a következő előnyökkel jár:
+-   Event Grid automatikusan érvényesíti Event Grid eseményindítókat. Általános HTTP-eseményindítók esetén saját magának kell végrehajtania az [érvényesítési választ](webhook-event-delivery.md) .
+-   Event Grid automatikusan módosítja azt a sebességet, amellyel az eseményeket egy Event Grid esemény által aktivált függvénynek küldi a függvény az események feldolgozásakor észlelt gyakoriság alapján. Ez a díjszabás megfelel a szolgáltatás által az események feldolgozására való képtelenségből eredő kézbesítési hibáknak, mivel a függvény esemény-feldolgozási sebessége változhat az idő múlásával. A nagy adatátviteli teljesítmény növelése érdekében engedélyezze a kötegelt feldolgozást az esemény-előfizetésben. További információ: [Batch engedélyezése](#enable-batching).
+
+    > [!NOTE]
+    > Jelenleg nem használhat Event Grid eseményindítót egy Azure Functions alkalmazáshoz, ha az esemény a **CloudEvents** -sémában kerül kézbesítésre. Ehelyett használjon HTTP-triggert.
 
 ## <a name="tutorials"></a>Oktatóanyagok
 
@@ -71,5 +80,5 @@ A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-e
 ### <a name="azure-powershell"></a>Azure PowerShell
 A [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) vagy az [Update-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) parancsmaggal konfigurálhatja a Batch szolgáltatáshoz kapcsolódó beállításokat a következő paraméterekkel: `-MaxEventsPerBatch` vagy `-PreferredBatchSizeInKiloBytes` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

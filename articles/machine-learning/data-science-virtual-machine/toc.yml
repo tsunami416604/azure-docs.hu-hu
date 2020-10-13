@@ -56,6 +56,8 @@
           href: dsvm-common-identity.md
         - name: Biztonságos erőforrás-hozzáférési hitelesítő adatok
           href: dsvm-secure-access-keys.md
+    - name: Adatelemzési virtuális gép frissítése az Ubuntu 18.04-es verziójára
+      href: ubuntu-upgrade.md
 - name: További források
   items:
     - name: Microsoft Q&A kérdések oldala

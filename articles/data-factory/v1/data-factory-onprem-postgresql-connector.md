@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082834"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a PostgreSQL-ből a Azure Data Factory használatával
@@ -72,14 +72,14 @@ A következő táblázat a PostgreSQL-hez társított szolgáltatáshoz tartozó
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Yes |
-| kiszolgáló |A PostgreSQL-kiszolgáló neve. |Yes |
-| adatbázis |A PostgreSQL-adatbázis neve. |Yes |
-| schema |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |No |
-| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
-| username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |No |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |No |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Igen |
+| kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
+| adatbázis |A PostgreSQL-adatbázis neve. |Igen |
+| schema |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |Nem |
+| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
+| username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
@@ -104,7 +104,7 @@ Ha a forrás típusa **RelationalSource** (beleértve a PostgreSQL-t is), a köv
 > [!NOTE]
 > A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. Csatolja őket a `""` lekérdezésben (idézőjelek között).
 
-**Például**
+**Példa**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -309,7 +309,7 @@ Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképez
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Bájt [], karakterlánc |
 | bit változó [(n)] |varbit |Bájt [], karakterlánc |
-| boolean |logikai |Logikai érték |
+| boolean |logikai |Logikai |
 | párbeszédpanel | |Bájt [], karakterlánc |
 | bytea | |Bájt [], karakterlánc |
 | karakter [(n)] |char [(n)] |Sztring |
@@ -331,15 +331,15 @@ Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképez
 | vonal | |Bájt [], karakterlánc |
 | lseg | |Bájt [], karakterlánc |
 | macaddr | |Bájt [], karakterlánc |
-| pénzt | |Decimal |
-| numerikus [(p, s)] |decimális [(p, s)] |Decimal |
+| pénzt | |Tizedesjegy |
+| numerikus [(p, s)] |decimális [(p, s)] |Tizedesjegy |
 | numrange | |Sztring |
 | OID | |Int32 |
 | path | |Bájt [], karakterlánc |
 | pg_lsn | |Int64 |
 | pont | |Bájt [], karakterlánc |
 | sokszög | |Bájt [], karakterlánc |
-| valós szám |float4 |Egyszeres |
+| valós szám |float4 |Egyirányú |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sorozatszám |serial4 |Int32 |

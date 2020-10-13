@@ -7,10 +7,10 @@ ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87310718"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Mi az Auto-Instrumentation vagy a kód-Azure Monitor Application Insights?
@@ -26,11 +26,11 @@ Ahogy egyre több integrációt adunk hozzá, az automatikus rendszerállapot-ki
 |Környezet/erőforrás-szolgáltató | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service Windows rendszeren  | GA, OnBD *       | GA, opt-in      | Privát előzetes verzió | Privát előzetes verzió |
-|Azure App Service Linuxon    | n.a.             | Nem támogatott   | Nyilvános előzetes verzió  | Nyilvános előzetes verzió  |
-|Azure App Service AK-on      | n.a.             | A tervezésben       | A tervezésben       | A tervezésben       |
+|Azure App Service Linuxon    | N/A             | Nem támogatott   | Nyilvános előzetes verzió  | Nyilvános előzetes verzió  |
+|Azure App Service AK-on      | N/A             | A tervezésben       | A tervezésben       | A tervezésben       |
 |Azure Functions – alapszintű       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
 |Azure Functions – függőségek| Nem támogatott   | Nem támogatott   | Nyilvános előzetes verzió  | Nem támogatott   |
-|Azure Kubernetes Service      | n.a.             | A tervezésben       | Ügynökön keresztül   | A tervezésben       |
+|Azure Kubernetes Service      | N/A             | A tervezésben       | Ügynökön keresztül   | A tervezésben       |
 |Azure-beli virtuális gépek Windows             | Nyilvános előzetes verzió  | Nem támogatott   | Nem támogatott   | Nem támogatott   |
 |Helyszíni virtuális gépek Windows       | GA, opt-in      | Nem támogatott   | Ügynökön keresztül   | Nem támogatott   |
 |Önálló ügynök – bármely env.   | Nem támogatott   | Nem támogatott   | Nyilvános előzetes verzió  | Nem támogatott   |

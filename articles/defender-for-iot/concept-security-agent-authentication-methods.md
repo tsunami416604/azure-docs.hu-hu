@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936268"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei
@@ -48,14 +48,14 @@ A konfigurálásának megismeréséhez tekintse meg a [biztonsági ügynök tele
 ## <a name="authentication-methods-known-limitations"></a>Ismert hitelesítési módszerek
 
 - A **SecurityModule** hitelesítési mód csak a szimmetrikus kulcsos hitelesítést támogatja.
-- Az **eszköz** hitelesítési módja nem támogatja a hitelesítésszolgáltató által aláírt tanúsítványt.
+- Az **eszköz** -hitelesítési mód nem támogatja CA-Signed a tanúsítványt.
 
 ## <a name="security-agent-installation-parameters"></a>Biztonsági ügynök telepítési paraméterei
 
 [Biztonsági ügynök telepítésekor a](how-to-deploy-agent.md)hitelesítési adatokat argumentumként kell megadni.
 Ezek az argumentumok a következő táblázatban vannak dokumentálva.
 
-|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Leírás|Beállítások|
+|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Leírás|Lehetőségek|
 |---------------------|---------------|---------|---------------|---------------|
 |hitelesítés – identitás|AuthenticationIdentity|AUI|Hitelesítési identitás| **SecurityModule** vagy- **eszköz**|
 |hitelesítés – metódus|AuthenticationMethod|Aum|Hitelesítési módszer|**SymmetricKey** vagy **SelfSignedCertificate**|

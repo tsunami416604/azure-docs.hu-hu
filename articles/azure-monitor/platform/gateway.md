@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305210"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
@@ -75,14 +75,14 @@ A Log Analytics átjáró a következő nyelveken érhető el:
 - Angol
 - Francia
 - Német
-- magyar
+- Magyar
 - Olasz
 - Japán
 - Koreai
-- lengyel
+- Lengyel
 - Portugál (Brazília)
 - Portugál (Portugália)
-- orosz
+- Orosz
 - Spanyol (nemzetközi)
 
 ### <a name="supported-encryption-protocols"></a>Támogatott titkosítási protokollok
@@ -140,7 +140,7 @@ Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, k
 
    ![Az átjáró-proxy konfigurációjának képernyőképe](./media/gateway/gateway-wizard02.png)
 
-1. Ha nincs Microsoft Update engedélyezve, a Microsoft Update lap jelenik meg, amely lehetővé teszi, hogy engedélyezze. Válasszon ki egy kijelölést, majd kattintson a **Tovább gombra**. Ellenkező esetben folytassa a következő lépéssel.
+1. Ha nincs Microsoft Update engedélyezve, a Microsoft Update lap jelenik meg, amely lehetővé teszi, hogy engedélyezze. Válasszon ki egy kijelölést, majd kattintson a **Tovább gombra**. Ha nem, folytassa a következő lépéssel.
 1. A **célmappa** oldalon hagyja meg az alapértelmezett C:\Program Files\OMS Gateway mappát, vagy adja meg azt a helyet, ahová az átjárót telepíteni kívánja. Ezután kattintson a **Tovább** gombra.
 1. A **telepítésre kész** lapon válassza a **telepítés**lehetőséget. Ha a felhasználói fiókok felügyelete engedélyt kér a telepítésre, válassza az **Igen**lehetőséget.
 1. A telepítés befejezése után válassza a **Befejezés**lehetőséget. Annak ellenőrzéséhez, hogy a szolgáltatás fut-e, nyissa meg a Services. msc beépülő modult, és ellenőrizze, hogy a **OMS átjáró** megjelenik-e a szolgáltatások listájában, és hogy az állapota **fut**-e.
@@ -285,7 +285,7 @@ Adott kiszolgálók vagy csoportok konfigurálása a Log Analytics átjárókisz
 1. Nyissa meg a Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületet.  
 1. A szerzői műveletek munkaterületen válassza a **szabályok**lehetőséget. 
 1. A Operations Manager eszköztáron kattintson a **hatókör** gombra. Ha a gomb nem érhető el, győződjön meg róla, hogy a **figyelés** ablaktáblán egy objektumot, nem pedig mappát jelölt ki. A **hatókör felügyeleti csomag objektumai** párbeszédpanel megjeleníti a közös megcélzott osztályok, csoportok vagy objektumok listáját. 
-1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Válassza az **OK** lehetőséget.  
+1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Kattintson az **OK** gombra.  
 1. Keresse meg az **Advisor proxy beállítási szabályát**. 
 1. A Operations Manager eszköztáron válassza a felülbírálások **elemet, majd a** **Rule\For felülbírálása a következő osztály egy adott objektumához: állapotfigyelő szolgáltatás** és válasszon ki egy objektumot a listából.  Vagy hozzon létre egy egyéni csoportot, amely tartalmazza azon kiszolgálók állapotfigyelő szolgáltatási objektumát, amelyekre alkalmazni kívánja ezt a felülbírálást. Ezután alkalmazza a felülbírálást az egyéni csoportra.
 1. A **felülbírálás tulajdonságai** párbeszédpanelen vegyen fel egy pipát a **felülbírálás** oszlopban a **WebProxyAddress** paraméter mellett.  A **felülbírálás értéke** mezőben adja meg az log Analytics átjárókiszolgáló URL-címét. Ügyeljen arra, hogy az előtaggal kezdődjön `http://` .  
@@ -306,7 +306,7 @@ Az egyes régiók URL-címének megkereséséhez tekintse meg az Automation doku
 Ha a számítógép automatikusan hibrid Runbook-feldolgozóként van regisztrálva, például ha a Update Management megoldás egy vagy több virtuális gépre van engedélyezve, kövesse az alábbi lépéseket:
 
 1. Adja hozzá a feladatok futtatókörnyezetének adatszolgáltatásának URL-címeit az Log Analytics-átjárón lévő engedélyezett gazdagépek listájához. Például: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Indítsa újra a Log Analytics Gateway szolgáltatást a következő PowerShell-parancsmag használatával:`Restart-Service OMSGatewayService`
+1. Indítsa újra a Log Analytics Gateway szolgáltatást a következő PowerShell-parancsmag használatával: `Restart-Service OMSGatewayService`
 
 Ha a számítógép a hibrid Runbook Worker Registration parancsmag használatával csatlakozik Azure Automationhoz, kövesse az alábbi lépéseket:
 
@@ -321,8 +321,8 @@ A Log Analytics átjáró konfigurációs beállításainak frissítéséhez par
 
 1. Telepítse a Log Analytics átjárót (Microsoft Windows Installer).
 1. Nyisson meg egy PowerShell-konzolablak ablakát.
-1. Importálja a modult a következő parancs beírásával:`Import-Module OMSGateway`
-1. Ha az előző lépésben nem történt hiba, a modul importálása sikeres volt, és a parancsmagok is használhatók. Be`Get-Module OMSGateway`
+1. Importálja a modult a következő parancs beírásával: `Import-Module OMSGateway`
+1. Ha az előző lépésben nem történt hiba, a modul importálása sikeres volt, és a parancsmagok is használhatók. `Get-Module OMSGateway` megadása
 1. Miután a parancsmagok használatával módosításokat hajt végre, indítsa újra a OMS-átjáró szolgáltatást.
 
 A 3. lépésben szereplő hiba azt jelenti, hogy a modult nem importálták. A hiba akkor fordulhat elő, ha a PowerShell nem találja a modult. A modult a OMS-átjáró telepítési útvonalán találja: *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*.
@@ -332,7 +332,7 @@ A 3. lépésben szereplő hiba azt jelenti, hogy a modult nem importálták. A h
 | `Get-OMSGatewayConfig` |Kulcs |A szolgáltatás konfigurációjának beolvasása |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Kulcs (kötelező) <br> Érték |A szolgáltatás konfigurációjának módosítása |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |A Relay (upstream) proxy címe |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Cím<br> Felhasználónév<br> Jelszó (biztonságos karakterlánc) |A Relay (upstream) proxy címe (és hitelesítő adatai) beállítása |1. Állítsa be a továbbító proxyt és a hitelesítő adatokat:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. állítson be egy olyan továbbító proxyt, amely nem igényel hitelesítést:`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. törölje a továbbítási proxy beállítását:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Cím<br> Felhasználónév<br> Jelszó (biztonságos karakterlánc) |A Relay (upstream) proxy címe (és hitelesítő adatai) beállítása |1. Állítsa be a továbbító proxyt és a hitelesítő adatokat:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. állítson be egy olyan továbbító proxyt, amely nem igényel hitelesítést: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. törölje a továbbítási proxy beállítását:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |A jelenleg engedélyezett gazdagép beolvasása (csak a helyileg konfigurált engedélyezett gazdagép, az engedélyezett gazdagépek nem tölthetők le automatikusan) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |Gazdagép (kötelező) |Hozzáadja a gazdagépet az engedélyezett listához. |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |Gazdagép (kötelező) |Eltávolítja a gazdagépet az engedélyezési listáról. |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
@@ -350,7 +350,7 @@ Az átjáró által naplózott események gyűjtéséhez telepítenie kell a Log
 
 A következő táblázat a Log Analytics átjáró eseményeinek esemény-azonosítóit és leírásait mutatja be.
 
-| **ID** | **Leírás** |
+| **ID (Azonosító)** | **Leírás** |
 | --- | --- |
 | 400 |Bármilyen alkalmazáshiba, amely nem rendelkezik egyedi AZONOSÍTÓval. |
 | 401 |Helytelen konfiguráció. Például: listenPort = "text", egész szám helyett. |

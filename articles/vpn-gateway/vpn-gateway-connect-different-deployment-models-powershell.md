@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082052"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
@@ -29,7 +29,7 @@ A klasszikus VNet Resource Manager-VNet való csatlakoztatása hasonló ahhoz, h
 
 Ha még nem rendelkezik virtuális hálózati átjáróval, és nem szeretne létrehozni egyet, érdemes lehet inkább a virtuális hálózatok csatlakoztatni a VNet-társ használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
+## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
 
 A következő lépések végigvezetik az egyes VNet dinamikus vagy Route-alapú átjárójának konfigurálásához szükséges beállításokkal, és létrehoznak egy VPN-kapcsolatot az átjárók között. Ez a konfiguráció nem támogatja a statikus vagy a házirend-alapú átjárókat.
 
@@ -97,7 +97,7 @@ A **VirtualNetworkSites** elemben adjon hozzá egy átjáró-alhálózatot a VNe
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**Például**
+**Példa**
 
 ```xml
 <VirtualNetworkSites>

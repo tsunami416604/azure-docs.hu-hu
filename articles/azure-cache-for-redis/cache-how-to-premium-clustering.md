@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004770"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
@@ -51,7 +51,7 @@ Miután létrehozta a gyorsítótárat, csatlakozik hozzá, és ugyanúgy haszn�
 > 
 > 
 
-A StackExchange. Redis ügyféllel való fürtözéssel kapcsolatos mintakód a ["Helló világ!" alkalmazás](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részében található.
+A StackExchange. Redis ügyféllel való fürtözéssel kapcsolatos mintakód a [„Helló világ!” alkalmazás](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részében található.
 
 <a name="cluster-size"></a>
 
@@ -62,7 +62,7 @@ Ha módosítani szeretné a fürt méretét egy futó prémium szintű gyorsít�
 
 A fürt méretének módosításához használja a csúszkát, vagy írjon be egy 1 és 10 közötti számot a szegmensek **száma** szövegmezőbe, majd kattintson **az OK** gombra a mentéshez.
 
-A fürt méretének növelése növeli a maximális átviteli sebességet és a gyorsítótár méretét. A fürt méretének növelése nem növeli a maximumot. az ügyfelek számára elérhető kapcsolatok.
+A fürt méretének növelése növeli a maximális átviteli sebességet és a gyorsítótár méretét. A fürt méretének növelésével nem növekszik az ügyfelek számára elérhető maximális kapcsolatok.
 
 > [!NOTE]
 > A fürt méretezése az [áttelepítési](https://redis.io/commands/migrate) parancsot futtatja, amely egy költséges parancs, ezért a minimális hatás érdekében érdemes lehet ezt a műveletet a nem csúcsidőben töltött órákban futtatni. Az áttelepítési folyamat során egy tüske jelenik meg a kiszolgáló terhelésében. A fürt méretezése hosszú ideig futó folyamat, és az igénybe vett idő a kulcsok számától és méretétől függ.
@@ -103,7 +103,7 @@ A legjobb teljesítmény és átviteli sebesség érdekében javasoljuk, hogy eg
 
 További információ: [Keys Distribution Model](https://redis.io/topics/cluster-spec#keys-distribution-model), [Redis-fürt adatainak](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)horizontális felskálázása és [kulcsok kivonatának címkéje](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
-A fürtözés és a kulcsok megkeresése a StackExchange. Redis ügyféllel című szakaszban található mintakód a ["Helló világ!" alkalmazás](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részét képezi.
+A fürtözés és a kulcsok megkeresése a StackExchange. Redis ügyféllel című szakaszban található mintakód a [„Helló világ!” alkalmazás](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részét képezi.
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>Mi az a legnagyobb gyorsítótár-méret, amelyet Létrehozhatok?
 A prémium gyorsítótár legnagyobb mérete 120 GB. Akár 10 szegmenst is létrehozhat, amelyek maximális mérete 1,2 TB GB. Ha nagyobb méretre van szüksége, [további kérések](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)is megadhatók. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
@@ -153,7 +153,7 @@ A fürtözés csak a prémium szintű gyorsítótárak esetében érhető el.
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Kivételeket kapok a StackExchange. Redis és fürtözési műveletek használatakor?
 Ha StackExchange. Redis-t használ, és `MOVE` kivételeket kap a fürtözés használatakor, győződjön meg arról, hogy a [StackExchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) vagy újabb verziót használja. A .NET-alkalmazások StackExchange. Redis használatára való konfigurálásával kapcsolatos utasításokért lásd: [a gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis prémium szintű szolgáltatási szintjeihez](cache-overview.md#service-tiers)

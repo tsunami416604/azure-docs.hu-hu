@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940800"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure arc használatára képes PostgreSQL nagy kapacitású-kiszolgálócsoport törlése
@@ -49,7 +49,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>A Kubernetes állandó mennyiségi jogcímek (PVC-EK) visszaigénylése
 
-Egy kiszolgálócsoport törlése nem távolítja el a hozzá tartozó [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)-ket. Ez az elvárt működés. A cél az, hogy segítsen a felhasználónak elérni az adatbázisfájlok elérését abban az esetben, ha a példány törlése véletlen volt. Az adatpvc-törlés nem kötelező. Azonban ajánlott. Ha nem állítja vissza ezeket a PVC-ket, a Kubernetes-fürt végül hibákba ütközik, mivel a rendszer elfogyott a lemezterületen. Az adatpvc-eszközök visszaigényléséhez hajtsa végre a következő lépéseket:
+Egy kiszolgálócsoport törlése nem távolítja el a hozzá tartozó [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)-ket. Ez az elvárt működés. A cél az, hogy segítsen a felhasználónak elérni az adatbázisfájlokat abban az esetben, ha a példány törlése véletlenül történt. A PVC-k törlése nem kötelező, de ajánlott. Ha nem szabadítja fel ezeket a PVC-ket, végül hibákba fog ütközni, mivel a Kubernetes-fürt úgy fogja érzékelni, hogy elfogy a lemezterület. Hajtsa végre a következő lépéseket a PVC-k felszabadításához:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. a törölt számítógépcsoport kilistázása
 A PVC-ket a következő parancs futtatásával listázhatja:
@@ -57,7 +57,7 @@ A PVC-ket a következő parancs futtatásával listázhatja:
 kubectl get pvc [-n <namespace name>]
 ```
 
-Visszaadja a PVSs listáját, különösen a törölt kiszolgálócsoport virtuális adatmennyiségét. Például:
+Visszaadja a PVSs listáját, különösen a törölt kiszolgálócsoport virtuális adatmennyiségét. Példa:
 ```console
 kubectl get pvc
 NAME                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -79,7 +79,7 @@ A parancs általános formátuma a következő:
 kubectl delete pvc <name of pvc>  [-n <namespace name>]
 ```
 
-Például:
+Példa:
 ```console
 kubectl delete pvc data-postgres01-0
 kubectl delete pvc data-postgres01-1 
@@ -91,7 +91,7 @@ kubectl delete pvc logs-postgres01-2
 kubectl delete pvc logs-postgres01-3
 ```
 
-Ezen kubectl-parancsok mindegyike megerősíti a PVC sikeres törlését. Például:
+Ezen kubectl-parancsok mindegyike megerősíti a PVC sikeres törlését. Példa:
 ```console
 persistentvolumeclaim "data-postgres01-0" deleted
 ```

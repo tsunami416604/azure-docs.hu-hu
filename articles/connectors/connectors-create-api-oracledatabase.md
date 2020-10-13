@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87290604"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
@@ -60,7 +60,7 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 
     ![Megjelenik egy párbeszédpanel, amelyen az összes eseményindító kereshető. Egyetlen trigger is megjelenik, a "kérés/válasz-kérelem", egy kijelölési gombbal.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Válassza a **Mentés** lehetőséget. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
+3. Kattintson a **Mentés** gombra. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
 
 4. Jelölje ki az **Új lépés**, majd a **Művelet hozzáadása** lehetőséget. Az elérhető műveletek megtekintéséhez írja be a következőt `oracle` : 
 

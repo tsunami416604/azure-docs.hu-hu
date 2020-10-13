@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284149"
 ---
 # <a name="add-parameters-to-commands"></a>Paraméterek hozzáadása parancsokhoz
@@ -36,7 +36,7 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
    1. Válassza az **Átnevezés**lehetőséget. Az **átnevezési parancs** ablakában módosítsa a **nevet** a **TurnOnOff**értékre.
 
 1. Ezután adjon hozzá egy új paramétert ehhez a parancshoz, amely azt jelzi, hogy a felhasználó be-vagy kikapcsolja az eszközt.
-   1. A középső ablaktábla tetején kattintson a **Hozzáadás** elemre. A legördülő menüben válassza a **paraméter**lehetőséget.
+   1. A középső ablaktábla tetején kattintson a  **Hozzáadás** elemre. A legördülő menüben válassza a **paraméter**lehetőséget.
    1. A jobb oldali ablaktáblában, a **Parameters (paraméterek** ) szakaszban adja hozzá az értéket a **Name (név** ) mezőben **javítás OnOff**.
    1. Válassza a **kötelező**lehetőséget. A **válasz hozzáadása a kötelező paraméterhez** ablakban válassza az **egyszerű szerkesztő**lehetőséget. Az **első változatban**adja hozzá a
         ```
@@ -52,16 +52,16 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
        | Konfiguráció      | Ajánlott érték     | Leírás                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Név               | `OnOff`           | A paraméter leíró neve                                                                           |
+       | Name (Név)               | `OnOff`           | A paraméter leíró neve                                                                           |
        | Globális          | nincs bejelölve       | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan az alkalmazás összes parancsára vonatkozik-e|
        | Kötelező           | ellenőrizni         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
-       | A kötelező paraméterre adott válasz      |Egyszerű szerkesztő >`On or Off?`      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert |
+       | A kötelező paraméterre adott válasz      |Egyszerű szerkesztő > `On or Off?`      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert |
        | Típus               | Sztring          | A paraméter típusa (például szám, karakterlánc, dátum vagy földrajzi idő)   |
        | Konfiguráció      | Előre megadott bemeneti értékek elfogadása a belső katalógusból | Karakterláncok esetén ez a beállítás a lehetséges értékek halmazára korlátozza a bemeneteket |
        | Előre megadott bemeneti értékek     | `on`, `off`           | A lehetséges értékek és az aliasok halmaza         |
        
         
-   1. Előre definiált bemeneti értékek hozzáadásához válassza az **előre definiált bevitel hozzáadása** lehetőséget, majd az **új elem** ablakban írja be a **nevet** a fenti táblázatban megadott módon. Ebben az esetben nem használunk aliasokat, így üresen hagyhatjuk.
+   1. Előre definiált bemeneti értékek hozzáadásához válassza az **előre definiált bevitel hozzáadása** lehetőséget, majd az **új elem**  ablakban írja be a **nevet** a fenti táblázatban megadott módon. Ebben az esetben nem használunk aliasokat, így üresen hagyhatjuk.
    
       > [!div class="mx-imgBorder"]
       > ![Paraméter létrehozása](media/custom-commands/create-on-off-parameter.png)
@@ -75,10 +75,10 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
        | Beállítás            | Ajánlott érték       |
        | ------------------ | --------------------- |
-       | Név               | `SubjectDevice`         |
+       | Name (Név)               | `SubjectDevice`         |
        | Globális          | nincs bejelölve             |
        | Kötelező           | ellenőrizni               |
-       | A kötelező paraméterre adott válasz     | Egyszerű szerkesztő >`Which device do you want to control?`    | 
+       | A kötelező paraméterre adott válasz     | Egyszerű szerkesztő > `Which device do you want to control?`    | 
        | Típus               | Sztring                |          |
        | Konfiguráció      | Előre megadott bemeneti értékek elfogadása a belső katalógusból | 
        | Előre megadott bemeneti értékek | `tv`, `fan`               |
@@ -90,9 +90,9 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
 A paramétereket tartalmazó parancsok esetében hasznos lehet olyan példákat felvenni, amelyek az összes lehetséges kombinációra kiterjednek. Például:
 
-* Paraméterek részletes adatai –`turn {OnOff} the {SubjectDevice}`
-* Részleges paraméterek adatai –`turn it {OnOff}`
-* Nincs paraméter-információ –`turn something`
+* Paraméterek részletes adatai – `turn {OnOff} the {SubjectDevice}`
+* Részleges paraméterek adatai – `turn it {OnOff}`
+* Nincs paraméter-információ – `turn something`
 
 A különböző szintű információkkal rendelkező mondatok például lehetővé teszik, hogy az egyéni parancsok alkalmazás az egylépéses és a többszörös fordulatú feloldásokat is feloldja a részleges információkkal.
 
@@ -106,10 +106,10 @@ turn something {OnOff}
 turn something
 ```
 
-Válassza a **Mentés** lehetőséget.
+Kattintson a **Mentés** gombra.
 
 > [!TIP]
-> A példában a mondatok szerkesztő kapcsos zárójeleket használ a paraméterekre való hivatkozáshoz. - `turn {OnOff} the {SubjectDevice}`Használja a TAB billentyűt a korábban létrehozott paraméterek által támogatott automatikus befejezéshez.
+> A példában a mondatok szerkesztő kapcsos zárójeleket használ a paraméterekre való hivatkozáshoz. - `turn {OnOff} the {SubjectDevice}` Használja a TAB billentyűt a korábban létrehozott paraméterek által támogatott automatikus befejezéshez.
 
 ### <a name="modify-completion-rules-to-include-parameters"></a>A befejezési szabályok módosítása a paraméterek belefoglalásához
 
@@ -118,13 +118,13 @@ Módosítsa a meglévő befejezési szabály **ConfirmationResponse**.
 1. A **feltételek** szakaszban válassza a **feltétel hozzáadása**lehetőséget.
 1. Az **új feltétel** ablak **típus** listájában válassza a **kötelező paraméterek**elemet. Az alábbi ellenőrzési listán keresse meg a **javítás OnOff** és a **SubjectDevice**is.
 1. A **IsGlobal** ne legyen bejelölve.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. A **műveletek** szakaszban szerkessze a meglévő **beszédfelismerési választ** a művelet fölé, és válassza a Szerkesztés gombot. Ezúttal használja az újonnan létrehozott **javítás OnOff** és **SubjectDevice** paramétereket
 
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="try-it-out"></a>Próba
 1. Válassza a **vonat** ikont a jobb oldali ablaktábla tetején.
@@ -149,9 +149,9 @@ Módosítsa a **SetTemperature** parancsot úgy, hogy az a felhasználó által 
 
 | Konfiguráció      | Ajánlott érték     |
 | ------------------ | ----------------|
-| Név               | `Temperature`           |
+| Name (Név)               | `Temperature`           |
 | Kötelező           | ellenőrizni         |
-| A kötelező paraméterre adott válasz      | Egyszerű szerkesztő >`What temperature would you like?`
+| A kötelező paraméterre adott válasz      | Egyszerű szerkesztő > `What temperature would you like?`
 | Típus               | Szám          |
 
 
@@ -169,7 +169,7 @@ Szerkessze a meglévő befejezési szabályokat a következő konfigurációnak 
 | Konfiguráció      | Ajánlott érték     |
 | ------------------ | ----------------|
 | Feltételek         | A kötelező paraméter > hőmérséklete           |
-| Műveletek           | Beszédfelismerési válasz küldése >`Ok, setting temperature to {Temperature} degrees` |
+| Műveletek           | Beszédfelismerési válasz küldése > `Ok, setting temperature to {Temperature} degrees` |
 
 ### <a name="try-it-out"></a>Próba
 
@@ -186,9 +186,9 @@ Adja hozzá a **datetime** nevű paramétert a következő konfigurációval.
 
    | Beállítás                           | Ajánlott érték                     | 
    | --------------------------------- | ----------------------------------------|
-   | Név                              | `DateTime`                               |
+   | Name (Név)                              | `DateTime`                               |
    | Kötelező                          | ellenőrizni                                 |
-   | A kötelező paraméterre adott válasz   | Egyszerű szerkesztő >`For what time?`            | 
+   | A kötelező paraméterre adott válasz   | Egyszerű szerkesztő > `For what time?`            | 
    | Típus                              | DateTime                                |
    | Dátum alapértelmezett értékei                     | Ha a Date hiányzik a mai nap használata            |
    | Idő alapértelmezett értékei                     | Ha hiányzik az idő, használja a nap kezdetét     |
@@ -210,7 +210,7 @@ Szerkessze a meglévő befejezési szabályokat a következő konfigurációnak 
 
    | Beállítás    | Ajánlott érték                               |
    | ---------- | ------------------------------------------------------- |
-   | Műveletek    | Beszédfelismerési válasz küldése –`Ok, alarm set for {DateTime}`  |
+   | Műveletek    | Beszédfelismerési válasz küldése – `Ok, alarm set for {DateTime}`  |
 
 
 ### <a name="try-it-out"></a>Próba

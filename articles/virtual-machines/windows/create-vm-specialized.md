@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87266894"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973257"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása specializált lemezből a PowerShell-lel
 
@@ -27,7 +27,7 @@ Erre számos lehetősége van:
 
 A Azure Portal használatával [egy új virtuális gépet is létrehozhat egy speciális VHD-ből](create-vm-specialized-portal.md).
 
-Ez a cikk bemutatja, hogyan használhatja a felügyelt lemezeket. Ha olyan örökölt központi telepítéssel rendelkezik, amely Storage-fiók használatát igényli, tekintse meg a [virtuális gép létrehozása egy speciális VHD-ből a Storage-fiókban](sa-create-vm-specialized.md)című témakört.
+Ez a cikk bemutatja, hogyan használhatja a felügyelt lemezeket. Ha olyan örökölt központi telepítéssel rendelkezik, amely Storage-fiók használatát igényli, tekintse meg a [virtuális gép létrehozása egy speciális VHD-ből a Storage-fiókban](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)című témakört.
 
 Azt javasoljuk, hogy az egyidejű központi telepítések számát legfeljebb 20 virtuális gépre korlátozza egyetlen VHD-fájlból vagy pillanatképből. 
 
@@ -268,5 +268,5 @@ $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).

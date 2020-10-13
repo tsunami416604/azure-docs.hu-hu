@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317178"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Adatok gyűjtése az Azure Diagnostics bővítményből Azure Monitor naplókba
@@ -24,13 +24,13 @@ Az Azure Diagnostics bővítmény egy Azure Storage-fiókban tárolja az adatait
 
 | Napló típusa | Erőforrás típusa | Hely |
 | --- | --- | --- |
-| IIS-naplók |Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |wad-IIS-LogFiles (Blob Storage) |
-| Rendszernapló |Virtuális gépek |LinuxsyslogVer2v0 (Table Storage) |
+| IIS-naplók |Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |wad-IIS-LogFiles (Blob Storage) |
+| Rendszernapló |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
 | Operatív események Service Fabric |Service Fabric csomópontok |WADServiceFabricSystemEventTable |
 | Megbízható Actors-események Service Fabric |Service Fabric csomópontok |WADServiceFabricReliableActorEventTable |
 | Megbízható szolgáltatási események Service Fabric |Service Fabric csomópontok |WADServiceFabricReliableServiceEventTable |
-| Windows-eseménynaplók |Service Fabric csomópontok <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-naplók |Service Fabric csomópontok <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table Storage) |
+| Windows-eseménynaplók |Service Fabric csomópontok <br> Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-naplók |Service Fabric csomópontok <br> Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Az adattípusok nem támogatottak
 
@@ -47,7 +47,7 @@ Az alábbi eljárással engedélyezheti a diagnosztikai bővítmények adatainak
 
 1. A Azure Portal lépjen a **log Analytics munkaterületek** elemre, és válassza ki a munkaterületet.
 1. A menü **munkaterület-adatforrások** szakaszában kattintson a **Storage-fiókok naplói** elemre.
-2. Kattintson a **Hozzáadás**gombra.
+2. Kattintson a  **Hozzáadás**gombra.
 3. Válassza ki azt a **Storage-fiókot** , amely a gyűjteni kívánt adatokat tartalmazza.
 4. Válassza ki a gyűjteni kívánt **adattípust** .
 5. A forrás értékét a rendszer automatikusan kitölti az adattípus alapján.

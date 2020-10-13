@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331811"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Oktatóanyag: fizikailag vezérelt renderelési anyagok beállítása a 3ds Max-ban
@@ -177,7 +177,7 @@ Az exportálási folyamatba való áttérés előtt megfontolandó utolsó lép�
 
 1. Kattintson a jobb gombbal a kijelölésre, és válassza a **beállítás elérési útja**lehetőséget.
 
-1. Az **eszköz elérési útjának megadása** mezőben válassza ki a textúrák helyi elérési útját, és cserélje le a következőre: `.\` .  Válassza az **OK** lehetőséget. 
+1. Az **eszköz elérési útjának megadása** mezőben válassza ki a textúrák helyi elérési útját, és cserélje le a következőre: `.\` .  Kattintson az **OK** gombra. 
 
     Az eszköz nyomon követésére szolgáló ablak a következő képernyőképen látható módon fog frissülni. A frissítés eltarthat egy ideig, attól függően, hogy a jelenet hány textúrákat tartalmaz, és milyen nagy a jelenet.
 ![Screensthot, amely megjeleníti a frissített eszköz követési ablakát.](media/3dsmax/resolve-textures.jpg)
@@ -231,7 +231,7 @@ Most, hogy elvégezte a textúra elérési útjaihoz viszonyított relatív ért
 
 Általánosságban elmondható, hogy az ilyen típusú anyagok reálisak, mert a fény valós fizikáján alapulnak. Ez egy további alámerülés hatást eredményez, amely úgy tűnik, hogy a jelenet valóban létezik a valós világban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már tudja, hogyan állíthat be speciális világítású anyagokat a jelenetekben található objektumokhoz. Arról is tájékozódhat, hogyan exportálhat objektumokat FBX formátumba, amelyet az Azure távoli renderelése támogat. A következő lépés a FBX fájl átalakítása és megjelenítése az Azure-beli távoli renderelésben.
 

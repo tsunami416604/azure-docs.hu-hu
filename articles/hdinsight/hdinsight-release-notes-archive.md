@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
 ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442380"
 ---
 # <a name="archived-release-notes"></a>Archivált kibocsátási megjegyzések
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Apache Hadoop és az Azure-beli Apache Spark-elemzések terén.
 
@@ -391,7 +391,7 @@ A HDInsight 4,0-ben elérhető javításokról további információt az alábbi
 |---|---|
 | Ambari | [Ambari-javítási információk](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
 | Hadoop | [Hadoop-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBase-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| A HBase | [HBase-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
 | Hive  | Ez a kiadás további Apache-javítások nélkül biztosít kaptár-3.1.0.  |
 | Kafka | Ebben a kiadásban a Kafka 1.1.1-es verziója további Apache-javítások nélkül elérhető. |
 | Oozie | [Oozie-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
@@ -615,7 +615,7 @@ A HDP 2.6.4 a Hadoop Common 2.7.3 és a következő Apache-javításokat biztos�
 
 -   [Fonal-6805](https://issues.apache.org/jira/browse/YARN-6805): NPE a LinuxContainerExecutor-ben a PrivilegedOperationException-kilépési kód miatt.
 
-#### <a name="hbase"></a>HBase
+#### <a name="hbase"></a>A HBase
 
 Ebben a kiadásban a HBase 1.1.2 és a következő Apache-javítások is elérhetők.
 
@@ -751,7 +751,7 @@ Ez a kiadás a következő javítások mellett biztosítja a kaptár 1.2.1-es é
 
 -   [*Struktúra-18189*](https://issues.apache.org/jira/browse/HIVE-18189): a kaptár lekérdezése helytelen eredményeket adott vissza, ha a kaptár. groupby. OrderBy. position. alias értéket igaz értékre állítja.
 
--   [*Struktúra-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektorizációt: a MERGEPARTIAL csökkentése ismétlődő oszlopokkal megszakadt.
+-   [*Kaptár-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektorizációt: Reduce-Side Group By MERGEPARTIAL ismétlődő oszlopokkal megszakadt.
 
 -   [*Struktúra-18293*](https://issues.apache.org/jira/browse/HIVE-18293): a struktúra nem tömöríti az olyan mappában található táblázatokat, amely nem a HiveMetaStore-t futtató identitás tulajdonában van.
 
@@ -859,7 +859,7 @@ Ez a kiadás a következő javítások mellett biztosítja a kaptár 1.2.1-es é
 
 -   [*Struktúra-18189*](https://issues.apache.org/jira/browse/HIVE-18189): az Order by pozíció nem működik, ha a CBO le van tiltva.
 
--   [*Struktúra-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektorizációt: a MERGEPARTIAL csökkentése ismétlődő oszlopokkal megszakadt.
+-   [*Kaptár-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektorizációt: Reduce-Side Group By MERGEPARTIAL ismétlődő oszlopokkal megszakadt.
 
 -   [*Struktúra-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: a lassú feldolgozási folyamattal rendelkező gyors LLAP IO a bácsihoz vezethet.
 
@@ -981,7 +981,7 @@ A HDP-2.3. x és 2.4. x verzióban a Mahout egy adott Apache-kiadásának száll
 
 A HDP 2.3. x és 2.4. x Mahout kiválasztott felülvizsgálati pont az Apache Mahout "Mahout-0,10. x" ága, a GitHubon a 2014-es verzióban, a 0f037cb03e77c096 változatban.
 
-A HDP-2.5. x és a 2.6. x verzióban eltávolította a "Commons-httpclient" könyvtárat a Mahout-ből, mert elavult függvénytárként tekintjük meg a lehetséges biztonsági problémákkal, és a Mahout-2,5-es verziójához hasonló verziót frissítettük a 2.7.3--es verzióban. Ennek eredményeképpen:
+A HDP-2.5. x és a 2.6. x verzióban eltávolította a "Commons-httpclient" könyvtárat a Mahout-ből, mert elavult függvénytárként tekintjük meg a lehetséges biztonsági problémákkal, és a 2.7.3-2,5-es verzióban használt verzióval Hadoop-Client frissítettük a Mahout-HDP. Ennek eredményeképpen:
 
 -   A korábban lefordított Mahout-feladatokat újra kell fordítani a HDP-2,5 vagy a 2,6 környezetben.
 
@@ -1139,7 +1139,7 @@ Ez a kiadás a Spark 2.3.0 és a következő Apache-javításokat biztosítja:
 
 -   [Spark-23598](https://issues.apache.org/jira/browse/SPARK-23598): a BufferedRowIterator nyilvános metódusok használatával elkerülhetők a futásidejű hibák a nagyméretű lekérdezéseknél.
 
--   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): a pszeudo-véletlenszerű számokból származó UUID-generátor hozzáadása.
+-   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): adjon hozzá egy UUID-generátort Pseudo-Random számokból.
 
 -   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): RandomUUIDGenerator használata az UUID kifejezésben.
 
@@ -1221,7 +1221,7 @@ Ez a kiadás a Spark 2.3.0 és a következő Apache-javításokat biztosítja:
 
 Ez a kiadás további Apache-javítások nélkül biztosít Sqoop 1.4.6.
 
-#### <a name="storm"></a>Storm
+#### <a name="storm"></a>Vihar
 
 Ebben a kiadásban a Storm 1.1.1 és a következő Apache-javítások állnak rendelkezésre:
 
@@ -1358,7 +1358,7 @@ A rögzített problémák olyan kiválasztott problémákat jelentenek, amelyek 
 | HIBA – 92957              | [STRUKTÚRA – 11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | a Count ( \* ) nem megfelelő eredmény a külső táblákhoz tartozó táblázat statisztikái alapján                                                   |
 | HIBA – 93097              | [RANGER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | A felügyeleti naplózás műveleti szűrője nem működik                                                                           |
 | HIBA – 93335              | [STRUKTÚRA – 12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | a vektorizációt \_ Short \_ visszafejlődés. q hibás eredményt ad a kettős számításhoz                                      |
-| HIBA – 93415              | [Struktúra-18258](https://issues.apache.org/jira/browse/HIVE-18258), [struktúra-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizációt: a MERGEPARTIAL párhuzamos CSOPORTOSÍTÁSa ismétlődő oszlopok megszakadásával                                      |
+| HIBA – 93415              | [Struktúra-18258](https://issues.apache.org/jira/browse/HIVE-18258), [struktúra-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizációt: Reduce-Side GROUP BY MERGEPARTIAL ismétlődő oszlopokkal megszakadt                                      |
 | HIBA – 93939              | [ATLAS-2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Egy típus létrehozásakor hozzáadott további "Description" paraméter                                                               |
 | HIBA – 94007              | [Phoenix-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [Phoenix-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | A Phoenix-lekérdezések null értékeket adnak vissza a HBase részleges sorai miatt                                                          |
 | HIBA – 94266              | [STRUKTÚRA – 12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | A felülírás beszúrása ugyanabban a titkosított zónában csendesen meghiúsul a meglévő fájlok eltávolítása                                   |
@@ -1751,7 +1751,7 @@ A rögzített problémák olyan kiválasztott problémákat jelentenek, amelyek 
 |**Kafka 1,0**|**N.A.**|**A Apache Spark kibocsátási megjegyzésekben dokumentált változások** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Struktúra/Ranger** | |További Ranger-struktúra-szabályzatok szükségesek a Beszúrás FELÜLÍRÁSához |**Forgatókönyv:** További Ranger-struktúra-szabályzatok szükségesek a **Beszúrás felülírásához**<br /><br />**Előző viselkedés:** A kaptár **beszúrása felülíró** lekérdezések a szokásos módon sikeresek lesznek.<br /><br />**Új viselkedés:** A kaptár- **beszúrási** lekérdezések váratlanul meghiúsulnak a HDP-2.6. x-re való frissítés után, a következő hibával:<br /><br />Hiba történt az utasítás összeállítása közben: sikertelen: a HiveAccessControlException engedély megtagadva: a felhasználó jdoe nem rendelkezik írási jogosultsággal a/tmp/ \* (State = 42000, code = 40000)<br /><br />A HDP-2.6.0 esetében a kaptár- **beszúrási** lekérdezésekhez a Ranger URI-szabályzata szükséges ahhoz, hogy írási műveleteket engedélyezzen, még akkor is, ha a felhasználó rendelkezik írási jogosultsággal a HDFS szabályzaton keresztül.<br /><br />**Megkerülő megoldás/várt ügyfél-művelet:**<br /><br />1. hozzon létre egy új szabályzatot a kaptár-tárházban.<br />2. a legördülő menüben válassza az URI elemet.<br />3. az elérési út frissítése (példa:/tmp/*)<br />4. adja hozzá a felhasználókat és a csoportot, és mentse.<br />5. próbálkozzon újra az INSERT lekérdezéssel.|
 |**HDFS**|**N.A.** |A HDFS több KMS URI-t is támogatnia kell |**Korábbi viselkedés:** a KMS-szolgáltató elérési útjának konfigurálásához a DFS. encryption. key. Provider. URI tulajdonságot használta.<br /><br />**Új viselkedés:** az elosztott fájlrendszerbeli. encryption. key. Provider. URI már elavult a Hadoop. Security. key. Provider. Path fájl javában a KMS-szolgáltató elérési útjának konfigurálásához.|
-|**Zeppelin**|[**ZEPPELIN – 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Az ütemező letiltásának lehetősége |**Érintett összetevő:** Zeppelin – kiszolgáló<br /><br />**Előző viselkedés:** A Zeppelin korábbi kiadásaiban nem volt lehetőség az ütemező letiltására.<br /><br />**Új viselkedés:** Alapértelmezés szerint a felhasználók már nem látják a Feladatütemezőt, mivel alapértelmezés szerint le van tiltva.<br /><br />**Megkerülő megoldás/várt ügyfél-művelet:** Ha engedélyezni szeretné a Feladatütemezőt, hozzá kell adnia a azeppelin. notebook. cron. Enable értéket true értékkel az egyéni Zeppelin-helyen a Zeppelin-beállításokban a Ambari-ből.|
+|**Zeppelin**|[**ZEPPELIN – 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Az ütemező letiltásának lehetősége |**Érintett összetevő:** Zeppelin-Server<br /><br />**Előző viselkedés:** A Zeppelin korábbi kiadásaiban nem volt lehetőség az ütemező letiltására.<br /><br />**Új viselkedés:** Alapértelmezés szerint a felhasználók már nem látják a Feladatütemezőt, mivel alapértelmezés szerint le van tiltva.<br /><br />**Megkerülő megoldás/várt ügyfél-művelet:** Ha engedélyezni szeretné a Feladatütemezőt, hozzá kell adnia a azeppelin. notebook. cron. Enable értéket true értékkel az egyéni Zeppelin-helyen a Zeppelin-beállításokban a Ambari-ből.|
 
 ### <a name="known-issues"></a>Ismert problémák
 

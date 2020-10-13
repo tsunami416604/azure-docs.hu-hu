@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Se
 ms.topic: article
 ms.date: 09/30/2020
 ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598135"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
@@ -128,7 +128,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     1. Válassza ki **Service Bus névtereket** a **szűrés erőforrástípus** mezőben. 
     2. Válassza ki az előfizetését a **szűrés előfizetés alapján** mezőben.
     3. Válassza ki a **Service Bus-névteret** a listából. 
-    4. Válassza a **Kész** lehetőséget. 
+    4. Válassza a **Done** (Kész) lehetőséget. 
     
         ![Névtér kiválasztása](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Válassza a **feltétel hozzáadása**lehetőséget, és hajtsa végre a következő műveleteket a **jel logikai beállítása** lapon:
@@ -139,7 +139,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     1. Válasszon **nagyobbat** a **feltételnél**.
     2. Válassza az **összeg** lehetőséget az **idő összesítéséhez**. 
     3. Adja meg az **5** értéket a **küszöbértékhez**. 
-    4. Válassza a **Kész** lehetőséget.    
+    4. Válassza a **Done** (Kész) lehetőséget.    
 
         ![Feltétel meghatározása](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. A **szabály létrehozása** lapon bontsa ki a **riasztás részleteinek meghatározása**elemet, majd hajtsa végre a következő műveleteket:
@@ -159,7 +159,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     8. Az **e-mail/SMS/leküldés/hang** oldalon hajtsa végre a következő műveleteket:
         1. Válassza az **e-mail**lehetőséget. 
         2. Adja meg az **e-mail-címet**. 
-        3. Válassza az **OK** lehetőséget.
+        3. Kattintson az **OK** gombra.
 
             ![A műveleti csoport hozzáadása lap képernyőképe. Az "e-mail küldése" nevű művelet a csoportba kerülő e-mail-/SMS/push/Voice típusú művelettel.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. A **műveleti csoport hozzáadása** lapon kattintson **az OK gombra**. 
@@ -167,7 +167,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
 
     ![Riasztási szabály létrehozása gomb](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [Azure monitor áttekintése](../azure-monitor/overview.md).
 
