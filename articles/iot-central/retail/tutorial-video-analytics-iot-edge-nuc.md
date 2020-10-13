@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038339"
+ms.locfileid: "91873302"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Oktatóanyag: IoT Edge-példány létrehozása a video analyticshez (Intel NUC)
 
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Mielőtt elkezdené, végezze el az előző [Live Video Analytics-alkalmazás létrehozása az Azure IoT Central](./tutorial-video-analytics-create-app.md) oktatóanyagban című részt.
+* Mielőtt elkezdené, végezze el az előző [Live Video Analytics-alkalmazás létrehozása az azure IoT Centralban (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) , vagy [hozzon létre egy videó-elemzést az Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md)oktatóanyagban.
 * Egy olyan eszköz, például egy Linux rendszerű Intel-NUC, amely Docker-tárolókat képes futtatni, és elegendő feldolgozási teljesítménnyel rendelkezik a videó-elemzések futtatásához.
 * Az eszközön telepített és futó [IoT Edge futtatókörnyezet](../../iot-edge/how-to-install-iot-edge-linux.md) .
 * Képesnek kell lennie csatlakozni a IoT Edge eszközre a Windows rendszerű gépről, szüksége lesz a [PUTTY SSH-ügyfélre](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) vagy egy ezzel egyenértékű eszközre.
@@ -149,7 +149,7 @@ Azonosítsa a IoT Edge eszközhöz csatlakoztatott fényképezőgépek RTSP stre
 > [!TIP]
 > Próbálja meg megtekinteni a kamera streamjét a IoT Edge számítógépen egy médialejátszó, például a VLC használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most telepítette az IoT Edge futtatókörnyezetet és a LVA modulokat az Intel NUC Gateway-eszközre.
 

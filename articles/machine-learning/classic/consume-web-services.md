@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
 ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91343688"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
@@ -36,7 +36,7 @@ A Azure Machine Learning webszolgáltatással egy külső alkalmazás valós id�
 
 A Azure Machine Learning Studio (klasszikus) két típusú szolgáltatást tartalmaz:
 
-* Kérelem-válasz szolgáltatás (RR) – alacsony késésű, rugalmasan méretezhető szolgáltatás, amely felületet biztosít a Machine Learning Studio (klasszikus) által létrehozott és telepített állapot nélküli modellekhez.
+* Request-Response Service (RR) – alacsony késésű, rugalmasan méretezhető szolgáltatás, amely felületet biztosít a Machine Learning Studio (klasszikus) által létrehozott és üzembe helyezett állapot nélküli modellekhez.
 * Batch végrehajtási szolgáltatás (BES) – egy aszinkron szolgáltatás, amely az adatrekordok kötegét szerzi be.
 
 A Machine Learning webszolgáltatásokkal kapcsolatos további információkért lásd: [Machine learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md).
@@ -78,7 +78,7 @@ A Machine Learning API súgója az előrejelzési webszolgáltatás részleteit 
 1. Kattintson arra a webszolgáltatásra, amellyel dolgozik.
 2. Kattintson arra a végpontra, amelynek meg szeretné tekinteni az API-Súgó lapját.
 3. A felső **menüben kattintson a**felhasználás elemre.
-4. Az **API-Súgó lapon** kattintson a kérelem-válasz vagy a Batch-végrehajtási végpontok lehetőségre.
+4. Kattintson az **API-Súgó lap** Request-Response vagy batch végrehajtási végpontok elemére.
 
 **Új webszolgáltatás Machine Learning API-súgójának megtekintése**
 
@@ -87,7 +87,7 @@ A [Azure Machine learning Web Services portálon](https://services.azureml.net/)
 1. A felső menüben kattintson a **Web Services** elemre.
 2. Kattintson arra a webszolgáltatásra, amelynek a kulcsát le szeretné kérni.
 
-Kattintson a **webszolgáltatás használata** lehetőségre a kérelem-válasz és a Batch-végrehajtási szolgáltatások URI-kódjának beszerzéséhez, valamint a C#, az R és a Python kódban.
+Kattintson a **webszolgáltatások használata** lehetőségre az URI-k beszerzéséhez a Request-Response és a Batch-végrehajtási szolgáltatások és a mintakód számára a C#, az R és a Python nyelvben.
 
 Kattintson a **hencegés API** lehetőségre a megadott URI-k által hívott API-k hencegő dokumentációjának beszerzéséhez.
 

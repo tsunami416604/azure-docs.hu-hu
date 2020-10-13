@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Azure Active Directory-integráció az üzemeltetett grafittal
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az üze
 Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Üzemeltetett grafit egyszeri bejelentkezés konfigurálása](#configure-hosted-graphite-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[szolgáltatott grafit egyszeri bejelentkezésének konfigurálása](#configure-hosted-graphite-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Üzemeltetett grafit-tesztelési felhasználó létrehozása](#create-hosted-graphite-test-user)** – ha a Britta Simon-t olyan üzemeltetett grafitban szeretné tárolni, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
     > [!NOTE]
     > Vegye figyelembe, hogy ezek nem valódi értékek. Ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel kell frissíteni. Ezeknek az értékeknek a beszerzéséhez nyissa meg a hozzáférés->SAML-telepítést az alkalmazás oldalán, vagy lépjen kapcsolatba a [tárolt grafit támogatási csapatával](mailto:help@hostedgraphite.com).
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-hosted-graphite-single-sign-on"></a>Üzemeltetett grafit egyszeri bejelentkezés konfigurálása
+### <a name="configure-hosted-graphite-single-sign-on"></a>Üzemeltetett grafit-Sign-On konfigurálása
 
 1. Jelentkezzen be a futtatott grafit-bérlőre rendszergazdaként.
 

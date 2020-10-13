@@ -11,10 +11,10 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
 ms.openlocfilehash: b30cd926f6908c26c6f71c1513a8c68c8a46bf43
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359749"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése
@@ -71,9 +71,9 @@ A naplók az Azure Storage-fiók megismeréséhez rendelkezésre álló számos 
 ## <a name="log-blob-detail-information"></a>A blob részletes adatainak naplózása
 A tárolóban lévő összes blob a diagnosztikai adatokat a következő műveletek pontosan egyikének megfelelően tárolja:
 
-* A batch-execution metódus végrehajtása  
-* A kérelem-válasz módszer végrehajtása  
-* Kérelem-válasz tároló inicializálása
+* A Batch-Execution metódus végrehajtása  
+* A Request-Response metódus végrehajtása  
+* Request-Response tároló inicializálása
 
 Az egyes Blobok neve a következő formátumú előtaggal rendelkezik: 
 

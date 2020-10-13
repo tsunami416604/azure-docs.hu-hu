@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356366"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
@@ -170,7 +170,7 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
 
 3. Adja hozzá a **gyűjtemény** és az **adatbázis** nevét. (Ezek a nevek csak akkor **changefeedlabcollection** és **changefeedlabdatabase** , ha úgy dönt, hogy másképpen nevezi el.)
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="A kapcsolatok karakterláncának frissítése":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Projekt vizualizációja":::
  
 4. Mentse a módosításokat az összes szerkesztett fájlon.  
 
@@ -180,7 +180,7 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
 
 7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő**, akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="A portálon létrehozott adatértékek":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Projekt vizualizációja":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics-feladatok beállítása
 
@@ -190,7 +190,7 @@ A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltat
 
 2. Válassza ki az alább látható **bemeneteket** .  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Bemenet létrehozása":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Projekt vizualizációja":::
 
 3. Válassza a **+ stream-bemenet hozzáadása**elemet. Ezután válassza ki az **Event hub** elemet a legördülő menüből.  
 
@@ -222,20 +222,7 @@ A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltat
 
 8. Ezután lépjen vissza a **streamjob1** , és válassza a **lekérdezés szerkesztése**lehetőséget.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Lekérdezés szerkesztése":::
- 
-9. Illessze be a következő lekérdezést a lekérdezési ablakba. Az **átlagos ár** lekérdezés kiszámítja a felhasználók által megtekintett elemek átlagos árát, a felhasználók kosarahoz hozzáadott összes elem átlagos árát, valamint a felhasználók által megvásárolt összes elem átlagos árát. Ez a mérőszám segítséget nyújt az e-kereskedelmi vállalatoknak, hogy eldöntsék, milyen árakat kell értékesíteni a-ben, és hogy milyen leltárt kell a Ha például a megtekintett elemek átlagos díja jóval meghaladja a megvásárolt elemek átlagát, akkor a vállalat dönthet úgy, hogy olcsóbb elemeket ad hozzá a leltárhoz.
-
-   ```sql
-   /*AVERAGE PRICE*/      
-   SELECT System.TimeStamp AS Time, Action, AVG(Price)  
-    INTO averagePriceOutput  
-    FROM input  
-    GROUP BY Action, TumblingWindow(second,5) 
-   ```
-10. Ezután válassza a **Mentés** lehetőséget a bal felső sarokban.  
-
-11. Most térjen vissza a **streamjob1** , és kattintson a lap tetején található **Start** gombra. A Azure Stream Analytics eltarthat néhány percig, de végül látni fogja, hogy a "Start" értékről a "Running" (indítás) lehetőségre változik.
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Projekt vizualizációja" (indítás) lehetőségre változik.
 
 ## <a name="connect-to-power-bi"></a>Csatlakozás a Power BI-hoz
 
@@ -315,7 +302,7 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
    A minta irányítópult a következő diagramokat keresi:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="A képernyőfelvétel egy minta-irányítópultot mutat be, amely a megvásárolt elemek átlagos árát tartalmazza művelet, egyedi látogató, bevétel és 5 legfontosabb elem alapján.":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Projekt vizualizációja":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Nem kötelező: megjelenítés E-kereskedelmi webhellyel
 
@@ -329,13 +316,13 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 2. Válassza ki a **topItems** gyűjteményt, és a **skála és beállítások** területen állítsa be az **élettartamot** **30 másodpercre** , hogy a topItems 30 másodpercenként frissítsen.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Élettartam":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Projekt vizualizációja":::
 
 3. Ahhoz, hogy a **topItems** -gyűjteményt a leggyakrabban megvásárolt elemekkel töltse fel, térjen vissza a **streamjob1** , és adjon hozzá egy új **kimenetet**. Válassza a **Cosmos db**lehetőséget.
 
 4. Töltse ki a kötelező mezőket az alábbi képen látható módon.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos-kimenet":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Projekt vizualizációja":::
  
 5. Ha a labor előző részében a nem kötelező első 5 lekérdezést adta hozzá, folytassa a következő résszel: 5a. Ha nem, folytassa az 5b. résszel.
 

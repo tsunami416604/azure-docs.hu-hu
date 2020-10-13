@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: szöveg kinyerése a Computer Vision 3,0 REST API olvasási művelet és C #'
+title: 'Gyors útmutató: szöveg kinyerése a Computer Vision 3,1 REST API olvasási művelet és C #'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Computer Vision 3,0 REST API olvasási művelet és a C# használatával alkalmazzon OCR-t egy képre.
+description: Ebben a rövid útmutatóban a Computer Vision 3,1 REST API olvasási művelet és a C# használatával alkalmazzon OCR-t egy képre.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 2f7678e2dd9f04f7aa930271c69c2d4ccf1e692b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 603a002b4d9088295f7050afc47e643290818e0b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88928241"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969483"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision 3,0 REST API olvasási művelet és C #
+# <a name="quickstart-extract-text-using-the-computer-vision-31-rest-api-read-operation-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision 3,1 REST API olvasási művelet és C #
 
-Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a rendszerképből a Computer Vision 3,0 REST API részeként elérhető új OCR-technológia használatával. Az új [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) és [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) -metódusok használatával a képeken lévő szövegeket és a felismert karaktereket gépi olvasásra képes adatfolyamként lehet kinyerni. 
+Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a rendszerképből a Computer Vision 3,1 REST API részeként elérhető új OCR-technológia használatával. Az új [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) és [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) -metódusok használatával a képeken lévő szövegeket és a felismert karaktereket gépi olvasásra képes adatfolyamként lehet kinyerni. 
 
 > [!IMPORTANT]
-> Az [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` Válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API beolvasása lehetőséget jelöli, és az olvasási metódus hívásának eredményét is megtekintheti.
+> Az [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` Válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) API beolvasása lehetőséget jelöli, és az olvasási metódus hívásának eredményét is megtekintheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
+        static string uriBase = endpoint + "/vision/v3.1/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";
@@ -213,7 +213,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,
@@ -401,11 +401,11 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezzen fel egy alapszintű Windows-alkalmazást, amely Computer Visiont használ az optikai karakterfelismerés (OCR) végrehajtásához. Intelligens vágású miniatűrök létrehozása; Emellett vizuális funkciók (például arcok) észlelése, kategorizálása, címkézése és leírása a képen.
 

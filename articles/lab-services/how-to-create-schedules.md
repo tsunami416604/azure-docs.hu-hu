@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre ütemterveket a tanterem Labs szo
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326439"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tantermi Labs-ütemtervek létrehozása és kezelése Azure Lab Services 
@@ -38,7 +38,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
     4. Itt adhatja meg azt a **kezdési időpontot** , amikor a virtuális gépeket el szeretné indítani.
     5. Itt adhatja meg a **leállítási időt** , amikor a virtuális gépeket le kell állítani. 
     6. Adja meg az **időzónát** a megadott kezdési és befejezési időpontnál. 
-    2. Válassza ki azokat a napokat, amelyeknek érvénybe szeretné venni az ütemtervet. A következő példában a hétfő-csütörtök van kiválasztva. 
+    2. Válassza ki azokat a napokat, amelyeknek érvénybe szeretné venni az ütemtervet. A következő példában Monday-Thursday van kiválasztva. 
     8. Kattintson a **Mentés** gombra. 
 
         ![Ismétlődő ütemterv beállítása](./media/how-to-create-schedules/set-repeat-schedule.png)

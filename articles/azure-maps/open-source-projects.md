@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090516"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps Közösség – nyílt forráskódú projektek
@@ -24,7 +24,7 @@ A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteke
 
 **Robotok**
 
-| Projekt neve | Description |
+| Projekt neve | Leírás |
 |-|-|
 | [Bot Framework – érdekes pont – szakértelem](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Az érdeklődési pont szakértelmet biztosít a POI-val kapcsolatos képességekhez egy virtuális asszisztens számára, amely a Azure Bot Service és a bot Framework használatával Azure Maps. |
 | [Botbuilder témakörben helye](https://github.com/Microsoft/BotBuilder-Location) | A Bing Maps REST Services által működtetett, nyílt forráskódú Location Picker Control a Microsoft bot Framework szolgáltatáshoz. |
@@ -35,7 +35,7 @@ A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteke
 
 Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek kibővítik a Azure Maps web SDK képességeit.
 
-| Projekt neve | Description |
+| Projekt neve | Leírás |
 |-|-|
 | [Azure Maps animációs modul](https://github.com/Azure-Samples/azure-maps-animations) | Az Azure Maps web SDK-val használható animációk gazdag könyvtára. |
 | [Azure Maps térinformatikai vezérlő modul](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely a böngésző Térinformatikai API-ját használja a felhasználó kereséséhez a térképen. |
@@ -46,7 +46,7 @@ Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek 
 
 **Példák**
 
-| Projekt neve | Description |
+| Projekt neve | Leírás |
 |-|-|
 | [Azure Maps kód mintái](https://github.com/Azure-Samples/AzureMapsCodeSamples) | A webalapú alkalmazások Azure Maps használatára szolgáló mintakód-gyűjtemény. |
 | [Azure Maps gov Cloud Code-minták](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Mintakód-gyűjtemény, amely a Azure Maps Azure Government felhőben való használatára. |
@@ -57,7 +57,7 @@ Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek 
 
 **Eszközök és erőforrások**
 
-| Projekt neve | Description |
+| Projekt neve | Leírás |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Forrás az összes Azure Location Based Services dokumentációhoz. |
 | [Azure Maps Creator-eszközök](https://github.com/Azure-Samples/AzureMapsCreator) | Python-eszközök Azure Maps Creator-eszközökhöz. |

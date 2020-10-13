@@ -12,10 +12,10 @@ ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708395"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
@@ -132,7 +132,7 @@ Hozzon létre vagy csatoljon egy Azure Kubernetes Service-(ak-) fürtöt a nagy 
 |---------|---------|
 |Számítási név     |  <li>A név megadása kötelező. A névnek 2 és 16 karakter közöttinek kell lennie. </li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek  **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-**  a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
 |Kubernetes Service | Válassza az **új létrehozása** lehetőséget, és töltse ki a többi űrlapot.  Vagy válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő AK-fürtöt az előfizetésből.
-|Region |  Válassza ki azt a régiót, ahol a fürtöt létre kívánja hozni |
+|Régió |  Válassza ki azt a régiót, ahol a fürtöt létre kívánja hozni |
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Fürt célja  | **Éles** vagy **fejlesztési-tesztelési** lehetőség kiválasztása |
 |Csomópontok száma | A virtuális gép (vCPU) által megszorozott csomópontok száma nem lehet nagyobb, mint 12. |

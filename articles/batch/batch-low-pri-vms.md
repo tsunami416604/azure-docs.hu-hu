@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568455"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Alacsony prioritású virtuális gépek használata a Batch szolgáltatással
@@ -168,8 +168,8 @@ A virtuális gépek konfigurációs készletei esetében a Batch a következő m
 
 Az alacsony prioritású csomópontok [Azure Portal](https://portal.azure.com) az új metrikák érhetők el. Ezek a metrikák a következők:
 
-- Alacsony prioritású csomópontok száma
-- Alacsony prioritású mag száma
+- Low-Priority csomópontok száma
+- Low-Priority mag száma
 - Előzik-csomópontok száma
 
 A Azure Portal metrikáinak megtekintése:

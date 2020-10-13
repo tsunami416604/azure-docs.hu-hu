@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6564804b7003b5e1c166868dae1bfaac7bd28fa5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812403"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940464"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -52,17 +52,27 @@ További információ a Key Vault felügyeleti síkon: [Key Vault felügyeleti s
 Key Vault olyan Azure AD-hitelesítést használ, amelyhez hozzáférést kell biztosítani az Azure AD rendszerbiztonsági tag számára. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy egyszerű alkalmazás, egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md), vagy bármilyen rendszerbiztonsági tag egy csoportja.
 
 ### <a name="authentication-best-practices"></a>Ajánlott eljárások a hitelesítéshez
+
 Ajánlott felügyelt identitást használni az Azure-ban üzembe helyezett alkalmazásokhoz. Ha olyan Azure-szolgáltatásokat használ, amelyek nem támogatják a felügyelt identitást, vagy ha az alkalmazások üzembe helyezése a helyszínen történik, az [egyszerű szolgáltatásnév egy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) lehetséges alternatíva. Ebben az esetben a tanúsítványt Key Vault kell tárolni, és gyakran el kell forgatni. A titkos kulccsal rendelkező szolgáltatásnév fejlesztési és tesztelési környezetekhez használható, valamint helyileg vagy Cloud Shell felhasználói rendszerbiztonsági tag használata ajánlott.
 
-A fenti hitelesítési forgatókönyveket az Azure Identity Client Library támogatja, és integrálva van Key Vault SDK-val. Az Azure Identity Library különböző környezetekben és platformokon is használható a kód módosítása nélkül. Az Azure Identity azt is automatikusan lekéri a hitelesítési tokent, hogy bejelentkezett az Azure-felhasználónak az Azure CLI-vel, a Visual Studióval, a Visual Studio Code-val és másokkal. 
+Ajánlott rendszerbiztonsági tag/környezet:
+- **Éles környezet**:
+  - Felügyelt identitás vagy egyszerű szolgáltatásnév tanúsítvánnyal
+- **Tesztelési és fejlesztői környezetek**:
+  - Felügyelt identitás, egyszerű tanúsítvány vagy egyszerű szolgáltatás, titkos kulccsal
+- **Helyi fejlesztés**:
+  - Felhasználó vagy egyszerű szolgáltatás titkos kulccsal
 
-További információkért lásd: 
+A fenti hitelesítési forgatókönyveket az **Azure Identity Client Library** támogatja, és integrálva van Key Vault SDK-val. Az Azure Identity Library különböző környezetekben és platformokon is használható a kód módosítása nélkül. Az Azure Identity azt is automatikusan lekéri a hitelesítési tokent, hogy bejelentkezett az Azure-felhasználónak az Azure CLI-vel, a Visual Studióval, a Visual Studio Code-val és másokkal. 
 
+Az Azure Identity Client libarary kapcsolatos további információkért lásd:
+
+### <a name="azure-identity-client-libraries"></a>Azure Identity ügyféloldali kódtárak
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-Hitelesítés Key Vault alkalmazásokban:
+Az alkalmazásokban való Key Vault hitelesítésével kapcsolatos oktatóanyagok:
 - [Hitelesítés Key Vault a virtuális gépen üzemeltetett alkalmazásban a .NET-ben](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [Hitelesítés Key Vault a virtuális gépen futó alkalmazásban a Pythonban](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
 - [Hitelesítés Key Vault a App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)

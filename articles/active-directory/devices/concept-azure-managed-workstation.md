@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601384"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
@@ -124,6 +124,6 @@ Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, a
    * [Intune hálózati kommunikációs követelmények](/intune/network-bandwidth-use)
    * [ATP hálózati kommunikációs követelmények](/azure-advanced-threat-protection/configure-proxy)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Biztonságos Azure által felügyelt munkaállomás üzembe helyezése](howto-azure-managed-workstation.md).

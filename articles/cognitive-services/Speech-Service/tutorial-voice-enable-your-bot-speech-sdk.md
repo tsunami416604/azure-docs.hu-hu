@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360956"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
@@ -109,7 +109,7 @@ Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoB
 
 | Név | Típus  | Hely |
 |------|-------|----------|
-| SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA nyugati régiója |
 
 ### <a name="create-an-azure-app-service-plan"></a>Azure App Service-csomag létrehozása
 
@@ -131,7 +131,7 @@ Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoB
 | Név | Típus  | Hely |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service Plan (App Service-csomag) | USA nyugati régiója |
-| SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA nyugati régiója |
 
 ## <a name="build-an-echo-bot"></a>Visszhangos robot létrehozása
 
@@ -167,7 +167,7 @@ A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) e
 1. A [bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) 4.3.0 vagy újabb verziójának telepítése
 2. Indítsa el a robot Framework emulátort, és nyissa meg a robotját:
    * **Fájl**  ->  **Nyissa meg a robotot**.
-3. Adja meg a robot URL-címét. Például:
+3. Adja meg a robot URL-címét. Példa:
 
    ```
    http://localhost:3978/api/messages
@@ -217,7 +217,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA nyugati régiója |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-csomag | USA nyugati régiója |
-| SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA nyugati régiója |
 
 ## <a name="enable-web-sockets"></a>Webes szoftvercsatornák engedélyezése
 
@@ -255,7 +255,7 @@ Ekkor a Azure Portalban keresse meg az **SpeechEchoBotTutorial-ResourceGroup** e
 | EchoBot20190805125647 | App Service | USA nyugati régiója |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-csomag | USA nyugati régiója |
 | SpeechEchoBotTutorial-BotRegistration-8726 | Robot-csatornák regisztrálása | Globális |
-| SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA nyugati régiója |
 
 > [!IMPORTANT]
 > A bot channels regisztrációs erőforrása akkor is megjelenik a globális régióban, ha az USA nyugati régióját választotta. Ez a várható eredmény.
@@ -478,7 +478,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 * [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices) üzembe helyezése
 * A Direct line Speech Channel szolgáltatáshoz kapcsolódó díjszabás:
   * [A bot Service díjszabása](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Beszédfelismerési szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Speech szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Saját hang-kompatibilis bot kiépítése és üzembe helyezése:
   * Hozzon létre egy [robot Framework robotot](https://dev.botframework.com/). Regisztrálja a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) használatával, és [szabja testre a robotját](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
   * A meglévő [bot Framework-megoldások](https://microsoft.github.io/botframework-solutions/index)megismerése: [virtuális asszisztens](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) létrehozása és [kiterjesztése a közvetlen vonalas beszédre](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

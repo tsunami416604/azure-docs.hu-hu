@@ -16,10 +16,10 @@ ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336003"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának bővítése
@@ -45,11 +45,11 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
  
 3. A **lemez neve**területen válassza ki az átméretezni kívánt lemezt.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Képernyőkép, amely a lemezeket tartalmazó panelt jeleníti meg a kijelölt lemezzel.":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
 4. A **Beállítások**területen a bal oldali menüben válassza a **Konfigurálás**lehetőséget.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="A menü Beállítások szakaszában kiválasztott konfigurációs beállítást bemutató képernyőkép.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
 5. A **méret (GIB)** területen válassza ki a kívánt méretű lemezt.
    
@@ -57,11 +57,11 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
    > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. Az operációsrendszer-lemezek esetében a maximálisan megengedett 2 048 GB. (Lehetséges, hogy a VHD-blobot ezen a méreten túl szeretné kibontani, de az operációs rendszer csak az első 2 048 GB területtel működik.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Képernyőkép, amely a kiválasztott lemezterülettel rendelkező konfigurációs ablaktáblát jeleníti meg.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
 6. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Képernyőkép, amely megjeleníti a konfiguráció ablaktáblát a Mentés gomb kiválasztásával.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Felügyelt lemez átméretezése a PowerShell használatával

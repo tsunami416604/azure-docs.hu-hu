@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
 ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708435"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
@@ -25,17 +25,17 @@ Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a 
 
 | Kimenet típusa | Particionálás | Biztonság | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory felhasználó </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Igen, nem kötelező.|SQL-felhasználó hitelesítése </br> MSI (előzetes verzió)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL-felhasználó hitelesítése|
-|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Hozzáférési kulcs|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Igen|SQL-felhasználó hitelesítése|
+|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Igen|MSI </br> Hozzáférési kulcs|
 |[Azure Event Hubs](event-hubs-output.md)|Igen, be kell állítania a partíciós kulcs oszlopot a kimeneti konfigurációban.|Hozzáférési kulcs|
-|[Power BI](power-bi-output.md)|No|Azure Active Directory felhasználó </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Yes|Fiókkulcs|
-|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Yes|Hozzáférési kulcs|
-|[Azure Service Bus témakörök](service-bus-topics-output.md)|Yes|Hozzáférési kulcs|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Hozzáférési kulcs|
-|[Azure Functions](azure-functions-output.md)|Yes|Hozzáférési kulcs|
+|[Power BI](power-bi-output.md)|Nem|Azure Active Directory felhasználó </br> MSI|
+|[Azure Table storage](table-storage-output.md)|Igen|Fiókkulcs|
+|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Service Bus témakörök](service-bus-topics-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Functions](azure-functions-output.md)|Igen|Hozzáférési kulcs|
 
 ## <a name="partitioning"></a>Particionálás
 

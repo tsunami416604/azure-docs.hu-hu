@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530505"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid
@@ -25,10 +25,10 @@ Ez az útmutató ismerteti, hogyan fogadhat Key Vault értesítéseket a Event G
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 - Egy kulcstartó az Azure-előfizetésében. Az Azure CLI használatával gyorsan létrehozhat egy új kulcstartót az [Azure Key Vault titkos kód beállítása és lekérése](../secrets/quick-create-cli.md)a következő lépésekkel.
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 Event Grid a felhőhöz tartozó esemény-szolgáltatás. Az útmutató lépéseinek követésével előfizethet a Key Vault eseményeire, és átirányítja az eseményeket az Automation szolgáltatásba. Ha a Key Vault egyik titka hamarosan lejár, Event Grid értesítést kap az állapot változásáról, és egy HTTP-BEJEGYZÉST küld a végpontnak. Egy webhook elindít egy PowerShell-parancsfájl automatizálási végrehajtását.
 
@@ -44,7 +44,7 @@ Hozzon létre egy Automation-fiókot a [Azure Portalon](https://portal.azure.com
 
 1.  A keresősáv legördülő listájának **szolgáltatások** szakaszában válassza az **Automation-fiókok**elemet.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
     ![Automation-fiókok ablaktábla](../media/event-grid-tutorial-2.png)
 
@@ -141,7 +141,7 @@ Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com
 
 1.  Válassza a **kijelölés megerősítése** elemet a helyi ablaktáblán.
 
-1.  Válassza a **Létrehozás** lehetőséget.
+1.  Kattintson a **Létrehozás** gombra.
 
     ![Esemény-előfizetés létrehozása](../media/event-grid-tutorial-8.png)
 
@@ -185,7 +185,7 @@ Ellenőrizze, hogy a Event Grid-előfizetés megfelelően van-e konfigurálva. E
 
 Regisztrálja újra Event Grid és a Key Vault-szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../../azure-resource-manager/management/resource-providers-and-types.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Ha helyesen követte ezeket a lépéseket, most már készen áll arra, hogy programozott módon válaszoljon a Key vaultban tárolt titkos kódok állapotának változásaira.
 

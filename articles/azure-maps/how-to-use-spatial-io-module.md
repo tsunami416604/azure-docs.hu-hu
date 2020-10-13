@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335296"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>A Azure Maps térbeli IO-modul használata
 
 A Azure Maps web SDK a **térbeli IO-modult**biztosítja, amely a térbeli és a Azure Maps web SDK-val együtt JavaScript vagy írógéppel használatával integrálja a térbeli adategységeket. A modul robusztus funkciói lehetővé teszik a fejlesztők számára a következőket:
 
-- [Gyakori térbeli adatfájlok olvasása és írása](spatial-io-read-write-spatial-data.md). A támogatott fájlformátumok közé tartozik a KML, a KMZ, a GPX, a GeoRSS, a GML, a GeoJSON és a CSV fájl, amely térbeli adatokat tartalmazó oszlopokat tartalmaz. A jól ismert szöveget (WKT) is támogatja.
+- [Gyakori térbeli adatfájlok olvasása és írása](spatial-io-read-write-spatial-data.md). A támogatott fájlformátumok közé tartozik a KML, a KMZ, a GPX, a GeoRSS, a GML, a GeoJSON és a CSV fájl, amely térbeli adatokat tartalmazó oszlopokat tartalmaz. A Well-Known szöveget (WKT) is támogatja.
 - [Csatlakozhat nyílt térinformatikai konzorcium (OGC) szolgáltatáshoz, és integrálhatja az Azure Maps web SDK-val. Az overlay web Map Services (WMS) és a web Map csempe-szolgáltatások (WMTS) rétegként jelennek meg a térképen](spatial-io-add-ogc-map-layer.md).
 - [Adatlekérdezés a webes szolgáltatások (WFS) szolgáltatásban](spatial-io-connect-wfs-service.md).
 - Olyan [összetett adatkészleteket tartalmazhat, amelyek a stílussal kapcsolatos információkat tartalmaznak, és a minimális kódok használatával automatikusan renderelést végeznek](spatial-io-add-simple-data-layer.md).

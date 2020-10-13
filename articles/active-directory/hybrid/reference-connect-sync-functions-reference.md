@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279771"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: függvények referenciája
@@ -98,7 +98,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [DNComponent](#dncomponent)
   * [DNComponentRev](#dncomponentrev)
   * [EscapeDNComponent](#escapedncomponent)
-* **Értékelési**
+* **Értékelés**
   * [IsBitSet](#isbitset)
   * [IsDate](#isdate)
   * [IsEmpty](#isempty)
@@ -114,7 +114,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [RandomNum](#randomnum)
 * **Többszörös * érték**
   * [Tartalmaz](#contains)
-  * [Száma](#count)
+  * [Darabszám](#count)
   * [Elem](#item)
   * [ItemOrNull](#itemornull)
   * [Csatlakozás](#join)
@@ -124,7 +124,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [Hiba](#error)
   * [IIF](#iif)
   * [Kiválasztás](#select)
-  * [Kapcsoló (switch)](#switch)
+  * [Kapcsoló](#switch)
   * [Ahol](#where)
   * [A](#with)
 * **Szöveg**
@@ -1224,7 +1224,7 @@ A RTrim függvény eltávolítja a szóközöket a sztringből.
 A "test" értéket adja vissza.
 
 ---
-### <a name="select"></a>Válassza ezt:
+### <a name="select"></a>Kiválasztás
 **Leírás:**  
 Egy többértékű attribútum (vagy egy kifejezés kimenete) összes értékének feldolgozása a megadott függvény alapján.
 

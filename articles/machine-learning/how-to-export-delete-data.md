@@ -12,10 +12,10 @@ ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251014"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning szolgáltatás-munkaterület adatainak exportálása vagy törlése
@@ -50,7 +50,7 @@ Ezeket az erőforrásokat törölheti, ha kiválasztja őket a listából, és k
 
 A futtatási előzményeket tartalmazó dokumentumok, amelyek személyes felhasználói adatokat is tartalmazhatnak, a blob Storage-ban található Storage-fiókban tárolódnak a-ben `/azureml` . Az adatok a portálról tölthetők le és törölhetők.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Képernyőkép a azureml könyvtáráról a portálon belül":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Képernyőkép a portálról, a törlés ikon kiemelve":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Gépi tanulási erőforrások exportálása és törlése Azure Machine Learning Studio használatával
 
@@ -62,7 +62,7 @@ A Studio használatával letölthetők a kísérleti futtatásokból származó 
 
 A regisztrált modell letöltéséhez navigáljon a kívánt **modellre** , és válassza a **Letöltés**lehetőséget. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Képernyőkép a Studio Model lapról a letöltési lehetőség kiemelésével":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Képernyőkép a portálról, a törlés ikon kiemelve":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Erőforrások exportálása és törlése a Python SDK használatával
 

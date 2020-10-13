@@ -9,10 +9,10 @@ ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 6b63933fc625079bb490942cf3a32232a484fe38
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89270165"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2hez használandó Storage-fiók létrehozása
@@ -41,8 +41,8 @@ A következő képen a **Storage-fiók létrehozása** lapon látható ez a beá
 
 Ha rendelkezik egy meglévő Storage-fiókkal, amelyet Data Lake Storagehoz kíván használni, és a hierarchikus névtér beállítása le van tiltva, akkor az új Storage-fiókba kell áttelepítenie az adatkészletet, amelyen engedélyezve van a beállítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A Storage-fiók áttekintése](../common/storage-account-overview.md)
+- [Tárfiókok áttekintése](../common/storage-account-overview.md)
 - [A Azure Data Lake Storage Gen2 használata big data követelményekhez](data-lake-storage-data-scenarios.md)
 - [Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben](data-lake-storage-access-control.md)
