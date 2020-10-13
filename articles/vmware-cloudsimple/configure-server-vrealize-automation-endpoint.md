@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024840"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VCenter beállítása a saját felhőben a VMware vRealize Automation szolgáltatáshoz
@@ -38,7 +38,7 @@ Végezze el ezeket a feladatokat a vCenter-kiszolgáló konfigurálása előtt:
 | Erőforrás | Virtuális gép erőforrás-készlethez rendelése<br>Virtuális gép migrálása<br>Migrálás virtuális gépen |
 | Virtuális gépek leltározása |  Létrehozás meglévőből<br>Új létrehozása<br>Áthelyezés<br>Eltávolítás | 
 | Virtuális gép interakciója |  CD-adathordozó konfigurálása<br>Konzol interakciója<br>Eszköz csatlakoztatása<br>Kikapcsolás<br>Bekapcsolás<br>Alaphelyzetbe állítás<br>Felfüggesztés<br>Eszközök telepítése | 
-| Virtuális gép konfigurációja |  Meglévő lemez hozzáadása<br>Új lemez hozzáadása<br>Hozzáadás vagy eltávolítás<br>Lemez eltávolítása<br>Felsőfokú<br>CPU-szám módosítása<br>Erőforrás módosítása<br>Virtuális lemez kiterjesztése<br>Lemez Change Tracking<br>Memory (Memória)<br>Eszközbeállítások módosítása<br>Átnevezés<br>Jegyzet beállítása (5,0-es és újabb verziók)<br>Beállítások<br>Swapfile elhelyezése |
+| Virtuális gép konfigurációja |  Meglévő lemez hozzáadása<br>Új lemez hozzáadása<br>Hozzáadás vagy eltávolítás<br>Lemez eltávolítása<br>Felsőfokú<br>CPU-szám módosítása<br>Erőforrás módosítása<br>Virtuális lemez kiterjesztése<br>Lemez Change Tracking<br>Memória<br>Eszközbeállítások módosítása<br>Átnevezés<br>Jegyzet beállítása (5,0-es és újabb verziók)<br>Beállítások<br>Swapfile elhelyezése |
 | Kiépítés |  Testreszabás<br>Sablon klónozása<br>Virtuális gép klónozása<br>Sablon üzembe helyezése<br>Testreszabási specifikációk olvasása |
 | Virtuális gép állapota | Pillanatkép létrehozása<br>Pillanatkép eltávolítása<br>Helyreállítás pillanatképre |
 
@@ -64,7 +64,7 @@ Végezze el ezeket a feladatokat a vCenter-kiszolgáló konfigurálása előtt:
         ![vRA-telepítési proxy](media/configure-vra-endpoint-proxy.png)
 
     11. Kattintson a **Tovább** gombra.
-    12. Kattintson a **telepítés**gombra.
+    12. Kattintson az **Install** (Telepítés) gombra.
 
 ## <a name="configure-the-vsphere-agent"></a>A vSphere-ügynök konfigurálása
 
@@ -84,7 +84,7 @@ A megfelelő vCenter-kiszolgálói végpont nevének azonosításához tegye a k
 
 1. Nyisson meg egy parancssort a IaaS készüléken.
 2. Módosítsa a könyvtárat a C:\Program Files (x86) \VMware\vCAC\Agents\agent-name, ahol az *ügynök neve* az vCenter-kiszolgálói végponthoz rendelt név.
-3. Futtassa a következő parancsot.
+3. Futtassa az alábbi parancsot.
 
 ```
 ..\..\Server\DynamicOps.Vrm.VRMencrypt.exe VRMAgent.exe.config get

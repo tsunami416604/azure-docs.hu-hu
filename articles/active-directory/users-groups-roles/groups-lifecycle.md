@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054551"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 csoportok elévülési szabályzatának konfigurálása
@@ -134,7 +134,7 @@ Az adatmegőrzési szabályt a biztonsági és megfelelőségi központ konfigur
    Connect-AzureAD
    ```
 
-1. A lejárati beállítások konfigurálása a New-AzureADMSGroupLifecyclePolicy parancsmaggal az Azure AD-szervezet összes Microsoft 365 csoportjának élettartamát 365 napra állítja be. A tulajdonosokkal nem rendelkező Microsoft 365 csoportok megújítására vonatkozó értesítések küldése a következőnek: " emailaddress@contoso.com "
+1. A lejárati beállítások konfigurálása a New-AzureADMSGroupLifecyclePolicy parancsmaggal állítható be az Azure AD-szervezet összes Microsoft 365 csoportjának élettartama 365 napra. A tulajdonosokkal nem rendelkező Microsoft 365 csoportok megújítására vonatkozó értesítések küldése a következőnek: " emailaddress@contoso.com "
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -175,12 +175,12 @@ Az adatmegőrzési szabályt a biztonsági és megfelelőségi központ konfigur
 A következő parancsmagok segítségével konfigurálhatja a szabályzatot részletesebben. További információ: PowerShell- [dokumentáció](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
-- Új – AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Alaphelyzetbe állítás – AzureADMSLifeCycleGroup
+- Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
 ## <a name="next-steps"></a>Következő lépések

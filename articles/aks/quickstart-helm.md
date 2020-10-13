@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87407115"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
@@ -131,8 +131,8 @@ helm create webfrontend
 
 Végezze el a következő frissítéseket a *webfrontend/Values. YAML*. Helyettesítse be a beállításjegyzék egy korábbi lépésben feljegyzett lekéréséhez, például a *myhelmacr.azurecr.IO*:
 
-* Módosítás `image.repository` ide`<loginServer>/webfrontend`
-* Módosítás `service.type` ide`LoadBalancer`
+* Módosítás `image.repository` ide `<loginServer>/webfrontend`
+* Módosítás `service.type` ide `LoadBalancer`
 
 Például:
 
@@ -196,12 +196,12 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Helm használatával kapcsolatos további információkért tekintse meg a Helm dokumentációját.
 
 > [!div class="nextstepaction"]
-> [A Helm dokumentációja][helm-documentation]
+> [Helm-dokumentáció][helm-documentation]
 
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build

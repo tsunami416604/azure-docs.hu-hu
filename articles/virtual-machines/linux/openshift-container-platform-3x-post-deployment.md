@@ -11,10 +11,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373572"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
@@ -86,7 +86,7 @@ Az Azure Portalon:
 
    ![Alkalmazás-regisztrálási hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 
-8. Válassza a **Kész** lehetőséget.
+8. Válassza a **Done** (Kész) lehetőséget.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift konfigurálása az Azure AD-hitelesítéshez
 
@@ -142,7 +142,7 @@ Szúrja be a következő sorokat közvetlenül az előző sorok után:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Győződjön meg arról, hogy a szöveg helyesen van igazítva a identityProviders alatt. Keresse meg a bérlő AZONOSÍTÓját az alábbi CLI-parancs használatával:```az account show```
+Győződjön meg arról, hogy a szöveg helyesen van igazítva a identityProviders alatt. Keresse meg a bérlő AZONOSÍTÓját az alábbi CLI-parancs használatával: ```az account show```
 
 Indítsa újra a OpenShift Master Servicest az összes főcsomóponton:
 
@@ -202,6 +202,6 @@ A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasít
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

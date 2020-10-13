@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049570"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
@@ -119,7 +119,7 @@ A készenléti feltételes hozzáférési szabályzat olyan **biztonsági menté
 
 * Állítsa be a tartalék szabályzatok készletét, ha az egyik hitelesítőadat-típus vagy egy hozzáférés-vezérlési mechanizmus megszakad az alkalmazásokhoz való hozzáférés. Olyan házirendet állítson be a csak jelentési állapotba, amely megköveteli a tartományhoz való csatlakozást vezérlőként, egy olyan aktív házirend biztonsági másolatának létrehozásakor, amely harmadik féltől származó MFA-szolgáltatót igényel.
 * A [jelszóval kapcsolatos útmutatóban](https://aka.ms/passwordguidance) ismertetett eljárások követésével csökkentheti a nem kötelezően megjelenő jelszavak kialakulásának kockázatát, ha az MFA nem szükséges.
-* Az [Azure ad önkiszolgáló jelszó-visszaállítás (SSPR)](./tutorial-enable-sspr.md) és az [Azure ad jelszavas védelem](./howto-password-ban-bad-on-premises-deploy.md) üzembe helyezésével gondoskodhat arról, hogy a felhasználók ne használják a közös jelszót és a megtiltani kívánt kifejezéseket.
+* Az [Azure ad Self-Service jelszó-visszaállítás (SSPR)](./tutorial-enable-sspr.md) és az [Azure ad jelszavas védelem](./howto-password-ban-bad-on-premises-deploy.md) üzembe helyezésével gondoskodhat arról, hogy a felhasználók ne használják a közös jelszót és a megtiltani kívánt kifejezéseket.
 * Használjon olyan házirendeket, amelyek korlátozzák a hozzáférést az alkalmazásokon belül, ha egy bizonyos hitelesítési szint nem érhető el ahelyett, hogy egyszerűen vissza kellene térnie a teljes hozzáféréshez. Például:
   * Olyan biztonsági mentési szabályzatot konfigurálhat, amely a korlátozott munkamenet-jogcímet az Exchange és a SharePoint szolgáltatásba küldi
   * Ha a szervezet Microsoft Cloud App Security használ, érdemes lehet visszaesnie egy olyan házirendnek, amely a MCAS-t, majd a MCAS lehetővé teszi a csak olvasási hozzáférést, de a feltöltéseket nem.
@@ -215,13 +215,13 @@ Ha telepítette az Azure AD MFA NPS-bővítményt a helyszíni erőforrások, p�
 Ebben az esetben letilthatja a hálózati házirend-kiszolgáló bővítményt, ezért az NPS-kiszolgáló csak az elsődleges hitelesítést ellenőrzi, és nem kényszeríti ki az MFA használatát a felhasználóknál.
 
 NPS-bővítmény letiltása: 
--   Exportálja a HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters beállításkulcsot biztonsági másolatként. 
+-   Exportálja a HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters beállításkulcsot biztonsági másolatként. 
 -   Törölje a "AuthorizationDLLs" és a "ExtensionDLLs" beállításazonosító értékét, ne a paraméterek kulcsát. 
 -   A változtatások érvénybe léptetéséhez indítsa újra a hálózati házirend szolgáltatás (IAS) szolgáltatást. 
 -   Állapítsa meg, hogy a VPN elsődleges hitelesítése sikeres-e.
 
 Ha a szolgáltatás helyreállt, és készen áll arra, hogy ismét kikényszerítse az MFA-t a felhasználók számára, engedélyezze az NPS bővítményt: 
--   A beállításkulcs importálása biztonsági másolatból HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   A beállításkulcs importálása biztonsági másolatból HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   A változtatások érvénybe léptetéséhez indítsa újra a hálózati házirend szolgáltatás (IAS) szolgáltatást. 
 -   Annak megállapítása, hogy az elsődleges hitelesítés, valamint a VPN másodlagos hitelesítése sikeres-e.
 -   Tekintse át a hálózati házirend-kiszolgálót és a VPN-naplót annak meghatározásához, hogy mely felhasználók jelentkezett be a vészhelyzeti időszakban.

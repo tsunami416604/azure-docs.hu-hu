@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
 ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061842"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Erőforrások áthelyezése régiók között (erőforráscsoport)
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egy adott erőforráscsoport
 - *Tulajdonosi* hozzáférésre van szüksége azon az előfizetésen, amelyben az áthelyezni kívánt erőforrások találhatók.
     - Amikor először ad hozzá egy erőforrást egy adott forrás-és cél-hozzárendeléshez egy Azure-előfizetésben, az erőforrás-mozgató létrehoz egy [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (korábbi nevén felügyelt szolgáltatás azonosítása (MSI)), amelyet az előfizetés megbízhatónak tekint.
     - Az identitás létrehozásához, valamint a szükséges szerepkör (közreműködő vagy felhasználói hozzáférés rendszergazdája a forrás-előfizetésben) való hozzárendeléséhez az erőforrások hozzáadásához használt fióknak *tulajdonosi* engedélyekkel kell rendelkeznie az előfizetésben. [További](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) információ az Azure-szerepkörökről.
-- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy a forrás erőforrásokat létrehozza a célként megadott régióban. Ha nem, igényeljen további korlátozásokat. [További információ](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy a forrás erőforrásokat létrehozza a célként megadott régióban. Ha nem, igényeljen további korlátozásokat. [További információk](/azure/azure-resource-manager/management/azure-subscription-service-limits).
 - Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
 - Győződjön meg arról, hogy az áthelyezni kívánt erőforrások támogatottak az erőforrás-mozgató:
     - Azure-beli virtuális gépek és kapcsolódó lemezek
@@ -144,7 +144,7 @@ Az áthelyezési folyamat véglegesítése és befejezése:
 > [!NOTE]
 > Miután véglegesíti az áthelyezést, a forrás erőforráscsoport *függő* állapotban van.
 
-## <a name="modify-target-settings"></a>Cél beállításainak módosítása
+## <a name="modify-target-settings"></a>Célbeállítások módosítása
 
 Ha nem szeretné áthelyezni a forrás erőforrást, a következők valamelyikét végezheti el:
 

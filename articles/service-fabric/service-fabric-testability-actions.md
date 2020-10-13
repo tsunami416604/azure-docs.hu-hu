@@ -7,10 +7,10 @@ ms.date: 06/07/2017
 ms.author: motanv
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022173"
 ---
 # <a name="testability-actions"></a>Tesztelési műveletek
@@ -33,18 +33,18 @@ A jobb minőség-ellenőrzés érdekében futtassa a szolgáltatást és az üzl
 | --- | --- | --- | --- | --- |
 | CleanTestState |Eltávolítja az összes teszt állapotot a fürtből a tesztelési illesztőprogram hibás leállítása esetén. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem alkalmazható |
 | InvokeDataLoss |Adatvesztést okoz a szolgáltatás partíciójában. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Biztonságos |
-| InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatási partíciót helyez el kvórum elvesztéseként. |InvokeQuorumLossAsync |Meghívás – ServiceFabricQuorumLoss |Biztonságos |
-| MovePrimary |Áthelyezi egy állapot-nyilvántartó szolgáltatás megadott elsődleges replikáját a fürt megadott csomópontjára. |MovePrimaryAsync |Áthelyezés – ServiceFabricPrimaryReplica |Biztonságos |
-| MoveSecondary |Egy állapot-nyilvántartó szolgáltatás aktuális másodlagos replikáját áthelyezi egy másik fürtcsomópont-csomópontra. |MoveSecondaryAsync |Áthelyezés – ServiceFabricSecondaryReplica |Biztonságos |
+| InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatási partíciót helyez el kvórum elvesztéseként. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Biztonságos |
+| MovePrimary |Áthelyezi egy állapot-nyilvántartó szolgáltatás megadott elsődleges replikáját a fürt megadott csomópontjára. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Biztonságos |
+| MoveSecondary |Egy állapot-nyilvántartó szolgáltatás aktuális másodlagos replikáját áthelyezi egy másik fürtcsomópont-csomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Biztonságos |
 | RemoveReplica |Replika meghibásodásának szimulálása egy replika fürtből való eltávolításával. Ez lezárta a replikát, és átvált a "None" szerepkörre, és eltávolítja az összes állapotát a fürtből. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Biztonságos |
-| RestartDeployedCodePackage |A kód-előkészítési folyamat hibájának szimulálása egy fürt csomópontjain telepített kód újraindításával. Ezzel megszakítja a kód-csomag folyamatát, amely újraindítja a folyamatban lévő összes felhasználói szolgáltatás replikáját. |RestartDeployedCodePackageAsync |Újraindítás – ServiceFabricDeployedCodePackage |Biztonságos |
-| RestartNode |Egy csomópont újraindításával szimulálja Service Fabric fürtcsomópont meghibásodását. |RestartNodeAsync |Újraindítás – ServiceFabricNode |Biztonságos |
+| RestartDeployedCodePackage |A kód-előkészítési folyamat hibájának szimulálása egy fürt csomópontjain telepített kód újraindításával. Ezzel megszakítja a kód-csomag folyamatát, amely újraindítja a folyamatban lévő összes felhasználói szolgáltatás replikáját. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Biztonságos |
+| RestartNode |Egy csomópont újraindításával szimulálja Service Fabric fürtcsomópont meghibásodását. |RestartNodeAsync |Restart-ServiceFabricNode |Biztonságos |
 | RestartPartition |Egy adott partíció egy vagy több replikájának újraindításával szimulálja az adatközpont áramszünetét vagy a fürt kimaradási forgatókönyvét. |RestartPartitionAsync |Restart-ServiceFabricPartition |Biztonságos |
-| RestartReplica |Nem szimulálja a replikát egy megőrzött replika újraindításával egy fürtben, bezárja a replikát, majd újból megnyitja. |RestartReplicaAsync |Újraindítás – ServiceFabricReplica |Biztonságos |
+| RestartReplica |Nem szimulálja a replikát egy megőrzött replika újraindításával egy fürtben, bezárja a replikát, majd újból megnyitja. |RestartReplicaAsync |Restart-ServiceFabricReplica |Biztonságos |
 | StartNode |Egy olyan csomópontot indít el a fürtben, amely már le van állítva. |StartNodeAsync |Start-ServiceFabricNode |Nem alkalmazható |
 | Stopnode parancs |Csomópont meghibásodásának szimulálása egy fürt csomópontjainak leállításával. A csomópont a StartNode meghívása után marad lefelé. |StopNodeAsync |Stop-ServiceFabricNode |Biztonságos |
-| ValidateApplication |Érvényesíti az alkalmazáson belüli összes Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateApplicationAsync |Teszt – ServiceFabricApplication |Nem alkalmazható |
-| ValidateService |Ellenőrzi a Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateServiceAsync |Teszt – ServiceFabricService |Nem alkalmazható |
+| ValidateApplication |Érvényesíti az alkalmazáson belüli összes Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nem alkalmazható |
+| ValidateService |Ellenőrzi a Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateServiceAsync |Test-ServiceFabricService |Nem alkalmazható |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Tesztelési művelet futtatása a PowerShell használatával
 Ez az oktatóanyag bemutatja, hogyan futtathat tesztelési műveletet a PowerShell használatával. Megtudhatja, hogyan futtathat tesztelési műveletet egy helyi (egyablakos) fürtön vagy egy Azure-fürtön. Microsoft.Fabric.Powershell.dll – a Service Fabric PowerShell-modul – a Microsoft Service Fabric MSI telepítésekor automatikusan települ. A modul automatikusan betöltődik, amikor megnyit egy PowerShell-parancssort.
@@ -80,7 +80,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 A következő képernyőképen az **Újraindítás-ServiceFabricNode** tesztelési parancs látható működés közben.
 
-![Képernyőkép a restart-ServiceFabricNode parancs futtatásáról a PowerShellben.](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![Képernyőkép a Restart-ServiceFabricNode parancs futtatásáról a PowerShellben.](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
 Az első **Get-ServiceFabricNode** (a Service Fabric PowerShell-modulból származó parancsmag) kimenete azt mutatja, hogy a helyi fürt öt csomóponttal rendelkezik: Node. 1 – Node. 5. A tesztelési művelet (parancsmag) **újraindítása** után a ServiceFabricNode a Node. 4 nevű csomóponton fut, láthatjuk, hogy a csomópont üzemidőe alaphelyzetbe áll.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 0bc1a7b5e443de0c1a95fa209d2e5a280cf28ef2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385840"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services Speech Devices SDK beszerzése
@@ -23,7 +23,7 @@ A Speech Devices SDK egy előre összehangolt könyvtár, amelynek célja, hogy 
 
 ## <a name="choose-a-development-kit"></a>Fejlesztői csomag kiválasztása
 
-|Eszközök|Specifikáció|Description|Forgatókönyvek|
+|Eszközök|Specifikáció|Leírás|Forgatókönyvek|
 |--|--|--|--|
 |[Urbetter dev-készlet](http://www.urbetter.com/products_56/278.html) ![ URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 MIC-tömb, ARM SOC, WIFI, Ethernet, HDMI, USB kamera. <br>Linux|Iparági szintű Speech Devices SDK, amely alkalmazkodik a Microsoft MIC-tömbhöz, és támogatja a kiterjesztett I/O-t, például a HDMI/Ethernet és a több USB-perifériát <br> [Kapcsolatfelvétel a Urbetter](http://www.urbetter.com/products_56/278.html)|Beszélgetések átírása, oktatás, kórház, robotok, OTT Box, hangvezérelt ügynök, Drive Thru|
 |[Roobo Smart audio dev Kit](http://ddk.roobo.com)<br>[Telepítő](speech-devices-sdk-roobo-v1.md)  /  Gyors útmutató [Quickstart](speech-devices-sdk-android-quickstart.md) ![ Roobo Smart audio dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7 MIC-tömb, ARM SOC, WIFI, audiokimenet, IO. <br>[Android](speech-devices-sdk-android-quickstart.md)|Az első Speech Devices SDK a Microsoft MIC Array és az első feldolgozó SDK hozzáigazításához a kiváló minőségű átírási és beszédfelismerési forgatókönyvek fejlesztéséhez|Beszélgetés átirata, intelligens hangszóró, hangvezérelt ügynök, hordható|
@@ -35,7 +35,7 @@ A Speech Devices SDK egy előre összehangolt könyvtár, amelynek célja, hogy 
 
 Töltse le a [Speech Devices SDK](https://aka.ms/sdsdk-download)-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a Speech Devices SDK-val](https://aka.ms/sdsdk-quickstart)

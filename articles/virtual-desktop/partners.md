@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056408"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
@@ -236,7 +236,7 @@ A login VSI egy Windows rendszerű virtuális asztali értéknövelt szolgáltat
 
 A Nasuni Corp., a Cloud file Services vezető szolgáltatója és egy legfontosabb Azure Global ISV-partner, a Nasuni-alapú szoftveres platformot kínálja a modern virtuális asztalok modern tárolási megoldásának. A Nasuni az Azure Blob Storage kombinálva egyesíti az elsődleges file Storage (NAS), a fájlok biztonsági mentését, a vész-helyreállítást és a régiók közötti szinkronizálást egyetlen egységes megoldásban. A Nasuni segítségével a vállalatok a Windows rendszerű virtuális asztalok több felhasználási esetre, több Azure-régióban is üzembe helyezhetők, egyszerűsíthetik a felügyeletet, és biztosítják az üzletmenet folytonosságát. 
 
-Modern felhőalapú VDI-megoldásként a Windows rendszerű virtuális asztali környezet modern Cloud file Storage-t igényel. A VDI file Storage hagyományosan a hálózatra csatlakoztatott tárolón (NAS) és a helyileg található fájlkiszolgáló hardveren alapul, valamint a fájl biztonsági mentésének, visszaállításának és vész-helyreállításának biztosításához kapcsolódó szükséges technológia. Ezek a hagyományos megközelítések költségesek, komplexek a karbantartáshoz és felügyelethez, és nem egyszerűen méretezhetők. Emellett késést is jelentenek, ha egy modern felhőalapú VDI-megoldással (például a Windows Virtual Desktoptal) használják a fizikai távolságot, valamint az Azure-alapú asztali környezetek közötti, illetve a helyszíni tárterületen alapuló, lassabb WAN-kapcsolatot. A kifejezetten az Azure-hoz készült Nasuni-platform korlátlan tárolókapacitást és nagy teljesítményű fájl-hozzáférést biztosít. A Nasuni az azonos Azure-régiókban található Windows virtuális asztallal közösen helyezhetők el, így gazdaságos és nagy teljesítményű fájlokhoz is hozzáférhetnek egyetlen globális névtérhez. A Nasuni a Windows rendszerű virtuális asztali fájlok tárolását a hagyományos NAS-és Windows-fájlkiszolgálók költségeinek töredékéért tartalmazza, és beépített biztonsági mentéseket és vész-helyreállítást biztosít a költségek további csökkentése és az informatikai erőforrások felszabadítása érdekében.
+Modern felhőalapú VDI-megoldásként a Windows rendszerű virtuális asztali környezet modern Cloud file Storage-t igényel. A VDI file Storage hagyományosan a helyszínen található Network-Attached Storage (NAS) és a fájlkiszolgáló hardveren alapul, valamint a szükséges technológiákat a fájlok biztonsági mentése, helyreállítása és vész-helyreállítás biztosításához. Ezek a hagyományos megközelítések költségesek, komplexek a karbantartáshoz és felügyelethez, és nem egyszerűen méretezhetők. Emellett késést is jelentenek, ha egy modern felhőalapú VDI-megoldással (például a Windows Virtual Desktoptal) használják a fizikai távolságot, valamint az Azure-alapú asztali környezetek közötti, illetve a helyszíni tárterületen alapuló, lassabb WAN-kapcsolatot. A kifejezetten az Azure-hoz készült Nasuni-platform korlátlan tárolókapacitást és nagy teljesítményű fájl-hozzáférést biztosít. A Nasuni az azonos Azure-régiókban található Windows virtuális asztallal közösen helyezhetők el, így gazdaságos és nagy teljesítményű fájlokhoz is hozzáférhetnek egyetlen globális névtérhez. A Nasuni a Windows rendszerű virtuális asztali fájlok tárolását a hagyományos NAS-és Windows-fájlkiszolgálók költségeinek töredékéért tartalmazza, és beépített biztonsági mentéseket és vész-helyreállítást biztosít a költségek további csökkentése és az informatikai erőforrások felszabadítása érdekében.
 
 - [Lépjen a partner webhelyére](https://www.nasuni.com/partner/microsoft/#wvd).
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).

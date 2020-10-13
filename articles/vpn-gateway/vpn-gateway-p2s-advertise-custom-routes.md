@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89392391"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak reklámozása a P2S VPN-ügyfelek számára
@@ -24,7 +24,7 @@ ms.locfileid: "89392391"
 
 Egyéni útvonalak meghirdetéséhez használja a következőt: `Set-AzVirtualNetworkGateway cmdlet` . Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [contoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
 
-1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Például:
+1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Példa:
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,7 +38,7 @@ Egyéni útvonalak meghirdetéséhez használja a következőt: `Set-AzVirtualNe
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. Több egyéni útvonal hozzáadásához használjon vesszőt és szóközöket a címek elválasztásához. Például:
+3. Több egyéni útvonal hozzáadásához használjon vesszőt és szóközöket a címek elválasztásához. Példa:
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy

@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831141"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976623"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Mi a teendő, ha az Azure-szolgáltatás megszakadásának hatására az Azure virtuális gépek
 A Microsoftnál keményen dolgozunk, hogy a szolgáltatások mindig elérhetők legyenek, amikor szüksége van rájuk. A szabályozáson kívüli erők időnként a nem tervezett szolgáltatások megszakadását okozó módokat érintik.
@@ -25,7 +25,7 @@ Ez a cikk egy valós vész-helyreállítási forgatókönyvet mutat be, amikor e
 A ritka előfordulások kezeléséhez a következő útmutatást nyújtjuk az Azure-beli virtuális gépekhez abban az esetben, ha az Azure-beli virtuálisgép-alkalmazást üzembe helyező teljes régiót megzavarják.
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>1. lehetőség: feladatátvétel kezdeményezése Azure Site Recovery használatával
-A virtuális gépekhez Azure Site Recovery konfigurálhatja, hogy az alkalmazás a percek alatt egyetlen kattintással helyreállítható legyen. A replikációt a választott Azure-régióba replikálhatja, és nem korlátozhatja a párosított régiókat. [A virtuális gépek replikálásával](https://aka.ms/a2a-getting-started)kezdheti meg a lépéseket. [Létrehozhat egy helyreállítási tervet](../site-recovery/site-recovery-create-recovery-plans.md) , amely segítségével automatizálhatja az alkalmazás teljes feladatátvételi folyamatát. [A feladatátvételt előre tesztelheti](../site-recovery/site-recovery-test-failover-to-azure.md) a termelési alkalmazás vagy a folyamatban lévő replikáció nélkül. Az elsődleges régiók megszakadásakor a [feladatátvételt kezdeményezni](../site-recovery/site-recovery-failover.md) kell, és az alkalmazást a célként megadott régióban kell használni.
+A virtuális gépekhez Azure Site Recovery konfigurálhatja, hogy az alkalmazás a percek alatt egyetlen kattintással helyreállítható legyen. A replikációt a választott Azure-régióba replikálhatja, és nem korlátozhatja a párosított régiókat. [A virtuális gépek replikálásával](../site-recovery/azure-to-azure-quickstart.md)kezdheti meg a lépéseket. [Létrehozhat egy helyreállítási tervet](../site-recovery/site-recovery-create-recovery-plans.md) , amely segítségével automatizálhatja az alkalmazás teljes feladatátvételi folyamatát. [A feladatátvételt előre tesztelheti](../site-recovery/site-recovery-test-failover-to-azure.md) a termelési alkalmazás vagy a folyamatban lévő replikáció nélkül. Az elsődleges régiók megszakadásakor a [feladatátvételt kezdeményezni](../site-recovery/site-recovery-failover.md) kell, és az alkalmazást a célként megadott régióban kell használni.
 
 
 ## <a name="option-2-wait-for-recovery"></a>2. lehetőség: várakozás a helyreállításra
@@ -41,7 +41,7 @@ Ez a legjobb megoldás, ha nem állított be Azure Site Recovery, a megszakadás
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure-beli virtuális gépeken futó alkalmazások védelmének](https://aka.ms/a2a-getting-started) megkezdése Azure site Recovery használatával
+- [Az Azure-beli virtuális gépeken futó alkalmazások védelmének](../site-recovery/azure-to-azure-quickstart.md) megkezdése Azure site Recovery használatával
 
 - Ha többet szeretne megtudni a vész-helyreállítási és a magas rendelkezésre állási stratégia megvalósításáról, tekintse meg a vész [-helyreállítási és magas rendelkezésre állású Azure-alkalmazások](/azure/architecture/framework/resiliency/backup-and-recovery)című témakört.
 

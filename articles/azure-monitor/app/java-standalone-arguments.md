@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374303"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>A JVM-argumentumok konfigurálása a Java önálló ügynöke Azure Monitor Application Insights
@@ -43,7 +43,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 
-### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat telepítve a `apt-get` vagy a használatával`yum`
+### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat telepítve a `apt-get` vagy a használatával `yum`
 
 Ha a Tomcat-t a vagy a használatával telepítette `apt-get` `yum` , akkor rendelkeznie kell egy fájllal `/etc/tomcat8/tomcat8.conf` .  Adja hozzá ezt a sort a fájl végéhez:
 
@@ -139,12 +139,12 @@ Ha több felügyelt kiszolgálót futtat egyetlen gazdagépen, akkor mindegyikhe
 ...
 ```
 
-A megadott `applicationinsights.agent.id` értéknek egyedinek kell lennie. A rendszer a applicationinsights könyvtárában létrehoz egy alkönyvtárat, mivel minden JVM-folyamathoz saját helyi applicationinsights-konfiguráció és helyi applicationinsights-naplófájl szükséges. Ha a központi gyűjtőnek jelent jelentést, a `applicationinsights.properties` fájlt a több felügyelt kiszolgáló is megosztja, ezért a megadott érték `applicationinsights.agent.id` szükséges a `agent.id` megosztott fájl beállításainak felülbírálásához. `applicationinsights.agent.rollup.id`Hasonlóképpen megadható a kiszolgálón, `system-properties` Ha a `agent.rollup.id` beállítást egy felügyelt kiszolgálón kell felülbírálni.
+A megadott `applicationinsights.agent.id` értéknek egyedinek kell lennie. A rendszer a applicationinsights könyvtárában létrehoz egy alkönyvtárat, mivel minden JVM-folyamathoz saját helyi applicationinsights-konfiguráció és helyi applicationinsights-naplófájl szükséges. Ha a központi gyűjtőnek jelent jelentést, a `applicationinsights.properties` fájlt a több felügyelt kiszolgáló is megosztja, ezért a megadott érték `applicationinsights.agent.id` szükséges a `agent.id` megosztott fájl beállításainak felülbírálásához. `applicationinsights.agent.rollup.id` Hasonlóképpen megadható a kiszolgálón, `system-properties` Ha a `agent.rollup.id` beállítást egy felügyelt kiszolgálón kell felülbírálni.
 
 
 ## <a name="jetty-9"></a>3. Jetty
 
-Sorok hozzáadása a következőhöz`start.ini`
+Sorok hozzáadása a következőhöz `start.ini`
 
 ```
 --exec

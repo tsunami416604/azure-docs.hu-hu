@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
 ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426265"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
@@ -26,7 +26,7 @@ Ez a dokumentum részletesen ismerteti, hogyan használhatók az egyéni szkript
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]  
-> Ne használja az egyéni szkriptek bővítményét az Update-AzVM futtatására ugyanazzal a virtuális géppel, mint a paraméterrel, mert a várakozás magára is megtörténik.  
+> Ne használja az egyéni szkriptek bővítményét, hogy ugyanazzal a virtuális géppel, mint a paraméterrel Update-AzVM fusson, mivel az megvárja magát.  
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -122,7 +122,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft.Compute | sztring |
@@ -275,7 +275,7 @@ Ha többször is futtatni szeretné az egyéni parancsfájl-bővítményt, akkor
 
 Azt is megteheti, hogy a [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) tulajdonság értéke **true (igaz**).
 
-### <a name="using-invoke-webrequest"></a>A meghívás-webkérés használata
+### <a name="using-invoke-webrequest"></a>Invoke-WebRequest használata
 
 Ha a szkriptben a [meghívás-Webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja, meg kell adnia a paramétert, `-UseBasicParsing` különben a részletes állapot ellenőrzésekor a következő hibaüzenetet fogja kapni:
 
@@ -344,7 +344,7 @@ ahol a `<n>` decimális egész szám, amely változhat a bővítmény végrehajt
 
 A parancs végrehajtásakor `commandToExecute` a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2` ) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát a tulajdonságon keresztül letöltött fájlok megkereséséhez `fileURIs` . Példákért tekintse meg az alábbi táblázatot.
 
-Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Például:
+Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Példa:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

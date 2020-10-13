@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517297"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Dinamikus stílus implementálása a Creator beltéri térképeken
@@ -66,7 +66,7 @@ A következő szakaszban az Office kihasználtsági *állapotát* állíthatja b
 
  Most frissítjük a két iroda állapotát, `UNIT26` és `UNIT27` :
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
+1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Az állapot frissítéséhez használja a [Feature Update States API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) -t. Adja át a stateset AZONOSÍTÓját és a `UNIT26` két egység egyikét. Fűzze hozzá Azure Maps előfizetési kulcsát. Itt látható az állapot frissítésére szolgáló **post** -kérelem URL-címe:
 
@@ -108,7 +108,7 @@ A böngészőben korábban megnyitott webalkalmazásnak most már tükröznie ke
 
 ![Szabad hely a zöld és a foglalt helyiségben vörös színnel](./media/indoor-map-dynamic-styling/room-state.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért olvassa el a következőket:
 

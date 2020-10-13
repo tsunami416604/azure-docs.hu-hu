@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393598"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>A BGP konfigurálása Azure-beli VPN-átjárón a parancssori felület használatával
@@ -91,7 +91,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. hozza létre a VPN-átjárót az AS-számmal
 
-Hozza létre a TestVNet1 virtuális hálózati átjáróját. A BGP egy Route-alapú VPN-átjárót igényel. Emellett a további paraméterre is szükség van a `-Asn` TestVNet1 autonóm rendszer számának (ASN) beállításához. Az átjáró létrehozása hosszabb időt is igénybe vehet (45 perc vagy több). 
+Hozza létre a TestVNet1 virtuális hálózati átjáróját. A BGP használatához Route-Based VPN-átjáró szükséges. Emellett a további paraméterre is szükség van a `-Asn` TestVNet1 autonóm rendszer számának (ASN) beállításához. Az átjáró létrehozása hosszabb időt is igénybe vehet (45 perc vagy több). 
 
 Ha ezt a parancsot a `--no-wait` paraméterrel futtatja, nem jelenik meg visszajelzés vagy kimenet. A `--no-wait` paraméter lehetővé teszi, hogy az átjáró a háttérben legyen létrehozva. Ez nem jelenti azt, hogy a VPN-átjárót azonnal létrehozták.
 

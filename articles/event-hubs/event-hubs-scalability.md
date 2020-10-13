@@ -4,10 +4,10 @@ description: Ez a cikk az Azure-Event Hubs partíciók és átviteli egységek h
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86521955"
 ---
 # <a name="scaling-with-event-hubs"></a>Méretezés Event Hubs
@@ -46,7 +46,7 @@ A [partíciós kulcs](event-hubs-programming-guide.md#partition-key) használat�
 Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 - [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)

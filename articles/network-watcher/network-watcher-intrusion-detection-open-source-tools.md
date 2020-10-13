@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737359"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
@@ -38,7 +38,7 @@ A nyílt forráskódú eszközöket egy Azure-beli virtuális gépen is beállí
 
 ### <a name="install-suricata"></a>A Suricata telepítése
 
-Az egyéb telepítési módszerekért látogasson el a következő webhelyre:https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Az egyéb telepítési módszerekért látogasson el a következő webhelyre: https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. A virtuális gép parancssori terminálján futtassa a következő parancsokat:
 
@@ -233,7 +233,7 @@ A Logstash telepítésével kapcsolatos további információkért tekintse meg 
     ./bin/kibana
     ```
 
-1. A Kibana webes felületének megtekintéséhez navigáljon a`http://localhost:5601`
+1. A Kibana webes felületének megtekintéséhez navigáljon a `http://localhost:5601`
 1. Ebben a forgatókönyvben a Suricata naplókhoz használt index minta a következő: "logstash-*"
 
 1. Ha távolról szeretné megtekinteni a Kibana-irányítópultot, hozzon létre egy bejövő NSG-szabályt, amely engedélyezi a hozzáférést a 5601-es **porthoz**.

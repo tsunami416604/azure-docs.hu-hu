@@ -9,13 +9,13 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653817"
 ---
-# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése helyszíni vész-helyreállításra az Azure-ba
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése az Azure-ba irányuló helyszíni vészhelyreállításhoz
 
 Ez a cikk az Azure-erőforrások és-összetevők előkészítését ismerteti, így a helyszíni VMware virtuális gépek, Hyper-V virtuális gépek vagy Windows/Linux rendszerű fizikai kiszolgálók vész-helyreállítását az Azure-ba állíthatja be a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával.
 

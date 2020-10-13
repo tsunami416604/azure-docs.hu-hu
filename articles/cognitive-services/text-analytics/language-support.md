@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: aahi
 ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056591"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
@@ -27,8 +27,8 @@ ms.locfileid: "90056591"
 
 | Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójának elindítása: |              Jegyzetek |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Egyszerűsített kínai    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` szintén elfogadva |
-| Kínai – hagyományos   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
+| Chinese-Simplified    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` szintén elfogadva |
+| Chinese-Traditional   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
 | Dán               |     `da`      |     ✓      |            |                            |                    |
 | Holland                 |     `nl`      |     ✓      |            |                            |                    |
 | Angol               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
@@ -64,8 +64,8 @@ ms.locfileid: "90056591"
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arab                |     `ar`      |     ✓      |            |                                 |                    |
 | Cseh                 |     `cs`      |     ✓      |            |                                 |                    |
-| Egyszerűsített kínai     |   `zh-hans`   |     ✓      |            |                                 | `zh` szintén elfogadva |
-| Kínai – hagyományos   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| Chinese-Simplified     |   `zh-hans`   |     ✓      |            |                                 | `zh` szintén elfogadva |
+| Chinese-Traditional   |   `zh-hant`   |     ✓      |            |                                 |                    |
 | Dán                |     `da`      |     ✓      |            |                                 |                    |
 | Holland                 |     `nl`      |     ✓      |            |                                 |                    |
 | Angol                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
@@ -86,7 +86,7 @@ ms.locfileid: "90056591"
 | Svéd               |     `sv`      |     ✓      |            |                                 |                    |
 | Török               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > A 2020-07-01 előtti Kulcsszókeresés modellek 64 karakteres korláttal rendelkeznek. Ez a korlát nem szerepel a modell későbbi verzióiban.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88751280"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
@@ -78,8 +78,8 @@ A végpontok közötti vállalati biztonság a következő vezérlők használat
     - Megtekintheti és bejelentheti a hozzáférés-vezérlési szabályzatok összes módosítását.
 
 **Titkosítás**
-    - Transzparens kiszolgálóoldali titkosítás Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal.
-    - Az átvitel titkosítása ügyféloldali titkosítással, HTTPS és TLS protokollal.
+    - Transzparens Server-Side titkosítás a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal.
+    - Az átvitel titkosítása Client-Side titkosítás, HTTPS és TLS használatával.
 
 További információkért tekintse át a következő cikkeket:
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299420"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
@@ -55,7 +55,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. A naplózási riasztások két típusú [**mértéken**](alerts-unified-log.md#measure)alapulnak:
     1. **Eredmények száma** – a lekérdezés által visszaadott rekordok száma.
-    1. **Metrika mérése**  -  *Összesítési érték* kiszámítva a kiválasztott kifejezések és a [bin ()](/azure/kusto/query/binfunction) kiválasztásával csoportosított összesítéssel. Például:
+    1. **Metrika mérése**  -  *Összesítési érték* kiszámítva a kiválasztott kifejezések és a [bin ()](/azure/kusto/query/binfunction) kiválasztásával csoportosított összesítéssel. Példa:
 
     ```Kusto
     // Reported errors
@@ -79,7 +79,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. Megadhatja azt is, [hogy a szabálysértések száma](alerts-unified-log.md#number-of-violations-to-trigger-alert) **teljes vagy egymást követő szabálysértések**használatával történjen.
 
-1. Válassza a **Kész** lehetőséget. 
+1. Válassza a **Done** (Kész) lehetőséget. 
 
 1. Adja meg a **riasztási szabály nevét**, **leírását**, és válassza ki a riasztás **súlyosságát**. Ezeket a részleteket minden riasztási műveletben használják. Emellett dönthet úgy is, hogy nem aktiválja a riasztási szabályt a létrehozáshoz a **szabály engedélyezése a létrehozáskor**lehetőség kiválasztásával.
 

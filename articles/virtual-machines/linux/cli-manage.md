@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
 ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372246"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Gyakori Azure CLI-parancsok az Azure-erőforrások kezeléséhez
@@ -23,14 +23,14 @@ Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. A ver
 Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részletesebb segítségért írja be a következőt: az online parancs súgója és beállításai `az <command> <subcommand> --help` .
 
 ### <a name="create-vms"></a>Virtuális gépek létrehozása
-| Feladat | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure CLI parancsai |
 | --- | --- |
-| Hozzon létre egy erőforráscsoportot | `az group create --name myResourceGroup --location eastus` |
+| Erőforráscsoport létrehozása | `az group create --name myResourceGroup --location eastus` |
 | Linux rendszerű virtuális gép létrehozása | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
 | Windows rendszerű virtuális gép létrehozása | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
 
 ### <a name="manage-vm-state"></a>Virtuális gép állapotának kezelése
-| Feladat | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure CLI parancsai |
 | --- | --- |
 | Virtuális gép elindítása | `az vm start --resource-group myResourceGroup --name myVM` |
 | Virtuális gép leállítása | `az vm stop --resource-group myResourceGroup --name myVM` |
@@ -40,7 +40,7 @@ Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részleteseb
 | Virtuális gép törlése | `az vm delete --resource-group myResourceGroup --name myVM` |
 
 ### <a name="get-vm-info"></a>Virtuális gép adatainak beolvasása
-| Feladat | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure CLI parancsai |
 | --- | --- |
 | Virtuális gépek felsorolása | `az vm list` |
 | Virtuális gép adatainak lekérése | `az vm show --resource-group myResourceGroup --name myVM` |
@@ -48,7 +48,7 @@ Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részleteseb
 | Minden elérhető virtuálisgép-méret megtekintése | `az vm list-sizes --location eastus` |
 
 ## <a name="disks-and-images"></a>Lemezek és lemezképek
-| Feladat | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure CLI parancsai |
 | --- | --- |
 | Adatlemez hozzáadása egy virtuális géphez | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new` |
 | Adatlemez eltávolítása egy virtuális gépből | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |

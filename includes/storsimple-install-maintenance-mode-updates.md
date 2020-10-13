@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179154"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>A karbantartási mód frissítéseinek telepítése Windows PowerShell StorSimple-bővítménye használatával
@@ -18,7 +18,7 @@ ms.locfileid: "67179154"
    
      `Get-HcsUpdateAvailability` 
 4. Értesítést kap, ha elérhetők a frissítések, és hogy a frissítések zavaróak vagy nem zavaróak-e. A zavaró frissítések alkalmazásához az eszközt karbantartási módba kell helyeznie. Lásd: [2. lépés: adja meg a karbantartási módot](../articles/storsimple/storsimple-update-device.md#step2) az utasításokhoz.
-5. Ha az eszköz karbantartási módban van, a parancssorba írja be a következőt:`Start-HcsUpdate`
+5. Ha az eszköz karbantartási módban van, a parancssorba írja be a következőt: `Start-HcsUpdate`
 6. A rendszer a művelet megerősítését kéri. A frissítések megerősítése után a rendszer a jelenleg használt vezérlőre telepíti őket. A frissítések telepítése után a vezérlő újra fog indulni. 
 7. A frissítések állapotának figyelése. Típus:
    

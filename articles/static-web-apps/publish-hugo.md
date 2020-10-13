@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797717"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
@@ -115,7 +115,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Az _SKU_esetében válassza az **ingyenes**lehetőséget.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Részletek kitöltve":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
 
 1. Kattintson a **Bejelentkezés a GitHub** gombbal gombra.
 
@@ -125,7 +125,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. A _ág_ válassza a **Master**elemet.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
 
 ### <a name="build"></a>Létrehozás
 
@@ -149,13 +149,13 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Az újonnan létrehozott Azure statikus Web Apps erőforrás Azure Portal _áttekintése_ ablakában kattintson az _URL-_ hivatkozásra a telepített alkalmazás megnyitásához.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165039"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Jelszó-tároló egyszeri bejelentkezéshez alkalmazásproxy
@@ -66,7 +66,7 @@ Az alkalmazást már közzétette és tesztelte az Application proxyval. Ha nem,
 
 Nyissa meg a saját alkalmazások portált. Jelentkezzen be a hitelesítő adataival (vagy a hozzáféréshez beállított tesztelési fiók hitelesítő adataival). Ha sikeresen bejelentkezett, kattintson az alkalmazás ikonjára. Ez elindíthatja a saját alkalmazások biztonságos bejelentkezési böngésző bővítményének telepítését. Ha a felhasználó előre megadott hitelesítő adatokkal rendelkezik, a hitelesítés automatikusan megtörténik, ellenkező esetben a felhasználónevet vagy a jelszót kell megadnia az első alkalommal. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk az [egyszeri bejelentkezés](what-is-single-sign-on.md) megvalósításának egyéb módjairól
 - Tudnivalók [az alkalmazások távoli Azure-ad Application proxy való elérésének biztonsági szempontjairól](application-proxy-security.md)

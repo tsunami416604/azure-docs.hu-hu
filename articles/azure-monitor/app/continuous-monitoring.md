@@ -4,10 +4,10 @@ description: Útmutatást nyújt a folyamatos figyelés beállításához Applic
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517127"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Folyamatos figyelés hozzáadása a kiadási folyamathoz
@@ -99,6 +99,6 @@ Megtekintheti a telepítési kapu viselkedését és a kiadási naplók egyéb k
    
    ![Kiadási naplók megtekintése](media/continuous-monitoring/006.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure-folyamatokkal kapcsolatos további információkért tekintse meg az [Azure-folyamatok dokumentációját](/azure/devops/pipelines).
