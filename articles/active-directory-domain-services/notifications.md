@@ -2,7 +2,7 @@
 title: E-mail-értesítések a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhatja az e-mail-értesítéseket egy Azure Active Directory Domain Services felügyelt tartomány problémáinak riasztására
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: c273b1a6c497ec8dcb8c5bc5f50ccfccc9fce155
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039993"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968017"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail-értesítések konfigurálása a Azure Active Directory Domain Services kapcsolatos problémákhoz
 
@@ -80,7 +80,7 @@ Ha nem tud hozzáférni a Azure Portal értesítési beállítások lapjához, n
 
 Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról, hogy a küldője engedélyezte a következőt: `azure-noreply@microsoft.com` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelentett problémák némelyikével kapcsolatos további információkért lásd: [riasztások feloldása felügyelt tartományon][troubleshoot-alerts].
 

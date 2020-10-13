@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5910c40729d07d5a759b2e5cc7b7a4272524c150
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253853"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968939"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Frissítés a Read v2. x verzióról a v3. x olvasásához
 
@@ -55,7 +55,7 @@ A sikeres hívás után a `Get Read Operation Result` rendszer visszaadja a JSON
  
 |Olvasás 2. x |3. x olvasása  |
 |----------|-----------|
-|`"NotStarted"` |   `"notStarted"`|
+|`"NotStarted"` |    `"notStarted"`|
 |`"Running"` | `"running"`|
 |`"Failed"` | `"failed"`|
 |`"Succeeded"` | `"succeeded"`|
@@ -194,7 +194,7 @@ A sikeres hívás után a `Get Recognize Text Operation Result` rendszer visszaa
  
 |Szövegfelismerés 2. x |3. x olvasása  |
 |----------|-----------|
-|`"NotStarted"` |   `"notStarted"`|
+|`"NotStarted"` |    `"notStarted"`|
 |`"Running"` | `"running"`|
 |`"Failed"` | `"failed"`|
 |`"Succeeded"` | `"succeeded"`|

@@ -4,17 +4,17 @@ description: Ismerteti az Azure IoT-megoldás létrehozásához használható te
 author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: dedb799121fcdbc6bab38865132ae46a78aa6494
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91578179"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977561"
 ---
-# <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Azure-technológiák és-szolgáltatások IoT-megoldások létrehozásához
+# <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Milyen Azure-technológiákat és-szolgáltatásokat használhat a IoT-megoldások létrehozásához?
 
 Az Azure IoT-technológiák és-szolgáltatások számos olyan IoT-megoldás létrehozásához nyújtanak lehetőséget, amelyek lehetővé teszik a szervezet digitális átalakítását. Megteheti például a következőt:
 
@@ -86,7 +86,7 @@ A IoT-eszközök általában nagy mennyiségű idősoros adatok előállításá
 
 A [Azure Maps](/azure/azure-maps) térinformatikai szolgáltatások gyűjteménye, amely friss leképezési adatait használja a webes és mobil alkalmazások pontos földrajzi kontextusának biztosításához. Az alkalmazások létrehozásához REST API, webalapú JavaScript-vezérlőt vagy Android SDK-t használhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gyakorlati tapasztalatért próbálja ki az egyik rövid útmutatót:
 

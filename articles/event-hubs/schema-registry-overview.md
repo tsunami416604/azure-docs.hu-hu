@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Event Hubs (előzetes verzi
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1da59d7757a7f78235ab3ef7ab18ca78e419b761
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812420"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938797"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
 Számos esemény-adatfolyam és üzenetküldési forgatókönyv esetén az esemény vagy az üzenet tartalma strukturált adatokat tartalmaz, amelyek szerializálása vagy deszerializálása séma-vezérelt formátum, például Apache Avro használatával történik. A küldők és a fogadók is ellenőrizhetik az adatok integritását egy séma-dokumentummal, mint a JSON-sémával. A séma által vezérelt formátumok esetében a séma elérhetővé tétele az üzenet fogyasztói számára előfeltétel, hogy a fogyasztó képes legyen deszerializálni az adatmennyiséget. 
@@ -50,7 +50,7 @@ Az alábbi ábrán a séma beállításjegyzékének Event Hubs:
 ## <a name="standard-vs-dedicated-limits"></a>Standard és dedikált korlátok
 A határértékek (például a névtérben lévő séma-csoportok száma) és a Event Hubs standard és dedikált szintjei esetében különböznek a [séma beállításjegyzékének korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations) című témakörben.
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrálnia kell egy alkalmazást Azure Active Directory (Azure AD-ben), és hozzá kell adnia az alkalmazás rendszerbiztonsági tag szerepét az egyik szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörhöz:
 
 | Szerepkör | Leírás | 
@@ -70,4 +70,4 @@ Az alkalmazások a Azure Portal használatával történő regisztrálásával k
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
-    - [Kafka Avro-integráció az Azure Schema registryben](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples)
+    - [Kafka Avro-integráció az Azure Schema registryben](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

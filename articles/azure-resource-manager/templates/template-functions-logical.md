@@ -2,13 +2,13 @@
 title: Sablon functions – logikai
 description: A Azure Resource Manager-sablonban a logikai értékek meghatározásához használandó függvények leírása.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677389"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978509"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
 
@@ -16,9 +16,11 @@ A Resource Manager számos funkciót biztosít a Azure Resource Manager-(ARM-) s
 
 * [and](#and)
 * [logikai](#bool)
+* [hamis](#false)
 * [Ha](#if)
 * [nem](#not)
 * [vagy](#or)
+* [igaz](#true)
 
 ## <a name="and"></a>és
 
@@ -28,11 +30,11 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -80,12 +82,17 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
+| arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
+
 Az átalakított érték logikai értéke.
+
+### <a name="remarks"></a>Megjegyzések
+
+Logikai értékek beolvasásához a [true ()](#true) és a [false ()](#false) is használható.
 
 ### <a name="examples"></a>Példák
 
@@ -126,6 +133,44 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | trueInt | Logikai | Igaz |
 | falseInt | Logikai | Hamis |
 
+## <a name="false"></a>hamis
+
+`false()`
+
+Hamis értéket ad vissza.
+
+### <a name="parameters"></a>Paraméterek
+
+A False függvény nem fogad el paramétereket.
+
+### <a name="return-value"></a>Visszatérési érték
+
+Egy mindig hamis logikai érték.
+
+### <a name="example"></a>Példa
+
+A következő példa hamis kimeneti értéket ad vissza.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Az előző példa kimenete a következő:
+
+| Név | Típus | Érték |
+| ---- | ---- | ----- |
+| falseOutput | Logikai | Hamis |
+
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
@@ -134,11 +179,11 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| feltétel |Igen |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
-| trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
-| falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
+| feltétel |Yes |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
+| falseValue |Yes | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -239,9 +284,9 @@ Logikai érték konvertálása az ellenkező értékre.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Az átalakítandó érték. |
+| arg1 |Yes |boolean |Az átalakítandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -312,11 +357,11 @@ Ellenőrzi, hogy a paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -356,7 +401,45 @@ Az előző példa kimenete a következő:
 | orExampleOutput | Logikai | Igaz |
 | notExampleOutput | Logikai | Hamis |
 
-## <a name="next-steps"></a>További lépések
+## <a name="true"></a>true
+
+`true()`
+
+Igaz értéket ad vissza.
+
+### <a name="parameters"></a>Paraméterek
+
+Az igaz függvény nem fogad el paramétereket.
+
+### <a name="return-value"></a>Visszatérési érték
+
+Egy mindig igaz logikai érték.
+
+### <a name="example"></a>Példa
+
+A következő példa valódi kimeneti értéket ad vissza.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Az előző példa kimenete a következő:
+
+| Név | Típus | Érték |
+| ---- | ---- | ----- |
+| trueOutput | Logikai | Igaz |
+
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
 

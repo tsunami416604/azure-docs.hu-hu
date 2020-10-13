@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f3aee10c0682feeea7c74133f908452d1c5595f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003541"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968599"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -42,7 +42,7 @@ A naplózási szakaszban számos szervezet úgy találja, hogy a következő hel
 * A felhasználók gyakran nem biztonságos jelszavakat használnak.
 * Tájékoztatniuk kell a felhasználókat a biztonsági kényszerítés közelgő változásáról, a lehetséges hatásokról, valamint a biztonságosabb jelszavak kiválasztásáról.
 
-Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálásának befolyásolására is használható. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre a probléma elhárítása érdekében. További információkért tekintse át a következő cikkeket:
+Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálásának befolyásolására is használható. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre a probléma elhárítása érdekében. További információért tekintse át a következő cikkeket:
 
 * [ ANtdsutil.exe nem tudja beállítani a Címtárszolgáltatások helyreállító módjának jelszavát.](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [A tartományvezérlő replikájának előléptetése sikertelen a Címtárszolgáltatások helyreállító módjának jelszava miatt](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)

@@ -3,12 +3,12 @@ title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMWare megoldás használatával
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578316"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952284"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése az Azure-ban
 
@@ -16,7 +16,7 @@ Az Azure VMware megoldás lehetővé teszi, hogy vSphere-fürtöt helyezzen üze
 
 Mivel az Azure VMware-megoldás nem teszi lehetővé, hogy az indításkor a helyszíni vCenter kezelhesse saját felhőjét, további konfigurálásra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Azure VMware-megoldás saját felhő létrehozása
@@ -43,13 +43,13 @@ A [Azure Portal](#azure-portal) vagy az [Azure parancssori](#azure-cli)felület�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ahelyett, hogy a Azure Portal egy Azure VMware-megoldáshoz tartozó privát felhőt létrehozni, az Azure CLI-t használhatja a Azure Cloud Shell használatával.  Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Ahelyett, hogy a Azure Portal egy Azure VMware-megoldáshoz tartozó privát felhőt létrehozni, az Azure CLI-t használhatja a Azure Cloud Shell használatával.  Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Az Azure Cloud Shell megnyitása
 
 Válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
-#### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+#### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
@@ -96,7 +96,7 @@ A privát felhő törlése után nem lehet helyreállítani a virtuális gépeke
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-parancsok
 
-Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](/cli/azure/ext/vmware/vmware).
 
 ## <a name="next-steps"></a>További lépések
 

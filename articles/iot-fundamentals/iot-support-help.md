@@ -5,16 +5,16 @@ author: philmea
 ms.author: phil
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: ea4ecbbeaa4ad016e32aa9301d6f6ac49a6d342e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23381a45d045e8f96e989bce9f52d627f5a88255
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330179"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979070"
 ---
-# <a name="azure-iot-support-and-help-options"></a>Azure IoT – Támogatási és súgólehetőségek
+# <a name="what-are-the-azure-iot-support-and-help-options"></a>Mik az Azure IoT-támogatás és a Súgó lehetőségei?
 
 Az alábbi javaslatok segítséget nyújtanak az Azure IoT-megoldások fejlesztéséhez.
 
@@ -99,7 +99,6 @@ Az Azure IoT kapcsolatos hírek és információk az [Azure blogban](https://azu
 
 Ossza meg tapasztalatait, ismerkedjen meg a [eszközök internetes hálózata technikai Közösség](https://techcommunity.microsoft.com/t5/Internet-of-Things-IoT/ct-p/IoT)szakértőitől.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [Mi az az Azure IoT?](iot-introduction.md)
+[Mi az az Azure IoT?](iot-introduction.md)

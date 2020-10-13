@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368940"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968783"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (ak) fürt leállítása és elindítása (előzetes verzió)
 
@@ -30,6 +30,7 @@ A fürt indítási/leállítási funkciójának használatakor a következő kor
 - Ez a funkció csak Virtual Machine Scale Sets-alapú fürtök esetén támogatott.
 - Az előzetes verzióban ez a funkció nem támogatott a privát fürtök esetében.
 - A leállított AK-fürtök fürtjének állapota akár 12 hónapig is megmarad. Ha a fürt 12 hónapnál hosszabb ideig leáll, a fürt állapota nem állítható helyre. További információ: [AK-támogatási szabályzatok](support-policies.md).
+- Az előzetes verzió ideje alatt le kell állítania a fürt automéretezőjét (CA), mielőtt megpróbálja leállítani a fürtöt.
 - Csak leállított AK-fürtöket lehet elindítani vagy törölni. Az olyan műveletek elvégzéséhez, mint a skálázás vagy a frissítés, először indítsa el a fürtöt.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>Az `aks-preview` Azure CLI telepítése 

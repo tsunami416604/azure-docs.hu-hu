@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743386"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938354"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro aktiválása GPU-val
 
@@ -92,8 +92,9 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
  
 Az eszköz aktiválása befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 
+Ha az aktiválás során problémák merülnek fel, ugorjon az [aktiválási és Azure Key Vault hibák elhárítása](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)lehetőségre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

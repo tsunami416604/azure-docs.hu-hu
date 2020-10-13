@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776153"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978662"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -119,7 +119,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Leírás | PerfMon | Iostat |
+| Számláló | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
@@ -130,7 +130,7 @@ A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló m
 | **Maximális memória** |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória kihasználtsága (%) |Vmstat használata |
 | **Max. CPU** |Az alkalmazás zökkenőmentes futtatásához szükséges mennyiségű CPU |Processzoridő (%) |% util |
 
-További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)szolgáltatásról.
+További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perfmon](/windows/win32/perfctrs/performance-counters-portal)szolgáltatásról.
 
 
 
@@ -279,7 +279,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -343,7 +343,7 @@ Olyan konfigurációs beállítások is megváltozhatnak, amelyek befolyásolhat
 
 Tegyük fel például, hogy az SQL Servert használó alkalmazás nagyméretű lekérdezést és egy indexelési műveletet hajt végre. Tegyük fel, hogy az indexelési művelet jobban teljesített, mint a nagyméretű lekérdezés. Ilyen esetben beállíthatja, hogy az MAXDOP értéke nagyobb legyen, mint a lekérdezés MAXDOP értéke. Így SQL Server több processzorral rendelkezik, amelyeket használhat az indexelési művelethez a nagyméretű lekérdezéshez hozzárendelt processzorok számához képest. Ne feledje, hogy nem szabályozhatja, hogy hány szálat SQL Server fog használni az egyes műveletekhez. A többszálas használatra dedikált processzorok maximális számát szabályozhatja.
 
-További információk a [párhuzamossági fok](https://technet.microsoft.com/library/ms188611.aspx) SQL Server. Megtudhatja, hogy az alkalmazásban több szálat befolyásoló beállítások és konfigurációik a teljesítmény optimalizálása érdekében.
+További információk a [párhuzamossági fok](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) SQL Server. Megtudhatja, hogy az alkalmazásban több szálat befolyásoló beállítások és konfigurációik a teljesítmény optimalizálása érdekében.
 
 ## <a name="queue-depth"></a>Várólista mélysége
 

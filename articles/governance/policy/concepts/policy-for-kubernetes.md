@@ -3,12 +3,12 @@ title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540251"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951536"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -57,6 +57,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 - Az Azure Policy-bővítményen kívüli forgalomirányító telepítése nem támogatott. A Azure Policy bővítmény engedélyezése előtt távolítsa el az előző forgalomirányító-telepítés által telepített összetevőket.
 - A [meg nem felelés okai](../how-to/determine-non-compliance.md#compliance-reasons) nem érhetők el az `Microsoft.Kubernetes.Data` 
    [erőforrás-szolgáltató módban](./definition-structure.md#resource-provider-modes). [Összetevő részleteinek](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)használata.
+- Az [erőforrás-szolgáltatói módok](./definition-structure.md#resource-provider-modes)nem támogatják a [kivételeket](./exemption-structure.md) .
 
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
@@ -531,7 +532,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

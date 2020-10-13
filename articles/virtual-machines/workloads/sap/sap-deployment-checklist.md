@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650699"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978220"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -60,8 +60,8 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - Az SAP Central Services több SID-alapú fürtjének konfigurációjának használatával támogatott a Windows, a SLES és a RHEL vendég operációs rendszerek használata az Azure-ban. Ne feledje, hogy a Blast-sugár növelheti a több ASCS/SCS-t, amelyet egy ilyen multi-SID fürtön helyez el. A megfelelő vendég operációs rendszerekre vonatkozó dokumentáció a következő cikkekben található:
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide](./high-availability-guide-suse-multi-sid.md)
+        - [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide](./high-availability-guide-rhel-multi-sid.md)
     - Magas rendelkezésre állású és vész-helyreállítási architektúra.
         - A RTO és a RPO alapján határozza meg, hogy a magas rendelkezésre állást és a vész-helyreállítási architektúrát hogyan kell kinéznie.
         - Egy zónán belüli magas rendelkezésre álláshoz tekintse meg a kívánt adatbázis-kezelőt az Azure-ban. A legtöbb adatbázis-kezelő csomag szinkron módszert kínál a szinkron gyors készenléti állapothoz, amelyet az üzemi rendszerek esetében ajánlott. Tekintse meg az SAP-hez kapcsolódó dokumentációt a különböző adatbázisokhoz, az [Azure Virtual Machines adatbázis-kezelő üzembe helyezésével kapcsolatos megfontolások alapján az SAP-munkaterhelésekhez és a](./dbms_guide_general.md) kapcsolódó dokumentumokhoz.
@@ -109,7 +109,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
            -  [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
            -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
    2. Tárterület
-        - Az [Azure Storage-beli tárolási típusok keresése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
+        - Az [Azure Storage-beli tárolási típusok keresése az SAP-munkaterheléshez](./planning-guide-storage.md)
         - Legalább az [Azure standard SSD Storage](../../disks-types.md#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
         - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](../../disks-types.md#standard-hdd)használatát nem javasoljuk.
         - Az [Azure Premium Storage](../../disks-types.md#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.
@@ -127,7 +127,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Értékelje ki és tesztelje az adatelérési utat az SAP-alkalmazás réteg és az SAP adatbázis-kezelő réteg között.
             -  Az Azure-beli [hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) elhelyezése az SAP-alkalmazás és az SAP NetWeaver, Hybris vagy S/4HANA alapú SAP-rendszerek adatbázis-kezelői rétege közötti kommunikációs útvonalon nem támogatott.
             -  Az SAP-alkalmazás rétegének és az SAP adatbázis-kezelők különböző Azure-beli virtuális hálózatokban való elhelyezése nem támogatott.
-            -  Az [alkalmazás biztonsági csoportja és a hálózati biztonsági csoport szabályai](../../../virtual-network/security-overview.md) segítségével megadhatja az SAP-alkalmazás rétege és az SAP adatbázis-kezelő réteg közötti útvonalakat.
+            -  Az [alkalmazás biztonsági csoportja és a hálózati biztonsági csoport szabályai](../../../virtual-network/network-security-groups-overview.md) segítségével megadhatja az SAP-alkalmazás rétege és az SAP adatbázis-kezelő réteg közötti útvonalakat.
         - Győződjön meg arról, hogy az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van az SAP-alkalmazás rétegében és az SAP adatbázis-kezelő rétegében használt virtuális gépeken. Ne feledje, hogy az Azure-ban a gyorsított hálózatkezelés támogatásához különböző operációsrendszer-szintekre van szükség:
             - Windows Server 2012 R2 vagy újabb.
             - SUSE Linux 12 SP3 vagy újabb verzió.
@@ -138,7 +138,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Ha Azure Load Balancer a Linux vendég operációs rendszerekkel együtt használja, ellenőrizze, hogy a Linux hálózati **net.IPv4.tcp_timestamps** paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
         - Érdemes lehet az [Azure Proximity-elhelyezési csoportokat](../../linux/co-location.md) használni az optimális hálózati késés érdekében. További információ: [Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md).
    4. Magas rendelkezésre állású és vész-helyreállítási üzemelő példányok.
-        - Ha egy adott Azure rendelkezésre állási zóna meghatározása nélkül helyezi üzembe az SAP-alkalmazás rétegét, győződjön meg arról, hogy minden olyan virtuális gép, amely az SAP-párbeszédpanelek példányait vagy az egyetlen SAP-rendszer összes közbenső példányát futtatja egy [rendelkezésre állási csoportba](../../windows/manage-availability.md)
+        - Ha egy adott Azure rendelkezésre állási zóna meghatározása nélkül helyezi üzembe az SAP-alkalmazás rétegét, győződjön meg arról, hogy minden olyan virtuális gép, amely az SAP-párbeszédpanelek példányait vagy az egyetlen SAP-rendszer összes közbenső példányát futtatja egy [rendelkezésre állási csoportba](../../manage-availability.md)
         - Ha nincs szüksége magas rendelkezésre állásra az SAP Central Services és az adatbázis-kezelő rendszer számára, akkor ezeket a virtuális gépeket az SAP-alkalmazás rétegével megegyező rendelkezésre állási csoportba helyezheti.
         - Ha a magas rendelkezésre állás érdekében a passzív replikáció révén védi az SAP központi szolgáltatásait és az adatbázis-kezelő réteget, helyezze el a két csomópontot az SAP Central Services számára egy különálló rendelkezésre állási csoportba, illetve egy másik rendelkezésre állási csoport két adatbázis-kezelő csomópontját.
         - Ha Azure Availability Zonesbe helyez üzembe, nem használhatja a rendelkezésre állási csoportokat. Azonban gondoskodnia kell arról, hogy az aktív és a passzív központi szolgáltatások csomópontjait két különböző Availability Zones telepítse. Használjon olyan Availability Zones, amely a legkisebb késéssel rendelkezik.
@@ -179,7 +179,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
    4. Több régióra kiterjedő DR funkció és architektúra tesztelése.
 1. Biztonsági ellenőrzések.
    1. Tesztelje az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) architektúrájának érvényességét. A cél az, hogy elkülönítse és korlátozza a különböző csapatok hozzáférését és engedélyeit. Az SAP-csapat tagjai például telepíthetnek virtuális gépeket, és az Azure Storage-ból lemezeket rendelhetnek egy adott Azure virtuális hálózatban. Az SAP-alapú csapat azonban nem hozhat létre saját virtuális hálózatokat, és nem módosíthatja a meglévő virtuális hálózatok beállításait. A hálózati csapat tagjai nem telepíthetnek virtuális gépeket olyan virtuális hálózatokra, amelyekben az SAP-alkalmazás és az adatbázis-kezelő virtuális gépek futnak. A csapat tagjai nem változtathatják meg a virtuális gépek attribútumait, vagy akár virtuális gépeket vagy lemezeket is törölhetnek.  
-   1.  Ellenőrizze, hogy a [hálózati biztonsági csoport és az ASC](../../../virtual-network/security-overview.md) -szabályok a várt módon működnek-e, és védi a védett erőforrásokat.
+   1.  Ellenőrizze, hogy a [hálózati biztonsági csoport és az ASC](../../../virtual-network/network-security-groups-overview.md) -szabályok a várt módon működnek-e, és védi a védett erőforrásokat.
    1.  Győződjön meg arról, hogy az összes titkosítani kívánt erőforrás titkosítva van. Megadhatja és implementálhatja a tanúsítványok biztonsági mentésére, tárolására és elérésére szolgáló folyamatokat, és visszaállíthatja a titkosított entitásokat.
    1.  Az operációsrendszer-lemezek [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) használata, ha lehetséges, az operációs rendszer által támogatott nézetből.
    1.  Ügyeljen arra, hogy ne használjon túl sok titkosítási réteget. Bizonyos esetekben érdemes Azure Disk Encryption együtt használni az adatbázis-kezelői transzparens adattitkosítás módszerek egyikével, hogy az ugyanazon a kiszolgálón lévő különböző lemezeket vagy összetevőket védjék.  Például egy SAP adatbázis-kezelő kiszolgálón a Azure Disk Encryption (ADE) engedélyezhető az operációs rendszer rendszerindító lemezén (ha az operációs rendszer támogatja az ADE-t), és azokat az adatlemezeket, amelyeket az adatbázis-kezelői adatmegőrzési fájlok nem használnak.  Erre példa az az ADE használata az adatbázis-kezelő TDE titkosítási kulcsait tároló lemezen.

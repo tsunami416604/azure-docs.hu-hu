@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652848"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977272"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Nagyszámítógépes tároló áthelyezése az Azure-ba
 
@@ -51,13 +51,13 @@ Az Azure Storage Azure- [lemezként](../../../managed-disks-overview.md), [Azure
 
 <table>
 <thead>
-    <tr><th>Típus</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
+    <tr><th>Típus</th><th>Description</th><th>A következő esetekben használja:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
 </td>
 <td>
-Egy SMB-felületet, egy ügyféloldali kódtárat és egy <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">Rest</a> -felületet biztosít, amely lehetővé teszi a hozzáférést bárhonnan a tárolt fájlokhoz.
+Egy SMB-felületet, egy ügyféloldali kódtárat és egy <a href="/rest/api/storageservices/file-service-rest-api">Rest</a> -felületet biztosít, amely lehetővé teszi a hozzáférést bárhonnan a tárolt fájlokhoz.
 </td>
 <td><ul>
 <li>Egy alkalmazás átemelése a felhőbe, ha az alkalmazás a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.</li>
@@ -67,7 +67,7 @@ Egy SMB-felületet, egy ügyféloldali kódtárat és egy <a href="https://docs.
 </tr>
 <tr><td>Azure Blobs
 </td>
-<td>Az ügyféloldali kódtárakat és egy <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">Rest</a> -felületet biztosít, amely lehetővé teszi a strukturálatlan adatok tárolását és elérését a blokkos Blobok nagy méretekben. A <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> is támogatja a vállalati Big Data elemzési megoldásokhoz.
+<td>Az ügyféloldali kódtárakat és egy <a href="/rest/api/storageservices/blob-service-rest-api">Rest</a> -felületet biztosít, amely lehetővé teszi a strukturálatlan adatok tárolását és elérését a blokkos Blobok nagy méretekben. A <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> is támogatja a vállalati Big Data elemzési megoldásokhoz.
 </td>
 <td><ul>
 <li>Támogatja a folyamatos átviteli és véletlenszerű hozzáférési forgatókönyveket az alkalmazásokban.</li>
@@ -77,7 +77,7 @@ Egy SMB-felületet, egy ügyféloldali kódtárat és egy <a href="https://docs.
 </tr>
 <tr><td>Azure Disks
 </td>
-<td>Az ügyféloldali kódtárakat és egy <a href="https://docs.microsoft.com/rest/api/compute/disks">Rest</a> -felületet biztosít, amely lehetővé teszi az adatok tartós tárolását és elérését egy csatlakoztatott virtuális merevlemezről.
+<td>Az ügyféloldali kódtárakat és egy <a href="/rest/api/compute/disks">Rest</a> -felületet biztosít, amely lehetővé teszi az adatok tartós tárolását és elérését egy csatlakoztatott virtuális merevlemezről.
 </td>
 <td><ul>
 <li>A natív fájlrendszert használó API-k használatával olyan alkalmazásokat helyezhet át és helyezhet át, amelyek állandó lemezekre olvasnak és írhatnak.</li>
@@ -102,7 +102,7 @@ Az SSD-k biztosítják a legnagyobb tárolási teljesítményt az Azure-ban. A k
 
 A blob Storage a legnagyobb tárterületet biztosítja az Azure-ban. A tárterület mérete mellett az Azure felügyelt és nem felügyelt tárolást is biztosít. A felügyelt tárolók esetében az Azure gondoskodik a mögöttes Storage-fiókok kezeléséről. A nem felügyelt tárolással a felhasználó felelősséget vállal a megfelelő méretű Azure Storage-fiókok beállításához a tárolási követelmények kielégítése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Az Azure Virtual Machines-t futtató nagyszámítógépek](../overview.md)

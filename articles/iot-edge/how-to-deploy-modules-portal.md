@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82133923"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978798"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modulok üzembe helyezése a Azure Portal
 
@@ -25,7 +25,9 @@ Ez a cikk bemutatja, hogyan végigvezeti a Azure Portal az üzembe helyezési je
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
-* [IoT Edge-eszköz](how-to-register-device.md#register-in-the-azure-portal) , amelyen telepítve van a IoT Edge futtatókörnyezet.
+* Egy IoT Edge eszköz.
+
+  Ha nincs beállítva IoT Edge eszköz, létrehozhat egyet egy Azure-beli virtuális gépen. A [virtuális Linux-eszköz létrehozásához](quickstart-linux.md) vagy [virtuális Windows-eszköz létrehozásához](quickstart.md)kövesse az egyik rövid útmutató lépéseit.
 
 ## <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
@@ -104,6 +106,6 @@ Válasszon egy modult a **IoT Edge modul Marketplace** oldaláról. A kiválaszt
 
 Válassza a Next (tovább) lehetőséget **: útvonalakat** , és folytassa az üzembe helyezést a jelen cikk [útvonalak megadása](#specify-routes) és [üzembe helyezés áttekintése](#review-deployment) című szakaszában leírtak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge modulokat a skálán](how-to-deploy-at-scale.md)

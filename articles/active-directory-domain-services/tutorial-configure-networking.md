@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – virtuális hálózatkezelés konfigurálása a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure-beli virtuális hálózati alhálózatot vagy hálózati társítást egy Azure Active Directory Domain Services felügyelt tartományhoz a Azure Portal használatával.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024774"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967409"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: virtuális hálózatkezelés konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -24,7 +24,7 @@ Ha saját virtuális gépeket és alkalmazásokat hoz létre, azok nem telepíth
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat dedikált virtuális hálózati alhálózatokat, illetve hogyan végezheti el egy másik hálózat társítását az Azure AD DS felügyelt tartomány virtuális hálózatához.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A tartományhoz csatlakoztatott erőforrások virtuális hálózati csatlakozási lehetőségeinek megismerése az Azure AD DS

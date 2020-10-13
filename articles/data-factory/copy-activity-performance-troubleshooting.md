@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440524"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951086"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -40,7 +40,7 @@ A teljesítmény-hangolási tippek jelenleg a következő esetekben nyújtanak j
 | Adattár-specifikus   | Adatok betöltése az **Azure Synpase analyticsbe (korábban SQL DW)**: javasolt a Base vagy a copy utasítás használata, ha nincs használatban. |
 | &nbsp;                | Adatok másolása innen/ből **Azure SQL Database**: Ha a DTU magas kihasználtságú, javasoljuk, hogy magasabb szintre frissítsen. |
 | &nbsp;                | Adatok másolása a (z)/rendszerről **Azure Cosmos DBre**: Ha ru magas kihasználtsággal rendelkezik, javasoljuk, hogy nagyobb ru-re frissítsen. |
-|                       | Adatok másolása az **SAP-táblából**: nagy mennyiségű adatok másolása esetén az SAP-összekötő partíciós lehetőségének kihasználása lehetővé teszi a párhuzamos betöltést, és növeli a maximális partíció számát. |
+|                       | Adatok másolása az **SAP-táblából**: nagy mennyiségű adatok másolása esetén a párhuzamos terhelés engedélyezéséhez és a partíciók maximális számának növeléséhez javasolt az SAP-összekötő partíciós beállításának kihasználása. |
 | &nbsp;                | Az **Amazon vöröseltolódásról**származó adatok beolvasása |
 | Adattár-szabályozás | Ha az adattár a másolás során több írási/olvasási műveletet is szabályoz, akkor az adattároló megengedett kérelmi arányának ellenőrzését és növelését, illetve az egyidejű munkaterhelés csökkentését javasolja. |
 | Integration Runtime  | Ha saját üzemeltetésű **Integration Runtime (IR)** és másolási tevékenységet használ a várólistán mindaddig, amíg az IR nem rendelkezik a végrehajtáshoz rendelkezésre álló erőforrással, javasoljuk, hogy bővítse/felskálázást hajtson végre az IR-ben. |
@@ -74,7 +74,7 @@ Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a
 
     - Győződjön meg arról, hogy [a fájlok másolását a DateTime partíciós fájl elérési útja vagy neve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)végezheti el. Ez a módszer nem jelent terhet a forrás oldal listázására.
 
-    - Ellenőrizze, hogy használhatja-e az adattár natív szűrőjét, azaz az Amazon S3 és az Azure Blob**előtagját**. Az előtag-szűrő egy adattár-Kiszolgálóoldali szűrő, amely sokkal jobb teljesítményt nyújt.
+    - Ellenőrizze, hogy használhatja-e az adattár natív szűrőjét, azaz az Amazon S3/Azure Blob/Azure File Storage és a "**listAfter/listBefore**"**előtagot**az ADLS Gen1hoz. Ezek a szűrők az adattár kiszolgálóoldali szűrői, és sokkal jobb teljesítményt biztosítanak.
 
     - Vegye figyelembe, hogy az egyetlen nagyméretű adathalmazt több kisebb adatkészletre osztja szét, és lehetővé teszi, hogy a másolási feladatok párhuzamosan fussanak az adatok egyes részein. Ezt megteheti a lookup/GetMetadata + ForEach + másolás lehetőséggel. Tekintse át a [több tárolóból származó fájlok másolását](solution-template-copy-files-multiple-containers.md) , vagy az [Amazon S3-ból származó adatok átimportálását](solution-template-migration-s3-azure.md) általános példaként ADLS Gen2 megoldási sablonokra.
 
@@ -128,7 +128,7 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integrat
 
     - Győződjön meg arról, hogy [a fájlok másolását a DateTime partíciós fájl elérési útja vagy neve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)végezheti el. Ez a módszer nem jelent terhet a forrás oldal listázására.
 
-    - Ellenőrizze, hogy használhatja-e az adattár natív szűrőjét, azaz az Amazon S3 és az Azure Blob**előtagját**. Az előtag-szűrő egy adattár-Kiszolgálóoldali szűrő, amely sokkal jobb teljesítményt nyújt.
+    - Ellenőrizze, hogy használhatja-e az adattár natív szűrőjét, azaz az Amazon S3/Azure Blob/Azure File Storage és a "**listAfter/listBefore**"**előtagot**az ADLS Gen1hoz. Ezek a szűrők az adattár kiszolgálóoldali szűrői, és sokkal jobb teljesítményt biztosítanak.
 
     - Vegye figyelembe, hogy az egyetlen nagyméretű adathalmazt több kisebb adatkészletre osztja szét, és lehetővé teszi, hogy a másolási feladatok párhuzamosan fussanak az adatok egyes részein. Ezt megteheti a lookup/GetMetadata + ForEach + másolás lehetőséggel. Tekintse át a [több tárolóból származó fájlok másolását](solution-template-copy-files-multiple-containers.md) , vagy az [Amazon S3-ból származó adatok átimportálását](solution-template-migration-s3-azure.md) általános példaként ADLS Gen2 megoldási sablonokra.
 
@@ -142,7 +142,7 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integrat
 
   - Tekintse meg a saját üzemeltetésű integrációs modul CPU-és memóriahasználat-trendjét a Azure Portal-> a > – áttekintés lapot. Ha a CPU-használat magas vagy kevés a rendelkezésre álló memória, vegye fontolóra a vertikális [felskálázást](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
 
-  - Az összekötő-specifikus betöltés ajánlott eljárás alkalmazása, ha alkalmazható. Példa:
+  - Az összekötő-specifikus betöltés ajánlott eljárás alkalmazása, ha alkalmazható. Például:
 
     - Az [Oracle](connector-oracle.md#oracle-as-source), a [Netezza](connector-netezza.md#netezza-as-source), a [Teradata](connector-teradata.md#teradata-as-source), az [SAP HANA](connector-sap-hana.md#sap-hana-as-source), az [SAP Table](connector-sap-table.md#sap-table-as-source)és az [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) adatainak másolása során az adatpartíciós beállítások lehetővé teszik az adatok párhuzamos másolását.
 
@@ -184,7 +184,7 @@ Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelés
 * SQL Server: [a teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx).
 * Helyszíni fájlkiszolgáló: a [fájlkiszolgálók teljesítményének finomhangolása](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység áttekintése](copy-activity-overview.md)

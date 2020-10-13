@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f431015caf5bb3364fe5628a599f760c6318c47
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82117046"
+ms.locfileid: "91932498"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Az Azure NetApp Files Oracle Database-szel való használatának előnyei
 
@@ -59,7 +59,7 @@ A letiltáshoz:
 
 Az Oracle-dNFS teljesítménye javítható a Azure NetApp Files szolgáltatással. A szolgáltatás teljes körű irányítást biztosít az alkalmazás teljesítményére. Rendkívül nagy igényű alkalmazásoknak is eleget tesz. Az Azure NetApp Files Oracle-dNFS kombinációja nagy mértékben kihasználja a számítási feladatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megoldásarchitektúrák az Azure NetApp Filesszal](azure-netapp-files-solution-architectures.md)
-- [Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése](../virtual-machines/workloads/oracle/oracle-overview.md)

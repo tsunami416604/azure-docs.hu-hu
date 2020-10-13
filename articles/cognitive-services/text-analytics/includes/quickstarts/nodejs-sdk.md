@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/27/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d9c3c8e795b6651595a17d540aafa849ce81471
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c24a50926fe028dcbf42d3642ae3ec5c9ae84f5b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91400966"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977814"
 ---
 <a name="HOLTop"></a>
 
@@ -147,11 +147,12 @@ A válasz objektum az egyes dokumentumok elemzési információit tartalmazó li
 
 * [Ügyfél-hitelesítés](#client-authentication)
 * [Hangulatelemzés](#sentiment-analysis) 
+* [Vélemény bányászata](#opinion-mining)
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitás összekapcsolása](#entity-linking)
 * Személyazonosításra alkalmas adatok
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Ügyfél-hitelesítés
 
@@ -820,7 +821,7 @@ Futtassa a kódot a `node index.js` konzoljának ablakában.
 
 ---
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található paranccsal.
 

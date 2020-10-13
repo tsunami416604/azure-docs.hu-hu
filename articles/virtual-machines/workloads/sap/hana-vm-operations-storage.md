@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449375"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978254"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -229,7 +229,7 @@ Az ultravékony lemez lehetővé teszi, hogy egyetlen lemezt adjon meg, amely me
 Az ultra Disk egyéb előnyei a jobb olvasási késések a Premium Storage szolgáltatáshoz képest. A gyorsabb olvasási késés előnyeit kihasználhatja a HANA indítási idejének és az adatmennyiségnek a memóriába való későbbi betöltésének csökkentése érdekében. Az ultrakönnyű lemezes tárolás előnyei is érezhetőek lehetnek, ha HANA visszaállítási pontok ír. 
 
 > [!NOTE]
-> Az ultra Disk még nem szerepel az összes Azure-régióban, és még nem támogatja az alább felsorolt virtuálisgép-típusokat. Részletes információkat talál arról, hogy mely virtuális gépek támogatottak, és milyen virtuálisgép-családokat támogatnak? tekintse meg az [Azure-ban elérhető lemez-típusok](../../windows/disks-types.md#ultra-disk)című cikket.
+> Az ultra Disk még nem szerepel az összes Azure-régióban, és még nem támogatja az alább felsorolt virtuálisgép-típusokat. Részletes információkat talál arról, hogy mely virtuális gépek támogatottak, és milyen virtuálisgép-családokat támogatnak? tekintse meg az [Azure-ban elérhető lemez-típusok](../../disks-types.md#ultra-disk)című cikket.
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Éles környezetben ajánlott tárolási megoldás tiszta, ultra Disk konfigurációval
 Ebben a konfigurációban a **/Hana/Data** és a **/Hana/log** kötetek külön maradnak. A javasolt értékek abból a KPI-ből származnak, amelyet az SAP-nak hitelesítenie kell a SAP HANA és a tárolási konfigurációk virtuálisgép-típusainak az [SAP TDI tárolási](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)tanulmányában javasolt módon.
@@ -272,7 +272,7 @@ A HANA ANF kapcsolatos részletekért olvassa el az [NFS-v 4.1-es kötetek Azure
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Cost tudatos megoldás az Azure Premium Storage szolgáltatással
-Eddig a jelen dokumentumban ismertetett Azure Premium Storage-megoldás a [Premium Storage és az azure írásgyorsító for Azure M sorozatú virtuális gépekre vonatkozó megoldások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) című szakaszban szerepelt SAP HANA éles környezetben támogatott forgatókönyvek esetében. Az éles környezetben támogatott konfigurációk egyik jellemzője a kötetek elkülönítése SAP HANA adatok számára, és a naplózás megismétlése két különböző kötetre. Az ilyen elkülönítés oka, hogy a kötetek munkaterhelés-jellemzői eltérnek. A javasolt üzemi konfigurációk esetében azonban szükség lehet a különböző típusú gyorsítótárazásokra vagy az Azure Block-tárolók különböző típusaira. Az Azure Block Storage célját használó éles környezetben támogatott konfigurációk megfelelnek az [azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) -hoz készült egyetlen VIRTUÁLISGÉP-SLA-nak is.  A nem éles környezetekben az éles rendszerekre vonatkozó megfontolások némelyike nem alkalmazható a fejlettebb, nem éles üzemi rendszerekre. Ennek eredményeképpen a HANA-adatbázis és a naplózási kötet egyesíthető. Habár végül bizonyos bűnösökkel, például az éles rendszerekhez szükséges bizonyos átviteli vagy késési KPI-kkel nem találkoznak. Az ilyen környezetekben a költségek csökkentésének egy másik aspektusa lehet az [Azure standard SSD Storage](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)használata. Az [Azure Virtual Machineshoz tartozó egyszeri](https://azure.microsoft.com/support/legal/sla/virtual-machines/)virtuálisgép-szolgáltatói szerződés megadásának lehetősége azonban. 
+Eddig a jelen dokumentumban ismertetett Azure Premium Storage-megoldás a [Premium Storage és az azure írásgyorsító for Azure M sorozatú virtuális gépekre vonatkozó megoldások](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) című szakaszban szerepelt SAP HANA éles környezetben támogatott forgatókönyvek esetében. Az éles környezetben támogatott konfigurációk egyik jellemzője a kötetek elkülönítése SAP HANA adatok számára, és a naplózás megismétlése két különböző kötetre. Az ilyen elkülönítés oka, hogy a kötetek munkaterhelés-jellemzői eltérnek. A javasolt üzemi konfigurációk esetében azonban szükség lehet a különböző típusú gyorsítótárazásokra vagy az Azure Block-tárolók különböző típusaira. Az Azure Block Storage célját használó éles környezetben támogatott konfigurációk megfelelnek az [azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) -hoz készült egyetlen VIRTUÁLISGÉP-SLA-nak is.  A nem éles környezetekben az éles rendszerekre vonatkozó megfontolások némelyike nem alkalmazható a fejlettebb, nem éles üzemi rendszerekre. Ennek eredményeképpen a HANA-adatbázis és a naplózási kötet egyesíthető. Habár végül bizonyos bűnösökkel, például az éles rendszerekhez szükséges bizonyos átviteli vagy késési KPI-kkel nem találkoznak. Az ilyen környezetekben a költségek csökkentésének egy másik aspektusa lehet az [Azure standard SSD Storage](./planning-guide-storage.md#azure-standard-ssd-storage)használata. Az [Azure Virtual Machineshoz tartozó egyszeri](https://azure.microsoft.com/support/legal/sla/virtual-machines/)virtuálisgép-szolgáltatói szerződés megadásának lehetősége azonban. 
 
 Az ilyen konfigurációknál a kevésbé költséges alternatíva a következőképpen néz ki:
 

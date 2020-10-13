@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38129c920b422babfedf5d40bb362c7552f6f712
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030072"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951961"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>A helyszíni vagy a Felhőbeli adatátviteli beállítások Azure Cosmos DB
 
 A különböző adatforrásokból származó adatok betölthetők Azure Cosmos DBba. Mivel Azure Cosmos DB több API-t támogat, a célok lehetnek a meglévő API-k. A következő forgatókönyvek az adatok Azure Cosmos DBba való áttelepíthetők:
 
-* Az adatok áthelyezése egy Azure Cosmos-tárolóból egy másik tárolóba ugyanabba az adatbázisba vagy egy másik adatbázisba. s
+* Az adatok áthelyezése egy Azure Cosmos-tárolóból egy másik tárolóba ugyanabba az adatbázisba vagy egy másik adatbázisba.
 * Az adatáthelyezés dedikált tárolók között a megosztott adatbázis-tárolók között.
 * Adatok áthelyezése egy terület1 található Azure Cosmos-fiókból egy másik Azure Cosmos-fiókba ugyanabban vagy egy másik régióban.
 * Adatok áthelyezése egy forrásból, például az Azure Blob Storage-ból, egy JSON-fájlból, egy Oracle-adatbázisból, egy Couchbase, a DynamoDB-ből Azure Cosmos DB.
@@ -82,7 +82,7 @@ Az SQL API-t, a Mongo API-t és a Cassandra API-t nem használó API-k esetében
 * [Gráf tömeges végrehajtó könyvtára](bulk-executor-graph-dotnet.md)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  

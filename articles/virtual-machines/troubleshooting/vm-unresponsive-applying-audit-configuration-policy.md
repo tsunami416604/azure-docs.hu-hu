@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299524"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977952"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>A virtuális gép nem válaszol a naplózási házirend konfigurációs házirendjének alkalmazása közben
 
@@ -27,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekkel a virtuális gép
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy az operációs rendszer (os) nem válaszol a **naplózási házirend konfigurációs házirendjét alkalmazó**üzenet indításakor.
+Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy az operációs rendszer (os) nem válaszol a **naplózási házirend konfigurációs házirendjét alkalmazó**üzenet indításakor.
 
   ![Az operációs rendszer indítása a következő üzenettel: "a naplózási házirend konfigurációs szabályzatának alkalmazása"](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ A problémás szabályzat: a *számítógép-Computer sablonok \ rendszer/felhas
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 1. A Távoli asztali kapcsolat használatával kapcsolódjon a javítási virtuális géphez.
 
 ### <a name="disable-the-policy"></a>A szabályzat letiltása
@@ -153,7 +153,7 @@ A problémás szabályzat: a *számítógép-Computer sablonok \ rendszer/felhas
    
 ### <a name="rebuild-the-virtual-machine"></a>A virtuális gép újraépítése
 
-1. A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+1. A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .
 
 1. Ellenőrizze, hogy a virtuális gép rendesen elindul-e, hogy a probléma kijavította-e a problémát.
 
@@ -175,11 +175,11 @@ A probléma megoldásához először össze kell gyűjtenie az összeomláshoz t
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy új javítási virtuális géphez
 
-1. Egy új javítási virtuális gép előkészítéséhez használja a [virtuális gép javítási parancsainak](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3. lépéseit.
+1. Egy új javítási virtuális gép előkészítéséhez használja a [virtuális gép javítási parancsainak](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3. lépéseit.
 1. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>A memóriaképfájl megkeresése és támogatási jegy beküldése
 
 1. A javítás virtuális gépen nyissa meg a Windows mappát a csatolt operációsrendszer-lemezen. Ha a csatolt operációsrendszer-lemezhez rendelt illesztőprogram-betűjel *F*-ként van megjelölve, akkor a következőt kell megadnia: `F:\Windows` .
 1. Keresse meg a `memory.dmp` fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljával.
-1. Ha nem sikerül megkeresni a `memory.dmp` fájlt, akkor inkább a [nem maszkolt megszakítás (NMI) hívásokat használja a soros konzolon](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Az [összeomlási memóriakép fájljának NMI-hívásokkal történő létrehozásához](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)kövesse az útmutatót.
+1. Ha nem sikerül megkeresni a `memory.dmp` fájlt, akkor inkább a [nem maszkolt megszakítás (NMI) hívásokat használja a soros konzolon](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Az [összeomlási memóriakép fájljának NMI-hívásokkal történő létrehozásához](/windows/client-management/generate-kernel-or-complete-crash-dump)kövesse az útmutatót.

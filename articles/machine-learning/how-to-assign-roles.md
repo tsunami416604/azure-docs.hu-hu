@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: ab94af9ec172a3e88d523024c1e00d3a0d944798
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873081"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966406"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning műveletek
 
 Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. A teljes listát lásd: az [Azure erőforrás-szolgáltató műveletei](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>MLflow műveletek az Azure Machine learningben
+
+Ez a táblázat azt az engedélyezési hatókört ismerteti, amelyet hozzá kell adni a MLflow műveletek végrehajtásához létrehozott egyéni szerepkör műveleteihez.
+
+| MLflow művelet | Hatókör |
+| --- | --- |
+| A munkaterület-követési tárolóban található összes kísérlet felsorolása azonosító alapján, a kísérlet név alapján történő beszerzése | Microsoft. MachineLearningServices/munkaterületek/kísérletek/olvasás |
+| Hozzon létre egy kísérletet egy névvel, adjon meg egy címkét egy kísérleten, állítsa vissza a törlésre kijelölt kísérletet.| Microsoft. MachineLearningServices/munkaterületek/kísérletek/írás | 
+| Kísérlet törlése | Microsoft. MachineLearningServices/munkaterületek/kísérletek/törlés |
+| Futtasson egy futtatási és kapcsolódó adatokat és metaadatokat, és szerezzen be egy listát az adott futtatáshoz tartozó megadott metrika összes értékéről, és sorolja fel a futtatások listáját. | Microsoft. MachineLearningServices/munkaterületek/kísérletek/futtatások/olvasás |
+| Hozzon létre egy új futtatást egy kísérleten belül, törölje a futtatásokat, a törölt futtatások visszaállítását, a jelenlegi Futtatás alatt lévő naplózási mérőszámokat, a Run címkéit, a címkék törlését a futtatáskor, a naplófájlok (kulcs-érték párok) futtatásához | Microsoft. MachineLearningServices/munkaterületek/kísérletek/Futtatás/írás |
+| A regisztrált modell neve alapján beolvashatja a beállításjegyzék összes regisztrált modelljét, megkeresheti a regisztrált modelleket, az egyes kérelmek fázisának legújabb modelljeit, beszerezhet egy regisztrált modell verzióját, a keresési modell verzióit, az URI-t, ahol a modell verziójának összetevőit tárolja a rendszer, a kísérletek azonosítóinak keresése | Microsoft. MachineLearningServices/munkaterületek/modellek/olvasás |
+| Új regisztrált modell létrehozása, a regisztrált modell nevének/leírásának frissítése, a meglévő regisztrált modell átnevezése, a modell új verziójának létrehozása, a modell verziójának leírásának frissítése, a regisztrált modell átváltása az egyik fázisra | Microsoft. MachineLearningServices/munkaterületek/modellek/írás |
+| Regisztrált modell törlése az összes verziójával együtt, a regisztrált modellek adott verzióinak törlése | Microsoft. MachineLearningServices/munkaterületek/modellek/törlés |
+
 
 ## <a name="create-custom-role"></a>Egyéni szerepkör létrehozása
 
@@ -253,6 +269,46 @@ Igen, íme néhány gyakori forgatókönyv az egyéni javasolt szerepkör-defin�
         ]
     }
     ```
+     
+* __Egyéni MLflow adattudós__: lehetővé teszi, hogy az adattudós az összes támogatott MLflow AzureML-műveletet hajtsa végre, **kivéve**a következőket:
+
+   * Számítás létrehozása
+   * Modellek üzembe helyezése üzemi AK-fürtön
+   * Folyamat-végpont üzembe helyezése éles környezetben
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __Egyéni MLOps__: lehetővé teszi, hogy egy szerepkört rendeljen egy egyszerű szolgáltatáshoz, és ezzel automatizálja az MLOps-folyamatokat. Például egy már közzétett folyamaton való futtatáshoz:
 

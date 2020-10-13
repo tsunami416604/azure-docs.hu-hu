@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829084"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977374"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -70,7 +70,7 @@ A bővítmények letöltése az Azure Storage bővítmény-tárházból történ
 > [!IMPORTANT]
 > Ha letiltotta a hozzáférést a *168.63.129.16* a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül meghiúsulnak. A 80, 443 és 32526 portok megadása kötelező.
 
-Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz vagy Azure Active Directoryhoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az [Azure NSG Service-címkék](../../virtual-network/security-overview.md#service-tags) használatával a tárolóhoz vagy a AzureActiveDirectory.
+Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz vagy Azure Active Directoryhoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az [Azure NSG Service-címkék](../../virtual-network/network-security-groups-overview.md#service-tags) használatával a tárolóhoz vagy a AzureActiveDirectory.
 
 A Windows Guest Agent ügynök nem támogatja a proxykiszolgálót az ügynök forgalmi kéréseinek átirányításához, ami azt jelenti, hogy a Windows vendég ügynöke az egyéni proxyra fog támaszkodni (ha rendelkezik ilyennel) az interneten vagy a gazdagépen lévő erőforrások IP-168.63.129.16 való eléréséhez.
 
@@ -421,7 +421,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás**lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

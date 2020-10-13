@@ -2,14 +2,14 @@
 title: Adatátviteli összetevők
 description: Lemezképek vagy más összetevők gyűjteményének átvitele egy tároló-beállításjegyzékből egy másik beállításjegyzékbe az Azure Storage-fiókokat használó adatátviteli folyamat létrehozásával
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253411"
+ms.locfileid: "91932600"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -21,7 +21,7 @@ Az összetevők átviteléhez létre kell hoznia egy *adatátviteli* folyamatot,
 * A blobot a rendszer átmásolja a forrás Storage-fiókból egy célként megadott Storage-fiókba.
 * A célként megadott Storage-fiókban lévő blobot a rendszer összetevőkként importálja a cél beállításjegyzékbe. Beállíthatja az importálási folyamatot úgy, hogy az a cél tárolóban lévő blob-frissítések indításakor aktiválja.
 
-Az átvitel ideális megoldás a tartalom másolására két, fizikailag leválasztott felhőben található Azure Container-nyilvántartó között, az egyes Felhőbeli Storage-fiókok által közvetítve. A csatlakoztatott felhőkben található, a Docker hub-t és más felhőalapú szállítókat tartalmazó rendszerképek másolásához inkább a [Képimportálás](container-registry-import-images.md) ajánlott.
+Az átvitel ideális megoldás a tartalom másolására két, fizikailag leválasztott felhőben található Azure Container-nyilvántartó között, az egyes Felhőbeli Storage-fiókok által közvetítve. Ha ehelyett lemezképeket szeretne másolni a csatlakoztatott felhőkben lévő tároló-beállításjegyzékből, beleértve a Docker hub-t és más felhőalapú szállítókat, a [Képimportálás](container-registry-import-images.md) ajánlott.
 
 Ebben a cikkben Azure Resource Manager sablon központi telepítéseit használja az átviteli folyamat létrehozásához és futtatásához. Az Azure CLI a társított erőforrások, például a tárolási titkok kiépítésére szolgál. Az Azure CLI 2.2.0 vagy újabb verziója ajánlott. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
@@ -32,11 +32,18 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Tároló-nyilvántartók** – szükség van egy meglévő forrás-beállításjegyzékre az átvinni kívánt összetevőkkel és a célként megadott beállításjegyzékkel. Az ACR-átvitel a fizikailag leválasztott felhők közötti mozgásra szolgál. A teszteléshez a forrás-és a célként megadott beállításjegyzékek lehetnek azonosak vagy egy másik Azure-előfizetésben, Active Directory bérlőben vagy felhőben. Ha létre kell hoznia egy beállításjegyzéket, olvassa el a következőt: rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md). 
-* **Storage-fiókok** – forrás-és célként szolgáló Storage-fiókok létrehozása egy előfizetésben és egy tetszőleges helyen. Tesztelési célból használhatja ugyanazt az előfizetést vagy előfizetést, mint a forrás-és a cél-nyilvántartó. A Felhőbeli forgatókönyvek esetében általában külön Storage-fiókot hoz létre minden felhőben. Ha szükséges, hozzon létre egy Storage-fiókot az [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) -vel vagy más eszközökkel. 
+* **Tároló-nyilvántartók** – szükség van egy meglévő forrás-beállításjegyzékre az átvinni kívánt összetevőkkel és a célként megadott beállításjegyzékkel. Az ACR-átvitel a fizikailag leválasztott felhők közötti mozgásra szolgál. A teszteléshez a forrás-és a célként megadott beállításjegyzékek lehetnek azonosak vagy egy másik Azure-előfizetésben, Active Directory bérlőben vagy felhőben. 
+
+   Ha létre kell hoznia egy beállításjegyzéket, olvassa el a következőt: rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md). 
+* **Storage-fiókok** – forrás-és célként szolgáló Storage-fiókok létrehozása egy előfizetésben és egy tetszőleges helyen. Tesztelési célból használhatja ugyanazt az előfizetést vagy előfizetést, mint a forrás-és a cél-nyilvántartó. A Felhőbeli forgatókönyvek esetében általában külön Storage-fiókot hoz létre minden felhőben. 
+
+  Ha szükséges, hozzon létre egy Storage-fiókot az [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) -vel vagy más eszközökkel. 
 
   Hozzon létre egy BLOB-tárolót az összetevők átviteléhez az egyes fiókokban. Hozzon létre például egy *átvitel*nevű tárolót. Két vagy több adatátviteli folyamat is megoszthatja ugyanazt a Storage-fiókot, de eltérő tárolási tároló-hatóköröket kell használnia.
-* **Kulcstartók** – kulcstartók szükségesek a forrás-és cél Storage-fiókok eléréséhez használt sas-jogkivonat-titkok tárolásához. Hozza létre a forrás és a cél kulcstartót ugyanabban az Azure-előfizetésben vagy előfizetésben, mint a forrás-és a cél-nyilvántartó. Ha szükséges, hozzon létre kulcstartókat az [Azure CLI](../key-vault/secrets/quick-create-cli.md) -vel vagy más eszközökkel.
+* **Kulcstartók** – kulcstartók szükségesek a forrás-és cél Storage-fiókok eléréséhez használt sas-jogkivonat-titkok tárolásához. Hozza létre a forrás és a cél kulcstartót ugyanabban az Azure-előfizetésben vagy előfizetésben, mint a forrás-és a cél-nyilvántartó. Demonstrációs célokra a cikkben használt sablonok és parancsok azt is feltételezik, hogy a forrás-és a célként megadott kulcstároló a forrás-és a cél-nyilvántartóval megegyező erőforráscsoportokat található. A gyakori erőforráscsoportok használata nem kötelező, de leegyszerűsíti a cikkben használt sablonokat és parancsokat.
+
+   Ha szükséges, hozzon létre kulcstartókat az [Azure CLI](../key-vault/secrets/quick-create-cli.md) -vel vagy más eszközökkel.
+
 * **Környezeti változók** – a cikkben szereplő parancsokhoz például a következő környezeti változók állíthatók be a forrás-és a célként megadott környezetekben. Az összes példa a bash-rendszerhéjra van formázva.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -62,7 +69,7 @@ A Storage-hitelesítés SAS-jogkivonatokat használ, amelyeket a Key vaultban ti
 
 ### <a name="things-to-know"></a>Tudnivalók
 * A ExportPipeline és a ImportPipeline általában a forrás és a cél felhőkhöz társított különböző Active Directory-bérlők között lesznek. Ehhez a forgatókönyvhöz külön felügyelt identitások és kulcstartók szükségesek az Exportálás és az importálás erőforrásaihoz. Tesztelési célból ezek az erőforrások ugyanahhoz a felhőhöz, megosztási identitásokhoz is helyezhetők.
-* A folyamat példái például a rendszerhez rendelt felügyelt identitások létrehozása a Key Vault-titkok eléréséhez. A ExportPipelines és a ImportPipelines a felhasználó által hozzárendelt identitásokat is támogatja. Ebben az esetben konfigurálnia kell a kulcstárolókat az identitásokhoz tartozó hozzáférési házirendekkel. 
+* Alapértelmezés szerint a ExportPipeline és a ImportPipeline sablonok lehetővé teszik, hogy a rendszer által hozzárendelt felügyelt identitások hozzáférjenek a Key Vault titkos kulcsaihoz. A ExportPipeline és a ImportPipeline-sablonok egy felhasználó által megadott identitást is támogatnak. 
 
 ## <a name="create-and-store-sas-keys"></a>SAS-kulcsok létrehozása és tárolása
 
@@ -152,7 +159,13 @@ Az `options` exportálási folyamatok tulajdonsága támogatja a nem kötelező 
 
 ### <a name="create-the-resource"></a>Az erőforrás létrehozása
 
-Futtassa az [az üzembe helyezési csoport létrehozása][az-deployment-group-create] lehetőséget az erőforrás létrehozásához. A következő példa az üzembe helyezési *exportPipeline*nevezi át.
+Futtassa az [az üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot az *exportPipeline* nevű erőforrás létrehozásához az alábbi példákban látható módon. Alapértelmezés szerint az első beállítással a példa sablon lehetővé teszi a rendszer által hozzárendelt identitás használatát a ExportPipeline-erőforrásban. 
+
+A második lehetőséggel megadhatja az erőforrást egy felhasználó által hozzárendelt identitással. (A felhasználó által hozzárendelt identitás létrehozása nem látható.)
+
+Bármelyik beállítással a sablon úgy konfigurálja az identitást, hogy hozzáférjen az SAS-tokenhez az exportálási kulcstartóban. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>1. lehetőség: erőforrás létrehozása és rendszer által hozzárendelt identitás engedélyezése
 
 ```azurecli
 az deployment group create \
@@ -162,10 +175,23 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>2. lehetőség: erőforrás létrehozása és felhasználó által hozzárendelt identitás megadása
+
+Ebben a parancsban adja meg a felhasználó által hozzárendelt identitás erőforrás-AZONOSÍTÓját további paraméterként.
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
 A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Példa:
 
 ```azurecli
-EXPORT_RES_ID=$(az group deployment show \
+EXPORT_RES_ID=$(az deployment group show \
   --resource-group $SOURCE_RG \
   --name exportPipeline \
   --query 'properties.outputResources[1].id' \
@@ -198,20 +224,39 @@ Az `options` importálási folyamat tulajdonsága támogatja a nem kötelező lo
 
 ### <a name="create-the-resource"></a>Az erőforrás létrehozása
 
-Futtassa az [az üzembe helyezési csoport létrehozása][az-deployment-group-create] lehetőséget az erőforrás létrehozásához.
+Futtassa az [az üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot az *importPipeline* nevű erőforrás létrehozásához az alábbi példákban látható módon. Alapértelmezés szerint az első beállítással a példa sablon lehetővé teszi a rendszer által hozzárendelt identitás használatát a ImportPipeline-erőforrásban. 
+
+A második lehetőséggel megadhatja az erőforrást egy felhasználó által hozzárendelt identitással. (A felhasználó által hozzárendelt identitás létrehozása nem látható.)
+
+Bármelyik beállítással a sablon úgy konfigurálja az identitást, hogy hozzáférjen az SAS-jogkivonathoz az import Key vaultban. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>1. lehetőség: erőforrás létrehozása és rendszer által hozzárendelt identitás engedélyezése
 
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
   --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json \
-  --name importPipeline
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json 
 ```
 
-Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Példa:
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>2. lehetőség: erőforrás létrehozása és felhasználó által hozzárendelt identitás megadása
+
+Ebben a parancsban adja meg a felhasználó által hozzárendelt identitás erőforrás-AZONOSÍTÓját további paraméterként.
 
 ```azurecli
-IMPORT_RES_ID=$(az group deployment show \
+az deployment group create \
+  --resource-group $TARGET_RG \
+  --template-file azuredeploy.json \
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
+Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show] parancs futtatásával. Példa:
+
+```azurecli
+IMPORT_RES_ID=$(az deployment group show \
   --resource-group $TARGET_RG \
   --name importPipeline \
   --query 'properties.outputResources[1].id' \
@@ -246,12 +291,22 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+A későbbi használat érdekében tárolja a folyamat futtatásának erőforrás-AZONOSÍTÓját egy környezeti változóban:
+
+```azurecli
+EXPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $SOURCE_RG \
+  --name exportPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+```
+
 Az összetevők exportálására több percet is igénybe vehet. Az üzembe helyezés sikeres befejezése után ellenőrizze az összetevők exportálását, ha az exportált blobot a forrás Storage-fiók *átvitel* tárolójában található. Futtassa például az az [Storage blob List][az-storage-blob-list] parancsot:
 
 ```azurecli
 az storage blob list \
-  --account-name $SOURCE_SA
-  --container transfer
+  --account-name $SOURCE_SA \
+  --container transfer \
   --output table
 ```
 
@@ -300,11 +355,21 @@ Futtassa az az [üzembe helyezési csoport létrehozása][az-deployment-group-cr
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
+  --name importPipelineRun \
   --template-file azuredeploy.json \
   --parameters azuredeploy.parameters.json
 ```
 
-Az üzembe helyezés sikeres befejezése után ellenőrizze az összetevők importálását a tároló beállításjegyzékében található adattárak listázásával. Futtassa például [az az ACR adattár List][az-acr-repository-list]:
+A későbbi használat érdekében tárolja a folyamat futtatásának erőforrás-AZONOSÍTÓját egy környezeti változóban:
+
+```azurecli
+IMPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $TARGET_RG \
+  --name importPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+
+When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -329,20 +394,20 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>Folyamat erőforrásainak törlése
 
-A folyamat-erőforrások törléséhez törölje a Resource Manager-telepítést az az [Deployment Group delete][az-deployment-group-delete] paranccsal. Az alábbi példák törlik a cikkben létrehozott folyamat-erőforrásokat:
+A következő példa az az [erőforrás törlése][az-resource-delete] paranccsal törli a jelen cikkben létrehozott folyamat-erőforrásokat. Az erőforrás-azonosítókat korábban környezeti változók tárolták.
 
-```azurecli
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipeline
+```
+# Delete export resources
+az resource delete \
+--resource-group $SOURCE_RG \
+--ids $EXPORT_RES_ID $EXPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipelineRun
-
-az deployment group delete \
-  --resource-group $TARGET_RG \
-  --name importPipeline  
+# Delete import resources
+az resource delete \
+--resource-group $TARGET_RG \
+--ids $IMPORT_RES_ID $IMPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -374,8 +439,6 @@ Ha egyetlen tároló lemezképét szeretné importálni egy Azure Container regi
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
 [az-login]: /cli/azure/reference-index#az-login
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
 [az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
@@ -387,3 +450,4 @@ Ha egyetlen tároló lemezképét szeretné importálni egy Azure Container regi
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
+[az-resource-delete]: /cli/azure/resource#az-resource-delete

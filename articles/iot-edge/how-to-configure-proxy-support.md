@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500368"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966168"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja a következő négy lépést a proxykiszolgáló mögötti I
 
 1. [**A IoT Edge futtatókörnyezet telepítése az eszközön**](#install-the-runtime-through-a-proxy)
 
-   A IoT Edge telepítési parancsfájlok lekérik a csomagokat és fájlokat az internetről, így az eszköznek a proxykiszolgálón keresztül kell kommunikálnia a kérések elvégzéséhez. Windows-eszközök esetén a telepítési parancsfájl [Offline telepítési](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) lehetőséget is biztosít.
+   A IoT Edge telepítési parancsfájlok lekérik a csomagokat és fájlokat az internetről, így az eszköznek a proxykiszolgálón keresztül kell kommunikálnia a kérések elvégzéséhez. Windows-eszközök esetén a telepítési parancsfájl offline telepítési lehetőséget is biztosít.
 
    Ez a lépés egy egyszeri folyamat a IoT Edge eszköz konfigurálásához az első beállításakor. A IoT Edge futtatókörnyezet frissítésekor ugyanezek a kapcsolatok is szükségesek.
 
@@ -65,7 +65,7 @@ Azt jelzi, hogy a IoT Edge-eszköz Windows vagy Linux rendszeren fut-e, a proxyk
 
 ### <a name="linux-devices"></a>Linuxos eszközök
 
-Ha Linux rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, konfigurálja a csomagkezelő szolgáltatást a proxykiszolgáló eléréséhez a telepítési csomaghoz való hozzáféréshez. Tegyük fel például, [hogy az apt-get http-proxy használatára van beállítva](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Ha a csomagkezelő konfigurálva van, kövesse az [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren](how-to-install-iot-edge-linux.md) a szokásos módon című témakör utasításait.
+Ha Linux rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, konfigurálja a csomagkezelő szolgáltatást a proxykiszolgáló eléréséhez a telepítési csomaghoz való hozzáféréshez. Tegyük fel például, [hogy az apt-get http-proxy használatára van beállítva](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). A csomagkezelő konfigurálása után kövesse a [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md) a szokásos módon című témakör utasításait.
 
 ### <a name="windows-devices"></a>Windows rendszerű eszközök
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-A proxy paraméterekkel kapcsolatos további információkért lásd: [meghívó-webkérelem](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). További információ a Windows telepítési lehetőségeiről, beleértve az offline telepítést is: [Azure IoT Edge futtatókörnyezet telepítése Windows](how-to-install-iot-edge-windows.md)rendszeren.
+A proxy paraméterekkel kapcsolatos további információkért lásd: [meghívó-webkérelem](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). További információ a Windows telepítési paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows rendszeren](reference-windows-scripts.md).
 
 ## <a name="configure-the-daemons"></a>A démonok konfigurálása
 

@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ecc79eb52acbe393ac2777a0ec388e538a7f8fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81729009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978900"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure eszközök internetes hálózata (IoT)?
 
@@ -74,12 +74,12 @@ Például egy olajszivattyú-állomás távoli figyelési megoldásában a Felh�
 
 A szervezeteknek az Azure IoT használatát bemutató valós Példákért lásd: [Microsoft technikai esettanulmányok IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
-## <a name="next-steps"></a>További lépések
+Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture](https://aka.ms/iotrefarchitecture) (Microsoft Azure IoT-referenciaarchitektúra).
+
+## <a name="next-steps"></a>Következő lépések
 
 Egyes tényleges üzleti esetekben és a használt architektúrában tekintse meg a [Microsoft Azure IoT műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)című témakört.
 
 Egyes IoT-fejlesztői készlet kipróbálható példákért tekintse meg a [IoT fejlesztői készlet Project Catalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)című részt. 
 
 A különböző szolgáltatások és azok használatának részletes ismertetését lásd: [Azure IoT Services és Technologies](iot-services-and-technologies.md).
-
-Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture](https://aka.ms/iotrefarchitecture) (Microsoft Azure IoT-referenciaarchitektúra).

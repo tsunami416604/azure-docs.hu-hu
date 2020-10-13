@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4387bf8067b399165b32ab1cdbb9e6ce55ab5f59
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816338"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979053"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>A Azure Portal használata a felügyelt lemezek importálási/exportálási hozzáférésének korlátozására privát hivatkozásokkal
 
@@ -86,7 +86,7 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
 1. Navigáljon ahhoz a lemezhez, amelyet konfigurálni szeretne
 1. **Hálózatkezelés** kiválasztása
 1. Válassza ki a **privát végpontot (a lemezes hozzáférésen keresztül)** , és válassza ki a korábban létrehozott lemez-hozzáférést.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
@@ -95,4 +95,4 @@ Ezzel befejezte a felügyelt lemez importálására/exportálására használhat
 ## <a name="next-steps"></a>Következő lépések
 
 - [Privát hivatkozások – GYIK](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

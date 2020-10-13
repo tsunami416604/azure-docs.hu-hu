@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 529b93e7754df7aa0a981f4389108b8f53b4be2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 26890aaa7bc2d0ea70ff326e36a5767d1d468d5c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300564"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977544"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Az 0,4-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -76,26 +76,26 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![1. eszköz frissítése](./media/storsimple-virtual-array-install-update/update1m.png)
 
 2. A **frissítési fájl elérési útja**mezőben adja meg a frissítés vagy a gyorsjavítás fájlnevét. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítés vagy a gyorsjavítás telepítési fájlját. Kattintson az **Alkalmaz** gombra.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![2. eszköz frissítése](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. A rendszer figyelmeztetést jelenít meg. Ez az egyetlen csomópontos eszköz, amely a frissítés alkalmazása után újraindul, és leállási idő van. Kattintson a pipa ikonra.
    
-   ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![3. eszköz frissítése](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület ebben az időtartamban nem érhető el.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![4. eszköz frissítése](./media/storsimple-virtual-array-install-update/update5m.png)
 
 5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10289.0** kell lennie az 0,4-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10289** és a Azure Portal jelentések **10.0.10289.0** ugyanazt a verziót jelenti.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![5. eszköz frissítése](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 

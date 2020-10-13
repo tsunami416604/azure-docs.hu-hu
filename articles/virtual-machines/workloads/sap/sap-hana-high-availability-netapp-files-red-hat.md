@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598080"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978169"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -93,9 +93,9 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 
 ## <a name="overview"></a>Áttekintés
 
-A vertikális Felskálázási környezetben a SAP HANA összes fájlrendszere helyi tárterületre van csatlakoztatva. A SAP HANA rendszerreplikáció magas rendelkezésre állásának beállítása Red Hat Enterprise Linuxon a következő témakörben: [SAP HANA rendszer-replikáció beállítása a RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) -ben
+A vertikális Felskálázási környezetben a SAP HANA összes fájlrendszere helyi tárterületre van csatlakoztatva. A SAP HANA rendszerreplikáció magas rendelkezésre állásának beállítása Red Hat Enterprise Linuxon a következő témakörben: [SAP HANA rendszer-replikáció beállítása a RHEL](./sap-hana-high-availability-rhel.md) -ben
 
-Ha az NFS-megosztások SAP HANA magas rendelkezésre állását szeretné elérni, a fürtben további erőforrás-konfigurációra van szükség, hogy a HANA [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) -erőforrások helyreállítása megtörténjen, amikor az egyik csomópont elveszti a hozzáférést a ANF lévő NFS-megosztásokhoz.  A fürt kezeli az NFS-csatlakoztatásokat, ami lehetővé teszi az erőforrások állapotának figyelését. A fájlrendszer-csatlakoztatások és a SAP HANA erőforrások közötti függőségek kényszerítve vannak.  
+Ha az NFS-megosztások SAP HANA magas rendelkezésre állását szeretné elérni, a fürtben további erőforrás-konfigurációra van szükség, hogy a HANA [Azure NetApp Files](../../../azure-netapp-files/index.yml) -erőforrások helyreállítása megtörténjen, amikor az egyik csomópont elveszti a hozzáférést a ANF lévő NFS-megosztásokhoz.  A fürt kezeli az NFS-csatlakoztatásokat, ami lehetővé teszi az erőforrások állapotának figyelését. A fájlrendszer-csatlakoztatások és a SAP HANA erőforrások közötti függőségek kényszerítve vannak.  
 
 ![HA a ANF felskálázása SAP HANA](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,29 +125,29 @@ A SAP HANA rendszer-replikációs konfiguráció dedikált virtuális állomásn
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>Az Azure NetApp-fájl infrastruktúrájának beállítása
 
-Mielőtt folytatná a Azure NetApp Files-infrastruktúra beállítását, ismerkedjen meg az Azure [NetApp Files dokumentációval](https://docs.microsoft.com/azure/azure-netapp-files/).
+Mielőtt folytatná a Azure NetApp Files-infrastruktúra beállítását, ismerkedjen meg az Azure [NetApp Files dokumentációval](../../../azure-netapp-files/index.yml).
 
 Azure NetApp Files több [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)is elérhető. Ellenőrizze, hogy a kiválasztott Azure-régió kínál-e Azure NetApp Files.
 
 Az Azure-régiók Azure NetApp Files rendelkezésre állásáról az [Azure-régió Azure NetApp Files rendelkezésre állása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)című témakörben olvashat bővebben.
 
-A Azure NetApp Files üzembe helyezése előtt kérje a bevezetést a Azure NetApp Filesra, ha [Azure NetApp Files útmutatást szeretne regisztrálni](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).
+A Azure NetApp Files üzembe helyezése előtt kérje a bevezetést a Azure NetApp Filesra, ha [Azure NetApp Files útmutatást szeretne regisztrálni](../../../azure-netapp-files/azure-netapp-files-register.md).
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files erőforrások üzembe helyezése
 
-Az alábbi utasítások azt feltételezik, hogy már üzembe helyezte az Azure-beli [virtuális hálózatot](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). A Azure NetApp Files erőforrásokat és virtuális gépeket, amelyeken a Azure NetApp Files erőforrásokat csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy az Azure-beli virtuális hálózatokban kell telepíteni.
+Az alábbi utasítások azt feltételezik, hogy már üzembe helyezte az Azure-beli [virtuális hálózatot](../../../virtual-network/virtual-networks-overview.md). A Azure NetApp Files erőforrásokat és virtuális gépeket, amelyeken a Azure NetApp Files erőforrásokat csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy az Azure-beli virtuális hálózatokban kell telepíteni.
 
-1. Ha még nem telepítette az erőforrásokat, kérje a [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)bevezetését.
+1. Ha még nem telepítette az erőforrásokat, kérje a [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md)bevezetését.
 
-2. Hozzon létre egy NetApp-fiókot a kiválasztott Azure-régióban a [NetApp-fiók létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)című részben található utasításokat követve.
+2. Hozzon létre egy NetApp-fiókot a kiválasztott Azure-régióban a [NetApp-fiók létrehozása](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)című részben található utasításokat követve.
 
-3.  Hozzon létre egy Azure NetApp Files kapacitási készletet a [Azure NetApp Files kapacitásának beállítása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)című részben leírtak szerint.
+3.  Hozzon létre egy Azure NetApp Files kapacitási készletet a [Azure NetApp Files kapacitásának beállítása](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)című részben leírtak szerint.
 
-    A cikkben bemutatott HANA-architektúra az *Ultra* Service szintjén egyetlen Azure NetApp Files kapacitású készletet használ. Az Azure-beli HANA-alapú számítási feladatokhoz ajánlott Azure NetApp Files *Ultra* vagy *prémium* [szintű szolgáltatási szintet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)használni.
+    A cikkben bemutatott HANA-architektúra az *Ultra* Service szintjén egyetlen Azure NetApp Files kapacitású készletet használ. Az Azure-beli HANA-alapú számítási feladatokhoz ajánlott Azure NetApp Files *Ultra* vagy *prémium* [szintű szolgáltatási szintet](../../../azure-netapp-files/azure-netapp-files-service-levels.md)használni.
 
-4.  Alhálózat delegálása Azure NetApp Filesre, az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.
+4.  Alhálózat delegálása Azure NetApp Filesre, az [alhálózat delegálása Azure NetApp Filesra](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)című részben leírtak szerint.
 
-5.  Azure NetApp Files kötetek üzembe helyezéséhez kövesse az [NFS-kötet létrehozása a Azure NetApp Files számára](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)című témakör utasításait.
+5.  Azure NetApp Files kötetek üzembe helyezéséhez kövesse az [NFS-kötet létrehozása a Azure NetApp Files számára](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)című témakör utasításait.
 
     A kötetek központi telepítésekor ügyeljen arra, hogy a NFSv 4.1 verziót válassza. Telepítse a köteteket a kijelölt Azure NetApp Files alhálózatban. Az Azure NetApp-kötetek IP-címeit a rendszer automatikusan hozzárendeli.
 
@@ -171,10 +171,10 @@ A Azure NetApp Files SAP HANA Felskálázási rendszerekhez való létrehozásak
 
 - A minimális kapacitási készlet 4 tebibájt (TiB).
 - A minimális kötet mérete 100 gibibájtban értendők (GiB).
-- Azure NetApp Files és az összes virtuális gépet, amelybe a Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy azonos régióban lévő, egymással azonos [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie.
+- Azure NetApp Files és az összes virtuális gépet, amelybe a Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy azonos régióban lévő, egymással azonos [virtuális hálózatokban](../../../virtual-network/virtual-network-peering-overview.md) kell lennie.
 - A kiválasztott virtuális hálózatnak rendelkeznie kell egy Azure NetApp Files delegált alhálózattal.
-- Egy Azure NetApp Files kötet átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)dokumentálva. A HANA Azure NetApp-kötetek méretezése esetén győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.
-- Az Azure NetApp Files [exportálási házirend](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)segítségével szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (írható és olvasható, csak olvasható stb.).
+- Egy Azure NetApp Files kötet átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye a [Azure NetApp Files szolgáltatási szintjén](../../../azure-netapp-files/azure-netapp-files-service-levels.md)dokumentálva. A HANA Azure NetApp-kötetek méretezése esetén győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.
+- Az Azure NetApp Files [exportálási házirend](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)segítségével szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (írható és olvasható, csak olvasható stb.).
 - A Azure NetApp Files funkció még nem tud zónát kiszolgálni. Jelenleg a szolgáltatás nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei.
 
 > [!IMPORTANT]
@@ -182,7 +182,7 @@ A Azure NetApp Files SAP HANA Felskálázási rendszerekhez való létrehozásak
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>HANA-adatbázis méretezése Azure NetApp Files
 
-Egy Azure NetApp Files kötet átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)van dokumentálva.
+Egy Azure NetApp Files kötet átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](../../../azure-netapp-files/azure-netapp-files-service-levels.md)van dokumentálva.
 
 Az Azure-beli SAP-infrastruktúra tervezésekor vegye figyelembe az SAP által igényelt minimális tárolási követelményeket, amelyek az átviteli sebesség minimális jellemzőire fordíthatók:
 
@@ -190,7 +190,7 @@ Az Azure-beli SAP-infrastruktúra tervezésekor vegye figyelembe az SAP által i
 - Olvasási tevékenység legalább 400 MB/s a/Hana/Data 16 MB-os és 64-MB I/O-méretekhez.
 - Legalább 250 MB/s írási tevékenység a 16 MB-os és a 64-MB I/O-mérettel rendelkező/Hana/Data.
 
-A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) 1 TiB-ra vetítve:
+A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](../../../azure-netapp-files/azure-netapp-files-service-levels.md) 1 TiB-ra vetítve:
 
 - Premium Storage szintű 64 MiB/s.
 - Ultra Storage-réteg – 128 MiB/s.
@@ -232,7 +232,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
         1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -245,7 +245,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
         1.  Válassza a TCP lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
     1.  Ezután hozza létre a terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például **Hana-LB**).
@@ -253,17 +253,17 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza a **hektár portok**lehetőséget.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
 
 > [!NOTE] 
-> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).
 
 9. Ha a forgatókönyv az alapszintű Load Balancer használatát is megköveteli, kövesse az alábbi konfigurációs lépéseket:
     1.  Konfigurálja a Load balancert. Először hozzon létre egy előtér-IP-címkészletet:
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
         1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -271,12 +271,12 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza **a virtuális gép hozzáadása**lehetőséget.
         1.  Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
         1.  Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
     1.  SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**15).
@@ -284,7 +284,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
     1.  SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -293,7 +293,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3.**03**. porton.
     1.  SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -302,13 +302,13 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
 
 A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az [2388694](https://launchpad.support.sap.com/#/notes/2388694)-es SAP-megjegyzésben.
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek. Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek. Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>A Azure NetApp Files kötet csatlakoztatása
 
@@ -457,7 +457,7 @@ A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa 
 
 ## <a name="configure-sap-hana-system-replication"></a>SAP HANA rendszerreplikáció konfigurálása
 
-SAP HANA rendszerreplikáció konfigurálásához kövesse a [SAP HANA Rendszerreplikáció](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) beállítása című témakörben leírt lépéseket. 
+SAP HANA rendszerreplikáció konfigurálásához kövesse a [SAP HANA Rendszerreplikáció](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication) beállítása című témakörben leírt lépéseket. 
 
 ## <a name="cluster-configuration"></a>Fürtkonfiguráció
 
@@ -465,7 +465,7 @@ Ez a szakasz azokat a szükséges lépéseket ismerteti, amelyek szükségesek a
 
 ### <a name="create-a-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
-Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez a HANA-kiszolgálóhoz, kövesse az Azure-beli [Red Hat Enterprise Linux pacemaker beállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) című témakör lépéseit.
+Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez a HANA-kiszolgálóhoz, kövesse az Azure-beli [Red Hat Enterprise Linux pacemaker beállítása](./high-availability-guide-rhel-pacemaker.md) című témakör lépéseit.
 
 ### <a name="configure-filesystem-resources"></a>Fájlrendszer-erőforrások konfigurálása
 
@@ -540,7 +540,7 @@ Ebben a példában mindegyik fürtcsomópont saját HANA NFS-fájlrendszerrel re
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA fürterőforrás konfigurálása
 
-1. A fürt SAP HANA erőforrásainak létrehozásához kövesse a [SAP HANA-fürterőforrások létrehozása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources) című témakör lépéseit. SAP HANA erőforrások létrehozása után létre kell hoznia egy hely szabály-korlátozást SAP HANA erőforrások és fájlrendszerek (NFS-csatlakoztatások) között.
+1. A fürt SAP HANA erőforrásainak létrehozásához kövesse a [SAP HANA-fürterőforrások létrehozása](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources) című témakör lépéseit. SAP HANA erőforrások létrehozása után létre kell hoznia egy hely szabály-korlátozást SAP HANA erőforrások és fájlrendszerek (NFS-csatlakoztatások) között.
 
 2. **[1]** megkötések konfigurálása a SAP HANA erőforrásai és az NFS-csatlakoztatások között
 
@@ -687,4 +687,4 @@ Ez a szakasz azt ismerteti, hogyan lehet tesztelni a telepítőt.
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürt konfigurációját, és végezze el a [telepítő SAP HANA rendszer-replikáció a RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)-ben című témakörben ismertetett teszteket is.   
+   Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürt konfigurációját, és végezze el a [telepítő SAP HANA rendszer-replikáció a RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)-ben című témakörben ismertetett teszteket is.

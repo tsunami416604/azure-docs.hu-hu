@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274707"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977340"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
 
@@ -49,7 +49,7 @@ Az alábbi táblázat a helyszíni megvalósítás és az Oracle-adatbázisok Az
 | **Hálózat** |LAN/WAN  |SDN (szoftveresen definiált hálózat)|
 | **Biztonsági csoport** |IP-/portokra vonatkozó korlátozási eszközök |[Hálózati biztonsági csoport (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **Rugalmasság** |MTBF (a hibák közötti átlagos idő) |MTTR (a helyreállítás átlagos ideje)|
-| **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](../../windows/infrastructure-example.md) (az Azure által kezelt javítások/frissítések) |
+| **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (az Azure által kezelt javítások/frissítések) |
 | **Erőforrás** |Dedikált  |Megosztva más ügyfelekkel|
 | **Régiók** |Adatközpontok |[Régiópárok](../../regions.md#region-pairs)|
 | **Storage** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -230,7 +230,7 @@ Az Azure-környezet beállítása és konfigurálása után a következő lépé
 - [Oracle ASM konfigurálása](configure-oracle-asm.md)
 - [Oracle Data Guard konfigurálása](configure-oracle-dataguard.md)
 - [Az Oracle Golden Gate konfigurálása](configure-oracle-golden-gate.md)
-- [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
+- [Oracle biztonsági mentés és helyreállítás](./oracle-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

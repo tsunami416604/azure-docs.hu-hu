@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871516"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978492"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -165,10 +165,10 @@ ms.locfileid: "88871516"
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel előkészítheti az Azure-infrastruktúrát a magas rendelkezésre állású SAP-ASCS/SCS-példányok Windows feladatátvevő fürtön való telepítésére és konfigurálására egy olyan *fürt megosztott lemezének* használatával, amely az SAP ASCS-példányok fürtözését teszi elérhetővé.
 A *fürt megosztott lemezének* két alternatívája jelenik meg a dokumentációban:
 
-- [Azure megosztott lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure megosztott lemezek](../../windows/disks-shared.md)
 - A [SIOS DataKeeper cluster Edition](https://us.sios.com/products/datakeeper-cluster/) használatával tükrözött tárhely hozható létre, amely a fürtözött megosztott lemezt szimulálja. 
 
-A bemutatott konfiguráció az [Azure Proximity-elhelyezési csoportjaira (PPG)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) támaszkodik az SAP-munkaterhelések optimális hálózati késése érdekében. A dokumentáció nem fedi le az adatbázis rétegét.  
+A bemutatott konfiguráció az [Azure Proximity-elhelyezési csoportjaira (PPG)](./sap-proximity-placement-scenarios.md) támaszkodik az SAP-munkaterhelések optimális hálózati késése érdekében. A dokumentáció nem fedi le az adatbázis rétegét.  
 
 > [!NOTE]
 > Az Azure-beli Proximity-elhelyezési csoportok az Azure Shared Disk használatának előfeltételei.
@@ -199,7 +199,7 @@ A megjelenített forgatókönyv állomásneve és IP-címe a következő:
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure belső terheléselosztó létrehozása
 
-Az SAP ASCS, az SAP SCS és az új SAP-ERS2 a virtuális állomásnév és a virtuális IP-címek használata. Az Azure-ban a virtuális IP-címek használatához [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) szükséges. Javasoljuk, hogy használja a [standard Load balancert](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). 
+Az SAP ASCS, az SAP SCS és az új SAP-ERS2 a virtuális állomásnév és a virtuális IP-címek használata. Az Azure-ban a virtuális IP-címek használatához [Load Balancer](../../../load-balancer/load-balancer-overview.md) szükséges. Javasoljuk, hogy használja a [standard Load balancert](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
 
 Az alábbi lista az (A) SCS/ERS Load Balancer konfigurációját mutatja be. Az SAP-ASCS és a ERS2 konfigurációja is ugyanabban az Azure Load balancerben történik.  
@@ -263,8 +263,8 @@ A következő beállításjegyzékbeli bejegyzéseket mindkét fürtcsomóponton
 
 | Elérési út| Változó neve | Változó típusa  | Érték | Dokumentáció |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (decimális) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (decimális) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (decimális) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (decimális) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 A módosítások alkalmazásához indítsa újra a fürtcsomópontok csomópontját.
@@ -325,7 +325,7 @@ További információ: [Windows Server 2019 feladatátvételi fürtszolgáltatá
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>A fürt Felhőbeli Kvórumának konfigurálása
-A Windows Server 2016-es vagy a 2019-es használatakor javasoljuk, hogy konfigurálja az [Azure Cloud tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)a fürt Kvórumának megfelelően.
+A Windows Server 2016-es vagy a 2019-es használatakor javasoljuk, hogy konfigurálja az [Azure Cloud tanúsító](/windows-server/failover-clustering/deploy-cloud-witness)a fürt Kvórumának megfelelően.
 
 Futtassa ezt a parancsot a fürtcsomópontok egyikén:
 
@@ -555,6 +555,6 @@ Miután mindkét csomópontra telepítette a SIOS DataKeeper, indítsa el a konf
    _Feladatátvevőfürt-kezelő megjeleníti a replikált DataKeeper lemezt_
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Telepítse az SAP NetWeaver HA szolgáltatást egy Windows feladatátvevő fürt és egy SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-installation-wsfc-shared-disk]

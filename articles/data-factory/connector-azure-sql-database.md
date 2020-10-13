@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332134"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952046"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure SQL Database adatmásolása és átalakítása a Azure Data Factory használatával
 
@@ -43,6 +43,8 @@ Másolási tevékenység esetén ez az Azure SQL Database-összekötő támogatj
 - Az adatok másolása SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat-hitelesítéssel az Azure-erőforrások egyszerű szolgáltatásával vagy felügyelt identitásával.
 - Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával beolvashatja az adatokból. A részletekért tekintse [meg a párhuzamos másolást](#parallel-copy-from-sql-database) is egy Azure SQL Database forrásból.
 - Fogadóként automatikusan hozza létre a céltábla, ha nem létezik a forrásoldali séma alapján; az adattábla hozzáfűzésével vagy egy tárolt eljárás meghívásával egyéni logikával a másolás során.
+
+Ha Azure SQL Database kiszolgáló nélküli [szintet](../azure-sql/database/serverless-tier-overview.md)használ, vegye figyelembe, hogy a kiszolgáló szüneteltetése esetén a tevékenység futtatása sikertelen lesz, ahelyett, hogy az Automatikus folytatás kész állapotra vár. Tevékenység-újrapróbálkozást adhat hozzá, vagy további tevékenységeket is felvehet, így meggyőződhet arról, hogy a kiszolgáló a tényleges végrehajtással működik.
 
 >[!NOTE]
 > Ez az összekötő jelenleg nem támogatja az Azure SQL Database [Always Encryptedt](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) . A megoldáshoz használhat egy [általános ODBC-összekötőt](connector-odbc.md) és egy SQL Server ODBC-illesztőt a saját üzemeltetésű integrációs modulon keresztül. További információ: [Always encrypted szakasz használata](#using-always-encrypted) . 
@@ -691,7 +693,7 @@ Az adatoknak a vagy a Azure SQL Databaseba való másolásakor a rendszer a köv
 | binary |Bájt [] |
 | bit |Logikai |
 | char |Karakterlánc, char [] |
-| dátum |DateTime |
+| date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
@@ -760,6 +762,6 @@ Pontosabban:
 
 4. Ennek megfelelően hozzon létre adatkészletet és másolási tevékenységet az ODBC-típussal. További tudnivalók az [ODBC-összekötőről](connector-odbc.md) című cikkben olvashatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Data Factoryban a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című részben tekintheti meg.

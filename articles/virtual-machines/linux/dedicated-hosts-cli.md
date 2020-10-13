@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370199"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975281"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Üzembe helyezés dedikált gazdagépeken az Azure CLI használatával
  
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](../dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
 Győződjön meg arról, hogy telepítette az Azure CLI 2.0.70 vagy újabb verzióját, majd jelentkezzen be egy Azure-fiókba a használatával `az login` . 
 
@@ -319,8 +319,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információt a [dedikált gazdagépek](dedicated-hosts.md) áttekintése című témakörben talál.
+- További információt a [dedikált gazdagépek](../dedicated-hosts.md) áttekintése című témakörben talál.
 
-- A [Azure Portal](dedicated-hosts-portal.md)használatával dedikált gazdagépeket is létrehozhat.
+- A [Azure Portal](../dedicated-hosts-portal.md)használatával dedikált gazdagépeket is létrehozhat.
 
 - [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.

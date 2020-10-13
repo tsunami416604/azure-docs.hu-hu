@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322976"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977595"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -89,7 +89,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 |---------|--------------|--------------|
 | Indítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
-| A virtuális gépek mérete         | Minden VM-méret | [Elérhető méretek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
+| A virtuális gépek mérete         | Minden VM-méret | [Elérhető méretek](#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. generációs, 2. generációs képességek
 
@@ -117,7 +117,7 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. Kattintson az **összes** megjelenítése az Azure Marketplace-ről lehetőségre a bal oldalon.
 1. Válasszon olyan képet, amely támogatja a Gen2.
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** gombra.
 1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
 1. Az **alapvető beállítások** lap **példány részletei**területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
 1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).
@@ -222,4 +222,3 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
-

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b08a7d6ab271c266ba850d72d5a8b23a06dc5a3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87052119"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977663"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat számítási feladatok az Azure-ban
 
@@ -41,11 +41,11 @@ Az Azure Red Hat Gold images ( `rhel-byos` )-t is kínál. Ezek a képek hasznos
 * Megtudhatja, hogyan [keresheti meg a Red Hat Gold images-képeket a Azure Portalban, az Azure CLI-ben vagy a PowerShell-parancsmagban](./byos.md).
 
 > [!NOTE]
-> A kettős számlázás akkor merül fel, amikor egy felhasználó kétszer fizet a RHEL-előfizetések esetében. Ez a forgatókönyv általában akkor fordul elő, ha egy ügyfél a Red Hat-előfizetést használja a RHEL utólagos elszámolású virtuális gépen való jogosultsághoz. Például egy előfizetés-kezelőt használó ügyfél, amely az SAP-csomagokra vonatkozó jogosultságot csatol egy RHEL utólagos elszámolású rendszerképhez, nem közvetlenül a számlázásért kell fizetnie, mert kétszer fizet a RHEL. Az utólagos elszámolású prémium és az SAP-előfizetésen keresztül egyszer kell fizetniük. Ez a forgatókönyv nem BYOS meg a rendszerkép felhasználóit.
+> A kettős számlázás akkor merül fel, amikor egy felhasználó kétszer fizet a RHEL-előfizetések esetében. Ez a forgatókönyv általában akkor fordul elő, ha egy ügyfél Red Hat Subscription-Managert használ a RHEL utólagos elszámolású virtuális gépen való jogosultsághoz. Ha például egy Subscription-Managert használó ügyfél az SAP-csomagokra vonatkozó jogosultságot csatol egy RHEL utólagos elszámolású rendszerképhez, akkor közvetve nem számítunk fel díjat, mert kétszer fizetnek a RHEL. Az utólagos elszámolású prémium és az SAP-előfizetésen keresztül egyszer kell fizetniük. Ez a forgatókönyv nem BYOS meg a rendszerkép felhasználóit.
 
 ### <a name="generation-2-images"></a>2. generációs rendszerképek
 
-A 2. generációs virtuális gépek (VM-EK) újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. További információ: [2. generációs dokumentáció](../../linux/generation-2.md). A RHEL-rendszerkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak. A fő rendszerindító rekord (MBR) helyett GUID partíciós táblát (GPT) is használnak a rendszerindítási időben. A GPT használata többek között a 2 TB-nál nagyobb operációsrendszer-lemezeket is lehetővé teszi. Emellett a [Mv2 sorozatú virtuális gépek](../../mv2-series.md) csak a 2. generációs lemezképeken futnak.
+A 2. generációs virtuális gépek (VM-EK) újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. További információ: [2. generációs dokumentáció](../../generation-2.md). A RHEL-rendszerkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak. A fő rendszerindító rekord (MBR) helyett GUID partíciós táblát (GPT) is használnak a rendszerindítási időben. A GPT használata többek között a 2 TB-nál nagyobb operációsrendszer-lemezeket is lehetővé teszi. Emellett a [Mv2 sorozatú virtuális gépek](../../mv2-series.md) csak a 2. generációs lemezképeken futnak.
 
 A 2. generációs RHEL-lemezképek az Azure piactéren érhetők el. Az Azure CLI használatakor megjelenő lemezképek listájában keresse meg a "Gen2" kifejezést a lemezkép SKU-ban. A 2. generációs virtuális gépek üzembe helyezéséhez nyissa meg a virtuális gép üzembe helyezési folyamatának **speciális** lapját.
 
@@ -57,7 +57,7 @@ Az Azure csak az utólagos elszámolású RHEL virtuális gépekhez nyújt Red H
 
 A RHUI-frissítéshez kapcsolódó RHEL-lemezképek alapértelmezés szerint a RHEL legújabb másodlagos verziójára csatlakoznak, amikor a `yum update` fut. Ez azt jelenti, hogy egy RHEL 7,4 virtuális gép frissíthető a RHEL 7,7-re, ha egy `yum update` művelet fut rajta. Ez a viselkedés a RHUI kialakításán alapul. A frissítési viselkedés enyhítése érdekében váltson át a normál RHEL-adattárakból a [kiterjesztett frissítési támogatási tárházra](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure-beli RHEL-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).

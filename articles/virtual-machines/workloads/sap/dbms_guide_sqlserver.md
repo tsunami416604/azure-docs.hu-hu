@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274299"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977306"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
 
@@ -384,13 +384,13 @@ SQL Server 2014-es és újabb verziók megnyitják az adatbázisfájlok közvetl
 * Az Azure Premium Storage-lemezek számára elérhető gazdagép-alapú gyorsítótárazás nem érhető el SQL Server adatfájlok közvetlenül az Azure-blobokon való elhelyezésekor.
 * Az M sorozatú virtuális gépeken az Azure írásgyorsító nem használható az ezredmásodperces írások támogatásához a SQL Server tranzakciós naplófájlban. 
 
-A funkció részletei a következő cikkben találhatók: [SQL Server adatfájlok Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)
+A funkció részletei a következő cikkben találhatók: [SQL Server adatfájlok Microsoft Azure](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)
 
 Az éles rendszerekre vonatkozó javaslat elkerüli ezt a konfigurációt, és nem közvetlenül az Azure-Blobok helyett az Azure Premium Storage VHD-k SQL Server-és naplófájljainak elhelyezését választja.
 
 
 ## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 puffer-készlet kiterjesztése
-A SQL Server 2014 egy új funkciót vezetett be, amelyet a rendszer [puffer-készlet bővítménynek](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)nevez. Ez a funkció kibővíti SQL Server pufferének készletét, amelyet a memóriában tartanak egy második szintű gyorsítótárral, amelyet egy kiszolgáló vagy virtuális gép helyi SSD-je támogat. A puffer-készlet kiterjesztése lehetővé teszi a nagyobb munkakészletek tárolását a memóriában. Az Azure standard Storage-hoz való hozzáféréshez képest az Azure-beli virtuális gépek helyi SSD-készletéből tárolt puffer kiterjesztésére való hozzáférést számos tényező okozza. A puffer-bővítmény az Azure-ba való összehasonlításával Premium Storage az olvasási gyorsítótárat SQL Server adatfájlok esetében ajánlott, nem várható jelentős előny a puffer-bővítmények számára. Ennek oka, hogy a gyorsítótárak (SQL Server a pufferek és a Premium Storage olvasási gyorsítótár) az Azure számítási csomópontjának helyi lemezeit használják.
+A SQL Server 2014 egy új funkciót vezetett be, amelyet a rendszer [puffer-készlet bővítménynek](/sql/database-engine/configure-windows/buffer-pool-extension)nevez. Ez a funkció kibővíti SQL Server pufferének készletét, amelyet a memóriában tartanak egy második szintű gyorsítótárral, amelyet egy kiszolgáló vagy virtuális gép helyi SSD-je támogat. A puffer-készlet kiterjesztése lehetővé teszi a nagyobb munkakészletek tárolását a memóriában. Az Azure standard Storage-hoz való hozzáféréshez képest az Azure-beli virtuális gépek helyi SSD-készletéből tárolt puffer kiterjesztésére való hozzáférést számos tényező okozza. A puffer-bővítmény az Azure-ba való összehasonlításával Premium Storage az olvasási gyorsítótárat SQL Server adatfájlok esetében ajánlott, nem várható jelentős előny a puffer-bővítmények számára. Ennek oka, hogy a gyorsítótárak (SQL Server a pufferek és a Premium Storage olvasási gyorsítótár) az Azure számítási csomópontjának helyi lemezeit használják.
 
 Az időközben szerzett tapasztalatok az SAP számítási feladattal együtt SQL Server a pufferek készletének bővítményét, és továbbra sem egyértelmű javaslatokat tesznek arra, hogy minden esetben használhatók-e. Az ideális esetben az, hogy az SAP-alkalmazás munkakészlete megfelel a fő memóriának. Az Azure-ban az akár 4 TB-os memóriával rendelkező virtuális gépeket is elérhetővé kell tennie a munkakészletnek a memóriában való megtartásához. Ezért a pufferelési készlet kiterjesztésének használata néhány ritka esetre korlátozódik, és nem lehet általános eset.  
 
@@ -408,7 +408,7 @@ Több lehetősége van a manuális biztonsági mentések végrehajtására:
 
 Az első módszer jól ismert, és számos esetben alkalmazható a helyszíni világban is. A feladat azonban a hosszú távú biztonsági mentés helyének megoldására is elhagyható. Mivel nem szeretné, hogy a biztonsági másolatok 30 vagy több napig maradjanak a helyileg csatlakoztatott Azure-tárolóban, Azure Backup-szolgáltatásokat vagy más, harmadik féltől származó biztonsági mentési/helyreállítási eszközt kell használnia, amely magában foglalja a biztonsági mentések hozzáférését és adatmegőrzési felügyeletét. Emellett egy nagyméretű fájlkiszolgáló is kiépíthető az Azure-ban a Windows Storage Spaces használatával.
 
-A második módszert a [SQL Server biztonsági mentés URL-címére](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/backup-restore)című cikk ismerteti részletesebben. A SQL Server különböző kiadásai rendelkeznek a funkció néhány változatával. Ezért érdemes megtekinteni az adott SQL Server kiadás-ellenőrzési dokumentációját. Fontos megjegyezni, hogy ez a cikk sok korlátozást sorol fel. Lehetősége van arra, hogy a biztonsági mentést a következő módokon hajtsa végre:
+A második módszert a [SQL Server biztonsági mentés URL-címére](../../../azure-sql/virtual-machines/windows/backup-restore.md)című cikk ismerteti részletesebben. A SQL Server különböző kiadásai rendelkeznek a funkció néhány változatával. Ezért érdemes megtekinteni az adott SQL Server kiadás-ellenőrzési dokumentációját. Fontos megjegyezni, hogy ez a cikk sok korlátozást sorol fel. Lehetősége van arra, hogy a biztonsági mentést a következő módokon hajtsa végre:
 
 - Egyetlen Azure-oldal blobja, amely a biztonsági mentés méretét 1000 GB-ra korlátozza. Ez a korlátozás korlátozza az elérhető átviteli sebességet is.
 - Több (akár 64) Azure Block-Blobok, amelyek a 12 TB-os elméleti biztonsági mentési méretet teszik lehetővé. Az ügyfél-adatbázisokkal végzett tesztek azonban azt mutatták ki, hogy a biztonsági másolatok maximális mérete kisebb, mint az elméleti korlát. Ebben az esetben Ön felelős a biztonsági másolatok megőrzésének irányításáért és a biztonsági mentések eléréséhez.
@@ -422,7 +422,7 @@ A módszer képességeiről további részleteket a következő cikkekben talál
 - SQL Server 2014: [automatikus biztonsági mentés SQL Server 2014 Virtual Machines (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
 - SQL Server 2016/2017: [automatikus biztonsági mentés v2 Azure Virtual Machines (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup.md)
 
-A dokumentációnak megfelelően láthatja, hogy a legújabb SQL Server kiadásokkal bővült a funkció. A SQL Server automatikus biztonsági mentéssel kapcsolatos további részletekért lásd a [felügyelt biztonsági mentés Microsoft Azurera SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)című cikket. Az elméleti biztonsági mentés maximális mérete 12 TB.  Az automatikus biztonsági mentés jó módszer lehet a legfeljebb 12 TB méretű biztonsági másolatok méretéhez. Mivel több blobot párhuzamosan kell írni, az átviteli sebesség 100 MB/s-nál nagyobb lehet. 
+A dokumentációnak megfelelően láthatja, hogy a legújabb SQL Server kiadásokkal bővült a funkció. A SQL Server automatikus biztonsági mentéssel kapcsolatos további részletekért lásd a [felügyelt biztonsági mentés Microsoft Azurera SQL Server](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)című cikket. Az elméleti biztonsági mentés maximális mérete 12 TB.  Az automatikus biztonsági mentés jó módszer lehet a legfeljebb 12 TB méretű biztonsági másolatok méretéhez. Mivel több blobot párhuzamosan kell írni, az átviteli sebesség 100 MB/s-nál nagyobb lehet. 
  
 
 ### <a name="azure-backup-for-sql-server-vms"></a>Azure Backup SQL Server virtuális gépekhez
@@ -468,10 +468,10 @@ Ha az eredmény eltérő, állítsa le az SAP telepítését, és vizsgálja meg
 Az SAP-ben az Azure IaaS üzemelő SQL Server használatával számos különböző lehetőség közül választhat az adatbázis-kezelő réteg elérhetővé tételéhez. Az Azure [Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) számítási feladatokhoz című témakörben leírtaknak megfelelően az Azure különböző, az Azure-beli rendelkezésre állási csoportokban üzembe helyezett virtuális gépeket és több virtuális gépet is tartalmaz. Feltételezi, hogy az Azure-beli rendelkezésre állási csoportokban üzemelő éles környezetekben való üzembe helyezéshez szükséges idő Ilyen esetben legalább két virtuális gépet kell üzembe helyeznie egy ilyen rendelkezésre állási csoporton belül. Egy virtuális gép az aktív SQL Server példányt fogja futtatni. A másik virtuális gép a passzív példányt fogja futtatni
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>Fürtözés SQL Server a Windows kibővíthető fájlkiszolgáló vagy az Azure megosztott lemez használatával
-A Windows Server 2016-es verziójával a Microsoft bevezette [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spaces-direct-overview). Közvetlen tárolóhelyek központi telepítésen alapuló SQL Server-alapú fürtözést általában a rendszer támogatja. Az Azure olyan [Azure-beli megosztott lemezeket](https://docs.microsoft.com/azure/virtual-machines/disks-shared-enable?tabs=azure-cli) is biztosít, amelyek a Windows fürtözéshez használhatók. Az SAP-munkaterhelések esetében ezek a beállítások nem támogatottak. 
+A Windows Server 2016-es verziójával a Microsoft bevezette [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spaces-direct-overview). Közvetlen tárolóhelyek központi telepítésen alapuló SQL Server-alapú fürtözést általában a rendszer támogatja. Az Azure olyan [Azure-beli megosztott lemezeket](../../disks-shared-enable.md?tabs=azure-cli) is biztosít, amelyek a Windows fürtözéshez használhatók. Az SAP-munkaterhelések esetében ezek a beállítások nem támogatottak. 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server napló szállítása
-A magas rendelkezésre állású módszerek egyike SQL Server a napló szállítása. Ha a HA-konfigurációban részt vevő virtuális gépek működnek a névfeloldással, nincs probléma, és az Azure-beli beállítás nem különbözik a helyszínen végzett telepítéstől. A naplózási szállítás beállításával és a napló szállításával kapcsolatos alapelvekkel kapcsolatban. SQL Server napló szállításával kapcsolatos részletek a következő cikkben találhatók: a [log Shipping (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server).
+A magas rendelkezésre állású módszerek egyike SQL Server a napló szállítása. Ha a HA-konfigurációban részt vevő virtuális gépek működnek a névfeloldással, nincs probléma, és az Azure-beli beállítás nem különbözik a helyszínen végzett telepítéstől. A naplózási szállítás beállításával és a napló szállításával kapcsolatos alapelvekkel kapcsolatban. SQL Server napló szállításával kapcsolatos részletek a következő cikkben találhatók: a [log Shipping (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server).
 
 A SQL Server log szállítási funkciót alig használták az Azure-ban, hogy magas rendelkezésre állást érjenek el egy Azure-régión belül. A következő helyzetekben azonban az SAP-ügyfelek sikeresen használták a log Shipping-t az Azure-ban:
 
@@ -519,7 +519,7 @@ A SQL Server always on a leggyakrabban használt magas rendelkezésre állású 
 Az Azure-régiók közti további vész-helyreállítási funkciók esetében a sok ügyfelünk kihasználja a SQL Server always on funkciót. Több ügyfél is használhatja a biztonsági mentéseket egy másodlagos replikáról. 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server transzparens adattitkosítás
-SQL Server [transzparens adattitkosítást (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) használó ügyfelek száma az SAP SQL Server-adatbázisainak az Azure-ban való telepítésekor. Az SAP a SQL Server TDE funkcióit teljes mértékben támogatja (lásd: SAP-Megjegyzés [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
+SQL Server [transzparens adattitkosítást (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) használó ügyfelek száma az SAP SQL Server-adatbázisainak az Azure-ban való telepítésekor. Az SAP a SQL Server TDE funkcióit teljes mértékben támogatja (lásd: SAP-Megjegyzés [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
 
 ### <a name="applying-sql-server-tde"></a>SQL Server TDE alkalmazása
 Azokban az esetekben, amikor egy másik, a helyszínen futtatott adatbázisból származó, heterogén áttelepítést hajt végre az Azure-ban futó Windows/SQL Server rendszerre, az üres céladatbázis SQL Server előtt kell létrehoznia. A következő lépésként alkalmazza SQL Server TDE funkciót. Miközben továbbra is a helyi üzemi rendszert futtatja. Ennek a lépésnek az az oka, hogy az üres adatbázis titkosításának folyamata hosszabb ideig is eltarthat. Az SAP importálási folyamatai ezután importálják az adatbevitelt a titkosított adatbázisba az állásidős fázisban. A titkosított adatbázisba való importálás a legkevesebb időt befolyásolja, mint az adatbázis titkosítása az exportálási fázis letelt időfázisában. Negatív élmények történtek, amikor a rendszer megpróbálta alkalmazni a TDE-t az adatbázis tetején futó SAP-munkaterheléssel. Ezért javasoljuk, hogy a TDE üzembe helyezését olyan tevékenységként kezelje, amelyet SAP-munkaterhelés nélkül kell elvégezni az adott adatbázison.
@@ -537,9 +537,9 @@ Az Azure biztosítja a titkosítási kulcsok tárolására szolgáló [Key Vault
 
 További részletek a Azure Key Vault SQL Server TDE-listához, például:
 
-- [Bővíthető kulcskezelő Azure Key Vault (SQL Server) használatával](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server).
-- [SQL Server a TDE Azure Key Vault telepítésének lépéseivel bővíthető](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault).
-- [SQL Server Connector karbantartási & hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?).
+- [Bővíthető kulcskezelő Azure Key Vault (SQL Server) használatával](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server).
+- [SQL Server a TDE Azure Key Vault telepítésének lépéseivel bővíthető](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault).
+- [SQL Server Connector karbantartási & hibaelhárítás](/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting).
 - [További kérdések a SQL Server transzparens adattitkosítás – TDE + Azure Key Vault ügyfeleitől](/archive/blogs/saponsqlserver/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault).
 
 

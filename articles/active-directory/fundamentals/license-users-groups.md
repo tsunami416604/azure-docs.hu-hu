@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319525"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977014"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licencek kiosztása vagy eltávolítása a Azure Active Directory portálon
 
@@ -102,11 +102,11 @@ Győződjön meg arról, hogy a licenccel rendelkező Azure AD-szolgáltatás ha
 
 1. A **hozzárendelés** lapon válassza a **felhasználók és csoportok**lehetőséget, majd keresse meg és válassza ki azt a csoportot, amelyhez hozzá szeretné rendelni a licencet.
 
-    ![Licencek kiosztása oldal, Kiemelt kereséssel és Select beállításokkal](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Licenc kiosztása oldal, a kijelölt kereséssel és a 2. lehetőséggel](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. Válassza a **hozzárendelési beállítások**lehetőséget, győződjön meg arról, hogy a megfelelő licencelési beállítások be vannak kapcsolva, majd kattintson **az OK gombra**.
 
-    ![Licencelési lehetőség lap, a licencelési csomagban elérhető összes lehetőséggel](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Licencelési lehetőség lap, a 2. licencelési csomagban elérhető összes lehetőséggel](media/license-users-groups/license-option-blade-group-assignments.png)
 
     A **licenc-hozzárendelési** oldal frissítései megjelenítik, hogy a felhasználó ki van-e választva, és hogy a hozzárendelések konfigurálva vannak-e.
 
@@ -135,7 +135,7 @@ A licenceket eltávolíthatja egy felhasználó Azure AD-felhasználó oldalár�
 
 1. Válassza a **licenc eltávolítása**lehetőséget.
 
-    ![Licencelt csoportok lap Kiemelt licenc eltávolítása lehetőséggel](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![Licencelt csoportok lap – Kiemelt licenc eltávolítása lehetőség 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > Ha egy Azure AD-val szinkronizált helyszíni felhasználói fiók a szinkronizálás hatókörén kívül esik, vagy ha a szinkronizálás el lett távolítva, a felhasználó az Azure AD-ben nem törlődik. Ha ez történik, a felhasználóhoz közvetlenül vagy csoportos licencelésen keresztül hozzárendelt licencek nem **töröltként**lesznek **felfüggesztve** .

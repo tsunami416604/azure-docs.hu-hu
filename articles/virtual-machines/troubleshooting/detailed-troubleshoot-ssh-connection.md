@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069159"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975671"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH-hibaelhárítási lépések Linux rendszerű virtuális gépekhez való csatlakozáskor fellépő problémákhoz az Azure-ban
 Az SSH-ügyfélnek számos oka lehet annak, hogy az SSH-szolgáltatás nem érhető el a virtuális gépen. Ha követte a további [általános SSH-hibaelhárítási lépéseket](troubleshoot-ssh-connection.md), akkor a kapcsolódási problémával kapcsolatos további hibaelhárításra van szükség. Ez a cikk végigvezeti a részletes hibaelhárítási lépéseken, amelyekkel meghatározhatja, hogy az SSH-kapcsolatok hol és Hogyan oldhatók meg.
@@ -39,7 +39,7 @@ A következő lépések segítségével elkülönítheti a hiba forrását, és 
 
 2. Válassza a **Beállítások** lehetőséget a végpontok, IP-címek, hálózati biztonsági csoportok és egyéb beállítások vizsgálatához.
 
-   A virtuális gépnek rendelkeznie kell egy, a **végpontokban** vagy a **[hálózati biztonsági csoportban](../../virtual-network/security-overview.md)** megtekinthető SSH-forgalomhoz megadott végponttal. A Resource Manager használatával létrehozott virtuális gépeken található végpontokat egy hálózati biztonsági csoport tárolja. Ellenőrizze, hogy a szabályok érvényesek-e a hálózati biztonsági csoportra, és hivatkoznak-e az alhálózatra.
+   A virtuális gépnek rendelkeznie kell egy, a **végpontokban** vagy a **[hálózati biztonsági csoportban](../../virtual-network/network-security-groups-overview.md)** megtekinthető SSH-forgalomhoz megadott végponttal. A Resource Manager használatával létrehozott virtuális gépeken található végpontokat egy hálózati biztonsági csoport tárolja. Ellenőrizze, hogy a szabályok érvényesek-e a hálózati biztonsági csoportra, és hivatkoznak-e az alhálózatra.
 
 A hálózati kapcsolat ellenőrzéséhez tekintse meg a konfigurált végpontokat, és ellenőrizze, hogy tud-e csatlakozni a virtuális géphez egy másik protokollon keresztül, például HTTP vagy más szolgáltatás használatával.
 
@@ -114,7 +114,7 @@ Ha el szeretné távolítani a végpontot a probléma forrásaként, távolítsa
 
 ## <a name="source-4-network-security-groups"></a>4. Forrás: hálózati biztonsági csoportok
 A hálózati biztonsági csoportok lehetővé teszik a bejövő és kimenő forgalom részletesebb szabályozását. Létrehozhat olyan szabályokat, amelyek az alhálózatokat és a Cloud Servicest egy Azure-beli virtuális hálózatban fogják kialakítani. Ellenőrizze a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy az internetre irányuló és onnan érkező SSH-forgalom engedélyezett.
-További információ: [Tudnivalók a hálózati biztonsági csoportokról](../../virtual-network/security-overview.md).
+További információ: [Tudnivalók a hálózati biztonsági csoportokról](../../virtual-network/network-security-groups-overview.md).
 
 Az IP-ellenőrzés használatával is ellenőrizheti a NSG konfigurációját. További információ: az [Azure Network monitoring áttekintése](../../network-watcher/network-watcher-monitoring-overview.md). 
 

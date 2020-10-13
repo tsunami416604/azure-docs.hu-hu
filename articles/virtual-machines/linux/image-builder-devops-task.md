@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068272"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968667"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Az Azure rendszerkép-készítő szolgáltatás DevOps feladata
 
@@ -31,8 +31,8 @@ Két Azure VM rendszerkép-készítő (AIB) DevOps-feladat létezik:
 * Telepítse a [stabil DevOps feladatot a Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * Rendelkeznie kell egy VSTS DevOps-fiókkal és egy létrehozott létrehozási folyamattal.
 * Regisztrálja és engedélyezze a rendszerkép-készítő szolgáltatás követelményeit a folyamatok által használt előfizetésben:
-    * [Az PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [Az parancssori felület](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [Az PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [Az parancssori felület](../windows/image-builder.md#register-the-features)
     
 * Hozzon létre egy szabványos Azure Storage-fiókot a forrás rendszerkép-erőforráscsoport területén, más erőforráscsoport-vagy Storage-fiókokat is használhat. A Storage-fiók a DevOps feladatból a rendszerképbe helyezi át a Build-összetevőket.
 
@@ -65,20 +65,20 @@ Adja meg a következő feladat tulajdonságait:
 
 Válassza ki a legördülő menüből azt az előfizetést, amelyen futtatni szeretné a rendszerkép-szerkesztőt. Használja ugyanazt az előfizetést, ahol a forrás-lemezképek találhatók, valamint a lemezképek terjesztésének helyét. Engedélyeznie kell a rendszerkép-szerkesztő közreműködői hozzáférését az előfizetéshez vagy az erőforráscsoporthoz.
 
-### <a name="resource-group"></a>Erőforráscsoport
+### <a name="resource-group"></a>Resource Group
 
 Használja azt az erőforráscsoportot, amelyben az ideiglenes Képsablon-összetevőt tárolni fogja. A sablon-összetevők létrehozásakor létrejön egy további ideiglenes rendszerkép-készítő erőforráscsoport `IT_<DestinationResourceGroup>_<TemplateName>_guid` . Az ideiglenes erőforráscsoport tárolja a rendszerkép metaadatait, például a parancsfájlokat. A feladat végén a rendszer törli a Képsablon összetevőjét és az ideiglenes rendszerkép-készítő erőforráscsoportot.
  
 ### <a name="location"></a>Hely
 
-A hely az a régió, ahol a rendszerkép-szerkesztő futni fog. Csak egy meghatározott számú [régió](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) támogatott. Ezen a helyen a forrás lemezképeknek jelen kell lenniük. Ha például megosztott képtárat használ, az adott régióban léteznie kell egy replikának.
+A hely az a régió, ahol a rendszerkép-szerkesztő futni fog. Csak egy meghatározott számú [régió](../windows/image-builder-overview.md#regions) támogatott. Ezen a helyen a forrás lemezképeknek jelen kell lenniük. Ha például megosztott képtárat használ, az adott régióban léteznie kell egy replikának.
 
 ### <a name="managed-identity-required"></a>Felügyelt identitás (kötelező)
-A rendszerkép-készítőnek felügyelt identitásra van szüksége, amelyet a forrás egyéni lemezképek olvasásához, az Azure Storage-hoz való kapcsolódáshoz és Egyéni rendszerképek létrehozásához használ. További információt [itt](https://aka.ms/azvmimagebuilder#permissions) talál.
+A rendszerkép-készítőnek felügyelt identitásra van szüksége, amelyet a forrás egyéni lemezképek olvasásához, az Azure Storage-hoz való kapcsolódáshoz és Egyéni rendszerképek létrehozásához használ. További információt [itt](./image-builder-overview.md#permissions) talál.
 
 ### <a name="vnet-support"></a>VNET-támogatás
 
-Jelenleg a DevOps feladat nem támogatja egy meglévő alhálózat megadását, ez az ütemterv, de ha egy meglévő VNET kíván használni, használhat egy ARM-sablont, amely egy, a-ben beágyazott rendszerkép-készítő sablonnal rendelkezik, tekintse meg a Windows rendszerkép-készítő sablon példáit, vagy használja az [az AIB PowerShellt](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell).
+Jelenleg a DevOps feladat nem támogatja egy meglévő alhálózat megadását, ez az ütemterv, de ha egy meglévő VNET kíván használni, használhat egy ARM-sablont, amely egy, a-ben beágyazott rendszerkép-készítő sablonnal rendelkezik, tekintse meg a Windows rendszerkép-készítő sablon példáit, vagy használja az [az AIB PowerShellt](../windows/image-builder-powershell.md).
 
 ### <a name="source"></a>Forrás
 
@@ -154,7 +154,7 @@ A következő példa a működésének módját mutatja be:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – Linux rendszereken a Build összetevők a `/tmp` könyvtárba kerülnek. Sok Linux OSs esetében azonban a rendszer újraindításkor törli a/tmp könyvtár tartalmát. Ha azt szeretné, hogy az összetevők a képen is elérhetők legyenek, létre kell hoznia egy másik könyvtárat, és át kell másolnia őket.  Példa:
+* Linux – Linux rendszereken a Build összetevők a `/tmp` könyvtárba kerülnek. Sok Linux OSs esetében azonban a rendszer újraindításkor törli a/tmp könyvtár tartalmát. Ha azt szeretné, hogy az összetevők a képen is elérhetők legyenek, létre kell hoznia egy másik könyvtárat, és át kell másolnia őket.  Például:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ A következő példa a működésének módját mutatja be:
 > A rendszerkép-szerkesztő nem távolítja el automatikusan a Build-összetevőket, erősen azt javasoljuk, hogy mindig legyen kód a Build-összetevők eltávolításához.
 > 
 
-* A Windows-rendszerkép-szerkesztő telepíti a fájlokat a `c:\buildArtifacts` könyvtárba. A könyvtár megmarad, el kell távolítania a könyvtárat. Eltávolíthatja azt a futtatott szkriptből. Példa:
+* A Windows-rendszerkép-szerkesztő telepíti a fájlokat a `c:\buildArtifacts` könyvtárba. A könyvtár megmarad, el kell távolítania a könyvtárat. Eltávolíthatja azt a futtatott szkriptből. Például:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ A következő példa a működésének módját mutatja be:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – a Build összetevők bekerülnek a `/tmp` könyvtárba. Számos Linux OSs esetében azonban az újraindításkor `/tmp` törlődik a könyvtár tartalma. Azt javasoljuk, hogy a tartalom eltávolításához legyen kód, és ne használja az operációs rendszert a tartalom eltávolításához. Példa:
+* Linux – a Build összetevők bekerülnek a `/tmp` könyvtárba. Számos Linux OSs esetében azonban az újraindításkor `/tmp` törlődik a könyvtár tartalma. Azt javasoljuk, hogy a tartalom eltávolításához legyen kód, és ne használja az operációs rendszert a tartalom eltávolításához. Például:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -194,7 +194,7 @@ A következő példa a működésének módját mutatja be:
     
 #### <a name="total-length-of-image-build"></a>A képépítés teljes hossza
 
-A teljes hossz még nem módosítható a DevOps-folyamat feladatban. Az alapértelmezett 240 percet használja. Ha szeretné bővíteni a [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes), akkor a kiadási folyamat az az CLI feladat használatával végezhető el. Konfigurálja a feladatot egy sablon másolásához és elküldéséhez. Példaként tekintse meg ezt a [megoldást](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), vagy használja az az PowerShellt.
+A teljes hossz még nem módosítható a DevOps-folyamat feladatban. Az alapértelmezett 240 percet használja. Ha szeretné bővíteni a [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes), akkor a kiadási folyamat az az CLI feladat használatával végezhető el. Konfigurálja a feladatot egy sablon másolásához és elküldéséhez. Példaként tekintse meg ezt a [megoldást](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), vagy használja az az PowerShellt.
 
 
 #### <a name="storage-account"></a>Tárfiók
@@ -312,7 +312,7 @@ Nem. A rendszer a sablon egyedi nevét használja, majd törli.
 
 Ha felépítési hiba történik, a DevOps feladat nem törli az előkészítési erőforráscsoportot. Elérheti a Build testreszabási naplóját tartalmazó átmeneti erőforrás-csoportot.
 
-Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Példa:
+Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Például:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Válassza az összetevő hozzáadása lehetőséget a kiadási folyamatban.":::
 
