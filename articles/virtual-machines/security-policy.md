@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852488"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977748"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Szabályzatok biztonsága és használata virtuális gépeken az Azure-ban
 
@@ -25,7 +25,7 @@ A Felhőbeli környezetek modern fenyegetési tájképe dinamikus, és a megfele
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) segít megakadályozni, észlelni és reagálni a virtuális gépekkel kapcsolatos fenyegetésekre. A Security Center az Azure-előfizetések integrált biztonsági monitorozását és felügyeletét teszi lehetővé, segít felderíteni azokat a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek.
+[Azure Security Center](../security-center/security-center-introduction.md) segít megakadályozni, észlelni és reagálni a virtuális gépekkel kapcsolatos fenyegetésekre. A Security Center az Azure-előfizetések integrált biztonsági monitorozását és felügyeletét teszi lehetővé, segít felderíteni azokat a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek.
 
 Security Center az igény szerinti hozzáférés a virtuális gépek üzembe helyezésével zárolható az Azure-beli virtuális gépek felé irányuló bejövő forgalom zárolása érdekében, így csökkenthető a támadásoknak való kitettség, miközben könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges. Ha az igény szerinti hozzáférés engedélyezve van, és a felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó milyen engedélyekkel rendelkezik a virtuális géphez. Ha rendelkeznek a megfelelő engedélyekkel, a rendszer jóváhagyja a kérést, és Security Center automatikusan konfigurálja a hálózati biztonsági csoportokat (NSG), hogy a kijelölt portokra korlátozott ideig engedélyezze a bejövő forgalmat. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. 
 
@@ -69,9 +69,8 @@ Az [Azure-szabályzatok](../governance/policy/overview.md) segítségével megha
 
 ## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával elkülönítheti a feladatait a csapaton belül, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az [Azure CLI](https://docs.microsoft.com/cli/azure/role)vagy a[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával konfigurálhatja a [Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával elkülönítheti a feladatait a csapaton belül, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az [Azure CLI](/cli/azure/role)vagy a[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával konfigurálhatja a [Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan figyelheti a virtuális gépek biztonságát a [Linux](../security/fundamentals/overview.md) vagy a [Windows](windows/tutorial-azure-security.md)Azure Security Center használatával.
-

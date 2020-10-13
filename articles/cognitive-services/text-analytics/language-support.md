@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056591"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977731"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
@@ -36,6 +36,7 @@ ms.locfileid: "90056591"
 | Francia                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Német                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Görög                 |     `el`      |     ✓      |            |                            |                    |
+| Hindi                 |     `hi`      |           |      ✓      |          2020-04-01                  |                    |
 | Olasz               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japán              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Koreai                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
@@ -86,7 +87,7 @@ ms.locfileid: "90056591"
 | Svéd               |     `sv`      |     ✓      |            |                                 |                    |
 | Török               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > A 2020-07-01 előtti Kulcsszókeresés modellek 64 karakteres korláttal rendelkeznek. Ez a korlát nem szerepel a modell későbbi verzióiban.

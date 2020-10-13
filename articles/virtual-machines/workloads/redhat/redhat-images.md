@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87439468"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977629"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 
@@ -108,7 +108,7 @@ A RHEL 8 képtípusának részletei alább láthatók.
 |Publisher | Ajánlat | SKU-érték | Verzió | Részletek
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191023) | Ezek a képek a standard Red Hat-adattárakhoz csatlakoztatott, 8 LVM-particionált rendszerképek RHEL.
-|RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](../../linux/generation-2.md)-ban.
+|RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](../../generation-2.md)-ban.
 
 ## <a name="rhel-longer-support-add-ons"></a>A RHEL már támogatja a bővítményeket
 
@@ -116,7 +116,7 @@ A RHEL 8 képtípusának részletei alább láthatók.
 
 Április 2019-én a RHEL-lemezképek elérhetők, amelyek alapértelmezés szerint a EUS-adattárakhoz vannak csatolva. A RHEL EUS kapcsolatos további információk a [Red Hat dokumentációjában](https://access.redhat.com/articles/rhel-eus)olvashatók.
 
-A EUS-tárházra való váltás lehetséges és támogatott. A virtuális gép EUS való átváltására, valamint a EUS támogatásával kapcsolatos további információkért lásd: [RHEL EUs and Version-locking RHEL VMS](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+A EUS-tárházra való váltás lehetséges és támogatott. A virtuális gép EUS való átváltására, valamint a EUS támogatásával kapcsolatos további információkért lásd: [RHEL EUs and Version-locking RHEL VMS](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 >[!NOTE]
 > A EUS nem támogatott a RHEL-extrák esetében. Ez azt jelenti, hogy ha olyan csomagot telepít, amely általában az RHEL extrák csatornán keresztül érhető el, akkor a EUS nem tudja elvégezni. A Red Hat extrák termék életciklusával kapcsolatos további információkért lásd: [Red Hat Enterprise Linux extrák életciklusa](https://access.redhat.com/support/policy/updates/extras/).
@@ -150,7 +150,7 @@ Alverzió |EUS-rendszerkép – példa              |EUS állapota              
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Az április 2019-es és újabb verzióiban közzétett lemezképek alapértelmezés szerint EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | A 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | A 2019-es és újabb verzióiban közzétett rendszerképek alapértelmezés szerint EUS. |
-RHEL 8,0      |N/A                            | A Red Hat nem érhető el EUS.                               |
+RHEL 8,0      |N.A.                            | A Red Hat nem érhető el EUS.                               |
 
 ### <a name="update-services-for-sap"></a>SAP-szolgáltatások frissítése
 
@@ -180,9 +180,9 @@ Egy adott rendszerkép-családban csak az aktuális alverziót frissítjük. Egy
 
 Az aktuális szabályzat az összes korábban közzétett rendszerkép megőrzése. Fenntartjuk a jogot arra, hogy olyan rendszerképeket távolítson el, amelyek bármilyen típusú problémát okozhatnak. Előfordulhat például, hogy a következő platform vagy összetevő frissítései miatt helytelen konfigurációval rendelkező lemezképek el lesznek távolítva. Az esetlegesen eltávolított lemezképek az aktuális Azure Marketplace-szabályzat alapján biztosítanak értesítést akár 30 nappal a lemezkép eltávolítása előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
-* További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](https://aka.ms/rhui-update).
+* További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](./redhat-rhui.md).
 * Ha többet szeretne megtudni a RHEL BYOS ajánlatáról, tekintse meg az Azure-beli [saját előfizetéssel rendelkező Gold-lemezképek Red Hat Enterprise Linux](./byos.md).
 * További információ a RHEL összes verziójának Red Hat-támogatási szabályzatáról: [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata).

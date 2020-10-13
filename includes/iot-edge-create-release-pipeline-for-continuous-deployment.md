@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
 ms.openlocfilehash: 706b2306fbe9f2a744d2874a8b55f78fa2fc8e4d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89302953"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Kiadási folyamat létrehozása a folyamatos üzembe helyezéshez
@@ -33,7 +33,7 @@ Hozzon létre egy új folyamatot, és adjon hozzá egy új szakaszt:
 
    ![Kattintson a Hozzáadás elemre a csatoló összetevők területén](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-artifacts.png)
 
-5. Az **összetevő hozzáadása lapon**válassza a **Létrehozás** a **forrás típusaként**lehetőséget. Válassza ki a projektet és a létrehozott Build-folyamatot. Ha szeretné, megváltoztathatja a **forrás aliast** valami más leíróra. Ezután válassza a **Hozzáadás** lehetőséget.
+5. Az **összetevő hozzáadása lapon**válassza a **Létrehozás** a **forrás típusaként**lehetőséget. Válassza ki a projektet és a létrehozott Build-folyamatot. Ha szeretné, megváltoztathatja a **forrás aliast** valami más leíróra. Ezután válassza a **Hozzáadás**lehetőséget.
 
    ![Az összetevő hozzáadása lapon válassza a Hozzáadás lehetőséget az összetevő létrehozásához.](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-artifact.png)
 
@@ -52,7 +52,7 @@ Hozzon létre egy új folyamatot, és adjon hozzá egy új szakaszt:
     | Paraméter | Leírás |
     | --- | --- |
     | Megjelenített név | A művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. |
-    | Műveletek | Válassza a(z) `Generate deployment manifest` lehetőséget. |
+    | Művelet | Válassza a(z) `Generate deployment manifest` lehetőséget. |
     | Fájl .template.js | Az elérési út megadása: `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` . Az elérési út közzé lett téve a Build-folyamatból. |
     | Alapértelmezett platform | Válassza ki a megfelelő operációs rendszert a modulok számára a célként megadott IoT Edge eszköz alapján. |
     | Kimeneti elérési út| Helyezze el az elérési utat `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Ez az elérési út a végső IoT Edge telepítési jegyzékfájl. |
@@ -72,7 +72,7 @@ Hozzon létre egy új folyamatot, és adjon hozzá egy új szakaszt:
     | Paraméter | Leírás |
     | --- | --- |
     | Megjelenített név | A művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. |
-    | Műveletek | Válassza a(z) `Deploy to IoT Edge devices` lehetőséget. |
+    | Művelet | Válassza a(z) `Deploy to IoT Edge devices` lehetőséget. |
     | Telepítési fájl | Helyezze el az elérési utat `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Ez az elérési út a fájl IoT Edge telepítési jegyzékfájljának fájlja. |
     | Azure-előfizetés | Válassza ki az előfizetést, amely tartalmazza a IoT Hub.|
     | IoT Hub neve | Válassza ki az IoT hubot.|
