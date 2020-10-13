@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317701"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript felhasználó által definiált összesítések Azure Stream Analytics
@@ -174,7 +174,7 @@ Most hozzon létre egy JavaScript-UDA egy meglévő ASA-feladatban a következő
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>JavaScript UDA meghívása az ASA-lekérdezésben
 
-Azure Portal és nyissa meg a feladatot, szerkessze a lekérdezést, és hívja meg a TWA () függvényt egy "uda." mandátum-előtaggal. Például:
+Azure Portal és nyissa meg a feladatot, szerkessze a lekérdezést, és hívja meg a TWA () függvényt egy "uda." mandátum-előtaggal. Példa:
 
 ```SQL
 WITH value AS

@@ -8,10 +8,10 @@ ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612761"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
@@ -35,7 +35,7 @@ A tevékenység naplójának minden bejegyzése súlyossági szinttel rendelkezi
 
 Az egyes erőforrás-szolgáltatók devlopers válassza ki az erőforrás-bejegyzéseik súlyossági szintjeit. Ennek eredményeképpen a tényleges súlyossága attól függően változhat, hogy az alkalmazás hogyan épül fel. Előfordulhat például, hogy a isloation-ben végrehajtott adott erőforrás "kritikus" elemei nem annyira fontosak, mint a "hibák" egy olyan erőforrástípus esetében, amely az Azure-alkalmazás központi eleme. Ügyeljen arra, hogy ez a tény a riasztást kiváltó események meghatározásakor vegye figyelembe.  
 
-## <a name="categories"></a>Kategóriákat
+## <a name="categories"></a>Kategóriák
 A tevékenység naplójának minden eseménye egy adott kategóriával rendelkezik, amelyet az alábbi táblázat ismertet. Az egyes kategóriákra és azok sémájára vonatkozó további részletekért tekintse meg az alábbi szakaszt, amikor a portál, a PowerShell, a CLI és a REST API a tevékenység naplóját éri el. A séma különbözik [a tevékenység naplójának tárolóba vagy Event Hubsba való továbbításakor](./resource-logs.md#send-to-azure-event-hubs). Az [erőforrás-naplók sémájának](./resource-logs-schema.md) tulajdonságainak leképezése a cikk utolsó szakaszában található.
 
 | Kategória | Leírás |
@@ -589,7 +589,7 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 | eventDataId |A biztonsági esemény egyedi azonosítója. |
 | eventName |A biztonsági esemény rövid neve. |
 | category | Mindig "biztonság" |
-| ID |A biztonsági esemény egyedi erőforrás-azonosítója. |
+| ID (Azonosító) |A biztonsági esemény egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyike: "kritikus", "hiba", "figyelmeztetés" vagy "tájékoztató" |
 | resourceGroupName |Az erőforrás erőforráscsoport neve. |
 | resourceProviderName |A Azure Security Center erőforrás-szolgáltatójának neve. Mindig "Microsoft. Security". |
@@ -669,7 +669,7 @@ Ez a kategória a szolgáltatásokhoz létrehozott új javaslatok rekordját tar
 | leírás |A javaslati esemény statikus szöveges leírása |
 | eventDataId | A javaslati esemény egyedi azonosítója. |
 | category | Mindig "javaslat" |
-| ID |A javaslati esemény egyedi erőforrás-azonosítója. |
+| ID (Azonosító) |A javaslati esemény egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyike: "kritikus", "hiba", "figyelmeztetés" vagy "tájékoztató" |
 | operationName |A művelet neve.  Mindig "Microsoft. Advisor/generateRecommendations/Action"|
 | resourceGroupName |Az erőforrás erőforráscsoport neve. |
@@ -784,7 +784,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 | eventName | Vagy "BeginRequest" vagy "EndRequest". A "BeginRequest" a késleltetett auditIfNotExists és deployIfNotExists-értékelések, valamint a deployIfNotExists-effektusok elindítására szolgál. Minden más művelet "EndRequest" értéket ad vissza. |
 | category | Deklarálja a tevékenység naplójának eseményét a "szabályzat" kifejezésnek megfelelően. |
 | eventTimestamp | Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
-| ID | Az esemény egyedi azonosítója az adott erőforráson. |
+| ID (Azonosító) | Az esemény egyedi azonosítója az adott erőforráson. |
 | szint | Az esemény szintje. A naplózás a "figyelmeztetés" kifejezést használja, és a megtagadás a "hiba" kifejezést használja. Egy auditIfNotExists vagy deployIfNotExists hiba a súlyosságtól függően "figyelmeztetés" vagy "hiba" hozható elő. Minden más házirend-esemény a "tájékoztató" kifejezést használja. |
 | operationId | Az egyetlen műveletnek megfelelő események között megosztva lévő GUID. |
 | operationName | A művelet neve, és közvetlenül összefügg a házirend hatásával. |
@@ -893,6 +893,6 @@ A következő példa egy olyan eseményt mutat be, amely ezt a sémát használj
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [További információ a tevékenység naplóról](platform-logs-overview.md)
 * [Diagnosztikai beállítás létrehozása a műveletnapló Log Analytics munkaterületre, Azure Storage-ba vagy Event hubokba való küldéséhez](diagnostic-settings.md)

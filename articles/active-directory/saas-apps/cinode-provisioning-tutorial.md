@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: dd052bf7a95cbadf2a107f7e49915a9899b084ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4b93bc8f44e7bec490466fc42be829f942ae07
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614087"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940922"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Cinode konfigurálása
 
@@ -55,7 +55,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 3. Navigáljon a **tokenekhez** , és hozzon létre egy új jogkivonatot.
 
-4. Adjon meg egy egyedi nevet, válassza ki a https://api.cinode.app/scim/v2 célközönség lehetőséget, és állítsa be a megfelelő lejárati dátumot.
+4. Adjon meg egy egyedi nevet, **válassza https://api.cinode.app/scim/v2 a** célközönség lehetőséget, majd állítsa be a lejárati dátum megfelelő értéket.
 
 5. Kattintson a **Jogkivonat létrehozása**gombra.
 

@@ -9,10 +9,10 @@ ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279550"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Az Azure Data Factory hibaelhárítása
@@ -635,7 +635,7 @@ A következő táblázat a Azure Batchra vonatkozik.
     1. Csatlakozzon az aktív főcsomóponthoz, mert a Ambari-kiszolgáló az SSH használatával az aktív főcsomóponton található. 
     1. Indítsa újra az aktív fő csomópontot.
 
-       További információkért tekintse meg az Azure HDInsight hibaelhárítási dokumentációját. Például:
+       További információkért tekintse meg az Azure HDInsight hibaelhárítási dokumentációját. Példa:
 
        * [502-es hiba az Ambari felhasználói felületén](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
        * [RpcTimeoutException Apache Spark takarékossági kiszolgálóhoz](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception)

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855841"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969840"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>A klasszikusból Azure Resource Manager-alapú környezetbe való migrálásra vonatkozó gyakori kérdések
 
@@ -26,7 +26,7 @@ A "klasszikus" szó a IaaS VM-ben (klasszikus) az Azure Service Manager (ASM) á
 
 ## <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
-A [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) az Azure legújabb ellenőrző gépe, amely a virtuális gépek létrehozásához, kezeléséhez, törléséhez és más vezérlési sík műveletek végrehajtásához felelős. 
+A [Azure Resource Manager](../azure-resource-manager/management/overview.md) az Azure legújabb ellenőrző gépe, amely a virtuális gépek létrehozásához, kezeléséhez, törléséhez és más vezérlési sík műveletek végrehajtásához felelős. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Mennyi idő szükséges az áttelepítéshez?
 
@@ -42,7 +42,7 @@ Azok az ügyfelek, akik aktívak vagy leállítottak, de a IaaS virtuális gépe
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Miért kapok hibaüzenetet, amely a "NewClassicVMCreationNotAllowedForSubscription"?
 
-A nyugdíjazási folyamat részeként a IaaS VM (klasszikus) már nem érhető el az új ügyfelek számára. Új ügyfelekként azonosította Önt, ezért a művelet nem volt engedélyezve. Erősen ajánlott az [Azure Virtual Machines használata az ARM használatával](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Ha nem tudja használni az Azure virtuális gépeket az ARM használatával, forduljon az ügyfélszolgálathoz, és adja hozzá az előfizetését az engedélyezési listához.
+A nyugdíjazási folyamat részeként a IaaS VM (klasszikus) már nem érhető el az új ügyfelek számára. Új ügyfelekként azonosította Önt, ezért a művelet nem volt engedélyezve. Erősen ajánlott az [Azure Virtual Machines használata az ARM használatával](./windows/quick-create-powershell.md). Ha nem tudja használni az Azure virtuális gépeket az ARM használatával, forduljon az ügyfélszolgálathoz, és adja hozzá az előfizetését az engedélyezési listához.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
 
@@ -105,7 +105,7 @@ Javasoljuk, hogy szakítsa meg a migrálási folyamatot, és adjon fel egy támo
 
 ## <a name="how-do-i-report-an-issue"></a>Hogyan jelenthetem be a hibákat? 
 
-Tegye fel kérdéseit, és kérdezze meg a [Microsoft Q&a virtuális](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)gépekre való áttelepítéssel kapcsolatos kérdéseit a fórumbejegyzést classiciaasmigration kulcsszóval. Javasoljuk, hogy minden kérdését ezen a fórumon tegye fel. Ha rendelkezik támogatási szerződéssel, támogatási jegyet is feladhat.
+Tegye fel kérdéseit, és kérdezze meg a [Microsoft Q&a virtuális](/answers/topics/azure-virtual-machines.html)gépekre való áttelepítéssel kapcsolatos kérdéseit a fórumbejegyzést classiciaasmigration kulcsszóval. Javasoljuk, hogy minden kérdését ezen a fórumon tegye fel. Ha rendelkezik támogatási szerződéssel, támogatási jegyet is feladhat.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Mit tehetek, ha nem tetszenek az erőforrások a platform által a migrálás során választott nevei? 
 
@@ -120,7 +120,7 @@ Az előfizetések közötti engedélyezési hivatkozásokat használó ExpressRo
 Ez az üzenet akkor jelenik meg, ha a virtuális gép nem rendelkezik kimenő internetkapcsolattal. A virtuálisgép-ügynök a kimenő kapcsolaton keresztül éri el az Azure-tárfiókot az ügynök állapotának öt percenkénti frissítéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Linux esetén:
 

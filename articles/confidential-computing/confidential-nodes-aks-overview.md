@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000980"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940769"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Bizalmas számítástechnikai csomópontok az Azure Kubernetes szolgáltatásban (nyilvános előzetes verzió)
 
@@ -40,7 +40,7 @@ Az Azure Kubernetes Service (ak) támogatja a [DCsv2 bizalmas számítástechnik
 
 #### <a name="sgx-device-plugin"></a>SGX ENKLÁVÉHOZ-eszköz beépülő modul <a id="sgx-plugin"></a>
 
-Az SGX ENKLÁVÉHOZ-eszköz beépülő modulja implementálja az Kubernetes-eszköz beépülő modulját az EPC memória számára. Ez a beépülő modul a Kubernetes-ben egy további erőforrástípust tesz elérhetővé az EPC memóriában. A felhasználók az erőforrásra vonatkozó korlátozásokat ugyanúgy meghatározhatják, mint a többi erőforrást. Az ütemezési függvényen kívül az eszköz beépülő modul segítséget nyújt a SGX ENKLÁVÉHOZ-eszközillesztők számára a bizalmas számítási feladatokhoz tartozó tárolók kiosztásához. Az EPC memória alapú üzembe helyezési ( `kubernetes.azure.com/sgx_epc_mem_in_MiB` ) minta megvalósítását [itt](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml) találja
+Az SGX ENKLÁVÉHOZ-eszköz beépülő modulja implementálja az Kubernetes-eszköz beépülő modulját az EPC memória számára. Ez a beépülő modul a Kubernetes-ben egy további erőforrástípust tesz elérhetővé az EPC memóriában. A felhasználók az erőforrásra vonatkozó korlátozásokat ugyanúgy meghatározhatják, mint a többi erőforrást. Az ütemezési függvényen kívül az eszköz beépülő modul segítséget nyújt a SGX ENKLÁVÉHOZ-eszközillesztők számára a bizalmas számítási feladatokhoz tartozó tárolók kiosztásához. Az EPC memória alapú üzembe helyezési ( `kubernetes.azure.com/sgx_epc_mem_in_MiB` ) minta megvalósítását [itt](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml) találja
 
 #### <a name="sgx-quote-helper-service"></a>SGX ENKLÁVÉHOZ-ajánlat segítő szolgáltatása <a id="sgx-quote"></a>
 

@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826624"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
@@ -100,7 +100,7 @@ Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információ: [a végpontok és a végpontok közötti TLS áttekintése Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Standard_v2 és standard Application Gateway összekeverése ugyanazon az alhálózaton|Nem támogatott|
-|Felhasználó által megadott útvonal (UDR) Application Gateway alhálózaton|Támogatott (konkrét forgatókönyvek). Előzetes verzióban.<br> További információ a támogatott forgatókönyvekről: [Application Gateway konfiguráció áttekintése](configuration-infrastructure.md#supported-user-defined-routes).|
+|User-Defined útvonal (UDR) Application Gateway alhálózaton|Támogatott (konkrét forgatókönyvek). Előzetes verzióban.<br> További információ a támogatott forgatókönyvekről: [Application Gateway konfiguráció áttekintése](configuration-infrastructure.md#supported-user-defined-routes).|
 |NSG a bejövő porttartomány| -65200 – 65535 Standard_v2 SKU-hoz<br>-65503 – 65534 a standard SKU-hoz.<br>További információt a [Gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)című témakörben talál.|
 |Teljesítménynaplók az Azure diagnosticsban|Nem támogatott.<br>Az Azure-metrikákat kell használni.|
 |Számlázás|Számlázás ütemezve, hogy 2019. július 1-jén induljon el.|

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612948"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Az aggregált névtér tervezése
@@ -63,7 +63,7 @@ Alternatív megoldás lehet egy olyan virtuális elérési út létrehozása `/t
 
 Az Azure HPC gyorsítótár- **névtér** beállításai lapon látható az ügyféloldali fájlrendszer, amely lehetővé teszi az elérési utak hozzáadását vagy szerkesztését. A részletekért olvassa el [az összesített névtér beállítása](add-namespace-paths.md) című leírást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután eldöntötte, hogyan állíthatja be a virtuális fájlrendszert, végezze el a következő lépéseket a létrehozásához:
 
