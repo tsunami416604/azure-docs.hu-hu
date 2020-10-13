@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280300"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Tárolók helyreállítható törlésének engedélyezése és kezelése (előzetes verzió)
@@ -86,7 +86,7 @@ A Azure Portalban található, lágyan törölt tárolók megtekintéséhez köv
 1. Navigáljon a Azure Portal Storage-fiókjához, és tekintse meg a tárolók listáját.
 1. Állítsa be a törölt tárolók megjelenítése lehetőséget a listában szereplő törölt tárolók belefoglalásához.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Képernyőfelvétel: a Azure Portalban található, lágyan törölt tárolók megjelenítése":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="A tárolók törlésének engedélyezését bemutató képernyőkép Azure Portal":::
 
 ## <a name="restore-a-soft-deleted-container"></a>Törölt tároló visszaállítása
 
@@ -95,7 +95,7 @@ A megőrzési időtartamon belül visszaállíthatja a nem törölt tárolót é
 1. Navigáljon a Azure Portal Storage-fiókjához, és tekintse meg a tárolók listáját.
 1. Jelenítse meg a visszaállítani kívánt tároló helyi menüjét, és válassza a menü **Törlés törlése** elemét.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Képernyőfelvétel: a Azure Portal helyreállítható tárolójának visszaállítása":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="A tárolók törlésének engedélyezését bemutató képernyőkép Azure Portal":::
 
 ## <a name="next-steps"></a>Következő lépések
 

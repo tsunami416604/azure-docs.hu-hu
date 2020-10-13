@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265713"
 ---
 # <a name="identity-providers-for-external-identities"></a>Külső identitások identitás-szolgáltatói
@@ -30,7 +30,7 @@ Ugyanakkor engedélyezheti a felhasználók számára, hogy különböző identi
 
 - **Facebook**: egy alkalmazás létrehozásakor konfigurálhatja az önkiszolgáló regisztrációt, és engedélyezheti a Facebook-összevonás használatát, hogy a felhasználók saját Facebook-fiókjaik használatával regisztrálhatják az alkalmazást. A Facebook csak önkiszolgáló bejelentkezési felhasználói folyamatokhoz használható, és nem érhető el bejelentkezési lehetőségként, ha a felhasználók meghívókat váltanak ki.
 
-- **Közvetlen összevonás**: az SAML-vagy ws-fed protokollokat támogató külső identitás-szolgáltatóval is beállíthat közvetlen összevonást. A közvetlen összevonás lehetővé teszi, hogy a külső felhasználók meghívókat váltsanak be az alkalmazásaiba a meglévő közösségi vagy vállalati fiókkal való bejelentkezéssel. 
+- **Közvetlen összevonás**: az SAML-vagy WS-Fed-protokollt támogató külső identitás-szolgáltatóval is beállíthat közvetlen összevonást. A közvetlen összevonás lehetővé teszi, hogy a külső felhasználók meghívókat váltsanak be az alkalmazásaiba a meglévő közösségi vagy vállalati fiókkal való bejelentkezéssel. 
    > [!NOTE]
    > A közvetlen összevonási azonosítók nem használhatók önkiszolgáló bejelentkezési felhasználói folyamatokban.
 
@@ -59,4 +59,4 @@ Az alábbi cikkekből megtudhatja, hogyan adhat identitás-szolgáltatókat az a
 
 - A [Google hozzáadása](google-federation.md) a közösségi identitású szolgáltatók listájához
 - [Facebook hozzáadása](facebook-federation.md) a közösségi identitású szolgáltatók listájához
-- [Közvetlen összevonás beállítása](direct-federation.md) bármely olyan szervezettel, amelynek az identitás-szolgáltatója támogatja az SAML 2,0 vagy a WS-fed protokollt. Vegye figyelembe, hogy a közvetlen összevonás nem választható az önkiszolgáló bejelentkezési felhasználói folyamatok számára.
+- [Közvetlen összevonás beállítása](direct-federation.md) bármely olyan szervezettel, amelynek az identitás-szolgáltatója támogatja az SAML 2,0 vagy WS-Fed protokollt. Vegye figyelembe, hogy a közvetlen összevonás nem választható az önkiszolgáló bejelentkezési felhasználói folyamatok számára.

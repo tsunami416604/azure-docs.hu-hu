@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270049"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Oktatóanyag: biztonsági fejlécek hozzáadása a Rules Engine szolgáltatással
@@ -25,7 +25,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg a biztonsági fejlécek 
 
 Az alábbi példa bemutatja, hogyan adhat hozzá egy Content-Security-Policy fejlécet az összes olyan bejövő kérelemhez, amely megfelel a szabályok motor-konfigurációjának útvonalán megadott elérési útnak. Itt csak a megbízható webhelyről származó szkripteket engedélyezzük **https://apiphany.portal.azure-api.net** az alkalmazáson való futtatáshoz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - Content-Security-Policy beállítása a szabályok motorján belül.
 

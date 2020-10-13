@@ -14,10 +14,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272157"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
@@ -141,7 +141,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
 * [Az Azure Virtual Machines áttekintése](../../../virtual-machines/windows/overview.md)
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Hálózat
@@ -153,7 +153,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 * [SQL Server dokumentáció](https://docs.microsoft.com/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure Virtual Machines SQL Serverával:
 

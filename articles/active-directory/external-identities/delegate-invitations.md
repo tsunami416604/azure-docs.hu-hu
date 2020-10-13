@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278787"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégmeghívási jogosultság kezelése
@@ -61,7 +61,7 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
 
    - A **vendégek meghívhatják**: ha lehetővé szeretné tenni a vendégek számára más vendégek meghívását, állítsa **Igen**értékre a szabályzatot.
 
-   - **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)**: az egyszeri PIN-kód szolgáltatással kapcsolatos további információkért lásd az [e-mailek egyszeri jelszavas hitelesítését (előzetes verzió)](one-time-passcode.md).
+   - **E-mail One-Time PIN-kód engedélyezése a vendégek számára (előzetes verzió)**: az egyszeri PIN-kód szolgáltatással kapcsolatos további információkért tekintse meg az [e-mailek egyszeri jelszavas hitelesítése (előzetes verzió)](one-time-passcode.md)című témakört.
 
    - **Vendég önkiszolgáló regisztráció engedélyezése felhasználói folyamatokon keresztül (előzetes verzió)**: a beállítással kapcsolatos további információkért lásd: önkiszolgáló [bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)](self-service-sign-up-user-flow.md).
 
