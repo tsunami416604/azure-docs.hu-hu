@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az HRworks egyszeri bejelentkezéssel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az HRworks Single Sign-Ontal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és HRworks egyszeri bejelentkezés között.
 services: active-directory
 author: jeevansd
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91820498"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az HRworks egyszeri bejelentkezéssel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az HRworks egyetlen Sign-On
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a HRworks-alapú egyszeri bejelentkezést Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a HRworks-alapú egyszeri bejelentkezést, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az HRworks egyetlen Sign-Ont Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja az HRworks egyetlen Sign-Onét, a következőket teheti:
 
 * A HRworks egyszeri bejelentkezéshez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy HRworks egyszeri bejelentkezést az Azure AD-fiókjával.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek, hogy egyetlen Sign-On HRworks az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -33,17 +33,17 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* HRworks egyszeri bejelentkezéses egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* HRworks egyszeri Sign-On egyszeri bejelentkezéses (SSO) előfizetés engedélyezett.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az HRworks egyszeri bejelentkezés támogatja az **SP** által kezdeményezett SSO-t
+* Az HRworks Single Sign-On támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>HRworks-alapú egyszeri bejelentkezés hozzáadása a gyűjteményből
+## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>HRworks egyetlen Sign-On hozzáadása a katalógusból
 
-Az HRworks egyszeri bejelentkezés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a HRworks egyszeri bejelentkezést a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Ahhoz, hogy az HRworks egyetlen Sign-On integrálását az Azure AD-be konfigurálja, hozzá kell adnia egy HRworks-Sign-On a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
@@ -52,17 +52,17 @@ Az HRworks egyszeri bejelentkezés Azure AD-be való integrálásának konfigur�
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **HRworks egyszeri bejelentkezés** elemet a keresőmezőbe.
 1. Válassza az **HRworks egyszeri bejelentkezés** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-hrworks-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az HRworks egyszeri bejelentkezéshez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-hrworks-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése egyetlen Sign-On HRworks
 
-Konfigurálja és tesztelje az Azure AD SSO-t a HRworks egyszeri bejelentkezéssel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az egyszeri bejelentkezés HRworks.
+Az Azure AD SSO konfigurálása és tesztelése egyetlen Sign-On HRworks egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az egyszeri bejelentkezés HRworks.
 
 Az Azure AD SSO HRworks egyszeri bejelentkezéssel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[HRworks egyszeri bejelentkezésének konfigurálása](#configure-hrworks-single-sign-on-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[HRworks-alapú egyszeri bejelentkezéses tesztelési felhasználó létrehozása](#create-hrworks-single-sign-on-test-user)** – ha a HRworks-alapú egyszeri bejelentkezéshez tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó egyszeri bejelentkezési jogosultsággal rendelkezik.
+1. **[HRworks egyszeri Sign-On egyszeri bejelentkezés konfigurálása](#configure-hrworks-single-sign-on-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre egy HRworks-Sign-On tesztelési felhasználóval](#create-hrworks-single-sign-on-test-user)** , hogy a B. Simon partnere legyen a HRworks egyetlen Sign-On, amely a felhasználó Azure ad-képviseletéhez van csatolva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot az [HRworks egyszeri bejelentkezést támogató](mailto:nadja.sommerfeld@hrworks.de) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot az [HRworks egyetlen Sign-On ügyfél-támogatási csapatával](mailto:nadja.sommerfeld@hrworks.de) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -120,17 +120,17 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-hrworks-single-sign-on-sso"></a>HRworks egyszeri bejelentkezéses SSO konfigurálása
+## <a name="configure-hrworks-single-sign-on-sso"></a>HRworks egyszeri Sign-On egyszeri bejelentkezés konfigurálása
 
 1. Ha az HRworks egyszeri bejelentkezésen belül szeretné automatizálni a konfigurációt, telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **HRworks egyszeri bejelentkezés beállítása** lehetőségre a HRworks egyszeri bejelentkezés alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat az HRworks egyszeri bejelentkezésre való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-4-es lépést.
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **HRworks egyszeri bejelentkezés beállítása** lehetőségre a HRworks Single Sign-On alkalmazásra. Itt adja meg a rendszergazdai hitelesítő adatokat az HRworks egyszeri bejelentkezésre való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-4-es lépést.
 
     ![Telepítési konfiguráció](common/setup-sso.png)
 
-1. Ha manuálisan szeretné beállítani az HRworks egyszeri bejelentkezést, nyisson meg egy új böngészőablakot, és jelentkezzen be a HRworks egyszeri bejelentkezési céges webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+1. Ha manuálisan szeretné beállítani az HRworks-Sign-On, nyisson meg egy új böngészőablakot, és jelentkezzen be a HRworks egyetlen Sign-On vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
 1. Kattintson a **rendszergazda**  >  **alapjai**  >  **biztonsági**  >  **egyszeri bejelentkezés** lehetőségre a menüsáv bal oldalán, és hajtsa végre a következő lépéseket:
 
@@ -146,13 +146,13 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     e. Kattintson a **Mentés** gombra.
 
-### <a name="create-hrworks-single-sign-on-test-user"></a>HRworks egyszeri bejelentkezési teszt felhasználó létrehozása
+### <a name="create-hrworks-single-sign-on-test-user"></a>HRworks egyszeri Sign-On tesztelési felhasználó létrehozása
 
 Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be az HRworks egyszeri bejelentkezésbe, az HRworks egyszeri bejelentkezéssel kell kiépíteni őket. HRworks egyszeri bejelentkezés esetén a kiépítés manuális feladat.
 
 **Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a HRworks-alapú egyszeri bejelentkezésre rendszergazdaként.
+1. Jelentkezzen be az HRworks egyetlen Sign-On rendszergazdaként.
 
 1. A menüsáv bal oldalán kattintson a **rendszergazda**  >  **személyek**  >  **személyre**  >  **új személy** elemre.
 
@@ -170,7 +170,7 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be az HRworks egysze
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a HRworks egyszeri bejelentkezés csempére kattint, automatikusan be kell jelentkeznie a HRworks egyszeri bejelentkezésre, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a HRworks Single Sign-On csempére kattint, automatikusan be kell jelentkeznie a HRworks egyetlen Sign-On, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -180,4 +180,4 @@ Ha a hozzáférési panelen a HRworks egyszeri bejelentkezés csempére kattint,
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [HRworks egyszeri bejelentkezés kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Az HRworks egyetlen Sign-On kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

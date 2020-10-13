@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821209"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
@@ -132,7 +132,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>Hibakeresés
 
-A Debug-AzStorageAccountAuth parancsmag futtatásával alapszintű ellenőrzéseket hajthat végre az AD-konfigurációban a bejelentkezett AD-felhasználóval. Az AzFilesHybrid v0.1.2+ verziója támogatja ezt a parancsmagot. Az ebben a parancsmagban végrehajtott ellenőrzésekkel kapcsolatos további információkért tekintse meg az [ad hitelesítő adatokkal nem rendelkező Azure Files csatlakoztatása](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) a Windows hibaelhárítási útmutatójában című témakört.
+A Debug-AzStorageAccountAuth parancsmag futtatásával alapszintű ellenőrzéseket végezhet az AD konfigurációjában a bejelentkezett AD-felhasználóval. Az AzFilesHybrid v0.1.2+ verziója támogatja ezt a parancsmagot. Az ebben a parancsmagban végrehajtott ellenőrzésekkel kapcsolatos további információkért tekintse meg az [ad hitelesítő adatokkal nem rendelkező Azure Files csatlakoztatása](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) a Windows hibaelhárítási útmutatójában című témakört.
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose

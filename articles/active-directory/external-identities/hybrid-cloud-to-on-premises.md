@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819379"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
@@ -64,7 +64,7 @@ A következő ábra áttekintést nyújt arról, hogyan működik együtt az Azu
 
 ### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Például:
+A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Példa:
 
 - Beállíthatja a többtényezős hitelesítési (MFA) házirendeket a vendég felhasználó számára, hogy az MFA-t használja az alkalmazásproxy hitelesítése során. További információ: [feltételes hozzáférés vállalatközi együttműködéssel rendelkező felhasználók](conditional-access.md)számára.
 - A felhőalapú B2B-felhasználó által végrehajtott szponzorálások, hozzáférési felülvizsgálatok, fiókok ellenőrzése stb. a helyszíni felhasználókra is érvényesek. Ha például a Felhőbeli felhasználót az életciklus-kezelési szabályzatok segítségével törli, a helyszíni felhasználót is törli a helyi felhasználó, vagy a Azure AD Connect Sync használatával. További információ: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).

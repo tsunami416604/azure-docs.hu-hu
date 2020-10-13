@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 46d5e1cf773a24b032874ee54021c780e1f361af
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814571"
 ---
 # <a name="run-a-disaster-recovery-drill-from-azure-vmware-solution-to-azure"></a>Vész-helyreállítási részletezés futtatása Azure VMware-megoldásból az Azure-ba
@@ -85,7 +85,7 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 
 Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH használatával szeretné összekapcsolni, [készüljön fel a csatlakozásra](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Ha a feladatátvételt követően bármilyen csatlakozási probléma merül fel, kövesse a [hibaelhárítási](site-recovery-failover-to-azure-troubleshoot.md) útmutatót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Feladatátvétel futtatása](avs-tutorial-failover.md)

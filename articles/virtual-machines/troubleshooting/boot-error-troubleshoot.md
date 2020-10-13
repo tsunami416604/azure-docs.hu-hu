@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: c56ee4b9e541aa4b374acbb59cf64da34046a06c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509069"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure Virtual Machines rendszerindítási hibák elhárítása
@@ -33,7 +33,7 @@ Ez a cikk azokat a gyakori rendszerindítási hibákat sorolja fel, amelyeket a 
 * [EGY KULCSFONTOSSÁGÚ SZOLGÁLTATÁS MEGHIÚSULT” hibával a kék képernyőn](troubleshoot-critical-service-failed-boot-error.md)
 * [Újraindítási hurokkal kapcsolatos probléma](troubleshoot-reboot-loop.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rendszerindítási diagnosztika](boot-diagnostics.md)
 - [VM soros konzol](./serial-console-windows.md)

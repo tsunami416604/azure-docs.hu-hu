@@ -10,10 +10,10 @@ ms.date: 06/05/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 481f1353e16fecd0e413152db89a4ae54824a0f8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019283"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
@@ -95,7 +95,7 @@ IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
             .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

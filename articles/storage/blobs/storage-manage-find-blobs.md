@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
 ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817534"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Azure Blob-adatkezelés és-keresés a blob-indextel (előzetes verzió)
@@ -205,7 +205,7 @@ Az alábbi módszerek egyikével engedélyezheti a blob-indexhez való hozzáfé
 
 A blob index címkéi a blob-adatforrások. Előfordulhat, hogy a Blobok olvasásához vagy írásához szükséges engedélyekkel rendelkező felhasználó vagy SAS-token nem fér hozzá a blob-index címkéhez.
 
-### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 Az [Azure ad-identitást](../common/storage-auth-aad.md) használó hívók a következő engedélyeket kaphatják meg a blob index-címkéken való működéshez.
 
 |   BLOB-műveletek  |  Azure RBAC művelet   |

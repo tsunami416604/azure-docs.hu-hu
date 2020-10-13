@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
 ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819324"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Az Azure Active Directoryban található alkalmazásokba történő SAML-alapú egyszeri bejelentkezés hibaelhárítása
@@ -77,7 +77,7 @@ Ha a bejelentkezési hiba nem tartalmaz megoldást, javasoljuk, hogy a visszajel
 1. Lépjen vissza az Azure AD-be, és keresse meg az **egyszeri bejelentkezés tesztelési** paneljét.
 1. Illessze be a hibaüzenetet a fenti szövegmezőbe a **megoldás beolvasása útmutatással**.
 1. A probléma megoldásához szükséges lépések megjelenítéséhez kattintson a **megoldási útmutató beolvasása** elemre. Az útmutatáshoz szükség lehet az SAML-kérelem vagy az SAML-válasz információinak megkövetelésére. Ha nem a saját alkalmazások biztonságos bejelentkezési bővítményét használja, szükség lehet egy eszközre, például a [hegedűsre](https://www.telerik.com/fiddler) az SAML-kérelem és válasz beolvasásához.
-1. Ellenőrizze, hogy az SAML-kérelem célja megfelel-e az Azure AD-től kapott SAML egyszeri bejelentkezési szolgáltatás URL-címének.
+1. Ellenőrizze, hogy az SAML-kérelemben szereplő cél megfelel-e az Azure AD-től kapott SAML-Sign-On szolgáltatás URL-címének.
 1. Ellenőrizze, hogy az SAML-kérelemben szereplő kiállító megegyezik-e az Azure AD-alkalmazáshoz konfigurált azonosítóval. Az Azure AD a kiállító használatával keres egy alkalmazást a címtárban.
 1. Ellenőrizze, hogy az alkalmazás AssertionConsumerServiceURL-e az SAML-tokent az Azure AD-ból. Ezt az értéket beállíthatja az Azure AD-ben, de nem kötelező, ha az SAML-kérelem része.
 

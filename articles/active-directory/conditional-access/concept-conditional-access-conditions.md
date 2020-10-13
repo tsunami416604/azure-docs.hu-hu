@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818351"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
@@ -132,14 +132,14 @@ A **Windows 10-es Creators Update (1703-es verzió)** vagy újabb verziók Chrom
 
 A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza létre a következő beállításkulcsot:
 
-- Elérési út HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- Elérési út HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
 - 1. név
 - Típus REG_SZ (karakterlánc)
 - Adatppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS \: //clients2.Google.com/Service/Update2/CRX
 
 A **Windows 8,1 és 7 rendszerhez**készült Chrome-támogatáshoz hozza létre a következő beállításkulcsot:
 
-- Elérési út HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- Elérési út HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
 - 1. név
 - Típus REG_SZ (karakterlánc)
 - {"Pattern": " https://device.login.microsoftonline.com ", "filter": {"kiállító": {"CN": "MS-Organization-Access"}}}

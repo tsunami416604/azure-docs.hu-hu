@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658198"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vész-helyreállítási Azure Logic Apps
@@ -100,9 +100,9 @@ Az adatátjáró-erőforrás egy helyhez vagy egy Azure-régióhoz van társítv
 
 Beállíthatja az elsődleges és a másodlagos helyet, hogy a logikai alkalmazás példányai ezekben a helyekben le tudják játszani ezeket a szerepköröket:
 
-| Elsődleges – másodlagos szerepkör | Description |
+| Elsődleges – másodlagos szerepkör | Leírás |
 |------------------------|-------------|
-| *Aktív-aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
+| *Aktív – aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
 | *Aktív-passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
 | Kombinációja | Egyes logikai alkalmazások aktív-aktív szerepkört játszanak, míg más logikai alkalmazások aktív-passzív szerepet játszanak. |
 |||

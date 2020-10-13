@@ -14,10 +14,10 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819895"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
@@ -36,7 +36,7 @@ A Microsoft Cloud használata esetén a [lehető legjobb élményt](https://www.
  
 Akár Londonból Tokióba, akár Washington D.C.-ből Los Angelesbe, a hálózati teljesítmény számszerűsítve van, és hatással van az olyan dolgokra, mint a késés, a jitter, a csomagok elvesztése és az átviteli sebesség.  A Microsoft a közvetlen csatlakozásokat előnyben részesítette a továbbítási hivatkozások helyett, így a forgalom szimmetrikusan tartja a forgalmat, és segít a komló, a felek és az elérési utak lehető legrövidebb és egyszerű megtartásában. 
 
-Ha például egy londoni felhasználó megpróbál hozzáférni egy szolgáltatáshoz Tokióban, akkor az internetes forgalom bekerül Londonban, a Microsoft WAN-on keresztül Franciaországon keresztül, a transz-arábiai útvonalakat Európa és India között, majd pedig Japánba, ahol a szolgáltatást üzemeltetik. A válasz forgalma szimmetrikus. Ezt úgy is hívják, mint a " [hideg burgonya](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) " típusú útválasztás, ami azt jelenti, hogy a forgalom a lehető leghosszabb ideig marad a Microsoft hálózaton.  
+Ha például egy londoni felhasználó megpróbál hozzáférni egy szolgáltatáshoz Tokióban, akkor az internetes forgalom bekerül Londonban, a Microsoft WAN-on keresztül Franciaországon keresztül, az Európa és India közötti Trans-Arabia útvonalon, majd a Japánban, ahol a szolgáltatás üzemelteti. A válasz forgalma szimmetrikus. Ezt úgy is hívják, mint a " [hideg burgonya](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) " típusú útválasztás, ami azt jelenti, hogy a forgalom a lehető leghosszabb ideig marad a Microsoft hálózaton.  
   
 Igen, ez minden forgalmat jelent a Microsoft szolgáltatásainak használatakor? Igen, az adatközpontok közötti, Microsoft Azureon belüli vagy a Microsoft-szolgáltatások, például a Virtual Machines, a Microsoft 365, az XBox, az SQL-adatbázisok, a tárolók és a virtuális hálózatok közötti forgalom a globális hálózaton belül, és soha nem a nyilvános interneten keresztül történik, így biztosítva az optimális teljesítményt és integritást.  
  

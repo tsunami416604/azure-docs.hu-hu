@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662568"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
@@ -181,7 +181,7 @@ A beépített szinkronizálási szabályok a 100-as prioritási értékkel kezd�
 
 A beépített szabályok előtt utasíthatja arra a szinkronizálási motort, amelyhez további szabályokat kíván beszúrni. Ennek a viselkedésnek a beszerzéséhez kövesse az alábbi lépéseket:
 
-1. A szinkronizálási szabályok szerkesztőjében jelölje meg az első kikapcsolt szinkronizálási szabályt (**az ad-User JOIN**utasításból), és válassza az **Exportálás**lehetőséget. Másolja az SR-azonosító értékét.  
+1. Jelölje meg az első, a szinkronizálási szabályok szerkesztőjében található, a**AD-User illesztésből**bekapcsolt szinkronizálási szabályt, és válassza az **Exportálás**lehetőséget. Másolja az SR-azonosító értékét.  
 ![A PowerShell módosítása előtt](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Hozza létre az új szinkronizálási szabályt. A szinkronizálási szabályok szerkesztőjével létrehozhatja. Exportálja a szabályt egy PowerShell-parancsfájlba.
 3. A **PrecedenceBefore**tulajdonságban szúrja be az azonosító értékét a nem beépített szabályból. Állítsa a **sorrendet** **0-ra**. Győződjön meg arról, hogy az azonosító attribútum egyedi, és hogy nem használ GUID azonosítót egy másik szabálytól. Győződjön meg arról is, hogy a **ImmutableTag** tulajdonság nincs beállítva. Ezt a tulajdonságot csak egy beépített szabályhoz kell beállítani.
@@ -264,8 +264,8 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name | *Adjon meg egy nevet* | Például az *ad – User UserType* |
-    | Description | *Adja meg a leírást* |  |
+    | Name (Név) | *Adjon meg egy nevet* | Például az *ad – User UserType* |
+    | Leírás | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
     | Metaverse objektum típusa | **Személy** |  |
@@ -306,8 +306,8 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Name | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
-    | Description | *Adja meg a leírást* ||
+    | Name (Név) | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
+    | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
     | Metaverse objektum típusa | **Személy** ||

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817371"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Oktatóanyag: egyszeri bejelentkezés (SSO) konfigurálása Azure Active Directory és F5 között
@@ -245,7 +245,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Képernyőfelvétel: a készlet tulajdonságai lap.](./media/headerf5-tutorial/configure06.png)
 
-1. Az egyszeri bejelentkezés beállításai képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A kiválasztott egyszeri bejelentkezés típusnál válassza a **http-fejléc-alapú**lehetőséget. Cserélje le a **Session. SAML. Last. Identity** nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a Felhasználónév forrása mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Az SSO-fejlécek területen.
+1. Az egyszeres Sign-On beállítások képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A kiválasztott egyszeri Sign-On típusnál válassza a **http-fejléc-alapú**lehetőséget. Cserélje le a **Session. SAML. Last. Identity** nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a Felhasználónév forrása mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Az SSO-fejlécek területen.
 
     * **HeaderName : MyAuthorization**
 
@@ -258,7 +258,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     >[!NOTE]
     >A fiók neve az F5 delegálási fiók lett létrehozva (az F5 dokumentációjának bejelölése).
 
-    ![A képernyőképen az egyszeri bejelentkezési beállítások lap látható.](./media/headerf5-tutorial/configure07.png) 
+    ![Képernyőfelvétel: az egyetlen Sign-On beállítások oldal.](./media/headerf5-tutorial/configure07.png) 
 
 1. Ebben az útmutatóban kihagyjuk a végponti ellenőrzéseket.  További részletekért tekintse meg az F5 dokumentációját. Válassza a **mentés & tovább**lehetőséget.
 

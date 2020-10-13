@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: Azure Active Directory integráció a help Scout segítségével
@@ -83,7 +83,7 @@ Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához haj
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához haj
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következőként: `https://secure.helpscout.net/members/login/`
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -191,7 +191,7 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 1. Ekkor megjelenik az SAML-beállítások szakasz, és hajtsa végre a következő lépéseket:
 
-    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, ahol a megadott adatokat adja meg.](./media/helpscout-tutorial/settings3.png)
+    ![Képernyőfelvétel: az egyetlen Sign-On lap, amelyen a megadott adatokat adja meg.](./media/helpscout-tutorial/settings3.png)
 
     a. Másolja a **visszaküldési URL-cím (a fogyasztói szolgáltatás URL-címe)** értéket, és illessze be az értéket a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **Válasz URL-címe** szövegmezőbe.
 
@@ -199,9 +199,9 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 1. Kapcsolja be az **SAML engedélyezése** beállítást, és hajtsa végre a következő lépéseket:
 
-    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, amelyen engedélyezheti az SAML-t, és további információkat adhat hozzá.](./media/helpscout-tutorial/settings4.png)
+    ![Képernyőfelvétel: az egységes Sign-On lapon engedélyezheti az SAML-t, és további információkat adhat hozzá.](./media/helpscout-tutorial/settings4.png)
 
-    a. Az **egyszeri bejelentkezési URL** szövegmezőben illessze be a **bejelentkezési URL-címet**, amelyet az Azure Portalból másolt.
+    a. Az **egyszeres Sign-On URL** szövegmezőben illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
     b. Kattintson a **tanúsítvány feltöltése** gombra a Azure Portalról letöltött **tanúsítvány (Base64)** feltöltéséhez.
 

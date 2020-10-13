@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976263"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
@@ -26,7 +26,7 @@ A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehet�
 >* [PowerShell-cikk](virtual-wan-route-table-nva.md)
 >
 
-## <a name="design"></a><a name="design"></a>Kialakítás
+## <a name="design"></a><a name="design"></a>Tervezés
 
 Ebben az esetben az elnevezési konvenciót fogjuk használni:
 
@@ -99,7 +99,7 @@ A **2. ábrán**két hub van; **Hub1** és **Hub2**.
 
 **2. ábra**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="2. ábra" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Forgatókönyv-munkafolyamat
 
@@ -117,7 +117,7 @@ A virtuális WAN nem támogatja azt a forgatókönyvet, amelyben a virtuális h�
 
 2. Adjon hozzá egy összesített statikus útvonal-bejegyzést az virtuális hálózatok 2, 5, 6 és az 1. hub alapértelmezett útválasztási táblázatához.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Példa":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="1. ábra":::
 
 3. Konfiguráljon egy statikus útvonalat a virtuális hálózatok 5, 6 a VNet 2 virtuális hálózati kapcsolatban. A virtuális hálózati kapcsolatok útválasztási konfigurációjának beállításához lásd: [virtuális központ útválasztása](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -129,7 +129,7 @@ Ez az útválasztási konfiguráció változását eredményezi, ahogy az a **3.
 
 **3. ábra**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="3. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Következő lépések
 

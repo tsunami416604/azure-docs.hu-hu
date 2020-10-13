@@ -8,10 +8,10 @@ author: github-2407
 ms.author: krsh
 ms.date: 08/14/2020
 ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821330"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>Virtuálisgép-rendszerkép tesztelése az Azure Marketplace-en
@@ -1000,13 +1000,13 @@ Végül válassza a jelentés készítése lehetőséget, hogy letöltse a teszt
 > [!Note]
 > Néhány közzétevőnek van olyan forgatókönyve, amelyben a virtuális gépeket zárolni kell, mert olyan szoftverekkel rendelkeznek, mint például a virtuális gépre telepített tűzfalak. Ebben az esetben a kiadók itt tölthetik le a [Certified test Tool eszközt](https://aka.ms/AzureCertificationTestTool) , és megadhatják a jelentést a [Marketplace Publisher támogatási szolgálatában](https://aka.ms/marketplacepublishersupport)
 
-## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Az önteszt API használata a PowerShell használatával
+## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>A Self-Test API használata a PowerShell használatával
 
 ### <a name="on-linux-os"></a>Linux operációs rendszeren
 
 Az API meghívása a PowerShellben:
 
-1. Az API meghívásához használja a meghívás-webkérés parancsot.
+1. A Invoke-WebRequest parancs használatával hívja meg az API-t.
 2. A metódus a post és a Content típus JSON, ahogy az alábbi kódrészletben látható.
 3. A szövegtörzs paramétereit JSON formátumban kell megadni.
 
@@ -1077,7 +1077,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 Az API meghívása a PowerShellben:
 
-1. Az API meghívásához használja a meghívás-webkérés parancsot.
+1. A Invoke-WebRequest parancs használatával hívja meg az API-t.
 2. A metódus a post és a Content típus JSON, ahogy az a következő példában látható, például a minta képernyőn.
 3. Hozza létre a törzs paramétereit JSON formátumban.
 
@@ -1735,7 +1735,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ![Teszt eredménye egy online JSON-megjelenítőben.](media/vm/test-results-json-viewer-2.png)
 
-## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>Az önteszt API használata Linux rendszeren a CURL használatával
+## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>A Self-Test API használata Linux rendszeren a CURL használatával
 
 Az API meghívása a CURLban:
 

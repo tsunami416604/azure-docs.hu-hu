@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278683"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
@@ -140,20 +140,20 @@ Az Azure AD-beli felhőalapú felhasználónak nem lehet forrás-horgonya. Ebben
 
 ## <a name="faq"></a>GYIK
 **Q.** Mi történik, ha az **Apply javítás** végrehajtása sikertelen?  
-**Egy.** Ha a végrehajtás meghiúsul, lehetséges, hogy Azure AD Connect exportálási hibát futtat. Frissítse a portál oldalt, és próbálkozzon újra a következő szinkronizálás után. Az alapértelmezett szinkronizálási ciklus 30 perc. 
+**A.** Ha a végrehajtás meghiúsul, lehetséges, hogy Azure AD Connect exportálási hibát futtat. Frissítse a portál oldalt, és próbálkozzon újra a következő szinkronizálás után. Az alapértelmezett szinkronizálási ciklus 30 perc. 
 
 
 **Q.** Mi a teendő, ha a **meglévő objektum** a törlendő objektum?  
-**Egy.** Ha a **meglévő objektumot** törölni kell, a folyamat nem vonja maga után a **forrás-horgony**változását. Általában a helyszíni Active Directory javíthatja. 
+**A.** Ha a **meglévő objektumot** törölni kell, a folyamat nem vonja maga után a **forrás-horgony**változását. Általában a helyszíni Active Directory javíthatja. 
 
 
 **Q.** Milyen engedélyre van szükség a felhasználónak a javítás alkalmazásához?  
-**Egy.** Az Azure RBAC **globális rendszergazdája**vagy **közreműködője** jogosult a diagnosztikai és hibaelhárítási folyamat elérésére.
+**A.** Az Azure RBAC **globális rendszergazdája**vagy **közreműködője** jogosult a diagnosztikai és hibaelhárítási folyamat elérésére.
 
 
 **Q.** Be kell állítania Azure AD Connect vagy frissítenie kell a Azure AD Connect Health ügynököt ehhez a szolgáltatáshoz?  
-**Egy.** Nem, a diagnosztikai folyamat egy teljes felhőalapú szolgáltatás.
+**A.** Nem, a diagnosztikai folyamat egy teljes felhőalapú szolgáltatás.
 
 
 **Q.** Ha a meglévő objektum nem törölhető, akkor a diagnosztika folyamata ismét aktív lesz?  
-**Egy.** Nem, a javítás nem frissíti az objektum attribútumait a **forrás-horgonytól**eltérő értékkel.
+**A.** Nem, a javítás nem frissíti az objektum attribútumait a **forrás-horgonytól**eltérő értékkel.

@@ -12,10 +12,10 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819275"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
@@ -146,7 +146,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Logikai érték |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
+    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 
 1. A kívánt konfiguráció frissítési beállításainak értéke:
 
@@ -177,7 +177,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
 További tudnivalók:
 
 * [Felhasználói beleegyező beállítások konfigurálása](configure-user-consent.md)
-* [Alkalmazás-engedélyezési házirendek kezelése](manage-app-consent-policies.md)
+* [Alkalmazás-hozzájárulási szabályzatok kezelése](manage-app-consent-policies.md)
 * [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 * [Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
 * [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)

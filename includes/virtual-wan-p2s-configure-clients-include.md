@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9caf63fc90be7bae0461ddc24c94594a32199765
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812704"
 ---
 #### <a name="microsoft-windows"></a>Microsoft Windows
@@ -20,7 +20,7 @@ ms.locfileid: "91812704"
 ##### <a name="openvpn"></a>OpenVPN
 
 1. Töltse le az OpenVPN-ügyfelet a hivatalos webhelyről, majd telepítse.
-1. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal a felhasználó VPN-konfigurációk lapján vagy a PowerShell új AzureRmVpnClientConfiguration teheti meg.
+1. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal felhasználói VPN-konfigurációk lapján végezheti el, vagy New-AzureRmVpnClientConfiguration a PowerShellben.
 1. Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
 1. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. A PEM formátumú tanúsítványokban megnyithatja a. cer fájlt, és átmásolhatja a Base64-kulcsot a tanúsítvány fejlécei között. A lépéseket lásd: [Tanúsítvány exportálása a kódolt nyilvános kulcs lekéréséhez.](../articles/virtual-wan/certificates-point-to-site.md)
 1. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. A lépéseket lásd: [titkos kulcs kibontása.](../articles/virtual-wan/howto-openvpn-clients.md#windows).
