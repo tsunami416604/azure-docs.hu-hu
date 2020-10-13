@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653689"
+ms.locfileid: "91929456"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések
 
@@ -39,7 +39,7 @@ Ha engedélyezve van a többcsatornás SMB, a SMB3-ügyfél több TCP-kapcsolato
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>Mely Windows-verziók támogatják a többcsatornás SMB-t?
 
-A Windows támogatja a többcsatornás SMB használatát, mivel a Windows 2012 lehetővé teszi a legjobb teljesítmény elérését.  A részletekért lásd: [többcsatornás SMB telepítése](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) és [a többcsatornás SMB alapjai](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) . 
+A Windows támogatja a többcsatornás SMB használatát, mivel a Windows 2012 lehetővé teszi a legjobb teljesítmény elérését.  A részletekért lásd: [többcsatornás SMB telepítése](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) és [a többcsatornás SMB alapjai](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0) . 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Támogatja az Azure-beli virtuális gépek az RSS-t?
@@ -132,7 +132,7 @@ Miután a köteteken fut az adatforgalom, a Windows Teljesítményfigyelőben fi
 
 ## <a name="is-accelerated-networking-recommended"></a>A gyorsított hálózatkezelés ajánlott?
 
-A maximális teljesítmény érdekében ajánlott a [gyorsított hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) konfigurálása, ahol lehetséges. Tartsa szem előtt az alábbi szempontokat:  
+A maximális teljesítmény érdekében ajánlott a [gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-powershell.md) konfigurálása, ahol lehetséges. Tartsa szem előtt az alábbi szempontokat:  
 
 * A Azure Portal a szolgáltatást támogató virtuális gépek számára alapértelmezés szerint lehetővé teszi a gyorsított hálózatkezelést.  Más üzembe helyezési módszerek, például a Ansible és a hasonló konfigurációs eszközök azonban nem.  A gyorsított hálózatkezelés engedélyezésének sikertelensége esetén akadály a gép teljesítményét.  
 * Ha a gyorsított hálózatkezelés nincs engedélyezve a virtuális gép hálózati adapterén, mert a példány típusa vagy mérete nem támogatott, akkor továbbra is le lesz tiltva a nagyobb példányok típusainál. Ezekben az esetekben manuális beavatkozásra lesz szüksége.

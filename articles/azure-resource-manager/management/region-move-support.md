@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: dc931b910981578a3257c9131bea93cd836d1def
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 83cd36683a0487f13ab5707e4b1534cc7f20a88a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945163"
+ms.locfileid: "91948527"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Azure-erőforrások régiók közötti áthelyezésének támogatása
 
@@ -1134,11 +1134,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | instancepools | Nem | 
-> | managedinstances | Igen <br/><br/> [További](/azure/azure-sql/database/move-resources-across-regions) információ a felügyelt példányok régiók közötti áthelyezéséről. | 
+> | managedinstances | Igen <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ a felügyelt példányok régiók közötti áthelyezéséről. | 
 > | managedinstances/adatbázisok | Igen | 
 > | kiszolgálók | Igen | 
-> | kiszolgálók/adatbázisok | Igen <br/><br/> [További](/azure/azure-sql/database/move-resources-across-regions) információ az adatbázisok régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL Database-adatbázisok áthelyezéséhez való használatáról.  | 
-> | kiszolgálók/elasticpools | Igen <br/><br/> [További](/azure/azure-sql/database/move-resources-across-regions) információ a rugalmas készletek régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL rugalmas készletek áthelyezéséhez való használatáról.  | 
+> | kiszolgálók/adatbázisok | Igen <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ az adatbázisok régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL Database-adatbázisok áthelyezéséhez való használatáról.  | 
+> | kiszolgálók/elasticpools | Igen <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ a rugalmas készletek régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL rugalmas készletek áthelyezéséhez való használatáról.  | 
 > | virtualclusters | Igen | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine

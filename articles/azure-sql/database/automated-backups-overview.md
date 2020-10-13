@@ -12,10 +12,10 @@ ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
 ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91728658"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
@@ -72,11 +72,11 @@ Az alábbi példákkal kipróbálhatja a biztonsági mentési konfigurációt é
 
 | Művelet | Azure Portal | Azure PowerShell |
 |---|---|---|
-| **Biztonsági másolatok megőrzésének módosítása** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **A biztonsági másolatok hosszú távú megőrzésének módosítása** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL felügyelt példánya – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
-| **Adatbázis visszaállítása egy adott időpontban** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Törölt adatbázis visszaállítása** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Adatbázis visszaállítása az Azure Blob Storage-ból** | SQL Database – N/A <br/>SQL felügyelt példánya – N/A  | SQL Database – N/A <br/>[SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Biztonsági másolatok megőrzésének módosítása** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Felügyelt SQL-példány](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Felügyelt SQL-példány](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **A biztonsági másolatok hosszú távú megőrzésének módosítása** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL felügyelt példánya – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[Felügyelt SQL-példány](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Adatbázis visszaállítása egy adott időpontban** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[Felügyelt SQL-példány](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Felügyelt SQL-példány](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Törölt adatbázis visszaállítása** | [SQL Database](recovery-using-backups.md)<br>[Felügyelt SQL-példány](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt SQL-példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Adatbázis visszaállítása az Azure Blob Storage-ból** | SQL Database – N/A <br/>SQL felügyelt példánya – N/A  | SQL Database – N/A <br/>[Felügyelt SQL-példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Biztonsági mentés ütemezése
 
@@ -237,7 +237,7 @@ A SQL Database PITR biztonsági mentési megőrzésének változásai a portál 
 
 ![PITR-megőrzés, kiszolgáló szintjének módosítása](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
-#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
 
 Az SQL felügyelt példány PITR biztonsági mentési megőrzésének módosításai egyedi adatbázis-szinten hajthatók végre. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázishoz a Azure Portal, lépjen az egyes adatbázisok áttekintés paneljére. Ezután válassza a **biztonsági másolatok megőrzésének konfigurálása** lehetőséget a képernyő tetején:
 
@@ -261,7 +261,7 @@ Az aktív Azure SQL Database-adatbázisok PITR biztonsági mentési megőrzésé
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
 
-#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
 
 Az **egyes aktív** SQL felügyelt példány-adatbázisok PITR biztonsági mentési megőrzésének módosításához használja a következő PowerShell-példát.
 
@@ -382,7 +382,7 @@ A felügyelt példányok biztonsági mentési tárolási redundancia csak a pél
 Azure Portal a biztonsági mentési tár redundancia a **Create SQL Database** panelen konfigurálható. Ez a lehetőség a biztonsági mentési tároló-redundancia szakaszban érhető el. 
 ![A Create SQL Database panel megnyitása](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
 
-#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
 
 A Azure Portal a biztonsági mentési tárhely-redundancia módosításának lehetősége az SQL felügyelt példányának létrehozásakor az **alapok** lapon, a **felügyelt példány konfigurálása** lehetőséggel elérhető, a **számítási és tárolási** panelen érhető el.
 ![A számítási és tárolási konfiguráció megnyitása – panel](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
@@ -419,7 +419,7 @@ A részletekért látogasson el a [set-AzSqlDatabase](https://docs.microsoft.com
 > Ha a-BackupStorageRedundancy paramétert adatbázis-visszaállítással, adatbázis-másolattal vagy másodlagos műveletekkel kívánja használni, használja az Azure PowerShell-verziót az az. SQL 2.11.0. 
 
 
-#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
 
 A biztonsági mentési tár redundancia konfigurálásához a felügyelt példányok létrehozásakor megadhatja a-BackupStoageRedundancy paramétert. A lehetséges értékek a Geo, a zóna és a helyi.
 
@@ -453,7 +453,7 @@ Ha szervezeti szinten szeretné kikényszeríteni az adattárolási követelmén
 Megtudhatja, hogyan rendelhet hozzá házirendeket a [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) vagy [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell) használatával
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a Azure Portal használatával](recovery-using-backups.md).

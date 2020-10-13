@@ -12,10 +12,10 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729151"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
@@ -192,5 +192,5 @@ Ha elérhető, nyisson meg egy támogatási jegyet a következő információkka
 -   Az időzóna és az idő/időkeret a hiba bekövetkezésekor
 -   Hegedűs nyomkövetései
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)

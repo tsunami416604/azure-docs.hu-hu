@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575299"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
@@ -317,7 +317,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    | Beállítás (paraméter) | Leírás |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
-   |név| A létrehozandó rendelés neve. | "mydataboxorder"|
+   |name| A létrehozandó rendelés neve. | "mydataboxorder"|
    |Kapcsolattartó neve| A szállítási címtől társított név. | "Gus Lengyelország"|
    |telefon| Annak a személynek vagy vállalatnak a telefonszáma, aki megkapja a rendelést.| "14255551234"
    |location| A legközelebbi Azure-régió, amely az eszköz szállítására kerül.| "USA nyugati régiója"|

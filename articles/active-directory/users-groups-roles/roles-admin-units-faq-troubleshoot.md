@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f9af8ee3bf87cfd5d2e74adfce618c7cf8c7e63
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450333"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD felügyeleti egységek: Hibaelhárítás és gyakori kérdések
@@ -71,7 +71,7 @@ A Jogosultságszint-emelés megszerzésének megakadályozása érdekében a fel
 
 A [administrativeUnit erőforrástípus](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) támogatásának keresése a Microsoft Graphban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkörök hatókörének korlátozása felügyeleti egységek használatával](directory-administrative-units.md)
 - [Felügyeleti egységek kezelése](roles-admin-units-manage.md)

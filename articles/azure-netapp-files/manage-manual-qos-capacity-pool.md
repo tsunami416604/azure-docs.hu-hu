@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442079"
+ms.locfileid: "91929217"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Manuális QoS-kapacitáskészlet kezelése
 
@@ -44,7 +44,7 @@ A manuális QoS-típus funkció jelenleg előzetes verzióban érhető el. Ha el
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-Használhatja az [Azure CLI-parancsokat](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Új manuális QoS-kapacitás készletének beállítása 
 
@@ -97,5 +97,3 @@ Ha egy kötetet kézi QoS-kapacitású készletben tárol, igény szerint módos
 * [NFS-kötet létrehozása](azure-netapp-files-create-volumes.md)
 * [SMB-kötet létrehozása](azure-netapp-files-create-volumes-smb.md)
 * [Kettős protokollú kötet létrehozása](create-volumes-dual-protocol.md)
-
-

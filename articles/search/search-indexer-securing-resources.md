@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 5075c4858f9584cb19442e19d9009d46d0e00ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85446847e8ad77bc83eea657ab17268839e0b231
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463551"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949819"
 ---
 # <a name="indexer-access-to-data-sources-using-azure-network-security-features"></a>Indexelő hozzáférése az adatforrásokhoz az Azure hálózati biztonsági funkcióival
 
@@ -46,11 +46,11 @@ Az ügyfelek az Azure által kínált számos hálózati elkülönítési mechan
 | Azure Functions | Támogatott | Támogatott, csak az Azure-függvények bizonyos SKU-i esetében |
 
 > [!NOTE]
-> A fent felsorolt lehetőségeken kívül a hálózattal védett Azure Storage-fiókok esetében az ügyfelek kihasználhatják azt a tényt, hogy az Azure Cognitive Search [megbízható Microsoft-szolgáltatás](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Ez azt jelenti, hogy egy adott keresési szolgáltatás megkerülheti a virtuális hálózat vagy az IP-korlátozásokat a Storage-fiókban, és hozzáférhet a Storage-fiókban található adathoz, ha a megfelelő szerepköralapú hozzáférés-vezérlés engedélyezve van a Storage-fiókban. A részletek a [útmutatóban](search-indexer-howto-access-trusted-service-exception.md)olvashatók. Ez a beállítás az IP-korlátozási útvonal helyett használható, abban az esetben, ha a Storage-fiók vagy a keresési szolgáltatás nem helyezhető át másik régióba.
+> A fent felsorolt lehetőségeken kívül a hálózattal védett Azure Storage-fiókok esetében az ügyfelek kihasználhatják azt a tényt, hogy az Azure Cognitive Search [megbízható Microsoft-szolgáltatás](../storage/common/storage-network-security.md#trusted-microsoft-services). Ez azt jelenti, hogy egy adott keresési szolgáltatás megkerülheti a virtuális hálózat vagy az IP-korlátozásokat a Storage-fiókban, és hozzáférhet a Storage-fiókban található adathoz, ha a megfelelő szerepköralapú hozzáférés-vezérlés engedélyezve van a Storage-fiókban. A részletek a [útmutatóban](search-indexer-howto-access-trusted-service-exception.md)olvashatók. Ez a beállítás az IP-korlátozási útvonal helyett használható, abban az esetben, ha a Storage-fiók vagy a keresési szolgáltatás nem helyezhető át másik régióba.
 
 Az indexelő által használandó biztonságos hozzáférési mechanizmus kiválasztásakor vegye figyelembe a következő korlátozásokat:
 
-- A [szolgáltatási végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) nem támogatottak az Azure-erőforrások esetében.
+- A [szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) nem támogatottak az Azure-erőforrások esetében.
 - Egy keresési szolgáltatás nem építhető ki egy adott virtuális hálózatba – ezt a funkciót az Azure Cognitive Search nem fogja felajánlani.
 - Ha az indexelő (kimenő) magánhálózati végpontokat használ az erőforrásokhoz való hozzáféréshez, előfordulhat, hogy további [privát kapcsolati költségek](https://azure.microsoft.com/pricing/details/search/) is érvényesek.
 
@@ -68,31 +68,31 @@ Az Azure Cognitive Search az indexelő futtatásához szükséges legjobb körny
 Ha az indexelő által elérni kívánt erőforrás csak az IP-címtartományok bizonyos készletére korlátozódik, akkor ki kell bővíteni a készletet, hogy tartalmazza a lehetséges IP-tartományokat, amelyekből az indexelő kérelme származhat. Ahogy azt fentebb említettük, két lehetséges környezet létezik, amelyekben az indexelő fut, és ahonnan a hozzáférési kérelmek származhatnak. __Mindkét__ környezet IP-címét fel kell vennie az indexelő hozzáférésének működéséhez.
 
 - A keresési szolgáltatás megadott privát környezetének IP-címének `nslookup` (vagy `ping` ) a keresési szolgáltatás teljes tartománynevének (FQDN) beszerzése. A nyilvános felhőben található keresési szolgáltatás teljes tartományneve, például: `<service-name>.search.windows.net` . Ezek az információk a Azure Portal érhetők el.
-- A több-bérlős környezetek IP-címei a `AzureCognitiveSearch` szolgáltatás címkéjén keresztül érhetők el. Az [Azure-szolgáltatás címkéi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) az egyes szolgáltatások IP-címeinek közzétett tartományával rendelkeznek – ez egy [felderítési API-n (előzetes verzió)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) vagy egy [letölthető JSON-fájlon](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)keresztül érhető el. Mindkét esetben az IP-címtartományok régiónként vannak lebontva – csak azokat az IP-tartományokat választhatja ki, amelyek ahhoz a régióhoz vannak rendelve, amelyben a keresési szolgáltatást kiépítik.
+- A több-bérlős környezetek IP-címei a `AzureCognitiveSearch` szolgáltatás címkéjén keresztül érhetők el. Az [Azure-szolgáltatás címkéi](../virtual-network/service-tags-overview.md) az egyes szolgáltatások IP-címeinek közzétett tartományával rendelkeznek – ez egy [felderítési API-n (előzetes verzió)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) vagy egy [letölthető JSON-fájlon](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)keresztül érhető el. Mindkét esetben az IP-címtartományok régiónként vannak lebontva – csak azokat az IP-tartományokat választhatja ki, amelyek ahhoz a régióhoz vannak rendelve, amelyben a keresési szolgáltatást kiépítik.
 
-Bizonyos adatforrások esetében maga a szolgáltatási címke közvetlenül is használható az IP-címtartományok listájának enumerálása helyett (a keresési szolgáltatás IP-címét explicit módon kell használni). Ezek az adatforrások korlátozzák a hozzáférést egy olyan [hálózati biztonsági csoport szabályának](https://docs.microsoft.com/azure/virtual-network/security-overview)beállításával, amely natív módon támogatja a szolgáltatási címkék hozzáadását, az olyan IP-szabályoktól eltérően, mint az Azure Storage, a CosmosDB, az Azure SQL stb., a `AzureCognitiveSearch` szolgáltatás címkét közvetlenül a keresési szolgáltatás IP-címe mellett felhasználó adatforrások:
+Bizonyos adatforrások esetében maga a szolgáltatási címke közvetlenül is használható az IP-címtartományok listájának enumerálása helyett (a keresési szolgáltatás IP-címét explicit módon kell használni). Ezek az adatforrások korlátozzák a hozzáférést egy olyan [hálózati biztonsági csoport szabályának](../virtual-network/network-security-groups-overview.md)beállításával, amely natív módon támogatja a szolgáltatási címkék hozzáadását, az olyan IP-szabályoktól eltérően, mint az Azure Storage, a CosmosDB, az Azure SQL stb., a `AzureCognitiveSearch` szolgáltatás címkét közvetlenül a keresési szolgáltatás IP-címe mellett felhasználó adatforrások:
 
-- [IaaS virtuális gépeken futó SQL Server](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers#restrict-access-to-the-azure-cognitive-search)
+- [IaaS virtuális gépeken futó SQL Server](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
 
-- [SQL felügyelt példányai](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers#verify-nsg-rules)
+- [SQL felügyelt példányai](./search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md#verify-nsg-rules)
 
 A részleteket a [útmutató](search-indexer-howto-access-ip-restricted.md)című témakör ismerteti.
 
 ## <a name="granting-access-via-private-endpoints"></a>Hozzáférés biztosítása privát végpontokon keresztül
 
-Az indexelő használhatnak [privát végpontokat](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) az erőforrásokhoz való hozzáféréshez, a hozzáféréshez, amelyekhez a virtuális hálózatokat kiválasztva vagy nincs engedélyezve a nyilvános hozzáférés.
+Az indexelő használhatnak [privát végpontokat](../private-link/private-endpoint-overview.md) az erőforrásokhoz való hozzáféréshez, a hozzáféréshez, amelyekhez a virtuális hálózatokat kiválasztva vagy nincs engedélyezve a nyilvános hozzáférés.
 Ez a funkció csak a fizetős szolgáltatások esetében érhető el, a létrehozott magánhálózati végpontok számának korlátozásával. A határértékekről a [Azure Search Limits oldalon](search-limits-quotas-capacity.md)olvashat bővebben.
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>1. lépés: hozzon létre egy privát végpontot a biztonságos erőforráshoz
 
-Az ügyfeleknek meg kell hívniuk a keresési kezelési műveletet, [létre kell hozniuk vagy frissíteniük kell a *megosztott magánhálózati kapcsolati erőforrás* -API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) -t a biztonságos erőforráshoz (például egy Storage-fiókhoz) való saját végponti kapcsolat létrehozásához. Az erre a (kimenő) privát végponti kapcsolatra irányuló forgalom csak a keresési szolgáltatásban megadott "privát" indexelő végrehajtási környezetben található virtuális hálózatból származik.
+Az ügyfeleknek meg kell hívniuk a keresési kezelési műveletet, [létre kell hozniuk vagy frissíteniük kell a *megosztott magánhálózati kapcsolati erőforrás* -API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) -t a biztonságos erőforráshoz (például egy Storage-fiókhoz) való saját végponti kapcsolat létrehozásához. Az erre a (kimenő) privát végponti kapcsolatra irányuló forgalom csak a keresési szolgáltatásban megadott "privát" indexelő végrehajtási környezetben található virtuális hálózatból származik.
 
 Az Azure Cognitive Search ellenőrzi, hogy az API hívói jogosultak-e a privát végpontok kapcsolódási kéréseinek a biztonságos erőforrásba való jóváhagyására. Ha például privát végponti kapcsolatot kér egy olyan Storage-fiókkal, amelyhez nem rendelkezik hozzáféréssel, a rendszer elutasítja a hívást.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>2. lépés: a magánhálózati végponti kapcsolatok jóváhagyása
 
 Ha a megosztott magánhálózati kapcsolati erőforrást létrehozó (aszinkron) művelet befejeződik, a rendszer egy privát végponti kapcsolatot hoz létre "függőben" állapotba. Még nem folyik forgalom a kapcsolaton keresztül.
-Az ügyfél ezután megkeresi a kérést a biztonságos erőforráson, és "jóváhagyja". Ez általában a portálon vagy a [Rest APIon](https://docs.microsoft.com/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection)keresztül végezhető el.
+Az ügyfél ezután megkeresi a kérést a biztonságos erőforráson, és "jóváhagyja". Ez általában a portálon vagy a [Rest APIon](/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection)keresztül végezhető el.
 
 ### <a name="step-3-force-indexers-to-run-in-the-private-environment"></a>3. lépés: az indexelő kényszerített futtatása a "privát" környezetben
 

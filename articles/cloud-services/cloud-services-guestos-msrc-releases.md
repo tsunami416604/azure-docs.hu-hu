@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/29/2020
+ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fae523245189ca73caf38f643ded79dd0dd2f94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531156"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949088"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
 
 ## <a name="september-2020-guest-os"></a>Szeptember 2020 vendég operációs rendszer
->[!NOTE]
->A szeptemberi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások szerepelnek a szeptemberi vendég operációs rendszerben. A lista módosítása változhat.
-
 
 | Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | Sep 8, 2020 |
-|  Rel 20-09 |  [4561600]  |  Flash-frissítés | 3,89, 4,82, 5,47, 6,23 | Sep 8, 2020 |
-|  Rel 20-09 |  [4577015]  |  Legújabb összesített frissítés (LCU) | 5,47 | Sep 8, 2020 |
-|  Rel 20-09 |  [4570333]  |  Legújabb összesített frissítés (LCU) | 6,23 | Sep 8, 2020 |
-|  Rel 20-09 |  [4570673]  |  Karbantartási verem frissítése | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4577051]  |  Havi összesítés | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4569767]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4569780]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4566426]  |  Karbantartási verem frissítése | 3,89 | Sep 8, 2020 |
-|  Rel 20-09 |  [4577038]  |  Havi összesítés | 3,89 | Sep 8, 2020 |
-|  Rel 20-09 |  [4569765]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 3,89 | Sep 8, 2020 |
-|  Rel 20-09 |  [4569779]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 3,89 | Sep 8, 2020 |
-|  Rel 20-09 |  [4566425]  |  Karbantartási verem frissítése | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4577066]  |  Havi összesítés | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4569768]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 biztonsági és minőségi összesítés | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4578013]  |  Biztonsági frissítés | 2,102 | Sep 8, 2020 |
-|  Rel 20-09 |  [4576750]  |  Karbantartási verem frissítése | 5,47 | Sep 8, 2020 |
-|  Rel 20-09 |  [4494175]  |  Mikrokód | 5,47 | Sep 8, 2020 |
-|  Rel 20-09 |  [4570332]  |  Karbantartási verem frissítése | 6,23 | Sep 8, 2020 |
-|  Rel 20-09 |  [4570720]  |  A .NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése | 6,23 | Sep 8, 2020 |
-|  Rel 20-09 |  [4494174]  |  Mikrokód | 6,23 | Sep 8, 2020 |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | [2,102], [3,89], [4,82] | Sep 8, 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-frissítés | [3,89], [4,82], [5,47], [6,23] | Sep 8, 2020 |
+|  Rel 20-09 |  [4577015]  |  Legújabb összesített frissítés (LCU) | [5,47] | Sep 8, 2020 |
+|  Rel 20-09 |  [4570333]  |  Legújabb összesített frissítés (LCU) | [6,23] | Sep 8, 2020 |
+|  Rel 20-09 |  [4570673]  |  Karbantartási verem frissítése | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4577051]  |  Havi összesítés | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4569767]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4569780]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4566426]  |  Karbantartási verem frissítése | [3,89] | Sep 8, 2020 |
+|  Rel 20-09 |  [4577038]  |  Havi összesítés | [3,89] | Sep 8, 2020 |
+|  Rel 20-09 |  [4569765]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | [3,89] | Sep 8, 2020 |
+|  Rel 20-09 |  [4569779]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | [3,89] | Sep 8, 2020 |
+|  Rel 20-09 |  [4566425]  |  Karbantartási verem frissítése | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4577066]  |  Havi összesítés | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4569768]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 biztonsági és minőségi összesítés | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4578013]  |  Biztonsági frissítés | [2,102] | Sep 8, 2020 |
+|  Rel 20-09 |  [4576750]  |  Karbantartási verem frissítése | [5,47] | Sep 8, 2020 |
+|  Rel 20-09 |  [4494175]  |  Mikrokód | [5,47] | Sep 8, 2020 |
+|  Rel 20-09 |  [4570332]  |  Karbantartási verem frissítése | [6,23] | Sep 8, 2020 |
+|  Rel 20-09 |  [4570720]  |  A .NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése | [6,23] | Sep 8, 2020 |
+|  Rel 20-09 |  [4494174]  |  Mikrokód | [6,23] | Sep 8, 2020 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
 [4561600]: https://support.microsoft.com/kb/4561600
@@ -74,6 +71,11 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,102]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,47]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,23]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="august-2020-guest-os"></a>Augusztus 2020 vendég operációs rendszer
 

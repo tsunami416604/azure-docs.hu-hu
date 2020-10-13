@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75649987"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948952"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions beállítása egyéni Azure-szolgáltatók számára
 
@@ -51,7 +51,7 @@ Az Azure-függvény beállításával adja meg az egyéni szolgáltató REST-ké
 > [!NOTE]
 > Ha a C#-projektfájl hiányzik a projekt könyvtárából, manuálisan is hozzáadhatja azt. Vagy ekkor megjelenik a Microsoft. Azure. webjobs. Extensions. Storage bővítmény a Function alkalmazásban.
 
-Ezután frissítse a C# projektfájlt a hasznos NuGet-kódtárak befoglalásához. Ezek a kódtárak megkönnyítik az egyéni szolgáltatóktól érkező kérések elemzését. Kövesse az alábbi lépéseket a [bővítmények hozzáadásához a portálról](../../azure-functions/install-update-binding-extensions-manual.md) , és frissítse a C# projektfájlt, hogy tartalmazza a következő csomagokra mutató hivatkozásokat:
+Ezután frissítse a C# projektfájlt a hasznos NuGet-kódtárak befoglalásához. Ezek a kódtárak megkönnyítik az egyéni szolgáltatóktól érkező kérések elemzését. Kövesse az alábbi lépéseket a [bővítmények hozzáadásához a portálról](../../azure-functions/functions-bindings-register.md) , és frissítse a C# projektfájlt, hogy tartalmazza a következő csomagokra mutató hivatkozásokat:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ A következő XML-elem egy példa C#-projektfájl:
 Ebben az oktatóanyagban egy Azure Function-alkalmazást állít be, amely Azure-beli egyéni szolgáltatói végpontként működik.
 
 Ha szeretné megtudni, hogyan hozhat létre egy REST-beli egyéni szolgáltatói végpontot, tekintse meg az [oktatóanyag: Rest-szolgáltatói végpont létrehozása](./tutorial-custom-providers-function-authoring.md)című témakört.
-

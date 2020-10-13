@@ -8,10 +8,10 @@ ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
 ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570376"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
@@ -779,7 +779,7 @@ Ebben a cikkben megtanulta, hogy milyen portokat és címeket kell engedélyezni
 
 Ha szükséges, általánosíthatja a fenti lépéseket, hogy továbbítsa a forgalmat az előnyben részesített kimenő megoldásra, a [kimenő típusok `userDefinedRoute` dokumentációja](egress-outboundtype.md)alapján.
 
-Ha szeretné korlátozni, hogy a hüvelyek hogyan kommunikálnak egymással és a kelet nyugati forgalmával kapcsolatos korlátozásokat a fürtön belül, lásd: [biztonságos forgalom a hüvelyek között a hálózati házirendek használatával][network-policy]
+Ha szeretné korlátozni, hogy a hüvelyek hogyan kommunikálnak egymással, és East-West a forgalom korlátozásait a fürtön belül, lásd: [biztonságos forgalom a hüvelyek között hálózati házirendek használatával][network-policy]
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

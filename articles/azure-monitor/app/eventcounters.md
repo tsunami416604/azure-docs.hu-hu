@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803643"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
@@ -133,7 +133,7 @@ Az élő metrikák nem jelenítik meg a EventCounters a mai naptól. A telemetri
 
  ASP.NET Core [Application Insights bővítmény](./azure-web-apps.md) még nem támogatja ezt a funkciót. Ez a dokumentum akkor frissül, ha ez a funkció támogatott.
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 * [Függőségek nyomon követése](./asp-net-dependencies.md)
 

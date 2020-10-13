@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450401"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
@@ -42,7 +42,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
 ### <a name="configure-syslog-collection"></a>Syslog-gyűjtemény konfigurálása
 1. Állítsa be a syslog-továbbítást a VSphere. A syslog-továbbítás beállításával kapcsolatos részletes információkért lásd: [a syslog konfigurálása ESXi 5,0 és újabb rendszereken (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás az **ESXi-gazdagép konfigurációs**  >  **szoftver**  >  **Speciális beállítások**  >  **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Például: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
+1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Példa: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
 1. Nyissa meg az ESXi-gazdagép tűzfalát a syslog számára. **ESXi-gazdagép konfigurációja**  >  **Szoftver**  >  **Biztonsági profil**  >  **Tűzfal** és nyitott **Tulajdonságok**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  

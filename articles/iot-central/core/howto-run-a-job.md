@@ -8,10 +8,10 @@ ms.author: sahubbar
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: 5b8aba74cb0914cf26382e0d17a8ce2ba6bd4063
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91573960"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
@@ -85,7 +85,7 @@ A feladatok létrehozása után az **állapot** oszlop a legutóbbi feladatok á
 
 | Állapotüzenet       | Állapot jelentése                                          |
 | -------------------- | ------------------------------------------------------- |
-| Befejeződött            | Ez a feladatok minden eszközön futottak.              |
+| Befejezve            | Ez a feladatok minden eszközön futottak.              |
 | Sikertelen               | A feladatot nem sikerült végrehajtani, és nem futott teljesen teljes mértékben az eszközökön.  |
 | Függőben              | Ez a feladatok még nem kezdődött meg az eszközökön.         |
 | Futó              | Ez a feladatok jelenleg az eszközökön futnak.             |
@@ -103,7 +103,7 @@ A feladatok és az összes érintett eszköz állapotának megtekintéséhez nyi
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Befejeződött            | A feladatot futtatták ezen az eszközön.                                     |
+| Befejezve            | A feladatot futtatták ezen az eszközön.                                     |
 | Sikertelen               | A feladatot nem sikerült futtatni ezen az eszközön. A hibaüzenet további információkat jelenít meg.  |
 | Függőben              | A feladatot még nem futtatták ezen az eszközön.                                   |
 
@@ -138,7 +138,7 @@ Adja meg a feladatok nevét és leírását, majd válassza a **feladatok újraf
 >
 > Ha a feladatok befejeződik, és törli a feladathoz tartozó eszközök listáján szereplő eszközt, az eszköz neve törölve lesz az eszköz nevében. A részletek hivatkozás nem érhető el a törölt eszközhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre feladatokat az Azure IoT Central alkalmazásban, néhány további lépés:
 

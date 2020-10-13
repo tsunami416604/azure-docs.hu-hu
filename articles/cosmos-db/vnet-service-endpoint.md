@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574347"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Az Azure Cosmos DB elérése virtuális hálózatról (VNet)
@@ -69,7 +69,7 @@ Nem, csak Azure Resource Manager virtuális hálózatokon engedélyezhető a szo
 Erre csak akkor van szükség, ha azt szeretné, hogy a Azure Cosmos DB-fiókját más Azure-szolgáltatások, például az Azure-beli adat-előállító, az Azure Cognitive Search vagy bármely, az adott Azure-régióban üzembe helyezett szolgáltatás hozzáférhessen.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos-fiók hozzáférésének korlátozása virtuális hálózatokon belüli alhálózatokhoz](how-to-configure-vnet-service-endpoint.md)
 * [Az IP-tűzfal konfigurálása az Azure Cosmos-fiókhoz](how-to-configure-firewall.md)

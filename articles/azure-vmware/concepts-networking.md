@@ -4,10 +4,10 @@ description: Ismerkedjen meg az Azure VMware megoldás legfontosabb szempontjaiv
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: f8e9ed143d53afe2f7a24c832c69390c6ffcb36b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575758"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmak
@@ -59,7 +59,7 @@ A privát felhővel való teljes összekapcsoláshoz engedélyezze a ExpressRout
 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 További információ a [saját Felhőbeli tárolási fogalmakról](concepts-storage.md).
 
 

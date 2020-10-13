@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575180"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
@@ -303,7 +303,7 @@ Ehelyett használja a modell-specifikus fájlnevet `<modelName>.ConversionSettin
 
 A `material-override` konverziós beállítások fájlban lévő [anyag-felülbírálási fájl](override-materials.md) azonosítására szolgáló beállítás használata továbbra is támogatott, de elavult. Ehelyett használja a modell-specifikus fájlnevet `<modelName>.MaterialOverrides.json` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)
