@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.openlocfilehash: 51c794d3e121b06f7eafc7f59f1fb8912e9d1f08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Oktatóanyag: Azure Active Directory integráció az SAML 1,1 Tokenrel rendelkező LOB-alkalmazással
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés és az SAML 1,1 token engedélyezve LOB-alkalmazás konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[SAML 1,1 token engedélyezése a LOB-alkalmazás egyszeri bejelentkezéséhez](#configure-saml-11-token-enabled-lob-app-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[SAML 1,1-token engedélyezése a LOB-alkalmazás egyszeri bejelentkezéséhez](#configure-saml-11-token-enabled-lob-app-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításának konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Saml 1,1-tokent használó LOB-alkalmazás tesztelési felhasználójának létrehozása](#create-saml-11-token-enabled-lob-app-test-user)** – hogy az SAML 1,1-tokenben lévő, a felhasználó Azure ad-BRITTA kapcsolódó LOB-alkalmazásban legyen elérhető.
@@ -93,7 +93,7 @@ Ha az Azure AD egyszeri bejelentkezést az SAML 1,1-tokent használó LOB-alkalm
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Ha az Azure AD egyszeri bejelentkezést az SAML 1,1-tokent használó LOB-alkalm
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot az SAML 1,1 token engedélyezve LOB app Client ügyfélszolgálati csapatával, hogy lekérje ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Ha az Azure AD egyszeri bejelentkezést az SAML 1,1-tokent használó LOB-alkalm
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-saml-11-token-enabled-lob-app-single-sign-on"></a>Az SAML 1,1 token engedélyezése LOB-alkalmazás egyszeri bejelentkezésének konfigurálása
+### <a name="configure-saml-11-token-enabled-lob-app-single-sign-on"></a>Az SAML 1,1 token enabled LOB-alkalmazás egyszeri Sign-On konfigurálása
 
 Az **saml 1,1 token engedélyezve LOB-alkalmazás** oldalán való egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-CÍMEKET Azure Portalról a SAML 1,1 tokenre engedélyezett LOB app support csapatához. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -149,7 +149,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

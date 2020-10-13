@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72801878"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Az Azure Data Catalog bevezetésének módszere és folyamata
@@ -151,7 +151,7 @@ Szervezzen a csoportnak rendszeres értekezleteket, amelyek során megbeszélnek
 
 A projekt végső próbája pedig az, hogy a felhasználók képesek-e megtalálni és értelmezni a munkájukhoz szükséges adatforrásokat. A próbaprojektben részt vevő felhasználóknak érdemes rendszeresen tesztelniük a katalógust, ezzel biztosítva, hogy a mindennapi munkájuk során használt adatforrások relevánsak legyenek. Ha egy szükséges adatforrás hiányzik, vagy nincs megfelelő megjegyzésekkel ellátva, az emlékeztetőként szolgálhat arra, hogy további adatforrásokat kell regisztrálni, vagy további megjegyzéseket kell megadni. Ez a gyakorlat nem csupán a próbatervet teszi sikeresebbé, de olyan hatékony szokásokat is meghonosít, amelyek a projekt lezárása után más csapatokban is elterjedhetnek.
 
-### <a name="provide-training"></a>Az oktatás lebonyolítása
+### <a name="provide-training"></a>Képzés biztosítása
 
 Az oktatásnak el kell érnie, hogy a felhasználók megismerjék a szolgáltatást, és igazodnia kell a próbacsapat tagjainak konkrét céljaihoz és felkészültségéhez. Az oktatás kezdéseképp végigkövetheti az [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md) cikk lépéseit. Emellett letöltheti a [Azure Data Catalog próbaprojektjeiről szóló oktatóbemutatót](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/blob/master/Azure%20Data%20Catalog%20Training.pptx?raw=true) is. Ez a PowerPoint-bemutató segít megismertetni a Data Catalog szolgáltatást a próbacsapat tagjaival.
 

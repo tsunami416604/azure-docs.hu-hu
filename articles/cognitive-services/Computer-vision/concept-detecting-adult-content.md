@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71718517"
 ---
 # <a name="detect-adult-content"></a>Felnőtt tartalom észlelése
@@ -35,7 +35,7 @@ A "felnőtt" besorolás több különböző kategóriába esik:
 
 ## <a name="use-the-api"></a>Az API használata
 
-A felnőtt tartalmat a [képek elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-val ismerheti meg. `Adult` Amikor hozzáadja a értéket a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot&mdash;`isAdultContent` `isRacyContent`ad vissza, és `isGoryContent` &mdash;a JSON-válaszában. A metódus a megfelelő tulajdonságokat&mdash;`adultScore` `racyScore` `goreScore` &mdash;is adja vissza, amelyek a nulla és az egyik kategóriába tartozó megbízhatósági pontszámokat jelölik.
+A felnőtt tartalmat a [képek elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-val ismerheti meg. Amikor hozzáadja a értéket `Adult` a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot ad vissza, &mdash; `isAdultContent` és a `isRacyContent` `isGoryContent` &mdash; JSON-válaszában. A metódus a megfelelő tulajdonságokat is adja vissza, &mdash; `adultScore` `racyScore` `goreScore` &mdash; amelyek a nulla és az egyik kategóriába tartozó megbízhatósági pontszámokat jelölik.
 
 - [Gyors útmutató: rendszerkép elemzése (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

@@ -10,10 +10,10 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79537346"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition LoadBalancerProbe séma
@@ -47,10 +47,10 @@ A `LoadBalancerProbes` szolgáltatás definíciós fájljának eleme a következ
 - [LoadBalancerProbes elem](#LoadBalancerProbes)
 - [LoadBalancerProbe elem](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes elem
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> LoadBalancerProbes elem
 Az `LoadBalancerProbes` elem a Load Balancer-vizsgálatok gyűjteményét írja le. Ez az elem a [LoadBalancerProbe elem](#LoadBalancerProbe)szülő eleme. 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe elem
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> LoadBalancerProbe elem
 Az `LoadBalancerProbe` elem a modell állapotának mintavételét határozza meg. Több Load Balancer-mintavételt is meghatározhat. 
 
 A következő táblázat a elem attribútumait ismerteti `LoadBalancerProbe` :
@@ -59,7 +59,7 @@ A következő táblázat a elem attribútumait ismerteti `LoadBalancerProbe` :
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Kötelező. A terheléselosztó mintavételének neve. A névnek egyedinek kell lennie.|
 | `protocol`          | `string` | Kötelező. Megadja a végpont protokollját. A lehetséges értékek: `http` és `tcp`. Ha `tcp` meg van adva, egy fogadott ACK-t kell megadnia a mintavétel sikerességéhez. Ha meg `http` van adva, a mintavétel sikeres végrehajtásához a megadott URI-azonosítótól 200 OK-válasz szükséges.|
-| `path`              | `string` | A virtuális gép állapotának kéréséhez használt URI. `path`kötelező, ha a értéke `protocol` `http` . Ellenkező esetben nem engedélyezett.<br /><br /> Nincs alapértelmezett érték.|
+| `path`              | `string` | A virtuális gép állapotának kéréséhez használt URI. `path` kötelező, ha a értéke `protocol` `http` . Ellenkező esetben nem engedélyezett.<br /><br /> Nincs alapértelmezett érték.|
 | `port`              | `integer` | Választható. A mintavétel kommunikációs portja. Ez bármely végpont esetében opcionális, mivel a mintavételhez ugyanazt a portot fogja használni a rendszer. Egy másik portot is beállíthat a szondázás számára. A lehetséges értékek tartománya 1 és 65535 között van, beleértve a következőt:.<br /><br /> Az alapértelmezett értéket a végpont állítja be.|
 | `intervalInSeconds` | `integer` | Választható. Az az időtartam (másodpercben), ameddig a végpontot a rendszer állapotának meghatározásához gyakran kell megkeresni. Az intervallum általában valamivel kevesebb, mint a lefoglalt időtúllépési időszak (másodpercben), amely két teljes mintavételt tesz lehetővé, mielőtt a példány elforgatása megtörténjen.<br /><br /> Az alapértelmezett érték 15, a minimális érték 5.|
 | `timeoutInSeconds`  | `integer` | Választható. Az időtúllépési időtartam (másodpercben), amely arra a mintavételi időszakra vonatkozik, ahol nincs válasz, a rendszer a végpont felé irányuló további forgalom leállítását eredményezi. Ez az érték lehetővé teszi, hogy a végpontok gyorsabban vagy lassabban legyenek, mint az Azure-ban használt tipikus időpontok (amelyek az alapértelmezettek).<br /><br /> Az alapértelmezett érték 31, a minimális érték 11.|

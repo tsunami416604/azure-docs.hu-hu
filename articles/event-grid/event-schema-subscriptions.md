@@ -4,10 +4,10 @@ description: Az előfizetési eseményekhez megadott tulajdonságokat ismerteti 
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105897"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Azure-előfizetés Event Grid-forrásként
@@ -22,7 +22,7 @@ Amikor előfizet egy Azure-előfizetés eseményeire, a végpont megkapja az el�
 
 Az események programozott kezeléséhez az értékeket megtekintve rendezheti az eseményeket `operationName` . Előfordulhat például, hogy az esemény-végpont csak a vagy a műveletekkel kapcsolatos eseményeket dolgozza fel `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write` .
 
-Az esemény tárgya a művelet céljaként megadott erőforrás azonosítója. Az adott erőforrás eseményeinek szűréséhez adja meg az erőforrás-azonosítót az esemény-előfizetés létrehozásakor. Az erőforrástípus alapján történő szűréshez használja a következő formátumban megadott értéket:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Az esemény tárgya a művelet céljaként megadott erőforrás azonosítója. Az adott erőforrás eseményeinek szűréséhez adja meg az erőforrás-azonosítót az esemény-előfizetés létrehozásakor. Az erőforrástípus alapján történő szűréshez használja a következő formátumban megadott értéket: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 
 ## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
@@ -234,11 +234,11 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | Előfizetési eseményekre vonatkozó adatértékek. |
+| adatok | object | Előfizetési eseményekre vonatkozó adatértékek. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -246,10 +246,10 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| engedélyezés | objektum | A művelethez szükséges engedély. |
-| jogcímek | objektum | A jogcímek tulajdonságai. További információ: JWT- [specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| engedélyezés | object | A művelethez szükséges engedély. |
+| jogcímek | object | A jogcímek tulajdonságai. További információ: JWT- [specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | sztring | Egy műveleti azonosító a hibaelhárításhoz. |
-| httpRequest | objektum | A művelet részletei. Ez az objektum csak meglévő erőforrás frissítésekor vagy erőforrás törlésekor szerepel. |
+| httpRequest | object | A művelet részletei. Ez az objektum csak meglévő erőforrás frissítésekor vagy erőforrás törlésekor szerepel. |
 | resourceProvider | sztring | A művelet erőforrás-szolgáltatója. |
 | resourceUri | sztring | Az erőforrás URI-ja a műveletben. |
 | operationName | sztring | A végrehajtott művelet. |
@@ -265,7 +265,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Azure CLI: Feliratkozás az Azure-előfizetés eseményeire](./scripts/event-grid-cli-azure-subscription.md) |Parancsfájl, amely Event Grid-előfizetést hoz létre egy Azure-előfizetéshez, és eseményeket küld egy webhooknak. |
 | [PowerShell: Feliratkozás az Azure-előfizetés eseményeire](./scripts/event-grid-powershell-azure-subscription.md)| Parancsfájl, amely Event Grid-előfizetést hoz létre egy Azure-előfizetéshez, és eseményeket küld egy webhooknak. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

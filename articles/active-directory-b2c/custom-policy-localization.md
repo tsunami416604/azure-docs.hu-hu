@@ -11,10 +11,10 @@ ms.date: 8/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 581811b1ed9738b98a734f5d52a025a872cd0846
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87540869"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének honosítása egyéni házirend használatával Azure Active Directory B2C
@@ -252,13 +252,13 @@ A következő példában az angol (en) és a spanyol (es) egyéni sztringek hozz
 1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
 1. Látnia kell a honosított regisztrációs vagy bejelentkezési oldalt.
 1. Kattintson a regisztrációs hivatkozásra, és tekintse meg a honosított regisztrációs lapot.
-1. A böngésző alapértelmezett nyelvének átváltása spanyolra. A lekérdezési karakterlánc paramétert is hozzáadhatja `ui_locales` az engedélyezési kérelemhez. Például: 
+1. A böngésző alapértelmezett nyelvének átváltása spanyolra. A lekérdezési karakterlánc paramétert is hozzáadhatja `ui_locales` az engedélyezési kérelemhez. Példa: 
 
 ```http
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [honosítási](localization.md) elemről a IEF-hivatkozásban.
 - Tekintse meg a Azure AD B2Cban elérhető [honosítási karakterlánc-azonosítók](localization-string-ids.md) listáját.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543393"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Fiorital
@@ -158,7 +158,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > 
     > A `ServicePrincipal` parancsfájl futtatása előtt állíthatja be a objektumazonosítót, vagy itt adhatja át.
 
-1. Az SAP Fiori-alkalmazás azt várja, hogy az SAML-kijelentések meghatározott formátumban legyenek. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumérték kezeléséhez az **egyszeri bejelentkezés beállítása SAML-vel** panelen válassza a **Szerkesztés**lehetőséget.
+1. Az SAP Fiori-alkalmazás azt várja, hogy az SAML-kijelentések meghatározott formátumban legyenek. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumérték kezeléséhez az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés**lehetőséget.
 
     ![A felhasználói attribútumok panel](common/edit-attribute.png)
 
@@ -170,7 +170,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Az **1. paraméter** listából válassza a **User. userPrincipalName**elemet.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
        ![A felhasználói jogcímek kezelése panel](./media/sapfiori-tutorial/nameidattribute.png)
 
@@ -194,7 +194,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -238,9 +238,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A kivonatoló algoritmus értékének ellenőrzése az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
-1. Az **egyszeri bejelentkezési végpontok**területen válassza a **http post**lehetőséget, majd kattintson a **tovább**gombra.
+1. Az **egyszeres Sign-On végpontok**területen válassza a **http post**lehetőséget, majd kattintson a **tovább**gombra.
 
-    ![Az egyszeri bejelentkezési végpontok beállításai az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
+    ![Az SAP-ben az egyes Sign-On végpontok beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
 
 1. Az **egyszeri kijelentkezési végpontok**területen válassza a **http-átirányítás**lehetőséget, majd kattintson a **tovább**gombra.
 
@@ -258,11 +258,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A megbízható szolgáltató és az identitás összevonásának lapja az SAP-ban](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     ![A Hozzáadás lehetőség az identitás-összevonás lapon](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 
-1. A **támogatott NameID-formátumok** párbeszédpanelen válassza a **meghatározatlan**lehetőséget. Kattintson az **OK** gombra.
+1. A **támogatott NameID-formátumok** párbeszédpanelen válassza a **meghatározatlan**lehetőséget. Válassza az **OK** lehetőséget.
 
     ![A támogatott NameID-formátumok párbeszédpanel és az SAP beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
 

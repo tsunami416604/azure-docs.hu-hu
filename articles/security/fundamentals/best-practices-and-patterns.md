@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73889857"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági bevált eljárásai és mintái
@@ -30,7 +30,7 @@ Az ajánlott eljárások az informatikai szakemberek számára készült erőfor
 
 * [Azure-beli határbiztonság – ajánlott eljárások](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure-beli adatbázis-biztonság – ajánlott eljárások](database-best-practices.md)
-* [Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai](data-encryption-best-practices.md)
+* [Az Azure adatbiztonsági és titkosítási ajánlott eljárásai](data-encryption-best-practices.md)
 * [Az Azure-beli identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárásai](identity-management-best-practices.md)
 * [Ajánlott Azure-beli hálózatbiztonsági eljárások](network-best-practices.md)
 * [Azure-beli üzemeltetési biztonság – ajánlott eljárások](operational-best-practices.md)
