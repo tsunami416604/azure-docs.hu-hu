@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600797"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
@@ -131,7 +131,7 @@ A mai digitális munkahelyen fontos egyensúlyba venni a biztonságot a hatékon
 
 Ez a szakasz azokat a javaslatokat sorolja fel, amelyek a szervezettől érkező súrlódások eltávolítására szolgálnak.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Önkiszolgáló jelszó-visszaállítás engedélyezése minden felhasználó számára
+### <a name="enable-self-service-password-reset-for-all-users"></a>Self-Service jelszó-visszaállítás engedélyezése minden felhasználó számára
 
 Az Azure önkiszolgáló [jelszavának alaphelyzetbe állítása](../authentication/tutorial-enable-sspr.md) (SSPR) egyszerű módszert kínál a rendszergazdáknak arra, hogy rendszergazdai beavatkozás nélkül visszaállítsák és feloldják jelszavukat vagy fiókjaikat. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhozzáféréséről, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
@@ -147,7 +147,7 @@ Hasonlóképpen, az [önkiszolgáló jelszó-kezelési jelentés](../authenticat
 
 ### <a name="self-service-app-management"></a>Önkiszolgáló alkalmazások kezelése
 
-Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az [önkiszolgáló alkalmazásokhoz való hozzáférést](../manage-apps/access-panel-manage-self-service-access.md) minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez. Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, és opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy az adott felhasználókhoz rendelt hitelesítő adatokat a hozzáférési panelektől közvetlenül a [jelszó egyszeri bejelentkezésre szolgáló alkalmazásokban](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) kezelhesse.
+Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az [önkiszolgáló alkalmazásokhoz való hozzáférést](../manage-apps/access-panel-manage-self-service-access.md) minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez. Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, és opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy a hozzáférési panelektől közvetlenül az [alkalmazásokban a jelszó Single-Signhoz](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) rendelt hitelesítő adatokat felügyelje.
 
 ### <a name="self-service-group-management"></a>Önkiszolgáló csoportkezelés
 
@@ -265,7 +265,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 ||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
 ||A támogatási hívások illesztőprogramjainak ismertetése|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan növelheti a biztonságos testhelyzetet a Azure Active Directory képességeivel, és ez az öt lépésből álló ellenőrzőlista – [öt lépés az identitás-infrastruktúra biztonságossá](https://aka.ms/securitysteps)tételéhez.
 

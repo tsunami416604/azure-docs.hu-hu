@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509358"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>A virtuális gépek Azure-beli telepítése, újraindítása vagy átméretezése során jelentkező foglalási hibák elhárítása
@@ -73,7 +73,7 @@ A teljes felszabadítás azt jelenti, hogy egy rendelkezésre állási csoportba
 ### <a name="workaround"></a>Áthidaló megoldás
 
 Ha régebbi virtuálisgép-sorozatot vagy-méreteket használ, például a Dv1, a DSv1, a Av1, a D15v2 vagy a DS15v2, érdemes áthelyeznie az újabb verziókat. Tekintse meg ezeket a javaslatokat adott virtuálisgép-méretekhez.
-Ha nincs lehetősége más virtuálisgép-méret használatára, próbáljon meg egy másik régióba üzembe helyezni ugyanazon a földrajzi területen belül. További információ az egyes régiókban elérhető virtuálisgép-méretekről:https://aka.ms/azure-regions
+Ha nincs lehetősége más virtuálisgép-méret használatára, próbáljon meg egy másik régióba üzembe helyezni ugyanazon a földrajzi területen belül. További információ az egyes régiókban elérhető virtuálisgép-méretekről: https://aka.ms/azure-regions
 
 Ha rendelkezésre állási zónákat használ, próbáljon meg egy másik zónát a régión belül, amely a kért virtuálisgép-mérethez rendelkezésre álló kapacitással rendelkezhet.
 

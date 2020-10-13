@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88689557"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
@@ -20,12 +20,12 @@ A .NET Class Library functions-alkalmazások a projektben NuGet-csomagként tele
 
 A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a kötéseket.
 
-| Fejlesztőkörnyezet |Regisztráció<br/> a functions 1. x  |Regisztráció<br/> a functions 3. x/2. x  |
+| Fejlesztési környezet |Regisztráció<br/> a functions 1. x  |Regisztráció<br/> a functions 3. x/2. x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatikus|Automatikus<sup>*</sup>|
 |Non-.NET nyelvek|Automatikus|[Bővítmények](#extension-bundles) használata (ajánlott) vagy [explicit módon telepítse a bővítményeket](#explicitly-install-extensions)|
 |C# Class Library a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
-|C# Class Library a Visual Studio Code használatával|n.a.|[A .NET Core parancssori felülete használata](#vs-code)|
+|C# Class Library a Visual Studio Code használatával|N/A|[A .NET Core parancssori felülete használata](#vs-code)|
 
 <sup>*</sup> A portál bővítmény-csomagokat használ.
 

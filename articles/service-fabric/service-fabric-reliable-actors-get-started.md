@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743760"
 ---
 # <a name="getting-started-with-reliable-actors"></a>A Reliable Actors első lépései
@@ -149,7 +149,7 @@ Ha a kimenet tartalmazza a szöveget, *az alkalmazás készen áll*, a ActorClie
 > [!TIP]
 > A Service Fabric Actors Runtime a [színészi módszerekhez kapcsolódó eseményeket és](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)teljesítményszámlálókat bocsát ki. Ezek a diagnosztika és a teljesítmény monitorozása során hasznosak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ arról, [hogy Reliable Actors hogyan használják a Service Fabric platformot](service-fabric-reliable-actors-platform.md).
 
 

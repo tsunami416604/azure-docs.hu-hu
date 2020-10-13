@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514579"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli kapcsolódás a StorSimple 8000 Series eszközhöz
@@ -66,9 +66,9 @@ A Távoli felügyelet engedélyezéséhez hajtsa végre a következő lépéseke
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Távoli felügyelet engedélyezése az eszköz soros konzolján
 1. A soros konzol menüjében válassza az 1. lehetőséget. Az eszköz soros konzoljának használatával kapcsolatos további információkért nyissa meg [Windows PowerShell StorSimple-bővítménye eszközt a soros konzolon keresztül](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. A parancssorba írja be a következőt:`Enable-HcsRemoteManagement –AllowHttp`
+2. A parancssorba írja be a következőt: `Enable-HcsRemoteManagement –AllowHttp`
 3. Értesítést kap a HTTP-vel való kapcsolódás biztonsági sebezhetőségéről az eszközhöz való kapcsolódáshoz. Ha a rendszer kéri, erősítse meg az **Y**beírásával.
-4. Az alábbiak beírásával ellenőrizze, hogy a HTTP engedélyezve van-e:`Get-HcsSystem`
+4. Az alábbiak beírásával ellenőrizze, hogy a HTTP engedélyezve van-e: `Get-HcsSystem`
 5. Ellenőrizze, hogy a **RemoteManagementMode** mező megjeleníti-e a **HttpsAndHttpEnabled**. A következő ábra ezeket a beállításokat jeleníti meg a PuTTY-ban.
    
      ![Soros HTTPS és HTTP engedélyezve](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
@@ -189,7 +189,7 @@ Az előző eljárások mindegyikét alább mutatjuk be.
 3. Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
    
     ![Tanúsítvány importálása varázsló 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
+4. Kattintson a **Finish** (Befejezés) gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
    
     ![Tanúsítvány importálása varázsló 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

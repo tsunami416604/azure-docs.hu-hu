@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281191"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-fejlécek és URL-cím újraírása Application Gateway
 
- Application Gateway lehetővé teszi a kérések és válaszok kiválasztott tartalmának újraírását. Ezzel a szolgáltatással lefordíthatja az URL-címeket, a lekérdezési karakterlánc paramétereit, valamint módosíthatja a kérések és válaszok fejléceit. Lehetővé teszi olyan feltételek hozzáadását is, amelyek biztosítják, hogy az URL-cím vagy a megadott fejlécek csak akkor legyenek újraírva, ha bizonyos feltételek teljesülnek. Ezek a feltételek a kérelem és a válasz adatain alapulnak.
+ Application Gateway lehetővé teszi a kérések és válaszok kiválasztott tartalmának újraírását. Ezzel a szolgáltatással lefordíthatja az URL-címeket, a lekérdezési karakterlánc paramétereit, valamint módosíthatja a kérések és válaszok fejléceit. Lehetővé teszi olyan feltételek hozzáadását is, amelyek biztosítják, hogy az URL-cím vagy a megadott fejlécek csak akkor legyenek újraírva, ha bizonyos feltételek teljesülnek. Ezek a feltételek a kérelem és a válasz információin alapulnak.
 
 >[!NOTE]
 >A HTTP-fejléc és az URL-átírási funkciók csak a [Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md) -hoz érhetők el
@@ -113,21 +113,21 @@ Az Application Gateway a következő kiszolgálói változókat támogatja:
 | client_port               | Az ügyfél portja.                                             |
 | client_tcp_rtt            | Az ügyfél TCP-kapcsolataival kapcsolatos információk. Az TCP_INFO socket beállítást támogató rendszereken érhető el. |
 | client_user               | A HTTP-hitelesítés használatakor a rendszer a hitelesítéshez megadott felhasználónevet adja meg. |
-| gazda                      | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` Host érték lesz`contoso.com` |
+| gazda                      | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` Host érték lesz `contoso.com` |
 | cookie_*neve*             | A *név* cookie.                                           |
 | http_method               | Az URL-kérelem elvégzéséhez használt metódus. Például: GET vagy POST. |
 | http_status               | A munkamenet állapota. Például: 200, 400 vagy 403.           |
 | http_version              | A kérelem protokollja. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
-| query_string              | A kért URL-cím "?" értékét követő változó/érték párok listája. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING érték lesz`id=123&title=fabrikam` |
+| query_string              | A kért URL-cím "?" értékét követő változó/érték párok listája. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING érték lesz `id=123&title=fabrikam` |
 | received_bytes            | A kérelem hossza (beleértve a kérelmek sorát, a fejlécet és a kérelem törzsét). |
 | request_query             | A kérés sorában szereplő argumentumok                           |
 | request_scheme            | A kérési séma: http vagy HTTPS.                           |
-| request_uri               | A teljes eredeti kérelem URI-ja (argumentumokkal). Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI érték lesz`/article.aspx?id=123&title=fabrikam` |
+| request_uri               | A teljes eredeti kérelem URI-ja (argumentumokkal). Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI érték lesz `/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Az ügyfélnek eljuttatott bájtok száma.                        |
 | server_port               | A kérelmet fogadó kiszolgáló portja.              |
 | ssl_connection_protocol   | Egy létesített TLS-kapcsolat protokollja.               |
 | ssl_enabled               | "On", ha a kapcsolatok TLS módban működnek. Ellenkező esetben üres karakterláncot kell megadni. |
-| uri_path                  | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path érték lesz`/article.aspx` |
+| uri_path                  | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path érték lesz `/article.aspx` |
 
  
 
@@ -205,23 +205,23 @@ Ha olyan forgatókönyveket szeretne elérni, amelyekben a háttér-készletet a
 
 **2. lépés (a):** Hozzon létre egy Újraírási készletet, amelynek 3 Újraírási szabálya van: 
 
-* Az első szabály olyan feltétellel rendelkezik, amely ellenőrzi a *QUERY_STRING* változót a *Kategória = cipők* esetében, és olyan művelettel rendelkezik, amely átírja az URL-útvonalat a/*listing1* , és **újraértékeli az elérésiút-leképezést** engedélyezve
+* Az első szabály olyan feltétellel rendelkezik, amely ellenőrzi a *QUERY_STRING*  változót a *Kategória = cipők* esetében, és olyan művelettel rendelkezik, amely átírja az URL-útvonalat a/*listing1* , és **újraértékeli az elérésiút-leképezést** engedélyezve
 
-* A második szabály olyan feltétellel rendelkezik, amely ellenőrzi a *QUERY_STRING* változót a *Kategória = táskák* esetében, és olyan művelettel rendelkezik, amely átírja az URL-útvonalat a/*listing2* , és **újraértékeli az elérésiút-leképezést** engedélyezve
+* A második szabály olyan feltétellel rendelkezik, amely ellenőrzi a *QUERY_STRING*  változót a *Kategória = táskák* esetében, és olyan művelettel rendelkezik, amely átírja az URL-útvonalat a/*listing2*  , és **újraértékeli az elérésiút-leképezést** engedélyezve
 
 * A harmadik szabály olyan feltételt tartalmaz, amely ellenőrzi a *Kategória = kellékek* *QUERY_STRING* változóját, és olyan műveletet tartalmaz, amely átírja az URL-címet/*listing3* , és **újraértékeli az elérésiút-leképezést** .
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Újraírási forgatókönyv 1-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
 
  
 
 **2. lépés (b):** Az Újraírási készlet hozzárendelése a fenti elérésiút-alapú szabály alapértelmezett elérési útjával
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Újraírási forgatókönyv 1-3.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
 
 Ha a felhasználó *contoso.com/Listing?category=any*kér, akkor a rendszer az alapértelmezett elérési utat fogja egyeztetni, mivel az elérésiút-leképezésben (/listing1,/listing2,/listing3) található egyik elérésiút-minta sem egyezik. Mivel ezzel az útvonallal társította a fenti Újraírási készletet, a rendszer kiértékeli ezt az Újraírási készletet. Mivel a lekérdezési karakterlánc nem felel meg az Újraírási készletben szereplő 3 Újraírási szabály feltételének, ezért nem kerül sor újraírásra, így a kérést a rendszer változatlanul az alapértelmezett elérési úttal ( *GenericList*) társított háttérre irányítja.
 
- Ha a felhasználó *contoso.com/Listing?category=Shoes kér,* akkor a rendszer az alapértelmezett elérési utat fogja megfeleltetni. Ebben az esetben azonban az első szabály feltétele megegyezik, és ezért a feltételhez társított művelet lesz végrehajtva, amely újraírja az URL-útvonalat a/*listing1* , és újraértékeli az elérési út térképét. Ha a rendszer újraértékeli az elérési utat, a kérelem most már megegyezik a minta */listing1* társított útvonallal, és a kérést a rendszer az ehhez a mintához társított háttérre irányítja, amely ShoesListBackendPool
+ Ha a felhasználó *contoso.com/Listing?category=Shoes kér,* akkor a rendszer az alapértelmezett elérési utat fogja megfeleltetni. Ebben az esetben azonban az első szabály feltétele megegyezik, és ezért a feltételhez társított művelet lesz végrehajtva, amely újraírja az URL-útvonalat a/*listing1*  , és újraértékeli az elérési út térképét. Ha a rendszer újraértékeli az elérési utat, a kérelem most már megegyezik a minta */listing1* társított útvonallal, és a kérést a rendszer az ehhez a mintához társított háttérre irányítja, amely ShoesListBackendPool
 
 >[!NOTE]
 >Ez a forgatókönyv kiterjeszthető bármely fejlécre vagy cookie-értékre, URL-útvonalra, lekérdezési sztringre vagy kiszolgálói változóra a megadott feltétel alapján, és alapvetően lehetővé teszi a kérelmek ezen feltételek alapján történő átirányítását.
@@ -232,13 +232,13 @@ Vegyünk egy olyan forgatókönyvet, amelyben a felhasználó számára láthat�
 
 Ebben az esetben Application Gateway rögzíthet paramétereket az URL-címről, és hozzáadhat lekérdezési karakterlánc kulcs-érték párokat az URL-címről. Tegyük fel például, hogy a felhasználó újra szeretné írni a- `https://www.contoso.com/fashion/shirts` `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` t, a következő URL-írási konfiguráción keresztül.
 
-**Feltétel** – ha a kiszolgálói változó `uri_path` megegyezik a mintázattal`/(.+)/(.+)`
+**Feltétel** – ha a kiszolgálói változó `uri_path` megegyezik a mintázattal `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-Újraírási forgatókönyv 2-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
 
-**Művelet** – az URL-cím `buy.aspx` és a lekérdezési karakterlánc beállítása a következőre:`category={var_uri_path_1}&product={var_uri_path_2}`
+**Művelet** – az URL-cím `buy.aspx` és a lekérdezési karakterlánc beállítása a következőre: `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-Újraírási forgatókönyv 2-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
 
 A fentiekben ismertetett forgatókönyvhöz kapcsolódó lépésenkénti útmutató: az [URL-cím újraírása Application Gateway használatával Azure Portal](rewrite-url-portal.md)
 
@@ -248,11 +248,11 @@ URL-cím újraírása esetén Application Gateway a kérésnek a háttérbe val�
 
 URL-átirányítás esetén Application Gateway átirányítási választ küld az ügyfélnek az új URL-címmel. Ehhez viszont az ügyfélnek újra el kell küldenie a kérését az átirányításban megadott új URL-címre. Az URL-cím, amelyet a felhasználó lát a böngészőben, frissíti az új URL-címet
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Újraírás vs átirányítás.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
 
 ## <a name="limitations"></a>Korlátozások
 
-- Ha egy válasznak több fejléce is van ugyanazzal a névvel, akkor az egyik fejléc értékének átírása miatt a rendszer eldobja a válasz többi fejlécét. Ez általában a Set-Cookie fejléctel fordulhat elő, mert a válaszban több Set-Cookie fejléc is lehet. Az egyik ilyen eset az, amikor app Service-t használ egy Application Gateway-vel, és konfigurálta a cookie-alapú munkamenet-affinitást az Application gatewayben. Ebben az esetben a válasz két set-cookie-fejlécet tartalmaz: az egyiket az App Service használja, például: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` és egy másik az Application Gateway-affinitáshoz, például: `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírásával a másik set-cookie fejlécet is eltávolíthatja a válaszból.
+- Ha egy válasznak több fejléce is van ugyanazzal a névvel, akkor az egyik fejléc értékének átírása miatt a rendszer eldobja a válasz többi fejlécét. Ez általában Set-Cookie fejlécnél fordulhat elő, mert egy válaszban több Set-Cookie-fejléc is szerepelhet. Az egyik ilyen eset az, amikor app Service-t használ egy Application Gateway-vel, és konfigurálta a cookie-alapú munkamenet-affinitást az Application gatewayben. Ebben az esetben a válasz két Set-Cookie fejlécet fog tartalmazni: az egyiket az App Service használja, például: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` és egy másikat az Application Gateway-affinitáshoz, például: `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírásával a másik Set-Cookie fejlécet is eltávolíthatja a válaszból.
 - Az újraírások nem támogatottak, ha az Application Gateway úgy van konfigurálva, hogy átirányítsa a kéréseket, vagy megjelenjen egy egyéni hiba lap.
 - A fejlécek nevei a 7230-as [számú RFC-dokumentumban](https://tools.ietf.org/html/rfc7230#page-27)meghatározott alfanumerikus karaktereket és egyedi szimbólumokat tartalmazhatnak. Jelenleg nem támogatjuk az aláhúzás (_) speciális karaktert a fejlécek neveiben.
 - A kapcsolatok és a frissítési fejlécek nem írhatók át

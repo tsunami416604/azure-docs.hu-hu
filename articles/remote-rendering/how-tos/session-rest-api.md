@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90023754"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
@@ -65,11 +65,11 @@ $token = $response.AccessToken;
 
 Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja vissza. Minden más parancshoz szüksége lesz a munkamenet-AZONOSÍTÓra.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/Create | POST |
 
-**Kérelem törzse:**
+**Kérés törzse:**
 
 * maxLeaseTime (TimeSpan): időtúllépési érték, ha a rendszer automatikusan leszereli a munkamenetet
 * modellek (Array): eszközök tárolójának URL-címei a Preload számára
@@ -131,11 +131,11 @@ Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet 
 > [!IMPORTANT]
 > A címbérleti időt mindig a munkamenet kezdete óta teljes idő adja meg. Ez azt jelenti, hogy ha egy órás bérlettel rendelkező munkamenetet hozott létre, és egy másik órára szeretné kiterjeszteni a címbérleti időt, a maxLeaseTime két órára kell frissítenie.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountID*/Sessions/*munkamenet* -azonosító | JAVÍTÁS |
 
-**Kérelem törzse:**
+**Kérés törzse:**
 
 * maxLeaseTime (TimeSpan): időtúllépési érték, ha a rendszer automatikusan leszereli a munkamenetet
 
@@ -171,7 +171,7 @@ RawContentLength  : 0
 
 Ez a parancs az aktív munkamenetek listáját adja vissza.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions | GET |
 
@@ -214,7 +214,7 @@ RawContentLength  : 2
 
 Ez a parancs egy munkamenetre vonatkozó adatokat ad vissza, például a virtuális gép állomásnevét.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet*-/Properties | GET |
 
@@ -257,7 +257,7 @@ RawContentLength  : 60
 
 Ez a parancs leállítja a munkamenetet. A lefoglalt virtuális gép hamarosan visszaigénylésre kerül.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet* -azonosító | DELETE |
 

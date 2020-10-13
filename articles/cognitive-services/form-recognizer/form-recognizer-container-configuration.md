@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538003"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap-felismerő tárolók konfigurálása
@@ -47,7 +47,7 @@ A `Billing` beállítás megadja az Azure-beli _űrlap-felismerő_ erőforrás v
 
 Ez a beállítás a Azure Portalban, az űrlap- **felismerő áttekintés**területén, a **végpont**területen található.
 
-|Kötelező| Name | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](form-recognizer-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -76,7 +76,7 @@ Az űrlap-felismerő tárolóhoz bemeneti csatlakoztatás és kimeneti csatlakoz
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer) csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók engedélyei és a gazdagép csatlakoztatási helyének engedélyei ütköznek.
 
-|Választható| Name | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Kötelező| `Input` | Sztring | A bemeneti csatlakoztatás célja. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Kötelező| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -137,6 +137,6 @@ FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át [a tárolók telepítése és futtatása](form-recognizer-container-howto.md)című ismertetőt.

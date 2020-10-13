@@ -4,13 +4,13 @@ description: Leírja, hogyan lehet testre szabni a Event Grid esemény-kézbesí
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261804"
 ---
-# <a name="set-dead-letter-location-and-retry-policy"></a>Kézbesítetlen levelek helyének és újrapróbálkozási szabályzatának beállítása
+# <a name="set-dead-letter-location-and-retry-policy"></a>A kézbesíthetetlen levelek helyének és az újrapróbálkozási szabályzat beállítása
 
 Esemény-előfizetés létrehozásakor testreszabhatja az események kézbesítésének beállításait. Ebből a cikkből megtudhatja, hogyan állíthatja be a kézbesítetlen levelek helyét, és hogyan szabhatja testre az újrapróbálkozási beállításokat. További információ ezekről a funkciókról: [Event Grid üzenet kézbesítése és újrapróbálkozás](delivery-and-retry.md).
 

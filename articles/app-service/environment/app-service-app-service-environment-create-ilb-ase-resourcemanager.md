@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85833553"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>ILB ASE létrehozása Azure Resource Manager-sablonokkal
@@ -87,8 +87,8 @@ A következő listában szereplő paraméterek szerepelnek az *azuredeploy.param
 * *existingAseLocation*: az a szöveges karakterlánc, amely azt az Azure-régiót tartalmazza, ahol a ILB-központot telepítették.  Például: "az USA déli középső régiója".
 * *pfxBlobString*: a. pfx fájl bementi kódolt karakterlánc-ábrázolása.  A korábban bemutatott kódrészlet használatával másolja a "exportedcert. pfx. b64" fájlban található karakterláncot, és illessze be a *pfxBlobString* attribútum értékeként.
 * *Password (jelszó*): a. pfx fájl védelméhez használt jelszó.
-* *certificateThumbprint*: a Tanúsítvány ujjlenyomata.  Ha ezt az értéket a PowerShellből kéri le (például *$Certificate. *A korábbi kódrészletből származó ujjlenyomatot), az értéket is használhatja.  Ha azonban az értéket a Windows-tanúsítvány párbeszédpanelen másolja, ne felejtse el kihúzni a felesleges helyeket.  A *certificateThumbprint* valahogy így kell kinéznie: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*: a tanúsítvány azonosítására szolgáló, saját maga által választott, felhasználóbarát karakterlánc-azonosító.  A nevet a rendszer a TLS/SSL-tanúsítványt jelképező *Microsoft. Web/Certificates* entitás egyedi Azure Resource Manager azonosítójának részeként használja.  A névnek a következő utótaggal **kell** végződnie: \_ yourASENameHere_InternalLoadBalancingASE.  Ezt az utótagot a portál használja jelzőként, hogy a tanúsítvány a ILB-kompatibilis kiegészítő szolgáltatás biztonságossá tételére szolgál.
+* *certificateThumbprint*: a Tanúsítvány ujjlenyomata.  Ha ezt az értéket a PowerShellből kéri le (például *$Certificate. * A korábbi kódrészletből származó ujjlenyomatot), az értéket is használhatja.  Ha azonban az értéket a Windows-tanúsítvány párbeszédpanelen másolja, ne felejtse el kihúzni a felesleges helyeket.  A *certificateThumbprint* valahogy így kell kinéznie: AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateName*: a tanúsítvány azonosítására szolgáló, saját maga által választott, felhasználóbarát karakterlánc-azonosító.  A nevet a rendszer a TLS/SSL-tanúsítványt jelképező *Microsoft. Web/Certificates* entitás egyedi Azure Resource Manager azonosítójának részeként használja.  A névnek a következő utótaggal **kell** végződnie:  \_ yourASENameHere_InternalLoadBalancingASE.  Ezt az utótagot a portál használja jelzőként, hogy a tanúsítvány a ILB-kompatibilis kiegészítő szolgáltatás biztonságossá tételére szolgál.
 
 Alább látható a *azuredeploy.parameters.js* következő rövidített példája:
 

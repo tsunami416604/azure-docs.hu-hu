@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90020310"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Az Azure Sentinel Azure Security alapterve
@@ -551,13 +551,13 @@ Az Ön felelőssége, hogy előzetesen beolvassa a nem számítási Azure-erőfo
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: a Key Vault a helyreállítható Törlés engedélyezése a kulcsok véletlen vagy rosszindulatú törléssel szembeni megvédéséhez. Abban az esetben, ha egy felhasználó visszavonja a kulcs titkosítási kulcsát, akár törléssel, akár az Azure Sentinel elérésének eltávolításával, egy órán belül az Azure Sentinel tiszteletben tartja a változást, és úgy viselkedik, mintha az adott információ már nem érhető el. Ezen a ponton az állandó tárolási erőforrásokat (például az adatfeldolgozást, az állandó konfigurációs változásokat és az incidensek létrehozását) használó műveletek nem lesznek megtiltva. A korábban tárolt adatértékek nem lesznek törölve, de nem lesznek elérhetők. A nem hozzáférhető adatokra az adatmegőrzési szabályzat vonatkozik, és a szabályzatnak megfelelően törlődik.
+**Útmutató**: a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezése a Key Vault Soft-Delete. Abban az esetben, ha egy felhasználó visszavonja a kulcs titkosítási kulcsát, akár törléssel, akár az Azure Sentinel elérésének eltávolításával, egy órán belül az Azure Sentinel tiszteletben tartja a változást, és úgy viselkedik, mintha az adott információ már nem érhető el. Ezen a ponton az állandó tárolási erőforrásokat (például az adatfeldolgozást, az állandó konfigurációs változásokat és az incidensek létrehozását) használó műveletek nem lesznek megtiltva. A korábban tárolt adatértékek nem lesznek törölve, de nem lesznek elérhetők. A nem hozzáférhető adatokra az adatmegőrzési szabályzat vonatkozik, és a szabályzatnak megfelelően törlődik.
 
 Az egyetlen művelet, amely a titkosítási kulcs visszavonása vagy törlése után lehetséges, fiók törlése.
 
 Ha a hozzáférés vissza lett állítva a visszavonás után, az Azure Sentinel egy órán belül visszaállítja az adatelérést.
 
-- [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft-Delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Az ügyfél által felügyelt kulcsok megismerése az Azure Sentinelben](customer-managed-keys.md)
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256891"
+ms.locfileid: "91873149"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -58,7 +58,7 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
     Előfordulhat, hogy az alkalmazás regisztrációja egy másik felhasználói fiókkal lett létrehozva ebben a bérlőben, egy személyes/fogyasztói fiókban vagy egy másik bérlőben. Győződjön meg arról, hogy a megfelelő fiókkal van bejelentkezve abban a bérlőben, amelyben az alkalmazás regisztrációja létrejött.
 
 - **A multi-Factor Authentication szolgáltatással kapcsolatos hibaüzenetet kapok. Mit tegyek?** 
-    Győződjön meg arról, hogy a [többtényezős hitelesítés](../fundamentals/concept-fundamentals-mfa-get-started.md) engedélyezve van, és szükséges ahhoz a felhasználóhoz, amelyhez be van jelentkezve, és ehhez a forgatókönyvhöz be kell jelentkezni. Az MFA például a következő lehet:
+    Győződjön meg arról, hogy a [többtényezős hitelesítés](../fundamentals/concept-fundamentals-mfa-get-started.md) engedélyezve van, és **szükséges** ahhoz a felhasználóhoz, amelyhez be van jelentkezve, és ehhez a forgatókönyvhöz be kell jelentkezni. Az MFA például a következő lehet:
     - Mindig szükséges ahhoz a felhasználóhoz, amelyhez bejelentkezik
     - [Az Azure-felügyelethez szükséges](../conditional-access/howto-conditional-access-policy-azure-management.md).
     - [Azon rendszergazda típusához szükséges](../conditional-access/howto-conditional-access-policy-admin-mfa.md) , amelyhez be van jelentkezve.
@@ -226,7 +226,9 @@ Ez a funkció Microsoft fogyasztói fiókok esetén nem támogatott. Csak az Azu
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Akkor következik be, amikor a többtényezős hitelesítés nem lett elvégezve, mielőtt a rendszer megpróbálta hozzáadni a hitelesített közzétevőt az alkalmazáshoz. További információért lásd: [gyakori problémák](#common-issues) .
+Akkor következik be, amikor a többtényezős hitelesítés nem lett elvégezve, mielőtt a rendszer megpróbálta hozzáadni a hitelesített közzétevőt az alkalmazáshoz. További információért lásd: [gyakori problémák](#common-issues) . Megjegyzés: az MFA-t ugyanabban a munkamenetben kell végrehajtani, amikor ellenőrzött közzétevőt próbál hozzáadni. Ha az MFA engedélyezve van, de nem szükséges végrehajtani a munkamenetben, a kérelem sikertelen lesz.   
+
+A megjelenített hibaüzenet a következő: "a rendszergazda által végzett konfiguráció módosítása miatt, vagy ha új helyre költözött át, a folytatáshoz a multi-Factor Authentication használata szükséges."
 
 ## <a name="next-steps"></a>Következő lépések
 

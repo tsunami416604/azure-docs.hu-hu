@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 9626ea5fa03ac956670c879506f458fa75c5768e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>Oktatóanyag: Azure Active Directory integráció a SumTotalCentral
@@ -69,7 +69,7 @@ Az Azure AD egyszeri bejelentkezés SumTotalCentral való konfigurálásához é
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
     * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-2. **[SUMTOTALCENTRAL SSO konfigurálása](#configure-sumtotalcentral-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[SUMTOTALCENTRAL SSO konfigurálása](#configure-sumtotalcentral-sso)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
     * **[Hozzon létre SumTotalCentral-teszt felhasználót](#create-sumtotalcentral-test-user)** – hogy a SumTotalCentral Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -95,9 +95,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     `https://<subdomain>.sumtotalsystems.com/Broker/Token/CUSTOM_URL`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az érték beszerzéséhez forduljon a SumTotalCentral ügyfélszolgálati [csapatához](http://www.sumtotalsystems.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges Sign-On URL-címmel és a válasz URL-címével. Az érték beszerzéséhez forduljon a SumTotalCentral ügyfélszolgálati [csapatához](http://www.sumtotalsystems.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürt
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563726"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
@@ -198,7 +198,7 @@ A fürt irányítópult paneljének **csomópont-figyelő** szakasza a kifogást
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
 A fürtben megadott NodeTypes mindegyike egy virtuálisgép-méretezési csoportba kerül, amely beállítja a beállítását. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezen a ponton van egy biztonságos fürt, amely tanúsítványokat használ a felügyeleti hitelesítéshez. Ezután [kapcsolódjon a fürthöz](service-fabric-connect-to-secure-cluster.md) , és Ismerje meg, hogyan [kezelheti az alkalmazási titkokat](service-fabric-application-secret-management.md).  Emellett megismerheti [Service Fabric támogatási lehetőségeit](service-fabric-support.md).
 
 <!-- Links -->

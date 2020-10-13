@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255343"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
@@ -61,12 +61,12 @@ Azure AD B2C bérlőhöz kapcsolódó előfizetés használható Azure AD B2C ha
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a használni kívánt Azure-előfizetést tartalmazza (*nem* pedig a Azure ad B2C bérlőt tartalmazó könyvtár).
 3. Válassza az **erőforrás létrehozása**lehetőséget, írja be a `Active Directory B2C` **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 5. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel**lehetőséget.
 6. Válasszon ki egy **Azure ad B2C bérlőt** a legördülő listából. Csak azok a bérlők jelennek meg, amelyekhez Ön globális rendszergazda, és amelyek még nem kapcsolódnak előfizetéshez. A **Azure ad B2C erőforrás neve** mező a kiválasztott Azure ad B2C-bérlő tartománynevével van feltöltve.
 7. Válasszon ki egy aktív Azure- **előfizetést** , amelynek Ön a rendszergazdája.
 8. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, majd adja meg az **erőforráscsoport helyét**. Az erőforráscsoport beállításai nincsenek hatással a Azure AD B2C bérlői helyére, teljesítményére vagy számlázási állapotára.
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
     ![A Azure Portal Azure AD B2C erőforrás-létrehozási lapja](./media/billing/portal-01-create-b2c-resource-page.png)
 
@@ -78,7 +78,7 @@ A bérlőt a Azure AD B2C Bérlővel használni kívánt funkciók alapján kell
 
 Az árképzési szintek módosításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely az Azure B2C-bérlőhöz kapcsolódó Azure-előfizetést tartalmazza (*ne* válassza ki a Azure ad B2C bérlőt).
 
@@ -125,7 +125,7 @@ A következőkben megtudhatja, hogyan válthat egy meglévő Azure AD B2C erőfo
 
 A MAU-alapú mérés az előfizetés/erőforrás tulajdonosaként azonnal engedélyezve van, erősítse meg a változást. A havi számla a változás és a MAU új egységeinek változása után számlázza a hitelesítési egységeket.
 
-A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanezek a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Például:
+A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanezek a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Példa:
 
 * A contoso B2C-bérlő 1 000 felhasználóval rendelkezik. 250 a felhasználók egy adott hónapban aktívak. Az előfizetés rendszergazdája a hónap 10. napján megváltoztathatja a hitelesítést a havi aktív felhasználók (MAU) esetében.
 * Az 1 – 10. számlázási díj számlázása az egyes hitelesítési modell alapján történik.
@@ -186,6 +186,6 @@ Ha a forrás-és a cél-előfizetések különböző Azure Active Directory bér
 1. Hozza létre újra a számlázási hivatkozást a cél előfizetésben a fenti [hivatkozás létrehozása](#create-the-link) eljárás követésével.
 1. A Azure AD B2C-erőforrás már át lett helyezve a cél Azure-előfizetésre (a célként megadott Azure Active Directoryhoz csatolva), és ezt az előfizetést követően kell kiszámlázni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legfrissebb díjszabási információkért lásd: [Azure Active Directory B2C díjszabása](https://azure.microsoft.com/pricing/details/active-directory-b2c/).

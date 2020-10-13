@@ -12,10 +12,10 @@ ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532517"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
@@ -304,7 +304,7 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)

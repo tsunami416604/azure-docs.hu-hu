@@ -14,10 +14,10 @@ ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458195"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Hálózati biztonsági csoportok szűrése hálózati forgalom alapján
@@ -52,7 +52,7 @@ A kimenő forgalom esetében az Azure először a hálózati biztonsági csoport
 - **VM4**: A teljes hálózati forgalom engedélyezve van a *VM4* gépről, mivel a virtuális gép hálózati adapteréhez vagy a *Subnet3* alhálózathoz nincs hálózati biztonsági csoport rendelve.
 
 
-## <a name="intra-subnet-traffic"></a>Alhálózaton belüli forgalom
+## <a name="intra-subnet-traffic"></a>Intra-Subnet forgalom
 
 Fontos megjegyezni, hogy az alhálózathoz társított NSG biztonsági szabályai befolyásolhatják a virtuális gépek közötti kapcsolatot. Ha például egy olyan szabályt ad hozzá a *NSG1* -hez, amely megtagadja az összes bejövő és kimenő forgalmat, a *VM1* és a *VM2* többé nem fog tudni kommunikálni egymással. Egy másik szabályt kifejezetten hozzá kell adni ahhoz, hogy ezt engedélyezzék. 
 

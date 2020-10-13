@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015483"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
@@ -115,9 +115,9 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
    
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -183,7 +183,7 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
 
      * **Csak a létrehozás során** – alkalmazza ezt a leképezést kizárólag felhasználói létrehozási műveletekre
 
-6. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
+6. A leképezések mentéséhez kattintson a Attribute-Mapping szakasz tetején található **Mentés** gombra.
 
 
 ## <a name="enable-and-launch-user-provisioning"></a>A felhasználók üzembe helyezésének engedélyezése és elindítása
@@ -210,7 +210,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 * [További információ a bejövő kiépítés támogatott munkanapokhoz tartozó attribútumairól](../app-provisioning/workday-attribute-reference.md)
 * [Tudnivalók a munkanap visszaírási konfigurálásáról](workday-writeback-tutorial.md)
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)

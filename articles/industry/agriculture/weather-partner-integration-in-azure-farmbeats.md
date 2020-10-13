@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86496995"
 ---
 # <a name="weather-partner-integration"></a>Időjárási partner integrációja
@@ -18,7 +18,7 @@ Ez a cikk az Azure FarmBeats- **összekötő** Docker-összetevőjével kapcsola
 
  > [!NOTE]
  > Ebben a dokumentációban egy, a NOAA által az Azure Open-adatkészletek használatával létrehozott referenciát fogjuk használni, amely a következő címen érhető el: [https://github.com/azurefarmbeats/noaa_docker](https://github.com/azurefarmbeats/noaa_docker) .
- > A megfelelő Docker-rendszerkép a következő címen érhető el:[https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
+ > A megfelelő Docker-rendszerkép a következő címen érhető el: [https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
 
 Az időjárási partnereknek meg kell adniuk egy Docker-rendszerképet/programot (az alább említett specifikációkkal), és a Docker-rendszerképet egy, az ügyfelek által elérhető tároló-beállításjegyzékben kell üzemeltetni. Az időjárási partnernek a következő információkat kell megadnia ügyfeleinek:
 
@@ -36,10 +36,10 @@ A fenti Docker-információk használatával az ügyfél egy időjárási partne
 
 A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. További információ az API-król és a hozzájuk kapcsolódó kérésekről és válaszokról: [FarmBeats hencegés](https://aka.ms/farmbeatsswagger). 
 
-Ha telepítette a FarmBeats-t, akkor a FarmBeats a következő helyen érheti el:`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
+Ha telepítette a FarmBeats-t, akkor a FarmBeats a következő helyen érheti el: `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 Vegye figyelembe, hogy a "-API" a FarmBeats-webhely nevéhez van hozzáfűzve.
-Az API-végpont a következőket teszi:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
+Az API-végpont a következőket teszi: `https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub lib
 
@@ -55,7 +55,7 @@ A FarmBeats tulajdonosi hitelesítést használ, és az API-k a kérelem fejléc
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-A hozzáférési jogkivonatot az ügyfél FarmBeats-példányán futó Azure-függvénytől kérheti le. Az Azure Function URL-címet a Docker program argumentumként kapja meg, a hozzáférési jogkivonatot pedig az URL-címre vonatkozó GET kéréssel lehet beszerezni. Az URL-cím válasza a hozzáférési jogkivonatot fogja tartalmazni. A Datahub lib segítő függvények lehetővé teszik a partnerek számára a hozzáférési token beszerzését. További részleteket [itt](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py) talál.
+A hozzáférési jogkivonatot az ügyfél FarmBeats-példányán futó Azure-függvénytől kérheti le. Az Azure Function URL-címet a Docker program argumentumként kapja meg, a hozzáférési jogkivonatot pedig az URL-címre vonatkozó GET kéréssel lehet beszerezni. Az URL-cím válasza a hozzáférési jogkivonatot fogja tartalmazni. A Datahub lib segítő függvények lehetővé teszik a partnerek számára a hozzáférési token beszerzését. További részletek [.](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py)
 
 A hozzáférési jogkivonat csak néhány órán át érvényes, és a lejáratkor újra kell kérni.
 
@@ -85,7 +85,7 @@ Az API szolgáltatás szerializálja ezt a dict, és egy kulcstartóban tárolja
 ```
 Vegye figyelembe, hogy a "partnerCredentials" a partner regisztrációja során az ügyfél által megadott pontos módon lesz elérhető.
 
-A FarmBeats lib segítő függvények lehetővé teszik a partnerek számára a hitelesítő adatok olvasását a tevékenység tulajdonságaiból. További részleteket [itt](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py) talál.
+A FarmBeats lib segítő függvények lehetővé teszik a partnerek számára a hitelesítő adatok olvasását a tevékenység tulajdonságaiból. További részletek [.](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py)
 
 A fájl élettartama csak a Docker-kód végrehajtása során lesz törölve, és a Docker futtatásának befejeződése után törlődik.
 
@@ -98,7 +98,7 @@ Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amik
 **Fejléc** | **Leírás és példa**
 --- | ---
 Content-Type | A kérelem formátuma (Content-Type: Application/ <format> ). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
-Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <hozzáférés-token>
+Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <Access-Token>
 Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
 
 ## <a name="data-format"></a>Adatformátum
@@ -136,7 +136,7 @@ Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-fe
 
   WeatherDataModel | Leírás |
   --- | ---
-  Név  | Az időjárási adatmodell neve |
+  Name (Név)  | Az időjárási adatmodell neve |
   Leírás  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | Az adatszolgáltató által definiált további tulajdonságok. |
   weatherMeasures > neve  | Az időjárási mérték neve. Például humidity_max |
@@ -148,7 +148,7 @@ Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-fe
   weatherMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   weatherMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről. |
   **JobType** | **Leírás** |
-  Name  | a feladattípus neve – például Get_Daily_Forecast; az ügyfél által az időjárási adatok beolvasása érdekében futtatandó feladatok|
+  Name (Név)  | a feladattípus neve – például Get_Daily_Forecast; az ügyfél által az időjárási adatok beolvasása érdekében futtatandó feladatok|
   pipelineDetails > paraméterek > neve  | a paraméter neve |
   pipelineDetails > paraméterek > típusa | Karakterlánc, int, float, bool vagy Array |
   pipelineDetails > paraméterek > isRequired | logikai igaz, ha kötelező paraméter, hamis, ha nem; az alapértelmezett érték TRUE (igaz) |
@@ -159,7 +159,7 @@ Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-fe
   **WeatherDataLocation** | **Leírás** |
   weatherDataModelId  | A rendszerindításkor létrehozott megfelelő WeatherDataModel azonosítója|
   location  | a szélesség, a hosszúság és a jogosultságszint-emelést jelöli |
-  Name | Az objektum neve |
+  Name (Név) | Az objektum neve |
   Leírás | Leírás |
   farmId | nem **kötelező** Az ügyfél által a feladatok paraméterének részeként megadott Farm azonosítója |
   Tulajdonságok  | További tulajdonságok a gyártótól.
@@ -249,7 +249,7 @@ Például itt van egy telemetria-üzenet:
 
 Mivel a partneri feladat a meglévő feladat-keretrendszerben fog futni, a hibák ugyanúgy jelentkeznek be, mint a FarmBeats-ban lévő többi meglévő feladat hibái (például GetFarmData, SensorPlacement stb.). Az ADF-folyamaton belül futó ADF-tevékenység a STDERR és az STDOUT-ot is naplózza. Mindkét fájl a "datahublogs-xxx" Storage-fiókban érhető el a FarmBeats erőforráscsoport alatt.
 
-A Datahub lib segítő függvények lehetővé teszik a naplózást a teljes Datahub-naplók részeként. További részleteket [itt](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py) talál.
+A Datahub lib segítő függvények lehetővé teszik a naplózást a teljes Datahub-naplók részeként. További részletek [.](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py)
 
 **A beállítások vagy a támogatás hibáinak megoldása**
 
@@ -267,6 +267,6 @@ A FarmBeats támogatja az új szenzor mértékének típusát és egységeit. Ve
 
 További információ a/ExtendedType API-ról: [hencegés](https://aka.ms/FarmBeatsSwagger).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már rendelkezik egy összekötő Docker-vel, amely integrálható a FarmBeats. A következőben láthatja, hogyan szerezhet be időjárási adatait a Docker használatával a FarmBeats. Lásd: [időjárási információk beolvasása](get-weather-data-from-weather-partner.md).

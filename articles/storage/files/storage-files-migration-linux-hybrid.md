@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563505"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás Linuxról hibrid Felhőbeli üzembe helyezésre Azure File Sync
@@ -215,7 +215,7 @@ Ha a Windows Server-példány elegendő rendelkezésre álló kapacitással rend
 
 A következő szakaszban található hivatkozásra kattintva megtudhatja, hogyan hibaelhárítási Azure File Sync problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-fájlmegosztás és a Azure File Sync. A következő cikkek speciális beállításokat, ajánlott eljárásokat és hibaelhárítási segítséget tartalmaznak. Ezek a cikkek szükség szerint az [Azure file share-dokumentációra](storage-files-introduction.md) mutató hivatkozást tartalmaznak.
 

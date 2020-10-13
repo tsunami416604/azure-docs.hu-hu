@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564321"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
@@ -344,7 +344,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>A Windows Server Container operációs rendszer és a gazdagép operációs rendszerének kompatibilitása
 
-A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Például:
+A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Példa:
  
 - A Windows Server 1709-es verziójának használatával létrehozott Windows Server-tárolók nem működnek a Windows Server 2016-es verzióját futtató gazdagépeken. 
 - A Windows Server 2016 használatával létrehozott Windows Server-tárolók Hyper-V elkülönítési módban működnek, csak a Windows Server 1709-es verzióját futtató gazdagépeken. 
@@ -352,7 +352,7 @@ A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszeré
  
 További információ: a [Windows-tároló verziójának kompatibilitása](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Például:
+Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Példa:
 
 - Győződjön meg arról, hogy a fürt csomópontjain lévő operációs rendszernek megfelelő operációs rendszerrel rendelkező tárolókat telepít.
 - Győződjön meg arról, hogy a tároló alkalmazáshoz megadott elkülönítési mód konzisztens a tároló operációs rendszer azon csomópontjának támogatásával, amelyen üzembe van helyezve.
@@ -596,7 +596,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514921"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatikus vész-helyreállítási megoldás a StorSimple-on üzemeltetett fájlmegosztás Azure Site Recovery használatával
@@ -93,7 +93,7 @@ Ehhez a lépéshez elő kell készítenie a helyszíni fájlkiszolgáló környe
       
 1. Kattintson a **Tovább** gombra.
 1. Fogadja el a szerződés **feltételeit** , majd kattintson a **tovább**gombra.
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Finish** (Befejezés) gombra.
 1. Fájlmegosztás létrehozása StorSimple-tárolóból kivésett kötetek használatával. További információ: [az StorSimple Manager szolgáltatás használata kötetek kezelésére](storsimple-manage-volumes.md).
    
    1. A helyszíni virtuális gépeken nyomja le a Windows billentyű + Q billentyűkombinációt, és keressen rá az **iSCSI**kifejezésre.
@@ -104,7 +104,7 @@ Ehhez a lépéshez elő kell készítenie a helyszíni fájlkiszolgáló környe
    1. Hozzon létre mennyiségi tároló (ka) t, majd hozzon létre köteteket. (Ezek a kötetek a fájlkiszolgáló virtuális gépeken található fájlmegosztás (ok) ra vonatkoznak). Másolja a kezdeményező nevét, és adjon meg egy megfelelő nevet a Access Control rekordok számára a kötetek létrehozásakor.
    1. Válassza a **Konfigurálás** lapot, és jegyezze fel az eszköz IP-címét.
    1. A helyszíni virtuális gépeken nyissa meg újra az **iSCSI-kezdeményezőt** , és adja meg az IP-címet a gyors kapcsolódás szakaszban. Kattintson a **gyors kapcsolódás** lehetőségre (az eszköznek most már csatlakoztatva kell lennie).
-   1. Nyissa meg a Azure Portal, és válassza a **kötetek és eszközök** lapot. kattintson az **automatikus konfigurálás**elemre. A létrehozott kötetnek meg kell jelennie.
+   1. Nyissa meg a Azure Portal, és válassza a **kötetek és eszközök** lapot. Kattintson az **automatikus konfigurálás**elemre. A létrehozott kötetnek meg kell jelennie.
    1. A portálon válassza az **eszközök** fület, majd válassza az **új virtuális eszköz létrehozása lehetőséget.** (Feladatátvétel esetén ez a virtuális eszköz lesz használatban). Ezt az új virtuális eszközt offline állapotban is tárolhatja, hogy elkerülje a további költségeket. A virtuális eszköz offline állapotba helyezéséhez nyissa meg a portál **Virtual Machines** szakaszát, és állítsa le.
    1. Térjen vissza a helyszíni virtuális gépekhez, és nyissa meg a Lemezkezelés szolgáltatást (nyomja meg a Windows billentyű + X billentyűkombinációt, és válassza a **Lemezkezelés**lehetőséget).
    1. A rendszer néhány további lemezt is észrevesz (a létrehozott kötetek számától függően). Kattintson a jobb gombbal az elsőre, válassza a **lemez inicializálása**lehetőséget, majd kattintson az **OK gombra**. Kattintson a jobb gombbal a le nem **foglalt** szakaszra, válassza az **új egyszerű kötet**lehetőséget, rendeljen hozzá egy meghajtóbetűjelet, és fejezze be a varázslót.
@@ -170,7 +170,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
    
 1. Az Automation-fiókban kattintson a **változók** &gt; **változó hozzáadása** elemre, és adja hozzá a következő változókat. Dönthet úgy is, hogy titkosítja ezeket az eszközöket. Ezek a változók helyreállítási tervre vonatkoznak. Ha a helyreállítási terv, amelyet a következő lépésben fog létrehozni, a név TestPlan, akkor a változók TestPlan-StorSimRegKey, TestPlan-AzureSubscriptionName és így tovább.
 
-   - **BaseUrl**: a Resource Manager URL-címe az Azure-felhőhöz. Get **-AzEnvironment használata | Select-Object name, ResourceManagerUrl** parancsmag.
+   - **BaseUrl**: a Resource Manager URL-címe az Azure-felhőhöz. Get **-AzEnvironment | Select-Object name, ResourceManagerUrl** parancsmag használata.
    - _RecoveryPlanName_**-ResourceGroupName**: a StorSimple erőforrással rendelkező Resource Manager-csoport.
    - _RecoveryPlanName_**-ManagerName**: a StorSimple-eszközt tartalmazó StorSimple-erőforrás.
    - _RecoveryPlanName_**-DeviceName**: a feladatátvételt igénylő StorSimple-eszköz.

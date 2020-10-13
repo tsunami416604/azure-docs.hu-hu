@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744805"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault naplózás engedélyezése
@@ -183,7 +183,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzSt
 
 Ha ezt a második parancsmagot a PowerShellben futtatja, a **/** Blobok neveiben lévő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -213,7 +213,7 @@ A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key 
 
 További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Elméleti információk, beleértve a Key Vault naplók értelmezését: [Key Vault naplózás](logging.md)
 - A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata webalkalmazásból](tutorial-net-create-vault-azure-web-app.md).

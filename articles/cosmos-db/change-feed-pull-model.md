@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
 ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015636"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
@@ -39,13 +39,13 @@ Az alábbi helyzetekben érdemes megfontolni a lekéréses modell használatát:
 
 Íme néhány lényeges különbség a változási hírcsatorna-feldolgozó és a lekérési modell között:
 
-|Jellemző  | Változáscsatorna feldolgozója| Lekéréses modell |
+|Szolgáltatás  | Változáscsatorna feldolgozója| Lekéréses modell |
 | --- | --- | --- |
 | A változási hírcsatorna aktuális pontjának nyomon követése | Bérlet (Azure Cosmos DB tárolóban tárolva) | Folytatási token (memóriában tárolt vagy manuálisan megőrzött) |
 | A korábbi módosítások visszajátszásának lehetősége | Igen, leküldéses modellel | Igen, lekéréses modellel|
 | A jövőbeli változások lekérdezése | Automatikusan ellenőrzi a módosításokat a felhasználó által megadott érték alapján `WithPollInterval` | Kézi |
 | A teljes tároló változásainak feldolgozása | Igen, és automatikusan párhuzamosan, több szálon/gépen, ugyanarról a tárolóból| Igen, és manuálisan párhuzamosan a FeedTokens használatával |
-| Csak egyetlen partíciós kulcs változásainak feldolgozása | Nem támogatott | Yes|
+| Csak egyetlen partíciós kulcs változásainak feldolgozása | Nem támogatott | Igen|
 | Támogatási szint | Általánosan elérhető | Előnézet |
 
 ## <a name="consuming-an-entire-containers-changes"></a>Teljes tároló módosításainak felhasználása

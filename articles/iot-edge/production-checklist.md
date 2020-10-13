@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669610"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
@@ -285,7 +285,7 @@ A módosítások életbe léptetéséhez újra kell indítani a tároló motorj�
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Lehetőség: az egyes tároló modulok naplózási beállításainak módosítása
 
-Ezt megteheti az egyes modulok **createOptions** . Például:
+Ezt megteheti az egyes modulok **createOptions** . Példa:
 
 ```yml
 "createOptions": {

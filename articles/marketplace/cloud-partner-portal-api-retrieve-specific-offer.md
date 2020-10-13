@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271841"
 ---
 # <a name="retrieve-a-specific-offer"></a>Adott ajánlat beolvasása
@@ -42,7 +42,7 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 | publisherId | publisherId. Például: contoso                                                        | Sztring        |
 | offerId     | Az ajánlatot egyedileg azonosító GUID.                                                 | Sztring        |
 | version     | A beolvasott ajánlat verziója. Alapértelmezés szerint a rendszer beolvassa a legújabb ajánlat verzióját. | Egész szám       |
-| slotId      | Az a tárolóhely, amelyből az ajánlatot le kell kérni, az alábbiak egyike lehet:      <br/>  - `Draft`(alapértelmezés) lekérdezi a jelenleg vázlatos ajánlat verzióját.  <br/>  -  `Preview`a jelenleg előzetes verzióban elérhető ajánlat verziószámának beolvasása.     <br/>  -  `Production`az aktuálisan éles üzemben lévő ajánlat verziószámának beolvasása.          |      Enum |
+| slotId      | Az a tárolóhely, amelyből az ajánlatot le kell kérni, az alábbiak egyike lehet:      <br/>  - `Draft` (alapértelmezés) lekérdezi a jelenleg vázlatos ajánlat verzióját.  <br/>  -  `Preview` a jelenleg előzetes verzióban elérhető ajánlat verziószámának beolvasása.     <br/>  -  `Production` az aktuálisan éles üzemben lévő ajánlat verziószámának beolvasása.          |      Enum |
 | api-verzió | Az API legújabb verziója                                                                    | Dátum          |
 |  |  |  |
 
@@ -186,10 +186,10 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 
 | **Kód**  | **Leírás**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`– A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.               |
-|  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                                                 |
-|  403      | `Forbidden`– Az ügyfél nem fér hozzá a megadott névtérhez.                                                        |
-|  404      | `Not found`– A megadott entitás nem létezik. Az ügyfélnek ellenőriznie kell a publisherId, a offerId és a verziót (ha meg van adva).      |
+|  200      | `OK` – A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.               |
+|  400      | `Bad/Malformed request` – A hiba-válasz törzse több információt is tartalmazhat.                                                 |
+|  403      | `Forbidden` – Az ügyfél nem fér hozzá a megadott névtérhez.                                                        |
+|  404      | `Not found` – A megadott entitás nem létezik. Az ügyfélnek ellenőriznie kell a publisherId, a offerId és a verziót (ha meg van adva).      |
 |  |  |
 
 ### <a name="offer-status"></a>Ajánlat állapota
@@ -199,7 +199,7 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 |  NeverPublished             | Az ajánlatot még soha nem tették közzé.               |
 |  NotStarted                 | Az ajánlat új, de nem indult el.              |
 |  WaitingForPublisherReview  | Az ajánlat a közzétevő jóváhagyására vár.      |
-|  Fut                    | Az ajánlatok beküldése folyamatban van.          |
+|  Futó                    | Az ajánlatok beküldése folyamatban van.          |
 |  Sikeres                  | Az ajánlat küldése befejeződött a feldolgozás során.    |
 |  Megszakítva                   | Az ajánlat beküldését megszakították.                |
 |  Sikertelen                     | Az ajánlat küldése nem sikerült.                      |

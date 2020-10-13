@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054772"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple-Snapshot Manager használata a kötetek létrehozásához és kezeléséhez
@@ -50,7 +50,7 @@ Ha a **mennyiségi csoportok** csomópontra kattint, az **eredmények** ablaktá
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Név |A **Name (név** ) oszlop tartalmazza a kötet csoportjának nevét. |
+| Name (Név) |A **Name (név** ) oszlop tartalmazza a kötet csoportjának nevét. |
 | Alkalmazás |Az **alkalmazások** oszlop a Windows-gazdagépen jelenleg telepített és futó VSS-írók számát jeleníti meg. |
 | Bejelölve |A **kiválasztott** oszlop a kötetben található kötetek számát jeleníti meg. A nulla (0) érték azt jelzi, hogy egyetlen alkalmazás sincs társítva a mennyiségi csoport köteteihez. |
 | Importált |Az **importált** oszlop az importált kötetek számát jeleníti meg. Ha **igaz**értékre van állítva, akkor ez az oszlop azt jelzi, hogy egy kötet csoport lett importálva a Azure Portalból, és nem lett létrehozva a StorSimple Snapshot Manager. |

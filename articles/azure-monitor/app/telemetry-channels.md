@@ -6,10 +6,10 @@ ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
 ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564015"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
@@ -177,7 +177,7 @@ További információ az adatvédelem [és az adatvédelem terén](data-retentio
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 A Application Insights összes SDK-hoz hasonlóan a csatornák is nyílt forráskódúak. Olvassa el és járuljon hozzá a kód vagy a jelentéssel kapcsolatos problémákhoz [a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet)-tárházban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mintavételezés](./sampling.md)
 * [SDK – hibaelhárítás](./asp-net-troubleshoot-no-data.md)

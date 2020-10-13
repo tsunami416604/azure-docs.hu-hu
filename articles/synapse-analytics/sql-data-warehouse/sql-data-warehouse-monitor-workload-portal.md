@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211561"
 ---
 # <a name="monitor-workload---azure-portal"></a>Munkaterhelés figyelése – Azure Portal
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Portal a számítási fela
 - Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 - SQL-készlet: a rendszer egy SQL-készlet naplóit gyűjti. Ha nem rendelkezik kiépített SQL-készlettel, tekintse meg az [SQL-készlet létrehozása](load-data-from-azure-blob-storage-using-polybase.md)című témakör utasításait.
 
-## <a name="create-a-log-analytics-workspace"></a>A Log Analytics-munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
 Navigáljon Log Analytics munkaterületek Tallózás paneljére, és hozzon létre egy munkaterületet
 

@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611471"
+ms.locfileid: "91873183"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez
 
@@ -84,7 +84,7 @@ A böngészőben nyissa meg a alkalmazást `https://localhost:5001` , és jelent
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Adatok beolvasása a Microsoft Graphból
 
-[Microsoft Graph](/graph/overview) számos olyan API-t kínál, amelyek hozzáférést biztosítanak a felhasználók Microsoft 365 adataihoz. Ha a Microsoft Identity platformot használja az alkalmazáshoz tartozó identitás-szolgáltatóként, könnyebben hozzáférhet ezekhez az adatokhoz, mivel Microsoft Graph közvetlenül támogatja a Microsoft Identity platform által kiállított jogkivonatokat. Ebben a szakaszban kód hozzáadásával megjelenítheti a bejelentkezett felhasználó e-mail-címeit az alkalmazás "lekérési információk" lapján.
+[Microsoft Graph](/graph/overview) számos olyan API-t kínál, amelyek hozzáférést biztosítanak a felhasználók Microsoft 365 adataihoz. Ha a Microsoft Identity platformot használja az alkalmazáshoz tartozó identitás-szolgáltatóként, könnyebben hozzáférhet ezekhez az adatokhoz, mivel Microsoft Graph közvetlenül támogatja a Microsoft Identity platform által kiállított jogkivonatokat. Ebben a szakaszban kódot adhat hozzá a bejelentkezett felhasználó e-mail-címének megjelenítéséhez az alkalmazás "lekérési információk" lapján.
 
 Mielőtt elkezdené, jelentkezzen ki az alkalmazásból, mert a szükséges engedélyeket módosítja, és az aktuális jogkivonat nem fog működni. Ha még nem tette meg, futtassa újra az alkalmazást, és válassza a **kijelentkezés** lehetőséget az alábbi kód frissítése előtt.
 
@@ -199,7 +199,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-server/final-app-2.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hívhat meg olyan webalkalmazásokat, amelyek a többrészes forgatókönyvek felhasználói számára jelentkeznek be:
 

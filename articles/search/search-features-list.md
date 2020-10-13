@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604189"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Az Azure Cognitive Search funkciói
@@ -70,7 +70,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 | Azure SDK for Python | [**Azure-Search – a dokumentumok**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) az adatsíkok műveleteire vonatkoznak, beleértve az indexeléssel, lekérdezésekkel és mesterséges intelligenciával kapcsolatos összes műveletet. Ezen az ügyféloldali függvénytáron is lekérheti a rendszerinformációkat és a statisztikát. <br/><br/>[**Azure-mgmt – a keresés**](https://docs.microsoft.com/python/api/overview/azure/search/management) a szolgáltatások létrehozásához és a Azure Resource Manageron való tisztításához szükséges. Ezt az API-t használhatja a kulcsok kezeléséhez és a szolgáltatások kiépítéséhez is. |
 | Azure SDK a JavaScripthez/írógéppel | [**Azure/Search – a dokumentumok**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) az adatsíkok műveleteire vonatkoznak, beleértve az indexeléssel, lekérdezésekkel és mesterséges intelligenciával kapcsolatos összes műveletet. Ezen az ügyféloldali függvénytáron is lekérheti a rendszerinformációkat és a statisztikát. <br/><br/>[**Azure/ARM – a keresés**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) a szolgáltatások létrehozásához és a Azure Resource Manageron való tisztításhoz. Ezt az API-t használhatja a kulcsok kezeléséhez és a szolgáltatások kiépítéséhez is. |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [A Cognitive Search újdonságai](whats-new.md)
 

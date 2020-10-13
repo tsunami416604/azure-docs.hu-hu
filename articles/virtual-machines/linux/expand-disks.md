@@ -8,10 +8,10 @@ ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181748"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
@@ -140,6 +140,6 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha további tárhelyre van szüksége, [adatlemezeket is hozzáadhat egy Linux rendszerű virtuális géphez](add-disk.md). 
 * További információ a lemezek titkosításáról: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md).

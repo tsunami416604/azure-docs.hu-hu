@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536606"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
@@ -68,7 +68,7 @@ Ezután telepítse a Time Series Insightst további erőforrásként a távoli f
 
     ![A Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Kattintson a **Létrehozás** lehetőségre. A környezet létrehozása eltarthat egy kis ideig.
+1. Kattintson a **Létrehozás** elemre. A környezet létrehozása eltarthat egy kis ideig.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
@@ -101,7 +101,7 @@ Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Győ
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** elemre.
 
 ## <a name="configure-the-data-access-policy"></a>Az adatelérési házirend konfigurálása
 
@@ -296,7 +296,7 @@ Konfigurálja az üzemelő `standard` példány környezetét a fenti frissítet
             key: telemetry.storage.type
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan vizsgálhatja meg adatait, és hogyan diagnosztizálhatja a riasztásokat a Time Series Insights Explorerben, tekintse meg a [kiváltó okok elemzését](iot-accelerators-remote-monitoring-root-cause-analysis.md)ismertető oktatóanyagot.
 

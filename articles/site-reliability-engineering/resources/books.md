@@ -5,22 +5,26 @@ author: dnblankedelman
 manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 09/14/2020
+ms.date: 10/08/2020
 ms.author: dnb
-ms.openlocfilehash: d1e4738d933b7bd20252f597ae9c0ea27c5e3f5c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 46956afc0962b9f0c868b491cd198dbdb9e3f30f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873047"
 ---
-# <a name="books-about-site-reliability-engineering"></a>A site megbízhatóságának mérnöki könyvei
+# <a name="site-reliability-engineering-sre-books"></a>Site megbízhatóság mérnöki (SRE) könyvek
+
+A SRE megismerésének egyik legjobb módja az, ha az olvasóval kapcsolatos információkról van szó. Íme néhány a következő témakörben látható információk közül:
+
+## <a name="core-sre-books"></a>Alapvető SRE-könyvek
 
 A site megbízhatóság-tervezéssel (SRE) kapcsolatos részletesebb információkért a legjobb forrás a tárgyban közzétett könyvek triója.
 
-- [_Site Reliability Engineering: How Google Runs Production Systems_](https://shop.oreilly.com/product/0636920041528.do) (másként „az SRE-könyv”)
-- [_The Site Reliability Workbook: Practical Ways to Implement SRE_](https://shop.oreilly.com/product/0636920132448.do) (másként „az SRE-munkafüzet”)
-- [_Seeking SRE: Conversations About Running Production Systems at Scale_](https://shop.oreilly.com/product/0636920063964.do) (másként az SRE pozicionálása)
+- [_Site Reliability Engineering: How Google Runs Production Systems_](https://www.oreilly.com/library/view/site-reliability-engineering/9781491929117/) (másként „az SRE-könyv”)
+- [_The Site Reliability Workbook: Practical Ways to Implement SRE_](https://www.oreilly.com/library/view/the-site-reliability/9781492029496/) (másként „az SRE-munkafüzet”)
+- [_Seeking SRE: Conversations About Running Production Systems at Scale_](https://www.oreilly.com/library/view/seeking-sre/9781491978856/) (másként az SRE pozicionálása)
 
 Ezen könyvek mindegyike fontos információkat tartalmaz:
 
@@ -31,3 +35,13 @@ Ezen könyvek mindegyike fontos információkat tartalmaz:
 - Az SRE pozicionálása szerteágazóbb megközelítést alkalmaz az SRE világához, annak eredetén túl többek között bemutatva a más környezetekben való implementálását.
 
 Mivel ezek a könyvek leírják, hogy milyen tapasztalattal, környezetekkel és kultúrával rendelkeznek, vagy amelyek nem hasonlítanak az Ön számára, fontos, hogy ezeket a könyveket kritikus szemmel olvassa el. Ahogy olvasta, próbálja meg meghatározni, hogy mely gyakorlatok vagy nem fognak sikeresek a szervezetében. Töltsön egy kis időt azoknak az információknak az azonosításával, amelyek biztosan értékesek lesznek az Ön számára. Gondolkodjon el rajta, hogy a szervezeti kultúra és értékek mely aspektusainak felel meg a leírtak szerinti SRE-munka, és melyek azok, amelyek nagyobb kihívást támaszthatnak. A SRE körültekintő, iterációs betartása szinte mindig jobb eredményeket eredményez, mint az ezekben a könyvekben elolvasott elemek nagykereskedelmi ismétlődése.
+
+## <a name="additional-sre-books"></a>További SRE-könyvek
+
+A fent említett könyvek elolvasása után, ha szeretné mélyebben bemutatni a szolgáltatási szint mutatói (SLIs)/Service-szint célkitűzéseinek (SLO) gyakorlatát, a következő könyv kiváló erőforrás:
+
+[_Szolgáltatási szint célkitűzéseinek megvalósítása_](https://www.oreilly.com/library/view/implementing-service-level/9781492076803/)
+
+Ha meg szeretné vizsgálni a biztonsági és megbízhatósági mérnöki munkák összekapcsolását, ez a könyv számos hasznos észrevételt biztosít a témakörben:
+
+[_Biztonságos és megbízható rendszerek kiépítése_](https://www.oreilly.com/library/view/building-secure-and/9781492083115/)

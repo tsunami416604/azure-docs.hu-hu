@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 9cbcbeb9d9e216a0b686cba258288db8439e0a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946577"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Oktatóanyag: Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) létrehozása App Services webalkalmazással a Virtual Network szolgáltatásban
@@ -108,7 +108,7 @@ Törölje az oktatóanyagban létrehozott összes erőforrást az alábbi paranc
 az group delete -n myresourcegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)

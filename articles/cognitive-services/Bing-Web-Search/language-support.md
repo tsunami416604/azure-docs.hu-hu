@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262824"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvi és területi támogatása
@@ -71,12 +71,12 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 |Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|Spanyol|es-AR|
-|Ausztrália|Angolul|EN-AU|
+|Ausztrália|Angol|EN-AU|
 |Ausztria|Német|de-AT|
 |Belgium|Holland|nl-BE|
 |Belgium|Francia|fr-BE|
 |Brazília|Portugál|pt-BR|
-|Kanada|Angolul|en-CA|
+|Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
 |Dánia|Dán|da-DK|
@@ -84,31 +84,31 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|ZH-HK|
-|India|Angolul|EN-IN|
-|Indonézia|Angolul|EN-ID|
+|India|Angol|EN-IN|
+|Indonézia|Angol|EN-ID|
 |Olaszország|Olasz|it-IT|
 |Japán|Japán|ja-JP|
 |Dél-Korea|Koreai|ko-KR|
-|Malajzia|Angolul|EN-MY|
+|Malajzia|Angol|EN-MY|
 |Mexikó|Spanyol|es-MX|
 |Hollandia|Holland|nl-NL|
-|Új-Zéland|Angolul|EN-NZ|
+|Új-Zéland|Angol|EN-NZ|
 |Norvégia|Norvég|nem – nem|
 |Kína|Kínai|zh-CN|
 |Lengyelország|Lengyel|pl-PL|
 |Portugália|Portugál|pt-PT|
-|Fülöp-szigetek|Angolul|EN-PH|
+|Fülöp-szigetek|Angol|EN-PH|
 |Oroszország|Orosz|ru-RU|
 |Szaúd-Arábia|Arab|ar-SA|
-|Dél-afrikai Köztársaság|Angolul|EN-ZA|
+|Dél-afrikai Köztársaság|Angol|EN-ZA|
 |Spanyolország|Spanyol|es-ES|
 |Svédország|Svéd|sv-SE|
 |Svájc|Francia|fr – CH|
 |Svájc|Német|de-CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|Török|tr-TR|
-|Egyesült Királyság|Angolul|en-GB|
-|Egyesült Államok|Angolul|en-US|
+|Egyesült Királyság|Angol|en-GB|
+|Egyesült Államok|Angol|en-US|
 |Egyesült Államok|Spanyol|es – USA|
 
 ## <a name="next-steps"></a>Következő lépések

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 08d80a5ec2099147c12bcecd3b52d64429837285
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563964"
 ---
 # <a name="meshes"></a>Hálók
@@ -79,6 +79,6 @@ ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHand
 * [C++ MeshComponent osztály](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Anyagok](materials.md)

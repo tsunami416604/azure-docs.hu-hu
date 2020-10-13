@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744151"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Támogatási jegy megnyitása Azure Data Box
@@ -38,7 +38,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
     4. Adja meg a **támogatási csomagot**.
     5. Kattintson a **Tovább** gombra.
 
-        ![Alapbeállítások](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
+        ![Alapvető beállítások](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
 3. Az **új támogatási kérelem**területen válassza a **2. lépéssel kapcsolatos problémát**. A **probléma megoldásához**hajtsa végre a következő lépéseket:
 
@@ -57,7 +57,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A **kapcsolattartási adatok**területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Válassza **a kapcsolatfelvételi változások mentése a későbbi támogatási kérelmekhez**lehetőséget.
-   3. Kattintson a **Létrehozás** elemre.
+   3. Kattintson a **Létrehozás** lehetőségre.
 
        ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
@@ -80,7 +80,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan lehet [elhárítani a Data Box Disk kapcsolatos problémákat](data-box-disk-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box kapcsolatos problémákat](data-box-troubleshoot.md).

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: victorh
 ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602217"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Oktatóanyag: webalkalmazási tűzfal szabályzatának létrehozása az Azure-beli előtérben a Azure Portal használatával
@@ -53,7 +53,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot a felügyelt alapérte
     
     > [!NOTE]
     > Ha a előtér-gazdagép egy WAF-házirendhez van társítva, akkor a rendszer szürkén jelenik meg. Először el kell távolítania a előtér-gazdagépet a társított házirendből, majd újra társítania kell a előtér-gazdagépet egy új WAF-házirendhez.
-1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="configure-web-application-firewall-rules-optional"></a>Webalkalmazási tűzfalszabályok konfigurálása (nem kötelező)
 

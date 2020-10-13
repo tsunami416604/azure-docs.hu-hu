@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: eed3e8275400a3e677df53b9d62cf0e0bc70271c
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88257830"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Adatkészlet-hozzárendelés konfigurálása egy fogadott megosztáshoz az Azure-adatmegosztásban
@@ -39,7 +39,7 @@ Ha a forrásadatok SQL-alapú forrásból származnak, és fájlként szeretné 
 
 ![Formátum kiválasztása](./media/sql-file-formats.png "SQL-fájlformátumok")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 

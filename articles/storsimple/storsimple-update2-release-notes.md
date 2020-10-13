@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 53be638c46685dd46a5afb5ed56f9a76ed7b5fd6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055860"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 sorozat Update 2 kibocsátási megjegyzések
@@ -64,7 +64,7 @@ A 2. frissítés a következő új funkciókat mutatja be.
 ## <a name="issues-fixed-in-update-2"></a>A 2. frissítésben rögzített problémák
 A következő táblázat a 2. frissítésekben rögzített problémák összegzését tartalmazza.    
 
-| Nem. | Jellemző | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem. | Szolgáltatás | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- |
 | 1 |Hálózati adapterek |Az 1. frissítésre való frissítés után a StorSimple Manager szolgáltatás jelentett arról, hogy a data2 és a data3 portok egyik vezérlőn sem voltak sikertelenek. A probléma kijavítva. |Igen |Nem |
 | 2 |Frissítések |Az 1. frissítésre való frissítés után a klasszikus Azure portálon több eszközön hallható riasztási riasztások fordultak elő. A probléma kijavítva. |Igen |Nem |
@@ -73,7 +73,7 @@ A következő táblázat a 2. frissítésekben rögzített problémák összegz�
 ## <a name="known-issues-in-update-2"></a>A 2. frissítés ismert problémái
 A következő táblázat az ebben a kiadásban található ismert problémák összegzését tartalmazza.
 
-| Nem. | Jellemző | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem. | Szolgáltatás | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Lemez kvóruma |Ritka esetekben, ha egy 8600-es eszköz EBOD-borításában lévő lemezek többsége le van választva, ami nem eredményez lemezes kvórumot, a rendszer offline állapotba helyezi a tárolót. Offline állapotban marad, még akkor is, ha a lemezek újra vannak csatlakoztatva. |Az eszközt újra kell indítani. Ha a probléma továbbra is fennáll, forduljon Microsoft ügyfélszolgálata a következő lépésekhez. |Igen |Nem |
 | 2 |Helytelen vezérlő-azonosító |A vezérlő cseréjének végrehajtásakor a vezérlő 0 vezérlőként jelenhet meg. A vezérlő cseréjekor, amikor a rendszerkép betöltődik a társ csomópontból, a vezérlő azonosítója kezdetben megjelenhet a társ-vezérlő AZONOSÍTÓJAként. Ritka esetekben ez a viselkedés a rendszer újraindítása után is megjelenhet. |Nincs szükség felhasználói beavatkozásra. Ez a helyzet a vezérlő cseréjének befejeződése után maga is megoldódik. |Igen |Nem |
@@ -83,7 +83,7 @@ A következő táblázat az ebben a kiadásban található ismert problémák ö
 | 6 |Webproxy |Ha a webproxy konfigurációja HTTPS protokollt használ a megadott protokollként, az eszközről a szolgáltatásra irányuló kommunikáció hatással lesz, és az eszköz offline állapotba kerül. A támogatási csomagok a folyamat során is létrejönnek, és jelentős erőforrásokat fogyasztanak az eszközön. |Győződjön meg arról, hogy a webproxy URL-címe HTTP protokollt használ a megadott protokollként. További információ: [Configure web proxy for your device](storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
 | 7 |Webproxy |Ha a webproxyt egy regisztrált eszközön konfigurálja és engedélyezi, akkor újra kell indítania az aktív vezérlőt az eszközön. | |Igen |Nem |
 | 8 |Magas Felhőbeli késés és magas I/O-munkaterhelés |Ha a StorSimple-eszköz nagyon magas Felhőbeli késések (másodpercek sorrendje) és magas I/O-munkaterhelések kombinációját tapasztalja, az eszközök mennyisége csökkentett teljesítményű állapotba kerül, és az I/O-művelet meghiúsulhat az "eszköz nem üzemkész" hiba miatt. |Ennek a helyzetnek a helyreállításához manuálisan kell újraindítani az eszközöket, vagy feladatátvételt kell végrehajtani az eszközön. |Igen |Nem |
-| 9 |Azure PowerShell |Ha a Get-&#124; AzureStorSimpleStorageAccountCredential StorSimple parancsmagot használja, **válassza az-Object-First 1-WAIT elemet** az első objektum kiválasztásához, hogy új **volumecontainer tárhoz való** objektumot hozzon létre, a parancsmag az összes objektumot visszaadja. |Zárja be a parancsmagot zárójelben a következő módon: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object-First 1-WAIT** |Igen |Igen |
+| 9 |Azure PowerShell |Ha a **Get-&#124; AzureStorSimpleStorageAccountCredential StorSimple parancsmagot használja Select-Object – első 1 – várja** meg az első objektum kiválasztását, hogy új **volumecontainer tárhoz való** objektumot hozzon létre, a parancsmag az összes objektumot visszaadja. |Zárja be a parancsmagot zárójelben a következő módon: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object – első 1 – várakozás** |Igen |Igen |
 | 10 |Migrálás |Ha több mennyiségi tárolót továbbítanak az áttelepítéshez, a legújabb biztonsági mentéshez használt ETA csak az első kötet-tároló esetében pontos. Emellett a párhuzamos áttelepítés az első kötet-tároló első 4 biztonsági mentése után is elindul. |Javasoljuk, hogy egyszerre egy mennyiségi tárolót telepítsen át. |Igen |Nem |
 | 11 |Migrálás |A visszaállítást követően a kötetek nincsenek hozzáadva a biztonsági mentési házirendhez vagy a virtuális lemez csoportjához. |A biztonsági másolatok létrehozásához hozzá kell adnia ezeket a köteteket egy biztonsági mentési szabályzathoz. |Igen |Igen |
 | 12 |Migrálás |Az áttelepítés befejezése után az 5000/7000 sorozatú eszköz nem fér hozzá az áttelepített adattárolóhoz. |Azt javasoljuk, hogy az áttelepítés befejezése és véglegesítése után törölje az áttelepített adattárolókat. |Igen |Nem |

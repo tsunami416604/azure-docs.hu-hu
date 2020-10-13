@@ -4,10 +4,10 @@ description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a c�
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371541"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
@@ -1739,9 +1739,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | expressRoutePorts | Igen | Igen |
 > | expressRouteServiceProviders | Nem | Nem |
 > | firewallPolicies | Igen | Igen |
-> | frontdoors | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | No |
-> | frontdoorWebApplicationFirewallPolicies | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Yes |
+> | frontdoors | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Igen |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Nem |
+> | frontdoorWebApplicationFirewallPolicies | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Igen |
 > | getDnsResourceReference | Nem | Nem |
 > | internalNotify | Nem | Nem |
 > | ipGroups | Igen | Igen |
@@ -2217,7 +2217,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Igen | Igen |
-> | managedInstances/adatbázisok | Igen (lásd az [alábbi megjegyzést](#sqlnote)) | Yes |
+> | managedInstances/adatbázisok | Igen (lásd az [alábbi megjegyzést](#sqlnote)) | Igen |
 > | managedInstances/adatbázisok/backupShortTermRetentionPolicies | Nem | Nem |
 > | managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels | Nem | Nem |
 > | managedInstances/adatbázisok/vulnerabilityAssessments | Nem | Nem |
@@ -2229,7 +2229,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kiszolgálók | Igen | Igen |
 > | kiszolgálók/rendszergazdák | Nem | Nem |
 > | kiszolgálók/communicationLinks | Nem | Nem |
-> | kiszolgálók/adatbázisok | Igen (lásd az [alábbi megjegyzést](#sqlnote)) | Yes |
+> | kiszolgálók/adatbázisok | Igen (lásd az [alábbi megjegyzést](#sqlnote)) | Igen |
 > | kiszolgálók/encryptionProtector | Nem | Nem |
 > | kiszolgálók/firewallRules | Nem | Nem |
 > | kiszolgálók/kulcsok | Nem | Nem |
@@ -2332,7 +2332,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | fürtök | Igen | Igen |
-> | streamingjobs | Igen (lásd az alábbi megjegyzést) | Yes |
+> | streamingjobs | Igen (lásd az alábbi megjegyzést) | Igen |
 
 > [!NOTE]
 > Nem adhat hozzá címkét, ha a streamingjobs fut. Egy címke hozzáadásához állítsa le az erőforrást.

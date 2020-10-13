@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
 ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602285"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
@@ -122,7 +122,7 @@ Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideig
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/managed-disks-overview.md) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez
 Adatlemez minimális mérete |  2 GB a felügyelt lemezekhez |
 Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/windows/sizes.md) információ a virtuális gépek méreteiről.
@@ -188,6 +188,6 @@ Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsola
 - Javasoljuk, hogy tesztelje a szabályokat nem éles környezetben. [Tekintse át a példákat](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon [egy Azure-beli virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba helyezni az erőforrás-mozgató használatával.

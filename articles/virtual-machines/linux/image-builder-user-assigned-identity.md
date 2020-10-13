@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307262"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Rendszerkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-beli fájlokhoz való hozzáféréshez 
@@ -233,7 +233,7 @@ A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása u
 *******************************************************
 ```
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Ha elkészült, akkor törölheti az erőforrásokat, ha már nincs rájuk szükség.
 

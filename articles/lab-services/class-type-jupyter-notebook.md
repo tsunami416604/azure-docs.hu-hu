@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
 ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533520"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
@@ -116,7 +116,7 @@ Az **Data Science Virtual Machine – Ubuntu-** rendszerkép már ki van építv
      - **Bejelentkezés**: tanuló
      - **SSH-port**: 12345
      - **Munkamenet típusa**: Xfce
-6. Válassza az **OK** lehetőséget. 
+6. Kattintson az **OK** gombra. 
 
     > [!NOTE]
      > Új X2Go-munkamenet létrehozásakor ügyeljen arra, hogy az SSH portot használja, **nem** az RDP-portot.
@@ -172,7 +172,7 @@ További részletek a díjszabásról: [Azure Lab Services díjszabása](https:/
 ## <a name="conclusion"></a>Összegzés
 Ebből a cikkből megtudhatta, hogyan hozhat létre labort a Jupyter notebookok osztályhoz. Más gépi tanulási osztályokhoz is használhat hasonló beállításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

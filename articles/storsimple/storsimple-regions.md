@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564151"
 ---
 # <a name="available-regions-for-your-storsimple"></a>A StorSimple elérhető régiók
@@ -96,7 +96,7 @@ A 8020 Premium Storage-t és _Standard_DS3_ virtuális gépet használ felhőala
 
 Ha a StorSimple egy 1200 sorozatú virtuális tömböt használ, akkor a virtuális lemez lemezképe az összes Azure-régióban támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [különböző StorSimple-modellek díjszabásáról](https://azure.microsoft.com/pricing/calculator/#storsimple2).
 * További információ [a StorSimple Storage-fiók kezeléséről](storsimple-8000-manage-storage-accounts.md).

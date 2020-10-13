@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335069"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database-adatbázisok tárterületének kezelése
@@ -41,12 +41,12 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 A Azure Portalban megjelenő legtöbb tárolóhely-metrika és a következő API-k csak a felhasznált adatlapok méretét mérik:
 
 - Azure Resource Manager alapú mérőszámok API-k, beleértve a PowerShell [Get-metrikákat](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 A következő API-k ugyanakkor az adatbázisokhoz és rugalmas készletekhez lefoglalt terület méretét is mérik:
 
-- T-SQL:  [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Az adatfájlok zsugorítása
 

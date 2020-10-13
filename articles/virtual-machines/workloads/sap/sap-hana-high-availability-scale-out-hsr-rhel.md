@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
 ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744787"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer magas rendelkezésre állása Red Hat Enterprise Linux 
@@ -80,14 +80,14 @@ Mielőtt elkezdené, tekintse meg a következő SAP-megjegyzéseket és dokument
 * [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
 * [SAP HANA hálózati követelmények](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)
 * Általános RHEL dokumentáció
-  * [Magas rendelkezésre állású bővítmény – áttekintés](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Magas rendelkezésre állású bővítmények felügyelete](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Magas rendelkezésre állású bővítmények leírása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Magas rendelkezésre állású Add-On áttekintése](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Magas rendelkezésre állású Add-On felügyelet](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Magas rendelkezésre állású Add-On referenciája](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux hálózati útmutató](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [SAP HANA kibővíthető rendszerreplikáció konfigurálása egy pacemaker-fürtön az NFS-megosztásokon HANA-fájlrendszerrel rendelkező Hogyan](https://access.redhat.com/solutions/5423971)
+  * [SAP HANA Scale-Out rendszerreplikáció konfigurálása egy pacemaker-fürtön az NFS-megosztásokon HANA-fájlrendszerrel Hogyan](https://access.redhat.com/solutions/5423971)
 * Az Azure-specifikus RHEL dokumentációja:
   * [A Red Hat Enterprise Linux SAP HANA telepítése a Microsoft Azure-ben való használatra](https://access.redhat.com/public-cloud/microsoft-azure)
-  * [Red Hat Enterprise Linux megoldás SAP HANA kibővíthető és rendszerreplikációhoz](https://access.redhat.com/solutions/4386601)
+  * [Red Hat Enterprise Linux megoldás SAP HANA Scale-Out és rendszer-replikáláshoz](https://access.redhat.com/solutions/4386601)
 * [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
 * [Azure NetApp Files dokumentáció][anf-azure-doc] 
 
@@ -152,7 +152,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
     d. Válassza a **hálózatkezelés**lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `inter` `hsr` alhálózatokat.  
     
-    e. Válassza a **Mentés** lehetőséget. 
+    e. Kattintson a **Mentés** gombra. 
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a  **Hana-S1-DB2**, **Hana-S1-db3**, **Hana-S2-db1**, **Hana-S2-DB2** és **Hana-S2-db3**).
  
@@ -190,7 +190,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.23.0.18**).
-      1. Válassza az **OK** lehetőséget.
+      1. Kattintson az **OK** gombra.
       1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
    1. Ezután hozzon létre egy háttér-készletet, és vegye fel az összes fürtbeli virtuális gépet a háttér-készletbe:
@@ -207,7 +207,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
       1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-      1. Válassza az **OK** lehetőséget.
+      1. Kattintson az **OK** gombra.
 
    1. Ezután hozza létre a terheléselosztási szabályokat:
    
@@ -217,7 +217,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Válassza a **hektár portok**lehetőséget.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Válassza az **OK** lehetőséget.
+      1. Kattintson az **OK** gombra.
 
    > [!Note]
    > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
@@ -836,7 +836,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
     ```
 
    > [!TIP]
-   > Ha a konfiguráció más fájlrendszereket is tartalmaz, a/-t is beleértve, amelyek az NFS-hez `hana/shared` vannak csatlakoztatva, akkor belefoglalják a `sequential=false` lehetőséget, hogy a fájlrendszerek között ne legyenek rendezési függőségek. Az összes NFS-hez csatlakoztatott fájlrendszernek a megfelelő attribútum-erőforrás előtt el kell indulnia, de nem kell egymáshoz viszonyítva megadnia azokat. További információ: [Hogyan SAP HANA kibővíthető HSR beállítása a pacemaker-fürtben, ha a HANA-fájlrendszer NFS-megosztás](https://access.redhat.com/solutions/5423971).  
+   > Ha a konfiguráció más fájlrendszereket is tartalmaz, a/-t is beleértve, amelyek az NFS-hez `hana/shared` vannak csatlakoztatva, akkor belefoglalják a `sequential=false` lehetőséget, hogy a fájlrendszerek között ne legyenek rendezési függőségek. Az összes NFS-hez csatlakoztatott fájlrendszernek a megfelelő attribútum-erőforrás előtt el kell indulnia, de nem kell egymáshoz viszonyítva megadnia azokat. További információ: [Hogyan SAP HANA Scale-Out HSR beállítása pacemaker-fürtben, ha a HANA-fájlrendszer NFS-megosztás](https://access.redhat.com/solutions/5423971).  
 
 8. **[1]** a pacemaker karbantartási módba helyezése a HANA-fürt erőforrásainak létrehozásához.  
     ```
@@ -1163,7 +1163,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürtöt úgy, hogy a teszteket is végrehajtja, ha az Azure-beli [virtuális gépeken a RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)-on SAP HANA.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

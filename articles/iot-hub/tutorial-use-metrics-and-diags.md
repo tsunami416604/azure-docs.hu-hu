@@ -13,10 +13,10 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-csharp
 ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019130"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
@@ -375,7 +375,7 @@ Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatók a metrikák és a diagnosztikai naplók a következő feladatok végrehajtásával:
 

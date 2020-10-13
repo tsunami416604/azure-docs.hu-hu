@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027443"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Működővé tenni Spark – beépített gépi tanulási modellek
@@ -86,7 +86,7 @@ datetime.datetime.now()
 
 DateTime. datetime (2016, 4, 25, 23, 56, 19, 229403)
 
-### <a name="import-libraries"></a>Tárak importálása
+### <a name="import-libraries"></a>Kódtárak importálása
 A Spark-környezet beállítása és a szükséges kódtárak importálása a következő kóddal
 
 ```python
@@ -115,7 +115,7 @@ A Jupyter-jegyzetfüzetekhez biztosított PySpark-kernelek előre beállított k
 A PySpark kernel tartalmaz néhány előre definiált "varázslatot", amelyek a (z)%% használatával hívható speciális parancsok. A kód mintáinak két ilyen parancsa van használatban.
 
 * **%% helyi** Azt adta meg, hogy a következő sorokban található kód helyileg legyen végrehajtva. A kódnak érvényes Python-kódnak kell lennie.
-* **%% SQL-o\<variable name>** 
+* **%% SQL-o \<variable name>** 
 * Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák dataframe.
 
 A Jupyter-jegyzetfüzetek és az azok által megadott "Magics" kernelekkel kapcsolatos további információkért tekintse meg a [Jupyter notebookok számára elérhető kerneleket HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).

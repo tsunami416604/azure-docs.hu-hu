@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506026"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
@@ -120,12 +120,12 @@ Az e-mail-címzett megvizsgálhatja az áramkör állapotát, és ha szükséges
 
 Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes üzenet feldolgozása sorrendben történik, és szükség esetén az áramkört is megszüntetheti.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 - [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Azure tartós entitás áramkör-megszakítója](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

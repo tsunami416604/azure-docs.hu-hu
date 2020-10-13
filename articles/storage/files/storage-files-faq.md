@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563692"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
@@ -277,7 +277,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="ad-aad-smb-files"></a>
 **Van valamilyen különbség a saját Storage-fiókomat képviselő számítógépfiók vagy szolgáltatásbeli bejelentkezési fiók létrehozásakor?**
 
-    Egy [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy egy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) létrehozása nem különbözik attól, hogy a hitelesítés hogyan működjön együtt Azure Filesokkal. Saját maga dönthet úgy, hogy a Storage-fiókot identitásként jelöli meg az AD-környezetben. A JOIN-AzStorageAccountForAuth parancsmagban beállított alapértelmezett DomainAccountType számítógépfiók. Azonban az AD-környezetben konfigurált jelszó lejárati kora eltérő lehet a számítógép vagy szolgáltatás bejelentkezési fiókja számára, és figyelembe kell vennie, hogy a [Storage-fiók identitásának frissítése az ad-ban](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)című részében kell megfontolnia a jelszót.
+    Egy [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy egy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) létrehozása nem különbözik attól, hogy a hitelesítés hogyan működjön együtt Azure Filesokkal. Saját maga dönthet úgy, hogy a Storage-fiókot identitásként jelöli meg az AD-környezetben. A Join-AzStorageAccountForAuth parancsmagban beállított alapértelmezett DomainAccountType számítógépfiók. Azonban az AD-környezetben konfigurált jelszó lejárati kora eltérő lehet a számítógép vagy szolgáltatás bejelentkezési fiókja számára, és figyelembe kell vennie, hogy a [Storage-fiók identitásának frissítése az ad-ban](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)című részében kell megfontolnia a jelszót.
  
 * <a id="ad-support-rest-apis"></a>
 **Vannak olyan REST API-k, amelyek támogatják a lekérési/beállítási/másolási és a fájlok Windows ACL-jeit?**
@@ -450,7 +450,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 **Hogyan Azure Files az IBM MQ-val?**  
     Az IBM kiadott egy olyan dokumentumot, amely segítséget nyújt az IBM MQ-ügyfeleknek az IBM szolgáltatással való Azure Files konfigurálásában. További információ: az [IBM MQ többpéldányos üzenetsor-kezelő beállítása Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálható Azure Relay az Azure Private lin
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263856"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integrálása az Azure Private Linktel (előzetes verzió)
@@ -154,7 +154,7 @@ Négy kiépítési állapot létezik:
 
 | Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Nincsenek | Függőben | A kapcsolatok létrehozása manuálisan történik, és a Azure Relay névtér tulajdonosának jóváhagyása függőben van. |
+| Nincs | Függőben | A kapcsolatok létrehozása manuálisan történik, és a Azure Relay névtér tulajdonosának jóváhagyása függőben van. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A Azure Relay névtér tulajdonosa elutasította a kapcsolatokat. |
 | Eltávolítás | Leválasztott | A Azure Relay névtér tulajdonosa törölte a kapcsolatokat, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
@@ -236,7 +236,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ### <a name="limitations"></a>Korlátozások 
 - Privát végpontok maximális száma Azure Relay névtérben: 64.
 - Az előfizetéshez tartozó privát végpontokkal rendelkező Azure Relay névterek maximális száma: 64.
-- A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontokra. További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
+- A hálózati biztonsági csoport (NSG) szabályai és a User-Defined útvonalak nem vonatkoznak a privát végpontokra. További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Következő lépések
 

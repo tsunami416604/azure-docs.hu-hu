@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185908"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>A Change Tracking és a leltár központi telepítési hatókörének korlátozása
@@ -30,11 +30,11 @@ A Change Tracking hatókörének és a leltár üzembe helyezésének korlátoz�
 
 3. Válassza ki a **hatókör-konfigurációk (előzetes verzió)** elemet a **munkaterület-adatforrások**területen.
 
-4. Válassza ki a hatókör-konfigurációtól jobbra található három pontot `MicrosoftDefaultScopeConfig-ChangeTracking` , majd kattintson a **Szerkesztés**gombra. 
+4. Válassza ki a hatókör-konfigurációtól jobbra található három pontot  `MicrosoftDefaultScopeConfig-ChangeTracking` , majd kattintson a **Szerkesztés**gombra. 
 
 5. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása**lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. A Change Tracking és a leltár által használt mentett keresés:
 
-    |Név     |Kategória  |Alias  |
+    |Name (Név)     |Kategória  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Változáskövetési       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5f8d08f0814ec69719c002ea9efd39bb38b7d16
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718016"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication működése
 
-A többtényezős hitelesítés olyan folyamat, amelyben a rendszer a bejelentkezési folyamat során megkéri a felhasználót egy további azonosítási módszer megadására, például egy kód megadására a mobiloddal vagy egy ujjlenyomat-vizsgálat megadásához.
+A többtényezős hitelesítés egy olyan folyamat, amelyben a rendszer a bejelentkezési folyamat során felkéri a felhasználót egy másodlagos azonosításra, például hogy adjon meg egy kódot a mobiltelefonján, vagy végezzen ujjlenyomat-vizsgálatot.
 
 Ha csak jelszó használatával hitelesíti a felhasználót, a támadás nem biztonságos vektort hagy. Ha a jelszó gyenge vagy máshol van kitéve, valóban a felhasználó bejelentkezik a felhasználónévvel és a jelszóval, vagy egy támadó? Ha a hitelesítés második formáját igényli, a biztonság megnövekszik, mivel ez a további tényező nem a támadók számára könnyen beszerezhető vagy duplikálható.
 

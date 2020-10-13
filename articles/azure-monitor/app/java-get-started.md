@@ -7,10 +7,10 @@ ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
 ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602465"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
@@ -296,7 +296,7 @@ Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy 
 ## <a name="questions-problems"></a>Kérdése van? Problémákat tapasztal?
 [A Java hibaelhárítása](java-troubleshoot.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Függőségi hívások figyelése](java-agent.md)
 * [Unix-teljesítményszámlálók figyelése](java-collectd.md)
 * [A weboldalak figyelésével](javascript.md) megfigyelheti az oldalbetöltési időket, az AJAX-hívásokat és a böngészőkivételeket.
