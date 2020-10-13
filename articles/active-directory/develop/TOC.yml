@@ -4,6 +4,8 @@
   items:
     - name: Mi az a Microsoft Identitásplatform?
       href: v2-overview.md
+    - name: A docs újdonságai
+      href: whats-new-docs.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -34,7 +36,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET-mag
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md

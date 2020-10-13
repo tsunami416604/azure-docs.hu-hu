@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91801885"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962020"
 landingContent:
 - title: A Microsoft identitásplatformja
   linkLists:
@@ -120,23 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: A docs újdonságai
+      url: whats-new-docs.md
     - text: A Microsoft Identity Web könyvtár áttekintése
       url: microsoft-identity-web.md
     - text: 'Oktatóanyag: Blazor Server'
       url: tutorial-blazor-server.md
-    - text: 'Gyorsútmutató: Az ASP.NET Core webes API-k védelme'
-      url: quickstart-v2-aspnet-core-web-api.md
-    - text: MSAL Python API-referencia
-      url: /python/api/msal/
-    - text: 'Gyorsútmutató: Alkalmazás regisztrálása (átírás)'
-      url: quickstart-register-app.md
-    - text: 'Gyorsútmutató: Webes API-k felfedése (átírás)'
-      url: quickstart-configure-app-expose-web-apis.md
-    - text: 'Gyorsútmutató: Webes API-k elérése (átírás)'
-      url: quickstart-configure-app-access-web-apis.md
-    - text: Közvetítőt használó Xamarin Android-alkalmazás migrálása az MSAL.NET-re
-      url: msal-net-migration-android-broker.md
-    - text: Hibák és kivételek kezelése – Android
-      url: msal-android-handling-exceptions.md
-    - text: Könyvtárséma bővítményattribútumai jogcímekben
-      url: active-directory-schema-extensions.md

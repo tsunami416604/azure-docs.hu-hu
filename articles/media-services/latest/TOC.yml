@@ -61,6 +61,8 @@
           href: protect-with-aes128.md
         - name: Dinamikus titkosítás DRM-mel
           href: protect-with-drm.md
+        - name: Tartalomvédelem az Azure AD-vel
+          href: azure-ad-content-protection.md
     - name: REST
       items:
         - name: Egy távoli fájl kódolása és streamelése REST használatával
@@ -188,8 +190,6 @@
           href: streaming-policy-concept.md
         - name: Tartalomkulcsszabályok
           href: content-key-policy-concept.md
-        - name: Tartalomvédelem az Azure AD-vel
-          href: azure-ad-content-protection.md
     - name: Figyelés
       items:
         - name: Események az Event Griddel
@@ -385,7 +385,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Indítás
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions
