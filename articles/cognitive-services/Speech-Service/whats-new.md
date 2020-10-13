@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
 ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89055311"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Beszédfelismerési szolgáltatás: a docs újdonságai
@@ -57,28 +57,28 @@ Ezek a problémák májusban lettek megnyitva. Ez a táblázat felsorolja azt a 
 
 Ez a tábla havonta frissül, és csak a májusában megnyitott problémákat tükrözi.  
 
-|ID|Felhasználó|Leírás|Megnyitott|Állapot|Típus|
+|ID (Azonosító)|Felhasználó|Leírás|Megnyitott|Állam|Típus|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|A tevékenység el lett dobva, mert hiányzik a robot végpontja|2020-05-31|Zárt|Probléma|
-|[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Helytelen közzétételi robot-lépések|2020-05-31|Nyitott|Probléma|
-|[56014](https://github.com/MicrosoftDocs/azure-docs/issues/56014)|mosdav|A PCM-minták formátumának további egyértelmű doc hozzáadása|2020-05-30|Nyitott|Probléma|
+|[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Helytelen közzétételi robot-lépések|2020-05-31|Megnyitás|Probléma|
+|[56014](https://github.com/MicrosoftDocs/azure-docs/issues/56014)|mosdav|A PCM-minták formátumának további egyértelmű doc hozzáadása|2020-05-30|Megnyitás|Probléma|
 |[55984](https://github.com/MicrosoftDocs/azure-docs/issues/55984)|chschrae|A cím nem egyezik az oldal sávjával|2020-05-29|Zárt|Probléma|
 |[55857](https://github.com/MicrosoftDocs/azure-docs/issues/55857)|nitinbhatia – dev|CLI-hiba a Wave file használatával|2020-05-28|Zárt|Probléma|
-|[55717](https://github.com/MicrosoftDocs/azure-docs/pull/55717)|dargilco|Speech-sdk.md frissítése|2020-05-27|Nyitott|Lekéréses kérelem|
+|[55717](https://github.com/MicrosoftDocs/azure-docs/pull/55717)|dargilco|Speech-sdk.md frissítése|2020-05-27|Megnyitás|Lekéréses kérelem|
 |[55299](https://github.com/MicrosoftDocs/azure-docs/issues/55299)|Becseiné Mészáros Ilona-K|Fura hiba a nem támogatott hang nevével|2020-05-20|Zárt|Probléma|
-|[55099](https://github.com/MicrosoftDocs/azure-docs/issues/55099)|kmoore-riphaina|A beszédfelismerési API-val kapcsolatos dokumentáció gyenge|2020-05-18|Nyitott|Probléma|
+|[55099](https://github.com/MicrosoftDocs/azure-docs/issues/55099)|kmoore-riphaina|A beszédfelismerési API-val kapcsolatos dokumentáció gyenge|2020-05-18|Megnyitás|Probléma|
 |[55032](https://github.com/MicrosoftDocs/azure-docs/issues/55032)|dubbySwords|A Microsoft CognitiveServices Speech Class SpeechRecognizer nem tud eredményül kapott szöveget gyűjteni|2020-05-18|Zárt|Probléma|
 |[55031](https://github.com/MicrosoftDocs/azure-docs/issues/55031)|dubbySwords|Nem egyértelmű|2020-05-18|Zárt|Probléma|
 |[55027](https://github.com/MicrosoftDocs/azure-docs/issues/55027)|ovishesh|A sötét téma nem látható grafikát mutat|2020-05-17|Zárt|Probléma|
-|[54919](https://github.com/MicrosoftDocs/azure-docs/issues/54919)|kmoore-riphaina|hiányzik a szakasz?|2020-05-15|Nyitott|Probléma|
-|[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|fifteenjoy|A Speech Service-tárolók futtatása sikertelen|2020-05-13|Nyitott|Probléma|
-|[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|Judit – 95|Példa a kiejtési fájlra|2020-05-11|Nyitott|Probléma|
-|[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|A Java-minta helytelen.|2020-05-10|Nyitott|Probléma|
+|[54919](https://github.com/MicrosoftDocs/azure-docs/issues/54919)|kmoore-riphaina|hiányzik a szakasz?|2020-05-15|Megnyitás|Probléma|
+|[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|fifteenjoy|A Speech Service-tárolók futtatása sikertelen|2020-05-13|Megnyitás|Probléma|
+|[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|Judit – 95|Példa a kiejtési fájlra|2020-05-11|Megnyitás|Probléma|
+|[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|A Java-minta helytelen.|2020-05-10|Megnyitás|Probléma|
 |[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Nem lehet lekérni a kiejtési pontszámot|2020-05-08|Zárt|Probléma|
 |[54382](https://github.com/MicrosoftDocs/azure-docs/issues/54382)|jgtellez1|YAML-sablonfájl|2020-05-07|Zárt|Probléma|
 |[54208](https://github.com/MicrosoftDocs/azure-docs/issues/54208)|paparush|A C# mintakód nem kéri a felhasználót, hogy beszéljen.|2020-05-06|Zárt|Probléma|
 |[54132](https://github.com/MicrosoftDocs/azure-docs/pull/54132)|anthonsu|A TTS frissítése v 1.3-ról v 1.4-re|2020-05-05|Zárt|Lekéréses kérelem|
 |[54111](https://github.com/MicrosoftDocs/azure-docs/pull/54111)|anthonsu|Az egyéni STT legújabb verziójának frissítése a v 2.2.0-ra|2020-05-05|Zárt|Lekéréses kérelem|
-|[53919](https://github.com/MicrosoftDocs/azure-docs/issues/53919)|eyast|A GitHub-projektekre mutató hivatkozások megszakadnak|2020-05-03|Nyitott|Probléma|
+|[53919](https://github.com/MicrosoftDocs/azure-docs/issues/53919)|eyast|A GitHub-projektekre mutató hivatkozások megszakadnak|2020-05-03|Megnyitás|Probléma|
 |[53892](https://github.com/MicrosoftDocs/azure-docs/issues/53892)|viju2008|Definiálni kívánt tulajdonság: az androidos mikrofon maximális hangfelismerési ideje. A Hangfelismerés leállítása 15 másodperc elteltével|2020-05-02|Zárt|Probléma|
 |[53796](https://github.com/MicrosoftDocs/azure-docs/pull/53796)|singhsaumya|Egyéni parancsok: dokumentumok frissítése|2020-05-01|Zárt|Lekéréses kérelem|

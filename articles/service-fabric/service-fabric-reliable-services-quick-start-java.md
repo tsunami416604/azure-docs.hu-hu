@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-javai
 ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535236"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Ismerkedés a Reliable Services Javával
@@ -260,6 +260,6 @@ Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel 
 > Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Services szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

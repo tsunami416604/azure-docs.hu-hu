@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
 ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484731"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Az adatátalakítást az SQL Server tárolt eljárási tevékenység használatával Azure Data Factory
@@ -34,7 +34,7 @@ A tárolt eljárási tevékenységgel egy tárolt eljárást hívhat meg a váll
 
 - Azure SQL Database
 - Azure Synapse Analytics (korábban SQL Data Warehouse)
-- SQL Server adatbázis.  Ha SQL Server használ, telepítse a saját üzemeltetésű integrációs modult ugyanarra a gépre, amely az adatbázist üzemelteti, vagy egy különálló gépen, amely hozzáfér az adatbázishoz. A saját üzemeltetésű integrációs modul egy olyan összetevő, amely biztonságos és felügyelt módon csatlakoztatja a helyszíni/Azure-beli virtuális gépen lévő adatforrásokat a Cloud Services szolgáltatással. További részleteket a saját üzemeltetésű [integrációs](create-self-hosted-integration-runtime.md) modulról szóló cikkben talál.
+- SQL Server adatbázis.  Ha SQL Server használ, telepítse a saját üzemeltetésű integrációs modult ugyanarra a gépre, amely az adatbázist üzemelteti, vagy egy különálló gépen, amely hozzáfér az adatbázishoz. Self-Hosted Integration Runtime egy olyan összetevő, amely biztonságos és felügyelt módon csatlakoztatja a helyszíni/Azure-beli virtuális gépen található adatforrásokat a Cloud Services szolgáltatással. További részleteket a saját üzemeltetésű [integrációs](create-self-hosted-integration-runtime.md) modulról szóló cikkben talál.
 
 > [!IMPORTANT]
 > Az adatok Azure SQL Database vagy SQL Serverba való másolása során beállíthatja, hogy a **SqlSink** a másolási tevékenységben egy tárolt eljárást hívjanak a **sqlWriterStoredProcedureName** tulajdonság használatával. A tulajdonsággal kapcsolatos részletekért tekintse meg a következő összekötő-cikkeket: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). A tárolt eljárás meghívása az adatok Azure szinapszis-elemzésbe való másolása során a másolási tevékenység használata nem támogatott. Azonban a tárolt eljárási tevékenység használatával meghívhat egy tárolt eljárást az Azure szinapszis Analytics szolgáltatásban. 
@@ -70,12 +70,12 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 
 | Tulajdonság                  | Leírás                              | Kötelező |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | A tevékenység neve                     | Yes      |
-| leírás               | A tevékenység által használt szöveg leírása | No       |
-| típus                      | A tárolt eljárási tevékenységnél a tevékenység típusa **SqlServerStoredProcedure** . | Yes      |
-| linkedServiceName         | Hivatkozás a **Azure SQL Databasera** vagy az **Azure szinapszis analyticsre** , vagy **SQL Server** társított szolgáltatásként van regisztrálva Data Factoryban. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Yes      |
-| storedProcedureName       | Adja meg a meghívott tárolt eljárás nevét. | Yes      |
-| storedProcedureParameters | A tárolt eljárás paramétereinek értékeinek megadása. `"param1": { "value": "param1Value","type":"param1Type" }`A paraméter értékének és az adatforrás által támogatott típusnak a továbbítására használható. Ha egy paraméternél null értéket kell átadnia, használja a `"param1": { "value": null }` (minden kisbetű) lehetőséget. | No       |
+| name                      | A tevékenység neve                     | Igen      |
+| leírás               | A tevékenység által használt szöveg leírása | Nem       |
+| típus                      | A tárolt eljárási tevékenységnél a tevékenység típusa **SqlServerStoredProcedure** . | Igen      |
+| linkedServiceName         | Hivatkozás a **Azure SQL Databasera** vagy az **Azure szinapszis analyticsre** , vagy **SQL Server** társított szolgáltatásként van regisztrálva Data Factoryban. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
+| storedProcedureName       | Adja meg a meghívott tárolt eljárás nevét. | Igen      |
+| storedProcedureParameters | A tárolt eljárás paramétereinek értékeinek megadása. `"param1": { "value": "param1Value","type":"param1Type" }`A paraméter értékének és az adatforrás által támogatott típusnak a továbbítására használható. Ha egy paraméternél null értéket kell átadnia, használja a `"param1": { "value": null }` (minden kisbetű) lehetőséget. | Nem       |
 
 ## <a name="parameter-data-type-mapping"></a>Paraméter adattípusának leképezése
 A paraméterhez megadott adattípus a Azure Data Factory típus, amely a használt adatforrásban lévő adattípushoz van leképezve. Az adattípushoz tartozó leképezések az adatforráshoz az összekötők területen találhatók. Néhány példa

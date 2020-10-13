@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986511"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
@@ -149,10 +149,10 @@ A feladatok állapota a következő esetektől függően változhat:
 
 **Pillanatkép** | **Adatok átvitele a tárba** | **Feladatok állapota**
 --- | --- | ---
-Befejeződött | Folyamatban | Folyamatban
-Befejeződött | Kimarad | Befejeződött
-Befejeződött | Befejeződött | Befejeződött
-Befejeződött | Sikertelen | Figyelmeztetéssel fejeződött be
+Befejezve | Folyamatban | Folyamatban
+Befejezve | Kimarad | Befejezve
+Befejezve | Befejezve | Befejezve
+Befejezve | Sikertelen | Figyelmeztetéssel fejeződött be
 Sikertelen | Sikertelen | Sikertelen
 
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így olyan helyzetekben, amikor egy folyamatban lévő biztonsági mentési feladat a következő nap biztonsági mentését eredményezte, a rendszer ezt a leválasztási funkciót fogja elkerülni. A következő napok biztonsági mentései a pillanatképet elvégezték, az **adatok a tárolóba való átvitele** pedig kimarad, ha egy korábbi nap biztonsági mentési feladata folyamatban van.

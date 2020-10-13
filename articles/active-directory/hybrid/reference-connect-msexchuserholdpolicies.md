@@ -15,17 +15,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a5a4659671f8d4ded64a4f04f84abf1f67d8825
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265255"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies és cloudMsExchUserHoldPolicies
 Az alábbi dokumentum ismerteti ezeket az attribútumokat, amelyeket az Exchange használ, valamint az alapértelmezett szinkronizálási szabályok szerkesztésének megfelelő módját.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Mi a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies?
-Az Exchange Serverhez két különböző típusú [tároló érhető el: a peres](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a helyben tartás. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  A helyben tartott tárolók csak azokat az elemeket őrzik meg, amelyek megfelelnek a helyi elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
+Az Exchange Serverhez két típusú [tároló érhető el: a peres](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a In-Place. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  Egy In-Place tároló csak azokat az elemeket őrzi meg, amelyek megfelelnek a In-Place elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
 
 A MsExchUserHoldPolcies és a cloudMsExchUserHoldPolicies attribútumok lehetővé teszik a helyszíni AD és az Azure AD számára annak meghatározását, hogy mely felhasználók tartanak fenn, attól függően, hogy helyszíni Exchange-et vagy Exchange-et használnak-e.
 

@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269692"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Arcok kivonása Azure Media Analytics bemutatóval
@@ -123,7 +123,7 @@ Ha a fejlesztők a JSON-megjegyzési adatokat szeretnék elemezni, tekintse meg 
 6.  Töltse fel ezt a fájlt a kimeneti eszközre az 1. lépésben. Töltse fel az eredeti videót az eszközre, és állítsa be elsődleges eszközként. 
 7.  A kivonási feladatoknak az objektumon való futtatása "kivonás" módban a végső kitakart videó lekéréséhez. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

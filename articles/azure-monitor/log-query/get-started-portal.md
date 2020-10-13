@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
 ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90088357"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: Log Analytics lekérdezések első lépései
@@ -147,7 +147,7 @@ Event
 
 Alapértelmezés szerint az eredmények egy táblázatban jelennek meg. A táblázat fölötti **diagram** kiválasztásával megjelenítheti az eredményeket grafikus nézetben.
 
-![Sávdiagram](media/get-started-portal/bar-chart.png)
+![Oszlopdiagram](media/get-started-portal/bar-chart.png)
 
 Az eredmények egy halmozott oszlopdiagram-diagramon jelennek meg. Válasszon más beállításokat, például a **halmozott oszlopot** vagy a **tortadiagramot** az eredmények egyéb nézeteinek megjelenítéséhez.
 
@@ -191,7 +191,7 @@ Lekérdezés mentése:
    
 1. Ha Log Analytics munkaterületen található, adjon meg egy **kategóriát** a lekérdezési **tallózó** számára a lekérdezéshez. (A kategóriák nem érhetők el az Applications-lekérdezések lekérdezéséhez)
    
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
    
    ![Függvény mentése](media/get-started-portal/save-function.png)
 
@@ -209,7 +209,7 @@ A következő videó bemutatja, hogyan integrálhatja Log Analytics az Excelben.
 
 Ha egy lekérdezésre mutató hivatkozást szeretne megosztani, válassza a felső sávon a **hivatkozás másolása** lehetőséget, majd válassza a **hivatkozás másolása lekérdezéshez**, a **lekérdezési szöveg másolása**vagy a **lekérdezési eredmények** másolása lehetőséget a vágólapra másoláshoz. A lekérdezési hivatkozást elküldheti másoknak is, akik ugyanahhoz a munkaterülethez férnek hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan lehet Azure Monitor napló lekérdezéseit írni.
 > [!div class="nextstepaction"]

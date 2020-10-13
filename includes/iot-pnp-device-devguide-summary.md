@@ -5,13 +5,13 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 09/24/2020
 ms.openlocfilehash: 149b1831323935f09a826f03be76276e34104992
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579785"
 ---
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a IoT Plug and Play-eszköz fejlesztését, néhány további erőforrást is talál:
 

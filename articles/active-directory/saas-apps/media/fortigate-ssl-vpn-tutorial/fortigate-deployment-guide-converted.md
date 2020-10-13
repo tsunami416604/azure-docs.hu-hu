@@ -16,10 +16,10 @@ ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 357eb0a60e6246996de9ab75337ecc213d845ae7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273330"
 ---
 # <a name="fortigate-deployment-guide"></a>FortiGate üzembe helyezési útmutató
@@ -175,7 +175,7 @@ Az alábbi szakaszokból megtudhatja, hogyan állíthatja be a FortiGate virtuá
 
     ![Képernyőfelvétel a belső vezérlőprogram felügyeletéről.](backup-configure-upgrade.png)
 
-7. Válassza a **Folytatás**lehetőséget.
+7. Válassza a **Folytatás** lehetőséget.
 8. Amikor a rendszer kéri, hogy mentse a FortiGate-konfigurációt (. conf-fájlként), válassza a **Mentés**lehetőséget.
 9. Várja meg a belső vezérlőprogram feltöltését és alkalmazásának megvárniát. Várjon, amíg a FortiGate virtuális gép újraindul.
 10. A FortiGate virtuális gép újraindítása után jelentkezzen be újra a rendszergazdai hitelesítő adatokkal.

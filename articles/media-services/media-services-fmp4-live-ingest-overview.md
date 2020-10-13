@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072046"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services darabolt MP4 élő betöltési specifikáció 
@@ -75,7 +75,7 @@ A részletes követelmények a következők:
 ## <a name="6-definition-of-stream"></a>6. a "Stream" definíciója
 A stream az élő bemutatók előkészítésének, a folyamatos átvitel feladatátvételének és a redundancia-forgatókönyveknek a működésének alapvető működési egysége. Az adatfolyam egy egyedi, töredékes MP4-Bitstream van definiálva, amely egyetlen vagy több zeneszámot tartalmazhat. A teljes élő bemutató egy vagy több streamet tartalmazhat, az élő kódolók konfigurációjától függően. Az alábbi példák a streamek egy teljes élő bemutató összeállításához való használatának különböző lehetőségeit szemléltetik.
 
-**Például** 
+**Példa** 
 
 Az ügyfél egy élő adatfolyam-bemutatót szeretne létrehozni, amely a következő hang/videó bitrátát tartalmazza:
 
@@ -98,7 +98,7 @@ Ebben a beállításban az ügyfél úgy dönt, hogy a legalacsonyabb sávszéle
 
 ![Streamek – hang-és video-zeneszámok][image4]
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Ez a példa nem tartalmazza az összes lehetséges betöltési beállítást. Valójában a zeneszámok adatfolyamként történő csoportosítását az élő betöltés támogatja. Az ügyfelek és a kódoló-szállítók a mérnöki komplexitás, a kódoló kapacitása, valamint a redundancia és a feladatátvételi megfontolások alapján választhatják ki a saját implementációkat. A legtöbb esetben azonban csak egyetlen hangsáv van a teljes élő bemutatóhoz. Ezért fontos, hogy gondoskodjon arról, hogy a zeneszámot tartalmazó betöltési stream egészséges legyen. Ez a megfontolás gyakran azt eredményezi, hogy a hangsávot a saját streamben helyezi üzembe (a 2. lehetőségnek megfelelően), vagy a legalacsonyabb sávszélességű videóval (a 3. lehetőséggel) közvetíti. Emellett a jobb redundancia és hibatűrés érdekében ugyanazt a hangsávot kell elküldeni két különböző streamben (2. lehetőség redundáns hangsávokkal), vagy a hangfelvételt legalább két, a legalacsonyabb sávszélességű videó (3. lehetőség, legalább két videó streamben található hang) esetében ajánlott a Media Servicesba való élő betöltéshez.
 
 ## <a name="7-service-failover"></a>7. szolgáltatás feladatátvétele

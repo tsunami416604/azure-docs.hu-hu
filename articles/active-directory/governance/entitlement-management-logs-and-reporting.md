@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88783821"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentéskészítés az Azure AD-jogosultságok kezelésében Azure Monitor
@@ -35,7 +35,7 @@ Az Azure AD-naplók archiválásához a Azure Monitor Azure-előfizetésben kell
 
 **Előfeltételként szükséges szerepkör**: globális rendszergazda
 
-1. Jelentkezzen be a Azure Portalba globális rendszergazdai jogosultsággal rendelkező felhasználóként. Győződjön meg arról, hogy van hozzáférése az Azure Monitor munkaterületet tartalmazó erőforráscsoporthoz.
+1. Jelentkezzen be a Azure Portalba olyan felhasználóként, aki globális rendszergazda. Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Azure Monitor munkaterületet tartalmazó erőforráscsoporthoz.
  
 1. Válassza ki **Azure Active Directory** majd a bal oldali navigációs menü figyelés területén kattintson a **diagnosztikai beállítások** elemre. Ellenőrizze, hogy van-e már egy beállítás, amely elküldi a naplókat az adott munkaterületnek.
 

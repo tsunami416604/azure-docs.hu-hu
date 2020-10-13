@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
 ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434656"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
@@ -39,7 +39,7 @@ A következő táblázat a HDInsight-fürtök beállításához használható k�
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
-| [Azure Resource Manager sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Ez a cikk végigvezeti a telepítőn a [Azure Portalon](https://portal.azure.com), ahol HDInsight-fürtöt hozhat létre.
 
@@ -63,7 +63,7 @@ A HDInsight-fürtök neve a következő korlátozásokkal rendelkezhet:
 * A fürt elnevezési hatóköre az összes Azure-ra kiterjed az összes előfizetésben. Így a fürt nevének egyedinek kell lennie világszerte.
 * Az első hat karakternek egyedinek kell lennie a virtuális hálózaton belül
 
-#### <a name="region"></a>Region
+#### <a name="region"></a>Régió
 
 Nem kell explicit módon megadnia a fürt helyét: a fürt az alapértelmezett tárolóval megegyező helyen található. A támogatott régiók listájának megtekintéséhez válassza a [HDInsight díjszabása](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409) **régió** legördülő listát.
 
@@ -82,7 +82,7 @@ Az Azure HDInsight jelenleg a következő típusú fürtöket biztosítja, amely
 | [Kafka](kafka/apache-kafka-introduction.md) | Elosztott streaming platform, amely valós idejű adatfolyam-továbbítási adatcsatornák és alkalmazások létrehozására használható |
 | [ML-szolgáltatások](r-server/r-server-overview.md) |Különböző big data statisztikák, prediktív modellezés és gépi tanulási képességek |
 | [Spark](spark/apache-spark-overview.md) |Memóriabeli feldolgozás, interaktív lekérdezések, mikro-köteg adatfolyam-feldolgozás |
-| [Storm](storm/apache-storm-overview.md) |Valós idejű eseményfeldolgozás |
+| [Vihar](storm/apache-storm-overview.md) |Valós idejű eseményfeldolgozás |
 
 #### <a name="version"></a>Verzió
 
@@ -216,7 +216,7 @@ Mindegyik fürt típusa saját számú csomóponttal, csomópontok terminológi�
 | --- | --- | --- |
 | Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |![HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | A HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |![HDInsight Storm-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Vihar |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |![HDInsight Storm-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Fő csomópont (2), munkavégző csomópont (1 +), ZooKeeper-csomópont (3) (az A1-es ZooKeeper VM-mérethez ingyenes) |![HDInsight Spark-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 További információ: az [alapértelmezett csomópont-konfiguráció és a fürtök virtuálisgép-mérete](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) a "mi a Hadoop-összetevők és-verziók a HDInsight-ben?"

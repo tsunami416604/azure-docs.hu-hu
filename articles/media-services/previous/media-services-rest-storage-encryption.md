@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264164"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása a Storage encryption szolgáltatással
@@ -51,7 +51,7 @@ A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
 |[Inaktív adatok Storage Service Encryption](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél felügyel|Támogatott|Támogatott|
-|[Storage ügyféloldali titkosítás](../../storage/common/storage-client-side-encryption.md)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vault|Nem támogatott|Nem támogatott|
+|[Storage Client-Side titkosítás](../../storage/common/storage-client-side-encryption.md)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vault|Nem támogatott|Nem támogatott|
 
 <sup>1</sup> míg Media Services támogatja a tartalom törlését, illetve titkosítás nélkül, nem ajánlott.
 

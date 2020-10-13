@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070598"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple virtuális tömb üzembe helyezése – létesítés a Hyper-V-ben
@@ -168,11 +168,11 @@ A következő lépések végrehajtásával indítsa el a virtuális tömböt, é
    ![Képernyőkép a vSphere-ügyfél konzoljának lapról, amely a bejelentkezési mezőben meghatározatlan karaktereket tartalmaz.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.
 
-   ![Képernyőfelvétel a vSphere-ügyfél konzoljának lapról. a lapon lévő szöveg azt jelzi, hogy a jelszót módosítani kell.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
+   ![Képernyőkép a vSphere-ügyfél konzoljának lapról. Az oldalon lévő szöveg azt jelzi, hogy a jelszót módosítani kell.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
 
    Olyan jelszót adjon meg, amely legalább 8 karakterből áll. A jelszónak a következő négy típusból legalább hármat tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek. Írja be ismét a jelszót a megerősítéséhez. A rendszer értesíti, hogy a jelszó megváltozott.
 
-   ![Képernyőkép a vSphere-ügyfél konzoljának lapról. a lapon lévő szöveg a jelszó módosítását jelzi.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
+   ![Képernyőkép a vSphere-ügyfél konzoljának lapról. A lap szövege azt jelzi, hogy a jelszó megváltozott.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
 5. A jelszó sikeres módosítása után a virtuális tömb újraindulhat. Várjon, amíg az eszköz elindul.
 
    ![Képernyőkép a fő StorSimpleAdmin oldalról. A lapon lévő szöveg arra kéri a felhasználót, hogy várjon a rendszeresemény-értesítési szolgáltatásra.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)
@@ -192,7 +192,7 @@ A következő lépések végrehajtásával indítsa el a virtuális tömböt, é
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Képernyőfelvétel: a Get-Help set-HcsIpAddress parancs kimenetét és a set-HcsIpAddress parancs helyes használatát bemutató konzolablak.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
+    ![Képernyőfelvétel: a Get-Help Set-HcsIpAddress parancs kimenetét és a Set-HcsIpAddress parancs helyes használatát bemutató konzolablak.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
 9. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Ezzel az IP-címmel csatlakozhat a virtuális tömb webes felhasználói felületéhez, és elvégezheti a helyi telepítést és regisztrációt.
 
    ![Képernyőfelvétel: a konzol ablakának megjelenítése az eszköz szalagcímének szövegével. Ez a szöveg tartalmazza az eszköz IP-címét és URL-címét.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)

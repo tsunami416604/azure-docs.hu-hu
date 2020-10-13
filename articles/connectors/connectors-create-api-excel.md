@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400723"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Excel online-beli adatkezelési Azure Logic Apps
@@ -66,6 +66,6 @@ A technikai részleteket, például az eseményindítókat, a műveleteket és a
 * [Vállalati Excel online](/connectors/excelonlinebusiness/)
 * [Excel online OneDrive](/connectors/excelonline/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

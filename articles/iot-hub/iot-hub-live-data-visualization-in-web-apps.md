@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327565"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT hub-ban egy webalkalmazásban
@@ -254,7 +254,7 @@ Ha bármilyen probléma merül fel ezzel a mintával, próbálkozzon az alábbi 
 
 * A Azure Portalban nyissa meg a webalkalmazást. A bal oldali ablaktábla **figyelés** területén válassza a **app Service naplók**lehetőséget. Kapcsolja be az **alkalmazás naplózása (fájlrendszer)** beállítást be értékre, állítsa a hiba **szintet** , majd kattintson a **Mentés**gombra. Ezután nyissa meg a **naplózási adatfolyamot** (a **figyelés**alatt).
 
-* A Azure Portal webalkalmazásában a **fejlesztői eszközök** területen válassza ki a **konzolt** , és ellenőrizze a csomópont-és NPM verzióit a és a segítségével `node -v` `npm -v` .
+* A Azure Portal webalkalmazásában a **fejlesztői eszközök**  területen válassza ki a  **konzolt** , és ellenőrizze a csomópont-és NPM verzióit a és a segítségével `node -v` `npm -v` .
 
 * Ha a csomag nem talál hibát, lehetséges, hogy a lépéseket a sorrend szerint futtatta. Ha a hely telepítve van (a `git push` -vel), az App Service fut `npm install` , amely a csomópont aktuális verziója alapján fut. Ha később módosítja a konfigurációt, értelmetlen módosítást kell végeznie a kódban, és újra le kell küldenie.
 

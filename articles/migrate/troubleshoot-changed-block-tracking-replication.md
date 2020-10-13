@@ -7,10 +7,10 @@ ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
 ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871180"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
@@ -58,7 +58,7 @@ Amikor a portál létrehozza a Key vaultot, egy felhasználói hozzáférési sz
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). ID
 
-Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage beolvasás, Listázás, törlés, beállítás, frissítés, regeneratekey, getsas, listsas, deletesas, setsas, helyreállítás, biztonsági mentés, visszaállítás, törlés
+Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage beolvasása, listázása, törlése, beállítása, frissítése, regeneratekey, getsas, listsas, deletesas, setsas, helyreállítás, biztonsági mentés, visszaállítás, törlés
 
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
@@ -293,6 +293,6 @@ Ez egy ismert VMware-probléma, amelyben a pillanatkép által jelzett lemez mé
 
 Ez akkor fordul elő, ha az NFC-gazdagép puffere nem elegendő a memóriához. A probléma megoldásához át kell helyeznie a virtuális gépet (számítási vMotion) egy másik gazdagépre, amely ingyenes erőforrásokkal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a virtuális gép replikálását, és végezzen [tesztelési áttelepítést](https://go.microsoft.com/fwlink/?linkid=2139333).

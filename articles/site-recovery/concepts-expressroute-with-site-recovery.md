@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: 68671a98c7703514af11de2f8c505110129fe713
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398646"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
@@ -58,7 +58,7 @@ Ha már használja a ExpressRoute-t a helyszíni adatközpontból az Azure-beli 
 
 Az Azure-beli virtuális gépeket az [itt](../site-recovery/azure-to-azure-support-matrix.md#region-support)leírtak szerint replikálhatja az adott földrajzi fürtön belüli bármely Azure-régióba. Ha a kiválasztott cél Azure-régió nem a forráshoz tartozó geopolitikai régióban található, akkor előfordulhat, hogy engedélyeznie kell a ExpressRoute Premiumot. További részletekért lásd a [ExpressRoute helyét](../expressroute/expressroute-locations.md) és a [ExpressRoute díjszabását](https://azure.microsoft.com/pricing/details/expressroute/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [ExpressRoute-áramkörökről](../expressroute/expressroute-circuit-peerings.md).
 - További információ az [ExpressRoute-útválasztási tartományokról](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 - További információ a [ExpressRoute helyeiről](../expressroute/expressroute-locations.md).

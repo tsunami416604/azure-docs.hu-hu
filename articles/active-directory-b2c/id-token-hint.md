@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564840"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>AZONOSÍTÓ jogkivonat-útmutató technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -34,7 +34,7 @@ A id_token_hint a jogkivonat kiállítója (egy függő entitás vagy egy identi
 
 A id_token_hintnak érvényes JWT-tokennek kell lennie. A következő táblázat felsorolja a kötelező jogcímeket. További jogcímek megadása nem kötelező.
 
-| Name | Jogcím | Példaérték | Leírás |
+| Name (Név) | Jogcím | Példaérték | Leírás |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Azonosítja a jogkivonat kívánt címzettjét. Ez egy tetszőleges karakterlánc, amelyet a jogkivonat kiállítója meghatároz. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
 | Kiállító | `iss` |`https://localhost` | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez a jogkivonat-kiállító által definiált tetszőleges URI. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
@@ -92,8 +92,8 @@ Szimmetrikus kulcs használata esetén a következő metaadatok érvényesek.
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | METAADATOK| Igen | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
-| kiállító | No | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
-| IdTokenAudience | No | Azonosítja a jogkivonat kívánt címzettjét. Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `aud` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
+| kiállító | Nem | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
+| IdTokenAudience | Nem | Azonosítja a jogkivonat kívánt címzettjét. Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `aud` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -249,7 +249,7 @@ A szimmetrikus és az aszimmetrikus megközelítés esetében a `id_token_hint` 
     ```xml
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
-1. A függő entitás házirendjében ismételje meg ugyanazokat a bemeneti jogcímeket, amelyeket a IdTokenHint_ExtractClaims technikai profilban konfigurált. Például:
+1. A függő entitás házirendjében ismételje meg ugyanazokat a bemeneti jogcímeket, amelyeket a IdTokenHint_ExtractClaims technikai profilban konfigurált. Példa:
     ```xml
    <RelyingParty>
      <DefaultUserJourney ReferenceId="SignUp" />
@@ -282,6 +282,6 @@ A GitHub-minták bemutatják, hogyan hozhat létre ilyen tokent olyan JWT, amely
 https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize?client_id=63ba0d17-c4ba-47fd-89e9-31b3c2734339&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&id_token_hint=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6IiBKb2huIFNtaXRoIiwidXNlcklkIjoiam9obi5zQGNvbnRvc28uY29tIiwibmJmIjoxNTk5NDgyNTE1LCJleHAiOjE2MDAwODczMTUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0IiwiYXVkIjoiYTQ4OWZjNDQtM2NjMC00YTc4LTkyZjYtZTQxM2NkODUzZWFlIn0.nPmLXydI83PQCk5lRBYUZRu_aX58pL1khahHyQuupig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure AD B2C Community GitHub-tárházban keresse meg a [Feliratkozás a meghívó e-mail](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md) megoldással.

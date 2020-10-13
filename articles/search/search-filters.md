@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534794"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
@@ -169,7 +169,7 @@ A numerikus mezők nincsenek `searchable` a teljes szöveges keresés kontextus�
 
 A numerikus mezőket (ár, méret, SKU, ID) tartalmazó dokumentumok a keresési eredményekben adják meg ezeket az értékeket, ha a mező meg van jelölve `retrievable` . Itt az a pont, hogy a teljes szöveges keresés önmagában nem vonatkozik a numerikus mezők típusára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Először a portálon keresse meg a **keresési Explorert** , hogy **$Filter** paraméterekkel küldje el a lekérdezéseket. A [Real-Estate-Sample index](search-get-started-portal.md) érdekes eredményeket biztosít a következő szűrt lekérdezésekhez, amikor beilleszti őket a keresősávba:
 
@@ -196,7 +196,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](./search-query-odata-filter.md#examples).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
 + [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents)

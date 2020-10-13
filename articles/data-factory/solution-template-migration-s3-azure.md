@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398220"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
@@ -194,7 +194,7 @@ A sablon két paramétert tartalmaz:
 
     ![Képernyőkép, amely a lekérdezés futtatása után megjeleníti az eredményeket a vezérlő táblából.](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Fájlok másolása több tárolóból](solution-template-copy-files-multiple-containers.md)
 - [Fájlok áthelyezése](solution-template-move-files.md)

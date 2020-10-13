@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
 ms.openlocfilehash: 49fb77b4efbbecb306a0650cb17097b43e5153ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309149"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>A modell verziószámozása a Text Analytics API
@@ -54,5 +54,5 @@ Az [állapot](../how-tos/text-analytics-for-health.md) -tároló Text Analytics 
 ## <a name="next-steps"></a>Következő lépések
 
 * [A Text Analytics áttekintése](../overview.md)
-* [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)

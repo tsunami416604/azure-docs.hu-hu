@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065471"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Felügyelt privát végpont létrehozása az adatforráshoz (előzetes verzió)
@@ -31,7 +31,7 @@ Az Azure szinapszis Studióban válassza a **kezelés** fület a bal oldali navi
 
 ## <a name="step-3-select-the-data-source-type"></a>3. lépés: az adatforrás típusának kiválasztása
 
-Válassza ki az adatforrás típusát. Ebben az esetben a célként megadott adatforrás egy ADLS Gen2-fiók. Válassza a **Folytatás** elemet.
+Válassza ki az adatforrás típusát. Ebben az esetben a célként megadott adatforrás egy ADLS Gen2-fiók. Válassza a **Folytatás** lehetőséget.
 ![Válassza ki a célként megadott adatforrás típusát](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. lépés: az adatforrással kapcsolatos adatok megadása

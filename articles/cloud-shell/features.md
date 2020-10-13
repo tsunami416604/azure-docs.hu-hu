@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470153"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
@@ -55,13 +55,13 @@ Az Azure-erőforrásokon végrehajtott, közvetlenül Azure Portal vagy Azure Po
 
 A Cloud Shell PowerShell az Exchange Online modul privát összeállítását tartalmazza.  `Connect-EXOPSSession`Az Exchange-parancsmagok beszerzéséhez futtassa a parancsot.
 
-![Képernyőkép a EXOPSSession és a Get-User parancsokat futtató Azure Cloud Shellról.](media/features-powershell/exchangeonline.png)
+![Képernyőkép az Connect-EXOPSSession és a Get-user parancsot futtató Azure Cloud Shellról.](media/features-powershell/exchangeonline.png)
 
  Az `Get-Command -Module tmp_*` parancs futtatása
 > [!NOTE]
 > A modul nevének a (z) értékkel kell kezdődnie `tmp_` , ha azonos előtaggal rendelkező modulokat telepített, a parancsmagok is felszínre kerülnek. 
 
-![Képernyőkép a Get-Command-Module tmp_ * parancsot futtató Azure Cloud Shellról.](media/features-powershell/exchangeonlinecmdlets.png)
+![Képernyőkép a parancs Get-Command-Module tmp_ * parancsot futtató Azure Cloud Shellról.](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Mélyreható integráció nyílt forráskódú eszközökkel
 
@@ -69,7 +69,7 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 
 ## <a name="tools"></a>Eszközök
 
-|Kategória   |Name   |
+|Kategória   |Name (Név)   |
 |---|---|
 |Linux-eszközök            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure-eszközök            |[Azure CLI](https://github.com/Azure/azure-cli) és [klasszikus Azure CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](../storage/common/storage-use-azcopy-v10.md)<br> [Azure Functions parancssori felület](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric parancssori felület](../service-fabric/service-fabric-cli.md)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|

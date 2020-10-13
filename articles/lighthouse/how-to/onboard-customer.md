@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396671"
+ms.locfileid: "91873213"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe 
 
 A bevezetési folyamat több ügyfél számára is megismételhető. Ha a megfelelő engedélyekkel rendelkező felhasználó bejelentkezik a kezelő bérlőbe, a felhasználó az ügyfél-kihelyezés hatókörén belül jogosult a felügyeleti műveletek végrehajtására, anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
 
-Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Azt javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, majd az adott egyszerű szolgáltatást is beleértve minden alkalommal, amikor előkészíti az ügyfelet. További információ: [partner-azonosító csatolása a partner által a delegált erőforrásokon felhasználható kreditek engedélyezéséhez.
+Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Azt javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, majd az adott egyszerű szolgáltatást is beleértve minden alkalommal, amikor előkészíti az ügyfelet. További információ: [a partner azonosítójának összekapcsolása a partner által a delegált erőforrásokon kapott jóváírás engedélyezéséhez](partner-earned-credit.md).
 
 > [!NOTE]
 > Az ügyfelek az Azure világítótoronyba is bejelentkezhetnek, ha az [Azure Marketplace](publish-managed-services-offers.md)-en közzétett felügyelt szolgáltatási ajánlatot (nyilvános vagy privát) vásárolnak. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlatok mellett is használhatja.

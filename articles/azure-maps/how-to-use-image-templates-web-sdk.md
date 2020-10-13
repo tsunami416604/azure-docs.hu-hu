@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335551"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
@@ -106,7 +106,7 @@ Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelö
 
 
 > [!TIP]
-> A képsablonok a térképen kívül is használhatók. A getImageTemplate funciton egy olyan SVG-karakterláncot ad vissza, amely helyőrzőket tartalmaz; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Cserélje le ezeket a helyőrző értékeket egy érvényes SVG-karakterlánc létrehozásához. Ezután hozzáadhatja az SVG-karakterláncot közvetlenül a HTML DOM-hoz, vagy átalakíthatja egy adaturi-ba, és beszúrhatja egy képcímkébe. Például:
+> A képsablonok a térképen kívül is használhatók. A getImageTemplate funciton egy olyan SVG-karakterláncot ad vissza, amely helyőrzőket tartalmaz; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Cserélje le ezeket a helyőrző értékeket egy érvényes SVG-karakterlánc létrehozásához. Ezután hozzáadhatja az SVG-karakterláncot közvetlenül a HTML DOM-hoz, vagy átalakíthatja egy adaturi-ba, és beszúrhatja egy képcímkébe. Példa:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -119,7 +119,7 @@ Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelö
 
 Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha olyan modult hoz létre, amely további képsablonokat ad hozzá, egyszerűen hozzáadhatja és lekérheti ezeket az ikonokat a Azure Maps web SDK-ból. Használja a következő statikus függvényeket a `atlas` névtérben.
 
-| Name | Visszatérési típus | Description | 
+| Name (Név) | Visszatérési típus | Leírás | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hozzáadja az egyéni SVG-képsablont az Atlas-névtérhez. |
 |  `getImageTemplate(templateName: string, scale?: number)`| sztring | Egy SVG-sablon beolvasása név alapján. |
@@ -127,7 +127,7 @@ Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha 
 
 Az SVG-képsablonok a következő helyőrző értékeket támogatják:
 
-| Helyőrző | Description |
+| Helyőrző | Leírás |
 |-|-|
 | `{color}` | Az elsődleges szín. | 
 | `{secondaryColor}` | A másodlagos szín | 

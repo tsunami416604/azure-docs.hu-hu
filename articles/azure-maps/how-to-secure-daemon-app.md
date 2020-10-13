@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355856"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon-alkalmazás biztonságossá tétele
@@ -124,7 +124,7 @@ Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozot
     > [!div class="mx-imgBorder"]
     > ![Képernyőfelvétel: a kiválasztott hozzáadással rendelkező roll-hozzárendelések megjelenítése.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés hozzárendelése**területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával**. Válassza ki a rendszerbiztonsági tag. Ez után válassza a **Mentés** lehetőséget.
+3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés hozzárendelése**területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával**. Válassza ki a rendszerbiztonsági tag. Kattintson a **Mentés** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

@@ -9,10 +9,10 @@ ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328870"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
@@ -142,7 +142,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
   -DiagnosticsConfigurationPath "DiagnosticsConfiguration.json"
 ```
 
-A privát beállítások a [PrivateConfig elemben](diagnostics-extension-schema-windows.md#privateconfig-element)vannak definiálva, míg a nyilvános beállítások a konfigurációs séma [nyilvános elemében](diagnostics-extension-schema-windows.md#publicconfig-element) vannak meghatározva. Dönthet úgy is, hogy a Storage-fiók részleteit a set-AzVMDiagnosticsExtension parancsmag paraméterei adja meg, nem pedig a privát beállítások között.
+A privát beállítások a [PrivateConfig elemben](diagnostics-extension-schema-windows.md#privateconfig-element)vannak definiálva, míg a nyilvános beállítások a konfigurációs séma [nyilvános elemében](diagnostics-extension-schema-windows.md#publicconfig-element) vannak meghatározva. Azt is megadhatja, hogy a Storage-fiók hogyan adja meg a Set-AzVMDiagnosticsExtension parancsmag paramétereit ahelyett, hogy azokat a privát beállításokban is megadja.
 
 A következő példa egy olyan konfigurációs fájl minimális példáját mutatja be, amely lehetővé teszi a diagnosztikai infrastruktúra naplói, egyetlen teljesítményszámláló és egyetlen Eseménynapló gyűjtését. A privát és a nyilvános beállítások részletes ismertetését lásd: [példa konfiguráció](diagnostics-extension-schema-windows.md#publicconfig-element) . 
 
@@ -192,7 +192,7 @@ Lásd még: a [PowerShell használata a Azure Diagnostics Windows rendszerű vir
 A következő táblázat felsorolja a diagnosztikai bővítményből összegyűjtött különböző típusú adatokat, valamint azt, hogy táblázatként vagy blobként vannak tárolva. A táblákban tárolt adattárolók a nyilvános konfiguráció [StorageType beállításától](diagnostics-extension-schema-windows.md#publicconfig-element) függően a blobokban is tárolhatók.
 
 
-| Adatok | Tárolási típus | Description |
+| Adatok | Tárolási típus | Leírás |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Táblázat | A diagnosztikai figyelő és a konfiguráció módosításai. |
 | WADDirectoriesTable | Táblázat | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
@@ -204,7 +204,7 @@ A következő táblázat felsorolja a diagnosztikai bővítményből összegyűj
 | Egyéni | Blob | Egyéni tároló, amely a diagnosztikai figyelő által figyelt könyvtárak konfigurálásán alapul.  A blob-tároló neve a WADDirectoriesTable-ben lesz meghatározva. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Eszközök a diagnosztikai adatgyűjtés megtekintéséhez
-Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Például:
+Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Példa:
 
 * Kiszolgálókezelő a Visual Studióban – ha telepítette a Microsoft Visual studióhoz készült Azure-eszközöket, a Server Explorerben az Azure Storage csomópont használatával megtekintheti az Azure Storage-fiókok írásvédett blob-és táblázat-adatait. A helyi Storage Emulator-fiókból és az Azure-hoz létrehozott Storage-fiókoktól származó adatok is megjeleníthetők. További információ: [Storage-erőforrások tallózása és kezelése a Server Explorerben](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.

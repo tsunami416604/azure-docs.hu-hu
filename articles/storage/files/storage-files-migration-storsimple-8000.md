@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653247"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
@@ -427,7 +427,7 @@ Tekintse át a Robocopy naplófájl (oka) t, és ellenőrizze, hogy a fájlok le
 
 Valószínűleg létre kell hoznia az SMB-megosztásokat azon a Windows Serveren, amelyet korábban a StorSimple-on tárolt. Ezt a lépést előre betöltheti, és megteheti, hogy nem veszít időt ide, de ezt megelőzően mindenképpen meg kell győződnie arról, hogy a Windows Server nem módosítja a fájlokat.
 
-Ha van DFS-N üzemelő példánya, a DFN-névtereket az új kiszolgálói mappák helyeire irányíthatja. Ha nem rendelkezik DFS-N üzemelő példányokkal, és a 8100 8600-es készüléket helyileg, egy Windows Serveren keresztül telepítette, akkor a kiszolgálót kikapcsolhatja a tartományból, és a tartományhoz csatlakoztathatja az új Windows Servert az AFS-vel a tartományhoz, adja meg ugyanazt a kiszolgálónevet, mint a régi kiszolgálót, és ugyanazokat a neveket, majd az új kiszolgálóhoz való kivágás , csoportházirend vagy parancsfájlok.
+Ha van DFS-N üzemelő példánya, akkor a DFN-Namespaces az új kiszolgáló mappájának helyeire irányíthatja. Ha nem rendelkezik DFS-N üzemelő példányokkal, és a 8100 8600-es készüléket helyileg, egy Windows Serveren keresztül telepítette, akkor a kiszolgálót kikapcsolhatja a tartományból, és a tartományhoz csatlakoztathatja az új Windows Servert az AFS-vel a tartományhoz, adja meg ugyanazt a kiszolgálónevet, mint a régi kiszolgálót, és ugyanazokat a neveket, majd az új kiszolgálóhoz való kivágás , csoportházirend vagy parancsfájlok.
 
 ## <a name="phase-7-deprovision"></a>7. fázis: megszüntetés
 

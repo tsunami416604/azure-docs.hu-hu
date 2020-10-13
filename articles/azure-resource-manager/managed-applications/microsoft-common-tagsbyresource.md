@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: e730201812005a9b469a964e4acd081ebe86b100
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063929"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource felhasználói felületi elem
@@ -33,7 +33,7 @@ A [címkék](../management/tag-resources.md) egy központi telepítésben lévő
 }
 ```
 
-## <a name="sample-output"></a>Példa kimenet
+## <a name="sample-output"></a>Példakimenet
 
 ```json
 {

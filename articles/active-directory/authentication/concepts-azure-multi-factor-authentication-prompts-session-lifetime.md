@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91595548"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Újrahitelesítési kérések optimalizálása és az Azure-Multi-Factor Authentication munkamenet-élettartamának megértése
@@ -134,6 +134,6 @@ A következő táblázat a licenceken alapuló ajánlásokat foglalja össze:
 | **SSO**                      | [Azure ad JOIN](../devices/concept-azure-ad-join.md) vagy [Hybrid Azure ad JOIN](../devices/concept-azure-ad-join-hybrid.md)vagy [zökkenőmentes SSO](../hybrid/how-to-connect-sso.md) a nem felügyelt eszközökhöz. | Azure AD-csatlakozás<br />Hibrid Azure AD-csatlakozás |
 | **Újrahitelesítés beállításai** | Továbbra is bejelentkezett                  | Feltételes hozzáférési szabályzatok használata a bejelentkezés gyakoriságához és az állandó böngésző-munkamenethez |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépésekhez fejezze be az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az azure multi-Factor Authentication-ban](tutorial-enable-azure-mfa.md) , vagy [használjon kockázati észleléseket felhasználói bejelentkezésekhez az Azure-multi-Factor Authentication aktiválásához](tutorial-risk-based-sspr-mfa.md).

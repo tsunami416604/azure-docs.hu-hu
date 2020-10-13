@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089946"
 ---
 # <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Biztonságos leküldéses értesítések küldése az Azure Notification Hubs
@@ -174,7 +174,7 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
     ![A csomagra összpontosító Megoldáskezelő ablak képernyőképe. a appxmanifest a rendelkezésre álló deklarációkkal, a támogatott deklarációkkal, a leküldéses értesítésekkel és a beléptetési pontokkal kapcsolatos, piros színnel megadott beállításokkal.][13]
 16. Kattintson a **File** (Fájl) menü **Save All** (Összes mentése) elemére.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Az alkalmazás futtatásához tegye a következőket:
 

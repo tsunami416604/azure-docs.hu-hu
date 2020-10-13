@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan hozhat létre képletet egy Alapból (e
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308894"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs képletek kezelése
@@ -39,7 +39,7 @@ A következő lépések végigvezetik a képletek egyéni rendszerképből, Piac
     ![Képlet hozzáadása](./media/devtest-lab-create-formulas/add-formula.png)
 6. Az **alap kiválasztása** lapon válassza ki azt az alapot (egyéni rendszerkép, Piactéri rendszerkép vagy megosztott képgyűjteményi rendszerkép), amelyből létre szeretné hozni a képletet.
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="A kiinduló rendszerkép kiválasztása":::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="A kiinduló rendszerkép kiválasztása&quot;:::
 1. A **képlet létrehozása** lap **alapbeállítások** lapján adja meg a következő értékeket:
    
     * **Képlet neve** – adja meg a képlet nevét. Ez az érték jelenik meg az alapképek listájában, amikor létrehoz egy virtuális gépet. A nevet a beírásakor érvényesíti a rendszer, és ha nem érvényes, egy üzenet jelzi az érvényes névre vonatkozó követelményeket.
@@ -58,9 +58,9 @@ A következő lépések végigvezetik a képletek egyéni rendszerképből, Piac
     - **Alhálózat** – az alhálózat módosításához válassza az **alhálózat módosítása**lehetőséget. 
     - **IP-cím konfigurálása** – Itt adhatja meg, hogy a nyilvános, a magánhálózati vagy a megosztott IP-címeket kívánja-e használni. További információ a megosztott IP-címekről: [a Azure DevTest Labs megosztott IP-címeinek megismerése](./devtest-lab-shared-ip.md).
     - **Lejárati dátum és idő** – ez a mező nem szerkeszthető. 
-    - A **gép igényelhetővé tétele** – a gép "igényelhető" azt jelenti, hogy a létrehozáskor nem lesz hozzárendelve tulajdonos. Ehelyett a labor felhasználói jogosultak lesznek a gép tulajdonosára ("jogcím") a labor oldalára.  
+    - A **gép igényelhetővé tétele** – a gép &quot;igényelhető&quot; azt jelenti, hogy a létrehozáskor nem lesz hozzárendelve tulajdonos. Ehelyett a labor felhasználói jogosultak lesznek a gép tulajdonosára (&quot;jogcím&quot;) a labor oldalára.  
 
-        ![A "Create Formula (újrafelhasználható alap)" oldal speciális beállításait bemutató képernyőkép.](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![A &quot;Create Formula (újrafelhasználható alap)" oldal speciális beállításait bemutató képernyőkép.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Ha az alapszintű megosztott képkatalógus-rendszerképet választotta, akkor a **rendszerkép verziója** mezőt is megtekintheti, amely lehetővé teszi, hogy kiválassza a rendszerkép azon verzióját, amelyet a gyűjtemény alapjául használni kíván. 
 
         ![Speciális beállítások lap](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
