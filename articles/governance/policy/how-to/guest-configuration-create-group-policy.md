@@ -3,12 +3,12 @@ title: Vendég-konfigurációs házirend definícióinak létrehozása a Windows
 description: Megtudhatja, hogyan alakíthatja át Csoportházirend a Windows Server 2019 biztonsági alaptervből egy házirend-definícióba.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547768"
+ms.locfileid: "91893373"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 
@@ -87,7 +87,7 @@ Ezután a letöltött Server 2019 alapkonfigurációt egy vendég konfiguráció
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Policy vendég konfigurációjának létrehozása
 
-A következő lépés a fájl közzététele a blob Storage-ban. 
+A következő lépés a fájl közzététele az Azure Blob Storageban. 
 
 1. Az alábbi szkript a feladat automatizálásához használható függvényt tartalmaz. Megjegyzés: a függvényben használt parancsokhoz `publish` szükség van a `Az.Storage` modulra.
 
@@ -145,7 +145,7 @@ A következő lépés a fájl közzététele a blob Storage-ban.
     $blob = 'Server2019Baseline.zip' 
     ```
 
-1. A közzétételi függvénnyel a hozzárendelt paraméterekkel közzéteheti a vendég konfigurációs csomagot a nyilvános blob Storage szolgáltatásban.
+1. A közzétételi függvénnyel a hozzárendelt paraméterekkel teheti közzé a vendég konfigurációs csomagot a nyilvános Blob Storage.
 
 
    ```azurepowershell-interactive

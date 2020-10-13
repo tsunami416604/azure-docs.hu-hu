@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570094"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
@@ -159,7 +159,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Leírás</th>
+    <th align="left">status</th><th align="left">Részállapot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozó</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
@@ -210,7 +210,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Kimarad</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
 </tr>
 <tr>
-<td>Nincs</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
+<td>Nincsenek</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
 </tr>
 </table>
 

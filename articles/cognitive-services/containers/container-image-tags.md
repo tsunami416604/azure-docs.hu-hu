@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369484"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services tároló képcímkék
@@ -33,7 +33,7 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 |-------------------------------|:------|
 | `latest`                      |       |
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Számítógépes látástechnológia
 
 A [Computer Vision][cv-containers] az OCR-tároló rendszerképe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-read` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
@@ -62,7 +62,7 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
 
-## <a name="face"></a>Face
+## <a name="face"></a>Arcfelismerés
 
 Az [arc][fa-containers] -tároló képe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-face` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-face` .
 

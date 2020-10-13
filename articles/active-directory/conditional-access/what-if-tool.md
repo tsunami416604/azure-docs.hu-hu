@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631426"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibaelhárítás a feltételes hozzáférés Lehetőségelemzési eszközével
@@ -102,7 +102,7 @@ A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhat
 
 Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A feltételes hozzáférési szabályzat alkalmazásával kapcsolatos további információkért a [feltételes hozzáférési információk és jelentéskészítés](howto-conditional-access-insights-reporting.md)funkció használatával a házirend csak jelentés mód használatával érhető el.
 - Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg a [feltételes hozzáférés általános házirendjeit](concept-conditional-access-policy-common.md).

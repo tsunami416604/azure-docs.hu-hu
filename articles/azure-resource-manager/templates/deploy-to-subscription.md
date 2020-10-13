@@ -4,10 +4,10 @@ description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Re
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729117"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
@@ -56,7 +56,7 @@ Az előfizetés kezeléséhez használja a következőt:
 * [költségvetése](/azure/templates/microsoft.consumption/budgets)
 * [Elemzési profil módosítása](/azure/templates/microsoft.changeanalysis/profile)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [Címkék](/azure/templates/microsoft.resources/tags)
+* [tags](/azure/templates/microsoft.resources/tags)
 
 Más támogatott típusok a következők:
 
@@ -454,7 +454,7 @@ Az alábbi példa létrehoz egy erőforráscsoportot, egy zárolást alkalmaz r�
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments)találhatók.

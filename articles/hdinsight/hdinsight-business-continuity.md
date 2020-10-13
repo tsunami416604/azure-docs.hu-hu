@@ -8,12 +8,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893645"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Az Azure HDInsight üzletmenet folytonossága
 
@@ -84,7 +84,7 @@ Nem mindig katasztrofális eseményt gyakorol az üzleti funkciókra. A szolgál
 
 ### <a name="hdinsight-metastore"></a>HDInsight metaadattár
 
-A HDInsight [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) metaadattár-ként használ, amely 99,99%-os SLA-t biztosít. Az adatközpont három replikálása aszinkron replikációval történik. Ha van replika elvesztése, a rendszer zökkenőmentesen kézbesít egy alternatív replikát. Az [aktív geo-replikáció](../azure-sql/database/active-geo-replication-overview.md) legfeljebb négy adatközpontból álló dobozban támogatott. Ha feladatátvétel van, vagy manuális vagy adatközpont van, a hierarchia első replikája automatikusan írási és olvasási képességgel fog válni. További információ: [Azure SQL Database üzletmenet folytonossága](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
+A HDInsight [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) metaadattár-ként használ, amely 99,99%-os SLA-t biztosít. Három adatreplikát tart fenn egy adatközpontban szinkron replikálással. Ha van replika elvesztése, a rendszer zökkenőmentesen kézbesít egy alternatív replikát. Az [aktív geo-replikáció](../azure-sql/database/active-geo-replication-overview.md) legfeljebb négy adatközpontból álló dobozban támogatott. Ha feladatátvétel van, vagy manuális vagy adatközpont van, a hierarchia első replikája automatikusan írási és olvasási képességgel fog válni. További információ: [Azure SQL Database üzletmenet folytonossága](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 ### <a name="hdinsight-storage"></a>HDInsight-tár
 
@@ -112,7 +112,7 @@ Az üzletmenet folytonosságának javítása a régiók közötti magas rendelke
 |----|------------------------|-----------------------|
 |Adattárolás|Elsődleges adattábla és táblák másolása másodlagos régióban|Csak a kurátori adatforrások replikálása|
 |Kimenő adatforgalom|A kimenő régiók közötti adatátvitel díja. A sávszélesség díjszabásával kapcsolatos irányelvek áttekintése|Csak a kisegítő mennyiségeket replikálja a régió kimenő forgalmának csökkentése érdekében|
-|Fürt számítási felszámítása|További HDInsight-fürt/s a másodlagos régióban|Az elsődleges meghibásodás után a másodlagos számítások telepítéséhez használjon automatizált parancsfájlokat. < \br>< \br>az automatikus skálázást használja a másodlagos fürt méretének minimálisra tartásához. < \br>< \br>olcsóbb virtuálisgép-SKU-ket használhat. < \br>< \br> hozzon létre formátumú másodlagos zónák azokon a régiókban, amelyekben a VM SKU-ként diszkontálható.|
+|Fürt számítási felszámítása|További HDInsight-fürt/s a másodlagos régióban|Az elsődleges meghibásodás után a másodlagos számítások az automatikus parancsfájlok használatával telepíthetők. Használja az automatikus skálázást a másodlagos fürt méretének minimálisra tartásához. Használjon olcsóbb VM SKU-t. Hozzon létre formátumú másodlagos zónák azokon a régiókban, amelyekben a VM SKU-ból diszkontálható.|
 |Hitelesítés |A másodlagos régióban a többfelhasználós forgatókönyvek további Azure AD DS-telepítéseket is felmerülhetnek|Ne használjon többfelhasználós telepítést a másodlagos régióban.|
 
 ### <a name="complexity-optimizations"></a>Összetettségi optimalizálás
@@ -124,7 +124,7 @@ Az üzletmenet folytonosságának javítása a régiók közötti magas rendelke
 |Üzleti funkciók |Az elsődleges másodlagos üzleti funkciók teljes körű működésének megkövetelése |Értékelje ki, hogy futtatható-e a másodlagos üzleti funkciók minimális kritikus részhalmazával.|
 |Kapcsolat |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

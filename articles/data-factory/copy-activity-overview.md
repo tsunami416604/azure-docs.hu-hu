@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440592"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946169"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -183,7 +183,7 @@ Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-ty
 
 ## <a name="add-additional-columns-during-copy"></a>További oszlopok hozzáadása a másolás során
 
-Az adatoknak a forrás adattárból a fogadóba való másolása mellett úgy is beállíthatja, hogy további adatoszlopokat is adjon hozzá a fogadóhoz való másoláshoz. Példa:
+Az adatoknak a forrás adattárból a fogadóba való másolása mellett úgy is beállíthatja, hogy további adatoszlopokat is adjon hozzá a fogadóhoz való másoláshoz. Például:
 
 - Fájl alapú forrásból történő másoláskor a relatív fájl elérési útját egy további oszlopként tárolja, amelyből az adatokból származó fájl származik.
 - Adjon hozzá egy olyan oszlopot, amely ADF-kifejezéssel van ellátva, hogy csatolja az ADF rendszerváltozóit, például a folyamat nevét vagy a folyamat AZONOSÍTÓját, vagy más dinamikus értéket a felsőbb rétegbeli tevékenység kimenet
@@ -258,7 +258,7 @@ Ez a funkció akkor támogatott, ha bármely forrásból másol adatokból a kö
 
 Alapértelmezés szerint a másolási tevékenység leállítja az adatok másolását, és hibát ad vissza, ha a forrásoldali adatsorok nem kompatibilisek a fogadó adatsoraival. A másolás sikeres végrehajtásához beállíthatja a másolási tevékenységet úgy, hogy kihagyja és naplózza a nem kompatibilis sorokat, és csak a kompatibilis adatfájlokat másolja. Részletekért lásd a [másolási tevékenység hibatűrését](copy-activity-fault-tolerance.md) ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg az alábbi rövid útmutatókat, oktatóanyagokat és mintákat:
 
 - [Adatok másolása az egyik helyről egy másik helyre ugyanazon Azure Blob Storage-fiókban](quickstart-create-data-factory-dot-net.md)

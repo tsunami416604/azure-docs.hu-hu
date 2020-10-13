@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Oktatóanyag: Azure Active Directory integráció a ArcGIS Enterprise-nal
@@ -78,7 +78,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az [alk
 Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[ArcGIS vállalati egyszeri bejelentkezés konfigurálása](#configure-arcgis-enterprise-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[ArcGIS Enterprise egyszeri bejelentkezés konfigurálása](#configure-arcgis-enterprise-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy ArcGIS Enterprise test User](#create-arcgis-enterprise-test-user)** -t, hogy a Britta Simon partnere legyen a ArcGIS Enterprise-ban, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -98,7 +98,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -119,11 +119,11 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [ArcGIS Enterprise ügyfél-támogatási csapatával](mailto:support@esri.com) . Ekkor megjelenik az azonosító érték az **Identity Provider beállítása szakaszban**, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-arcgis-enterprise-single-sign-on"></a>ArcGIS vállalati egyszeri bejelentkezés konfigurálása
+### <a name="configure-arcgis-enterprise-single-sign-on"></a>A ArcGIS Enterprise Single Sign-On konfigurálása
 
 1. A ArcGIS Enterprise-on belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 

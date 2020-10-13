@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: fb0c29fb68d0bcd2405cc031008c1c8e5035476f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569393"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Azure Time Series Insights 1. generációs környezethez tartozó referenciák kezelése C Sharp használatával
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/A
 > [!TIP]
 > A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 

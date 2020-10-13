@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240349"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972543"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Kommunikáció a edgeAgent a beépített közvetlen módszerek használatával
 
@@ -69,14 +69,15 @@ A Azure Portal hívja meg a metódust a metódus nevével `RestartModule` és a 
 
 ![Közvetlen "RestartModule" metódus hívása Azure Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>Kísérleti módszerek
+## <a name="diagnostic-direct-methods"></a>Közvetlen diagnosztikai módszerek
 
-Az új közvetlen metódus-beállítások a teszteléshez használható kísérleti funkciókként érhetők el, beleértve a következőket:
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs): a közvetlen metódus válaszában beágyazott modul-naplók beolvasása.
+* [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs): beolvassa a modul naplófájljait, és feltölti őket az Azure Blob Storageba.
+* [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics): a modul naplófájljainak beolvasása támogatási csomag használatával és zip-fájl feltöltése az Azure Blob Storageba.
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status): a feltöltési naplók vagy a támogatási csomagra vonatkozó kérelem állapotának beadása.
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): beolvassa a modul naplófájljait, és feltölti őket az Azure Blob Storageba.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): a feltöltési naplókra vonatkozó kérelem állapotának beadása.
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): a közvetlen metódus válaszában beágyazott modul-naplók beolvasása.
+Ezek a diagnosztikai közvetlen metódusok a 1.0.10 kiadásban érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai](module-edgeagent-edgehub.md)

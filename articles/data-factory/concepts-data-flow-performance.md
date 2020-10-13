@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
 ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370878"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
@@ -173,7 +173,7 @@ Míg az adatfolyamatok többféle fájltípust támogatnak, a Azure Data Factory
 
 Ha ugyanazokat az adatfolyamatokat futtatja egy adott fájlon, azt javasoljuk, hogy egy mappából, helyettesítő elérési utak használatával vagy a fájlok listájából olvasson be egy fájlt. Egyetlen adatfolyam-tevékenység futtatásával feldolgozhatja az összes fájlt a Batch szolgáltatásban. A beállítások megadásával kapcsolatos további információkért tekintse meg az összekötők dokumentációját, például az [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
 
-Ha lehetséges, kerülje a for-each tevékenység használatát, hogy adatfolyamatokat futtasson a fájlok egy adott készletén. Ennek hatására a for-each minden egyes iterációja saját Spark-fürtöt hoz létre, ami gyakran nem szükséges, és költséges lehet. 
+Ha lehetséges, ne használja a For-Each tevékenységet, hogy adatfolyamatokat futtasson a fájlok egy adott készletén. Ennek hatására a for-each minden egyes iterációja saját Spark-fürtöt hoz létre, ami gyakran nem szükséges, és költséges lehet. 
 
 ## <a name="optimizing-sinks"></a>A mosogatók optimalizálása
 

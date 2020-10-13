@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87554851"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972356"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>A Linux rendszerű virtuális gépek biztonsági mentési és visszaállítási lehetőségei az Azure-ban
 
@@ -32,7 +32,7 @@ Azure Site Recovery a virtuális gépeket jelentős katasztrófa esetén védi, 
 
 A vész-helyreállítási gyakorlatokat igény szerinti tesztelési feladatátvételsel futtathatja anélkül, hogy az hatással lenne az éles számítási feladatokra vagy a folyamatos replikálásra. Helyreállítási tervek létrehozása a több virtuális gépen futó teljes alkalmazás feladatátvételének és feladat-visszavételének előkészítéséhez. A helyreállítási terv szolgáltatás integrálva van az Azure Automation runbookok.
 
-[A virtuális gépek replikálásával](https://aka.ms/a2a-getting-started)kezdheti meg a lépéseket. 
+[A virtuális gépek replikálásával](../site-recovery/azure-to-azure-quickstart.md)kezdheti meg a lépéseket. 
 
 ## <a name="managed-snapshots"></a>Felügyelt Pillanatképek 
 

@@ -9,12 +9,12 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc059cae927c1aaa057080172313f5720f483bdb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82134363"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972577"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge modulok méretezése a Visual Studio Code használatával
 
@@ -27,7 +27,10 @@ Ebben a cikkben a Visual Studio Code és a IoT bővítményt kell beállítania.
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
-* [IoT Edge-eszköz](how-to-register-device.md#register-with-visual-studio-code) , amelyen telepítve van a IoT Edge futtatókörnyezet.
+* Egy vagy több IoT Edge eszköz.
+
+  Ha nincs beállítva IoT Edge eszköz, létrehozhat egyet egy Azure-beli virtuális gépen. A [virtuális Linux-eszköz létrehozásához](quickstart-linux.md) vagy [virtuális Windows-eszköz létrehozásához](quickstart.md)kövesse az egyik rövid útmutató lépéseit.
+
 * [Visual Studio Code](https://code.visualstudio.com/).
 * A Visual Studio Code-hoz készült [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) .
 
@@ -237,6 +240,6 @@ Miután konfigurálta az üzembe helyezési jegyzéket és a konfigurált címk�
 
 A [Azure Portal](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-in-the-azure-portal) vagy az [Azure CLI](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli) használatával figyelheti, módosíthatja és törölheti a központi telepítéseket. Mindkettő mérőszámokat biztosít az üzemelő példányokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [modulok IoT Edge eszközökön való telepítéséről](module-deployment-monitoring.md).

@@ -6,10 +6,10 @@ ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91728471"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
@@ -336,7 +336,7 @@ A sablon specifikációinak összekapcsolásával kapcsolatos további informác
 
 A sablon specifikációjának létrehozásakor meg kell adnia a verziószámát. A sablon kódjának megismétlése után frissítheti a meglévő verziót (gyorsjavítások esetén), vagy közzétehet egy új verziót. A verzió egy szöveges karakterlánc. Dönthet úgy, hogy bármely verziószámozási rendszer követését választja, beleértve a szemantikai verziószámozást is. A sablon specifikációjának felhasználói megadhatják a telepítéskor használni kívánt verziószámot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablon specifikációjának létrehozásához és üzembe helyezéséhez lásd: gyors útmutató [: sablon létrehozása és üzembe helyezése specifikáció](quickstart-create-template-specs.md).
 

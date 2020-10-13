@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
 ms.openlocfilehash: 61620a8497765c4d8f90a3d616bd2f4b932f8dcc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629029"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer algoritmus
@@ -65,7 +65,7 @@ A Load Balancer közvetlenül nem kommunikál a TCP-vagy UDP-vagy az alkalmazás
 
 - A továbbítási IP-töredékek nem támogatottak a terheléselosztási szabályokban. Az UDP-és TCP-csomagok IP-töredezettsége nem támogatott a terheléselosztási szabályokban. HA portok terheléselosztási szabályai használhatók a meglévő IP-töredékek továbbítására. További információ: [magas rendelkezésre állású portok – áttekintés](load-balancer-ha-ports-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) a Load Balancer használatának megkezdéséhez: hozzon létre egyet, hozzon létre virtuális gépeket egy egyéni IIS-bővítménnyel, és a virtuális gépek között a webalkalmazás terheléselosztását.
 - További információ a [Azure Load Balancer kimenő kapcsolatokról](load-balancer-outbound-connections.md).

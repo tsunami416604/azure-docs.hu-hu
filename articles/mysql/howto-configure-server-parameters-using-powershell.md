@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3888e83738d8617d6ec1433a3b760a2c518b874c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627210"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQL a PowerShell használatával
@@ -69,7 +69,7 @@ A **lassú \_ lekérdezési \_ napló** kiszolgáló-konfigurációs paraméter�
 Update-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A tároló automatikus növekedése Azure Database for MySQL-kiszolgálón a PowerShell használatával](howto-auto-grow-storage-powershell.md).

@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527829"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972016"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>StorSimple-kötet helyreállítása biztonságimásolat-készletből
 
@@ -115,7 +115,7 @@ A **biztonsági mentési katalógus** panel használatával visszaállíthatja a
    
 4. Váltson vissza a **biztonsági mentési katalógus** lapra, és válassza ki a biztonságimásolat-készletet. Kattintson a jobb gombbal, majd a helyi menüben válassza a **visszaállítás**lehetőséget.
 
-    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Biztonságimásolat-készlet 2. listája](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. A rendszer a művelet megerősítését kéri. Tekintse át a visszaállítási információkat, majd jelölje be a megerősítő jelölőnégyzetet.
    
@@ -123,7 +123,7 @@ A **biztonsági mentési katalógus** panel használatával visszaállíthatja a
 
 7. Kattintson a **visszaállítás**gombra. Ez egy visszaállítási feladatot kezdeményez, amelyet a **feladatok** lap elérésével tekinthet meg.
 
-   ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![2. megerősítő lap](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. A visszaállítás befejeződése után ellenőrizze, hogy a kötetek tartalmát a biztonsági másolatból kötetekre cseréli-e a rendszer.
 
@@ -134,7 +134,7 @@ A rendszer riasztást küld, ha a visszaállítási művelet valamilyen okból m
 
 A visszaállítási művelet befejezéséhez állítsa offline állapotba a kötetet a gazdagépen, majd próbálja megismételni a visszaállítási műveletet. Vegye figyelembe, hogy a visszaállítási folyamat során végrehajtott összes módosítás elvész.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple-köteteket](storsimple-8000-manage-volumes-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 
