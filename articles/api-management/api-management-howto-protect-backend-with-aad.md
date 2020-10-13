@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: apimpm
 ms.custom: contperfq1
 ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618777"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>A webes API-k elleni védelem az Azure API Managementban az Azure AD-vel való OAuth 2,0-engedélyezés használatával 
@@ -171,7 +171,7 @@ A következő lépés a OAuth 2,0 felhasználói engedélyezésének engedélyez
 
 1. A **Biztonság**területen válassza a **OAuth 2,0**elemet, és válassza ki a korábban konfigurált OAuth 2,0-kiszolgálót. 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Sikerült meghívni az API-t a fejlesztői portálról
 
@@ -223,7 +223,7 @@ A [JWT szabályzat érvényesítésével](./api-management-access-restriction-po
 
 Ebben az útmutatóban a fejlesztői konzolt használta a API Managementban, mint a `Echo API` OAuth 2,0 által védettként hívható minta ügyfélalkalmazás. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v2-code.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 - További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.

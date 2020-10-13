@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541152"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Az SMT-kiszolgáló beállítása SUSE Linux rendszerhez
@@ -151,7 +151,7 @@ Ha olyan problémába ütközik, amelyet a SUSE-cikk lépései alapján kell kij
 
 Az Azure-beli virtuális gépen telepített SMT-kiszolgálóhoz való kapcsolódáshoz konfigurálta a HANA nagyméretű példány-egység SMT-ügyfelét. Most már elvégezheti a "Zypper up" vagy a "Zypper in" lehetőséget az operációs rendszer frissítéseinek a HANA nagyméretű példányokra való telepítéséhez, vagy további csomagok telepítéséhez. Csak az SMT-kiszolgálón letöltött frissítéseket lehet letölteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [HANA-telepítés a HLI-on](hana-example-installation.md).
 
 

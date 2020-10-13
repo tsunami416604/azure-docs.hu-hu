@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
 ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906385"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>A helytelen konfiguráció megelőzése a kényszerítő/megtagadási javaslatokkal
@@ -41,22 +41,22 @@ Ez az erőforrás részletei lap tetején található a kiválasztott biztonság
     > [!TIP]
     > A sor végén található három pont használatával egyetlen előfizetés módosítható, vagy a jelölőnégyzetek használatával több előfizetést vagy csoportot is kijelölhet, majd kiválaszthatja, **hogy megtagadja a módosítást**.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Azure Policy megtagadás hatókörének beállítása":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Javaslat lap Kiemelt megtagadás gombja":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>Biztonságos konfiguráció érvényesítése
 
 1. Nyissa meg azt a javaslatot, amelybe telepíteni kívánja a sablon központi telepítését, ha az új erőforrások nem elégítik ki azt, majd kattintson a **kikényszerítés** gombra az oldal tetején.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Javaslat lap Kiemelt kikényszerített gombja":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Javaslat lap Kiemelt megtagadás gombja":::
 
     Megnyílik a konfigurációs ablaktábla az összes házirend-konfigurációs lehetőséggel. 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Konfigurációs beállítások érvényesítése":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Javaslat lap Kiemelt megtagadás gombja":::
 
 1. Adja meg a hatókört, a hozzárendelés nevét és az egyéb kapcsolódó beállításokat.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 ## <a name="recommendations-with-denyenforce-options"></a>Megtagadási/kikényszerítő lehetőségekkel kapcsolatos javaslatok
 

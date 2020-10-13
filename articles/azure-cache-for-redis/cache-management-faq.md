@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205395"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Azure cache a Redis-kezeléshez – gyakori kérdések
@@ -121,13 +121,13 @@ Az előző példában látható, hogy a olvasóhoz szál esetében hat foglalt s
 
 Vegye figyelembe, hogy a StackExchange. Redis az időtúllépéseket is elérheti, ha a olvasóhoz vagy a munkavégző szálak növekedését szabályozzák.
 
-#### <a name="recommendation"></a>Javaslat
+#### <a name="recommendation"></a>Ajánlás
 
 Ezeknek az információknak az alapján határozottan azt javasoljuk, hogy az ügyfelek az alapértelmezett értéknél nagyobb értékre állítsa be a olvasóhoz és a feldolgozói szálak minimális konfigurációs értékét. Az értékhez nem biztosítunk egy-egy méretre kiterjedő útmutatást, mivel az egyik alkalmazás megfelelő értéke valószínűleg túl magas vagy alacsony lesz egy másik alkalmazás esetében. Ez a beállítás hatással lehet a bonyolult alkalmazások más részeinek teljesítményére is, így minden ügyfélnek az adott igényeknek megfelelően kell finomítani ezt a beállítást. A megfelelő kiindulási hely 200 vagy 300, majd szükség szerint tesztelhető és csípés.
 
 A beállítás konfigurálása:
 
-* Azt javasoljuk, hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban `global.asax.cs` . Például:
+* Azt javasoljuk, hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban `global.asax.cs` . Példa:
 
     ```csharp
     private readonly int minThreads = 200;

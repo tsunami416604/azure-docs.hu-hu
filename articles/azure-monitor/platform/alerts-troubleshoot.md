@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
 ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403415"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása
@@ -248,6 +248,6 @@ Ha hiba történt a [műveleti szabály](alerts-action-rules.md)létrehozása, f
     Győződjön meg a [műveleti szabály dokumentációjában](alerts-action-rules.md)vagy a [műveleti szabály PowerShell set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) parancsának megtekintéséhez. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha naplózási riasztást használ, tekintse meg a [riasztások hibaelhárítása](./alerts-troubleshoot-log.md)című témakört is.
 - Lépjen vissza a [Azure Portal](https://portal.azure.com) , és ellenőrizze, hogy megoldotta-e a problémát a fenti útmutatás alapján 

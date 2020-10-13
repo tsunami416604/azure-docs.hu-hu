@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540905"
 ---
 # <a name="add-contributors-to-your-app"></a>Közreműködők hozzáadása az alkalmazáshoz
@@ -92,7 +92,7 @@ Ha a bérlői rendszergazda csak bizonyos felhasználók számára szeretne LUIS
 További információ az Azure Active Directory-felhasználókról és-engedélyekről:
 * [Alkalmazás korlátozása](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) felhasználói csoportra
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-how-to-azure-subscription.md#authoring-key) és a [közreműködőket](luis-how-to-azure-subscription.md#contributions-from-other-authors) .

@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437938"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
@@ -30,7 +30,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 **Útmutató**: Azure-SSIS INTEGRATION RUNTIME (IR) létrehozásakor lehetősége van csatlakoztatni egy virtuális hálózathoz. Ez lehetővé teszi, hogy Azure Data Factory bizonyos hálózati erőforrások, például egy hálózati biztonsági csoport (NSG) és egy terheléselosztó létrehozásához. Lehetősége van saját statikus nyilvános IP-címének megadására is, vagy Azure Data Factory létrehozhat egyet. A Azure Data Factory által automatikusan létrehozott NSG a 3389-es port alapértelmezés szerint minden forgalom számára nyitva van. A zárolást lenyomva győződjön meg arról, hogy csak a rendszergazdák férhetnek hozzá.
 
-A saját üzemeltetésű IRs a virtuális hálózaton belül helyszíni gépen vagy Azure-beli virtuális gépen is üzembe helyezhető. Győződjön meg arról, hogy a virtuális hálózati alhálózat központi telepítése NSG van konfigurálva, hogy csak a rendszergazdai hozzáférést engedélyezze. A Azure-SSIS IR alapértelmezés szerint nem engedélyezte a (z) 3389 portot a Windows tűzfal minden egyes IR csomópontján a védelemhez. A virtuális hálózat által konfigurált erőforrásokat biztonságossá teheti, ha társít egy NSG az alhálózathoz, és beállítja a szigorú szabályokat.
+Self-Hosted IRs egy virtuális hálózaton belüli helyszíni gépen vagy Azure-beli virtuális gépen is üzembe helyezhető. Győződjön meg arról, hogy a virtuális hálózati alhálózat központi telepítése NSG van konfigurálva, hogy csak a rendszergazdai hozzáférést engedélyezze. A Azure-SSIS IR alapértelmezés szerint nem engedélyezte a (z) 3389 portot a Windows tűzfal minden egyes IR csomópontján a védelemhez. A virtuális hálózat által konfigurált erőforrásokat biztonságossá teheti, ha társít egy NSG az alhálózathoz, és beállítja a szigorú szabályokat.
 
 Ha a privát hivatkozás elérhető, használja a privát végpontokat a Azure Data Factory-folyamathoz (például az Azure SQL Serverhoz) kapcsolódó erőforrások biztonságossá tételéhez. A privát kapcsolattal a virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át, így nem kerül a nyilvános internetről.
 
@@ -1172,7 +1172,7 @@ Az egyes adattárak esetében a biztonsági mentések érvényesítésére vonat
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: ha a Integration Runtimet egy Azure-beli virtuális GÉPEN (VM) futtatja, és a virtuális gépet a Azure Backup használatával visszaállítjuk, a virtuális gép Storage Service encryption (SSE) használatával titkosítva van. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezéséhez engedélyezze a Key Vault törlését.
+**Útmutató**: ha a Integration Runtimet egy Azure-beli virtuális GÉPEN (VM) futtatja, és a virtuális gépet a Azure Backup használatával visszaállítjuk, a virtuális gép Storage Service encryption (SSE) használatával titkosítva van. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
 
 * [Soft Delete a virtuális gépekhez](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
 

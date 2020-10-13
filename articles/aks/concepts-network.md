@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88243904"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
@@ -19,7 +19,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek az AK-ban lévő alk
 
 - [Szolgáltatások](#services)
 - [Azure-beli virtuális hálózatok](#azure-virtual-networks)
-- [Bejövő vezérlők](#ingress-controllers)
+- [Bemeneti vezérlők](#ingress-controllers)
 - [Hálózati házirendek](#network-policies)
 
 ## <a name="kubernetes-basics"></a>A Kubernetes alapjai
@@ -116,12 +116,12 @@ A használt hálózati modelltől függetlenül a kubenet és az Azure CNI is ü
 * Az Azure platform képes automatikusan létrehozni és konfigurálni a virtuális hálózati erőforrásokat, amikor egy AK-fürtöt hoz létre.
 * A virtuális hálózati erőforrásokat manuálisan is létrehozhatja és konfigurálhatja, és csatolhatja ezeket az erőforrásokat az AK-fürt létrehozásakor.
 
-Bár a szolgáltatás-végpontok vagy UDR is támogatottak mind a kubenet, mind az Azure CNI esetében, az [AK támogatási szabályzatai][support-policies] határozzák meg, hogy milyen módosításokat végezhet el. Például:
+Bár a szolgáltatás-végpontok vagy UDR is támogatottak mind a kubenet, mind az Azure CNI esetében, az [AK támogatási szabályzatai][support-policies] határozzák meg, hogy milyen módosításokat végezhet el. Példa:
 
 * Ha egy AK-fürthöz manuálisan hozza létre a virtuális hálózati erőforrásokat, akkor a saját UDR vagy szolgáltatási végpontok konfigurálásakor is támogatott.
 * Ha az Azure-platform automatikusan létrehozza az AK-fürthöz tartozó virtuális hálózati erőforrásokat, a saját UDR vagy szolgáltatási végpontok konfigurálásához nem támogatott manuálisan módosítani az AK által felügyelt erőforrásokat.
 
-## <a name="ingress-controllers"></a>Bejövő vezérlők
+## <a name="ingress-controllers"></a>Bemeneti vezérlők
 
 Terheléselosztó-típus szolgáltatás létrehozásakor létrejön egy mögöttes Azure Load Balancer-erőforrás. A terheléselosztó úgy van konfigurálva, hogy egy adott porton keresztül továbbítsa a forgalmat a szolgáltatásban lévő hüvelyekre. A terheléselosztó csak a 4. rétegben működik – a szolgáltatás nem ismeri a tényleges alkalmazásokat, és nem végezhet további útválasztási szempontokat.
 
@@ -149,7 +149,7 @@ A hálózati házirend egy AK-ban elérhető Kubernetes funkció, amely lehetőv
 
 További információ: a [hüvelyek közötti biztonságos forgalom a hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)][use-network-policies].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK hálózatkezelésének megkezdéséhez hozzon létre és konfiguráljon egy AK-fürtöt a saját IP-címtartományok használatával a [kubenet][aks-configure-kubenet-networking] vagy az [Azure CNI][aks-configure-advanced-networking]segítségével.
 

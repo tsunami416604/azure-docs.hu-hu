@@ -17,15 +17,15 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7cfbca2e7542315b59d741a9e8f6f9eb92af6ebf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84760218"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Alkalmazásproxy-alkalmazás konfigurálása a PingAccess használatához
 
-A PingAccess-nal való együttműködés mostantól lehetővé teszi, hogy a fejléc-alapú hitelesítést használó alkalmazások számára kiterjessze az alkalmazásproxy előnyeit. Ha az alkalmazások nem használnak fejléceket, a további beállításokkal kapcsolatos részletekért tekintse meg az [egyszeri bejelentkezés dokumentációját](application-proxy-configure-single-sign-on-with-kcd.md) .
+A PingAccess-nal való együttműködés mostantól lehetővé teszi, hogy a fejléc-alapú hitelesítést használó alkalmazások számára kiterjessze az alkalmazásproxy előnyeit. Ha az alkalmazások nem használnak fejléceket, tekintse meg az [egyes Sign-On dokumentációját](application-proxy-configure-single-sign-on-with-kcd.md) a további beállításokkal kapcsolatos részletekért.
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>A lépések és az ajánlott dokumentumok áttekintése
 
@@ -39,4 +39,4 @@ Az alkalmazások PingAccess való konfigurálásához négy lépésből áll:
 
 4.  Alkalmazások konfigurálása a PingAccess-ben
 
-Ezekről a lépésekről az [egyszeri bejelentkezés fejlécekkel kapcsolatos dokumentációjában](application-proxy-configure-single-sign-on-with-ping-access.md)talál további információt.
+Ezekről a lépésekről további információt a következő témakörben talál: [egyetlen Sign-On a fejlécek dokumentációjában](application-proxy-configure-single-sign-on-with-ping-access.md).

@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776731"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Az importált dokumentumokra és URL-címekre vonatkozó irányelvek formázása
@@ -54,7 +54,7 @@ Az alábbi példa egy félig strukturált doc-ra mutat, index nélkül:
 
 ## <a name="structured-qna-document"></a>Strukturált QnA-dokumentum
 
-A DOC-fájlokban strukturált kérdés-válasz formátuma váltakozó kérdések és válaszok formájában történik, és soronként egy kérdés jelenik meg, amelyet az alábbi sorban talál, ahogy az alább látható:
+A DOC-fájlokban strukturált Question-Answers formátuma váltakozó kérdésekből és válaszokból áll, soronként egy kérdéssel, majd az alábbi sorban szereplő választal, az alábbi ábrán látható módon:
 
 ```text
 Question1

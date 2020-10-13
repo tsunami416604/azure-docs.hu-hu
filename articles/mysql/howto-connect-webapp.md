@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905839"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Meglévő Azure App Service összekötése Azure Database for MySQL-kiszolgálóval
@@ -29,18 +29,18 @@ A Azure Database for MySQL tűzfal használatával biztosít hozzáférést a bi
    :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre":::
 
 2. Válassza **a** be **lehetőséget az Azure-szolgáltatásokhoz való hozzáférés engedélyezése**, majd a **Mentés**lehetőségre.
-   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure Portal – Azure-hozzáférés engedélyezése":::
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2. megoldás – tűzfalszabály létrehozása a kimenő IP-címek explicit engedélyezéséhez
 Explicit módon hozzáadhatja a Azure App Service összes kimenő IP-címeit.
 
 1. A App Service Tulajdonságok panelen tekintse meg a **kimenő IP-címet**.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure Portal – kimenő IP-címek megtekintése":::
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre":::
 
 2. A MySQL-kapcsolatok biztonsági paneljén egyenként adja hozzá a kimenő IP-címeket.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure Portal – explicit IP-címek hozzáadása":::
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre":::
 
 3. Ne felejtse el menteni a tűzfalszabályok **mentését** .
 

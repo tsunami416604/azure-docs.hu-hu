@@ -7,10 +7,10 @@ ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90084294"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>A Windows rendszerű virtuális asztali felhasználók hírcsatornájának testreszabása
@@ -113,7 +113,7 @@ A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy e
 
 6. Válassza ki a frissíteni kívánt alkalmazást, majd adjon meg egy új **megjelenítendő nevet**.
 
-7. Válassza a **Mentés** lehetőséget. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
+7. Kattintson a **Mentés** gombra. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
 
 ## <a name="next-steps"></a>Következő lépések
 

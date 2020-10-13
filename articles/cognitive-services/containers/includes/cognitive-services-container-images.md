@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
 ms.openlocfilehash: d514460f3cd80b5b85604251743abbbbcd1adc8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907011"
 ---
 ### <a name="container-repositories-and-images"></a>Tárolók és lemezképek
@@ -63,9 +63,9 @@ További információkért lásd: [az anomáliák-Kiderítő tárolók futtatás
 
 | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|
-| [Beszéd – szöveg](../../speech-service/speech-container-howto.md?tab=stt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` |
+| [Diktálás](../../speech-service/speech-container-howto.md?tab=stt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` |
 | [Custom Speech – szöveg](../../speech-service/speech-container-howto.md?tab=cstt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text` |
-| [Szöveg – beszéd](../../speech-service/speech-container-howto.md?tab=tts) | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech` |
+| [Szövegfelolvasás](../../speech-service/speech-container-howto.md?tab=tts) | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech` |
 
 #### <a name="ungated-preview"></a>"Ungated" előzetes verzió 
 

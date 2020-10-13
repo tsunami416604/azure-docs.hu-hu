@@ -11,10 +11,10 @@ ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
 ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906700"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Képbesorolási TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code-bővítmény (előzetes verzió) Azure Machine Learning
@@ -410,7 +410,7 @@ Webszolgáltatás üzembe helyezése ACI-ként:
 
 Ezen a ponton egy kérést küldünk az Azure-nak a webszolgáltatás üzembe helyezéséhez. Ez a folyamat több percig is eltarthat. A telepítés után az új szolgáltatás megjelenik a *végpontok* csomópont alatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Visual Studio code-on kívüli Azure Machine Learning betanításával kapcsolatos útmutatóért lásd [: oktatóanyag: modellek Betanítása Azure Machine learning](tutorial-train-models-with-aml.md)használatával.
 * A kódok helyi szerkesztéséről, futtatásáról és hibakereséséről a [Python Hello-World oktatóanyagban](https://code.visualstudio.com/docs/Python/Python-tutorial)talál további információt.

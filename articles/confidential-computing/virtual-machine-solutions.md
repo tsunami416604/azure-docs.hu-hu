@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245852"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Megoldások az Azure Virtual Machines szolgáltatásban
@@ -23,9 +23,9 @@ Ez a cikk az Intel [Software Guard Extension](https://software.intel.com/sgx) (I
 
 Az Azure bizalmas számítástechnikai virtuális gépek úgy vannak kialakítva, hogy védve legyenek az adatok és a kódok titkossága és integritása a felhőben történő feldolgozás során 
 
-[DCsv2 sorozat](../virtual-machines/dcv2-series.md) A virtuális gépek a legújabb és legutóbb bizalmas számítástechnikai termékcsaládok. Ezek a virtuális gépek több üzembe helyezési képességet is támogatnak, és a DC sorozatú virtuális gépekhez képest nagyobb méretekben vannak, mint az enklávé-oldal gyorsítótára (EPC) és a méretek szélesebb választéka. A [DC sorozatú](../virtual-machines/sizes-previous-gen.md#preview-dc-series) virtuális gépek jelenleg előzetes verzióban érhetők el, és az általánosan elérhetővé válik, és nem tartalmazzák az általános elérhetőséget.
+[DCsv2 sorozat](../virtual-machines/dcv2-series.md) A virtuális gépek a legújabb és legutóbb bizalmas számítástechnikai termékcsaládok. Ezek a virtuális gépek az üzembe helyezési képességek szélesebb körét támogatják, az enklávé-oldal gyorsítótára (EPC) és a méretek nagyobb választéka van a DC-Series virtuális gépekhez képest. A [DC sorozatú](../virtual-machines/sizes-previous-gen.md#preview-dc-series) virtuális gépek jelenleg előzetes verzióban érhetők el, és az általánosan elérhetővé válik, és nem tartalmazzák az általános elérhetőséget.
 
-A gyors üzembe helyezési [útmutatót](quick-create-marketplace.md)követve megkezdheti a DCsv2 sorozatú virtuális gép telepítését a Microsoft kereskedelmi Piactérről.
+A gyors üzembe helyezési [oktatóanyag](quick-create-marketplace.md)követésével megkezdheti a DCsv2-Series virtuális gép telepítését a Microsoft kereskedelmi Piactérről.
 
 ### <a name="current-available-sizes-and-regions"></a>Aktuálisan elérhető méretek és régiók
 
@@ -47,16 +47,16 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Dedikált gazdagépekre vonatkozó követelmények
-Ha **Standard_DC8_v2** virtuálisgép-méretet helyez üzembe a DCSv2 sorozatú VM-családban, a teljes gazdagépet elfoglalja, és a többi Bérlővel vagy előfizetéssel nem lesz megosztva. Ez a VM SKU-család biztosítja a szükséges elkülönítést a megfelelőségi és biztonsági szabályozási követelmények teljesítése érdekében, amelyeket általában egy dedikált gazda szolgáltatással lehet elérni. Ha **Standard_DC8_v2** SKU-t választja, a fizikai gazdagép kiosztja az összes rendelkezésre álló hardver-erőforrást, beleértve az EPC memóriát csak a virtuális géphez. Vegye figyelembe, hogy ez a funkció az infrastruktúra megtervezése és a **Standard_DC8_v2** összes funkciója támogatott lesz. Ez a központi telepítés nem azonos az [Azure dedikált gazdagép](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) szolgáltatásával, amelyet más Azure-beli virtuálisgép-családok is biztosítanak.
+**Standard_DC8_v2** virtuális gép DCSv2-Series virtuálisgép-családban való üzembe helyezése elfoglalja a teljes gazdagépet, és a többi Bérlővel vagy előfizetéssel nem lesz megosztva. Ez a VM SKU-család biztosítja a szükséges elkülönítést a megfelelőségi és biztonsági szabályozási követelmények teljesítése érdekében, amelyeket általában egy dedikált gazda szolgáltatással lehet elérni. Ha **Standard_DC8_v2** SKU-t választja, a fizikai gazdagép kiosztja az összes rendelkezésre álló hardver-erőforrást, beleértve az EPC memóriát csak a virtuális géphez. Vegye figyelembe, hogy ez a funkció az infrastruktúra megtervezése és a **Standard_DC8_v2** összes funkciója támogatott lesz. Ez a központi telepítés nem azonos az [Azure dedikált gazdagép](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) szolgáltatásával, amelyet más Azure-beli virtuálisgép-családok is biztosítanak.
 
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-Egy rövid útmutató a DCsv2-sorozatú virtuális gépek kevesebb mint 10 perc alatt történő üzembe helyezéséhez. 
+Az DCsv2-Series virtuális gépek kevesebb mint 10 perc alatt történő üzembe helyezéséhez kövesse a gyors útmutató oktatóanyagát. 
 
 - **Azure-előfizetés** – egy bizalmas számítástechnikai virtuálisgép-példány üzembe helyezéséhez vegye fontolóra az utólagos elszámolású előfizetést vagy más vásárlási lehetőséget. Ha [ingyenes Azure-fiókot](https://azure.microsoft.com/free/)használ, a megfelelő mennyiségű Azure-beli számítási magot nem fogja tartalmazni.
 
-- **Díjszabás és regionális elérhetőség** – a DCsv2-sorozatú virtuális gépek díjszabását a [Virtual Machine díjszabási oldalán](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)találja. Tekintse meg az Azure-régiókban rendelkezésre [álló régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
+- **Díjszabás és regionális elérhetőség** – a [virtuális gépek díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)megtalálhatja DCsv2-Series virtuális gépek díjszabását. Tekintse meg az Azure-régiókban rendelkezésre [álló régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
 
 
 - **Magok kvótája** – előfordulhat, hogy a magok kvótáját az alapértelmezett érték alapján kell megnövelni az Azure-előfizetésben. Az előfizetése korlátozhatja az egyes virtuálisgép-méretekben üzembe helyezhető magok számát is, beleértve a DCsv2 sorozatot is. A kvóta növeléséhez [Nyisson meg egy online ügyfélszolgálati kérést](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) díjmentesen. Megjegyzés: az alapértelmezett korlátok az előfizetési kategóriától függően eltérőek lehetnek.
@@ -84,7 +84,7 @@ Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgálta
 
 Az ARM-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [template Deployment áttekintése](../azure-resource-manager/templates/overview.md)című témakört.
 
-Ha DCsv2-sorozatú virtuális gépet szeretne üzembe helyezni egy ARM-sablonban, a [virtuális gép erőforrását](../virtual-machines/windows/template-description.md)fogja használni. Győződjön meg arról, hogy a megfelelő tulajdonságokat adja meg a **vmSize** és a **imageReference**.
+DCsv2-Series virtuális gép ARM-sablonban való üzembe helyezéséhez a virtuálisgép- [erőforrást](../virtual-machines/windows/template-description.md)fogja használni. Győződjön meg arról, hogy a megfelelő tulajdonságokat adja meg a **vmSize** és a **imageReference**.
 
 ### <a name="vm-size"></a>Virtuális gép mérete
 
@@ -130,9 +130,9 @@ A **Tulajdonságok**területen a **storageProfile**alatt lévő képre is hivatk
       }
 ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
-Ebben a cikkben megtanulta a bizalmas számítástechnikai virtuális gépek létrehozásakor szükséges minősítéseket és konfigurációkat. Most már a Microsoft Azure Marketplace egy DCsv2-sorozatú virtuális gép üzembe helyezéséhez.
+Ebben a cikkben megtanulta a bizalmas számítástechnikai virtuális gépek létrehozásakor szükséges minősítéseket és konfigurációkat. DCsv2-Series virtuális gép üzembe helyezéséhez most már a Microsoft Azure Marketplace is felhasználhatja.
 
 > [!div class="nextstepaction"]
-> [DCsv2-sorozatú virtuális gép üzembe helyezése az Azure Marketplace-en](quick-create-marketplace.md)
+> [DCsv2-Series virtuális gép üzembe helyezése az Azure Marketplace-en](quick-create-marketplace.md)

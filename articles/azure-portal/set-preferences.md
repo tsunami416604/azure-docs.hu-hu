@@ -10,13 +10,13 @@ ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205585"
 ---
-# <a name="manage-azure-portal-settings-and-preferences"></a>Azure Portal beállítások és beállítások kezelése
+# <a name="manage-azure-portal-settings-and-preferences"></a>Az Azure Portal beállításainak kezelése
 
 Módosíthatja a Azure Portal alapértelmezett beállításait, hogy azok megfeleljenek a saját preferenciáinak. A legtöbb beállítás a globális oldal fejlécének **Beállítások** menüjéből érhető el.
 
@@ -33,7 +33,7 @@ A Azure Portalba való bejelentkezéskor alapértelmezés szerint megnyithatja a
 
 1. A portál indításakor válassza ki az alapértelmezett előfizetésként használni kívánt előfizetéseket. 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="A portál indításakor válassza ki az alapértelmezett előfizetésként használni kívánt előfizetéseket."::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Erőforrások listájának szűrése előfizetés alapján."::: 
 
 
 ## <a name="choose-your-default-view"></a>Válassza ki az alapértelmezett nézetet 

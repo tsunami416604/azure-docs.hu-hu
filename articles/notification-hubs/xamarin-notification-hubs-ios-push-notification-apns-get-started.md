@@ -16,12 +16,12 @@ ms.date: 07/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 165d6c2578ba9ec0c939e4f1c1eaa497c9dff24d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b53767aea9df2da8dbf89e26fff03c792918016
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998254"
+ms.locfileid: "91893679"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Xamarin. iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -142,9 +142,9 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
             }
 
             NSSet tags = null; // create tags if you want
-            Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
+            Hub.RegisterNative(deviceToken, tags, (errorCallback) => {
                 if (errorCallback != null)
-                    System.Diagnostics.Debug.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+                    System.Diagnostics.Debug.WriteLine("RegisterNative error: " + errorCallback.ToString());
             });
         });
     }
@@ -211,7 +211,7 @@ Az [Azure Portal]*Tesztküldés* lehetőségével tesztelheti az alkalmazásban 
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis könyvtár használatával, mint a Mobile Apps vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el kódtár, az értesítések küldéséhez használhatja közvetlenül a REST API-t is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált iOS-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet értesítéseket adott iOS-eszközökre, lépjen tovább a következő oktatóanyagra:
 

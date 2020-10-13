@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
 ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617638"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>A szükséges alhálózati méret meghatározása & az Azure SQL felügyelt példányának tartománya
@@ -90,7 +90,7 @@ A skálázási művelet példányaiban átmenetileg további IP-kapacitásra van
 
   \* A Gen4 hardverek fokozatos kiépítése folyamatban van, és már nem érhető el az új üzemelő példányokhoz. Frissítse a Gen4-ről a Gen5-re vonatkozó hardver-előállítást, hogy kihasználhassa a Gen5-hardverek létrehozásával kapcsolatos képességeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - További információ az [SQL felügyelt példányának kapcsolati architektúráról](connectivity-architecture-overview.md).

@@ -13,10 +13,10 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441697"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
@@ -305,13 +305,13 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name | A tevékenység neve |Yes |
-| leírás |A tevékenység által használt szöveg leírása |No |
-| típus | A következőre kell beállítani: **SqlServerStoredProcedure** | Yes |
-| bemenetek | Választható. Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. |No |
-| kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez. A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). <br/><br/>A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy Azure szinapszis Analytics vagy egy SQL Server-adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. <br/><br/>A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál. |Yes |
-| storedProcedureName |Adja meg a tárolt eljárás nevét a Azure SQL Databaseban, az Azure szinapszis Analyticsben vagy SQL Server, amelyet a kimeneti tábla által használt társított szolgáltatás képvisel. |Yes |
-| storedProcedureParameters |A tárolt eljárás paramétereinek értékeinek megadása. Ha egy paraméternél null értéket kell átadnia, használja a következő szintaxist: "param1": null (az összes kisbetű). Tekintse meg a következő mintát, amelyből megtudhatja, hogyan használhatja ezt a tulajdonságot. |No |
+| name | A tevékenység neve |Igen |
+| leírás |A tevékenység által használt szöveg leírása |Nem |
+| típus | A következőre kell beállítani: **SqlServerStoredProcedure** | Igen |
+| bemenetek | Választható. Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. |Nem |
+| kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez. A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). <br/><br/>A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy Azure szinapszis Analytics vagy egy SQL Server-adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. <br/><br/>A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál. |Igen |
+| storedProcedureName |Adja meg a tárolt eljárás nevét a Azure SQL Databaseban, az Azure szinapszis Analyticsben vagy SQL Server, amelyet a kimeneti tábla által használt társított szolgáltatás képvisel. |Igen |
+| storedProcedureParameters |A tárolt eljárás paramétereinek értékeinek megadása. Ha egy paraméternél null értéket kell átadnia, használja a következő szintaxist: "param1": null (az összes kisbetű). Tekintse meg a következő mintát, amelyből megtudhatja, hogyan használhatja ezt a tulajdonságot. |Nem |
 
 ## <a name="passing-a-static-value"></a>Statikus érték átadása
 Most vegyünk fel egy "forgatókönyv" nevű oszlopot egy olyan táblában, amely a "Document Sample" nevű statikus értéket tartalmazza.

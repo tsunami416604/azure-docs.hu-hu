@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210345"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Külső szolgáltatások használata az Azure API Management szolgáltatásból
@@ -65,7 +65,7 @@ A Slack a bejövő webhookok fogalma. A bejövő webhookok konfigurálásakor a 
 ### <a name="is-fire-and-forget-good-enough"></a>Tűz van, és elég jól elfelejteni?
 Bizonyos kompromisszumok használatakor a rendszer tűz-és felejtsds stílusú kéréseket használ. Ha valamilyen okból kifolyólag a kérés meghiúsul, a rendszer nem küldi el a hibát. Ebben a konkrét helyzetben a másodlagos hibajelentési rendszer és a válaszra való várakozás további teljesítményének összetettsége nem indokolt. Olyan esetekben, amikor elengedhetetlen a válasz ellenőrzését, a [Send-Request](./api-management-advanced-policies.md#SendRequest) házirend jobb megoldás.
 
-## <a name="send-request"></a>Kérelem küldése
+## <a name="send-request"></a>Send-Request
 A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás összetett feldolgozási funkciókat végezzen, és az API Management szolgáltatásba visszaküldse azokat, amelyeket a házirendek további feldolgozásához is használhatnak.
 
 ### <a name="authorizing-reference-tokens"></a>Hivatkozási tokenek engedélyezése
@@ -123,7 +123,7 @@ A szabályzattal megállapíthatja, `<choose>` hogy a jogkivonat érvénytelen-e
 </choose>
 ```
 
-Az [RFC 6750-es](https://tools.ietf.org/html/rfc6750#section-3) verziónak megfelelően, amely leírja `bearer` a jogkivonatok használatát, API Management `WWW-Authenticate` a 401-válasz fejlécét is visszaadja. A WWW-hitelesítés célja, hogy utasítsa az ügyfelet egy megfelelően hitelesített kérelem létrehozásához. A OAuth2-keretrendszerrel lehetséges módszerek széles választéka miatt nehéz kommunikálni az összes szükséges információval. Szerencsére vannak olyan erőfeszítések, amelyek segítségével az [ügyfelek megtudhatják, hogyan lehet megfelelően engedélyezni a kérelmeket az erőforrás-kiszolgálóknak](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Az [RFC 6750-es](https://tools.ietf.org/html/rfc6750#section-3) verziónak megfelelően, amely leírja `bearer` a jogkivonatok használatát, API Management `WWW-Authenticate` a 401-válasz fejlécét is visszaadja. A WWW-Authenticate arra szolgál, hogy egy ügyfelet a megfelelő jogosultságú kérelem létrehozásával utasítsa. A OAuth2-keretrendszerrel lehetséges módszerek széles választéka miatt nehéz kommunikálni az összes szükséges információval. Szerencsére vannak olyan erőfeszítések, amelyek segítségével az [ügyfelek megtudhatják, hogyan lehet megfelelően engedélyezni a kérelmeket az erőforrás-kiszolgálóknak](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Végső megoldás
 A végén a következő szabályzatot kapja:
@@ -286,5 +286,5 @@ A teljes szabályzat a következőképpen néz ki:
 
 A helyőrző művelet konfigurációjában beállíthatja, hogy az irányítópult-erőforrás legalább egy órán át legyen gyorsítótárazva. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure API Management szolgáltatás rugalmas szabályzatokat biztosít, amelyek szelektíven alkalmazhatók a HTTP-forgalomra, és lehetővé teszik a háttér-szolgáltatások összeállítását. Az API-átjárót a riasztási funkciókkal, az ellenőrzéssel, az érvényesítési lehetőségekkel vagy az új összetett erőforrások több háttér-szolgáltatáson alapuló létrehozásával szeretné növelni, a `send-request` és a kapcsolódó szabályzatok pedig megnyitják a lehetőségeket.

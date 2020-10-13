@@ -13,10 +13,10 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433653"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
@@ -246,7 +246,7 @@ Csak összevont tartományi fiókok esetében alkalmazható.
 Hiba okai:
 
 - Nem lehet csendes hozzáférési tokent beolvasni a DRS-erőforráshoz.
-   - A Windows 10-es eszközök hitelesítési jogkivonatot szerzik be az összevonási szolgáltatástól az integrált Windows-hitelesítéssel egy aktív WS-Trust végponton. Részletek: [összevonási szolgáltatás konfiguráció](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - A Windows 10-es eszközök hitelesítési jogkivonatot szerzik be az összevonási szolgáltatástól az integrált Windows-hitelesítéssel egy aktív WS-Trust-végponton. Részletek: [összevonási szolgáltatás konfiguráció](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Gyakori hibakódok:**
 
@@ -261,7 +261,7 @@ Eseménynapló naplók használatával keresse meg a hibakódot, az alhibakódot
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Ok: a hitelesítési protokoll nem a WS-Trust.
-   - Megoldás: a helyszíni identitás-szolgáltatónak támogatnia kell a WS-Trust szolgáltatást
+   - Megoldás: a helyszíni identitás-szolgáltatónak támogatnia kell WS-Trust
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Ok: a helyszíni összevonási szolgáltatás nem adott vissza XML-választ.
    - Megoldás: Győződjön meg arról, hogy a MEX-végpont érvényes XML-t ad vissza. Győződjön meg arról, hogy a proxy nem zavarja és nem XML-válaszokat ad vissza.

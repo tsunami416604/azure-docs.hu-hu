@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400757"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
@@ -115,7 +115,7 @@ Az ügyfél-azonosító és az ügyfél titkos kódjának a Gmail-triggerben vag
 
    Mostantól korlátozás nélkül is használhatja a Gmail-összekötőt a logikai alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Gmail-összekötőről](/connectors/gmail/)
 

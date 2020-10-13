@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434112"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások az Azure Data Factoryben
@@ -68,10 +68,10 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-name | A társított szolgáltatás neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
-típus | A társított szolgáltatás típusa. Például: AzureBlobStorage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Yes |
-typeProperties | A típus tulajdonságai különbözőek az egyes adattárokhoz vagy számításokhoz. <br/><br/> A támogatott adattár-típusok és a típusuk tulajdonságai az [Összekötők áttekintése](copy-activity-overview.md#supported-data-stores-and-formats) című cikkben találhatók. Navigáljon az adattár-összekötő cikkhez, és ismerkedjen meg az adattárra jellemző típusok tulajdonságaival. <br/><br/> A támogatott számítási típusok és a hozzájuk tartozó típusok tulajdonságai a következő témakörben találhatók: [számítási társított szolgáltatások](compute-linked-services.md). | Yes |
-Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No
+name | A társított szolgáltatás neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
+típus | A társított szolgáltatás típusa. Például: AzureBlobStorage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Igen |
+typeProperties | A típus tulajdonságai különbözőek az egyes adattárokhoz vagy számításokhoz. <br/><br/> A támogatott adattár-típusok és a típusuk tulajdonságai az [Összekötők áttekintése](copy-activity-overview.md#supported-data-stores-and-formats) című cikkben találhatók. Navigáljon az adattár-összekötő cikkhez, és ismerkedjen meg az adattárra jellemző típusok tulajdonságaival. <br/><br/> A támogatott számítási típusok és a hozzájuk tartozó típusok tulajdonságai a következő témakörben találhatók: [számítási társított szolgáltatások](compute-linked-services.md). | Igen |
+Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem
 
 ## <a name="linked-service-example"></a>Társított szolgáltatás – példa
 

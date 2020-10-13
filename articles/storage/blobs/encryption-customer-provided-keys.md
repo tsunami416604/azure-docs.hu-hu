@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618726"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Titkosítási kulcs megadása a blob Storage-kérelemben
@@ -76,7 +76,7 @@ A Blobok titkosításához használt titkosítási kulcs elforgatásához tölts
 >
 > Ügyeljen arra, hogy a blob Storage-ba irányuló kérelemben megadott titkosítási kulcsot a Azure Key Vault. Ha a titkosítási kulcs nélküli tárolón vagy blobon próbálkozik írási művelettel, a művelet sikertelen lesz, és nem fog tudni hozzáférni az objektumhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ügyfél által megadott kulcs meghatározása a blob Storage-hoz a .NET-tel](storage-blob-customer-provided-key.md)
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)

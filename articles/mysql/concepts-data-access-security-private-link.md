@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905917"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privát hivatkozás a Azure Database for MySQL
@@ -72,21 +72,21 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 
 * Válasszon ki egy egyéni PEC-t a listából.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="Válassza ki a privát végpont jóváhagyását.":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="Válassza ki a privát végpont portált":::
 
 * A MySQL-kiszolgáló rendszergazdája dönthet úgy, hogy jóváhagyja vagy elutasítja a PEC-t, és opcionálisan egy rövid szöveges választ is hozzáadhat.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Válassza ki a privát végpont üzenetet":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Válassza ki a privát végpont portált":::
 
 * Jóváhagyás vagy elutasítás után a lista a megfelelő állapotot jeleníti meg a válasz szövegével együtt.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Válassza ki a privát végpont végső állapotát":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Válassza ki a privát végpont portált":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>Privát hivatkozás használata Azure Database for MySQL esetén
 
 Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymással azonos régióban lévő VNet, illetve a régiók közötti VNet-VNet kapcsolaton keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Válassza ki a privát végpont áttekintését":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Válassza ki a privát végpont portált":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure-beli virtuális gépről a Virtual Network (VNet)
 Konfigurálja a [VNet](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) -társítást úgy, hogy az Azure-beli virtuális gép Azure Database for MySQL kapcsolatot hozzon létre egy egyenrangú VNet.

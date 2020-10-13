@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069832"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
@@ -345,7 +345,7 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Az adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-1. A **rövid távú célok megadása**területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre történő biztonsági mentést.
+1. A **Short-Term célok megadása**területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre a biztonsági mentést.
    - A **megőrzési tartomány**mezőben határozza meg, hogy hány nap elteltével kell megőrizni a lemezes helyreállítási pontokat.
    - A **szinkronizálás gyakorisága**mezőben határozza meg, hogy milyen gyakran történjen lemezes helyreállítási pont.
        - Ha nem szeretné beállítani a biztonsági mentés időközét, akkor **közvetlenül egy helyreállítási pont előtt** is megtekintheti, hogy a biztonsági mentés az egyes helyreállítási pontok ütemezése előtt fusson.

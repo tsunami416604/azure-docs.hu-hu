@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: f9c01e8e31e78c277a7a3ec1e5d8d0c32b58f8bc
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403653"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>CSV-Blobok indexelése delimitedText-elemzési mód és blob-indexek használatával az Azure-ban Cognitive Search
@@ -49,7 +49,7 @@ Ha a Blobok nem tartalmaznak kezdeti fejlécet, a fejléceket az indexelő konfi
 "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 ```
 
-A elválasztó karaktert a konfigurációs beállítás használatával szabhatja testre `delimitedTextDelimiter` . Például:
+A elválasztó karaktert a konfigurációs beállítás használatával szabhatja testre `delimitedTextDelimiter` . Példa:
 
 ```http
 "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }

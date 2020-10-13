@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: bce5e14db133ad55a2035c0c8074486ed1b8a6ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460507"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
@@ -36,7 +36,7 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 
 | Probléma                                                        | Feloldás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| A Visual Studio Object Explorerből hiányzik az Azure AD-felhasználók           | Ez egy ismert probléma.  Megkerülő megoldásként tekintse meg a [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.  További információ az Azure Active Directory és a szinapszis SQL-készlet használatával történő használatáról: az [Azure szinapszis hitelesítése](sql-data-warehouse-authentication.md) . |
+| A Visual Studio Object Explorerből hiányzik az Azure AD-felhasználók           | Ez egy ismert probléma.  Áthidaló megoldásként tekintse meg [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.  További információ az Azure Active Directory és a szinapszis SQL-készlet használatával történő használatáról: az [Azure szinapszis hitelesítése](sql-data-warehouse-authentication.md) . |
 | A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure szinapszis Analytics Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
 | A szkriptek előállítása meghiúsul a SSMS                               | Nem sikerül létrehozni egy, a szinapszis SQL-készlethez tartozó parancsfájlt, ha a "függő objektumok parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az **eszközök-> Options->SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false** értékre kell állítani. |
 

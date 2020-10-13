@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777020"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis ajánlott eljárásai
@@ -48,7 +48,7 @@ A legjobb válaszok az egyszerű válaszok, de nem túl egyszerűek. Ne használ
 |Kapcsolja ki a Surface laptopot a billentyűzet főkapcsoló gombjával.|* Key-kombinációk alvó állapotba, leállítás és újraindítás.<br>* A Surface laptop rendszerindításának menete<br>* Hogyan lehet módosítani a BIOS-t egy Surface laptop esetében<br>* Az alvó állapot, a leállítás és az újraindítás közötti különbségek|
 |Az ügyfélszolgálat naponta 24 órán keresztül érhető el telefonon, Skype-on és szöveges üzenetben.|* Kapcsolattartási adatok a Sales szolgáltatáshoz.<br> * Office-és tárolási helyszínek és órák egy személyes látogatáshoz.<br> * Tartozékok egy Surface laptophoz.|
 
-## <a name="chit-chat"></a>Chit-csevegés
+## <a name="chit-chat"></a>Chit-Chat
 Vegyen fel egy csevegést a robotba, hogy minél több beszélgetést és részvételt hozzon létre a robotban, kis erőfeszítéssel. A KB létrehozásakor könnyedén hozzáadhat a Chit-Chat-adatkészleteket az előre definiált személyes adatokból, és bármikor módosíthatja azokat. Megtudhatja, hogyan [adhat hozzá a kb-hoz a Chit-chatet](../How-To/chit-chat-knowledge-base.md).
 
 A Chit-Chat [több nyelven](../how-to/chit-chat-knowledge-base.md#language-support)is támogatott.
