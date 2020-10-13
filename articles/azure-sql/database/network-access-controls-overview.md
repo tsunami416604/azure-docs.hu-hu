@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435371"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951995"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés
 
@@ -42,7 +42,7 @@ Tekintse meg az alábbi videót, amely részletesen ismerteti ezeket a hozzáfé
 
 ## <a name="allow-azure-services"></a>Azure-szolgáltatások engedélyezése
 
-Amikor új logikai SQL Server-kiszolgálót hoz létre [a Azure Portal](single-database-create-quickstart.md), a beállítás nincs bejelölve.
+Alapértelmezés szerint a Azure Portal új logikai SQL [-](single-database-create-quickstart.md)kiszolgáló létrehozásakor ez a beállítás **ki van kapcsolva**. Ez a beállítás akkor jelenik meg, ha a kapcsolat engedélyezett a nyilvános szolgáltatási végpont használatával.
 
 Ezt a beállítást a tűzfal ablaktáblán is módosíthatja, miután a logikai SQL-kiszolgáló létrejött a következőképpen.
   
@@ -80,9 +80,9 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> A Get-AzNetworkServiceTag az SQL Service-címke globális tartományát adja vissza a Location paraméter megadása ellenére. Ügyeljen arra, hogy a szinkronizálási csoport által használt hub-adatbázist üzemeltető régióra szűrje
+> Get-AzNetworkServiceTag az SQL Service-címke globális tartományát adja vissza a Location paraméter megadása ellenére. Ügyeljen arra, hogy a szinkronizálási csoport által használt hub-adatbázist üzemeltető régióra szűrje
 
-Vegye figyelembe, hogy a PowerShell-parancsfájl kimenete osztály nélküli tartományok közötti útválasztás (CIDR) jelöléssel rendelkezik. Ezt a kezdő és a záró IP-cím formátumára kell konvertálni a [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) hasonló módon:
+Vegye figyelembe, hogy a PowerShell-szkript kimenete osztály nélküli Inter-Domain útválasztási (CIDR) jelöléssel rendelkezik. Ezt a kezdő és a záró IP-cím formátumára kell konvertálni a [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) hasonló módon:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -138,11 +138,11 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 > [!NOTE]
 > Még nem rendelkezhet SQL Database alhálózaton. Ha a kiszolgáló a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a SQL Databaseával. Ebben az esetben a virtuális gépek kommunikálhatnak a SQL Database anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
 
-## <a name="private-link"></a>Private Link
+## <a name="private-link"></a>Privát kapcsolat
 
 A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztül kapcsolódjon egy kiszolgálóhoz. A privát végpont egy magánhálózati IP-cím egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [adatbázis létrehozása SQL Databaseban](single-database-create-quickstart.md).
 

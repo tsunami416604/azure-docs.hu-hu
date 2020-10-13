@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e13add778ae372ea90361c094238668752fe2af
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274436"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977697"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -33,7 +33,7 @@ Ha szeretne többet megtudni az Oracle-adatbázis teljesítményének maximaliz�
 
 ## <a name="high-availability-for-oracle-databases"></a>Magas rendelkezésre állás Oracle-adatbázisokhoz
 
-A magas rendelkezésre állás elérése a felhőben fontos része minden szervezet tervezésének és kialakításának. A Microsoft Azure [rendelkezésre állási zónákat](../../../availability-zones/az-overview.md) és rendelkezésre állási csoportokat kínál (amelyek olyan régiókban használhatók, ahol a rendelkezésre állási zónák nem érhetők el). További információ a [virtuális gépek rendelkezésre állásának kezeléséről](../../../virtual-machines/linux/manage-availability.md) a Felhőbeli tervezéshez.
+A magas rendelkezésre állás elérése a felhőben fontos része minden szervezet tervezésének és kialakításának. A Microsoft Azure [rendelkezésre állási zónákat](../../../availability-zones/az-overview.md) és rendelkezésre állási csoportokat kínál (amelyek olyan régiókban használhatók, ahol a rendelkezésre állási zónák nem érhetők el). További információ a [virtuális gépek rendelkezésre állásának kezeléséről](../../manage-availability.md) a Felhőbeli tervezéshez.
 
 A Felhőbeli natív eszközök és ajánlatok mellett az Oracle olyan megoldásokat kínál a magas rendelkezésre álláshoz, mint például az [Oracle-adatvédelem](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), az [FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html) [, a](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)horizontális skálázás és az Azure-ban beállítható [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) . Ez az útmutató az egyes megoldások hivatkozási architektúráit ismerteti.
 
@@ -43,7 +43,7 @@ Végül, ha a felhőhöz telepít át vagy hoz létre alkalmazásokat, fontos, h
 
 Az Oracle Real Application Cluster (RAC) egy olyan megoldás, amelyet az Oracle az ügyfelek számára nagy teljesítményű adatforgalom eléréséhez biztosít, mivel számos példány fér hozzá egy adatbázis-tárolóhoz (közös – minden architektúra minta). Habár az Oracle RAC a helyszíni magas rendelkezésre álláshoz is használható, az Oracle-RAC önmagában nem használható magas rendelkezésre álláshoz a felhőben, mivel csak a példányok szintjének meghibásodása elleni védelmet nyújt, és nem az állvány-vagy adatközpont-szintű hibák ellen. Ezért az Oracle a magas rendelkezésre állás érdekében azt javasolja, hogy az Oracle-adatvédelmet az adatbázissal (akár egy példány vagy RAC) használja. Az ügyfeleknek általában magas SLA-ra van szükségük a kritikus fontosságú alkalmazások futtatásához. Az Oracle-RAC jelenleg nem hitelesített vagy nem támogatott az Azure-on. Az Azure azonban olyan funkciókat kínál, mint például az Azure, Availability Zones és tervezett karbantartási időszakokat, amelyek segítenek a példány-szintű hibák elleni védelemben. Ezen kívül az ügyfelek olyan technológiákat is használhatnak, mint például az Oracle-adatvédelem, az Oracle-GoldenGate és az Oracle-skálázás a nagy teljesítmény és a rugalmasság érdekében azáltal, hogy az adatbázisait a rack-szintű, valamint az adatközponti szintű és a földrajzilag fellépő hibák védik.
 
-Ha az Oracle-adatbázisok több [rendelkezésre állási zónában](../../../availability-zones/az-overview.md) futnak Oracle-adatgárda vagy GoldenGate használatával, az ügyfeleknek 99,99%-os üzemidőt biztosító SLA-t is igénybe vehetik. Azokon az Azure-régiókban, ahol a rendelkezésre állási zónák még nincsenek jelen, az ügyfelek használhatják a [rendelkezésre állási csoportokat](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , és 99,95%-os üzemidőt biztosítanak.
+Ha az Oracle-adatbázisok több [rendelkezésre állási zónában](../../../availability-zones/az-overview.md) futnak Oracle-adatgárda vagy GoldenGate használatával, az ügyfeleknek 99,99%-os üzemidőt biztosító SLA-t is igénybe vehetik. Azokon az Azure-régiókban, ahol a rendelkezésre állási zónák még nincsenek jelen, az ügyfelek használhatják a [rendelkezésre állási csoportokat](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , és 99,95%-os üzemidőt biztosítanak.
 
 >Megjegyzés: a rendelkezésre állási cél sokkal nagyobb, mint a Microsoft által biztosított üzemidő.
 
@@ -209,7 +209,7 @@ A kezdeti kérelem során az alkalmazáskiszolgáló csatlakozik a saját régi�
 
 ## <a name="patching-and-maintenance"></a>Javítás és karbantartás
 
-Az Oracle számítási feladatainak az Azure-ba történő üzembe helyezése során a Microsoft gondoskodik a gazdagép operációsrendszer-szintű javításáról. A tervezett karbantartást az ügyfélnek előre kell tájékoztatni az ügyfelek számára. Két különböző Availability Zones kiszolgáló egyidejű kijavítása nem történik meg egyszerre. A virtuális gépek karbantartásával és javításával kapcsolatos további információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/linux/manage-availability.md) . 
+Az Oracle számítási feladatainak az Azure-ba történő üzembe helyezése során a Microsoft gondoskodik a gazdagép operációsrendszer-szintű javításáról. A tervezett karbantartást az ügyfélnek előre kell tájékoztatni az ügyfelek számára. Két különböző Availability Zones kiszolgáló egyidejű kijavítása nem történik meg egyszerre. A virtuális gépek karbantartásával és javításával kapcsolatos további információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](../../manage-availability.md) . 
 
 A virtuális gépi operációs rendszer javítása [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md)használatával automatizálható. Az Oracle-adatbázis javítása és karbantartása automatizálható és ütemezhető az [Azure-folyamatok](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) vagy a [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) használatával az állásidő csökkentése érdekében. Tekintse meg a [folyamatos szállítást és a kék/zöld üzembe helyezést](/azure/devops/learn/what-is-continuous-delivery) , hogy megtudja, hogyan használható az Oracle-adatbázisok kontextusában.
 

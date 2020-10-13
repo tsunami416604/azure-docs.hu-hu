@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835484"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973903"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
@@ -41,7 +41,7 @@ Feltöltheti az általánosított és a speciális virtuális merevlemezeket is.
 ## <a name="overview-of-managed-disks"></a>A Managed Disks áttekintése
 
 Az Azure Managed Disks leegyszerűsíti a virtuális gépek felügyeletét azáltal, hogy eltávolítja a Storage-fiókok felügyeletének szükségességét. A Managed Disks a rendelkezésre állási csoportokban lévő virtuális gépek jobb megbízhatóságát is kihasználhatja. Gondoskodik arról, hogy a rendelkezésre állási csoportokban lévő különböző virtuális gépek lemezei elég elszigeteltek legyenek egymástól, hogy elkerülje az egyes meghibásodási pontokat. A szolgáltatás automatikusan áthelyezi a különböző virtuális gépek lemezeit egy rendelkezésre állási csoportba a különböző tárolási skálázási egységekben (bélyegzők), ami korlátozza a hardveres és a szoftver meghibásodása miatti egyetlen tárolási skálázási egység meghibásodásának hatását.
-Az igények alapján négyféle tárolási lehetőség közül választhat. A rendelkezésre álló lemez típusok megismeréséhez tekintse meg a [lemez típusának kiválasztása](disks-types.md)című cikket.
+Az igények alapján négyféle tárolási lehetőség közül választhat. A rendelkezésre álló lemez típusok megismeréséhez tekintse meg a [lemez típusának kiválasztása](../disks-types.md)című cikket.
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>A Managed Disksre való Migrálás megtervezése
 

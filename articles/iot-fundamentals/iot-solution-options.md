@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 046116addf643d6c0eb0faf2f821b6ef78d440c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1afb24a0e3e78acb1d44185843538bd55c491edf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "77050339"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976776"
 ---
-# <a name="choose-the-right-iot-solution"></a>A megfelelő IoT-megoldás kiválasztása
+# <a name="what-is-the-right-iot-solution-for-your-business"></a>Mi a megfelelő IoT megoldás vállalata számára?
 
 Ha IoT-megoldást szeretne létrehozni a vállalat számára, általában a *platform szolgáltatásai* vagy a *felügyelt alkalmazás platformjának* használatára van lehetősége.
 
@@ -28,7 +28,7 @@ A két megközelítés közötti választáshoz a következőket érdemes figyel
 - A megoldáshoz használni kívánt testreszabási és szabályozási szintek.
 - Milyen árképzési struktúrát szeretne használni.
 
-## <a name="management"></a>Felügyelet
+## <a name="management"></a>Kezelés
 
 Hová szeretné tölteni a rendszerkezelés idejét és erőforrásait? 
 
@@ -55,7 +55,7 @@ Milyen díjszabási struktúra a legjobban megfelel az igényeinek?
 
 - Válassza ki a felügyelt alkalmazás platformjának megközelítését egy egyszerű, kiszámítható díjszabási struktúrához.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A platform szolgáltatásainak megközelítése a felhőalapú megoldással és az eszköz szakértelmével kapcsolatos üzleti megoldások esetében megfelelő.
 
@@ -69,7 +69,7 @@ A felügyelt alkalmazás platformjának megközelítése olyan vállalkozás sz�
 - Kiszámítható árképzési struktúrát szeretne.
 - Bizonyos testreszabási képességeket szeretne.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző szolgáltatások és platformok részletes ismertetését, valamint a használatuk módját lásd: az [Azure IoT Services és Technologies](iot-services-and-technologies.md).
 

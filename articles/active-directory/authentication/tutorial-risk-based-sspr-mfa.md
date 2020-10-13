@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0fcd57a71baec54fbed2dd41a936895ad9a462
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419631"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966576"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Oktatóanyag: kockázati észlelések használata felhasználói bejelentkezésekhez az Azure Multi-Factor Authentication vagy a jelszó módosításainak elindításához
 
@@ -26,7 +26,7 @@ A felhasználók biztonsága érdekében az Azure Active Directory (Azure AD) ko
 >
 > Ha az IT-csapat nem engedélyezte az Azure Multi-Factor Authentication használatát, vagy ha a bejelentkezés során problémákba lépett, további segítségért forduljon az ügyfélszolgálathoz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az Azure AD Identity Protection elérhető házirendjeinek megismerése
@@ -123,11 +123,11 @@ A legtöbb felhasználói bejelentkezési esemény nem aktiválja az előző lé
 
 Az előző lépésekben létrehozott Azure AD Identity Protection szabályzatok teszteléséhez a kockázatos viselkedés vagy a lehetséges támadások szimulálása szükséges. A tesztek végrehajtásának lépései az érvényesíteni kívánt Azure AD Identity Protection szabályzat alapján változnak. További információ a forgatókönyvekről és a lépésekről: [a kockázati észlelések szimulálása Azure ad Identity Protectionban](../identity-protection/howto-identity-protection-simulate-risk.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha befejezte a tesztelést, és már nem szeretné, hogy engedélyezve legyenek a kockázatalapú házirendek, térjen vissza a letiltani kívánt szabályzatokhoz, és állítsa be a **házirend** *kikapcsolását*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte a Azure AD Identity Protection kockázatalapú felhasználói házirendjeit. Megtanulta végrehajtani az alábbi műveleteket:
 

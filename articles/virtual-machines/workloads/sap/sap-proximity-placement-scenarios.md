@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6e15ef1b9bf488ac18e41dc09eb71e6ea3da39
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569798"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977238"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.
@@ -33,7 +33,7 @@ A hálózati késés optimalizálása érdekében az Azure [közelségi csoporto
 
 - Nem feltételezhető, hogy minden Azure-beli VM-típus elérhető minden Azure-adatközpontban. Ennek eredményeképpen a különböző virtuálisgép-típusok kombinációja korlátozott lehet a közelségi elhelyezési csoporton belül. Ezek a korlátozások azért fordulnak elő, mert az adott virtuálisgép-típus futtatásához szükséges gazdagép-hardver nem szerepel az adatközpontban, amelybe az elhelyezési csoport telepítve lett
 - Az egyazon virtuális gépek részeinek átméretezése során a rendszer nem tudja automatikusan feltételezni, hogy az új virtuálisgép-típus ugyanabban az adatközpontban érhető el, mint a közelségi elhelyezési csoport részét képező többi virtuális gép.
-- Mivel az Azure leszereli a hardvert, előfordulhat, hogy bizonyos virtuális gépeket egy másik Azure-adatközpontba kényszerít. Ebben az esetben a részletekért olvassa el a dokumentumok közös elhelyezésének [erőforrásait a jobb késés](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#planned-maintenance-and-proximity-placement-groups) érdekében.  
+- Mivel az Azure leszereli a hardvert, előfordulhat, hogy bizonyos virtuális gépeket egy másik Azure-adatközpontba kényszerít. Ebben az esetben a részletekért olvassa el a dokumentumok közös elhelyezésének [erőforrásait a jobb késés](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups) érdekében.  
 
 > [!IMPORTANT]
 > A lehetséges korlátozások miatt a közelségi elhelyezési csoportokat kell használni:
@@ -166,7 +166,7 @@ A központi telepítés eredménye a következő:
 Ha már rendelkezik telepített SAP-rendszerekkel, érdemes lehet optimalizálni néhány kritikus rendszer hálózati késését, és megkeresni az alkalmazás réteget és az adatbázis-kezelő réteget ugyanabban az adatközpontban. Ahhoz, hogy egy teljes Azure-beli rendelkezésre állási csoportba tartozó virtuális gépeket egy már létező, már meglévő közelségi elhelyezési csoportba helyezze át, le kell állítania a rendelkezésre állási csoport összes virtuális gépet, és a rendelkezésre állási csoportot hozzá kell rendelnie a meglévő közelségi csoporthoz Azure Portal, PowerShell vagy CLI használatával. Ha olyan virtuális gépet szeretne áthelyezni, amely nem része egy rendelkezésre állási csoportnak egy meglévő közelségi elhelyezési csoportban, csak le kell állítania a virtuális gépet, és hozzá kell rendelnie egy meglévő közelségi elhelyezési csoporthoz. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a dokumentációt:
 
 - [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](./sap-deployment-checklist.md)

@@ -4,10 +4,10 @@ description: A Batch-készlet létrehozási eseményének hivatkozása, amely a 
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850948"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
@@ -95,7 +95,7 @@ ms.locfileid: "91850948"
 
 |Elem neve|Típus|Jegyzetek|
 |------------------|----------|-----------|
-|`enableAutomaticUpdates`|Logikai érték|Azt jelzi, hogy a virtuális gép engedélyezve van-e az automatikus frissítésekhez. Ha ez a tulajdonság nincs megadva, az alapértelmezett érték TRUE (igaz).|
+|`enableAutomaticUpdates`|Logikai|Azt jelzi, hogy a virtuális gép engedélyezve van-e az automatikus frissítésekhez. Ha ez a tulajdonság nincs megadva, az alapértelmezett érték TRUE (igaz).|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 

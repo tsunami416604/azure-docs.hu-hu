@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742519"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Oktatóanyag: REST API-k használata adatok másolásához Azure Data Box blob Storage-ba  
@@ -117,7 +117,7 @@ A következő lépésekkel importálhatja a `.cer` fájlt egy Windows-vagy Linux
 
     ![Tanúsítvány importálása a PowerShell 2 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4. Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
+4. Kattintson a **Finish** (Befejezés) gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
 
     ![Tanúsítvány importálása a PowerShell 3 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -133,7 +133,7 @@ Több, például Ubuntu és Debian is használja az `update-ca-certificates` par
 A RHEL, Fedora és CentOS legújabb verziói a parancsot használják `update-ca-trust` .
 
 * Másolja a tanúsítványfájl-fájlt a `/etc/pki/ca-trust/source/anchors` könyvtárba.
-* Futtassa az `update-ca-trust` parancsot.
+* A `update-ca-trust` parancs futtatása.
 
 A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 

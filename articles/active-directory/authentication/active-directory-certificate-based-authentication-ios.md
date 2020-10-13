@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fa6c28eaa75485e0b45bb4404e685b6ee223b46
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716435"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965590"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Tanúsítvány alapú hitelesítés Azure Active Directory iOS rendszeren
 
@@ -85,7 +85,7 @@ Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disab
 
 Az iOS 9-es vagy újabb verzióiban a natív iOS levelezési ügyfélprogram támogatott. Annak megállapításához, hogy ez a funkció támogatott-e az összes többi Exchange ActiveSync-alkalmazás esetében, forduljon az alkalmazás-fejlesztőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tanúsítványalapú hitelesítés konfigurálásához a környezetben tekintse meg a következő témakört: a [tanúsítványalapú hitelesítés](active-directory-certificate-based-authentication-get-started.md) első lépései.
 

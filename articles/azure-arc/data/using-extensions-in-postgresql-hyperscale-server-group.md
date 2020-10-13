@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631766"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL-bővítmények használata az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban
@@ -61,7 +61,7 @@ Futtassa az alábbi parancs egyikét.
 ```console
 azdata arc postgres server show -n <server group name>
 ```
-Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Például:
+Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Példa:
 ```console
 "engine": {
       "extensions": [
@@ -78,7 +78,7 @@ Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Péld�
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
-Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Például:
+Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Példa:
 ```console
 Engine:
     Extensions:

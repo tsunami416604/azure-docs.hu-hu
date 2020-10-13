@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07916b7f7e5d0f1e755ae9759a16541eede45a41
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274775"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950482"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Azure Disk Storage kiszolgálóoldali titkosítása a PowerShellhez
 
@@ -76,7 +76,7 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+A kettős titkosítás minden olyan régióban elérhető, ahol elérhetők a felügyelt lemezek.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kiszolgálóoldali titkosítás és az Azure Disk Encryption
 
@@ -86,7 +86,7 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 > Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Engedélyezze a végpontok közötti titkosítást a gazdagépen a [PowerShell](disks-enable-host-based-encryption-powershell.md) vagy a [Azure Portal](../disks-enable-host-based-encryption-portal.md)használatával történő titkosítással.
 - A PowerShell vagy a [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md) [használatával](disks-enable-double-encryption-at-rest-powershell.md) a felügyelt lemezek esetében engedélyezze a kettős titkosítást.

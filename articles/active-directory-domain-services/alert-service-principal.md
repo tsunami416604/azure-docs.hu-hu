@@ -2,7 +2,7 @@
 title: Egyszerű szolgáltatásokkal kapcsolatos riasztások feloldása Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan lehet elhárítani a Azure Active Directory Domain Services egyszerű szolgáltatásnév konfigurációs riasztásait
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: joflore
+ms.openlocfilehash: fc980d18a05b18706bb7eeecd907769b80e1b18f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221391"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962717"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: az egyszerű szolgáltatások riasztásai a Azure Active Directory Domain Services
 
@@ -107,7 +107,7 @@ A hitelesítő adatok szinkronizálásához használt Azure AD-alkalmazás újb�
 
 Miután mindkét alkalmazást törölte, az Azure platform automatikusan újra létrehozza őket, és megkísérli a jelszó-szinkronizálást. A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

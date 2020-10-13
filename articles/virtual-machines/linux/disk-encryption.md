@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4636bacafd9f643a62657196746cef0d6006f6d1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279756"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952063"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -76,13 +76,13 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+A kettős titkosítás minden olyan régióban elérhető, ahol elérhetők a felügyelt lemezek.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kiszolgálóoldali titkosítás és az Azure Disk Encryption
 
 [Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával titkosítja a felügyelt lemezeket az ügyfél által felügyelt KULCSOKKAL a vendég virtuális gépen belül.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Engedélyezheti a végpontok közötti titkosítást a gazdagépen a [CLI](disks-enable-host-based-encryption-cli.md) vagy a [Azure Portal](../disks-enable-host-based-encryption-portal.md)használatával történő titkosítással.
 - A [CLI](disks-enable-double-encryption-at-rest-cli.md) vagy a [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md)használatával a felügyelt lemezek esetében engedélyezze a kettős titkosítást.

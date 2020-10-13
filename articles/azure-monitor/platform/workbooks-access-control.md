@@ -2,19 +2,16 @@
 title: Azure Monitor munkafüzetek hozzáférés-vezérlése
 description: A szerepköralapú hozzáférés-vezérléssel rendelkező, előre elkészített és egyéni paraméteres munkafüzetek összetett jelentéskészítésének egyszerűbbé tétele
 services: azure-monitor
-author: mrbullwinkle
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: dc6e1d738bf255fe7baa244556bad4519979b1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c0b5dd72cf82649e7f659d23606d23aea62ac82
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539295"
+ms.locfileid: "91932549"
 ---
 # <a name="access-control"></a>Hozzáférés-vezérlés
 
@@ -39,6 +36,6 @@ Egyéni szerepköralapú hozzáférés-vezérléshez:
 
 Hozzáadás `microsoft.insights/workbooks/write` a megosztott munkafüzetek mentéséhez. További részletekért tekintse meg a [munkafüzet közreműködői](../../role-based-access-control/built-in-roles.md#monitoring-contributor) szerepkört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.

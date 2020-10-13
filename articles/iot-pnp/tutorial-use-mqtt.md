@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 2e05165a78a54d6aaa49c28a649a97235891f927
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577917"
 ---
 # <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>A MQTT használata IoT Plug and Play eszköz ügyfelének fejlesztéséhez
@@ -138,7 +138,7 @@ A következő definíciók az eszköz által az IoT hub-ra való adatküldéshez
 
 A MQTT kapcsolatos további információkért tekintse meg az Azure IoT GitHub-tárház [MQTT-mintáit](https://github.com/Azure-Samples/IoTMQTTSample/) .
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan módosíthat egy MQTT-eszköz ügyfelet a IoT Plug and Play konvenciók követéséhez. A IoT Plug and Play további tudnivalókért lásd:
 

@@ -11,7 +11,7 @@ ms.openlocfilehash: 888365e04566f18e5a73454fea4c96c321f5ce52
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858387"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Az Azure-Availability Zones támogató régiók
@@ -147,6 +147,6 @@ Az Azure emellett a következő régiókban nyújt Availability Zones támogatá
 Ha többet szeretne megtudni a három régió Availability Zones támogatásáról, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Régiók és rendelkezésre állási zónák az Azure-ban](az-overview.md)

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e90c78e8e7cb474756c1a5ea03fd90c33e14300
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654599"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963584"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -71,7 +71,7 @@ Az SAP-előállítók egymás után, a lemezes tárolóeszközökbe írnak, kiv�
 Azt javasoljuk, hogy konfigurálja az automatikus adatbázis-kiterjesztést az [SAP adaptív kiszolgáló nagyvállalati](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)  és [SAP-támogatási megjegyzésének](https://launchpad.support.sap.com/#/notes/1815695)konfigurálásával foglalkozó cikkben leírtak szerint, #1815695. 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Az Azure-beli virtuális gépeken, a lemez-és fájlrendszer-konfigurációkon használható SAP-beszállítói minta 
-Az alábbi sablonok a Linux és a Windows rendszerhez készült minta konfigurációkat mutatják be. A virtuális gép és a lemez konfigurációjának megerősítése előtt gondoskodjon arról, hogy az egyes virtuális gépek hálózati és tárolási sávszélesség-kvótái elegendőek legyenek az üzleti igények kielégítéséhez. Azt is vegye figyelembe, hogy a különböző Azure-beli virtuálisgép-típusok különböző számú lemezzel rendelkezhetnek, amelyek a virtuális géphez csatlakoztathatók. Egy E4s_v3 virtuális gép például 48 MB/s-os korláttal rendelkezik, az IO átviteli sebessége. Ha az adatbázis biztonsági mentési tevékenysége által igényelt tárolási sebesség meghaladja a 48 MB/s-ot, a nagyobb méretű virtuálisgép-típus nem elkerülhető. Az Azure Storage konfigurálásakor azt is figyelembe kell vennie, hogy különösen az [Azure Premium Storage](../../windows/premium-storage-performance.md) esetében a kapacitás és a IOPS GB-onként változik. További információ ebben a témakörben: [milyen típusú lemezek érhetők el az Azure-ban?](../../disks-types.md). Az adott Azure-beli virtuálisgép-típusok kvótái a cikkhez kapcsolódó [memória-optimalizált virtuálisgép-méretek](../../sizes-memory.md) és cikkek című cikkben vannak dokumentálva. 
+Az alábbi sablonok a Linux és a Windows rendszerhez készült minta konfigurációkat mutatják be. A virtuális gép és a lemez konfigurációjának megerősítése előtt gondoskodjon arról, hogy az egyes virtuális gépek hálózati és tárolási sávszélesség-kvótái elegendőek legyenek az üzleti igények kielégítéséhez. Azt is vegye figyelembe, hogy a különböző Azure-beli virtuálisgép-típusok különböző számú lemezzel rendelkezhetnek, amelyek a virtuális géphez csatlakoztathatók. Egy E4s_v3 virtuális gép például 48 MB/s-os korláttal rendelkezik, az IO átviteli sebessége. Ha az adatbázis biztonsági mentési tevékenysége által igényelt tárolási sebesség meghaladja a 48 MB/s-ot, a nagyobb méretű virtuálisgép-típus nem elkerülhető. Az Azure Storage konfigurálásakor azt is figyelembe kell vennie, hogy különösen az [Azure Premium Storage](../../premium-storage-performance.md) esetében a kapacitás és a IOPS GB-onként változik. További információ ebben a témakörben: [milyen típusú lemezek érhetők el az Azure-ban?](../../disks-types.md). Az adott Azure-beli virtuálisgép-típusok kvótái a cikkhez kapcsolódó [memória-optimalizált virtuálisgép-méretek](../../sizes-memory.md) és cikkek című cikkben vannak dokumentálva. 
 
 > [!NOTE]
 >  Ha egy adatbázis-kezelő rendszert helyez át a helyszínről az Azure-ba, javasoljuk, hogy végezzen figyelést a virtuális gépen, és mérje fel a processzor, a memória, a IOPS és a tárterület átviteli sebességét. Hasonlítsa össze a fent említett cikkekben dokumentált virtuálisgép-kvóta korlátaival megfigyelt csúcsérték-értékeket
@@ -309,5 +309,5 @@ További információ a következő címen érhető el
 A havi hírlevél [SAP-támogatási megjegyzéssel](https://launchpad.support.sap.com/#/notes/2381575) jelenik meg #2381575 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli SAP-munkaterhelések című cikkben tájékozódhat [: tervezési és üzembe helyezési ellenőrzőlista](./sap-deployment-checklist.md)

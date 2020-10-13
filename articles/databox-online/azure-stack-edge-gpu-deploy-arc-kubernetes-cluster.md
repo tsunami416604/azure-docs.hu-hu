@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903188"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952216"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge Pro GPU-eszközön
 
@@ -68,11 +68,11 @@ Mielőtt engedélyezi az Azure arc-t a Kubernetes-fürtön, engedélyeznie kell 
 
 1. Válasszon ki egy erőforrás-szolgáltatót, és a parancssáv felső részén válassza a **regisztráció**lehetőséget. A regisztráció több percet is igénybe vehet. 
 
-    ![Kubernetes erőforrás-szolgáltató regisztrálása](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![Kubernetes-erőforrás-szolgáltatók regisztrálása 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. Frissítse a felhasználói felületet addig, amíg nem látja, hogy az erőforrás-szolgáltató regisztrálva van. Ismételje meg a folyamatot mindkét erőforrás-szolgáltató esetében.
     
-    ![Kubernetes erőforrás-szolgáltató regisztrálása](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![Kubernetes-erőforrás-szolgáltatók regisztrálása 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` . További információ: [a két szolgáltató regisztrálása az Azure arc használatára képes Kubernetes](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
@@ -92,7 +92,7 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
 
     A alkalmazásba való bejelentkezéssel kapcsolatos információkért `az cli` [indítsa el a Cloud Shell a Azure Portal](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
-    Például: 
+    Íme egy példa. 
     
     ```azurecli
     PS /home/user> az ad sp create-for-rbac --skip-assignment --name "https://azure-arc-for-ase-k8s"
@@ -112,7 +112,7 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
-    Például:
+    Íme egy példa.
     
     ```azurecli
     PS /home/user> az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b --scope /subscriptions/062c67a6-019b-40af-a775-c4dc1abe56ed/resourceGroups/myaserg1
@@ -222,6 +222,6 @@ Az Azure arc-felügyelet eltávolításához kövesse az alábbi lépéseket:
     `Remove-HcsKubernetesAzureArcAgent` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure arc központi telepítésének futtatásával kapcsolatban lásd: [állapot nélküli php-Vendégkönyv alkalmazás üzembe helyezése az Redis-n keresztül a GitOps-on keresztül egy Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

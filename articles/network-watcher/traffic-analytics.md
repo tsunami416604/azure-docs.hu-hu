@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967498"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951570"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -58,62 +59,106 @@ A Traffic Analytics megvizsgálja a nyers NSG-naplókat, és rögzíti a csökke
 ## <a name="supported-regions-nsg"></a>Támogatott régiók: NSG 
 
 A NSG Traffic Analytics a következő támogatott régiókban használható:
-
-* Közép-Kanada
-* USA nyugati középső régiója
-* USA keleti régiója
-* USA 2. keleti régiója
-* USA északi középső régiója
-* USA déli középső régiója
-* USA középső régiója
-* USA nyugati régiója
-* USA 2. nyugati régiója
-* Közép-Franciaország
-* Nyugat-Európa
-* Észak-Európa
-* Dél-Brazília
-* Az Egyesült Királyság nyugati régiója
-* Az Egyesült Királyság déli régiója
-* Kelet-Ausztrália
-* Délkelet-Ausztrália
-* Kelet-Ázsia
-* Délkelet-Ázsia
-* Dél-Korea középső régiója
-* Közép-India
-* Dél-India
-* Kelet-Japán 
-* Nyugat-Japán
-* USA-beli államigazgatás – Virginia
-* Kelet-Kína 2
+:::row:::
+   :::column span="":::
+      Ausztrália középső régiója  
+      Kelet-Ausztrália  
+      Délkelet-Ausztrália  
+      Dél-Brazília  
+      Közép-Kanada  
+      Kelet-Kanada  
+      Közép-India  
+      USA középső régiója  
+      Kelet-Kína 2  
+      Észak-Kína 2  
+   :::column-end:::
+   :::column span="":::
+      Kelet-Ázsia  
+      USA keleti régiója  
+      USA 2. keleti régiója  
+      USA 2. keleti – EUAP  
+      Közép-Franciaország  
+      Kelet-Japán  
+      Nyugat-Japán  
+      Dél-Korea középső régiója  
+      Dél-Korea déli régiója  
+      USA északi középső régiója  
+   :::column-end:::
+   :::column span="":::
+      Észak-Európa  
+      Dél-Afrika északi régiója  
+      USA déli középső régiója  
+      Dél-India  
+      Délkelet-Ázsia  
+      Észak-Svájc  
+      Nyugat-Svájc  
+      Az Egyesült Királyság déli régiója  
+      Az Egyesült Királyság nyugati régiója  
+      USGov Arizona  
+   :::column-end:::
+   :::column span="":::
+      USGov Texas  
+      USGov Virginia  
+      USNat keleti régiója  
+      USNat nyugati régiója  
+      USSec keleti régiója  
+      USSec nyugati régiója  
+      USA nyugati középső régiója  
+      Nyugat-Európa  
+      USA nyugati régiója  
+      USA 2. nyugati régiója  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Támogatott régiók: Log Analytics munkaterületek
 
 A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
-* Közép-Kanada
-* USA nyugati középső régiója
-* USA keleti régiója
-* USA 2. keleti régiója
-* USA északi középső régiója
-* USA déli középső régiója
-* USA középső régiója
-* USA nyugati régiója
-* USA 2. nyugati régiója
-* USA középső régiója
-* Közép-Franciaország
-* Nyugat-Európa
-* Észak-Európa
-* Dél-Brazília
-* Az Egyesült Királyság nyugati régiója
-* Az Egyesült Királyság déli régiója
-* Kelet-Ausztrália
-* Délkelet-Ausztrália
-* Kelet-Ázsia
-* Délkelet-Ázsia
-* Dél-Korea középső régiója
-* Közép-India
-* Kelet-Japán
-* USA-beli államigazgatás – Virginia
-* Kelet-Kína 2
+:::row:::
+   :::column span="":::
+      Ausztrália középső régiója  
+      Kelet-Ausztrália  
+      Délkelet-Ausztrália  
+      Dél-Brazília  
+      Közép-Kanada  
+      Közép-India  
+      USA középső régiója  
+      Kelet-Kína 2  
+      Kelet-Ázsia  
+      USA keleti régiója  
+   :::column-end:::
+   :::column span="":::
+      USA 2. keleti régiója  
+      USA 2. keleti – EUAP  
+      Közép-Franciaország  
+      Középnyugat-Németország  
+      Kelet-Japán  
+      Dél-Korea középső régiója  
+      USA északi középső régiója  
+      Észak-Európa  
+      Dél-Afrika északi régiója  
+      USA déli középső régiója  
+   :::column-end:::
+   :::column span="":::
+      Délkelet-Ázsia  
+      Észak-Svájc  
+      Nyugat-Svájc  
+      UAE középső régiója  
+      Az Egyesült Királyság déli régiója  
+      Az Egyesült Királyság nyugati régiója  
+      USGov Arizona  
+      USGov Virginia  
+      USNat keleti régiója  
+      USNat nyugati régiója  
+   :::column-end:::
+   :::column span="":::
+      USSec keleti régiója  
+      USSec nyugati régiója  
+      USA nyugati középső régiója  
+      Nyugat-Európa  
+      USA nyugati régiója  
+      USA 2. nyugati régiója  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -382,7 +427,7 @@ Rosszindulatú forgalmat észlelt a környezetében? Honnan származnak? Hol van
 
 Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics – gyakori](traffic-analytics-faq.md)kérdések című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
 - A Traffic Analytics sémájának és feldolgozási adatainak megismeréséhez tekintse meg a [Traffic Analytics-séma](traffic-analytics-schema.md)című témakört.

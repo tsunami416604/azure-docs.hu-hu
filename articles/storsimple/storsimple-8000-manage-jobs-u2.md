@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513923"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949428"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Feladatok megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással (3. frissítés és újabb)
 
@@ -59,11 +59,11 @@ A feladatok részleteinek megtekintéséhez hajtsa végre a következő lépése
 
 2. A **feladatok** panelen jelenítse meg azokat a feladatokat, amelyek érdeklik a megfelelő szűrőket tartalmazó lekérdezés futtatásával. Kereshet a befejezett, a futó és a megszakított feladatok között.
 
-    ![Feladatok panelje](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![Feladatok panel 2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. Válasszon ki egy feladatot, és kattintson rá.
 
-    ![Feladatok panelje](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![3. feladatok](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. A feladatok részletei panelen megtekintheti az állapot, a részletek, az idő statisztikáit és az adatok statisztikáit.
    
@@ -81,7 +81,7 @@ Egy futó feladat megszakításához hajtsa végre az alábbi lépéseket.
 
 2. Kattintson a jobb gombbal a kiválasztott feladatokra a helyi menü meghívásához, majd kattintson a **Mégse**gombra.
 
-    ![Feladat részletei](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![A feladatok részletei 2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. Ez a feladat most meg lett szakítva.
 

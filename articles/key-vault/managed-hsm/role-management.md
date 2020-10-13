@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818029"
 ---
 # <a name="managed-hsm-role-management"></a>A Managed HSM szerepkörkezelése
@@ -111,7 +111,7 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)áttekintését.
 - A [felügyelt HSM szerepkör-kezelésről](role-management.md) szóló oktatóanyag megtekintése

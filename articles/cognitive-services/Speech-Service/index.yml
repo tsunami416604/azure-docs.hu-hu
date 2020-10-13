@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
-  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+  ms.openlocfilehash: 2d00466672318ef05218fce392797df215b6bb5f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/02/2020
-  ms.locfileid: "91667452"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91856993"
 highlightedContent:
   items:
   - title: Mi az a beszédszolgáltatás?
@@ -88,34 +88,6 @@ conceptualContent:
     footerLink:
       text: Továbbiak
       url: index-intent-recognition.yml
-  - title: Beszélgetési forgatókönyvek
-    links:
-    - itemType: overview
-      text: A Beszédátírás ismertetése (értekezletek)
-      url: conversation-transcription.md
-    - itemType: overview
-      text: A többeszközös beszélgetések ismertetése (értekezletek)
-      url: multi-device-conversation.md
-    - itemType: how-to-guide
-      text: Telefonos ügyfélszolgálati felvételek átírása
-      url: call-center-transcription.md
-    footerLink:
-      text: Továbbiak
-      url: index-conversation-scenarios.yml
-  - title: Hangvezérelt asszisztensek
-    links:
-    - itemType: overview
-      text: A hangvezérelt asszisztensek ismertetése
-      url: voice-assistants.md
-    - itemType: quickstart
-      text: Hangvezérelt asszisztens létrehozása egyéni parancsokkal
-      url: custom-commands.md
-    - itemType: get-started
-      text: Hangvezérelt asszisztens létrehozása Bot Frameworkkel
-      url: direct-line-speech.md
-    footerLink:
-      text: Továbbiak
-      url: index-voice-assistants.yml
   - title: Beszélőfelismerés
     links:
     - itemType: overview
@@ -135,6 +107,26 @@ conceptualContent:
     - itemType: quickstart
       text: Bevezetés az egyéni kulcsszavak használatába
       url: custom-keyword-basics.md
+  - title: Forgatókönyvek részletes ismertetése
+    links:
+    - itemType: overview
+      text: A Beszédátírás ismertetése (értekezletek)
+      url: conversation-transcription.md
+    - itemType: overview
+      text: A többeszközös beszélgetések ismertetése (értekezletek)
+      url: multi-device-conversation.md
+    - itemType: overview
+      text: A hangvezérelt asszisztensek ismertetése
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Hangvezérelt asszisztens létrehozása egyéni parancsokkal
+      url: custom-commands.md
+    - itemType: quickstart
+      text: Hangvezérelt asszisztens létrehozása Bot Frameworkkel
+      url: direct-line-speech.md
+    - itemType: how-to-guide
+      text: Telefonos ügyfélszolgálati felvételek átírásának engedélyezése
+      url: call-center-transcription.md
   - title: Eszközök
     links:
     - itemType: overview

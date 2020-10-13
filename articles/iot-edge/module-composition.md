@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan deklarálja az üzembe helyezési jegyzék a te
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/26/2020
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611537"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963397"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben
 
@@ -46,32 +46,31 @@ Az üzembe helyezési jegyzékek ezt a struktúrát követik:
 
 ```json
 {
-    "modulesContent": {
-        "$edgeAgent": { // required
-            "properties.desired": {
-                // desired properties of the Edge agent
-                // includes the image URIs of all modules
-                // includes container registry credentials
-            }
-        },
-        "$edgeHub": { //required
-            "properties.desired": {
-                // desired properties of the Edge hub
-                // includes the routing information between modules, and to IoT Hub
-            }
-        },
-        "module1": {  // optional
-            "properties.desired": {
-                // desired properties of module1
-            }
-        },
-        "module2": {  // optional
-            "properties.desired": {
-                // desired properties of module2
-            }
-        },
-        ...
+  "modulesContent": {
+    "$edgeAgent": { // required
+      "properties.desired": {
+        // desired properties of the IoT Edge agent
+        // includes the image URIs of all deployed modules
+        // includes container registry credentials
+      }
+    },
+    "$edgeHub": { //required
+      "properties.desired": {
+        // desired properties of the IoT Edge hub
+        // includes the routing information between modules, and to IoT Hub
+      }
+    },
+    "module1": {  // optional
+      "properties.desired": {
+        // desired properties of module1
+      }
+    },
+    "module2": {  // optional
+      "properties.desired": {
+        // desired properties of module2
+      }
     }
+  }
 }
 ```
 
@@ -79,40 +78,101 @@ Az üzembe helyezési jegyzékek ezt a struktúrát követik:
 
 Annak meghatározása, hogy a IoT Edge futtatókörnyezet hogyan telepíti a modulokat a telepítésben. A IoT Edge ügynök az a futtatókörnyezet-összetevő, amely egy IoT Edge eszköz telepítésével, frissítésével és állapotával kapcsolatos jelentéskészítést kezeli. Ezért a $edgeAgent modul Twin az összes modul konfigurációs és felügyeleti információit tartalmazza. Ez az információ magában foglalja a IoT Edge-ügynök konfigurációs paramétereit is.
 
-A megadható vagy kötelező tulajdonságok teljes listájáért tekintse meg [a IoT Edge ügynök és a IoT Edge hub tulajdonságait](module-edgeagent-edgehub.md).
-
 A $edgeAgent tulajdonságok ezt a struktúrát követik:
 
 ```json
-"$edgeAgent": {
-    "properties.desired": {
-        "schemaVersion": "1.0",
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "runtime": {
-            "settings":{
-                "registryCredentials":{ // give the edge agent access to container images that aren't public
-                    }
-                }
+          "settings":{
+            "registryCredentials":{
+              // give the IoT Edge agent access to container images that aren't public
             }
+          }
         },
         "systemModules": {
-            "edgeAgent": {
-                // configuration and management details
-            },
-            "edgeHub": {
-                // configuration and management details
-            }
+          "edgeAgent": {
+            // configuration and management details
+          },
+          "edgeHub": {
+            // configuration and management details
+          }
         },
         "modules": {
-            "module1": { // optional
-                // configuration and management details
-            },
-            "module2": { // optional
-                // configuration and management details
-            }
+          "module1": {
+            // configuration and management details
+          },
+          "module2": {
+            // configuration and management details
+          }
         }
-    }
-},
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
 ```
+
+Az IoT Edge Agent séma 1,1-es verziója IoT Edge 1.0.10 verzióval együtt lett közzétéve, és lehetővé teszi a modul indítási sorrendjét. A 1,1-es verziójú séma a 1.0.10-t vagy újabb verziót futtató IoT Edge üzemelő példányok esetében ajánlott.
+
+### <a name="module-configuration-and-management"></a>Modul konfigurálása és kezelése
+
+A IoT Edge Agent kívánt tulajdonságok listájának segítségével meghatározhatja, hogy mely modulok legyenek telepítve egy IoT Edge eszközre, és hogyan legyenek konfigurálva és felügyelve.
+
+A használni kívánt vagy kötelező tulajdonságok teljes listájáért tekintse meg [a IoT Edge ügynök és a IoT Edge hub tulajdonságait](module-edgeagent-edgehub.md).
+
+Például:
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
+        "runtime": { ... },
+        "systemModules": {
+          "edgeAgent": { ... },
+          "edgeHub": { ... }
+        },
+        "modules": {
+          "module1": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "startupOrder": 2,
+            "settings": {
+              "image": "myacr.azurecr.io/module1:latest",
+              "createOptions": "{}"
+            }
+          },
+          "module2": { ... }
+        }
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
+```
+
+Minden modul tartalmaz egy **Settings (beállítások** ) tulajdonságot, amely tartalmazza a modul **képét**, a tároló beállításjegyzékében lévő tároló rendszerképének címeit, valamint a rendszerindításkor a rendszerképek konfigurálásához szükséges **createOptions** . További információ: a [tároló létrehozási beállításainak konfigurálása IoT Edge modulokhoz](how-to-use-create-options.md).
+
+A edgeHub modulnak és az egyéni moduloknak is három tulajdonsága van, amelyek közlik a IoT Edge-ügynökkel, hogyan kezelheti őket:
+
+* **Állapot**: azt határozza meg, hogy a modul az első üzembe helyezéskor fut-e vagy leáll. Kötelező.
+* **RestartPolicy**: Mikor és ha leáll, a IoT Edge ügynöknek újra kell indítania a modult. Kötelező.
+* **StartupOrder**: *IoT Edge 1.0.10 verzióban bevezetett.* A IoT Edge ügynöknek az első üzembe helyezéskor kell elindítania a modulokat. A sorrend egész számokkal van deklarálva, ahol a rendszer a 0 indítási értékkel megadott modult először indítja el, majd magasabb számú számot követ. A edgeAgent modulnak nincs indítási értéke, mert mindig először indul el. Választható.
+
+  A IoT Edge ügynök az indítási érték sorrendjében kezdeményezi a modulokat, de nem várja meg, amíg az egyes modulok befejeződik, mielőtt a következőre kezdenek.
+
+  Az indítási sorrend hasznos lehet, ha egyes modulok másoktól függenek. Előfordulhat például, hogy azt szeretné, hogy a edgeHub modul először induljon el, hogy készen álljon az üzenetek továbbítására a többi modul indításakor. Vagy előfordulhat, hogy a Storage-modult is el szeretné indítani az adatküldés előtt. Azonban mindig tervezze meg a modulokat más modulok meghibásodásának kezelésére. A tárolók jellegéből adódóan bármikor leállíthatók és újraindíthatók, és tetszőleges számú alkalommal.
 
 ## <a name="declare-routes"></a>Útvonalak deklarálása
 
@@ -121,17 +181,36 @@ Az IoT Edge hub felügyeli a modulok, a IoT Hub és a leveles eszközök közöt
 Az útvonalak a **$edgeHub** kívánt tulajdonságaiban vannak deklarálva a következő szintaxissal:
 
 ```json
-"$edgeHub": {
-    "properties.desired": {
+{
+  "modulesContent": {
+    "$edgeAgent": { ... },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "routes": {
-            "route1": "FROM <source> WHERE <condition> INTO <sink>",
-            "route2": "FROM <source> WHERE <condition> INTO <sink>"
+          "route1": "FROM <source> WHERE <condition> INTO <sink>",
+          "route2": {
+            "route": "FROM <source> WHERE <condition> INTO <sink>",
+            "priority": 0,
+            "timeToLiveSecs": 86400
+          }
         },
-    }
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
+        }
+      }
+    },
+    "module1": { ... },
+    "module2": { ... }
+  }
 }
 ```
 
-Minden útvonalnak forrásra és fogadóra van szüksége, de a feltétel egy opcionális darab, amely az üzenetek szűrésére használható.
+Az IoT Edge hub-séma 1,1-es verziója IoT Edge 1.0.10 verzióval együtt lett közzétéve, és lehetővé teszi az útvonalak rangsorolását és az élettartamot. A 1,1-es verziójú séma a 1.0.10-t vagy újabb verziót futtató IoT Edge üzemelő példányok esetében ajánlott.
+
+Minden útvonalnak szüksége van egy *forrásra* , ahol az üzenetek származnak, *és egy fogadó* , ahol az üzenetek elindulnak. A *feltétel* egy opcionális darab, amely az üzenetek szűrésére használható.
+
+*Prioritást* rendelhet azokhoz az útvonalakhoz, amelyeknek meg kell győződnie arról, hogy először dolgozzák fel az üzeneteiket. Ez a funkció olyan helyzetekben hasznos, amikor a felsőbb rétegbeli kapcsolat gyenge vagy korlátozott, és kritikus fontosságú adatokkal kell rendelkeznie, amelyeket a standard telemetria-üzenetekre kell rangsorolni.
 
 ### <a name="source"></a>Forrás
 
@@ -177,7 +256,7 @@ A fogadó meghatározza az üzenetek küldésének helyét. Csak modulok és IoT
 
 A fogadó tulajdonság a következő értékek bármelyike lehet:
 
-| Sink (Fogadó) | Leírás |
+| Sink (Fogadó) | Description |
 | ---- | ----------- |
 | `$upstream` | Üzenet küldése IoT Hub |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Az üzenet elküldése egy adott modul megadott bemenetére |
@@ -185,6 +264,32 @@ A fogadó tulajdonság a következő értékek bármelyike lehet:
 A IoT Edge legalább egyszeri garanciát biztosít. Az IoT Edge hub helyileg tárolja az üzeneteket, ha egy útvonal nem tudja kézbesíteni az üzenetet a fogadónak. Ha például az IoT Edge hub nem tud csatlakozni a IoT Hubhoz, vagy a célként megadott modul nincs csatlakoztatva.
 
 IoT Edge hub a `storeAndForwardConfiguration.timeToLiveSecs` [IoT Edge hub kívánt tulajdonságainak](module-edgeagent-edgehub.md)tulajdonságában megadott időpontig tárolja az üzeneteket.
+
+### <a name="priority-and-time-to-live"></a>Prioritás és élettartam
+
+Az útvonalak deklarálása csak egy olyan karakterlánccal lehetséges, amely meghatározza az útvonalat, vagy egy olyan objektumként, amely egy útvonal-karakterláncot, egy prioritás egész számot és egy idő-élő egész számot vesz igénybe.
+
+1. módszer:
+
+   ```json
+   "route1": "FROM <source> WHERE <condition> INTO <sink>",
+   ```
+
+A 2. lehetőség, amely a IoT Edge hub Schema 1,1-es verziójában bevezetett IoT Edge verzió 1.0.10:
+
+   ```json
+   "route2": {
+     "route": "FROM <source> WHERE <condition> INTO <sink>",
+     "priority": 0,
+     "timeToLiveSecs": 86400
+   }
+   ```
+
+A **prioritási** értékek 0-9, beleértve a legmagasabb prioritást (0). Az üzenetek várólistára kerülnek a végpontok alapján. Az adott végpontot célzó összes prioritást tartalmazó 0 üzenetet a rendszer feldolgozza, mielőtt a rendszer feldolgozza az azonos végpontot célzó 1. prioritású üzeneteket, és leállítja a sort. Ha ugyanahhoz a végponthoz több útvonal is van, akkor az üzeneteiket a rendszer az első alkalommal kézbesíti. Ha nincs megadva prioritás, az útvonal a legalacsonyabb prioritáshoz lesz rendelve.
+
+A **timeToLiveSecs** tulajdonság a IoT Edge hub **storeAndForwardConfiguration** származó értéket örökli, kivéve, ha explicit módon be van állítva. Az érték bármilyen pozitív egész szám lehet.
+
+A prioritási sorok kezelésével kapcsolatos részletes információkért tekintse meg az [útvonal prioritásának és az élettartamnak](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md)a hivatkozási oldalát.
 
 ## <a name="define-or-update-desired-properties"></a>A kívánt tulajdonságok megadása vagy frissítése
 
@@ -203,7 +308,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
   "modulesContent": {
     "$edgeAgent": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "runtime": {
           "type": "docker",
           "settings": {
@@ -230,6 +335,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 0,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
@@ -242,6 +348,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 2,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
               "createOptions": "{}"
@@ -252,6 +359,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 1,
             "env": {
               "tempLimit": {"value": "100"}
             },
@@ -265,13 +373,21 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
     },
     "$edgeHub": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "routes": {
-          "sensorToFilter": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+          "sensorToFilter": {
+            "route": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+            "priority": 0,
+            "timeToLiveSecs": 1800
+          },
+          "filterToIoTHub": {
+            "route": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream",
+            "priority": 1,
+            "timeToLiveSecs": 1800
+          }
         },
         "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 10
+          "timeToLiveSecs": 100
         }
       }
     }

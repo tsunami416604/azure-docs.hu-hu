@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2a72e22b600f7dd7737a877e2fdf5d34c4dd4b4c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876107"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975994"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>Oktatóanyag: útválasztási szűrők konfigurálása a Microsoft-partnerek számára: Azure CLI
 
@@ -33,7 +33,7 @@ Az összes Azure-és Microsoft 365-szolgáltatáshoz való kapcsolódás nagy sz
 
 * Adja meg az útvonal-szűrőket, és alkalmazza őket a ExpressRoute-áramkörre. Az útválasztási szűrő egy új erőforrás, amellyel kiválaszthatja a Microsoft-társon keresztül használni kívánt szolgáltatások listáját. A ExpressRoute-útválasztók csak az útválasztási szűrőben azonosított szolgáltatásokhoz tartozó előtagok listáját küldik el.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > - BGP-közösségi értékek beolvasása.
 > - Hozzon létre egy útválasztási szűrőt és egy szűrési szabályt.
@@ -51,7 +51,7 @@ Ha Microsoft 365-szolgáltatásokkal szeretne útválasztási szűrőket csatoln
 > Az 2017. augusztus 1. előtt konfigurált ExpressRoute-áramkörök Microsoft-összevonása a Microsoft-társon keresztül meghirdetett összes szolgáltatás előtagja lesz, még akkor is, ha az útvonal-szűrők nincsenek meghatározva. A 2017 augusztus 1-jén vagy azt követően konfigurált ExpressRoute-áramkörök Microsoft-társítása nem rendelkezik olyan előtagokkal, amelyek csak akkor lesznek meghirdetve, ha az áramkörhöz hozzá van rendelve egy útvonal-szűrő.
 > 
 
-## <a name="prerequisites"></a><a name="workflow"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ahhoz, hogy a Microsoft-társon keresztül sikeresen csatlakozhasson a szolgáltatásokhoz, a következő konfigurációs lépéseket kell végrehajtania:
 
@@ -143,7 +143,7 @@ Ha egy útvonal-szűrőt leválasztanak a ExpressRoute áramkörről, a BGP-munk
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-## <a name="clean-up-resources"></a><a name="delete"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Csak akkor törölhet egy útvonal-szűrőt, ha nincs csatlakoztatva egyetlen áramkörhöz sem. A törlés megkísérlése előtt gondoskodjon arról, hogy az útválasztási szűrő ne legyen csatlakoztatva egyetlen áramkörhöz sem. Az útvonal-szűrőt a következő paranccsal törölheti:
 

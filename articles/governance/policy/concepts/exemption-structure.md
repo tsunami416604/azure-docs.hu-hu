@@ -3,16 +3,16 @@ title: A házirend-mentesítési struktúra részletei
 description: Ismerteti az Azure Policy által a kezdeményezések vagy definíciók kiértékelésével kapcsolatos erőforrások mentesítéséhez használt házirend-kivételi definíciót.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968037"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950176"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy kivétel struktúrája
 
-A Azure Policy kivételek (előzetes verzió) funkció használatával egy erőforrás-hierarchia vagy egy egyedi erőforrás _mentesül_ a kezdeményezések vagy definíciók kiértékelésével. A _kivételt_ képező erőforrások a teljes megfelelőségnek számítanak, de nem értékelhető ki, illetve nem rendelkezhet ideiglenes mentesítéssel. További információ: [a hatókör megismerése Azure Policy](./scope.md). Azure Policy a kivételek csak [Resource Manager-módokon](./definition-structure.md#resource-manager-modes) működnek, és nem működnek az **erőforrás-szolgáltatói módokkal**.
+A Azure Policy kivételek (előzetes verzió) funkció használatával egy erőforrás-hierarchia vagy egy egyedi erőforrás _mentesül_ a kezdeményezések vagy definíciók kiértékelésével. A _kivételt_ képező erőforrások a teljes megfelelőségnek számítanak, de nem értékelhető ki, illetve nem rendelkezhet ideiglenes mentesítéssel. További információ: [a hatókör megismerése Azure Policy](./scope.md). Azure Policy a kivételek csak [Resource Manager-módokon](./definition-structure.md#resource-manager-modes) működnek, és nem működnek az [erőforrás-szolgáltatói módokkal](./definition-structure.md#resource-provider-modes).
 
 > [!IMPORTANT]
 > Ez a funkció **előzetes**verzióban ingyenes. A díjszabással kapcsolatos részletekért tekintse meg a [Azure Policy díjszabását](https://azure.microsoft.com/pricing/details/azure-policy/). További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -119,7 +119,7 @@ A szabályzat-mentesítési objektumok kezeléséhez szükséges Azure RBAC-enge
 
 A kivételek a kivételek megadásának következményei miatt további biztonsági intézkedésekkel bírnak. A `Microsoft.Authorization/policyExemptions/write` műveletnek az erőforrás-hierarchián vagy az egyedi erőforráson túl kell lennie ahhoz, hogy a kivétel a `exempt/Action` cél-hozzárendelésen legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).

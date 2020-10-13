@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
 ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804010"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Nyilvános IP-címelőtag létrehozása, módosítása vagy törlése
@@ -108,6 +108,6 @@ A nyilvános IP-címek előtagjaival kapcsolatos feladatok elvégzéséhez a fi�
 | Microsoft. Network/publicIPPrefixes/delete                         | Nyilvános IP-cím előtagjának törlése                              |
 |Microsoft. Network/publicIPPrefixes/csatlakozás/művelet                     | Nyilvános IP-cím létrehozása előtagból |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [nyilvános IP-előtag](public-ip-address-prefix.md) használatának forgatókönyveit és előnyeit

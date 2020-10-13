@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080012"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978611"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>A platform frissítéseinek kezelése a karbantartási ellenőrzéssel 
 
@@ -28,7 +28,7 @@ A karbantartási ellenőrzéssel a következőket teheti:
 
 ## <a name="limitations"></a>Korlátozások
 
-- A virtuális gépeknek [dedikált gazdagépen](./linux/dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](isolation.md)kell létrehozni.
+- A virtuális gépeknek [dedikált gazdagépen](./dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](isolation.md)kell létrehozni.
 - 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést.
 - A felhasználónak **erőforrás-közreműködői** hozzáféréssel kell rendelkeznie.
 
@@ -42,6 +42,6 @@ A karbantartási konfigurációkat a következő lehetőségek bármelyikével h
 
 Azure Functions minta: [karbantartási frissítések ütemezése karbantartási ellenőrzéssel és Azure Functionsával](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [karbantartás és frissítések](maintenance-and-updates.md).

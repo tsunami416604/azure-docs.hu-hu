@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 917af7ea1789394ddba5d349d631018e2b620216
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33563d12ac31679eb3b658e7625d95581988536d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295685"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977476"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -97,26 +97,26 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. Ha a **10.0.10290.0**-et futtatja, a 6. lépésben nem kell frissítenie az MDS-ügynököt.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![1. eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. A **frissítési fájl elérési útja**mezőben adja meg a frissítés vagy a gyorsjavítás fájlnevét. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítés vagy a gyorsjavítás telepítési fájlját. Kattintson az **Alkalmaz** gombra.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![2. eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. A rendszer figyelmeztetést jelenít meg. Mivel a virtuális tömb egyetlen csomópontos eszköz, a frissítés alkalmazása után az eszköz újraindul, és leállási idő van. Kattintson a pipa ikonra.
    
-   ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![3. eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület ebben az időtartamban nem érhető el.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![4. eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10293** kell lennie az 0,6-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10293** és a Azure Portal jelentések **10.0.10293.0** ugyanazt a verziót jelenti.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-06/update6m.png)
+    ![5. eszköz frissítése](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
 6. Hagyja ki ezt a lépést, ha a StorSimple Virtual Array Update 0,5 (**10.0.10290.0**) alkalmazást futtatta a frissítés alkalmazása előtt. A frissítés megkezdése előtt az 1. lépésben megjegyezte a szoftver verzióját. Ha a 0,5-es frissítést futtatta, az MDS-ügynök már naprakész.
 

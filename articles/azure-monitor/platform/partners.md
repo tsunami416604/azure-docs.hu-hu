@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460091"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
@@ -82,7 +82,7 @@ A CloudMonix monitorozást, automatizálást és önjavító szolgáltatásokat 
 
 Az Azure lehetővé teszi, hogy az ügyfelek áttelepítsenek és modernizálják alkalmazásaikat a felhőben való futtatásra számos partneri megoldással való együttműködésben. Az egyik ilyen partner a Datadoggal, amely a felhasználók számára biztosít megfigyelő és biztonsági eszközöket a hibrid és a többfelhős környezetekben lévő alkalmazásai állapotának és teljesítményének megismeréséhez.  A szükséges integrációk konfigurálásához azonban gyakran szükség van a Azure Portal és a Datadoggal közötti navigálásra.  Ez a folyamat bonyolultságot ad, időt vesz igénybe, és megnehezíti a hibakeresést, ha a dolgok nem működnek.  Ha csökkenteni szeretné a több portál közötti felügyelet terhét, a Microsoft a Datadoggal-szel együttműködve integrált Datadoggal-megoldást hozott létre az Azure Cloud platformon.  Az Azure Marketplace-en keresztül elérhető megoldás zökkenőmentesen használható a Datadoggal felhőalapú monitorozási megoldásának az Azure-ban való használatához.  
 
-Az új Azure-Datadoggal-integráció révén a szervezetek mostantól teljes mértékben leképezhetők örökölt és felhőalapú rendszerüket, valós idejű adatmennyiségeket figyelnek a Felhőbeli átmenet minden fázisában, és biztosítják, hogy az áttelepített alkalmazások megfeleljenek a teljesítményi céloknak. Ez az integráció ötvözi az Azure globális jelenlétét, rugalmasságát, biztonságát és megfelelőségét a Datadoggal naplózási és monitorozási képességeivel, hogy a lehető legjobb megoldást teremtsen a vállalatok számára. Ezen egységes felülettel a következőket teheti: 
+Az új Azure-Datadog integráció révén a szervezetek mostantól teljes mértékben leképezhetők örökölt és felhőalapú rendszerüket, a valós idejű adatmennyiségeket a Felhőbeli átmenet minden fázisában, és biztosítják, hogy az áttelepített alkalmazások megfeleljenek a teljesítményi céloknak. Ez az integráció ötvözi az Azure globális jelenlétét, rugalmasságát, biztonságát és megfelelőségét a Datadoggal naplózási és monitorozási képességeivel, hogy a lehető legjobb megoldást teremtsen a vállalatok számára. Ezen egységes felülettel a következőket teheti: 
 
 - Hozzon létre egy új Datadoggal-szervezetet, és konfigurálja az Azure-erőforrásokat a naplók és mérőszámok Datadoggal való elküldéséhez – egy teljes körűen felügyelt telepítést, amely nem rendelkezik infrastruktúrával az ügyfelek számára a beállítás és működés érdekében  
 - A naplók és a metrikák zökkenőmentes küldése a Datadoggal. A naplózási továbbítási folyamat teljesen automatizált; a diagnosztikai beállításokkal, a Event Hubsokkal és a functions szolgáltatással végzett naplózási folyamat kiépítése helyett mindössze néhány kattintással konfigurálhat mindent.
@@ -301,7 +301,7 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 [Turbonomic bemutatása](https://turbonomic.com/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a Azure Monitor](../overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)

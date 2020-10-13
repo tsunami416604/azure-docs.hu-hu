@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: c80462707d3dccbb8fccff244017053c25ad46e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463582"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950193"
 ---
 # <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>Az IP-tűzfalszabályok beállítása az indexelő hozzáférésének engedélyezéséhez
 
@@ -89,6 +89,6 @@ A tűzfalszabályok 5-10 percet vesznek igénybe, amely után frissülnek az ind
 
 Most, hogy tudja, hogyan kérheti le a két IP-címet az indexekhez való hozzáférés engedélyezéséhez, az alábbi hivatkozásokkal frissítheti az IP-tűzfalszabályok egyes gyakori adatforrások esetében.
 
-- [Azure Storage-tűzfalak konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security)
-- [IP-tűzfal konfigurálása a CosmosDB-hez](https://docs.microsoft.com/azure/cosmos-db/firewall-support)
-- [Az IP-tűzfal konfigurálása az Azure SQL Serverhez](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
+- [Azure Storage-tűzfalak konfigurálása](../storage/common/storage-network-security.md)
+- [IP-tűzfal konfigurálása a CosmosDB-hez](../cosmos-db/firewall-support.md)
+- [Az IP-tűzfal konfigurálása az Azure SQL Serverhez](../azure-sql/database/firewall-configure.md)

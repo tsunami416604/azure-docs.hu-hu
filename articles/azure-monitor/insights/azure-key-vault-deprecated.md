@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445124"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938831"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault elemzési megoldás a Azure Monitor
 
@@ -75,7 +75,7 @@ Az alábbi táblázat az adatgyűjtés módszereit és a Azure Key Vault adatok 
 | Azure |  |  |&#8226; |  |  | érkezéskor |
 
 ## <a name="use-azure-key-vault"></a>Az Azure Key Vault használata
-A [megoldás telepítése](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)után tekintse meg a Key Vault adatait az Azure monitor **áttekintés** oldalának **Key Vault Analytics** csempére kattintva. Nyissa meg ezt a lapot a **Azure monitor** menüjéből, és kattintson a **továbbiak** elemre az **áttekintések** szakaszban. 
+A [megoldás telepítése](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)után tekintse meg a Key Vault adatait az Azure monitor **áttekintés** oldalának **Key Vault Analytics** csempére kattintva. Nyissa meg ezt a lapot a **Azure monitor** menüjéből, és kattintson a **továbbiak** elemre az **áttekintések** szakaszban. 
 
 ![Képernyőkép a Azure Monitor áttekintés oldalon található Key Vault Analytics csempéről, amely a Key Vault műveleti kötetének időbeli alakulását ábrázolja.](media/azure-key-vault/log-analytics-keyvault-tile.png)
 

@@ -4,12 +4,12 @@ description: Megismerheti a felügyeleti csoportokat és azok használatának m�
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91533805"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951876"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik az Azure-beli felügyeleti csoportok?
 
@@ -202,6 +202,6 @@ Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyelet
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
-- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](./create.md)
+- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](./create-management-group-portal.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](./manage.md)
 - Tekintse [meg az erőforrás-hierarchia védelemének](./how-to/protect-resource-hierarchy.md) lehetőségeit.

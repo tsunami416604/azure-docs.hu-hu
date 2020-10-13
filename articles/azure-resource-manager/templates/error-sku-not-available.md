@@ -3,16 +3,16 @@ title: Nem érhető el az SKU-hibák
 description: Ismerteti, hogyan lehet elhárítani az SKU nem elérhető hibáját az erőforrások Azure Resource Manager használatával történő telepítésekor.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 37ad70093cce4cea6689fecbc3b6ccb91db5017b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15df8c5ff45994a03e12731cf3798f7f4c2a295b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333222"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948612"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Nem elérhető termékváltozattal kapcsolatos hibák elhárítása
 
-Ez a cikk a **SkuNotAvailable** -hiba elhárítását ismerteti. Ha nem talál megfelelő SKU-t az adott régióban vagy zónában, vagy egy másik régióban vagy zónában, amely megfelel az Ön üzleti igényeinek, küldjön egy [SKU-kérelmet](https://aka.ms/skurestriction) az Azure támogatási szolgálatának.
+Ez a cikk a **SkuNotAvailable** -hiba elhárítását ismerteti. Ha nem talál megfelelő SKU-t az adott régióban vagy zónában, vagy egy másik régióban vagy zónában, amely megfelel az Ön üzleti igényeinek, küldjön egy [SKU-kérelmet](../../azure-portal/supportability/sku-series-unavailable.md) az Azure támogatási szolgálatának.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -124,4 +124,3 @@ Az elérhető SKU-ket és régiókat a következő formátumban adja vissza:
   ]
 }
 ```
-

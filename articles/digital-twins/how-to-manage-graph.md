@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326541"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949615"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -74,7 +74,7 @@ Akár ugyanazon típusú kapcsolat több példányát is létrehozhatja ugyanazo
 
 ## <a name="list-relationships"></a>Kapcsolatok listázása
 
-A gráfban található adott Twin kapcsolatok listájának eléréséhez használhatja a következőt:
+A diagramon egy adott Twin-ből érkező **kimenő** kapcsolatok listájának eléréséhez használhatja a következőt:
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 A beolvasott kapcsolatok használatával más ikrek is megnyitható a gráfban. Ehhez olvassa el a `target` visszaadott kapcsolat mezőjét, majd használja azonosítóként a következő hívásához: `GetDigitalTwin` . 
 
-### <a name="find-relationships-to-a-digital-twin"></a>Kapcsolatok keresése a digitális Twin szolgáltatásban
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>Bejövő kapcsolatok keresése digitális Twin-re
 
-Az Azure Digital Twins is rendelkezik egy API-val, amely az adott iker összes bejövő kapcsolatát megkeresi. Ez gyakran hasznos a fordított navigáláshoz, illetve a Twin törléséhez.
+Az Azure Digital Twins is rendelkezik egy API-val, amely az adott iker összes **bejövő** kapcsolatát megkeresi. Ez gyakran hasznos a fordított navigáláshoz, illetve a Twin törléséhez.
 
-Az előző kód minta a kimenő kapcsolatok megtalálására koncentrál. A következő példa hasonló, de megkeresi a bejövő kapcsolatokat. A megtalált elemek után is törli őket.
+Az előző kód minta a kimenő kapcsolatok egy Twin-ből való megtalálására koncentrál. A következő példa hasonló strukturált, de a *bejövő* kapcsolatokat is megkeresi a Twin helyett.
 
 Vegye figyelembe, hogy a `IncomingRelationship` hívások nem adják vissza a kapcsolat teljes törzsét.
 
@@ -237,7 +237,7 @@ Gyakorlati használati esetekben a különálló hierarchiák gyakran egy másik
 
 Vegye figyelembe a következő adattáblázatot, amely leírja a létrehozandó Digitális ikrek és kapcsolatok készletét.
 
-| Modellezés    | ID (Azonosító) | Szülő | Kapcsolat neve | Egyéb adatszolgáltatások |
+| Modell    | ID (Azonosító) | Szülő | Kapcsolat neve | Egyéb adatszolgáltatások |
 | --- | --- | --- | --- | --- |
 | padló    | Floor01 | | | … |
 | szoba    | Room10 | Floor01 | contains | … |
@@ -311,7 +311,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)
