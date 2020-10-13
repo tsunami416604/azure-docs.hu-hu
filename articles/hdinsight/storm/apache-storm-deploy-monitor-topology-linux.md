@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085735"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
@@ -44,7 +44,7 @@ A Visual studióhoz készült Data Lake Tools használatával C# vagy hibrid top
 
 1. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe, majd írja be a kifejezést `Storm` . Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább**gombra.
 
-1. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután kattintson a **Létrehozás** elemre.
+1. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután válassza a **Létrehozás** elemet.
 
     ![Az új Project-ablak, a Visual Studio konfigurálása](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -80,7 +80,7 @@ A Visual studióhoz készült Data Lake Tools használatával C# vagy hibrid top
 
 ## <a name="submit-a-topology-programmatically"></a>Topológia beküldése programozott módon
 
-A Nimbus szolgáltatás használatával programozott módon helyezhet üzembe egy topológiát. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology)egy példás Java-alkalmazást biztosít, amely bemutatja, hogyan helyezhet üzembe és indíthat el topológiát a Nimbus szolgáltatáson keresztül.
+A Nimbus szolgáltatás használatával programozott módon helyezhet üzembe egy topológiát. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) egy példás Java-alkalmazást biztosít, amely bemutatja, hogyan helyezhet üzembe és indíthat el topológiát a Nimbus szolgáltatáson keresztül.
 
 ## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Topológia figyelése és kezelése a Visual Studióban
 
@@ -172,7 +172,7 @@ A Storm felhasználói felülete egy webes felületet biztosít a futó topológ
 
 A Storm felhasználói felületének fő lapja a következő információkat tartalmazza:
 
-| Section | Description |
+| Section | Leírás |
 | --- | --- |
 | Fürt összegzése| Alapszintű információk a Storm-fürtről. |
 | Nimbus összegzése | Az alapvető Nimbus-információk listája. |
@@ -188,7 +188,7 @@ A Storm UI főoldala a következő weboldalhoz hasonlóan néz ki:
 
 A **topológia összegzése** szakasz egy hivatkozásának kiválasztásával az alábbi információk jelennek meg a topológiával kapcsolatban:
 
-| Section | Description |
+| Section | Leírás |
 | --- | --- |
 | Topológia összegzése | A topológiával kapcsolatos alapvető információk. |
 | Topológiai műveletek| A topológiához elvégezhető felügyeleti műveletek. Az elérhető műveleteket a szakasz későbbi részében ismertetjük. |
@@ -205,7 +205,7 @@ A Storm-topológia összefoglalás lapja ehhez a weboldalhoz hasonlóan néz ki:
 
 A **topológiai műveletek** szakaszban a következő gombokra kattintva végezheti el a műveletet:
 
-| Gomb | Description |
+| Gomb | Leírás |
 | --- | --- |
 | Aktiválás | Folytatja a deaktivált topológia feldolgozását. |
 | Inaktiválás | Szünetelteti a futó topológiát. |
@@ -219,7 +219,7 @@ A **topológiai műveletek** szakaszban a következő gombokra kattintva végezh
 
 **A kiöntő vagy a** **boltokból** származó kiöntő kiválasztásakor az alábbi információk jelennek meg a kijelölt elemről:
 
-| Section | Description |
+| Section | Leírás |
 | --- | --- |
 | Összetevő összegzése | Alapszintű információk a kiöntő vagy a boltról. |
 | Összetevő-műveletek | **Hibakeresés** és **Leállítás** gombokkal. |
@@ -249,7 +249,7 @@ A Linux-alapú HDInsight-fürtökön lévő REST API alap URI-ja az URL-címen �
 
 A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megkereshető:
 
-| FQDN-felderítési módszer | Description |
+| FQDN-felderítési módszer | Leírás |
 | --- | --- |
 | SSH-munkamenet | Használja a parancsot `headnode -f` egy SSH-munkamenetből a fürtre. |
 | Ambari web | A Ambari-fürt weblapján ( `https://CLUSTERNAME.azurehdinsight.net` ) válassza ki a **szolgáltatások** elemet az oldal tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
@@ -262,7 +262,7 @@ A REST APIra irányuló kérelmeknek *alapszintű hitelesítést*kell használni
 > [!NOTE]  
 > Mivel az egyszerű hitelesítés titkosítatlan szöveggel van ellátva, *mindig* a HTTPS protokollt használja a fürttel folytatott kommunikáció biztonságossá tételéhez.
 
-### <a name="return-values"></a>Visszaadott értékek
+### <a name="return-values"></a>Visszatérési értékek
 
 A REST API által visszaadott adatok csak a fürtön belül használhatók. A [Apache ZooKeeper](https://zookeeper.apache.org/) -kiszolgálók által visszaadott teljes tartománynév (FQDN) például nem érhető el az internetről.
 

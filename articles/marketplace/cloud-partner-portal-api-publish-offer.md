@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272045"
 ---
 # <a name="publish-an-offer"></a>Ajánlat közzététele
@@ -28,7 +28,7 @@ Elindítja a közzétételi folyamatot a megadott ajánlathoz. Ez a hívás hoss
 
 |  **Név**      |    **Leírás**                               |  **Adattípus** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Közzétevő azonosítója, például:`contoso`      |   Sztring       |
+|  publisherId   | Közzétevő azonosítója, például: `contoso`      |   Sztring       |
 |  offerId       | Ajánlat azonosítója                                 |   Sztring       |
 |  api-verzió   | Az API legújabb verziója                        |   Dátum         |
 |  |  |
@@ -85,8 +85,8 @@ Elindítja a közzétételi folyamatot a megadott ajánlathoz. Ez a hívás hoss
 
 | **Kód** |  **Leírás**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted`– A kérés elfogadása sikeresen megtörtént. A válasz olyan helyet tartalmaz, amely az elindított művelet nyomon követésére használható. |
-| 400   | `Bad/Malformed request`– A hiba-válasz törzse további információkat is biztosíthat.                                                               |
-| 422   | `Un-processable entity`– Azt jelzi, hogy a közzétenni kívánt entitás ellenőrzése sikertelen volt.                                                        |
-| 404   | `Not found`– Az ügyfél által megadott entitás nem létezik.                                                                              |
+| 202   | `Accepted` – A kérés elfogadása sikeresen megtörtént. A válasz olyan helyet tartalmaz, amely az elindított művelet nyomon követésére használható. |
+| 400   | `Bad/Malformed request` – A hiba-válasz törzse további információkat is biztosíthat.                                                               |
+| 422   | `Un-processable entity` – Azt jelzi, hogy a közzétenni kívánt entitás ellenőrzése sikertelen volt.                                                        |
+| 404   | `Not found` – Az ügyfél által megadott entitás nem létezik.                                                                              |
 |  |  |

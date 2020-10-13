@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259300"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric és Azure API Management – áttekintés
@@ -79,8 +79,8 @@ Ebben a példában egy új állapot nélküli szolgáltatási példány jön lé
 
   Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismertek, mert a szolgáltatások felhasználói vagy rendszergazdai bevitelre válaszul jönnek létre, ezért nem lehet a APIM-házirendekben vagy útválasztási szabályokban rögzített módon kódolni. Ehelyett annak a szolgáltatásnak a neve jelenik meg, amelyre a kérést küldeni kívánja a háttér-házirend definíciójában az `name` URL-kérelem elérési útján megadott érték alapján. Például:
 
-  - A `/api/users/foo` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/foo`
-  - A `/api/users/bar` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/bar`
+  - A `/api/users/foo` szolgáltatás példányára irányuló kérelem átirányítva `fabric:/app/users/foo`
+  - A `/api/users/bar` szolgáltatás példányára irányuló kérelem átirányítva `fabric:/app/users/bar`
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateless]
 
@@ -98,14 +98,14 @@ Ebben a példában egy új állapot-nyilvántartó szolgáltatási példány jö
 
   Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismertek, mert a szolgáltatások felhasználói vagy rendszergazdai bevitelre válaszul jönnek létre, ezért nem lehet a APIM-házirendekben vagy útválasztási szabályokban rögzített módon kódolni. Ehelyett annak a szolgáltatásnak a neve jelenik meg, amelyre a kérést küldeni kívánja a háttér-házirend definíciójában az `name` URL-kérelem elérési útjának megadott érték alapján. Például:
 
-  - A `/api/users/foo` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/foo`
-  - A `/api/users/bar` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/bar`
+  - A `/api/users/foo` szolgáltatás példányára irányuló kérelem átirányítva `fabric:/app/users/foo`
+  - A `/api/users/bar` szolgáltatás példányára irányuló kérelem átirányítva `fabric:/app/users/bar`
 
 A Int64 partíciós séma két partícióval és egy, a rendszerre kiterjedő kulcstároló használatával is particionálva `Int64.MinValue` van `Int64.MaxValue` . A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot úgy, hogy az `id` URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse az [oktatóanyagot](service-fabric-tutorial-deploy-api-management.md) , és állítsa be az első Service Fabric-fürtöt API Management és flow-kérelmekkel a szolgáltatásokra API Managementon keresztül.
 

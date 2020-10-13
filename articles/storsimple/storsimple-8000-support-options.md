@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070332"
 ---
 # <a name="storsimple-solution-support"></a>A StorSimple megoldás támogatása
@@ -85,7 +85,7 @@ A számlázási és előfizetés-kezeléssel kapcsolatos problémák támogatás
 | B        | Mérsékelt üzleti hatás: <ul><br> <li> Az ügyfél üzleti tevékenysége a szolgáltatások mérsékelt elvesztése vagy romlása, de a munka ésszerűen tovább csökkenthető. | Kezdeti Válasz: <sup>1</sup><ul><br> <li> 2 óra vagy kevesebb a prémium szinthez. <br> <li> 4 óra vagy kevesebb a standard szintű használatra.                                      | <ul><li> A megfelelő erőforrások kiosztása a folyamatos munkavégzés időtartama alatt a munkaidőn kívül, kivéve, ha az ügyfél a nonstop letiltását kéri. <br> <li> Az eset tulajdonosának pontos kapcsolattartási adatai. |
 | C        | Üzleti tevékenység minimális hatása: <ul><br> <li> Az ügyfél üzleti tevékenysége jelentősen működik a kisebb vagy a szolgáltatások akadályozásával.                                 | Kezdeti Válasz: <sup>1</sup><ul> <br> <li> 4 óra vagy kevesebb a prémium szinthez. <br> <li> 8 óra vagy kevesebb a standard szintű használatra.                                      | <ul><li>Az eset tulajdonosának pontos kapcsolattartási adatai                                                                                                                                    |
  
-<sup>1</sup> a Microsoft visszaminősítheti a súlyossági szintet, ha az ügyfél nem tud elegendő erőforrást vagy választ biztosítani ahhoz, hogy a Microsoft folytassa a probléma megoldására tett erőfeszítésekkel.
+<sup>1 </sup> a Microsoft visszaminősítheti a súlyossági szintet, ha az ügyfél nem tud elegendő erőforrást vagy választ biztosítani ahhoz, hogy a Microsoft folytassa a probléma megoldására tett erőfeszítésekkel.
 
 <sup>2</sup> a várt válaszidő az angol nonstop-támogatáson alapul, az a súlyossági szint és a helyi munkaidő a B és C súlyossága esetén, valamint a helyi munkaidő-támogatás a fennmaradó helyi nyelveken: Japán, tajvani, hagyományos kínai és koreai.
 
@@ -111,7 +111,7 @@ A StorSimple 8000 Series tárolási tömbök támogatása a StorSimple-tömb meg
 
 
 
-*<text>* A prémium szintű lefedettség minden helyen nem érhető el. Vegye fel a kapcsolatot a Microsofttal a SSSupOps \@ Microsoft.com földrajzi lefedettséggel, mielőtt StorSimple a prémium szintű támogatást.*
+*<text> * A prémium szintű lefedettség minden helyen nem érhető el. Vegye fel a kapcsolatot a Microsofttal a SSSupOps \@ Microsoft.com földrajzi lefedettséggel, mielőtt StorSimple a prémium szintű támogatást.*
 
 ***A StorSimple berendezést olyan régióba kell telepíteni, ahol a Premier szintű támogatás az ügyfélre vonatkozik, hogy jogosult legyen a prémium szintű StorSimple támogatásának ingyenes frissítésére.*
 

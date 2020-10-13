@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400466"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
@@ -1093,13 +1093,13 @@ Ismerje meg a Microsoft antimalware az Azure Cloud Services és Virtual Machines
 
 **Útmutató**: a következő PowerShell-parancsokkal biztosíthatja a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok rendszeres automatikus biztonsági mentését:
 
-- Backup – AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- Backup – AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- Backup – AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- Backup – AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 Szükség esetén a Key Vault biztonsági másolatait Azure Backupon belül is tárolhatja.
 
@@ -1123,13 +1123,13 @@ A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup
 
 **Útmutató**: biztonsági másolatokat készíthet a Key Vault tanúsítványokról, kulcsokról, felügyelt tárolási fiókokról és titkokról a következő PowerShell-parancsokkal:
 
-- Backup – AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- Backup – AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- Backup – AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- Backup – AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 Szükség esetén a Key Vault biztonsági másolatait Azure Backupon belül is tárolhatja.
 
@@ -1153,13 +1153,13 @@ A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup
 
 **Útmutató**: a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkos kódok adatvisszaállításának rendszeres időközönkénti végrehajtása a következő PowerShell-parancsokkal:
 
-- Visszaállítás – AzKeyVaultCertificate
+- Restore-AzKeyVaultCertificate
 
-- Visszaállítás – AzKeyVaultKey
+- Restore-AzKeyVaultKey
 
-- Visszaállítás – AzKeyVaultManagedStorageAccount
+- Restore-AzKeyVaultManagedStorageAccount
 
-- Visszaállítás – AzKeyVaultSecret
+- Restore-AzKeyVaultSecret
 
 Key Vault tanúsítványok visszaállítása:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 

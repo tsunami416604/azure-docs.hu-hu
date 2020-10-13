@@ -12,10 +12,10 @@ ms.date: 11/04/2019
 ms.author: weixu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88918655"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Valós idejű beszélgetés átirata (előzetes verzió)
@@ -216,7 +216,7 @@ public class MyConversationTranscriber
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Aszinkron beszélgetés átírása](how-to-async-conversation-transcription.md)

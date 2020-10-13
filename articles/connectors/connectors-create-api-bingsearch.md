@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284064"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Találatok keresése a Bing Searchban Azure Logic Apps használatával
@@ -124,7 +124,7 @@ A műveletek listából válassza ki a kívánt műveletet.
       ![Függvény kiválasztása](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. A mezőlista listából válassza ki a **kategóriát**, amely egy paraméterre konvertál. 
-   Adjon hozzá egy vesszőt az első paraméter után, és a vessző után adja hozzá ezt a szót:`'tech'` 
+   Adjon hozzá egy vesszőt az első paraméter után, és a vessző után adja hozzá ezt a szót: `'tech'` 
 
       ![Válasszon ki egy mezőt](./media/connectors-create-api-bing-search/expression-select-field.png)
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761644"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>IBM Informix-adatbázis-erőforrások kezelése Azure Logic Apps használatával
@@ -60,7 +60,7 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
 
    | Művelet | Leírás | Tulajdonságok és leírások |
    |--------|-------------|-----------------------------|
-   | **Táblák beolvasása** | Adatbázis-táblák listázása Informix CALL utasítás futtatásával. | Nincsenek |
+   | **Táblák beolvasása** | Adatbázis-táblák listázása Informix CALL utasítás futtatásával. | Nincs |
    | **Sorok beolvasása** | A megadott táblában lévő összes sor beolvasása egy Informix- `SELECT *` utasítás futtatásával. | **Táblázat neve**: a kívánt Informix-tábla neve <p><p>Ha további tulajdonságokat szeretne hozzáadni ehhez a művelethez, válassza ki őket az **új paraméter hozzáadása** listából. További információ: az [összekötő hivatkozási témája](/connectors/informix/). |
    | **Sor beolvasása** | Sor beolvasása a megadott táblából egy Informix- `SELECT WHERE` utasítás futtatásával. | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a sor egyedi azonosítója, például `9999` |
    | **Sor beszúrása** | Adjon hozzá egy sort a megadott Informix-táblához egy Informix-utasítás futtatásával `INSERT` . | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **elem**: a hozzáadandó értékekkel rendelkező sor |

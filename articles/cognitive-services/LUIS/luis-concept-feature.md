@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372011"
 ---
 # <a name="machine-learning-features"></a>Gépi tanulási funkciók
@@ -226,7 +226,7 @@ Miután létrehozta a gépi tanulási entitást, hozzá kell adnia egy példa ho
 
 A Ticket foglalási példához címkézze fel a példában szereplő hosszúságú kimondott szöveg az `TicketBooking` entitással és a szövegben található alentitásokkal.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Címke – példa hosszúságú kimondott szöveg":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking-entitás sémája":::
 
 ### <a name="example-pizza-ordering-app"></a>Példa: Pizza rendezési alkalmazás
 
@@ -234,13 +234,13 @@ Egy másik Példaként vegyünk egy alkalmazást egy pizzéria-étterem számár
 
 Ebben a példában a gépi tanulási entitás a beágyazott alentitások, a kifejezések listája, az előre elkészített entitások és az egyéni entitások esetében összetettebb.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza Order entitás sémája":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking-entitás sémája":::
 
 Ez a példa az alentitások szintjén és az alentitások szintjének alárendelt funkciókat használja. Milyen szinten kapja meg, hogy milyen típusú kifejezéseket vagy modelleket tartalmaz a funkció az entitások kialakításának fontos részeként.
 
 Habár az alentitások számos olyan kifejezést tartalmazhatnak, amelyek segítenek az entitás észlelésében, az egyes alentitások csak egy modellel rendelkeznek szolgáltatásként. Ebben a [pizza-alkalmazásban](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)ezek a modellek elsősorban a listában szerepelnek.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Pizza Order szándék a címkével ellátott példa hosszúságú kimondott szöveg":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking-entitás sémája":::
 
 A helyesen címkézett példa hosszúságú kimondott szöveg úgy jelenik meg, hogy megmutassa az entitások beágyazásának módját. 
 

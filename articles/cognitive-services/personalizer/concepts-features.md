@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132772"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
@@ -131,7 +131,7 @@ Lehetőség van a szolgáltatáskészletek javítására úgy, hogy azok nagyobb
 
 Például egy időbélyeg, amely a másodikra mutat, nagyon ritka funkció. Az idő a "Morning", a "délig", a "délutáni", illetve a "délelőtt" értékre való besorolásával sűrűbb (hatékony) lehet.
 
-A tartózkodási hely adatai általában a szélesebb besorolások létrehozásának előnyeit is kihasználhatják. Például egy szélességi hosszúságú koordináta, például a lat: 47,67402 ° N, Long: 122,12154 ° W túl pontos, és a modellre kényszeríti a szélességi és a hosszúsági körök különböző dimenzióként való megismerését. Ha a tartózkodási hely adatai alapján próbál személyre szabni, a nagyobb szektorokban segít a tartózkodási hely adatainak csoportosításában. Ennek egyik egyszerű módja, ha kiválaszt egy megfelelő kerekítési pontosságot a lat-hosszú számok számára, és a szélességi és a hosszúsági fokot a "területek" értékre kombinálva egyetlen sztringbe helyezi őket. Tegyük fel például, hogy egy jó módszer a 47,67402 ° N, a Long: 122,12154 ° s a régiókban, körülbelül néhány kilométer széles a "location": "34.3, 12,1".
+A tartózkodási hely adatai általában a szélesebb besorolások létrehozásának előnyeit is kihasználhatják. Például egy olyan Latitude-Longitude koordináta, mint például a lat: 47,67402 ° N, Long: 122,12154 ° W túl pontos, és a modell kényszeríti a szélesség és a hosszúság megtanulására különböző dimenzióként. Ha a tartózkodási hely adatai alapján próbál személyre szabni, a nagyobb szektorokban segít a tartózkodási hely adatainak csoportosításában. Ennek egyik egyszerű módja, ha kiválasztja a Lat-Long számok megfelelő kerekítési pontosságát, és a szélesség és hosszúság elemet a "területek" értékre kombinálva egyetlen sztringbe helyezi őket. Tegyük fel például, hogy egy jó módszer a 47,67402 ° N, a Long: 122,12154 ° s a régiókban, körülbelül néhány kilométer széles a "location": "34.3, 12,1".
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>A szolgáltatási készletek kibontása a kikövetkeztetett információkkal
@@ -179,7 +179,7 @@ A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyr
 
 Néhány példa:
 
-|Cél|Műveletek|
+|Cél|Művelet|
 |--|--|
 |Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
 |Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|

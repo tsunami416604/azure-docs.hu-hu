@@ -4,10 +4,10 @@ description: Service Fabric állapot-nyilvántartó szolgáltatások megbízhat�
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245126"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A megbízható gyűjtemények bemutatása az Azure Service Fabric állapot-nyilvántartó szolgáltatásokban
@@ -35,7 +35,7 @@ A gyengébb konzisztencia elérése érdekében az alkalmazások visszaigazoljá
 A megbízható gyűjtemények API-k az egyidejű gyűjtemények API-k (a **System. Collections. párhuzamos** névtér) fejlődése:
 
 * Aszinkron: feladat visszaadása, mivel a párhuzamos gyűjteményektől eltérően a rendszer replikálja és megőrzi a műveleteket.
-* Nincsenek paraméterek: `ConditionalValue<T>` az a `bool` és a értéket a paraméterek helyett egy érték visszaadására használja. `ConditionalValue<T>`hasonló, `Nullable<T>` de nem igényel T-t struct-ként.
+* Nincsenek paraméterek: `ConditionalValue<T>` az a `bool` és a értéket a paraméterek helyett egy érték visszaadására használja. `ConditionalValue<T>` hasonló, `Nullable<T>` de nem igényel T-t struct-ként.
 * Tranzakciók: tranzakció-objektum használatával lehetővé teszi, hogy a felhasználó több megbízható gyűjteményben csoportosítsa a műveleteket egy tranzakcióban.
 
 Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjteményt tartalmaz:
@@ -44,7 +44,7 @@ Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjtemén
 * [Megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): a replikált, tranzakciós és aszinkron, szigorú első-be, első kimenő (FIFO) várólistát jelöli. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
 * [Megbízható párhuzamos üzenetsor](service-fabric-reliable-services-reliable-concurrent-queue.md): a nagy átviteli sebesség érdekében a rendszer replikált, tranzakciós és aszinkron módon kezeli a legjobb rendezési várakozási sort. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megbízható gyűjteményekre vonatkozó irányelvek & javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)

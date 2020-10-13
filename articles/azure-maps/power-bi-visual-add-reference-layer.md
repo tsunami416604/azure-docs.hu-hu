@@ -10,13 +10,13 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: eb6c9fed42f263ca6cfaa1ea975d31cb8f4a75cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261944"
 ---
-# <a name="add-a-reference-layer"></a>Hivatkozási réteg hozzáadása
+# <a name="add-a-reference-layer"></a>Referenciaréteg hozzáadása
 
 A hivatkozási réteg funkció lehetővé teszi, hogy a másodlagos térbeli adatkészletet feltöltse a vizualizációba, és betakarja a térképen a további kontextus biztosításához. Ezt az adatkészletet Power BI üzemelteti, és egy [GeoJSON-fájlnak](https://wikipedia.org/wiki/GeoJSON) kell lennie, `.json` vagy `.geojson` fájl kiterjesztéssel kell rendelkeznie.
 
@@ -56,7 +56,7 @@ A következő példa egy GeoJSON pont funkcióra mutat, amely a megjelenített s
     }
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További környezet hozzáadása a térképhez:
 

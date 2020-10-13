@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/08/2020
 ms.openlocfilehash: ef840985053289858f5145bafa4e51ad84734b66
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111439"
 ---
 # <a name="consulting-service-prerequisites"></a>Tanácsadási szolgáltatás előfeltételei
@@ -20,7 +20,7 @@ A tanácsadási szolgáltatás ajánlatával kapcsolatos további információk�
 
 | Tanácsadási szolgáltatás témakör | A partner Centerben kiválasztható elsődleges termék | Követelmény |
 |---------|---------|---------|
-| Azure-termékek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | Az ajánlatnak a következő teljes körű kompetenciák közül legalább egyet fel kell sorolnia: <ul><li>Alkalmazásfejlesztés</li><li>Alkalmazásintegráció</li><li>Alkalmazások életciklusának kezelése</li><li>Felhőalapú platform</li><li>Adatelemzés</li><li>Adatközpont</li><li>Adatplatform</li><li>DevOps|
+| Azure-termékek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | Az ajánlatnak a következő teljes körű kompetenciák közül legalább egyet fel kell sorolnia: <ul><li>Alkalmazásfejlesztés</li><li>Alkalmazásintegráció</li><li>Alkalmazások életciklus-kezelése</li><li>Felhőalapú platform</li><li>Adatelemzés</li><li>Adatközpont</li><li>Adatplatform</li><li>DevOps|
 | Dynamics 365 Sales<br>Dynamics 365 marketing<br>Dynamics 365 Customer szolgáltatás<br>Dynamics 365 mező szolgáltatás<br>Dynamics 365 emberi erőforrások | Ügyfél-engagement alkalmazások | Az ügyfél-bevonási lehetőséghez tartozó [felhőalapú Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) , vagy a szolgáltatáshoz kapcsolódó elsődleges termékre vonatkozó közös értékesítési ajánlattal rendelkező, arany vagy ezüst minősítéssel rendelkezőnek kell lennie. |
 | Dynamics 365 – Pénzügy<br>Dynamics 365 ellátási lánc kezelése<br>Dynamics 365 kereskedelmi<br>Dynamics 365 emberi erőforrások<br>Dynamics 365 Project szolgáltatás automatizálása | Pénzügyi és üzemeltetési alkalmazások | A [felhőalapú Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) az egyesített műveletek lehetőséghez tartozó, arany vagy ezüst minősítéssel rendelkezőnek kell lennie, vagy közös értékesítési ajánlattal kell rendelkeznie a szolgáltatáshoz kapcsolódó elsődleges termékhez. |
 | Dynamics 365 Customer Insights | Dynamics 365 Customer Insights | A [Dynamics Customer Insights 365](https://dynamics.microsoft.com/ai/customer-insights/) -es verziójának legalább egy sikeres üzemi megvalósítását legalább öt mértékkel és öt szegmenssel kell rendelkeznie, vagy a szolgáltatáshoz kapcsolódó elsődleges termékre vonatkozó közös értékesítési ajánlattal kell rendelkeznie. |

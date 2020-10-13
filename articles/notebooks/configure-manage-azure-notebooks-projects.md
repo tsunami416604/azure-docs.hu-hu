@@ -5,13 +5,13 @@ ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852803"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projektek kezelése és konfigurálása Azure Notebooks előzetes verzióban
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Projektek kezelése és konfigurálása Azure Notebooks előzetes verzióban
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -30,7 +30,7 @@ A Azure Notebooks a projekt irányítópultja lehetővé teszi a fájlok kezelé
 
 Azure Notebooks elindítja a mögöttes virtuális gépet, amikor egy jegyzetfüzetet vagy más fájlt futtat. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgálót bármikor leállíthatja a **leállítási** parancs használatával (billentyűparancs: h).
 
-## <a name="compute-tier"></a>Számítási szintek
+## <a name="compute-tier"></a>Számítási szint
 
 Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak, amely legfeljebb 4 GB memóriával és 1 GB-nyi adattal használható a visszaélések megelőzése érdekében. Megkerülheti ezeket a korlátozásokat, és növelheti a számítási teljesítményt az Azure-előfizetésben üzembe helyezett másik virtuális géppel. További információ: az [Adatelemzési Virtual Machines használata](use-data-science-virtual-machine.md).
 
@@ -40,7 +40,7 @@ A projekt irányítópultján válassza a **projekt beállításai**lehetősége
 
 | Beállítás | Leírás |
 | --- | --- |
-| Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: ""Helló világ!"alkalmazás a Pythonban". |
+| Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: "„Helló világ!” alkalmazás a Pythonban". |
 | Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik. Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
 | Nyilvános projekt | Ha be van állítva, lehetővé teszi, hogy bárki hozzáférjen a projekthez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 | Klónozások elrejtése | Ha be van állítva, a többi felhasználó nem láthatja a projekthez készült klónok listáját. A klónok elrejtése olyan projektek esetében lehet hasznos, amelyek sok felhasználóval vannak megosztva, akik nem ugyanahhoz a szervezethez tartoznak, például egy osztály tanításához notebook használata esetén. |
@@ -84,7 +84,7 @@ A projekthez tartozó fájllista minden eleme parancsokat biztosít a jobb gombb
 | Letöltés | n | Letölt egy zip-fájlt, amely a fájlt vagy egy mappa tartalmát tartalmazza. |
 | Átnevezés | a | A fájl vagy mappa új nevének megadását kéri. |
 | Törlés | x | Megerősítést kér, majd véglegesen eltávolítja a fájlt a projektből. A törlések nem vonhatók vissza. |
-| Áthelyezés | m | Egy fájlt egy másik mappába helyez át ugyanabban a projektben. |
+| Áthelyezés | f | Egy fájlt egy másik mappába helyez át ugyanabban a projektben. |
 
 #### <a name="preview"></a>Előnézet
 
@@ -190,4 +190,4 @@ A parancsot egy Python-jegyzetfüzetben található kód cellából is használh
 ## <a name="next-steps"></a>Következő lépések
 
 - [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)
-- [Felhőbeli adatok elérése egy jegyzetfüzetben](access-data-resources-jupyter-notebooks.md)
+- [Felhőbeli adat elérése jegyzetfüzetben](access-data-resources-jupyter-notebooks.md)

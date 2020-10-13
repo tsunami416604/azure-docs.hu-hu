@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
 ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499613"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a>Tartományok közötti házirendek
+## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a> Tartományok közötti házirendek
 
 - Tartományok [közötti hívások engedélyezése](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – elérhetővé teszi az API-t az Adobe Flash és a Microsoft Silverlight böngésző alapú ügyfeleitől.
 - [CORS](api-management-cross-domain-policies.md#CORS) – a több eredetű erőforrás-megosztási (CORS) támogatás egy művelethez vagy API-hoz, amely lehetővé teszi a tartományok közötti hívásokat a böngészőalapú ügyfelektől.
 - [Jsnop támogatással](api-management-cross-domain-policies.md#JSONP) – egy művelet vagy API számára lehetővé teszi a JSON-t a kitöltési (jsnop támogatással) támogatással, hogy engedélyezze a tartományok közötti hívásokat a JavaScript böngésző alapú ügyfelektől.
 
-## <a name="allow-cross-domain-calls"></a><a name="AllowCrossDomainCalls"></a>Tartományok közötti hívások engedélyezése
+## <a name="allow-cross-domain-calls"></a><a name="AllowCrossDomainCalls"></a> Tartományok közötti hívások engedélyezése
 A `cross-domain` szabályzat segítségével elérhetővé teheti az API-t az Adobe Flash és a Microsoft Silverlight böngésző alapú ügyfeleitől.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -63,7 +63,7 @@ Ez a szabályzat a következő házirend- [részekben](./api-management-howto-po
 - **Házirend fejezetei:** bejövő
 - **Házirend-hatókörök:** az összes hatókör
 
-## <a name="cors"></a><a name="CORS"></a>CORS
+## <a name="cors"></a><a name="CORS"></a> CORS
 A `cors` házirend egy művelethez vagy API-hoz ad hozzá több eredetű erőforrás-megosztási (CORS) támogatást, amely lehetővé teszi a tartományok közötti hívásokat a böngészőalapú ügyfelektől.
 
 A CORS lehetővé teszi, hogy a böngésző és a kiszolgáló interakcióba lépjen, és meghatározza, hogy engedélyezi-e a különböző eltérő eredetű kérelmeket (például az XMLHttpRequest-hívásokat weblapokon a JavaScriptből más tartományokra). Ez nagyobb rugalmasságot tesz lehetővé, mint az azonos eredetű kérések engedélyezése, de biztonságosabb, mint az összes eltérő eredetű kérelem.
@@ -126,14 +126,14 @@ Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelme
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|CORS|Gyökérelem.|Igen|n.a.|
-|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins`tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Igen|n.a.|
+|CORS|Gyökérelem.|Igen|N/A|
+|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins` tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Igen|N/A|
 |forrás (origin)|Az érték lehet az `*` összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Igen|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
 |engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. `method`A támogatott http-műveleteket megadó elemeket tartalmazza. Az érték az `*` összes metódust jelzi.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
-|method|HTTP-műveletet ad meg.|`method`Ha a szakasz jelen van, legalább egy elem megadása kötelező `allowed-methods` .|n.a.|
-|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|Nem|n.a.|
+|method|HTTP-műveletet ad meg.|`method`Ha a szakasz jelen van, legalább egy elem megadása kötelező `allowed-methods` .|N/A|
+|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|Nem|N/A|
 |fejlécek közzététele|Ez az elem olyan elemeket tartalmaz, `header` amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|Nem|N.A.|
-|fejléc|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` Ha a szakasz jelen van.|n.a.|
+|fejléc|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` Ha a szakasz jelen van.|N/A|
 
 ### <a name="attributes"></a>Attribútumok
 
@@ -148,7 +148,7 @@ Ez a szabályzat a következő házirend- [részekben](./api-management-howto-po
 - **Házirend fejezetei:** bejövő
 - **Házirend-hatókörök:** az összes hatókör
 
-## <a name="jsonp"></a><a name="JSONP"></a>JSNOP támogatással
+## <a name="jsonp"></a><a name="JSONP"></a> JSNOP támogatással
 A `jsonp` szabályzat egy művelet vagy egy API számára lehetővé teszi a JSON-t a kitöltő (jsnop támogatással) támogatással, hogy engedélyezze a tartományok közötti hívásokat a JavaScript böngésző alapú ügyfelektől. A JSNOP támogatással egy JavaScript-programokban használt metódus, amely egy másik tartományban lévő kiszolgálótól kér le adatait. A JSNOP támogatással megkerüli a legtöbb webböngésző által kényszerített korlátozásokat, ahol a weblapokhoz való hozzáférésnek ugyanabban a tartományban kell lennie.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -165,7 +165,7 @@ A `jsonp` szabályzat egy művelet vagy egy API számára lehetővé teszi a JSO
 
 Ha a metódust a visszahívási paraméter nélkül hívja meg? CB = XXX – egyszerű JSON-t ad vissza (függvényhívás burkolója nélkül).
 
-Ha hozzáadja a visszahívási paramétert `?cb=XXX` , a visszaadja a jsnop támogatással eredményét, és becsomagolja az eredeti JSON-eredményeket a visszahívási függvény köré, például:`XYZ('<json result goes here>');`
+Ha hozzáadja a visszahívási paramétert `?cb=XXX` , a visszaadja a jsnop támogatással eredményét, és becsomagolja az eredeti JSON-eredményeket a visszahívási függvény köré, például: `XYZ('<json result goes here>');`
 
 ### <a name="elements"></a>Elemek
 
@@ -177,7 +177,7 @@ Ha hozzáadja a visszahívási paramétert `?cb=XXX` , a visszaadja a jsnop tám
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Igen|n.a.|
+|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Igen|N/A|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -185,7 +185,7 @@ Ez a szabályzat a következő házirend- [részekben](./api-management-howto-po
 - **Házirend fejezetei:** kimenő
 - **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a házirendek használatáról:
 

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078147"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató a munkafolyamat-definíciós nyelvhez Azure Logic Apps
@@ -39,12 +39,12 @@ A munkafolyamat-definíciók magas szintű szerkezete:
 |-----------|----------|-------------|
 | `definition` | Igen | A munkafolyamat-definíció kezdő eleme |
 | `$schema` | Csak akkor, ha külsőleg hivatkozik egy munkafolyamat-definícióra | A munkafolyamat-definíció nyelvi verzióját leíró JSON-sémafájl helye, amelyet itt talál: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| `actions` | No | A munkafolyamat-futtatókörnyezetben végrehajtandó egy vagy több művelet definíciói. További információ: [triggerek és műveletek](#triggers-actions). <p><p>Maximális műveletek: 250 |
-| `contentVersion` | No | A munkafolyamat-definíció verziószáma, amely alapértelmezés szerint "1.0.0.0". A munkafolyamat telepítésekor a megfelelő definíció azonosításához és megerősítéséhez adja meg a használni kívánt értéket. |
-| `outputs` | No | Egy munkafolyamat-futtatásból visszaadott kimenetek definíciói. További információt a [kimenetek](#outputs)című témakörben talál. <p><p>Maximális kimenetek: 10 |
-| `parameters` | No | Egy vagy több olyan paraméter definíciója, amely átadja a logikai alkalmazás futtatókörnyezetében használni kívánt értékeket. További információ: [Paraméterek](#parameters). <p><p>Maximális paraméterek: 50 |
-| `staticResults` | No | Egy vagy több művelet által visszaadott egy vagy több statikus eredmény definíciói, ha a statikus eredmények engedélyezve vannak ezeken a műveleteken. Az egyes műveletek definíciójában az `runtimeConfiguration.staticResult.name` attribútum a megfelelő definícióra hivatkozik belül `staticResults` . További információ: [statikus eredmények](#static-results). |
-| `triggers` | No | Egy vagy több, a munkafolyamatot létrehozó eseményindító definíciói. Több trigger is megadható, de csak a munkafolyamat-definíciós nyelvvel, nem pedig vizuálisan a Logic Apps Designer használatával. További információ: [triggerek és műveletek](#triggers-actions). <p><p>Eseményindítók maximális száma: 10 |
+| `actions` | Nem | A munkafolyamat-futtatókörnyezetben végrehajtandó egy vagy több művelet definíciói. További információ: [triggerek és műveletek](#triggers-actions). <p><p>Maximális műveletek: 250 |
+| `contentVersion` | Nem | A munkafolyamat-definíció verziószáma, amely alapértelmezés szerint "1.0.0.0". A munkafolyamat telepítésekor a megfelelő definíció azonosításához és megerősítéséhez adja meg a használni kívánt értéket. |
+| `outputs` | Nem | Egy munkafolyamat-futtatásból visszaadott kimenetek definíciói. További információt a [kimenetek](#outputs)című témakörben talál. <p><p>Maximális kimenetek: 10 |
+| `parameters` | Nem | Egy vagy több olyan paraméter definíciója, amely átadja a logikai alkalmazás futtatókörnyezetében használni kívánt értékeket. További információ: [Paraméterek](#parameters). <p><p>Maximális paraméterek: 50 |
+| `staticResults` | Nem | Egy vagy több művelet által visszaadott egy vagy több statikus eredmény definíciói, ha a statikus eredmények engedélyezve vannak ezeken a műveleteken. Az egyes műveletek definíciójában az `runtimeConfiguration.staticResult.name` attribútum a megfelelő definícióra hivatkozik belül `staticResults` . További információ: [statikus eredmények](#static-results). |
+| `triggers` | Nem | Egy vagy több, a munkafolyamatot létrehozó eseményindító definíciói. Több trigger is megadható, de csak a munkafolyamat-definíciós nyelvvel, nem pedig vizuálisan a Logic Apps Designer használatával. További információ: [triggerek és műveletek](#triggers-actions). <p><p>Eseményindítók maximális száma: 10 |
 ||||
 
 <a name="triggers-actions"></a>
@@ -74,13 +74,13 @@ A paraméterek definíciójának általános szerkezete:
 },
 ```
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*paraméter – név*> | Yes | Sztring | A definiálni kívánt paraméter neve |
-| <*paraméter típusa*> | Yes | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja a `securestring` vagy a `secureobject` típust, mert a `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
-| <*default-paraméter-érték*> | Yes | Ugyanaz, mint`type` | Az alapértelmezett paraméterérték, amelyet akkor kell használni, ha nincs megadva érték a munkafolyamat példányainak létrehozásakor. Az `defaultValue` attribútum megadása kötelező, hogy a Logic app Designer helyesen tudja megjeleníteni a paramétert, de megadhat egy üres értéket. |
-| <*tömb – engedélyezett – paraméter-értékek*> | No | Tömb | Egy tömb, amely a paraméter által elfogadható értékekkel rendelkezik |
-| <*paraméter – Leírás*> | No | JSON-objektum | Egyéb paraméterek részletei, például a paraméter leírása |
+| <*paraméter – név*> | Igen | Sztring | A definiálni kívánt paraméter neve |
+| <*paraméter típusa*> | Igen | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja a `securestring` vagy a `secureobject` típust, mert a `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
+| <*default-paraméter-érték*> | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméterérték, amelyet akkor kell használni, ha nincs megadva érték a munkafolyamat példányainak létrehozásakor. Az `defaultValue` attribútum megadása kötelező, hogy a Logic app Designer helyesen tudja megjeleníteni a paramétert, de megadhat egy üres értéket. |
+| <*tömb – engedélyezett – paraméter-értékek*> | Nem | Tömb | Egy tömb, amely a paraméter által elfogadható értékekkel rendelkezik |
+| <*paraméter – Leírás*> | Nem | JSON-objektum | Egyéb paraméterek részletei, például a paraméter leírása |
 ||||
 
 Ezután hozzon létre egy [Azure Resource Manager sablont](../azure-resource-manager/templates/overview.md) a munkafolyamat-definícióhoz, definiálja a központi telepítésben használni kívánt értékeket elfogadó sablon paramétereit, cserélje le a hardcoded értékeket a sablonra vagy a munkafolyamat-definíció paramétereinek megfelelő értékekre, és tárolja a telepítéskor használandó értékeket egy külön [paraméter fájljában](../azure-resource-manager/templates/parameter-files.md). Így a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket a paraméter fájlján keresztül. A bizalmas vagy biztonságossá tett információk, például a felhasználónevek, a jelszavak és a titkos kulcsok esetében Azure Key Vault tárolhatja ezeket az értékeket, és a paraméter-fájllal lekérheti ezeket az értékeket a kulcstartóból. További információk és példák a paraméterek definiálására a sablon és a munkafolyamat-definíció szintjein: [Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
@@ -112,13 +112,13 @@ Az `staticResults` attribútumban Definiáljon egy művelet modelljét, `outputs
 }
 ```
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*statikus – eredmény-definíció – név*> | Yes | Sztring | A statikus eredmény definíciójának neve, amelyet a műveleti definíció hivatkozhat egy `runtimeConfiguration.staticResult` objektumon keresztül. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
-| <*output-attributes-and-Values – visszaadott*> | Yes | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` értéke `Succeeded` , az attribútum a `outputs` művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` értéke `Failed` , az `outputs` attribútum tartalmazza az `errors` attribútumot, amely egy vagy több hibás információt tartalmazó tömb `message` . |
-| <*fejléc – értékek*> | No | JSON | A művelet által visszaadott fejléc-értékek |
-| <*állapot-kód – visszaadott*> | Yes | Sztring | A művelet által visszaadott állapotkód |
-| <*művelet – állapot*> | Yes | Sztring | A művelet állapota, például `Succeeded` vagy`Failed` |
+| <*statikus – eredmény-definíció – név*> | Igen | Sztring | A statikus eredmény definíciójának neve, amelyet a műveleti definíció hivatkozhat egy `runtimeConfiguration.staticResult` objektumon keresztül. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
+| <*output-attributes-and-Values – visszaadott*> | Igen | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` értéke `Succeeded` , az attribútum a `outputs` művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` értéke `Failed` , az `outputs` attribútum tartalmazza az `errors` attribútumot, amely egy vagy több hibás információt tartalmazó tömb `message` . |
+| <*fejléc – értékek*> | Nem | JSON | A művelet által visszaadott fejléc-értékek |
+| <*állapot-kód – visszaadott*> | Igen | Sztring | A művelet által visszaadott állapotkód |
+| <*művelet – állapot*> | Igen | Sztring | A művelet állapota, például `Succeeded` vagy `Failed` |
 |||||
 
 Ebben a HTTP-művelet definíciójában például az `runtimeConfiguration.staticResult.name` attribútum azon `HTTP0` attribútumon belül hivatkozik, ahol a `staticResults` művelethez tartozó modell-kimenetek definiálva vannak. Az `runtimeConfiguration.staticResult.staticResultOptions` attribútum azt adja meg, hogy a statikus eredmény beállítás a `Enabled` http-műveleten van.
@@ -199,7 +199,7 @@ Az eredmény mindig karakterlánc, így a funkció hasonló a `concat()` függv�
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Ha olyan literál sztringet tartalmaz, amely a \@ karakterrel kezdődik, a \@ karaktert egy másik \@ karakterrel együtt Escape-karakterként kell előtagként megjelölni:\@\@
+Ha olyan literál sztringet tartalmaz, amely a \@ karakterrel kezdődik, a \@ karaktert egy másik \@ karakterrel együtt Escape-karakterként kell előtagként megjelölni: \@\@
 
 Ezek a példák a kifejezések kiértékelésének módját mutatják be:
 
@@ -275,11 +275,11 @@ A kimenet definíciójának általános szerkezete:
 }
 ```
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*kulcs neve*> | Yes | Sztring | A kimenet visszatérési értékének kulcsa |
-| <*kulcs típusa*> | Yes | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |
-| <*kulcs-érték*> | Yes | Ugyanaz, mint <*Key-Type*> | A kimenet visszatérési értéke |
+| <*kulcs neve*> | Igen | Sztring | A kimenet visszatérési értékének kulcsa |
+| <*kulcs típusa*> | Igen | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |
+| <*kulcs-érték*> | Igen | Ugyanaz, mint <*Key-Type*> | A kimenet visszatérési értéke |
 |||||
 
 Egy munkafolyamat-Futtatás kimenetének lekéréséhez tekintse át a logikai alkalmazás futtatási előzményeit és részleteit a Azure Portal, vagy használja a [munkafolyamat-REST API](/rest/api/logic/workflows). Külső rendszereknek is átadhatja a kimenetet, például Power BI, hogy irányítópultokat lehessen létrehozni.

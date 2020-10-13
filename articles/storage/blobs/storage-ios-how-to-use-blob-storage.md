@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465490"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
@@ -86,7 +86,7 @@ Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és ott kell i
 
 1. Hozzon létre egy header fájlt `Bridging-Header.h` , és adja hozzá a fenti importálási utasítást.
 2. Lépjen a *létrehozási beállítások* lapra, és keressen rá az *Objective-C áthidaló fejlécre*.
-3. Kattintson duplán a *Objective-C áthidaló fejléc* mezőjére, és adja hozzá a fejléc elérési útját:`ProjectName/Bridging-Header.h`
+3. Kattintson duplán a *Objective-C áthidaló fejléc* mezőjére, és adja hozzá a fejléc elérési útját: `ProjectName/Bridging-Header.h`
 4. Hozza létre a projektet (⌘ + B) annak ellenőrzéséhez, hogy az áthidaló fejlécet a Xcode választotta-e ki.
 5. A könyvtár közvetlen használata bármely Swift-fájlban, nincs szükség importálási utasításokra.
 
@@ -216,7 +216,7 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 
 A blokk Blobok NSString való feltöltése mellett a NSData, a NSInputStream vagy egy helyi fájlhoz hasonló metódusok is léteznek.
 
-## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+## <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 Az alábbi példa bemutatja, hogyan listázhatja ki a tárolóban lévő összes blobot. A művelet végrehajtásakor a következő paramétereket kell szem előtt tartva:
 

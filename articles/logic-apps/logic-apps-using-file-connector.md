@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659914"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
@@ -70,12 +70,12 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
-   | **Gyökérmappa** | Yes | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például: `\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
-   | **Hitelesítés típusa** | No | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
-   | **Felhasználónév** | Yes | <*domain* > \\ tartomány < *Felhasználónév*> <p>-vagy- <p><*helyi – számítógép* > \\ < *Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép* > \\ < *felhasználónevét*> használhatja. |
-   | **Jelszó** | Yes | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
-   | **átjáró** | Yes | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
+   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
+   | **Gyökérmappa** | Igen | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például: `\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
+   | **Hitelesítés típusa** | Nem | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
+   | **Felhasználónév** | Igen | <*domain* > \\ tartomány < *Felhasználónév*> <p>-vagy- <p><*helyi – számítógép* > \\ < *Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép* > \\ < *felhasználónevét*> használhatja. |
+   | **Jelszó** | Igen | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
+   | **átjáró** | Igen | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
    |||||
 
 1. Ha elkészült, kattintson a **Létrehozás** gombra.

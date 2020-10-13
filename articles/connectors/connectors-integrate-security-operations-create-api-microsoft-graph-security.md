@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986368"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
@@ -146,7 +146,7 @@ Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további
 
 | Művelet | Leírás |
 |--------|-------------|
-| **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](/graph/api/resources/tiindicator?view=graph-rest-beta)alapján szűrt tiIndicators beolvasása, például:`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](/graph/api/resources/tiindicator?view=graph-rest-beta)alapján szűrt tiIndicators beolvasása, például: `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Veszélyforrások elleni intelligencia-jelző beolvasása azonosító alapján** | Egy adott tiIndicator beszerzése a tiIndicator-azonosító alapján. | 
 | **Fenyegetési intelligencia kijelző létrehozása** | Hozzon létre egy új tiIndicator a tiIndicators gyűjteménybe való közzétételsel. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [tiIndicator létrehozásához szükséges tulajdonságokat](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
 | **Több veszélyforrást érintő intelligencia-kijelző küldése** | Hozzon létre több új tiIndicators egy tiIndicators-gyűjtemény elküldésével. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators elküldéséhez szükséges tulajdonságokat](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |
@@ -161,7 +161,7 @@ Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](https://aka.ms/graphsecurityconnectorreference).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
 

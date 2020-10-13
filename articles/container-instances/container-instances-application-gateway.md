@@ -4,10 +4,10 @@ description: Hozzon létre egy tároló csoportot egy virtuális hálózatban, �
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260776"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Statikus IP-cím közzététele egy tároló csoport számára
@@ -142,7 +142,7 @@ Ha a sikeres konfigurálás után szeretné megtekinteni a futó webalkalmazást
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtekintheti a gyors üzembe helyezési [sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) , amely egy, a WordPress Container-példánnyal rendelkező tároló csoportot hoz létre egy Application Gateway mögötti háttér-kiszolgálóként.
 * Az alkalmazás-átjárót a tanúsítvány használatával is konfigurálhatja az SSL-lezáráshoz. Tekintse meg az [áttekintést](../application-gateway/ssl-overview.md) és az [oktatóanyagot](../application-gateway/create-ssl-portal.md).

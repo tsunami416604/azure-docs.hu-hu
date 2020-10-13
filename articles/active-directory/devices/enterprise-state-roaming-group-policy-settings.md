@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252933"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Csoportházirend és MDM beállítások
@@ -32,7 +32,7 @@ A következő táblázatok ismertetik az elérhető házirend-beállításokat.
 
 A MDM házirend-beállítások a Windows 10 és a Windows 10 Mobile rendszerre egyaránt érvényesek.  A Windows 10 Mobile-támogatás csak a felhasználó OneDrive-fiókján keresztül Microsoft-fiók-alapú barangoláshoz van. Az Azure AD-alapú szinkronizálás által támogatott eszközökről az eszközök [és végpontok](enterprise-state-roaming-windows-settings-reference.md) című témakörben talál további információt.
 
-| Name | Description |
+| Név | Leírás |
 | --- | --- |
 | Microsoft-fiókok közötti kapcsolatok engedélyezése |Lehetővé teszi a felhasználók számára, hogy egy Microsoft-fiók használatával hitelesítsék az eszközt |
 | Beállítások szinkronizálásának engedélyezése |Lehetővé teszi a felhasználóknak a Windows-beállítások és az alkalmazásadatok barangolását; A szabályzat letiltásával letilthatja a szinkronizálást és a mobileszközök biztonsági mentését |
@@ -41,9 +41,9 @@ A MDM házirend-beállítások a Windows 10 és a Windows 10 Mobile rendszerre e
 
 A csoportházirend-beállítások olyan Windows 10-es eszközökre vonatkoznak, amelyek Active Directory tartományhoz csatlakoznak. A táblázat olyan örökölt beállításokat is tartalmaz, amelyek úgy tűnik, hogy a szinkronizálási beállításokat kezelik, de nem működnek Enterprise State Roaming for Windows 10 esetében, amelyeket a leírásban a "ne használja" kifejezéssel jegyeztek fel.
 
-Ezek a beállítások a következő helyeken találhatók:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
+Ezek a beállítások a következő helyeken találhatók: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name | Description |
+| Név | Leírás |
 | --- | --- |
 | Fiókok: Microsoft-fiókok blokkolása |Ezzel a házirend-beállítással megakadályozható, hogy a felhasználók új Microsoft-fiókokat adjanak hozzá a számítógépen |
 | Ne szinkronizáljon |Megakadályozza, hogy a felhasználók barangolják a Windows beállításait és az alkalmazásadatok |

@@ -12,10 +12,10 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181714"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés használata
@@ -37,7 +37,7 @@ Ez a szolgáltatás lehetővé teszi:
 
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Az önkiszolgáló alkalmazás-hozzáférés engedélyezése lehetővé teszi, hogy a felhasználók megtalálják a saját alkalmazásaikat
 
-Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy a saját alkalmazások oldalról közvetlenül a saját alkalmazások jelszavas egyszeri bejelentkezés alkalmazásokhoz rendelt hitelesítő adatokat kezelhesse a felhasználók számára.
+Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Engedélyezheti, hogy az üzleti csoport a saját alkalmazások lapján lévő alkalmazásokhoz tartozó jelszó-Single-Signhoz rendelt hitelesítő adatokat felügyelje a felhasználók számára.
 
 Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedélyezéséhez kövesse az alábbi lépéseket:
 1. Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
@@ -66,5 +66,5 @@ Ezek a jóváhagyások csak az egyszeri jóváhagyási munkafolyamatokat támoga
 -   Győződjön meg arról, hogy a felhasználó a megfelelő helyre látogat az önkiszolgáló alkalmazás-hozzáféréshez. a felhasználók a saját [alkalmazások](https://myapps.microsoft.com/) oldalra léphetnek, és a **+ Hozzáadás** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyeken engedélyezte az önkiszolgáló hozzáférést.
 -   Ha az önkiszolgáló alkalmazás-hozzáférés a közelmúltban lett konfigurálva, próbáljon meg újra bejelentkezni a felhasználó alkalmazásaiba néhány perc múlva, és ellenőrizze, hogy megjelent-e az önkiszolgáló hozzáférés módosításai.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre](../users-groups-roles/groups-self-service-management.md)

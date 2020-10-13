@@ -4,10 +4,10 @@ description: Ismerje meg az Azure VMware-megoldás szerepköralapú hozzáféré
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91580229"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure VMware-megoldáshoz
@@ -55,7 +55,7 @@ Az Azure VMware-megoldás CloudAdmin szerepköre a következő jogosultságokkal
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyes jogosultságok részletes ismertetését a [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) találja.
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082250"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
@@ -73,7 +73,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="target-the-operating-system-version"></a><a name="bps10"></a>Az operációs rendszer verziójának megcélzása
+### <a name="target-the-operating-system-version"></a><a name="bps10"></a> Az operációs rendszer verziójának megcélzása
 
 A HDInsight a Ubuntu Linux eloszláson alapul. A HDInsight különböző verziói az Ubuntu különböző verzióira támaszkodnak, ami megváltoztathatja a szkript működésének módját. A HDInsight 3,4-es és korábbi verziói például az üzembe helyezést használó Ubuntu-verziókon alapulnak. A 3,5-es és újabb verziók a rendszer által használt Ubuntu 16,04-es verzión alapulnak. A rendszer és a Kiindulás különböző parancsokra támaszkodik, így a parancsfájlt úgy kell megírni, hogy mindkettővel működjön.
 
@@ -177,7 +177,7 @@ Ez Ehelyett a STDOUT-ba írt adatokat STDERR (2) átirányítja. Az i/o-átirán
 
 A parancsfájl-műveletek által naplózott információk megtekintésével kapcsolatos további információkért lásd: [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md).
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Fájlok mentése ASCII-ként LF-sorok végződésével
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> Fájlok mentése ASCII-ként LF-sorok végződésével
 
 A bash-parancsfájlokat ASCII formátumban kell tárolni, az LF által leállított vonalakkal. Az UTF-8-ként tárolt fájlok vagy a CRLF használata, mert a sorok vége meghiúsulhat a következő hiba miatt:
 
@@ -186,7 +186,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>Újrapróbálkozási logika használata az átmeneti hibákból való helyreállításhoz
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> Újrapróbálkozási logika használata az átmeneti hibákból való helyreállításhoz
 
 Fájlok letöltésekor, az apt-get használatával vagy az interneten keresztül adatokat továbbító egyéb műveletekkel a csomagok telepítése során előfordulhat, hogy a művelet átmeneti hálózati hibák miatt meghiúsul. Előfordulhat például, hogy a távoli erőforrás, amellyel kommunikál, a biztonsági mentési csomópontra történő feladatátvétel folyamatában lehet.
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 A parancsfájlban a következő segítők használhatók:
 
-| Segítő használata | Description |
+| Segítő használata | Leírás |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Letölt egy fájlt a forrás URI-ból a megadott elérési útra. Alapértelmezés szerint nem írja felül a meglévő fájlt. |
 | `untar_file TARFILE DESTDIR` |Kibont egy tar-fájlt (a használatával `-xf` ) a cél könyvtárába. |
@@ -256,7 +256,7 @@ Ez a szakasz útmutatást nyújt néhány olyan általános használati minta me
 
 Bizonyos esetekben előfordulhat, hogy a szkript paramétereket kér. Előfordulhat például, hogy a Ambari REST API használatakor szükség van a fürt rendszergazdai jelszavára.
 
-A parancsfájlnak átadott paraméterek *pozicionális paraméterekként*ismertek, és az `$1` első paraméterhez, a másodikhoz és a (z) rendszerhez vannak rendelve `$2` . `$0`a parancsfájl nevét tartalmazza.
+A parancsfájlnak átadott paraméterek *pozicionális paraméterekként*ismertek, és az `$1` első paraméterhez, a másodikhoz és a (z) rendszerhez vannak rendelve `$2` . `$0` a parancsfájl nevét tartalmazza.
 
 A parancsfájlnak átadott értékeket paraméterként aposztrófok (') közé kell foglalni. Így biztosítható, hogy az átadott érték literálként legyen kezelve.
 
@@ -360,7 +360,7 @@ Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-körn
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ```
 
-Cserélje le az helyére az `INFILE` anyagjegyzéket tartalmazó fájlt. `OUTFILE`egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
+Cserélje le az helyére az `INFILE` anyagjegyzéket tartalmazó fájlt. `OUTFILE` egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>További lépések
 

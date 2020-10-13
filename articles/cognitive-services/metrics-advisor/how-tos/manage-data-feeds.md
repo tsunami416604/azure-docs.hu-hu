@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: aahi
 ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935314"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Útmutató: az adatcsatornák kezelése
@@ -106,7 +106,7 @@ A következő lehetőségek közül választhat:
 
 A Action link-sablonok használatával előre definiálható http URL-címek határozhatók meg, amelyek a helyőrzők,,, és karakterből állhatnak `%datafeed` `%metric` `%timestamp` `%detect_config` `%tagset` . A sablon használatával egy anomália vagy incidens egy adott URL-címére irányítható át a részletezéshez.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Művelet csatolása sablon" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Backfill adatcsatorna" lightbox="../media/action-link-template.png":::
 
 Miután kitöltötte a művelet hivatkozását **, kattintson a művelet hivatkozásra az** incidensek listájának művelete lehetőségnél, majd az incidens faszerkezetének jobb gombbal kattintson a menü elemre. Cserélje le a művelet csatolása sablonban található helyőrzőket az anomália vagy az incidens megfelelő értékeire.
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317994"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>A Hyper-V virtuális gépek kapacitásának megtervezése a Capacity and Performance megoldással (elavult)
@@ -85,7 +85,7 @@ Amikor hozzáadja a Capacity and Performance megoldást a munkaterülethez, a Ca
 
 A Capacity and Performance csempére kattintva nyissa meg a Capacity and Performance irányítópultot. Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlopban legfeljebb tíz olyan elem jelenik meg, amely megfelel a megadott hatóköri és időtartományi kritériumoknak. Az oszlop alján található **Az összes megtekintése** elemre vagy az oszlop fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-- **Gazdagépek**
+- **Hosts**
     - **GAZDAGÉP CPU-kihasználtsága** Megjeleníti a gazdagépek CPU-kihasználtságának grafikus trendjét, valamint a gazdagépek listáját a kiválasztott időszak alapján. Vigye az egérmutatót a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. Kattintson bármelyik állomásnévre a naplók keresésének megnyitásához, és tekintse meg az üzemeltetett virtuális gépek CPU-számlálójának adatait.
     - **Gazdagép memóriájának kihasználtsága** A gazdagépek memóriájának kihasználtságát és a gazdagépek listáját jeleníti meg a kiválasztott időszak alapján. Vigye az egérmutatót a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. Kattintson bármelyik állomásnévre a naplóbeli keresés megnyitásához és a memória számlálójának megtekintéséhez az üzemeltetett virtuális gépekhez.
 - **Virtual Machines**

@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85250710"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázisok bérletének mintái
@@ -186,7 +186,7 @@ A következő táblázat összefoglalja a fő bérleti modellek közötti külö
 | Mérés | Önálló alkalmazás | Adatbázis/bérlő | Több-bérlős szegmens |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Méretezés | Közepes<br />1 – 100s | Nagyon magas<br />1 – 100, 10E | Korlátlan<br />1 – 1, 000, 10E |
-| Bérlők elkülönítése | Nagyon magas | Magasság | Alacsony egyetlen bérlő kivételével (azaz egy MT dB-ben). |
+| Bérlők elkülönítése | Nagyon magas | Magas | Alacsony egyetlen bérlő kivételével (azaz egy MT dB-ben). |
 | Adatbázis díja bérlőn | Magas méret a csúcsok számára. | Alacsony felhasznált készletek. | Legalacsonyabb, kis bérlők esetében az MT-adatbázisok esetében. |
 | Teljesítményfigyelés és-felügyelet | Csak bérlők esetében | Összesítés/bérlő | Összesített Bár a bérlők száma csak az egyediek esetében érhető el. |
 | Fejlesztési komplexitás | Alacsony | Alacsony | Közepes horizontális skálázás miatt. |

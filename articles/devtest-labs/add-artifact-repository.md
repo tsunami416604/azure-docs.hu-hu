@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhatja meg a laborhoz tartozó saját Azure De
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270978"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
@@ -71,7 +71,7 @@ Ez a szakasz azokat a lépéseket ismerteti, amelyekkel egy összetevő-tárház
    5. **Mappa elérési útjai** Adja meg legalább egy olyan mappa elérési útját, amely az összetevő vagy a Resource Manager-sablon definícióit tartalmazó klónozási URL-címhez képest van. Alkönyvtár megadásakor ügyeljen arra, hogy a mappa elérési útja tartalmazza a továbbítás perjelét.
 
         ![Adattárakhoz tartozó területek](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 Az Azure erőforrás-kezelési (Azure Resource Manager) Sablonok JSON-fájlok, amelyek az Azure-ban létrehozni kívánt erőforrásokat írják le. További információ ezekről a sablonokról: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/templates/template-syntax.md).
@@ -180,7 +180,7 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-A New-AzResourceGroupDeployment sikeres futtatása után a parancs a kiépítési állapothoz hasonló fontos információkat (sikeresnek kell lennie) és a sablon kimeneteit is megjeleníti.
+A New-AzResourceGroupDeployment sikeres futtatása után a parancs a fontos információkat, például a kiépítési állapotot (sikeres) és a sablon kimeneteit is megjeleníti.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 Ez a szakasz egy PowerShell-parancsfájlt tartalmaz, amely egy összetevő-adattár tesztkörnyezetben való hozzáadására használható. Ha még nem rendelkezik Azure PowerShellval, tekintse meg a telepítési [és konfigurálási Azure PowerShell](/powershell/azure/?view=azps-1.2.0) részletes útmutatását.
@@ -360,10 +360,10 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>A parancsfájlban használt PowerShell-parancsok
 
-| PowerShell-parancs | Megjegyzések |
+| PowerShell-parancs | Jegyzetek |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ezzel a paranccsal lekérheti a labor részleteit, például annak helyét. |
-| [Új – AzResource](/powershell/module/az.resources/new-azresource) | Az összetevő-Tárházak hozzáadására nincs specifikus parancs. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag végzi a feladatot. Ehhez a parancsmaghoz vagy a **ResourceId** , vagy a **resourcename** és a **resourcetype** pár szükséges a létrehozandó erőforrás típusának megismeréséhez. Ez a minta parancsfájl az erőforrás neve és az erőforrástípus pár értéket használja. <br/><br/>Figyelje meg, hogy az összetevő-tárház forrását ugyanazon a helyen hozza létre, és a laborban megegyező erőforráscsoporthoz tartozik.|
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Az összetevő-Tárházak hozzáadására nincs specifikus parancs. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag végzi a feladatot. Ehhez a parancsmaghoz vagy a **ResourceId** , vagy a **resourcename** és a **resourcetype** pár szükséges a létrehozandó erőforrás típusának megismeréséhez. Ez a minta parancsfájl az erőforrás neve és az erőforrástípus pár értéket használja. <br/><br/>Figyelje meg, hogy az összetevő-tárház forrását ugyanazon a helyen hozza létre, és a laborban megegyező erőforráscsoporthoz tartozik.|
 
 A parancsfájl új erőforrást hoz létre a jelenlegi előfizetéshez. A [Get-AzContext](/powershell/module/az.accounts/get-azcontext) használatával tekintheti meg ezeket az információkat. A [set-AzContext](/powershell/module/az.accounts/set-azcontext) használatával állítsa be az aktuális bérlőt és előfizetést.
 
@@ -381,7 +381,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A laborhoz tartozó kötelező összetevők megadása Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
 - [Egyéni összetevők létrehozása a DevTest Labs virtuális géphez](devtest-lab-artifact-author.md)
 - [Az összetevők hibáinak diagnosztizálása a laborban](devtest-lab-troubleshoot-artifact-failure.md)

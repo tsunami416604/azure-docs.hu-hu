@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749089"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
@@ -23,12 +23,12 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |Adatforrás  |Memóriabeli  |DirectQuery  |Megjegyzések |
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Igen      |    Igen      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure szinapszis Analytics (SQL DW)      |   Igen      |   Igen       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Igen      |   Igen       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Igen        |  Nem        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Igen       |    Nem      |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Igen       |    Nem      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure Data Lake Storage Gen1      |   Igen       |    Nem      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Storage Gen2       |   Igen       |    Nem      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
 |Azure HDInsight-HDFS    |     Igen     |   Nem       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Igen       |   Nem       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||

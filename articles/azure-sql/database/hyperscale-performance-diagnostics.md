@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84324392"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL nagy kapacitású Performance hibaelhárítási diagnosztika
@@ -26,9 +26,9 @@ A nagy kapacitású-adatbázisok teljesítményével kapcsolatos problémák elh
 
 Minden Azure SQL Database szolgáltatási szinten a naplózási [ráta irányításával](resource-limits-logical-server.md#transaction-log-rate-governance)kényszerített, a log Generation díjszabási korlátai érvényesek. A nagy kapacitású-ben a log generálási korlát jelenleg 100 MB/s-ra van állítva, a szolgáltatási szinttől függetlenül. Vannak azonban olyan időpontok, amikor az elsődleges számítási replika log generálási sebességét szabályozni kell a helyreállító SLA-kat fenntartásához. Ez a szabályozás akkor fordul elő, ha egy [lapozófájl vagy egy másik számítási replika](service-tier-hyperscale.md#distributed-functions-architecture) jelentősen megmarad az új naplóbejegyzések a log szolgáltatásban való alkalmazása mögött.
 
-A következő várakozási típusok (a [sys. dm_os_wait_statsban](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) azt ismertetik, hogy miért szabályozható a naplózási sebesség az elsődleges számítási replika esetén:
+A következő várakozási típusok ( [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) leírják, hogy az elsődleges számítási replikán miért lehet szabályozni a naplózási sebességet:
 
-|Várakozás típusa    |Description                         |
+|Várakozás típusa    |Leírás                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Akkor következik be, amikor a nagy kapacitású-adatbázis elsődleges számítási csomópontjának napló-generálási sebessége a kiszolgáló (k) késleltetett naplójának használata miatt van szabályozva.         |
 |RBIO_RG_DESTAGE        | Akkor következik be, amikor a nagy kapacitású-adatbázis számítási csomópontjának naplójának generálási arányát a rendszer a hosszú távú napló-tárolás késleltetett naplózása miatt szabályozza.         |
@@ -45,11 +45,11 @@ Több dinamikus felügyelt nézet (DMV) és bővített eseménynek van olyan osz
 
 - A jelentéskészítő lap kiszolgálójának olvasási oszlopai a végrehajtás DMV és a katalógusok nézeteiben érhetők el, például:
 
-  - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-  - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-  - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-  - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
-  - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
+  - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+  - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+  - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+  - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+  - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - A Page Server olvasások a következő kiterjesztett eseményekhez lesznek hozzáadva:
   - sql_statement_completed
   - sp_statement_completed
@@ -67,11 +67,11 @@ Több dinamikus felügyelt nézet (DMV) és bővített eseménynek van olyan osz
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Virtuális fájl statisztikái és IO-nyilvántartása
 
-Azure SQL Database a [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF az elsődleges módszer a SQL Database IO figyelésére. A nagy kapacitású IO-jellemzői eltérnek az [elosztott architektúrája](service-tier-hyperscale.md#distributed-functions-architecture)miatt. Ebben a szakaszban az IO (olvasás és írás) adatfájlokra koncentrálunk, ahogy az ebben a DMF látható. A nagy kapacitású-ben az ebben a DMF látható összes adatfájl egy távoli oldal-kiszolgálónak felel meg. Az itt említett RBPEX cache egy helyi SSD-alapú gyorsítótár, amely a számítási replika nem a gyorsítótára.
+Azure SQL Database a [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF az elsődleges módszer a SQL Database IO figyelésére. A nagy kapacitású IO-jellemzői eltérnek az [elosztott architektúrája](service-tier-hyperscale.md#distributed-functions-architecture)miatt. Ebben a szakaszban az IO (olvasás és írás) adatfájlokra koncentrálunk, ahogy az ebben a DMF látható. A nagy kapacitású-ben az ebben a DMF látható összes adatfájl egy távoli oldal-kiszolgálónak felel meg. Az itt említett RBPEX cache egy helyi SSD-alapú gyorsítótár, amely a számítási replika nem a gyorsítótára.
 
 ### <a name="local-rbpex-cache-usage"></a>Helyi RBPEX cache-használat
 
-Helyi RBPEX gyorsítótár létezik a számítási replikán a helyi SSD-tárolón. Így a gyorsítótárhoz tartozó IO gyorsabb, mint az IO a távoli lapok kiszolgálóin. A nagy kapacitású-adatbázisban jelenleg a [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) egy külön sorban jelent meg az IO-t a számítási REPLIKA helyi RBPEX gyorsítótárában. Ebben a sorban a 0 érték szerepel mindkettő `database_id` és `file_id` oszlop esetében. Az alábbi lekérdezés például a RBPEX-használati statisztikát adja vissza az adatbázis indítása óta.
+Helyi RBPEX gyorsítótár létezik a számítási replikán a helyi SSD-tárolón. Így a gyorsítótárhoz tartozó IO gyorsabb, mint az IO a távoli lapok kiszolgálóin. A nagy kapacitású-adatbázisban jelenleg [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) egy külön sorban jelent meg az IO-t a számítási REPLIKA helyi RBPEX gyorsítótára. Ebben a sorban a 0 érték szerepel mindkettő `database_id` és `file_id` oszlop esetében. Az alábbi lekérdezés például a RBPEX-használati statisztikát adja vissza az adatbázis indítása óta.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -92,16 +92,16 @@ A RBPEX által az összes többi adatfájlon végzett összesített olvasások a
 
 ### <a name="log-writes"></a>Naplók írása
 
-- Az elsődleges számítás során a rendszer a napló írását a sys file_id 2. dm_io_virtual_file_stats. Az elsődleges számítási naplóba való írás egy írás a naplózási zónába.
+- Az elsődleges számításban a napló írását a sys.dm_io_virtual_file_stats file_id 2. részében kell elszámolni. Az elsődleges számítási naplóba való írás egy írás a naplózási zónába.
 - A naplózási rekordok nincsenek megerősítve a véglegesítő másodlagos replikán. A nagy kapacitású-ben a log szolgáltatás aszinkron módon alkalmazza a naplót a másodlagos replikára. Mivel a naplózási írások valójában nem fordulnak elő másodlagos replikákban, a log IOs a másodlagos replikán való könyvelése csak követési célokat szolgál.
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Adat IO az erőforrás-kihasználtsági statisztikában
 
-A nem nagy kapacitású adatbázisokban az adatfájlok összevont olvasási és írási IOPS az [erőforrás-irányítási](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) adatIOPSi korláthoz viszonyítva a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetekben szerepelnek az `avg_data_io_percent` oszlopban. Ugyanezt az értéket jelenti a Azure Portal _Adatio százalékként_.
+A nem nagy kapacitású adatbázisokban az adatfájlok összevont olvasási és írási IOPS az [erőforrás-irányítási](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) adatIOPSi korláthoz viszonyítva az oszlopban [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetek szerepelnek `avg_data_io_percent` . Ugyanezt az értéket jelenti a Azure Portal _Adatio százalékként_.
 
 A nagy kapacitású-adatbázisokban ez az oszlop csak a számítási replikán lévő helyi tárterületre vonatkozó korláttal, kifejezetten a RBPEX és a értékekkel kapcsolatos IOPS-kihasználtságot jelenti `tempdb` . Ebben az oszlopban az 100% érték azt jelzi, hogy az erőforrás-szabályozás korlátozza a helyi tárterület IOPS. Ha ez egy teljesítménnyel kapcsolatos problémával összefügg, állítsa be úgy a számítási feladatot, hogy kevesebb IO-t állítson elő, vagy növelje az adatbázis-szolgáltatás célkitűzését, hogy növelje az erőforrás-szabályozás _maximális IOPS_ [korlátját](resource-limits-vcore-single-databases.md). A RBPEX-olvasások és-írások erőforrás-szabályozása esetében a rendszer az egyes 8 KB-os IOs-et, nem pedig a SQL Server adatbázismotor által kiállított nagyobb IOs-t számítja fel.
 
-A távoli lapokon tárolt adatio-kiszolgálók nem jelennek meg az erőforrás-felhasználási nézetekben vagy a portálon, de a [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF szerepel a korábban feljegyzett módon.
+A távoli lapokon tárolt adatio-kiszolgálók nem szerepelnek az erőforrás-felhasználási nézetekben vagy a portálon, de a [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF jelennek meg, ahogy azt korábban említettük.
 
 ## <a name="additional-resources"></a>További források
 

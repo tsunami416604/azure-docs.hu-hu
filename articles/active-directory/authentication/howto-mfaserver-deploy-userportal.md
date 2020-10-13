@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919590"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
@@ -158,7 +158,7 @@ Ezen beállítások láthatóvá válnak a portálon a felhasználók számára,
 
 ### <a name="self-service-user-enrollment"></a>Önkiszolgáló felhasználói regisztráció
 
-Ha azt szeretné, hogy a felhasználók bejelentkezzenek és regisztráljanak, be kell jelölnie a **felhasználók bejelentkezésének engedélyezése** és a **felhasználói beléptetési beállítások engedélyezése** a beállítások lapon. Ne feledje, hogy a kiválasztott beállítások hatással vannak a felhasználó bejelentkezési felületére.
+Ha azt szeretné, hogy a felhasználók bejelentkezzenek és regisztráljanak, be kell jelölnie a **felhasználók bejelentkezésének engedélyezése** és a **felhasználói beléptetési beállítások engedélyezése** a beállítások lapon. Ne feledje, hogy a kiválasztott beállítások hatással vannak a felhasználói bejelentkezési élményre.
 
 Amikor például egy felhasználó először jelentkezik be a felhasználói portálra, az Azure Multi-Factor Authentication felhasználói beállítási lapjára kerül. Az Azure Multi-Factor Authentication konfigurációjától függően lehet, hogy a felhasználó kiválaszthatja a hitelesítési módszert.
 
