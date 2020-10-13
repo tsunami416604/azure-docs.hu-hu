@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ddc4e040824a7239aecbb24fc90123a88dc4e263
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Oktatóanyag: Azure Active Directory integráció a iDiD Managerrel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a iDiD 
 Az Azure AD egyszeri bejelentkezés a iDiD Managerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[IDiD Manager egyszeri bejelentkezésének konfigurálása](#configure-idid-manager-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[IDiD Manager egyszeri bejelentkezésének konfigurálása](#configure-idid-manager-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre IDiD Manager test User](#create-idid-manager-test-user)** -to have a Britta Simon a iDiD Managerben, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a iDiD Managerrel való konfigurálásához 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -110,11 +110,11 @@ Az Azure AD egyszeri bejelentkezés a iDiD Managerrel való konfigurálásához 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [IDiD Manager ügyfél-támogatási csapatával](mailto:support@idid.fi) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-idid-manager-single-sign-on"></a>A iDiD Manager egyszeri bejelentkezésének konfigurálása
+### <a name="configure-idid-manager-single-sign-on"></a>A iDiD Manager egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **iDiD-kezelő** oldalon, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [iDiD Manager támogatási csapatának](mailto:support@idid.fi). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

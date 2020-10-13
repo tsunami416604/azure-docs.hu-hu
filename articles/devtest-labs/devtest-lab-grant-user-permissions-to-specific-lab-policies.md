@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat felhasználói engedélyeket a DevTest La
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8e910a5d4499d104e4b09076ec7862ae96272ef4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835680"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Felhasználói engedélyek megadása adott tesztkörnyezet-házirendekhez
@@ -80,7 +80,7 @@ Az előző példában a rendszer a **AllowedVmSizesInLab** szabályzatot haszná
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha meghatározott labor-házirendekhez adott meg felhasználói engedélyeket, a következő lépéseket érdemes figyelembe vennie:
 
 * [Biztonságos hozzáférés a laborhoz](devtest-lab-add-devtest-user.md)

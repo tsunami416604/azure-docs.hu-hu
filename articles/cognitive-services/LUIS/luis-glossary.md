@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309489"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
@@ -162,7 +162,7 @@ A [reguláris kifejezés entitás](reference-entity-regular-expression.md) regul
 
 Előre összeépített [entitáshoz](#prebuilt-entity) tartozó előre felépített modell bejegyzésének megjelenítése
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A gépi tanulásban a funkció olyan jellemző, amely segít a modellnek egy adott fogalom felismerésében. Ez egy olyan tipp, amelyet a LUIS használhat, de nem kemény szabályt.
 
@@ -194,7 +194,7 @@ LUIS-ban egy szót vagy kifejezést kell [megcímkézni](label-entity-example-ut
 
 Tekintse meg az [alkalmazás definícióját (alkalmazás)](#application-app).
 
-## <a name="model"></a>Modellezés
+## <a name="model"></a>Modell
 
 A (gépi megtanult) modell egy olyan függvény, amely előrejelzést készít a bemeneti adatokról. A LUIS-ben a szándék-osztályozók és az entitás-kiállítók általános módon "modellként" szerepelnek, és az "alkalmazásként" együtt betanított, közzétett és lekérdezett modellek gyűjteményét nevezzük.
 

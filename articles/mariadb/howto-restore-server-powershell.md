@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833249"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Azure Database for MariaDB-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
@@ -78,7 +78,7 @@ A parancsmag **PointInTimeRestore** paraméterének `Restore-AzMariaDbServer` a 
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| Name (Név) | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -120,7 +120,7 @@ A parancsmag **GeoRestore** paraméterének `Restore-AzMariaDbServer` a követke
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Név | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Name (Név) | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 
@@ -130,7 +130,7 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB kapcsolódási karakterlánc létrehozása a PowerShell-lel](howto-connection-string-powershell.md)

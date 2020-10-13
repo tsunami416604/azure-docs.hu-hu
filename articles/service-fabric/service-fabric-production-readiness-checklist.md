@@ -4,10 +4,10 @@ description: Az ajánlott eljárások követésével megkezdheti Service Fabric 
 ms.topic: conceptual
 ms.date: 6/05/2019
 ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835867"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
@@ -54,7 +54,7 @@ Míg a fenti lista az előfeltétel, hogy az éles környezetbe lépjen, a köve
 1. Helyezzen üzembe egy egyéni watchdogot, amely figyeli az alkalmazást, és betölti az [erőforrás-kiegyensúlyozás](service-fabric-cluster-resource-manager-balancing.md) [terhelését](service-fabric-cluster-resource-manager-metrics.md) . 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric Windows-fürt üzembe helyezése](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * [Service Fabric Linux-fürt üzembe helyezése](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

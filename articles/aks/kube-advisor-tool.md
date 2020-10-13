@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
 ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86255251"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Ajánlott Kubernetes-eljárások keresése a fürtben
@@ -57,7 +57,7 @@ A Kubernetes támogatja [az erőforrás-kérelmek definiálását és a pod-spec
 
 Alapértelmezés szerint a pod-specifikációk nincsenek megadva kérelmek vagy korlátok. Ez vezethet a csomópontok túlütemezett és a tárolók éheznek. A Kube-Advisor eszköz kiemeli a hüvelyeket kérelmek és korlátok nélkül.
 
-## <a name="cleaning-up"></a>Takarítás
+## <a name="cleaning-up"></a>A felesleges elemek eltávolítása
 
 Ha a fürtön engedélyezve van a RBAC, a következő paranccsal törölheti az `ClusterRoleBinding` eszközt, miután futtatta azt:
 
@@ -67,7 +67,7 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa
 
 Ha az eszközt olyan fürtön futtatja, amely nem RBAC-kompatibilis, nincs szükség karbantartásra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Kubernetes szolgáltatással kapcsolatos problémák elhárítása](troubleshooting.md)
 

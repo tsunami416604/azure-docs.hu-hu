@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006805"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
@@ -80,7 +80,7 @@ Log Analytics beállítása egy új objektumhoz:
 
 5. Adja meg a beállítások konfigurációjának nevét, majd kattintson a **küldés log Analytics**lehetőségre. A használt névnek nem tartalmazhat szóközt, és meg kell felelnie az [Azure elnevezési konvencióinak](../azure-resource-manager/management/resource-name-rules.md). A naplók részeként kiválaszthatja a Log Analyticsba felvenni kívánt beállításokat, például az ellenőrzőpontot, a hibát, a felügyeletet és így tovább.
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 >Log Analytics lehetővé teszi az adatok adatfolyamként való továbbítását [Event Hubs](../event-hubs/event-hubs-about.md) vagy archiválását egy Storage-fiókba. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Azure monitoring-adatok továbbítása az Event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) -ba és az Azure-beli [erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md)című
@@ -91,7 +91,7 @@ Log Analytics munkaterületeket a Azure Portal vagy a Azure Monitorban érheti e
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics elérése Log Analytics munkaterületen
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. **Log Analytics munkaterület**keresése.
 

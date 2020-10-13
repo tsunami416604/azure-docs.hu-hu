@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187166"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Megosztott erőforrásokkal kapcsolatos problémák elhárítása
@@ -97,7 +97,7 @@ Nem gyakori, hogy az összes AzureRM vagy az az modulra ugyanarra az Automation-
 > [!NOTE]
 > Ne importálja a teljes `Az.Automation` vagy a `AzureRM.Automation` modult, amely az összes befoglalt modult importálja.
 
-Ha a frissítési folyamat felfüggeszti, adja hozzá a `SimultaneousModuleImportJobCount` paramétert a **Update-AzureModules.ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát alkalmazza, próbálja meg 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount`az az **Update-AutomationAzureModulesForAccount** System runbook paraméter, amely az Azure-modulok frissítésére szolgál. Ha ezt a beállítást választja, a frissítési folyamat tovább fut, de nagyobb eséllyel fejeződik be. A következő példa a paramétert mutatja be, és hová helyezi a runbook:
+Ha a frissítési folyamat felfüggeszti, adja hozzá a `SimultaneousModuleImportJobCount` paramétert a **Update-AzureModules.ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát alkalmazza, próbálja meg 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount` az az **Update-AutomationAzureModulesForAccount** System runbook paraméter, amely az Azure-modulok frissítésére szolgál. Ha ezt a beállítást választja, a frissítési folyamat tovább fut, de nagyobb eséllyel fejeződik be. A következő példa a paramétert mutatja be, és hová helyezi a runbook:
 
  ```powershell
          $Body = @"

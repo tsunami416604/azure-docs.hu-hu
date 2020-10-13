@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610075"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>IoT-Plug and Play implementálása korlátozott eszközökön
@@ -24,7 +24,7 @@ A Embedded C-hez készült SDK egy könnyű megoldást kínál a korlátozott es
 
 ### <a name="use-a-real-device"></a>Valós eszköz használata
 
-A beágyazott C-hez készült SDK-val, a Device kiépítési szolgáltatással és a IoT Plug and Playával kapcsolatos teljes körű oktatóanyagért tekintse meg a [repurpose pic-IoT WX fejlesztői Tanácsa az Azure-hoz való kapcsolódáshoz IoT hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)használatával.
+A beágyazott C-hez készült SDK-val, a Device kiépítési szolgáltatással és a IoT Plug and Playával kapcsolatos teljes körű oktatóanyagért tekintse meg a [repurpose PIC-IoT WX fejlesztői Tanácsának az Azure-hoz való kapcsolódást IoT hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)használatával című témakört.
 
 ### <a name="introductory-samples"></a>Bevezető minták
 
@@ -64,6 +64,6 @@ Gyártó | Eszköz | Példák |
 | STMicroelectronics | [B – L475E – IOT01](https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html) | [GCC/CMAK](https://github.com/azure-rtos/getting-started/tree/master/STMicroelectronics/STM32L4_L4%2B) • [IAR](https://aka.ms/azrtos-sample/l4s5-iar) • [STM32Cube](https://aka.ms/azrtos-sample/l4s5-cubeide)
 | STMicroelectronics | [B – L4S5I – IOT01](https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html) | [GCC/CMAK](https://github.com/azure-rtos/getting-started/tree/master/STMicroelectronics/STM32L4_L4%2B) • [IAR](https://aka.ms/azrtos-sample/l4s5-iar) • [STM32Cube](https://aka.ms/azrtos-sample/l4s5-cubeide)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a IoT Plug and Play a korlátozott eszközökön való megvalósításának lehetőségeit, a következő lépés a [IoT Plug and Play konvencióinak](concepts-convention.md)megismerése.

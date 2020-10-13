@@ -1,16 +1,16 @@
 ---
 title: Távolról renderelt modell megtekintése
-description: Az Azure távoli renderelés ""Helló világ!"alkalmazás" oktatóanyaga bemutatja, hogyan tekinthetők meg az Azure által távolról megjelenített modellek
+description: Az Azure távoli renderelés "„Helló világ!” alkalmazás" oktatóanyaga bemutatja, hogyan tekinthetők meg az Azure által távolról megjelenített modellek
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653672"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
@@ -839,7 +839,7 @@ Most már minden kód szükséges a távolról renderelt modell megtekintéséhe
 > [!NOTE]
 > A távoli modell soha nem jelenik meg a jelenet nézetben, csak a játék nézetben. Ennek az az oka, hogy az ARR a képkockákat távolról teszi elérhetővé a game View kamera szempontjából, és nem ismeri a szerkesztői kamerát (a jelenet nézet megjelenítéséhez használatos).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ![Modell betöltve](./media/test-model-rendered.png)
 

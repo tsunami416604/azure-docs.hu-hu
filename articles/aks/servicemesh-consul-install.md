@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86244130"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>A konzul telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
@@ -67,10 +67,10 @@ A Helm és a letöltött `consul-helm` diagram használatával telepítse a konz
 > **Telepítési lehetőségek**
 > 
 > A telepítés részeként a következő beállításokat használjuk:
-> - `connectInject.enabled=true`– engedélyezi, hogy a proxyk a hüvelybe legyenek injektálva
-> - `client.enabled=true`– a konzuli ügyfelek futtatásának engedélyezése minden csomóponton
-> - `client.grpc=true`– gRPC-figyelő engedélyezése a connectInject
-> - `syncCatalog.enabled=true`– a Kubernetes és a konzuli szolgáltatások szinkronizálása
+> - `connectInject.enabled=true` – engedélyezi, hogy a proxyk a hüvelybe legyenek injektálva
+> - `client.enabled=true` – a konzuli ügyfelek futtatásának engedélyezése minden csomóponton
+> - `client.grpc=true` – gRPC-figyelő engedélyezése a connectInject
+> - `syncCatalog.enabled=true` – a Kubernetes és a konzuli szolgáltatások szinkronizálása
 >
 > **Csomópont-választók**
 >
@@ -156,7 +156,7 @@ helm delete --purge consul
 kubectl delete namespace consul
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A konzul további telepítési és konfigurációs lehetőségeinek megismeréséhez tekintse meg a következő hivatalos konzuli cikkeket:
 

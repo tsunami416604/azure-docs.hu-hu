@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082069"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Saját CloudSimple-Felhőbeli virtuális gépek kezelése az Azure-ban
@@ -23,7 +23,7 @@ A [CloudSimple saját felhőhöz létrehozott](azure-create-vm.md)virtuális gé
 
 A kiválasztott virtuális gép **Áttekintés** lapján a következő vezérlők érhetők el.
 
-| Vezérlés | Description |
+| Vezérlés | Leírás |
 | ------------ | ------------- |
 | Kapcsolódás | Kapcsolódjon a megadott virtuális géphez.  |
 | Indítás | Indítsa el a megadott virtuális gépet.  |
@@ -53,7 +53,7 @@ VM-lemez hozzáadásához nyissa meg a kiválasztott virtuális gép **lemezek**
 
    | Elem | Leírás |
    | ------------ | ------------- |
-   | Név | Adjon meg egy nevet a lemez azonosításához.  |
+   | Name (Név) | Adjon meg egy nevet a lemez azonosításához.  |
    | Méret | Válasszon ki egy rendelkezésre álló méretet.  |
    | SCSI-vezérlő | Válasszon ki egy SCSI-vezérlőt. A rendelkezésre álló vezérlők eltérőek lehetnek a különböző támogatott operációs rendszereken.  |
    | Mód | Meghatározza, hogy a lemez hogyan vegyen részt a pillanatképekben. Válasszon egyet a következő lehetőségek közül: <br> – Független állandó: a lemezre írt összes adattal véglegesen írásra kerül.<br> -Független, nem állandó: a lemezre írt módosításokat a rendszer a virtuális gép kikapcsolásakor vagy alaphelyzetbe állításakor elveti.  Ez a mód lehetővé teszi, hogy mindig ugyanabban az állapotban indítsa újra a virtuális gépet. További információt a [VMware dokumentációjában](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)talál. |
@@ -76,7 +76,7 @@ Illesztőfelület hozzáadásához kattintson a **hálózati adapter hozzáadás
 
    | Vezérlés | Leírás |
    | ------------ | ------------- |
-   | Név | Adja meg a felületet azonosító nevet.  |
+   | Name (Név) | Adja meg a felületet azonosító nevet.  |
    | Network (Hálózat) | Válasszon a saját Felhőbeli vSphere konfigurált hálózatok listájából.  |
    | Adapter | Válasszon ki egy vSphere-adaptert a virtuális géphez konfigurált elérhető típusok listájából. További információkért lásd a VMware tudásbázist a [virtuális gép hálózati adapterének kiválasztásával](https://kb.vmware.com/s/article/1001805)foglalkozó cikkben. |
    | Bekapcsolás rendszerindításkor | Adja meg, hogy engedélyezi-e a hálózati adapter hardverét a virtuális gép indításakor. Az alapértelmezett érték az **Engedélyezés**. |

@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310407"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
@@ -130,7 +130,7 @@ A következő kódban az első kód blokk létrehoz egy térképet, és beállí
 
 ## <a name="request-transforms"></a>Kérelmek átalakítása
 
-Időnként hasznos lehet a Térkép vezérlőelem által készített HTTP-kérések módosítása. Például:
+Időnként hasznos lehet a Térkép vezérlőelem által készített HTTP-kérések módosítása. Példa:
 
 - További fejlécek hozzáadása a csempe-kérésekhez. Ez gyakran a jelszóval védett szolgáltatások esetében történik.
 - Módosítsa az URL-címeket a kérelmek proxy szolgáltatáson keresztüli futtatásához.

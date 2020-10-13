@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187251"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint
@@ -72,7 +72,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
 6. A **verziónál**válassza a **v2** elemet.
 7. A **hely**mezőben válassza ki az ADF létrehozásához támogatott helyek egyikét a legördülő listából.
 8. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-9. Kattintson a **Létrehozás** lehetőségre.
+9. Kattintson a **Létrehozás** elemre.
 10. Az Azure-irányítópulton a következő csempe jelenik meg állapottal: **Data Factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -91,7 +91,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
    
 2. A **tevékenységek** eszközkészletben bontsa ki az **általános** menü elemet, majd húzza a & eldobása **webes** tevékenységet a folyamat tervezői felületére. A tevékenység tulajdonságai ablak **általános** lapján módosítsa a tevékenység nevét **startMyIR**értékre. Váltson a **Beállítások** lapra, és végezze el a következő műveleteket.
 
-    1. Az **URL-cím**mezőben adja meg a következő URL-címet a REST API számára, amely a (z) Azure-SSIS IR, lecseréli,,, valamint az az `{subscriptionId}` `{resourceGroupName}` `{factoryName}` `{integrationRuntimeName}` IR tényleges értékeit indítja el: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` másik lehetőségként & másolhatja az IR erőforrás-azonosítóját is a figyelési oldaláról az ADF felhasználói felület/alkalmazás lapon, hogy lecserélje a fenti URL következő részét:`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
+    1. Az **URL-cím**mezőben adja meg a következő URL-címet a REST API számára, amely a (z) Azure-SSIS IR, lecseréli,,, valamint az az `{subscriptionId}` `{resourceGroupName}` `{factoryName}` `{integrationRuntimeName}` IR tényleges értékeit indítja el: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` másik lehetőségként & másolhatja az IR erőforrás-azonosítóját is a figyelési oldaláról az ADF felhasználói felület/alkalmazás lapon, hogy lecserélje a fenti URL következő részét: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![ADF SSIS IR-erőforrás azonosítója](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
@@ -104,7 +104,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
   
 3. Az első folyamat klónozásával hozzon létre egy másodikat, módosítsa a tevékenység nevét, hogy **stopMyIR** , és cserélje le a következő tulajdonságokat.
 
-    1. Az **URL-cím**mezőben adja meg a következő URL-címet REST API, amely leállítja a Azure-SSIS IR, lecseréli,, `{subscriptionId}` `{resourceGroupName}` `{factoryName}` és `{integrationRuntimeName}` értéket az IR-hez tartozó tényleges értékekkel:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
+    1. Az **URL-cím**mezőben adja meg a következő URL-címet REST API, amely leállítja a Azure-SSIS IR, lecseréli,, `{subscriptionId}` `{resourceGroupName}` `{factoryName}` és `{integrationRuntimeName}` értéket az IR-hez tartozó tényleges értékekkel: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. A **törzs**mezőbe írja be a következőt: `{"message":"Stop my IR"}` . 
 
@@ -136,7 +136,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
     1. A **kiszolgáló neve**mezőben adja meg ** &lt; a kiszolgáló nevét &gt; . database.Windows.net**.
     2. Válassza a **beállítások >>lehetőséget **.
     3. Az **adatbázishoz való kapcsolódáshoz**válassza a **SSISDB**lehetőséget.
-    4. Válassza a **Kapcsolódás** lehetőséget. 
+    4. Kattintson a **Csatlakozás** gombra. 
     5. Bontsa ki az **Integration Services-katalógusok**  ->  **SSISDB** -> a mappa-> **projects** -> a SSIS Project-> **csomagokat**. 
     6. Kattintson a jobb gombbal a futtatni kívánt SSIS-csomagra, és válassza a **jelentések**  ->  **szabványos jelentések**  ->  **minden végrehajtás**elemet. 
     7. Ellenőrizze, hogy futott-e. 
@@ -163,7 +163,7 @@ Most, hogy a folyamatok a várt módon működnek, létrehozhat eseményindító
     4. Az **ismétlődéshez**adja meg az eseményindítóhoz tartozó lépésszám értéket. A következő példában **naponta** egyszer. 
     5. A **befejezéshez**válassza a **nincs vége** lehetőséget, vagy adjon meg egy befejezési dátumot és időpontot **a dátum**kiválasztása után. 
     6. A teljes ADF-beállítások közzététele után azonnal aktiválja az **aktivált** elemet. 
-    7. Válassza a **Tovább** gombot.
+    7. Kattintson a **Tovább** gombra.
 
    ![Trigger – > új/szerkesztés](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
@@ -230,7 +230,7 @@ Ha már nincs Azure Automation fiókja, hozzon létre egyet a lépés utasítás
     4. A **hely**mezőben válassza ki a Azure Automation fiókjának helyét. 
     5. Győződjön meg arról, hogy az Azure-beli **futtató fiók létrehozása** **Igen**. A rendszer létrehoz egy egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzárendeli a **közreműködői** szerepkört az Azure-előfizetésében.
     6. Válassza a **rögzítés az irányítópulton** lehetőséget az Azure-irányítópulton való végleges megjelenítéséhez. 
-    7. Válassza a **Létrehozás** lehetőséget. 
+    7. Kattintson a **Létrehozás** gombra. 
 
    ![New-> Monitoring és felügyelet-> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -268,7 +268,7 @@ A következő szakasz a PowerShell-runbook létrehozásának lépéseit ismertet
 
     1. A **név**mezőbe írja be a következőt: **StartStopAzureSsisRuntime**.
     2. A **Runbook típusa**beállításnál válassza a **PowerShell**lehetőséget.
-    3. Válassza a **Létrehozás** lehetőséget.
+    3. Kattintson a **Létrehozás** gombra.
     
    ![Runbook gomb hozzáadása](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -339,7 +339,7 @@ A következő szakasz a PowerShell-runbook létrehozásának lépéseit ismertet
     2. A **ADATELŐÁLLÍTÓ neve**mezőbe írja be az ADF nevét Azure-SSIS IR. 
     3. A **AZURESSISNAME**mezőben adja meg Azure-SSIS IR nevét. 
     4. A **művelet**mezőben adja meg a **Start**értéket. 
-    5. Válassza az **OK** lehetőséget.  
+    5. Kattintson az **OK** gombra.  
 
    ![Runbook ablak elindítása](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
@@ -367,11 +367,11 @@ Az előző szakaszban létrehozta a Azure Automation runbook, amely elindíthat�
     4. Az **indításhoz**adjon meg egy olyan időpontot, amely az aktuális időpontnál néhány perccel korábbi. 
     5. Az **ismétlődéshez**válassza az **ismétlődő**lehetőséget. 
     6. Az **ismétlődéshez**adja meg az **1** értéket, és válassza a **napot**. 
-    7. Válassza a **Létrehozás** lehetőséget. 
+    7. Kattintson a **Létrehozás** gombra. 
 
    ![Az Azure SSIS IR-kezdésének ütemezett időpontja](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
-3. Váltson a **paraméterek és a futtatási beállítások** lapra. adja meg az erőforráscsoport, az ADF és a Azure-SSIS IR nevét. A **művelethez**írja be a **Start** parancsot, és kattintson **az OK gombra**. Kattintson ismét az **OK gombra** a **runbook ütemezett** ütemtervének megtekintéséhez. 
+3. Váltson a **paraméterek és a futtatási beállítások** lapra. Adja meg az erőforráscsoport, az ADF és a Azure-SSIS IR nevét. A **művelethez**írja be a **Start** parancsot, és kattintson **az OK gombra**. Kattintson ismét az **OK gombra** a **runbook ütemezett** ütemtervének megtekintéséhez. 
 
    ![Az Azure SSIS integrációs moduljának beosztása](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     

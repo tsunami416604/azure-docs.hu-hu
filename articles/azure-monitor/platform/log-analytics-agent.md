@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
 ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309999"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
@@ -39,7 +39,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 ## <a name="data-collected"></a>Összegyűjtött adatok
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Description |
+| Adatforrás | Leírás |
 | --- | --- |
 | [Windows-eseménynaplók](data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Syslog](data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
@@ -111,10 +111,10 @@ A következő táblázat a Linux és a Windows-ügynökök Azure Monitor naplók
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
-|*.blob.core.windows.net |443-es port |Kimenő|Yes |
-|*.azure-automation.net |443-es port |Kimenő|Yes |
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
+|*.blob.core.windows.net |443-es port |Kimenő|Igen |
+|*.azure-automation.net |443-es port |Kimenő|Igen |
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

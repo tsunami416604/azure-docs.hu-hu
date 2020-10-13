@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247251"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Útmutató: Windows-tárolók hibakeresése az Azure Service Fabric a Visual Studio 2019 használatával
@@ -28,7 +28,7 @@ A Visual Studio 2019-es verziójában a .NET-alkalmazások a tárolókban Servic
 1. A tárolók közötti DNS-feloldás támogatásához be kell állítania a helyi fejlesztési fürtöt a számítógépnév használatával. Ezek a lépések akkor is szükségesek, ha a szolgáltatásokat a fordított proxyn keresztül szeretné kezelni.
    1. A PowerShell megnyitása rendszergazdaként
    2. Navigáljon az SDK-fürt telepítési mappájához, amely általában a következő: `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` .
-   3. A parancsfájl futtatása`DevClusterSetup.ps1`
+   3. A parancsfájl futtatása `DevClusterSetup.ps1`
 
       ``` PowerShell
         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
@@ -71,5 +71,5 @@ Az alábbiakban felsoroljuk a Service Fabric és a lehetséges megoldásokkal ka
 
     A Visual Studio támogatja a .NET és a .NET Core konzol-és ASP.NET.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a Service Fabric és a tárolók képességeiről, tekintse meg a [Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md)című témakört.

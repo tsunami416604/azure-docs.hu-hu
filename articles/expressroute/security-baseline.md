@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231384"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure biztonsági alapkonfiguráció a ExpressRoute-hez
@@ -242,7 +242,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal identitás és hozzáférés-vezérlés (IAM) paneljét az előfizetéséhez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban.
 
-Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szerepköralapú Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+Emellett a ExpressRoute partner Resource Manager API-t használó partnerek Role-Based Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
 * [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -459,7 +459,7 @@ Helyek közötti IPSEC konfigurálása a ExpressRoute-en keresztül: https://doc
 
 Az Azure ExpressRoute rendelkezik egy áramköri tulajdonossal és egy áramköri felhasználói szerepkörrel is. Az áramköri felhasználók olyan virtuális hálózati átjárók tulajdonosai, amelyek nem a ExpressRoute áramkörhöz tartozó előfizetésben találhatók. Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedélyeket. Az engedély visszavonása az összes olyan kapcsolati kapcsolat törlését eredményezi, amelynek a hozzáférését visszavonták. Az áramköri felhasználók beválthatják az engedélyeket (egy-egy hitelesítés virtuális hálózatonként).
 
-Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szerepköralapú Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+Emellett a ExpressRoute partner Resource Manager API-t használó partnerek Role-Based Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
 * [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -891,9 +891,9 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: a Key Vault a helyreállítható Törlés engedélyezése a kulcsok véletlen vagy rosszindulatú törléssel szembeni megvédéséhez.
+**Útmutató**: a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezése a Key Vault Soft-Delete.
 
-* [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [A Soft-Delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830444"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
@@ -56,19 +56,19 @@ A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endo
 
 Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
-| Publisher | Ajánlat | Termékváltozat | URN | Titkosításhoz támogatott kötet típusa |
+| Publisher | Ajánlat | SKU | URN | Titkosításhoz támogatott kötet típusa |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Canonical: UbuntuServer: 18.04-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu 18.04 | 18,04 – NAPONTA – LTS | Canonical: UbuntuServer: 18.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu 16.04 | 16,04 – NAPONTA – LTS | Canonical: UbuntuServer: 16.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical: UbuntuServer: 14.04.5-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5 – NAPI – LTS | Canonical: UbuntuServer: 14.04.5-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
-| RedHat | RHEL 7,8 | 7.8 | RedHat: RHEL: 7,8: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7 – LVM: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: legutóbbi | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,4 | 7,4 | RedHat: RHEL: 7.4: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,3 | 7.3 | RedHat: RHEL: 7.3: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
@@ -77,11 +77,11 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | OpenLogic | CentOS 7,7 | 7 – LVM | OpenLogic: CentOS: 7-LVM: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: legújabb | Operációs rendszer és az adatlemez |
-| OpenLogic | CentOS 7.4 | 7.4 | OpenLogic: CentOS: 7.4: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7.4 | 7,4 | OpenLogic: CentOS: 7.4: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,3 | 7.3 | OpenLogic: CentOS: 7.3: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7.2 n | 7.2 n | OpenLogic: CentOS: 7.2 n: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,1 | 7.1 | OpenLogic: CentOS: 7.1: legújabb | Csak adatlemez |
-| OpenLogic | CentOS 7,0 | 7.0 | OpenLogic: CentOS: 7.0: legújabb | Csak adatlemez |
+| OpenLogic | CentOS 7,0 | 7,0 | OpenLogic: CentOS: 7.0: legújabb | Csak adatlemez |
 | OpenLogic | CentOS 6,8 | 6.8 | OpenLogic: CentOS: 6.8: legújabb | Csak adatlemez |
 | SUSE | openSUSE 42,3 | 42,3 | SUSE: openSUSE-LEAP: 42.3: legújabb | Csak adatlemez |
 | SUSE | SLES 12 – SP4 | 12 – SP4 | SUSE: SLES: 12-SP4: legújabb | Csak adatlemez |
@@ -142,9 +142,9 @@ Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt á
 | PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/). |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel](disk-encryption-cli-quickstart.md)
+- [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel ](disk-encryption-cli-quickstart.md)
 - [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken](disk-encryption-linux.md)
 - [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)

@@ -10,10 +10,10 @@ ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
 ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827486"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
@@ -27,7 +27,7 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Az erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
@@ -452,7 +452,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 2. Mentse az app. Java fájlt.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig.
 
@@ -465,5 +465,5 @@ Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes k
 2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Javához készült Azure-kódtárak](/java/azure/java-sdk-azure-overview)használatáról.

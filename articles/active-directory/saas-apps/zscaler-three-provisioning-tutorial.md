@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: d217f21b0a2dbdad56f2147c8800bbb50b0fa45e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265527"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler három beállítása a felhasználók automatikus üzembe helyezéséhez
@@ -101,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![SAML-ablak konfigurálása](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
 
-    Jelölje be az **scim létesítésének engedélyezése** jelölőnégyzetet, és másolja ki az **alap URL-címet** és a **tulajdonosi jogkivonatot**, majd mentse a beállításokat. A Azure Portal illessze be az **alap URL-címet** a **bérlői URL-cím** mezőbe és a **tulajdonos** tokenjét a **titkos jogkivonat** mezőbe.
+    Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget, és másolja ki az **alap URL-címet** és a **tulajdonosi jogkivonatot**, majd mentse a beállításokat. A Azure Portal illessze be az **alap URL-címet** a **bérlői URL-cím** mezőbe és a **tulajdonos** tokenjét a **titkos jogkivonat** mezőbe.
 
 7. A **bérlői URL-cím** és a **titkos jogkivonat** mezőiben szereplő értékek megadása után válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad csatlakozhasson a Zscaler. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler három fiók rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
 

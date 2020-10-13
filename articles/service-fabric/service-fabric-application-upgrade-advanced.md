@@ -4,10 +4,10 @@ description: Ez a cikk a Service Fabric alkalmazások frissítésével kapcsolat
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248084"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric alkalmazás frissítése: speciális témakörök
@@ -100,7 +100,7 @@ A felülbírált késleltetési időtartam csak a meghívott frissítési péld�
 >
 
 > [!NOTE]
-> Ez a funkció az Update-ServiceFabricService parancsmag vagy a fentiekben említett ARM-sablon használatával konfigurálható a meglévő szolgáltatásokban, ha a 7.1.XXX vagy annál újabb a fürt kódjának verziója.
+> Ez a funkció konfigurálható a meglévő szolgáltatásokban Update-ServiceFabricService parancsmag vagy a fentiekben említett ARM-sablon használatával, ha a 7.1.XXX vagy újabb verzió van megadva.
 >
 >
 
@@ -211,7 +211,7 @@ A visszaállítások automatikusan indíthatók, ha a *figyelt* módban lévő, 
 
 A visszaállítás során a *UpgradeReplicaSetCheckTimeout* és a mód értéke bármikor módosítható a [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
