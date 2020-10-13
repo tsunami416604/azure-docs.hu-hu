@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259068"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio-ellenőrzési alkalmazás integrálása Azure Active Directory B2C
@@ -45,7 +45,7 @@ A következő összetevők alkotják a Twilio megoldást:
 | Lépés | Leírás |
 |------|------|
 | 1     | A felhasználó kezdeményezi a bejelentkezést, vagy bejelentkezik a PSD2 bemutató alkalmazásba. A felhasználó hitelesítése a Azure AD B2C összevont bejelentkezés és a regisztrálási szabályzat használatával történik. A rendszer tokent ad vissza az alkalmazásnak. A regisztráláskor a rendszer az SMS/telefon használatával ellenőrzi a felhasználó telefonszámát, és rögzíti őket a Azure AD B2C-fiókjában.     |
-| 2     | A felhasználó magas kockázatú tranzakciót kezdeményez, például $50,00-es átvitelt. A rendszer kiértékeli a felhasználó aktuális hozzáférési jogkivonatát, hogy a PolicyId meg tudja határozni, hogy a felhasználó már hitelesítette-e egy lépésre szabott egyéni szabályzaton keresztül.     |
+| 2     | A felhasználó magas kockázatú tranzakciót kezdeményez, például $50,00-es átvitelt. A rendszer kiértékeli a felhasználó aktuális hozzáférési jogkivonatát, hogy a PolicyId meg tudja határozni, hogy a felhasználó már hitelesített Step-Up egyéni házirenden keresztül.     |
 | 3     | Az alkalmazás rögzíti a tranzakció értékét és a kedvezményezettet, $50,00 és John Doe-t, és létrehoz egy aláírt jogkivonatot. Ennek a tokennek `id_token_hint` a neve, és tartalmazza a jogcímet `amount:$500, payee:john doe` . A `id_token_hint` küldi el a kérést a Azure ad B2C egyéni szabályzattal együtt, amely integrálva van a Twilio-mel.     |
 | 4     | Azure AD B2C ellenőrzi a id_token_hint aláírását az alkalmazások `/.well-known` OpenId Connect végpontjának ellenőrzésével. Az ellenőrzés után kicsomagolja a jogcímeket a jogkivonatból, különösen a `amount` és a `payee` . A felhasználó megtekint egy oldalt, hogy ellenőrizze a mobiltelefonjuk számát SMS-üzeneten keresztül.     |
 | 5     | A felhasználó SMS-üzenetben kéri a telefonszámát, és Azure AD B2C REST API kérelmet küld a Twilio ellenőrzése API-végpontnak. Emellett elküldi a tranzakciót `amount` és a `payee` PSD2 folyamat részeként az egyszeri jelszó (OTP) létrehozásához. A Twilio SMS-üzenetet küld a felhasználó regisztrált telefonszámára.     |

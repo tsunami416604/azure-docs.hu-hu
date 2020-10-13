@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.openlocfilehash: 69368500a99b47238e74a960fdd5381c0339430a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905869"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése a Azure Portal
@@ -40,7 +40,7 @@ Konfigurálja a MySQL lassú lekérdezési napló elérését.
 
 8. Kattintson a **Mentés** gombra. 
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Képernyőkép a lassú lekérdezési napló paramétereinek és mentéséhez.":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="A kiszolgálói naplók beállításainak képernyőképe":::
 
 A **kiszolgáló paraméterei** lapon a lap bezárásával visszatérhet a naplók listájához.
 
@@ -53,7 +53,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 3. Az oldalsáv **figyelés** szakaszában válassza a **kiszolgálói naplók**lehetőséget. A lap megjeleníti a naplófájlok listáját.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Képernyőkép a kiszolgálói naplók lapról, a Kiemelt naplók listájával":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="A kiszolgálói naplók beállításainak képernyőképe":::
 
    > [!TIP]
    > A napló elnevezési konvenciója **MySQL-Slow-< a kiszolgáló nevét>-yyyymmddhh. log**. A fájlnévben használt dátum és idő a napló kiadásának időpontja. A naplófájlokat 24 óránként vagy 7,5 GB-ban forgatják el, attól függően, hogy melyik következik be először. 
@@ -62,23 +62,23 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 5. Az egyes naplófájlok letöltéséhez kattintson az egyes naplófájlok melletti lefelé mutató nyíl ikonra a táblázat sorában.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-download.png" alt-text="Képernyőkép a kiszolgálói naplók lapról, a lefelé mutató nyíl ikon kiemelve":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-download.png" alt-text="A kiszolgálói naplók beállításainak képernyőképe":::
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
 1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítások**elemet.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="A diagnosztikai beállítások beállításainak képernyőképe":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="A kiszolgálói naplók beállításainak képernyőképe":::
 
 1. Adja meg a diagnosztikai beállítások nevét.
 
 1. Itt adhatja meg, hogy mely adatnyelők küldje el a lassú lekérdezési naplókat (Storage-fiók, Event hub vagy Log Analytics munkaterület).
 
 1. Válassza a **MySqlSlowLogs** lehetőséget a napló típusaként.
-:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="A diagnosztikai beállítások konfigurációs beállításainak képernyőképe":::
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="A kiszolgálói naplók beállításainak képernyőképe":::
 
 1. Miután konfigurálta az adatnyelőket a lassú lekérdezések naplóinak a csatornába való konfigurálásához, válassza a **Mentés**lehetőséget.
-:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="A diagnosztikai beállítások konfigurációs beállításainak képernyőképe a kijelölt mentéssel":::
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="A kiszolgálói naplók beállításainak képernyőképe":::
 
 1. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
 

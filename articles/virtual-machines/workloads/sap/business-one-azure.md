@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea10ee5b6fb14558e6bb93b83da0d5c46cff330
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654650"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977646"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum útmutatást nyújt az SAP Business One Azure Virtual Machines üzembe helyezéséhez. A dokumentáció nem helyettesíti a Business One for SAP szolgáltatás telepítési dokumentációját. A dokumentációnak az Azure-infrastruktúrára vonatkozó alapszintű tervezési és üzembe helyezési útmutatókat kell kiterjednie, amelyekkel az üzleti alkalmazások futtatása elérhető
@@ -95,7 +95,7 @@ Az Azure-ban üzembe helyezni kívánt hálózati infrastruktúra attól függ, 
 A bemutatott egyszerűsített konfiguráció számos olyan biztonsági példányt vezet be, amelyek lehetővé teszik az Útválasztás szabályozását és korlátozását. A 
 
 - Az útválasztó/tűzfal a helyszíni ügyfélen.
-- A következő példány az Azure-beli [hálózati biztonsági csoport](../../../virtual-network/security-overview.md) , amelynek segítségével bevezetheti az SAP Business One konfigurációját futtató Azure-VNet útválasztási és biztonsági szabályait.
+- A következő példány az Azure-beli [hálózati biztonsági csoport](../../../virtual-network/network-security-groups-overview.md) , amelynek segítségével bevezetheti az SAP Business One konfigurációját futtató Azure-VNet útválasztási és biztonsági szabályait.
 - Annak elkerülése érdekében, hogy a felhasználók az egyik ügyfelet is lássák, az adatbázist futtató kiszolgálót is láthatják, külön kell választania az üzleti kiszolgálót üzemeltető virtuális gépet és az üzleti kiszolgálót, amely a VNet belül két különböző alhálózaton található.
 - Az Azure NSG-t a két különböző alhálózathoz rendeli hozzá, hogy korlátozza a hozzáférést az üzleti egy kiszolgálóhoz.
 
@@ -111,7 +111,7 @@ Az adatbázis típusához SQL Server és SAP HANA érhető el. Az adatbázis-kez
 
 Bár az adott és általános adatbázis-dokumentumokban már szerepelnek, a következőket kell megismernie:
 
-- [Kezelheti a Windows rendszerű virtuális gépek rendelkezésre állását az Azure-ban](../../windows/manage-availability.md) , és [kezelheti az Azure-beli linuxos virtuális gépek rendelkezésre állását](../../linux/manage-availability.md)
+- [Kezelheti a Windows rendszerű virtuális gépek rendelkezésre állását az Azure-ban](../../manage-availability.md) , és [kezelheti az Azure-beli linuxos virtuális gépek rendelkezésre állását](../../manage-availability.md)
 - [A virtuális gépekre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Ezek a dokumentumok segítenek dönteni a tárolási típusok és a magas rendelkezésre állási konfiguráció kiválasztásáról.

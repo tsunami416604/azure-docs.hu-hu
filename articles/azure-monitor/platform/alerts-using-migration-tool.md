@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358661"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>A klasszikus riasztási szabályok áttelepítéséhez használja az önkéntes áttelepítési eszközt
@@ -83,7 +83,7 @@ Ha egy előfizetés készen áll az áttelepítésre, az előfizetés tulajdonos
 
 ### <a name="who-can-trigger-the-migration"></a>Kik indíthatják el az áttelepítést?
 
-Azok a felhasználók, akik az előfizetés szintjén hozzárendelt figyelési közreműködő szerepkörrel rendelkeznek, képesek elindítani az áttelepítést. [További információ az áttelepítési folyamat szerepköralapú Access Controláról](alerts-understand-migration.md#who-can-trigger-the-migration).
+Azok a felhasználók, akik az előfizetés szintjén hozzárendelt figyelési közreműködő szerepkörrel rendelkeznek, képesek elindítani az áttelepítést. [További információ az áttelepítési folyamat Role-Based Access Controláról](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Mennyi időt vesz igénybe az áttelepítés?
 

@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: Készlet átméretezése kész esemény
           href: batch-pool-resize-complete-event.md
+        - name: Készlet automatikus skálázása esemény
+          href: batch-pool-autoscale-event.md
         - name: Tevékenység indítása esemény
           href: batch-task-start-event.md
         - name: Tevékenység kész esemény
           href: batch-task-complete-event.md
         - name: Tevékenység meghiúsult esemény
           href: batch-task-fail-event.md
+        - name: Tevékenységütemezés meghiúsult esemény
+          href: batch-task-schedule-fail-event.md
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

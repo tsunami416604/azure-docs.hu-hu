@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619644"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
@@ -96,7 +96,7 @@ Az alkalmazás központi telepítése közben töltse le az alkalmazás forrásk
 > [!NOTE]
 > A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), ha a ZIP-fájlokat külső forrásból tölti le, és kinyeri. A parancsfájlok zip-fájlból való kibontásakor a következő lépésekkel oldja fel a. zip fájlt a kicsomagolás előtt. A. zip fájl blokkolásának feloldásával gondoskodhat arról, hogy a parancsfájlok futtatása engedélyezett legyen.
 
-1. Keresse meg [a WingtipTicketsSaaS-MultiTenantDb GitHub-](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)tárházat.
+1. Tallózással keresse meg [a WingtipTicketsSaaS-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)-tárházat.
 2. Kattintson a **klónozás vagy a letöltés**elemre.
 3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
 4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-master.zip** fájlra, majd válassza a **Tulajdonságok**lehetőséget.
@@ -116,7 +116,7 @@ A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a 
 
 Az ebben a fájlban beállított értékeket az összes parancsfájl használja, ezért fontos, hogy pontosak legyenek. Ha újratelepíti az alkalmazást, különböző értékeket kell választania a felhasználói és az erőforráscsoport számára. Ezután frissítse a UserConfig. psm1 fájlt az új értékekkel.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 A Wingtip alkalmazásban a bérlők a helyszínek. A helyszín lehet a koncertterem, a sportcsarnok vagy bármely más, az eseményeket futtató hely. A helyszínek regisztrálva vannak a Wingtip ügyfélként, és minden egyes helyszínhez létrejön egy bérlői azonosító. Minden egyes helyszín felsorolja a közelgő eseményeit a Wingtip-ben, így a nyilvános jegyeket vásárolhat az eseményekhez.
 
@@ -253,7 +253,7 @@ A Load Generator parancsfájl által generált munkaterhelések csak illusztrác
   - [A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database](elastic-pool-overview.md)
   - [Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)](elastic-scale-introduction.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 

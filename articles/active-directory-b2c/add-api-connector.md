@@ -14,7 +14,7 @@ ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854358"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz
@@ -312,6 +312,6 @@ Győződjön meg a következőket:
 * Ha szükséges, használjon agresszívebb naplózási szintet (például "trace" vagy "debug") a fejlesztésben.
 * Az API figyelése hosszú válaszidő esetén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - Ismerkedjen meg az [Azure Function](code-samples.md#api-connectors)gyors üzembe helyezési mintákkal.

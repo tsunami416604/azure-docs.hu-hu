@@ -8,10 +8,10 @@ ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
 ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91301105"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>A RabbitMQ integrálása a Azure Service Bus használatával
@@ -38,27 +38,27 @@ A Azure Portal kattintson a nagy plusz gombra egy új erőforrás hozzáadásáh
 
 Ezután válassza az integráció lehetőséget, majd kattintson a Azure Service Bus elemre egy üzenetküldési névtér létrehozásához:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure Service Bus kiválasztása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Erőforrás létrehozása":::
 
 A rendszer felszólítja a névtér adatainak megadására. Válassza ki a használni kívánt Azure-előfizetést. Ha nem rendelkezik [erőforráscsoporthoz](../azure-resource-manager/management/manage-resource-groups-portal.md), létrehozhat egy újat.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Névtér létrehozása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Erőforrás létrehozása":::
 
 `rabbitmq`A for `Namespace name` , de bármire is lehet szükség. Ezután állítsa be `East US` a helyet. Válassza `Basic` az ár szintet.
 
 Ha minden rendben volt, a következő megerősítő képernyőnek kell megjelennie:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Névtér-visszaigazolás létrehozása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Erőforrás létrehozása":::
 
 Ezután visszatérhet a Azure Portal az új `rabbitmq` névtér látható. Kattintson rá az erőforrás eléréséhez, hogy hozzá lehessen adni egy várólistát.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Erőforráslista új névtérrel":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Erőforrás létrehozása":::
 
 ## <a name="creating-our-azure-service-bus-queue"></a>Azure Service Bus üzenetsor létrehozása
 
 Most, hogy elvégezte a Azure Service Bus névteret, kattintson a `Queues` bal oldalon található gombra, `Entities` és adja hozzá az új üzenetsor:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Várólista létrehozása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Erőforrás létrehozása":::
 
 A várólista neve csak emlékeztetőként fog megjelenni, `from-rabbitmq` ahol az üzenetek érkeznek. Az összes többi beállítást is meghagyhatja alapértelmezettként, de az alkalmazás igényeinek megfelelően módosíthatja őket.
 
@@ -78,21 +78,21 @@ Itt az ideje, hogy lekérje a RabbitMQ az Azure-hoz való csatlakoztatásához s
 
 Létre kell hoznia egy [megosztott hozzáférési](../storage/common/storage-sas-overview.md) szabályzatot (SAS) a várólistához, így a RabbitMQ üzeneteket tehet közzé. A SAS-szabályzat segítségével megadhatja, hogy milyen külső fél számára engedélyezett az erőforrás. Az a gondolat, hogy a RabbitMQ képes üzeneteket küldeni, de nem figyeli vagy nem kezeli a várólistát.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS-szabályzat hozzáadása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="Erőforrás létrehozása":::
 
 Jelölje be a `Send` jelölőnégyzetet, majd kattintson rá a `Create` sas-szabályzat érvénybe helyezéséhez.
 
 A szabályzat létrehozása után kattintson rá az **elsődleges kapcsolódási karakterlánc**megtekintéséhez. Azt fogjuk használni, hogy RabbitMQ beszéljen a Azure Service Bus:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="SAS-szabályzat beszerzése":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="Erőforrás létrehozása":::
 
 Ahhoz, hogy használhassa a kapcsolódási karakterláncot, át kell alakítania a RabbitMQ AMQP-kapcsolódási formátumára. Ezért lépjen a [kapcsolódási karakterlánc-átalakító eszközre](https://red-mushroom-0f7446a0f.azurestaticapps.net/) , és illessze be a kapcsolódási karakterláncot az űrlapon, majd kattintson a Konvertálás gombra. Ekkor megjelenik egy RabbitMQ, amely készen áll. (A webhely minden helyi böngészőt futtat, így az adatai nem lesznek továbbítva a vezetékes hálózaton keresztül). A [githubon](https://github.com/videlalvaro/connstring_to_amqp)érheti el a forráskódot.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="A kapcsolatok karakterláncának konvertálása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Erőforrás létrehozása":::
 
 Most nyissa meg a RabbitMQ-kezelő beépülő modult a böngészőben `http://localhost:15672/#/dynamic-shovels` , és lépjen a `Admin -> Shovel Management` címre, ahol felveheti az új lapátot, amely gondoskodik arról, hogy a RabbitMQ-várólistákból üzeneteket küldjön az Azure Service Bus-várólistára.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="RabbitMQ lapát hozzáadása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Erőforrás létrehozása":::
 
 Itt hívja meg a lapátot `azure` , és válassza ki `AMQP 0.9.1` a forrásoldali protokollt. A képernyőképen van `amqp://` , amely az alapértelmezett URI, amely összekapcsolja a kapcsolatot egy helyi RabbitMQ-kiszolgálóval. Győződjön meg arról, hogy a jelenlegi üzemelő példányához alkalmazkodik.
 
@@ -110,15 +110,15 @@ A `Address` mezőben adja meg az **Azure Service Bus üzenetsor**nevét, ebben a
 
 A RabbitMQ kezelőfelületén `Queues` válassza ki a `azure` várólistát, és keresse meg a `Publish message` panelt. Egy űrlap jelenik meg, amely lehetővé teszi, hogy közvetlenül a várólistára tegye közzé az üzeneteket. A példánkban csak `fist message` a és a találatok lesznek hozzáadva `Payload` `Publish Message` :
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Első üzenet közzététele":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Erőforrás létrehozása":::
 
 Lépjen vissza az Azure-ba, és vizsgálja meg a várólistáját. Kattintson a `Service Bus Explorer` bal oldali panelre, majd kattintson a _betekintés_ gombra. Ha minden rendben volt, látni fogja, hogy a várólista már egy üzenettel rendelkezik. Yay, Gratula!
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure Service Bus üzenetsor":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Erőforrás létrehozása":::
 
 Azonban győződjön meg arról, hogy az üzenet a RabbitMQ-ból küldött üzenet. Válassza a `Peek` fület, és kattintson a `Peek` gombra a várólistán lévő utolsó üzenetek lekéréséhez. Kattintson az üzenetre a tartalmának vizsgálatához. Az alábbi képhez hasonlóan kell megjelennie, ahol a `first message` szerepel a listában.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Várólista bepillantása":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Erőforrás létrehozása":::
 
 ## <a name="lets-recap"></a>Bedugni
 

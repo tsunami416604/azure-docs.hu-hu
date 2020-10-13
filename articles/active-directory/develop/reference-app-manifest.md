@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627006"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
@@ -105,7 +105,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| allowPublicClient | Logikai érték |
+| allowPublicClient | Logikai |
 
 Megadja a tartalék alkalmazás típusát. Az Azure AD alapértelmezés szerint kikövetkezteti az alkalmazás típusát a replyUrlsWithType. Vannak olyan helyzetek, amikor az Azure AD nem tudja megállapítani az ügyfél-alkalmazás típusát. Például az egyik ilyen forgatókönyv az a [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) folyamat, amelyben a HTTP-kérelem URL-átirányítás nélkül történik. Ezekben az esetekben az Azure AD az alkalmazás típusát a tulajdonság értéke alapján fogja értelmezni. Ha az érték TRUE (igaz), a tartalék alkalmazás típusa nyilvános ügyfélként van beállítva, például egy mobileszközön futó telepített alkalmazás. Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a tartalék alkalmazás típusa bizalmas ügyfél, például webalkalmazás.
 
@@ -119,7 +119,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| availableToOtherTenants | Logikai érték |
+| availableToOtherTenants | Logikai |
 
 Értéke TRUE (igaz), ha az alkalmazás más Bérlővel van megosztva; Ellenkező esetben hamis.
 
@@ -350,7 +350,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| név | Sztring |
+| name | Sztring |
 
 Az alkalmazás megjelenítendő neve.
 
@@ -364,7 +364,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | Logikai érték |
+| oauth2AllowImplicitFlow | Logikai |
 
 Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be `OAuth 2.0 implicit grant flow` a tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
 
@@ -378,7 +378,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | Logikai érték |
+| oauth2AllowIdTokenImplicitFlow | Logikai |
 
 Megadja, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow ID-tokeneket. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos.
 
@@ -417,7 +417,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2RequiredPostResponse | Logikai érték |
+| oauth2RequiredPostResponse | Logikai |
 
 Azt határozza meg, hogy a OAuth 2,0 jogkivonat-kérelmek részeként az Azure AD engedélyezi-e a POST kéréseket, a kérések helyett. Az alapértelmezett érték a False (hamis), amely azt határozza meg, hogy csak a GET kérelmek engedélyezettek lesznek.
 
@@ -492,7 +492,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| publicClient | Logikai érték|
+| publicClient | Logikai|
 
 Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás).
 
@@ -674,7 +674,7 @@ Ha az alábbi hibák valamelyikét látja, a következő műveleteket javasoljuk
 1. Szerkessze az attribútumokat egyenként a jegyzékfájl-szerkesztőben egy korábban letöltött jegyzékfájl feltöltése helyett. A [jegyzékfájlok hivatkozási](#manifest-reference) táblázatával megismerheti a régi és az új attribútumok szintaxisát és szemantikaát, így sikeresen szerkesztheti a kívánt attribútumokat.
 1. Ha a munkafolyamata megköveteli, hogy később is használhassa a jegyzékfájlokat a forrás-adattárban, javasoljuk, hogy az adattárban lévő mentett jegyzékfájlokat a **Alkalmazásregisztrációk** felhasználói felületén látható értékre alapozza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az alkalmazások alkalmazás-és szolgáltatásnév-objektumai közötti kapcsolattal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok az Azure ad-ben](app-objects-and-service-principals.md).
 * Tekintse meg a Microsoft [Identity platform fejlesztői szószedetét](developer-glossary.md) a Microsoft Identity platform néhány alapvető fejlesztői koncepciójának meghatározásához.

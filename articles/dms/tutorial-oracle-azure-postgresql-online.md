@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
 ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363171"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
@@ -243,8 +243,8 @@ Első lépések:
 
     | Forrás Oracle-séma | Cél PostgreSQL-adatbázis. séma | DMS létrehozva Schema. table. Column |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR. Public | nyilvános. országok. country_id |
-    | HR | targetHR.trgthr | trgthr. országok. country_id |
+    | HR | targetHR. Public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
     | HR | targetHR.TARGETHR | "TARGETHR"." ORSZÁGOK "." COUNTRY_ID " |
     | HR | targetHR.HR | "HR". " ORSZÁGOK "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Nem sikerült leképezni a vegyes eseteket |
@@ -383,7 +383,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
  > [!NOTE]
  > Mivel a PostgreSQL alapértelmezés szerint a Schema. table. Column altípust használja, a jelen cikk korábbi részében a **Azure Database for PostgreSQL séma beállítása a sémában** című részében található parancsfájl használatával visszaállíthatja a nagybetűs esetről a kisbetűsre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * A Azure Database Migration Service kapcsolatos információkért tekintse meg a [Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview)című cikket.

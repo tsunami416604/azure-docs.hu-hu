@@ -13,10 +13,10 @@ ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 04/19/2020
 ms.openlocfilehash: 61160943fc5762fd492f61a75a44159f2ef9cab2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448780"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>A Microsoft Azure SQL Database és a felügyelt Azure SQL-példány teljesítményének monitorozása dinamikus felügyeleti nézetekkel
@@ -131,7 +131,7 @@ Az IO-teljesítménnyel kapcsolatos problémák azonosításakor az IO-problém�
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Ha az IO-probléma most következik be
 
-A és a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) vagy a [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával tekintse meg a és a következőt: `wait_type` `wait_time` .
+A és [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a sys.dm_exec_requests [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával tekintheti meg a és a programot `wait_type` `wait_time` .
 
 #### <a name="identify-data-and-log-io-usage"></a>Adatok és naplók IO-használatának azonosítása
 
@@ -252,7 +252,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>`tempdb`Teljesítménnyel kapcsolatos problémák azonosítása
 
-Az IO-teljesítménnyel kapcsolatos problémák azonosításakor a problémákhoz társított legfelső szintű várakozási típusok `tempdb` `PAGELATCH_*` (nem `PAGEIOLATCH_*` ). Azonban a `PAGELATCH_*` várakozások nem mindig azt jelentik, hogy van-e a `tempdb` tartalom.  Ez a várakozás azt is jelentheti, hogy a felhasználói objektum adatlapjainak tartalma az egyazon adatoldalra irányuló egyidejű kérelmek miatt van. A versengés további megerősítése érdekében a `tempdb` [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) használatával ellenőrizze, hogy a wait_resource érték kezdődik-e, `2:x:y` ahol a 2 az `tempdb` adatbázis-azonosító, a `x` fájl azonosítója, és `y` a lap azonosítója.  
+Az IO-teljesítménnyel kapcsolatos problémák azonosításakor a problémákhoz társított legfelső szintű várakozási típusok `tempdb` `PAGELATCH_*` (nem `PAGEIOLATCH_*` ). Azonban a `PAGELATCH_*` várakozások nem mindig azt jelentik, hogy van-e a `tempdb` tartalom.  Ez a várakozás azt is jelentheti, hogy a felhasználói objektum adatlapjainak tartalma az egyazon adatoldalra irányuló egyidejű kérelmek miatt van. A versengés további megerősítése érdekében `tempdb` [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) segítségével ellenőrizze, hogy a wait_resource érték kezdődik-e, ahol a `2:x:y` 2 az `tempdb` adatbázis-azonosító, a `x` a fájl azonosítója, és `y` a lap azonosítója.  
 
 A tempdb-tartalom esetében a gyakori módszer a-t használó alkalmazás kódjának csökkentése vagy újbóli írása `tempdb` .  A gyakori `tempdb` felhasználási területek a következők:
 
@@ -499,7 +499,7 @@ GO
 
 ## <a name="monitoring-connections"></a>Kapcsolatok figyelése
 
-A [sys. dm_exec_connections](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-connections-transact-sql) nézet segítségével lekérheti az adott kiszolgálóhoz és felügyelt példányhoz létrehozott kapcsolatokra vonatkozó információkat, valamint az egyes kapcsolatok részleteit. Emellett a [sys. dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) nézet hasznos lehet az összes aktív felhasználói kapcsolattal és belső feladatokkal kapcsolatos információk beolvasása során.
+A [sys.dm_exec_connections](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-connections-transact-sql) nézet segítségével lekérheti az adott kiszolgálóhoz és felügyelt példányhoz létrehozott kapcsolatokra vonatkozó információkat, valamint az egyes kapcsolatok részleteit. Emellett az [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) nézet hasznos lehet az összes aktív felhasználói kapcsolattal és belső feladatokkal kapcsolatos információk beolvasása során.
 
 A következő lekérdezés adatokat kér le az aktuális kapcsolatban:
 
@@ -517,7 +517,7 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> Ha a **sys. dm_exec_requests** és a **sys. dm_exec_sessions nézetet**hajtja végre, ha az adatbázis- **állapot** megtekintésére vonatkozó engedély szerepel az adatbázisban, akkor az adatbázis összes végrehajtási munkamenete megjelenik. Ellenkező esetben csak az aktuális munkamenet jelenik meg.
+> Ha a **sys.dm_exec_requests** és **sys.dm_exec_sessions nézetet**hajt végre, és az adatbázis- **állapot** megtekintésére vonatkozó engedélyt adott meg, akkor az adatbázison az összes végrehajtás alatt álló munkamenet látható. Ellenkező esetben csak az aktuális munkamenet jelenik meg.
 
 ## <a name="monitor-resource-use"></a>Erőforrás-használat figyelése
 
@@ -525,15 +525,15 @@ WHERE c.session_id = @@SPID;
 
 Ezeket a nézeteket a használat figyelésére is használhatja:
 
-- Azure SQL Database: [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
-- Felügyelt Azure SQL-példány: [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
-- A Azure SQL Database és az Azure SQL felügyelt példánya is: [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- Azure SQL Database: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Felügyelt Azure SQL-példány: [sys.server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
+- A Azure SQL Database és az Azure SQL felügyelt példánya is: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
 ### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
-A [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) nézetet minden adatbázisban használhatja. A **sys. dm_db_resource_stats** nézet a legutóbbi erőforrás-használati adatmennyiséget jeleníti meg a szolgáltatási szintjéhez képest. A CPU, az adatio, a log writes és a memória átlagos százalékos arányát 15 másodpercenként rögzíti a rendszer, és 1 órára tartja karban.
+A [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) nézetet minden adatbázisban használhatja. A **sys.dm_db_resource_stats** nézet a legutóbbi erőforrás-használati adatmennyiséget jeleníti meg a szolgáltatási szintjéhez képest. A CPU, az adatio, a log writes és a memória átlagos százalékos arányát 15 másodpercenként rögzíti a rendszer, és 1 órára tartja karban.
 
-Mivel ez a nézet részletesebben megtekinti az erőforrás-használatot, használja a **sys. dm_db_resource_statst** a jelenlegi állapot elemzéséhez és hibaelhárításához. Ez a lekérdezés például az aktuális adatbázis átlagos és maximális erőforrás-felhasználását mutatja az elmúlt órában:
+Mivel ez a nézet részletesebben megtekinti az erőforrás-használatot, az összes aktuális állapotú elemzéshez és hibaelhárításhoz **sys.dm_db_resource_stats** először használja. Ez a lekérdezés például az aktuális adatbázis átlagos és maximális erőforrás-felhasználását mutatja az elmúlt órában:
 
 ```sql
 SELECT  
@@ -548,11 +548,11 @@ SELECT
 FROM sys.dm_db_resource_stats;  
 ```
 
-Más lekérdezések esetében tekintse meg a következő témakörben található példákat: [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
+Más lekérdezések esetében tekintse meg a példákat [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
 ### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
-A [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database) használatával visszaállíthatja az Azure SQL felügyelt példányainak CPU-használati, IO-és tárolási adatait. Az adatok gyűjtése és összesítése öt percen belül történik. Minden 15 másodpercenként jelentést egy sor jelent. A visszaadott adatok közé tartozik a CPU-használat, a tárterület mérete, az IO-kihasználtság és a felügyelt példány SKU. A korábbi adat megőrzése körülbelül 14 nap.
+A [sys.server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database) használatával visszatérhet egy Azure SQL felügyelt példány CPU-használati, IO-és tárolási adatait. Az adatok gyűjtése és összesítése öt percen belül történik. Minden 15 másodpercenként jelentést egy sor jelent. A visszaadott adatok közé tartozik a CPU-használat, a tárterület mérete, az IO-kihasználtság és a felügyelt példány SKU. A korábbi adat megőrzése körülbelül 14 nap.
 
 ```sql
 DECLARE @s datetime;  
@@ -566,9 +566,9 @@ GROUP BY resource_name
 HAVING AVG(avg_cpu_percent) >= 80
 ```
 
-### <a name="sysresource_stats"></a>sys. resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
-A **Master** adatbázis [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) nézete további információkat tartalmaz, amelyek segítségével figyelheti az adatbázis teljesítményét az adott szolgáltatási rétegben és a számítási méretekben. Az adatok gyűjtése 5 percenként történik, és körülbelül 14 napig tart fenn. Ez a nézet hasznos lehet a hosszú távú múltbeli elemzésekhez, hogy az adatbázis hogyan használja az erőforrásokat.
+A **Master** adatbázis [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) nézete további információkat tartalmaz, amelyek segítségével figyelheti az adatbázis teljesítményét az adott szolgáltatási rétegben és a számítási méretekben. Az adatok gyűjtése 5 percenként történik, és körülbelül 14 napig tart fenn. Ez a nézet hasznos lehet a hosszú távú múltbeli elemzésekhez, hogy az adatbázis hogyan használja az erőforrásokat.
 
 A következő gráf a prémium szintű adatbázisok CPU-erőforrásait mutatja be a P2 számítási mérettel a hét minden órájában. Ez a gráf hétfőn kezdődik, 5 munkanapot mutat, majd egy hétvégét jeleníti meg, ha sokkal kevesebb történik az alkalmazásnál.
 
@@ -578,10 +578,10 @@ Az adatokból ez az adatbázis jelenleg egy maximális CPU-terheléssel rendelke
 
 Más típusú alkalmazások esetében eltérő lehet a gráf értelmezése. Ha például egy alkalmazás minden nap feldolgozza a bérszámfejtési adatok mennyiségét, és ugyanazzal a diagrammal rendelkezik, akkor előfordulhat, hogy az ilyen "batch-feladatok" modell a P1 számítási méretnél is megfelelő. A P1 számítási méret 100 DTU, a P2 számítási mérethez képest 200 DTU. A P1 számítási méret a P2 számítási méret felét biztosítja. Így a 50%-os CPU-használat a P1-ben egyenlő a 100 százalékos CPU-használattal. Ha az alkalmazás nem rendelkezik időtúllépéssel, akkor előfordulhat, hogy nem számít, hogy a feladatok 2 órát vagy 2,5 órát vesznek igénybe, ha még ma végeznek. Az ebben a kategóriában lévő alkalmazások valószínűleg P1 számítási méretet használhatnak. Kihasználhatja azt a tényt, hogy az erőforrás-használatnál a nap folyamán időszakok vannak, így a "nagy csúcsok" a nap folyamán később a vályúba kerülhetnek. A P1 számítási méret hasznos lehet az adott típusú alkalmazáshoz (és pénzt takaríthat meg), feltéve, hogy a feladatok minden nap időben befejeződik.
 
-Az adatbázismotor az egyes aktív adatbázisok felhasználható erőforrás-információit teszi elérhetővé az egyes kiszolgálókon. **resource_stats** a **Master** Database-ben. A táblázatban szereplő adatokat 5 percenként összesíti a rendszer. Az alapszintű, a standard és a prémium szintű szolgáltatási csomaggal az adatok több mint 5 percet vehetnek fel a táblázatban, így az adatok nem közel valós idejű elemzéshez használhatók a korábbi elemzésekhez. A **sys. resource_stats** nézetet lekérdezve megtekintheti egy adatbázis közelmúltbeli előzményeit, és ellenőrizheti, hogy a kiválasztott foglalás a szükséges teljesítményt választotta-e.
+Az adatbázismotor minden egyes kiszolgálón elérhetővé teszi az egyes aktív adatbázisok felhasznált erőforrás-információit a **Master** adatbázis **sys.resource_stats** nézetében. A táblázatban szereplő adatokat 5 percenként összesíti a rendszer. Az alapszintű, a standard és a prémium szintű szolgáltatási csomaggal az adatok több mint 5 percet vehetnek fel a táblázatban, így az adatok nem közel valós idejű elemzéshez használhatók a korábbi elemzésekhez. A **sys.resource_stats** nézet lekérdezésével megtekintheti egy adatbázis közelmúltbeli előzményeit, és ellenőrizheti, hogy a kiválasztott foglalást a kívánt teljesítményre vonatkozóan szállította-e.
 
 > [!NOTE]
-> Azure SQL Database a következő példákban csatlakoznia kell a **Master** adatbázishoz a **sys. resource_stats** lekérdezéséhez.
+> Azure SQL Database a következő példákban a **sys.resource_stats** lekérdezéséhez csatlakoznia kell a **Master** adatbázishoz.
 
 Ez a példa bemutatja, hogyan jelennek meg az ebben a nézetben látható adatterületek:
 
@@ -592,9 +592,9 @@ WHERE database_name = 'resource1'
 ORDER BY start_time DESC
 ```
 
-![A sys. resource_stats katalógus nézete](./media/monitoring-with-dmvs/sys_resource_stats.png)
+![A sys.resource_stats katalógus nézet](./media/monitoring-with-dmvs/sys_resource_stats.png)
 
-A következő példa különböző módokon mutatja be a **sys. resource_stats** katalógus nézetét, hogy információkat kapjon arról, hogy az adatbázis hogyan használja az erőforrásokat:
+A következő példa különböző módokon mutatja be, hogy az adatbázis hogyan használja az erőforrásokat a **sys.resource_stats** katalógus nézet használatával:
 
 1. A következő lekérdezés futtatásával megtekintheti a múlt heti erőforrás-használatot az adatbázis userdb1:
 
@@ -606,7 +606,7 @@ A következő példa különböző módokon mutatja be a **sys. resource_stats**
     ORDER BY start_time DESC;
     ```
 
-2. Annak kiértékeléséhez, hogy a munkaterhelés milyen mértékben illeszkedik a számítási mérethez, meg kell vizsgálnia az erőforrás-metrikák egyes aspektusait: CPU, olvasás, írás, feldolgozók száma és munkamenetek száma. Itt egy átdolgozott lekérdezés a **sys. resource_stats** használatával a következő erőforrás-metrikák átlagos és maximális értékének jelentéséhez:
+2. Annak kiértékeléséhez, hogy a munkaterhelés milyen mértékben illeszkedik a számítási mérethez, meg kell vizsgálnia az erőforrás-metrikák egyes aspektusait: CPU, olvasás, írás, feldolgozók száma és munkamenetek száma. A **sys.resource_stats** használatával végzett átdolgozott lekérdezés a következő erőforrás-metrikák átlagos és maximális értékének jelentését jelenti:
 
     ```sql
     SELECT
@@ -624,7 +624,7 @@ A következő példa különböző módokon mutatja be a **sys. resource_stats**
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. Az egyes erőforrás-metrikák átlagos és maximális értékeivel kapcsolatos információk alapján kiértékelheti, hogy a munkaterhelés milyen mértékben illeszkedik a kiválasztott számítási mérethez. Általában a **sys. resource_stats** átlagos értékei a célként megadott mérethez képest megfelelő alapkonfigurációt biztosítanak. Az elsődleges mérési sticknek kell lennie. Előfordulhat például, hogy a standard szolgáltatási szintet S2 számítási mérettel használja. A CPU és az i/o-olvasások és írások átlagos kihasználtsági aránya 40% alatti, a feldolgozók átlagos száma pedig 50, a munkamenetek átlagos száma pedig 200. A munkaterhelés az S1 számítási méretéhez igazodhat. Könnyen megtekinthető, hogy az adatbázis megfelel-e a munkavégző és a munkamenet korlátainak. Ha szeretné megtekinteni, hogy egy adatbázis kisebb számítási mérettel rendelkezik-e a CPU-ra, az olvasásra és az írásra vonatkozóan, ossza meg az alacsonyabb számítási méret DTU számát az aktuális számítási méret DTU számával, majd szorozza meg az eredményt a 100 értékkel:
+3. Az egyes erőforrás-metrikák átlagos és maximális értékeivel kapcsolatos információk alapján kiértékelheti, hogy a munkaterhelés milyen mértékben illeszkedik a kiválasztott számítási mérethez. A **sys.resource_stats** átlagos értékei általában megfelelő alapkonfigurációt biztosítanak a célként megadott mérethez képest. Az elsődleges mérési sticknek kell lennie. Előfordulhat például, hogy a standard szolgáltatási szintet S2 számítási mérettel használja. A CPU és az i/o-olvasások és írások átlagos kihasználtsági aránya 40% alatti, a feldolgozók átlagos száma pedig 50, a munkamenetek átlagos száma pedig 200. A munkaterhelés az S1 számítási méretéhez igazodhat. Könnyen megtekinthető, hogy az adatbázis megfelel-e a munkavégző és a munkamenet korlátainak. Ha szeretné megtekinteni, hogy egy adatbázis kisebb számítási mérettel rendelkezik-e a CPU-ra, az olvasásra és az írásra vonatkozóan, ossza meg az alacsonyabb számítási méret DTU számát az aktuális számítási méret DTU számával, majd szorozza meg az eredményt a 100 értékkel:
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -714,7 +714,7 @@ WHERE D.name = 'MyDatabase'
 
 Ezek a lekérdezések ismét egy időponthoz tartozó értéket adnak vissza. Ha az idő múlásával több mintát gyűjt, akkor a munkamenet-használat legjobb ismerete lesz.
 
-A munkamenetek korábbi statisztikáit a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) megtekintésével és a **active_session_count** oszlop áttekintésével érheti el.
+A munkamenetek korábbi statisztikáit a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézet lekérdezésével és a **active_session_count** oszlop áttekintésével szerezheti be.
 
 ## <a name="monitoring-query-performance"></a>A lekérdezés teljesítményének figyelése
 
@@ -743,11 +743,11 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Letiltott lekérdezések figyelése
 
-A lassú vagy hosszan futó lekérdezések hozzájárulhatnak a túlzott erőforrás-használathoz, és a letiltott lekérdezések következményeként is. A blokkolás oka lehet gyenge az alkalmazások megtervezése, a rossz lekérdezési csomagok, a hasznos indexek hiánya stb. A sys. dm_tran_locks nézetet használhatja az adatbázis jelenlegi zárolási tevékenységével kapcsolatos információk lekéréséhez. Például a kód: [sys. dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx).
+A lassú vagy hosszan futó lekérdezések hozzájárulhatnak a túlzott erőforrás-használathoz, és a letiltott lekérdezések következményeként is. A blokkolás oka lehet gyenge az alkalmazások megtervezése, a rossz lekérdezési csomagok, a hasznos indexek hiánya stb. Az adatbázis aktuális zárolási tevékenységével kapcsolatos információkat a sys.dm_tran_locks nézet használatával kérheti le. Például a kód: [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx).
 
 ### <a name="monitoring-query-plans"></a>A lekérdezési csomagok figyelése
 
-A nem hatékony lekérdezési terv is növelheti a CPU-felhasználást. Az alábbi példa a [sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) nézetet használja annak meghatározásához, hogy melyik lekérdezés használja a legátfogóbb CPU-t.
+A nem hatékony lekérdezési terv is növelheti a CPU-felhasználást. A következő példa a [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) nézetet használja annak meghatározásához, hogy melyik lekérdezés használja a legátfogóbb CPU-t.
 
 ```sql
 SELECT
@@ -769,6 +769,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [A Azure SQL Database és az Azure SQL felügyelt példányának bemutatása](sql-database-paas-overview.md)

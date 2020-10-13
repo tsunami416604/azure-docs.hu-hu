@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288290"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
@@ -131,7 +131,7 @@ A következő lekérdezés azt mutatja be, hogyan lehet egy olyan fájlt beolvas
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora fejlécsor nélkül és Unix stílusú új sorral.](./media/query-single-csv-file/population-unix.png)
+![A CSV-fájl első 10 sora fejlécsor nélkül és Unix-Style új sorral.](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -159,7 +159,7 @@ A következő lekérdezés azt mutatja be, hogyan lehet egy fejlécet tartalmaz�
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora a fejléc sorával és Unix stílusú új sorral.](./media/query-single-csv-file/population-unix-hdr.png)
+![A CSV-fájl első 10 sora a fejléc sorával és Unix-Style új sorral.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -187,7 +187,7 @@ A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet 
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora a fejléc sorával, valamint a Unix stílusú új sor és az idézett értékekkel.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![A CSV-fájl első 10 sora a fejlécsorban, valamint Unix-Style új sor és idézett értékekkel.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -220,7 +220,7 @@ A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet 
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora a fejléc sorával és a mező elválasztójának Unix stílusú, új vonallal és Escape karakterrel való használatával.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![A CSV-fájl első 10 sora a fejléc sorával, valamint Unix-Style új sor és Escape char használata a mező elválasztó karakternél.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -283,7 +283,7 @@ A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet 
 
 Fájl előnézete:
 
-![A CSV-fájl első 10 sora a fejléc sorával, valamint a Unix stílusú új sor és tabulátor elválasztóval.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![A CSV-fájl első 10 sora a fejléc sorával, valamint Unix-Style új sor és tabulátor elválasztó karakterrel.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *

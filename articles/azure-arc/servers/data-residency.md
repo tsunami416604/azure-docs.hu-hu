@@ -8,7 +8,7 @@ ms.openlocfilehash: c5ece96acc3ee07ba2896279888363c7d52d737e
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856449"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure arc-kompatibilis kiszolgálók: az adatrezidens
@@ -32,6 +32,6 @@ Az ív használatára képes kiszolgálók lehetővé teszik, hogy megadja a ré
 
 További információ a regionális rugalmasságról és megfelelőségi támogatásról: az [Azure földrajza](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure rugalmasságának](/azure/architecture/reliability/architect)tervezéséről.

@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban csatlakozni fog egy Service Fabric felügy
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410445"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>Oktatóanyag: alkalmazás üzembe helyezése Service Fabric felügyelt fürtön (előzetes verzió)
@@ -91,7 +91,7 @@ Ha egy alkalmazás-példányra már nincs szükség, véglegesen eltávolíthatj
 Remove-ServiceFabricApplication fabric:/Voting
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a lépésben egy Service Fabric felügyelt fürtre telepítettünk egy alkalmazást. A Service Fabric felügyelt fürtökkel kapcsolatos további tudnivalókért tekintse meg a következőt:
 

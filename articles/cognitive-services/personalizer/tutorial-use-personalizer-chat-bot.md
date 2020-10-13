@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777309"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Oktatóanyag: személyre szabott használata a .NET-csevegési robotban
@@ -432,7 +432,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat
 * Törölje a minta projekt könyvtárát.
 * Törölje a személyre szabott és LUIS-erőforrást a Azure Portal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Personalizer működése](how-personalizer-works.md)
 * [Funkciók](concepts-features.md): a funkciókkal és környezettel kapcsolatos fogalmak megismerése
 * [Jutalmak](concept-rewards.md): tudnivalók a jutalmak kiszámításáról

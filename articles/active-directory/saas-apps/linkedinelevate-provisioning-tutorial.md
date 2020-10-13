@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361580"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn jogosultságszint-emelésének beállítása a felhasználók automatikus üzembe helyezéséhez
@@ -50,7 +50,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 
 Ez a szakasz végigvezeti az Azure AD-nek a LinkedIn emelt szintű SCIM felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán, hogy az Azure AD-ben felhasználói és csoport-hozzárendelés alapján hozza létre, frissítse és tiltsa le a hozzárendelt felhasználói fiókokat.
 
-**Tipp:** Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a LinkedIn jogosultságszint-emeléshez, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két szolgáltatás kiegészíti egymást.
+**Tipp:** Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri Sign-On a LinkedIn jogosultságszint-emeléshez a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két szolgáltatás kiegészíti egymást.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Az automatikus felhasználói fiók kiépítés beállítása a LinkedIn-jogosultságszint-emelésre az Azure AD-ben:
 

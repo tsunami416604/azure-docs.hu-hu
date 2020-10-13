@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 679a8fee80711e8244cf953e78fd7260d922ff49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9115b5414bce407787c3aff63c8b6e368e7c72d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949388"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966695"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés integrálása az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -85,6 +85,6 @@ A RADIUS-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 * Használja a korábban konfigurált közös titkos kulcsot.
 * Konfigurálja a RADIUS-időtúllépést 30-60 másodpercre, hogy a felhasználó hitelesítő adatainak érvényesítéséhez, a kétlépéses ellenőrzés végrehajtásához, a válasz fogadásához és a RADIUS-hozzáférési kérelem megválaszolásához legyen idő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [RADIUS-hitelesítés integrálásával](howto-mfa-nps-extension.md), ha rendelkezik Azure Multi-Factor Authenticationnel a felhőben. 

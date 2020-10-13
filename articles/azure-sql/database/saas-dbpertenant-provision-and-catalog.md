@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619695"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Ismerje meg, hogyan hozhat létre új bérlőket, és hogyan regisztrálhat azokat a katalógusban
@@ -86,7 +86,7 @@ Annak megismeréséhez, hogy a Wingtip tickets alkalmazás hogyan valósítja me
 
 2. Töréspont hozzáadásához vigye a kurzort a *New-bérlőt*tartalmazó sorra. Ezután nyomja le az F9 billentyűt.
 
-   ![Képernyőfelvétel: a töréspontok hozzáadására kijelölt új-bérlői parancsfájl.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![A képernyőfelvétel egy olyan parancsfájlt mutat be, amelynek New-Tenant a Töréspont hozzáadására van kijelölve.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. A szkript futtatásához nyomja le az F5 billentyűt.
 
@@ -103,7 +103,7 @@ Nem kell explicit módon követnie ezt a munkafolyamatot. Ismerteti, hogyan lehe
 
 * **Importálja a CatalogAndDatabaseManagement. psm1 modult.** Katalógust és bérlői szintű absztrakciót biztosít a szegmens [felügyeleti](elastic-scale-shard-map-management.md) függvényeknél. Ez a modul nagy mennyiségű katalógus-mintát ágyaz be, és érdemes megvizsgálni.
 * **Importálja a SubscriptionManagement. psm1 modult.** Az Azure-ba való bejelentkezéshez és a használni kívánt Azure-előfizetés kiválasztásához használható függvényeket tartalmazza.
-* **Konfigurációs adatok beolvasása.** Lépjen be a Get-Configuration paranccsal az F11 használatával, és tekintse meg, hogyan van megadva az alkalmazás konfigurációja. Az erőforrásnevek és az alkalmazás-specifikus értékek itt vannak meghatározva. Ne módosítsa ezeket az értékeket egészen addig, amíg nem ismeri a parancsfájlokat.
+* **Konfigurációs adatok beolvasása.** Lépjen be Get-Configuration az F11 használatával, és nézze meg, hogyan van megadva az alkalmazás konfigurációja. Az erőforrásnevek és az alkalmazás-specifikus értékek itt vannak meghatározva. Ne módosítsa ezeket az értékeket egészen addig, amíg nem ismeri a parancsfájlokat.
 * **A katalógus objektum beolvasása.** Lépjen be a Get-Catalog szolgáltatásba, amely a magasabb szintű parancsfájlban használt Catalog objektumot állít össze és ad vissza. Ez a függvény a **AzureShardManagement. psm1**-ből importált szegmens-felügyeleti függvényeket használja. A katalógus objektum a következő elemekből áll:
 
    * $catalogServerFullyQualifiedName a standard szárral és a felhasználó nevével ( _Catalog- \<user\> . database. Windows .net_) jön létre.
@@ -162,7 +162,7 @@ Az oktatóanyagban nem szereplő egyéb kiépítési minták:
 Az automatikus kiépítési mintával egy ügyfélalkalmazás vagy parancsfájl kiépítési kérelmet küld egy várólistára, amelyet a kiépítési szolgáltatás feldolgoz. Ezután lekérdezi a szolgáltatást a Befejezés megállapításához. Ha az előzetes kiépítés használatban van, a rendszer gyorsan kezeli a kérelmeket. A szolgáltatás kiépít egy helyettesítő adatbázist a háttérben.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

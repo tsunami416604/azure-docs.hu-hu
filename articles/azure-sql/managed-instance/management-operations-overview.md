@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
 ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323192"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Az Azure SQL Managed Instance felügyeleti műveleteinek áttekintése
@@ -69,7 +69,7 @@ A következő táblázatok összefoglalják a műveleteket és a jellemző álta
 
 |Művelet  |Hosszan futó szegmens  |Becsült időtartam  |
 |---------|---------|---------|
-|Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N/A|Legfeljebb 1 perc.|
+|Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N.A.|Legfeljebb 1 perc.|
 |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|Adatbázisfájlok csatolása|a műveletek 90%-a 5 percen belül befejeződik.|
 |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-a, 2,5 óra + idő alatt az összes adatbázist (220 GB/óra) kell befejeznie.|
 |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a 2,5 órában fejeződik be.|
@@ -145,7 +145,7 @@ A felügyeleti művelet előrehaladásának és állapotának figyeléséről a 
 A felügyeleti művelet megszakításával kapcsolatos további információkért lásd: [felügyeleti műveletek megszakítása](management-operations-cancel.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-funkciók](../database/features-comparison.md).

@@ -12,13 +12,13 @@ ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629012"
 ---
-# <a name="on-demand-provisioning"></a>Igény szerinti kiépítés
+# <a name="on-demand-provisioning"></a>Igény szerinti üzembe helyezés
 Igény szerinti kiépítés használatával másodpercek alatt kiépítheti a felhasználókat egy alkalmazásba. A funkció többek között a következőkre használható:
 
 * A konfigurációs problémák gyors elhárítása.
@@ -151,6 +151,6 @@ Jelenleg van néhány ismert korlátozás az igény szerinti kiépítés során.
 * A csoportok és szerepkörök igény szerinti üzembe helyezése nem támogatott.
 * Az igény szerinti kiépítés az alkalmazásból ki nem osztott felhasználók letiltását támogatja. Azonban nem támogatja az Azure AD-ből letiltott vagy törölt felhasználók letiltását vagy törlését. Ezek a felhasználók nem jelennek meg a felhasználó keresésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A kiépítés hibaelhárítása](./application-provisioning-config-problem.md)

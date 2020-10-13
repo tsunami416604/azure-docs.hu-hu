@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ffed14c1877f92b8f8989ea65500f441506fa34
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284489"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977289"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption Windows rendszerű virtuális gépekhez 
 
@@ -37,7 +37,7 @@ A Windows rendszerű virtuális gépek [számos méretben](../sizes-general.md)�
 
 A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
 
-Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](generation-2.md#generation-1-vs-generation-2-capabilities) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-windows.md#unsupported-scenarios)című témakörben talál.
+Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](../generation-2.md#generation-1-vs-generation-2-capabilities) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-windows.md#unsupported-scenarios)című témakörben talál.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -84,7 +84,7 @@ Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt á
 | PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/). |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató – Windows rendszerű virtuális gép létrehozása és titkosítása az Azure CLI-vel ](disk-encryption-cli-quickstart.md)
 - [Rövid útmutató – Windows rendszerű virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)

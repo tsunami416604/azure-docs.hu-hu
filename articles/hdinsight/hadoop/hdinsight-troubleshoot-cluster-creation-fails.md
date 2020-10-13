@@ -12,7 +12,7 @@ ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856296"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
@@ -80,7 +80,7 @@ Más elnevezési korlátozások is érvényesek a fürtök létrehozására. Tov
 
 Győződjön meg arról, hogy az [Azure állapota](https://status.azure.com) esetleges kimaradások vagy szolgáltatási problémák esetén is fennáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
 * [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  

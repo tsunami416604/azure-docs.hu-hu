@@ -9,7 +9,7 @@ ms.openlocfilehash: 870345d244a7f23011c900154e1c486e039a6d8d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854814"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Az Update Management engedélyezése runbookból
@@ -126,7 +126,7 @@ A runbook elindításához engedélyezve kell lennie Update Management egy Azure
 
 4. A runbook feladat és a **feladatok** lapról fellépő hibák állapotának figyelése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Update Management virtuális gépekhez való használatához lásd: [a virtuális gépek frissítéseinek és javításának kezelése](update-mgmt-manage-updates-for-vm.md).
 

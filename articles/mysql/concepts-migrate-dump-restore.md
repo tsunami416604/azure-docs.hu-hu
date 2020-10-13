@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905895"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
@@ -67,7 +67,7 @@ A csatlakozáshoz keresse meg a kapcsolati adatokat a Azure Database for MySQL *
 
 Adja hozzá a kapcsolatok adatait a MySQL Workbench-hez.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL Workbench-beli kapcsolatok karakterlánca":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>A cél Azure Database for MySQL-kiszolgáló előkészítése a gyors adatterhelések eléréséhez
 A cél Azure Database for MySQL kiszolgáló gyorsabb adatterhelésre való előkészítéséhez a következő kiszolgálói paramétereket és konfigurációkat módosítani kell.

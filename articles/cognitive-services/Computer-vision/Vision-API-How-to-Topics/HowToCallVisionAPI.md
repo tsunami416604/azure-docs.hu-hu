@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 085da17a29e1d5ff1fa69a62e0029fb917d56bb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936333"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965896"
 ---
 # <a name="call-the-computer-vision-api"></a>A Computer Vision API meghívása
 
@@ -148,7 +148,7 @@ Ebben az esetben az összes v1 lekérdezési paraméter ugyanúgy viselkedik. Ha
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Az elemzéshez használt JSON-kimenet beolvasása és megismerése
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 ```json
 {  
@@ -252,6 +252,6 @@ Ha több kategória is egyezik (például az 86 kategóriás osztályozó egy po
 
 Ezek a hibák ugyanazok, mint a vízióban. elemezze a további NotSupportedModel hibával (HTTP 400), amelyet az 1. és 2. lehetőség esetében is vissza lehet adni. A 2. lehetőség (bővített elemzés) esetén, ha a részletekben megadott bármelyik modell nem ismerhető fel, az API egy NotSupportedModel ad vissza, még akkor is, ha egy vagy több érvényes. A listModels meghívásával megállapíthatja, hogy milyen modellek támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A REST API használatához lásd: [Computer Vision API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b).
+A REST API használatához lásd: [Computer Vision API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b).

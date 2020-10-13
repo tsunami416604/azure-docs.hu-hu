@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 5f53c3ebe4bd15bc6afa8a62758309e9f40a71f0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779649"
 ---
 A Text Analytics v3 ügyféloldali kódtár legújabb verziójának használatához le kell töltenie a legújabb szoftvercsomagot a `Azure.AI.TextAnalytics` névtérben. A **Setting up** rövid útmutatóban szereplő beállítás [szakasza felsorolja az](../quickstarts/text-analytics-sdk.md) előnyben részesített nyelvhez használható parancsokat, például a kódot.

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
 ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714362"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozásával Azure Automation (előzetes verzió)
@@ -85,8 +85,8 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Név | Adja meg a *PrivateEndpoint*. |
-    | Region | Válassza a **YourRegion**lehetőséget. |
+    | Name (Név) | Adja meg a *PrivateEndpoint*. |
+    | Régió | Válassza a **YourRegion**lehetőséget. |
     |||
 
 4. Válassza a **Tovább: erőforrás**elemet.
@@ -160,6 +160,6 @@ A következő beállításokkal konfigurálhatja a magánhálózati végpontok D
 
 További információ: [Azure Private Endpoint DNS-konfiguráció](../../private-link/private-endpoint-dns.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a privát végpontról: [Mi az az Azure Private Endpoint?](../../private-link/private-endpoint-overview.md).

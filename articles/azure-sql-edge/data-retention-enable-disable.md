@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902495"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Adatmegőrzési szabályzatok engedélyezése és letiltása
@@ -92,7 +92,7 @@ and object_id = object_id(N'dbo.data_retention_table', N'U')
 
 Az adatbázis és a tábla adatmegőrzési beállítása a (z) együtt használható annak megállapításához, hogy az elavult sorokhoz tartozó autorazzia a táblákon fut-e. 
 
-|Adatbázis-beállítás | Tábla lehetőség | Viselkedés |
+|Adatbázis-beállítás | Tábla lehetőség | Működés |
 |----------------|--------------|----------|
 | KI | KI | Az adatmegőrzési házirend le van tiltva, és az elavult rekordok automatikus és manuális tisztítása le van tiltva.|
 | KI | ON  | Az adatmegőrzési szabályzat engedélyezve van a táblához. Az elavult rekordok automatikus tisztítása le van tiltva, azonban az elavult rekordok törlésére a manuális törlési módszer használható. |

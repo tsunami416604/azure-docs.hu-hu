@@ -4,10 +4,10 @@ description: Riasztás létrehozása Azure Portal használatával, amely értes�
 ms.topic: conceptual
 ms.date: 6/23/2020
 ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540676"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resource Health-riasztások konfigurálása az Azure Portal használatával
@@ -63,7 +63,7 @@ Riasztás Resource Health Azure Portal használatával
 A rendszer létrehozza a műveletnapló új riasztási szabályát, és egy megerősítő üzenet jelenik meg az ablak jobb felső sarkában.
 Engedélyezheti, letilthatja, szerkesztheti vagy törölheti a szabályokat. További információ a [műveletnapló szabályainak kezeléséről](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Resource Healthról:
 

@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540880"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Szolgáltatások használata a szólisták jelzésének növeléséhez
@@ -41,7 +41,7 @@ Tekintse át a [fogalmakat](luis-concept-feature.md) , hogy megértse, mikor és
 
 1. A kifejezések listája a teljes alkalmazásra vonatkozik a **globális** beállítással, vagy egy adott modellre (cél vagy entitás). Ha a kifejezés listát a szándék vagy az entitás _funkciói_ alapján hozza létre, a váltógomb nem globális értékre van állítva. Ebben az esetben a váltás jelentése az, hogy a szolgáltatás csak a modellhez van helyi, ezért _nem globális_ az alkalmazáshoz.
 
-1. Válassza a **Kész** lehetőséget. Az új funkció a **ml-szolgáltatások** lapra kerül.
+1. Válassza a **Done** (Kész) lehetőséget. Az új funkció a **ml-szolgáltatások** lapra kerül.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
@@ -65,6 +65,6 @@ Ha egy entitást szolgáltatásként szeretne hozzáadni egy szándékhoz, vála
 
 Ha egy entitást szolgáltatásként szeretne hozzáadni egy másik entitáshoz, hozzáadhatja a szolgáltatást a leképezés részletei lapon az [Entity paletta](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) használatával, vagy [hozzáadhatja a szolgáltatást](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) az entitás részletei lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy szolgáltatás hozzáadása, szerkesztése, törlése vagy inaktiválása után ismét [betaníthatja és tesztelheti az alkalmazást, és](luis-interactive-test.md) ellenőrizheti, hogy javul-e a teljesítmény.

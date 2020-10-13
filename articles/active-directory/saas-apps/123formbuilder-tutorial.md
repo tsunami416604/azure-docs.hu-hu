@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
 ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 123FormBuilder SSO-val
@@ -143,7 +143,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. Az **Microsoft Azure ad – egyszeri bejelentkezés – az Alkalmazásbeállítások konfigurálása** a következő lépéseket hajtja végre:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123formbuilder-tutorial/url3.png)
+    ![Egyetlen Sign-On konfigurálása](./media/123formbuilder-tutorial/url3.png)
 
     a. Ha az alkalmazást **identitásszolgáltató kezdeményezett módban**szeretné konfigurálni, másolja ki a példány **azonosító** értékét, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321747"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Oktatóanyag: útvonalak keresése és megjelenítése különböző utazási módokhoz Azure Maps használatával
@@ -121,7 +121,7 @@ A következő lépések bemutatják, hogyan hozhatja létre és jelenítheti meg
 
 2. Mentse a **MapTruckRoute.html** fájlt, és frissítse a lapot a böngészőben. Ha bármely városba, például a Los Angeles-be nagyítja, látni fogja, hogy az utcák a jelenlegi forgalmi flow-adatokkal jelennek meg.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Térkép forgalmának megtekintése":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
 
 3. Mentse **TruckRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Az indulási és célpontokat jelölő térkép megtekintése":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
 
 <a id="multipleroutes"></a>
 
@@ -277,7 +277,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Servic
 
 4. Mentse a **TruckRoute.html** fájlt, és frissítse a böngészőt. A térképnek ekkor a teherautó-és autós útvonalakat kell megjelenítenie.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Magán-és haszongépjármű-útvonalak egy térképen az Azure Route Service":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
 
     A teherautó útvonala sűrű kék vonal használatával jelenik meg. Az autó útvonala egy vékony lila vonal használatával jelenik meg. Az autó útvonala az I-90-n keresztül halad végig Washington államon keresztül, és a lakossági területeken lévő alagutakon keresztül halad. Mivel az alagutak megközelítik a lakossági területeket, a veszélyes hulladékok mennyisége korlátozott. A tehergépkocsi útvonala, amely megadja a `USHazmatClass2` rakomány típusát, egy másik autópálya használatára van irányítva.
 
@@ -287,7 +287,7 @@ Az [adatvezérelt stílusú kifejezéseket is használhatja](data-driven-style-e
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő oktatóanyag azt mutatja be, hogyan hozható létre egy egyszerű tároló-lokátor a Azure Maps használatával.
 
