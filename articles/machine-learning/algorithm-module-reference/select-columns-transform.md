@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893625"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945591"
 ---
 # <a name="select-columns-transform"></a>Oszlopok kiválasztása átalakításhoz
 
@@ -46,13 +46,19 @@ Ez a forgatókönyv feltételezi, hogy a szolgáltatás kiválasztásával kív�
 
    *Ne kapcsolja össze a bemeneti adatkészletet.* Ehelyett adja hozzá a [transzformáció alkalmazása](apply-transformation.md) modult, és kapcsolja össze a funkció-kiválasztási átalakítás kimenetét.
 
+   A folyamat struktúrájának a következőhöz hasonlónak kell lennie:
+
+   > [!div class="mx-imgBorder"]
+   > ![Mintavételezési folyamat](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > Nem számíthat arra, hogy a kiértékelési adatkészletre alkalmazza a [szűrő alapú funkciót](filter-based-feature-selection.md) , és ugyanazokat az eredményeket kapja. Mivel a funkció kiválasztása az értékek alapján történik, más oszlopokat is választhat, ami miatt a pontozási művelet sikertelen lesz.
+    
 7. A folyamat elküldése.
 
 A Mentés és az oszlopok kijelölésének folyamata biztosítja, hogy ugyanaz az Adatséma elérhető legyen a képzéshez és a pontozáshoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

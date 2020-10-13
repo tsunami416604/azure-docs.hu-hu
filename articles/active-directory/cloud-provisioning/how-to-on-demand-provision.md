@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72623d69f9fb0cbc68758a362bb977e5e02d2c00
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637171"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-on-demand-provisioning"></a>A felhő kiépítés igény szerinti kiépítés Azure AD Connect
@@ -91,7 +91,7 @@ Ezzel a folyamattal nyomon követheti az attribútumok átalakítását, ahogy a
 
 ![nyomkövetési attribútum](media/how-to-on-demand-provision/on-demand12.png)
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
 - [A Azure AD Connect Cloud kiépítés telepítése](how-to-install.md)

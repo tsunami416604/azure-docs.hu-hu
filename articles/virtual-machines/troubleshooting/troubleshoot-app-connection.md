@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036437"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966338"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Azure-beli virtuális gépeken futó alkalmazások csatlakozási hibáinak elhárítása
 
@@ -122,7 +122,7 @@ Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításoka
   
   * Ellenőrizze, hogy a virtuális gép bejövő NAT-szabályának konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.
   * Ellenőrizze, hogy a hálózati biztonsági csoportok engedélyezik-e a bejövő kérelmeket és a kimenő válaszok forgalmát.
-  * További információ: [Mi az a hálózati biztonsági csoport?](../../virtual-network/security-overview.md)
+  * További információ: [Mi az a hálózati biztonsági csoport?](../../virtual-network/network-security-groups-overview.md)
 
 Ha a virtuális gép vagy végpont egy elosztott terhelésű készlet tagja:
 

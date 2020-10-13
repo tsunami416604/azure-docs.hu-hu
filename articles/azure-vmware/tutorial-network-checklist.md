@@ -3,12 +3,12 @@ title: Oktatóanyag – hálózati tervezési ellenőrzőlista
 description: Ismerje meg a hálózati követelményekre vonatkozó előfeltételeket, valamint a hálózati kapcsolattal és az Azure VMware-megoldás hálózati portjaival kapcsolatos információkat.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576677"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948204"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Hálózatkezelési tervezési ellenőrzőlista az Azure VMware-megoldáshoz 
 
@@ -36,6 +36,9 @@ A privát felhőalapú logikai hálózat előre kiépített NSX-T tartalmaz. Az 
 Az AVS Private Cloud egy Azure ExpressRoute-kapcsolaton keresztül csatlakozik az Azure-beli virtuális hálózathoz. Ez a nagy sávszélességű, kis késleltetésű kapcsolat lehetővé teszi, hogy hozzáférjen az Azure-előfizetésében futó szolgáltatásokhoz a saját felhőalapú környezetében. Az Útválasztás Border Gateway Protocol (BGP) alapul, automatikusan kiépítve, és alapértelmezés szerint engedélyezve van minden egyes privát Felhőbeli telepítéshez. 
 
 Az AVS Private-felhőkhöz legalább egy `/22` CIDR hálózati címfordító szükséges az alhálózatok számára, alább látható. Ez a hálózat kiegészíti a helyszíni hálózatokat. A Címterület nem fedi át az előfizetésben és a helyszíni hálózatokban lévő más virtuális hálózatokban használt címeket. Ezen a címen a blokkon belül a felügyelet, a kiépítés és a vMotion hálózat automatikusan kiépítve lesz.
+
+>[!NOTE]
+>A Címterület engedélyezett tartományai az RFC 1918 Private címterület (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), kivéve a 172.17.0.0/16.
 
 Példa a `/22` CIDR hálózati címterület:  `10.10.0.0/22`
 
@@ -74,7 +77,7 @@ A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések 
 A DHCP-szolgáltatás beépített használatával NSX vagy használhat helyi DHCP-kiszolgálót a privát felhőben ahelyett, hogy útválasztást továbbít a DHCP-forgalomnak a WAN-on keresztül a helyszíni környezetbe.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte az Azure VMware-megoldás saját felhő üzembe helyezésének szempontjait és követelményeit. 
 

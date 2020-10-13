@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan implementálhatja a tartós időzítőket a Azu
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87056232"
+ms.locfileid: "91876447"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Időzítők Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Egy tartós időzítőt úgy hozhat létre, hogy meghívja a `CreateTimer` (.net
 Amikor a 4:30 órakor lejáró időzítőt hoz létre, az alapul szolgáló tartós feladati keretrendszer enqueues egy olyan üzenetet, amely csak a 4:30 órakor lesz látható. Ha a Azure Functions használati tervben fut, akkor az újonnan látható időzítő üzenet biztosítja, hogy a Function alkalmazás aktiválva legyen egy megfelelő virtuális gépen.
 
 > [!NOTE]
-> * A tartós időzítők jelenleg legfeljebb 7 napig tartanak. Ha hosszabb késésre van szükség, akkor szimulálható az időzítő API-k használatával egy `while` hurokban.
+> * A tartós [2.3.0 verziójától](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) kezdve a tartós időzítők korlátlanok. A bővítmény korábbi verzióiban a tartós időzítők legfeljebb hét napig tartanak. Ha egy korábbi verziót használ, és hét napnál hosszabb késleltetésre van szüksége, használja az időzítő API-kat egy `while` hurokban a késleltetés szimulálása érdekében.
 > * Mindig a `CurrentUtcDateTime` .net- `DateTime.UtcNow` ben vagy a `currentUtcDateTime` `Date.now` `Date.UTC` -ban vagy a-ben, illetve a-ban vagy a-ben, a tartós időzítők esetében pedig a tűz idejére További információ: [Orchestrator Function Code megkötések](durable-functions-code-constraints.md) cikk.
 
 ## <a name="usage-for-delay"></a>Használat késleltetéshez
@@ -177,7 +177,7 @@ Ez a lemondási mechanizmus nem szakítja meg a folyamatban lévő tevékenység
 
 A Orchestrator functions-időtúllépések megvalósításának alaposabb példáját az [emberi interakció & időtúllépések – telefonos ellenőrzés](durable-functions-phone-verification.md) című cikkben találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a külső események növeléséről és kezeléséről](durable-functions-external-events.md)

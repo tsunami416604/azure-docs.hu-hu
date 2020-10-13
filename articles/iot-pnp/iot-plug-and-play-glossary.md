@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577339"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play"></a>A IoT használati feltételeinek szószedete Plug and Play
@@ -59,7 +59,7 @@ A kapcsolati karakterláncok a végponthoz való kapcsolódáshoz szükséges ad
 
 Minden [eszköz-modellhez](#device-model) tartozik egy alapértelmezett összetevő. Egy egyszerű eszköz-modellnek csak egy alapértelmezett összetevője van – ilyen modell más néven összetevő-eszköz. Az összetettebb modell több összetevőt tartalmaz, amelyek az alapértelmezett összetevő alá vannak ágyazva.
 
-## <a name="device-certification"></a>Eszköz minősítése
+## <a name="device-certification"></a>Eszköztanúsítás
 
 A IoT Plug and Play eszköz minősítési program ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 
@@ -81,7 +81,7 @@ Az [Eszközkezelő](#device-builder) vagy [modul-szerkesztő](#module-builder)a 
 
 A digitális Twin egy [IoT Plug and Play eszköz](#iot-plug-and-play-device)modellje. A digitális Twin modell a [digitális ikrek definíciós nyelvét](#digital-twins-definition-language)használja. Az [Azure IoT-eszköz SDK](#azure-iot-device-sdk) -k használatával a digitális ikrek a futási időben is kommunikálhatnak. Beállíthat például egy tulajdonságot egy digitális Twin-eszközön, és az SDK közli ezt a változást a felhőben lévő IoT-megoldással.
 
-## <a name="digital-twin-change-events"></a>Digitális kettős változási események
+## <a name="digital-twin-change-events"></a>Digitális ikermódosítási események
 
 Ha egy [IoT Plug and Play eszköz](#iot-plug-and-play-device) csatlakozik egy [IoT hubhoz](#azure-iot-hub), a hub útválasztási képességével digitális kettős változtatásokról is küldhet értesítéseket. Ha például egy [tulajdonság](#properties) értéke megváltozik egy eszközön, IoT hub küldhet értesítést egy végpontnak, például egy Event hub-nak.
 
@@ -101,7 +101,7 @@ Az illesztőfelületek a [IoT Plug and Play eszköz](#iot-plug-and-play-device) 
 
 A IoT Hub lekérdezési nyelv több célra szolgál. Használhatja például a nyelvet az IoT hub-ban regisztrált eszközök keresésére, vagy a [digitális kettős útválasztási](#digital-twin-route) viselkedés pontosítására.
 
-## <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play híd
+## <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-híd
 
 A IoT Plug and Play Bridge egy nyílt forráskódú alkalmazás, amely lehetővé teszi a Windows-vagy Linux-átjárók számára csatlakoztatott meglévő érzékelők és perifériák csatlakoztatását a [IoT Plug and Play-eszközökhöz](#iot-plug-and-play-device).
 

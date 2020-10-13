@@ -2,19 +2,19 @@
 title: Csoportos hívás kiemelt mintája
 titleSuffix: An Azure Communication Services sample overview
 description: Az Azure kommunikációs szolgáltatásokkal való meghívásának áttekintése, amely lehetővé teszi a fejlesztők számára a minta belső működésének megismerését.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8ae69abc9a5f2969f0d60b2fa712c4c9910b678c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823829"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963108"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -94,7 +94,7 @@ A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit m
 2. Hozzon létre egy új közzétételi profilt, és válassza ki az Azure-előfizetését.
 3. A közzététel előtt adja hozzá a (z `Edit App Service Settings` ) és a (z), és adja meg a `ResourceConnectionString` (z) kulcsot, és adja meg a (appsettings.json) értéket a (z) értékként.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
@@ -103,7 +103,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](../quickstarts/voice-video-calling/calling-client-samples.md)

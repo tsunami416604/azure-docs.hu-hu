@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
 ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637271"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer úszó IP-konfiguráció
@@ -38,7 +38,7 @@ A lebegő IP-címek nélkül az Azure egy hagyományos terheléselosztási IP-c�
 
 - A lebegőpontos IP-cím jelenleg nem támogatott a másodlagos IP-konfigurációknál a terheléselosztási forgatókönyvek esetében
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancer kimenő kapcsolatokról](load-balancer-outbound-connections.md).

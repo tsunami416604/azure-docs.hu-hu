@@ -15,10 +15,10 @@ ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293373"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server verziójának módosítása helyben
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan módosíthatja a Microsoft SQL Server verziójá
 
 SQL Server helyben történő frissítéséhez a következő feltételek érvényesek:
 
-- A SQL Server kívánt verziójának telepítési adathordozójának megadása kötelező. A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, az Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják, amely a SQL Server újabb verziójával rendelkezik (ez általában a C:\SQLServerFull-ben található).
+- A SQL Server kívánt verziójának telepítési adathordozójának megadása kötelező. A [Frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [Mennyiségilicenc-szolgáltatási központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx) szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, az Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják, amely a SQL Server újabb verziójával rendelkezik (ez általában a C:\SQLServerFull-ben található).
 - A kiadási [frissítéseknek a támogatási frissítések elérési útját](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)kell követniük.
 
 ## <a name="planning-for-version-change"></a>A verzió módosításának tervezése
@@ -69,11 +69,11 @@ A SQL Server verziójának frissítéséhez szerezze be a SQL Server telepítés
 1. A **termékkulcs** lapon válassza ki azt a lehetőséget, amely azt jelzi, hogy a SQL Server ingyenes kiadására szeretne-e frissíteni, vagy a termék éles verziójának PID-kulcsa van. További információ: [SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) és a [támogatott verzió és kiadás frissítései (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)támogatott szolgáltatásai.
 1. Kattintson a **tovább** gombra, amíg el nem éri a **frissítésre kész** lapot, majd válassza a **frissítés**lehetőséget. A módosítás érvénybe léptetéséhez a telepítési ablak több percig is leállhat. A **teljes** oldal megerősíti, hogy a frissítés befejeződött. A frissítéshez szükséges lépésenkénti eljárásért tekintse meg [a teljes eljárást](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure).
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Teljes oldal":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
 Ha módosította a SQL Server kiadást a verzió módosítása mellett, frissítse a kiadást is, és tekintse meg a **verzió és kiadás ellenőrzése a portálon** című SZAKASZT az SQL VM-példány módosításához.
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="Verzió metaadatainak módosítása":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>SQL Server verziójának visszaminősítése
 
@@ -91,7 +91,7 @@ A SQL Server verzióját a következő lépésekkel állíthatja vissza:
 
    Ügyeljen arra, hogy a megfelelő beállításokat válassza, ha az ilyen elemeket célként megadott verzióként, függő objektumként vagy speciális beállításokként parancsfájlként adja meg.
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Parancsfájl-beállítások":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
 1. Távolítsa el teljesen SQL Server és az összes társított szolgáltatást.
 1. Indítsa újra a virtuális gépet.
@@ -104,7 +104,7 @@ A SQL Server verzióját a következő lépésekkel állíthatja vissza:
 
 Miután módosította SQL Server verzióját, regisztrálja újra a SQL Server VMt az [SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md) , hogy a Azure Portal használatával megtekinthesse a SQL Server verzióját. A felsorolt verziószámnak mostantól a SQL Server telepítésének újonnan frissített verziójának és kiadásának kell szerepelnie.
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Verzió ellenőrzése":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
 > [!NOTE]
 > Ha már regisztrált az SQL VM erőforrás-szolgáltatónál, törölje a [regisztrációt az RP-ből](sql-vm-resource-provider-register.md#unregister-from-rp) , majd [regisztrálja újra az SQL VM-erőforrást](sql-vm-resource-provider-register.md#register-with-rp) , hogy az észlelje a virtuális gépre telepített SQL Server megfelelő verzióját és kiadását. Ez frissíti a virtuális géphez társított metaadatokat és számlázási adatokat.

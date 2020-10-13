@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602285"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945913"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -155,7 +155,7 @@ Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | 1684
 Hálózati adapter | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során. 
 Belső terheléselosztó | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Nyilvános Load Balancer | Egyelőre nem támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
-Nyilvános IP-cím | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
+Nyilvános IP-cím | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.<br/><br/> A nyilvános IP-cím a régióra jellemző, és az áthelyezés után nem lesz megtartva a célként megadott régióban. Tartsa szem előtt, ha módosítja a hálózati beállításokat (beleértve a terheléselosztási szabályokat is) a célhelyen.
 Hálózati biztonsági csoport | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Fenntartott (statikus) IP-cím | Támogatott | Jelenleg nem konfigurálható. Az érték alapértelmezés szerint a forrás értékét. <br/><br/> Ha a forrás virtuális gépen lévő hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózatnak ugyanaz az IP-címe, akkor a cél virtuális géphez van rendelve.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik ugyanazzal az IP-címmel, akkor a virtuális gép kezdeményezésének áthelyezése sikertelen lesz.
 Dinamikus IP-cím | Támogatott | Jelenleg nem konfigurálható. Az érték alapértelmezés szerint a forrás értékét.<br/><br/> Ha a forrás hálózati adaptere dinamikus IP-címmel rendelkezik, a célként megadott virtuális gép hálózati adaptere alapértelmezés szerint is dinamikus.
@@ -188,6 +188,6 @@ Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsola
 - Javasoljuk, hogy tesztelje a szabályokat nem éles környezetben. [Tekintse át a példákat](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbáljon [egy Azure-beli virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba helyezni az erőforrás-mozgató használatával.

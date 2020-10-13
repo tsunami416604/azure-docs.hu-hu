@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761413"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele

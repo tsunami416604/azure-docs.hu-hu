@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
 description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89649836"
+ms.locfileid: "91876294"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
@@ -66,12 +66,15 @@ A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-r
 
 ### <a name="arm-templates"></a>ARM-sablonok
 
-A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) .
+A felügyelni kívánt tulajdonságot több módon [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) is megtekintheti.
 
 #### <a name="existing-resource-in-the-portal"></a>Meglévő erőforrás a portálon
 
 A tulajdonságok megkeresésének legegyszerűbb módja egy azonos típusú meglévő erőforrás megkeresése. A kényszeríteni kívánt beállítással már konfigurált erőforrások is megadják az összehasonlításhoz használandó értéket.
 Tekintse meg a **sablon exportálása** lapot (a **Beállítások**alatt) az adott erőforráshoz tartozó Azure Portalban.
+
+> [!WARNING]
+> Az Azure Portal által exportált ARM-sablon nem csatlakoztatható egyenesen egy `deployment` ARM-sablon tulajdonságához egy [deployIfNotExists](../concepts/effects.md#deployifnotexists) házirend-definícióban.
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="A Azure Portal meglévő erőforrásának sablon exportálása oldalának képernyőképe." border="false":::
 
@@ -476,7 +479,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - A használandó effektus meghatározása
 > - A szabályzat definíciójának tagjai
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 

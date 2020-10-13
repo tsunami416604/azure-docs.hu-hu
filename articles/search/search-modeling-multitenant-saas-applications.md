@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397368"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
@@ -95,7 +95,7 @@ Ha az indexek teljes száma túl nagyra nő egyetlen szolgáltatás esetében, e
 
 ## <a name="2-service-per-tenant"></a>2. szolgáltatás/bérlő
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="A szolgáltatás/bérlői modell ábrázolása" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Az index/bérlői modell ábrázolása" border="false":::
 
 A szolgáltatás-bérlői architektúrában minden bérlő saját keresési szolgáltatással rendelkezik.
 
@@ -130,7 +130,7 @@ Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosult
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb Azure-Cognitive Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.
 
 Az Azure Cognitive Search és a több-bérlős forgatókönyvekkel kapcsolatos bármilyen kérdés a következő lehet: azuresearch_contact@microsoft.com .

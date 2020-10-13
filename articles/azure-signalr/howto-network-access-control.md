@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536222"
 ---
 # <a name="configure-network-access-control"></a>A hálózati hozzáférés-vezérlés konfigurálása
@@ -60,6 +60,6 @@ Az Azure Signaler szolgáltatás hálózati hozzáférés-vezérlését az Azure
 
 1. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Private linkről](/azure/private-link/private-link-overview).

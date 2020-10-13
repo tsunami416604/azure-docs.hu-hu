@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859490"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91936004"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
 A következő korlátozások csak a **Azure Resource Manager** régiónként felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
@@ -75,6 +75,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Háttérbeli erőforrások száma Load Balancer <sup> 1<sup> | 150                   |
 | Magas rendelkezésre állású portok                 | 1/belső előtér       |
 | Kimenő szabályok száma Load Balancer        | 600                           |
+| Terheléselosztó virtuális gépenként                   | 2 (1 nyilvános és 1 belső)   |
 
 <sup>1</sup> A korlát akár 150 erőforrásra is vonatkozik, az önálló virtuálisgép-erőforrások, a rendelkezésre állási csoport erőforrásai és a virtuálisgép-méretezési csoportok elhelyezésével együtt.
 
@@ -88,6 +89,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Előtér-IP-konfigurációk              | 200                          |
 | Háttérbeli készlet mérete                       | 300 IP-konfiguráció, egyetlen rendelkezésre állási csoport |
 | Rendelkezésre állási készletek száma Load Balancer     | 1                            |
+| Terheléselosztó virtuális gépenként                   | 2 (1 nyilvános és 1 belső)  |
 
 <a name="virtual-networking-limits-classic"></a>A következő korlátozások csak a **klasszikus** üzemi modellen keresztül felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 

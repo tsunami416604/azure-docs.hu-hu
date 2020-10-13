@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a21d0db383e8c563f0b187061a95ac818dd2a4f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995366"
 ---
-# <a name="managed-hsm-access-control"></a>Felügyelt HSM hozzáférés-vezérlés
+# <a name="managed-hsm-access-control"></a>A Managed HSM hozzáférés-vezérlése
 
 > [!NOTE]
 > Key Vault **erőforrás-szolgáltató** két erőforrástípust támogat: tárolókat és **felügyelt HSM**. A jelen cikkben leírt hozzáférés-vezérlés csak a **felügyelt HSM**vonatkozik. A felügyelt HSM hozzáférés-vezérlésével kapcsolatos további tudnivalókért lásd: [hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel](../general/rbac-guide.md).
@@ -60,7 +60,7 @@ A rendszerbiztonsági tag végpontokon keresztül fér hozzá a síkokhoz. A ké
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
-| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Üzemeltetés | Hozzáférés-vezérlési mechanizmus |
+| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Műveletek | Hozzáférés-vezérlési mechanizmus |
 | --- | --- | --- | --- |
 | Felügyeleti sík | **Globális**<br> management.azure.com:443<br> | Felügyelt HSM létrehozása, olvasása, frissítése, törlése és áthelyezése<br>Felügyelt HSM-címkék beállítása | Azure RBAC-vel |
 | Adatsík | **Globális**<br> &lt;HSM – név &gt; . Vault.Azure.net:443<br> | **Kulcsok**: visszafejtés, titkosítás,<br> kicsomagolás, becsomagolás, ellenőrzés, aláírás, beolvasás, Listázás, frissítés, létrehozás, importálás, törlés, biztonsági mentés, visszaállítás, kiürítés<br/><br/> **Adatsík szerepkör-felügyelet (felügyelt HSM helyi RBAC) * * *: szerepkör-definíciók listázása, szerepkörök hozzárendelése, szerepkör-hozzárendelések törlése, <br/> <br/> Egyéni szerepkörök definiálása** Backup/Restore **: Backup, Restore, status Backup/Restore Operations <br/> <br/> **Security domain * *: a biztonsági tartomány letöltése és feltöltése | Felügyelt HSM helyi RBAC |

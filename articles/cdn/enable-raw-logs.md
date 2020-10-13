@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
 ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321149"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>A Microsoft Azure CDN vonatkozó metrikák és nyers naplók figyelése
@@ -61,7 +61,7 @@ Nyers naplók konfigurálása a Azure CDNhoz a Microsoft profilból:
     * **Stream az Event hub-ba**
         * Válassza ki az **előfizetést**, az **Event hub-névteret**, az **Event hub nevét (nem kötelező)** és az **Event hub-szabályzat nevét**.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Adja meg a naplózási beállításokat a célhelyen." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 7. Kattintson a **Mentés** gombra.
 
@@ -215,7 +215,7 @@ További információ: [Azure monitor mérőszámok](https://docs.microsoft.com/
 
 **A Microsoft által Azure CDN által támogatott metrikák**
 
-| Mérőszámok         | Description                                                                                                      | Méret                                                                                   |
+| Mérőszámok         | Leírás                                                                                                      | Méret                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | Találatok aránya * | A CDN-gyorsítótárból kiérkező kimenő forgalom százalékos aránya, a teljes kimenő forgalomra kiszámítva.                                      | Végpont                                                                                    |
 | RequestCount    | A CDN által kiszolgált ügyfél-kérelmek száma.                                                                     | Végpont </br> Ügyfél országa. </br> Ügyfél-régió. </br> A HTTP-állapot. </br> HTTP-állapot csoport. |
@@ -235,23 +235,23 @@ A bájtok találati arányának kiszámítása során kizárt forgatókönyvek:
 
 2. A **figyelés**területen válassza a **metrikák**elemet:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="A CDN-profil metrikái." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 3. Válassza a **metrika hozzáadása**lehetőséget, majd válassza ki a hozzáadni kívánt metrikát:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Adja hozzá a metrikát a CDN-profilhoz, és válassza ki." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 4. Szűrő hozzáadásához válassza a **szűrő hozzáadása** elemet:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Szűrő alkalmazása a metrikára" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 5. Válassza a felosztás **alkalmazása** lehetőséget, hogy a trendeket különböző dimenziók szerint lássuk:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="A metrikára való felosztás alkalmazása." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 6. Új diagram hozzáadásához válassza az **új diagram** lehetőséget:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Új diagram hozzáadása a metrika nézethez." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 ### <a name="alerts"></a>Riasztások
 
@@ -259,7 +259,7 @@ A riasztásokat a Microsoft CDN-ben beállíthatja a **figyelési**  >>  **riasz
 
 Válassza az **új riasztási szabály** a metrikák szakaszban felsorolt mérőszámok esetén:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="A CDN-végpontra vonatkozó riasztások konfigurálása." border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::
 
 A riasztások Azure Monitor alapján lesznek felszámítva. További információ a riasztásokról: [Azure monitor riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
@@ -270,21 +270,21 @@ A további mérőszámokat az Azure Log Analytics és a nyers naplók használat
 
 2. Válassza ki a létrehozott Log Analytics munkaterületet:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics-munkaterület kiválasztása" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::   
 
 3. A log Analytics-munkaterület **általános** területén válassza a **naplók** lehetőséget.  Ezután válassza az első **lépések**lehetőséget:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log Analytics-erőforrás munkaterület." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::   
  
 4. Válassza a **CDN-profilok**lehetőséget.  Válasszon egy példát a lekérdezés FUTTATÁSához vagy a példa képernyő bezárásához, és adja meg az egyéni lekérdezést:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Példa a lekérdezési képernyőre." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Lekérdezés végrehajtása." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true":::   
 
 4. Ha diagramon szeretné megtekinteni az adatmegjelenítést, válassza a **diagram**lehetőséget.  Válassza a **rögzítés az irányítópulton** lehetőséget a diagram Azure-irányítópultra való rögzítéséhez:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Diagram rögzítése az irányítópulton." border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Adja hozzá a CDN-profil diagnosztikai beállításait." border="true"::: 
 
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben engedélyezte a HTTP nyers naplókat a Microsoft CDN szolgáltatáshoz.

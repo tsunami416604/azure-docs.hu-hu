@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627567"
+ms.locfileid: "91876549"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -93,11 +93,9 @@ A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
 ## <a name="monitor-replication"></a>Replikáció monitorozása
 
-A Azure Database for MySQL a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
+A Azure Database for MySQL a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el. Ezt a mérőszámot a `seconds_behind_master` MySQL parancsában elérhető metrika alapján számítjuk ki `SHOW SLAVE STATUS` . Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
 
-Ezt a mérőszámot a `seconds_behind_master` MySQL parancsában elérhető metrika alapján számítjuk ki `SHOW SLAVE STATUS` .
-
-Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
+Ha megtekinti a replikálás nagyobb késését, a [replikációs késéssel kapcsolatos hibák](howto-troubleshoot-replication-latency.md) a lehetséges okok megoldásához és megismeréséhez.
 
 ## <a name="stop-replication"></a>Replikáció leállítása
 

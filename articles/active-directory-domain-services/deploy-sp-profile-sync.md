@@ -2,7 +2,7 @@
 title: A SharePoint felhasználói profil szolgáltatás engedélyezése az Azure AD DS segítségével | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat egy Azure Active Directory Domain Services felügyelt tartományt a SharePoint Server-profilok szinkronizálásának támogatásához
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 7bd63ece1ec32e5e4cecfd2a458124a4f24ccaa6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749641"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962479"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services konfigurálása a SharePoint Server felhasználói profilok szinkronizálásának támogatásához
 
@@ -69,7 +69,7 @@ Az Azure AD DS felügyeleti virtuális gépről hajtsa végre a következő lép
 
     ![Adja hozzá a SharePoint-szolgáltatásfiókot a HRE DC szolgáltatásfiók biztonsági csoportjához.](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [a felhasználói profilok szinkronizálásának kezelése a SharePoint-kiszolgálón](/SharePoint/administration/manage-profile-synchronization).
 

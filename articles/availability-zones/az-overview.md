@@ -8,10 +8,10 @@ ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773739"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és rendelkezésre állási zónák az Azure-ban
@@ -79,7 +79,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Régió típusa | Nem regionális | Alapító | Mainstream | Specializált | Rendelkezésre állási zónák | Adattárolási hely |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
-| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
+| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N.A. | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
@@ -99,10 +99,10 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Azure ExpressRoute | Azure Bastion | Azure Dedicated HSM |
 > | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
 > | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
-> | Cloud Services: Av2 sorozat | Azure Data Explorer | Azure Lab Services |
-> | Cloud Services: Dv2 sorozat | Azure Data Share | Azure NetApp Files |
-> | Cloud Services: Dv3 sorozat | Azure Database for MySQL | Azure Quantum |
-> | Cloud Services: Ev3 sorozat | Azure Database for PostgreSQL | Azure Spring Cloud szolgáltatás |
+> | Cloud Services: Av2-Series | Azure Data Explorer | Azure Lab Services |
+> | Cloud Services: Dv2-Series | Azure Data Share | Azure NetApp Files |
+> | Cloud Services: Dv3-Series | Azure Database for MySQL | Azure Quantum |
+> | Cloud Services: Ev3-Series | Azure Database for PostgreSQL | Azure Spring Cloud szolgáltatás |
 > | Cloud Services: példányok szintjének IP-címei | Azure Database Migration Service | Azure Time Series Insights |
 > | Cloud Services: Fenntartott IP | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | Disk Storage | Azure DDoS Protection | Cloud Services: G sorozat |
@@ -113,47 +113,47 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Service Fabric | Azure HPC Cache | Data Catalog |
 > | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
 > | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Virtual Machines: Av2 sorozat | Azure Machine Learning | Azure Machine Learning Studio (klasszikus)|
-> | Virtual Machines: BS sorozat | Azure Private Link | Microsoft Genomics |
-> | Virtual Machines: DSv2 sorozat | Azure Red Hat OpenShift | Remote Rendering |
-> | Virtual Machines: DSv3 sorozat | Azure SignalR szolgáltatás | Spatial Anchors |
-> | Virtual Machines: Dv2 sorozat | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3 sorozat | Azure Stack Hub | Video Indexer |
-> | Virtual Machines: ESv3 sorozat | Azure Stream Analytics | Virtual Machines: DASv4 sorozat |
-> | Virtual Machines: Ev3 sorozat | Azure Synapse Analytics | Virtual Machines: DAv4 sorozat |
+> | Virtual Machines: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klasszikus)|
+> | Virtual Machines: Bs-Series | Azure Private Link | Microsoft Genomics |
+> | Virtual Machines: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
+> | Virtual Machines: DSv3-Series | Azure SignalR szolgáltatás | Spatial Anchors |
+> | Virtual Machines: Dv2-Series | Azure Site Recovery | StorSimple |
+> | Virtual Machines: Dv3-Series | Azure Stack Hub | Video Indexer |
+> | Virtual Machines: ESv3-Series | Azure Stream Analytics | Virtual Machines: DASv4-Series |
+> | Virtual Machines: Ev3-Series | Azure Synapse Analytics | Virtual Machines: DAv4-Series |
 > | Virtual Machines: F sorozat | Batch | Virtual Machines: DCsv2 sorozat |
-> | Virtual Machines: FS sorozat | Cloud Services: M sorozat | Virtual Machines: EASv4 sorozat |
-> | Virtual Machines: példányok szintjének IP-címei | Cognitive Services | Virtual Machines: EAv4 sorozat |
+> | Virtual Machines: FS-Series | Cloud Services: M sorozat | Virtual Machines: EASv4-Series |
+> | Virtual Machines: példányok szintjének IP-címei | Cognitive Services | Virtual Machines: EAv4-Series |
 > | Virtual Machines: Fenntartott IP | Cognitive Services: Computer Vision | Virtual Machines: G sorozat |
-> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS sorozat |
-> | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1 sorozat |
-> |  | Cognitive Services: űrlap-felismerő | Virtual Machines: HBv2 sorozat |
-> |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1 sorozat |
+> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS-Series |
+> | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1-Series |
+> |  | Cognitive Services: űrlap-felismerő | Virtual Machines: HBv2-Series |
+> |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-Series |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: H sorozat |
-> |  | Cognitive Services: Speech Services | Virtual Machines: LS-sorozat |
-> |  | Tárolópéldányok | Virtual Machines: LSv2 sorozat |
-> |  | Container Registry | Virtual Machines: Mv2 sorozat |
-> |  | Data Factory | Virtual Machines: NC sorozat |
-> |  | Event Grid | Virtual Machines: NCv2 sorozat |
-> |  | HDInsight | Virtual Machines: NCv3 sorozat |
-> |  | Logic Apps | Virtual Machines: NDs sorozat |
-> |  | Media Services | Virtual Machines: NDv2 sorozat |
-> |  | Network Watcher | Virtual Machines: NV sorozat |
-> |  | Notification Hubs | Virtual Machines: NVv3 sorozat |
-> |  | Power BI Embedded | Virtual Machines: NVv4 sorozat |
+> |  | Cognitive Services: Speech Services | Virtual Machines: LS-Series |
+> |  | Tárolópéldányok | Virtual Machines: LSv2-Series |
+> |  | Container Registry | Virtual Machines: Mv2-Series |
+> |  | Data Factory | Virtual Machines: NC-Series |
+> |  | Event Grid | Virtual Machines: NCv2-Series |
+> |  | HDInsight | Virtual Machines: NCv3-Series |
+> |  | Logic Apps | Virtual Machines: NDs-Series |
+> |  | Media Services | Virtual Machines: NDv2-Series |
+> |  | Network Watcher | Virtual Machines: NV-Series |
+> |  | Notification Hubs | Virtual Machines: NVv3-Series |
+> |  | Power BI Embedded | Virtual Machines: NVv4-Series |
 > |  | Prémium Blob Storage | Virtual Machines: SAP HANA on Azure Large Instances |
 > |  | Premium Files Storage | Visual Studio App Center |
 > |  | Tárterület: Archive Storage |  |
 > |  | Ultra Disk Storage |  |
-> |  | Virtual Machines: Ddsv4 sorozat |  |
-> |  | Virtual Machines: Ddv4 sorozat |  |
-> |  | Virtual Machines: Dsv4 sorozat |  |
-> |  | Virtual Machines: DV4 sorozat |  |
-> |  | Virtual Machines: Edsv4 sorozat |  |
-> |  | Virtual Machines: Edv4 sorozat |  |
-> |  | Virtual Machines: Esv4 sorozat |  |
-> |  | Virtual Machines: Ev4 sorozat |  |
-> |  | Virtual Machines: Fsv2 sorozat |  |
+> |  | Virtual Machines: Ddsv4-Series |  |
+> |  | Virtual Machines: Ddv4-Series |  |
+> |  | Virtual Machines: Dsv4-Series |  |
+> |  | Virtual Machines: Dv4-Series |  |
+> |  | Virtual Machines: Edsv4-Series |  |
+> |  | Virtual Machines: Edv4-Series |  |
+> |  | Virtual Machines: Esv4-Series |  |
+> |  | Virtual Machines: Ev4-Series |  |
+> |  | Virtual Machines: Fsv2-Series |  |
 > |  | Virtual Machines: M sorozat |  |
 > |  | Virtual WAN |  |
 

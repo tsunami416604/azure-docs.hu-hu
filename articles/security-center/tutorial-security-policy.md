@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894582"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945744"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -46,7 +46,7 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 1. A **Security Center** irányítópulton válassza a **biztonsági házirend**elemet.
 
-    ![A Szabályzatkezelés panel](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="A házirend-kezelés lap&quot;:::
 
    A **házirend kezelése** képernyőn láthatja a felügyeleti csoportok, előfizetések és munkaterületek számát, valamint a felügyeleti csoport struktúráját.
 
@@ -57,7 +57,7 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
    ![házirend lap](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Ha az alapértelmezett szabályzat mellett "MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
+    > Ha az alapértelmezett szabályzat mellett &quot;MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
 
 
 1. Válasszon az ezen az oldalon elérhető lehetőségek közül:
@@ -68,8 +68,19 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
     1. Az alapértelmezett házirend megtekintéséhez és szerkesztéséhez válassza a **hatályos házirend megtekintése** lehetőséget, és folytassa az alább leírtak szerint. 
 
-       ![házirend képernyő](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="A házirend-kezelés lap&quot;:::
+
+   A **házirend kezelése** képernyőn láthatja a felügyeleti csoportok, előfizetések és munkaterületek számát, valamint a felügyeleti csoport struktúráját.
+
+1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelynek a szabályzatait meg szeretné tekinteni.
+
+1. Megjelenik az adott előfizetés vagy felügyeleti csoport biztonsági szabályzat lapja. Megjeleníti az elérhető és hozzárendelt házirendeket.
+
+   ![házirend lap](./media/tutorial-security-policy/security-policy-page.png)
+
+    > [!NOTE]
+    > Ha az alapértelmezett szabályzat mellett &quot;MG örökölt":::
+
        Ez a **biztonsági házirend** képernyő a kiválasztott előfizetéshez vagy felügyeleti csoporthoz hozzárendelt szabályzatok által végrehajtott műveletet tükrözi.
        
        * A felül található hivatkozásokkal nyisson meg egy szabályzat- **hozzárendelést** , amely az előfizetésre vagy a felügyeleti csoportra vonatkozik. Ezekkel a hivatkozásokkal hozzáférhet a hozzárendeléshez, és szerkesztheti vagy letilthatja a szabályzatot. Ha például úgy látja, hogy egy adott házirend-hozzárendelés ténylegesen megtagadja az Endpoint Protectiont, akkor a hivatkozásra kattintva szerkesztheti vagy tilthatja le a házirendet.
@@ -128,11 +139,10 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk a biztonsági szabályzatokat ismerteti. A kapcsolódó információk a következő cikkekben találhatók:
 
-* A házirendek PowerShell használatával történő beállításával kapcsolatos útmutatásért lásd [: rövid útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Azure PowerShell modul használatával](../governance/policy/assign-policy-powershell.md)
-
-* A biztonsági szabályzatok Azure Policyban való szerkesztésével kapcsolatos útmutatásért lásd: [házirendek létrehozása és kezelése a megfelelőség érvényesítéséhez](../governance/policy/tutorials/create-and-manage.md).
-
-* A szabályzat előfizetésekre vagy felügyeleti csoportokra Azure Policy használatával történő beállításával kapcsolatos utasításokért lásd: [Mi az Azure Policy?](../governance/policy/overview.md)
+- [Ismerje meg, hogyan állíthatja be a szabályzatokat a PowerShell használatával](../governance/policy/assign-policy-powershell.md) - 
+- [Megtudhatja, hogyan szerkesztheti a biztonsági házirendeket Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 
+- [Megtudhatja, hogyan állíthatja be a szabályzatot az előfizetések és a felügyeleti csoportok között Azure Policy használatával](../governance/policy/overview.md).
+- [Megtudhatja, hogyan engedélyezheti Security Center a felügyeleti csoportban lévő összes előfizetéshez](onboard-management-group.md)

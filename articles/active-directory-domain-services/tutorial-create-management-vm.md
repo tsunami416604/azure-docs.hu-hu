@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – felügyeleti virtuális gép létrehozása a Azure Active Directory Domain Serviceshoz | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows rendszerű virtuális gépet, amelyet Azure Active Directory Domain Services felügyelt tartomány felügyeletéhez használ.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: cc183a047023e5377d7a45088b7c9ae2407f6829
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024604"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967120"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartomány
 
 Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy Windows Server rendszerű virtuális gépet az Azure-ban, és hogyan telepítheti az Azure AD DS felügyelt tartományának felügyeletéhez szükséges eszközöket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A felügyelt tartományokban elérhető felügyeleti feladatok ismertetése

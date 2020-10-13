@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Evernote-val
@@ -148,15 +148,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Ugrás a **"felügyeleti konzolra"**
 
-    ![Rendszergazda – konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Admin-Console](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
 5. A **"felügyeleti konzol"** lapon lépjen a **"biztonság"** elemre, és válassza az **"egyszeri bejelentkezés"** lehetőséget.
 
-    ![Egyszeri bejelentkezés – beállítás](./media/evernote-tutorial/tutorial_evernote_sso.png)
+    ![SSO-Setting](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
 6. Konfigurálja a következő értékeket:
 
-    ![Tanúsítvány beállítása](./media/evernote-tutorial/tutorial_evernote_certx.png)
+    ![Certificate-Setting](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
     a.  **Egyszeri bejelentkezés engedélyezése:** Az egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (kattintson az **egyszeri bejelentkezés letiltása** lehetőségre az egyszeri bejelentkezésre vonatkozó követelmény eltávolításához)
 
@@ -177,7 +177,7 @@ Az Evernote esetében a kiépítés manuális feladat.
 
 2. Kattintson a **"felügyeleti konzol"** elemre.
 
-    ![Rendszergazda – konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Admin-Console](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
 3. A **"felügyeleti konzol"** területen lépjen a **"felhasználók hozzáadása"** elemre.
 

@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536069"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package-fürtök létrehozása és konfigurálása az Azure HDInsight
@@ -70,7 +70,7 @@ Ebben a szakaszban azokat a felhasználókat fogja létrehozni, akik hozzáférh
     1. Válassza az **RDP-fájl letöltése**lehetőséget, majd nyissa meg a fájlt.
     1. Használja `HDIFabrikam\HDIFabrikamAdmin` a nevet felhasználónévként.
     1. Adja meg a rendszergazdai fiókhoz választott jelszót.
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
 1. A tartományvezérlő **Kiszolgálókezelő** irányítópultján navigáljon az **eszközök**  >  **Active Directory felhasználók és számítógépek**elemre.
 
@@ -98,7 +98,7 @@ Ebben a szakaszban azokat a felhasználókat fogja létrehozni, akik hozzáférh
 
     1. Írja be `HDIUserGroup` a **nevet a csoport neve** szövegmezőbe.
 
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
     ![Új Active Directory csoport létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
@@ -159,7 +159,7 @@ Hozzon létre egy Active Directory bérlői rendszergazdát.
     |Tulajdonság |Leírás |
     |---|---|
     |Felhasználónév|Írja be `fabrikamazureadmin` a szöveget a szövegmezőbe. A tartomány neve legördülő listából válassza a `hdifabrikam.com`|
-    |Név| Írja be a következő szöveget: `fabrikamazureadmin`.|
+    |Name (Név)| Írja be a következő szöveget: `fabrikamazureadmin`.|
 
     **Jelszó**
     1. Válassza **a jelszó létrehozása**lehetőséget.
@@ -186,7 +186,7 @@ Hozzon létre egy Active Directory bérlői rendszergazdát.
 
 1. A tartományvezérlőről töltse le [Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594).
 
-1. Nyissa meg a letöltött végrehajtható fájlt, és fogadja el a licencfeltételeket. Válassza a **Folytatás**lehetőséget.
+1. Nyissa meg a letöltött végrehajtható fájlt, és fogadja el a licencfeltételeket. Válassza a **Folytatás** lehetőséget.
 
 1. Válassza **az expressz beállítások használata**lehetőséget.
 
@@ -261,7 +261,7 @@ Az Azure AD DS engedélyezéséhez kövesse az alábbi lépéseket. További inf
 
     ![A "virtuális hálózat létrehozása" lépés](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
-1. A **Rendszergazda csoport** lapon értesítést kap arról, hogy egy **HRE DC-rendszergazdák** nevű csoport már létrejött a Csoport felügyeletéhez. Ha szeretné, módosíthatja a csoport tagságát, de ebben az esetben nem kell módosítania. Válassza az **OK** lehetőséget.
+1. A **Rendszergazda csoport** lapon értesítést kap arról, hogy egy **HRE DC-rendszergazdák** nevű csoport már létrejött a Csoport felügyeletéhez. Ha szeretné, módosíthatja a csoport tagságát, de ebben az esetben nem kell módosítania. Kattintson az **OK** gombra.
 
     ![Az Azure AD-rendszergazda csoport megtekintése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
@@ -358,7 +358,7 @@ Ellenőrizze, hogy a tanúsítvány telepítve van-e a számítógép **személy
         | Protokoll | Bármely |
         | Művelet | Engedélyezés |
         | Prioritás | \<Desired number> |
-        | Név | Port_LDAP_636 |
+        | Name (Név) | Port_LDAP_636 |
 
     ![A "bejövő biztonsági szabály hozzáadása" párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -424,6 +424,6 @@ Ehhez a lépéshez a következő előfeltételek szükségesek:
 
 Ha be tud jelentkezni ezzel a fiókkal, megfelelően konfigurálta az ESP-fürtöt a helyszíni Active Directory-példánnyal való szinkronizálásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Bemutatjuk az ESP-vel való Apache Hadoop biztonság bevezetését](hdinsight-security-overview.md).

@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317820"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: bizalmas adatok | Enyhítését 
@@ -34,7 +34,7 @@ ms.locfileid: "91317820"
 | **Azure IaaS VM-megbízhatósági kapcsolat határa** | <ul><li>[A Virtual Machines által használt lemezek titkosítása Azure Disk Encryption használatával](#disk-vm)</li></ul> | 
 | **Service Fabric megbízhatósági kapcsolat határa** | <ul><li>[A titkok titkosítása Service Fabric alkalmazásokban](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Biztonsági modellezés végrehajtása, és szükség esetén üzleti egységek/csapatok használata](#modeling-teams)</li><li>[A megosztási funkciók elérésének csökkentése a kritikus entitásokon](#entities)</li><li>[A felhasználók betanítása a Dynamics CRM-megosztási szolgáltatáshoz kapcsolódó kockázatokkal és a jó biztonsági gyakorlattal](#good-practices)</li><li>[Fejlesztési szabványok szabályának betiltására, amely a konfiguráció részleteit mutatja a kivételek kezelése során](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Az Azure Storage Service Encryption (SSE) használata a REST-adatokhoz (előzetes verzió)](#sse-preview)</li><li>[Az ügyféloldali titkosítás használata bizalmas adatok tárolására az Azure Storage-ban](#client-storage)</li></ul> | 
+| **Azure Storage** | <ul><li>[Az Azure Storage Service Encryption (SSE) használata a REST-adatokhoz (előzetes verzió)](#sse-preview)</li><li>[Bizalmas adatok tárolása Client-Side titkosítás használatával az Azure Storage-ban](#client-storage)</li></ul> | 
 | **Mobil ügyfél** | <ul><li>[A telefon helyi tárhelyére írt bizalmas vagy személyes adatok titkosítása](#pii-phones)</li><li>[A generált bináris fájlok elhomályosítása a végfelhasználók számára történő terjesztés előtt](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[ClientCredentialType beállítása a tanúsítványra vagy a Windowsra](#cert)</li><li>[WCF – a biztonsági üzemmód nincs engedélyezve](#security)</li></ul> | 
 
@@ -264,7 +264,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [A virtuális gépek által használt lemezek titkosítása Azure Disk Encryption használatával](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **Lépések** | <p>A Azure Disk Encryption egy új szolgáltatás, amely jelenleg előzetes verzióban érhető el. Ez a funkció lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. Ez integrálva van Azure Key Vault, hogy lehetővé tegye a lemezes titkosítási kulcsok szabályozását és kezelését. A Azure Disk Encryption megoldás a következő három ügyfél-titkosítási forgatókönyvet támogatja:</p><ul><li>Engedélyezze a titkosítást az ügyfél által titkosított VHD-fájlokból létrehozott új IaaS virtuális gépeken, illetve az ügyfél által biztosított titkosítási kulcsokban, amelyeket a Azure Key Vault tárol.</li><li>Engedélyezze a titkosítást az Azure piactéren létrehozott új IaaS virtuális gépeken.</li><li>Engedélyezze a titkosítást az Azure-ban már futó meglévő IaaS virtuális gépeken.</li></ul>| 
+| **Lépések** | <p>A Azure Disk Encryption egy új szolgáltatás, amely jelenleg előzetes verzióban érhető el. Ez a funkció lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux esetében a lemezek a DM-Crypt technológiával vannak titkosítva. Ez integrálva van Azure Key Vault, hogy lehetővé tegye a lemezes titkosítási kulcsok szabályozását és kezelését. A Azure Disk Encryption megoldás a következő három ügyfél-titkosítási forgatókönyvet támogatja:</p><ul><li>Engedélyezze a titkosítást az ügyfél által titkosított VHD-fájlokból létrehozott új IaaS virtuális gépeken, illetve az ügyfél által biztosított titkosítási kulcsokban, amelyeket a Azure Key Vault tárol.</li><li>Engedélyezze a titkosítást az Azure piactéren létrehozott új IaaS virtuális gépeken.</li><li>Engedélyezze a titkosítást az Azure-ban már futó meglévő IaaS virtuális gépeken.</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>A titkok titkosítása Service Fabric alkalmazásokban
 
@@ -332,7 +332,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Hivatkozások**              | [Azure-Storage Service Encryption a REST-adatokhoz (előzetes verzió)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
 | **Lépések** | <p>Az Azure Storage Service Encryption (SSE) for inaktív adatok segítenek megvédeni és védeni az adatait, hogy megfeleljenek a szervezet biztonsági és megfelelőségi kötelezettségvállalásainak. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. A titkosítás, a visszafejtés és a kulcskezelő szolgáltatás teljes mértékben átlátható a felhasználók számára. Az SSE csak a Blobok, az oldal blobok és a hozzáfűzési Blobok esetében érvényes. A más típusú adattípusok, beleértve a táblákat, a várólistákat és a fájlokat, nem lesznek titkosítva.</p><p>Titkosítási és visszafejtési munkafolyamat:</p><ul><li>Az ügyfél engedélyezi a titkosítást a Storage-fiókon.</li><li>Amikor az ügyfél új adatot ír (blobot, PUT blokkot, PUT oldalt stb.) a blob Storage-ba, minden írás 256 bites AES-titkosítással van titkosítva, amely az egyik legerősebb blokk titkosítási lehetőség</li><li>Amikor az ügyfélnek hozzá kell férnie az adateléréshez (blob beolvasása stb.), a rendszer automatikusan visszafejti az adatfeldolgozást, mielőtt visszatér a felhasználóhoz.</li><li>Ha a titkosítás le van tiltva, az új írások már nem lesznek titkosítva, és a meglévő titkosított adatforgalom addig titkosítva marad, amíg a felhasználó át nem írja. Ha engedélyezve van a titkosítás, a blob Storage-ba történő írások titkosítva lesznek. Az adatállapot nem változik a felhasználó által a Storage-fiók titkosításának engedélyezése/letiltása között</li><li>Az összes titkosítási kulcsot a Microsoft tárolja, titkosítja és kezeli</li></ul><p>Vegye figyelembe, hogy jelenleg a titkosításhoz használt kulcsokat a Microsoft kezeli. A Microsoft létrehozza a kulcsokat eredetileg, és felügyeli a kulcsok biztonságos tárolását, valamint a belső Microsoft-házirend által meghatározott normál rotációt is. A jövőben az ügyfeleknek lehetősége nyílik a saját >titkosítási kulcsaik kezelésére, és áttelepítési útvonalat biztosítani a Microsoft által felügyelt kulcsokból az ügyfél által felügyelt kulcsokra.</p>| 
 
-## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Az ügyféloldali titkosítás használata bizalmas adatok tárolására az Azure Storage-ban
+## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Bizalmas adatok tárolása Client-Side titkosítás használatával az Azure Storage-ban
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |

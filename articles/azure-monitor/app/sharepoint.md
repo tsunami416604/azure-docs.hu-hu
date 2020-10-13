@@ -4,10 +4,10 @@ description: Új alkalmazás figyelésének megkezdése új kialakítási kulccs
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: f07c317a61c91daf7a469c1f9eaf1fb80d4ecc49
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825279"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
@@ -136,7 +136,7 @@ function onRequestFail(sender, args) {
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Webes tesztek](./monitor-web-app-availability.md) webhelye rendelkezésre állásának figyeléséhez.
 * [Application Insights](./app-insights-overview.md) más típusú alkalmazásokhoz.
 
