@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710532"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Teljesítmény figyelése a lekérdezési tárolóval
@@ -116,7 +116,7 @@ A lekérdezések normalizálása úgy történik, hogy a konstansok és konstans
 ### <a name="query_storeqs_view"></a>query_store query_store.qs_view
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van. 
 
-|**Név**   |**Típus** | **Referencia**  | **Leírás**|
+|**Név**   |**Típus** | **Hivatkozások**  | **Leírás**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | AZONOSÍTÓ az runtime_stats_entries táblából|
 |user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
@@ -157,7 +157,7 @@ Ez a nézet a lekérdezési tárolóban lévő szöveges adatok visszaadása. Mi
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-|**Név**|  **Típus**|   **Referencia**| **Leírás**|
+|**Név**|  **Típus**|   **Hivatkozások**| **Leírás**|
 |---|---|---|---|
 |user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
 |db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|

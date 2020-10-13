@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839010"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875121"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -106,7 +106,7 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Például:
+    Példa:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -134,7 +134,7 @@ Az [élő metrikák](./live-stream.md) segítségével gyorsan ellenőrizheti, h
 
 ### <a name="ilogger-logs"></a>ILogger-naplók
 
-A `ILogger` súlyosság és a fenti súlyosságon keresztül kibocsátott naplók `Warning` automatikusan rögzítésre kerülnek. A [ILogger-dokumentumok](ilogger.md#control-logging-level) követésével testreszabhatja, hogy a Application Insights mely naplózási szinteket rögzíti.
+Az alapértelmezett beállítás a `ILogger` súlyossági és a feletti naplókat gyűjti `Warning` . Ezt a konfigurációt [testre lehet szabni](#how-do-i-customize-ilogger-logs-collection).
 
 ### <a name="dependencies"></a>Függőségek
 

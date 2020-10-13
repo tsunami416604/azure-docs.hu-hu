@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259951"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
@@ -139,7 +139,7 @@ Ez a szakasz röviden bemutatja, hogy mire van szükség a szüneteltetési, a f
 
 Napi vertikális felskálázás a DW600c és a DW200c.
 
-| Funkció  | Ütemezés     | Művelet                                |
+| Függvény  | Ütemezés     | Művelet                                |
 | :-------- | :----------- | :--------------------------------------- |
 | 1. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
 | 2. függvény | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
@@ -148,7 +148,7 @@ Napi vertikális felskálázás a DW600c és a DW200c.
 
 Napi méretezés 08:00 és DW1000c között, a leskálázás egyszer, kor DW600 16:00-kor, és 10 – DW200c.
 
-| Funkció  | Ütemezés     | Művelet                                |
+| Függvény  | Ütemezés     | Művelet                                |
 | :-------- | :----------- | :--------------------------------------- |
 | 1. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | 2. függvény | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
@@ -158,7 +158,7 @@ Napi méretezés 08:00 és DW1000c között, a leskálázás egyszer, kor DW600 
 
 Akár 08:00 – DW1000c, a hétköznapokon lefelé DW600c. Szüneteltetés péntek 23:00-kor, folytatás hétfő reggel 7:00-kor.
 
-| Funkció  | Ütemezés       | Művelet                                |
+| Függvény  | Ütemezés       | Művelet                                |
 | :-------- | :------------- | :--------------------------------------- |
 | 1. függvény | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | 2. függvény | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |

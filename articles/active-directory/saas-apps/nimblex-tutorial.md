@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554376"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Oktatóanyag: Azure Active Directory integráció a NimbleX
 
@@ -132,19 +132,19 @@ Az Azure AD egyszeri bejelentkezés NimbleX való konfigurálásához hajtsa vé
 
 2. Kattintson a lap jobb felső sarkában található **Beállítások** emblémára.
 
-    ![NimbleX-beállítások](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![Képernyőfelvétel a beállítások ikont jeleníti meg.](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. A **Vezérlőpult** lapon, a **Biztonság** szakaszban kattintson az **egyszeri bejelentkezés**elemre.
 
-    ![NimbleX-beállítások](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés a biztonság menüben van kiválasztva.](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. Az **egyszeri bejelentkezés kezelése** lapon válassza ki a példány nevét, majd kattintson a **Szerkesztés**gombra.
 
-    ![NimbleX SAML](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![Képernyőfelvétel: egyetlen Sign-On kezelése, ahol kiválaszthatja a szerkesztés lehetőséget.](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. Az **SSO-szolgáltató szerkesztése** oldalon hajtsa végre a következő lépéseket:
 
-    ![NimbleX SAML](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![Képernyőfelvétel: az S S O-szolgáltató szerkesztése, ahol megadhatja a leírt értékeket.](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. A **Leírás** szövegmezőbe írja be a példány nevét.
 
@@ -177,7 +177,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

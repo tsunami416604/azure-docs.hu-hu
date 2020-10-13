@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 0cb7d1fa8dc9171c4baba09136d3a3c28d6c901c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c767edca46696bc7d04a1cf101e2bd183f5cf7f9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510650"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970843"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
 
-Az [Azure Premium SSD](disks-types.md) -k nagy teljesítményű, kis késleltetésű lemezes támogatást biztosítanak az I/O-igényű számítási feladatokat futtató virtuális gépekhez (VM). Ez az útmutató segítséget nyújt a virtuálisgép-lemezek standard szintű Storage-fiókból egy Premium Storage-fiókba való átadásához [Azure site Recovery](../../site-recovery/site-recovery-overview.md)használatával.
+Az [Azure Premium SSD](../disks-types.md) -k nagy teljesítményű, kis késleltetésű lemezes támogatást biztosítanak az I/O-igényű számítási feladatokat futtató virtuális gépekhez (VM). Ez az útmutató segítséget nyújt a virtuálisgép-lemezek standard szintű Storage-fiókból egy Premium Storage-fiókba való átadásához [Azure site Recovery](../../site-recovery/site-recovery-overview.md)használatával.
 
 A Site Recovery egy olyan Azure-szolgáltatás, amely a helyszíni fizikai kiszolgálók és virtuális gépek felhőbe (Azure) vagy egy másodlagos adatközpontba történő replikálásával járul hozzá az üzletmenet folytonosságának és a vész-helyreállítási stratégiához. Ha az elsődleges helyen kimaradások történnek, a feladatátvétel a másodlagos helyre történik, hogy az alkalmazások és a számítási feladatok elérhetők maradjanak. Ha visszatér a normál működésre, a feladat visszakerül az elsődleges helyre. 
 
@@ -158,14 +158,14 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
    4. A 3. lépésben adja hozzá a védett virtuális gépeket IP-cím szerint. (Szükség lehet egy belső IP-cím megkeresésére.)
    5. A 4. lépésben konfigurálja a tulajdonságokat úgy, hogy kiválasztja a korábban a Process Serveren beállított fiókokat.
    6. Az 5. lépésben válassza ki azt a replikációs házirendet, amelyet korábban a "5. lépés: replikációs beállítások beállítása" című témakörben hozott létre.
-   7. Kattintson az **OK** gombra.
+   7. Válassza az **OK** lehetőséget.
 
    > [!NOTE]
    > Ha egy Azure-beli virtuális gép fel van foglalva és újra elindult, nincs garancia arra, hogy ugyanazt az IP-címet kapja. Ha a konfigurációs kiszolgáló vagy folyamat kiszolgálójának vagy a védett Azure-beli virtuális gépeknek az IP-címe megváltozik, előfordulhat, hogy az ebben a forgatókönyvben lévő replikáció nem fog megfelelően működni.
 
    ![Replikáció ablaktábla engedélyezése a forrás kiválasztásával][13]
 
-Az Azure Storage-környezet tervezésekor ajánlott külön Storage-fiókot használni a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez. Javasoljuk, hogy kövesse a tárolási réteg ajánlott eljárását, hogy az [egyes rendelkezésre állási csoportokhoz több Storage-fiókot használjon](../linux/manage-availability.md). A virtuálisgép-lemezek több Storage-fiókba való terjesztése segíti a tárterület rendelkezésre állásának javítását, és az Azure Storage-infrastruktúra teljes I/O-elosztását.
+Az Azure Storage-környezet tervezésekor ajánlott külön Storage-fiókot használni a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez. Javasoljuk, hogy kövesse a tárolási réteg ajánlott eljárását, hogy az [egyes rendelkezésre állási csoportokhoz több Storage-fiókot használjon](../manage-availability.md). A virtuálisgép-lemezek több Storage-fiókba való terjesztése segíti a tárterület rendelkezésre állásának javítását, és az Azure Storage-infrastruktúra teljes I/O-elosztását.
 
 Ha a virtuális gépek rendelkezésre állási csoportba tartoznak, ahelyett, hogy az összes virtuális gép lemezeit egyetlen Storage-fiókba replikálja, a több virtuális gép többszöri áttelepítését javasoljuk. Így az azonos rendelkezésre állási csoportba tartozó virtuális gépek egyetlen Storage-fiókkal sem osztoznak. A **replikáció engedélyezése** panelen beállíthatja az egyes virtuális gépekhez tartozó cél Storage-fiókot egyszerre.
  
@@ -205,7 +205,7 @@ Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa a
 * [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [A Microsoft Q&egy kérdés oldalt Microsoft Azure Site Recovery](/answers/topics/azure-site-recovery.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek esetében tekintse meg a következő forrásokat:
 
@@ -217,7 +217,7 @@ Az Azure Storage szolgáltatással és az Azure Virtual Machinesával kapcsolato
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [IaaS-alapú virtuális gépek lemeztípusának kiválasztása](disks-types.md)
+* [IaaS-alapú virtuális gépek lemeztípusának kiválasztása](../disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

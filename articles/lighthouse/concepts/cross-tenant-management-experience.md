@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 09/30/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739731"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970639"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -35,10 +35,12 @@ A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyele
 
 A Azure PowerShell [Get-AzSubscription parancsmag](/powershell/module/Az.Accounts/Get-AzSubscription) megjeleníti az `HomeTenantId` `ManagedByTenantIds` egyes előfizetésekhez tartozó és attribútumokat, így meghatározhatja, hogy egy visszaadott előfizetés felügyelt bérlőhöz vagy az Ön által kezelt bérlőhöz tartozik-e.
 
-Ehhez hasonlóan az Azure CLI-parancsok, például az [az Account List](/cli/azure/account#az-account-list) a és az attribútumok láthatók `homeTenantId` `managedByTenants` .
+Ehhez hasonlóan az Azure CLI-parancsok, például az [az Account List](/cli/azure/account#az-account-list) a és az attribútumok láthatók `homeTenantId` `managedByTenants` . Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel próbálja meg törölni a gyorsítótárat `az account clear` `az login --identity` .
 
-> [!TIP]
-> Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel próbálja meg törölni a gyorsítótárat `az account clear` `az login --identity` .
+Az Azure REST API az [előfizetések – Get](/rest/api/resources/subscriptions/get) és [Subscriptions-List](/rest/api/resources/subscriptions/list) parancs tartalmazza `ManagedByTenant` .
+
+> [!NOTE]
+> Az Azure Lighthouse-hoz kapcsolódó bérlői információk mellett az API-k által megjelenített bérlők a Azure Databricks és az Azure által felügyelt alkalmazások partner bérlőit is tükrözheti.
 
 Olyan API-kat is biztosítunk, amelyek az Azure Lighthouse-feladatok végrehajtására vonatkoznak. További információért lásd a **hivatkozási** szakaszt.
 
@@ -158,7 +160,7 @@ Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásoka
 - A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
 - Az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok bevezetése közben ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveletek végrehajtását a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
 - [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626959"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>Oktatóanyag: az első API importálása és közzététele
@@ -59,7 +59,7 @@ Ez a szakasz bemutatja, hogyan importálhat és tehet közzé egy OpenAPI-specif
    |**Leírás**|Az előző szolgáltatás URL-címének megadása után API Management kitölti ezt a mezőt a JSON alapján.|Az API opcionális leírása.|
    |**URL-séma**|**HTTPS**|Mely protokollok férhetnek hozzá az API-hoz.|
    |**API URL-címének utótagja**|*conference*|Az API Management szolgáltatás alapszintű URL-címéhez hozzáfűzött utótag. API Management megkülönbözteti az API-kat az utótag alapján, így az utótagnak egyedinek kell lennie az adott közzétevő minden API-jának.|
-   |**Címkéket**| |Címkék az API-k kereséshez, csoportosításhoz vagy szűréshez való rendszerezéséhez.|
+   |**Címkék**| |Címkék az API-k kereséshez, csoportosításhoz vagy szűréshez való rendszerezéséhez.|
    |**Termékek**|**Korlátlan**|Egy vagy több API társítása. Minden API Management példány két minta termékkel rendelkezik: **kezdő** és **korlátlan**. Egy API-t úgy tehet közzé, hogy társítja az API-t egy termékkel, amely ebben a példában **korlátlan** .<br/><br/> Több API-t is felvehet egy termékbe, és a fejlesztői portálon keresztül biztosíthatja őket a fejlesztőknek. Ha ezt az API-t egy másik termékhez szeretné adni, írja be vagy válassza ki a termék nevét. Ismételje meg ezt a lépést az API több termékhez való hozzáadásához. A **Beállítások** lapon később is hozzáadhat API-kat a termékekhez.<br/><br/>  A termékekkel kapcsolatos további információkért lásd: [termékek létrehozása és közzététele](api-management-howto-add-products.md).|
    |**Átjárók**|**Felügyelt**|API-átjárók, amelyek elérhetővé teszik az API-t. Ez a mező csak a **fejlesztői** és **prémium** szintű szolgáltatásokban érhető el.<br/><br/>A **felügyelt** érték azt jelzi, hogy a API Management szolgáltatásba épített átjárót a Microsoft az Azure-ban üzemelteti. A saját üzemeltetésű [átjárók](self-hosted-gateway-overview.md) csak a prémium és a fejlesztői szolgáltatási szinteken érhetők el. A helyszíni vagy más felhőkben is üzembe helyezhetők.<br/><br/> Ha nincs kiválasztva átjáró, az API nem lesz elérhető, és az API-kérések sikertelenek lesznek.|
    |**Új verziót készít az API-ról?**|Kijelölés vagy kijelölés kiválasztása|További információ: [az API több verziójának közzététele](api-management-get-started-publish-versions.md).|

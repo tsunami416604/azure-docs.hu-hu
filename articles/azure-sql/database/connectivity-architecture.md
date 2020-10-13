@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
 ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325385"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
@@ -83,7 +83,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
 | Közép-Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Kelet-Kanada          | 40.86.226.166, 52.242.30.154 |
-| Az USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Kelet-Kína           | 139.219.130.35     |
 | Kelet-Kína 2         | 40.73.82.1         |
 | Észak-Kína          | 139.219.15.17      |

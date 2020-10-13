@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551406"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Grovo
 
@@ -111,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -137,11 +137,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Nyissa meg a **rendszergazdai**  >  **integrációkat**.
  
-    ![Grovo-konfiguráció](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    ![Képernyőkép, amely a "rendszergazda" menüt jeleníti meg "integrációk" beállítással.](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. Kattintson a **beállítás** elemre az **SP által kezdeményezett SAML 2,0** szakaszban.
 
-    ![Grovo-konfiguráció](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    ![Képernyőkép, amely a "set up" gomb kiválasztásával megjelenített "S P által kezdeményezett S A M L 2,0" szakaszt jeleníti meg.](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. Az **SP által kezdeményezett SAML 2,0** előugró ablakban végezze el a következő lépéseket:
 

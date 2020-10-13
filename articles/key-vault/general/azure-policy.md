@@ -7,12 +7,12 @@ ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586069"
+ms.locfileid: "91875516"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Az Azure Key Vault integrálása az Azure Policyval
 
@@ -148,7 +148,10 @@ Az 100-es tanúsítványokat tartalmazó több csapat által használt kulcstart
 A "megtagadás" hatású szabályzatok kiosztása akár 30 percig is eltarthat (átlagos eset) és 1 óra (legrosszabb esetben), hogy megtagadja a nem megfelelő erőforrások létrehozását. Egy tár meglévő összetevőinek kiértékelése akár 1 órát (átlagos esetet) és 2 órát (legrosszabb esetben) is igénybe vehet, mielőtt a portál felhasználói felületén megtekintsék a megfelelőségi eredményeket. Ha a megfelelőségi eredmények "nem elindítottként" jelennek meg, akkor az a következő okok miatt fordulhat elő:
 - A szabályzat-értékelés még nem fejeződött be. A kezdeti értékelési késés a legrosszabb esetben akár 2 órát is igénybe vehet. 
 - Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében.
-- Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében található tanúsítványokkal. 
+- Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében található tanúsítványokkal.
+
+> [!NOTE]
+> Azure Policy [erőforrás-szolgáltatói módokat](../../governance/policy/concepts/definition-structure.md#resource-provider-modes), például a Azure Key Vaulthoz tartozókat, adja meg a megfelelőségi adatokat az [összetevő megfelelőségi](../../governance/policy/how-to/get-compliance-data.md#component-compliance) lapján.
 
 ## <a name="next-steps"></a>Következő lépések
 

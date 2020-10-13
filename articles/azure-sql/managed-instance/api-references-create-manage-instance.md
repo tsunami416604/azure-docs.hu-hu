@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 2b98b11d85bde8dd49b6bbde5d048493493b73f5
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620239"
 ---
-# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Felügyelt API-referenciák az Azure SQL felügyelt példányaihoz
+# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Az Azure SQL Managed Instance felügyelt API-referenciája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Az Azure SQL felügyelt példányainak felügyelt példányait a Azure Portal, a PowerShell, az Azure CLI, az REST API és a Transact-SQL használatával hozhatja létre és konfigurálhatja. Ebben a cikkben a felügyelt példányok létrehozásához és konfigurálásához használható függvények és API-k áttekintését találhatja.
@@ -104,7 +104,7 @@ Felügyelt példányok létrehozásához és konfigurálásához használja ezek
 |[Felügyelt példányok műveletei – Get](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|A felügyelt példányon végrehajtott adott felügyeleti művelet beolvasása.|
 |[Felügyelt példányok műveletei – Mégse](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](../database/migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](../database/features-comparison.md).

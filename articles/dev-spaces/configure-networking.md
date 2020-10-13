@@ -5,14 +5,16 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Ismerteti az Azure dev Spaces Azure Kubernetes Servicesben való futtatásának hálózati követelményeit
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
-ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09114ab13555cbf9ef42b37c86ffb76a8fe3ab3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214168"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970338"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev Spaces szolgáltatáshoz különböző hálózati topológiákban
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Az Azure dev Spaces az alapértelmezett hálózati konfigurációval rendelkező Azure Kubernetes Service (ak) fürtökön fut. Ha módosítani szeretné az AK-fürt hálózati konfigurációját, például a fürt tűzfal mögötti üzembe helyezését, hálózati biztonsági csoportok használatával vagy hálózati házirendek használatával, további szempontokat kell figyelembe vennie az Azure dev Spaces futtatásához.
 
@@ -72,7 +74,7 @@ Az Azure dev Spaces lehetővé teszi, hogy az AK-on futó szolgáltatásaihoz v�
 * Egy *privát* végpont egy magánhálózati IP-címmel rendelkező beléptetési vezérlőt helyez üzembe. Magánhálózati IP-címmel a fürthöz tartozó terheléselosztó csak a fürt virtuális hálózatán belül érhető el. A terheléselosztó magánhálózati IP-címe regisztrálva van a fürt DNS-jében, hogy a fürt virtuális hálózatán belüli szolgáltatások elérhetők legyenek egy URL-cím használatával. Ez az URL-cím a használatával tekinthető meg `azds list-uris` .
 * Ha a végpont beállítás *egyikét sem* állítja be, a rendszer nem helyezi üzembe a bejövő vezérlőket. A beléptetési vezérlő üzembe helyezése nélkül az [Azure dev Spaces útválasztási képességei][dev-spaces-routing] nem fognak működni. Igény szerint a [traefik][traefik-ingress] vagy [NGINX][nginx-ingress]használatával is megvalósíthatja saját bejövő vezérlési megoldását, amely lehetővé teszi, hogy az útválasztási funkciók újra működjenek.
 
-A végpont beállításának konfigurálásához használja az *-e* vagy a *--Endpoint* beállítást, ha engedélyezi az Azure dev Spaces szolgáltatást a fürtön. Példa:
+A végpont beállításának konfigurálásához használja az *-e* vagy a *--Endpoint* beállítást, ha engedélyezi az Azure dev Spaces szolgáltatást a fürtön. Például:
 
 > [!NOTE]
 > A végpont beállításhoz az Azure CLI 2.2.0 vagy újabb verziójának kell futnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].

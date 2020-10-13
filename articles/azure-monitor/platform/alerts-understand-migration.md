@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852395"
+ms.locfileid: "91875920"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Az új riasztások áttelepítési lehetőségeinek megismerése
 
@@ -254,10 +254,12 @@ A Migrálás részeként új metrikai riasztások és új műveleti csoportok j�
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>A "megtagadás" hatású szabályzat megakadályozza a szabályok áttelepítését
 
-A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. Egy házirend azonban megakadályozza, hogy erőforrásokat hozzon létre. A házirendtől függően előfordulhat, hogy egy vagy több szabályt nem lehetett migrálni. A folyamatot blokkoló házirendek megjelennek az [áttelepítési eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Oldja meg a problémát a következők bármelyikével:
+A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. Egy [Azure Policy](../../governance/policy/index.yml) -hozzárendelés azonban megakadályozhatja, hogy erőforrásokat hozzon létre. A szabályzat-hozzárendeléstől függően előfordulhat, hogy egy vagy több szabály nem telepíthető át. A folyamatot blokkoló szabályzat-hozzárendelések az [áttelepítési eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)jelennek meg. Oldja meg a problémát a következők bármelyikével:
 
-- Az előfizetések vagy erőforráscsoportok kizárása az áttelepítési folyamat időtartamára a szabályzat-hozzárendelésből. [További információ a házirendek Kizárási hatókörének kezeléséről](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
-- A "naplózás" vagy a "Hozzáfűzés" effektus eltávolítása vagy módosítása (ami például a hiányzó címkékkel kapcsolatos problémák megoldására szolgál). [További információ a házirendek hatásának kezeléséről](../../governance/policy/concepts/definition-structure.md#policy-rule).
+- Az áttelepítési folyamat időtartamára vonatkozó előfizetések, erőforráscsoportok vagy egyedi erőforrások kizárása a szabályzat-hozzárendelésből. [További információ a házirendek Kizárási hatókörének kezeléséről](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Állítsa a "kényszerítési mód" lehetőséget a szabályzat-hozzárendelés **letiltásához** . [További információ a szabályzat-hozzárendelés enforcementMode tulajdonságáról](../../governance/policy/concepts/assignment-structure.md#enforcement-mode).
+- Azure Policy kivételt (előzetes verzió) állítson be az előfizetések, az erőforráscsoportok vagy az egyes erőforrások számára a szabályzat-hozzárendeléshez. [További információ a Azure Policy kivételek struktúrájáról](../../governance/policy/concepts/exemption-structure.md).
+- A "Letiltva", a "naplózás", a "Hozzáfűzés" vagy a "Modify" művelet hatásának eltávolítása vagy módosítása (amely például a hiányzó címkékkel kapcsolatos problémák megoldásához használható). [További információ a szabályzatok hatásának kezeléséről](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Következő lépések
 

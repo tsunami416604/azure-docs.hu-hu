@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626642"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>A Azure Portal használatával HTTP-vel HTTPS-átirányítással hozhat létre egy bejárati ajtót
@@ -91,7 +91,7 @@ A Azure Portal használatával [létrehozhat egy bejárati ajtót](quickstart-cr
 
 1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget az előtérben lévő profil létrehozásához. A létrehozás után nyissa meg az erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
 - További információ az [URL-átirányítás a bejárati ajtón](front-door-url-redirect.md).

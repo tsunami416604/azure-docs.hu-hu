@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
 ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620086"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök autoskálázása
@@ -72,7 +72,7 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
-| Verzió | Spark | Hive | Interaktív lekérdezés | HBase | Kafka | Storm | ML |
+| Verzió | Spark | Hive | Interaktív lekérdezés | A HBase | Kafka | Vihar | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
@@ -281,6 +281,6 @@ Az interaktív lekérdezési fürtök számára az autoskálázást támogató i
 
 Ha az interaktív lekérdezési szolgáltatást manuálisan indítja újra, manuálisan kell módosítania a `num_llap_node` konfigurációt (a struktúra interaktív lekérdezési démon futtatásához szükséges csomópontok száma) a *speciális struktúra – interaktív env* elemnél, hogy megfeleljen az aktuális aktív munkavégző csomópontok számának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók a fürtök méretezési [útmutatóinak](hdinsight-scaling-best-practices.md) manuális skálázásához

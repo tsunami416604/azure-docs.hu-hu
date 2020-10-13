@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
 ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440558"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
@@ -75,7 +75,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 Ebből a dokumentumból megtudhatta, hogyan tekintheti meg a biztonsági riasztásokat. A kapcsolódó anyagokkal kapcsolatban lásd a következő lapokat:
 

@@ -1,19 +1,20 @@
 ---
-title: A blob Storage költségeinek optimalizálása a fenntartott kapacitással – Azure Storage
+title: A fenntartott kapacitású Blob Storage költségeinek optimalizálása
+titleSuffix: Azure Storage
 description: Ismerje meg az Azure Storage szolgáltatás számára fenntartott kapacitás megvásárlását a blobok és Azure Data Lake Storage Gen2 erőforrások költségeinek megtakarítása érdekében.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84259201"
+ms.locfileid: "91874815"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>A fenntartott kapacitású Blob Storage költségeinek optimalizálása
 
@@ -29,7 +30,7 @@ Az alábbi szakaszok az Azure Storage-foglalás feltételeit ismertetik.
 
 ### <a name="reservation-capacity"></a>Foglalási kapacitás
 
-Az Azure Storage szolgáltatás számára fenntartott kapacitást 100 TB-os egységben, a havi 1 PB-ben pedig egy évig vagy hároméves időszakon belül is megvásárolhatja.
+Az Azure Storage szolgáltatás számára fenntartott kapacitást 100 TiB-egységben, a havi 1 PiB pedig egy éves vagy hároméves időszakra is megvásárolhatja.
 
 ### <a name="reservation-scope"></a>Foglalás hatóköre
 
@@ -62,7 +63,7 @@ Fenntartott kapacitás megvásárlása:
 
 Az Azure Storage-foglalás megvásárlásakor ki kell választania a foglaláshoz a régiót, a hozzáférési szintet és a redundancia beállítást. A foglalás csak az adott régióban, a hozzáférési szint és a redundancia szintjén tárolt adatai esetében érvényes. Tegyük fel például, hogy megvásárolja az USA nyugati régiójában tárolt adatok foglalását a forró szinthez a zóna redundáns tárolás (ZRS) használatával. Nem használhatja ugyanazt a foglalást az USA keleti régiójában lévő adatokhoz, az archív rétegben lévő adatokhoz vagy a Geo-redundáns tároláshoz (GRS) tartozó adatokhoz. Azonban további foglalásokat is vásárolhat a további igényekhez.  
 
-A foglalások jelenleg 100 TB-os vagy 1 PB-blokkhoz érhetők el, és az 1 PB blokknál magasabb kedvezményt biztosítunk. Ha foglalást vásárol a Azure Portalban, a Microsoft a korábbi használat alapján javaslatokat tehet az Ön számára, hogy eldöntse, melyik foglalást kell megvásárolnia.
+A foglalások jelenleg 100 TiB-vagy 1 PiB-blokkhoz érhetők el, és az 1 PiB-blokknál magasabb kedvezményt biztosítunk. Ha foglalást vásárol a Azure Portalban, a Microsoft a korábbi használat alapján javaslatokat tehet az Ön számára, hogy eldöntse, melyik foglalást kell megvásárolnia.
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Az Azure Storage szolgáltatás számára fenntartott kapacitás vásárlása
 
@@ -86,7 +87,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
    | **Hozzáférési szint** | Az a hozzáférési szintet, amelyben a foglalás érvényes. A lehetőségek *közé tartoznak*a *gyakori, a*ritka elérésű és az *archív*beállítások. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md). |
    | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartoznak a következők: *LRS*, *ZRS*, *GRS*, *GZRS*, *ra-GRS*és *ra-GZRS*. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md). |
    | **Számlázási gyakoriság** | Azt jelzi, hogy a fiók milyen gyakran kerül kiszámlázásra a foglaláshoz. A lehetőségek közé tartoznak a *havonta* vagy a *kezdeti*beállítások. |
-   | **Méret** | Az a régió, ahol a foglalás érvényben van. |
+   | **Méret** | A lefoglalni kívánt kapacitás mennyisége. |
    |**Időszak**  | Egy vagy három év.   |
 
 1. A foglalás paramétereinek kiválasztása után a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka.

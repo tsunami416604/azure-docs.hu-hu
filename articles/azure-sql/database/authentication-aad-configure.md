@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444488"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
@@ -185,7 +185,7 @@ A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és 
 
 Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure PowerShell parancsokat:
 
-- Kapcsolat – AzAccount
+- Connect-AzAccount
 - Select-AzSubscription
 
 Az SQL felügyelt példányához az Azure AD-rendszergazda üzembe helyezéséhez és kezeléséhez használt parancsmagok az alábbi táblázatban láthatók:
@@ -274,7 +274,7 @@ Ha később el szeretné távolítani a rendszergazdát, a **Active Directory-re
 
 A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és futnia. Részletes információk: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása). Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure PowerShell parancsokat:
 
-- Kapcsolat – AzAccount
+- Connect-AzAccount
 - Select-AzSubscription
 
 Az Azure AD-rendszergazdák üzembe helyezéséhez és kezeléséhez használt parancsmagok a SQL Database és az Azure szinapszis számára:
@@ -412,7 +412,7 @@ Amikor létrehoz egy adatbázis-felhasználót, a felhasználó megkapja a **kap
 A felügyelt tartományba külső felhasználóként importált összevont tartományi felhasználói fióknak a felügyelt tartományi identitást kell használnia.
 
 > [!NOTE]
-> Az Azure AD-felhasználók az E (EXTERNAL_USER) típusú adatbázis-metaadatokban vannak megjelölve, az X típusú csoportok esetében (EXTERNAL_GROUPS). További információ: [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+> Az Azure AD-felhasználók az E (EXTERNAL_USER) típusú adatbázis-metaadatokban vannak megjelölve, az X típusú csoportok esetében (EXTERNAL_GROUPS). További információ: [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
 ## <a name="connect-to-the-database-using-ssms-or-ssdt"></a>Kapcsolódás az adatbázishoz a SSMS vagy a SSDT használatával  
 

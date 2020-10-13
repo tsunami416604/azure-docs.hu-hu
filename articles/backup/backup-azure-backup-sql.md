@@ -4,10 +4,10 @@ description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254584"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
@@ -80,7 +80,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 1. Nevezze el a védelmi csoportot, majd válassza az **online védelmet szeretnék**lehetőséget.
 
     ![Adatvédelmi módszer választása – rövid távú lemezes védelem vagy online Azure-védelem](./media/backup-azure-backup-sql/pg-name.png)
-1. A **rövid távú célok megadása lapon adja** meg a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához.
+1. A **Short-Term célok megadása** lapon adja meg a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához.
 
     Ebben a példában a **megőrzési tartomány** értéke *5 nap*. A biztonsági mentési **szinkronizálás gyakorisága** *15 percenként*egyszer van beállítva. Az **expressz teljes biztonsági mentés** *8:00 órakor*van beállítva.
 

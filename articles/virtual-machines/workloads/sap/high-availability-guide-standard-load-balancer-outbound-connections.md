@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836122"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961476"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -67,12 +67,12 @@ Először olvassa el az alábbi dokumentumokat:
   * [Azure Firewall áttekintése](../../../firewall/overview.md)– a Azure Firewall áttekintése
   * [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása](../../../firewall/tutorial-firewall-deploy-portal.md) – útmutatás a Azure Firewall konfigurálásához a Azure Portal használatával
 * [Virtual Networks – felhasználó által definiált szabályok](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) – Azure-útválasztási fogalmak és szabályok  
-* [Biztonsági csoportok szolgáltatás címkéi](../../../virtual-network/security-overview.md#service-tags) – a hálózati biztonsági csoportok és a tűzfal konfigurációjának leegyszerűsítése a szolgáltatás-címkékkel
+* [Biztonsági csoportok szolgáltatás címkéi](../../../virtual-network/network-security-groups-overview.md#service-tags) – a hálózati biztonsági csoportok és a tűzfal konfigurációjának leegyszerűsítése a szolgáltatás-címkékkel
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>További külső Azure-standard Load Balancer az internet felé irányuló kimenő kapcsolatokhoz
 
 Az egyik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolat elérése anélkül, hogy a virtuális gép felé irányuló bejövő kapcsolat a nyilvános végpontról is elérhető legyen, egy második, nyilvános IP-címmel rendelkező terheléselosztó létrehozása, a virtuális gépek hozzáadása a második Load Balancer háttér-készletéhez, és csak [Kimenő szabályok](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)definiálása.  
-[Hálózati biztonsági csoportokkal](../../../virtual-network/security-overview.md) vezérelheti a nyilvános végpontokat, amelyek elérhetők a virtuális gép kimenő hívásainak számára.  
+[Hálózati biztonsági csoportokkal](../../../virtual-network/network-security-groups-overview.md) vezérelheti a nyilvános végpontokat, amelyek elérhetők a virtuális gép kimenő hívásainak számára.  
 További információ: 2. forgatókönyv a [Kimenő kapcsolatok](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)dokumentumában.  
 A konfiguráció a következőképpen fog kinézni:  
 
@@ -81,11 +81,11 @@ A konfiguráció a következőképpen fog kinézni:
 ### <a name="important-considerations"></a>Fontos szempontok
 
 - Az azonos alhálózatban található több virtuális gép számára egy további nyilvános Load Balancer is használhatja, hogy a kimenő kapcsolatok elérhetők legyenek a nyilvános végponthoz, és optimalizálja a költségeket  
-- [Hálózati biztonsági csoportok](../../../virtual-network/security-overview.md) használatával szabályozhatja, hogy mely nyilvános végpontok érhetők el a virtuális gépekről. A hálózati biztonsági csoportot az alhálózathoz vagy az egyes virtuális gépekhez rendelheti hozzá. Ha lehetséges, használja a [szolgáltatási címkéket](../../../virtual-network/security-overview.md#service-tags) a biztonsági szabályok bonyolultságának csökkentése érdekében.  
+- [Hálózati biztonsági csoportok](../../../virtual-network/network-security-groups-overview.md) használatával szabályozhatja, hogy mely nyilvános végpontok érhetők el a virtuális gépekről. A hálózati biztonsági csoportot az alhálózathoz vagy az egyes virtuális gépekhez rendelheti hozzá. Ha lehetséges, használja a [szolgáltatási címkéket](../../../virtual-network/network-security-groups-overview.md#service-tags) a biztonsági szabályok bonyolultságának csökkentése érdekében.  
 - Az Azure standard Load Balancer nyilvános IP-címmel és kimenő szabályokkal közvetlen hozzáférést biztosít a nyilvános végponthoz. Ha rendelkezik a vállalati biztonsági követelményekkel, hogy az összes kimenő forgalom a központosított vállalati megoldáson keresztül legyen naplózva és naplózva, előfordulhat, hogy nem tudja teljesíteni a követelményt ebben a forgatókönyvben.  
 
 >[!TIP]
->Ha lehetséges, a [szolgáltatási címkék](../../../virtual-network/security-overview.md#service-tags) használatával csökkentse a hálózati biztonsági csoport összetettségét. 
+>Ha lehetséges, a [szolgáltatási címkék](../../../virtual-network/network-security-groups-overview.md#service-tags) használatával csökkentse a hálózati biztonsági csoport összetettségét. 
 
 ### <a name="deployment-steps"></a>A központi telepítés lépései
 
@@ -117,7 +117,7 @@ A konfiguráció a következőképpen fog kinézni:
 
    ![Kimenő kapcsolatok a második Load Balancer nyilvános IP-címmel](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Az Azure-beli hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [biztonsági csoportok ](../../../virtual-network/security-overview.md). 
+   Az Azure-beli hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [biztonsági csoportok ](../../../virtual-network/network-security-groups-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Az internet felé irányuló kimenő kapcsolatok Azure Firewall
 
@@ -137,7 +137,7 @@ Az architektúra így néz ki:
 - Ha a vállalati tűzfal megoldás nem Azure Firewall, és biztonsági követelményeknek kell megfelelnie, hogy az összes kimenő forgalom áthaladjon a központosított vállalati megoldással, ez a megoldás nem lehet praktikus.  
 
 >[!TIP]
->Ha lehetséges, használja a [szolgáltatási címkéket](../../../virtual-network/security-overview.md#service-tags) a Azure Firewall szabályok bonyolultságának csökkentése érdekében.  
+>Ha lehetséges, használja a [szolgáltatási címkéket](../../../virtual-network/network-security-groups-overview.md#service-tags) a Azure Firewall szabályok bonyolultságának csökkentése érdekében.  
 
 ### <a name="deployment-steps"></a>A központi telepítés lépései
 

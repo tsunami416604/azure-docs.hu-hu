@@ -8,10 +8,10 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982898"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben
@@ -225,7 +225,7 @@ Nyissa meg a `http://<front-end-app-name>.azurewebsites.net` címet, és adjon h
 
 Nyissa meg a `http://<back-end-app-name>.azurewebsites.net` címet az előtér-alkalmazásból hozzáadott elemek megtekintéséhez. Továbbá adjon hozzá néhány elemet, például a `from back end 1` és a `from back end 2` elemet, majd frissítse az előtér-alkalmazást annak ellenőrzéséhez, hogy az tükrözi-e a módosításokat.
 
-:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely az előtér-alkalmazásból hozzáadott elemekkel rendelkező Feladatlista-alkalmazást jeleníti meg.":::
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 ## <a name="configure-auth"></a>Hitelesítés konfigurálása
 
@@ -239,7 +239,7 @@ A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforráscs
 
 Az **erőforráscsoportok**területen keresse meg és válassza ki az erőforráscsoportot. Az **Áttekintés**területen válassza ki a háttérbeli alkalmazás felügyeleti lapját.
 
-:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Képernyőkép az erőforráscsoportok ablakról, amely egy példaként szolgáló erőforráscsoport és egy háttérbeli alkalmazás felügyeleti oldalának áttekintését jeleníti meg.":::
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 A háttérbeli alkalmazás bal oldali menüjében válassza a **hitelesítés/engedélyezés**lehetőséget, majd **a**bejelöléssel engedélyezze app Service hitelesítést.
 
@@ -247,7 +247,7 @@ Az **Elvégzendő művelet, ha a kérés nincs hitelesítve** területen válass
 
 A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
 
-:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Képernyőkép a háttérbeli alkalmazás bal oldali menüjéről, amelyen a hitelesítés/engedélyezés lehetőség van kiválasztva, a jobb oldali menüben pedig a beállítások lehetőség van kiválasztva.":::
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 Válassza az **expressz**lehetőséget, majd fogadja el az alapértelmezett beállításokat új ad-alkalmazás létrehozásához, majd kattintson **az OK gombra**.
 
@@ -259,7 +259,7 @@ Válassza a **Azure Active Directory** ismét lehetőséget, majd válassza ki a
 
 Másolja az Azure AD-alkalmazás **ügyfél-azonosítóját** egy Jegyzettömbbe. Erre az értékre később szüksége lesz.
 
-:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="Képernyőkép a Azure Active Directory beállítások ablakról, amely a Azure AD alkalmazás és az Azure AD-alkalmazások ablakát mutatja a másolandó ügyfél-azonosító megjelenítéséhez.":::
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 Ha leállítja ezt a funkciót, egy olyan önálló alkalmazást is tartalmaz, amelyet a App Service hitelesítés és engedélyezés már biztosít. A fennmaradó szakaszokból megtudhatja, hogyan védheti meg a többalkalmazásos megoldásokat a hitelesített felhasználó az előtérből a háttérbe való beáramlásával. 
 
@@ -284,13 +284,13 @@ A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active D
 
 Válassza ki **Alkalmazásregisztrációk**  >  **tulajdonában lévő alkalmazások**  >  **megtekintheti a címtárban található összes alkalmazást**. Válassza ki az előtér-alkalmazás nevét, majd válassza az **API-engedélyek**lehetőséget.
 
-:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Képernyőkép a Microsoft-Alkalmazásregisztrációk ablakról, amelyen a saját alkalmazások, az előtér-alkalmazás neve és az API-engedélyek van kiválasztva.":::
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 Válassza az **engedély hozzáadása**lehetőséget, majd **a saját szervezet által használt API**-k elemet  >  **\<back-end-app-name>** .
 
 A háttérbeli alkalmazáshoz tartozó **API-engedélyek kérése** lapon válassza a **delegált engedélyek** és **User_impersonation**, majd az **engedélyek hozzáadása**elemet.
 
-:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Képernyőkép a kérelem API-engedélyek oldaláról, amely a delegált engedélyeket, user_impersonation és az engedély hozzáadása gombot választotta.":::
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>Az App Service konfigurálása használható hozzáférési jogkivonat visszaadására
 
@@ -300,7 +300,7 @@ Keresse meg az [Azure erőforrás-kezelő](https://resources.azure.com) , és ha
 
 A [Azure erőforrás-kezelő](https://resources.azure.com) ekkor megnyílik az erőforrás-fában kiválasztott előtér-alkalmazással. Kattintson az **Olvasás/Írás** elemre a lap tetején az Azure-erőforrások szerkesztésének engedélyezéséhez.
 
-:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Képernyőkép a Azure Erőforrás-kezelő lap tetején található írásvédett és olvasási/írási gombokról, az olvasás/írás gomb kiválasztásával.":::
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 A bal oldali böngészőben bontsa ki a következőt: **config**  >  **authsettings elemre**.
 
@@ -310,7 +310,7 @@ Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. Állítsa be
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="Képernyőkép – példa a authsettings elemre nézetre, amely az additionalLoginParams karakterláncot jeleníti meg, például egy ügyfél-AZONOSÍTÓval.":::
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="Képernyőkép egy Azure App Service REST API-mintáról egy böngészőablakban, amely a tennivalók listája alkalmazást jeleníti meg.":::
 
 A beállítások mentéséhez kattintson a **PUT** elemre.
 
@@ -453,7 +453,7 @@ az group delete --name myAuthResourceGroup
 A parancs futtatása egy percig is eltarthat.
 
 <a name="next"></a>
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

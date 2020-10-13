@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés a portálon'
 description: Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
-ms.openlocfilehash: 956ec05b5a7fac862eeea86cf96a2db37f1c0536
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51ca2f9e5d3f3df9304804ba3da2c5c5ceb0c19b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89651976"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875308"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
@@ -58,7 +58,7 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. A példánkban meghagyjuk a _Felügyelt lemezeket nem használó virtuális gépek naplózása_ értéket. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.
    A **Hozzárendelte** mező automatikusan ki lesz töltve az alapján, hogy ki van bejelentkezve. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
-1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a _jelölőnégyzetet be kell jelölni_ , ha a házirend vagy kezdeményezés olyan házirendet tartalmaz, amelynek a [deployIfNotExists](./concepts/effects.md#deployifnotexists) hatása van. Mivel a rövid útmutatóhoz használt szabályzat nem, hagyja üresen. További információkért lásd a [felügyelt identitásokat](../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](./how-to/remediate-resources.md#how-remediation-security-works).
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a _jelölőnégyzetet be kell jelölni_ , ha a házirend vagy kezdeményezés olyan házirendet tartalmaz, amely a [deployIfNotExists](./concepts/effects.md#deployifnotexists) vagy a [módosítás](./concepts/effects.md#modify) hatásával rendelkezik. Mivel a rövid útmutatóhoz használt szabályzat nem, hagyja üresen. További információkért lásd a [felügyelt identitásokat](../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](./how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Válassza a **Hozzárendelés** elemet.
 
@@ -74,15 +74,15 @@ Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzár
 
 Ha a meglévő erőforrások kiértékelésekor egy feltétel igaznak bizonyul, ezek az erőforrások a szabályzatnak nem megfelelőként lesznek megjelölve. A következő táblázat azt mutatja be, hogyan működnek együtt a szabályzatok különböző hatásai a feltételek kiértékelésével a megfelelőségi állapot eléréséhez. Bár a Azure Portalban nem jelenik meg a kiértékelési logika, a megfelelőségi állapot eredményei jelennek meg. A megfelelőségi állapotok eredménye lehet megfelelő vagy nem megfelelő.
 
-| **Erőforrás-állapot** | **Hatás** | **Szabályzat-kiértékelés** | **Megfelelőségi állapot** |
+| Erőforrás-állapot | Hatás | Szabályzat-kiértékelés | Megfelelőségi állapot |
 | --- | --- | --- | --- |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Hamis | Megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelő |
+| Új vagy frissített | Naplózás, módosítás, AuditIfNotExist | Igaz | Nem megfelelő |
+| Új vagy frissített | Naplózás, módosítás, AuditIfNotExist | Hamis | Megfelelő |
+| Létezik | Megtagadás, naplózás, Hozzáfűzés, módosítás, DeployIfNotExist, AuditIfNotExist | Igaz | Nem megfelelő |
+| Létezik | Megtagadás, naplózás, Hozzáfűzés, módosítás, DeployIfNotExist, AuditIfNotExist | Hamis | Megfelelő |
 
-\* Az Append, a DeployIfNotExist és az AuditIfNotExist hatás esetében az IF utasításnak TRUE értéket kell visszaadnia.
-Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
+> [!NOTE]
+> A DeployIfNotExist-és AuditIfNotExist-effektusok esetében az IF utasításnak IGAZnak kell lennie, és a létezési feltétel nem megfelelőnek kell lennie. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -94,7 +94,7 @@ A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépések
 
    :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy hatókörhöz rendelt hozzá egy szabályzatdefiníciót, és kiértékelte annak megfelelőségi jelentését.
 A házirend-definíció ellenőrzi, hogy a hatókör összes erőforrása megfelelő-e, és azonosítja, hogy melyek nem.

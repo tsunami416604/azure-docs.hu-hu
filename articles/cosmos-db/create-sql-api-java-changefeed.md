@@ -10,10 +10,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362044"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Azure Cosmos DB SQL API-t használó Java-alkalmazás létrehozása és a hírcsatorna-feldolgozó módosítása
@@ -78,7 +78,7 @@ mvn clean package
     * **InventoryContainer-pktype** – az elemre irányuló lekérdezésekre optimalizált leltári rekord anyagilag látható nézete ```type```
     * **InventoryContainer – bérletek** – a változási hírcsatornára mindig a bérletek tárolója szükséges. a bérletek nyomon követik az alkalmazás előrehaladását a változási hírcsatorna olvasásakor.
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Üres tárolók":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Azure Cosmos DB-fiók":::
 
 1. A terminálban ekkor megjelenik egy üzenet
 
@@ -96,7 +96,7 @@ mvn clean package
 
     Térjen vissza a böngészőben a Azure Portal Adatkezelő. A **InventoryContainer-bérletek** tárolóban kattintson az **elemek elemre** a tartalmának megtekintéséhez. Látni fogja, hogy a változási hírcsatorna processzora feltöltte a címbérleti tárolót, azaz a processzor a ```SampleHost_1``` **InventoryContainer**egyes partícióinak bérletét rendelte hozzá a feldolgozóhoz.
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Bérletek":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Azure Cosmos DB-fiók":::
 
 1. Nyomja le ismét az ENTER billentyűt a terminálon. Ekkor a rendszer 10 dokumentumot szúr be a **InventoryContainerba**. Minden dokumentum beszúrása JSON-ként jelenik meg a változási hírcsatornában. a következő visszahívási kód kezeli ezeket az eseményeket úgy, hogy a JSON-dokumentumokat egy anyagbeli nézetbe tükrözi:
 
@@ -106,15 +106,15 @@ mvn clean package
 
 1. 5 10sec futtatásának engedélyezése a kód számára. Ezután térjen vissza a Azure Portal Adatkezelő, és navigáljon a **InventoryContainer > elemekhez**. Látnia kell, hogy a rendszer beszúrja az elemeket a leltári tárolóba; Jegyezze fel a partíciós kulcsot ( ```id``` ).
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Hírcsatorna-tároló":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Azure Cosmos DB-fiók":::
 
 1. Most Adatkezelő navigáljon a **InventoryContainer-pktype > elemekhez**. Ez az anyagbeli nézet – az ebben a tárolóban lévő elemek tükrözött **InventoryContainer** , mert programozott módon szúrták be a hírcsatorna módosításával. Jegyezze fel a partíciós kulcsot ( ```type``` ). Így ez az anyagbeli nézet a lekérdezési szűrésre van optimalizálva ```type``` , ami nem hatékony a **InventoryContainer** , mert particionálva van ```id``` .
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Képernyőfelvétel: az Azure Cosmos D B-fiók Adatkezelő lapja, amelyen elemek vannak kiválasztva.":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Azure Cosmos DB-fiók":::
 
 1. A **InventoryContainer** és a **InventoryContainer-pktype** dokumentumból csak egyetlen hívást fogunk törölni ```upsertItem()``` . Először tekintse meg Azure Portal Adatkezelő. Töröljük azt a dokumentumot, amelynek ```/type == "plums"``` ; a következő piros színnel van Bekerítve:
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Képernyőfelvétel: az Azure Cosmos D B-fiók Adatkezelő lapja, amely egy adott elemet kiválasztott. D.":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Azure Cosmos DB-fiók":::
 
     Nyomja meg ismét az ENTER billentyűt a függvény meghívásához ```deleteDocument()``` a példában szereplő kódban. Ez a függvény az alább látható módon upsert a dokumentum egy új verzióját ```/ttl == 5``` , amely a dokumentumot élettartam (TTL) értékre állítja a 5Sec. 
     

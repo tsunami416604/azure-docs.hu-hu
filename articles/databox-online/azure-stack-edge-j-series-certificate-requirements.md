@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891373"
 ---
 # <a name="certificate-requirements"></a>Tanúsítványkövetelmények
@@ -70,7 +70,7 @@ Az Azure Stack Edge Pro-eszközre telepített PFX-tanúsítványoknak az alábbi
 
 * PFX-tanúsítvány exportálásakor győződjön meg arról, hogy az **összes tanúsítvány belefoglalása a láncba** lehetőség van kiválasztva, ha lehetséges.
 
-* Használjon PFX-tanúsítványt a végponthoz, a helyi KEZELŐFELÜLEThez, a csomóponthoz, a VPN-hez és a Wi-Fi-hez, mivel a nyilvános és a titkos kulcs is szükséges a Azure Stack Edge Pro-hoz. A titkos kulcsnak rendelkeznie kell a helyi számítógép kulcs attribútumával.
+* Használjon PFX-tanúsítványt a végponthoz, a helyi KEZELŐFELÜLEThez, a csomóponthoz, a VPN-hez és a Wi-Fihoz, mivel a nyilvános és a titkos kulcs is szükséges a Azure Stack Edge Pro-hoz. A titkos kulcsnak rendelkeznie kell a helyi számítógép kulcs attribútumával.
 
 * A tanúsítvány PFX-titkosításának 3DES-nek kell lennie. Ez a Windows 10-es ügyfélről vagy a Windows Server 2016 tanúsítványtárolóból való exportáláskor használt alapértelmezett titkosítás. A 3DES-vel kapcsolatos további információkért lásd: [Triple des](https://en.wikipedia.org/wiki/Triple_DES).
 

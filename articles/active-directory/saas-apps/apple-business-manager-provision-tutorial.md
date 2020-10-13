@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757503"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941092"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Oktatóanyag: az Apple Business Manager konfigurálása automatikus felhasználók kiosztásához
 
@@ -160,7 +160,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple Business Managerben](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
 * [A SCIM-kapcsolat leválasztása az Apple Business Managerben](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
 * [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple Business Managerben](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [Az SCIM-kapcsolatok hibaelhárítása az Apple Business Managerben](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [Az SCIM-kapcsolatok hibaelhárítása az Apple Business Managerben](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>További lépések
 

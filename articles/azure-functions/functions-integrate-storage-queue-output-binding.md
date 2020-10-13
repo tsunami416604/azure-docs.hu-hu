@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982012"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
@@ -38,7 +38,7 @@ Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üz
 
 1. Válassza ki az **Azure Queue Storage** kötés típusát, és adja hozzá a következő képernyőképen szereplő táblázatban megadott beállításokat: 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Hozzon létre egy kimeneti kötést a függvényhez." border="true":::
     
     | Beállítás      |  Ajánlott érték   | Leírás                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,7 +94,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
 1. A kód módosításainak mentése után válassza a **teszt**lehetőséget.
 1. Győződjön meg arról, hogy a teszt megfelel az alábbi képen, majd válassza a **Futtatás**lehetőséget. 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Tesztelje a várólista tárolási kötését a Azure Portalban." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Hozzon létre egy kimeneti kötést a függvényhez." border="true":::
 
     Figyelje meg, hogy a **Kérelem törzse** tartalmazza az *Azure*`name` értéket. Ez az érték jelenik meg a létrehozott üzenetsori üzenetben a függvény meghívásakor.
     
@@ -111,11 +111,11 @@ A Functions futtatókörnyezete egy **outqueue** nevű új üzenetsort hoz létr
 
 1. Az **Alkalmazásbeállítások**területen válassza a **AzureWebJobsStorage**lehetőséget.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Képernyőfelvétel: a AzureWebJobsStorage kiválasztott konfiguráció lapja." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Hozzon létre egy kimeneti kötést a függvényhez." border="true":::
 
 1. Keresse meg és jegyezze fel a fiók nevét.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Keresse meg a AzureWebJobsStorage csatlakoztatott Storage-fiókot." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Hozzon létre egy kimeneti kötést a függvényhez." border="true":::
 
 ### <a name="examine-the-output-queue"></a>A kimeneti üzenetsor vizsgálata
 

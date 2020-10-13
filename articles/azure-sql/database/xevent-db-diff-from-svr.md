@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619814"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Bővített események Azure SQL Database 
@@ -75,13 +75,13 @@ A kiterjesztett események funkciót számos [katalógus-nézet](https://msdn.mi
 
 | Neve<br/>Katalógus nézet | Leírás |
 |:--- |:--- |
-| **sys. database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
-| **sys. database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
-| **sys. database_event_session_fields** |Egy sort ad vissza minden olyan testre szabható oszlophoz, amely explicit módon be van állítva az eseményekre és a célokra. |
-| **sys. database_event_session_targets** |Egy adott esemény-munkamenethez tartozó összes esemény céljának sorát adja vissza. |
-| **sys. database_event_sessions** |Az adatbázis minden esemény-munkamenetének sorát adja vissza. |
+| **sys.database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
+| **sys.database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
+| **sys.database_event_session_fields** |Egy sort ad vissza minden olyan testre szabható oszlophoz, amely explicit módon be van állítva az eseményekre és a célokra. |
+| **sys.database_event_session_targets** |Egy adott esemény-munkamenethez tartozó összes esemény céljának sorát adja vissza. |
+| **sys.database_event_sessions** |Az adatbázis minden esemény-munkamenetének sorát adja vissza. |
 
-A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server \_ * helyett a. *Database \_ *nevet tartalmazzák. A név mint **sys. server_event_%**.
+A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server \_ * helyett a. *Database \_ *nevet tartalmazzák. A név mint **sys.server_event_%**.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Új dinamikus felügyeleti nézetek [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -89,24 +89,24 @@ A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](htt
 
 | DMV neve | Leírás |
 |:--- |:--- |
-| **sys. dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
-| **sys. dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
-| **sys. dm_xe_database_session_object_columns** |Megjeleníti a munkamenethez kötött objektumok konfigurációs értékeit. |
-| **sys. dm_xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
-| **sys. dm_xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
+| **sys.dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
+| **sys.dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
+| **sys.dm_xe_database_session_object_columns** |Megjeleníti a munkamenethez kötött objektumok konfigurációs értékeit. |
+| **sys.dm_xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
+| **sys.dm_xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
 
 A Microsoft SQL Server hasonló katalógus-nézetek neve nem a név * \_ adatbázis* része, például:
 
-- **sys. dm_xe_sessions**, név helyett<br/>**sys. dm_xe_database_sessions**.
+- **sys.dm_xe_sessions**a név helyett<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>DMV közös
 
 A kiterjesztett események esetében további DMV, amelyek közösek a Azure SQL Database, az Azure SQL felügyelt példánya és a Microsoft SQL Server esetében:
 
-- **sys. dm_xe_map_values**
-- **sys. dm_xe_object_columns**
-- **sys. dm_xe_objects**
-- **sys. dm_xe_packages**
+- **sys.dm_xe_map_values**
+- **sys.dm_xe_object_columns**
+- **sys.dm_xe_objects**
+- **sys.dm_xe_packages**
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 

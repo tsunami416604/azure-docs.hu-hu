@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710379"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple biztonsági mentési célként a Backup Exec
@@ -102,7 +102,7 @@ Az alábbi táblázatok az eszköz modell-architektúra kezdeti útmutatóját m
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
 | Elsődleges biztonsági mentés  | A helyi tárterületen tárolt legutóbbi biztonsági másolatok a helyreállítási időkorlát (RPO) kielégítése érdekében a gyors helyreállítás érdekében | A biztonsági mentési előzmények (RPO) a Felhőbeli kapacitásban is elférnek |
-| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N/A  |
+| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N.A.  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple elsődleges biztonsági mentési célként
 
@@ -302,7 +302,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 > [!NOTE]
 > A felhőbe felkészített biztonsági mentésből származó adatok visszaállítása Felhőbeli sebességgel történik.
 
-Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonsági mentési feladathoz. Ebben az esetben az összes heti biztonsági mentés a szombat teljes lemezre mutat, a növekményes biztonsági mentések pedig a hétfő péntekig növekményes lemezeket képeznek. Az összes biztonsági mentés és visszaállítás egy StorSimple rétegű kötetről származik.
+Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonsági mentési feladathoz. Ebben az esetben az összes heti biztonsági mentés a szombat teljes lemezre mutat, a növekményes biztonsági mentések pedig Monday-Friday növekményes lemezeket képeznek. Az összes biztonsági mentés és visszaállítás egy StorSimple rétegű kötetről származik.
 
 ![Elsődleges biztonsági mentési cél konfigurációjának logikai diagramja](./media/storsimple-configure-backup-target-using-backup-exec/primarybackuptargetdiagram.png)
 
@@ -312,7 +312,7 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 
 | Gyakoriság/biztonsági mentés típusa | Összes | Növekményes (nap 1-5)  |   
 |---|---|---|
-| Hetente (1-4 hét) | Szombat | Hétfő – péntek |
+| Hetente (1-4 hét) | Szombat | Monday-Friday |
 | havonta  | Szombat  |   |
 | Évi | Szombat  |   |
 
@@ -415,7 +415,7 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 
     ![Képernyőkép, amely azt mutatja be, hogy hol jelölje be az adatok mellőzése ehhez a feladatsorhoz lehetőséget.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  Válassza az **OK** lehetőséget.
+6.  Kattintson az **OK** gombra.
 
     ![A biztonsági mentési definíció tulajdonságait megjelenítő képernyőkép.](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
@@ -472,13 +472,13 @@ Visszaállít egy StorSimple-eszközről, például helyreállítja az összes b
 
 A katasztrófák számos tényezőt okozhatnak. A következő táblázat az általános vész-helyreállítási forgatókönyveket ismerteti.
 
-| Használati eset | Hatás | Helyreállítás | Jegyzetek |
+| Forgatókönyv | Hatás | Helyreállítás | Jegyzetek |
 |---|---|---|---|
 | StorSimple-eszköz meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a meghibásodott eszközt, és hajtsa végre a [StorSimple feladatátvételt és a vész-helyreállítást](storsimple-device-failover-disaster-recovery.md). | Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adathalmazok beolvasása a felhőből az új eszközre történik. Minden művelet Felhőbeli sebességgel történik. Előfordulhat, hogy az indexelési és katalogizálás-újraellenőrzési folyamat az összes biztonságimásolat-készletet megkeresi és lekéri a felhő szintjéről a helyi eszköz rétegre, amely időigényes folyamat lehet. |
 | A Backup Exec Server meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Hozza létre újra a biztonsági mentési kiszolgálót, és végezze el az adatbázis-visszaállítást részletesen a [Backup Exec (BEDB) adatbázis manuális biztonsági mentésének és visszaállításának módjában](http://www.veritas.com/docs/000041083). | Újra kell építenie vagy vissza kell állítania a Backup Exec-kiszolgálót a vész-helyreállítási helyen. Állítsa vissza az adatbázist a legutóbbi pontra. Ha a visszaállított Backup Exec-adatbázis nincs szinkronban a legújabb biztonsági mentési feladatokkal, az indexelés és a katalogizálás szükséges. Az index és a katalógus újraellenőrzésének folyamata okozhatja, hogy az összes biztonságimásolat-készlet beolvasható, és a felhő szintjéről a helyi eszköz szintjére kell húzni. Ez további időigényesvé teszi. |
 | A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a Backup exect. | Először állítsa vissza a StorSimple, majd állítsa vissza a Backup exect. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 

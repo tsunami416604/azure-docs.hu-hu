@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767204"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Üzenetek bővítése az eszközről a felhőbe IoT Hub üzenetekhez
@@ -60,9 +60,9 @@ A dúsítások egy végponton vannak alkalmazva. Ha öt dúsítást ad meg egy a
 
 A dúsítást a következő módszerekkel lehet konfigurálni:
 
-| **Metódus** | **Parancs** |
+| **Módszer** | **Parancs** |
 | ----- | -----| 
-| Portál | [Azure Portalra](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
+| Portál | [Azure Portal](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
 | Azure CLI   | [az IOT hub Message-gazdagodás](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 

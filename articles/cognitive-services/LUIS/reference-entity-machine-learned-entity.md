@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542240"
 ---
 # <a name="machine-learning-entity"></a>Gépi tanulási entitás
@@ -344,7 +344,7 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 Ez az entitás nem érhető el a v2 előrejelzési futtatókörnyezetben.
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a gépi tanulással foglalkozó entitásról, beleértve az [oktatóanyagot](tutorial-machine-learned-entity.md), [fogalmakat](luis-concept-entity-types.md#design-entities-for-decomposition)és [útmutatókat](luis-how-to-add-entities.md#create-a-machine-learned-entity).
 
