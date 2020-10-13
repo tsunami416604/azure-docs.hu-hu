@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
 ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743437"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999889"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -68,7 +68,7 @@ A házirend-definíció hibaelhárításához kövesse az alábbi lépéseket:
 
 1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva.
-1. A [házirend-definíciós mód](../concepts/definition-structure.md#mode)ellenõrzése:
+1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
    - Az összes erőforrástípus "all" üzemmódja.
    - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
 1. Győződjön meg arról, hogy az erőforrás hatóköre nincs [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy [mentesített](../concepts/exemption-structure.md).
@@ -96,11 +96,11 @@ A szabályzat-hozzárendelés kényszerítésének hibaelhárításához kövess
 
 1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_van. 
-1. A [házirend-definíciós mód](../concepts/definition-structure.md#mode)ellenõrzése:
+1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
    - Az összes erőforrástípus "all" üzemmódja.
    - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
 1. Győződjön meg arról, hogy az erőforrás hatóköre nincs [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy [mentesített](../concepts/exemption-structure.md).
-1. Ellenőrizze, hogy az erőforrás-tartalom megfelel-e a szabályzat logikájának. Ezt a [har-nyomkövetés rögzítésével](../../../azure-portal/capture-browser-trace.md) vagy az ARM-sablon tulajdonságainak áttekintésével végezheti el.
+1. Ellenőrizze, hogy az erőforrás hasznos adatai megegyeznek-e a szabályzat logikájával. Ezt a [har-nyomkövetés rögzítésével](../../../azure-portal/capture-browser-trace.md) vagy az ARM-sablon tulajdonságainak áttekintésével végezheti el.
 1. Hibaelhárítás ellenőrzése: az egyéb gyakori problémák és megoldások esetében [nem a várt megfelelőség](#scenario-compliance-not-as-expected) .
 
 Ha továbbra is problémája van a duplikált és testreszabott beépített szabályzat-definícióval vagy egyéni definícióval, hozzon létre egy támogatási jegyet a **szabályzat készítése** területen a probléma helyes átirányításához.
@@ -169,6 +169,24 @@ A (z) nevű Helm `azure-policy-addon` -diagram már telepítve van vagy részben
 #### <a name="resolution"></a>Feloldás
 
 Kövesse az utasításokat a [Kubernetes-bővítmény Azure Policy eltávolításához](../concepts/policy-for-kubernetes.md#remove-the-add-on), majd futtassa újra a `helm install azure-policy-addon` parancsot.
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Forgatókönyv: az Azure-beli virtuális gépek felhasználó által hozzárendelt identitásai a rendszer által hozzárendelt felügyelt identitások helyére kerülnek.
+
+#### <a name="issue"></a>Probléma
+
+Miután hozzárendelte a vendég-konfigurációs házirend kezdeményezéseit a számítógépeken található beállítások naplózásához, a rendszer már nem rendeli hozzá a számítógéphez rendelt, felhasználóhoz rendelt felügyelt identitásokat. Csak rendszerhez rendelt felügyelt identitás van hozzárendelve.
+
+#### <a name="cause"></a>Ok
+
+A vendég konfiguráció DeployIfNotExists-definíciókban korábban használt szabályzat-definíciók biztosítják, hogy a rendszerhez hozzárendelt identitás hozzá legyen rendelve a géphez, de a felhasználó által hozzárendelt identitás-hozzárendelések is el lettek távolítva.
+
+#### <a name="resolution"></a>Feloldás
+
+Azok a definíciók, amelyek korábban a problémát okozták, elavultként jelennek meg, \[ \] és az előfeltételeket a felhasználó által hozzárendelt felügyelt identitás eltávolítása nélkül kezelő szabályzat-definíciók váltja fel. Manuális lépésre van szükség. Törölje az elavultként megjelölt házirend-hozzárendeléseket, \[ \] és cserélje le azokat a frissített előfeltétel-házirend kezdeményezésre, valamint az eredetivel megegyező nevű házirend-definícióra.
+
+Részletes tájékoztatást a következő blogbejegyzésben talál:
+
+[A vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>Következő lépések
 

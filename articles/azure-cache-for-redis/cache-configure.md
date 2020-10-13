@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840251"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000187"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -31,7 +31,7 @@ Az Azure cache for Redis beállításait az **erőforrás menü**használatával
 A következő beállításokat tekintheti meg és konfigurálhatja az **erőforrás menüben**.
 
 * [Áttekintés](#overview)
-* [Tevékenységnapló](#activity-log)
+* [Műveletnapló](#activity-log)
 * [Hozzáférés-vezérlés (IAM)](#access-control-iam)
 * [Címkék](#tags)
 * [Problémák diagnosztizálása és megoldása](#diagnose-and-solve-problems)
@@ -214,7 +214,7 @@ A fürt méretének módosításához használja a csúszkát, vagy írjon be eg
 
 
 ### <a name="redis-data-persistence"></a>Redis-adatmegőrzés
-Az **adatmegőrzés** lehetőségre kattintva engedélyezheti, letilthatja vagy konfigurálhatja az adatmegőrzést a prémium szintű gyorsítótárban. A Redis-hez készült Azure cache a [RDB-megőrzés](cache-how-to-premium-persistence.md#configure-rdb-persistence) vagy a [AOF-megőrzés](cache-how-to-premium-persistence.md#configure-aof-persistence)használatával biztosít Redis-megőrzést.
+Az **adatmegőrzés** lehetőségre kattintva engedélyezheti, letilthatja vagy konfigurálhatja az adatmegőrzést a prémium szintű gyorsítótárban. A Redis-hez készült Azure cache a RDB-megőrzés vagy a AOF-megőrzés használatával biztosít Redis-megőrzést.
 
 További információ: az [adatmegőrzés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-persistence.md)-hez.
 
@@ -386,7 +386,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 >
 
-| Beállítás | Alapértelmezett érték | Leírás |
+| Beállítás | Alapértelmezett érték | Description |
 | --- | --- | --- |
 | `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0, a és a közötti kapcsolaton keresztül választhat egy másikat `connection.GetDatabase(dbid)` `dbid` `0` `databases - 1` . |
 | `maxclients` |A<sup>2</sup> . árképzési szinttől függ |Ez az érték a csatlakoztatott ügyfelek által egyszerre engedélyezett maximális szám. Ha elérte a korlátot, a Redis lezárja az összes új kapcsolatot, és "az ügyfelek maximális száma elérte a hibát" hibaüzenetet adja vissza. |

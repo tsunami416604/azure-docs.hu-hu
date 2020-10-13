@@ -8,15 +8,15 @@ ms.technology: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 07/14/2020
-ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 510e9e2a9e90d62996ed6dcfebdd96f77b034f3d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298905"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000147"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel
+# <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel és az SQL Machine learning szolgáltatással
 
 Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az [Azure SQL Edge](onnx-overview.md) -ben vagy az [Azure SQL felügyelt példányain (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md), majd a feltöltött ONNX-modell használatával FUTTAThatja a natív előrejelzést.
 

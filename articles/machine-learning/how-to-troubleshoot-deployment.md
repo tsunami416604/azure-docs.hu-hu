@@ -10,13 +10,13 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: troubleshooting, contperfq4, devx-track-python, deploy
+ms.openlocfilehash: 7ed025bc5b7e59a28fcb2f03eeea56628e2cde0d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333772"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998623"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 
 
@@ -214,7 +214,7 @@ Ha a naplózási szint HIBAKERESÉSét állítja be, akkor további információ
 
 ## <a name="function-fails-runinput_data"></a>A függvény sikertelen: Futtatás (input_data)
 
-Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontba való adatküldés során, a függvényben hozzáadhat egy Error befogási utasítást, `run(input_data)` hogy a részletes hibaüzenetet adja vissza helyette. Példa:
+Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontba való adatküldés során, a függvényben hozzáadhat egy Error befogási utasítást, `run(input_data)` hogy a részletes hibaüzenetet adja vissza helyette. Például:
 
 ```python
 def run(input_data):

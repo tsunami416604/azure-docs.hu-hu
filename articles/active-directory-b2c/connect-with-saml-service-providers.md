@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961323"
+ms.locfileid: "91998104"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -454,7 +454,7 @@ Az SAML-token olyan biztonsági jogkivonat, amelyet a sikeres bejelentkezés ut�
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Az az időpont, amikor a jogkivonat érvényes lesz. Az időérték az UTC szerint van kódolva. Az alkalmazásnak ezt a jogcímet kell használnia a jogkivonat élettartamának érvényességének ellenőrzéséhez. Ha módosítani szeretné a jogkivonat élettartamának beállításait, állítsa be az `TokenNotBeforeSkewInSeconds` SAML-jogkivonat kiadása technikai profil [metaadatait](saml-issuer-technical-profile.md#metadata) . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Az az idő, amikor a jogkivonat érvénytelenné válik. Az alkalmazásnak ezt a jogcímet kell használnia a jogkivonat élettartamának érvényességének ellenőrzéséhez. Az érték 15 perccel a és a `NotBefore` nem módosítható.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Egy célközönséget azonosító URI-hivatkozás. Azonosítja a jogkivonat kívánt címzettjét. Az érték megegyezik az SAML-kérelemmel `AssertionConsumerServiceURL` .|
-|`<Response>``<Assertion>` `<saml:AttributeStatement>` gyűjtemény`<Attribute>` | | Kijelentések gyűjteménye (jogcímek), a [függő entitások technikai profiljának](relyingparty.md#technicalprofile) kimeneti jogcímeiben konfiguráltak szerint. Az állítás nevét a kimeneti jogcím beállításával állíthatja be `PartnerClaimType` . |
+|`<Response>``<Assertion>` `<AttributeStatement>` gyűjtemény`<Attribute>` | | Kijelentések gyűjteménye (jogcímek), a [függő entitások technikai profiljának](relyingparty.md#technicalprofile) kimeneti jogcímeiben konfiguráltak szerint. Az állítás nevét a kimeneti jogcím beállításával állíthatja be `PartnerClaimType` . |
 
 ## <a name="next-steps"></a>Következő lépések
 

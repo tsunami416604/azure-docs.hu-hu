@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
-ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206624"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999287"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions Twilio kötése
 
@@ -203,7 +203,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet az alábbi *function.js*meghatározott kimeneti kötés használatával.
+Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet az alábbi *function.jsban*definiált kimeneti kötés használatával.
 
 ```json
     {
@@ -327,9 +327,9 @@ Helyezzen [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.t
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TwilioSms` .
 
-| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|---------|----------------------|
-|**típusa**|**típusa**| értékre kell állítani `twilioSms` .|
+|**típus**|**típus**| értékre kell állítani `twilioSms` .|
 |**irányba**|**irányba**| értékre kell állítani `out` .|
 |**név**|**név**| A Twilio SMS szöveges üzenethez tartozó Function Code-ban használt változó neve. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók SID () azonosítóját tartalmazza `TwilioAccountSid` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |

@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205554"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999972"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.
@@ -28,22 +28,38 @@ Az [azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-n
 ## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása
 A Virtual Network (VNet) támogatása a gyorsítótár létrehozásakor a **Redis panel új Azure-gyorsítótárában** van konfigurálva. 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget. Vegye figyelembe, hogy a Azure Portal gyorsítótárak létrehozása mellett a Resource Manager-sablonok, a PowerShell vagy az Azure CLI használatával is létrehozhatja őket. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-Miután kiválasztotta a prémium szintű árképzési szintet, a Redis VNet-integrációt úgy is konfigurálhatja, hogy kijelöl egy olyan VNet, amely ugyanabban az előfizetésben és helyen található, mint a gyorsítótár. Ha új VNet szeretne használni, először hozza létre a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) vagy a [virtuális hálózat létrehozása (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) című témakörben ismertetett lépéseket a Azure Portal használatával, majd térjen vissza az **új Azure cache for Redis** panelre a prémium szintű gyorsítótár létrehozásához és konfigurálásához.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Erőforrás létrehozása.":::
+   
+2. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
 
-Az új gyorsítótár VNet konfigurálásához kattintson a **Virtual Network** elemre a **Redis új Azure cache** -paneljén, és válassza ki a kívánt VNet a legördülő listából.
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Erőforrás létrehozása.":::
 
-![Virtuális hálózat][redis-cache-vnet]
+3. Az **új Redis cache** lapon adja meg az új prémium szintű gyorsítótár beállításait.
+   
+   | Beállítás      | Ajánlott érték  | Leírás |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a * \<DNS name> . Redis.cache.Windows.net*lesz. | 
+   | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
+   | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
+   | **Hely** | Legördülő menüből válassza ki a kívánt helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
+   | **Gyorsítótár típusa** | Legördülő listából válassza ki a prémium szintű gyorsítótárat a prémium szintű funkciók konfigurálásához. Részletekért lásd: [Az Azure cache Redis díjszabása](https://azure.microsoft.com/pricing/details/cache/). |  A tarifacsomag határozza meg a gyorsítótár méretét, teljesítményét és elérhető funkcióit. További információ: [Azure cache for Redis – áttekintés](cache-overview.md). |
 
-Válassza ki a kívánt alhálózatot az **alhálózat** legördülő listából.  Ha szükséges, **statikus IP-címet**kell megadni. A **statikus IP-cím** mező nem kötelező, és ha nincs megadva, a rendszer a kiválasztott alhálózatból választ egyet.
+4. Válassza a **hálózatkezelés** fület, vagy kattintson a lap alján található **hálózatkezelés** gombra.
+
+5. A **hálózatkezelés** lapon válassza a **virtuális hálózatok** lehetőséget a kapcsolati módszerként. Ha új virtuális hálózatot szeretne használni, először hozza létre a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) vagy a [virtuális hálózat létrehozása (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) című cikkben ismertetett lépéseket a Azure Portal használatával, majd térjen vissza a **Redis panel új Azure cache** -re a prémium gyorsítótár létrehozásához és konfigurálásához.
 
 > [!IMPORTANT]
 > Ha Azure-gyorsítótárat telepít a Redis egy Resource Manager-VNet, a gyorsítótárnak olyan dedikált alhálózaton kell lennie, amely nem tartalmaz más erőforrásokat, kivéve a Redis-példányok Azure gyorsítótárát. Ha kísérlet történt egy Azure cache üzembe helyezésére a Redis egy Resource Manager-VNet egy olyan alhálózatra, amely más erőforrásokat is tartalmaz, a telepítés meghiúsul.
 > 
 > 
 
-![Virtuális hálózat][redis-cache-vnet-ip]
+   | Beállítás      | Ajánlott érték  | Leírás |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Virtual Network** | Legördülő menüből válassza ki a virtuális hálózatot. | Olyan virtuális hálózatot válasszon, amely ugyanabban az előfizetésben és helyen található, mint a gyorsítótár. | 
+   | **Alhálózat** | Legördülő menüből válassza ki az alhálózatot. | Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia. | 
+   | **Statikus IP-cím** | Választható Adjon meg egy statikus IP-címet. | Ha nem ad meg statikus IP-címet, az IP-cím automatikusan kiválasztásra kerül. | 
 
 > [!IMPORTANT]
 > Az Azure egyes alhálózatokon belül fenntart néhány IP-címet, és ezeket a címeket nem lehet használni. Az alhálózatok első és utolsó IP-címe a protokoll-megfelelőség számára van fenntartva, valamint az Azure-szolgáltatásokhoz használt három további címet. További információ: az [IP-címek ezen alhálózatokon belüli használatára vonatkozó korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
@@ -52,7 +68,19 @@ Válassza ki a kívánt alhálózatot az **alhálózat** legördülő listából
 > 
 > 
 
-A gyorsítótár létrehozása után megtekintheti a VNet konfigurációját, ha az **erőforrás menüben**a **Virtual Network** lehetőségre kattint.
+6. Válassza a **Next (speciális** ) lapot, vagy kattintson a lap alján található **Tovább: speciális** gombra.
+
+7. A Premium cache-példány **speciális** lapján konfigurálja a nem TLS port, a fürtözés és az adatmegőrzés beállításait. 
+
+8. Válassza a **Next: Tags (tovább** ) lapot, vagy kattintson a **Next: Tags (tovább** ) gombra a lap alján.
+
+9. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
+
+10. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+
+11. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás**lehetőséget.
+
+Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés**   oldalon. Ha az **állapot**    **futásra**mutat, a gyorsítótár készen áll a használatra. A gyorsítótár létrehozása után megtekintheti a VNet konfigurációját, ha az **erőforrás menüben**a **Virtual Network** lehetőségre kattint.
 
 ![Virtuális hálózat][redis-cache-vnet-info]
 
@@ -159,7 +187,7 @@ Ha a portra vonatkozó követelmények az előző szakaszban leírtak szerint va
 
 - [Indítsa újra](cache-administration.md#reboot) az összes gyorsítótár-csomópontot. Ha az összes szükséges gyorsítótár-függőség nem érhető el (a [bejövő portokra vonatkozó követelmények](cache-how-to-premium-vnet.md#inbound-port-requirements) és a [kimenő portokra vonatkozó követelmények](cache-how-to-premium-vnet.md#outbound-port-requirements)dokumentálása alapján), a gyorsítótár nem fog tudni újraindulni.
 - A gyorsítótár-csomópontok újraindítása után (ahogy a gyorsítótár állapota a Azure Portalban szerepel) a következő teszteket végezheti el:
-  - Pingelje a gyorsítótár-végpontot (az 6380-as port használatával) egy olyan gépről, amely a gyorsítótárral azonos VNET található, a [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Példa:
+  - Pingelje a gyorsítótár-végpontot (az 6380-as port használatával) egy olyan gépről, amely a gyorsítótárral azonos VNET található, a [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Például:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -182,7 +210,7 @@ Kerülje a következő kapcsolódási karakterlánchoz hasonló IP-cím használ
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint `sslHost` amelyeket a StackExchange. Redis ügyfél biztosít. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Példa:
+Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint `sslHost` amelyeket a StackExchange. Redis ügyfél biztosít. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Például:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

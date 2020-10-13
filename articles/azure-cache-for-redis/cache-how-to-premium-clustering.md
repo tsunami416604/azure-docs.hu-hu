@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/13/2018
-ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004770"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000052"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk azt ismerteti, hogyan konfigurálható a fürtözés a prémium szintű Azure cache-ben a Redis-példányhoz.
@@ -31,19 +31,51 @@ Az Azure-ban a Redis-fürt elsődleges/replika modellként érhető el, ahol az 
 ## <a name="clustering"></a>Fürtözés
 A fürtözés engedélyezve van a **Redis panel új Azure-gyorsítótárában** a gyorsítótár létrehozásakor. 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget. A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-A fürtözés a **Redis-fürt** panelen van konfigurálva.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Erőforrás létrehozása.":::
+   
+2. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
 
-![Fürtözés][redis-cache-clustering]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Erőforrás létrehozása.":::
 
-A fürtben legfeljebb 10 szegmens lehet. Kattintson az **engedélyezve** elemre, és csúsztassa a csúszkát, vagy írjon be egy 1 és 10 közötti számot a szegmensek **száma** mezőbe, és kattintson **az OK**gombra.
+3. Az **új Redis cache** lapon adja meg az új prémium szintű gyorsítótár beállításait.
+   
+   | Beállítás      | Ajánlott érték  | Leírás |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a * \<DNS name> . Redis.cache.Windows.net*lesz. | 
+   | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
+   | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
+   | **Hely** | Legördülő menüből válassza ki a kívánt helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
+   | **Gyorsítótár típusa** | Legördülő listából válassza ki a prémium szintű gyorsítótárat a prémium szintű funkciók konfigurálásához. Részletekért lásd: [Az Azure cache Redis díjszabása](https://azure.microsoft.com/pricing/details/cache/). |  A tarifacsomag határozza meg a gyorsítótár méretét, teljesítményét és elérhető funkcióit. További információ: [Azure cache for Redis – áttekintés](cache-overview.md). |
 
-Az egyes szegmensek az Azure által kezelt elsődleges/replika gyorsítótár-párok, a gyorsítótár teljes mérete pedig a díjszabási szinten kiválasztott gyorsítótár-méret szorzatával számítható ki. 
+4. Válassza a **hálózatkezelés** fület, vagy kattintson a lap alján található **hálózatkezelés** gombra.
 
-![Fürtözés][redis-cache-clustering-selected]
+5. A **hálózatkezelés** lapon válassza ki a kapcsolati módszert. A Premium cache-példányok esetében nyilvánosan, nyilvános IP-címeken vagy szolgáltatási végpontokon keresztül, vagy magántulajdonban, privát végpont használatával kapcsolódhat.
 
-Miután létrehozta a gyorsítótárat, csatlakozik hozzá, és ugyanúgy használható, mint a nem fürtözött gyorsítótár, és a Redis elosztja az összes gyorsítótár-szegmenst. Ha a diagnosztika [engedélyezve](cache-how-to-monitor.md#enable-cache-diagnostics)van, a metrikák külön lesznek rögzítve az egyes szegmensekhez, és megtekinthetők a Redis panelhez készült Azure cache [-ben.](cache-how-to-monitor.md) 
+6. Válassza a **Next (speciális** ) lapot, vagy kattintson a lap alján található **Tovább: speciális** gombra.
+
+7. A Premium cache-példány **speciális** lapján konfigurálja a nem TLS port, a fürtözés és az adatmegőrzés beállításait. A fürtözés engedélyezéséhez kattintson az **Engedélyezés**gombra.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Erőforrás létrehozása.":::
+
+    A fürtben legfeljebb 10 szegmens lehet. Az **Engedélyezés**gombra kattintás után csúsztassa a csúszkát, vagy írjon be egy 1 és 10 közötti számot a szegmensek **száma** mezőbe, és kattintson **az OK**gombra.
+
+    Az egyes szegmensek az Azure által kezelt elsődleges/replika gyorsítótár-párok, a gyorsítótár teljes mérete pedig a díjszabási szinten kiválasztott gyorsítótár-méret szorzatával számítható ki.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Erőforrás létrehozása.":::
+
+    Miután létrehozta a gyorsítótárat, csatlakozik hozzá, és ugyanúgy használható, mint a nem fürtözött gyorsítótár, és a Redis elosztja az összes gyorsítótár-szegmenst. Ha a diagnosztika [engedélyezve](cache-how-to-monitor.md#enable-cache-diagnostics)van, a metrikák külön lesznek rögzítve az egyes szegmensekhez, és megtekinthetők a Redis panelhez készült Azure cache [-ben.](cache-how-to-monitor.md) 
+
+8. Válassza a **Next: Tags (tovább** ) lapot, vagy kattintson a **Next: Tags (tovább** ) gombra a lap alján.
+
+9. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
+
+10. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+
+11. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás**lehetőséget.
+
+Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés**   oldalon. Ha az **állapot**    **futásra**mutat, a gyorsítótár készen áll a használatra. 
 
 > [!NOTE]
 > 

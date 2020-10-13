@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8f0a40e30cc58a01a66ba808076fe1d42c31c326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978883"
+ms.locfileid: "91999677"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -23,7 +23,7 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 
 ## <a name="october-2020"></a>2020. október
 
-* A Hangulatelemzés hindi támogatása a modell verziójától kezdve `2020-04-01` . 
+* Hindi támogatás a Hangulatelemzés v3. x verzióhoz, a modell verziójától kezdve `2020-04-01` . 
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -221,7 +221,7 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)
-* [Hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
-* [Kulcskifejezések kinyerése](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)

@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 984977d7cef1a923bf7f17de0c503bddeeebcd82
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575095"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998384"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
 
@@ -68,11 +68,7 @@ Eszköz-szerkesztőként olyan IoT-terméket fejleszthet, amely támogatja a IoT
 
 A [IoT Plug and Play eszköz minősítési program](howto-certify-device.md) ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
-
-Ez a IoT Plug and Play frissítés elérhető az USA középső régiójában, Észak-Európában és Kelet-japán régióban létrehozott IoT-hubokon.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a IoT Plug and Play, a javasolt következő lépés az egyik rövid útmutató kipróbálása:
 

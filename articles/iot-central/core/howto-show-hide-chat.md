@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central csevegés megjelenítése/elrejtése | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan jelenítheti meg és rejtheti el a csevegést a IoT Central alkalmazásban. A technikai támogatás eléréséhez élő csevegést használhat.
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157704"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999723"
 ---
 # <a name="toggle-live-chat"></a>Élő csevegés ki-/bekapcsolása
 
@@ -44,7 +44,7 @@ A csevegés megjelenítéséhez válassza a **csevegés megjelenítése** lehet�
 
  ![Csevegés megjelenítése](media/howto-show-hide-chat/show-chat.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan válthat az élő csevegés az Azure IoT Centralban, itt látható a következő lépés:
 

@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962247"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000336"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás üzembe helyezése az Azure-ban Azure SQL Database
 
@@ -19,7 +19,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 ![Közzétett ASP.NET-alkalmazás Azure App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -65,20 +65,18 @@ A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **D
 
 ![Közzététel a Megoldáskezelőből](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Győződjön meg arról, hogy a **Microsoft Azure App Service** van kiválasztva, és kattintson a **Publish** (Közzététel) elemre.
+Válassza ki célként az **Azure** -t, kattintson a Tovább gombra, és győződjön meg arról, hogy **Azure app Service (Windows)** van kiválasztva, majd kattintson ismét a Tovább gombra.
 
 ![Közzététel a projekt áttekintő oldaláról](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-A közzététel megnyitja a **app Service létrehozása** párbeszédpanelt, amely a ASP.NET-alkalmazás Azure-ban való futtatásához szükséges összes Azure-erőforrás létrehozásához nyújt segítséget.
-
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-előfizetésébe. Ha már be van jelentkezve egy Microsoft-fiókba, győződjön meg arról, hogy abban a fiókban található az előfizetése. Ha nem abban a Microsoft-fiókban van az Azure-előfizetése, amelyikbe be van jelentkezve, kattintással adja hozzá a helyes fiókot.
+A **Közzététel** párbeszédpanelen kattintson a fiók **hozzáadása** elemre a fiókkezelő legördülő listából, majd jelentkezzen be az Azure-előfizetésbe. Ha már be van jelentkezve egy Microsoft-fiókba, győződjön meg arról, hogy abban a fiókban található az előfizetése. Ha nem abban a Microsoft-fiókban van az Azure-előfizetése, amelyikbe be van jelentkezve, kattintással adja hozzá a helyes fiókot.
+
+![Bejelentkezés az Azure-ba](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
-
-![Bejelentkezés az Azure-ba](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>A webalkalmazás nevének konfigurálása
 
@@ -86,7 +84,7 @@ Megtarthatja a webalkalmazás létrehozott nevét, vagy módosíthatja egy mási
 
 ![A Create App Service (App Service létrehozása) párbeszédpanel](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
@@ -112,15 +110,20 @@ Megtarthatja a webalkalmazás létrehozott nevét, vagy módosíthatja egy mási
    |**Hely**| Nyugat-Európa | [Azure-régiók](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Méret**| Ingyenes | [Árképzési szintek](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
+3. A **Közzététel** párbeszédpanel a konfigurált erőforrásokat jeleníti meg. Kattintson a **Finish** (Befejezés) gombra.
+
+   ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+
+
 ### <a name="create-a-server"></a>A kiszolgáló létrehozása
 
 Adatbázis létrehozása előtt [logikai SQL Serverre](../azure-sql/database/logical-servers.md)van szükség. A logikai SQL-kiszolgáló olyan logikai szerkezet, amely csoportként kezelt adatbázisok egy csoportját tartalmazza.
 
-1. Kattintson az **SQL-adatbázis létrehozása** elemre.
+1. Kattintson a **Konfigurálás** elemre SQL Server adatbázis a **csatlakoztatott szolgáltatások**területen.
 
    ![SQL-adatbázis létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-2. A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen kattintson az **SQL Server** melletti **New** (Új) elemre.
+2. A **Azure SQL Database** párbeszédpanelen kattintson az **adatbázis-kiszolgáló**melletti **új** elemre.
 
    A rendszer létrehoz egy egyedi kiszolgálónevet. A rendszer ezt a nevet használja a kiszolgáló alapértelmezett URL-címének részeként `<server_name>.database.windows.net` . Egyedinek kell lennie az összes Azure SQL-kiszolgáló között. Módosíthatja a kiszolgáló nevét, ezen oktatóanyag esetén azonban tartsa meg a létrehozott értéket.
 
@@ -128,28 +131,31 @@ Adatbázis létrehozása előtt [logikai SQL Serverre](../azure-sql/database/log
 
    Jegyezze meg ezt a felhasználónevet és jelszót. A kiszolgálót később kell kezelnie.
 
+   ![Kiszolgáló létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+
    > [!IMPORTANT]
    > Bár a kapcsolati sztringekban lévő jelszava maszkolva van (a Visual Studióban és az App Service szolgáltatásban is), a tény, hogy valamilyen rendszer tárolja, növeli az alkalmazás támadható felületét. Az App Service megszüntetheti ezt a kockázatot [felügyelt szolgáltatásidentitások](overview-managed-identity.md) használatával, feleslegessé téve a titkos kódokat az alkalmazáskonfigurációban. További információ: [Következő lépések](#next-steps).
-
-   ![Kiszolgáló létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 4. Kattintson az **OK** gombra. Ne zárja még be a **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelt.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Adatbázis létrehozása Azure SQL Database
 
-1. A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen:
+1. A **Azure SQL Database** párbeszédpanelen:
 
    * Tartsa meg a **Database Name** (Adatbázisnév) alapértelmezés szerint létrehozott értékét.
-   * A **Connection String Name** (Kapcsolati sztring neve) mezőben írja be a *MyDbConnection* nevet. Ennek a névnek meg kell egyeznie a *Models/MyDatabaseContext.cs* fájlban hivatkozott kapcsolati sztringgel.
-   * Válassza az **OK** lehetőséget.
+   * Kattintson a **Létrehozás** gombra.
 
     ![Adatbázis konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Létrehozás** elemre.
+2. Az **adatbázis-kapcsolatok karakterláncának neve**mezőbe írja be a következőt: _MyDbConnection_. Ennek a névnek meg kell egyeznie a _Models/MyDatabaseContext.cs_ fájlban hivatkozott kapcsolati sztringgel.
 
-   ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+3. Adja meg a [Server](#create-a-server) 3. lépésében használt rendszergazdai felhasználónevet és jelszót az adatbázis felhasználónevében és jelszavában.
 
-Ha a varázsló befejezte az Azure-erőforrások létrehozását, közzéteszi az ASP.NET-alkalmazást az Azure-ban. Az alapértelmezett böngésző az üzembe helyezett alkalmazásra mutató URL-címmel indul el.
+    ![Adatbázis-kapcsolatok karakterláncának konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
+
+4. Válassza a **Befejezés** lehetőséget.
+
+Miután a varázsló befejezte az Azure-erőforrások létrehozását, kattintson a **publish (közzététel** ) gombra a ASP.NET-alkalmazás Azure-beli üzembe helyezéséhez. Az alapértelmezett böngésző az üzembe helyezett alkalmazásra mutató URL-címmel indul el.
 
 Adjon hozzá néhány teendőt.
 

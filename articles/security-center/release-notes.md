@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: c8143a6c6a9b0b562e346b9e1a3b418ebef9efc1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: eb5e5cc97b13d8eb8e671501e9b16479ba59642a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949887"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999295"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -387,7 +387,7 @@ Sebezhetőség-felmérési megoldás telepítésekor Security Center korábban e
 
 Ebből a frissítésből az ellenőrzés el lett távolítva, és most már telepítheti a sebezhetőség-felmérési eszközöket az "egyéni" Windows és Linux rendszerű gépekre. Az egyéni lemezképek olyanok, amelyeket a piactér alapértelmezett értékeivel módosított.
 
-Bár mostantól több gépen is üzembe helyezheti az integrált sebezhetőségi felmérési bővítményt (Qualys), a támogatás csak akkor érhető el, ha az [integrált sebezhetőségi képolvasó telepítése standard szintű virtuális](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-your-vms) gépekre című részben felsorolt operációs rendszert használja.
+Bár mostantól több gépen is üzembe helyezheti az integrált sebezhetőségi felmérési bővítményt (Qualys), a támogatás csak akkor érhető el, ha az [integrált sebezhetőségi képolvasó telepítése standard szintű virtuális](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines) gépekre című részben felsorolt operációs rendszert használja.
 
 További információ a [virtuális gépekhez készült integrált sebezhetőségi képolvasóról (Azure Defender szükséges)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 

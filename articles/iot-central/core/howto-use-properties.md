@@ -1,18 +1,18 @@
 ---
 title: Tulajdonságok használata Azure IoT Central-megoldásokban
 description: Ismerje meg, hogyan használható a csak olvasható és írható tulajdonságok egy Azure IoT Central-megoldásban.
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: eb949f6f0895743250ead0276692497432bfeed5
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940565"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999763"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Tulajdonságok használata Azure IoT Central-megoldásokban
 
@@ -35,7 +35,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Mező           | Leírás                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Megjelenített név    | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve.                                                                                                                                                              |
-| Name (Név)            | A tulajdonság neve. Az Azure IoT Central a megjelenítendő név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie.                                                 |
+| Name            | A tulajdonság neve. Az Azure IoT Central a megjelenítendő név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie.                                                 |
 | Képesség típusa | Tulajdonság.                                                                                                                                                                                                                          |
 | Szemantikai típus   | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el.                                                                       |
 | Séma          | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz.                                               |
@@ -45,7 +45,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Egység            | A tulajdonság értékének egysége, például: **mph**, **%** , vagy ** &deg; C**.                                                                                                                                                              |
 | Megjelenítési egység    | Irányítópultokon és űrlapokon használható megjelenítési egység.                                                                                                                                                                                    |
 | Megjegyzés         | A tulajdonság képességével kapcsolatos megjegyzések.                                                                                                                                                                                        |
-| Leírás     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
+| Description     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
 
 A tulajdonságok az eszköz sablonjának felületén is meghatározhatók, ahogy az itt látható:
 
@@ -242,9 +242,9 @@ A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező k
 * `av` az eszközre eljuttatott verziószám.
 * `ad` egy paraméter-karakterlánc leírása.
 
-| Érték | Címke | Leírás |
+| Érték | Címke | Description |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202` vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben vagy folyamatban van. |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása nem volt érvényes, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907035"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998495"
 ---
 # <a name="group-data-into-bins-module"></a>Adatcsoportosítás a Raktárhelyek modulba
 
@@ -44,7 +44,8 @@ A *dobozolási* vagy az adatcsoportosítás (más néven *kvantálás*) fontos e
 
 Az alábbi ábrán a dobozolási előtti és utáni numerikus értékek eloszlása látható a *quantiles* metódussal. Figyelje meg, hogy a bal oldali nyers adatmennyiséggel összehasonlítva az adatmennyiséget dobozolni, és átalakítottuk a normál méretre.  
 
-[A folyamat futtatásának eredménye alapján például](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net)megtalálhatja a kívánt példát.
+> [!div class="mx-imgBorder"]
+> ![Eredmény vizualizációja](media/module/group-data-into-bins-result-example.png)
 
 Mivel az adatok csoportosítása számos módon történik, az összes testreszabható, javasoljuk, hogy kísérletezzen különböző módszerekkel és értékekkel. 
 
@@ -65,6 +66,9 @@ Mivel az adatok csoportosítása számos módon történik, az összes testresza
     - **Egyéni élek**: megadhatja az egyes raktárhelyeket megkezdő értékeket. A peremhálózati érték mindig a raktárhely alsó határa. 
     
       Tegyük fel például, hogy két raktárhelyre kívánja csoportosítani az értékeket. Az egyik értéke 0-nál nagyobb lesz, és az egyik érték nullánál kisebb vagy azzal egyenlő lesz. Ebben az esetben a Raktárhelyek széleinél **0** értéket kell megadnia a **bin szegélyek vesszővel tagolt listájában**. A modul kimenete 1 és 2 lesz, ami azt jelzi, hogy az egyes sorok értéke a bin index. Vegye figyelembe, hogy a vesszővel tagolt értékek listájának növekvő sorrendben kell lennie, például 1, 3, 5, 7.
+    
+    > [!Note]
+    > Az *ENTRÓPIA mdl* mód a Studióban (klasszikus) van definiálva, és nincs megfelelő nyílt forráskódú csomag, amely a tervezőben még nem használható.        
 
 4. Ha a **Quantiles** és az **egyenlő szélességű** dobozolási módot használja, a **raktárhelyek száma** beállítással megadhatja, hogy hány raktárhelyet vagy *Quantiles*kíván létrehozni.
 

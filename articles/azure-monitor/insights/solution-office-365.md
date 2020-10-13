@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498797"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999740"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -104,9 +104,9 @@ ms.locfileid: "86498797"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>K: mi fog történni október 31-én? Előre kell regisztrációjának megszüntetésére szolgáló?
 > 
-> - Nem fogja tudni fogadni az **Office 365** -megoldás adatait. A megoldás többé nem lesz elérhető a piactéren
+> - Nem fogja tudni fogadni az **Office 365** -megoldás adatait. A megoldás el lesz távolítva a munkaterületről, és a továbbiakban nem lesz elérhető a piactéren.
 > - Az Azure Sentinel-ügyfelek esetében a Log Analytics munkaterület megoldás **Office 365** szerepelni fognak az Azure Sentinel **SecurityInsights** megoldásban.
-> - Ha nem regisztrációjának megszüntetésére szolgáló manuálisan a megoldást, az adatait október 31-én automatikusan leválasztjuk a rendszer.
+> - Ha október 31-ig nem regisztrációjának megszüntetésére szolgáló a megoldást, az adatai automatikusan le lesznek választva, és a **OfficeActivity** tábla törlődik. Még így is visszaállíthatja a táblázatot, ha engedélyezi az Office 365-összekötőt az Azure Sentinelben, az alábbiakban leírtak szerint.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>K: az adatok átkerülnek az új megoldásba?
 > Igen. Ha eltávolítja az **Office 365** -megoldást a munkaterületről, az adatai átmenetileg elérhetetlenné válnak, mert a séma el lesz távolítva. Ha engedélyezi az új **Office 365** -összekötőt a sentinelben, a séma vissza lesz állítva a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 
@@ -245,7 +245,7 @@ Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. 
 
 | Oszlop | Leírás |
 |:--|:--|
-| Műveletek | Az összes figyelt Office 365-előfizetés aktív felhasználóival kapcsolatos információkat nyújt. Megtekintheti az idő múlásával zajló tevékenységek számát is.
+| Üzemeltetés | Az összes figyelt Office 365-előfizetés aktív felhasználóival kapcsolatos információkat nyújt. Megtekintheti az idő múlásával zajló tevékenységek számát is.
 | Exchange | Megjeleníti az Exchange Server-tevékenységek részletezését, például Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
 | SharePoint | Megjeleníti a felhasználók által a SharePoint-dokumentumokon végrehajtott legfontosabb tevékenységeket. Ha ezen a csempén végez részletezést, a Keresés lap megjeleníti a tevékenységek részleteit, például a célként megadott dokumentumot és a tevékenység helyét. Egy fájlhoz hozzáférő esemény esetében például megtekintheti az elérni kívánt dokumentumot, a hozzá tartozó fióknevet és IP-címet. |
 | Azure Active Directory | Magában foglalja a leggyakoribb felhasználói tevékenységeket, például a felhasználói jelszavak visszaállítását és a bejelentkezési kísérleteket. A részletezés során látni fogja a tevékenységek részleteit, például az eredmény állapotát. Ez általában akkor hasznos, ha a Azure Active Directory gyanús tevékenységeket szeretne figyelni. |
@@ -462,7 +462,7 @@ Ezek a rekordok a SharePoint-fájl műveleteire adott válaszként jönnek létr
 
 A következő táblázat példákat tartalmaz a megoldás által gyűjtött frissítési rekordok lekérdezésére.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 | --- | --- |
 |Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összegzések száma () művelet szerint |
 |SharePoint-webhelyek használata|OfficeActivity &#124;, ahol a OfficeWorkload = ~ "SharePoint" &#124; összesítések száma () SiteUrl szerint \| rendezve|
@@ -471,7 +471,7 @@ A következő táblázat példákat tartalmaz a megoldás által gyűjtött fris
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Saját irányítópultok létrehozásával](../learn/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.

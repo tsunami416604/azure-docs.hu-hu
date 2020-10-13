@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744219"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998400"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A magánhálózati kapcsolatok konfigurációs problémáinak diagnosztizálása Azure Key Vault
 
@@ -34,7 +34,7 @@ Ha még nem ismeri ezt a funkciót, tekintse meg [a Key Vault integrálása az A
 ### <a name="problems-not-covered-by-this-article"></a>A cikkben nem szereplő problémák
 
 - Átmeneti kapcsolati probléma van. Egy adott ügyfélnél néhány kérelem működik, és néhány nem működik. *Az időszakos problémákat általában nem a privát hivatkozások konfigurációjában lévő probléma okozza; a hálózat vagy az ügyfél túlterheltségének jele.*
-- Olyan Azure-terméket használ, amely támogatja a BYOK (Bring Your Own Key) vagy a CMK (az ügyfél által felügyelt kulcsokat), és a termék nem fér hozzá a kulcstartóhoz. *Tekintse meg a termék dokumentációját. Győződjön meg arról, hogy kifejezetten kijelenti, hogy a kulcstartók támogatják a tűzfalat. Szükség esetén vegye fel a kapcsolatot az adott termék terméktámogatásával.*
+- Olyan Azure-terméket használ, amely támogatja a BYOK (Bring Your Own Key), a CMK (ügyfél által felügyelt kulcsokat), vagy a Key vaultban tárolt titkos kulcsokhoz való hozzáférést. Ha engedélyezi a tűzfalat a Key Vault-beállításokban, a termék nem fér hozzá a kulcstartóhoz. *Tekintse meg a termékre vonatkozó dokumentációt. Győződjön meg arról, hogy kifejezetten kijelenti, hogy a kulcstartók támogatják a tűzfalat. Szükség esetén forduljon az adott termék támogatásához.*
 
 ### <a name="how-to-read-this-article"></a>A cikk elolvasása
 
@@ -46,9 +46,11 @@ Lássunk is hozzá!
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>Ellenőrizze, hogy az ügyfél a virtuális hálózaton fut-e
 
-Ez az útmutató segítséget nyújt a Key vaulthoz tartozó, az alkalmazás kódjából származó kapcsolatok kijavításához. Ilyenek például az Azure Virtual Machines, az Azure Service Fabric-fürtök, a Azure App Service, az Azure Kubernetes szolgáltatás (ak) és más hasonló alkalmazások.
+Ez az útmutató segítséget nyújt a Key vaulthoz tartozó, az alkalmazás kódjából származó kapcsolatok kijavításához. Ilyenek például az Azure Virtual Machines, az Azure Service Fabric-fürtök, a Azure App Service, az Azure Kubernetes szolgáltatás (ak) és más hasonló alkalmazások. Ez az útmutató arra az esetre is vonatkozik, ha a Azure Portal webbase felhasználói felületén végez hozzáférést, ahol a böngésző közvetlenül fér hozzá a kulcstartóhoz.
 
-A magánhálózati hivatkozások definíciója alapján az alkalmazásnak vagy a parancsfájlnak a számítógép, a fürt vagy a környezet azon Virtual Network csatlakoztatott számítógépen kell futnia, ahol a [magánhálózati végpont erőforrása](../../private-link/private-endpoint-overview.md) telepítve lett. Ha az alkalmazás egy tetszőleges internetkapcsolattal rendelkező hálózaton fut, ez az útmutató nem alkalmazható, és valószínűleg privát hivatkozások nem használhatók.
+A magánhálózati hivatkozások definíciója alapján az alkalmazásnak, a parancsfájlnak vagy a portálnak a számítógép, a fürt vagy a környezethez csatlakoztatott számítógépen kell futnia ahhoz a Virtual Networkhoz, ahol a [magánhálózati végpont erőforrása](../../private-link/private-endpoint-overview.md) telepítve volt.
+
+Ha az alkalmazás, a parancsfájl vagy a portál egy tetszőleges internetkapcsolattal rendelkező hálózaton fut, ez az útmutató nem alkalmazható, és valószínűleg privát hivatkozások nem használhatók. Ez a korlátozás a Azure Cloud Shell futtatott parancsokra is vonatkozik, mivel azok egy távoli Azure-gépen futnak, a felhasználói böngésző helyett igény szerint.
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>Ha felügyelt megoldást használ, tekintse meg az adott dokumentációt
 
@@ -74,7 +76,7 @@ A következő lépésekkel ellenőrizheti, hogy a magánhálózati végponti kap
 >[!IMPORTANT]
 > A tűzfalbeállítások módosításával eltávolíthat olyan legitim ügyfelek hozzáférését, amelyek még nem használnak privát hivatkozásokat. Győződjön meg arról, hogy tisztában van a tűzfal konfigurációjának egyes változásainak következményeivel.
 
-Fontos szempont, hogy a privát *hivatkozások csak a kulcstartóhoz biztosítanak* hozzáférést. Nem *távolítja el* a meglévő hozzáférést. Ahhoz, hogy hatékonyan le lehessen tiltani a hozzáférést a nyilvános internetről, explicit módon engedélyeznie kell a Key Vault-tűzfalat:
+Fontos szempont, hogy a privát hivatkozások *funkció csak olyan Virtual Network biztosít hozzáférést* a kulcstartóhoz, amely az adatkiszűrése megakadályozása érdekében be van zárva. Nem *távolítja el* a meglévő hozzáférést. Ahhoz, hogy hatékonyan le lehessen tiltani a hozzáférést a nyilvános internetről, explicit módon engedélyeznie kell a Key Vault-tűzfalat:
 
 1. Nyissa meg a Azure Portal, és nyissa meg a Key Vault-erőforrást.
 2. A bal oldali menüben válassza a **hálózatkezelés**lehetőséget.
@@ -229,11 +231,11 @@ Az Azure-előfizetéshez a következő pontos névvel rendelkező [saját DNS z�
 
 Az erőforrás jelenlétének ellenőrzéséhez nyissa meg a portál előfizetés lapját, és a bal oldali menüben válassza az "erőforrások" lehetőséget. Az erőforrás nevének kötelezőnek kell lennie `privatelink.vaultcore.azure.net` , és az erőforrástípus **saját DNS zónának**kell lennie.
 
-Általában ez az erőforrás automatikusan jön létre, amikor egy tipikus módszer használatával hoz létre egy privát végpontot. Vannak azonban olyan esetek, amikor az erőforrás nem jön létre automatikusan, és manuálisan kell elvégeznie. Lehet, hogy az erőforrás véletlenül törölve lett.
+Általában ez az erőforrás automatikusan jön létre, amikor közös eljárással hoz létre egy privát végpontot. Vannak azonban olyan esetek, amikor az erőforrás nem jön létre automatikusan, és manuálisan kell elvégeznie. Lehet, hogy az erőforrás véletlenül törölve lett.
 
 Ha nem rendelkezik ezzel az erőforrással, hozzon létre egy új saját DNS Zone-erőforrást az előfizetésében. Ne feledje, hogy a névnek pontosan `privatelink.vaultcore.azure.net` , szóközök vagy további pontok nélkül kell lennie. Ha helytelen nevet ad meg, a cikkben ismertetett névfeloldás nem fog működni. Az erőforrás létrehozásával kapcsolatos további információkért lásd: [Azure Private DNS-zóna létrehozása a Azure Portal használatával](../../dns/private-dns-getstarted-portal.md). Ha ezt az oldalt követi, kihagyhatja Virtual Network létrehozását, mert ezen a ponton már rendelkeznie kell egy már meglévővel. Az érvényesítési eljárásokat Virtual Machines használatával is kihagyhatja.
 
-### <a name="confirm-that-the-private-dns-zone-must-be-linked-to-the-virtual-network"></a>Győződjön meg arról, hogy a saját DNS zónának csatolva kell lennie a Virtual Network
+### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>Győződjön meg arról, hogy a saját DNS zóna csatolva van a Virtual Network
 
 Nem elegendő saját DNS zónához. Emellett a magánhálózati végpontot tartalmazó Virtual Networkhoz is csatolni kell. Ha a saját DNS zóna nem a megfelelő Virtual Network van csatolva, akkor az adott Virtual Network DNS-feloldása figyelmen kívül hagyja a saját DNS zónát.
 
@@ -259,9 +261,9 @@ Emellett a rekord értékének `A` (az IP-címnek) [a Key Vault magánhálózati
 
 Ha több virtuális hálózat van, és mindegyik saját privát végponti erőforrással hivatkozik ugyanarra a kulcstartóra, akkor a Key Vault-állomásnévnek a hálózattól függően egy másik magánhálózati IP-címhez kell feloldania. Ez azt jelenti, hogy több saját DNS zóna is szükséges, amelyek mindegyike egy másik Virtual Networkhoz kapcsolódik, és a rekordban eltérő IP-címet használ `A` .
 
-A fejlettebb forgatókönyvekben több virtuális hálózat is van, amelyeken engedélyezve van a társítás. Ebben az esetben csak egy Virtual Networkra van szükség a privát végponti erőforráshoz, de előfordulhat, hogy mindkettőnek kapcsolódnia kell az saját DNS Zone-erőforráshoz. Ez a forgatókönyv nem vonatkozik közvetlenül a dokumentumra.
+A fejlettebb forgatókönyvek esetében előfordulhat, hogy a virtuális hálózatok esetében engedélyezve van a társítás. Ebben az esetben csak egy Virtual Networkra van szükség a privát végponti erőforráshoz, de előfordulhat, hogy mindkettőnek kapcsolódnia kell az saját DNS Zone-erőforráshoz. Ez a forgatókönyv nem vonatkozik közvetlenül a dokumentumra.
 
-### <a name="fact-you-have-control-over-dns-resolution"></a>Tény: szabályozhatja a DNS-feloldást
+### <a name="understand-that-you-have-control-over-dns-resolution"></a>A DNS-feloldás vezérlésének megismerése
 
 Ahogy az [előző szakaszban](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)is látható, a privát hivatkozásokkal rendelkező kulcstartóban szerepel az alias a `{vaultname}.privatelink.vaultcore.azure.net` *nyilvános* regisztrációban. A Virtual Network által használt DNS-kiszolgáló a nyilvános regisztrációt használja, de ellenőrzi, hogy van-e minden alias a *privát* regisztrációhoz, és ha talál ilyet, a nyilvános regisztráció során megadott aliasokat fogja leállítani.
 
@@ -324,9 +326,9 @@ A `addr` `x-ms-keyvault-network-info` fejlécben lévő mező a kérelem FORRÁS
 ### <a name="query-the-key-vault-ip-address-directly"></a>A Key Vault IP-címének lekérdezése közvetlenül
 
 >[!IMPORTANT]
-> A Key Vault a HTTPS-tanúsítvány ellenőrzése nélkül való elérése veszélyes, és csak tanulási célokra használható. Az üzemi kód nem fér hozzá a Key vaulthoz az ügyféloldali ellenőrzés nélkül. Ha csak a problémák diagnosztizálására kerül sor, előfordulhat, hogy egy folyamatos módosítási kísérlet tárgya nem jelenik meg, ha mindig letiltja a HTTPS-tanúsítvány érvényesítését a Key vaultra vonatkozó kérésekben.
+> A Key Vault a HTTPS-tanúsítvány ellenőrzése nélkül való elérése veszélyes, és csak tanulási célokra használható. Az üzemi kód nem fér hozzá a Key vaulthoz az ügyféloldali ellenőrzés nélkül. Ha csak a problémák diagnosztizálására van szükség, előfordulhat, hogy a rendszer nem fogja feltárni a sikertelen kísérleteket, ha gyakran letiltja a HTTPS-tanúsítvány érvényesítését a Key vaultba érkező kérésekben.
 
-Ha telepítette a PowerShell legújabb verzióit, a használatával `-SkipCertificateCheck` kihagyhatja a https-tanúsítványok ellenőrzését, majd közvetlenül a [kulcstartó IP-címét](#find-the-key-vault-private-ip-address-in-the-virtual-network) is megcélozhatja:
+Ha telepítette a PowerShell legújabb verzióját, `-SkipCertificateCheck` a használatával kihagyhatja a https-tanúsítványok ellenőrzését, majd közvetlenül a [kulcstartó IP-címét](#find-the-key-vault-private-ip-address-in-the-virtual-network) is megcélozhatja:
 
     PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
 
@@ -354,7 +356,7 @@ Számos operációs rendszer engedélyezi egy explicit rögzített IP-cím beál
 
 ### <a name="promiscuous-proxies-fiddler-etc"></a>Kevert proxyk (Hegedűs, stb.)
 
-A kifejezetten feljegyzett esetek kivételével ebben a cikkben a diagnosztikai lehetőségek csak akkor működnek, ha nincs kevert proxy a környezetben. Habár ezek a proxyk általában kizárólag a diagnosztizált gépen vannak telepítve (a Hegedűs a leggyakoribb példa), a speciális rendszergazdák felülírhatják a főtanúsítvány-hatóságokat (CAs), és egy kevert proxyt telepíthetnek a hálózatban több gépet kiszolgáló átjáró-eszközökön. Ezek a proxyk jelentősen befolyásolhatják a biztonságot és a megbízhatóságot is. A Microsoft nem támogatja az ilyen termékeket használó konfigurációkat.
+Ha explicit módon megjegyezte, a jelen cikkben található diagnosztikai beállítások csak akkor működnek, ha nincs kevert proxy a környezetben. Habár ezek a proxyk általában kizárólag a diagnosztizált gépen vannak telepítve (a Hegedűs a leggyakoribb példa), a speciális rendszergazdák felülírhatják a főtanúsítvány-hatóságokat (CAs), és egy kevert proxyt telepíthetnek a hálózatban több gépet kiszolgáló átjáró-eszközökön. Ezek a proxyk jelentősen befolyásolhatják a biztonságot és a megbízhatóságot is. A Microsoft nem támogatja az ilyen termékeket használó konfigurációkat.
 
 ### <a name="other-things-that-may-affect-connectivity"></a>Egyéb dolgok, amelyek hatással lehetnek a kapcsolatra
 

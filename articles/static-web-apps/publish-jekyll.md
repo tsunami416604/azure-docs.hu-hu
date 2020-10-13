@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797700"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000223"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Jekyll-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Jekyll](https://jekyllrb.com/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -96,7 +96,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** gombra.
 
 1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
@@ -146,12 +146,9 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Nyissa meg a Jekyll alkalmazást egy szövegszerkesztőben, és nyissa meg a _. GitHub/munkafolyamatok/Azure-Pages-<WORKFLOW_NAME>. YML_ fájlt.
 
-1. Sorok hozzáadása a blokk után `- uses: actions/checkout@v2` a következő konfigurációs blokkhoz.
+1. A sor után `- uses: actions/checkout@v2` adja hozzá a következő konfigurációs blokkot.
 
     ```yml
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
@@ -176,11 +173,11 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
    :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Részletek kitöltve":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

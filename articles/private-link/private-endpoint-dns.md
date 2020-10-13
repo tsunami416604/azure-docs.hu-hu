@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999656"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Az Azure privát végpont DNS-konfigurációja
 
@@ -117,7 +117,7 @@ Ez a modell bővíthető több, ugyanahhoz a privát végponthoz társított vir
 > Ehhez a konfigurációhoz egyetlen privát DNS-zónára van szükség. A különböző virtuális hálózatok azonos nevű zónáinak létrehozásához kézi műveletekre van szükség a DNS-rekordok egyesítéséhez.
 
 > [!IMPORTANT]
-> Ha egy másik előfizetésből származó, sugaras modellben lévő magánhálózati végpontot használ, akkor ugyanazt a saját DNS-zónát használja a központban.
+> Ha egy másik előfizetéshez tartozó sugaras modellben használ privát végpontot, akkor ugyanazt a saját DNS-zónát használja a központban.
 
 Ebben a forgatókönyvben egy központilag [küllős](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hálózati topológia van, és a küllős hálózatok közös privát végpontot használnak, és az összes küllős virtuális hálózat ugyanahhoz a magánhálózati DNS-zónához van csatolva. 
 

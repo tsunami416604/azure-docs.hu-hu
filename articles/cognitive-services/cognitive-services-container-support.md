@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
-ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665412"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999686"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services tárolók
 
@@ -56,7 +56,7 @@ Cognitive Services erőforrások elérhetők [Microsoft Azureon](https://azure.m
 
 Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosítják, amelyek mindegyike az Azure-beli szolgáltatások funkcióinak egy részhalmazát tartalmazza Cognitive Services:
 
-| Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
+| Szolgáltatás | Támogatott árképzési szintek | Tároló | Description |
 |--|--|--|--|
 | [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Olvasás** OCR ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található.<br>[Hozzáférés kérése][request-access] |
@@ -72,7 +72,7 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 | [Text Analytics][ta-containers-language] | F0, S | **Nyelvfelismerés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | A legfeljebb 120 nyelv esetében azt észleli, hogy a bemeneti szöveg milyen nyelven íródott, és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
 | [Text Analytics][ta-containers-sentiment] | F0, S | **Hangulatelemzés v3** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | A nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az érzelmek elemzése ebben a verzióban az egyes dokumentumokhoz és mondatokhoz tartozó hangulati címkéket (például *pozitív* vagy *negatív*) adja vissza. |
 | [Text Analytics][ta-containers-health] | F0, S | **Text Analytics állapota** | Orvosi adatok kinyerése és címkézése strukturálatlan klinikai szövegből. |
-| [Térbeli elemzés][spa-containers] | S0 | **Térbeli elemzés** | Orvosi adatok kinyerése és címkézése strukturálatlan klinikai szövegből. |
+| [Térbeli elemzés][spa-containers] | S0 | **Térbeli elemzés** | A valós idejű adatfolyam-továbbítási videót elemzi a személyek közötti térbeli kapcsolatok, a mozgásuk és a fizikai környezetekben található objektumok közötti interakciók megismerése érdekében. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -80,10 +80,10 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánlati**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás-kulcsokat. Egyetlen Cognitive Services is létrehozhat egy teljes körű erőforrást, és ugyanazt a számlázási kulcsot használhatja a támogatott szolgáltatások között a következő szolgáltatásokhoz:
 
-* Számítógépes látástechnológia
-* Arcfelismerés
+* Computer Vision
+* Face
 * LUIS
-* Szövegelemzés
+* Text Analytics
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851118"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999253"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -32,6 +32,18 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 > [!NOTE]
 > Nem kell létrehoznia egy egyszerű szolgáltatásnevet, ha úgy dönt, hogy közzétételi profilt használ a hitelesítéshez.
 
+## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>Közzétételi profil letöltése és használata telepítési hitelesítő adatokként (ajánlott)
+
+A Function alkalmazás közzétételi profiljának letöltése:
+
+1. Válassza ki a Function alkalmazás **Áttekintés** lapját, majd válassza a **közzétételi profil beolvasása**elemet.
+
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Közzétételi profil letöltése":::
+
+1. Mentse és másolja a közzétételi beállítások fájljának tartalmát.
+
+## <a name="create-a-service-principal-deprecated"></a>Egyszerű szolgáltatásnév létrehozása (elavult)
+=======
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -44,7 +56,8 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 
 A GitHub-műveletek Azure Functions való hitelesítésének ajánlott módja a közzétételi profil. A hitelesítést egy egyszerű szolgáltatással is elvégezheti, de a folyamat további lépéseket igényel. 
 
-Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet [GitHub-titokként](https://docs.github.com/en/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
+## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
+= = = = = = = Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet a [GitHub-titokként](https://docs.github.com/en/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 

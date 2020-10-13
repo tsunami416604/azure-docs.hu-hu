@@ -10,13 +10,13 @@ ms.author: jordane
 author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, devx-track-python
-ms.openlocfilehash: 5d7956b5538b272454f3f55bcda84188c946e978
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, contperfq2, devx-track-python, deploy
+ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328428"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999073"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>ML modellek üzembe helyezése programozható Gate-tömbökben (FPGA) Azure Machine Learning 
 
@@ -31,7 +31,7 @@ A FPGA újrakonfigurálhatja különböző típusú gépi tanulási modellekhez.
 
 ![Azure Machine Learning FPGA összehasonlításának ábrája](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processzor| Rövidítés |Leírás|
+|Processzor| Rövidítés |Description|
 |---|:-------:|------|
 |Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök – például a Google TensorFlow Processor Units (TPU) – biztosítják a lehető legnagyobb hatékonyságot. Az igények változása miatt nem konfigurálhatók újra.|
 |Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
@@ -347,7 +347,7 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A szükségtelen költségek elkerülése érdekében **ebben a sorrendben**törölje az erőforrásokat: webszolgáltatás, majd rendszerkép, majd a modell.
 

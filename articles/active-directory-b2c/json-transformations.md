@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961289"
+ms.locfileid: "91998439"
 ---
 # <a name="json-claims-transformations"></a>JSON-jogcímek átalakítása
 
@@ -112,7 +112,7 @@ Az alábbi példa egy JSON-karakterláncot hoz létre a jogcím értékei és a 
 </ClaimsTransformation>
 ```
 
-A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez, amely a kérés törzse lesz, amelyet egy REST API küld. A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak.
+A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez, amely a kérés törzse lesz, amelyet egy REST API küld. A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak.
 
 - Bemeneti jogcímek:
   - **e-mail**, átalakítási jogcím típusa  **customerEntity. email**: " john.s@contoso.com "

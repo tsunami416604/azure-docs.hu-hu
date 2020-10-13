@@ -1,25 +1,25 @@
 ---
 title: Az Azure IoT Central alkalmazás ingyenes díjszabási csomagjából kezelheti a számláját, és átalakíthatja azokat | Microsoft Docs
 description: Rendszergazdaként megtudhatja, hogyan kezelheti számláját, és hogyan helyezheti át az ingyenes díjszabási csomagot az Azure IoT Central-alkalmazásban található standard díjszabási csomagra
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/09/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 515f5f665e947ff9594cce6dbbaea9b5e0c50ebf
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157507"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999710"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Számla kezelése IoT Central alkalmazásban
 
-Ez a cikk azt ismerteti, hogyan kezelheti a számlát az Azure IoT Central alkalmazásban az adminisztráció szakaszban. Megtudhatja, hogyan helyezheti át alkalmazását az ingyenes díjszabási csomagból egy standard díjszabási csomagra, és hogyan frissítheti és minősítheti a díjszabási tervet.
+Ez a cikk azt ismerteti, hogyan kezelheti az Azure IoT Central-számlázást rendszergazdaként. Az alkalmazást az ingyenes díjszabási csomagból egy standard díjszabási csomagra helyezheti át, és frissítheti vagy visszaminősítheti a díjszabási tervet.
 
-Az **Adminisztráció** szakasz eléréséhez és használatához *rendszergazdai* szerepkörrel vagy *egyéni felhasználói szerepkörrel* kell rendelkeznie, amely lehetővé teszi az Azure IoT Central-alkalmazások számlázásának megtekintését. Ha létrehoz egy Azure IoT Central alkalmazást, a rendszer automatikusan hozzárendeli az adott alkalmazáshoz tartozó **rendszergazdai** szerepkörhöz.
+A **felügyelet** szakasz eléréséhez *rendszergazdai* szerepkörrel kell rendelkeznie, vagy *egyéni felhasználói szerepkörrel* kell rendelkeznie, amely lehetővé teszi a számlázás megtekintését. Ha létrehoz egy Azure IoT Central alkalmazást, a rendszer automatikusan hozzárendeli a **rendszergazdai** szerepkörhöz.
 
 ## <a name="move-from-free-to-standard-pricing-plan"></a>Az ingyenesről a standard díjszabási csomagra való áttérés
 
@@ -55,9 +55,9 @@ A díjszabás szakaszban bármikor frissítheti vagy visszaállíthatja az Azure
 
 1. Lépjen az **Adminisztráció** szakasz **díjszabás** lapjára.
 
-    ![Próbaverzió állapota](media/howto-view-bill/pricing.png)
+    ![Prcing csomag frissítése](media/howto-view-bill/pricing.png)
 
-1. Válassza ki a **csomagot** , és kattintson a **Mentés** gombra a frissítéshez vagy a visszalépéshez.
+1. Válassza ki a **csomagot** , majd kattintson a **Mentés** gombra a frissítéshez vagy a visszalépéshez.
 
 ## <a name="view-your-bill"></a>Számla megtekintése
 
@@ -68,6 +68,6 @@ A díjszabás szakaszban bármikor frissítheti vagy visszaállíthatja az Azure
 > [!Note]
 > Alapértelmezés szerint a *Standard 2* díjszabási csomagra vált.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan kezelheti a számláját az Azure IoT Central alkalmazásban, a javasolt következő lépés az [alkalmazás felhasználói felületének testreszabása](howto-customize-ui.md) az Azure IoT Central-ban című témakörben olvashat.

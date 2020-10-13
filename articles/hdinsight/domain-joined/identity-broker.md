@@ -1,68 +1,68 @@
 ---
 title: Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez – Azure HDInsight
-description: Tudnivalók a HDInsight-ügynökről a tartományhoz csatlakoztatott Apache Hadoop fürtök hitelesítésének egyszerűsítése érdekében.
+description: Ismerje meg az Azure HDInsight ID Broker szolgáltatást a tartományhoz csatlakoztatott Apache Hadoop fürtök hitelesítésének egyszerűsítése érdekében.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565326"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999939"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan állíthatja be és használhatja a HDInsight ID Broker (HIB) szolgáltatást az Azure HDInsight. Ezzel a funkcióval modern OAuth-hitelesítéssel érheti el az Apache Ambari-t, miközben a Azure Active Directory Domain Services (HRE-DS) örökölt jelszó-kivonatok nélkül is Multi-Factor Authentication (MFA) kényszerítést alkalmaz.
+Ez a cikk az Azure HDInsight ID Broker szolgáltatás beállítását és használatát ismerteti. Ezzel a funkcióval modern OAuth-hitelesítést érhet el az Apache Ambari, miközben a többtényezős hitelesítés kényszerítése nélkül, anélkül, hogy örökölt jelszó-kivonatokat kellene Azure Active Directory Domain Services (Azure AD DS).
 
 ## <a name="overview"></a>Áttekintés
 
-A HIB a következő helyzetekben egyszerűsíti az összetett hitelesítési beállításokat:
+A HDInsight ID Broker a következő helyzetekben egyszerűsíti az összetett hitelesítési beállításokat:
 
-* A szervezet támaszkodik az összevonásra, hogy hitelesítse a felhasználókat a felhőalapú erőforrásokhoz való hozzáféréshez. Korábban a HDInsight Enterprise Security Package (ESP) fürtök használatához engedélyeznie kell a jelszó-kivonatok szinkronizálását a helyszíni környezetből a Azure Active Directory (Azure AD) szolgáltatásba. Ez a követelmény bizonyos szervezeteknél nehéz vagy nemkívánatos lehet.
+* A szervezet támaszkodik az összevonásra, hogy hitelesítse a felhasználókat a felhőalapú erőforrásokhoz való hozzáféréshez. Korábban a HDInsight Enterprise Security Package-fürtök használatához engedélyeznie kell a jelszó-kivonatok szinkronizálását a helyszíni környezetből a Azure Active Directory (Azure AD) szolgáltatásba. Ez a követelmény bizonyos szervezeteknél nehéz vagy nemkívánatos lehet.
+* A szervezet szeretné kikényszeríteni a többtényezős hitelesítés használatát webalapú vagy HTTP-alapú hozzáféréshez az Apache Ambari és más fürterőforrás-szolgáltatásokhoz.
 
-* A szervezete szeretné kikényszeríteni az MFA használatát a webes és HTTP-alapú hozzáféréshez az Apache Ambari és más fürterőforrás-eszközökhöz.
+A HDInsight ID Broker olyan hitelesítési infrastruktúrát biztosít, amely lehetővé teszi a OAuth (modern) és a Kerberos (örökölt) protokoll közötti áttérést anélkül, hogy a jelszó-kivonatokat az Azure-AD DSba kellene szinkronizálnia. Ez az infrastruktúra egy Windows Server rendszerű virtuális gépen (VM) futó összetevőkből áll, amelyeken engedélyezve van a HDInsight ID Broker csomópont, valamint a fürt átjárójának csomópontjai.
 
-A HIB olyan hitelesítési infrastruktúrát biztosít, amely lehetővé teszi a OAuth (modern) és a Kerberos (örökölt) protokoll közötti áttérést anélkül, hogy a jelszó-kivonatokat a HRE-DS-be kellene szinkronizálnia. Ez az infrastruktúra egy Windows Server rendszerű virtuális gépen (ID Broker-csomóponton) futó összetevőkből áll, valamint a fürt átjárójának csomópontjaival.
-
-A következő táblázat segítségével meghatározhatja a szervezete által igényelt legjobb hitelesítési lehetőséget:
+A következő táblázat segítségével határozhatja meg a szervezet igényei alapján a legjobb hitelesítési lehetőséget.
 
 |Hitelesítési lehetőségek |HDInsight-konfiguráció | Megfontolandó tényezők |
 |---|---|---|
-| Teljes OAuth | ESP + HIB | 1. a legtöbb biztonságos beállítás (MFA támogatott) 2.    NINCS szükség pass hash-szinkronizálásra. 3.  Nincs SSH/kinit parancsot/keytab kiterjesztésű hozzáférés a helyszíni fiókokhoz, amelyek nem rendelkeznek jelszó-kivonattal a HRE-DS-ben. 4.   A csak Felhőbeli fiókok továbbra is SSH/kinit parancsot/keytab kiterjesztésű. 5. Web-alapú hozzáférés a Ambari-hez a OAuth 6 használatával.  A OAuth támogatásához a régi alkalmazások (JDBC/ODBC stb.) frissítésére van szükség.|
-| OAuth + alapszintű hitelesítés | ESP + HIB | 1. webalapú hozzáférés a Ambari-hez a OAuth 2 használatával. Az örökölt alkalmazások továbbra is az alapszintű hitelesítést használják. 3. Az MFA-t le kell tiltani az alapszintű hitelesítéshez való hozzáféréshez. 4. NINCS szükség pass hash-szinkronizálásra. 5. Nincs SSH/kinit parancsot/keytab kiterjesztésű hozzáférés a helyszíni fiókokhoz, amelyek nem rendelkeznek jelszó-kivonattal a HRE-DS-ben. 6. A csak Felhőbeli fiókok továbbra is SSH/kinit parancsot. |
-| Teljesen egyszerű hitelesítés | ESP | 1. a legtöbb hasonló a helyszíni telepítésekhez. 2. Jelszó-kivonat szinkronizálása a HRE – DS-re van szükség. 3. A helyszíni fiókok SSH-/kinit parancsot-vagy keytab kiterjesztésű-t is használhatnak. 4. Az MFA-t le kell tiltani, ha a biztonsági másolati tároló ADLS Gen2 |
+| Teljes OAuth | Enterprise Security Package + HDInsight ID Broker | A legbiztonságosabb megoldás. (Többtényezős hitelesítés támogatott.) *Nincs* szükség pass hash-szinkronizálásra. Nem rendelkezik SSH/kinit parancsot/keytab kiterjesztésű hozzáféréssel a helyszíni fiókokhoz, amelyek nem rendelkeznek jelszó-kivonattal az Azure AD DSban. A csak felhőalapú fiókok továbbra is SSH/kinit parancsot/keytab kiterjesztésű. Webalapú hozzáférés a Ambari-hez a OAuth-en keresztül. A OAuth támogatásához szükséges örökölt alkalmazások (például JDBC/ODBC) frissítése.|
+| OAuth + alapszintű hitelesítés | Enterprise Security Package + HDInsight ID Broker | Webalapú hozzáférés a Ambari-hez a OAuth-en keresztül. Az örökölt alkalmazások továbbra is az alapszintű hitelesítést használják. A többtényezős hitelesítést le kell tiltani az alapszintű hitelesítéshez való hozzáféréshez. *Nincs* szükség pass hash-szinkronizálásra. Nem rendelkezik SSH/kinit parancsot/keytab kiterjesztésű hozzáféréssel a helyszíni fiókokhoz, amelyek nem rendelkeznek jelszó-kivonattal az Azure AD DSban. A csak felhőalapú fiókok továbbra is SSH/kinit parancsot. |
+| Teljesen egyszerű hitelesítés | Enterprise Security Package | A legtöbb hasonló a helyszíni telepítésekhez. Az Azure AD DS jelszó-kivonatolási szinkronizálás szükséges. A helyszíni fiókok SSH-/kinit parancsot-vagy keytab kiterjesztésű-t is használhatnak. A többtényezős hitelesítést le kell tiltani, ha a biztonsági mentést végző tároló Azure Data Lake Storage Gen2. |
 
-Az alábbi ábra a modern OAuth-alapú hitelesítési folyamatot mutatja az összes felhasználóra vonatkozóan, beleértve az összevont felhasználókat is, miután engedélyezte az azonosító-átvitelszervezőt:
+Az alábbi ábrán az összes felhasználó, beleértve az összevont felhasználókat is modern OAuth-alapú hitelesítési folyamat látható, miután a HDInsight ID Broker engedélyezve van:
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="A HDInsight ID Broker hitelesítési folyamatát ábrázoló diagram.":::
 
-Ebben a diagramban az ügyfélnek (azaz böngészőnek vagy alkalmazásnak) először be kell állítania az OAuth tokent, majd a tokent egy HTTP-kérelemben kell megadnia az átjárónak. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, bejelentkezhet az HDInsight-fürtbe egyszeri bejelentkezéses (SSO) felhasználói élményben.
+Ebben a diagramban az ügyfélnek (azaz egy böngészőnek vagy alkalmazásnak) először a OAuth-jogkivonatot kell megvásárolnia. Ezután a tokent egy HTTP-kérelemben mutatja be az átjárónak. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, egyszeri bejelentkezéssel bejelentkezhet a HDInsight-fürtbe.
 
-Még mindig sok olyan örökölt alkalmazás lehet, amely csak az alapszintű hitelesítést támogatja (például felhasználónév/jelszó). Ilyen esetekben továbbra is használhatja a HTTP alapszintű hitelesítést a fürt átjáróinak való kapcsolódáshoz. Ebben a telepítőben biztosítania kell, hogy a hálózati kapcsolat az átjáró-csomópontok között az összevonási végponthoz (AD FS végpont) legyen biztosítva, hogy az átjáró-csomópontok közvetlenül lássák. 
+A rendszer továbbra is sok olyan örökölt alkalmazást támogat, amelyek csak az alapszintű hitelesítést támogatják (azaz a felhasználónevet és a jelszót). Ilyen esetekben továbbra is használhatja a HTTP alapszintű hitelesítést a fürt átjáróinak való kapcsolódáshoz. Ebben a telepítőben biztosítania kell, hogy az átjáró-csomópontok hálózati kapcsolata legyen a Active Directory összevonási szolgáltatások (AD FS) (AD FS) végponttal, hogy az átjáró-csomópontok közvetlen vonalát biztosítsa.
 
-Az alábbi ábrán az összevont felhasználók alapszintű hitelesítési folyamata látható. Először is az átjáró megkísérli befejezni a hitelesítést a [ROPC flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) használatával, és ha nincs jelszó-kivonat szinkronizálva az Azure ad-vel, akkor visszaesik AD FS végpont észlelésére és a hitelesítés befejezésére az AD FS végponthoz való hozzáféréssel.
+Az alábbi ábrán az összevont felhasználók alapszintű hitelesítési folyamata látható. Először az átjáró megkísérli végrehajtani a hitelesítést a [ROPC flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)használatával. Ha az Azure AD-ben nincsenek szinkronizálva a jelszó-kivonatok, az AD FS végpont felfedéséhez, és a AD FS végponthoz való hozzáféréssel végrehajtja a hitelesítést.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="A HDInsight ID Broker hitelesítési folyamatát ábrázoló diagram.":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight-azonosító-átvitelszervező engedélyezése
 
-A következő lépésekkel hozhat létre egy ESP-fürtöt, amelyen engedélyezve van az azonosító-átvitelszervező:
+Enterprise Security Package-fürt létrehozása a HDInsight ID Broker engedélyezésével:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az ESP-fürt alapvető létrehozási lépéseinek követése. További információ: HDInsight- [fürt létrehozása ESP-vel](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
+1. Enterprise Security Package-fürt alapvető létrehozási lépéseinek követése. További információ: HDInsight- [fürt létrehozása Enterprise Security Packagesal](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. Válassza a **HDInsight-azonosító-átvitelszervező engedélyezése**lehetőséget.
 
-Az ID Broker szolgáltatás egy további virtuális gépet ad hozzá a fürthöz. Ez a virtuális gép az ID Broker csomópontja, és a hitelesítést támogató kiszolgálói összetevőket tartalmaz. Az ID Broker csomópont tartományhoz van csatlakoztatva az Azure AD DS tartományhoz.
+A HDInsight ID Broker szolgáltatás egy további virtuális gépet helyez el a fürthöz. Ez a virtuális gép a HDInsight ID Broker csomópont, és a hitelesítést támogató kiszolgálói összetevőket tartalmaz. A HDInsight ID Broker csomópont tartományhoz van csatlakoztatva az Azure AD DS tartományhoz.
 
-![Az ID Broker engedélyezésének lehetősége](./media/identity-broker/identity-broker-enable.png)
+![A HDInsight ID Broker engedélyezését bemutató diagram.](./media/identity-broker/identity-broker-enable.png)
 
-### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
-Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sablon számítási profiljához, akkor a fürt az azonosító-átvitelszervező csomóponttal lesz létrehozva:
+### <a name="use-azure-resource-manager-templates"></a>Használjon Azure Resource Manager-sablonokat
+
+Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sablon számítási profiljához, a fürt a HDINSIGHT ID Broker csomóponttal lesz létrehozva:
 
 ```json
 .
@@ -103,31 +103,31 @@ Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sab
 
 ## <a name="tool-integration"></a>Eszköz-integráció
 
-A HDIsngith-eszközök natív módon támogatják a OAuth. Javasoljuk, hogy ezeket az eszközöket modern OAuth-alapú hozzáféréshez használja a fürtökhöz. A HDInsight [IntelliJ beépülő modul](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) olyan Java-alapú alkalmazásokhoz is használható, mint a Scala. A VS Code-hoz készült [Spark & kaptár eszközei](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) PySpark és kaptári feladatokhoz is használhatók. A Batch-és az interaktív feladatokat is támogatják.
+A HDInsight-eszközök natív módon támogatják a OAuth. Ezeket az eszközöket modern, OAuth-alapú hozzáféréshez használhatja a fürtökhöz. A HDInsight [IntelliJ beépülő modult](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) Java-alapú alkalmazásokhoz, például a scalahez is használhatja. A [Spark és a kaptár eszközei a Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) -hoz PySpark és kaptári feladatokhoz is használhatók. Az eszközök a Batch és az interaktív feladatok használatát is támogatják.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-hozzáférés jelszó-kivonat nélkül az Azure-ban AD DS
 
 |SSH-beállítások |Megfontolandó tényezők |
 |---|---|
-| Helyi VM-fiók (pl. sshuser) | 1. a fiókot a fürt létrehozási idején adták meg. 2.  Ehhez a fiókhoz nincs Kerberos-authication |
-| Csak Felhőbeli fiók (például alice@contoso.onmicrosoft.com ) | 1. a jelszó kivonata a HRE-DS 2 címen érhető el. A Kerberos-hitelesítés SSH Kerberos használatával lehetséges |
-| Helyszíni fiók (például alice@contoso.com ) | 1. az SSH Kerberos-hitelesítés csak akkor lehetséges, ha a jelszó kivonata elérhető a HRE-DS szolgáltatásban, máskülönben ez a felhasználó nem tud SSH-t a fürthöz csatlakozni |
+| Helyi VM-fiók (például sshuser) | Ezt a fiókot a fürt létrehozási időpontjában kell megadnia. Ehhez a fiókhoz nincs Kerberos-hitelesítés. |
+| Csak felhőalapú fiók (például alice@contoso.onmicrosoft.com ) | A jelszó kivonata az Azure AD DSban érhető el. A Kerberos-hitelesítés SSH Kerberos használatával lehetséges. |
+| Helyszíni fiók (például alice@contoso.com ) | Az SSH Kerberos-hitelesítés csak akkor lehetséges, ha az Azure AD DSban jelszó-kivonat áll rendelkezésre. Ellenkező esetben ez a felhasználó nem tud SSH-t a fürthöz csatlakozni. |
 
-Ha az SSH-t egy tartományhoz csatlakoztatott virtuális gépre vagy a parancs futtatására szeretné futtatni, `kinit` meg kell adnia egy jelszót. Az SSH Kerberos-hitelesítéshez szükséges, hogy a kivonat elérhető legyen a HRE-DS-ben. Ha csak rendszergazdai forgatókönyvekhez kíván SSH-t használni, létrehozhat egy csak felhőalapú fiókot, és az SSH-t a fürthöz is használhatja. Más helyszíni felhasználók továbbra is használhatják a Ambari vagy a HDInsight eszközt vagy a HTTP alapszintű hitelesítést anélkül, hogy az HRE-DS-ben elérhető jelszó-kivonatot kellene használni.
+Ha az SSH-t egy tartományhoz csatlakoztatott virtuális gépre vagy a parancs futtatására szeretné futtatni `kinit` , meg kell adnia egy jelszót. Az SSH Kerberos-hitelesítéshez szükséges, hogy a kivonat elérhető legyen az Azure AD DSban. Ha csak rendszergazdai forgatókönyvek esetén kívánja használni az SSH-t, létrehozhat egy csak felhőalapú fiókot, és az SSH-val a fürthöz is használhatja azt. Más helyszíni felhasználók továbbra is használhatják a Ambari vagy a HDInsight eszközt vagy a HTTP alapszintű hitelesítést anélkül, hogy az Azure AD DSban elérhető jelszó-kivonatot kellene használni.
 
-Ha a szervezet nem szinkronizálja a jelszó-kivonatokat a HRE-DS-be, ajánlott eljárásként hozzon létre egy csak Felhőbeli felhasználót az Azure AD-ben, és rendelje hozzá a fürtöt rendszergazdaként a fürt létrehozásakor, és használja azt adminisztrációs célokra, amely magában foglalja az SSH-n keresztüli rendszergazdai hozzáférés beszerzését.
+Ha a szervezet nem szinkronizálja a jelszó-kivonatokat az Azure AD DSba, ajánlott eljárásként hozzon létre egy csak felhőalapú felhasználót az Azure AD-ben. Ezután rendelje hozzá a fürtöt rendszergazdaként a fürt létrehozásakor, és használja azt felügyeleti célokra. A használatával SSH-n keresztül érheti el a virtuális gépek gyökerét.
 
-A hitelesítési problémák elhárításához tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+A hitelesítési problémák elhárításához tekintse meg [ezt az útmutatót](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
 
-## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-hib"></a>A OAuth-t használó ügyfelek a HDInsight-átjáróhoz való kapcsolódáshoz a HIB használatával
+## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>A OAuth-t használó ügyfelek HDInsight-átjáróhoz való kapcsolódáshoz a HDInsight ID Broker használatával
 
-A HIB beállításban az átjáróhoz csatlakozó egyéni alkalmazások és ügyfelek is frissíthetők a szükséges OAuth-token beszerzéséhez. A jelen [dokumentumban](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ismertetett lépéseket követve szerezze be a jogkivonatot a következő információkkal:
+A HDInsight ID Broker beállításban az átjáróhoz csatlakozó egyéni alkalmazások és ügyfelek frissíthetők a szükséges OAuth-token beszerzéséhez. Kövesse a [jelen dokumentumban](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ismertetett lépéseket a jogkivonat megszerzéséhez a következő információkkal:
 
 *   OAuth erőforrás URI-ja: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Engedély: (név: cluster. ReadWrite, azonosító: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
-Az OAuth token beszerzése után ezt a HTTP-kérelem engedélyezési fejlécében használhatja a fürt átjárójának (például https:// <clustername> -int.azurehdinsight.net). Például az Apache Livy API-hoz hasonló minta curl-parancs a következőképpen nézhet ki:
+Az OAuth-jogkivonat beszerzése után a HTTP-kérelem engedélyezési fejlécében használja a fürt átjáróját (például https:// <clustername> -int.azurehdinsight.net). Az Apache Livy API-hoz hasonló minta curl-parancs a következő példához hasonlóan néz ki:
     
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
