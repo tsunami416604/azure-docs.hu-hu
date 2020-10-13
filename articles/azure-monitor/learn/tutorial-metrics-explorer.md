@@ -7,10 +7,10 @@ ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317208"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
@@ -81,7 +81,7 @@ Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](../p
 Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. Tekintse meg az [Azure Metrikaböngésző speciális funkcióit](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) , amelyekkel megismerheti a Azure monitor metrikák Explorer egyéb speciális funkcióit.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte, hogyan használhatók a metrikák a Azure Monitorban, megtudhatja, hogyan küldhet mérőszámokat az proaktív riasztások küldéséhez.
 
 > [!div class="nextstepaction"]

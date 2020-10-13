@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564423"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>A Azure Data Box biztonságos telepítése és működtetése
@@ -170,7 +170,7 @@ Faxszám: + 353 1 706 4110
 
 Miután áttekintette ezeket a biztonsági értesítéseket, beállíthatja és elvégezheti az eszköz csatlakoztatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kábel és csatlakoztassa a Data Box](data-box-deploy-set-up.md)
 

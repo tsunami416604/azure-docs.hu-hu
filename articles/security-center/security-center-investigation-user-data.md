@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: 82c800df03826386c8b79d45584f4b26b0bc45e4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440662"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Security Center vizsgálatban talált felhasználói adatkezelési szolgáltatás kezelése
@@ -55,6 +55,6 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ## <a name="exporting-personal-data"></a>Személyes adatok exportálása
 A tulajdonos, közreműködő vagy fiók rendszergazdája által hozzárendelt Security Center felhasználó exportálhatja a vizsgálati adatokat. A vizsgálati információk exportálásához lépjen az **entitások** lapra a megfelelő információk másolásához és beillesztéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatok kezelése Azure Security Centerban](security-center-privacy.md).
 Ha többet szeretne megtudni a személyes adatainak törléséről Azure Monitor naplókban, tekintse meg a [személyes adatainak exportálása és törlése](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)című témakört.

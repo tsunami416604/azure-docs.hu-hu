@@ -12,10 +12,10 @@ author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629726"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
@@ -171,7 +171,7 @@ Ez kétféleképpen valósítható meg:
         ```
 
         > [!TIP]
-        > Ha a US-Virginia, az Egyesült Államok és Arizona régióját használja, vagy Kína – Kelet – 2 régiót használ, ezek a parancsok nem adnak vissza IP-címeket. Ehelyett használja az alábbi hivatkozások egyikét az IP-címek listájának letöltéséhez:
+        > Ha az USA-Virginia, US-Arizona régiókat vagy a kínai – Kelet-2 régiót használja, ezek a parancsok nem adnak vissza IP-címet. Ehelyett használja az alábbi hivatkozások egyikét az IP-címek listájának letöltéséhez:
         >
         > * [Azure IP-címtartományok és szolgáltatás-címkék Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [Azure IP-címtartományok és szolgáltatás-címkék az Azure China-hoz](https://www.microsoft.com//download/details.aspx?id=57062)
@@ -309,7 +309,7 @@ Ha nem szeretné használni az alapértelmezett kimenő szabályokat, és szeret
 
 Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat harmadik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

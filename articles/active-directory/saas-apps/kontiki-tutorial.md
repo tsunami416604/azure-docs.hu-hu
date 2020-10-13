@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Oktatóanyag: Azure Active Directory integráció a Kontiki
@@ -95,7 +95,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** panelen való beállítása lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
     > [!NOTE]
     > A megfelelő érték beszerzéséhez forduljon a Kontiki ügyfélszolgálati [csapatához](https://customersupport.kontiki.com/enterprise/contactsupport.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban válassza az **összevonási metaadatok XML**elem melletti **Letöltés** elemet. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
+1. Az **egyszeres Sign-On beállítása az SAML** -panellel panelen az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** az **összevonási metaadatok XML-** je mellett lehetőséget. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
 
     ![Az összevonási metaadatok XML-tanúsítványának letöltési lehetősége](common/metadataxml.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4c5906d9cca193129a4213f697815f70ec639d8b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Oktatóanyag: Azure Active Directory integráció a LogicMonitor
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Logic
 Az Azure AD egyszeri bejelentkezés LogicMonitor való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[LogicMonitor egyszeri bejelentkezés konfigurálása](#configure-logicmonitor-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[LogicMonitor egyszeri bejelentkezés konfigurálása](#configure-logicmonitor-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre LogicMonitor-teszt felhasználót](#create-logicmonitor-test-user)** – hogy a LogicMonitor Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés LogicMonitor való konfigurálásához hajts
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés LogicMonitor való konfigurálásához hajts
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a LogicMonitor ügyfélszolgálati [csapatához](https://www.logicmonitor.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés LogicMonitor való konfigurálásához hajts
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-logicmonitor-single-sign-on"></a>LogicMonitor egyszeri bejelentkezés konfigurálása
+### <a name="configure-logicmonitor-single-sign-on"></a>LogicMonitor egyetlen Sign-On konfigurálása
 
 1. Jelentkezzen be a **LogicMonitor** vállalati webhelyre rendszergazdaként.
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés LogicMonitor való konfigurálásához hajts
 
 4. Az **egyszeri bejelentkezés (SSO) beállításai** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezési beállítások](./media/logicmonitor-tutorial/ic790054.png "Egyszeri bejelentkezési beállítások")
+    ![Egyszeres Sign-On beállítások](./media/logicmonitor-tutorial/ic790054.png "Egyszeres Sign-On beállítások")
 
     a. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
 
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

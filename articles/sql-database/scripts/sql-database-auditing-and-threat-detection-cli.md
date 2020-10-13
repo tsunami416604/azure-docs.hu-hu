@@ -12,10 +12,10 @@ ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 08/05/2019
 ms.openlocfilehash: 6791691be976e541c6400e89dde8f892fe50c6dc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336173"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>A CLI használata SQL Database naplózás és az összetett veszélyforrások elleni védelem konfigurálásához
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az SQL db audit-Policy](/cli/azure/sql/db/audit-policy) | Beállítja egy adatbázis naplózási szabályzatát. |
 | [az SQL db Threat-Policy](/cli/azure/sql/db/threat-policy) | Egy összetett veszélyforrások elleni védelmi szabályzatot állít be egy adatbázison. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

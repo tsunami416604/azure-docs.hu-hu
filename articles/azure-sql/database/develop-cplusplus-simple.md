@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
 ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443660"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database C és C++ használatával
@@ -140,7 +140,7 @@ Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás me
 * [ODBC C++ Windows-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), töltse le a Windows C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 * [ODBC C++ Linux-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), töltse le a Linux C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [SQL Database fejlesztés áttekintését](develop-overview.md)
 * További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)

@@ -12,10 +12,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629369"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Adatbázis biztonságossá tétele az Azure Szinapszisban
@@ -102,6 +102,6 @@ SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótan
 
 Az adatbázis titkosítása a [Azure Portal](sql-data-warehouse-encryption-tde.md) vagy a [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)használatával végezhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás az SQL-készlethez](../sql/connect-overview.md).

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
 ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283428"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
@@ -101,7 +101,7 @@ Előfizetés | Az előfizetés, amelyre a konzorcium-hálózatot telepíteni kel
 Erőforráscsoport| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
 Hely | Az erőforráscsoport Azure-régiója. | USA 2. nyugati régiója
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="deployment-regions"></a>Központi telepítési régiók
 
@@ -115,7 +115,7 @@ Régió (k) száma|A konzorcium-hálózat üzembe helyezéséhez szükséges ré
 Első régió | A konzorcium-hálózat üzembe helyezésének első régiója | USA 2. nyugati régiója
 Második régió | A konzorcium-hálózat üzembe helyezésének második régiója. A további régiók akkor is láthatók, ha a régiók száma kettő vagy nagyobb. | USA 2. keleti régiója
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="network-size-and-performance"></a>Hálózati méret és teljesítmény
 
@@ -137,7 +137,7 @@ F1|Standard SSD|alacsony|alacsony|magas
 D2_v3|Standard SSD|közepes|közepes|közepes
 F16s|Prémium SSD|magas|magas|alacsony
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="ethereum-settings"></a>Ethereum-beállítások
 
@@ -156,7 +156,7 @@ Gáz korlátjának letiltása | A hálózat indítási blokkjának gáz-korlátj
 Visszazárási időszak blokkolása (mp) | Az üres blokkok létrehozásának gyakorisága, ha nincsenek tranzakciók a hálózaton. A magasabb szintű gyakoriság gyorsabb lesz, de nagyobb a tárolási költségek. | 15
 Tranzakciós engedély szerződése | A tranzakció bytecode vonatkozó szerződés. Az intelligens szerződések üzembe helyezésének és végrehajtásának korlátozása a Ethereum-fiókok engedélyezett listájára. |
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -172,7 +172,7 @@ Hely | Az új példányt telepítő régió | USA keleti régiója
 Meglévő log Analytics-munkaterület azonosítója (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányának munkaterület-azonosítója||NA
 Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányához való kapcsolódáshoz használt elsődleges kulcs||NA
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="summary"></a>Összefoglalás
 
@@ -685,7 +685,7 @@ Most, hogy üzembe helyezte az intelligens szerződést, tranzakciót küldhet e
 
 ## <a name="webassembly-wasm-support"></a>Webszerelvény (WASM) támogatása
 
-A webszerelvények támogatása már engedélyezve van az újonnan üzembe helyezett PoA-hálózatokon. Lehetővé teszi az intelligens szerződések fejlesztését bármilyen nyelven, amely transpiles (Rust, C, C++). További információkért lásd: a paritásos [műszaki](https://github.com/paritytech/pwasm-tutorial) [webszerelvények és oktatóanyagok paritásos áttekintése](https://wiki.parity.io/WebAssembly-Home)
+A webszerelvények támogatása már engedélyezve van az újonnan üzembe helyezett PoA-hálózatokon. Lehetővé teszi az intelligens szerződések fejlesztését bármilyen nyelven, amelyet a Web-Assembly transpiles (Rust, C, C++). További információkért lásd: a paritásos [műszaki](https://github.com/paritytech/pwasm-tutorial) [webszerelvények és oktatóanyagok paritásos áttekintése](https://wiki.parity.io/WebAssembly-Home)
 
 ## <a name="faq"></a>GYIK
 

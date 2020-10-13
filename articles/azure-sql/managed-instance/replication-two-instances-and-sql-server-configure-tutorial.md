@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
 ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283190"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
@@ -155,7 +155,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
    ![Privát DNS-zóna létrehozása](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Tekintse át a saját DNS-zóna paramétereit, majd válassza a **Létrehozás** lehetőséget az erőforrás létrehozásához.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Tekintse át a saját DNS-zóna paramétereit, majd válassza a **Létrehozás** lehetőséget az erőforrás létrehozásához.
 
 ### <a name="create-an-a-record"></a>Rekord létrehozása
 
@@ -403,7 +403,7 @@ Amikor új előfizetést ad hozzá az **új előfizetés** varázslóval, a **ki
 
 Habár lehetséges, hogy ez a hibaüzenet pontos, és valójában nem érhető el kiadványok az Ön által csatlakoztatott közzétevőn, vagy ha nem rendelkezik megfelelő engedélyekkel, ezt a hibát a SQL Server Management Studio egy régebbi verziója is okozhatja. Próbálja meg frissíteni a SQL Server Management Studio 18,0-es vagy újabb verziójára, hogy kizárja a problémát kiváltó okként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése
 

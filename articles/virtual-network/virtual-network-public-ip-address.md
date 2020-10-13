@@ -18,10 +18,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 92e71a8c08ef2c64509d7e00b0c43abdd58cf036
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804027"
 ---
 # <a name="manage-public-ip-addresses"></a>Nyilvános IP-címek kezelése
@@ -92,7 +92,7 @@ A nyilvános IP-címek a létrehozás során történő megadásával kapcsolato
 |---|---|---|---|
 |[Virtuális gép](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|Válassza **a társítás lehetőséget az IP** -cím leválasztásához a NIC-konfigurációban, majd válassza a **Törlés**lehetőséget.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) – az IP-cím leválasztása a NIC-konfigurációból; A DELETE [-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törlése|az [Network Public-IP Update--Remove](/cli/azure/network/public-ip#az-network-public-ip-update) to leválasztani az IP-címet a NIC-konfigurációból; [az Network Public-IP delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to delete |
 |Load Balancer frontend | Nyisson meg egy nem használt nyilvános IP-címet, és válassza a **hozzárendelés** lehetőséget, és jelölje ki a megfelelő előtér-IP-konfigurációval rendelkező Load Balancer a helyére (majd a régi IP-címet ugyanazzal a módszerrel törölheti, mint a virtuális gép esetében)  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) – új ELŐTÉRI IP-konfiguráció hozzárendelése nyilvános Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törölni; a [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) használatával is eltávolíthatja a ELŐTÉRBELI IP-konfigurációt, ha egynél több van |[az Network LB frontend-IP Update](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) új előtér-IP-konfiguráció hozzárendelése nyilvános Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törölni; használhatja [az az Network LB frontend-IP delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) parancsot is az előtér-IP-konfiguráció eltávolításához, ha egynél több van|
-|Firewall|N/A| [Felszabadítás ()](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) a tűzfal felszabadítása és az összes IP-konfiguráció eltávolítása | [az Network Firewall IP-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) az IP-címek eltávolításához (de a PowerShellt kell használnia az első felszabadításához)|
+|Firewall|N.A.| [Felszabadítás ()](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) a tűzfal felszabadítása és az összes IP-konfiguráció eltávolítása | [az Network Firewall IP-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) az IP-címek eltávolításához (de a PowerShellt kell használnia az első felszabadításához)|
 
 >[!NOTE]
 >Bizonyos erőforrások létrehozása után nem módosíthatók vagy eltávolíthatók a nyilvános IP-címek.  Ezek a következők: Azure NAT Gateway, Azure VPN Gateway, Azure Application Gateway.
@@ -126,7 +126,7 @@ A nyilvános IP-címekre vonatkozó feladatok végrehajtásához a fiókját hoz
 | Microsoft. Network/nyilvános IP/delete                         | Nyilvános IP-cím törlése                                     |
 | Microsoft. Network/nyilvános IP/csatlakozás/művelet                    | Nyilvános IP-cím hozzárendelése erőforráshoz                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyilvános IP-cím létrehozása a [PowerShell](powershell-samples.md) vagy az [Azure CLI](cli-samples.md) parancsfájl használatával vagy Azure [Resource Manager-sablonok](template-samples.md) használatával
 - Nyilvános IP-címekhez tartozó [Azure Policy-definíciók](policy-samples.md) létrehozása és kiosztása

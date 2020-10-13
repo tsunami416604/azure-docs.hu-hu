@@ -7,10 +7,10 @@ ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531304"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitás megtervezése és méretezése az Azure Service Fabric
@@ -42,7 +42,7 @@ A virtuálisgép-méretezési csoportokon keresztüli automatikus skálázással
 
 ## <a name="vertical-scaling-considerations"></a>Vertikális skálázási megfontolások
 
-Az Azure Service Fabric egy csomópont-típus [vertikális skálázása](./virtual-machine-scale-set-scale-node-type-scale-out.md) számos lépést és szempontot igényel. Például:
+Az Azure Service Fabric egy csomópont-típus [vertikális skálázása](./virtual-machine-scale-set-scale-node-type-scale-out.md) számos lépést és szempontot igényel. Példa:
 
 * A skálázás előtt a fürtnek kifogástalan állapotban kell lennie. Ellenkező esetben a fürt destabilizálása is megtörténik.
 * Az állapot-nyilvántartó szolgáltatásokat futtató összes Service Fabric esetében az ezüst tartóssági szintnek vagy nagyobbnak kell lennie.
@@ -127,7 +127,7 @@ Ha manuálisan szeretné méretezni a méretezést, frissítse a kapacitást a v
 }
 ```
 
-A csomópont programozott módon történő skálázásához elő kell készítenie a csomópontot a Leállítás érdekében. Keresse meg az eltávolítandó csomópontot (a legmagasabb példányú csomópont). Például:
+A csomópont programozott módon történő skálázásához elő kell készítenie a csomópontot a Leállítás érdekében. Keresse meg az eltávolítandó csomópontot (a legmagasabb példányú csomópont). Példa:
 
 ```csharp
 using (var client = new FabricClient())

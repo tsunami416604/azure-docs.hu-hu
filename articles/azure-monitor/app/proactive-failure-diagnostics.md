@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565837"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
@@ -73,11 +73,11 @@ Ez a riasztási szabály egy "Application Insights intelligens észlelés" nevű
 
 Nyissa meg a riasztások lapot. A meghibásodási rendellenességek riasztási szabályai szerepelnek a manuálisan beállított riasztásokkal együtt, és láthatja, hogy jelenleg a riasztási állapotban van-e.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="A Application Insights erőforrás lapon kattintson a riasztások csempére, majd a riasztási szabályok kezelése lehetőségre." lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Minta intelligens észlelési riasztás, amely a fürt elemzését mutatja a hiba miatt." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 A beállításhoz kattintson a riasztásra.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Szabály konfigurációs képernyője." lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Minta intelligens észlelési riasztás, amely a fürt elemzését mutatja a hiba miatt." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Figyelje meg, hogy letilthatja vagy törölheti a hiba rendellenességét jelző riasztási szabályt, de nem hozhat létre egy másikat ugyanazon a Application Insights erőforráson.
 
@@ -299,7 +299,7 @@ A [Azure Portal](https://portal.azure.com)is megnyithatja, navigáljon az alkalm
 
 A "hibák diagnosztizálása" gombra kattintva további részleteket tudhat meg, és elháríthatja a problémát.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Diagnosztikai keresés." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Minta intelligens észlelési riasztás, amely a fürt elemzését mutatja a hiba miatt." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 A kérések és a felhasználók számának százalékos aránya alapján eldöntheti, hogy milyen sürgős a probléma. A fenti példában a 78,5%-os meghibásodási arány a normál 2,2%-os arányt hasonlítja össze, ami azt jelzi, hogy valami rossz történik. Másfelől azonban csak 46 felhasználót érintettek. Ha ez volt az alkalmazása, azt is megtudhatja, hogy mennyire súlyos ez a lehetőség.
 
@@ -307,13 +307,13 @@ Sok esetben a probléma gyorsan diagnosztizálható a kérelem nevétől, a kiv�
 
 Ebben a példában kivétel történt a SQL Database miatt, mert elérte a kérelmekre vonatkozó korlátot.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Sikertelen kérelem részletei." lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Minta intelligens észlelési riasztás, amely a fürt elemzését mutatja a hiba miatt." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Legutóbbi riasztások áttekintése
 
 A legutóbbi kilőtt riasztások megtekintéséhez kattintson a **riasztások** elemre a Application Insights erőforrás lapon:
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Riasztások összegzése" lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Minta intelligens észlelési riasztás, amely a fürt elemzését mutatja a hiba miatt." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Mi a különbség...
 A meghibásodási rendellenességek intelligens észlelése kiegészíti a Application Insights hasonló, de különböző funkcióit.

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448188"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
@@ -202,7 +202,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Név | Érték
+Name (Név) | Érték
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő `https://core.windows.net` . Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
@@ -242,7 +242,7 @@ Ez a választható szakasz azokat a további célhelyeket határozza meg, amelye
 
 Elem | Érték
 ------- | -----
-név | A bővítmény konfigurációjában máshol a fogadóhoz való hivatkozáshoz használt karakterlánc.
+name | A bővítmény konfigurációjában máshol a fogadóhoz való hivatkozáshoz használt karakterlánc.
 típus | A definiált fogadó típusa. Meghatározza az ilyen típusú példányok egyéb értékeit (ha vannak ilyenek).
 
 A Linux diagnosztikai bővítmény 3,0-es verziója két fogadó típust támogat: EventHub és JsonBlob.
@@ -461,7 +461,7 @@ Elem | Érték
 ------- | -----
 névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
 lekérdezés | A végrehajtandó a kipróbálható adatlekérdezés.
-table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
+tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
 frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
 fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
 
@@ -487,7 +487,7 @@ A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok ír
 Elem | Érték
 ------- | -----
 file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket. A "omsagent" felhasználói fióknak olvasási hozzáféréssel kell rendelkeznie a fájl elérési útjához.
-table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
+tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
 fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
 
 Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.

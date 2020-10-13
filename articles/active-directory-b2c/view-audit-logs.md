@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383937"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
@@ -32,7 +32,7 @@ A naplózási naplózási események csak **hét napig**őrződnek meg. Tervezze
 
 A naplókban a **B2C** kategória a következő típusú tevékenységeket tartalmazza:
 
-|Tevékenység típusa |Description  |
+|Tevékenység típusa |Leírás  |
 |---------|---------|
 |Engedélyezés |A B2C-erőforrásokhoz való hozzáférés engedélyezésével kapcsolatos tevékenységek (például egy rendszergazda, amely a B2C-szabályzatok listáját használja).         |
 |Címtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
@@ -51,9 +51,9 @@ Ez a példa a Azure Portal képet jeleníti meg, amikor egy felhasználó küls�
 
 A tevékenység részletei panel a következő releváns információkat tartalmazza:
 
-|Section|Mező|Description|
+|Section|Mező|Leírás|
 |-------|-----|-----------|
-| Tevékenység | Name | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Tevékenység | Név | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
 | Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
 | Kezdeményező (színész) | SPN | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 | Cél(ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
@@ -65,7 +65,7 @@ A tevékenység részletei panel a következő releváns információkat tartalm
 
 A Azure Portal hozzáférést biztosít a Azure AD B2C bérlő naplójának eseményeihez.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Váltson arra a könyvtárra, amely a Azure AD B2C bérlőt tartalmazza, majd keresse meg **Azure ad B2C**.
 1. A bal oldali menü **tevékenységek** területén válassza a **naplók**lehetőséget.
 

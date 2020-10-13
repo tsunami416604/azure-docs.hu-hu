@@ -1,5 +1,5 @@
 ---
-title: Különbségek a Azure Data Factory
+title: Eltérések az Azure Data Factoryhoz képest
 description: Ismerje meg, hogyan különbözik az Azure szinapszis Analytics adatintegrációs képességei a Azure Data Factory
 services: synapse-analytics
 author: djpmsft
@@ -9,10 +9,10 @@ ms.date: 09/23/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91343051"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Adatintegráció az Azure szinapszis Analyticsben és Azure Data Factory

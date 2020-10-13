@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
 ms.openlocfilehash: 6b252164027f07e4f26ab84ac12e2425e1da05f5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357298"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
@@ -92,7 +92,7 @@ A rendszerkép átalakítására szolgáló kód a <strong>"K" kifejezéssel a f
 <tr>
   <td>Véradási adatgyűjtés</td>
   <td>
-A Hsin-Chu City, Tajvan vértranszfúzió-szolgáltatási központjának Blood adományozó adatbázisából származó adatok egy részhalmaza.
+A Hsin-Chu City, Tajvan vérképzőszervi transzfúziós szolgáltatásának központjának Blood adományozó adatbázisából származó adatok egy részhalmaza.
 <p></p>
 A donori adatmennyiség tartalmazza a legutóbbi adományozás óta eltelt hónapokat, valamint a gyakoriságot, vagy az adományok teljes számát, a legutóbbi adományozás óta eltelt időt és a felhasznált vért.
 <p></p>
@@ -158,7 +158,7 @@ A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás (<a href="http://www.s
 </tr>
 
 <tr>
-  <td>Energiahatékonysági regressziós adatértékek</td>
+  <td>Regressziós adatEnergy-Efficiency</td>
   <td>
 Szimulált energia-profilok gyűjteménye 12 különböző építési alakzat alapján. Az épületeket nyolc funkció különbözteti meg. Ebbe beletartozik az üvegezés terület, az üvegezési terület eloszlása és a tájolás.
 <p></p>
@@ -172,7 +172,7 @@ Szimulált energia-profilok gyűjteménye 12 különböző építési alakzat al
   <td>
 Az Amerikai Egyesült államokbeli Közlekedési Minisztérium TranStats adatgyűjtési szolgáltatásában<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">(az időpontnál</a>) üzemelő személyszállító repülési adatok.
 <p></p>
-Az adatkészlet a 2013. április-október időszakra terjed ki. Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
+Az adatkészlet April-October 2013 időszakra vonatkozik. Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
 <ul>
   <li>Az adatkészlet úgy lett szűrve, hogy csak a 70-es legforgalmasabb repülőtérre vonatkozzon az USA kontinentális területén</li>
   <li>A megszakított járatok több mint 15 perc késéssel lettek megjelölve</li>
@@ -332,7 +332,7 @@ Azt is vegye figyelembe, hogy a háttérben futó események (h, hadronic-zuhany
   <td>
 A NOAA-ből származó, óránkénti szárazföld-alapú időjárási megfigyelések (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">201304 és 201310 közötti egyesített adatok</a>).
 <p></p>
-Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, amely az 2013. április-október időszakra vonatkozik. Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
+Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, az 2013-as April-October időszakra vonatkozóan. Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
 <ul>
   <li>A meteorológiai állomás azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve</li>
   <li>Az 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások kiszűrése megtörtént</li>
@@ -408,7 +408,7 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 
 </table>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Példa a kísérletek Kickstart-re](sample-experiments.md)

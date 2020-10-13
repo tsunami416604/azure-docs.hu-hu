@@ -8,10 +8,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448026"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
@@ -72,7 +72,7 @@ A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Használati eset | A riasztáshoz használandó metrika |
+| Forgatókönyv | A riasztáshoz használandó metrika |
 |-|-|
 | A kiszolgáló végpontjának állapota hibát jelez a portálon | Szinkronizálási munkamenet eredménye |
 | A fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal | Nem szinkronizált fájlok |
@@ -283,7 +283,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
 ## <a name="next-steps"></a>Következő lépések
-- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
+- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
 - [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)

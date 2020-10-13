@@ -13,10 +13,10 @@ ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: beszéd fordítása
 ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630070"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
@@ -60,7 +60,7 @@ Ha alkalmazásai, eszközei vagy termékei a [Translator Speech API](https://doc
 * [REST API: szövegről beszédre](rest-text-to-speech.md)
 * [REST API: kötegelt átírás és testreszabás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [beszéd fordításának](get-started-speech-translation.md) befejezése
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)

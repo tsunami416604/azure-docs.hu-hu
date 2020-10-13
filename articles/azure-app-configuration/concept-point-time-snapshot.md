@@ -9,10 +9,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601078"
 ---
 # <a name="point-in-time-snapshot"></a>Adott időpontban készült pillanatképek
@@ -55,7 +55,7 @@ Kérje le az utolsó 10 rögzített módosítást a kulcs-értékekre, és csak 
 az appconfig revision list --name <your-app-config-store-name> --top 10 --fields key label last_modified
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  

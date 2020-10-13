@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443032"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
@@ -29,13 +29,13 @@ A felosztott egyesítés eszköz lehetővé teszi az adatáthelyezést a törede
 
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahová a nuget.exe letöltötte. A letöltés PowerShell-parancsokat tartalmaz.
 
-1. Töltse le a legújabb felosztott egyesítési csomagot az aktuális könyvtárba az alábbi paranccsal:
+1. Töltse le a legújabb Split-Merge csomagot az alábbi paranccsal az aktuális könyvtárba:
 
    ```cmd
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. x. x. xxx. x** nevű könyvtárba kerülnek, ahol az *x. x. xxx. x* a verziószámot tükrözi. Keresse meg a **content\splitmerge\service** alkönyvtárában található felosztott egyesítési szolgáltatási fájlokat, valamint a **content\splitmerge\powershell** alkönyvtárában található felosztott és egyesíthető PowerShell-parancsfájlokat (és a szükséges ügyféloldali DLL-eket).
+A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. x. x. xxx. x** nevű könyvtárba kerülnek, ahol az *x. x. xxx. x* a verziószámot tükrözi. Keresse meg a **content\splitmerge\service** alkönyvtárában található felosztott egyesítési szolgáltatási fájlokat, valamint a **content\splitmerge\powershell** alkönyvtárában található PowerShell-parancsfájlokat (és Split-Merge a szükséges ügyféloldali DLL-eket).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,17 +45,17 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 1. Hozzon létre egy Azure Storage-fiókot a diagnosztika kimenetéhez.
 
-1. Hozzon létre egy Azure Cloud Service-t a Split-Merge szolgáltatáshoz.
+1. Hozzon létre egy Azure Cloud Service-szolgáltatást a Split-Merge szolgáltatáshoz.
 
-## <a name="configure-your-split-merge-service"></a>A felosztott egyesítési szolgáltatás konfigurálása
+## <a name="configure-your-split-merge-service"></a>A Split-Merge szolgáltatás konfigurálása
 
-### <a name="split-merge-service-configuration"></a>Felosztás – egyesítési szolgáltatás konfigurációja
+### <a name="split-merge-service-configuration"></a>Split-Merge szolgáltatás konfigurációja
 
-1. Abban a mappában, amelybe a felosztott egyesítés szerelvényeket letöltötte, hozzon létre egy másolatot a *ServiceConfiguration. template. cscfg* fájlról, amely a *SplitMergeService. Cspkg* és a *ServiceConfiguration. cscfg*átnevezésével együtt lett elküldve.
+1. Abban a mappában, amelybe letöltötte a Split-Merge szerelvényeket, hozzon létre egy másolatot a *ServiceConfiguration. template. cscfg* fájlról, amely a *SplitMergeService. Cspkg* és a *ServiceConfiguration. cscfg*névre van leszállítva.
 
 1. Nyissa meg a *ServiceConfiguration. cscfg* egy szövegszerkesztőben, például a Visual Studióban, amely érvényesíti a bemeneteket, például a tanúsítvány ujjlenyomatai megfelelnek formátumát.
 
-1. Hozzon létre egy új adatbázist, vagy válasszon ki egy meglévő adatbázist, amely az állapot-adatbázisként szolgál a felosztási és egyesítési műveletekhez, és kérje le az adatbázishoz tartozó kapcsolódási karakterláncot.
+1. Hozzon létre egy új adatbázist, vagy válasszon egy meglévő adatbázist, amely a Split-Merge műveletekhez tartozó állapot-adatbázisként szolgál, és kérje le az adatbázishoz tartozó kapcsolódási karakterláncot.
 
    > [!IMPORTANT]
    > Ebben az esetben az állapot-adatbázisnak a latin rendezést kell használnia (az SQL \_ latin \_ általános \_ CP1 \_ CI \_ as). További információ: [Windows rendezési név (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
@@ -168,7 +168,7 @@ Ha a feldolgozói szerepkör nem tud online állapotba jutni, de a webes szerepk
 
 ### <a name="connect-with-a-web-browser"></a>Webböngészővel való kapcsolat
 
-Határozza meg a felosztási-egyesítési szolgáltatás webes végpontját. Ezt a portálon a felhőalapú szolgáltatás **áttekintésével** , a jobb oldalon pedig a **webhely URL-címével** tekintheti meg. Cserélje le az **http://** -t a **https://** -re, mert az alapértelmezett biztonsági beállítások LEtiltják a http-végpontot Töltse be az URL-cím lapját a böngészőben.
+Határozza meg a Split-Merge szolgáltatás webes végpontját. Ezt a portálon a felhőalapú szolgáltatás **áttekintésével** , a jobb oldalon pedig a **webhely URL-címével** tekintheti meg. Cserélje le az **http://** -t a **https://** -re, mert az alapértelmezett biztonsági beállítások LEtiltják a http-végpontot Töltse be az URL-cím lapját a böngészőben.
 
 ### <a name="test-with-powershell-scripts"></a>Tesztelés PowerShell-parancsfájlokkal
 
@@ -214,13 +214,13 @@ A parancsfájl fájljai a következők:
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-       <td>1. Elküld egy felosztott kérelmet a Split-Merge szolgáltatás webes felületének, amely az első szegmens adatainak felére osztja ketté a második szilánkot.</td>
+       <td>1. Elküld egy felosztott kérelmet a Split-Merge szolgáltatás webes felületének, amely az első szegmensben lévő adatok felét feldarabolja a második szilánkra.</td>
      </tr>
      <tr>
        <td>2. Lekérdezi a megosztott kérelmek állapotának webes felületét, és megvárja, amíg a kérés befejeződik.</td>
      </tr>
      <tr>
-       <td>3. Egyesítő kérelmet küld a felosztási szolgáltatás webes felületének, amely az adatokat a második szegmensből az első szegmensbe helyezi vissza.</td>
+       <td>3. Merge-kérelmet küld a Split-Merge szolgáltatás webes felületének, amely az adatokat a második szegmensből az első szegmensbe helyezi vissza.</td>
      </tr>
      <tr>
        <td>4. Lekérdezi az egyesítési kérelem állapotának webes felületét, és megvárja, amíg a kérés befejeződik.</td>
@@ -229,14 +229,14 @@ A parancsfájl fájljai a következők:
 
 ## <a name="use-powershell-to-verify-your-deployment"></a>A telepítés ellenőrzése a PowerShell használatával
 
-1. Nyisson meg egy új PowerShell-ablakot, és keresse meg azt a könyvtárat, ahová a felosztott egyesítési csomagot letöltötte, majd navigáljon a "PowerShell" könyvtárba.
+1. Nyisson meg egy új PowerShell-ablakot, és keresse meg azt a könyvtárat, ahová a Split-Merge csomagot letöltötte, majd navigáljon a "PowerShell" könyvtárba.
 
 2. Hozzon létre egy kiszolgálót (vagy válasszon ki egy meglévő kiszolgálót), ahol a rendszer létrehozza a szegmenses Térkép kezelőjét és a szilánkokat.
 
    > [!NOTE]
-   > A *SetupSampleSplitMergeEnvironment.ps1* parancsfájl alapértelmezés szerint ugyanazon a kiszolgálón hozza létre az összes adatbázist, hogy a szkriptet egyszerűként tárolja. Ez nem korlátozza a felosztási-egyesítési szolgáltatást.
+   > A *SetupSampleSplitMergeEnvironment.ps1* parancsfájl alapértelmezés szerint ugyanazon a kiszolgálón hozza létre az összes adatbázist, hogy a szkriptet egyszerűként tárolja. Ez nem korlátozza magát a Split-Merge szolgáltatást.
 
-   Ahhoz, hogy a felosztott egyesítési szolgáltatás adatokat helyezzen át, és frissítse a szegmenses térképet, egy SQL-hitelesítési bejelentkezésre van szükség az adatbázisok olvasási/olvasási hozzáféréssel. Mivel a felosztási-egyesítési szolgáltatás a felhőben fut, jelenleg nem támogatja az integrált hitelesítést.
+   A Split-Merge szolgáltatásnak adatokat kell áthelyeznie, és frissítenie kell a szegmenses térképet, ha az adatbázisok olvasási/írási hozzáféréssel rendelkező SQL-hitelesítési bejelentkezést igényelnek. Mivel a Split-Merge szolgáltatás a felhőben fut, jelenleg nem támogatja az integrált hitelesítést.
 
    Győződjön meg arról, hogy a kiszolgáló úgy van konfigurálva, hogy engedélyezze az ezen parancsfájlokat futtató gép IP-címének elérését. Ezt a beállítást az SQL Server/tűzfalak és a virtuális hálózatok/ügyfél IP-címei területen találja.
 
@@ -329,7 +329,7 @@ A felosztott egyesítési művelet végrehajtásához deklarálnia kell az áthe
 
 Erre egy példa látható a SetupSampleSplitMergeEnvironment.ps1 parancsfájlban.
 
-A felosztási-egyesítési szolgáltatás nem hozza létre a célként megadott adatbázist (vagy sémát az adatbázis bármely táblájához). A szolgáltatásnak küldött kérések elküldése előtt előre létre kell hozni őket.
+A Split-Merge szolgáltatás nem hozza létre a célként megadott adatbázist (vagy sémát az adatbázis bármely táblájához). A szolgáltatásnak küldött kérések elküldése előtt előre létre kell hozni őket.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

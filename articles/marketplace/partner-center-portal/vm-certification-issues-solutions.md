@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
 ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803466"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Gyakori problémák az Azure Marketplace-en elérhető virtuálisgép-lemezképek tanúsításakor
@@ -46,7 +46,7 @@ A virtuálisgép-bővítmények engedélyezéséhez tegye a következőket:
 1. Válassza ki a linuxos virtuális gépet.
 1. Lépjen a **diagnosztikai beállítások menüpontra**.
 1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    ![Vendégszintű monitorozás engedélyezése](./media/vm-certification-issues-solutions-1.png)
 
@@ -338,7 +338,7 @@ Parancs: "Cat/dev/null eszközre > ~/.bash_history && History-c" ![ bash History
 
 4. lépés: Általánosítsa a virtuális gépet, végezze el a rendszerkép VHD-jét, és állítsa le a virtuális gépet.
 
-5. lépés     Küldje el újra az általánosított képet.
+5. lépés     Re-Submit az általánosított képet.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Kivételek (egyéni sablonok) kérelmezése a virtuálisgép-rendszerképeken szelektív tesztek esetén
 
@@ -373,6 +373,6 @@ A kiadóknak el kell érniük a támogatási szolgálatot a [Marketplace kiadó 
    8.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).

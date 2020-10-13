@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
 ms.openlocfilehash: 4e5634633aacb56e7c7744b3afdb3aec0fe2b70f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629590"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
@@ -69,11 +69,11 @@ Rendelkezésre álló erőforrások:
 | GPU MPI-folyamatok maximális száma/csomópont | 1-4 |
 | GPU-feldolgozók maximális száma csomóponton | 1-4 |
 | Feladatok maximális élettartama | 21 nap<sup>1</sup> |
-| Feladat maximális élettartama alacsony prioritású csomóponton | 7 nap<sup>2</sup> |
+| A feladatok maximális élettartama Low-Priority csomóponton | 7 nap<sup>2</sup> |
 | Paraméteres kiszolgálók maximális száma csomóponton | 1 |
 
 <sup>1</sup> a maximális élettartam a Futtatás kezdetének és befejezésének időpontjára utal. A befejezett futtatások határozatlan ideig tartanak; nem érhető el a maximális élettartamon belül nem befejezett futtatások adatkészletei.
-<sup>2</sup> az alacsony prioritású csomóponton lévő feladatok bármikor előzik, ha van kapacitási korlátozás. Javasoljuk, hogy hajtsa végre az ellenőrzőpontok megvalósítását a feladatokban.
+<sup>2</sup> Low-Priority csomóponton lévő feladatok bármikor előzik, ha van kapacitási korlátozás. Javasoljuk, hogy hajtsa végre az ellenőrzőpontok megvalósítását a feladatokban.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning folyamatok
 [Azure Machine learning folyamatok](concept-ml-pipelines.md)esetében a folyamat lépéseinek száma, valamint az előfizetésben régiónként megjelenő közzétett folyamatok ütemezett futtatásának száma.
@@ -85,7 +85,7 @@ Rendelkezésre álló erőforrások:
 Az adott időszakban (óránkénti hatókörben) vagy a teljes előfizetésen belül elforgatható tároló-példányok száma is korlátozott.
 A korlátokat lásd: [Container instances korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 A Storage-fiókok száma régiónként és egy adott előfizetésben is korlátozott. Az alapértelmezett korlát 250, és a standard és a Premium Storage fiókot is tartalmazza. Ha egy adott régióban több mint 250 Storage-fiókra van szüksége, az [Azure támogatási szolgálatán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül teheti meg a kérést. Az Azure Storage csapata áttekinti az üzleti ügyeit, és akár 250 Storage-fiókot is jóváhagyhat egy adott régióban.
 
 
@@ -160,6 +160,6 @@ Ezen forgatókönyvek esetében a következő lépések végrehajtásával igén
 
 3. A kérelem létrehozásához használja a __create (létrehozás__ ) lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [A Azure Machine Learning költségeinek megtervezése & kezeléséhez](concept-plan-manage-cost.md)

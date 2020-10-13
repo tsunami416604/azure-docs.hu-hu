@@ -8,10 +8,10 @@ ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445182"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>A Azure Cosmos DB Emulator parancssori és PowerShell-referenciája
@@ -85,7 +85,7 @@ Itt láthatja az emulátor PowerShellből való vezérlésére szolgáló paranc
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Szintaxis**
+**Syntax**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -95,7 +95,7 @@ Ezen ServiceControllerStatus értékek egyikét adja vissza: ServiceControllerSt
 
 ### `Start-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -105,7 +105,7 @@ Elindítja az emulátort. Alapértelmezés szerint a parancs addig vár, amíg a
 
 ### `Stop-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -115,7 +115,7 @@ Leállítja az emulátort. Alapértelmezés szerint ez a parancs addig vár, am�
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

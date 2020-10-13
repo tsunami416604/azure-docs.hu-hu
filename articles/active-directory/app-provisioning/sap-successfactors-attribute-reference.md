@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
 ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87808507"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-attribútumok referenciája
@@ -70,7 +70,7 @@ További attribútumok esetében tekintse meg az [SAP SuccessFactors-integráci�
 | 32 | Felhasználó                                   | homePhone                    | Olvasás           |
 | 33 | Felhasználó                                   | jobFamily                    | Olvasás           |
 | 34 | Felhasználó                                   | Becenév                     | Olvasás           |
-| 35 | Felhasználó                                   | state                        | Olvasás           |
+| 35 | Felhasználó                                   | állapot                        | Olvasás           |
 | 36 | Felhasználó                                   | timeZone                     | Olvasás           |
 | 37 | Felhasználó                                   | username                     | Olvasás           |
 | 38 | Felhasználó                                   | Irányítószám                      | Olvasás           |
@@ -130,7 +130,7 @@ Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmaz
 | 6  | Felhasználó                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | Felhasználó                                   | city                     | l                                       | NA                                                                                           |
 | 8  | Felhasználó                                   | ország                  | co                                      | NA                                                                                           |
-| 9  | Felhasználó                                   | state                    | st                                      | NA                                                                                           |
+| 9  | Felhasználó                                   | állapot                    | st                                      | NA                                                                                           |
 | 10 | Felhasználó                                   | username                 | samAccountName                          | NA                                                                                           |
 | 11 | Felhasználó                                   | Irányítószám                  | Irányítószám                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | Levelezés                                    | NA                                                                                           |

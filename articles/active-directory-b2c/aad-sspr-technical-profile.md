@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383597"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD SSPR műszaki profil definiálása egy Azure AD B2C egyéni házirendben
@@ -59,7 +59,7 @@ A **szabályzattípushoz** elem tartalmazza az Azure ad-SSPR küldendő jogcíme
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| emailAddress | Yes | Az e-mail-címet birtokló felhasználó azonosítója. A `PartnerClaimType` bemeneti jogcím tulajdonságát a következőre kell beállítani: `emailAddress` . |
+| emailAddress | Igen | Az e-mail-címet birtokló felhasználó azonosítója. A `PartnerClaimType` bemeneti jogcím tulajdonságát a következőre kell beállítani: `emailAddress` . |
 
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak az Azure ad SSPR szolgáltatásba való küldés előtt.
@@ -74,7 +74,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Yes | **SendCode**kell lennie.  |
+| Művelet | Igen | **SendCode**kell lennie.  |
 
 #### <a name="ui-elements"></a>Felhasználói felület elemei
 
@@ -82,8 +82,8 @@ A következő metaadatokkal konfigurálhatja az SMS-hibák küldésekor megjelen
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfInternalError | No | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
-| UserMessageIfThrottled| No | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
+| UserMessageIfInternalError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
 
 
 ### <a name="example-send-an-email"></a>Példa: e-mail küldése
@@ -113,8 +113,8 @@ A **szabályzattípushoz** elem tartalmazza az Azure ad-SSPR küldendő jogcíme
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- | ----------- |
-| emailAddress| Yes | Ugyanazt az e-mail-címet használja, mint korábban a kód küldéséhez. A rendszer az e-mailek ellenőrzési munkamenetének megkeresésére is használja. A `PartnerClaimType` bemeneti jogcím tulajdonságát a következőre kell beállítani: `emailAddress` .|
-| verificationCode  | Yes | A felhasználó által megadott ellenőrző kód ellenőrzése. A `PartnerClaimType` bemeneti jogcím tulajdonságát a következőre kell beállítani: `verificationCode` . |
+| emailAddress| Igen | Ugyanazt az e-mail-címet használja, mint korábban a kód küldéséhez. A rendszer az e-mailek ellenőrzési munkamenetének megkeresésére is használja. A `PartnerClaimType` bemeneti jogcím tulajdonságát a következőre kell beállítani: `emailAddress` .|
+| verificationCode  | Igen | A felhasználó által megadott ellenőrző kód ellenőrzése. A `PartnerClaimType` bemeneti jogcím tulajdonságát a következőre kell beállítani: `verificationCode` . |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Azure ad SSPR szolgáltatás meghívása előtt.
 
@@ -128,7 +128,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Yes | **VerifyCode** kell lennie |
+| Művelet | Igen | **VerifyCode** kell lennie |
 
 #### <a name="ui-elements"></a>Felhasználói felület elemei
 

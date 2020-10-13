@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344648"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Saját Machine Learning (ML) bekapcsolása az Azure Sentinelbe
@@ -79,7 +79,7 @@ Ha már rendelkezik Databricks vagy bármely más Spark-környezettel, és inká
 
 A BYO ML-csomag tartalmazza a Microsoft ajánlott eljárásait és kutatását az ML-ben a biztonság érdekében. Ebben a csomagban a biztonsági problémákkal kapcsolatos segédprogramok, jegyzetfüzetek és algoritmus-sablonok következő listáját biztosítjuk.
 
-| Fájlnév | Description |
+| Fájlnév | Leírás |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | A Blobok Azure-ból való olvasására és Log Analyticsba írására szolgáló segédprogramokat tartalmaz. |
 | AnomalousRASampleData | A notebook bemutatja a rendellenes erőforrás-hozzáférési modell használatát a Sentinelben a generált képzési és tesztelési mintaadatok használatával. |
@@ -159,13 +159,13 @@ Miután beolvasta a pontozást, a pontozási jegyzetfüzet moduljának használa
 
 Ha a kapcsolódó napló részleteivel együtt szeretné megtekinteni az eredményül kapott eredményeket, térjen vissza az Azure Sentinel-portálra. A **naplók** > egyéni naplókban az eredményeket a **AnomalousResourceAccessResult_CL** táblában (vagy a saját egyéni táblanév) fogja látni. Ezeket az eredményeket használhatja a nyomozási és a vadászati élmény fokozásához.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="rendellenes erőforrás-hozzáférési naplók":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Machine learning-keretrendszer":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Egyéni elemzési szabály készítése ML-eredményekkel
 
 Miután megerősítette, hogy a ML-eredmények szerepelnek az egyéni naplók táblában, és elégedett a pontszámok hűségével, az eredmények alapján létrehozhat egy észlelést. Nyissa meg az **Analytics szolgáltatást** az Azure Sentinel portálon, és [hozzon létre egy új észlelési szabályt](tutorial-detect-threats-custom.md). Az alábbi példa az észlelés létrehozásához használt lekérdezést mutatja be.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Egyéni elemzési szabály létrehozása B Y O M L-észlelésekhez":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Machine learning-keretrendszer":::
 
 ### <a name="view-and-respond-to-incidents"></a>Incidensek megtekintése és reagálás
 Miután beállította az elemzési szabályt az ML-eredmények alapján, ha a lekérdezésben beállított küszöbérték felett van eredmény, akkor az Azure Sentinel **incidensek** lapján létrejön egy incidens. 

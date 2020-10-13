@@ -4,10 +4,10 @@ description: A Azure Advisor használatával optimalizálhatja az Azure-beli üz
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 3b7e57aa178380ff4cf0561718c292dc1e6c6aa9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448180"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
@@ -107,7 +107,7 @@ Az Advisor azonosítja azokat az erőforrásokat, amelyekben a tábla-gyorsító
 
 1. Az **Advisor** irányítópulton válassza a **Cost (Cost** ) lapot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)

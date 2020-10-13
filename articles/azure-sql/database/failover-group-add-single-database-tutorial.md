@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
 ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442740"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Oktatóanyag: Azure SQL Database hozzáadása egy autofeladatátvételi csoporthoz
@@ -427,7 +427,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 További Azure SQL Database szkriptek itt találhatók: [Azure PowerShell](powershell-script-content-guide.md) és [Azure CLI](az-cli-script-samples-content-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure SQL Database-adatbázist adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: d88fa0e096557169a956a2ba33f72448676785e1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444663"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>Az alkalmazások kód Azure SQL Database való eléréséhez szükséges értékek beolvasása
@@ -100,7 +100,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Adatbázis létrehozása Azure SQL Database C-vel #](design-first-database-csharp-tutorial.md)  
 [Kapcsolódás Azure SQL Databasehoz Azure Active Directory hitelesítés használatával](authentication-aad-overview.md)
