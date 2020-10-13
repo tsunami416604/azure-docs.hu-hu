@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434469"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
@@ -62,7 +62,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 - A szolgáltatás csak az Azure Resource Manager-alapú üzemi modellel üzembe helyezett virtuális hálózatokon érhető el.
 - A végpontok az Azure-beli virtuális hálózatokon konfigurált alhálózatokon vannak engedélyezve. A végpontok nem használhatók a helyszíni és az Azure-szolgáltatások közötti adatforgalomhoz. További információ: az [Azure-szolgáltatások helyszíni hozzáférésének biztonságossá tétele](#secure-azure-services-to-virtual-networks)
-- Az Azure SQL esetében a szolgáltatásvégpontok csak az adott virtuális hálózat régióján belül vannak hatással az Azure-szolgáltatások forgalmára. Az Azure Storage esetében a végpontok a párosított régiókra is kiterjednek, ahol a virtuális hálózatot üzembe helyezi az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) és a Geo-redundáns tárolás (GRS) forgalmának támogatásához. További információ: [Azure párosított régiók](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- Az Azure SQL esetében a szolgáltatásvégpontok csak az adott virtuális hálózat régióján belül vannak hatással az Azure-szolgáltatások forgalmára. Az Azure Storage esetében a végpontok a párosított régiókra is kiterjednek, ahol a virtuális hálózatot a Read-Access Geo-Redundant Storage (RA-GRS) és a Geo-Redundant Storage (GRS) forgalmának támogatásához telepíti. További információ: [Azure párosított régiók](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 - A Azure Data Lake Storage (ADLS) Gen 1 esetében a VNet integrációs képesség csak ugyanazon a régión belüli virtuális hálózatok esetében érhető el. Azt is vegye figyelembe, hogy a ADLS Gen1 virtuális hálózati integrációja a virtuális hálózati szolgáltatás végpontjának biztonságát használja a virtuális hálózat és a Azure Active Directory (Azure AD) között, hogy további biztonsági jogcímeket állítson elő a hozzáférési jogkivonatban. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. A szolgáltatások támogatása szolgáltatási végpontok területen felsorolt *Microsoft. AzureActiveDirectory* címkét csak az 1. generációs ADLS támogató szolgáltatási végpontok használják. Az Azure AD nem támogatja natív módon a szolgáltatási végpontokat. További Azure Data Lake Store információ az 1. generációs VNet-integrációról: [hálózati biztonság a Azure Data Lake Storage Gen1ban](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>Azure-szolgáltatások biztonságossá tétele virtuális hálózatokhoz
@@ -152,4 +152,4 @@ A gyakori kérdésekért lásd: [Virtual Network szolgáltatási végponttal kap
 - [Azure szinapszis-elemzés biztonságossá tétele virtuális hálózathoz](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure-szolgáltatás integrációja virtuális hálózatokban](virtual-network-for-azure-services.md)
 - [Virtual Network szolgáltatási végpont házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Azure Resource Manager sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

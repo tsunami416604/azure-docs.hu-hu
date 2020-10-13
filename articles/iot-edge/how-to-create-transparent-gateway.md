@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167402"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
@@ -73,14 +73,14 @@ A következő fájlok készen állnak:
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    2. [Hozzon létre IoT Edge eszköz hitelesítésszolgáltatói tanúsítványát](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Ezen utasítások végén két fájl, egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa és a titkos kulcsa lesz:
-      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`és
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` és
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
 2. Ha ezeket a fájlokat egy másik gépen hozta létre, másolja át őket a IoT Edge eszközre.
 
 3. A IoT Edge eszközön nyissa meg a biztonsági démon konfigurációs fájlját.
-   * Windows`C:\ProgramData\iotedge\config.yaml`
-   * Linux`/etc/iotedge/config.yaml`
+   * Windows `C:\ProgramData\iotedge\config.yaml`
+   * Linux `/etc/iotedge/config.yaml`
 
 4. Keresse meg a fájl **tanúsítványok** szakaszát, és adja meg a fájl URI-fájljait a három fájl számára a következő tulajdonságok értékének megfelelően:
    * **device_ca_cert**: eszköz hitelesítésszolgáltatói tanúsítványa
@@ -90,8 +90,8 @@ A következő fájlok készen állnak:
 5. Mentse és zárja be a fájlt.
 
 6. IoT Edge újraindítása.
-   * Windows`Restart-Service iotedge`
-   * Linux`sudo systemctl restart iotedge`
+   * Windows `Restart-Service iotedge`
+   * Linux `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub üzembe helyezése és az üzenetek továbbítása
 
@@ -117,15 +117,15 @@ Az IoT Edge hub modul üzembe helyezéséhez és az alsóbb rétegbeli eszközö
 
 5. Válassza a **Tovább: útvonalak**lehetőséget.
 
-6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Például:
+6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Példa:
 
    * Egy olyan útvonal, amely minden üzenetet elküld egy modulból vagy egy alsóbb rétegbeli eszközről a IoT Hubba:
-       * **Név**:`allMessagesToHub`
-       * **Érték**:`FROM /messages/* INTO $upstream`
+       * **Név**: `allMessagesToHub`
+       * **Érték**: `FROM /messages/* INTO $upstream`
 
    * Az összes alsóbb rétegbeli eszközről a IoT Hubre küldött összes üzenetet küldő útvonal:
-      * **Név**:`allDownstreamToHub`
-      * **Érték**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **Név**: `allDownstreamToHub`
+      * **Érték**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
       Ez az útvonal azért működik, mert a IoT Edge modulokból származó üzenetektől eltérően az alárendelt eszközöktől érkező üzenetek nem rendelkeznek a hozzájuk társított modul-AZONOSÍTÓval. Az útvonal **Where** záradékának használata lehetővé teszi, hogy az adott System tulajdonsággal rendelkező üzeneteket kiszűrje.
 
@@ -155,6 +155,6 @@ Ezzel a képességgel a helyi modulok és az alsóbb rétegbeli eszközök szük
 
 A kibővített offline képességek engedélyezéséhez létre kell hoznia egy szülő-gyermek kapcsolatot egy IoT Edge átjáró-eszköz és a hozzá kapcsolódó alsóbb szintű eszközök között. Ezeket a lépéseket részletesebben ismertetjük a sorozat következő cikkében, amely [egy alsóbb rétegbeli eszközt hitelesít az Azure IoT Hubban](how-to-authenticate-downstream-device.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy rendelkezik egy IoT Edge eszközzel, amely transzparens átjáróként van beállítva, konfigurálnia kell az alsóbb rétegbeli eszközöket az átjáró megbízhatóságához és az üzenetek küldéséhez. Folytassa a következő lépéssel, hogy [hitelesítse egy alsóbb rétegbeli eszközt az Azure IoT Hubban](how-to-authenticate-downstream-device.md) az átlátszó átjáró beállításának további lépéseihez.

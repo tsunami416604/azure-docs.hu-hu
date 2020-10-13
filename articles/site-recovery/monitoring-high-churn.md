@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89664184"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>A virtuális gépek adatforgalmi mintáinak figyelése
@@ -19,9 +19,9 @@ Ez a cikk áttekintést nyújt a virtuális gépek adatváltozási mintáinak fi
 
 ## <a name="for-azure-virtual-machines-windows-or-linux"></a>Azure-beli virtuális gépekhez (Windows vagy Linux)
 
-Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információ](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információk](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információ](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
+Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információk](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
 
 Vannak olyan operációs rendszerre vonatkozó eszközök is, amelyeket használhat.
 

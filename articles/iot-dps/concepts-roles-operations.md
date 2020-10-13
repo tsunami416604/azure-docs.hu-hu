@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: 52c0dcf4bd9f7b2ca8928eab5272a6500cbb379d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533072"
 ---
 # <a name="roles-and-operations"></a>Szerepkörök és műveletek
@@ -23,7 +23,7 @@ A kiépítés az eszköz gyártójára is vonatkozik, amely az [igazolási mecha
 
 A bal oldali tartalomjegyzékben számos gyors útmutató áll rendelkezésére, amelyek segítenek megmagyarázni az automatikus kiépítés gyakorlati tapasztalatain keresztüli kiosztását. A tanulási folyamat megkönnyítése és egyszerűsítése érdekében a szoftver használatával szimulálható a fizikai eszközök regisztrációja és regisztrálása. Néhány rövid útmutatóban több szerepkör műveleteit kell teljesítenie, beleértve a nem létező szerepkörök műveleteit is, a rövid útmutatók szimulált természete miatt.
 
-| Szerepkör | Művelet | Description |
+| Szerepkör | Művelet | Leírás |
 |------| --------- | ------------|
 | Gyártó | Azonosító és regisztrációs URL-cím kódolása | A használt igazolási mechanizmus alapján a gyártó felelős az eszköz azonosító adatainak és az eszköz kiépítési szolgáltatásának regisztrációs URL-címének kódolásában.<br><br>Gyors **útmutató: mivel**az eszköz szimulálva van, nincs gyártói szerepkör. Tekintse meg a fejlesztői szerepkört az információk beszerzéséről, amely a minta-regisztrációs alkalmazás kódolásakor használatos. |
 | | Eszköz identitásának megadása | Az eszköz személyazonossági adatainak kezdeményezője a gyártó felelős azért, hogy kommunikáljon a kezelővel (vagy egy kijelölt ügynökkel), vagy közvetlenül regisztrálja azt az eszköz kiépítési szolgáltatásának API-kon keresztül.<br><br>Gyors **útmutató: mivel**az eszköz szimulálva van, nincs gyártói szerepkör. Az eszköz identitásának beszerzésével kapcsolatos részletekért tekintse meg az operátori szerepkört, amely egy szimulált eszköz regisztrálására szolgál az eszköz kiépítési szolgáltatásának példányában. |

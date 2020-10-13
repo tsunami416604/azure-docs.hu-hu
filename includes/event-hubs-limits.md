@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371727"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
@@ -47,7 +47,7 @@ Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korláto
 ### <a name="dedicated-tier"></a>Dedikált szintű
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 
 
-| Funkció | Korlátok |
+| Szolgáltatás | Korlátok |
 | --- | ---|
 | Sávszélesség |  20 ke |
 | Névterek | 50/CU |
@@ -64,7 +64,7 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 ### <a name="schema-registry-limitations"></a>A séma beállításjegyzékének korlátai
 
 #### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>A **standard** és a **dedikált** szint esetében azonos korlátok 
-| Funkció | Korlát | 
+| Szolgáltatás | Korlát | 
 | --- |  --- | -- |
 | Séma-csoport nevének maximális hossza | 50 |  
 | Séma nevének maximális hossza | 100 |    

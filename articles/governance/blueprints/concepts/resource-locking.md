@@ -4,10 +4,10 @@ description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekk
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744015"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
@@ -179,7 +179,7 @@ Hasonlóan a [megtagadási hozzárendelések](../../../role-based-access-control
 
 Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések az `*` erőforrás-szolgáltatói műveletek helyettesítő karaktereit is használhatják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
 - Tudnivalók a [tervek életciklusáról](./lifecycle.md).

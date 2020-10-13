@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálhatja a Traffic Managert az Azure VMwa
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579840"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Traffic Manager üzembe helyezése az Azure VMware Solution (AVS) számítási feladatok kiegyensúlyozásához
@@ -123,7 +123,7 @@ Ebben az esetben egy NSX-T szegmens van konfigurálva az AVS-környezetben, ahol
 
    :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Az Application Gateway-példányok listája.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk:
 

@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443024"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
@@ -61,12 +61,12 @@ Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásáh
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Yes |
-| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Yes |
+| **típusa** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Igen |
+| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
 | **Port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
-| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Yes |
-| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Yes |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Yes |
+| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Igen |
+| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Igen |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -87,7 +87,7 @@ Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource**típusú,
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **lekérdezés** | Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
-| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | No |
+| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | Nem |
 | **s3LinkedServiceName** | Az Amazon S3, amelyet ideiglenes tárolóként kell használni. A társított szolgáltatás egy **awsaccesskey használnia**típusú Azure Data Factory-név használatával van megadva. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 | **bucketName** | Azt az Amazon S3 gyűjtőt jelzi, amely az ideiglenes adattároláshoz használható. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehoz egy gyűjtőt. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 
@@ -338,8 +338,8 @@ A következő leképezések akkor használatosak, ha a másolási tevékenység 
 | LOGIKAI |Sztring |
 | CHAR |Sztring |
 | VARCHAR |Sztring |
-| DATE |Dátum/idő |
-| IDŐBÉLYEG |Dátum/idő |
+| DATE |DateTime |
+| IDŐBÉLYEG |DateTime |
 | TEXT |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra

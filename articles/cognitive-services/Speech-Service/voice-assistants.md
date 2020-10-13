@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360939"
 ---
 # <a name="what-is-a-voice-assistant"></a>Mi az a hangvezérelt asszisztens?
@@ -47,7 +47,7 @@ Az [egyéni parancsok](custom-commands.md) megkönnyítik a hangvezérelt hangve
 
 Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni parancsokat](custom-commands.md) választ a Segéd-interakciók létrehozásához, a testreszabási funkciók széles választékát használhatja a Segéd testreszabásához a márka, a termék és a személyiség számára.
 
-| Kategória | Funkciók |
+| Kategória | Szolgáltatások |
 |----------|----------|
 |[Egyéni kulcsszó](speech-devices-sdk-create-kws.md) | A felhasználók olyan egyéni kulcsszóval indíthatnak el beszélgetéseket, mint például a "Hey contoso". Az alkalmazás a Speech SDK-ban egy egyéni kulcsszavas motorral rendelkezik, amely konfigurálható egy egyéni kulcsszóval, [amelyet itt is](speech-devices-sdk-create-kws.md)létrehozhat. A hangsegédek kiszolgálóoldali ellenőrzés használatával növelhetik a kulcsszó aktiválásának pontosságát (az eszköz helyett).
 |[Beszéd szövege](speech-to-text.md) | A hangsegédek valós idejű hanganyagot alakítanak át felismert szöveggé a beszédfelismerési szolgáltatásból származó [beszéd – szöveg](speech-to-text.md) használatával. Ez a szöveg a Segéd implementációjában és az ügyfélalkalmazásban is elérhető.

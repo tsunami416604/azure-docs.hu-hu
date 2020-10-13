@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743692"
 ---
 # <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>Egyéni IPsec-házirendek létrehozása és beállítása pont – hely kapcsolatokhoz (előzetes verzió)
@@ -57,6 +57,6 @@ $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a P2S-konfigurációkról: [Tudnivalók a pont – hely VPN-ről](point-to-site-about.md).

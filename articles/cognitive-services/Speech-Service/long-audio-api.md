@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
 ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167759"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
@@ -277,7 +277,7 @@ A következő táblázat a REST API HTTP-válaszait és üzeneteit részletezi.
 |        | 400 | A bemeneti fájlnak 400 karakternél nagyobbnak kell lennie. | Győződjön meg arról, hogy a bemeneti fájl mérete meghaladja a 400 karaktert. |
 |        | 404 | A hangszintézis definíciójában deklarált modell nem található: {modelID}. | Győződjön meg arról, hogy a ({modelID}) helyes. |
 |        | 429 | Túllépi az aktív hangszintézis korlátot. Várjon, amíg néhány kérelem befejeződik. | A kiszolgáló az egyes Azure-fiókokhoz legfeljebb 120 kérelem futtatására és várólistára helyezésére jogosult. Várjon, és ne küldje el az új kéréseket, amíg néhány kérelem be nem fejeződik. |
-| Összes       | 429 | Túl sok kérés van. | Az ügyfél legfeljebb 5 kérést küldhet a kiszolgálónak másodpercenként minden egyes Azure-fiókhoz. Csökkentse a kérések másodpercenkénti számát. |
+| Mind       | 429 | Túl sok kérés van. | Az ügyfél legfeljebb 5 kérést küldhet a kiszolgálónak másodpercenként minden egyes Azure-fiókhoz. Csökkentse a kérések másodpercenkénti számát. |
 | Törlés    | 400 | A hangszintézisi feladat még használatban van. | Csak a **befejezett** vagy **sikertelen**kéréseket lehet törölni. |
 | GetByID   | 404 | A megadott entitás nem található. | Győződjön meg arról, hogy a szintézis azonosítója helyes. |
 

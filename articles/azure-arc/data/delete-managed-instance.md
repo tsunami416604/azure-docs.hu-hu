@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940848"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Az Azure arc használatára képes felügyelt SQL-példány törlése
@@ -52,7 +52,7 @@ Deleted demo-mi from namespace arc
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>A Kubernetes állandó mennyiségi jogcímek (PVC-EK) visszaigénylése
 
-A felügyelt SQL-példányok törlése nem távolítja el a hozzá tartozó [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)-ket. Ez az elvárt működés. A cél az, hogy segítsen a felhasználónak elérni az adatbázisfájlok elérését abban az esetben, ha a példány törlése véletlen volt. Az adatpvc-törlés nem kötelező. Azonban ajánlott. Ha nem állítja vissza ezeket a PVC-ket, a rendszer végül hibákba ütközik, mivel a Kubernetes-fürtön nincs elég szabad lemezterület. Az adatpvc-eszközök visszaigényléséhez hajtsa végre a következő lépéseket:
+A felügyelt SQL-példányok törlése nem távolítja el a hozzá tartozó [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)-ket. Ez az elvárt működés. A cél az, hogy segítsen a felhasználónak elérni az adatbázisfájlokat abban az esetben, ha a példány törlése véletlenül történt. A PVC-k törlése nem kötelező, de ajánlott. Ha nem állítja vissza ezeket a PVC-ket, a rendszer végül hibákba ütközik, mivel a Kubernetes-fürtön nincs elég szabad lemezterület. Hajtsa végre a következő lépéseket a PVC-k felszabadításához:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. a törölt számítógépcsoport kilistázása
 A PVC-ket a következő parancs futtatásával listázhatja:
@@ -76,13 +76,13 @@ A parancs általános formátuma a következő:
 kubectl delete pvc <name of pvc>
 ```
 
-Például:
+Példa:
 ```console
 kubectl delete pvc data-demo-mi-0 -n arc
 kubectl delete pvc logs-demo-mi-0 -n arc
 ```
 
-Ezen kubectl-parancsok mindegyike megerősíti a PVC sikeres törlését. Például:
+Ezen kubectl-parancsok mindegyike megerősíti a PVC sikeres törlését. Példa:
 ```console
 persistentvolumeclaim "data-demo-mi-0" deleted
 persistentvolumeclaim "logs-demo-mi-0" deleted

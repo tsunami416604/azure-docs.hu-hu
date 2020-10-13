@@ -4,10 +4,10 @@ description: Leírja a folyamatos exportálásból a JSON-ban exportált tulajdo
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324386"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights adatmodell exportálása
@@ -17,9 +17,9 @@ Emellett megjelennek a tulajdonságok szűrői a [metrika-kezelőben](../platfor
 
 Megjegyzés:
 
-* `[0]`ezekben a táblázatokban egy olyan pontot jelöl, amelyben egy indexet kell beszúrnia. Ez azonban nem mindig 0.
+* `[0]` ezekben a táblázatokban egy olyan pontot jelöl, amelyben egy indexet kell beszúrnia. Ez azonban nem mindig 0.
 * Az időtartamok egy másodpercen belül vannak, így 10000000 = = 1 másodperc.
-* A dátumok és időpontok UTC, és ISO formátumban vannak megadva`yyyy-MM-DDThh:mm:ss.sssZ`
+* A dátumok és időpontok UTC, és ISO formátumban vannak megadva `yyyy-MM-DDThh:mm:ss.sssZ`
 
 ## <a name="example"></a>Példa
 
@@ -138,7 +138,7 @@ A telemetria összes típusát egy környezeti szakasz kíséri. A mezők nem mi
 | context.operation.id |sztring |Azok az elemek, amelyek azonosak, a `operation id` portálon kapcsolódó elemként jelennek meg. Általában a `request id` . |
 | context.operation.name |sztring |URL-cím vagy kérelem neve |
 | Context. Operation. parentId |sztring |Lehetővé teszi a beágyazott kapcsolódó elemek használatát. |
-| context.session.id |sztring |`Id`ugyanabból a forrásból származó műveletek csoportjából. Egy művelet nélküli, 30 perces időszak a munkamenet végét jelzi. |
+| context.session.id |sztring |`Id` ugyanabból a forrásból származó műveletek csoportjából. Egy művelet nélküli, 30 perces időszak a munkamenet végét jelzi. |
 | Context. Session. isFirst |boolean | |
 | Context. user. accountAcquisitionDate |sztring | |
 | Context. user. accountId |sztring | |
@@ -149,7 +149,7 @@ A telemetria összes típusát egy környezeti szakasz kíséri. A mezők nem mi
 | Context. user. isAuthenticated |boolean | |
 | Context. user. storeRegion |sztring | |
 | internal.data.documentVersion |sztring | |
-| internal.data.id |sztring | `Unique id`akkor van hozzárendelve, amikor a rendszer betölti az elemeket Application Insights |
+| internal.data.id |sztring | `Unique id` akkor van hozzárendelve, amikor a rendszer betölti az elemeket Application Insights |
 
 ## <a name="events"></a>Események
 A [TrackEvent ()](./api-custom-events-metrics.md#trackevent)által generált egyéni események.
@@ -175,7 +175,7 @@ A kiszolgáló és a böngésző [kivételeit](./asp-net-exceptions.md) jelenti.
 | basicException [0] failedUserCodeAssembly |sztring | |
 | basicException [0] handledAt |sztring | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0]`id` |sztring | |
+| basicException [0] `id` |sztring | |
 | basicException [0] metódus |sztring | |
 | basicException [0] üzenet |sztring |Kivételi üzenet. Maximális hossz: 10k. |
 | basicException [0] outerExceptionMessage |sztring | |
@@ -212,7 +212,7 @@ A TrackDependency küldte. A kiszolgáló [függőségeinek](./asp-net-dependenc
 | remoteDependency [0] darabszám |egész szám |100/([mintavételi](./sampling.md) sebesség). Például 4 = &gt; 25%. |
 | remoteDependency [0] dependencyTypeName |sztring |HTTP, SQL,... |
 | remoteDependency [0] durationMetric. Value |szám |A meghívástól a válasz befejezésére való függőség szerinti idő |
-| remoteDependency [0]`id` |sztring | |
+| remoteDependency [0] `id` |sztring | |
 | remoteDependency [0] név |sztring |URL. Maximális hosszúság 250. |
 | remoteDependency [0] resultCode |sztring |HTTP-függőségből |
 | remoteDependency [0] sikeres |boolean | |
@@ -229,7 +229,7 @@ A [TrackRequest](./api-custom-events-metrics.md#trackrequest)küldte. A standard
 | --- | --- | --- |
 | kérelem [0] darabszám |egész szám |100/([mintavételi](./sampling.md) sebesség). Például: 4 = &gt; 25%. |
 | kérelem [0] durationMetric. Value |szám |A kérelemtől érkező válasz időpontja. 1e7 = = 1s |
-| kérelem [0]`id` |sztring |`Operation id` |
+| kérelem [0] `id` |sztring |`Operation id` |
 | kérelem [0] név |sztring |GET/POST + URL-cím alapja.  Maximális hossz 250 |
 | kérelem [0] responseCode |egész szám |Az ügyfélnek küldött HTTP-válasz |
 | kérelem [0] sikeres |boolean |Default = = (responseCode &lt; 400) |
@@ -350,7 +350,7 @@ A metrikák előzetes összesítése helyett [mintavételt](./sampling.md) is ha
 ### <a name="durations"></a>Időtartamok
 Ha másként nincs jelezve, az időtartamok egy másodperc tizedében jelennek meg, így a 10000000,0 1 másodpercet jelent.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Application Insights](./app-insights-overview.md)
 * [Folyamatos exportálás](export-telemetry.md)
 * [Kódminták](export-telemetry.md#code-samples)

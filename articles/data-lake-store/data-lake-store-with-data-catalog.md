@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578512"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Adatok regisztrálása Azure Data Lake Storage Gen1ról Azure Data Catalog
@@ -71,7 +71,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     * [Az adatforrások megjegyzései Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
     * [Adatforrások dokumentálása Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Az adatforrások megjegyzései Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Adatforrások dokumentálása Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal](data-lake-store-integrate-with-other-services.md)

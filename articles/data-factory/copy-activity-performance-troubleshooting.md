@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440524"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
@@ -53,7 +53,7 @@ A teljesítmény-hangolási tippek jelenleg a következő esetekben nyújtanak j
 
 A másolási tevékenység figyelése nézet alján a végrehajtás részletei és időtartama a másolási tevékenység lépéseit ismerteti (lásd a cikk elején található példát), amely különösen hasznos a másolási teljesítmény hibaelhárításához. A másolási Futtatás szűk keresztmetszete a leghosszabb időtartamú. Tekintse meg az alábbi táblázatot az egyes fázisok definíciójában, és Ismerje meg, hogyan lehet [elhárítani a másolási tevékenységet a Azure IR](#troubleshoot-copy-activity-on-azure-ir) és a [másolási tevékenységet a saját](#troubleshoot-copy-activity-on-self-hosted-ir) üzemeltetésű integrációs modulban az ilyen adatokkal.
 
-| Fázis           | Description                                                  |
+| Fázis           | Leírás                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Üzenetsor           | Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. |
 | Másolás előtti parancsfájl | A másolási tevékenység és a másolási tevékenység közötti eltelt idő a fogadó adattárban lévő előmásolási parancsfájl végrehajtásának befejezése után. Az adatbázis-nyelők előmásolási parancsfájljának konfigurálásakor alkalmazza, például amikor az adatírást Azure SQL Database az új Adatmásolás előtt törli az adatbevitelt. |
@@ -142,7 +142,7 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integrat
 
   - Tekintse meg a saját üzemeltetésű integrációs modul CPU-és memóriahasználat-trendjét a Azure Portal-> a > – áttekintés lapot. Ha a CPU-használat magas vagy kevés a rendelkezésre álló memória, vegye fontolóra a vertikális [felskálázást](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
 
-  - Az összekötő-specifikus betöltés ajánlott eljárás alkalmazása, ha alkalmazható. Például:
+  - Az összekötő-specifikus betöltés ajánlott eljárás alkalmazása, ha alkalmazható. Példa:
 
     - Az [Oracle](connector-oracle.md#oracle-as-source), a [Netezza](connector-netezza.md#netezza-as-source), a [Teradata](connector-teradata.md#teradata-as-source), az [SAP HANA](connector-sap-hana.md#sap-hana-as-source), az [SAP Table](connector-sap-table.md#sap-table-as-source)és az [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) adatainak másolása során az adatpartíciós beállítások lehetővé teszik az adatok párhuzamos másolását.
 

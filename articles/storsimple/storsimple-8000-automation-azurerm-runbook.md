@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744032"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Az StorSimple-eszközök kezelése Azure Automation runbookok
@@ -182,7 +182,7 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet** (ha lehetséges, ugyanaz, mint ahol a szolgáltatás fut).
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. **A rögzítés az irányítópulton is**megadható. Kattintson a **Létrehozás** elemre.
+   6. **A rögzítés az irányítópulton is**megadható. Kattintson a **Létrehozás** lehetőségre.
 
        ![Képernyőfelvétel: az Automation-fiók hozzáadása panel az előfizetéshez tartozó értékekkel, Azure-beli futtató fiók létrehozása és 2. létrehozás](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -198,7 +198,7 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
 
     ![Képernyőfelvétel – a modul hozzáadása panel a fájl feltöltése értékkel és az OK gomb](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Nyissa meg a **Process Automation > runbookok, és kattintson a + Runbook hozzáadása elemre**. A **Runbook hozzáadása** panelen kattintson a **meglévő runbook importálása**elemre. Mutasson a **Runbook fájl**Windows PowerShell-fájljára. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** elemre.
+6. Nyissa meg a **Process Automation > runbookok, és kattintson a + Runbook hozzáadása elemre**. A **Runbook hozzáadása** panelen kattintson a **meglévő runbook importálása**elemre. Mutasson a **Runbook fájl**Windows PowerShell-fájljára. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
 
     ![modul hozzáadása](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
@@ -214,6 +214,6 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
 
     ![A képernyőképen a PowerShell-Runbook szerkesztése panel jelenik meg, amely felszólítja, hogy folytassa a Runbook közzétételével](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A StorSimple-eszköz kezeléséhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).

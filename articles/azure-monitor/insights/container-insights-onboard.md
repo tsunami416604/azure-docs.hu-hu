@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a 
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320306"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
@@ -45,7 +45,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő k
    Ha saját maga hozza létre a munkaterületet, a következő módon hozhatja létre: 
    - [Azure Resource Manager](../platform/template-workspace-configuration.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [A Azure Portal](../learn/quick-create-workspace.md) 
+   - [Az Azure Portal](../learn/quick-create-workspace.md) 
    
    Az alapértelmezett munkaterülethez használt támogatott leképezési párok listáját a következő témakörben tekintheti meg: [régió leképezése Azure monitor for containers](container-insights-region-mapping.md).
 

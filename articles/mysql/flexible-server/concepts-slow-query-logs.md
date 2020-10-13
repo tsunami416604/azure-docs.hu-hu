@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399210"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Lassú lekérdezési naplók Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
@@ -129,7 +129,7 @@ Ha a lassú lekérdezési naplók a diagnosztikai naplókon keresztül Azure Mon
     | where query_time_d > 10
     ```    
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [naplókról](concepts-audit-logs.md)
 - Lassú lekérdezési naplók konfigurálása a [Azure Portal](how-to-configure-slow-query-logs-portal.md)
 <!-- - [How to configure slow query logs from the Azure CLI](howto-configure-server-logs-in-cli.md). -->

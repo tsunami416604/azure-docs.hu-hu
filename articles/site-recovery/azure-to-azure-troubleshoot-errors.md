@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397963"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-ból Azure-ba történő virtuálisgép-replikációval kapcsolatos hibák elhárítása
@@ -281,14 +281,14 @@ A virtuális gép replikálási állapotának újbóli megadásához választhat
 1. Nyissa meg a **replikált elemek**  >  _virtuális gépek neve_  >  **lemezeket**.
 1. Válassza ki a nem védett lemezt, majd válassza a **replikáció engedélyezése**lehetőséget:
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Engedélyezze a replikálást a virtuális gépek lemezein.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com – hiba.":::
 
 #### <a name="to-dismiss-the-warning"></a>A figyelmeztetés mellőzése
 
 1. Nyissa meg a **replikált elemek**  >  _virtuális gép nevét_.
 1. Válassza ki a figyelmeztetést az **Áttekintés** szakaszban, majd kattintson az **OK gombra**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Új lemezre vonatkozó figyelmeztetés mellőzése.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com – hiba.":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>A tárból eltávolított virtuális gép információkkal fejeződött be (hibakód: 150225)
 
@@ -309,7 +309,7 @@ Figyelmen kívül hagyhatja ezt a figyelmeztetést, ha soha nem szeretné több�
 
 1. Szüntesse meg a virtuális gép vagy a virtuálisgép-erőforráscsoport zárolását. Az alábbi ábrán például törölni kell a nevű virtuális gép erőforrás-zárolását `MoveDemo` :
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Távolítsa el a virtuális gép zárolását.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com – hiba.":::
 
 1. Töltse le a szkriptet [egy elavult site Recovery konfiguráció eltávolításához](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Futtassa a szkriptet, _Cleanup-stale-asr-config-Azure-VM.ps1_. Adja meg az **előfizetés azonosítóját**, a virtuálisgép- **erőforráscsoportot**és a **virtuális gép nevét** paraméterként.
@@ -334,7 +334,7 @@ Ha az Azure-beli virtuális gép replikálását a Site Recovery használatával
 
 1. Szüntesse meg a virtuális gép vagy a virtuálisgép-erőforráscsoport zárolását. Az alábbi ábrán például törölni kell a nevű virtuális gép erőforrás-zárolását `MoveDemo` :
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Távolítsa el a virtuális gép zárolását.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com – hiba.":::
 
 1. Töltse le a szkriptet [egy elavult site Recovery konfiguráció eltávolításához](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Futtassa a szkriptet, _Cleanup-stale-asr-config-Azure-VM.ps1_. Adja meg az **előfizetés azonosítóját**, a virtuálisgép- **erőforráscsoportot**és a **virtuális gép nevét** paraméterként.
@@ -367,7 +367,7 @@ Előfordulhat, hogy nem látja azt a virtuális gépet, amelyet engedélyezni sz
 
 1. Távolítsa el a virtuális gép vagy a virtuálisgép-erőforráscsoport zárolását, ha van ilyen. Az alábbi ábrán például törölni kell a nevű virtuális gép erőforrás-zárolását `MoveDemo` :
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Távolítsa el a virtuális gép zárolását.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com – hiba.":::
 
 1. Töltse le a szkriptet [egy elavult site Recovery konfiguráció eltávolításához](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Futtassa a szkriptet, _Cleanup-stale-asr-config-Azure-VM.ps1_. Adja meg az **előfizetés azonosítóját**, a virtuálisgép- **erőforráscsoportot**és a **virtuális gép nevét** paraméterként.
@@ -404,17 +404,17 @@ A virtuális gép replikálásának engedélyezéséhez a létesítési állapot
 
 A vész-helyreállítási konfiguráció során, ha a forrás virtuális gép egy virtuális hálózat része, és egy másik virtuális hálózat már le van képezve egy, a célként megadott erőforráscsoport egyik hálózatával, a hálózati kijelölés legördülő lista nem érhető el (a halványan jelenik meg).
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="A hálózati kiválasztási lista nem érhető el.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com – hiba.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>2. probléma: előzőleg védett a virtuális gép, majd letiltotta a replikálást.
 
 A virtuális gép replikálásának letiltása nem törli a hálózati leképezést. A leképezést törölni kell a Recovery Services tárolóból, ahol a virtuális gép védett volt. Válassza ki a **Recovery Services** -tárolót, és lépjen az Azure-beli **Manage**  >  **Site Recovery Infrastructure**  >  **virtuális gépek**  >  **hálózati leképezése**site Recovery-infrastruktúra kezelése elemre.
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Hálózati leképezés törlése.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com – hiba.":::
 
 A vész-helyreállítási telepítés során konfigurált célként megadott hálózat a kezdeti beállítás után és a virtuális gép védelme után módosítható. A **hálózati leképezés módosításához** válassza ki a hálózat nevét:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Módosítsa a hálózat leképezését.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com – hiba.":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ vagy VSS (hibakód: 151025)
@@ -437,7 +437,7 @@ Site Recovery extension failed to install.
 1. Nyissa meg a szolgáltatások konzolt a Windows rendszerben.
 1. Győződjön meg arról, hogy a COM+ rendszeralkalmazás és a Kötet árnyékmásolata szolgáltatás nincs **Letiltva** az **indítási típusként**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="Győződjön meg arról, hogy a COM Plus rendszeralkalmazás indítási típusa és Kötet árnyékmásolata szolgáltatás.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com – hiba.":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>A felügyelt lemez mérete nem támogatott (hibakód: 150172)
 
@@ -475,7 +475,7 @@ Az alábbi példák olyan GRUB-fájlokból származó sorok, amelyekben az eszk�
 
 Cserélje le az egyes eszközök nevét a megfelelő UUID-ra:
 
-1. A parancs végrehajtásával keresse meg az eszköz UUID-azonosítóját `blkid <device name>` . Például:
+1. A parancs végrehajtásával keresse meg az eszköz UUID-azonosítóját `blkid <device name>` . Példa:
 
    ```shell
    blkid /dev/sda1
@@ -573,6 +573,6 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     `./install -d /usr/local/ASR -r MS -q -v Azure`
 6. Ha a telepítő sikeres, próbálkozzon újra a replikációs feladat engedélyezése lehetőséggel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-beli virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)
