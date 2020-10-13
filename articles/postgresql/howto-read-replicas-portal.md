@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: 08d1d393b4ba52e6feeb36c0538f2664e1407d38
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708288"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
@@ -39,7 +39,7 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 
 2. A kiszolgáló menüjében válassza a **replikálás**lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika**, létrehozhat olvasási replikákat. 
 
-3. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Válassza a **Mentés** lehetőséget.
+3. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL – replikálás – replika beállítása és mentés":::
 

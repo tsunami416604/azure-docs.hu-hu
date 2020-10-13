@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban a Azure Portal használatával méretezhet
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: e1226eb98607a34869bda1f998c7cecea2e50919
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254414"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás – saját felhő méretezése
@@ -32,7 +32,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy privát felhőre. Ha még ne
 
 1. A **fürt hozzáadása** lapon a csúszka segítségével válassza ki a gazdagépek számát. Kattintson a **Mentés** gombra.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="A fürt hozzáadása lapon a csúszka segítségével válassza ki a gazdagépek számát. Válassza a mentés lehetőséget." border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Válassza a fürt hozzáadása lehetőséget" border="true":::
 
    Ekkor megkezdődik az új fürt üzembe helyezése.
 
@@ -40,15 +40,15 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy privát felhőre. Ha még ne
 
 1. Egy meglévő privát felhő áttekintés lapján válassza a **privát felhő méretezése** lehetőséget, és a ceruza ikont választva szerkessze a fürtöt.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="A privát felhő méretezése az Áttekintés lapon" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Válassza a fürt hozzáadása lehetőséget" border="true":::
 
 1. A **fürt szerkesztése** lapon a csúszka segítségével válassza ki a gazdagépek számát. Kattintson a **Mentés** gombra.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="A fürt szerkesztése lapon a csúszka segítségével válassza ki a gazdagépek számát. Válassza a mentés lehetőséget." border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="Válassza a fürt hozzáadása lehetőséget" border="true":::
 
    Elindul a gazdagépek hozzáadása a fürthöz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szüksége van egy másik Azure VMware-megoldás saját felhőre, [hozzon létre egy másik privát felhőt](tutorial-create-private-cloud.md), amely a hálózat előfeltételeit, a fürt és a gazdagép korlátait követi.
 

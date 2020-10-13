@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - contperfq1
 ms.openlocfilehash: 720d8f3b1f3d13427cda56ee68596d190ac40dc7
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767319"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
@@ -283,7 +283,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT Hub a `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Például:
+A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT Hub a `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Példa:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -370,7 +370,7 @@ A következő szakasz azt ismerteti, hogyan frissíti az eszköz a jelentett tul
 
 3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben: `$iothub/twin/res/{status}/?$rid={request id}` . Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
 
-A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy tag, amely `null` törli a tagot a befoglaló objektumból. Például:
+A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy tag, amely `null` törli a tagot a befoglaló objektumból. Példa:
 
 ```json
 {
@@ -408,7 +408,7 @@ További információ: az [eszközök ikrek fejlesztői útmutatója](iot-hub-de
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}` , amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Például:
+Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}` , amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Példa:
 
 ```json
 {

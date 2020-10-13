@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276857"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure SSIS integrációs modul létrehozása Azure Data Factory
@@ -79,7 +79,7 @@ Azon Azure-régiók listájáért, amelyekben Data Factory és Azure-SSIS IR el�
 
 Az alábbi táblázat összehasonlítja egy Azure SQL Database-kiszolgáló és az SQL felügyelt példány bizonyos funkcióit, amelyek az Azure-SSIR IR-hez kapcsolódnak:
 
-| Funkció | SQL Database| SQL felügyelt példány |
+| Szolgáltatás | SQL Database| SQL felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | A SQL Server Agent nem érhető el.<br/><br/>Lásd: [csomagok végrehajtásának ütemezett Data Factory folyamata](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| A felügyelt példány ügynöke elérhető. |
 | **Hitelesítés** | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adat-előállító felügyelt identitásával rendelkező Azure AD-csoportot az **db_owner** szerepkör tagjaként.<br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához Azure SQL Database kiszolgálón](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adatelőállító felügyelt identitását képviseli. <br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához az Azure SQL felügyelt példányában](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -274,7 +274,7 @@ Az **Integration Runtime telepítési** paneljének **Speciális beállítások*
       
          1. A **második statikus nyilvános IP-cím**mezőben válassza ki a második statikus nyilvános IP-címet, amely megfelel a Azure-SSIS IR követelményeinek. Ha nincs, kattintson az új hivatkozás **létrehozása** lehetőségre statikus nyilvános IP-címek létrehozásához Azure Portalon, majd kattintson a frissítés gombra itt, így kiválaszthatja őket.
 
-   1. Jelölje be a saját üzemeltetésű **Integration Runtime beállítása proxyként a Azure-SSIS Integration Runtime** jelölőnégyzetet annak kiválasztásához, hogy egy saját üzemeltetésű IR-t kíván-e konfigurálni a Azure-SSIS IRhoz. További információ: saját üzemeltetésű integrációs modul [beállítása proxyként](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
+   1. Jelölje be a **Self-Hosted Integration Runtime beállítása proxyként a Azure-SSIS Integration Runtime** jelölőnégyzetet annak kiválasztásához, hogy az Azure-SSIS IR saját üzemeltetésű integrációs modult szeretne-e konfigurálni. További információ: saját üzemeltetésű integrációs modul [beállítása proxyként](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
 
       Ha bejelöli a jelölőnégyzetet, hajtsa végre a következő lépéseket.
 

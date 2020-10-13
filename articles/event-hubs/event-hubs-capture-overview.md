@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt a capture szolgáltatásról, amely 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613407"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Események rögzítése Azure-Event Hubs az Azure-ban Blob Storage vagy Azure Data Lake Storage
@@ -136,7 +136,7 @@ A rögzítés nem használja fel a kimenő forgalomra vonatkozó kvótát, mivel
 
 Létrehozhat egy Azure Event Grid-előfizetést egy Event Hubs névtér forrásaként. A következő oktatóanyag azt mutatja be, hogyan hozhat létre egy Event Grid-előfizetést egy Event hub forrásként és egy Azure Functions alkalmazásként fogadóként: [feldolgozhatja és áttelepítheti a rögzített Event Hubs-adatforrásokat egy Azure szinapszis analyticsbe Event Grid és Azure functions használatával](store-captured-data-data-warehouse.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Event Hubs Capture az Azure-ba való adatgyűjtésének legegyszerűbb módja. A Azure Data Lake, a Azure Data Factory és az Azure HDInsight használatával kötegelt feldolgozást és egyéb elemzéseket végezhet a választott eszközök és platformok használatával, bármilyen méretezéssel.
 
 Ismerje meg, hogyan engedélyezheti ezt a funkciót a Azure Portal és a Azure Resource Manager sablonnal:

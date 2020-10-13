@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/07/2020
 ms.openlocfilehash: 19fe3ecd3b8127c50ef90ef8195afbf14b04509b
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839333"
 ---
 # <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>Átviteli sebesség (RU/s) műveletek az Azure CLI-vel Azure Cosmos DB Table API
@@ -47,7 +47,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb Table átviteli sebesség migrálása](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | Áttelepítheti az átviteli sebességet egy Azure Cosmos Table API-táblához. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e3dce20f447b47ad78deea617b513c50f552733
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848807"
+ms.locfileid: "91893628"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -43,6 +43,38 @@ A lekérdezésben több "Top" elemet is kijelölhet a `Select TOP` záradék has
 SELECT TOP (5)
 FROM DIGITALTWINS
 WHERE ...
+```
+
+### <a name="count-items"></a>Elemek darabszáma
+
+A következő záradék használatával megszámolhatja az ikrek számát az eredményhalmazban `Select COUNT` :
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS
+``` 
+
+Adjon hozzá egy `WHERE` záradékot az olyan ikrek számának megszámlálásához, amelyek megfelelnek egy adott feltételnek. Íme néhány példa az alkalmazott szűrővel való számlálásra az iker modell típusa alapján (a szintaxissal kapcsolatban bővebben lásd az alábbi [*modell szerinti lekérdezést*](#query-by-model) ):
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') 
+SELECT COUNT() 
+FROM DIGITALTWINS c 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
+```
+
+Emellett `COUNT` a záradékkal együtt is használható `JOIN` . Itt látható egy olyan lekérdezés, amely az 1. és 2. szoba világos panelén található összes villanykörtét számlálja:
+
+```sql
+SELECT COUNT(LightBulb)  
+FROM DIGITALTWINS Room  
+JOIN LightPanel RELATED Room.contains  
+JOIN LightBulb RELATED LightPanel.contains  
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
+AND Room.$dtId IN ['room1', 'room2'] 
 ```
 
 ### <a name="query-by-property"></a>Lekérdezés tulajdonság szerint

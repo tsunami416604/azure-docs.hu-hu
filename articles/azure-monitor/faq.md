@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760253"
+ms.locfileid: "91893764"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -322,7 +322,6 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 * Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan lesznek begyűjtve Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
 
-
 Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
@@ -398,6 +397,29 @@ Minden továbbított tétel egy olyan `itemCount` tulajdonságot hordoz, amely a
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Hogyan egy Application Insights erőforrást egy új régióba?
+
+A meglévő Application Insights erőforrások egyik régióból a másikba való áthelyezése **jelenleg nem támogatott**. Az összegyűjtött korábbi adatok **nem telepíthetők át** új régióba. Az egyetlen részleges Áthidaló megoldás a következő:
+
+1. Új Application Insights-erőforrás létrehozása ([klasszikus](app/create-new-resource.md) vagy [munkaterület-alapú](/app/create-workspace-resource.md)) az új régióban.
+2. Hozza létre újra az új erőforrás eredeti erőforrásához tartozó összes egyedi testreszabást.
+3. Módosítsa az alkalmazást úgy, hogy az új régió-erőforrás kialakítási [kulcsát](app/create-new-resource.md#copy-the-instrumentation-key) vagy a [kapcsolódási karakterláncot](app/sdk-connection-string.md)használja.  
+4. Ellenőrizze, hogy minden továbbra is a várt módon működik-e az új Application Insights erőforrással. 
+5. Ezen a ponton törölheti az eredeti erőforrást, amely az **összes korábbi adatvesztést**eredményezi. Vagy megtarthatja az eredeti erőforrást az adatmegőrzési beállítások időtartamára visszamenőleges jelentéskészítés céljából.
+
+Az új régióban az erőforráshoz gyakran manuálisan újra létre kell hozni vagy frissíteni kell az egyedi testreszabásokat, amelyek azonban nem korlátozódnak a következőkre:
+
+- Hozza létre újra az egyéni irányítópultokat és munkafüzeteket. 
+- Hozza létre újra vagy frissítse az egyéni log/metrikus riasztások hatókörét. 
+- Rendelkezésre állási riasztások újbóli létrehozása.
+- Hozza létre újra a felhasználók számára az új erőforrás eléréséhez szükséges egyéni Role-Based-Access Control (RBAC) beállításokat. 
+- Replikálja a betöltési mintavételezést, az adatmegőrzést, a napi korlátot és az egyéni metrikák engedélyezését érintő beállításokat. Ezeket a beállításokat a **használati és becsült költségek** panelen szabályozhatja.
+- Minden olyan integráció, amely az API-kulcsokra támaszkodik, például a [kibocsátási jegyzetek](/app/annotations.md), az [élő metrika biztonságos vezérlési csatornája](app/live-stream.md#secure-the-control-channel) stb. Új API-kulcsokat kell létrehoznia, és frissítenie kell a társított integrációt. 
+- A klasszikus erőforrások folyamatos exportálását újra kell konfigurálni.
+- A munkaterület-alapú erőforrások diagnosztikai beállításait újra kell konfigurálni.
+
+> [!NOTE]
+> Ha egy új régióban létrehozott erőforrás lecserél egy klasszikus erőforrást, javasoljuk, hogy vizsgálja meg az [Új munkaterület-alapú erőforrás létrehozásának](app/create-workspace-resource.md) előnyeit, vagy [a meglévő erőforrást a munkaterület-alapú áttelepítéssel](app/convert-classic-resource.md). 
 
 ### <a name="automation"></a>Automation
 

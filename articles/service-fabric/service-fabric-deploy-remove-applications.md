@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan távolíthat el és helyezhet üzembe alkalmaz�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827420"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Alkalmazások telepítése és eltávolítása a PowerShell használatával
@@ -314,7 +314,7 @@ Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>A copy-ServiceFabricApplicationPackage ImageStoreConnectionString kér
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage kér egy ImageStoreConnectionString
 
 A Service Fabric SDK-környezetnek már meg kell határoznia a megfelelő alapértelmezett beállításokat. Ha azonban szükség van rá, az összes parancs ImageStoreConnectionString meg kell egyeznie a Service Fabric-fürt által használt értékkel. A ImageStoreConnectionString megkeresheti a fürt jegyzékfájljában, a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) és a Get-ImageStoreConnectionStringFromClusterManifest parancs használatával:
 

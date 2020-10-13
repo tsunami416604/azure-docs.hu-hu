@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
 ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91759086"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
@@ -50,7 +50,7 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Kanada                              | CA        | CAD          |
 | Kajmán-szigetek                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Kína\**                            | CN        | N/A          |
+| Kína\**                            | CN        | N.A.          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
 | Côte d'Ivoire                       | CI        | USD          |
@@ -196,7 +196,7 @@ Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért te
 
 - [Azure-alkalmazásajánlat létrehozása](partner-center-portal/create-new-azure-apps-offer.md)
 - [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md)
-- [Azure-beli virtuális gép ajánlatának létrehozása](partner-center-portal/azure-vm-create-offer.md)
+- [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](partner-center-portal/azure-vm-create-offer.md)
 - [Tanácsadási szolgáltatásajánlat létrehozása](partner-center-portal/create-consulting-service-offer.md)
 - [Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations-ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)

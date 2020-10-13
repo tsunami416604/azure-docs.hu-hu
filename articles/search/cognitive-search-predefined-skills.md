@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535525"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Beépített kognitív képességek a szöveg-és képfeldolgozáshoz az indexelés során (Azure Cognitive Search)
@@ -53,7 +53,7 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 
 Az [egyéni képességek](cognitive-search-custom-skill-web-api.md)létrehozásával kapcsolatos útmutatásért lásd: [Egyéni felület definiálása](cognitive-search-custom-skill-interface.md) és [példa: egyéni képesség létrehozása AI](cognitive-search-create-custom-skill-example.md)-bővítéshez.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Egyéni képességek kezelőfelületének definíciója](cognitive-search-custom-skill-interface.md)

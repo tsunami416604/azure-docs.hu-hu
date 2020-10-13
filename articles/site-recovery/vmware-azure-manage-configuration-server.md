@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361483"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware virtuális gép/fizikai kiszolgáló vészhelyreállítási konfigurációs kiszolgálójának kezelése
@@ -164,7 +164,7 @@ Ha szükséges, a konfigurációs kiszolgáló újraregisztrálása ugyanabban a
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Például:
+A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Példa:
 
 - Ha 9,7, 9,8, 9,9 vagy 9,10-et futtat, közvetlenül is frissítheti a 9,11-es verzióra.
 - Ha a 9,6-es vagy korábbi verzióját futtatja, és a 9,11-re szeretne frissíteni, először frissítenie kell az 9,7-es verzióra. 9,11 előtt.
@@ -212,7 +212,7 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Típus | Description| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
 | /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
@@ -287,7 +287,7 @@ A konfigurációs kiszolgálót szükség esetén a PowerShell használatával i
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> A Remove-AzSiteRecoveryFabric használatával a konfigurációs kiszolgáló kényszerített törlésére használhatja a **-Force** kapcsolót.
+> A konfigurációs kiszolgáló kényszerített törléséhez használhatja a Remove-AzSiteRecoveryFabric a **-Force** kapcsolót.
 
 ## <a name="generate-configuration-server-passphrase"></a>Konfigurációs kiszolgáló jelszavainak előállítása
 

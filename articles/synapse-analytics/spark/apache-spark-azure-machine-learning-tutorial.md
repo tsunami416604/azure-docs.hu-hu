@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
 ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540506"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Oktatóanyag: kísérletek futtatása az Azure automatizált ML és Apache Spark használatával
@@ -341,6 +341,6 @@ Végül az iterációk eredményeinek eléréséhez navigáljon a Azure Machine 
 
 ![A pénzmosás-munkaterület képernyőképe.](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-aml-workspace.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark MLlib-oktatóanyag](./apache-spark-machine-learning-mllib-notebook.md)

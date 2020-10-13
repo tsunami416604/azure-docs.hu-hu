@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes Service (ak) támogatási szabályz
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888978"
+ms.locfileid: "91892710"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -130,8 +130,7 @@ A NSG csak egyéni alhálózatokon lehet testreszabni. A NSG nem szabhatók test
 
 ## <a name="stopped-or-de-allocated-clusters"></a>Leállított vagy kiosztott fürtök
 
-Az IaaS API-k/CLI/portál használatával manuálisan, a fürt összes csomópontjának kiosztása után a fürt támogatása nem támogatott.
-Az egyetlen támogatott módszer az összes csomópont leállítása/lefoglalása [az AK-fürt leállítása, amely akár 12 hónapig is megőrzi a fürt állapotát.
+Ahogy korábban már említettük, a IaaS API-k/CLI/portál használatával manuálisan, az összes fürtcsomópont kiosztásával a fürt kikerül a támogatásból. Az egyetlen támogatott mód az összes csomópont leállítására/lefoglalására az [AK-fürt leállítása](start-stop-cluster.md#stop-an-aks-cluster), amely akár 12 hónapig is megőrzi a fürt állapotát.
 
 A több mint 12 hónapig leállított fürtök többé nem őrzik meg az állapotot. 
 

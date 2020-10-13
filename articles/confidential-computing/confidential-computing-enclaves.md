@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
 ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995857"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure bizalmas számítástechnikai virtuális gépek (VM) – áttekintés
@@ -48,5 +48,5 @@ Az alkalmazások fejlesztése során a [szoftvereszközök](application-developm
 
 ## <a name="next-steps"></a>Következő lépések
 - A megoldások Azure bizalmas számítástechnikai virtuális gépeken való üzembe helyezésére vonatkozó [ajánlott eljárások beolvasása](virtual-machine-solutions.md) .
-- [DCsv2-sorozatú virtuális gép üzembe helyezése](quick-create-portal.md)
+- [DCsv2-Series virtuális gép üzembe helyezése](quick-create-portal.md)
 - [Enklávé-kompatibilis alkalmazás fejlesztése](application-development.md) az OE SDK használatával

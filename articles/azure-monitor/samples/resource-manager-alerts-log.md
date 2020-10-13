@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
 ms.openlocfilehash: f3e965b1141bb7cf49b191c828b7dd0f3ed3fba8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278362"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor naplózási riasztási szabályaihoz
@@ -478,7 +478,7 @@ Az alábbi minta egy olyan szabályt hoz létre, amely bármilyen erőforrást c
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 * [További információ a riasztási szabályokról](../platform/alerts-overview.md).

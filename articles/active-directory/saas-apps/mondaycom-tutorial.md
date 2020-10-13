@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2128559d8074281c1019d99e1316da34c7ec6797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3d5de27a2d9ce5060ff4bfe71c595512658e58
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554600"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a monday.com
 
@@ -88,14 +88,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. A metaadat-fájl feltöltése után a rendszer az alapszintű SAML-konfiguráció szakaszban automatikusan feltölti az **azonosítót** és a **Válasz URL-** értékeket.
 
-    ![image](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     > [!Note]
     > Ha az **azonosító** és a **Válasz URL-címe** nem lesz automatikusan feltöltve, akkor manuálisan adja meg az értékeket. Az **azonosító** és a **Válasz URL-címe** azonos, és az érték a következő mintában van: `https://<your-domain>.monday.com/saml/saml_callback`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<YOUR_DOMAIN>.monday.com`
 
@@ -104,11 +104,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. a monday.com alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/default-attributes.png)
+    ![Képernyőfelvétel: felhasználói attribútumok & alapértelmezett értékekkel rendelkező jogcímek, például givenName user. givenName és EmailAddress user. mail.](common/default-attributes.png)
 
 1. A fentiek mellett a monday.com alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum |
+    | Name (Név) | Forrás attribútum |
     |--|--|
     | E-mail | User. mail |
     | FirstName | User. givenName |
@@ -132,7 +132,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -166,15 +166,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Nyissa meg a **profilt** a lap jobb felső sarkában, és kattintson a **rendszergazda**elemre.
 
-    ![monday.com-konfiguráció](./media/mondaycom-tutorial/configuration01.png)
+    ![Képernyőfelvétel: a kiválasztott rendszergazdai profil.](./media/mondaycom-tutorial/configuration01.png)
 
 1. Válassza a **Biztonság** lehetőséget, és kattintson az SAML elem melletti **Megnyitás** gombra.
 
-    ![monday.com-konfiguráció](./media/mondaycom-tutorial/configuration02.png)
+    ![Képernyőfelvétel: a Security (biztonság) lap, amely az SAML elem mellett nyílik meg.](./media/mondaycom-tutorial/configuration02.png)
 
 1. Adja meg az alábbi adatokat a IDENTITÁSSZOLGÁLTATÓ.
 
-    ![monday.com-konfiguráció](./media/mondaycom-tutorial/configuration03.png)
+    ![Képernyőfelvétel: az SAML-szolgáltató, amelyen megadhatja az adatokat az I D P-ből.](./media/mondaycom-tutorial/configuration03.png)
 
     > [!NOTE]
     > További részletekért tekintse meg [ezt](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) a cikket

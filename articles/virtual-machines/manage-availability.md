@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11444fc599b46ceff90eda562d2fd557bcaf53b2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361789"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961340"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux rendszerű virtuális gépek rendelkezésre állásának kezelése
 
@@ -22,7 +22,7 @@ Ismerje meg, hogyan állíthat be és kezelhet több virtuális gépet az Azure-
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
 
-* **Nem tervezett hardverkarbantartási esemény** akkor fordul elő, ha az Azure platform előre jelzi, hogy egy adott fizikai kiszolgálóhoz tartozó hardver vagy bármely platformösszetevő meg fog hibásodni. Amikor a platform előre jelez egy hibát, kiad egy nem tervezett hardverkarbantartási eseményt az adott hardveren futtatott virtuális gépekre gyakorolt hatás csökkentése érdekében. Az Azure [élő áttelepítés](./linux/maintenance-and-updates.md) technológiával telepíti át a Virtual Machinest a hibás hardverről egy kifogástalan fizikai gépre. Az Élő áttelepítés a virtuális gépet megőrző művelet, amely csak minimális időre állítja le a virtuális gépet. A memória tartalmát, a megnyitott fájlokat és a hálózati kapcsolatokat mind megőrzi, azonban a teljesítmény az esemény előtt és/vagy után csökkenhet. Ha az Élő áttelepítés nem használható, a virtuális gépen váratlan állásidő következik be az alábbiak szerint.
+* **Nem tervezett hardverkarbantartási esemény** akkor fordul elő, ha az Azure platform előre jelzi, hogy egy adott fizikai kiszolgálóhoz tartozó hardver vagy bármely platformösszetevő meg fog hibásodni. Amikor a platform előre jelez egy hibát, kiad egy nem tervezett hardverkarbantartási eseményt az adott hardveren futtatott virtuális gépekre gyakorolt hatás csökkentése érdekében. Az Azure [élő áttelepítés](./maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252flinux%252ftoc.json) technológiával telepíti át a Virtual Machinest a hibás hardverről egy kifogástalan fizikai gépre. Az Élő áttelepítés a virtuális gépet megőrző művelet, amely csak minimális időre állítja le a virtuális gépet. A memória tartalmát, a megnyitott fájlokat és a hálózati kapcsolatokat mind megőrzi, azonban a teljesítmény az esemény előtt és/vagy után csökkenhet. Ha az Élő áttelepítés nem használható, a virtuális gépen váratlan állásidő következik be az alábbiak szerint.
 
 
 * **Váratlan leállás** esetén a virtuális gép hardvere vagy fizikai infrastruktúrája váratlanul leáll. Ebbe beletartozhatnak a helyi hálózati hibák, a helyi lemezek meghibásodása vagy más rack-szintű hibák. Ha a rendszer észleli, az Azure platform automatikusan áttelepíti (meggyógyítja) a virtuális gépet egy olyan kifogástalan fizikai gépre, amely ugyanabban az adatközpontban található. A javítási folyamat során a virtuális gép állásideje következik be (újraindítás), valamint bizonyos esetekben elveszhet az ideiglenes meghajtó. A csatlakoztatott rendszer- és adatmeghajtók minden esetben megmaradnak.
@@ -94,7 +94,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 >
 > Ilyen körülmények között előfordulhat, hogy a második virtuális gép operációsrendszer-lemeze ugyanazon a tartalék tartományon jön létre, mint az első virtuális gép, így a két virtuális gép ugyanazon a tartalék tartományban lesz. A probléma elkerülése érdekében javasoljuk, hogy ne állítson le/szabadítson fel virtuális gépeket az üzemelő példányok között.
 
-Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
+Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
 
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
 2. **Tekintse át az Azure Storage-fiókban nem felügyelt lemezek számának [korlátozásait](../storage/blobs/scalability-targets-premium-page-blobs.md) ** , mielőtt további virtuális merevlemezeket adna hozzá egy Storage-fiókhoz

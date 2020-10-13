@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567418"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
@@ -90,7 +90,7 @@ További információ: csoportok és [Microsoft 365 csoportok és Microsoft Team
 
     Miután kiválasztotta a csoportot vagy a csapatot, az **altípus** oszlopban a következő altípusok egyike jelenik meg:
 
-    | Altípus | Description |
+    | Altípus | Leírás |
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
     | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |

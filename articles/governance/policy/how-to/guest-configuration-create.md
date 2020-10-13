@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728930"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893118"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -88,7 +88,7 @@ Ha a vendég konfigurációja naplóz egy gépet, az események sorozatából k�
 
 Az Azure Policyban található paramétereknek _karakterlánc_ típusúnak kell lenniük a vendég konfigurációs hozzárendeléseinek. Nem lehet paramétereken keresztül átadni a tömböket, még akkor is, ha a DSC-erőforrás támogatja a tömböket.
 
-### <a name="get-targetresource-requirements"></a>A Get-TargetResource követelményei
+### <a name="get-targetresource-requirements"></a>Get-TargetResource követelmények
 
 A függvény `Get-TargetResource` speciális követelményekkel rendelkezik a Windows kívánt állapotának konfigurálásához nem szükséges vendég-konfigurációhoz.
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-A konfigurációs csomag létrehozása után, de az Azure-ba való közzététel előtt tesztelheti a csomagot a munkaállomás vagy CI/CD-környezetből. A GuestConfiguration parancsmag `Test-GuestConfigurationPackage` ugyanazt az ügynököt tartalmazza a fejlesztői környezetben, mint amelyet az Azure-gépeken belül használ. Ezzel a megoldással helyileg végezheti el az integrációs tesztelést, mielőtt kiadná a számlázott felhőalapú környezeteket.
+A konfigurációs csomag létrehozása után, de az Azure-ba való közzététel előtt tesztelheti a csomagot a munkaállomás vagy a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) környezetből. A GuestConfiguration parancsmag `Test-GuestConfigurationPackage` ugyanazt az ügynököt tartalmazza a fejlesztői környezetben, mint amelyet az Azure-gépeken belül használ. Ezzel a megoldással helyileg végezheti el az integrációs tesztelést, mielőtt kiadná a számlázott felhőalapú környezeteket.
 
 Mivel az ügynök ténylegesen kiértékeli a helyi környezetet, a legtöbb esetben a test-parancsmagot ugyanarra az operációsrendszer-platformra kell futtatnia, mint a naplózást. A teszt csak a tartalmi csomagban található modulokat használja.
 
@@ -233,7 +233,7 @@ A parancsmag a PowerShell-folyamatból is támogatja a bemenetet. A parancsmag k
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-A következő lépés a fájl közzététele a blob Storage-ban. Az alábbi szkript a feladat automatizálásához használható függvényt tartalmaz. A függvényben használt parancsokhoz a `publish` `Az.Storage` modul szükséges.
+A következő lépés a fájl közzététele az Azure Blob Storageban. Az alábbi szkript a feladat automatizálásához használható függvényt tartalmaz. A függvényben használt parancsokhoz a `publish` `Az.Storage` modul szükséges.
 
 ```azurepowershell-interactive
 function publish {
@@ -602,7 +602,7 @@ Egy eszköz előzetes verzióban érhető el, amely segítséget nyújt az Azure
 
 Az eszköz parancsmagokkal kapcsolatos további információkért használja a PowerShell Get-Help parancsát a beépített útmutatás megjelenítéséhez. Mivel az eszköz gyakori frissítéseket kap, ez a legjobb módszer a legfrissebb információk beszerzésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
 - Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](./programmatically-create.md).

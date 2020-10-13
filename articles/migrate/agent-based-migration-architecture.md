@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357165"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
@@ -115,7 +115,7 @@ Ha egy kibővíthető folyamat-kiszolgálót kell üzembe helyeznie, használja 
 
 Az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad át. A feltöltési sebességet korlátozhatja a folyamat-kiszolgálóként futó gépek sávszélességének szabályozásával. A következő beállításkulcs használatával befolyásolhatja a sávszélességet:
 
-- A HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\Replication\UploadThreadsPerVM beállításazonosító megadja a lemez adatátviteli (kezdeti vagy különbözeti replikációja) által használt szálak számát. A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet. Az alapértelmezett érték négy. A maximális érték 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
+- A HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM beállításazonosító meghatározza, hogy hány szálat kell használni a lemez adatátviteléhez (a kezdeti vagy a különbözeti replikációhoz). A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet. Az alapértelmezett érték négy. A maximális érték 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
 - Emellett a következő módon szabályozhatja a sávszélességet a Process Server-gépen:
 
     1. A Process Server gépen nyissa meg az Azure Backup MMC beépülő modult. Parancsikon található az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 

@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan bővítheti Service 
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: a6777743932f3cc73db973c4d9935d4b5827700b
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410440"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Oktatóanyag: Service Fabric felügyelt fürt felskálázása (előzetes verzió)
@@ -47,7 +47,7 @@ Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroup -ClusterNam
 
 A fürt automatikusan megkezdi a frissítését, és néhány perc múlva látni fogja a további csomópontokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a lépésben egy csomópont-típust méretezett egy Service Fabric felügyelt fürtön. A csomópont-típusok hozzáadásával és eltávolításával kapcsolatos további tudnivalókért tekintse meg a következőt:
 

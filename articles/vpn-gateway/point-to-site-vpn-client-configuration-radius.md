@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440066"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése P2S RADIUS-hitelesítéshez
@@ -43,7 +43,7 @@ A cikk fejezeteinek használatához először döntse el, hogy milyen típusú h
 
 A Felhasználónév/jelszó hitelesítést a Active Directory használatára vagy nem a Active Directory használatára is konfigurálhatja. Mindkét esetben győződjön meg arról, hogy az összes csatlakozó felhasználónak van felhasználóneve/jelszó hitelesítő adatai, amelyek a RADIUS használatával hitelesíthetők.
 
-A Felhasználónév/jelszó hitelesítés konfigurálásakor csak az EAP-MSCHAPv2 username/Password hitelesítési protokoll konfigurációját lehet létrehozni. A parancsokban a `-AuthenticationMethod` `EapMSChapv2` .
+A Felhasználónév/jelszó hitelesítés konfigurálásakor csak a EAP-MSCHAPv2 username/Password hitelesítési protokoll konfigurációját lehet létrehozni. A parancsokban a `-AuthenticationMethod` `EapMSChapv2` .
 
 ### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. VPN-ügyfél konfigurációs fájljainak előállítása
 
@@ -130,7 +130,7 @@ A következő lépésekkel konfigurálhatja a natív Windows VPN-ügyfelet a tan
 6. A profil telepítése során lehetősége van a VPN-hitelesítés felhasználónevének és jelszavának megadására. Ezt az információt nem kötelező megadni. Ha így tesz, a rendszer menti az adatokat, és automatikusan használja a kapcsolatok indításakor.A folytatáshoz válassza a **telepítés** lehetőséget.
 
    ![A VPN-hez tartozó Felhasználónév és jelszó mezők](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-7. Adja meg a profil telepítéséhez szükséges jogosultságok felhasználónevét és jelszavát a számítógépén. Válassza az **OK** lehetőséget.
+7. Adja meg a profil telepítéséhez szükséges jogosultságok felhasználónevét és jelszavát a számítógépén. Kattintson az **OK** gombra.
 
    ![A profil telepítéséhez használt Felhasználónév és jelszó mezők](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
 8. A profil telepítése után ez látható a **profilok** párbeszédpanelen. Ezt a párbeszédpanelt később is megnyithatja a **Rendszerbeállítások**közül.
@@ -265,7 +265,7 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet Mac számít�
 
 ## <a name="working-with-other-authentication-types-or-protocols"></a><a name="otherauth"></a>Más hitelesítési típusok vagy protokollok használata
 
-Ha más hitelesítési típust (például OTP) szeretne használni, vagy más hitelesítési protokollt (például PEAP-MSCHAPv2 EAP-MSCHAPv2 helyett) szeretne használni, létre kell hoznia a saját VPN-ügyfél konfigurációs profilját. A profil létrehozásához olyan információra van szüksége, mint például a virtuális hálózati átjáró IP-címe, az alagút típusa és a felosztott alagút útvonala. Ezt az információt a következő lépésekkel érheti el:
+Ha más hitelesítési típust (például OTP) szeretne használni, vagy más hitelesítési protokollt szeretne használni (például az EAP-MSCHAPv2 helyett az PEAP-MSCHAPv2-t), létre kell hoznia a saját VPN-ügyfél konfigurációs profilját. A profil létrehozásához olyan információra van szüksége, mint például a virtuális hálózati átjáró IP-címe, az alagút típusa és a felosztott alagút útvonala. Ezt az információt a következő lépésekkel érheti el:
 
 1. A `Get-AzVpnClientConfiguration` EapMSChapv2 VPN-ügyfél konfigurációjának létrehozásához használja a parancsmagot.
 

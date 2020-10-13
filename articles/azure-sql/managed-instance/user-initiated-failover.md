@@ -11,10 +11,10 @@ ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
 ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617757"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
@@ -125,7 +125,7 @@ A műveleti állapot nyomon követhető az API-válaszok áttekintésével a vá
 
 ## <a name="monitor-the-failover"></a>A feladatátvétel figyelése
 
-A felhasználó által kezdeményezett manuális feladatátvétel előrehaladásának figyeléséhez futtassa az alábbi T-SQL-lekérdezést a kedvenc ügyfelén (például SSMS) az SQL felügyelt példányán. A rendszer beolvassa a rendszernézet sys. dm_hadr_fabric_replica_states és a példányon elérhető jelentések replikáit. A manuális feladatátvétel megkezdése után frissítse ugyanazt a lekérdezést.
+A felhasználó által kezdeményezett manuális feladatátvétel előrehaladásának figyeléséhez futtassa az alábbi T-SQL-lekérdezést a kedvenc ügyfelén (például SSMS) az SQL felügyelt példányán. A rendszer beolvassa a példányon elérhető rendszernézet sys.dm_hadr_fabric_replica_states és jelentés replikáit. A manuális feladatátvétel megkezdése után frissítse ugyanazt a lekérdezést.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -144,7 +144,7 @@ Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mi
 > - BC-példányok esetében léteznie kell a feladatátvételi kérelem elfogadásához szükséges replikák Kvórumának.
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a felügyelt példány magas rendelkezésre állásáról [Az Azure SQL felügyelt példányain](../database/high-availability-sla.md).
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).

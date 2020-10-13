@@ -4,10 +4,10 @@ description: A másolási művelettel egy Azure Resource Manager sablonban több
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90605243"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
@@ -258,7 +258,7 @@ Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tul
 |---------|---------|
 |[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonok használatával](template-tutorial-create-multiple-instances.md)című témakört.
 * A másolási elem egyéb felhasználási módjaiért lásd:

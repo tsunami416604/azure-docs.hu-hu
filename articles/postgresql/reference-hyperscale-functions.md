@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250331"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Függvények a nagy kapacitású (Citus) SQL API-ban
@@ -363,7 +363,7 @@ N.A.
 
 #### <a name="return-value"></a>Visszatérési érték
 
-Nincsenek
+Nincs
 
 ## <a name="server-group-management-and-repair"></a>Kiszolgálócsoport-kezelés és-javítás
 

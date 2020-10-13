@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
 ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540931"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
@@ -79,6 +79,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 
 Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja](luis-how-to-train.md) és [közzéteszi](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre legyenek alkalmazva. Ne végezze el a betanítást minden egyes módosítás után. Betanítás egy csoport módosítása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) az entitásokkal való hozzáadásáról.

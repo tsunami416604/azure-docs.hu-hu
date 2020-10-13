@@ -4,10 +4,10 @@ description: Konfigurálja az IP-szabályokat úgy, hogy engedélyezze az Azure 
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488762"
 ---
 # <a name="configure-public-ip-network-rules"></a>Nyilvános IP-hálózati szabályok konfigurálása
@@ -49,7 +49,7 @@ az acr network-rule add \
 1. A **Beállítások**területen válassza a **hálózatkezelés**lehetőséget.
 1. A **nyilvános hozzáférés** lapon válassza a lehetőséget, hogy engedélyezze a nyilvános hozzáférést a **kiválasztott hálózatokból**.
 1. A **tűzfal**területen adjon meg egy nyilvános IP-címet, például egy virtuális gép nyilvános IP-címét. Vagy adjon meg egy címtartományt a CIDR-jelölésben, amely a virtuális gép IP-címét tartalmazza.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ![Tűzfalszabály konfigurálása a tároló-beállításjegyzékhez][acr-access-selected-networks]
 
@@ -77,7 +77,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Ez után válassza a **Mentés** lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
 
 ![Nyilvános hozzáférés letiltása][acr-access-disabled]
 
@@ -100,7 +100,7 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Nyilvános hozzáférés visszaállítása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **minden hálózat**lehetőséget. Ez után válassza a **Mentés** lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **minden hálózat**lehetőséget. Kattintson a **Mentés** gombra.
 
 ![Nyilvános hozzáférés az összes hálózatról][acr-access-all-networks]
 

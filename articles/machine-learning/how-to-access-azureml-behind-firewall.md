@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604410"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
@@ -95,10 +95,10 @@ A Azure Government-régiókhoz szükséges URL-címek.
 
 | **Állomásnév** | **Cél** |
 | ---- | ---- |
-| **usgovarizona.api.ml.azure.us** | Az USA – Arizona régió |
-| **usgovvirginia.api.ml.azure.us** | Az USA-Virginia régió |
+| **usgovarizona.api.ml.azure.us** | Az US-Arizona régió |
+| **usgovvirginia.api.ml.azure.us** | Az US-Virginia régió |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](../firewall/tutorial-firewall-deploy-portal.md)
 * [Biztonságos Azure ML-kísérletezés és következtetési feladatok egy Azure-beli virtuális hálózaton belül](how-to-network-security-overview.md)

@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761797"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása a ExpressRoute-hez a Azure Portal használatával
@@ -71,8 +71,8 @@ A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit]
     | --------| ----- |
     | Előfizetés | Ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. |
     | Erőforráscsoport | Ha kiválasztja a virtuális hálózatot, az erőforráscsoport automatikusan lesz kiválasztva. | 
-    | Name (Név) | Nevezze el az átjárót. Ez nem ugyanaz, mint az átjáró alhálózatának elnevezése. Ez a létrehozandó átjáró-objektum neve.|
-    | Régió | Módosítsa a **régió** mezőt úgy, hogy arra a helyre mutasson, ahol a virtuális hálózat található. Ha a hely nem arra a régióra mutat, ahol a virtuális hálózata, a virtuális hálózat nem jelenik meg a virtuális hálózat választása legördülő menüben. |
+    | Név | Nevezze el az átjárót. Ez nem ugyanaz, mint az átjáró alhálózatának elnevezése. Ez a létrehozandó átjáró-objektum neve.|
+    | Region | Módosítsa a **régió** mezőt úgy, hogy arra a helyre mutasson, ahol a virtuális hálózat található. Ha a hely nem arra a régióra mutat, ahol a virtuális hálózata, a virtuális hálózat nem jelenik meg a virtuális hálózat választása legördülő menüben. |
     | Átjáró típusa | **ExpressRoute** kiválasztása|
     | SKU | Válassza ki az átjáró SKU-t a legördülő listából. |
     | Virtuális hálózat | Válassza a *TestVNet*lehetőséget. |
@@ -89,7 +89,7 @@ Ha már nincs szüksége a ExpressRoute-átjáróra, keresse meg az átjárót a
 
 :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Az átjáró alhálózatának hozzáadása":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután létrehozta a VNet-átjárót, összekapcsolhatja a VNet egy ExpressRoute-áramkörrel. 
 
 > [!div class="nextstepaction"]
