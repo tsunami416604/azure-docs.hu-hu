@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553647"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT-összekötő a FHIR (előzetes verzió) leképezési sablonokhoz
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) leképezési sablonjai
 Ez a cikk részletesen ismerteti, hogyan konfigurálhatja az Azure IoT Connectort a FHIR * szolgáltatáshoz a leképezési sablonok használatával.
 
 A FHIR készült Azure IoT-összekötőhöz két típusú JSON-alapú leképezési sablon szükséges. Az első típus, az **eszköz-hozzárendelés**feladata az `devicedata` Azure Event hub-végpontnak eljuttatott eszköz-adattartalom megfeleltetése. Kibontja a típusokat, az eszközök azonosítóit, a mérési dátum időpontját és a mérési értéket. A második típus, a **FHIR leképezése**SZABÁLYOZZA a FHIR-erőforrás leképezését. Lehetővé teszi a megfigyelési időszak hosszának, az értékek tárolására szolgáló FHIR és a terminológiai kódoknak a konfigurálását. 
@@ -39,7 +39,7 @@ Alább látható egy példa arra, hogy mi történik a normalizálás során.
 
 ![Normalizálás – példa](media/concepts-iot-mapping-templates/normalization-example.png)
 
-A tartalom hasznos tartalma egy Azure Event hub-üzenet, amely három részből áll: törzs, tulajdonságok és SystemProperties. Az egy `Body` bájtos tömb, amely egy UTF-8 kódolású karakterláncot jelképez. A sablon kiértékelése során a rendszer automatikusan átalakítja a bájt tömböt a karakterlánc értékre. `Properties`a egy Key Value gyűjtemény, amelyet az üzenet létrehozója használhat. `SystemProperties`Az Azure Event hub-keretrendszer által fenntartott Key Value-gyűjtemény is, amely automatikusan feltölti azokat a bejegyzéseket.
+A tartalom hasznos tartalma egy Azure Event hub-üzenet, amely három részből áll: törzs, tulajdonságok és SystemProperties. Az egy `Body` bájtos tömb, amely egy UTF-8 kódolású karakterláncot jelképez. A sablon kiértékelése során a rendszer automatikusan átalakítja a bájt tömböt a karakterlánc értékre. `Properties` a egy Key Value gyűjtemény, amelyet az üzenet létrehozója használhat. `SystemProperties` Az Azure Event hub-keretrendszer által fenntartott Key Value-gyűjtemény is, amely automatikusan feltölti azokat a bejegyzéseket.
 
 ```json
 {
@@ -352,7 +352,7 @@ A CodeValueFhirTemplate jelenleg csak az FHIR-leképezésben támogatott sablon.
 |**Összetevők []. Kódok**|Az összetevőre alkalmazandó egy vagy több [kódolás](http://hl7.org/fhir/datatypes-definitions.html#coding) .
 |**Összetevők []. Érték**|Az összetevőben kinyerni és ábrázolni kívánt érték. További információ: [Value type templates](#valuetypes).
 
-### <a name="value-type-templates"></a>Érték típusú sablonok<a name="valuetypes"></a>
+### <a name="value-type-templates"></a>Érték típusú sablonok <a name="valuetypes"></a>
 Alább láthatók a jelenleg támogatott értékmodell-sablonok. A későbbiekben további sablonokat is hozzáadhat.
 #### <a name="sampleddata"></a>SampledData
 A [SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR adattípust jelöli. A megfigyelési mérések egy adott időpontnál kezdődő adatfolyamként íródnak, és a megadott időszakon belül megnövekszik. Ha nincs megadva érték, `E` a rendszer beírja az adatfolyamba. Ha az időszak úgy van, hogy két további érték ugyanazt a pozíciót foglalja el az adatfolyamban, a rendszer a legújabb értéket fogja használni. Ugyanezt a logikát alkalmazza a rendszer, amikor az SampledData-t használó megfigyelés frissül.

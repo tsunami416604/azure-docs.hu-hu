@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122273"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hibrid környezetek kezelése a PowerShell-lel Azure Functions és App Service Hibrid kapcsolatok
@@ -60,11 +60,11 @@ A App Service Hibrid kapcsolatok funkció csak az alapszintű, a standard és az
     | ------------ | ---------------- | ----------- |
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
-    | **függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9` és `-` .  |
-    |**Közzététel**| Code | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
+    | **Függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.  |
+    |**Közzététel**| Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válassza a PowerShell mag lehetőséget. |
     |**Verzió**| Verziószám | Válassza ki a telepített futtatókörnyezet verzióját.  |
-    |**Régió**| Előnyben részesített régió | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
+    |**Régió**| Előnyben részesített régió | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-basics.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
@@ -76,7 +76,7 @@ A App Service Hibrid kapcsolatok funkció csak az alapszintű, a standard és az
     |**Operációs rendszer**| Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
     | **[Csomag típusa](../azure-functions/functions-scale.md)** | **App Service-csomag** | Válassza az **app Service-csomag**elemet. Ha App Service-csomagot használ, foglalkoznia kell a [függvényalkalmazás méretezésével](../azure-functions/functions-scale.md).  |
 
-    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="Hozzon létre egy függvény alkalmazás-üzemeltetést." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Válassza a **Tovább: figyelés**lehetőséget. A **figyelés** lapon adja meg a következő beállításokat.
 
@@ -84,7 +84,7 @@ A App Service Hibrid kapcsolatok funkció csak az alapszintű, a standard és az
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../azure-functions/functions-monitoring.md)** | Alapértelmezett | Létrehoz egy Application Insights erőforrást ugyanahhoz az *alkalmazáshoz* a legközelebbi támogatott régióban. A beállítás kibontásával vagy az **új létrehozása**lehetőség kiválasztásával módosíthatja a Application Insights nevét, vagy választhat egy másik régiót egy olyan [Azure-földrajzban](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol az adatait tárolni szeretné. |
 
-    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Function-alkalmazás létrehozása – figyelés." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
 
@@ -101,15 +101,15 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
 1. Az imént létrehozott Function alkalmazás **Beállítások** területén válassza a **hálózatkezelés**lehetőséget. 
 1. Válassza **a hibrid kapcsolatok végpontok konfigurálása**lehetőséget.
    
-    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="Konfigurálja a hibrid kapcsolatok végpontját." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Válassza a **hibrid kapcsolatok hozzáadása**lehetőséget.
    
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="Hibrid kapcsolatok hozzáadása." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Adja meg a hibrid kapcsolatok adatait, amint az a következő képernyőképen látható. Lehetősége van arra, hogy a **végpont gazdagépének** beállításai megegyezzenek a helyszíni kiszolgáló állomásneve, hogy a kiszolgáló később is megjegyezze a távoli parancsok futtatásakor. A port megegyezik a kiszolgálón korábban definiált alapértelmezett Windows távfelügyeleti szolgáltatás portjával.
   
-      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="Hibrid kapcsolatok hozzáadása." border="true":::
+      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
     | Beállítás      | Ajánlott érték  |
     | ------------ | ---------------- |
@@ -118,7 +118,7 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
     | **Végpont portja** | 5986 |
     | **Servicebus-névtér** | Új létrehozása |
     | **Hely** | Válasszon ki egy elérhető helyet |
-    | **Name (Név)** | contosopowershellhybrid | 
+    | **Név** | contosopowershellhybrid | 
 
 1. A hibrid kapcsolatok létrehozásához kattintson **az OK gombra** .
 
@@ -126,24 +126,24 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
 
 1. Válassza a **Csatlakozáskezelő letöltése** lehetőséget, hogy az *. msi* fájlt helyileg mentse a számítógépre.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="Töltse le a telepítőt." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Másolja az *. msi* fájlt a helyi számítógépről a helyszíni kiszolgálóra.
 1. Futtassa a hibridkapcsolat-kezelő telepítőjét a szolgáltatás a helyszíni kiszolgálón való telepítéséhez.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="Telepítse a hibrid kapcsolatokat." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. A portálon nyissa meg a hibrid kapcsolatokat, majd másolja az átjáró kapcsolódási karakterláncát a vágólapra.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="Másolja a hibrid kapcsolatok sztringjét." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Nyissa meg a hibridkapcsolat-kezelő felhasználói felületet a helyszíni kiszolgálón.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="Nyissa meg a hibrid kapcsolatok felhasználói felületét." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Válassza a **bevitel manuálisan** lehetőséget, és illessze be a kapcsolatok karakterláncát a vágólapról.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="Illessze be a hibrid kapcsolatokat." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Ha nem csatlakoztatottként jelenik meg, indítsa újra a hibridkapcsolat-kezelő a PowerShellből.
     ```powershell
@@ -155,26 +155,26 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
 1. A Function alkalmazás **beállításai** területen válassza a **Konfigurálás**lehetőséget. 
 1. Válassza az **+ új alkalmazás beállítása**lehetőséget.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Adja meg a rendszergazdai fiók jelszavát." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
-1. Nevezze el a beállítás **ContosoUserPassword**, és adja meg a jelszót. Válassza az **OK** lehetőséget.
+1. Nevezze el a beállítás **ContosoUserPassword**, és adja meg a jelszót. Kattintson az **OK** gombra.
 1. Válassza a **Mentés** lehetőséget a jelszó tárolásához a Function alkalmazásban.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Mentse a rendszergazdai fiók jelszavát." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 ## <a name="create-a-function-http-trigger"></a>Függvény HTTP-triggerének létrehozása
 
 1. A Function alkalmazásban válassza a **függvények**, majd a **+ Hozzáadás**lehetőséget.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="Hozzon létre új HTTP-triggert." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Válassza ki a **http-trigger** sablonját.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="Válassza ki a HTTP-trigger sablonját." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 1. Nevezze el az új függvényt, és válassza a **létrehozási függvény**lehetőséget.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="Nevezze el és hozza létre az új HTTP trigger függvényt." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 
@@ -215,11 +215,11 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
 
 1. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Módosítsa a PowerShell-kódot, és mentse a HTTP trigger függvényt." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
  1. Válassza a **teszt**lehetőséget, majd válassza a **Futtatás** lehetőséget a függvény teszteléséhez. Tekintse át a naplókat, és ellenőrizze, hogy a teszt sikeres volt-e.
 
-     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="HTTP-trigger funkció tesztelése." border="true":::
+     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="Function-alkalmazás létrehozása – alapismeretek." border="true":::
 
 ## <a name="managing-other-systems-on-premises"></a>Más rendszerek helyszíni kezelése
 

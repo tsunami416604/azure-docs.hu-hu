@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328639"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
@@ -49,13 +49,13 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
  
 2. Győződjön meg arról, hogy a Cloud Shell a PowerShell-verzió futtatására van beállítva a Cloud Shell ikon sávján.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
 
-1. Válassza a "fájlok feltöltése/letöltése" ikont, és válassza a "feltöltés" lehetőséget.
+1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lehetőséget.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell a feltöltés ikon kijelölését bemutató ablak":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
 
-    Navigáljon a számítógépen lévő _**deploy.ps1**_ fájlra ( _Azure_Digital_Twins_samples > szkriptek > **deploy.ps1** _), és nyomja meg a "Megnyitás" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
+1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
 
 4. Futtassa a szkriptet a Cloud Shell ablakban a parancs elküldésével `./deploy.ps1` . (Emlékeztetés arra, hogy a Cloud Shellba való beillesztéshez használhatja a **CTRL + SHIFT + v billentyűkombinációt** a Windows és Linux rendszeren, vagy a **cmd + SHIFT + v** MacOS rendszeren. A helyi menüt is használhatja.)
 
@@ -82,7 +82,9 @@ A szkript létrehoz egy Azure Digital Twins-példányt, hozzárendeli az Azure-f
 
 Íme egy részlet a kimenet naplóból a szkriptből:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell ablak, amely az üzembe helyezési parancsfájl futtatásával mutatja be a bemeneti és a kimeneti naplót" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
+
+1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Ha a parancsfájl sikeresen befejeződik, a rendszer a végső kinyomatot fogja mondani `Deployment completed successfully` . Ellenkező esetben oldja meg a hibaüzenetet, és futtassa újra a parancsfájlt. A művelet megkerüli a már elvégzett lépéseket, és ismét megkezdi a bevitelt arra a pontra, ahol abbahagyta a műveletet.
 
@@ -103,7 +105,9 @@ A [Azure Portal](https://portal.azure.com)keresse meg az Azure Digital Twins-pé
 
 Ha kiválasztja, megnyílik a példány *Áttekintés* lapja. Jegyezze fel a *nevét*, az *erőforráscsoportot*és az *állomásnév nevét*. Erre később szükség lehet a példány azonosításához és a hozzá való kapcsolódáshoz.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="A példány Áttekintés oldalának fontos értékeinek kiemelése":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
+
+1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés":::
 
 ### <a name="collect-app-registration-values"></a>Alkalmazás regisztrációs értékeinek összegyűjtése 
 
@@ -113,7 +117,9 @@ A kereséshez kövesse [ezt a hivatkozást](https://portal.azure.com/#blade/Micr
 
 Ekkor megjelenik az imént létrehozott alkalmazás-regisztráció a listában. A részletek megnyitásához válassza ki a következőket:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Az alkalmazás regisztrációjának fontos értékeit a portálon tekintheti meg":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
+
+1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés":::
 
 Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és *KÖNYVTÁRát (bérlői azonosítóját)* . Ha nem az a személy, aki az ügyfélalkalmazások kódját fogja írni, meg kell osztania ezeket az értékeket a felhasználóval.
 

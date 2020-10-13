@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 10/08/2020
-ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 01/13/2019
+ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873234"
+ms.locfileid: "89659914"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
 
@@ -22,9 +22,6 @@ A Azure Logic Apps és a fájlrendszer-összekötővel olyan automatizált felad
 - Fájlok létrehozása, beolvasása, hozzáfűzése, frissítése és törlése.
 - Mappákban vagy gyökérkönyvtárban található fájlok listázása.
 - Fájl tartalmának és metaadatainak beolvasása.
-
-  > [!IMPORTANT]
-  > A fájlrendszer-összekötő jelenleg csak Windows-fájlrendszereket támogat a Windows operációs rendszereken.  
 
 Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa példája szerint: másolja a Dropboxba feltöltött fájlt egy fájlmegosztásba, majd küldjön egy e-mailt. A helyszíni rendszerek biztonságos csatlakoztatásához és eléréséhez a Logic apps a helyszíni [adatátjárót](../logic-apps/logic-apps-gateway-connection.md)használja. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Az összekötő-specifikus technikai információk a fájlrendszer- [összekötő dokumentációjában](/connectors/filesystem/)találhatók.
 

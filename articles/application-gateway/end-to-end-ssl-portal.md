@@ -10,10 +10,10 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808040"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Portal a végpontok kö
 > [!NOTE]
 > Application Gateway v2 SKU-nak megbízható legfelső szintű tanúsítványokra van szüksége a végpontok közötti konfiguráció engedélyezéséhez.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -59,7 +59,7 @@ További információ: [a TLS-megszakítás engedélyezése új Application Gate
 
    A standard és a WAF (v1) alkalmazás-átjárók esetében a háttér-kiszolgálói tanúsítvány nyilvános kulcsát. cer formátumban kell feltöltenie.
 
-   ![Tanúsítvány hozzáadása](./media/end-to-end-ssl-portal/addcert.png)
+   ![Tanúsítvány hozzárendelése](./media/end-to-end-ssl-portal/addcert.png)
 
    Standard_v2 és WAF_v2 Application Gateway esetén. cer formátumban töltse fel a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert hitelesítésszolgáltató (CA) állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
 
@@ -113,7 +113,7 @@ Ha az utóbbi lehetőséget választja, alkalmazza az alábbi eljárás lépése
 
    A standard és a WAF (v1) alkalmazás-átjárók esetében a háttér-kiszolgálói tanúsítvány nyilvános kulcsát. cer formátumban kell feltöltenie.
 
-   ![Tanúsítvány hozzáadása](./media/end-to-end-ssl-portal/addcert.png)
+   ![Tanúsítvány hozzárendelése](./media/end-to-end-ssl-portal/addcert.png)
 
    Standard_v2 és WAF_v2 Application Gateway esetén. cer formátumban töltse fel a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert HITELESÍTÉSSZOLGÁLTATÓ állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
 

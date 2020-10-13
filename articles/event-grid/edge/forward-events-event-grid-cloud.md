@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171601"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: események továbbítása Event Grid felhőbe
@@ -36,8 +36,8 @@ Az [oktatóanyag](../custom-event-quickstart-portal.md)követésével hozzon lé
 
 Ha például létrehozta az `testegcloudtopic` USA nyugati régiójában elnevezett témakört, az értékek a következőképpen néznek ki:
 
-* **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **TopicName**:`testegcloudtopic`
+* **TopicUrl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **TopicName**: `testegcloudtopic`
 * **SasKey**: a témakör **AccessKey** alatt érhető el. **Key1**használata.
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Event Grid-témakör létrehozása a peremhálózat szélén
@@ -103,7 +103,7 @@ Ha például létrehozta az `testegcloudtopic` USA nyugati régiójában elnevez
    >[!NOTE]
    > A **endpointUrl** megadja, hogy a Event Grid témakör URL-címe a felhőben. A **sasKey** Event Grid Felhőbeli témakör kulcsára hivatkozik. A rendszer az **topicName** -ben lévő értéket fogja használni az összes kimenő esemény Event Grid. Ez akkor lehet hasznos, ha Event Grid tartományi témakörbe való feladást végez. További információ a Event Grid tartományi témakörről: [esemény-tartományok](../event-domains.md)
 
-    Példa:
+    Például:
   
     ```json
         {

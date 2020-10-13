@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548335"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
@@ -62,7 +62,7 @@ További információ ezekről a jogkivonatokról: [Azure Active Directory hozz�
 
 Közzététel<br>
 
-##### <a name="request-url"></a>*URL-cím kérése* 
+##### <a name="request-url"></a>*Kérelem URL-címe* 
 
 `https://login.microsoftonline.com/*{tenantId}*/oauth2/token`
 
@@ -89,7 +89,7 @@ Közzététel<br>
 
 ##### <a name="response"></a>*Válasz*
 
-|  Név     |  Típus         |  Description |
+|  Név     |  Típus         |  Leírás |
 |  ------   |  ---------------  | ------------ |
 |  200 OK   |  TokenResponse    |  A kérelem sikeres volt. |
 
@@ -111,6 +111,6 @@ Példa a válaszra:
 
 A `"access_token"` válaszban szereplő mező értéke az, amelyet a rendszer az `<access_token>` összes SaaS-beteljesülés és a Marketplace-mérési API-k meghívásakor ad át engedélyezési paraméterként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-védelemmel ellátott alkalmazás mostantól használhatja a [SaaS-teljesítési API 2-es verzióját](./pc-saas-fulfillment-api-v2.md).

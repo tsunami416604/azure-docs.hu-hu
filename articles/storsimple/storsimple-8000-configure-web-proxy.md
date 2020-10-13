@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514288"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Webproxy konfigurálása a StorSimple-eszközhöz
@@ -143,7 +143,7 @@ Ha a webproxy beállításai helytelenül vannak konfigurálva, hibaüzenetek je
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |A parancs a passzív vezérlőről fut, és nem tud kommunikálni az aktív vezérlővel. |Futtassa a parancsot az aktív vezérlőn. Ha a parancsot a passzív vezérlőből szeretné futtatni, ki kell javítania a kapcsolatot a passzívról az aktív vezérlőre. Ha a kapcsolat megszakad, Microsoft ügyfélszolgálata kell bekapcsolódnia. |
 | 2. |0x800710dd – a művelet azonosítója érvénytelen. |StorSimple Cloud Appliance nem támogatottak a proxybeállítások. |StorSimple Cloud Appliance nem támogatottak a proxybeállítások. Ezeket csak StorSimple fizikai eszközön lehet konfigurálni. |
-| 3. |0x80070057 – Érvénytelen paraméter |A proxybeállítások számára megadott paraméterek egyike érvénytelen. |Az URI-azonosító nem megfelelő formátumban van megadva. Használja a következő formátumot:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 3. |0x80070057 – Érvénytelen paraméter |A proxybeállítások számára megadott paraméterek egyike érvénytelen. |Az URI-azonosító nem megfelelő formátumban van megadva. Használja a következő formátumot: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
 | 4. |0x800706ba – az RPC-kiszolgáló nem érhető el |A kiváltó ok a következők egyike:</br></br>A fürt nem működik. </br></br>A DataPath szolgáltatás nem fut.</br></br>A parancs a passzív vezérlőről fut, és nem tud kommunikálni az aktív vezérlővel. |Folytassa Microsoft ügyfélszolgálata a fürt és a DataPath szolgáltatás futtatásának biztosításához.</br></br>Futtassa a parancsot az aktív vezérlőből. Ha a parancsot a passzív vezérlőből szeretné futtatni, gondoskodnia kell arról, hogy a passzív vezérlő képes legyen kommunikálni az aktív vezérlővel. Ha a kapcsolat megszakad, Microsoft ügyfélszolgálata kell bekapcsolódnia. |
 | 5. |0x800706be – nem sikerült az RPC-hívás |A fürt nem üzemel. |Folytassa Microsoft ügyfélszolgálata a fürt felgyorsításának biztosításához. |
 | 6. |0x8007138f – a fürterőforrás nem található |A platform Service-fürt erőforrása nem található. Ez akkor fordulhat elő, ha a telepítés nem volt megfelelő. |Előfordulhat, hogy a gyári beállítások visszaállítását kell végrehajtania az eszközön. Előfordulhat, hogy létre kell hoznia egy platform-erőforrást. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától. |
@@ -153,7 +153,7 @@ Ha a webproxy beállításai helytelenül vannak konfigurálva, hibaüzenetek je
 > * A hibaüzenetek fenti listája nem teljes.
 > * A webproxy beállításaival kapcsolatos hibák nem jelennek meg a StorSimple Eszközkezelő szolgáltatásának Azure Portal. Ha a konfiguráció befejezése után probléma van a webproxyval, az eszköz állapota **offline módra** változik a klasszikus portálon. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha problémákat tapasztal az eszköz telepítésekor vagy a webproxy beállításainak konfigurálásakor, tekintse meg a [StorSimple-eszköz központi telepítésének hibaelhárítása](storsimple-troubleshoot-deployment.md)című témakört.
 * Ha szeretné megtudni, hogyan használhatja a StorSimple Eszközkezelő szolgáltatást, a [StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatását](storsimple-8000-manager-service-administration.md).
 

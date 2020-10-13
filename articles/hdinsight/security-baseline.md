@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230432"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure biztonsági alapkonfiguráció a HDInsight-hez
@@ -1198,9 +1198,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: Ha Azure Key Vault az Azure HDInsight üzemelő példányának használatakor, engedélyezze a helyreállítható törlést a Key Vault a kulcsok véletlen vagy rosszindulatú Törlés elleni védeleméhez.
+**Útmutató**: Ha Azure Key Vault az Azure HDInsight üzemelő példányához van használatban, engedélyezze a Soft-Delete a Key Vault a kulcsok véletlen vagy rosszindulatú Törlés elleni megvédéséhez.
 
-A Soft delete engedélyezése a Azure Key Vaultban:
+Soft-Delete engedélyezése a Azure Key Vaultban:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 

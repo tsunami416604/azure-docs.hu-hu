@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000345"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions és a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve összekapcsolhatók a logikai alkalmazások Azur
         ![Logic Apps Designer – Event Grid trigger kiválasztása](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
 4. Válassza a **Bejelentkezés**lehetőséget, adja meg az Azure-beli hitelesítő adatait, majd válassza a **hozzáférés engedélyezése**lehetőséget. 
 5. Az **erőforrás-esemény bekövetkeztekor** oldalon hajtsa végre a következő lépéseket:
-    1. Válassza ki Azure-előfizetését. 
+    1. Válassza ki az Azure-előfizetését. 
     2. Az **erőforrástípus**mezőben válassza a **Microsoft. ServiceBus. névterek**lehetőséget. 
     3. Az **Erőforrás neve**mezőben válassza ki a Service Bus névteret. 
     4. Válassza az **új paraméter hozzáadása**lehetőséget, majd válassza az **utótag-szűrő**elemet. 
@@ -354,7 +354,7 @@ Ez a szakasz az üzenetek fogadását és feldolgozását ismerteti az eseménye
 3. Az üzenetek [küldése a Service Bus témakörbe](#send-messages-to-the-service-bus-topic) című részben található utasításokat követve üzeneteket küldhet a témakörnek, és figyelheti a függvényt. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók az [Azure Event Grid](../event-grid/index.yml) szolgáltatásról.
 * További tudnivalók az [Azure Functions](../azure-functions/index.yml) szolgáltatásról.

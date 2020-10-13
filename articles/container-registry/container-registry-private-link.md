@@ -4,10 +4,10 @@ description: Hozzon létre egy privát végpontot egy tároló-beállításjegyz
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743641"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Privát csatlakozás Azure Container registryhez az Azure Private link használatával
@@ -25,7 +25,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 
 * A cikkben szereplő Azure CLI-lépések használatához ajánlott az Azure CLI-es vagy újabb verziójának használata. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli]. Vagy futtassa [Azure Cloud Shell](../cloud-shell/quickstart.md).
 * Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és [importáljon](container-registry-import-images.md) egy minta képet, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t.
-* Ha egy másik Azure-előfizetésben lévő privát hivatkozás használatával szeretné konfigurálni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
+* Ha egy másik Azure-előfizetésben lévő privát hivatkozás használatával szeretné konfigurálni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Példa:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -213,7 +213,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | ------- | ----- |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
-    | Név | Adjon meg egy egyedi nevet. |
+    | Name (Név) | Adjon meg egy egyedi nevet. |
     | Alerőforrás |**Beállításjegyzék** kiválasztása|
     | **Hálózat** | |
     | Virtuális hálózat| Válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMVNET*. |
@@ -240,7 +240,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
     | **Példány adatai** |  |
     | Name | Adjon meg egy nevet. |
-    |Region|Válasszon régiót.|
+    |Régió|Válasszon régiót.|
     |||
 5. Válassza a **Tovább: erőforrás**elemet.
 6. Adja meg vagy válassza ki a következő adatokat:
@@ -298,7 +298,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Ez után válassza a **Mentés** lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
 
 ## <a name="validate-private-link-connection"></a>Privát kapcsolati kapcsolat ellenőrzése
 
@@ -306,7 +306,7 @@ Győződjön meg arról, hogy a privát végpont alhálózatán belüli erőforr
 
 A magánhálózati kapcsolat kapcsolatának ellenőrzéséhez SSH-kapcsolatot kell létesítenie a virtuális hálózatban beállított virtuális géppel.
 
-Futtasson egy segédprogramot, például a vagy a lehetőséget `nslookup` `dig` , hogy megkeresse a beállításjegyzék IP-címét a privát hivatkozáson keresztül. Például:
+Futtasson egy segédprogramot, például a vagy a lehetőséget `nslookup` `dig` , hogy megkeresse a beállításjegyzék IP-címét a privát hivatkozáson keresztül. Példa:
 
 ```bash
 dig $REGISTRY_NAME.azurecr.io
@@ -368,7 +368,7 @@ A Docker sikeresen lekéri a rendszerképet a virtuális gépre.
 
 Felügyelheti a beállításjegyzék saját végpont-kapcsolatait a Azure Portal használatával, vagy az az [ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] paranccsal elérhető parancsok használatával. A műveletek közé tartozik a beállításjegyzék privát végpont-kapcsolatainak jóváhagyása, törlése, listázása, elutasítása vagy megjelenítése.
 
-Ha például egy beállításjegyzék privát végpont-kapcsolatait szeretné kilistázni, futtassa az az [ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] parancsot. Például:
+Ha például egy beállításjegyzék privát végpont-kapcsolatait szeretné kilistázni, futtassa az az [ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] parancsot. Példa:
 
 ```azurecli
 az acr private-endpoint-connection list \
@@ -399,7 +399,7 @@ az group delete --name $RESOURCE_GROUP
 
 A portálon található erőforrások törléséhez navigáljon az erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link](../private-link/private-link-overview.md) dokumentációját.
 * Ha be kell állítania a beállításjegyzék-hozzáférési szabályokat az ügyfél tűzfala mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.

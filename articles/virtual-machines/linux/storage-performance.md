@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307101"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>A Lsv2 sorozatú linuxos virtuális gépek teljesítményének optimalizálása
@@ -97,7 +97,7 @@ Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági men
    A rq_affinity beállítás kisebb beállítás a másodpercenkénti maximális bemeneti/kimeneti műveletek (IOPS) használatakor. Ha minden más jól működik, próbálja meg rq_affinity 0-ra állítani, hogy a rendszer különbséget tesz-e.
 
 * **Módosítani kell a blk_mq beállításokat?**  
-   A RHEL/CentOS 7. x automatikusan a BLK-MQ-t használja a NVMe-eszközökhöz. Nincs szükség konfigurációs módosításra vagy beállításra. A scsi_mod. use_blk_mq beállítás csak a SCSI esetében használható, és a Lsv2 előzetes verziójában használták, mert a NVMe-eszközök a vendég virtuális gépeken SCSI-eszközként voltak láthatók. A NVMe-eszközök jelenleg NVMe-eszközökként jelennek meg, így a SCSI BLK-MQ beállítás nem releváns.
+   A RHEL/CentOS 7. x automatikusan a BLK-MQ-t használja a NVMe-eszközökhöz. Nincs szükség konfigurációs módosításra vagy beállításra. A scsi_mod. use _blk_mq beállítás csak a SCSI esetében használatos, és a Lsv2 előzetes verziójában használták, mert a NVMe-eszközök a vendég virtuális gépeken SCSI-eszközként voltak láthatók. A NVMe-eszközök jelenleg NVMe-eszközökként jelennek meg, így a SCSI BLK-MQ beállítás nem releváns.
 
 * **Módosítani kell a "Fio" kifejezést?**  
    A L64v2 és a L80v2 virtuálisgép-méretekben a "Fio" értékkel rendelkező IOPS maximális számának megadásához állítsa a "rq_affinity" értéket 0-ra az egyes NVMe-eszközökön.  Ez a parancssor például a "rq_affinity" értéket állítja be nulla értékre egy L80v2 virtuális gépen lévő összes 10 NVMe-eszközön:

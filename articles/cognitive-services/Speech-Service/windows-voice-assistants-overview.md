@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997446"
 ---
 # <a name="voice-assistants-on-windows"></a>Hangsegédek Windows rendszeren
@@ -43,11 +43,11 @@ Vegye figyelembe, hogy ez azt jelenti, hogy az alkalmazás nem aktiválható han
 
 ### <a name="receiving-an-activation"></a>Aktiválás fogadása
 
-Ha a kérést az éves jelentésekben fogadja, a háttérben futó szolgáltatás elindítja az alkalmazást. Az alkalmazás egy egyedi esemény argumentummal fogadja a OnBackgroundActivated életciklus módszerét `App.xaml.cs` . Ez az argumentum azt közli az alkalmazással, hogy az adattevékenység által aktiválták, és hogy el kell kezdenie a kulcsszó-ellenőrzést.
+Ha a kérést az éves jelentésekben fogadja, a háttérben futó szolgáltatás elindítja az alkalmazást. Az alkalmazás egy `App.xaml.cs` egyedi esemény argumentummal fogadja a OnBackgroundActivated életciklus módszerét. Ez az argumentum azt közli az alkalmazással, hogy az adattevékenység által aktiválták, és hogy el kell kezdenie a kulcsszó-ellenőrzést.
 
 Ha az alkalmazás sikeresen ellenőrizte a kulcsszót, akkor az előtérben megjelenő kérelem jelenhet meg. Ha a kérelem sikeres, az alkalmazás megjeleníti a felhasználói FELÜLETET, és folytatja a felhasználóval való interakciót.
 
-Az éves tevékenység továbbra is jelzi az aktív alkalmazásokat, amikor a kulcsszót elbeszélik. Az életciklus módszere `App.xaml.cs`helyett azonban a ConversationalAgent API-kon keresztül jelez egy eseményt.
+Az éves tevékenység továbbra is jelzi az aktív alkalmazásokat, amikor a kulcsszót elbeszélik. Az életciklus módszere helyett azonban a ConversationalAgent API-kon `App.xaml.cs` keresztül jelez egy eseményt.
 
 ### <a name="keyword-verification"></a>Kulcsszó ellenőrzése
 

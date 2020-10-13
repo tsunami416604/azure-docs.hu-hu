@@ -12,10 +12,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: celested
 ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549466"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
@@ -24,7 +24,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa, milyen lépéseket kell elv�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 * Azure AD-bérlő
 * Egy [nagyvállalati](https://www.asana.com/pricing) csomaggal rendelkező,
@@ -80,7 +80,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
 1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek az  **értesítési e-mailben**szeretne kiépítési hibaüzeneteket kapni. Jelölje be a jelölőnégyzetet az alatt.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a**következőre lehetőséget.
 
@@ -88,7 +88,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a, a **Beállítások** szakaszban, módosítsa a **kiépítési állapotot** **a**következőre:.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A kezdeti szinkronizálás mostantól elindul a **felhasználók** szakaszban a facsoporthoz rendelt összes felhasználónál. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat. A naplók a kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a a (z)-ben.
 

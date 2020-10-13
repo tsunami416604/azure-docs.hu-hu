@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, összehasonlítás, SDK, különbségek, hardver, szoftver
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87031575"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Az Azure Kinect és a Kinect Windows v2 összehasonlítása
@@ -22,7 +22,7 @@ Az Azure Kinect DK hardver-és szoftverfejlesztői készletei eltérnek a Window
 
 Az Azure Kinect Development Kit és a Windows v2 rendszerhez készült Kinect közötti magas szintű különbségek az alábbi táblázatban láthatók.
 
-| Funkció | Típus | Azure Kinect DK | Windows v2 Kinect |
+| Szolgáltatás | Típus | Azure Kinect DK | Windows v2 Kinect |
 | ------- | ---- | --------------- | --------------------- |
 | **Hang** | Részletek  | 7 – MIC kör alakú tömb | 4 – MIC lineáris fázisú tömb |
 | **Mozgásérzékelő** | Részletek | 3 tengelyes gyorsulásmérő 3 tengelyes giroszkóp | 3 tengelyes gyorsulásmérő |
@@ -31,7 +31,7 @@ Az Azure Kinect Development Kit és a Windows v2 rendszerhez készült Kinect k�
 |                   | Feloldás | 640 x 576 px @30 fps | 512 x 424 px @ 30 fps |
 |                   |            | 512 x 512 px @30 fps |                       |
 |                   |            | 1024x1024 px @15 fps |                       |
-| **Kapcsolódás** | Adatok | USB 3.1 Gen 1, USB-C típussal  | USB 3,1 Gen 1|
+| **Kapcsolatok** | Adatok | USB 3.1 Gen 1, USB-C típussal  | USB 3,1 Gen 1|
 |  | Energiaellátás | Külső PSU vagy USB-C | Külső PSU |
 |  | Szinkronizálás | RGB & belső, külső eszköz – eszköz| RGB & csak belső mélységben |
 | **Elejét vehesse** | Dimenziók | 103 x 39 x 126 mm | 249 x 66 x 67 mm |
@@ -48,7 +48,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 |---------|---------|------------|---------|
 | **Mélység** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **Szín (Color)** | ✔️ | ✔️ | A Színformátum támogatja a különbségeket, az Azure Kinect DK a következő kamera-vezérlőket támogatja: expozíció, fehéregyensúly, fényerő, kontraszt, telítettség, élesség és hozzáférés |
+| **Szín** | ✔️ | ✔️ | A Színformátum támogatja a különbségeket, az Azure Kinect DK a következő kamera-vezérlőket támogatja: expozíció, fehéregyensúly, fényerő, kontraszt, telítettség, élesség és hozzáférés |
 | **Hang** | ✔️ | ✔️ | Az Azure Kinect DK mikrofonok a Speech SDK vagy a Windows natív API használatával érhetők el |
 | **IMU** | ✔️ |  | Az Azure Kinect DK teljes 6 tengelyes IMU rendelkezik, a Windows Kinect pedig csak 1 tengelyt biztosít. |
 | **Kalibrálási adatértékek** | ✔️ | ✔️ | OpenCV-kompatibilis kamera-modell kalibrálása |
@@ -57,7 +57,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 | **Hozzáférés megosztása több ügyféllel** | | ✔️ | Az Azure Kinect Sensor SDK az WinUSB/libUSB az eszköz elérésére támaszkodik, és nem rendelkezik olyan szolgáltatással, amely lehetővé teszi az eszközök hozzáférésének több folyamattal való megosztását. |
 | **Stream Record/lejátszás eszköz** | ✔️ | ✔️ | Az Azure Kinect DK nyílt forráskódú Matroska Container-alapú implementációt használ |
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2 szolgáltatástól, az alábbiakban részletezett módon:
 
@@ -71,7 +71,7 @@ Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2
 | | BodyIndexFrame | Body Tracking SDK  |
 | Koordináta-leképezés|CoordinateMapper| [Sensor SDK – rendszerkép-átalakítások](use-image-transformation.md) |
 |Arcfelismerés | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Beszédfelismerés    |    n.a.                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Beszédfelismerés    |    N/A                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>További lépések
 

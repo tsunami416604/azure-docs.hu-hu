@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Prezi
@@ -76,7 +76,7 @@ Az Azure AD SSO engedélyezése a Azure Portalban:
 
 1. A [Azure Portal](https://portal.azure.com/) **Prezi** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció**beállításainak szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció**beállításainak szerkesztéséhez.
 
    ![Az alapszintű SAML-konfigurációs beállítások szerkesztése](common/edit-urls.png)
 
@@ -94,12 +94,12 @@ Az Azure AD SSO engedélyezése a Azure Portalban:
 
 1. A Prezi alkalmazás Emellett néhány további attribútumot is vár az SAML-válaszban, ahogy az itt látható. Ezek az attribútumok előre fel vannak töltve, de a követelmények alapján áttekinthetők.
     
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------------- |
     | given_name | User. givenName |
     | family_name | felhasználó. vezetéknév |
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** című szakaszt. A **Letöltés** gombra kattintva letöltheti a tanúsítványt, és mentheti a számítógépre.
+1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** szolgáltatást. A **Letöltés** gombra kattintva letöltheti a tanúsítványt, és mentheti a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -145,9 +145,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure SSO használatát 
 
     ![Beállítások lap](./media/prezi-tutorial/settings-image.png)
 
-1. Nyissa meg az **egyszeri bejelentkezés (SSO)** szakaszt, és kapcsolja be a kapcsolót az egyszeri bejelentkezés engedélyezéséhez.
+1. Nyissa meg az **egyszeri Sign-On (SSO)** szakaszt, és kapcsolja be a kapcsolót az egyszeri bejelentkezés engedélyezéséhez.
     
-    ![Egyszeri bejelentkezés (SSO) váltógomb](./media/prezi-tutorial/single-signon.png)
+    ![Egyszeri Sign-On (SSO) váltógomb](./media/prezi-tutorial/single-signon.png)
 
 1. Az **egyszeri bejelentkezés (SSO)** szakaszban hajtsa végre az alábbi lépéseket:
 

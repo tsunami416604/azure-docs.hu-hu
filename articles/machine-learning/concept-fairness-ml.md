@@ -10,10 +10,10 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
 ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88689677"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
@@ -83,7 +83,7 @@ A Fairlearn nyílt forráskódú csomag számos, a méltánytalanság enyhítés
 
 A Fairlearn nyílt forráskódú csomagja a következő típusú paritásos korlátozásokat támogatja: 
 
-|Paritásos megkötés  | Rendeltetés  |Gépi tanulási feladat  |
+|Paritásos megkötés  | Cél  |Gépi tanulási feladat  |
 |---------|---------|---------|
 |Demográfiai paritás     |  A foglalási károsodások enyhítése | Bináris besorolás, regresszió |
 |Equaled odds  | Kiosztási és szolgáltatásminőség-károsodások diagnosztizálása | Bináris besorolás        |

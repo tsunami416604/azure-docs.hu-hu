@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543466"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939103"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Az Azure szinapszis Analytics Machine Learning képességei (munkaterületek előzetes verzió)
 
@@ -66,7 +66,7 @@ A MLlib mellett az olyan népszerű kódtárak is használhatók, mint a [Scikit
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>Modellek betanítása Azure Machine Learning AutoML
 
-A gépi tanulási modellek betanításának egy másik módja, amely nem igényli a gépi tanuláshoz szükséges jóval korábbi ismereteket, hogy a AutoML használja. A [AutoML](/azure/machine-learning/concept-automated-mls) egy olyan szolgáltatás, amely automatikusan betanítja a gépi tanulási modelleket, és lehetővé teszi, hogy a felhasználó kiválassza a legjobb modellt adott mérőszámok alapján. Az Azure szinapszis-jegyzetfüzetek Azure Machine Learningával való zökkenőmentes integrációnak köszönhetően a felhasználók könnyedén kihasználhatják a AutoML a Szinapszisban Azure Active Directory hitelesítéssel.  Ez azt jelenti, hogy csak a Azure Machine Learning munkaterületre kell mutatnia, és nem kell megadnia a hitelesítő adatokat. Itt talál egy [AutoML-oktatóanyagot](../spark/apache-spark-azure-machine-learning-tutorial.md) , amely leírja, hogyan taníthat modelleket Azure Machine learning AutoML használatával a szinapszis Spark-készleteken.
+A gépi tanulási modellek betanításának egy másik módja, amely nem igényli a gépi tanuláshoz szükséges jóval korábbi ismereteket, hogy a AutoML használja. A [AutoML](/azure/machine-learning/concept-automated-ml) egy olyan szolgáltatás, amely automatikusan betanítja a gépi tanulási modelleket, és lehetővé teszi, hogy a felhasználó kiválassza a legjobb modellt adott mérőszámok alapján. Az Azure szinapszis-jegyzetfüzetek Azure Machine Learningával való zökkenőmentes integrációnak köszönhetően a felhasználók könnyedén kihasználhatják a AutoML a Szinapszisban Azure Active Directory hitelesítéssel.  Ez azt jelenti, hogy csak a Azure Machine Learning munkaterületre kell mutatnia, és nem kell megadnia a hitelesítő adatokat. Itt talál egy [AutoML-oktatóanyagot](../spark/apache-spark-azure-machine-learning-tutorial.md) , amely leírja, hogyan taníthat modelleket Azure Machine learning AutoML használatával a szinapszis Spark-készleteken.
 
 ### <a name="model-deployment-and-scoring"></a>Modell üzembe helyezése és pontozása
 
@@ -76,7 +76,7 @@ Az Azure Szinapszisban vagy az Azure szinapszison kívül már betanított model
 
 * Az Azure Szinapszisban a gépi tanulási modellek egy másik lehetősége az Azure szinapszis Apache Spark készletének kihasználása. A modellek betanításához használt könyvtáraktól függően a Batch-pontozási futtatásához használhat programkódot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](../get-started.md)
 * [Munkaterület létrehozása](../get-started-create-workspace.md)

@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261026"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server önálló csomagjának Service Fabric tartalma
 A [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric önálló csomag a következő fájlokat fogja megtalálni:
 
-| **Fájlnév** | **Rövid leírás** |
+| **Fájl neve** | **Rövid leírás** |
 | --- | --- |
 | CreateServiceFabricCluster.ps1 |Egy PowerShell-parancsfájl, amely létrehozza a fürtöt a ClusterConfig.jsbeállításainak használatával. |
 | RemoveServiceFabricCluster.ps1 |Egy PowerShell-parancsfájl, amely eltávolítja a fürtöt a ClusterConfig.jsbeállításainak használatával. |
@@ -29,11 +29,11 @@ A [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric �
 | Readme.txt |A kibocsátási megjegyzésekre és az alapszintű telepítési utasításokra mutató hivatkozás. Ez a dokumentum útmutatásának részhalmaza. |
 | ThirdPartyNotice. rtf |A csomagban található harmadik féltől származó szoftverek megjegyzése. |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe, amely igény szerint fut a nyomkövetési naplók gyűjtéséhez és feltöltéséhez a Microsoftnak a támogatási célra. |
-| Tools\ServiceFabricUpdateService.zip |Egy eszköz, amely lehetővé teszi az automatikus kód frissítését olyan fürtökön, amelyek nem rendelkeznek internet-hozzáféréssel. További részletek [itt](service-fabric-cluster-upgrade-windows-server.md) találhatók|
+| Tools\ServiceFabricUpdateService.zip |Egy eszköz, amely lehetővé teszi az automatikus kód frissítését olyan fürtökön, amelyek nem rendelkeznek internet-hozzáféréssel. További részleteket [itt](service-fabric-cluster-upgrade-windows-server.md) talál.|
 
 **Sablonok** 
 
-| **Fájlnév** | **Rövid leírás** |
+| **Fájl neve** | **Rövid leírás** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.jsbekapcsolva |Egy, a nem biztonságos, három csomópontos, egyszámítógépes (vagy virtuálisgép-) fejlesztési fürtre vonatkozó beállításokat tartalmazó fürtözött konfigurációs minta, amely tartalmazza a fürt egyes csomópontjainak információit. |
 | ClusterConfig.Unsecure.MultiMachine.jsbekapcsolva |A fürt konfigurációs mintája, amely egy nem védett, többszámítógépes (vagy virtuális gép) fürt beállításait tartalmazza, beleértve a fürtben lévő egyes gépek adatait is. |

@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165481"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
 
-Azure Active Directory (Azure AD) használatával a ASP.NET MVC-webalkalmazásokhoz vagy a webes API-szolgáltatásokban való Active Directory hitelesítéshez is támogathatja az egyszeri bejelentkezést (SSO). Az Azure AD-hitelesítéssel a felhasználók a fiókjaikat Azure Active Directory használatával csatlakozhatnak a webalkalmazásokhoz. Az Azure AD-hitelesítésnek a webes API-val való használatának előnyei közé tartozik a fokozott adatbiztonság, amikor egy webalkalmazásból kiteszi az API-t. Az Azure AD-vel nem kell külön hitelesítési rendszereket kezelnie a saját fiókjával és a felhasználói felügyelettel.
+A Azure Active Directory (Azure AD) használatával a ASP.NET MVC-webalkalmazásokhoz vagy a webes API-szolgáltatásokban Active Directory hitelesítéshez egyetlen Sign-On (SSO) is használható. Az Azure AD-hitelesítéssel a felhasználók a fiókjaikat Azure Active Directory használatával csatlakozhatnak a webalkalmazásokhoz. Az Azure AD-hitelesítésnek a webes API-val való használatának előnyei közé tartozik a fokozott adatbiztonság, amikor egy webalkalmazásból kiteszi az API-t. Az Azure AD-vel nem kell külön hitelesítési rendszereket kezelnie a saját fiókjával és a felhasználói felügyelettel.
 
 Ez a cikk és a hozzá tartozó cikkek részletesen ismertetik a Visual Studio Connected Service szolgáltatás használatát a Active Directoryhoz. A funkció a Visual Studio 2015-es és újabb verzióiban érhető el.
 
@@ -32,7 +32,7 @@ A Active Directory csatlakoztatott szolgáltatás jelenleg nem támogatja ASP.NE
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Csatlakozás Azure Active Directory a csatlakoztatott szolgáltatások párbeszédpanel használatával
 
-1. A Visual Studióban hozzon létre vagy nyisson meg egy ASP.NET MVC-projektet vagy egy ASP.NET webes API-projektet. Használhatja az MVC, a web API, egy egyoldalas alkalmazást, az Azure API app, az Azure Mobile App és az Azure Mobile Service-sablonokat is.
+1. A Visual Studióban hozzon létre vagy nyisson meg egy ASP.NET MVC-projektet vagy egy ASP.NET webes API-projektet. Használhatja az MVC, a web API, az Single-Page alkalmazást, az Azure API app, az Azure Mobile App és az Azure Mobile Service-sablonokat is.
 
 1. Válassza ki a **projektet > csatlakoztatott szolgáltatás hozzáadása...** menü parancsát, vagy kattintson duplán a projektben található **csatlakoztatott szolgáltatások** csomópontra megoldáskezelő.
 
@@ -70,7 +70,7 @@ Amikor hozzáadja a csatlakoztatott szolgáltatást a varázslóhoz, a Visual St
 - [Mi történt a .NET MVC-projektemmel?](vs-active-directory-dotnet-what-happened.md)
 - [Mi történt a webes API-projekttel?](vs-active-directory-webapi-what-happened.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](./authentication-vs-authorization.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

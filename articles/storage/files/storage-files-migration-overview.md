@@ -8,10 +8,10 @@ ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654259"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
@@ -152,5 +152,5 @@ Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rét
 További információ a jelen cikkben említett Azure Files technológiákról:
 
 * [Az Azure file share áttekintése](storage-files-introduction.md)
-* [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
+* [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 * [Azure File Sync: felhőalapú rétegek](storage-sync-cloud-tiering.md)

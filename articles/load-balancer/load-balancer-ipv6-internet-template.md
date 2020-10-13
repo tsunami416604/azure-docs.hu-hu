@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562519"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó megoldás üzembe helyezése IPv6-sablonnal sablon használatával
@@ -103,7 +103,7 @@ A sablon sikeres üzembe helyezése után a következő feladatok végrehajtás�
 4. Az egyes virtuális gépekről kezdeményezzen kimenő kapcsolatot egy IPv6-vagy IPv4-kapcsolattal rendelkező Internet-eszközzel. A célként megadott eszköz által látott forrás IP-cím mindkét esetben a terheléselosztó nyilvános IPv4-vagy IPv6-címe.
 
 > [!NOTE]
-> Az ICMP az IPv4 és az IPv6 esetében is le van tiltva az Azure-hálózaton. Ennek eredményeképpen az olyan ICMP-eszközök, mint a pingelés, mindig sikertelenek lesznek. A kapcsolat teszteléséhez használjon olyan TCP-alternatívát, mint a TCPing vagy a PowerShell test-NetConnection parancsmag. Vegye figyelembe, hogy a diagramon megjelenő IP-címek például az esetlegesen megjelenő értékek. Mivel az IPv6-címek hozzárendelése dinamikusan történik, a fogadott címek eltérőek lehetnek, és régiónként változhatnak. Az is gyakori, hogy a terheléselosztó nyilvános IPv6-címéhez a háttérbeli készletben lévő magánhálózati IPv6-címektől eltérő előtagot kell kezdeni.
+> Az ICMP az IPv4 és az IPv6 esetében is le van tiltva az Azure-hálózaton. Ennek eredményeképpen az olyan ICMP-eszközök, mint a pingelés, mindig sikertelenek lesznek. A kapcsolat teszteléséhez használjon olyan TCP-alternatívát, mint a TCPing vagy a PowerShell Test-NetConnection parancsmag. Vegye figyelembe, hogy a diagramon megjelenő IP-címek például az esetlegesen megjelenő értékek. Mivel az IPv6-címek hozzárendelése dinamikusan történik, a fogadott címek eltérőek lehetnek, és régiónként változhatnak. Az is gyakori, hogy a terheléselosztó nyilvános IPv6-címéhez a háttérbeli készletben lévő magánhálózati IPv6-címektől eltérő előtagot kell kezdeni.
 
 ## <a name="template-parameters-and-variables"></a>Sablon paraméterei és változói
 
@@ -136,6 +136,6 @@ A cikkben használt példa sablon a következő változókat és paramétereket 
 
 A sablon többi változója olyan származtatott értékeket tartalmaz, amelyek akkor vannak hozzárendelve, amikor az Azure létrehozza az erőforrásokat. Ne módosítsa ezeket a változókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

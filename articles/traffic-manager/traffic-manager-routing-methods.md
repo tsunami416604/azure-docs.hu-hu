@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401656"
 ---
 # <a name="traffic-manager-routing-methods"></a>A Traffic Manager útválasztási módszerei
@@ -103,7 +103,7 @@ Ha egy profil földrajzi útválasztásra van konfigurálva, a profilhoz társí
 - Világ – bármely régió
 - Regionális csoportosítás – például Afrika, Közel-Kelet, Ausztrália/csendes-óceáni térség stb. 
 - Ország/régió – például Írország, Peru, Hongkong (KKT) stb. 
-- Állam/megye – például USA – Kalifornia, Ausztrália – Queensland, Kanada – Alberta stb. (Megjegyzés: Ez a részletességi szint csak az Ausztráliában, Kanadában és az USA-beli Államokban/tartományokban támogatott.)
+- Állam/tartomány – például USA – Kalifornia, Ausztrália – Queensland, Canada-Alberta stb. (Megjegyzés: Ez a részletességi szint csak az Ausztráliában, Kanadában és az USA-beli Államokban/tartományokban támogatott.)
 
 Ha egy régiót vagy régiót rendel hozzá egy végponthoz, az ezekből a régiókból érkező kéréseket csak az adott végpontra irányítja a rendszer. A Traffic Manager a DNS-lekérdezés forrás IP-címét használja annak meghatározásához, hogy a felhasználó melyik régióból kérdezi le – ez általában a felhasználó nevében a lekérdezés végrehajtásakor a helyi DNS-feloldó IP-címe.  
 

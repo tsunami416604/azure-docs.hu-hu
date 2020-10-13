@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997380"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Első lépések a hangsegédek Windowson való használatáról
@@ -25,8 +25,8 @@ Ez az útmutató végigvezeti a hangsegéd Windowson való fejlesztésének lép
 
 A Windowshoz készült hangsegédek fejlesztésének megkezdéséhez meg kell győződnie arról, hogy megfelelő fejlesztési környezettel rendelkezik.
 
-- **Visual Studio:** telepítenie kell a [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition vagy újabb verzióját
-- **Windows-verzió**: egy számítógép Windows Insider gyors gyűrűs összeállításával és a Windows SDK Windows Insider-verziójával.Ez a mintakód a Windows Insider kiadás-összeállítás 19025. vb_release_analog .191112-1600 Windows SDK 19018-as verzióval.A megadott verziók feletti buildek vagy SDK-nak kompatibilisnek kell lennie.
+- **Visual Studio:**   Telepítenie kell a [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition vagy újabb verzióját
+- **Windows-verzió**: egy számítógép Windows Insider gyors gyűrűs összeállításával és a Windows SDK Windows Insider-verziójával.Ez a mintakód a Windows Insider kiadás 19025.vb_release_analog .191112-1600 Windows SDK 19018-es verziójával való használatakor ellenőrizhető.A megadott verziók feletti buildek vagy SDK-nak kompatibilisnek kell lennie.
 - **UWP fejlesztői eszközök**: a univerzális Windows-platform fejlesztési számítási feladat a Visual Studióban.A UWP [beszerzése](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) lapon megtekintheti, hogy a gép készen áll-e a UWP-alkalmazások fejlesztésére.
 - **Egy működő mikrofon és hangkimenet**
 
@@ -34,7 +34,7 @@ A Windowshoz készült hangsegédek fejlesztésének megkezdéséhez meg kell gy
 
 A Windows rendszerhez készült teljesen testre szabott hangügynökhöz szükséges egyes erőforrásokhoz a Microsoft erőforrásai szükségesek. A [UWP Hangsegéd mintája](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) ezeknek az erőforrásoknak a mintáit tartalmazza a kezdeti fejlesztéshez és teszteléshez, ezért ez a szakasz nem szükséges a kezdeti fejlesztéshez.
 
-- **Kulcsszavas modell:** a hangaktiváláshoz egy. bin fájl formájában a Microsoft kulcsszavas modellje szükséges. A UWP hangsegéd mintájában megadott. bin fájl a "contoso" kulcsszóra van betanítva.
+- **Kulcsszavas modell:**   A hangaktiváláshoz egy. bin fájl formájában a Microsoft kulcsszavas modellje szükséges. A UWP hangsegéd mintájában megadott. bin fájl a "contoso" kulcsszóra van betanítva.
 - **Korlátozott hozzáférésű szolgáltatás tokenje:** Mivel a ConversationalAgent API-k hozzáférést biztosítanak a mikrofon hanghoz, a korlátozott hozzáférésű szolgáltatásokra vonatkozó korlátozások védik a védelmet.Korlátozott hozzáférésű szolgáltatás használatához be kell szereznie egy korlátozott hozzáférés-szolgáltatási tokent, amely az alkalmazás csomag-identitásához csatlakozik a Microsofttól.
 
 ## <a name="establish-a-dialog-service"></a>Párbeszédpanel-szolgáltatás létrehozása

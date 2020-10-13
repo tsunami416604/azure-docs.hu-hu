@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590536"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure Cognitive Services támogatás és visszajelzési lehetőségek
@@ -47,9 +47,9 @@ A gyorsabb eredmény érdekében keressen olyan releváns webhelyekre, mint a [s
 
 Hol `{search keywords}` található a keresés kontextusa. Érdemes lehet ezeket a hatókörön belüli kereséseket megfelelően használni:
 
- - Stack Overflow:`site:stackoverflow.com`
- - Microsoft Docs:`site:docs.microsoft.com`
- - GitHub-minták:`site:github.com/azure-samples`
+ - Stack Overflow: `site:stackoverflow.com`
+ - Microsoft Docs: `site:docs.microsoft.com`
+ - GitHub-minták: `site:github.com/azure-samples`
 
 ### <a name="post-a-question-on-stack-overflow"></a>Kérdés közzététele Stack Overflow
 
@@ -120,7 +120,7 @@ A Reddit egy Közösség által vezérelt vitafórum-webhely, amely az [Azure Co
 |-------------------------------|---------------|
 | Anomáliadetektor              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Bing szolgáltatások                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| Számítógépes látástechnológia               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Arcfelismerés                          | https://cognitive.uservoice.com/forums/430315-face |
@@ -129,10 +129,10 @@ A Reddit egy Közösség által vezérelt vitafórum-webhely, amely az [Azure Co
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Beszédfelismerési szolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Beszédszolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
+| Szövegelemzés                | https://cognitive.uservoice.com/forums/555922-text-analytics |
+| Fordító               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Hibák jelentése
@@ -156,7 +156,7 @@ A Cognitive Services rövid útmutató és mintakód:
 * [Cognitive Services: DotNet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 * [Cognitive Services: ugrás](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
 * [Cognitive Services: Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Cognitive Services: Node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Cognitive Services: Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Cognitive Services: Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 #### <a name="cognitive-services-sdk-source-code"></a>Cognitive Services SDK-forráskód

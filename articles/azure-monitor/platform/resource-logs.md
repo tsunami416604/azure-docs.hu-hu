@@ -1,5 +1,5 @@
 ---
-title: Azure-erőforrás-naplók
+title: Azure-erőforrásnaplók
 description: Ismerje meg, hogyan továbbíthatja az Azure-erőforrás-naplókat Log Analytics munkaterületre Azure Monitorban.
 author: bwren
 services: azure-monitor
@@ -8,13 +8,13 @@ ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87800500"
 ---
-# <a name="azure-resource-logs"></a>Azure-erőforrás-naplók
+# <a name="azure-resource-logs"></a>Azure-erőforrásnaplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.
 
 További információ a diagnosztikai beállítások létrehozásáról és a Azure Monitor méretezése a [különböző célhelyeken](diagnostic-settings.md) című témakörben talál további információt a diagnosztikai beállítások létrehozásáról és a nagy [Azure Policy méretekben történő üzembe helyezéséről](../deploy-scale.md) , ha a Azure Policy használatával automatikusan hozza létre a létrehozott Azure-erőforrások diagnosztikai beállításait.
@@ -43,7 +43,7 @@ Vegye figyelembe a következő példát, ahol a diagnosztikai beállítások gy�
 
 A AzureDiagnostics táblázat a következőképpen jelenik meg:  
 
-| ResourceProvider    | Kategória     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | Kategória     | A  | B  | C  | T  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft. service1 | AuditLogs    | X1 | y1 | Z1 |    |    |    |    |    |    |
 | Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | első | W1 | E1 csomag |    |    |    |
@@ -54,7 +54,7 @@ A AzureDiagnostics táblázat a következőképpen jelenik meg:
 | ... |
 
 ### <a name="resource-specific"></a>Erőforrás-specifikus
-Ebben a módban a kiválasztott munkaterület egyes táblái jönnek létre a diagnosztikai beállításban kiválasztott kategóriákhoz. Ez a módszer azért ajánlott, mert sokkal könnyebben használható a naplózott lekérdezések adataival, így a sémák és azok struktúrájának jobb észlelését teszi lehetővé, és javítja a teljesítményt a betöltési késés és a lekérdezési időpontok között, valamint lehetővé teszi, hogy RBAC jogokat biztosítson egy adott táblához. Az összes Azure-szolgáltatás végül az erőforrás-specifikus módra lesz migrálva. 
+Ebben a módban a kiválasztott munkaterület egyes táblái jönnek létre a diagnosztikai beállításban kiválasztott kategóriákhoz. Ez a módszer azért ajánlott, mert sokkal könnyebben használható a naplózott lekérdezések adataival, így a sémák és azok struktúrájának jobb észlelését teszi lehetővé, és javítja a teljesítményt a betöltési késés és a lekérdezési időpontok között, valamint lehetővé teszi, hogy RBAC jogokat biztosítson egy adott táblához. A rendszer az összes Azure-szolgáltatást végül áttelepíti a Resource-Specific módba. 
 
 A fenti példa három tábla létrehozását eredményezi:
  
@@ -68,7 +68,7 @@ A fenti példa három tábla létrehozását eredményezi:
 
 - A tábla *Service1ErrorLogs* a következőképpen történik:  
 
-    | Erőforrás-szolgáltató | Kategória | D | E | F |
+    | Erőforrás-szolgáltató | Kategória | T | E | F |
     | -- | -- | -- | -- | -- | 
     | Service1 | Alkalmazásnaplókat |  első | W1 | E1 csomag |
     | Service1 | Alkalmazásnaplókat |  Q2 | W2 | E2 |
@@ -85,7 +85,7 @@ A fenti példa három tábla létrehozását eredményezi:
 
 
 ### <a name="select-the-collection-mode"></a>Gyűjtési mód kiválasztása
-A legtöbb Azure-erőforrás az **Azure-diagnosztika** vagy az **erőforrás-specifikus mód** használatával fogja írni az adatok a munkaterületre való bevitelét anélkül, hogy választ kellene adni. Az [egyes szolgáltatásokhoz tartozó dokumentációban](./resource-logs-schema.md) megtekintheti az általa használt üzemmód részleteit. Az összes Azure-szolgáltatás végül erőforrás-specifikus módot fog használni. Az áttérés részeként egyes erőforrások lehetővé teszik a mód kiválasztását a diagnosztikai beállításokban. Adjon meg erőforrás-specifikus módot az új diagnosztikai beállításokhoz, mivel így könnyebben kezelheti az adatok kezelését, és a későbbiekben elkerülheti az összetett Migrálás elkerülését.
+A legtöbb Azure-erőforrás az **Azure-diagnosztika** vagy az **erőforrás-specifikus mód** használatával fogja írni az adatok a munkaterületre való bevitelét anélkül, hogy választ kellene adni. Az [egyes szolgáltatásokhoz tartozó dokumentációban](./resource-logs-schema.md) megtekintheti az általa használt üzemmód részleteit. Az összes Azure-szolgáltatás végül Resource-Specific módot fog használni. Az áttérés részeként egyes erőforrások lehetővé teszik a mód kiválasztását a diagnosztikai beállításokban. Adjon meg erőforrás-specifikus módot az új diagnosztikai beállításokhoz, mivel így könnyebben kezelheti az adatok kezelését, és a későbbiekben elkerülheti az összetett Migrálás elkerülését.
   
    ![Diagnosztikai beállítások mód választója](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
@@ -95,7 +95,7 @@ A legtöbb Azure-erőforrás az **Azure-diagnosztika** vagy az **erőforrás-spe
 
 Egy meglévő diagnosztikai beállítást erőforrás-specifikus módra is módosíthat. Ebben az esetben a már összegyűjtött adatok a _AzureDiagnostics_ táblában maradnak, amíg el nem távolítják a munkaterület megőrzési beállításának megfelelően. Az új adatok gyűjtése a dedikált táblában történik. A [Union](/azure/kusto/query/unionoperator) operátorral több táblázaton keresztül is lekérdezheti az adatlekérdezéseket.
 
-Folytassa az [Azure Updates](https://azure.microsoft.com/updates/) blogban az erőforrás-specifikus üzemmódot támogató Azure-szolgáltatásokra vonatkozó hirdetmények megtekintését.
+Tekintse meg az [Azure Updates](https://azure.microsoft.com/updates/) blogot, amely a Resource-Specific módot támogató Azure-szolgáltatásokra vonatkozó közleményeket is támogatja.
 
 ### <a name="column-limit-in-azurediagnostics"></a>Oszlop korlátja a AzureDiagnostics
 A Azure Monitor-naplókban található bármely táblához 500 tulajdonság van korlátozva. Ha elérte ezt a korlátot, minden olyan sor, amely az első 500-n kívüli tulajdonsággal rendelkező adatot tartalmaz, a rendszer elveszi a betöltési idő alatt. A *AzureDiagnostics* tábla kifejezetten erre a korlátozásra van kitéve, mivel az összes Azure-szolgáltatáshoz tartozó tulajdonságokat tartalmazza.
@@ -199,7 +199,7 @@ A PT1H.jsfájlon belül minden eseményt a következő formátumban tárol a ren
 > A platform naplói a blob Storage-ba kerülnek a [JSON-vonalak](http://jsonlines.org/)használatával, ahol minden esemény egy sor, a sortörési karakter pedig új eseményt jelez. Ez a formátum a 2018 novemberében lett implementálva. Ezen időpont előtt a naplók a blob Storage-ba kerülnek, mint a rekordok JSON-tömbje, amelyet a következő témakörben talál: [felkészülés a formátum változására a Storage-fiókba archivált Azure monitor platform-naplók](resource-logs-blob-format.md)számára.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ az erőforrás-naplókról](platform-logs-overview.md).
 * [Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](diagnostic-settings.md).

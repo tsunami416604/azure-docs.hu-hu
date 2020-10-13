@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8948ed51a9cda3d308046f3b85b6ce338462e82c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826160"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Azure Database for MySQL magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
@@ -128,7 +128,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
-1. A portál keresési sávján adja meg a *myVm*.
+1. A portál keresési sávjába írja be a *myVm* szöveget.
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
@@ -145,7 +145,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Válassza az **OK** lehetőséget.
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
 
@@ -155,7 +155,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 2. Írja be a következő szöveget:  `nslookup mydemomysqlserver.privatelink.mysql.database.azure.com`. 
 
-    Ehhez hasonló üzenet jelenik meg:
+    Egy ehhez hasonló üzenet jelenik meg:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -172,7 +172,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     | Beállítás | Érték |
     | ------- | ----- |
     | Kapcsolat neve| Válassza ki az Ön által választott kapcsolatok nevét.|
-    | Gazdanév | *Mydemoserver.privatelink.mysql.database.Azure.com* kiválasztása |
+    | Hostname (Gazdanév) | *Mydemoserver.privatelink.mysql.database.Azure.com* kiválasztása |
     | Felhasználónév | Adja meg a felhasználónevet, *username@servername* amelyet a MySQL-kiszolgáló létrehozásakor adott meg. |
     | Jelszó | Adja meg a MySQL-kiszolgáló létrehozásakor megadott jelszót. |
     ||
@@ -192,7 +192,7 @@ Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az e
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private Endpoint szolgáltatásról](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
 
 <!-- Link references, to text, Within this same GitHub repo. -->

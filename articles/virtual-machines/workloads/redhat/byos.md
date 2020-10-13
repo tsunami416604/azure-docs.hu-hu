@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
 ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87052162"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
@@ -34,7 +34,7 @@ A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszám
 - A rendszerképek az Azure-ban [Red Hat Enterprise Linux lemezképekben](./redhat-images.md)ismertetett aktuális szabályzatokat követik.
 - A rendszerképekből létrehozott virtuális gépekre a szabványos támogatási szabályzatok vonatkoznak.
 - A Red Hat Gold images-ről kiépített virtuális gépek nem teljesítik a RHEL utólagos elszámolású lemezképekhez kapcsolódó RHEL díjakat.
-- A lemezképek nem jogosultak. A Red Hat előfizetés-kezelővel regisztrálnia és elő kell fizetnie a virtuális gépeket, hogy közvetlenül a Red hat-ból kapjon frissítéseket.
+- A lemezképek nem jogosultak. A Red Hat Subscription-Manager használatával regisztrálnia és előfizethet a virtuális gépekre, hogy közvetlenül a Red hat-ból kapja meg a frissítéseket.
 - A Linux-lemezképek esetében jelenleg nem lehet dinamikusan váltani a BYOS és az utólagos elszámolású számlázási modellek között. A számlázási modell átváltásához újra kell telepítenie a virtuális gépet a megfelelő lemezképből.
 
 >[!NOTE]
@@ -120,7 +120,7 @@ Az alábbi utasítások végigvezetik a RHEL virtuális gép kezdeti üzembe hel
     az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. SSH-t a virtuális géphez, és ellenőrizze, hogy van-e egy nem jogosult rendszerkép. Ennek a lépésnek a végrehajtásához futtassa a parancsot `sudo yum repolist` . A RHEL 8 esetében használja a következőt: `sudo dnf repolist` . A kimenet azt kéri, hogy az előfizetés-kezelővel regisztrálja a virtuális gépet a Red Hat használatával.
+1. SSH-t a virtuális géphez, és ellenőrizze, hogy van-e egy nem jogosult rendszerkép. Ennek a lépésnek a végrehajtásához futtassa a parancsot `sudo yum repolist` . A RHEL 8 esetében használja a következőt: `sudo dnf repolist` . A kimenet azt kéri, hogy Subscription-Manager használatával regisztrálja a virtuális gépet a Red Hat-ban.
 
 >[!NOTE]
 >A RHEL 8, `dnf` és `yum` felcserélhetők. További információ: [RHEL 8 felügyeleti útmutató](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).

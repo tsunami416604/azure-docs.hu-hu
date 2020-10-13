@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
 ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797700"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Jekyll-hely közzététele az Azure statikus Web Apps előzetes verziójában
@@ -96,7 +96,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 
 1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
@@ -118,7 +118,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. A _ág_ válassza a **Master**elemet.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Részletek kitöltve":::
 
 ### <a name="build"></a>Létrehozás
 
@@ -174,13 +174,13 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. A Azure Portal _Áttekintés_ ablakában kattintson az _URL_ hivatkozásra az üzembe helyezett alkalmazás megnyitásához.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Részletek kitöltve":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

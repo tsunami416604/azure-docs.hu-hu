@@ -5,7 +5,7 @@ services: virtual-machines-windows
 author: bobbytreed
 manager: carmonm
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511160"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
@@ -189,7 +189,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 | Settings. advancedOptions. downloadMappings |Gyűjtemény |Meghatározza azokat a másodlagos helyeket, amelyekről a WMF-t le szeretné tölteni. További információkért lásd: [Azure DSC-bővítmény 2,8 és hogyan lehet leképezni a bővítmény függőségeinek letöltését a saját helyére](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
 | protectedSettings.configurationArguments |Gyűjtemény |Meghatározza a DSC-konfigurációnak átadni kívánt paramétereket. Ez a tulajdonság titkosítva van. |
 | protectedSettings.configurationUrlSasToken |sztring |Meghatározza az URL-cím eléréséhez használandó SAS-tokent **settings.configszülő. URL** határozza meg. Ez a tulajdonság titkosítva van. |
-| protectedSettings.configurationDataUrlSasToken |sztring |Meghatározza az URL-cím eléréséhez használandó SAS-tokent **settings.configurationData. URL** határozza meg. Ez a tulajdonság titkosítva van. |
+| protectedSettings.configurationDataUrlSasToken |sztring |Meghatározza az URL-cím eléréséhez használandó SAS-tokent  **settings.configurationData. URL** határozza meg. Ez a tulajdonság titkosítva van. |
 
 ## <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
@@ -275,7 +275,7 @@ A Resource Manager-sablonban a következő kód arra utasítja a virtuális gép
 
 ## <a name="example-using-referenced-azure-automation-registration-values"></a>Példa hivatkozott Azure Automation regisztrációs értékeket használó
 
-A következő példa lekéri a **RegistrationUrl** és a **RegistrationKey** az Azure Automation fiók tulajdonságaira való hivatkozással, és a **listkeys műveletének beolvasása** metódus használatával kéri le az elsődleges kulcsot (0).  Ebben a példában a **automationAccountName** és a **NodeConfigName** paramétereket adtak meg a sablonhoz.
+A következő példa lekéri a **RegistrationUrl** és a **RegistrationKey** az Azure Automation fiók tulajdonságaira való hivatkozással, és a  **listkeys műveletének beolvasása** metódus használatával kéri le az elsődleges kulcsot (0).  Ebben a példában a **automationAccountName** és a **NodeConfigName** paramétereket adtak meg a sablonhoz.
 
 ```json
 "settings": {
@@ -425,7 +425,7 @@ A "" duplikált argumentumok találhatók {0} a nyilvános és a védett configu
 - Adja meg a hiányzó tulajdonságot.
 - Távolítsa el a hiányzó tulajdonságot igénylő tulajdonságot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan használhatja a virtuálisgép-méretezési csoportokat az Azure DSC bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 - További információ a [DSC biztonságos hitelesítőadat-kezeléséről](dsc-credentials.md).

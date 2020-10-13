@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166108"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
@@ -57,9 +57,9 @@ A MSAL.NET a v 1.0 erőforrásokhoz is hozzáfér. Tekintse meg a [v 1.0 alkalma
 
 ### <a name="core-classes"></a>Alapvető osztályok
 
-- A ADAL.NET a [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) használja a biztonsági jogkivonat szolgáltatással (STS) vagy az engedélyezési kiszolgálóval való kapcsolat ábrázolására egy szolgáltatón keresztül. Éppen ellenkezőleg, a MSAL.NET az [ügyfélalkalmazások](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)körül van kialakítva. Két különálló osztályt `PublicClientApplication` biztosít:`ConfidentialClientApplication`
+- A ADAL.NET a [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) használja a biztonsági jogkivonat szolgáltatással (STS) vagy az engedélyezési kiszolgálóval való kapcsolat ábrázolására egy szolgáltatón keresztül. Éppen ellenkezőleg, a MSAL.NET az [ügyfélalkalmazások](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)körül van kialakítva. Két különálló osztályt `PublicClientApplication` biztosít: `ConfidentialClientApplication`
 
-- Jogkivonatok beszerzése: a ADAL.NET és a MSAL.NET ugyanazzal a hitelesítési hívásokkal ( `AcquireTokenAsync` és `AcquireTokenSilentAsync` ADAL.net, valamint `AcquireTokenInteractive` `AcquireTokenSilent` a MSAL.net-ben), de eltérő paraméterekkel kell rendelkezniük. Az egyik különbség az, hogy a MSAL.NET már nem kell átadnia az `ClientID` alkalmazásában az összes AcquireTokenXX-hívásban. Valójában a `ClientID` (vagy) kiépítésekor csak egyszer van `IPublicClientApplication` beállítva `IConfidentialClientApplication` .
+- Jogkivonatok beszerzése: a ADAL.NET és a MSAL.NET ugyanazzal a hitelesítési hívásokkal ( `AcquireTokenAsync` és  `AcquireTokenSilentAsync` ADAL.net, valamint `AcquireTokenInteractive` `AcquireTokenSilent` a MSAL.net-ben), de eltérő paraméterekkel kell rendelkezniük. Az egyik különbség az, hogy a MSAL.NET már nem kell átadnia az `ClientID` alkalmazásában az összes AcquireTokenXX-hívásban. Valójában a `ClientID` (vagy) kiépítésekor csak egyszer van `IPublicClientApplication` beállítva `IConfidentialClientApplication` .
 
 ### <a name="iaccount-not-iuser"></a>A IAccount nem IUser
 
@@ -101,7 +101,7 @@ catch(MsalUiRequiredException exception)
 
 A ADAL.NET a következő módon kezeli a jogcímek kivételeit:
 
-- `AdalClaimChallengeException`a szolgáltatás által kiváltott kivétel (ebből származik `AdalServiceException` ), ha egy erőforrás több jogcímet igényel a felhasználótól (például Kéttényezős hitelesítés). A `Claims` tag tartalmaz néhány JSON-kódrészletet a jogcímek közül, amelyek várhatóak.
+- `AdalClaimChallengeException` a szolgáltatás által kiváltott kivétel (ebből származik `AdalServiceException` ), ha egy erőforrás több jogcímet igényel a felhasználótól (például Kéttényezős hitelesítés). A `Claims` tag tartalmaz néhány JSON-kódrészletet a jogcímek közül, amelyek várhatóak.
 - A ADAL.NET továbbra is az ezt a kivételt fogadó nyilvános ügyfélalkalmazás hívhatja a `AcquireTokenInteractive` felülbírálást jogcím-paraméterrel. Ez a felülbírálás nem `AcquireTokenInteractive` is próbálja meg a gyorsítótárat, mert nem szükséges. Ennek az az oka, hogy a gyorsítótárban lévő jogkivonat nem rendelkezik a megfelelő jogcímek (ellenkező esetben `AdalClaimChallengeException` nem lettek elvetve). Ezért nem kell megvizsgálnia a gyorsítótárat. Vegye figyelembe, hogy a `ClaimChallengeException` WebAPI az OBO-t használó, de a `AcquireTokenInteractive` webes API-t meghívó nyilvános ügyfélprogramban kell hívni.
 - a részleteket, például a mintákat lásd: [AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception) -kezelés
 
@@ -241,7 +241,7 @@ Ezzel a módszerrel megadhatja a korábban használt frissítési jogkivonatot a
 
 Mivel ez a módszer nem jellemző forgatókönyvekhez készült, nem érhető el azonnal a `IConfidentialClientApplication` nélkül `IByRefreshToken` .
 
-Ez a kódrészlet egy bizalmas ügyfélalkalmazás egyes áttelepítési kódját jeleníti meg. `GetCachedRefreshTokenForSignedInUser`kérje le az alkalmazás egy korábbi verziójában tárolt frissítési tokent, amelyet a 2. x ADAL kihasznál. `GetTokenCacheForSignedInUser`deszerializálja a bejelentkezett felhasználó gyorsítótárát (mivel a bizalmas ügyfélalkalmazások felhasználónként egy gyorsítótárat kell rendelkezniük).
+Ez a kódrészlet egy bizalmas ügyfélalkalmazás egyes áttelepítési kódját jeleníti meg. `GetCachedRefreshTokenForSignedInUser` kérje le az alkalmazás egy korábbi verziójában tárolt frissítési tokent, amelyet a 2. x ADAL kihasznál. `GetTokenCacheForSignedInUser` deszerializálja a bejelentkezett felhasználó gyorsítótárát (mivel a bizalmas ügyfélalkalmazások felhasználónként egy gyorsítótárat kell rendelkezniük).
 
 ```csharp
 TokenCache userCache = GetTokenCacheForSignedInUser();
@@ -264,6 +264,6 @@ Ekkor megjelenik egy hozzáférési jogkivonat és egy azonosító jogkivonat, a
 
 Ezt a módszert olyan különböző integrációs forgatókönyvek esetében is használhatja, amelyeken elérhető frissítési jogkivonat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hatókörökkel [, engedélyekkel és a Microsoft Identity platform végpontjában](v2-permissions-and-consent.md) található hatókörökkel kapcsolatos további információk
