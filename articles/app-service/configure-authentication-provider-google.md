@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80519950"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Google bejelentkezés használatára
@@ -24,7 +24,7 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Alkalmazás regisztrálása a Google-ban
 
-1. Az ügyfél-azonosító és az ügyfél titkos kódjának létrehozásához kövesse a Google-beli Google-dokumentációt a [kiszolgálóoldali alkalmazásokhoz](https://developers.google.com/identity/sign-in/web/server-side-flow) . A kód módosítása nem szükséges. Csak használja a következő információkat:
+1. Az ügyfél-azonosító és az ügyfél titkos kódjának létrehozásához kövesse a Google Sign-Inban található Google-dokumentációt a [kiszolgálóoldali alkalmazások számára](https://developers.google.com/identity/sign-in/web/server-side-flow) . A kód módosítása nem szükséges. Csak használja a következő információkat:
     - Az Ön által használt **JavaScript**-forrásokhoz használja az `https://<app-name>.azurewebsites.net` alkalmazás nevét a ben *\<app-name>* .
     - A **jóváhagyott átirányítási URI**-hoz használja a következőt: `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Másolja az alkalmazás AZONOSÍTÓját és az alkalmazás titkos értékeit.
@@ -65,5 +65,5 @@ Most már készen áll a Google használatára a hitelesítéshez az alkalmazás
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 

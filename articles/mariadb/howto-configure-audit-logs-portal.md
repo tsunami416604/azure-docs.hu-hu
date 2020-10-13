@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.openlocfilehash: 30ca62305c325943e17ee574873cfbbbaee97f77
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113037"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Naplózási naplók konfigurálása és elérése a Azure Portal
@@ -67,7 +67,7 @@ A naplózás engedélyezése és konfigurálása.
 
 1. A naplókat úgy érheti el, hogy a konfigurált adattárolókban vizsgálja őket. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Azure Database for MariaDB [naplózási naplóiról](concepts-audit-logs.md)
 - Ismerje meg, hogyan konfigurálhatja a naplókat az [Azure CLI](howto-configure-audit-logs-cli.md) -ben

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544230"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Elium konfigurálása
@@ -100,11 +100,11 @@ Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához
 
     ![Alkalmazások listája a vállalati alkalmazások panelen](common/all-applications.png)
 
-1. Válassza ki a **kiépítés** lapot.
+1. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap a vállalati alkalmazások panelen](common/provisioning.png)
 
-1. Állítsa a **kiépítési módot** **automatikus**értékre.
+1. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
     ![Automatikus beállítás a kiépítési mód esetében](common/provisioning-automatic.png)
 
@@ -114,7 +114,7 @@ Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához
 
 1. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, aki megkapja a kiépítési hibákra vonatkozó értesítéseket. Ezután jelölje be az **e-mailes értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 1. Kattintson a **Mentés** gombra.
 
@@ -151,4 +151,4 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

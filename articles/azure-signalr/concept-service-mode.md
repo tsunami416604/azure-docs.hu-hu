@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514841"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Szolgáltatási mód az Azure Signaler szolgáltatásban
@@ -21,7 +21,7 @@ A szolgáltatási mód az Azure Signaler szolgáltatás egyik fontos fogalma. Ú
 
 Később is megváltoztathatja a beállítások menüben:
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="Szolgáltatási mód frissítése":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="Szolgáltatás mód kiválasztása létrehozáskor":::
 
 Az Azure Signaler szolgáltatás jelenleg három szolgáltatási módot támogat: **alapértelmezett**, **kiszolgáló** nélküli és **klasszikus**. A Signaler-erőforrás különbözőképpen viselkedik a különböző módokon. Ebből a cikkből megtudhatja, hogy milyen különbségek vannak, és hogyan választhatja ki a megfelelő szolgáltatási módot a forgatókönyv alapján.
 
@@ -29,7 +29,7 @@ Az Azure Signaler szolgáltatás jelenleg három szolgáltatási módot támogat
 
 Új jelző-erőforrás létrehozásakor az alapértelmezett mód az alapértelmezett érték a szolgáltatási mód számára. Ebben a módban az alkalmazás egy tipikus ASP.NET Core (vagy ASP.NET) jelző alkalmazásként működik, ahol olyan webkiszolgálóval rendelkezik, amely egy központot (a továbbiakban: központi kiszolgáló) üzemeltet, és az ügyfelek kétirányú, valós idejű kommunikációt használhatnak a központi kiszolgálóval. Az egyetlen különbség az ügyfél és a kiszolgáló közvetlen csatlakoztatása, az ügyfél és a kiszolgáló egyaránt a Signaler szolgáltatáshoz való csatlakozás és a szolgáltatás proxyként való használata. Alább látható egy diagram, amely az alapértelmezett üzemmódban mutatja be a tipikus alkalmazási struktúrát:
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="Az alkalmazás szerkezete az alapértelmezett módban":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="Szolgáltatás mód kiválasztása létrehozáskor":::
 
 Tehát ha van egy Signaler-alkalmazás, és integrálni szeretné a Signaler szolgáltatással, a legtöbb esetben az alapértelmezett módot kell választania.
 
@@ -59,7 +59,7 @@ A felsőbb réteg konfigurálásával kapcsolatos további információkért tek
 
 Alább látható egy diagram, amely bemutatja, hogyan működik a kiszolgáló nélküli üzemmód:
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Alkalmazás szerkezete kiszolgáló nélküli módban":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Szolgáltatás mód kiválasztása létrehozáskor":::
 
 > [!NOTE]
 > Vegye figyelembe, hogy az alapértelmezett módban REST API/Management SDK/Function kötést is használhat, hogy közvetlenül üzeneteket küldjön az ügyfeleknek, ha nem szeretne a hub-kiszolgálón átlépni. Az alapértelmezett üzemmódú ügyfélkapcsolatokat azonban továbbra is a hub-kiszolgálók kezelik, és a felsőbb rétegbeli kapcsolat nem fog működni ebben a módban.

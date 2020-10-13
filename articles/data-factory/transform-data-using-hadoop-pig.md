@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849229"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Az adatátalakítás Hadoop Pig-tevékenységgel Azure Data Factory
@@ -61,14 +61,14 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 
 | Tulajdonság            | Leírás                              | Kötelező |
 | ------------------- | ---------------------------------------- | -------- |
-| name                | A tevékenység neve                     | Yes      |
-| leírás         | A tevékenység által használt szöveg leírása | No       |
-| típus                | A kaptár tevékenység esetén a tevékenység típusa HDinsightPig. | Yes      |
-| linkedServiceName   | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Yes      |
-| Scriptlinkedservice szolgáltatás | Hivatkozás egy olyan Azure Storage társított szolgáltatásra, amely a végrehajtandó Pig-szkript tárolására szolgál. Itt csak az **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** és **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | No       |
-| scriptPath          | Adja meg a Scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt parancsfájl elérési útját. A fájl neve megkülönbözteti a kis-és nagybetűket. | No       |
-| getDebugInfo        | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | No       |
-| argumentumok           | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | No       |
+| name                | A tevékenység neve                     | Igen      |
+| leírás         | A tevékenység által használt szöveg leírása | Nem       |
+| típus                | A kaptár tevékenység esetén a tevékenység típusa HDinsightPig. | Igen      |
+| linkedServiceName   | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
+| Scriptlinkedservice szolgáltatás | Hivatkozás egy olyan Azure Storage társított szolgáltatásra, amely a végrehajtandó Pig-szkript tárolására szolgál. Itt csak az **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** és **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
+| scriptPath          | Adja meg a Scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt parancsfájl elérési útját. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem       |
+| getDebugInfo        | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
+| argumentumok           | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
 | meghatározza             | Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz. | Nem       |
 
 ## <a name="next-steps"></a>Következő lépések

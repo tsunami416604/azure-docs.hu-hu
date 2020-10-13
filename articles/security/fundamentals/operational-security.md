@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543333"
 ---
 # <a name="azure-operational-security"></a>Azure-beli működési biztonság
@@ -228,7 +228,7 @@ A Network Watcher jelenleg a következő képességekkel rendelkezik:
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Naplók</a>**– a hálózatok konfigurációjának részeként végrehajtott műveletek naplózása történik. Ezek a naplók a Azure Portalban tekinthetők meg, vagy a Microsoft-eszközök, például Power BI vagy külső gyártótól származó eszközök használatával kérhetők le. A naplók a portálon, a PowerShellen, a CLI-n és a REST API-n keresztül érhetők el. A naplókkal kapcsolatos további információkért lásd: műveletek naplózása a Resource Managerrel. A naplók az összes hálózati erőforráson végzett műveletekhez érhetők el.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-forgalom ellenőrzése</a>** – ellenőrzi, hogy egy csomag engedélyezett vagy megtagadva a flow-információk 5 rekordos csomagjainak paraméterei (cél IP-címe, forrás IP-címe, célport, forrásport és protokoll) alapján. Ha a csomagot egy hálózati biztonsági csoport megtagadja, a rendszer visszaadja a csomagot és a hálózati biztonsági csoportot, amely megtagadta a csomagot.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-forgalom ellenőrzése </a>** – ellenőrzi, hogy egy csomag engedélyezett vagy megtagadva a flow-információk 5 rekordos csomagjainak paraméterei (cél IP-címe, forrás IP-címe, célport, forrásport és protokoll) alapján. Ha a csomagot egy hálózati biztonsági csoport megtagadja, a rendszer visszaadja a csomagot és a hálózati biztonsági csoportot, amely megtagadta a csomagot.
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Következő ugrás</a>** – meghatározza a következő ugrást az Azure hálózati hálóban átirányított csomagok számára, lehetővé téve a helytelenül konfigurált, felhasználó által megadott útvonalak diagnosztizálását.
 
@@ -308,7 +308,7 @@ Az Azure AD-naplózási jelentésben szereplő események 180 napig őrződnek m
 
 Azon ügyfelek számára, akik a [naplózási események](../../active-directory/active-directory-reporting-activity-audit-logs.md) hosszabb megőrzési időtartamokra való tárolását érdeklik, a JELENTÉSKÉSZÍTÉSi API-val rendszeresen lehívhatja a naplózási eseményeket egy különálló adattárba.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk az adatvédelmet és az adatok védelmét, valamint a szervezet informatikai infrastruktúrájának kezelését segítő szoftvereket és szolgáltatásokat nyújt. A Microsoft felismeri, hogy amikor másoknak bízzák meg az adatvédelmet, a megbízhatóság szigorú biztonságot igényel. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatok biztonságossá tétele és védelme a Microsoft legfontosabb prioritása.
 
@@ -325,7 +325,7 @@ Ez a cikk ismerteti
 <ul>
 <li>A biztonsággal kapcsolatos események, naplózási és szabálysértési elemzések összegyűjtése az eszközök alapos nyomon követéséhez:</li>
 <ul>
-<li>Biztonsági testhelyzet</li>
+<li>Biztonsági helyzet</li>
 <li>Jelentős probléma</li>
 <li>Összefoglalási fenyegetések</li>
 </ul>

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333783"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak
@@ -191,7 +191,7 @@ A progresszív letöltés lehetővé teszi, hogy a teljes fájl letöltése elő
 >[!NOTE]
 >A titkosított eszközöket vissza kell fejteni, ha szeretné, hogy azok elérhetők legyenek a progresszív letöltéshez.
 
-A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Például:
+A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Példa:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 

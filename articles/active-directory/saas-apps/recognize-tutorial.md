@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Azure Active Directory integráció felismeréssel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[egyszeri bejelentkezés felismerésének beállítása](#configure-recognize-single-sign-on)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálása.
+2. Az **[egyszeri bejelentkezés beállítása](#configure-recognize-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. A **[felismerési teszt felhasználójának létrehozása](#create-recognize-test-user)** – hogy a Britta Simon partnere legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához haj
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához haj
     > [!Note]
     > Ha az **azonosító** értéke nem jelenik meg automatikusan, az azonosító értékét a szolgáltatói metaadatok URL-címének az egyszeri bejelentkezés beállításai szakaszból való megnyitásával érheti el, amelyet később az oktatóanyag **felismerési egyszeri bejelentkezés konfigurálása** című szakaszában talál. A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték lekéréséhez forduljon az [ügyfél-támogatási csapathoz](mailto:support@recognizeapp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -133,21 +133,21 @@ Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához haj
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-recognize-single-sign-on"></a>Az egyszeri bejelentkezés felismerésének konfigurálása
+### <a name="configure-recognize-single-sign-on"></a>Egyetlen Sign-On felismerésének konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a felismerő bérlőre rendszergazdaként.
 
 2. A jobb felső sarokban kattintson a **menü**elemre. Válassza a **vállalati rendszergazda**lehetőséget.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**elemre.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. Hajtsa végre az alábbi lépéseket az **SSO-beállítások** szakaszban.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_002.png)
     
     a. Az **SSO engedélyezése**beállításnál válassza **a be**lehetőséget.
 
@@ -163,11 +163,11 @@ Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához haj
 
 5. Az **SSO-beállítások** szakasz mellett másolja az URL-címet a **szolgáltatói metaadatok URL-címe**alatt.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. A metaadat-dokumentum letöltéséhez nyissa meg a **metaadatok URL-hivatkozását** egy üres böngésző alatt. Ezután másolja a EntityDescriptor értéket (entityID) a fájlból, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfigurációban** Azure Portalon.
     
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -191,7 +191,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

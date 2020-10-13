@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530386"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
@@ -37,10 +37,10 @@ Tranzakciós csomópont hozzáadása:
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Név | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
+    | Name (Név) | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
     | Jelszó | Állítson be egy erős jelszót. Használja a jelszót a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való eléréséhez.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
     Az új tranzakciós csomópont kiépítés körülbelül 10 percet vesz igénybe. A további tranzakciós csomópontok költségekkel járnak. A költségekkel kapcsolatos további információkért lásd: az [Azure díjszabása](https://aka.ms/ABSPricing).
 
@@ -67,11 +67,11 @@ Az Azure AD hozzáférés-vezérlésének engedélyezése a végpontnak:
 
     ![IAM szerepkör hozzáadása](./media/configure-transaction-nodes/add-role.png)
 
-    | Beállítás | Műveletek |
+    | Beállítás | Művelet |
     |---------|-------------|
     | Szerepkör | Válassza a **tulajdonos**, **közreműködő**vagy **olvasó**lehetőséget.
     | Hozzáférés hozzárendelése ehhez | Válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget.
-    | Válassza ezt: | Keresse meg azt a felhasználót, csoportot vagy szolgáltatásnevet, amelyet hozzá szeretne adni.
+    | Kiválasztás | Keresse meg azt a felhasználót, csoportot vagy szolgáltatásnevet, amelyet hozzá szeretne adni.
 
 1. A szerepkör-hozzárendelés hozzáadásához válassza a **Mentés** lehetőséget.
 

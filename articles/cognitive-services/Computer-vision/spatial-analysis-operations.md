@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628213"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
-A térbeli elemzések lehetővé teszik a valós idejű folyamatos átvitelű videók elemzését a kamera-eszközökről. Minden konfigurált kamera-eszközön a térbeli elemzés műveletei az Azure IoT Hub-példányának küldött JSON-üzenetek kimeneti streamjét fogják eredményezni. 
+A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű streamelését. A térbeli elemzés műveletei minden egyes konfigurált kameraeszközön létrehozzák az Azure IoT Hub-példánynak küldött JSON-üzenetek kimeneti streamjét. 
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
@@ -729,7 +729,7 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
 |---------|---------|---------|
 | `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)

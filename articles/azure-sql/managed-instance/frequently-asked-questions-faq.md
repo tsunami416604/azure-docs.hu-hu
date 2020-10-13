@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
 ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627618"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
@@ -299,7 +299,7 @@ Ez nem kötelező. [Létrehozhat egy virtuális hálózatot az Azure SQL felügy
 
 Nem. Jelenleg nem támogatott olyan felügyelt példány elhelyezése olyan alhálózatban, amely már tartalmaz más típusú erőforrásokat.
 
-## <a name="connectivity"></a>Kapcsolatok 
+## <a name="connectivity"></a>Kapcsolat 
 
 **Tudok csatlakozni a felügyelt példányhoz IP-cím használatával?**
 

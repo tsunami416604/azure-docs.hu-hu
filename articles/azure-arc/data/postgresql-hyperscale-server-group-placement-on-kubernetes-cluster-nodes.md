@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628417"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású Server Group elhelyezése
@@ -355,6 +355,6 @@ Ezt többféleképpen is elérheti:
 - Az Azure arc-kompatibilis postgres horizontális felskálázása a nagy kapacitású-Kubernetes nélkül: a megfelelő erőforrás-korlátozásokat (a kérelmeket és a korlátozásokat a memóriára és a virtuális mag) a Kubernetes üzemeltetett munkaterheléseken (Azure arc-kompatibilis PostgreSQL nagy kapacitású) a Kubernetes-ben engedélyezheti a munkaterhelések elhelyezését, és csökkentheti az erőforrás-tartalom kockázatát. Meg kell győződnie arról, hogy a Kubernetes-fürt fizikai csomópontjainak fizikai jellemzői betartják a definiált erőforrások korlátozásait. Azt is biztosítania kell, hogy az egyensúly maradjon, ahogy a számítási feladatok idővel fejlődnek, vagy ha a Kubernetes-fürtben több számítási feladat van hozzáadva.
 - A hüvelyek elhelyezésének befolyásolásához használja a Kubernetes mechanizmusokat (Pod választó, affinitás, affinitás).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Több feldolgozó csomópont hozzáadásával bővítheti az Azure arc-alapú PostgreSQL nagy kapacitású-kiszolgáló csoportját](scale-out-postgresql-hyperscale-server-group.md)

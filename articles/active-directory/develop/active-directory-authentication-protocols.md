@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80884681"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft Identity platform hitelesítési protokollok
@@ -31,7 +31,7 @@ A Microsoft Identity platform számos, a legszélesebb körben használt hiteles
 * [OpenID Connect 1,0](v2-protocols-oidc.md) – Ismerje meg, hogyan használható az OAuth 2,0, hitelesítési protokoll a hitelesítéshez.
 * [Szolgáltatások közötti hívások ügyfél-hitelesítő adatokkal](v2-oauth2-client-creds-grant-flow.md) – megtudhatja, hogyan használhatja a OAuth 2,0-ügyfél hitelesítő adatait a szolgáltatás és a szolgáltatás közötti hívások megadására.
 * [A szolgáltatás és a szolgáltatás közötti hívások hívása folyamaton](v2-oauth2-on-behalf-of-flow.md) keresztül – megtudhatja, hogyan használhatja a OAuth 2,0-et a szolgáltatás és a szolgáltatás közötti hívásokhoz.
-* [SAML protokoll referenciája](active-directory-saml-protocol-reference.md) – a Microsoft Identity platform egyszeri bejelentkezéses és egyszeri kijelentkezési SAML-profiljainak megismerése.
+* [SAML protokoll referenciája](active-directory-saml-protocol-reference.md) – megismerheti a Microsoft Identity platform egyetlen Sign-On és egyszeri kijelentkezési SAML-profilját.
 
 ## <a name="see-also"></a>Lásd még
 

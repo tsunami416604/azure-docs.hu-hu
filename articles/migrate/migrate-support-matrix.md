@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
 ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627950"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
@@ -21,7 +21,7 @@ A táblázat összefoglalja a támogatott felderítési, felmérési és áttele
 
 **Üzembe helyezés** | **Részletek** 
 --- | --- 
-**Felfedezés** | Felderítheti a gépek metaadatait és a dinamikus teljesítményadatokat is.
+**Felderítés** | Felderítheti a gépek metaadatait és a dinamikus teljesítményadatokat is.
 **Alkalmazás – felderítés** | A VMware virtuális gépeken futó alkalmazásokat, szerepköröket és szolgáltatásokat is felderítheti. Ez a funkció jelenleg csak felderítésre korlátozódik. Az értékelés jelenleg a számítógép szintjén történik. Még nem kínálunk alkalmazás-, szerepkör-vagy szolgáltatás-alapú értékeléseket. 
 **Értékelés** | A VMware virtuális gépeken, Hyper-V virtuális gépeken és fizikai kiszolgálókon futó helyszíni munkaterhelések és adatok értékelése. Azure Migrate Server Assessment, Microsoft Data Migration Assistant (DMA), valamint más eszközök és ISV-ajánlatok használatával történő Értékelés.
 **Migrálás** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken, a fizikai kiszolgálókon és a felhőalapú virtuális gépeken futó számítási feladatokat és az Azure-ba. Migrálás Azure Migrate Server Assessment és Azure Database Migration Service (DMS) használatával, valamint más eszközökkel és ISV-ajánlatokkal.
@@ -81,7 +81,7 @@ Azure Migrate projektet a nyilvános felhőben számos földrajzi helyen hozhat 
 - A projekt földrajza csak a felderített metaadatok tárolására szolgál.
 - Projekt létrehozásakor ki kell választania egy földrajzot. A projekt és a kapcsolódó erőforrások a földrajz egyik régiójában jönnek létre. A régiót a Azure Migrate szolgáltatás foglalta le.
 
-**Földrajz** | **Metaadatok tárolási helye**
+**Földrajzi hely** | **Metaadatok tárolási helye**
 --- | ---
 Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
 Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
@@ -101,7 +101,7 @@ Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
 ## <a name="supported-geographies-azure-government"></a>Támogatott földrajzi területek (Azure Government)
 
-**Feladat** | **Földrajz** | **Részletek**
+**Feladat** | **Földrajzi hely** | **Részletek**
 --- | --- | ---
 Projekt létrehozása | Egyesült Államok | A metaadatok tárolása US Gov Arizona, US Gov Virginia
 Cél értékelése | Egyesült Államok | Célcsoportok: US Gov Arizona, US Gov Virginia, US Gov Texas
@@ -122,10 +122,10 @@ Cél replikációja | Egyesült Államok | Célcsoportok: US DoD – középső 
 
 A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információ](whats-new.md).
+- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információk](whats-new.md).
 - **Előző verzió**: a Azure Migrate korábbi verzióját használó ügyfelek esetében (csak a helyszíni VMWare virtuális gépek felmérése támogatott), most az aktuális verziót kell használnia. Az előző verzióban nem hozhat létre új Azure Migrate projekteket, és nem végezhet új felfedezéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [VMWare virtuális gépek kiértékelése](tutorial-assess-vmware.md) áttelepítéshez.
 - [Vizsgálja át a Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) az áttelepítéshez.

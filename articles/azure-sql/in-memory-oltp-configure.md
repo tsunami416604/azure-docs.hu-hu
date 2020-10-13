@@ -1,6 +1,6 @@
 ---
-title: A memóriában tárolt OLTP javítja az SQL tranzakció Teljesítményfigyelőt
-description: A memóriában tárolt OLTP használatával javíthatja a tranzakciós teljesítményt a Azure SQL Database és az Azure SQL felügyelt példányainak meglévő adatbázisaiban.
+title: In-Memory OLTP javítja az SQL tranzakció Teljesítményfigyelőt
+description: In-Memory OLTP a Azure SQL Database és az Azure SQL felügyelt példányának meglévő adatbázisaiban lévő tranzakciós teljesítmény javítása érdekében.
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
@@ -11,13 +11,13 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619746"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>A memóriában tárolt OLTP használatával javíthatja az alkalmazás teljesítményét a Azure SQL Database és az Azure SQL felügyelt példányain
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP használatával javíthatja az alkalmazás teljesítményét a Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 A [memóriában tárolt OLTP](in-memory-oltp-overview.md) felhasználható a tranzakciók feldolgozásának, az adatok betöltésének és az átmeneti adatkörnyezetek teljesítményének javítására, [prémium és üzletileg kritikus rétegbeli](database/service-tiers-vcore.md) adatbázisokban, az árképzési szint növelése nélkül.
@@ -25,11 +25,11 @@ A [memóriában tárolt OLTP](in-memory-oltp-overview.md) felhasználható a tra
 > [!NOTE]
 > Ismerje meg [, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
-Kövesse az alábbi lépéseket a memóriában lévő OLTP a meglévő adatbázisban való elfogadásához.
+Kövesse az alábbi lépéseket In-Memory OLTP a meglévő adatbázisban való elfogadásához.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. lépés: Győződjön meg arról, hogy prémium és üzletileg kritikus szintű adatbázist használ
 
-A memóriában tárolt OLTP csak prémium és üzletileg kritikus rétegbeli adatbázisokban támogatott. A memóriában tárolt érték akkor támogatott, ha a visszaadott eredmény 1 (nem 0):
+In-Memory OLTP csak prémium és üzletileg kritikus szintű adatbázisokban támogatott. A In-Memory akkor támogatott, ha a visszaadott eredmény 1 (nem 0):
 
 ```sql
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -37,16 +37,16 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 *Xtp* a *szélsőséges tranzakció-feldolgozáshoz*
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: az áttelepíteni kívánt objektumok azonosítása a memóriában lévő OLTP
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: az áttelepíteni kívánt objektumok azonosítása In-Memory OLTP
 
-A SSMS tartalmaz egy **tranzakciós teljesítmény-elemzési áttekintő** jelentést, amelyet egy aktív számítási feladattal rendelkező adatbázison lehet futtatni. A jelentés azokat a táblákat és tárolt eljárásokat azonosítja, amelyeket a rendszer a memóriában lévő OLTP való áttelepítésre jelöltek.
+A SSMS tartalmaz egy **tranzakciós teljesítmény-elemzési áttekintő** jelentést, amelyet egy aktív számítási feladattal rendelkező adatbázison lehet futtatni. A jelentés azokat a táblákat és tárolt eljárásokat azonosítja, amelyek In-Memory OLTP való áttelepítésre jelöltek.
 
 A SSMS-ben a jelentés létrehozásához:
 
 * A **Object Explorer**kattintson a jobb gombbal az adatbázis-csomópontra.
 * Kattintson a **jelentések**  >  **szabványos jelentések**  >  **tranzakciók teljesítményének elemzése áttekintés**elemre.
 
-További információ: annak [meghatározása, hogy egy tábla vagy tárolt eljárás a memóriában lévő OLTP legyen-e portolva](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
+További információ: [annak meghatározása, hogy egy tábla vagy tárolt eljárás In-Memory OLTP legyen-e portolva](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: összehasonlítható tesztelési adatbázis létrehozása
 
@@ -83,8 +83,8 @@ Az áttelepítési lehetőség használata:
 3. A varázslóban kattintson az áttelepítés ellenőrzése elemre (vagy a **tovább** gombra) annak **ellenőrzéséhez** , hogy a tábla rendelkezik-e olyan nem támogatott funkciókkal, amelyek nem támogatottak a memóriára optimalizált táblákban. További információkért lásd:
 
    * Memória- *optimalizálási ellenőrzőlista* a [memória-optimalizálási tanácsadóban](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor).
-   * [A Transact-SQL-szerkezetek a memóriában tárolt OLTP nem támogatottak](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
-   * [Migrálás a memóriában tárolt OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
+   * [A Transact-SQL-szerkezetek In-Memory OLTP nem támogatottak](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
+   * [Áttelepítés In-Memory OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
 4. Ha a tábla nem rendelkezik nem támogatott funkciókkal, az Advisor a tényleges sémát és az adatáttelepítést is elvégezheti Önnek.
 
 ### <a name="manual-t-sql"></a>Kézi T-SQL
@@ -109,7 +109,7 @@ INSERT INTO <new_memory_optimized_table>
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>5. lépés (nem kötelező): tárolt eljárások migrálása
 
-A memórián belüli szolgáltatás a jobb teljesítmény érdekében a tárolt eljárások módosítására is képes.
+A In-Memory funkció egy tárolt eljárást is módosíthat a jobb teljesítmény érdekében.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>A natív módon lefordított tárolt eljárásokkal kapcsolatos megfontolások
 
@@ -157,7 +157,7 @@ Az áttelepítési lépések a következők:
 
 ## <a name="step-6-run-your-workload-in-test"></a>6. lépés: a számítási feladatok futtatása a tesztben
 
-Futtasson munkaterhelést a tesztelési adatbázisban, amely hasonló az éles adatbázisban futó munkaterheléshez. Ez azt mutatja be, hogy milyen teljesítményt érhet el a memóriában lévő szolgáltatás használata a táblák és a tárolt eljárások esetében.
+Futtasson munkaterhelést a tesztelési adatbázisban, amely hasonló az éles adatbázisban futó munkaterheléshez. Ennek során meg kell jelennie a In-Memory funkció által a táblák és tárolt eljárások esetében elért teljesítménybeli nyereségnek.
 
 A számítási feladatok fő attribútumai a következők:
 
@@ -170,9 +170,9 @@ A hálózati késés csökkentése érdekében futtassa a tesztet ugyanabban az 
 
 ## <a name="step-7-post-implementation-monitoring"></a>7. lépés: a megvalósítás utáni figyelés
 
-Gondolja át a memóriában lévő megvalósítások teljesítménybeli hatásait az éles környezetben:
+Tekintse át a In-Memory megvalósításának teljesítménybeli hatásait az éles környezetben:
 
-* [Memóriabeli tárolás figyelése](in-memory-oltp-monitor-space.md).
+* [In-Memory tároló figyelése](in-memory-oltp-monitor-space.md).
 * [Figyelés a dinamikus felügyeleti nézetek használatával](database/monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

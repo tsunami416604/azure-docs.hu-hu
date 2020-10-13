@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408361"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Biztonság-ellenőrzés: leltár-és eszközkezelés
@@ -38,7 +38,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.2 | 1.5 | Ügyfél |
+| 6,2 | 1.5 | Ügyfél |
 
 Címkéket alkalmazhat az Azure-erőforrásokhoz, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
@@ -94,7 +94,7 @@ Az Azure-beli virtuális gépek Leltározásával automatizálhatja a Virtual Ma
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 6.7 | 2.5 | Ügyfél |
+| 6.7 | 2,5 | Ügyfél |
 
 A Virtual Machines-ra telepített összes szoftver azonosításához használja a Azure Security Center fájl integritásának figyelése (Change Tracking) és a virtuális gépek leltárát. A jogosulatlan szoftverek eltávolításához saját eljárást is alkalmazhat. Harmadik féltől származó megoldást is használhat a nem jóváhagyott szoftverek azonosítására.
 

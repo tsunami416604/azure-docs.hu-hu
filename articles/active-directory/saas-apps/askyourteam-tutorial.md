@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713813"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AskYourTeam
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<COMPANY>.app.askyourteam.com/login`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-értékekkel, amelyeket az oktatóanyag későbbi részében ismertet.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és Sign-On URL-értékekkel, amelyeket az oktatóanyag későbbi részében ismertet.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -139,13 +139,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **beállítások szerkesztése**elemre.
 
-    ![Képernyőfelvétel: az egyszeri bejelentkezési üzenet, amely a beállítások szerkesztése gombot tartalmazza.](./media/askyourteam-tutorial/configure2.png)
+    ![A képernyőképen az egyetlen Sign-On üzenet jelenik meg a beállítások szerkesztése gombbal.](./media/askyourteam-tutorial/configure2.png)
 
-1. Az **egyszeri bejelentkezési integráció szerkesztése** oldalon hajtsa végre a következő lépéseket: 
+1. Az **egyetlen Sign-On integráció szerkesztése** lapon hajtsa végre a következő lépéseket: 
 
-    ![A képernyőképen az egyszeri bejelentkezéses integráció szerkesztése látható, ahol megadhatja a lépés értékeit.](./media/askyourteam-tutorial/configure3.png)
+    ![A képernyőképen az önálló Sign-On-integráció szerkesztése látható, ahol megadhatja a lépés értékeit.](./media/askyourteam-tutorial/configure3.png)
 
-    a. Az **SAML egyszeri bejelentkezési szolgáltatás URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
+    a. Az **SAML Single Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
     b. Az **SAML-entitás azonosítója** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 

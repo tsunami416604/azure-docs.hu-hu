@@ -11,10 +11,10 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
 ms.openlocfilehash: 20fa52febaa42850609f3f793d6f4aa4ae2704a6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626326"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
@@ -554,7 +554,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
+1. Válassza a __Felülvizsgálat + létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -684,7 +684,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

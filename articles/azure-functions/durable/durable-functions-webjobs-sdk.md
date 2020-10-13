@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87093000"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions futtatása webjobsként
@@ -27,7 +27,7 @@ Ez a cikk azt feltételezi, hogy már ismeri a webjobs SDK, a C# Azure Functions
 
 * [Ismerkedés a webjobs SDK-val](../../app-service/webjobs-sdk-get-started.md)
 * [Az első függvény létrehozása a Visual Studio használatával](../functions-create-your-first-function-visual-studio.md)
-* [Tartós függvények](durable-functions-sequence.md)
+* [Durable Functions](durable-functions-sequence.md)
 
 A cikkben szereplő lépések végrehajtásához:
 
@@ -88,7 +88,7 @@ config.UseDurableTask(new DurableTaskExtension
 };
 ```
 
-Az objektumban megadható tulajdonságok listáját itt `DurableTaskExtension` tekintheti [meg:host.js](../functions-host-json.md#durabletask).
+Az objektumban megadható tulajdonságok listáját itt `DurableTaskExtension` tekintheti [ meg:host.js](../functions-host-json.md#durabletask).
 
 A `Main` metódus a naplózási szolgáltatók beállításának helyszíne is. A következő példa a konzolt és a Application Insights szolgáltatót konfigurálja.
 

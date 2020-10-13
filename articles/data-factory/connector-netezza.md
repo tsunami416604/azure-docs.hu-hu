@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84216387"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Adatok másolása a Netezza a Azure Data Factory használatával
@@ -122,7 +122,7 @@ Az adatok Netezza való másolásához állítsa az adatkészlet **Type (típus*
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **NetezzaTable** | Igen |
-| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
@@ -165,7 +165,7 @@ Az adatok Netezza való másolásához állítsa a **forrás** típusát a máso
 | partitionUpperBound | Az adatmásolásra szolgáló partíciós oszlop maximális értéke. <br>Akkor alkalmazza, ha a partíció lehetőség van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához, `?AdfRangePartitionUpbound` a WHERE záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Netezza](#parallel-copy-from-netezza) szakaszát. | Nem |
 | partitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához, `?AdfRangePartitionLowbound` a WHERE záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Netezza](#parallel-copy-from-netezza) szakaszát. | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -243,6 +243,6 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálá
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

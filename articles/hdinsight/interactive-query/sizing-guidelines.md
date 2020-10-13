@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83664934"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Interaktív lekérdezési fürt méretezési útmutatója az Azure HDInsight
@@ -30,7 +30,7 @@ Ez a dokumentum ismerteti a HDInsight interaktív lekérdezési fürt (LLAP) mé
 
 Az ajánlott konfigurációk értéke a D14 v2 típusú feldolgozó csomóponton alapul.
 
-| Kulcs | Érték | Description |
+| Kulcs | Érték | Leírás |
 |---|---|---|
 | fonal. nodemanager. Resource. Memory – MB | 102400 (MB) | Teljes memória (MB-ban megadva) a csomóponton lévő összes fonal-tárolóhoz. |
 | fonal. Scheduler. maximális kiosztása – MB | 102400 (MB) | Az RM-on lévő összes Container-kérelem maximális kiosztása (MB). Az ennél az értéknél nagyobb memória-kérelmek nem lépnek érvénybe. |
@@ -75,13 +75,13 @@ Az alapértelmezett HDInsight-fürt négy LLAP-démont futtat négy munkavégző
 
 ### <a name="tezamresourcememorymb-hivetezcontainersize"></a>Tez. am. Resource. Memory. MB, kaptár. TEZ. Container. size
 
-`tez.am.resource.memory.mb`meghatározza a TEZ-alkalmazás fő méretét.  
+`tez.am.resource.memory.mb` meghatározza a TEZ-alkalmazás fő méretét.  
 Az ajánlott érték **4096 MB**.
 
-`hive.tez.container.size`meghatározza a TEZ-tárolóhoz megadott memória mennyiségét. Ezt az értéket meg kell adni a fonal minimális mérete ( `yarn.scheduler.minimum-allocation-mb` ) és a fonal maximális mérete () között `yarn.scheduler.maximum-allocation-mb` .  
+`hive.tez.container.size` meghatározza a TEZ-tárolóhoz megadott memória mennyiségét. Ezt az értéket meg kell adni a fonal minimális mérete ( `yarn.scheduler.minimum-allocation-mb` ) és a fonal maximális mérete () között `yarn.scheduler.maximum-allocation-mb` .  
 Ajánlott **4096 MB**-ra beállítani.  
 
-Az általános szabály, hogy a processzorok mennyisége meghaladja a processzorok mennyiségét, a tárolók esetében pedig egy processzort kell figyelembe venni. `Rreserve`a LLAP démon memóriájának megadása előtt a csomóponton található AMs-TEZ számának memóriája. Ha például két TEZ AMs-t használ (4 GB-ot) egy csomóponton, 82 GB-ot kell kiadnia a 90 GB-nál a LLAP démon számára, és 8 GB-ot kell kiszolgálni két TEZ AMs-hez.
+Az általános szabály, hogy a processzorok mennyisége meghaladja a processzorok mennyiségét, a tárolók esetében pedig egy processzort kell figyelembe venni. `Rreserve` a LLAP démon memóriájának megadása előtt a csomóponton található AMs-TEZ számának memóriája. Ha például két TEZ AMs-t használ (4 GB-ot) egy csomóponton, 82 GB-ot kell kiadnia a 90 GB-nál a LLAP démon számára, és 8 GB-ot kell kiszolgálni két TEZ AMs-hez.
 
 ### <a name="yarnschedulercapacityrootllapcapacity"></a>fonál. Scheduler. Capacity. root. llap. Capacity
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80876657"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Tároló üzembe helyezése és futtatása az Azure Container Instancesben
@@ -30,17 +30,17 @@ A recept bármilyen Cognitive Services tárolóval működik. A recept használa
 * Kognitív szolgáltatás **kulcsa** – a kulcsok az Azure-erőforrás **kulcsok** oldalán találhatók. Csak a két kulcs egyikét kell megadnia. A kulcs 32 alfanumerikus karakterekből álló karakterlánc.
 * Egyetlen Cognitive Services tároló a helyi gazdagépen (a számítógépen). Győződjön meg arról, hogy a következőket teheti:
   * Húzza le a rendszerképet egy `docker pull` paranccsal.
-  * Futtassa a helyi tárolót sikeresen az összes szükséges konfigurációs beállítással `docker run` a paranccsal.
+  * Futtassa a helyi tárolót sikeresen az összes szükséges konfigurációs beállítással a `docker run` paranccsal.
   * Hívja meg a tároló végpontját, válaszoljon a HTTP-2xx és egy JSON-válaszra.
 
-A szögletes zárójelben `<>`lévő összes változót a saját értékeivel kell helyettesíteni. Ez a csere tartalmazza a szögletes zárójeleket.
+A szögletes zárójelben lévő összes változót `<>` a saját értékeivel kell helyettesíteni. Ez a csere tartalmazza a szögletes zárójeleket.
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>A Container-példány használata
 
-1. Válassza ki az **áttekintést** , és másolja ki az IP-címet. Ez egy numerikus IP-cím lesz, `55.55.55.55`például:.
-1. Nyisson meg egy új böngésző fület, és használja az IP-címet `http://<IP-address>:5000 (http://55.55.55.55:5000`, például:). Ekkor megjelenik a tároló kezdőlapja, amely arról tájékoztatja, hogy a tároló fut.
+1. Válassza ki az **áttekintést** , és másolja ki az IP-címet. Ez egy numerikus IP-cím lesz, például: `55.55.55.55` .
+1. Nyisson meg egy új böngésző fület, és használja az IP-címet, például: `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Ekkor megjelenik a tároló kezdőlapja, amely arról tájékoztatja, hogy a tároló fut.
 
 1. Válassza ki a **szolgáltatás API leírása** elemet a tárolóhoz tartozó felvágási oldal megtekintéséhez.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236654"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Gyakori kérdések (GYIK) a hibrid FIDO2 biztonsági kulcsokról az Azure AD-ben (előzetes verzió)
@@ -185,7 +185,7 @@ Az Azure AD Kerberos-kiszolgáló egy helyszíni AD DS-környezetben, tartomány
 
 * *CN = AzureADKerberos, OU = tartományvezérlők,\<domain-DN>*
     
-    Egy *számítógép* -objektum, amely a AD DS írásvédett tartományvezérlőjét jelöli. Ehhez az objektumhoz nem tartozik számítógép társítva. Ehelyett egy tartományvezérlő logikai ábrázolása.
+    Egy *számítógép* -objektum, amely a AD DS Read-Only tartományvezérlőjét jelöli. Ehhez az objektumhoz nem tartozik számítógép társítva. Ehelyett egy tartományvezérlő logikai ábrázolása.
 
 * *CN = krbtgt_AzureAD, CN = felhasználók,\<domain-DN>*
 

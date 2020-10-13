@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530896"
 ---
-# <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
+# <a name="how-to-use-custom-allocation-policies"></a>Egyéni kiosztási szabályzatok használata
 
 Az egyéni foglalási szabályzatok részletesebben szabályozzák, hogy az eszközök hogyan legyenek hozzárendelve az IoT hubhoz. Ezt egy [Azure-függvény](../azure-functions/functions-overview.md) egyéni kódjának használatával végezheti el az eszközök IoT-hubhoz való hozzárendeléséhez. Az eszköz kiépítési szolgáltatása meghívja az Azure-függvény kódját, amely az eszközre és a regisztrációra vonatkozó összes releváns információt megadja. A rendszer végrehajtja a függvény kódját, és az eszköz kiépítési IoT hub-információit adja vissza.
 

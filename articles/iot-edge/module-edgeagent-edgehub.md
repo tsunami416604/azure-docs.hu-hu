@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80546184"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai
@@ -55,7 +55,7 @@ A rendszer meghívja a IoT Edge ügynökhöz tartozó modult, `$edgeAgent` és �
 | modulok. {moduleId}. állapot | {"fut" \| "leállítva"} | Igen |
 | modulok. {moduleId}. restartPolicy | {"soha" \| "on-failure" " \| on-inhealth" " \| mindig"} | Igen |
 | modulok. {moduleId}. imagePullPolicy | {"on-create" \| "soha"} | Nem |
-| modulok. {moduleId}. env | A modulnak átadandó környezeti változók listája. A formátum`"<name>": {"value": "<value>"}` | Nem |
+| modulok. {moduleId}. env | A modulnak átadandó környezeti változók listája. A formátum `"<name>": {"value": "<value>"}` | Nem |
 | modulok. {moduleId}. Settings. rendszerkép | A modul rendszerképének URI-ja. | Igen |
 | modulok. {moduleId}. Settings. createOptions | Egy sztringesített JSON, amely a modul-tároló létrehozásához szükséges beállításokat tartalmazza. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
 | modulok. {moduleId}. Configuration. id | A modult üzembe helyező központi telepítés azonosítója. | IoT Hub beállítja ezt a tulajdonságot, ha a jegyzékfájlt központi telepítés használatával alkalmazza a rendszer. Nem része az üzembe helyezési jegyzéknek. |
@@ -80,8 +80,8 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságokból másolt a
 | lastDesiredVersion | Ez az egész szám a IoT Edge ügynök által feldolgozott kívánt tulajdonságok utolsó verziójára hivatkozik. |
 | lastDesiredStatus. code | Ez az állapotkód a IoT Edge ügynök által látott utolsó kívánt tulajdonságokra utal. Megengedett értékek: `200` sikeres, `400` Érvénytelen konfiguráció, `412` érvénytelen séma-verzió, `417` a kívánt tulajdonságok üresek, `500` nem sikerült |
 | lastDesiredStatus. Description | Az állapot szövegének leírása |
-| deviceHealth | `healthy`Ha az összes modul futtatókörnyezeti állapota `running` vagy vagy `stopped` , `unhealthy` máskülönben |
-| configurationHealth. {deploymentId}. Health | `healthy`Ha az üzemelő példány ({deploymentId}) által beállított összes modul futtatókörnyezeti állapota vagy `running` vagy `stopped` , `unhealthy` máskülönben |
+| deviceHealth | `healthy` Ha az összes modul futtatókörnyezeti állapota `running` vagy vagy `stopped` , `unhealthy` máskülönben |
+| configurationHealth. {deploymentId}. Health | `healthy` Ha az üzemelő példány ({deploymentId}) által beállított összes modul futtatókörnyezeti állapota vagy `running` vagy `stopped` , `unhealthy` máskülönben |
 | Runtime. platform. OS | Az eszközön futó operációs rendszer jelentése |
 | Runtime. platform. Architecture | A CPU architektúrájának jelentése az eszközön |
 | systemModules.edgeAgent.runtimeStatus | IoT Edge ügynök jelentett állapota: {"nem megfelelő" állapotú "" nem megfelelő " \| } |

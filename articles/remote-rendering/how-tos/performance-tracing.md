@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021160"
 ---
 # <a name="create-client-side-performance-traces"></a>Ügyféloldali teljesítménykövetés létrehozása
@@ -81,7 +81,7 @@ A nyomkövetés HoloLens való rögzítéséhez indítsa el az eszközt, és adj
 
 1. A bal oldalon navigáljon a *teljesítmény > a teljesítmény nyomon követése*elemre.
 1. **Egyéni profilok** kiválasztása
-1. Kattintson**:::no-loc text="Browse...":::**
+1. Kattintson **:::no-loc text="Browse...":::**
 1. Válassza ki a *AzureRemoteRenderingNetworkProfiling. wprp*fájlt. Ez a fájl az ARR SDK-ban található az *eszközök/ETLProfiles*területen.
 1. Kattintson a **Nyomkövetés indítása** elemre
 1. A HoloLens most már rögzíti a nyomkövetést. Győződjön meg arról, hogy aktiválja a vizsgálni kívánt teljesítménnyel kapcsolatos problémákat. Ezután kattintson a **nyomkövetés leállítása**elemre.

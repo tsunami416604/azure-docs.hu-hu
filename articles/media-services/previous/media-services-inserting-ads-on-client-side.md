@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89263569"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések beszúrása az ügyféloldali oldalon
@@ -353,7 +353,7 @@ a **endConditions** elemek is tartalmaznak `<condition>` . Ha egy feltétel igaz
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>A videolejátszó – ad Interface Definition (VPAID) használata
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>A video Player-Ad Interface Definition (VPAID) használata
 A VPAID egy olyan API, amely lehetővé teszi, hogy a futtatható ad-egységek egy videolejátszó használatával kommunikáljanak. Ez lehetővé teszi az igen interaktív ad-élményt. A felhasználó együttműködhet az ad-vel, és az ad reagálhat a megjelenítőben végrehajtott műveletekre. Előfordulhat például, hogy az ad olyan gombokat jelenít meg, amelyek lehetővé teszik, hogy a felhasználó további információkat vagy az ad egy hosszabb verzióját megtekinthesse. A videolejátszónak támogatnia kell a VPAID API-t, és a végrehajtható ad-nek meg kell valósítania az API-t. Amikor egy játékos egy ad-kiszolgálótól kér egy ad-kiszolgálót, a kiszolgáló egy olyan nagy választal válaszolhat, amely tartalmaz egy VPAID ad-t.
 
 A kód olyan végrehajtható ad-t hoz létre, amelyet egy olyan futtatókörnyezeti környezetben kell végrehajtani, mint amilyen például az Adobe Flash™ vagy a JavaScript, amely egy böngészőben végrehajtható. Ha egy ad-kiszolgáló egy VPAID ad-t tartalmazó hatalmas választ ad vissza, az elem apiFramework attribútumának `<MediaFile>` "VPAID" értékűnek kell lennie. Ez az attribútum azt adja meg, hogy a foglalt ad egy VPAID végrehajtható ad. A Type attribútumot a végrehajtható fájl MIME-típusára kell beállítani, például "application/x-shockwave-flash" vagy "application/x-JavaScript". A következő XML-kódrészlet `<MediaFile>` egy VPAID végrehajtható ad-t tartalmazó hatalmas válasz elemét jeleníti meg.

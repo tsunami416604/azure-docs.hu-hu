@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions, devx-track-js
 ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333290"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
@@ -158,7 +158,7 @@ A opencensus-Python SDK betöltési végpontjának módosításával kapcsolatos
 
 Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) és az [Azure China](/azure/china/resources-developer-guide).
 
-|Region |  Végpont neve | Érték |
+|Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetria-csatorna | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (élő metrikák) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -170,7 +170,7 @@ Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government]
 Ha jelenleg a "api.applicationinsights.io"-n keresztül hozzáférő [Application Insights Rest APIt](https://dev.applicationinsights.io/
 ) használja, akkor a régió helyi végpontját kell használnia:
 
-|Region |  Végpont neve | Érték |
+|Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
 | Azure China | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

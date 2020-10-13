@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan lehet megtekinteni a meglévő rendszer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115111"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Event Grid rendszertémakörök létrehozása, megtekintése és kezelése a Azure Portal
@@ -35,7 +35,7 @@ Az Azure-erőforrásokhoz (Storage-fiókhoz, Event Hubs névtérhez stb.) rendsz
     
         > [!NOTE]
         > Ezt a rendszertémakör-nevet használhatja a metrikák és a diagnosztikai naplók kereséséhez.
-    6. Válassza az **Áttekintés + létrehozás** lehetőséget.
+    6. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
         ![Rendszertémakör létrehozása](./media/create-view-manage-system-topics/create-event-grid-system-topic-page.png)
     5. Tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget. 
@@ -87,5 +87,5 @@ Az alábbi lépéseket követve megtekintheti az összes meglévő Event Grid re
 
     ![Rendszertémakör – esemény-előfizetés létrehozása](./media/create-view-manage-system-topics/create-event-subscription.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Event Grid által támogatott rendszertémakörökkel és a témakörökkel kapcsolatos további tudnivalókért tekintse meg [Azure Event Grid szakasz rendszertémaköreit](system-topics.md) . 

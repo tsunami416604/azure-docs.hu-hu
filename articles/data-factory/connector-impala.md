@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: b70db03e03ce914ea1d81d94cd2803a36eccfc88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418218"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Adatok másolása az Impala-ből Azure Data Factory használatával
@@ -39,7 +39,7 @@ A Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedél
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -55,7 +55,7 @@ Az Impala társított szolgáltatás a következő tulajdonságokat támogatja.
 | gazda | Az Impala-kiszolgáló IP-címe vagy állomásneve (azaz 192.168.222.160).  | Igen |
 | port | Az a TCP-port, amelyet az Impala-kiszolgáló az ügyfélkapcsolatok figyelésére használ. Az alapértelmezett érték a 21050.  | Nem |
 | authenticationType | A használni kívánt hitelesítési típus. <br/>Az engedélyezett értékek a **Névtelen**, a **SASLUsername**és a **UsernameAndPassword**. | Igen |
-| felhasználónév | Az Impala-kiszolgáló eléréséhez használt Felhasználónév. A SASLUsername használatakor az alapértelmezett érték a névtelen.  | Nem |
+| username | Az Impala-kiszolgáló eléréséhez használt Felhasználónév. A SASLUsername használatakor az alapértelmezett érték a névtelen.  | Nem |
 | jelszó | A UsernameAndPassword használatakor a felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítása TLS protokollal történik-e. Az alapértelmezett érték: **hamis**.  | Nem |
 | trustedCertPath | A. PEM fájl teljes elérési útja, amely a kiszolgáló hitelesítéséhez használt megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazza a TLS-kapcsolaton keresztül. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű Integration Runtime használja. Az alapértelmezett érték a hitesítésszolgáltatói. PEM fájl, amelyet az Integration Runtime telepített.  | Nem |
@@ -64,7 +64,7 @@ Az Impala társított szolgáltatás a következő tulajdonságokat támogatja.
 | allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték: **hamis**.  | Nem |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -98,7 +98,7 @@ Az adatok Impala-ból való másolásához állítsa az adatkészlet Type (típu
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ImpalaObject** | Igen |
-| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
@@ -132,7 +132,7 @@ Az adatok Impala-ből való másolásához állítsa a forrás típusát a máso
 | típus | A másolási tevékenység forrásának Type tulajdonságát **ImpalaSource**értékre kell állítani. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

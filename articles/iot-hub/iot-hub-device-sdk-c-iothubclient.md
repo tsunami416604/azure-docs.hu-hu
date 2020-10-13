@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81732603"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>A C-hez készült Azure IoT eszközoldali SDK – további információ a Iothubclientről
@@ -147,7 +147,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-Ez a példa egy üzenetet küld, amely a ""Helló világ!"alkalmazás" szöveggel IoT Hub. A IoT Hub azonban lehetővé teszi az egyes üzenetekhez tartozó tulajdonságok csatolását is. A tulajdonságok név/érték párok, amelyek csatolhatók az üzenethez. Például módosíthatjuk az előző kódot, hogy egy tulajdonságot csatoljon az üzenethez:
+Ez a példa egy üzenetet küld, amely a "„Helló világ!” alkalmazás" szöveggel IoT Hub. A IoT Hub azonban lehetővé teszi az egyes üzenetekhez tartozó tulajdonságok csatolását is. A tulajdonságok név/érték párok, amelyek csatolhatók az üzenethez. Például módosíthatjuk az előző kódot, hogy egy tulajdonságot csatoljon az üzenethez:
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -256,7 +256,7 @@ Nyilvánvalónak tűnhet, hogy az inicializálási módszer helyett inkább a **
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-Eddig minden, ami a **iothubclientről** -könyvtár működésének módjáról szól, az alapértelmezett viselkedését tükrözi. Van azonban néhány olyan lehetőség, amely a könyvtár működésének megváltoztatására van beállítva. Ez az **iothubclientről \_ ll \_ SetOption** API használatával valósítható meg. Megfontolandó példa:
+Eddig minden, ami a **iothubclientről** -könyvtár működésének módjáról szól, az alapértelmezett viselkedését tükrözi. Van azonban néhány olyan lehetőség, amely a könyvtár működésének megváltoztatására van beállítva. Ez az **iothubclientről \_ ll \_ SetOption** API használatával valósítható meg. Vegye fontolóra ezt a példát:
 
 ```C
 unsigned int timeout = 30000;
