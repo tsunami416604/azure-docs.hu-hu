@@ -202,6 +202,48 @@ groups:
     title: JavaScript
   - id: programming-language-curl
     title: REST
+- id: programming-languages-set-eighteen
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet vagy parancssori felületet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: parancssori felület
+- id: programming-languages-set-nineteen
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet vagy parancssori felületet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Indítás
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: parancssori felület
 - id: cogsvcs-text-analytics-features
   title: Text Analytics-funkciók
   prompt: Válasszon ki egy Text Analytics-funkcióajánlatot
@@ -784,10 +826,18 @@ groups:
     title: Indítás
   - id: platform-powershell
     title: PowerShell
+- id: non-azure-machines
+  title: Nem Azure-beli gépek
+  prompt: Hogyan fogja csatlakoztatni a nem Azure-beli gépet?
+  pivots:
+  - id: azure-arc
+    title: Azure Arc
+  - id: azure-portal
+    title: A Security Center portál lapjai
 metadata:
-  ms.openlocfilehash: a931ef1b1a4a4c5f107c66187d44a74f2eb5bcde
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ed855c35d70e77233bfb06fd5f40281942589129
+  ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91825118"
+  ms.lasthandoff: 10/11/2020
+  ms.locfileid: "91938780"

@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/29/2020
-  ms.openlocfilehash: 40c268ed31cf7360d74c5eb8bebf75756fd76563
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/09/2020
+  ms.openlocfilehash: 2b2f1a9dbf8c5621ff83dee9e600575c54e9de28
+  ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91570483"
+  ms.locfileid: "91931733"
 landingContent:
 - title: Az Azure Batch bemutatása
   linkLists:
@@ -40,8 +40,12 @@ landingContent:
       url: quick-run-python.md
   - linkListType: concept
     links:
-    - text: A munkafolyamat és a szolgáltatás áttekintése fejlesztők számára
+    - text: A munkafolyamat és a szolgáltatás áttekintése
       url: batch-service-workflow-features.md
+    - text: Feladatok és tevékenységek
+      url: jobs-and-tasks.md
+    - text: Csomópontok és készletek
+      url: nodes-and-pools.md
 - title: Lépésenkénti útmutatók
   linkLists:
   - linkListType: tutorial
@@ -50,6 +54,8 @@ landingContent:
       url: tutorial-parallel-dotnet.md
     - text: Párhuzamos fájlfeldolgozás – Python
       url: tutorial-parallel-python.md
+    - text: Python-szkriptek Data Factoryvel
+      url: tutorial-run-python-batch-azure-data-factory.md
     - text: OCR Batch-feladattal és Functions-függvényekkel
       url: tutorial-batch-functions.md
     - text: Jelenetek renderelése az Arnolddal
@@ -65,11 +71,13 @@ landingContent:
     - text: Batch-fiók létrehozása
       url: batch-account-create-portal.md
     - text: Készletek létrehozása és kezelése
-      url: batch-custom-images.md
+      url: batch-sig-images.md
     - text: Feladatok párhuzamos futtatása
       url: batch-parallel-node-tasks.md
     - text: Alkalmazáscsomagok használata
       url: batch-application-packages.md
+    - text: Tárolóalkalmazások futtatása
+      url: batch-docker-container-workloads.md
   - linkListType: concept
     links:
     - text: Támogatott virtuálisgép-méretek

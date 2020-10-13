@@ -3,12 +3,12 @@ title: A felhőbevezetési keretrendszer alaprendszerének tervmintája – Átt
 description: Az Azure Foundationhöz készült felhőbevezetési keretrendszer tervmintájának áttekintése és architektúrája.
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531695"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950278"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszerhez tartozó tervminta áttekintése
 
@@ -26,18 +26,19 @@ Ez az implementálás több Azure-szolgáltatást foglal magába a biztonságos,
 
 - Az [Azure Key Vault](../../../../key-vault/general/overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett virtuális gépek titkos kulcsainak tárolására szolgál
 - A [Log Analytics](../../../../azure-monitor/overview.md) üzembe helyezése biztosítja, hogy az összes művelet és szolgáltatás naplózása egyetlen központi helyen történjen onnantól kezdve, hogy megkezdi a [tárfiókokba](../../../../storage/common/storage-introduction.md) való biztonságos üzembe helyezést diagnosztikai naplózás céljából
-- Az [Azure Security Center](../../../../security-center/security-center-intro.md) üzembe helyezése (standard verzió) fenyegetésvédelmet nyújt a migrált számítási feladatok számára
-- A terv emellett meghatároz és üzembe helyez [Azure-szabályzatokat](../../../policy/overview.md) a következőkhöz: 
-  - Az erőforráscsoportok esetében alkalmazott címkézés (CostCenter)
-  - Erőforrások hozzáfűzése a CostCenter címkével rendelkező erőforráscsoporthoz
-  - Engedélyezett Azure-régió az erőforrások és az erőforráscsoportok esetében
-  - Engedélyezett tárfiók-termékváltozatok (válassza ki az üzembe helyezés során)
-  - Azure-beli virtuális gépek engedélyezett termékváltozatai (válassza ki az üzembe helyezés során)
-  - A Network Watcher üzembe helyezésének megkövetelése 
-  - Az Azure Storage-fiók biztonságos átvitele titkosításának megkövetelése
-  - Erőforrástípusok tiltása (válassza ki az üzembe helyezés során)  
-- Kezdeményezések
-  - Monitorozás engedélyezése az Azure Security Centerben (több mint 100 szabályzatdefiníció)
+- Az [Azure Security Center](../../../../security-center/security-center-introduction.md) üzembe helyezése (standard verzió) fenyegetésvédelmet nyújt a migrált számítási feladatok számára
+- A terv emellett [Azure Policy](../../../policy/overview.md)-definíciókat is meghatároz és üzembe helyez:
+  - Szabályzatdefiníciók:
+    - Az erőforráscsoportok esetében alkalmazott címkézés (CostCenter)
+    - Erőforrások hozzáfűzése a CostCenter címkével rendelkező erőforráscsoporthoz
+    - Engedélyezett Azure-régió az erőforrások és az erőforráscsoportok esetében
+    - Engedélyezett tárfiók-termékváltozatok (válassza ki az üzembe helyezés során)
+    - Azure-beli virtuális gépek engedélyezett termékváltozatai (válassza ki az üzembe helyezés során)
+    - A Network Watcher üzembe helyezésének megkövetelése 
+    - Az Azure Storage-fiók biztonságos átvitele titkosításának megkövetelése
+    - Erőforrástípusok tiltása (válassza ki az üzembe helyezés során)  
+  - Szabályzatkezdeményezések:
+    - Monitorozás engedélyezése az Azure Security Centerben (több mint 100 szabályzatdefiníció)
 
 A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitektúrákkal foglalkozó részében](/azure/architecture/reference-architectures/) közzétett, bevált módszerek követelményeit.
 

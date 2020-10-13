@@ -61,9 +61,11 @@
     - name: Vészhelyreállítás üzembe helyezése virtuális gépekhez
       href: disaster-recovery-for-virtual-machines.md
     - name: Virtuálisgép üzembe helyezése a tartalomtáron keresztül
-      href: tutorial-deploy-vm-content-library.md
+      href: ./deploy-vm-content-library.md
     - name: A GitHub Enterprise Server beállítása
       href: github-enterprise-server.md
+    - name: IPSec-alagút létrehozása
+      href: create-ipsec-tunnel.md
     - name: Azure natív integrációja
       items:
         - name: API Management

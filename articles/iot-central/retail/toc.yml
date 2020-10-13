@@ -35,7 +35,11 @@
         - name: 0 – Objektum- és mozgásérzékelési alkalmazás üzembe helyezése
           href: tutorial-video-analytics-deploy.md
         - name: 1 – Videóelemzési alkalmazás létrehozása
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: Objektum- és mozgásérzékelés (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: Objektum- és mozgásérzékelés (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2 – IoT Edge-eszköz konfigurálása
           items:
             - name: Videóelemzési eszköz létrehozása a peremhálózaton (Linux VM)

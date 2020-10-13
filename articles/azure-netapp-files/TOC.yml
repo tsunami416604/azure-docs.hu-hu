@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Az Azure NetApp Files hálózattervezési irányelvei
       href: azure-netapp-files-network-topologies.md
+    - name: Manuális QoS-kapacitáskészlet
+      href: manual-qos-capacity-pool-introduction.md
     - name: Régiók közötti replikáció
       items:
         - name: A régiók közötti replikáció ismertetése
@@ -126,7 +128,7 @@
 - name: Referencia
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.netapp/allversions
 - name: További források

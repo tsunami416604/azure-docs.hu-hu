@@ -165,6 +165,8 @@
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: Rendelési problémák
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Aktiválási problémák
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Kibocsátási megjegyzések

@@ -3,12 +3,12 @@ title: Az ISO 27001 ASE/SQL-számításifeladat tervmintája – Áttekintés
 description: Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése és architektúrája.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6cb50450e461d87fdbb3c71fe6273c43c3122e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926093"
+ms.locfileid: "91930407"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 
@@ -29,7 +29,7 @@ Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintá
 Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabványokon alapuló, biztonságos, teljes körűen monitorozott, vállalati használatra kész számításifeladat-infrastruktúrát biztosít. A környezet összetevői:
 
 - A DevOps nevű [Azure-szerepkör](../../../../role-based-access-control/overview.md), amely jogosultsággal rendelkezik az erőforrások üzembe helyezéséhez és kezeléséhez a tervmintával üzembe helyezett [Azure App Service Environment-környezetekben](../../../../app-service/environment/intro.md)
-- [Azure-szabályzatok](../../../policy/overview.md), amelyekkel rögzíthető, hogy mely szolgáltatások helyezhetők üzembe a környezetben, illetve megtagadható a nyilvános IP-cím- (PIP-) erőforrások létrehozása
+- [Azure Policy](../../../policy/overview.md)-definíciók, amelyekkel rögzíthető, hogy mely szolgáltatások helyezhetők üzembe a környezetben, illetve megtagadható a nyilvános IP-cím- (PIP-) erőforrások létrehozása
 - Egyetlen alhálózatot tartalmazó virtuális hálózat, amely egy már meglévő [megosztott szolgáltatási](../iso27001-shared/index.md)környezethez van társítva, és arra kényszeríti a teljes adatforgalmat, hogy a [megosztott szolgáltatások](../iso27001-shared/index.md) tűzfalán haladjon át. A virtuális hálózaton a következő erőforrások találhatók:
   - Egy vagy több webalkalmazás, webes API vagy funkció üzemeltetésére használható [Azure App Service Environment-környezet](../../../../app-service/environment/intro.md)
   - Az [Azure Key Vault](../../../../key-vault/general/overview.md) VNet-szolgáltatásvégpontot használó példánya, amely a számítási feladat környezetében futó alkalmazások titkos kulcsainak tárolására szolgál

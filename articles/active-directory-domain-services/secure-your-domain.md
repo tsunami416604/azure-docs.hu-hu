@@ -80,7 +80,7 @@ Néhány percet vesz igénybe, hogy a biztonsági beállítások a felügyelt ta
 >
 > Ha az NTLM-jelszó kivonata eltér a Kerberos-jelszó kivonattól, az NTLM-re való tartalék nem fog működni. A gyorsítótárazott hitelesítő adatok szintén nem működnek, ha a virtuális gép a felügyelt tartományvezérlőhöz kapcsolódik.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a szinkronizálási folyamatról: [objektumok és hitelesítő adatok szinkronizálása felügyelt tartományokban][synchronization].
 

@@ -3,12 +3,12 @@ title: ISO 27001 Megosztott szolgáltatások tervminta – Áttekintés
 description: Az ISO 27001 Megosztott szolgáltatások tervmintájának áttekintése és architektúrája. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az ISO 27001 adott vezérlőit.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927351"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950550"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Azure Blueprints Megosztott szolgáltatások tervmintájának áttekintése
 
@@ -27,12 +27,12 @@ Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabvá
 
 - A feladatkörök vezérlősík szempontjából való elkülönítésére használható [Azure-szerepkörök](../../../../role-based-access-control/overview.md). Az infrastruktúra üzembe helyezését megelőzően a következő három szerepkör lett meghatározva:
   - A NetOps szerepkör a hálózati környezet, például a tűzfalbeállítások, NSG-beállítások, útválasztás és egyéb hálózatkezelési funkciók kezeléséhez rendelkezik jogosultsággal
-  - A SecOps szerepkör az [Azure Security Center](../../../../security-center/security-center-intro.md) kezeléséhez és üzembe helyezéséhez, [Azure-szabályzatok](../../../policy/overview.md) meghatározásához szükséges jogosultsággal, illetve egyéb, biztonsághoz kapcsolódó jogosultságokkal is rendelkezik
-  - A SysOps szerepkör az egyéb működési jogosultságok mellett az [Azure-szabályzatok](../../../policy/overview.md) előfizetésen belüli meghatározásához, valamint a [Log Analytics](../../../../azure-monitor/overview.md) teljes környezetre kiterjedő kezeléséhez szükséges jogosultságokkal is rendelkezik
+  - A SecOps szerepkör az [Azure Security Center](../../../../security-center/security-center-introduction.md) kezeléséhez és üzembe helyezéséhez és [Azure Policy](../../../policy/overview.md)-definíciók meghatározásához szükséges, illetve egyéb, biztonsághoz kapcsolódó jogosultságokkal is rendelkezik
+  - A SysOps szerepkör az egyéb működési jogosultságok mellett az [Azure Policy](../../../policy/overview.md)-definíciók előfizetésen belüli meghatározásához, valamint a [Log Analytics](../../../../azure-monitor/overview.md) teljes környezetre kiterjedő kezeléséhez szükséges jogosultságokkal is rendelkezik
 - A [Log Analytics](../../../../azure-monitor/overview.md) elsőként lesz üzembe helyezve az Azure-szolgáltatások közül. Ez biztosítja, hogy a biztonságos üzembe helyezés megkezdésétől fogva az összes művelet és szolgáltatás naplózása egyetlen központi helyen történjen
 - Alhálózatokat támogató virtuális hálózat helyszíni adatközponthoz való csatlakozáshoz, bemeneti és kimeneti verem az internetkapcsolathoz, valamint NSG-ket és ASG-ket használó megosztott szolgáltatási alhálózat a teljes körű mikroszegmentáláshoz, amely a következőket foglalja magába:
   - Felügyeleti célra használt jumpbox vagy bástyagazdagép, amely csak a bemeneti verem alhálózatán üzembe helyezett [Azure-tűzfalon](../../../../firewall/overview.md) keresztül érhető el
-  - Az Active Directory Domain Servicest (ADDS) futtató két virtuális gép és a DNS csak a jumpboxon keresztül érhető el, és kizárólag úgy konfigurálható, hogy az AD-t VPN-en vagy [ExpressRoute-kapcsolaton](../../../../expressroute/expressroute-introduction.md) keresztül replikálja (a terv nem helyezi üzembe)
+  - Az Azure Active Directory Domain Servicest (Azure AD DS) futtató két virtuális gép és a DNS csak a jumpboxon keresztül érhető el, és kizárólag úgy konfigurálható, hogy az AD-t VPN-en vagy [ExpressRoute-kapcsolaton](../../../../expressroute/expressroute-introduction.md) keresztül replikálja (ezt a terv nem helyezi üzembe)
   - Az [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) és a standard DDoS Protection használata
 - Az [Azure Key Vault](../../../../key-vault/general/overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett virtuális gépek titkos kulcsainak tárolására szolgál
 
