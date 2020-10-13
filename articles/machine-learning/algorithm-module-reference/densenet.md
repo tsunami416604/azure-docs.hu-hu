@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536630"
 ---
 # <a name="densenet"></a>DenseNet
@@ -54,7 +54,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Név             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
+| Name (Név)             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modell neve       | Bármelyik   | Mód    | densenet201 | Egy bizonyos DenseNet-struktúra neve     |
 | Imagenet       | Bármelyik   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
@@ -66,6 +66,6 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nem betanított modell | UntrainedModelDirectory | Egy képzetlen DenseNet-modell, amely csatlakoztatható a Pytorch-modellhez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

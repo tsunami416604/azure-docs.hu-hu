@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a 
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987104"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
@@ -312,7 +312,7 @@ Egy `OBFileSpec` objektum határozza meg a biztonsági másolatban szerepeltetni
 * A kizárandó fájlok és mappák meghatározása
 * Adja meg a mappában található adatbiztonsági mentést (vagy), hogy csak a megadott mappában lévő legfelső szintű fájlokat kell-e biztonsági másolatot készíteni.
 
-Az utóbbit a New-OBFileSpec parancsban a-nem rekurzív jelző használatával érhetjük el.
+Az utóbbit a-nem rekurzív jelzővel kell megvalósítani a New-OBFileSpec parancsban.
 
 Az alábbi példában biztonsági mentést készítünk a C: és D kötetről, és kizárjuk az operációs rendszer bináris fájljait a Windows mappában és bármely ideiglenes mappában. Ehhez hozzon létre két fájl specifikációt a [New-OBFileSpec](/powershell/module/msonlinebackup/new-obfilespec) parancsmag használatával – egyet a bevonáshoz, egyet pedig a kizáráshoz. A fájl specifikációinak létrehozása után a [rendszer az Add-OBFileSpec](/powershell/module/msonlinebackup/add-obfilespec) parancsmaggal társítja őket a szabályzathoz.
 

@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995557"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Az Azure SQL felügyelt példányok kezelési műveleteinek megszakítása
@@ -61,7 +61,7 @@ A Azure Portal használatával történő felügyeleti műveletek megszakítás�
 
 1. Válassza a lap alján található **művelet megszakítása** lehetőséget. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="A művelet megszakításához kattintson a Mégse gombra.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Kattintson a folyamatban lévő művelet mezőre a folyamatban lévő művelet lap megnyitásához.":::
 
 1. Erősítse meg, hogy meg kívánja szakítani a műveletet. 
 

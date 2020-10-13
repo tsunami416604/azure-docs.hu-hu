@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: bdcfeeede8b16bf9a92a885364e4c8fef7ea5cbc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986553"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának létrehozása és végigvezeti 
@@ -30,7 +30,7 @@ Ez az oktatóanyag végigvezeti az intelligens mérőműszer-figyelő alkalmazá
 Ha nincs előfizetése, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Nincsenek
+- Nincs
 - Az Azure-előfizetés használata ajánlott, de nem szükséges a kipróbáláshoz
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása 
@@ -104,7 +104,7 @@ Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alk
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás törlése](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók az Intelligens Fogyasztásmérők alkalmazás-architektúrával kapcsolatban 
 > [!div class="nextstepaction"]

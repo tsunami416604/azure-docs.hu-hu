@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan állíthat be Service Fabric Linux rend
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.openlocfilehash: 83d494d777a4a1e1586707c8848056ca8fe9780a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537072"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Linux Service Fabric-fürt beállítása a Windows fejlesztői gépen
@@ -110,7 +110,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt futtat�
  
  * A DNS-szolgáltatás nem fut, és nem támogatott – [132. probléma](https://github.com/Microsoft/service-fabric/issues/132).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerkedés az [Eclipse](./service-fabric-get-started-eclipse.md) -szel
 * Tekintse meg a [Java-mintákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

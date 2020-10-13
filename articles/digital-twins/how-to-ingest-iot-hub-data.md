@@ -8,10 +8,10 @@ ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983357"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
@@ -209,14 +209,14 @@ Sikeres közzététel után az alábbi ábrán látható kimenet jelenik meg a V
 ```
 A közzétételi folyamat állapotát a [Azure Portal](https://portal.azure.com/)is ellenőrizheti. Keresse meg az _erőforráscsoportot_ , és navigáljon a _tevékenység naplóhoz_ , és keresse meg a _Get Web App Publishing profilt_ a listából, és ellenőrizze, hogy az állapot sikeres-e.
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="A közzétételi folyamat állapotát megjelenítő Azure Portal képernyőképe.":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hubon keresztül egy Azure-függvénynek, amely egy, az Azure-beli digitális Ikrekben található Twin értékre frissíti a hőmérséklet-tulajdonságot.":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>A függvény összekapcsolásával IoT Hub
 
 Esemény célhelyének beállítása a hub-adatként.
 A [Azure Portal](https://portal.azure.com/)navigáljon az [*előfeltételek*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) szakaszban létrehozott IoT hub-példányhoz. Az **események**területen hozzon létre egy előfizetést az Azure-függvényhez.
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Képernyőkép az esemény-előfizetés hozzáadását bemutató Azure Portalról.":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hubon keresztül egy Azure-függvénynek, amely egy, az Azure-beli digitális Ikrekben található Twin értékre frissíti a hőmérséklet-tulajdonságot.":::
 
 Az **esemény-előfizetés létrehozása** lapon töltse ki a mezőket a következőképpen:
   1. A **név**mezőben adja meg az előfizetés nevét.
@@ -225,10 +225,10 @@ Az **esemény-előfizetés létrehozása** lapon töltse ki a mezőket a követk
   4. A **végpont típusa**területen válassza az _Azure-függvény_lehetőséget.
   5. A **végpont területen**válassza _a végpont kiválasztása_ lehetőséget a végpont létrehozásához.
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Képernyőkép a Azure Portalról az esemény-előfizetés részleteinek létrehozásához":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hubon keresztül egy Azure-függvénynek, amely egy, az Azure-beli digitális Ikrekben található Twin értékre frissíti a hőmérséklet-tulajdonságot.":::
 
 A megnyíló _Azure-függvény kiválasztása_ oldalon ellenőrizze az alábbi adatokat.
- 1. **Előfizetés**: az Azure-előfizetése
+ 1. **Előfizetés**: Az Ön Azure-előfizetése
  2. **Erőforráscsoport**: az erőforráscsoport
  3. **Function alkalmazás**: a Function alkalmazás neve
  4. **Tárolóhely**: _éles üzem_
@@ -236,7 +236,7 @@ A megnyíló _Azure-függvény kiválasztása_ oldalon ellenőrizze az alábbi a
 
 Mentse a részleteket a _kijelölés megerősítése_ gombra kattintva.            
       
-:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="A Azure Portal képernyőképe az Azure-függvény kiválasztásához":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hubon keresztül egy Azure-függvénynek, amely egy, az Azure-beli digitális Ikrekben található Twin értékre frissíti a hőmérséklet-tulajdonságot.":::
 
 Az esemény-előfizetés létrehozásához kattintson a _Létrehozás_ gombra.
 

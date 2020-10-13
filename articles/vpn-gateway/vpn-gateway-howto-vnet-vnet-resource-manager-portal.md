@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983304"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>VNet-VNet VPN Gateway-kapcsolat konfigurálása a Azure Portal használatával
@@ -178,7 +178,7 @@ Ezután hozzon létre egy, a Vnet4 felé és a VNet1 közötti kapcsolatokat. Ke
    ![Kapcsolatok ellenőrzése](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "Kapcsolatok ellenőrzése")
 3. A **név** oszlopban válassza ki a kapcsolatok egyikét a további információk megtekintéséhez. Amikor az adatok áramlanak, az adatok és **az** **adatok ki**lesznek láthatók.
 
-   ![A képernyőképen egy erőforráscsoport látható, amely az adatok és az adatok kimenő értékeit tartalmazza.](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Állapot")
+   ![A képernyőképen egy erőforráscsoport látható, amely az adatok és az adatok kimenő értékeit tartalmazza.](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "status")
 
 ## <a name="add-additional-connections"></a>További kapcsolatok hozzáadása
 
