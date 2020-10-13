@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404721"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946144"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>A parketta formátuma Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -156,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>Adattípusok támogatása
 
-A Parquet komplex adattípusok jelenleg nem támogatottak (például Térkép, lista, STRUCT).
+A parketta összetett adattípusai (például a Térkép, a lista, a STRUCT) jelenleg csak adatforgalomban támogatottak, nem a másolási tevékenységekben. Ha összetett típusokat szeretne használni az adatfolyamatokban, ne importálja az adatkészletben a sémát, így a séma üres marad az adatkészletben. Ezután a forrás-átalakításban importálja a leképezést.
 
 ## <a name="using-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime használata
 
@@ -176,7 +176,7 @@ A saját üzemeltetésű, a Parquet-fájlok szerializálásával/deszerializál�
 
 Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` . A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg `Xmx` a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a memóriával fog elindulni, `Xms` és a memória maximális mennyiségét fogja tudni használni `Xmx` . Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628009"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Az Azure privát végpont DNS-konfigurációja
@@ -192,5 +192,5 @@ A következő ábra a DNS-feloldási sorozatot mutatja be egy olyan helyszíni �
 
 :::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Egyetlen virtuális hálózat és az Azure által biztosított DNS":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [További tudnivalók a privát végpontokról](private-endpoint-overview.md)

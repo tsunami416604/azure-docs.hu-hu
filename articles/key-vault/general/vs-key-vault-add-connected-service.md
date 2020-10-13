@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448136"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
@@ -202,7 +202,7 @@ A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásoka
 - Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.jsa fájlhoz.
 - A [hozzáadott hivatkozások](#added-references-for-aspnet-framework) szakaszban leírt .net-szerelvényekre mutató hivatkozások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha követte ezt az oktatóanyagot, a Key Vault engedélyei a saját Azure-előfizetéssel való futtatásra vannak beállítva, de előfordulhat, hogy éles környezetben nem kívánatos. Létrehozhat egy felügyelt identitást, amellyel kezelheti Key Vault hozzáférését az alkalmazáshoz. Tekintse meg, [Hogyan hitelesítheti Key Vault](/azure/key-vault/general/authentication) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](/azure/key-vault/general/assign-access-policy-portal).
 

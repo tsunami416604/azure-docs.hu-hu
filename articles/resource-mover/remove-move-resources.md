@@ -7,28 +7,35 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 241ccbda67f7a2518d0c44a0d362673922ad4284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652945"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945943"
 ---
-# <a name="remove-resources-from-a-move-collection"></a>Erőforrások törlése egy áthelyezési gyűjteményből
+# <a name="manage-move-collections-and-resource-groups"></a>Gyűjtemények és erőforráscsoportok kezelése
 
-Ez a cikk azt ismerteti, hogyan távolíthat el erőforrásokat egy áthelyezési gyűjteményből az [Azure-erőforrás-mozgatóban](overview.md). A gyűjtemények áthelyezése az Azure-erőforrások Azure-régiók közötti áthelyezéséhez használatos.
+Ez a cikk azt ismerteti, hogyan távolíthat el erőforrásokat egy áthelyezési gyűjteményből, illetve hogyan távolíthat el egy áthelyezési gyűjteményt vagy erőforráscsoportot az Azure-beli [erőforrás-mozgatóban](overview.md). A gyűjtemények áthelyezése az Azure-erőforrások Azure-régiók közötti áthelyezéséhez használatos.
 
 ## <a name="remove-a-resource-portal"></a>Erőforrás eltávolítása (portál)
 
-A következőképpen távolítsa el az erőforrás-mozgató portált:
+Az áthelyezési gyűjtemény erőforrásai a következőképpen távolíthatók el az erőforrás-mozgató portálon:
 
-1. Az **egyes régiókban**válassza ki azokat az erőforrásokat, amelyeket el szeretne távolítani a gyűjteményből > **távolítsa el**.
+1. Az **egyes régiókban**válassza ki az összes olyan erőforrást, amelyet el szeretne távolítani a gyűjteményből, majd válassza az **Eltávolítás**lehetőséget. 
 
     ![Eltávolításra kijelölt gomb](./media/remove-move-resources/portal-select-resources.png)
 
-1. Az **erőforrások eltávolítása**területen kattintson az **Eltávolítás**gombra.
+2. Az **erőforrások eltávolítása**területen kattintson az **Eltávolítás**gombra.
 
     ![Az erőforrások áthelyezési gyűjteményből való eltávolításának kiválasztására szolgáló gomb](./media/remove-move-resources/remove-portal.png)
+
+## <a name="remove-a-move-collectionresource-group-portal"></a>Áthelyezési gyűjtemény/erőforráscsoport (portál) eltávolítása
+
+A portálon törölheti az áthelyezési gyűjteményt/erőforráscsoportot.
+
+1. Az erőforrások gyűjteményből való eltávolításához kövesse a fenti eljárás utasításait. Ha eltávolít egy erőforráscsoportot, győződjön meg róla, hogy nem tartalmaz erőforrást.
+2. Törölje az áthelyezési gyűjteményt vagy az erőforráscsoportot.  
 
 ## <a name="remove-a-resource-powershell"></a>Erőforrás eltávolítása (PowerShell)
 
@@ -41,16 +48,20 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **Várt kimenet** 
  ![ Kimeneti szöveg az erőforrás áthelyezési gyűjteményből való eltávolítása után](./media/remove-move-resources/remove-resource.png)
 
+
+
 ## <a name="remove-a-collection-powershell"></a>Gyűjtemény eltávolítása (PowerShell)
 
 Távolítson el egy teljes áthelyezési gyűjteményt a PowerShell használatával, a következőképpen:
 
-```azurepowershell-interactive
-# Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
-```
-**Várt kimenet** 
- ![ Egy áthelyezési gyűjtemény eltávolítását követően kimeneti szöveg](./media/remove-move-resources/remove-collection.png)
+1. Kövesse a fenti utasításokat a gyűjtemény erőforrásainak a PowerShell használatával történő eltávolításához.
+2. Futtassa a következőt:
+
+    ```azurepowershell-interactive
+    # Remove a resource using the resource ID
+    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    ```
+    **Várt kimenet** ![ Egy áthelyezési gyűjtemény eltávolítását követően kimeneti szöveg](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>VM-erőforrás állapota eltávolítás után
 
@@ -91,6 +102,6 @@ Mi történik, ha egy áthelyezési gyűjteményből eltávolít egy Azure SQL-e
 **Forrás törlése függőben** | Törölve az áthelyezési gyűjteményből.<br/><br/> Nem törli a megcélzott régióban létrehozott semmit. 
 **Nem sikerült törölni a forrást** | Törölve az áthelyezési gyűjteményből.<br/><br/> Nem törli a megcélzott régióban létrehozott semmit. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Helyezzen át egy virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba az erőforrás-mozgató használatával.

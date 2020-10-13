@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 16bdb0d8ed421763895e61a6e1173fc7c5a48d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4f381e2f2e9f85422bd5f4fb89ec684f4bc99f91
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297946"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970809"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -53,7 +53,7 @@ Az **új minták** a githubon érhetők el.
 
 ### <a name="new-features"></a>Új funkciók
 
-* a **v 2.0 referenciája elérhető** Megtekintheti a [v 2.0 API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) és a [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)és [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)rendszerhez készült frissített SDK-kat.
+* a **v 2.0 referenciája elérhető** Megtekintheti a [v 2.0 API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) és a [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)és [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)rendszerhez készült frissített SDK-kat.
 * A **tábla fejlesztései és a kinyerési fejlesztések** közé tartozik a pontossági fejlesztések és a táblázatos kivonások továbbfejlesztése, amelyek lehetővé teszik a táblázatok fejlécének és szerkezetének megismerését _címkék nélkül_. 
 
 * **Pénznem-támogatás** Globális pénznemű szimbólumok észlelése és kinyerése.
@@ -78,10 +78,10 @@ Az **új minták** a githubon érhetők el.
 
 ### <a name="new-features"></a>Új funkciók
 * **SDK-támogatás az űrlap-FELISMERŐ API 2.0** -s verziójának nyilvános előzetes verziójához Ebben a hónapban kibővítettük a szolgáltatás támogatását, amely tartalmaz egy előzetes verziójú SDK-t az űrlap-felismerési v 2.0 (előzetes verzió) kiadáshoz. Használja az alábbi hivatkozásokat a választott nyelv megkezdéséhez: 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
-   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-python-preview)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre?view=azure-node-preview)
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme?view=azure-python-preview)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme?view=azure-node-preview)
 
   Az új SDK a v 2.0 REST API összes funkcióját támogatja az űrlap-felismerőhöz. Például betaníthat egy modellt címkékkel vagy anélkül, és kinyerheti a szöveget, a kulcs érték párokat és táblákat az űrlapokból, kinyerheti a nyugták adatait az előre elkészített visszaigazolási szolgáltatással, és kinyerheti a szöveget és a táblákat az elrendezési szolgáltatással a dokumentumaiból. Az [SDK-visszajelzési űrlapon](https://aka.ms/FR_SDK_v1_feedback)megoszthatja az SDK-kat.
  

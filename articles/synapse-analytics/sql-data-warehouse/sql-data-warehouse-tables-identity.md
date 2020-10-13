@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876005"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Helyettesítő kulcsok létrehozása identitás használatával a szinapszis SQL-készletben
 
@@ -26,7 +26,8 @@ Ebben a cikkben javaslatokat és példákat talál arra, hogy az IDENTITY tulajd
 
 A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Adatmodellek, például helyettesítő kulcsok létrehozása a tábláiban az adatraktár-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt.
 > [!NOTE]
-> A szinapszis SQL-ben az IDENTITY érték nem garantált, hogy egyedi, ha a felhasználó explicit módon beszúr egy ismétlődő értéket a "SET IDENTITY_INSERT ON" vagy a reseeds IDENTITY. Részletekért lásd: [create Table (Transact-SQL) Identity (tulajdonság)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+> Az Azure szinapszis Analyticsben az IDENTITY érték az egyes eloszlásokban megnövekszik, és nem fedi át az identitás értékeit más eloszlásokban.  A Szinapszisban lévő IDENTITY érték nem garantált egyedinek, ha a felhasználó explicit módon beszúr egy ismétlődő értéket a "SET IDENTITY_INSERT ON" vagy a reseeds IDENTITY. Részletekért lásd: [create Table (Transact-SQL) Identity (tulajdonság)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tábla létrehozása azonosító oszloppal
 
@@ -163,13 +164,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > A jelenleg nem használható, `CREATE TABLE AS SELECT` Ha az adatok betöltését egy azonosító oszlopot tartalmazó táblába helyezi.
 >
 
-Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezése a SZINAPSZIS SQL-készlethez](design-elt-data-loading.md) , valamint az [ajánlott eljárások betöltése](guidance-for-loading-data.md).
+Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezése a SZINAPSZIS SQL-készlethez](design-elt-data-loading.md) , valamint az  [ajánlott eljárások betöltése](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Rendszernézetek
 
-Az IDENTITY tulajdonsággal rendelkező oszlop azonosításához a [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Catalog nézetet használhatja.
+A [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) katalógus nézettel azonosítható az Identity tulajdonságot tartalmazó oszlop.
 
-Az adatbázis-séma jobb megismerése érdekében ez a példa bemutatja, hogyan integrálható a sys. identity_column "a Rendszerkatalógus más nézeteivel:
+Az adatbázis-séma jobb megismerése érdekében ez a példa azt mutatja be, hogyan integrálható a sys.identity_column "a Rendszerkatalógus más nézeteivel:
 
 ```sql
 SELECT  sm.name
@@ -241,7 +242,7 @@ AND     tb.name = 'T1'
 ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Táblázat áttekintése](sql-data-warehouse-tables-overview.md)
 - [CREATE TABLE (Transact-SQL) identitás (tulajdonság)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

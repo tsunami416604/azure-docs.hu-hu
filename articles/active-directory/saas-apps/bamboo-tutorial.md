@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 286d350493afb1e74f9d2ba6eb445b2c46d995b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-val a Bamboo by Solution GmbH használatával
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Ha az Azure AD egyszeri bejelentkezést az SAML SSO-val a Bamboo by Solution GmbH használatával szeretné konfigurálni és tesztelni, el kell végeznie a következő építőelemeket:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az SAML egyszeri bejelentkezést a Bamboo megoldáshoz az egyszeri bejelentkezéssel](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
+2. **[Konfigurálja az SAML egyszeri bejelentkezést a Bamboo megoldáshoz az egyszeri bejelentkezéssel](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[SAML SSO létrehozása a Bamboo számára a Solution GmbH test User](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** -to have a Britta Simon a következőhöz: SAML SSO for Bamboo by Solution GmbH, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -94,7 +94,7 @@ Ha az Azure AD egyszeri bejelentkezést az SAML SSO-val a Bamboo by Solution Gmb
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Ha az Azure AD egyszeri bejelentkezést az SAML SSO-val a Bamboo by Solution Gmb
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot az [SAML SSO-val a Bamboo by Solution GmbH ügyfél-támogatási csapatával](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Ha az Azure AD egyszeri bejelentkezést az SAML SSO-val a Bamboo by Solution Gmb
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>SAML SSO konfigurálása a Bamboo számára az egyszeri bejelentkezéssel
+### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>Az SAML egyszeri bejelentkezés konfigurálása a Bamboo számára a Solution GmbH egyetlen Sign-On
 
 1. Jelentkezzen be a Bamboo-hoz készült SAML SSO-ra a megoldási GmbH vállalati webhely rendszergazdaként.
 

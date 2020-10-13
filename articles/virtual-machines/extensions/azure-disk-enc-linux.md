@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc82109c60ac077d9e92e4d4a52abdaf8577771f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80066922"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971183"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux-Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Disk Encryption kihasználja a Linux dm-crypt alrendszerét, hogy teljes lemezes titkosítást biztosítson az [Azure Linux-disztribúciók kiválasztása](https://aka.ms/adelinux)során.  Ez a megoldás integrálva van Azure Key Vault a lemezes titkosítási kulcsok és titkos kódok kezeléséhez.
+Azure Disk Encryption kihasználja a Linux dm-crypt alrendszerét, hogy teljes lemezes titkosítást biztosítson az [Azure Linux-disztribúciók kiválasztása](../linux/disk-encryption-overview.md)során.  Ez a megoldás integrálva van Azure Key Vault a lemezes titkosítási kulcsok és titkos kódok kezeléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -141,9 +141,9 @@ Használat `AADClientCertificate` :
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | dátum |
+| apiVersion | 2019-07-01 | date |
 | közzétevő | Microsoft. Azure. Security | sztring |
 | típus | AzureDiskEncryptionForLinux | sztring |
 | typeHandlerVersion | 1,1, 0,1 | int |
@@ -187,7 +187,7 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 
 Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási szolgálatát](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a virtuálisgép-bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).
 * További információ a Linux Azure Disk Encryptionáról: [Linux Virtual Machines](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines).

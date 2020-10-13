@@ -4,10 +4,10 @@ description: Az Advisor engedélyei, valamint az, hogy miként lehet letiltani a
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712922"
 ---
 # <a name="permissions-in-azure-advisor"></a>Engedélyek Azure Advisor
@@ -45,7 +45,7 @@ Ha előfizetéseket vagy erőforráscsoportokat próbál konfigurálni az Adviso
 
 Ha a javaslat elhalasztása vagy elutasítása során hibaüzenetet kap, előfordulhat, hogy nem rendelkezik a megfelelő engedélyekkel. Győződjön meg arról, hogy legalább közreműködői hozzáférése van az elhalasztott vagy elutasított javaslat érintett erőforrásához. A probléma megoldásához tekintse át [a felhasználói hozzáférés megadásának](../role-based-access-control/quickstart-assign-role-user-portal.md)módját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk áttekintést nyújt arról, hogy az Advisor hogyan használja az Azure RBAC a felhasználói engedélyek vezérlésére és a gyakori problémák megoldására. Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
 

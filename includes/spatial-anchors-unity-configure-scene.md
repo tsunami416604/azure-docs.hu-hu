@@ -4,15 +4,17 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: crtreasu
-ms.openlocfilehash: 11086108aa59feae06ad1871b8ca0de9eca8e62e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e712f7876a31e2bde629b2a2a3ad83a22c6ad7e7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91280892"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971326"
 ---
 ## <a name="configure-the-account-information"></a>Fiókadatok konfigurálása
 
-A következő lépés az alkalmazás konfigurálása a fiókadatok használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
+A következő lépés az alkalmazás konfigurálása a fiókadatok használatára. A **fiók kulcsát**, a **fiók azonosítóját**és a **fiók tartományának** értékeit egy szövegszerkesztőbe másolta, a ["térbeli horgonyok erőforrás létrehozása"](#create-a-spatial-anchors-resource) szakaszban.
 
-A **projekt** ablaktáblán navigáljon a következőhöz: `Assets\AzureSpatialAnchors.SDK\Resources` . Válassza a(z) `SpatialAnchorConfig` lehetőséget. Ezt követően a **felügyelő** ablaktáblán adja meg a értéket a értékként, a értékként pedig az értéket a következőhöz: `Account Key` `Spatial Anchors Account Key` `Account ID` `Spatial Anchors Account Id` `Account Domain` `Spatial Anchors Account Domain` .
+A **projekt** ablaktáblán válassza a következőt: `Assets\AzureSpatialAnchors.SDK\Resources` . 
+
+Válassza a **SpatialAnchorConfig**lehetőséget. Az **ellenőr** ablaktáblán adja meg a `Account Key` térbeli horgonyok **fiók kulcsának**értékét, a értéket a `Account ID` **térbeli horgonyok fiókjának azonosítójaként**, a értéket pedig a `Account Domain` **térbeli horgonyok fiók tartományának**értékeként.

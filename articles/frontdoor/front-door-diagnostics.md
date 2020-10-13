@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449281"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961748"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
@@ -29,12 +29,12 @@ Az Azure bejárati ajtót használva a következő módokon figyelheti az erőfo
 
 A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
-| Metrika | Metrika megjelenítendő neve | Egység | Dimenziók | Leírás |
+| Metrika | Metrika megjelenítendő neve | Egység | Dimenziók | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
 | RequestSize | Kérelem mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
 | ResponseSize | Válasz mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtótól az ügyfeleknek küldött válaszként küldött bájtok száma. |
-| TotalLatency | Teljes késés | Ezredmásodpercben | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyféltől érkező kérelemből kiszámított idő, amíg az ügyfél el nem fogadta az utolsó válasz bájtját a bejárati ajtótól. |
+| TotalLatency | Teljes késés | Ezredmásodpercben | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfél kérésének teljes ideje, amely a AFD-ből az ügyfélnek küldött utolsó válasz bájtig érkezett. |
 | BackendRequestCount | Háttérbeli kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>Háttérrendszer | A bejárati ajtóról a háttérbe küldött kérések száma. |
 | BackendRequestLatency | Háttérbeli kérelmek késése | Ezredmásodpercben | Háttérrendszer | A kérelemnek a háttérbe való beérkezése után kiszámított idő, amíg be nem érkezett az utolsó válasz bájtja a háttérből. |
 | BackendHealthPercentage | Háttér állapotának százalékos aránya | Százalék | Háttérrendszer</br>Háttérkészletek | A sikeres állapot-mintavételek százalékos aránya a bejárati ajtóról a háttérbe. |
@@ -52,7 +52,7 @@ A hozzáférési tevékenység naplóit a bejárati ajtón vagy az Azure-erőfor
 1. Válassza ki az előtérben lévő példányt.
 2. Válassza a **műveletnapló**lehetőséget.
 
-    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Tevékenységnapló":::
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Műveletnapló":::
 
 3. Válasszon egy szűrési hatókört, majd kattintson az **alkalmaz**gombra.
 
@@ -61,7 +61,7 @@ A diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz
 
 A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végzett műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md).
 
-:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Tevékenységnapló":::
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Műveletnapló":::
 
 Diagnosztikai naplók konfigurálása a bejárati ajtóhoz:
 
@@ -90,19 +90,49 @@ A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként köteg
 | RoutingRuleName | Annak az útválasztási szabálynak a neve, amelyhez a kérelem illeszkedik. |
 | RulesEngineMatchNames | A kérelemnek megfelelő szabályok nevei. |
 | SecurityProtocol | A kérelem által használt TLS/SSL protokoll verziója vagy Null, ha nincs titkosítás. |
-| SentToOriginShield | Logikai mező, amely azt jelöli, hogy az első környezetben történt-e gyorsítótár-kihagyás, és a rendszer elküldte a kérelmet a regionális gyorsítótárnak. Hagyja figyelmen kívül ezt a mezőt, ha az útválasztási szabály egy átirányítás, vagy ha nincs engedélyezve a gyorsítótárazás. |
+| SentToOriginShield </br> (elavult) * **tekintse meg a következő szakaszban szereplő, az elavult megjegyzések című szakaszt.**| Ha az értéke igaz, az azt jelenti, hogy a rendszer a lekérést a peremhálózati pop helyett a forrás pajzs gyorsítótárából választta. A Origin Shield egy szülő gyorsítótár, amely a gyorsítótár találati arányának növelésére szolgál. |
+| isReceivedFromClient | Ha az értéke igaz, az azt jelenti, hogy a kérelem az ügyféltől érkezett. Ha false (hamis) értékű, a kérelem a szélén (gyermek POP) található, és a forrás pajzstól (szülő POP) válaszol. 
 | Eltelt idő | A kérelem első bájtjában eltelt idő (másodpercben) a válasz utolsó bájtjában. |
 | TrackingReference | A bejárati ajtó által kiszolgált kérést azonosító egyedi hivatkozási sztring, amely az ügyfélnek X-Azure-ref fejlécként is elküldve. Egy adott kérelem hozzáférési naplóiban található adatok kereséséhez szükséges. |
 | UserAgent | Az ügyfél által használt böngésző típusa. |
 
-**Megjegyzés:** A különböző útválasztási konfigurációk és a forgalom viselkedése érdekében egyes mezők, például a backendHostname, a cacheStatus, a sentToOriginShield és a POP mező különböző értékekkel is reagálhat. Az alábbi táblázat ismerteti a különböző értékeket, ezek a mezők különböző forgatókönyvekhez szükségesek:
+### <a name="sent-to-origin-shield-deprecation"></a>Elküldve a Origin Shield elavulttá
+A RAW log tulajdonság **isSentToOriginShield** elavult, és egy új mező **isReceivedFromClient**vált. Ha már használja az elavult mezőt, használja az új mezőt. 
 
-| Forgatókönyvek | Naplóbejegyzések száma | POP | BackendHostname | SentToOriginShield | CacheStatus |
+A nyers naplók közé tartoznak a CDN Edge (Child POP) és a Origin Shield által létrehozott naplók. A Origin Shield olyan szülő csomópontokra utal, amelyek stratégiailag a világ minden részén találhatók. Ezek a csomópontok a forrás-kiszolgálókkal kommunikálnak, és csökkentik a forgalom terhelését a forrásnál. 
+
+A forrásként szolgáló védelemre kerülő minden kérelem esetében 2 naplós bejegyzés található:
+
+* Egy az Edge-csomópontok számára
+* Az egyik a Origin Shield. 
+
+Az Edge-csomópontok és a forrás pajzs alapján a kilépések és válaszok megkülönböztetése érdekében a megfelelő adatok beolvasásához használja a **isReceivedFromClient** mezőt. 
+
+Ha az érték hamis, akkor az azt jelenti, hogy a kérést a rendszer a forrás pajzsról az Edge-csomópontokra válaszol. Ez a megközelítés hatékonyan hasonlítható össze a számlázási adattal rendelkező nyers naplók összehasonlításával. Nem számítunk fel díjat a forrásként szolgáló pajzs és a peremhálózati csomópont közötti kimenő forgalomért. A peremhálózati csomópontok és az ügyfelek közötti kimenő forgalomért számítunk fel díjat. 
+
+**Kusto lekérdezési minta a forrásként szolgáló Log Analyticsban generált naplók kizárásához.**
+
+`AzureDiagnostics 
+| where Category == "FrontdoorAccessLog" and isReceivedFromClient_b == true`
+
+> [!NOTE]
+> A különböző útválasztási konfigurációk és a forgalom viselkedése érdekében egyes mezők, például a backendHostname, a cacheStatus, a isReceivedFromClient és a POP mező különböző értékekkel is reagálhat. Az alábbi táblázat ismerteti azokat a különböző értékeket, amelyeket ezek a mezők különböző forgatókönyvekhez fognak tartalmazni:
+
+| Forgatókönyvek | Naplóbejegyzések száma | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Útválasztási szabály engedélyezve gyorsítótárazás nélkül | 1 | Edge POP-kód | A kérés továbbítására szolgáló háttér | Hamis | CONFIG_NOCACHE |
-| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-találat a peremhálózati POP-on | 1 | Edge POP-kód | Üres | Hamis | HIT |
-| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. üres | 1. igaz</br>2. hamis | 1. MISS</br>2. PARTIAL_HIT |
-| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge és a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. a gyorsítótár feltöltését segítő háttérrendszer | 1. igaz</br>2. hamis | 1. MISS</br>2. MISS |
+| Útválasztási szabály engedélyezve gyorsítótárazás nélkül | 1 | Edge POP-kód | A kérés továbbítására szolgáló háttér | Igaz | CONFIG_NOCACHE |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-találat a peremhálózati POP-on | 1 | Edge POP-kód | Üres | Igaz | HIT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. üres | 1. igaz</br>2. hamis | 1. MISS</br>2. TALÁLAT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de részleges gyorsítótár-találat a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. a gyorsítótár feltöltését segítő háttérrendszer | 1. igaz</br>2. hamis | 1. MISS</br>2. PARTIAL_HIT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár PARTIAL_HIT az Edge-POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ra ütközött | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. igaz</br>2. hamis | 1. PARTIAL_HIT</br>2. TALÁLAT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge és a szülő gyorsítótárban – POPPING | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. igaz</br>2. hamis | 1. MISS</br>2. MISS |
+
+> [!NOTE]
+> Gyorsítótárazási forgatókönyvek esetén a gyorsítótár állapotának értéke partial_hit, ha egy kérelemhez tartozó bájtok egy része a bejárati peremhálózati vagy a Origin Shield cache szolgáltatásból származik, míg a bájtok némelyike a nagy objektumok forrásaként szolgál.
+
+A bejárati ajtó egy objektum-darabolás nevű technikát használ. Nagyméretű fájl kérése esetén a bejárati ajtó lekéri a fájl kisebb darabját a forrásból. Miután a bejelentkező POP-kiszolgáló megkapja a kért fájl teljes vagy bájtos tartományát, a bejárati ajtó peremhálózati kiszolgálója 8 MB méretű adattömbökben kéri le a fájlt a forrástól.
+
+Miután az adathalmaz megérkezik a bejárati ajtó szélén, a gyorsítótárba kerül, és azonnal kézbesítve van a felhasználó számára. A bejárati ajtó ezután párhuzamosan lekéri a következő adathalmazt. Ez a kilépés biztosítja, hogy a tartalom a felhasználó előtt egy darabban maradjon, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájl le nem töltődik (ha szükséges), az összes bájtos tartomány elérhető (ha szükséges), vagy az ügyfél lezárja a csatlakozást. A byte-Range kérelemmel kapcsolatos további információkért lásd: RFC 7233. A bejárati ajtó gyorsítótárba helyezi a kapott adattömböket. A teljes fájlt nem kell gyorsítótárazni a bejárati ajtó gyorsítótárában. A fájl-vagy byte-tartományokra vonatkozó kérelmeket a rendszer a bejárati ajtó gyorsítótárából kézbesíti. Ha nem az összes adathalmaz gyorsítótárazva van a bejárati ajtón, a rendszer kikéri a kiindulási pontokra vonatkozó adattömböket. Ez az optimalizálás arra támaszkodik, hogy a forráskiszolgáló képes támogatni a bájtos tartományokra vonatkozó kérelmeket. Ha a forráskiszolgáló nem támogatja a bájtok közötti kérelmeket, ez az optimalizálás nem érvényes.
 
 ## <a name="next-steps"></a>Következő lépések
 

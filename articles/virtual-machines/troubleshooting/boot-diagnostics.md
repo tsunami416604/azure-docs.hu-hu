@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: ef907aea940a4f01475cebf72528b9bcdde50f4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180235"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971557"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibáinak megoldásához
 
@@ -52,7 +52,7 @@ Győződjön meg arról, hogy a **felügyelet lap figyelés** területén be van
 ![Virtuális gép létrehozása](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> A rendszerindítási diagnosztika funkció nem támogatja a Premium Storage-fiókot. Ha a Premium Storage-fiókot használja a rendszerindítási diagnosztika számára, előfordulhat, hogy a virtuális gép indításakor a StorageAccountTypeNotSupported hibaüzenet jelenik meg.
+> A rendszerindítási diagnosztika funkció nem támogatja a Premium Storage-fiók vagy a Zone redundent-fiók típusát. Ha a Premium Storage-fiókot használja a rendszerindítási diagnosztika számára, előfordulhat, hogy a virtuális gép indításakor a StorageAccountTypeNotSupported hibaüzenet jelenik meg.
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Üzembe helyezés egy Azure Resource Manager sablonból

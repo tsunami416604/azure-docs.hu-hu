@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88723493"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961789"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>A kulcs-érték párok és táblák űrlapjainak elemzése
 
 Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. A következő kód egy új Python-parancsfájlban történő futtatásával hívja meg az elemzési **[űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API-ját. A szkript futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le az értékét `<file path>` az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ez egy távoli fájl URL-címe is lehet. Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
+1. Cserélje le az értékét `<file path>` az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ez egy távoli fájl URL-címe is lehet. Ebben a rövid útmutatóban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelés** mappájába tartozó fájlokat (letöltés és Kibontás *sample_data.zip*).
 1. Cserélje le az `<model_id>` t az előző szakaszban kapott modell-azonosítóra.
 1. Cserélje le `<endpoint>` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le `<file type>` a értéket a fájl típusára. Támogatott típusok: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .

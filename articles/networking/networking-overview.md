@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: kumud
 ms.openlocfilehash: 791a248c8fb10bc4db483451971d452a359c8a07
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569239"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure hálózati szolgáltatásai – áttekintés
@@ -34,7 +34,7 @@ Ez a szakasz azokat a szolgáltatásokat ismerteti, amelyek kapcsolatot biztosí
 |[Virtuális hálózat](#vnet)|Lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal.| <p>[Hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Hálózati forgalom továbbítása](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Erőforrások hálózati hozzáférésének korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Virtuális hálózatok csatlakoztatása](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.|<p>[Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[ExpressRoute-áramkörök útválasztási szűrőinek konfigurálása és kezelése](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül.|<p>[Helyek közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Virtuális hálózatok közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Pont – hely kapcsolatok](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtuális WAN](#virtualwan)|Optimalizálja és automatizálja az Azure-ra és az-ra irányuló ág-kapcsolatot. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk.|<p>[Helyek közötti kapcsolatok](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute kapcsolatok](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
+|[Virtual WAN](#virtualwan)|Optimalizálja és automatizálja az Azure-ra és az-ra irányuló ág-kapcsolatot. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk.|<p>[Helyek közötti kapcsolatok](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute kapcsolatok](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Olyan DNS-tartományokat üzemeltet, amelyek Microsoft Azure infrastruktúra használatával biztosítják a névfeloldást.|<p>[Üzemeltessen saját tartományt az Azure DNS-ben](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-rekordok létrehozása egy webalkalmazáshoz](../dns/dns-web-sites-custom-domain.md)</p> <p>[Alias-rekord létrehozása a Traffic Managerhoz](../dns/tutorial-alias-tm.md)</p> <p>[Alias-rekord létrehozása nyilvános IP-címhez](../dns/tutorial-alias-pip.md)</p> <p>[Alias-rekord létrehozása a zóna erőforrásrekord számára](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot konfigurálhat a virtuális gépekhez közvetlenül a TLS-Azure Portal. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre|<p>[Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)</p><p>[Kapcsolódás az SSH-val Linux rendszerű virtuális géphez](../bastion/bastion-connect-vm-ssh.md)</p><p>[Kapcsolódás RDP használatával Windows rendszerű virtuális géphez](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Virtuális hálózati NAT-átjáró](#nat)|Hozzon létre egy NAT-átjárót a virtuális gép kimenő kapcsolatának biztosításához.|<p>[NAT-átjáró létrehozása](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
@@ -66,7 +66,7 @@ A következő ábra több helyek közötti VPN-kapcsolatot mutat be ugyanahhoz a
 
 További információ a VPN-kapcsolat különböző típusairól: [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuális WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
 Az Azure Virtual WAN egy hálózati szolgáltatás, amely optimalizált és automatizált ág-kapcsolatot biztosít az Azure-hoz és a-n keresztül. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk. Az Azure-gerinc kihasználható az ágak összekapcsolásához és a VNet közötti kapcsolathoz is. Az Azure Virtual WAN számos Azure Cloud connectivity-szolgáltatást kínál, többek között a helyek közötti VPN-t, a ExpressRoute, a pont – hely típusú felhasználói VPN-t egyetlen operatív felületre. Az Azure virtuális hálózatok-hez való kapcsolódás virtuális hálózati kapcsolatok használatával történik. További információ: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
 :::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Azure ExpressRoute":::
@@ -116,7 +116,7 @@ A [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) a legkif
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="Azure ExpressRoute":::
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a><a name="waf"></a>Webalkalmazási tűzfal
 
 Az [Azure webalkalmazási tűzfal](../web-application-firewall/overview.md) (WAF) védelmet nyújt a webalkalmazásoknak a gyakori webes biztonsági rések és sebezhetőségek, például az SQL-injektálás és a helyek közötti parancsfájlok használatával. Az Azure WAF a felügyelt szabályok segítségével a OWASP 10 legfontosabb biztonsági résen kívülről is biztosít védelmet a box-ban. Emellett az ügyfelek egyéni szabályokat is megadhatnak, amelyek az ügyfél által felügyelt szabályok a forrás IP-címtartomány alapján további védelmet biztosítanak, és olyan attribútumokat igényelnek, mint a fejlécek, a cookie-k, az űrlap adatmezői vagy a lekérdezési karakterlánc
 
@@ -131,7 +131,7 @@ A Azure Firewallról további információt a [Azure Firewall dokumentációjáb
 
 :::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Azure ExpressRoute":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
+### <a name="network-security-groups"></a><a name="nsg"></a>Network security groups (Hálózati biztonsági csoportok)
 Az Azure-beli virtuális hálózatokban az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. További információ: [biztonsági áttekintés](../virtual-network/security-overview.md).
 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatási végpontok

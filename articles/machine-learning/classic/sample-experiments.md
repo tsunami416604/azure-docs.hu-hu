@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
 ms.openlocfilehash: d62b958189ac01f1beabdbf17ee5cc6a08481e23
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362299"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Hozzon létre Azure Machine Learning Studio (klasszikus) kísérleteket a munkaAzure AI Galleryban működő példákból
@@ -60,6 +60,6 @@ Létrehozhat egy új kísérletet Machine Learning Studio (klasszikus) is, péld
 
 Új kísérlet jön létre a Machine Learning Studio (klasszikus) munkaterületen, a példaként szolgáló kísérlettel sablonként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Adatok importálása különböző forrásokból](import-data.md)
 * [Machine Learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md)

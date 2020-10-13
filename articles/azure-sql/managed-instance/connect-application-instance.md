@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628366"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL-példányhoz
@@ -154,7 +154,7 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 |SSMS| 18,0 vagy [újabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

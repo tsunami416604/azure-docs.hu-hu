@@ -1,20 +1,20 @@
 ---
-title: ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával (ARM-sablon)
-description: Megtudhatja, hogyan hozhat létre ExpressRoute-áramkört Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Gyors útmutató: ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával (ARM-sablon)'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy ExpressRoute-áramkört Azure Resource Manager sablon (ARM-sablon) használatával.
 services: expressroute
 author: duongau
 mnager: kumud
 ms.service: expressroute
 ms.topic: quickstart
 ms.custom: subject-armsq
-ms.date: 08/31/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 540d9d5f7ef3815743909a399076c55018f0df40
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759237"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961851"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Gyors útmutató: ExpressRoute-áramkör létrehozása egy ARM-sablon használatával
 
@@ -101,7 +101,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 > [!NOTE]
 > A virtuális hálózat áramkörhöz való összekapcsolásához meg kell hívnia a szolgáltatót a létesítési folyamat befejezéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a ExpressRoute áramkörrel létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a ExpressRoute áramkört és az összes kapcsolódó erőforrást.
 

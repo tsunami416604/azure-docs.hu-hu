@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
 ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568097"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
@@ -101,7 +101,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Szerb (latin betűs)|   `sr-Latn`       |
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
-|spanyol|   `es`    |
+|Spanyol|   `es`    |
 |szuahéli|   `sw`    |
 |Svéd|   `sv`    |
 |Tahitian|  `ty`    |
@@ -172,7 +172,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Szerb (latin betűs)|   `sr-Latn`       |
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
-|spanyol|   `es`    |
+|Spanyol|   `es`    |
 |szuahéli|   `sw`    |
 |Svéd|   `sv`    |
 |Tahitian|  `ty`    |
@@ -262,7 +262,7 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
-| spanyol      | `es`          |
+| Spanyol      | `es`          |
 | szuahéli      | `sw`          |
 | Svéd      | `sv`          |
 | tamil      | `ta`          |
@@ -334,7 +334,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
-| spanyol      | `es`          |
+| Spanyol      | `es`          |
 | szuahéli|  `sw`    |
 | Svéd      | `sv`          |
 |Tahitian|  `ty`    |
@@ -346,7 +346,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Vietnámi      | `vi`          |
 | walesi | `cy` |
 
-## <a name="speech-translation"></a>Beszédfordítás
+## <a name="speech-translation"></a>Speech Translation
 A fordítás a fordító és a Cognitive Services Speech Service használatával érhető el. A [beszédfelismerési szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/) tájékozódhat a beszédfelismerés használatáról és az összes [elérhető nyelvi lehetőségről](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Diktálás

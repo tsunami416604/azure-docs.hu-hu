@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202296"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961357"
 ---
 # <a name="display-controls"></a>Vezérlőelemek megjelenítése
 
@@ -48,16 +48,16 @@ A **DisplayControl** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
-| UserInterfaceControlType | Igen | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
+| Id | Yes | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
+| UserInterfaceControlType | Yes | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
 
 A **DisplayControl** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
-| Szabályzattípushoz | 0:1 | A **szabályzattípushoz** a felhasználó által összegyűjtött jogcímek értékének előre való feltöltésére szolgálnak. |
-| DisplayClaims | 0:1 | A **DisplayClaims** a felhasználótól gyűjtött jogcímek ábrázolására szolgálnak. |
-| OutputClaims | 0:1 | A **OutputClaims** a **DisplayControl**ideiglenesen menteni kívánt jogcímeket jelölik. |
+| Szabályzattípushoz | 0:1 | A **szabályzattípushoz** a felhasználó által összegyűjtött jogcímek értékének előre való feltöltésére szolgálnak. További információ: [szabályzattípushoz](technicalprofiles.md#inputclaims) elem. |
+| DisplayClaims | 0:1 | A **DisplayClaims** a felhasználótól gyűjtött jogcímek ábrázolására szolgálnak. További információ: [DisplayClaim](technicalprofiles.md#displayclaim) elem.|
+| OutputClaims | 0:1 | A **OutputClaims** a **DisplayControl**ideiglenesen menteni kívánt jogcímeket jelölik. További információ: [OutputClaims](technicalprofiles.md#outputclaims) elem.|
 | Műveletek | 0:1 | A **műveletekkel** listázhatja az ellenőrzési technikai profilokat, amelyeket a rendszer az előtér felhasználói műveleteihez hív meg. |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
@@ -98,7 +98,90 @@ A megjelenítési vezérlők **műveletei** olyan eljárások, amelyek a Azure a
 
 Egy művelet meghatározza az **érvényesítési műszaki profilok**listáját. Ezek a megjelenítési vezérlők egy vagy több megjelenítési jogcíme érvényesítésére szolgálnak. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott adatokat, és hibát jelez a felhasználó számára. A **ContinueOnError**, a **ContinueOnSuccess**és az **előfeltételeket** a Display Control művelethez hasonlóan használhatja, mint ahogyan azokat az [érvényesítési technikai](validation-technical-profile.md) profilokban használják egy önjelölt technikai profilban.
 
-A következő példa egy kódot küld e-mailben vagy SMS-ben az **mfaType** jogcím felhasználó általi kiválasztása alapján.
+#### <a name="actions"></a>Műveletek
+
+A **Actions** elem a következő elemet tartalmazza:
+
+| Elem | Események | Leírás |
+| ------- | ----------- | ----------- |
+| Művelet | 1: n | A végrehajtandó műveletek listája. |
+
+#### <a name="action"></a>Művelet
+
+A **műveleti** elem a következő attribútumot tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| Id | Yes | A művelet típusa. Lehetséges értékek: `SendCode` vagy `VerifyCode` . Az `SendCode` érték egy kódot küld a felhasználónak. Ez a művelet két érvényesítési technikai profilt tartalmazhat: az egyiket a kód létrehozásához, az egyiket pedig a küldéshez. Az `VerifyCode` érték ellenőrzi a felhasználó által beírt kódot a beviteli szövegmezőben. |
+
+A **műveleti** elem a következő elemet tartalmazza:
+
+| Elem | Események | Description |
+| ------- | ----------- | ----------- |
+| ValidationClaimsExchange | 1:1 | Azon műszaki profilok azonosítói, amelyek a hivatkozó technikai profil megjelenítési jogcímek egy részének vagy egészének ellenőrzésére szolgálnak. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó technikai profil megjelenítési jogcímeiben. |
+
+#### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
+
+A **ValidationClaimsExchange** elem a következő elemet tartalmazza:
+
+| Elem | Események | Description |
+| ------- | ----------- | ----------- |
+| ValidationTechnicalProfile | 1: n | A hivatkozó technikai profil megjelenítési jogcímeinek érvényesítésére szolgáló technikai profil. |
+
+A **ValidationTechnicalProfile** elem a következő attribútumokat tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| ReferenceId | Yes | A házirend vagy a szülő házirendben már definiált technikai profil azonosítója. |
+|ContinueOnError|No| Azt jelzi, hogy a további érvényesítési műszaki profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil hibát jelez. Lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és a rendszer hibaüzenetet ad vissza). |
+|ContinueOnSuccess | No | Azt jelzi, hogy a további ellenőrzési profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil sikeres. Lehetséges értékek: `true` vagy `false` . Az alapértelmezett érték az `true` , ami azt jelenti, hogy a további ellenőrzési profilok feldolgozása továbbra is fennáll. |
+
+A **ValidationTechnicalProfile** elem a következő elemet tartalmazza:
+
+| Elem | Események | Description |
+| ------- | ----------- | ----------- |
+| Előfeltételei | 0:1 | Azon előfeltételek listája, amelyeknek meg kell felelniük az érvényesítési technikai profil végrehajtásához. |
+
+Az **előfeltétel** elem a következő attribútumokat tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| `Type` | Igen | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Lehetséges értékek: `ClaimsExist` vagy `ClaimEquals` . `ClaimsExist` Megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcímek a felhasználó aktuális jogcímek készletében vannak. `ClaimEquals` Megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
+| `ExecuteActionsIf` | Yes | Azt jelzi, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani, ha a teszt igaz vagy hamis. |
+
+Az **előfeltétel** elem a következő elemeket tartalmazza:
+
+| Elem | Események | Description |
+| ------- | ----------- | ----------- |
+| Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha ez a jelölőnégyzet be van jelölve `ClaimsExist` , akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus értéke `ClaimEquals` , ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Itt adhatja meg a másik érték elemben ellenőrizendő értéket.|
+| Művelet | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke `SkipThisValidationTechnicalProfile` , amely megadja, hogy a társított érvényesítési technikai profil nem hajtható végre. |
+
+Az alábbi példa az e-mail-címet az [Azure ad SSPR technikai profiljának](aad-sspr-technical-profile.md)használatával küldi el és ellenőrzi.
+
+```xml
+<DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
+  <InputClaims></InputClaims>
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="email" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="verificationCode" ControlClaimType="VerificationCode" Required="true" />
+  </DisplayClaims>
+  <OutputClaims></OutputClaims>
+  <Actions>
+    <Action Id="SendCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-SendCode" />
+      </ValidationClaimsExchange>
+    </Action>
+    <Action Id="VerifyCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-VerifyCode" />
+      </ValidationClaimsExchange>
+    </Action>
+  </Actions>
+</DisplayControl>
+```
+
+A következő példa egy kódot küld e-mailben vagy SMS-ben, a felhasználó az **mfaType** jogcím kiválasztásával, előfeltételekkel.
 
 ```xml
 <Action Id="SendCode">
@@ -141,3 +224,10 @@ Például:
     <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+A megjelenítési vezérlőt használó minták esetében lásd: 
+
+- [Egyéni e-mail-ellenőrzés a mailjet](custom-email-mailjet.md)
+- [Egyéni e-mail-ellenőrzés a SendGrid](custom-email-sendgrid.md)

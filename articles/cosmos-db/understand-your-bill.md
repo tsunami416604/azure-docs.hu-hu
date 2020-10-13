@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567859"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
@@ -300,7 +300,7 @@ A ténylegesen megvásárolt kreditek összege $8 óránként, 100 K/s áron, az
 |----|----|----|----|----|
 |USA keleti régiója|$0,008 |50 K|$4|$2 880 |
 |Kelet-Japán|$0,009 |50 K| $4,50 |$3 240 |
-|||Utólagos elszámolás|$8,50|$6120|
+|||Használatalapú fizetés|$8,50|$6120|
 |Lefoglalt kapacitás megvásárlása|$0,0064 (20% kedvezmény) |100 RU/s vagy $8 kapacitás előre megvásárolva |– $8|– $5 760 |
 |Nettó számla|||$0.50 |$360 |
 

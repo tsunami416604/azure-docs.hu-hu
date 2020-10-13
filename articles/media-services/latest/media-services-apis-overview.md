@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
 ms.openlocfilehash: 4d1c68ba1e0b7db8afefa64abefc671d51e78bd4
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569513"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-kkal
@@ -129,7 +129,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-referencia](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>További információ
+### <a name="see-also"></a>Lásd még
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -148,7 +148,7 @@ Lásd: [Azure Media Services entitások szűrése, rendezése és lapozása](ent
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](./access-api-howto.md)-hoz.
 

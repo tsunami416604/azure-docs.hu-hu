@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569756"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
@@ -82,7 +82,7 @@ Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
 - Több IP-cím és IP-címterület megadásához használjon egyetlen helyet az értékek között:
   - **IPv4-példa**: a *1.2.3.4 10.20.30.40* a 1.2.3.4 vagy a 10.20.30.40 címről érkező összes kérésnek megfelel.
   - **IPv6-példa**: a *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező kérelmekre illeszkedik.
-- Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
+- Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Példa:
   - **IPv4-példa**: a *5.5.5.64/26* a 5.5.5.64-en keresztül a 5.5.5.127-on keresztül érkező kérésekre illeszkedik.
   - **IPv6-példa**: a *1:2:3:/48* a 1:2:3:0:0:0:0:0 és 1:2:3 közötti címekről érkező összes kérelemre illeszkedik: FFFF: FFFF: FFFF: FFFF: FFFF.
 
@@ -207,7 +207,7 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 A (z) *vagy*annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amely megegyezik az összehasonlítani kívánt hosszsal. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan konfigurálhatja az első [szabályok motorját](front-door-tutorial-rules-engine.md). 
 - További tudnivalók a [szabályok motor műveleteiről](front-door-rules-engine-actions.md)

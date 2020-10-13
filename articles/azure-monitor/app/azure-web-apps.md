@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759458"
+ms.locfileid: "91875605"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -75,7 +75,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-A .NET Core következő verziói támogatottak: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
+A .NET Core következő verziói támogatottak: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
 
 A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások teljes keretrendszerének megcélzása jelenleg **nem támogatott** az ügynök/bővítmény alapú figyeléssel. (A programkódon keresztüli[manuális](./asp-net-core.md) kialakítás az összes korábbi forgatókönyvben működni fog.)
 
@@ -90,7 +90,7 @@ A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások
 
      ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
 
-2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a .NET Core 2,0, 2,1, 2,2 és 3,0 **ajánlott gyűjteményét** vagy **letiltását** ajánlja.
+2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a ASP.NET Core 2,1, 2,2, 3,0 és 3,1 **ajánlott gyűjteményét** vagy **letiltását** ajánlja.
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -359,8 +359,8 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 
     ![Az https://yoursitename.scm.azurewebsites/applicationinsights eredmények oldal képernyőképe](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Győződjön meg arról `Application Insights Extension Status` , hogy a `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * Ha nem fut, kövesse az [Application Insights figyelésének engedélyezése című témakört](#enable-application-insights) .
+    * Győződjön meg arról `Application Insights Extension Status` , hogy a `Pre-Installed Site Extension, version 2.8.12.1527, is running.` 
+    * Ha nem fut, kövesse az [Application Insights figyelésének engedélyezése című témakört](#enable-application-insights) .
 
     * Győződjön meg arról, hogy az állapot forrása létezik, és így néz ki: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Ha nem található hasonló érték, az azt jelenti, hogy az alkalmazás jelenleg nem fut vagy nem támogatott. Az alkalmazás futásának ellenőrzéséhez próbálja meg manuálisan meglátogatni az alkalmazás URL-címét/alkalmazás-végpontját, ami lehetővé teszi, hogy a futásidejű információk elérhetővé váljanak.
@@ -406,6 +406,10 @@ A PHP-és a WordPress-webhelyek nem támogatottak. Jelenleg nincs hivatalosan t�
 ### <a name="connection-string-and-instrumentation-key"></a>A kapcsolatok karakterlánca és a kialakítási kulcsa
 
 Ha kód nélküli figyelést használ, csak a kapcsolódási karakterláncra van szükség. Azonban továbbra is javasoljuk a kialakítási kulcs beállítását, hogy megőrizze a visszamenőleges kompatibilitást az SDK régebbi verzióival, ha manuális rendszerállapotot végez.
+
+## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./web-app-extension-release-notes.md).
 
 ## <a name="next-steps"></a>Következő lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](./profiler.md)

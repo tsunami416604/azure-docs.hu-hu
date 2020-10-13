@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713408"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
@@ -404,12 +404,12 @@ A következő táblázat azt mutatja be, hogy a parancsmagok hogyan használhat�
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Alapértelmezés szerint a Get-AzDataLakeGen2ChildItem parancsmag csak az első szintű alárendelt elemeket sorolja fel. A-recurse paraméter rekurzív módon sorolja fel a alárendelt elemeket. |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|A Get-AzDataLakeGen2Item parancsmag kimeneti elemei a következő tulajdonságokkal rendelkeznek: ACL, tulajdonos, csoport, engedély.|
-|Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|A Get-AzDataLakeGen2FileContent parancsmag a fájl tartalmát a helyi fájlba tölti le.|
-|Áthelyezés – AzDataLakeStoreItem|Áthelyezés – AzDataLakeGen2Item||
-|Új – AzDataLakeStoreItem|Új – AzDataLakeGen2Item|Ez a parancsmag egy helyi fájlból tölti fel az új fájl tartalmát.|
+|Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|A Get-AzDataLakeGen2FileContent parancsmag fájl tartalmát letölti a helyi fájlba.|
+|Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
+|New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|Ez a parancsmag egy helyi fájlból tölti fel az új fájl tartalmát.|
 |Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
-|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Frissítés – AzDataLakeGen2Item|Az Update-AzDataLakeGen2Item parancsmag csak egyetlen elem frissítését frissíti, és nem rekurzív módon. Ha rekurzív módon szeretné frissíteni a frissítést, listaelemeket listázhat a Get-AzDataLakeStoreChildItem parancsmag használatával, majd a folyamatot az Update-AzDataLakeGen2Item parancsmaggal.|
-|Teszt – AzDataLakeStoreItem|Get-AzDataLakeGen2Item|A Get-AzDataLakeGen2Item parancsmag hibát jelez, ha az adott objektum nem létezik.|
+|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Az Update-AzDataLakeGen2Item parancsmag csak egyetlen elem frissítését frissíti, és nem rekurzív módon. Ha rekurzív módon szeretné frissíteni a frissítést, sorolja fel az elemeket az Get-AzDataLakeStoreChildItem parancsmag használatával, majd a folyamatot a Update-AzDataLakeGen2Item parancsmaghoz.|
+|Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Az Get-AzDataLakeGen2Item parancsmag hibát jelez, ha az adott objektum nem létezik.|
 
 ## <a name="see-also"></a>Lásd még
 

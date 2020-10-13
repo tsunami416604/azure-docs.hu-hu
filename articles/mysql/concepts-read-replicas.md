@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
 ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627567"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
@@ -188,7 +188,7 @@ A fenti paraméterek egyikének a forráskiszolgálón való frissítéséhez t�
 - Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
 - A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

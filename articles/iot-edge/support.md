@@ -4,16 +4,16 @@ description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/10/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 27d078bc1dc61079d44110999b70c5195c9c8a2a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8bd0d0d6fccedf2bd9c4fe94f3ef13dbd82dc8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874220"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971081"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -65,12 +65,11 @@ A Microsoft a következő táblázatban felsorolt rendszereket támogatja: álta
 | Raspbian Stretch |  | ![Raspbian stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
 | [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió  |
 | [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió |
-| [Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/windows-iot-core), Build 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows 10 IoT Enterprise](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise), Build 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19), 17763-es Build | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server), Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-A fent felsorolt Windows operációs rendszerek a Windows-tárolókat futtató eszközökre vonatkozó követelmények a Windows rendszeren, amely az egyetlen támogatott konfiguráció az éles környezetben. A Windows Azure IoT Edge telepítési csomagjai lehetővé teszik a Linux-tárolók használatát Windows rendszeren; Ez a konfiguráció azonban csak fejlesztési és tesztelési célokra használható. További információ: [IoT Edge használata Windows rendszeren Linux-tárolók futtatásához](how-to-install-iot-edge-windows-with-linux.md).
+A fent felsorolt Windows operációs rendszerek a Windows-tárolókat futtató eszközökre vonatkozó követelmények a Windows rendszeren, amely az egyetlen támogatott konfiguráció az éles környezetben. A Windows Azure IoT Edge telepítési csomagjai lehetővé teszik a Linux-tárolók használatát Windows rendszeren; Ez a konfiguráció azonban csak fejlesztési és tesztelési célokra használható. 
 
 ### <a name="tier-2"></a>Második réteg
 
@@ -108,14 +107,16 @@ IoT Edge összetevőket külön lehet telepíteni vagy frissíteni, és visszame
 
 | Kiadás | Biztonsági démon | Peremhálózati hub<br>Edge-ügynök | Libiothsm | Moby |
 |--|--|--|--|--|
+| **1.0.10** | 1.0.10 | 1.0.10 | 1.0.10 |  |
 | **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-IoT Edge a Microsoft. Azure. Device. Client SDK-t használja. További információkért tekintse meg az [Azure IoT C# SDK GitHub](https://github.com/Azure/azure-iot-sdk-csharp) -tárházat vagy a [.net-hez készült Azure SDK-referenciát](/dotnet/api/overview/azure/iot/client). Az alábbi lista az ügyfél SDK azon verzióját mutatja be, amelyet az egyes kiadások a következővel teszteltek:
+IoT Edge a Microsoft. Azure. Devices. Client SDK-t használja. További információkért tekintse meg az [Azure IoT C# SDK GitHub](https://github.com/Azure/azure-iot-sdk-csharp) -tárházat vagy a [.net-hez készült Azure SDK-referenciát](/dotnet/api/overview/azure/iot/client). Az alábbi lista az ügyfél SDK azon verzióját mutatja be, amelyet az egyes kiadások a következővel teszteltek:
 
+* **IoT Edge 1.0.10**: ügyféloldali SDK-1.28.0
 * **IoT Edge 1.0.9**: ügyféloldali SDK-1.21.1
 * **IoT Edge 1.0.8**: ügyféloldali SDK-1.20.3
 * **IoT Edge 1.0.7**: ügyféloldali SDK-1.20.1

@@ -14,10 +14,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
 ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620358"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Ismerkedés az Azure SQL felügyelt példányok naplózásával
@@ -209,7 +209,7 @@ A felügyelt példányok naplóit az Azure-Event Hubsba vagy Azure Monitor napl�
 
 Több módszer is használható a blob-naplózási naplók megtekintésére.
 
-- A rendszerfunkció `sys.fn_get_audit_file` (T-SQL) segítségével táblázatos formátumban visszaküldheti a naplózási adatokat. A függvény használatáról további információt a [sys. fn_get_audit_file dokumentációjában](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)talál.
+- A rendszerfunkció `sys.fn_get_audit_file` (T-SQL) segítségével táblázatos formátumban visszaküldheti a naplózási adatokat. A függvény használatáról a [sys.fn_get_audit_file dokumentációjában](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)olvashat bővebben.
 
 - A naplókat a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)eszközzel is megismerheti. Az Azure Storage-ban a naplózási naplók a naplófájlok tárolására megadott tárolóban lévő blob-fájlok gyűjteményében lesznek mentve. A tárolási mappa hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -244,7 +244,7 @@ Az `CREATE AUDIT` Azure Blob Storage-ba való naplózás szintaxisának főbb el
 - A Leállítás beállítás **nem támogatott**.
 - `queue_delay` a 0 érték **nem támogatott**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A naplózási naplók használati módszereinek teljes listájáért tekintse meg az [Ismerkedés a Azure SQL Database naplózással](../../azure-sql/database/auditing-overview.md)című témakört.
 - A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), ahol megtalálhatja a megfelelőségi tanúsítványok legújabb listáját.

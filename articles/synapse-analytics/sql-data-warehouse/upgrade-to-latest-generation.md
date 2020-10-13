@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627074"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Teljesítmény optimalizálása az Azure szinapszis Analytics SQL-készletének frissítésével
@@ -244,6 +244,6 @@ A helyreállított adatbázis TDE válik, ha a forrásadatbázis TDE engedélyez
 
 Ha az SQL-készlettel kapcsolatos problémákat tapasztal, hozzon létre egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A frissített SQL-készlet online állapotú. A bővített architektúra előnyeinek kihasználásához tekintse meg az [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md)című témakört.

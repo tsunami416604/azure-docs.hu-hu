@@ -9,10 +9,10 @@ ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569839"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute közvetlen konfigurálása az Azure CLI használatával
@@ -341,6 +341,6 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson:
   }  
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

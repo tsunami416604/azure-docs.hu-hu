@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: b0532007ff03cd9dcf253824a1158fd0b8661120
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 82b44c00b0ee4160a4baf6ad6cca7a97350d6239
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970945"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - a [fürt](https://curl.haxx.se/windows/) telepítve van.
-- Legalább hat egyforma típusú formátumból álló készlet. Ezek közül öt a modell betanításához, majd a hatodik űrlappal való teszteléséhez fog használni. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumnak kell lenniük. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban. A tesztelési fájlokat külön mappában helyezheti el.
+- Legalább hat egyforma típusú formátumból álló készlet. Ezek közül öt a modell betanításához, majd a hatodik űrlappal való teszteléséhez fog használni. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumnak kell lenniük. Ehhez a rövid útmutatóhoz használhat egy [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip*letöltése és kibontása). Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban. A tesztelési fájlokat külön mappában helyezheti el.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 

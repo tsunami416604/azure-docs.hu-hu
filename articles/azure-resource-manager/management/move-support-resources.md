@@ -4,10 +4,10 @@ description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthely
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627108"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
@@ -2057,7 +2057,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

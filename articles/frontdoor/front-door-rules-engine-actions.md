@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569774"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door szabálymotor műveletei
@@ -105,7 +105,7 @@ Dinamikus tömörítés | A bejárati ajtó dinamikusan tömörítheti a tartalm
 Lekérdezési paraméterek | A gyorsítótárazás alapjául szolgáló engedélyezett (vagy nem engedélyezett) paraméterek vesszővel tagolt listája.
 Gyorsítótár időtartama | Gyorsítótár lejárati időtartama (nap, óra, perc, másodperc) Minden értéknek int-nek kell lennie. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan konfigurálhatja az első [szabályok motorját](front-door-tutorial-rules-engine.md). 
 - További információ a [szabályok motorjának egyeztetési feltételeiről](front-door-rules-engine-match-conditions.md)

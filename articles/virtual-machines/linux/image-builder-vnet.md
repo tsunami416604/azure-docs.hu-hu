@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d75d73fcd64917257b850861142e7f4a67da834c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068232"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972305"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Az Azure-rendszerkép-készítő használata Linux rendszerű virtuális gépekhez, amely lehetővé teszi egy meglévő Azure-VNET való hozzáférést
 
@@ -163,7 +163,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>Az erőforráscsoport engedélyeinek beállítása
 
-A rendszerkép-szerkesztő a megadott [felhasználói identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) használja a rendszerkép az Azure Shared rendszerkép-katalógusba (SIG) való behelyezéséhez. Ebben a példában egy olyan Azure-szerepkör-definíciót hoz létre, amely részletes műveleteket hajt végre a rendszerképnek a SIG-ba való terjesztéséhez. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
+A rendszerkép-szerkesztő a megadott [felhasználói identitást](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) használja a rendszerkép az Azure Shared rendszerkép-katalógusba (SIG) való behelyezéséhez. Ebben a példában egy olyan Azure-szerepkör-definíciót hoz létre, amely részletes műveleteket hajt végre a rendszerképnek a SIG-ba való terjesztéséhez. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
 
 ```bash
 # create user assigned identity for image builder
@@ -269,7 +269,7 @@ A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása u
 *******************************************************
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha most szeretné újból testreszabni a rendszerkép verzióját, hogy ugyanazon rendszerkép új verzióját hozza létre, ugorja át a következő lépéseket, és folytassa az [Azure rendszerkép-készítő használatával egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md).
 

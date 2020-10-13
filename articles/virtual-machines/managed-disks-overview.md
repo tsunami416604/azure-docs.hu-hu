@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299932"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972033"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
 
@@ -35,7 +35,7 @@ A felügyelt lemezek használatával akár 50 000 virtuálisgép- **lemezt** is 
 
 ### <a name="integration-with-availability-sets"></a>Integráció a rendelkezésre állási csoportokkal
 
-A felügyelt lemezek integrálva vannak a rendelkezésre állási csoportokkal annak biztosítása érdekében, hogy a [rendelkezésre állási csoportba tartozó virtuális gépek](windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) lemezei elég elszigeteltek legyenek egymástól, hogy elkerülje a meghibásodást. A lemezeket a rendszer automatikusan a különböző tárolási skálázási egységekben (bélyegekben) helyezi el. Ha a bélyegző hardveres vagy szoftveres hiba miatt meghiúsul, csak a bélyeggel rendelkező virtuálisgép-példányok meghibásodnak. Tegyük fel például, hogy egy alkalmazás öt virtuális gépen fut, és a virtuális gépek rendelkezésre állási csoportba tartoznak. Ezeknek a virtuális gépeknek a lemezei nem lesznek ugyanazon bélyegzőn tárolva, így ha az egyik bélyegző leáll, az alkalmazás többi példánya továbbra is futni fog.
+A felügyelt lemezek integrálva vannak a rendelkezésre állási csoportokkal annak biztosítása érdekében, hogy a [rendelkezésre állási csoportba tartozó virtuális gépek](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) lemezei elég elszigeteltek legyenek egymástól, hogy elkerülje a meghibásodást. A lemezeket a rendszer automatikusan a különböző tárolási skálázási egységekben (bélyegekben) helyezi el. Ha a bélyegző hardveres vagy szoftveres hiba miatt meghiúsul, csak a bélyeggel rendelkező virtuálisgép-példányok meghibásodnak. Tegyük fel például, hogy egy alkalmazás öt virtuális gépen fut, és a virtuális gépek rendelkezésre állási csoportba tartoznak. Ezeknek a virtuális gépeknek a lemezei nem lesznek ugyanazon bélyegzőn tárolva, így ha az egyik bélyegző leáll, az alkalmazás többi példánya továbbra is futni fog.
 
 ### <a name="integration-with-availability-zones"></a>Integráció a Availability Zones
 
@@ -47,7 +47,7 @@ A regionális katasztrófák elleni védelem érdekében [Azure Backup](../backu
 
 ### <a name="granular-access-control"></a>Részletes hozzáférés-vezérlés
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) segítségével adott engedélyeket rendelhet egy felügyelt lemezhez egy vagy több felhasználó számára. A felügyelt lemezek számos műveletet tesznek elérhetővé, beleértve az olvasást, az írást (létrehozás/frissítés), a törlést és a lemez [megosztott hozzáférési aláírása (SAS) URI azonosítójának](../storage/common/storage-dotnet-shared-access-signature-part-1.md) beolvasását. Csak azokhoz a műveletekhez adhat hozzáférést, amelyeket egy személynek el kell végeznie a feladatának elvégzéséhez. Ha például nem szeretné, hogy egy személy átmásolja a felügyelt lemezt egy Storage-fiókba, dönthet úgy, hogy nem engedélyez hozzáférést az adott felügyelt lemez exportálási műveletéhez. Hasonlóképpen, ha nem szeretné, hogy egy személy SAS URI-t használjon egy felügyelt lemez másolásához, akkor dönthet úgy, hogy nem adja meg ezt az engedélyt a felügyelt lemez számára.
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) segítségével adott engedélyeket rendelhet egy felügyelt lemezhez egy vagy több felhasználó számára. A felügyelt lemezek számos műveletet tesznek elérhetővé, beleértve az olvasást, az írást (létrehozás/frissítés), a törlést és a lemez [megosztott hozzáférési aláírása (SAS) URI azonosítójának](../storage/common/storage-sas-overview.md) beolvasását. Csak azokhoz a műveletekhez adhat hozzáférést, amelyeket egy személynek el kell végeznie a feladatának elvégzéséhez. Ha például nem szeretné, hogy egy személy átmásolja a felügyelt lemezt egy Storage-fiókba, dönthet úgy, hogy nem engedélyez hozzáférést az adott felügyelt lemez exportálási műveletéhez. Hasonlóképpen, ha nem szeretné, hogy egy személy SAS URI-t használjon egy felügyelt lemez másolásához, akkor dönthet úgy, hogy nem adja meg ezt az engedélyt a felügyelt lemez számára.
 
 ### <a name="upload-your-vhd"></a>Töltse fel a VHD-t
 
@@ -96,7 +96,7 @@ A lemez maximális kapacitása 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-A legtöbb virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lemez. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok számára, és kizárólag az olyan adattárolók tárolására szolgál, mint például az oldal vagy a lapozófájlok. Előfordulhat, hogy az ideiglenes lemezen lévő adatvesztés egy [karbantartási esemény](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime) vagy [egy virtuális gép újratelepítése](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)során elvész. A virtuális gép sikeres újraindítása során az ideiglenes lemezen tárolt adatmennyiség továbbra is fennáll. Az ideiglenes lemezek nélküli virtuális gépekkel kapcsolatos további információkért lásd: Azure-beli [VM-méretek helyi ideiglenes lemez](azure-vms-no-temp-disk.md)nélkül.
+A legtöbb virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lemez. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok számára, és kizárólag az olyan adattárolók tárolására szolgál, mint például az oldal vagy a lapozófájlok. Előfordulhat, hogy az ideiglenes lemezen lévő adatvesztés egy [karbantartási esemény](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime) vagy [egy virtuális gép újratelepítése](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)során elvész. A virtuális gép sikeres újraindítása során az ideiglenes lemezen tárolt adatmennyiség továbbra is fennáll. Az ideiglenes lemezek nélküli virtuális gépekkel kapcsolatos további információkért lásd: Azure-beli [VM-méretek helyi ideiglenes lemez](azure-vms-no-temp-disk.md)nélkül.
 
 Az Azure Linux rendszerű virtuális gépeken az ideiglenes lemez általában/dev/sdb, és a Windows rendszerű virtuális gépeken az ideiglenes lemez alapértelmezés szerint D:. Az ideiglenes lemezt a kiszolgálóoldali titkosítás nem titkosítja, kivéve, ha engedélyezi a titkosítást a gazdagépen.
 
@@ -104,7 +104,7 @@ Az Azure Linux rendszerű virtuális gépeken az ideiglenes lemez általában/de
 
 A felügyelt lemez pillanatfelvétele egy felügyelt lemez írásvédett, alapértelmezés szerint a standard szintű felügyelt lemezként tárolt teljes másolata. A pillanatképekkel bármikor készíthet biztonsági mentést a felügyelt lemezekről. Ezek a pillanatképek függetlenek a forrásoldali lemeztől, és új felügyelt lemezek létrehozásához használhatók. 
 
-A pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiépített kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik. A pillanatképek használt mérete az [Azure használati jelentésének](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)megtekintésével tekinthető meg. Ha például egy pillanatkép által használt adatméret 10 GiB, a **napi** használati jelentés 10 GIB/(31 nap) = 0,3226-et jelenít meg a felhasznált mennyiségnek megfelelően.
+A pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiépített kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik. A pillanatképek használt mérete az [Azure használati jelentésének](../cost-management-billing/understand/review-individual-bill.md)megtekintésével tekinthető meg. Ha például egy pillanatkép által használt adatméret 10 GiB, a **napi** használati jelentés 10 GIB/(31 nap) = 0,3226-et jelenít meg a felhasznált mennyiségnek megfelelően.
 
 Ha szeretne többet megtudni arról, hogyan hozhat létre pillanatképeket a felügyelt lemezekhez, tekintse meg a következő forrásokat:
 

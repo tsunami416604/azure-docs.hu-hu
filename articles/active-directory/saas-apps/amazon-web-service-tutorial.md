@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
 ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713642"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)

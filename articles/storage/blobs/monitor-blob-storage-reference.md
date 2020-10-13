@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
 ms.openlocfilehash: b51b219daec01d0bce3bbfb71c29e9374363665d
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711358"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Az Azure Blob Storage figyelési adatreferenciája
@@ -64,7 +64,7 @@ Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja
 
 ### <a name="dimensions-specific-to-blob-storage"></a>BLOB Storage-tárolóra jellemző méretek
 
-| Dimenzió neve | Description |
+| Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
 | **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobokat a **BlockBlob**tartalmazza. |
 | **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: gyors elérésű szint</li> <li>**Cool**: lassú szint</li> <li>**Archive**: archiválási szint</li> <li>**Premium**: prémium szint a blob blokkhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: szintű prémium oldal blob</li> <li>**Standard**: a standard oldal blobjának típusa</li> <li>Nem **rétegű**: az általános célú v1-es Storage-fiók típusa</li> |

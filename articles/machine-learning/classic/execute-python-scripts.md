@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362384"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
@@ -149,7 +149,7 @@ Több adatot is vissza lehet adni, ha más lemezképbe menti őket. A Studio (kl
 
 A Studióban (klasszikus) telepített anaconda-környezet olyan gyakori csomagokat tartalmaz, mint például a NumPy, a SciPy és a Scikits-Learn. Ezeket a csomagokat hatékonyan lehet használni az adatfeldolgozáshoz a Machine learning-folyamatokban.
 
-Például az alábbi kísérlet és szkript szemlélteti a Scikits együttes használatát – Ismerje meg, hogyan számítja ki a számítási funkció fontossági pontszámait egy adatkészlethez. A pontszámok a felügyelt funkciók kiválasztásához használhatók, mielőtt bekerülnek egy másik modellbe.
+Például az alábbi kísérlet és szkript szemlélteti a Scikits-Learnban szereplő Ensemble-tanulók használatát, hogy számításba lehessen venni az adathalmazok fontossági pontszámait. A pontszámok a felügyelt funkciók kiválasztásához használhatók, mielőtt bekerülnek egy másik modellbe.
 
 Itt látható a Python-függvény, amely a fontossági pontszámok kiszámítására szolgál, és a pontszámok alapján rendezi a szolgáltatásokat:
 

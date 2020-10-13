@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713779"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
@@ -367,7 +367,7 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 **Útmutató**: az Azure API Management vezérlési síkon (Azure Portal) rendszergazdai hozzáféréssel rendelkező fiókok leltárának fenntartása.
 
-Azure Active Directory (AD) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. A API Management ezekkel a szerepkörökkel és szerepköralapú Access Controlekkel lehetővé teszi az API Management szolgáltatások és entitások részletes hozzáférés-kezelését.
+Azure Active Directory (AD) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. API Management ezekre a szerepkörökre támaszkodik, és Role-Based Access Control a API Management szolgáltatások és entitások részletes hozzáférés-kezelésének lehetővé tételéhez.
 
 Emellett a API Management beépített rendszergazdák csoportot tartalmaz a API Management felhasználói rendszerében. A API Management csoportok az API-k láthatóságát vezérlik a fejlesztői portálon, és a rendszergazdák csoport tagjai láthatják az összes API-t.
 
@@ -1112,9 +1112,9 @@ A felügyelt identitások használatával Azure Key Vault tanúsítványok szere
 
 * [A blob Storage biztonsági javaslata](../storage/blobs/security-recommendations.md)
 
-A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezéséhez engedélyezze a Key Vault törlését.
+A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
 
-* [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1208,7 +1208,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

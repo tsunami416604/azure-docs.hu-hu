@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthat be egy Azure Migrate berendezést a 
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448079"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Berendezés beállítása Hyper-V virtuális gépekhez
@@ -173,6 +173,6 @@ A felderítés befejezését követően ellenőrizheti, hogy a virtuális gépek
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [Hyper-V értékelését](tutorial-assess-hyper-v.md) Azure Migrate kiszolgáló értékelésével.

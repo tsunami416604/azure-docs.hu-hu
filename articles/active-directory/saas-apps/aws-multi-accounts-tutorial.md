@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Azure Active Directory integráció Amazon Web Services (AWS) (örökölt oktatóanyag)
@@ -93,7 +93,7 @@ Amazon Web Services (AWS) esetében rendelje hozzá a Felhasználónév érték�
 Az Azure AD egyszeri bejelentkezés Amazon Web Services (AWS) szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Amazon Web Services (AWS) egyszeri bejelentkezés konfigurálása](#configure-amazon-web-services-aws-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Amazon Web Services (AWS) egyszeri bejelentkezés konfigurálása](#configure-amazon-web-services-aws-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -110,19 +110,19 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban, és kattintson a **Save (Mentés**) gombra.
 
-5. A Amazon Web Services (AWS) alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Ezen attribútumok értékeit az alkalmazás-integráció lapon lévő **felhasználói attribútumok & jogcímek** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok & jogcímek** párbeszédpanel megnyitásához.
+5. A Amazon Web Services (AWS) alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Ezen attribútumok értékeit az alkalmazás-integráció lapon lévő **felhasználói attribútumok & jogcímek** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok & jogcímek** párbeszédpanel megnyitásához.
 
     ![A képernyőképen a felhasználói attribútumok láthatók a szerkesztési vezérlővel.](common/edit-attribute.png)
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Név  | Forrás attribútum  | Névtér |
+    | Name (Név)  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -146,29 +146,29 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     : Kattintson a **Mentés** gombra.
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-fájljának** letöltéséhez és a számítógépre mentéséhez.
+7. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-fájljának** letöltéséhez, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Amazon Web Services (AWS) egyszeri bejelentkezés konfigurálása
+### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Amazon Web Services (AWS) egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Amazon Web Services (AWS) vállalati webhelyre rendszergazdaként.
 
 1. Kattintson az **AWS Kezdőlap**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása][11]
+    ![Önálló Sign-On-Kezdőlap konfigurálása][11]
 
 1. Kattintson **az identitás-és hozzáférés-kezelés**elemre.
 
-    ![Egyszeri bejelentkezés identitásának konfigurálása][12]
+    ![Önálló Sign-On identitás konfigurálása][12]
 
 1. Kattintson az **identitás-szolgáltatók**elemre, majd a **szolgáltató létrehozása**elemre.
 
-    ![Egyszeri bejelentkezési szolgáltató konfigurálása][13]
+    ![Önálló Sign-On-szolgáltató konfigurálása][13]
 
 1. A **szolgáltató konfigurálása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezési párbeszédpanel konfigurálása][14]
+    ![Egyetlen Sign-On konfigurálása párbeszédpanel][14]
 
     a. **Szolgáltató típusaként**válassza az **SAML**lehetőséget.
 
@@ -180,15 +180,15 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. A **szolgáltatói adatok ellenőrzése** párbeszédpanelen kattintson a **Létrehozás**gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása – ellenőrzés][15]
+    ![Egyszeres Sign-On-ellenőrzés konfigurálása][15]
 
 1. Kattintson a **szerepkörök**elemre, majd kattintson a **szerepkör létrehozása**lehetőségre.
 
-    ![Egyszeri bejelentkezési szerepkörök konfigurálása][16]
+    ![Egyetlen Sign-On szerepkör konfigurálása][16]
 
 1. A **szerepkör létrehozása** oldalon hajtsa végre a következő lépéseket:  
 
-    ![Egyszeri bejelentkezéses megbízhatóság konfigurálása][19]
+    ![Egyetlen Sign-On megbízhatóság konfigurálása][19]
 
     a. Válassza ki az **SAML 2,0-összevonás** elemet **a megbízható entitás típusa**területen.
 
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. A **felülvizsgálati** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés felülvizsgálatának konfigurálása][34]
+    ![Egyetlen Sign-On felülvizsgálatának konfigurálása][34]
 
     a. A **szerepkör neve** szövegmezőbe írja be az értéket a következő mintában `accountname-aws-admin` .
 

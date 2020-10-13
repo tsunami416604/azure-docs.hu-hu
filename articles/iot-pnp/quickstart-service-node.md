@@ -3,17 +3,17 @@ title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play-eszköz (Node
 description: A Node.js használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT-Plug and Play-eszközhöz, és együttműködhet velük.
 author: elhorton
 ms.author: elhorton
-ms.date: 08/11/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574993"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946127"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Gyors útmutató: interakció a megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 A minta-konfigurációval kapcsolatos további tudnivalókért tekintse meg a [minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md)információit.
 
-Ebben a rövid útmutatóban a IoT Plug and Play eszközként Node.jsban írt minta termosztát-eszközt használhat. A minta eszköz futtatása:
+Ebben a rövid útmutatóban egy, a IoT Plug and Play eszközként Node.jsba írt minta termosztát-eszközt használ. A minta eszköz futtatása:
 
 1. Nyisson meg egy terminál-ablakot, és navigáljon ahhoz a helyi mappához, amely a GitHubról klónozott Node.js adattárhoz tartozó Microsoft Azure IoT SDK-t tartalmazza.
 
@@ -94,48 +94,103 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node.jsban, hog
 1. Nyissa meg a **szolgáltatás** terminálját, és a következő paranccsal futtassa az eszköz adatainak olvasásához használt mintát:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. A **szolgáltatás** -terminál kimenetében figyelje meg a digitális iker válaszát. Megjelenik az eszköz modell-azonosítója és a hozzá tartozó tulajdonságok jelentés:
+1. A **szolgáltatás** -terminál kimenetében figyelje meg az eszköz kettős válaszát. Megjelenik az eszköz modell-azonosítója és a hozzá tartozó tulajdonságok jelentés:
 
     ```json
-    "$dtId": "mySimpleThermostat",
-    "serialNumber": "123abc",
-    "maxTempSinceLastReboot": 51.96167432818655,
-    "$metadata": {
-      "$model": "dtmi:com:example:Thermostat;1",
-      "serialNumber": { "lastUpdateTime": "2020-07-09T14:04:00.6845182Z" },
-      "maxTempSinceLastReboot": { "lastUpdateTime": "2020-07-09T14:04:00.6845182" }
+    Model Id: dtmi:com:example:Thermostat;1
+    {
+      "deviceId": "my-pnp-device",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "Njc3MDMxNDcy",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00Z",
+      "connectionState": "Connected",
+      "lastActivityTime": "0001-01-01T00:00:00Z",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "modelId": "dtmi:com:example:Thermostat;1",
+      "version": 4,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:19.4574755Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "maxTempSinceLastReboot": 31.343640523762232,
+          "serialNumber": "123abc",
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:23.7339042Z",
+            "maxTempSinceLastReboot": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            },
+            "serialNumber": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            }
+          },
+          "$version": 3
+        }
+      },
+      "capabilities": {
+        "iotEdge": false
+      },
+      "tags": {}
     }
     ```
 
-1. A következő kódrészlet a *get_digital_twin.js* kódot mutatja be, amely az eszköz Twin modell-azonosítóját kérdezi le:
+1. A következő kódrészlet a *twin.js* kódot mutatja be, amely az eszköz Twin modell-azonosítóját kérdezi le:
 
     ```javascript
-    console.log("Model Id: " + inspect(digitalTwin.$metadata.$model))
+    var registry = Registry.fromConnectionString(connectionString);
+    registry.getTwin(deviceId, function(err, twin) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log('Model Id: ' + twin.modelId);
+        //...
+      }
+      //...
+    }
     ```
 
 Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 
+> [!NOTE]
+> Ezek a szolgáltatási minták a **beállításjegyzék** osztályt használják a **IoT hub szolgáltatás ügyfelének**. Ha többet szeretne megtudni az API-król, beleértve a digitális Twins API-t, tekintse meg a [szolgáltatás fejlesztői útmutatóját](concepts-developer-guide-service.md).
+
 ### <a name="update-a-writable-property"></a>Írható tulajdonság frissítése
 
-1. Nyissa meg a *update_digital_twin.js* fájlt a kódszerkesztő programban.
+1. Nyissa meg a *twin.js* fájlt a kódszerkesztő programban.
 
-1. Tekintse át a mintakód. Megtudhatja, hogyan hozhat létre JSON-javítást az eszköz digitális Twin-fájljának frissítéséhez. Ebben a példában a kód a termosztát hőmérsékletét a 42 értékkel helyettesíti:
+1. Tekintse át a mintakód két módszerét a Twin-eszközök frissítéséhez. Az első módszer használatához módosítsa a `twinPatch` változót az alábbiak szerint:
 
     ```javascript
-    const patch = [{
-        op: 'add',
-        path: '/targetTemperature',
-        value: '42'
-      }]
+    var twinPatch = {
+      tags: {
+        city: "Redmond"
+      },
+      properties: {
+        desired: {
+          targetTemperature: 42
+        }
+      }
+    };
     ```
+
+    A `targetTemperature` tulajdonság a termosztátos eszköz modelljében írható tulajdonságként van definiálva.
 
 1. A **szolgáltatás** -terminálon futtassa a következő parancsot a minta futtatásához a tulajdonság frissítéséhez:
 
     ```cmd/sh
-    node update_digital_twin.js
+    node twin.js
     ```
 
 1. Az **eszköz** -terminálon láthatja, hogy az eszköz a következő frissítést kapta:
@@ -151,44 +206,54 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
       }
     }
     updated the property
-    Properties have been reported for component
     ```
 
 1. A **szolgáltatás** -terminálban futtassa a következő parancsot a tulajdonság frissítésének megerősítéséhez:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. A **szolgáltatás** -terminál kimenetében, az összetevő alatt a digitális dupla válaszban a `thermostat1` frissített célként jelzett hőmérséklet látható. Eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ismételje meg ezt a lépést, amíg az eszköz fel nem dolgozza a tulajdonság frissítését:
+1. A **szolgáltatás** -terminál kimenetében, a ¬ jelentett tulajdonságok szakaszban láthatja a frissített célként jelzett hőmérsékletet. Eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ismételje meg ezt a lépést, amíg az eszköz fel nem dolgozza a tulajdonság frissítését:
 
     ```json
-    targetTemperature: 42,
+    "reported": {
+      //...
+      "targetTemperature": {
+        "value": 42,
+        "ac": 200,
+        "ad": "Successfully executed patch for targetTemperature",
+        "av": 4
+      },
+      //...
+    }
     ```
 
 ### <a name="invoke-a-command"></a>Parancs meghívása
 
-1. Nyissa meg *invoke_command.js* fájlt, és tekintse át a kódot.
+1. Nyissa meg *device_method.js* fájlt, és tekintse át a kódot.
 
 1. Nyissa meg a **szolgáltatás** terminálját. A következő parancs használatával futtassa a mintát a parancs meghívásához:
 
     ```cmd/sh
-    set IOTHUB_COMMAND_NAME=getMaxMinReport
-    set IOTHUB_COMMAND_PAYLOAD=commandpayload
-    node invoke_command.js
+    set IOTHUB_METHOD_NAME=getMaxMinReport
+    set IOTHUB_METHOD_PAYLOAD=commandpayload
+    node device_method.js
     ```
 
 1. A **szolgáltatás** -terminál kimenete a következő megerősítést jeleníti meg:
 
     ```cmd/sh
+    getMaxMinReport on my-pnp-device:
     {
-        xMsCommandStatuscode: 200,  
-        xMsRequestId: 'ee9dd3d7-4405-4983-8cee-48b4801fdce2',  
-        connection: 'close',  'content-length': '18',  
-        'content-type': 'application/json; charset=utf-8',  
-        date: 'Thu, 09 Jul 2020 15:05:14 GMT',  
-        server: 'Microsoft-HTTPAPI/2.0',  vary: 'Origin',  
-        body: 'min/max response'
+      "status": 200,
+      "payload": {
+        "maxTemp": 23.460596940801928,
+        "minTemp": 23.460596940801928,
+        "avgTemp": 23.460596940801928,
+        "endTime": "2020-10-05T12:48:08.562Z",
+        "startTime": "2020-10-05T12:47:54.450Z"
+      }
     }
     ```
 

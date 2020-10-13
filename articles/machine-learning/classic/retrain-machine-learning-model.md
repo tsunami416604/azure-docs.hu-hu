@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362333"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Gépi tanulási modell újratanítása és üzembe helyezése
@@ -150,7 +150,7 @@ Ezután szerezze be a webszolgáltatás-definíciós objektumot a [Get-AzMlWebSe
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 ```
 
-Egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához futtassa a Get-AzMlWebService parancsmagot paraméterek nélkül az előfizetésében lévő webszolgáltatások megjelenítéséhez. Keresse meg a webszolgáltatást, és tekintse meg a webszolgáltatás AZONOSÍTÓját. Az erőforráscsoport neve az azonosító negyedik eleme, közvetlenül a *resourceGroups* elem után. A következő példában az erőforráscsoport neve Default-MachineLearning-SouthCentralUS.
+Egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához futtassa az Get-AzMlWebService parancsmagot paraméterek nélkül az előfizetésben lévő webszolgáltatások megjelenítéséhez. Keresse meg a webszolgáltatást, és tekintse meg a webszolgáltatás AZONOSÍTÓját. Az erőforráscsoport neve az azonosító negyedik eleme, közvetlenül a *resourceGroups* elem után. A következő példában az erőforráscsoport neve Default-MachineLearning-SouthCentralUS.
 
 ```azurepowershell
 Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph

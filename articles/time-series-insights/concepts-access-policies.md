@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3528ff790f16b5ec759989966ab35b8bad6565a5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629454"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Az adathozzáférés biztosítása egy környezethez
@@ -120,7 +120,7 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
     [![A vendég felhasználó kiválasztja az Azure-bérlőt a legördülő menüből](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvasási [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md) Azure Active Directory alkalmazás regisztrációs lépéseihez.
 

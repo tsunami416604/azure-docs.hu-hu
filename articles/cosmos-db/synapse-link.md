@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567995"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
@@ -104,7 +104,7 @@ További információ az Azure szinapszis Analytics futtatókörnyezet Azure Cos
 
 A szinapszis hivatkozását a következő esetekben javasoljuk:
 
-* Ha Ön Azure Cosmos DB ügyfél, és az operatív adatain át szeretné futtatni az elemzést, a BI-t és a gépi tanulást. Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt biztosít anélkül, hogy ez befolyásolná a tranzakciós tár kiosztott átviteli sebességét. Például:
+* Ha Ön Azure Cosmos DB ügyfél, és az operatív adatain át szeretné futtatni az elemzést, a BI-t és a gépi tanulást. Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt biztosít anélkül, hogy ez befolyásolná a tranzakciós tár kiosztott átviteli sebességét. Példa:
 
   * Ha elemzést vagy BI-t futtat Azure Cosmos DB operatív adatait közvetlenül a különálló összekötők használatával, vagy
 

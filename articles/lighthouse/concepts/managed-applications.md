@@ -3,12 +3,12 @@ title: Azure Lighthouse és Azure Managed Applications
 description: Ismerje meg, hogy az Azure Lighthouse és az Azure által felügyelt alkalmazások hogyan segíthetnek a különböző forgatókönyvek engedélyezésében, és hogyan használhatók együtt.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483847"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970758"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
 
@@ -35,7 +35,7 @@ A felügyelt alkalmazásokban az alkalmazás által használt erőforrások öss
 
 A felügyelt alkalmazások támogatják a [testreszabott Azure Portal élményt](../../azure-resource-manager/managed-applications/concepts-view-definition.md) és [az egyéni szolgáltatókkal való integrációt](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md). Ezekkel a lehetőségekkel testre szabható és integrált felhasználói élményt biztosíthat, így az ügyfelek könnyebben végezhetnek el felügyeleti feladatokat.
 
-A felügyelt alkalmazások [közzétehető az Azure Marketplace](../../azure-resource-manager/managed-applications/publish-marketplace-app.md)-en, akár privát ajánlatként, akár egy adott ügyfél általi használatra, akár olyan nyilvános ajánlatokra is, amelyeket több ügyfél is vásárolhat. A szervezeten belüli felhasználók számára is elérhetők, ha [felügyelt alkalmazásokat tesznek közzé a szolgáltatás katalógusában](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). A Service Catalog és a piactér példányait ARM-sablonok használatával is üzembe helyezheti, amely tartalmazhat egy kereskedelmi Piactéri partner egyedi azonosítóját, amellyel nyomon követheti az [ügyfelek használati](../../marketplace/azure-partner-customer-usage-attribution.md)feladatait.
+A felügyelt alkalmazások [közzétehető az Azure Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)-en, akár privát ajánlatként, akár egy adott ügyfél általi használatra, akár olyan nyilvános ajánlatokra is, amelyeket több ügyfél is vásárolhat. A szervezeten belüli felhasználók számára is elérhetők, ha [felügyelt alkalmazásokat tesznek közzé a szolgáltatás katalógusában](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). A Service Catalog és a piactér példányait ARM-sablonok használatával is üzembe helyezheti, amely tartalmazhat egy kereskedelmi Piactéri partner egyedi azonosítóját, amellyel nyomon követheti az [ügyfelek használati](../../marketplace/azure-partner-customer-usage-attribution.md)feladatait.
 
 Az Azure által felügyelt alkalmazások jellemzően egy adott ügyfélhez szükségesek, amely a szolgáltató által teljes körűen felügyelt kulcsrakész megoldáson keresztül érhető el.
 
