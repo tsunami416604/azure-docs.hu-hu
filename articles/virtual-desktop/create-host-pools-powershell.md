@@ -7,10 +7,10 @@ ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667163"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Windows rendszerű virtuális asztali címkészlet létrehozása a PowerShell-lel
@@ -140,8 +140,8 @@ Az ügynök frissítése:
    A fájlok eltávolításához kattintson a jobb gombbal az egyes fájlokra, majd válassza az **Eltávolítás**lehetőséget.
 5. Igény szerint a következő beállításjegyzék-beállításokat is eltávolíthatja:
      
-     - Számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
-     - Számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
 
 6. Miután eltávolította ezeket az elemeket, az összes társítást el kell távolítania a régi gazdagép-készlettel. Ha szeretné újra regisztrálni a gazdagépet a szolgáltatásban, kövesse a [virtuális gépek regisztrálása a Windows rendszerű virtuális asztali alkalmazáskészletbe](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)című témakör utasításait.
 

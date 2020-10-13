@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362010"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és Azure App Service üzembe helyezése a GitHub webalkalmazásával egy Azure Resource Manager sablon használatával
@@ -40,7 +40,7 @@ Először válassza az alábbi **üzembe helyezés az Azure** -ban gombot a Azur
 
 Egyszer a Azure Portal válassza ki a telepítendő előfizetést, majd válasszon ki vagy hozzon létre egy új erőforráscsoportot. Ezután adja meg a következő értékeket.
 
-:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Képernyőfelvétel a sablon üzembe helyezésének felhasználói felületéről":::
+:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 * **Régió** – ezt a Resource Managernek kell megadnia. Adja meg ugyanazt a régiót, amelyet a Location paraméter használ, ahol az erőforrások találhatók.
 * **Alkalmazásnév** – a rendszer ezt a nevet használja a központi telepítéshez tartozó összes erőforráshoz. Ügyeljen arra, hogy egyedi nevet válasszon a meglévő Azure Cosmos DB és App Service fiókokkal való ütközés elkerülése érdekében.
@@ -64,31 +64,31 @@ Az értékek kitöltése után a **Létrehozás** gombra kattintva indíthatja e
 
 Miután a sablon üzembe helyezte az erőforrásokat, láthatja mindegyiket az erőforráscsoporthoz.
 
-:::image type="content" source="./media/create-website/resource-group.png" alt-text="Erőforráscsoport":::
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB végpont és kulcsok megtekintése
 
 Ezután nyissa meg az Azure Cosmos-fiókot a portálon. Az alábbi képernyőfelvételen egy Azure Cosmos-fiók végpontja és kulcsa látható.
 
-:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Cosmos-kulcsok":::
+:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ### <a name="view-the-azure-cosmos-db-keys-in-application-settings"></a>Az Alkalmazásbeállítások Azure Cosmos DB kulcsainak megtekintése
 
 Ezután navigáljon az erőforráscsoport Azure App Service. Kattintson a Configuration (konfiguráció) lapra a App Service alkalmazás beállításainak megtekintéséhez. Az Alkalmazásbeállítások tartalmazzák a Cosmos DB fiókot és az elsődleges kulcs értékeit, amelyek szükségesek a Cosmos DBhoz való kapcsolódáshoz, valamint a sablon üzembe helyezése során átadott adatbázis-és tároló-nevekhez.
 
-:::image type="content" source="./media/create-website/application-settings.png" alt-text="Alkalmazásbeállítások":::
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ### <a name="view-web-app-in-deployment-center"></a>Webalkalmazás megtekintése a központi telepítési központban
 
 Ezután nyissa meg a App Service központi telepítési központját. Itt láthatja, hogy a rendszer a sablonba átadott GitHub-tárházat fogja látni a tárházban. Az alábbi állapot azt is jelzi, hogy sikeres (aktív), ami azt jelenti, hogy az alkalmazás telepítése és elindítása sikeres volt.
 
-:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Üzembe helyezési központ":::
+:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ### <a name="run-the-web-application"></a>A webalkalmazás futtatása
 
 A webalkalmazás megnyitásához kattintson a központi telepítési központ tetején található **Tallózás** gombra. A webalkalmazás megnyílik a kezdőképernyőn. Kattintson a **Create New (új létrehozása** ) elemre, és adjon meg néhány adat mezőt, majd kattintson a Mentés gombra. Az eredményül kapott képernyő a Cosmos DBba mentett adatmegjelenítést jeleníti meg.
 
-:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Kezdőképernyő":::
+:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ## <a name="step-3-how-does-it-work"></a>3. lépés: Hogyan működik?
 
@@ -98,19 +98,19 @@ A működéséhez három elem szükséges.
 
 Először az alkalmazásnak meg kell kérnie az Cosmos DB-végpontot és a kulcsot a `Startup` ASP.net MVC webalkalmazás osztályában. A [mintaként szolgáló Cosmos db](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) helyileg futtatható, ahol megadhatja a kapcsolódási adatokat a appsettings.js. A telepítésekor azonban ez a fájl az alkalmazással együtt települ. Ha a piros vonal nem fér hozzá a beállításokhoz a appsettings.json-ben, akkor a Azure App Service alkalmazás beállításai közül próbálkozik.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="A képernyőfelvétel egy olyan metódust mutat be, amely több, vörös színnel jelölt karakterlánc-változóval rendelkezik, beleértve a databaseName, a containerName, a fiókot és a kulcsot":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Speciális Azure Resource Management-függvények használata
 
 Ahhoz, hogy ezek az értékek elérhetők legyenek az alkalmazás számára az üzembe helyezés során, a Azure Resource Manager sablon a speciális Azure Resource Management functions használatával kérheti ezeket az értékeket a Cosmos DB-fiókból, beleértve a [hivatkozásokat](../azure-resource-manager/templates/template-functions-resource.md#reference) és a [listkeys műveletének beolvasása](../azure-resource-manager/templates/template-functions-resource.md#listkeys) , amelyek megkeresik a Cosmos db-fiók értékeit, és beszúrják azokat az Alkalmazásbeállítások értékeibe, amelyek megfelelnek a fenti alkalmazásban a {szakasz: Key Például: `CosmosDb:Account`.
 
-:::image type="content" source="./media/create-website/template-keys.png" alt-text="Sablon kulcsai":::
+:::image type="content" source="./media/create-website/template-keys.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ### <a name="deploying-web-apps-from-github"></a>Webalkalmazások üzembe helyezése a GitHubról
 
 Végül telepíteni kell a webalkalmazást a GitHubról a App Serviceba. Ezt az alábbi JSON használatával végezheti el. Az erőforrás típusa és neve két dolgot kell, hogy legyen óvatos. A `"type": "sourcecontrols"` és a `"name": "web"` tulajdonság értéke rögzített, és nem módosítható.
 
-:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Üzembe helyezés a GitHubról":::
+:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 ## <a name="next-steps"></a>Következő lépések
 

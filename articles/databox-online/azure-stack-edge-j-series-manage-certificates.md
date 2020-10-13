@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cec5eda7cf398949865bf6d3d3e8be5b2d5e840
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767370"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Tanúsítványok használata Azure Stack Edge Pro GPU-eszközzel
@@ -370,7 +370,7 @@ A következő lépésekkel exportálhat egy titkos kulccsal rendelkező SSL-tan�
 
     ![8. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. Az Exportálás sikerességét jelző üzenet jelenik meg. Válassza az **OK** lehetőséget.
+9. Az Exportálás sikerességét jelző üzenet jelenik meg. Kattintson az **OK** gombra.
 
     ![9. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 

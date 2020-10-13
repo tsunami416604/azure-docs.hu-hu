@@ -12,10 +12,10 @@ ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446686"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
@@ -38,7 +38,7 @@ Ha készen áll a felhőalapú tárolási megoldásban tárolt adatfelhasználá
 3. Ha ezt az adatkészletet a Machine learning-kísérletben szeretné használni, a következő lehetőségek közül választhat:
     1. Csatlakoztassa a kísérlet számítási céljához a modell betanításához.
 
-        **VAGY** 
+        **OR** 
 
     1. Használja közvetlenül a Azure Machine Learning-megoldásokban, például az automatikus gépi tanulás (automatizált ML) kísérleteket, a gépi tanulási folyamatokat vagy a [Azure Machine learning designert](concept-designer.md).
 

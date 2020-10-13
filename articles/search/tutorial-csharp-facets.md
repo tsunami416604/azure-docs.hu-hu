@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ab15af07c5f63d375d8fdb4fc38e0853e207a0be
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667282"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
@@ -563,7 +563,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aspektusokat szűrőkkel kombinálva csökkentheti az eredményeket.
 * A dimenziók összegző jellegűek, és az előzőekhez tartozó egyes kiválasztások tovább szűkítik az eredményeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő oktatóanyagban megtekintjük az eredmények sorrendjét. Ezen a ponton az eredmények egyszerűen sorrendbe rendezhetők az adatbázisban található sorrendben.
 

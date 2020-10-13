@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568901"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
@@ -47,18 +47,18 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 
 | Tulajdonság | Leírás |
 -------- | ------------- | 
-| Név | Az Azure Integration Runtime neve. |  
+| Name (Név) | Az Azure Integration Runtime neve. |  
 | Állam | Az Azure Integration Runtime állapota. | 
 | Hely | Az Azure Integration Runtime helye. Az Azure Integration Runtime helyével kapcsolatos részletekért lásd: [az Integration Runtime bemutatása](concepts-integration-runtime.md). |
 | DataFactoryName | Annak az adatelőállítónak a neve, amelyhez az Azure Integration Runtime tartozik. | 
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
 | Leírás | Az Integration Runtime leírása.  |
 
-### <a name="status"></a>Állapot
+### <a name="status"></a>status
 
 Az alábbi táblázat az Azure Integration Runtime lehetséges állapotait tartalmazza:
 
-| Állapot | Megjegyzések/forgatókönyvek | 
+| status | Megjegyzések/forgatókönyvek | 
 | ------ | ------------------ |
 | Online | Az Azure Integration Runtime online állapotban van, és készen áll a használatra. | 
 | Offline | Az Azure Integration Runtime belső hiba miatt offline állapotban van. |
@@ -76,8 +76,8 @@ Az alábbi táblázat az **egyes csomópontok**figyelési tulajdonságainak leí
 
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
-| Név | A saját üzemeltetésű Integration Runtime és a hozzá társított csomópontok neve. A csomópont egy helyszíni Windows rendszerű számítógép, amelyen telepítve van a saját üzemeltetésű integrációs modul. |  
-| Állapot | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
+| Name (Név) | A saját üzemeltetésű Integration Runtime és a hozzá társított csomópontok neve. A csomópont egy helyszíni Windows rendszerű számítógép, amelyen telepítve van a saját üzemeltetésű integrációs modul. |  
+| status | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
 | Verzió | A saját üzemeltetésű Integration Runtime és az egyes csomópontok verziója. A saját üzemeltetésű integrációs modul verziója a csoportban lévő csomópontok többségének verziója alapján van meghatározva. Ha a saját üzemeltetésű integrációs modul telepítője eltérő verziójú csomópontokkal rendelkezik, akkor csak a logikai saját üzemeltetésű integrációs modulnak megfelelő verziószámmal rendelkező csomópontok működnek megfelelően. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). | 
 | Igénybe vehető memória | Rendelkezésre álló memória a saját üzemeltetésű integrációs modul csomópontján. Ez az érték a közel valós idejű pillanatkép. | 
 | Processzorhasználat | Egy saját üzemeltetésű Integration Runtime-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. |
@@ -192,11 +192,11 @@ A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott t
 | CatalogPricingTier           | A Azure SQL Database-kiszolgáló által üzemeltetett SSISDB díjszabási szintje.  Nem alkalmazható az Azure SQL felügyelt példányának SSISDB. |
 | VNetId                       | A Azure-SSIS IR virtuális hálózati erőforrás-azonosítója, amelyhez csatlakozni szeretne. |
 | Alhálózat                       | Az a Azure-SSIS IR alhálózat neve, amelyhez csatlakozni szeretne. |
-| ID                           | A Azure-SSIS IR erőforrás-azonosítója. |
+| ID (Azonosító)                           | A Azure-SSIS IR erőforrás-azonosítója. |
 | Típus                         | A Azure-SSIS IR IR-típusa (felügyelt/saját üzemeltetésű). |
 | ResourceGroupName            | Azon Azure-erőforráscsoport neve, amelyben az ADF és a Azure-SSIS IR létrejött. |
 | DataFactoryName              | Az ADF neve. |
-| Név                         | A Azure-SSIS IR neve. |
+| Name (Név)                         | A Azure-SSIS IR neve. |
 | Leírás                  | A Azure-SSIS IR leírása. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Állapot (Azure-SSIS IR csomóponton)
@@ -246,7 +246,7 @@ Ha olyan projekt-telepítési modellt használ, amelyben a csomagok tárolása a
 
 #### <a name="proxy--staging-tile"></a>PROXY/előkészítés csempe
 
-Ha a Azure-SSIS IR számára a helyi adateléréshez proxyként tölti le, telepíti és konfigurálja a saját üzemeltetésű IR-t (megtekintheti), akkor a **proxy/előkészítési** csempe megjelenik a Azure-SSIS IR figyelési lapján (lásd: a legördülő menüben a [Azure-SSIS IR konfigurálása proxyként](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Ezen a csempén kiválaszthatja azt a hivatkozást, amely kijelöli a szükséges elemet, hogy megnyissa a figyelési oldalát. Kiválaszthat egy másik hivatkozást is, amely kijelöli az Azure-Blob Storage az előkészítéshez a társított szolgáltatás újrakonfigurálásához.
+Ha letölti, telepíti és konfigurálja Self-Hosted IR-t (a-t) proxyként a Azure-SSIS IR számára a helyszíni adateléréshez, akkor a Azure-SSIS IR figyelési lapján megjelenik a **proxy/előkészítés** csempéje (lásd: a Hálózatfigyelő [beállítása proxyként a Azure-SSIS IR számára](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Ezen a csempén kiválaszthatja azt a hivatkozást, amely kijelöli a szükséges elemet, hogy megnyissa a figyelési oldalát. Kiválaszthat egy másik hivatkozást is, amely kijelöli az Azure-Blob Storage az előkészítéshez a társított szolgáltatás újrakonfigurálásához.
 
 #### <a name="validate-vnet--subnet-tile"></a>VNET/ALHÁLÓZAT csempe ellenőrzése
 
