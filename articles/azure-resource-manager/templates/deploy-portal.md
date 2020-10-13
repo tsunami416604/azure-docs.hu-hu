@@ -4,10 +4,10 @@ description: A Azure Portal és az Azure Erőforrás-kezelés használatával az
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85255262"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal
@@ -41,7 +41,7 @@ Ez a cikk mindkét módszert mutatja be.
 
    ![Csoportok értékeinek beállítása](./media/deploy-portal/set-group-properties.png)
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 1. Tekintse át az értékeket, majd válassza a **Létrehozás**lehetőséget.
 1. Válassza a **frissítés** lehetőséget, mielőtt megtekinti az új erőforráscsoportot a listában.
 
@@ -82,7 +82,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
    ![Sablon központi telepítésének keresése](./media/deploy-portal/search-template.png)
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. A sablonok létrehozásához több lehetőség is megjelenik:
 
     - **Saját sablon készítése a szerkesztőben**: sablon létrehozása a portál sablon szerkesztőjével.  A szerkesztő képes az erőforrás-sablon sémájának hozzáadására.
@@ -120,7 +120,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
     - **Hely**: használja az alapértelmezett értéket.
     - **Elfogadom a fenti feltételeket és kikötéseket**: (kiválasztás)
 
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Vásárlás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

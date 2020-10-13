@@ -15,17 +15,17 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074294"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>A virtuális gép nem válaszol "C01A001D" hibaüzenettel Windows Update alkalmazása során
 
 Ez a cikk azokat a problémákat ismerteti, amelyekkel a Windows Update (KB) hibát generál, és egy Azure-beli virtuális gépen nem válaszol.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, a folyamatban lévő Windows Update (kb) megjelenik, de a hibakód: "C01A001D".
 

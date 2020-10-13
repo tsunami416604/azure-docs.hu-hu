@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313688"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Virtuális központ útválasztásának konfigurálása
@@ -30,7 +30,7 @@ További információ: [a virtuális központ útválasztása](about-virtual-hub
 3. Válassza az **+ útválasztási táblázat létrehozása** lehetőséget az **útválasztási táblázat létrehozása** lap megnyitásához.
 4. Az útválasztási táblázat létrehozása lap **alapjai** lapon végezze el a következő mezőket.
 
-   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Alapbeállítások lap":::
+   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Útválasztási lap":::
 
    * **Név**
    * **Útvonalak**
@@ -41,20 +41,20 @@ További információ: [a virtuális központ útválasztása](about-virtual-hub
 
      Ha virtuális hálózati kapcsolatokat választ, a **statikus útvonalak konfigurálása**lehetőség látható. Ez egy opcionális konfigurációs beállítás. További információ: [statikus útvonalak konfigurálása](about-virtual-hub-routing.md#static).
 
-      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Következő ugrás":::
+      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Útválasztási lap":::
 
 5. Válassza a **címkék** fület a feliratok nevének konfigurálásához. A címkék olyan mechanizmust biztosítanak, amely logikailag csoportosítja az útválasztási táblákat.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Címkék nevének konfigurálása":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Útválasztási lap":::
 
 6. Válassza a **társítások** fület az útválasztási táblázat kapcsolatainak társításához.
 Látni fogja az **ágakat**, a **virtuális hálózatokat**és a kapcsolatok **aktuális beállításait** .
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Társítási kapcsolatok az útválasztási táblázathoz":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Útválasztási lap":::
 
 7. Válassza a **propagálások** fület, hogy az útvonalakat propagálja a kapcsolatokból az útválasztási táblázatba.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Útvonalak propagálása":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Útválasztási lap":::
 
 8. Válassza a **Létrehozás** lehetőséget az útválasztási táblázat létrehozásához.
 
@@ -70,7 +70,7 @@ A Azure Portal keresse meg a virtuális központ útválasztási táblázatát. 
 
 A Azure Portal keresse meg a virtuális központ útválasztási táblázatát. Kattintson a **"..."** lehetőségre, és válassza a **hatályos útvonalak** lehetőséget a kiválasztott útválasztási táblázat által megismert útvonalak megtekintéséhez. A rendszer automatikusan kitölti az útválasztási táblázathoz való kapcsolódásból származó propagált útvonalakat az útválasztási táblázat **tényleges útvonalán** . További információ: [a hatékony útvonalak](effective-routes-virtual-hub.md).
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Érvényes útvonalak megtekintése" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Útválasztási lap" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
 
 ## <a name="to-set-up-routing-configuration-for-a-virtual-network-connection"></a><a name="routing-configuration"></a>A virtuális hálózati kapcsolatok útválasztási konfigurációjának beállítása
 
@@ -82,7 +82,7 @@ A Azure Portal keresse meg a virtuális központ útválasztási táblázatát. 
 1. **Statikus útvonalak**esetében konfigurálja a statikus útvonalakat a hálózati virtuális berendezéshez (ha van ilyen). A virtuális WAN egy virtuális hálózati kapcsolaton belül egyetlen következő ugrási IP-címet támogat a statikus útvonalhoz. Ha például külön virtuális berendezéssel rendelkezik a bejövő és a kimenő forgalom forgalmához, érdemes lehet a virtuális berendezéseket külön virtuális hálózatok, és csatlakoztatni a virtuális hálózatok a virtuális hubhoz.
 
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Útválasztási konfiguráció beállítása" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Útválasztási lap" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
 ## <a name="next-steps"></a>Következő lépések
 

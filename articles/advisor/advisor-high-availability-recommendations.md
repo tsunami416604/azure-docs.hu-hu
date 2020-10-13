@@ -4,10 +4,10 @@ description: A Azure Advisor használatával biztosíthatja és javíthatja a me
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405190"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
@@ -112,8 +112,8 @@ Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy mási
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Frissítés az Azure Connected Machine ügynök legfrissebb verziójára
 Az [Azure-beli csatlakoztatott gépi ügynök](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) rendszeresen frissül a hibajavítások, a stabilitási fejlesztések és az új funkciók segítségével. Azonosítjuk azokat az erőforrásokat, amelyek nem működnek a Machine Agent legújabb verziójával, és ez az Advisor javaslat arra utal, hogy az ügynököt az Azure-beli legjobb felület legújabb verziójára frissítse.
 
-## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Az állomásnév felülbírálásának mellőzése a webhelyek integritásának biztosítása érdekében
-Az Advisor azt ajánlja, hogy a Application Gateway konfigurálásakor ne felülbírálja az állomásnév felülbírálását. Ha egy másik tartomány van a Application Gateway előtérén, mint amelyik a háttér eléréséhez használatos, előfordulhat, hogy a cookie-k vagy az átirányítási URL-címek megszakadnak. Vegye figyelembe, hogy ez a helyzet nem minden helyzetben lehetséges, és a háttérrendszer bizonyos kategóriái (például a REST API) általában kevésbé érzékenyek erre. Győződjön meg arról, hogy a háttérrendszer képes kezelni vagy frissíteni a Application Gateway konfigurációt, hogy az állomásnév ne legyen felülírva a háttér felé. App Service használatával való használat esetén csatoljon egy egyéni tartománynevet a webalkalmazáshoz, és ne használja a *. azurewebsites.net állomásnevet a háttér felé.* [További információ az egyéni tartományról](https://aka.ms/appgw-advisor-usecustomdomain).
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>A webhelyintegritás biztosítása érdekében ne írja felül a gazdagépnevet
+Az Advisor azt ajánlja, hogy a Application Gateway konfigurálásakor ne felülbírálja az állomásnév felülbírálását. Ha az Application Gateway előtere esetében más tartomány van megadva, mint amit a háttérrendszer eléréséhez használ, előfordulhat, hogy a cookie-k vagy az átirányítási URL-címek hibásak lesznek. Vegye figyelembe, hogy nem minden esetben ez a helyzet, és egyes háttérrendszertípusok (például a REST API-k) általában kevésbé érzékenyek erre. Győződjön meg arról, hogy a háttérrendszer képes kezelni ezt a problémát, vagy frissítse az Application Gateway konfigurációját úgy, hogy a gazdagépnevet ne kelljen felülírni a háttérrendszer esetében. App Service használatával való használat esetén csatoljon egy egyéni tartománynevet a webalkalmazáshoz, és ne használja a *. azurewebsites.net állomásnevet a háttér felé.* [További információ az egyéni tartományról](https://aka.ms/appgw-advisor-usecustomdomain).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állási javaslatok elérése az Advisorban
 

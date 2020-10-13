@@ -13,10 +13,10 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 47902b29da1dfe20fb54d633a0559e6a337fd771
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89183631"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>ADAL.NET és MSAL.NET közötti közvetítőt használó Android-alkalmazások migrálása
@@ -113,7 +113,7 @@ A MSAL.NET-ben két dolgot kell beállítania az Android-tevékenységhez:
 
 1. A AcquireTokenInteractive-hívásban használja a `.WithParentActivityOrWindow(App.RootViewController)` és a pass hivatkozást a használni kívánt tevékenységre mutató hivatkozással. Ebben a példában a MainActivity fogjuk használni.
 
-**Például:**
+**Példa:**
 
 A *app.cs*-ben:
 
@@ -137,6 +137,6 @@ result = await app.AcquireTokenInteractive(scopes)
 ```
 </table>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Android-specifikus szempontokról a MSAL.NET és a Xamarin használatával kapcsolatban: [konfigurációs követelmények és hibaelhárítási tippek a Xamarin Androidhoz a MSAL.net](msal-net-xamarin-android-considerations.md).

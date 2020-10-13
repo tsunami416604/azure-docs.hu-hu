@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: ac79e1eb5c4f7448dc17804cd8aac3cba582497e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509943"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Nyilvános IPv6-cím előtagjának foglalása
@@ -115,6 +115,6 @@ az network public-ip create \
 --public-ip-prefix  IPv6PrefixWestUS
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [IPv6-cím előtagjáról](ipv6-public-ip-address-prefix.md).
 - További információ az [IPv6-címekről](ipv6-overview.md).

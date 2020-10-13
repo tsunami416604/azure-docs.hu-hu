@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080998"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése
@@ -31,7 +31,7 @@ Ez a megoldás olyan folyamatot állít be, amely beolvassa az adatokat a [folya
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 A megoldás beállításához a következő erőforrások szükségesek:
 
@@ -55,13 +55,13 @@ A PBIX-fájl megnyitásakor ügyeljen rá, hogy olvassa el és kövesse a fedél
 
 A PBIX-fájl tartalmazza az **eszközök és a telemetria** jelentést, amely az eszközök által elindított telemetria korábbi nézetét jeleníti meg. Lebontja a különböző típusú telemetria, és megjeleníti az eszközök által eljuttatott legutóbbi telemetria is.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Eszközök és telemetria-jelentés Power BI":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI megoldási folyamat":::
 
 ## <a name="pipeline-resources"></a>Folyamat erőforrásai
 
 A Azure Portal összes olyan Azure-erőforrását elérheti, amely a folyamatot a folyamaton belül hozza létre. Az összes erőforrás abban a csoportban található, amelyet a folyamat beállításakor hozott létre.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Erőforráscsoport Azure Portal nézete":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI megoldási folyamat":::
 
 A következő lista ismerteti a folyamat egyes erőforrásainak a szerepét:
 

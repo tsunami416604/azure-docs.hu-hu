@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: aafd284122ca61ba2b668186095b88003be2775c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450103"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Update Management központi telepítési hatókör korlátozása
@@ -30,11 +30,11 @@ A Update Management-telepítés hatókörének korlátozása:
 
 3. Válassza ki a **hatókör-konfigurációk (előzetes verzió)** elemet a **munkaterület-adatforrások**területen.
 
-4. Válassza ki a hatókör-konfiguráció jobb oldalán található három pontot `MicrosoftDefaultScopeConfig-Updates` , majd válassza a **Szerkesztés**lehetőséget.
+4. Válassza ki a hatókör-konfiguráció jobb oldalán található három pontot  `MicrosoftDefaultScopeConfig-Updates` , majd válassza a **Szerkesztés**lehetőséget.
 
 5. A szerkesztési ablaktáblán bontsa ki a **számítógépcsoportok kijelölése elemet**. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. Az Update Management által használt mentett keresés:
 
-    |Name     |Kategória  |Alias  |
+    |Name (Név)     |Kategória  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
 

@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201361"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -44,11 +44,11 @@ A **claimType** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | A jogcím típusához használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
+| Id | Igen | A jogcím típusához használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
 
 A **claimType** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
 | DataType | 1:1 | A jogcím típusa. |
@@ -66,12 +66,12 @@ PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mut
 
 Az **adattípus** elem a következő értékeket támogatja:
 
-| Típus | Description |
+| Típus | Leírás |
 | ------- | ----------- |
-|logikai|Egy logikai ( `true` vagy `false` ) értéket jelöl.|
+|boolean|Egy logikai ( `true` vagy `false` ) értéket jelöl.|
 |dátum| Egy azonnali időpontot jelöl, amely általában nap dátumként van kifejezve. A dátum értéke az ISO 8601 konvenciót követi.|
 |dateTime|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. A dátum értéke az ISO 8601 konvenciót követi.|
-|duration|Az év, hónap, nap, óra, perc és másodperc időtartamot jelöli. A formátuma `PnYnMnDTnHnMnS` , ahol a `P` pozitív vagy `N` negatív értéket jelöl. `nY`az évek száma, amelyet egy literál követ `Y` . `nMo`az a hónapok száma, amelyet egy literál követ `Mo` . `nD`az a napok száma, amelyet egy literál követ `D` . Példák: `P21Y` 21 évet jelöl. `P1Y2Mo`egy évet és két hónapot jelöl. `P1Y2Mo5D`egy évet, két hónapot és öt napot jelöl.  `P1Y2M5DT8H5M620S`egy évet, két hónapot, öt napot, nyolc órát, öt percet és húsz másodpercet jelöl.  |
+|duration|Az év, hónap, nap, óra, perc és másodperc időtartamot jelöli. A formátuma `PnYnMnDTnHnMnS` , ahol a `P` pozitív vagy `N` negatív értéket jelöl. `nY` az évek száma, amelyet egy literál követ `Y` . `nMo` az a hónapok száma, amelyet egy literál követ `Mo` . `nD` az a napok száma, amelyet egy literál követ `D` . Példák: `P21Y` 21 évet jelöl. `P1Y2Mo` egy évet és két hónapot jelöl. `P1Y2Mo5D` egy évet, két hónapot és öt napot jelöl.  `P1Y2M5DT8H5M620S` egy évet, két hónapot, öt napot, nyolc órát, öt percet és húsz másodpercet jelöl.  |
 |Telefonszám|A telefonszámot jelöli. |
 |int| A-2 147 483 648 és a 2 147 483 647 közötti számot jelöli|
 |hosszú| A-9223372036854775808 és a 9 223 372 036 854 775 807 közötti számot jelöli |
@@ -84,7 +84,7 @@ Az **adattípus** elem a következő értékeket támogatja:
 
 A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Protokoll | 1: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
@@ -92,8 +92,8 @@ A **protokoll** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name | Yes | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
-| PartnerClaimType | Yes | A használni kívánt jogcím-típus neve. |
+| Név | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
+| PartnerClaimType | Igen | A használni kívánt jogcím-típus neve. |
 
 A következő példában, amikor az Identity Experience Framework egy egy SAML2-identitás szolgáltatóval vagy egy függő entitás alkalmazásával kommunikál **, a** OpenIdConnect és a OAuth2-mel leképezi a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` jogcímet `family_name` .
 
@@ -127,8 +127,8 @@ A **maszk** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| `Type` | Yes | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex` . Az `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszk van alkalmazva egy karakterlánc-jogcím vezető részére. Az `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha az `Regex` érték meg van adva, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
-| `Regex` | No | Ha a **`Type`** értéke `Regex` , akkor adja meg a használni kívánt reguláris kifejezést.
+| `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex` . Az `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszk van alkalmazva egy karakterlánc-jogcím vezető részére. Az `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha az `Regex` érték meg van adva, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
+| `Regex` | Nem | Ha a **`Type`** értéke `Regex` , akkor adja meg a használni kívánt reguláris kifejezést.
 
 A következő példa egy **telefonszám** jogcímet konfigurál a `Simple` maszkkal:
 
@@ -167,11 +167,11 @@ A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MergeBehavior | No | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append` , `Prepend` , vagy `ReplaceAll` . Az `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. Az `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. Az `ReplaceAll` érték a szülő házirendben megadott, figyelmen kívül hagyott adatgyűjtemény. |
+| MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append` , `Prepend` , vagy `ReplaceAll` . Az `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. Az `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. Az `ReplaceAll` érték a szülő házirendben megadott, figyelmen kívül hagyott adatgyűjtemény. |
 
 A **korlátozási** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Enumerálás | 1: n | A felhasználó felhasználói felületének elérhető beállításai, amelyek kiválaszthatják a jogcímek, például a legördülő lista értékét. |
 | Mintázat | 1:1 | A használandó reguláris kifejezés. |
@@ -184,9 +184,9 @@ A **számbavételi** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Szöveg | Yes | Az ehhez a beállításhoz tartozó felhasználói felületen megjelenített megjelenítési karakterlánc. |
-|Érték | Yes | A beállítás kiválasztásához társított jogcím értéke. |
-| SelectByDefault | No | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: true vagy FALSE. |
+| Szöveg | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjelenített megjelenítési karakterlánc. |
+|Érték | Igen | A beállítás kiválasztásához társított jogcím értéke. |
+| SelectByDefault | Nem | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: true vagy FALSE. |
 
 Az alábbi példa egy, a **város** legördülő lista jogcímet konfigurálja alapértelmezett értékre beállítva `New York` :
 
@@ -213,8 +213,8 @@ A **minta** elem a következő attribútumokat tartalmazhatja:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Válaszban | Yes | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
-| HelpText | No | Hibaüzenet a felhasználók számára, ha a reguláris kifejezés-ellenőrzés sikertelen. |
+| Válaszban | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
+| HelpText | Nem | Hibaüzenet a felhasználók számára, ha a reguláris kifejezés-ellenőrzés sikertelen. |
 
 Az alábbi példa egy **e-mail-** jogcímet konfigurál a reguláris kifejezéses beviteli ellenőrzéssel és a Súgó szöveggel:
 
@@ -243,7 +243,7 @@ A Azure AD B2C számos felhasználói beviteli típust támogat, például a sz�
 
 A **UserInputType** elem elérhető felhasználói bemeneti típusok:
 
-| UserInputType | Támogatott ClaimType | Description |
+| UserInputType | Támogatott ClaimType | Leírás |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Többszörös kijelölés legördülő lista A jogcím értéke a kijelölt értékek vesszővel elválasztó karakterláncában jelenik meg. |
 |DateTimeDropdown | `date`, `dateTime` |Legördülő menüből kiválaszthatja a napot, a hónapot és az évet. |

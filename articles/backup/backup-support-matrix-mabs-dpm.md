@@ -4,10 +4,10 @@ description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure B
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332695"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
@@ -85,7 +85,7 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 **Telepítés** | Telepítse a DPM/MABS egyetlen célra szolgáló gépre.<br/><br/> Ne telepítse a DPM/MABS tartományvezérlőre, az Alkalmazáskiszolgáló szerepkör telepítését futtató gépre egy Microsoft Exchange Servert vagy System Center Operations Managert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményt](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Tartomány** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
 **Storage** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
-**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információ](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
+**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információk](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS áthelyezése** | Ha a MABS egy új kiszolgálóra helyezi át, a tárterület megőrzése mellett az MBS használata támogatott.<br/><br/> A kiszolgálónak ugyanazzal a névvel kell rendelkeznie, mint az eredetinek. A név nem módosítható, ha ugyanazt a tárolót szeretné megőrizni, és ugyanazt a MABS-adatbázist használja az adathelyreállítási pontok tárolásához.<br/><br/> Szüksége lesz egy biztonsági másolatra a MABS-adatbázisról, mert vissza kell állítania.
 
 ## <a name="mabs-support-on-azure-stack"></a>MABS-támogatás Azure Stack
@@ -102,7 +102,7 @@ A MABS üzembe helyezhető egy Azure Stack virtuális gépen, így egyetlen hely
 **.NET-keretrendszer a MABS-on** | A MABS virtuális gépnek a .NET-keretrendszer 3,3 SP1 vagy újabb verziójára van szüksége.
 **MABS tartomány** | A MABS virtuális gépnek csatlakoznia kell egy tartományhoz. A rendszergazdai jogosultsággal rendelkező tartományi felhasználóknak telepíteniük kell a MABS a virtuális gépre.
 **Azure Stack virtuális gép biztonsági mentése** | Biztonsági mentést készíthet a fájlokról, mappákról és alkalmazásokról.
-**Támogatott biztonsági mentés** | Ezeket az operációs rendszereket olyan virtuális gépek támogatják, amelyekről biztonsági másolatot szeretne készíteni:<br/><br/> Windows Server féléves csatorna (Datacenter, Enterprise, standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+**Támogatott biztonsági mentés** | Ezeket az operációs rendszereket olyan virtuális gépek támogatják, amelyekről biztonsági másolatot szeretne készíteni:<br/><br/> Windows Server Semi-Annual Channel (Datacenter, Enterprise, standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 **Azure Stack virtuális gépek SQL Server támogatása** | SQL Server 2016, SQL Server 2014, SQL Server 2012 SP1 biztonsági mentése.<br/><br/> Adatbázis biztonsági mentése és helyreállítása.
 **SharePoint-támogatás Azure Stack virtuális gépekhez** | SharePoint 2016, SharePoint 2013, SharePoint 2010.<br/><br/> Egy farm, adatbázis, előtér és webkiszolgáló biztonsági mentése és helyreállítása.
 **A virtuális gépek biztonsági mentésének hálózati követelményei** | Azure Stack munkaterhelésben lévő összes virtuális gépnek ugyanahhoz a virtuális hálózathoz kell tartoznia, és ugyanahhoz az előfizetéshez kell tartoznia.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
 ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212496"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Kibocsátási megjegyzések: beszédfelismerési eszközök SDK
@@ -63,7 +63,7 @@ A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
 - Az új kulcsszó-technológia jelentős minőségbeli újdonságokat eredményez, lásd: a változtatások megszakítása.
 - Új hangfeldolgozási folyamat a továbbfejlesztett távoli mezők felismeréséhez.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - Az új kulcsszó-technológia miatt minden kulcsszót újra létre kell hozni a továbbfejlesztett kulcsszavas portálon. Ha teljesen el szeretné távolítani a régi kulcsszavakat az eszközről, távolítsa el a régi alkalmazást.
   - ADB uninstall com. microsoft. cognitiveservices. Speech. Samples. sdsdkstarterapp
@@ -78,11 +78,11 @@ A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
 - Frissített kulcsszavas kezelés: a módosítások megszakítása.
 - A minta alkalmazás a beszédfelismerés és a fordítás nyelvének megválasztását is hozzáadja.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - [A kulcsszó telepítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) egyszerűsített, mostantól az alkalmazás része, és nincs szükség külön telepítésre az eszközön.
 - A kulcsszó-felismerés módosult, és két esemény támogatott.
-  - `RecognizingKeyword,`azt jelzi, hogy a beszédfelismerési eredmény tartalmaz (nem ellenőrzött) kulcsszavas szöveget.
+  - `RecognizingKeyword,` azt jelzi, hogy a beszédfelismerési eredmény tartalmaz (nem ellenőrzött) kulcsszavas szöveget.
   - `RecognizedKeyword`azt jelzi, hogy a kulcsszó-felismerés befejeződött az adott kulcsszó felismerése során.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0:2018 – november kiadás
@@ -97,7 +97,7 @@ A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
 - A beszédfelismerés pontossága továbbfejlesztett hangfeldolgozási algoritmussal bővült
 - Egy folyamatos felismerési hang-munkamenet hibája javítva lett.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - Ezzel a kiadással számos feltörési változást vezetünk be. Az API-kkal kapcsolatos részletekért tekintse meg [ezt a lapot](https://aka.ms/csspeech/breakingchanges_1_0_0) .
 - A KWS-modell fájljai nem kompatibilisek a Speech Devices SDK 1.0.1-vel. A meglévő kulcsszavas fájlokat a rendszer az új Kulcsszóválasztó fájlok az eszközre való írása után törli.

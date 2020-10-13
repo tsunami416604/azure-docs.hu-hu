@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f3a8f5ef8119d9895f67e07ea1b68c660be59f9b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541866"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch-tesztelés a 1000 hosszúságú kimondott szöveg a LUIS portálon
@@ -130,6 +130,6 @@ A hamis pozitív szakasz azt jelzi, hogy egy Kimondás egy szándéknak vagy ent
 
 Ha hibák léptek fel a Batch-tesztelésben, hozzáadhat további hosszúságú kimondott szöveg egy szándékhoz, és/vagy megcímkézheti a további hosszúságú kimondott szöveg az entitással, hogy segítsen a LUIS számára a szándékok közötti diszkriminációban. Ha hozzáadta a hosszúságú kimondott szöveg-t, és címkézte őket, és továbbra is előrejelzési hibákat kap a Batch-tesztelésben, érdemes lehet egy, a tartományra jellemző szókincsgel kiegészíteni egy [kifejezés-lista](luis-concept-feature.md) szolgáltatást, amely segítséget nyújt a Luis számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató [a Batch teszteléséhez](luis-how-to-batch-test.md)

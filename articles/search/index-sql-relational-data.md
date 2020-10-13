@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 6c70b42e7d0f647a3b2b60d29b5098a791e4975f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88924520"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>A kapcsolódó SQL-adattípusok modellezése importáláshoz és indexeléshez az Azure-ban Cognitive Search
@@ -150,7 +150,7 @@ A következő példa hasonló az [összetett adattípusok modellezésének](sear
 
 Az előző eredményhalmaz és a fenti index séma miatt a sikeres indexelési művelethez minden szükséges összetevővel rendelkezik. Az összeolvasztott adatkészlet megfelel az indexelési követelményeknek, ugyanakkor megőrzi a részletes információkat. Az Azure Cognitive Search indexében a keresési eredmények könnyen bekerülnek a szállodai alapú entitásokra, miközben megőrizheti az egyes szobák és attribútumaik kontextusát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az index létrehozásához és betöltéséhez használja az [adatimportálás varázsló](search-import-data-portal.md) segítségével a saját adatkészletét. A varázsló észleli a beágyazott JSON-gyűjteményt, például a *szobákban*találhatót, és egy összetett típusú gyűjteményt tartalmazó index sémát következtet ki. 
 

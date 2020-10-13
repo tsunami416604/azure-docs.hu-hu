@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87068512"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
@@ -210,7 +210,7 @@ A `Get-NetTCPSetting` PowerShell-parancs használatával megtekintheti az egyes 
 Get-NetTCPSetting
 ```
 
-A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a PowerShell-parancs használatával állítható be `Set-NetTCPSetting` . További információ: [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a PowerShell-parancs használatával állítható be `Set-NetTCPSetting` . További információ:  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting

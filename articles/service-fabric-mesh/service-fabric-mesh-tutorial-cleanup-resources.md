@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843328"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Oktatóanyag: Azure-erőforrások eltávolítása
@@ -55,7 +55,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Az **sfmeshTutorial1RG** erőforráscsoportot [a portálról is törölheti](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy közzétette az Azure-ban a Service Fabric Mesh-alkalmazást, próbálkozzon a következőkkel:
 

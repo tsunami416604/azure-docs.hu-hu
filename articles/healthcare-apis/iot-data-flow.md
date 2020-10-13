@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
 ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513373"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Azure IoT-összekötő FHIR (előzetes verzió) adatfolyamhoz
+# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) adatfolyama
 
 Ez a cikk áttekintést nyújt az Azure IoT-összekötőben a FHIR *-hoz való adatforgalomról. Megismerheti az Azure IoT-összekötő különböző adatfeldolgozási szakaszait, amelyek az FHIR FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra alakítják át.
 
@@ -36,7 +36,7 @@ A normalizálás a következő lépés, amelyben az eszközök adatai bekerülne
 
 A normalizálás folyamata nem csupán az adatfeldolgozást egyszerűsíti a későbbi fázisokban, de lehetővé teszi, hogy egy bemeneti üzenetet több normalizált üzenetbe is feldolgozzon. Egy eszköz például több létfontosságú jelet is küldhet a test hőmérsékletének, a pulzusszámának, a vérnyomás és a légzési aránynak egyetlen üzenetben. Ez a bemeneti üzenet négy különálló FHIR-erőforrást hoz létre. Az egyes erőforrások különböző létfontosságú aláírást képviselnek, és a bemeneti üzenet négy különböző normalizált üzenetbe lett kiosztva.
 
-## <a name="group"></a>Csoport
+## <a name="group"></a>Group
 A csoport a következő szakasz, ahol az előző fázisban elérhető normalizált üzenetek három különböző paraméterrel vannak csoportosítva: eszköz identitása, mérték típusa és időszaka.
 
 Az eszköz identitása és a mérési típus csoportosítása lehetővé teszi a [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) -mérési típus használatát. Ez a típus tömör módot biztosít a FHIR-ben található eszköz mérési időalapú sorozatának ábrázolására. És az időszak azt szabályozza, hogy az Azure IoT-összekötő által az FHIR számára generált megfigyelési erőforrások milyen késéssel íródnak a FHIR készült Azure API-ban.

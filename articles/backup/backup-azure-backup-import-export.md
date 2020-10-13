@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88892014"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat a Azure Backup
@@ -129,7 +129,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
      > [!IMPORTANT]
      > Ha a forrásszámítógép virtuális gép, akkor a számítógépnek egy másik fizikai kiszolgálónak vagy ügyfélszámítógépnek kell lennie a forrásszámítógépen.
 
-1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa a következő parancsot:
+1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa az alábbi parancsot:
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
@@ -216,6 +216,6 @@ A következő ütemezett biztonsági mentés időpontjában a Azure Backup növe
 
 A kezdeti biztonsági mentés befejezését követően biztonságosan törölheti az Azure Storage-tárolóba importált és az átmeneti helyen található biztonsági mentési adataikat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../storage/common/storage-import-export-service.md).

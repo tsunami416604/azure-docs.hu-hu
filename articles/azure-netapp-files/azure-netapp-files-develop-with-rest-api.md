@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4599f4e3ca291c312c99e938b237d1eb9cd9d407
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513009"
+ms.locfileid: "91929280"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Fejlesztés az Azure NetApp Filesra a REST API-val 
 
@@ -34,9 +34,9 @@ A Azure NetApp Files REST API specifikációját a [githubon](https://github.com
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Hozzáférés a Azure NetApp Files REST API  
 
-1. Ha még nem tette meg, [telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t.
+1. Ha még nem tette meg, [telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t.
 2. Egyszerű szolgáltatásnév létrehozása a Azure Active Directoryban (Azure AD):
-   1. Ellenőrizze, hogy rendelkezik-e [megfelelő engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+   1. Ellenőrizze, hogy rendelkezik-e [megfelelő engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
    2. Adja meg az alábbi parancsot az Azure CLI-ben: 
     
@@ -201,6 +201,6 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy kötet pillanatképét:
 > [!NOTE] 
 > Meg kell adnia `fileSystemId` egy pillanatkép létrehozásához.  Az értéket lekérheti a `fileSystemId` Get kéréssel egy kötetre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Lásd a Azure NetApp Files REST API referenciát](https://docs.microsoft.com/rest/api/netapp/)
+[Lásd a Azure NetApp Files REST API referenciát](/rest/api/netapp/)

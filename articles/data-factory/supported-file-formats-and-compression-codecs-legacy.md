@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254616"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Támogatott fájlformátumok és tömörítési kodekek a Azure Data Factory (örökölt)
@@ -25,7 +25,7 @@ ms.locfileid: "85254616"
 >[!IMPORTANT]
 >Data Factory új Format-alapú adatkészlet-modellt vezetett be, lásd a megfelelő formátumú cikket a részletekkel: <br>- [Avro formátuma](format-avro.md)<br>- [Bináris formátum](format-binary.md)<br>- [Tagolt szöveg formátuma](format-delimited-text.md)<br>- [JSON-formátum](format-json.md)<br>- [ORK formátum](format-orc.md)<br>- [Parketta formátuma](format-parquet.md)<br>A cikkben említett Rest-konfigurációk továbbra is támogatottak a visszamenőleges compabitility. Azt javasoljuk, hogy használja az új modellt a jövőre. 
 
-## <a name="text-format-legacy"></a><a name="text-format"></a>Szöveg formátuma (örökölt)
+## <a name="text-format-legacy"></a><a name="text-format"></a> Szöveg formátuma (örökölt)
 
 >[!NOTE]
 >Ismerje meg az új modellt a [tagolt szöveges formátumú](format-delimited-text.md) cikkből. A fájl alapú adattár-adatkészletek következő konfigurációi továbbra is támogatottak, ha visszafelé compabitility. Azt javasoljuk, hogy használja az új modellt a jövőre.
@@ -34,15 +34,15 @@ Ha szövegfájlból szeretne olvasni, vagy szöveges fájlba ír, az `type` adat
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet olyan ritka, nem nyomtatható karaktert használni, amely nem létezik az adataiban. Adja meg például a "\u0001" kifejezést, amely a fejléc kezdetét jelöli (rendszerállapot-kimutatás). |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)**. <br/><br/>Ha Unicode-karaktert szeretne használni, a megfelelő kód beszerzéséhez tekintse meg a [Unicode-karaktereket](https://en.wikipedia.org/wiki/List_of_Unicode_characters) . |No |
-| rowDelimiter |A fájlokban a sorok elválasztására használt karakter. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték olvasáskor a következő értékek bármelyike: **[„\r\n”, „\r”, „\n”]**, illetve **„\r\n”** írás esetén. |No |
-| escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Példa: Ha a vesszőt (",") az oszlop elválasztójának kell lennie, de a szövegben vesszőt szeretne megadni (például: "Hello, World"), a "$" karaktert megadhatja Escape-karakterként, és a "Hello $, World" karakterláncot használhatja a forrásban. |No |
-| quoteChar |Egy sztringérték idézéséhez használt karakter. Ekkor az idézőjel-karakterek közötti oszlop- és sorhatárolókat a rendszer a sztringérték részeként kezeli. Ez a tulajdonság a bemeneti és a kimeneti adatkészleteken is alkalmazható.<br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: &lt;Helló, világ&gt;), megadhatja a " (angol dupla idézőjel) értéket idézőjel-karakterként, és a "Helló$, világ" sztringet használhatja a forrásban. |No |
-| nullValue |A null értéket jelölő egy vagy több karakter. |Egy vagy több karakter. Az **alapértelmezett** értékek az **„\N” és „NULL”** olvasás, illetve **„\N”** írás esetén. |No |
-| encodingName |A kódolási név megadására szolgál. |Egy érvényes kódolási név. Lásd az [Encoding.EncodingName tulajdonságot](https://msdn.microsoft.com/library/system.text.encoding.aspx). Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |No |
-| firstRowAsHeader |Megadja, hogy az első sort fejlécnek kell-e tekinteni. A bemeneti adatkészletek első sorát a Data Factory fejlécként olvassa be. A kimeneti adatkészletek első sorát a Data Factory fejlécként írja ki. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |True (Igaz)<br/><b>False (alapértelmezett)</b> |No |
-| skipLineCount |Az adatok bemeneti fájlokból való olvasásakor kihagyható **nem üres** sorok számát jelzi. Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |Egész szám |No |
-| treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a sztring null vagy üres értékeit null értékként kell-e kezelni. |**True (alapértelmezett)**<br/>False (Hamis) |No |
+| columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet olyan ritka, nem nyomtatható karaktert használni, amely nem létezik az adataiban. Adja meg például a "\u0001" kifejezést, amely a fejléc kezdetét jelöli (rendszerállapot-kimutatás). |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)**. <br/><br/>Ha Unicode-karaktert szeretne használni, a megfelelő kód beszerzéséhez tekintse meg a [Unicode-karaktereket](https://en.wikipedia.org/wiki/List_of_Unicode_characters) . |Nem |
+| rowDelimiter |A fájlokban a sorok elválasztására használt karakter. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték olvasáskor a következő értékek bármelyike: **[„\r\n”, „\r”, „\n”]**, illetve **„\r\n”** írás esetén. |Nem |
+| escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Példa: Ha a vesszőt (",") az oszlop elválasztójának kell lennie, de a szövegben vesszőt szeretne megadni (például: "Hello, World"), a "$" karaktert megadhatja Escape-karakterként, és a "Hello $, World" karakterláncot használhatja a forrásban. |Nem |
+| quoteChar |Egy sztringérték idézéséhez használt karakter. Ekkor az idézőjel-karakterek közötti oszlop- és sorhatárolókat a rendszer a sztringérték részeként kezeli. Ez a tulajdonság a bemeneti és a kimeneti adatkészleteken is alkalmazható.<br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: &lt;Helló, világ&gt;), megadhatja a " (angol dupla idézőjel) értéket idézőjel-karakterként, és a "Helló$, világ" sztringet használhatja a forrásban. |Nem |
+| nullValue |A null értéket jelölő egy vagy több karakter. |Egy vagy több karakter. Az **alapértelmezett** értékek az **„\N” és „NULL”** olvasás, illetve **„\N”** írás esetén. |Nem |
+| encodingName |A kódolási név megadására szolgál. |Egy érvényes kódolási név. Lásd az [Encoding.EncodingName tulajdonságot](https://msdn.microsoft.com/library/system.text.encoding.aspx). Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |Nem |
+| firstRowAsHeader |Megadja, hogy az első sort fejlécnek kell-e tekinteni. A bemeneti adatkészletek első sorát a Data Factory fejlécként olvassa be. A kimeneti adatkészletek első sorát a Data Factory fejlécként írja ki. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |Igaz<br/><b>False (alapértelmezett)</b> |Nem |
+| skipLineCount |Az adatok bemeneti fájlokból való olvasásakor kihagyható **nem üres** sorok számát jelzi. Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |Egész szám |Nem |
+| treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a sztring null vagy üres értékeit null értékként kell-e kezelni. |**True (alapértelmezett)**<br/>Hamis |Nem |
 
 ### <a name="textformat-example"></a>A TextFormat használatát bemutató példa
 
@@ -79,7 +79,7 @@ Az adatkészletek következő JSON-definíciójában a választható tulajdonsá
 * Egy fejlécsort tartalmazó szöveges fájlból másol egy nem fájlalapú fogadóba, és el szeretné hagyni azt a sort. Adja meg a `firstRowAsHeader` értékét igazként a bemeneti adatkészletben.
 * Egy szöveges fájlból másol, és szeretne kihagyni néhány sort az elejéről, amelyek nem tartalmaznak adatokat vagy fejléc-információkat. Adja meg a `skipLineCount` értékét a kihagyni kívánt sorok számának jelzéséhez. Ha a fájl hátralévő része fejlécsort tartalmaz, a `firstRowAsHeader` is megadható. Ha a `skipLineCount` és a `firstRowAsHeader` is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból
 
-## <a name="json-format-legacy"></a><a name="json-format"></a>JSON formátum (örökölt)
+## <a name="json-format-legacy"></a><a name="json-format"></a> JSON formátum (örökölt)
 
 >[!NOTE]
 >Ismerje meg az új modellt a [JSON formátumú](format-json.md) cikkből. A fájl alapú adattár-adatkészletek következő konfigurációi továbbra is támogatottak, ha visszafelé compabitility. Azt javasoljuk, hogy használja az új modellt a jövőre.
@@ -90,11 +90,11 @@ Ha szeretné elemezni a JSON-fájlokat, vagy JSON formátumban kell írnia az ad
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |No |
-| jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON **-** fájlokból másol adatok. | No |
-| jsonPathDefinition | Megadja az egyes oszlopmegfeleltetések JSON-útvonalának kifejezését testre szabott oszlopnevekkel (kezdje kisbetűvel). Ez a tulajdonság csak akkor támogatott, ha **JSON-** fájlokból másol adatokból, és kinyeri az adatait az objektumból vagy tömbből. <br/><br/> A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `jsonNodeReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt. | No |
-| encodingName |A kódolási név megadására szolgál. Az érvényes kódolási nevekkel kapcsolatban lásd az [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonságot. Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték: **UTF-8**. |No |
-| nestingSeparator |A beágyazási szinteket elválasztó karakter. Az alapértelmezett érték a „.” (pont). |No |
+| filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
+| jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON **-** fájlokból másol adatok. | Nem |
+| jsonPathDefinition | Megadja az egyes oszlopmegfeleltetések JSON-útvonalának kifejezését testre szabott oszlopnevekkel (kezdje kisbetűvel). Ez a tulajdonság csak akkor támogatott, ha **JSON-** fájlokból másol adatokból, és kinyeri az adatait az objektumból vagy tömbből. <br/><br/> A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `jsonNodeReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt. | Nem |
+| encodingName |A kódolási név megadására szolgál. Az érvényes kódolási nevekkel kapcsolatban lásd az [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonságot. Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték: **UTF-8**. |Nem |
+| nestingSeparator |A beágyazási szinteket elválasztó karakter. Az alapértelmezett érték a „.” (pont). |Nem |
 
 >[!NOTE]
 >A tömbben lévő, több sorból származó adatmennyiség (1. eset – > minta 2 [JsonFormat-példákban](#jsonformat-example)) esetében csak egy tömböt lehet kibontani a tulajdonság használatával `jsonNodeReference` .
@@ -224,7 +224,7 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 
 és az adatok objektumokból és tömbökből való kigyűjtésével szeretné átmásolni egy Azure SQL-táblába az alábbi formátumban:
 
-| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| ID (Azonosító) | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -356,7 +356,7 @@ A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghat�
 
 Ha a következő táblázat szerepel a SQL Databaseban:
 
-| ID | order_date | order_price | order_by |
+| ID (Azonosító) | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -406,7 +406,7 @@ A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghat�
 }
 ```
 
-## <a name="parquet-format-legacy"></a><a name="parquet-format"></a>Parketta formátuma (örökölt)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Parketta formátuma (örökölt)
 
 >[!NOTE]
 >Ismerje meg az új modellt a [parketta formátumáról](format-parquet.md) szóló cikkből. A fájl alapú adattár-adatkészletek következő konfigurációi továbbra is támogatottak, ha visszafelé compabitility. Azt javasoljuk, hogy használja az új modellt a jövőre.
@@ -453,10 +453,10 @@ Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` 
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/bináris | UInt64 | Decimal |
-| Egyszeres | Float | N.A. | N.A. |
-| Double | Double | N.A. | N.A. |
-| Decimal | Bináris | Decimal | Decimal |
+| UInt64 | Int64/bináris | UInt64 | Tizedesjegy |
+| Egyirányú | Lebegőpontos értékek | N.A. | N.A. |
+| Dupla | Dupla | N.A. | N.A. |
+| Tizedesjegy | Bináris | Tizedesjegy | Tizedesjegy |
 | Sztring | Bináris | Utf8 | Utf8 |
 | DateTime | Int96 | N.A. | N.A. |
 | időtartam | Int96 | N.A. | N.A. |
@@ -466,7 +466,7 @@ Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` 
 | Char | Bináris | Utf8 | Utf8 |
 | CharArray | Nem támogatott | N.A. | N.A. |
 
-## <a name="orc-format-legacy"></a><a name="orc-format"></a>ORK formátum (örökölt)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORK formátum (örökölt)
 
 >[!NOTE]
 >Ismerje meg az új modellt az [ork formátumról](format-orc.md) szóló cikkből. A fájl alapú adattár-adatkészletek következő konfigurációi továbbra is támogatottak, ha visszafelé compabitility. Azt javasoljuk, hogy használja az új modellt a jövőre.
@@ -507,18 +507,18 @@ A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializál
 | UInt32 | Hosszú |
 | Int64 | Hosszú |
 | UInt64 | Sztring |
-| Egyszeres | Float |
-| Double | Double |
-| Decimal | Decimal |
+| Egyirányú | Lebegőpontos értékek |
+| Dupla | Dupla |
+| Tizedesjegy | Tizedesjegy |
 | Sztring | Sztring |
-| DateTime | Időbélyeg |
-| DateTimeOffset | Időbélyeg |
-| időtartam | Időbélyeg |
+| DateTime | Timestamp |
+| DateTimeOffset | Timestamp |
+| időtartam | Timestamp |
 | ByteArray | Bináris |
 | Guid | Sztring |
 | Char | Char (1) |
 
-## <a name="avro-format-legacy"></a><a name="avro-format"></a>AVRO formátuma (örökölt)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> AVRO formátuma (örökölt)
 
 >[!NOTE]
 >Ismerje meg az új modellt a [Avro Format](format-avro.md) cikkből. A fájl alapú adattár-adatkészletek következő konfigurációi továbbra is támogatottak, ha visszafelé compabitility. Azt javasoljuk, hogy használja az új modellt a jövőre.
@@ -538,7 +538,7 @@ Vegye figyelembe a következő szempontokat:
 
 * Az [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, térképek, szakszervezetek és rögzített).
 
-## <a name="compression-support-legacy"></a><a name="compression-support"></a>Tömörítési támogatás (örökölt)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> Tömörítési támogatás (örökölt)
 
 Azure Data Factory támogatja az adatok tömörítését vagy kibontását a másolás során. Ha `compression` egy bemeneti adatkészletben megad egy tulajdonságot, a másolási tevékenység beolvassa a forrásból a tömörített adatokat, kibontja azt, és ha a tulajdonságot egy kimeneti adatkészletben adja meg, a másolási tevékenység tömöríti, majd adatokat ír a fogadóba. Íme néhány példa a példákra:
 

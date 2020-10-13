@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314657"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Magas rendelkezésre állású Azure-Virtual Machines az SAP NetWeaver-hoz
@@ -522,7 +522,7 @@ A ASCS/SCS multi-SID sablon beállításához a [ASCS/SCS multi-SID sablonban][s
   -  A **rendszerek rendelkezésre állása**. Válassza a **Ha**lehetőséget.
   -  **Rendszergazdai Felhasználónév és rendszergazdai jelszó**. Hozzon létre egy új felhasználót, amely használható a gépre való bejelentkezéshez.
   -  **Új vagy meglévő alhálózat**. Állítsa be, hogy új virtuális hálózatot és alhálózatot kell-e létrehozni, vagy egy meglévő alhálózatot kell használni. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
-  -  **Alhálózat-azonosító**. Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában a következőképpen néz ki:/Subscriptions/ *<előfizetés-azonosító*>/resourcegroups/<*erőforráscsoport neve*>/Providers/Microsoft.Network/virtualnetworks/<*virtuális hálózat neve*>/Subnets/<*alhálózat neve*>
+  -  **Alhálózat-azonosító**. Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában a következőképpen néz ki:/Subscriptions/ *<előfizetés-azonosító*>/resourceGroups/<*erőforráscsoport neve*>/Providers/Microsoft.Network/virtualNetworks/<*virtuális hálózat neve*>/Subnets/<*alhálózat neve*>
 
 A sablon egy Azure Load Balancer példányt telepít, amely több SAP-rendszert is támogat.
 
@@ -740,7 +740,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza a ** < *SID*>-LB-ASCs terheléselosztó**terheléselosztási  >  **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Name
+   * Name (Név)
    * Port
    * Háttérbeli port
 

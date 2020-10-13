@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 83170f4090909e3edcc163312383773d088d8c57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212122"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Számítási feladatok fontosságának konfigurálása az Azure szinapszis Analyticsben
@@ -24,7 +24,7 @@ Az Azure Szinapszishoz készült szinapszis SQL-ben a fontosság beállítása l
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Számítási feladatok besorolása fontossággal
 
-Gyakran egy adattárház-forgatókönyvben a felhasználók egy foglalt rendszeren vannak, akiknek gyorsan le kell futtatniuk a lekérdezéseket.  Előfordulhat, hogy a felhasználó a vállalat vezetőinek kell futnia, vagy ha a felhasználó egy ad hoc lekérdezést futtató elemző. A fontosság kiosztásához létre kell hoznia egy számítási feladatok besorolását, és a fontosságot egy lekérdezéshez rendeli hozzá.  Az alábbi példák a [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxist használják két osztályozó létrehozásához. `Membername`egyetlen felhasználó vagy csoport lehet.  Meglévő adatraktár-felhasználók megkereséséhez futtassa a következőt:
+Gyakran egy adattárház-forgatókönyvben a felhasználók egy foglalt rendszeren vannak, akiknek gyorsan le kell futtatniuk a lekérdezéseket.  Előfordulhat, hogy a felhasználó a vállalat vezetőinek kell futnia, vagy ha a felhasználó egy ad hoc lekérdezést futtató elemző. A fontosság kiosztásához létre kell hoznia egy számítási feladatok besorolását, és a fontosságot egy lekérdezéshez rendeli hozzá.  Az alábbi példák a  [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxist használják két osztályozó létrehozásához. `Membername` egyetlen felhasználó vagy csoport lehet.  Meglévő adatraktár-felhasználók megkereséséhez futtassa a következőt:
 
 ```sql
 Select name from sys.sysusers
@@ -48,7 +48,7 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier
          ,IMPORTANCE     = below_normal);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A számítási feladatok kezelésével kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md)
 - További információ a Fontosságról: számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md)

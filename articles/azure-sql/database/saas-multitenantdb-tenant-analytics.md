@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: 2742a08d97d537e8a5e0670c40f0ab69b34a4d9f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619593"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
@@ -157,7 +157,7 @@ Az oktatóanyag ezen szakaszában definiálhat és futtathat egy olyan feladatot
 2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
 3. Nyomja le az **F5** billentyűt a szkript futtatásához egy olyan feladat definiálásához, amely meghívja az sp_ShredRawExtractedData tárolt eljárást az elemzési tárolóban.
 4. A feladatok sikeres futtatásának engedélyezése elég idő.
-    - Tekintse át a feladatok **életciklus** -oszlopát. jobs_execution a feladat állapotához tartozó táblázatot. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:
+    - Keresse meg jobs.jobs_execution tábla **életciklus** oszlopát a feladatok állapotára vonatkozóan. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:
 
 ![A képernyőkép a sp_ShredRawExtractedData eljárás futtatásának sikeres eredményét jeleníti meg.](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 

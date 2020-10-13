@@ -12,10 +12,10 @@ ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88921239"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
@@ -40,9 +40,9 @@ Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes
 
 | Szolgáltatás | Szolgáltatás | Leírás |
 |---------|---------|-------------|
-| Translator | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
-| Translator | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 70 nyelvre. |
-| Translator | [Kinyomoz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
+| Fordító | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
+| Fordító | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 70 nyelvre. |
+| Fordító | [Kinyomoz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
 | Bing – Helyesírás-ellenőrzés | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
 
 ## <a name="prerequisites"></a>Előfeltételek

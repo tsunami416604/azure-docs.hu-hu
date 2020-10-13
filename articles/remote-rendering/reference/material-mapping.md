@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893092"
 ---
 # <a name="material-mapping-for-model-formats"></a>Anyagleképzés a modellformátumokhoz
@@ -164,7 +164,7 @@ If `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 A végső `Albedo` színnek négy csatornája van, amely a és a együttesét kombinálja `AlbedoRGB` `AlbedoAlpha` .
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Ha itt szeretné összefoglalni, `Albedo` nagyon közel lesz az eredetihöz `Diffuse` , ha `Specular` közel van nullához. Ellenkező esetben a felület egy fémes felületnek fog kinézni, és elveszti a diffúz színt. A felület kifinomultabb és fényvisszaverő lesz, ha `ShininessExponent` elég nagy, és `Specular` világos. Ellenkező esetben a felület durva lesz, és alig tükrözi a környezetet.
 

@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88891657"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>SQL Server biztonsági mentése a virtuális gép paneljéről
