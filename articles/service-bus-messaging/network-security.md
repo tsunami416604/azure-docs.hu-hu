@@ -4,10 +4,10 @@ description: Ez a cikk a hálózati biztonsági funkciókat, például a szolgá
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766391"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus hálózati biztonsága 
@@ -33,7 +33,7 @@ A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](.
 > A szolgáltatási címkéket csak a **prémium** szintű névterek esetében használhatja. Ha **standard** névteret használ, használja a következő parancs futtatásakor megjelenő IP-címet: `nslookup <host name for the namespace>` . Például: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>IP-tűzfal 
-Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
+Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
 
 Ez a funkció olyan helyzetekben hasznos, amikor a Azure Service Bus csak bizonyos jól ismert helyekről lehet elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például a Service Bus az [Azure Express Route] [Express-Route] használatával használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről vagy a vállalati NAT-átjáró címeiről érkező forgalmat engedélyezze. 
 

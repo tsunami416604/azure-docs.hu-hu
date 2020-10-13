@@ -9,10 +9,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: 3e0f05240aba9b5c92689315e409aaabe793b3f4
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772838"
 ---
 # <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
@@ -53,7 +53,7 @@ A virtuális hálózat és az alhálózat létrehozásához tegye a következők
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép az "alhálózat hozzáadása" panelről.][3]
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 1. A sikeres ellenőrzés után válassza a **Létrehozás**lehetőséget.
 
@@ -77,7 +77,7 @@ A virtuális gép létrehozásához tegye a következőket:
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a "virtuális gép létrehozása" panel "hálózatkezelés" lapjáról.][5]
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 1. A sikeres ellenőrzés után válassza a **Létrehozás**lehetőséget.
 
@@ -97,7 +97,7 @@ Ebben a szakaszban egy privát végpontot használó privát webalkalmazást hoz
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a "Web App" panel "alapismeretek" lapjáról.][6]
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 1. A sikeres ellenőrzés után válassza a **Létrehozás**lehetőséget.
 
@@ -147,7 +147,7 @@ Ebben a szakaszban egy privát végpontot használó privát webalkalmazást hoz
      > [!Note]
      > A hitelesítő adatok használatához szükség lehet a **további lehetőségek**kiválasztására  >  **egy másik fiók használata**esetén.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
    > [!Note]
    > Ha a bejelentkezési folyamat során figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.

@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773246"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Hálózati virtuális berendezés létrehozása Azure-beli virtuális WAN-központban (előzetes verzió)
@@ -49,7 +49,7 @@ A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek köz�
 1. Keresse meg a létrehozott virtuális WAN-t. A **virtuális WAN** lapon a **kapcsolat** szakaszban válassza a **hubok**lehetőséget.
 1. A **hubok** lapon válassza az + új hub lehetőséget a **virtuális központ létrehozása** lap megnyitásához.
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Alapvető beállítások":::
 1. A **virtuális központ létrehozása** lap **alapjai** lapon végezze el a következő mezőket:
 
    **Projekt részletei**
@@ -66,14 +66,14 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
 
 1. Keresse meg az előző lépésben létrehozott virtuális WAN-hubot, és nyissa meg.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Alapvető beállítások":::
 1. Keresse meg a hálózati virtuális berendezések csempét, és válassza a **Létrehozás** hivatkozást.
 1. A **hálózati virtuális berendezés** panelen válassza a **Barracuda CloudGen WAN**elemet, majd kattintson a **Létrehozás** gombra.
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Alapvető beállítások":::
 1. Ekkor megnyílik a Barracuda CloudGen WAN-átjáró Azure Marketplace-ajánlata. Olvassa el a használati feltételeket, majd válassza a **Létrehozás** gombot, ha elkészült.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Alapvető beállítások":::
 1. Az **alapok** lapon a következő információkat kell megadnia:
 
    * **Előfizetés** – válassza ki a virtuális WAN és hub üzembe helyezéséhez használt előfizetést.
@@ -83,14 +83,14 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
    * **Felügyelt erőforráscsoport** – ez az a felügyelt erőforráscsoport neve, amelyben a Barracuda telepíti az általuk felügyelt erőforrásokat. Ezt a nevet előre ki kell tölteni.
 1. Válassza a **Next: CLOUDGEN WAN Gateway (tovább** ) gombot.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Alapvető beállítások":::
 1. Adja meg a következő információkat:
 
    * **Virtual WAN hub** – a virtuális WAN hub, amelyre a NVA telepíteni kívánja.
    * **NVA infrastruktúra-egységek** – Itt adhatja meg, hogy hány NVA infrastruktúra-egységre kívánja telepíteni ezt a NVA. Válassza ki azt az összesített sávszélesség-kapacitást, amelyet az összes olyan fiókirodában meg szeretne adni, amely ezen a hubhoz csatlakozik ezen a NVA keresztül.
    * A **token** -Barracuda megköveteli, hogy itt hitelesítő jogkivonatot adjon meg, hogy azonosítsa magát a termék regisztrált felhasználója számára. Ezt a Barracuda-től kell megszereznie.
 1. A folytatáshoz kattintson a **felülvizsgálat és létrehozás** gombra.
-1. Ezen az oldalon a rendszer felszólítja, hogy fogadja el a közös rendszergazdai hozzáférési szerződés feltételeit. Ez a szabványos olyan felügyelt alkalmazásokkal, amelyekben a közzétevő hozzáférhet a központi telepítés egyes erőforrásaihoz. Jelölje be az **Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Létrehozás**gombra.
+1. Ezen az oldalon a Co-Admin hozzáférési szerződés feltételeinek elfogadását kéri a rendszer. Ez a szabványos olyan felügyelt alkalmazásokkal, amelyekben a közzétevő hozzáférhet a központi telepítés egyes erőforrásaihoz. Jelölje be az **Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Létrehozás**gombra.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>A VNet összekötése a hubhoz
 

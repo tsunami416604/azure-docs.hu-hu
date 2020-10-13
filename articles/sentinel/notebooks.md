@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90889338"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-jegyzetfüzetek használata biztonsági fenyegetések vadászatához
@@ -66,7 +66,7 @@ A jegyzetfüzetek használatához először létre kell hoznia egy Azure Machine
     |Előfizetés|Válassza ki a használni kívánt Azure-előfizetést.|
     |Erőforráscsoport|Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **AzureMLRG**-t használjuk.|
     |Munkaterület neve|Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **testworkspace1**-t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.|
-    |Region|Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.|
+    |Régió|Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.|
     |Munkaterület kiadása|Ebben a példában válassza az **alapszintű** lehetőséget a munkaterület típusaként. A munkaterület típusa (alapszintű & Enterprise) meghatározza azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szükség.|
 
     > [!div class="mx-imgBorder"]

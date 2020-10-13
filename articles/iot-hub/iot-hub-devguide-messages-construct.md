@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766972"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
@@ -61,8 +61,8 @@ További információ a különböző protokollok használatával elküldött ü
 | iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | Nem | connectionModuleId |
 | iothub – kapcsolatok – hitelesítés – generálási azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |connectionDeviceGenerationId |
 | iothub – kapcsolatok – hitelesítés – módszer |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| Nem | connectionAuthMethod |
-| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. | Nem | N/A |
-| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. | Igen | N/A |
+| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. | Nem | N.A. |
+| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. | Igen | N.A. |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT hub üzenetek rendszertulajdonságai
 
@@ -90,7 +90,7 @@ A Rendszertulajdonságok nevei attól függően változnak, hogy az üzenetek mi
 |Kapcsolatok hitelesítési módszere|iothub – kapcsolatok – hitelesítés – módszer|connectionAuthMethod|iothub – kapcsolatok – hitelesítés – módszer|iothub – kapcsolatok – hitelesítés – módszer|
 |contentType|Content-Type|contentType|ContentType|iothub – tartalomtípus|
 |contentEncoding|Content-Encoding|contentEncoding|ContentEncoding|iothub – tartalom kódolása|
-|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| N/A |iothub – enqueuedtime|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| N.A. |iothub – enqueuedtime|
 |CorrelationId|korrelációs azonosító|correlationId|CorrelationId|korrelációs azonosító|
 |DT – DataSchema|DT – DataSchema|DT – DataSchema|DT – DataSchema|DT – DataSchema|
 |DT – tárgy|DT – tárgy|DT – tárgy|DT – tárgy|DT – tárgy|

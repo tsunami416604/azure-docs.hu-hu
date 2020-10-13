@@ -10,10 +10,10 @@ ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891055"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele a Storage-fiókok használatával Azure Stack Edge Pro GPU-val 
@@ -165,13 +165,13 @@ A következő lépésekkel importálhatja a tanúsítványokat a Azure Storage E
 
 A HTTP protokollon [keresztüli kapcsolódás során használt kapcsolat konfigurálásához és ellenőrzéséhez *http*](#verify-connection)kövesse az alábbi lépéseket. Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következő Azure Stack Edge Pro-témaköröket:
 
 > [!div class="checklist"]
 > * Storage-fiók hozzáadása
-> * Kapcsolódás Storage-fiókhoz
+> * Csatlakozás egy tárfiókhoz
 
 Ha szeretné megtudni, hogyan alakíthatja át adatait Azure Stack Edge Pro használatával, folytassa a következő oktatóanyaggal:
 

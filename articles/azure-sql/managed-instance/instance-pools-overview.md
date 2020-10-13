@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325164"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Mi az Azure SQL felügyelt példányok készlete (előzetes verzió)?
@@ -24,7 +24,7 @@ ms.locfileid: "91325164"
 
 Az Azure SQL felügyelt példányának példány-készletei kényelmes és költséghatékony megoldást biztosítanak a kisebb SQL Server példányok felhőbe való átméretezésére.
 
-A példánykészletek lehetővé teszik a számítási erőforrások migrálási követelményeknek megfelelő, előzetes létrehozását. Ezt követően több egyedi felügyelt példányt is üzembe helyezhet, az előzetesen megadott számítási szintig. Ha például előre kiépíti a 8 virtuális mag-t, két virtuális mag és egy 4 virtuális mag-példányt is üzembe helyezhet, majd áttelepítheti az adatbázisokat ezekbe a példányokra. A példányok elérhetővé válása előtt a kisebb és kisebb számítási igényű munkaterheléseket gyakran egy nagyobb felügyelt példányba kell összevonni a felhőbe való Migrálás során. Az adatbázis-csoportok nagy példányra való áttelepítéséhez általában körültekintő kapacitás-tervezésre és erőforrás-szabályozásra, további biztonsági megfontolásokra és néhány további adatösszesítésre van szükség a példány szintjén.
+A példánykészletek lehetővé teszik a számítási erőforrások migrálási követelményeknek megfelelő, előzetes létrehozását. Ezt követően több egyedi felügyelt példányt is üzembe helyezhet, az előzetesen megadott számítási szintig. Ha például előre kiépít 8 virtuális mag, telepítheti a 2 2-virtuális mag és a 1 4-virtuális mag példányt, majd áttelepítheti az adatbázisokat ezekbe a példányokra. A példányok elérhetővé válása előtt a kisebb és kisebb számítási igényű munkaterheléseket gyakran egy nagyobb felügyelt példányba kell összevonni a felhőbe való Migrálás során. Az adatbázis-csoportok nagy példányra való áttelepítéséhez általában körültekintő kapacitás-tervezésre és erőforrás-szabályozásra, további biztonsági megfontolásokra és néhány további adatösszesítésre van szükség a példány szintjén.
 
 A példányok emellett támogatják a natív VNet-integrációt is, így több példány-készletet és több példányt is telepíthet ugyanabban az alhálózatban.
 
