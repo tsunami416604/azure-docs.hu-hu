@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a04b893af41f15d0757b781716909535f43239e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8caf136c43f40458634316da4b4002386f1419da
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a onit
 
@@ -106,7 +106,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -132,7 +132,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüben kattintson az **Adminisztráció**elemre.
    
-    ![Felügyelet](./media/onit-tutorial/IC791174.png "Felügyelet")
+    ![Képernyőfelvétel: az "M s s s O test" oldal tetején található menü, a "felügyelet" művelettel kiválasztva.](./media/onit-tutorial/IC791174.png "Felügyelet")
 
 3. Kattintson a **vállalat szerkesztése**elemre.
    
@@ -172,7 +172,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a onit, a onit-ben kell 
 
     a. Írja be egy érvényes Azure AD-fiók **nevét** és **e-mail-címét** , amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
 
-    b. Kattintson a **Létrehozás** elemre.
+    b. Kattintson a **Létrehozás** gombra.
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve megerősíti a fiókját, mielőtt az aktívvá válna.

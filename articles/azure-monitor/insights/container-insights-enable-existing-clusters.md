@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzem
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: e3b4bd007ec2f4315ccd7d8581113e116db693ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068427"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994516"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -160,7 +160,7 @@ Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figye
 >A sablont a fürttel azonos erőforráscsoporthoz kell telepíteni.
 >
 
-A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával állíthatja be.
+A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../samples/resource-manager-workspace.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával állíthatja be.
 
 Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
 
@@ -383,4 +383,3 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
 * Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.
-

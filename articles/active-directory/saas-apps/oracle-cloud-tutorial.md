@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543839"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996553"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Oktatóanyag: az Oracle felhőalapú infrastruktúra-konzol integrálása a Azure Active Directory
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az Oracle Cloud Infrastructure Console alkalmazás megadott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
-   ![image](common/edit-attribute.png)
+   ![Képernyőfelvétel: a "felhasználói attribútumok" párbeszédpanel, ahol a "szerkesztés" ikon látható a jobb felső sarokban.](common/edit-attribute.png)
 
 1. A fentieken kívül az Oracle Cloud Infrastructure Console alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
@@ -111,9 +111,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
  
    1. Kattintson a **Mentés** gombra.
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![Képernyőkép: a "felhasználói attribútumok & jogcímek" szakasz "a" név-azonosító érték "és" a jogcímben visszaadott csoportok "" szerkesztés "ikonjai kiemelve.](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![Képernyőfelvétel: "a felhasználói jogcímek kezelése" párbeszédpanel a "megőrzött" és a "Mentés" gomb kiválasztásával.](./media/oracle-cloud-tutorial/config11.png)
 
    1. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
@@ -147,7 +147,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B. Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -173,15 +173,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a menü bal oldalára, majd kattintson az **identitás** elemre, majd navigáljon az **összevonáshoz**.
 
-   ![Konfiguráció](./media/oracle-cloud-tutorial/config01.png)
+   ![Képernyőkép, amely az "Oracle Cloud Infrastructure Console" kifejezést jeleníti meg a bal felső sarokban lévő menüből kiválasztott "Identity" és "Federation" értékkel.](./media/oracle-cloud-tutorial/config01.png)
 
 1. Mentse a **szolgáltatói metaadat-fájlt** a **dokumentum letöltése** hivatkozásra kattintva, és töltse fel a Azure Portal **alapszintű SAML-konfiguráció** szakaszára, majd kattintson az **Identity Provider hozzáadása**elemre.
 
-   ![Konfiguráció](./media/oracle-cloud-tutorial/config02.png)
+   ![A bal oldali menüből kiválasztott "összevonás" és az "identitás-szolgáltató hozzáadása" gomb és a "dokumentum letöltése" műveletet megjelenítő képernyőkép.](./media/oracle-cloud-tutorial/config02.png)
 
 1. Az **identitás-szolgáltató hozzáadása** előugró ablakban végezze el a következő lépéseket:
 
-   ![Konfiguráció](./media/oracle-cloud-tutorial/config03.png)
+   ![Képernyőkép, amely megjeleníti az "identitás-szolgáltató hozzáadása" előugró ablakot.](./media/oracle-cloud-tutorial/config03.png)
 
    1. A **név** szövegmezőbe írja be a nevét.
 
@@ -193,7 +193,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
    1. Kattintson a **Folytatás** gombra, és az **Identitáskezelő szerkesztése** szakaszban hajtsa végre a következő lépéseket:
 
-      ![Konfiguráció](./media/oracle-cloud-tutorial/config09.png)
+      ![Képernyőkép: az "Identity Provider" szakasz "identitás-szolgáltatói csoport", "O C I csoport", "leképezés hozzáadása" és "Küldés" gombjának kiemelése.](./media/oracle-cloud-tutorial/config09.png)
 
    1. Az **identitás-szolgáltató csoportot** egyéni csoportként kell kiválasztani. A csoport AZONOSÍTÓjának a csoport GUID azonosítójának kell lennie Azure Active Directoryból. A csoportot hozzá kell rendelni a megfelelő csoporthoz a **OCI csoport** mezőben.
 

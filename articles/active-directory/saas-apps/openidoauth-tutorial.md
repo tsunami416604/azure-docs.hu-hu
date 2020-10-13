@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705622"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996614"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből
 
@@ -99,19 +99,19 @@ Az alábbi lépések bemutatják, hogyan működik az alkalmazás fejlesztője �
 
     a. Kattintson a menü bal oldalán lévő **Alkalmazásregisztrációkra** , és nyissa meg az alkalmazást a keresőmezőbe írja be az alkalmazás nevét.
 
-    ![Graph API](./media/openidoauth-tutorial/application.png)
+    ![A bal oldali menüből kiválasztott "Alkalmazásregisztrációk" és az "Application I D" keresőmező kijelölve.](./media/openidoauth-tutorial/application.png)
 
     b. Kattintson az **API-engedélyek megtekintése**elemre.
 
-    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+    ![Képernyőfelvétel: a "P i: P i/o-engedélyek megtekintése" gomb megjelenítése.](./media/openidoauth-tutorial/api-permission.png)
 
     c. Kattintson az **engedély hozzáadása**lehetőségre.
 
-    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+    ![Képernyőfelvétel: az "a P I engedélyek" szakasz, amelyen be van jelölve az "engedély hozzáadása" gomb.](./media/openidoauth-tutorial/add-permission.png)
 
     d. Kattintson **Microsoft Graph**.
 
-    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+    ![Képernyőfelvétel: "a P I engedélyek kérése" oldal a "Microsoft A P I" lapon és a "Microsoft Graph" csempe kijelölve.](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. A **delegált engedélyek** és az **alkalmazás engedélyei**közül válassza a szükséges beállítások lehetőséget.
 

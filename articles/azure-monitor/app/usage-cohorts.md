@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77671086"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995744"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -131,7 +131,7 @@ A kohorszok és a szűrők eltérőek. Tegyük fel, hogy az Egyesült Királysá
 
 ## <a name="learn-more"></a>Tudjon meg többet
 
-* [Elemzés lekérdezési nyelve](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Elemzés lekérdezési nyelve](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 * [Felhasználók, munkamenetek, események](usage-segmentation.md)
 * [Felhasználói folyamatok](usage-flows.md)
 * [A használat áttekintése](usage-overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543788"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995824"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Oktatóanyag: Azure Active Directory az origami integrációval
 
@@ -126,11 +126,11 @@ Az Azure AD-alapú egyszeri bejelentkezés origami-vel való konfigurálásához
 
 2. A felső menüben kattintson a **rendszergazda**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Képernyőkép, amely az origami kezdőlapot jeleníti meg a "rendszergazda" beállítással.](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Az egyszeri bejelentkezés telepítése párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Képernyőkép: az "egyszeri bejelentkezés beállítása" lap "egyszeri bejelentkezés engedélyezése", és a Kiemelt szövegmezők.](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. Válassza **az egyszeri bejelentkezés engedélyezése**lehetőséget.
 
@@ -165,7 +165,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -201,19 +201,19 @@ Ebben a szakaszban egy Britta Simon in origami nevű felhasználót hoz létre.
 
 2. A felső menüben kattintson a **rendszergazda**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Képernyőkép, amely az origami-Fiók kezdőlapját mutatja a "rendszergazda" beállítással.](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. A **felhasználók és biztonság** párbeszédpanelen kattintson a **felhasználók**elemre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Képernyőkép, amely a "felhasználók" párbeszédpanelt jeleníti meg a "felhasználók" beállítással.](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. Kattintson az **új felhasználó hozzáadása**lehetőségre.
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Képernyőkép, amely megjeleníti az "új felhasználó hozzáadása" gombot.](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. Az új felhasználó hozzáadása párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Képernyőkép, amely az "új felhasználó hozzáadása" párbeszédpanelt mutatja be a "Felhasználónév", "utónév" és "vezetéknév" szövegmezők kiemelésével.](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. A **Felhasználónév** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
 
@@ -227,7 +227,7 @@ Ebben a szakaszban egy Britta Simon in origami nevű felhasználót hoz létre.
 
     f. Kattintson a **Mentés** gombra.
    
-    ![Egyetlen Sign-On konfigurálása](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Képernyőkép, amely megjeleníti a kiválasztott "Mentés" gombot.](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. **Felhasználói szerepkörök** és **ügyfél-hozzáférés** társítása a felhasználóhoz. 
    

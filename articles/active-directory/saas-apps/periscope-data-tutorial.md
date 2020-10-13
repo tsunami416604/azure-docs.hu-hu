@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553913"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Azure Active Directory integráció a periszkóp-szolgáltatásokkal
 
@@ -123,7 +123,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
 2. Nyissa meg a fogaskerék menüt a bal alsó sarokban, és nyissa meg a **Számlázási**  >  **Biztonság** menüt, és hajtsa végre az alábbi lépéseket. Csak a rendszergazdák férhetnek hozzá ezekhez a beállításokhoz.
 
-    ![Periszkóp adatok konfigurálása](./media/periscope-data-tutorial/configure01.png)
+    ![Képernyőkép, amely a "biztonság" párbeszédpanelt jeleníti meg a kiválasztott beállításokkal.](./media/periscope-data-tutorial/configure01.png)
 
     a. Másolja az **alkalmazás-összevonás metaadat-URL-címét** #5 **SAML-aláíró tanúsítvány** lépéséről, és nyissa meg egy böngészőben. Ekkor megnyílik egy XML-dokumentum.
 
@@ -143,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     i. Végül kattintson a **Mentés** gombra, és **erősítse meg** az egyszeri bejelentkezési beállítások módosítását a **kijelentkezés**beírásával.
 
-    ![Periszkóp adatok konfigurálása](./media/periscope-data-tutorial/configure02.png)
+    ![A "kijelentkezés" nevű, "kijelentkezés" és a "megerősítés" gomb kiválasztásakor megjelenő képernyőkép.](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -168,7 +168,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -206,7 +206,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a pe
 
 2. Kattintson a menü bal alsó részén található **Beállítások** ikonra, és navigáljon az **engedélyek**elemre.
 
-    ![Periszkóp adatok konfigurálása](./media/periscope-data-tutorial/configure03.png)
+    ![Képernyőkép, amely a "beállítások" menüt jeleníti meg az "engedélyek" lehetőség kiválasztásával.](./media/periscope-data-tutorial/configure03.png)
 
 3. Kattintson a **felhasználó hozzáadása** elemre, és hajtsa végre a következő lépéseket:
 

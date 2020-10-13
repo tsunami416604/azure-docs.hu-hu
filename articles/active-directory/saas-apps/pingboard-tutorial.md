@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e7b09c13cd27bd8197f6b65a1213d3154db6ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96f7eb358907bc27303735f4d8a111efeb6a3dc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553827"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Oktatóanyag: Azure Active Directory integráció a Pingboard
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés Pingboard való konfigurálásához hajtsa v
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Pingboard tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S L konfiguráció" elemet mutatja az "azonosító" és a "válasz U R L" szövegmezőben, és a "Mentés" gomb van kiválasztva.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet: `http://app.pingboard.com/sp`
 
@@ -174,7 +174,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

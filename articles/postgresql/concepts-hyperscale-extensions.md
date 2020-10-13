@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314878"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996445"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -41,6 +41,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > | [Lo](https://www.postgresql.org/docs/current/lo.html) | Nagyméretű objektumok karbantartása. |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Adattípust biztosít a hierarchikus fastruktúrához hasonló struktúrákhoz. |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | A vonalszakasz vagy a lebegőpontos intervallumok ábrázolására szolgáló adattípus. |
+> | [tdigest](https://github.com/tvondra/tdigest) | Adattípus a rangsorolt statisztikai adatok, például a quantiles és a nyírt állapotok online összegyűjtéséhez. |
 > | [legjobb n](https://github.com/citusdata/postgresql-topn/) | Adja meg a Top-n JSONB. |
 
 ### <a name="full-text-search-extensions"></a>Teljes szöveges keresési bővítmények

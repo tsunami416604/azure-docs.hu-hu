@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 75f68a4de2db0c4c9102a58da12d80cc273a6e80
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931138"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996892"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatikus regisztráció az SQL VM erőforrás-szolgáltatóval
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,6 +77,25 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 
 ---
 
+## <a name="enable-for-multiple-subscriptions"></a>Több előfizetés engedélyezése
+
+A PowerShell használatával több Azure-előfizetéshez is engedélyezheti az automatikus regisztráció funkciót. 
+
+Ehhez kövesse az alábbi lépéseket:
+
+1. Mentse a [parancsfájlt](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/RegisterSubscriptionsToSqlVmAutomaticRegistration.ps1) `.ps1` fájlba, például: `EnableBySubscription.ps1` . 
+1. Navigáljon arra a helyre, ahová a parancsfájlt rendszergazdai parancssor vagy PowerShell-ablak használatával mentette. 
+1. Kapcsolódjon az Azure-hoz ( `az login` ).
+1. Futtassa a szkriptet, és adja át a SubscriptionIds paraméterként, például:   
+   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+
+   Például: 
+
+   ```console
+   .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+
+A sikertelen regisztrációs hibák tárolása `RegistrationErrors.csv` ugyanabban a címtárban történik, ahol mentette és futtatta a `.ps1` parancsfájlt. 
 
 ## <a name="next-steps"></a>Következő lépések
 

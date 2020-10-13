@@ -1,23 +1,18 @@
 ---
 title: A HC sorozatú virtuális gépek méretének teljesítménye
 description: Ismerje meg a HC-sorozatú virtuálisgép-méretek teljesítmény-tesztelési eredményeit az Azure-ban.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
-ms.openlocfilehash: 0d63d9770dacf6a200e8b81e8d47d9f807a8a448
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 34d47e6c10692cc212b6e178e3f9658069b96020
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995104"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC sorozatú virtuális gépek méretei
 

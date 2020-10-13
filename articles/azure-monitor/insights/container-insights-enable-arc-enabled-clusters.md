@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure Monit
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Monitor az Azure arc-kompatibilis Kubernetes-fürtökön található tárolók esetében.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620290"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994465"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Az Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése
 
@@ -36,7 +36,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 - Egy Log Analytics-munkaterület.
 
-    A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
+    A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../samples/resource-manager-workspace.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
 
 - A tárolók Azure Monitor szolgáltatásainak engedélyezéséhez és eléréséhez legalább az Azure-előfizetéshez tartozó Azure- *közreműködő* szerepkör tagjának kell lennie, és a Log Analytics munkaterület [*log Analytics közreműködő*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörének tagjának kell lennie a tárolók Azure monitor.
 
@@ -154,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Példa:
+Például:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -239,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Példa:
+Például:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -268,7 +268,7 @@ Ha a protokollt **http**-ként adta meg, a HTTP-kérelmek SSL/TLS biztonságos k
 
 ### <a name="configure-using-powershell"></a>Konfigurálás a PowerShell használatával
 
-Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Példa:
+Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Például:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -276,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Konfigurálás a bash használatával
 
-Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Példa:
+Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Például:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>

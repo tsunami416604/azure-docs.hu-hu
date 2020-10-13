@@ -1,21 +1,21 @@
 ---
 title: Az Azure IoT Hub-modul ikrek ismertetése | Microsoft Docs
 description: Fejlesztői útmutató – a modulok ikrek használatával szinkronizálhatók az állapot-és konfigurációs adatokat IoT Hub és az eszközök között
-author: ash2017
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.author: asrastog
+ms.date: 09/29/2020
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996462"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Az ikrek megismerése és használata IoT Hub
 
@@ -179,7 +179,7 @@ A megoldás háttérrendszer a különálló modulon működik a következő, HT
 
   - Tulajdonságok
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | --- | --- |
     $content típusa | application/json |
     $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -241,7 +241,7 @@ A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-obje
 
 * **Kulcsok**: a JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 kb hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlő karaktereket (a C0 és a C1 szegmenst), valamint a, és az SP-t `.` `$` .
 
-* **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett.
+* **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. A tömbök is támogatottak.
 
     * Az egész számok minimális értéke-4503599627370496 és a 4503599627370495-es maximális érték lehet.
 
@@ -358,7 +358,7 @@ A 2. és a bejelentett tulajdonságok nem rendelkeznek Etagek, de a `$version` n
 
 A verziók akkor is hasznosak, ha egy megfigyelő ügynök (például a kívánt tulajdonságokat megfigyelő modul alkalmazás) összeegyezteti a versenyeket egy lekérési művelet és egy frissítési értesítés eredménye között. Az [eszköz újrakapcsolási folyamatának](iot-hub-devguide-device-twins.md#device-reconnection-flow) szakasza további információkat tartalmaz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikkben ismertetett fogalmak némelyikének kipróbálásához tekintse meg a következő IoT Hub oktatóanyagokat:
 

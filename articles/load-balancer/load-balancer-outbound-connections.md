@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fcd0315afcbf38af2b8175deda748522cb335ec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649796"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996858"
 ---
 # <a name="outbound-connections"></a>Kimenő kapcsolatok
 
@@ -136,7 +136,7 @@ A kimenő szabályok segítségével a következőket vezérelheti:
 - Mely virtuális gépeket kell lefordítani a nyilvános IP-címekre.
 - A kimenő [SNAT](#snat) portjainak megadnia.
 - A kimenő fordítását biztosító protokollok.
-- A kimenő kapcsolat üresjárati időkorlátja (4-120 perc) milyen időtartamra van használatban.
+- A kimenő kapcsolat üresjárati időkorlátja (4-100 perc) milyen időtartamra van használatban.
 - Meg kell-e küldeni a TCP alaphelyzetbe állítását üresjárati időkorláton
 - Egyetlen szabállyal rendelkező TCP és UDP átviteli protokollok
 

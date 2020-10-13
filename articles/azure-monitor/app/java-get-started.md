@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602465"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996167"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
 
 > [!IMPORTANT]
-> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)vonatkozó irányelveket.
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
 
 Ebben a rövid útmutatóban az Application Insights SDK-t használja a rendszer, a függőségek nyomon követéséhez és a teljesítményszámlálók összegyűjtéséhez, a teljesítménnyel kapcsolatos problémák és kivételek diagnosztizálásához, valamint kód írásához a felhasználók által az alkalmazással való használat nyomon követéséhez.
 
@@ -199,7 +199,7 @@ Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használ
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AK, virtuális gépek konfigurációja
 
-Az Azure Resource Providers szolgáltatásban futtatott alkalmazások monitorozásának legjobb és legegyszerűbb megközelítése az Application Insights automatikus rendszerállapotának használata a [Java 3,0-ügynökön](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)keresztül.
+Az Azure Resource Providers szolgáltatásban futtatott alkalmazások monitorozásának legjobb és legegyszerűbb megközelítése az Application Insights automatikus rendszerállapotának használata a [Java 3,0-ügynökön](./java-in-process-agent.md)keresztül.
 
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
@@ -313,4 +313,3 @@ Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy 
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

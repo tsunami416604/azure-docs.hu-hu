@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553987"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Azure Active Directory integráció a átszivárog
 
@@ -103,7 +103,7 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 
 5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása** lehetőséget, majd a **bejelentkezési URL-cím** mezőbe írja be a következőt **https://percolate.com/app/login** :
 
-   ![Átszivárog tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+   ![Képernyőkép: a "Bejelentkezés U R L" szövegmezőben a "további U R ls beállítása" szöveg jelenik meg.](common/metadata-upload-additional-signon.png)
 6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** ikont az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse ezt az URL-címet.
 
     ![Az alkalmazás-összevonás metaadat-URL-címének másolása](common/copy-metadataurl.png)
@@ -184,7 +184,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure AD eg
 
 3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok**lehetőséget:
 
-    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
+    ![Képernyőfelvétel: a bal oldali panelen kiválasztott "felhasználók és csoportok" látható.](common/users-groups-blade.png)
 
 4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 

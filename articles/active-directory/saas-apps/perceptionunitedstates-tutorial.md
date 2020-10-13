@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7581dd52cb9affa3295bfbc00c14535ee72de5be
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553951"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995459"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államok (nem UltiPro)
 
@@ -133,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
 2. A fő eszköztáron kattintson a **Fiókbeállítások**lehetőségre.
 
-    ![Észlelési Egyesült Államok (nem UltiPro) felhasználó](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![A fő eszköztáron kiválasztott "Fiókbeállítások" megjelenítő képernyőkép.](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. A **Fiókbeállítások** oldalon hajtsa végre a következő lépéseket:
 
@@ -185,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

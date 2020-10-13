@@ -3,12 +3,12 @@ title: Azure Monitor engedélyezése a tárolók számára | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320306"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994072"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
 
@@ -43,7 +43,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő k
    Létrehozhat egy munkaterületet, amikor engedélyezi az új AK-fürt figyelését, vagy lehetővé teszi, hogy a bevezetési élmény hozzon létre egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz. 
    
    Ha saját maga hozza létre a munkaterületet, a következő módon hozhatja létre: 
-   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Az Azure Portal](../learn/quick-create-workspace.md) 
    
@@ -112,7 +112,7 @@ Az ügynök új verziójának felszabadításakor a rendszer automatikusan friss
 
 A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblázatban leírt módszerek egyikét:
 
-| Központi telepítés állapota | Metódus | Leírás |
+| Központi telepítés állapota | Módszer | Leírás |
 |------------------|--------|-------------|
 | Új Kubernetes-fürt | [AK-fürt létrehozása az Azure CLI használatával](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Engedélyezheti az Azure CLI használatával létrehozott új AK-fürtök figyelését. |
 | | [AK-fürt létrehozása a Terraform használatával](container-insights-enable-new-cluster.md#enable-using-terraform)| A nyílt forráskódú eszköz Terraform használatával engedélyezheti a figyelést a létrehozott új AK-fürtökhöz. |
@@ -128,7 +128,6 @@ A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblá
 | | [OpenShift-fürt engedélyezése Azure Resource Manager sablon használatával](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Az előre konfigurált Azure Resource Manager sablonnal engedélyezheti a figyelést egy meglévő OpenShift-fürthöz. |
 | | [OpenShift-fürt engedélyezése Azure Monitor](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Engedélyezheti a figyelést egy vagy több olyan OpenShift-fürtön, amelyek már telepítve vannak a Azure Monitor több fürtből álló oldaláról. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy engedélyezte a figyelést, megkezdheti az Azure Kubernetes szolgáltatásban (ak), Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének elemzését. A Azure Monitor for containers használatának megismeréséhez tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md)című témakört.
-

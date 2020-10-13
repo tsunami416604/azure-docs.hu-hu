@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 95b41723d3cb398caad3a0cf388b7810deda78dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b689e4546d1f639f76ccbdf45348c43a678066
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935723"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996282"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>A Studio használata a Designerben betanított modellek üzembe helyezéséhez
 
@@ -26,6 +26,7 @@ A Studióban történő üzembe helyezés a következő lépésekből áll:
 
 1. Regisztrálja a betanított modellt.
 1. Töltse le a modellhez tartozó Entry script és Conda függőségi fájlt.
+1. Választható Adja meg a bejegyzési parancsfájlt.
 1. A modell üzembe helyezése számítási célra.
 
 A modelleket közvetlenül a tervezőben is üzembe helyezheti, és kihagyhatja a modell regisztrációját és a fájlok letöltési lépéseit. Ez hasznos lehet a gyors üzembe helyezéshez. További információ: [modell üzembe helyezése a tervezővel](tutorial-designer-automobile-price-deploy.md).
@@ -36,7 +37,14 @@ A tervezőben betanított modellek az SDK vagy a parancssori felület (CLI) hasz
 
 * [Azure Machine Learning munkaterület](how-to-manage-workspace.md)
 
-* Egy befejezett betanítási folyamat, amely egy [Train Model-modult](./algorithm-module-reference/train-model.md) tartalmaz
+* Egy befejezett betanítási folyamat, amely a következő modulok egyikét tartalmazza:
+    - [Betanítási modell modul](./algorithm-module-reference/train-model.md)
+    - [A Train rendellenesség észlelési modell modulja](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [A fürtözési modell moduljának betanítása](./algorithm-module-reference/train-clustering-model.md)
+    - [Pytorch-modell betanítása modul](./algorithm-module-reference/train-pytorch-model.md)
+    - [SVD ajánló modul](./algorithm-module-reference/train-svd-recommender.md)
+    - [Vowpal Wabbit modell moduljának betanítása](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [A Wide & Deep Model modul betanítása](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>A modell regisztrálása
 
@@ -136,9 +144,67 @@ score_result = service.run(json.dumps(sample_data))
 print(f'Inference result = {score_result}')
 ```
 
+### <a name="consume-computer-vision-related-real-time-endpoints"></a>Számítógépes jövőképtel kapcsolatos valós idejű végpontok felhasználása
+
+A számítógép-megjelenítéssel kapcsolatos valós idejű végpontok használatakor a lemezképeket bájtra kell konvertálnia, mivel a webszolgáltatás csak bemenetként fogadja a karakterláncot. A következő mintakód:
+
+```python
+import base64
+import json
+from copy import deepcopy
+from pathlib import Path
+from azureml.studio.core.io.image_directory import (IMG_EXTS, image_from_file, image_to_bytes)
+from azureml.studio.core.io.transformation_directory import ImageTransformationDirectory
+
+# image path
+image_path = Path('YOUR_IMAGE_FILE_PATH')
+
+# provide the same parameter setting as in the training pipeline. Just an example here.
+image_transform = [
+    # format: (op, args). {} means using default parameter values of torchvision.transforms.
+    # See https://pytorch.org/docs/stable/torchvision/transforms.html
+    ('Resize', 256),
+    ('CenterCrop', 224),
+    # ('Pad', 0),
+    # ('ColorJitter', {}),
+    # ('Grayscale', {}),
+    # ('RandomResizedCrop', 256),
+    # ('RandomCrop', 224),
+    # ('RandomHorizontalFlip', {}),
+    # ('RandomVerticalFlip', {}),
+    # ('RandomRotation', 0),
+    # ('RandomAffine', 0),
+    # ('RandomGrayscale', {}),
+    # ('RandomPerspective', {}),
+]
+transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
+
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+sample_file_path = '_samples.json'
+with open(sample_file_path, 'r') as f:
+    sample_data = json.load(f)
+
+# use first sample item as the default value
+default_data = sample_data[0]
+data_list = []
+for p in image_path.iterdir():
+    if p.suffix.lower() in IMG_EXTS:
+        data = deepcopy(default_data)
+        # convert image to bytes
+        data['image'] = base64.b64encode(image_to_bytes(transform(image_from_file(p)))).decode()
+        data_list.append(data)
+
+# use data.json as input of consuming the endpoint
+data_file_path = 'data.json'
+with open(data_file_path, 'w') as f:
+    json.dump(data_list, f)
+```
+
 ## <a name="configure-the-entry-script"></a>A bejegyzés parancsfájljának konfigurálása
 
-A tervező néhány modulja, például a [score SVD ajánló](./algorithm-module-reference/score-svd-recommender.md), a [széles körű és mély ajánló](./algorithm-module-reference/score-wide-and-deep-recommender.md), valamint a [score Vowpal Wabbit-modell](./algorithm-module-reference/score-vowpal-wabbit-model.md) paraméterekkel rendelkezik a különböző pontozási módokhoz. Ebből a szakaszból megtudhatja, hogyan frissítheti ezeket a paramétereket a bejegyzés parancsfájl-fájljába.
+A tervező néhány modulja, például a [score SVD ajánló](./algorithm-module-reference/score-svd-recommender.md), a [széles körű és mély ajánló](./algorithm-module-reference/score-wide-and-deep-recommender.md), valamint a [score Vowpal Wabbit-modell](./algorithm-module-reference/score-vowpal-wabbit-model.md) paraméterekkel rendelkezik a különböző pontozási módokhoz. 
+
+Ebből a szakaszból megtudhatja, hogyan frissítheti ezeket a paramétereket a bejegyzés parancsfájl-fájljába.
 
 Az alábbi példa egy gyakorlott, **széles körben & részletes ajánló** modell alapértelmezett viselkedését frissíti. Alapértelmezés szerint a `score.py` fájl közli a webszolgáltatással, hogy megjósolja a felhasználók és az elemek közötti minősítést. 
 

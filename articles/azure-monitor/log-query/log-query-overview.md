@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033166"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995212"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>A Azure Monitor lévő naplók áttekintése
 A naplók lekérdezései segítségével teljes mértékben kihasználhatja [Azure monitor naplókban](../platform/data-platform-logs.md)összegyűjtött adatok értékét. Egy hatékony lekérdezési nyelv lehetővé teszi több táblázatból származó adatok összekapcsolását, nagy mennyiségű adat összesítését, valamint a minimális kóddal rendelkező összetett műveletek végrehajtását. Gyakorlatilag bármilyen kérdés megválaszolható és elemezhető mindaddig, amíg a támogatási adatok gyűjtése megtörtént, és tisztában van a megfelelő lekérdezés létrehozásával is.
@@ -38,7 +38,7 @@ A Azure Monitor naplókból származó adatokkal a nyelv gyors áttekintéséhez
 A Azure Monitor által használt KQL-verzióban található kisebb eltérések esetében tekintse meg a [Azure monitor naplózási lekérdezés nyelvi különbségeit](data-explorer-difference.md) .
 
 ## <a name="what-data-is-available-to-log-queries"></a>Milyen adatforrások érhetők el a lekérdezések naplózásához?
-A Azure Monitor naplókban összegyűjtött összes adatok beolvashatók és elemezhetők a naplók lekérdezésében. A különböző adatforrások különböző táblákba írják az állapotukat, de több táblát is megadhat egyetlen lekérdezésben, hogy több forrásból elemezze az adatforrásokat. Amikor létrehoz egy lekérdezést, először határozza meg, hogy mely táblák rendelkeznek a keresett adattal. Az adatstrukturálás módjáról az [Azure monitor naplók struktúrája](logs-structure.md) című témakörben olvashat.
+A Azure Monitor naplókban összegyűjtött összes adatok beolvashatók és elemezhetők a naplók lekérdezésében. A különböző adatforrások különböző táblákba írják az állapotukat, de több táblát is megadhat egyetlen lekérdezésben, hogy több forrásból elemezze az adatforrásokat. Amikor létrehoz egy lekérdezést, először határozza meg, hogy mely táblák rendelkeznek a keresett adattal. Az adatstrukturálás módjáról az [Azure monitor naplók struktúrája](../platform/data-platform-logs.md) című témakörben olvashat.
 
 ## <a name="what-does-a-log-query-look-like"></a>Mire hasonlít a naplók lekérdezése?
 A lekérdezés lehet egy egyszerű tábla neve, amellyel az adott táblából származó összes rekord beolvasható:

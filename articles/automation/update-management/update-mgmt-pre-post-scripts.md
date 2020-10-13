@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 32a8214a5bd6844c9177c7af159a453bc3673efc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3a8909bc0d5ac135023b55178cec606344353b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996764"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
@@ -137,7 +137,7 @@ foreach($summary in $finalStatus)
 
 ## <a name="interact-with-machines"></a>Számítógépekkel való kommunikáció
 
-A parancsfájlok előtti és utáni feladatok az Automation-fiókban runbookok futnak, és nem közvetlenül a telepítésben lévő gépekre. A feladatok előtti és utáni feladatok is az Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A következő részben bemutatjuk, hogyan használhatja közvetlenül a gépeket, akár Azure-beli, akár nem Azure-beli virtuális gépekről van szó.
+A parancsfájlok és a parancsfájlok utáni Futtatás runbookok az Automation-fiókban, és nem közvetlenül a telepítésben lévő gépeken. A feladatok előtti és utáni feladatok is az Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A következő részben bemutatjuk, hogyan használhatja közvetlenül a gépeket, akár Azure-beli, akár nem Azure-beli virtuális gépekről van szó.
 
 ### <a name="interact-with-azure-machines"></a>Együttműködés az Azure-gépekkel
 

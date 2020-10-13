@@ -1,24 +1,18 @@
 ---
 title: A HPC-és GPU-alapú virtuális gépek ismert problémáinak elhárítása – Azure Virtual Machines | Microsoft Docs
 description: Ismerje meg az Azure-beli HPC-és GPU-alapú virtuálisgép-méretek ismert problémáinak elhárítását.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 42a27092a87488e39d1195dba5fb64173cf52af7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52050066aceef50e64c5887efb7b99da0b03f140
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004204"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996256"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>A H- és N-sorozatú virtuális gépek ismert problémái
 

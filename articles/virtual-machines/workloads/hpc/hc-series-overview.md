@@ -1,24 +1,18 @@
 ---
 title: A HC sorozatú virtuális gépek áttekintése – Azure Virtual Machines | Microsoft Docs
 description: Ismerje meg az Azure-beli HC sorozatú virtuális gépek előzetes verziójának támogatását.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97e0ae9ea4914cda5d92f5180199a740c02ecdf4
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994364"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>A HC sorozatú virtuális gépek áttekintése
 
@@ -61,7 +55,7 @@ Az alábbi ábrán az Azure Hypervisort és a HC-sorozatú virtuális gép szám
 | Operációs rendszer támogatása a CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
 | Orchestrator-támogatás        | CycleCloud, köteg  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Intel Xeon SP architektúráról](https://bit.ly/2RCYkiE).
 - Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

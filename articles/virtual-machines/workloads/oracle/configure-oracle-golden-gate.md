@@ -1,25 +1,18 @@
 ---
 title: Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen | Microsoft Docs
 description: Gyorsan beszerezhet egy Oracle Golden-kaput az Azure-környezetben.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: a15a82fff2a40e5c6b64ef87733b8c72916f5a44
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965879"
+ms.locfileid: "91996670"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: d7f0ca619c990d2a42c31df82ee9f90bd7ea230b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f2603ce055d18e1ad7e202e0c662e042a1d1d48
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801834"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Oktatóanyag: Azure Active Directory a Palo Alto Networks – blende integrációval
 
@@ -77,7 +77,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Palo Alto Networks – Aperture tartomány és URL-címek egyszeri bejelentkezési adatai IDENTITÁSSZOLGÁLTATÓ](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S L konfiguráció" kifejezést jeleníti meg az "azonosító" és "válasz U R L" szövegmezők kiemelésével, valamint a "Mentés" művelet kiválasztásával.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
@@ -110,7 +110,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -174,6 +174,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Palo Alto Networks-blende csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a Palo Alto Networks-Aperture-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Palo Alto Networks – blende beállítása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

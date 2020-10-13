@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f3aad08266337756038dfa6ac6ff0c9afe093c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439014"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996810"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -54,7 +54,7 @@ Ha az ismert alkalmazások listáját definiálja, és riasztásokat állít el�
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Támogatott gépek:|![Igen ](./media/icons/yes-icon.png) , Windows és Linux rendszerű Azure-és nem Azure-beli gépek<br>![Igen ](./media/icons/yes-icon.png) [Azure arc](https://docs.microsoft.com/azure/azure-arc/) -gépek|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági olvasó** és **olvasó** szerepkörök a csoportok és az ismert biztonságos alkalmazások listáját egyaránt megtekinthetik<br>A **közreműködő** és a **biztonsági rendszergazdai** szerepkörök egyaránt módosíthatják a csoportokat és az ismert alkalmazások listáját|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -149,6 +149,23 @@ A számítógépek csoportjára vonatkozó szabályok szerkesztése:
 
 1. A módosítások alkalmazásához válassza a **Mentés**lehetőséget.
 
+
+## <a name="review-and-edit-a-groups-settings"></a>Csoport beállításainak áttekintése és szerkesztése
+
+1. A csoport részleteinek és beállításainak megtekintéséhez válassza a **csoport beállításai** lehetőséget.
+
+    Ez a panel a csoport nevét (amely módosítható), az operációs rendszer típusát, a helyet és az egyéb releváns adatokat jeleníti meg.
+
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+
+    > [!IMPORTANT]
+    > A fájltípusok védelmi mód beállításaiban a **kikényszerítés** beállítás minden esetben szürkén jelenik meg. Jelenleg nem érhető el kényszerítési lehetőség. 
+    >
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról":::
+
+1. Szükség esetén módosíthatja a csoport nevét vagy fájltípusának védelmi módjait.
+
+1. Válassza az **alkalmaz** és a **Mentés**lehetőséget.
 
 
 

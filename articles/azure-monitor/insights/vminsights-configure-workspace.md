@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecfeebb9ce86d717531310c2ad1a33a3d27f4c0a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828557"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995734"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs Log Analytics munkaterület konfigurálása
 Azure Monitor for VMs adatokat gyűjt a Azure Monitor egy vagy több Log Analytics munkaterületéről. Az ügynökök bevezetését megelőzően létre kell hoznia és konfigurálnia kell egy munkaterületet. Ez a cikk a munkaterület követelményeit és a Azure Monitor for VMs konfigurálását ismerteti.
@@ -41,7 +41,7 @@ Az alábbi módszerek bármelyikével létrehozhat egy új Log Analytics munkate
 * [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -68,7 +68,7 @@ A Azure Monitor for VMs Log Analytics munkaterületeket támogat a következő r
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
 
-## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 A Azure Monitor for VMs szolgáltatásainak engedélyezéséhez és eléréséhez a munkaterületen a [log Analytics közreműködő szerepkörrel](../platform/manage-access.md#manage-access-using-azure-permissions) kell rendelkeznie. A teljesítmény-, állapot-és leképezési adat megtekintéséhez az Azure-beli virtuális gép [figyelési olvasójának szerepkörrel](../platform/roles-permissions-security.md#built-in-monitoring-roles) kell rendelkeznie. A Log Analytics munkaterület elérésének szabályozásáról a [munkaterületek kezelése](../platform/manage-access.md)című témakörben olvashat bővebben.
 
 ## <a name="add-vminsights-solution-to-workspace"></a>VMInsights-megoldás hozzáadása a munkaterülethez

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91265272"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996528"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -109,10 +109,12 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Biztonsági jelentések | Áttekintés |  Nem | Nem |Igen |
 | Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
 | Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
-| Biztonsági jelentések | Kockázatészlelések   | Nem | Korlátozott információ| Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatészlelések   | No | Korlátozott információ| Teljes hozzáférés|
 | Értesítések | Veszélyeztetett felhasználók észlelt riasztásai  | Nem | Nem |Igen |
 | Értesítések | Heti kivonat| Nem | Nem | Igen | 
 | | MFA-regisztrációs szabályzat | Nem | Nem | Igen |
+
+A részletes jelentésekkel kapcsolatos további információkért tekintse meg a következő témakört [: a kockázatkezelés kivizsgálása](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 
 ## <a name="next-steps"></a>Következő lépések
 
