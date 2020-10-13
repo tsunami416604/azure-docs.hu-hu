@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743590"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>A Azure Portal használatával kezelheti a felhasználókat a Azure Stack Edge Pro-ban
@@ -80,6 +80,6 @@ A törlés végrehajtása után annak megfelelően frissül a felhasználók lis
 
 ![A felhasználók frissített listája](media/azure-stack-edge-j-series-manage-users/delete-user-4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-j-series-manage-bandwidth-schedules.md) talál.

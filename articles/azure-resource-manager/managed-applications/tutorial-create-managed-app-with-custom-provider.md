@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494502"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949830"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
 
@@ -353,6 +353,6 @@ Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](publish-marketplace-app.md) című témakört.
+Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) című témakört.
 
 További információ az [Egyéni Azure-szolgáltatókról](../custom-providers/overview.md).

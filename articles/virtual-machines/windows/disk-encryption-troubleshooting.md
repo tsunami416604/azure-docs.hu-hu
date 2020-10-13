@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e48c6cfd1160406d55ffdc3c9bafe733a6e5e4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45c64261b60d88557e63cb8f9af922fd7aa71ad4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977901"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
 
@@ -62,7 +62,7 @@ A probléma megkerüléséhez másolja a következő négy fájlt egy Windows Se
 
 1. A DiskPart használatával jelölje ki a köteteket, majd folytassa a következővel:.  
 
-Példa:
+Például:
 
 ```
 DISKPART> list vol
@@ -90,5 +90,5 @@ A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryp
 
 Ebben a dokumentumban többet is megtudhat a Azure Disk Encryption és a problémák elhárításával kapcsolatos gyakori problémákról. A szolgáltatással és képességeivel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/asset-inventory.md)
 - [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

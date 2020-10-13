@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1b3e12bcf744ad0d762f686a908a01239fc4323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87428133"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949241"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -25,7 +25,7 @@ A **honosítási** elem lehetővé teszi, hogy a felhasználói útvonalakhoz ta
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Regisztrációs vagy bejelentkezési oldal elemei
 
-A következő azonosítók szerepelnek egy AZONOSÍTÓval rendelkező tartalom-definícióhoz `api.signuporsignin` .
+A következő azonosítókat használják egy `api.signuporsignin` , a és az [önérvényesített technikai profilhoz](self-asserted-technical-profile.md)tartozó tartalom-definícióhoz.
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
@@ -43,7 +43,7 @@ A következő azonosítók szerepelnek egy AZONOSÍTÓval rendelkező tartalom-d
 | **forgotpassword_link** | Elfelejtette a jelszavát? |
 | **createaccount_intro** | Nincs fiókja? |
 | **createaccount_link** | Regisztráljon most |
-| **divider_title** | VAGY |
+| **divider_title** | OR |
 | **cancel_message** | A felhasználó elfelejtette a jelszavát |
 | **button_signin** | Bejelentkezés |
 | **social_intro** | Jelentkezzen be a közösségi fiókjával |
@@ -93,7 +93,7 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Regisztráció és saját maga által érvényesített lapok felhasználói felületi elemei
 
-A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , illetve a-től kezdődően megjelenő tartalom-definíciót `api.selfasserted` , például `api.selfasserted.profileupdate` és `api.localaccountpasswordreset` .
+A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , vagy bármely olyan tartalom-definíciót tartalmaz, amely az-val kezdődik, például a és a és az `api.selfasserted` `api.selfasserted.profileupdate` `api.localaccountpasswordreset` [önérvényesített technikai profil](self-asserted-technical-profile.md).
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
@@ -104,11 +104,11 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **ver_but_send** | Ellenőrző kód küldése |
 | **alert_yes** | Igen |
 | **error_fieldIncorrect** | Egy vagy több mező kitöltése helytelen. Ellenőrizze a bejegyzéseket, és próbálkozzon újra. |
-| **év** | Year |
+| **év** | Év |
 | **verifying_blurb** | Várjon, amíg feldolgozzuk az adatokat. |
 | **button_cancel** | Mégse |
 | **ver_fail_no_retry** | Túl sok helytelen kísérlet történt. Próbálkozzon újra később. |
-| **hónap** | Month (hónap) |
+| **hónap** | Hónap |
 | **ver_success_msg** | Az E-mail cím ellenőrizve. Most már folytathatja. |
 | **hónapok** | Január, február, március, április, május, június, július, augusztus, szeptember, október, november, december |
 | **ver_fail_server** | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra. |
@@ -155,7 +155,7 @@ Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatj
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>A telefonos faktor hitelesítés lapja felhasználói felület elemei
 
-Az alábbi AZONOSÍTÓk a tartalom-definíció azonosítóját használják `api.phonefactor` .
+A következő azonosítók a tartalom-definíció azonosítóját `api.phonefactor` és a [telefonos faktor technikai profilt](phone-factor-technical-profile.md)használják.
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
@@ -197,11 +197,11 @@ Az alábbi AZONOSÍTÓk a tartalom-definíció azonosítóját használják `api
 
 Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatja be az MFA-regisztráció lapon:
 
-![Regisztrációs oldal e-mail ellenőrzése UX-elemek](./media/localization-string-ids/localization-mfa1.png)
+![Telefonos faktor-hitelesítés – UX-elemek](./media/localization-string-ids/localization-mfa1.png)
 
 Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatja be az MFA-érvényesítési lapon:
 
-![Regisztrációs oldal e-mail ellenőrzése UX-elemek](./media/localization-string-ids/localization-mfa2.png)
+![A telefonos faktor hitelesítése UX-elemek](./media/localization-string-ids/localization-mfa2.png)
 
 ## <a name="verification-display-control-user-interface-elements"></a>Ellenőrzési képernyő vezérlő felhasználói felület elemei
 

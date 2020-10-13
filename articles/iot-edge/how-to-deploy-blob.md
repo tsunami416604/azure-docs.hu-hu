@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5b7b45cc52d900e5ecde59e6a5ae203533286b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80804622"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978866"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage az IoT Edge-ben modul üzembe helyezése az eszközön
 
@@ -21,7 +21,10 @@ A modulok több módon is üzembe helyezhetők egy IoT Edge eszközön, és mind
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
-- [IoT Edge-eszköz](how-to-register-device.md) , amelyen telepítve van a IoT Edge futtatókörnyezet.
+- Egy IoT Edge eszköz.
+
+  Ha nincs beállítva IoT Edge eszköz, létrehozhat egyet egy Azure-beli virtuális gépen. A [virtuális Linux-eszköz létrehozásához](quickstart-linux.md) vagy [virtuális Windows-eszköz létrehozásához](quickstart.md)kövesse az egyik rövid útmutató lépéseit.
+
 - A [Visual Studio Code](https://code.visualstudio.com/) és az [Azure IoT eszközei](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , ha a Visual Studio Code-ból telepítenek.
 
 ## <a name="deploy-from-the-azure-portal"></a>Üzembe helyezés a Azure Portal
@@ -203,10 +206,10 @@ A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segíten
      - Linux-tárolók esetén a formátum a következő ** \<your storage path or volume> :/blobroot**. Például:
          - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:/blobroot`
          - [kötési csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata: `/srv/containerdata:/blobroot` . Ügyeljen arra, hogy a címtár- [hozzáférés biztosítása a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) lépéseit kövesse.
-     - Windows-tárolók esetén a formátum a következő ** \<your storage path or volume> : C:/BlobRoot**. Példa:
-         - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:C:/BlobRoot` .
-         - [kötési csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata: `C:/ContainerData:C:/BlobRoot` .
-         - A helyi meghajtó használata helyett leképezheti az SMB hálózati helyét, és további információt az SMB- [megosztás használata helyi tárolóként](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) című témakörben talál.
+     - Windows-tárolók esetén a formátum a következő ** \<your storage path or volume> : C:/BlobRoot**. Például:
+         - A [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:C:/BlobRoot` .
+         - [Kötési csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata: `C:/ContainerData:C:/BlobRoot` .
+         - A helyi meghajtó használata helyett leképezheti az SMB hálózati helyét. További információ: az [SMB-megosztás használata helyi tárolóként](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
      > Ne módosítsa a tárolási csatlakoztatási érték második felét, amely a IoT Edge modul Blob Storage egy adott helyére mutat. A tárolási csatlakoztatásnak mindig a következővel kell végződnie **:/blobroot** for Linux containers and **: C:/blobroot** for Windows containers.
@@ -271,7 +274,7 @@ Ez a folyamat a [IoT Edge eszköz konfigurálása egy proxykiszolgálón kereszt
 
 Emellett a blob Storage-modulhoz a HTTPS_PROXY beállítás is szükséges a jegyzékfájl telepítési fájljában. Közvetlenül szerkesztheti a telepítési jegyzékfájlt, vagy használhatja a Azure Portal.
 
-1. Navigáljon az IOT hubhoz a Azure Portal, és válassza a bal oldali ablaktábla menüjének **IOT Edge** elemét.
+1. Navigáljon az IOT hubhoz a Azure Portal, és válassza a **IoT Edge** lehetőséget a bal oldali ablaktábla menüjében.
 
 1. Válassza ki azt az eszközt, amelynél konfigurálni szeretné a modult.
 
@@ -293,7 +296,7 @@ Emellett a blob Storage-modulhoz a HTTPS_PROXY beállítás is szükséges a jeg
 
       ![HTTPS_PROXY környezeti változó beállítása](./media/how-to-deploy-blob/verify-proxy-config.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Blob Storage on IoT Edge](how-to-store-data-blob.md).
 

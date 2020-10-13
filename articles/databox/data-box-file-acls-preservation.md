@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450721"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950312"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Fájl ACL-ek, attribútumok és időbélyegek megőrzése Azure Data Box
 
-A Azure Data Box lehetővé teszi a hozzáférés-vezérlési listák (ACL-ek), időbélyegek és fájlattribútumok megőrzését az Azure-ba való adatküldés során. Ez a cikk azokat a metaadatokat ismerteti, amelyeket a rendszer az adatoknak a Server Message Block (SMB) használatával történő Data Box történő másolásakor továbbíthat a Azure Filesba való feltöltéshez. A metaadatok Windows-és Linux-alapú adatmásolási eszközökkel történő másolásához adott lépések vannak megadva.
+A Azure Data Box lehetővé teszi a hozzáférés-vezérlési listák (ACL-ek), időbélyegek és fájlattribútumok megőrzését az Azure-ba való adatküldés során. Ez a cikk azokat a metaadatokat ismerteti, amelyeket a rendszer az adatoknak a Server Message Block (SMB) használatával történő Data Box történő másolásakor továbbíthat a Azure Filesba való feltöltéshez. 
+
+A metaadatok Windows-és Linux-alapú adatmásolási eszközökkel történő másolásához adott lépések vannak megadva. A metaadatok nem őrződnek meg az adatok blob Storage-ba való továbbításakor.
 
 Ebben a cikkben a továbbított ACL-ek, időbélyegek és fájlattribútumok közösen *metaadatokként*vannak hivatkozva.
 
@@ -112,6 +114,6 @@ cp -aR /etc /opt/
 rsync -avP /etc /opt (-a copies a directory)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adatok másolása az Azure Data Boxra SMB-n keresztül](./data-box-deploy-copy-data.md)

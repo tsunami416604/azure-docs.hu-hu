@@ -8,10 +8,10 @@ ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
 ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742604"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai
@@ -134,7 +134,7 @@ Egy vagy több Hibrid kapcsolatok hozzáadása a HCM-hez:
 1. Válassza ki azt a Hibrid kapcsolatok, amelyre a HCM-t továbbítani kívánja.
 ![Képernyőkép a Hibrid kapcsolatokról][9]
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ekkor megjelenik a hozzáadott Hibrid kapcsolatok. A részletek megtekintéséhez a konfigurált hibrid kapcsolat lehetőséget is választhatja.
 

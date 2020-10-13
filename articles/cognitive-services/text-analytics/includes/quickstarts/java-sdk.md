@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 2788b22d2b262cfef4b214d75813a203067462cb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 7adfafbb0b0b11057a21dfbbe6dffcf6d2564606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779459"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977812"
 ---
 <a name="HOLTop"></a>
 
@@ -150,10 +150,11 @@ A Text Analytics ügyfél egy olyan `TextAnalyticsClient` objektum, amely az Azu
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis) 
+* [Vélemény bányászata](#opinion-mining)
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitás összekapcsolása](#entity-linking)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823416"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978071"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -81,7 +81,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     - Vagy használja a PyPi-tárházat, módosítsa `seaborn` és `py35new` ennek megfelelő:
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     Ha egy adott verziójú könyvtárat szeretne telepíteni, használja az alábbi parancsot:
@@ -98,7 +98,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
     - Vagy használja a PyPi-tárházat, módosítsa `numpy==1.16.1` és `py35new` ennek megfelelő:
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     Ha nem ismeri a virtuális környezet nevét, az SSH-t használhatja a fürt fő csomópontjára, és az `/usr/bin/anaconda/bin/conda info -e` összes virtuális környezet megjelenítéséhez futtathatja azt.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: d3378b08ace73b2bc9a10286abf5a48f3063ba7f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743505"
 ---
 # <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Az Edge Storage-fiókok kezelése az Azure Stack Edge Pro-ban Azure Portal használatával
@@ -95,6 +95,6 @@ A Storage-fiók elérési kulcsának szinkronizálásához hajtsa végre a köve
 
     ![Válassza a 2. Storage-kulcs lehetőséget](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](azure-stack-edge-j-series-manage-users.md).

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825259"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978594"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Költségek megtakarítása az Azure dedikált gazdagép foglalásával
 
-Ha az Azure dedikált gazdagépek fenntartott példányát véglegesíti, akkor pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörhöz és attribútumokhoz tartozó dedikált gazdagépek számára. A kedvezmények beszerzéséhez nem szükséges foglalást hozzárendelni egy dedikált gazdagéphez. A fenntartott példányok vásárlása csak a használat számítási részét fedi le, és a licencelési költségeket is magában foglalja. Tekintse [meg a virtuális gépekhez készült Azure dedikált gazdagépek áttekintését](./windows/dedicated-hosts.md).
+Ha az Azure dedikált gazdagépek fenntartott példányát véglegesíti, akkor pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörhöz és attribútumokhoz tartozó dedikált gazdagépek számára. A kedvezmények beszerzéséhez nem szükséges foglalást hozzárendelni egy dedikált gazdagéphez. A fenntartott példányok vásárlása csak a használat számítási részét fedi le, és a licencelési költségeket is magában foglalja. Tekintse [meg a virtuális gépekhez készült Azure dedikált gazdagépek áttekintését](./dedicated-hosts.md).
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>A megfelelő dedikált gazdagép SKU meghatározása a vásárlás előtt
 
@@ -129,7 +129,7 @@ Az Azure Reservationszel kapcsolatos további információkért tekintse meg a k
 
 - [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure-beli dedikált gazdagépek használata](./windows/dedicated-hosts.md)
+- [Azure-beli dedikált gazdagépek használata](./dedicated-hosts.md)
 
 - [Dedikált gazdagépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

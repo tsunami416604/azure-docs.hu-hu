@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90904090"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976368"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
+
+## <a name="october-2020"></a>2020. október
+
+### <a name="computer-vision-api-v31-ga"></a>Computer Vision API v 3.1 GA
+
+Az általánosan elérhető Computer Vision API frissítve lett a v 3.1-re.
 
 ## <a name="september-2020"></a>2020. szeptember
 

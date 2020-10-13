@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3540add3020c45e5664f96f5c47dec10a551ed4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857044"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978849"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -109,7 +109,7 @@ A futtatókörnyezet konfigurálása során meg kell adnia egy eszközkapcsolati
 
 ### <a name="deploy-the-iot-edge-device"></a>A IoT Edge eszköz üzembe helyezése
 
-Ez a szakasz egy Azure Resource Manager sablont használ egy új virtuális gép létrehozásához és a IoT Edge futtatókörnyezet telepítéséhez. Ha ehelyett a saját linuxos eszközét szeretné használni, kövesse a telepítési lépéseket a [Linuxon futó Azure IoT Edge Runtime telepítése](how-to-install-iot-edge-linux.md)című témakörben, majd térjen vissza ehhez a rövid útmutatóhoz.
+Ez a szakasz egy Azure Resource Manager sablont használ egy új virtuális gép létrehozásához és a IoT Edge futtatókörnyezet telepítéséhez. Ha ehelyett a saját linuxos eszközét szeretné használni, kövesse a telepítési lépéseket a [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakörben, majd térjen vissza ehhez a rövid útmutatóhoz.
 
 A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elkészített [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) sablon alapján.
 
@@ -220,7 +220,7 @@ Tekintse meg a hőmérséklet-érzékelő modulból küldött üzeneteket:
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
@@ -241,7 +241,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

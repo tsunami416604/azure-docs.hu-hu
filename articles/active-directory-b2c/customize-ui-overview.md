@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259543"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949292"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -178,7 +178,6 @@ Tartsa szem előtt ezeket a dolgokat, amikor a vállalati arculatot konfigurálj
 
 * A Azure AD B2C vállalati arculata jelenleg a **háttérképre**, a **szalagcím emblémára**és a **háttérszínek** testreszabására korlátozódik. A vállalati arculati panel egyéb tulajdonságai, például a **speciális beállításokban**szereplő egyéb tulajdonságok *nem támogatottak*.
 * A felhasználói folyamatok oldalain a háttér színe látható a háttérkép betöltése előtt. Javasoljuk, hogy olyan háttérszínt válasszon, amely szorosan illeszkedik a háttérkép színeihez a zökkenőmentes betöltési élmény érdekében.
-* A szalagcím embléma a felhasználóknak küldött ellenőrző e-mailekben jelenik meg, amikor kezdeményeznek egy regisztrációs felhasználói folyamatot.
 
 ### <a name="enable-branding-in-user-flow-pages"></a>Védjegyezés engedélyezése a felhasználói folyamatok oldalain
 
@@ -234,7 +233,7 @@ A [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureb
 
 A sablonok HTML-és CSS-fájljai a [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) könyvtárban találhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha **felhasználói folyamatokat**használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével:
 

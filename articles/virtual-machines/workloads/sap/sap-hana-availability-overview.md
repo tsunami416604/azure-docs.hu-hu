@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 691b7c2890d29d390abbe8151fe66dbd99c5bc60
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653545"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978186"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban
 
@@ -52,7 +52,7 @@ Azt is érdemes elsajátítani, hogy ismerkedjen meg ezekkel a cikkekkel SAP HAN
 - [SAP HANA szolgáltatás automatikus újraindítása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA rendszerreplikáció konfigurálása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-A virtuális gépek Azure-beli üzembe helyezésének megismerése előtt a rendelkezésre állási architektúra az Azure-ban való meghatározása előtt javasoljuk, hogy olvassa el [Az Azure-beli Windows rendszerű virtuális gépek rendelkezésre állásának kezelését](../../windows/manage-availability.md).
+A virtuális gépek Azure-beli üzembe helyezésének megismerése előtt a rendelkezésre állási architektúra az Azure-ban való meghatározása előtt javasoljuk, hogy olvassa el [Az Azure-beli Windows rendszerű virtuális gépek rendelkezésre állásának kezelését](../../manage-availability.md).
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure-összetevőkre vonatkozó szolgáltatási szintű szerződések
 
@@ -66,7 +66,7 @@ Az Azure különböző rendelkezésre állási SLA-kat tartalmaz különböző �
 
 Mérje fel a rendelkezésre állási követelményt az Azure-összetevők által biztosított SLA-kat illetően. Ezután válassza ki a forgatókönyveit SAP HANA a szükséges szintű rendelkezésre állás eléréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [SAP HANA rendelkezésre állással egy Azure-régión belül](./sap-hana-availability-one-region.md).
 - Ismerje meg az [Azure-régiók SAP HANA rendelkezésre állását](./sap-hana-availability-across-regions.md). 
@@ -85,4 +85,3 @@ Mérje fel a rendelkezésre állási követelményt az Azure-összetevők által
 
 
 
-  

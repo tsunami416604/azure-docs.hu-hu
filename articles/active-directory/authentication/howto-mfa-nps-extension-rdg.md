@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7399c378053859f96746840942c8c549b7b89a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717846"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964706"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
@@ -390,7 +390,7 @@ Az alábbi képen a Microsoft Message Analyzer a **CONTOSO\AliceC**felhasználó
 
 ![Szűrt forgalmat bemutató Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Multi-Factor Authentication beszerzése](concept-mfa-licensing.md)
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612787"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978305"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépek működés közbeni üzembe helyezési stratégiájának konfigurálása
 
@@ -29,7 +29,7 @@ Az Azure DevOps egy beépített Azure-szolgáltatás, amely minden Azure-erőfor
 
 Az Azure-folyamatok teljes körű CI/CD Automation-eszközöket biztosítanak a virtuális gépekhez való üzembe helyezéshez. Az Azure-beli virtuális gépek folyamatos kézbesítési folyamatát a Azure Portal is konfigurálhatja.
 
-Ez a cikk bemutatja, hogyan állíthat be egy CI/CD-folyamatot a Azure Portal MultiMachine történő üzembe helyezéséhez. A Azure Portal más stratégiákat is támogat, mint például a [Kanári](https://aka.ms/AA7jdrz) és a [kék-zöld](https://aka.ms/AA83fwu).
+Ez a cikk bemutatja, hogyan állíthat be egy CI/CD-folyamatot a Azure Portal MultiMachine történő üzembe helyezéséhez. A Azure Portal más stratégiákat is támogat, mint például a [Kanári](./tutorial-azure-devops-canary-strategy.md) és a [kék-zöld](./tutorial-azure-devops-blue-green-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>CI/CD konfigurálása virtuális gépeken
 
@@ -78,8 +78,8 @@ A folyamatos kézbesítés beállítás használatával a Azure Portalon belül 
 
 ## <a name="other-deployment-strategies"></a>Egyéb központi telepítési stratégiák
 
-- [A Kanári-telepítési stratégia konfigurálása](https://aka.ms/AA7jdrz)
-- [A kék-zöld telepítési stratégia konfigurálása](https://aka.ms/AA83fwu)
+- [A Kanári-telepítési stratégia konfigurálása](./tutorial-azure-devops-canary-strategy.md)
+- [A kék-zöld telepítési stratégia konfigurálása](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653596"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978237"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure Availability Zones](../../../availability-zones/az-overview.md) az Azure által biztosított magas rendelkezésre állási funkciók egyike. A Availability Zones használata javítja az Azure-beli SAP-munkaterhelések teljes rendelkezésre állását. Ez a funkció már elérhető néhány [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/). A jövőben több régióban is elérhető lesz.
@@ -30,7 +30,7 @@ Ez a kép az SAP magas rendelkezésre állásának alapvető architektúráját 
 
 ![Szabványos magas rendelkezésre állási konfiguráció](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-Az SAP-alkalmazás rétege egy Azure-beli [rendelkezésre állási csoporton](../../windows/manage-availability.md)belül van üzembe helyezve. Az SAP központi szolgáltatások magas rendelkezésre állása érdekében két virtuális gépet helyezhet üzembe egy különálló rendelkezésre állási csoporton belül. A Windows Server feladatátvételi fürtszolgáltatást vagy a pacemakert (Linux) magas rendelkezésre állású keretrendszerként használhatja az infrastruktúra vagy a szoftver meghibásodása esetén. További információ ezekről az üzembe helyezésekről:
+Az SAP-alkalmazás rétege egy Azure-beli [rendelkezésre állási csoporton](../../manage-availability.md)belül van üzembe helyezve. Az SAP központi szolgáltatások magas rendelkezésre állása érdekében két virtuális gépet helyezhet üzembe egy különálló rendelkezésre állási csoporton belül. A Windows Server feladatátvételi fürtszolgáltatást vagy a pacemakert (Linux) magas rendelkezésre állású keretrendszerként használhatja az infrastruktúra vagy a szoftver meghibásodása esetén. További információ ezekről az üzembe helyezésekről:
 
 - [SAP-ASCS/SCS-példány fürtözött Windows feladatátvevő fürtön fürt megosztott lemezének használatával](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [SAP ASCS/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön a fájlmegosztás használatával](./sap-high-availability-guide-wsfc-file-share.md)
@@ -179,7 +179,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Íme néhány további lépés a Azure Availability Zones üzembe helyezéséhez:
 
 - [Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával](./sap-high-availability-guide-wsfc-shared-disk.md)

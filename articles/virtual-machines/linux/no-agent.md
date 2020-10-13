@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30e76ec3085922ec2a1d4693681eb97c9052c026
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322551"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978730"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Általánosított rendszerképek létrehozása kiépítési ügynök nélkül
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Ez a rendszerű szolgáltatás az alapszintű kiépítés során három dolgot tesz:
 
 1. Készen áll az Azure-ra (amely azt jelzi, hogy sikeres volt a jelentés).
-1. Átnevezi a virtuális gépet a felhasználó által megadott virtuálisgép-név alapján, ha ezt az adatforrást az [Azure instance metadata Serviceról (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service)húzza. **Megjegyzés** A IMDS más [példány-metaadatokat](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service)is biztosít, például az SSH nyilvános kulcsokat, így az állomásnévnél többet is beállíthat.
+1. Átnevezi a virtuális gépet a felhasználó által megadott virtuálisgép-név alapján, ha ezt az adatforrást az [Azure instance metadata Serviceról (IMDS)](./instance-metadata-service.md)húzza. **Megjegyzés** A IMDS más [példány-metaadatokat](./instance-metadata-service.md#accessing-azure-instance-metadata-service)is biztosít, például az SSH nyilvános kulcsokat, így az állomásnévnél többet is beállíthat.
 1. Letiltja önmagát, hogy csak az első rendszerindításkor fusson, nem pedig a későbbi újraindítások során.
 
 A fájlrendszerben lévő egységhez futtassa a következő parancsot az engedélyezéséhez:

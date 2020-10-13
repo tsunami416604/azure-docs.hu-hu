@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893407"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978934"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 
@@ -39,7 +39,7 @@ Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezké
 | Debian by Credativ |8.x, 9.x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Flatcar-tároló linuxos Kinvolk szerint| Pro, STABLE, Beta| A kernelben | a WA-Linux-Agent már telepítve van a/usr/share/OEM/bin/waagent-ben |
 | Oracle-Oracle Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [A Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [A Red Hat Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise a SUSE használatával |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE nyilvános Felhőbeli rendszerképek életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |A kernelben |Csomag<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE – SUSE |openSUSE Leap 15.x |A kernelben |Csomag: a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu Canonical alapján |Ubuntu-kiszolgáló és Pro. 16. x, 18. x, 20. x<p>Az Ubuntu 12,04 és 14,04 kiterjesztett támogatásával kapcsolatos információk itt találhatók: [Ubuntu Extended Security karbantartás](https://www.ubuntu.com/esm). |A kernelben |Csomag: a tárházban a "walinuxagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |

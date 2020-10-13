@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90078809"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977048"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Hibaelhárítás – a Windows nem tudta befejezni a rendszer konfigurálását
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure-beli virtuális gépek (VM) rendszerindítását megakadályo
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen a telepítés Windows-hiba jelenik meg, miközben a Windows telepítő elindítja a szolgáltatásokat. A hiba a következő üzenetet jeleníti meg:
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen a telepítés Windows-hiba jelenik meg, miközben a Windows telepítő elindítja a szolgáltatásokat. A hiba a következő üzenetet jeleníti meg:
 
 `Windows could not finish configuring the system. To attempt to resume configuration, restart the computer. Setup is starting services`
 
@@ -36,8 +36,8 @@ Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-
 
 ## <a name="cause"></a>Ok
 
-Ezt a hibát az okozza, hogy az operációs rendszer (OS) nem tudja befejezni a [Sysprep-folyamatot](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-process-overview). Ez a hiba akkor fordul elő, amikor egy általánosított virtuális gép kezdeti rendszerindítását kísérli meg. Ha ezzel a problémával találkozik, hozza létre újra az általánosított rendszerképet, mert a rendszerkép nem telepíthető állapotú, és nem állítható helyre.
+Ezt a hibát az okozza, hogy az operációs rendszer (OS) nem tudja befejezni a [Sysprep-folyamatot](/windows-hardware/manufacture/desktop/sysprep-process-overview). Ez a hiba akkor fordul elő, amikor egy általánosított virtuális gép kezdeti rendszerindítását kísérli meg. Ha ezzel a problémával találkozik, hozza létre újra az általánosított rendszerképet, mert a rendszerkép nem telepíthető állapotú, és nem állítható helyre.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához kövesse az [Azure-útmutatást a rendszerkép előkészítéséhez/rögzítéséhez](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) és egy új általánosított rendszerkép előkészítéséhez.
+A probléma megoldásához kövesse az [Azure-útmutatást a rendszerkép előkészítéséhez/rögzítéséhez](../windows/upload-generalized-managed.md) és egy új általánosított rendszerkép előkészítéséhez.

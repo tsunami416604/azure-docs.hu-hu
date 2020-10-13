@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555932"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Datadoggal
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -141,6 +141,22 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Datadoggal-ben
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a Datadoggal csempére kattint, automatikusan be kell jelentkeznie arra a Datadoggal, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>A bérlő összes felhasználójának engedélyezése az alkalmazással való hitelesítésre
+
+Ebben a szakaszban engedélyezheti, hogy a bérlőn belül mindenki hozzáférhessen a Datadoggal, ha az egyik felhasználó fiókja van a Datadoggal oldalon.
+
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **datadoggal**lehetőséget.
+1. Az alkalmazás Áttekintés lapjának **kezelés**területén válassza a **Tulajdonságok**elemet.
+
+    ![A "tulajdonságok" hivatkozás](common/properties.png)
+
+1. A **felhasználó-hozzárendelés kötelező?** területen válassza a **nem**lehetőséget.
+
+    ![A felhasználó-hozzárendelés nem szükséges](common/user-assignment-not-required.png)
+
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="additional-resources"></a>További források
 

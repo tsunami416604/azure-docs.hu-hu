@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d8838747c4f7ff195a5451a3c68f5cf891c91f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274503"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978458"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja
 
@@ -56,7 +56,7 @@ A Felhőbeli kapcsolat a következő régiókra korlátozódik:
 * Azure West Europe (WestEurope) & OCI Amsterdam (Hollandia északnyugati régiója)
 * Azure Kelet-Japán (JapanEast) & OCI Tokyo (Kelet-Japán)
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A nagyvállalati ügyfelek gyakran úgy döntenek, hogy különböző üzleti és üzemeltetési okokból több felhőben is diverzifikálják és üzembe helyezik a számítási feladatokat. Az ügyfelek változatossá teszik a felhőalapú hálózatokat az interneten, az IPSec VPN-en vagy a felhőalapú szolgáltató közvetlen csatlakozási megoldásának használatával a helyszíni hálózaton keresztül. A felhőalapú hálózatok összekapcsolásával jelentős mértékű befektetésekre lehet szükség az idő, a pénz, a tervezés, a beszerzés, a telepítés, a tesztelés és a műveletek terén. 
 
@@ -68,7 +68,7 @@ A ExpressRoute és a FastConnect használatával az ügyfelek az Azure-beli virt
 
 A hálózati biztonság a vállalati alkalmazások egyik kulcsfontosságú összetevője, amely a több felhőalapú megoldás központi eleme. A ExpressRoute és a FastConnect feletti forgalom egy magánhálózaton halad át. Ez a konfiguráció lehetővé teszi az Azure-beli virtuális hálózatok és az Oracle-alapú virtuális felhőalapú hálózatok közötti biztonságos kommunikációt. Nem kell megadnia nyilvános IP-címet az Azure-beli virtuális gépekhez. Ehhez hasonlóan nincs szüksége Internet-átjáróra a OCI-ben. Minden kommunikáció a gépek magánhálózati IP-címén keresztül történik.
 
-Emellett [biztonsági listát](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) is BEÁLLÍTHAT a OCI virtuális felhőalapú hálózati és biztonsági szabályaihoz (az Azure [hálózati biztonsági csoportjaihoz](../../../virtual-network/security-overview.md)csatolva). Ezekkel a szabályokkal szabályozhatja a virtuális hálózatokban lévő gépek közötti forgalmat. A hálózati biztonsági szabályok a gép szintjén, az alhálózat szintjén és a virtuális hálózat szintjén is hozzáadhatók.
+Emellett [biztonsági listát](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) is BEÁLLÍTHAT a OCI virtuális felhőalapú hálózati és biztonsági szabályaihoz (az Azure [hálózati biztonsági csoportjaihoz](../../../virtual-network/network-security-groups-overview.md)csatolva). Ezekkel a szabályokkal szabályozhatja a virtuális hálózatokban lévő gépek közötti forgalmat. A hálózati biztonsági szabályok a gép szintjén, az alhálózat szintjén és a virtuális hálózat szintjén is hozzáadhatók.
 
 A [Weblogic Server Azure-alkalmazások](oracle-weblogic.md) mindegyike létrehoz egy hálózati biztonsági csoportot előre konfigurálva, hogy együttműködjön a Weblogic-kiszolgáló portjának konfigurációjáról.
  

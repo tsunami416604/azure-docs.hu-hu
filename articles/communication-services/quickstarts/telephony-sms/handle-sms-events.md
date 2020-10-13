@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756752"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976929"
 ---
 # <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
 
@@ -86,21 +86,21 @@ Ezután válassza a **kijelölés megerősítése**lehetőséget.
 Az esemény-eseményindítók megtekintéséhez először elő kell állítani az eseményeket.
 
 - `SMS Received` az események akkor jönnek létre, amikor a kommunikációs szolgáltatások telefonszáma szöveges üzenetet kap. Egy esemény elindításához csak küldjön egy üzenetet a telefonról a kommunikációs szolgáltatások erőforrásához csatolt telefonszámra.
-- `SMS Delivery Report Received` az események akkor jönnek létre, amikor SMS-t küld egy felhasználónak a kommunikációs szolgáltatások telefonszáma segítségével. Az indításhoz és az eseményhez engedélyeznie kell az `Delivery Report` [SMS](../telephony-sms/send.md)-ben elérhető beállításokat. Próbáljon meg üzenetet küldeni a telefonjára a következővel: `Delivery Report` . Ennek a műveletnek a végrehajtásával az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+- `SMS Delivery Report Received` az események akkor jönnek létre, amikor SMS-t küld egy felhasználónak a kommunikációs szolgáltatások telefonszáma segítségével. Egy esemény elindításához engedélyeznie kell az `Delivery Report` SMS-ben a [küldést](../telephony-sms/send.md). Próbáljon meg üzenetet küldeni a telefonjára a következővel: `Delivery Report` . Ennek a műveletnek a végrehajtásával az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
 Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](../../concepts/event-handling.md)teljes listáját.
 
 ### <a name="receiving-sms-events"></a>SMS-események fogadása
 
-A fenti műveletek elvégzése után láthatja, hogy a rendszer  `SMS Received` `SMS Delivery Report Received` elküldi az eseményeket a végpontnak. Ezek az események az elején beállított [Azure Event Grid Viewer-mintában](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) jelennek meg. Az esemény melletti szem ikon megnyomásával megtekintheti a teljes adattartalmat. Az események a következőképpen fognak kinézni:
+A fenti műveletek elvégzése után láthatja, hogy a rendszer `SMS Received` `SMS Delivery Report Received` elküldi az eseményeket a végpontnak. Ezek az események az elején beállított [Azure Event Grid Viewer-mintában](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) jelennek meg. Az esemény melletti szem ikon megnyomásával megtekintheti a teljes adattartalmat. Az események így fognak kinézni:
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
-További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](../../concepts/event-handling.md) kapcsolatban
+További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](../../concepts/event-handling.md)kapcsolatban.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../create-communication-resource.md#clean-up-resources).
 

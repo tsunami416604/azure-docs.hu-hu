@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
-ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744787"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978105"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer magas rendelkezésre állása Red Hat Enterprise Linux 
 
@@ -100,7 +100,7 @@ A bemutatott konfiguráció három HANA-csomópontot jelenít meg az egyes helye
 A `/hana/shared` bemutatott architektúrában a HANA megosztott fájlrendszert [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md)biztosítjuk. A NFSv 4.1-es porton keresztül csatlakozik a Hana-rendszer replikációs helyének minden HANA-csomópontján. A fájlrendszerek `/hana/data` és a `/hana/log` helyi fájlrendszerek, és nincsenek megosztva a HANA db-csomópontok között. A SAP HANA nem megosztott módban lesznek telepítve. 
 
 > [!TIP]
-> Az ajánlott SAP HANA tárolási konfigurációkhoz lásd: [SAP HANA Azure virtuális gépek tárolási konfigurációi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).   
+> Az ajánlott SAP HANA tárolási konfigurációkhoz lásd: [SAP HANA Azure virtuális gépek tárolási konfigurációi](./hana-vm-operations-storage.md).   
 
 [![SAP HANA a HSR és a pacemaker-fürttel](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel.png)](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel-detail.png#lightbox)
 
@@ -128,7 +128,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
   
    A többségi gyártó csomópontja esetében telepíthet egy kisméretű virtuális gépet, mivel ez a virtuális gép nem futtatja a SAP HANA erőforrásait. A többségi gyártó virtuális gépet a fürt konfigurációjában használják páratlan számú fürtcsomópont eléréséhez egy megosztott agyi forgatókönyvben. A többségi gyártó virtuális gépnek ebben a példában csak egy virtuális hálózati adapterre van szüksége az `client` alhálózatban.        
 
-   Helyi felügyelt lemezek telepítése a és rendszerhez `/hana/data` `/hana/log` . A és a minimálisan ajánlott tárolási konfigurációját `/hana/data` `/hana/log` [SAP HANA Azure-beli virtuális gépek tárolási konfigurációi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)írják le.
+   Helyi felügyelt lemezek telepítése a és rendszerhez `/hana/data` `/hana/log` . A és a minimálisan ajánlott tárolási konfigurációját `/hana/data` `/hana/log` [SAP HANA Azure-beli virtuális gépek tárolási konfigurációi](./hana-vm-operations-storage.md)írják le.
 
    Telepítse az elsődleges hálózati adaptert a `client` virtuális hálózati alhálózatban található minden virtuális géphez.  
    Ha a virtuális gépet Azure Portalon keresztül telepítik, a hálózati adapter neve automatikusan létrejön. Az egyszerűség kedvéért megtekintjük az automatikusan generált, elsődleges hálózati adaptereket, amelyek az `client` Azure virtuális hálózat alhálózatához vannak csatolva **Hana-S1-db1-Client**, **Hana-S1-DB2-Client**, **Hana-S1-db3-Client**, és így tovább.  
@@ -190,7 +190,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.23.0.18**).
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
    1. Ezután hozzon létre egy háttér-készletet, és vegye fel az összes fürtbeli virtuális gépet a háttér-készletbe:
@@ -207,7 +207,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
       1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    1. Ezután hozza létre a terheléselosztási szabályokat:
    
@@ -217,7 +217,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Válassza a **hektár portok**lehetőséget.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    > [!Note]
    > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
@@ -229,7 +229,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files infrastruktúra üzembe helyezése 
 
-Telepítse a fájlrendszer ANF-köteteit `/hana/shared` . `/hana/shared`Minden HANA rendszerbeli replikációs helyhez külön kötetre lesz szüksége. További információ: [a Azure NetApp Files-infrastruktúra beállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel#set-up-the-azure-netapp-files-infrastructure).
+Telepítse a fájlrendszer ANF-köteteit `/hana/shared` . `/hana/shared`Minden HANA rendszerbeli replikációs helyhez külön kötetre lesz szüksége. További információ: [a Azure NetApp Files-infrastruktúra beállítása](./sap-hana-scale-out-standby-netapp-files-rhel.md#set-up-the-azure-netapp-files-infrastructure).
 
 Ebben a példában a rendszer a következő Azure NetApp Files köteteket használta: 
 
@@ -1160,7 +1160,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       ```
 
 
-Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürtöt úgy, hogy a teszteket is végrehajtja, ha az Azure-beli [virtuális gépeken a RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)-on SAP HANA.
+Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürtöt úgy, hogy a teszteket is végrehajtja, ha az Azure-beli [virtuális gépeken a RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)-on SAP HANA.
 
 
 ## <a name="next-steps"></a>Következő lépések

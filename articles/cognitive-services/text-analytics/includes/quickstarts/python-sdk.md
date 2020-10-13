@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779188"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977813"
 ---
 <a name="HOLTop"></a>
 
@@ -117,11 +117,12 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
+* [Vélemény bányászata](#opinion-mining)
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner) 
 * [Személyazonosításra alkalmas adatok felismerése](#personally-identifiable-information-recognition) 
 * [Entitás összekapcsolása](#entity-linking)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
@@ -131,7 +132,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner) 
 * [Entitás összekapcsolása](#entity-linking)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
@@ -140,7 +141,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner) 
 * [Entitás összekapcsolása](#entity-linking)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ---
 
@@ -485,7 +486,7 @@ Document ID: 3 , Language: Chinese_Simplified
 > A verzióban `3.1` : 
 > * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
 
-Hozzon létre egy nevű új függvényt `entity_recognition_example` , amely argumentumként fogadja az ügyfelet, majd hívja meg a `recognize_entities()` függvényt, és ismételje meg az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni, `entity` Ha az sikeres, és `error` Ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és alkategóriáját, ha van ilyen.
+Hozzon létre egy nevű új függvényt `entity_recognition_example` , amely argumentumként fogadja az ügyfelet, majd hívja meg a `recognize_entities()` függvényt, és ismételje meg az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni, `entity` Ha az sikeres, és `error` Ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és Sub-Category, ha van ilyen.
 
 ```python
 def entity_recognition_example(client):
@@ -609,7 +610,7 @@ Linked Entities:
 
 ### <a name="personally-identifiable-information-recognition"></a>Személyazonosításra alkalmas adatok felismerése
 
-Hozzon létre egy nevű új függvényt `pii_recognition_example` , amely argumentumként fogadja az ügyfelet, majd hívja meg a `recognize_pii_entities()` függvényt, és ismételje meg az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni, `entity` Ha az sikeres, és `error` Ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és alkategóriáját, ha van ilyen.
+Hozzon létre egy nevű új függvényt `pii_recognition_example` , amely argumentumként fogadja az ügyfelet, majd hívja meg a `recognize_pii_entities()` függvényt, és ismételje meg az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni, `entity` Ha az sikeres, és `error` Ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és Sub-Category, ha van ilyen.
 
 ```python
 def pii_recognition_example(client):
@@ -653,7 +654,7 @@ Entity: 555-555-5555
 > A verzióban `3.0` : 
 > * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
 
-Hozzon létre egy nevű új függvényt `entity_recognition_example` , amely argumentumként fogadja az ügyfelet, majd hívja meg a `recognize_entities()` függvényt, és ismételje meg az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni, `entity` Ha az sikeres, és `error` Ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és alkategóriáját, ha van ilyen.
+Hozzon létre egy nevű új függvényt `entity_recognition_example` , amely argumentumként fogadja az ügyfelet, majd hívja meg a `recognize_entities()` függvényt, és ismételje meg az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni, `entity` Ha az sikeres, és `error` Ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és Sub-Category, ha van ilyen.
 
 ```python
 def entity_recognition_example(client):

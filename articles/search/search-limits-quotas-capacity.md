@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843430"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949850"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -104,7 +104,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 ### <a name="shared-private-link-resource-limits"></a>Megosztott magánhálózati kapcsolati erőforrások korlátai
 
 > [!NOTE]
-> Az indexelő biztonságosan férhetnek hozzá az erőforrásokhoz a [megosztott magánhálózati kapcsolat erőforrás-API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) -n keresztül kezelt privát végpontokon keresztül, a [jelen](search-indexer-howto-access-private.md) útmutatóban ismertetett módon.
+> Az indexelő biztonságosan férhetnek hozzá az erőforrásokhoz a [megosztott magánhálózati kapcsolat erőforrás-API](/rest/api/searchmanagement/sharedprivatelinkresources) -n keresztül kezelt privát végpontokon keresztül, a [jelen](search-indexer-howto-access-private.md) útmutatóban ismertetett módon.
 
 | Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
