@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713755"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Oktatóanyag: az Amazon Business integrálása a Azure Active Directory
@@ -60,7 +60,7 @@ Konfigurálja és tesztelje az Azure AD SSO-t az Amazon Business használatával
 Az Azure AD SSO az Amazon Businessrel való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-2. Az **[Amazon Business SSO konfigurálása](#configure-amazon-business-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[Amazon Business SSO konfigurálása](#configure-amazon-business-sso)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
 4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 5. **[Hozzon létre egy Amazon Business test User](#create-amazon-business-test-user)** -t, amely az Amazon Businessben található, a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel rendelkezik.
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)az **Amazon Business** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -123,7 +123,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. Kattintson a **Mentés** gombra.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -139,7 +139,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Felhasználói profil](media/amazon-business-tutorial/user-profile.png)
 
-1. A **rendszerintegrációk** varázslóban válassza az **egyszeri bejelentkezés (SSO)** lehetőséget.
+1. A **rendszerintegrációk** varázslóban válassza az **egyszeri Sign-On (SSO)** lehetőséget.
 
     ![Egyszeri bejelentkezés (SSO)](media/amazon-business-tutorial/sso-settings.png)
 

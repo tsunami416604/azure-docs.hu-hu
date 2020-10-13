@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531270"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Oktatóanyag: folyamatos, beteg monitorozási alkalmazás sablonjának üzembe helyezése és áttekintése
@@ -61,11 +61,11 @@ Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg
 
 * Módosítsa az eszköz **beteg állapotát** annak jelzésére, hogy az eszköz használatban van-e egy fekvőbeteg-vagy távoli forgatókönyvben.
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="Fekvőbeteg-állapot":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 A Burkville Kórház-kezelő irányítópultjának megnyitásához válassza a **Ugrás a távoli beteg irányítópultra** lehetőséget. Ez az irányítópult a műveletek, a telemetria és az információk hasonló készletét tartalmazza. Több eszközt is láthat a használatban, és a **belső vezérlőprogram frissítését** is választhatja.
 
-:::image type="content" source="media/lamna-remote.png" alt-text="Távoli operátor irányítópultja":::
+:::image type="content" source="media/lamna-remote.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 ### <a name="device-templates"></a>Eszközsablonok
 
@@ -75,7 +75,7 @@ Ha kijelöli az **eszköz sablonokat**, a sablon két típusát látja:
 
 * **Intelligens térd zárójel**: ez az eszköz egy térd zárójelet jelöl, amelyet a páciensek a térdtől való kiváltáskor használnak. Ha ezt a sablont választja, megtekintheti az eszközök, a mozgási tartomány és a gyorsítás funkcióit.
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Intelligens javítási sablon":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 ### <a name="device-groups"></a>Device groups
 
@@ -93,7 +93,7 @@ Ha a **szabályok**lehetőséget választja, a sablon három szabálya látható
 
 * **Alacsony javítási akkumulátor**: Ez a szabály akkor aktiválódik, ha az eszköz töltöttségi szintje 10% alá esik. Ezzel a szabállyal elindíthatja az értesítéseket a betegnek az eszközük feltöltéséhez.
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="Szabályok":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 ### <a name="jobs"></a>Feladatok
 
@@ -113,7 +113,7 @@ A **Tulajdonságok** lapon szerkesztheti a felhő tulajdonságait, valamint az e
 
 A **parancsok** lapon parancsokat futtathat az eszközön.
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Térd zárójelek irányítópultja":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 ### <a name="data-export"></a>Adatexportálás
 
@@ -123,7 +123,7 @@ Az adatexportálás lehetővé teszi, hogy az eszköz adatait folyamatosan expor
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az **adminisztráció > alkalmazás beállításai** között, és kattintson a **Törlés**gombra.
 
-:::image type="content" source="media/admin-delete.png" alt-text="Tiszta erőforrások":::
+:::image type="content" source="media/admin-delete.png" alt-text="Healthcre-alkalmazás sablonja":::
 
 ## <a name="next-steps"></a>További lépések
 

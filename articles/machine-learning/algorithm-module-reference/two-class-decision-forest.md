@@ -1,7 +1,7 @@
 ---
-title: 'Kétosztályos döntési erdő: modul-hivatkozás'
+title: 'Two-Class döntési erdő: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használható a kétosztályos döntési erdő modul a Azure Machine Learning egy gépi tanulási modell létrehozásához a döntési erdők algoritmusa alapján.
+description: Megtudhatja, hogyan hozhat létre egy gépi tanulási modellt a döntési erdők algoritmusa alapján a Azure Machine Learning Two-Class döntési erdő moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/03/2020
 ms.openlocfilehash: 9870b5366ac629fe1b10cfde15a58b85c7c6fbc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907712"
 ---
-# <a name="two-class-decision-forest-module"></a>Kétosztályos döntési erdő modul
+# <a name="two-class-decision-forest-module"></a>Two-Class döntési erdő modulja
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 

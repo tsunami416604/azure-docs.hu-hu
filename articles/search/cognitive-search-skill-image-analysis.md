@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936044"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948935"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
 
-A **képelemzési** képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](../cognitive-services/computer-vision/home.md) által biztosított gépi tanulási modelleket használja. 
+A **képelemzési** képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](../cognitive-services/computer-vision/overview.md) által biztosított gépi tanulási modelleket használja. 
 
 > [!NOTE]
 > A kis méretű kötetek (20 tranzakció alatt) ingyenesen végrehajthatók az Azure Cognitive Searchban, de a nagyobb munkaterhelésekhez [számlázható Cognitive Services erőforrást kell csatolni](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.

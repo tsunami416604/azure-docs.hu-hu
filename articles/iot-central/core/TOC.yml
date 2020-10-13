@@ -170,9 +170,11 @@
             - name: Élő csevegés ki-/bekapcsolása
               href: howto-show-hide-chat.md
     - name: Hibaelhárítás
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: Eszközkapcsolatok
+          href: troubleshoot-connection.md
+    - name: GYIK
+      href: howto-faq.md
 - name: Referencia
   items:
     - name: Azure CLI

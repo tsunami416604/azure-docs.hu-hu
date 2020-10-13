@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528653"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub
@@ -30,7 +30,7 @@ A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Ar
 
 Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 
-* Konfigurálja a fejlesztői készlet Wi-Fi-t, és készítse elő a fejlesztési környezetet a [IoT fejlesztői készlet AZ3166 és a felhőben található Azure-IoT hub összekapcsolásával kapcsolatos](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)lépéseket követve.
+* Konfigurálja a fejlesztői készlet Wi-Fiét, és készítse elő a fejlesztési környezetet a "fejlesztési környezet előkészítése" című szakaszban ismertetett lépéseket a [IoT fejlesztői készlet AZ3166 az Azure IoT hub a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)című szakaszának lépéseit követve.
 * Frissítsen a legújabb belső vezérlőprogram-re (1.3.0 vagy újabb verzióra) az [Update fejlesztői készlet belső vezérlőprogram](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) -oktatóanyagával.
 * Hozzon létre és csatoljon egy IoT Hubt egy eszköz kiépítési szolgáltatásának példányával a [IoT hub Device Provisioning Service beállítása a Azure Portal](/azure/iot-dps/quick-setup-auto-provision)használatával című rész lépéseit követve.
 

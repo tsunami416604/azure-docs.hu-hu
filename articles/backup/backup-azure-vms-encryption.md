@@ -4,10 +4,10 @@ description: A titkosított Azure-beli virtuális gépek biztonsági mentését 
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89014914"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
@@ -71,7 +71,7 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
       ![Forgatókönyv panel](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-1. A **biztonsági mentési házirendben**  >  **válassza a biztonsági mentési házirend**elemet, és válassza ki a tárolóhoz társítandó szabályzatot. Ez után válassza az **OK** gombot.
+1. A **biztonsági mentési házirendben**  >  **válassza a biztonsági mentési házirend**elemet, és válassza ki a tárolóhoz társítandó szabályzatot. Ezután válassza az **OK** gombot.
     - A biztonsági mentési szabályzat meghatározza, hogy mikor készüljön biztonsági mentés, és mennyi ideig tárolja őket a rendszer.
     - Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben.
 
@@ -107,7 +107,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 2. A **biztonsági másolati elemek**területen válassza az Azure-beli **virtuális gép**lehetőséget.
 3. A **biztonsági mentési elemek** listában válassza a három pontot (...).
 4. Válassza a **biztonsági mentés**lehetőséget.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ez után válassza az **OK** gombot.
+5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután válassza az **OK** gombot.
 6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="provide-permissions"></a>Engedélyek megadása
@@ -131,7 +131,7 @@ Engedélyek beállítása:
 
     ![Azure Backup kijelölés](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. Válassza a **Hozzáadás** elemet. A **biztonsági mentési felügyeleti szolgáltatás** hozzá van adva a **hozzáférési házirendekhez**.
+1. Válassza a **Hozzáadás** lehetőséget. A **biztonsági mentési felügyeleti szolgáltatás** hozzá van adva a **hozzáférési házirendekhez**.
 
     ![Hozzáférési szabályzatok](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -145,8 +145,8 @@ A titkosított virtuális gépeket a következőképpen állíthatja vissza:
 
 1. [Állítsa vissza a virtuális gép lemezét](backup-azure-arm-restore-vms.md#restore-disks).
 2. Hozza létre újból a virtuálisgép-példányt a következők egyikével:
-    1. A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [További információ](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információ](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    1. A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [További információk](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információk](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Linux rendszerű virtuális gépek esetén telepítse újra az ADE bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek.
 
 ## <a name="next-steps"></a>Következő lépések

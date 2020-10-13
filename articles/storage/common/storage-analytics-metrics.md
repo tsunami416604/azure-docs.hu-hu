@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021153"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
@@ -74,7 +74,7 @@ Az alábbi lépéseket követve engedélyezheti a metrikákat a [Azure Portalban
 1. Győződjön **meg**arról, hogy az **állapot** beállítása be értékre van állítva.
 1. Válassza ki a figyelni kívánt szolgáltatások mérőszámait.
 1. Adja meg az adatmegőrzési szabályzatot, amely azt jelzi, hogy meddig kell megőrizni a metrikákat és a naplózási adatokat.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A [Azure Portal](https://portal.azure.com) jelenleg nem teszi lehetővé perc típusú metrikák konfigurálását a Storage-fiókban. A perc típusú metrikákat a PowerShell vagy programozott módon kell engedélyeznie.
 

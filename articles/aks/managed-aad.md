@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
 ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936996"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
@@ -195,7 +195,7 @@ Ha el szeretné érni a fürtöt, kövesse az alábbi [lépéseket.][access-clus
 
 Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. [`kubelogin`](https://github.com/Azure/kubelogin)A paranccsal hozzáférhet a fürthöz nem interaktív egyszerű szolgáltatás-bejelentkezéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Azure RBAC-integrációról a Kubernetes-hitelesítéshez][azure-rbac-integration]
 * Ismerje meg az [Azure ad-integrációt a KUBERNETES RBAC][azure-ad-rbac].

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447320"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977031"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Stop Error-0x00000074 rossz rendszerkonfigurációs információ
 
@@ -27,7 +27,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a Windows nem indítható
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen a Windows leállítási kódja **#0x00000074** vagy **BAD_SYSTEM_CONFIG_INFO**jelenik meg.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen a Windows leállítási kódja **#0x00000074** vagy **BAD_SYSTEM_CONFIG_INFO**jelenik meg.
 
 *A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani.* 
  *A problémával és a lehetséges javításokkal kapcsolatos további információkért http://windows.com/stopcode látogasson el a következő webhelyre:* 
@@ -58,7 +58,7 @@ A **BAD_SYSTEM_CONFIG_INFO** leállítási kód akkor fordul elő, ha **a beáll
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 1. A kaptár sérülésének keresése.
 1. A Távoli asztali kapcsolat használatával csatlakozhat a javítási virtuális géphez.
 1. Másolja a `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` mappát, és mentse azt az egészséges lemezpartíció vagy egy másik biztonságos helyen. A mappa biztonsági mentése óvintézkedésként, mivel a kritikus beállításjegyzék-fájlokat fogja szerkeszteni. 
@@ -133,4 +133,4 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
    
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bdaa823a14d99a16aa0f2e71483086d883b0515f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89263773"
 ---
 # <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása a Media Services .NET SDK használatával
@@ -440,5 +440,5 @@ Ha a kulcs-engedélyezési házirendhez használt jogkivonat-korlátozás alapj�
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy beállította a tartalmi kulcs engedélyezési házirendjét, tekintse meg [az eszközök kézbesítési házirendjének konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md)című témakört.

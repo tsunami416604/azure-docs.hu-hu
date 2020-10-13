@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 22d86b96b7d9493ecc2f734be3f677a270a2739a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714265"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
@@ -210,6 +210,6 @@ Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
 A fenti lépéseket a _mytestselfcertsecondary_ -tanúsítványhoz is megismételheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan csatlakoztathatók az eszközök az X. 509 tanúsítványokkal, a javasolt következő lépés az [eszköz kapcsolatának figyelése az Azure CLI használatával](howto-monitor-devices-azure-cli.md)

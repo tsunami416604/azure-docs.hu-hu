@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: d1e2b91b46bee761c7feb1000920d5ae1e65ba4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Oktatóanyag: Azure Active Directory integráció az Andromeda-vel
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az Andr
 Az Azure AD egyszeri bejelentkezés az Androméda-vel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[Androméda egyszeri bejelentkezés konfigurálása](#configure-andromeda-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[Androméda egyszeri bejelentkezésének konfigurálása](#configure-andromeda-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. Az **[Andromeda-teszt felhasználójának létrehozása](#create-andromeda-test-user)** – a Britta Simon in Andromeda partnere, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés az Andromeda-vel való konfigurálásához h
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -113,9 +113,9 @@ Az Azure AD egyszeri bejelentkezés az Andromeda-vel való konfigurálásához h
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Az értéket a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján kell frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > Ezek az értékek nem valósak. Az értéket a tényleges azonosító, a válasz URL-cím és a Sign-On URL-cím alapján kell frissíteni, amelyet később az oktatóanyag ismertet.
 
-6. Az Androméda-alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+6. Az Androméda-alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![A képernyőképen a felhasználói attribútumok (például givenName user. givenName és EmailAddress user. mail) láthatók.](common/edit-attribute.png)
 
@@ -151,7 +151,7 @@ Az Azure AD egyszeri bejelentkezés az Andromeda-vel való konfigurálásához h
 
     : Kattintson a **Mentés** gombra.
 
-8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+8. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -165,7 +165,7 @@ Az Azure AD egyszeri bejelentkezés az Andromeda-vel való konfigurálásához h
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-andromeda-single-sign-on"></a>Az Andromeda egyszeri bejelentkezés konfigurálása
+### <a name="configure-andromeda-single-sign-on"></a>Az Andromeda egyszeri Sign-On konfigurálása
 
 1. Jelentkezzen be az Andromeda vállalati webhelyre rendszergazdaként.
 

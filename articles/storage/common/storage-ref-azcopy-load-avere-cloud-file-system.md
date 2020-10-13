@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8f0a8903f90b134c35d9adb35a493d989d414b56
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294336"
 ---
 # <a name="azcopy-load-clfs"></a>azcopy load clfs
@@ -57,11 +57,11 @@ Töltse be a teljes könyvtárat egy tárolóba egy SAS-CLFS formátumban:
 azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[container]?[SAS]" --state-path="/path/to/state/path"
 ```
 
-## <a name="options"></a>Beállítások
+## <a name="options"></a>Lehetőségek
 
 **--Compression-Type** karakterlánc adja meg az átvitelekhez használandó tömörítési típust. Az elérhető értékek a következők: `DISABLED` , `LZ4` . (alapértelmezett `LZ4` )
 
-**– Súgó** a `azcopy load clfs` parancshoz.
+**– Súgó**    a `azcopy load clfs` parancshoz.
 
 **--a log-Level** sztring a naplófájl részletességét határozza meg, a rendelkezésre álló szintek: `DEBUG` , `INFO` , `WARNING` , `ERROR` . (alapértelmezett `INFO` )
 
@@ -81,6 +81,6 @@ azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[contai
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 |--megbízható-Microsoft-utótagok karakterlánca   | További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

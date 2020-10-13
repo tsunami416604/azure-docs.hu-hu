@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecfb2fa5f45a23d387741d4865aa9707df960e86
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018416"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépeken Azure SDK-k használatával 

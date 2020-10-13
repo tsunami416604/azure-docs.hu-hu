@@ -12,10 +12,10 @@ ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
 ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333772"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 
@@ -199,7 +199,7 @@ A naplók ellenőrzéséhez használja a [Docker-napló vizsgálata](#dockerlog)
 
 ## <a name="function-fails-get_model_path"></a>A függvény sikertelen: get_model_path ()
 
-Gyakran előfordul, `init()` hogy a pontozási parancsfájl függvényében a [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) függvényt egy modell fájljának vagy a tárolóban található Model Files mappa megkeresésére hívja meg. Ha a modell fájlja vagy mappája nem található, a függvény sikertelen lesz. A hiba hibakeresésének legegyszerűbb módja a következő Python-kód futtatása a Container shellben:
+Gyakran előfordul, `init()` hogy a pontozási parancsfájl függvényében a [Model.get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) függvényt a rendszer megkeresi a modell fájlját vagy a tárolóban a modell fájljainak mappáját. Ha a modell fájlja vagy mappája nem található, a függvény sikertelen lesz. A hiba hibakeresésének legegyszerűbb módja a következő Python-kód futtatása a Container shellben:
 
 ```python
 from azureml.core.model import Model
@@ -214,7 +214,7 @@ Ha a naplózási szint HIBAKERESÉSét állítja be, akkor további információ
 
 ## <a name="function-fails-runinput_data"></a>A függvény sikertelen: Futtatás (input_data)
 
-Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontba való adatküldés során, a függvényben hozzáadhat egy Error befogási utasítást, `run(input_data)` hogy a részletes hibaüzenetet adja vissza helyette. Például:
+Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontba való adatküldés során, a függvényben hozzáadhat egy Error befogási utasítást, `run(input_data)` hogy a részletes hibaüzenetet adja vissza helyette. Példa:
 
 ```python
 def run(input_data):

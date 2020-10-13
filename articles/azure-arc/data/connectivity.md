@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9c1dd6f628e87792808d14db2c7bcc7f050923a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713203"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Csatlakozási módok és követelmények
@@ -28,7 +28,7 @@ Az Azure arc-kompatibilis adatszolgáltatások lehetőséget biztosít az Azure-
 
 Fontos, hogy ha az Azure arc-kompatibilis adatszolgáltatások közvetlenül csatlakoznak az Azure-hoz, akkor a felhasználók [Azure Resource Manager API-kat](/rest/api/resources/), az Azure CLI-t és a Azure Portal az Azure arc-adatszolgáltatások üzemeltetésére használhatják. A közvetlenül csatlakoztatott mód funkciói ugyanúgy hasonlítanak össze, ahogy bármely más Azure-szolgáltatást a kiépítés/kiépítés, a skálázás, a konfigurálás és így tovább a Azure Portal.  Ha az Azure arc-kompatibilis adatszolgáltatások közvetetten kapcsolódnak az Azure-hoz, akkor a Azure Portal csak olvasható nézet. Megtekintheti a telepített SQL felügyelt példányok és postgres nagy kapacitású-példányok leltárát, valamint a rájuk vonatkozó adatokat, de a Azure Portalon nem hajthat végre műveleteket.  Az indirekt módon csatlakoztatott módban az összes műveletet helyileg kell elvégezni az Azure Data Studio, az Azure-beli adatparancssori felület vagy a Kubernetes natív eszközei, például a kubectl használatával.
 
-Emellett a Azure Active Directory és az Azure szerepköralapú Access Control csak a közvetlenül csatlakoztatott módban használható, mert az Azure-hoz való folyamatos és közvetlen kapcsolat függőséget biztosít a funkció biztosításához.
+Emellett a Azure Active Directory és az Azure Role-Based Access Control csak a közvetlenül csatlakoztatott módban használható, mert az Azure-hoz való folyamatos és közvetlen kapcsolat függőséggel rendelkezik.
 
 Végül néhány Azure-beli kapcsolódó szolgáltatás csak akkor érhető el, ha közvetlenül elérhetők, például az Azure Defender biztonsági szolgáltatásai, a tároló-felismerések és a "Azure Backup/blob Storage".
 
@@ -82,7 +82,7 @@ Jelenleg az előzetes verzió fázisában csak a közvetetten csatlakoztatott m�
 
 |**Név**|**Kapcsolat forrása**|**Kapcsolat célja**|**Protokoll**|**Port**|**Használhatja a proxyt**|**Hitelesítés**|**Megjegyzések**|
 |---|---|---|---|---|---|---|---|
-|**Microsoft Container Registry (MCR)**|Az egyes Kubernetes-csomópontokon lévő Kubernetes-kubelet meghúzza a tároló lemezképeit.|`mcr.microsoft.com`|HTTPS|443|Igen|Nincs|A Microsoft Container Registry üzemelteti az Azure arc-kompatibilis adatszolgáltatások tárolójának lemezképeit.  Ezeket a lemezképeket lehívhatja a MCR, és leküldheti azokat egy privát tároló-beállításjegyzékbe, és konfigurálhatja az adatkezelő telepítési folyamatát, hogy lekérje a tároló lemezképeit a saját tároló beállításjegyzékből.|
+|**Microsoft Container Registry (MCR)**|Az egyes Kubernetes-csomópontokon lévő Kubernetes-kubelet meghúzza a tároló lemezképeit.|`mcr.microsoft.com`|HTTPS|443|Igen|Nincsenek|A Microsoft Container Registry üzemelteti az Azure arc-kompatibilis adatszolgáltatások tárolójának lemezképeit.  Ezeket a lemezképeket lehívhatja a MCR, és leküldheti azokat egy privát tároló-beállításjegyzékbe, és konfigurálhatja az adatkezelő telepítési folyamatát, hogy lekérje a tároló lemezképeit a saját tároló beállításjegyzékből.|
 |**Azure Resource Manager API-k**|Azure Data Studio, Azure-adatcli vagy Azure CLI-t futtató számítógép, amely az Azure-hoz csatlakozik.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|Igen|Azure Active Directory|Azure Data Studio, az Azure-adatcli és az Azure CLI a Azure Resource Manager API-khoz csatlakozik, és az Azure-ba irányuló adatok küldésére és lekérésére bizonyos funkciókhoz.|
 |**Azure Monitor API-k**|Azure-adatcli-t vagy Azure CLI-t futtató számítógép, amely figyeli a figyelési metrikákat vagy naplókat a Azure Monitor.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|Igen|Azure Active Directory|Azure Data Studio, az Azure-adatcli és az Azure CLI a Azure Resource Manager API-khoz csatlakozik, és az Azure-ba irányuló adatok küldésére és lekérésére bizonyos funkciókhoz.|
 

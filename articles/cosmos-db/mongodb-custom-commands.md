@@ -8,10 +8,10 @@ ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409680"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítményi parancsok használata a Azure Cosmos DB API-MongoDB tárolt adatkezeléshez 
@@ -234,7 +234,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection"});
 ```
 
-Ez egy új, rögzített, nem horizontális, 400RU/s típusú gyűjteményt eredményez, és automatikusan létrejön egy index a `_id` mezőben. Az ilyen típusú konfigurációk akkor is érvényesek, amikor új gyűjteményeket hoz létre a `insert()` függvény használatával. Például: 
+Ez egy új, rögzített, nem horizontális, 400RU/s típusú gyűjteményt eredményez, és automatikusan létrejön egy index a `_id` mezőben. Az ilyen típusú konfigurációk akkor is érvényesek, amikor új gyűjteményeket hoz létre a `insert()` függvény használatával. Példa: 
 
 ```javascript
 use test
@@ -423,7 +423,7 @@ Ha nincs megadva, az egyéni válasz a következő mezőket tartalmazó dokument
 | `code`    |   `int`      |   Csak akkor tér vissza, ha a parancs végrehajtása sikertelen volt (például ok = = 0). A MongoDB hibakódot tartalmazza. Ez egy opcionális válasz paraméter.      |
 |  `errMsg`   |  `string`      |    Csak akkor tér vissza, ha a parancs végrehajtása sikertelen volt (például ok = = 0). Felhasználóbarát hibaüzenetet tartalmaz. Ez egy opcionális válasz paraméter.      |
 
-Például:
+Példa:
 
 ```javascript
 { "ok" : 1 }

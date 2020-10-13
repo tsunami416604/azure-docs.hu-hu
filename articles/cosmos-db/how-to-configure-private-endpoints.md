@@ -8,10 +8,10 @@ ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334429"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
@@ -46,7 +46,7 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     | Erőforráscsoport | Válasszon ki egy erőforráscsoportot.|
     | **Példány adatai** |  |
     | Name | Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedit. |
-    |Region| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
+    |Régió| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
     |||
 1. Válassza a **Tovább: erőforrás**elemet.
 1. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
@@ -73,7 +73,7 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     |Privát DNS-zóna |Válassza ki **privatelink.documents.Azure.com**. <br><br/> A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.|
     |||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
 1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 Ha jóváhagyta az Azure Cosmos-fiókhoz tartozó privát hivatkozást, akkor a Azure Portalban a **tűzfal és a virtuális hálózatok** ablaktábla **minden hálózat** lehetőség nem érhető el.
@@ -98,7 +98,7 @@ A magánhálózati végpont kiépítés után lekérdezheti az IP-címeket. A Az
 1. Keresse meg a korábban létrehozott privát végpontot. Ebben az esetben ez a **cdbPrivateEndpoint3**.
 1. A DNS-beállítások és az IP-címek megtekintéséhez válassza az **Áttekintés** lapot.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Magánhálózati IP-címek a Azure Portal":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privát végpont létrehozására szolgáló kijelölés a Azure Portalban":::
 
 Több IP-cím jön létre egy privát végponton:
 
@@ -402,7 +402,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-A PowerShell-parancsfájlban a `GroupId` változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett értékek a következők:,,, `Sql` `MongoDB` `Cassandra` `Gremlin` és `Table` . Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Például:
+A PowerShell-parancsfájlban a `GroupId` változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett értékek a következők:,,, `Sql` `MongoDB` `Cassandra` `Gremlin` és `Table` . Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Példa:
 
 * A Gremlin API-fiókok a Gremlin és az SQL API-fiókokból is elérhetők.
 * Table API fiók a tábla-és SQL API-fiókokból is elérhető.
@@ -411,7 +411,7 @@ Ezen fiókok esetében minden egyes API-típushoz létre kell hoznia egy privát
 
 A sablon sikeres üzembe helyezését követően az alábbi képen láthatóhoz hasonló kimenet jelenik meg. Az `provisioningState` érték az, `Succeeded` Ha a magánhálózati végpontok megfelelően vannak beállítva.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Üzembe helyezési kimenet a Resource Manager-sablonhoz":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Privát végpont létrehozására szolgáló kijelölés a Azure Portalban":::
 
 A sablon üzembe helyezése után a magánhálózati IP-címek az alhálózaton belül vannak lefoglalva. Az Azure Cosmos-fiók tűzfalszabály úgy van konfigurálva, hogy csak a magánhálózati végpontról fogadjon kapcsolatokat.
 

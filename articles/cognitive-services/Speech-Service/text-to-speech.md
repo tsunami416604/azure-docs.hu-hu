@@ -13,10 +13,10 @@ ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
 ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357454"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
@@ -41,7 +41,7 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 
 * Speech szintézis Markup Language (SSML) – XML-alapú leíró nyelv, amely a beszédfelismerési kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse [meg az első lépéseket a szöveg](get-started-text-to-speech.md) és a beszéd megismeréséhez. A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md), a [REST API](rest-text-to-speech.md)és a [Speech CLI](spx-overview.md) használatával érhető el.
 

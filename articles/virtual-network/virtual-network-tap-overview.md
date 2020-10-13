@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 7013c8ed338e727dd79a3845ff3b85749c0f5cee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836088"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
@@ -38,7 +38,7 @@ A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy mege
 
 A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához használt fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Művelet | Név |
+| Művelet | Name (Név) |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
 | Microsoft. Network/networkInterfaces/READ | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
@@ -70,6 +70,6 @@ A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához ha
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre virtuális hálózatokat](tutorial-tap-virtual-network-cli.md).

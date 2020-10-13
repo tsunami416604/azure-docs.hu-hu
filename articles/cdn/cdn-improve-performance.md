@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358287"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása fájltömörítéssel az Azure CDN-ben
@@ -139,7 +139,7 @@ Ezek a profilok csak a gzip tömörítési kódolást támogatják. Ha egy profi
 Az alábbi táblázatok az egyes forgatókönyvek Azure CDN tömörítési viselkedését írják le:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>A tömörítés le van tiltva, vagy a fájl nem alkalmas a tömörítésre
-| Ügyfél által kért formátum (elfogadás – Encoding fejléc használatával) | Gyorsítótárazott fájlformátum | A CDN-válasz az ügyfélre | &nbsp; &nbsp; &nbsp; &nbsp; Megjegyzések &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Ügyfél által kért formátum (Accept-Encoding fejlécen keresztül) | Gyorsítótárazott fájlformátum | A CDN-válasz az ügyfélre | &nbsp; &nbsp; &nbsp; &nbsp; Megjegyzések &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Tömörített |Tömörített |Tömörített | |
 | Tömörített |Tömörítetlen |Tömörítetlen | |
@@ -149,7 +149,7 @@ Az alábbi táblázatok az egyes forgatókönyvek Azure CDN tömörítési visel
 | Tömörítetlen |Nincs gyorsítótárazva |Tömörítetlen | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>A tömörítés engedélyezve van, és a fájl tömörítésre alkalmas
-| Ügyfél által kért formátum (elfogadás – Encoding fejléc használatával) | Gyorsítótárazott fájlformátum | CDN-válasz az ügyfélre | Jegyzetek |
+| Ügyfél által kért formátum (Accept-Encoding fejlécen keresztül) | Gyorsítótárazott fájlformátum | CDN-válasz az ügyfélre | Jegyzetek |
 | --- | --- | --- | --- |
 | Tömörített |Tömörített |Tömörített |A CDN átkódolja a támogatott formátumok között. |
 | Tömörített |Tömörítetlen |Tömörített |A CDN tömörítést végez. |

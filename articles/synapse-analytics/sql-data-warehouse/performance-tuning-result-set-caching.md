@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
 ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362265"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
@@ -70,7 +70,7 @@ A gyorsítótárazott eredményhalmaz egy lekérdezés esetében újra használa
 - Az új lekérdezés és az eredményül kapott gyorsítótárat létrehozó korábbi lekérdezés között pontos egyezés van.
 - Nincs olyan adatvagy séma-változás abban a táblázatban, amelyben a gyorsítótárazott eredményhalmaz létrejött.
 
-Futtassa ezt a parancsot annak ellenőrzéséhez, hogy egy lekérdezés végrehajtása sikeres volt-e a találati gyorsítótárban. A result_cache_hit oszlop 1 értéket ad vissza a gyorsítótár találata esetén, 0 a gyorsítótár-Kihagyás esetén, valamint a negatív értékeket, amelyek miatt a rendszer nem használta az eredményhalmaz gyorsítótárazását. A részletekért lásd: [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Futtassa ezt a parancsot annak ellenőrzéséhez, hogy egy lekérdezés végrehajtása sikeres volt-e a találati gyorsítótárban. A result_cache_hit oszlop 1 értéket ad vissza a gyorsítótár találata esetén, 0 a gyorsítótár-Kihagyás esetén, valamint a negatív értékeket, amelyek miatt a rendszer nem használta az eredményhalmaz gyorsítótárazását. Részletekért olvassa el a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ```sql
 SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests

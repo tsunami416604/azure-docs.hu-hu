@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/07/2020
 ms.reviewer: ''
 ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91848857"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
@@ -42,7 +42,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 |**CPU**|Alacsony|Alacsony, közepes és magas|Közepes, magas|
 |**IOPS (hozzávetőleges)**\* |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
 |**IO-késés (hozzávetőleges)**|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
-|**Oszlopcentrikus indexelése** |N/A|S3 és újabb verziók|Támogatott|
+|**Oszlopcentrikus indexelése** |N.A.|S3 és újabb verziók|Támogatott|
 |**Memóriabeli OLTP**|N.A.|N.A.|Támogatott|
 
 \* Az adatfájlok minden olvasási és írási IOPS, beleértve a háttér i/o-t (ellenőrzőpont és lusta író)
@@ -73,7 +73,7 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet eDTU, tárolás és készletezett adatbázisok korlátai
 
-|| **Basic** | **Standard** | **Prémium** |
+|| **Basic** | **Normál** | **Prémium** |
 | :-- | --: | --: | --: |
 | **Tárterület maximális mérete adatbázison**  | 2 GB | 1 TB | 1 TB |
 | **Tárterület maximális mérete készlet szerint** | 156 GB | 4 TB | 4 TB |

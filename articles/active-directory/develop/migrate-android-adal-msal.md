@@ -13,12 +13,12 @@ ms.date: 09/6/2019
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084055"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965998"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
@@ -146,7 +146,7 @@ Vegyünk egy bankszámlát. Több fiókkal is rendelkezhet több pénzügyi int�
 
 Az analógia, például a pénzügyi intézmény fiókjai esetében a Microsoft Identity platform fiókjai a hitelesítő adatok használatával érhetők el. Ezek a hitelesítő adatok regisztrálva vannak a-ban vagy a-ben, a Microsoft számára. Vagy a Microsoft által a szervezet nevében.
 
-Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Bemutatunk egy példát:
+Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Íme egy példa:
 
 A Sam Contoso.com működik, de a Fabrikam.com-hoz tartozó Azure-beli virtuális gépeket kezeli. Ahhoz, hogy a Sam felügyelje a fabrikam virtuális gépeket, engedélyezni kell az elérését. Ez a hozzáférés a Sam-fiók Fabrikam.com való hozzáadásával, valamint a fióknak a virtuális gépekkel való együttműködését lehetővé tevő szerepkör megadásával adható meg. Ezt a Azure Portal fogja elvégezni.
 
@@ -238,19 +238,16 @@ public interface SilentAuthenticationCallback {
 A ADAL egyetlen kivételt `AuthenticationException` tartalmaz, amely magában foglal egy metódust az `ADALError` enumerálás értékének beolvasásához.
 A MSAL-ben van egy kivételek hierarchiája, és mindegyikhez tartozik egy adott hibakód.
 
-MSAL-kivételek listája
-
-|Kivétel  | Leírás  |
-|---------|---------|
-| `MsalException`     | A MSAL által kiváltott alapértelmezett kivétel.  |
-| `MsalClientException`     | Kidobás, ha a hiba ügyféloldali. |
-| `MsalArgumentException`     | Ha egy vagy több bemeneti argumentum érvénytelen. |
-| `MsalClientException`     | Kidobás, ha a hiba ügyféloldali. |
-| `MsalServiceException`     | Ha a hiba a kiszolgáló oldalon van kiváltva. |
-| `MsalUserCancelException`     | A rendszer eldobta, ha a felhasználó megszakította a hitelesítési folyamatot.  |
-| `MsalUiRequiredException`     | Ha a jogkivonat nem frissíthető csendesen.  |
-| `MsalDeclinedScopeException`     | Akkor következik be, ha a kiszolgáló egy vagy több kért hatókört visszautasított.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Akkor dobták, ha az erőforráshoz engedélyezve van a MAMCA védelmi szabályzat. |
+| Kivétel                                        | Description                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalException`                                  | A MSAL által kiváltott alapértelmezett kivétel.                           |
+| `MsalClientException`                            | Kidobás, ha a hiba ügyféloldali.                                 |
+| `MsalArgumentException`                          | Ha egy vagy több bemeneti argumentum érvénytelen.                 |
+| `MsalServiceException`                           | Ha a hiba a kiszolgáló oldalon van kiváltva.                                 |
+| `MsalUserCancelException`                        | A rendszer eldobta, ha a felhasználó megszakította a hitelesítési folyamatot.                |
+| `MsalUiRequiredException`                        | Ha a jogkivonat nem frissíthető csendesen.                    |
+| `MsalDeclinedScopeException`                     | Akkor következik be, ha a kiszolgáló egy vagy több kért hatókört visszautasított. |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Akkor dobták, ha az erőforráshoz engedélyezve van a MAMCA védelmi szabályzat.         |
 
 ### <a name="adalerror-to-msalexception-errorcode"></a>ADALError a MsalException ErrorCode
 

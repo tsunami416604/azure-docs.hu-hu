@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266493"
 ---
 # <a name="widevine-license-template-overview"></a>A Widevine-licenc sablonjának áttekintése
@@ -64,10 +64,10 @@ A Widevine-licencszerződés JSON-üzenetként van formázva.
 ```
 
 ## <a name="json-message"></a>JSON-üzenet
-| Name | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | payload |Base64 kódolású karakterlánc |Az ügyfél által eljuttatott licencelési kérelem. |
-| content_id |Base64 kódolású karakterlánc |Az egyes content_key_specshoz tartozó kulcs-azonosító és a tartalmi kulcs származtatása céljából használt azonosító. track_type. |
+| content_id |Base64 kódolású karakterlánc |Az egyes content_key_specs. track_type tartozó kulcs-azonosító és a tartalmi kulcs származtatása céljából használt azonosító. |
 | Szolgáltató |sztring |A tartalmi kulcsok és szabályzatok keresésére szolgál. Ha a Microsoft Key Delivery szolgáltatás a Widevine-licencek kézbesítéséhez használatos, ezt a paramétert a rendszer figyelmen kívül hagyja. |
 | policy_name |sztring |Egy korábban regisztrált szabályzat neve. Választható. |
 | allowed_track_types |Enum |SD_ONLY vagy SD_HD. Meghatározza, hogy mely tartalmi kulcsok szerepeljenek a licencekben. |
@@ -82,16 +82,16 @@ Ha már létezik egy meglévő házirend, nem kell megadnia a tartalmi kulcs spe
 
 Minden content_key_specs értéket meg kell adni az összes pályán, a use_policy_overrides_exclusively lehetőségtől függetlenül. 
 
-| Name | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | content_key_specs. track_type |sztring |A követési típus neve. Ha content_key_specs van megadva a licencelési kérelemben, ügyeljen arra, hogy explicit módon adja meg az összes nyomkövetési típust. Ennek elmulasztása miatt nem sikerült lejátszani az elmúlt 10 másodpercet. |
 | content_key_specs  <br/> security_level |UInt32 |Meghatározza a lejátszáshoz szükséges ügyfél-megbízhatósági követelményeket. <br/> – A szoftveres alapú, fehér dobozos titkosítás szükséges. <br/> – A szoftveres titkosítás és a megzavarodott dekóder szükséges. <br/> – A kulcsfontosságú anyagokat és titkosítási műveleteket egy hardveres megbízható végrehajtási környezetben kell végrehajtani. <br/> – A tartalom titkosítását és visszafejtését hardveres megbízható végrehajtási környezetben kell végrehajtani.  <br/> – A titkosítást, a dekódolást és az adathordozó összes kezelését (tömörített és tömörítetlen) a hardveres megbízhatóságú végrehajtási környezetben kell kezelni. |
 | content_key_specs <br/> required_output_protection. HDC |karakterlánc, az egyik HDCP_NONE, HDCP_V1, HDCP_V2 |Azt jelzi, hogy a HDCP kötelező-e. |
 | content_key_specs <br/>kulcs |Base64<br/>kódolt sztring |A nyomon követéshez használandó tartalmi kulcs. Ha meg van adva, a track_type vagy key_id megadása kötelező. A tartalomszolgáltató ezzel a kapcsolóval szúrhatja be a nyomkövetési kulcsot, ahelyett, hogy a Widevine-licenckiszolgáló létrehoz vagy megkeres egy kulcsot. |
-| content_key_specs. key_id |Base64 kódolású karakterlánc, bináris, 16 bájt |A kulcs egyedi azonosítója. |
+| content_key_specs content_key_specs.key_id |Base64 kódolású karakterlánc, bináris, 16 bájt |A kulcs egyedi azonosítója. |
 
 ## <a name="policy-overrides"></a>Szabályzat felülbírálásai
-| Name | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | policy_overrides. can_play |Boolean, True vagy FALSE |Azt jelzi, hogy a tartalom lejátszása engedélyezett. Az alapértelmezett érték a false (hamis). |
 | policy_overrides. can_persist |Boolean, True vagy FALSE |Azt jelzi, hogy a licenc az offline használat érdekében nem felejtő tárolóban maradhat. Az alapértelmezett érték a false (hamis). |
@@ -106,7 +106,7 @@ Minden content_key_specs értéket meg kell adni az összes pályán, a use_poli
 | policy_overrides. renew_with_usage |Boolean, True vagy FALSE |Azt jelzi, hogy a rendszer a használat megkezdése után elküldi a licencet a megújításhoz. Ez a mező csak akkor használható, ha a can_renew értéke igaz. |
 
 ## <a name="session-initialization"></a>Munkamenet inicializálása
-| Name | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | provider_session_token |Base64 kódolású karakterlánc |Ezt a munkamenet-jogkivonatot visszaadja a licenc, és a későbbi megújításokban van. A munkamenet-jogkivonat nem marad meg a munkameneteken kívül. |
 | provider_client_token |Base64 kódolású karakterlánc |Az ügyfél jogkivonata, amelyet vissza kell küldenie a licencelési válaszban. Ha a licencszerződés tartalmaz egy ügyfél-jogkivonatot, a rendszer figyelmen kívül hagyja ezt az értéket. Az ügyfél-jogkivonat a licencelési munkameneteken kívül is fennáll. |

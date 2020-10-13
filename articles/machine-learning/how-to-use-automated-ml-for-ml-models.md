@@ -12,10 +12,10 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362248"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
@@ -35,7 +35,7 @@ Python-kód alapú felhasználói felület esetén [konfigurálja az automatizá
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md). 
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 1. Jelentkezzen be Azure Machine Learning a következő címen: https://ml.azure.com . 
 
@@ -132,7 +132,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Választható További konfigurációs beállítások megtekintése: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
-    További konfigurációk|Description
+    További konfigurációk|Leírás
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#primary-metric).
     A legjobb modell ismertetése | Az engedélyezés vagy a Letiltás lehetőség kiválasztásával megjelenítheti a javasolt legjobb modell magyarázatait. <br> Ez a funkció jelenleg nem érhető el [bizonyos előrejelzési algoritmusokhoz](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -198,8 +198,8 @@ Az automatizált ML segít programozás nélkül üzembe helyezni a modellt:
 
     Mező| Érték
     ----|----
-    Név| Adja meg a központi telepítés egyedi nevét.
-    Description| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
+    Name (Név)| Adja meg a központi telepítés egyedi nevét.
+    Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)*.
     Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.

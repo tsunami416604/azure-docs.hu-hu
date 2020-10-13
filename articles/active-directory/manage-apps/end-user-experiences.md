@@ -12,10 +12,10 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
 ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90605124"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
@@ -69,7 +69,7 @@ Ha egy jogosult felhasználó rákattint az adott alkalmazásra vonatkozó hivat
 
 Ezek a hivatkozások ugyanazokat a hozzáférés-vezérlési mechanizmusokat használják, mint az alkalmazások és a Microsoft 365, és csak azok a felhasználók vagy csoportok lesznek sikeresek a hitelesítésben, amelyek a Azure Portal alkalmazáshoz vannak rendelve. Azonban minden olyan felhasználó számára, aki nem engedélyezett, megjelenik egy üzenet arról, hogy nem kaptak hozzáférést, és az alkalmazások betöltésére szolgáló hivatkozásra kattintva megtekintheti azokat az elérhető alkalmazásokat, amelyekhez hozzáféréssel rendelkeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Mi az az egyszeri bejelentkezés?](what-is-single-sign-on.md)

@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619780"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>A kifejezések szószedetének Azure SQL Database
@@ -24,7 +24,7 @@ ms.locfileid: "91619780"
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-|Környezet|Kifejezés|További információ|
+|Környezet|Időszak|További információ|
 |:---|:---|:---|
 |Azure-szolgáltatás|Azure SQL Database vagy SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
 |Vásárlási modell|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](database/service-tiers-dtu.md)|
@@ -32,7 +32,7 @@ ms.locfileid: "91619780"
 |Üzembe helyezési lehetőség |Önálló adatbázis|[Önálló adatbázisok](database/single-database-overview.md)|
 ||Rugalmas készlet|[Rugalmas készlet](database/elastic-pool-overview.md)|
 |Szolgáltatási szint|Alapszintű, standard, prémium, általános célú, nagy kapacitású, üzletileg kritikus|A virtuális mag modellben található szolgáltatási szintekért lásd: [SQL Database szolgáltatási szintek](database/service-tiers-vcore.md#service-tiers). A DTU modellben található szolgáltatási szintekért lásd: [DTU-modell](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
-|Számítási szintek|Kiszolgáló nélküli számítástechnika|[Kiszolgáló nélküli számítástechnika](database/service-tiers-vcore.md#compute-tiers)
+|Számítási szint|Kiszolgáló nélküli számítástechnika|[Kiszolgáló nélküli számítástechnika](database/service-tiers-vcore.md#compute-tiers)
 ||Kiépített számítás|[Kiépített számítás](database/service-tiers-vcore.md#compute-tiers)
 |Számítási generáció|Gen5, M-sorozat, Fsv2 sorozat|[Hardver generációi](database/service-tiers-vcore.md#hardware-generations)
 |Kiszolgáló entitása| Kiszolgáló |[Logikai SQL Server-kiszolgálók](database/logical-servers.md)|
@@ -41,14 +41,14 @@ ms.locfileid: "91619780"
 
 ## <a name="azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány
 
-|Környezet|Kifejezés|További információ|
+|Környezet|Időszak|További információ|
 |:---|:---|:---|
-|Azure-szolgáltatás|Felügyelt Azure SQL-példány|[SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md)|
+|Azure-szolgáltatás|Felügyelt Azure SQL-példány|[Felügyelt SQL-példány](managed-instance/sql-managed-instance-paas-overview.md)|
 |Vásárlási modell|Virtuálismag-alapú vásárlási modell|[Virtuálismag-alapú vásárlási modell](database/service-tiers-vcore.md)|
 |Üzembe helyezési lehetőség |Egyetlen példány|[Egyetlen példány](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Példány készlete (előzetes verzió)|[Példánykészletek](managed-instance/instance-pools-overview.md)|
 |Szolgáltatási szint|Általános célú, üzletileg kritikus|[SQL felügyelt példány szolgáltatási szintjei](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
-|Számítási szintek|Kiépített számítás|[Kiépített számítás](database/service-tiers-vcore.md#compute-tiers)|
+|Számítási szint|Kiépített számítás|[Kiépített számítás](database/service-tiers-vcore.md#compute-tiers)|
 |Számítási generáció|Gen5|[Hardver generációi](database/service-tiers-vcore.md#hardware-generations)
 |Kiszolgáló entitása|Felügyelt példány vagy példány| N/A, mert az SQL felügyelt példánya maga a kiszolgáló |
 |Erőforrás típusa|virtuális mag|A felügyelt SQL-példány számítási erőforrásához biztosított CPU-mag.|

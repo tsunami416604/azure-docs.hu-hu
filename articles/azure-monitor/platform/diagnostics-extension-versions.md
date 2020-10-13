@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
 ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568660"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics-bővítmény (WAD) konfigurációs sémájának verziói és előzményei
@@ -21,8 +21,8 @@ Ez a cikk a [Windows (wad)](diagnostics-extension-overview.md) sémájának a Mi
 
 |Azure SDK-verzió | Diagnosztikai bővítmény verziója | Modell|  
 |------------------|-------------------------------|------|  
-|1. x               |1,0                            |beépülő modul|  
-|2,0 – 2,4         |1,0                            |beépülő modul|  
+|1. x               |1.0                            |beépülő modul|  
+|2,0 – 2,4         |1.0                            |beépülő modul|  
 |2,5               |1,2                            |kiterjesztés|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  

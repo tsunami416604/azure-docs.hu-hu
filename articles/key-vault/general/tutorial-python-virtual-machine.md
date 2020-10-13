@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336700"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a Pythonban
@@ -164,6 +164,6 @@ Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót
 az group delete -g myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266323"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépen a bejelentkezéshez 
@@ -97,6 +97,6 @@ Ha ezen hibák valamelyikét megkapja, térjen vissza az Azure-beli virtuális g
 
 Ha valamelyik helytelen, lehetséges, hogy újra telepítenie kell az Azure-erőforrásokhoz tartozó felügyelt identitásokat az erőforráson, vagy hibaelhárítást kell végeznie az üzembe helyezési hiba miatt. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Azure-beli virtuális gépen lévő Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása](qs-configure-powershell-windows-vm.md)Azure-beli virtuális gépen Azure-beli virtuális gépeken a PowerShell használatával, illetve felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure [CLI használatával](qs-configure-cli-windows-vm.md)

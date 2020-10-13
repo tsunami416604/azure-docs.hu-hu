@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
 ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358916"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Ha a parancssori felület helyi telepítését és használatát választja, az oktatóanyaghoz az Azure CLI 2.0.30 vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ha egynél több előfizetéssel rendelkezik, [állítsa be azt az előfizetést](/cli/azure/manage-azure-subscriptions-azure-cli) , amelyre telepíteni kívánja ezeket az erőforrásokat.
 
@@ -1216,7 +1216,7 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 

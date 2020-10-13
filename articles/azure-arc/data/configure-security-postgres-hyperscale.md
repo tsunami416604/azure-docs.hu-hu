@@ -1,6 +1,6 @@
 ---
-title: Az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport biztonságának konfigurálása
-description: Az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport biztonságának konfigurálása
+title: Biztonság konfigurálása az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport számára
+description: Biztonság konfigurálása az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport számára
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273200"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport biztonságának konfigurálása
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Biztonság konfigurálása az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport számára
 
 Ez a dokumentum a kiszolgálócsoport biztonságával kapcsolatos különböző szempontokat ismerteti:
 - Titkosítás inaktív állapotban
@@ -150,7 +150,7 @@ Ez a kis példa azt mutatja be, hogy a postgres-bővítmény használatával tit
 
 ## <a name="user-management"></a>Felhasználókezelés
 ### <a name="general-perspectives"></a>Általános perspektívák
-A felhasználók vagy szerepkörök létrehozásához használhatja a standard postgres-módszert. Ha azonban így tesz, ezek az összetevők csak a koordinátor szerepkörön lesznek elérhetők. Az előzetes verzió ideje alatt ezek a felhasználók/szerepkörök még nem férnek hozzá a koordinátor csomóponton és a kiszolgálócsoport munkavégző csomópontjain kívül terjesztett adatokhoz. Ennek az az oka, hogy az előzetes verzióban a felhasználó definíciója nem replikálódik a munkavégző csomópontokra.
+A felhasználók vagy szerepkörök létrehozásához használhatja a standard postgres-módszert. Azonban ha ezt választja, ezek az összetevők csak a koordinátori szerepkörben lesznek elérhetők. Az előzetes verzióban ezek a felhasználók/szerepkörök még nem férnek hozzá a kiszolgálócsoport koordinátor-csomópontján és munkavégző csomópontjain kívül terjesztett adatokhoz. Ennek az az oka, hogy az előzetes verzióban a felhasználó definíciója nem lesz a munkavégző csomópontokra replikálva.
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>A _postgres_ rendszergazdai felhasználó jelszavának módosítása
 Az Azure arc engedélyezve PostgreSQL nagy kapacitású a szabványos postgres rendszergazdai felhasználói _postgres_ tartozik, amelyhez a kiszolgáló csoport létrehozásakor a jelszót állítja be.

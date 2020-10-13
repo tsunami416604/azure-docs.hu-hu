@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
 ms.openlocfilehash: f5e999e50818ab6374ce09dd6920cb5dc3dabc82
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362435"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio (klasszikus) munkaterület üzembe helyezése Azure Resource Manager használatával
@@ -132,7 +132,7 @@ Az üzembe helyezés befejezése után egyszerűen hozzáférhet a telepített m
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-A meglévő munkaterület jogkivonatának beolvasására egy másik módszer a Meghívási-AzResourceAction parancs használata. Például listázhatja az összes munkaterület elsődleges és másodlagos jogkivonatait.
+A meglévő munkaterület jogkivonatának beolvasásának másik módja az Invoke-AzResourceAction parancs használata. Például listázhatja az összes munkaterület elsődleges és másodlagos jogkivonatait.
 
 ```powershell
 # List the primary and secondary tokens of all workspaces

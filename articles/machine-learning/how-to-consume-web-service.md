@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756670"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966100"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
 
@@ -46,7 +46,9 @@ A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azur
 * `scoring_uri` – A REST API címe.
 * `swagger_uri` – A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
-Az alábbi három módon kérheti le ezeket az információkat az üzembe helyezett webszolgáltatások számára:
+Ezen információk több módon is beolvashatók az üzembe helyezett webszolgáltatásokhoz:
+
+# <a name="python"></a>[Python](#tab/python)
 
 * Modell telepítésekor a rendszer egy `Webservice` objektumot ad vissza a szolgáltatással kapcsolatos információkkal:
 
@@ -72,6 +74,30 @@ Az alábbi három módon kérheti le ezeket az információkat az üzembe helyez
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ha ismeri a telepített szolgáltatás nevét, használja az az [ml Service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) parancsot:
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Azure Machine Learning studióból válassza a __végpontok__, a __valós idejű végpontok__, majd a végpont nevét. A végpont részleteit a REST- __végpont__ mező tartalmazza a pontozási URI-t. A __hencegés URI__ -ja tartalmazza a HENCEGő URI-t.
+
+---
+
+A következő táblázat az URI-k megjelenését szemlélteti:
+
+| URI-típus | Példa |
+| ----- | ----- |
+| Pontozási URI | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Hencegő URI | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> Az IP-cím eltérő lesz az üzemelő példánynál. Mindegyik AK-fürt saját IP-címmel rendelkezik, amelyet az adott fürtön üzemelő központi telepítések közösen kapnak.
 
 ### <a name="secured-web-service"></a>Biztonságos webszolgáltatás
 
@@ -268,7 +294,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="call-the-service-go"></a>A szolgáltatás meghívása (go)
 
-Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) létrehozott webszolgáltatás meghívásához:
+Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) létrehozott webszolgáltatás meghívásához:
 
 ```go
 package main
@@ -360,7 +386,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="call-the-service-java"></a>A szolgáltatás meghívása (Java)
 
-Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) létrehozott webszolgáltatás meghívására:
+Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) létrehozott webszolgáltatás meghívására:
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="call-the-service-python"></a>Szolgáltatás meghívása (Python)
 
-Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) létrehozott webszolgáltatás meghívásához:
+Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) létrehozott webszolgáltatás meghívásához:
 
 ```python
 import requests

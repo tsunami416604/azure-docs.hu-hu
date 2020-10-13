@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017141"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Az adatméretezési sebesség kiépítése a Azure Cosmos DB adatbázisán vagy tárolóján
@@ -47,7 +47,7 @@ Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az auto
 
 1. A **skála**területen válassza az **autoskálázás** lehetőséget, és **mentse**.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Az autoskálázás engedélyezése egy meglévő tárolón":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása":::
 
 > [!NOTE]
 > Ha engedélyezi az automatikus méretezést egy meglévő adatbázison vagy tárolón, a maximális RU/s értékét a rendszer határozza meg, az aktuális manuális kiépített átviteli sebesség beállításaitól és tárterülettől függően. A művelet befejezése után szükség esetén módosíthatja a maximális RU/mp-t. [Részletek](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

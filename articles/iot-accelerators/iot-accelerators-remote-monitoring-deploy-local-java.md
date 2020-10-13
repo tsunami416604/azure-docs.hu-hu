@@ -10,10 +10,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319167"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldás helyi telepítése – IntelliJ
@@ -191,10 +191,10 @@ Minden webszolgáltatás megnyílik egy parancssori ablak és egy webböngésző
 
 A szolgáltatások állapotának eléréséhez nyissa meg a következő URL-címeket:
 
-* IoT-hub kezelője:`http://localhost:9002/v1/status`
-* Eszköz telemetria:`http://localhost:9004/v1/status`
-* config`http://localhost:9005/v1/status`
-* Storage-adapter:`http://localhost:9022/v1/status`
+* IoT-Hub Manager: `http://localhost:9002/v1/status`
+* Eszköz telemetria: `http://localhost:9004/v1/status`
+* config `http://localhost:9005/v1/status`
+* Storage-adapter: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladatok elindítása
 

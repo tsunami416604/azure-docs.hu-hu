@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan telepítheti és konfigurálhatja a VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 69832d1537f0f1be95d3283f543ef6e54187b58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341de74c8034eb60c5738720f730ab6b0f0f127f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91583347"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948595"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -37,6 +37,7 @@ Ha elkészült, a cikk végén a javasolt következő lépések közül választ
 * Igény szerint áttekintheti a [VMware HCX üzembe helyezési szempontjait](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Ha szeretné áttekinteni a kapcsolódó VMware-anyagokat a HCX-on, mint például a VMware vSphere [blog sorozat](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) a HCX. 
 * Az Azure VMware-megoldás HCX nagyvállalati aktiválást is igényelhet az Azure VMware megoldás-támogatási csatornákon keresztül.
+* [Szükség esetén áttekintheti a HCX szükséges hálózati portokat](https://ports.vmware.com/home/VMware-HCX).
 * A WAN Interconnect-berendezés üzembe helyezéséhez az adott CIDR-tartomány már le van foglalva a `\22` saját felhő létrehozásához megadott ügyfélből.
 
 A számítási és tárolási erőforrások méretezése alapvető tervezési lépés. A méretezési lépést a saját felhőalapú környezet kezdeti megtervezésének részeként kell kezelni. 
