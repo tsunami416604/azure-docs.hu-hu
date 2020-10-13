@@ -13,7 +13,7 @@ ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854557"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
@@ -567,7 +567,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Név | Érték |
+| Name (Név) | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |
@@ -786,7 +786,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

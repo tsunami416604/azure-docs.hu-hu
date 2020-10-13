@@ -1,18 +1,18 @@
 ---
-title: 'Számítógép csatlakoztatása virtuális hálózathoz pont–hely kapcsolat és tanúsítványalapú hitelesítés használatával: klasszikus Azure Portal | Microsoft Docs'
+title: 'Számítógép összekötése virtuális hálózathoz pont – hely kapcsolat és tanúsítványalapú hitelesítés használatával: Azure Portal klasszikus | Microsoft Docs'
 description: Klasszikus pont–hely VPN-átjárókapcsolat létrehozása az Azure Portalon.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0618c120a7fe572aa55b423d36dce3ef5656da
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984797"
+ms.locfileid: "91876192"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása tanúsítványalapú hitelesítés használatával (klasszikus)
 
@@ -79,31 +79,11 @@ Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e Azure-előfizetéssel. Ha 
 
 ### <a name="part-1-create-a-virtual-network"></a>1. rész: Virtuális hálózat létrehozása
 
-Ha még nem rendelkezik virtuális hálózattal (VNet), hozzon létre egyet. A képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. Az alábbi lépésekkel hozhat létre virtuális hálózatokat az Azure portállal:
+Ha már rendelkezik egy virtuális hálózattal, győződjön meg arról, hogy a beállításai kompatibilisek a VPN-átjáró kialakításával. Különösen ügyeljen az esetleges olyan alhálózatokra, amelyek átfedésbe kerülhetnek más hálózatokkal.
 
-1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Megnyílik az **új** oldal.
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
 
-2. A **Keresés a piactéren** mezőbe írja be a *virtuális hálózat* kifejezést, és válassza a **virtuális hálózat** elemet a visszaadott listából. Megnyílik a **virtuális hálózat** lap.
-
-3. A **telepítési modell kiválasztása** listában válassza a **klasszikus**lehetőséget, majd válassza a **Létrehozás**lehetőséget. Megnyílik a **virtuális hálózat létrehozása** lap.
-
-4. A **Virtuális hálózat létrehozása** lapon konfigurálja a VNet beállításait. Ezen a lapon adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A virtuális hálózat létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel.
-
-   ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
-
-5. Válassza ki a használni kívánt **előfizetést** a legördülő listából.
-
-6. Válasszon ki egy meglévő **erőforráscsoportot**. Vagy hozzon létre egy új erőforráscsoportot az **új létrehozása** elem kiválasztásával, és adjon meg egy nevet. Ha új erőforráscsoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md#resource-groups).
-
-7. Válassza ki a VNet **helyét** . Ez a beállítás határozza meg a VNet üzembe helyezett erőforrások földrajzi helyét.
-
-8. Válassza a **Létrehozás** lehetőséget a VNet létrehozásához. Az **értesítések** lapon megjelenik egy **központi telepítés folyamatban lévő** üzenetben.
-
-8. A virtuális hálózat létrehozása után az **értesítések** lapon lévő üzenet az **üzembe helyezés sikeres**állapotba kerül. Válassza a **rögzítés az irányítópulton** lehetőséget, ha szeretné könnyen megkeresni a VNet az irányítópulton. 
-
-10. Adjon meg egy DNS-kiszolgálót (nem kötelező). Miután létrehozta a virtuális hálózatot, a névfeloldás érdekében hozzáadhatja egy DNS-kiszolgáló IP-címét. A DNS-kiszolgáló megadott IP-címének egy olyan DNS-kiszolgáló címének kell lennie, amely fel tudja oldani a virtuális hálózatban található erőforrások nevét.
-
-    DNS-kiszolgáló hozzáadásához válassza ki a **DNS-kiszolgálók** elemet a VNet oldaláról. Ezután adja meg a használni kívánt DNS-kiszolgáló IP-címét, majd válassza a **Mentés**lehetőséget.
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>2. rész: átjáró-alhálózat és dinamikus útválasztási átjáró létrehozása
 
@@ -280,7 +260,7 @@ A frissítés befejezését követően a tanúsítvány már nem használható c
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-point-to-site-classic-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kapcsolódás befejezése után virtuális gépeket adhat hozzá a virtuális hálózatokhoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/). 
 

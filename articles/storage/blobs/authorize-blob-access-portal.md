@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperfq1
 ms.openlocfilehash: a4c32877ddb260e90fb4121b16a9b318616c2a4d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715828"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a blob-adathozzáférést a Azure Portal
@@ -39,7 +39,7 @@ Ahhoz, hogy a blob-információk hozzáférhessenek a fiók elérési kulcsához
 Amikor megpróbál hozzáférni a blob-adathoz a Azure Portalban, a portál először ellenőrzi, hogy van-e hozzárendelve szerepkör a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelethez**. Ha ezzel a művelettel társított egy szerepkört, akkor a portál a fiók kulcsát használja a Blobok adatokhoz való hozzáféréshez. Ha nem rendelt hozzá szerepkört ezzel a művelettel, akkor a portál az Azure AD-fiókjával próbál hozzáférni az adataihoz.
 
 > [!NOTE]
-> A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és a társ-rendszergazda a Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt adja meg. A **tulajdonosi** szerepkör magában foglalja az összes műveletet, beleértve a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a blob-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és Co-Administrator tartalmazza a Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt. A **tulajdonosi** szerepkör magában foglalja az összes műveletet, beleértve a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a blob-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Az Azure AD-fiók használata
 
@@ -108,7 +108,7 @@ A blob-feltöltési műveletek engedélyezésének megadásához kövesse az al�
 
     :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](../common/storage-auth-aad.md)
 - [A Azure Portal használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-portal.md)

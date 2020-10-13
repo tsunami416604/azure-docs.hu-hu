@@ -15,7 +15,7 @@ ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856365"
 ---
 # <a name="get-face-detection-data"></a>Arcfelismerés-adatlekérdezés
@@ -76,7 +76,7 @@ Ezután szerezzen be a visszaadott adatokra mutató hivatkozásokat, és tegye m
 
 Ha többet szeretne megtudni az egyes attribútumokról, tekintse meg a [arcfelismerés és attribútumok](../concepts/face-detection.md) fogalmi útmutatót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a Arcfelismerés különböző funkcióit. Ezután integrálja ezeket a funkciókat az alkalmazásba egy részletes oktatóanyag követésével.
 

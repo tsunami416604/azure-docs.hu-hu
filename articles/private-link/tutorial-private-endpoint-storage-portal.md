@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: 69bee753c2134b6eebe9c5df0a554c965208ad7c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91366226"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás egy Storage-fiókhoz egy Azure Private-végpont használatával
@@ -124,7 +124,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | NIC hálózati biztonsági csoport | **Basic**|
     | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
    
-5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -161,7 +161,7 @@ Ebben a szakaszban létrehoz egy Storage-fiókot, és konfigurálja a magánhál
     | Előfizetés | Válassza ki az Azure-előfizetését |
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | Hely | Válassza ki az **USA keleti** régióját |
-    | Name | **MyPrivateEndpoint** megadása |
+    | Név | **MyPrivateEndpoint** megadása |
     | Tárolási alerőforrás | Hagyja meg az alapértelmezett **blobot** |
     | **Hálózat** |  |
     | Virtuális hálózat | **MyVNet** kiválasztása |
@@ -234,7 +234,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 16. Ellenőrizze, hogy helyesek-e a beállítások a **kapcsolatok összegzésében**.  
 
-17. Válassza a **Kapcsolódás** lehetőséget.
+17. Kattintson a **Csatlakozás** gombra.
 
 18. A **myVM**létesített kapcsolatok lezárása.
 

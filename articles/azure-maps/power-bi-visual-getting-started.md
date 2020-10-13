@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362671"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Bevezetés a Azure Maps Power BI vizualizáció használatába
@@ -135,7 +135,7 @@ A Azure Maps vizualizáció a következő szolgáltatásokban és alkalmazásokb
 | Power BI mobilalkalmazások             | Igen          |
 | Power BI webes közzététel                  | Nem           |
 | Power BI Embedded                        | Nem           |
-| Power BI szolgáltatás beágyazása (PowerBI.com) | Yes          |
+| Power BI szolgáltatás beágyazása (PowerBI.com) | Igen          |
 
 További Power BI szolgáltatások/alkalmazások támogatása a jövőbeli frissítésekben lesz hozzáadva.
 

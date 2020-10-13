@@ -12,7 +12,7 @@ ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855667"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight
 | Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint |Nem támogatott teljesítményszint| Támogatott hozzáférési szintek |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (általános célú v2)  | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
-| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N/A                    |
+| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N.A.                    |
 | BlobStorage                    | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
 
 Nem javasoljuk, hogy az üzleti adattároláshoz használja az alapértelmezett BLOB-tárolót. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
@@ -166,7 +166,7 @@ HDInsight-fürt létrehozásakor meg kell adnia azt az Azure Storage-fiókot, am
 > [!WARNING]  
 > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtanulta, hogyan használhat HDFS-kompatibilis Azure-tárolót a HDInsighttal. Ez a tároló lehetővé teszi az adaptív, hosszú távú, archivált adatgyűjtési megoldások kiépítését, és a HDInsight használatával feloldja a tárolt strukturált és strukturálatlan adatokon belüli információkat.
 

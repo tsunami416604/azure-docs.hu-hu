@@ -12,7 +12,7 @@ ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856687"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight
@@ -220,6 +220,6 @@ A következő módokon adhat hozzá további Storage-fiókot:
 
 További információkért lásd: [Add additional storage accounts to HDInsight](../hdinsight-hadoop-add-storage.md) (További tárfiókok hozzáadása a HDInsighthoz).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket ebben a sorozatban: az [adatáttelepítés ajánlott eljárásai a helyszíni Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-data-migration.md).

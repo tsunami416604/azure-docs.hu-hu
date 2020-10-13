@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712272"
 ---
 # <a name="harden-your-docker-hosts"></a>A Docker-gazdagépek megerősítése
@@ -32,7 +32,7 @@ A biztonsági rések észlelése esetén egyetlen javaslaton belül vannak csopo
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|Az **olvasó** azon a munkaterületen, amelyhez a gazdagép csatlakozik|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Biztonsági rések azonosítása és szervizelése a Docker-konfigurációban

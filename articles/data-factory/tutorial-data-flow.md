@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569891"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
@@ -131,7 +131,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 
     Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
 
-    ![Szűrés](media/tutorial-data-flow/filter2.png)
+    ![Szűrő](media/tutorial-data-flow/filter2.png)
 
     Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
 

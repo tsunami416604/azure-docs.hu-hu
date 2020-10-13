@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
 ms.openlocfilehash: 07eae453441ea8bff81d7cdb60f9c46c08a22829
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851173"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>Egyéni IPsec-házirend konfigurálása a virtuális WAN-hoz a portál használatával
@@ -35,6 +35,6 @@ Egyéni IPsec-házirendet konfigurálhat egy virtuális WAN VPN-kapcsolathoz a A
 
    ![konfigurálás és mentés](./media/virtual-wan-custom-ipsec-portal/edit.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570002"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>A PostgreSQL nagy kapacitású-kiszolgálócsoportok hibaelhárítása
@@ -31,7 +31,7 @@ vagy
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Például:
+Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Példa:
 ```console
 azdata arc postgres server create --help
 ```

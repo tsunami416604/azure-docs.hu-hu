@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
 ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803806"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor hálózatok számára (előzetes verzió)
@@ -144,7 +144,7 @@ Az időtartomány az irányítópult beállításaitól függ.
 Szerkesztheti a megjelenő munkafüzetet bármelyik oldalsó panelen és részletes mérőszám nézetben, a szerkesztési mód használatával, majd mentheti a munkáját új munkafüzetként, amely az összes új módosítást tartalmazni fogja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a hálózati monitorozásról: [Mi az az Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).
 - Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.

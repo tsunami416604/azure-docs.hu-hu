@@ -64,8 +64,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: Ajánlott fürtkezelési eljárások
           href: ./cluster-management-best-practices.md
-        - name: Rendelkezésre állás és megbízhatóság
-          href: ./hdinsight-high-availability-linux.md
+        - name: Az üzletmenet folytonossága
+          items:
+            - name: Az üzletmenet folytonossága – áttekintés
+              href: hdinsight-business-continuity.md
+            - name: Az üzletmenet folytonossága – architektúra
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: Magas rendelkezésre állás – esettanulmány
+              href: ./hdinsight-high-availability-case-study.md
         - name: Felhasználó által hozzárendelt felügyelt identitások kezelése
           href: ./hdinsight-managed-identities.md
         - name: Tárolási lehetőségek összehasonlítása
@@ -102,10 +108,14 @@
           items:
             - name: Az Azure Storage használata
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: A 2. generációs Azure Data Lake Storage használata
+            - name: A Data Lake Storage Gen2 használata
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Az 1. generációs Azure Data Lake Storage használata
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: A Data Lake Storage Gen2 használata a portálon
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: A Data Lake Storage Gen2 használata az Azure CLI-vel
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: A Data Lake Storage Gen1 használata
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: Fürtök kiterjesztése
           items:
             - name: HDInsight-alkalmazások telepítése
@@ -757,6 +767,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Méretezési irányelvek
           href: ./interactive-query/sizing-guidelines.md
+        - name: Hive-replikáció
+          href: ./interactive-query/apache-hive-replication.md
     - name: Útmutatók
       items:
         - name: Fejlesztés

@@ -15,7 +15,7 @@ ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856484"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Átfedésmentes ablakban folyamatot futtató trigger létrehozása
@@ -238,7 +238,7 @@ Ez a szakasz bemutatja, hogyan használható a Azure PowerShell egy trigger lét
     
 Az trigger-futtatások és a folyamat-futtatások figyeléséhez a Azure Portalban lásd: [folyamatok futtatásának figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).
 * [Függőség létrehozása átfedésmentes ablak eseményindítójához](tumbling-window-trigger-dependency.md)

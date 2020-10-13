@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f217a53c23df4f161207aaceb528680ddcddbe7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88705697"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972798"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Nem csatolt, Azure által felügyelt és nem felügyelt lemezek keresése és törlése
 
@@ -20,7 +20,7 @@ Amikor töröl egy virtuális gépet (VM) az Azure-ban, alapértelmezés szerint
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Felügyelt lemezek: nem csatolt lemezek keresése és törlése
 
-A következő parancsfájl a nem csatlakoztatott [felügyelt lemezeket](managed-disks-overview.md) keresi a **többé** tulajdonság értékének vizsgálatával. Ha egy felügyelt lemez egy virtuális géphez van csatlakoztatva, a **többé** tulajdonság tartalmazza a virtuális gép erőforrás-azonosítóját. Ha egy felügyelt lemez nincs csatlakoztatva, a **többé** tulajdonság null értékű. A parancsfájl megvizsgálja az Azure-előfizetések összes felügyelt lemezét. Ha a parancsfájl egy olyan felügyelt lemezt keres, amelynek **többé** tulajdonsága NULL értékűre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
+A következő parancsfájl a nem csatlakoztatott [felügyelt lemezeket](../managed-disks-overview.md) keresi a **többé** tulajdonság értékének vizsgálatával. Ha egy felügyelt lemez egy virtuális géphez van csatlakoztatva, a **többé** tulajdonság tartalmazza a virtuális gép erőforrás-azonosítóját. Ha egy felügyelt lemez nincs csatlakoztatva, a **többé** tulajdonság null értékű. A parancsfájl megvizsgálja az Azure-előfizetések összes felügyelt lemezét. Ha a parancsfájl egy olyan felügyelt lemezt keres, amelynek **többé** tulajdonsága NULL értékűre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
 
 >[!IMPORTANT]
 >Először futtassa a szkriptet úgy, hogy a **deleteUnattachedDisks** változót 0-ra állítja. Ezzel a művelettel megkeresheti és megtekintheti az összes nem csatlakoztatott felügyelt lemezt.
@@ -85,6 +85,6 @@ foreach($storageAccount in $storageAccounts){
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: Storage- [fiók törlése](../../storage/common/storage-account-create.md#delete-a-storage-account) és [árva lemezek azonosítása a PowerShell használatával](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell)

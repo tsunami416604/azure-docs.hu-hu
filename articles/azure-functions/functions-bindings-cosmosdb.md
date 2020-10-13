@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531576"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876039"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1. x Azure Cosmos DB kötései
 
@@ -178,11 +178,11 @@ A JavaScript nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDBTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n.a. | Értékre kell állítani `cosmosDBTrigger` . |
-|**irányba** | n.a. | Értékre kell állítani `in` . Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n.a. | A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
+|**típusa** | n/a | Értékre kell állítani `cosmosDBTrigger` . |
+|**irányba** | n/a | Értékre kell állítani `in` . Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a | A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB-fiókhoz való kapcsolódáshoz használt kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. |
 |**databaseName**|**DatabaseName**  | Annak a Azure Cosmos DB-adatbázisnak a neve, amelyen a megfigyelt gyűjtemény szerepel. |
 |**collectionName** |**CollectionName** | A figyelni kívánt gyűjtemény neve. |
@@ -211,9 +211,11 @@ Az triggerhez egy második gyűjteményre van szükség, amelyet a a partíciók
 
 Az trigger nem jelzi, hogy a dokumentumot frissítették vagy beszúrták-e, csak magát a dokumentumot biztosítja. Ha a frissítéseket és a lapkákat különbözőképpen kell kezelnie, ezt megteheti a beszúráshoz vagy a frissítéshez tartozó időbélyegző-mezők megvalósításával.
 
-## <a name="input"></a>Bevitel
+## <a name="input"></a>Input (Bemenet)
 
 Az Azure Cosmos DB bemeneti adatkötése az SQL API-t használja egy vagy több Azure Cosmos DB-dokumentum lekérésére, majd átadja ezeket a függvény bemeneti paraméterének. A dokumentumazonosítót vagy lekérdezési paramétereket a függvényt meghívó eseményindító alapján lehet meghatározni.
+
+## <a name="input---example"></a>Bemenet – példa
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1113,11 +1115,11 @@ A JavaScript nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `DocumentDB` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**     | n.a. | Értékre kell állítani `documentdb` .        |
-|**irányba**     | n.a. | Értékre kell állítani `in` .         |
-|**név**     | n.a. | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**típusa**     | n/a | Értékre kell állítani `documentdb` .        |
+|**irányba**     | n/a | Értékre kell állítani `in` .         |
+|**név**     | n/a | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
 |**databaseName** |**DatabaseName** |A dokumentumot tartalmazó adatbázis.        |
 |**collectionName** |**CollectionName** | A dokumentumot tartalmazó gyűjtemény neve. |
 |**id**    | **ID** | A lekérdezni kívánt dokumentum azonosítója. Ez a tulajdonság támogatja a [kötési kifejezéseket](./functions-bindings-expressions-patterns.md). Ne állítsa be az **ID** és a **sqlQuery** tulajdonságokat is. Ha nem állítja be az egyiket, a rendszer lekéri a teljes gyűjteményt. |
@@ -1146,6 +1148,8 @@ A rendszer nem végez automatikusan frissítéseket a függvény kilépése utá
 ## <a name="output"></a>Kimenet
 
 A Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy új dokumentumot írjon egy Azure Cosmos DB-adatbázisba az SQL API használatával.
+
+## <a name="output---example"></a>Kimenet – példa
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1452,11 +1456,11 @@ A JavaScript nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `DocumentDB` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**     | n.a. | Értékre kell állítani `documentdb` .        |
-|**irányba**     | n.a. | Értékre kell állítani `out` .         |
-|**név**     | n.a. | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**típusa**     | n/a | Értékre kell állítani `documentdb` .        |
+|**irányba**     | n/a | Értékre kell állítani `out` .         |
+|**név**     | n/a | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
 |**databaseName** | **DatabaseName**|A gyűjteményt tartalmazó adatbázis, amelyben a dokumentumot létrehozták.     |
 |**collectionName** |**CollectionName**  | Annak a gyűjteménynek a neve, amelyben a dokumentumot létrehozták. |
 |**Createifnotexists metódust**  |**Createifnotexists metódust**    | Logikai érték, amely azt jelzi, hogy a gyűjtemény létrejött-e, ha nem létezik. Az alapértelmezett érték a *false (hamis* ), mert az új gyűjtemények fenntartott átviteli sebességgel jönnek létre, ami a költségeket is érinti. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
@@ -1475,7 +1479,7 @@ Alapértelmezés szerint, amikor a függvény kimeneti paraméterére ír, létr
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Hivatkozás |
+| Kötés | Referencia |
 |---|---|
 | CosmosDB | [CosmosDB-hibakódok](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 

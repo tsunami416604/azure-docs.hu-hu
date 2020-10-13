@@ -8,10 +8,10 @@ ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
 ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714375"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer biztonsági útmutató
@@ -100,6 +100,6 @@ A blob-tárolók nyilvános hozzáférésének engedélyezésekor a következő 
 - **Ne engedélyezze a nyilvános hozzáférést olyan blob-tárolóhoz, amely potenciálisan bizalmas adatokat tartalmazhat.** Győződjön meg arról, hogy a blob-tároló ingyenes az összes magánjellegű adattal.
 - **Ne töltsön fel semmilyen potenciálisan bizalmas adatokat blob-tárolóba blob-vagy tároló-hozzáféréssel.** 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Biztonsági javaslatok](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)

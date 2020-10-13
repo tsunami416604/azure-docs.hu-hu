@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: a01d4137217aa594d4636f3338d3f33dc03cc836
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713747"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
@@ -51,7 +51,7 @@ Az Azure Defender engedélyezése:
 1. A Security Center főmenüjében válassza a **díjszabás & beállítások**lehetőséget.
 1. Válassza ki a frissíteni kívánt előfizetést.
 1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
 
@@ -65,7 +65,7 @@ Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Me
 > Az **Azure Database for MariaDB/MySQL/PostgreSQL** veszélyforrások elleni védelmét csak az erőforrás szintjén engedélyezheti.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben a Security Center díjszabását vezették be. Kapcsolódó anyagok esetében lásd:
 
 - [Az Azure számítási feladatok költségeinek optimalizálása](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)

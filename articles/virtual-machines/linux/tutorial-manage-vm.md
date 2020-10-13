@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: aeb44a52dc7a83321752bb00e09270fe7bfd0bbe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263095"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972186"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -251,7 +251,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 
 ### <a name="power-states"></a>Energiaállapotok
 
-| Energiaállapot | Leírás
+| Energiaállapot | Description
 |----|----|
 | Indítás | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
 | Futó | Azt jelzi, hogy a virtuális gép fut. |
@@ -280,7 +280,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
+Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
 
 ## <a name="management-tasks"></a>Felügyeleti feladatok
 
@@ -314,7 +314,7 @@ Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás is 
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a virtuális gépek létrehozásának és kezelésének alapvető műveleteivel ismerkedett meg, például:
 

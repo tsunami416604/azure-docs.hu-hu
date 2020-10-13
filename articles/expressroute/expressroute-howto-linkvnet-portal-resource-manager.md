@@ -12,7 +12,7 @@ ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855353"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Oktatóanyag: virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a portál használatával
@@ -129,7 +129,7 @@ Az áramkör-felhasználónak szüksége van az erőforrás-AZONOSÍTÓra és eg
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
 5. A **Beállítások** lapon válassza ki a **virtuális hálózati átjárót** , és jelölje be az **Engedélyezés beváltása** jelölőnégyzetet.
-6. Adja meg az **engedélyezési kulcsot** és a **társ áramköri URI** -t, és adjon nevet a kapcsolatnak. Válassza az **OK** lehetőséget. A **társ áramköri URI** a ExpressRoute áramkör erőforrás-azonosítója (amelyet a ExpressRoute-áramkör tulajdonságok beállítása paneljén talál).
+6. Adja meg az **engedélyezési kulcsot** és a **társ áramköri URI** -t, és adjon nevet a kapcsolatnak. Kattintson az **OK** gombra. A **társ áramköri URI** a ExpressRoute áramkör erőforrás-azonosítója (amelyet a ExpressRoute-áramkör tulajdonságok beállítása paneljén talál).
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
@@ -143,7 +143,7 @@ Az engedélyezést a ExpressRoute áramkört a virtuális hálózathoz összekö
 
 Törölheti a kapcsolatot, és leválaszthatja a VNet egy ExpressRoute-áramkörhöz úgy, hogy a kapcsolat lapján a **Törlés** ikonra kattint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztatható egy virtuális hálózat egy adott előfizetésben és egy másik előfizetésben található áramkörhöz. Az ExpressRoute-átjáróval kapcsolatos további információkért lásd: 
 

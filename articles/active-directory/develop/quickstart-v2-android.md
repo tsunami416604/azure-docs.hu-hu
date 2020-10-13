@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612897"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893509"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -111,7 +111,7 @@ Most megtekintjük ezeket a fájlokat részletesebben, és megvizsgáljuk a MSAL
 A MSAL ([com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Gradle 3.0 + telepíti a könyvtárat, amikor hozzáadja a következőt a **Gradle-szkriptek**  >  **Build. Gradle (modul: alkalmazás)** alatt a **függőségek**területen:
 
 ```gradle
-implementation 'com.microsoft.identity.client:msal:1.+'
+implementation 'com.microsoft.identity.client:msal:2.+'
 ```
 
 Ezt a Build. gradle (modul: alkalmazás) projektben láthatja:
@@ -119,7 +119,7 @@ Ezt a Build. gradle (modul: alkalmazás) projektben láthatja:
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.+'
+    implementation 'com.microsoft.identity.client:msal:2.+'
     ...
 }
 ```
@@ -476,7 +476,7 @@ A konfigurációs fájl [auth_config_single_account.jstól](#auth_config_single_
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be az Android-oktatóanyagba, amelyben létrehoz egy olyan Android-alkalmazást, amely a Microsoft Identity platform hozzáférési jogkivonatát kapja, és a használatával hívja meg a Microsoft Graph API-t.
 

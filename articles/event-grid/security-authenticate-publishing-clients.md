@@ -8,7 +8,7 @@ ms.openlocfilehash: d38d4ffc868d442980cda576ea158704231f9efb
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856330"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Közzétételi ügyfelek hitelesítése (Azure Event Grid)
@@ -95,5 +95,5 @@ aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f
 Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az események kézbesítéséhez az eseménykezelővel való hitelesítés megismeréséhez tekintse meg az [esemény kézbesítésének hitelesítését](security-authentication.md) ismertető témakört. 

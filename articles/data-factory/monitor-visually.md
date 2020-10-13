@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570142"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
@@ -36,7 +36,7 @@ Az alapértelmezett figyelési nézet a folyamat futtatásának listáját tarta
 | Futtatás indítása | A folyamat futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
 | Aktiválta: | A folyamatot elindító trigger neve |
-| Állapot | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
+| status | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
 | Széljegyzetek | Egy folyamathoz társított szűrhető Címkék  |
 | Paraméterek | A folyamat futtatásának paraméterei (név/érték párok) |
 | Hiba | Ha a folyamat nem sikerült, a futtatási hiba |
@@ -59,7 +59,7 @@ Ha a tevékenységek futtatását szeretné megtekinteni az egyes folyamatokhoz,
 | Műveletek | Ikonok, amelyekkel megtekintheti a JSON bemeneti adatait, a JSON kimeneti adatait vagy a tevékenységekre vonatkozó részletes figyelési tapasztalatokat | 
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
-| Állapot | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
+| status | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
 | Integration Runtime | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |
 | Hiba | Ha a tevékenység nem sikerült, a futtatási hiba |

@@ -2,7 +2,7 @@
 title: Hálózati biztonsági csoportra vonatkozó riasztások feloldása az Azure AD DSban | Microsoft Docs
 description: Útmutató a hálózati biztonsági csoport konfigurációs értesítéseinek hibaelhárításához és megoldásához Azure Active Directory Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962785"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
@@ -38,7 +38,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Prioritás | Name (Név) | Port | Protokoll | Forrás | Cél | Művelet |
+| Prioritás | Name | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | Engedélyezés |
@@ -52,7 +52,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Prioritás | Name (Név) | Port | Protokoll | Forrás | Cél | Művelet |
+| Prioritás | Name | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |
@@ -84,7 +84,7 @@ Hiányzó biztonsági szabály hozzáadásához hajtsa végre a következő lép
 
 A biztonsági szabály hozzáadására és megjelenítésére néhány percet vesz igénybe a lista.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

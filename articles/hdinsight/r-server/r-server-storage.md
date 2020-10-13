@@ -12,7 +12,7 @@ ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855293"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások az Azure HDInsight ML-szolgáltatásaihoz
@@ -174,7 +174,7 @@ A Azure Files egyik fő előnye, hogy a fájlmegosztás csatlakoztatható és fe
 - [Az Azure file Storage használata Linux rendszeren](../../storage/files/storage-how-to-use-files-linux.md)
 - [Az Azure file Storage használata Windows rendszeren](../../storage/files/storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A ML Services-fürt áttekintése a HDInsight-on](r-server-overview.md)
 - [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)

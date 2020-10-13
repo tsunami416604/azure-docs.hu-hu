@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhatja a csomópontok közötti és a
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839480"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Önálló fürt biztonságossá tétele Windows rendszeren a Windows biztonsági szolgáltatással

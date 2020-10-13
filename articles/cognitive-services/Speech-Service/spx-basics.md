@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854903"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893815"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
@@ -69,6 +69,51 @@ Ebben a parancsban meg kell adnia a forrást (a fordítás nyelvét) és a célk
 
 > [!NOTE]
 > Tekintse meg az összes támogatott nyelv listáját a [nyelvi és területi beállításban](language-support.md) a megfelelő területi beállításokkal.
+
+### <a name="configuration-files-in-the-datastore"></a>Konfigurációs fájlok az adattárban
+
+A Speech CLI képes több olyan beállítást olvasni és írni a konfigurációs fájlokban, amelyek a helyi Speech CLI-adattárban vannak tárolva, és a Speech CLI-hívásokban a @ szimbólum használatával vannak elnevezve. A Speech CLI megkísérli egy új beállítás mentését egy új `./spx/data` alkönyvtárban, amelyet a rendszer az aktuális munkakönyvtárban hoz létre.
+Konfigurációs érték keresésekor a Speech CLI az aktuális munkakönyvtárban, majd az `./spx/data` elérési úton jelenik meg.
+Korábban az adattárat használta a és az `@key` `@region` értékek mentéséhez, így nem kell megadnia azokat az egyes parancssori hívásokkal.
+A konfigurációs fájlokat is használhatja a saját konfigurációs beállításainak tárolásához, vagy akár az URL-címek vagy más, futásidőben generált dinamikus tartalom továbbítására is.
+
+Ez a szakasz egy konfigurációs fájl használatát mutatja be a helyi adattárban a parancs beállításainak a használatával történő tárolásához és beolvasásához `spx config` , valamint a beszédfelismerési CLI kimenetének a kapcsolóval való tárolásához `--output` .
+
+A következő példa törli a `@my.defaults` konfigurációs fájlt, hozzáadja a kulcs-érték párokat a fájlban lévő **kulcshoz** és **régióhoz** , és a konfigurációt használja a hívásához `spx recognize` .
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+Dinamikus tartalmat is írhat egy konfigurációs fájlba. Az alábbi parancs például létrehoz egy egyéni beszédfelismerési modellt, és egy konfigurációs fájlban tárolja az új modell URL-címét. A következő parancs megvárja, amíg az URL-ben lévő modell használatra készen áll a visszatérés előtt.
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+A következő példa két URL-címet ír a `@my.datasets.txt` konfigurációs fájlba.
+Ebben az esetben hozzáadhat egy `--output` opcionális **hozzáadási** kulcsszót egy konfigurációs fájl létrehozásához, vagy hozzáfűzheti azt a meglévőhöz.
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+Az adattár-fájlokkal kapcsolatos további részletekért, beleértve az alapértelmezett konfigurációs fájlok ( `@spx.default` , `@default.config` és `@*.default.config` a parancsokra vonatkozó alapértelmezett beállítások) használatát, adja meg a következő parancsot:
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>Batch-műveletek
 
@@ -134,6 +179,6 @@ Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás köv
 spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fejezze be a [beszédfelismerési](./quickstarts/speech-to-text-from-microphone.md) vagy [beszédfelismerési](./quickstarts/text-to-speech.md) útmutatókat az SDK használatával.

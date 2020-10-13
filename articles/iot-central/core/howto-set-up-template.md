@@ -11,10 +11,10 @@ ms.custom:
 - contperfq1
 - device-developer
 ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803789"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central-alkalmazásban
@@ -274,6 +274,6 @@ Az eszköz közzétételéhez nyissa meg az eszköz sablonját, és válassza a 
 
 Miután közzétett egy sablont, az operátor megkeresheti az **eszközök** lapot, és hozzáadhat akár valódi, akár szimulált eszközöket, amelyek az eszköz sablonját használják. A módosítások végrehajtása során továbbra is módosíthatja és mentheti az eszköz sablonját. Ha ezeket a módosításokat a kezelőben a **Devices (eszközök** ) lapon szeretné megtekinteni, ki kell választania a **közzétételi** időt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, javasolt következő lépésként olvassa el az [eszköz sablon verziószámozását](./howto-version-device-template.md)ismertető témakört.

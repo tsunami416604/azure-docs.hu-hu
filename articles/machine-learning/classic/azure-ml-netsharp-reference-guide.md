@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: f3bbab14152f16515c93972e6b41ef34693e1143
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91367954"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Útmutató a net # neurális hálózat specifikációjának nyelvéhez Machine Learning Studio (klasszikus)
@@ -90,17 +90,17 @@ Az alábbi utasítás például állandót határoz meg `x` :
 
 `Const X = 28;`
 
-Ha egyszerre két vagy több állandót szeretne meghatározni, az azonosító nevét és az értékeket kapcsos zárójelek közé kell tenni, és pontosvesszővel kell elválasztani őket. Például:
+Ha egyszerre két vagy több állandót szeretne meghatározni, az azonosító nevét és az értékeket kapcsos zárójelek közé kell tenni, és pontosvesszővel kell elválasztani őket. Példa:
 
 `Const { X = 28; Y = 4; }`
 
-Az egyes hozzárendelési kifejezések jobb oldalán egész szám, valós szám, logikai érték (igaz vagy hamis) vagy matematikai kifejezés lehet. Például:
+Az egyes hozzárendelési kifejezések jobb oldalán egész szám, valós szám, logikai érték (igaz vagy hamis) vagy matematikai kifejezés lehet. Példa:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Réteg deklarációja
 
-A réteg deklarációjának megadása kötelező. Meghatározza a réteg méretét és forrását, beleértve annak kapcsolati kötegeit és attribútumait. A deklaráció utasítás a réteg (bemeneti, rejtett vagy kimeneti) nevével kezdődik, amelyet a réteg méretei (pozitív egész számok egy rekordja) követnek. Például:
+A réteg deklarációjának megadása kötelező. Meghatározza a réteg méretét és forrását, beleértve annak kapcsolati kötegeit és attribútumait. A deklaráció utasítás a réteg (bemeneti, rejtett vagy kimeneti) nevével kezdődik, amelyet a réteg méretei (pozitív egész számok egy rekordja) követnek. Példa:
 
 ```Net#
 input Data auto;
@@ -369,7 +369,7 @@ A rövid űrlapot csak akkor használhatja, ha a rétegek egyetlen köteget tart
 
 Ez a szakasz néhány példát mutat be arra, hogyan használható a net # a rejtett rétegek hozzáadására, a rejtett rétegek más rétegekkel való interakciójának módjára, valamint a többszintű hálózatok kiépítésére.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Hozzon létre egy egyszerű egyéni neurális hálózatot: ""Helló világ!"alkalmazás" példa
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Hozzon létre egy egyszerű egyéni neurális hálózatot: "„Helló világ!” alkalmazás" példa
 
 Ez az egyszerű példa azt szemlélteti, hogyan hozható létre egy olyan neurális hálózati modell, amely egyetlen rejtett réteggel rendelkezik.
 

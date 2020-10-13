@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Oktatóanyag: Azure Active Directory integráció a részvételi felügyeleti szolgáltatásokkal
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés a részvételi felügyeleti szolgáltatásokkal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[részvételi felügyeleti szolgáltatások egyszeri bejelentkezésének konfigurálása](#configure-attendance-management-services-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[részvételi felügyeleti szolgáltatások egyszeri bejelentkezésének konfigurálása](#configure-attendance-management-services-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításait konfigurálja.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. A **[Látogatottsági kezelési szolgáltatások tesztelési szolgáltatásának létrehozása](#create-attendance-management-services-test-user)** – hogy a Britta Simon tagja legyen a felhasználók Azure ad-képviseletéhez kapcsolódó részvételi felügyeleti szolgáltatásokban.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot a [Látogatottsági kezelési szolgáltatások ügyfél-támogatási csapatával](https://www.obcnet.jp/) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-attendance-management-services-single-sign-on"></a>A részvételi felügyeleti szolgáltatások egyszeri bejelentkezésének konfigurálása
+### <a name="configure-attendance-management-services-single-sign-on"></a>A látogatottsági kezelési szolgáltatások egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a részvételi felügyeleti szolgáltatások vállalati webhelyre rendszergazdaként.
 

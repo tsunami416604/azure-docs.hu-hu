@@ -11,7 +11,7 @@ ms.openlocfilehash: 3818ce9ebae8e6af6ee8bb5ed30c7ab446a6f6b2
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855174"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark irányelvek
@@ -66,7 +66,7 @@ Ez a cikk a Apache Spark Azure HDInsight való használatának különböző ir�
 | 1. generációs Azure Data Lake Storage | [Azure Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob Storage | [Az Azure Storage és az Azure HDInsight-fürtök együttes használata](../hdinsight-hadoop-use-blob-storage.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Apache Spark beállításainak konfigurálása](apache-spark-settings.md)
 * [Apache Spark feladatok optimalizálása a HDInsight-ben](apache-spark-perf.md)

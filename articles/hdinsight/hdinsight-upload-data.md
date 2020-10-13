@@ -12,7 +12,7 @@ ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855633"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
@@ -121,7 +121,7 @@ Az Azure Storage egy Azure SDK-val is elérhető a következő programozási nye
 
 Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure-letöltések](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette, hogyan szerezhet be információkat a HDInsight-ba, olvassa el a következő cikkeket az elemzés elsajátításához:
 

@@ -12,7 +12,7 @@ ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856670"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
@@ -88,7 +88,7 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
    | **AS2-ből** | Az AS2-szerződés által meghatározott üzenet-fogadó azonosítója |
    |||
 
-   Például:
+   Példa:
 
    ![Üzenet kódolásának tulajdonságai](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
@@ -124,6 +124,6 @@ Az összekötő részletes technikai részleteit, például az összekötő henc
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

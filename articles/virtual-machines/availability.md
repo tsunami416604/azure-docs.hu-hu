@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815606"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972526"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek rendelkezésreállási beállításai
 
@@ -51,7 +51,7 @@ Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhe
 
 **Tartalék tartományok és frissítési tartományok**
 
-A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissítési tartományok igazításával egyszerűbbé teszik a magas rendelkezésre állás kialakítását. A méretezési csoporthoz csak a tartalék tartományok darabszámát kell megadnia. A méretezési csoportok számára elérhető tartalék tartományok száma régiónként eltérő lehet. Lásd: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](./windows/manage-availability.md).
+A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissítési tartományok igazításával egyszerűbbé teszik a magas rendelkezésre állás kialakítását. A méretezési csoporthoz csak a tartalék tartományok darabszámát kell megadnia. A méretezési csoportok számára elérhető tartalék tartományok száma régiónként eltérő lehet. Lásd: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](./manage-availability.md).
 
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
@@ -61,7 +61,7 @@ A rendelkezésre állási csoportokban a virtuális gépek automatikusan el lesz
 
 Az [Azure Managed Disks](./faq-for-disks.md) használatával létrehozott virtuális gépek felügyelt rendelkezésre állási csoportok használata esetén felügyelt lemezes tartalék tartományokra vannak elosztva. Ez a kiosztás biztosítja, hogy a virtuális géphez csatolt mindegyik felügyelt lemez ugyanabban a felügyelt lemezes tartalék tartományban legyen. 
 
-Kizárólag felügyelt lemezeken futó virtuális gépek hozhatók létre felügyelt rendelkezésre állási csoportokban. A felügyelt lemezes tartalék tartományok száma régiónként eltérő – régiónként kettő vagy három felügyelt lemezes tartalék tartomány lehet. Ezekről a felügyelt lemezes tartalék tartományokról a [Linux rendszerű virtuális gépek](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) vagy a [Windows rendszerű virtuális gépek](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)esetében olvashat bővebben.
+Kizárólag felügyelt lemezeken futó virtuális gépek hozhatók létre felügyelt rendelkezésre állási csoportokban. A felügyelt lemezes tartalék tartományok száma régiónként eltérő – régiónként kettő vagy három felügyelt lemezes tartalék tartomány lehet. Ezekről a felügyelt lemezes tartalék tartományokról a [Linux rendszerű virtuális gépek](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) vagy a [Windows rendszerű virtuális gépek](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)esetében olvashat bővebben.
 
 ![Felügyelt rendelkezésre állási csoport](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
@@ -70,5 +70,5 @@ A rendelkezésre állási csoporton belüli virtuális gépeket is automatikusan
 
 ![Rendelkezésre állási csoportok](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Mostantól a saját Azure-környezetében is használhatja ezeket a rendelkezésre állási és redundanciával kapcsolatos szolgáltatásokat. Javasoljuk, hogy tájékozódjon [az Azure rendelkezésre állásával kapcsolatos ajánlott eljárásokról](/azure/architecture/checklist/resiliency-per-service).

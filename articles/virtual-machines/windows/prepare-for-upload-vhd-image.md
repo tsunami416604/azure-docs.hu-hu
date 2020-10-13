@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
 ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851101"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
@@ -427,7 +427,7 @@ Különösen a Sysprep megköveteli, hogy a meghajtók teljes mértékben vissza
 
     ![Rendszerelőkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
 1. A **leállítási beállítások**területen válassza a **Leállítás**lehetőséget.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 1. A Sysprep befejeződése után állítsa le a virtuális gépet. Ne használja az **Újraindítás** lehetőséget a virtuális gép leállításához.
 
 Most már készen áll a virtuális merevlemez feltöltésére. A virtuális gépek általánosított lemezről történő létrehozásával kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gép létrehozásához az Azure-ban](sa-upload-generalized.md).
