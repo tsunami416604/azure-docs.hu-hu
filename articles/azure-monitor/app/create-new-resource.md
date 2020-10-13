@@ -4,10 +4,10 @@ description: Application Insights figyelésének manuális beállítása egy új
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323128"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
@@ -16,7 +16,7 @@ Az Azure Application Insights Microsoft Azure *erőforrásban*jeleníti meg az a
 
 ## <a name="sign-in-to-microsoft-azure"></a>Bejelentkezés Microsoft Azure
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
@@ -70,7 +70,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 ```powershell
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
-#### <a name="results"></a>Eredmények
+#### <a name="results"></a>Results (Eredmények)
 
 ```powershell
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
@@ -103,7 +103,7 @@ Az előzetes verzió Application Insights Azure CLI-parancsokhoz való hozzáfé
  az extension add -n application-insights
 ```
 
-Ha nem futtatja a `az extension add` parancsot, a következő hibaüzenet jelenik meg:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Ha nem futtatja a `az extension add` parancsot, a következő hibaüzenet jelenik meg: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Most futtathatja a következőt a Application Insights erőforrás létrehozásához:
 
@@ -122,7 +122,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
 ```
 
-#### <a name="results"></a>Eredmények
+#### <a name="results"></a>Results (Eredmények)
 
 ```azurecli
 az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web

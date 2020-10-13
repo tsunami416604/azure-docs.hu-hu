@@ -8,10 +8,10 @@ ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89614069"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
@@ -38,15 +38,15 @@ A Visual Studio 2019-ben válassza a _fájl > új > projekt_ elemet, és keresse
 
 Adja meg a Function alkalmazás nevét, majd válassza a _Létrehozás_lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: új projekt konfigurálása":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Válassza ki a Function app *Event Grid trigger* típusát, és válassza a _Létrehozás_lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: Azure Function Project trigger párbeszédpanel":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Miután létrehozta a Function alkalmazást, a Visual Studio automatikusan feltölti a kódot a **function.cs** -fájlban a projekt mappájába. Ez a rövid Azure-függvény az események naplózására szolgál.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: Project-ablak mintakód-kóddal":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Azure-függvény írása Event Grid triggerrel
 
@@ -160,19 +160,19 @@ A Function alkalmazás Azure-beli közzétételéhez kattintson a jobb gombbal a
 > [!IMPORTANT] 
 > Ha közzétesz egy Azure-függvényt, további díjakat számítunk fel az előfizetéshez, amely független az Azure Digital Twins-től.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: az Azure-függvény közzététele ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Válassza ki az **Azure** -t közzétételi célként, és válassza a **tovább**lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: az Azure-függvény közzététele párbeszédpanel, válassza az Azure lehetőséget. ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: a függvény közzététele párbeszédpanel, válassza az Azure függvényalkalmazás (Windows) vagy (Linux) lehetőséget a gép alapján":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: a függvény közzététele párbeszédpanel, új Azure-függvény létrehozása":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: a függvény közzététele párbeszédpanel, töltse ki a mezőket, majd válassza a létrehozás lehetőséget.":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: közzétételi függvény párbeszédpanel, válassza ki a függvény alkalmazást a listából, és fejezze be":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 A következő lapon adja meg az új függvény alkalmazás, egy erőforráscsoport és egyéb részletek kívánt nevét.
 Ahhoz, hogy a functions alkalmazás hozzáférhessen az Azure digitális Twins-hoz, rendelkeznie kell egy rendszer által felügyelt identitással, és engedéllyel kell rendelkeznie az Azure Digital Twins-példányhoz való hozzáféréshez.
@@ -214,27 +214,27 @@ A rendszerhez rendelt felügyelt identitás lehetővé teszi, hogy az Azure-erő
 
 A [Azure Portal](https://portal.azure.com/)keressen rá a _Function app_ kifejezésre a keresési sávban a korábban létrehozott Function alkalmazás nevével. Válassza ki a *függvényalkalmazás* a listából. 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure Portal: Keresés a függvény alkalmazásban":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 A felügyelt identitás engedélyezéséhez kattintson a bal oldali navigációs sávban az _Identity (identitás_ ) elemre a függvény alkalmazás ablakban.
 A _rendszer-hozzárendelés_ lapon állítsa be az _állapotot_ a be értékre, és _mentse_ azt. Egy előugró ablak jelenik meg, amely _lehetővé teszi a rendszerhez rendelt felügyelt identitás engedélyezését_.
 Válassza az _Igen_ gomb lehetőséget. 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure Portal: a rendszerfelügyelt identitás engedélyezése":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Az értesítésekben ellenőrizheti, hogy a függvény sikeresen regisztrálva van-e Azure Active Directory.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure Portal: értesítések":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Jegyezze fel az _Identity (identitás_ ) lapon megjelenő **objektumazonosítót** is, ahogy azt a következő szakaszban fogja használni.
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="A jövőben használandó objektumazonosító másolása":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Hozzáférési szerepkörök kiosztása Azure Portal használatával
 
 Válassza az _Azure szerepkör-hozzárendelések_ gombot, amely megnyitja az Azure szerepkör-hozzárendelések lapot. Ezután válassza a _+ szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure Portal: szerepkör-hozzárendelés hozzáadása":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ ablakban válassza a
 
@@ -245,7 +245,7 @@ A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ ablak
 
 Mentse a részleteket a _Save (Mentés_ ) gombra kattintva.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure Portal: szerepkör-hozzárendelés hozzáadása (előzetes verzió) ":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Alkalmazásbeállítások konfigurálása Azure Portal használatával
 
@@ -255,7 +255,7 @@ Alkalmazás-beállítás létrehozásához ADT_INSTANCE_URL szükséges.
 
 ADT_INSTANCE_URL a **_https://_** a példány állomásneve való hozzáfűzésével kérheti le. A Azure Portalban megtalálhatja a digitális ikrek példányának állomásnevét úgy, hogy megkeresi a példányt a keresősávban. Ezután a bal oldali navigációs sávon az _Áttekintés_ elemre kattintva megtekintheti a _gazdagép nevét_. Másolja ezt az értéket egy Alkalmazásbeállítás létrehozásához.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: Áttekintés – > a _Value_ mezőben használandó hostname (állomásnév).":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Mostantól az alábbi lépéseket követve létrehozhat egy alkalmazás-beállítást:
 
@@ -263,9 +263,9 @@ Mostantól az alábbi lépéseket követve létrehozhat egy alkalmazás-beállí
 * Válassza ki a bal oldali navigációs sávon a _konfiguráció_ elemet egy új Alkalmazásbeállítás létrehozásához
 * Az _Alkalmazásbeállítások_ lapon válassza az _+ új alkalmazás beállítása_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: meglévő Azure-függvény keresése":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások konfigurálása":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 A megnyíló ablakban a fentiből másolt érték használatával hozzon létre egy Alkalmazásbeállítás-beállítást. \
 _Név_  : ADT_SERVICE_URL \
@@ -273,19 +273,19 @@ _Érték_ : https://{saját Azure-digitális-Twins-hostname}
 
 Az alkalmazás beállításainak létrehozásához kattintson _az OK gombra_ .
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások hozzáadása.":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Az Alkalmazásbeállítások a _Name (név_ ) mezőben tekinthetők meg az alkalmazás nevével. Ezután mentse az alkalmazás beállításait a Save ( _Mentés_ ) gombra kattintva.
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: megtekintheti a létrehozott alkalmazást, és újraindíthatja az alkalmazást":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Az Alkalmazásbeállítások módosítására az alkalmazás újraindítása szükséges. Válassza a _Folytatás_ lehetőséget az alkalmazás újraindításához.
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások mentése":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 Az Alkalmazásbeállítások az _értesítések_ ikon kiválasztásával tekinthetők meg. Ha az alkalmazás beállítása nincs létrehozva, akkor a fenti folyamat követésével újra megpróbálkozhat az alkalmazás hozzáadásával.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure Portal: az Alkalmazásbeállítások frissítésére vonatkozó értesítések":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 ## <a name="next-steps"></a>Következő lépések
 

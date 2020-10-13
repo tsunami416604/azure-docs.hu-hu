@@ -7,10 +7,10 @@ ms.date: 10/12/2018
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022190"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
@@ -475,7 +475,7 @@ Ha az internetre van kitéve, az állapot nélküli szolgáltatásnak olyan jól
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | A vércse az előnyben részesített webkiszolgáló, mivel a Windows és a Linux rendszeren is támogatott. |
 | Port konfigurációja | Statikus | Jól ismert statikus portot kell konfigurálni a `Endpoints` ServiceManifest.xml konfigurációjában, például: 80 http vagy 443 for HTTPS. |
-| ServiceFabricIntegrationOptions | Nincsenek | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
+| ServiceFabricIntegrationOptions | Nincs | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
 | Példányszám | -1 | Tipikus használati esetekben a példányszám beállításának *-1*értékűnek kell lennie. Erre azért van szükség, hogy egy példány minden olyan csomóponton elérhető legyen, amely egy terheléselosztó által forgalmazott forgalmat fogad. |
 
 Ha több külsőleg megjelenő szolgáltatás is ugyanazokat a csomópontokat használja, akkor a HTTP.syst egyedi, de állandó URL-címmel is használhatja. Ezt a IWebHost konfigurálásakor megadott URL-cím módosításával végezheti el. Vegye figyelembe, hogy ez csak HTTP.sysre vonatkozik.

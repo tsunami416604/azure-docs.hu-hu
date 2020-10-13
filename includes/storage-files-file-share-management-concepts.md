@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8d26b6c92462abc13c42257d2c6e571156eacc0f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563443"
 ---
 Az Azure-fájlmegosztás *tárolási fiókokra*van telepítve, amelyek a tárolók megosztott készletét képviselő legfelső szintű objektumok. Ez a tárterület több fájlmegosztás, valamint más tárolási erőforrások, például blob-tárolók, várólisták vagy táblák üzembe helyezésére is használható. A Storage-fiókba telepített összes tárolási erőforrás megosztja az adott tárolási fiókra érvényes korlátokat. A Storage-fiók jelenlegi korlátainak megtekintéséhez lásd: [Azure Files skálázhatósági és teljesítményi célok](../articles/storage/files/storage-files-scale-targets.md).

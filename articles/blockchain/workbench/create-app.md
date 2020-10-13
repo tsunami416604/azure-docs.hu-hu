@@ -5,10 +5,10 @@ ms.date: 08/24/2020
 ms.topic: tutorial
 ms.reviewer: ravastra
 ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88784028"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Oktatóanyag: blockchain-alkalmazás létrehozása az Azure Blockchain Workbenchhez
@@ -279,7 +279,7 @@ Adja hozzá a konstruktor függvényt a szerződéséhez az `HelloBlockchain.sol
     }
 ```
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 A függvények az üzleti logika végrehajtható egységei egy adott szerződésen belül. A függvény kötelező paraméterei a konfigurációs fájlban a Function paraméterként vannak definiálva. A paraméterek száma, sorrendje és típusa mindkét fájlban egyeznie kell. A függvények a konfigurációs fájlban lévő Blockchain Workbench-munkafolyamatban lévő átmenetekhez vannak társítva. Az átmenet olyan művelet, amely az alkalmazás munkafolyamatainak a Szerződés által meghatározott következő szakaszába való áthelyezésre szolgál.
 
@@ -344,7 +344,7 @@ Alkalmazások tagjainak hozzáadása az alkalmazáshoz a szerződések elindít�
 
 A felhasználók Blockchain Workbenchben való kezelésével kapcsolatos további információkért lásd: [felhasználók kezelése az Azure Blockchain workbenchben](manage-users.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a útmutatóban egy alapszintű kérést és egy gyorsreagáló alkalmazást hozott létre. Az alkalmazás használatának megismeréséhez folytassa a következő útmutatóval.
 

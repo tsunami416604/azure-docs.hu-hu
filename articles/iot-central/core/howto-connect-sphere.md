@@ -9,10 +9,10 @@ author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
 ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017693"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
@@ -53,7 +53,7 @@ Azure Sphere-eszköz létrehozása a IoT Centralban:
 
 1. Az eszköz sablonjában szerkessze az **Áttekintés** nevű nézetet a **hőmérséklet** és a **gomb megnyomásának**megjelenítéséhez.
 
-1. Az **eszköz és a Felhőbeli** adatnézet típusának kiválasztásával adjon hozzá egy másik nézetet, amely az olvasási/írási tulajdonság **állapotát**mutatja. Húzza a **status LED** tulajdonságot az űrlap jobb oldalán található üres, pontozott négyszögre. Válassza a **Mentés** lehetőséget.
+1. Az **eszköz és a Felhőbeli** adatnézet típusának kiválasztásával adjon hozzá egy másik nézetet, amely az olvasási/írási tulajdonság **állapotát**mutatja. Húzza a **status LED** tulajdonságot az űrlap jobb oldalán található üres, pontozott négyszögre. Kattintson a **Mentés** gombra.
 
 ## <a name="prepare-the-device"></a>Az eszköz előkészítése
 
@@ -67,7 +67,7 @@ Ahhoz, hogy a minta IoT Centralhoz kapcsolódjon, [konfigurálnia kell egy Azure
 
 Amikor az eszköz csatlakoztatva van IoT Centralhoz, az irányítópulton láthatja a telemetria.
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere fejlesztői készlet irányítópultja":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere fejlesztői készlet tartozó eszköz sablonja":::
 
 ## <a name="create-a-simulated-device"></a>Szimulált eszköz létrehozása
 

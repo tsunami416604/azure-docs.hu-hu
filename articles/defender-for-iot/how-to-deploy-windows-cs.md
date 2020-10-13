@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940032"
 ---
 # <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>Defender telepítése a Windows rendszerhez készült IoT C#-alapú biztonsági ügynökhöz
@@ -62,7 +62,7 @@ A biztonsági ügynök telepítéséhez használja a következő munkafolyamatot
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Például:
+    Példa:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
@@ -77,7 +77,7 @@ A szkript a következő műveleteket végzi el:
 * Telepíti az ügynököt **rendszerszolgáltatásként**.
 * A megadott hitelesítési paraméterekkel konfigurálja az ügynököt.
 
-További segítségért használja a Get-Help parancsot a PowerShellben.
+További segítségért használja a PowerShell Get-Help parancsát.
 
 Get-Help példa:    ```Get-Help .\InstallSecurityAgent.ps1```
 

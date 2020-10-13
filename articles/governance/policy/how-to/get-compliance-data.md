@@ -4,10 +4,10 @@ description: Azure Policy értékelések és hatások határozzák meg a megfele
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596043"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
@@ -681,7 +681,7 @@ Ha [Log Analytics workspace](../../../azure-monitor/log-query/log-query-overview
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

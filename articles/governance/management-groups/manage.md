@@ -4,10 +4,10 @@ description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséh
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531037"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
@@ -127,7 +127,7 @@ Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy ö
 
 ### <a name="view-in-powershell"></a>Megtekintés a PowerShellben
 
-A Get-AzManagementGroup parancs használatával lekérheti az összes csoportot. Tekintse meg az az [. Resources](/powershell/module/az.resources/Get-AzManagementGroup) modulokat a felügyeleti csoport teljes listájához a PowerShell-parancsok beolvasása szakaszban.  
+Az összes csoport beolvasásához használja a Get-AzManagementGroup parancsot. Tekintse meg az az [. Resources](/powershell/module/az.resources/Get-AzManagementGroup) modulokat a felügyeleti csoport teljes listájához a PowerShell-parancsok beolvasása szakaszban.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -261,7 +261,7 @@ Az előfizetés PowerShellben való áthelyezéséhez használja a New-AzManagem
 New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-A és az előfizetés és a felügyeleti csoport közötti kapcsolat eltávolításához használja a Remove-AzManagementGroupSubscription parancsot.
+A és az előfizetés és a felügyeleti csoport közötti kapcsolat eltávolításához használja az Remove-AzManagementGroupSubscription parancsot.
 
 ```azurepowershell-interactive
 Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -345,7 +345,7 @@ Ugyanazt a hatókörbeli elérési utat használja a rendszer a házirend-defin�
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

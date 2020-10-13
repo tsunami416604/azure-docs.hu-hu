@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhatja létre és konfigurálhatja a privát 
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578350"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Oktatóanyag: az Azure-beli VMware Private-felhő hálózatkezelésének konfigurálása
@@ -46,7 +46,7 @@ Egy virtuális hálózat, amelyhez létrehozott egy [Azure VMware-megoldás saj�
 
 1. Válassza az **+ alhálózat hozzáadása**lehetőséget, majd az **alhálózat hozzáadása** lapon adja meg az alhálózat nevét és a megfelelő címtartományt. Amikor végzett, válassza a **Hozzáadás** elemet.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
    :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Válassza a felülvizsgálat + létrehozás lehetőséget." border="true":::
 

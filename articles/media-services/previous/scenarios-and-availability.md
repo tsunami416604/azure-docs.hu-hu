@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259183"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
@@ -179,7 +179,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name|status|Adatközpontok
+|Name (Név)|status|Adatközpontok
 |---|---|---|
 |Standard|FE|Mind|
 |Prémium|FE|Mind|
@@ -227,7 +227,7 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 |Titkosítás|status|Adatközpontok|
 |---|---|---| 
-|Tárolás|FE|Mind|
+|Storage|FE|Mind|
 |AES-128-kulcsok|FE|Mind|
 |FairPlay|FE|Mind|
 |PlayReady|FE|Mind|
@@ -261,7 +261,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Media Services képzési terveket.
 

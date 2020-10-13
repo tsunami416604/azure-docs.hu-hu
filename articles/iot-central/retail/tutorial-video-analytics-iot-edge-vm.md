@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526391"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873278"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Oktatóanyag: IoT Edge-példány létrehozása videó-elemzéshez (linuxos virtuális gép)
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, végre kell hajtania az előző [video Analytics-alkalmazás létrehozása az Azure IoT Central](./tutorial-video-analytics-create-app.md) oktatóanyagban.
+Mielőtt elkezdené, végezze el az előző [video Analytics-alkalmazás létrehozása az Azure-ban IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) vagy [hozzon létre egy videó-elemzést az Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) oktatóanyagban.
 
 Szüksége lesz egy Azure-előfizetésre is. Ha nem rendelkezik Azure-előfizetéssel, az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription)ingyenesen létrehozhat egyet.
 
@@ -50,7 +50,7 @@ A következő táblázatban található információk segítségével fejezze be
 | ----- | ----- |
 | Előfizetés | Válassza ki az Azure-előfizetését. |
 | Erőforráscsoport | *LVA – RG* – az előző oktatóanyagban létrehozott erőforráscsoport. |
-| Region       | *USA keleti régiója* |
+| Régió       | *USA keleti régiója* |
 | DNS-címke előtagja | Válasszon egyedi DNS-előtagot a virtuális géphez. |
 | Rendszergazdai Felhasználónév | *AzureUser* |
 | Rendszergazdai jelszó | Adjon meg egy jelszót. Jegyezze fel a jelszót a *scratchpad.txt* fájlban, amelyet később használni fog. |
@@ -64,7 +64,7 @@ A következő táblázatban található információk segítségével fejezze be
 | Ubuntu operációs rendszer verziója | *18,04 – LTS* |
 | Hely | *[resourceGroup (). location]* |
 
-Válassza az **Áttekintés + létrehozás** lehetőséget. Az ellenőrzés befejezésekor válassza a **Létrehozás**lehetőséget. A telepítés befejezéséhez általában három percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **LVA-RG** erőforráscsoporthoz.
+Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az ellenőrzés befejezésekor válassza a **Létrehozás**lehetőséget. A telepítés befejezéséhez általában három percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **LVA-RG** erőforráscsoporthoz.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>Győződjön meg arról, hogy a IoT Edge futtatókörnyezet betölti a modulokat
 

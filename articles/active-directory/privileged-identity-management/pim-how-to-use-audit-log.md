@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530119"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök naplózási előzményeinek megtekintése Privileged Identity Management
@@ -92,7 +92,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
     | --- | --- |
     | Idő | Ha a művelet bekövetkezett. |
     | Requestor (Kérelmező) | A szerepkör aktiválását vagy módosítását kérő felhasználó. Ha az érték az **Azure System**, további információért tekintse meg az Azure naplózási előzményeit. |
-    | Műveletek | A kérelmező által végrehajtott műveletek. A műveletek lehetnek például a hozzárendelés, a hozzárendelés megszüntetése, az aktiválás, az inaktiválás vagy a AddedOutsidePIM. |
+    | Művelet | A kérelmező által végrehajtott műveletek. A műveletek lehetnek például a hozzárendelés, a hozzárendelés megszüntetése, az aktiválás, az inaktiválás vagy a AddedOutsidePIM. |
     | Tag | Az a felhasználó, aki aktivál vagy hozzárendel egy szerepkörhöz. |
     | Szerepkör | A felhasználó által hozzárendelt vagy aktivált szerepkör. |
     | Indoklása | Az aktiválás során az OK mezőbe beírt szöveg |
@@ -138,6 +138,6 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Resource szerepköreinek tevékenység-és naplózási előzményeinek megtekintése Privileged Identity Management](azure-pim-resource-rbac.md)

@@ -1,24 +1,24 @@
 ---
-title: Saját Azure-számla áttekintése
-description: Megtudhatja, hogyan értelmezheti a számláját és erőforrás-használatát, és hogyan ellenőrizheti saját Azure-előfizetésének díjtételeit.
+title: Az egyéni Azure-előfizetéshez tartozó számla áttekintése
+description: Megtudhatja, hogyan értelmezheti a számláját és erőforrás-használatát, és hogyan ellenőrizheti saját Azure-előfizetésének díjtételeit, beleértve a használatalapú fizetést is.
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270525"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653281"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>Oktatóanyag: Saját Azure-számla áttekintése
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Oktatóanyag: Az egyéni Azure-előfizetéshez tartozó számla áttekintése
 
-Ez a cikk segítséget nyújt Azure-számlájának értelmezésében és áttekintésében. Az egyes számlázási időszakok esetében általában e-mailben kapja meg a számlát. Ez a számla az Azure-számlájának felel meg. A számlán szereplő költségadatok elérhetők az Azure Portalon is. Ebben az oktatóanyagban össze fogja hasonlítani a számlát a részletes napi használati adatok fájljával és a költségelemzéssel az Azure Portalon.
+Ez a cikk segítséget nyújt a használatalapú fizetéses vagy a Visual Studio Azure-előfizetéséhez tartozó számlájának értelmezésében és áttekintésében, beleértve a használatalapú fizetést és a Visual Studiót is. Az egyes számlázási időszakok esetében általában e-mailben kapja meg a számlát. Ez a számla az Azure-számlájának felel meg. A számlán szereplő költségadatok elérhetők az Azure Portalon is. Ebben az oktatóanyagban össze fogja hasonlítani a számlát a részletes napi használati adatok fájljával és a költségelemzéssel az Azure Portalon.
 
 Ez az oktatóanyag csak azokra az Azure-ügyfelekre vonatkozik, akik egyéni szerződéssel rendelkeznek. Az általános egyéni előfizetésekre használatalapú díjszabás vonatkozik, és közvetlenül az Azure webhelyén vásárolhatók meg.
 
@@ -42,7 +42,7 @@ Az [ingyenes Azure-fiókokhoz](https://azure.microsoft.com/offers/ms-azr-0044p/)
 
 - Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>A kiszámlázott díjtételek összehasonlítása a használati adatok fájljával
+## <a name="compare-billed-charges-with-your-usage-file"></a>A kiszámlázott díjtételek összehasonlítása a használati adatok fájljával
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ Az összegzett *Költség* értéknek pontosan meg kell egyeznie az egyedi erőf
 
 További információért lásd: [Az Azure-számlák ismertetése](understand-invoice.md) és [Az Azure részletes használatának ismertetése](understand-usage.md).
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>A kiszámlázott díjtételek összehasonlítása a költségelemzésben szereplő használati adatokkal
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>A kiszámlázott díjtételek összehasonlítása a költségelemzésben szereplő használati adatokkal
 
 Az Azure Portalon való költségelemzés szintén segíthet a díjtételek ellenőrzésében. A kiszámlázott használat és díjtételek gyors áttekintéséhez válassza ki előfizetését az Azure Portal [Előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Ezután kattintson a **Költségelemzés** elemre, majd a nézetlistában a **Számla részletei** elemre.
 
@@ -123,13 +123,15 @@ A költségelemzésben megjelenített költségeknek pontosan meg kell egyezniü
 
 ![A számlán feltüntetett használati díjak](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>A külső szolgáltatásokat külön számlázzuk
+## <a name="external-marketplace-services-are-billed-separately"></a>A Marketplace külső szolgáltatásait külön számlázzuk
+
+<a name="external"></a>
 
 A külső szolgáltatások vagy a piactér díjai olyan erőforrásokra vonatkoznak, amelyeket külső szoftverszállítók készítettek. Ezek az erőforrások az Azure Marketplace-ből érhetők el. A Barracuda-tűzfal például egy harmadik fél által kínált Azure Marketplace-erőforrás. A tűzfal és a hozzá tartozó mérőszámok összes díja külső szolgáltatási díjként jelenik meg.
 
 A külső szolgáltatási díjakat külön számlázzuk. Ezek a díjak nincsenek feltüntetve az Azure-számlán. További tudnivalókért lásd [az Azure külső szolgáltatásaival kapcsolatos díjak ismertetését](understand-azure-marketplace-charges.md).
 
-### <a name="resources-billed-by-usage-meters"></a>A használat mérésére szolgáló eszközök által számlázott erőforrások
+### <a name="resources-are-billed-by-usage-meters"></a>Az erőforrások számlázása a használat mérésére szolgáló eszközök alapján történik
 
 Az Azure nem közvetlenül az erőforrásköltségek alapján számláz. Az erőforrások költségeit egy vagy több mérőszám alapján számítjuk ki. A mérőszámokkal az erőforrás kihasználtságát mérjük az erőforrás teljes élettartama során. Ezen mérőszámok alapján számítjuk ki a számlán szereplő költséget.
 
@@ -152,7 +154,9 @@ A virtuális gép létrehozásakor minden mérőeszköz elkezd használati adato
 
 A számla összegének kiszámításához használt mérőeszközök a használati adatok CSV-fájljában láthatók, ahogy a korábbi példában láthatta.
 
-## <a name="pay-your-bill"></a><a name="payment"></a>A számla befizetése
+## <a name="pay-your-bill"></a>A számla befizetése
+
+<a name="payment"></a>
 
 Ha hitelkártyás fizetést állít be fizetési módként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan felszámítja az összeget. A hitelkártya-kivonatban a költségsorban a következő szerepel: **MSFT Azure**.
 

@@ -14,10 +14,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797307"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Alkalmazás- és erőforrás-hozzáférés kezelése Azure Active Directory-csoportokkal
@@ -58,7 +58,7 @@ A csoport tulajdonosa lehetővé teheti a felhasználók számára, hogy a hozz�
 
 Miután egy felhasználó megpróbált csatlakozni egy csoporthoz, a rendszer továbbítja a kérést a csoport tulajdonosának. Ha szükséges, a tulajdonos jóváhagyhatja a kérést, és a felhasználó értesítést kap a csoporttagságról. Ha azonban több tulajdonossal rendelkezik, és egyikük sem hagyja jóvá, a rendszer értesítést küld a felhasználónak, de nem adja hozzá a csoportot. További információt és útmutatást arról, hogyan kérheti a felhasználók a csoportok összekapcsolását: az [Azure ad beállítása, hogy a felhasználók csatlakozzanak a csoporthoz](../users-groups-roles/groups-self-service-management.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már rendelkezik egy kis bevezetéssel a hozzáférés-kezeléshez a csoportok használatával, megkezdheti az erőforrások és alkalmazások kezelését.
 
 - [Új csoport létrehozása Azure Active Directory használatával](active-directory-groups-create-azure-portal.md) vagy [új csoport létrehozása és kezelése PowerShell-parancsmagok használatával](../users-groups-roles/groups-settings-v2-cmdlets.md)

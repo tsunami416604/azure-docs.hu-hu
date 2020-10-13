@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324556"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Speciális összesítések Azure Monitor log lekérdezésekben
@@ -38,7 +38,7 @@ Event
 | számítógép2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-`makelist`létrehoz egy listát abban a sorrendben, ahogy az adatgyűjtés megtörtént. Ha az eseményeket a legrégebbtől a legújabbig szeretné rendezni, használja `asc` a Order utasítást a következő helyett: `desc` . 
+`makelist` létrehoz egy listát abban a sorrendben, ahogy az adatgyűjtés megtörtént. Ha az eseményeket a legrégebbtől a legújabbig szeretné rendezni, használja `asc` a Order utasítást a következő helyett: `desc` . 
 
 Az is hasznos, ha csak a különböző értékek listáját szeretné létrehozni. Ezt egy _készletnek_ nevezzük, amely a következővel hozható létre `makeset` :
 
@@ -163,7 +163,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Eredmények szűkítése a következő elemek egy halmazára:,, `let` `makeset` `toscalar` ,`in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Eredmények szűkítése a következő elemek egy halmazára:,, `let` `makeset` `toscalar` , `in`
 Gyakori forgatókönyv, hogy bizonyos entitások nevét kijelöli a feltételek alapján, majd egy másik, az entitásokra vonatkozó adathalmazt szűr. Előfordulhat például, hogy olyan számítógépeket talál, amelyekről ismert, hogy hiányoznak a frissítések, és azonosítsa azokat az IP-címeket, amelyeket a számítógépek meghívtak:
 
 

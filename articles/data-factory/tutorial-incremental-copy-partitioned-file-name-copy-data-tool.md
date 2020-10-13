@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 6/10/2020
 ms.openlocfilehash: 3a46c2024269affc06d18806aa186fb8b0feaafe
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533757"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Az új fájlok növekményes másolása a Adatok másolása eszköz használatával, az időparticionált fájl neve alapján
@@ -176,7 +176,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végreh
 14. Válassza ki a második folyamathoz tartozó új **DeltaCopyFromBlobPipeline** -hivatkozást, amikor eljön, és végezze el a részletek áttekintését. Látni fogja, hogy a forrásfájl (file2.txt) a  **forrás/2020/03/17/04/** **cél/2020/03/17/04** /pontról lett átmásolva ugyanazzal a fájlnévvel. Ugyanezt a Azure Storage Explorer használatával is ellenőrizheti (a https://storageexplorer.com/) tárolóban lévő fájlok vizsgálatához **destination** .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Folytassa a következő oktatóanyaggal, amelyben az adatok Azure Spark-fürtök használatával való átalakítását ismerheti meg:
 
 > [!div class="nextstepaction"]

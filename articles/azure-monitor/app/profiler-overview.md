@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499392"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles alkalmazások az Azure-ban Application Insights
@@ -91,7 +91,7 @@ Az olyan metódusok, mint például a **SqlCommand.Exearanyosak** , azt jelzik, 
 
 ### <a name="unmanaged-async"></a>Nem felügyelt aszinkron
 
-A .NET-keretrendszer ETW eseményeket bocsát ki, és a szálak között továbbítja a tevékenység-azonosítókat, hogy az aszinkron hívásokat nyomon lehessen követni a szálak között. A nem felügyelt kód (natív kód) és az aszinkron kódok néhány régebbi stílusa hiányzik ezekről az eseményekről és tevékenység-azonosítóról, így a Profiler nem tudja megállapítani, hogy milyen szálat és milyen funkciók futnak a szálon. Ez a hívási verem "nem felügyelt aszinkron" címkéje. Ha letölti a ETW fájlt, lehetséges, hogy a [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) segítségével részletesebben megismerheti a mi történik.
+A .NET-keretrendszer ETW eseményeket bocsát ki, és a szálak között továbbítja a tevékenység-azonosítókat, hogy az aszinkron hívásokat nyomon lehessen követni a szálak között. A nem felügyelt kód (natív kód) és az aszinkron kódok néhány régebbi stílusa hiányzik ezekről az eseményekről és tevékenység-azonosítóról, így a Profiler nem tudja megállapítani, hogy milyen szálat és milyen funkciók futnak a szálon. Ez a hívási verem "nem felügyelt aszinkron" címkéje. Ha letölti a ETW fájlt, lehetséges, hogy a [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)  segítségével részletesebben megismerheti a mi történik.
 
 ### <a name="cpu-time"></a><a id="cpu"></a>CPU-idő
 
@@ -119,7 +119,7 @@ A Profiler szolgáltatás használatáért nem számítunk fel díjat. Ahhoz, ho
 
 A Profiler véletlenszerűen két percen belül fut minden olyan virtuális gépen, amelyen a Profiler engedélyezve van a nyomkövetés rögzítéséhez. Ha a Profiler fut, az 5 – 15 százalékos CPU-terhelést tesz elérhetővé a kiszolgálóra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Application Insights Profiler engedélyezése az Azure-alkalmazáshoz. Lásd még:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327701"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
@@ -53,10 +53,10 @@ Ha Event Hubs SDK-kat vagy olyan termék-integrációt használ, amely nem tud I
 
 A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
 
-| Név | Érték |
+| Name (Név) | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
-| Gazdanév | abcd1234namespace.servicebus.windows.net |
+| Hostname (Gazdanév) | abcd1234namespace.servicebus.windows.net |
 | Névtér | abcd1234namespace |
 
 Ezután a fenti képernyőképen látható módon választhatja ki a megosztott elérési házirendet a legördülő menüből. Csak azokat a házirendeket jeleníti meg, amelyek rendelkeznek a **ServiceConnect** engedéllyel a megadott Event hubhoz való kapcsolódáshoz.

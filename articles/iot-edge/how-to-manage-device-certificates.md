@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669026"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
-Minden IoT Edge eszköz tanúsítványokat használ a futtatókörnyezet és az eszközön futó modulok közötti biztonságos kapcsolatok létrehozásához. IoT Edge az átjáróként működő eszközök ugyanezeket a tanúsítványokat használják az alsóbb rétegbeli eszközökhöz való kapcsolódáshoz.
+Minden IoT Edge-eszköz tanúsítványokat használ a futtatókörnyezet és az eszközön futó modulok közötti biztonságos kapcsolatok létrehozásához. IoT Edge az átjáróként működő eszközök ugyanezeket a tanúsítványokat használják az alsóbb rétegbeli eszközökhöz való kapcsolódáshoz.
 
 ## <a name="install-production-certificates"></a>Éles tanúsítványok telepítése
 
@@ -57,7 +57,7 @@ Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutat
 
 Telepítse a tanúsítványláncot a IoT Edge eszközre, és konfigurálja a IoT Edge futtatókörnyezetet az új tanúsítványokra való hivatkozáshoz.
 
-Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja át az alábbi fájlokat a IoT-peremhálózati eszközre:
+Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja a következő fájlokat a IoT-Edge eszközre:
 
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓjának titkos kulcsa: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -72,7 +72,7 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
    * Windows `C:\ProgramData\iotedge\config.yaml`
    * Linux `/etc/iotedge/config.yaml`
 
-1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
+1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Példa:
 
    * Windows:
 

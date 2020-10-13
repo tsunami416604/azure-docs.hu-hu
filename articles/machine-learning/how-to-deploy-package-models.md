@@ -1,5 +1,5 @@
 ---
-title: Csomagok modelljei
+title: Csomagmodellek
 titleSuffix: Azure Machine Learning
 description: Modell csomagolása Docker
 services: machine-learning
@@ -10,22 +10,22 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: d5fb2539d79c31de5a5e0196a7a4814c02a84602
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87544596"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Regisztrált modell csomagolása a Docker használatával
 
 Ez a cikk bemutatja, hogyan lehet becsomagolni egy regisztrált Azure Machine Learning modellt a Docker használatával.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk feltételezi, hogy már betanított és regisztrált egy modellt a Machine learning-munkaterületen. Ha szeretné megismerni, hogyan lehet betanítani és regisztrálni a scikit-modelleket, [kövesse ezt az oktatóanyagot](how-to-train-scikit-learn.md).
 
 
-## <a name="package-models"></a>Csomagok modelljei
+## <a name="package-models"></a>Csomagmodellek
 
 Bizonyos esetekben előfordulhat, hogy létre kell hoznia egy Docker-rendszerképet a modell üzembe helyezése nélkül (Ha például telepíteni szeretné a [Azure app Service](how-to-deploy-app-service.md)). Vagy előfordulhat, hogy le szeretné tölteni a rendszerképet, és egy helyi Docker-telepítésre kell futtatnia. Előfordulhat, hogy még le szeretné tölteni a rendszerkép létrehozásához használt fájlokat, megvizsgálhatja őket, módosíthatja azokat, és manuálisan is felépítheti a rendszerképet.
 
@@ -52,7 +52,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Miután létrehozta a csomagot, a használatával lekérheti `package.pull()` a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Például: 
+Miután létrehozta a csomagot, a használatával lekérheti `package.pull()` a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Példa: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -158,14 +158,14 @@ A tároló leállításához használja a következő parancsot egy másik rends
 docker kill mycontainer
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 * [Esemény-riasztások és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)

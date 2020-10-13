@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89009300"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Alkalmazások telepítése és eltávolítása a FabricClient használatával
@@ -91,7 +91,7 @@ Ha egy alkalmazás-példányra már nincs szükség, véglegesen eltávolíthatj
 Ha már nincs szükség az alkalmazás egy adott verziójára, akkor a regisztráció megszüntetésével az [ServiceFabricApplicationType API-](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) val törölni kell az adott verziót. A nem használt alkalmazások regisztrációjának törlése felszabadítja a rendszerkép-tároló által használt tárolóhelyet. Az alkalmazás típusának egy verziója törölhető, feltéve, hogy egyetlen alkalmazás sem lett létrehozva az alkalmazás típusának adott verziójára. Emellett az alkalmazás típusa nem lehet függőben lévő alkalmazás-frissítés, amely az alkalmazás típusának adott verziójára hivatkozik.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>A copy-ServiceFabricApplicationPackage ImageStoreConnectionString kér
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage kér egy ImageStoreConnectionString
 A Service Fabric SDK-környezetnek már meg kell határoznia a megfelelő alapértelmezett beállításokat. Ha azonban szükség van rá, az összes parancs ImageStoreConnectionString meg kell egyeznie a Service Fabric-fürt által használt értékkel. A ImageStoreConnectionString megkeresheti a fürt jegyzékfájljában, a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) és a Get-ImageStoreConnectionStringFromClusterManifest parancs használatával:
 
 ```powershell

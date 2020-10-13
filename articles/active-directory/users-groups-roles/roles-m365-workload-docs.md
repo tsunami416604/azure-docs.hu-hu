@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053548"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 szolgáltatások rendszergazdai szerepkörei
@@ -38,7 +38,7 @@ Biztonsági & megfelelőségi központ (Office 365 Advanced Threat Protection, E
 Biztonságos pontszám | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Compliance Manager | [A megfelelőségi kezelő szerepkörei](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Nem elérhető
 Azure Information Protection | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
-Microsoft Cloud App Security | [Szerepköralapú hozzáférés-vezérlés](/cloud-app-security/manage-admins) | [API-leírások](/cloud-app-security/api-tokens) 
+Microsoft Cloud App Security | [Szerepkör alapú hozzáférés-vezérlés](/cloud-app-security/manage-admins) | [API-leírások](/cloud-app-security/api-tokens) 
 Azure Komplex veszélyforrások elleni védelem | [Az Azure ATP szerepkörcsoportjai](/azure-advanced-threat-protection/atp-role-groups) | Nem elérhető
 Windows Defender Komplex veszélyforrások elleni védelem | [Windows Defender ATP szerepköralapú hozzáférés-vezérlés](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Nem elérhető
 Privileged Identity Management | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)

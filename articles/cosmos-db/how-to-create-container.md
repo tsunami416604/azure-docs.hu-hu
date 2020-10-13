@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019997"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
@@ -53,7 +53,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Képernyőkép a MongoDB Azure Cosmos DB API-ról, tároló hozzáadása párbeszédpanel":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Képernyőkép a Adatkezelő panelről, új tároló kiemelve":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
@@ -69,7 +69,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Képernyőkép a Cassandra APIről, tábla hozzáadása párbeszédpanel":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Képernyőkép a Adatkezelő panelről, új tároló kiemelve":::
 
 > [!NOTE]
 > A Cassandra API esetében a rendszer az elsődleges kulcsot használja partíciókulcsként.
@@ -89,7 +89,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Képernyőkép a Gremlin API-ról, gráf hozzáadása párbeszédpanel":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Képernyőkép a Adatkezelő panelről, új tároló kiemelve":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Table API
 
@@ -103,7 +103,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Képernyőkép a Table APIről, tábla hozzáadása párbeszédpanel":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Képernyőkép a Adatkezelő panelről, új tároló kiemelve":::
 
 > [!Note]
 > A Table API esetében a rendszer minden új sor hozzáadásakor megad egy partíciókulcsot.

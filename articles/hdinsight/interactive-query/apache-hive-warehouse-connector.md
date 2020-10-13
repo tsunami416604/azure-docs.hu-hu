@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511891"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark és Apache Hive integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
@@ -78,7 +78,7 @@ A méhkas Warehouse-összekötőnek külön fürtökre van szüksége a Spark é
     |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> A megfelelő HDFS-kompatibilis előkészítési könyvtárra van beállítva. Ha két különböző fürttel rendelkezik, az átmeneti könyvtárnak a LLAP-fürt Storage-fiókjának átmeneti könyvtárában kell lennie, hogy a HiveServer2 hozzáférjen hozzá.  Cserélje le a `STORAGE_ACCOUNT_NAME` nevet a fürt által használt Storage-fiók nevére és a `STORAGE_CONTAINER_NAME` tároló nevére. |
     |`spark.sql.hive.hiveserver2.jdbc.url`| Az **HiveServer2 Interactive JDBC URL-címről** korábban beszerzett érték |
     |`spark.datasource.hive.warehouse.metastoreUri`| A **kaptár. metaadattár. URI**-k által korábban beszerzett érték. |
-    |`spark.security.credentials.hiveserver2.enabled`|`true`a FONALas fürt mód és `false` a fonal ügyféloldali üzemmódja esetében. |
+    |`spark.security.credentials.hiveserver2.enabled`|`true` a FONALas fürt mód és `false` a fonal ügyféloldali üzemmódja esetében. |
     |`spark.hadoop.hive.zookeeper.quorum`| A **kaptár. Zookeeper. kvórum**által korábban beszerzett érték. |
     |`spark.hadoop.hive.llap.daemon.service.hosts`| A **kaptár. llap. Daemon. Service. hosts**által korábban beszerzett érték. |
 
@@ -224,7 +224,7 @@ kinit USERNAME
 
     ![bemutató táblázat a Ranger-szabályzat alkalmazása után](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HWC- és Apache Spark-műveletek](./apache-hive-warehouse-connector-operations.md)
 * [Az interaktív lekérdezés használata HDInsighttal](./apache-interactive-query-get-started.md)

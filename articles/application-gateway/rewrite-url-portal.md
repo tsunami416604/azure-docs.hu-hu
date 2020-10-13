@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083157"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>URL-cím újraírása az Azure Application Gateway-Azure Portal (előzetes verzió)
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával konfigurál
 >[!NOTE]
 > Az URL-Újraírási funkció előzetes verzióban érhető el, és csak Standard_v2 és a Application Gateway WAF_v2 SKU-ban érhető el. Éles környezetben való használatra nem ajánlott. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -53,13 +53,13 @@ Az alábbi példában, amikor a kérelem URL-címe */Article*tartalmaz, az URL-c
     
     c. Válassza a **Tovább** gombot.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Hozzárendelés egy szabályhoz":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Újraírási készlet hozzáadása":::
 
 5. Újraírási szabály létrehozása:
 
     a. Válassza az **Újraírási szabály hozzáadása**lehetőséget.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Újraírási szabály hozzáadása":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Újraírási készlet hozzáadása":::
     
     b. Adja meg az Újraírási szabály nevét az **Újraírási szabály neve** mezőben. Adjon meg egy számot a **szabály sorszáma** mezőben.
 
@@ -75,13 +75,13 @@ Az alábbi példában, amikor a kérelem URL-címe */Article*tartalmaz, az URL-c
     
     e. Az **operátor** listában válassza az **EQUAL (=)** elemet.
     
-    f. Adjon meg egy reguláris kifejezési mintát. Ebben a példában a mintázatot fogjuk használni`.*article/(.*)/(.*)`
+    f. Adjon meg egy reguláris kifejezési mintát. Ebben a példában a mintázatot fogjuk használni `.*article/(.*)/(.*)`
     
       a () az URL-cím elérési útjának újraírására szolgáló kifejezés összeállításakor használt alkarakterlánc rögzítésére szolgál. További információ: [itt](rewrite-http-headers-url.md#capturing).
 
     : Kattintson az **OK** gombra.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Feltétel":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Újraírási készlet hozzáadása":::
 
  
 
@@ -97,17 +97,17 @@ Az alábbi példában, amikor a kérelem URL-címe */Article*tartalmaz, az URL-c
 
    e. Az **URL-lekérdezési karakterlánc értéke**mezőben adja meg az URL-lekérdezési karakterlánc új értékét. Ebben a példában a következőt fogjuk használni: **ID = {var_uri_path_1} &title = {var_uri_path_2}**
     
-    `{var_uri_path_1}`és a `{var_uri_path_1}` feltételnek a kifejezésben való kiértékelése során rögzített alsztringek beolvasására szolgál.`.*article/(.*)/(.*)`
+    `{var_uri_path_1}` és a `{var_uri_path_1}` feltételnek a kifejezésben való kiértékelése során rögzített alsztringek beolvasására szolgál. `.*article/(.*)/(.*)`
     
    f. Kattintson az **OK** gombra.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Művelet":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Újraírási készlet hozzáadása":::
 
 8. Az Újraírási készlet létrehozásához kattintson a **Létrehozás** gombra.
 
 9. Ellenőrizze, hogy az új Újraírási készlet megjelenik-e az Újraírási készletek listájában.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Újraírási szabály hozzáadása":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Újraírási készlet hozzáadása":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>URL-cím újraírásának ellenőrzése a hozzáférési naplókon keresztül
 

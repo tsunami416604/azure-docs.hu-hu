@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
 ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308418"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
@@ -94,7 +94,7 @@ __Megjegyzés__: a továbblépés előtt győződjön meg róla, hogy a Spark-f�
     |Tulajdonság | Érték |
     |---|---|
     |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Csomópont típusa (i)|Region|
+    |Csomópont típusa (i)|Régió|
     |Paraméterek|`-s SECONDARYS_STORAGE_URL`|
     |Kitartott|igen|
 

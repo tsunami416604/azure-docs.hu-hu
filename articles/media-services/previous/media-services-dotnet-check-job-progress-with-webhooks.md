@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267734"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez a .NET-tel
@@ -64,7 +64,7 @@ Media Services függvények fejlesztésekor hasznos lehet olyan környezeti vál
 
 Az [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakasz azokat a paramétereket határozza meg, amelyek a jelen cikkben definiált webhookban használatosak. Adja hozzá a következő paramétereket az alkalmazás beállításaihoz is. 
 
-|Name|Definíció|Példa| 
+|Name (Név)|Definíció|Példa| 
 |---|---|---|
 |SigningKey |Egy aláíró kulcs.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Egy webhook végpontjának címe. Ha létrehozta a webhook-függvényt, az URL-címet a **Get függvény URL-címe** hivatkozás használatával másolhatja. | https: \/ /juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|
