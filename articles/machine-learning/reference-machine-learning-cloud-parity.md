@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892973"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning szuverén felhő paritása
@@ -34,7 +34,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Funkció | Nyilvános felhő állapota  | USA – Virginia | USA – Arizona| 
+| Szolgáltatás | Nyilvános felhő állapota  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Automatizált gépi tanulás** | | | |
 | Kísérletek létrehozása és futtatása jegyzetfüzetekben                                    | FE                   | IGEN                | IGEN         |
@@ -96,7 +96,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 | egyéni címkék a Azure Machine Learningban az adatlapok megvalósításához              | FE                   | NO                 | NO          |
 | Méltányos AzureML-integráció                                               | Nyilvános előzetes verzió       | NO                 | NO          |
 | Értelmező SDK                                                      | FE                   | IGEN                | IGEN         |
-| **Képzés** |   | | |
+| **Oktatás** |   | | |
 | Kísérletezési naplók folyamatos átvitele                                              | FE                   | IGEN                | IGEN         |
 | Megerősítő tanulás                                                     | Nyilvános előzetes verzió       | NO                 | NO          |
 | Kísérletezés felhasználói felülete                                                         | FE                   | IGEN                | IGEN         |
@@ -112,7 +112,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 
 ### <a name="azure-government-scenarios"></a>Azure Government forgatókönyvek
 
-| Használati eset                                                    | USA – Virginia | USA – Arizona| Korlátozások  |
+| Forgatókönyv                                                    | US-Virginia | US-Arizona| Korlátozások  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **Általános biztonsági beállítások** |   | | |
 | Privát hálózati kommunikáció a szolgáltatások között                                     | NO | NO | Jelenleg nincs privát hivatkozás | 
@@ -122,7 +122,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 | Gyökér-és SSH-hozzáférés a számítási erőforrásokhoz.                                          | IGEN | IGEN |  |
 | Az üzembe helyezett rendszerek (példányok, végpontok stb.) biztonságának fenntartása, beleértve az Endpoint Protectiont, a javítást és a naplózást |  RÉSZLEGES|  RÉSZLEGES |A VNet mögötti ACI és a privát végpont jelenleg nem érhető el |                                  
 | Az ACI/AK-integráció használatának szabályozása (Letiltás/korlátozás/korlátozás)                    | RÉSZLEGES| RÉSZLEGES |A VNet mögötti ACI és a privát végpont jelenleg nem érhető el|
-| Szerepköralapú Access Control (RBAC) – egyéni szerepkörök létrehozása                           | IGEN | IGEN |  |
+| Role-Based Access Control (RBAC) – egyéni szerepkörök létrehozása                           | IGEN | IGEN |  |
 | A ML szolgáltatás által használt ACR-rendszerképekhez való hozzáférés szabályozása (Azure által biztosított/karbantartott, illetve egyéni)  |RÉSZLEGES|  RÉSZLEGES | A magánhálózati végpontok és a VNet mögötti ACR nem támogatott Azure Government |
 | **Általános Machine Learning szolgáltatás használata** |  | | |
 | Fejlesztési környezet kialakítása modell létrehozásához, a modell betanításához, végpontként való üzemeltetéséhez, és egy WebApp használatával     | IGEN | IGEN |  |
@@ -134,7 +134,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 ### <a name="additional-azure-government-limitations"></a>További Azure Government korlátozások
 
 * Azure Machine Learning számítási példányok esetében a 24 óránál hosszabb ideig tartó tokenek frissítése nem érhető el Azure Governmentban.
-* A Model profilkészítés nem támogatja a 4 processzort az USA – Arizona régióban.   
+* A Model profilkészítés nem támogatja a 4 CPU-t a US-Arizona régióban.   
 * Előfordulhat, hogy a minta jegyzetfüzetek nem működnek Azure Governmentban, ha nyilvános adatelérésre van szükségük.
 * IP-címek: a [VNet és a kényszerített bújtatási](how-to-secure-training-vnet.md#forced-tunneling) utasításokban használt CLI-parancs nem ad vissza IP-tartományokat. Ehelyett használja az [Azure IP-címtartományok és a szolgáltatás címkéit Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
 * Az ütemezett folyamatok esetében blob-alapú trigger mechanizmust is biztosítunk. Ez a mechanizmus CMK-munkaterületek esetén nem támogatott. A CMK-munkaterületek blob-alapú triggerének engedélyezéséhez további telepítést kell végrehajtania. További információ: [gépi tanulási folyamat futtatásának elindítása logikai alkalmazásból](how-to-trigger-published-pipeline.md).
@@ -147,7 +147,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 
 ## <a name="azure-china-21vianet"></a>Azure China 21Vianet 
 
-| Funkció                                       | Nyilvános felhő állapota | CH-Kelet – 2 | CH-Észak-3 |
+| Szolgáltatás                                       | Nyilvános felhő állapota | CH-Kelet – 2 | CH-Észak-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizált gépi tanulás** |    | | |
 | Kísérletek létrehozása és futtatása jegyzetfüzetekben                                    | FE               | IGEN       | N.A.        |
@@ -209,7 +209,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 | egyéni címkék a Azure Machine Learningban az adatlapok megvalósításához              | FE               | NO        | N.A.        |
 | Méltányos AzureML-integráció                                               | Nyilvános előzetes verzió   | NO        | N.A.        |
 | Értelmező SDK                                                      | FE               | IGEN       | N.A.        |
-| **Képzés** |    | | |
+| **Oktatás** |    | | |
 | Kísérletezési naplók folyamatos átvitele                                              | FE               | IGEN       | N.A.        |
 | Megerősítő tanulás                                                     | Nyilvános előzetes verzió   | NO        | N.A.        |
 | Kísérletezés felhasználói felülete                                                         | FE               | IGEN       | N.A.        |
@@ -229,7 +229,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 * Az Azure China korlátozott VM SKU-val rendelkezik, különösen a GPU SKU esetében. Csak NCv3 család (V100).
 * REST API végpontok eltérnek a globális Azure-tól. Az alábbi táblázat segítségével megkeresheti az Azure China-régiók REST API végpontját:
 
-    | REST-végpont                 | Globális Azure                                 | Kína – kormányzat                           |
+    | REST-végpont                 | Globális Azure                                 | China-Government                           |
     |------------------|--------------------------------------------|--------------------------------------------|
     | Felügyeleti sík | `https://management.azure.com/`              | `https://management.chinacloudapi.cn/`       |
     | Adatsík       | `https://{location}.experiments.azureml.net` | `https://{location}.experiments.ml.azure.cn` |

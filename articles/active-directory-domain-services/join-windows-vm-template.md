@@ -2,7 +2,7 @@
 title: Windows rendszerű virtuális gép csatlakoztatása az Azure AD DShoz – sablon használata | Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat Azure Resource Manager-sablonokkal új vagy meglévő Windows Server rendszerű virtuális géphez egy Azure Active Directory Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86221357"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960694"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
 
@@ -135,7 +135,7 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 
 Néhány percet vesz igénybe, hogy a központi telepítés sikeresen befejeződjön. Ha elkészült, a megadott Windows rendszerű virtuális gépek csatlakoznak a felügyelt tartományhoz, és felügyelhetők vagy bejelentkezhetnek a tartományi fiókok használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a Azure Portal segítségével konfigurálta és telepítette az erőforrásokat sablonok használatával. Az erőforrásokat [Azure PowerShell][deploy-powershell] vagy az [Azure CLI][deploy-cli]használatával is üzembe helyezheti Resource Manager-sablonokkal.
 

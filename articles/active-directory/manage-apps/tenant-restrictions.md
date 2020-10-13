@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604172"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
@@ -174,7 +174,7 @@ A Hegedűs egy ingyenes webes hibakeresési proxy, amely a HTTP/HTTPS-forgalom r
       }
       ```
 
-      Ha több bérlőt is engedélyeznie kell, a vesszőt használva válassza el a bérlők nevét. Például:
+      Ha több bérlőt is engedélyeznie kell, a vesszőt használva válassza el a bérlők nevét. Példa:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
@@ -191,7 +191,7 @@ A proxy-infrastruktúra képességeitől függően lehetősége lehet a beállí
 
 További részletekért tekintse meg a proxykiszolgáló dokumentációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [frissített Office 365 modern hitelesítésről](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
 - Az [Office 365 URL-címeinek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) áttekintése

@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661108"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969976"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 
@@ -522,7 +522,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 A rendszerkép-készítő szolgáltatás a 22-es (Linux) vagy a 5986 (Windows) portot használja a Build virtuális géphez való csatlakozáshoz. Ez akkor fordul elő, ha a szolgáltatás leválasztása a virtuális gép létrehozásához a rendszerkép létrehozásakor történik. A leválasztás okai eltérőek lehetnek, de a parancsfájlok engedélyezése vagy konfigurálása a fenti portok blokkolását is lehetővé teszi.
 
 #### <a name="solution"></a>Megoldás
-Tekintse át a tűzfalak változásait/engedélyezését, illetve az SSH vagy a WinRM módosítását, és győződjön meg arról, hogy a módosítások lehetővé teszik a szolgáltatás közötti állandó kapcsolódást és a virtuális gép kiépítését a fenti portokon. A rendszerkép-készítő hálózatkezeléssel kapcsolatos további információkért tekintse át a [követelményeket](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+Tekintse át a tűzfalak változásait/engedélyezését, illetve az SSH vagy a WinRM módosítását, és győződjön meg arról, hogy a módosítások lehetővé teszik a szolgáltatás közötti állandó kapcsolódást és a virtuális gép kiépítését a fenti portokon. A rendszerkép-készítő hálózatkezeléssel kapcsolatos további információkért tekintse át a [követelményeket](./image-builder-networking.md).
 
 ## <a name="devops-task"></a>DevOps-feladat 
 
@@ -547,7 +547,7 @@ Nyissa meg a Storage-fiók > Blobok > tárolók > naplókat.
 ### <a name="troubleshooting-successful-builds"></a>Sikeres buildek hibaelhárítása
 Bizonyos esetekben előfordulhat, hogy a sikeres buildek vizsgálatára van szükség, és át szeretné tekinteni a naplót. Ahogy azt említettük, ha a rendszerkép létrehozása sikeres, a naplókat tartalmazó átmeneti erőforráscsoport törlődik a karbantartás részeként. Azonban az is előfordulhat, hogy a beágyazott parancs után alvó állapotba kerül, majd lekéri a naplókat, mivel a Build szüneteltetve van. Ehhez kövesse az alábbi lépéseket:
  
-1. Frissítse a beágyazott parancsot, és adja hozzá a következőt: Write-Host/echo "alvó" – Ez lehetővé teszi a keresést a naplóban
+1. Frissítse a beágyazott parancsot, és adja hozzá a következőt: Write-Host/echo "Sleep" – Ez lehetővé teszi a keresést a naplóban
 2. Vegyen fel egy alvó állapotot legalább 10mins, a [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep)vagy a `Sleep` Linux parancsot használhatja.
 3. A fenti módszer használatával azonosíthatja a napló helyét, majd megtarthatja a napló letöltését/ellenőrzését, amíg az alvó állapotba nem kerül.
 
@@ -586,7 +586,7 @@ Bizonyos esetekben előfordulhat, hogy a sikeres buildek vizsgálatára van szü
 
 Ha a buildet nem egy felhasználó törölte, azt az Azure DevOps felhasználói ügynöke törölte. Az Azure DevOps képességei miatt a legnagyobb valószínűséggel az 1 órás időtúllépés történt. Ha privát projektet és ügynököt használ, 60 perces felépítési időt vehet igénybe. Ha a Build túllépi az időkorlátot, a DevOps megszakítja a futó feladatot.
 
-További információ az Azure DevOps képességeiről és korlátairól: [Microsoft által üzemeltetett ügynökök](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+További információ az Azure DevOps képességeiről és korlátairól: [Microsoft által üzemeltetett ügynökök](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
  
 #### <a name="solution"></a>Megoldás
 
@@ -601,7 +601,7 @@ Please wait for the Windows Modules Installer
 ```
 
 #### <a name="solution"></a>Megoldás
-Első lépésként a rendszerkép-összeállításban győződjön meg arról, hogy a Windows újraindítási testreszabása nem szükséges a legutóbbi testreszabáshoz, és hogy az összes szoftver telepítése befejeződött. Végül adja hozzá a [/Mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) lehetőséget a AIB által használt alapértelmezett Sysprep-hez, lásd alább, "a AIB-lemezképek által létrehozott virtuális gépek nem hozhatnak létre sikeresen" > "felülbírálja a parancsokat"  
+Első lépésként a rendszerkép-összeállításban győződjön meg arról, hogy a Windows újraindítási testreszabása nem szükséges a legutóbbi testreszabáshoz, és hogy az összes szoftver telepítése befejeződött. Végül adja hozzá a [/Mode: VM](/windows-hardware/manufacture/desktop/sysprep-command-line-options) lehetőséget a AIB által használt alapértelmezett Sysprep-hez, lásd alább, "a AIB-lemezképek által létrehozott virtuális gépek nem hozhatnak létre sikeresen" > "felülbírálja a parancsokat"  
 
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>A AIB-lemezképből létrehozott virtuális gépek nem jönnek létre sikeresen

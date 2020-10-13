@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536970"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
@@ -110,7 +110,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután csatlakoztatta az eszközt a szervezete hálózatához, a munkahelyi vagy iskolai fiókja adataival férhet hozzá az összes erőforráshoz.
 
 - Ha a szervezete szeretné regisztrálni a személyes eszközét, például a telefont, tekintse meg a [személyes eszköz regisztrálása a szervezet hálózatán](user-help-register-device-on-network.md)című témakört.

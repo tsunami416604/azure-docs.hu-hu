@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317004"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Elosztott hálózatnév konfigurálása a következőhöz: 
@@ -119,7 +119,7 @@ A lehetséges tulajdonosok frissítéséhez kövesse az alábbi lépéseket:
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="A DNN erőforrás helyi menüje, a tulajdonságok paranccsal kiemelve.":::
 1. Törölje a jelet a feladatátvevő fürt példányában nem részt vevő csomópontok jelölőnégyzetéből. A DNN-erőforrás lehetséges tulajdonosainak listáját meg kell egyeznie a SQL Server példány-erőforrás lehetséges tulajdonosainak listájával. Tegyük fel például, hogy a data3 nem vesz részt a (z)-es verzióban, az alábbi képen egy példa a DNN-erőforrás lehetséges tulajdonosainak listájáról való data3 eltávolítására: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Törölje a jelölőnégyzet jelölését azon csomópontok mellett, amelyek nem vesznek részt a DNN-erőforrás lehetséges tulajdonosainak":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="A DNN erőforrás helyi menüje, a tulajdonságok paranccsal kiemelve.":::
 
 1. A beállítások mentéséhez kattintson **az OK gombra** . 
 

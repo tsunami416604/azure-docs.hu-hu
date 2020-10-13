@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259425"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -70,13 +70,13 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_id | Yes | Az identitás-szolgáltató alkalmazás-azonosítója. |
-| ProviderName | No | Az identitás-szolgáltató neve. |
-| request_token_endpoint | Yes | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
-| authorization_endpoint | Yes | Az engedélyezési végpont URL-címe RFC 5849-ként. |
-| access_token_endpoint | Yes | A jogkivonat-végpont URL-címe RFC 5849-ként. |
-| ClaimsEndpoint | No | A felhasználói információs végpont URL-címe |
-| ClaimsResponseFormat | No | A jogcímek válaszának formátuma.|
+| client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
+| ProviderName | Nem | Az identitás-szolgáltató neve. |
+| request_token_endpoint | Igen | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
+| authorization_endpoint | Igen | Az engedélyezési végpont URL-címe RFC 5849-ként. |
+| access_token_endpoint | Igen | A jogkivonat-végpont URL-címe RFC 5849-ként. |
+| ClaimsEndpoint | Nem | A felhasználói információs végpont URL-címe |
+| ClaimsResponseFormat | Nem | A jogcímek válaszának formátuma.|
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -84,7 +84,7 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Az Identity Provider alkalmazás ügyfél-titka.   |
+| client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka.   |
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 

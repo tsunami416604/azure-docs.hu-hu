@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 2e6efc08cb7d38a856098395aff363d9d7ec2bab
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442992"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>Lekérdezés továbbítása egy megfelelő adatbázishoz az Adatfüggő útválasztás használatával
@@ -25,7 +25,7 @@ Az **Adatfüggő útválasztás** lehetővé teszi, hogy egy lekérdezésben lé
 
 Az alkalmazásnak nem kell nyomon követnie a különböző típusú adatszeletekhez társított különböző kapcsolódási karakterláncokat vagy adatbázis-tárolóhelyeket. Ehelyett a szegmenses [Térkép kezelője](elastic-scale-shard-map-management.md) szükség esetén nyitja meg a megfelelő adatbázisokhoz való kapcsolódást, és az alkalmazás kérelmének céljaként szolgáló horizontális Felskálázási kulcs értékét. A kulcs általában a *customer_id*, *tenant_id*, *date_key*vagy valamilyen más, az adatbázis-kérelem alapvető paraméterének megfelelő azonosító.
 
-További információ: SQL Server horizontális [Felskálázása az adatoktól függő útválasztással](https://technet.microsoft.com/library/cc966448.aspx).
+További információ: SQL Server horizontális [Felskálázása Data-Dependent útválasztással](https://technet.microsoft.com/library/cc966448.aspx).
 
 ## <a name="download-the-client-library"></a>Az ügyféloldali kódtár letöltése
 
@@ -118,7 +118,7 @@ Az **OpenConnectionForKeyAsync metódus** ([Java](/java/api/com.microsoft.azure.
 
 Az adatelérési alkalmazások felhőben történő fejlesztésének bevált gyakorlata, hogy az alkalmazás átmeneti hibákat észlel, és a műveletek többször is többször is próbálkoznak a hiba eldobása előtt. A felhőalapú alkalmazások átmeneti hibáinak kezelését az átmeneti hibák kezelésére ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.net](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))) tárgyaljuk.
 
-Az átmeneti hibák kezeléséhez természetesen az Adatfüggő útválasztási minta is használható. A legfontosabb követelmény, hogy próbálja megismételni a teljes adatelérési kérelmet, beleértve az Adatfüggő útválasztási kapcsolatot bekérő blokk **használatával** . Az előző példa a következőképpen írható át.
+Az átmeneti hibák a Data-Dependent útválasztási mintával együtt is létezhetnek. A legfontosabb követelmény, hogy próbálja megismételni a teljes adatelérési kérelmet, beleértve az Adatfüggő útválasztási kapcsolatot bekérő blokk **használatával** . Az előző példa a következőképpen írható át.
 
 ### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Példa – az Adatfüggő útválasztás átmeneti hibák kezelésével
 
@@ -175,7 +175,7 @@ Az átmeneti hibakezelés megvalósításához szükséges csomagokat a rendszer
 
 A tranzakciós tulajdonságok minden, a szegmensen belüli művelet esetében garantáltak. Az Adatfüggő útválasztáson keresztül küldött tranzakciók például a kapcsolatok cél szegmensének hatókörén belül lesznek végrehajtva. Jelenleg nincs lehetőség arra, hogy több kapcsolat kerüljön be egy tranzakcióba, ezért a szegmenseken végrehajtott műveletekhez nem biztosítunk tranzakciós garanciát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szegmensek leválasztásához vagy a szegmensek újbóli csatolásához lásd: [a recoverymanager osztállyal osztály használata a szegmenses Térkép problémáinak kijavításához](elastic-database-recovery-manager.md).
 

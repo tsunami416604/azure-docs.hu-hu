@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265952"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
@@ -33,12 +33,12 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, és válassza ki azokat a fiókokat, amelyeknek fenn kell tartaniuk a régi hitelesítés használatát. Zárja ki legalább egy fiókot, hogy elkerülje a zárolás kizárását. Ha nem zárja ki a fiókot, nem fogja tudni létrehozni ezt a házirendet.
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **Cloud apps vagy műveletek**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **feltételek**  >  **ügyfélalkalmazások**területen állítsa az **Configure** **Igen**értékre.
    1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése.
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget.
    1. Válassza a **Kiválasztás** lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.

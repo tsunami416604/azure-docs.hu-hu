@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
 ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613560"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
@@ -55,7 +55,7 @@ Az alábbi táblázat bemutatja, hogyan vannak leképezve a natív MongoDB írá
 
 :::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Cassandra konzisztencia-modell leképezése" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a konzisztencia szintjeiről és a Azure Cosmos DB API-k és a nyílt forráskódú API-k közötti kompatibilitásról. Lásd az alábbi cikkeket:
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 125a823acc79143d9d6556e496f7728c718db089
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332565"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989562"
 ---
 Ismerkedés az Azure Content Moderator .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a NuGet csomagot, és próbálja ki az alapszintű feladatok példáját. 
 
@@ -33,19 +33,24 @@ A .NET-hez készült Content Moderator ügyféloldali kódtára a következőre 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
+* A [Visual Studio ide](https://visualstudio.microsoft.com/vs/) vagy a [.net Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title=" hozzon létre egy [Terméknév] erőforrást, "  target="_blank"> és hozzon létre egy Content moderator erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Content Moderatorhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
-## <a name="create-a-content-moderator-resource"></a>Content Moderator erőforrás létrehozása
+## <a name="setting-up"></a>Beállítás
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Content Moderator a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
+### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-* Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Miután megszerezte a kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez `CONTENT_MODERATOR_SUBSCRIPTION_KEY` , illetve `CONTENT_MODERATOR_ENDPOINT`
+Hozzon létre egy új .NET Core-alkalmazást a Visual Studióval. 
 
-## <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Hozzon létre egy új .NET Core-alkalmazást a kívánt szövegszerkesztőben vagy az IDE-ben. 
+Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat úgy, hogy a **megoldáskezelő** , majd a **NuGet-csomagok kezelése**lehetőségre kattint a jobb gombbal a projekt megoldásra. A megnyíló csomagkezelő válassza a **Tallózás**lehetőséget, jelölje be az **előzetes verzió**használata jelölőnégyzetet, és keressen rá `Microsoft.Azure.CognitiveServices.ContentModerator` . Válassza `2.0.0` a verzió, majd a **telepítés**lehetőséget. 
+
+#### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
 A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `content-moderator-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
@@ -69,18 +74,7 @@ Build succeeded.
 ...
 ```
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
-
-A **program** osztályban hozzon létre változókat az erőforrás végpontjának helyéhez és a kulcshoz környezeti változókként.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
-
-> [!NOTE]
-> Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
-
-## <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
 Az alkalmazás könyvtárában telepítse az Content Moderator .NET-hez készült ügyféloldali kódtárat a következő paranccsal:
 
@@ -88,7 +82,35 @@ Az alkalmazás könyvtárában telepítse az Content Moderator .NET-hez készül
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 2.0.0
 ```
 
-Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
+---
+
+> [!TIP]
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+
+A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
+
+A **program** osztályban hozzon létre változókat az erőforrás kulcsa és végpontja számára.
+
+> [!IMPORTANT]
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Content moderator erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések**alatt. A kulcsot és a végpontot az erőforrás- **kezelés**területen, az erőforrás **kulcs és végpont** lapján találja. 
+>
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) cikkben talál.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
+
+
+Az alkalmazás `main()` metódusában adjon hozzá hívásokat az ebben a rövid útmutatóban használt módszerekhez. Ezeket később fogja létrehozni.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+
 
 ## <a name="object-model"></a>Objektummodell
 
@@ -112,9 +134,9 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Egy új metódusban hozza létre az ügyféloldali objektumokat a végponttal és a kulccsal. Minden forgatókönyvhöz nincs szüksége más ügyfélre, de a kód megtartható.
+Egy új metódusban hozza létre az ügyféloldali objektumokat a végponttal és a kulccsal.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_auth)]
 
 ## <a name="moderate-text"></a>Mérsékelt szöveg
 
@@ -129,9 +151,6 @@ Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255,
 Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
-Adja hozzá a következő metódus-hívást a `Main` metódushoz:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
 Ezután adja meg a Text moderációs metódust a **program** osztályban:
 
@@ -146,7 +165,7 @@ A következő kód egy Content Moderator ügyfelet használ a [ImageModeration](
 
 ### <a name="get-sample-images"></a>Mintaképek beolvasása
 
-Adja meg a bemeneti és kimeneti fájlokat:
+Adja meg a bemeneti és kimeneti fájlokat a **program** osztályának gyökerében:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
@@ -156,10 +175,6 @@ Ezután hozza létre a bemeneti fájlt *ImageFiles.txt*a projekt gyökerében. E
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
-
-Adja át a bemeneti és kimeneti fájljait a metódus következő metódusának hívására `Main` . Ezt a metódust egy későbbi lépésben kell megadnia.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>Segítő osztály definiálása
 
@@ -189,9 +204,7 @@ További információ a Content Moderator képernyőt tartalmazó képattribútu
 
 A Content Moderator .NET ügyféloldali kódtár használatával tartalmat adhat a [felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com) , így az emberi moderátorok áttekinthetik azt. További információ a felülvizsgálati eszközről: a [felülvizsgálati eszköz fogalmi útmutatója](../../review-tool-user-guide/human-in-the-loop.md).
 
-Az ebben a szakaszban szereplő metódus a [Reviews osztály használatával](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) hozza létre a felülvizsgálatot, beolvassa az azonosítóját, és az emberi adatoknak a felülvizsgálati eszköz webportálon való fogadása után ellenőrizze annak adatait. Az összes információt egy kimeneti szövegfájlban naplózza. Hívja meg a metódust a `Main` metódusból:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+Az ebben a szakaszban szereplő metódus a [Reviews osztály használatával](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) hozza létre a felülvizsgálatot, beolvassa az azonosítóját, és az emberi adatoknak a felülvizsgálati eszköz webportálon való fogadása után ellenőrizze annak adatait. Az összes információt egy kimeneti szövegfájlban naplózza. 
 
 ### <a name="get-sample-images"></a>Mintaképek beolvasása
 
@@ -255,22 +268,30 @@ Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a követ
  'type': 'Image'}
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
+
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
+
+Futtassa az alkalmazást az IDE-ablak felső részén található **Debug (hibakeresés** ) gombra kattintva.
+
+#### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 
 ```dotnet
-dotnet run 
+dotnet run
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+---
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moderator .NET-függvénytárat moderálási feladatok elvégzésére. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

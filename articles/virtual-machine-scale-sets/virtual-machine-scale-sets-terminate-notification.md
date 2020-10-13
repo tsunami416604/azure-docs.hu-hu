@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603832"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure-beli virtuális gépek méretezésicsoport-példányainak megszüntetési értesítése
@@ -199,5 +199,5 @@ Ha nem kap **megszakítási** eseményt a Scheduled Eventson keresztül, akkor e
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Az esemény megszakítása helytelen NotBefore idővel  
 Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout*, frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

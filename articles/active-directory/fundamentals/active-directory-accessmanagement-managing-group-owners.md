@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318590"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969914"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Csoport tulajdonosainak hozzáadása vagy eltávolítása Azure Active Directory
 A Azure Active Directory-(Azure AD-) csoportokat a csoport tulajdonosai és kezelik. A csoport tulajdonosai lehetnek felhasználók vagy egyszerű szolgáltatások, és képesek a csoport kezelésére, beleértve a tagságot is. A csoport tulajdonosai csak a meglévő tulajdonosok vagy csoport-felügyeleti rendszergazdák számára rendelhetők hozzá. A csoport tulajdonosai nem szükségesek a csoport tagjainak lennie.
@@ -52,7 +52,7 @@ Tulajdonos eltávolítása egy csoportból az Azure AD használatával.
 
 3. A **Mdm házirend – Nyugat áttekintése** lapon válassza a **tulajdonosok**lehetőséget.
 
-    ![MDM házirend – Nyugat-Áttekintés lap a tulajdonosokkal lehetőség kiemelve](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![MDM házirend – Nyugat-Áttekintés lap a tulajdonosok eltávolítása lehetőség kiemelve](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
 4. A **Mdm házirend-Nyugat-tulajdonosok** lapon válassza ki az eltávolítani kívánt felhasználót a csoport tulajdonosaként, válassza az **Eltávolítás** lehetőséget a felhasználó adatai lapról, és válassza az **Igen** lehetőséget a döntés megerősítéséhez.
 

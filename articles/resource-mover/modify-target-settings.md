@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604478"
 ---
-# <a name="modify-target-settings"></a>Cél beállításainak módosítása
+# <a name="modify-target-settings"></a>Célbeállítások módosítása
 
 Ez a cikk azt ismerteti, hogyan lehet módosítani a célhelyeket az Azure-régiók Azure-beli [erőforrás](overview.md)-áthelyezéssel való áthelyezése során.
 
@@ -34,7 +34,7 @@ Azonban
 
 A módosítható konfigurációs beállítások összegzése a táblázatban látható.
 
-**Erőforrás** | **Beállítások** 
+**Erőforrás** | **Lehetőségek** 
 --- | --- | --- 
 **Virtuális gép neve** | Paraméterek:<br/><br/> – Hozzon létre egy új virtuális gépet ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új virtuális gépet egy másik névvel a célként megadott régióban.<br/><br/> – Használjon egy meglévő virtuális gépet a célként megadott régióban.<br/><br/> Ha új virtuális gépet hoz létre, a módosított beállítások kivételével az új célként megadott virtuális gép ugyanazokat a beállításokat rendeli hozzá, mint a forrás.
 **Virtuális gép rendelkezésre állási zónája** | A rendelkezésre állási zóna, amelyben a célként megadott virtuális gép el lesz helyezve. Ez akkor jelölhető meg, ha nem szeretné módosítani a forrás beállításait, **vagy ha nem** szeretné a virtuális gépet egy rendelkezésre állási zónában elhelyezni.
@@ -93,6 +93,6 @@ Egy Azure SQL Database erőforráshoz tartozó cél beállításait a következ�
 1. Az **egyes régiókban**a módosítani kívánt erőforráshoz kattintson a **cél konfigurációs** bejegyzésre.
 2. A **konfigurációs beállítások**területen határozza meg a fenti táblázatban összefoglalt célként megadott beállításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-beli virtuális gép áthelyezése](tutorial-move-region-virtual-machines.md) egy másik régióba.

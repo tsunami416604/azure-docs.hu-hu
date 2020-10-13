@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604240"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Oktatóanyag: VMware virtuális gépek felmérése az AVS-re való áttelepítéshez
@@ -25,7 +25,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges. 
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 
@@ -44,8 +44,8 @@ Döntse el, hogy szeretne-e értékelést használni a méretezési feltételek 
 
 **Értékelés** | **Részletek** | **Ajánlás**
 --- | --- | ---
-**Helyszíni** | Értékelés a számítógép konfigurációs adatok/metaadatok alapján.  | Az AVS-ben javasolt csomópont-méret a helyszíni virtuális gép méretétől függ, valamint a csomópont típusának, tárolási típusának és a meghibásodások által tolerálható beállítás értékelésében megadott beállításoknak.
-**Teljesítmény-alapú** | Az összegyűjtött dinamikus teljesítményadatok alapján történő Értékelés. | Az AVS-ben javasolt csomópont-méret a CPU-és a memóriahasználat, valamint az értékelésben megadott beállításokkal, a tárolási típussal és a meghibásodások által tolerálható beállítással együtt.
+**Módosítás nélküli helyszíni** | Értékelés a számítógép konfigurációs adatok/metaadatok alapján.  | Az AVS-ben javasolt csomópont-méret a helyszíni virtuális gép méretétől függ, valamint a csomópont típusának, tárolási típusának és a meghibásodások által tolerálható beállítás értékelésében megadott beállításoknak.
+**Teljesítményalapú** | Az összegyűjtött dinamikus teljesítményadatok alapján történő Értékelés. | Az AVS-ben javasolt csomópont-méret a CPU-és a memóriahasználat, valamint az értékelésben megadott beállításokkal, a tárolási típussal és a meghibásodások által tolerálható beállítással együtt.
 
 ## <a name="run-an-assessment"></a>Értékelés futtatása
 
@@ -101,7 +101,7 @@ Az értékelést a következőképpen futtathatja:
 
 11. Ha módosítja a módosításokat, kattintson a **Save (Mentés** ) gombra.
 
-    ![Értékelés tulajdonságai](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
+    ![Kiértékelés tulajdonságai](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
 
 12. A **kiszolgálók értékelése**területen kattintson a **tovább**gombra.
 13. A **kiszolgálók felmérése**  >  **lapon válassza ki a gépeket az**értékeléshez, majd a kiszolgálók új csoportjának létrehozásához válassza az **új létrehozása**lehetőséget, és adja meg a csoport nevét. 
@@ -120,12 +120,12 @@ Egy AVS-értékelés leírja:
 - Használat az AVS-csomópontok között: a processzor, a memória és a tárhely kihasználtsága az összes csomóponton keresztül.
 - Havi költségbecslés: a helyszíni virtuális gépeket futtató összes Azure VMware Solution (AVS) csomópont becsült havi költségei.
 
-## <a name="view-an-assessment"></a>Értékelés megtekintése
+## <a name="view-an-assessment"></a>Kiértékelés megtekintése
 
 Értékelés megtekintése:
 
 1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelések**melletti számra.
-2. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához. 
+2. Az **Értékelések** területen válasszon ki egy kiértékelést a megnyitáshoz. 
 3. Tekintse át az értékelés összegzését. Szerkesztheti az értékelési tulajdonságokat is, vagy újraszámíthatja az értékelést.
  
 

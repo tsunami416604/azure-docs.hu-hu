@@ -15,10 +15,10 @@ ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6911128cfbaa87229a09bcea0d655c6110c2d208
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259781"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Rendelkezésre álló SKU-a HANA nagyméretű példányaihoz
@@ -48,7 +48,7 @@ Az elérhető Azure-beli nagyméretű példányok listája, például a követke
 
 
 
-| SAP HANA tanúsított | Modellezés | Teljes memória | Memória DRAM | Memória Optane | Tárolás | Rendelkezésre állás |
+| SAP HANA tanúsított | Modell | Teljes memória | Memória DRAM | Memória Optane | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- | --- | --- |
 | IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® processzor E7 – 8890 v4 <br /> 48 CPU-magok és 96 CPU-szálak |  768 GB | 768 GB | --- | 3,0 TB | Elérhető |
 | IGEN <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA az Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  3,0 TB | 3,0 TB | --- | 6,3 TB | Elérhető |
@@ -87,7 +87,7 @@ Az elérhető Azure-beli nagyméretű példányok listája, például a követke
 
 - CPU-magok = a kiszolgálói egység processzorai összegének nem Hyper-threaded CPU-magok összessége.
 - CPU-szálak = a kiszolgálói egység processzorai összegének a Hyper-threaded CPU-magok által megadott számítási szálak összessége. A legtöbb egység alapértelmezés szerint a Hyper-Threading technológia használatára van konfigurálva.
-- A szállítói javaslatok alapján a S768m, a S768xm és a S960m nem úgy vannak konfigurálva, hogy a Hyper-Threading szolgáltatást használják SAP HANA futtatásához.
+- A szállítói javaslatok alapján a S768m, a S768xm és a S960m nem úgy vannak konfigurálva, hogy a SAP HANA futtatásához Hyper-Threading használják.
 
 
 > [!IMPORTANT]

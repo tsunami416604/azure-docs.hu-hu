@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
 ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613047"
 ---
 # <a name="manage-your-cache"></a>A gyorsítótár kezelése
@@ -255,7 +255,7 @@ Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gy
 
 Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure mérőszámok és statisztikai eszközökről](../azure-monitor/index.yml)
 * Segítség kérése [Az Azure HPC cache](hpc-cache-support-ticket.md) -hez

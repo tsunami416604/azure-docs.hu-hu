@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
 ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444439"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory hitelesítés használata
@@ -118,7 +118,7 @@ A Azure SQL Database, SQL felügyelt példányban vagy Azure Szinapszisban táro
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="sql-managed-instance"></a>SQL Managed Instance
+### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 - A [felügyelt SQL-példányok](../managed-instance/sql-managed-instance-paas-overview.md)támogatják az Azure ad-kiszolgálói rendszerbiztonsági tag (bejelentkezések) és a felhasználók támogatását.
 - Az Azure ad-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) adatbázis-tulajdonosként való beállítása nem támogatott az [SQL felügyelt példányain](../managed-instance/sql-managed-instance-paas-overview.md).
@@ -155,7 +155,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) esetében az alábbi hiteles
 - Javasoljuk, hogy a kapcsolat időtúllépését 30 másodpercre állítsa be.
 - SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója**támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Ezért az eszközök és az adatrétegbeli alkalmazások (DAC és BACPAC) legújabb verziói az Azure AD-hitelesítést használhatják.
 - A 15.0.1 verziótól kezdődően a [Sqlcmd segédprogram](/sql/tools/sqlcmd-utility) és a [bcp segédprogram](/sql/tools/bcp-utility) támogatja Active Directory interaktív hitelesítést multi-Factor Authentication használatával.
-- A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorer. Megkerülő megoldásként tekintse meg a [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx)felhasználóit.
+- A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorer. Áthidaló megoldásként tekintse meg [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)felhasználóit.
 - [A SQL Server rendszerhez készült Microsoft JDBC-6,0 illesztőprogram támogatja az](https://www.microsoft.com/download/details.aspx?id=11774) Azure ad-hitelesítést. Lásd még: [a kapcsolatok tulajdonságainak beállítása](/sql/connect/jdbc/setting-the-connection-properties).
 - Az Azure AD-hitelesítéssel nem végezhető el a hitelesítés.
 - Az Azure AD-hitelesítés a Azure SQL Database és az Azure szinapszis számára is támogatott a Azure Portal **importálási adatbázis** és az **adatbázis exportálása** lapok használatával. Az Azure AD-hitelesítéssel történő Importálás és exportálás a PowerShell-parancsokból is támogatott.

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280179"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
@@ -79,7 +79,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government a felhő előfeltételei
 Mielőtt engedélyezné az átmenő hitelesítés engedélyezését Azure AD Connect a 2. lépéssel, töltse le az PTA ESP-ügynök legújabb kiadását a Azure Portal.  Győződjön meg arról, hogy az ügynök verziója **1.5.1742.0.** kell fordítani.  Az ügynök ellenőrzéséhez lásd: a [hitelesítési ügynökök frissítése](how-to-connect-pta-upgrade-preview-authentication-agents.md)
 
-Az ügynök legújabb kiadásának letöltése után folytassa az alábbi utasításokat az átmenő hitelesítés konfigurálásához Azure AD Connecton keresztül.
+Az ügynök legújabb kiadásának letöltése után folytassa az alábbi utasításokat a Pass-Through hitelesítés Azure AD Connect használatával történő konfigurálásához.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: a funkció engedélyezése
 

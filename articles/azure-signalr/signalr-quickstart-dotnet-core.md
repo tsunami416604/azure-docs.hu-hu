@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408299"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874016"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
@@ -112,11 +112,11 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSignalR();
+        services.AddAzureSignalR();
     }
     ```
 
-    Ha nem küldi el a paramétert a rendszernek `AddSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
+    Ha nem küldi el a paramétert a rendszernek `AddAzureSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
 
 5. A *Startup.cs*frissítse a `Configure` metódust úgy, hogy a következő kóddal helyettesíti.
 
@@ -404,7 +404,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak e
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást. Ezután egy ASP.NET Core webalkalmazással használta a tartalom frissítéseinek valós idejű leküldését több csatlakoztatott ügyfélre. Ha többet szeretne megtudni az Azure Signaler szolgáltatás használatáról, folytassa az oktatóanyagot, amely bemutatja a hitelesítést.
 

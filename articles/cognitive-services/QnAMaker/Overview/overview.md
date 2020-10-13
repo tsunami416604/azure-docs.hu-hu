@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA-készítő, alacsony kódú csevegési robotok, több fordulatos beszélgetések
-ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776782"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874424"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
@@ -83,9 +83,9 @@ A QnA Maker a szerzői műveletek, a képzés és a közzététel, valamint egy�
 
 A legnépszerűbb programozási nyelveken olyan gyors útmutatókat találunk, amelyek az alapszintű tervezési mintákat tanítják, és kevesebb, mint 10 perc alatt futtatják a kódot. Az egyes szolgáltatásokra vonatkozó rövid útmutató az alábbi listában található.
 
-* [Ismerkedés a LUIS ügyféloldali kódtár használatába](../quickstarts/quickstart-sdk.md)
-* [Ismerkedés a LUIS portálral](../quickstarts/create-publish-knowledge-base.md)
-* [Ismerkedés a LUIS REST API-kkal](../quickstarts/quickstart-rest-curl.md)
+* [Ismerkedés az QnA Maker ügyféloldali kódtáraval](../quickstarts/quickstart-sdk.md)
+* [Ismerkedés a QnA Maker portálral](../quickstarts/create-publish-knowledge-base.md)
+* [Ismerkedés a QnA Maker REST API-kkal](../quickstarts/quickstart-rest-curl.md)
 
 
 ## <a name="next-steps"></a>Következő lépések

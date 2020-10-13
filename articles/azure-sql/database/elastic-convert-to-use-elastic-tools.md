@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443476"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Meglévő adatbázisok migrálása a vertikális felskálázáshoz
@@ -138,7 +138,7 @@ Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>3. lépés: a több bérlőre vonatkozó adatleképezés egy adott adatbázisban
 
-Az egyes bérlők esetében futtassa az Add-ListMapping (1. lehetőség).
+Az egyes bérlők esetében futtassa a Add-ListMapping (1. lehetőség).
 
 ## <a name="checking-the-mappings"></a>A leképezések ellenőrzése
 
@@ -150,13 +150,13 @@ Get-Shards -ShardMap $ShardMap
 Get-Mappings -ShardMap $ShardMap
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A telepítés befejezése után megkezdheti az Elastic Database ügyféloldali függvénytár használatát. Az [Adatfüggő útválasztást](elastic-scale-data-dependent-routing.md) és a [több szegmensre](elastic-scale-multishard-querying.md)kiterjedő lekérdezést is használhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A PowerShell-parancsfájlok beszerzése [Azure SQL Database-Elastic Database eszközök parancsfájljaiból](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+A PowerShell-parancsfájlok beszerzése az [Azure SQL Database-Elastic adatbázis-eszközök parancsfájljaiból](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 Az eszközök a GitHubon is elérhetők: [Azure/rugalmas adatbázis-eszközök](https://github.com/Azure/elastic-db-tools).
 

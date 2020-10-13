@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c4ac9e182a7504ea96f73f2ab95d50fb9d859e47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Elium
@@ -153,15 +153,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **felhasználói profilra** a jobb felső sarokban, majd válassza a **Beállítások**lehetőséget.
 
-    ![Egyszeri bejelentkezéses Elium beállítása 01](./media/elium-tutorial/elium-01.png)
+    ![Egyetlen Sign-On Elium 01 konfigurálása](./media/elium-tutorial/elium-01.png)
 
 1. Válassza a **Biztonság** elemet a **speciális**területen.
 
-    ![Az egyszeri bejelentkezés Elium 02 konfigurálása](./media/elium-tutorial/elium-02.png)
+    ![Egyetlen Sign-On Elium (02) konfigurálása](./media/elium-tutorial/elium-02.png)
 
 1. Görgessen le az **egyszeri bejelentkezés (SSO)** szakaszhoz, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés beállítása Elium 03](./media/elium-tutorial/elium-03.png)
+    ![Egyetlen Sign-On Elium 03 konfigurálása](./media/elium-tutorial/elium-03.png)
 
     a. Másolja ki a **egy saml2-hitelesítés működésének ellenőrzését** , és illessze be a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
@@ -176,11 +176,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. Keresse meg a **entityID** az **SP metadata** fájlban, másolja a **entityID** értéket, és illessze be az **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában. 
 
-    ![Egyszeri bejelentkezéses Elium (04) konfigurálása](./media/elium-tutorial/elium-04.png)
+    ![Egyetlen Sign-On Elium 04 konfigurálása](./media/elium-tutorial/elium-04.png)
 
     f. Keresse meg a **AssertionConsumerService** az **SP metadata** fájlban, másolja a **Location (hely** ) értéket, és illessze be a **válasz URL-címe** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![Egyszeri bejelentkezéses Elium beállítása 05](./media/elium-tutorial/elium-05.png)
+    ![Egyszeres Sign-On Elium beállítása 05](./media/elium-tutorial/elium-05.png)
 
     : Nyissa meg a letöltött metaadatokat Azure Portal a Jegyzettömbben, másolja a tartalmat, és illessze be a **identitásszolgáltató metadata** szövegmezőbe.
 
@@ -209,6 +209,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
  
 A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Elium csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Elium, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Elium konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

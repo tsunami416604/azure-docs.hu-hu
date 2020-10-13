@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 61077c7900530fd4c5be64054bedd9c5d087fe77
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442049"
 ---
 # <a name="url-redirect"></a>URL-átirányítás
@@ -51,7 +51,7 @@ A lekérdezési karakterlánc paramétereit is lecserélheti az átirányított 
 ## <a name="destination-fragment"></a>Cél töredéke
 A cél töredék az URL "#" utáni része, amelyet a böngésző használ a weblapok adott szakaszának leszállásához. Ezt a mezőt beállíthatja úgy, hogy felvegyen egy töredéket az átirányítási URL-címhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

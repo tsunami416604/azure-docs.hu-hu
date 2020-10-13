@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280026"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
@@ -36,7 +36,7 @@ A portálon először kattintson az _erőforrás létrehozása_ elemre az Azure-
 
 Keressen az *Azure Digital Twins* kifejezésre a keresőmezőbe, majd az eredmények közül válassza ki az **Azure Digital Twins (előzetes verzió)** szolgáltatást. Válassza a _Létrehozás_ gombot a szolgáltatás új példányának létrehozásához.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="A Create (létrehozás) elem kiválasztása az Azure Digital Twins szolgáltatás oldaláról":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 A következő *Erőforrás-létrehozási* oldalon adja meg az alább megadott értékeket:
 * **Előfizetés**: az Ön által használt Azure-előfizetés
@@ -44,7 +44,7 @@ A következő *Erőforrás-létrehozási* oldalon adja meg az alább megadott é
 * **Hely**: egy Azure digitális Twins-kompatibilis régió az üzembe helyezéshez. A regionális támogatással kapcsolatos további információkért látogasson el a [*régió (Azure Digital Twins) által elérhető Azure-termékek területére*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * **Erőforrás neve**: az Azure Digital Twins-példány neve. Az új példány nevének a régión belül egyedinek kell lennie az előfizetéshez (ami azt jelenti, hogy ha az előfizetés egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már használja a választott nevet), a rendszer kérni fogja, hogy válasszon másik nevet.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="A leírt értékek kitöltése Azure digitális Twins-erőforrások létrehozásához":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Ha elkészült, válassza a _felülvizsgálat + létrehozás_elemet. Ekkor megjelenik egy összefoglaló oldal, ahol áttekintheti a megadott példányok részleteit, és elvégezheti a _létrehozást_. 
 
@@ -52,7 +52,7 @@ Ha elkészült, válassza a _felülvizsgálat + létrehozás_elemet. Ekkor megje
 
 A *create (létrehozás*) gombra kattintva megtekintheti a példány üzembe helyezésének állapotát az Azure-értesítésekben a portál ikon sávján keresztül. Az értesítés akkor jelenik meg, ha az üzembe helyezés sikeres volt, és a létrehozott példány megtekintéséhez válassza az _Ugrás az erőforráshoz_ gombot.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="A sikeres telepítést mutató Azure-értesítések, valamint az Ugrás erőforráshoz gomb kiemelése":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Ha az üzembe helyezés meghiúsul, az értesítésben az is látható, hogy miért. Figyelje meg a hibaüzenetben szereplő tanácsokat, és próbálja meg újra létrehozni a példányt.
 
@@ -61,7 +61,7 @@ Ha az üzembe helyezés meghiúsul, az értesítésben az is látható, hogy mi�
 
 A példány *Áttekintés* lapján jegyezze fel a *nevét*, az *erőforráscsoport*és az *állomásnév*nevét. Ezek mind olyan fontos értékek, amelyekre szüksége lehet az Azure Digital Twins-példánnyal folytatott munka folytatásához. Ha más felhasználók is programozást végeznek a példányon, ezeket az értékeket meg kell osztani velük.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="A példány Áttekintés oldalának fontos értékeinek kiemelése":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra. Ezután meg kell adnia a megfelelő Azure-felhasználói engedélyeket a kezeléséhez.
 
@@ -71,7 +71,7 @@ Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a
 
 Először nyissa meg az Azure Digital Twins-példány oldalát a Azure Portal. A példány menüjében válassza a *hozzáférés-vezérlés (iam)* lehetőséget. Válassza a  *Hozzáadás* gombot a *szerepkör-hozzárendelés hozzáadása*területen.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Szerepkör-hozzárendelés hozzáadásának kiválasztása a hozzáférés-vezérlés (IAM) lapról":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Az alábbi *szerepkör-hozzárendelés hozzáadása* lapon adja meg az értékeket (az Azure-előfizetéshez [megfelelő engedélyekkel](#prerequisites-permission-requirements) rendelkező felhasználónak kell elvégeznie):
 * **Szerepkör**: válassza az *Azure Digital Twins-tulajdonos (előzetes verzió)* lehetőséget a legördülő menüből
@@ -80,7 +80,7 @@ Az alábbi *szerepkör-hozzárendelés hozzáadása* lapon adja meg az értékek
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="A felsorolt mezők kitöltése a szerepkör-hozzárendelés hozzáadása párbeszédpanelen":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -92,7 +92,7 @@ Ha végzett a részletek beírásával, nyomja meg a *Save (Mentés* ) gombot.
 
 Megtekintheti a *hozzáférés-vezérlés (iam) > szerepkör-* hozzárendelések alatt beállított szerepkör-hozzárendelést. A felhasználónak az *Azure Digital Twins-tulajdonos (előzetes verzió)* szerepkörrel kell megjelennie a listában. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Az Azure Digital Twins-példány szerepkör-hozzárendeléseinek megtekintése Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra, és hozzárendelt engedélyekkel rendelkezik a kezeléséhez. Ezután be kell állítania egy ügyfélalkalmazás engedélyeit, hogy hozzáférjenek az alkalmazáshoz.
 
@@ -102,7 +102,7 @@ Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a
 
 Először navigáljon a [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a Azure Portalban (ezt a hivatkozást használhatja, vagy megkeresheti a portálon található keresősáv használatával). Válassza a szolgáltatás menü *Alkalmazásregisztrációk* elemét, majd az *+ új regisztráció*lehetőséget.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Tekintse meg az Azure AD szolgáltatás oldalát a Azure Portal, és válassza ki a Alkalmazásregisztrációk menüpontot és a + új regisztráció gombot.":::
+:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 A következő *alkalmazás regisztrálása* lapon adja meg a kért értékeket:
 * **Név**: a regisztrációhoz TÁRSÍTANDÓ Azure ad-alkalmazás megjelenítendő neve
@@ -111,7 +111,7 @@ A következő *alkalmazás regisztrálása* lapon adja meg a kért értékeket:
 
 Ha elkészült, kattintson a *regisztráció* gombra.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Az alkalmazás regisztrálása oldal megtekintése a leírt értékekkel":::
+:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 A regisztráció befejezését követően a portál átirányítja a részleteket tartalmazó lapjára.
 
@@ -121,18 +121,18 @@ Ezután konfigurálja a létrehozott alkalmazás-regisztrációt az Azure Digita
 
 Az alkalmazás regisztrációjának portál lapján válassza az API- *engedélyek* lehetőséget a menüből. A következő engedélyek lapon kattintson a *+ engedély hozzáadása* gombra.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Tekintse meg az alkalmazás regisztrációját a Azure Portalban, és válassza ki az API-engedélyek menüpontot és az engedély hozzáadása gombot":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Az alábbi *API-engedélyek kérése* lapon váltson a *saját szervezet által használt API* -k lapra, és keressen rá az *Azure Digital Twins*kifejezésre. Válassza az *Azure Digital Twins* lehetőséget a keresési eredmények közül, és folytassa az engedélyek hozzárendelését az Azure Digital Twins API-khoz.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Az API-engedélyek kérése oldal keresési eredményének megjelenítése az Azure digitális Twins":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 >[!NOTE]
 > Ha már rendelkezik Azure Digital Twins-példánnyal a szolgáltatás előző nyilvános előzetes verziójából (az 2020. július előtt) még az előfizetésében, akkor az *Azure Smart Spaces szolgáltatást* kell keresnie. Ez az API-k ugyanazon készletének régebbi neve, és ez a lépés nem változtatja meg a felhasználói élményt.
 
 Ezután kiválaszthatja, hogy mely engedélyeket kell megadni ezekhez az API-khoz. Bontsa ki az **olvasási (1)** engedélyt, és jelölje be az *olvasás. írás* az alkalmazás regisztrációs olvasójának és az író engedélyének megadására szolgáló jelölőnégyzetet.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="A kérelmek API-engedélyei oldal megtekintése az Azure Digital Twins API-khoz tartozó Read. Write engedélyek kiválasztásával":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Ha elkészült, kattintson a *hozzáadási engedélyek* elemre.
 
@@ -140,19 +140,19 @@ Ha elkészült, kattintson a *hozzáadási engedélyek* elemre.
 
 Az API- *engedélyek* lapon ellenőrizze, hogy már van-e olyan bejegyzés az Azure digitális Twins számára, amely az olvasási/írási jogosultságokat tükrözi:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Az Azure AD-alkalmazás regisztrálásához szükséges API-engedélyek portál nézete, amely az Azure Digital Twins olvasási/írási hozzáférését mutatja":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Azt is ellenőrizheti, hogy az Azure Digital Twins-hoz kapcsolódott-e az alkalmazás regisztrációjának *manifest.jsján*, amely automatikusan frissült az Azure digitális Twins információi között az API-engedélyek hozzáadásakor.
 
 Ehhez válassza ki a *jegyzékfájlt* a menüből az alkalmazás regisztrációs jegyzékfájljának megtekintéséhez. Görgessen a Code (kód) ablak aljára, és keresse meg a következő mezőket `requiredResourceAccess` . Az értékeknek meg kell egyezniük az alábbi képernyőképen láthatókkal:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Az Azure AD-alkalmazás regisztrálási jegyzékfájljának portál nézete. A requiredResourceAccess alá ágyazva van egy resourceAppId érték a 0b07f429-9f4b-4714-9392-cc5e8e80c8b0 és egy resourceAccess > id értékkel 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 ### <a name="collect-important-values"></a>Fontos értékek gyűjtése
 
 Ezután válassza az *Áttekintés* lehetőséget a menüsávon az alkalmazás regisztrációjának részleteinek megtekintéséhez:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Az alkalmazás regisztrációjának fontos értékeit a portálon tekintheti meg":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és *KÖNYVTÁRát (bérlői azonosítóját)* . Ezekre az értékekre később szükség lesz az [ügyfélalkalmazás hitelesítéséhez az Azure digitális Twins API](how-to-authenticate-client.md)-kon. Ha Ön nem az a személy, aki az ilyen alkalmazások kódját fogja írni, meg kell osztania ezeket az értékeket a felhasználóval.
 

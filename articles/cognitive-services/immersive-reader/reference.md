@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761549"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)
@@ -48,7 +48,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | `token` | sztring | Az Azure AD hitelesítési jogkivonata. További részletekért tekintse meg a részletes [olvasó-erőforrás létrehozását](./how-to-create-immersive-reader.md) ismertető témakört. |
 | `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. További részletekért tekintse meg a részletes [olvasó-erőforrás létrehozását](./how-to-create-immersive-reader.md) ismertető témakört. |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
-| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
+| `options` | [Lehetőségek](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 
 #### <a name="returns"></a>Válaszok
 
@@ -279,7 +279,7 @@ Default value: "text/plain"
 
 <br>
 
-## <a name="options"></a>Beállítások
+## <a name="options"></a>Lehetőségek
 
 Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizonyos viselkedéseit konfigurálják.
 
@@ -310,12 +310,12 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 | uiLang | Sztring | A felhasználói felület nyelve, az érték az IETF BCP 47 Language címke formátuma, például en, es-ES. Ha nincs megadva, a rendszer alapértelmezés szerint a böngésző nyelvét adja meg. |
 | timeout | Szám | Az időtartam (ezredmásodpercben), mielőtt a [launchAsync](#launchasync) időtúllépési hiba miatt meghiúsul (az alapértelmezett érték 15000 MS). Ez az időkorlát csak az olvasó oldal kezdeti indítására vonatkozik, ahol a sikeres megfigyelhető, amikor megnyílik az olvasó lap, és elindul a tárcsa. Az időkorlát módosítása nem szükséges. |
 | uiZIndex | Szám | Z – a létrehozandó iframe-index (alapértelmezett érték: 1000). |
-| useWebview | Logikai érték| IFrame helyett Webview címkét használhat a Chrome-alkalmazásokkal való kompatibilitáshoz (az alapértelmezett érték a False). |
+| useWebview | Logikai| IFrame helyett Webview címkét használhat a Chrome-alkalmazásokkal való kompatibilitáshoz (az alapértelmezett érték a False). |
 | onExit | Függvény | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
-| allowFullscreen | Logikai érték | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
-| hideExitButton | Logikai érték | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
+| allowFullscreen | Logikai | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
+| hideExitButton | Logikai | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable*). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
-| disableFirstRun | Logikai érték | Tiltsa le az első futtatási élményt. |
+| disableFirstRun | Logikai | Tiltsa le az első futtatási élményt. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Beállítások a beolvasás konfigurálásához. |
 | translationOptions | [TranslationOptions](#translationoptions) | A fordítás konfigurálásának beállításai. |
 | displayOptions | [DisplayOptions](#displayoptions) | A szövegméret konfigurálására szolgáló beállítások, betűkészletek stb. |
@@ -394,7 +394,7 @@ type ReadAloudOptions = {
 | ---- | ---- |------------ |
 | hang | Sztring | Hang, "női" vagy "férfi". Vegye figyelembe, hogy nem minden nyelv támogatja a nemek közötti különbségeket. |
 | sebesség | Szám | A lejátszási sebességnek 0,5 és 2,5 közöttinek kell lennie, a határokat is beleértve. |
-| Robotpilota | Logikai érték | A rendszer automatikusan beolvassa a beolvasást, amikor a magával ragadó olvasó betöltődik. |
+| Robotpilota | Logikai | A rendszer automatikusan beolvassa a beolvasást, amikor a magával ragadó olvasó betöltődik. |
 
 ##### `voice`
 ```Parameters
@@ -432,8 +432,8 @@ type TranslationOptions = {
 | Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | language | Sztring | Beállítja a fordítási nyelvet, az érték az IETF BCP 47 nyelvi címke formátumában van, például: fr-FR, es-MX, zh-Hans-CN. A Word vagy a dokumentum fordításának automatikus engedélyezéséhez szükséges. |
-| autoEnableDocumentTranslation | Logikai érték | A teljes dokumentum automatikus lefordítása. |
-| autoEnableWordTranslation | Logikai érték | A Word fordítás automatikus engedélyezése. |
+| autoEnableDocumentTranslation | Logikai | A teljes dokumentum automatikus lefordítása. |
+| autoEnableWordTranslation | Logikai | A Word fordítás automatikus engedélyezése. |
 
 ##### `language`
 ```Parameters
@@ -460,7 +460,7 @@ type DisplayOptions = {
 | Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | Textsize értékének | Szám | Beállítja a kiválasztott szövegméret méretét. |
-| increaseSpacing | Logikai érték | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
+| increaseSpacing | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
 | fontFamily | Sztring | Beállítja a kiválasztott betűkészletet ("Calibri", "ComicSans" vagy "Sitka"). |
 
 ##### `textSize`
@@ -496,19 +496,19 @@ enum CookiePolicy { Disable, Enable }
 | Textsize értékének | Szám | Beállítja a kiválasztott szövegméret méretét. |
 | fontFamily | Sztring | Beállítja a kiválasztott betűkészletet ("Calibri", "ComicSans" vagy "Sitka"). |
 | textSpacing | Szám | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
-| formattingEnabled | Logikai érték | Beállítja, hogy a HTML-formázás be van-e kapcsolva vagy ki van-e kapcsolva. |
+| formattingEnabled | Logikai | Beállítja, hogy a HTML-formázás be van-e kapcsolva vagy ki van-e kapcsolva. |
 | Téma | Sztring | Beállítja a kiválasztott témát (például "Light", "Dark"...). |
-| syllabificationEnabled | Logikai érték | Beállítja, hogy be-vagy kikapcsolja-e a syllabification. |
-| nounHighlightingEnabled | Logikai érték | azt határozza meg, hogy be van-e kapcsolva a főnév kiemelése. |
+| syllabificationEnabled | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a syllabification. |
+| nounHighlightingEnabled | Logikai | azt határozza meg, hogy be van-e kapcsolva a főnév kiemelése. |
 | nounHighlightingColor | Sztring | Beállítja a kijelölt főnév kiemelésének színét. |
-| verbHighlightingEnabled | Logikai érték | Beállítja, hogy be van-e kapcsolva a művelet kiemelése. |
+| verbHighlightingEnabled | Logikai | Beállítja, hogy be van-e kapcsolva a művelet kiemelése. |
 | verbHighlightingColor | Sztring | Beállítja a kiválasztott művelet kiemelésének színét. |
-| adjectiveHighlightingEnabled | Logikai érték | Beállítja, hogy be van-e kapcsolva a melléknév kiemelése. |
+| adjectiveHighlightingEnabled | Logikai | Beállítja, hogy be van-e kapcsolva a melléknév kiemelése. |
 | adjectiveHighlightingColor | Sztring | Beállítja a kijelölt jelző kiemelésének színét. |
-| adverbHighlightingEnabled | Logikai érték | Beállítja, hogy be van-e kapcsolva a határozószók kiemelése. |
+| adverbHighlightingEnabled | Logikai | Beállítja, hogy be van-e kapcsolva a határozószók kiemelése. |
 | adverbHighlightingColor | Sztring | Beállítja a kiválasztott határozószók kiemelésének színét. |
-| pictureDictionaryEnabled | Logikai érték | Beállítja, hogy be-vagy kikapcsolja-e a képszótárat. |
-| posLabelsEnabled | Logikai érték | Azt határozza meg, hogy a beszéd minden Kiemelt részének felső felirata be van-e kapcsolva.  |
+| pictureDictionaryEnabled | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a képszótárat. |
+| posLabelsEnabled | Logikai | Azt határozza meg, hogy a beszéd minden Kiemelt részének felső felirata be van-e kapcsolva.  |
 
 <br>
 
@@ -526,7 +526,7 @@ Ha a formázás engedélyezve van, az alábbi tartalom HTML-ként jelenik meg a 
 | --------- | ----------- |
 | Betűstílusok | Félkövér, dőlt, aláhúzás, kód, áthúzott, felső, alsó index |
 | Rendezetlen listák | Lemez, kör, négyzet |
-| Rendezett felsorolások | Decimális, felső-alfa, alsó-alfa, felső-római, alsó-római |
+| Rendezett felsorolások | Decimális, felső-alfa, alsó-alfa, felső-római, Lower-Roman |
 
 A nem támogatott címkék hasonlóan lesznek megjelenítve. A képek és a táblázatok jelenleg nem támogatottak.
 

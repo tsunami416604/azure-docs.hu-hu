@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086402"
+ms.locfileid: "91874594"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
 Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) Route Directions és Route Matrix API-k segítségével kiszámíthatja az egyes kért útvonalak becsült érkezési idejét (ETA). Az útválasztási API-k olyan tényezőket vesznek figyelembe, mint például a valós idejű forgalmi információk és a korábbi forgalmi adatok, például a hét kért napjának és a nap időpontjának a szokásos országúti sebessége. Az API-k a legrövidebb vagy leggyorsabb útvonalakat adják vissza több célhelyre egyszerre, sorrendben vagy optimalizált sorrendben, az idő vagy a távolság alapján. A felhasználók speciális útvonalakat és részleteket is igényelhetnek a túrázók, a kerékpárosok és a kereskedelmi járművek, például a teherautók számára. Ebben a cikkben megosztjuk az ajánlott eljárásokat a Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route)meghívásához, és megismerheti a következőket:
 
-> [!div class="checklist"]
-> * Válasszon az útvonalterv API-k és a mátrix-útválasztási API közül
-> * A korábbi és várható utazási idők kérése valós idejű és korábbi forgalmi adatok alapján
-> * Az útvonal részleteit, például az időt és a távolságot, a teljes útvonal és az útvonal minden egyes szakasza esetén
-> * Kereskedelmi jármű, például egy teherautó kérésének útvonala
-> * Forgalmi információk kérése az útvonalon, például a dzsemek és az autópályadíj-információk
-> * Egy vagy több leállításból (útpontok) álló útvonal igénylése
-> * Egy vagy több leállás útvonalának optimalizálása a legjobb megrendelés megszerzéséhez az egyes Leállítás (útpont) megkereséséhez
-> * Alternatív útvonalak optimalizálása támogató pontok használatával. Például alternatív útvonalakat is kínálunk, amelyek egy elektromos járművet betöltő állomásnak adnak át.
-> * A [Route Service](https://docs.microsoft.com/rest/api/maps/route) használata a Azure Maps web SDK-val
+ * Válasszon az útvonalterv API-k és a mátrix-útválasztási API közül
+ * A korábbi és várható utazási idők kérése valós idejű és korábbi forgalmi adatok alapján
+ * Az útvonal részleteit, például az időt és a távolságot, a teljes útvonal és az útvonal minden egyes szakasza esetén
+ * Kereskedelmi jármű, például egy teherautó kérésének útvonala
+ * Forgalmi információk kérése az útvonalon, például a dzsemek és az autópályadíj-információk
+ * Egy vagy több leállításból (útpontok) álló útvonal igénylése
+ * Egy vagy több leállás útvonalának optimalizálása a legjobb megrendelés megszerzéséhez az egyes Leállítás (útpont) megkereséséhez
+ * Alternatív útvonalak optimalizálása támogató pontok használatával. Például alternatív útvonalakat is kínálunk, amelyek egy elektromos járművet betöltő állomásnak adnak át.
+ * A [Route Service](https://docs.microsoft.com/rest/api/maps/route) használata a Azure Maps web SDK-val
 
 ## <a name="prerequisites"></a>Előfeltételek
 

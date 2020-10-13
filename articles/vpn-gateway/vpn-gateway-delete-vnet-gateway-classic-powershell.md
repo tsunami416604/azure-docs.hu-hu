@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: ded1887248e7313c2a284388e8338af96ad7614c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39585a68c5cddc50cd04e82caca71209270f7b68
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84987431"
+ms.locfileid: "91874118"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Virtuális hálózati átjáró törlése a PowerShell (klasszikus) használatával
 
@@ -35,11 +35,7 @@ Ez a cikk segítséget nyújt a VPN-átjárók törlésében a klasszikus üzemi
 
 Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
-1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
-
-   ```powershell
-   azure config mode asm
-   ```
+1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal.
 2. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
 
    ```powershell

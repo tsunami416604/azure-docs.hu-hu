@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535848"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Tesztelési példa a LUIS hosszúságú kimondott szöveg
@@ -54,6 +54,6 @@ A modell módosítása után ne felejtse el [betanítani](luis-how-to-train.md) 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a hosszúságú kimondott szöveg [teszteléséről](luis-interactive-test.md) .

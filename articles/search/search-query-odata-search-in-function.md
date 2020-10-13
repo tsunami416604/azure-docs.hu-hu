@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88922820"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData `search.in` függvény az Azure Cognitive Search
@@ -48,7 +48,7 @@ Ezt azonban a függvény használatával rövidebb idő alatt írhatja `search.i
 
 ## <a name="syntax"></a>Syntax
 
-A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a függvény nyelvtanát határozza meg `search.in` :
+A következő EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a függvény nyelvtanát határozza meg `search.in` :
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

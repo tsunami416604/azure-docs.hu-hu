@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321946"
+ms.locfileid: "91874543"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt az alkalmazáshoz való beleegyezett művelet végrehajtásakor
 
@@ -79,10 +79,12 @@ Ezek a hibák akkor fordulnak elő, amikor az alkalmazás a felhasználó beleeg
     -   Az alkalmazás hozzáadása az Azure AD Application Galleryből
 
 ## <a name="risky-app-error-and-warning"></a>Kockázatos alkalmazáshiba és figyelmeztetés
+* **AADSTS900941:** Rendszergazdai jogosultság szükséges. Az alkalmazás kockázatnak számít. (AdminConsentRequiredDueToRiskyApp)
 * Ez az alkalmazás kockázatos lehet. Ha megbízik az alkalmazásban, kérje meg a rendszergazdát, hogy engedélyezze a hozzáférést.
+* **AADSTS900981:** Egy kockázatos alkalmazáshoz rendszergazdai beleegyező kérelem érkezett. (AdminConsentRequestRiskyAppWarning)
 * Ez az alkalmazás kockázatos lehet. Csak akkor folytassa, ha megbízik az alkalmazásban.
 
-Mindkét üzenet akkor jelenik meg, ha a Microsoft megállapította, hogy a beleegyezett kérelem kockázatos lehet. Számos más tényező között ez akkor fordulhat elő, ha egy [ellenőrzött közzétevőt](../develop/publisher-verification-overview.md) nem adtak hozzá az alkalmazás regisztrálásához. Az első üzenet jelenik meg a végfelhasználók számára, ha a [rendszergazda beleegyezik a munkafolyamat](configure-admin-consent-workflow.md) le van tiltva. A második üzenet jelenik meg a végfelhasználók számára, ha a rendszergazdai jogosultsági szintű munkafolyamat engedélyezve van, és a rendszergazdák. 
+Mindkét üzenet akkor jelenik meg, ha a Microsoft megállapította, hogy a beleegyezett kérelem kockázatos lehet. Számos más tényező között ez akkor fordulhat elő, ha egy [ellenőrzött közzétevőt](../develop/publisher-verification-overview.md) nem adtak hozzá az alkalmazás regisztrálásához. Az első hibakód és üzenet jelenik meg a végfelhasználók számára, ha a [rendszergazda beleegyezik a munkafolyamat](configure-admin-consent-workflow.md) le van tiltva. A második kód és üzenet jelenik meg a végfelhasználók számára, ha a rendszergazdai jogosultsági szintű munkafolyamat engedélyezve van, és a rendszergazdák. 
 
 A végfelhasználók nem tudnak jóváhagyást adni a kockázatnak kitett alkalmazásokhoz. A rendszergazdáknak képesnek kell lenniük, de körültekintően kell értékelniük az alkalmazást, és körültekintően kell eljárniuk. Ha az alkalmazás a további felülvizsgálat során gyanúsnak tűnik, a jelentés a Microsofttól kérhető a beleegyezési képernyőn. 
 

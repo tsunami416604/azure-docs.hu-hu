@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360786"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>SQL Server biztonsági mentése és visszaállítása Azure-beli virtuális gépeken
@@ -31,7 +31,7 @@ A cikk első része áttekintést nyújt a rendelkezésre álló biztonsági men
 
 Az alábbi táblázat az Azure-beli virtuális gépek SQL Serverának különböző biztonsági mentési és visszaállítási lehetőségeiről nyújt információkat:
 
-| Stratégia | SQL-verziók | Description |
+| Stratégia | SQL-verziók | Leírás |
 |---|---|---|
 | [Automatikus biztonsági mentés](#automated) | 2014<br/> 2016<br/> 2017 | Az automatikus biztonsági mentés lehetővé teszi a SQL Server VM összes adatbázisának rendszeres biztonsági mentését. A biztonsági mentések tárolása az Azure Storage-ban akár 30 napig is eltartható. A SQL Server 2016-es verziójától kezdve az automatizált Backup v2 további lehetőségeket kínál, például a manuális ütemezés konfigurálását, valamint a teljes és naplózott biztonsági másolatok gyakoriságát. |
 | [Azure Backup SQL-alapú virtuális gépekhez](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | A Azure Backup nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Ezzel a szolgáltatással központilag kezelheti a biztonsági mentéseket több kiszolgáló és több ezer adatbázis között. Az adatbázisok visszaállíthatók egy adott időpontban a portálon. Testreszabható adatmegőrzési szabályzatot kínál, amely évekig képes biztonsági mentéseket fenntartani. |
@@ -104,7 +104,7 @@ A SQL Server 2012 SP1 CU2 kezdve a biztonsági mentést és visszaállítást k�
 | 2016-fejlesztés | Részletek |
 | --- | --- |
 | **Csíkozás** |Ha Microsoft Azure Blob Storage-ba készít biztonsági másolatot, SQL Server 2016 támogatja a több blobra történő biztonsági mentést, így a nagyméretű adatbázisok biztonsági mentését legfeljebb 12,8 TB-ig engedélyezheti. |
-| **Pillanatkép biztonsági mentése** |Az Azure-Pillanatképek használatával SQL Server fájl – a pillanatképek biztonsági mentése majdnem azonnali biztonsági mentést és gyors visszaállítást biztosít az Azure Blob Storage szolgáltatással tárolt adatbázisfájlok számára. Ez a funkció lehetővé teszi a biztonsági mentési és visszaállítási házirendek egyszerűsítését. A fájl – pillanatkép biztonsági mentése az időponthoz tartozó visszaállítást is támogatja. További információ: az [Azure-beli adatbázisfájlok biztonsági mentései](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
+| **Pillanatkép biztonsági mentése** |Az Azure-Pillanatképek használatával a SQL Server File-Snapshot Backup szinte azonnali biztonsági mentéseket és gyors visszaállításokat biztosít az Azure Blob Storage szolgáltatással tárolt adatbázisfájlok számára. Ez a funkció lehetővé teszi a biztonsági mentési és visszaállítási házirendek egyszerűsítését. A fájl – pillanatkép biztonsági mentése az időponthoz tartozó visszaállítást is támogatja. További információ: az [Azure-beli adatbázisfájlok biztonsági mentései](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
 
 További információkért tekintse meg az alábbi cikkek egyikét a SQL Server verziója alapján:
 
