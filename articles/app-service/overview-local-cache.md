@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080711"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
@@ -54,7 +54,7 @@ A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes haszn
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
 <a name="Configure-Local-Cache-Portal"></a>
 
-A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmazás-beállítás használatával:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmazás-beállítás használatával: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
 ![Azure Portal Alkalmazásbeállítások: helyi gyorsítótár](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 

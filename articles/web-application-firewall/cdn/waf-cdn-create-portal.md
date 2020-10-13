@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327938"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Oktatóanyag: WAF szabályzat létrehozása Azure CDN a Azure Portal használatával
@@ -54,7 +54,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapér
     
     > [!NOTE]
     > Ha a végpont egy WAF-házirendhez van társítva, akkor a rendszer szürkén jeleníti meg. Először el kell távolítania a végpontot a társított szabályzatból, majd újra társítania kell a végpontot egy új WAF-házirendhez.
-1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="configure-web-application-firewall-policy-optional"></a>Webalkalmazási tűzfal házirend konfigurálása (nem kötelező)
 
@@ -89,7 +89,7 @@ Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés sz
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure webalkalmazási tűzfalról](../overview.md)

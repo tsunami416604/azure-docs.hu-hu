@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710881"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS altartomány delegálása
@@ -33,10 +33,10 @@ Először hozza létre a zónát a **mérnöki** altartományhoz.
 
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
 2. A keresőmezőbe írja be a **DNS**kifejezést, majd válassza a **DNS-zóna**lehetőséget.
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. A **DNS-zóna létrehozása** panelen írja be a **Engineering.contoso.com** **nevet a név** szövegmezőbe.
 5. Válassza ki a zónához tartozó erőforráscsoportot. Előfordulhat, hogy ugyanazt az erőforráscsoportot szeretné használni, mint a szülő zónát, hogy a hasonló erőforrások együtt maradjanak.
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** elemre.
 7. Az üzembe helyezés sikeres végrehajtása után lépjen az új zónára.
 
 ## <a name="note-the-name-servers"></a>Jegyezze fel a névkiszolgálók nevét
@@ -54,7 +54,7 @@ Hozzon létre egy **olyan** rekordot, amelyet teszteléshez szeretne használni.
 Ezután hozzon létre egy névkiszolgálói (NS) rekordot a **mérnöki** zónához.
 
 1. Navigáljon a szülőtartomány zónájához.
-2. Kattintson a **+ Rekordhalmaz** gombra.
+2. Válassza a **+ Rekordhalmaz** lehetőséget.
 3. A **rekordazonosító hozzáadása** panelen írja be a **mérnöki** **nevet a név** szövegmezőbe.
 4. A **Típus mezőben**válassza az **NS**lehetőséget.
 5. A **névkiszolgáló**területen adja meg azokat a négy névszervereket, amelyeket korábban a **mérnöki** zónában rögzített.
@@ -65,7 +65,7 @@ Ezután hozzon létre egy névkiszolgálói (NS) rekordot a **mérnöki** zóná
 A delegálás teszteléséhez használja az nslookupt.
 
 1. Indítson el egy PowerShell-ablakot.
-2. A parancssorba írja be a következőt:`nslookup www.engineering.contoso.com.`
+2. A parancssorba írja be a következőt: `nslookup www.engineering.contoso.com.`
 3. Meg kell kapnia egy nem mérvadó választ, amely a **10.10.10.10**.
 
 ## <a name="next-steps"></a>További lépések

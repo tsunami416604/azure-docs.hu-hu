@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
 ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116788"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
@@ -55,8 +55,8 @@ Több beállításjegyzék tipikus kihívásai többek között a következők:
 
 A Azure Container Registry geo-replikációs funkciójának használatával ezek az előnyök megvalósulnak:
 
-* Egyetlen beállításjegyzék kezelése minden régióban:`contoso.azurecr.io`
-* A rendszerkép központi telepítésének egyetlen konfigurációját kezelheti, mivel az összes régió ugyanazt a képurl-címet használta:`contoso.azurecr.io/public/products/web:1.2`
+* Egyetlen beállításjegyzék kezelése minden régióban: `contoso.azurecr.io`
+* A rendszerkép központi telepítésének egyetlen konfigurációját kezelheti, mivel az összes régió ugyanazt a képurl-címet használta: `contoso.azurecr.io/public/products/web:1.2`
 * Leküldés egyetlen beállításjegyzékbe, míg az ACR kezeli a Geo-replikálást. A regionális [webhookok](container-registry-webhook.md) konfigurálásával értesítéseket kaphat az adott replikákban lévő eseményekről.
 
 ## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása

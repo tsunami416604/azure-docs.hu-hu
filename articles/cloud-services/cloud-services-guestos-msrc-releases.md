@@ -13,10 +13,10 @@ ms.workload: tbd
 ms.date: 9/29/2020
 ms.author: yohaddad
 ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531156"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
@@ -27,7 +27,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 >A szeptemberi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások szerepelnek a szeptemberi vendég operációs rendszerben. A lista módosítása változhat.
 
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | Sep 8, 2020 |
 |  Rel 20-09 |  [4561600]  |  Flash-frissítés | 3,89, 4,82, 5,47, 6,23 | Sep 8, 2020 |
@@ -78,7 +78,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 ## <a name="august-2020-guest-os"></a>Augusztus 2020 vendég operációs rendszer
 
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-08 |  [4571687]  |  IE összesítő frissítés | [2,101], [3,88], [4,81] | Augusztus 11., 2020 |
 |  Rel 20-08 |  [4561600]  |  Flash-frissítés | [3,88], [4,81], [5,46], [6,22] | Június 9., 2020 |
@@ -131,7 +131,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="july-2020-guest-os"></a>Július 2020 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-07 |  [4565479]  |  Internet Explorer | [2,100], [3,87], [4,80] | Július 14., 2020 |
 |  Rel 20-07 |  [4565511]  |  Legújabb összesített frissítés (LCU) | [5.45] | Július 14., 2020 |
@@ -187,7 +187,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 ## <a name="june-2020-guest-os"></a>Június 2020 vendég operációs rendszer
 
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-06  |  [4561603]  |  Internet Explorer  |  [2,99], [3,86], [4,79]  |  Június 9., 2020  |
 |  Rel 20-06  |  [4561616]  |  Legújabb összesített frissítés (LCU)  |  [5,44]  |  Június 9., 2020  |
@@ -226,7 +226,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 ## <a name="may-2020-guest-os"></a>2020 vendég operációs rendszer
 
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2,98],  [3,85], [4,78]  |  2020. május 12.  |
 |  Rel 20-05  |  [4556813]  |  Legújabb összesített frissítés (LCU)   |  [5,43]  |  2020. május 12.  |
@@ -272,7 +272,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 ## <a name="april-2020-guest-os"></a>Április 2020 vendég operációs rendszer
 
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-04   |  [4550965]  |  Windows biztonság   |  [2,97]  |  Apr 14, 2020  |
 |  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  Apr 14, 2020  |
@@ -313,7 +313,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="march-2020-guest-os"></a>Március 2020 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-03  |  [4541500]  |  Windows biztonság  | [2,96] | Mar 10, 2020 |
 |  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | Mar 10, 2020 |
@@ -344,7 +344,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="february-2020-guest-os"></a>Február 2020 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-02  |  [4537767]  |  Internet Explorer  |  [2,95], [3,82], [4,75]  |  Február 11., 2020  |
 |  Rel 20-02  |  [4537813]  |  Windows biztonság  |  [2,95]  |  Február 11., 2020  |
@@ -387,7 +387,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="january-2020-guest-os"></a>Január 2020 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 20-01  |  [4532960]  |  Windows biztonság  | [2.94] | Jan. január 14., 2020 |
 |  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2.94] | Jan. január 14., 2020 |
@@ -437,7 +437,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="december-2019-guest-os"></a>2019. decemberi vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-12  |  [4530692]  |  Windows biztonság  | [2.93] | Dec. 10, 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | Dec. 10, 2019 |
@@ -482,17 +482,17 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="november-2019-guest-os"></a>November 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [2,92]  |  November 12., 2019  |
-|  Rel 19-11   |  [4525233]  |  Windows biztonság   |  [2,92]  |  November 12., 2019  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [2.92]  |  November 12., 2019  |
+|  Rel 19-11   |  [4525233]  |  Windows biztonság   |  [2.92]  |  November 12., 2019  |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [3,79]  |  November 12., 2019  |
 |  Rel 19-11   |  [4525253]  |  Windows biztonság   |  [3,79]  |  November 12., 2019  |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [4,72]  |  November 12., 2019  |
 |  Rel 19-11   |  [4525250]  |  Windows biztonság   |  [4,72]  |  November 12., 2019  |
 |  Rel 19-11   |  [4525236]  |  Legújabb összesítő frissítés   |  [5,37]  |  November 12., 2019  |
 |  Rel 19-11   |  [4523205]  |  Legújabb összesítő frissítés   |  [6,13]  |  November 12., 2019  |
-|  Rel 19-11   |  [4519976]  |  Nem biztonsági   |  [2,92]  |  Október 8, 2019  |
+|  Rel 19-11   |  [4519976]  |  Nem biztonsági   |  [2.92]  |  Október 8, 2019  |
 |  Rel 19-11   |  [4520007]  |  Nem biztonsági   |  [3,79]  |  Október 8, 2019  |
 |  Rel 19-11   |  [4521857]  |  ServicingStackUpdate   |  [3,79]  |  Október 8, 2019  |
 |  Rel 19-11   |  [4520005]  |  Nem biztonsági   |  [4,72]  |  Október 8, 2019  |
@@ -519,12 +519,12 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [5,37]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
 [4,72]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
 [3,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,92]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[2.92]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="october-2019-guest-os"></a>Október 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-10   |  [4520003]  |  Windows biztonság   |  [2,91]  |  Október 8, 2019  |
 |  Rel 19-10   |  [4519985]  |  Windows biztonság   |  [3,78]  |  Október 8, 2019  |
@@ -573,7 +573,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="september-2019-guest-os"></a>Szeptember 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-09   |  [4516046]  |  Internet Explorer   |  [2,90], [3,77], [4,70]  |  Szeptember 10., 2019  |
 |  Rel 19-09   |  [4516115]  |  Flash   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  Szeptember 10., 2019  |
@@ -615,7 +615,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="august-2019-guest-os"></a>Augusztus 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-08   |  [4512482]  |  Windows biztonság   |  [3,76]  |  Augusztus 13., 2019  |
 |  Rel 19-08   |  [4494175]  |  Programkód frissítése   |  [5,34]  |  Június 18., 2019  |
@@ -672,7 +672,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="july-2019-guest-os"></a>Július 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  2019. július 9.  |
 |  Rel 19-07   |  [4506966]  |  .NET 4.5.2 biztonság   |  2,88  |  2019. július 9.  |
@@ -716,7 +716,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="june-2019-guest-os"></a>Június 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-06   |  [4503327]  |  Windows 10 biztonság   |  6.8  |  Június 11.2019  |
 |  Rel 19-06   |  [4503267]  |  Windows 10 biztonság   |  5,32  |  Június 11.2019  |
@@ -762,7 +762,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="may-2019-guest-os"></a>2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 |  Rel 19-05   |  [4498206]  |  IE – kumulatív összesítés   |  2,86, 3,73, 4,66  |  Május 14., 2019  |
 |  Rel 19-05   |  [4505050]  |  IE – kumulatív összesítés   |  2,86, 3,73, 4,66  |  2019. május 18.  |
@@ -809,7 +809,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="april-2019-guest-os"></a>Április 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 19-04 | [4493509] | Windows 10 biztonság | 6.6 | 2019. április 9. |
 | Rel 19-04 | [4493470] | Windows 10 biztonság | 5,30 | 2019. április 9. |
@@ -839,7 +839,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="march-2019-guest-os"></a>Március 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 19-03 | [4489873] | Internet Explorer | 2,84, 3,71, 4,64 | 2019. március 12. |
 | Rel 19-03 | [4489907] | Flash | 3,71, 4,64, 5,29, 6,5 | 2019. március 12. |
@@ -881,7 +881,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="february-2019-guest-os"></a>Február 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 19-02 | [4486474] | Internet Explorer | 2,83, 3,70, 4,63 | Február 12., 2019 |
 | Rel 19-02 | [4487038] | Flash | 3,70, 4,63, 5,28, 6,4 | Február 12., 2019 |
@@ -933,7 +933,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="january-2019-guest-os"></a>Január 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 19-01 | [4480116] | Windows 10 biztonság | 6.3 | 2019. január 8. |
 | Rel 19-01 | [4480961] | Windows 10 biztonság | 5,27 | 2019. január 8. |
@@ -985,7 +985,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="december-2018-guest-os"></a>2018. decemberi vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-12 | [4471321] | Windows 10 biztonság | 5,26 | December 11., 2018 |
 | Rel 18-12 | [4471328] | Windows biztonság   | 2,81 | December 11., 2018 |
@@ -1023,7 +1023,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="november-2018-guest-os"></a>November 2018 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-11 | [4466536] | Internet Explorer | 2,80, 3,67, 4,60 | November 13., 2018 |
 | Rel 18-11 | [4467694] | Flash | 3,67, 4,60, 5,25 | November 13., 2018 |
@@ -1055,7 +1055,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 ## <a name="october-2018-guest-os"></a>Október 2018 vendég operációs rendszer
 
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-10 | [4462917] | Windows 10 biztonság | 5,24 | 2018. október 9. |
 | Rel 18-10 | [4462915] | Windows biztonság | 2,79 | 2018. október 9. |
@@ -1092,7 +1092,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>Szeptember 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-09 | [4457131] | Windows 10 biztonság | 5,23 | Szeptember 11., 2018 |
 | Rel 18-09 | [4457145] | Csak Windows-Biztonság | 2,78 | Szeptember 11., 2018 |
@@ -1114,7 +1114,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4344147] | Augusztus nem biztonsági .NET 4x-es összesítés | 4,58 | Augusztus 14., 2018 |
 
 ## <a name="august-2018-guest-os"></a>Augusztus 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10 biztonság | 5,22 | Augusztus 14., 2018 |
 | Rel 18-08 | [4343899] | Csak Windows-Biztonság | 2,77 | Augusztus 14., 2018 |
@@ -1137,7 +1137,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4338415] |Júliusi nem biztonsági .NET 4x-es összesítés |3,64 | 2018. július 10. |
 
 ## <a name="july-2018-guest-os"></a>Július 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-07 | [4338814] |Windows 10 biztonság |5.21 |2018. július 10. |
 | Rel 18-07 | [4338823] |Csak Windows-Biztonság |2,76 |2018. július 10. |
@@ -1157,7 +1157,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4284815] |A nem biztonsági frissítések júniusi összesítése |4,56 |2018. június 12. |
 
 ## <a name="june-2018-guest-os"></a>Június 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-06 | [4284880] |Windows 10 biztonság |5,20 |2018. június 12. |
 | Rel 18-06 | [4284867] |Csak Windows-Biztonság |2,75 |2018. június 12. |
@@ -1182,7 +1182,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4132216] |Május SSU |5,20 |2018. május 8. |
 
 ## <a name="may-2018-guest-os"></a>2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-05 | [4103721], [4103727], [4103723] |Windows 10 biztonság |5,19 |2018. május 8. |
 | Rel 18-05 | [4103712] |Csak Windows-Biztonság |2,74 |2018. május 8. |
@@ -1202,7 +1202,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 
 ## <a name="april-2018-guest-os"></a>Április 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-04 | [4093119] |Windows 10 biztonság |5,18 |2018. április 10. |
 | Rel 18-04 | [4093108] |Csak Windows-Biztonság |2,73 |2018. április 10. |
@@ -1216,7 +1216,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4088876] |Március nem biztonsági összesítés |4,53 |2018. március 13. |
 
 ## <a name="march-2018-guest-os"></a>Március 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-03 | [4088787], [4088776] |Windows 10 biztonság |5,17 |2018. március 13. |
 | Rel 18-03 | [4088878], [4088880], [4088879] |Csak Windows-Biztonság |2,72, 3,59, 4,52 |2018. március 13. |
@@ -1229,7 +1229,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 
 ## <a name="february-2018-guest-os"></a>Február 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-02 | [4074590], [4074588] |Windows 10 biztonság |5,16 |2018. február 13. |
 | Rel 18-02 | [4074587], [4074589], [4074597] |Csak Windows-Biztonság |2,71, 3,58, 4,51 |2018. február 13. |
@@ -1243,7 +1243,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4054177], [4054170] |Januári .NET-összesítés |4,51 |2018. január 4. |
 
 ## <a name="january-2018-guest-os"></a>Január 2018 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Csak Windows-Biztonság |2,70, 3,57, 4,50 |2018. január 3. |
 | Rel 18-01 | [4056890], [4056892] |Csak Windows-Biztonság |5,15 |2018. január 3. |
@@ -1255,7 +1255,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 
 ## <a name="december-2017-guest-os"></a>2017. decemberi vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-12 | [4053579], [4054517] |Windows 10 biztonsági frissítések |4,49, 5,14 |2017. december 12. |
 | Rel 17-12 | [4054521], [4054522], [4054523] |Csak Windows-Biztonság |2,69, 3,56, 4,49 |2017. december 12. |
@@ -1267,7 +1267,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4049068] |A decemberi időzóna frissítése |2,69, 3,56, 4,49 |2017. december 12. |
 
 ## <a name="november-2017-guest-os"></a>November 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-11 | [4048953] |Windows 10 frissítések |5,13 |2017. november 14. |
 | Rel 17-11 | [4048960], [4048962], [4048961] |Csak Windows-Biztonság |2,68, 3,55, 4,48 |2017. november 14. |
@@ -1281,7 +1281,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [3191564] |A Windows Management Framework 5,1 frissítése  |4,48 |2017. november 14. |
 
 ## <a name="october-2017-guest-os"></a>Október 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4041691] |Windows 10 frissítések |5,12 |Október 10., 2017 |
 | Rel 17-10 | [4041678], [4041679], [4041687] |Csak Windows-Biztonság |2,67, 3,54, 4,47 |Október 10., 2017 |
@@ -1295,7 +1295,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4040981] |Szeptember .NET nem biztonsági összesítés |4,47 |Szeptember 12., 2017 |
 
 ## <a name="september-2017-guest-os"></a>Szeptember 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Windows 10 frissítések |5,11 |Szeptember 12., 2017 |
 | Rel 17-09 | [4038779], [4038786], [4038793] |Csak Windows-Biztonság |2,66, 3,53, 4,46 |Szeptember 12., 2017 |
@@ -1307,7 +1307,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4034681] |Augusztus nem biztonsági összesítés |4,46 |2017. augusztus 8. |
 
 ## <a name="august-2017-guest-os"></a>Augusztus 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Windows 10 frissítések |5.10 |2017. augusztus 8. |
 | Rel 17-07 | [4034679] |Csak Windows-Biztonság |2.65 |2017. augusztus 8. |
@@ -1321,7 +1321,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | Rel 17-07 | [4025336] |Júliusi nem biztonsági összesítés |4,45 |2017. július 11. |
 
 ## <a name="july-2017-guest-os"></a>Július 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Windows 10 frissítések |5.9 |2017. július 11. |
 | Rel 17-07 | [4025337] |Csak Windows-Biztonság |2,64 |2017. július 11. |
@@ -1335,7 +1335,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4022726] |A nem biztonsági frissítések júniusi összesítése |4,44 |2017. június 13. |
 
 ## <a name="june-2017-guest-os"></a>Június 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-06 | [4019472] |A WS 2016 operációsrendszer-minőségének fejlesztése |5.8 |2017. május 9. |
 | Rel 17-06 | [4022722] |Csak Windows-Biztonság |2,63 |2017. június 13. |
@@ -1363,7 +1363,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4014512] |.NET-alapú nem biztonsági összesítés |4,43 |2017. május 9. |
 
 ## <a name="may-2017-guest-os"></a>2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-05 | [4019472] |A WS 2016 operációsrendszer-minőségének fejlesztése |5.7 | 2017. május 9. |
 | Rel 17-05 | [4019263] |Csak Windows-Biztonság |2,62 | 2017. május 9. |
@@ -1391,7 +1391,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | N.A. | [4013418] |Karbantartási verem frissítése |5.7 | Március 14., 2017 |
 
 ## <a name="april-2017-guest-os"></a>Április 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-04 |  [4015217]  |A WS 2016 operációsrendszer-minőségének fejlesztése | 5,6 | 2017. április 11. |
 | Rel 17-04 |  [4015546]  |Csak Windows-Biztonság |2,61 | 2017. április 11. |
@@ -1411,7 +1411,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | Rel 17-04 |  [4012216]  |Március 2017 biztonsági havi minőségi összesítés a Windows 8,1 és a Windows Server 2012 R2 rendszerhez |4,41 | 2017. április 11. |
 
 ## <a name="march-2017-guest-os"></a>Március 2017 vendég operációs rendszer
-| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | Rel 17-03 |  [4013429] |Javítások és javítások | 5,5 | Március 14., 2017 |
 | Rel 17-03 |  [4012212] |Március 2017 biztonsági csak minőségi frissítés a Windows 7 SP1 és a Windows Server 2008 R2 SP1 rendszerhez |2,60 |Március 14., 2017 |
@@ -1438,7 +1438,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS16 – 147 |[3204063]   |Biztonsági frissítés a Microsoft Uniscribe|2,58, 3,46, 4,39, 5,4 |Dec. 13, 2016 |
 | MS16 – 149 |[3205655]   |Biztonsági frissítés a Microsoft Windows rendszerhez|2,58, 3,46, 4,39, 5,4 |Dec. 13, 2016 |
 | MS16 – 150 |[3205642]   |Biztonsági frissítés biztonságos kernel üzemmódhoz |5.4 |Dec. 13, 2016 |
-| MS16 – 151 |[3205651]   |Biztonsági frissítés kernel módú illesztőprogramokhoz|2,58, 3,46, 4,39, 5,4 |Dec. 13, 2016 |
+| MS16 – 151 |[3205651]   |Kernel-Mode illesztőprogramok biztonsági frissítése|2,58, 3,46, 4,39, 5,4 |Dec. 13, 2016 |
 | MS16 – 152 |[3199709]   |Biztonsági frissítés a Windows kernelhez |5.4 |Dec. 13, 2016 |
 | MS16 – 153 |[3207328] |Biztonsági frissítés a közös naplófájlrendszer-illesztőprogramhoz|2,58, 3,46, 4,39, 5,4 |Dec. 13, 2016 |
 | MS16 – 155 |[3205640]   |Biztonsági frissítés a .NET-keretrendszerhez |5.4 |Dec. 13, 2016 |
@@ -1454,7 +1454,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS16 – 131 |[3199151]   |Biztonsági frissítés a Microsoft video Control szolgáltatáshoz |5,3, 4,38, 3,45, 2,57 |November 8., 2016 |
 | MS16 – 132 |[3199120] |Biztonsági frissítés a Microsoft-összetevőhöz |5,3, 4,38, 3,45, 2,57 |November 8., 2016 |
 | MS16 – 134 |[3193706] |Biztonsági frissítés a közös naplófájlrendszer-illesztőprogramhoz |5,3, 4,38, 3,45, 2,57 |November 8., 2016 |
-| MS16 – 135 |[3199135] |Biztonsági frissítés kernel módú illesztőprogramokhoz |5,3, 4,38, 3,45, 2,57 |November 8., 2016 |
+| MS16 – 135 |[3199135] |Kernel-Mode illesztőprogramok biztonsági frissítése |5,3, 4,38, 3,45, 2,57 |November 8., 2016 |
 | MS16 – 137 |[3199173]   |Biztonsági frissítés Windows-hitelesítési módszerekhez |5,3, 4,38, 3,45, 2,57 |November 8., 2016 |
 | MS16 – 138 |[3199647] |Biztonsági frissítés a Microsoft virtuális merevlemez-meghajtóra |5,3, 4,38, 3,45 |November 8., 2016 |
 | MS16 – 139 |[3199720] |Biztonsági frissítés a Windows kernelhez |2,57 |November 8,2016 |
@@ -1476,7 +1476,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | --- | --- | --- | --- | --- |
 | MS16 – 118 |[3192887] |Az Internet Explorer összegző biztonsági frissítése |4,37, 3,44, 2,56 |Oct 11, 2016 |
 | MS16 – 120 |[3192884] |Biztonsági frissítés a Microsoft Graphics összetevőhöz |4,37, 3,44, 2,56 |Oct 11, 2016 |
-| MS16 – 123 |[3192892] |Biztonsági frissítés kernel módú illesztőprogramokhoz |4,37, 3,44, 2,56 |Oct 11, 2016 |
+| MS16 – 123 |[3192892] |Kernel-Mode illesztőprogramok biztonsági frissítése |4,37, 3,44, 2,56 |Oct 11, 2016 |
 | MS16 – 124 |[3193227] |Biztonsági frissítés a Windows beállításjegyzékhez |4,37, 3,44, 2,56 |Oct 11, 2016 |
 | MS16 – 126 |[3196067] |Biztonsági frissítés a Microsoft Internet Messaging API-hoz |2,56 |Oct 11, 2016 |
 | MS16 – 101 |[3178465] |Biztonsági frissítés Windows-hitelesítési módszerekhez |4,37, 3,44, 2,56 |Oct 11, 2016 |
@@ -1497,7 +1497,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS16 – 114 |[3185879] |Biztonsági frissítés a Windows SMB-kiszolgálóhoz |4,36, 3,43, 2,55 |Szeptember 13., 2016 |
 | MS16-115 |[3188733] |Biztonsági frissítés PDF-fájlhoz |4,35, 3,43 |Szeptember 13., 2016 |
 | MS16 – 116 |[3188724] |Biztonsági frissítés az OLE Automation for VBScript Scripting Engine rendszerhez |4,36, 3,43, 2,55 |Szeptember 13., 2016 |
-| N.A. |[3174644] |Frissített támogatás a Diffie-Hellman kulcscsere szolgáltatáshoz |4,36, 3,43, 2,55 |Szeptember 13., 2016 |
+| N.A. |[3174644] |Frissített támogatás a Diffie-Hellman Key Exchange-hez |4,36, 3,43, 2,55 |Szeptember 13., 2016 |
 | N.A. |[3177723] |Időzóna frissítése – Egyiptom megszakítja a DST-t |4,36, 3,43, 2,55 |Szeptember 13., 2016 |
 | N.A. |[3179573] |A Windows 7 SP1 és a Windows Server 2008 R2 SP1 2016. augusztusi kumulatív frissítés |2.55 |Szeptember 13., 2016 |
 | N.A. |[3179575] |A Windows Server 2012-es kumulatív frissítésének frissítése augusztus 2016 |3,43 |Szeptember 13., 2016 |
@@ -1508,11 +1508,11 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | --- | --- | --- | --- | --- |
 | MS16 – 095 |[3177356] |Az Internet Explorer összegző biztonsági frissítése |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
 | MS16 – 097 |[3177393] |Biztonsági frissítés a Microsoft Graphics összetevőhöz |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
-| MS16 – 098 |[3178466] |Biztonsági frissítés Windows kernel módú illesztőprogramokhoz |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
+| MS16 – 098 |[3178466] |Windows Kernel-Mode illesztőprogramok biztonsági frissítése |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
 | MS16 – 100 |[3179577] |Biztonságos rendszerindítás biztonsági frissítése |4,35, 3,42 |Augusztus 9., 2016 |
 | MS16 – 101 |[3178465] |Biztonsági frissítés Windows-hitelesítési módszerekhez |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
 | MS16 – 102 |[3182248] |Biztonsági frissítés a Microsoft Windows PDF Library-hez |4,35, 3,42 |Augusztus 9., 2016 |
-| MS16 – 077 újbóli kiadása |[3165191] |Biztonsági frissítés a web proxy automatikus észleléséhez (WPAD) |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
+| MS16 – 077 Re-Release |[3165191] |Biztonsági frissítés a web proxy automatikus észleléséhez (WPAD) |4,35, 3,42, 2,54 |Augusztus 9., 2016 |
 | N.A. |[3172605] |A Windows 7 SP1 és a Windows Server 2008 R2 SP1 2016. júliusi kumulatív frissítés |2,54 |Augusztus 9., 2016 |
 | N.A. |[3172615] |Július 2016 kumulatív frissítés a Windows Server 2012 rendszerhez |3,42 |Augusztus 9., 2016 |
 | N.A. |[3172614] |A Windows RT 8,1, a Windows 8,1 és a Windows Server 2012 R2 kumulatív frissítésének 2016. |4,35 |Augusztus 9., 2016 |
@@ -1600,7 +1600,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS16 – 031 |[3140410] |Biztonsági frissítés a Microsoft Windows rendszerhez a jogosultságszint-emelési jogosultságok kezeléséhez |2,49 |Március 8., 2016 |
 | MS16 – 032 |[3143141] |Biztonsági frissítés a másodlagos bejelentkezésre a jogosultsági szint megemelése érdekében |4,30, 3,37, 2,49 |Március 8., 2016 |
 | MS16 – 033 |[3143142] |Biztonsági frissítés USB háttértár-illesztőprogramhoz a jogosultságszint-emelési jogosultság megszerzéséhez |4,30, 3,37, 2,49 |Március 8., 2016 |
-| MS16 – 034 |[3143145] |Biztonsági frissítések a jogosultságszint-emelést megemelő kernel módú illesztőprogramhoz |4,30, 3,37, 2,49 |Március 8., 2016 |
+| MS16 – 034 |[3143145] |Kernel-Mode illesztőprogram biztonsági frissítései a jogosultságszint-emelési jogosultságok megadásához |4,30, 3,37, 2,49 |Március 8., 2016 |
 
 ## <a name="february-2016-guest-os"></a>Február 2016 vendég operációs rendszer
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
@@ -1609,20 +1609,20 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS16 – 013 |[3134811] |Biztonsági frissítés a Windows Journal szolgáltatáshoz a távoli kód végrehajtásának kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
 | MS16-014 |[3134228] |Biztonsági frissítés a Microsoft Windows rendszerre a távoli kód végrehajtásának kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
 | MS16 – 016 |[3136041] |A WebDAV biztonsági frissítése a jogosultsági szint megemelése érdekében |4,29, 3,36, 2,48 |Február 9., 2016 |
-| MS16 – 018 |[3136082] |Biztonsági frissítés a Windows kernel módú illesztőprogramhoz a jogosultságszint-emelési jogosultságok kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
+| MS16 – 018 |[3136082] |Biztonsági frissítés a Windows Kernel-Mode-illesztőprogramhoz a jogosultságszint-emelési jogosultságok kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
 | MS16-019 |[3137893] |Biztonsági frissítés a .NET-keretrendszerhez a távoli kód végrehajtásának kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
 | MS16-021 |[3133043] |Biztonsági frissítés a hálózati házirend-kiszolgáló RADIUS-kiszolgálójához a szolgáltatás megtagadásának kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
 | Microsoft biztonsági tanácsadó |[3109853] |Frissítés a TLS-együttműködés javítására |4,29, 3,36 |Február 9., 2016 |
-| Új kiadás – MS15-101 |[3089662] |A .NET-keretrendszer biztonsági rései lehetővé tehetik a jogosultsági szint megemelését |4,29, 3,36, 2,48 |Február 9., 2016 |
-| Ismételt kiadás – MS15-118 |[3104507] |A .NET-keretrendszer biztonsági frissítései a jogosultságszint-emelési jogosultságok kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
-| Ismételt kiadás – MS15-128 |[3104503] |Biztonsági frissítések a Microsoft Graphics összetevőhöz a távoli kód végrehajtásának kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
+| Re-Release-MS15-101 |[3089662] |A .NET-keretrendszer biztonsági rései lehetővé tehetik a jogosultsági szint megemelését |4,29, 3,36, 2,48 |Február 9., 2016 |
+| Re-Release-MS15-118 |[3104507] |A .NET-keretrendszer biztonsági frissítései a jogosultságszint-emelési jogosultságok kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
+| Re-Release-MS15-128 |[3104503] |Biztonsági frissítések a Microsoft Graphics összetevőhöz a távoli kód végrehajtásának kezeléséhez |4,29, 3,36, 2,48 |Február 9., 2016 |
 
 ## <a name="january-2016-guest-os"></a>Január 2016 vendég operációs rendszer
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | MS16 – 001 |[3124903] |Az Internet Explorer összegző biztonsági frissítése |4,28, 3,35, 2,47 |2016. január 12. |
 | MS16-003 |[3125540] |A JScript és a VBScript összesítő biztonsági frissítése |2,47 |2016. január 12. |
-| MS16-005 |[3124584] |Biztonsági frissítés a Windows kernel módú illesztőprogramjaihoz a távoli kód végrehajtásának kezeléséhez |4,28, 3,35, 2,47 |2016. január 12. |
+| MS16-005 |[3124584] |Biztonsági frissítés Windows Kernel-Mode illesztőprogramok számára a távoli kód végrehajtásának kezeléséhez |4,28, 3,35, 2,47 |2016. január 12. |
 | MS16-007 |[3124901] |Biztonsági frissítés a Microsoft Windows rendszerhez a távoli kód végrehajtásának kezeléséhez |4,28, 3,35, 2,47 |2016. január 12. |
 | MS16 – 008 |[3124605] |Biztonsági frissítés a kernelhez a jogosultságszint-emelési jogosultság megszerzéséhez |4,28, 3,35, 2,47 |2016. január 12. |
 | Microsoft biztonsági tanácsadói változat |[2755801] |A biztonsági rések frissítése az Internet Explorerben az Adobe Flash Playerben (csomag KB: MEGHATÁROZANDÓ) – tanácsadói helyőrző |4,28, 3,35 |2016. január 12. |
@@ -1699,7 +1699,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS15 – 069 |[3072631] |A Windows biztonsági rései távolról is engedélyezhetik a kódfuttatást |4,22, 3,29, 2,41 |2015. július 14. |
 | MS15 – 071 |[3068457] |A NETLOGON biztonsági rése a hamisítást engedélyezheti |4,22, 3,29, 2,41 |2015. július 14. |
 | MS15 – 072 |[3069392] |A grafikus illesztőprogram biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,22, 3,29, 2,41 |2015. július 14. |
-| MS15 – 073 |[3070102] |A kernel módú illesztőprogram biztonsági rései lehetővé tehetik a jogosultságok kiterjesztését |4,22, 3,29, 2,41 |2015. július 14. |
+| MS15 – 073 |[3070102] |Kernel-Mode-illesztőprogram biztonsági rései magasabb jogosultsági szint megemelését tehetik lehetővé |4,22, 3,29, 2,41 |2015. július 14. |
 | MS15 – 074 |[3072630] |A Windows Installer szolgáltatás biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,22, 3,29, 2,41 |2015. július 14. |
 | MS15-075 |[3072633] |Az OLE-biztonsági rések megemelt jogosultságot adhatnak |4,22, 3,29, 2,41 |2015. július 14. |
 | MS15 – 076 |[3067505] |A Windows távoli eljáráshívás biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,22, 3,29, 2,41 |2015. július 14. |
@@ -1712,7 +1712,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS15 – 056 |[3058515] |Az Internet Explorer összegző biztonsági frissítése |4,21, 3,28, 2,40 |2015. június 9. |
 | MS15 – 057 |[3033890] |A Windows Media Player biztonsági rése távolról történő kódfuttatást tehet lehetővé |4,21, 3,28, 2,40 |2015. június 9. |
 | MS15 – 060 |[3059317] |A Microsoft Common Controls szolgáltatás biztonsági rése távolról történő kódfuttatást tehet lehetővé |4,21, 3,28, 2,40 |2015. június 9. |
-| MS15 – 061 |[3057839] |A Windows kernel módú illesztőprogramok biztonsági rései lehetővé tehetik a jogosultságok kiterjesztését |4,21, 3,28, 2,40 |2015. június 9. |
+| MS15 – 061 |[3057839] |A Windows Kernel-Mode-illesztőprogramok biztonsági rései lehetővé tehetik a jogosultságok kiterjesztését |4,21, 3,28, 2,40 |2015. június 9. |
 | MS15 – 062 |[3062577] |A Active Directory összevonási szolgáltatások (AD FS) biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,21, 3,28, 2,40 |2015. június 9. |
 | MS15 – 063 |[3063858] |A Windows kernel biztonsági rése lehetővé teheti a jogosultságok kiterjesztését |4,21, 3,28, 2,40 |2015. június 9. |
 
@@ -1724,7 +1724,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS15 – 045 |[3046002] |A Windows Journal biztonsági rése távoli kódfuttatást tesz lehetővé |4,20, 3,27, 2,39 |2015. május 12. |
 | MS15 – 048 |[3057134] |A .NET-keretrendszer biztonsági rései lehetővé tehetik a jogosultsági szint megemelését |4,20, 3,27, 2,39 |2015. május 12. |
 | MS15 – 050 |[3055642] |A szolgáltatásvezérlő biztonsági rése engedélyezheti a jogosultsági szint megemelését |4,20, 3,27, 2,39 |2015. május 12. |
-| MS15 – 051 |[3057191] |A Windows kernel módú illesztőprogramok biztonsági rései lehetővé tehetik a jogosultságok kiterjesztését |4,20, 3,27, 2,39 |2015. május 12. |
+| MS15 – 051 |[3057191] |A Windows Kernel-Mode-illesztőprogramok biztonsági rései lehetővé tehetik a jogosultságok kiterjesztését |4,20, 3,27, 2,39 |2015. május 12. |
 | MS15-052 |[3050514] |A Windows kernel biztonsági rése megkerülheti a biztonsági funkciók megkerülését |4,20, 3,27, 2,39 |2015. május 12. |
 | MS15 – 053 |[3057263] |A JScript és a VBScript parancsfájl-kezelő modul biztonsági rései lehetővé tehetik a biztonsági funkciók megkerülését |4,20, 3,27, 2,39 |2015. május 12. |
 | MS15 – 054 |[3051768] |A Microsoft Management Console fájlformátumának biztonsági rése lehetővé teheti a szolgáltatás megtagadását |4,20, 3,27, 2,39 |2015. május 12. |

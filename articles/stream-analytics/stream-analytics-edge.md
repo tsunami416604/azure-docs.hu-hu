@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 136d0627e701104e9958d51b2e37256de5659f25
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271416"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
@@ -225,10 +225,10 @@ A verzióra vonatkozó információk utolsó frissítése 2019-06-27:
       - operációs rendszer: Windows
       
       
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ az Azure IOT Edge-ről](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA IoT Edge oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261600"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi a Connected Factory IoT megoldás-gyorsító?
@@ -58,7 +58,7 @@ A csatlakoztatott gyár a következő funkciókat tartalmazza:
 
 ## <a name="end-to-end-security"></a>Végpontok közötti biztonság
 
-- Konfigurálja a felhasználók biztonsági engedélyeit szerepköralapú Access Control (RBAC) használatával.
+- A Role-Based Access Controlt (RBAC) használó felhasználók biztonsági engedélyeinek konfigurálása.
 - A végpontok közötti titkosítás az OPC UA hitelesítéssel (X. 509 tanúsítványok használatával) és biztonsági jogkivonatokkal valósítható meg.
 
 ## <a name="customizability"></a>Testreszabhatóság

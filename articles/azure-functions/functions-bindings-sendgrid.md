@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212191"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
@@ -355,15 +355,15 @@ A [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/ma
 
 A következő táblázat felsorolja a  *function.js* fájlon és az `SendGrid` attribútumon/jegyzeten elérhető kötési konfigurációs tulajdonságokat.
 
-| *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Description | Választható |
+| *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Leírás | Választható |
 |--------------------------|-------------------------------|-------------|----------|
-| típus |n.a.| Értékre kell állítani `sendGrid` .| Nem |
-| irány |n.a.| Értékre kell állítani `out` .| Nem |
-| name |n.a.| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | Nem |
+| típus |n/a| Értékre kell állítani `sendGrid` .| Nem |
+| irány |n/a| Értékre kell állítani `out` .| Nem |
+| name |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | Nem |
 | apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
 | a következőre:| Művelet | A címzett e-mail-címe. | Igen |
 | a| Forrás | A feladó e-mail-címe. |  Igen |
-| tárgy| Tárgy | Az e-mail tárgya. | Igen |
+| tulajdonos| Tárgy | Az e-mail tárgya. | Igen |
 | szöveg| Szöveg | Az e-mail tartalma. | Igen |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
@@ -390,9 +390,9 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```  
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|a|n.a.|A küldő e-mail-címe az összes függvényen belül.| 
+|a|n/a|A küldő e-mail-címe az összes függvényen belül.| 
 
 
 ## <a name="next-steps"></a>Következő lépések

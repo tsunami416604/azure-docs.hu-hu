@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83771740"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Webes API meghívása Mobile-alkalmazásból
@@ -29,17 +29,17 @@ Ebben a cikkben a MSAL eredményét fogjuk megtekinteni. Ezután megvizsgáljuk,
 ## <a name="msal-result"></a>MSAL eredménye
 A MSAL a következő értékeket biztosítja: 
 
-- `AccessToken`egy HTTP-tulajdonosi kérelemben meghívja a védett webes API-kat.
-- `IdToken`hasznos információkat tartalmaz a bejelentkezett felhasználóról. Ez az információ tartalmazza a felhasználó nevét, a Kezdőlap bérlőjét és a tárhely egyedi azonosítóját.
-- `ExpiresOn`a jogkivonat lejárati ideje. A MSAL kezeli az alkalmazások automatikus frissítését.
-- `TenantId`annak a bérlőnek az azonosítója, amelybe a felhasználó bejelentkezett. Azure Active Directory (Azure AD) B2B-ben lévő vendég felhasználók esetében ez az érték azonosítja azt a bérlőt, ahol a felhasználó bejelentkezett. Az érték nem azonosítja a felhasználó otthoni bérlőjét.  
-- `Scopes`a tokenhez megadott hatóköröket jelzi. A megadott hatókörök lehetnek a kért hatókörök részhalmazai.
+- `AccessToken` egy HTTP-tulajdonosi kérelemben meghívja a védett webes API-kat.
+- `IdToken` hasznos információkat tartalmaz a bejelentkezett felhasználóról. Ez az információ tartalmazza a felhasználó nevét, a Kezdőlap bérlőjét és a tárhely egyedi azonosítóját.
+- `ExpiresOn` a jogkivonat lejárati ideje. A MSAL kezeli az alkalmazások automatikus frissítését.
+- `TenantId` annak a bérlőnek az azonosítója, amelybe a felhasználó bejelentkezett. Azure Active Directory (Azure AD) B2B-ben lévő vendég felhasználók esetében ez az érték azonosítja azt a bérlőt, ahol a felhasználó bejelentkezett. Az érték nem azonosítja a felhasználó otthoni bérlőjét.  
+- `Scopes` a tokenhez megadott hatóköröket jelzi. A megadott hatókörök lehetnek a kért hatókörök részhalmazai.
 
 A MSAL egy érték absztrakcióját is biztosítja `Account` . Az `Account` érték az aktuális felhasználó bejelentkezett fiókját jelöli:
 
-- `HomeAccountIdentifier`a felhasználó otthoni bérlőjét azonosítja.
-- `UserName`a felhasználó elsődleges felhasználóneve. Ez az érték Azure AD B2C felhasználók számára üres lehet.
-- `AccountIdentifier`azonosítja a bejelentkezett felhasználót. A legtöbb esetben ez az érték megegyezik az `HomeAccountIdentifier` értékkel, kivéve, ha a felhasználó egy másik bérlőben található vendég.
+- `HomeAccountIdentifier` a felhasználó otthoni bérlőjét azonosítja.
+- `UserName` a felhasználó elsődleges felhasználóneve. Ez az érték Azure AD B2C felhasználók számára üres lehet.
+- `AccountIdentifier` azonosítja a bejelentkezett felhasználót. A legtöbb esetben ez az érték megegyezik az `HomeAccountIdentifier` értékkel, kivéve, ha a felhasználó egy másik bérlőben található vendég.
 
 ## <a name="call-an-api"></a>API meghívása
 
@@ -87,7 +87,7 @@ A hozzáférési jogkivonat meghívása után meghívhat egy webes API-t. Az alk
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL iOS és macOS rendszerekre
 
-A jogkivonatok beszerzésének módszerei egy objektumot adnak vissza `MSALResult` . `MSALResult`egy tulajdonság közzététele `accessToken` . A használatával `accessToken` webes API-t hívhat meg. A védett webes API elérésének meghívása előtt adja hozzá ezt a tulajdonságot a HTTP-engedélyezési fejléchez.
+A jogkivonatok beszerzésének módszerei egy objektumot adnak vissza `MSALResult` . `MSALResult` egy tulajdonság közzététele `accessToken` . A használatával `accessToken` webes API-t hívhat meg. A védett webes API elérésének meghívása előtt adja hozzá ezt a tulajdonságot a HTTP-engedélyezési fejléchez.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -157,7 +157,7 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Átállás éles üzemre](scenario-mobile-production.md)

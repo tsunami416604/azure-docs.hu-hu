@@ -8,10 +8,10 @@ ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606804"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
@@ -83,6 +83,6 @@ Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó le
 
 ![Az ügyfél lemond a Microsoft Online áruházában](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Marketplace metering service API-k](./marketplace-metering-service-apis.md)

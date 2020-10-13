@@ -7,10 +7,10 @@ ms.date: 11/27/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324624"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java ügyféloldali API-k
@@ -40,7 +40,7 @@ Kövesse az alábbi lépéseket az Service Fabric Java-ügyfél kódjának az au
     npm install -g autorest
     ```
 
-3. Az [Azure-REST-API-specs](https://github.com/Azure/azure-rest-api-specs) adattárat a helyi gépen, majd a klónozott helyet a számítógép terminálján nyissa meg.
+3. Az [Azure-REST-API-specs](https://github.com/Azure/azure-rest-api-specs)  adattárat a helyi gépen, majd a klónozott helyet a számítógép terminálján nyissa meg.
 
 
 4. Nyissa meg az alább említett helyet a klónozott tárházban.
@@ -63,7 +63,7 @@ Kövesse az alábbi lépéseket az Service Fabric Java-ügyfél kódjának az au
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   A következő parancs a ``servicefabric.json`` specifikációs fájlt bemenetként veszi fel, és Java-ügyfélprogramot hoz létre a ``java-rest-api-     code`` mappában, és a kódot a ``servicefabricrest`` névtérbe foglalja. Ennek a lépésnek a megkeresése után két mappát ``models`` , ``implementation`` a mappában pedig két fájlt fog ``ServiceFabricClientAPIs.java`` ``package-info.java`` létrehozni ``java-rest-api-code`` .
+   A következő parancs a ``servicefabric.json`` specifikációs fájlt bemenetként veszi fel, és Java-ügyfélprogramot hoz létre a ``java-rest-api-     code`` mappában, és a kódot a  ``servicefabricrest`` névtérbe foglalja. Ennek a lépésnek a megkeresése után két mappát ``models`` , ``implementation`` a mappában pedig két fájlt fog ``ServiceFabricClientAPIs.java`` ``package-info.java`` létrehozni ``java-rest-api-code`` .
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>A generált ügyfél belefoglalása és használata a projektben

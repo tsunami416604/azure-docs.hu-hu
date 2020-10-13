@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154899"
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 Az `KeyDescriptor` elem az összevonási metaadatok dokumentumának két helyén jelenik meg, a WS-Federation-specifikus szakaszban és az SAML-specifikus szakaszban. A két szakaszban közzétett tanúsítványok azonosak lesznek.
 
-A WS-Federation-specifikus szakaszban a WS-Federation metaadat-olvasó a `RoleDescriptor` típussal rendelkező elemből olvassa be a tanúsítványokat `SecurityTokenServiceType` .
+A WS-Federation-specifikus szakaszban egy WS-Federation metaadat-olvasó a `RoleDescriptor` típussal rendelkező elemből olvassa be a tanúsítványokat `SecurityTokenServiceType` .
 
 A következő metaadatok egy minta elemet mutatnak be `RoleDescriptor` .
 
@@ -99,7 +99,7 @@ A következő metaadatok egy minta elemet mutatnak be `RoleDescriptor` .
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-Az SAML-specifikus szakaszban a WS-Federation metaadat-olvasó egy elemből olvassa be a tanúsítványokat `IDPSSODescriptor` .
+Az SAML-specifikus szakaszban egy WS-Federation metaadat-olvasó egy elemből olvassa be a tanúsítványokat `IDPSSODescriptor` .
 
 A következő metaadatok egy minta elemet mutatnak be `IDPSSODescriptor` .
 
@@ -109,7 +109,7 @@ A következő metaadatok egy minta elemet mutatnak be `IDPSSODescriptor` .
 A bérlő-specifikus és a bérlői független tanúsítványok formátuma nem különbözik egymástól.
 
 ### <a name="ws-federation-endpoint-url"></a>WS-Federation végpont URL-címe
-Az összevonási metaadatok közé tartozik az Azure AD az egyszeri bejelentkezéshez és az egyszeri bejelentkezéshez használt URL-cím a WS-Federation protokollban. Ez a végpont a `PassiveRequestorEndpoint` elemben jelenik meg.
+Az összevonási metaadatok tartalmazzák az Azure AD által az egyszeri bejelentkezéshez és az egyszeri bejelentkezéshez használt URL-címet WS-Federation protokollban. Ez a végpont a `PassiveRequestorEndpoint` elemben jelenik meg.
 
 A következő metaadatok egy adott `PassiveRequestorEndpoint` bérlői végponthoz tartozó minta elemet mutatnak be.
 
@@ -122,7 +122,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-A bérlői független végpont esetében a WS-Federation URL-cím megjelenik a WS-Federation végponton, ahogy az a következő példában látható.
+A bérlői független végpont esetében a WS-Federation URL-cím megjelenik a WS-Federation végponton, ahogy az a következő mintában látható.
 
 ```
 <fed:PassiveRequestorEndpoint>

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89178926"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Az Office 365-naplók összekapcsolhatók az Azure Sentinel-vel
@@ -66,7 +66,7 @@ Az [Office 365](https://docs.microsoft.com/office/) log Connector Azure Sentinel
 - Ha manuálisan szeretné lekérdezni az Office 365 naplófájljait a **naplókban**, adja meg a `OfficeActivity` lekérdezési ablak első sorát.
    - Egy adott naplózási típus lekérdezésének szűréséhez írja be a `| where OfficeWorkload == "<logtype>"` következőt a lekérdezés második sorába: where *\<logtype\>* is,,, `SharePoint` `OneDrive` `Exchange` vagy `MicrosoftTeams` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az Office 365 az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan [érheti el az adatait és a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](tutorial-detect-threats-built-in.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

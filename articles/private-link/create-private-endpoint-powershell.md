@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737376"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
@@ -100,7 +100,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ## <a name="create-a-logical-sql-server"></a>Logikai SQL-kiszolgáló létrehozása 
 
-Hozzon létre egy logikai SQL-kiszolgálót a New-AzSqlServer parancs használatával. Ne feledje, hogy a kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
+Hozzon létre egy logikai SQL Server-kiszolgálót a New-AzSqlServer parancs használatával. Ne feledje, hogy a kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -184,15 +184,15 @@ mstsc /v:<publicIpAddress>
   > [!NOTE]
   > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon. 
   
-3. Válassza az **OK** lehetőséget. 
+3. Kattintson az **OK** gombra. 
 4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
 
 ## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
 
-1. A myVM Távoli asztal nyissa meg a PowerShellt.
-2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. Ne felejtse el lecserélni az `myserver` SQL-kiszolgáló nevét.
+1. A myVM Távoli asztalán nyissa meg a PowerShellt.
+2. Írja be a következő szöveget: `nslookup myserver.database.windows.net`. Ne felejtse el lecserélni az `myserver` SQL-kiszolgáló nevét.
 
-    Ehhez hasonló üzenet jelenik meg:
+    Egy ehhez hasonló üzenet jelenik meg:
     
     ```azurepowershell
     Server:  UnKnown
@@ -208,18 +208,18 @@ mstsc /v:<publicIpAddress>
 
     | Beállítás | Érték |
     | --- | --- |
-    | Kiszolgáló típusa | Adatbázismotor |
-    | Kiszolgáló neve | myserver.database.windows.net |
+    | Server type (Kiszolgáló típusa) | Adatbázismotor |
+    | Kiszolgálónév | myserver.database.windows.net |
     | Felhasználónév | Adja meg a létrehozás során megadott felhasználónevet |
     | Jelszó | Adja meg a létrehozás során megadott jelszót |
-    | Jelszó megjegyzése | Yes |
+    | Jelszó megjegyzése | Igen |
     
 5. Kattintson a **Csatlakozás** gombra.
 6. Az **adatbázisok** tallózása a bal oldali menüben. 
 7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
 8. A távoli asztali kapcsolat bezárásával *myVM*. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a privát végponttal, SQL Database és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
 
 ```azurepowershell-interactive

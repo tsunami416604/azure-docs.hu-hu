@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050268"
 ---
 ## <a name="prepare-for-akv-integration"></a>Felkészülés a AKV-integrációra
@@ -31,10 +31,10 @@ Az alábbi szakaszok ismertetik ezeket az előfeltételeket, valamint azokat az 
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-### <a name="install-azure-powershell"></a><a id="install"></a>Azure PowerShell telepítése
+### <a name="install-azure-powershell"></a><a id="install"></a> Azure PowerShell telepítése
 Győződjön meg arról, hogy telepítette a legújabb Azure PowerShell modult. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-az-ps) foglalkozó témakörben talál.
 
-### <a name="register-an-application-in-your-azure-active-directory"></a><a id="register"></a>Alkalmazás regisztrálása a Azure Active Directoryban
+### <a name="register-an-application-in-your-azure-active-directory"></a><a id="register"></a> Alkalmazás regisztrálása a Azure Active Directoryban
 
 Először is rendelkeznie kell egy [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (HRE) az előfizetésében. Számos előnnyel jár, így bizonyos felhasználók és alkalmazások számára engedélyezheti a kulcstartóhoz való hozzáférést.
 
@@ -53,7 +53,7 @@ Következő lépésként regisztráljon egy alkalmazást a HRE. Ez egy egyszerű
 
 * A következő hozzáférési engedélyekkel kell engedélyeznie az új alkalmazás-azonosítót (vagy ügyfél-azonosítót): **Get**, **wrapKey**, **unwrapKey**. Ez a [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmaggal történik. További információ: [Azure Key Vault Overview (áttekintés](../articles/key-vault/key-vault-overview.md)).
 
-### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Kulcstartó létrehozása
+### <a name="create-a-key-vault"></a><a id="createkeyvault"></a> Kulcstartó létrehozása
 Ahhoz, hogy a virtuális gépen a titkosításhoz használni kívánt kulcsokat a Azure Key Vault használatával lehessen tárolni, hozzá kell férnie egy kulcstartóhoz. Ha még nem állította be a kulcstartót, hozzon létre egyet a [Első lépések Azure Key Vault](../articles/key-vault/key-vault-overview.md) című cikkben ismertetett lépéseket követve. A lépések elvégzése előtt néhány információt be kell gyűjtenie a beállítás során, amelyre később szükség van, amikor engedélyezi Azure Key Vault integrációt az SQL-alapú virtuális gépen.
 
 ```azurepowershell

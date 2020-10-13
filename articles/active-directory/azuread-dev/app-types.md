@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116444"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazások típusai a v 1.0-ban
@@ -78,6 +78,6 @@ Ha jelenleg egy bérlői alkalmazást fejleszt, de számos szervezet számára e
 
 A dokumentumban felsorolt minden forgatókönyv tartalmaz egy alszakaszt, amely leírja a létesítési követelményeit. Az alkalmazások Azure AD-ben való kiépítésével és az önálló és több-bérlős alkalmazások közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directoryval](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) további információ. Folytassa az olvasást a gyakori alkalmazási forgatókönyvek megismeréséhez az Azure AD-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure AD- [alapú hitelesítés egyéb alapjairól](v1-authentication-scenarios.md)

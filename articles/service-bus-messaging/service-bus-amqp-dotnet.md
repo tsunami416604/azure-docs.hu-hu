@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Service Bus e
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067103"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Service Bus használata a .NET-ről a AMQP 1,0 használatával
@@ -89,7 +89,7 @@ A non-.NET-ügyfelekkel való együttműködés megkönnyítése érdekében csa
 A AMQP használata során a Service Bus .NET API viselkedése némileg különbözik, az alapértelmezett protokollhoz képest:
 
 * A [OperationTimeout][OperationTimeout] tulajdonságot a rendszer figyelmen kívül hagyja.
-* `MessageReceiver.Receive(TimeSpan.Zero)`implementálva `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
+* `MessageReceiver.Receive(TimeSpan.Zero)` implementálva `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Az üzenetek zárolási jogkivonatokkal történő elvégzése csak az üzeneteket tartalmazó üzenet-fogadók által végezhető el.
 
 ## <a name="control-amqp-protocol-settings"></a>AMQP-protokoll beállításainak szabályozása
@@ -101,7 +101,7 @@ A [.NET API](/dotnet/api/) -k számos beállítást tesznek elérhetővé az AMQ
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Ha az átvitelek kötegeltek, ez az érték határozza meg a leküldések küldésének maximális késleltetését. Alapértelmezés szerint a küldők/fogadók öröklik. Az egyéni küldő/fogadó felülbírálhatja az alapértelmezett értéket, ami 20 ezredmásodperc.
 * **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: azt határozza meg, hogy a AMQP kapcsolatok létesítettek-e TLS-kapcsolaton keresztül. Az alapértelmezett érték a **true (igaz**).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 

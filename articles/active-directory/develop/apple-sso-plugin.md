@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530697"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO beépülő modul Apple-eszközökhöz (előzetes verzió)
@@ -31,11 +31,11 @@ Az *Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul* eg
 
 Ebben a nyilvános előzetes kiadásban a vállalati egyszeri bejelentkezési beépülő modul csak iOS-eszközökön érhető el, és bizonyos Microsoft-alkalmazásokban van elterjesztve.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul a következő előnyöket kínálja:
 
-- EGYSZERI bejelentkezést biztosít az Azure AD-fiókokhoz az Apple vállalati egyszeri bejelentkezés funkcióját támogató összes alkalmazásban.
+- Egyszeri bejelentkezést biztosít az Azure AD-fiókokhoz minden olyan alkalmazás esetében, amely támogatja az Apple Enterprise Sign-On funkciót.
 - A rendszer automatikusan leküldi a Microsoft Authenticator, és bármely mobileszköz-kezelési (MDM) megoldással engedélyezhető.
 
 ## <a name="requirements"></a>Követelmények
@@ -125,7 +125,7 @@ Ha olyan alkalmazást hoz létre, amely Frontline Worker-forgatókönyvekhez ké
 
 ## <a name="how-the-sso-plug-in-works"></a>Az SSO beépülő modul működése
 
-A Microsoft Enterprise SSO beépülő modul az [Apple vállalati egyszeri bejelentkezési keretrendszerére](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)támaszkodik. A keretrendszerbe feltüntető szolgáltatók képesek a tartományok hálózati forgalmának elfogására és a kérelmek kezelésének javítására vagy módosítására. Az SSO beépülő modul például további felhasználói felületet jeleníthet meg a végfelhasználói hitelesítő adatok biztonságos összegyűjtéséhez, a többtényezős hitelesítés megköveteléséhez, vagy a tokenek csendes biztosításához az alkalmazáshoz.
+A Microsoft Enterprise SSO beépülő modul az [Apple Enterprise Single Sign-On Framework-keretrendszerre](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)támaszkodik. A keretrendszerbe feltüntető szolgáltatók képesek a tartományok hálózati forgalmának elfogására és a kérelmek kezelésének javítására vagy módosítására. Az SSO beépülő modul például további felhasználói felületet jeleníthet meg a végfelhasználói hitelesítő adatok biztonságos összegyűjtéséhez, a többtényezős hitelesítés megköveteléséhez, vagy a tokenek csendes biztosításához az alkalmazáshoz.
 
 A natív alkalmazások egyéni műveleteket is megvalósítanak, és közvetlenül az egyszeri bejelentkezéses beépülő modullal kommunikálnak.
 Az egyszeri bejelentkezési keretrendszerről ebben a [2019 WWDC-videóban olvashat az Apple-től](https://developer.apple.com/videos/play/tech-talks/301/)
@@ -154,6 +154,6 @@ A nem MSAL alkalmazások egyszeri bejelentkezésének támogatásához az SSO be
 
 A MSAL-alapú alkalmazásokhoz képest az SSO beépülő modul átláthatóbbá teszi a nem MSAL alkalmazások számára az alkalmazások által biztosított meglévő böngészőbeli bejelentkezési élmény integrálásával. A végfelhasználók láthatják a megszokott tapasztalataikat, így nem kell további bejelentkezéseket végezniük az egyes alkalmazásokban. A natív fiók választójának megjelenítése helyett például az SSO beépülő modul SSO-munkameneteket biztosít a webalapú fiók-választói élményhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az iOS-es megosztott eszköz üzemmódról: [megosztott eszköz mód iOS-eszközökhöz](msal-ios-shared-devices.md).

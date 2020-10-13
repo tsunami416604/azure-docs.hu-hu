@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909154"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B együttműködés meghívásának beváltása
@@ -42,9 +42,9 @@ A meghívót tartalmazó e-mailek alternatívájaként az alkalmazásra vagy a p
 
 > [!IMPORTANT]
 > A közvetlen hivatkozásnak bérlő-specifikusnak kell lennie. Más szóval tartalmaznia kell egy bérlői azonosítót vagy egy ellenőrzött tartományt, hogy a vendég hitelesíthető legyen a bérlőben, ahol a megosztott alkalmazás található. Egy közös URL-cím, például https://myapps.microsoft.com nem fog működni a vendég számára, mert az átirányítja a saját bérlőre a hitelesítéshez. Íme néhány példa a bérlői környezettel kapcsolatos közvetlen hivatkozásokra:
- > - Alkalmazások hozzáférési panelje:`https://myapps.microsoft.com/?tenantid=<tenant id>`
- > - Az ellenőrzött tartományhoz tartozó alkalmazások hozzáférési panelje:`https://myapps.microsoft.com/<;verified domain>`
- > - Azure Portal:`https://portal.azure.com/<tenant id>`
+ > - Alkalmazások hozzáférési panelje: `https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Az ellenőrzött tartományhoz tartozó alkalmazások hozzáférési panelje: `https://myapps.microsoft.com/<;verified domain>`
+ > - Azure Portal: `https://portal.azure.com/<tenant id>`
  > - Egyéni alkalmazás: lásd a [közvetlen bejelentkezési hivatkozás](../manage-apps/end-user-experiences.md#direct-sign-on-links) használatát ismertető témakört.
 
 Vannak olyan esetek, amikor a meghívó e-mail-címe közvetlen hivatkozáson keresztül ajánlott. Ha ezek a speciális esetek fontosak a szervezet számára, javasoljuk, hogy a meghívó e-mailt még elküldő metódusok használatával meghívja a felhasználókat:
@@ -113,4 +113,4 @@ A címtárban a vendég **meghívásának elfogadott** értéke **Igen**értékr
 - [Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal](add-users-administrator.md)
 - [Hogyan vehetik igénybe az Information Worker VÁLLALATKÖZI együttműködési felhasználókat a Azure Active Directory?](add-users-information-worker.md)
 - [Azure Active Directory B2B csoportmunka-felhasználók hozzáadása a PowerShell használatával](customize-invitation-api.md#powershell)
-- [A szervezet kihagyása vendég felhasználóként](leave-the-organization.md)
+- [Szervezet elhagyása vendégfelhasználóként](leave-the-organization.md)

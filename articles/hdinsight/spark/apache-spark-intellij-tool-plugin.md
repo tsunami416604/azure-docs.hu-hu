@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
 ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085344"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Apache Spark alkalmazások létrehozása a HDInsight-fürthöz Azure Toolkit for IntelliJ használatával
@@ -71,7 +71,7 @@ A Scala beépülő modul telepítésének lépései:
 
      ![IntelliJ IDEA új projekt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-5. Válassza a **Tovább** lehetőséget.
+5. Kattintson a **Tovább** gombra.
 
 6. Az **új projekt** ablakban adja meg a következő információkat:  
 
@@ -84,7 +84,7 @@ A Scala beépülő modul telepítésének lépései:
 
     ![Az Apache Spark SDK kiválasztása](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
-7. Válassza a **Befejezés** gombot.  A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** lehetőséget.  A projekt elérhetővé válása néhány percet igénybe vehet.
 
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő lépéseket:
 
@@ -92,7 +92,7 @@ A Scala beépülő modul telepítésének lépései:
 
    b. A **projekt szerkezete** **ablakban válassza az**összetevők elemet.  
 
-   c. A lelet megtekintése után válassza a **Mégse** lehetőséget.
+   c. A lelet megtekintése után válassza a **Mégse**  lehetőséget.
 
       ![Az összetevő adatai a párbeszédpanelen](./media/apache-spark-intellij-tool-plugin/default-artifact-dialog.png)
 
@@ -462,7 +462,7 @@ A IntelliJ IDEA-ben létrehozott meglévő Spark Scala-alkalmazások a Azure Too
 
 3. Mentse a módosításokat. Az alkalmazásnak mostantól kompatibilisnek kell lennie Azure Toolkit for IntelliJsal. Teszteléshez kattintson a jobb gombbal a projekt nevére a projektben. Az előugró menüben már elérhető a **Spark-alkalmazás küldése a HDInsight**.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 

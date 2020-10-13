@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065981"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok elleni védelem Azure Active Directory intelligens zárolással
@@ -90,7 +90,7 @@ Az intelligens zárolási küszöbérték kiváltása esetén a következő üze
 
 *A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.*
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure ad jelszavas védelme érdekében egyéni tiltott jelszavakat is konfigurálhat](tutorial-configure-custom-password-protection.md)a további tapasztalatok testreszabásához.
 

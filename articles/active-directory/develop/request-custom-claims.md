@@ -13,10 +13,10 @@ ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477192"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
@@ -33,7 +33,7 @@ Több forgatókönyv is van, ahol ez szükséges. Például:
 > [!NOTE]
 > A MSAL megkerüli a hozzáférési jogkivonat gyorsítótárát, ha meg van adva jogcím-kérelem. Fontos, hogy csak akkor adja meg a `claimsRequest` paramétereket, ha további jogcímek szükségesek (az `claimsRequest` egyes MSAL API-hívásokban mindig ugyanazt a paramétert biztosítjuk).
 
-`claimsRequest`a és a esetén adható meg `MSALSilentTokenParameters` `MSALInteractiveTokenParameters` :
+`claimsRequest` a és a esetén adható meg `MSALSilentTokenParameters` `MSALInteractiveTokenParameters` :
 
 ```objc
 /*!
@@ -49,7 +49,7 @@ Több forgatókönyv is van, ahol ez szükséges. Például:
 
 @end
 ```
-`MSALClaimsRequest`a JSON-jogcímek kérelmének NSString-reprezentációja alapján hozható létre. 
+`MSALClaimsRequest` a JSON-jogcímek kérelmének NSString-reprezentációja alapján hozható létre. 
 
 Objective-C:
 
@@ -98,7 +98,7 @@ do {
 
 
 
-`MSALClaimsRequest`Ezután be kell állítani a jogkivonat paramétereit, és meg kell adni az egyik MSAL jogkivonat-beszerzési API-nak:
+`MSALClaimsRequest` Ezután be kell állítani a jogkivonat paramétereit, és meg kell adni az egyik MSAL jogkivonat-beszerzési API-nak:
 
 Objective-C:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Portal irányítópultok megosztása szerepköralapú Access Control használatával
-description: Ez a cikk azt ismerteti, hogyan oszthat meg egy irányítópultot a Azure Portal szerepköralapú Access Control használatával.
+title: Azure Portal irányítópultok megosztása Role-Based használatával Access Control
+description: Ez a cikk azt ismerteti, hogyan oszthat meg egy irányítópultot a Azure Portal Role-Based Access Control használatával.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87923883"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
@@ -33,7 +33,7 @@ Minden közzétett irányítópult Azure-erőforrásként van megvalósítva. Az
 
 ## <a name="understanding-access-control-for-dashboards"></a>Az irányítópultok hozzáférés-vezérlésének ismertetése
 
-Szerepköralapú Access Control (RBAC) esetén a felhasználók a hatókör három különböző szintjén oszthatók ki szerepkörökhöz:
+A Role-Based Access Control (RBAC) használatával a felhasználók a hatókör három különböző szintjén rendelhetők hozzá a szerepkörökhöz:
 
 * előfizetést
 * erőforráscsoport
@@ -85,7 +85,7 @@ Az irányítópult egyik szerepköréhez hozzárendelhet egy felhasználói csop
 
 1. Ha befejezte a felhasználók vagy csoportok hozzáadását, válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szerepkörök listáját az [Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md)című részben tekintheti meg.
 * Az erőforrások kezelésével kapcsolatos további információkért lásd: [Az Azure-erőforrások kezelése a Azure Portal használatával](resource-group-portal.md).

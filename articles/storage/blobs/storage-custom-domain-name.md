@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88053626"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
@@ -113,9 +113,9 @@ Hozzon létre egy CNAME rekordot, amely az állomásnévre mutat. A CNAME rekord
 
 #### <a name="step-4-test-your-custom-domain"></a>4. lépés: az egyéni tartomány tesztelése
 
-Annak ellenőrzéséhez, hogy az egyéni tartomány hozzá van-e rendelve a blob Service-végponthoz, hozzon létre egy blobot a Storage-fiókban lévő nyilvános tárolóban. Ezután egy webböngészőben nyissa meg a blobot egy URI használatával a következő formátumban:`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+Annak ellenőrzéséhez, hogy az egyéni tartomány hozzá van-e rendelve a blob Service-végponthoz, hozzon létre egy blobot a Storage-fiókban lévő nyilvános tárolóban. Ezután egy webböngészőben nyissa meg a blobot egy URI használatával a következő formátumban: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Ha például egy webes űrlapot szeretne elérni a *myForms* -tárolóban a *photos.contoso.com* egyéni altartományában, a következő URI-t használhatja:`http://photos.contoso.com/myforms/applicationform.htm`
+Ha például egy webes űrlapot szeretne elérni a *myForms* -tárolóban a *photos.contoso.com* egyéni altartományában, a következő URI-t használhatja: `http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
@@ -225,9 +225,9 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat.
 
 #### <a name="step-5-test-your-custom-domain"></a>5. lépés: az egyéni tartomány tesztelése
 
-Annak ellenőrzéséhez, hogy az egyéni tartomány hozzá van-e rendelve a blob Service-végponthoz, hozzon létre egy blobot a Storage-fiókban lévő nyilvános tárolóban. Ezután egy webböngészőben nyissa meg a blobot egy URI használatával a következő formátumban:`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+Annak ellenőrzéséhez, hogy az egyéni tartomány hozzá van-e rendelve a blob Service-végponthoz, hozzon létre egy blobot a Storage-fiókban lévő nyilvános tárolóban. Ezután egy webböngészőben nyissa meg a blobot egy URI használatával a következő formátumban: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Ha például egy webes űrlapot szeretne elérni a *myForms* -tárolóban a *photos.contoso.com* egyéni altartományában, a következő URI-t használhatja:`http://photos.contoso.com/myforms/applicationform.htm`
+Ha például egy webes űrlapot szeretne elérni a *myForms* -tárolóban a *photos.contoso.com* egyéni altartományában, a következő URI-t használhatja: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>Egyéni tartomány-hozzárendelés eltávolítása
 
@@ -326,6 +326,6 @@ Egyéni tartomány leképezéséhez és a HTTPS-hozzáférés engedélyezéséhe
 
    * [Díjszabás és számlázás a blob Storage és a Azure CDN használata esetén](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg az Azure Blob Storage-beli statikus webhely üzemeltetését](storage-blob-static-website.md)

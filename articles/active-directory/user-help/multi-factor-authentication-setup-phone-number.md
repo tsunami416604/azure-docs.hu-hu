@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530255"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Mobileszköz beállítása kétfaktoros ellenőrzési módszerként
@@ -43,7 +43,7 @@ Beállíthatja, hogy a mobileszköz a kétfaktoros ellenőrzési módszerként m
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-5. Válassza a **Kész** lehetőséget.
+5. Válassza a **Done** (Kész) lehetőséget.
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>A mobileszköz beállítása telefonos hívás fogadására
 
@@ -64,9 +64,9 @@ Beállíthatja, hogy a mobileszköz a kétfaktoros ellenőrzési módszerként m
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-5. Válassza a **Kész** lehetőséget.
+5. Válassza a **Done** (Kész) lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési módszer beállítása után további metódusokat adhat hozzá, kezelheti a beállításokat és az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 

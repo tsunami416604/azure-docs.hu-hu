@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83736500"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection-szabályzatok
@@ -30,7 +30,7 @@ Az Identity Protection lehetővé teszi a szervezetek számára, hogy az Azure-M
 
 Az Azure Multi-Factor Authentication-ról további információt talál a következő cikkben, [Hogyan működik: azure multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 
-## <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati házirend
+## <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati szabályzat
 
 Az Identity Protection elemzi az egyes bejelentkezések, valós idejű és offline állapotú jeleket, és kiszámítja a kockázati pontszámot azon valószínűség alapján, hogy a felhasználó nem végezte el a bejelentkezést. A rendszergazdák a kockázati pontszám alapján hozhatnak döntéseket a szervezeti követelmények betartatása érdekében. A rendszergazdák dönthetnek úgy, hogy letilthatják a hozzáférést, engedélyezik a hozzáférést, vagy engedélyezik a hozzáférést, de többtényezős hitelesítést igényelnek.
 
@@ -45,7 +45,7 @@ A rendszergazdák dönthetnek úgy is, hogy egyéni feltételes hozzáférési s
 
 ![Egyéni feltételes hozzáférés bejelentkezési kockázati szabályzata](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 
-## <a name="user-risk-policy"></a>Felhasználói kockázati házirend
+## <a name="user-risk-policy"></a>Felhasználói kockázati szabályzat
 
 Az Identity Protection kiszámíthatja, hogy mit gondol a felhasználó viselkedése, és hogyan használhatja azt a kockázatokra alapozva. A felhasználói kockázat a valószínűsége annak, hogy az identitást feltörték. A rendszergazdák a kockázati pontszám alapján hozhatnak döntéseket a szervezeti követelmények betartatása érdekében. A rendszergazdák dönthetnek úgy, hogy letiltják a hozzáférést, engedélyezik vagy engedélyezik a hozzáférést, de jelszó-módosítást igényelnek az [Azure ad önkiszolgáló jelszó-visszaállítás](../authentication/howto-sspr-deployment.md)használatával.
 

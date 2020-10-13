@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079842"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
@@ -26,7 +26,7 @@ Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure való i
 
  
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Egy Windows rendszerű virtuális gép nem indul el. Ha **rendszerindítási diagnosztikát** használ a virtuális gép képernyőképének beszerzéséhez, láthatja, hogy a virtuális gép a "felkészülés" vagy a "Windows Ready" üzenetet jeleníti meg.
 

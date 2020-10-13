@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397304"
 ---
 # <a name="live-event-types-comparison"></a>Élő eseménytípus összehasonlítása
@@ -36,13 +36,13 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 * **LiveEventEncodingType. Standard** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás streamet hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy nagyobb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat kódol (részletek a cikk későbbi részében).
 * **LiveEventEncodingType. Premium1080p** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét (részletek a cikk későbbi részében). 
 
-| Jellemző | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
+| Szolgáltatás | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
 | --- | --- | --- |
 | Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Igen |
 | A hozzájárulási csatorna maximális felbontása |4K (4096x2160 at 60 Frames/mp) |1080p (1920x1088 30 keret/mp)|
 | Ajánlott maximális rétegek a hozzájárulási adatcsatornában|Legfeljebb 12|Egy hang|
 | Maximális rétegek a kimenetben| Ugyanaz, mint a bevitel|Legfeljebb 6 (lásd az alábbi rendszerbeállításokat)|
-| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|N/A|
+| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|N.A.|
 | A hozzájárulás egyetlen rétegének maximális bitrátája |20 Mbps|20 Mbps|
 | Többnyelvű hangsávok támogatása|Igen|Nem|
 | Támogatott bemeneti videós kodekek |H. 264/AVC és H. 265/HEVC|H. 264/AVC|
@@ -60,10 +60,10 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | A beágyazások behelyezésének támogatása|Nem|Nem|
 | Az ad-jelzés támogatása API-n keresztül| Nem|Nem|
 | Az ad-jelzés támogatása SCTE-35 sávon belüli üzenetek használatával|Igen|Igen|
-| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Yes|Részleges|
-| Nem egységes bemeneti Pallagi Péter támogatása|Yes|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
-| Változó képarány bemenetének támogatása|Yes|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
-| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|No|12 óra elteltével, ha nem fut LiveOutput|
+| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Igen|Részleges|
+| Nem egységes bemeneti Pallagi Péter támogatása|Igen|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
+| Változó képarány bemenetének támogatása|Igen|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
+| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|Nem|12 óra elteltével, ha nem fut LiveOutput|
 
 ## <a name="system-presets"></a>Rendszerbeállítás
 

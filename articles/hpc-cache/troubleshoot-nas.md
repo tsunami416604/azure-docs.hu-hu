@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
 ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082766"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>A NAS-konfiguráció és az NFS-tárolási cél problémáinak elhárítása
@@ -96,7 +96,7 @@ Ha el szeretné kerülni a fájlok ütközését több exportálási fájl eset�
 
 A NAS-nak le kell listáznia az exportálást, amikor az Azure HPC cache lekérdezi azt.
 
-A legtöbb NFS-tárolási rendszeren tesztelheti ezt úgy, hogy a következő lekérdezést küldi el egy Linux-ügyféltől:``showmount -e <storage IP address>``
+A legtöbb NFS-tárolási rendszeren tesztelheti ezt úgy, hogy a következő lekérdezést küldi el egy Linux-ügyféltől: ``showmount -e <storage IP address>``
 
 Ha lehetséges, használja a Linux-ügyfelet a gyorsítótárral azonos virtuális hálózatból.
 
@@ -120,9 +120,9 @@ Nincs egyszerű módszer annak megadására, hogy a rendszer rendelkezik-e ezzel
 
   A parancsban a következő lehetőségek érhetők el:
 
-  * ``-M do``-Ne legyen töredék
-  * ``-c 1``– Csak egy csomagot küldjön
-  * ``-s 1472``-A hasznos adatok méretének beállítása 1472 bájtra. Ez a maximális méret a 1500 bájtos csomag esetében az Ethernet-terhelés elszámolása után.
+  * ``-M do`` -Ne legyen töredék
+  * ``-c 1`` – Csak egy csomagot küldjön
+  * ``-s 1472`` -A hasznos adatok méretének beállítása 1472 bájtra. Ez a maximális méret a 1500 bájtos csomag esetében az Ethernet-terhelés elszámolása után.
 
   A sikeres válasz így néz ki:
 

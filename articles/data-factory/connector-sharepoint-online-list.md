@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83871914"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
@@ -55,8 +55,8 @@ A SharePoint-lista online összekötője egyszerű szolgáltatásnév használat
     1. Nyissa meg a SharePoint Online-webhely hivatkozást `https://[your_site_url]/_layouts/15/appinv.aspx` (például cserélje le a webhely URL-címét).
     2. Keresse meg a regisztrált alkalmazás AZONOSÍTÓját, töltse ki az üres mezőket, majd kattintson a "létrehozás" gombra.
 
-        - Alkalmazás tartománya:`localhost.com`
-        - Átirányítási URL-cím:`https://www.localhost.com`
+        - Alkalmazás tartománya: `localhost.com`
+        - Átirányítási URL-cím: `https://www.localhost.com`
         - Engedély kérésének XML-fájlja:
 
         ```xml
@@ -79,16 +79,16 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A SharePoint Online-listák társított szolgáltatásai a következő tulajdonságokat támogatják:
 
-| **Tulajdonság**        | **Leírás**                                              | **Szükséges** |
+| **Tulajdonság**        | **Leírás**                                              | **Kötelező** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Yes          |
-| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
-| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Yes          |
-| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes          |
-| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Yes          |
-| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | No           |
+| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Igen          |
+| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Igen          |
+| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Igen          |
+| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen          |
+| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Igen          |
+| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | Nem           |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -114,8 +114,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource**értékre kell állítani. | Yes |
-| listName | A SharePoint Online-lista neve. | Yes |
+| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource**értékre kell állítani. | Igen |
+| listName | A SharePoint Online-lista neve. | Igen |
 
 **Példa**
 
@@ -147,9 +147,9 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource**értékre kell állítani. | Yes |
-| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | No |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource**értékre kell állítani. | Igen |
+| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | Nem |
 
 **Példa**
 
@@ -192,8 +192,8 @@ Az adatok SharePoint Online-listából való másolása során a rendszer a köv
 | Egysoros szöveg                             | Edm.String                                           | Sztring                                   |
 | Több sornyi szöveg                          | Edm.String                                           | Sztring                                   |
 | Choice (választható menü)                    | Edm.String                                           | Sztring                                   |
-| Szám (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
-| Pénznem ($, ¥, €)                              | Edm.Double                                           | Double                                   |
+| Szám (1, 1,0, 100)                            | Edm.Double                                           | Dupla                                   |
+| Pénznem ($, ¥, €)                              | Edm.Double                                           | Dupla                                   |
 | Dátum és idő                                   | EDM. DateTime                                         | DateTime                                 |
 | Keresés (az ezen a helyen található információk)       | Edm.Int32                                            | Int32                                    |
 | Igen/nem (jelölőnégyzet)                              | Edm.Boolean                                          | Logikai                                  |
@@ -219,7 +219,7 @@ A SharePoint Online-ból **webes tevékenység** használatával másolhatja a f
     - **Metódus**: Post
     - **Fejlécek**:
         - Content-Type: Application/x-www-Form-urlencoded
-    - **Törzs**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Cserélje le az ügyfél-azonosítót, az ügyfél titkos kulcsát, a bérlő AZONOSÍTÓját és a bérlő nevét.
+    - **Törzs**:  `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Cserélje le az ügyfél-azonosítót, az ügyfél titkos kulcsát, a bérlő AZONOSÍTÓját és a bérlő nevét.
 
     > [!CAUTION]
     > A biztonságos kimenet beállítás értékeként állítsa be az igaz értéket a webes tevékenységben, hogy megakadályozza a jogkivonat értékének egyszerű szövegként való naplózását. Az értéket használó további tevékenységeknek a biztonságos bemenet beállítását True értékre kell állítani.

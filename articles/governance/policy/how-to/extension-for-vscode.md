@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan kereshet Azure Resource Manager aliasokat a Vis
 ms.date: 06/16/2020
 ms.topic: how-to
 ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648325"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
@@ -64,13 +64,13 @@ Az erőforrások és a keresési aliasok kiértékeléséhez csatlakoznia kell a
 
      A Azure Policy bővítményben válassza a **Bejelentkezés az Azure**-ba lehetőséget.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Képernyőfelvétel a Visual Studio Code-ról és a Azure Policy-bővítmény ikonja." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült ország Azure Cloud-bejelentkezés kiválasztásáról." border="false":::
 
    - Parancs paletta
 
      A menüsávban lépjen a parancs- **View**  >  **paletta**megtekintése elemre, és írja be az **Azure: bejelentkezés**lehetőséget.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült Azure Cloud bejelentkezési lehetőségeiről a parancs palettáján." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült ország Azure Cloud-bejelentkezés kiválasztásáról." border="false":::
 
 1. Az Azure-ba való bejelentkezéshez kövesse a bejelentkezési utasításokat. A csatlakozás után az Azure-fiók neve megjelenik a Visual Studio Code ablak alján található állapotsorban.
 
@@ -125,7 +125,7 @@ Ha erőforrás van kiválasztva, akár a keresési felületen keresztül, akár 
 
 Ha egy erőforrás meg van nyitva, a Resource Manager-tulajdonságnév vagy-érték fölé húzva megjelenik a Azure Policy alias, ha van ilyen. Ebben a példában az erőforrás egy erőforrástípus, `Microsoft.Compute/virtualMachines` a **Properties. StorageProfile. imageReference. Offer** tulajdonság pedig a fölé van helyezve. Az egérmutató a megfelelő aliasokat jeleníti meg.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült Azure Policy-bővítményről, amely egy tulajdonsággal jeleníti meg az aliasok nevét." border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült ország Azure Cloud-bejelentkezés kiválasztásáról." border="false":::
 
 > [!NOTE]
 > A VS Code bővítmény csak a Resource Manager-üzemmód tulajdonságait mutatja be, és nem jeleníti meg az [erőforrás-szolgáltatói mód](../concepts/definition-structure.md#mode) tulajdonságait.

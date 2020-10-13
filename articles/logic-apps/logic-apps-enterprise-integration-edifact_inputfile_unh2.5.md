@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
 ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89179844"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT-dokumentumok kezelése UNH 2.5-es szegmensekkel Azure Logic Apps
@@ -61,6 +61,6 @@ A bejövő üzenet kódolásához konfigurálja a sémát a EDIFACT-szerződés 
 
    ![A UNH 2.5 hozzáadása a szerződés elküldéséhez](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [integrációs fiókokra vonatkozó szerződésekről](../logic-apps/logic-apps-enterprise-integration-agreements.md)

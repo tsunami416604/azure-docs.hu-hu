@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
 ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325593"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
@@ -464,7 +464,7 @@ Ha a rendelkezésre álló metrika-definíciók ismertek, akkor lehetséges, hog
 
 **Metódus**: Get
 
-**Kérelem URI-ja**:`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**Kérelem URI-ja**: `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 Ha például a megadott időtartományhoz tartozó RunsSucceeded metrikai adatpontokat szeretné lekérni, és egy órán belül egy órát, akkor a kérelem a következő lesz:
 
@@ -626,7 +626,7 @@ Az erőforrás-azonosító a Azure Portal is beszerezhető. Ehhez keresse meg a 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az erőforrás-azonosító Azure PowerShell parancsmagok használatával is lekérhető. Ha például egy Azure logikai alkalmazás erőforrás-AZONOSÍTÓját szeretné beolvasni, hajtsa végre a Get-AzureLogicApp parancsmagot az alábbi példában látható módon:
+Az erőforrás-azonosító Azure PowerShell parancsmagok használatával is lekérhető. Ha például egy Azure logikai alkalmazás erőforrás-AZONOSÍTÓját szeretné beolvasni, hajtsa végre az Get-AzureLogicApp parancsmagot, ahogy az alábbi példában látható:
 
 ```powershell
 Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets

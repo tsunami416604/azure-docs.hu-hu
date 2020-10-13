@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262433"
 ---
-# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure parancssori felületével (CLI)
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure Command-Line Interface (CLI) használatával
 
 Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)való használatának megkezdéséhez használható.
 
@@ -92,7 +92,7 @@ az group create \
 
 | Szolgáltatás                    | Erőforrás                      |
 |----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
+| Számítógépes látástechnológia            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
 | Arcfelismerés                       | `Face`                    |
@@ -109,7 +109,7 @@ az group create \
 | Bing kereső        | `Bing.Search.v7`      |
 | Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Speech
+### <a name="speech"></a>Beszéd
 
 | Szolgáltatás            | Erőforrás                 |
 |--------------------|----------------------|
@@ -160,7 +160,7 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-A parancssori felület (CLI) helyi telepítésére való bejelentkezéshez használja az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
+A Command-Line felület (CLI) helyi telepítésére való bejelentkezéshez használja az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
 
 ```azurecli-interactive
 az login

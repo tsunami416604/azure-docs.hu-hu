@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004796"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
@@ -176,7 +176,7 @@ Ha a fürtözés engedélyezve van, a gyorsítótárban lévő összes szegmens 
 Az újraírást követően két AOF-fájl létezik a tárolóban. Az újraírások a háttérben történnek, és a rendszer hozzáfűzi a fájlok első készletéhez, míg a gyorsítótárba az újraírás során elküldett műveleteket a második készlethez adja meg. Hiba esetén a rendszer átmenetileg tárolja a biztonsági mentést, de az újraírás befejeződése után azonnal törölve lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis prémium szintű szolgáltatási szintjeihez](cache-overview.md#service-tiers)

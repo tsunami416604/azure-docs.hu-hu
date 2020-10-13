@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
 ms.openlocfilehash: fee1285cfb5faefbcb8f7151186d42725d34af0a
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88224509"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás Azure Database for MariaDB
@@ -19,7 +19,7 @@ Azure Database for MariaDB automatikusan létrehozza a kiszolgáló biztonsági 
 
 ## <a name="backups"></a>Biztonsági másolatok
 
-A Azure Database for MariaDB teljes, differenciális és tranzakciós naplóbeli biztonsági másolatokat készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+A Azure Database for MariaDB teljes, differenciális és tranzakciós naplóbeli biztonsági másolatokat készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva.
 
 Ezek a biztonságimásolat-fájlok nem felhasználók számára lettek kitéve, és nem exportálhatók. Ezek a biztonsági másolatok csak Azure Database for MariaDB-beli visszaállítási műveletekhez használhatók. A [mysqldump](howto-migrate-dump-restore.md) használatával másolhat egy adatbázist.
 
@@ -27,14 +27,14 @@ Ezek a biztonságimásolat-fájlok nem felhasználók számára lettek kitéve, 
 
 #### <a name="servers-with-up-to-4-tb-storage"></a>Legfeljebb 4 TB tárhellyel rendelkező kiszolgálók
 
-Legfeljebb 4 TB-os maximális tárterületet támogató kiszolgálók esetén a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós napló biztonsági mentései öt percenként történnek.
+Legfeljebb 4 TB-os maximális tárterületet támogató kiszolgálók esetén a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós naplók biztonsági mentése öt percenként történik.
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Legfeljebb 16 TB tárhellyel rendelkező kiszolgálók
-Az [Azure-régiók](concepts-pricing-tiers.md#storage)egy részhalmazában az újonnan kiosztott kiszolgálók akár 16 TB-nyi tárhelyet is támogatnak. Ezen nagyméretű tároló kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek következő biztonsági mentései csak különbözeti biztonsági másolatokat használnak. 
+Az [Azure-régiók](concepts-pricing-tiers.md#storage)egy részhalmazában az újonnan kiosztott kiszolgálók akár 16 TB-nyi tárhelyet is támogatnak. Ezen nagyméretű tároló kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek. 
 
-A különbözeti Pillanatképek biztonsági mentései naponta legalább egyszer történnek. A különbözeti Pillanatképek biztonsági mentése rögzített ütemezés szerint nem történik meg. A különbözeti Pillanatképek biztonsági mentései 24 óránként történnek, kivéve, ha a tranzakciós napló (BinLog a MariaDB-ben) meghaladja a 50 GB-ot a legutóbbi különbözeti biztonsági mentés óta. Egy nap alatt legfeljebb hat különbözeti pillanatkép engedélyezett. 
+A különbségi biztonsági mentések legalább naponta egyszer végbemennek. A különbségi biztonsági mentések nem meghatározott ütemezés szerint mennek végbe. A különbözeti Pillanatképek biztonsági mentései 24 óránként történnek, kivéve, ha a tranzakciós napló (BinLog a MariaDB-ben) meghaladja a 50 GB-ot a legutóbbi különbözeti biztonsági mentés óta. Egy adott napon legfeljebb hat különbségi pillanatkép készítése engedélyezett. 
 
-A tranzakciós napló biztonsági mentései öt percenként történnek. 
+A tranzakciós naplók biztonsági mentése öt percenként történik. 
 
 ### <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
@@ -55,7 +55,7 @@ Azure Database for MariaDB rugalmasságot biztosít a helyileg redundáns vagy g
 
 A Azure Database for MariaDB a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Minden további felhasznált biztonsági mentési tárterületért GB/hó díjat számítunk fel. Ha például 250 GB tárterülettel rendelkező kiszolgálót épít ki, akkor a kiszolgáló biztonsági mentéséhez 250 GB-nyi további tárterület is rendelkezésre áll. A biztonsági mentéshez a 250 GB-nál nagyobb mennyiségű tárterületet a [díjszabási modell](https://azure.microsoft.com/pricing/details/mariadb/)szerint számítjuk fel. 
 
-A Azure Monitor által elérhető [biztonsági mentési tár](concepts-monitoring.md) a Azure Portal segítségével a kiszolgáló által felhasznált biztonsági mentési tárterület figyelésére használható. A biztonsági mentési tár használt mérőszáma a teljes adatbázis biztonsági mentése, a különbözeti biztonsági másolatok és a naplózott biztonsági mentések által felhasznált tárterület összegét adja meg a kiszolgáló biztonsági mentésének megőrzési időszaka alapján. A biztonsági mentések gyakorisága a szolgáltatás által felügyelt és korábban ismertetett. A kiszolgáló súlyos tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekszik. A földrajzilag redundáns tároláshoz a biztonsági mentési tárterület a helyileg redundáns tárolásnál kétszer szerepel. 
+A Azure Monitor által elérhető [biztonsági mentési tár](concepts-monitoring.md) a Azure Portal segítségével a kiszolgáló által felhasznált biztonsági mentési tárterület figyelésére használható. A biztonsági mentési tár használt mérőszáma a teljes adatbázis biztonsági mentése, a különbözeti biztonsági másolatok és a naplózott biztonsági mentések által felhasznált tárterület összegét adja meg a kiszolgáló biztonsági mentésének megőrzési időszaka alapján. A biztonsági mentések gyakorisága a szolgáltatás által felügyelt és korábban ismertetett. A kiszolgáló magas szintű tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekedhet. A földrajzilag redundáns tároláshoz a biztonsági mentési tárterület a helyileg redundáns tárolásnál kétszer szerepel. 
 
 A biztonsági mentési tárolási költségek szabályozásának elsődleges módja a biztonsági mentési megőrzési időtartam beállítása, valamint a megfelelő biztonsági mentési redundancia-beállítások kiválasztása a kívánt helyreállítási célok eléréséhez. A megőrzési időtartamot 7 és 35 nap közé is kiválaszthatja. A általános célú és a memóriára optimalizált kiszolgálók dönthetnek úgy, hogy a biztonsági mentések földrajzilag redundáns tárolóhelyet biztosítanak.
 
@@ -98,7 +98,7 @@ A helyreállítási mechanizmusból való visszaállítás után a következő f
 - Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 - Konfigurálja a riasztásokat, ha szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az üzletmenet folytonosságával kapcsolatos további tudnivalókért tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md)című témakört.
 - Ha a Azure Portal használatával szeretne visszaállítani egy időpontra, tekintse meg [a kiszolgáló visszaállítása a Azure Portal használatával](howto-restore-server-portal.md)című témakört.

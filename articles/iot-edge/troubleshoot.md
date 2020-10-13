@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902456"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>A IoT Edge eszköz hibáinak megoldása
@@ -71,7 +71,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="check-your-iot-edge-version"></a>A IoT Edge verziójának keresése
 
-Ha a IoT Edge egy régebbi verzióját futtatja, a frissítés megoldhatja a problémát. Az `iotedge check` eszköz ellenőrzi, hogy a IoT Edge biztonsági démon a legújabb verzió-e, de nem ellenőrzi az IoT Edge hub és az ügynök moduljainak verzióját. Az eszközön futó futásidejű modulok verziójának vizsgálatához használja a parancsokat és a `iotedge logs edgeAgent` parancsot `iotedge logs edgeHub` . A verziószámot a rendszer a naplókban deklarálja a modul indításakor.
+Ha az IoT Edge egy régebbi verzióját futtatja, az új verzióra történő frissítés megoldhatja a problémát. Az `iotedge check` eszköz ellenőrzi, hogy a IoT Edge biztonsági démon a legújabb verzió-e, de nem ellenőrzi az IoT Edge hub és az ügynök moduljainak verzióját. Az eszközön futó futásidejű modulok verziójának vizsgálatához használja a parancsokat és a `iotedge logs edgeAgent` parancsot `iotedge logs edgeHub` . A verziószámot a rendszer a naplókban határozza meg a modul indításakor.
 
 Az eszköz frissítésével kapcsolatos utasításokért tekintse meg [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakört.
 

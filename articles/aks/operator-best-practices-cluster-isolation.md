@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003111"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök elkülönítéséhez az Azure Kubernetes szolgáltatásban (ak)
@@ -54,7 +54,7 @@ A fürtök elkülönítésének közös megközelítése a fizikailag különál
 
 A fizikailag különálló fürtök általában alacsony hüvelyi sűrűségtel rendelkeznek. Mivel az egyes csapatok vagy munkaterhelések saját AK-fürttel rendelkeznek, a fürt gyakran túl sok számítási erőforrással van kiépítve. Gyakran kevés hüvely van ütemezve ezeken a csomópontokon. A csomópontokon a nem használt kapacitás nem használható más csapatok által a fejlesztés alatt álló alkalmazásokhoz és szolgáltatásokhoz. Ezek a felesleges erőforrások a fizikailag különálló fürtök további költségeihez járulnak hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a fürt elkülönítésére koncentrál. Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
 

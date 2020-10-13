@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081151"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Adategységek kezelése Azure Data Catalogban
@@ -63,5 +63,5 @@ Az Adateszközök tulajdonosai vezérelhetik a saját adategységek láthatósá
 ## <a name="catalog-administrators"></a>Katalógus-rendszergazdák
 Data Catalog a rendszergazdák a katalógusban lévő összes eszköz tulajdonosát implicit módon közösen használják. Az eszközök tulajdonosai nem tudják eltávolítani a rendszergazdák láthatóságát, a rendszergazdák pedig kezelhetik a katalógusban lévő összes adategység tulajdonosát és láthatóságát.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A Data Catalog közösségi modell metaadatok és adategységek felderítése lehetővé teszi a katalógus összes felhasználója számára, hogy hozzájáruljanak és felfedezzék. A Data Catalog standard kiadása úgy van kialakítva, hogy az adott adategységek láthatóságának és felhasználásának korlátozásával a tulajdonjogot és a felügyeletet.

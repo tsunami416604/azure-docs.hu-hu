@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327221"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
@@ -27,7 +27,7 @@ A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hit
 
 A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehetővé tesz:
 
-|Erőforrás|Rendeltetés|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
+|Erőforrás|Cél|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
 |--|--|--|--|
 |Erőforrás létrehozása|Lehetővé teszi az alkalmazások létrehozását, kezelését, betanítását, tesztelését és közzétételét. [Hozzon létre egy Luis authoring-erőforrást](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) , ha Luis alkalmazásokat programtically vagy a Luis portálról szeretne készíteni. Először [át kell telepítenie a Luis-fiókját](luis-migration-authoring.md#what-is-migration) , hogy az Azure authroring-erőforrásokat az alkalmazáshoz lehessen kapcsolni. A szerzői erőforrás engedélyeinek szabályozásához rendeljen személyeket [a közreműködő szerepkörhöz](#contributions-from-other-authors). <br><br> A LUIS authoring Resource egy rétegbeli avialable rendelkezik:<br> * **Ingyenes F0 authoring Resource** , amely 1 millió ingyenes szerzői tranzakciót és 1000 ingyenes tesztelési előrejelzési végpontot biztosít havonta. |`LUIS.Authoring`|`Cognitive Services`|
 |Előrejelzési erőforrás| A LUIS-alkalmazás közzététele után az előrejelzési erőforrás/kulcs használatával kérdezheti le az előrejelzési végpontok kéréseit. Hozzon létre egy LUIS-előrejelzési erőforrást, mielőtt az ügyfélalkalmazás a szerzői vagy a kezdő erőforrás által biztosított 1 000-kérelmekre vonatkozó előrejelzéseket kér. <br><br> Az előrejelzési erőforráshoz két réteg avialble:<br> * **Ingyenes F0 előrejelzési erőforrás** , amely 10 000 ingyenes előrejelzési végpontot biztosít havonta<br> * **Standard S0 előrejelzési erőforrás** , amely a fizetős szint. [További információ a díjszabásról](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|

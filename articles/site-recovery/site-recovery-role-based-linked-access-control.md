@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927164"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC)
@@ -41,7 +41,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 > [!NOTE]
 > Ha engedélyezi a replikációt egy Azure-beli virtuális gép számára, és engedélyezni szeretné a Site Recovery számára a frissítések kezelését, akkor a replikáció engedélyezésekor érdemes lehet új Automation-fiókot is létrehoznia, ebben az esetben a tárolóval megegyező előfizetésben is létre kell hoznia egy Automation-fiókot.
 
-| **Erőforrás típusa** | **Üzembe helyezési modell** | **Engedély** |
+| **Erőforrás típusa** | **Üzemi modell** | **Engedély** |
 | --- | --- | --- |
 | Compute | Resource Manager | Microsoft. számítás/availabilitySets/olvasás |
 |  |  | Microsoft. számítás/virtualMachines/olvasás |
@@ -53,7 +53,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft. ClassicCompute/virtualMachines/READ |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/delete |
-| Hálózat | Resource Manager | Microsoft. Network/networkInterfaces/READ |
+| Network (Hálózat) | Resource Manager | Microsoft. Network/networkInterfaces/READ |
 |  |  | Microsoft. Network/networkInterfaces/Write |
 |  |  | Microsoft. Network/networkInterfaces/delete |
 |  |  | Microsoft. Network/networkInterfaces/csatlakozás/művelet |
@@ -71,7 +71,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 
 Érdemes lehet a "Virtual Machine közreműködő" és a "klasszikus virtuálisgép-közreműködő" [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használni a Resource Manager és a klasszikus üzemi modellekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): első lépések a RBAC a Azure Portal.
 * Ismerje meg, hogyan kezelheti a hozzáférést a következővel:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)

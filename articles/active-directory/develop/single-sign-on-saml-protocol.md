@@ -1,7 +1,7 @@
 ---
 title: Azure egyszeri bejelentkezéses SAML-protokoll
 titleSuffix: Microsoft identity platform
-description: Ez a cikk az egyszeri bejelentkezési (SSO) SAML protokollt ismerteti Azure Active Directory
+description: Ez a cikk az egyszeri Sign-On (SSO) SAML protokollt ismerteti Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: kenwith
@@ -15,19 +15,19 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118450"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
+# <a name="single-sign-on-saml-protocol"></a>Egy Sign-On SAML protokoll
 
-Ez a cikk az SAML 2,0 hitelesítési kéréseit és válaszait ismerteti, amelyeket Azure Active Directory (Azure AD) támogat az egyszeri bejelentkezéshez (SSO).
+Ez a cikk az SAML 2,0 hitelesítési kéréseit és válaszait ismerteti, amelyeket Azure Active Directory (Azure AD) támogat egyetlen Sign-On (SSO) számára.
 
 Az alábbi protokoll-diagram az egyszeri bejelentkezési sorozatot ismerteti. A Cloud Service (a szolgáltató) egy HTTP-átirányítási kötést használ a `AuthnRequest` (hitelesítési kérelem) elem Azure ad-be (az identitás-szolgáltatóhoz) való átadásához. Az Azure AD ezután egy HTTP Post-kötést használ egy `Response` elem a Cloud Service-be való közzétételéhez.
 
-![Egyszeri bejelentkezés (SSO) munkafolyamata](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![Egyszeri Sign-On (SSO) munkafolyamat](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
 > Ez a cikk az SAML egyszeri bejelentkezéshez való használatát ismerteti. Az egyszeri bejelentkezés egyéb módjaival kapcsolatos további információkért (például az OpenID Connect vagy az integrált Windows-hitelesítés használatával) tekintse meg az [egyszeri bejelentkezést a Azure Active Directory lévő alkalmazásokba](../manage-apps/what-is-single-sign-on.md).
@@ -48,7 +48,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Paraméter | Típus | Leírás |
 | --- | --- | --- |
-| ID | Kötelező | Az Azure AD ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
+| ID (Azonosító) | Kötelező | Az Azure AD ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
 | Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
 | IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](/dotnet/standard/base-types/standard-date-and-time-format-strings)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
 | AssertionConsumerServiceUrl | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie az `RedirectUri` Azure ad-ban található felhőalapú szolgáltatással. |
@@ -104,7 +104,7 @@ Ha meg van adni, ne adja meg az `ProxyCount` attribútumot `IDPListOption` vagy 
 ### <a name="subject"></a>Tárgy
 Ne tartalmazzon egy `Subject` elemet. Az Azure AD nem támogatja a kérelem tárgyának megadását, és hibaüzenetet ad vissza, ha van ilyen.
 
-## <a name="response"></a>Válasz
+## <a name="response"></a>Reagálás
 Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a Cloud Service-nek. A sikeres bejelentkezési kísérletre adott válasz az alábbi példához hasonlóan néz ki:
 
 ```
@@ -150,7 +150,7 @@ Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a C
 </samlp:Response>
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 Az `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azure AD beállítja `ID` az `Version` elemet és az `IssueInstant` értékeket a `Response` elemben. A következő attribútumokat is beállítja:
 
@@ -273,7 +273,7 @@ Ez a tulajdonossal vagy a felhasználóval kapcsolatos jogcímeket tartalmaz. A 
 ```        
 
 * **Név jogcím** – az `Name` attribútum () értéke a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` hitelesített felhasználó egyszerű felhasználóneve, például: `testuser@managedtenant.com` .
-* **Típusinformáció jogcím** – az `ObjectIdentifier` attribútum () értéke az `http://schemas.microsoft.com/identity/claims/objectidentifier` `ObjectId` Azure ad-ben a hitelesített felhasználót jelképező címtár-objektum. `ObjectId`a hitelesített felhasználó nem módosítható, globálisan egyedi, és használható biztonságos azonosítója.
+* **Típusinformáció jogcím** – az `ObjectIdentifier` attribútum () értéke az `http://schemas.microsoft.com/identity/claims/objectidentifier` `ObjectId` Azure ad-ben a hitelesített felhasználót jelképező címtár-objektum. `ObjectId` a hitelesített felhasználó nem módosítható, globálisan egyedi, és használható biztonságos azonosítója.
 
 #### <a name="authnstatement"></a>AuthnStatement
 

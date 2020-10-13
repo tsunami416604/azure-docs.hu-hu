@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 2c2fbb3352b159ce9f5231c56399638a1d393366
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513859"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL videók
@@ -43,4 +43,4 @@ Azure Database for PostgreSQL és Azure Database for MySQL a közösségi kiadá
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 [Megnyitás a Channel 9 csatornán](https://channel9.msdn.com/events/Build/2017/B8045)
 
-Ebben a videóban a május 2017 Microsoft Build konferencián megismerheti a Microsoft felügyelt MySQL-ajánlatát az Azure-ban. A videó végigvezeti a Microsoft által az Azure-beli nyílt forráskódú adatbázis-rendszerek támogatásához szükséges stratégián. A videó bemutatja, hogy mit jelent Önnek fejlesztőként a MySQL-t használó alkalmazások fejlesztéséhez vagy üzembe helyezéséhez az Azure-ban. Ez a videó a szolgáltatás architektúrájának áttekintését mutatja be, és azt mutatja be, Azure Database for MySQL integrálva van más Azure-szolgáltatásokkal, például Web Appsokkal.
+Ebben a videóban a május 2017 Microsoft Build konferencián megismerheti a Microsoft felügyelt MySQL-ajánlatát az Azure-ban. A videó végigvezeti a Microsoft által az Azure-ban Open-Source adatbázis-rendszerek támogatásához szükséges stratégián. A videó bemutatja, hogy mit jelent Önnek fejlesztőként a MySQL-t használó alkalmazások fejlesztéséhez vagy üzembe helyezéséhez az Azure-ban. Ez a videó a szolgáltatás architektúrájának áttekintését mutatja be, és azt mutatja be, Azure Database for MySQL integrálva van más Azure-szolgáltatásokkal, például Web Appsokkal.
