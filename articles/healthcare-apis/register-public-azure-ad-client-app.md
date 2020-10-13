@@ -8,18 +8,20 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f39fb5766965e3881068bd6d2fd3a8142f9eb2ac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629080"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975909"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Nyilvános ügyfélalkalmazás regisztrálása Azure Active Directory
 
 Ebből a cikkből megtudhatja, hogyan regisztrálhat egy nyilvános alkalmazást Azure Active Directory.  
 
 Az ügyfélalkalmazások regisztrációja olyan alkalmazások Azure Active Directory, amelyek a felhasználók nevében hitelesíthetők és kérhetnek API-engedélyeket. A nyilvános ügyfelek olyan alkalmazások, mint például a mobil alkalmazások és az egyoldalas JavaScript-alkalmazások, amelyek nem tudják bizalmasan megőrizni a titkokat. Az eljárás hasonló a [bizalmas ügyfél regisztrálásához](register-confidential-azure-ad-client-app.md), de mivel a nyilvános ügyfelek nem megbízhatók egy alkalmazás titkos kódjának tárolására, nem kell hozzáadnia egyet.
+
+A gyors útmutató általános információkat nyújt az [alkalmazások Microsoft Identity platformmal való regisztrálásáról](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 ## <a name="app-registrations-in-azure-portal"></a>Alkalmazásregisztrációk a Azure Portal
 
@@ -38,6 +40,18 @@ Az ügyfélalkalmazások regisztrációja olyan alkalmazások Azure Active Direc
 2. Adja meg a válasz URL-címét. A válasz URL-címe, ahol a hitelesítési kódokat a rendszer visszaadja az ügyfélalkalmazás számára. Hozzáadhat további válasz URL-címeket, és szerkesztheti a meglévőket is.
 
     ![Azure Portal. Új nyilvános alkalmazás regisztrálása.](media/how-to-aad/portal-aad-register-new-app-registration-PUB-CLIENT-NAME.png)
+
+
+[Asztali](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), [mobil](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-app-registration) vagy [egylapos](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) alkalmazás konfigurálása nyilvános alkalmazásként:
+
+1. A [Azure Portal](https://portal.azure.com) **Alkalmazásregisztrációk**területen válassza ki az alkalmazást, majd válassza a **hitelesítés**lehetőséget.
+
+2. Válassza a **Speciális beállítások**  >  **alapértelmezett ügyfél típusa**lehetőséget. Ha **nyilvános ügyfélként**kívánja kezelni az alkalmazást, válassza az **Igen**lehetőséget.
+
+3. Egyoldalas alkalmazás esetén válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** lehetőséget az implicit folyamat engedélyezéséhez.
+
+   - Ha az alkalmazás bejelentkezik a felhasználók között, válassza az **azonosító tokenek**lehetőséget.
+   - Ha az alkalmazásnak egy védett webes API-t is meg kell hívnia, válassza a **hozzáférési jogkivonatok**lehetőséget.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
@@ -60,7 +74,7 @@ Ha a cikkben regisztrált alkalmazás és a FHIR-kiszolgáló ugyanabban az Azur
 
 Ha az ügyfélalkalmazás egy másik Azure AD-bérlőben van konfigurálva a FHIR-kiszolgálóról, akkor frissítenie kell a **szolgáltatót**. A FHIR készült Azure API-ban a szolgáltatót a beállítások – > hitelesítés területen állíthatja be. Állítsa be a szolgáltatót a következőre: **https://login.microsoftonline.com/\<TENANT-ID>** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy nyilvános ügyfélalkalmazás Azure Active Directoryban. Ezt követően tesztelje a hozzáférést a FHIR-kiszolgálóhoz a Poster használatával.
  

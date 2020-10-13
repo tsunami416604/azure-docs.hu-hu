@@ -2,7 +2,7 @@
 title: Felfüggesztett tartományok a Azure AD Domain Servicesban | Microsoft Docs
 description: Ismerkedjen meg az Azure AD DS felügyelt tartományának különböző állapotával és a felfüggesztett tartomány visszaállításával.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86223397"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967698"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Az állapot megismerése és a felfüggesztett tartományok feloldása Azure Active Directory Domain Services
 
@@ -118,7 +118,7 @@ Ha egy felügyelt tartomány belép a *törölt* állapotba, a következő visel
 * A felügyelt tartomány nem állítható vissza. Az Azure AD DS újrafelhasználásához létre kell hoznia egy helyettesítő felügyelt tartományt.
 * A törlése után a rendszer nem számláz a felügyelt tartományhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt tartomány Kifogástalan állapotba állításához és a felfüggesztése kockázatának csökkentéséhez Ismerje meg a [felügyelt tartományhoz tartozó riasztások feloldását][resolve-alerts].
 

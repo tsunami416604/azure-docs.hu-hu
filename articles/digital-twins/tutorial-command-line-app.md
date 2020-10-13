@@ -8,10 +8,10 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297664"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
@@ -85,18 +85,18 @@ Mielőtt továbblép, ügyeljen arra, hogy mentse a fájlt.
 
 Most, hogy meghatározta a modellt, a további lépések a minta alkalmazás használatával működnek együtt az Azure Digital Twins-példánnyal. Futtassa a projektet ezzel a gombbal az eszköztáron:
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="A Visual Studio Start gombja (SampleClientApp projekt)":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 Megnyílik a konzol ablaka, majd hajtsa végre a hitelesítést, és várjon egy parancsot. 
 * A hitelesítés a böngészőben történik: az alapértelmezett webböngésző egy hitelesítési kérdéssel fog megnyílni. Ezzel a kérdéssel jelentkezhet be az Azure-beli hitelesítő adataival. Ezután lezárhatja a böngésző lapja vagy ablakát.
 
 Itt látható egy képernyőkép arról, hogy a Project Console hogyan néz ki:
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Üdvözlő üzenet a parancssori alkalmazásból":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 > [!TIP]
 > A projekttel használható összes lehetséges parancs listáját a `help` projekt konzolon írja be, majd nyomja le az ENTER billentyűt.
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="A Súgó parancs kimenete":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 Az oktatóanyag további lépéseinek megtartása érdekében futtassa a Project Console-t.
 
@@ -117,7 +117,7 @@ A kimenetnek jeleznie kell, hogy a modellek sikeresen létrejöttek.
 
 Ellenőrizze, hogy a modellek létrejöttek-e a parancs futtatásával `GetModels true` . Ez lekérdezi az Azure Digital Twins-példányt minden feltöltött modellhez, és kinyomtatja a teljes információt. Keresse meg a szerkesztett *Room* modellt az eredmények között:
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="A GetModels eredményei, amely a frissített helyiség modelljét mutatja":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 #### <a name="errors"></a>Hibák
 
@@ -165,7 +165,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 A parancsok kimenetének jeleznie kell, hogy az ikrek sikeresen létrejöttek. 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="A CreateDigitalTwin parancsok eredményeiből származó részlet, amely az floor0, a floor1, a room0 és a room1 mutatja":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 Azt is ellenőrizheti, hogy az ikrek létrejöttek-e a `Query` parancs futtatásával. Ez a parancs lekérdezi az Azure Digital Twins-példányt az összes olyan digitális Twins esetében, amelyet tartalmaz. Az eredmények között keresse meg a *floor0*, a *floor1*, a *room0*és a *room1* ikreket.
 
@@ -205,15 +205,7 @@ CreateRelationship floor1 contains room1 relationship1
 
 A parancsok kimenete megerősíti, hogy a kapcsolatok sikeresen létrejöttek:
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="A CreateRelationship parancsok eredményeiből származó részlet, amely a relationship0 és a relationship1 mutatja":::
-
-Az alábbi parancsokkal is ellenőrizheti a kapcsolatokat, amelyek az Azure Digital Twins-példányban lévő kapcsolatokat kérdezik le.
-* Ha meg szeretné tekinteni az egyes emeletek összes kapcsolatát (az egyik oldalról a kapcsolatokat tekinti meg),
-    ```cmd/sh
-    GetRelationships floor0
-    GetRelationships floor1
-    ```
-* Az egyes helyiségekben érkező összes kapcsolat megtekintéséhez (a "másik" oldal kapcsolatának megtekintése)
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz" oldal kapcsolatának megtekintése)
     ```cmd/sh
     GetIncomingRelationships room0
     ```
@@ -225,7 +217,7 @@ Az alábbi parancsokkal is ellenőrizheti a kapcsolatokat, amelyek az Azure Digi
 
 Az ebben az oktatóanyagban beállított ikrek és kapcsolatok a következő koncepcionális diagramot alkotják:
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="A relationship0 és a room0 között összekapcsolt floor0, valamint a relationship1-room1 keresztül csatlakoztatott floor1" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>A Twin gráf lekérdezése a környezeti kérdések megválaszolásához
 
@@ -239,7 +231,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     Ez lehetővé teszi, hogy a környezetét egy pillantással átvegye, és győződjön meg róla, hogy minden úgy képviselteti magát, mintha az Azure digitális Ikreken belül lenne. Ennek eredménye az, hogy az egyes digitális Twin termékek a részleteket tartalmazzák. Íme egy részlet:
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="A kettős lekérdezés részleges eredménye, amely megjeleníti a room0 és a floor1":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
     >[!NOTE]
     >A minta projektben a parancs a `Query` további argumentumok nélkül is megegyezik `Query SELECT * FROM DIGITALTWINS` . Ha a példányban lévő összes ikreket le szeretné kérdezni a [lekérdezési API](how-to-use-apis-sdks.md) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával, használja a hosszú (teljes) lekérdezést.
@@ -252,7 +244,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     A lekérdezés bizonyos típusú ikrekre korlátozható, így pontosabb információkhoz juthat a megjelenített adatokról. Ennek eredménye a *room0* és a *room1*, de nem jeleníti meg a *floor0* vagy a *floor1* (mivel ezek padlók **, nem szobák** ).
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="A modell lekérdezésének eredménye, amely csak a room0 és a room1 jeleníti meg":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 * **Mi a *floor0*összes Terme?** (lekérdezés kapcsolat alapján)
 
@@ -262,7 +254,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     A diagramon létesített kapcsolatok alapján lekérdezheti a lekérdezéseket, így információkat kaphat arról, hogy az ikrek hogyan vannak csatlakoztatva, vagy hogy a lekérdezés egy bizonyos területen legyen korlátozva. Csak *room0* van a *floor0*, így az egyetlen hely az eredményben.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="A room0 mutató kapcsolati lekérdezés eredményei":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 * **Mi a környezetem minden olyan kisvárosa, amely 75 fölötti hőmérséklettel rendelkezik?** (lekérdezés tulajdonság alapján)
 
@@ -272,7 +264,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     A diagramot a tulajdonságok alapján kérdezheti le, hogy különböző kérdésekre válaszoljon, beleértve a kiugró értékek megkeresését a környezetben, amelyeknek szüksége lehet a beavatkozásra. Más összehasonlító operátorok (,,, *<* *>* *=* vagy *! =*) is támogatottak. az eredmények itt jelennek meg, mert a *room1* 80-as hőmérséklettel rendelkezik.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="A tulajdonság-lekérdezés eredménye, amely csak a room1 jeleníti meg":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 * **Mi a *floor0* található összes szoba 75-nál magasabb hőmérséklettel?** (összetett lekérdezés)
 
@@ -282,7 +274,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     Azt is megteheti, hogy kombinálja a korábbi lekérdezéseket, mint például az SQL-ben, az olyan kombinációs operátorok használatával, mint a `AND` , `OR` `NOT` . A lekérdezés `AND` azt használja, hogy az előző lekérdezés a két hőmérséklet konkrétabb legyen. Az eredmény mostantól csak a 75-nál nagyobb hőmérsékletű szobákat tartalmazza, amelyek a *floor0*vannak – ami ebben az esetben egyikük sem. Az eredményhalmaz üres.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

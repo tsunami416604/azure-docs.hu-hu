@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576642"
 ---
 # <a name="override-materials-during-model-conversion"></a>Anyagok felülírása a modellátalakítás során
@@ -194,7 +194,7 @@ Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A és a ese
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Színes anyagok](../../overview/features/color-materials.md)
 * [PBR-anyagok](../../overview/features/pbr-materials.md)

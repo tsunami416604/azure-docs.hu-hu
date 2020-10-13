@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665191"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977867"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -34,7 +34,8 @@ Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők a
 |                   | Csoportos hívás elhelyezése kettőnél több felhasználóval (legfeljebb 350 felhasználó)                                                       | ✔️   | ✔️            | ✔️ 
 |                   | Egy-az-egyhez hívás előléptetése két felhasználóval egy csoportos hívásban több mint két felhasználóval                                 | ✔️   | ✔️            | ✔️ 
 |                   | Csatlakozás egy csoportos híváshoz az elindítása után                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Egy másik VoIP-résztvevő meghívása egy folyamatos csoportos híváshoz                                                       | ✔️   | ✔️            | ✔️ 
+|                   | Egy másik VoIP-résztvevő meghívása egy folyamatos csoportos híváshoz                                                       | ✔️   | ✔️            | ✔️
+|                   | Videó be-és kikapcsolása                                                         | ✔️   | ✔️            | ✔️ 
 |                   | Mikrofon némítása/feloldása                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | Váltás a kamerák között                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | Helyi tartás/letartás                                                                                                  | ✔️   | ✔️            | ✔️           
@@ -70,12 +71,12 @@ A következő táblázat a jelenleg elérhető támogatott böngészők és verz
 
 * * Vegye figyelembe, hogy a Safari 13.1 + verziója támogatott. A Safari macOS-hez készült kimenő videó még nem támogatott, de iOS rendszeren támogatott. A kimenő képernyő megosztása csak asztali iOS rendszeren támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 - Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md)
 - Tudnivalók a [hívási típusokról](../voice-video-calling/about-call-types.md)
 - [A PSTN-megoldás megtervezése](../telephony-sms/plan-solution.md)

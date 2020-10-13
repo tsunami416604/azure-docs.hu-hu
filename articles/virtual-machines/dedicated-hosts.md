@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373090"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979019"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
 
@@ -122,7 +122,7 @@ A virtuális gépeket támogató infrastruktúra esetenként frissíthető a meg
 
 A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyhatják a dedikált gazdagépeken ütemezett rendszeres szoftverfrissítéseket, majd egy 35 napos időszakon belül alkalmazza azt a választásuk időpontjában.
 
-További információ: [a platform frissítéseinek kezelése a karbantartási ellenőrzéssel](https://docs.microsoft.com/azure/virtual-machines/maintenance-control).
+További információ: [a platform frissítéseinek kezelése a karbantartási ellenőrzéssel](./maintenance-control.md).
 
 ## <a name="capacity-considerations"></a>Kapacitással kapcsolatos szempontok
 
@@ -142,7 +142,7 @@ A dedikált gazdagép kiépítés a dedikált gazdagép-vCPU és a virtuálisgé
 
 ![Képernyőkép a portál használati és kvóták oldaláról](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-További információ: [virtuális gépek vCPU kvótái](/azure/virtual-machines/windows/quotas).
+További információ: [virtuális gépek vCPU kvótái](./windows/quotas.md).
 
 Az ingyenes próbaverzió és az MSDN-előfizetések nem rendelkeznek kvótával az Azure dedikált gazdagépekhez.
 
@@ -172,7 +172,7 @@ A méretek és a hardver típusok régiónként eltérőek. További informáci�
 
 Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok lesznek visszaadva a gazdagép lekérdezésekor:
 
-| Állapot   | Leírás       |
+| Állapot   | Description       |
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |
@@ -182,7 +182,7 @@ Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A dedikált gazdagépeket [Azure PowerShell](./windows/dedicated-hosts-powershell.md), a [portál](./windows/dedicated-hosts-portal.md)és az [Azure CLI](./linux/dedicated-hosts-cli.md)használatával helyezheti üzembe.
+- A dedikált gazdagépeket [Azure PowerShell](./windows/dedicated-hosts-powershell.md), a [portál](./dedicated-hosts-portal.md)és az [Azure CLI](./linux/dedicated-hosts-cli.md)használatával helyezheti üzembe.
 
 - [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
 

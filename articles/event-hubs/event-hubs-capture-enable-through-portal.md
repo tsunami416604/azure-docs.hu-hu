@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető az események rög
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613577"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubs használatával streamelt események rögzítésének engedélyezése
@@ -96,7 +96,7 @@ A Capture-t olyan meglévő eseményközpontokon konfigurálhatja, amelyek az Ev
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Event Hub Capture-ről: [Az Event Hubs Capture áttekintése][capture-overview].
 - Az Azure Resource Manager-sablonok használatával is konfigurálhatja az Event Hubs Capture-t. További információkért lásd: [Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).

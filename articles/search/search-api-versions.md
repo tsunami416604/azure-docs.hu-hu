@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761719"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951579"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -41,7 +41,7 @@ Emellett az Azure Cognitive Search .NET SDK-nál régebbi, az [**3.0.0-RC**](htt
 
 Ezen időpont után az elavult REST API vagy SDK-verziót használó alkalmazások már nem fognak működni, és frissíteni kell őket. Ahogy az ilyen típusú változások esetében is, 12 hónapos felmondást adunk, így Önnek megfelelő idő van a módosításra.
 
-Ha továbbra is szeretné használni [REST API](search-api-migration.md) az Azure Cognitive Search-t, telepítse át a meglévő kódot, amely a 2020-06-30-es vagy újabb SDK-ra vonatkozik, 2020. október 15-én [REST API](https://docs.microsoft.com/rest/api/searchservice/) .  Ha bármilyen kérdése van a legújabb verzióra való frissítéssel kapcsolatban, küldjön e-mailt azuresearch_contact@microsoft.com május 15-én, 2020-ig, hogy elegendő idő legyen a kód frissítésére.
+Ha továbbra is szeretné használni [REST API](search-api-migration.md) az Azure Cognitive Search-t, telepítse át a meglévő kódot, amely a 2020-06-30-es vagy újabb SDK-ra vonatkozik, 2020. október 15-én [REST API](/rest/api/searchservice/) .  Ha bármilyen kérdése van a legújabb verzióra való frissítéssel kapcsolatban, küldjön e-mailt azuresearch_contact@microsoft.com május 15-én, 2020-ig, hogy elegendő idő legyen a kód frissítésére.
 
 ## <a name="rest-apis"></a>REST API-k
 
@@ -74,8 +74,8 @@ Keresési szolgáltatás létrehozása és konfigurálása, valamint az API-kulc
 
 | Verziója&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Állapot | Leírás |
 |-------------------------|--------|------------------------------|
-| [Felügyelet 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | A felügyeleti REST API-k legújabb stabil kiadása. Általánosan elérhető megosztott privát kapcsolati erőforrás-támogatást biztosít minden kimenő hozzáférésű erőforráshoz, kivéve az előzetes verzióban feljegyzett |
-| [Felügyelet 2020-08-01 – előzetes verzió](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | Előnézet  | Jelenleg előzetes verzióban érhető el: a megosztott magánhálózati erőforrás-támogatás Azure Functions és Azure Database for MySQL. |
+| [Felügyelet 2020-08-01](/rest/api/searchmanagement/) | Stable | A felügyeleti REST API-k legújabb stabil kiadása. Általánosan elérhető megosztott privát kapcsolati erőforrás-támogatást biztosít minden kimenő hozzáférésű erőforráshoz, kivéve az előzetes verzióban feljegyzett |
+| [Felügyelet 2020-08-01 – előzetes verzió](/rest/api/searchmanagement/index-preview) | Előnézet  | Jelenleg előzetes verzióban érhető el: a megosztott magánhálózati erőforrás-támogatás Azure Functions és Azure Database for MySQL. |
 | Management 2020-03-13  | Stable | Privát [végpontot](service-create-private-endpoint.md) biztosít a privát kapcsolaton keresztül, valamint az új szolgáltatásokra vonatkozó [hálózati IP-szabályokat](service-configure-firewall.md) . További információkért tekintse meg ezt a [hencegő specifikációt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
 | Management 2019-10-01-Preview | Előnézet  | A listában nem szerepelnek előzetes verziójú funkciók. Ez az előzetes verzió a 2020-03-13-es működéssel egyenértékű. További információkért tekintse meg ezt a [hencegő specifikációt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
 | Felügyelet 2015-08-19  | Stable | A felügyeleti REST API-k első általánosan elérhető verziója. Biztosítja a szolgáltatás üzembe helyezését, a vertikális felskálázást és az API-kulcsok kezelését. További információkért tekintse meg ezt a [hencegő specifikációt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |

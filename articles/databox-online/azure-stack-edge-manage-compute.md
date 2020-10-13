@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904441"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952148"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Számítások kezelése a Azure Stack Edge Pro-ban
 
@@ -107,7 +107,7 @@ A Azure Portal az alábbi lépéseket végrehajtva távolítsa el az eszköz meg
 
 2. Ha eltávolítja a számítási konfigurációt, újra kell konfigurálnia az eszközt abban az esetben, ha újra kell használnia a számítást. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget.
 
-    ![Válassza a számítás eltávolítása lehetőséget.](media/azure-stack-edge-manage-compute/remove-compute-2.png)
+    ![Válassza a 2. számítás törlése elemet.](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-eszköz szinkronizálása és IoT Edge eszköz-hozzáférési kulcsok
 
@@ -129,6 +129,6 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [kezelheti az Edge számítási hálózatot Azure Portal használatával](azure-stack-edge-extend-compute-access-modules.md).

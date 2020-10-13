@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619151"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
@@ -142,7 +142,7 @@ Ezen a ponton az alkalmazás általában az eredeti régióban fut, és most má
 
 2. Fedezze fel a helyreállítási erőforráscsoport erőforrásait.  
 
-3. Kattintson a contoso Concert Hall adatbázisára a _tenants1-DPT- &lt; User &gt; -Recovery_ Server kiszolgálón.  Kattintson a Geo-replikáció lehetőségre a bal oldalon. 
+3. Kattintson a contoso Concert Hall adatbázisára a _tenants1-DPT- &lt; User &gt; -Recovery_ Server kiszolgálón.  Kattintson Geo-Replication a bal oldalon. 
 
     ![Contoso Concert geo – replikálási hivatkozás](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -245,7 +245,7 @@ A helyreállítási folyamat befejezése után az alkalmazás és az összes bé
     
 4. Nyissa meg a _tenants2-DPT- &lt; User &gt; -Recovery_ SQL Servert.  Figyelje meg, hogy tartalmazza az adatbázis _hawthornhall_ és a _Pool1_rugalmas készletét.  A _hawthornhall_ -adatbázis rugalmas adatbázisként van konfigurálva a _Pool1_ rugalmas készletben.
 
-5. Térjen vissza az erőforráscsoporthoz, és kattintson a contoso Concert Hall adatbázisára a _tenants1-DPT- &lt; User &gt; -Recovery_ Server kiszolgálón. Kattintson a Geo-replikáció lehetőségre a bal oldalon.
+5. Térjen vissza az erőforráscsoporthoz, és kattintson a contoso Concert Hall adatbázisára a _tenants1-DPT- &lt; User &gt; -Recovery_ Server kiszolgálón. Kattintson Geo-Replication a bal oldalon.
     
     ![Contoso-adatbázis feladatátvétel után](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -301,7 +301,7 @@ Az alkalmazás úgy van kialakítva, hogy mindig a bérlői adatbázissal azonos
 
 Előfordulhat, hogy a bérlői adatbázisok a helyreállítási és az eredeti régiókban is elterjedhetnek. Az alkalmazás minden adatbázisnál megkeresi a régiót, amelyben az adatbázis található, a DNS-címkeresés a bérlői kiszolgáló nevében. SQL Database a kiszolgálónév egy alias. Az alias-kiszolgáló neve tartalmazza a régió nevét. Ha az alkalmazás nem ugyanabban a régióban található, mint az adatbázis, a a-kiszolgálóval megegyező régióban lévő példányra irányítja át. Az alkalmazás és az adatbázis közötti késleltetést az adott régióban lévő példányra irányítja át. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

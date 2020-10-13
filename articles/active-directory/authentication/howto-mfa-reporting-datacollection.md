@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03ec8eddf55c6b3e90b56501a2e3b657bef6fc8c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80653636"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964196"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication felhasználói adatgyűjtés
 
@@ -70,7 +70,7 @@ Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz has
 
 Aktiválások (a Microsoft Authenticator Mobile alkalmazásban lévő fiók aktiválását kísérli meg):
 - Felhasználónév
-- Fiók neve
+- Account Name
 - Timestamp
 - Aktivációs kód eredményének beolvasása
 - Sikeres aktiválás
@@ -188,6 +188,6 @@ A [Microsoft adatvédelmi portálon](https://portal.azure.com/#blade/Microsoft_A
 
 - Akár 30 napig is eltarthat, amíg a rendszer teljesen el nem távolítja az adatgyűjtést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [MFA-kiszolgáló jelentése](howto-mfa-reporting.md)

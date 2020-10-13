@@ -10,10 +10,10 @@ ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: be4bab10d369fcefe626bbe890acfff7fc7004b0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079064"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>Közvetlen társrendszer létrehozása vagy módosítása a PowerShell használatával
@@ -54,7 +54,7 @@ Ha szeretné, ezt az útmutatót az Azure [Portalon](howto-direct-portal.md)vég
 * [Exchange-társ létrehozása vagy módosítása a PowerShell használatával](howto-exchange-powershell.md)
 * [Örökölt Exchange-társ konvertálása Azure-erőforrásra a PowerShell használatával](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```powershell

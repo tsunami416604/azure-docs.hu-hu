@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650306"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964536"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
@@ -65,7 +65,7 @@ Az aktuális előzetes verzióban a következő korlátozások érvényesek, ami
 
 A hagyományos Active Directory tartományi szolgáltatások (AD DS) vagy Active Directory összevonási szolgáltatások (AD FS) (AD FS) hitelesítés közvetlenül a hálózaton történik, és a AD DS-infrastruktúra kezeli. A hibrid hitelesítéssel a felhasználók Ehelyett közvetlenül az Azure AD-be is jelentkezhetnek be.
 
-Ennek a hibrid hitelesítési módszernek a támogatásához szinkronizálja helyszíni AD DS környezetét az Azure AD-vel [Azure ad Connect][azure-ad-connect] és konfigurálja jelszó-kivonatoló szinkronizálás (PHS) vagy átmenő hitelesítés (PTA ESP) használatával.
+Ennek a hibrid hitelesítési módszernek a támogatásához szinkronizálja helyszíni AD DS környezetét az Azure AD-be a [Azure ad Connect][azure-ad-connect] használatával, és konfigurálja a jelszó-kivonatoló szinkronizálás (PHS) vagy a Pass-Through hitelesítés (PTA ESP) használatára.
 
 A felhasználó mindkét konfigurációs beállításban beküldi felhasználónevét és jelszavát az Azure AD-nek, amely ellenőrzi a hitelesítő adatokat, és kibocsát egy jegyet. Amikor a felhasználók bejelentkeznek az Azure AD-be, azzal megszűnik a szervezet számára a AD FS infrastruktúra üzemeltetése és kezelése.
 

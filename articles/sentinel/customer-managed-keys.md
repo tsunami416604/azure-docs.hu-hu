@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/19/2020
+ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141788"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951485"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyfél által felügyelt kulcsának beállítása
-
 
 Ez a cikk háttér-információkat és lépéseket tartalmaz az ügyfél által felügyelt kulcs (CMK) Azure Sentinelhez való konfigurálásához. A CMK lehetővé teszi, hogy az összes mentett vagy az Azure Sentinel számára továbbított adatokat titkosítsa az összes kapcsolódó tárolási erőforráson egy, az Ön által létrehozott vagy birtokolt Azure Key Vault kulccsal.
 
 > [!NOTE]
-> -   Az Azure Sentinel CMK funkció csak azokra az ügyfeleknek érhető el, akik **új** és ehhez a funkcióhoz férnek hozzá.Kapcsolatfelvételt kérhet azuresentinelCMK@microsoft.com , és a rendelkezésre álló kapacitás lehetőséggel a függőben lévő kérések jóváhagyása is megtörténik.
-> -   Az Azure Sentinel CMK funkció csak az USA keleti régiójában, az USA 2. nyugati régiójában és South-Central USA régióban érhető el.
-> -   A CMK képesség csak az 1 TB-ot vagy annál többet küldő ügyfelek számára érhető el. Ha az Azure-előfizetése CMK kiépítésére alkalmazza a Microsoftot, a további díjszabásról is tájékozódhat. További információ a [log Analytics díjszabásáról](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+> - Az Azure Sentinel CMK funkció csak az **új ügyfelek**számára érhető el.
+>
+> - A képességhez való hozzáférést az Azure-szolgáltatások regisztrációja szabályozza.A hozzáférést a kapcsolatfelvételsel kérheti le azuresentinelCMK@microsoft.com . A függőben lévő kérések jóváhagyása a rendelkezésre álló kapacitás alapján történik.
+>
+> - A CMK képesség csak az 1 TB-ot vagy annál többet küldő ügyfelek számára érhető el. Ha az Azure-előfizetése CMK kiépítésére alkalmazza a Microsoftot, a további díjszabásról is tájékozódhat. További információ a [log Analytics díjszabásáról](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>A CMK működése 
 
@@ -58,7 +59,7 @@ A CMK kiépítéséhez kövesse az alábbi lépéseket: 
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>1. lépés: Azure Key Vault létrehozása és a kulcs tárolása
 
-1.  [Hozzon létre Azure Key Vault erőforrást](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910), majd hozza létre vagy importálja az adattitkosításhoz használandó kulcsot.
+1.  [Hozzon létre Azure Key Vault erőforrást](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal), majd hozza létre vagy importálja az adattitkosításhoz használandó kulcsot.
     > [!NOTE]
     >  A kulcs és a hozzáférés biztosításához a Azure Key Vault helyreállítható kell konfigurálni.
 
@@ -128,7 +129,7 @@ A kulcs előző verzióját 24 óra elteltével letilthatja, vagy azt követően
 
 Ha ugyanazt a kulcsot használja az Azure Sentinel-ben és a Log Analytics-ben, akkor szükség van a kulcs elforgatására, explicit módon frissítenie kell a fürterőforrás Log Analytics az új Azure Key Vault kulcs verzióját. További információ: [Azure monitor CMK forgatása](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan állíthat be egy ügyfél által felügyelt kulcsot az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).

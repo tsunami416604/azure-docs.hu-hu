@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087354"
+ms.locfileid: "91931070"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára
 
@@ -56,7 +56,7 @@ A Storage-fiókok nyilvános hozzáférésének engedélyezéséhez vagy letilt�
 > [!NOTE]
 > A **AllowBlobPublicAccess** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a nyilvános hozzáférést, ha a tulajdonság értéke **Null** vagy **igaz**.
 >
-> A **AllowBlobPublicAccess** tulajdonság jelenleg csak az Azure nyilvános felhőben lévő Storage-fiókok esetében érhető el.
+> A **AllowBlobPublicAccess** tulajdonság az Azure nyilvános felhőben és Azure Government felhőkben található összes Storage-fiókhoz elérhető.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 

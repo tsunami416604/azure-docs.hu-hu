@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142536"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951910"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>A Azure Portal Azure Data Box önfelügyelt szállítás használata
 
@@ -41,7 +41,7 @@ Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt sz�
 2. A szállítási típus kiválasztásakor válassza az **önfelügyelt szállítási** lehetőséget. Ez a beállítás csak akkor érhető el, ha az előfeltételek szakaszban leírtak szerint támogatott régióban van.
 
 3. Miután megadta a szállítási címet, ellenőriznie kell, és el kell végeznie a rendelést.
-   ![Önállóan felügyelt szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Önállóan felügyelt szállítás 2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Ha az eszköz elkészült, és e-mailben értesítést kap, beütemezhet egy felvételt.
 
@@ -78,7 +78,7 @@ Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt sz�
 
 9. Ha a legördülő listáról kapott egy időpontot, a rendelésnek **készen** kell állnia az Azure-adatközpont állapotának fogadására a Azure Portal. Az eszköz visszaadásához kövesse az **ütemezett legördülő lista** utasításait.
 
-   ![Az engedélyezési kód megtekintése](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![A 2. engedélyezési kód megtekintése](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. Az azonosító és az engedélyezési kód ellenőrzése után a rendszer eldobta az eszközt az adatközpontban, a megrendelés állapotát meg kell **kapnia**.
 
@@ -86,6 +86,6 @@ Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt sz�
 
 11. Az eszköz fogadása után az Adatmásolás folytatódni fog. A másolás befejezésekor a rendelés elkészült.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure Data Boxszal](data-box-quickstart-portal.md)

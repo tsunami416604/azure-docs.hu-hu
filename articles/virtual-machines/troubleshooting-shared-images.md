@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328063"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978543"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák hibaelhárítása Az Azure-ban
 
@@ -79,7 +79,7 @@ Lehetséges okok:
 
 *A virtuális gépet vagy virtuálisgép-méretezési készletet próbáló felhasználónak nincs olvasási hozzáférése a rendszerkép verziójához.*
 
-Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg őket, hogy olvasási hozzáférést biztosítanak a rendszerkép vagy a szülő erőforrásaihoz (például a megosztott képkatalógushoz vagy a rendszerkép-definícióhoz) az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)használatával. 
+Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg őket, hogy olvasási hozzáférést biztosítanak a rendszerkép vagy a szülő erőforrásaihoz (például a megosztott képkatalógushoz vagy a rendszerkép-definícióhoz) az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md)használatával. 
 
 *A rendszerkép verziója nem található.*
 
@@ -91,7 +91,7 @@ Ellenőrizze, hogy a virtuális gép vagy virtuálisgép-méretezési csoport l�
 
 ## <a name="unable-to-share-resources"></a>Az erőforrások nem oszthatók meg
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)használatával megoszthatja a megosztott képtárat, a képdefiníciót és a rendszerkép verziójának erőforrásait az előfizetések között. 
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md)használatával megoszthatja a megosztott képtárat, a képdefiníciót és a rendszerkép verziójának erőforrásait az előfizetések között. 
 
 ## <a name="replication-is-slow"></a>A replikálás lassú
 
@@ -99,7 +99,7 @@ A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a
 
 ## <a name="azure-limits-and-quotas"></a>Az Azure-ra vonatkozó korlátok és kvóták 
 
-Az [Azure korlátai és kvótái](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
+Az [Azure korlátai és kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49a51886f921c9d37a33229b6db78479d7198bc
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857809"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938321"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services docs: Újdonságok szeptember 1-től 2020 – szeptember 30., 2020
 
@@ -42,51 +42,51 @@ ms.locfileid: "91857809"
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
+- [A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container?tabs=azure-stack-edge)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Azure Cognitive Services tároló képcímkék](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure Cognitive Services tároló képcímkék](https://docs.microsoft.com/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Nyelvi támogatás az űrlap-felismerőhöz](/azure/cognitive-services/form-recognizer/language-support.md)
-- [Betanítási adatkészlet létrehozása egyéni modellhez](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
-- [Nyugtákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Űrlap-felismerő titkosítása inaktív adatok esetén](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
-- [A Form Recognizer újdonságai](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [Névjegykártyákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [Mi a Form Recognizer?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Gyors útmutató: az űrlap-felismerő ügyféloldali kódtár használata](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [Nyelvi támogatás az űrlap-felismerőhöz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/language-support)
+- [Betanítási adatkészlet létrehozása egyéni modellhez](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/build-training-data-set)
+- [Nyugtákra vonatkozó fogalmak](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Űrlap-felismerő titkosítása inaktív adatok esetén](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)
+- [A Form Recognizer újdonságai](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/whats-new)
+- [Névjegykártyákra vonatkozó fogalmak](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-business-cards)
+- [Mi a Form Recognizer?](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/overview)
+- [Gyors útmutató: az űrlap-felismerő ügyféloldali kódtár használata](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/client-library)
 
 ## <a name="immersive-reader"></a>Modern olvasó
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Nyelvi támogatás a lebilincselő olvasó számára](/azure/cognitive-services/immersive-reader/language-support.md)
-- [Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
-- [Gyors útmutató: Ismerkedés a lebilincselő olvasóval](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
-- [Oktatóanyag: a részletes olvasó elindítása a Python Sample Project használatával](/azure/cognitive-services/immersive-reader/tutorial-python.md)
-- [Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Nyelvi támogatás a lebilincselő olvasó számára](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/language-support)
+- [Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)
+- [Gyors útmutató: Ismerkedés a lebilincselő olvasóval](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
+- [Oktatóanyag: a részletes olvasó elindítása a Python Sample Project használatával](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/tutorial-python)
+- [Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Útmutató: mérőszámok konfigurálása és Finomhangolás észlelése – konfiguráció](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
-- [Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Rövid útmutató: a megoldás testreszabásához használja a REST API-kat](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
-- [Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+- [Útmutató: mérőszámok konfigurálása és Finomhangolás észlelése – konfiguráció](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics)
+- [Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources)
+- [Rövid útmutató: a megoldás testreszabásához használja a REST API-kat](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/rest-api)
+- [Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/alerts)
 
 ## <a name="text-analytics"></a>Szövegelemzés
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Elnevezett entitások felismerésének használata a Text Analyticsban](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [A modell verziószámozása a Text Analytics API](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
-- [Gyors útmutató: az Text Analytics ügyféloldali kódtár használata](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
+- [Elnevezett entitások felismerésének használata a Text Analyticsban](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [A modell verziószámozása a Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/model-versioning)
+- [Gyors útmutató: az Text Analytics ügyféloldali kódtár használata](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk)
 
 ## <a name="community-contributors"></a>Közösségi közreműködők
 

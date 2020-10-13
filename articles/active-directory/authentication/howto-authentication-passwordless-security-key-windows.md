@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 01/30/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526986"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964740"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -91,12 +91,12 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Tallózással keresse meg **Microsoft Intune**  >  **eszköz konfigurációs**  >  **profiljainak**  >  **profil létrehozása**lehetőséget.
 1. Konfigurálja az új profilt a következő beállításokkal:
-   - Név: biztonsági kulcsok a Windows-bejelentkezéshez
+   - Név: biztonsági kulcsok Windows Sign-In
    - Leírás: lehetővé teszi, hogy a rendszer a Windows bejelentkezéskor használni kívánt biztonsági kulcsokat használja.
    - Platform: Windows 10 és újabb verziók
    - Profil típusa: Custom
    - Egyéni OMA-URI beállítások:
-      - Név: a Windows-bejelentkezéshez tartozó. biztonsági kulcsok bekapcsolása
+      - Név: Windows Sign-In esetén a következő biztonsági kulcsok bekapcsolása
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Adattípus: egész szám
       - Érték: 1

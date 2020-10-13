@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti az Azure Kubernetes Service-ben az Azure dev Spaces szolgáltatással végzett távoli hibakeresés folyamatait
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213382"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975042"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>A kód távoli hibakeresése az Azure dev Spaces működésével
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. Miután a projekt egy fejlesztői térben fut, az Azure dev Spaces lehetővé teszi, hogy egy futó alkalmazást az AK-ban csatoljon és hibakeresést végezzen.
 

@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Mon
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620290"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Az Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése
@@ -154,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Például:
+Példa:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -239,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Például:
+Példa:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -268,7 +268,7 @@ Ha a protokollt **http**-ként adta meg, a HTTP-kérelmek SSL/TLS biztonságos k
 
 ### <a name="configure-using-powershell"></a>Konfigurálás a PowerShell használatával
 
-Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Például:
+Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Példa:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -276,13 +276,13 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Konfigurálás a bash használatával
 
-Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Például:
+Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-címét vagy teljes tartománynevét és portszámát. Példa:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a figyelés engedélyezve van az arc-kompatibilis Kubernetes-fürt és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtéséhez, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
 

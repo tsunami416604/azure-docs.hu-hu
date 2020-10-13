@@ -2,17 +2,14 @@
 title: Trendek elemzése a Visual Studióban | Microsoft Docs
 description: Elemezze, ábrázolja és ismerje meg részletesebben a trendeket a Visual Studio Application Insights Telemetria funkciója segítségével.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b78dceed3c2a25d6afedf5fca348726d7aafd3d
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318164"
+ms.locfileid: "91932243"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
 Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos telemetria-eseményeinek időbeli változásait, ezzel segítve a problémák és hibák gyors azonosítását. A Trends részletesebb diagnosztikai adatokhoz nyújt hozzáférést, amelyek révén javíthat alkalmazásai teljesítményén, megkeresheti a kivételek forrását, és mélyebb betekintést nyerhet az egyéni eseményekbe is.
@@ -95,10 +92,7 @@ A Trends eszköz arra is képes, hogy megmutassa, mely eseménykörök számíta
 > 
 > 
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
-|  |  |
-| --- | --- |
-| **[Az Application Insights használata a Visual Studióban](./visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/visual-studio-trends/34.png) |
-| **[További adatok hozzáadása](./asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[Az Application Insights portál használata](./overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-trends/62.png) |
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
+* **[A Application Insights használata a Visual Studióban](./visual-studio.md)**. Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. 
+* **[A Application Insights portál használata](./overview-dashboard.md)**. Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f23e2c58ae25fefb8508474921e476163b33e79
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830444"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978424"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -26,7 +26,7 @@ Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer 
 > [!WARNING]
 > - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Részletekért lásd: [Azure Disk Encryption az Azure ad-vel (előző kiadás)](disk-encryption-overview-aad.md) . 
 > - Bizonyos javaslatok növelhetik az adatok, a hálózat vagy a számítási erőforrások használatát, ami további licenc-vagy előfizetési költségeket eredményezhet. Érvényes aktív Azure-előfizetéssel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az Azure-ban a támogatott régiókban.
-> - Jelenleg a 2. generációs virtuális gépek nem támogatják a Azure Disk Encryption. További részleteket a [2. generációs virtuális gépek támogatása az Azure](../windows/generation-2.md) -ban című témakörben talál.
+> - Jelenleg a 2. generációs virtuális gépek nem támogatják a Azure Disk Encryption. További részleteket a [2. generációs virtuális gépek támogatása az Azure](../generation-2.md) -ban című témakörben talál.
 
 A Linux rendszerű [virtuális gépek létrehozása és](disk-encryption-cli-quickstart.md) titkosítása az Azure CLI gyors üzembe helyezésével, valamint a [linuxos virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors üzembe helyezéssel néhány perc alatt elsajátíthatja a Linux Azure Disk Encryptionének alapjait.
 
@@ -46,7 +46,7 @@ Miután az operációsrendszer-lemez titkosítási folyamata befejeződött a Li
 
 A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
 
-Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](generation-2.md#generation-1-vs-generation-2-capabilities)) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-linux.md#unsupported-scenarios)című témakörben talál.
+Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](../generation-2.md#generation-1-vs-generation-2-capabilities) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-linux.md#unsupported-scenarios)című témakörben talál.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 

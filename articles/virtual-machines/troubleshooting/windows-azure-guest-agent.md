@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561261"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977065"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>A Windows Azure Guest Agent hibaelhárítása
 
-A Windows Azure Guest Agent egy virtuális gép (VM) ügynöke. Lehetővé teszi a virtuális gép számára, hogy kommunikáljon a háló vezérlővel (a mögöttes fizikai kiszolgáló, amelyen a virtuális gép fut) az IP-168.63.129.16. Ez egy virtuális nyilvános IP-cím, amely megkönnyíti a kommunikációt. További információ: [Mi az IP-168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+A Windows Azure Guest Agent egy virtuális gép (VM) ügynöke. Lehetővé teszi a virtuális gép számára, hogy kommunikáljon a háló vezérlővel (a mögöttes fizikai kiszolgáló, amelyen a virtuális gép fut) az IP-168.63.129.16. Ez egy virtuális nyilvános IP-cím, amely megkönnyíti a kommunikációt. További információ: [Mi az IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
- Az Azure-ba a helyszíni vagy a testreszabott rendszerkép használatával létrehozott virtuális gép nem rendelkezik telepített Windows Azure Guest Agent-ügynökkel. Ezekben a forgatókönyvekben manuálisan kell telepítenie a virtuálisgép-ügynököt. A virtuálisgép-ügynök telepítésével kapcsolatos további információkért lásd: az [Azure Virtual Machine Agent áttekintése](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
+ Az Azure-ba a helyszíni vagy a testreszabott rendszerkép használatával létrehozott virtuális gép nem rendelkezik telepített Windows Azure Guest Agent-ügynökkel. Ezekben a forgatókönyvekben manuálisan kell telepítenie a virtuálisgép-ügynököt. A virtuálisgép-ügynök telepítésével kapcsolatos további információkért lásd: az [Azure Virtual Machine Agent áttekintése](../extensions/agent-windows.md).
 
 A Windows Azure Guest Agent-ügynök sikeres telepítése után a következő, a virtuális gépen található Services. msc-ben felsorolt szolgáltatások láthatók:
  
@@ -74,7 +74,7 @@ Nyissa meg Azure Portal a virtuális gép tulajdonságlapját, és keresse meg a
 
     A Vezérlőpulton lépjen a **programok és szolgáltatások elemre** annak megállapításához, hogy telepítve van-e a Windows Azure Guest Agent szolgáltatás.
 
-Ha nem talál olyan csomagot, szolgáltatást és folyamatot, amelyen fut, és még nem látja a Windows Azure Guest Agent ügynököt a programok és szolgáltatások területen, próbálja meg [telepíteni a Windows Azure Guest Agent szolgáltatást](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). Ha a vendég ügynök telepítése nem megfelelő, a virtuálisgép- [ügynök offline állapotba](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)helyezhető.
+Ha nem talál olyan csomagot, szolgáltatást és folyamatot, amelyen fut, és még nem látja a Windows Azure Guest Agent ügynököt a programok és szolgáltatások területen, próbálja meg [telepíteni a Windows Azure Guest Agent szolgáltatást](../extensions/agent-windows.md). Ha a vendég ügynök telepítése nem megfelelő, a virtuálisgép- [ügynök offline állapotba](./install-vm-agent-offline.md)helyezhető.
 
 Ha a szolgáltatások megjelennek és futnak, indítsa újra a szolgáltatást, és ellenőrizze, hogy megoldódott-e a probléma. Ha a szolgáltatások leállnak, indítsa el őket, és várjon néhány percet. Ezután győződjön meg arról, hogy az **ügynök állapota** **készként**van-e bejelentve. Ha úgy találja, hogy ezek a szolgáltatások összeomlanak, előfordulhat, hogy egyes harmadik féltől származó folyamatok összeomlást okoznak. A problémák további hibaelhárításához forduljon [Microsoft ügyfélszolgálatahoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
@@ -111,7 +111,7 @@ A Windows Azure vendég ügynökének automatikus frissítési funkciója van. A
     ```
     Ezután győződjön meg arról, hogy a vendég ügynök szolgáltatásai megfelelően indulnak-e el.
  
-    Ritka esetekben, amikor a vendég ügynök nem megfelelően telepíti [a virtuális gépet, a virtuálisgép-ügynököt offline állapotba is telepítheti](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    Ritka esetekben, amikor a vendég ügynök nem megfelelően telepíti [a virtuális gépet, a virtuálisgép-ügynököt offline állapotba is telepítheti](./install-vm-agent-offline.md).
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>3. lépés azt vizsgálja, hogy a virtuális gép tud-e csatlakozni a háló vezérlőhöz
@@ -189,7 +189,7 @@ A virtuális gép nem tudja elérni a wireserver gazdagép-kiszolgálót.
 1. Ha nem tudja elérni az 1. lépésben szereplő URL-címet, ellenőrizze a hálózati adaptert annak megállapításához, hogy DHCP-ként van-e beállítva, és DNS-sel rendelkezik-e. A hálózati adapter DHCP-állapotának megtekintéséhez futtassa a következő parancsot:  `netsh interface ip show config` .
 1. Ha a DHCP le van tiltva, futtassa a következőt, és győződjön meg róla, hogy a sárga értékre módosítja a felület nevét: `netsh interface ip set address name="Name of the interface" source=dhcp` .
 1. Az IP-168.63.129.16 való hozzáférést blokkoló tűzfal, proxy vagy más forrás által okozott esetleges problémák keresése.
-1. Győződjön meg arról, hogy a Windows tűzfal vagy egy külső gyártótól származó tűzfal blokkolja-e a 80, 443 és 32526 portokhoz való hozzáférést. További információ arról, hogy a cím miért nem tiltható le: [Mi az IP-168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+1. Győződjön meg arról, hogy a Windows tűzfal vagy egy külső gyártótól származó tűzfal blokkolja-e a 80, 443 és 32526 portokhoz való hozzáférést. További információ arról, hogy a cím miért nem tiltható le: [Mi az IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ### <a name="guest-agent-is-stuck-stopping"></a>A vendég ügynök beragadt "Leállítás"  
 

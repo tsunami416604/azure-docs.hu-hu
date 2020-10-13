@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali terheléselosztás konfigurálás
 description: A terheléselosztási módszer konfigurálása Windows rendszerű virtuális asztali környezetekhez.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010106"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951655"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>A Windows Virtual Desktop terheléselosztási módjának beállítása
 
@@ -51,13 +51,19 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>A mélység beállítása – első terheléselosztás
 
-Mélység – az első terheléselosztás új felhasználói munkameneteket oszt ki egy rendelkezésre álló, a legnagyobb számú kapcsolattal rendelkező munkamenet-gazdagépre, de nem érte el a maximális munkamenet-korlátot. A mélység beállításakor – az első terheléselosztáshoz a gazdagép-készletben kell beállítani a munkamenetek maximális számát.
+Mélység – az első terheléselosztás új felhasználói munkameneteket oszt ki egy rendelkezésre álló, a legnagyobb számú kapcsolattal rendelkező munkamenet-gazdagépre, de nem érte el a maximális munkamenet-korlátot.
+
+>[!IMPORTANT]
+>A mélység beállításakor – az első terheléselosztáshoz a gazdagép-készletben kell beállítani a munkamenetek maximális számát.
 
 A következő PowerShell-parancsmag futtatásával állíthatja be, hogy a gazdagép mélysége – első terheléselosztást végezzen:
 
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> A mélységi – az első terheléselosztási algoritmus a munkamenet-gazdagépek számára a maximális munkamenet-gazdagép korlátja () alapján osztja el a munkameneteket `-MaxSessionLimit` . Ez a paraméter alapértelmezett értéke a `999999` , amely egyben a legmagasabb lehetséges szám is, amely a változót beállíthatja. Ezt a paramétert akkor kell megadni, ha a mélység – első terheléselosztási algoritmust használja. A lehető legjobb felhasználói élmény érdekében ügyeljen arra, hogy a maximális munkamenet-gazdagép-korlát paramétert egy olyan számra módosítsa, amely a legjobban megfelel a környezetének.
 
 A beállítás frissítése előtt futtassa a következő parancsmagot:
 

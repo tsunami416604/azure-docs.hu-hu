@@ -4,10 +4,10 @@ description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezése
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576897"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
@@ -215,7 +215,7 @@ Az erőforrás [hozzáfűzési](../concepts/effects.md#append) és [módosítás
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

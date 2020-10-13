@@ -12,7 +12,7 @@ ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856228"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
@@ -134,6 +134,6 @@ A probléma megkerülése:
 > [!IMPORTANT]  
 > A fürthöz csatolt elsődleges Storage-fiók tárolási kulcsának elforgatása nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan adhat hozzá további Storage-fiókokat egy meglévő HDInsight-fürthöz. További információ a parancsfájl-műveletekről: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)

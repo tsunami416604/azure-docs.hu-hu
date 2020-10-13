@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288698"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
@@ -106,7 +106,7 @@ Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database**.
 Írja be az adatbázis URL-címét és annak az adatbázisnak a nevét, ahol a nézet található.
 ![Válassza ki az adatbázist a végponton.](./media/get-started-power-bi-professional/step-2-db.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Storage-fájlok lekérdezésével](get-started-azure-data-studio.md) megtudhatja, hogyan CSATLAKOZHAT az SQL on-demandhoz a Azure Data Studio használatával.
  
