@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855328"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963635"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és megosztott lemezen az Azure-beli SAP ASCS/SCS-példányhoz
 
@@ -149,7 +149,7 @@ ms.locfileid: "88855328"
 
 Ez a cikk azt ismerteti, hogyan telepíthet és konfigurálhat egy magas rendelkezésre állású SAP-rendszert az Azure-ban egy olyan Windows Server feladatátvevő fürt és fürtözött megosztott lemez használatával, amely egy SAP ASCS/SCS-példány fürtözésére szolgál. A következő témakörben leírtak szerint [: az architektúra-útmutatóban szereplő SAP ASCS/SCS-példányok fürt megosztott lemez használatával történő használata a Windows feladatátvevő fürtön][sap-high-availability-guide-wsfc-shared-disk]a *fürt megosztott lemezének*két alternatívája van:
 
-- [Azure megosztott lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure megosztott lemezek](../../windows/disks-shared.md)
 - A [SIOS DataKeeper cluster Edition](https://us.sios.com/products/datakeeper-cluster/) használatával tükrözött tárhely hozható létre, amely a fürtözött megosztott lemezt szimulálja. 
 
 ## <a name="prerequisites"></a>Előfeltételek

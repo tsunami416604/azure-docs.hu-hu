@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617876"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973308"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ A SQL Serverban engedélyezett nem dokumentált DBCC utasítások nem támogatot
 
 ### <a name="distributed-transactions"></a>Elosztott tranzakciók
 
-Az MSDTC és a [rugalmas tranzakciók](../database/elastic-transactions-overview.md) jelenleg nem támogatottak az SQL felügyelt példányain.
+Az [Elosztott tranzakciók](../database/elastic-transactions-overview.md) részleges támogatása jelenleg nyilvános előzetes verzióban érhető el. A támogatott forgatókönyvek a következők:
+* Azok a tranzakciók, amelyekben a résztvevők csak a [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups)részét képező Azure SQL felügyelt példányok.
+* A .NET (TransactionScope Class) és a Transact-SQL által kezdeményezett tranzakciók.
+
+Az Azure SQL felügyelt példánya jelenleg nem támogatja az MSDTC által a helyszínen vagy az Azure Virtual Machines által rendszeresen támogatott egyéb forgatókönyveket.
 
 ### <a name="extended-events"></a>Bővített események
 

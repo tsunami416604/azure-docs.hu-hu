@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
 ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576540"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure VMware-megoldásba)
@@ -172,7 +172,7 @@ Miután egy gép az AVS-re készként van megjelölve, a kiszolgáló értékel�
 
 ### <a name="ftt-sizing-parameters"></a>Pénzügyi tranzakció méretezési paraméterei
 
-Az AVS-ben használt vSAN. a vSAN tárolási házirendjei a virtuális gépek tárolási követelményeit határozzák meg. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető pénzügyi tranzakciós-RAID-kombinációk a következők: 
+Az AVS-ben használt vSAN. a vSAN tárolási házirendjei a virtuális gépek tárolási követelményeit határozzák meg. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető FTT-Raid kombinációk a következők: 
 
 **Megengedhető hibák (FTT)** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek száma** | **Méretezési szempontok**
 --- | --- | --- | --- 
@@ -259,6 +259,6 @@ Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésé
 - **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/tutorial-deploy-vmware-hcx.md).
 - **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy értékelést az [AVS VMWare virtuális gépekhez](how-to-create-azure-vmware-solution-assessment.md).

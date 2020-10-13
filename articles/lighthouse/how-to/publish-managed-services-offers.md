@@ -3,16 +3,16 @@ title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketpla
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure Lighthouse-be.
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589724"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974362"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
-Ebből a cikkből megtudhatja, hogyan tehet közzé nyilvános vagy privát felügyelt szolgáltatást az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en a partner Center [kereskedelmi piactér](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) programjának használatával. Az ajánlatot megvásároló ügyfelek ezután az előfizetéseket vagy erőforráscsoportokat delegálják, így Ön felügyelheti őket az [Azure Lighthouse](../overview.md)használatával.
+Ebből a cikkből megtudhatja, hogyan tehet közzé nyilvános vagy privát felügyelt szolgáltatást az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en a partner Center [kereskedelmi piactér](../../marketplace/overview.md) programjának használatával. Az ajánlatot megvásároló ügyfelek ezután az előfizetéseket vagy erőforráscsoportokat delegálják, így Ön felügyelheti őket az [Azure Lighthouse](../overview.md)használatával.
 
 ## <a name="publishing-requirements"></a>Közzétételi követelmények
 
@@ -31,16 +31,16 @@ Az alábbi táblázat segítségével meghatározhatja, hogy az ügyfelek felüg
 |[Partner Center-fiók](../../marketplace/partner-center-portal/create-account.md) szükséges   |Igen         |Nem        |
 |[Silver vagy Gold Cloud Platform kompetencia](/partner-center/learn-about-competencies) vagy [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) szükséges      |Igen         |Nem         |
 |Elérhető az új ügyfelek számára az Azure Marketplace-en keresztül     |Igen     |Nem       |
-|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Igen         |
+|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Yes         |
 |Ügyfél-elfogadás szükséges a Azure Portal     |Igen     |Nem   |
 |Az Automation használatával több előfizetést, erőforráscsoportot vagy ügyfelet helyezhet üzembe |Nem     |Igen    |
-|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Igen         |
+|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Yes         |
 
 ## <a name="create-your-offer"></a>Ajánlat létrehozása
 
 Az ajánlat létrehozásával kapcsolatos részletes utasításokért, beleértve az összes szükséges információt és eszközt, tekintse meg [a felügyelt szolgáltatási ajánlat létrehozása](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)című témakört.
 
-Az általános közzétételi folyamattal kapcsolatos további információkért lásd: az [Azure Marketplace és az AppSource közzétételi útmutatója](../../marketplace/marketplace-publishers-guide.md). Tekintse át a [kereskedelmi piactérre vonatkozó minősítési szabályzatokat](/legal/marketplace/certification-policies), különösen a [felügyelt szolgáltatások](/legal/marketplace/certification-policies#700-managed-services) szakaszt.
+Az általános közzétételi folyamattal kapcsolatos további információkért lásd: az [Azure Marketplace és az AppSource közzétételi útmutatója](../../marketplace/overview.md). Tekintse át a [kereskedelmi piactérre vonatkozó minősítési szabályzatokat](/legal/marketplace/certification-policies), különösen a [felügyelt szolgáltatások](/legal/marketplace/certification-policies#700-managed-services) szakaszt.
 
 Ha egy ügyfél felveszi az ajánlatot, egy vagy több előfizetést vagy erőforráscsoportot is delegálhat, amelyek ezután bekerülnek [Az Azure világítótoronyba](#the-customer-onboarding-process).
 
@@ -62,8 +62,8 @@ Miután egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizet�
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [kereskedelmi piactérről](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
+- További információ a [kereskedelmi piactérről](../../marketplace/overview.md).
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

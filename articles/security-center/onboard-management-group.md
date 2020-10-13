@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: a46c0d4df4d9a25b249ef552558700f4f776dc47
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ce0858f61ca1fe3b81c3d0c8a3c97954827def80
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946383"
+ms.locfileid: "91950618"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Security Center engedélyezése egy felügyeleti csoportban lévő összes előfizetésben
 
@@ -54,7 +54,7 @@ A Azure Policy definíciójának módosítására többféle lehetőség is van:
     A megadott definíció az alábbi "díjszabási" beállítások *egyikét* határozza meg a megfelelőként. Azt jelenti, hogy az előfizetés "standard" vagy "Free" értékre van beállítva.
 
     > [!TIP]
-    > A "standard" kifejezés arra utal, hogy ha egy Azure Defender-csomagot engedélyeznek, azt a "standard" beállításnak megfelelően írja le a rendszer. Ha le van tiltva, az "ingyenes".
+    > Ha engedélyezve van egy Azure Defender-csomag, azt a "standard" beállításban ismertetjük. Ha le van tiltva, az "ingyenes". [További információ az Azure Defender-csomagokról](security-center-pricing.md).
 
     ```
     "existenceCondition": {

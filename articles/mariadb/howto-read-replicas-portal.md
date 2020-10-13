@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742859"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a Azure Portal használatával
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási repli
 
 Az olvasási replika kiszolgáló a következő lépések segítségével hozható létre:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 2. Válassza ki a meglévő Azure Database for MariaDB kiszolgálót, amelyet főkiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 
@@ -136,6 +136,6 @@ A forráskiszolgáló Azure Portalból való törléséhez kövesse az alábbi l
 
    ![Időtartomány kiválasztása 30 perc](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

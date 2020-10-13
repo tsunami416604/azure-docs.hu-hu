@@ -2,17 +2,14 @@
 title: Hibakeresés a Visual Studióban az Azure Application Insights
 description: Webalkalmazások teljesítményelemzése és diagnosztikája hibakeresés közben és éles környezetben.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323468"
+ms.locfileid: "91932209"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Alkalmazások hibakeresése az Azure Application Insights a Visual Studióban
 A Visual Studio 2015-ös és újabb verzióiban elemezheti az ASP.NET-webalkalmazások teljesítményét és diagnosztizálhatja a problémákat hibakeresés közben és éles környezetben is az [Azure Application Insights](./app-insights-overview.md) telemetriájával.
@@ -93,9 +90,7 @@ Az is hasznos, ha van [egyéni telemetriája](./api-custom-events-metrics.md), a
   * Ha nem szeretné, hogy a telemetria elküldjék a portálra, tegye megjegyzésbe a sort a `<instrumentationkey>...` ApplicationInsights.configból. Ha készen áll arra, hogy ismét elküldhesse a telemetria a portálra, tegye meg a megjegyzéseit.
 
 
-## <a name="next-steps"></a>További lépések
-|  |  |
-| --- | --- |
-| **[További adatok hozzáadása](./asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Az Application Insights portál használata](./overview-dashboard.md)**<br/>Megtekintheti az irányítópultokat, a hatékony diagnosztikai és elemzési eszközöket, a riasztásokat, az alkalmazás élő függőségi térképét és az exportált telemetria-adatait. |![Visual Studio](./media/visual-studio/62.png) |
+## <a name="next-steps"></a>Következő lépések
+
+ * **[A Application Insights portál használata](./overview-dashboard.md)**. Megtekintheti az irányítópultokat, a hatékony diagnosztikai és elemzési eszközöket, a riasztásokat, az alkalmazás élő függőségi térképét és az exportált telemetria-adatait. 
 

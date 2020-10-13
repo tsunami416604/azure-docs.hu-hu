@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288324"
+ms.locfileid: "91930849"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -58,7 +58,7 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Ez a lekérdezés minden JSON-dokumentumot az eredményhalmaz külön soraként ad vissza. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, be kell állítania a [kiszolgálói szintű hitelesítő adatokat az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential). 
+Az előző minta lekérdezésben szereplő JSON-dokumentum objektumok tömbjét tartalmazza. A lekérdezés az egyes objektumokat az eredményhalmaz külön soraként adja vissza. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, be kell állítania a [kiszolgálói szintű hitelesítő adatokat az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential). 
 
 ### <a name="data-source-usage"></a>Adatforrás használata
 

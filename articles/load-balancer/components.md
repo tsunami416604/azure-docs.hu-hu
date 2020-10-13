@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589707"
+ms.locfileid: "91930951"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -127,6 +127,13 @@ Egy kimenő szabály konfigurálja a kimenő hálózati címfordítást (NAT) a 
 További információ a [kimenő kapcsolatokról és a szabályokról](load-balancer-outbound-connections.md).
 
 Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
+
+## <a name="limitations"></a>Korlátozások
+
+- A Load Balancer terheléselosztást és port továbbítást biztosít bizonyos TCP-vagy UDP-protokollokhoz. A terheléselosztási szabályok és a bejövő NAT-szabályok támogatják a TCP és az UDP használatát, de nem más IP-protokollok, beleértve az ICMP-t is.
+- A háttérbeli virtuális gép kimenő folyamata egy belső Load Balancer felületére sikertelen lesz.
+- Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
+- A továbbítási IP-töredékek nem támogatottak a terheléselosztási szabályokban. Az UDP-és TCP-csomagok IP-töredezettsége nem támogatott a terheléselosztási szabályokban. HA portok terheléselosztási szabályai használhatók a meglévő IP-töredékek továbbítására. További információ: [magas rendelkezésre állású portok – áttekintés](load-balancer-ha-ports-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

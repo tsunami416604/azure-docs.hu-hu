@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576659"
 ---
 # <a name="how-to-configure-cloud-services"></a>A Cloud Services Konfigurálása
@@ -98,7 +98,7 @@ Előfordulhat, hogy újra kell konfigurálnia a felhőalapú szolgáltatást a [
     ![Feltöltés](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Válassza ki a. cscfg fájlt, majd kattintson **az OK**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).

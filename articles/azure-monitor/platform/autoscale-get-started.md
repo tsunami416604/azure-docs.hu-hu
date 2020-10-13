@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743522"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
@@ -127,7 +127,7 @@ Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus
 
 #### <a name="security"></a>Biztonság 
 
-A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett API-k biztonsági követelményeinek. Az Healthcheck végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), az [ügyféltanúsítványok](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)vagy egy Virtual Network az alkalmazáshoz való hozzáférés korlátozásához. A Healthcheck végpontot úgy is biztonságossá teheti, hogy a `User-Agent` bejövő kérelemnek megfelel `ReadyForRequest/1.0` . A felhasználó-ügynök nem hamisítható, mert a kérést már biztosították az előző biztonsági funkciók.
+A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett API-k biztonsági követelményeinek. Az Healthcheck végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), az [ügyféltanúsítványok](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)vagy egy Virtual Network az alkalmazáshoz való hozzáférés korlátozásához. A Healthcheck végpontot úgy is biztonságossá teheti, hogy a `User-Agent` bejövő kérelemnek megfelel `ReadyForRequest/1.0` . A User-Agentt nem lehet meghamisítani, mert a kérést az előző biztonsági funkciók már biztosították.
 
 ### <a name="behavior"></a>Működés
 
@@ -137,11 +137,11 @@ A fennmaradó kifogástalan állapotú példányok nagyobb terhelést tapasztalh
 
 Ha egy példány nem kifogástalan állapotú egy órára, az új példánnyal lesz lecserélve. Legfeljebb egy példány óránként lesz lecserélve, és App Service-csomag esetében legfeljebb három példány naponta.
 
-### <a name="monitoring"></a>Nyomon követés
+### <a name="monitoring"></a>Figyelés
 
 Az alkalmazás állapot-ellenőrzési útvonalának megadása után Azure Monitor használatával figyelheti a webhely állapotát. A portál **állapot-ellenőrzési** paneljén kattintson a felső eszköztár **metrikái** elemére. Ekkor megnyílik egy új panel, amelyen megtekintheti a hely korábbi állapotának állapotát, és létrehozhat egy új riasztási szabályt. A helyek figyelésével kapcsolatos további információkért [tekintse meg a következő útmutatót: Azure monitor](../../app-service/web-sites-monitor.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

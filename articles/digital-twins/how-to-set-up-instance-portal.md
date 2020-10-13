@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280026"
+ms.locfileid: "91932114"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -123,12 +123,13 @@ Az alkalmazás regisztrációjának portál lapján válassza az API- *engedély
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
-Az alábbi *API-engedélyek kérése* lapon váltson a *saját szervezet által használt API* -k lapra, és keressen rá az *Azure Digital Twins*kifejezésre. Válassza az *Azure Digital Twins* lehetőséget a keresési eredmények közül, és folytassa az engedélyek hozzárendelését az Azure Digital Twins API-khoz.
+Az alábbi *API-engedélyek kérése* lapon váltson a *saját szervezet által használt API* -k lapra, és keressen rá az *Azure Digital Twins*kifejezésre. Válassza az _**Azure Digital Twins**_ lehetőséget a keresési eredmények közül, és folytassa az engedélyek hozzárendelését az Azure Digital Twins API-khoz.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 >[!NOTE]
-> Ha már rendelkezik Azure Digital Twins-példánnyal a szolgáltatás előző nyilvános előzetes verziójából (az 2020. július előtt) még az előfizetésében, akkor az *Azure Smart Spaces szolgáltatást* kell keresnie. Ez az API-k ugyanazon készletének régebbi neve, és ez a lépés nem változtatja meg a felhasználói élményt.
+> Ha az előfizetése továbbra is rendelkezik egy meglévő Azure Digital Twins-példánnyal a szolgáltatás előző nyilvános előzetes verziójából (2020. július előtt), akkor helyette az _**Azure Smart Spaces szolgáltatást**_ kell keresnie és kiválasztania. Ez az API-k ugyanazon készletének régebbi neve (figyelje meg, hogy az *alkalmazás (ügyfél) azonosítója* megegyezik a fenti képernyőképen szereplővel), és a felhasználói élmény ezen a lépésen túl nem változik.
+> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
 Ezután kiválaszthatja, hogy mely engedélyeket kell megadni ezekhez az API-khoz. Bontsa ki az **olvasási (1)** engedélyt, és jelölje be az *olvasás. írás* az alkalmazás regisztrációs olvasójának és az író engedélyének megadására szolgáló jelölőnégyzetet.
 
@@ -163,7 +164,7 @@ Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és
 ## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
-* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)
 
 Azt is megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:

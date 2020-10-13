@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547834542b605b226ebffd68e05296ee847dc6de
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889100"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974328"
 ---
 # <a name="disk-bursting"></a>Lemezek adatlöket-kezelése
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,7 +29,7 @@ A virtuális gépek szintjének kitörése az USA nyugati középső régiójáb
 A burst beállítás alapértelmezés szerint engedélyezve van az azt támogató virtuális gépek esetében.
 
 ## <a name="disk-level-bursting"></a>Lemez szintjének felszakadása
-Az adattelen [prémium SSD](disks-types.md#premium-ssd) -lemezeken is elérhetők a P20 és kisebb méretekben az összes régióban. A lemez kitörése alapértelmezés szerint engedélyezve van az azt támogató lemezek új központi telepítésen. A meglévő lemezek mérete, ha támogatják a lemezek kitörését, a következő módszerek egyikével engedélyezheti a kitörést: 
+Az adattelen [prémium SSD](../disks-types.md#premium-ssd) -lemezeken is elérhetők a P20 és kisebb méretekben az összes régióban. A lemez kitörése alapértelmezés szerint engedélyezve van az azt támogató lemezek új központi telepítésen. A meglévő lemezek mérete, ha támogatják a lemezek kitörését, a következő módszerek egyikével engedélyezheti a kitörést: 
 - **A virtuális gép újraindítása** 
 - **Lemez leválasztása és újracsatolása**
 

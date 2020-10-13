@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818239"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
@@ -66,7 +66,7 @@ $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.o
 Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 ```
 
-A fenti példában az Add-AzureADAdministrativeUnitMember parancsmag használatával lehet hozzáadni a felhasználót a felügyeleti egységhez. Annak a felügyeleti egységnek az azonosítója, amelyhez a felhasználót hozzá kívánja adni, valamint a hozzáadni kívánt felhasználó objektumazonosító argumentumként. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
+A fenti példában a parancsmag Add-AzureADAdministrativeUnitMember a felhasználó a felügyeleti egységhez való hozzáadására szolgál. Annak a felügyeleti egységnek az azonosítója, amelyhez a felhasználót hozzá kívánja adni, valamint a hozzáadni kívánt felhasználó objektumazonosító argumentumként. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -106,7 +106,7 @@ A Azure Portal a következőket teheti meg a felhasználó profiljának megnyit�
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-Megjegyzés: alapértelmezés szerint a Get-AzureADAdministrativeUnitMember csak 100 tagot ad vissza, a "-All $true" lehetőséggel több tagot is beolvashat.
+Megjegyzés: alapértelmezés szerint a Get-AzureADAdministrativeUnitMember csak 100 tagot ad vissza, a "-All $true" lehetőséggel további tagokat kérhet le.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

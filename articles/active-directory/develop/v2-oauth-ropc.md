@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812539"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
@@ -110,6 +110,6 @@ Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy 
 | `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva, a rendszer `consent_required` hibaüzenetet küld. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
 | `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a `/common` vagy a `/consumers` hitelesítési környezetekben.  `/organizations`Ehelyett használjon vagy egy bérlői azonosítót. |
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 A ROPC használatára vonatkozó példát a következő témakörben talál: a [.net Core Console alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kódjának mintája a githubon.

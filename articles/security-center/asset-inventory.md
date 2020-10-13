@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302043"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950737"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Erőforrások megismerése és kezelése az eszközök leltározásával és felügyeleti eszközeivel
 
@@ -33,7 +33,7 @@ Ezt a nézetet és a hozzá tartozó szűrőket használhatja a következő kér
 Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan növekednek. 
 
 > [!TIP]
-> A biztonsági javaslatok ugyanazok, mint a **javaslatok** lapon, de itt vannak szűrve a kiválasztott erőforrás-típusra. A javaslatok megoldásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
+> Az eszközök leltározása lapon megjelenő biztonsági javaslatok ugyanazok, mint a **javaslatok** lapon, de itt láthatók az érintett erőforrásnak megfelelően. További információ a javaslatok megoldásáról: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
 
 
 ## <a name="availability"></a>Rendelkezésre állás
@@ -43,7 +43,7 @@ Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan nö
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Minden felhasználó|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -59,7 +59,7 @@ A leltár oldal a következő eszközöket biztosítja:
 
 - **Szűrők** – a lap tetején található több szűrő lehetővé teszi, hogy gyorsan pontosítsa az erőforrások listáját a válaszolni kívánt kérdésnek megfelelően. Ha például a *"Production" címkével rendelkező gépekkel* kapcsolatos kérdést szeretné megválaszolni, akkor a log Analytics ügynök hiányzik? az **ügynök figyelési** szűrőjét a **címkék** szűrővel kombinálhatja a következő klipben látható módon:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="A nem figyelt éles erőforrásokra való szűrés":::
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="A nem figyelt éles erőforrásokra való szűrés&quot;:::
 
     Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
 
@@ -68,7 +68,7 @@ A leltár oldal a következő eszközöket biztosítja:
     ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a "Feel" kifejezést a nyelvhez. [További információ ebben a KQL-oktatóanyagban](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel" kifejezést a nyelvhez. [További információ ebben a KQL-oktatóanyagban](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
 - **Eszközkezelés beállításai** – a leltár lehetővé teszi összetett felderítési lekérdezések végrehajtását. Ha megtalálta a lekérdezéseknek megfelelő erőforrásokat, a leltár a következő műveletekhez nyújt parancsikonokat:
 
@@ -94,7 +94,16 @@ A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explor
 
 1. A szűrőkben válassza ki a megfelelő beállításokat a végrehajtani kívánt lekérdezés létrehozásához.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Leltár szűrési beállításai" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="A nem figyelt éles erőforrásokra való szűrés&quot;:::
+
+    Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
+
+- **Exportálási beállítások** – a leltár lehetővé teszi, hogy a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba exportálja. Emellett a lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja az KQL-lekérdezést.
+
+    ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
+
+    > [!TIP]
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Alapértelmezés szerint az erőforrásokat az aktív biztonsági javaslatok száma alapján rendezi a rendszer.
 
@@ -114,12 +123,30 @@ A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explor
 
     - Nem az Azure **Defender-csomag** által védett erőforrások. Kattintson a jobb gombbal bármelyikre, és frissítse őket:
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Erőforrás frissítése az Azure Defendernek a jobb gombbal kattintva" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="A nem figyelt éles erőforrásokra való szűrés&quot;:::
+
+    Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
+
+- **Exportálási beállítások** – a leltár lehetővé teszi, hogy a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba exportálja. Emellett a lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja az KQL-lekérdezést.
+
+    ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
+
+    > [!TIP]
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - Azure **Defender-csomag által védett** erőforrások
     - **Részleges** – ez vonatkozik azokra az **előfizetésekre** , amelyek esetében nem mindegyik Azure Defender-csomag le van tiltva. A következő előfizetésben például öt Azure Defender-csomag van letiltva. 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Előfizetés részben az Azure Defenderben":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="A nem figyelt éles erőforrásokra való szűrés&quot;:::
+
+    Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
+
+- **Exportálási beállítások** – a leltár lehetővé teszi, hogy a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba exportálja. Emellett a lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja az KQL-lekérdezést.
+
+    ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
+
+    > [!TIP]
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel":::
 
 1. A lekérdezés eredményeinek további vizsgálatához válassza ki az Önt érdeklő erőforrásokat.
 
@@ -140,7 +167,16 @@ A leltár nézet a Felhőbeli biztonsági állapot-felügyeleti (CSPM) perspekt�
 
 Az alábbi képernyőfelvétel például egy, a 38-es előfizetéshez hozzáféréssel rendelkező felhasználót mutat be, de csak 10 jelenleg rendelkezik javaslatokkal. Tehát amikor az **Erőforrás típusa = előfizetések**alapján szűr, csak az aktív ajánlásokkal rendelkező 10 előfizetés jelenik meg a leltárban:
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Nem minden olyan feliratot adott vissza, amikor nincsenek aktív javaslatok":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="A nem figyelt éles erőforrásokra való szűrés&quot;:::
+
+    Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
+
+- **Exportálási beállítások** – a leltár lehetővé teszi, hogy a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba exportálja. Emellett a lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja az KQL-lekérdezést.
+
+    ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
+
+    > [!TIP]
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Miért mutatnak be néhány erőforrás üres értéket az Azure Defender vagy az ügynök figyelési oszlopaiban?
 
@@ -148,9 +184,18 @@ Nem minden Security Center figyelt erőforrás rendelkezik ügynökkel. Ilyenek 
 
 Ha a díjszabás vagy az ügynök figyelése nem vonatkozik egy erőforrásra, a leltárban semmi sem jelenik meg.
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Egyes erőforrások üres információkat jelenítenek meg az ügynök figyelése vagy az Azure Defender oszlopaiban":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="A nem figyelt éles erőforrásokra való szűrés&quot;:::
 
-## <a name="next-steps"></a>Következő lépések
+    Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
+
+- **Exportálási beállítások** – a leltár lehetővé teszi, hogy a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba exportálja. Emellett a lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja az KQL-lekérdezést.
+
+    ![Leltár exportálási beállításai](./media/asset-inventory/inventory-export-options.png)
+
+    > [!TIP]
+    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a &quot;Feel":::
+
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a Azure Security Center eszköz leltározási lapját ismerteti.
 

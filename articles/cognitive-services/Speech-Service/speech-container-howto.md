@@ -12,12 +12,12 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813270"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930441"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-tárolók telepítése és futtatása a Speech Service API-khoz 
 
@@ -176,7 +176,7 @@ A (z) kivételével az összes címke `latest` a következő formátumban van, �
 A következő címke egy példa a formátumra:
 
 ```
-2.4.0-amd64-en-us-preview
+2.5.0-amd64-en-us-preview
 ```
 
 A **beszéd-szöveg** típusú tároló összes támogatott területi beállítását lásd: [beszéd – szöveg képcímkék](../containers/container-image-tags.md#speech-to-text).
@@ -316,7 +316,7 @@ A parancs a következőket hajtja végre:
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Az érzelmek elemzése a beszédfelismerési kimenetre 
 
-A beszéd-szöveg típusú tárolóhoz tartozó v 2.2.0-tól kezdve a kimeneten meghívhatja a [hangulat elemzése V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) -t. A hangulat elemzésének meghívásához szüksége lesz egy Text Analytics API erőforrás-végpontra. Például: 
+A beszéd-szöveg típusú tárolóhoz tartozó v 2.2.0-tól kezdve a kimeneten meghívhatja a [hangulat elemzése V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) -t. A hangulat elemzésének meghívásához szüksége lesz egy Text Analytics API erőforrás-végpontra. Példa: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -673,7 +673,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

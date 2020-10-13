@@ -11,7 +11,7 @@ ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857741"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Apache Hive replikáció használata az Azure HDInsight-fürtökben
@@ -220,7 +220,7 @@ A következő kódrészlet egy példát mutat be a rendszerindítási és növek
    |-|
    |2960|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

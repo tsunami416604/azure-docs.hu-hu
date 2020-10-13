@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ddb252d7ba5534269d3da1e14064740690879816
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718900"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963805"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure Multi-Factor Authentication
 
@@ -114,7 +114,7 @@ Most jelentkezzen be a Azure Portalba. Mivel a Azure Portal a feltételes hozzá
 
 1. Zárja be a böngészőablakot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze az Azure Multi-Factor Authentication konfigurálását az oktatóanyag részeként, törölje a szabályzatot a következő lépésekkel:
 
@@ -123,7 +123,7 @@ Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze
 1. Válassza a **feltételes hozzáférés**lehetőséget, majd válassza ki a létrehozott szabályzatot, például *MFA Pilot*
 1. Válassza a **Törlés**lehetőséget, majd erősítse meg, hogy törölni kívánja a szabályzatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure Multi-Factor Authentication használatát a kiválasztott felhasználói csoportok feltételes hozzáférési házirendjeivel. Megtanulta végrehajtani az alábbi műveleteket:
 

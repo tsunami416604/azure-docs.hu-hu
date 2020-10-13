@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631130"
+ms.locfileid: "91930713"
 ---
 # <a name="tutorial-mock-api-responses"></a>Oktatóanyag: API-válaszok modellezése
 
@@ -107,7 +107,7 @@ Bár ehhez a példához nem szükséges, az API-műveletek további beállítás
 1. Kattintson a **Mentés** gombra.
 
     > [!TIP]
-    > Az API-val rendelkező sárga sáv **lehetővé** teszi, hogy a API Management küldött válaszok elküldjenek egy kigúnyoló szabályzatot, nem pedig a háttérrendszer tényleges válaszát.
+    > Az API-hoz **tartozó szöveg kiírásával rendelkező sárga** sáv azt jelzi, hogy az API Management által visszaadott válaszokat a kiírási [szabályzat](api-management-advanced-policies.md#mock-response) kigúnyolja, és nem a háttérrendszer állítja elő.
 
 ## <a name="test-the-mocked-api"></a>Az utánzott API tesztelése
 

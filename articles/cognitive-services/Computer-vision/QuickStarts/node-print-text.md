@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: bac3a20c45c15b88d0e00ef10960f74b761042d6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64ca75645d1a9e6d638af5128a6c690c47985cdd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91262501"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974532"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és Node.js használatával
 
@@ -64,7 +64,7 @@ let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
 let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
 if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
 
-var uriBase = endpoint + 'vision/v3.0/ocr';
+var uriBase = endpoint + 'vision/v3.1/ocr';
 
 const imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/' +
     'Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png';
@@ -199,7 +199,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A minta elemzi és 
 }
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `request` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
@@ -212,7 +212,7 @@ Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `req
 
 3. A csomag sikeres eltávolítása után zárja be a parancssori ablakot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután Ismerkedjen meg a rendszerképek elemzéséhez használt Computer Vision API-kkal, a hírességek és tereptárgyak észlelésével, a miniatűr létrehozásával, valamint a nyomtatott és a kézírásos szöveg kinyerésével.
 

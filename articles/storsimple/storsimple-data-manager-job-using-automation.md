@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743607"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Az Azure Automation használata feladat indításához
@@ -50,7 +50,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet**.
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás** elemre.
+   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 
       ![3. futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -86,7 +86,7 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
 2. A **Runbook hozzáadása**területen kattintson a **meglévő runbook importálása**elemre.
 
-3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl**Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** elemre.
+3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl**Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
 
     ![2. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 
@@ -116,6 +116,6 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
     ![10. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-10.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az adatátalakításhoz használja StorSimple Data Manager felhasználói felületét](storsimple-data-manager-ui.md).

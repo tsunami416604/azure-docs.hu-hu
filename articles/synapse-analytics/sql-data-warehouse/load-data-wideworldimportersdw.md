@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369093"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: az Azure szinapszis Analytics SQL-készletbe való betöltés
@@ -536,7 +536,7 @@ Ez a szakasz a mintaadatok Azure Blobból SQL-készletbe való betöltéséhez m
 
 A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Ha a SELECT utasítás egy külső táblából származik, az adatok az adattárházban található, egy rokon táblába kerülnek importálásra.
 
-Ez a parancsfájl nem tölti be az adatbevitelt az első világháború. dimension_Date és az első világháború. fact_Sale tábláiba. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
+Ez a parancsfájl nem tölti be az adatwwi.dimension_Date és wwi.fact_Sale táblákba. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
 
 1. Futtassa a következő szkriptet az adatok betöltéséhez az adattárházban található új táblákba.
 
@@ -732,7 +732,7 @@ Ez a parancsfájl nem tölti be az adatbevitelt az első világháború. dimensi
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Táblák és eljárások létrehozása a Date és Sales táblák létrehozásához
 
-Ez a szakasz létrehozza az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Emellett olyan tárolt eljárásokat is létrehoz, amelyek több millió sort hozhatnak létre az első világháború. dimension_Date és az első világháború. fact_Sale táblákban.
+Ez a szakasz létrehozza a wwi.dimension_Date és a wwi.fact_Sale táblákat. Emellett olyan tárolt eljárásokat is létrehoz, amelyek több millió sort hozhatnak létre a wwi.dimension_Date és wwi.fact_Sale táblákban.
 
 1. Hozza létre a dimension_Date és a fact_Sale táblát.  
 
@@ -876,7 +876,7 @@ Ez a szakasz létrehozza az első világháború. dimension_Date és az első vi
     END;
     ```
 
-4. Hozza létre ezt az eljárást, amely feltölti az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Meghívja a [wwi].[PopulateDateDimensionForYear] eljárást a wwi.dimension_Date feltöltéséhez.
+4. Hozza létre ezt az eljárást, amely feltölti a wwi.dimension_Date és wwi.fact_Sale táblákat. Meghívja a [wwi].[PopulateDateDimensionForYear] eljárást a wwi.dimension_Date feltöltéséhez.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ Ez a szakasz létrehozza az első világháború. dimension_Date és az első vi
 
 ## <a name="generate-millions-of-rows"></a>Sorok millióinak előállítása
 
-A létrehozott tárolt eljárások segítségével több millió sort hozhat létre az első világháború. fact_Sale táblázatban, valamint az első világháború. dimension_Date táblában található megfelelő értékekkel.
+A létrehozott tárolt eljárások segítségével több millió sort hozhat létre a wwi.fact_Sale táblában, valamint a wwi.dimension_Date táblában található megfelelő adatmennyiséget.
 
 1. Futtassa ezt az eljárást, hogy a [wwi].[seed_Sale] további sorokkal töltődjön fel.
 
@@ -941,7 +941,7 @@ A létrehozott tárolt eljárások segítségével több millió sort hozhat lé
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Futtassa ezt az eljárást az fact_Sale első lépések elvégzéséhez a 100 000-as számú napon belül, a 2000-as év minden napján.
+2. Az alábbi eljárást követve feltöltheti wwi.fact_Sale napi 100 000-sorral a 2000-as év minden napján.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

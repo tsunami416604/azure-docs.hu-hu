@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01751caba2b14f899588deba083a8c59c41d13ba
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87035111"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964009"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
@@ -84,7 +84,7 @@ Ha jelszó nélküli metódussal jelentkezik be, a hitelesítő adatok a biometr
 
 Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélküli módszerekkel, így egyszerűbbé téve a felhasználók bejelentkezési élményét, és csökkentheti a támadások kockázatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 

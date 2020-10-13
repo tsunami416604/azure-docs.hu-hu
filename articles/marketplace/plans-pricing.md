@@ -11,7 +11,7 @@ ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858172"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>A kereskedelmi Piactéri ajánlatok csomagjai és díjszabása
@@ -164,7 +164,7 @@ Miután egy ügyfél kiválaszt egy ingyenes próbaverziót egy csomagra, a pró
 
 Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial` , amely igaz vagy hamis értékként lesz megjelölve. További információ: [SaaS Get előfizetés API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#get-subscription).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha meg szeretné tudni, hogyan adhat hozzá vagy frissíthet egy meglévő ajánlatot, tekintse meg [a meglévő ajánlat frissítése a kereskedelmi piactéren](./partner-center-portal/update-existing-offer.md)című témakört.
 - További információ a tranzakciós lehetőségekről és a kapcsolódó díjszabási modellekről: [kereskedelmi Piactéri Transact-képességek](./marketplace-commercial-transaction-capabilities-and-considerations.md).

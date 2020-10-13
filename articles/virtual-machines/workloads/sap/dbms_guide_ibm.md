@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e401fb35e6524e8a32cbe09bf5b9c7feafbf5da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331267"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974736"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -55,9 +55,9 @@ További információ a támogatott SAP-termékekről és az Azure-beli virtuál
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 Linux-, UNIX-és Windows-konfigurációs irányelvek az Azure-beli virtuális gépeken futó SAP-telepítésekhez
 ### <a name="storage-configuration"></a>Tárolási konfiguráció
-Az SAP-alapú számítási feladatokhoz használható Azure Storage-típusok áttekintéséhez tekintse meg az Azure-beli [tárolási típusok SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) -alapú számítási feladatokhoz az összes adatbázisfájlt az Azure Block Storage csatlakoztatott lemezén kell tárolni (Windows: NFFS, Linux: XFS, ext4 vagy ext3). A következő Azure-szolgáltatásokhoz hasonló hálózati meghajtók vagy távoli megosztások **nem** támogatottak az adatbázisfájlok esetében: 
+Az SAP-alapú számítási feladatokhoz használható Azure Storage-típusok áttekintéséhez tekintse meg az Azure-beli [tárolási típusok SAP](./planning-guide-storage.md) -alapú számítási feladatokhoz az összes adatbázisfájlt az Azure Block Storage csatlakoztatott lemezén kell tárolni (Windows: NFFS, Linux: XFS, ext4 vagy ext3). A következő Azure-szolgáltatásokhoz hasonló hálózati meghajtók vagy távoli megosztások **nem** támogatottak az adatbázisfájlok esetében: 
 
-* [Microsoft Azure file Service](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure file Service](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 

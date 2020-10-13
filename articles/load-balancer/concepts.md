@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 61620a8497765c4d8f90a3d616bd2f4b932f8dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629029"
+ms.locfileid: "91930917"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer algoritmus
 
@@ -54,16 +54,6 @@ A Load Balancer közvetlenül nem kommunikál a TCP-vagy UDP-vagy az alkalmazás
 - Minden végpontot egy virtuális gép válaszol. A TCP-kézfogás például az ügyfél és a kijelölt háttérbeli virtuális gép között történik. Az előtérre irányuló kérelemre adott válasz egy háttérbeli virtuális gép által generált válasz. Amikor sikeresen érvényesíti a kapcsolatot az előtérrel, a kapcsolat érvényesítése legalább egy háttérbeli virtuális gépen megtörtént.
 - Az alkalmazás hasznos adatai transzparensek a terheléselosztó számára. Bármely UDP-vagy TCP-alkalmazás támogatott lehet.
 - Mivel a terheléselosztó nem kommunikál a TCP-adattartalommal, és TLS-kiszervezést biztosít, átfogó titkosított forgatókönyveket hozhat létre. A terheléselosztó használatával a TLS-alkalmazásokhoz nagy léptékű kibővíthető teljesítmény áll a virtuális gépen. Például a TLS-munkamenet beírási kapacitását csak a háttérbeli készlethez hozzáadott virtuális gépek típusa és száma korlátozza.
-
-## <a name="limitations"></a><a name = "limitations"></a>Korlátozások
-
-- Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
-
-- A Load Balancer terheléselosztást és port továbbítást biztosít bizonyos TCP-vagy UDP-protokollokhoz. A terheléselosztási szabályok és a bejövő NAT-szabályok támogatják a TCP és az UDP használatát, de nem más IP-protokollok, beleértve az ICMP-t is.
-
-- A háttérbeli virtuális gép kimenő folyamata egy belső Load Balancer felületére sikertelen lesz.
-
-- A továbbítási IP-töredékek nem támogatottak a terheléselosztási szabályokban. Az UDP-és TCP-csomagok IP-töredezettsége nem támogatott a terheléselosztási szabályokban. HA portok terheléselosztási szabályai használhatók a meglévő IP-töredékek továbbítására. További információ: [magas rendelkezésre állású portok – áttekintés](load-balancer-ha-ports-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

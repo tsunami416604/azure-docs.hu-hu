@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447857"
+ms.locfileid: "91932141"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -59,7 +59,7 @@ Az új eszköz identitásának létrehozásakor adja meg a következő informác
 
 * A hitelesítési típusként válassza a **szimmetrikus kulcs** lehetőséget.
 
-* Igény szerint **beállíthatja a szülő eszközt** , és kiválaszthatja azt a IoT Edge átjáró-eszközt, amelyre az alárendelt eszköz kapcsolódni fog. Ez a lépés nem kötelező a szimmetrikus kulcsos hitelesítéshez, de ajánlott, mert a szülő eszköz beállítása lehetővé teszi az alsóbb rétegbeli eszköz [Offline képességeit](offline-capabilities.md) . Bármikor frissítheti az eszköz adatait, hogy később hozzáadja vagy megváltoztassa a szülőt.
+* Válassza a **szülő eszköz beállítása** elemet, és válassza ki azt a IoT Edge átjáró-eszközt, amelyre ez az alárendelt eszköz fog csatlakoztatva. Ez a lépés lehetővé teszi az alsóbb rétegbeli eszköz [Offline képességeit](offline-capabilities.md) . Később bármikor módosíthatja a szülőt.
 
    ![Eszköz AZONOSÍTÓjának létrehozása szimmetrikus kulcsú hitelesítéssel a portálon](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -201,7 +201,7 @@ Vagy
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Ha létrehozott egy szülő/gyermek kapcsolatot ehhez az alárendelt eszközhöz, a kapcsolati karakterlánc leegyszerűsíthető úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Az X. 509 hitelesítéshez szülő/gyermek kapcsolat szükséges, a szimmetrikus kulcsos hitelesítés azonban nem kötelező. Példa:
+A szülő-gyermek kapcsolatnak köszönhetően leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Példa:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

@@ -11,7 +11,7 @@ ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856780"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
@@ -320,6 +320,6 @@ Ha a AzCopy előző verzióját kell használnia, tekintse meg az alábbi hivatk
 
 Lásd: [AzCopy konfigurálása, optimalizálása és hibáinak megoldása](storage-use-azcopy-configure.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van, problémája vagy általános visszajelzése van, küldje el őket [a GitHub](https://github.com/Azure/azure-storage-azcopy) oldalon.

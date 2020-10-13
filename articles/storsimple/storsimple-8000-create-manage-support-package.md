@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182015"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973869"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Támogatási csomag létrehozása és kezelése a StorSimple 8000 sorozathoz
 
@@ -60,11 +60,11 @@ A manuálisan létrehozott támogatási csomagot megoszthatja Microsoft ügyfél
      
        A támogatási csomag az alapértelmezett mappában mindkét vezérlőhöz létrejön. A csomag egy titkosított, tömörített fájl, amelyet a rendszer a hibaelhárításhoz Microsoft ügyfélszolgálata küldhet. További információ: [Contact Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Az export-Hcssupportpackage futtatásával parancsmag paraméterei
+### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>A Export-HcsSupportPackage parancsmag paraméterei
 
-A következő paraméterek használhatók az export-Hcssupportpackage futtatásával parancsmaggal.
+A következő paramétereket használhatja a Export-HcsSupportPackage parancsmaggal.
 
-| Paraméterek | Kötelező vagy nem kötelező | Leírás |
+| Paraméter | Kötelező vagy nem kötelező | Leírás |
 | --- | --- | --- |
 | `-Path` |Kötelező |A használatával megadhatja annak a hálózati megosztott mappának a helyét, amelyben a támogatási csomag el van helyezve. |
 | `-EncryptionPassphrase` |Kötelező |A használatával adjon meg egy jelszót a támogatási csomag titkosításához. |
@@ -108,7 +108,7 @@ Ha a Microsoft ügyfélszolgálata helyre történő feltöltés előtt szeretne
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![Támogatási csomag szerkesztése](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![2. támogatási csomag szerkesztése](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Ha a rendszer kéri, adjon meg egy titkosítási jelszót a módosított támogatási csomaghoz.
    
     ```powershell
@@ -143,7 +143,7 @@ EncryptionPassphrase: ****
 PS C:\WINDOWS\system32>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [támogatási csomagban gyűjtött információkról](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
 * Ismerje meg, hogyan [használhatók a támogatási csomagok és az eszközök naplófájljai az eszköz üzembe helyezésének hibakereséséhez](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).

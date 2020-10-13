@@ -5,14 +5,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981279"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963703"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 A Kubernetes-alkalmazások fejlesztése kihívást jelenthet. A Docker és a Kubernetes konfigurációs fájljaira van szüksége. Meg kell határoznia, hogyan tesztelheti az alkalmazást helyileg, és hogyan dolgozhat más függő szolgáltatásokkal. Előfordulhat, hogy egyszerre több szolgáltatás fejlesztését és tesztelését kell kezelnie, és egy fejlesztői csapattal kell foglalkoznia.
 

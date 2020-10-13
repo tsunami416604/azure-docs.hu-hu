@@ -13,7 +13,7 @@ ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856150"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Az Azure RBAC hatókörének megismerése
@@ -120,7 +120,7 @@ A felügyeleti csoport, az előfizetés vagy az erőforráscsoport hatóköréne
       }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkör-hozzárendelés hozzáadásának lépései](role-assignments-steps.md)
 - [Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz](../azure-resource-manager/management/azure-services-resource-providers.md)

@@ -10,7 +10,7 @@ ms.openlocfilehash: 2a0471055e4648944aa07d10fef67f5e7235a76b
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856923"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>HDInsight-fürt létrehozása Azure Data Lake Storage Gen1 Azure Resource Manager sablon használatával
@@ -139,6 +139,6 @@ Found 1 items
 A parancs használatával is `hdfs dfs -put` feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával ellenőrizheti, hogy `hdfs dfs -ls` a fájlok feltöltése sikeres volt-e.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-wasb-distcp.md)
 * [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)

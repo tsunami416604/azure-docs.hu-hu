@@ -12,7 +12,7 @@ ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858792"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Hozzon létre egy fürtöt Data Lake Storage Gen2 használatával a Azure Portal
@@ -32,9 +32,9 @@ Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás**elemre.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. Adja meg a felügyelt identitás nevét, válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](hdinsight-managed-identities.md).
 
@@ -47,7 +47,7 @@ Hozzon létre egy Azure Data Lake Storage Gen2hoz használandó Storage-fiókot.
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók**elemre.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A **Storage-fiók létrehozása** képernyőn:
     1. Válassza ki a megfelelő előfizetést és erőforráscsoportot.
     1. Adja meg a Storage-fiók nevét Data Lake Storage Gen2.
@@ -96,7 +96,7 @@ Lásd: [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI 
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen létrehozott egy HDInsight-fürtöt. Most megtudhatja, hogyan dolgozhat a fürttel.
 

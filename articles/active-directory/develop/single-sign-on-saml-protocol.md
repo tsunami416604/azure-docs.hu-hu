@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118450"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950669"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egy Sign-On SAML protokoll
 
@@ -51,7 +51,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID (Azonosító) | Kötelező | Az Azure AD ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
 | Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
 | IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](/dotnet/standard/base-types/standard-date-and-time-format-strings)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
-| AssertionConsumerServiceUrl | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie az `RedirectUri` Azure ad-ban található felhőalapú szolgáltatással. |
+| AssertionConsumerServiceURL | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie az `RedirectUri` Azure ad-ban található felhőalapú szolgáltatással. |
 | ForceAuthn | Választható | Ez egy logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak újra hitelesítenie kell magát, még akkor is, ha az Azure AD-vel érvényes munkamenetük van. |
 | IsPassive | Választható | Ez egy logikai érték, amely azt határozza meg, hogy az Azure AD-nak csendes felhasználói beavatkozás nélkül kell-e hitelesítenie a felhasználót a munkamenet-cookie-val, ha van ilyen. Ha ez igaz, az Azure AD megkísérli hitelesíteni a felhasználót a munkamenet-cookie használatával. |
 
@@ -167,7 +167,7 @@ A kiállítói elemmel kapcsolatos válasz például a következő mintához has
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 
 Az `Status` elem a bejelentkezés sikerességét vagy meghibásodását közvetíti. Tartalmazza a `StatusCode` elemet, amely tartalmaz egy kódot vagy egy beágyazott kódot, amely a kérelem állapotát jelöli. Emellett tartalmazza a `StatusMessage` elemet is, amely a bejelentkezési folyamat során létrehozott egyéni hibaüzeneteket tartalmazza.
 

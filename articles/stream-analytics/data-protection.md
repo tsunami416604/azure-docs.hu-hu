@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812862"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
@@ -33,7 +33,7 @@ A Azure Stream Analytics a következő metaadatokat és adatokat őrzi meg a fut
 
 A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
 
-## <a name="in-region-data-residency"></a>Régión belüli adattárolás
+## <a name="in-region-data-residency"></a>Adattárolás In-Region
 A Azure Stream Analytics az ügyféladatokat és a fent leírt egyéb metaadatokat tárolja. A rendszer alapértelmezés szerint egyetlen régióban Azure Stream Analytics tárolja az ügyféladatokat, így a szolgáltatás automatikusan megfelel a régiókban tárolt adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
 Emellett dönthet úgy is, hogy a stream Analytics-feladathoz kapcsolódó összes adategységet (ügyféladatokat és egyéb metaadatokat) egyetlen régióban tárolja úgy, hogy az Ön által választott Storage-fiókban titkosítja őket.
 

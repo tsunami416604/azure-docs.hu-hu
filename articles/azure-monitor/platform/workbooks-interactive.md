@@ -2,19 +2,17 @@
 title: Egyéni paraméterekkel rendelkező munkafüzetek Azure Monitor
 description: Összetett jelentéskészítés egyszerűsítése előre elkészített és egyéni paraméterekkel rendelkező munkafüzetekből
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.author: mbullwin
-ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee71082b96d41f9bad7fb54a70d308c24dec5b57
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461463"
+ms.locfileid: "91932039"
 ---
 # <a name="interactive-workbooks"></a>Interaktív munkafüzetek
 
@@ -188,7 +186,7 @@ Az exportálási beállítások területen hagyja üresen az "exportálandó mez
 
 Habár az alapértelmezett viselkedés egy paraméter szövegként való exportálása, ha tudja, hogy a mező egy előfizetés vagy egy erőforrás-azonosító, ezt használja az exportálási paraméter típusaként. Ez lehetővé teszi, hogy a paraméter olyan helyeken legyen használatban, amelyekhez ilyen típusú paramétereket kell megadni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

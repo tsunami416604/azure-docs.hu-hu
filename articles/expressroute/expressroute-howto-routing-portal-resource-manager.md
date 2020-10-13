@@ -11,7 +11,7 @@ ms.openlocfilehash: cad098ed2dedc7abba57394ef1e26b9b7c87cd9c
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855471"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a Azure Portal használatával
@@ -183,7 +183,7 @@ A társítási konfigurációt a Delete (Törlés) ikon kiválasztásával távo
 
 ![privát társak törlése](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta az Azure Private-társítást, létrehozhat egy ExpressRoute-átjárót, amely összekapcsolja a virtuális hálózatot az áramkörrel. 
 

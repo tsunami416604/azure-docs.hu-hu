@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667231"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950686"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Oktatóanyag: lapozás hozzáadása a keresési eredményekhez a .NET SDK használatával
 
@@ -304,7 +304,7 @@ Nyissa meg az alapszintű keresési oldal megoldást.
     }
     ```
 
-1. Az előző leckében bemutatott **RunQueryAsync** metódus módosítást igényel a szintaktikai hiba feloldásához. A [**SearchOptions**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) osztály **kihagyás**, **méret**és **IncludeTotalCount** mezőinek használatával csak egy oldalt kérhet le, amely a **kihagyás** beállítástól kezdődően csak egyetlen lapot kér. A nézethez a lapozási változókat is ki kell számítani. Cserélje le a teljes metódust a következő kódra.
+1. Az előző leckében bemutatott **RunQueryAsync** metódus módosítást igényel a szintaktikai hiba feloldásához. A [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) osztály **kihagyás**, **méret**és **IncludeTotalCount** mezőinek használatával csak egy oldalt kérhet le, amely a **kihagyás** beállítástól kezdődően csak egyetlen lapot kér. A nézethez a lapozási változókat is ki kell számítani. Cserélje le a teljes metódust a következő kódra.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -614,7 +614,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * A végtelen görgetés egyik kulcsfontosságú funkciója, hogy az eredmények egy meglévő lapra kerülnek, nem helyettesíti ezt az oldalt, amely hatékony.
 * Az ideiglenes tároló csak egy hívást tart fenn, és vissza kell állítania a további hívások túléléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A lapozás alapvető fontosságú a keresési élményhez. A lapozással jól érintett, a következő lépés a felhasználói élmény további javítása a Type-Ahead típusú keresések hozzáadásával.
 
