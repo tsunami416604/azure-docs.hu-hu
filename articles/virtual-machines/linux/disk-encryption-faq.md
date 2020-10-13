@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06a84621c4d6abbf361eba232c776c167dc46265
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374038"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970609"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez – gyakori kérdések
 
@@ -160,9 +160,9 @@ Azure Backup lehetővé teszi a titkosított virtuális gépek biztonsági ment�
 
 Felteheti kérdéseit, vagy visszajelzést küldhet a [Microsoft Q&a Azure Disk Encryption kérdéseit tartalmazó oldalt](/answers/topics/azure-disk-encryption.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban többet is megtudhat a Azure Disk Encryptionekkel kapcsolatos leggyakoribb kérdésekről. A szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Az Azure Disk Encryption áttekintése](disk-encryption-overview.md)
-- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/asset-inventory.md)
 - [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

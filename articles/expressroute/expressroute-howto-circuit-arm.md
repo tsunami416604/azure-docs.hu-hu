@@ -1,18 +1,18 @@
 ---
 title: 'Rövid útmutató: áramkör létrehozása és módosítása ExpressRoute-Azure PowerShell'
-description: ExpressRoute-áramkör létrehozása, kiépítése, ellenőrzése, frissítése, törlése és megszüntetése.
+description: Ez a rövid útmutató bemutatja, hogyan lehet ExpressRoute-áramkört létrehozni, kiépíteni, ellenőrizni, frissíteni, törölni és kiépíteni.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5397dd2745a0d4e61804cf631014846ae15ec4e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761906"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971540"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Rövid útmutató: ExpressRoute-kör létrehozása és módosítása Azure PowerShell használatával
 
@@ -42,7 +42,7 @@ Get-AzExpressRouteServiceProvider
 
 Ellenőrizze, hogy szerepel-e a kapcsolat szolgáltatója. Jegyezze fel a következő információkat, amelyekre később szüksége lesz az áramkör létrehozásakor:
 
-* Name (Név)
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -371,7 +371,7 @@ Tekintse meg az alábbi információkat:
 * Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés vagy **kiépítve** **van,** akkor a szolgáltatóval kell együttműködni, hogy kiépítse az áramkört a saját oldalán. Továbbra is fenntartjuk az erőforrásokat és számlázunk, amíg a szolgáltató befejezi az áramkör kiépítését, és értesítést küld nekünk.
 * Ha a szolgáltató kivette az áramkört, ami azt jelenti, hogy a szolgáltató kiépítési állapota **nem kiépítve**értékre van állítva, akkor törölheti az áramkört. Az áramkör számlázása ezután leáll.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A ExpressRoute-áramkört a következő parancs futtatásával törölheti:
 

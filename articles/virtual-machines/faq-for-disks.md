@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575860"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973700"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről, valamint a felügyelt és nem felügyelt prémium szintű lemezekről
 
@@ -136,7 +136,7 @@ Felügyelt lemezek esetében nem nevezhető át. A nem felügyelt lemezeket azon
 
 Az 1. generációs képek csak a GPT-particionálást használhatják adatlemezeken, nem operációsrendszer-lemezeken. Az operációsrendszer-lemezeknek az MBR-partíció stílusát kell használniuk.
 
-A [2. generációs lemezképek](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) GPT particionálást használhatnak az operációsrendszer-lemezen és az adatlemezeken is.
+A [2. generációs lemezképek](./generation-2.md) GPT particionálást használhatnak az operációsrendszer-lemezen és az adatlemezeken is.
 
 **Milyen típusú lemezek támogatják a pillanatképeket?**
 
@@ -241,7 +241,7 @@ Nem, a feltöltés csak új, üres lemez **ReadyToUpload** állapotú létrehoz�
 
 **Hogyan feltölt egy felügyelt lemezre?**
 
-Hozzon létre egy felügyelt lemezt a [CreationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) tulajdonságával "feltöltés" értékre, majd töltse fel az adatok között.
+Hozzon létre egy felügyelt lemezt a [CreationData](/rest/api/compute/disks/createorupdate#creationdata) [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption) tulajdonságával "feltöltés" értékre, majd töltse fel az adatok között.
 
 **Lehet lemezeket csatlakoztatni egy virtuális géphez, amíg feltöltési állapotban van?**
 
@@ -304,7 +304,7 @@ Nem. Azure Site Recovery Azure-ról Azure-ra, Managed Disks elérhető virtuáli
 
 **Áttelepíthetem a virtuális gépeket olyan nem felügyelt lemezekkel, amelyek olyan tárolási fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Igen
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks és Storage Service Encryption
 
@@ -342,7 +342,7 @@ Igen. Minden felügyelt pillanatkép és rendszerkép automatikusan titkosítva 
 
 **Átalakíthatók-e a virtuális gépek olyan nem felügyelt lemezekkel, amelyek olyan Storage-fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Igen
+Yes
 
 **Egy felügyelt lemezről exportált virtuális merevlemez vagy egy pillanatkép is titkosítva lesz?**
 
@@ -427,7 +427,7 @@ Nem kell frissítenie meglévő Azure-eszközeit az 1 TiB-nál nagyobb lemezek l
 
 **Támogatottak-e a P4 és a P6 a nem felügyelt lemezek vagy Blobok esetén?**
 
-A P4 (32 GiB) és a P6 (64 GiB) lemez mérete nem támogatott a nem felügyelt lemezek és Blobok alapértelmezett lemezes szintjeiként. Explicit módon [be kell állítania a blob szintjét](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) a P4-re és a P6, hogy a lemez leképezve legyen ezekhez a rétegekhöz. Ha nem felügyelt lemezt vagy blobot telepít a lemez méretével vagy a tartalom hosszával, amely kisebb, mint 32 GiB, vagy a 32 GiB és a 64 GiB között a blob-csomag beállítása nélkül, továbbra is a P10 a 500 IOPS és a 100 MiB/s és a leképezett díjszabási csomaggal.
+A P4 (32 GiB) és a P6 (64 GiB) lemez mérete nem támogatott a nem felügyelt lemezek és Blobok alapértelmezett lemezes szintjeiként. Explicit módon [be kell állítania a blob szintjét](/rest/api/storageservices/set-blob-tier) a P4-re és a P6, hogy a lemez leképezve legyen ezekhez a rétegekhöz. Ha nem felügyelt lemezt vagy blobot telepít a lemez méretével vagy a tartalom hosszával, amely kisebb, mint 32 GiB, vagy a 32 GiB és a 64 GiB között a blob-csomag beállítása nélkül, továbbra is a P10 a 500 IOPS és a 100 MiB/s és a leképezett díjszabási csomaggal.
 
 **Ha a meglévő prémium szintű felügyelt lemez kevesebb, mint 64 GiB lett létrehozva a kisméretű lemez engedélyezése előtt (2017. június 15.), hogyan történik a számlázás?**
 
@@ -497,6 +497,6 @@ Nem.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 
-Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ. A megjegyzésekben a cikk végén teheti közzé a kérdést. Az Azure Storage csapata és a jelen cikk más közösségi tagjainak részvételéhez használja a [Microsoft Q&az Azure Storage-hoz készült kérdés oldalát](https://docs.microsoft.com/answers/products/azure?product=storage).
+Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ. A megjegyzésekben a cikk végén teheti közzé a kérdést. Az Azure Storage csapata és a jelen cikk más közösségi tagjainak részvételéhez használja a [Microsoft Q&az Azure Storage-hoz készült kérdés oldalát](/answers/products/azure?product=storage).
 
 A szolgáltatások igényléséhez küldje el kérelmeit és ötleteit az [Azure Storage visszajelzési fórumára](https://feedback.azure.com/forums/217298-storage).

@@ -142,3 +142,9 @@
   items:
     - name: Transact-SQL- (T-SQL-) referencia
       href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+- name: További források
+  items:
+    - name: Partnerek
+      items:
+        - name: Biztonság
+          href: resources-partners-security.md

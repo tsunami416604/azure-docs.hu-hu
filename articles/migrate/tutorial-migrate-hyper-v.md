@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 842513536bf4dbfc0a3e3bd82905b397da9fa6c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf436f501ef2d21dcd3394e61a40d354376efb9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439082"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979087"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -22,10 +22,10 @@ Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet fe
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Ahol lehet, az oktatóanyagok az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és módot. 
 
- Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+ Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Adja hozzá az Azure Migration: Server áttelepítési eszközét.
+> * Adja hozzá a Azure Migrate: Server áttelepítési eszközt.
 > * Fedezze fel az áttelepíteni kívánt virtuális gépeket.
 > * Indítsa el a virtuális gépek replikálását.
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
@@ -239,6 +239,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 -  Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

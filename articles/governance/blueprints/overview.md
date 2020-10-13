@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91614257"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892727"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -25,7 +25,7 @@ Az Azure Blueprints szolgáltatást a globális terjesztésű [Azure Cosmos DB](
 
 ## <a name="how-its-different-from-arm-templates"></a>Miben különbözik az ARM-sablonoktól
 
-A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoport, szabályzatok, szerepkör-hozzárendelések és ARM-sablonok központi telepítéseit tartalmazza. A terv egy olyan csomag, amely egyesíti az egyes _összetevők típusait_ , és lehetővé teszi a csomag összeállítását és verzióját, beleértve a CI/CD-folyamatokat. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
+A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoport, szabályzatok, szerepkör-hozzárendelések és ARM-sablonok központi telepítéseit tartalmazza. A terv egy olyan csomag, amely egyesíti az egyes _összetevők típusait_ , és lehetővé teszi a csomag összeállítását és verzióját, beleértve a folyamatos integrációs és folyamatos kézbesítési (CI/CD) folyamatokat. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
 
 Szinte minden, amit az Azure-tervezetekben szeretne felvenni az üzembe helyezéshez, ARM-sablonnal is elvégezhető. Az ARM-sablon azonban olyan dokumentum, amely nem létezik natív módon az Azure-ban – mindegyiket helyileg vagy a verziókövetés tárolja. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, az erőforrások üzembe helyezése után azonban a sablonnal létesített aktív kapcsolat megszűnik.
 
@@ -126,10 +126,10 @@ Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
 |Objektum|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|
-|Terv|Név|betűk, számok, kötőjelek és időszakok|48|
+|Terv|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
 |Terv|Verzió|betűk, számok, kötőjelek és időszakok|20|
-|Tervek hozzárendelése|Név|betűk, számok, kötőjelek és időszakok|90|
-|Tervrajz-összetevő|Név|betűk, számok, kötőjelek és időszakok|48|
+|Tervek hozzárendelése|Name (Név)|betűk, számok, kötőjelek és időszakok|90|
+|Tervrajz-összetevő|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
 
 ## <a name="video-overview"></a>Videó – áttekintés
 
@@ -137,7 +137,7 @@ Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Terv létrehozása – portál](./create-blueprint-portal.md).
 - [Terv létrehozása – PowerShell](./create-blueprint-powershell.md).

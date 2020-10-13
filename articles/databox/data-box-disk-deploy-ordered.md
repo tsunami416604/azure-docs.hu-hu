@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266525"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950941"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk rendelése
 
@@ -57,7 +57,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
    ![Keresse meg az Azure Data Box lehetőséget 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Kattintson a **Létrehozás** elemre.
+2. Kattintson a **Létrehozás** gombra.
 
 3. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre.
 
@@ -72,7 +72,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
   
 4. Válassza a **Data Box Disk** lehetőséget. A megoldás maximális kapacitása megrendelésenként (5 lemez) 35 TB. Nagyobb adatmennyiséghez több megrendelést is létrehozhat.
 
-     ![Data Box Disk lehetőség kiválasztása](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![Data Box Disk 2. lehetőség kiválasztása](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. A **Megrendelés** területen adja meg a **Megrendelés részleteit**. Adja meg vagy válassza ki a következő információkat.
 

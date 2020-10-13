@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: aae05c89cd56ffa16994cb5696054457f1d32bc3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876141"
+ms.locfileid: "91892821"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
@@ -109,11 +109,11 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 
 ## <a name="create-the-connection"></a><a name="CreateConnection"></a>A kapcsolat létrehozása
 
-Ebben a lépésben az előző lépésekből származó értékeket használva beállítja a megosztott kulcsot, és létrehozza a kapcsolatokat. A beállított kulcsnak meg kell egyeznie a VPN-eszköz konfigurációjához használt kulccsal.
-
 > [!NOTE]
 > A klasszikus üzemi modell esetében ez a lépés nem érhető el a Azure Portal vagy a Azure Cloud Shellon keresztül. Az Azure PowerShell-parancsmagok Service Management (SM) verzióját helyileg kell használni az asztalról.
 >
+
+Ebben a lépésben az előző lépésekből származó értékeket használva beállítja a megosztott kulcsot, és létrehozza a kapcsolatokat. A beállított kulcsnak meg kell egyeznie a VPN-eszköz konfigurációjához használt kulccsal.
 
 1. Állítsa be a megosztott kulcsot, és hozza létre a kapcsolatot.
 

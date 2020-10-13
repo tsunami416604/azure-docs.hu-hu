@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7641c1e3bc3620b294c2953b993e9179a4875536
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91403687"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951808"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -49,7 +49,7 @@ A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzététel�
 
 A szolgáltatásaikat értékesíteni kívánó szállítók a felügyelt alkalmazásokat elérhetővé tehetik az Azure Marketplace-en. Miután a szállító közzétesz egy alkalmazást, az elérhetővé válik a vállalaton kívüli felhasználók számára. Ezzel a módszerrel a felügyelt szolgáltatások szolgáltatói (MSP-k), a független szoftverszállítók (ISV-k) és a rendszerintegrátorok (SI-k) minden Azure-ügyfél számára felkínálhatják a megoldásaikat.
 
-A felügyelt alkalmazások Azure Marketplace-en való közzétételével kapcsolatban lásd a [Marketplace-alkalmazás létrehozását](publish-marketplace-app.md) ismertető témakört.
+A felügyelt alkalmazások Azure Marketplace-en való közzétételével kapcsolatban lásd a [Marketplace-alkalmazás létrehozását](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) ismertető témakört.
 
 ## <a name="resource-groups-for-managed-applications"></a>Felügyelt alkalmazások erőforráscsoportjai
 
@@ -71,7 +71,7 @@ Az ügyfél teljes hozzáféréssel rendelkezik az erőforráscsoporthoz, így k
 
 Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz. A hozzáférés vagy állandó, vagy egy adott időre korlátozódik.
 
-Amikor közzéteszi a [felügyelt alkalmazást a piactéren](publish-marketplace-app.md), a közzétevő engedélyezheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a felhasználók újra tudják indítani a virtuális gépeket. Az olvasási műveleteken túl minden más művelet is megtagadva. A felügyelt erőforráscsoport erőforrásainak egy adott művelettel rendelkező fogyasztó általi változásaira a felügyelt erőforráscsoport belefoglalása a felhasználói bérlőn belüli [Azure Policy](../../governance/policy/overview.md) -hozzárendelésekre vonatkozik.
+Amikor közzéteszi a [felügyelt alkalmazást a piactéren](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md), a közzétevő engedélyezheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a felhasználók újra tudják indítani a virtuális gépeket. Az olvasási műveleteken túl minden más művelet is megtagadva. A felügyelt erőforráscsoport erőforrásainak egy adott művelettel rendelkező fogyasztó általi változásaira a felügyelt erőforráscsoport belefoglalása a felhasználói bérlőn belüli [Azure Policy](../../governance/policy/overview.md) -hozzárendelésekre vonatkozik.
 
 Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
 

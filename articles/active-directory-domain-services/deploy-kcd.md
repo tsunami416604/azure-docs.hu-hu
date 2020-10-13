@@ -2,7 +2,7 @@
 title: Kerberos által korlátozott delegálás a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan engedélyezheti az erőforrás-alapú Kerberos által korlátozott delegálást (KCD) egy Azure Active Directory Domain Services felügyelt tartományban.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 7f1640f74c3fca27e1d992f3e2cc538f6e2c7fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 949dbfd4cc2e4ac05cddf035e22119bfb16e306f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722993"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960711"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
@@ -99,7 +99,7 @@ Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc*ne
     Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogyan működik a delegálás a Active Directory tartományi szolgáltatásokban, tekintse meg a [Kerberos által korlátozott delegálás – áttekintés][kcd-technet]című témakört.
 

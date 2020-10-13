@@ -1,6 +1,6 @@
 ---
-title: Riasztás érvényesítése (EICAR-teszt fájl) a Azure Security Centerban | Microsoft Docs
-description: Ez a dokumentum az Azure Security Center biztonsági riasztásainak érvényesítését ismerteti.
+title: Riasztások érvényesítése a Azure Security Centerban | Microsoft Docs
+description: Megtudhatja, hogyan ellenőrizheti, hogy a biztonsági riasztások megfelelően vannak-e konfigurálva Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438800"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971608"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Riasztások érvényesítése Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -26,12 +26,6 @@ A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően kon
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 A riasztások olyan értesítések, amelyeket a Security Center hoz létre, ha fenyegetést észlel egy erőforrásban. Rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is felkínál a támadás elhárítására.
 További információ: [biztonsági riasztások a Security Centerban](security-center-alerts-overview.md) , valamint a [biztonsági riasztások kezelése és válaszadás](security-center-managing-and-responding-alerts.md)
-
-## <a name="alert-validation"></a>Riasztások érvényesítése
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>Riasztások ellenőrzése Windows rendszerű virtuális gépeken <a name="validate-windows"></a>
 

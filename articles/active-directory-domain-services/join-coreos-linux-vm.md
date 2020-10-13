@@ -2,7 +2,7 @@
 title: CoreOS virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakoztathat egy CoreOS virtuális gépet egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: c3a88f96f7391fedd973b7965a7c469ce1805d76
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005106"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962411"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>CoreOS virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -168,7 +168,7 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e a felü
 
     A csoport tagságát a felügyelt tartományból kell látnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémába ütközik a virtuális gép a felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel, tekintse meg a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

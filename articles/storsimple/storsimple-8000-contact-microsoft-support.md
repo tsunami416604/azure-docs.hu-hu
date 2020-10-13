@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514249"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960320"
 ---
 # <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -39,7 +39,7 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
    3. Válassza ki a **támogatási csomagot** a legördülő listából, ha az előfizetéshez több csomag van társítva. A technikai támogatás engedélyezéséhez fizetős támogatási csomag szükséges.
    4. Kattintson a **Tovább** gombra.
 
-       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül 2](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. Az **új támogatási kérelem** panelen válassza a **2. lépés problémát**. A **probléma** panelen hajtsa végre a következő lépéseket:
     
@@ -51,15 +51,15 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
     6. A **diagnosztikai adatok megosztásának**megadásához.
     7. Kattintson a **Tovább** gombra.
 
-       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül 3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. Az **új támogatási kérelem** panelen kattintson a **3. lépés kapcsolattartási adatok**elemre. A **kapcsolattartási adatok** panelen hajtsa végre a következő lépéseket:
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
-   3. Kattintson a **Létrehozás** elemre.
+   3. Kattintson a **Létrehozás** gombra.
    
-       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Forduljon az MS ügyfélszolgálatához az új portálon keresztül 4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
       A Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás elérésére fogja használni.
       A kérés elküldése után a támogatási szakember a lehető leghamarabb felveszi Önnel a kapcsolatot, hogy folytassa a kérést.
@@ -76,11 +76,11 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 2. Az összes támogatási kérelem táblázatos felsorolása megjelenik a **Súgó + támogatás** panelen.
 
-    ![Támogatási kérelmek kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![Támogatási kérelmek kezelése 2](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-    ![Támogatási kérelmek kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![Támogatási kérelmek kezelése 3](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Támogatási munkamenet elindítása Windows PowerShell StorSimple-bővítménye
 
@@ -106,6 +106,6 @@ A támogatási munkamenet elindításához hajtsa végre a következő lépések
 > A támogatás hozzáférését letilthatja a futtatásával `Disable-HcsSupportAccess` . A StorSimple-eszköz a munkamenet elindítása után 8 órával is megkísérli letiltani a támogatás elérését. Az ajánlott eljárás a StorSimple-eszköz hitelesítő adatainak módosítása a támogatási munkamenet elindítása után.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a StorSimple 8000 Series eszközével kapcsolatos problémákat](storsimple-8000-troubleshoot-deployment.md)

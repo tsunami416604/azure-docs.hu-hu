@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 1e92da6f99ccb32580d7f0286b5bcbf77d694262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855650"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974549"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -96,7 +96,7 @@ Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről
 
 Ha Azure IoT Edge eszközt szeretne csatlakoztatni egy IoT hubhoz, először létre kell hoznia egy identitást az eszközhöz a központban. A kapcsolódási karakterláncot a felhőben található eszköz-identitásból fogjuk használni, hogy a futtatókörnyezetet a IoT Edge eszközön konfigurálja. Ha egy konfigurált eszköz csatlakozik a központhoz, a modulok üzembe helyezésére és üzenetek küldésére van lehetőség. A fizikai IoT Edge eszköz konfigurációját a IoT hub megfelelő eszköz-identitásának módosításával is megváltoztathatja.
 
-Ebben az oktatóanyagban létrehozjuk az új eszköz identitását a Visual Studio Code használatával. Ezeket a lépéseket a [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)vagy az [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)használatával is elvégezheti.
+Ebben az oktatóanyagban létrehozjuk az új eszköz identitását a Visual Studio Code használatával. Ezeket a lépéseket a Azure Portal vagy az Azure CLI használatával is elvégezheti.
 
 1. A fejlesztői gépen nyissa meg a Visual Studio Code-ot.
 
@@ -294,7 +294,7 @@ A következő lépésben frissíteni fogjuk a tanúsítványokat és a gazdagép
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Elkezdtük a Azure Key Vaultba feltöltött tesztelési tanúsítványok generálását. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. Az SSH-n keresztül csatlakoztatott virtuális géppel az Azure-ba jelentkezett be, és a tanúsítványokat a Key Vaultból letöltöttük. A config. YAML fájl frissítésével számos frissítést készítettünk a IoT Edge futtatókörnyezet konfigurációjában.
 

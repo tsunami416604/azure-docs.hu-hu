@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375880"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976451"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
@@ -170,6 +170,84 @@ Most, hogy úgy döntött, hogy az ajánlatával él, ami elérhetővé teszi a 
     Garantáljuk, hogy az ajánlat nyilvánosan elérhetővé válik a piactéren.
 
 Az ellenőrzés befejezése után az ajánlat a piactéren lesz elérhető.
+
+## <a name="publishing-history"></a>Közzétételi előzmények
+
+A partner Center **Előzmények** lapja a kereskedelmi Piactéri ajánlatok közzétételi eseményeit jeleníti meg. A lap minden eseménynél megjeleníti a műveletet kezdeményező felhasználót, az esemény típusát, valamint az esemény dátumát és időpontját. Az [érvényesítési és közzétételi lépések](#validation-and-publishing-steps) a Befejezés dátumával és időpontjával vannak felsorolva.
+
+Az ajánlat előzményeinek megtekintése:
+
+1.    Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
+2.    A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3.    Válassza ki az ajánlatot.
+4.    Kattintson a bal oldali navigációs menü **Előzmények** fülére. Az oldal a következő eseményekre vonatkozó adatokat tartalmazza, az ajánlatának megfelelően:
+
+|Esemény    |Description    |
+|---------|---------------|
+|Ajánlat létrehozva    |Az ajánlat a partner Centerben lett létrehozva. A felhasználó az ajánlat típusát, az ajánlat azonosítóját és az ajánlati aliast választotta a **kereskedelmi piactér**  >  **áttekintésében**.    |
+|Terv létrehozva: *terv neve*    |A felhasználó létrehozta az új csomagot a csomag **áttekintése** lapon a terv azonosítója és a terv nevének megadásával.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
+|Csomag törölve    |A felhasználó törölte a terv **áttekintő** oldalának **Törlés** parancsát, és nem tették közzé a piszkozatot.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
+|Kezdeményezett terv leállítása: *csomag neve*    |A felhasználó a terv **áttekintése** lapon lévő **értékesítés leállítása** lehetőség kiválasztásával kezdeményezte a csomag leállítását.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
+|Terv visszavonása – eladás: *terv neve*    |A felhasználó megszakította a csomag leállítását. Ehhez válassza az **értékesítés leállítása** a **terv áttekintése** lapról lehetőséget.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
+|Előnézeti ajánlat elküldve    |A felhasználók a **felülvizsgálat és közzététel** lap Közzététel elemére kattintva elküldték az ajánlatot az előzetes **verzióra** .    |
+|Elindított elküldés az előnézet lemondásához    |Egy felhasználó az ajánlat közzétételének megszakítása az előzetes verzióra való beküldést követően az **ajánlat áttekintése** lapon, a **Közzététel megszakítása** lehetőség választásával.</br>*Ez az esemény a törlési kérelem feldolgozásakor jelenik meg*.    |
+|Megszakított küldés az előzetes verzióra    |A felhasználó megszakította az ajánlat közzétételét az előzetes **verzióra, ha a közzététel megszakítva** lehetőséget választja az **ajánlat áttekintése** lapon az előnézet megadását követően.</br>*Ez az esemény a törlési kérelem sikeres feldolgozását követően jelenik meg*.    |
+|Bejelentkezés a Go Live szolgáltatásba    |A felhasználók a kereskedelmi piactéren közzétették az ajánlatot, ha az **ajánlat áttekintése** oldalon a **Go Live** lehetőségre kattintanak.    |
+|Közzététel kezdeményezése a piactéren – visszavonás    |A felhasználó az ajánlat közzétételének megszakítására kérte a **Közzététel megszakítása** az **ajánlat áttekintése** lapon, miután a bejelentkezés megszakítva állapotba lép.</br>*Ez az esemény a törlési kérelem feldolgozásakor jelenik meg*.    |
+|A kereskedelmi piactéren való közzététel megszakítva    |A felhasználó megszakította az ajánlat közzétételét. ehhez kattintson a **Közzététel megszakítása** lehetőségre az **ajánlat áttekintése** oldalon a bejelentkezés előtt.</br>*Ez az esemény a törlési kérelem sikeres feldolgozását követően jelenik meg*.    |
+|Privát célközönség szinkronizálása    |A felhasználó frissítette és szinkronizálta a privát célközönséget a **saját célközönség szinkronizálása** lehetőség kiválasztásával a **terv áttekintése** lapon vagy a **csomag díjszabása & rendelkezésre állási** lapon.</br>*Ez az esemény csak a privát terveket támogató ajánlati típusokra vonatkozik*.    |
+|Eladási ajánlat leállítása    |A felhasználó leállította az ajánlat értékesítését az **ajánlat áttekintése** oldalon található **értékesítés leállítása** lehetőség kiválasztásával.    |
+
+> [!NOTE]
+> Az Előzmények lap nem jelenik meg, amikor a rendszer mentette az ajánlat piszkozatát.
+
+### <a name="filter-options"></a>Szűrési lehetőségek
+
+A szűrők használatával szűkítheti az ajánlat teljes előzményeit adott közzétételi eseményekre:
+
+1.    Kattintson a szűrő gombra a lap jobb felső sarkában.
+2.    Válasszon ki egy szűrőt, majd válassza az **alkalmaz** lehetőséget, hogy megtekintse, mely események egyeznek meg a kiválasztott feltételekkel.
+3.    Válassza a **Szűrők törlése** lehetőséget az ajánlat teljes előzményeihez való visszatéréshez.
+
+Négy szűrő van:
+* Események
+* Felhasználók
+* Dátum
+* Oldalak
+
+Az **oldalak** szűrő kiválasztásakor kiválaszthatja a partneri központ azon lapjait, amelyek alkalmazhatók az ajánlat típusára. Ha alkalmazva van, a **Pages (oldalak** ) szűrő az összes elküldött ajánlatot megjeleníti az eseményeknek a kiválasztott oldal változásaival való **előnézetéhez** .
+
+* Minden ajánlat esetében az **ajánlat beállítása** lap alapértelmezés szerint az egyes beküldési eseményekhez tartozik.
+* A támogatási csomagokkal rendelkező ajánlatok esetében a **terv áttekintő** lapja szerepel az egyes beküldési eseményeknél.
+* A test Drive-t támogató ajánlatok esetében minden beküldési eseményhez meg kell adni a **tesztvezetés** lapot.
+
+### <a name="users"></a>Felhasználók
+
+Ha egy felhasználó kezdeményezte az eseményt, az Előzmények lapon a következő forgatókönyvek szerint jelenik meg a felhasználó:
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>Az eseményt a közzétevő kezdeményezte
+
+Az ajánlatok közzétételi engedélyekkel rendelkező felhasználóinak neve megjelenik az általuk kezdeményezett közzétételi eseményeknél.
+
+[![Az Előzmények lap megjeleníti a közzétételi engedélyekkel rendelkező felhasználók nevét.](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>Az eseményt a Microsoft kezdeményezte
+
+Engedélyt adhat a Microsoft rendszergazdái számára, hogy az Ön nevében műveleteket kezdeményezzenek, vagy váratlan rendszerhiba után végezze el a korrekciós műveleteket. A Microsoft neve és emblémája a Microsoft által a fiókja nevében kezdeményezett események közzétételéhez jelenik meg.
+
+[![Példa az előzmények lapra a Microsoft által kezdeményezett események megjelenítéséhez.](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>Az eseményt egy azonosítatlan felhasználó kezdeményezte
+
+Azok a felhasználók, akik már nincsenek társítva egy fiókkal, el lesznek távolítva a **kezdeményező** oszlopból a közzétételi engedélyeik visszavonása után.
+
+[![Példa az előzmények lapra az azonosítatlan felhasználók által kezdeményezett események megjelenítéséhez.](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>Érvényesítési és közzétételi lépések
+
+Az [érvényesítési és a közzétételi lépéseknek](#validation-and-publishing-steps)megfelelő rendszerfolyamatok nem jelennek meg a felhasználónál. Ezek az események az esemény befejezési állapota szerint színkódoltak.
+
+[![Példa arra, hogy az előzmények oldal hogyan jeleníti meg az érvényesítési és közzétételi lépéseket.](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 

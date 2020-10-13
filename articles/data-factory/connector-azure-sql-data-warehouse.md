@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 408f58b44bbe1ff8be7498b33a1209f4488c2ccc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332151"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951978"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Adatmásolás és átalakítás az Azure szinapszis Analyticsben (korábban SQL Data Warehouse) a használatával Azure Data Factory
 
@@ -564,7 +564,7 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
 
 Ha a forrásadatok nem natív módon kompatibilisek a-alapú alkalmazásokkal, engedélyezze az adatok másolását egy átmeneti Azure-blobon vagy Azure Data Lake Storage Gen2on keresztül (nem lehet Azure Premium Storage). Ebben az esetben a Azure Data Factory automatikusan átalakítja az adatokra, hogy megfeleljenek a Base adatformátumra vonatkozó követelményeinek. Ezután a rendszer meghívja a albaseot az adatok Azure szinapszis Analyticsbe való betöltéséhez. Végezetül törli az ideiglenes adatait a tárolóból. Az adatok átmeneti használatával történő másolásával kapcsolatos részletekért lásd a [szakaszos másolást](copy-activity-performance-features.md#staged-copy) .
 
-A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2 társított szolgáltatást](connector-azure-data-lake-storage.md#linked-service-properties) , amely az Azure Storage-fiókra hivatkozik az ideiglenes tárolóval. Ezután adja meg a `enableStaging` és a `stagingSettings` tulajdonságokat a másolási tevékenységhez, ahogy az a következő kódban is látható.
+A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , vagy [Azure Data Lake Storage Gen2 társított szolgáltatást](connector-azure-data-lake-storage.md#linked-service-properties) olyan **fiók kulccsal vagy felügyelt identitás-hitelesítéssel** , amely az Azure Storage-fiókra hivatkozik átmeneti tárolóként.
 
 >[!IMPORTANT]
 >Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2 által felügyelt identitás-hitelesítés](connector-azure-data-lake-storage.md#managed-identity)Data Factory szükséges konfigurációinak megismerése.
@@ -824,7 +824,7 @@ Amikor a vagy az Azure szinapszis Analytics szolgáltatásba másol adatait, a k
 | binary                                | Bájt []                         |
 | bit                                   | Logikai                        |
 | char                                  | Karakterlánc, char []                 |
-| dátum                                  | DateTime                       |
+| date                                  | DateTime                       |
 | Datetime                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | DateTimeOffset                        | DateTimeOffset                 |
@@ -848,6 +848,6 @@ Amikor a vagy az Azure szinapszis Analytics szolgáltatásba másol adatait, a k
 | varbinary                             | Bájt []                         |
 | varchar                               | Karakterlánc, char []                 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A forrásként és fogadóként támogatott adattárak listáját a Azure Data Factory másolási tevékenysége című részben tekintheti meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

@@ -4,34 +4,38 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e6f68daf22659b880827ad027268d9757c60063
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178808"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971335"
 ---
 ### <a name="open-the-publish-wizard"></a>A közzétételi varázsló megnyitása
 
-A **megoldáskezelő**kattintson a jobb gombbal a **SharingService** projektre, és válassza a **Közzététel**lehetőséget.
+**Megoldáskezelő**kattintson a jobb gombbal a **SharingService** projektre, majd válassza a **Közzététel**lehetőséget.
 
-Elindul a közzétételi varázsló. Válassza ki **app Service**  >  **Közzététel** elemet a **app Service létrehozása** párbeszédpanel megnyitásához.
+Elindul a közzétételi varázsló. 
+
+Válassza ki **app Service**  >  **Közzététel** elemet a **Létrehozás app Service** panel megnyitásához.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-A **app Service létrehozása** párbeszédpanelen válassza a **fiók hozzáadása** lehetőséget, és jelentkezzen be az Azure-előfizetésbe. Ha már bejelentkezett, válassza ki a kívánt fiókot a legördülő listából.
+Jelentkezzen be az Azure portálra.
 
-> [!NOTE]
-> Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
->
+A **app Service létrehozása** panelen válassza a **fiók hozzáadása**lehetőséget, majd jelentkezzen be az Azure-előfizetésbe. Ha már bejelentkezett, válassza ki a kívánt fiókot a legördülő listából.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+   > [!NOTE]
+   > Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
+   >
+
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
 Az **Erőforráscsoport** mellett válassza az **Új** elemet.
 
-Nevezze el a **myResourceGroup** erőforráscsoportot, majd kattintson az **OK** gombra.
+Nevezze el az erőforráscsoport **myResourceGroup**, majd kattintson **az OK gombra**.
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
@@ -39,24 +43,24 @@ Nevezze el a **myResourceGroup** erőforráscsoportot, majd kattintson az **OK**
 
 A **Szolgáltatási csomag** mellett válassza az **Új** elemet.
 
-A **üzemeltetési terv konfigurálása** párbeszédpanelen használja a következő beállításokat:
+A **üzemeltetési terv konfigurálása** panelen használja az alábbi beállításokat:
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|App Service Plan (App Service-csomag)| MySharingServicePlan | Az App Service-csomag neve. |
-| Hely | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Méret | Ingyenes | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag. |
+|App Service-csomag| MySharingServicePlan | Az App Service terv neve |
+| Hely | USA nyugati régiója | Az az adatközpont, amelyen a webalkalmazás fut |
+| Méret | Ingyenes | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag |
 
 Válassza az **OK** lehetőséget.
 
 ### <a name="create-and-publish-the-web-app"></a>A webapp létrehozása és közzététele
 
-Az **alkalmazás neve**mezőben adjon meg egy egyedi nevet (érvényes karakterek: `a-z` , `0-9` és `-` ), vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `https://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
+Az **alkalmazás neve**mezőben adjon meg egy egyedi nevet. Érvényes karakterek: a-z, 0-9 és kötőjel (-), vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `https://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
 
 A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
 
-A varázsló befejeződése után közzéteszi a ASP.NET Core webalkalmazást az Azure-ban, majd megnyitja az alkalmazást az alapértelmezett böngészőben.
+   A varázsló befejeződése után közzéteszi a ASP.NET Core webalkalmazást az Azure-ban, majd megnyitja az alkalmazást az alapértelmezett böngészőben.
 
-![Közzétett ASP.NET-webapp az Azure-ban](./media/spatial-anchors-azure/web-app-running-live.png)
+  ![Képernyőkép egy közzétett ASP.NET-webalkalmazásról az Azure-ban.](./media/spatial-anchors-azure/web-app-running-live.png)
 
-Az ebben a szakaszban használt alkalmazás neve URL-előtagként van megadva a formátumban `https://<app_name>.azurewebsites.net` . Jegyezze fel ezt az URL-címet, mert szüksége lesz rá.
+Az ebben a szakaszban használt alkalmazás neve URL-előtagként van megadva a formátumban `https://<app_name>.azurewebsites.net` . Másolja ezt az URL-címet egy szövegszerkesztőbe későbbi használatra.

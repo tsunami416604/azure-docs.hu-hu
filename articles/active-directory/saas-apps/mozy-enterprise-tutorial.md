@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c9c4cef07bf1de64bcb14bc4487e0f56d2a40dfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdeec23b6b0a0ef2884fa35bd0a576ef57bb7853
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518630"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a Mozy Enterprise-nal
 
@@ -126,11 +126,11 @@ Az Azure AD egyszeri bejelentkezés a Mozy Enterprise-vel való konfigurálásá
 
 2. A **konfiguráció** szakaszban kattintson a **hitelesítési házirend**elemre.
    
-    ![Hitelesítési házirend](./media/mozy-enterprise-tutorial/ic777314.png "Hitelesítési házirend")
+    ![A képernyőképen a konfiguráció alapján kiválasztott hitelesítési házirend látható.](./media/mozy-enterprise-tutorial/ic777314.png "Hitelesítési házirend")
 
 3. A **hitelesítési házirend** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Hitelesítési házirend](./media/mozy-enterprise-tutorial/ic777315.png "Hitelesítési házirend")
+    ![Képernyőfelvétel: a hitelesítési házirend szakasza, ahol megadhatja a leírt értékeket.](./media/mozy-enterprise-tutorial/ic777315.png "Hitelesítési házirend")
    
     a. Válassza a **Címtárszolgáltatások** **szolgáltatóként**lehetőséget.
    
@@ -171,7 +171,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

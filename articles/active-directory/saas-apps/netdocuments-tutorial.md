@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549041"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938474"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NetDocuments
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -136,7 +136,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Válassza a **Security Center** lehetőséget.
    
-    ![Adattár](./media/netdocuments-tutorial/security-center.png "Security Center")
+    ![A képernyőképen a jogi dokumentumokból kiválasztott Security Center látható.](./media/netdocuments-tutorial/security-center.png "Security Center")
 
 4. Válassza a **speciális hitelesítés**lehetőséget.
     
@@ -166,7 +166,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ne
 
 3. Válassza a **Felhasználók és csoportok** elemet.
    
-    ![Adattár](./media/netdocuments-tutorial/users-groups.png "Adattár")
+    ![A képernyőképen a felhasználók & a jogi dokumentumokból kiválasztott csoportok láthatók.](./media/netdocuments-tutorial/users-groups.png "Adattár")
 
 4. Az **E-mail cím** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory fiók e-mail-címét, majd kattintson a **felhasználó hozzáadása**elemre.
    

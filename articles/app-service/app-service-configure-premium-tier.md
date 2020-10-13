@@ -1,5 +1,5 @@
 ---
-title: PremiumV3-szintek konfigurálása
+title: PremiumV3 szintű csomag konfigurálása
 description: Ismerje meg, hogyan javíthatja a teljesítményt a webes, mobil-és API-alkalmazásokban Azure App Service az új PremiumV3 díjszabási szintjére való skálázással.
 keywords: app service, azure app service, méret, méretezhető, app service-csomag, app service ára
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0030a9340d874d94b9876e23f372e97655c145da
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742669"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service PremiumV3-szintjeinek konfigurálása

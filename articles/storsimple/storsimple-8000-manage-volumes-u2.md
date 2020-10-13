@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86204460"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961680"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A kötetek kezelése a StorSimple Eszközkezelő szolgáltatásával (3. frissítés vagy újabb)
 
@@ -57,8 +57,8 @@ A következő táblázat tartalmazza az egyes eszközök és kötetek típusána
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuális eszközök** | | |
-| 8010 |30 TB |N/A |
-| 8020 |64 TB |N/A |
+| 8010 |30 TB |N.A. |
+| 8020 |64 TB |N.A. |
 
 ## <a name="the-volumes-blade"></a>A kötetek panel
 
@@ -112,7 +112,7 @@ A StorSimple 8000 Series-eszköz üzembe helyezése során [létrehozott egy kö
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
 
-    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR-t. Ha új ACR-t választ, akkor adjon meg egy **nevet** az ACR számára, adja meg a Windows-gazdagép **iSCSI minősített nevét** (IQN). Ha nem tudja az IQN-t, lépjen a Windows Server-gazdagép IQN nevének lekérése szakaszhoz. Kattintson a **Létrehozás** elemre. Létrejön egy kötet a megadott beállításokkal.
+    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR-t. Ha új ACR-t választ, akkor adjon meg egy **nevet** az ACR számára, adja meg a Windows-gazdagép **iSCSI minősített nevét** (IQN). Ha nem tudja az IQN-t, lépjen a Windows Server-gazdagép IQN nevének lekérése szakaszhoz. Kattintson a **Létrehozás** gombra. Létrejön egy kötet a megadott beállításokkal.
 
         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -155,11 +155,11 @@ Módosítsa a kötetet, ha ki kell bontania, vagy módosítania kell a kötetet 
    3. Növelje a **kiosztott kapacitást**. A **kiosztott kapacitást** csak növelni lehet. A kötetek létrehozása után nem lehet zsugorodni.
    4. A **csatlakoztatott gazdagépek**területen módosíthatja az ACR-t. Az ACR módosításához a kötetnek offline állapotban kell lennie.
 
-       ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Tekintse át a kötet offline állapotba helyezésének következményeit 2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A Azure Portal megjeleníti a kötet frissítési üzenetét. Ekkor megjelenik egy sikeres üzenet, ha a kötet sikeresen frissítve lett.
 
-    ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Tekintse át a kötet offline állapotba helyezésének következményeit 3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. Ha bővít egy kötetet, hajtsa végre a következő lépéseket a Windows-gazdagépen:
    
@@ -215,7 +215,7 @@ Előfordulhat, hogy egy helyileg rögzített kötetet egy lépcsőzetes kötetre
 
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki azt az eszközt, amelynek a kötetét módosítani kívánja. Kattintson a **beállítások > kötetek**elemre.
 
-    ![Ugrás a kötetek panelre](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Ugrás a kötetek panel 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. A kötetek táblázatos listájából válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívásához. Válassza a **módosítás**lehetőséget.
 
@@ -249,7 +249,7 @@ Előfordulhat, hogy offline állapotba kell helyeznie egy kötetet, amikor módo
    
     1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki azt az eszközt, amelynek a kötetét módosítani kívánja. Kattintson a **beállítások > kötetek**elemre.
 
-        ![Ugrás a kötetek panelre](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Ugrás a kötetek panel 3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. A kötetek táblázatos listájából válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívásához. Válassza az **Offline** állapotba állítás lehetőséget, ha szeretné, hogy a kötet offline állapotba kerüljön.
 
@@ -257,7 +257,7 @@ Előfordulhat, hogy offline állapotba kell helyeznie egy kötetet, amikor módo
 
 3. Tekintse át a **kötet offline** állapotba helyezésének következményeit, és jelölje be a megfelelő jelölőnégyzetet. Kattintson az **offline állapotba**állítás elemre. 
 
-    ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Tekintse át a kötet offline állapotba helyezésének következményeit 4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       Értesítést kap, ha a kötet offline állapotban van. A kötet állapota offline állapotra is frissül.
       
@@ -277,7 +277,7 @@ A kötetek törléséhez hajtsa végre az alábbi lépéseket.
 
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki azt az eszközt, amelynek a kötetét módosítani kívánja. Kattintson a **beállítások > kötetek**elemre.
 
-    ![Ugrás a kötetek panelre](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Ugrás a kötetek panel 4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. Tekintse meg a törölni kívánt kötet állapotát. Ha a törölni kívánt kötet nem offline állapotban van, először állítsa offline állapotba. Kövesse a [kötet offline állapotba](#take-a-volume-offline)helyezése című témakör lépéseit.
 4. Ha a kötet offline állapotban van, válassza ki a kötetet, kattintson a jobb gombbal a helyi menü meghívásához, majd válassza a **Törlés**lehetőséget.
@@ -317,7 +317,7 @@ A kötet figyelésének engedélyezéséhez vagy letiltásához hajtsa végre az
 
 4. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra. A Azure Portal megjelenít egy értesítést a kötet frissítéséről, majd egy sikeres üzenetről, miután a kötet frissítése sikeresen megtörtént.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-8000-clone-volume-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).

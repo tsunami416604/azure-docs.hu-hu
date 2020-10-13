@@ -3,12 +3,12 @@ title: Sablon exportálása Azure Portal
 description: A Azure Portal használatával exportálhat egy Azure Resource Manager sablont az előfizetése erőforrásaiból.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423235"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951757"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
 
@@ -49,11 +49,13 @@ A sablon exportálása az üzembe helyezés előtt vagy az előzményekből a k�
 
 Egy erőforráscsoport vagy erőforrás exportálásakor az exportált sablon az egyes erőforrástípusok [közzétett sémái](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) alapján jön létre. Alkalmanként a séma nem rendelkezik az erőforrástípus legújabb verziójával. Ellenőrizze az exportált sablont, és győződjön meg róla, hogy tartalmazza a szükséges tulajdonságokat. Ha szükséges, szerkessze az exportált sablont a szükséges API-verzió használatára.
 
-A sablon exportálása funkció nem támogatja Azure Data Factory erőforrások exportálását. A Data Factory-erőforrások exportálásával kapcsolatos további tudnivalókért lásd: az [adatfeldolgozó másolása vagy klónozása Azure Data Factory-ben](https://aka.ms/exportTemplateViaAdf).
+A sablon exportálása funkció nem támogatja Azure Data Factory erőforrások exportálását. A Data Factory-erőforrások exportálásával kapcsolatos további tudnivalókért lásd: az [adatfeldolgozó másolása vagy klónozása Azure Data Factory-ben](../../data-factory/copy-clone-data-factory.md).
 
-A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át kell telepítenie azokat a Resource Manager](https://aka.ms/migrateclassicresourcetoarm)-alapú üzemi modellbe.
+A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át kell telepítenie azokat a Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)-alapú üzemi modellbe.
 
 Ha egy olyan sablon exportálásakor figyelmeztető üzenet jelenik meg, amely azt jelzi, hogy az erőforrás típusa nem lett exportálva, akkor továbbra is felderítheti az adott erőforrás tulajdonságait. Az erőforrás-tulajdonságok megtekintésének különböző lehetőségeiről további információt az [Erőforrás-tulajdonságok felderítése](view-resources.md)című témakörben talál. Az erőforrás típusa az [Azure REST API](/rest/api/azure/) is megtekinthető.
+
+Az erőforráscsoport legfeljebb 200 erőforrást hoz létre az exportált sablon létrehozásához. Ha több mint 200 erőforrást tartalmazó erőforráscsoportot próbál exportálni, a hibaüzenet jelenik meg `Export template is not supported for resource groups more than 200 resources` .
 
 ## <a name="export-template-from-a-resource-group"></a>Sablon exportálása erőforráscsoportból
 

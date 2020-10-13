@@ -2,20 +2,20 @@
 title: Azure AD Domain Services a Cloud Solution Providers szolgáltatáshoz | Microsoft Docs
 description: Ismerje meg, hogyan engedélyezheti és kezelheti Azure Active Directory Domain Services felügyelt tartományokat az Azure Cloud Solution-szolgáltatók számára
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: fae04d929be7ae6f266ff136b4fbd90f7d8a4e02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749651"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960966"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Domain Services üzembe helyezés és felügyelet az Azure Cloud Solution Providers szolgáltatásban
 
@@ -93,6 +93,6 @@ A következő fontos szempontokat kell figyelembe venni egy felügyelt tartomán
     
     Ahhoz, hogy egy CSP-partner felügyelt tartományon hajtsa végre ezeket a feladatokat, felhasználói fiókot kell létrehoznia az ügyfél Azure AD-bérlőn belül. A fiók hitelesítő adatait meg kell osztani a CSP-partner rendszergazdai ügynökével. Ezt a felhasználói fiókot is hozzá kell adni a *HRE DC-rendszergazdák* csoportjához, hogy a felügyelt tartományon lévő konfigurációs feladatok ezen felhasználói fiók használatával legyenek elvégezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként [regisztráljon az Azure CSP programba](/partner-center/enrolling-in-the-csp-program). Ezután engedélyezheti Azure AD Domain Services [a Azure Portal vagy a](tutorial-create-instance.md) [Azure PowerShell](powershell-create-instance.md)használatával.

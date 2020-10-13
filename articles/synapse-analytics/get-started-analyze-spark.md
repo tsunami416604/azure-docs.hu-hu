@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017914"
+ms.locfileid: "91893540"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -22,7 +22,7 @@ ms.locfileid: "90017914"
 
 Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését az Azure szinapszis Apache Sparkával.
 
-1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow** elemre **, és**válassza az **új jegyzetfüzet kiválasztása** lehetőséget.
+1. Az adatközpontban **kattintson az** **új erőforrás hozzáadása**elemre (a **csatolthoz**tartozó pluszjelre)  >> **tallózási mintákat**. Keresse meg a **New York-i taxi & limuzin Commission – Yellow taxi Trip Records** , és kattintson rá. A lap alján nyomja meg a **Folytatás** , majd az **adatkészlet hozzáadása**után gombot. Az **adatközpontban** most **Linked** kattintson a jobb gombbal az **Azure Blob Storage >> minta adatkészletek >> nyc_tlc_yellow** lehetőségre, és válassza az **új jegyzetfüzet** elemet.
 1. Ekkor létrejön egy új jegyzetfüzet a következő kóddal:
     ```
     from azureml.opendatasets import NycTlcYellow
@@ -116,9 +116,9 @@ val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Adatelemzés a Storage szolgáltatásban](get-started-analyze-storage.md)
+> [Az SQL igény szerinti elemzése](get-started-analyze-sql-on-demand.md)
 
 

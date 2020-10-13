@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 905ca5fd92a09b209bf099bfac0862132ec679a4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543278"
+ms.locfileid: "91875362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Azure Active Directory integráció a Sectigo tanúsítványkezelővel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Sectigo Tanúsítványkezelőt Azure Active Directory (Azure AD) használatával.
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Sectigo Tanúsítványkezelőt (más néven SCM-t) Azure Active Directory (Azure AD) használatával.
 
 A Sectigo tanúsítványkezelő és az Azure AD integrálásával a következő előnyöket nyújtja:
 
@@ -35,7 +35,10 @@ További információ az Azure AD-vel való szolgáltatott szoftveres (SaaS) alk
 Az Azure AD-integráció a Sectigo tanúsítványkezelővel való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) a Kezdés előtt.
-* Sectigo tanúsítványkezelő előfizetés egyszeri bejelentkezéssel.
+* Sectigo tanúsítványkezelő fiók.
+
+> [!NOTE]
+> A Sectigo a Sectigo tanúsítványkezelő több példányát futtatja. A Sectigo tanúsítványkezelő fő példánya  **https: \/ /CERT-Manager.com**, és ez az URL-cím a jelen oktatóanyagban használatos.  Ha a fiókja egy másik példányon található, ennek megfelelően kell módosítania az URL-címeket.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -99,47 +102,45 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Sectigo 
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** panelen, a *identitásszolgáltató-kezdeményezésű mód*konfigurálásához hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    1. Az **azonosító** mezőben adja meg az alábbi URL-címek egyikét:
-       * https: \/ /CERT-Manager.com/shibboleth
-       * https: \/ /Hard.CERT-Manager.com/shibboleth
+    1. Az **azonosító (entitás azonosítója)** mezőben a Sectigo tanúsítványkezelő példányának fő mezőjében adja meg a **https: \/ /CERT-Manager.com/shibboleth**értéket.
 
-    1. A **Válasz URL-címe** mezőbe írja be az alábbi URL-címek egyikét:
-        * https: \/ /CERT-Manager.com/Shibboleth.SSO/SAML2/post
-        * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/SAML2/post
+    1. A **Válasz URL-címe** mezőben a Sectigo tanúsítványkezelő példányához adja meg a **https: \/ /CERT-Manager.com/Shibboleth.SSO/SAML2/post**értéket.
+        
+    > [!NOTE]
+    > Bár általánosságban a **bejelentkezési URL-cím** kötelezően az *SP által kezdeményezett módban*van, nem szükséges a Sectigo tanúsítványkezelőtől bejelentkeznie.        
+
+1. Ha szükséges, az **alapszintű SAML-konfiguráció** szakaszban a *identitásszolgáltató által kezdeményezett mód* konfigurálásához és a **tesztek** működésének engedélyezéséhez hajtsa végre a következő lépéseket:
 
     1. Válassza a **további URL-címek beállítása**lehetőséget.
 
-    1. A **továbbítási állapot** mezőben adja meg az alábbi URL-címek egyikét:
-       * https: \/ /CERT-Manager.com/Customer/SSLSupport/IDP
-       * https: \/ /Hard.CERT-Manager.com/Customer/SSLSupport/IDP
+    1. A **továbbítási állapot** mezőben adja meg a Sectigo-tanúsítvány kezelője ügyfél-specifikus URL-címét. A fő Sectigo-tanúsítványkezelő példánynál adja meg a **https: \/ /CERT-Manager.com/Customer/ \<customerURI\> /IDP**értéket.
 
     ![Sectigo tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-relay.png)
 
-1.  Az alkalmazás *SP-kezdeményezésű módban*való konfigurálásához hajtsa végre a következő lépéseket:
+1. A **felhasználói attribútumok & jogcímek** szakaszban hajtsa végre a következő lépéseket:
 
-    * A **bejelentkezési URL-cím** mezőbe írja be az alábbi URL-címek egyikét:
-      * https: \/ /CERT-Manager.com/Shibboleth.SSO/login
-      * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/login
+    1. Törölje az összes **további jogcímet**.
+    
+    1. Válassza az **új jogcím hozzáadása** lehetőséget, és adja hozzá a következő négy jogcímet:
+    
+        | Name | Névtér | Forrás | Forrás attribútum | Leírás |
+        | --- | --- | --- | --- | --- |
+        | eduPersonPrincipalName | üres | Attribútum | User. userPrincipalName | Meg kell egyeznie a **identitásszolgáltató személy azonosító** mezőjével a Sectigo Tanúsítványkezelőben a rendszergazdák számára. |
+        | Levelezés | üres | Attribútum | User. mail | Kötelező |
+        | givenName | üres | Attribútum | User. givenName | Választható |
+        | sn | üres | Attribútum | felhasználó. vezetéknév | Választható |
 
-      ![Sectigo tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
+       ![Sectigo tanúsítványkezelő – négy új jogcím hozzáadása](media/sectigo-certificate-manager-tutorial/additional-claims.png)
 
-1. Az **egyszeri Sign-On beállítása az SAML** -panellel panelen az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** a **tanúsítvány mellett (Base64)** elemet. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
+1. Az **SAML aláíró tanúsítvány** szakaszban válassza az **összevonási metaadatok XML**elem melletti **Letöltés** elemet. Mentse az XML-fájlt a számítógépen.
 
-    ![A tanúsítvány (Base64) letöltési lehetősége](common/certificatebase64.png)
-
-1. A **Sectigo tanúsítványkezelő beállítása** szakaszban a követelmények alapján másolja a következő URL-címeket:
-
-    * Bejelentkezési URL
-    * Azure AD-azonosító
-    * Kijelentkezési URL-cím
-
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    ![Az összevonási metaadatok XML-letöltési lehetősége](common/metadataxml.png)
 
 ### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>A Sectigo-tanúsítványkezelő egyszeri bejelentkezésének konfigurálása
 
-Ha az egyszeri bejelentkezést a Sectigo tanúsítványkezelő oldalon szeretné konfigurálni, küldje el a letöltött tanúsítvány (Base64) fájlját és a Azure Portalból a [Sectigo Certificate Manager támogatási csapatához](https://sectigo.com/support)másolt releváns URL-címeket. A Sectigo tanúsítványkezelő támogatási csapata az Ön által küldött adatokat használja annak biztosítására, hogy az SAML egyszeri bejelentkezési kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a Sectigo tanúsítványkezelő oldalon, küldje el a letöltött összevonási metaadatok XML-fájlját a [Sectigo Certificate Manager támogatási csapatának](https://sectigo.com/support). A Sectigo tanúsítványkezelő támogatási csapata az Ön által küldött adatokat használja annak biztosítására, hogy az SAML egyszeri bejelentkezési kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -167,7 +168,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban Simon Britta-hozzáférést biztosít a Sectigo tanúsítványkezelőnek, így az Azure egyszeri bejelentkezést is használhatja.
+Ebben a szakaszban Simon Britta-hozzáférést biztosít a Sectigo Tanúsítványkezelőhöz, így a felhasználó használhatja az Azure egyszeri bejelentkezést.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Sectigo a Tanúsítványkezelő**elemet.
 
@@ -197,11 +198,21 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Sectigo Ta
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a saját alkalmazások portál használatával.
+Ebben a szakaszban teszteli az Azure AD egyszeri bejelentkezési konfigurációját.
 
-Miután beállította az egyszeri bejelentkezést, a saját alkalmazások portálján a **Sectigo tanúsítványkezelő** lehetőség kiválasztásával automatikusan bejelentkezik a Sectigo tanúsítványkezelőbe. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="test-from-sectigo-certificate-manager-sp-initiated-single-sign-on"></a>Tesztelés a Sectigo Tanúsítványkezelőtől (SP által kezdeményezett egyszeri bejelentkezés)
 
-## <a name="next-steps"></a>További lépések
+Tallózással keresse meg az ügyfél-specifikus URL-címet (a fő Sectigo tanúsítványkezelő példány, https: \/ /CERT-Manager.com/Customer/ \<customerURI\> /, és válassza az alábbi gombot, **vagy jelentkezzen be**a következővel:.  Ha megfelelően van konfigurálva, a rendszer automatikusan bejelentkezik a Sectigo Tanúsítványkezelőbe.
+
+#### <a name="test-from-azure-single-sign-on-configuration-idp-initiated-single-sign-on"></a>Azure-beli egyszeri bejelentkezés konfigurációjának tesztelése (IDENTITÁSSZOLGÁLTATÓ-alapú egyszeri bejelentkezés)
+
+A **Sectigo tanúsítványkezelő** alkalmazás-integráció ablaktáblán válassza az **egyszeri bejelentkezés** lehetőséget, majd kattintson a **teszt** gombra.  Ha megfelelően van konfigurálva, a rendszer automatikusan bejelentkezik a Sectigo Tanúsítványkezelőbe.
+
+#### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>Tesztelés a saját alkalmazások portál használatával (IDENTITÁSSZOLGÁLTATÓ-kezdeményezésű egyszeri bejelentkezés)
+
+Válassza a **Sectigo tanúsítványkezelő** elemet a saját alkalmazások portálon.  Ha megfelelően van konfigurálva, a rendszer automatikusan bejelentkezik a Sectigo Tanúsítványkezelőbe. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket:
 

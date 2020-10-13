@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84985472"
+ms.locfileid: "91875556"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet-VNet közötti kapcsolatok konfigurálása (klasszikus)
 
@@ -80,16 +80,7 @@ Az alábbi táblázat a virtuális hálózatok definiálására mutat példát. 
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>2. lépés – a virtuális hálózatok létrehozása
 
-Hozzon létre két virtuális hálózatot a [Azure Portal](https://portal.azure.com). A klasszikus virtuális hálózatok létrehozásához szükséges lépéseket lásd: [klasszikus virtuális hálózat létrehozása](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
-
-Ha a portálon klasszikus virtuális hálózatot hoz létre, a következő lépésekkel kell megnyitnia a virtuális hálózat lapot, ellenkező esetben a klasszikus virtuális hálózat létrehozásának lehetősége nem jelenik meg:
-
-1. A "+" elemre kattintva nyissa meg az "új" lapot.
-2. A "keresés a piactéren" mezőbe írja be a következőt: "Virtual Network". Ha ehelyett a hálózatkezelés-> Virtual Network lehetőséget választja, nem fogja tudni klasszikus VNet létrehozni.
-3. Keresse meg a "Virtual Network" elemet a visszaadott listából, és kattintson rá a Virtual Network lap megnyitásához. 
-4. Klasszikus VNet létrehozásához a virtuális hálózat lapon válassza a klasszikus lehetőséget. 
-
-Ha gyakorlatként használja ezt a cikket, a következő példa értékeket használhatja:
+Ebben a lépésben két klasszikus virtuális hálózatot hoz létre. Ha gyakorlatként használja ezt a cikket, a következő példa értékeket használhatja:
 
 **TestVNet1 értékei**
 
@@ -125,7 +116,11 @@ GatewaySubnet: 10.41.1.0/27
 
 * **DNS-kiszolgálók** – adja meg a DNS-kiszolgáló nevét és IP-címét. A beállítás nem hoz létre DNS-kiszolgálót. Lehetővé teszi, hogy megadja azokat a DNS-kiszolgálókat, amelyeket névfeloldásra kíván használni ennél a virtuális hálózatnál.
 
-Ebben a szakaszban a kapcsolat típusát, a helyi helyet és az átjárót hozza létre.
+### <a name="to-create-a-classic-virtual-network"></a>Klasszikus virtuális hálózat létrehozása
+
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>3. lépés – a helyi hely konfigurálása
 
@@ -205,38 +200,7 @@ Miután mindkét virtuális hálózatok létrehozta a virtuális hálózati átj
 
 ## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>7. lépés – értékek beolvasása a hálózati konfigurációs fájlból
 
-Ha a Azure Portal klasszikus virtuális hálózatok hoz létre, a megtekintett név nem a PowerShellhez használt teljes név. Előfordulhat például, hogy a portálon a **TestVNet1** nevű VNet sokkal több nevet tartalmaz a hálózati konfigurációs fájlban. A név valahogy így néz ki: **Group ClassicRG TestVNet1**. A kapcsolatok létrehozásakor fontos, hogy a hálózati konfigurációs fájlban látható értékeket használja.
-
-A következő lépésekben csatlakozni fog az Azure-fiókjához, és letölti és megtekinti a hálózati konfigurációs fájlt a kapcsolatokhoz szükséges értékek beszerzéséhez.
-
-1. Töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információ: [a Azure PowerShell használata](#powershell).
-
-2. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. Az alábbi példák segítséget nyújtanak a kapcsolódáshoz. Ezeket a parancsokat helyileg kell futtatni a PowerShell Service Management modul használatával. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
-
-   ```powershell
-   azure config mode asm
-   ```
-3. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. Keresse meg a fiókot az előfizetésekben.
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. Exportálja és tekintse meg a hálózati konfigurációs fájlt. Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a rendszer a **C:\AzureNet**exportálja.
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a virtuális hálózatok és a webhelyek nevét. Ezek a nevek lesznek a kapcsolatok létrehozásakor használt nevek.<br>A VNet nevei a **VirtualNetworkSite neve =**<br>A helyek nevei a **LocalNetworkSiteRef neve =**
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
 ## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>8. lépés – a VPN Gateway-kapcsolatok létrehozása
 
@@ -280,5 +244,5 @@ A példákban figyelje meg, hogy a megosztott kulcs pontosan ugyanaz. A megoszto
 * A VNet összes VPN-alagútja, beleértve a P2S VPN-eket is, megoszthatja a VPN-átjáró számára rendelkezésre álló sávszélességet, valamint az Azure-ban megegyező VPN Gateway-üzemidőt.
 * A VNet-VNet forgalom az Azure-gerincen halad át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ellenőrizze a kapcsolatokat. Lásd: [VPN Gateway-kapcsolatok ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).

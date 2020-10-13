@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali gazdagép-készlet terheléseloszt�
 description: Ismerje meg a Windows rendszerű virtuális asztali környezethez tartozó gazdagép-készlet terheléselosztási módszereit.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461119"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951859"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Gazdagépcsoport terheléselosztási módszerei
 
@@ -41,3 +41,6 @@ A szélesség – első módszer először a munkamenet azon gazdagépeit kérde
 A mélység – első terheléselosztási módszer lehetővé teszi, hogy egyszerre egy munkamenet-gazdagépet telítetten, hogy optimalizálja ezt a forgatókönyvet. Ez a módszer ideális olyan költséghatékony szervezeteknek, amelyek részletesebben szabályozzák a gazdagépek számára lefoglalt virtuális gépek számát.
 
 A mélység – első módszer először a munkamenet azon gazdagépeit kérdezi le, amelyek engedélyezik az új kapcsolatokat, és nem mentek át a maximális munkamenet-korláton A metódus ezután kiválasztja a munkamenet-gazdagépet a legnagyobb számú munkamenettel. Ha döntetlen van, a metódus kiválasztja az első munkamenet-állomást a lekérdezésben.
+
+>[!IMPORTANT]
+>A mélységi – az első terheléselosztási algoritmus a munkamenetek maximális száma alapján osztja el a munkamenet-gazdagépeket. Ezt a paramétert akkor kell megadni, ha a mélység – első terheléselosztási algoritmust használja. A lehető legjobb felhasználói élmény érdekében ügyeljen arra, hogy a maximális munkamenet-gazdagép-korlát paramétert egy olyan számra módosítsa, amely a legjobban megfelel a környezetének.

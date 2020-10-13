@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – testreszabott Azure Active Directory Domain Services felügyelt tartomány létrehozása | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat testreszabott Azure Active Directory Domain Services felügyelt tartományt, és hogyan adhat meg speciális konfigurációs beállításokat a Azure Portal használatával.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87491137"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967342"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Oktatóanyag: Azure Active Directory Domain Services felügyelt tartomány létrehozása és konfigurálása speciális konfigurációs beállításokkal
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartomány
 
 Felügyelt tartományt a Hálózatkezelés és a szinkronizálás [alapértelmezett konfigurációs beállításaival hozhat létre][tutorial-create-instance] , vagy manuálisan is megadhatja ezeket a beállításokat. Ez az oktatóanyag bemutatja, hogyan határozhatja meg ezeket a speciális konfigurációs beállításokat egy Azure AD DS felügyelt tartomány létrehozásához és konfigurálásához a Azure Portal használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Felügyelt tartomány DNS-és virtuális hálózati beállításainak konfigurálása

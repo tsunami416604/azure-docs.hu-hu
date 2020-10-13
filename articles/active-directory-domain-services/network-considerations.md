@@ -2,20 +2,20 @@
 title: A Azure AD Domain Services hálózati tervezése és kapcsolatai | Microsoft Docs
 description: Ismerkedjen meg a virtuális hálózat kialakításával kapcsolatos szempontokkal és a Azure Active Directory Domain Services futtatásakor a kapcsolathoz használt erőforrásokkal.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396331"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968089"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
 
@@ -91,7 +91,7 @@ A névfeloldást engedélyezheti feltételes DNS-továbbítók használatával a
 
 A felügyelt tartomány hálózati erőforrásokat hoz létre az üzembe helyezés során. Ezek az erőforrások a felügyelt tartomány sikeres működéséhez és felügyeletéhez szükségesek, és nem kell manuálisan konfigurálni.
 
-| Azure-erőforrás                          | Leírás |
+| Azure-erőforrás                          | Description |
 |:----------------------------------------|:---|
 | Hálózati csatolókártya                  | Az Azure AD DS üzemelteti a felügyelt tartományt két tartományvezérlőn (DCs), amely Azure-beli virtuális gépekként fut a Windows Serveren. Minden virtuális gépnek van egy virtuális hálózati adaptere, amely csatlakozik a virtuális hálózati alhálózathoz. |
 | Dinamikus normál nyilvános IP-cím      | Az Azure AD DS szabványos SKU nyilvános IP-cím használatával kommunikál a szinkronizálási és a felügyeleti szolgáltatással. A nyilvános IP-címekről további információt az [IP-címek típusai és a kiosztási módszerek az Azure-ban](../virtual-network/public-ip-addresses.md)című témakörben talál. |
@@ -110,9 +110,9 @@ A következő hálózati biztonsági csoportokra vonatkozó szabályokra van sz�
 
 | Portszám | Protokoll | Forrás                             | Cél | Művelet | Kötelező | Cél |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | Szinkronizálás az Azure AD-Bérlővel. |
-| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Yes      | Szinkronizálás az Azure AD-Bérlővel. |
+| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Yes      | A tartomány kezelése. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Yes      | A tartomány kezelése. |
 
 Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez. Ne törölje ezt a hálózati biztonsági csoportot. A terheléselosztó nem fog megfelelően működni.
 

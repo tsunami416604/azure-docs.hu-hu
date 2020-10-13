@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti a projekt előkészítését az Azure dev Spaces működésével
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213426"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968157"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projekt előkészítése az Azure dev Spaces működéséhez
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. A fejlesztői területek létrehozhatnak Dockerfiles és Helm-diagramokat a projekthez. A dev Spaces egy konfigurációs fájlt is létrehoz és használ a Kubernetes-alkalmazások AK-beli üzembe helyezéséhez, futtatásához és hibakereséséhez. Az összes ilyen fájl az alkalmazás kódjával együtt található, és hozzáadható a verziókövetés rendszeréhez.
 

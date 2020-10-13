@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8dfae58b9910504a11bf3986380398499e3357
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666347"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949598"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -196,6 +196,8 @@ Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurá
 
 A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -228,6 +230,10 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="chat"`            | Egy alkalmi és nyugodt hangvételt ad                         |
 |                         | `style="cheerful"`        | Pozitív és boldog hangjelzést ad                         |
 |                         | `style="empathetic"`      | A gondozás és a megértés értelme               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
+|                         | `style="chat"`            | Egy alkalmi és nyugodt hangvételt ad                         |
+|                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
+| `en-US-GuyNeural`       | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
 |                         | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
 |                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
@@ -289,7 +295,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
-| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
+| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben. Példák érvényes értékekre, `2s` és `500` | Választható |
 
 | Erősségét                      | Leírás |
@@ -432,7 +438,7 @@ Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva,
 
 Az `lexicon` elem legalább egy elemet tartalmaz `lexeme` . Minden `lexeme` elem tartalmaz legalább egy `grapheme` elemet, és egy vagy több `grapheme` , `alias` és `phoneme` elemet. Az `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást <span class="docon docon-navigate-external x-hidden-focus"></span> </a>leíró szöveget tartalmaz. Az `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. Az `phoneme` elem a kiejtését leíró szöveget tartalmaz `lexeme` .
 
-Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy kifejezés kiejtése. Ha a kiejtést egy betűszóhoz vagy egy rövidített kifejezéshez kell beállítania, először adjon meg egy `alias` , majd társítsa a- `phoneme` t `alias` . Példa:
+Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy kifejezés kiejtése. Ha a kiejtést egy betűszóhoz vagy egy rövidített kifejezéshez kell beállítania, először adjon meg egy `alias` , majd társítsa a- `phoneme` t `alias` . Például:
 
 ```xml
   <lexeme>
@@ -445,7 +451,7 @@ Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be 
   </lexeme>
 ```
 
-Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített kifejezéshez adja meg a vártat. Példa:
+Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített kifejezéshez adja meg a vártat. Például:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -529,7 +535,7 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `pitch` | Megadja a szöveg alappályáját. A szurok a következőképpen fejezhető ki:<ul><li>Abszolút érték, amelyet a szám a "Hz" (Hertz) kifejezéssel jelez. Például 600 Hz.</li><li>Egy relatív érték, amelyet a rendszer a "+" vagy "-" előtaggal, majd a "Hz" vagy "St" előtaggal jelöl, amely a szurok módosításához szükséges összeget határozza meg. Például: + 80 Hz vagy-2st. A "Szent" érték azt jelzi, hogy a változási egység semitone-e, amely a normál diatonikus-skálán lévő hang (fél lépés) fele.</li><li>Állandó érték:<ul><li>x – alacsony</li><li>alacsony</li><li>közepes</li><li>magas</li><li>x – magas</li><li>alapértelmezett</li></ul></li></ul>. | Választható |
-| `contour` |A kontúr mostantól támogatja a neurális és a standard hangokat is. A kontúr a szurok változásait jelöli. Ezek a változások a beszédfelismerési kimenetben megadott időpontokban a célok tömbje jelennek meg. Az egyes célkitűzéseket paraméter párok halmaza határozza meg. Példa: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterekben az első érték határozza meg a szurok változásának helyét a szöveg időtartamának százalékában. A második érték határozza meg a szurok növelésének vagy csökkentésének mértékét, egy relatív érték vagy a szurok enumerálási értéke alapján (lásd: `pitch` ). | Választható |
+| `contour` |A kontúr mostantól támogatja a neurális és a standard hangokat is. A kontúr a szurok változásait jelöli. Ezek a változások a beszédfelismerési kimenetben megadott időpontokban a célok tömbje jelennek meg. Az egyes célkitűzéseket paraméter párok halmaza határozza meg. Például: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterekben az első érték határozza meg a szurok változásának helyét a szöveg időtartamának százalékában. A második érték határozza meg a szurok növelésének vagy csökkentésének mértékét, egy relatív érték vagy a szurok enumerálási értéke alapján (lásd: `pitch` ). | Választható |
 | `range` | Egy érték, amely a szövegben lévő szurok tartományát jelöli. `range`A leíráshoz megadhatja az azonos abszolút értékeket, relatív értékeket vagy enumerálási értékeket `pitch` . | Választható |
 | `rate` | Megadja a szöveg beszédi arányát. `rate`A következőképpen lehet kifejezni:<ul><li>Egy relatív érték, amely az alapértelmezett érték szorzóként funkcionál. Az *1* érték például nem változik a díjszabásban. Az *0,5* -es érték a sebesség felére csökkentéset eredményez. A *3* érték a ráta beutazását eredményezi.</li><li>Állandó érték:<ul><li>x – lassú</li><li>lassú</li><li>közepes</li><li>gyors</li><li>x – gyors</li><li>alapértelmezett</li></ul></li></ul> | Választható |
 | `duration` | Az az időtartam, amelynek el kell telnie, amíg a Speech szintézis (TTS) szolgáltatás beolvassa a szöveget, másodpercben vagy ezredmásodpercben. Például: *2s* vagy *1800ms*. | Választható |
@@ -725,6 +731,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 </speak>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

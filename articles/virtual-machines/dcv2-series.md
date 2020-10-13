@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1809194ce551fc828389cc31f5c7d6f28a2cddd6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972373"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -36,7 +36,7 @@ Példa a használati esetekre: a bizalmas többrésztvevős adatmegosztás, a cs
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64                                                                                               | 2  | 112                                          |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
-- A DCsv2 sorozatú virtuális gépek [2. generációs virtuális gépek](./linux/generation-2.md#creating-a-generation-2-vm) , és csak a `Gen2` lemezképeket támogatják.
+- A DCsv2 sorozatú virtuális gépek [2. generációs virtuális gépek](./generation-2.md#creating-a-generation-2-vm) , és csak a `Gen2` lemezképeket támogatják.
 - Jelenleg az [itt](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)felsorolt régiókban érhető el.
 - A bizalmas számítási virtuális gépek előző generációja: [DC sorozat](sizes-previous-gen.md#preview-dc-series)
 - DCsv2 virtuális gépek létrehozása a [Azure Portal](./linux/quick-create-portal.md) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) használatával

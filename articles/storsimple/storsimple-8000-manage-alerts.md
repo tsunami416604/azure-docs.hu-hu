@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207784"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961833"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -75,7 +75,7 @@ Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesít
 
 5. A konfiguráció befejezése után kattintson a **Mentés**gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
-     ![Riasztások teszt értesítő e-mailek elküldve](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![Riasztások tesztelési értesítő e-mail-címe 2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>Riasztások megtekintése és nyomon követése
 
@@ -226,6 +226,6 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 |:--- |:--- |:--- |
 | A hardver-összetevő környezeti hőmérséklet-érzékelője nem sikerült állapotot jelez.  | Ház típusa: fő ház | Ez a riasztás akkor aktiválódik, ha a StorSimple körüli környezeti környezet egy elfogadható tartomány fölé esik. Győződjön meg róla, hogy az adatközpontban az AC-szellőzőn kívül a környezeti környezet vagy a légáram található. Ha a hőmérséklet visszatér a normál értékre, a rendszer automatikusan törli a riasztást egy kis idő elteltével. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).

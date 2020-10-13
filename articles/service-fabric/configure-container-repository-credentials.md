@@ -4,12 +4,12 @@ description: Adattár hitelesítő adatainak konfigurálása a lemezképek a tá
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a3fb39693bf6143d4033eed437f65b7e63eabb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421424"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978679"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Az alkalmazás adattárbeli hitelesítő adatainak konfigurálása a tároló lemezképének letöltéséhez
 
@@ -96,6 +96,9 @@ Service Fabric támogatja a tokenek használatát hitelesítő adatként a táro
 1. Győződjön meg arról, hogy a *rendszerhez rendelt felügyelt identitás* engedélyezve van a virtuális gépen.
 
     ![Azure Portal: virtuálisgép-méretezési csoport identitási beállításának létrehozása](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> A felhasználó által hozzárendelt felügyelt identitás esetén ugorja át ezt a lépést. Az alábbi további lépések ugyanúgy működnek, amíg a méretezési csoport csak egyetlen felhasználó által hozzárendelt felügyelt identitáshoz van társítva.
 
 2. Adja meg az engedélyeket a virtuálisgép-méretezési csoportnak a lemezképek lekérése/olvasása céljából a beállításjegyzékből. A Azure Portal Azure Container Registry Access Control (IAM) paneljén vegyen fel egy *szerepkör-hozzárendelést* a virtuális géphez:
 

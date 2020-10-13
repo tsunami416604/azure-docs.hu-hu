@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8acbc7eec7581adcf0d73ffcd4bb2aa7ab2dd572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883500"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951145"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge Pro-ban való áthelyezéséhez
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge Pro-vel való áthelyezéséhez
 
 Ez a cikk bemutatja, hogyan hozhat létre IoT Edge modult az Azure Stack Edge Pro-eszközzel történő üzembe helyezéshez. Az Azure Stack Edge Pro egy tárolási megoldás, amely lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldést az Azure-ba.
 
@@ -65,7 +65,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker beállításjegyzék-szolgáltatás Azure Container Registry és a Docker hub. Ez a cikk a Container Registry használja.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
+2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás** gombra.
 3. Nyújt
 
    1. Egy egyedi, az Azure-ban található, 5 – 50 alfanumerikus karaktert tartalmazó **beállításjegyzékbeli név** .
@@ -259,7 +259,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
  
 3. A hitelesítő adatok megadása után leküldheti a modul rendszerképét az Azure Container registrybe. A VS Code Explorerben kattintson a jobb gombbal a **module.js** fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget.
 
-    ![IoT Edge-megoldás létrehozása és leküldése](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![IoT Edge 2. megoldás létrehozása és leküldése](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Ha közli a Visual Studio Code-ot a megoldás létrehozásával, az integrált terminálon két parancsot futtat: a Docker Build és a Docker push. A két parancs létrehozza a kódot, tárolóba helyezi a CSharpModule.dll fájlt, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba.
 
@@ -276,6 +276,6 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a rendszer a module.jsfájl formátumát tartalmazó információból épül fel `<repository>:<version>-<platform>` . Ehhez a cikkhez hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A modul Azure Stack Edge Pro platformon való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](azure-stack-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.

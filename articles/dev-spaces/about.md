@@ -6,14 +6,16 @@ ms.topic: overview
 description: Ismerje meg, hogy az Azure dev Spaces hogyan nyújt gyors, ismétlődő Kubernetes-fejlesztési élményt az Azure Kubernetes Service-fürtökben található csapatok számára
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ad884d5e054f23269b238b791e250c732d70a9b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9bdd6f48a8f48266b8a9aad003fe6ea43715036c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88210645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978441"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Mi az Azure Dev Spaces?
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Az Azure dev Spaces gyors, ismétlődő Kubernetes-fejlesztési élményt nyújt a csapatok számára az Azure Kubernetes Service (ak) fürtökben. Az Azure dev Spaces lehetővé teszi az alkalmazás összes összetevőjének hibakeresését és tesztelését az AK-ban minimális fejlesztői gép beállításával, a függőségek replikálásának vagy kigúnyolása nélkül.
 
@@ -40,7 +42,7 @@ Az Azure dev Spaces működésével kapcsolatos további információkért lásd
 
 Az Azure dev-helyeket csak [bizonyos régiókban][supported-regions]található AK-fürtök támogatják. Az Azure dev Spaces támogatja az Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy a [Visual Studio Code](https://code.visualstudio.com/download) használatát a Linux, MacOS vagy Windows 8 vagy újabb rendszereken telepített [Azure dev Spaces bővítménnyel](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) , hogy az alkalmazásait az AK-ban hozza létre és futtassa. Emellett támogatja a Windows rendszeren telepített [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) Azure-fejlesztési számítási feladattal való használatát is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure dev Spaces működéséről.
 

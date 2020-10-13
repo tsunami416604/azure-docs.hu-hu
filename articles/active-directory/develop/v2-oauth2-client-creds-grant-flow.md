@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759070"
+ms.locfileid: "91932583"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
@@ -52,8 +52,11 @@ Gyakori használati eset az, ha egy ACL-t használ a webalkalmazásokhoz vagy we
 
 Az ilyen típusú hitelesítés olyan démonok és szolgáltatásfiókok esetében fordul elő, amelyek a személyes Microsoft-fiókkal rendelkező fogyasztói felhasználók tulajdonában lévő adatforgalomhoz szükségesek. A szervezetek által birtokolt adattárolók esetében javasoljuk, hogy az alkalmazás engedélyein keresztül szerezze be a szükséges engedélyeket.
 
-> [!NOTE]
-> Az ACL-alapú engedélyezési minta engedélyezéséhez az Azure AD-nek nincs szüksége arra, hogy az alkalmazások jogosultak legyenek jogkivonatok beszerzésére egy másik alkalmazáshoz – így a csak az alkalmazáshoz tartozó jogkivonatok jogcímek nélkül is kiállíthatók `roles` . Az API-k számára elérhetővé tenni kívánt alkalmazásoknak engedélyeket kell alkalmazniuk a jogkivonatok fogadásához.
+#### <a name="controlling-tokens-without-the-roles-claim"></a>Jogkivonatok szabályozása a `roles` jogcím nélkül
+
+Az ACL-alapú engedélyezési minta engedélyezéséhez az Azure AD nem igényli, hogy az alkalmazások jogosultak legyenek jogkivonatok beszerzésére egy másik alkalmazáshoz. Így az alkalmazáshoz tartozó jogkivonatok jogcímek nélkül is kiállíthatók `roles` . Az API-k számára elérhetővé tenni kívánt alkalmazásoknak engedélyeket kell alkalmazniuk a jogkivonatok fogadásához.
+
+Ha szeretné megakadályozni, hogy az alkalmazások csak a csak az alkalmazáshoz tartozó hozzáférési jogkivonatokat férhessenek hozzá az alkalmazáshoz, [Győződjön meg arról, hogy a felhasználói hozzárendelési követelmények engedélyezve vannak](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)az alkalmazáshoz. Ez letiltja a felhasználók és az alkalmazások hozzárendelését anélkül, hogy hozzá lehessen adni az alkalmazáshoz tartozó jogkivonatot. 
 
 ### <a name="application-permissions"></a>Alkalmazás engedélyei
 

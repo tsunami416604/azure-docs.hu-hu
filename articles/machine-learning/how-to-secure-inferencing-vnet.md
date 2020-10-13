@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2020
+ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630848"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972509"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -81,11 +81,17 @@ A következő lépésekkel adhatja hozzá az AK-t egy virtuális hálózathoz a 
 
    ![Azure Machine Learning: Machine Learning Compute virtuális hálózati beállítások](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Győződjön meg arról, hogy a virtuális hálózatot vezérlő NSG-csoport rendelkezik egy bejövő biztonsági szabállyal, amely engedélyezi a pontozási végpontot, hogy a virtuális hálózaton kívülről is meghívható legyen.
+1. Ha a modellt webszolgáltatásként helyezi üzembe az AK-ban, a rendszer egy pontozási végpontot hoz létre a következtetési kérelmek kezeléséhez. Győződjön meg arról, hogy a virtuális hálózatot vezérlő NSG-csoport rendelkezik egy bejövő biztonsági szabállyal, amely engedélyezi a pontozási végpont IP-címét, ha a virtuális hálózaton kívülről szeretné hívni.
+
+    A pontozási végpont IP-címének megkereséséhez tekintse meg a központilag telepített szolgáltatás pontozási URI-JÁT. A pontozási URI megtekintésével kapcsolatos információkért lásd: [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md#connection-information).
+
    > [!IMPORTANT]
    > Tartsa meg a NSG alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)alapértelmezett biztonsági szabályai.
 
    [![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+
+    > [!IMPORTANT]
+    > A pontozási végpont rendszerképében megjelenő IP-cím eltérő lesz az üzemelő példányok esetében. Míg az összes üzemelő példány ugyanazon az IP-címen osztozik egy AK-fürtön, az egyes AK-fürtök eltérő IP-címmel rendelkeznek.
 
 A Azure Machine Learning SDK-val is hozzáadhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. Ha már van egy AK-fürtje egy virtuális hálózaton, csatolja azt a munkaterülethez a következő témakörben leírtak szerint: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban. A következő kód létrehoz egy új AK-példányt `default` egy nevű virtuális hálózat alhálózatában `mynetwork` :
 

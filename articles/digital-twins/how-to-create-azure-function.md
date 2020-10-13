@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614069"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970435"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -232,18 +232,18 @@ Jegyezze fel az _Identity (identitás_ ) lapon megjelenő **objektumazonosítót
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Hozzáférési szerepkörök kiosztása Azure Portal használatával
 
-Válassza az _Azure szerepkör-hozzárendelések_ gombot, amely megnyitja az Azure szerepkör-hozzárendelések lapot. Ezután válassza a _+ szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lehetőséget.
+Válassza ki az Azure szerepkör- _hozzárendelések_ gombot, amely megnyitja az *Azure szerepkör-hozzárendelések* lapot. Ezután válassza a _+ szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lehetőséget.
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ ablakban válassza a
+A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lapon válassza a következőket:
 
 * _Hatókör_: Erőforráscsoport
 * _Előfizetés_: válassza ki az Azure-előfizetését
 * _Erőforráscsoport_: válassza ki az erőforráscsoportot a legördülő listából
 * _Szerepkör_: válassza az _Azure Digital Twins-tulajdonos (előzetes verzió)_ lehetőséget a legördülő listából
 
-Mentse a részleteket a _Save (Mentés_ ) gombra kattintva.
+Ezután mentse a részleteket a _Save (Mentés_ ) gomb megnyomásával.
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 

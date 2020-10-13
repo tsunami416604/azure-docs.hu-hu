@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501704"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972067"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Az Azure-ban futó virtuális gépek karbantartása
 
@@ -23,7 +23,7 @@ A frissítések ritkán érintik az üzemeltetett virtuális gépeket. Ha a fris
 - Ha a frissítés nem igényel újraindítást, a rendszer szünetelteti a virtuális gépet a gazdagép frissítésekor, vagy a virtuális gép egy már frissített gazdagépre van áttelepítve. 
 - Ha a karbantartás újraindítást igényel, értesítést kap a tervezett karbantartásról. Az Azure egy időablakot is biztosít, amelyben saját maga is elindíthatja a karbantartást. Az önkarbantartási időszak általában 35 nap, kivéve, ha a karbantartás nem sürgős. Az Azure olyan technológiákat fektet be, amelyek csökkentik azon esetek számát, amelyekben a tervezett platform karbantartásához szükség van a virtuális gépek újraindítására. A tervezett karbantartás kezelésével kapcsolatos útmutatásért lásd: tervezett karbantartási értesítések kezelése az Azure [CLI](maintenance-notifications-cli.md), a [PowerShell](maintenance-notifications-powershell.md) vagy a [Portal](maintenance-notifications-portal.md)használatával.
 
-Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./windows/manage-availability.md) , illetve a megfelelő [Linux](./linux/manage-availability.md)-cikk.
+Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./manage-availability.md) , illetve a megfelelő [Linux](./manage-availability.md)-cikk.
 
 A virtuális gépeken belül a Windows vagy [Linux](./linux/scheduled-events.md)rendszerhez [készült Scheduled Events használatával](./windows/scheduled-events.md) értesítéseket kaphat a közelgő karbantartásról.
 
@@ -41,7 +41,7 @@ Az újraindítást nem igénylő karbantartási műveletek egyszerre csak egy ta
 
 Az ilyen típusú frissítések hatással lehetnek egyes alkalmazásokra. Ha a virtuális gép élő áttelepítése egy másik gazdagépre történik, egyes érzékeny munkaterhelések némi teljesítménybeli romlást jelezhetnek néhány perc alatt, ami a virtuális gép szüneteltetését eredményezi. A virtuális gépek karbantartásának előkészítéséhez és az Azure-karbantartás során felmerülő hatás csökkentéséhez próbálkozzon az [Scheduled Events Windows](./windows/scheduled-events.md) vagy [Linux](./linux/scheduled-events.md) rendszerű alkalmazásokkal való használatával. 
 
-Az összes karbantartási tevékenység, beleértve a nulla hatású és újraindítás nélküli frissítéseket, a karbantartási vezérlés funkciót is használhatja. Az [Azure dedikált gazdagépeit](./linux/dedicated-hosts.md) vagy egy [elkülönített virtuális gépet](../security/fundamentals/isolation-choices.md)kell használnia. A karbantartási ellenőrzés lehetőséget biztosít az összes platform frissítésének kihagyása és a frissítések adott időpontban történő alkalmazásához a 35 napos időszakon belül. További információ: [a frissítések kezelése a karbantartási és az Azure CLI](maintenance-control.md)használatával.
+Az összes karbantartási tevékenység, beleértve a nulla hatású és újraindítás nélküli frissítéseket, a karbantartási vezérlés funkciót is használhatja. Az [Azure dedikált gazdagépeit](./dedicated-hosts.md) vagy egy [elkülönített virtuális gépet](../security/fundamentals/isolation-choices.md)kell használnia. A karbantartási ellenőrzés lehetőséget biztosít az összes platform frissítésének kihagyása és a frissítések adott időpontban történő alkalmazásához a 35 napos időszakon belül. További információ: [a frissítések kezelése a karbantartási és az Azure CLI](maintenance-control.md)használatával.
 
 
 ### <a name="live-migration"></a>Élő áttelepítés
@@ -87,7 +87,7 @@ Egy rendelkezésre állási csoporton belül az egyes virtuális gépek akár 20
 
 A virtuálisgép- *méretezési* csoportok egy olyan Azure-beli számítási erőforrás, amellyel azonos virtuális gépek egyetlen erőforrásként való üzembe helyezésére és kezelésére használhatók. A méretezési csoport automatikusan települ a frissítési között, például a virtuális gépeket egy rendelkezésre állási csoportba. A rendelkezésre állási csoportokhoz hasonlóan a méretezési csoportok használatakor a rendszer az ütemezett karbantartás során egy adott időpontban csak egy UD frissítést végez.
 
-A virtuális gépek magas rendelkezésre állásra való beállításával kapcsolatos további információkért lásd: a [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./windows/manage-availability.md) , vagy a megfelelő [Linux](./linux/manage-availability.md)-cikk.
+A virtuális gépek magas rendelkezésre állásra való beállításával kapcsolatos további információkért lásd: a [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./manage-availability.md) , vagy a megfelelő [Linux](./manage-availability.md)-cikk.
 
 #### <a name="availability-zones"></a>Rendelkezésre állási zónák
 
@@ -97,6 +97,6 @@ A rendelkezésre állási zónák egy tartalék tartomány és egy frissítési 
 
 Az infrastruktúra minden egyes frissítése zónán kívüli zónában, egyetlen régióban található. Az üzembe helyezés azonban 1. zónaban is elvégezhető, és a különböző üzemelő példányok 2. zónan is elérhetők lesznek. A központi telepítések nincsenek szerializálva. Egyetlen központi telepítés azonban egyszerre csak egy zónát mutat be a kockázat csökkentése érdekében.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
-Az [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) vagy a [portál](maintenance-notifications-portal.md) használatával felügyelheti a tervezett karbantartást. 
+Az [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) vagy a [portál](maintenance-notifications-portal.md) használatával felügyelheti a tervezett karbantartást.

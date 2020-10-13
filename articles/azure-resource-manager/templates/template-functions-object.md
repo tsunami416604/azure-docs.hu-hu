@@ -2,23 +2,25 @@
 title: Sablon functions – objektumok
 description: Az objektumok kezeléséhez Azure Resource Manager sablonban használható függvényeket ismerteti.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 632e92bb798a5e8469079ef4693b7f321617f88c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977884"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM-sablonok Object functions
 
 A Resource Manager számos funkciót biztosít a Azure Resource Manager (ARM) sablon objektumainak használatához.
 
 * [tartalmaz](#contains)
+* [createObject](#createobject)
 * [üres](#empty)
 * [kereszteződés](#intersection)
 * [JSON](#json)
 * [length](#length) (hossz)
+* [NULL](#null)
 * [Union](#union)
 
 ## <a name="contains"></a>contains
@@ -29,10 +31,10 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
-| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
+| tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -102,6 +104,58 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | arrayTrue | Logikai | Igaz |
 | arrayFalse | Logikai | Hamis |
 
+## <a name="createobject"></a>createObject
+
+`createObject(key1, value1, key2, value2, ...)`
+
+Létrehoz egy objektumot a kulcsok és értékek alapján.
+
+### <a name="parameters"></a>Paraméterek
+
+| Paraméter | Kötelező | Típus | Description |
+|:--- |:--- |:--- |:--- |
+| key1 |No |sztring |A kulcs neve. |
+| érték1 |No |int, Boolean, string, Object vagy Array |A kulcs értéke. |
+| További kulcsok |No |sztring |A kulcsok további nevei. |
+| További értékek |No |int, Boolean, string, Object vagy Array |A kulcsok további értékei. |
+
+A függvény csak páros számú paramétert fogad el. Minden kulcsnak egyező értékkel kell rendelkeznie.
+
+### <a name="return-value"></a>Visszatérési érték
+
+Egy olyan objektum, amely minden egyes kulcs-érték párral rendelkezik.
+
+### <a name="example"></a>Példa
+
+A következő példa egy objektumot hoz létre különböző típusú értékekből.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "newObject": {
+            "type": "object",
+            "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
+        }
+    }
+}
+```
+
+Az előző példában szereplő, alapértelmezett értékekkel rendelkező objektum kimenete `newObject` a következő értékkel rendelkező objektum:
+
+```json
+{
+  "intProp": 1,
+  "stringProp": "abc",
+  "boolProp": true,
+  "arrayProp": ["a", "b", "c"],
+  "objectProp": {"key1": "value1"}
+}
+```
+
 ## <a name="empty"></a>üres
 
 `empty(itemToTest)`
@@ -110,9 +164,9 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
+| itemToTest |Yes |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -175,11 +229,11 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemei
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
-| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
-| További argumentumok |Nem |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
+| arg1 |Yes |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
+| arg2 |Yes |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
+| További argumentumok |No |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -237,40 +291,58 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 `json(arg1)`
 
-Egy JSON-objektumot ad vissza.
+Egy érvényes JSON-karakterláncot alakít át JSON-adattípusra.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |sztring |A JSON-ra konvertálandó érték. |
+| arg1 |Yes |sztring |A JSON-ra konvertálandó érték. A karakterláncnak megfelelően formázott JSON-karakterláncnak kell lennie. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
-A megadott karakterlánc JSON-objektuma vagy egy üres objektum, ha **Null** van megadva.
+A megadott karakterlánc JSON-adattípusa, vagy **Null** értékű üres érték van megadva.
 
 ### <a name="remarks"></a>Megjegyzések
 
 Ha a JSON-objektumban szerepelnie kell egy paraméter értékének vagy változónak, használja a [concat](template-functions-string.md#concat) függvényt a függvénynek átadott karakterlánc létrehozásához.
 
+Null érték beszerzéséhez használhatja a [Null ()](#null) tulajdonságot is.
+
 ### <a name="example"></a>Példa
 
-Az alábbi [példában látható sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) a JSON-függvény használatát mutatja be. Figyelje meg, hogy egy olyan karakterláncot adhat át, amely az objektumot jelöli, vagy **Null** értéket használ, ha nincs szükség értékre.
+Az alábbi [példában látható sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) a JSON-függvény használatát mutatja be. Figyelje meg, hogy üres objektum esetében **Null értéket** adhat át.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "jsonObject1": {
+        "jsonEmptyObject": {
             "type": "string",
             "defaultValue": "null"
         },
-        "jsonObject2": {
+        "jsonObject": {
             "type": "string",
             "defaultValue": "{\"a\": \"b\"}"
         },
-        "testValue": {
+        "jsonString": {
+            "type": "string",
+            "defaultValue": "\"test\""
+        },
+        "jsonBoolean": {
+            "type": "string",
+            "defaultValue": "true"
+        },
+        "jsonInt": {
+            "type": "string",
+            "defaultValue": "3"
+        },
+        "jsonArray": {
+            "type": "string",
+            "defaultValue": "[[1,2,3 ]"
+        },
+        "concatValue": {
             "type": "string",
             "defaultValue": "demo value"
         }
@@ -278,17 +350,33 @@ Az alábbi [példában látható sablon](https://github.com/Azure/azure-docs-jso
     "resources": [
     ],
     "outputs": {
-        "jsonOutput1": {
+        "emptyObjectOutput": {
             "type": "bool",
-            "value": "[empty(json(parameters('jsonObject1')))]"
+            "value": "[empty(json(parameters('jsonEmptyObject')))]"
         },
-        "jsonOutput2": {
+        "objectOutput": {
             "type": "object",
-            "value": "[json(parameters('jsonObject2'))]"
+            "value": "[json(parameters('jsonObject'))]"
         },
-        "paramOutput": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[json(parameters('jsonString'))]"
+        },
+        "booleanOutput": {
+            "type": "bool",
+            "value": "[json(parameters('jsonBoolean'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[json(parameters('jsonInt'))]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[json(parameters('jsonArray'))]"
+        },
+        "concatObjectOutput": {
             "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
+            "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
         }
     }
 }
@@ -298,9 +386,13 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 | Név | Típus | Érték |
 | ---- | ---- | ----- |
-| jsonOutput1 | Logikai | Igaz |
-| jsonOutput2 | Objektum | {"a": "b"} |
-| paramOutput | Objektum | {"a": "bemutató értéke"}
+| emptyObjectOutput | Logikai | Igaz |
+| objectOutput | Objektum | {"a": "b"} |
+| stringOutput | Sztring | test |
+| booleanOutput | Logikai | Igaz |
+| intOutput | Egész szám | 3 |
+| arrayOutput | Tömb | [ 1, 2, 3 ] |
+| concatObjectOutput | Objektum | {"a": "bemutató értéke"} |
 
 ## <a name="length"></a>hossz
 
@@ -310,9 +402,9 @@ Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
+| arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -378,6 +470,44 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | stringLength | Int | 13 |
 | objectLength | Int | 4 |
 
+## <a name="null"></a>null
+
+`null()`
+
+Null értéket ad vissza.
+
+### <a name="parameters"></a>Paraméterek
+
+A null függvény nem fogad el paramétereket.
+
+### <a name="return-value"></a>Visszatérési érték
+
+Olyan érték, amely mindig null értékű.
+
+### <a name="example"></a>Példa
+
+A következő példa a null függvényt használja.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(null())]"
+        },
+    }
+}
+```
+
+Az előző példa kimenete a következő:
+
+| Név | Típus | Érték |
+| ---- | ---- | ----- |
+| emptyOutput | Logikai | Igaz |
+
 ## <a name="union"></a>Union
 
 `union(arg1, arg2, arg3, ...)`
@@ -386,11 +516,11 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemé
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
-| arg2 |Igen |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
-| További argumentumok |Nem |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
+| arg1 |Yes |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
+| arg2 |Yes |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
+| További argumentumok |No |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -444,6 +574,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | objectOutput | Objektum | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
 | arrayOutput | Tömb | ["egy", "kettő", "három", "négy"] |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

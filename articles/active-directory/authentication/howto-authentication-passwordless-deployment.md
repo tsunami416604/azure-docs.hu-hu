@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527003"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964876"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -82,7 +82,7 @@ A Windows Hello előfeltételei nagymértékben függenek attól, hogy helyszín
 
 A felhasználók az Azure multi-Factor Authentication regisztrációs folyamat részeként regisztrálják a jelszóval nem rendelkező metódust. A többtényezős hitelesítés a felhasználónévvel és a jelszóval együtt egy másik regisztrált módszerrel is használható tartalékként, ha bizonyos helyzetekben nem tudják használni a telefonját vagy a biztonsági kulcsát.
 
-### <a name="licensing"></a>Licencek 
+### <a name="licensing"></a>Licencelés 
 A jelszó nélküli hitelesítéshez nem kell további díjat fizetni, bár bizonyos előfeltételek esetén prémium előfizetés szükséges. A [Azure Active Directory licencelése lapon](https://azure.microsoft.com/pricing/details/active-directory/)található részletes funkció-és licencelési információk. 
 
 ## <a name="develop-a-plan"></a>Terv kidolgozása
@@ -93,7 +93,7 @@ Vegye figyelembe az üzleti igényeket és az egyes hitelesítési módszerek ha
 
 Az alábbi táblázat a projekt során megvalósítandó használati eseteket ismerteti.
 
-| Terület | Leírás |
+| Terület | Description |
 | --- | --- |
 | **Hozzáférés** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok a rendszergazdák számára a közel valós időben történő naplózáshoz érhetők el. <br> A használati adatokat legalább 29 naponta letölti a vállalati rendszerbe, vagy az SIEM eszközt használja. |
@@ -292,7 +292,7 @@ Kövesse az alábbi, a választott módszerhez igazított lépéseket.
 
 ### <a name="required-administrative-roles"></a>Szükséges rendszergazdai szerepkörök
 
-| Azure AD-szerepkör | Leírás |
+| Azure AD-szerepkör | Description |
 | --- | --- |
 | Globális rendszergazda|A legkevésbé magas jogosultsági szintű szerepkör lehetővé tenné a közös regisztrációs élmény megvalósítását. |
 | Hitelesítés rendszergazdája | A minimális jogosultsági szintű szerepkör képes a hitelesítési módszerek megvalósítására és kezelésére. |

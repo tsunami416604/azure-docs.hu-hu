@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Ismerje meg, hogyan állíthat be folyamatos integrációt/folyamatos üzembe helyezést az Azure DevOps és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080266"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960388"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>A CI/CD és az Azure Dev Spaces használata
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Ez a cikk végigvezeti a folyamatos integráció/folyamatos üzembe helyezés (CI/CD) az Azure Kubernetes szolgáltatásban (ak) való beállításán, és lehetővé teszi a dev Spaces használatát. A CI/CD to AK lehetővé teszi, hogy az alkalmazások frissítései automatikusan telepítve legyenek, amikor a rendszer leküldi a véglegesítési kódot a forrás adattárba. Ha a CI/CD-t egy dev Spaces-kompatibilis fürttel együtt használja, hasznos lehet, mert az alkalmazás naprakészen tarthatja, hogy a csapat működjön együtt.
 
@@ -119,7 +121,7 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. Kattintson a jobb felső sarokban található **Mentés** elemre, majd **az OK gombra**.
 1. Kattintson a **+ kiadás** elemre (a Mentés gomb mellett), és **hozzon létre egy kiadást**.
 1. Az összetevők területen **ellenőrizze, hogy ki van-e**választva a build-folyamat legújabb buildje.
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** gombra.
 
 Az automatizált kiadási folyamat most elindul, üzembe helyezi a *mywebapi* és a *webfrontend* -diagramokat a Kubernetes-fürtön a _fejlesztői_ legfelső szintű helyen. A kiadás előrehaladását az Azure DevOps webes portálján követheti nyomon:
 

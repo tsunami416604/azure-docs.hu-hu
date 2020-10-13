@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
 ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743080"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
 
 1. A BeyondTrust távoli támogatási alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -163,7 +163,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A legördülő menüben válassza ki az **SAML** elemet, majd kattintson a **szolgáltató létrehozása** gombra.
 
-1. Az identitás-szolgáltató beállításai szakaszban lehetősége van az identitás-szolgáltató metaadatainak feltöltésére. Keresse meg a Azure Portal letöltött metaadat-XML-fájlt, majd kattintson a **feltöltés** gombra. Az **entitás-azonosító**, az **egyszeri bejelentkezési szolgáltatás URL-címe** és a tanúsítvány automatikusan feltöltve lesz, és a **protokoll kötését** a **http post**értékre kell módosítani. Lásd az alábbi képernyőképet:
+1. Az identitás-szolgáltató beállításai szakaszban lehetősége van az identitás-szolgáltató metaadatainak feltöltésére. Keresse meg a Azure Portal letöltött metaadat-XML-fájlt, majd kattintson a **feltöltés** gombra. A rendszer automatikusan feltölti az **entitás azonosítóját**, az **egyszeri Sign-On szolgáltatás URL-címét** és a tanúsítványt, és a **protokoll kötését** a **http post**értékre kell módosítani. Lásd az alábbi képernyőképet:
 
     ![A képernyőképen az Identity Provider beállításainak szakasza látható, ahol elvégezheti ezeket a műveleteket.](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508865"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965760"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Az Azure-beli virtuális gép rendszer-újraindításának ismertetése
 
@@ -30,7 +30,7 @@ Az Azure-on futó alkalmazások védelmének legjobb módja a virtuális gépek 
 
 Ha ezt a redundancia-szintet szeretné biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportban csoportosítson. Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel a 99,95%-os [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)-nak.
 
-A rendelkezésre állási csoportokkal kapcsolatos további információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](../windows/manage-availability.md)
+A rendelkezésre állási csoportokkal kapcsolatos további információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](../manage-availability.md)
 
 ## <a name="resource-health-information"></a>Resource Health információk
 
@@ -72,7 +72,7 @@ Más forgatókönyvek, amelyek általában a virtuális gép újraindítását o
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center és Windows Update
 
-Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: [rendszerfrissítések alkalmazása Azure Security Centerban](../../security-center/security-center-virtual-machine-protection.md).
+Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: [rendszerfrissítések alkalmazása Azure Security Centerban](../../security-center/asset-inventory.md).
 
 A helyszíni kiszolgálókhoz hasonlóan az Azure nem küldi le a frissítéseket a Windows Updateról a Windows rendszerű virtuális gépekre, mert ezeket a gépeket a felhasználók számára kívánja felügyelni. Javasoljuk azonban, hogy engedélyezze az automatikus Windows Update beállítást. A frissítések Windows Updateról történő automatikus telepítése a frissítések alkalmazása után is okozhat újraindítást. További információ: [Windows Update GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
 

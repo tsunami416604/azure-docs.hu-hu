@@ -2,20 +2,20 @@
 title: A replika-készletek fogalmai a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogy mely replikák vannak a Azure Active Directory Domain Servicesban, és hogyan biztosítanak redundanciát az Identity Services szolgáltatást igénylő alkalmazások számára.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 698009ee8a57ed5d30e01376b4f2c63b0a27ead8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505730"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961068"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>A replika-készletek alapfogalmai és funkciói Azure Active Directory Domain Services (előzetes verzió)
 
@@ -84,7 +84,7 @@ A helyszíni AD DShoz hasonlóan a kiterjesztett leválasztott állapot is zavar
 
 A felügyelt tartományon belüli változások ugyanúgy működnek, mint korábban. [Hozzon létre és használjon felügyeleti virtuális gépet a felügyelt tartományhoz csatlakoztatott RSAT-eszközökkel](tutorial-create-management-vm.md). A felügyelt tartományhoz tetszőleges számú felügyeleti virtuális gépet csatlakoztathat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A replikakészlet megkezdéséhez [hozzon létre és konfiguráljon egy Azure AD DS felügyelt tartományt][tutorial-create-advanced]. Üzembe helyezéskor [hozzon létre és használjon további replikákat][create-replica-set].
 
