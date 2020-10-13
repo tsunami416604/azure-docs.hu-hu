@@ -6,19 +6,19 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761600"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994038"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 
 > [!NOTE]
 > A Application Insights Java SDK nem támogatja a Spring webflux használatát. 
 >
-> A webflux és a Mikrométer is támogatott [Application Insights Java 3,0-ügynökben](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) , amely nem igényel rendszerállapotot. 
+> A webflux és a Mikrométer is támogatott [Application Insights Java 3,0-ügynökben](./java-on-premises.md) , amely nem igényel rendszerállapotot. 
 
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
 
@@ -279,4 +279,3 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
 
 * A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
 * A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.
-

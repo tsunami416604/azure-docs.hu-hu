@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89144923"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996502"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -17,7 +17,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Ha a Azure Functions új, Java-fejlesztőként, vegye figyelembe a következő cikkek egyikét:
 
-| Első lépések | Alapelvek| 
+| Első lépések | Fogalmak| 
 | -- | -- |  
 | <ul><li>[Java-függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java/Maven függvény a Terminal/parancssor használatával](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-függvény a Gradle használatával](functions-create-first-java-gradle.md)</li><li>[Java-függvény az Eclipse használatával](functions-create-maven-eclipse.md)</li><li>[Java-függvény a IntelliJ IDEA használatával](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> |
 
@@ -151,7 +151,7 @@ Ha nem ad meg Java-verziót az üzemelő példányhoz, a Maven archetípus alap�
 
 ### <a name="specify-the-deployment-version"></a>A központi telepítés verziójának meghatározása
 
-A (z) paraméter használatával szabályozhatja a Maven archetípus által megcélozott Java-verziót `-DjavaVersion` . Ennek a paraméternek az értéke lehet éter `8` vagy `11` . A Java 11-támogatás jelenleg előzetes verzióban érhető el. 
+A (z) paraméter használatával szabályozhatja a Maven archetípus által megcélozott Java-verziót `-DjavaVersion` . A paraméter értéke lehet `8` vagy `11` . A Java 11-támogatás jelenleg előzetes verzióban érhető el. 
 
 A Maven archetípus egy pom.xml hoz létre, amely a megadott Java-verziót célozza meg. A pom.xml következő elemei a használni kívánt Java-verziót jelölik:
 
@@ -276,8 +276,8 @@ public class Function {
     @FunctionName("echo")
     public static String echo(
         @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
-        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
-        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData,
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData
     ) {
         testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
         return "Hello, " + inputReq + " and " + inputData.getKey() + ".";

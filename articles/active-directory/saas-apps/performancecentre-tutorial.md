@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553973"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Oktatóanyag: Azure Active Directory integráció a PerformanceCentre
 
@@ -128,19 +128,19 @@ Az Azure AD egyszeri bejelentkezés PerformanceCentre való konfigurálásához 
 
 2. A bal oldali lapon kattintson a **Konfigurálás**elemre.
    
-    ![Azure AD – egyetlen Sign-On][10]
+    ![Képernyőkép, amely a "configure" (Konfigurálás) elemet tartalmazó "PerformanceCenter" menüt jeleníti meg.][10]
 
 3. A bal oldali lapon kattintson a **vegyes**elemre, majd az **egyszeri bejelentkezés**lehetőségre.
    
-    ![Azure AD – egyetlen Sign-On][11]
+    ![Képernyőfelvétel: a "Konfigurálás" lap "egyszeri bejelentkezés", a "vegyes" menüből kiválasztva.][11]
 
 4. A **protokoll**mezőben válassza az **SAML**lehetőséget.
    
-    ![Azure AD – egyetlen Sign-On][12]
+    ![Képernyőfelvétel: az "egy Sign-On konfiguráció" szakasz, amely a "protokoll" menüből kiválasztott "S A M L" elemet mutatja.][12]
 
 5. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, másolja be a tartalmat, illessze be az **Identity Provider metaadatok** szövegmezőbe, majd kattintson a **Mentés**gombra.
    
-    ![Azure AD – egyetlen Sign-On][13]
+    ![A "személyazonosság-szolgáltatói metaadatok" szövegmezőt megjelenítő képernyőkép][13]
 
 6. Ellenőrizze, hogy helyesek-e az **entitás alap URL-címe** és az **entitás-azonosító URL-címe** .
     
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -207,7 +207,7 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
 2. A bal oldali menüben kattintson a **metszetében**elemre, majd a **résztvevő létrehozása**elemre.
    
-    ![Felhasználó létrehozása][400]
+    ![Képernyőfelvétel: a "PerformanceCenter" vállalati webhely "metszetében-résztvevők" lapja, amelyen a "résztvevő létrehozása" gomb van kiválasztva.][400]
 
 3. A **metszetében-résztvevő létrehozása** párbeszédpanelen hajtsa végre a következő lépéseket:
    

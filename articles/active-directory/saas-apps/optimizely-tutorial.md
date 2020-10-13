@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b963e0b4797af8269b87f704edca231f000c9372
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543992"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Oktatóanyag: Azure Active Directory integráció az optimalizálással
 
@@ -110,17 +110,17 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
 5. Az optimalizált alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![Képernyőfelvétel: a "felhasználói attribútumok" párbeszédpanel, ahol a "szerkesztés" ikon látható a jobb felső sarokban.](common/edit-attribute.png)
 
 6. A fentieken kívül az alkalmazás optimalizálása néhány további attribútumot vár az SAML-válaszban. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Név | Forrás attribútum |
+    | Name | Forrás attribútum |
     | ---------------| --------------- |
     | e-mail | User. mail |
     
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](common/new-save-attribute.png)
+    ![Képernyőkép, amely a "felhasználói jogcímek" párbeszédpanelt mutatja az "új jogcím hozzáadása" és a "Mentés" művelet kiemelésével.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -164,7 +164,7 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
 4. Kattintson a jobb felső sarokban a fiók nevére, majd a **Fiókbeállítások**lehetőségre.
 
-    ![Azure AD – egyetlen Sign-On](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Képernyőfelvétel: a jobb felső sarokban kiválasztott fiók neve, a menüből kiválasztott "Fiókbeállítások" beállítással.](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. A fiók lapon jelölje be az egyszeri bejelentkezés **engedélyezése** jelölőnégyzetet az **Áttekintés** szakaszban.
   
@@ -195,7 +195,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -231,7 +231,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre optimalizál
 
 2. Ha új közreműködőt szeretne hozzáadni a projekthez, kattintson az **új közreműködő**elemre.
    
-    ![Azure AD-tesztkörnyezet létrehozása](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![Képernyőkép, amely az optimalizált kezdőlapot jeleníti meg a "közreműködők" és az "új közreműködő" gomb kiválasztásával.](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. Adja meg az e-mail-címet, és rendeljen hozzá egy szerepkört. Kattintson a **meghívás**gombra.
 

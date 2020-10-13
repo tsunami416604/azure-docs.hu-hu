@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543907"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996563"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OpsGenie
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -133,15 +133,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Az egyszeri bejelentkezés engedélyezéséhez válassza az **engedélyezve**lehetőséget.
    
-    ![OpsGenie-beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![Képernyőfelvétel: az "engedélyezve" jelölőnégyzet be van jelölve.](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. A **szolgáltató** szakaszban kattintson a **Azure Active Directory** fülre.
    
-    ![OpsGenie-beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![Képernyőfelvétel: a "Azure Active Directory" lapon kiválasztva a "szolgáltató" szakasz látható.](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. A Azure Active Directory párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![OpsGenie-beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![Képernyőfelvétel: az "egyszeri bejelentkezés" szakasz "egyszeri bejelentkezés engedélyezése", "S A" M 2,0 Endpoint "és" metadata U R L ".](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. Másolja az **alkalmazás-azonosító URI** -értékét, és illessze be **azonosító (Entity ID)** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Ops
 
 4. A **felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![OpsGenie-beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![A "felhasználó hozzáadása" párbeszédpanelt a "levelezés" és a "teljes név" szövegmezők kiemelve, valamint a "Mentés" gomb kiválasztásával jeleníti meg.](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. Az **e-mail** szövegmezőbe írja be az Azure Active Directoryban található B. Simon e-mail-címét.
    

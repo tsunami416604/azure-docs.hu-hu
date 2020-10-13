@@ -3,14 +3,14 @@ title: Migrálás a Bridge to Kubernetesre
 services: azure-dev-spaces
 ms.date: 10/12/2020
 ms.topic: conceptual
-description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
+description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2b923e87e1eefe9cb0ba4afc018eed728ee6aaba
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962853"
+ms.locfileid: "91993929"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
@@ -84,10 +84,34 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 
 1. Frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace].
 1. Tiltsa le az Azure dev Spaces-vezérlőt az Azure Portal vagy az [Azure dev Spaces CLI][azds-delete]használatával.
-1. Távolítsa el a `azds.yaml` fájlt a projektből.
+1. [Azure Cloud Shell](https://shell.azure.com)használata. Vagy Mac, Linux vagy Windows rendszerű számítógépeken, amelyeken bash van telepítve, nyisson meg egy bash shell parancssort. Győződjön meg arról, hogy a következő eszközök érhetők el a parancssori környezetben: Azure CLI, Docker, kubectl, Curl, Tar és gunzip.
+1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](../container-registry/index.yml) vagy a [Docker hub](https://hub.docker.com/)használatával.
+1. Futtassa az áttelepítési parancsfájlt az Azure dev Spaces-eszközök Kubernetes-eszközökre való átalakításához. A szkript létrehoz egy új rendszerképet, amely kompatibilis a Bridge Kubernetes, feltölti a kijelölt beállításjegyzékbe, majd a [Helm](https://helm.sh) használatával frissíti a fürtöt a lemezképpel. Meg kell adnia az erőforráscsoportot, az AK-fürt nevét, valamint egy tároló-beállításjegyzéket. Az itt látható egyéb parancssori kapcsolók is elérhetők:
+
+   ```azure-cli
+   curl -sL https://aka.ms/migrate-tool | bash -s -- -g ResourceGroupName -n AKSName -h ContainerRegistryName -r PathOfTheProject -y
+   ```
+
+   A parancsfájl a következő jelzőket támogatja:
+
+   ```cmd  
+    -g Name of resource group of AKS Cluster [required]
+    -n Name of AKS Cluster [required]
+    -h Container registry name. Examples: ACR, Docker [required]
+    -k Kubernetes namespace to deploy resources (uses 'default' otherwise)
+    -r Path to root of the project that needs to be migrated (default = current working directory)
+    -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
+    -i Enable a public endpoint to access your service over internet. (default is false)
+    -y Doesn't prompt for non-tty terminals
+    -d Helm Debug switch
+   ```
+
+1. Manuálisan telepítse át a *azds. YAML* fájlban lévő összes testreszabást, például a környezeti változók beállításait a projekt *Values. YML* fájljába.
+1. választható Távolítsa el a `azds.yaml` fájlt a projektből.
 1. Telepítse újra az alkalmazást.
 1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes a Visual Studióban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vs].
 1. Indítsa el a hibakeresést a Visual Studióban az újonnan létrehozott híd használatával a Kubernetes hibakeresési profiljához.
+1. A parancsfájlt szükség szerint újra futtathatja a fürtön való újbóli üzembe helyezéshez.
 
 ### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>A Visual Studio Code használata a Kubernetes való áttéréshez az Azure dev Spaces használatával
 

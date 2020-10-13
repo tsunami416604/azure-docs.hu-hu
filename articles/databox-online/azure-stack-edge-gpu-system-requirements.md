@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320727"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996416"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 
@@ -32,21 +32,29 @@ Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
+## <a name="supported-azure-storage-accounts"></a>Támogatott Azure Storage-fiókok
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>Támogatott többplatformos Storage-fiókok
+## <a name="supported-edge-storage-accounts"></a>Támogatott Edge Storage-fiókok
 
-Ha Azure Stack felügyeli, a következő többplatformos tárolási fiókok támogatottak az SMB/NFS/REST illesztőfelületek esetében.
+A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. Az Edge Storage-fiókok az eszközön jönnek létre. További információ: [Edge Storage-fiókok](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |Típus  |Tárfiók  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása         |         |
-|    |  BLOB Storage: blob blokkolása       | Csak a NAS számára támogatott     |
 
-* Az oldal blobok és Azure Files jelenleg nem támogatottak a Azure Stackban.
-* * A gyakori és a rideg szint nem létezik a Azure Stackban. Az adatok feltöltése után a Azure PowerShell használatával helyezheti át az adatok archiválási szintjére. Részletes útmutatásért lépjen a következőre: a [Azure PowerShell használata a blob réteg beállításához]()
+* Az oldal blobok és Azure Filesek jelenleg nem támogatottak.
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>Támogatott helyi Azure Resource Manager Storage-fiókok
+
+Ezek a Storage-fiókok a helyi Azure Resource Managerhoz való csatlakozáskor az eszköz helyi API-kon keresztül jönnek létre. A következő Storage-fiókok támogatottak:
+
+|Típus  |Tárfiók  |Megjegyzések  |
+|---------|---------|---------|
+|Standard     |GPv1: blob blokkolása, oldal Blobja        | Az SKU típusa Standard_LRS       |
+|Prémium     |GPv1: blob blokkolása, oldal Blobja        | Az SKU típusa Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>Támogatott tárolótípusok
 
@@ -73,7 +81,7 @@ Használja a következő táblázatot a port konfigurálásához a Azure IoT Edg
 
 | Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutató |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
+| TCP 443 (HTTPS)| Ki       | WAN        | Yes      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
 
 A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

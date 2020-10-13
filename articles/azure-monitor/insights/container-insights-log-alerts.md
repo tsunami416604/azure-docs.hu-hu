@@ -3,12 +3,12 @@ title: Riasztások naplózása Azure Monitorről a tárolók számára | Microso
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni naplózási riasztásokat a memóriához és a CPU-használathoz a Azure Monitor for containers szolgáltatásban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294546"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995255"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Naplóbeli riasztások létrehozása Azure Monitorból tárolók számára
 
@@ -307,4 +307,4 @@ Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatj
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
 
-- Ha többet szeretne megtudni a Azure Monitorről és a Kubernetes-fürt egyéb szempontjainak figyeléséről, tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md) és a [Kubernetes-fürt állapotának megtekintése](container-insights-health.md)című témakört
+- Ha többet szeretne megtudni a Azure Monitorről és a Kubernetes-fürt egyéb szempontjainak figyeléséről, tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md) és a [Kubernetes-fürt állapotának megtekintése](./container-insights-overview.md)című témakört

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575520"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996331"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -49,7 +49,7 @@ A fürtön két számlázási mód van használatban. Ezeket a paraméter megadh
 
 1. **Fürt**: ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. 
 
-2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](https://docs.microsoft.com/azure/security-center/) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után).
+2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](../../security-center/index.yml) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után).
 
 Vegye figyelembe, hogy ha a munkaterület csomópont-díjszabási szinten használ örökölt, akkor a fürthöz való csatlakozáskor a rendszer a fürt kapacitásának lefoglalása során betöltött adatmennyiség alapján számlázza a díjat, és a csomópontok után már nem. A Azure Security Center-ból származó csomópont-adatfoglalások továbbra is érvényben lesznek.
 
@@ -182,7 +182,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > A *fürt* erőforrás- *SKU*-t, a *KeyVaultProperties* -t vagy a *billingType* -t a patch használatával frissítheti.
 
-Példa: 
+Például: 
 
 *Call*
 
@@ -220,7 +220,7 @@ A kulcs-azonosító propagálásának elvégzése néhány percet vesz igénybe.
 
 - Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését. 
 
-   VAGY
+   OR
 
 - Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *KeyVaultProperties* tulajdonságait. A válaszban a legutóbb frissített kulcs-azonosító részleteit kell visszaadnia.
 
@@ -321,7 +321,7 @@ A munkaterület-társítási állapotot kétféleképpen tekintheti meg:
 
 - Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
 
-- [Munkaterületek küldése –](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz betartása. A társított munkaterülethez tartozik egy clusterResourceId a "szolgáltatások" alatt.
+- [Munkaterületek küldése –](/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz betartása. A társított munkaterülethez tartozik egy clusterResourceId a "szolgáltatások" alatt.
 
 A küldési kérelem a következőhöz hasonló:
 

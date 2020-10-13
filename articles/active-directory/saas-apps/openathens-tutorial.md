@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543941"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994183"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OpenAthens
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -134,15 +134,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Válassza a **kapcsolatok** lehetőséget a listából a **kezelés** lapon.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![A "felügyelet" lapról kiválasztott "connections" (kapcsolatokkal rendelkező) "OpenAthens" céges weboldalt bemutató képernyőkép.](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. Válassza ki az **SAML 1.1/2.0**elemet, majd kattintson a **Konfigurálás** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Képernyőfelvétel: a "helyi hitelesítési rendszer típusának kiválasztása". párbeszédablak "S A M L 1.1/2.0" és a "configure" gomb kiválasztásával.](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
 1. A konfiguráció hozzáadásához kattintson a **Tallózás** gombra a Azure Portal letöltött metadata. xml fájl feltöltéséhez, majd válassza a **Hozzáadás**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Képernyőkép, amely az "S A M L hitelesítési rendszer hozzáadása" kifejezést mutatja. párbeszédablak a "Tallózás" művelettel és a "Hozzáadás gomb kiválasztásával.](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
 1. Hajtsa végre a következő lépéseket a **részletek** lapon.
 
@@ -164,7 +164,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     h. A **</> függő entitás** lapon másolja a **metaadatok URL-címét** , és nyissa meg ezt a böngészőben az **SP-metaadatok XML-** fájljának letöltéséhez. Töltse fel ezt az SP metaadat-fájlt az Azure AD **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Képernyőkép, amely megjeleníti a "függő entitás" fület, valamint a "metaadatok U R L" elemet.](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>OpenAthens-tesztelési felhasználó létrehozása
 

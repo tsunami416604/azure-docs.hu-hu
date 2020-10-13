@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bf3afef81c70355326ed9341f2dd8a39d542b54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554107"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Oktatóanyag: Azure Active Directory integráció a Panorama9
 
@@ -170,7 +170,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -210,7 +210,7 @@ Panorama9 esetén a kiépítés manuális feladat.
 
 2. A felső menüben kattintson a **kezelés**, majd a **felhasználók**elemre.
    
-    ![Felhasználók](./media/panorama9-tutorial/ic790027.png "Felhasználók")
+    ![Képernyőfelvétel: a "felügyelet" és a "felhasználók" lap van kijelölve.](./media/panorama9-tutorial/ic790027.png "Felhasználók")
 
 3. A felhasználók szakaszban kattintson **+** az új felhasználó hozzáadásához.
 

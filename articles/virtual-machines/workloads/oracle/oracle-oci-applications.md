@@ -1,24 +1,18 @@
 ---
 title: Architektúrák Oracle-alkalmazások üzembe helyezéséhez az Azure Virtual Machineson | Microsoft Docs
 description: Alkalmazás-architektúrák Oracle-alkalmazások, például az E-Business Suite, a JD Edwards EnterpriseOne és a PeopleSoft Microsoft Azure virtuális gépeken való üzembe helyezéséhez az Azure-ban vagy az Oracle Cloud Infrastructure-ben (OCI) található adatbázisokkal.
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 838bd2014f543747a3c3ec7edee7b278f5f4d8df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 6261e2b49eda2aead75d080ca3f6c2304bc49d81
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274602"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996607"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architektúrák Oracle-alkalmazások üzembe helyezéséhez az Azure-ban
 

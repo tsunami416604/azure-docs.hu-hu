@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893764"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994681"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
-A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](https://docs.microsoft.com/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
+A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
 
 ## <a name="general"></a>Általános kérdések

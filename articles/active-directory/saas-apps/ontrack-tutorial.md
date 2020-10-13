@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2d244fa6ea42a85483b3067cf58fc9384a86dee
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544060"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996588"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Oktatóanyag: Azure Active Directory integráció a OnTrack
 
@@ -118,11 +118,11 @@ Az Azure AD egyszeri bejelentkezés OnTrack való konfigurálásához hajtsa vé
 
 5. A OnTrack alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![Képernyőfelvétel: a "felhasználói attribútumok" párbeszédpanel, amely a jobb felső sarokban kiválasztott "szerkesztés" ikonnal jelenik meg.](common/edit-attribute.png)
 
 6. A fentieken kívül a OnTrack alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | -------------- | ----------------|    
     | User-Role      | "42F432" |
     | Hyperion-Code  | "12345" |
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés OnTrack való konfigurálásához hajtsa vé
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](common/new-save-attribute.png)
+    ![Képernyőkép, amely a "felhasználói jogcímek" párbeszédpanelt jeleníti meg az "új jogcím hozzáadása" és a "Mentés" művelet kiválasztásával.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -189,7 +189,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

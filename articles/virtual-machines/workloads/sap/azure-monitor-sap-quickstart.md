@@ -6,12 +6,13 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
-ms.openlocfilehash: 2c3b11ca0c2bb916a5a3fcaf50eb99c7db3aa8e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 6deb7b535c3876ae8a8e83174b97a75582e82e58
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88643005"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996436"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>SAP-megoldások Azure Monitor üzembe helyezése Azure Portal
 
@@ -111,6 +112,6 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="A rendszerkép az Azure Marketplace-en elérhető SAP-megoldások Azure Monitor kiválasztását mutatja be." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [SAP-megoldások Azure monitor](azure-monitor-overview.md)

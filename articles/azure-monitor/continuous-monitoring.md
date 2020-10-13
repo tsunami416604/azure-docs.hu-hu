@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318130"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996403"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -43,7 +43,7 @@ Az alkalmazások csak a mögöttes infrastruktúrájuk megbízhatóak. Ha a figy
 
 Az [infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code) az infrastruktúra kezelése egy leíró modellben, amely ugyanazt a verziószámozást használja, mint a DevOps Teams a forráskódot. Megbízhatóságot és méretezhetőséget biztosít a környezet számára, és lehetővé teszi az alkalmazások kezeléséhez használt hasonló folyamatok kihasználása.
 
--  A [Resource Manager-sablonok](platform/template-workspace-configuration.md) használatával engedélyezheti a figyelést, és konfigurálhatja a riasztásokat egy nagy erőforrás-készleten keresztül.
+-  A [Resource Manager-sablonok](./samples/resource-manager-workspace.md) használatával engedélyezheti a figyelést, és konfigurálhatja a riasztásokat egy nagy erőforrás-készleten keresztül.
 - A [Azure Policy](../governance/policy/overview.md) használatával különböző szabályokat alkalmazhat az erőforrásokra. Ez biztosítja, hogy ezek az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek. 
 
 
@@ -83,8 +83,7 @@ Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos te
 - Az [Impact Analysis](./app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor](overview.md)különbségi összetevőiről.
 - [Vegyen fel folyamatos figyelést](./app/continuous-monitoring.md) a kiadási folyamatba.
-

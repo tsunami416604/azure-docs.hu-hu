@@ -1,22 +1,22 @@
 ---
 title: Az Azure IoT Hub-eszközök ikrek ismertetése | Microsoft Docs
 description: Fejlesztői útmutató – az eszközök ikrek használatával szinkronizálhatók az állapot-és konfigurációs adatokat IoT Hub és az eszközei között
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327769"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996127"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
@@ -185,7 +185,7 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
   - Tulajdonságok
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | --- | --- |
     $content típusa | application/json |
     $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -250,7 +250,7 @@ A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-obje
 
 * **Kulcsok**: a JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 kb hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlő karaktereket (a C0 és a C1 szegmenst), valamint a, és az SP-t `.` `$` .
 
-* **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett.
+* **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. A tömbök is támogatottak.
 
     * Az egész számok minimális értéke-4503599627370496 és a 4503599627370495-es maximális érték lehet.
 
@@ -396,7 +396,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * A [IOT hub MQTT-támogatási](iot-hub-mqtt-support.md) cikk további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az eszközökről szóló ikreket, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információkat:
 

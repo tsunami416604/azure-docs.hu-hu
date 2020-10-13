@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526527"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996339"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -79,7 +79,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
    Egyes eseményindítók, például **Ha egy vagy több üzenet érkezik egy várólistába (automatikusan befejeződött)** , egy vagy több üzenetet adhat vissza. Ha ezek az eseményindítók tüzet adnak vissza, a rendszer az eseményindítók **maximális** száma tulajdonsága által megadott számú üzenetet adja vissza.
 
     > [!NOTE]
-    > Az automatikus kiegészítési trigger automatikusan végrehajt egy üzenetet, de a Befejezés csak a következő trigger futtatásakor történik meg. Ez a viselkedés hatással lehet a logikai alkalmazás kialakítására. Ne módosítsa például a párhuzamosságot az automatikus kiegészítési triggerre, mert ez a változás duplikált üzeneteket eredményezhet, ha a logikai alkalmazás szabályozott állapotba kerül. A Egyidejűség vezérlőelem módosítása a következő feltételeket hozza létre: a rendszer kihagyja a szabályozott eseményindítókat a `WorkflowRunInProgress` kóddal, a befejezési művelet nem fog történni, és a következő eseményindító futtatása a lekérdezési időköz után következik be. A Service Bus zárolási időtartamát olyan értékre kell beállítani, amely hosszabb a lekérdezési időköznél. Azonban a beállítás ellenére előfordulhat, hogy az üzenet még nem fejeződött be, ha a logikai alkalmazás a következő lekérdezési időszakban is szabályozott állapotban marad.
+    > Az automatikus kiegészítési trigger automatikusan végrehajt egy üzenetet, de a Befejezés csak a Service Bus következő hívásakor történik. Ez a viselkedés hatással lehet a logikai alkalmazás kialakítására. Ne módosítsa például a párhuzamosságot az automatikus kiegészítési triggerre, mert ez a változás duplikált üzeneteket eredményezhet, ha a logikai alkalmazás szabályozott állapotba kerül. A Egyidejűség vezérlőelem módosítása a következő feltételeket hozza létre: a rendszer kihagyja a szabályozott eseményindítókat a `WorkflowRunInProgress` kóddal, a befejezési művelet nem fog történni, és a következő eseményindító futtatása a lekérdezési időköz után következik be. A Service Bus zárolási időtartamát olyan értékre kell beállítani, amely hosszabb a lekérdezési időköznél. Azonban a beállítás ellenére előfordulhat, hogy az üzenet még nem fejeződött be, ha a logikai alkalmazás a következő lekérdezési időszakban is szabályozott állapotban marad.
 
 1. Ha az trigger első alkalommal csatlakozik a Service Bus-névtérhez, kövesse az alábbi lépéseket, amikor a Logic app Designer kéri a kapcsolódási adatok megadását.
 
@@ -162,6 +162,10 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 Ha a kapcsolódó üzeneteket egy adott sorrendben kell elküldeni, használhatja a [ *szekvenciális konvoj* mintát](/azure/architecture/patterns/sequential-convoy) az [Azure Service Bus-összekötő](../connectors/connectors-create-api-servicebus.md)használatával. A korrelált üzenetek olyan tulajdonsággal rendelkeznek, amely meghatározza az üzenetek közötti kapcsolatot, például a [munkamenet](../service-bus-messaging/message-sessions.md) azonosítóját Service Busban.
 
 Logikai alkalmazás létrehozásakor kiválaszthatja a **korrelált sorrend szerinti kézbesítést a Service Bus-munkamenetek** sablonnal, amely megvalósítja a szekvenciális konvojos mintát. További információ: [kapcsolódó üzenetek küldése sorrendben](../logic-apps/send-related-messages-sequential-convoy.md).
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>A logikai alkalmazás frissítéseinek érvénybe léptetése folyamatban van
+
+Ha egy Service Bus trigger lekérdezési időköze kicsi, például 10 másodperc, akkor előfordulhat, hogy a logikai alkalmazás frissítései akár 10 percig nem lépnek érvénybe. A probléma megkerüléséhez átmenetileg növelheti a lekérdezési időközt egy nagyobb értékre (például 30 másodpercre vagy 1 percre) a logikai alkalmazás frissítése előtt. A frissítés elvégzése után alaphelyzetbe állíthatja a lekérdezési időközt az eredeti értékre. 
 
 <a name="connector-reference"></a>
 
