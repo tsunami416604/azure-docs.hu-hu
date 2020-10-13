@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441045"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966287"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Windows rendszerű virtuális gépek Azure-ban való aktiválási problémáinak hibaelhárítása
 
@@ -54,14 +54,14 @@ Az Azure-beli virtuális gépek aktiválási problémái akkor jelentkeznek, ha 
 
 Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálnia kell a megfelelő KMS-ügyfél telepítési kulcsát a virtuális géphez.
 
-1. Futtassa az **slmgr. vbs/dlv** egy rendszergazda jogú parancssorban. Tekintse meg a Leírás értékét a kimenetben, majd döntse el, hogy a kiskereskedelmi (kereskedelmi csatornán) vagy a Volume (VOLUME_KMSCLIENT) licenc adathordozóján lett létrehozva:
+1. Futtassa **slmgr.vbs/dlv** egy rendszergazda jogú parancssorban. Tekintse meg a Leírás értékét a kimenetben, majd döntse el, hogy a kiskereskedelmi (kereskedelmi csatornán) vagy a Volume (VOLUME_KMSCLIENT) licenc adathordozóján lett létrehozva:
   
 
     ```
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Ha az **slmgr.vbs /dlv** a KISKERESKEDELMI csatornát jeleníti meg, futtassa az alábbi parancsokat a [KMS-ügyféltelepítési kulcs](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys) a használt Windows Server-verzióhoz való beállításához, majd kényszerítse az újbóli aktiválást: 
+2. Ha az **slmgr.vbs /dlv** a KISKERESKEDELMI csatornát jeleníti meg, futtassa az alábbi parancsokat a [KMS-ügyféltelepítési kulcs](/windows-server/get-started/kmsclientkeys) a használt Windows Server-verzióhoz való beállításához, majd kényszerítse az újbóli aktiválást: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>

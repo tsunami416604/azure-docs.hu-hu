@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314912"
+ms.locfileid: "91929336"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Terjesztési oszlopok kiválasztása Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
@@ -71,8 +71,6 @@ A nagy kapacitású (Citus) modellezési idősorozat-információinak leggyakori
 
 -   **Ne válasszon időbélyeget a terjesztési oszlopként.** Válasszon másik terjesztési oszlopot. Egy több-bérlős alkalmazásban használja a bérlői azonosítót, vagy egy valós idejű alkalmazásban használja az entitás AZONOSÍTÓját.
 -   **A PostgreSQL-táblázat particionálását használja az idő függvényében.** A tábla particionálásával egy nagy méretű, időrendbe rendezett, különböző időtartományokat tartalmazó táblába tartozó, több örökölt táblába tartozó adattábla is megszakítható. A postgres-particionálású tábla nagy kapacitású (Citus) való terjesztése az örökölt táblákhoz hoz létre szegmenseket.
-
-Tekintse meg az [idősorozat-oktatóanyagot](https://aka.ms/hyperscale-tutorial-timeseries) , amely bemutatja, hogyan építhet ki ilyen típusú alkalmazást.
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg [, hogy az](concepts-hyperscale-colocation.md) elosztott adattárolás hogyan segíti a lekérdezéseket a gyors futásban.

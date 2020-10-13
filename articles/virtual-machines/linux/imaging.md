@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319542"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966321"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -37,7 +37,7 @@ Az Azure-lemezképek több operációsrendszer-lemezből és adatlemezből is k�
 
 Az Azure két fő képtípust kínál, általánosítva és specializálva. Az általánosított és specializált kifejezések eredetileg Windows-feltételek, amelyek az Azure-ba migrálva vannak. Ezek a típusok határozzák meg, hogy a platform hogyan fogja kezelni a virtuális gépet, amikor bekapcsolja. Mindkét típushoz előnyök és hátrányok tartoznak, és előfeltételei vannak. Az első lépések előtt tudnia kell, hogy milyen típusú rendszerképekre lesz szüksége. Az alábbi összefoglalja a forgatókönyveket és a szükséges típusokat:
 
-| Használati eset      | Lemezkép típusa  | Tárolási lehetőségek |
+| Forgatókönyv      | Lemezkép típusa  | Tárolási lehetőségek |
 | ------------- |:-------------:| :-------------:| 
 | Hozzon létre egy olyan rendszerképet, amely több virtuális gép általi használatra is konfigurálható, és beállítható az állomásnév, rendszergazdai felhasználó hozzáadása és egyéb feladatok végrehajtása az első rendszerindítás során. | Általánosított | Megosztott képgyűjtemény vagy önálló felügyelt lemezképek |
 | Rendszerkép létrehozása VM-pillanatképből vagy biztonsági másolatból | Specializált |Megosztott képgyűjtemény vagy felügyelt lemez |
@@ -46,7 +46,7 @@ Az Azure két fő képtípust kínál, általánosítva és specializálva. Az �
 
 ### <a name="generalized-images"></a>Általánosított rendszerképek
 
-Az általánosított rendszerkép olyan rendszerkép, amely az első rendszerindításkor a telepítés befejezését igényli. Az első rendszerindításkor például az állomásnév, a rendszergazda felhasználó és más virtuálisgép-specifikus konfigurációk állíthatók be. Ez akkor hasznos, ha azt szeretné, hogy a rendszer többször is felhasználja a képet, és ha a létrehozás során paramétereket szeretne megadni a paraméterekben. Ha az általánosított rendszerkép tartalmazza az Azure-ügynököt, akkor az ügynök feldolgozza a paramétereket, és visszaküldi azt a platformra, amelyen a kezdeti konfiguráció befejeződött. Ezt a folyamatot [üzembe](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)helyezésnek nevezzük. 
+Az általánosított rendszerkép olyan rendszerkép, amely az első rendszerindításkor a telepítés befejezését igényli. Az első rendszerindításkor például az állomásnév, a rendszergazda felhasználó és más virtuálisgép-specifikus konfigurációk állíthatók be. Ez akkor hasznos, ha azt szeretné, hogy a rendszer többször is felhasználja a képet, és ha a létrehozás során paramétereket szeretne megadni a paraméterekben. Ha az általánosított rendszerkép tartalmazza az Azure-ügynököt, akkor az ügynök feldolgozza a paramétereket, és visszaküldi azt a platformra, amelyen a kezdeti konfiguráció befejeződött. Ezt a folyamatot [üzembe](./provisioning.md)helyezésnek nevezzük. 
 
 A kiépítés megköveteli, hogy a rendszerkép tartalmazza a kiépítés részét. Két kiépítés létezik:
 - [Azure Linux-ügynök](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Magas szinten létre kell hoznia egy SIG-t, amely az alábbiakból áll:
 
 ## <a name="hyper-v-generation"></a>Hyper-V generáció
 
-Az Azure támogatja a Hyper-V 1. generációs (Gen1) és a 2. generációs (Gen2), a Gen2 a legújabb generációt, és további funkciókat nyújt a Gen1-hoz. Például: megnövekedett memória, Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek a helyszínen futnak, az Azure-ban még nem támogatott funkciók vannak. További információ: szolgáltatások és képességek szakasz. További információkért tekintse meg ezt a [cikket](../windows/generation-2.md). Ha további funkciókra van szüksége, hozzon létre Gen2-lemezképeket.
+Az Azure támogatja a Hyper-V 1. generációs (Gen1) és a 2. generációs (Gen2), a Gen2 a legújabb generációt, és további funkciókat nyújt a Gen1-hoz. Például: megnövekedett memória, Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek a helyszínen futnak, az Azure-ban még nem támogatott funkciók vannak. További információ: szolgáltatások és képességek szakasz. További információkért tekintse meg ezt a [cikket](../generation-2.md). Ha további funkciókra van szüksége, hozzon létre Gen2-lemezképeket.
 
 Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg arról, hogy megfelel a [rendszerkép előfeltételeinek](./create-upload-generic.md), és feltölti az Azure-ba. Terjesztési specifikus követelmények:
 
@@ -108,6 +108,6 @@ Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg a
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).

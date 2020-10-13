@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596844"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977255"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Az Azure Windows rendszerű virtuális gépek nagy CPU-problémáinak elhárítása
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A teljesítménnyel kapcsolatos problémák különböző operációs rendszerekben vagy alkalmazásokban fordulnak elő, és minden probléma egyedi módszert igényel a hibaelhárításhoz. Ezeknek a problémáknak a nagy része a CPU, a memória, a Hálózatkezelés és a bemeneti/kimeneti (I/O) elemek körül forog, ahol a probléma előfordul. Ezen területek mindegyike különböző tüneteket állít elő (esetenként egyszerre), és más diagnózist és megoldást igényel.
 
@@ -90,11 +90,11 @@ A PerfInsights az Azure támogatásának ajánlott eszköze a virtuális gépek 
 
 #### <a name="run-perfinsights"></a>PerfInsights futtatása
 
-A PerfInsights a [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) és a [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) operációs rendszerhez is elérhető. A Windows esetében itt láthatók a lehetőségek.
+A PerfInsights a [Windows](./how-to-use-perfinsights.md) és a [Linux](./how-to-use-perfinsights-linux.md) operációs rendszerhez is elérhető. A Windows esetében itt láthatók a lehetőségek.
 
 #### <a name="run-and-analyze-reports-through-azure-portal"></a>Jelentések futtatása és elemzése Azure Portal
 
-Ha [a Azure Portal keresztül települ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics), a ténylegesen telepít egy bővítményt a virtuális gépen. A felhasználók a PerfInsights bővítményként is telepíthetik úgy, hogy közvetlenül a virtuális gépek paneljén, majd a teljesítmény [-](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics-vm-extension)diagnosztika lehetőséget választja.
+Ha [a Azure Portal keresztül települ](./performance-diagnostics.md), a ténylegesen telepít egy bővítményt a virtuális gépen. A felhasználók a PerfInsights bővítményként is telepíthetik úgy, hogy közvetlenül a virtuális gépek paneljén, majd a teljesítmény [-](./performance-diagnostics-vm-extension.md)diagnosztika lehetőséget választja.
 
 #### <a name="azure-portal-option-1"></a>1. Azure Portal lehetőség
 
@@ -132,7 +132,7 @@ A jelentést az előfizetés alatt található egyik Storage-fiókban tárolja a
 
 #### <a name="run-perfinsights-from-within-the-vm"></a>PerfInsights futtatása a virtuális gépről
 
-Ez a módszer akkor használható, ha hosszabb időtartamra szeretné futtatni a PerfInsights. A [PerfInsights cikk](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights#how-do-i-run-perfinsights) részletesen ismerteti a PerfInsights végrehajthatóként való futtatásához szükséges különböző parancsokat és jelzőket. A magas CPU-használat érdekében a következő módok egyikére lesz szüksége:
+Ez a módszer akkor használható, ha hosszabb időtartamra szeretné futtatni a PerfInsights. A [PerfInsights cikk](./how-to-use-perfinsights.md#how-do-i-run-perfinsights) részletesen ismerteti a PerfInsights végrehajthatóként való futtatásához szükséges különböző parancsokat és jelzőket. A magas CPU-használat érdekében a következő módok egyikére lesz szüksége:
 
 - Speciális forgatókönyv
 
@@ -289,7 +289,7 @@ A beállítások engedélyezése után megtekintheti ezeket a **vendég** száml
 
   ![Metrikák névtere](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-További információ arról, hogyan használható az Azure monitor az Azure-beli virtuális gépek kezeléséhez: [Az Azure Virtual Machines szolgáltatás figyelése Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-vm-azure)használatával.
+További információ arról, hogyan használható az Azure monitor az Azure-beli virtuális gépek kezeléséhez: [Az Azure Virtual Machines szolgáltatás figyelése Azure monitor](../../azure-monitor/insights/monitor-vm-azure.md)használatával.
 
 ### <a name="reactive-troubleshooting"></a>Újraaktív hibaelhárítás
 
@@ -311,7 +311,7 @@ A **Logman Create Counter** parancs a perfmon-gyűjtemény parancssorból tört�
 
 Az Logman.exe is elindítható egy társ Azure-beli virtuálisgép-számítógépről is ugyanabban a VNET.
 
-Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg a [Logman-létrehozási számlálót](https://docs.microsoft.com/windows-server/administration/windows-commands/logman-create-counter).
+Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg a [Logman-létrehozási számlálót](/windows-server/administration/windows-commands/logman-create-counter).
 
 Miután a rendszer begyűjti a perfmon-adatokat a probléma előfordulásakor, az adatok elemzésének hátralévő lépései megegyeznek a korábban tárgyalt lépésekkel.
 

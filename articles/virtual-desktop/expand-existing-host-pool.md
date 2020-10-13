@@ -3,15 +3,15 @@ title: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel – Azure
 description: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002438"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929591"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -39,7 +39,7 @@ A következő információkra is szüksége lesz a gazdagép és a munkamenet-ga
 
 A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
 
@@ -56,7 +56,7 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 8. Adja meg a gazdagép-készletbe felvenni kívánt munkamenet-gazdagépek számát a **virtuális gépek számával**. Ha például öt gazdagépen bővíti a gazdagép-készletet, írja be az **5**értéket.
 
     >[!NOTE]
-    >A virtuális gépek mérete vagy képe nem módosítható, mert fontos annak biztosítása, hogy a gazdagépen lévő összes virtuális gép mérete azonos legyen.
+    >Bár lehetséges a virtuális gépek lemezképének és előtagja szerkesztésének szerkesztése, nem javasoljuk a szerkesztést, ha olyan virtuális gépekkel rendelkezik, amelyeken különböző lemezképek vannak ugyanazon a gazdagépen. Csak akkor szerkessze a lemezképet és az előtagot, ha azt tervezi, hogy eltávolítja a régebbi lemezképekkel rendelkező virtuális gépeket az érintett gazdagép-készletből.
 
 9. A **virtuális hálózat adatainál**válassza ki azt a virtuális hálózatot és alhálózatot, amelyhez csatlakoztatni kívánja a virtuális gépeket. Kiválaszthatja ugyanazt a virtuális hálózatot, amelyet jelenleg használ meglévő gépe, vagy válasszon egy másikat, amely jobban megfelel a 7. lépésben kiválasztott régiónak.
 
@@ -67,9 +67,9 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
 11. Válassza a **címke** fület, ha olyan címkékkel rendelkezik, amelyekhez a virtuális gépeket szeretné csoportosítani. Ellenkező esetben ugorja át ezt a lapot.
 
-12. Válassza a **felülvizsgálat + létrehozás** lapot. tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget.
+12. Válassza a **felülvizsgálat + létrehozás** lapot. Tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
 

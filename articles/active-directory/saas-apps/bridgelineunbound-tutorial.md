@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 1d17c2d1a9ca41965bff7f7f72e2e753374a0fe2
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Oktatóanyag: Azure Active Directory integráció a bridgeline-szel
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD-alapú egyszeri bejelentkezés bridgeline-sel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Bridgeline-kötés nélküli egyszeri bejelentkezés konfigurálása](#configure-bridgeline-unbound-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Bridgeline-kötés nélküli egyszeri bejelentkezés konfigurálása](#configure-bridgeline-unbound-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. Bridgeline-alapú, **[kötetlen tesztelési felhasználó létrehozása](#create-bridgeline-unbound-test-user)** – ha a Britta Simon-hez tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó bridgeline-kapcsolattal rendelkezik.
@@ -94,7 +94,7 @@ Ha az Azure AD egyszeri bejelentkezést a bridgeline kötetlenül szeretné konf
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Ha az Azure AD egyszeri bejelentkezést a bridgeline kötetlenül szeretné konf
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot az [bridgeline kötetlen ügyfél-támogatási csapatával](mailto:support@iapps.com) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -129,7 +129,7 @@ Ha az Azure AD egyszeri bejelentkezést a bridgeline kötetlenül szeretné konf
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-bridgeline-unbound-single-sign-on"></a>Bridgeline-kötés nélküli egyszeri bejelentkezés konfigurálása
+### <a name="configure-bridgeline-unbound-single-sign-on"></a>Bridgeline-hez kötött, egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést a **bridgeline Unbound** oldalon szeretné beállítani, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portal [bridgeline kötetlen támogatási csapatnak](mailto:support@iapps.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

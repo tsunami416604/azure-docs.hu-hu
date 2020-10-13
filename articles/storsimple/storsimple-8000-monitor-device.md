@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514692"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977408"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple-eszköz figyelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -77,7 +77,7 @@ Ha a 3. vagy újabb frissítést futtatja, az elsődleges tárterületet az egye
 
 További rákattinthat a listában szereplő összes kötetre, és megtekintheti a megfelelő használatot.
 
-![Az összes helyileg rögzített kötet elsődleges kapacitásának kihasználtsága](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Elsődleges kapacitás kihasználtsága minden helyileg rögzített kötethez 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Felhőbeli tárolás használata
 Ezek a diagramok a felhasznált Felhőbeli tárhely mennyiségét mutatják. Ezeket az adatfájlokat a rendszer deduplikálja és tömöríti. Ez az összeg olyan Felhőbeli pillanatképeket tartalmaz, amelyek nem tükrözik az elsődleges köteteket, és az örökölt vagy a szükséges megőrzési célokra szolgálnak. Összehasonlíthatja az elsődleges és a Felhőbeli tárterület-használati adatokat, így az adatcsökkenési arányt is megtalálhatja, bár a szám nem lesz pontos.
@@ -138,7 +138,7 @@ A **CPU-kihasználtság** az eszközön használt CPU-ra vonatkozó metrikákat 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatás-eszköz irányítópultot](storsimple-device-dashboard.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-manager-service-administration.md).
 

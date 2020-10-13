@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812556"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
@@ -61,7 +61,7 @@ A kiépítési naplók a következő kérdésekre adnak választ:
 
 A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
 
-![Üzembehelyezési naplók](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
+![Naplók kiépítés](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
 
 
 A kiépítési napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:

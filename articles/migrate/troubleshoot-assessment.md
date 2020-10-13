@@ -8,10 +8,10 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
 ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576591"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
@@ -126,7 +126,7 @@ Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gép
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen kombinációjával lett létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
-Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](https://go.microsoft.com/fwlink/?linkid=2131554).
+Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információk](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
 
@@ -222,6 +222,6 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 - Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
 - Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

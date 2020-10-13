@@ -12,7 +12,7 @@ ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858770"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel
@@ -48,7 +48,7 @@ Jelenleg csak néhány HDInsight-fürt típusa/verziója támogatja a Data Lake 
 | A HDInsight 3.4-es verziója | Nem | Igen | |
 | A HDInsight 3.3-as verziója | Nem | Nem | |
 | A HDInsight 3.2-es verziója | Nem | Igen | |
-| Storm | | |A Storm-topológiából származó adatok írásához Data Lake Storage Gen1 használható. Data Lake Storage Gen1 is használhat olyan hivatkozási információkhoz, amelyeket aztán egy Storm-topológia tud olvasni.|
+| Vihar | | |A Storm-topológiából származó adatok írásához Data Lake Storage Gen1 használható. Data Lake Storage Gen1 is használhat olyan hivatkozási információkhoz, amelyeket aztán egy Storm-topológia tud olvasni.|
 
 > [!WARNING]  
 > A HDInsight HBase nem támogatott a Azure Data Lake Storage Gen1
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Data Lake Storage Gen1 használata kiegészítő tárolóként
 
-A Data Lake Storage Gen1 a fürt további tárterületként is használható. Ilyen esetekben a fürt alapértelmezett tárolója lehet Azure Blob Storage vagy Azure Data Lake Storage Gen1-fiók. Ha HDInsight-feladatokat futtat a Azure Data Lake Storage Gen1ban tárolt adatokon további tárolóként, használja a teljesen minősített elérési utat. Például:
+A Data Lake Storage Gen1 a fürt további tárterületként is használható. Ilyen esetekben a fürt alapértelmezett tárolója lehet Azure Blob Storage vagy Azure Data Lake Storage Gen1-fiók. Ha HDInsight-feladatokat futtat a Azure Data Lake Storage Gen1ban tárolt adatokon további tárolóként, használja a teljesen minősített elérési utat. Példa:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 Jelenleg nincs **cluster_root_path** az URL-címben. Ennek az az oka, hogy Data Lake Storage ebben az esetben nem alapértelmezett tároló. Ezért mindössze annyit kell tennie, hogy megadja a fájlok elérési útját.
 
-Ha Data Lake Storage Gen1 kiegészítő tárolóként szeretné használni, adja meg a szolgáltatás egyszerű hozzáférését azokhoz az elérési utakhoz, ahol a fájlok tárolódnak.  Például:
+Ha Data Lake Storage Gen1 kiegészítő tárolóként szeretné használni, adja meg a szolgáltatás egyszerű hozzáférését azokhoz az elérési utakhoz, ahol a fájlok tárolódnak.  Példa:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
@@ -299,7 +299,7 @@ Invoke-AzResourceAction `
     -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a HDFS-kompatibilis Azure Data Lake Storage Gen1t a HDInsight. Ez a tároló lehetővé teszi az adaptív, hosszú távú, archivált adatgyűjtési megoldások kiépítését. A HDInsight használatával pedig feloldja a tárolt strukturált és strukturálatlan adatokon belüli információkat.
 

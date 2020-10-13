@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569522"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB Azure biztonsági alapterve
@@ -334,7 +334,7 @@ Kulcsok programozott elérésének módja a Azure Active Directory használatáv
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutató**: a Azure Cosmos db kétféle kulcsot használ a felhasználók engedélyezéséhez, és nem támogatja az egyszeri bejelentkezést (SSO) az adatsík szintjén. A Cosmos DB vezérlési síkja elérhető a REST APIon keresztül, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
+**Útmutató**: a Azure Cosmos db kétféle kulcsot használ a felhasználók engedélyezéséhez, és az adatsík szintjén nem támogatja az egyszeri Sign-Ont (SSO). A Cosmos DB vezérlési síkja elérhető a REST APIon keresztül, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
 
 Az Azure Database Cosmos DB REST API ismertetése: https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -1013,11 +1013,11 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Útmutató**: mivel a Cosmos DBban tárolt összes felhasználói adatok titkosítva maradnak a nyugalmi és a szállítási forgalomban, nem kell semmilyen műveletet végrehajtania. A másik lehetőség az, hogy a titkosítás nyugalmi állapotban van, alapértelmezés szerint "on". Nincsenek olyan vezérlők, amelyekkel ki-vagy bekapcsolhatja. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut.
 
-A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezéséhez engedélyezze a Key Vault törlését.
+A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
 
 Az adattitkosítás ismertetése Azure Cosmos DBban: https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-A Soft delete engedélyezése a Key Vaultban: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Soft-Delete engedélyezése a Key Vaultban: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure Security Center figyelés**: igen
 

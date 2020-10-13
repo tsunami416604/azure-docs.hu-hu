@@ -5,29 +5,32 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/07/2020
 ms.author: duau
-ms.openlocfilehash: f2a15b63e11d8ad93672a93fee4f327c47dd6277
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: fb35a03b5dd8780445eb27f485966e3c3452feea
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566466"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978754"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute kapcsolati modellek
-A helyszíni hálózata és a Microsoft-felhő között háromféleképpen hozhat létre kapcsolatot: [Cloud Exchange közös elhelyezés](#CloudExchange), [pontok közötti Ethernet-kapcsolat](#Ethernet) és [bármely elemek közötti (IPVPN) kapcsolat](#IPVPN). A kapcsolatszolgáltatók egy vagy több kapcsolódási modellt kínálhatnak. Kapcsolatszolgáltatójával együttműködve választhatja ki az Ön számára optimális modellt.
+Négy különböző módon hozhat létre kapcsolatot a helyszíni hálózat és a Microsoft Cloud között, [CloudExchange a közös elhelyezést](#CloudExchange), [pont-pont típusú Ethernet-kapcsolatot](#Ethernet), [bármely-a-minden (IPVPN) kapcsolatot](#IPVPN)és a [közvetlen ExpressRoute](#Direct). A kapcsolódási szolgáltatók egy vagy több kapcsolati modellt is tartalmazhatnak. Kapcsolatszolgáltatójával együttműködve választhatja ki az Ön számára optimális modellt.
 <br><br>
 
-![Az ExpressRoute kapcsolati modellek diagramja](./media/expressroute-connectivity-models/expressroute-connectivity-models-diagram.png)
+:::image type="content" source="./media/expressroute-connectivity-models/expressroute-connectivity-models-diagram.png" alt-text="Az ExpressRoute kapcsolati modellek diagramja":::
 
 ## <a name="co-located-at-a-cloud-exchange"></a><a name="CloudExchange"></a>Közös elhelyezés felhőalapú adatcsere keretében
-Ha közösen van elhelyezve egy felhőalapú adatcserével rendelkező létesítményben, virtuális keresztkapcsolatokat rendelhet a Microsoft-felhőhöz a közös környezet szolgáltatójának Ethernet-adatcserélőjén. A közöskörnyezet-szolgáltatók 2. rétegbeli keresztkapcsolatokat vagy felügyelt, 3. rétegbeli keresztkapcsolatokat kínálnak a közös elhelyezési létesítményben lévő infrastruktúra és a Microsoft-felhő között.
+Ha a Felhőbeli Exchange-ben közösen helyezkedik el, a közös elhelyezésű szolgáltató Ethernet-adatcseréjén keresztül megoszthatja a virtuális kapcsolatok közötti kapcsolatokat a Microsoft Cloud szolgáltatásban. A közöskörnyezet-szolgáltatók 2. rétegbeli keresztkapcsolatokat vagy felügyelt, 3. rétegbeli keresztkapcsolatokat kínálnak a közös elhelyezési létesítményben lévő infrastruktúra és a Microsoft-felhő között.
 
 ## <a name="point-to-point-ethernet-connections"></a><a name="Ethernet"></a>Pontok közti Ethernet-kapcsolatok
 Helyszíni adatközpontjait/irodáit pontok közötti Ethernet-hivatkozásokon keresztül is csatlakoztathatja a Microsoft Cloudhoz. A pontok közötti Ethernet-szolgáltatók vagy 2. rétegbeli kapcsolatokat vagy felügyelt 3. rétegbeli kapcsolatokat kínálnak a hely és a Microsoft Cloud között.
 
 ## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Bármely elemek közötti (IPVPN-) hálózat
-WAN hálózatát integrálhatja a Microsoft Clouddal. Az IPVPN-szolgáltatók (jellemzően MPLS VPN) bármilyen elemek közötti kapcsolódást kínálnak a fiókirodák és az adatközpontok közti kapcsolatokhoz. A Microsoft Cloud összekapcsolható a WAN hálózatával, így ugyanúgy jelenik meg, mint bármely másik fiókiroda. A WAN-szolgáltatók jellemzően felügyelt 3. rétegbeli kapcsolatokat kínálnak. Az ExpressRoute képességi és szolgáltatásai a fenti kapcsolódási modellek mindegyikében megegyeznek. 
+WAN hálózatát integrálhatja a Microsoft Clouddal. Az IPVPN-szolgáltatók (jellemzően MPLS VPN) bármilyen elemek közötti kapcsolódást kínálnak a fiókirodák és az adatközpontok közti kapcsolatokhoz. A Microsoft Cloud összekapcsolható a WAN hálózatával, így ugyanúgy jelenik meg, mint bármely másik fiókiroda. A WAN-szolgáltatók jellemzően felügyelt 3. rétegbeli kapcsolatokat kínálnak. Az ExpressRoute képességi és szolgáltatásai a fenti kapcsolódási modellek mindegyikében megegyeznek.
+
+## <a name="direct-from-expressroute-sites"></a><a name="Direct"></a>Közvetlen a ExpressRoute-webhelyekről
+Közvetlenül kapcsolódhat a Microsoft globális hálózatához egy, a világ minden pontján elérhető stratégiai módon elosztott helyen. A [ExpressRoute Direct](expressroute-erdirect-about.md) kettős 100 GB/s-os vagy 10 GB/s közötti kapcsolatot biztosít, amely támogatja az aktív/aktív kapcsolatot a skálán.
 
 ## <a name="next-steps"></a>Következő lépések
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).

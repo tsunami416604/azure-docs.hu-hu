@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006296"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977578"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
 ![A virtuális tömb üzembe helyezéséhez szükséges lépéseket bemutató ábra. A harmadik lépés első része fájlkiszolgálóként van beállítva, és ki van emelve.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -118,7 +118,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
     ![Képernyőkép a Azure Portal összes erőforrás oldaláról. Egy Eszközkezelő szolgáltatás ki van emelve.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. A szűrt listában válassza ki a StorSimple Eszközkezelő szolgáltatást, majd navigáljon a **felügyeleti > eszközökhöz**. Az **eszközök** panelen ellenőrizze, hogy az eszköz sikeresen csatlakozott-e a szolgáltatáshoz, és **készen áll-** e az állapot beállítására.
     
-    ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![Üzembe helyezés](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>2. lépés: az eszköz konfigurálása fájlkiszolgálóként
 A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következő lépéseket a [Azure Portal](https://portal.azure.com/) .
@@ -129,7 +129,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
    ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Kattintson az eszközre, és megjelenik egy szalagcím üzenet, amely jelzi, hogy az eszköz készen áll a telepítésre.
    
-    ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![A 2. fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Kattintson a parancssorban a **configure (Konfigurálás** ) elemre. Ekkor megnyílik a **configure (Konfigurálás** ) panel. A **configure (Konfigurálás** ) panelen tegye a következőket:
    
    1. A fájlkiszolgáló neve automatikusan ki lesz töltve.
@@ -140,7 +140,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
     
    4. Kattintson a **kötelező beállítások konfigurálása** elemre a Storage-fiók hitelesítő adatainak megadásához az eszközzel való használathoz. Kattintson az **új hozzáadása** lehetőségre, ha nincsenek konfigurálva a Storage-fiók hitelesítő adatai. **Győződjön meg arról, hogy a használt Storage-fiók támogatja a Blobok blokkolását. Az oldal Blobok nem támogatottak.** További információ a [blobok és az oldal Blobok blokkokról](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-      ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![3. fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. A **Storage-fiók hitelesítő adatainak hozzáadása** panelen tegye a következőket: 
 
     1. Válassza az aktuális előfizetés lehetőséget, ha a Storage-fiók a szolgáltatással megegyező előfizetésben található. A másik érték megadásával a Storage-fiók kívül esik a szolgáltatás előfizetésén. 
@@ -153,19 +153,19 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
     
     5. A Storage-fiók hitelesítő adatainak hozzáadásához kattintson a **Hozzáadás** gombra. 
    
-        ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![4. fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
 5. A Storage-fiók hitelesítő adatainak sikeres létrehozása után a rendszer frissíti a **configure (Konfigurálás** ) panelt, és megjeleníti a megadott Storage-fiók hitelesítő adatait. Kattintson a **Configure** (Konfigurálás) elemre.
    
-   ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![5. fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    Látni fogja, hogy a fájlkiszolgáló létrehozása folyamatban van. A fájlkiszolgáló sikeres létrehozása után értesítést kap.
    
-   ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![Fájlkiszolgáló 5b konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    Az eszköz állapota szintén **online**állapotra vált.
    
-   ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![Fájlkiszolgáló 5c konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    Továbbra is hozzáadhat egy megosztást.
 
@@ -189,15 +189,15 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure P
    
    5. A megosztás létrehozásához kattintson a **Hozzáadás** gombra. 
     
-       ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![1. megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        A rendszer megjelenít egy értesítést arról, hogy a megosztás létrehozása folyamatban van.
    
-       ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![2. megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       Miután létrehozta a megosztást a megadott beállításokkal, a **megosztások** panel frissülni fog az új megosztásnak megfelelően. Alapértelmezés szerint a figyelés és a biztonsági mentés engedélyezve van a megosztáshoz.
    
-      ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![3. megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>4. lépés: Kapcsolódás a megosztáshoz
 Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megosztáshoz. Hajtsa végre ezeket a lépéseket a StorSimple virtuális tömbhöz csatlakoztatott Windows Server-gazdagépen.
@@ -211,6 +211,6 @@ Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megos
    ![A fájlkezelő képernyőképe. Az újonnan létrehozott megosztásokat jelölő több mappa látható.](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. Mostantól hozzáadhat fájlokat a megosztásokhoz, és biztonsági mentést készíthet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a [StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.openlocfilehash: d75f18d0d3ea1b093639cabe22567fb6e664bcc5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Oktatóanyag: Azure Active Directory integráció az autotask munkahellyel
@@ -77,7 +77,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az auto
 Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[autotask munkahelyi egyszeri bejelentkezés konfigurálása](#configure-autotask-workplace-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[autotask munkahelyi egyszeri bejelentkezés konfigurálása](#configure-autotask-workplace-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. Az **[autotask munkahely-tesztelési felhasználó létrehozása](#create-autotask-workplace-test-user)** – ha a Britta Simon-t az autotask munkaterületen szeretné létrehozni, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -97,7 +97,7 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon az [autotask munkahelyi](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) ügyfélszolgálati csoporthoz. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-autotask-workplace-single-sign-on"></a>Az autotask munkahely egyszeri bejelentkezésének konfigurálása
+### <a name="configure-autotask-workplace-single-sign-on"></a>Az autotask munkahely önálló Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a munkahelyi Online szolgáltatásba a rendszergazdai hitelesítő adatokkal.
 

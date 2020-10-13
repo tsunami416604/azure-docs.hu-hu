@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bcd0f6d4d1ac505598c839f89850f9b55a9c36a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295566"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977493"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Az 1,0-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -102,26 +102,26 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 
 1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. **Csak akkor folytassa ezt a frissítést, ha az 0,6-es (10.0.10293.0) frissítést futtatja. Ha egy korábbi verziót futtat, először [telepítse a 0,6](storsimple-virtual-array-install-update-06.md) -es frissítést az eszközön, majd alkalmazza az 1. frissítést.**
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update1m.png)
+    ![1. eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
 2. A **frissítési fájl elérési útja**mezőben adja meg a frissítés vagy a gyorsjavítás fájlnevét. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítés vagy a gyorsjavítás telepítési fájlját. Kattintson az **Alkalmaz** gombra.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update2m.png)
+    ![2. eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
 3. A rendszer figyelmeztetést jelenít meg. Mivel a virtuális tömb egyetlen csomópontos eszköz, a frissítés alkalmazása után az eszköz újraindul, és leállási idő van. Kattintson a pipa ikonra.
    
-   ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update3m.png)
+   ![3. eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update3m.png)
 
 4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület ebben az időtartamban nem érhető el.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update5m.png)
+    ![4. eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
 5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10296** kell lennie az 1,0-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10296** és a Azure Portal jelentések **10.0.10296.0** ugyanazt a verziót jelenti.
    
-    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update6m.png)
+    ![5. eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update6m.png)
 
 6. Ismételje meg a 2-4 lépést a Windows biztonsági javítás fájl használatával történő telepítéséhez `windows8.1-kb4012213-x64` . A virtuális tömb a telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
 

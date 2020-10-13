@@ -11,10 +11,10 @@ ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
 ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450184"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Üzemelő IoT Edge-példányok monitorozása
@@ -45,7 +45,7 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
 
     | Oszlop | Leírás |
     | --- | --- |
-    | ID | A központi telepítés neve. |
+    | ID (Azonosító) | A központi telepítés neve. |
     | Típus | A központi telepítés típusa, vagy a **telepítés** vagy a **rétegzett telepítés**. |
     | Cél feltétel | A célként megadott eszközök definiálásához használt címke. |
     | Prioritás | A központi telepítéshez rendelt prioritási szám. |

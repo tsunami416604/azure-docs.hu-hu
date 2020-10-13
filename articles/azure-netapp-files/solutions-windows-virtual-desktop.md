@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: a003090fd610f2ac75895cccbf97750adbd4cfcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258331"
+ms.locfileid: "91932464"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei 
 
 Ez a cikk gyakorlati útmutatást nyújt a Windows rendszerű virtuális asztalok (WVD) Azure NetApp Files használatával történő üzembe helyezéséhez.
 
-Azure NetApp Files egy nagy teljesítményű file Storage-szolgáltatás az Azure-ból. Akár 450 000 IOPS-t és ezredmásodperces késést is biztosíthat, amely képes a Windows rendszerű virtuális asztali környezetek rendkívül nagy méretének támogatására. A sávszélességet beállíthatja, és igény szerint megváltoztathatja a Azure NetApp Files kötetek szolgáltatási szintjét az IO szüneteltetése nélkül, és megtarthatja az adatsíkok elérését. Ez a funkció lehetővé teszi, hogy egyszerűen optimalizálja a WVD üzembe helyezési léptékét a költséghatékonyság érdekében. A kötetek teljesítményének befolyásolása nélkül is létrehozhatja a tárterület-hatékony, időponthoz kötődő pillanatképeket. Ez a funkció lehetővé teszi, hogy visszaállítsa az egyes [FSLogix-tárolókat](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile) a címtárból egy másolatból `~snapshot` , vagy ha azonnal visszaállítja a teljes kötetet a kötet-visszavonási képességen keresztül.  Akár 255 (rotációs) pillanatképekkel a kötetek adatvesztéssel vagy sérüléssel szembeni védelme érdekében a rendszergazdáknak számos lehetősége van visszavonni a munkát.
+Azure NetApp Files egy nagy teljesítményű file Storage-szolgáltatás az Azure-ból. Akár 450 000 IOPS-t és ezredmásodperces késést is biztosíthat, amely képes a Windows rendszerű virtuális asztali környezetek rendkívül nagy méretének támogatására. A sávszélességet beállíthatja, és igény szerint megváltoztathatja a Azure NetApp Files kötetek szolgáltatási szintjét az IO szüneteltetése nélkül, és megtarthatja az adatsíkok elérését. Ez a funkció lehetővé teszi, hogy egyszerűen optimalizálja a WVD üzembe helyezési léptékét a költséghatékonyság érdekében. A kötetek teljesítményének befolyásolása nélkül is létrehozhatja a tárterület-hatékony, időponthoz kötődő pillanatképeket. Ez a funkció lehetővé teszi, hogy visszaállítsa az egyes [FSLogix-tárolókat](../virtual-desktop/store-fslogix-profile.md) a címtárból egy másolatból `~snapshot` , vagy ha azonnal visszaállítja a teljes kötetet a kötet-visszavonási képességen keresztül.  Akár 255 (rotációs) pillanatképekkel a kötetek adatvesztéssel vagy sérüléssel szembeni védelme érdekében a rendszergazdáknak számos lehetősége van visszavonni a munkát.
 
 ## <a name="sample-blueprints"></a>Minta tervezetek
 
-Az alábbi példa bemutatja a Windows rendszerű virtuális asztalok integrálását Azure NetApp Filesokkal. A készletezett asztali forgatókönyvekben a felhasználók a készletben lévő legjobb rendelkezésre álló munkamenetre (a [szélesség-első üzemmódra](https://docs.microsoft.com/azure/virtual-desktop/host-pool-load-balancing#breadth-first-load-balancing-method)) irányítják a [több munkamenetet használó virtuális gépeket](https://docs.microsoft.com/azure/virtual-desktop/windows-10-multisession-faq#what-is-windows-10-enterprise-multi-session). Másfelől a személyes asztalok olyan helyzetekben vannak fenntartva, amikor az egyes felhasználók saját virtuális géppel rendelkeznek.
+Az alábbi példa bemutatja a Windows rendszerű virtuális asztalok integrálását Azure NetApp Filesokkal. A készletezett asztali forgatókönyvekben a felhasználók a készletben lévő legjobb rendelkezésre álló munkamenetre (a [szélesség-első üzemmódra](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) irányítják a [több munkamenetet használó virtuális gépeket](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session). Másfelől a személyes asztalok olyan helyzetekben vannak fenntartva, amikor az egyes felhasználók saját virtuális géppel rendelkeznek.
 
 ### <a name="pooled-desktop-scenario"></a>Készletezett asztali forgatókönyv
 
-A készletezett forgatókönyv esetén a Windows rendszerű virtuális asztali csapat a következő útmutatást [ajánlja](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) a felhasználók számának a vCPU. Vegye figyelembe, hogy ebben a javaslatban nincs megadva virtuálisgép-méret.
+A készletezett forgatókönyv esetén a Windows rendszerű virtuális asztali csapat a következő útmutatást [ajánlja](/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) a felhasználók számának a vCPU. Vegye figyelembe, hogy ebben a javaslatban nincs megadva virtuálisgép-méret.
 
 |     Munkaterhelés típusa     |     Világos    |     Közepes    |     Magas szintű    |
 |-----------------------|--------------|---------------|--------------|
@@ -42,7 +42,7 @@ A készletezett forgatókönyv esetén a Windows rendszerű virtuális asztali c
 
 Ezt a javaslatot egy 500 felhasználói LoginVSI-teszt megerősíti, amely körülbelül 62 "tudás/közepes felhasználót" naplóz az egyes D16as_V4 virtuális gépekre. 
 
-Ha például a 62-es felhasználók száma D16as_V4 virtuális gépen, Azure NetApp Files könnyen támogathatja a 60 000 felhasználókat a környezetben. Folyamatban van a D32as_v4 virtuális gép felső korlátjának kiértékelése. Ha a WVD-felhasználó vCPU-javaslata igaz értékkel rendelkezik a D32as_v4 esetében, több mint 120 000 felhasználó fér el az 1 000-es virtuális gépeken, mielőtt üregelő [a 1 000 IP VNet korlátját](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies), ahogy az a következő ábrán látható.  
+Ha például a 62-es felhasználók száma D16as_V4 virtuális gépen, Azure NetApp Files könnyen támogathatja a 60 000 felhasználókat a környezetben. Folyamatban van a D32as_v4 virtuális gép felső korlátjának kiértékelése. Ha a WVD-felhasználó vCPU-javaslata igaz értékkel rendelkezik a D32as_v4 esetében, több mint 120 000 felhasználó fér el az 1 000-es virtuális gépeken, mielőtt üregelő [a 1 000 IP VNet korlátját](./azure-netapp-files-network-topologies.md), ahogy az a következő ábrán látható.  
 
 ![Windows rendszerű virtuális asztali készletezett asztali forgatókönyv](../media/azure-netapp-files/solutions-pooled-desktop-scenario.png)   
 

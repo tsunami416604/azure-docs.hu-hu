@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447741"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966134"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
 
@@ -103,7 +103,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
    * **Válassza ki az eszközhöz hozzárendelni kívánt IoT hubokat**: válassza ki azt a társított IoT hubot, amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
 
-   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Példa:
+   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Például:
 
       ```json
       {
@@ -188,7 +188,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
    * **Válassza ki az eszközhöz hozzárendelni kívánt IoT hubokat**: válassza ki azt a társított IoT hubot, amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
 
-   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Példa:
+   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Például:
 
       ```json
       {
@@ -209,73 +209,76 @@ Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet autom
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható.
 
+Az eszköz kiépítéséhez kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit, majd térjen vissza ehhez a cikkhez.
+
 Az X. 509 kiépítés a DPS-vel csak IoT Edge 1.0.9 vagy újabb verzióban támogatott.
 
-Az eszköz kiépítés során a következő információkra lesz szüksége:
+## <a name="configure-the-device-with-provisioning-information"></a>Az eszköz konfigurálása az üzembe helyezési adatokkal
+
+Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszközt az általa használt információval az eszköz kiépítési szolgáltatásához való kapcsolódáshoz és a IoT Hubához.
+
+A következő információk állnak készen:
 
 * A DPS- **azonosító hatókörének** értéke. Ezt az értéket az Azure Portal DPS-példányának áttekintés lapjáról kérheti le.
 * Az eszköz Identity Certificate Chain fájlja az eszközön.
 * Az eszköz Identity Key fájlja az eszközön.
-* Egy opcionális regisztrációs azonosító (ha nincs megadva a köznapi név az eszköz identitásának tanúsítványa).
+* Egy opcionális regisztrációs azonosító. Ha nincs megadva, az azonosító a köznapi név alapján van leképezve az eszköz identitásának tanúsítványában.
 
 ### <a name="linux-device"></a>Linuxos eszköz
 
-A következő hivatkozásra kattintva telepítheti az eszközön a Azure IoT Edge futtatókörnyezetet az eszköz architektúrájának megfelelő parancsok használatával. Amikor megkapja a biztonsági démon konfigurálásának szakaszát, állítsa be a IoT Edge Runtime X. 509 automatikus, nem manuális, kiépítés beállítását. A jelen cikk előző részeinek befejezése után minden szükséges információhoz és tanúsítványfájl-fájlhoz szükség van.
+1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
 
-[A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-Ha hozzáadja az X. 509 tanúsítványt és a legfontosabb adatokat a config. YAML fájlhoz, az elérési utakat fájl URI-ként kell megadni. Példa:
+1. A fájl kiépítési konfigurációk szakaszának megkeresése. Jegyezze fel a DPS szimmetrikus kulcsú kiépítés sorait, és győződjön meg arról, hogy az egyéb kiépítési sorok megjegyzése megtörténik.
 
-* `file:///<path>/identity_certificate_chain.pem`
-* `file:///<path>/identity_key.pem`
+   A `provisioning:` sornak nem lehetnek korábbi szóközök, és a beágyazott elemeket két szóközzel kell behúzni.
 
-Az X. 509 formátumú, automatikus kiépítés konfigurációs fájljának szakasza így néz ki:
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "x509"
+   #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
 
-```yaml
-# DPS X.509 provisioning configuration
-provisioning:
-  source: "dps"
-  global_endpoint: "https://global.azure-devices-provisioning.net"
-  scope_id: "<SCOPE_ID>"
-  attestation:
-    method: "x509"
-#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
-    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-```
+1. A, a és a értékének frissítése a `scope_id` `identity_cert` `identity_pk` DPS és az eszköz adataival.
 
-Cserélje le a (z),, és a hatókör-azonosító értékét a (z `scope_id` `identity_cert` ), `identity_pk` és az URI-k között a tanúsítvány-láncra és a kulcsfájl helyére az eszközön. `registration_id`Ha szeretné, adjon meg egy eszközt az eszközhöz, vagy hagyja meg ezt a sort, hogy regisztrálja az eszközt az identitási tanúsítvány CN-nevével.
+   Ha hozzáadja az X. 509 tanúsítványt és a legfontosabb adatokat a config. YAML fájlhoz, az elérési utakat fájl URI-ként kell megadni. Például:
 
-A config. YAML fájl frissítése után mindig indítsa újra a biztonsági démont.
+   `file:///<path>/identity_certificate_chain.pem`
+   `file:///<path>/identity_key.pem`
 
-```bash
-sudo systemctl restart iotedge
-```
+1. `registration_id`Ha szeretné, adjon meg egy eszközt az eszközhöz, vagy hagyja meg ezt a sort, hogy regisztrálja az eszközt az identitási tanúsítvány CN-nevével.
+
+1. Indítsa újra a IoT Edge futtatókörnyezetet, hogy az az eszközön végrehajtott összes konfigurációs módosítást felveszi.
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows-eszköz
 
-Telepítse a IoT Edge futtatókörnyezetet azon az eszközön, amelyhez létrehozta az Identity Certificate láncot és a személyazonossági kulcsot. A IoT Edge futtatókörnyezetet automatikus, nem manuális, kiépítés esetén kell konfigurálnia.
-
-A IoT Edge Windows rendszeren való telepítésével kapcsolatos további információkért, beleértve a tárolók kezeléséhez és a IoT Edge frissítéséhez szükséges feladatok előfeltételeit és utasításait lásd: [a Azure IoT Edge futtatókörnyezet telepítése Windows](how-to-install-iot-edge-windows.md)rendszeren.
-
 1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. Ügyeljen arra, hogy az IoT Edge telepítésekor a PowerShell AMD64-munkamenetét használja, nem a PowerShell (x86) rendszerre.
 
-1. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, majd letölti a Moby Runtime és a IoT Edge futtatókörnyezetet. A parancs alapértelmezés szerint Windows-tárolókat használ.
+1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés, ezért a `-DpsX509` jelzővel az X. 509 Tanúsítványos hitelesítéssel használhatja az automatikus kiépítés használatát.
+
+   Cserélje le a, a és a érték helyőrzőjét a `{scope_id}` `{identity cert chain path}` DPS- `{identity key path}` példány megfelelő értékeire, valamint az eszköz fájlelérési útjaira.
+
+   Adja hozzá a (z) lehetőséget, `-RegistrationId {registration_id}` Ha az eszköz azonosítóját nem az Identity tanúsítvány CN-neveként szeretné beállítani.
+
+   `-ContainerOs Linux`Ha Linux-tárolókat használ Windows rendszeren, adja hozzá a paramétert.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
-
-1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a manuális kiépítés, kivéve, ha a `-Dps` jelzőt használja az automatikus kiépítés használatára.
-
-   Cserélje le a, a és a érték helyőrzőjét a `{scope_id}` `{identity cert chain path}` DPS- `{identity key path}` példány megfelelő értékeire, valamint az eszköz fájlelérési útjaira. Ha a regisztrációs azonosítót is meg szeretné adni, akkor `-RegistrationId {registration_id}` a helyőrzőt a megfelelő módon cserélje le.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

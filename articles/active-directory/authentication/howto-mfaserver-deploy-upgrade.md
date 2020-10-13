@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb442a913ac8bde869144de1a75869a39b12398
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919522"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966899"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure Multi-Factor Authentication-kiszolgáló frissítése
 
@@ -114,7 +114,7 @@ Ezek az utasítások csak akkor érvényesek, ha a Multi-Factor Authentication-k
 9. Ismételje meg a 2. lépést a AD FS farmból eltávolított kiszolgálók frissítéséhez, majd indítsa újra a AD FS szolgáltatást ezeken a kiszolgálókon.
 10. Adja hozzá ezeket a kiszolgálókat a AD FS farmhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Példák [speciális forgatókönyvekre az Azure multi-Factor Authentication és a harmadik féltől származó virtuális magánhálózatok](howto-mfaserver-nps-vpn.md) esetében
 

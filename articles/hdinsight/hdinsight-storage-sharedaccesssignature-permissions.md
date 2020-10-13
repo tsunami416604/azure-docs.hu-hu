@@ -12,7 +12,7 @@ ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856564"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Blob Storage közös hozzáférésű aláírásait használva korlátozza a HDInsight lévő adathozzáférést
@@ -433,7 +433,7 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
 
     Ezúttal a művelet végrehajtása sikeresen befejeződött.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan adhat hozzá korlátozott hozzáférésű tárolót a HDInsight-fürthöz, megismerheti a fürtön tárolt adatkezelés egyéb módjait:
 

@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: dd9d36e0f51c96a177b8bd310b75f64c948fc034
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814573"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-azure-vmware-solution-vms"></a>Vész-helyreállítás beállítása az Azure-ba az Azure VMware-megoldás virtuális gépei számára
@@ -194,7 +194,7 @@ Engedélyezze a virtuális gépek replikálását a következőképpen:
 14. 15 vagy több percet is igénybe vehet, hogy a módosítások életbe lépjenek és megjelenjenek a portálon.
 15. A hozzáadott virtuális gépek figyeléséhez tekintse meg a virtuális gépek legutóbbi felderített idejét a **konfigurációs kiszolgálók**  >  **utolsó kapcsolatfelvétele**című résznél. Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A replikáció engedélyezése után futtasson egy részletezést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](avs-tutorial-dr-drill-azure.md)

@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949031"
+ms.locfileid: "91929642"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Frissítsen a legújabb REST APIra az Azure-ban Cognitive Search
 
@@ -40,13 +40,19 @@ Ha ezek bármelyike Önre vonatkozik, előfordulhat, hogy a kódot ennek megfele
 
 ## <a name="upgrade-to-2020-06-30"></a>Frissítés 2020-06-30-re
 
-Az 2020-06-30-es verzió a REST API új általánosan elérhető kiadása. Nincsenek feltörési változások, de van néhány viselkedési eltérés. 
+Az 2020-06-30-es verzió a REST API új általánosan elérhető kiadása. Az egyik megszakítási változás és számos viselkedési különbség van. 
 
 A funkciók mostantól általánosan elérhetők ebben az API-verzióban:
 
 * A szakértelmével által létrehozott dúsított tartalom állandó [tárolása, amely](knowledge-store-concept-intro.md)az alsóbb rétegbeli elemzéshez és más alkalmazásokon keresztül történő feldolgozáshoz lett létrehozva. Ezzel a képességgel az indexelő által vezérelt mesterséges intelligencia-bővítési folyamat egy keresési indexen kívül feltöltheti a tudásbázist is. Ha a szolgáltatás előzetes verzióját használta, az egyenértékű az általánosan elérhető verzióval. Az egyetlen kód módosítása szükséges az API-verzió módosítására.
 
-A viselkedés változásai a következők:
+### <a name="breaking-change"></a>Változás megszakítása
+
+A korábbi API-verziókra írt meglévő kódok az API-Version = 2020-06-30 és újabb verziókban lesznek megszakítva, ha a kód a következő funkciókat tartalmazza:
+
+* Bármely EDM. Date literál (az év hónapja, mint például a `2020-12-12` ) a szűrési kifejezésekben a EDM. DateTimeOffset formátumot kell követnie: `2020-12-12T00:00:00Z` . Ez a módosítás az időzóna-eltérések miatti hibás vagy váratlan lekérdezési eredmények kezelésére volt szükséges.
+
+### <a name="behavior-changes"></a>Viselkedési változások
 
 * A [BM25 ranking algoritmus](index-ranking-similarity.md) újabb technológiával helyettesíti az előző rangsorolási algoritmust. Az új szolgáltatások ezt az algoritmust automatikusan használják majd. Meglévő szolgáltatások esetén a paramétereket az új algoritmus használatára kell beállítani.
 

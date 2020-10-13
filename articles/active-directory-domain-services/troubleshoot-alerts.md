@@ -2,7 +2,7 @@
 title: Gyakori riasztások és megoldások a Azure AD Domain Servicesban | Microsoft Docs
 description: Ismerje meg, Hogyan oldhatók fel a Azure Active Directory Domain Services állapotának részeként generált általános riasztások
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 5324018bace0ad530dea8ae94cecdc5b41b618c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722585"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967596"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Ismert problémák: gyakori riasztások és megoldások a Azure Active Directory Domain Services
 
@@ -294,7 +294,7 @@ Ha a felügyelt tartomány ismét engedélyezve van, a felügyelt tartomány ál
 
 A felügyelt tartomány konfigurációjában felmerülő problémákat jelző [Azure AD DS állapotú](check-health.md) riasztások keresése. Ha olyan riasztásokat tud feloldani, amelyek konfigurációs problémát jeleznek, várjon két órát, és térjen vissza, és ellenőrizze, hogy befejeződött-e a szinkronizálás. Ha elkészült, [Nyisson meg egy Azure-támogatási kérést][azure-support] a felügyelt tartomány újbóli engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

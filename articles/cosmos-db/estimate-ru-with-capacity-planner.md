@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
 ms.openlocfilehash: ec80791f9a43dc45d670442ee7b2d0c67d54f582
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803398"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>RU/s becslése a Azure Cosmos DB Capacity Planner használatával
@@ -72,7 +72,7 @@ Az Azure Cosmos Capacity kalkulátor feltételezi a pontok olvasását (egyetlen
 
 Ha például a számítási feladathoz lekérdezésre van szükség, ``SELECT * FROM c WHERE c.id = 'Alice'`` amely másodpercenként 100-szor fut, és a lekérdezés ru-díja 10 RUs, akkor a kérelmek kiszolgálásához a 100 lekérdezési/mp * 10 ru/Query = 1000 ru/s érték szükséges. Adja hozzá ezeket az RU/s-ket a számítási feladathoz tartozó olvasások vagy írások esetében szükséges RU/s értékhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Cosmos db díjszabási modelljéről](how-pricing-works.md).
 * Hozzon létre egy új [Cosmos-fiókot,-adatbázist és-tárolót](create-cosmosdb-resources-portal.md).

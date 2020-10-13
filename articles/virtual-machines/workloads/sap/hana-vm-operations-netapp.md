@@ -16,13 +16,13 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450729"
 ---
-# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS-v 4.1 kötetek a SAP HANA Azure NetApp Files
+# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
 
 A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a **/Hana/Shared**, a **/Hana/Data**és a **/Hana/log** kötetek esetében használhatók. A **/Hana/Data** -és **/HANA/log** -KÖTETEK ANF-alapú NFS-megosztások használata a v 4.1 NFS protokoll használatát igényli. A **/Hana/Data** és a **/Hana/log** kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
 
@@ -95,7 +95,7 @@ Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmén
 
 | Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 tebibájt | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /Hana/Shared felskálázás | Min (1 TB, 1 x RAM)  | Min (1 TB, 1 x RAM) | v3 vagy v 4.1 |
 | /Hana/Shared kibővíthető | 1 x RAM munkavégző csomópont<br /> /4 feldolgozó csomópont  | 1 x RAM munkavégző csomópont<br /> /4 feldolgozó csomópont  | v3 vagy v 4.1 |

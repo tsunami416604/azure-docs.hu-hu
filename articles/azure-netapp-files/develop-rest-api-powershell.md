@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72c574779d63a3629ea3c99529686b7d3247fe25
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961064"
+ms.locfileid: "91931206"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>Fejlesztés a REST API a PowerShell használatával történő Azure NetApp Files
 
@@ -34,9 +34,9 @@ A Azure NetApp Files REST API specifikációját a [githubon](https://github.com
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Hozzáférés a Azure NetApp Files REST API  
 
-1. Ha még nem tette meg, [telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t.
+1. Ha még nem tette meg, [telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t.
 2. Egyszerű szolgáltatásnév létrehozása a Azure Active Directoryban (Azure AD):
-   1. Ellenőrizze, hogy rendelkezik-e [megfelelő engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+   1. Ellenőrizze, hogy rendelkezik-e [megfelelő engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
    2. Adja meg az alábbi parancsot az Azure CLI-ben:  
 
@@ -435,6 +435,6 @@ Ez a szakasz a PowerShell minta parancsfájljait mutatja be.
        }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Lásd a Azure NetApp Files REST API referenciát](https://docs.microsoft.com/rest/api/netapp/)
+[Lásd a Azure NetApp Files REST API referenciát](/rest/api/netapp/)

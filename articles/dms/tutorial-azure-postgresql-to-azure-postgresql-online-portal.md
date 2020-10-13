@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f7b45e88eeb1e391ec86fa230a87e9f5194cd60
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282460"
+ms.locfileid: "91893798"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Oktatóanyag: az Azure DB for PostgreSQL átmigrálása – egyetlen kiszolgálóról Azure-ADATBÁZISra PostgreSQL-hez – egyetlen kiszolgáló vagy nagy kapacitású (Citus) online a DMS használatával a Azure Portal
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Oktatóanyag: az Azure DB for PostgreSQL átmigrálása – egyetlen kiszolgáló az Azure DB for PostgreSQL-hez – egyetlen kiszolgáló online a DMS használatával a Azure Portal
 
-A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy [Azure Database for PostgreSQL-egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) példányról egy [nagy kapacitású (Citus) a Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) példányon minimális állásidővel. Ebben az oktatóanyagban áttelepíti a **DVD-kölcsönzési** minta adatbázisát egy Azure Database for PostgreSQL v10-ről a nagy kapacitású-ra (Citus) Azure Database for PostgreSQLre a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
+A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy [Azure Database for PostgreSQL-egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) példányról egy másik [Azure Database for PostgreSQL-egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) példányra minimális állásidővel. Ebben az oktatóanyagban áttelepíti a **DVD-kölcsönzési** minta adatbázisát egy Azure Database for PostgreSQL v10-ből Azure Database for PostgreSQL egyetlen kiszolgálóra a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -57,9 +57,10 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Győződjön meg arról, hogy a virtuális hálózat hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő bejövő kommunikációs portokat a Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)című cikket.
 * Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a Azure Database for PostgreSQL forráshoz, hogy a Azure Database Migration Service hozzáférjen a forrás-adatbázisokhoz. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
 * Hozzon létre egy kiszolgálói szintű [Tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a Azure Database for PostgreSQL céljához, hogy engedélyezze a Azure Database Migration Service számára a célként megadott adatbázisokhoz való hozzáférést. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
+* [Engedélyezze a logikai replikációt](https://docs.microsoft.com/azure/postgresql/concepts-logical) az Azure-adatbázis PostgreSQL-forrásához. 
 * Állítsa be a következő kiszolgálói paramétereket a forrásként használt Azure Database for PostgreSQL példányban:
 
-  * max_replication_slots = [bővítőhelyek száma], javasolt beállítás **öt bővítőhelyre**
+  * max_replication_slots = [bővítőhelyek száma], javasolt beállítás **10 bővítőhelyre**
   * max_wal_senders = [párhuzamos feladatok száma] – a max_wal_senders paraméter megadja a párhuzamosan futtatható feladatok számát, az ajánlott beállítás **10 feladat**
 
 > [!NOTE]
@@ -99,7 +100,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Például:
+    Példa:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
@@ -284,9 +285,9 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
     ![Teljes átváltás képernyő](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Amikor az adatbázis-áttelepítési **állapot megjelenik,** az alkalmazásokat a Azure Database for PostgreSQL új célként megadott példányához kell kötni.
+3. Ha az adatbázis-áttelepítési **állapot megjelenik,** [hozza létre](https://wiki.postgresql.org/wiki/Fixing_Sequences) újra a sorozatot (ha van ilyen), és az alkalmazásait az Azure Database for PostgreSQL új célként megadott példányához kapcsolja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

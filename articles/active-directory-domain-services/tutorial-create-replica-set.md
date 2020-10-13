@@ -2,20 +2,20 @@
 title: Oktatóanyag – replikakészlet létrehozása Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre és használhat replikakészlet-csoportokat a Azure Portal a szolgáltatás rugalmasságához Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 8cd78a98e47468f103459fd7aa40b145d53db4fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245094"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967035"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: replika-készletek létrehozása és használata a rugalmassághoz vagy a földrajzi helyekhez Azure Active Directory Domain Services (előzetes verzió)
 
@@ -25,7 +25,7 @@ Bármely olyan Azure-régióban, amely támogatja az Azure AD DS-t, hozzáadhat 
 
 A replikakészlet a Azure AD Domain Services nyilvános előzetes verziója. Kérjük, vegye figyelembe, hogy az előzetes verzióban még elérhető funkciókra vonatkozó támogatási különbségek vannak. Az előzetes verziókkal kapcsolatos további információkért [Azure Active Directory előnézeti SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-t.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A virtuális hálózati követelmények ismertetése

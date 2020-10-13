@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266387"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977425"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával
 
@@ -45,8 +45,8 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fi�
     - **Régió**: válasszon egy régiót a felhasználó által hozzárendelt felügyelt identitás telepítéséhez, például az **USA nyugati**régiójában.
     - **Név**: Ez a felhasználó által hozzárendelt felügyelt identitás neve, például UAI1.
     ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. A módosítások áttekintéséhez kattintson a **felülvizsgálat + rekesz** elemre.
-5. Kattintson a **Létrehozás** lehetőségre.
+4. A módosítások áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.
+5. Kattintson a **Létrehozás** gombra.
 
 ## <a name="list-user-assigned-managed-identities"></a>Felhasználó által hozzárendelt felügyelt identitások listázása
 

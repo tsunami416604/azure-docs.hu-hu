@@ -1,19 +1,17 @@
 ---
 title: Az Azure Monitor-munkafüzetek áttekintése
 description: Ebből a témakörből megtudhatja, hogy a munkafüzetek Hogyan biztosítják az adatelemzést és a részletes vizualizációs jelentések létrehozását a Azure Portalon belül.
-author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.author: mbullwin
-ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825778"
+ms.locfileid: "91932396"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 

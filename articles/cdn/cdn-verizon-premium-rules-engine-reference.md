@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362580"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN a Verizon Premium Rules motor referenciája
@@ -67,7 +67,7 @@ Az alábbi ábrán látható, hogy milyen munkafolyamatot alkalmazhat a rendszer
 
 ![Házirend-telepítési munkafolyamat](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Lépés |Description |
+|Lépés |Leírás |
 |---------|---------|
 |[Piszkozat létrehozása](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    A Piszkozatok olyan szabályokból állnak, amelyek meghatározzák, hogy a CDN hogyan kezelje a tartalomra vonatkozó kéréseket.     |
 |Piszkozat zárolása   |     A Piszkozat véglegesítése után zárolni kell és át kell alakítani egy írásvédett szabályzatot.    |
@@ -93,7 +93,7 @@ A százalékos szimbólum az URL-kódolás (például:) jelölésére szolgál `
 
 A helyettesítő karakterként értelmezett szöveg a speciális karakterek további jelentését rendeli hozzá. A következő táblázat a következő karakterkészletek értelmezését ismerteti:
 
-Karakter | Description
+Karakter | Leírás
 ----------|------------
 \ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt.<br/>Az alábbi szintaxis például megmenekül egy csillaggal: `\*`
 % | A százalékos szimbólum az URL-kódolás (például:) jelölésére szolgál `%20` .
@@ -105,7 +105,7 @@ Space (Szóköz) | A szóköz karakter azt jelzi, hogy egy egyezési feltétel t
 
 A reguláris kifejezések határozzák meg a szöveges értéken belül keresendő mintát. A reguláris kifejezések jelölése meghatározott kifejezéseket definiál a különböző szimbólumokhoz. A következő táblázat azt mutatja be, hogyan kezeli a speciális karaktereket a reguláris kifejezéseket támogató feltételek és funkciók egyeztetésével.
 
-Speciális karakter | Description
+Speciális karakter | Leírás
 ------------------|------------
 \ | Egy fordított perjel elmenekül a következő karakterrel, ami azt eredményezi, hogy a karaktert literál értékként kell kezelni, ahelyett, hogy a reguláris kifejezés jelentését kellene használnia. Az alábbi szintaxis például megmenekül egy csillaggal: `\*`
 % | A százalékos szimbólum jelentése a használattól függ.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változót azonosít.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis egy százalékos szimbólummal azonosítja a HTTP-változót és elválasztóként.<br />`\%`: A százalékos szimbólum megmenekülése lehetővé teszi, hogy literál értékként, vagy URL-kódolást jelezzen (például: `\%20` ).

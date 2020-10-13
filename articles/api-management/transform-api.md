@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627765"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Oktatóanyag: az API átalakítása és biztosítása
@@ -83,7 +83,7 @@ Amint láthatja, a válasz tartalmazza az **x-AspNet-Version**és az **x-powered
 
    :::image type="content" source="media/transform-api/set-policy.png" alt-text="Szabályzatok a portálon"::: (HTTP-fejléc beállítása)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
 
@@ -107,7 +107,7 @@ Az eredeti válasz megtekintése:
 1.  A **kimenő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
 1.  Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
 1.  A jobb oldali ablak **átalakítási házirendek**területén válassza a **tartalom maszk URL-címek**elemet. 
-1.  Válassza a **Mentés** lehetőséget.
+1.  Kattintson a **Mentés** gombra.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
 

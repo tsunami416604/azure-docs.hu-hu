@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574194"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
@@ -90,6 +90,6 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele Power BI szolgáltatás
 Miután létrehozta a vizualizációkat a Power BI Desktopban, megoszthatja másokkal, ha közzéteszi azt a Power BI szolgáltatás. Ennek módjával kapcsolatos útmutatásért lásd: [közzététel Power bi Desktopról](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Data Lake Storage Gen1 adatai elemzése a Data Lake Analytics használatával](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

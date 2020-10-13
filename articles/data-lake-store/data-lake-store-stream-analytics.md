@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576217"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok továbbítása Azure Storage Blobról Azure Data Lake Storage Gen1 a Azure Stream Analytics használatával
@@ -112,5 +112,5 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
 
     A Adatkezelő ablaktáblán figyelje meg, hogy a kimenet a Data Lake Storage Gen1 output Settings () paraméterben megadott elérési út mappájába íródik `streamanalytics/job/output/{date}/{time}` .  
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Data Lake Storage Gen1 használatára szolgáló HDInsight-fürt létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)

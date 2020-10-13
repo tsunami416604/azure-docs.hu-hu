@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831413"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978322"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
@@ -86,7 +86,7 @@ Ez az architektúra az Azure-beli virtuális gépeken futtatja az alkalmazások,
 
 ### <a name="storage-considerations"></a>A tárterülettel kapcsolatos szempontok
 
-Az Oracle RAC-hoz hasonlóan a DB2 pureScale egy nagy teljesítményű blokk I/O-, kibővíthető adatbázis. Javasoljuk, hogy az igényeinek megfelelő legnagyobb [Azure Premium SSD](disks-types.md) -beállítást használja. A kisebb tárolási lehetőségek a fejlesztési és tesztelési környezetekhez megfelelőek lehetnek, míg az éles környezetekben gyakran több tárolókapacitásra van szükség. A példában szereplő architektúra a [P30](https://azure.microsoft.com/pricing/details/managed-disks/) -t használja a IOPS és az ár méretének arányában. A mérettől függetlenül használja a Premium Storage a legjobb teljesítmény érdekében.
+Az Oracle RAC-hoz hasonlóan a DB2 pureScale egy nagy teljesítményű blokk I/O-, kibővíthető adatbázis. Javasoljuk, hogy az igényeinek megfelelő legnagyobb [Azure Premium SSD](../disks-types.md) -beállítást használja. A kisebb tárolási lehetőségek a fejlesztési és tesztelési környezetekhez megfelelőek lehetnek, míg az éles környezetekben gyakran több tárolókapacitásra van szükség. A példában szereplő architektúra a [P30](https://azure.microsoft.com/pricing/details/managed-disks/) -t használja a IOPS és az ár méretének arányában. A mérettől függetlenül használja a Premium Storage a legjobb teljesítmény érdekében.
 
 A DB2-pureScale egy megosztott – minden olyan architektúrát használ, ahol az összes adatok elérhetők az összes fürtcsomóponton. A Premium Storage-ot több példányban kell megosztani, akár igény szerint, akár dedikált példányokon.
 

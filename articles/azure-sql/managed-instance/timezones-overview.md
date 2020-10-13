@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617919"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978356"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának időzónái
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A meglévő felügyelt példány időzónája nem módosítható.
+- A meglévő felügyelt példány időzónája nem módosítható. Megkerülő megoldásként hozzon létre egy új felügyelt példányt a megfelelő időzónával, majd végezze el a manuális biztonsági mentést és visszaállítást, vagy azt, amit ajánlunk, végezze el az adott [példány időpontjának visszaállítását](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database).
 - A SQL Server Agenti feladatokból indított külső folyamatok nem veszik figyelembe a példány időzónáját.
 
 ## <a name="list-of-supported-time-zones"></a>Támogatott időzónák listája

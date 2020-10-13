@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d04fff069e7cd7d766125bc7364cf4648911ad
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496179"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948347"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -87,10 +87,17 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 | Objektumok száma | 25 000 000 objektum |
 | Adatkészlet mérete| ~ 4,7 TiB |
 | Fájlméret átlagos mérete | ~ 200 KiB (legnagyobb fájl: 100 GiB) |
+| A felhő kezdeti változásának számbavétele | 7 objektum másodpercenként  |
 | Feltöltési sebesség | 20 objektum másodpercenként/szinkronizálási csoportonként |
-| Névtér letöltési átviteli sebessége * | 400 objektum/másodperc |
+| Névtér letöltési átviteli sebessége | 400 objektum/másodperc |
 
-* Új kiszolgálói végpont létrehozásakor a Azure File Sync ügynök nem tölti le a fájl tartalmát. Először szinkronizálja a teljes névteret, majd elindítja a háttérben való visszahívást, hogy letöltse a fájlokat, akár teljes egészében, akár a felhőalapú rétegek engedélyezése esetén a kiszolgálói végponton beállított felhő-előállítási házirendhez.
+### <a name="initial-one-time-provisioning"></a>Egyszeri kiépítés kezdeti időpontja
+
+**Kezdeti Felhőbeli módosítás enumerálása**: új szinkronizálási csoport létrehozásakor a kezdeti Felhőbeli változások számbavétele az első lépés, amelyet a rendszer végrehajt. Ebben a folyamatban a rendszer az Azure-fájlmegosztás összes elemét enumerálja. A folyamat során nem lesz szinkronizálási tevékenység, azaz egyetlen elem sem lesz letöltve a Felhőbeli végpontról a kiszolgálói végpontra, és egyetlen elem sem lesz feltöltve a kiszolgálói végpontról a Felhőbeli végpontra. A szinkronizálási tevékenység akkor folytatódik, amikor a kezdeti Felhőbeli változás enumerálása befejeződik.
+A teljesítmény sebessége 7 objektum/másodperc. Az ügyfelek a Felhőbeli megosztásban lévő elemek számának meghatározásával, valamint a következő képletek használatával tudják megbecsülni a Felhőbeli módosítások számbavételének befejezéséhez szükséges időt. Kezdeti Felhőbeli számbavétel időpontja (napokban) = (objektumok száma a Felhőbeli végpontban)/(7*60*60 * 24)
+
+**Névtér letöltési átviteli sebessége** Ha új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz, a Azure File Sync ügynök nem tölti le a fájl tartalmát a Felhőbeli végpontból. Először szinkronizálja a teljes névteret, majd elindítja a háttérben való visszahívást, hogy letöltse a fájlokat, akár teljes egészében, akár a felhőalapú rétegek engedélyezése esetén a kiszolgálói végponton beállított felhő-előállítási házirendhez.
+
 
 | Folyamatban lévő szinkronizálás  | Részletek  |
 |-|--|

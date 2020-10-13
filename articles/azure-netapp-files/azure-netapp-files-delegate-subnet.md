@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447559"
+ms.locfileid: "91930628"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
@@ -33,7 +33,7 @@ Az alhálózatot Azure NetApp Filesre kell delegálni.   Kötet létrehozásakor
    Egy VNet csak egyetlen delegált alhálózat tartozhat. A NetApp-fiókok több virtuális hálózatok is telepíthetnek köteteket, amelyek mindegyike saját delegált alhálózattal rendelkezik.  
 * A delegált alhálózatban nem lehet hálózati biztonsági csoportot vagy szolgáltatási végpontot kijelölni. Ennek hatására az alhálózat-delegálás sikertelen lesz.
 * A globálisan összetartozó virtuális hálózatokból származó kötetek hozzáférése jelenleg nem támogatott.
-* A [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (UDR-EK) és hálózati biztonsági csoportok (NSG-EK) nem támogatottak a Azure NetApp Files delegált alhálózatokon. Azonban a UDR és a NSG más alhálózatokra is alkalmazhatja, akár a Azure NetApp Fileshoz delegált alhálózattal azonos VNet belül.  
+* A [felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md#custom-routes) (UDR-EK) és hálózati biztonsági csoportok (NSG-EK) nem támogatottak a Azure NetApp Files delegált alhálózatokon. Azonban a UDR és a NSG más alhálózatokra is alkalmazhatja, akár a Azure NetApp Fileshoz delegált alhálózattal azonos VNet belül.  
    Azure NetApp Files létrehoz egy rendszerútvonalat a delegált alhálózathoz. Ha hibaelhárításra van szüksége, az útvonal az útválasztási táblázat **tényleges útvonalak** területén jelenik meg.
 
 ## <a name="steps"></a>Lépések
@@ -54,6 +54,4 @@ Létrehozhat és delegálhat egy alhálózatot is, amikor [kötetet hoz létre a
 ## <a name="next-steps"></a>Következő lépések
 
 * [Kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
-* [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-
-
+* [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](../virtual-network/virtual-network-for-azure-services.md)

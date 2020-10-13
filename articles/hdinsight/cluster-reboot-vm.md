@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089972"
+ms.locfileid: "91928979"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Virtuális gépek újraindítása HDInsight-fürtökhöz
 
@@ -31,8 +31,8 @@ A csomópontok újraindításakor előfordulhat, hogy a fürt nem megfelelő ál
 - A temp lemez megtelt a csomóponton.
 - A virtuális gépen található folyamat-táblázat számos olyan bejegyzést tartalmaz, ahol a folyamat befejeződött, de "leállított állapottal" szerepel.
 
-> [!WARNING]
-> Ügyeljen arra, hogy a virtuális gépek újraindítása a **HBase** és a **Kafka** -fürtök esetében is megtörténjen, mert az újraindítással elvész az adatindítás.
+> [!NOTE]
+> A virtuális gépek újraindítása nem támogatott a **HBase** és a **Kafka** -fürtök esetében, mert az újraindítás okozhatja az adatvesztést.
 
 ## <a name="use-powershell-to-reboot-vms"></a>Virtuális gépek újraindítása a PowerShell használatával
 

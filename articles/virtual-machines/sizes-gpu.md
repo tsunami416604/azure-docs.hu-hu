@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb534ae4a59c9a5c87a7eb7ab268a40b9771fdb2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653179"
+ms.locfileid: "91876226"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-optimalizált virtuális gépek méretei
 
 A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépek, amelyek egyetlen, több vagy tört GPU-val érhetők el. Ezek a méretek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek. Ez a cikk a GPU-k, a vCPU, az adatlemezek és a hálózati adapterek számáról és típusáról nyújt információt. A rendszer a tároló átviteli sebességét és a hálózati sávszélességet is tartalmazza a csoportosítás minden egyes méretéhez.
 
-- Az [NC sorozat](nc-series.md), a [NCv2 sorozat](ncv2-series.md), a [NCv3 sorozat](ncv3-series.md) és a [NCT4_v3 sorozatú](nct4-v3-series.md) méretek nagy számítási igényű és hálózati igényű alkalmazások és algoritmusok számára lettek optimalizálva. Ilyenek például a CUDA és a OpenCL-alapú alkalmazások, a szimulációk, az AI és a Deep learning. A NCT4v3 sorozat az NVIDIA Tesla T4 GPU-val és az AMD EPYC2 Rome processzorral kapcsolatos következtetésekre összpontosít. A NCv3 sorozat az NVIDIA Tesla V100 GPU-val rendelkező nagy teljesítményű számítási feladatokra összpontosít. Az NC sorozat az Intel Xeon E5-2690 v3 2.60 GHz v3 (Haswell) processzort használja, a NCv2 és a NCv3 sorozatú virtuális gépek pedig az Intel Xeon E5-2690 v4 (Broadwell) processzort használják.
+- A [NCv3 sorozat](ncv3-series.md) és az [NC T4_v3 sorozatú](nct4-v3-series.md) méretek nagy számítási igényű GPU-gyorsított alkalmazásokhoz vannak optimalizálva. Ilyenek például a CUDA és a OpenCL-alapú alkalmazások, a szimulációk, az AI és a Deep learning. Az NC T4 v3 sorozat az NVIDIA Tesla T4 GPU-val és az AMD EPYC2 Rome processzorral kapcsolatos következtetésekre összpontosít. A NCv3 sorozat az NVIDIA Tesla V100 GPU-val rendelkező nagy teljesítményű számítástechnikai és AI-munkaterhelésekre összpontosít.
 
-- Az [ND sorozat](nd-series.md)és a [NDv2-sorozat](ndv2-series.md) méretei a mélyreható tanuláshoz szükséges képzésekre és következtetésekre összpontosítanak. Az ND sorozat az NVIDIA Tesla P40 GPU-t és az Intel Xeon E5-2690 v4 (Broadwell) processzort használja. A NDv2 sorozat az NVIDIA volta V100 és az Intel Xeon Platinum 8168 (Skylake) processzort használja.
+- A [NDv2-sorozat](ndv2-series.md) mérete a kibővíthető és kibővíthető Deep learning-alkalmazásokra koncentrál. A NDv2 sorozat az NVIDIA volta V100 és az Intel Xeon Platinum 8168 (Skylake) processzort használja.
 
 - Az [NV-sorozat](nv-series.md) és a [NVv3-sorozat](nvv3-series.md) méretei a távoli vizualizációk, streaming-, játék-, kódolási és VDI-forgatókönyvekhez lettek optimalizálva, olyan keretrendszerek használatával, mint például az OpenGL és a DirectX. Ezeket a virtuális gépeket az NVIDIA Tesla M60 GPU támogatja.
 
@@ -31,7 +31,7 @@ A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépe
 
 Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA vagy az AMD GPU-illesztőprogramokat.
 
-- Az NVIDIA GPU-k által támogatott virtuális gépek esetén az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) telepíti a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](./extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](./extensions/overview.md).
+- Az NVIDIA GPU-k által támogatott virtuális gépek esetén az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) telepíti a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](./extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](./extensions/overview.md).   
 
    Azt is megteheti, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat. Lásd: [NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű n sorozatú virtuális gépeken](./windows/n-series-driver-setup.md) , illetve az [NVIDIA GPU-illesztőprogramok telepítése az n sorozatú virtuális gépeken Linux rendszerű](./linux/n-series-driver-setup.md) , támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések esetén.
 

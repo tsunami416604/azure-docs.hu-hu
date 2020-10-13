@@ -2,20 +2,20 @@
 title: Az Azure DS Domain Services engedélyezése sablon használatával | Microsoft Docs
 description: Útmutató Azure Active Directory Domain Services konfigurálásához és engedélyezéséhez Azure Resource Manager sablon használatával
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f257a186f05dc94923d1d39829b5ed68b518f20c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722636"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967630"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Active Directory Domain Services felügyelt tartomány létrehozása Azure Resource Manager sablon használatával
 
@@ -333,7 +333,7 @@ Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe
     * A DNS konfigurálásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
 * [Engedélyezze a jelszó-szinkronizálást az Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) így a végfelhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakoztathat egy Windows rendszerű virtuális gépet][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatok szinkronizálását][tutorial-phs].
 

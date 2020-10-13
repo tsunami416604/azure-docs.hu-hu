@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850659"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LucidChart konfigurálása
@@ -121,7 +121,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
-   |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai érték|
+   |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a LucidChart**lehetőséget.
 

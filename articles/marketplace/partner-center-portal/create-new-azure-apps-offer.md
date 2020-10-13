@@ -8,10 +8,10 @@ author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
 ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710719"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
@@ -38,7 +38,7 @@ Tekintse át a következő erőforrásokat, amikor előkészíti az Azure-alkalm
 
 * Gyorsútmutatók:
 
-    * [Azure-gyorssablonok](https://azure.microsoft.com/documentation/templates/)
+    * [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/)
     * [Azure-sablonok – ajánlott eljárások útmutatója](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Alkalmazásdefiníció közzététele](../../managed-applications/publish-service-catalog-app.md)
     * [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](../../managed-applications/deploy-service-catalog-quickstart.md)
@@ -188,7 +188,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
 7. Összefoglalás
-8. Description
+8. Leírás
 9. Képernyőképek/videók
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
@@ -202,7 +202,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-#### <a name="name"></a>Név
+#### <a name="name"></a>Name (Név)
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -214,7 +214,7 @@ Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú l
 
 Adja meg az ajánlat hosszabb leírását, amely legfeljebb 256 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

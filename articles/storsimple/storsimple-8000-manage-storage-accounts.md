@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515038"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978713"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>A StorSimple Eszközkezelő szolgáltatás használata a Storage-fiók hitelesítő adatainak kezeléséhez
 
@@ -33,7 +33,7 @@ A StorSimple Eszközkezelő Service panel **konfigurációs** szakasza tartalmaz
 
 Ez az oktatóanyag a Storage-fiók hitelesítő adatainak hozzáadását, szerkesztését és törlését, illetve egy Storage-fiók biztonsági kulcsainak elforgatását ismerteti.
 
- ![Tárfiók hitelesítő adatainak listája](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![A Storage-fiók hitelesítő adatainak listája 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 A Storage-fiókok tartalmazzák azokat a hitelesítő adatokat, amelyeket a StorSimple-eszköz használ a Storage-fiókhoz a felhőalapú szolgáltatóhoz való hozzáféréshez. Microsoft Azure Storage-fiókok esetében ezek a hitelesítő adatok, például a fiók neve és az elsődleges elérési kulcs. 
 
@@ -102,7 +102,7 @@ A mennyiségi tárolók által használt Storage-fiókot szerkesztheti. Ha olyan
 
 1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A **Konfigurálás** szakaszban kattintson a **Tárfiók hitelesítő adatai** elemre.
 
-    ![Tárfiók hitelesítő adatai](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Storage-fiók hitelesítő adatai 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. A **Storage-fiók hitelesítő adatai** panelen, a Storage-fiók hitelesítő adatainak listájából válassza ki a szerkeszteni kívánt elemet, és kattintson rá. 
 
@@ -159,11 +159,11 @@ Ahhoz, hogy tájékoztassa a StorSimple Eszközkezelő szolgáltatását a vált
 
 3. Kattintson a... ** Továbbiak** , majd válassza **a szinkronizálás hozzáférési kulcsát a forgatáshoz**.   
 
-    ![kulcsok szinkronizálása](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![2. kulcsok szinkronizálása](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. A StorSimple Eszközkezelő szolgáltatásban frissítenie kell azt a kulcsot, amely korábban megváltozott a Microsoft Azure Storage szolgáltatásban. Ha az elsődleges hozzáférési kulcs módosult (újragenerált), válassza az **elsődleges** kulcs lehetőséget. Ha a másodlagos kulcs módosult, válassza a **másodlagos** kulcs elemet. Kattintson a **szinkronizálási kulcs**lehetőségre.
       
-      ![kulcsok szinkronizálása](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![kulcsok szinkronizálása 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 A kulcs sikeres szinkronizálása után értesítést kap.
 
@@ -176,7 +176,7 @@ A kulcs sikeres szinkronizálása után értesítést kap.
    2. Frissítenie kell a Storage hozzáférési kulcsát a StorSimple Eszközkezelő szolgáltatásban. Ebben az esetben a Storage hozzáférési kulcsát láthatja. Adja meg az új kulcsot a **Storage-fiók elérési kulcsa** mezőben. 
    3. Mentse a módosításokat. Most frissíteni kell a Storage-fiók hozzáférési kulcsát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple biztonságáról](storsimple-8000-security.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

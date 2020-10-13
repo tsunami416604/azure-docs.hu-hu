@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649686"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978781"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
@@ -79,7 +79,7 @@ Az Azure-ban SAP HANA használható tárolási konfigurációk és tárolási t�
 Ha a helyek közötti kapcsolatot VPN-en vagy ExpressRoute keresztül csatlakoztatja az Azure-hoz, rendelkeznie kell legalább egy olyan Azure-beli virtuális hálózattal, amely virtuális átjárón keresztül csatlakozik a VPN-vagy ExpressRoute-áramkörhöz. Az egyszerű telepítések során a virtuális átjáró üzembe helyezhető az Azure Virtual Network (VNet) azon alhálózatán is, amely az SAP HANA példányokat is üzemelteti. SAP HANA telepítéséhez két további alhálózatot hoz létre az Azure virtuális hálózaton belül. Az egyik alhálózat tárolja a virtuális gépeket az SAP HANA példányok futtatásához. A másik alhálózat Jumpbox-vagy felügyeleti virtuális gépeket futtat SAP HANA Studio, más felügyeleti szoftver vagy az alkalmazás szoftverének üzemeltetéséhez.
 
 > [!IMPORTANT]
-> A funkcionalitás, de még ennél is fontosabb, hogy az [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) konfigurálása az SAP-alkalmazás és az SAP NetWeaver, Hybris vagy S/4HANA alapú SAP-rendszer adatbázis-kezelő rétege közötti kommunikációs útvonalon nem támogatott. Az SAP-alkalmazás réteg és az adatbázis-kezelő réteg közötti kommunikációnak közvetlennek kell lennie. A korlátozás nem tartalmazza az [Azure ASG és a NSG szabályokat](../../../virtual-network/security-overview.md) , amennyiben ezek a ASG-és NSG-szabályok közvetlen kommunikációt tesznek lehetővé. További forgatókönyvek, amelyek esetében a NVA nem támogatottak olyan Azure-beli virtuális gépek közötti kommunikációs útvonalon, amelyek a Linux pacemaker-fürtcsomópontok és a SBD-eszközök [magas rendelkezésre állását mutatják be az Azure-beli virtuális gépeken az SAP NetWeaver SUSE Linux Enterprise Server SAP-alkalmazásokhoz](./high-availability-guide-suse.md) Vagy az Azure-beli virtuális gépek és a Windows Server-SOFS közötti kommunikációs útvonalakban az Azure-beli [fájlmegosztás használatával a Windows feladatátvevő fürtben a fürt SAP ASCS/SCS-példányának](./sap-high-availability-guide-wsfc-file-share.md)beállítása című témakörben leírtak szerint. A kommunikációs elérési utak NVA könnyedén megduplázhatja a két kommunikációs partner közötti hálózati késést, így az SAP-alkalmazási réteg és az adatbázis-kezelő réteg közötti kritikus útvonalakon korlátozhatja az átviteli sebességet. Az ügyfelekkel megfigyelt egyes forgatókönyvekben a NVA a pacemaker linuxos fürtök meghibásodását okozhatják abban az esetben, ha a Linux pacemaker-fürtcsomópontok közötti kommunikációnak egy NVA keresztül kell kommunikálnia a SBD-eszközzel.  
+> A funkcionalitás, de még ennél is fontosabb, hogy az [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) konfigurálása az SAP-alkalmazás és az SAP NetWeaver, Hybris vagy S/4HANA alapú SAP-rendszer adatbázis-kezelő rétege közötti kommunikációs útvonalon nem támogatott. Az SAP-alkalmazás réteg és az adatbázis-kezelő réteg közötti kommunikációnak közvetlennek kell lennie. A korlátozás nem tartalmazza az [Azure ASG és a NSG szabályokat](../../../virtual-network/network-security-groups-overview.md) , amennyiben ezek a ASG-és NSG-szabályok közvetlen kommunikációt tesznek lehetővé. További forgatókönyvek, amelyek esetében a NVA nem támogatottak olyan Azure-beli virtuális gépek közötti kommunikációs útvonalon, amelyek a Linux pacemaker-fürtcsomópontok és a SBD-eszközök [magas rendelkezésre állását mutatják be az Azure-beli virtuális gépeken az SAP NetWeaver SUSE Linux Enterprise Server SAP-alkalmazásokhoz](./high-availability-guide-suse.md) Vagy az Azure-beli virtuális gépek és a Windows Server-SOFS közötti kommunikációs útvonalakban az Azure-beli [fájlmegosztás használatával a Windows feladatátvevő fürtben a fürt SAP ASCS/SCS-példányának](./sap-high-availability-guide-wsfc-file-share.md)beállítása című témakörben leírtak szerint. A kommunikációs elérési utak NVA könnyedén megduplázhatja a két kommunikációs partner közötti hálózati késést, így az SAP-alkalmazási réteg és az adatbázis-kezelő réteg közötti kritikus útvonalakon korlátozhatja az átviteli sebességet. Az ügyfelekkel megfigyelt egyes forgatókönyvekben a NVA a pacemaker linuxos fürtök meghibásodását okozhatják abban az esetben, ha a Linux pacemaker-fürtcsomópontok közötti kommunikációnak egy NVA keresztül kell kommunikálnia a SBD-eszközzel.  
 > 
 
 > [!IMPORTANT]
@@ -108,7 +108,7 @@ Az IP-címek hozzárendelésének különböző módszereiről az [IP-címek tí
 
 SAP HANA rendszert futtató virtuális gépek esetén a hozzárendelt statikus IP-címekkel kell működnie. Ennek oka, hogy a HANA-hivatkozások IP-címeinek néhány konfigurációs attribútuma.
 
-Az [Azure hálózati biztonsági csoportok (NSG-k)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) az SAP HANA-példányhoz vagy a Jumpbox irányított forgalom irányítására szolgálnak. A NSG és a végül az [alkalmazás biztonsági csoportjai](../../../virtual-network/security-overview.md#application-security-groups) a SAP HANA alhálózathoz és a felügyeleti alhálózathoz vannak társítva.
+Az [Azure hálózati biztonsági csoportok (NSG-k)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) az SAP HANA-példányhoz vagy a Jumpbox irányított forgalom irányítására szolgálnak. A NSG és a végül az [alkalmazás biztonsági csoportjai](../../../virtual-network/network-security-groups-overview.md#application-security-groups) a SAP HANA alhálózathoz és a felügyeleti alhálózathoz vannak társítva.
 
 Az alábbi képen egy központi telepítési séma áttekintése látható, amely a hub és a küllős VNet architektúrát követően SAP HANA:
 
@@ -324,4 +324,3 @@ Ismerkedjen meg a felsorolt cikkekkel
 - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server](./sap-hana-high-availability.md)
 - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md)
 
- 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530199"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976878"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -25,7 +25,7 @@ A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említet
 
 Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi kód megadását. További információ: [optikai karakterfelismerés (OCR)](concept-recognizing-text.md) .
 
-|Nyelv| Nyelvkód | OCR API | A v 3.0 olvasása | A v 3.1 nyilvános előzetes verziójának olvasása |
+|Nyelv| Nyelvkód | OCR API | A v 3.1 olvasása | Olvasás: v 3.1 – előzetes verzió. 2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arab | `ar`|✔ | | |
 |Kínai (egyszerűsített) | `zh-Hans`|✔ | |✔ |
@@ -58,7 +58,7 @@ Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi k�
 
 Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API egyes műveletei más nyelveket is visszaadhatnak a `language` lekérdezési paraméterrel megadottak szerint. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a és a `visualFeatures` `details` lekérdezési paraméterekkel vannak megadva. az [áttekintést](overview.md) a képelemzéssel elvégezhető műveletek listájáról tekintheti meg.
 
-|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
+|Nyelv | Nyelvkód | Kategóriák | Címkék | Description | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

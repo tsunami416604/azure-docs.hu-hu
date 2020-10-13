@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 563b9c03141357eeacf9a7d890c386faae52c6df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2a5588940d4efacc08d89b72bde4433d725a4994
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88510698"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978407"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Rövid útmutató: virtuális gép létrehozása és titkosítása a Azure Portal
 
@@ -38,7 +38,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     :::image type="content" source="../media/disk-encryption/portal-quickstart-linux-vm-creation.png" alt-text="Linuxos virtuális gép létrehozása képernyő&quot;:::
 
     > [!WARNING]
-    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
+    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](../managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
     >
     > A félreértések elkerülése érdekében javasoljuk, hogy az oktatóanyag elvégzése során teljes mértékben kihagyja a *lemezek* fület.
 
@@ -47,7 +47,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Linuxos virtuális gép létrehozása képernyő&quot;:::
 
     > [!WARNING]
-    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
+    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](../managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
     >
     > A félreértések elkerülése érdekében javasoljuk, hogy az oktatóanyag elvégzése során teljes mértékben kihagyja a *lemezek* fület.
 
@@ -66,7 +66,7 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
     :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Linuxos virtuális gép létrehozása képernyő&quot;:::
 
     > [!WARNING]
-    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
+    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](../managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
     >
     > A félreértések elkerülése érdekében javasoljuk, hogy az oktatóanyag elvégzése során teljes mértékben kihagyja a *lemezek* fület.
 
@@ -78,7 +78,7 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
     :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Linuxos virtuális gép létrehozása képernyő&quot;:::
 
     > [!WARNING]
-    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
+    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](../managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
     >
     > A félreértések elkerülése érdekében javasoljuk, hogy az oktatóanyag elvégzése során teljes mértékben kihagyja a *lemezek* fület.
 
@@ -92,22 +92,22 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
     :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="Linuxos virtuális gép létrehozása képernyő&quot;:::
 
     > [!WARNING]
-    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
+    > A &quot;lemezek&quot; lapon a **lemez beállításai**területen található &quot;titkosítási típus&quot; mező szerepel. Ez a mező a [Managed Disks](../managed-disks-overview.md) + CMK titkosítási beállításainak megadására szolgál, **nem** a Azure Disk Encryption.
     >
     > A félreértések elkerülése érdekében javasoljuk, hogy az oktatóanyag elvégzése során teljes mértékben kihagyja a *lemezek* fület.
 
 1. Válassza a &quot;felügyelet&quot; fület, és ellenőrizze, hogy rendelkezik-e diagnosztikai Storage-fiókkal. Ha nincs Storage-fiókja, válassza az *új létrehozása*elemet, nevezze el a Storage-fiók *myStorageAccount*, és válassza az &quot;OK":::
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.  
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.  
 1. Miután a kulcstartó érvényesítése sikeres volt, válassza a **Létrehozás**lehetőséget. Ezzel a beállítással visszatérhet a **Select kulcsra Azure Key Vault** képernyőről.
 1. Hagyja üresen a **kulcsmező** mezőt, és válassza a **kiválasztás**lehetőséget.
 1. A titkosítás képernyő felső részén kattintson a **Mentés**gombra. A felugró ablak figyelmezteti, hogy a virtuális gép újraindul. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a Törlés elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key Vault, amely engedélyezve lett a titkosítási kulcsokhoz, létrehozott egy virtuális gépet, és engedélyezte a virtuális gép titkosítását.  
 
