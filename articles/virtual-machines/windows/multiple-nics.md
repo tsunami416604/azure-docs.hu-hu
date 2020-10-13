@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a135cd1629aa2befcd4c56d835473791d62ce8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835544"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974005"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows rendszerű virtuális gép létrehozása és kezelése
 Az Azure-ban a virtuális gépek (VM-EK) több virtuális hálózati adapterrel (NIC) is rendelkezhetnek hozzájuk. Gyakori forgatókönyv, hogy különböző alhálózatokat kell létrehozni az előtér-és háttér-kapcsolathoz. Több hálózati adaptert is hozzárendelhet egy virtuális GÉPHEZ több alhálózathoz, de ezek az alhálózatok mind ugyanabban a virtuális hálózatban (vNet) találhatók. Ez a cikk részletesen ismerteti, hogyan hozható létre több hálózati adapterrel rendelkező virtuális gép. Azt is megtudhatja, hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről. A különböző virtuálisgép- [méretek](../sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni.
@@ -70,7 +70,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Általában egy [hálózati biztonsági csoportot](../../virtual-network/security-overview.md) is létrehoz a virtuális gépre irányuló hálózati forgalom szűrésére, valamint a [terheléselosztást](../../load-balancer/load-balancer-overview.md) a több virtuális gép közötti forgalom elosztására.
+Általában egy [hálózati biztonsági csoportot](../../virtual-network/network-security-groups-overview.md) is létrehoz a virtuális gépre irányuló hálózati forgalom szűrésére, valamint a [terheléselosztást](../../load-balancer/load-balancer-overview.md) a több virtuális gép közötti forgalom elosztására.
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuálisgép-mérethez tartozik egy korlát a virtuális géphez adható hálózati adapterek teljes számára. További információ: [Windowsos virtuális gépek méretei](../sizes.md).
@@ -288,4 +288,4 @@ Az Azure egy alapértelmezett átjárót rendel hozzá a virtuális géphez csat
     Az **átjáró**alatt a *192.168.1.1* listázott útvonal az elsődleges hálózati adapter alapértelmezett útvonala. Az **átjáró**alatti *192.168.2.1* útvonal a hozzáadott útvonal.
 
 ## <a name="next-steps"></a>Következő lépések
-Ha több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni, tekintse át a [Windows rendszerű virtuális gépek méretét](../sizes.md) . Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak. 
+Ha több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni, tekintse át a [Windows rendszerű virtuális gépek méretét](../sizes.md) . Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak.

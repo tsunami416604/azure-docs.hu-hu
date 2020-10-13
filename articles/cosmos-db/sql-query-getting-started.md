@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
 ms.openlocfilehash: f4ee0c0af6939e71f696fc900ec2ab1343ca91df
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802514"
 ---
 # <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
@@ -178,7 +178,7 @@ Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mut
 
 * A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)

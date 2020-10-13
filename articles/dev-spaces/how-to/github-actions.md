@@ -7,14 +7,16 @@ description: Lekéréses kérelem módosításainak áttekintése és tesztelés
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js
-ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316103"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973104"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Az Azure dev Spaces egy olyan GitHub-műveletekkel rendelkező munkafolyamatot biztosít, amely lehetővé teszi, hogy a lekéréses kérelmeket közvetlenül az AK-ban tesztelje, mielőtt a pull-kérelem beolvad az adattár fő ágában. A lekéréses kérelmek változásainak áttekintéséhez futó alkalmazásokkal növelheti a fejlesztő és a csapattagok megbízhatóságát is. Ez a futó alkalmazás segítheti a csoporttagokat, például a termék-kezelőket és a tervezőket, a fejlesztés korai szakaszában a felülvizsgálati folyamat részévé válnak.
 
@@ -51,7 +53,7 @@ Mentse a *lekéréséhez* értéket a kimenetből, mert azt egy későbbi lépé
 
 ## <a name="create-a-service-principal-for-authentication"></a>Egyszerű szolgáltatásnév létrehozása a hitelesítéshez
 
-Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Példa:
+Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Például:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment

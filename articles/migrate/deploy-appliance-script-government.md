@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthat be Azure Migrate készüléket a Azu
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450019"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Berendezés beállítása Azure Government 
@@ -60,7 +60,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -115,7 +115,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -169,7 +169,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config

@@ -1,14 +1,14 @@
 ---
 title: A kezdeményezési definíció szerkezetének részletei
 description: Leírja, hogyan használhatók a házirend-kezdeményezési definíciók a szervezeten belüli Azure-erőforrásokra történő üzembe helyezés csoportházirend-definíciói számára.
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048499"
+ms.locfileid: "91876175"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy kezdeményezés definíciós szerkezete
 
@@ -248,19 +248,18 @@ A házirend-definíciót jelölő összes _tömb_ elem a következő tulajdonsá
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>Házirend-definíciós csoportok (előzetes verzió)
+## <a name="policy-definition-groups"></a>Házirend-definíciós csoportok
 
-Azure Policy [szabályozási megfelelőségi](./regulatory-compliance.md) (előzetes) funkciójának részeként a kezdeményezési definícióban szereplő szabályzat-definíciók csoportosíthatók. Ez az információ a `policyDefinitionGroups` _Array_ tulajdonságban van definiálva. Ezek a csoportok további részleteket tartalmaznak, például azt a **vezérlési** és **megfelelőségi tartományt** , amelyet a házirend-definíció biztosít a felé.
-További csoportosítási részletek a Microsoft által létrehozott **policyMetadata** -objektumokban találhatók. További információ: [metaadat-objektumok](#metadata-objects).
+A kezdeményezési definícióban szereplő szabályzat-definíciók csoportosíthatók és kategorizálva is lehetnek. A Azure Policy [megfelelőségi (előzetes](./regulatory-compliance.md) ) funkciója ezt a tulajdonságot használja a definíciók **vezérlőkbe** és **megfelelőségi tartományba**való csoportosítására. Ez az információ a `policyDefinitionGroups` _Array_ tulajdonságban van definiálva. További csoportosítási részletek a Microsoft által létrehozott **policyMetadata** -objektumokban találhatók. További információ: [metaadat-objektumok](#metadata-objects).
 
 ### <a name="policy-definition-groups-parameters"></a>Házirend-definíciós csoportok paraméterei
 
 Az egyes _tömb_ elemeinek `policyDefinitionGroups` a következő tulajdonságokkal kell rendelkezniük:
 
-- `name` (karakterlánc) \[ kötelező \] : a **vezérlő**rövid neve. A tulajdonság értékét a következő használja: `groupNames` `policyDefinitions` .
-- `category` (karakterlánc): a vezérlő **megfelelőségi tartománya** .
-- `displayName` (karakterlánc): a **vezérlő**rövid neve. A portál használja.
-- `description` (karakterlánc): a **vezérlő** leírását.
+- `name` (karakterlánc) \[ kötelező \] : a **csoport**rövid neve. A szabályozás megfelelősége alatt a **vezérlő**. A tulajdonság értékét a következő használja: `groupNames` `policyDefinitions` .
+- `category` (karakterlánc): a csoporthoz tartozó hierarchia. A szabályozás megfelelősége területen a vezérlő **megfelelőségi tartománya** .
+- `displayName` (karakterlánc): a **csoport** vagy a **vezérlőelem**rövid neve. A portál használja.
+- `description` (karakterlánc): annak leírása, hogy a **csoport** vagy a **vezérlőelem** mit takar.
 - `additionalMetadataId` (karakterlánc): a [policyMetadata](#metadata-objects) objektum helye, amely további részleteket tartalmaz a **vezérlő** és a **megfelelőség tartományáról**.
 
   > [!NOTE]

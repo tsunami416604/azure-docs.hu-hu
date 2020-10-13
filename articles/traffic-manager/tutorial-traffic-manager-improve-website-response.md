@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: duau
 ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651241"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Oktatóanyag: a webhely válaszának javítása Traffic Manager használatával
@@ -68,7 +68,7 @@ Ebben a szakaszban két virtuális gépet hoz létre *myIISVMEastUS* és *MyIISV
    - **Bejövő portok szabályai**  >  **Bejövő portok kiválasztása**: válassza az **RDP** és a **http** elemet a legördülő listából.
 
 3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
-4. Válassza az **Áttekintés + létrehozás** lehetőséget.
+4. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 6. A következő lépésekkel hozhat létre egy *myIISVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myIISVMEastUS*.
 7. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
@@ -127,7 +127,7 @@ Ebben a szakaszban létrehoz egy virtuális gépet (*myVMEastUS* és *myVMWestEu
    - **Bejövő portok szabályai**  >  **Bejövő portok kiválasztása**: válassza az **RDP** elemet a legördülő listából.
 
 3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
-4. Válassza az **Áttekintés + létrehozás** lehetőséget.
+4. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 6. A következő lépésekkel hozhat létre egy *myVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myVMEastUS*.
 7. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
@@ -161,7 +161,7 @@ Adja hozzá az IIS-kiszolgálók- *myIISVMEastUS*myIISVMWestEurope futtató két
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Azure-végpont                                   |
-    | Name           | myEastUSEndpoint                                        |
+    | Név           | myEastUSEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |        |           |
@@ -213,7 +213,7 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 
 Ha már nincs rájuk szüksége, törölje az erőforráscsoportokat (**ResourceGroupTM1** és **ResourceGroupTM2**). Ehhez válassza ki az erőforráscsoportot (**ResourceGroupTM1** vagy **ResourceGroupTM2**), majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Forgalom elosztása végpontok között](traffic-manager-configure-weighted-routing-method.md)

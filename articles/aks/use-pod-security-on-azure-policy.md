@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/22/2020
 author: jluk
 ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368855"
 ---
-# <a name="secure-pods-with-azure-policy"></a>Biztonságos hüvelyek Azure Policy
+# <a name="secure-pods-with-azure-policy"></a>Podok biztonságossá tétele az Azure Policyval
 
 Az AK-fürt biztonságának növelése érdekében megadhatja, hogy a rendszer milyen függvényeket biztosítson, és ha a vállalat szabályzata minden esetben működik. Ez a hozzáférés az AK-hoz készült [Azure Policy-bővítmény][kubernetes-policy-reference]által biztosított beépített házirendekkel van meghatározva. Azáltal, hogy további szabályozást biztosít a pod specifikációjának (például a legfelső szintű jogosultságok) biztonsági szempontjai felett, lehetővé teszi a szigorúbb biztonsági betartást és láthatóságot a fürtben üzembe helyezett környezetekben. Ha egy pod nem felel meg a szabályzatban meghatározott feltételeknek, Azure Policy letilthatja a hüvelyt a szabálysértés elindításához vagy megjelöléséhez. Ez a cikk bemutatja, hogyan használhatók a Azure Policy a hüvelyek az AK-ban való üzembe helyezésének korlátozására.
 
@@ -108,8 +108,8 @@ A beépített kezdeményezések mind a [Kubernetes származó Pod biztonsági sz
 |A gazda fájlrendszer használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Igen | Igen
 |A Linux-funkciók korlátozása az [alapértelmezett készletre](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Igen | Igen
 |Meghatározott mennyiségi típusok használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Igen – engedélyezett kötetek típusai:,,, `configMap` `emptyDir` `projected` `downwardAPI` , `persistentVolumeClaim`|
-|Jogosultság-eszkaláció a gyökérhez|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
-|A tároló felhasználói és csoportjai azonosítóinak korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
+|Jogosultság-eszkaláció a gyökérhez|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Igen |
+|A tároló felhasználói és csoportjai azonosítóinak korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Igen|
 |A pod köteteit birtokló FSGroup foglalásának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Igen – az engedélyezett szabályok a következők:,, `runAsUser: mustRunAsNonRoot` `supplementalGroup: mustRunAs 1:65536` `fsGroup: mustRunAs 1:65535` `runAsGroup: mustRunAs 1:65535` .  |
 |Seccompot-profilt igényel|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Igen, a allowedProfiles * `docker/default` vagy `runtime/default` |
 
@@ -299,7 +299,7 @@ A pod biztonsági házirendből való Migrálás esetén a következő művelete
 
 Az alábbiakban összefoglaljuk a pod biztonsági házirend és a Azure Policy viselkedésének változásait.
 
-|Használati eset| Pod biztonsági szabályzat | Azure Policy |
+|Forgatókönyv| Pod biztonsági szabályzat | Azure Policy |
 |---|---|---|
 |Telepítés|A pod biztonsági házirend funkció engedélyezése |Azure Policy bővítmény engedélyezése
 |Szabályzatok telepítése| Pod biztonsági házirend-erőforrás üzembe helyezése| Rendeljen Azure-szabályzatokat az előfizetés vagy az erőforráscsoport hatóköréhez. A Kubernetes erőforrás-alkalmazásaihoz a Azure Policy bővítmény szükséges.

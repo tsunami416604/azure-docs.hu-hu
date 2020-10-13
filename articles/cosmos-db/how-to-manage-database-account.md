@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570717"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
@@ -31,7 +31,7 @@ Lásd: [Azure Cosmos db fiók létrehozása az Azure CLI-vel](manage-with-cli.md
 
 Tekintse meg [Azure Cosmos db fiók létrehozása a PowerShell használatával](manage-with-powershell.md#create-account) című témakört.
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sablon
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-sablon
 
 Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablonokkal](manage-sql-with-resource-manager.md) című témakört.
 
@@ -153,7 +153,7 @@ Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Co
 
 3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
@@ -184,7 +184,7 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
 4. A feladatátvételi prioritás módosításához húzza az olvasási régiókat a sor bal oldalán lévő három pontra, amikor az egérmutatót a fölé viszi.
 
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 

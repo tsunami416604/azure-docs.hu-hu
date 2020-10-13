@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448904"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Az SQLite-adatbázis migrálása Azure SQL Database kiszolgáló nélkülire
@@ -53,7 +53,7 @@ Ha követte az alábbi lépéseket, az adatbázis Azure SQL Database kiszolgál�
     - Az ADF elindítása (szerző és figyelő a szolgáltatásból a Azure Portal)
     - Kattintson a "Szerző" fülre (kék ceruza) a bal oldalon
     - Kattintson a kapcsolatok (bal alsó), majd az integrációs modulok elemre.
-    - Adja hozzá az új saját üzemeltetésű Integration Runtime, nevezze el, válassza a *2. lehetőséget*.
+    - Vegyen fel új Self-Hosted Integration Runtime, adjon meg egy nevet, válassza a *2. lehetőséget*.
 
 5. Hozzon létre egy új társított szolgáltatást a forrás SQLite-adatbázishoz a Data Factory.
 

@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/10/2020
-ms.openlocfilehash: dff5e73f9bb02357a6a6f74f5d0db08eee13e76e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 38f3aaeddbdedb073d83a64a508eb9f4578f1c97
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332270"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948425"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Az Azure Blob Storage-ban lévő Adatmásolás és-átalakítás Azure Data Factory használatával
 
@@ -242,6 +242,9 @@ Ezek a tulajdonságok egy Azure Blob Storage-beli társított szolgáltatás ese
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |Nem |
 
 >[!NOTE]
+>Ha a blob-fiókja lehetővé teszi a [Soft delete](../storage/blobs/soft-delete-blob-overview.md)használatát, az egyszerű szolgáltatás hitelesítése nem támogatott az adatfolyamban.
+
+>[!NOTE]
 >Az egyszerű szolgáltatás hitelesítését csak a "AzureBlobStorage" típusú társított szolgáltatás támogatja, nem az előző "AzureStorage" type társított szolgáltatás.
 
 **Példa**
@@ -293,6 +296,9 @@ Ezek a tulajdonságok egy Azure Blob Storage-beli társított szolgáltatás ese
 | serviceEndpoint | Határozza meg az Azure Blob Storage szolgáltatás végpontját a mintázatával `https://<accountName>.blob.core.windows.net/` . |Igen |
 | accountKind | Adja meg a Storage-fiók típusát. Az engedélyezett értékek a következők: **Storage** (általános célú v1), **StorageV2** (általános célú v2), **BlobStorage**vagy **BlockBlobStorage**. <br/> Ha az Azure Blob társított szolgáltatást adatforgalomban használja, a felügyelt identitás vagy egyszerű szolgáltatásnév hitelesítése nem támogatott, ha a fiók típusa üres vagy "Storage". Adja meg a megfelelő fiók típusát, válasszon másik hitelesítést, vagy frissítse a Storage-fiókját az általános célú v2-re. |Nem |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |Nem |
+
+> [!NOTE]
+> Ha a blob-fiókja lehetővé teszi a [Soft delete](../storage/blobs/soft-delete-blob-overview.md)használatát, a felügyelt identitások hitelesítése nem támogatott az adatfolyamban.
 
 > [!NOTE]
 > Az Azure erőforrás-hitelesítés felügyelt identitásait csak az "AzureBlobStorage" típusú társított szolgáltatás támogatja, nem az előző "AzureStorage" type társított szolgáltatás.
@@ -746,6 +752,6 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

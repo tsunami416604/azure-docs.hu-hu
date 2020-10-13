@@ -3,12 +3,12 @@ title: A GitHub Enterprise Server beállítása az Azure VMware-megoldás privá
 description: Ismerje meg, hogyan állíthatja be a GitHub Enterprise Servert az Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 53e5264eed761909217c2e3a902c9fee9faaffaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343064"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949309"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>A GitHub Enterprise Server beállítása az Azure VMware-megoldás privát felhőben
 
@@ -74,7 +74,7 @@ Ha a példányát éles használatra szeretné megerősíteni, a következő opc
 > [!NOTE]
 > A GitHub-műveletek [jelenleg korlátozott bétaverzióként érhetők el a GitHub Enterprise Server 2,22 kiadásában](https://docs.github.com/en/enterprise/admin/github-actions).
 
-A GitHub-műveleteknek a GitHub Enterprise Serveren való engedélyezéséhez külső blob Storage szükséges (jelenleg "bétaverzió" szolgáltatásként érhető el). Ezt a külső BLOB-tárolót az összetevők és naplók tárolására szolgáló műveletek használják. A GitHub Enterprise Server műveletei az [Azure Blob Storage tárolási szolgáltatóként](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (és másokkal) is támogatják. Ezért egy új Azure Storage-fiókot fogunk kiépíteni a [Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#types-of-storage-accounts) BlobStorage:
+A GitHub-műveleteknek a GitHub Enterprise Serveren való engedélyezéséhez külső blob Storage szükséges (jelenleg "bétaverzió" szolgáltatásként érhető el). Ezt a külső BLOB-tárolót az összetevők és naplók tárolására szolgáló műveletek használják. A GitHub Enterprise Server műveletei az [Azure Blob Storage tárolási szolgáltatóként](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (és másokkal) is támogatják. Ezért egy új Azure Storage-fiókot fogunk kiépíteni a [Storage-fiók](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) BlobStorage:
 
 :::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
 
@@ -217,7 +217,7 @@ Gratulálunk! Most fejezte be az első műveletek munkafolyamatát a GitHub Ente
 
 Csak a GitHub-műveletekkel foglalkozó felületét használjuk fel. További inspirációért vegye fel a [GitHub piactéren](https://github.com/marketplace)végrehajtott műveletek listáját, vagy [hozza létre a sajátját](https://docs.github.com/en/actions/creating-actions).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a GitHub Enterprise Server új példányát hoztunk létre, amely a GitHub.com saját üzemeltetésű, az Azure VMware-megoldás privát felhője felett található. Ez a példány a GitHub-műveletek támogatását tartalmazza, és az Azure Blob Storage használja a naplók és összetevők megőrzéséhez. Ez nagyszerű kombináció egy modern, együttműködésen alapuló és biztonságos szoftverfejlesztési élményhez. Az Azure VMware megoldás szilárd alapjaira épül, amely lehetővé teszi a Felhőbeli erőforrások kihasználása ismerős környezetben.
 

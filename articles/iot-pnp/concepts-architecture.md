@@ -10,13 +10,13 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574321"
 ---
-# <a name="iot-plug-and-play-architecture"></a>IoT Plug and Play architektúra
+# <a name="iot-plug-and-play-architecture"></a>IoT Plug and Play-architektúra
 
 A IoT Plug and Play lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT Plug and Play egy olyan eszköz _modellje_ , amely leírja az eszköz képességeit egy IoT Plug and Play-kompatibilis alkalmazás számára. Ez a modell illesztőfelület-készletként van strukturálva, amely az alábbiakat határozza meg:
 
@@ -28,7 +28,7 @@ Minden modell és felület egyedi AZONOSÍTÓval rendelkezik.
 
 Az alábbi ábrán egy IoT Plug and Play megoldás fő elemei láthatók:
 
-:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT Plug and Play architektúra":::
+:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT Plug and Play-architektúra":::
 
 ## <a name="model-repository"></a>Modelladattár
 
@@ -92,7 +92,7 @@ A háttérrendszer-megoldás az illesztőfelület-definíciók adatait a követk
 - Egy eszköz által megvalósított parancsok hívása.
 - Az eszköz által eljuttatott telemetria formátumának megismerése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekinti a IoT Plug and Play megoldás architektúráját, a következő lépésekkel többet is megtudhat a következőkről:
 

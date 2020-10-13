@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714187"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
@@ -96,14 +96,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Itt láthatók a--adattár-URL paraméter értékeként támogatott forgatókönyvek.
 
-| Használati eset | Formátum | Leírás |
+| Forgatókönyv | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
 | Privát GitHub-tárház – SSH | git@github.com:username/repo | A Flux által generált SSH-kulcspár.  A felhasználónak hozzá kell adnia a nyilvános kulcsot a GitHub-fiókhoz üzembe helyezési kulcsként. |
 | Nyilvános GitHub-tárház | `http://github.com/username/repo` vagy git://github.com/username/repo   | Nyilvános git-tárház  |
 
 Ezeket a forgatókönyveket a Flux támogatja, de még nem sourceControlConfiguration. 
 
-| Használati eset | Formátum | Leírás |
+| Forgatókönyv | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
 | Privát GitHub-adattár – HTTPS | `https://github.com/username/repo` | A Flux nem állít elő SSH-kulcspárt.  [Utasítások](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privát git-gazdagép | user@githost:path/to/repo | [Utasítások](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -308,7 +308,7 @@ az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Helm használata a verziókövetés konfigurációjával](./use-gitops-with-helm.md)
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

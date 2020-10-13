@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91838653"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
@@ -57,7 +57,7 @@ Ebben a szakaszban létrehoz egy új Azure cache-t a Redis-példányhoz egy priv
 
 8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt**. Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
@@ -140,7 +140,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket.
 
 8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt**. Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 

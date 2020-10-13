@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363222"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Privát DNS-zónák és-rekordok elleni védelem
@@ -22,7 +22,7 @@ Saját DNS zónák és rekordok kritikus erőforrások. Egy DNS-zóna vagy egyet
 
 Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a saját DNS-zónák és-rekordok védetté tételét az ilyen változásokkal szemben.  Azure Resource Manager az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) és az [erőforrás-zárolások](../azure-resource-manager/management/lock-resources.md)által biztosított két hatékony értékpapír-funkciót alkalmazzuk.
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. A RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. További információ arról, hogyan segít a RBAC a hozzáférés kezelésében: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md).
 

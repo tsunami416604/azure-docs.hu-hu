@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207960"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972679"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. Az egyik módszer az, hogy engedélyezi az Azure dev-helyeket az AK-fürtön, így [közvetlenül a fürtön futtathatja a szolgáltatásokat][how-it-works-up] , és [további hálózatkezelési és útválasztási képességeket][how-it-works-routing]is használhat. Ez a cikk azt ismerteti, hogy mi történik a fürt előkészítésekor és az Azure dev Spaces használatának engedélyezésekor.
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d4a455458812bef1d79aba583a6317c08b65863
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85340933"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948374"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -152,7 +152,7 @@ Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívj
 
 | Parancs            | Leírás |
 |---------------------|-------------|
-| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Például egy szögletes alkalmazás üzemi buildének konfigurálásához adja meg a következőt: `ng build --prod` . Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:Azure` parancsokat.  |
+| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Ha például egy szögletes alkalmazás üzemi buildjét szeretné beállítani, hozzon létre egy nevű NPM-parancsfájlt a `build-prod` futtatáshoz `ng build --prod` , és adja meg `npm run build-prod` az egyéni parancsként. Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:Azure` parancsokat.  |
 | `api_build_command` | A Azure Functions API-alkalmazás üzembe helyezése során futtatandó egyéni parancsot határozza meg. |
 
 ## <a name="route-file-location"></a>Útvonalfájl helye

@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: a címke irányításának kezelése'
 description: Ebben az oktatóanyagban a Azure Policy módosításának hatása alapján létrehozhatja és érvényesítheti a címke irányítási modelljét az új és a meglévő erőforrásokon.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9efeb27151cd3a32741f1bdb6d1d90d3304c5874
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545505"
+ms.locfileid: "91876277"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: a címke szabályozásának kezelése a Azure Policy
 
@@ -126,7 +126,12 @@ Az Azure-környezetben található minden környezethez szükség van egy [módo
         {
             "field": "name",
             "like": "prd-*"
+        },
+        {
+            "field": "tags['Env']",
+            "notEquals": "Production"
         }
+
     ]
     },
     "then": {
@@ -213,7 +218,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 > - Minden követelmény leképezve egy házirend-definícióba
 > - A címkézési házirendek csoportosítása egy kezdeményezésbe
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

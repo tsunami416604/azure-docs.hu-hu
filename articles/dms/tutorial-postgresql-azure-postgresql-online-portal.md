@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 1f8f7c4ea051ff583b3e8f88e0331642cdf9f19a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e424d41a7b4c1d9394e789c60b60a6fa86a69c5
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291540"
+ms.locfileid: "91893781"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Oktatóanyag: a PostgreSQL migrálása az Azure DB for PostgreSQL online-ba a DMS használatával a Azure Portalon keresztül
 
@@ -104,7 +104,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Például:
+    Példa:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental citus < dvdrentalSchema.sql
@@ -281,9 +281,9 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
     ![Teljes átváltás képernyő](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Amikor az adatbázis-áttelepítési **állapot megjelenik,** az alkalmazásokat a Azure Database for PostgreSQL új célként megadott példányához kell kötni.
+3. Ha az adatbázis-áttelepítési **állapot megjelenik,** [hozza létre](https://wiki.postgresql.org/wiki/Fixing_Sequences) újra a sorozatot (ha van ilyen), és az alkalmazásait az Azure Database for PostgreSQL új célként megadott példányához kapcsolja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

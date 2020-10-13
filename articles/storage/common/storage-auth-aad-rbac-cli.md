@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715140"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Az Azure parancssori felületének használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adateléréshez
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) az [Azure szerepköralapú hozzáférés-vezé
 
 Ha az Azure-szerepköröket egy Azure AD-rendszerbiztonsági tag számára rendeli hozzá, az Azure hozzáférést biztosít az adott rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ez a cikk azt ismerteti, hogyan használható az Azure CLI az Azure beépített szerepköreinek listázásához és a felhasználókhoz való hozzárendeléséhez. További információ az Azure CLI használatáról: [Azure parancssori felület (CLI)](/cli/azure).
+Ez a cikk azt ismerteti, hogyan használható az Azure CLI az Azure beépített szerepköreinek listázásához és a felhasználókhoz való hozzárendeléséhez. További információ az Azure CLI használatáról: [azure Command-Line Interface (CLI)](/cli/azure).
 
 ## <a name="azure-roles-for-blobs-and-queues"></a>Blobok és várólisták Azure-szerepkörei
 
@@ -137,7 +137,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure PowerShell modul használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [A Azure PowerShell modul használatával rendeljen hozzá egy Azure-szerepkört a blob-és üzenetsor-információ eléréséhez](storage-auth-aad-rbac-powershell.md)

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575010"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
@@ -82,7 +82,7 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
       | **Tranzit dátuma és időpontja** | Nincs | Csak az átviteli módra vonatkozik. | 
-      | **Tranzit dátum-típus típusa** | Nincs | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit Date-Type típusa** | Nincs | Csak az átviteli módra vonatkozik. | 
       ||||  
 
 1. [Adjon hozzá egy feltételt](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy az aktuális utazási idő meghaladja-e a megadott időt. 
@@ -391,7 +391,7 @@ Ha kód nézetben dolgozik, a logikai alkalmazás JSON-definíciójában megadha
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)

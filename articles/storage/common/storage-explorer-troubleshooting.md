@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
 ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714456"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
@@ -100,7 +100,7 @@ Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alább
 2. Futtassa az OpenSSL-t.
     * Windows: Nyissa meg a telepítési könyvtárat, válassza a **/bin/** lehetőséget, majd kattintson duplán a **openssl.exe**elemre.
     * Mac és Linux: Futtatás `openssl` terminálról.
-3. Futtassa az `s_client -showcerts -connect microsoft.com:443` parancsot.
+3. A `s_client -showcerts -connect microsoft.com:443` parancs futtatása.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy mely tanúsítványok önaláírtak, jegyezze fel a tárgyat és a `("s:")` kiállítót bárhol `("i:")` .
 5. Ha önaláírt tanúsítványokat talál, mindegyikhez másolja ki és illessze be a (és a (többek között) `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` új. cer kiterjesztésű fájlba.
 6. Nyissa meg Storage Explorer, és **kattintson az**  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok importálása**gombra. Ezután a file Picker használatával megkeresheti, kiválaszthatja és megnyithatja a létrehozott. cer fájlokat.
@@ -405,7 +405,7 @@ Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön 
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha egyik megoldás sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Ezt úgy is megteheti, hogy kijelöli a **jelentéssel kapcsolatos problémát a GitHub** gombra a bal alsó sarokban.
 

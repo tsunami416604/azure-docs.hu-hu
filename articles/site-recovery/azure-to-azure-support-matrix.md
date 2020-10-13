@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
 ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803092"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
@@ -20,7 +20,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 
 **Üzembe helyezés** |  **Támogatás**
 --- | ---
-**Azure Portalra** | Támogatott.
+**Azure Portal** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
 **Parancssori felület** | Egyelőre nem támogatott
@@ -296,7 +296,7 @@ Site Recovery szolgáltatáshoz való privát hivatkozás | Támogatott | [Tová
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md)  .
 - A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).

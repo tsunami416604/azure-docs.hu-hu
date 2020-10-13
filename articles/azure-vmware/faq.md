@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530476"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948714"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -101,6 +101,10 @@ Amennyire tudjuk, minden olyan biztonsági mentési megoldás, amely a HotAdd á
 
 Mivel ezeket a biztonsági mentési megoldásokat az ügyfelek telepítik és kezelik, a megfelelő ISV-t is elérheti a támogatáshoz. 
 
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Mi a megfelelő tárolási szabályzat a deduplikáció beállításához?
+
+Használja a virtuálisgép-sablon *thin_provision* tárolási házirendjét.  Az alapértelmezett érték *thick_provision*.
+
 ## <a name="hosts-clusters-and-private-clouds"></a>Gazdagépek, fürtök és privát felhők
 
 #### <a name="is-the-underlying-infrastructure-shared"></a>A mögöttes infrastruktúra meg van osztva?
@@ -174,6 +178,8 @@ Nem. Az internetről közvetlenül a privát felhőkbe bejövő hálózati forga
 
 Igen. A NSX-T Manager használatával olyan tűzfalat kell létrehoznia, amely korlátozza a virtuális gépek internet-hozzáférését.
 
+
+
 ## <a name="accounts-and-privileges"></a>Fiókok és jogosultságok
 
 #### <a name="what-accounts-and-privileges-will-i-get-with-my-new-azure-vmware-solution-private-cloud"></a>Milyen fiókokat és jogosultságokat kapok az új Azure VMware-megoldás privát felhővel?
@@ -211,7 +217,7 @@ Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
 
-* Szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) a Microsofttal.
+* Szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 * Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 
 Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jegyet kell benyújtania a csomópontok lefoglalásához. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg a kérését, és lefoglalja a csomópontjait. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.

@@ -1,22 +1,22 @@
 ---
-title: Migrálás a Google Mapsből a Azure Mapsba | Microsoft Azure térképek
-description: Migrálás a Google Maps szolgáltatásból Microsoft Azure Maps-be. Az útmutató végigvezeti a Azure Maps API-k és SDK-k átváltásának lépésein.
+title: Oktatóanyag – Migrálás a Google Mapsből a Azure Mapsba | Microsoft Azure térképek
+description: Útmutató a Google Maps szolgáltatásból Microsoft Azure Maps-re való áttelepítéshez. Az útmutató végigvezeti a Azure Maps API-k és SDK-k átváltásának lépésein.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/23/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264167"
+ms.locfileid: "91876311"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrálás a Google Maps-ből az Azure Maps-be
+# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Oktatóanyag – áttelepítés a Google Mapsből a Azure Mapsba
 
 Ez a cikk azt ismerteti, hogyan telepíthet át webes, mobil-és kiszolgáló-alapú alkalmazásokat a Google Mapsből a Microsoft Azure Maps platformra. Ez az oktatóanyag a Azure Mapsre való áttelepítéshez szükséges összehasonlító kód-mintákat, áttelepítési javaslatokat és ajánlott eljárásokat tartalmazza.
 
@@ -38,19 +38,19 @@ A táblázat a Google Maps szolgáltatásainak megfelelő Azure Maps-funkciók m
 | Távolsági mátrix             | ✓                                      |
 | Jogosultságszint                   | Tervezve                                |
 | Helymeghatározáshoz (előre/hátra) | ✓                                      |
-| Földrajzi hely                 | N/A                                    |
+| Földrajzi hely                 | N.A.                                    |
 | Legközelebbi utak               | ✓                                      |
 | Helyek keresése               | ✓                                      |
 | Helyek részletei              | N/A – A webhely & telefonszáma elérhető |
-| Fényképek elhelyezése               | N/A                                    |
+| Fényképek elhelyezése               | N.A.                                    |
 | Automatikus kiegészítés          | ✓                                      |
 | Elérési út                | ✓                                      |
 | Sebességkorlátozások                | ✓                                      |
 | Statikus térképek                 | ✓                                      |
-| Statikus utcai nézet          | N/A                                    |
+| Statikus utcai nézet          | N.A.                                    |
 | Időzóna                   | ✓                                      |
-| Maps Embedded API           | N/A                                    |
-| Térkép URL-címei                    | N/A                                    |
+| Maps Embedded API           | N.A.                                    |
+| Térkép URL-címei                    | N.A.                                    |
 
 A Google Maps alapszintű kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítés és a Azure Active Directory hitelesítés is rendelkezésre áll. Azure Active Directory hitelesítés nagyobb biztonsági funkciókat biztosít, mint az alapszintű kulcs-alapú hitelesítés.
 

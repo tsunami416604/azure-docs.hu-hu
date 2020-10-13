@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575520"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
@@ -116,12 +116,12 @@ Content-type: application/json
 
 A Log Analytics-fürt üzembe helyezése eltarthat egy ideig. A kiépítési állapotot többféleképpen is megtekintheti:
 
-- Futtassa a Get-AzOperationalInsightsCluster PowerShell-parancsot az erőforráscsoport nevével, és tekintse meg a ProvisioningState tulajdonságot. Az érték a kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
+- Futtassa Get-AzOperationalInsightsCluster PowerShell-parancsot az erőforráscsoport nevével, és keresse meg a ProvisioningState tulajdonságot. Az érték a kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
 
-- Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
+- Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
 
 - Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *provisioningState* értéket. Az érték a kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
 
@@ -182,7 +182,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > A *fürt* erőforrás- *SKU*-t, a *KeyVaultProperties* -t vagy a *billingType* -t a patch használatával frissítheti.
 
-Például: 
+Példa: 
 
 *Call*
 
@@ -218,7 +218,7 @@ A "KeyVaultProperties" a Key Vault kulcs azonosítójának részleteit tartalmaz
 
 A kulcs-azonosító propagálásának elvégzése néhány percet vesz igénybe. A frissítési állapotot kétféleképpen is megtekintheti:
 
-- Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését. 
+- Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését. 
 
    VAGY
 
@@ -319,7 +319,7 @@ Ha ügyfél által felügyelt kulcsokat használ, a rendszer a felügyelt kulccs
 
 A munkaterület-társítási állapotot kétféleképpen tekintheti meg:
 
-- Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
+- Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
 
 - [Munkaterületek küldése –](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz betartása. A társított munkaterülethez tartozik egy clusterResourceId a "szolgáltatások" alatt.
 
@@ -404,7 +404,7 @@ Fürt törléséhez használja a következő REST-hívást:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése
