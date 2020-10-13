@@ -1,18 +1,25 @@
 ---
 title: Migrálás a Bridge to Kubernetesre
 services: azure-dev-spaces
-ms.date: 09/21/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995521"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962853"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
+
+> [!IMPORTANT]
+> Az Azure dev Spaces a 2023. október 31-én megszűnik. A fejlesztőknek át kell térniük a Bridge használatával a Kubernetes, egy ügyfél-fejlesztői eszközre.
+>
+> Az Azure dev Spaces célja a fejlesztők fejlesztése a Kubernetes fejlesztésében. Az Azure dev Spaces megközelítése jelentős kompromisszumot okozott a fejlesztők számára a Docker-és Kubernetes-konfigurációk, valamint a Kubernetes üzembe helyezési koncepcióinak megismerése érdekében. Az idő múlásával egyértelművé vált, hogy az Azure fejlesztői területeinek megközelítése nem csökkentette hatékonyan a belső hurok-fejlesztés sebességét a Kubernetes. A Kubernetes híd hatékonyan csökkenti a belső hurok-fejlesztés sebességét, és elkerüli a fejlesztők szükségtelen terheit.
+>
+> Az alapvető feladat változatlan marad: a legjobb fejlesztői élményt kiépítve fejlesztheti, tesztelheti és hibakeresést végezhet a nagyobb alkalmazás kontextusában.
 
 A Bridge to Kubernetes az Azure dev Spaces szolgáltatással működő számos fejlesztési forgatókönyv esetén is enyhébb súlyozást biztosít. A Bridge to Kubernetes egy ügyféloldali élmény, amely a [Visual Studióban][vs]   és a [Visual Studio Code][vsc]-ban lévő bővítményeket használja.  
 

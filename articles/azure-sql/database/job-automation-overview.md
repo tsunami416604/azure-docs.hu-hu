@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
 ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450354"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
@@ -218,7 +218,7 @@ Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű s
 
 |Szerepkörnév |'jobs' sémaengedélyek |'jobs_internal' sémaengedélyek |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | Nincs |
+|**jobs_reader** | SELECT | Nincsenek |
 
 > [!IMPORTANT]
 > Mielőtt adatbázis-rendszergazdaként hozzáférést biztosítana a *feladat-adatbázishoz*, fontolja meg a lehetséges biztonsági következményeket. A feladatok létrehozásához és szerkesztéséhez szükséges engedélyekkel rendelkező rosszindulatú felhasználó létrehozhat vagy szerkeszthet egy olyan feladatot, amely tárolt hitelesítő adattal csatlakozik a rosszindulatú felhasználó által vezérelt adatbázishoz, ezáltal a felhasználó meghatározhatja a hitelesítő adathoz tartozó jelszót.
@@ -286,7 +286,7 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az SQL Server Agent?](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
 - [Rugalmas feladatok létrehozása és kezelése](elastic-jobs-overview.md)

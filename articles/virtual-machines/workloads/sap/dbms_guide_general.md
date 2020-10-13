@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331352"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974821"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -76,7 +76,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 Bizonyos Microsoft-dokumentációk többek között egy kicsit másképpen ismertetik a létesítmények közötti forgatókönyveket, különösen a magas rendelkezésre állást biztosító adatbázis-konfigurációk esetében Az SAP-vel kapcsolatos dokumentumok esetében a létesítmények közötti forgatókönyv a telephelyek közötti vagy a privát [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -kapcsolatra, valamint egy, a helyszíni és az Azure közötti elosztott SAP-környezetre vezethető vissza.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 Az Azure-beli SAP-munkaterheléseken más cikkek is elérhetők. Az Azure-beli SAP-számítási [feladatok első lépései: első lépések](./get-started.md) , majd válassza ki a kívánt területét.
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területek tekintetében.
@@ -217,7 +217,7 @@ A következő javaslatok ezeket az I/O-tulajdonságokat feltételezik a szabván
 
 A standard szintű tároláshoz a lehetséges gyorsítótár-típusok a következők:
 
-* Nincs
+* Nincsenek
 * Olvasás
 * Olvasás/írás
 
@@ -225,7 +225,7 @@ A konzisztens és determinisztikus teljesítmény érdekében állítsa be a sza
 
 Az Azure Premium Storage esetében a következő gyorsítótárazási lehetőségek léteznek:
 
-* Nincs
+* Nincsenek
 * Olvasás
 * Olvasás/írás
 * Nincs + írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
@@ -273,7 +273,7 @@ Más redundancia-módszerek is vannak. További információ: [Azure Storage-rep
 
 
 ## <a name="vm-node-resiliency"></a>VM-csomópont rugalmassága
-Az Azure számos különböző SLA-t kínál a virtuális gépekhez. További információkért tekintse [meg a Virtual Machinesra vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)legújabb kiadását. Mivel az adatbázis-kezelő réteg kritikus fontosságú a rendelkezésre álláshoz egy SAP-rendszeren, meg kell ismernie a rendelkezésre állási csoportokat, a Availability Zones és a karbantartási eseményeket. Ezen fogalmakkal kapcsolatos további információkért lásd: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../../windows/manage-availability.md) , és [Az Azure-ban elérhető linuxos virtuális gépek rendelkezésre állásának kezelése](../../linux/manage-availability.md).
+Az Azure számos különböző SLA-t kínál a virtuális gépekhez. További információkért tekintse [meg a Virtual Machinesra vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)legújabb kiadását. Mivel az adatbázis-kezelő réteg kritikus fontosságú a rendelkezésre álláshoz egy SAP-rendszeren, meg kell ismernie a rendelkezésre állási csoportokat, a Availability Zones és a karbantartási eseményeket. Ezen fogalmakkal kapcsolatos további információkért lásd: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../../manage-availability.md) , és [Az Azure-ban elérhető linuxos virtuális gépek rendelkezésre állásának kezelése](../../manage-availability.md).
 
 Az üzemi adatbázis-kezelői forgatókönyvek SAP-munkaterheléssel való használatának minimális javaslata a következő:
 
@@ -295,7 +295,7 @@ Ezek az ajánlott eljárások több száz ügyfél-telepítés eredménye:
 - Az SAP-alkalmazás üzembe helyezésének virtuális hálózatai nem férnek hozzá az internethez.
 - Az adatbázis virtuális gépei ugyanabban a virtuális hálózatban futnak, mint az alkalmazás rétege, amely az SAP-alkalmazás rétegének egy másik alhálózatán van elválasztva.
 - A virtuális hálózaton belüli virtuális gépeken a magánhálózati IP-cím statikus kiosztása van. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban](../../../virtual-network/public-ip-addresses.md)című témakörben talál.
-- Az adatbázis-kezelői virtuális gépekre és *rendszerre* irányuló útválasztási korlátozások nincsenek beállítva a helyi adatbázis-kezelő virtuális gépekre telepített tűzfalakkal. Ehelyett a forgalom útválasztása [hálózati biztonsági csoportokkal (NSG)](../../../virtual-network/security-overview.md)van definiálva.
+- Az adatbázis-kezelői virtuális gépekre és *rendszerre* irányuló útválasztási korlátozások nincsenek beállítva a helyi adatbázis-kezelő virtuális gépekre telepített tűzfalakkal. Ehelyett a forgalom útválasztása [hálózati biztonsági csoportokkal (NSG)](../../../virtual-network/network-security-groups-overview.md)van definiálva.
 - Az adatbázis-kezelő rendszerbeli virtuális gépre irányuló forgalom elkülönítéséhez és elkülönítéséhez rendeljen hozzá különböző hálózati adaptereket a virtuális géphez. Minden hálózati adapter egy másik IP-címet kap, és minden hálózati adapter egy másik virtuális hálózati alhálózathoz van rendelve. Minden alhálózat különböző NSG-szabályokkal rendelkezik. A hálózati forgalom elkülönítése vagy elkülönítése az Útválasztás mértéke. A hálózati átviteli sebességre vonatkozó kvóták beállítása nem használható.
 
 > [!NOTE]
@@ -304,7 +304,7 @@ Ezek az ajánlott eljárások több száz ügyfél-telepítés eredménye:
 
 
 > [!WARNING]
-> A [hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) konfigurálása az SAP-alkalmazás és az SAP NetWeaver-, Hybris-vagy S/4HANA-alapú SAP-rendszer adatbázis-kezelői rétege közötti kommunikációs útvonalon nem támogatott. Ez a korlátozás működési és teljesítménybeli okokból áll fenn. Az SAP-alkalmazás rétege és az adatbázis-kezelő réteg közötti kommunikációs útvonalnak közvetlennek kell lennie. A korlátozás nem tartalmazza az [Application Security Group (ASG) és a NSG szabályokat,](../../../virtual-network/security-overview.md) ha ezek a ASG-és NSG-szabályok engedélyezik a közvetlen kommunikáció elérési útját. 
+> A [hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) konfigurálása az SAP-alkalmazás és az SAP NetWeaver-, Hybris-vagy S/4HANA-alapú SAP-rendszer adatbázis-kezelői rétege közötti kommunikációs útvonalon nem támogatott. Ez a korlátozás működési és teljesítménybeli okokból áll fenn. Az SAP-alkalmazás rétege és az adatbázis-kezelő réteg közötti kommunikációs útvonalnak közvetlennek kell lennie. A korlátozás nem tartalmazza az [Application Security Group (ASG) és a NSG szabályokat,](../../../virtual-network/network-security-groups-overview.md) ha ezek a ASG-és NSG-szabályok engedélyezik a közvetlen kommunikáció elérési útját. 
 >
 > Egyéb forgatókönyvek, amelyekben a hálózati virtuális berendezések nem támogatottak:
 >
@@ -333,7 +333,7 @@ Ha feladatátvétel van az adatbázis-csomóponton, nincs szükség az SAP-alkal
 
 Az Azure két különböző [terheléselosztó SKU](../../../load-balancer/load-balancer-overview.md)-t kínál: egy alapszintű SKU-t és egy standard SKU-t. A telepítés és a funkció előnyei alapján az Azure Load Balancer szabványos SKU-jának használatát kell használnia. A terheléselosztó standard verziójának egyik nagy előnye, hogy az adatforgalom nem a terheléselosztó használatával van átirányítva.
 
-A belső terheléselosztó konfigurálásának példája a cikk [oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial#create-an-azure-load-balancer)
+A belső terheléselosztó konfigurálásának példája a cikk [oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)
 
 > [!NOTE]
 > A nyilvános IP-címekhez való hozzáféréshez kapcsolódó alapszintű és standard SKU-nak eltérő a viselkedése. A standard SKU korlátainak a nyilvános IP-címekhez való hozzáférésének módját az [Azure standard Load Balancer használata az SAP magas rendelkezésre állási forgatókönyvekben című témakör nyilvános végponti kapcsolata Virtual Machines](./high-availability-guide-standard-load-balancer-outbound-connections.md) .

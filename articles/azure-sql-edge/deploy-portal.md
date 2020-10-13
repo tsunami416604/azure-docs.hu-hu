@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445726"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973580"
 ---
 # <a name="deploy-azure-sql-edge"></a>Az Azure SQL Edge üzembe helyezése 
 
@@ -25,8 +25,7 @@ Az Azure SQL Edge egy IoT és Azure IoT Edge üzemelő példányokhoz optimaliz�
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 * Hozzon létre egy [Azure-IoT hub](../iot-hub/iot-hub-create-through-portal.md).
-* [IoT Edge eszköz regisztrálása a Azure Portal](../iot-edge/how-to-register-device-portal.md).
-* Készítse elő a IoT Edge eszközt [IoT Edge modul üzembe helyezéséhez a Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
+* Hozzon létre egy [Azure IoT Edge eszközt](../iot-edge/how-to-install-iot-edge.md).
 
 > [!NOTE]   
 > Ha IoT Edge eszközként szeretne üzembe helyezni egy Azure-beli linuxos virtuális gépet, tekintse meg ezt a rövid [útmutatót](../iot-edge/quickstart-linux.md).

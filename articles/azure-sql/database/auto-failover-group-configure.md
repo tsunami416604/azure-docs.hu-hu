@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
 ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577509"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
@@ -342,7 +342,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="sql-managed-instance"></a>SQL Managed Instance
+## <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 
@@ -684,7 +684,7 @@ A figyelő végpont formátuma a (z) `fog-name.database.windows.net` , és a Azu
 
 - Egyetlen vagy készletezett adatbázis feladatátvételi csoportjának eltávolítása nem állítja le a replikálást, és nem törli a replikált adatbázist. Manuálisan kell leállítania a Geo-replikálást, és törölnie kell az adatbázist a másodlagos kiszolgálóról, ha az eltávolítását követően egyetlen vagy készletezett adatbázist szeretne visszaadni egy feladatátvételi csoportnak. A művelet elvégzése sikertelen lehet, `The operation cannot be performed due to multiple errors` Ha az adatbázis feladatátvételi csoportba való hozzáadására tett kísérlet során hasonló hibaüzenetet eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladatátvételi csoportok konfigurálásának részletes lépéseiért tekintse meg a következő oktatóanyagokat:
 

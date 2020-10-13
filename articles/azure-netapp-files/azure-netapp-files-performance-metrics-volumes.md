@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692269"
+ms.locfileid: "91931836"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítménytesztjével kapcsolatos javaslatok
 
@@ -24,7 +24,7 @@ Egy Azure NetApp Files kötet teljesítmény-jellemzőinek megismeréséhez hasz
 
 ### <a name="vm-instance-sizing"></a>Virtuálisgép-példányok méretezése
 
-A legjobb eredmény érdekében ügyeljen arra, hogy a tesztek elvégzéséhez megfelelő méretű virtuálisgép-(VM-) példányt használjon. Az alábbi példák egy Standard_D32s_v3 példányt használnak. A virtuálisgép-példányok méretével kapcsolatos további információkért lásd: Windows rendszerű [virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) Windows-alapú virtuális gépekhez, valamint a Linux rendszerű [virtuális gépek méretei az Azure-ban Linux-alapú virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+A legjobb eredmény érdekében ügyeljen arra, hogy a tesztek elvégzéséhez megfelelő méretű virtuálisgép-(VM-) példányt használjon. Az alábbi példák egy Standard_D32s_v3 példányt használnak. A virtuálisgép-példányok méretével kapcsolatos további információkért lásd: Windows rendszerű [virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) Windows-alapú virtuális gépekhez, valamint a Linux rendszerű [virtuális gépek méretei az Azure-ban Linux-alapú virtuális gépekhez](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) .
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files kötet méretezése
 
@@ -113,7 +113,7 @@ Irányítópultot is létrehozhat Azure Monitor a Azure NetApp Fileshoz a metrik
 
 ### <a name="azure-monitor-api-access"></a>API-hozzáférés Azure Monitor
 
-Azure NetApp Files számlálókat REST API-hívások segítségével érheti el. A kapacitási készletek és kötetek számlálóinak megjelenítéséhez tekintse meg [Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/Volumes (támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) ) című témakört.
+Azure NetApp Files számlálókat REST API-hívások segítségével érheti el. A kapacitási készletek és kötetek számlálóinak megjelenítéséhez tekintse meg [Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/Volumes (támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) ) című témakört.
 
 A következő példa egy GET URL-címet mutat be a logikai kötetek méretének megtekintéséhez:
 
@@ -121,7 +121,7 @@ A következő példa egy GET URL-címet mutat be a logikai kötetek méretének 
 `curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/ANFACCOUNTGOESHERE/capacityPools/ANFPOOLGOESHERE/Volumes/ANFVOLUMEGOESHERE/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=VolumeLogicalSize`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 - [Teljesítménytesztek Linuxhoz](performance-benchmarks-linux.md)

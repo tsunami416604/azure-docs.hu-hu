@@ -9,18 +9,18 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471329"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951434"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: az adatData Box Heavy használata felügyelt lemezként az Azure-ban
 
 Ez az oktatóanyag leírja, hogyan telepítheti át a helyszíni virtuális merevlemezeket a felügyelt lemezekre az Azure-ban a Azure Data Box Heavy használatával. A helyszíni virtuális gépekről származó virtuális merevlemezeket a rendszer átmásolja Data Box Heavyba, és az Azure-ba felügyelt lemezként feltölti őket. Ezek a felügyelt lemezek ezután az Azure-beli virtuális gépekhez csatlakoztathatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Előfeltételek áttekintése
@@ -75,11 +75,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     > [!NOTE]
     > A felügyelt lemezek összes megosztásának hitelesítő adatai azonosak.
 
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Megosztások hitelesítő adatainak beszerzése](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. A hozzáférés megosztása és adatok másolása párbeszédpanelen másolja a megosztáshoz tartozó **felhasználónevet** és **jelszót** . Kattintson az **OK** gombra.
     
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Megosztások hitelesítő adatainak beszerzése 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Ha el szeretné érni az erőforráshoz társított megosztásokat (a következő példában szereplő*mydbmdrg1* ), nyisson meg egy parancssori ablakot. A parancssorba írja be a következőt:
 
@@ -101,7 +101,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>\<ShareName>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     Ekkor a következő előre létrehozott mappákat kell látnia az egyes megosztásokon belül.
     
@@ -114,7 +114,7 @@ Ha Linux rendszerű gazdagépet használ, a következő lépésekkel konfigurál
 
 1. Adja meg azon ügyfelek IP-címeit, akik hozzáférhetnek a megosztáshoz. A helyi webes felületen lépjen a **Connect and copy** (Kapcsolódás és másolás) lapra. Az **NFS settings** (NFS-beállítások) pontban kattintson az **NFS client access** (NFS-ügyfélhozzáférés) lehetőségre.
 
-    ![NFS-ügyfélhozzáférés konfigurálása 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![NFS-ügyfél-hozzáférés konfigurálása](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. Adja meg az NFS-ügynök IP-címét, és kattintson az **Add** (Hozzáadás) gombra. Ezt a lépést megismételve további NFS-ügyfeleket is konfigurálhat. Kattintson az **OK** gombra.
 

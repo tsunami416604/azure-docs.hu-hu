@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778855"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930152"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
 
@@ -44,6 +44,7 @@ A Microsoft Identity web a NuGet-ben érhető el olyan csomagok készlete, amely
 - [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) – a fő csomag. A Microsoft Identity web szolgáltatást használó összes alkalmazás számára szükséges.
 - [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) – nem kötelező. Felhasználói bejelentkezéshez és kijelentkezéshez, valamint a webes alkalmazások társított vezérlőjéhez tartozó felhasználói felület hozzáadását teszi elérhetővé.
 - [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) – nem kötelező. Egyszerűsített interakciót biztosít a Microsoft Graph API-val.
+- [Microsoft. Identity. Web. MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) – nem kötelező. Egyszerűsített interakciót biztosít a Microsoft Graph API [Beta-végponttal](/graph/api/overview?view=graph-rest-beta&preserve-view=true).
 
 #### <a name="project-templates"></a>Project-sablonok
 
@@ -69,11 +70,11 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHub
 
-A Microsoft Identity web egy, a GitHubon üzemeltetett nyílt forráskódú projekt: [AzureAD/Microsoft-Identity-web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true)
+A Microsoft Identity web egy, a GitHubon üzemeltetett nyílt forráskódú projekt: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity <span class="docon docon-navigate-external x-hidden-focus"></span> -web</a>
 
 A [tárház wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) további dokumentációt tartalmaz, és ha segítségre van szüksége vagy hibát szeretne felderíteni, a [probléma](https://github.com/AzureAD/microsoft-identity-web/issues)beolvasható.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A Microsoft Identity web számos olyan szolgáltatást tartalmaz, amelyeket nem biztosítunk, ha az alapértelmezett ASP.NET 3,1 Project-sablonokat használja.
 
@@ -98,8 +99,8 @@ A Microsoft Identity web működés közbeni megtekintéséhez próbálja ki a k
 
 A GitHubon található Microsoft Identity web wiki részletes dokumentációt tartalmaz a könyvtár különböző szempontjaihoz. Például a tanúsítvány használata, a növekményes beleegyezés és a feltételes hozzáférés referenciája itt található:
 
-- [Tanúsítványok használata a Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true) (GitHub) használatával
-- [Növekményes engedély és feltételes hozzáférés](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true) (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Tanúsítványok használata a Microsoft. Identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> használatával</a> GitHub
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Növekményes beleegyezett és <span class="docon docon-navigate-external x-hidden-focus"></span> feltételes hozzáférés</a> GitHub
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

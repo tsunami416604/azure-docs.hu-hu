@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922973"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951315"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Cognitive Search indexelő használatával létesített kapcsolatok konfigurálása Azure-beli virtuális gépeken való SQL Server
 
@@ -63,7 +63,7 @@ Nem szokatlan, hogy konfigurálja a NSG és a megfelelő Azure-végpontot vagy A
 Az alábbi hivatkozások a virtuális gépek központi telepítésének NSG-konfigurációját ismertetik. Ezek az utasítások az Azure Cognitive Search végpontok IP-címe alapján történő hozzáférés-vezérlésére használhatók.
 
 > [!NOTE]
-> A háttérben tekintse meg a [Mi az a hálózati biztonsági csoport?](../virtual-network/security-overview.md) című témakört.
+> A háttérben tekintse meg a [Mi az a hálózati biztonsági csoport?](../virtual-network/network-security-groups-overview.md) című témakört.
 > 
 > 
 

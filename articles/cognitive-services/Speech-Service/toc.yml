@@ -274,181 +274,6 @@
           href: ../luis/luis-language-support.md
         - name: Régiós támogatás
           href: regions.md#intent-recognition
-- name: Beszélgetési forgatókönyvek
-  items:
-    - name: A Beszélgetési forgatókönyvek dokumentációja
-      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
-      href: index-conversation-scenarios.yml
-    - name: Beszédátírás
-      items:
-        - name: Áttekintés
-          items:
-            - name: Mi az a beszédátírás?
-              href: conversation-transcription.md
-        - name: Útmutatók
-          items:
-            - name: Telefonos ügyfélszolgálati helyzetek kezelése
-              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-              href: call-center-transcription.md
-            - name: Valós idejű beszédátírás
-              href: how-to-use-conversation-transcription.md
-            - name: Aszinkron beszédátírás
-              href: how-to-async-conversation-transcription.md
-        - name: Referencia
-          items:
-            - name: Beszéd SDK
-              items:
-                - name: C++
-                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/cppref'
-                - name: C#
-                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/csharpref'
-                - name: Java
-                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
-                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javascriptref'
-                - name: Objective-C
-                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/objectivecref'
-                - name: Python
-                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/pythonref'
-                - name: Kibocsátási megjegyzések
-                  displayName: 'release notes,updates,what''s new,what is new,changes'
-                  href: releasenotes.md
-            - name: REST API-k
-              items:
-                - name: Beszédátírás REST API-k
-                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-    - name: Több eszközös beszélgetés
-      items:
-        - name: Áttekintés
-          items:
-            - name: Mi az a több eszközös beszélgetés?
-              href: multi-device-conversation.md
-        - name: Első lépések
-          items:
-            - name: Beszélgetések indítása és az azokhoz való csatlakozás
-              href: quickstarts/multi-device-conversation.md
-        - name: Referencia
-          items:
-            - name: Beszéd SDK
-              items:
-                - name: C++
-                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: C#
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
-                - name: Java
-                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
-- name: Hangvezérelt asszisztensek
-  items:
-    - name: A hangvezérelt asszisztensek dokumentációja
-      href: index-voice-assistants.yml
-    - name: Áttekintés
-      items:
-        - name: Mi az a hangvezérelt asszisztens?
-          href: voice-assistants.md
-        - name: Hangvezérelt asszisztens mintái (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Custom Commands
-      items:
-        - name: Mik azok az egyéni parancsok?
-          href: custom-commands.md
-        - name: Rövid útmutatók
-          items:
-            - name: Custom Commands-alkalmazás létrehozása
-              href: quickstart-custom-commands-application.md
-        - name: Útmutatók
-          items:
-            - name: Fejlesztés
-              items:
-                - name: Alkalmazás létrehozása egyszerű parancsokkal
-                  href: how-to-custom-commands-create-application-with-simple-commands.md
-                - name: Paraméterek hozzáadása parancsokhoz
-                  href: how-to-custom-commands-add-parameters-to-commands.md
-                - name: Konfigurációk hozzáadása parancsparaméterekhez
-                  href: how-to-custom-commands-add-parameter-configuration.md
-                - name: Használati szabályok hozzáadása
-                  href: how-to-custom-commands-add-interaction-rules.md
-                - name: Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
-                  href: how-to-custom-commands-add-language-generation-templates.md
-                - name: A Custom Voice használata
-                  href: how-to-custom-commands-use-custom-voice.md
-            - name: Integrálás
-              items:
-                - name: Integrálás ügyfélalkalmazással a Speech SDK használatával
-                  href: how-to-custom-commands-setup-speech-sdk.md
-                - name: Tevékenység küldése az ügyfélalkalmazásnak
-                  href: how-to-custom-commands-send-activity-to-client.md
-                - name: Webes végpontok beállítása
-                  href: how-to-custom-commands-setup-web-endpoints.md
-            - name: Üzembe helyezés
-              items:
-                - name: Folyamatos üzembe helyezés az Azure DevOps használatával
-                  href: how-to-custom-commands-deploy-cicd.md
-            - name: Tesztelés
-              items:
-                - name: Custom Commands-alkalmazás tesztelése
-                  href: how-to-custom-commands-developer-flow-test.md
-            - name: Hibakeresés
-              items:
-                - name: Hibakeresés az alkalmazás létrehozásakor
-                  href: how-to-custom-commands-debug-build-time.md
-                - name: Hibakeresés az alkalmazás futtatásakor
-                  href: how-to-custom-commands-debug-runtime.md
-            - name: Referencia
-              items:
-                - name: A Custom Commands alapelvei
-                  href: custom-commands-references.md
-        - name: További források
-          items:
-            - name: Custom Commands-minták (GitHub)
-              href: 'https://aka.ms/speech/cc-samples'
-            - name: Hangvezérelt asszisztensek mintái (GitHub)
-              href: 'http://aka.ms/speech/va-samples'
-            - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
-              href: faq-voice-assistants.md
-            - name: Beszéd SDK
-              href: speech-sdk.md
-            - name: Custom Commands – Inaktív adatok titkosítása
-              href: custom-commands-encryption-of-data-at-rest.md
-    - name: Direct Line Speech
-      items:
-        - name: Mi az a Direct Line Speech?
-          href: direct-line-speech.md
-        - name: Rövid útmutatók
-          items:
-            - name: Egyéni hangvezérelt asszisztens létrehozása
-              href: quickstarts/voice-assistants.md
-        - name: Oktatóanyagok
-          items:
-            - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
-              href: tutorial-voice-enable-your-bot-speech-sdk.md
-        - name: További források
-          items:
-            - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
-              href: faq-voice-assistants.md
-    - name: Hangvezérelt asszisztensek Windows rendszeren
-      items:
-        - name: A Windows rendszeren elérhető hangvezérelt asszisztensek áttekintése
-          href: windows-voice-assistants-overview.md
-        - name: Útmutatók
-          items:
-            - name: Az asszisztens fejlesztésének megkezdése Windows rendszeren
-              href: how-to-windows-voice-assistants-get-started.md
-            - name: Hangalapú aktiválás engedélyezése
-              href: windows-voice-assistants-implementation-guide.md
-        - name: További források
-          items:
-            - name: Adatvédelmi követelmények és útmutatások
-              href: windows-voice-assistants-automatic-enablement-guidelines.md
-            - name: Ajánlott eljárások asszisztens használatához
-              href: windows-voice-assistants-best-practices.md
-            - name: Minták és gyakori kérdések
-              href: windows-voice-assistants-faq.md
 - name: Beszélőfelismerés
   items:
     - name: A Speaker Recognition áttekintése
@@ -465,6 +290,183 @@
       href: custom-keyword-overview.md
     - name: Az egyéni kulcsszavak alapjai
       href: custom-keyword-basics.md
+- name: Forgatókönyvek részletes ismertetése
+  items:
+    - name: Beszélgetési forgatókönyvek
+      items:
+        - name: A Beszélgetési forgatókönyvek dokumentációja
+          displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
+          href: index-conversation-scenarios.yml
+        - name: Beszédátírás
+          items:
+            - name: Áttekintés
+              items:
+                - name: Mi az a beszédátírás?
+                  href: conversation-transcription.md
+            - name: Útmutatók
+              items:
+                - name: Telefonos ügyfélszolgálati helyzetek kezelése
+                  displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+                  href: call-center-transcription.md
+                - name: Valós idejű beszédátírás
+                  href: how-to-use-conversation-transcription.md
+                - name: Aszinkron beszédátírás
+                  href: how-to-async-conversation-transcription.md
+            - name: Referencia
+              items:
+                - name: Beszéd SDK
+                  items:
+                    - name: C++
+                      displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/cppref'
+                    - name: C#
+                      displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/csharpref'
+                    - name: Java
+                      displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javaref'
+                    - name: JavaScript
+                      displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javascriptref'
+                    - name: Objective-C
+                      displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/objectivecref'
+                    - name: Python
+                      displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/pythonref'
+                    - name: Kibocsátási megjegyzések
+                      displayName: 'release notes,updates,what''s new,what is new,changes'
+                      href: releasenotes.md
+                - name: REST API-k
+                  items:
+                    - name: Beszédátírás REST API-k
+                      href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+        - name: Több eszközös beszélgetés
+          items:
+            - name: Áttekintés
+              items:
+                - name: Mi az a több eszközös beszélgetés?
+                  href: multi-device-conversation.md
+            - name: Első lépések
+              items:
+                - name: Beszélgetések indítása és az azokhoz való csatlakozás
+                  href: quickstarts/multi-device-conversation.md
+            - name: Referencia
+              items:
+                - name: Beszéd SDK
+                  items:
+                    - name: C++
+                      href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
+                    - name: C#
+                      href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
+                    - name: Java
+                      href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
+    - name: Hangvezérelt asszisztensek
+      items:
+        - name: A hangvezérelt asszisztensek dokumentációja
+          href: index-voice-assistants.yml
+        - name: Áttekintés
+          items:
+            - name: Mi az a hangvezérelt asszisztens?
+              href: voice-assistants.md
+            - name: Hangvezérelt asszisztens mintái (GitHub)
+              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Custom Commands
+          items:
+            - name: Mik azok az egyéni parancsok?
+              href: custom-commands.md
+            - name: Rövid útmutatók
+              items:
+                - name: Custom Commands-alkalmazás létrehozása
+                  href: quickstart-custom-commands-application.md
+            - name: Útmutatók
+              items:
+                - name: Fejlesztés
+                  items:
+                    - name: Alkalmazás létrehozása egyszerű parancsokkal
+                      href: how-to-custom-commands-create-application-with-simple-commands.md
+                    - name: Paraméterek hozzáadása parancsokhoz
+                      href: how-to-custom-commands-add-parameters-to-commands.md
+                    - name: Konfigurációk hozzáadása parancsparaméterekhez
+                      href: how-to-custom-commands-add-parameter-configuration.md
+                    - name: Használati szabályok hozzáadása
+                      href: how-to-custom-commands-add-interaction-rules.md
+                    - name: Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
+                      href: how-to-custom-commands-add-language-generation-templates.md
+                    - name: A Custom Voice használata
+                      href: how-to-custom-commands-use-custom-voice.md
+                - name: Integrálás
+                  items:
+                    - name: Integrálás ügyfélalkalmazással a Speech SDK használatával
+                      href: how-to-custom-commands-setup-speech-sdk.md
+                    - name: Tevékenység küldése az ügyfélalkalmazásnak
+                      href: how-to-custom-commands-send-activity-to-client.md
+                    - name: Webes végpontok beállítása
+                      href: how-to-custom-commands-setup-web-endpoints.md
+                - name: Üzembe helyezés
+                  items:
+                    - name: Folyamatos üzembe helyezés az Azure DevOps használatával
+                      href: how-to-custom-commands-deploy-cicd.md
+                - name: Tesztelés
+                  items:
+                    - name: Custom Commands-alkalmazás tesztelése
+                      href: how-to-custom-commands-developer-flow-test.md
+                - name: Hibakeresés
+                  items:
+                    - name: Hibakeresés az alkalmazás létrehozásakor
+                      href: how-to-custom-commands-debug-build-time.md
+                    - name: Hibakeresés az alkalmazás futtatásakor
+                      href: how-to-custom-commands-debug-runtime.md
+                - name: Referencia
+                  items:
+                    - name: A Custom Commands alapelvei
+                      href: custom-commands-references.md
+            - name: További források
+              items:
+                - name: Custom Commands-minták (GitHub)
+                  href: 'https://aka.ms/speech/cc-samples'
+                - name: Hangvezérelt asszisztensek mintái (GitHub)
+                  href: 'http://aka.ms/speech/va-samples'
+                - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
+                  href: faq-voice-assistants.md
+                - name: Beszéd SDK
+                  href: speech-sdk.md
+                - name: Custom Commands – Inaktív adatok titkosítása
+                  href: custom-commands-encryption-of-data-at-rest.md
+        - name: Direct Line Speech
+          items:
+            - name: Mi az a Direct Line Speech?
+              href: direct-line-speech.md
+            - name: Rövid útmutatók
+              items:
+                - name: Egyéni hangvezérelt asszisztens létrehozása
+                  href: quickstarts/voice-assistants.md
+            - name: Oktatóanyagok
+              items:
+                - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
+                  href: tutorial-voice-enable-your-bot-speech-sdk.md
+            - name: További források
+              items:
+                - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
+                  href: faq-voice-assistants.md
+        - name: Hangvezérelt asszisztensek Windows rendszeren
+          items:
+            - name: A Windows rendszeren elérhető hangvezérelt asszisztensek áttekintése
+              href: windows-voice-assistants-overview.md
+            - name: Útmutatók
+              items:
+                - name: Az asszisztens fejlesztésének megkezdése Windows rendszeren
+                  href: how-to-windows-voice-assistants-get-started.md
+                - name: Hangalapú aktiválás engedélyezése
+                  href: windows-voice-assistants-implementation-guide.md
+            - name: További források
+              items:
+                - name: Adatvédelmi követelmények és útmutatások
+                  href: windows-voice-assistants-automatic-enablement-guidelines.md
+                - name: Ajánlott eljárások asszisztens használatához
+                  href: windows-voice-assistants-best-practices.md
+                - name: Minták és gyakori kérdések
+                  href: windows-voice-assistants-faq.md
 - name: Eszközök
   items:
     - name: Beszéd SDK
@@ -489,6 +491,8 @@
               href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+            - name: Indítás
+              href: 'https://github.com/microsoft/cognitive-services-speech-sdk-go'
     - name: Speech parancssori felület
       displayName: SPX
       items:

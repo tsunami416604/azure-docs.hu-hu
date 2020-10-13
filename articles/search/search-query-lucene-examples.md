@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740700"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>A "teljes" Lucene keresési szintaxis használata (speciális lekérdezések az Azure Cognitive Searchban)
@@ -281,7 +281,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 > A helyettesítő karakteres lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Próbálja megadni a Lucene lekérdezés-elemzőjét a kódban. A következő hivatkozások ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz. A hivatkozások az alapértelmezett egyszerű szintaxist használják, így a **queryType**megadásához alkalmaznia kell a cikkből megtanult tudnivalókat.
 
 * [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)

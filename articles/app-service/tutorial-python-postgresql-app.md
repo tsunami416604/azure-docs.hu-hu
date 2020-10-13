@@ -3,7 +3,7 @@ title: 'Oktatóanyag: Python Django-alkalmazás üzembe helyezése a postgres-me
 description: Hozzon létre egy PostgreSQL-adatbázist tartalmazó Python-webalkalmazást, és telepítse azt az Azure-ba. Az oktatóanyag a Django keretrendszert használja, és az alkalmazás Azure App Service Linux rendszeren található.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 023d5e13efc19fdf097ac06d61c3300805d3b28e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc4341e4b3f0c894f9440b4910c3f8bec7326d1
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842648"
+ms.locfileid: "91929778"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -137,7 +137,7 @@ Ezután hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/c
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- Cserélje le az értékét az *\<postgres-server-name>* összes Azure-beli egyedi névre (a kiszolgálói végpont `https://<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
+- Cserélje le az értékét az *\<postgres-server-name>* összes Azure-beli egyedi névre (a kiszolgálói végpont lesz `https://<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
 - És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz.
 - Az itt használt B_Gen5_1 (alapszintű, Gen5, 1 Core) [árképzési szint](../postgresql/concepts-pricing-tiers.md) a legkevésbé költséges. Éles adatbázisok esetében hagyja ki az `--sku-name` argumentumot, hogy ehelyett a GP_Gen5_2 (általános célú, Gen 5, 2 magok) szintet használja.
 
@@ -203,29 +203,19 @@ Sikeres telepítés esetén a parancs a következő példához hasonló JSON-kim
 
 Ha a kód már telepítve van a App Servicere, a következő lépés az alkalmazás összekötése a postgres-adatbázissal az Azure-ban.
 
-Az alkalmazás kódja számos környezeti változóban várja az adatbázis-információk megkeresését. A környezeti változók App Serviceban történő beállításához az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) paranccsal hozhatja létre az "Alkalmazásbeállítások" értéket.
+Az alkalmazás kódja a következő négy környezeti változóban található adatbázis-információk megkeresésére vár:,, `DBHOST` `DBNAME` `DBUSER` és `DBPASS` . A termelési beállítások használatához a `DJANGO_ENV` környezeti változóra is szükség van `production` .
+
+A környezeti változók App Serviceban történő beállításához hozza létre az "Alkalmazásbeállítások" kifejezést a következő az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) paranccsal.
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- Cserélje le a *\<postgres-server-name>* nevet a paranccsal korábban használt névre `az postgres up` .
-- Cserélje *\<username>* le *\<password>* a és a kapcsolót a korábbi `az postgres up` paranccsal (vagy az `az postgres up` Ön által létrehozott) rendszergazdai hitelesítő adatokkal. Az `DBUSER` argumentumnak az űrlapon kell lennie `<username>@<postgres-server-name>` .
-- Az erőforráscsoport és az alkalmazás neve a *. Azure/config* fájl gyorsítótárazott értékeiből származik.
-- A parancs a (z),,, `DJANGO_ENV` `DBHOST` `DBNAME` `DBUSER` és `DBPASS` az alkalmazás kódjának megfelelően hozza létre a beállításokat.
-- A Python-kódban ezeket a beállításokat környezeti változókként, például a következő utasításokkal érheti el `os.environ.get('DJANGO_ENV')` . További információ: [hozzáférés környezeti változókhoz](configure-language-python.md#access-environment-variables).
+- Cserélje le a *\<postgres-server-name>* nevet a paranccsal korábban használt névre `az postgres up` . A *azuresite/Production. a.* másolt kód automatikusan hozzáfűzi a `.postgres.database.azure.com` teljes postgres-kiszolgáló URL-címének létrehozásához.
+- Cserélje *\<username>* le *\<password>* a és a kapcsolót a korábbi parancshoz használt rendszergazdai hitelesítő adatokkal `az postgres up` , illetve az `az postgres up` Ön által generált jogosultságokkal. A *azuresite/Production. a. a....* ................ `DBUSER` `DBHOST`
+- Az erőforráscsoport és az alkalmazások nevei a *. Azure/config* fájl gyorsítótárazott értékeiből vannak kirajzolva.
 
-#### <a name="verify-the-dbuser-setting"></a>A DBUSER-beállítás ellenőrzése
-
-Fontos, hogy a `DBUSER` beállítás az űrlap legyen `<username>@<postgres-server-name>` .
-
-A beállítás ellenőrzéséhez futtassa a parancsot, `az webapp config app settings list` és tekintse meg az `DBUSER` eredmények értékét:
-
-```azurecli
-az webapp config app settings list
-```
-
-Ha ki kell javítania az értéket, futtassa a parancsot a `az webapp config appsettings set --settings DBUSER="<username>@<postgres-server-name>"` `<username>@<postgres-server-name>` megfelelő nevek helyett.
+A Python-kódban ezeket a beállításokat környezeti változókként, például a következő utasításokkal érheti el `os.environ.get('DJANGO_ENV')` . További információ: [hozzáférés környezeti változókhoz](configure-language-python.md#access-environment-variables).
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -264,8 +254,6 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
     python manage.py createsuperuser
     ```
 
-1. Ha a következő hibaüzenet jelenik meg: "a felhasználónévnek <username@hostname> formátumúnak kell lennie." az adatbázis-áttelepítés futtatásakor tekintse meg [a DBUSER-beállítás ellenőrzése](#verify-the-dbuser-setting)című témakört.
-
 1. A `createsuperuser` parancs a rendszergazdai hitelesítő adatok megadását kéri. Ebben az oktatóanyagban használja az alapértelmezett felhasználónevet `root` , nyomja le az **ENTER** billentyűt az e-mail-címre, hogy üresen hagyja, és adja meg a `Pollsdb1` jelszót.
 
 1. Ha hibaüzenet jelenik meg, hogy az adatbázis zárolva van, ellenőrizze, hogy az előző szakaszban futtatta-e a `az webapp settings` parancsot. Ezen beállítások nélkül az áttelepíthető parancs nem tud kommunikálni az adatbázissal, ami a hibát eredményezi.
@@ -276,9 +264,7 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
 1. A böngészőben nyissa meg az URL-címet `http://<app-name>.azurewebsites.net` . Az alkalmazásnak meg kell jelennie a "nincs elérhető lekérdezés" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
 
-    Ha az "alkalmazáshiba" üzenet jelenik meg, akkor valószínű, hogy az előző lépésben nem hozta létre a szükséges beállításokat, [konfigurálja a környezeti változókat az adatbázishoz való kapcsolódáshoz](#configure-environment-variables-to-connect-the-database). A `az webapp config appsettings list` beállítások megadásához futtassa a parancsot. [A diagnosztikai naplókban](#stream-diagnostic-logs) is megtekintheti az alkalmazások indításakor megadott hibákat. Ha például nem hozta létre a beállításokat, a naplók a következő hibaüzenetet fogják látni: `KeyError: 'DBNAME'` .
-
-    Ha a következő hibaüzenet jelenik meg: "érvénytelen Felhasználónév van megadva. Ellenőrizze a felhasználónevet, és próbálkozzon újra a kapcsolatban. A felhasználónévnek formátumúnak kell lennie <username@hostname> . "lásd: [a DBUSER beállítás ellenőrzése](#verify-the-dbuser-setting).
+    Ha az "alkalmazáshiba" üzenet jelenik meg, akkor valószínű, hogy az előző lépésben nem hozta létre a szükséges beállításokat, [konfigurálja a környezeti változókat az adatbázishoz való kapcsolódáshoz](#configure-environment-variables-to-connect-the-database), vagy ha ezek az értékek hibákat tartalmaznak. A `az webapp config appsettings list` beállítások megadásához futtassa a parancsot. [A diagnosztikai naplókban](#stream-diagnostic-logs) is megtekintheti az alkalmazások indításakor megadott hibákat. Ha például nem hozta létre a beállításokat, a naplók a következő hibaüzenetet fogják látni: `KeyError: 'DBNAME'` .
 
     Miután frissítette a beállításokat a hibák kijavítása érdekében, adjon egy percet az alkalmazásnak, majd frissítse a böngészőt.
 
@@ -468,7 +454,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jele
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha meg szeretné tartani az alkalmazást, vagy folytassa a következő oktatóanyaggal, ugorjon a [következő lépésekre](#next-steps). Ellenkező esetben a folyamatos költségek elkerülése érdekében törölheti az ehhez az oktatóanyaghoz tartozó erőforráscsoport-létrehozási csoportot:
+Ha meg szeretné tartani az alkalmazást, vagy folytassa a további oktatóanyagokkal, ugorjon a [következő lépésekre](#next-steps). Ellenkező esetben a folyamatos költségek elkerülése érdekében törölheti az ehhez az oktatóanyaghoz tartozó erőforráscsoport-létrehozási csoportot:
 
 ```azurecli
 az group delete --no-wait
@@ -480,7 +466,7 @@ Az összes erőforrás törlése hosszabb időt is igénybe vehet. Az `--no-wait
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan képezhető le egyéni DNS-név az alkalmazáshoz:
 

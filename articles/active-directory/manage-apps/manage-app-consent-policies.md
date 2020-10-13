@@ -12,13 +12,13 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804333"
 ---
-# <a name="manage-app-consent-policies"></a>Alkalmazás-engedélyezési házirendek kezelése
+# <a name="manage-app-consent-policies"></a>Alkalmazás-hozzájárulási szabályzatok kezelése
 
 Az Azure AD PowerShell használatával megtekintheti és kezelheti az alkalmazás-engedélyezési szabályzatokat.
 
@@ -143,7 +143,7 @@ Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott fel
 | ClientApplicationPublisherIds | Az ügyfélalkalmazás [ellenőrzött közzétevői](../develop/publisher-verification-overview.md) számára készült Microsoft Partner Network (MPN) azonosítók listája, vagy egyetlen "all" értékű lista, amely az ügyfélalkalmazások bármelyik közzétevőtől való egyeztetésére használható. Az alapértelmezett érték az "all". |
 | ClientApplicationsFromVerifiedPublisherOnly | A beállítás értéke `$true` csak az [ellenőrzött közzétevővel](../develop/publisher-verification-overview.md)rendelkező ügyfélalkalmazások egyeztetése. Úgy állítsa be, `$false` hogy minden ügyfélalkalmazás egyezzen, még akkor is, ha nem rendelkezik ellenőrzött közzétevővel. Az alapértelmezett szint a `$false`. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 

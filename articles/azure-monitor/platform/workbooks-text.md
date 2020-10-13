@@ -2,19 +2,17 @@
 title: Azure Monitor munkafüzetek szöveges paraméterei
 description: Egyszerűsítse a komplex jelentéskészítést előre összeépített és egyéni paraméteres munkafüzetekkel. További információ a munkafüzet szövegének paramétereivel kapcsolatban.
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7241777c0b94ce7ccadbd273c5c305c679bfe30a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "81687325"
+ms.locfileid: "91932311"
 ---
 # <a name="workbook-text-parameters"></a>Munkafüzet szövegének paraméterei
 
@@ -85,7 +83,7 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 > [!NOTE]
 > Habár ez a példa Application Insightsi az adatlekérdezéseket, a módszer használható bármilyen log-alapú adatforráshoz – Log Analytics, Azure Resource Graph stb.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

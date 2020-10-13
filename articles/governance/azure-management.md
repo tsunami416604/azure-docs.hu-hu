@@ -3,12 +3,12 @@ title: Az Azure Management áttekintése – Azure-irányítás
 description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
 ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662139"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949496"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
 
@@ -44,13 +44,13 @@ A [Azure Cost Management](../cost-management-billing/cost-management-billing-ove
 
 ## <a name="secure"></a>Biztonságos
 
-Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában foglalja a fenyegetések felmérését, az adatok gyűjtését és elemzését, valamint az alkalmazások és erőforrások megfelelőségét. A biztonsági monitorozási és a veszélyforrások elemzését [Azure Security Center](../security-center/security-center-intro.md)biztosítja, amely magában foglalja az egységes biztonsági felügyeletet és az összetett veszélyforrások elleni védelmet a hibrid Felhőbeli számítási feladatokban. Lásd: az Azure [Security bemutatása](../security/fundamentals/overview.md) – átfogó információk és útmutatás az Azure-erőforrások biztonságossá tételéhez.
+Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában foglalja a fenyegetések felmérését, az adatok gyűjtését és elemzését, valamint az alkalmazások és erőforrások megfelelőségét. A biztonsági monitorozási és a veszélyforrások elemzését [Azure Security Center](../security-center/security-center-introduction.md)biztosítja, amely magában foglalja az egységes biztonsági felügyeletet és az összetett veszélyforrások elleni védelmet a hibrid Felhőbeli számítási feladatokban. Lásd: az Azure [Security bemutatása](../security/fundamentals/overview.md) – átfogó információk és útmutatás az Azure-erőforrások biztonságossá tételéhez.
 
 ## <a name="protect"></a>Védelem
 
 A védelem arra utal, hogy az alkalmazások és az adatszolgáltatások elérhetők maradnak, még a szabályozáson kívüli kimaradások esetén is. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-overview.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. A [Azure site Recovery](../site-recovery/site-recovery-overview.md) az üzletmenet folytonosságát és az azonnali helyreállítást biztosítja a katasztrófák során.
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrate (Áttelepítés)
 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.
 A [Azure Migrate](../migrate/migrate-services-overview.md) egy olyan szolgáltatás, amely segít a helyszíni virtuális gépek Azure-ba való áttelepítésének értékelésében. [A Azure site Recovery a](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépeket a helyszíni rendszerből vagy [Amazon Web Servicesból](../site-recovery/migrate-tutorial-aws-azure.md)telepíti át. Az [Azure Database Migration](../dms/dms-overview.md) segítséget nyújt az adatbázis-források Azure-beli adatplatformokra való áttelepítésében.

@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali portál alkalmazás-csoportjainak
 description: Windows rendszerű virtuális asztali alkalmazás-csoportok kezelése a Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320217"
+ms.locfileid: "91930271"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Azure Portal
 
@@ -124,9 +124,9 @@ Az üzembe helyezési folyamat a következő műveleteket végzi el:
 - Hozzon létre egy Azure Resource Manager-sablonra mutató hivatkozást, amely a később letölthető és menthető konfiguráció alapján érhető el.
 
 >[!IMPORTANT]
->Az egyes Azure Active Directory bérlők számára csak 50-es alkalmazáscsoport hozható létre. Ezt a korlátot a felhasználók számára a hírcsatornák beolvasásához szükséges szolgáltatási korlátozások miatt vesszük fel. Ez a korlát nem vonatkozik a Windows Virtual Desktopban (klasszikus) létrehozott alkalmazás-csoportokra.
+>Az egyes Azure Active Directory bérlők számára csak 200-es alkalmazáscsoport hozható létre. Ezt a korlátot a felhasználók számára a hírcsatornák beolvasásához szükséges szolgáltatási korlátozások miatt vesszük fel. Ez a korlát nem vonatkozik a Windows Virtual Desktopban (klasszikus) létrehozott alkalmazás-csoportokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alkalmazáscsoport, hogyan tölthető be a RemoteApp-programokkal, és hogyan rendelhet hozzá felhasználókat az alkalmazás-csoporthoz. Az érvényesítési gazdagépek létrehozásáról a következő oktatóanyagban olvashat bővebben. Az ellenőrzési gazdagépek segítségével figyelheti a szolgáltatás frissítéseit, mielőtt az éles környezetbe helyezné őket.
 

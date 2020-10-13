@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a9886b005c5459456e005273dd11e2c3c183176f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744236"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932005"
 ---
 # <a name="about-azure-key-vault"></a>Információk az Azure Key Vaultról
 
@@ -25,7 +25,7 @@ A Azure Key Vault a következő problémák megoldásában nyújt segítséget:
 - **Kulcskezelés** – Az Azure Key Vault kulcskezelési megoldásként is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
 - A **tanúsítványkezelő** – Azure Key Vault egy olyan szolgáltatás is, amely lehetővé teszi a nyilvános és magánhálózati Transport Layer Security/SSL (TLS/SSL) tanúsítványok egyszerű üzembe helyezését, kezelését és telepítését az Azure-ral és a belső csatlakoztatott erőforrásokkal való használatra.
 
-Azure Key Vault két szolgáltatási réteggel rendelkezik: a standard, amely egy szoftver-kulccsal titkosítja a szoftvert, és egy prémium szintű csomagot, amely HSM-védelemmel ellátott kulcsokat tartalmaz. A standard és a prémium szint közötti összehasonlítás megtekintéséhez tekintse meg a [Azure Key Vault díjszabási oldalát](/pricing/details/key-vault).
+Azure Key Vault két szolgáltatási réteggel rendelkezik: a standard, amely egy szoftver-kulccsal titkosítja a szoftvert, és egy prémium szintű csomagot, amely HSM-védelemmel ellátott kulcsokat tartalmaz. A standard és a prémium szint közötti összehasonlítás megtekintéséhez tekintse meg a [Azure Key Vault díjszabási oldalát](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="why-use-azure-key-vault"></a>Miért érdemes az Azure Key Vaultot használni?
 
@@ -76,7 +76,7 @@ Az Azure-beli Biztonságos tár Key Vault a következő forgatókönyvek egyszer
 
 A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-certificates.md)
 - [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](../secrets/quick-create-cli.md)

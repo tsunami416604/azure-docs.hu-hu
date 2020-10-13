@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575476"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950363"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -58,7 +58,7 @@ A Azure Automation **Azure Update Management** egy hibrid környezetben kezeli a
 
 A **Azure Security Center** komplex veszélyforrások elleni védelmet biztosít a felhőben és a helyszínen futó hibrid számítási feladatokhoz. Felméri az Azure VMware-alapú virtuális gépek biztonsági réseit, és szükség esetén riasztásokat hoz létre. Ezek a biztonsági riasztások továbbítható a Azure Monitor a megoldáshoz.
 - Azure Security Center nem igényel telepítést. További információkért tekintse meg a [virtuális gépek támogatott szolgáltatásainak](../security-center/security-center-services.md)listáját.
-- Ha Azure VMware-alapú virtuális gépeket és nem Azure-beli virtuális gépeket szeretne felvenni Azure Security Centerba, tekintse meg a következő témakört: [Windows rendszerű számítógépek előkészítése Azure Security Center](../security-center/quick-onboard-windows-computer.md) és [Azure Security Center a Linux](../security-center/quick-onboard-linux-computer.md)
+- Ha Azure VMware-alapú virtuális gépeket és nem Azure-beli virtuális gépeket szeretne felvenni Azure Security Centerba, tekintse meg a következő témakört: [Windows rendszerű számítógépek előkészítése Azure Security Center](../security-center/quickstart-onboard-machines.md) és [Azure Security Center a Linux](../security-center/quickstart-onboard-machines.md)
 - A virtuális gépek hozzáadása után Azure Security Center elemzi az erőforrások biztonsági állapotát a lehetséges sebezhetőségek azonosítása érdekében. Emellett javaslatokat is biztosít az Áttekintés lapon. További információ: [biztonsági javaslatok a Azure Security Center](../security-center/security-center-recommendations.md).
 - A Azure Security Centerban biztonsági házirendeket is meghatározhat. A biztonsági szabályzatok konfigurálásával kapcsolatos információkért lásd: [a biztonsági házirendek használata](../security-center/tutorial-security-policy.md).
 

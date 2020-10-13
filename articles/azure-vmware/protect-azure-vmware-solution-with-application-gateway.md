@@ -3,12 +3,12 @@ title: Az Azure Application Gateway használatával biztosíthatja webalkalmazá
 description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson futó webalkalmazások biztonságos megjelenítéséhez.
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579816"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951451"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 
@@ -146,4 +146,4 @@ Az Azure Application Gateway az URL-elérésiút-alapú útválasztási szabály
 
 ## <a name="next-steps"></a>Következő lépések
 
-További konfigurációs példákért tekintse át az [Azure Application Gateway dokumentációját](https://docs.microsoft.com/azure/application-gateway/) .
+További konfigurációs példákért tekintse át az [Azure Application Gateway dokumentációját](../application-gateway/index.yml) .

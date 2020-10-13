@@ -7,47 +7,36 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/27/2020
-ms.openlocfilehash: feb186fbe216305039fcc0a23a10419c44fd0483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/07/2020
+ms.openlocfilehash: 616e3e6c37faa3c085b8531173b557973e09fbf8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535610"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974566"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
-## <a name="release-date-09282020"></a>Kiadás dátuma: 09/28/2020
+## <a name="release-date-10082020"></a>Kiadás dátuma: 10/08/2020
 
 Ez a kiadás a 3,6-es és a HDInsight 4,0-es HDInsight egyaránt érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
 
 ## <a name="new-features"></a>Új funkciók
-### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Mostantól általánosan elérhető az interaktív lekérdezés az HDInsight 4,0-mel.
-Az interaktív lekérdezési fürt típusának automatikus méretezése már általánosan elérhető (GA) a HDInsight 4,0-es verzióhoz. Az 4,0.2020 augusztus 27. után létrehozott összes interaktív lekérdezési fürt automatikusan támogatja az automatikus skálázást.
-
-### <a name="hbase-cluster-supports-premium-adls-gen2"></a>A HBase-fürt támogatja a prémium szintű ADLS Gen2
-A HDInsight mostantól támogatja a prémium szintű ADLS Gen2 elsődleges HDInsight a HBase 3,6 és 4,0 fürtök esetében. A [gyorsított írásokkal](./hbase/apache-hbase-accelerated-writes.md)együtt jobb teljesítményt érhet el a HBase-fürtökhöz.
-
-### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Kafka-partíciók eloszlása az Azure tartalék tartományokban
-A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight Kafka a partíció replikáit ugyanabban a tartalék tartományban tárolja. Ettől a kiadástól kezdve a HDInsight mostantól támogatja a Kafka-partíciók automatikus terjesztését az Azure tartalék tartományok alapján. 
-
-### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
-Az ügyfelek engedélyezhetik a fürt csomópontjai közötti átvitelt az IPSec-titkosítással a platform által felügyelt kulcsokkal. Ez a beállítás a fürt létrehozási idején engedélyezhető. További információ a [titkosítás engedélyezéséről az átvitel során](./domain-joined/encryption-in-transit.md).
-
-### <a name="encryption-at-host"></a>Titkosítás a gazdagépen
-Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva maradnak a tárolási szolgáltatásba titkosított adatforgalomban. Ebben a kiadásban **engedélyezheti a titkosítást a gazdagépen az ideiglenes adatlemezen** a fürt létrehozásakor. A gazdagépen lévő titkosítás csak [bizonyos, korlátozott régiókban lévő virtuális gépek esetében](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal)támogatott. A HDInsight a [következő csomópont-konfigurációt és SKU-](./hdinsight-supported-node-configuration.md)t támogatja. További információ a [titkosítás engedélyezéséről a gazdagépen](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Nyilvános IP-címet és privát hivatkozást nem tartalmazó privát fürtök HDInsight (előzetes verzió)
+A HDInsight mostantól támogatja a nyilvános IP-címek nélküli fürtök létrehozását, valamint a fürtök előzetes verzióban való elérését. Az új speciális hálózatkezelési beállítások használatával egy teljesen elkülönített, nyilvános IP-címmel rendelkező fürtöt hozhat létre, és a saját privát végpontok használatával érheti el a fürtöt. 
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
 A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Ettől a kiadástól kezdve a szolgáltatás fokozatosan migrálva lesz az [Azure virtuálisgép-méretezési csoportokra](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
 
 ## <a name="deprecation"></a>Elavulás
-Nincs elavulás ehhez a kiadáshoz.
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>A HDInsight 3,6 ML Services-fürt elavult változata
+A HDInsight 3,6 ML Services-fürt típusa a DEC 31 2020-es támogatás végén lesz. Az ügyfelek ezt követően nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions).
 
 ## <a name="behavior-changes"></a>Viselkedési változások
 Ebben a kiadásban nem változik a viselkedés.
@@ -55,8 +44,8 @@ Ebben a kiadásban nem változik a viselkedés.
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.
 
-### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Különböző Zookeeper SKU kiválasztásának lehetősége Spark, Hadoop és ML szolgáltatásokhoz
-A HDInsight jelenleg nem támogatja a Spark, a Hadoop és a ML szolgáltatások Zookeeperének módosítását. A2_v2/a2 SKU-t használ a Zookeeper-csomópontokhoz, és az ügyfelek számára nem számítunk fel díjat. A következő kiadásban az ügyfelek igény szerint módosíthatják a Spark, a Hadoop és a ML szolgáltatásokhoz tartozó Zookeeper SKU-t. A A2_v2/a2 eltérő SKU-val rendelkező Zookeeper-csomópontokat a rendszer felszámítja. Az alapértelmezett SKU továbbra is A2_V2/a2 és díjmentes.
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>A Spark, a Hadoop és a ML szolgáltatások Zookeeper eltérő virtuálisgép-méretek kiválasztásának lehetősége
+A HDInsight jelenleg nem támogatja a Zookeeper-csomópontok méretének testreszabását a Spark, a Hadoop és a ML Services típusú fürtök esetében. Alapértelmezés szerint A2_v2/a2 virtuálisgép-méreteket tartalmaz, amelyek díjmentesen állnak rendelkezésére. A következő kiadásban kiválaszthatja a forgatókönyvhöz leginkább megfelelő Zookeeper virtuális gép méretét. A A2_v2/a2 eltérő virtuálisgép-mérettel rendelkező Zookeeper-csomópontokat a rendszer felszámítja. A A2_v2 és az A2-es virtuális gépek továbbra is díjmentesen elérhetők.
 
 ## <a name="bug-fixes"></a>Hibajavítások
 A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 

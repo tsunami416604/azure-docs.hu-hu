@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b2dea32163fbb2827daed616087c893631429aea
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0709152631037e7561094082c8ce02b860fd4edc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400849"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951559"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure biztonsági alapkonfiguráció az Azure Cognitive Search
 
-Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](https://docs.microsoft.com/azure/security/benchmarks/overview) az Azure Cognitive Search-ra vonatkozó útmutatást alkalmazza. Az Azure biztonsági teljesítményteszt az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint az Azure Cognitive Search-ra vonatkozó kapcsolódó útmutatás. Az Azure Cognitive Searchra nem alkalmazható **vezérlők** , vagy az ügyfél ki lett zárva.
+Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../security/benchmarks/overview.md) az Azure Cognitive Search-ra vonatkozó útmutatást alkalmazza. Az Azure biztonsági teljesítményteszt az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint az Azure Cognitive Search-ra vonatkozó kapcsolódó útmutatás. Az Azure Cognitive Searchra nem alkalmazható **vezérlők** , vagy az ügyfél ki lett zárva.
 
 Ha szeretné megtekinteni, hogy az Azure hogyan Cognitive Search teljes mértékben az Azure biztonsági teljesítményteszttel, tekintse meg a [teljes azure Cognitive Search biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](../security/benchmarks/security-control-network-security.md)című témakörben talál.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -30,9 +30,9 @@ Ha szeretné megtekinteni, hogy az Azure hogyan Cognitive Search teljes mérték
 
 A Cognitive Search a hálózati hozzáférés-vezérlési listák felügyeletéhez is támogatja a további hálózati biztonsági funkciókat. Konfigurálja úgy a keresési szolgáltatást, hogy csak a megbízható forrásokkal való kommunikációt engedélyezze, ha korlátozza a hozzáférést az adott nyilvános IP-címtartományok számára a tűzfal funkciójának használatával.
 
-- [Privát végpontok konfigurálása az Azure Cognitive Search](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Privát végpontok konfigurálása az Azure Cognitive Search](./service-create-private-endpoint.md)
 
-- [Az Azure Cognitive Search tűzfal konfigurálása](https://docs.microsoft.com/azure/search/service-configure-firewall)
+- [Az Azure Cognitive Search tűzfal konfigurálása](./service-configure-firewall.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -42,11 +42,11 @@ A Cognitive Search a hálózati hozzáférés-vezérlési listák felügyeletéh
 
 **Útmutató**: a Cognitive Search nem helyezhetők üzembe közvetlenül virtuális hálózatban. Ha azonban az ügyfélalkalmazás vagy az adatforrások egy virtuális hálózaton vannak, figyelheti és naplózhatja a hálózati összetevők forgalmát, beleértve a felhőben a keresési szolgáltatásnak küldött kéréseket is. A standard javaslatok közé tartozik a hálózati biztonsági csoport folyamatábrájának engedélyezése és a naplók küldése az Azure Storage-ba vagy egy Log Analytics-munkaterületre. Igény szerint Traffic Analytics is használhat a forgalmi minták elemzéséhez.
 
-- [Hálózati biztonsági csoport folyamatábráinak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Hálózati biztonsági csoport folyamatábráinak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [A Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-- [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -64,7 +64,7 @@ A Cognitive Search a hálózati hozzáférés-vezérlési listák felügyeletéh
 
 **Útmutató**: a Cognitive Search nem biztosít konkrét szolgáltatást az elosztott szolgáltatásmegtagadási támadások elleni védelemhez, de az általános védelmet biztosító Cognitive Search szolgáltatáshoz társított virtuális hálózatok esetében engedélyezheti a DDoS Protection standard beállítását.
 
-- [A DDoS Protection konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -76,9 +76,9 @@ A Cognitive Search a hálózati hozzáférés-vezérlési listák felügyeletéh
 
 Ha a rendellenes tevékenységek kivizsgálásához szükséges, engedélyezze Network Watcher csomagok rögzítését.
 
-- [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [A Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [A Network Watcher engedélyezése](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -88,9 +88,9 @@ Ha a rendellenes tevékenységek kivizsgálásához szükséges, engedélyezze N
 
 **Útmutató**: a Cognitive Search nem támogatja a hálózati behatolás észlelését, de a behatolás mérséklése lehetővé teszi a tűzfalszabályok konfigurálását a Cognitive Search szolgáltatás által elfogadott IP-címek megadásához. Konfiguráljon egy privát végpontot, hogy a forgalom a nyilvános internetről is elérhető legyen.
 
-- [Az ügyfél által felügyelt kulcsok konfigurálása adattitkosításhoz](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [Az ügyfél által felügyelt kulcsok konfigurálása adattitkosításhoz](./search-security-manage-encryption-keys.md)
 
-- [Az ügyfelek által felügyelt legfontosabb információk beszerzése az indexekről és a szinonimák térképe](https://docs.microsoft.com/azure/search/search-security-get-encryption-keys)
+- [Az ügyfelek által felügyelt legfontosabb információk beszerzése az indexekről és a szinonimák térképe](./search-security-get-encryption-keys.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -110,7 +110,7 @@ Ha a rendellenes tevékenységek kivizsgálásához szükséges, engedélyezze N
 
 Erőforrások forgalmának engedélyezése vagy megtagadása a szabály megfelelő forrás vagy cél mezőjében szereplő szolgáltatási címke nevének (például AzureCognitiveSearch) megadásával. 
 
-- [Virtuális hálózati szolgáltatás címkéi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -132,13 +132,13 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet és végezhet műveleteket az erőforrásokon. 
 
-- [Privát végpont létrehozása Cognitive Searchhoz](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Privát végpont létrehozása Cognitive Searchhoz](./service-create-private-endpoint.md)
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure-Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Azure-Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
-- [Hálózati forgalom szűrése hálózati biztonsági csoport szabályaival](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Hálózati forgalom szűrése hálózati biztonsági csoport szabályaival](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -154,7 +154,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
@@ -171,9 +171,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -183,9 +183,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 **Útmutató**: a diagnosztikai és üzemeltetési naplók betekintést nyújtanak Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás figyeléséhez és a szolgáltatáshoz hozzáférő munkaterhelésekhez.  A diagnosztikai adatok rögzítéséhez engedélyezze a naplózási adatok tárolási helyének megadását.
 
-- [Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése](./search-monitor-logs.md)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
 **Azure Security Center figyelés**: igen
 
@@ -205,9 +205,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 Azure Monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a Log Analytics munkaterület megőrzési időszakát. Azure Storage-fiókokat használhat hosszú távú és archiválási tároláshoz. 
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure Security Center figyelés**: igen
 
@@ -217,15 +217,15 @@ Azure Monitor a szervezet megfelelőségi szabályainak megfelelően állítsa b
 
 **Útmutató**: a Cognitive Search szolgáltatás naplófájljainak elemzése és figyelése rendellenes működéshez. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor Log Analytics. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek.
 
-- [A Cognitive Search naplózási adatainak összegyűjtése és elemzése](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [A Cognitive Search naplózási adatainak összegyűjtése és elemzése](./search-monitor-logs.md)
 
-- [Keresési naplóban tárolt adatPower BIek megjelenítése](https://docs.microsoft.com/azure/search/search-monitor-logs-powerbi)
+- [Keresési naplóban tárolt adatPower BIek megjelenítése](./search-monitor-logs-powerbi.md)
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [További tudnivalók a Log Analytics szolgáltatásról](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [További tudnivalók a Log Analytics szolgáltatásról](../azure-monitor/log-query/get-started-portal.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -235,11 +235,11 @@ Azure Monitor a szervezet megfelelőségi szabályainak megfelelően állítsa b
 
 **Útmutató**: Security Center használata log Analytics munkaterülettel a biztonsági naplókban és eseményekben észlelt rendellenes tevékenységekkel kapcsolatos figyeléshez és riasztáshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel szolgáltatásban való ellátását.
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Riasztások kezelése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -271,7 +271,7 @@ Azure Monitor a szervezet megfelelőségi szabályainak megfelelően állítsa b
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -279,12 +279,12 @@ Azure Monitor a szervezet megfelelőségi szabályainak megfelelően állítsa b
 
 Cognitive Search szerepkörök olyan engedélyekkel vannak társítva, amelyek támogatják a szolgáltatási szint felügyeleti feladatait.  Ezek a szerepkörök nem biztosítanak hozzáférést a szolgáltatás végpontjának. A végpontra irányuló műveletekhez való hozzáférés (például az indexelés kezelése, az indexek sokasága és a keresési adatok lekérdezése) az API-kulcsok használatával hitelesítheti a kérést.
 
-- [Szerepkörök beállítása rendszergazdai hozzáféréshez az Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Szerepkörök beállítása rendszergazdai hozzáféréshez az Azure Cognitive Search](./search-security-rbac.md)
 
-- [Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése](./search-security-api-keys.md)
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -304,9 +304,9 @@ Cognitive Search szerepkörök olyan engedélyekkel vannak társítva, amelyek t
 
 Használja az Azure AD beépített szerepköreit, amelyeket explicit módon hozzá kell rendelni a felügyeleti műveletekhez. Az Azure AD PowerShell-modul meghívásával ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítése érdekében.
 
-- [Szerepkörök használata rendszergazdai hozzáféréshez Cognitive Search](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Szerepkörök használata rendszergazdai hozzáféréshez Cognitive Search](./search-security-rbac.md)
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -318,7 +318,7 @@ Használja az Azure AD beépített szerepköreit, amelyeket explicit módon hozz
 
 Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számának csökkentéséhez azáltal, hogy engedélyezi az egyszeri bejelentkezést a szolgáltatásnak a szervezete már meglévő identitásával.
 
-- [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -328,9 +328,9 @@ Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számána
 
 **Útmutató**: a Azure Active Directory (Azure AD) multi-Factor Authentication (MFA) funkciójának engedélyezése és a Security Center identitás-és hozzáférési javaslatainak követése.
 
-- [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) 
+- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md) 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -340,10 +340,10 @@ Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számána
 
 **Útmutató**: az Azure-erőforrásokhoz való bejelentkezéshez és az Azure-erőforrások eléréséhez konfigurált multi-Factor Authentication (MFA) rendelkező, rendszerjogosultságú hozzáférési munkaállomás (Paw) használata.
 
-- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
  
 
-- [Az Azure AD MFA engedélyezése](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
  
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -354,9 +354,9 @@ Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számána
 
 **Útmutató**: a Azure Active Directory (Azure ad) biztonsági jelentéseinek és figyelésének használata annak észlelésére, hogy a környezetben gyanús vagy nem biztonságos tevékenységek történnek-e. A Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -374,9 +374,9 @@ Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számána
 
 **Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerként az Azure Cognitive Search szolgáltatás szintű felügyeleti feladatokhoz. Az Azure AD-identitások nem biztosítanak hozzáférést a keresési szolgáltatás végpontjának.  Az API-kulcsokon keresztül elérhetők az olyan műveletek, mint az indexelés, az indexelés és a keresési adatok lekérdezései.
 
-- [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése](./search-security-api-keys.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -388,11 +388,11 @@ Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számána
 
 Tekintse át a diagnosztikai naplókat a Cognitive Searchról a keresési szolgáltatás végpontjának tevékenységéhez, például az indexelés kezeléséhez, az indexelési populációhoz és a lekérdezésekhez.
 
-- [Az Azure AD jelentéskészítés ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
-- [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-- [Az Azure Cognitive Search működésének és tevékenységének figyelése](https://docs.microsoft.com/azure/search/search-monitor-usage)
+- [Az Azure Cognitive Search működésének és tevékenységének figyelése](./search-monitor-usage.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -404,7 +404,7 @@ Tekintse át a diagnosztikai naplókat a Cognitive Searchról a keresési szolg�
 
 Az Azure AD-felhasználói fiókok diagnosztikai beállításainak létrehozásával és a naplók és bejelentkezési naplók Log Analytics munkaterületre való elküldésével egyszerűsítheti ezt a folyamatot. A kívánt riasztások konfigurálása Log Analytics munkaterületen belül.
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) 
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -414,11 +414,11 @@ Az Azure AD-felhasználói fiókok diagnosztikai beállításainak létrehozás�
 
 **Útmutató**: az Azure Active Directory (Azure ad) Identity Protection-funkciókkal konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Az Azure Sentinelbe való betöltéssel további vizsgálatra van szükség.
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies) 
+- [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -434,7 +434,7 @@ Az Azure AD-felhasználói fiókok diagnosztikai beállításainak létrehozás�
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](../security/benchmarks/security-control-data-protection.md)című témakörben talál.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -448,11 +448,11 @@ Az Azure AD-felhasználói fiókok diagnosztikai beállításainak létrehozás�
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az erőforrásokat virtuális hálózattal/alhálózattal kell elválasztani, megfelelően címkézve, és egy hálózati biztonsági csoporton vagy Azure Firewallon belül kell biztosítani. A bizalmas adatokat tároló vagy feldolgozó erőforrások elkülönítését el kell különíteni. A privát hivatkozás használatával konfigurálja a Cognitive Search a privát végpontot.
 
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md) 
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-- [Privát végpont létrehozása Cognitive Searchhoz](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Privát végpont létrehozása Cognitive Searchhoz](./service-create-private-endpoint.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -464,7 +464,7 @@ Az Azure AD-felhasználói fiókok diagnosztikai beállításainak létrehozás�
 
 A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat bizalmasként kezeli, és védelmet biztosít az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data) 
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md) 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -474,7 +474,7 @@ A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat
 
 **Útmutató**: a Cognitive Search az Transport Layer Security 1,2-as adatforgalomban titkosítja az adatátvitelt, és minden kapcsolat esetében minden alkalommal kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a szolgáltatás között.
 
-- [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) 
+- [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -486,7 +486,7 @@ A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat
 
 A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat bizalmasként kezeli, és védelmet biztosít az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -495,10 +495,10 @@ A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC
 
 **Útmutató**: a szolgáltatás felügyeletéhez használja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) a kulcsok és a konfiguráció elérésének kezeléséhez. A tartalmi műveletekhez, például az indexeléshez és a lekérdezésekhez, Cognitive Search az identitás-alapú hozzáférés-vezérlési modell helyett kulcsokat használ. Az Azure RBAC segítségével szabályozhatja a kulcsokhoz való hozzáférést.
-- [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 
+- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md) 
 
  
-- [Szerepkörök használata rendszergazdai hozzáféréshez Cognitive Search](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Szerepkörök használata rendszergazdai hozzáféréshez Cognitive Search](./search-security-rbac.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -510,7 +510,7 @@ A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat
 
 A Microsoft kezeli a Cognitive Search alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -520,9 +520,9 @@ A Microsoft kezeli a Cognitive Search alapjául szolgáló infrastruktúrát, é
 
 **Útmutató**: a Cognitive Search automatikusan titkosítja az indexelt tartalmat a Microsoft által felügyelt kulcsokkal. Ha további védelemre van szükség, egy második titkosítási réteggel kiegészítheti az alapértelmezett titkosítást a Azure Key Vault-ben létrehozott és kezelt kulcsok használatával.
 
-- [Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search](./search-security-manage-encryption-keys.md)
 
-- [A inaktív adatok titkosításának megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [A inaktív adatok titkosításának megismerése az Azure-ban](../security/fundamentals/encryption-atrest.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -532,9 +532,9 @@ A Microsoft kezeli a Cognitive Search alapjául szolgáló infrastruktúrát, é
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Cognitive Search és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
-- [Riasztások létrehozása Cognitive Search tevékenységekhez](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Riasztások létrehozása Cognitive Search tevékenységekhez](./search-monitor-logs.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -542,7 +542,7 @@ A Microsoft kezeli a Cognitive Search alapjául szolgáló infrastruktúrát, é
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)című témakört.*
+*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](../security/benchmarks/security-control-vulnerability-management.md)című témakört.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -586,7 +586,7 @@ A Microsoft kezeli a Cognitive Search alapjául szolgáló infrastruktúrát, é
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -594,11 +594,11 @@ A Microsoft kezeli a Cognitive Search alapjául szolgáló infrastruktúrát, é
 
 Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek szerepelnek, valamint az összes Azure-előfizetés enumerálása, valamint az előfizetések erőforrásai.  
 
-- [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md) 
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
-- [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -608,7 +608,7 @@ Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek 
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra metaadatok használatával, hogy logikailag szervezze őket a besorolásba.
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -617,11 +617,11 @@ Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
-- [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md) 
 
-- [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md) 
 
-- [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) 
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md) 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -639,9 +639,9 @@ Győződjön meg arról, hogy a bérlőben a megfelelő (olvasási) engedélyek 
 
 **Útmutató**: azt javasoljuk, hogy olyan Azure-erőforrások leltárát határozza meg, amelyeket korábban a szervezeti szabályzatok és szabványok alapján jóváhagyott, majd figyelje a nem jóváhagyott Azure-erőforrásokat Azure Policy vagy Azure Resource Graph használatával.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md) 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -682,9 +682,9 @@ Azt javasoljuk, hogy leltárt készítsen az Azure-beli számítási erőforrás
 
 Az Azure Resource Graph használatával kérdezheti le vagy derítheti fel az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types) 
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md) 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -726,7 +726,7 @@ Az összes többi műveletre vonatkozó kérések hitelesítéséhez használt k
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információt az [Azure biztonsági teljesítményteszt: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md)című témakörben talál.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -738,9 +738,9 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Ob
 
 A Azure Security Center javaslatai az Azure-erőforrások biztonságos alapkonfigurációja is használhatók. 
 
-- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](./security-controls-policy.md)
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -760,13 +760,13 @@ A Azure Security Center javaslatai az Azure-erőforrások biztonságos alapkonfi
 
 Azure Resource Manager sablonokat a szervezete számára szükséges Azure-erőforrások biztonsági beállításainak fenntartására használhatja. 
 
-- [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](./security-controls-policy.md)
 
-- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager sablonok áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -784,9 +784,9 @@ Azure Resource Manager sablonokat a szervezete számára szükséges Azure-erőf
 
 **Útmutató**: ha egyéni Azure Policy-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/index)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/index)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -808,9 +808,9 @@ Az aliasok használatával egyéni házirendeket hozhat létre a hálózati konf
 
 Emellett a Azure Automation használatával is telepítheti a konfigurációs módosításokat, és kezelheti a házirendek kivételeit. 
 
-- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](./security-controls-policy.md)
 
-- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -828,9 +828,9 @@ Emellett a Azure Automation használatával is telepítheti a konfigurációs m�
 
 **Útmutató**: a Security Center használatával végezheti el az Cognitive Search szolgáltatás erőforrásainak alapkonfigurációját.  Emellett a Azure Policy használatával figyelmeztesse és naplózhatja az erőforrás-konfigurációkat. 
 
-- [Javaslatok szervizelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Cognitive Search](./security-controls-policy.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -847,10 +847,10 @@ Emellett a Azure Automation használatával is telepítheti a konfigurációs m�
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
 **Útmutató**: az Azure felügyelt identitások használata a Azure Key Vaultekkel együtt a felhőalapú alkalmazások titkos felügyeletének egyszerűbbé tételéhez.
-- [Felügyelt identitások használata Azure-erőforrásokhoz](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity) 
-- [Key Vault létrehozása](https://docs.microsoft.com/azure/key-vault/quick-create-portal) 
+- [Felügyelt identitások használata Azure-erőforrásokhoz](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md) 
 
-- [Key Vault hitelesítés biztosítása felügyelt identitással](https://docs.microsoft.com/azure/key-vault/managed-identity) 
+- [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/assign-access-policy-portal.md) 
 
 **Azure Security Center figyelés**: igen
 
@@ -860,9 +860,9 @@ Emellett a Azure Automation használatával is telepítheti a konfigurációs m�
 
 **Útmutató**: az Azure által felügyelt identitás használatával Cognitive Search hozzáférést biztosíthat más Azure-szolgáltatásokhoz, például a Key Vault és az indexelő adatforrásokhoz egy automatikusan felügyelt identitás használatával Azure Active Directory (Azure ad). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Azure Key Vault is, a kódban szereplő hitelesítő adatok nélkül. 
 
-- [Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával](https://docs.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
+- [Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával](./search-howto-managed-identities-data-sources.md)
 
-- [Az ügyfél által felügyelt kulcsok konfigurálása adattitkosításhoz felügyelt identitás használatával](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#3---create-a-service-identity)
+- [Az ügyfél által felügyelt kulcsok konfigurálása adattitkosításhoz felügyelt identitás használatával](./search-security-manage-encryption-keys.md#3---create-a-service-identity)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -878,7 +878,7 @@ Emellett a Azure Automation használatával is telepítheti a konfigurációs m�
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md)című témakörben talál.*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8,1: központilag felügyelt kártevő szoftver használata
 
@@ -912,7 +912,7 @@ A szervezete tulajdonában lévő és a keresési megoldásban használt számí
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információt az [Azure biztonsági teljesítményteszt: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md)című témakörben talál.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
@@ -928,9 +928,9 @@ A szervezete tulajdonában lévő és a keresési megoldásban használt számí
 
 **Útmutató**: a Cognitive Search jelenleg nem támogatja az automatikus biztonsági mentést egy keresési szolgáltatásban lévő adatbiztonsági mentéshez, és manuális folyamattal kell biztonsági másolatot készíteni.  Az ügyfél által felügyelt kulcsokat a Azure Key Vault is biztonsági másolatot készíthet. 
 
-- [Azure Cognitive Search index biztonsági mentése és visszaállítása](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Azure Cognitive Search index biztonsági mentése és visszaállítása](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Key Vault kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -940,9 +940,9 @@ A szervezete tulajdonában lévő és a keresési megoldásban használt számí
 
 **Útmutató**: a Cognitive Search jelenleg nem támogatja az automatikus biztonsági mentést egy keresési szolgáltatásban található adatbiztonsági mentéshez, és manuális folyamattal kell biztonsági másolatot készíteni és visszaállítani.  A biztonsági mentési folyamat végpontok közötti integritásának biztosítása érdekében rendszeresen végezze el a manuálisan biztonsági mentéssel ellátni kívánt tartalom adatvisszaállítását.
 
-- [Azure Cognitive Search index biztonsági mentése és visszaállítása](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Azure Cognitive Search index biztonsági mentése és visszaállítása](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Key Vault kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -954,11 +954,11 @@ A szervezete tulajdonában lévő és a keresési megoldásban használt számí
 
 A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze a Key Vault a védelem lágy törlését és kiürítését. Ha az Azure Storage-t a manuális biztonsági másolatok tárolására használja, engedélyezze a Soft delete-et az adatok mentéséhez és helyreállításához, amikor blobokat vagy blob-pillanatképeket törölnek. 
 
-- [Azure Cognitive Search index biztonsági mentése és visszaállítása](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Azure Cognitive Search index biztonsági mentése és visszaállítása](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Soft DELETE az Azure Blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft DELETE az Azure Blob Storage-hoz](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -966,7 +966,7 @@ A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekébe
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](../security/benchmarks/security-control-incident-response.md)című témakörben talál.*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -988,9 +988,9 @@ A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekébe
 
 Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat egy elnevezési rendszert az Azure-erőforrások azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-- [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources)
+- [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
-- [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -1010,7 +1010,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-- [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -1020,9 +1020,9 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Útmutató**: az Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások vagy javaslatok manuális vagy folyamatos exportálását. Az Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-- [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-- [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1032,7 +1032,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
 
-- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1040,7 +1040,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)című témakört.*
+*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)című témakört.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -1054,5 +1054,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

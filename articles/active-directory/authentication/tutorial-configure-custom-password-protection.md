@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91cb1a0819902d2dfa27718ccfe39b175959a16c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963839"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Oktatóanyag: egyéni tiltott jelszavak konfigurálása Azure Active Directory jelszavas védelemhez
 
@@ -104,7 +104,7 @@ Ha szeretné megtekinteni az egyéni tiltott jelszavak listáját a műveletben,
 
     ![Hibaüzenet jelenik meg, ha olyan jelszót próbál használni, amely az egyéni tiltott jelszavak listáján szerepel](media/tutorial-configure-custom-password-protection/password-change-error.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyéni tiltott jelszavak listáját, hajtsa végre a következő lépéseket:
 
@@ -114,7 +114,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyén
 1. Állítsa be az **Egyéni lista érvényesítésének** lehetőségét a *nem*értékre.
 1. Az egyéni tiltott jelszó konfigurációjának frissítéséhez válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas védelem listáját az Azure AD-hez. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819440"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948623"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -89,9 +89,9 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférési jogkivonat élettartama |<sup>2</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
-| Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Single-Factor frissítési token Max Age |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
 | Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) | 180 nap |10 perc |180 nap<sup>1</sup> |
-| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Single-Factor munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
 | Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) | 180 nap |10 perc | 180 nap<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
@@ -160,11 +160,11 @@ A **következőket érinti:** Tokenek frissítése
 
 Ez a házirend azokat a felhasználókat kényszeríti, akik nem voltak aktívak az ügyfélen az új frissítési jogkivonat lekéréséhez.
 
-A frissítési token Max inaktív idő tulajdonságának alacsonyabb értékre kell állítani, mint az egytényezős token Max Age és a multi-Factor frissítési token Max Age tulajdonságai.
+A frissítési token maximális inaktív idő tulajdonságának alacsonyabb értékre kell állítani, mint az Single-Factor token Max Age és a multi-Factor refresh token Max Age tulajdonságai.
 
 Példaként tekintse meg a szabályzat [létrehozása egy olyan natív alkalmazáshoz, amely webes API-t hív meg](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-refresh-token-max-age"></a>Egy tényező frissítési Tokenének maximális kora
+### <a name="single-factor-refresh-token-max-age"></a>Single-Factor frissítési token Max Age
 **Karakterlánc:** MaxAgeSingleFactor
 
 A **következőket érinti:** Tokenek frissítése
@@ -182,11 +182,11 @@ A **következőket érinti:** Tokenek frissítése
 
 **Összefoglalás:** Ez a házirend azt szabályozza, hogy a felhasználó mennyi ideig használhat frissítési jogkivonatot új hozzáférési/frissítési jogkivonat-párok beszerzéséhez, miután több tényezővel sikeresen elvégezte a hitelesítést. Miután egy felhasználó hitelesíti és új frissítési tokent kapott, a felhasználó a megadott időtartamra használhatja a frissítési jogkivonat folyamatát. (Ez akkor igaz, ha az aktuális frissítési jogkivonat nincs visszavonva, és az inaktívnál hosszabb ideig nem használható fel.) Ezen a ponton a felhasználóknak újra kell hitelesíteniük magukat, hogy új frissítési tokent kapjanak.
 
-A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy nagyobb, mint az egytényezős frissítési jogkivonat Max Age tulajdonsága.
+A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy nagyobb, mint az Single-Factor frissítési token Max Age tulajdonsága.
 
 Példaként tekintse meg a szabályzat [létrehozása egy olyan natív alkalmazáshoz, amely webes API-t hív meg](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-session-token-max-age"></a>Egy tényezős munkamenet-token maximális kora
+### <a name="single-factor-session-token-max-age"></a>Single-Factor munkamenet-token maximális kora
 **Karakterlánc:** MaxAgeSessionSingleFactor
 
 A **következőket érinti:** Munkamenet-tokenek (állandó és nem állandó)
@@ -204,7 +204,7 @@ A **következőket érinti:** Munkamenet-tokenek (állandó és nem állandó)
 
 **Összefoglalás:** Ez a házirend azt szabályozza, hogy a felhasználó mennyi ideig használhatja a munkamenet-tokent új azonosító és munkamenet-jogkivonat beszerzésére, miután a rendszer a legutóbbi sikeres hitelesítés után több tényezőt is sikeresen hitelesített. Miután egy felhasználó egy új munkamenet-tokent hitelesített és kap, a felhasználó a munkamenet-jogkivonat folyamatát a megadott ideig használhatja. (Ez akkor igaz, ha az aktuális munkamenet-jogkivonat nincs visszavonva, és nem járt le.) A megadott időtartam elteltével a felhasználónak újra hitelesítenie kell magát, hogy új munkamenet-tokent kapjon.
 
-A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy nagyobb, mint az egytényezős munkamenet-token Max Age tulajdonsága.
+A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy nagyobb, mint az Single-Factor munkamenet-token Max Age tulajdonsága.
 
 ## <a name="cmdlet-reference"></a>Parancsmag-referencia
 
@@ -246,6 +246,6 @@ A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges
 
 A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

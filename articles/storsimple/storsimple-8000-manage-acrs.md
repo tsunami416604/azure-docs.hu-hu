@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513454"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949904"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>A hozzáférés-vezérlési rekordok kezelése a StorSimple Manager szolgáltatással
 
@@ -63,11 +63,11 @@ Az ACR hozzáadásához hajtsa végre az alábbi lépéseket.
 
     3. Az ACR létrehozásához kattintson a **Hozzáadás** gombra.
 
-        ![Kattintson az ACR hozzáadása elemre.](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![Kattintson az ACR 2 hozzáadása lehetőségre.](./media/storsimple-8000-manage-acrs/createacr2.png)
 
 4.  Az újonnan hozzáadott ACR a ACR-EK táblázatos listájában jelenik meg.
 
-    ![Kattintson az ACR hozzáadása elemre.](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![Kattintson az ACR 3 hozzáadása elemre.](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>Hozzáférés-vezérlési rekord szerkesztése
@@ -89,11 +89,11 @@ Az ACR szerkesztéséhez hajtsa végre az alábbi lépéseket.
 
 3. A **hozzáférés-vezérlési rekord szerkesztése** panelen adjon meg egy másik IQN, amely egy másik gazdagépnek felel meg.
 
-    ![Hozzáférés-vezérlési rekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Hozzáférés-vezérlési rekordok szerkesztése 2](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. Kattintson a **Mentés** gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. 
 
-    ![Hozzáférés-vezérlési rekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Hozzáférés-vezérlési rekordok szerkesztése 3](./media/storsimple-8000-manage-acrs/editacr3.png)
 
 5. Az ACR frissítésekor értesítést kap. A táblázatos lista szintén frissíti a változást.
 
@@ -109,23 +109,23 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
 #### <a name="to-delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
 1.  Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok**elemre.
 
-    ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Ugrás az 1b hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/createacr1.png)
 
 2. A hozzáférés-vezérlési rekordok táblázatos listájában kattintson és válassza ki a törölni kívánt ACR-t.
 
-    ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra 2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
 3. Kattintson a jobb gombbal a helyi menü meghívásához, majd válassza a **Törlés**lehetőséget.
 
-    ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra 3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
 4. Ha a rendszer megerősítést kér, tekintse át az adatokat, majd kattintson a **Törlés**gombra.
 
-    ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra 4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
 5. A törlés befejeződése után értesítést kap. A táblázatos lista frissül, hogy tükrözze a törlést.
 
-    ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra 5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>További lépések
 * További információ a [StorSimple-kötetek kezeléséről](storsimple-8000-manage-volumes-u2.md).

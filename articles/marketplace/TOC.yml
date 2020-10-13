@@ -115,13 +115,13 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Azure-beli virtuális gép technikai eszközének létrehozása
               items:
-                - name: A virtuális gép hitelesítése – problémák és megoldások
+                - name: A virtuális gép hitelesítési hibái
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Azure-beli virtuális gép technikai eszközének létrehozása
                   href: partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure-beli virtuális gép technikai eszközei – gyakori kérdések
                   href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: VHD-ből üzembe helyezett virtuális gépek tesztelése
+                - name: VHD-ből üzembe helyezett virtuális gép tesztelése
                   href: partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI
                   items:
@@ -324,17 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: A Cloud Partner Portal migrálása – Gyakori kérdések
       href: cloud-partner-portal-migration-faq.md
+    - name: Üzleti lehetőségek – munkaidő
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: Műszaki és közzétételi támogatás – munkaidő
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: A partnerközpont támogatási lehetőségei
       href: partner-center-portal/support.md
+    - name: A partnerközpont közleményei
+      href: /partner-center/announcements
+    - name: Microsoft-partnerközösség
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: Partnerközösségi fórum
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: Földrajzi rendelkezésre állás és pénznemek
       href: marketplace-geo-availability-currencies.md
+    - name: Bérlő- és objektumazonosítók keresése
+      href: find-tenant-object-id.md
     - name: Támogatott országok és régiók
       href: sell-from-countries.md
-    - name: Támogatott HTML-címkék
-      href: supported-html-tags.md
     - name: Együttes értékesítés ország- és régiókódjai
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: Együttes értékesítés államkódjai
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 'Fórumok, blogok és gyorshivatkozások'
-      href: marketplace-roadmap.md
+    - name: Támogatott HTML-címkék
+      href: supported-html-tags.md

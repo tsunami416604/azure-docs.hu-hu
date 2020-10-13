@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531615"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951400"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Ha C#-ot és MVC-alkalmazást használ, a **HomeController.cs** -fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslati függvény a [DocumentsOperationsExtensions. javaslat metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)alapul. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](./search-howto-dotnet-sdk.md).
 
-A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) osztály tulajdonságai határozzák meg, hogy mely mezők kereshetők és visszaadásra kerülnek az eredmények között, a egyezések száma, valamint az, hogy a rendszer felhasználja-e a zavaros egyezést 
+A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) osztály tulajdonságai határozzák meg, hogy mely mezők kereshetők és visszaadásra kerülnek az eredmények között, a egyezések száma, valamint az, hogy a rendszer felhasználja-e a zavaros egyezést 
 
 Az automatikus kiegészítéshez a zavaros egyezés csak egy kihagyott vagy rossz helyen lévő módosítási távolságra korlátozódik. Vegye figyelembe, hogy az automatikus kiegészítési lekérdezésekben a zavaros egyezés esetenként váratlan eredményeket eredményezhet az index méretétől és a szilánkok mennyiségétől függően. További információ: [particionálási és](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)skálázási fogalmak.
 
@@ -247,7 +247,7 @@ public ActionResult AutoComplete(string term)
 
 Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 

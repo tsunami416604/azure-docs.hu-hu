@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre ExpressRoute Global Reach-társí
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576727"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
@@ -105,7 +105,7 @@ Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre egy második enged�
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan telepítheti és konfigurálhatja a VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 
 > [!div class="nextstepaction"]
-> [VMware HCX üzembe helyezése és konfigurálása](tutorial-deploy-vmware-hcx.md)
+> [A VMware HCX üzembe helyezése és konfigurálása](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->
