@@ -4,16 +4,15 @@ ms.author: joshuapa
 ms.service: azure-notebooks
 ms.topic: include
 ms.date: 07/01/2020
-ms.openlocfilehash: 5011a5d265c61cf26520f6c012037a67a8afacae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cbea6f133fa31b7b1523dfb0f9b81809c5b008f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181495"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997892"
 ---
 > [!IMPORTANT]
-> 2020. október 9-én az Azure Notebooks nyilvános előzetes webhelye megszűnik, és a Visual Studio, az Azure és a GitHub integrált szolgáltatásai váltják fel.
-> [További](https://aka.ms/aznb-notebooks-at-msft/) információ a Microsofttól kapott lehetőségekről és a többi jegyzetfüzetről.
+> 2021. január 15-én a Azure Notebooks nyilvános előzetes webhelyét kivonják a Visual studióból, az Azure-ból és a GitHubból származó integrált szolgáltatásokkal. Az új vagy a jegyzetfüzet-tartalmak létrehozásával kapcsolatos [További információkért tekintse meg](https://aka.ms/aznb-notebooks-at-msft/) a Microsoft további notebook-szolgáltatásait.
 >
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
