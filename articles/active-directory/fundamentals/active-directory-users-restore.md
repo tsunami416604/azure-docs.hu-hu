@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741176"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
@@ -79,7 +79,7 @@ Véglegesen törölheti a felhasználót a szervezetből anélkül, hogy az auto
 
     ![Felhasználók – törölt felhasználók lap, a felhasználó törlése lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután visszaállította vagy törölte a felhasználókat, a következő alapvető folyamatokat végezheti el:
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)

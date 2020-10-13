@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 1b49ce9f3b04a31e3f062c81f63d3e639a09c6bd
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741941"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Oktatóanyag: Felkészülés a Azure Data Box Gateway üzembe helyezésére
@@ -21,7 +21,7 @@ A jelen oktatóanyag az első az Azure Data Box Gateway teljes üzembe helyezés
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -112,7 +112,7 @@ Data Box Gateway-erőforrás létrehozásához hajtsa végre a következő lép�
     
     ![Data Box Gateway-erőforrás létrehozása](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
-6. Válassza az **Áttekintés + létrehozás** lehetőséget.
+6. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
  
 7. A **felülvizsgálat + létrehozás** lapon tekintse át a **díjszabás részleteit**, **használati feltételek**és az erőforrás részleteit. Kattintson a **Létrehozás** gombra.
 

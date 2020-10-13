@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667741"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Ajánlott eljárások Azure Data Lake Storage Gen1 használatához
@@ -27,7 +27,7 @@ Ebben a cikkben megismerheti a Azure Data Lake Storage Gen1 használatának ajá
 
 A Azure Data Lake Storage Gen1 a POSIX hozzáférés-vezérlést, valamint az Azure Active Directory (Azure AD) felhasználók, csoportok és egyszerű szolgáltatások részletes naplózását kínálja. Ezek a hozzáférés-vezérlések megadhatók meglévő fájlokhoz és mappákhoz. A hozzáférés-vezérléssel az új fájlokra vagy mappákra alkalmazható alapértelmezett beállítások is létrehozhatók. Ha az engedélyek meglévő mappákra és alárendelt objektumokra vannak beállítva, az engedélyeket minden objektumon rekurzív módon kell propagálni. Ha nagy számú fájl van, az engedélyek propagálása hosszú időt is igénybe vehet. Az igénybe vett idő a másodpercenként feldolgozott 30-50 objektum közötti tartományba esik. Ezért tervezze meg megfelelően a mappa felépítését és a felhasználói csoportokat. Ellenkező esetben előfordulhat, hogy az adataival való munka során nem várt késések és problémák merülnek fel.
 
-Tegyük fel, hogy van egy 100 000 gyermekobjektum nevű mappája. Ha a másodpercenként feldolgozott 30 objektum alsó határát veszi igénybe, a teljes mappa engedélyeinek frissítése akár egy órát is igénybe vehet. Data Lake Storage Gen1 hozzáférés-vezérlési listákkal kapcsolatos további részletek a [Azure Data Lake Storage Gen1 hozzáférés-vezérlésében](data-lake-store-access-control.md)érhetők el. Az ACL-ek rekurzív hozzárendelésével kapcsolatos jobb teljesítmény érdekében használhatja a Azure Data Lake parancssori eszközt. Az eszköz több szálat és rekurzív navigációs logikát hoz létre, amellyel gyorsan alkalmazhatja az ACL-eket több millió fájlra. Az eszköz Linux és Windows rendszerekhez érhető el, és az eszköz [dokumentációja](https://github.com/Azure/data-lake-adlstool) és [letöltése](https://aka.ms/adlstool-download) megtalálható a githubon. Ugyanezek a teljesítménnyel kapcsolatos újítások a Data Lake Storage Gen1 [.net](data-lake-store-data-operations-net-sdk.md) -és [Java](data-lake-store-get-started-java-sdk.md) SDK-val írt saját eszközeivel is engedélyezhetők.
+Tegyük fel, hogy van egy 100 000 gyermekobjektum nevű mappája. Ha a másodpercenként feldolgozott 30 objektum alsó határát veszi igénybe, a teljes mappa engedélyeinek frissítése akár egy órát is igénybe vehet. Data Lake Storage Gen1 hozzáférés-vezérlési listákkal kapcsolatos további részletek a [Azure Data Lake Storage Gen1 hozzáférés-vezérlésében](data-lake-store-access-control.md)érhetők el. Az ACL-ek rekurzív hozzárendelésével kapcsolatos jobb teljesítmény érdekében használhatja a Azure Data Lake Command-Line eszközt. Az eszköz több szálat és rekurzív navigációs logikát hoz létre, amellyel gyorsan alkalmazhatja az ACL-eket több millió fájlra. Az eszköz Linux és Windows rendszerekhez érhető el, és az eszköz [dokumentációja](https://github.com/Azure/data-lake-adlstool) és [letöltése](https://aka.ms/adlstool-download) megtalálható a githubon. Ugyanezek a teljesítménnyel kapcsolatos újítások a Data Lake Storage Gen1 [.net](data-lake-store-data-operations-net-sdk.md) -és [Java](data-lake-store-get-started-java-sdk.md) SDK-val írt saját eszközeivel is engedélyezhetők.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Biztonsági csoportok és egyéni felhasználók együttes használata
 
@@ -102,9 +102,9 @@ Alább láthatók az első három ajánlott lehetőség a Data Lake Storage Gen1
 |---------|---------|---------|---------|
 |**Skálázási korlátok**     | Munkavégző csomópontok kötik        | A Felhőbeli adatáthelyezési egységek maximális száma        | Elemzési egységek kötik        |
 |**Támogatja a különbözetek másolását**     |   Igen      | Nem         | Nem         |
-|**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Yes        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
+|**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Igen        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
 |**Támogatott fájlrendszerek**     | ADL, HDFS, WASB, S3, GS, CFS        |Számos, lásd: [Összekötők](../data-factory/connector-azure-blob-storage.md).         | ADL – ADL, WASB – ADL (csak azonos régió)        |
-|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N/A          | Windows 10         |
+|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N.A.          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Distcp használata két helyszín közötti adatáthelyezéshez
 
