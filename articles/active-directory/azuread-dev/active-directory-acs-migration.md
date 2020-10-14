@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706251"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055366"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
@@ -214,7 +214,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 
 Ha úgy dönt, hogy az Azure AD az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, akkor az alkalmazás Azure AD-vel való integrálásának két módját kell figyelembe vennie.
 
-Ha WS-Federation vagy WIF szeretne használni az Azure AD-vel való integrációhoz, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)című témakörben leírt megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
+Ha WS-Federation vagy WIF szeretne használni az Azure AD-vel való integrációhoz, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](../manage-apps/configure-saml-single-sign-on.md)című témakörben leírt megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
 
 - Az Azure AD-jogkivonat testreszabásának teljes rugalmassága. Testreszabhatja az Azure AD által kiállított jogcímeket, hogy azok megfeleljenek az Access Control által kiadott jogcímeknek. Ez különösen magában foglalja a felhasználói azonosító vagy a név-azonosító jogcímet. Ahhoz, hogy a felhasználók a technológiák módosítása után is konzisztens felhasználói azonosítókat kapjanak, győződjön meg arról, hogy az Azure AD által kiállított felhasználói azonosítók megegyeznek a Access Control által kiállított azonosítókkal.
 - Az alkalmazásra jellemző jogkivonat-aláíró tanúsítvány, valamint az Ön által vezérelt élettartam is konfigurálható.
@@ -226,7 +226,7 @@ Egy másik módszer a [kód](https://github.com/Azure-Samples/active-directory-d
 
 Ha ezt a módszert választja, az Azure AD-ben meg kell ismernie az [aláíró kulcsok átváltását](../develop/active-directory-signing-key-rollover.md). Ez a módszer az Azure AD globális aláíró kulcsát használja a jogkivonatok kibocsátására. Alapértelmezés szerint a WIF nem frissíti automatikusan az aláíró kulcsokat. Ha az Azure AD elforgatja globális aláíró kulcsait, a WIF megvalósítását elő kell készíteni a módosítások elfogadásához. További információ: [fontos információk az Azure ad-ban az aláíró kulcsok átváltásáról](/previous-versions/azure/dn641920(v=azure.100)).
 
-Ha integrálni tudja az Azure AD-t az OpenID Connect vagy a OAuth protokollok használatával, azt javasoljuk. Részletes dokumentációt és útmutatást talál arról, hogyan integrálhatja az Azure AD-t az [Azure ad fejlesztői útmutatójában](https://aka.ms/aaddev)elérhető webalkalmazásba.
+Ha integrálni tudja az Azure AD-t az OpenID Connect vagy a OAuth protokollok használatával, azt javasoljuk. Részletes dokumentációt és útmutatást talál arról, hogyan integrálhatja az Azure AD-t az [Azure ad fejlesztői útmutatójában](../develop/index.yml)elérhető webalkalmazásba.
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrálás Azure Active Directory B2Cre
 
@@ -332,7 +332,7 @@ Az Azure AD-t a kiszolgálók közötti hitelesítéshez is használhatja az OAu
 
 A kiszolgálók közötti forgatókönyvek megvalósításával kapcsolatos útmutatásért tekintse meg a következő forrásokat:
 
-- Az [Azure ad fejlesztői útmutató](https://aka.ms/aaddev) szolgáltatások és szolgáltatások szakasza
+- Az [Azure ad fejlesztői útmutató](../develop/index.yml) szolgáltatások és szolgáltatások szakasza
 - [Daemon-kód minta egyszerű jelszó-ügyfél hitelesítő adatok használatával](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Daemon-kód minta tanúsítvány-ügyfél hitelesítő adatainak használatával](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

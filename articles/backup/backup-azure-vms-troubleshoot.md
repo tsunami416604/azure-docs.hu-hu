@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316732"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058114"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -31,8 +31,7 @@ Ez a szakasz az Azure-beli virtuális gép biztonsági mentési műveletének hi
 * Az **Eseménynapló** tartalmazhat olyan biztonsági mentési hibákat, amelyek más biztonsági mentési termékekből származnak, például a Windows Server biztonsági másolatból, és a Azure Backup miatt nem. A következő lépések végrehajtásával megállapíthatja, hogy a probléma Azure Backup-e:
   * Ha hiba történt az eseményforrás vagy az üzenet bejegyzéseinek **biztonsági mentésével** kapcsolatban, ellenőrizze, hogy az Azure IaaS virtuális gépek biztonsági másolatai sikeresek voltak-e, és hogy egy visszaállítási pont lett-e létrehozva a kívánt pillanatkép-típussal.
   * Ha Azure Backup működik, akkor a probléma valószínűleg egy másik biztonsági mentési megoldás.
-  * Íme egy példa a Eseménynapló 517-es hibára, ahol Azure Backup működik, de a "Windows Server biztonsági másolat" sikertelen volt:<br>
-    ![Windows Server biztonsági másolat sikertelen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * Íme egy példa egy Eseménynapló 517-es hibára, ahol Azure Backup működik, de a "Windows Server biztonsági másolat" sikertelen volt: ![ Windows Server biztonsági másolat sikertelen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Ha Azure Backup sikertelen, akkor keresse meg a megfelelő hibakódot a jelen cikkben található általános virtuális gép biztonsági mentési hibái című szakaszban.
 
 ## <a name="common-issues"></a>Gyakori problémák
@@ -106,31 +105,33 @@ Hibaüzenet: a pillanatkép-művelet meghiúsult, mert a VSS-írók rossz állap
 Ez a hiba azért fordul elő, mert a VSS-írók rossz állapotban voltak. A Azure Backup-bővítmények a VSS-írókkal együttműködve készítenek pillanatképeket a lemezekről. A probléma megoldásához kövesse az alábbi lépéseket:
 
 1. lépés: rossz állapotú VSS-írók újraindítása.
-- Egy rendszergazda jogú parancssorból futtassa a parancsot ```vssadmin list writers``` .
-- A kimenet tartalmazza az összes VSS-írót és azok állapotát. Minden olyan VSS-író esetében, amely nem **[1] stabil**állapotú, indítsa újra a megfelelő VSS-író szolgáltatását. 
-- A szolgáltatás újraindításához futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
+
+* Egy rendszergazda jogú parancssorból futtassa a parancsot ```vssadmin list writers``` .
+* A kimenet tartalmazza az összes VSS-írót és azok állapotát. Minden olyan VSS-író esetében, amely nem **[1] stabil**állapotú, indítsa újra a megfelelő VSS-író szolgáltatását.
+* A szolgáltatás újraindításához futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
 
 > [!NOTE]
 > Egyes szolgáltatások újraindítása hatással lehet az éles környezetre. Győződjön meg arról, hogy a jóváhagyási folyamat követhető, és a szolgáltatás az ütemezett leállás után újraindul.
- 
-   
+
 2. lépés: Ha a VSS-írók újraindítása nem oldotta meg a problémát, futtassa a következő parancsot egy emelt szintű parancssorból (rendszergazdaként), hogy megakadályozza a szálak létrehozását a blob-pillanatképekhez.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+
 3. lépés: Ha az 1. és a 2. lépés nem oldotta meg a problémát, akkor a hiba oka az lehet, hogy a VSS-írók korlátozott IOPS miatt időtúllépést okoznak.<br>
 
 Az ellenőrzéshez keresse meg a ***rendszer-és Eseménynapló az alkalmazás naplóit*** , és keresse meg a következő hibaüzenetet:<br>
 *Az árnyékmásolat-szolgáltató időkorlátja lejárt, miközben az írásokat az árnyékmásolat-kötetre másolta. Ezt valószínűleg egy alkalmazás vagy egy rendszerszolgáltatás túlzott tevékenysége okozza a köteten. Próbálkozzon újra később, ha a köteten végzett tevékenység csökken.*<br>
 
 Megoldás:
-- Győződjön meg arról, hogy a virtuális gépek lemezein át kell osztani a terhelést. Ez csökkenti az egyes lemezek terhelését. [A IOPs szabályozását a diagnosztikai metrikák tárolási szinten való engedélyezésével](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)tekintheti meg.
-- Módosítsa a biztonsági mentési szabályzatot a biztonsági mentések elvégzéséhez a csúcsidőben, amikor a virtuális gép terhelése a legalacsonyabb szinten van.
-- Frissítse az Azure-lemezeket a magasabb IOPs támogatásához. [További információ](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+
+* Győződjön meg arról, hogy a virtuális gépek lemezein át kell osztani a terhelést. Ez csökkenti az egyes lemezek terhelését. [A IOPs szabályozását a diagnosztikai metrikák tárolási szinten való engedélyezésével](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)tekintheti meg.
+* Módosítsa a biztonsági mentési szabályzatot a biztonsági mentések elvégzéséhez a csúcsidőben, amikor a virtuális gép terhelése a legalacsonyabb szinten van.
+* Frissítse az Azure-lemezeket a magasabb IOPs támogatásához. [További információ](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState – Nem sikerült elkészíteni a pillanatképet a VSS (Kötet árnyékmásolata) szolgáltatás nem megfelelő állapota miatt
 
@@ -140,31 +141,32 @@ Hibaüzenet: a pillanatkép-művelet nem sikerült, mert a VSS (Kötet árnyékm
 Ez a hiba azért fordul elő, mert a VSS szolgáltatás helytelen állapotban volt. A Azure Backup bővítmények a VSS szolgáltatással együttműködve készítenek pillanatképeket a lemezekről. A probléma megoldásához kövesse az alábbi lépéseket:
 
 Indítsa újra a VSS (Kötet árnyékmásolata) szolgáltatást.
-- Navigáljon a Services. msc elemre, és indítsa újra a Kötet árnyékmásolata szolgáltatást.<br>
-vagy<br>
-- Futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
+
+* Navigáljon a Services. msc elemre, és indítsa újra a Kötet árnyékmásolata szolgáltatást.<br>
+(vagy)<br>
+* Futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
- 
 Ha a probléma továbbra is fennáll, indítsa újra a virtuális gépet az ütemezett állásidőben.
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable – nem sikerült létrehozni a virtuális gépet, mert a kiválasztott virtuálisgép-méret nem érhető el
 
-Hibakód: UserErrorSkuNotAvailable hibaüzenet: a virtuális gép létrehozása nem sikerült, mert a kiválasztott virtuálisgép-méret nem érhető el. 
- 
+Hibakód: UserErrorSkuNotAvailable hibaüzenet: a virtuális gép létrehozása nem sikerült, mert a kiválasztott virtuálisgép-méret nem érhető el.
+
 Ez a hiba azért fordul elő, mert a visszaállítási művelet során kiválasztott virtuális gép mérete nem támogatott. <br>
 
 A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) lehetőséget. Ezeket a lemezeket használva hozzon létre egy virtuális gépet a [rendelkezésre álló támogatott](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) virtuálisgép-méretek közül a [PowerShell-parancsmagok](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)használatával.
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported – a virtuális gép létrehozása nem sikerült, mert a Piactéri vásárlási kérelem nincs jelen
 
-Hibakód: UserErrorMarketPlaceVMNotSupported hibaüzenet: a virtuális gép létrehozása nem sikerült, mert a Piactéri vásárlási kérelem nem található. 
- 
+Hibakód: UserErrorMarketPlaceVMNotSupported hibaüzenet: a virtuális gép létrehozása nem sikerült, mert a Piactéri vásárlási kérelem nem található.
+
 Azure Backup támogatja az Azure Marketplace-en elérhető virtuális gépek biztonsági mentését és helyreállítását. Ez a hiba akkor fordul elő, ha olyan virtuális gépet próbál visszaállítani (egy adott Tervtel/közzétevői beállítással), amely már nem érhető el az Azure Marketplace-en, további [információt itt talál](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
-- A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) lehetőséget, majd a [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) vagy az [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -PARANCSMAGok használatával hozza létre a virtuális gépet a legújabb Piactéri információkkal a virtuális géphez.
-- Ha a közzétevő nem rendelkezik Piactéri információval, az adatlemezek segítségével lekérheti az adatokat, és csatolhatja őket egy meglévő virtuális géphez.
+
+* A probléma megoldásához a visszaállítási művelet során használja a [lemezek visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) lehetőséget, majd a [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) vagy az [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -PARANCSMAGok használatával hozza létre a virtuális gépet a legújabb Piactéri információkkal a virtuális géphez.
+* Ha a közzétevő nem rendelkezik Piactéri információval, az adatlemezek segítségével lekérheti az adatokat, és csatolhatja őket egy meglévő virtuális géphez.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – hiba történt a biztonsági mentési bővítmény konfigurációjának elemzésekor
 
@@ -244,7 +246,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 
 **2. lépés**: próbálja meg módosítani a biztonsági mentési ütemtervet olyan időpontra, amikor a virtuális gép kevesebb terhelés alatt van (például kevesebb CPU vagy IOps)
 
-**3. lépés**: próbálja meg [növelni a virtuális gép méretét](https://azure.microsoft.com/blog/resize-virtual-machines/) , és ismételje meg a műveletet.
+**3. lépés**: próbálja meg [növelni a virtuális gép méretét](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) , és ismételje meg a műveletet.
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound – a művelet nem hajtható végre, mert a virtuális gép már nem létezik/400094, BCMV2VMNotFound – a virtuális gép nem létezik, vagy nem található Azure-beli virtuális gép
 
@@ -308,32 +310,32 @@ Ha van olyan Azure Policy, amely [a környezetében található címkéket szab�
 
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
-| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |Nincs |
+| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |Nincsenek |
 | A feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. <br>**vagy**<br> A kijelölt feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. |Valószínű, hogy a feladatot majdnem befejezték. Várjon, amíg a feladatok befejeződik.|
 | A biztonsági mentés nem tudja megszakítani a feladatot, mert nincs folyamatban: <br>A megszakítás csak folyamatban lévő feladatok esetén támogatott. Próbálkozzon egy folyamatban lévő feladat megszakításával. |Ez a hiba átmeneti állapot miatt fordul elő. Várjon egy percet, és ismételje meg a megszakítási műveletet. |
-| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |Nincs |
+| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |Nincsenek |
 
 ## <a name="restore"></a>Visszaállítás
 
-#### <a name="disks-appear-offline-after-file-restore"></a>A lemezek offline állapotban jelennek meg a fájl visszaállítása után
+### <a name="disks-appear-offline-after-file-restore"></a>A lemezek offline állapotban jelennek meg a fájl visszaállítása után
 
-Ha a visszaállítás után észleli, hogy a lemezek offline állapotban vannak: 
+Ha a visszaállítás után észleli, hogy a lemezek offline állapotban vannak:
+
 * Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e az operációs rendszer követelményeinek. [További információk](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Győződjön meg arról, hogy nem áll helyre visszaállítás ugyanarra a forrásra, [További információ](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
-
 
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
 | A Restore művelet belső felhőalapú hibával meghiúsult. |<ol><li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, DNS-beállításokkal van konfigurálva. A következőket tekintheti meg: <br>**$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Ha a **címe** konfigurálva van, a rendszer konfigurálja a DNS-beállításokat.<br> <li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, a **foglalt IP**-sel van konfigurálva, a felhőalapú szolgáltatásban lévő meglévő virtuális gépek pedig leállított állapotban vannak. A következő PowerShell-parancsmagok használatával megtekintheti, hogy a Cloud Service fenntartott-e egy IP-címet: **$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" $DEP. ReservedIPName**. <br><li>Egy virtuális gépet a következő speciális hálózati konfigurációkkal próbál visszaállítani ugyanazon a felhőalapú szolgáltatásban: <ul><li>Virtuális gépek a terheléselosztó konfigurációjában, belső és külső.<li>Több fenntartott IP-címmel rendelkező virtuális gépek. <li>Több hálózati adapterrel rendelkező virtuális gépek. </ul><li>Válasszon egy új felhőalapú szolgáltatást a felhasználói felületen, vagy tekintse meg a speciális hálózati konfigurációval rendelkező virtuális gépek [visszaállítási szempontjait](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) .</ol> |
 | A kiválasztott DNS-név már használatban van: <br>Adjon meg másik DNS-nevet, és próbálkozzon újra. |Ez a DNS-név a felhőalapú szolgáltatás nevére hivatkozik, általában a **. cloudapp.net**végződéssel. A névnek egyedinek kell lennie. Ha ezt a hibaüzenetet kapja, a visszaállítás során másik virtuálisgép-nevet kell választania. <br><br> Ez a hiba csak a Azure Portal felhasználói számára jelenik meg. A PowerShell-alapú visszaállítási művelet sikeres, mert csak a lemezeket állítja vissza, és nem hozza létre a virtuális gépet. A hiba akkor jelenik meg, ha a virtuális gépet explicit módon hozza létre a lemez-visszaállítási művelet után. |
-| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |Nincs |
-| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |Nincs |
-| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |Nincs |
-| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |Nincs |
-| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |Nincs |
+| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |Nincsenek |
+| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |Nincsenek |
+| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |Nincsenek |
+| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |Nincsenek |
+| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |Nincsenek |
 | A visszaállítási művelethez megadott Storage-fiók típusa nincs online állapotban: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók online állapotban van. |Ez a hiba az Azure Storage-ban vagy kimaradás miatti átmeneti hiba miatt fordulhat elő. Válasszon másik Storage-fiókot. |
-| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |Nincs |
-| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |Nincs |
+| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |Nincsenek |
+| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |Nincsenek |
 | A Backup szolgáltatásnak nincs engedélye az erőforrásokhoz való hozzáférésre az előfizetésében. |A hiba megoldásához először állítsa vissza a lemezeket a [biztonsági másolatba mentett lemezek visszaállítása](backup-azure-arm-restore-vms.md#restore-disks)című cikkben ismertetett lépések segítségével. Ezután használja a [virtuális gép létrehozása helyreállított lemezekről](backup-azure-vms-automation.md#restore-an-azure-vm)című témakör PowerShell-lépéseit. |
 
 ## <a name="backup-or-restore-takes-time"></a>A biztonsági mentés vagy a visszaállítás időt vesz igénybe
@@ -393,7 +395,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
 További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:

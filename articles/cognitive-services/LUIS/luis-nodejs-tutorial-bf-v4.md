@@ -6,18 +6,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d6ef0b0d437674d78064e6c5c5a91e1b2b89074a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb158b713bea588e9de94e13ac194ec0a4d0020a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324671"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058148"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata Node.js
 
 A Language Understanding (LUIS) használatával integrált csevegési robot létrehozásához használja a Node.js. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Az oktatóanyag a következőket ismerteti:**
 
 > [!div class="checklist"]
 > * Webalkalmazás-robot létrehozása. Ez a folyamat egy új LUIS-appot hoz létre az Ön számára.
@@ -27,7 +27,7 @@ A Language Understanding (LUIS) használatával integrált csevegési robot lét
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Bot Emulator](https://aka.ms/abs/build/emulatordownload)
+* [Bot Framework emulátor](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 ## <a name="create-a-web-app-bot-resource"></a>Webalkalmazás-robot erőforrás létrehozása
@@ -77,7 +77,7 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|Nincs|Az app tartományán kívül bármi.|
+|Nincsenek|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
@@ -371,26 +371,26 @@ Ekkor megnyílik egy böngészőablak a webalkalmazás-robot webhelyével a `htt
 
 ![A kezdőlapon megjelennek a robottal kapcsolatos információk.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>A bot-emulátor használata a robot teszteléséhez
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>A robot teszteléséhez használja a bot Framework emulatort
 
 Kérdezze meg a robotot a könyv repülési szándékáról.
 
-1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
+1. Indítsa el a bot Framework emulatort, és válassza a **robot megnyitása**lehetőséget.
 1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például: `http://localhost:3978/api/messages` . Az `/api/messages` útvonal a robot webes címe.
 1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
 
-1. A bot-emulátorban adja meg `Book a flight from Seattle to Berlin tomorrow` és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben**kapott.
+1. A bot Framework emulatorban írja be `Book a flight from Seattle to Berlin tomorrow` és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben**kapott.
 
     [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Válassza az **Igen** lehetőséget. A robot a műveleteinek összegzésével válaszol.
-1. A robot-emulátor naplójából válassza ki a sort, amely tartalmazza a elemet `<- trace LuisV3 Trace` . Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
+1. A bot Framework emulátorának naplójából válassza ki a benne található sort `<- trace LuisV3 Trace` . Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
 
     [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 

@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: az első REST API lekérdezés'
 description: Ebben a rövid útmutatóban követheti az erőforrás-gráf végpontjának meghívásához REST API és az első lekérdezés futtatásához szükséges lépéseket.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85802720"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057212"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a REST API használatával
 
@@ -49,7 +49,8 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-A **$restUri** változóban a `{subscriptionId}` helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `Invoke-RestMethod``-Body` paraméterében.
+Cserélje le `{subscriptionId}` a `$restUri` változót az előfizetésre vonatkozó információk lekéréséhez.
+A `$response` változó a parancsmag eredményét tartalmazza `Invoke-RestMethod` , amely olyan parancsmagokkal értelmezhető, mint például a [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json). Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `Invoke-RestMethod``-Body` paraméterében.
 
 ## <a name="run-your-first-resource-graph-query"></a>Az első Resource Graph-lekérdezés futtatása
 
@@ -133,7 +134,7 @@ Az Azure Resource Graph REST API-hívásával kapcsolatos további példákért 
 
 REST API nem rendelkezik az eltávolításhoz szükséges könyvtárakkal vagy modulokkal. Ha olyan eszközt telepített, mint például a _ARMClient_ vagy a _Poster_ a hívások elvégzéséhez, és a továbbiakban nincs szüksége rá, akkor az eszközt most már el is távolíthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megismerte az erőforrás-gráf REST API végpontját, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

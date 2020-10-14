@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291279"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057654"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
 
@@ -54,7 +54,7 @@ Ez a témakör a [CDN-integráció](#enable-azure-cdn-integration)engedélyezés
 
 Ha egy streaming-végpontot engedélyeztek a CDN szolgáltatással, akkor a Media Services várakozási idő van a DNS-frissítés végrehajtása előtt, hogy leképezje a folyamatos átviteli végpontot a CDN-végpontra.
 
-Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. A folyamatos átviteli végpont elindítása után akár két óráig is eltarthat, amíg a Azure CDN integrációja engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. A streaming végpontot és az adatfolyamot azonban megszakítások nélkül is elindíthatja a folyamatos átviteli végpontról. Az integráció befejezését követően a stream a CDN-ből érkezik. A kiépítési időszak alatt a folyamatos átviteli végpont a **kezdeti** állapotba kerül, és megfigyelheti a teljesítmény romlását.
+Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. A folyamatos átviteli végpont elindítása után akár négy órát is igénybe vehet, amíg a Azure CDN-integráció engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. A streaming végpontot és az adatfolyamot azonban megszakítások nélkül is elindíthatja a folyamatos átviteli végpontról. Az integráció befejezését követően a stream a CDN-ből érkezik. A kiépítési időszak alatt a folyamatos átviteli végpont a **kezdeti** állapotba kerül, és megfigyelheti a teljesítmény romlását.
 
 A standard folyamatos átviteli végpont létrehozásakor a rendszer alapértelmezés szerint a standard Verizon-t konfigurálja. A Premium Verizon vagy a standard szintű Akamai-szolgáltatók a REST API-k használatával konfigurálhatók.
 

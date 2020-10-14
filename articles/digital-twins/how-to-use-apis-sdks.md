@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1cf7bd744870b9f0a04d63445268b2ccd3134a66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bfeafdea149cd41ea35562c2ff4b9e67a99b95d0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046757"
+ms.locfileid: "92058522"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -26,12 +26,12 @@ Ez a cikk áttekintést nyújt az elérhető API-król, valamint a velük való 
 
 A vezérlési sík API-k az Azure Digital Twins-példányok egészének kezelésére szolgáló [ARM](../azure-resource-manager/management/overview.md) API-k, így olyan műveletekre is kiterjednek, mint például a teljes példány létrehozása vagy törlése. Ezeket a végpontok létrehozásához és törléséhez is használni fogja.
 
-A nyilvános előzetes verzióhoz tartozó legújabb Control Plant API _**-verzió a 2020-03-01 előzetes**_ verzió.
+A nyilvános előzetes verzióhoz tartozó legújabb Control Plant API-verzió a _**2020-10-31**_.
 
 A vezérlő sík API-k használata:
 * Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)található legújabb hencegés hivatkozásával. Ez a tárház a használatot bemutató példákat is tartalmaz.
 * Jelenleg a vezérlési API-k számára érhető el az SDK-ban...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
   - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([forrás](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
@@ -47,7 +47,7 @@ Az adatsík API-k az Azure Digital Twins-példányban található elemek kezelé
 * **Lekérdezés** – a lekérdezési kategória lehetővé teszi a fejlesztők számára [, hogy a kettős gráfban a kapcsolatok között megtalálják a digitális ikrek készleteit](how-to-query-graph.md) .
 * **EventRoutes** – a EventRoutes kategória olyan API-kat tartalmaz, amelyek az [adattovábbítást](concepts-route-events.md)a rendszeren és az alsóbb rétegbeli szolgáltatásokon keresztül irányítják.
 
-A nyilvános előzetes verzióhoz tartozó legfrissebb adatsík API-verzió a _**2020-05-31 előzetes**_ verzió. Az adatsík műveletek _2020-03-01 – előzetes_ verzió API-verziója már elavult.
+A nyilvános előzetes verzióhoz tartozó legfrissebb adatsík API-verzió a _**2020-10-31**_.
 
 Az adatsík API-k használata:
 * Az API-kat közvetlenül, a... alapján hívhatja le.
@@ -112,8 +112,8 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 // Read a list of models back from the service
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
+AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
+await foreach (ModelData md in modelDataList)
 {
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }

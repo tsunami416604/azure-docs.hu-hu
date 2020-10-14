@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 02/01/2020
+ms.date: 10/14/2020
 ms.author: victorh
-ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789a60c80d14301c107824d178a3566d358d287f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86143843"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056395"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
 
@@ -60,6 +60,6 @@ Ebben a példában egy globális szabályzattal rendelkezik, amely két helyre v
 Az új webalkalmazási tűzfal WAF-beállításai (egyéni szabályok, felügyelt szabálykészlet-konfigurációk, kizárások stb.) léteznek egy WAF-szabályzatban. Ha rendelkezik meglévő WAF, ezek a beállítások továbbra is előfordulhatnak a WAF-konfigurációban. Az új WAF házirendre való áttéréssel kapcsolatos további információkért [telepítse át a WAF config-t egy WAF-házirendbe](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Hozzon létre egy hely és egy URI-házirendet a Azure PowerShell használatával.
+- [Hozzon létre egy hely és egy URI-házirendet a Azure PowerShell használatával](per-site-policies.md).

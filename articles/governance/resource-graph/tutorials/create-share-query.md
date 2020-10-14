@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
 description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005170"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057926"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
@@ -60,8 +60,7 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
 
 ## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
 
-Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoport számára lesz mentve, felügyelhető és szabályozható az Azure RBAC, és az erőforrás-zárolásokkal is védelmet biztosíthat. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt.
-Új megosztott lekérdezés létrehozásához kövesse az alábbi lépéseket:
+Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoport számára lesz mentve, felügyelhető és szabályozható az Azure RBAC, és az erőforrás-zárolásokkal is védelmet biztosíthat. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt. Új megosztott lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
 1. A portál menüjében válassza a **minden szolgáltatás**lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt, és válassza ki az **Erőforrásgrafikon-kezelőt**.
 
@@ -107,7 +106,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
 Mivel a megosztott lekérdezés egy Resource Manager-erőforrás, többféleképpen is megtalálhatja a következőt:
 
-- A Resource Graph Explorerben válassza a **lekérdezés megnyitása** lehetőséget, és állítsa a típust **megosztott lekérdezésre**.
+- A Resource Graph Explorerben. Válassza a **lekérdezés megnyitása** lehetőséget, és állítsa be a típust **megosztott lekérdezésre**.
 - Az erőforrás-gráf lekérdezési portál oldalán.
 - Azt az erőforráscsoportot, amelyben a megosztott lekérdezés el lett mentve.
 - Lekérdezésen keresztül az erőforrás-gráfon.
@@ -153,7 +152,7 @@ A megosztott lekérdezéseket az alábbi felületeken törölheti:
 
 Ha elkészült az Oktatóanyaggal, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nem szeretné őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban privát és megosztott lekérdezéseket hozott létre. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

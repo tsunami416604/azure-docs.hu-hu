@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: az első Python-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Pythonhoz készült Resource Graph-függvénytárat, és futtathatja az első lekérdezést.
-ms.date: 07/15/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7ffa8aee7087e77ff14808327251ef495e88f6f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873670"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057399"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Python használatával
 
@@ -134,7 +134,7 @@ Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből,
 pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzáadta az erőforrás-gráf kódtárait a Python-környezethez, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

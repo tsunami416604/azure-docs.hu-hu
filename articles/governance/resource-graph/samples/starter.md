@@ -1,14 +1,14 @@
 ---
 title: Kezdő lekérdezési példák
 description: Az Azure Resource Graph használatával néhány kezdő lekérdezést futtathat, beleértve az erőforrások számlálását, az erőforrások megrendelését vagy egy adott címkét.
-ms.date: 07/14/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 778e8bb7715f1eda1587ff79c4c9a99b69ab4e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 013e865f543f966d88132d2dc6aca6102d52d20c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425262"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057110"
 ---
 # <a name="starter-resource-graph-query-samples"></a>A Starter Resource Graph lekérdezési mintái
 
@@ -33,7 +33,7 @@ A következő alapszintű lekérdezéseken vezetjük végig:
 - [Költségmegtakarítás összegzése Azure Advisor](#advisor-savings)
 - [A vendég-konfigurációs házirendek hatókörében lévő gépek száma](#count-gcmachines)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -640,7 +640,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

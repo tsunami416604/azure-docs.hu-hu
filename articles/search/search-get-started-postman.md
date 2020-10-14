@@ -2,19 +2,19 @@
 title: 'Gyors útmutató: keresési index létrehozása a Poster-ben REST API-k használatával'
 titleSuffix: Azure Cognitive Search
 description: Ebből a REST API útmutatóból megtudhatja, hogyan hívhatja meg az Azure Cognitive Search REST API-kat a Poster és a Sample adatok és definíciók használatával.
-author: tchristiani
 manager: nitinme
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeb467d552cd5ab7fa73684695ed828e3430613b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88929771"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057637"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan lehet interaktív módon kialakítani REST API k
 
 A cikk a Poster alkalmazást használja. Ha előre definiált kéréseket szeretne használni, [letöltheti és importálhatja a Poster-gyűjteményeket](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) . 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -298,7 +298,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan hajthat végre alapszintű feladatokat, további REST API hívásokat is használhat további speciális funkciókkal, például indexelő szolgáltatásokkal vagy [egy kognitív keresési folyamat beállításával](cognitive-search-tutorial-blob.md). A következő lépésként a következő hivatkozást javasoljuk:
 

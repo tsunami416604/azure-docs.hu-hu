@@ -1,5 +1,5 @@
 ---
-title: 'Azure Virtual WAN: helyek közötti kapcsolatok létrehozása'
+title: 'Oktatóanyag: az Azure Virtual WAN használata helyek közötti kapcsolatok létrehozásához'
 description: Az oktatóanyag az Azure-ba irányuló helyek közötti VPN-kapcsolat létrehozását ismerteti az Azure Virtual WAN használatával.
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 191c1d88654cd13ce88e522e6c617d2b39ce9f5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a25ead5983e56f56ba0daea23c2775b3332fb8b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856720"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057909"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -37,7 +37,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 ![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan.png)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -242,6 +242,17 @@ A **VPN Gateway szerkesztése** lapon a következő beállításokat tekintheti 
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Képernyőfelvétel: a &quot;VPN (helyek közötti)&quot; oldal, amely a &quot;View/configure&quot; műveletre mutató nyilat mutat." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
-A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.
+Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
+## <a name="next-steps"></a>Következő lépések
+
+A virtuális WAN-ról további információt a következő témakörben talál:
+
+> [!div class="nextstepaction"]
+> * [Virtuális WAN – GYIK](virtual-wan-faq.md)

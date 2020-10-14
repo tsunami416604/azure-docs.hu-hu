@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50cbd1d28ca3f04b8963c58b443765d4280b14ed
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986419"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058080"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -174,7 +174,7 @@ A tipikus hosszú távú megtartási pontok az adatok biztonsági másolatát te
 - A teljes pontok tárolás szempontjából *nem hatékonyak*, azonban könnyebben és gyorsabban visszaállíthatók.
 - A növekményes másolatok tárolás szempontjából *hatékonyak*, de egy adatlánc visszaállítását teszik szükségessé, ami befolyásolja a helyreállítási időt.
 
-Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvözi az adatok optimális tárolásával a gyors visszaállítás érdekében és alacsony tárolási költségekkel. Ez a módszer gondoskodik róla, hogy a bemenő és kimenő sávszélesség is hatékonyan legyen felhasználva. Az adattárolási hely és az adatok helyreállításához szükséges idő mértéke a minimális szinten van tartva. További információk a [növekményes biztonsági másolatokról](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
+Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvözi az adatok optimális tárolásával a gyors visszaállítás érdekében és alacsony tárolási költségekkel. Ez a módszer gondoskodik róla, hogy a bemenő és kimenő sávszélesség is hatékonyan legyen felhasználva. Az adattárolási hely és az adatok helyreállításához szükséges idő mértéke a minimális szinten van tartva. További információk a [növekményes biztonsági másolatokról](backup-architecture.md#backup-types).
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>A létrehozható helyreállítási pontok száma korlátozott?
 

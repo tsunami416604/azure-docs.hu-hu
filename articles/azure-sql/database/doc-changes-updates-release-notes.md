@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ebbdd103350e1de36d45ecf84acf15d477fa34db
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043391"
+ms.locfileid: "92058131"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -98,6 +98,8 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 
 |Probléma  |Felderített dátum  |Állapot  |Feloldás dátuma  |
 |---------|---------|---------|---------|
+|[Az elosztott tranzakciók a felügyelt példány kiszolgálói megbízhatósági csoportból való eltávolítása után hajthatók végre.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Sep 2020|Megkerülő megoldás||
+|[Az elosztott tranzakciók nem hajthatók végre a felügyelt példány skálázási művelete után](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Sep 2020|Megkerülő megoldás||
 |[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) az Azure SQL-ben és `BACKUP` / `RESTORE` a felügyelt példányban lévő utasításban nem használható az Azure ad-kezelő identitása az Azure Storage-beli hitelesítéshez|Sep 2020|Megkerülő megoldás||
 |[Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV](#service-principal-cannot-access-azure-ad-and-akv)|Augusztus 2020|Megkerülő megoldás||
 |[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Feloldva|2020. június|
@@ -127,6 +129,14 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |Az adatbázis levelezési funkciója külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával||Feloldva|TOT 2019|
 |A felügyelt SQL-példányok nem támogatják a foglalt adatbázisokat.||Feloldva|Augusztus 2019|
 
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Az elosztott tranzakciók a felügyelt példány kiszolgálói megbízhatósági csoportból való eltávolítása után hajthatók végre.
+
+A [kiszolgálói megbízhatósági csoportok](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) olyan felügyelt példányok közötti megbízhatósági kapcsolat létesítésére szolgálnak, amelyek az [Elosztott tranzakciók](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)végrehajtásának előfeltételei. Miután eltávolította a felügyelt példányt a kiszolgálói megbízhatósági csoportból, vagy törli a csoportot, lehetséges, hogy az elosztott tranzakciókat is végre tudja hajtani. Megkerülő megoldással megoldható, hogy az elosztott tranzakciók le vannak tiltva, és hogy a felügyelt példányon a [felhasználó által kezdeményezett manuális feladatátvétel](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) történik.
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>Az elosztott tranzakciók nem hajthatók végre a felügyelt példány skálázási művelete után
+
+A szolgáltatási réteg vagy virtuális mag módosítását tartalmazó felügyelt példány skálázási műveletei a kiszolgáló megbízhatósági csoportjának beállításait alaphelyzetbe állítják, és letiltják az [Elosztott tranzakciók](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)futtatását. Áthidaló megoldásként törölje és hozzon létre új [kiszolgálói megbízhatósági csoportot](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) Azure Portalon.
+
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>A BULK INSERT és a BACKUP/Restore utasítások nem használhatnak felügyelt identitást az Azure Storage eléréséhez
 
 A tömeges beszúrási utasítás nem használható `DATABASE SCOPED CREDENTIAL` felügyelt identitással az Azure Storage-ban való hitelesítéshez. Áthidaló megoldásként váltson át a közös HOZZÁFÉRÉSű aláírás-hitelesítésre. Az alábbi példa nem fog működni az Azure SQL-ben (az adatbázis és a felügyelt példány esetében is):
@@ -146,7 +156,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 Bizonyos esetekben előfordulhat, hogy probléma merült fel az Azure AD-és Azure Key Vault-(AKV-) szolgáltatások elérésére használt egyszerű szolgáltatással. Ennek eredményeképpen a probléma hatással van az Azure AD-hitelesítés és az átlátható adatbázis-titkosítás (TDE) használatára az SQL felügyelt példányával. Ez egy átmeneti kapcsolódási probléma lehet, vagy nem futtathatók olyan utasítások, mint például a LOGIN/felhasználó létrehozása külső SZOLGÁLTATÓtól, illetve a bejelentkezés/felhasználó futtatása. Előfordulhat, hogy a TDE beállítása az ügyfél által felügyelt kulccsal új, felügyelt Azure SQL-példányon bizonyos esetekben nem működik.
 
-**Áthidaló megoldás**: Ha meg szeretné akadályozni, hogy ez a probléma a frissítési parancsok végrehajtása előtt a FELÜGYELt SQL-példányon történjen, vagy ha már tapasztalta ezt a problémát, lépjen az Azure Portalra, és nyissa meg az SQL felügyelt példányának [Active Directory rendszergazdai](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)paneljét. Ellenőrizze, hogy látható-e a következő hibaüzenet: "a felügyelt példánynak szüksége van egy egyszerű szolgáltatásnév Azure Active Directory eléréséhez. Kattintson ide egy egyszerű szolgáltatásnév létrehozásához. Ha ezt a hibaüzenetet észlelte, kattintson rá, és kövesse a hiba elhárítása előtt megadott lépésenkénti útmutatót.
+**Áthidaló megoldás**: Ha meg szeretné akadályozni, hogy ez a probléma a frissítési parancsok végrehajtása előtt a FELÜGYELt SQL-példányon történjen, vagy ha már tapasztalta ezt a problémát, lépjen a Azure Portalra, és nyissa meg az SQL felügyelt példány [Active Directory rendszergazdai](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)paneljét. Ellenőrizze, hogy látható-e a következő hibaüzenet: "a felügyelt példánynak szüksége van egy egyszerű szolgáltatásnév Azure Active Directory eléréséhez. Kattintson ide egy egyszerű szolgáltatásnév létrehozásához. Ha ezt a hibaüzenetet észlelte, kattintson rá, és kövesse a hiba elhárítása előtt megadott lépésenkénti útmutatót.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet
 

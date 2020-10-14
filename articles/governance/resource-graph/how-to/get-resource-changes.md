@@ -1,14 +1,14 @@
 ---
 title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056567"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057569"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -279,7 +279,7 @@ A válasz a következőhöz hasonlóan néz ki:
 }
 ```
 
-a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép készítésének időpontját és a tulajdonságokat. A módosítás néhány ponton történt a pillanatképek között. A fenti példában látható, hogy a módosított tulajdonság **supportsHttpsTrafficOnly**volt.
+a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép készítésének időpontját és a tulajdonságokat. A módosítás néhány ponton történt a pillanatképek között. Az előző példát megtekintve láthatjuk, hogy a módosított tulajdonság **supportsHttpsTrafficOnly**volt.
 
 Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043415"
+ms.locfileid: "92058046"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Elosztott tranzakciók felhőalapú adatbázisok között (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -145,14 +145,14 @@ A következő példa Transact-SQL-kód az elosztott tranzakció megkezdése az [
     -- Configure the Linked Server
     -- Add one Azure SQL Managed Instance as Linked Server
     EXEC sp_addlinkedserver
-        @server='managedinstance02', -- Linked server name
+        @server='RemoteServer', -- Linked server name
         @srvproduct='',
         @provider='sqlncli', -- SQL Server Native Client
-        @datasrc='sql-managed-instance-02.48ea8fd5ac90.database.windows.net' -- Managed Instance endpoint
+        @datasrc='managed-instance-server.46e7afd5bc81.database.windows.net' -- Managed Instance endpoint
 
     -- Add credentials and options to this Linked Server
     EXEC sp_addlinkedsrvlogin
-        @rmtsrvname = 'managedinstance02', -- Linked server name
+        @rmtsrvname = 'RemoteServer', -- Linked server name
         @useself = 'false',
         @rmtuser = '<login_name>',         -- login
         @rmtpassword = '<secure_password>' -- password
@@ -244,7 +244,7 @@ Az alábbi PowerShell-parancsmagok segítségével kezelheti a többkiszolgáló
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Több kiszolgáló közötti tranzakciók a felügyelt Azure SQL-példányokhoz
 
-Az elosztott tranzakciók az Azure SQL felügyelt példányain különböző kiszolgálókon támogatottak. Ha a tranzakciók határokon átnyúló felügyelt példányokat használ, a résztvevő példányokat először kölcsönös biztonsági és kommunikációs kapcsolatba kell bevinni. Ezt a [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups)beállításával teheti meg, amely Azure Portal végezhető el.
+Az elosztott tranzakciók az Azure SQL felügyelt példányain különböző kiszolgálókon támogatottak. Ha a tranzakciók határokon átnyúló felügyelt példányokat használ, a résztvevő példányokat először kölcsönös biztonsági és kommunikációs kapcsolatba kell bevinni. Ezt egy [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups)létrehozásával teheti meg, amely Azure Portal végezhető el. Ha a felügyelt példányok nem ugyanazon a virtuális hálózaton vannak, akkor a [virtuális hálózatokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) is be kell állítani, és a hálózati biztonsági csoport bejövő és kimenő szabályainak engedélyeznie kell a 5024 és a 11000-12000 portot minden résztvevő virtuális hálózaton.
 
   ![Kiszolgálói megbízhatósági csoportok az Azure Portalon][3]
 

@@ -1,18 +1,18 @@
 ---
 title: Az Azure-erőforrások áttekintése
 description: Ismerje meg, hogyan használhatja az erőforrás-diagram lekérdezési nyelvét, és hogyan derítheti fel, hogyan kapcsolódnak egymáshoz.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056584"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056242"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
-Az Azure Resource Graph lehetővé teszi az Azure-erőforrások gyors és méretezhető feltárását és felderítését. A gyors reagáláshoz nagyszerű lehetőség a környezet megismerésére és az Azure-erőforrások készítésére szolgáló tulajdonságokkal kapcsolatos információk megtervezésére.
+Az Azure Resource Graph lehetővé teszi az Azure-erőforrások gyors és méretezhető feltárását és felderítését. Gyors válaszokra tervezve, nagyszerű módszer a környezet megismerésére és az Azure-erőforrásokkal kapcsolatos tulajdonságaira is.
 
 ## <a name="explore-virtual-machines"></a>A virtuális gépek megismerése
 
@@ -104,7 +104,7 @@ A JSON-eredmények a következő példához hasonló módon vannak strukturálva
 ]
 ```
 
-A tulajdonságok további információkat közölnek a virtuális gépi erőforrásról, a SKU, az operációs rendszer, a lemezek, a címkék és az erőforráscsoport, valamint az előfizetés tagjaként.
+A tulajdonságok további információkat is közölnek a virtuális gép erőforrásával kapcsolatban. Ezek a tulajdonságok többek között a következők: operációs rendszer, lemezek, címkék és az erőforráscsoport és az előfizetés, amely a tagja.
 
 ### <a name="virtual-machines-by-location"></a>Virtuális gépek hely szerint
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Prémium szintű felügyelt lemezekhez csatlakoztatott virtuális gépek
 
-Ha az ilyen **Standard_B2s** virtuális gépekhez csatolt prémium szintű felügyelt lemezek részleteit szeretnénk beszerezni, kiterjesztjük a lekérdezést, hogy megadja nekünk a felügyelt lemezek erőforrás-azonosítóját.
+A **Standard_B2s** virtuális gépekhez csatolt prémium szintű felügyelt lemezek részleteinek beszerzéséhez kiterjesztjük a lekérdezést, hogy visszaállítsa a felügyelt lemezek erőforrás-azonosítóját.
 
 ```kusto
 Resources

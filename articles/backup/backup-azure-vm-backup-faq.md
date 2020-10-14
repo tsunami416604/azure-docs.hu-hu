@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370827"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056718"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure-beli virtuális gépek [Azure Backup](./backup-overview.md) s
 
 Virtuális gép létrehozásakor engedélyezheti a biztonsági mentést a [támogatott operációs rendszereket](backup-support-matrix-iaas.md#supported-backup-actions)futtató virtuális gépeken.
 
-### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Miért érdemes a kezdeti biztonsági mentést készíteni a befejezéshez?
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Miért tart sokáig a kezdeti biztonsági mentés elvégzése?
 
 A kezdeti biztonsági mentés mindig teljes biztonsági mentés, és az adatok méretétől és a biztonsági mentés feldolgozásának módjától függ. <br>
 A biztonsági mentési teljesítmény javítása érdekében tekintse meg a [biztonsági mentéssel kapcsolatos ajánlott eljárásokat](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices). [Biztonsági mentési szempontok](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) és [biztonsági mentési teljesítmény](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
@@ -79,7 +79,7 @@ Távolítsa el a zárolást, és törölje a visszaállítási pont gyűjtemény
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Támogatja a Azure Backup a standard SSD által felügyelt lemezeket?
 
-Igen, Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
+Igen, Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Tud biztonsági másolatot készíteni egy virtuális gépről írásgyorsító (WA)-kompatibilis lemezzel?
 
@@ -161,7 +161,7 @@ Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a l
 
 Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg ezt a [cikket](./backup-azure-arm-restore-vms.md#post-restore-steps)
 
-### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Miért tart hosszú ideig a visszaállítási művelet?
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Miért tart sokáig a visszaállítási művelet végrehajtása?
 
 A teljes visszaállítási idő a másodpercenkénti bemeneti/kimeneti műveletektől (IOPS) és a Storage-fiók átviteli sebességtől függ. A teljes visszaállítási idő hatással lehet, ha a célként megadott Storage-fiók betöltődik más alkalmazás-olvasási és írási műveletekkel. A visszaállítási művelet javításához válasszon olyan Storage-fiókot, amely nincs betöltve más alkalmazásadatok használatával.
 

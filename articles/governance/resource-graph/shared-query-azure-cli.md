@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: megosztott lekérdezés létrehozása az Azure CLI-vel'
 description: Ebben a rövid útmutatóban az Azure CLI-hez készült Resource Graph-bővítmény engedélyezéséhez és egy megosztott lekérdezés létrehozásához szükséges lépéseket követheti.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667520"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057195"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Gyors útmutató: erőforrás-gráf megosztott lekérdezés létrehozása az Azure CLI használatával
 
@@ -84,7 +84,7 @@ Ha az Azure CLI-bővítmény hozzá van adva a környezethez, itt az ideje, hogy
    ```
 
 1. Futtassa a megosztott lekérdezést az Azure CLI-ben az az `{{shared-query-uri}}` [gráf Query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) parancs szintaxisával.
-   Először másolja a `id` mezőt a `show` fenti parancs eredményéről. Cserélje le a `shared-query-uri` példában szereplő szöveget a mező értékére `id` , de hagyja meg a környező `{{` és a `}}` karaktereket.
+   Először másolja a `id` mezőt az előző parancs eredményéről `show` . Cserélje le a `shared-query-uri` példában szereplő szöveget a mező értékére `id` , de hagyja meg a környező `{{` és a `}}` karaktereket.
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query
@@ -117,7 +117,7 @@ az group delete --resource-group 'resource-graph-queries' --yes
 az extension remove -n resource-graph
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzáadta a Resource Graph-bővítményt az Azure CLI-környezethez, és létrehozott egy megosztott lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

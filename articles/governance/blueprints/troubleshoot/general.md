@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani a tervezetek létrehozásával, hozzárendelésével és eltávolításával kapcsolatos problémákat, például a szabályzat megsértését és a terv paramétereinek funkcióit.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651332"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058284"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
 
@@ -59,7 +59,7 @@ Egy függvényt (például) használó tervrajzi paraméter átadása az `[resou
 
 #### <a name="resolution"></a>Feloldás
 
-Egy függvény paraméterként való átadásához escape a teljes karakterláncot `[` oly módon, hogy a terv paramétere hasonlítson `[[resourceGroup().tags.myTag]` . Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
+Egy függvény paraméterként való átadásához escape a teljes karakterláncot `[` oly módon, hogy a terv paramétere hasonlítson `[[resourceGroup().tags.myTag]` . Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok szolgáltatás ezután elhelyezi a függvényt az összetevőn, amely lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Törlési hibák
 
@@ -75,7 +75,7 @@ A tervrajz-hozzárendelések nem terminálos állapotba kerülhetnek, ha töröl
 
 #### <a name="resolution"></a>Feloldás
 
-A nem terminálos állapotú terv-hozzárendelések egy _6 órás_ időkorlát után automatikusan **nem** lesznek megjelölve. Miután az időtúllépés kiigazította a terv-hozzárendelés állapotát, a törlés újrapróbálkozhat.
+A nem terminálos állapotú terv-hozzárendelések a _hat órás_ időkorlát után automatikusan **nem** lesznek megjelölve. Miután az időtúllépés kiigazította a terv-hozzárendelés állapotát, a törlés újrapróbálkozhat.
 
 ## <a name="next-steps"></a>Következő lépések
 

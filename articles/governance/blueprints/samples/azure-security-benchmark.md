@@ -1,14 +1,14 @@
 ---
 title: Azure-biztonsági teljesítményteszt tervmintájának áttekintése
 description: Az Azure-biztonsági teljesítményteszt tervmintájának áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651897"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057586"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Az Azure Security benchmark tervének mintája
 
@@ -46,7 +46,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. Válassza az oldal tetején lévő _Összetevők_ lapot, vagy az oldal alján lévő **Következő: Összetevők** lehetőséget.
 
-1. Tekintse át a tervmintát alkotó összetevők listáját. Számos összetevőnek olyan paraméterei vannak, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor végzett a tervminta áttekintésével.
+1. Tekintse át a terv minta részét képező összetevők listáját. Számos összetevőnek olyan paraméterei vannak, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor végzett a tervminta áttekintésével.
 
 ### <a name="publish-the-sample-copy"></a>Ugyanazon másolat közzététele
 
@@ -114,7 +114,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Azure Security teljesítményteszt-javaslatok naplózása és konkrét támogató virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Legújabb Windows Python-verzió|A App Services legújabb támogatott Python-verziója|
 |Azure Security teljesítményteszt-javaslatok naplózása és konkrét támogató virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Legújabb Linux Python-verzió|A App Services legújabb támogatott Python-verziója|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További cikkek a tervekről és a használatukról:
 
