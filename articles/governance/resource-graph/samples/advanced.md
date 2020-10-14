@@ -1,14 +1,14 @@
 ---
 title: Összetett lekérdezési példák
 description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve az oszlopok használatát, a használt címkék felsorolását és az erőforrások reguláris kifejezésekkel való egyeztetését.
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425294"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057144"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
 
@@ -34,7 +34,7 @@ A következő speciális lekérdezéseken vezetjük végig:
 - [A vendég konfiguráció-hozzárendelési jelentések részleteinek lekérdezése](#query-gcreports)
 - [Az összes ok megkeresése, ha a gép nem felel meg a vendég konfigurációs hozzárendeléseinek](#query-gcmachinedetails)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -625,9 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>A vendég konfiguráció-hozzárendelési jelentések részleteinek lekérdezése
 
-Jelentés megjelenítése a [vendég konfigurációjának hozzárendelési okának](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) részleteiről.
-Az alábbi példában a lekérdezés csak azokat az eredményeket adja vissza, amelyekben a vendég hozzárendelés neve, `installed_application_linux` a kimenet pedig az `Python` összes olyan Linux-gép listáját tartalmazza, ahol a **Python**nevet tartalmazó csomag telepítve van.
-Ha egy adott hozzárendeléshez tartozó összes gép megfelelőségét szeretné lekérdezni, távolítsa el a 2 `where` . záradékot.
+Jelentés megjelenítése a [vendég konfigurációjának hozzárendelési okának](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) részleteiről. A következő példában a lekérdezés csak azokat az eredményeket adja vissza, amelyekben a vendég-hozzárendelés neve, `installed_application_linux` a kimenet pedig az `Python` összes olyan linuxos gépet listázó karakterláncot tartalmazza, amelyben a **Python**nevet tartalmazó csomag telepítve van. Ha egy adott hozzárendeléshez tartozó összes gép megfelelőségét szeretné lekérdezni, távolítsa el a második `where` záradékot.
 
 ```kusto
 GuestConfigurationResources
@@ -666,8 +664,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>Az összes ok megkeresése, ha a gép nem felel meg a vendég konfigurációs hozzárendeléseinek
 
-Egy adott gép összes [vendég konfiguráció-hozzárendelési okainak](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) megjelenítése.
-Távolítsa el az első `where` záradékot, hogy olyan naplózást is tartalmazzon, amelyben a gép megfelel.
+Egy adott gép összes [vendég konfiguráció-hozzárendelési okainak](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) megjelenítése. Távolítsa el az első `where` záradékot, hogy olyan naplózást is tartalmazzon, amelyben a gép megfelel.
 
 ```kusto
 GuestConfigurationResources
@@ -703,7 +700,7 @@ Search-AzGraph -Query "GuestConfigurationResources | where properties.compliance
 
 - Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20extend%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%20%7C%20where%20machine%20%3D%3D%20'MACHINENAME'%20%7C%20project%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20name%2C%20machine%2C%20resourceGroup%2C%20subscriptionId" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezések](starter.md)mintáit.
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).

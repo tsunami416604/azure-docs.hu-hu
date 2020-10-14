@@ -1,6 +1,6 @@
 ---
 title: A tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és a SQL Server között
-description: Egy oktatóanyag, amely a közzétevő felügyelt példánya, a terjesztő felügyelt példánya, valamint egy Azure-beli virtuális gépen SQL Server előfizető közötti replikációt, valamint a szükséges hálózati összetevőket, például a magánhálózati DNS-zónát és a VPN-társítást konfigurálja.
+description: Egy oktatóanyag, amely a közzétevő felügyelt példánya, a terjesztő felügyelt példánya, valamint egy Azure-beli virtuális gépen SQL Server előfizető közötti replikációt, valamint a szükséges hálózati összetevőket, például a magánhálózati DNS-zónát és a VNet-társítást konfigurálja.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283190"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058556"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik 
 
 A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -38,7 +38,7 @@ Ez az oktatóanyag egy tapasztalt közönség számára készült, és feltétel
 
 
 > [!NOTE]
-> Ez a cikk a [tranzakciós replikáció](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
+> Ez a cikk a [tranzakciós replikáció](/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,10 +48,10 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 - A két felügyelt példány ugyanazon a virtuális hálózaton belüli üzembe helyezésének élménye.
 - Egy SQL Server előfizető, akár helyszíni, akár egy Azure-beli virtuális gépen. Ez az oktatóanyag egy Azure-beli virtuális gépet használ.  
 - [SQL Server Management Studio (SSMS) 18,0 vagy újabb](/sql/ssms/download-sql-server-management-studio-ssms).
-- A [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)legújabb verziója.
+- A [Azure PowerShell](/powershell/azure/install-az-ps)legújabb verziója.
 - Az 445-es és a 1433-es portok lehetővé teszik az SQL-forgalom használatát az Azure tűzfalon és a Windows tűzfalon is.
 
-## <a name="1---create-the-resource-group"></a>1 – az erőforráscsoport létrehozása
+## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
 Hozzon létre egy új erőforráscsoportot a következő PowerShell-kódrészlet használatával:
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2 – két felügyelt példány létrehozása
+## <a name="create-two-managed-instances"></a>Két felügyelt példány létrehozása
 
 Hozzon létre két felügyelt példányt az új erőforráscsoporthoz a [Azure Portal](https://portal.azure.com)használatával.
 
@@ -76,9 +76,9 @@ Hozzon létre két felügyelt példányt az új erőforráscsoporthoz a [Azure P
 A felügyelt példányok létrehozásával kapcsolatos további információkért lásd: [felügyelt példány létrehozása a portálon](instance-create-quickstart.md).
 
   > [!NOTE]
-  > Az egyszerűség kedvéért, és mivel ez a leggyakoribb konfiguráció, ez az oktatóanyag azt javasolja, hogy a terjesztő felügyelt példányát a közzétevővel megegyező virtuális hálózaton helyezze el. Azonban lehetséges, hogy a terjesztőt külön virtuális hálózatban hozza létre. Ehhez konfigurálnia kell a VPN-kapcsolatot a közzétevő és a terjesztő virtuális hálózatai között, majd konfigurálnia kell a VPN-társítást a terjesztő és az előfizető virtuális hálózatai között.
+  > Az egyszerűség kedvéért, és mivel ez a leggyakoribb konfiguráció, ez az oktatóanyag azt javasolja, hogy a terjesztő felügyelt példányát a közzétevővel megegyező virtuális hálózaton helyezze el. Azonban lehetséges, hogy a terjesztőt külön virtuális hálózatban hozza létre. Ehhez konfigurálnia kell a VNet-társítást a közzétevő és a terjesztő virtuális hálózatai között, majd konfigurálnia kell a VNet-társítást a terjesztő és az előfizető virtuális hálózatai között.
 
-## <a name="3---create-a-sql-server-vm"></a>3 – SQL Server VM létrehozása
+## <a name="create-a-sql-server-vm"></a>SQL Server VM létrehozása
 
 Hozzon létre egy SQL Server virtuális gépet a [Azure Portal](https://portal.azure.com)használatával. A SQL Server virtuális gépnek a következő tulajdonságokkal kell rendelkeznie:
 
@@ -89,9 +89,9 @@ Hozzon létre egy SQL Server virtuális gépet a [Azure Portal](https://portal.a
 
 SQL Server VM Azure-beli üzembe helyezésével kapcsolatos további információkért lásd: gyors útmutató [: SQL Server VM létrehozása](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
-## <a name="4---configure-vpn-peering"></a>4 – VPN-társak konfigurálása
+## <a name="configure-vnet-peering"></a>VNet-társítás konfigurálása
 
-Konfigurálja a VPN-társítást úgy, hogy lehetővé tegye a két felügyelt példány virtuális hálózata és a SQL Server virtuális hálózat közötti kommunikációt. Ehhez használja ezt a PowerShell-kódrészletet:
+Konfigurálja a VNet-társítást a két felügyelt példány virtuális hálózata és a SQL Server virtuális hálózata közötti kommunikáció engedélyezéséhez. Ehhez használja ezt a PowerShell-kódrészletet:
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,17 +136,17 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-A VPN-társítás létrehozása után tesztelje a kapcsolatot SQL Server Management Studio (SSMS) SQL Server és a felügyelt példányokhoz való csatlakozás elindításával. A felügyelt példányok SSMS használatával történő csatlakoztatásával kapcsolatos további információkért lásd: a [SSMS használata az SQL felügyelt példányhoz való csatlakozáshoz](point-to-site-p2s-configure.md#connect-with-ssms).
+A VNet-társítás létrehozása után tesztelje a kapcsolatot SQL Server Management Studio (SSMS) SQL Server és a felügyelt példányokhoz való csatlakozás elindításával. A felügyelt példányok SSMS használatával történő csatlakoztatásával kapcsolatos további információkért lásd: a [SSMS használata az SQL felügyelt példányhoz való csatlakozáshoz](point-to-site-p2s-configure.md#connect-with-ssms).
 
 ![A felügyelt példányok kapcsolatának tesztelése](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5 – privát DNS-zóna létrehozása
+## <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
 A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt példányok és a SQL Server között.
 
 ### <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 1. Az új Azure-erőforrás létrehozásához válassza **az erőforrás létrehozása** lehetőséget.
 1. Keressen rá az `private dns zone` Azure Marketplace-en.
 1. Válassza ki a Microsoft által közzétett **saját DNS zóna** erőforrást, majd válassza a **Létrehozás** lehetőséget a DNS-zóna létrehozásához.
@@ -180,7 +180,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 1. A virtuális hálózat összekapcsolásához kattintson **az OK gombra** .
 1. Ismételje meg ezeket a lépéseket, ha hozzá szeretne adni egy hivatkozást az előfizetői virtuális hálózathoz, amelynek neve például: `Sub-link` .
 
-## <a name="6---create-an-azure-storage-account"></a>6 – Azure Storage-fiók létrehozása
+## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
 [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül.
 
@@ -194,7 +194,7 @@ Például: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dY
 
 További információ: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
 
-## <a name="7---create-a-database"></a>7 – adatbázis létrehozása
+## <a name="create-a-database"></a>Adatbázis létrehozása
 
 Hozzon létre egy új adatbázist a közzétevő felügyelt példányán. Ehhez kövesse az alábbi lépéseket:
 
@@ -242,7 +242,7 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8 – eloszlás konfigurálása
+## <a name="configure-distribution"></a>Eloszlás konfigurálása
 
 Miután létrejött a kapcsolat, és van egy mintaadatbázis, a felügyelt példányon is konfigurálhatja a terjesztést `sql-mi-distributor` . Ehhez kövesse az alábbi lépéseket:
 
@@ -277,7 +277,7 @@ Miután létrejött a kapcsolat, és van egy mintaadatbázis, a felügyelt péld
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9 – a kiadvány létrehozása
+## <a name="create-the-publication"></a>A kiadvány létrehozása
 
 A terjesztés konfigurálása után már létrehozhatja a kiadványt. Ehhez kövesse az alábbi lépéseket:
 
@@ -298,7 +298,7 @@ A terjesztés konfigurálása után már létrehozhatja a kiadványt. Ehhez köv
 1. A **varázsló befejezése** lapon nevezze el a kiadványt, `ReplTest` és kattintson a **tovább** gombra a kiadvány létrehozásához.
 1. Miután létrehozta a kiadványt, frissítse a **replikálás** csomópontot a **Object Explorerban** , és bontsa ki a **helyi kiadványokat** az új kiadvány megjelenítéséhez.
 
-## <a name="10---create-the-subscription"></a>10 – előfizetés létrehozása
+## <a name="create-the-subscription"></a>Előfizetés létrehozása
 
 A kiadvány létrehozása után létrehozhatja az előfizetést. Ehhez kövesse az alábbi lépéseket:
 
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11 – a replikáció tesztelése
+## <a name="test-replication"></a>Replikáció tesztelése
 
 Miután konfigurálta a replikálást, tesztelheti úgy, hogy új elemeket szúr be a közzétevőbe, és figyeli a módosításokat az előfizetőnek.
 
@@ -393,7 +393,7 @@ Lehetséges megoldások:
 - Erősítse meg, hogy a DNS-nevet használták az előfizető létrehozásakor.
 - Ellenőrizze, hogy a virtuális hálózatok megfelelően vannak-e csatolva a magánhálózati DNS-zónában.
 - Ellenőrizze, hogy a rekord megfelelően van-e konfigurálva.
-- Ellenőrizze, hogy a VPN-társítás megfelelően van-e konfigurálva.
+- Ellenőrizze, hogy a VNet-társítás megfelelően van-e konfigurálva.
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Nincsenek előfizethető kiadványok
 
@@ -403,7 +403,7 @@ Amikor új előfizetést ad hozzá az **új előfizetés** varázslóval, a **ki
 
 Habár lehetséges, hogy ez a hibaüzenet pontos, és valójában nem érhető el kiadványok az Ön által csatlakoztatott közzétevőn, vagy ha nem rendelkezik megfelelő engedélyekkel, ezt a hibát a SQL Server Management Studio egy régebbi verziója is okozhatja. Próbálja meg frissíteni a SQL Server Management Studio 18,0-es vagy újabb verziójára, hogy kizárja a problémát kiváltó okként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020388"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057501"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -26,7 +26,7 @@ A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezet�
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott operációs rendszerek](../platform/agents-overview.md#supported-operating-systems) és [hálózati tűzfal konfigurálása](../platform/log-analytics-agent.md#network-requirements)című témakört.
  
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -62,13 +62,11 @@ A Linuxhoz készült Log Analytics-ügynök telepítése előtt szüksége lesz 
 
 2. Log Analytics munkaterületek listájában válassza ki a korábban létrehozott munkaterületet. (Lehet, hogy elnevezte a **DefaultLAWorkspace**.)
 
-3. Válassza a **Speciális beállítások**lehetőséget:
-
-    ![A Azure Portal Log Analytics speciális beállítások menüjében](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. **Ügynökök felügyeletének**kiválasztása:
  
-4. Válassza ki a **Csatlakoztatott források**, majd a **Linuxos kiszolgálók** elemet.
+4. Ezután válassza a **Linux-kiszolgálók**lehetőséget.
 
-5. A **Munkaterület-azonosító** és az **Elsődleges kulcs** jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
+5. A **munkaterület-azonosító** és az **elsődleges kulcs**jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
 
 ## <a name="install-the-agent-for-linux"></a>A Linuxhoz készült ügynök telepítése
 
@@ -161,7 +159,7 @@ A munkaterület törléséhez válassza ki a korábban létrehozott Log Analytic
 
 ![Log Analytics-erőforrás törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már gyűjti a működési és teljesítményadatokat a linuxos számítógépéről, könnyen nekiláthat az *ingyenesen* gyűjtött adatok felfedezésének és elemzésének, és reagálhat a kapott eredményekre.  
 

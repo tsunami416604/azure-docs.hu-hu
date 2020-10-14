@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075273"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055851"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
@@ -23,7 +23,7 @@ Az Azure távoli renderelés a következő két REST API-t biztosítja:
 Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) a *parancsfájlokat* tartalmazó mappában található minta parancsfájlokat tartalmaz a szolgáltatás REST API-kkal való interakcióhoz. Ez a cikk a használatuk leírását ismerteti.
 
 > [!CAUTION]
-Ha a REST API függvények hívása túl gyakran fordul elő, a kiszolgáló leszabályozását és a hibák visszaadását eredményezi. Ebben az esetben a HTTP-hibakód azonosítója 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+> Ha a REST API függvények hívása túl gyakran fordul elő, a kiszolgáló leszabályozását és a hibák visszaadását eredményezi. Ebben az esetben a HTTP-hibakód azonosítója 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -273,7 +273,7 @@ A konverzió állapotát a következő paranccsal kérheti le:
 
 `-Poll`A paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
 - [Gyors útmutató: modell átalakítása renderelésre](../quickstarts/convert-model.md)

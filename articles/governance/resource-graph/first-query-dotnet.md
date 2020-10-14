@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: az első .NET Core-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a .NET Core-hoz készült Resource Graph NuGet-csomagokat, és futtathatja első lekérdezését.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f825b22712956c0b94531ddb163301167f30f00
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89005870"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057467"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a .NET Core használatával
 
@@ -135,7 +135,7 @@ Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetéb
 
 Ha el szeretné távolítani a .NET Core Console alkalmazást és a telepített csomagokat, ezt a Project mappa törlésével teheti meg `argQuery` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy .NET Core Console-alkalmazást a szükséges Resource Graph-csomagokkal, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

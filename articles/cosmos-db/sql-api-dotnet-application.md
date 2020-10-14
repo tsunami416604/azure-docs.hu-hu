@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051294"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058165"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -47,7 +47,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -214,19 +214,19 @@ A lépések elvégzése után zárjunk be minden *cshtml* -dokumentumot a Visual
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Szolgáltatások deklarálása és inicializálása
 
-Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban ezt a logikát egy nevű osztályba `CosmosDBService` és egy nevű illesztőfelületbe ágyazjuk be `ICosmosDBService` . Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
+Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban ezt a logikát egy nevű osztályba `CosmosDbService` és egy nevű illesztőfelületbe ágyazjuk be `ICosmosDbService` . Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és **Add**válassza az  >  **új mappa**hozzáadása lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
 
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add**válassza az  >  **osztály**hozzáadása elemet. Nevezze el az új osztály *CosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add**válassza az  >  **osztály**hozzáadása elemet. Nevezze el az új osztály *CosmosDbService* , és válassza a **Hozzáadás**lehetőséget.
 
-1. Cserélje le a *CosmosDBService.cs* tartalmát a következő kódra:
+1. Cserélje le a *CosmosDbService.cs* tartalmát a következő kódra:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add**válassza az  >  **osztály**hozzáadása elemet. Nevezze el az új osztály *ICosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add**válassza az  >  **osztály**hozzáadása elemet. Nevezze el az új osztály *ICosmosDbService* , és válassza a **Hozzáadás**lehetőséget.
 
-1. Adja hozzá a következő kódot a *ICosmosDBService* osztályhoz:
+1. Adja hozzá a következő kódot a *ICosmosDbService* osztályhoz:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -328,7 +328,7 @@ Egy másik lehetőség egy új profil létrehozása:
 
 Néhány másodpercen belül a Visual Studio közzéteszi a webalkalmazást, és elindít egy böngészőt, amelyen megtekintheti az Azure-ban futó projektet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy ASP.NET Core MVC-webalkalmazást. Az alkalmazás elérheti Azure Cosmos DB tárolt adatait. Most már folytathatja ezeket az erőforrásokat:
 

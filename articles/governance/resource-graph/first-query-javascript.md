@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: az első JavaScript-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépéseket követve engedélyezheti az erőforrás-gráf függvénytárát a JavaScripthez, és futtathatja az első lekérdezést.
-ms.date: 06/23/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91251966"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057416"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása JavaScript használatával
 
@@ -23,11 +23,11 @@ A folyamat végén hozzáadta a kódtárakat a JavaScript-telepítéshez, és fu
 
 - **Node.js**: a 12-es vagy újabb verziójú [Node.js](https://nodejs.org/) megadása kötelező.
 
-## <a name="application-setup"></a>Alkalmazásbeállítás
+## <a name="application-initialization"></a>Alkalmazásinicializálás
 
-Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graphot, a környezetet be kell állítani. Ez a beállítás bárhol használható a JavaScript használatával, beleértve [a bash használatát a Windows 10 rendszeren](/windows/wsl/install-win10).
+Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graphot, konfigurálni kell a környezetet. Ez a beállítás bárhol használható a JavaScript használatával, beleértve [a bash használatát a Windows 10 rendszeren](/windows/wsl/install-win10).
 
-1. Hozzon létre egy új Node.js projektet a következő parancs futtatásával.
+1. Inicializáljon egy új Node.js projektet a következő parancs futtatásával.
 
    ```bash
    npm init -y
@@ -126,7 +126,7 @@ Ha el szeretné távolítani a telepített kódtárakat az alkalmazásból, futt
 npm uninstall @azure/arm-resourcegraph @azure/ms-rest-nodeauth yargs
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban felvette az erőforrás-gráf kódtárait a JavaScript-környezetbe, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

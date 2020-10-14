@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: az első portál lekérdezése'
 description: Ebben a rövid útmutatóban a következő lépésekkel futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056380"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057382"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
@@ -51,7 +51,7 @@ A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben h
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása az erőforrás-gráf lekérdezésből
 
-A fenti utolsó lekérdezés futtatása után a **diagramok** lapon megjelenik egy üzenet arról, hogy "az eredményhalmaz nem kompatibilis a tortadiagram vizualizációval." A lista eredményeit tartalmazó lekérdezések nem hozhatók létre diagramba, de az erőforrásokat tartalmazó lekérdezések is megadhatók. Hozzon létre egy vizualizációt az erőforrás-gráf lekérdezésből, és használja a [minta lekérdezési számú virtuális gépet az operációs rendszer típusa alapján](./samples/starter.md#count-os).
+Az előző lekérdezés futtatása után, ha a **diagramok** lapot választja, megjelenik egy üzenet arról, hogy "az eredményhalmaz nem kompatibilis a tortadiagram vizualizációval." A lista eredményeit tartalmazó lekérdezések nem hozhatók létre diagramba, de az erőforrásokat tartalmazó lekérdezések is megadhatók. Hozzon létre egy vizualizációt az erőforrás-gráf lekérdezésből, és használja a [minta lekérdezési számú virtuális gépet az operációs rendszer típusa alapján](./samples/starter.md#count-os).
 
 1. Az ablak **lekérdezés 1** részében adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
 
@@ -67,7 +67,7 @@ A fenti utolsó lekérdezés futtatása után a **diagramok** lapon megjelenik e
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>A lekérdezés vizualizációjának rögzítése egy irányítópulton
 
-Ha egy olyan lekérdezés eredményeiből áll, amely láthatóvá teheti, az adatvizualizáció az egyik irányítópultra rögzíthető. A fenti lekérdezés futtatása után kövesse az alábbi lépéseket:
+Ha egy olyan lekérdezés eredményeiből áll, amely láthatóvá teheti, az adatvizualizáció az egyik irányítópultra rögzíthető. Az előző lekérdezés futtatása után kövesse az alábbi lépéseket:
 
 1. Válassza a **Save (Mentés** ) lehetőséget, és adja meg a "virtuális gépek az operációs rendszer típusa szerint" nevet. Ezután kattintson a **Mentés** gombra a jobb oldali ablaktábla alján.
 
@@ -117,7 +117,7 @@ Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azu
 
 1. Válassza a **Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson **az OK gombra** a megerősítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az Azure Resource Graph Explorer használatával futtatta az első lekérdezést, és megvizsgálta az irányítópulton megjelenő példákat. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

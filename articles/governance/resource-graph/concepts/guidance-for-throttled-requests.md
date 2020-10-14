@@ -1,15 +1,15 @@
 ---
 title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan csoportosíthat, lépcsőzetesen, oldalszámozást és lekérdezéseket végezhet párhuzamosan, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006006"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056174"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -132,7 +132,7 @@ A szabályozás érvénybe léptetése miatt a lekérdezéseket érdemes lépcs�
   |---------------------|-----|------|-------|-------|
   | Időtartam (mp) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Az alábbi példa a szabályozási fejlécek betartását mutatja be az Azure Resource Graph lekérdezése során:
+Íme egy példa arra, hogy miként kell betartani a szabályozás fejléceit az Azure Resource Graph lekérdezése során:
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Lekérdezés párhuzamosan
 
-Annak ellenére, hogy a csoportosítás ajánlott a párhuzamos-on keresztül, vannak olyan időpontok, amikor a lekérdezések nem könnyen csoportosíthatók. Ezekben az esetekben érdemes lehet lekérdezni az Azure Resource Graphot több lekérdezés párhuzamos módon történő elküldésével. Az alábbi példa bemutatja, hogyan _leállítási_ az ilyen helyzetekben a fejlécek szabályozása:
+Annak ellenére, hogy a csoportosítás ajánlott a párhuzamos-on keresztül, vannak olyan időpontok, amikor a lekérdezések nem könnyen csoportosíthatók. Ezekben az esetekben érdemes lehet lekérdezni az Azure Resource Graphot több lekérdezés párhuzamos módon történő elküldésével. Íme egy példa arra, hogyan _leállítási_ az ilyen helyzetekben a fejlécek szabályozása:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 
 
 - Azure CLI/Azure PowerShell
 
-  Az Azure CLI vagy a Azure PowerShell használatakor a rendszer automatikusan lekérdezi az Azure Resource Graph lekérdezéseit, hogy a legtöbb 5000 bejegyzést beolvassa. A lekérdezés eredménye a bejegyzések összesített listáját jeleníti meg az összes többoldalas hívásból. Ebben az esetben a lekérdezési eredmény bejegyzéseinek számától függően egy többoldalas lekérdezés egynél több lekérdezési kvótát is használhat. Az alábbi példában például a lekérdezés egyetlen futtatása akár öt lekérdezési kvótát is felhasználhat:
+  Az Azure CLI vagy a Azure PowerShell használatakor a rendszer automatikusan lekérdezi az Azure Resource Graph lekérdezéseit, hogy a legtöbb 5000 bejegyzést beolvassa. A lekérdezés eredménye a bejegyzések összesített listáját jeleníti meg az összes többoldalas hívásból. Ebben az esetben a lekérdezési eredmény bejegyzéseinek számától függően egy többoldalas lekérdezés egynél több lekérdezési kvótát is használhat. Például az alábbi példákban a lekérdezés egyetlen futtatása akár öt lekérdezési kvótát is felhasználhat:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
