@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 9b712c1b2e8ac33ec189542bf6f60929ac59858d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e03f539f000b55ae00d90afa769ca9c1c30dc1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420557"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048287"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Oktatóanyag: S2S VPN-kapcsolatok létrehozása és kezelése a PowerShell-lel
 
@@ -33,7 +33,7 @@ Az alábbi diagram az oktatóanyagban használt topológiát mutatja:
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-## <a name="requirements"></a>Követelmények
+## <a name="prerequisites"></a>Előfeltételek
 
 Fejezze be az első oktatóanyagot: [hozzon létre egy VPN-átjárót Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) a következő erőforrások létrehozásához:
 
@@ -232,7 +232,7 @@ Ha ez a konfiguráció egy prototípus-, tesztelési vagy próba-koncepciós tel
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az S2S VPN-kapcsolatok létrehozásának és kezelésének módjával ismerkedett meg, például:
 
@@ -242,8 +242,7 @@ Ebben az oktatóanyagban az S2S VPN-kapcsolatok létrehozásának és kezelésé
 > * További VPN-kapcsolatok hozzáadása
 > * VPN-kapcsolat törlése
 
-Folytassa a következő oktatóanyaggal, amelyben a helyek közötti (S2S), a virtuális hálózatok közötti (VNet-to-VNet) és a pont–hely (P2S) kapcsolatokkal ismerkedhet meg.
+Ezután hozzáadhat egy P2S-kapcsolatokat:
 
 > [!div class="nextstepaction"]
-> * [VNet-VNet kapcsolatok létrehozása](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Pont–hely kapcsolatok létrehozása](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

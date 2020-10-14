@@ -1,6 +1,6 @@
 ---
-title: Belső terheléselosztó létrehozása Azure Resource Manager sablon használatával (ARM-sablon)
-description: Megtudhatja, hogyan hozhat létre belső Azure Load balancert Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Rövid útmutató: belső terheléselosztó létrehozása sablon használatával'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy belső Azure Load balancert egy Azure Resource Manager sablon (ARM-sablon) használatával.
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 287afc51aa15ed4cadba7e2d6cd389e4869d7d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90532855"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047760"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
 
@@ -81,7 +81,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

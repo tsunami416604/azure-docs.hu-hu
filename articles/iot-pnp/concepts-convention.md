@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91573837"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045482"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
@@ -132,7 +132,7 @@ Az eszköznek vagy a modulnak meg kell győződnie arról, hogy a tulajdonságot
 
 Ha egy eszköz elindul, az eszköznek külön kell kérnie az eszközt, és ellenőriznie kell az írható tulajdonságok frissítéseit. Ha egy írható tulajdonság verziója az eszköz offline állapotában megnőtt, az eszköznek egy jelentett tulajdonságot kell küldenie, hogy ellenőrizze, hogy a frissítés megérkezett-e.
 
-Ha egy eszköz először indul el, akkor egy jelentett tulajdonság kezdeti értékét küldheti el, ha nem kap kezdeti kívánt tulajdonságot a központból. Ebben az esetben az eszköznek a következőre kell állítania: `av` `1` . Példa:
+Ha egy eszköz először indul el, akkor egy jelentett tulajdonság kezdeti értékét küldheti el, ha nem kap kezdeti kívánt tulajdonságot a központból. Ebben az esetben az eszköznek a következőre kell állítania: `av` `1` . Például:
 
 ```json
 "reported": {
@@ -343,6 +343,6 @@ Egy eszközön vagy modulon több összetevő-illesztőfelület is a következő
 Most, hogy megismerte a IoT Plug and Play konvenciókat, néhány további erőforrást is talál:
 
 - [Digitális Twins-definíciós nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C eszköz SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C eszköz SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [Modell összetevői](./concepts-components.md)

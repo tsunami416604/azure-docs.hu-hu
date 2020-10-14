@@ -3,19 +3,19 @@ title: Adatcsatornák hozzáadása különböző forrásokból a metrikai TANÁC
 titleSuffix: Azure Cognitive Services
 description: különböző adatcsatornák hozzáadása a metrikai tanácsadóhoz
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: aahi
-ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971948"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046910"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 
-| Hitelesítési típusok | Description |
+| Hitelesítési típusok | Leírás |
 | ---------------------|-------------|
 |**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
@@ -43,7 +43,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 |[**Azure Data Explorer (Kusto)**](#kusto) | Alapszintű<br>ManagedIdentity|
 |[**2. generációs Azure Data Lake Storage**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>ManagedIdentity<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br>AzureSQLConnectionString
-|[**Azure-Table Storage**](#table) | Alapszintű | 
+|[**Azure Table Storage**](#table) | Alapszintű | 
 |[**ElasticSearch**](#es) | Alapszintű |
 |[**Http-kérelem**](#http) | Alapszintű | 
 |[**InfluxDB (InfluxQL)**](#influxdb) | Alapszintű |
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure-Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
 
 * **Kapcsolódási karakterlánc**: a kapcsolódási sztringnek az Azure Table Storageból való beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) című témakört.
 

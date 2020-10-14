@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290778"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047641"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -30,7 +30,7 @@ Kifejezetten az Azure Digital Twins esetében ez a következő parancsokra van h
 
 Ez a parancs újbóli futtatásával oldható fel `az login` Cloud shell és a további bejelentkezési lépések végrehajtásával. Ezután futtassa újra a parancsot.
 
-Egy másik megoldás, ha [telepíti az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
+Egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
 
 ### <a name="possible-causes"></a>Lehetséges okok
 
@@ -60,7 +60,7 @@ A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolg
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probléma az interaktív böngésző-hitelesítéssel
 
-Az Azure-beli digitális Twins-alkalmazásokban az ** [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódussal.
+Az Azure-beli digitális Twins-alkalmazásokban az ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódussal.
 
 Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2**.
 

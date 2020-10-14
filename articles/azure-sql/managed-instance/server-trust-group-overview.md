@@ -12,18 +12,18 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
-ms.openlocfilehash: 911d7ffa2b1d313147ca73d0ceb285ea2e84b1f7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6154625f1e943007d0ed4c3341dc1265657f3bfc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979492"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046349"
 ---
-# <a name="use-server-trust-groups-to-setup-and-manage-trust-between-sql-managed-instances"></a>Az SQL felügyelt példányai közötti megbízhatóság beállítása és kezelése kiszolgálói megbízhatósági csoportok használatával
+# <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Az SQL felügyelt példányai közötti megbízhatóság beállítása és kezelése a kiszolgálói megbízhatósági csoportok használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-A kiszolgálói megbízhatósági csoport egy, az Azure SQL felügyelt példányai közötti megbízhatóság kezelésére szolgáló fogalom. Hozzon létre egy csoportot, és adjon hozzá példányokat az IT-tanúsítvány alapú megbízhatósághoz az összes tag között, és ez különböző, több példányra kiterjedő forgatókönyvek esetén is használható. Ha eltávolítja a kiszolgálókat a csoportból, vagy törli a csoportot, a a kiszolgálók közötti bizalmi kapcsolat eltávolításával jár. A kiszolgálói megbízhatósági csoport létrehozásához vagy törléséhez a felhasználónak írási engedéllyel kell rendelkeznie a felügyelt példányon.
-A [kiszolgálói megbízhatósági csoport](https://aka.ms/mi-server-trust-group-arm) olyan Azure Resource Manager objektum, amely az SQL- **megbízhatósági csoport**nevű Azure Portal entitásnak felel meg.
+A kiszolgálói megbízhatósági csoport egy, az Azure SQL felügyelt példányai közötti megbízhatóság kezelésére szolgáló fogalom. Egy csoport létrehozásával tanúsítványalapú megbízhatósági kapcsolat jön létre a tagjai között. Ezt a megbízhatóságot különböző, több példányra kiterjedő forgatókönyvek esetében lehet használni. A kiszolgálók eltávolítása a csoportból vagy a csoport törlése eltávolítja a kiszolgálók közötti bizalmi kapcsolatot. A kiszolgálói megbízhatósági csoport létrehozásához vagy törléséhez a felhasználónak írási engedéllyel kell rendelkeznie a felügyelt példányon.
+A [kiszolgálói megbízhatósági csoport](https://aka.ms/mi-server-trust-group-arm) egy Azure Resource Manager objektum, amely Azure Portal SQL- **megbízhatósági csoportként** van megjelölve.
 
 > [!NOTE]
 > A kiszolgálói megbízhatósági csoport nyilvános előzetes verzióban érhető el az Azure SQL felügyelt példányai közötti elosztott tranzakciók számára, és jelenleg bizonyos korlátozások vonatkoznak rá a cikk későbbi szakaszaiban.
@@ -44,14 +44,15 @@ A következő szakasz a kiszolgálói megbízhatósági csoportok telepítését
 
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Kiszolgálói megbízhatósági csoportok":::
 
-5. Az **SQL-megbízhatósági csoport** létrehozás paneljén állítsa be a **csoport nevét**. Egyedinek kell lennie minden olyan régióban, ahol a csoporttagok találhatók. A **megbízhatósági hatókör** határozza meg a kiszolgálói megbízhatósági csoporttal engedélyezett, több példányra kiterjedő forgatókönyv típusát, és az előzetes verzióban az egyetlen alkalmazható megbízhatósági hatókör az **Elosztott tranzakciók**, ezért előre ki van választva, és nem módosítható. Az összes **csoport tagjának** ugyanahhoz az **előfizetéshez** kell tartoznia, de különböző erőforráscsoportok is lehetnek. Válassza ki az **erőforráscsoportot** és **SQL Server/példányt** , és válassza ki azt az Azure SQL felügyelt példányt, amely tagja lesz a csoportnak.
+5. Az **SQL-megbízhatósági csoport** létrehozás paneljén állítsa be a **csoport nevét**. Egyedinek kell lennie minden olyan régióban, ahol a csoporttagok találhatók. A **megbízhatósági hatókör** határozza meg a kiszolgálói megbízhatósági csoporttal engedélyezett, több példányra kiterjedő forgatókönyv típusát. Az előzetes verzióban az csak a megfelelő megbízhatósági hatókör az **Elosztott tranzakciók**, ezért az előzetesen kijelölt és nem módosítható. Az összes **csoport tagjának** ugyanahhoz az **előfizetéshez** kell tartoznia, de különböző erőforráscsoportok is lehetnek. Válassza ki az **erőforráscsoportot** és **SQL Server/példányt** , és válassza ki azt az Azure SQL felügyelt példányt, amely tagja lesz a csoportnak.
+
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Kiszolgálói megbízhatósági csoportok":::
 
 6. Az összes kötelező mező kitöltése után kattintson a **Mentés**gombra.
 
 ## <a name="server-trust-group-maintenance-and-deletion"></a>Kiszolgáló megbízhatósági csoportjának karbantartása és törlése
 
-A kiszolgálói megbízhatósági csoport nem szerkeszthető. A felügyelt példányok egy csoportból való eltávolításához törölnie kell a csoportot, és létre kell hoznia egy újat.
+A kiszolgálói megbízhatósági csoport nem szerkeszthető. A felügyelt példányok csoportból való eltávolításához törölnie kell a csoportot, és létre kell hoznia egy újat.
 
 A következő szakasz a kiszolgáló megbízhatósági csoportjának törlési folyamatát ismerteti. 
 1. Nyissa meg az Azure Portalt.
@@ -72,14 +73,14 @@ A következő szakasz a kiszolgáló megbízhatósági csoportjának törlési f
 A nyilvános előzetes verzióban a következő korlátozások vonatkoznak a kiszolgálói megbízhatósági csoportokra.
  * A kiszolgálói megbízhatósági csoport nevének minden olyan régióban egyedinek kell lennie, ahol a tagjai.
  * A csoport csak az Azure SQL felügyelt példányait tartalmazhatja, és ugyanahhoz az Azure-előfizetéshez kell tartoznia.
- * A csoportnak pontosan két felügyelt példánya lehet. Ha több mint két felügyelt példányon kell végrehajtania az elosztott tranzakciókat, amelyek a felügyelt példányok minden egyes párja esetében kiszolgálói megbízhatósági csoport létrehozásával hajthatók végre.
+ * Az előzetes verzióban a csoportnak pontosan két felügyelt példánya lehet. Az elosztott tranzakciók több mint két felügyelt példányon történő végrehajtásához létre kell hoznia egy kiszolgálói megbízhatósági csoportot a felügyelt példányok mindegyik párja számára.
  * Az elosztott tranzakciók az egyetlen érvényes hatókör a kiszolgálói megbízhatósági csoportok számára.
  * A kiszolgálói megbízhatósági csoport csak Azure Portal felügyelhető. A PowerShell és a CLI támogatása később is megtörténik.
  * A kiszolgálói megbízhatósági csoport nem szerkeszthető a Azure Portalon. Csak lehet létrehozni vagy eldobni.
- * Az elosztott tranzakciók további korlátai lehetnek a forgatókönyvhöz kapcsolódóan. Legjelentősebb, hogy a kiszolgálói megbízhatósági csoportban részt vevő SQL felügyelt példányoknak privát végpontokon keresztül kell elérhetőnek lenniük, vagy más kapcsolatnak a virtuális hálózat szintjén kell működnie. Győződjön meg arról, hogy tisztában van az [Azure SQL felügyelt példányának aktuális elosztott tranzakciók korlátozásával](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview#limitations).
+ * Az elosztott tranzakciók további korlátai lehetnek a forgatókönyvhöz kapcsolódóan. A legjelentősebb az, hogy a felügyelt példányok között kapcsolattal kell rendelkeznie a privát végpontokon keresztül a VNET vagy a VNET-alapú közvetítéssel. Győződjön meg arról, hogy ismeri a [felügyelt példányok aktuális elosztott tranzakcióinak korlátozásait](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview#limitations).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure SQL felügyelt példányain található elosztott tranzakciókról: [Elosztott tranzakciók](../database/elastic-transactions-overview.md).
 * A kiadási frissítések és az ismert problémák állapota: a [felügyelt példány kibocsátási megjegyzései](../database/doc-changes-updates-release-notes.md).
-* A szolgáltatással kapcsolatos kérések esetén adja hozzá őket a [felügyelt példányok fórumához](https://feedback.azure.com/forums/915676-sql-managed-instance).
+* Ha szolgáltatási kérelmekkel rendelkezik, adja hozzá őket a [felügyelt példányok fórumához](https://feedback.azure.com/forums/915676-sql-managed-instance).

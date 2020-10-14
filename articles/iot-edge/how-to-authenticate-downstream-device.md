@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932141"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046723"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -110,7 +110,7 @@ Az X. 509 önaláírt hitelesítéshez (más néven ujjlenyomatos hitelesítésh
 
 4. Másolja mind az elsődleges, mind a másodlagos eszköz tanúsítványait, valamint azok kulcsait az alsóbb rétegbeli eszköz bármely helyére. Helyezze át a megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatát is, amely az átjáró-eszköz tanúsítványát és az alsóbb rétegbeli eszköz tanúsítványait is létrehozta.
 
-   Ezekre a tanúsítványokra az alsóbb rétegbeli eszközön lévő, IoT Hubhoz csatlakozó alkalmazásokban hivatkozhat. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
+   Ezekre a tanúsítványokra az alsóbb rétegbeli eszközön lévő, IoT Hubhoz csatlakozó alkalmazásokban hivatkozhat. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
 
 5. Az előnyben részesített nyelvtől függően tekintse át az X. 509 tanúsítványok IoT-alkalmazásokban való hivatkozásának mintáit:
 
@@ -156,7 +156,7 @@ Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](..
 
 5. Másolja az eszköz tanúsítványát és kulcsait az alsóbb rétegbeli eszköz bármely helyére. Helyezze át a megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatát is, amely az átjáró-eszköz tanúsítványát és az alsóbb rétegbeli eszköz tanúsítványait is létrehozta.
 
-   Ezeket a fájlokat az alsóbb rétegbeli eszközön lévő, IoT Hubhoz csatlakozó alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
+   Ezeket a fájlokat az alsóbb rétegbeli eszközön lévő, IoT Hubhoz csatlakozó alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
 
 6. Az előnyben részesített nyelvtől függően tekintse át az X. 509 tanúsítványok IoT-alkalmazásokban való hivatkozásának mintáit:
 
@@ -201,7 +201,7 @@ Vagy
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-A szülő-gyermek kapcsolatnak köszönhetően leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Példa:
+A szülő-gyermek kapcsolatnak köszönhetően leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Például:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

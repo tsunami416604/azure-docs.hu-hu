@@ -3,19 +3,19 @@ title: Mi a metrikai tanácsadó szolgáltatás?
 titleSuffix: Azure Cognitive Services
 description: Mi az a Metrics Advisor?
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 408bdd948977218d9b39a39bf97391a4141e545c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947125"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047573"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Mi a mérőszámok tanácsadója (előzetes verzió)? 
 
@@ -61,7 +61,7 @@ A munkafolyamat egyszerű: az adatfeldolgozás után finomíthatja a rendellenes
     4. Diagnosztikai ismeretek megtekintése
 1. A példány testreszabásához használja a REST API.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki a [bemutató webhelyet](quickstarts/explore-demo.md).
 * Ismerkedjen meg a gyors útmutatóval: [Figyelje meg az első mérőszámot a weben](quickstarts/web-portal.md).

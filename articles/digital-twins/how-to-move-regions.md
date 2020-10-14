@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328495"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047386"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure digitális Twins-példány áthelyezése egy másik Azure-régióba
 
@@ -49,18 +49,18 @@ Az Azure Digital Twins-példány újbóli létrehozásának megkísérlése elő
     - Device kiépítési szolgáltatás (DPS)
 * Milyen más **személyes vagy vállalati alkalmazások** csatlakoznak a saját példányhoz?
 
-Ezeket az információkat a [Azure Portal](https://portal.azure.com), az [Azure digitális Twins API-](how-to-use-apis-sdks.md)k, az SDK-k, az [Azure digitális Twins CLI-parancsok](how-to-use-cli.md)vagy az [Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) -minta használatával gyűjthetjük össze.
+Ezeket az információkat a [Azure Portal](https://portal.azure.com), az [Azure digitális Twins API-](how-to-use-apis-sdks.md)k, az SDK-k, az [Azure digitális Twins CLI-parancsok](how-to-use-cli.md)vagy az [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) -minta használatával gyűjthetjük össze.
 
 ## <a name="prepare"></a>Előkészítés
 
-Ebben a szakaszban elő fogja készíteni a példány újbóli létrehozását, ha az eredeti példányból **letölti az eredeti modelleket, az ikreket és a gráfot** . Ez a cikk az [Azure Digital Twins (ADT) Explorer-](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) mintát használja.
+Ebben a szakaszban elő fogja készíteni a példány újbóli létrehozását, ha az eredeti példányból **letölti az eredeti modelleket, az ikreket és a gráfot** . Ez a cikk az [Azure Digital Twins (ADT) Explorer-](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) mintát használja.
 
 >[!NOTE]
 >Előfordulhat, hogy már van olyan fájl, amely tartalmazza a modelleket és/vagy a diagramot a példányban. Ha így van, nem kell újra letöltenie az összes adatot – csak a hiányzó darabokat vagy olyan dolgokat, amelyek megváltoztak, mivel eredetileg feltöltötte ezeket a fájlokat (például az olyan ikreket, amelyek esetleg frissültek az új adatokkal).
 
 ### <a name="limitations-of-adt-explorer"></a>A ADT Explorer korlátai
 
-Az [Azure Digital Twins (ADT) Explorer minta](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy olyan ügyfélalkalmazás-minta, amely támogatja a gráf vizuális ábrázolását, és vizuális interakciót biztosít a példánnyal. Ebből a cikkből megtudhatja, hogyan használhatja le, majd később feltöltheti a modelleket, az ikreket és a diagramokat.
+Az [Azure Digital Twins (ADT) Explorer minta](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy olyan ügyfélalkalmazás-minta, amely támogatja a gráf vizuális ábrázolását, és vizuális interakciót biztosít a példánnyal. Ebből a cikkből megtudhatja, hogyan használhatja le, majd később feltöltheti a modelleket, az ikreket és a diagramokat.
 
 Vegye figyelembe azonban, hogy ez egy **minta** , nem pedig teljes eszköz. Nem tesztelték a hangsúlyt, és nem a nagy méretű gráfok kezelésére készült. Ezért kérjük, vegye figyelembe a következő, a beépített mintákra vonatkozó korlátozásokat:
 * A minta jelenleg csak a 1000-es és a 2000-es kapcsolattal rendelkező gráf méretekben lett tesztelve
@@ -76,7 +76,7 @@ Ha a minta nem tudja kezelni a gráf méretét, exportálhatja és importálhatj
 
 A ADT Explorer folytatásához először töltse le a minta alkalmazás kódját, és állítsa be úgy, hogy az a gépen fusson. 
 
-Navigáljon ide a mintához: [Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja _**ADT_Explorer.zipként **_ a gépre. Bontsa ki a fájlt.
+Navigáljon ide a mintához: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja _**ADT_Explorer.zipként **_ a gépre. Bontsa ki a fájlt.
 
 Ezután állítson be engedélyeket a ADT Explorer számára a gépen való futtatáshoz. Ehhez kövesse az Azure digitális Twins-útmutató [*ADT-kezelő engedélyeinek beállítása*](quickstart-adt-explorer.md#set-adt-explorer-permissions) szakaszának lépéseit.
 
@@ -219,7 +219,7 @@ A lépés elvégzése után a célként megadott régióban lévő új példány
 Az új példány helyes beállításának ellenőrzéséhez a következő eszközöket használhatja:
 * A [**Azure Portal**](https://portal.azure.com) (jó annak ellenőrzéséhez, hogy az új példány létezik-e, és hogy a megfelelő cél régióban van-e; a végpontok és útvonalak ellenőrzéséhez, valamint az egyéb Azure-szolgáltatásokhoz való kapcsolódáshoz is jó.)
 * Az [Azure digitális Twins **CLI-parancsai** ](how-to-use-cli.md) (jó annak ellenőrzéséhez, hogy az új példány létezik-e, és hogy a megfelelő célcsoportban van-e; a példányok adatai ellenőrzéséhez is használható)
-* [**ADT Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (jó a példányok adattípusának, például modellek, ikrek és gráfok ellenőrzéséhez)
+* [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (jó a példányok adattípusának, például modellek, ikrek és gráfok ellenőrzéséhez)
 * Az [Azure digitális Twins API-jai és SDK-](how-to-use-apis-sdks.md) k (jó a példányok, például modellek, ikrek és gráfok ellenőrzéséhez, a végpontok és útvonalak ellenőrzéséhez is jó.)
 
 Az eredeti példánnyal futtatott egyéni alkalmazásokat vagy végpontok közötti folyamatokat is futtathatja, így ellenőrizheti, hogy megfelelően működik-e az új példánnyal.

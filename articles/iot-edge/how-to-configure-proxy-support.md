@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966168"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045958"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-A proxy paraméterekkel kapcsolatos további információkért lásd: [meghívó-webkérelem](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). További információ a Windows telepítési paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows rendszeren](reference-windows-scripts.md).
+A proxy paraméterekkel kapcsolatos további információkért lásd: [meghívó-webkérelem](/powershell/module/microsoft.powershell.utility/invoke-webrequest). További információ a Windows telepítési paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows rendszeren](reference-windows-scripts.md).
 
 ## <a name="configure-the-daemons"></a>A démonok konfigurálása
 
@@ -108,7 +108,7 @@ Mivel a Moby a Docker-re épül, tekintse meg a Docker dokumentációját, és k
 Válassza ki a IoT Edge eszköz operációs rendszerére vonatkozó cikket:
 
 * [Docker-démon konfigurálása Linuxon](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) A Linux-eszközökön a Moby Daemon megőrzi a Docker nevet.
-* [A Docker-démon konfigurálása Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) rendszeren A Windows-eszközökön a Moby Daemon neve iotedge-Moby. A nevek eltérőek, mert lehetséges a Docker Desktop és a Moby párhuzamos futtatása Windows-eszközön.
+* [A Docker-démon konfigurálása Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) rendszeren A Windows-eszközökön a Moby Daemon neve iotedge-Moby. A nevek eltérőek, mert lehetséges a Docker Desktop és a Moby párhuzamos futtatása Windows-eszközön.
 
 ### <a name="iot-edge-daemon"></a>IoT Edge démon
 

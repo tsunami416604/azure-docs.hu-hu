@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: eae7a44d77d63641ba9ad062c504aaf624582668
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969211"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047012"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -74,7 +74,7 @@ IoT Edge-eszköz:
   Nyissa meg ezt a fájlt a Távoli asztali kapcsolat használatával a Windows rendszerű virtuális géphez való kapcsolódáshoz a paranccsal megadott rendszergazdai névvel és jelszóval `az vm create` .
 
 > [!NOTE]
-> A Windows rendszerű virtuális gép a Windows 1809-es verziójával (Build 17763) kezdődik, amely a [Windows hosszú távú támogatásának legújabb felépítése](https://docs.microsoft.com/windows/release-information/). A Windows alapértelmezés szerint minden 22 órában automatikusan ellenőrzi a frissítéseket. A virtuális gép ellenőrzését követően a Windows olyan verziófrissítést küld, amely nem kompatibilis a Windows IoT Edgeével, ami megakadályozza a IoT Edge további használatát a Windows-szolgáltatásokban. Javasoljuk, hogy a virtuális gép használatát 22 órán belül korlátozza, vagy [átmenetileg szüneteltesse a Windows-frissítéseket](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+> A Windows rendszerű virtuális gép a Windows 1809-es verziójával (Build 17763) kezdődik, amely a [Windows hosszú távú támogatásának legújabb felépítése](/windows/release-information/). A Windows alapértelmezés szerint minden 22 órában automatikusan ellenőrzi a frissítéseket. A virtuális gép ellenőrzését követően a Windows olyan verziófrissítést küld, amely nem kompatibilis a Windows IoT Edgeével, ami megakadályozza a IoT Edge további használatát a Windows-szolgáltatásokban. Javasoljuk, hogy a virtuális gép használatát 22 órán belül korlátozza, vagy [átmenetileg szüneteltesse a Windows-frissítéseket](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
 >
 > Ez a rövid útmutató az egyszerűség kedvéért egy Windows rendszerű virtuális gépet használ. További információ arról, hogy mely Windows operációs rendszerek érhetők el általánosan az éles környezetekben: [Azure IoT Edge támogatott rendszerek](support.md).
 >
@@ -232,7 +232,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 

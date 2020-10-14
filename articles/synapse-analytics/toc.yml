@@ -70,6 +70,8 @@
       href: quickstart-sql-on-demand.md
     - name: Csatlakozás a Cosmos DB-hez készült Synapse Linkhez
       href: quickstart-connect-synapse-link-cosmos-db.md
+    - name: Csatlakozás az Azure Data Explorerhez
+      href: quickstart-connect-azure-data-explorer.md
 - name: Oktatóanyagok
   items:
     - name: Apache Spark-alkalmazások futtatása
@@ -673,6 +675,8 @@
               items:
                 - name: MongoDB (örökölt)
                   href: ../data-factory/connector-mongodb-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: MongoDB Atlas
+              href: ../data-factory/connector-mongodb-atlas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: MySQL
               href: ../data-factory/connector-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Netezza

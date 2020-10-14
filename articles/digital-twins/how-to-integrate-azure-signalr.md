@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564406"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048117"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -39,9 +39,9 @@ Az Azure Signaler szolgáltatást az alábbi elérési úton csatlakoztathatja a
 ## <a name="download-the-sample-applications"></a>A minta alkalmazások letöltése
 
 Először töltse le a szükséges minta alkalmazásokat. A következőkre lesz szüksége:
-* [**Azure Digital Twins-minták**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Ez a minta egy olyan *AdtSampleApp* tartalmaz, amely két Azure-függvényt tárol az adatok Azure digitális Twins-példányon való áthelyezéséhez (ezt a forgatókönyvet részletesebben is megtudhatja az [*oktatóanyagban: teljes körű megoldás összekapcsolásával*](tutorial-end-to-end.md)). Emellett egy *DeviceSimulator* -minta alkalmazást is tartalmaz, amely egy IoT-eszközt szimulál, és másodpercenként új hőmérséklet-értéket generál. 
+* [**Azure Digital Twins-minták**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Ez a minta egy olyan *AdtSampleApp* tartalmaz, amely két Azure-függvényt tárol az adatok Azure digitális Twins-példányon való áthelyezéséhez (ezt a forgatókönyvet részletesebben is megtudhatja az [*oktatóanyagban: teljes körű megoldás összekapcsolásával*](tutorial-end-to-end.md)). Emellett egy *DeviceSimulator* -minta alkalmazást is tartalmaz, amely egy IoT-eszközt szimulál, és másodpercenként új hőmérséklet-értéket generál. 
     - Navigáljon a minta hivatkozásra, és a *zip letöltése* gombra kattintva töltse le a minta egy példányát a gépre, _**Azure_Digital_Twins_samples.zip**_. Csomagolja ki a mappát.
-* A [**signaler Integration Web App minta**](https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): ez egy példa a webalkalmazásra, amely az Azure-beli digitális Twins telemetria adatait az Azure signaler szolgáltatásból fogja felhasználni.
+* A [**signaler Integration Web App minta**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): ez egy példa a webalkalmazásra, amely az Azure-beli digitális Twins telemetria adatait az Azure signaler szolgáltatásból fogja felhasználni.
     -  Navigáljon a minta hivatkozásra, és a *zip letöltése* gombra kattintva töltse le a minta egy példányát a gépre, _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Csomagolja ki a mappát.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -145,7 +145,7 @@ Ezután tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététe
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben való megtekintése. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása. A D. szakasz a &quot;Broadcast&quot; címkével ellátott Azure-függvényhez tartozó, azonos Event Gridból áramló adatok megjelenítését jeleníti meg. a &quot;Broadcast&quot; az &quot;egyeztetés&quot; címkével ellátott másik Azure-függvénysel kommunikál, és a &quot;szórás&quot; és az &quot;egyeztetés&quot; is számítógépes eszközökkel kommunikál.":::
 
-1. Végezetül az alábbi Azure CLI-paranccsal adja hozzá az Azure Signaler- **kapcsolódási karakterláncot** a korábbi verzióról a függvény alkalmazás beállításaihoz. A parancs [Azure Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest):
+1. Végezetül az alábbi Azure CLI-paranccsal adja hozzá az Azure Signaler- **kapcsolódási karakterláncot** a korábbi verzióról a függvény alkalmazás beállításaihoz. A parancs [Azure Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest):
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -232,7 +232,7 @@ Ekkor megnyílik a minta alkalmazást futtató böngészőablak, amely egy vizu�
 
 Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
-Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal. Az erőforráscsoport eltávolítása is el lesz távolítva...
+Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal. Az erőforráscsoport eltávolítása is el lesz távolítva...
 * Az Azure Digital Twins-példány (a végpontok közötti oktatóanyagból)
 * az IoT hub és a hub-eszköz regisztrálása (a végpontok közötti oktatóanyagból)
 * az Event Grid-témakör és a hozzá tartozó előfizetések
@@ -259,7 +259,7 @@ Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*Azur
 Ebben a cikkben a Signaler Azure functions szolgáltatással állíthatja be az Azure Digital Twins telemetria-eseményeit egy minta ügyfélalkalmazás számára.
 
 Következő lépésként Ismerkedjen meg az Azure Signaler szolgáltatással:
-* [*Mi az az Azure Signaler szolgáltatás?*](../azure-signalr/signalr-overview.md)
+* [*Mi az az Azure SignalR Service?*](../azure-signalr/signalr-overview.md)
 
 Vagy további információ az Azure Signaler szolgáltatás hitelesítéséről Azure Functions:
 * [*Azure Signaler szolgáltatás hitelesítése*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

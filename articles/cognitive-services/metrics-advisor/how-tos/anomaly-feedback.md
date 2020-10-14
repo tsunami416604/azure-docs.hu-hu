@@ -3,19 +3,19 @@ title: Anomália-visszajelzés küldése a metrikai tanácsadó szolgáltatásna
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan küldhet visszajelzést a metrikai tanácsadó példány által észlelt rendellenességekről, és hogyan hangolhatja be az eredményeket.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 11864cb26b76d414aa2efe2643797a2f66fa30e4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935429"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047607"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>Anomáliadetektálás beállítása visszajelzés használatával
 

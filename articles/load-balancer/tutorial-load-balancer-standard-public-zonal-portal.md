@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6df53e3a8d9330c9628e04a1c3ff50534d443ab2
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019664"
+ms.locfileid: "92044955"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Rendelkezésre állási zónán belüli virtuális gépek terheléselosztása standard Load Balancerrel az Azure Portal használatával
 
@@ -232,6 +232,6 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosz
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan tölthetők be a Balancer virtuális gépek a rendelkezésre állási zónák között.
+A következő cikkből megtudhatja, hogyan lehet terheléselosztást alkalmazni a virtuális gépek számára a rendelkezésre állási zónák között.
 > [!div class="nextstepaction"]
 > [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

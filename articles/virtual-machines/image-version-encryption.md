@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dd2d42bb83afa5a97bd5bd71d7b1a4bcc506d93e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976164"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048083"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
@@ -41,7 +41,7 @@ Az ügyfél által felügyelt kulcsok használata több korlátozást is igényb
 
 - A titkosítási kulcsok helyi erőforrások, így minden régióhoz egy másik titkosítási kulcs van beállítva.
 
-- Az ügyfél által felügyelt kulcsokat használó lemezképek nem oszthatók meg. 
+- Az ügyfél által felügyelt kulcsokat használó rendszerképek nem másolhatók és nem oszthatók meg. 
 
 - Ha a saját kulcsait használta egy lemez vagy kép titkosításához, nem térhet vissza a platform által felügyelt kulcsok használatára a lemezek és a képek titkosításához.
 

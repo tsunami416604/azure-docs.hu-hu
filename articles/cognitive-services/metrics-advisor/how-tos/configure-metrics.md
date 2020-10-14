@@ -3,19 +3,19 @@ title: A metrikák Advisor-példányának konfigurálása a webes portál haszn�
 titleSuffix: Azure Cognitive Services
 description: A metrikai tanácsadó példányának konfigurálása és az anomáliák észlelési eredményeinek finomhangolása.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446358"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048253"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Útmutató: mérőszámok konfigurálása és Finomhangolás észlelése – konfiguráció
 
@@ -136,7 +136,7 @@ Több más érték is konfigurálható:
 |**Kibontás napja**    |  A nyaralás előtti és utáni érintett napok.        |
 
 
-A **ciklus eseményei** szakasz bizonyos helyzetekben felhasználható, hogy az adatokban ciklikus minták használatával csökkentse a szükségtelen riasztásokat. Példa: 
+A **ciklus eseményei** szakasz bizonyos helyzetekben felhasználható, hogy az adatokban ciklikus minták használatával csökkentse a szükségtelen riasztásokat. Például: 
 
 - Több mintázattal vagy ciklussal rendelkező mérőszámok, mint például a heti és a havi minta. 
 - Azok a metrikák, amelyek nem rendelkeznek egyértelmű mintázattal, de az adatok az év során (YoY), a hónap (MoM), a hét (WoW) vagy a nap folyamán (DoD) is hasonlóak.

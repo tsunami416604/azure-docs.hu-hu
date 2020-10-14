@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: efe4753e78c6dd16fa0b6ce3e98dd21ceae52577
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91446108"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047811"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -61,10 +61,10 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Resource Group   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Region           | **Nyugat-Európa** kiválasztása |
+    | Régió           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -83,7 +83,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Alhálózat neve | **MyBackendSubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -111,9 +111,9 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki az előző lépésben létrehozott **myresourcegrouplb erőforráscsoportban** .|
     | Név                   | **MyLoadBalancer** megadása                                   |
-    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső**lehetőséget.                                        |
-    | Termékváltozat           | **Standard** kiválasztása |
+    | SKU           | **Standard** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
     | Alhálózat  | Válassza ki az előző lépésben létrehozott **myBackendSubnet** . |
     | IP-cím hozzárendelése | Válassza a **dinamikus**lehetőséget. |
@@ -223,10 +223,10 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Resource Group | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Region | **Nyugat-Európa** kiválasztása |
+    | Régió | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási zónák** kiválasztása |
     | A rendelkezésre állási zóna | **1** . választás |
     | Kép | **Windows Server 2019 Datacenter** kiválasztása |
@@ -256,7 +256,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Terheléselosztó kiválasztása | **MyLoadBalancer** kiválasztása  |
     | Háttérbeli készlet kiválasztása | **MyBackendPool** kiválasztása |
    
-5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -294,10 +294,10 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Resource Group   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Region           | **Nyugat-Európa** kiválasztása |
+    | Régió           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -316,7 +316,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Alhálózat neve | **MyBackendSubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -344,9 +344,9 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki az előző lépésben létrehozott **myresourcegrouplb erőforráscsoportban** .|
     | Név                   | **MyLoadBalancer** megadása                                   |
-    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső**lehetőséget.                                        |
-    | Termékváltozat           | **Alapszintű** kiválasztása |
+    | SKU           | **Alapszintű** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
     | Alhálózat  | Válassza ki az előző lépésben létrehozott **myBackendSubnet** . |
     | IP-cím hozzárendelése | Válassza a **dinamikus**lehetőséget. |
@@ -462,10 +462,10 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Resource Group | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Region | **Nyugat-Európa** kiválasztása |
+    | Régió | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási csoport** kiválasztása |
     | Rendelkezésre állási csoport | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyAvailabilitySet** **nevet**. </br> Kattintson **az OK gombra** |
     | Kép | **Windows Server 2019 Datacenter** |
@@ -491,7 +491,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Terheléselosztás**  |
     | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Válassza a **nem** lehetőséget |
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -519,7 +519,7 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 6. Válassza a **Hozzáadás** lehetőséget.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 ---
 
 ## <a name="create-test-virtual-machine"></a>Teszt virtuális gép létrehozása
@@ -534,10 +534,10 @@ Ebben a szakaszban létrehoz egy **myTestVM**nevű virtuális gépet.  Ezt a vir
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Resource Group | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyTestVM** megadása |
-    | Region | **Nyugat-Európa** kiválasztása |
+    | Régió | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | **Windows Server 2019 Datacenter** kiválasztása |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -560,7 +560,7 @@ Ebben a szakaszban létrehoz egy **myTestVM**nevű virtuális gépet.  Ezt a vir
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
     | Hálózati biztonsági csoport konfigurálása | Válassza ki az előző lépésben létrehozott **MyNSG** .|
        
-5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -622,7 +622,7 @@ Ha látni szeretné, hogy a terheléselosztó mindkét virtuális gépen osztja 
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó erőforráscsoportot, majd válassza a **Törlés**lehetőséget a **myresourcegrouplb erőforráscsoportban** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 
@@ -630,5 +630,6 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
 * 2 virtuális gép csatlakoztatva a terheléselosztó számára.
 * Konfigurálta a terheléselosztó forgalmi szabályát, az állapot-mintavételt, majd tesztelte a terheléselosztó. 
 
-Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [mi Azure Load Balancer?](load-balancer-overview.md) és [Load Balancer a gyakori kérdések](load-balancer-faqs.md)című témakört.
-
+Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a következővel:..
+> [!div class="nextstepaction"]
+> [Mi az Azure Load Balancer?](load-balancer-overview.md) 

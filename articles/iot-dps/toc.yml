@@ -38,15 +38,17 @@
 - name: Oktatóanyagok
   items:
     - name: 1 – Több eszköz kiépítése regisztrációs csoportokkal
-      href: how-to-legacy-device-symm-key.md
+      items:
+        - name: Eszközök üzembe helyezése tartalomkulcsokkal
+          href: how-to-legacy-device-symm-key.md
+        - name: Egyéni kiosztási szabályzatok használata
+          href: tutorial-custom-allocation-policies.md
     - name: 2 – Eszközök kiépítése több hubon
       items:
         - name: Több hub összekapcsolása a DPS-szel
           href: tutorial-provision-multiple-hubs.md
         - name: Több-bérlős regisztráció
           href: how-to-provision-multitenant.md
-        - name: Egyéni kiosztási szabályzatok használata
-          href: tutorial-custom-allocation-policies.md
 - name: Példák
   items:
     - name: Szimulált TPM-eszközigazolás mintája

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983357"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048049"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -129,7 +129,7 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 
 ### <a name="update-your-azure-function-code"></a>Azure-függvény kódjának frissítése
 
-Most, hogy megértette a korábbi minták kódját, nyissa meg az Azure-függvényt a Visual Studio [*Előfeltételek*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) szakaszában. (Ha még nem rendelkezik Azure-függvénysel, az előfeltételekben található hivatkozásra kattintva hozzon létre egyet most).
+Most, hogy megértette a korábbi minták kódját, nyissa meg az Azure-függvényt a Visual Studio [*Előfeltételek*](#prerequisites) szakaszában. (Ha még nem rendelkezik Azure-függvénysel, az előfeltételekben található hivatkozásra kattintva hozzon létre egyet most).
 
 Cserélje le az Azure Function kódját ezzel a mintakód.
 
@@ -193,7 +193,7 @@ namespace IotHubtoTwins
     }
 }
 ```
-Mentse a függvény kódját, és tegye közzé a Function alkalmazást az Azure-ban. Ezt úgy teheti meg, hogy [*közzéteszi a*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure) " [*útmutató: Azure-függvény beállítása az adatfeldolgozáshoz*](how-to-create-azure-function.md)" című függvényalkalmazás szakaszát.
+Mentse a függvény kódját, és tegye közzé a Function alkalmazást az Azure-ban. Ezt úgy teheti meg, hogy [*közzéteszi a*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) " [*útmutató: Azure-függvény beállítása az adatfeldolgozáshoz*](how-to-create-azure-function.md)" című függvényalkalmazás szakaszát.
 
 Sikeres közzététel után az alábbi ábrán látható kimenet jelenik meg a Visual Studio-parancsablakban:
 
@@ -214,7 +214,7 @@ A közzétételi folyamat állapotát a [Azure Portal](https://portal.azure.com/
 ## <a name="connect-your-function-to-iot-hub"></a>A függvény összekapcsolásával IoT Hub
 
 Esemény célhelyének beállítása a hub-adatként.
-A [Azure Portal](https://portal.azure.com/)navigáljon az [*előfeltételek*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) szakaszban létrehozott IoT hub-példányhoz. Az **események**területen hozzon létre egy előfizetést az Azure-függvényhez.
+A [Azure Portal](https://portal.azure.com/)navigáljon az [*előfeltételek*](#prerequisites) szakaszban létrehozott IoT hub-példányhoz. Az **események**területen hozzon létre egy előfizetést az Azure-függvényhez.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hubon keresztül egy Azure-függvénynek, amely egy, az Azure-beli digitális Ikrekben található Twin értékre frissíti a hőmérséklet-tulajdonságot.":::
 
@@ -242,7 +242,7 @@ Az esemény-előfizetés létrehozásához kattintson a _Létrehozás_ gombra.
 
 ## <a name="send-simulated-iot-data"></a>Szimulált IoT-adatgyűjtés küldése
 
-Az új beáramlási funkció teszteléséhez használja az eszköz-szimulátort az [*oktatóanyag: végpontok közötti megoldás csatlakoztatása*](./tutorial-end-to-end.md). Ezt az oktatóanyagot C# nyelven írt minta projekt vezérli. A mintakód itt található: [Azure digitális Twins-minták](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). A **DeviceSimulator** projektet a tárházban fogja használni.
+Az új beáramlási funkció teszteléséhez használja az eszköz-szimulátort az [*oktatóanyag: végpontok közötti megoldás csatlakoztatása*](./tutorial-end-to-end.md). Ezt az oktatóanyagot C# nyelven írt minta projekt vezérli. A mintakód itt található: [Azure digitális Twins-minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A **DeviceSimulator** projektet a tárházban fogja használni.
 
 A végpontok közötti oktatóanyagban hajtsa végre a következő lépéseket:
 1. [*A szimulált eszköz regisztrálása IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

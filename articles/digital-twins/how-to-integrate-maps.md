@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564361"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045125"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 
@@ -64,7 +64,7 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amel
     >[!NOTE]
     >Jelenleg egy **ismert probléma** van a Cloud shellt érintő következő parancsokkal: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >A probléma megoldásához futtassa a `az login` parancsot Cloud Shell a parancs futtatása előtt, vagy használja a [helyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
+    >A probléma megoldásához futtassa a `az login` parancsot Cloud Shell a parancs futtatása előtt, vagy használja a [helyi](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amel
 
 Létre fog hozni egy Event Grid által aktivált függvényt a Function alkalmazásban a teljes körű oktatóanyagban ([*oktatóanyag: végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md)). Ez a függvény kicsomagolja ezeket az értesítéseket, és frissítéseket küld egy Azure Maps szolgáltatás stateset egy szoba hőmérsékletének frissítéséhez. 
 
-Tekintse meg a következő dokumentumot a hivatkozási információkhoz: [*Azure Event Grid trigger Azure functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Tekintse meg a következő dokumentumot a hivatkozási információkhoz: [*Azure Event Grid trigger Azure functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
 Cserélje le a függvény kódját a következő kódra. Csak a Space ikrek frissítéseit szűri, a frissített hőmérsékletet olvassa be, majd elküldi ezeket az adatokat a Azure Mapsnak.
 

@@ -3,19 +3,19 @@ title: Metrikai tanácsadói riasztások konfigurálása
 titleSuffix: Azure Cognitive Services
 description: A metrikák Advisor-riasztások konfigurálása az e-mailekhez, a webes és az Azure-DevOps tartozó hookok használatával.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977781"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046791"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával
 
@@ -36,7 +36,7 @@ Az e-mail-Hook az a csatorna, amellyel a rendszer az **e-mailben** megadott e-ma
 
 |Paraméter |Leírás  |
 |---------|---------|
-| Name (Név) | Az e-mail Hook neve |
+| Név | Az e-mail Hook neve |
 | E-mail cím| E-mail-címek, amelyek riasztást küldenek|
 | Külső hivatkozás | Opcionális mező, amely lehetővé teszi a testreszabott átirányítást, például a hibaelhárítási megjegyzésekhez. |
 | Testreszabott anomáliák riasztási címe | A title sablon támogatja a,,,,,,, `${severity}` `${alertSettingName}` `${datafeedName}` `${metricName}` `${detectConfigName}` `${timestamp}` `${topDimension}` `${incidentCount}` , `${anomalyCount}`
@@ -75,7 +75,7 @@ Az Azure DevOps Hook létrehozásához hozzá kell adnia a következő informác
 
 |Paraméter |Leírás  |
 |---------|---------|
-| Name (Név) | A Hook neve |
+| Név | A Hook neve |
 | Szervezet | Az a szervezet, amelyhez a DevOps tartozik |
 | Project | A DevOps adott projektje. |
 | Hozzáférési jogkivonat |  A DevOps való hitelesítéshez használt jogkivonat. | 
@@ -132,7 +132,7 @@ Az **operátor** választó az egyes szakaszok logikai kapcsolata, amely meghat�
 |Operátor  |Leírás  |
 |---------|---------|
 |ÉS     | Csak akkor küldjön riasztást, ha egy sorozat megfelel az egyes riasztási szakaszoknak, és az összes adatpont anomália. Ha a metrikák különböző dimenziós névvel rendelkeznek, a rendszer soha nem aktiválja a riasztást.         |
-|VAGY     | Küldje el a riasztást, ha legalább egy szakasz rendellenességeket tartalmaz.         |
+|OR     | Küldje el a riasztást, ha legalább egy szakasz rendellenességeket tartalmaz.         |
 
 :::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="webhook-létrehozási ablak.":::
 

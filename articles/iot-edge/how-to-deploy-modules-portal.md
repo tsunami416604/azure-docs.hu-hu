@@ -4,17 +4,16 @@ description: A Azure Portal IoT Hub segítségével leküldheti a IoT Edge modul
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978798"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048032"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modulok üzembe helyezése a Azure Portal
 
@@ -35,6 +34,11 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
 A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett. Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
 
+>[!NOTE]
+>A cikkben ismertetett lépések a IoT Edge-ügynök és a központ legújabb séma-verzióját tükrözik. A 1,1-es verziójú séma a IoT Edge verzió 1.0.10 együtt lett közzétéve, és lehetővé teszi a modul indítási sorrendjének és útvonal-rangsorolási funkcióinak használatát.
+>
+>Ha a 1.0.9 vagy korábbi verzióját futtató eszközre telepít központilag, akkor a varázsló **modulok** lépésében szerkessze a **futásidejű beállításokat** a séma 1,0-es verziójának használatához.
+
 ### <a name="select-device-and-add-modules"></a>Eszköz kiválasztása és modulok hozzáadása
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
@@ -43,21 +47,30 @@ A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezé
 1. A felső sávon válassza a **modulok beállítása**lehetőséget.
 1. A lap **Container Registry beállítások** szakaszában adja meg a modul lemezképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatokat.
 1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
-1. Tekintse meg a modulok típusát a legördülő menüből:
+1. A legördülő menüből válasszon a következő három típusú modul közül:
 
    * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. A minta SimulatedTemperatureSensor-modul képuri-ja például a következő: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
    * **Piactér modul** – az Azure piactéren üzemeltetett modulok. Egyes piactér-modulok további konfigurálást igényelnek, ezért tekintse át a modul részleteit az [Azure marketplace IoT Edge modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listájában.
    * **Azure stream Analytics modul** – Azure stream Analytics munkaterhelés által generált modulok.
 
-1. A modul hozzáadása után válassza ki a modul nevét a listából a modul beállításainak megnyitásához. Szükség esetén töltse ki az opcionális mezőket. További információ a tároló létrehozási lehetőségeiről, az újraindítási szabályzatról és a kívánt állapotról: [EdgeAgent kívánt tulajdonságai](module-edgeagent-edgehub.md#edgeagent-desired-properties). További információ a modul Twin-ről: a [kívánt tulajdonságok meghatározása vagy frissítése](module-composition.md#define-or-update-desired-properties).
-1. Ha szükséges, ismételje meg az 5 – 8. lépést további modulok hozzáadásához a központi telepítéshez.
+1. A modul hozzáadása után válassza ki a modul nevét a listából a modul beállításainak megnyitásához. Szükség esetén töltse ki az opcionális mezőket.
+
+   További információ az elérhető modul beállításairól: [modulok konfigurálása és kezelése](module-composition.md#module-configuration-and-management).
+
+   További információ a modul Twin-ről: a [kívánt tulajdonságok meghatározása vagy frissítése](module-composition.md#define-or-update-desired-properties).
+
+1. Ismételje meg a 6 – 8. lépést további modulok hozzáadásához a központi telepítéshez.
 1. Válassza a **Tovább: útvonalak** szakaszt az útvonalak szakaszhoz.
 
 ### <a name="specify-routes"></a>Útvonalak meghatározása
 
-Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. Alapértelmezés szerint az útvonalat a rendszer **route (útvonal** ) néven adja meg, és a **/messages/-ből \* $upstreamba**kerül, ami azt jelenti, hogy bármely modulból kimenetet küld az IoT hubhoz.  
+Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. Alapértelmezés szerint az új eszköz első üzembe helyezése egy **Route** nevű útvonalat tartalmaz, amely a **/messages/-ből a \* $upstreamba kerül**, ami azt jelenti, hogy az összes modul kimenetét az IoT hubhoz küldi a rendszer.  
 
-Adja hozzá vagy frissítse az útvonalakat a [deklarált útvonalak](module-composition.md#declare-routes)információi közül, majd válassza a **Tovább: felülvizsgálat + létrehozás** lehetőséget a varázsló következő lépésének folytatásához.
+Az élő paraméterek **prioritása** és **ideje** választható paraméterek, amelyeket hozzáadhat egy útvonal-definícióhoz. A Priority paraméterrel kiválaszthatja, hogy mely útvonalakon legyenek feldolgozva az üzenetek, vagy hogy mely útvonalakat kell feldolgozni utoljára. A prioritás meghatározása a 0-9 szám megadásával történik, ahol a 0 a legfontosabb prioritás. Az élettartam paraméter lehetővé teszi annak bejelentését, hogy mennyi ideig kell tárolni az adott útvonalon lévő üzeneteket, amíg azokat fel nem dolgozzák vagy el nem távolítják a várólistából.
+
+Az útvonalak létrehozásával kapcsolatos további információkért lásd: [útvonalak deklarálása](module-composition.md#declare-routes).
+
+Az útvonalak beállítása után kattintson a **Tovább gombra: felülvizsgálat + létrehozás** gombra, és folytassa a varázsló következő lépésével.
 
 ### <a name="review-deployment"></a>Központi telepítés áttekintése
 

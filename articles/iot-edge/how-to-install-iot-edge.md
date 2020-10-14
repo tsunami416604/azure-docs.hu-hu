@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: e5dc5601be5bd6d8003b196b5e7768e66bc48478
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979571"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045686"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>A Azure IoT Edge futtatókörnyezet telepítése vagy eltávolítása
 
@@ -267,7 +267,7 @@ Ha az eszköz a telepítés során offline állapotba kerül, vagy ha a IoT Edge
 
 4. Igény szerint a Visual C++ újraterjeszthető csomagjának telepítőjét is letöltheti. A PowerShell-parancsfájl például a következő verziót használja: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Mentse a telepítőt ugyanabban a mappában a IoT-eszközön, mint a IoT Edge fájlokat.
 
-5. Ha offline összetevőkkel szeretné telepíteni a programot, a [dot forrás](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. 
+5. Ha offline összetevőkkel szeretné telepíteni a programot, a [dot forrás](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. 
 
 6. Futtassa az [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) parancsot a (z `-OfflineInstallationPath` ) paraméterrel. Adja meg a fájl könyvtárának abszolút elérési útját. Például:
 

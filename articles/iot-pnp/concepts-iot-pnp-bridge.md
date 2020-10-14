@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580471"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046451"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-híd
 
@@ -34,7 +34,7 @@ A IoT Plug and Play Bridge alapértelmezés szerint a következő típusú perif
 |[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Igen|Igen|
 |[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Igen|Igen|
 |[Sorozatszám](https://aka.ms/iot-pnp-bridge-serial)                |Igen|Igen|
-|[Windows USB-perifériák](https://aka.ms/iot-pnp-bridge-usb)  |Igen|Nem alkalmazható|
+|[Windows USB-perifériák](https://aka.ms/iot-pnp-bridge-usb)  |Yes|Nem alkalmazható|
 
 >[!Important]
 >A fejlesztők kiterjeszthetik a IoT Plug and Play hidat a további eszközök protokolljainak támogatásához a **[IoT Plug and Play Bridge fejlesztői dokumentációjának](https://aka.ms/iot-pnp-bridge-dev-doc)** útmutatásai alapján.
@@ -67,7 +67,7 @@ A IoT Plug and Play-híd létrehozásához, bővítéséhez és fejlesztéséhez
 
 ### <a name="azure-iot-products-and-tools"></a>Azure IoT-termékek és-eszközök
 
-- **Azure IoT hub** – az eszköz csatlakoztatásához az Azure-előfizetéshez szüksége lesz egy [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/) -ra. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. Ha nem rendelkezik IoT-hubhoz, [kövesse az alábbi utasításokat, és hozzon létre egyet](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli).
+- **Azure IoT hub** – az eszköz csatlakoztatásához az Azure-előfizetéshez szüksége lesz egy [Azure IoT hub](../iot-hub/index.yml) -ra. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. Ha nem rendelkezik IoT-hubhoz, [kövesse az alábbi utasításokat, és hozzon létre egyet](../iot-hub/iot-hub-create-using-cli.md).
 
 > [!Note]
 > A IoT Plug and Play jelenleg az USA középső régiójában, Észak-Európában és Kelet-japán régióban létrehozott IoT-hubokon érhető el. Az alapszintű IoT-hubok nem tartalmazzák a IoT Plug and Play támogatását. Ha a IoT Plug and Play eszközzel szeretne kommunikálni, használhatja az Azure IoT Explorer eszközét. [Töltse le és telepítse az Azure IoT Explorer legújabb kiadását](./howto-use-iot-explorer.md) az operációs rendszeréhez.

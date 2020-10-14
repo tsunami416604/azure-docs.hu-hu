@@ -3,19 +3,19 @@ title: A metrikai tanácsadó bemutatójának elindítása
 titleSuffix: Azure Cognitive Services
 description: A metrikák Advisor webes felületének megismerése az általunk biztosított bemutató használatával
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 39748bacf784af0b3f162f960cd7d87cbd03a2eb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947226"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047590"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Gyors útmutató: a metrikai tanácsadó bemutatójának bemutatása példaként megadott adatokkal
 
@@ -71,7 +71,7 @@ A **diagnosztika** szakasz az incidens fáját mutatja be, valamint az incidens 
 
 Az incidens kiváltó okának kijavításával elvégezheti a probléma megoldását, és csökkentheti a problémát, mielőtt a helyzet még rosszabb lesz. További információkhoz is tájékozódhat, ha a további diagnosztikai funkciókra kattint. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A webes portál használata](web-portal.md)
 - [A REST API használata](rest-api.md)

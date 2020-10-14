@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447793"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046009"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön (klasszikus szerkesztő)
 
@@ -21,7 +21,7 @@ Az Azure-folyamatok beépített Azure IoT Edge feladataival könnyedén elvégez
 
 ![Diagram – CI és CD ágak fejlesztési és termelési célokra](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépített [Azure IoT Edge feladatait](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) a IoT Edge-megoldáshoz tartozó Build és kiadási folyamatok létrehozásához. A folyamathoz hozzáadott minden Azure IoT Edge feladat a következő négy művelet egyikét valósítja meg:
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépített [Azure IoT Edge feladatait](/azure/devops/pipelines/tasks/build/azure-iot-edge) a IoT Edge-megoldáshoz tartozó Build és kiadási folyamatok létrehozásához. A folyamathoz hozzáadott minden Azure IoT Edge feladat a következő négy művelet egyikét valósítja meg:
 
  | Művelet | Leírás |
  | --- | --- |
@@ -32,22 +32,22 @@ Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépít
 
 Ha másként nincs megadva, az ebben a cikkben ismertetett eljárások nem tárgyalják a feladat paramétereinek használatával elérhető funkciókat. További információkat a következő cikkekben talál:
 
-* [Feladat verziója](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [Feladat verziója](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Speciális** – ha alkalmazható, olyan modulokat adhat meg, amelyeket nem szeretne felépíteni.
-* [Vezérlési beállítások](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [Környezeti változók](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [Kimeneti változók](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [Vezérlési beállítások](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [Környezeti változók](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [Kimeneti változók](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). Ebben a cikkben egy **IoTEdgeRepo**nevű tárházat hoztunk létre.
-* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [C#-modulok fejlesztése és hibakeresése a Visual Studióban](how-to-visual-studio-develop-csharp-module.md)című témakört. Ebben a cikkben létrehozunk egy megoldást a **IoTEdgeSolution**nevű adattárban, amely egy **filtermodule**nevű modul kódját tartalmaz.
+* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). Ebben a cikkben egy **IoTEdgeRepo**nevű tárházat hoztunk létre.
+* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [C#-modulok fejlesztése és hibakeresése a Visual Studióban](./how-to-visual-studio-develop-module.md)című témakört. Ebben a cikkben létrehozunk egy megoldást a **IoTEdgeSolution**nevű adattárban, amely egy **filtermodule**nevű modul kódját tartalmaz.
 
    Ehhez a cikkhez mindössze annyit kell tennie, hogy a Visual Studio Code vagy a Visual Studio IoT Edge sablonjai által létrehozott megoldási mappát hozza létre. A továbblépés előtt nem kell ezt a kódot felépíteni, leküldeni, telepíteni vagy hibakeresést végeznie. Ezeket a folyamatokat az Azure-folyamatokban fogja beállítani.
 
    Ha új megoldást hoz létre, először a tárházat klónozással. Ezután a megoldás létrehozásakor megadhatja, hogy közvetlenül a tárház mappájába hozza létre. Egyszerűen véglegesítheti és leküldheti az új fájlokat.
 
-* Egy tároló-beállításjegyzék, amelyen leküldéses modul képei láthatók. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy külső gyártótól származó beállításjegyzéket is használhat.
+* Egy tároló-beállításjegyzék, amelyen leküldéses modul képei láthatók. [Azure Container Registry](../container-registry/index.yml) vagy külső gyártótól származó beállításjegyzéket is használhat.
 * Egy aktív Azure [IoT hub](../iot-hub/iot-hub-create-through-portal.md) legalább két IoT Edge eszközzel a különböző tesztelési és éles üzembe helyezési fázisok teszteléséhez. Az IoT Edge-eszköz [Linux](quickstart-linux.md) vagy [Windows](quickstart.md) rendszeren való létrehozásához kövesse a rövid útmutató cikkeit
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Build folyamat létrehozása a folyamatos integrációhoz
@@ -84,7 +84,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
 
    * Ha a Linux-tárolók platform amd64-es verziójában szeretné létrehozni a modulokat, válassza az **Ubuntu-16,04**
 
-   * Ha a Windows 1809-tárolók esetében szeretné felépíteni a modulokat a platform amd64-ben, akkor a [Windowsban saját üzemeltetésű ügynököt kell beállítania](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Ha a Windows 1809-tárolók esetében szeretné felépíteni a modulokat a platform amd64-ben, akkor a [Windowsban saját üzemeltetésű ügynököt kell beállítania](/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
    * Ha a modulokat a platform arm32v7 vagy a arm64 for Linux-tárolók számára szeretné felépíteni, a saját üzemeltetésű [ügynököt Linux rendszeren kell beállítania](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent).
 
@@ -136,14 +136,14 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
     | Megjelenített név | Az alapértelmezett név vagy a Testreszabás használata |
     | Forrás mappája | A másolandó fájlokat tartalmazó mappa. |
     | Tartalom | Adjon hozzá két sort: `deployment.template.json` és `**/module.json` . Ez a két fájl bemenetként szolgál a IoT Edge üzembe helyezési jegyzék létrehozásához. |
-    | Célmappa | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+    | Célmappa | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
 
 10. A szerkesztéshez válassza a Build-összetevők **közzététele** feladatot. Adja meg a feladat átmeneti könyvtárának elérési útját a feladathoz, hogy az elérési út közzétehető legyen a kiadási folyamatban.
 
     | Paraméter | Leírás |
     | --- | --- |
     | Megjelenített név | Használja az alapértelmezett nevet vagy a testreszabást. |
-    | Közzététel elérési útja | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . További információ: [Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+    | Közzététel elérési útja | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . További információ: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
     | Összetevő neve | Az alapértelmezett név használata: **drop** |
     | Összetevő közzétételi helye | Az alapértelmezett hely használata: **Azure-folyamatok** |
 
@@ -160,7 +160,7 @@ Ez a folyamat most úgy van konfigurálva, hogy automatikusan fusson, amikor új
 >[!NOTE]
 >Ha rétegzett üzemelő **példányokat** kíván használni a folyamatában, a rétegzett központi telepítések még nem támogatottak az Azure DevOps Azure IoT Edge feladataiban.
 >
->Az [Azure DevOps-ben azonban Azure CLI-feladattal](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) is létrehozhatja az üzembe helyezést rétegzett telepítésként. A **beágyazott parancsfájl** értéke az az [IOT Edge Deployment Create paranccsal](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)végezhető el:
+>Az [Azure DevOps-ben azonban Azure CLI-feladattal](/azure/devops/pipelines/tasks/deploy/azure-cli) is létrehozhatja az üzembe helyezést rétegzett telepítésként. A **beágyazott parancsfájl** értéke az az [IOT Edge Deployment Create paranccsal](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)végezhető el:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

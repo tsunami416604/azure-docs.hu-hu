@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578053"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046468"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Az IoT Plug and Play digitális ikreinek ismertetése
 
@@ -307,7 +307,7 @@ Az alábbi kódrészletek az összetevő egymás melletti JSON-ábrázolását m
 
 ## <a name="digital-twin-apis"></a>Digitális Twin API-k
 
-Az Azure Digital Twins a **Get Digital Twin**, a **Digital Twin frissítése**, az **Component parancs meghívása** és az eszközök digitális iker-kezelésének **meghívása paranccsal** érhető el. Használhatja a [REST API-kat](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) közvetlenül vagy egy [Service SDK](../iot-pnp/libraries-sdks.md)-n keresztül.
+Az Azure Digital Twins a **Get Digital Twin**, a **Digital Twin frissítése**, az **Component parancs meghívása** és az eszközök digitális iker-kezelésének **meghívása paranccsal** érhető el. Használhatja a [REST API-kat](/rest/api/iothub/service/digitaltwin) közvetlenül vagy egy [Service SDK](../iot-pnp/libraries-sdks.md)-n keresztül.
 
 ## <a name="digital-twin-change-events"></a>Digitális ikermódosítási események
 
@@ -383,5 +383,5 @@ Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 
 - [A IoT Plug and Play Digital Twin API-k használata](howto-manage-digital-twin.md)
 - [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
-- [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

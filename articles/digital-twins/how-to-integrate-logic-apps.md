@@ -8,18 +8,18 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975161"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045295"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) egy felhőalapú szolgáltatás, amely segít a munkafolyamatok automatizálásában az alkalmazások és szolgáltatások között. Az Azure digitális Twins API-khoz való Logic Apps csatlakoztatásával az Azure digitális Twins szolgáltatásban és az azokban lévő adatforgalomban is létrehozhat ilyen automatizált folyamatokat.
 
-Az Azure Digital Twins jelenleg nem rendelkezik hitelesített (előre elkészített) összekötővel a Logic Appshoz. Ehelyett a Logic Apps és az Azure Digital Twins használatának jelenlegi folyamata egy [**egyéni Logic apps-összekötő**](../logic-apps/custom-connector-overview.md)létrehozása, amely egy [Egyéni Azure digitális Twins hencegés](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) használatával lett módosítva, hogy működjön a Logic apps.
+Az Azure Digital Twins jelenleg nem rendelkezik hitelesített (előre elkészített) összekötővel a Logic Appshoz. Ehelyett a Logic Apps és az Azure Digital Twins használatának jelenlegi folyamata egy [**egyéni Logic apps-összekötő**](../logic-apps/custom-connector-overview.md)létrehozása, amely egy [Egyéni Azure digitális Twins hencegés](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) használatával lett módosítva, hogy működjön a Logic apps.
 
 > [!NOTE]
 > A fent hivatkozott egyéni hencegő mintában a hencegés több verziója található. A legújabb verzió a legutóbbi dátummal rendelkező almappában található, de a mintában szereplő korábbi verziók továbbra is támogatottak.
@@ -93,7 +93,7 @@ Ekkor megjelenik az összekötő üzembe helyezési lapja. Ha befejezte az üzem
 
 Ezután konfigurálja a létrehozott összekötőt az Azure digitális Twins eléréséhez.
 
-Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy lett módosítva, hogy működjön a Logic Apps. Töltse le az **Azure Digital Twins egyéni hencegő** mintáját [**ebből a hivatkozásból**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) a *zip letöltése* gomb megnyomásával. Navigáljon a letöltött *Azure_Digital_Twins_Custom_Swaggers.zip* mappára, és csomagolja ki. 
+Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy lett módosítva, hogy működjön a Logic Apps. Töltse le az **Azure Digital Twins egyéni hencegő** mintáját [**ebből a hivatkozásból**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) a *zip letöltése* gomb megnyomásával. Navigáljon a letöltött *Azure_Digital_Twins_Custom_Swaggers.zip* mappára, és csomagolja ki. 
 
 Az oktatóanyaghoz tartozó egyéni hencegés a _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ mappában található. Ez a mappa a *STABLE* és a *Preview*nevű almappákat tartalmaz, amelyek mindegyike dátum szerint rendezi a hencegés különböző verzióit. A legutóbbi dátummal rendelkező mappa a hencegés legújabb példányát fogja tartalmazni. Bármelyik verziót választja, a hencegő fájl neve _**digitaltwins.json**_.
 
@@ -204,7 +204,7 @@ Más műveleteket is kiválaszthat, ha az _+ új lépést_ választja ugyanazon 
 
 Most, hogy létrejött a logikai alkalmazás, a Logic Apps Designerben definiált Twin Update eseményt három másodpercenként ismétlődik. Ez azt jelenti, hogy három másodperc elteltével le kell tudnia kérdezni a Twin-et, és látnia kell az új, javított értékeit.
 
-Lekérdezheti a Twin metódust a választott módszer (például [Egyéni ügyfélalkalmazás](tutorial-command-line-app.md), az [Azure Digital Twins Explorer minta alkalmazás](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), az [SDK-k és az API](how-to-use-apis-sdks.md)-k, illetve a [CLI](how-to-use-cli.md)) használatával. 
+Lekérdezheti a Twin metódust a választott módszer (például [Egyéni ügyfélalkalmazás](tutorial-command-line-app.md), az [Azure Digital Twins Explorer minta alkalmazás](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), az [SDK-k és az API](how-to-use-apis-sdks.md)-k, illetve a [CLI](how-to-use-cli.md)) használatával. 
 
 Ha többet szeretne megtudni az Azure Digital Twins-példány lekérdezéséről, olvassa el [*az útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)című témakört.
 

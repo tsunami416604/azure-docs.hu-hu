@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287267"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048151"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Adatok tárolása a peremhálózaton az Azure Blob Storage az IoT Edge-ben segítségével
 
-Az Azure Blob Storage on IoT Edge egy [blokk blobot](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) és egy [blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage-megoldást is tartalmaz a peremen. A IoT Edge eszközön található blob Storage-modul úgy viselkedik, mint egy Azure Blob Service, a Blobok kivételével a IoT Edge eszközön helyileg tárolódnak. A blobokhoz ugyanazokat az Azure Storage SDK-metódusokat vagy blob API-hívásokat használhatja, amelyeken már használatban van. Ez a cikk ismerteti az Azure Blob Storage IoT Edge-tárolóval kapcsolatos fogalmakat, amelyek a IoT Edge eszközön futó blob-szolgáltatást futtatnak.
+Az Azure Blob Storage on IoT Edge egy [blokk blobot](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) és egy [blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage-megoldást is tartalmaz a peremen. A IoT Edge eszközön található blob Storage-modul úgy viselkedik, mint egy Azure Blob Service, a Blobok kivételével a IoT Edge eszközön helyileg tárolódnak. A blobokhoz ugyanazokat az Azure Storage SDK-metódusokat vagy blob API-hívásokat használhatja, amelyeken már használatban van. Ez a cikk ismerteti az Azure Blob Storage IoT Edge-tárolóval kapcsolatos fogalmakat, amelyek a IoT Edge eszközön futó blob-szolgáltatást futtatnak.
 
 Ez a modul a következő helyzetekben hasznos:
 
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>Naplófájlok konfigurálása
 
-A modul naplófájljainak konfigurálásával kapcsolatos információkért tekintse meg az alábbi, az [éles környezettel kapcsolatos ajánlott eljárásokat](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics).
+A modul naplófájljainak konfigurálásával kapcsolatos információkért tekintse meg az alábbi, az [éles környezettel kapcsolatos ajánlott eljárásokat](./production-checklist.md#set-up-logs-and-diagnostics).
 
 ## <a name="connect-to-your-blob-storage-module"></a>Kapcsolódás a blob Storage-modulhoz
 
@@ -300,7 +300,7 @@ Visszajelzése fontos számunkra, hogy ez a modul és funkciói hasznos és kön
 
 A következő címen érhető el: absiotfeedback@microsoft.com
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [helyezheti üzembe az Azure Blob Storaget IoT Edge](how-to-deploy-blob.md)
 

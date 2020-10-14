@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f8e424529513b2932dcb18de941a8fe1867c1d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889741"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045448"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára
 
@@ -86,9 +86,7 @@ Ismerkedjen meg ezekkel a beépített besorolási mintákkal. A mintákról a mi
 
 Ismerkedjen meg ezekkel a beépített számítógépes jövőkép mintákkal. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
 
-| Mintacím | Leírás | 
-| --- | --- |
-| Széles & részletes ajánlás – éttermi értékelés előrejelzése | Hozzon létre egy étterem ajánló motort az étterem/felhasználó funkciók és értékelések közül.|
+| Képek besorolása a DenseNet használatával | A Computer látási modulok használatával PyTorch-DenseNet alapuló képbesorolási modellt hozhat létre. | 
 
 ## <a name="recommender"></a>Ajánló
 
@@ -96,7 +94,8 @@ Ismerkedjen meg ezekkel a beépített Ajánlói mintákkal. A mintákról a mint
 
 | Mintacím | Leírás | 
 | --- | --- |
-| Képbesorolás a DenseNet használatával | A Computer látási modulok használatával PyTorch-DenseNet alapuló képbesorolási modellt hozhat létre.| 
+| Széles & részletes ajánlás – éttermi értékelés előrejelzése | Hozzon létre egy étterem ajánló motort az étterem/felhasználó funkciók és értékelések közül.|
+| Ajánlás – film minősítési tweetek | Hozzon létre egy Movie Ajánlói motort a Movie/User szolgáltatásokból és a minősítésekről.|
 
 ## <a name="utility"></a>Segédprogram
 
@@ -119,7 +118,7 @@ A minta adatkészletek az **adatkészletek** - **mintáinak** kategóriájában 
 | Adatkészlet &nbsp; neve&nbsp;&nbsp;&nbsp;&nbsp;| Adatkészlet leírása |
 |-------------|:--------------------|
 | Felnőtt népszámlálás jövedelme bináris besorolási adatkészlet | Az 1994-es népszámlálási adatbázis egy részhalmaza, amely a 16. korban dolgozó felnőtteket használja > 100 korrigált bevételi indexszel.<br/>**Használat**: a demográfiai adatokat használó személyek besorolása annak előrejelzéséhez, hogy egy személy évente több mint 50 000-et keres.<br/> **Kapcsolódó kutatás**: Kohavi, R., Becker, B., (1996). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
-|Az autók árát (nyers)|Információk a márka és a modell alapján, beleértve a díjszabást, az olyan szolgáltatásokat, mint például a hengerek száma és az MPG, valamint a biztosítási kockázati pontszám.<br/> A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt követően a rendszer a tényleges kockázatokat egy, a biztosítási matematikusok ismert folyamat során helyesbíti. A + 3 érték azt jelzi, hogy az automatikus kockázatos, a-3 érték pedig valószínűleg biztonságos.<br/>**Használat**: </b> a funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával.<br/>**Kapcsolódó kutatás**: </b> Schlimmer, J.C. (1987). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
+|Az autók árát (nyers)|Információk a márka és a modell alapján, beleértve a díjszabást, az olyan szolgáltatásokat, mint például a hengerek száma és az MPG, valamint a biztosítási kockázati pontszám.<br/> A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt követően a rendszer a tényleges kockázatokat egy, a biztosítási matematikusok ismert folyamat során helyesbíti. A + 3 érték azt jelzi, hogy az automatikus kockázatos, a-3 érték pedig valószínűleg biztonságos.<br/>**Használat**: a funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával.<br/>**Kapcsolódó kutatás**: Schlimmer, J.C. (1987). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
 | Megosztott CRM szolgáltatóváltást-Címkék |A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_appetency. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)) címkéi.|
 |Megosztott CRM-adatforgalom-Címkék|A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)) címkéi.|
 |Megosztott CRM-adatkészlet | Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) származnak. <br/>Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-től. Minden ügyfél 230-es anonim funkciókkal rendelkezik, amelyek 190 a numerikus és a 40-as számú adat kategorikus. A funkciók nagyon ritkák. |
@@ -130,13 +129,15 @@ A minta adatkészletek az **adatkészletek** - **mintáinak** kategóriájában 
 |Film minősítése|Az adatkészlet a Movie tweetek adatkészlet kiterjesztett verziója. Az adatkészlet 170K-minősítésekkel rendelkezik, amelyek a Twitteren jól strukturált tweetekkel lettek kinyerve. Minden példány egy tweetet jelöl, és egy rekord: felhasználói azonosító, IMDB-film azonosítója, minősítés, időbélyeg, kedvencek száma ehhez a tweethez és a tweetek száma. Az adatkészlet elérhetővé tétele a. Said, S. dooms, B. Loni és D. tikk for ajánló Systems Challenge 2014.|
 |Időjárási adatkészlet|A NOAA-ből származó, óránkénti szárazföld-alapú időjárási megfigyelések ([201304 és 201310 közötti egyesített adatok](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, az 2013-as April-October időszakra vonatkozóan. A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> – A meteorológiai állomások azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve    <br/> – A 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások kiszűrése megtörtént    <br/> -A Date oszlop külön évre, hónapra és napi oszlopokra van bontva    <br/> – A következő oszlopok lettek kiválasztva: AirportID, év, hónap, nap, idő, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, rekordtípus, HourlyPrecip, magasságmérő|
 |Wikipedia SP 500 adatkészlet|Az adatok a wikipedia-ből származnak (az https://www.wikipedia.org/) egyes S&P 500-es vállalatok cikkei alapján, amelyek XML-adatként vannak tárolva.    <br/>A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> -Szöveges tartalom kinyerése minden egyes vállalatnál    <br/> – Wiki formázásának eltávolítása    <br/> – Nem alfanumerikus karakterek eltávolítása    <br/> – Az összes szöveg konvertálása kisbetűsre    <br/> – Ismert vállalati kategóriák lettek hozzáadva    <br/>Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
-
+|Az éttermi funkciókról| Az éttermekkel és azok funkcióival, például élelmiszer-típussal, étkezési stílussal és hellyel kapcsolatos metaadatok halmaza. <br/>**Használat**: használja ezt az adatkészletet a másik két éttermi adatkészlettel együtt az ajánló rendszer betanításához és teszteléséhez.<br/> **Kapcsolódó kutatás**: BACHE, K. és Licher, M. (2013). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.|
+|Éttermi minősítések| A felhasználók által az éttermek számára a 0 és 2 közötti skálán megadott minősítéseket tartalmazza.<br/>**Használat**: használja ezt az adatkészletet a másik két éttermi adatkészlettel együtt az ajánló rendszer betanításához és teszteléséhez. <br/>**Kapcsolódó kutatás**: BACHE, K. és Licher, M. (2013). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.|
+|Az éttermi ügyféladatok| Az ügyfelekkel kapcsolatos metaadatok összessége, beleértve a demográfiai adatokat és a preferenciákat. <br/>**Használat**: használja ezt az adatkészletet a másik két éttermi adatkészlettel együtt az ajánló rendszer betanításához és teszteléséhez. <br/> **Kapcsolódó kutatás**: BACHE, K. és Licher, M. (2013). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml) Irvine, CA: University of California, School of Information and Computer Science.|
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a prediktív elemzés és a gépi tanulás alapjait az [oktatóanyaggal: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
 

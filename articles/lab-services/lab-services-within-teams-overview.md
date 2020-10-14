@@ -3,18 +3,21 @@ title: Azure Lab Services a Microsoft Teams szolgáltatáson belül
 description: Áttekintést nyújt Azure Lab Services használatáról a Microsoft Teams szolgáltatásban.
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 8b70ab3cbf1a342646f6a2897550c4bf8f7601a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946667"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047828"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Azure Lab Services a Microsoft Teams szolgáltatáson belül
 
-Azure Lab Services tulajdonosai/alkotói már létrehozhatnak laborokat a Microsoft Teams szolgáltatásban.
+A Azure Lab Services a Microsoft Teams szolgáltatásban **Azure Lab Services** Teams alkalmazással is kihasználható. A labor-fiók tulajdonosi/közreműködői/létrehozói hozzáféréssel rendelkező csapatának tulajdonosai létrehozhatnak laborokat, és virtuális gépeket hozhatnak létre a csapat minden tagja számára.
 
-Ez a cikk a csapatok integrációjának előnyeit mutatja be, és hivatkozásokat tartalmaz más cikkekhez, amelyek útmutatást nyújtanak a csapatokon belüli Azure Lab Services kezeléséhez. 
+Ez a cikk a Azure Lab Services csapatokon belüli használatának előnyeit mutatja be, és más cikkekre mutató hivatkozásokat is tartalmaz, amelyekkel megtudhatja, hogyan hozhat létre és kezelhet laborokat a csapatokon belül. 
+
+> [!NOTE]
+>**Azure Lab Services** A Teams alkalmazás csak csapathoz vehető fel, nem adható hozzá egyéni csevegésekhez vagy csoportos csevegésekhez.
 
 ## <a name="benefits"></a>Előnyök
 
@@ -27,12 +30,12 @@ Azure Lab Services a Microsoft Teams integrációja segít a pedagógusok szám�
 * A csapat és a labor tulajdonosai csak a csapattal és diákokkal kapcsolatos laborokat fogják megtekinteni, és csak azokat a virtuális gépeket tekintik meg, amelyek az adott csapat számára lettek kiépítve. 
 * A rendszer automatikusan regisztrálja a felhasználókat a laborban, és a rendszer automatikusan hozzárendeli a virtuális gépeket az első bejelentkezéshez a tesztkörnyezet közzétételekor. Az oktatóknak nem kell elküldeniük a meghívókat és a tanulókat nem kell külön regisztrálni a laborba.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 
-- [Első lépések és labor Services-tesztkörnyezet létrehozása a csapatokból](how-to-get-started-create-lab-within-teams.md)
-- [A labor Services felhasználói listájainak kezelése a csapatokból](how-to-manage-user-lists-within-teams.md)
-- [Virtuálisgép-készlet kezelése a labor Servicesben a csapatoktól](how-to-manage-vm-pool-within-teams.md)
-- [Labor Services-ütemtervek létrehozása a csapatokból](how-to-create-schedules-within-teams.md)
-- [Hozzáférés egy virtuális géphez (Student View) a labor Servicesben a csapatoktól](how-to-access-vm-for-students-within-teams.md)
+- [Első lépések és tesztkörnyezet létrehozása a csapatokon belül](how-to-get-started-create-lab-within-teams.md)
+- [Tesztkörnyezet felhasználói listájainak kezelése a csapatokon belül](how-to-manage-user-lists-within-teams.md)
+- [A labor virtuálisgép-készletének kezelése a csapatokon belül](how-to-manage-vm-pool-within-teams.md)
+- [Labor-ütemtervek létrehozása és kezelése a csapatokon belül](how-to-create-schedules-within-teams.md)
+- [Hozzáférés a csapatokon belüli virtuális gépekhez – tanuló nézet](how-to-access-vm-for-students-within-teams.md)

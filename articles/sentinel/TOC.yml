@@ -35,6 +35,8 @@
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
       href: import-threat-intelligence.md
+    - name: Külső adatok használata figyelőlistákkal
+      href: watchlists.md
     - name: Adatok normalizálása táblázatok között
       href: normalization.md
     - name: Biztonság

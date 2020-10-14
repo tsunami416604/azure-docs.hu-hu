@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723928"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047675"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
@@ -73,7 +73,7 @@ Minden naplózási kategória írási, olvasási, törlési és művelet-művele
 | Törlés | DELETE |
 | Művelet | POST |
 
-Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](https://docs.microsoft.com/rest/api/azure-digitaltwins/) a különböző kategóriákba bejelentkezett hívások részletes listája. 
+Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](/rest/api/azure-digitaltwins/) a különböző kategóriákba bejelentkezett hívások részletes listája. 
 
 >[!NOTE]
 > Minden naplózási kategória több művelet/REST API hívást tartalmaz. Az alábbi táblázatban minden naplózási kategória az összes művelet/REST API hívására vonatkozik, amíg meg nem jelenik a következő napló kategóriája. 
@@ -223,7 +223,7 @@ Az alábbi példa JSON-törzseket mutat be az ilyen típusú naplókhoz.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [*adatok gyűjtése és felhasználása az Azure-erőforrásokból*](../azure-monitor/platform/platform-logs-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).

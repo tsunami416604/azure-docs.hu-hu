@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af3eb828e1fd2c4aa14467e5afc18f1b5a0b7fa1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201158"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047709"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Adatbetöltési stratégiák Synapse SQL-készlethez
 
@@ -28,10 +28,6 @@ Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népsz
 
 A Base és a COPY utasítás használatával az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolt külső adatokhoz a T-SQL nyelv használatával férhet hozzá. A betöltés legrugalmasabban a MÁSOLÁSi utasítás használata javasolt.
 
-> [!NOTE]  
-> A COPY utasítás jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni, küldjön e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
-
-> [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>Mi az a ELT?
 
@@ -111,7 +107,7 @@ A következő SQL adattípus-leképezés használata a parketta-fájlok betölt�
 |                            INT32                             |            INT (8, hamis)            |     tinyint      |
 |                            INT32                             |            INT (16, hamis)             |       int        |
 |                            INT32                             |           INT (32, hamis)            |      bigint      |
-|                            INT32                             |                 DATE                  |       dátum       |
+|                            INT32                             |                 DATE                  |       date       |
 |                            INT32                             |                DECIMÁLIS                |     tizedes tört      |
 |                            INT32                             |            IDŐ (MILLIS)             |       time       |
 |                            INT64                             |            INT (64, true)            |      bigint      |
@@ -170,6 +166,6 @@ Az ETL-folyamat tervezésekor próbálja meg futtatni a folyamatot egy kis teszt
 
 Számos partnerünk betöltési megoldásokkal rendelkezik. További információért tekintse meg a [megoldás partnereink](sql-data-warehouse-partner-business-intelligence.md)listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutatás a betöltéshez: [Útmutató az adatok betöltéséhez](guidance-for-loading-data.md).
