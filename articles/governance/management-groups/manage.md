@@ -1,14 +1,14 @@
 ---
 title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951944"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058097"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -119,7 +119,7 @@ Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy ö
 
 1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
-1. A felügyeleti csoport hierarchia lapja betöltődik. Ezen a lapon megtekintheti az összes olyan felügyeleti csoportot és előfizetést, amelyhez hozzáfér. Ha kiválasztja a csoport nevét, a hierarchia egy szintjének kiválasztására kerül sor. A navigáció ugyanúgy működik, mint a fájlkezelő.
+1. A felügyeleti csoport hierarchia lapja betöltődik. Ezen a lapon megtekintheti az összes olyan felügyeleti csoportot és előfizetést, amelyhez hozzáfér. A csoport nevének kiválasztásával a hierarchia alacsonyabb szintre kerül. A navigáció ugyanúgy működik, mint a fájlkezelő.
 
 1. A felügyeleti csoport részleteinek megtekintéséhez kattintson a **(részletek)** hivatkozásra a felügyeleti csoport címe mellett. Ha ez a hivatkozás nem érhető el, nincs engedélye a felügyeleti csoport megtekintésére.
 
@@ -211,7 +211,7 @@ Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége:
 
 **Kivétel**: Ha a cél vagy a meglévő szülő felügyeleti csoport a gyökérszintű felügyeleti csoport, az engedélyek követelményei nem érvényesek. Mivel a legfelső szintű felügyeleti csoport az összes új felügyeleti csoport és előfizetés alapértelmezett kihelyezett helye, nincs szükség arra, hogy az adott elem áthelyezéséhez szükséges engedélyekkel rendelkezik.
 
-Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Nem helyezhető át olyan felügyeleti csoportba, ahol Ön közreműködő, mert elveszti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van hozzárendelve (nem a felügyeleti csoporttól örökölt), akkor áthelyezheti azt bármely olyan felügyeleti csoportba, ahol Ön közreműködő.
+Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Az előfizetés nem helyezhető át olyan felügyeleti csoportba, ahol Ön csak közreműködő, mert elveszíti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van rendelve, akkor áthelyezheti azt bármely olyan felügyeleti csoportba, ahol Ön közreműködő.
 
 Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portalban, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. Az Azure-szerepkörökkel kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
@@ -345,7 +345,7 @@ Ugyanazt a hatókörbeli elérési utat használja a rendszer a házirend-defin�
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

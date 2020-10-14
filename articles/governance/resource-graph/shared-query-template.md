@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: megosztott lekérdezés létrehozása sablonokkal'
 description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy olyan erőforrás-gráf megosztott lekérdezést, amely az operációs rendszer által használt virtuális gépeket számolja.
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88685527"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057008"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Gyors útmutató: megosztott lekérdezés létrehozása ARM-sablon használatával
 
@@ -53,9 +53,9 @@ A sablonban definiált erőforrás:
    | Előfizetés | Válassza ki az Azure-előfizetését. |
    | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. |
    | Hely | Válasszon régiót. Például: **USA középső régiója**. |
-   | Lekérdezés neve | Hagyja meg az alapértelmezett értéket a **virtuális gépek operációs rendszer szerinti számlálásával**. |
-   | Lekérdezési kód | Hagyja meg az alapértelmezett értéket `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
-   | Lekérdezés leírása | Hagyja meg az alapértelmezett értéket **, ez a megosztott lekérdezés az összes virtuálisgép-erőforrást megszámolja, és az operációs rendszer típusa szerint összegzi.** |
+   | Lekérdezés neve | Hagyja meg az alapértelmezett értéket: a **virtuális gépek száma operációs rendszer szerint**. |
+   | Lekérdezési kód | Hagyja meg az alapértelmezett értéket: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | Lekérdezés leírása | Hagyja meg az alapértelmezett értéket: **Ez a megosztott lekérdezés a virtuális gép összes erőforrását megszámolja, és az operációs rendszer típusa szerint összegzi.** |
    | Elfogadom a fenti feltételeket és kikötéseket | Válassza |
 
 1. Válassza a **Vásárlás** lehetőséget.
@@ -75,7 +75,7 @@ Az új megosztott lekérdezés futtatásához kövesse az alábbi lépéseket:
 
 1. Válassza ki a **Count virtuális gépek**nevű megosztott lekérdezést operációs rendszer szerint, majd válassza ki az **eredmények** lapot az **Áttekintés** oldalon.
 
-Azt is megteheti, hogy a megosztott lekérdezést megnyithatja a Resource Graph Explorerben:
+A megosztott lekérdezés a Resource Graph Explorerben is megnyitható:
 
 1. A portálon keresse meg a **Resource Graph Explorert** , és jelölje ki.
 
@@ -83,7 +83,7 @@ Azt is megteheti, hogy a megosztott lekérdezést megnyithatja a Resource Graph 
 
 1. Módosítsa a **típust** _megosztott lekérdezésekre_. Ha a listában nem jelenik meg a **virtuális gépek száma operációs rendszer szerint** , használja a szűrő mezőt az eredmények korlátozásához. Ha a **virtuális gépek száma az operációs rendszer** megosztott lekérdezésével látható, válassza ki a nevét.
 
-1. A lekérdezés betöltését követően kattintson a **lekérdezés futtatása** gombra. Az eredmények az alábbi **eredmények** lapon jelennek meg.
+1. A lekérdezés betöltését követően kattintson a **lekérdezés futtatása** gombra. Az eredmények a **Results (eredmények** ) lapon jelennek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -95,7 +95,7 @@ A létrehozott megosztott lekérdezés eltávolításához kövesse az alábbi l
 
 1. Kattintson a **Törlés** gombra az oldal tetején.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Resource Graph megosztott lekérdezést.
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617060"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058216"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Oktatóanyag: két felügyelt példány közötti replikáció konfigurálása
 
@@ -27,7 +27,7 @@ A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik 
 
 A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -48,7 +48,7 @@ Ez az oktatóanyag egy tapasztalt közönség számára készült, és feltétel
 
 Ha úgy konfigurálja az SQL felügyelt példányt, hogy közzétevőként és/vagy terjesztőként működjön, a következők szükségesek:
 
-- A közzétevő felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [virtuális](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) hálózatok közötti kapcsolat a mindhárom entitás virtuális hálózatai között lett konfigurálva. 
+- A közzétevő felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [VPN-átjárók](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) mind a három entitás virtuális hálózatai között vannak konfigurálva. 
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között.
 - Egy Azure Storage-fiók megosztása a replikációs munkakönyvtárhoz.
 - Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez.  Ha hibát tapasztal `failed to connect to azure storage \<storage account name> with os error 53` , hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.

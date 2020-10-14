@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920976"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951638"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson a **Get credentials** (Hitelesítő adatok beszerzése) lehetőségre a tárfiókhoz társított megosztások hitelesítő adataihoz való hozzáféréshez.
 
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![Megosztások hitelesítő adatainak beszerzése](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Kattintson az **OK** gombra.
     
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![Megosztások hitelesítő adatainak beszerzése 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. A tárfiókjához (a következő példában *databoxe2etest*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
@@ -122,7 +122,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     A megosztásoknak ezután mappaként kell megjelenniük.
     

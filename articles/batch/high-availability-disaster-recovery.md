@@ -3,12 +3,12 @@ title: Magas rendelkezésre állás és vészhelyreállítás
 description: Megtudhatja, hogyan tervezheti meg a Batch-alkalmazást regionális leállás esetén.
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c77e6fa672d26545af47b262a982a7d0d7303eec
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83725737"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058012"
 ---
 # <a name="design-your-application-for-high-availability"></a>Magas rendelkezésre állású alkalmazás tervezése
 
@@ -37,7 +37,7 @@ A feladatátvételt biztosító megoldás tervezésekor vegye figyelembe a köve
 - Az alkalmazásban a Batch, a Storage és bármely más szolgáltatás meghívásával egyszerűen átkapcsolhatja az ügyfeleket vagy a terhelést a másik régióba.
 - Ajánlott eljárás a feladatátvétel sikerességének biztosítására, hogy a normál működés részeként gyakran váltson át egy másik régióba. Ha például két üzemelő példány külön régióban található, a rendszer minden hónapban átvált a másodlagos régióba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a Batch-fiókok [Azure Portal](batch-account-create-portal.md), az [Azure CLI](cli-samples.md), a [POWERSHELL](batch-powershell-cmdlets-get-started.md)vagy a [Batch Management API](batch-management-dotnet.md)használatával történő létrehozásáról.
+- További információ a Batch-fiókok [Azure Portal](batch-account-create-portal.md), az [Azure CLI](./scripts/batch-cli-sample-create-account.md), a [POWERSHELL](batch-powershell-cmdlets-get-started.md)vagy a [Batch Management API](batch-management-dotnet.md)használatával történő létrehozásáról.
 - Az alapértelmezett kvóták egy batch-fiókhoz vannak társítva; [Ez a cikk](batch-quota-limit.md) az alapértelmezett kvóta-értékeket részletezi, és leírja, hogyan lehet növelni a kvótákat.

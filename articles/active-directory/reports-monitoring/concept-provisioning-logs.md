@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812556"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056157"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -42,7 +42,7 @@ Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
-* Alkalmazás tulajdonosai
+* Az alkalmazás tulajdonosai megtekinthetik a saját alkalmazások naplóit
 * Felhasználók a biztonsági rendszergazda, a biztonsági olvasó, a jelentéskészítő, az alkalmazás rendszergazdája és a Felhőbeli alkalmazás rendszergazdai szerepkörei
 * Globális rendszergazdák
 
@@ -56,7 +56,7 @@ A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy l
 A kiépítési naplók a következő kérdésekre adnak választ:
 
 * Milyen csoportokat sikerült létrehozni a ServiceNow-ben?
-* Hogyan lettek importálva a szerepkörök a Amazon Web Services?
+* Milyen szerepkörök lettek importálva a Amazon Web Services?
 * Mely felhasználók lettek sikeresen létrehozva a DropBoxban?
 
 A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
@@ -86,7 +86,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrés")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -96,11 +96,11 @@ Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
 - Dátum
-- status
+- Állapot
 - Művelet
 
 
-![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrő")
+![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrés")
 
 Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
 
@@ -191,7 +191,7 @@ A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepe
 
 
 
-![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrés")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
@@ -211,7 +211,7 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-- Ha ingyenes kiadással rendelkezik, a Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést. A kiépítési naplók 30 napon túli megőrzés céljából közzétehetők a log Analyticsben. 
+- Ha ingyenes kiadással rendelkezik, a Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést. A kiépítési naplók 30 napon túli megőrzés céljából közzétehetők a [log Analyticsben](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) . 
 
 - A Change ID attribútum egyedi azonosítóként használható. Ez például a terméktámogatással való interakció esetén hasznos.
 

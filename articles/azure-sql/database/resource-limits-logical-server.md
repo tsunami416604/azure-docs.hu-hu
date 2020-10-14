@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618960"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058250"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,9 +59,9 @@ Ha az adatbázis számítási CPU-kihasználtsága magas lesz, a lekérdezés k�
 Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehetőségek a következők:
 
 - Az adatbázis vagy a rugalmas készlet számítási méretének növelése az adatbázis további számítási erőforrásokkal való biztosításához. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
-- Lekérdezések optimalizálása az egyes lekérdezések CPU-erőforrásai kihasználtságának csökkentése érdekében. További információ: a [lekérdezés finomhangolása/célzása](performance-guidance.md#query-tuning-and-hinting).
+- Lekérdezések optimalizálása az egyes lekérdezések CPU-erőforrásai kihasználtságának csökkentése érdekében. További információkért lásd: [Lekérdezések finomhangolása/Javaslatok](performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek lesznek, és az ügyfelek [hibaüzenetet](troubleshoot-common-errors-issues.md)kapnak. A SELECT és DELETE utasítások továbbra is sikeresek lesznek.
 
@@ -78,7 +78,7 @@ A munkamenetek és a feldolgozók maximális számát a szolgáltatási szintek 
 A magas munkamenet vagy munkavégző kihasználtsága esetén a kockázatcsökkentő lehetőségek a következők:
 
 - Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
-- A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében, ha a munkavégzők nagyobb kihasználtságának oka a számítási erőforrások miatti kihasználása. További információ: a [lekérdezés finomhangolása/célzása](performance-guidance.md#query-tuning-and-hinting).
+- A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében, ha a munkavégzők nagyobb kihasználtságának oka a számítási erőforrások miatti kihasználása. További információkért lásd: [Lekérdezések finomhangolása/Javaslatok](performance-guidance.md#query-tuning-and-hinting).
 - Csökkentse a [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximális párhuzamossági fok) beállítást.
 - A lekérdezési munkaterhelés optimalizálása az előfordulások számának csökkentése és a lekérdezés letiltásának időtartama alapján.
 
@@ -137,11 +137,11 @@ Ha például egy lekérdezés az i/o-erőforrás szabályozása nélkül 1000 IO
 
 A [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) nézet által visszaadott minimális/maximális értékek IOPS és átviteli sebessége korlátoknak/sapkának, nem pedig garanciának. Az erőforrás-szabályozás továbbá nem garantálja az adott tárolási késést. Egy adott felhasználói munkaterhelések esetében az elérhető legjobb késés, IOPS és teljesítmény nem csupán az IO-erőforrásokra vonatkozó irányítási korlátokra, hanem a felhasznált IO-méretek és a mögöttes tároló képességeire is érvényes. A SQL Database a 512 KB és 4 MB közötti méretekben eltérő IOs-t használ. A IOPS-korlátok betartatása érdekében minden i/o-érték a mérettől függetlenül fiókba kerül, az Azure Storage-ban tárolt adatfájlokkal rendelkező adatbázisok kivételével. Ebben az esetben a 256 KB-nál nagyobb IOs-nél több 256-KB-os IOs-ként van ellátva, hogy illeszkedjen az Azure Storage IO-nyilvántartásához.
 
-Az Azure Storage-ban adatfájlokat használó alapszintű, standard és általános célú adatbázisok esetében az `primary_group_max_io` érték nem érhető el, ha egy adatbázis nem rendelkezik elegendő adatfájllal, hogy összesítse a IOPS, vagy ha az adatok nem egyenletesen vannak elosztva a fájlok között, vagy ha az alapul szolgáló Blobok teljesítményi szintje az erőforrás-irányítási korlát alatti IOPS/átviteli sebességet korlátozza. Hasonlóképpen, a gyakori tranzakció-véglegesítés által generált kis log IOs esetében `primary_max_log_rate` Előfordulhat, hogy az érték nem érhető el az alapul szolgáló Azure Storage-blob IOPS-korlátja miatt.
+Az Azure Storage-ban adatfájlokat használó alapszintű, standard és általános célú adatbázisok esetében az `primary_group_max_io` érték nem érhető el, ha egy adatbázis nem rendelkezik elegendő adatfájllal, hogy összesítse a IOPS, vagy ha az adatok nem egyenletesen vannak elosztva a fájlok között, vagy ha az alapul szolgáló Blobok teljesítményi szintje korlátozza az erőforrás-irányítási korlátok alatti IOPS/átviteli sebességet. Hasonlóképpen, a gyakori tranzakciók által generált kis log IOs esetében az `primary_max_log_rate` érték nem valósítható meg az alapul szolgáló Azure Storage-blob IOPS korlátja miatt. Az Azure Premium Storaget használó adatbázisok esetén a Azure SQL Database megfelelően nagy tárolási blobokat használ a szükséges IOPS/átviteli sebesség eléréséhez, az adatbázis méretétől függetlenül. Nagyobb adatbázisok esetén a rendszer több adatfájlt hoz létre a teljes IOPS/átviteli kapacitás növelése érdekében.
 
 A (z) és a (z) `avg_data_io_percent` `avg_log_write_percent` [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database),  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetekben jelentett erőforrás-felhasználási értékeket a rendszer a maximális erőforrás-irányítási korlátok százalékában számítja ki. Ezért ha az erőforrás-szabályozástól eltérő tényezők IOPS/átviteli sebességre vannak korlátozva, megtekintheti a IOPS/átviteli sebesség simítását és a késések növelését a munkaterhelés növekedésével, bár a jelentett erőforrás-kihasználtság a 100% alatti marad.
 
-Ha szeretné megtekinteni az IOPS, az átviteli sebesség és a késés olvasási és írási időpontját, használja a [sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) függvényt. Ez a függvény felfedi az összes i/o-adatbázist az adatbázison, beleértve a háttér i/o-t, amely nem része a felé `avg_data_io_percent` , de az alapul szolgáló TÁRTERÜLET IOPS és átviteli sebességét használja, és hatással lehet a megfigyel A függvény emellett felfedi a további késéseket is, amelyeket az i/o-erőforrások irányításával lehet bevezetni az olvasási és írási műveletekhez a `io_stall_queued_read_ms` és az `io_stall_queued_write_ms` oszlopokban.
+Ha szeretné megtekinteni az IOPS, az átviteli sebesség és a késés olvasási és írási időpontját, használja a [sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) függvényt. Ez a függvény felfedi az összes i/o-adatbázist az adatbázison, beleértve a háttér i/o-t, amely nem része a felé `avg_data_io_percent` , de az alapul szolgáló TÁRTERÜLET IOPS és átviteli sebességét használja, és hatással lehet a megfigyel A függvény felfedi a további késéseket, amelyeket az i/o-erőforrások irányításával lehet bevezetni az olvasási és írási műveletekhez a `io_stall_queued_read_ms` és az `io_stall_queued_write_ms` oszlopokban.
 
 ### <a name="transaction-log-rate-governance"></a>Tranzakciós naplók arányának szabályozása
 

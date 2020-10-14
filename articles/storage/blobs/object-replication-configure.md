@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939416"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055970"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -365,7 +365,16 @@ Az alábbi lépéseket követve ellenőrizheti egy blob replikálási állapotá
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+A PowerShellben található blob replikálási állapotának megtekintéséhez szerezze be az objektum-replikációs **ReplicationStatus** tulajdonság értékét az alábbi példában látható módon. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

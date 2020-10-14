@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: az első PowerShell-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Azure PowerShell Resource Graph-modult, és futtathatja az első lekérdezést.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b810f4af319d3a5212d35e3387ab35b9fa40aafa
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056397"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057433"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával
 
@@ -105,7 +105,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 > [!NOTE]
 > Ez nem törli a korábban letöltött Module-fájlt. Csak eltávolítja azt a futó PowerShell-munkamenetből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban felvette az erőforrás-gráf modult a Azure PowerShell környezetbe, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

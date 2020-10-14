@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321594"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058267"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Fenntartott kapacitással rendelkező erőforrások költségeinek mentése – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 A Azure SQL Database és az SQL felügyelt példányával pénzt takaríthat meg, ha kifizeti a számítási erőforrások foglalását az utólagos elszámolású árakhoz képest. A fenntartott kapacitással a SQL Database és/vagy az SQL felügyelt példányainak egy vagy három éves időszakra vonatkozó kötelezettségvállalását kell elvégeznie, hogy a számítási költségek jelentős kedvezményt kapjanak. A fenntartott kapacitás megvásárlásához meg kell adnia az Azure-régiót, a központi telepítési típust, a teljesítménnyel kapcsolatos szintet és a kifejezést.
 
-A foglalást nem kell hozzárendelni egy adott adatbázishoz vagy felügyelt példányhoz. A már futó vagy újonnan üzembe helyezett meglévő központi telepítések automatikusan megkapják a kedvezményt. A foglalás megvásárlásával véglegesíti a számítási költségek felhasználását egy vagy három év alatt. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő számítási díjakra már nem számítunk fel díjat az utólagos elszámolású díjszabásban. A foglalás nem vonatkozik a szolgáltatáshoz kapcsolódó szoftverekre, hálózatokra vagy tárolási díjakra. A foglalási időszak végén a számlázási juttatás lejár, és az adatbázis vagy a felügyelt példány díját az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem újítják meg automatikusan. A díjszabással kapcsolatos információkért tekintse meg a [fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+A foglalást nem kell hozzárendelni egy adott adatbázishoz vagy felügyelt példányhoz. A már futó vagy újonnan üzembe helyezett meglévő központi telepítések automatikusan megkapják a kedvezményt. A foglalás megvásárlásával véglegesíti a számítási költségek felhasználását egy vagy három év alatt. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő számítási díjakra már nem számítunk fel díjat az utólagos elszámolású díjszabásban. 
+
+A foglalás az elsődleges és a számlázható másodlagos számítási replikára is vonatkozik, de nem fedi le a szolgáltatáshoz kapcsolódó szoftver-, hálózatkezelési és tárolási díjakat. A foglalási időszak végén a számlázási juttatás lejár, és az adatbázis vagy a felügyelt példány díját az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem újítják meg automatikusan. A díjszabással kapcsolatos információkért tekintse meg a [fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
 Fenntartott kapacitást a [Azure Portal](https://portal.azure.com)is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../../cost-management-billing/reservations/prepare-buy-reservation.md). Fenntartott kapacitás vásárlása:
 
@@ -32,6 +34,9 @@ Fenntartott kapacitást a [Azure Portal](https://portal.azure.com)is vásárolha
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie. Fenntartott kapacitás.
 
 Ha többet szeretne megtudni arról, hogy a vállalati ügyfelek és az utólagos elszámolású ügyfelek milyen díjat számítanak fel a foglalások beszerzésére, tekintse meg az [Azure foglalás használatának ismertetése a nagyvállalati beléptetéssel](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) és [Az Azure foglalás használatának](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)ismertetése az utólagos elszámolású előfizetéshez.
+
+> [!NOTE]
+> A fenntartott kapacitás megvásárlása nem foglalja le előre a használatra vonatkozó infrastruktúra-erőforrásokat (virtuális gépeket vagy csomópontokat).
 
 ## <a name="determine-correct-size-before-purchase"></a>A megfelelő méret meghatározása a vásárlás előtt
 

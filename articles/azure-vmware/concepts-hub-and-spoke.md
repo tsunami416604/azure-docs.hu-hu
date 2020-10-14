@@ -2,17 +2,18 @@
 title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálása egy sugaras architektúrával
 description: Ismerje meg az Azure VMware-megoldások üzembe helyezését egy meglévő vagy egy új, az Azure-ban, az Azure-ban.
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/14/2020
+ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019269"
+ms.locfileid: "92058471"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
 Ebben a cikkben javaslatot teszünk egy Azure VMware-megoldás üzembe helyezésének integrálására egy meglévő vagy egy új, az Azure [-ban küllő architektúrában](/azure/architecture/reference-architectures/hybrid-networking/shared-services) . 
+
 
 A hub és küllős forgatókönyv hibrid felhőalapú környezetet feltételez a következő munkaterhelésekkel:
 
@@ -25,6 +26,9 @@ A hub és küllős forgatókönyv hibrid felhőalapú környezetet feltételez a
 A *hub* egy azure-Virtual Network, amely központi kapcsolódási pontként szolgál a helyszíni és az Azure VMware-megoldás privát felhőhöz. A *küllők* olyan virtuális hálózatok, amelyek a központtal együttműködve lehetővé teszik a virtuális hálózat közötti kommunikációt.
 
 A helyszíni adatközpont, az Azure VMware Solution Private Cloud és a hub közötti forgalom az Azure ExpressRoute-kapcsolatokon keresztül halad. A küllős virtuális hálózatok általában IaaS-alapú számítási feladatokat tartalmaznak, de olyan Pásti-szolgáltatásokat is tartalmazhatnak, mint például a [app Service Environment](../app-service/environment/intro.md), amelyek közvetlen integrációját Virtual Network vagy más, az [Azure Private linktel](../private-link/index.yml) rendelkező Pásti szolgáltatásokkal együtt.
+
+>[!IMPORTANT]
+>Egy meglévő ExpressRoute-átjáróval csatlakozhat az Azure VMware-megoldáshoz, ha nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot.  Ahhoz azonban, hogy a helyszíni Azure VMware-megoldás elérhető legyen a ExpressRoute-on keresztül, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.
 
 Az ábrán egy példa látható az Azure-ban a helyszíni és az Azure VMware-megoldáshoz kapcsolódó, az ExpressRoute Global Reach-en keresztül csatlakozó sugaras üzembe helyezésre.
 
@@ -105,14 +109,17 @@ A részletekért és a követelményekért tekintse át [Application Gateway](./
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
 
 
-### <a name="jumpbox-and-azure-bastion"></a>Jumpbox és az Azure Bastion
+### <a name="jump-box-and-azure-bastion"></a>Jump Box és az Azure Bastion
 
-Hozzáférés az Azure VMware megoldási környezethez a Jumpbox, amely egy olyan Windows 10 vagy Windows Server rendszerű virtuális gép, amelyet a hub virtuális hálózaton belül, a megosztott szolgáltatás alhálózatán helyeztek üzembe.
+Hozzáférés az Azure VMware megoldási környezethez a Jump Box szolgáltatással, amely egy Windows 10 vagy Windows Server rendszerű virtuális gép, amelyet a hub virtuális hálózatán belül, a megosztott szolgáltatási alhálózaton helyeztek üzembe.
 
-Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül üzembe helyezheti [Microsoft Azure megerősített](../bastion/index.yml) szolgáltatást. Az Azure Bastion zökkenőmentes RDP-és SSH-hozzáférést biztosít az Azure-on üzembe helyezett virtuális gépekhez anélkül, hogy nyilvános IP-címeket kellene kiépítenie ezekre az erőforrásokra. Az Azure Bastion szolgáltatás kiépítése után a Azure Portalból férhet hozzá a kiválasztott virtuális géphez. A kapcsolat létrehozása után megnyílik egy új lap, amely megjeleníti a Jumpbox asztalt, és ebből az asztalból elérheti az Azure VMware-megoldás saját Felhőbeli felügyeleti síkon.
+>[!IMPORTANT]
+>Az Azure Bastion az a szolgáltatás, amely a Jump Box-hoz való kapcsolódáshoz ajánlott, hogy megakadályozza az Azure VMware-megoldás az interneten való kihelyezését. Az Azure Bastion nem használható az Azure VMware-megoldás virtuális gépekhez való kapcsolódáshoz, mivel azok nem Azure IaaS-objektumok.  
+
+Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül üzembe helyezheti [Microsoft Azure megerősített](../bastion/index.yml) szolgáltatást. Az Azure Bastion zökkenőmentes RDP-és SSH-hozzáférést biztosít az Azure-on üzembe helyezett virtuális gépekhez anélkül, hogy nyilvános IP-címeket kellene kiépítenie ezekre az erőforrásokra. Az Azure Bastion szolgáltatás kiépítése után a Azure Portalból férhet hozzá a kiválasztott virtuális géphez. A kapcsolat létrehozása után megnyílik egy új lap, amely megjeleníti a Jump Box Desktopot, és ebből az asztalból elérheti az Azure VMware-megoldás saját Felhőbeli felügyeleti síkon.
 
 > [!IMPORTANT]
-> Ne adjon meg nyilvános IP-címet a Jumpbox virtuális géphez, vagy tegye elérhetővé a 3389/TCP portot a nyilvános internethez. 
+> Ne adjon meg nyilvános IP-címet a Jump Box virtuális géphez, vagy tegye elérhetővé a 3389/TCP portot a nyilvános internethez. 
 
 
 :::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::

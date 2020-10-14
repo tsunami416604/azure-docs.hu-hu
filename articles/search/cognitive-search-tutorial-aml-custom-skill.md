@@ -3,17 +3,17 @@ title: 'Oktatóanyag: egyéni képességek létrehozása és üzembe helyezése 
 titleSuffix: Azure Cognitive Search
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni képességeket az Azure Cognitive Search AI-bővítési folyamatának Azure Machine Learning használatával.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399839"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057603"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
 
@@ -104,7 +104,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az egyéni ügyességi webes API áttekintése](./cognitive-search-custom-skill-web-api.md) 

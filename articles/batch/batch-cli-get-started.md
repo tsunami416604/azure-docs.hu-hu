@@ -4,12 +4,12 @@ description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásai
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531677"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055511"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -107,7 +107,7 @@ Ha telepíti az Azure Batch CLI-bővítményt, az Azure parancssori felületén 
 
 ## <a name="script-examples"></a>Példaszkriptek
 
-A gyakori feladatok végrehajtásával kapcsolatban tekintse meg a Batch [parancssori példaszkriptjeit](cli-samples.md). A példák az Azure CLI-ben és a Batchben a fiókok, készletek, feladatok és tevékenységek létrehozásához és felügyeletéhez elérhetők közül számos parancsot bemutatnak. 
+A gyakori feladatok végrehajtásával kapcsolatban tekintse meg a Batch [parancssori példaszkriptjeit](./scripts/batch-cli-sample-create-account.md). A példák az Azure CLI-ben és a Batchben a fiókok, készletek, feladatok és tevékenységek létrehozásához és felügyeletéhez elérhetők közül számos parancsot bemutatnak.
 
 ## <a name="json-files-for-resource-creation"></a>Erőforrás létrehozása JSON-fájlok használatával
 
@@ -160,7 +160,7 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 * A **kapcsolóval megtekintheti a** parancskimenetet JSON-fájlként `--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd aJSON-fájlok szakaszt a jelen cikk korábbi részében).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az [Azure CLI dokumentációját](/cli/azure).
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.

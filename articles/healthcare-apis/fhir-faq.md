@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269709"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056855"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -43,6 +43,10 @@ A FHIR készült Azure API az Azure-beli nyílt forráskódú Microsoft FHIR-kis
 Ha a FHIR-kiszolgálót az Azure-hoz futtatja, közvetlen hozzáférést biztosít a mögöttes szolgáltatásokhoz. Azonban Ön is felelős a kiszolgáló karbantartásához és frissítéséhez, valamint az összes szükséges megfelelőségi munkához, ha a PHI-adatokat tárolja.
 
 Fejlesztési szempontból minden funkció üzembe kerül az Azure nyílt forráskódú Microsoft FHIR-kiszolgálója számára. A nyílt forráskódú hitelesítés után a rendszer felveszi a FHIR-megoldáshoz tartozó, a Pásti Azure API-ra. A nyílt forráskódú és a Pásti kiadás közötti idő a szolgáltatás összetettsége és az ütemterv egyéb prioritásaitól függ. 
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Hol láthatom, hogy mi történik a FHIR készült Azure API-ban?
+
+Ha szeretné megtekinteni, hogy mi történik a FHIR készült Azure API-ban, tekintse meg a nyílt forráskódú FHIR-kiszolgáló [kiadását](https://github.com/microsoft/fhir-server/releases) . Dolgozunk az Azure-API-for-FHIR elemek címkézésén, ha azok a felügyelt szolgáltatásba kerülnek, és általában két héttel a nyílt forráskódú kiadási oldalon jelennek meg. Az [itt](https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) leírt lépéseket is bemutatjuk, ha a saját környezetében szeretné tesztelni az összeállítást. A felügyelt szolgáltatások további frissítéseinek legjobb megosztását értékeljük.
 
 ### <a name="what-is-smart-on-fhir"></a>Mi a FHIR intelligens?
 
