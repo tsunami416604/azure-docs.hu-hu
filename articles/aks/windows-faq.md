@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: A Windows Server Node-készletek és az alkalmazások számítási feladatainak Azure Kubernetes szolgáltatásban (ak) való futtatásakor tekintse meg a gyakran ismételt kérdéseket.
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927555"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013967"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Gyakori kérdések a Windows Server Node-készletekről az AK-ban
 
@@ -113,6 +113,49 @@ Igen, azonban Azure Monitor nyilvános előzetes verzióban érhető el a napló
 
 A Windows-csomópontokkal rendelkező fürtök körülbelül 500 szolgáltatással rendelkezhetnek a portok kimerülése előtt.
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Használhatom Azure Hybrid Benefit Windows-csomópontokkal?
+
+Igen. A Windows Server Azure Hybrid Benefit csökkenti a működési költségeket azzal, hogy lehetővé teszi a helyszíni Windows Server-licencet AK-alapú Windows-csomópontokra.
+
+Azure Hybrid Benefit használható a teljes AK-fürtön vagy az egyes csomópontokon. Az egyes csomópontok esetében navigáljon a csomópont- [erőforráscsoporthoz][resource-groups] , és alkalmazza a Azure Hybrid Benefit közvetlenül a csomópontokra. A Azure Hybrid Benefit az egyes csomópontokra való alkalmazásával kapcsolatos további információkért lásd: [Azure Hybrid Benefit a Windows Serverhez][hybrid-vms]. 
+
+Ha a Azure Hybrid Benefitt egy új AK-fürtön szeretné használni, használja az `--enable-ahub` argumentumot.
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+Ha meglévő AK-fürtön szeretné használni a Azure Hybrid Benefitt, frissítse a fürtöt az `--enable-ahub` argumentum használatával.
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+A következő parancs használatával ellenőrizze, hogy a Azure Hybrid Benefit be van-e állítva a fürtön:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+Ha a fürt Azure Hybrid Benefit engedélyezve van, a kimenete a `az vmss show` következőhöz fog hasonlítani:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Használhatom a Kubernetes webes irányítópultot Windows-tárolókkal?
 
 Igen, használhatja a [Kubernetes webes irányítópultot][kubernetes-dashboard] a Windows-tárolókkal kapcsolatos információk eléréséhez, de jelenleg nem futtathatja a *kubectl exec* alkalmazást egy futó Windows-tárolóba közvetlenül a Kubernetes webes irányítópultján. További információ a futó Windows-tárolóhoz való csatlakozásról: [Csatlakozás RDP-vel az Azure Kubernetes Service (ak) fürthöz Windows Server-csomópontok karbantartáshoz vagy hibaelhárításhoz][windows-rdp].
@@ -152,3 +195,5 @@ A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy ol
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

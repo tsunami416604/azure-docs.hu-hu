@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236c24ac63aef6b802edf53f9c414a522c2308e4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550067"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CylancePROTECT
 
@@ -79,7 +79,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
     
-    | Region | URL-érték |
+    | Régió | URL-érték |
     |----------|---------|
     | Északkelet-Asia-Pacific (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Délkelet-Asia-Pacific (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
     
-    | Region | URL-érték |
+    | Régió | URL-érték |
     |----------|---------|
     | Északkelet-Asia-Pacific (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Délkelet-Asia-Pacific (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -122,7 +122,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-cylanceprotect-sso"></a>CylancePROTECT SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **CylancePROTECT** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [CylancePROTECT támogatási csapatához](https://www.cylance.com/en-us/resources/support/support-overview.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva. További információkért használja a Cylance dokumentációját: [https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4) .
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **CylancePROTECT** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [CylancePROTECT támogatási csapatához](https://www.cylance.com/en-us/resources/support/support-overview.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva. További információkért használja a Cylance dokumentációját: [https://support.cylance.com/s/](https://support.cylance.com/s/) .
 
 ### <a name="create-cylanceprotect-test-user"></a>CylancePROTECT-tesztelési felhasználó létrehozása
 

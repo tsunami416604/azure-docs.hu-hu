@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801460"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014026"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és virtuális központ helyei
 
@@ -40,7 +40,7 @@ Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazz
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-A következő partnereink a közeljövőben: 128 technológiák, Arista, Cisco Systems (Viptela), F5 Networks, Oracle SD-WAN és SharpLink.
+A következő partnereink a vállalatok közötti, a partner-eszköz és az Azure virtuális WAN VPN-átjárók közötti IPsec-kapcsolat automatizálására szolgáló munkaterületet jelző, a vállalat által aláírt használati feltételeken alapuló ütemtervet mutatnak: 128 Technologies, Arista, F5 Networks, Oracle SD-WAN (Torda) és SharpLink.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Integrált virtuális hub-ajánlatokat tartalmazó partnerek
 Az automatikus fiókirodai IPSec-kapcsolat mellett egyes partnerek olyan **hálózati virtuális berendezéseket (NVA)** is kínálnak, amelyek közvetlenül az Azure Virtual WAN-hubhoz integrálhatók.  Ez lehetővé teszi, hogy az ügyfelek az ág kapcsolataikat egy kompatibilis, harmadik féltől származó berendezéssel szakítsák meg a virtuális központban.  

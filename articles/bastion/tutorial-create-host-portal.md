@@ -5,20 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: e4f8bc38a79fdbb84624e126c84d679a906a701b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c5361a777b2fdab20fab70214ddcb3bbf5248acb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91980167"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015259"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm"></a>Oktatóanyag: Azure Bastion-gazdagép létrehozása és Kapcsolódás Windows rendszerű virtuális géphez
+# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Oktatóanyag: Azure Bastion-gazdagép létrehozása és Windows rendszerű virtuális gépekhez való kapcsolódás böngésző használatával
 
-Windows rendszerű virtuális géphez (VM) csatlakozhat egy böngészőn keresztül a Azure Portal használatával. Kapcsolódjon a virtuális géphez közvetlenül a böngészőben a TLS protokollon keresztül egy magánhálózati IP-cím használatával. Nem kell helyileg telepítenie és konfigurálnia az ügyfélszoftvert.
-
-Ahhoz, hogy a Bastion használatával csatlakozhasson egy virtuális géphez, létre kell hoznia az Azure Bastion szolgáltatást a virtuális hálózaton (VNet). A szolgáltatás kiépítés után az ilyen típusú kapcsolatok a virtuális gép biztonsági konfigurációjától függően a VNet található összes virtuális gép számára elérhetők lesznek. Az Azure Bastion üzembe helyezése virtuális hálózatonként történik, nem pedig előfizetés/fiók vagy virtuális gép esetében.
+Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy virtuális géphez a böngészőben az Azure Bastion és a Azure Portal használatával. A Azure Portal a virtuális hálózatra helyezi a Bastion-t. A megerősített telepítés után a magánhálózati IP-címén keresztül csatlakozik egy virtuális géphez a Azure Portal használatával. A virtuális gépe nem igényel nyilvános IP-címet vagy speciális szoftvert. A szolgáltatás üzembe helyezését követően az RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető. További információ az Azure Bastion-ről: [Mi az az Azure Bastion?](bastion-overview.md).
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
@@ -79,7 +77,7 @@ Ez a szakasz segítséget nyújt a megerősített objektum létrehozásához a V
 
 [!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a következő lépésekkel:
 

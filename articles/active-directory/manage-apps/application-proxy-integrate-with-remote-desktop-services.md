@@ -1,27 +1,22 @@
 ---
-title: Távoli asztal közzététele Azure AD alkalmazás proxyval | Microsoft Docs
-description: Bemutatja, hogyan konfigurálhatja az App proxyt az RDS használatával
+title: Távoli asztal közzététele Azure Active Directory Application Proxy
+description: Ismerteti, hogyan konfigurálható az Távoli asztali szolgáltatások (RDS) alkalmazás-proxy
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
-ms.custom: it-pro
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396760"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015276"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele Azure AD-alkalmazásproxy használatával
 
@@ -101,7 +96,7 @@ Kapcsolódjon az RDS üzembe helyezéséhez rendszergazdaként, és módosítsa 
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Példa:**
+   **Például:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -146,6 +141,6 @@ Az áteresztő hitelesítés használatához a cikkben felsorolt lépések csak 
 2. Az [alkalmazás-proxy felé irányuló közvetlen RDS-forgalom](#direct-rds-traffic-to-application-proxy)esetében hagyja ki a 8. lépést teljes mértékben.
 
 ## <a name="next-steps"></a>Következő lépések
-
-[Távoli hozzáférés engedélyezése a sharepointhoz az Azure ad Application proxy](application-proxy-integrate-with-sharepoint-server.md) 
- [Biztonsági megfontolások az alkalmazások távoli eléréséhez az Azure ad Application proxy használatával](application-proxy-security.md)
+- [Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével](application-proxy-integrate-with-sharepoint-server.md)
+- [Biztonsági megfontolások az alkalmazások távoli eléréséhez az Azure AD Application Proxy használatával](application-proxy-security.md)
+- [Ajánlott eljárások több App-kiszolgáló terheléselosztásához](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

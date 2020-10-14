@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0bdb2c36bc895c9229e4c04e9e0d76aa852bd139
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297306"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015848"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Média feltöltése adatfolyamként vagy kódolásra
 
@@ -47,8 +47,8 @@ Miután [létrehozott egy eszközt a Poster vagy más Rest metódus használatá
 
 ---
 <!-- add these to the tabs when available -->
-Más módszerekkel kapcsolatban lásd: az [Azure Storage dokumentációja](https://docs.microsoft.com/azure/storage/blobs/) a Blobok használatához a [.net](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet), a [Java](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-java), a [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)és a [JavaScript (Node.js)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs)használatával.
+Más módszerekkel kapcsolatban lásd: az [Azure Storage dokumentációja](../../storage/blobs/index.yml) a Blobok használatához a [.net](../../storage/blobs/storage-quickstart-blobs-dotnet.md), a [Java](../../storage/blobs/storage-quickstart-blobs-java.md), a [Python](../../storage/blobs/storage-quickstart-blobs-python.md)és a [JavaScript (Node.js)](../../storage/blobs/storage-quickstart-blobs-nodejs.md)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [Media Services áttekintése](media-services-overview.md)

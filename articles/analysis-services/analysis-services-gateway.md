@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438821"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016093"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
 
@@ -62,7 +62,7 @@ Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalo
 
 A következő az átjáró által használt teljes tartománynevek.
 
-| Tartománynevek | Kimenő portok | Leírás |
+| Tartománynevek | Kimenő portok | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP-cím. |
 | *.powerbi.com |443 |HTTPS |
@@ -87,15 +87,15 @@ Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS haszná
 </setting>
 ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 A következő cikkek tartalmazzák a helyszíni adatátjáró általános tartalmát, amely az átjáró által támogatott összes szolgáltatásra vonatkozik:
 
-* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [A helyszíni adatátjáró alkalmazás használata](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [Bérlőszintű felügyelet](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [Proxybeállítások konfigurálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [Kommunikációs beállítások módosítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [Naplófájlok konfigurálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [Hibaelhárítás](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Átjáró teljesítményének monitorozása és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Helyszíni adatátjáró – GYIK](/data-integration/gateway/service-gateway-onprem-faq)   
+* [A helyszíni adatátjáró alkalmazás használata](/data-integration/gateway/service-gateway-app)   
+* [Bérlőszintű felügyelet](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [Proxybeállítások konfigurálása](/data-integration/gateway/service-gateway-proxy)   
+* [Kommunikációs beállítások módosítása](/data-integration/gateway/service-gateway-communication)   
+* [Naplófájlok konfigurálása](/data-integration/gateway/service-gateway-log-files)   
+* [Hibaelhárítás](/data-integration/gateway/service-gateway-tshoot)
+* [Átjáró teljesítményének monitorozása és optimalizálása](/data-integration/gateway/service-gateway-performance)

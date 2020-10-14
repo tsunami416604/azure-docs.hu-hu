@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994681"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014239"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -401,7 +401,7 @@ Minden továbbított tétel egy olyan `itemCount` tulajdonságot hordoz, amely a
 
 A meglévő Application Insights erőforrások egyik régióból a másikba való áthelyezése **jelenleg nem támogatott**. Az összegyűjtött korábbi adatok **nem telepíthetők át** új régióba. Az egyetlen részleges Áthidaló megoldás a következő:
 
-1. Új Application Insights-erőforrás létrehozása ([klasszikus](app/create-new-resource.md) vagy [munkaterület-alapú](/app/create-workspace-resource.md)) az új régióban.
+1. Új Application Insights-erőforrás létrehozása ([klasszikus](app/create-new-resource.md) vagy [munkaterület-alapú](/azure/azure-monitor/app/create-workspace-resource)) az új régióban.
 2. Hozza létre újra az új erőforrás eredeti erőforrásához tartozó összes egyedi testreszabást.
 3. Módosítsa az alkalmazást úgy, hogy az új régió-erőforrás kialakítási [kulcsát](app/create-new-resource.md#copy-the-instrumentation-key) vagy a [kapcsolódási karakterláncot](app/sdk-connection-string.md)használja.  
 4. Ellenőrizze, hogy minden továbbra is a várt módon működik-e az új Application Insights erőforrással. 
@@ -414,7 +414,7 @@ Az új régióban az erőforráshoz gyakran manuálisan újra létre kell hozni 
 - Rendelkezésre állási riasztások újbóli létrehozása.
 - Hozza létre újra a felhasználók számára az új erőforrás eléréséhez szükséges egyéni Role-Based-Access Control (RBAC) beállításokat. 
 - Replikálja a betöltési mintavételezést, az adatmegőrzést, a napi korlátot és az egyéni metrikák engedélyezését érintő beállításokat. Ezeket a beállításokat a **használati és becsült költségek** panelen szabályozhatja.
-- Minden olyan integráció, amely az API-kulcsokra támaszkodik, például a [kibocsátási jegyzetek](/app/annotations.md), az [élő metrika biztonságos vezérlési csatornája](app/live-stream.md#secure-the-control-channel) stb. Új API-kulcsokat kell létrehoznia, és frissítenie kell a társított integrációt. 
+- Minden olyan integráció, amely az API-kulcsokra támaszkodik, például a [kibocsátási jegyzetek](/azure/azure-monitor/app/annotations), az [élő metrika biztonságos vezérlési csatornája](app/live-stream.md#secure-the-control-channel) stb. Új API-kulcsokat kell létrehoznia, és frissítenie kell a társított integrációt. 
 - A klasszikus erőforrások folyamatos exportálását újra kell konfigurálni.
 - A munkaterület-alapú erőforrások diagnosztikai beállításait újra kell konfigurálni.
 

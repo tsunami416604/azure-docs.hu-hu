@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84015502"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014851"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
 Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, lehet, hogy bizonyos adminisztrációs és felügyeleti feladatok elvégzéséhez azonnal el kell végeznie az utat. Például futtasson feldolgozást az adatfrissítésre, szabályozhatja, hogy ki férhet hozzá a modellekhez a kiszolgálón, vagy figyelje a kiszolgáló állapotát. Egyes felügyeleti feladatok csak Azure Portalban hajthatók végre, másokat SQL Server Management Studio (SSMS), és néhány feladatot bármelyikben elvégezhet.
@@ -30,7 +30,7 @@ Az Azure-kiszolgálóhoz való csatlakozás ugyanúgy történik, mint a saját 
 ### <a name="download-and-install-ssms"></a>Az SSMS letöltése és telepítése
 Győződjön meg arról, hogy a legújabb funkciókat és a legsimább felhasználói élményt használja a Azure Analysis Services-kiszolgálóhoz való kapcsolódáskor. a SSMS legújabb verzióját kell használnia. 
 
-[SQL Server Management Studio letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+[SQL Server Management Studio letöltése](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ### <a name="to-connect-with-ssms"></a>Kapcsolódás a SSMS
@@ -62,8 +62,7 @@ Azure Analysis Services a felhasználók két típusa van, a kiszolgálói rends
 ## <a name="troubleshooting-connection-problems"></a>Kapcsolódási problémák elhárítása
 Ha a SSMS használatával csatlakozik, akkor előfordulhat, hogy törölnie kell a bejelentkezési gyorsítótárat. Nincs a lemezre gyorsítótárazva. A gyorsítótár kiürítéséhez zárjuk be, majd indítsa újra a kapcsolódási folyamatot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha még nem telepített táblázatos modellt az új kiszolgálóra, most már jó ideje van. További információkért lásd [az Azure Analysis Servicesben történő üzembe helyezést](analysis-services-deploy.md) ismertető cikket.
 
 Ha már telepített egy modellt a-kiszolgálóra, az ügyfél vagy a böngésző használatával csatlakozhat hozzá. További információért lásd: [adatok Beolvasása Azure Analysis Services kiszolgálóról](analysis-services-connect.md).
-

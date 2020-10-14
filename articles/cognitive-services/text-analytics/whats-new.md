@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999677"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015924"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -24,6 +24,7 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 ## <a name="october-2020"></a>2020. október
 
 * Hindi támogatás a Hangulatelemzés v3. x verzióhoz, a modell verziójától kezdve `2020-04-01` . 
+* `2020-09-01`A v3/languages végponthoz tartozó verzióját, amely növeli a nyelvi észlelést és a pontosságot.
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -191,9 +192,9 @@ További entitás-típusok mostantól elérhetők az elnevezett entitás-felisme
 
 #### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
-* Egy [új végpont](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) a személyes információk entitás-típusai felismeréséhez (csak angol nyelven)
+* Egy [új végpont](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) a személyes információk entitás-típusai felismeréséhez (csak angol nyelven)
 
-* Különálló végpontok az [entitások felismeréséhez](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) és az [entitások összekapcsolásához](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Különálló végpontok az [entitások felismeréséhez](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) és az [entitások összekapcsolásához](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking).
 
 * [Modell verziója](concepts/model-versioning.md) `2019-10-01` , amely a következőket tartalmazza:
     * A szövegben talált entitások kibővített észlelése és kategorizálása. 
@@ -205,7 +206,7 @@ Az entitások csatolása az angol és a spanyol nyelvet támogatja. A nyelv tám
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>Hangulatelemzés v3 nyilvános előzetes verzió
 
-* [Új végpont](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) az érzelmek elemzéséhez.
+* [Új végpont](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) az érzelmek elemzéséhez.
 * [Modell verziója](concepts/model-versioning.md) `2019-10-01` , amely a következőket tartalmazza:
 
     * Az API szövegének és pontozásának pontosságának és részletességének jelentős javulása.

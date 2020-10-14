@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077371"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015317"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -33,8 +33,8 @@ Az egyszerű szolgáltatások a Azure Portal vagy a PowerShell használatával h
 
 Az egyszerű szolgáltatás hitelesítő adatai és tanúsítványai biztonságosan tárolhatók Azure Automation runbook-műveletekhez. További információ:
 
-[Hitelesítőadat-eszközök a Azure Automation](../automation/automation-credentials.md)   
-[Az Azure Automation tanúsítvány adategységei](../automation/automation-certificates.md)
+[Hitelesítőadat-eszközök a Azure Automation](../automation/shared-resources/credentials.md)   
+[Az Azure Automation tanúsítvány adategységei](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Egyszerű szolgáltatások hozzáadása a kiszolgálói rendszergazdai szerepkörhöz
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
+Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
 
 Az alábbi példában az `appID` és egy `password` segítségével végezheti el egy modelladatbázis frissítési műveletét:
 
@@ -108,9 +108,9 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>További lépések
-[Bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+## <a name="next-steps"></a>Következő lépések
+[Bejelentkezés Azure PowerShell](/powershell/azure/authenticate-azureps)   
 [Frissítés a Logic Apps használatával](analysis-services-refresh-logic-app.md)  
 [Frissítés az Azure Automationnel](analysis-services-refresh-azure-automation.md)  
 [Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)  
-[Power BI Premium munkaterület és adatkészlet-feladatok automatizálása egyszerű szolgáltatásokkal](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[Power BI Premium munkaterület és adatkészlet-feladatok automatizálása egyszerű szolgáltatásokkal](/power-bi/admin/service-premium-service-principal)

@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495738"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015566"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Ha az adatAzure Data Lake Storageban rendelkezésre állnak, a Azure Machine Learning [adattárolói az Azure Storage-szolgáltatásokhoz való kapcsolódáshoz](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)használatosak. Az adattár és a megfelelő adatkészlet létrehozásához kövesse az alábbi lépéseket:
 
-1. Indítsa el az Azure Machine learning studiót Azure Portal vagy jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
+1. Indítsa el Azure Machine Learning Studio alkalmazást Azure Portal vagy jelentkezzen be a [Azure Machine learning studióba](https://ml.azure.com/).
 
 1. Kattintson az **Datastores** adattárolók elemre a **kezelés** szakasz bal oldali ablaktábláján, majd kattintson az **új adattár**elemre.
 
@@ -173,7 +173,7 @@ Ekkor két további oszlop jelenik meg a tesztelési adatkészlethez.
 
 Hasonlítsa össze az oszlop Kerékpárvásárló (tényleges) és a pontozásos címkékkel (előrejelzéssel), hogy megtekintse a modell végrehajtását. Ezt a modellt használhatja arra, hogy előrejelzéseket készítsen az új ügyfelek számára. [Ezt a modellt webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) teheti közzé, vagy visszaállíthatja az eredményeket az Azure szinapszisba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Machine Learningről, tekintse meg az Azure-beli [Machine learning bemutatása](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)című témakört.
 

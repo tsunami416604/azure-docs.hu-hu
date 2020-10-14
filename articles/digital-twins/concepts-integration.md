@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729134"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015021"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
 
-Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használható. Az [**Event Routes**](concepts-route-events.md)használatával az Azure Digital Twins olyan felsőbb rétegbeli szolgáltatásokból származó adatokhoz jut, mint a [IoT Hub](../iot-hub/about-iot-hub.md) vagy a [Logic apps](../logic-apps/logic-apps-overview.md), amelyek a telemetria és az értesítések kézbesítésére szolgálnak. 
+Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használható rugalmas, csatlakoztatott megoldások létrehozására, amelyek többféle módon használják az adatait.
+
+Az [**Event Routes**](concepts-route-events.md)használatával az Azure Digital Twins a felsőbb rétegbeli szolgáltatásokból, például [IoT hub](../iot-hub/about-iot-hub.md) vagy [Logic Appsból](../logic-apps/logic-apps-overview.md)is fogadhat adatokból, amelyek telemetria és értesítések kézbesítésére szolgálnak. 
 
 Az Azure Digital Twins az olyan alsóbb rétegbeli szolgáltatásokhoz is irányíthatja az adattovábbítást, mint például a [Azure Maps](../azure-maps/about-azure-maps.md) és a [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md), a tárolás, a munkafolyamat-integráció, az elemzés és egyebek terén. 
 
@@ -24,7 +26,7 @@ Az Azure Digital Twins az olyan alsóbb rétegbeli szolgáltatásokhoz is irány
 
 Az Azure Digital Twins bármely szolgáltatás adataival és eseményeivel is elvégezhető –[IoT hub](../iot-hub/about-iot-hub.md), [Logic apps](../logic-apps/logic-apps-overview.md), a saját egyéni szolgáltatása stb.). Így telemetria gyűjthet a környezetében található fizikai eszközökről, és feldolgozhatja ezeket az adatokat a felhőben található Azure digitális Twins gráf használatával.
 
-Az Azure digitális Twins nem rendelkezik beépített IoT Hub. Használhat egy meglévő IoT Hub, amelyet jelenleg éles környezetben, vagy üzembe helyezhet egy újat. Ez teljes hozzáférést biztosít a IoT Hub összes eszköz-felügyeleti képességeihez.
+Ahelyett, hogy beépített IoT Hub a háttérben, az Azure Digital Twins lehetővé teszi, hogy a szolgáltatással való használathoz saját IoT Hub használjon. Használhat egy meglévő IoT Hub, amelyet jelenleg éles környezetben, vagy üzembe helyezhet egy újat erre a célra. Ez teljes hozzáférést biztosít a IoT Hub összes eszköz-felügyeleti képességeihez.
 
 Ha bármilyen forrásból szeretne adatot befogadni az Azure digitális Twinsba, használjon [**Azure-függvényt**](../azure-functions/functions-overview.md). További információ erről a mintázatról [*: telemetria beolvasása a IoT hubból*](how-to-ingest-iot-hub-data.md), vagy próbálja ki magát az Azure Digital Twins [*oktatóanyagában: teljes körű megoldás összekötése*](tutorial-end-to-end.md). 
 

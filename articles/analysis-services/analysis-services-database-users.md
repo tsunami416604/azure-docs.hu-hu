@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015272"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013593"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
 
@@ -26,7 +26,7 @@ A szerepkör engedélyei a következők:
 *  **Folyamat** – a felhasználók csatlakozhatnak az adatbázishoz, és elvégezhetik a folyamatokat, és elemezhetik a modell adatbázis-adataikat.
 *  **Olvasási** – a felhasználók egy ügyfélalkalmazás segítségével csatlakozhatnak a modell adatbázis-adatbázisaihoz, és elemezhetik azokat.
 
-Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz a Visual Studióban Analysis Services projektek használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell-parancsmagok](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)vagy [táblázatos modell parancsnyelv](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
+Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz a Visual Studióban Analysis Services projektek használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell-parancsmagok](/analysis-services/powershell/analysis-services-powershell-reference)vagy [táblázatos modell parancsnyelv](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
 
 **Biztonsági csoport**hozzáadásakor használja a t `obj:groupid@tenantid` .
 
@@ -42,7 +42,7 @@ Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és 
   
 4.  Válasszon egyet a következő engedélyek közül:  
   
-    |Engedély|Leírás|  
+    |Engedély|Description|  
     |----------------|-----------------|  
     |**Nincs**|A tagok nem tudják olvasni vagy módosítani a modell sémáját, és nem tudják lekérdezni az adatlekérdezéseket.|  
     |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
@@ -71,7 +71,7 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
 
 3. Válasszon ki egy engedélyt.
 
-   |Engedély|Leírás|  
+   |Engedély|Description|  
    |----------------|-----------------|  
    |**Teljes hozzáférés (rendszergazda)**|A tagok módosíthatják a modell sémáját, feldolgozhatják és lekérhetik az összes adatlekérdezést.| 
    |**Adatbázis feldolgozása**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
@@ -85,7 +85,7 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és felhasználók hozzáadása TMSL-parancsfájl használatával
 
-A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) parancsot és a [roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) objektumot.
+A TMSL parancsfájlt a SSMS XMLA ablakában vagy a PowerShell használatával futtathatja. Használja a [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) parancsot és a [roles](/analysis-services/tmsl/roles-object-tmsl) objektumot.
 
 **Példa TMSL-parancsfájlra**
 
@@ -119,13 +119,13 @@ Ebben a példában egy B2B külső felhasználót és egy csoportot adnak hozzá
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és felhasználók hozzáadása a PowerShell használatával
 
-A [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú Invoke-ASCmd parancsmagot tartalmazza, amely egy táblázatos modell PARANCSNYELV (TMSL) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
+A [SQLServer](/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú Invoke-ASCmd parancsmagot tartalmazza, amely egy táblázatos modell PARANCSNYELV (TMSL) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
   
 |Parancsmag|Leírás|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Meghívás – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
+|[Meghívás – ASCmd](/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
 
 ## <a name="row-filters"></a>Sorok szűrői  
 
@@ -147,9 +147,8 @@ A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha e
   
  A szűrő, *= false ()* használatával megtagadhatja a hozzáférést egy teljes tábla összes sorához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
   [Kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md)   
   [Az Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md)  
-  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
-
+  [Táblázatos modell programozási nyelv (TMSL) – dokumentáció](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)

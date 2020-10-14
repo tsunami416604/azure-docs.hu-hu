@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506995"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014052"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Adatbázis biztonsági mentése és visszaállítása Analysis Services
 
-A táblázatos modell adatbázisainak biztonsági mentése Azure Analysis Servicesban ugyanúgy történik, mint a helyszíni Analysis Services. Az elsődleges különbség az, hogy hol tárolja a biztonságimásolat-fájlokat. A biztonsági mentési fájlokat egy [Azure Storage-fiókban](../storage/common/storage-create-storage-account.md)lévő tárolóba kell menteni. Használhat egy már meglévő Storage-fiókot és-tárolót, vagy létrehozhatók a kiszolgáló tárolási beállításainak konfigurálásakor.
+A táblázatos modell adatbázisainak biztonsági mentése Azure Analysis Servicesban ugyanúgy történik, mint a helyszíni Analysis Services. Az elsődleges különbség az, hogy hol tárolja a biztonságimásolat-fájlokat. A biztonsági mentési fájlokat egy [Azure Storage-fiókban](../storage/common/storage-account-create.md)lévő tárolóba kell menteni. Használhat egy már meglévő Storage-fiókot és-tárolót, vagy létrehozhatók a kiszolgáló tárolási beállításainak konfigurálásakor.
 
 > [!NOTE]
 > A Storage-fiók létrehozása egy új számlázható szolgáltatáshoz vezethet. További információt az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/blobs/)ismertető témakörben talál.
@@ -75,10 +75,10 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
 
 ### <a name="powershell"></a>PowerShell
-Használja a [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) parancsmagot.
+Használja a [Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase) parancsmagot.
 
 ## <a name="restore"></a>Visszaállítás
-Visszaállításkor a biztonságimásolat-fájlnak a kiszolgálóhoz konfigurált Storage-fiókban kell lennie. Ha a biztonságimásolat-fájlt egy helyszíni helyről a Storage-fiókba kell áthelyeznie, használja a [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) vagy a [AzCopy](../storage/common/storage-use-azcopy.md) parancssori segédprogramot. 
+Visszaállításkor a biztonságimásolat-fájlnak a kiszolgálóhoz konfigurált Storage-fiókban kell lennie. Ha a biztonságimásolat-fájlt egy helyszíni helyről a Storage-fiókba kell áthelyeznie, használja a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) vagy a [AzCopy](../storage/common/storage-use-azcopy-v10.md) parancssori segédprogramot. 
 
 
 
@@ -102,11 +102,11 @@ Visszaállításkor a biztonságimásolat-fájlnak a kiszolgálóhoz konfigurál
 
 ### <a name="powershell"></a>PowerShell
 
-Használja a [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) parancsmagot.
+Használja a [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase) parancsmagot.
 
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-[Azure Storage-fiókok](../storage/common/storage-create-storage-account.md)  
+[Azure Storage-fiókok](../storage/common/storage-account-create.md)  
 [Magas rendelkezésre állás](analysis-services-bcdr.md)      
 [Analysis Services hálózati kapcsolat – gyakori kérdések](analysis-services-network-faq.md)

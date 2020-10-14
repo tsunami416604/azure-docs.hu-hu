@@ -3,19 +3,19 @@ title: A rendellenesség-Kiderítő API használata az idősorozat-adatain
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan észlelheti a rendellenességeket az adataiban kötegként vagy adatfolyamként.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: aahi
-ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71840222"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014647"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Útmutató: a rendellenesség-Kiderítő API használata az idősorozat-adatain  
 
@@ -68,7 +68,7 @@ Az alábbi példákban egy anomália-detektor API-nak a különböző érzékeny
 
 ![85 érzékenység](../media/sensitivity_85.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)

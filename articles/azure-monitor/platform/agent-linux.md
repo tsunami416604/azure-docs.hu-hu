@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294529"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013746"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépekre
 Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
@@ -81,7 +81,7 @@ Más korlátozási és testreszabási módszerek nem támogatottak és nem terve
 
 A következő táblázat a [támogatott Linux-disztribúciók](#supported-operating-systems) számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Leírás |Minimális verzió |
+|Szükséges csomag |Description |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
@@ -184,7 +184,7 @@ A Linux rendszerhez készült Log Analytics-ügynök egy önkicsomagoló és tel
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Ha hitelesítésre van szükség, meg kell adnia a felhasználónevet és a jelszót. Példa: 
+    Ha hitelesítésre van szükség, meg kell adnia a felhasználónevet és a jelszót. Például: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -215,7 +215,7 @@ A korábbi verzióról a 1.0.0-47 verziótól kezdődően minden kiadásban tám
 ## <a name="cache-information"></a>Gyorsítótár-információk
 A Linux rendszerhez készült Log Analytics-ügynöktől származó adatok gyorsítótárazása a *(z)% STATE_DIR_WS%/out_oms_common*. Buffer * helyen található helyi gépen történik, mielőtt elküldi őket a Azure monitornak. Az egyéni naplózási adatértékek a *(z)% STATE_DIR_WS%/out_oms_blob*. Buffer * pufferben vannak. Bizonyos [megoldások és adattípusok](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)esetében az elérési út eltérő lehet.
 
-Az ügynök 20 másodpercenként próbálkozik a feltöltéssel. Ha ez nem sikerül, a rendszer az idő múlásával egy exponenciálisan növekvő időtartamot vár. 30 másodpercet vár a második kísérlet előtt, 60 másodpercig a következő, 120 másodperc és így tovább, amíg az újrapróbálkozások között legfeljebb 9 percet vesz igénybe, amíg újra nem sikerül csatlakozni. Az ügynök csak 10 alkalommal próbálkozik egy adott adathalmazban, mielőtt elveti, és továbblép a következőre. Ez addig folytatódik, amíg az ügynök sikeresen fel nem tölthető. Az azt jelenti, hogy az adatvesztés előtt 8,5 óráig lehet az adatpufferelés.
+Az ügynök 20 másodpercenként próbálkozik a feltöltéssel. Ha ez nem sikerül, a rendszer az idő múlásával exponenciálisan növekszik, amíg a művelet sikertelen lesz: 30 másodperc a második kísérlet előtt, 60 másodperc a harmadik, 120 másodperc előtt... az újrapróbálkozások között akár 16 percet is igénybe vehet, amíg újra nem sikerül a csatlakozás. Az ügynök legfeljebb 6 alkalommal próbálkozik egy adott adathalmazban az Elvetés előtt és a következőre való áttérés előtt. Ez addig folytatódik, amíg az ügynök sikeresen fel nem tölthető. Ez azt jelenti, hogy az adatvesztés előtt körülbelül 30 percen belül lehet az adatpufferelés.
 
 Az alapértelmezett gyorsítótár mérete 10 MB, de a [omsagent. conf fájlban](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)is módosítható.
 

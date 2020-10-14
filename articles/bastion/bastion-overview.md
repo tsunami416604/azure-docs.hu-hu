@@ -5,20 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89291874"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014783"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
-Az Azure Bastion szolgáltatás egy új, teljes körűen felügyelt, a virtuális hálózaton belül kiépített, teljesen platform által felügyelt Pásti szolgáltatás. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a TLS-en keresztül Azure Portal. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.
+Az Azure Bastion egy üzembe helyezett szolgáltatás, amely lehetővé teszi a virtuális gépekhez való kapcsolódást a böngésző és a Azure Portal használatával. Az Azure Bastion szolgáltatás egy teljes körűen felügyelt, a virtuális hálózaton belül kiépített, platform által felügyelt Pásti szolgáltatás. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a TLS-Azure Portal. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre, ügynökre vagy speciális ügyfélszoftverre.
 
-A Bastion biztonságos RDP-és SSH-kapcsolatot biztosít annak a virtuális hálózatnak az összes virtuális géphez, amelyben kiépítve van. Az Azure Bastion használatával megvédheti a virtuális gépeket az RDP/SSH-portok a külvilág felé való kitéve, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. Az Azure Bastion használatával közvetlenül a Azure Portal csatlakozhat a virtuális géphez. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre.
+A Bastion biztonságos RDP-és SSH-kapcsolatot biztosít annak a virtuális hálózatnak az összes virtuális géphez, amelyben kiépítve van. Az Azure Bastion használatával megvédheti a virtuális gépeket az RDP/SSH-portok a külvilág felé való kitéve, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -55,7 +55,7 @@ Fizessen elő az RSS-hírcsatornára, és tekintse meg az Azure-szolgáltatások
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Hozzon létre egy Azure Bastion Host-erőforrást](bastion-create-host-portal.md).
+* [Oktatóanyag: hozzon létre egy Azure Bastion-gazdagépet, és kapcsolódjon egy Windows rendszerű virtuális géphez](tutorial-create-host-portal.md).
 * Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.

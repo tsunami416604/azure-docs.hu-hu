@@ -1,6 +1,6 @@
 ---
 title: Machine Learning modellek frissítése a Azure Data Factory használatával
-description: Útmutató prediktív folyamatok létrehozásához Azure Data Factory és Azure Machine Learning használatával
+description: Útmutató prediktív folyamatok létrehozásához Azure Data Factory v1 és Azure Machine Learning Studio (klasszikus) használatával
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bed66ab8f3dc3db47b94070cbbeb64fb91163f8c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254922"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014460"
 ---
-# <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellek frissítése az erőforrás frissítése tevékenység használatával
+# <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Azure Machine Learning Studio (klasszikus) modellek frissítése az erőforrás-frissítési tevékenység használatával
 
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
 > * [Struktúra tevékenysége](data-factory-hive-activity.md) 
@@ -26,8 +26,8 @@ ms.locfileid: "85254922"
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
 > * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
-> * [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
@@ -36,10 +36,10 @@ ms.locfileid: "85254922"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Machine learning-modellek frissítése a Data Factory-ben](../update-machine-learning-models.md)című témakört.
 
-Ez a cikk a Azure Data Factory Azure Machine Learning integrációs cikket egészíti ki: [prediktív folyamatok létrehozása Azure Machine learning és Azure Data Factory használatával](data-factory-azure-ml-batch-execution-activity.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket. 
+Ez a cikk a fő Azure Data Factory-Azure Machine Learning Studio (klasszikus) integrációs cikket egészíti ki: [prediktív folyamatok létrehozása Azure Machine learning Studio (klasszikus) és Azure Data Factory használatával](data-factory-azure-ml-batch-execution-activity.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket. 
 
 ## <a name="overview"></a>Áttekintés
-Idővel az Azure ML-pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített ML-modellel. Az Azure ML-modellek webszolgáltatásokon keresztül történő átképzésének és frissítésének tipikus lépései a következők:
+Idővel a Azure Machine Learning Studio (klasszikus) pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített ML-modellel. A Studio (klasszikus) modellek webszolgáltatásokon keresztül történő átképzésének és frissítésének tipikus lépései a következők:
 
 1. Hozzon létre egy kísérletet [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net).
 2. Ha elégedett a modellel, használja a Azure Machine Learning Studio (klasszikus) lehetőséget a webes szolgáltatások közzétételére a **betanítási kísérlet** és a pontozási/**prediktív kísérlet**során.
@@ -49,13 +49,13 @@ A következő táblázat ismerteti az ebben a példában használt webszolgálta
 - A **betanítási webszolgáltatás** betanítási és betanított modelleket hoz létre. Az átképzés kimenete egy. ilearner fájl az Azure Blob Storage-ban. Az **alapértelmezett végpont** automatikusan létrejön, amikor webszolgáltatásként teszi közzé a betanítási kísérletet. Több végpontot is létrehozhat, de a példa csak az alapértelmezett végpontot használja.
 - **Pontozási webszolgáltatás** – a rendszer címkézetlen adatpéldákat fogad, és előrejelzéseket készít. Az előrejelzés kimenete különböző formákat tartalmazhat, például egy. csv-fájlt vagy Azure SQL Database-sorokat a kísérlet konfigurációjától függően. A rendszer automatikusan létrehozza az alapértelmezett végpontot, amikor a prediktív kísérletet webszolgáltatásként teszi közzé. 
 
-Az alábbi ábrán az Azure ML-ben megjelenő tanítási és pontozási végpontok közötti kapcsolat látható.
+Az alábbi ábra a képzés és a pontozási végpontok közötti kapcsolatot ábrázolja Azure Machine Learning Studio (klasszikus).
 
 ![Webszolgáltatások](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-A **betanítási webszolgáltatás** az **Azure ml batch végrehajtási tevékenységének**használatával hívható meg. A betanítási webszolgáltatás meghívása ugyanaz, mint egy Azure ML webszolgáltatás (pontozási webszolgáltatás) meghívása az adatpontozási szolgáltatáshoz. Az előző fejezetekben részletesen ismertetjük, hogyan hívhat meg egy Azure ML-webszolgáltatást egy Azure Data Factory folyamatból. 
+A **betanítási webszolgáltatás** a **Azure Machine learning Studio (klasszikus) batch-végrehajtási tevékenység**használatával hívható meg. A betanítási webszolgáltatás meghívása ugyanaz, mint egy Azure Machine Learning Studio (klasszikus) webszolgáltatás (pontozási webszolgáltatás) meghívása az adatpontozási szolgáltatáshoz. Az előző fejezetekben részletesen ismertetjük, hogyan hívhat meg egy Azure Machine Learning Studio (klasszikus) webszolgáltatást egy Azure Data Factory folyamatból. 
 
-A **pontozási webszolgáltatást** az **Azure ml Update Resource tevékenység** használatával lehet meghívni a webszolgáltatás az újonnan betanított modellel való frissítéséhez. A következő példák a társított szolgáltatás definícióit biztosítják: 
+A **pontozási webszolgáltatás** meghívásához használja az **Azure Machine learning Studio (klasszikus) frissítési erőforrás tevékenységét** , hogy frissítse a webszolgáltatást az újonnan betanított modellel. A következő példák a társított szolgáltatás definícióit biztosítják: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>A pontozási webszolgáltatás egy klasszikus webszolgáltatás
 Ha a pontozási webszolgáltatás egy **klasszikus webszolgáltatás**, akkor a Azure Portal használatával hozza létre a második **nem alapértelmezett és frissíthető végpontot** . A lépések a [végpontok létrehozása](../../machine-learning/studio/create-endpoint.md) című cikkben olvashatók. Miután létrehozta a nem alapértelmezett frissíthető végpontot, hajtsa végre a következő lépéseket:
@@ -88,7 +88,7 @@ Ha a webszolgáltatás az új típusú webszolgáltatás, amely egy Azure Resour
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-A webszolgáltatások Azure Machine Learning webszolgáltatások [portálján](https://services.azureml.net/)található webszolgáltatás lekérdezése során az URL-címekre vonatkozó értékeket is lekérheti. Az új típusú frissítési erőforrás-végponthoz HRE (Azure Active Directory) token szükséges. A Azure Machine Learning társított szolgáltatásban meg kell adni a **servicePrincipalId** és a **servicePrincipalKey** . Lásd: [egyszerű szolgáltatásnév létrehozása és engedélyek kiosztása az Azure-erőforrások kezeléséhez](../../active-directory/develop/howto-create-service-principal-portal.md). Itt látható egy példa AzureML társított szolgáltatás definíciója: 
+Ha a webszolgáltatást a [Azure Machine learning Studio (klasszikus) webszolgáltatások portálján](https://services.azureml.net/)szeretné lekérdezni, megadhatja az URL-címeket a hely tulajdonosainak. Az új típusú frissítési erőforrás-végponthoz HRE (Azure Active Directory) token szükséges. Az **servicePrincipalId** és a **servicePrincipalKey** a Studio (klasszikus) társított szolgáltatásban adható meg. Lásd: [egyszerű szolgáltatásnév létrehozása és engedélyek kiosztása az Azure-erőforrások kezeléséhez](../../active-directory/develop/howto-create-service-principal-portal.md). Itt látható egy példa AzureML társított szolgáltatás definíciója: 
 
 ```json
 {
@@ -108,20 +108,20 @@ A webszolgáltatások Azure Machine Learning webszolgáltatások [portálján](h
 }
 ```
 
-A következő forgatókönyv további részleteket tartalmaz. Ez egy példa az Azure ML-modellek átképzésére és frissítésére egy Azure Data Factory folyamatból.
+A következő forgatókönyv további részleteket tartalmaz. Ez egy példa a Studio (klasszikus) modellek Azure Data Factory folyamatból való átképzésére és frissítésére.
 
-## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Forgatókönyv: az Azure ML-modellek átképzése és frissítése
-Ez a szakasz egy olyan mintát tartalmaz, amely az **Azure ml batch végrehajtási tevékenységét** használja a modell újratanításához. A folyamat az **Azure ml Update erőforrás-tevékenységgel** is frissíti a modellt a pontozási webszolgáltatásban. A szakasz a példában szereplő társított szolgáltatások, adatkészletek és folyamatok JSON-kódrészleteit is tartalmazza.
+## <a name="scenario-retraining-and-updating-a-studio-classic-model"></a>Forgatókönyv: Studio (klasszikus) modell átképzése és frissítése
+Ez a szakasz egy minta folyamatot biztosít, amely a **Azure Machine learning Studio (klasszikus) kötegelt végrehajtási tevékenységet** használja a modell újratanításához. A folyamat a **Azure Machine learning Studio (klasszikus) frissítési erőforrás tevékenységgel** is frissíti a modellt a pontozási webszolgáltatás szolgáltatásban. A szakasz a példában szereplő társított szolgáltatások, adatkészletek és folyamatok JSON-kódrészleteit is tartalmazza.
 
-Itt látható a mintavételezési folyamat diagram nézete. Amint láthatja, az Azure ML batch végrehajtási tevékenysége betanítja a betanítási adatokat, és létrehoz egy képzési kimenetet (iLearner-fájlt). Az Azure ML frissítési erőforrás tevékenysége ezt a betanítási kimenetet veszi át, és frissíti a modellt a pontozási webszolgáltatás végpontján. Az erőforrás frissítése tevékenység nem hoz létre kimenetet. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
+Itt látható a mintavételezési folyamat diagram nézete. Amint láthatja, a Studio (klasszikus) batch-végrehajtási tevékenység betanítja a betanítási adatokat, és egy képzési kimenetet (iLearner-fájlt) hoz létre. A Studio (klasszikus) frissítési erőforrás tevékenysége ezt a betanítási kimenetet veszi át, és frissíti a modellt a pontozási webszolgáltatás végpontján. Az erőforrás frissítése tevékenység nem hoz létre kimenetet. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
 
 ![folyamat diagramja](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure Blob Storage társított szolgáltatás:
 Az Azure Storage a következő adatkészleteket tartalmazza:
 
-* betanítási adatgyűjtés. Az Azure ML betanítási webszolgáltatás bemeneti adata.  
-* iLearner-fájl. Az Azure ML betanítási webszolgáltatás kimenete. Ez a fájl a frissítési erőforrás tevékenységének bemenete is.  
+* betanítási adatgyűjtés. A Studio (klasszikus) betanítási webszolgáltatás bemeneti adata.  
+* iLearner-fájl. A Studio (klasszikus) betanítási webszolgáltatás kimenete. Ez a fájl a frissítési erőforrás tevékenységének bemenete is.  
 
 Itt látható a társított szolgáltatás JSON-definíciója:
 
@@ -138,7 +138,7 @@ Itt látható a társított szolgáltatás JSON-definíciója:
 ```
 
 ### <a name="training-input-dataset"></a>Betanítás bemeneti adatkészlete:
-A következő adatkészlet a Azure Machine Learning képzési webszolgáltatás bemeneti betanítási információit jelöli. Az Azure Machine Learning batch-végrehajtási tevékenység bemenetként veszi át ezt az adatkészletet.
+A következő adatkészlet a Studio (klasszikus) betanítási webszolgáltatás bemeneti betanítási információit jelöli. A Studio (klasszikus) batch-végrehajtási tevékenység bemenetként veszi át ezt az adatkészletet.
 
 ```JSON
 {
@@ -169,7 +169,7 @@ A következő adatkészlet a Azure Machine Learning képzési webszolgáltatás 
 ```
 
 ### <a name="training-output-dataset"></a>Kimeneti adatkészlet betanítása:
-A következő adatkészlet az Azure ML betanítási webszolgáltatás kimeneti iLearner-fájlját jelöli. Az Azure ML batch végrehajtási tevékenysége létrehozza ezt az adatkészletet. Ez az adatkészlet az Azure ML frissítési erőforrás tevékenységének bemenete is.
+A következő adatkészlet a Azure Machine Learning Studio (klasszikus) betanítási webszolgáltatás kimeneti iLearner-fájlját jelöli. A Azure Machine Learning Studio (klasszikus) batch-végrehajtási tevékenység létrehozza ezt az adatkészletet. Ez az adatkészlet a Azure Machine Learning Studio (klasszikus) frissítési erőforrás tevékenységének bemenete is.
 
 ```JSON
 {
@@ -192,8 +192,8 @@ A következő adatkészlet az Azure ML betanítási webszolgáltatás kimeneti i
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Társított szolgáltatás Azure Machine Learning betanítási végponthoz
-A következő JSON-kódrészlet definiál egy Azure Machine Learning társított szolgáltatást, amely a betanítási webszolgáltatás alapértelmezett végpontját mutat.
+### <a name="linked-service-for-studio-classic-training-endpoint"></a>Társított Service for Studio (klasszikus) betanítási végpont
+A következő JSON-kódrészlet egy Studio (klasszikus) társított szolgáltatást definiál, amely az oktatási webszolgáltatás alapértelmezett végpontján mutat.
 
 ```JSON
 {    
@@ -216,8 +216,8 @@ A **Azure Machine learning Studio (klasszikus)** területen tegye a következők
 4. A **Azure Machine learning Studio (klasszikus)** területen kattintson a **Batch-végrehajtási** hivatkozás elemre.
 5. Másolja a kérési **URI** -t a **kérelem** szakaszból, és ILLESSZE be a Data Factory JSON-szerkesztőbe.   
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Társított szolgáltatás az Azure ML frissíthető pontozási végpontja számára:
-A következő JSON-kódrészlet definiál egy Azure Machine Learning társított szolgáltatást, amely a pontozási webszolgáltatás nem alapértelmezett frissíthető végpontján mutat.  
+### <a name="linked-service-for-studio-classic-updatable-scoring-endpoint"></a>Társított szolgáltatás a Studio (klasszikus) frissíthető pontozási végpontja számára:
+A következő JSON-kódrészlet egy Studio (klasszikus) társított szolgáltatást definiál, amely a pontozási webszolgáltatás nem alapértelmezett frissíthető végpontján mutat.  
 
 ```JSON
 {
@@ -237,7 +237,7 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning társított
 ```
 
 ### <a name="placeholder-output-dataset"></a>Helyőrző kimeneti adatkészlete:
-Az Azure ML-frissítési erőforrás-tevékenysége nem eredményez kimenetet. Azure Data Factory azonban egy kimeneti adatkészletet kell vezetnie egy folyamat ütemtervének megadásához. Ezért ebben a példában egy dummy/helyőrző adathalmazt használunk.  
+A Studio (klasszikus) frissítési erőforrás tevékenysége nem eredményez kimenetet. Azure Data Factory azonban egy kimeneti adatkészletet kell vezetnie egy folyamat ütemtervének megadásához. Ezért ebben a példában egy dummy/helyőrző adathalmazt használunk.  
 
 ```JSON
 {
@@ -260,7 +260,7 @@ Az Azure ML-frissítési erőforrás-tevékenysége nem eredményez kimenetet. A
 ```
 
 ### <a name="pipeline"></a>Folyamat
-A folyamat két tevékenységgel rendelkezik: **AzureMLBatchExecution** és **AzureMLUpdateResource**. Az Azure ML batch végrehajtási tevékenysége bemenetként veszi át a betanítási adatokat, és kimenetként létrehoz egy iLearner-fájlt. A tevékenység behívja a betanítási webszolgáltatást (webszolgáltatásként közzétett betanítási kísérlet) a bemeneti betanítási adatokkal, és a webszolgáltatásból fogadja a ilearner-fájlt. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
+A folyamat két tevékenységgel rendelkezik: **AzureMLBatchExecution** és **AzureMLUpdateResource**. A Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység bemenetként veszi át a betanítási adatokat, és kimenetként létrehoz egy iLearner-fájlt. A tevékenység behívja a betanítási webszolgáltatást (webszolgáltatásként közzétett betanítási kísérlet) a bemeneti betanítási adatokkal, és a webszolgáltatásból fogadja a ilearner-fájlt. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
 
 ![folyamat diagramja](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259183"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014409"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -89,10 +89,10 @@ Az adatközpontokban lévő rendelkezésre állásról információért lásd a 
 
 ## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Gyakorlatban használható elemzések készítése videófájlokból a Médiaelemzés használatával
 
-A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](media-services-analytics-overview.md)
+A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](./legacy-components.md)
 
 1. Töltsön fel egy kiváló minőségű médiafájlt egy adategységbe.
-2. Feldolgozhatja a videóit [A Media Analytics áttekintése](media-services-analytics-overview.md) szakaszban leírt egyik Media Analytics-szolgáltatással.
+2. Feldolgozhatja a videóit [A Media Analytics áttekintése](./legacy-components.md) szakaszban leírt egyik Media Analytics-szolgáltatással.
 3. A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. A médiafeldolgozók által létrehozott MP4-fájlokat fokozatosan lehet letölteni. A médiafeldolgozók által létrehozott JSON-fájlokat az Azure-blobtárolóból lehet letölteni.
 
 Az adatközpontokban lévő rendelkezésre állásról információért lásd a [Rendelkezésre állás](#availability) című szakaszt.
@@ -179,7 +179,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name (Név)|status|Adatközpontok
+|Név|Állapot|Adatközpontok
 |---|---|---|
 |Standard|FE|Mind|
 |Prémium|FE|Mind|
@@ -196,21 +196,21 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|status|Adatközpontok
+|Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
 |Media Encoder Standard|FE|Mind|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
 
 ### <a name="analytics-media-processors"></a>Elemzési médiafeldolgozók
 
-A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](media-services-analytics-overview.md)
+A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](./legacy-components.md)
 
 > [!NOTE]
 > Egyes elemzési adathordozó-processzorok ki lesznek vonva. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|status|Adatközpontok
+|Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
 |Azure Media Face Detector|Előnézet|Mind|
 |Azure Media Indexer|FE|Mind|
@@ -225,9 +225,9 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Titkosítás|status|Adatközpontok|
+|Titkosítás|Állapot|Adatközpontok|
 |---|---|---| 
-|Storage|FE|Mind|
+|Tárolás|FE|Mind|
 |AES-128-kulcsok|FE|Mind|
 |FairPlay|FE|Mind|
 |PlayReady|FE|Mind|
@@ -251,7 +251,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|RU típusának neve|status|Adatközpontok
+|RU típusának neve|Állapot|Adatközpontok
 |---|---|---|
 |S1|FE|Mind|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|

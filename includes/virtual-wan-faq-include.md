@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859692"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038581"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -228,7 +228,7 @@ Egy virtuális központ propagálhatja a megtanult alapértelmezett útvonalat e
 Ha egy virtuális központ ugyanazokat az útvonalakat tanulja meg több távoli hubokból, a következőképpen határozhatja meg a sorrendet:
 
 1. A leghosszabb előtag egyezése.
-2. Helyi útvonalak a interhub-en keresztül.
+2. Helyi útvonalak a interhub-en keresztül (a virtuális központ 65520-65520-et rendel hozzá a interhub-hez)
 3. Statikus útvonalak BGP-kapcsolaton keresztül: Ez a Virtual hub-útválasztó által hozott döntés kontextusában van. Ha azonban a döntéshozó a VPN-átjáró, ahol egy hely a BGP-n keresztül hirdeti az útvonalakat, vagy statikus címek előtagjait ad meg, a statikus útvonalak előnyben részesítettek a BGP-útvonalakon.
 4. ExpressRoute (ER) VPN-en keresztül: az ABB előnyben részesített VPN-en, ha a környezet helyi központ. A ExpressRoute-áramkörök közötti átviteli kapcsolat csak Global Reachon keresztül érhető el. Ezért olyan helyzetekben, amikor a ExpressRoute áramkör egy hubhoz csatlakozik, és egy másik, VPN-kapcsolattal rendelkező központhoz csatlakoztatott ExpressRoute-áramkör, a VPN-t előnyben részesítettük a csomópontok közötti forgatókönyvek esetében.
 5. Elérési út hossza

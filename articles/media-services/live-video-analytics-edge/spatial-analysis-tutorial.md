@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824122"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015685"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -32,7 +32,7 @@ A Kezdés előtt olvassa el a következő cikkeket:
 * [Élő videó-elemzések IoT Edge terminológiában](terminology.md)
 * [A Media Graph alapfogalmai](media-graph-concept.md)
 * [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
-* [Oktatóanyag: IoT Edge modul fejlesztése](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Oktatóanyag: IoT Edge modul fejlesztése](../../iot-edge/tutorial-develop-for-linux.md)
 * [Élő video Analytics üzembe helyezése Azure Stack Edge-ben](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -55,12 +55,12 @@ Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-
 
 A MediaGraphCognitiveServicesVisionExtension csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a rendszerképet a **megosztott memórián** keresztül egy másik peremhálózati modulhoz, amely egy gRPC-végpont MÖGÖTTi AI-műveleteket futtat. Ebben a példában ez a peremhálózati modul a térbeli elemzési modul. A MediaGraphCognitiveServicesVisionExtension processzor csomópontja két dolgot tesz:
 
-* Összegyűjti az eredményeket, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub). 
+* Összegyűjti az eredményeket, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
 * Egy 30 másodperces videoklipet is rögzít az RTSP-forrásról a [Signal Gate-processzor](media-graph-concept.md#signal-gate-processor) használatával, és Media Services eszközként tárolja azt.
 
 ## <a name="create-the-computer-vision-resource"></a>A Computer Vision erőforrás létrehozása
 
-Létre kell hoznia egy Computer Vision típusú Azure-erőforrást [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) vagy az Azure CLI-n keresztül. Az erőforrást akkor fogja tudni létrehozni, ha a tárolóhoz való hozzáférésre vonatkozó kérelmét jóváhagyták, és az Azure-előfizetési azonosítót regisztrálták. A https://aka.ms/csgate használati eset és az Azure-előfizetés azonosítójának elküldéséhez nyissa meg a következőt:.  Létre kell hoznia az Azure-erőforrást ugyanazzal az Azure-előfizetéssel, mint amelyet a hozzáférési űrlapra vonatkozó kérelem biztosít.
+Létre kell hoznia egy Computer Vision típusú Azure-erőforrást [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az Azure CLI-n keresztül. Az erőforrást akkor fogja tudni létrehozni, ha a tárolóhoz való hozzáférésre vonatkozó kérelmét jóváhagyták, és az Azure-előfizetési azonosítót regisztrálták. A https://aka.ms/csgate használati eset és az Azure-előfizetés azonosítójának elküldéséhez nyissa meg a következőt:.  Létre kell hoznia az Azure-erőforrást ugyanazzal az Azure-előfizetéssel, mint amelyet a hozzáférési űrlapra vonatkozó kérelem biztosít.
 
 ### <a name="gathering-required-parameters"></a>A szükséges paraméterek összegyűjtése
 
@@ -75,7 +75,7 @@ A rendszer egy kulcsot használ a térbeli elemzési tároló elindításához, 
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack Edge beállítása
 
-Az alábbi [lépéseket](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) követve állíthatja be az Azure stack Edge-t, és folytassa az alábbi lépések végrehajtásával az élő videó-elemzés és a térbeli elemzési modulok üzembe helyezéséhez.
+Az alábbi [lépéseket](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) követve állíthatja be az Azure stack Edge-t, és folytassa az alábbi lépések végrehajtásával az élő videó-elemzés és a térbeli elemzési modulok üzembe helyezéséhez.
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
@@ -136,7 +136,7 @@ Az üzembe helyezési sablon fájljában néhány dolgot kell figyelnie:
 1. `IpcMode` a lvaEdge és a térbeli elemzési modul createOptions azonosnak kell lennie, és a gazdagépre kell beállítani.
 1. Az RTSP-szimulátor működéséhez győződjön meg arról, hogy beállította a kötet határait. További információ: [Setup Docker Volume mounts](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Kapcsolódjon az SMB-megosztáshoz](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share) , és másolja a [minta buldózer-videofájl](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) a helyi megosztásba.
+    1. [Kapcsolódjon az SMB-megosztáshoz](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) , és másolja a [minta buldózer-videofájl](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) a helyi megosztásba.
     1. Ellenőrizze, hogy a rtspsim modul a következő konfigurációval rendelkezik-e:
         
         ```json
@@ -359,7 +359,7 @@ Minta kimenete a personZoneEvent (a cognitiveservices. vízió. spatialanalysis-
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálkozzon a modul által kínált különböző műveletekkel, `spatialAnalysis` például a **personCount** és a **personDistance** . ehhez a telepítési jegyzékfájl Graph csomópontjában az "enabled" jelzőt kell bekapcsolni.
 >[!Tip]

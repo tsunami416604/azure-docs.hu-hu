@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4658a4c05aac7932d8a99c3511f21024f19fbe47
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361557"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013729"
 ---
 # <a name="connect-with-excel"></a>Kapcsolódás Excellel
 
@@ -42,7 +42,5 @@ Az Excel-kiszolgálókhoz való kapcsolódás az Excel 2016-es és újabb verzi�
 
 ## <a name="see-also"></a>Lásd még
 
-[Ügyféloldali kódtárak](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
-[A kiszolgáló kezelése](analysis-services-manage.md)     
-
-
+[Ügyféloldali kódtárak](/analysis-services/client-libraries?view=azure-analysis-services-current)   
+[A kiszolgáló kezelése](analysis-services-manage.md)

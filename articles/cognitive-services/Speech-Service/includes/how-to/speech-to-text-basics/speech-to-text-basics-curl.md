@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 1ec0281145609f9ae06ad07e1ad2cfd2b7f9aba8
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 36d12b29054f736b65af5ac411adbc26d870b982
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940804"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014145"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan alakíthat át beszédet szöveggé a Speech Service és a cURL használatával.
 
@@ -19,7 +19,7 @@ A beszédfelismerési fogalmakat ismertető cikkben tekintse meg az [áttekinté
 
 Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../overview.md#try-the-speech-service-for-free).
 
-## <a name="convert-text-to-speech"></a>Szöveg konvertálása beszédre
+## <a name="convert-speech-to-text"></a>Beszéd szöveggé alakítása
 
 A parancssorban futtassa a következő parancsot. A következő értékeket kell beszúrnia a parancsba.
 - A beszédfelismerési szolgáltatás előfizetési kulcsa.

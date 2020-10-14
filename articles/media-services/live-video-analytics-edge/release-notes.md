@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250470"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015634"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>Modul frissítései
 
-* Az új Graph-bővítmények csomópontja, a [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) a [térbeli analízis](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview)(előzetes verzió) modullal integrálható Cognitive Services.
+* Az új Graph-bővítmények csomópontja, a [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) a [térbeli analízis](/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview)(előzetes verzió) modullal integrálható Cognitive Services.
 * Linux ARM64-eszközök támogatása – az ilyen eszközökön való üzembe helyezéshez [szükséges manuális lépések](deploy-iot-edge-device.md) használata.
 
 ### <a name="documentation-updates"></a>Dokumentációfrissítések

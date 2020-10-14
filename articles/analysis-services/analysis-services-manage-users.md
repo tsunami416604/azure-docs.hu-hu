@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400791"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014902"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
-A Azure Analysis Services a Azure Active Directory (Azure AD) szolgáltatást használja az Identitáskezelés és a felhasználók hitelesítéséhez. A Azure Analysis Services-kiszolgáló létrehozásával, kezelésével vagy csatlakozásával rendelkező felhasználóknak érvényes felhasználói identitással kell rendelkezniük ugyanahhoz az előfizetéshez tartozó [Azure ad-bérlőben](../active-directory/fundamentals/active-directory-administer.md) .
+A Azure Analysis Services a Azure Active Directory (Azure AD) szolgáltatást használja az Identitáskezelés és a felhasználók hitelesítéséhez. A Azure Analysis Services-kiszolgáló létrehozásával, kezelésével vagy csatlakozásával rendelkező felhasználóknak érvényes felhasználói identitással kell rendelkezniük ugyanahhoz az előfizetéshez tartozó [Azure ad-bérlőben](../active-directory/fundamentals/active-directory-whatis.md) .
 
-Azure Analysis Services támogatja az [Azure ad B2B-együttműködést](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md). A B2B használatával a szervezeten kívüli felhasználók meghívhatók vendégként egy Azure AD-címtárban. A vendégek egy másik Azure AD-bérlői címtárból vagy bármely érvényes e-mail-címről is származnak. A meghívást követően a felhasználó elfogadja az Azure-ból e-mailben küldött meghívót, a rendszer hozzáadja a felhasználói identitást a bérlői címtárhoz. Ezek az identitások hozzáadhatók biztonsági csoportokhoz vagy kiszolgálói rendszergazda vagy adatbázis-szerepkör tagjaiként.
+Azure Analysis Services támogatja az [Azure ad B2B-együttműködést](../active-directory/external-identities/what-is-b2b.md). A B2B használatával a szervezeten kívüli felhasználók meghívhatók vendégként egy Azure AD-címtárban. A vendégek egy másik Azure AD-bérlői címtárból vagy bármely érvényes e-mail-címről is származnak. A meghívást követően a felhasználó elfogadja az Azure-ból e-mailben küldött meghívót, a rendszer hozzáadja a felhasználói identitást a bérlői címtárhoz. Ezek az identitások hozzáadhatók biztonsági csoportokhoz vagy kiszolgálói rendszergazda vagy adatbázis-szerepkör tagjaiként.
 
 ![Azure Analysis Services hitelesítési architektúra](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>Hitelesítés
 
-Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyféloldali kódtárat](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) használ a kiszolgálóhoz való kapcsolódáshoz. 
+Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyféloldali kódtárat](/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) használ a kiszolgálóhoz való kapcsolódáshoz. 
 
 Mindhárom ügyfél-függvénytár támogatja az Azure AD interaktív folyamatot és a nem interaktív hitelesítési módszereket. A AMOMD-t és MSOLAP-t használó alkalmazásokban a két nem interaktív módszer, Active Directory jelszó és a Active Directory integrált hitelesítési módszer is használható. Ez a két módszer soha nem eredményez előugró párbeszédpanelt.
 
@@ -34,11 +34,11 @@ Az ügyfélalkalmazás vagy az Ön által használt eszköztől függően a hite
 
 A Power BI Desktop, a Visual Studio és a SSMS támogatja a Active Directory univerzális hitelesítést, amely az Azure Multi-Factor Authentication (MFA) támogató interaktív metódust is támogatja. Az Azure MFA lehetővé teszi az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben egyszerű bejelentkezési folyamatot biztosít. Erős hitelesítést biztosít több ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártya vagy mobil alkalmazás értesítése). Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti. **Az univerzális hitelesítés ajánlott**.
 
-Ha Windows-fiókkal jelentkezik be az Azure-ba, és az univerzális hitelesítés nincs kiválasztva vagy elérhető (Excel), [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) szükséges. Az összevonás, az Azure AD és a Microsoft 365 felhasználók hitelesítése helyszíni hitelesítő adatokkal történik, és hozzáférhet az Azure-erőforrásokhoz.
+Ha Windows-fiókkal jelentkezik be az Azure-ba, és az univerzális hitelesítés nincs kiválasztva vagy elérhető (Excel), [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) szükséges. Az összevonás, az Azure AD és a Microsoft 365 felhasználók hitelesítése helyszíni hitelesítő adatokkal történik, és hozzáférhet az Azure-erőforrásokhoz.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-Azure Analysis Services-kiszolgálók támogatják a [SSMS v 17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és újabb kapcsolatok használatát Windows-hitelesítéssel, Active Directory jelszó-hitelesítéssel és Active Directory univerzális hitelesítéssel. Általánosságban ajánlott Active Directory univerzális hitelesítést használni, mivel:
+Azure Analysis Services-kiszolgálók támogatják a [SSMS v 17.1](/sql/ssms/download-sql-server-management-studio-ssms) és újabb kapcsolatok használatát Windows-hitelesítéssel, Active Directory jelszó-hitelesítéssel és Active Directory univerzális hitelesítéssel. Általánosságban ajánlott Active Directory univerzális hitelesítést használni, mivel:
 
 *  Támogatja az interaktív és nem interaktív hitelesítési módszereket.
 
@@ -81,4 +81,4 @@ Az ezen a szinten lévő szerepkörök azokra a felhasználókra vagy fiókokra 
 [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory csoportokkal](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  
 [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)  
-[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)

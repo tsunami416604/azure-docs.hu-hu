@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269726"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015821"
 ---
 # <a name="media-services-regulatory-compliance"></a>Media Services szabályozási megfelelőség
 
@@ -33,11 +33,11 @@ Media Services kormányzati szolgáltatások megfelelnek a DoD CC SRG IL 2, a Do
 
 A 3PAO és a ÜSS Media Services áttekintése nem a 2020-re van tervezve.
 
-További információ az Azure-szolgáltatások megfelelőségéről az [Azure-szolgáltatásokban a FedRAMP és a DoD CC SRG naplózási hatókörét](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) ismertető cikkben.
+További információ az Azure-szolgáltatások megfelelőségéről az [Azure-szolgáltatásokban a FedRAMP és a DoD CC SRG naplózási hatókörét](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) ismertető cikkben.
 
 ## <a name="azure-compliance-documentation"></a>Azure-megfelelőségi dokumentáció
 
-Ha a szervezetnek meg kell felelnie a globális, az Egyesült Államok kormánya, a regionális, a pénzügyi szolgáltatások, az állapot, a média és a gyártás jogi vagy szabályozási szabványainak, kezdje az [Azure megfelelőségi dokumentációjában](https://docs.microsoft.com/azure/compliance/).
+Ha a szervezetnek meg kell felelnie a globális, az Egyesült Államok kormánya, a regionális, a pénzügyi szolgáltatások, az állapot, a média és a gyártás jogi vagy szabályozási szabványainak, kezdje az [Azure megfelelőségi dokumentációjában](../../compliance/index.yml).
 
 Emellett további megfelelőségi erőforrásokat is talál, mint például a naplózási jelentések, az adatvédelem és a Általános adatvédelmi rendelet (GDPR), a megfelelőségi tervezetek, az országos és regionális irányelvek, a megvalósítás és a leképezések, valamint a tanulmányi és elemzői jelentések.
 

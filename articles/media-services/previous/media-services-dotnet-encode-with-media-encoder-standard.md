@@ -16,12 +16,12 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262403"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014375"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása Media Encoder Standard a .NET használatával
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262403"
 
 A kódolási feladatok a Media Services leggyakoribb feldolgozási műveleteinek egyike. Kódolási feladatokat hozhat létre a médiafájlok egyik kódolásból a másikba való konvertálásához. A kódolás során a Media Services beépített adathordozó-kódolót használhatja. Használhat egy Media Services Partner által biztosított kódolót is; a külső gyártótól származó kódolók az Azure Piactéren keresztül érhetők el. 
 
-Ez a cikk bemutatja, hogyan kódolhatja az eszközöket a .NET-tel Media Encoder Standard (MES) használatával. Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)ismertetett kódolók egyikének használatával van konfigurálva.
+Ez a cikk bemutatja, hogyan kódolhatja az eszközöket a .NET-tel Media Encoder Standard (MES) használatával. Media Encoder Standard az [itt](./media-services-mes-presets-overview.md)ismertetett kódolók egyikének használatával van konfigurálva.
 
 Javasoljuk, hogy mindig kódolja a forrásfájlokat egy adaptív sávszélességű MP4-készletbe, majd alakítsa át a készletet a kívánt formátumra a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)használatával. 
 
@@ -44,7 +44,7 @@ Ha a kimeneti eszköz titkosított tároló, konfigurálnia kell az eszköz kéz
 [Formátumok és kodekek](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES-beállításkészletek
-Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)ismertetett kódolók egyikének használatával van konfigurálva.
+Media Encoder Standard az [itt](./media-services-mes-presets-overview.md)ismertetett kódolók egyikének használatával van konfigurálva.
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok
 Ha a MES használatával kódol egy bemeneti adategységet (vagy eszközöket), a rendszer az adott kódolási feladat sikeres befejezésekor egy kimeneti eszközt kap. A kimeneti eszköz a használt kódolási beállításkészlet alapján video-, hang-, miniatűr-, jegyzékfájl-és egyéb adatokat tartalmaz.
@@ -215,4 +215,3 @@ namespace MediaEncoderStandardSample
 ## <a name="next-steps"></a>Következő lépések
 [Miniatűr készítése a .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
  -Media Encoder standard használatával [Media Services kódolás áttekintése](media-services-encode-asset.md)
-

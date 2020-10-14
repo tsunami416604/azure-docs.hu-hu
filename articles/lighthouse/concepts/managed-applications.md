@@ -3,12 +3,12 @@ title: Azure Lighthouse és Azure Managed Applications
 description: Ismerje meg, hogy az Azure Lighthouse és az Azure által felügyelt alkalmazások hogyan segíthetnek a különböző forgatókönyvek engedélyezésében, és hogyan használhatók együtt.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970758"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014987"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
 
@@ -23,7 +23,7 @@ Az Azure Managed Applications és az Azure Lighthouse is működik azáltal, hog
 
 Az [Azure Lighthouse](../overview.md)használatával a szolgáltatók számos felügyeleti feladatot végezhetnek el közvetlenül az ügyfél előfizetésében (vagy erőforráscsoporthoz). Ez a hozzáférés egy logikai kivetítésen keresztül érhető el, amely lehetővé teszi a szolgáltatók számára, hogy bejelentkezzenek a saját bérlőbe, és hozzáférhessenek az ügyfél bérlőhöz tartozó erőforrásokhoz. Az ügyfél meghatározhatja, hogy mely előfizetések vagy erőforráscsoportok legyenek delegálva a szolgáltatónak, és az ügyfél teljes hozzáférést tart fenn ezekhez az erőforrásokhoz. A szolgáltató hozzáférését bármikor el is távolíthatja.
 
-Az Azure Lighthouse használatához az Azure-beli erőforrás- [kezelést](azure-delegated-resource-management.md) az ARM-sablonok vagy egy [felügyelt szolgáltatási ajánlat Azure Marketplace-](managed-services-offers.md)en való [üzembe helyezésével](../how-to/onboard-customer.md) lehet előkészíteni. A [partner azonosítójának összekapcsolásával](../how-to/partner-earned-credit.md)nyomon követheti az ügyfelek bevonásait és a partner által szerzett kreditek fogadását.
+Az Azure Lighthouse használatához az Azure-beli erőforrás- [kezelést](azure-delegated-resource-management.md) az ARM-sablonok vagy egy [felügyelt szolgáltatási ajánlat Azure Marketplace-](managed-services-offers.md)en való [üzembe helyezésével](../how-to/onboard-customer.md) lehet előkészíteni. A [partnerek azonosítójának összekapcsolásával](../how-to/partner-earned-credit.md)nyomon követheti az ügyfelek bevonásának hatásait.
 
 Az Azure világítótorony általában akkor használatos, ha egy szolgáltató folyamatosan végzi a kezelési feladatokat az ügyfél számára.
 

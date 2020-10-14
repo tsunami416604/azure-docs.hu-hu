@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f79ff9af1272ca908c7a5ba35fbaa1e8bb87fc50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb1781394e0091d8358570c2eaa07ca97297a6ad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506709"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013780"
 ---
 # <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
@@ -51,5 +51,4 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
 
 ## <a name="see-also"></a>Lásd még
 [Kapcsolódás Azure Analysis Serviceshoz](analysis-services-connect.md)   
-[Ügyfélkódtárak](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
-
+[Ügyfélkódtárak](/analysis-services/client-libraries?view=azure-analysis-services-current)

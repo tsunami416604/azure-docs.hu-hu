@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400281"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013695"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
@@ -21,7 +21,7 @@ Ez a cikk a kiszolgálóhoz való csatlakozást ismerteti adatmodellezési és-k
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
-[A legújabb ügyféloldali kódtárak beszerzése](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
+[A legújabb ügyféloldali kódtárak beszerzése](/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 A kiszolgálóhoz való minden kapcsolat, a típustól függetlenül, frissített AMO-, ADOMD.NET-és OLEDB-ügyféloldali kódtárak szükségesek a Analysis Services-kiszolgálóval való csatlakozáshoz és az ahhoz való kapcsolódáshoz. A SSMS, a Visual studióhoz, az Excel 2016-es és újabb verzióihoz, valamint Power BI a legújabb ügyféloldali kódtárakat a rendszer a havi kiadásokkal telepíti vagy frissíti. Bizonyos esetekben azonban lehetséges, hogy egy alkalmazás nem rendelkezik a legújabbal. Ha például a házirendek késleltetik a frissítéseket, vagy Microsoft 365 a frissítések a késleltetett csatornán vannak.
 
@@ -79,7 +79,7 @@ Az Excel régebbi verzióival a felhasználók Office-adatkapcsolati (. odc) fá
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>Kapcsolat csatolt kiszolgálóként SQL Server
 
-SQL Server csatlakozhat egy Azure Analysis Services erőforráshoz [csatolt kiszolgálóként](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) úgy, hogy megadja a MSOLAP az adatforrás-szolgáltatóként. A csatolt kiszolgáló kapcsolatának konfigurálása előtt mindenképpen telepítse a legújabb [MSOLAP ügyféloldali függvénytárat](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (Provider). 
+SQL Server csatlakozhat egy Azure Analysis Services erőforráshoz [csatolt kiszolgálóként](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) úgy, hogy megadja a MSOLAP az adatforrás-szolgáltatóként. A csatolt kiszolgáló kapcsolatának konfigurálása előtt mindenképpen telepítse a legújabb [MSOLAP ügyféloldali függvénytárat](/analysis-services/client-libraries?view=azure-analysis-services-current) (Provider). 
 
 A Azure Analysis Services csatolt kiszolgáló kapcsolatai esetén a MSOLAP-szolgáltatót a SQL Server folyamaton kívül kell létrehozni. A csatolt kiszolgáló beállításainak konfigurálásakor győződjön meg arról, hogy az **InProcess engedélyezése** beállítás nincs **bejelölve**.
 
@@ -100,5 +100,4 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 [Az Excelben való kapcsolat](analysis-services-connect-excel.md)    
 [Kapcsolat Power BI](analysis-services-connect-pbi.md)   
-[A kiszolgáló kezelése](analysis-services-manage.md)   
-
+[A kiszolgáló kezelése](analysis-services-manage.md)
