@@ -3,20 +3,20 @@ title: 'Gyors útmutató: anomáliák észlelése az idősoros adataiban az anom
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan használhatja az adatsorozat-adataiban mutatkozó rendellenességek észlelésére szolgáló két észlelési módot a rendellenesség-érzékelő API-k számára.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/03/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c19f901f4419cca59a3b4e070191c8bb89ce7c34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 919d608bda4b0a288996ad9d8d7908e5eb5ace23
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319197"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019698"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és C használatával #
 

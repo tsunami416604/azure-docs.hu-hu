@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83697590"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018776"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Modell üzembe helyezése a Visual Studióból
 
@@ -23,7 +23,7 @@ Miután létrehozott egy kiszolgálót az Azure-előfizetésében, készen áll 
 A kezdéshez a következők szükségesek:
 
 * **Analysis Services-kiszolgáló** az Azure-ban. További információkért lásd [az Azure Analysis Services-kiszolgáló létrehozásával kapcsolatos](analysis-services-create-server.md) témakört.
-* **Táblázatos modell projekt** a Visual Studióban vagy egy meglévő táblázatos modell a 1200-as vagy magasabb kompatibilitási szinten. Korábban még nem hozott létre egyet sem? Próbálkozzon [az Adventure Works internetes értékesítési modell központi telepítésének útmutatójával](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
+* **Táblázatos modell projekt** a Visual Studióban vagy egy meglévő táblázatos modell a 1200-as vagy magasabb kompatibilitási szinten. Korábban még nem hozott létre egyet sem? Próbálkozzon [az Adventure Works internetes értékesítési modell központi telepítésének útmutatójával](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
 * **Helyszíni átjáró** – Ha a szervezete hálózatában egy vagy több helyszíni adatforrás található, telepítenie kell egy [helyszíni adatátjárót](analysis-services-gateway.md). Az átjáróra azért van szükség, hogy a felhőben található kiszolgálója csatlakozni tudjon a helyszíni adatforrásaihoz a modellben található adatok feldolgozásához és frissítéséhez.
 
 > [!TIP]
@@ -59,11 +59,8 @@ Ha a metaadatok telepítésekor a telepítés meghiúsul, akkor valószínű, ho
 
 Ha a telepítés egy táblán sikertelen, annak valószínűleg az az oka, hogy a kiszolgálója nem tudott csatlakozni egy adatforráshoz. Ha a szervezete hálózatában helyszíni adatforrás található, mindenképp telepítsen egy [helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután sikeresen telepítette a kiszolgálóra a táblázatos modellt, azonnal csatlakozhat is hozzá. [SQL Server Management Studio (SSMS)](analysis-services-manage.md) használatával is csatlakozhat a kezeléséhez. Továbbá [csatlakozhat hozzá ügyféleszközzel](analysis-services-connect.md) is, például Power BI, Power BI Desktop vagy Excel segítségével, és megkezdheti a jelentések létrehozását.   
 
-A speciális üzembe helyezési módszerekkel kapcsolatos további információkért lásd: [táblázatos modell megoldásának üzembe helyezése](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
-
-
-
+A speciális üzembe helyezési módszerekkel kapcsolatos további információkért lásd: [táblázatos modell megoldásának üzembe helyezése](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749089"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018814"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
 
@@ -79,7 +79,7 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 **Megjegyzések**:  
 <a name="tab1400b">6</a> – csak táblázatos 1400 és újabb modellek.  
 <a name="sqlim">7</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200 és a magasabb modellekben, adja meg a Microsoft OLE DB illesztőprogramot SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatóját SQL Serverhoz.  
-<a name="instgw">8</a> – ha a MSOLEDBSQL adatszolgáltatóként van megadva, előfordulhat, hogy a helyszíni adatátjáróval megegyező számítógépen le kell töltenie és telepítenie kell a [Microsoft OLE DB illesztőprogramot a SQL Serverhoz](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) .  
+<a name="instgw">8</a> – ha a MSOLEDBSQL adatszolgáltatóként van megadva, előfordulhat, hogy a helyszíni adatátjáróval megegyező számítógépen le kell töltenie és telepítenie kell a [Microsoft OLE DB illesztőprogramot a SQL Serverhoz](/sql/connect/oledb/oledb-driver-for-sql-server) .  
 <a name="oracle">9</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforráshoz táblázatos 1400 + modellekben, a .net-hez készült Oracle-adatszolgáltató megadása. Strukturált adatforrásként való megadása esetén ügyeljen arra, hogy az [Oracle által felügyelt szolgáltatót engedélyezze](#enable-oracle-managed-provider).   
 <a name="teradata">10</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforrásként táblázatos 1400 + modellekben a Teradata-adatszolgáltató megadása a .net-hez.  
 <a name="filesSP">11</a> – a helyszíni SharePointban található fájlok nem támogatottak.
@@ -161,7 +161,7 @@ Az Oracle által felügyelt szolgáltató engedélyezése:
 3. Indítsa újra a kiszolgálót.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Helyszíni átjáró](analysis-services-gateway.md)
 * [A kiszolgáló kezelése](analysis-services-manage.md)

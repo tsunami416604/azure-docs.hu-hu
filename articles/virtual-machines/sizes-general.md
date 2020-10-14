@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2d6ce99104b649ea75651692622623d1a6236e75
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6929c0110dcf9ff9f59c200243e886af1936c22f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968871"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018831"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuálisgép-méretek
 
@@ -29,7 +29,7 @@ Az általános célú virtuálisgép-méretek kiegyensúlyozott processzor-memó
 
 - A [Dav4 és a Dasv4 sorozat](dav4-dasv4-series.md) új méretek az AMD 2.35 GHz EPYC<sup>TM</sup> 7452 processzorát egy többszálas konfigurációban, amely akár 256 MB L3-os gyorsítótárat is felhasznál, amely 8 MB-ot tesz elérhetővé az összes 8 mag számára az általános célú számítási feladatok futtatásához. A Dav4-sorozat és a Dasv4-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a D & Dsv3 sorozat.
 
-- [DV4 és Dsv4 sorozat](dv4-dsv4-series.md) A DV4 és a Dsv4 sorozat az Intel® Xeon® Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és jobb értéket biztosít a legtöbb általános célú számítási feladathoz. A szolgáltatás az összes Core Turbo órajel 3,4 GHz-es sebességét tartalmazza.
+- [DV4 és Dsv4 sorozat](dv4-dsv4-series.md) A DV4 és a Dsv4 sorozat az Intel® Xeon® Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és jobb értéket biztosít a legtöbb általános célú számítási feladathoz. Ez az összes Core Turbo órajel 3,4 GHz-es sebességgel rendelkezik.
 
 - [Ddv4 és Ddsv4 sorozat](ddv4-ddsv4-series.md) A Ddv4 és a Ddsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és jobb ár-arányt biztosít a legtöbb általános célú munkaterheléshez. A szolgáltatás a 3,4 GHz-es és az Intel [ &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading technológia](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)minden alapvető Turbo órajelét tartalmazza. Emellett támogatják az [Intel &reg; Deep learning fellendítését](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)is. Ezek az új virtuálisgép-méretek 50%-kal nagyobb helyi tárterülettel rendelkeznek, valamint jobb helyi lemez-IOPS is használhatók, mint a [Dv3-/Dsv3](./dv3-dsv3-series.md) -méretek és a Gen2-alapú virtuális [gépek](./generation-2.md).
 

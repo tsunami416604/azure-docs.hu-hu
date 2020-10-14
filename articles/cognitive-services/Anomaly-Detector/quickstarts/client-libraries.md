@@ -3,22 +3,22 @@ title: 'Gyors útmutató: anomáliák észlelése az anomáliák Kiderítő ügy
 titleSuffix: Azure Cognitive Services
 description: A rendellenesség-Kiderítő API az adatsorozatokban lévő rendellenességek észlelésére szolgáló ügyféloldali kódtárakat biztosít a Batch vagy a streaming adatai számára.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 zone_pivot_groups: programming-languages-set-seventeen
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.author: aahi
+ms.author: mbullwin
 keywords: anomáliák észlelése, algoritmusok
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
-ms.openlocfilehash: 730d9450740b8eef8d5eb29b5693e4b9db946a47
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a1079c19d9778b8a4392b822b004726bccfc02b7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319252"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018462"
 ---
 # <a name="quickstart-use-the-anomaly-detector-client-library"></a>Gyors útmutató: az anomália-detektor ügyféloldali kódtár használata
 
