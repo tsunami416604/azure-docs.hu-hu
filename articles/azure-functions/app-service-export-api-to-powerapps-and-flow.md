@@ -4,16 +4,16 @@ description: A App Serviceben üzemeltetett API-k közzététele PowerApps és M
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015085"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054797"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure-ban üzemeltetett API exportálása PowerApps és Microsoft Flow
 
-A [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) olyan egyéni üzleti alkalmazások létrehozására és használatára szolgál, amelyek az adataihoz kapcsolódnak, és a különböző platformokon működnek. A [Microsoft flow](/learn/modules/get-started-with-flow/index) megkönnyíti a munkafolyamatok és az üzleti folyamatok automatizálását kedvenc alkalmazásai és szolgáltatásai között. A PowerApps és a Microsoft Flow számos beépített összekötőt kínál az adatforrásokhoz, például az Office 365, a Dynamics 365, a Salesforce és sok más szolgáltatáshoz. Bizonyos esetekben az alkalmazás-és a flow-építők a szervezete által készített adatforrásokhoz és API-khoz is csatlakozni kívánnak.
+A [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) olyan egyéni üzleti alkalmazások létrehozására és használatára szolgál, amelyek az adataihoz kapcsolódnak, és a különböző platformokon működnek. A [Power automatizálás](/learn/modules/get-started-with-flow/index) megkönnyíti a munkafolyamatok és az üzleti folyamatok automatizálását kedvenc alkalmazásai és szolgáltatásai között. A PowerApps és a Microsoft Flow számos beépített összekötőt kínál az adatforrásokhoz, például az Office 365, a Dynamics 365, a Salesforce és sok más szolgáltatáshoz. Bizonyos esetekben az alkalmazás-és a flow-építők a szervezete által készített adatforrásokhoz és API-khoz is csatlakozni kívánnak.
 
 Hasonlóképpen, az API-kat a szervezeten belül szélesebb körben támogató fejlesztőknek teheti elérhetővé az API-kat az alkalmazások és a flow-építők számára. Ez a cikk bemutatja, hogyan exportálhat [Azure functions](../azure-functions/functions-overview.md) vagy [Azure app Service](../app-service/overview.md)beépített API-t. Az exportált API egy *Egyéni összekötővé*válik, amelyet a rendszer a PowerApps és a Microsoft flow használ, mint a beépített összekötő.
 

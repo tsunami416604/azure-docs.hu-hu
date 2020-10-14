@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802208"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055086"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -104,7 +104,7 @@ Az Azure VMware-megoldás saját felhőhöz való hozzáféréséhez az Azure VM
 Az Azure VMware-megoldásból származó ExpressRoute áramkör csatlakozik egy ExpressRoute-átjáróhoz az ebben a lépésben meghatározott Azure-Virtual Network.  
 
 >[!IMPORTANT]
->Ha meglévő virtuális hálózatot választ, ki kell választania egyet, amely nem rendelkezik már meglévő átjáró-alhálózattal.  
+>Egy meglévő ExpressRoute-átjáróval csatlakozhat az Azure VMware-megoldáshoz, ha nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot.  Ahhoz azonban, hogy a helyszíni Azure VMware-megoldás elérhető legyen a ExpressRoute-on keresztül, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.  
 
 Ha a ExpressRoute áramkört az Azure VMware megoldásból egy meglévő ExpressRoute-átjáróhoz szeretné kapcsolni, az üzembe helyezés után megteheti.  
 
@@ -126,7 +126,7 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal az Azure VMware-megoldás saját Felhőbeli létrehozásához.
 
 > [!div class="nextstepaction"]

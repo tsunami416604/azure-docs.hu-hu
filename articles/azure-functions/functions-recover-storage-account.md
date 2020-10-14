@@ -3,12 +3,12 @@ title: 'Hibakeresési hiba: Azure Functions-futtatókörnyezet nem érhető el'
 description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fiókot.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 094f4f45be0ae4173af434be178f2eae2b21b6be
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385857"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054729"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
 
@@ -36,7 +36,7 @@ Ha az előző lépésben nem találja a Storage-fiókhoz tartozó kapcsolatok ka
 
 * Szükséges
     * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
-* A felhasználási terv funkcióihoz szükséges:
+* A használat és a Prémium csomag funkcióihoz szükséges:
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
     * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
@@ -88,7 +88,7 @@ A portált olyan számítógépről is használhatja, amely az alkalmazást futt
 
 A bejövő szabályok konfigurálásával kapcsolatos további információkért tekintse [meg az App Service Environment hálózatkezelési szempontjainak](../app-service/environment/network-info.md#network-security-groups)hálózati biztonsági csoportjai című szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a Function apps figyelését:
 

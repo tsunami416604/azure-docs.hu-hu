@@ -1,14 +1,14 @@
 ---
 title: A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
 description: A CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6cc985fe127eae795d9a8e37624c403dd6e6f96a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84740306"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054610"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
 
@@ -46,7 +46,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. Válassza az oldal tetején lévő _Összetevők_ lapot, vagy az oldal alján lévő **Következő: Összetevők** lehetőséget.
 
-1. Tekintse át a tervmintát alkotó összetevők listáját. Számos összetevőnek olyan paraméterei vannak, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor végzett a tervminta áttekintésével.
+1. Tekintse át a terv minta részét képező összetevők listáját. Számos összetevőnek olyan paraméterei vannak, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor végzett a tervminta áttekintésével.
 
 ### <a name="publish-the-sample-copy"></a>Ugyanazon másolat közzététele
 
@@ -104,7 +104,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
 |Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További cikkek a tervekről és a használatukról:
 

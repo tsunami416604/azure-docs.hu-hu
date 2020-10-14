@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116393"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055290"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
 
 Új alkalmazás fejlesztésekor fontos tudni a Microsoft Identity platform (v 2.0) és a Azure Active Directory (v 1.0) végpontok közötti különbségeket. Ez a cikk a végpontok és a Microsoft Identity platform meglévő korlátai közötti fő különbségeket ismerteti.
-
-> [!NOTE]
-> A Microsoft Identity platform végpontja nem támogatja az összes Azure AD-forgatókönyvet és-funkciót. Annak megállapításához, hogy érdemes-e a Microsoft Identity platform-végpontot használni, olvassa el a [Microsoft Identity platform korlátozásait](#limitations)ismertetőt.
 
 ## <a name="who-can-sign-in"></a>Kik jelentkezhetnek be
 
@@ -35,7 +32,7 @@ ms.locfileid: "88116393"
 * A Microsoft Identity platform végpontja lehetővé teszi a munkahelyi és iskolai fiókok Azure AD-és személyes Microsoft-fiókjai (MSA), például a hotmail.com, a outlook.com és a msn.com használatát a bejelentkezéshez.
 * Mindkét végpont fogadja az Azure AD-címtár *[vendég felhasználói](../external-identities/what-is-b2b.md)* számára az *[egybérlős](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* vagy a bérlői végpont () használatára konfigurált *több-bérlős* alkalmazások bejelentkezését is `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
-A Microsoft Identity platform végpontja lehetővé teszi olyan alkalmazások írását, amelyek elfogadják a személyes Microsoft-fiókokból, valamint a munkahelyi és iskolai fiókokból érkező bejelentkezéseket. Ez lehetővé teszi, hogy az alkalmazást teljes mértékben fiók-agnosztikusként írja. Ha például az alkalmazás meghívja a [Microsoft Graph](https://graph.microsoft.io), néhány további funkció és adat is elérhető lesz a munkahelyi fiókok, például a SharePoint-webhelyek vagy a címtáradatok számára. Azonban számos művelethez, például [egy felhasználó levelezésének olvasásához](/graph/api/user-list-messages?view=graph-rest-1.0)ugyanez a kód férhet hozzá az e-mailekhez a személyes és munkahelyi és az iskolai fiókokhoz is.
+A Microsoft Identity platform végpontja lehetővé teszi olyan alkalmazások írását, amelyek elfogadják a személyes Microsoft-fiókokból, valamint a munkahelyi és iskolai fiókokból érkező bejelentkezéseket. Ez lehetővé teszi, hogy az alkalmazást teljes mértékben fiók-agnosztikusként írja. Ha például az alkalmazás meghívja a [Microsoft Graph](https://graph.microsoft.io), néhány további funkció és adat is elérhető lesz a munkahelyi fiókok, például a SharePoint-webhelyek vagy a címtáradatok számára. Azonban számos művelethez, például [egy felhasználó levelezésének olvasásához](/graph/api/user-list-messages)ugyanez a kód férhet hozzá az e-mailekhez a személyes és munkahelyi és az iskolai fiókokhoz is.
 
 A Microsoft Identity platform végpontja esetében a Microsoft Authentication Library (MSAL) használatával férhet hozzá a fogyasztó, az oktatási és a vállalati világhoz. Az Azure AD v 1.0 végpont csak a munkahelyi és iskolai fiókokból érkező bejelentkezéseket fogadja el.
 
@@ -114,7 +111,7 @@ Ezek a hatókörök lehetővé teszik az alkalmazás minimális közzétételi m
 A Microsoft Identity platform végpontja alapértelmezés szerint kisebb értékű jogcímeket ad ki a jogkivonatokban. Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek egy, a Microsoft Identity platform jogkivonatában alapértelmezés szerint nem megadott, egy adott jogcímtől függenek, akkor a [választható jogcímek](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) funkció használatával vegye fel ezt a jogcímet.
 
 > [!IMPORTANT]
-> a 1.0-s és a v 2.0-tokenek a 1.0-s és a v 2.0-s végpontok esetében is kiállíthatók. id_tokens *mindig* egyezik a kért végponttal, és a hozzáférési tokenek *mindig* egyeznek a webes API által várt formátummal, amelyet az ügyfél a token használatával hív meg.  Tehát ha az alkalmazás a v 2.0-s végpontot használja a Microsoft Graph meghívására, amely a v 1.0 formátum hozzáférési jogkivonatait várja, az alkalmazás egy jogkivonatot kap a 1.0-s formátumban.  
+> a 1.0-s és a v 2.0-tokenek a 1.0-s és a v 2.0-s végpontok esetében is kiállíthatók. id_tokens *mindig* egyezik a kért végponttal, és a hozzáférési tokenek *mindig* egyeznek a webes API által várt formátummal, amelyet az ügyfél a token használatával hív meg.  Tehát ha az alkalmazás a v 2.0-s végpontot használja a Microsoft Graph meghívására, amely a v 1.0 formátum hozzáférési jogkivonatait várja, az alkalmazás egy jogkivonatot kap a 1.0-s formátumban.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -153,18 +150,22 @@ Jelenleg a Microsoft Identity platform végpontjának függvénytár-támogatás
 * Ha asztali vagy mobil alkalmazást hoz létre, használhatja a Microsoft Authentication librarys (MSAL) egyikét. Ezek a kódtárak általánosan elérhetők, vagy éles környezetben támogatott előzetes verzióban, így biztonságos módon használhatók éles alkalmazásokban. További információt az előzetes verzióról és a [hitelesítő függvénytárak dokumentációjában](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)elérhető könyvtárakról itt olvashat.
 * A Microsoft-kódtárak által nem támogatott platformok esetében az alkalmazás kódjában lévő protokoll üzeneteinek közvetlen küldésével és fogadásával integrálható a Microsoft Identity platform-végpontba. Az OpenID Connect és a OAuth protokollok [explicit módon dokumentálva vannak](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , így segít az ilyen integrációban.
 * Végül használhatja a nyílt forráskódú OpenID Connect és a OAuth kódtárat a Microsoft Identity platform végpontjának integrálásához. A Microsoft Identity platform végpontjának kompatibilisnek kell lennie a számos nyílt forráskódú protokoll-kódtáraval anélkül, hogy módosításokat kellene megadnia. Az ilyen típusú könyvtárak rendelkezésre állása nyelvtől és platformtól függően változik. Az [OpenID Connect](https://openid.net/connect/) és a [OAuth 2,0](https://oauth.net/2/) websites fenntartják a népszerű implementációk listáját. További információ: [Microsoft Identity platform és Authentication librarys](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json), valamint a Microsoft Identity platform-végponttal tesztelt nyílt forráskódú ügyféloldali kódtárak és minták listája.
-* A `.well-known` Microsoft Identity platform közös végpontjának végpontja a következő: `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Cserélje le a- `common` t a bérlői azonosítóra a bérlőre vonatkozó adatlekérdezéshez.  
+* A `.well-known` Microsoft Identity platform közös végpontjának végpontja a következő: `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Cserélje le a- `common` t a bérlői azonosítóra a bérlőre vonatkozó adatlekérdezéshez.
 
 ### <a name="protocol-changes"></a>Protokoll módosításai
 
-A Microsoft Identity platform végpontja nem támogatja az SAML vagy a WS-Federation használatát; csak az OpenID Connect és a OAuth 2,0 használatát támogatja.  A OAuth 2,0 protokollnak a v 1.0 végpontról történő jelentős módosításai a következők: 
+A Microsoft Identity platform végpontja nem támogatja az SAML vagy a WS-Federation használatát; csak az OpenID Connect és a OAuth 2,0 használatát támogatja.  A OAuth 2,0 protokollnak a v 1.0 végpontról történő jelentős módosításai a következők:
 
-* A `email` rendszer visszaadja a jogcímet, ha egy választható jogcím konfigurálva van, **vagy** hatókör = e-mail-cím lett megadva a kérelemben. 
-* A paraméter `scope` mostantól támogatott a `resource` paraméter helyett.  
-* Számos válasz lett módosítva, hogy azok megfeleljenek a OAuth 2,0-specifikációnak, például egy karakterlánc helyett a helyes visszatérési értéket `expires_in` .  
+* A `email` rendszer visszaadja a jogcímet, ha egy választható jogcím konfigurálva van, **vagy** hatókör = e-mail-cím lett megadva a kérelemben.
+* A paraméter `scope` mostantól támogatott a `resource` paraméter helyett.
+* Számos válasz lett módosítva, hogy azok megfeleljenek a OAuth 2,0-specifikációnak, például egy karakterlánc helyett a helyes visszatérési értéket `expires_in` .
 
 A Microsoft Identity platform végpontjában támogatott protokoll-funkciók jobb megismeréséhez tekintse meg az [OpenID Connect és a OAuth 2,0 protokoll-referenciát](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-#### <a name="saml-restrictions"></a>SAML-korlátozások
+#### <a name="saml-usage"></a>SAML-használat
 
-Ha a Windows-alkalmazásokban Active Directory-hitelesítési tár (ADAL) használta, lehetséges, hogy kihasználta a Windows integrált hitelesítés előnyeit, amely a Security Assertion Markup Language (SAML) jogcímet használja. Ezzel a támogatással az összevont Azure AD-bérlők felhasználói a hitelesítő adatok megadása nélkül csendes módon hitelesíthetők a helyszíni Active Directory-példánnyal. Az SAML-jogcímek engedélyezése nem támogatott a Microsoft Identity platform végpontján.
+Ha a Windows-alkalmazásokban Active Directory-hitelesítési tár (ADAL) használta, lehetséges, hogy kihasználta a Windows integrált hitelesítés előnyeit, amely a Security Assertion Markup Language (SAML) jogcímet használja. Ezzel a támogatással az összevont Azure AD-bérlők felhasználói a hitelesítő adatok megadása nélkül csendes módon hitelesíthetők a helyszíni Active Directory-példánnyal. Míg az [SAML továbbra is támogatott protokoll](../develop/active-directory-saml-protocol-reference.md) a vállalati felhasználókkal való használatra, a v 2.0-s végpont csak a OAuth 2,0 alkalmazásokkal használható.
+
+## <a name="next-steps"></a>Következő lépések
+
+További információt a [Microsoft Identity platform dokumentációjában talál](../develop/index.yml).

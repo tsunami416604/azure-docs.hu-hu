@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 08/14/2020
+ms.date: 10/13/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e55a8e8dd78a6093c875cd20dd8b240816e7426
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905617"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055103"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 
@@ -26,6 +26,9 @@ Ebből a cikkből megtudhatja, hogyan futtathatja Azure Machine Learning-modellj
 A nagyméretű adathalmazokra vagy bonyolult modellekkel való következtetés időigényes lehet. A `ParallelRunStep` osztály lehetővé teszi, hogy párhuzamosan hajtsa végre a feldolgozást, ami a teljes eredmények gyorsabb elérését eredményezheti. Még akkor is, ha az egyszeri értékelés futtatása meglehetősen gyors, sok esetben (objektumok észlelése, videó-feldolgozás, természetes nyelvi feldolgozás stb.) számos értékelés futtatására van szükség. 
 
 A segítségével `ParallelRunStep` egyszerűen méretezheti a Batch-következtetéseket a nagyméretű gépekre. Ezek a fürtök terabájtos strukturált vagy strukturálatlan adatok kezelésére képesek a jobb termelékenység és az optimalizált díj mellett.
+
+> [!NOTE]
+> A ParallelRunStep a zavaróan párhuzamos számítási feladatokhoz készült, és számos modell egyidejű betanítására, vagy nagy méretű adatok feldolgozására is használható.
 
 Ez a cikk a következő feladatokat ismerteti:
 
@@ -419,7 +422,7 @@ print("Prediction has ", df.shape[0], " rows")
 df.head(10) 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run). 
 
