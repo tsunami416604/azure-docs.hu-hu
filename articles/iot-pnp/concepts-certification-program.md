@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9580f1c7a29b19bb926a7079b95cb3ed0b314d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579773"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048100"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Mi az Azure Certified eszköz program?
 
@@ -102,7 +102,7 @@ Minden hitelesíteni kívánt eszközhöz használja a minősítési portál űr
 
 Ez a fázis együttműködik az eszközzel, és több tesztet futtat, miután az eszköz a DPS használatával csatlakozik IoT Hubhoz. Befejezésekor megtekintheti a naplófájlok készletét az eszköz tesztelési eredményeivel.
 
-A minősítési portál útmutatást nyújt a teszteléshez használt IoT Hub-példányhoz való kapcsolódáshoz. A DPS-kapcsolatot bármely [támogatott igazolási módszer](https://aka.ms/acdAttestation)használatával létrehozhatja.
+A minősítési portál útmutatást nyújt a teszteléshez használt IoT Hub-példányhoz való kapcsolódáshoz. A DPS-kapcsolatot bármely [támogatott igazolási módszer](../iot-dps/concepts-service.md#attestation-mechanism)használatával létrehozhatja.
 
 Az Azure Certified-eszköz csapata az eszköz további manuális ellenőrzéséhez felveheti a kapcsolatot az Eszközkezelővel.
 

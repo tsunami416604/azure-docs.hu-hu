@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522346"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047692"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure digitális Twins-ügyfél adatkérési funkciói
 
@@ -35,7 +35,7 @@ Az Azure digitális Twins a környezethez hozzáféréssel rendelkező felhaszn�
 
 ## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 
-Az Azure Digital Twins-rendszergazdák a Azure Portal használatával törölhetik a felhasználókhoz kapcsolódó adatforrásokat. Az Azure Digital Twins REST API-k használatával is végezhet törlési műveleteket az egyes digitális ikreken. Az elérhető API-kkal kapcsolatos további információkért lásd: [Azure digitális ikrek REST API-k dokumentációja](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Az Azure Digital Twins-rendszergazdák a Azure Portal használatával törölhetik a felhasználókhoz kapcsolódó adatforrásokat. Az Azure Digital Twins REST API-k használatával is végezhet törlési műveleteket az egyes digitális ikreken. Az elérhető API-kkal kapcsolatos további információkért lásd: [Azure digitális ikrek REST API-k dokumentációja](/rest/api/azure-digitaltwins/).
 
 ## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
 
@@ -45,4 +45,4 @@ A vásárlói adatok, beleértve a felhasználói szerepköröket és a szerepk�
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációra mutató hivatkozások
 
-Az Azure Digital Twins szolgáltatás API-jai teljes listáját az [Azure digitális ikrek REST API-jai dokumentációjában](https://docs.microsoft.com/rest/api/azure-digitaltwins/)találja.
+Az Azure Digital Twins szolgáltatás API-jai teljes listáját az [Azure digitális ikrek REST API-jai dokumentációjában](/rest/api/azure-digitaltwins/)találja.

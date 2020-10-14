@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 95dc5b70174cd738104260aac2e175c0657d9c90
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966202"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046043"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
@@ -33,7 +33,7 @@ A feladatok a következők:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Hyper-V-t használó](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)Windows-fejlesztői gép. Ez a cikk az Ubuntu Server rendszerű virtuális gépet futtató Windows 10-es verzióját használja.
+* [Hyper-V-t használó](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)Windows-fejlesztői gép. Ez a cikk az Ubuntu Server rendszerű virtuális gépet futtató Windows 10-es verzióját használja.
 * Aktív IoT Hub.
 
 > [!NOTE]
@@ -174,7 +174,7 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során.
 
-## <a name="install-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet telepítése
+## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható. Telepítse a IoT Edge futtatókörnyezetet a virtuális gépre.
 

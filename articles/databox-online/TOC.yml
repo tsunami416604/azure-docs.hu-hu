@@ -57,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: A Kubernetes számítási feladatai
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Key Vault-integráció megtekintése
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: Útmutató
       items:
         - name: IoT Edge-minták üzembe helyezése

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e70586fc2000e90b00d06d16bf5ba8df0bf5442f
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944982"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046485"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Gyors útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play-eszköz (Java) használata
 
@@ -27,7 +27,7 @@ A IoT Plug and Play leegyszerűsíti a IoT azáltal, hogy az eszköz képessége
 
 A rövid útmutató Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
-* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)a **hosszú távú támogatás**alatt válassza a **Java 8**lehetőséget.
+* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)a **hosszú távú támogatás**alatt válassza a **Java 8**lehetőséget.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Az SDK-tárház klónozása a mintakód használatával
@@ -137,7 +137,7 @@ System.out.println("Method result status is: " + result.getStatus());
 
 Az eszköz kimenete azt mutatja, hogy az eszköz hogyan válaszol erre a parancsra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

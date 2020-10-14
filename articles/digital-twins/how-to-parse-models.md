@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 496ca7edfbfb81d8d8838d704b128701a5960e5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9e489d58b2c4bee0cd9551d15bfa59c3610d959
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974923"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047199"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellek elemzése és ellenőrzése a DTDL Parser Library-vel
 
@@ -20,11 +20,11 @@ Az Azure Digital Twins [modelljei](concepts-models.md) a JSON-ld-alapú digitál
 
 Ennek elvégzéséhez .NET ügyféloldali DTDL-elemzési függvénytár van megadva a következő NuGet: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-Az elemző függvénytárat közvetlenül a C#-kódban is használhatja, vagy használhatja a Language-agnosztikus kód minta projektjét, amely az elemző könyvtárra épül: [**DTDL validator minta**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+Az elemző függvénytárat közvetlenül a C#-kódban is használhatja, vagy használhatja a Language-agnosztikus kód minta projektjét, amely az elemző könyvtárra épül: [**DTDL validator minta**](/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>A DTDL-érvényesítő minta használata
 
-A [**DTDL-érvényesítő**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) olyan minta projekt, amely a DTDL érvényességének ellenőrzésére képes a modell dokumentumainak ellenőrzéséhez. A szolgáltatás a .NET Parser Library-re épül, és nyelvtől független. A minta hivatkozásnál a *zip letöltése* gombra kattintva kérheti le.
+A [**DTDL-érvényesítő**](/samples/azure-samples/dtdl-validator/dtdl-validator) olyan minta projekt, amely a DTDL érvényességének ellenőrzésére képes a modell dokumentumainak ellenőrzéséhez. A szolgáltatás a .NET Parser Library-re épül, és nyelvtől független. A minta hivatkozásnál a *zip letöltése* gombra kattintva kérheti le.
 
 A forráskód példákat mutat be az elemző függvénytár használatára. Az érvényesítő mintát parancssori segédprogramként használhatja a DTDL-fájlok címtár-fájának ellenőrzéséhez. Emellett interaktív módot is biztosít.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932114"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047403"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -164,7 +164,7 @@ Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és
 ## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
-* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)
 
 Azt is megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:

@@ -284,6 +284,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: VMware virtuális gépek visszaállítása az Azure Backup Server használatával
           href: restore-azure-backup-server-vmware.md
+        - name: MABS-kiszolgáló biztonsági mentése
+          href: backup-the-mabs-server.md
     - name: Azure Backup Server az Azure Stacken
       items:
         - name: Azure Backup Server telepítése

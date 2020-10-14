@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 984977d7cef1a923bf7f17de0c503bddeeebcd82
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3a5d0ba92ab976f9ea3aa2722f92865f06d5a70e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998384"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045040"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
 
@@ -26,7 +26,7 @@ A IoT Plug and Play lehetővé teszi a megoldás-építők számára, hogy manu�
 
 Ezeket az elemeket az interfészek között csoportosítva újra felhasználhatja a modelleket, így egyszerűbbé és gyorsabbá teheti a fejlesztést.
 
-Ahhoz, hogy a IoT-Plug and Play működjön az [Azure Digital Twins](../digital-twins/about-digital-twins.md)szolgáltatással, a modelleket és a felületeket a [digitális Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)használatával határozhatja meg. A IoT Plug and Play és a DTDL nyitva vannak a Közösség számára, és a Microsoft üdvözli az ügyfelekkel, partnerekkel és az iparággal való együttműködést. Mindkettő olyan nyílt W3C-szabványokon alapul, mint például a JSON-LD és az RDF, amely megkönnyíti a szolgáltatások és az eszközök használatát.
+Ahhoz, hogy a IoT-Plug and Play működjön az [Azure Digital Twins](../digital-twins/overview.md)szolgáltatással, a modelleket és a felületeket a [digitális Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)használatával határozhatja meg. A IoT Plug and Play és a DTDL nyitva vannak a Közösség számára, és a Microsoft üdvözli az ügyfelekkel, partnerekkel és az iparággal való együttműködést. Mindkettő olyan nyílt W3C-szabványokon alapul, mint például a JSON-LD és az RDF, amely megkönnyíti a szolgáltatások és az eszközök használatát.
 
 A IoT Plug and Play és a DTDL használata nem igényel további költségeket. Az [azure IoT hub](../iot-hub/about-iot-hub.md) és más Azure-szolgáltatások standard díjszabása változatlan marad.
 
@@ -74,4 +74,3 @@ Most, hogy áttekintette a IoT Plug and Play, a javasolt következő lépés az 
 
 - [Eszköz csatlakoztatása IoT Hubhoz (C)](./quickstart-connect-device-c.md)
 - [Kommunikáció egy eszközzel a megoldásból (Node.js)](./quickstart-service-node.md)
-

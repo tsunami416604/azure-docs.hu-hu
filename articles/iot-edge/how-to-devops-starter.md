@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297130"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045856"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása IoT Edgehoz az Azure DevOps Starter-vel
 
@@ -81,7 +81,7 @@ A DevOps Starter létrehozta a projekthez tartozó git-tárházat az Azure Repos
 
    ![module.jsmegnyitása a fájlon az Azure Reposban](./media/how-to-devops-starter/open-module-json.png)
 
-3. Figyelje meg, hogy ez a fájl az [Azure DevOps Build változókat](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) használja a **Version** paraméterben. Ez a konfiguráció biztosítja, hogy a rendszer minden új Build futtatásakor létrehozza a modul új verzióját.
+3. Figyelje meg, hogy ez a fájl az [Azure DevOps Build változókat](/azure/devops/pipelines/build/variables?view=vsts#build-variables) használja a **Version** paraméterben. Ez a konfiguráció biztosítja, hogy a rendszer minden új Build futtatásakor létrehozza a modul új verzióját.
 
 ## <a name="examine-the-cicd-pipeline"></a>A CI/CD-folyamat vizsgálata
 

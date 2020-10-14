@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0b5d3678c3d9c7e55eede13c630510df89d5128
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631246"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045567"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal
 
@@ -24,7 +24,7 @@ Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával. 
 
@@ -46,9 +46,6 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. Meglévő erőforráscsoport használatához *közreműködői* vagy *tulajdonosi* szerepkörre van szükség.  További információ a hozzáférésről: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
    Régió | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
-   Munkaterület kiadása | Válassza az **Alap** vagy a **vállalat**lehetőséget.  Ez a munkaterület-kiadás határozza meg azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szüksége. További információ a [Azure Machine Learningról](overview-what-is-azure-ml.md). 
-
-    ![Munkaterület konfigurálása](./media/how-to-manage-workspace/select-edition.png)
 
 1. Ha befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás**lehetőséget. Igény szerint a [hálózatkezelés](#networking) és a [speciális](#advanced) szakaszban is konfigurálhatja a munkaterület további beállításait.
 
@@ -61,7 +58,7 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
  
  1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
 
-### <a name="networking"></a>Hálózat  
+### <a name="networking"></a>Hálózatkezelés  
 
 > [!IMPORTANT]  
 > További információ a saját munkaterülettel rendelkező privát végpontok és virtuális hálózatok használatáról: [hálózati elkülönítés és adatvédelem](how-to-enable-virtual-network.md).

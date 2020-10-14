@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Az Azure Dev Spaces dokumentációja
-summary: Az Azure Dev Spaces az AKS bővítménye, amely lehetővé teszi a kód egyszerű futtatását és hibakeresését egy nagyobb alkalmazás kontextusában. A kódot teljeskörűen tesztelheti, elérheti a töréspontokat a fürtön futó kódban, és ütközések nélkül megoszthat egy fejlesztési fürtöt a csapattagok között.
+summary: Az Azure Dev Spaces elavult, és 2023. október 31-én megszűnik.
 metadata:
   title: Az Azure Dev Spaces dokumentációja
-  description: Az Azure Dev Spaces az AKS bővítménye, amely lehetővé teszi a kód egyszerű futtatását és hibakeresését egy nagyobb alkalmazás kontextusában. A kódot teljeskörűen tesztelheti, elérheti a töréspontokat a fürtön futó kódban, és ütközések nélkül megoszthat egy fejlesztési fürtöt a csapattagok között.
+  description: Az Azure Dev Spaces elavult, és 2023. október 31-én megszűnik.
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
   author: zr-msft
   ms.author: zarhoads
   manager: gwallace
-  ms.date: 09/30/2019
-  ms.openlocfilehash: a3583cf57725acfdc812e44c921842acebbfd0a0
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/12/2020
+  ms.openlocfilehash: 47cc21196875e09576b7a8e0a5a8233df294de7d
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91773314"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91965862"
 landingContent:
 - title: Az Azure Dev Spaces bemutatása
   linkLists:
