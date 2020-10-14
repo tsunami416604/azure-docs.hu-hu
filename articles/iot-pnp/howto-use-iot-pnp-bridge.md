@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613475"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042796"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux vagy Windows rendszeren futó IoT Plug and Play híd-minta összekapcsolása IoT Hub
 
@@ -48,7 +48,7 @@ gcc --version
 
 A rövid útmutató Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a Visual Studio [telepítésekor](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) a **C++** számítási feladatait is tartalmazza.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a Visual Studio [telepítésekor](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) a **C++** számítási feladatait is tartalmazza.
 * [Git](https://git-scm.com/download/).
 * [CMAK](https://cmake.org/download/).
 
@@ -149,7 +149,7 @@ A `root-_interface_model_id` mezőhöz másolni kell a IoT Plug and Play modell 
 
 Navigáljon a *pnpbridge* mappára az adattár könyvtárában.
 
-A Windows a következőt futtatja a [Visual studióhoz készült fejlesztői parancssorban](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs):
+A Windows a következőt futtatja a [Visual studióhoz készült fejlesztői parancssorban](/dotnet/framework/tools/developer-command-prompt-for-vs):
 
 ```cmd
 cd scripts\windows

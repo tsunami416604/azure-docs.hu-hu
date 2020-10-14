@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76511144"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043901"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása IoT Edge Device Gateway-átjárón keresztül
 
@@ -35,7 +35,7 @@ A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További informác
 
 Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A modult az Azure Marketplace-en, a [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)-ban vagy a rendszerkép URI-ja segítségével érheti el `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
-Ha saját maga szeretné létrehozni a modult, és testre szeretné szabni a környezetében, akkor a GitHubon van egy nyílt forráskódú [Azure IoT Edge Modbus modul](https://github.com/Azure/iot-edge-modbus) -projekt. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. A tárolók rendszerképének létrehozásával kapcsolatban lásd [: C#-modulok fejlesztése a Visual Studióban](how-to-visual-studio-develop-csharp-module.md) , illetve [modulok fejlesztése a Visual Studio Code-ban](how-to-vs-code-develop-module.md). Ezek a cikkek útmutatást nyújtanak az új modulok létrehozásához és a tároló-lemezképek beállításjegyzékbe való közzétételéhez.
+Ha saját maga szeretné létrehozni a modult, és testre szeretné szabni a környezetében, akkor a GitHubon van egy nyílt forráskódú [Azure IoT Edge Modbus modul](https://github.com/Azure/iot-edge-modbus) -projekt. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. A tárolók rendszerképének létrehozásával kapcsolatban lásd [: C#-modulok fejlesztése a Visual Studióban](./how-to-visual-studio-develop-module.md) , illetve [modulok fejlesztése a Visual Studio Code-ban](how-to-vs-code-develop-module.md). Ezek a cikkek útmutatást nyújtanak az új modulok létrehozásához és a tároló-lemezképek beállításjegyzékbe való közzétételéhez.
 
 ## <a name="try-the-solution"></a>Próbálja ki a megoldást
 
@@ -74,7 +74,7 @@ iotedge logs modbus
 
 Megtekintheti azt is, hogy az eszköz telemetria az [azure IoT hub-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábban Azure IoT Toolkit Extension) használatával küldi el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni arról, hogy IoT Edge eszközök hogyan működhetnek átjáróként, tekintse meg [az olyan IoT Edge-eszköz létrehozását, amely transzparens átjáróként működik](./how-to-create-transparent-gateway.md).
 * További információ a IoT Edge moduljainak működéséről: [Azure IoT Edge modulok megismerése](iot-edge-modules.md).

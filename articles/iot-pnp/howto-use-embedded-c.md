@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042813"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>IoT-Plug and Play implementálása korlátozott eszközökön
 
-Ha *korlátozott eszközöket*fejleszt, használhatja a IoT Plug and Playt az Azure SDK-val a [beágyazott C IoT ügyféloldali kódtárak](https://aka.ms/embeddedcsdk) vagy az [Azure RTOS](https://docs.microsoft.com/azure/rtos/overview-rtos)használatával. Ez a cikk a korlátozott forgatókönyvek hivatkozásait és erőforrásait tartalmazza.
+Ha *korlátozott eszközöket*fejleszt, használhatja a IoT Plug and Playt az Azure SDK-val a [beágyazott C IoT ügyféloldali kódtárak](https://aka.ms/embeddedcsdk) vagy az [Azure RTOS](/azure/rtos/overview-rtos)használatával. Ez a cikk a korlátozott forgatókönyvek hivatkozásait és erőforrásait tartalmazza.
 
 ## <a name="use-the-sdk-for-embedded-c"></a>Az SDK használata beágyazott C-hez
 
@@ -39,7 +39,7 @@ A beágyazott C tárház SDK-je [számos mintát](https://github.com/Azure/azure
 
 ## <a name="using-azure-rtos"></a>Az Azure RTOS használata
 
-Az Azure RTOS egy egyszerűsített réteget tartalmaz, amely natív kapcsolatot biztosít az Azure IoT Cloud Services szolgáltatással. Ez a réteg egy egyszerű mechanizmust biztosít a korlátozott eszközök Azure-IoT való csatlakoztatásához az Azure RTOS speciális funkcióinak használatakor. További információ: [What is Microsoft Azure RTOS](https://docs.microsoft.com/azure/rtos/overview-rtos).
+Az Azure RTOS egy egyszerűsített réteget tartalmaz, amely natív kapcsolatot biztosít az Azure IoT Cloud Services szolgáltatással. Ez a réteg egy egyszerű mechanizmust biztosít a korlátozott eszközök Azure-IoT való csatlakoztatásához az Azure RTOS speciális funkcióinak használatakor. További információ: [What is Microsoft Azure RTOS](/azure/rtos/overview-rtos).
 
 ### <a name="toolchains"></a>Eszközlánccal
 

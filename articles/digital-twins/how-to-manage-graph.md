@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949615"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048440"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -247,7 +247,7 @@ Vegye figyelembe a következő adattáblázatot, amely leírja a létrehozandó 
 | szoba    | Room21 | Floor02 | contains | … |
 | szoba    | Room22 | Floor02 | contains | … |
 
-A következő kód a [Microsoft Graph API](https://docs.microsoft.com/graph/overview) -t használja a számolótáblák beolvasásához és az eredményekből származó Azure digitális Twins Twin gráf létrehozásához.
+A következő kód a [Microsoft Graph API](/graph/overview) -t használja a számolótáblák beolvasásához és az eredményekből származó Azure digitális Twins Twin gráf létrehozásához.
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;
@@ -311,7 +311,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167402"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048406"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
@@ -36,7 +36,7 @@ A sikeres transzparens átjáró-kapcsolatok létrehozásához három általáno
 
 Ahhoz, hogy egy eszköz átjáróként működjön, biztonságosan csatlakoznia kell az alsóbb rétegbeli eszközökhöz. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie az átjáró-eszköz identitását. Ez az identitás-ellenőrzési szolgáltatás megakadályozza, hogy az eszközök esetlegesen rosszindulatú átjáróhoz csatlakozzanak.
 
-Egy alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub) Cloud Service szolgáltatással létrehozott identitással. Ezek az alkalmazások gyakran az [Azure IoT-eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-t használják. Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás. Egy IoT Edge eszköz azonban nem lehet egy IoT Edge átjárón.
+Egy alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az [Azure IoT hub](../iot-hub/index.yml) Cloud Service szolgáltatással létrehozott identitással. Ezek az alkalmazások gyakran az [Azure IoT-eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-t használják. Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás. Egy IoT Edge eszköz azonban nem lehet egy IoT Edge átjárón.
 
 Létrehozhat olyan tanúsítvány-infrastruktúrát is, amely lehetővé teszi az eszköz-átjáró topológiához szükséges megbízhatóságot. Ez a cikk azt feltételezi, hogy ugyanazt a tanúsítványt használja, amelyet az [x. 509 hitelesítésszolgáltatói biztonság](../iot-hub/iot-hub-x509ca-overview.md) engedélyezéséhez használ IoT Hubban, amely egy adott IoT hubhoz (az IoT hub legfelső szintű hitelesítésszolgáltatója) társított x. 509 hitelesítésszolgáltatói tanúsítvánnyal, a hitelesítésszolgáltatóval aláírt tanúsítványok sorozatával, valamint a IoT Edge eszközhöz tartozó hitelesítésszolgáltatóval is rendelkezik.
 
@@ -117,7 +117,7 @@ Az IoT Edge hub modul üzembe helyezéséhez és az alsóbb rétegbeli eszközö
 
 5. Válassza a **Tovább: útvonalak**lehetőséget.
 
-6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Példa:
+6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Például:
 
    * Egy olyan útvonal, amely minden üzenetet elküld egy modulból vagy egy alsóbb rétegbeli eszközről a IoT Hubba:
        * **Név**: `allMessagesToHub`

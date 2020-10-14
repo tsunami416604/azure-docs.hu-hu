@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394737"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042405"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault áthelyezése másik előfizetésre
 
@@ -36,6 +36,9 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 * Adja hozzá a B bérlőhöz társított új hozzáférési szabályzatok bejegyzéseit.
 
 ## <a name="limitations"></a>Korlátozások
+
+> [!IMPORTANT]
+> **A lemez titkosításához használt kulcstartók nem helyezhetők át** Ha a Key vaultot a virtuális gép lemezes titkosításával használja, a kulcstároló nem helyezhető át másik erőforráscsoporthoz vagy előfizetésbe, amíg a lemez titkosítása engedélyezve van. A Key Vault új erőforráscsoporthoz vagy előfizetésbe való áthelyezése előtt le kell tiltania a lemez titkosítását. 
 
 Egyes egyszerű szolgáltatások (felhasználók és alkalmazások) egy adott bérlőhöz vannak kötve. Ha áthelyezi a kulcstartót egy másik bérlőn lévő előfizetésbe, akkor előfordulhat, hogy nem fogja tudni visszaállítani az adott egyszerű szolgáltatáshoz való hozzáférést. Győződjön meg arról, hogy az összes alapvető szolgáltatásnév létezik abban a bérlőben, ahová a kulcstartót helyezi át.
 

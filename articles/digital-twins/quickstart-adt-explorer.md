@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9531a812d60c6e5a60ff0a0936fafde4a77e5a67
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017046"
+ms.locfileid: "92048508"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
 Az Azure Digital Twins segítségével valós környezetei élő modelljeit hozhat létre és kezelhet. Ezt úgy teheti meg, hogy az egyes elemeket **digitális ikrekként**modellezi, majd összekapcsolja őket egy **olyan Tudásbázisban, amely** képes reagálni az élő eseményekre, és információkat kér le.
 
-Ebben a rövid útmutatóban egy előre elkészített Azure digitális Twins-gráfot fog felfedezni, amely az [**Azure Digital Twins (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)nevű minta alkalmazás segítségével készült. A ADT Explorer lehetővé teszi egy környezet digitális megjelenítését, megtekintheti az ikrek és a gráf vizuális képeit, amelyek az Azure Digital Twins környezetének ábrázolására készültek, és más felügyeleti tevékenységeket végezhetnek egy böngészőalapú, vizuális felülettel.
+Ebben a rövid útmutatóban egy előre elkészített Azure digitális Twins-gráfot fog felfedezni, amely az [**Azure Digital Twins (ADT) Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)nevű minta alkalmazás segítségével készült. A ADT Explorer lehetővé teszi egy környezet digitális megjelenítését, megtekintheti az ikrek és a gráf vizuális képeit, amelyek az Azure Digital Twins környezetének ábrázolására készültek, és más felügyeleti tevékenységeket végezhetnek egy böngészőalapú, vizuális felülettel.
 
 A rövid útmutató a következő főbb lépéseket tartalmazza:
 
@@ -38,8 +38,8 @@ A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha
 A gépen **Node.js** is szüksége lesz. A legújabb verziót a következő hivatkozásra kattintva érheti el: [Node.js](https://nodejs.org/).
 
 Végül le kell töltenie két mintát is a gyors üzembe helyezés során:
-* A **ADT Explorer** minta alkalmazás. Ez a minta a rövid útmutatóban használt fő alkalmazást tartalmazza egy Azure digitális Twins-forgatókönyv betöltéséhez és megismeréséhez. Az alkalmazás beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins__ADT__explorer.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
-* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv eléréséhez navigáljon ide: [Azure Digital Twins-minták](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins_samples.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
+* A **ADT Explorer** minta alkalmazás. Ez a minta a rövid útmutatóban használt fő alkalmazást tartalmazza egy Azure digitális Twins-forgatókönyv betöltéséhez és megismeréséhez. Az alkalmazás beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins__ADT__explorer.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
+* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv eléréséhez navigáljon ide: [Azure Digital Twins-minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins_samples.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Az Azure digitális Twins és a ADT Explorer beállítása
 

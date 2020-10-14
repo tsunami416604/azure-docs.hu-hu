@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 082e05bddd4fe12b279368e44b2d986bd4fa91a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945328"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044666"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -38,13 +38,13 @@ A modellek a [digitális Twins Definition Language (DTDL)](https://github.com/Az
 * A modellek szemantikai **kapcsolatokat** határoznak meg az entitások között, így összekapcsolhatják az ikreket egy, az interakciókat tükröző Tudásbázisban. A modelleket a világ egy leírásában, illetve a kapcsolatok műveletként is megtekintheti a főkönyvek formájában.
 * Az ikreket a modell öröklődésének használatával is kioszthatja. Az egyik modell örökölheti a másikat.
 
-A DTDL a többi Azure IoT-szolgáltatás (például a [IoT Plug and Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) és a [Time Series Insights (ÁME)](../time-series-insights/time-series-insights-update-overview.md)adatmodelljeihez használatos. Ez segít megőrizni az Azure digitális Twins-megoldását, és kompatibilis az Azure ökoszisztéma más részeivel.
+A DTDL a többi Azure IoT-szolgáltatás (például a [IoT Plug and Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) és a [Time Series Insights (ÁME)](../time-series-insights/overview-what-is-tsi.md)adatmodelljeihez használatos. Ez segít megőrizni az Azure digitális Twins-megoldását, és kompatibilis az Azure ökoszisztéma más részeivel.
 
 ### <a name="live-execution-environment"></a>Élő végrehajtási környezet
 
 Az Azure Digital Twins digitális modelljei élő, naprakész képviseletek a valós világban. Az egyéni DTDL-modellek kapcsolatainak használatával összekapcsolhatók az ikrek egy **élő gráfban** , amely a környezetet jelképezi.
 
-Megtekintheti az Azure Digital Twins gráf vizualizációját egy minta alkalmazás, az [**Azure digitális Twins Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)segítségével.
+Megtekintheti az Azure Digital Twins gráf vizualizációját egy minta alkalmazás, az [**Azure digitális Twins Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)segítségével.
 
 A minta vizualizáció a következőképpen néz ki:
 
@@ -98,7 +98,7 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok listáját a következő témakörben tekintheti meg [*: referenciák a nyilvános előzetes verziókra vonatkozó korlátozások*](reference-service-limits.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha az Azure Digital Twins korábbi előzetes kiadásával dolgozott együtt, Ismerje meg, hogy mi változott:
 * [*Áttekintés: eltérések az előző kiadástól*](overview-differences.md)

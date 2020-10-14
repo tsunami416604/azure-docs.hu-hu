@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 3950cc16cd8661ee4e509cf14d12f561cb29c4ea
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940705"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043391"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 | Szolgáltatás | Részletek |
 | ---| --- |
+| <a href="/azure/azure-sql/database/elastic-transactions-overview">Elosztott tranzakciók</a> | Elosztott tranzakciók a felügyelt példányok között. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket a <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső szolgáltatói utasítás létrehozási azonosítójával</a> . |
 | [Tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) | Replikálja a táblák módosításait a felügyelt SQL-példányok, SQL Database vagy SQL Server más adatbázisaiba. Vagy frissítse a táblázatokat, ha egyes sorok módosulnak az SQL felügyelt példányának más példányain vagy SQL Server. További információ: [replikáció konfigurálása az Azure SQL felügyelt példányában](../managed-instance/replication-between-two-instances-configure-tutorial.md). |

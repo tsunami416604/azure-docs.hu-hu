@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d1a08dc588f0303ccb1ae13bd4c28af2a393c7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82207887"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043653"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Oktatóanyag: Port továbbításának konfigurálása Azure Load Balancer a portál használatával
 
@@ -36,9 +36,13 @@ Ebben az oktatóanyagban a port továbbítását állítja be egy Azure Load Bal
 > * Terheléselosztó bejövő NAT-portjának létrehozása – továbbítási szabályok
 > * Telepítse és konfigurálja az IIS-t a virtuális gépeken a terheléselosztás és a port továbbításának működés közbeni megtekintéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 Az oktatóanyagban szereplő összes lépésnél jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés.
 
 ## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
 
@@ -52,7 +56,7 @@ Először hozzon létre egy nyilvános standard Load balancert, amely képes ell
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegrouplb erőforráscsoportban* szöveget a szövegmezőbe.|
     | Név                   | *myLoadBalancer*                                   |
-    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | SKU           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
@@ -333,7 +337,7 @@ Az RDP-kapcsolat sikeres, mert a bejövő NAT-szabály a 4222-es **MyNATRuleVM2*
 
 A terheléselosztó és az összes kapcsolódó erőforrás törléséhez, ha már nincs szüksége rájuk, nyissa meg a **myresourcegrouplb erőforráscsoportban** erőforráscsoportot, és válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy standard nyilvános Load balancert. Létrehozta és konfigurálta a hálózati erőforrásokat, a háttér-kiszolgálókat, az állapot-mintavételt és a terheléselosztó szabályait. Telepítette az IIS-t a háttérbeli virtuális gépeken, és a terheléselosztó nyilvános IP-címét használta a terheléselosztó teszteléséhez. A terheléselosztó megadott portjáról egy háttérbeli virtuális gép portjára állíthatja be és tesztelte a port továbbítását. 
 

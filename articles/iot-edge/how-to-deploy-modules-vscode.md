@@ -4,17 +4,17 @@ description: A Visual Studio Code és az Azure IoT Tools használatával leküld
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/8/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bb3c03b16ae05d3e5e78378e88b9337842e3d98d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ccc87b1b3103e799a5974542de602090df8e1e4b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972628"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048389"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modulok üzembe helyezése a Visual Studio Code-ból
 
@@ -40,12 +40,15 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
 
 Íme egy alapszintű üzembe helyezési jegyzék egy modullal, például:
 
+>[!NOTE]
+>Ez a minta telepítési jegyzékfájl a 1,1-es sémát használja a IoT Edge-ügynökhöz és a hubhoz. A 1,1-es verziójú séma a IoT Edge verzió 1.0.10 együtt lett közzétéve, és lehetővé teszi, hogy a modulok indítási sorrendje és az útvonal rangsorolása is megtörténjen.
+
    ```json
    {
      "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "runtime": {
              "type": "docker",
              "settings": {
@@ -88,7 +91,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
        },
        "$edgeHub": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "routes": {
                "route": "FROM /messages/* INTO $upstream"
            },

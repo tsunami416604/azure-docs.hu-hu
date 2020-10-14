@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/01/2020
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91459829"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042626"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Feltételes hozzáférési technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -53,7 +53,7 @@ Minden bejelentkezéskor Azure AD B2C kiértékel minden házirendet, és gondos
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| OperationType | Igen | **Kiértékelésnek**kell lennie.  |
+| OperationType | Yes | **Kiértékelésnek**kell lennie.  |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -61,10 +61,10 @@ A **szabályzattípushoz** elem tartalmazza a feltételes hozzáféréshez küld
 
 | ClaimReferenceId | Kötelező | Adattípus | Leírás |
 | --------- | -------- | ----------- |----------- |
-| UserId (Felhasználóazonosító) | Igen | sztring | Annak a felhasználónak az azonosítója, aki bejelentkezik. |
-| AuthenticationMethodsUsed | Igen |StringCollection stb | Azon metódusok listája, amelyeket a felhasználó a bejelentkezéshez használt. Lehetséges értékek: `Password` és `OneTimePasscode` . |
-| IsFederated | Igen |boolean | Azt jelzi, hogy egy felhasználó összevont fiókkal jelentkezett-e be. Az értéknek a számnak kell lennie `false` . |
-| IsMfaRegistered | Igen |boolean | Azt jelzi, hogy a felhasználó már regisztrált egy telefonszámot a többtényezős hitelesítéshez. |
+| UserId (Felhasználóazonosító) | Yes | sztring | Annak a felhasználónak az azonosítója, aki bejelentkezik. |
+| AuthenticationMethodsUsed | Yes |StringCollection stb | Azon metódusok listája, amelyeket a felhasználó a bejelentkezéshez használt. Lehetséges értékek: `Password` és `OneTimePasscode` . |
+| IsFederated | Yes |boolean | Azt jelzi, hogy egy felhasználó összevont fiókkal jelentkezett-e be. Az értéknek a számnak kell lennie `false` . |
+| IsMfaRegistered | Yes |boolean | Azt jelzi, hogy a felhasználó már regisztrált egy telefonszámot a többtényezős hitelesítéshez. |
 
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené őket a feltételes hozzáférési szolgáltatásnak.
@@ -75,8 +75,8 @@ A **OutputClaims** elem tartalmazza a ConditionalAccessProtocolProvider által g
 
 | ClaimReferenceId | Kötelező | Adattípus | Leírás |
 | --------- | -------- | ----------- |----------- |
-| Problémák | Igen |StringCollection stb | Az azonosított fenyegetést szervizelő műveletek listája. Lehetséges értékek: `block` |
-| MultiConditionalAccessStatus | Igen | StringCollection stb |  |
+| Problémák | Yes |StringCollection stb | Az azonosított fenyegetést szervizelő műveletek listája. Lehetséges értékek: `block` |
+| MultiConditionalAccessStatus | Yes | StringCollection stb |  |
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
@@ -115,7 +115,7 @@ A feltételes hozzáférés technikai profiljának **szervizelési** módja táj
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| OperationType | Igen | **Szervizelésnek**kell lennie.  |
+| OperationType | Yes | **Szervizelésnek**kell lennie.  |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -123,7 +123,7 @@ A **szabályzattípushoz** elem tartalmazza a feltételes hozzáféréshez küld
 
 | ClaimReferenceId | Kötelező | Adattípus | Leírás |
 | --------- | -------- | ----------- |----------- |
-| ChallengesSatisfied | Igen | StringCollection stb| Az azonosított fenyegetés kiértékelési módból való visszaadásával kapcsolatos elégedett kihívások listája, a kihívásokra vonatkozó jogcímek.|
+| ChallengesSatisfied | Yes | StringCollection stb| Az azonosított fenyegetés kiértékelési módból való visszaadásával kapcsolatos elégedett kihívások listája, a kihívásokra vonatkozó jogcímek.|
 
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak a feltételes hozzáférési szolgáltatás meghívása előtt.
@@ -521,3 +521,7 @@ Az alábbi példa egy függő entitás fájlját szemlélteti, amely hivatkozik 
   </RelyingParty>
 </TrustFrameworkPolicy>
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+- A [githubon](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)megtalálhatja például a feltételes hozzáférési szabályzatot.

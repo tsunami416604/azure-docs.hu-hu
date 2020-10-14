@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971795"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044139"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -68,7 +68,7 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
 
 1. Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre.
 
-   Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
+   Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
 
 1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
 

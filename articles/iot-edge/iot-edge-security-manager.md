@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548696"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043000"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
 
@@ -75,7 +75,7 @@ A IoT Edge biztonsági démon kihasználja a megbízhatósági technológia öss
 
 #### <a name="cloud-interface"></a>Felhőalapú felület
 
-A Cloud Interface lehetővé teszi, hogy a IoT Edge biztonsági démon hozzáférjen a Cloud Serviceshez, például a Felhőbeli bókohoz, hogy az eszköz biztonsága, például a biztonsági megújítás.  Például a IoT Edge biztonsági démon jelenleg ezt a felületet használja az Azure IoT Hub [Device kiépítési szolgáltatáshoz](https://docs.microsoft.com/azure/iot-dps/) való hozzáféréshez az eszköz identitásának életciklus-kezeléséhez.  
+A Cloud Interface lehetővé teszi, hogy a IoT Edge biztonsági démon hozzáférjen a Cloud Serviceshez, például a Felhőbeli bókohoz, hogy az eszköz biztonsága, például a biztonsági megújítás.  Például a IoT Edge biztonsági démon jelenleg ezt a felületet használja az Azure IoT Hub [Device kiépítési szolgáltatáshoz](../iot-dps/index.yml) való hozzáféréshez az eszköz identitásának életciklus-kezeléséhez.  
 
 #### <a name="management-api"></a>Felügyeleti API
 
@@ -119,7 +119,7 @@ A biztonságos szilícium szükséges ahhoz, hogy a megbízhatóságot a IoT Edg
 
 A IoT Edge Security Manager célja a Azure IoT Edge platform biztonságának és integritásának védelmét biztosító összetevők azonosítása és elkülönítése az egyéni megerősítés érdekében. A harmadik feleknek, például az eszközök gyártóinak az eszköz hardverével elérhető egyéni biztonsági funkciókat kell használniuk.  Az Azure IoT Security Manager a Linux és a Windows rendszerű platformon platformmegbízhatósági modul (TPM) használatával történő megerősítését bemutató hivatkozások a következő lépések szakaszban olvashatók. Ezek a példák szoftvereket vagy virtuális TPM használnak, de közvetlenül a különálló TPM-eszközök használatára vonatkoznak.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a blogot az [intelligens peremhálózat biztonságossá](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)tételéről.
 

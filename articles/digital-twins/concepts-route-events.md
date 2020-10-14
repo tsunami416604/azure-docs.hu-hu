@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044292"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -21,7 +21,7 @@ Az Azure Digital Twins **esemény-útvonalakat** használ az adatküldés célj�
 Az előzetes verzióban két fő eset áll rendelkezésre az Azure Digital Twins-adatok küldéséhez:
 * Adatok küldése az Azure digitális Twins gráfból egy másikba. Ha például egy adott digitális kettős változásra vonatkozó tulajdonságot módosít, érdemes lehet értesíteni és frissíteni egy másik digitális dupla, ennek megfelelően.
 * Adatok küldése a downstream adatszolgáltatásoknak további tárhely vagy feldolgozás céljából (más néven *adatforgalom*). Például:
-  - A kórház az Azure Digital Twins-események [Time Series Insights (ÁME)](../time-series-insights/time-series-insights-update-overview.md)szolgáltatásba való küldéséhez érdemes lehet a tömeges elemzéshez kapcsolódó, kézmosással kapcsolatos események idősoros adatainak rögzítése.
+  - A kórház az Azure Digital Twins-események [Time Series Insights (ÁME)](../time-series-insights/overview-what-is-tsi.md)szolgáltatásba való küldéséhez érdemes lehet a tömeges elemzéshez kapcsolódó, kézmosással kapcsolatos események idősoros adatainak rögzítése.
   - Egy olyan vállalat, amely már használ [Azure Maps](../azure-maps/about-azure-maps.md) , érdemes lehet az Azure digitális Twins használatával javítani a megoldást. Az Azure digitális Twins beállítása után gyorsan engedélyezhetik az Azure Map-t, hogy az Azure Map-entitásokat [digitális ikrekként](concepts-twins-graph.md) használják a Twin Graphban, vagy futtasson hatékony lekérdezéseket a Azure Maps és az Azure digitális Twins-adatszolgáltatások használatával.
 
 Az esemény-útvonalak mindkét forgatókönyv esetében használhatók.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 960f76b06644a86ebaaaed40b57db95bdb350833
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945515"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048491"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -79,7 +79,7 @@ Mielőtt továbblép, ügyeljen arra, hogy mentse a fájlt.
 > Ha saját modellt szeretne létrehozni, beillesztheti a *Room* Model-kódot egy új fájlba, amelyet egy *. JSON* kiterjesztéssel menthet a *AdtSampleApp\SampleClientApp\Models* mappában. Ezt követően a következő lépésekkel adhat hozzá tulajdonságokat és kapcsolatokat, amelyeknek bármilyen tulajdonsága van. A mappában található egyéb mintákat is megtekintheti ötleteket.
 
 > [!TIP] 
-> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-parse-models.md)című témakörben olvashat.
+> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-parse-models.md)című témakörben olvashat.
 
 ### <a name="get-started-with-the-command-line-app"></a>Ismerkedés a parancssori alkalmazással
 
@@ -276,7 +276,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
 * Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.
@@ -285,7 +285,7 @@ Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolg�
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 

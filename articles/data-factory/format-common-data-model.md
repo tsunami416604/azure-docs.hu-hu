@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905289"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042592"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Közös adatmodell-formátum a Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +38,7 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formátum | A formátumot kötelező megadni `cdm` | igen | `cdm` | formátumban |
-| Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a model.jslehetőséget. | Igen | `'manifest'` vagy `'model'` | manifestType |
+| Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a model.jslehetőséget. | Yes | `'manifest'` vagy `'model'` | manifestType |
 | Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
 | Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | igen | Sztring | folderPath |
 | Manifest-fájl: entitás elérési útja | Az entitás mappájának elérési útja a gyökérkönyvtáron belül | nem | Sztring | entityPath |
@@ -51,6 +51,8 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 | Corpus-mappa | a corpus gyökerének helye | igen, ha a jegyzékfájlt használja | Sztring | corpusPath |
 | Corpus-entitás | Entitás hivatkozásának elérési útja | igen | Sztring | entitás |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
+
+Ha a forrás-átalakításban használni kívánt entitás definíciója ugyanabban a könyvtárban található, mint az adatmappa, akkor törölje a "entitás használata a corpus használatával" lehetőséget, és egyszerűen írja be annak az entitásnak a entitását, amelyet az entitás-hivatkozásként kíván használni.
 
 ### <a name="sink-settings"></a>Fogadó beállításai
 

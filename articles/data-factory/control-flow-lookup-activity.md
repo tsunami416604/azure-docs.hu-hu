@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270440"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044071"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
 
@@ -31,7 +31,7 @@ A keresési tevékenység beolvassa és visszaadja egy konfigurációs fájl vag
 
 A keresési tevékenység a következő adatforrásokat támogatja. 
 
-A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményhalmaz több rekordot tartalmaz, a rendszer az első 5000 sort adja vissza. A keresési tevékenység kimenete legfeljebb 4 MB méretű, a tevékenységek sikertelenek lesznek, ha a méret meghaladja a korlátot. Jelenleg az időkorlát előtt a keresési tevékenység leghosszabb időtartama egy óra.
+A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményhalmaz több rekordot tartalmaz, a rendszer az első 5000 sort adja vissza. A keresési tevékenység kimenete legfeljebb 4 MB méretű, a tevékenységek sikertelenek lesznek, ha a méret meghaladja a korlátot. Jelenleg a keresési tevékenység leghosszabb időtartama 24 óra.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -58,8 +58,8 @@ A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményha
 
 Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
-source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
+adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
+source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
 firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]

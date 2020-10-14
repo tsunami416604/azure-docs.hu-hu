@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281626"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048525"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön
 
@@ -21,7 +21,7 @@ Az Azure-folyamatok beépített Azure IoT Edge feladataival könnyedén elvégez
 
 ![Diagram – CI és CD ágak fejlesztési és termelési célokra](./media/how-to-continuous-integration-continuous-deployment/model.png)
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépített [Azure IoT Edge feladatait](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) a IoT Edge-megoldáshoz tartozó Build és kiadási folyamatok létrehozásához. A folyamathoz hozzáadott minden Azure IoT Edge feladat a következő négy művelet egyikét valósítja meg:
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépített [Azure IoT Edge feladatait](/azure/devops/pipelines/tasks/build/azure-iot-edge) a IoT Edge-megoldáshoz tartozó Build és kiadási folyamatok létrehozásához. A folyamathoz hozzáadott minden Azure IoT Edge feladat a következő négy művelet egyikét valósítja meg:
 
  | Művelet | Leírás |
  | --- | --- |
@@ -32,25 +32,25 @@ Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépít
 
 Ha másként nincs megadva, az ebben a cikkben ismertetett eljárások nem tárgyalják a feladat paramétereinek használatával elérhető funkciókat. További információkat a következő cikkekben talál:
 
-* [Feladat verziója](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [Feladat verziója](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Speciális** – ha alkalmazható, olyan modulokat adhat meg, amelyeket nem szeretne felépíteni.
-* [Vezérlési beállítások](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [Környezeti változók](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [Kimeneti változók](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [Vezérlési beállítások](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [Környezeti változók](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [Kimeneti változók](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). Ebben a cikkben egy **IoTEdgeRepo**nevű tárházat hoztunk létre.
-* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [C#-modulok fejlesztése és hibakeresése a Visual Studióban](how-to-visual-studio-develop-csharp-module.md)című témakört. Ebben a cikkben létrehozunk egy megoldást a **IoTEdgeSolution**nevű adattárban, amely egy **filtermodule**nevű modul kódját tartalmaz.
+* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). Ebben a cikkben egy **IoTEdgeRepo**nevű tárházat hoztunk létre.
+* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [C#-modulok fejlesztése és hibakeresése a Visual Studióban](./how-to-visual-studio-develop-module.md)című témakört. Ebben a cikkben létrehozunk egy megoldást a **IoTEdgeSolution**nevű adattárban, amely egy **filtermodule**nevű modul kódját tartalmaz.
 
    Ehhez a cikkhez mindössze annyit kell tennie, hogy a Visual Studio Code vagy a Visual Studio IoT Edge sablonjai által létrehozott megoldási mappát hozza létre. A továbblépés előtt nem kell ezt a kódot felépíteni, leküldeni, telepíteni vagy hibakeresést végeznie. Ezeket a folyamatokat az Azure-folyamatokban fogja beállítani.
 
    Ha új megoldást hoz létre, először a tárházat klónozással. Ezután a megoldás létrehozásakor megadhatja, hogy közvetlenül a tárház mappájába hozza létre. Egyszerűen véglegesítheti és leküldheti az új fájlokat.
 
-* Egy tároló-beállításjegyzék, amelyen leküldéses modul képei láthatók. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy külső gyártótól származó beállításjegyzéket is használhat.
+* Egy tároló-beállításjegyzék, amelyen leküldéses modul képei láthatók. [Azure Container Registry](../container-registry/index.yml) vagy külső gyártótól származó beállításjegyzéket is használhat.
 * Egy aktív Azure [IoT hub](../iot-hub/iot-hub-create-through-portal.md) legalább két IoT Edge eszközzel a különböző tesztelési és éles üzembe helyezési fázisok teszteléséhez. Az IoT Edge-eszköz [Linux](quickstart-linux.md) vagy [Windows](quickstart.md) rendszeren való létrehozásához kövesse a rövid útmutató cikkeit
 
-További információ az Azure Repos használatáról: [kód megosztása a Visual Studióval és az Azure repostel](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+További információ az Azure Repos használatáról: [kód megosztása a Visual Studióval és az Azure repostel](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Build folyamat létrehozása a folyamatos integrációhoz
 
@@ -112,13 +112,13 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
        | --- | --- |
        | Forrás mappája | A másolandó forrás mappája. Az üres érték a tárház gyökere. Használjon változókat, ha a fájlok nincsenek a tárházban. Példa: `$(agent.builddirectory)`.
        | Tartalom | Adjon hozzá két sort: `deployment.template.json` és `**/module.json` . |
-       | Célmappa | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+       | Célmappa | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
 
    * Feladat: **Build** -összetevők közzététele
 
        | Paraméter | Leírás |
        | --- | --- |
-       | Közzététel elérési útja | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+       | Közzététel elérési útja | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
        | Összetevő neve | Adja meg az alapértelmezett nevet: `drop` |
        | Összetevő közzétételi helye | Használja az alapértelmezett helyet: `Azure Pipelines` |
 

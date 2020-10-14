@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 9526a1569a5d8320dd59272ca97f5b48ec1dac1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e148adfe6db62e6fdaea53165a5c23d9a08efba
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88999119"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042371"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Azure Functions üzembe helyezése IoT Edge modulként
 
-Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure-függvény létrehozásának és üzembe helyezésének lépésein, amely az érzékelőket a szimulált IoT Edge eszközön szűri. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure-függvény létrehozásának és üzembe helyezésének lépésein, amely az érzékelőket a szimulált IoT Edge eszközön szűri. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -42,7 +42,7 @@ Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktató
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
-* Egy tároló-beállításjegyzék, például [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
 
@@ -235,7 +235,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Function modult hozott létre kóddal a IoT Edge-eszköz által generált nyers adat szűréséhez. Ha készen áll a saját moduljainak létrehozására, többet is megtudhat a [Visual Studio Code-hoz való Azure IoT Edge fejlesztéséről](how-to-vs-code-develop-module.md).
 

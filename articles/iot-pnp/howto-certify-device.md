@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577645"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042966"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Az IoT Plug and Play-eszközök minősítése
 
@@ -47,13 +47,13 @@ A minősítési követelmények teljesítéséhez az eszköznek a következőket
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Tesztelés az Azure IoT-bővítmény parancssori felületével
 
-Az [Azure IOT CLI bővítményével](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) ellenőrizheti, hogy az eszköz implementációja megfelel-e a modellnek, mielőtt beküldi az eszközt a minősítéshez az Azure Certified Device Portalon keresztül.
+Az [Azure IOT CLI bővítményével](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) ellenőrizheti, hogy az eszköz implementációja megfelel-e a modellnek, mielőtt beküldi az eszközt a minősítéshez az Azure Certified Device Portalon keresztül.
 
 A következő lépések bemutatják, hogyan készítheti elő és futtathatja a minősítési teszteket a parancssori felület használatával:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése az Azure CLI-hez
 
-Tekintse meg a telepítési utasításokat az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) környezetbe állításához.
+Tekintse meg a telepítési utasításokat az [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) környezetbe állításához.
 
 Az Azure IoT bővítmény telepítéséhez futtassa a következő parancsot:
 
@@ -61,7 +61,7 @@ Az Azure IoT bővítmény telepítéséhez futtassa a következő parancsot:
 az extension add --name azure-iot
 ```
 
-További információ: [Azure CLI az Azure IoT](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true)-hoz.
+További információ: [Azure CLI az Azure IoT](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)-hoz.
 
 ### <a name="create-a-new-product-test"></a>Új termék tesztelésének létrehozása
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> A CLI használatakor be kell [jelentkeznie](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) az előfizetésbe.
+> A CLI használatakor be kell [jelentkeznie](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) az előfizetésbe.
 
 A parancs JSON-kimenete tartalmazza a `primaryKey` , `registrationId` , és az `scopeID` eszköz csatlakoztatásakor használni kívánt elemet.
 
@@ -199,7 +199,7 @@ Három lépést kell végrehajtania:
 
 1. Kapcsolódási és felderítési felületek. Az eszköznek a DPS-n keresztül kell csatlakoznia az Azure IoT Certificate szolgáltatáshoz. Válassza ki a hitelesítési módszert (X. 509 tanúsítvány, szimmetrikus kulcs vagy platformmegbízhatósági modul), és frissítse az eszközt a DPS-információkkal.
 1. Tekintse át a csatolókat. Tekintse át az illesztőfelületet, és győződjön meg arról, hogy mindegyik rendelkezik olyan hasznos adatokkal, amelyek a tesztelés szempontjából ésszerűek.
-1. Test. A rendszer minden eszköz modelljét teszteli, és ellenőrzi, hogy a modellben ismertetett telemetria, tulajdonságok és parancsok követik-e a IoT Plug and Play konvencióit. Ha a teszt elkészült, a **naplók megtekintése** hivatkozásra kattintva megtekintheti a telemetria az eszközről és a nyers adatok IoT hub eszköz Twin tulajdonságai között.
+1. Teszt. A rendszer minden eszköz modelljét teszteli, és ellenőrzi, hogy a modellben ismertetett telemetria, tulajdonságok és parancsok követik-e a IoT Plug and Play konvencióit. Ha a teszt elkészült, a **naplók megtekintése** hivatkozásra kattintva megtekintheti a telemetria az eszközről és a nyers adatok IoT hub eszköz Twin tulajdonságai között.
 
 ### <a name="submit-and-publish"></a>Küldés és közzététel
 

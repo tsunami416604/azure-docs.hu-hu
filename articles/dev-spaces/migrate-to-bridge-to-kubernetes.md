@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019936"
+ms.locfileid: "92044700"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
@@ -108,7 +108,6 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 
 1. Manuálisan telepítse át a *azds. YAML* fájlban lévő összes testreszabást, például a környezeti változók beállításait a projekt *Values. YML* fájljába.
 1. választható Távolítsa el a `azds.yaml` fájlt a projektből.
-1. Telepítse újra az alkalmazást.
 1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes a Visual Studióban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes a Visual Studióban][use-btk-vs]. A VS Code esetében lásd: a [Bridge használata a Kubernetes a vs Code-ban][use-btk-vsc].
 1. Indítsa el a hibakeresést az újonnan létrehozott híd használatával a hibakeresési/indítási profil Kubernetes.
 1. A parancsfájlt szükség szerint újra futtathatja a fürtön való újbóli üzembe helyezéshez.

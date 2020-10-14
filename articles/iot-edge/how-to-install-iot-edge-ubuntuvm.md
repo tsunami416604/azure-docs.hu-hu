@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296977"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044224"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
@@ -50,7 +50,7 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
 
     **Rendszergazdai Felhasználónév**: a Felhasználónév, amely rendszergazdai jogosultságokkal fog szolgálni az üzembe helyezéshez.
 
-    **Eszköz-összekapcsolási karakterlánc**: egy eszközhöz tartozó, a kívánt [IoT Hubban](../iot-hub/about-iot-hub.md)létrehozott eszköz- [kapcsolatok karakterlánca](how-to-register-device.md) .
+    **Eszköz-összekapcsolási karakterlánc**: egy eszközhöz tartozó, a kívánt [IoT Hubban](../iot-hub/about-iot-hub.md)létrehozott eszköz- [kapcsolatok karakterlánca](./how-to-manual-provision-symmetric-key.md) .
 
     **VM-méret**: a telepítendő virtuális gép [mérete](../cloud-services/cloud-services-sizes-specs.md)
 

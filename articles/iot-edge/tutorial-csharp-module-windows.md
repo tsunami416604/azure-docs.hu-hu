@@ -9,18 +9,18 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: b9451bcf6f67eb6afc6d06f4aa0cbec83ce75d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e34bacb905bf48fc5f7cd44e66cf4a4326de91
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855259"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044649"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
 
 A Visual Studióval C#-kódot fejleszthet, és a Azure IoT Edge rendszert futtató Windows-eszközre telepítheti.
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -50,8 +50,8 @@ Az oktatóanyag megkezdése előtt el kellett volna haladnia az előző oktatóa
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Windows-eszköz](quickstart.md).
-* Egy tároló-beállításjegyzék, például [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* A [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) konfigurálva van a [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) bővítménnyel.
+* Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
+* A [Visual Studio 2019](/visualstudio/install/install-visual-studio) konfigurálva van a [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) bővítménnyel.
 * A [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) Windows-tárolók futtatására van konfigurálva.
 
 > [!TIP]
@@ -361,7 +361,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat.
 

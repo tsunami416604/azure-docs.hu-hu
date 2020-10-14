@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: ea2768c22aeaab3dabb546df5aced0f2a5b35e41
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002674"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043544"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül) – PowerShell
 
@@ -43,7 +43,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure Migrate PowerShell-modul telepítése
 
-Azure Migrate PowerShell-modul nyilvános előzetes verzióban érhető el. A PowerShell-modult a következő parancs használatával kell telepítenie. 
+Azure Migrate PowerShell-modul előzetes verzióban érhető el. A PowerShell-modult a következő parancs használatával kell telepítenie. 
 
 ```azurepowershell
 Install-Module -Name Az.Migrate 
@@ -424,7 +424,7 @@ $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $Replicatin
     - Az [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
     - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/).
 - Figyelési és felügyeleti eszközök:
--  Fontolja meg az Azure Cost Management üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
+-  Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
 
 

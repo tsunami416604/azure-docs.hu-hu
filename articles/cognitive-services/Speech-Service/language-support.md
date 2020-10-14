@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629828"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048457"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -154,7 +154,7 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 | `en-CA` | Angol (Kanada) | Nő | `en-CA-ClaraNeural` | Általános kérdések |
 | `en-GB` | Angol (Egyesült Királyság) | Nő | `en-GB-LibbyNeural` | Általános kérdések |
 | `en-GB` | Angol (Egyesült Királyság) | Nő | `en-GB-MiaNeural` | Általános kérdések |
-| `en-GB` <sup>Új</sup> | angol (Egyesült Királyság) | Férfi | `En-GB-RyanNeural` | Általános kérdések |
+| `en-GB` <sup>Új</sup> | angol (Egyesült Királyság) | Férfi | `en-GB-RyanNeural` | Általános kérdések |
 | `en-IE` <sup>Új</sup> | Ír angol (Írország) | Nő | `en-IE-EmilyNeural` | Általános kérdések |
 | `en-IN` | Angol (India) | Nő | `en-IN-NeerjaNeural` | Általános kérdések |
 | `en-US` | Angol (Egyesült Államok) | Nő | `en-US-AriaNeural` | Általános, több hangstílus érhető el |
@@ -393,7 +393,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

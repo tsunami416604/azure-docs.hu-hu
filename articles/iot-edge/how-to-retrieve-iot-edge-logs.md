@@ -10,18 +10,18 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b5d2156707d8a4c308ed577b7407d5eae30edc65
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979522"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044198"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Naplók beolvasása IoT Edge központi telepítésből
 
 A IoT Edge üzemelő példányokból származó naplók beolvasása anélkül, hogy fizikai vagy SSH-hozzáférést kellene használnia az eszközhöz az IoT Edge Agent modulban foglalt közvetlen módszerek használatával. A közvetlen metódusok implementálva vannak az eszközön, majd a felhőből is meghívhatók. A IoT Edge ügynök olyan közvetlen metódusokat tartalmaz, amelyek segítségével távolról figyelheti és kezelheti IoT Edge eszközeit. A cikkben tárgyalt közvetlen metódusok általánosan elérhetők a 1.0.10 kiadásával.
 
-További információ a közvetlen módszerekről, a használatáról és a saját modulok megvalósításáról: [közvetlen módszerek megismerése és meghívása a IoT hubból](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+További információ a közvetlen módszerekről, a használatáról és a saját modulok megvalósításáról: [közvetlen módszerek megismerése és meghívása a IoT hubból](../iot-hub/iot-hub-devguide-direct-methods.md).
 
 A közvetlen metódusok neve a kis-és nagybetűk megkülönböztetésére szolgál.
 
@@ -63,17 +63,17 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | sémaverzióval | sztring | Beállítás értéke `1.0` |
 | elemek | JSON-tömb | Egy tömb `id` és egy `filter` rekordok. |
-| ID (Azonosító) | sztring | Egy reguláris kifejezés, amely megadja a modul nevét. Egy peremhálózati eszközön több modulnak is megfelel. A [.net reguláris kifejezések](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) formátuma várható. |
+| ID (Azonosító) | sztring | Egy reguláris kifejezés, amely megadja a modul nevét. Egy peremhálózati eszközön több modulnak is megfelel. A [.net reguláris kifejezések](/dotnet/standard/base-types/regular-expressions) formátuma várható. |
 | filter (szűrő) | JSON szakasz | A `id` rekordban szereplő reguláris kifejezésnek megfelelő modulokra alkalmazandó naplózási szűrők. |
 | farok | egész szám | A napló sorainak száma a múltban, a legutóbbi kezdéstől kezdve. Választható. |
 | mivel | egész szám | A naplók csak ennyi idő után térnek vissza, mint az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc), rfc3339 timestamp vagy UNIX timestamp.  Ha mindkettő `tail` és `since` a meg van adva, a rendszer a naplókat először az érték használatával kérdezi le `since` . Ezt követően az `tail` érték az eredményre lesz alkalmazva, és a rendszer a végeredményt adja vissza. Választható. |
 | amíg | egész szám | Csak a megadott időpont előtt, a rfc3339 timestamp, a UNIX timestamp vagy az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc) után ad vissza naplókat. Választható. |
 | naplózási szint | egész szám | A naplózási sorok szűrése a megadott naplózási szintnél kisebb vagy azzal egyenlő. A naplófájloknak a javasolt naplózási formátumot kell követniük, és a [syslog súlyossági szintje standard szintűt](https://en.wikipedia.org/wiki/Syslog#Severity_level) kell használniuk. Választható. |
-| regex | sztring | A megadott reguláris kifejezéssel egyező tartalmat tartalmazó naplófájlok szűrése a [.net reguláris kifejezési](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) formátum használatával. Választható. |
+| regex | sztring | A megadott reguláris kifejezéssel egyező tartalmat tartalmazó naplófájlok szűrése a [.net reguláris kifejezési](/dotnet/standard/base-types/regular-expressions) formátum használatával. Választható. |
 | kódolási | sztring | Vagy `gzip`, vagy `none`. Az alapértelmezett szint a `none`. |
 | contentType | sztring | Vagy `json`, vagy `text`. Az alapértelmezett szint a `text`. |
 
@@ -164,9 +164,9 @@ Ez a metódus a **GetModuleLogs**hasonló JSON-adattartalmat fogad el, a "sas UR
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
-| Sas URL | karakterlánc (URI) | Az [Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/). |
+| Sas URL | karakterlánc (URI) | Az [Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
 A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 200** , amelyet a következő sémával rendelkező tartalom követ:
 
@@ -178,7 +178,7 @@ A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | status | sztring | Az egyik,,,, `NotStarted` `Running` `Completed` `Failed` vagy `Unknown` . |
 | message | sztring | Hibaüzenet, ha hiba, üres karakterlánc. |
@@ -259,7 +259,7 @@ A Azure Portalban hívja meg a metódust a metódus nevével `UploadModuleLogs` 
 
 ## <a name="upload-support-bundle-diagnostics"></a>Támogatási csomag diagnosztika feltöltése
 
-A **UploadSupportBundle** Direct metódussal IoT Edge modul naplófájljainak zip-fájlját csomagolhatja és töltheti fel egy elérhető Azure Blob Storage-tárolóba. Ez a közvetlen metódus futtatja a [`iotedge support-bundle`](https://docs.microsoft.com/azure/iot-edge/troubleshoot#gather-debug-information-with-support-bundle-command) parancsot a IoT Edge eszközön a naplók beszerzéséhez.
+A **UploadSupportBundle** Direct metódussal IoT Edge modul naplófájljainak zip-fájlját csomagolhatja és töltheti fel egy elérhető Azure Blob Storage-tárolóba. Ez a közvetlen metódus futtatja a [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) parancsot a IoT Edge eszközön a naplók beszerzéséhez.
 
 Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
 
@@ -273,10 +273,10 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | sémaverzióval | sztring | Beállítás értéke `1.0` |
-| Sas URL | karakterlánc (URI) | [Az Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/) |
+| Sas URL | karakterlánc (URI) | [Az Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | mivel | egész szám | A naplók csak ennyi idő után térnek vissza, mint az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc), rfc3339 timestamp vagy UNIX timestamp. Választható. |
 | amíg | egész szám | Csak a megadott időpont előtt, a rfc3339 timestamp, a UNIX timestamp vagy az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc) után ad vissza naplókat. Választható. |
 | edgeRuntimeOnly | boolean | Ha az értéke igaz, csak a Edge-ügynök, az Edge hub és a Edge biztonsági démon naplóit kell visszaadnia. Alapértelmezett érték: false (hamis).  Választható. |
@@ -294,7 +294,7 @@ A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | status | sztring | Az egyik,,,, `NotStarted` `Running` `Completed` `Failed` vagy `Unknown` . |
 | message | sztring | Hibaüzenet, ha hiba, üres karakterlánc. |
@@ -352,7 +352,7 @@ A naplók feltöltésére vonatkozó sikeres kérelem **"állapotot" ad vissza: 
     }
 ```
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |-|-|-|
 | status | sztring | Az egyik,,,, `NotStarted` `Running` `Completed` `Failed` vagy `Unknown` . |
 | message | sztring | Hibaüzenet, ha hiba, üres karakterlánc. |

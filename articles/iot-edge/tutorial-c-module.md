@@ -9,18 +9,18 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 76b50e2812be79a374143010e0c0212ca1b97f84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c2505f210b1a2b52b64c25b4ffa0c26bb30d7ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856255"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044683"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Linux rendszerű eszközökhöz
 
 A Visual Studio Code használatával C kódot fejleszthet, és a Azure IoT Edge rendszert futtató linuxos eszközre telepítheti.
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet a **C** modult a **Visual Studi
 
 A következő táblázat segítségével megismerheti a C modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit:
 
-| C | Visual Studio Code | Visual Studio |
+| C# | Visual Studio Code | Visual Studio |
 | - | ------------------ | ------------- |
 | **Linux AMD64** | ![A VS Code használata C-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) | ![A VS használata C-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![A VS Code használata C-modulokhoz Linux ARM32](./media/tutorial-c-module/green-check.png) | ![A VS C modulok használata Linux ARM32](./media/tutorial-c-module/green-check.png) |
@@ -50,7 +50,7 @@ Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktató
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
-* Egy tároló-beállításjegyzék, például [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
 
@@ -362,7 +362,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat.
 

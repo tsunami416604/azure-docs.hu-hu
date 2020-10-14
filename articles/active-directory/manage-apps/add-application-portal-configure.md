@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448216"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044462"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -41,10 +41,7 @@ Az alkalmazás tulajdonságainak szerkesztése:
 
 1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
 2. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához.
-
-    ![Képernyőfelvétel a tulajdonságok képernyőről, amely a szerkeszthető alkalmazás tulajdonságait jeleníti meg.](media/add-application-portal/edit-properties.png)
-
-3. Szánjon egy kis időt a konfiguráláshoz elérhető beállítások megismerésére:
+3. Szánjon egy kis időt az elérhető lehetőségek megismerésére. Az elérhető lehetőségek attól függnek, hogy az alkalmazás hogyan integrálódik az Azure AD-vel. Az SAML-alapú egyszeri bejelentkezést használó alkalmazások például olyan mezőkkel rendelkeznek, mint például a *felhasználói hozzáférési URL-cím* , míg egy OIDC-alapú egyszeri bejelentkezést használó alkalmazás nem fog megjelenni. Azt is vegye figyelembe, hogy a **Azure Active Directory > Alkalmazásregisztrációk** használatával hozzáadott alkalmazások alapértelmezett OIDC-alapú alkalmazások. Míg a **Azure Active Directory > vállalati alkalmazások** által hozzáadott alkalmazások számos egyszeri bejelentkezési szabványt használhatnak. Minden alkalmazás tartalmazni fog mezőket a konfiguráláshoz, amikor megjelenik egy alkalmazás és használható. Ezek a mezők a következők:
     - **Engedélyezve van a felhasználók számára a bejelentkezés?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz hozzárendelt felhasználók.
     - **Felhasználói hozzárendelés szükséges?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz nem rendelt felhasználók.
     - **Látható a felhasználók számára?** meghatározza, hogy az alkalmazáshoz rendelt felhasználók láthatják-e az alkalmazásokban [és Microsoft 365 az App](https://myapps.microsoft.com) launcherben. (Lásd a Microsoft 365 webhely bal felső sarkában található Waffle menüt.)
@@ -101,7 +98,7 @@ A megjegyzések mezővel az alkalmazás Azure AD-ben való kezeléséhez kapcsol
 
 Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő törléséhez. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan rendelhet hozzá felhasználókat az alkalmazáshoz.
 > [!div class="nextstepaction"]

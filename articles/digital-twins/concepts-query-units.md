@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067705"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044377"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Lekérdezési egységek az Azure Digital Twinsban 
 
-Az Azure Digital Twins **lekérdezési egység (Qu)** egy igény szerinti számítási egység, amely az [Azure Digital Twins-lekérdezések](how-to-query-graph.md) futtatására szolgál a [lekérdezési API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)használatával. 
+Az Azure Digital Twins **lekérdezési egység (Qu)** egy igény szerinti számítási egység, amely az [Azure Digital Twins-lekérdezések](how-to-query-graph.md) futtatására szolgál a [lekérdezési API](/rest/api/digital-twins/dataplane/query)használatával. 
 
 Elvonta a rendszererőforrásokat, például a PROCESSZORt, a IOPS és a memóriát, amely az Azure Digital Twins által támogatott lekérdezési műveletek elvégzéséhez szükséges, így a használat nyomon követhető a lekérdezési egységekben.
 
@@ -28,7 +28,7 @@ Ez a cikk a lekérdezési egységek értelmezését és a lekérdezési egység 
 
 ## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>A lekérdezési egység felhasználásának megkeresése az Azure Digital Ikrekben 
 
-Ha az Azure Digital Twins [lekérdezési API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)használatával futtat lekérdezést, a válasz fejlécében ellenőrizheti a lekérdezés által felhasznált QUs számát. Keresse meg a "lekérdezési díj" kifejezést az Azure digitális ikrektől visszaküldött válaszban. 
+Ha az Azure Digital Twins [lekérdezési API](/rest/api/digital-twins/dataplane/query)használatával futtat lekérdezést, a válasz fejlécében ellenőrizheti a lekérdezés által felhasznált QUs számát. Keresse meg a "lekérdezési díj" kifejezést az Azure digitális ikrektől visszaküldött válaszban. 
 
 Az Azure Digital Twins [SDK](how-to-use-apis-sdks.md) -k lehetővé teszik a lekérdezési díj fejlécének kinyerését a lapozható válaszból. Ez a szakasz bemutatja, hogyan lehet lekérdezni a digitális ikreket, és hogyan lehet megismételni a lapozható választ a lekérdezési díj fejlécének kinyeréséhez. 
 
@@ -68,6 +68,6 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 Ha többet szeretne megtudni az Azure digitális Twins lekérdezéséről, látogasson el ide:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)
 * [*Útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)
-* [A lekérdezési API-referenciák dokumentációja](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query/querytwins)
+* [A lekérdezési API-referenciák dokumentációja](/rest/api/digital-twins/dataplane/query/querytwins)
 
 Az Azure digitális Twins lekérdezésekkel kapcsolatos korlátait a [*dokumentációban találja: a szolgáltatás korlátai nyilvános előzetes*](reference-service-limits.md)verzióban érhetők el.

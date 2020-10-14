@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9bbacabdd96c9d1059457b01411082499e9ad19b
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: da1ac77ad2716abf964c835634d049895fe88654
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943900"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044547"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>Gyors útmutató: Windows rendszeren futó IoT Plug and Play-eszköz csatlakoztatása IoT Hub (C#)
 
@@ -108,9 +108,9 @@ using Newtonsoft.Json;
 DateTime since = JsonConvert.DeserializeObject<DateTime>(request.DataAsJson);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Útmutató: Kapcsolódás az eszközhöz](howto-develop-solution.md)
+> [Útmutató: Kapcsolódás az eszközhöz](./quickstart-service-node.md)

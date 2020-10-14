@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c78cfd2a453a082ce3f352504719a7fb8cc2b8ec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875954"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044105"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -102,7 +102,7 @@ Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application 
 
 Az önálló árképzési szinten történő használatért a betöltött adatmennyiséget számoljuk fel. A jelentés a **log Analytics** szolgáltatásban szerepel, és a mérőszám neve "adatelemzés". 
 
-A/csomópontok díjszabási szintjei a figyelt virtuális gépeken (csomópontokon) óránkénti részletességgel jelennek meg. Minden figyelt csomópont esetében a munkaterület 500 MB adatmennyiséget foglal le naponta, amely nem számlázható. Ez a foglalás a munkaterület szintjén összesítve történik. Az összesített napi adatmennyiség fölött betöltött adatokat GB-onként számítjuk fel adatmennyiségként. Vegye figyelembe, hogy a számlán a szolgáltatás Log Analytics használat **Insight and Analytics** lesz, ha a munkaterület a csomópontok közötti díjszabási szinten van. A használatot három fogyasztásmérőn kell jelenteni:
+A/csomópontok díjszabási szintjei a figyelt virtuális gépeken (csomópontokon) óránkénti részletességgel jelennek meg. Minden figyelt csomópont esetében a munkaterület 500 MB adatmennyiséget foglal le naponta, amely nem számlázható. Ezt a foglalást óránként részletességgel számítjuk ki, és minden nap a munkaterület szintjén összesítjük. Az összesített napi adatmennyiség fölött betöltött adatokat GB-onként számítjuk fel adatmennyiségként. Vegye figyelembe, hogy a számlán a szolgáltatás Log Analytics használat **Insight and Analytics** lesz, ha a munkaterület a csomópontok közötti díjszabási szinten van. A használatot három fogyasztásmérőn kell jelenteni:
 
 1. Csomópont: a megfigyelt csomópontok (VM-EK) száma a Node * hónapok egységében.
 2. Adatkereten túli adatmennyiség: ez az összesített adatmennyiséget meghaladóan betöltött adat GB-ban megadott száma.
@@ -125,6 +125,10 @@ A korábbi díjszabási szintek egyike sem rendelkezik regionális alapú díjsz
 
 > [!NOTE]
 > A OMS E1 Suite, OMS E2 Suite vagy OMS Add-On for System Center csomagból származó jogosultságok használatához válassza a Log Analytics */csomópont* díjszabási szintet.
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics és Security Center
+
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/) számlázás szorosan kötődik log Analytics számlázáshoz. A Security Center 500 MB/csomópont/nap kiosztást biztosít a [biztonsági adattípusok](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) és a frissítési és updateSummary típusú adattípusok számára, ha a Update Management megoldás nem fut a munkaterületen, vagy engedélyezve van a megoldás célzása. Ha a munkaterület a csomópontok közötti örökölt árképzési szinten van, akkor a Security Center és Log Analytics kiosztások kombinálhatók, és a rendszer közösen alkalmazza az összes számlázható bevitt adatot.  
 
 ## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időtartam módosítása
 
@@ -284,6 +288,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>A csomópontok közötti örökölt díjszabási szinten számlázott csomópontok
+
+A csomópontok közötti [örökölt díjszabási réteg](#legacy-pricing-tiers) az óránkénti részletességgel rendelkező csomópontok esetében nem számítja ki a csomópontok számát, és a csomópontok csak a biztonsági adattípusok készletét küldik. A csomópontok napi száma a következő lekérdezéshez közeledik:
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+A számlán lévő egységek száma a (z `billableNodeMonthsPerDay` ) által a lekérdezésben reprezentált Node * hónapokban található. Ha a munkaterületen telepítve van a Update Management-megoldás, a fenti lekérdezés WHERE záradékában adja hozzá a frissítési és updateSummary típusú adattípusokat a listához. Végezetül pedig van néhány további összetettség a tényleges számlázási algoritmusban, ha a megoldás célcsoportját olyankor használják, amely nem szerepel a fenti lekérdezésben. 
+
+
 > [!TIP]
 > Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a használati adattípus lekérdezése (lásd alább).
 
@@ -338,7 +360,7 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000 by Solution, DataType
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
 | sort by Solution asc, DataType asc
 ```
 

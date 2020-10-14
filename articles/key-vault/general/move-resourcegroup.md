@@ -11,18 +11,22 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another resource group.
-ms.openlocfilehash: fe8051d551077666c06ac033f22303fd643ac602
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea152e1d78ab1ea610eee5420394c89524673993
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585733"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042382"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>Azure Key Vault áthelyezése az erőforráscsoportok között
 
 ## <a name="overview"></a>Áttekintés
 
 A kulcstartók áthelyezése az erőforráscsoportok között egy támogatott kulcstartó-funkció. Ha egy kulcstartót az erőforráscsoportok között helyez át, a Key Vault tűzfala vagy a hozzáférési házirend konfigurációja nem lesz hatással. A csatlakoztatott alkalmazásoknak és egyszerű szolgáltatásoknak továbbra is a kívánt módon kell működniük.
+
+> [!IMPORTANT]
+> **A lemez titkosításához használt kulcstartók nem helyezhetők át.**
+> Ha a Key vaultot a virtuális gép lemezes titkosításával használja, a kulcstároló nem helyezhető át másik erőforráscsoporthoz vagy előfizetésbe, amíg a lemez titkosítása engedélyezve van. A Key Vault új erőforráscsoporthoz vagy előfizetésbe való áthelyezése előtt le kell tiltania a lemez titkosítását. 
 
 ## <a name="design-considerations"></a>Kialakítási szempontok
 

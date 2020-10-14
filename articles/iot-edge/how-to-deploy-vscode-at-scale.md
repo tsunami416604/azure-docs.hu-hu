@@ -9,16 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dc059cae927c1aaa057080172313f5720f483bdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972577"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043816"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge modulok méretezése a Visual Studio Code használatával
 
-A Visual Studio Code használatával létrehozhat egy **IoT Edge automatikus üzembe** helyezést, amellyel egyszerre több eszközön is kezelheti a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](/azure/iot-hub/iot-hub-automatic-device-management) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön. Emellett nyomon követheti a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
+A Visual Studio Code használatával létrehozhat egy **IoT Edge automatikus üzembe** helyezést, amellyel egyszerre több eszközön is kezelheti a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](../iot-hub/iot-hub-automatic-device-management.md) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön. Emellett nyomon követheti a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
 
 További információ: [IoT Edge automatikus központi telepítésének ismertetése egyetlen eszközön vagy nagy méretekben](module-deployment-monitoring.md).
 
@@ -60,13 +60,16 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
 
 Íme egy alapszintű üzembe helyezési jegyzék egy modullal, például:
 
+>[!NOTE]
+>Ez a minta telepítési jegyzékfájl a 1,1-es sémát használja a IoT Edge-ügynökhöz és a hubhoz. A 1,1-es verziójú séma a IoT Edge verzió 1.0.10 együtt lett közzétéve, és lehetővé teszi, hogy a modulok indítási sorrendje és az útvonal rangsorolása is megtörténjen.
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -95,7 +98,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
           },
           "modules": {
             "SimulatedTemperatureSensor": {
-              "version": "1.0",
+              "version": "1.1",
               "type": "docker",
               "status": "running",
               "restartPolicy": "always",

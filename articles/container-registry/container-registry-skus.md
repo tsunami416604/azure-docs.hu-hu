@@ -3,12 +3,12 @@ title: A beállításjegyzék szolgáltatási szintjei és funkciói
 description: Ismerje meg a Azure Container Registry alapszintű, standard és prémium szintű szolgáltatási szintjeinek funkcióit és korlátait.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 66cb5d7c3cdca45f7a44f0f23bfa449d5ade6dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512612"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048474"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry szolgáltatási szintek
 
@@ -17,7 +17,7 @@ Azure Container Registry több szolgáltatási rétegben (más néven SKU) is el
 | Szint | Leírás |
 | --- | ----------- |
 | **Basic** | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Az alapszintű beállításjegyzékek ugyanazokkal a programozási képességekkel rendelkeznek, mint a standard és a prémium (például Azure Active Directory [Authentication Integration](container-registry-authentication.md#individual-login-with-azure-ad), a [képek törlése][container-registry-delete]és a [webhookok][container-registry-webhook]). A tartalmazott tárolási és képátviteli teljesítmény azonban a legmegfelelőbb az alacsonyabb használati forgatókönyvek esetében. |
-| **Standard** | A standard szintű beállításjegyzékek ugyanazokat a képességeket kínálnak, mint az alapszintű, a megnövekedett tárterület és a képátviteli teljesítmény. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
+| **Normál** | A standard szintű beállításjegyzékek ugyanazokat a képességeket kínálnak, mint az alapszintű, a megnövekedett tárterület és a képátviteli teljesítmény. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
 | **Prémium** | A prémium szintű kibocsátásiegység-forgalmi jegyzékek biztosítják a legnagyobb mennyiségű foglalt tárterületet és az egyidejű műveleteket, ami lehetővé teszi a nagy mennyiségű forgatókönyvek A magasabb képátviteli teljesítmény mellett a Premium olyan funkciókat is tartalmaz, mint például a [geo-replikáció][container-registry-geo-replication] több régióban, a Képcímke-aláírásban a [tartalom megbízhatósága](container-registry-content-trust.md) , a privát [végpontokkal való privát hivatkozás](container-registry-private-link.md) a beállításjegyzékhez való hozzáférés korlátozása érdekében. |
 
 Az alapszintű, a standard és a prémium szintű csomag mind ugyanazokat a programozási képességeket biztosítja. Emellett minden előnyt élveznek az Azure által teljes mértékben felügyelt [képtárolóból][container-registry-storage] . A magasabb szintű szint kiválasztásával nagyobb teljesítményt és méretezést biztosít. Több szolgáltatási szint esetén megkezdheti az alapszintű, majd a standard és a prémium szintű konverziót, ha a beállításjegyzék-használat növekszik.
@@ -52,7 +52,7 @@ A Azure Container Registry szolgáltatási szintjeinek díjszabásáról a [Cont
 
 Az adatforgalom díjszabásával kapcsolatos részletekért lásd: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 **Azure Container Registry ütemterv**
 

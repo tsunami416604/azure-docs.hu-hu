@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db4383526874c98f717c5f166b296d814724184a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322631"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044635"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -70,7 +70,7 @@ A számlázással elvégezhető mérőszámok:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Számlázási API-műveletek (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins szolgáltatásban végrehajtott API-kérelmek számának számlázási mérőszáma. | Fogyasztásmérő azonosítója |
 | BillingMessagesProcessed | Feldolgozott számlázási üzenetek (előzetes verzió) | Darabszám | Összesen | Számlázási metrika az Azure digitális Twins-ból külső végpontokra küldött üzenetek számának megadásához.<br><br>Ahhoz, hogy csak egyetlen üzenet legyen a számlázási célokra, a hasznos adatok nem lehetnek nagyobbak 1 KB-nál. Az ennél nagyobb hasznos adatok az 1 KB-os növekményekben további üzenetnek számítanak (ezért az 1. és 2. közötti üzenet 2 üzenetnek számít, 2 és 3 KB között 3 üzenet lesz, és így tovább).<br>Ez a korlátozás a válaszokra is vonatkozik – így a válasz törzsében az 1,5 KB értéket visszaadó hívás (például: 2 művelet lesz). | Fogyasztásmérő azonosítója |
-| BillingQueryUnits | Számlázási lekérdezési egységek (előzetes verzió) | Darabszám | Összesen | A lekérdezési egységek száma, a szolgáltatások erőforrás-felhasználásának belsőleg számított mértéke, a lekérdezések végrehajtásához felhasználva. A lekérdezési egységek méréséhez rendelkezésre áll egy segítő API is: [QueryChargeHelper Class](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Fogyasztásmérő azonosítója |
+| BillingQueryUnits | Számlázási lekérdezési egységek (előzetes verzió) | Darabszám | Összesen | A lekérdezési egységek száma, a szolgáltatások erőforrás-felhasználásának belsőleg számított mértéke, a lekérdezések végrehajtásához felhasználva. A lekérdezési egységek méréséhez rendelkezésre áll egy segítő API is: [QueryChargeHelper Class](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | Fogyasztásmérő azonosítója |
 
 #### <a name="ingress-metrics"></a>Bejövő metrikák
 

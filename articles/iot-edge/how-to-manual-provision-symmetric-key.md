@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 9e288bcbebe4118bfc8cfa7cff46c79d7075555a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5371539c1b45c14b519729c7c07003bf74847a0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979535"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043867"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-symmetric-key-authentication"></a>Azure IoT Edge eszköz beállítása szimmetrikus kulcsos hitelesítéssel
 
@@ -141,12 +141,12 @@ Azt is megteheti, hogy az eszköz **információinak beolvasása** lehetőségre
 ### <a name="prerequisites-for-the-azure-cli"></a>Az Azure CLI előfeltételei
 
 * Egy [IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.70 vagy újabbnak kell lennie. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
+* [Azure CLI](/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.70 vagy újabbnak kell lennie. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
 * Az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension).
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>IoT Edge-eszköz létrehozása az Azure CLI-vel
 
-Az az [IOT hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) paranccsal hozzon létre egy új eszköz-identitást az IOT hub-ban. Például:
+Az az [IOT hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) paranccsal hozzon létre egy új eszköz-identitást az IOT hub-ban. Például:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -162,7 +162,7 @@ Ez a parancs három paramétert tartalmaz:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>IoT Edge eszközök megtekintése az Azure CLI-vel
 
-Az az [IOT hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) paranccsal megtekintheti az IOT hub összes eszközét. Például:
+Az az [IOT hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) paranccsal megtekintheti az IOT hub összes eszközét. Például:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -172,7 +172,7 @@ A IoT Edge eszközként regisztrált eszközökön a tulajdonság képességei l
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>A kapcsolatok karakterláncának beolvasása az Azure CLI-vel
 
-Ha készen áll az eszköz beállítására, szüksége lesz arra a kapcsolati karakterláncra, amely a fizikai eszközt az IoT hub identitásával társítja. Az az [IOT hub Device-Identity show-kapcsolat-string](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) paranccsal visszaállíthatja egy adott eszköz kapcsolati karakterláncát:
+Ha készen áll az eszköz beállítására, szüksége lesz arra a kapcsolati karakterláncra, amely a fizikai eszközt az IoT hub identitásával társítja. Az az [IOT hub Device-Identity show-kapcsolat-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) paranccsal visszaállíthatja egy adott eszköz kapcsolati karakterláncát:
 
    ```azurecli
    az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]

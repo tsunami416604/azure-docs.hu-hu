@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e4895b227bfc699e94155515e829d0bf33aaf9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971693"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043051"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése
 
@@ -71,7 +71,7 @@ Ha üzenetet szeretne kapni, regisztráljon egy olyan visszahívást, amely egy 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)vagy [Node.js](/javascript/api/azure-iot-device/moduleclient).
+A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)vagy [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 A megoldás fejlesztői feladata azoknak a szabályoknak a meghatározása, amelyek meghatározzák, hogy IoT Edge hub hogyan továbbít üzeneteket a modulok között. Az útválasztási szabályok a felhőben vannak meghatározva, és leküldve IoT Edge hubhoz a moduljában. A IoT Hub útvonalakhoz tartozó szintaxis a Azure IoT Edge moduljai közötti útvonalak definiálására szolgál. További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
@@ -126,15 +126,15 @@ A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további informáci�
 
 ## <a name="runtime-quality-telemetry"></a>Futtatókörnyezet minőségi telemetria
 
-Az IoT Edge a termék minőségének javítása érdekében névtelen telemetria gyűjt a gazda futtatókörnyezetből és a rendszermodulokból. Ezt az információt futtatókörnyezeti minőségi telemetria (RQT) nevezik. A RQT-t a rendszer az eszközről a felhőbe irányuló üzenetekként küldi el IoT Hub a IoT Edge-ügynöktől. A RQT-üzenetek nem jelennek meg az ügyfél normál telemetria, és nem használják fel az üzenetek kvótáját.
+A IoT Edge a gazdagép-futtatókörnyezetből és a rendszermodulokból származó névtelen telemetria gyűjti a termék minőségének javítása érdekében. Ezt az információt futtatókörnyezet minőségi telemetria nevezzük. Az összegyűjtött telemetria az eszközről a felhőbe irányuló üzenetekként küldi el a rendszer a IoT Edge-ügynöktől IoT Hub. Ezek az üzenetek nem jelennek meg az ügyfél normál telemetria, és nem használják fel az üzenetek kvótáját.
 
-A edgeAgent és a edgeHub által gyűjtött metrikák teljes listája elérhető a [hozzáférési IoT Edge futtatókörnyezeti mérőszámok cikk elérhető metrikák szakaszában](how-to-access-built-in-metrics.md#available-metrics). A metrikák egy részhalmazát a IoT Edge ügynök gyűjti a RQT részeként. A RQT részeként gyűjtött mérőszámok tartalmazzák a címkét `ms_telemetry` .
+A IoT Edge-ügynök és a hub olyan mérőszámokat állít elő, amelyeket az eszköz teljesítményének megismeréséhez gyűjthet. A metrikák egy részhalmazát a IoT Edge ügynök gyűjti a futtatókörnyezet minőségi telemetria részeként. A futásidejű minőségi telemetria gyűjtött metrikák a címkével vannak ellátva `ms_telemetry` . További információ az összes elérhető metrikáról: hozzáférés a [beépített mérőszámokhoz](how-to-access-built-in-metrics.md).
 
-A névtelenítésével részeként a feltöltés előtt a rendszer eltávolítja a személyes vagy szervezet által azonosítható adatokat, például az eszközök és a modulok nevét.
+A feltöltés előtt a rendszer eltávolítja az összes személyes vagy szervezetian azonosítható információt, például az eszközök és a modulok nevét, így biztosítva a futásidejű minőségi telemetria névtelen jellegét.
 
-A RQT alapértelmezett gyakorisága egy üzenet, amely IoT Hub 24 óránként, a helyi gyűjtemény pedig óránként edgeAgent.
+A IoT Edge ügynök óránként gyűjti a telemetria, és minden 24 órában egy üzenetet küld IoT Hub.
 
-Ha szeretné letiltani a RQT, kétféleképpen teheti meg:
+Ha szeretné letiltani a futásidejű telemetria az eszközökről, két módon teheti meg a következőket:
 
 * Állítsa a `SendRuntimeQualityTelemetry` környezeti változót `false` a **edgeAgent**, vagy
 * Az üzembe helyezés során törölje a Azure Portal kapcsolót.

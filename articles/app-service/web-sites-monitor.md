@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959791"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044530"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -58,7 +58,7 @@ Az App Service terv frissítésével növelheti vagy eltávolíthatja az alkalma
 ## <a name="understand-metrics"></a>Metrikák ismertetése
 
 > [!NOTE]
-> A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, nem számítunk fel adatokat, hacsak nem kapta meg a hozzáférést a privát előzetes verzióhoz.
+> A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, és nem számítunk fel adatokat, kivéve, ha az alkalmazást egy app Service Environment üzemelteti.
 > 
 
 > [!IMPORTANT]

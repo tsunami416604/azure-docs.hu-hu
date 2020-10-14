@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613390"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042847"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT-Plug and Play digitális ikrek kezelése
 
-A IoT Plug and Play **támogatja a digitális iker és** a digitális **dupla műveletek frissítését** a digitális ikrek kezelésére. Használhatja a [REST API-kat](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) vagy az egyik [Service SDK](libraries-sdks.md)-t is.
+A IoT Plug and Play **támogatja a digitális iker és** a digitális **dupla műveletek frissítését** a digitális ikrek kezelésére. Használhatja a [REST API-kat](/rest/api/iothub/service/digitaltwin) vagy az egyik [Service SDK](libraries-sdks.md)-t is.
 
 Az írás időpontjában a digitális Twin API verziója a következő: `2020-09-30` .
 
@@ -194,5 +194,5 @@ A frissítések sikertelenek lehetnek, ha egy eszköz jelentett értékei nem fe
 Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 
 - [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
-- [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

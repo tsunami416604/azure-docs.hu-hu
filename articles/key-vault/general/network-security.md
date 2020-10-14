@@ -7,19 +7,63 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bc25a2ada3052689bc9dc4585c238fe19cb2a341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c375defe5fd8356d64879a65d6f09f40ea30271d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087394"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042473"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása
 
-Ez a cikk részletes útmutatást nyújt Azure Key Vault tűzfalak és virtuális hálózatok konfigurálásához a kulcstartóhoz való hozzáférés korlátozásához. A [Key Vault virtuális hálózati szolgáltatási végpontok](overview-vnet-service-endpoints.md) lehetővé teszik, hogy korlátozza a hozzáférést egy adott virtuális hálózathoz, és IPv4 (Internet Protocol Version 4) címtartományt állítson be.
+Ez a cikk útmutatást nyújt a Azure Key Vault tűzfal konfigurálásához. Ez a dokumentum részletesen ismerteti a Key Vault tűzfal különböző konfigurációit, és részletes útmutatást ad arról, hogyan konfigurálhatja Azure Key Vault más alkalmazásokkal és Azure-szolgáltatásokkal való együttműködéshez.
+
+## <a name="firewall-settings"></a>Tűzfalbeállítások
+
+Ez a szakasz a Azure Key Vault tűzfal különböző konfigurálási módjait fedi le.
+
+### <a name="key-vault-firewall-disabled-default"></a>Key Vault tűzfal Letiltva (alapértelmezett)
+
+Alapértelmezés szerint az új kulcstartó létrehozásakor a Azure Key Vault tűzfal le van tiltva. Minden alkalmazás és Azure-szolgáltatás elérheti a kulcstartót, és kéréseket küldhet a kulcstartónak. Vegye figyelembe, hogy ez a konfiguráció nem jelenti azt, hogy minden felhasználó el tudja végezni a kulcstartón végrehajtott műveleteket. A Key Vault továbbra is korlátozza a Key vaultban tárolt titkokat, kulcsokat és tanúsítványokat Azure Active Directory hitelesítési és hozzáférési házirendi engedélyek megkövetelésével. A Key Vault hitelesítésének részletesebb megismeréséhez tekintse meg a Key Vault-hitelesítés alapjairól [szóló dokumentumot.](https://docs.microsoft.com/azure/key-vault/general/authentication-fundamentals)
+
+### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault tűzfal engedélyezve (csak megbízható szolgáltatások esetén)
+
+Ha engedélyezi a Key Vault tűzfalat, a "megbízható Microsoft-szolgáltatások engedélyezése a tűzfal megkerüléséhez" lehetőséget kap. A megbízható szolgáltatások listája nem fedi le az egyes Azure-szolgáltatásokat. Az Azure DevOps például nem szerepel a megbízható szolgáltatások listáján. **Ez nem jelenti azt, hogy azok a szolgáltatások, amelyek nem jelennek meg a megbízható szolgáltatások listáján, nem megbízhatóak vagy nem biztonságosak.** A megbízható szolgáltatások listája magában foglalja azokat a szolgáltatásokat, amelyeken a Microsoft a szolgáltatáson futó összes kódot vezérli. Mivel a felhasználók egyéni kódokat írhatnak az Azure-szolgáltatásokban, például az Azure DevOps, a Microsoft nem biztosítja a szolgáltatáshoz tartozó keretrendelés létrehozását. Továbbá, mivel egy szolgáltatás megjelenik a megbízható szolgáltatás listán, nem jelenti azt, hogy az összes forgatókönyv esetében engedélyezett.
+
+Ha meg szeretné állapítani, hogy a használni kívánt szolgáltatás szerepel-e a megbízható szolgáltatás listán, tekintse meg a [következő dokumentumot.](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
+
+### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault tűzfal engedélyezve (IPv4-címek és tartományok – statikus IP-címek)
+
+Ha engedélyezni szeretné egy adott szolgáltatás számára a Key Vault elérését a Key Vault tűzfalon keresztül, akkor a Key Vault tűzfal engedélyezési listájában adhatja hozzá az IP-címét. Ez a konfiguráció a statikus IP-címeket vagy a jól ismert tartományokat használó szolgáltatások esetében ajánlott.
+
+Ha engedélyezni szeretné az Azure-erőforrások IP-címét vagy tartományát, például egy webalkalmazást vagy logikai alkalmazást, hajtsa végre az alábbi lépéseket.
+
+1. Bejelentkezés az Azure Portalra
+1. Válassza ki az erőforrást (a szolgáltatás adott példánya)
+1. Kattintson a "tulajdonságok" panelre a "beállítások" alatt.
+1. Keresse meg az "IP-cím" mezőt.
+1. Másolja ezt az értéket vagy tartományt, és adja meg a Key Vault tűzfal engedélyezési listájában.
+
+Ha egy [teljes Azure-](https://www.microsoft.com/download/details.aspx?id=41653)szolgáltatást szeretne engedélyezni a Key Vault tűzfalon keresztül, használja az Azure nyilvánosan dokumentált adatközponti IP-címeinek listáját. Keresse meg a kívánt régióban a szolgáltatáshoz társított IP-címeket, majd adja hozzá ezeket az IP-címeket a Key Vault-tűzfalhoz a fenti lépések végrehajtásával.
+
+### <a name="key-vault-firewall-enabled-virtual-networks---dynamic-ips"></a>Key Vault tűzfal engedélyezve (virtuális hálózatok – dinamikus IP-címek)
+
+Ha egy Azure-erőforrást, például egy virtuális gépet szeretne engedélyezni a Key vaulton keresztül, akkor előfordulhat, hogy nem tud statikus IP-címeket használni, és előfordulhat, hogy nem szeretné engedélyezni az Azure Virtual Machines összes IP-címét a kulcstartóhoz való hozzáféréshez.
+
+Ebben az esetben létre kell hoznia az erőforrást egy virtuális hálózaton belül, majd engedélyeznie kell az adott virtuális hálózatról és alhálózatról érkező forgalmat a kulcstartó eléréséhez. Ehhez hajtsa végre az alábbi lépéseket.
+
+1. Bejelentkezés az Azure Portalra
+1. Válassza ki a konfigurálni kívánt kulcstartót
+1. Válassza a hálózatkezelés panelt
+1. Válassza a + meglévő virtuális hálózat hozzáadása lehetőséget
+1. Válassza ki azt a virtuális hálózatot és alhálózatot, amelyet engedélyezni szeretne a Key Vault-tűzfalon keresztül.
+
+### <a name="key-vault-firewall-enabled-private-link"></a>Key Vault tűzfal engedélyezve (privát hivatkozás)
+
+Ha meg szeretné tudni, hogyan kell konfigurálni a privát kapcsolati kapcsolatot a kulcstartóban, tekintse meg [a dokumentumot.](https://docs.microsoft.com/azure/key-vault/general/private-link-service)
 
 > [!IMPORTANT]
 > A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor hajthatják végre Key Vault [adatsík](secure-your-key-vault.md#data-plane-access-control) -műveleteket, ha a kérésük engedélyezett virtuális hálózatokból vagy IPv4-címtartományok származnak. Ez a Azure Portal Key Vault elérésére is vonatkozik. Bár a felhasználók megkereshetik a kulcstartót a Azure Portalból, előfordulhat, hogy nem tudják listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógépük nem szerepel az engedélyezési listán. Ez hatással van a más Azure-szolgáltatások Key Vault választóra is. Előfordulhat, hogy a felhasználók megtekinthetik a kulcstárolók listáját, de nem listázják a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
@@ -126,7 +170,7 @@ A következőképpen konfigurálhatja Key Vault tűzfalakat és virtuális hál�
 * Azure CLI-parancsok: [az Key Vault Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Azure PowerShell parancsmagok: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Virtuális hálózati szolgáltatás végpontjai Key Vault](overview-vnet-service-endpoints.md)
 * [A Key Vault biztonságossá tétele](secure-your-key-vault.md)

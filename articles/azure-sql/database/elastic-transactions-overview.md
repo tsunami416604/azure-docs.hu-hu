@@ -11,28 +11,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 7e5dd5d8ddf8df507cebaaeba4a544f58250a891
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975217"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043415"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Elosztott tranzakciók felhőalapú adatbázisok között (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database és az Azure SQL felügyelt példányának rugalmas adatbázis-tranzakciói lehetővé teszik, hogy több adatbázisra kiterjedő tranzakciókat futtasson. A rugalmas adatbázis-tranzakciók a ADO.NET-t használó .NET-alkalmazások számára érhetők el, és a [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályok használatával integrálva vannak a megszokott programozási felülettel. A könyvtár beszerzéséhez tekintse meg a [.NET-keretrendszer 4.6.1 (web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)című témakört.
-Ezen kívül az Azure SQL felügyelt példányok elosztott tranzakciói elérhetők a [Transact-SQL-](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)ben.
+Emellett a felügyelt példányok elosztott tranzakciói a [Transact-SQL-](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)ben is elérhetők.
 
 A helyszínen egy ilyen forgatókönyvhöz általában a Microsoft Elosztott tranzakciók koordinátora (MSDTC) futtatására van szükség. Mivel az MSDTC nem érhető el az Azure-ban elérhető platform-szolgáltatásként, az elosztott tranzakciók koordinálásának lehetősége már közvetlenül integrálva van SQL Database vagy felügyelt példányba. Az alkalmazások bármely adatbázishoz csatlakozhatnak az elosztott tranzakciók elindításához, és az adatbázisok vagy kiszolgálók egyike transzparens módon koordinálja az elosztott tranzakciót, ahogy az az alábbi ábrán is látható.
 
-Ebben a dokumentumban a "Distributed Transactions" és a "rugalmas adatbázis-tranzakciók" kifejezések szinonimának számítanak, és a rendszer felhasználja azt.
+Ebben a dokumentumban az "elosztott tranzakciók" és a "rugalmas adatbázis-tranzakciók" kifejezések szinonimának számítanak, és a rendszer szinonimaként fogja használni.
 
   ![Elosztott tranzakciók Azure SQL Database rugalmas adatbázis-tranzakciók használatával ][1]
 
 ## <a name="common-scenarios"></a>Gyakori helyzetek
 
-A rugalmas adatbázis-tranzakciók lehetővé teszik az alkalmazások számára, hogy a különböző adatbázisokban tárolt adatvédelemre vonatkozó atomi módosításokat végezzenek. Az előzetes verzió a C# és a .NET ügyféloldali fejlesztési tapasztalataira koncentrál. Egy kiszolgálóoldali felület (tárolt eljárásokban vagy kiszolgálóoldali parancsfájlokban írt kód) a [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) használatával csak a felügyelt példányok számára érhető el, a SQL Database pedig egy későbbi időpontra tervezték.
+A rugalmas adatbázis-tranzakciók lehetővé teszik az alkalmazások számára, hogy a különböző adatbázisokban tárolt adatvédelemre vonatkozó atomi módosításokat végezzenek. Az előzetes verzió a C# és a .NET ügyféloldali fejlesztési tapasztalataira koncentrál. Egy kiszolgálóoldali felület (tárolt eljárásokban vagy kiszolgálóoldali parancsfájlokban írt kód) a [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) használatával csak felügyelt példányhoz érhető el.
 > [!IMPORTANT]
 > Az előzetes verzióban a rugalmas adatbázis-tranzakciók futtatása Azure SQL Database és az Azure SQL felügyelt példánya között jelenleg nem támogatott. A rugalmas adatbázis-tranzakció csak az SQL-adatbázisok vagy a felügyelt példányok készletei között terjedhet fel.
 
@@ -46,7 +46,7 @@ A rugalmas adatbázis-tranzakciók a következő forgatókönyveket célozzák m
 
 A rugalmas adatbázis-tranzakciók képességei a .NET-kódtárak System.Data.dll és System.Transactions.dll frissítésein keresztül érhetők el. A DLL-ek biztosítják, hogy a kétfázisú véglegesítés szükség esetén legyen használatban az atomenergia biztosításához. A rugalmas adatbázis-tranzakciókat használó alkalmazások fejlesztésének megkezdéséhez telepítse a [.NET-keretrendszer 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) -es vagy újabb verzióját. Ha a .NET-keretrendszer egy korábbi verzióját futtatja, a tranzakciókat nem lehet előléptetni egy elosztott tranzakcióra, és a rendszer kivételt eredményez.
 
-A telepítés után az elosztott tranzakciós API-kat használhatja a System. Transactions szolgáltatásban SQL Database és felügyelt példánnyal létesített kapcsolatokkal. Ha ezen API-kat használó meglévő MSDTC-alkalmazásokkal rendelkezik, egyszerűen építse újra a meglévő alkalmazásokat a .NET 4,6-es verzióra a 4.6.1-keretrendszer telepítése után. Ha a projektek a .NET 4,6-es verzióját célozzák meg, akkor a rendszer automatikusan a frissített DLL-eket használja az új keretrendszer-verzió és az elosztott tranzakciók API-hívásai között, SQL Database vagy felügyelt példány kapcsolataival együtt.
+A telepítés után az elosztott tranzakciós API-kat használhatja a System. Transactions szolgáltatásban SQL Database és felügyelt példánnyal létesített kapcsolatokkal. Ha ezekkel az API-kkal már meglévő MSDTC-alkalmazásokat használ, építse újra a meglévő alkalmazásokat a .NET 4,6-es verzióra a 4.6.1-keretrendszer telepítése után. Ha a projektek a .NET 4,6-es verzióját célozzák meg, akkor a rendszer automatikusan a frissített DLL-eket használja az új keretrendszer-verzió és az elosztott tranzakciók API-hívásai között, SQL Database vagy felügyelt példány kapcsolataival együtt.
 
 Ne feledje, hogy a rugalmas adatbázis-tranzakciók nem igénylik az MSDTC telepítését. Ehelyett a rugalmas adatbázis-tranzakciókat közvetlenül és a szolgáltatáson belül kezelik. Ez jelentősen leegyszerűsíti a Felhőbeli forgatókönyveket, mivel az MSDTC telepítése nem szükséges az elosztott tranzakciók SQL Database vagy felügyelt példánnyal való használatához. A 4. szakasz részletesen ismerteti, hogyan helyezhetők üzembe rugalmas adatbázis-tranzakciók és a szükséges .NET-keretrendszer a felhőalapú alkalmazásokkal együtt az Azure-ban.
 
@@ -136,7 +136,7 @@ A következő mintakód ezt a megközelítést mutatja be. Azt feltételezi, hog
 
 ## <a name="transact-sql-development-experience"></a>Transact-SQL-fejlesztési élmény
 
-A T-SQL-T használó kiszolgálóoldali elosztott tranzakciók csak az Azure SQL felügyelt példányai esetében érhetők el. Az elosztott tranzakciók csak olyan felügyelt példányok között hajthatók végre, amelyek ugyanahhoz a [kiszolgálói megbízhatósági csoporthoz](https://aka.ms/mitrusted-groups)tartoznak. Ebben az esetben a felügyelt példányoknak a [csatolt kiszolgálóval](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) kell használniuk egymás hivatkozását.
+A Transact-SQL-t használó kiszolgálóoldali elosztott tranzakciók csak az Azure SQL felügyelt példányai esetében érhetők el. Az elosztott tranzakciók csak olyan felügyelt példányok között hajthatók végre, amelyek ugyanahhoz a [kiszolgálói megbízhatósági csoporthoz](https://aka.ms/mitrusted-groups)tartoznak. Ebben a forgatókönyvben a felügyelt példányoknak a [csatolt kiszolgálót](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) kell használniuk egymásra való hivatkozáshoz.
 
 A következő példa Transact-SQL-kód az elosztott tranzakció megkezdése az [elosztott](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) tranzakciók indításához.
 
@@ -174,8 +174,8 @@ A következő példa Transact-SQL-kód az elosztott tranzakció megkezdése az [
 
 ## <a name="combining-net-and-transact-sql-development-experience"></a>.NET-és Transact-SQL-alapú fejlesztési élmény kombinálása
 
-A System. Transaction osztályokat használó .NET-alkalmazások kombinálják a TransactionScope osztályt Transact-SQL-utasítással, és megkezdik az ELOSZTOTT TRANZAKCIÓt. A TransactionScope-en belül a megkezdett elküldhető TRANZAKCIÓt végrehajtó belső tranzakció kifejezetten lesz előléptetve az elosztott tranzakcióba. Emellett, ha a második SqlConnecton meg van nyitva a TransactionScope belül, a rendszer implicit módon előlépteti az elosztott tranzakciót. Az elosztott tranzakciók elindítása után az összes további tranzakciós kérelem, függetlenül attól, hogy .NET-vagy Transact-SQL-címről érkeznek, csatlakozik-e a szülő elosztott tranzakcióhoz. Ennek következményeként a BEGIN utasítás által kezdeményezett összes beágyazott tranzakciós hatókör ugyanabban a tranzakcióban fog megjelenni, és a VÉGLEGESÍTés/VISSZAÁLLÍTÁSi utasítások a teljes végeredményre érvényesek lesznek:
- * A VÉGLEGESÍTÉSi utasítás nem befolyásolja a BEGIN utasítás által kezdeményezett tranzakciós hatókört, azaz a Complete () metódus meghívása előtt a TransactionScope objektumon nem lesz végrehajtva eredmény. Ha a TransactionScope objektum megsemmisül a végrehajtás előtt, a hatókörön belüli összes módosítás vissza lesz állítva.
+A System. Transaction osztályokat használó .NET-alkalmazások kombinálják a TransactionScope osztályt Transact-SQL-utasítással, és megkezdik az ELOSZTOTT TRANZAKCIÓt. A TransactionScope-en belül a megkezdve megkezdett TRANZAKCIÓt végrehajtó belső tranzakció explicit módon előléptetve lesz az elosztott tranzakcióba. Emellett, ha a második SqlConnecton meg van nyitva a TransactionScope belül, a rendszer implicit módon előlépteti az elosztott tranzakciót. Az elosztott tranzakciók elindítása után az összes további tranzakciós kérelem, függetlenül attól, hogy .NET-vagy Transact-SQL-címről érkeznek, csatlakozik-e a szülő elosztott tranzakcióhoz. Ennek következményeként a BEGIN utasítás által kezdeményezett összes beágyazott tranzakciós hatókör ugyanabban a tranzakcióban fog megjelenni, és a VÉGLEGESÍTés/VISSZAÁLLÍTÁSi utasítások a teljes végeredményre érvényesek lesznek:
+ * A VÉGLEGESÍTÉSi utasítás nem befolyásolja a BEGIN utasítás által kezdeményezett tranzakció-hatókört, azaz a Complete () metódus meghívása előtt a TransactionScope objektumon nem lesz végrehajtva eredmény. Ha a TransactionScope objektum megsemmisül a végrehajtás előtt, a hatókörön belüli összes módosítás vissza lesz állítva.
  * A VISSZAÁLLÍTÁSi utasítás a teljes TransactionScope visszaállítását fogja eredményezni. A TransactionScope-en belüli új tranzakciók bekapcsolására tett kísérletek később sikertelenek lesznek, és megkísérlik a Complete () művelet meghívását a TransactionScope objektumon.
 
 Íme egy példa, ahol a tranzakció explicit módon elő van terjesztve az elosztott tranzakcióra a Transact-SQL használatával.
@@ -203,7 +203,7 @@ A System. Transaction osztályokat használó .NET-alkalmazások kombinálják a
     }
 ```
 
-A következő példa egy tranzakciót mutat be, amely implicit módon be van terjesztve az elosztott tranzakcióba, ha a második SqlConnecton elindult a TransactionScope belül.
+A következő példa egy tranzakciót mutat be, amely implicit módon előléptetve van az elosztott tranzakcióra, ha a második SqlConnecton elindult a TransactionScope belül.
 
 ```csharp
     using (TransactionScope s = new TransactionScope())
@@ -244,7 +244,7 @@ Az alábbi PowerShell-parancsmagok segítségével kezelheti a többkiszolgáló
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Több kiszolgáló közötti tranzakciók a felügyelt Azure SQL-példányokhoz
 
-Az elosztott tranzakciók az Azure SQL felügyelt példányain különböző kiszolgálókon támogatottak. Ha a tranzakciók határokon átnyúló felügyelt példányokat használ, a résztvevő példányokat először kölcsönös biztonsági és kommunikációs kapcsolatba kell bevinni. Ezt úgy teheti meg, hogy a [kiszolgálói megbízhatósági csoportot](https://aka.ms/mitrusted-groups) állítja be, amely Azure Portal végezhető el.
+Az elosztott tranzakciók az Azure SQL felügyelt példányain különböző kiszolgálókon támogatottak. Ha a tranzakciók határokon átnyúló felügyelt példányokat használ, a résztvevő példányokat először kölcsönös biztonsági és kommunikációs kapcsolatba kell bevinni. Ezt a [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups)beállításával teheti meg, amely Azure Portal végezhető el.
 
   ![Kiszolgálói megbízhatósági csoportok az Azure Portalon][3]
 
@@ -258,9 +258,9 @@ A dinamikus felügyeleti nézetek (DMV) segítségével figyelheti a folyamatban
 
 Ezek a DMV különösen hasznosak:
 
-* **sys.DM \_ Tran \_ aktív \_ tranzakciók**: felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms174302.aspx) talál.
-* **sys.DM \_ Tran \_ adatbázis- \_ tranzakciói**: további információkat nyújt a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms186957.aspx) talál.
-* **sys.DM \_ Tran \_ zárolásai**: a folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információt. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms190345.aspx) talál.
+* **sys.DM \_ Tran \_ aktív \_ tranzakciók**: felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms174302.aspx)talál.
+* **sys.DM \_ Tran \_ adatbázis- \_ tranzakciói**: további információkat nyújt a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms186957.aspx)talál.
+* **sys.DM \_ Tran \_ zárolásai**: a folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információt. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms190345.aspx)talál.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -274,13 +274,13 @@ A felügyelt példány elosztott tranzakciói esetében jelenleg a következő k
 
 * Csak a felügyelt példányokban lévő adatbázisok közötti tranzakciók támogatottak. Az Azure SQL felügyelt példányain kívül más [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) erőforrás-szolgáltatók és adatbázisok nem vehetnek részt elosztott tranzakciókban. Ez azt jelenti, hogy az elosztott tranzakciók nem terjeszthetők ki a helyszíni SQL Server és az Azure SQL felügyelt példányai között. A helyszíni elosztott tranzakciók esetében folytassa az MSDTC használatát.
 * A WCF-szolgáltatások közötti tranzakciók nem támogatottak. Tegyük fel, hogy van egy WCF szolgáltatási metódusa, amely tranzakciót hajt végre. A hívás tranzakciós hatókörön belüli befoglalása sikertelen lesz, mint a [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
-* Az Azure SQL felügyelt példányának egy [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups) tagjának kell lennie, hogy részt vegyen az elosztott tranzakcióban.
+* Az Azure SQL felügyelt példányának egy [kiszolgálói megbízhatósági csoport](https://aka.ms/mitrusted-groups) tagjának kell lennie ahhoz, hogy részt vegyen az elosztott tranzakcióban.
 * A [kiszolgálói megbízhatósági csoportok](https://aka.ms/mitrusted-groups) korlátai az elosztott tranzakciókat érintik.
-* Az elosztott tranzakciókban részt vevő felügyelt példányoknak privát végponton keresztül kell csatlakozniuk (magánhálózati IP-címmel kell használni a virtuális hálózatról, ahol telepítve vannak), és kölcsönösen hivatkozni kell a privát FQDN használatával. A Transact-SQL-alapú ügyfélalkalmazások saját vagy nyilvános végpont használatával futtathatnak tranzakciókat a kiszolgálói megbízhatósági csoportban lévő összes példányon. Ezt a korlátozást a következő ábra ismerteti.
+* Az elosztott tranzakciókban részt vevő felügyelt példányoknak privát végpontokon keresztül kell csatlakozniuk (magánhálózati IP-címmel kell rendelkezniük a virtuális hálózatról, ahol telepítve vannak), és kölcsönösen hivatkozni kell a privát FQDN használatával. Az ügyfélalkalmazások elosztott tranzakciókat használhatnak privát végpontokon. Továbbá abban az esetben, ha a Transact-SQL a magánhálózati végpontokra hivatkozó csatolt kiszolgálókat használ, az ügyfélalkalmazások a nyilvános végpontokon is használhatják az elosztott tranzakciókat. Ezt a korlátozást a következő ábra ismerteti.
   ![Magánhálózati végponti kapcsolat korlátozása][4]
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha kérdése van, kérjük, lépjen kapcsolatba velünk a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+* Ha kérdése van, keressen minket a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
 * A szolgáltatási kérelmek esetében vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/) vagy a [felügyelt példányok fórumára](https://feedback.azure.com/forums/915676-sql-managed-instance).
 
 
@@ -289,5 +289,5 @@ A felügyelt példány elosztott tranzakciói esetében jelenleg a következő k
 [1]: ./media/elastic-transactions-overview/distributed-transactions.png
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
-[4]: ./media/elastic-transactions-overview/sql-mi-private-endpoint-limitation.png
+[4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
  

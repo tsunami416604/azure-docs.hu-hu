@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296909"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043731"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
@@ -51,13 +51,13 @@ Emellett további, nyelvfüggő eszközöket is telepítenie kell a modul fejles
 
 - Node.js: [Node.js](https://nodejs.org). Telepítenie kell a [Yeoman](https://www.npmjs.com/package/yo) és a [Azure IoT Edge Node.js modul-generátort](https://www.npmjs.com/package/generator-azure-iot-edge-module)is.
 
-- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) és [Maven](https://maven.apache.org/). [A `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) úgy kell beállítani, hogy a JDK-telepítésre mutasson.
+- Java: [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) és [Maven](https://maven.apache.org/). [A `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) úgy kell beállítani, hogy a JDK-telepítésre mutasson.
 
 A modul lemezképének létrehozásához és üzembe helyezéséhez a Docker-nek létre kell hoznia a modul lemezképét és egy tároló-beállításjegyzéket a modul lemezképének tárolásához:
 
 - A [Docker Community Edition](https://docs.docker.com/install/) a fejlesztői gépen.
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](../container-registry/index.yml) vagy [Docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > A Felhőbeli beállításjegyzék helyett használhat egy helyi Docker-beállításjegyzéket prototípus-és tesztelési célokra.

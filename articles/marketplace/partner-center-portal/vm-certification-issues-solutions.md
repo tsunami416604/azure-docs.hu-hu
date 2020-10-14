@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 06/16/2020
-ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803466"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044496"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Gyakori problémák az Azure Marketplace-en elérhető virtuálisgép-lemezképek tanúsításakor
 
@@ -29,7 +29,7 @@ Ha olyan kérést küld, amely a rendszerkép frissítéssel való újbóli köz
 
 Ez a hiba akkor fordul elő, ha egy másik közzétevőhöz tartozó alaprendszerképet használ, és frissítette a rendszerképet. Ebben az esetben a rendszerkép közzététele nem engedélyezett.
 
-A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információkért tekintse át a következő cikkeket:
+A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információért tekintse át a következő cikkeket:
 
 - [Linux-rendszerképek](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows-rendszerképek](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
@@ -372,6 +372,61 @@ A kiadóknak el kell érniük a támogatási szolgálatot a [Marketplace kiadó 
    7. Ütemterv – a kivétel kérésének dátuma 
    8.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
 
+## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Biztonsági rések kezelése vagy kiaknázása egy virtuálisgép-ajánlatban
+
+Ez a GYIK segítséget nyújt a virtuális gép (VM) lemezképének megadásához, ha a biztonsági rést vagy a biztonsági rést felderítik az egyik virtuálisgép-rendszerképből. Ez a GYIK csak az Azure piactéren közzétett Azure-beli virtuális gépekre vonatkozik.
+
+> [!NOTE]
+> Nem távolíthatja el az utolsó virtuálisgép-rendszerképet egy csomagból, és nem állíthatja le az ajánlat utolsó tervének értékesítését.
+
+Tegye a következők egyikét:
+
+1. Ha egy új virtuálisgép-lemezképpel helyettesíti a sebezhető virtuálisgép-rendszerképet, ugorjon a rögzített virtuálisgép-rendszerkép [megadása című témakörre](#how-to-provide-a-fixed-vm-image).
+1. Ha nem rendelkezik új virtuálisgép-lemezképpel, hogy lecserélje az egyetlen virtuálisgép-rendszerképet egy csomagra, és ha elkészült a csomaggal, akkor [leállíthatja a csomag értékesítését](update-existing-offer.md#stop-selling-an-offer-or-plan).
+1. Ha nem szeretné lecserélni az ajánlat egyetlen virtuálisgép-rendszerképét, azt javasoljuk, hogy [állítsa le az ajánlat értékesítését](update-existing-offer.md#stop-selling-an-offer-or-plan).
+
+### <a name="how-to-provide-a-fixed-vm-image"></a>Rögzített virtuálisgép-rendszerkép megadása
+
+Ha rögzített virtuálisgép-rendszerképet szeretne megadni egy biztonsági rést vagy kihasználó virtuálisgép-rendszerkép cseréjére, tegye a következőket:
+
+1. Adjon meg egy új virtuálisgép-rendszerképet a biztonsági sebezhetőség vagy a biztonsági rés kihasználásához.
+1. Távolítsa el a biztonsági rést vagy kihasználó virtuálisgép-rendszerképet.
+1. Az ajánlat ismételt közzététele.
+
+#### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Adjon meg egy új virtuálisgép-rendszerképet a biztonsági rések vagy a biztonsági rés megoldásához
+
+A lépések végrehajtásához elő kell készítenie a felvenni kívánt virtuálisgép-rendszerkép technikai eszközét. További információkért lásd: [technikai eszközök létrehozása Azure Marketplace-beli virtuálisgép-ajánlathoz](create-azure-vm-technical-asset.md) , és a virtuális gép [rendszerképének sas URI-ja](get-sas-uri.md).
+
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
+1. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+1. Az **ajánlat-alias** oszlopban válassza ki az ajánlatot.
+1. A **terv áttekintése** lap **név** oszlopában válassza ki azt a csomagot, amelyhez hozzá szeretné adni a virtuális gépet.
+1. A **technikai konfiguráció** lap virtuálisgép- **rendszerképek**területén válassza a **+ virtuálisgép-rendszerkép hozzáadása**elemet.
+   > [!NOTE]
+   > Egyszerre csak egy virtuálisgép-rendszerképet adhat hozzá a csomaghoz. Több virtuálisgép-rendszerkép hozzáadásához tegye közzé az elsőt, és várjon, amíg a következő virtuálisgép-lemezkép hozzáadása előtt el nem éri a _közzétevő PM_ fázist.
+1. A megjelenő mezőkben adja meg a lemez új verzióját és a virtuális gép rendszerképét.
+1. Válassza a **Piszkozat mentése** lehetőséget.
+1. Folytassa a következő szakasszal, és távolítsa el a virtuális gép rendszerképét a biztonsági sebezhetőséggel.
+
+#### <a name="remove-the-vm-image-that-has-the-security-vulnerability-or-exploit"></a>Távolítsa el a biztonsági rést vagy kihasználó virtuálisgép-rendszerképet
+
+Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
+1. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+1. Az **ajánlat-alias** oszlopban válassza ki az ajánlatot.
+1. A **terv áttekintése** lap **név** oszlopában válassza ki a csomagot az eltávolítani kívánt virtuális géppel.
+1. A **technikai konfiguráció** lap virtuálisgép- **lemezképek**területén, az eltávolítani kívánt virtuálisgép-rendszerkép mellett válassza a virtuálisgép- **lemezkép eltávolítása**lehetőséget.
+1. A megjelenő párbeszédpanelen válassza a **Folytatás**lehetőséget.
+1. Válassza a **Piszkozat mentése** lehetőséget.
+1. Folytassa a következő szakasszal az ajánlat ismételt közzétételéhez.
+
+#### <a name="republish-the-offer"></a>Az ajánlat ismételt közzététele
+
+Miután eltávolította vagy lecserélte a virtuálisgép-rendszerképet, újra közzé kell tennie az ajánlatot.
+1. Válassza **a felülvizsgálat és közzététel**lehetőséget.
+1. Ha bármilyen információt meg kell adnia a minősítési csapatnak, adja hozzá a **Megjegyzések a minősítéshez** mezőben.
+1. Kattintson a **Publish** (Közzététel) elemre.
+
+A közzétételi folyamattal kapcsolatos további információkért lásd: az [ajánlat áttekintése és közzététele a kereskedelmi piactéren](../review-publish-offer.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

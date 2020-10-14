@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756920"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044768"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Gyors útmutató: telefonszám beszerzése a Azure Portal használatával
 
@@ -103,7 +103,7 @@ A telefonszámok kezeléséhez válassza a menüben a telefonszámok panelt.
 > [!NOTE]
 > Eltarthat néhány percig, amíg a kiépített számok megjelennek ezen az oldalon.
 
-### <a name="customizing-phone-number-plans"></a>Telefonszám-csomagok testreszabása
+### <a name="customizing-phone-number-features"></a>Telefonszám-funkciók testreszabása
 A `Numbers` lapon kiválaszthatja a telefonszámot, ha arra a számra kattint, amelynek testre szeretné szabni a csomagot.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::

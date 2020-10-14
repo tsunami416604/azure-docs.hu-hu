@@ -5,20 +5,20 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/21/2020
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855390"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048423"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>IoT Edge modulok méretezése a Azure Portal használatával
 
-Hozzon létre egy **IoT Edge automatikus központi telepítést** a Azure Portalban, hogy egyszerre több eszközön is kezelhesse a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](/azure/iot-hub/iot-hub-automatic-device-management) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön, nyomon követni a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
+Hozzon létre egy **IoT Edge automatikus központi telepítést** a Azure Portalban, hogy egyszerre több eszközön is kezelhesse a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](../iot-hub/iot-hub-automatic-device-management.md) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön, nyomon követni a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
 
 További információ: [IoT Edge automatikus központi telepítésének ismertetése egyetlen eszközön vagy nagy méretekben](module-deployment-monitoring.md).
 
@@ -53,6 +53,11 @@ Az üzembe helyezés és a rétegzett központi telepítés létrehozásának l�
 
 Az üzemelő példány létrehozásának öt lépése van. A következő szakasz végigvezeti a műveletet.
 
+>[!NOTE]
+>A cikkben ismertetett lépések a IoT Edge-ügynök és a központ legújabb séma-verzióját tükrözik. A 1,1-es verziójú séma a IoT Edge verzió 1.0.10 együtt lett közzétéve, és lehetővé teszi a modul indítási sorrendjének és útvonal-rangsorolási funkcióinak használatát.
+>
+>Ha a 1.0.9 vagy korábbi verzióját futtató eszközre telepít központilag, akkor a varázsló **modulok** lépésében szerkessze a **futásidejű beállításokat** a séma 1,0-es verziójának használatához.
+
 ### <a name="step-1-name-and-label"></a>1. lépés: név és címke
 
 1. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` .
@@ -65,55 +70,19 @@ Akár 50 modult is hozzáadhat egy központi telepítéshez. Ha modulokat nem ta
 
 A központi telepítések során a IoT Edge ügynök és IoT Edge hub-modulok beállításait kezelheti. Válassza a **Futásidejű beállítások** lehetőséget a két futásidejű modul konfigurálásához. A rétegzett központi telepítésben a futásidejű modulok nincsenek megadva, ezért nem konfigurálhatók.
 
-Három típusú modult is hozzáadhat:
-
-* IoT Edge modul
-* Marketplace-modul
-* Azure Stream Analytics modul
-
-#### <a name="add-an-iot-edge-module"></a>IoT Edge modul hozzáadása
-
 Egyéni kód modulként való hozzáadásához, illetve Azure-szolgáltatási modul manuális hozzáadásához kövesse az alábbi lépéseket:
 
-1. A lap **Container Registry hitelesítő adatok** szakaszában adja meg a központi telepítés moduljának lemezképeit tartalmazó privát tároló-beállításjegyzékek nevét és hitelesítő adatait. A IoT Edge ügynök a 500-es hibát fogja jelenteni, ha nem találja a tároló beállításjegyzékének hitelesítő adatait a Docker-rendszerképhez.
-1. A lap **IoT Edge modulok** szakaszában kattintson a **Hozzáadás**gombra.
-1. Válassza ki **IoT Edge modult** a legördülő menüből.
-1. Adja a modulnak **IoT Edge modul nevét**.
-1. A **RENDSZERKÉP URI** mezőjébe írja be a modulhoz tartozó tároló rendszerképét.
-1. Az **Újraindítási szabályzat**kiválasztásához használja a legördülő menüt. Az alábbi lehetőségek közül választhat:
-   * **mindig** – a modul mindig újraindul, ha valamilyen okból leáll.
-   * **soha** – a modul soha nem indul újra, ha bármilyen okból leáll.
-   * **hiba** esetén – a modul újraindul, ha összeomlik, de nem, ha nem áll le tisztán.
-   * **sérült** állapotban – a modul újraindul, ha összeomlik vagy visszaadja a nem kifogástalan állapotot. Az állapotfigyelő funkció megvalósításához az egyes modulok is felhasználhatók.
-1. A modul **kívánt állapotának** kiválasztásához használja a legördülő menüt. Az alábbi lehetőségek közül választhat:
-   * a **futó** Futtatás az alapértelmezett beállítás. A modul a telepítése után azonnal elindul.
-   * **Leállítva** – az üzembe helyezés után a modul tétlen marad mindaddig, amíg meg nem hívja az Ön vagy egy másik modul indítását.
-1. Adja meg a tárolóhoz átadandó **tároló-létrehozási beállításokat** . További információ: [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
-1. Válassza ki a **modul Twin beállításait** , ha címkéket vagy egyéb tulajdonságokat szeretne felvenni a Twin modulba.
-1. Adja meg a modul **környezeti változóit** . A környezeti változók konfigurációs adatokat biztosítanak egy modulhoz.
-1. A **Hozzáadás** gombra kattintva adja hozzá a modult a központi telepítéshez.
+1. A lap **Container Registry beállítások** szakaszában adja meg a modul lemezképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatokat.
+1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
+1. A legördülő menüből válasszon a következő három típusú modul közül:
 
-#### <a name="add-a-module-from-the-marketplace"></a>Modul hozzáadása a piactéren
+   * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. A minta SimulatedTemperatureSensor-modul képuri-ja például a következő: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
+   * **Piactér modul** – az Azure piactéren üzemeltetett modulok. Egyes piactér-modulok további konfigurálást igényelnek, ezért tekintse át a modul részleteit az [Azure marketplace IoT Edge modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listájában.
+   * **Azure stream Analytics modul** – Azure stream Analytics munkaterhelés által generált modulok.
 
-Ha modult szeretne hozzáadni az Azure piactéren, kövesse az alábbi lépéseket:
+1. Ha szükséges, ismételje meg a 2. és 3. lépést további modulok hozzáadásához a központi telepítéshez.
 
-1. A lap **IoT Edge modulok** szakaszában kattintson a **Hozzáadás**gombra.
-1. Válassza ki a **piactér modult** a legördülő menüből.
-1. Válasszon egy modult a **IoT Edge modul Marketplace** oldaláról. A kiválasztott modul automatikusan konfigurálva van az előfizetéshez, az erőforráscsoporthoz és az eszközhöz. Ezután megjelenik a IoT Edge-modulok listájában. Egyes modulok további konfigurálást igényelhetnek. További információ: [modulok üzembe helyezése az Azure Marketplace-](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace)en.
-
-#### <a name="add-a-stream-analytics-module"></a>Stream Analytics modul hozzáadása
-
-Ha Azure Stream Analytics-modult szeretne hozzáadni, kövesse az alábbi lépéseket:
-
-1. A lap **IoT Edge modulok** szakaszában kattintson a **Hozzáadás**gombra.
-1. Válassza ki **Azure stream Analytics modult** a legördülő menüből.
-1. A jobb oldali ablaktáblán válassza ki az **előfizetését**.
-1. Válassza ki a IoT **Edge-feladatot**.
-1. Válassza a **Mentés** lehetőséget, hogy hozzáadja a modult a központi telepítéshez.
-
-#### <a name="configure-module-settings"></a>A modul beállításainak konfigurálása
-
-Miután hozzáadta a modult egy központi telepítéshez, kiválaszthatja a nevét, és megnyithatja a **IoT Edge modul frissítése** lapot. Ezen az oldalon szerkesztheti a modul beállításait, a környezeti változókat, a létrehozási beállításokat és a modult. Ha hozzáadta a modult a piactéren, előfordulhat, hogy már rendelkezik a paraméterekkel.
+Miután hozzáadta a modult egy központi telepítéshez, kiválaszthatja a nevét, és megnyithatja a **IoT Edge modul frissítése** lapot. Ezen az oldalon szerkesztheti a modul beállításait, a környezeti változókat, a létrehozási beállításokat, az indítási sorrendet és a modult. Ha hozzáadta a modult a piactéren, előfordulhat, hogy már rendelkezik a paraméterekkel. További információ az elérhető modul beállításairól: [modulok konfigurálása és kezelése](module-composition.md#module-configuration-and-management).
 
 Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. Hozzon létre egy új **Module Twin tulajdonságot** , amely egy egyedi névvel rendelkezik egy alszakaszhoz a modul Twin kívánt tulajdonságai között, például: `properties.desired.settings` . Ha csak a mezőben adja meg a tulajdonságokat `properties.desired` , akkor a rendszer felülírja az alacsonyabb prioritású központi telepítésekben definiált modul kívánt tulajdonságait.
 
@@ -125,9 +94,13 @@ Miután konfigurálta az összes modult a központi telepítéshez, válassza a 
 
 ### <a name="step-3-routes"></a>3. lépés: útvonalak
 
-Az útvonalak határozzák meg, hogy a modulok hogyan kommunikáljanak egymással egy központi telepítésen belül. Alapértelmezés szerint a varázsló egy **felsőbb rétegbeli** útvonalat ad meg, amely a **/messages/-ből a \* $upstreamba**van definiálva, ami azt jelenti, hogy bármely modulból származó üzenet kimenete a IoT hubhoz érkezik.  
+Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve.
 
-Adja hozzá vagy frissítse az útvonalakat a [deklarált útvonalak](module-composition.md#declare-routes)információi alapján, majd kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
+Ha például egy útvonal **útvonala** és a **/messages/-ből $upstream értékre \* vált** , akkor bármely modul kimenetet küld, és elküldi őket az IoT hubhoz.  
+
+Az élő paraméterek **prioritása** és **ideje** választható paraméterek, amelyeket hozzáadhat egy útvonal-definícióhoz. A Priority paraméterrel kiválaszthatja, hogy mely útvonalakon legyenek feldolgozva az üzenetek, vagy hogy mely útvonalakat kell feldolgozni utoljára. A prioritás meghatározása a 0-9 szám megadásával történik, ahol a 0 a legfontosabb prioritás. Az élettartam paraméter lehetővé teszi annak bejelentését, hogy mennyi ideig kell tárolni az adott útvonalon lévő üzeneteket, amíg azokat fel nem dolgozzák vagy el nem távolítják a várólistából.
+
+Az útvonalak létrehozásával kapcsolatos további információkért lásd: [útvonalak deklarálása](module-composition.md#declare-routes).
 
 Válassza a **Next (tovább): metrikák**lehetőséget.
 
@@ -211,6 +184,6 @@ Ha töröl egy központi telepítést, minden telepített eszköz a következő 
 1. Válassza a **Törlés** elemet.
 1. A rendszer értesíti arról, hogy ez a művelet törli ezt a központi telepítést, és az összes eszköz előző állapotára vált vissza.Alacsonyabb prioritású üzemelő példány lesz érvényben.Ha nincs más központi telepítés megcélozva, a rendszer nem távolítja el a modulokat. Ha el szeretné távolítani az összes modult az eszközről, hozzon létre egy üzembe helyezést nulla modulokkal, és telepítse azt ugyanarra az eszközre.Válassza az **Igen** lehetőséget a folytatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [modulok IoT Edge eszközökön való telepítéséről](module-deployment-monitoring.md).

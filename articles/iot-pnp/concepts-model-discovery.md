@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577713"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042915"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT-Plug and Play modellek használata IoT-megoldásokban
 
@@ -40,10 +40,10 @@ A megoldás a következő három módszer egyikének használatával kérheti le
 
 ### <a name="get-device-twin-api"></a>Eszköz – Twin API beszerzése
 
-A megoldás a IoT Plug and Play eszköz modell-AZONOSÍTÓjának lekéréséhez használhatja az [eszköz Twin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) API-t.
+A megoldás a IoT Plug and Play eszköz modell-AZONOSÍTÓjának lekéréséhez használhatja az [eszköz Twin](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) API-t.
 
 > [!TIP]
-> Modulok és IoT Edge modulok esetében használja a [ModuleClient. getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true).
+> Modulok és IoT Edge modulok esetében használja a [ModuleClient. getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable).
 
 A következő eszköz Twin Response kódrészletben `modelId` a IoT Plug and Play eszköz modell-azonosítóját tartalmazza:
 
@@ -71,7 +71,7 @@ A következő eszköz Twin Response kódrészletben `modelId` a IoT Plug and Pla
 
 ### <a name="get-digital-twin-api"></a>Digitális Twin API beszerzése
 
-A megoldás az IoT Plug and Play eszköz által megvalósított modell AZONOSÍTÓjának lekéréséhez a [Digital Twin](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API beolvasása lehetőséget használhatja.
+A megoldás az IoT Plug and Play eszköz által megvalósított modell AZONOSÍTÓjának lekéréséhez a [Digital Twin](/rest/api/iothub/service/digitaltwin/getdigitaltwin) API beolvasása lehetőséget használhatja.
 
 A következő digitális kettős válasz kódrészletben `$metadata.$model` a IoT Plug and Play eszköz modell-azonosítóját tartalmazza:
 
@@ -121,7 +121,7 @@ A megoldások a [modell tárházát](concepts-model-repository.md) használhatj�
 
 Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, kövesse az alábbi lépéseket:
 
-1. Kérje le a modell definícióját a modell-adattárból a modell AZONOSÍTÓjának használatával. További információ: [Get models (modellek beolvasása](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)).
+1. Kérje le a modell definícióját a modell-adattárból a modell AZONOSÍTÓjának használatával. További információ: [Get models (modellek beolvasása](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)).
 
 1. A csatlakoztatott eszköz modell-definíciójának használatával enumerálhatja az eszköz képességeit.
 
@@ -144,5 +144,5 @@ Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, k
 Most, hogy megismerte, hogyan integrálhatja a IoT Plug and Play modelleket egy IoT-megoldásba, néhány javasolt következő lépés:
 
 - [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
-- [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

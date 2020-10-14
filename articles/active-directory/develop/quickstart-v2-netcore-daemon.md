@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e1df230a49ca5483d0ab091da11530786c829ca8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767276"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042643"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával
 
@@ -73,15 +73,13 @@ Ehhez a rövid útmutatóhoz a [.net Core 3,1](https://www.microsoft.com/net/dow
 
 > [!div renderon="docs"]
 > [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
-
-> [!div renderon="docs"]
-> > [!NOTE]
-> > A megadott projektet a Visual Studióban vagy a Visual Studio for Macban is futtathatja
+>
+> A megadott projektet a Visual Studióban vagy a Visual Studio for Macban is futtathatja.
 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Futtassa a projektet a Visual Studio 2019 használatával.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]

@@ -3,12 +3,12 @@ title: A nyilvános IP-funkciók használata a Virtual WAN-ban
 description: Ez a cikk azt ismerteti, hogyan használható a nyilvános IP-funkció az Azure Virtual WAN-ban.
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744927"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048304"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>A nyilvános IP-funkciók használata az Azure Virtual WAN-ban
 
@@ -29,9 +29,9 @@ Ez a cikk részletesen ismerteti, hogyan használhatja a virtuális WAN nyilván
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--   Azure VMware-megoldás környezet
-
--   Azure VMware-megoldási környezetben futó webkiszolgáló.
+- Azure VMware-megoldás környezet
+- Azure VMware-megoldási környezetben futó webkiszolgáló.
+- Egy új, nem átfedésben lévő IP-címtartomány a virtuális WAN-központ üzembe helyezéséhez, jellemzően a `/24` .
 
 ## <a name="reference-architecture"></a>Referenciaarchitektúra
 
@@ -62,15 +62,15 @@ Ebben az esetben közzé kell tennie az IIS webkiszolgálót az interneten. Az A
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Nyilvános IP-architektúra diagramja" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-2.  Fogadja el az alapértelmezett értékeket, vagy módosítsa, majd válassza a **Létrehozás**lehetőséget.
+1. Fogadja el az alapértelmezett értékeket, vagy módosítsa, majd válassza a **Létrehozás**lehetőséget.
 
-   -  Virtuális nagykiterjedésű hálózati erőforráscsoport
+   - Virtuális nagykiterjedésű hálózati erőforráscsoport
 
-   -  Virtuális nagykiterjedésű hálózat neve
+   - Virtuális nagykiterjedésű hálózat neve
 
-   -  Virtuális központ – címterület
+   - Virtuális hub-címterület (új, nem átfedésben lévő IP-címtartomány használata)
 
-   -  Nyilvános IP-címek száma (1-100)
+   - Nyilvános IP-címek száma (1-100)
 
 Az összes összetevő üzembe helyezésének befejezéséhez körülbelül egy órát vesz igénybe. Ezt az üzembe helyezést csak egyszer kell megtörténnie, hogy támogassa az Azure VMware-megoldás környezetének összes jövőbeli nyilvános IP-címeit.  
 
@@ -120,7 +120,7 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 1. Válassza a **szabálygyűjtemény hozzáadása**lehetőséget, adja meg az alábbi adatokat, majd kattintson a **Hozzáadás** , majd a **Tovább gombra: fenyegetés intelligencia**elemre.
 
-   -  Name (Név)
+   -  Név
    -  Szabályok gyűjteményének típusa – DNAT
    -  Prioritás
    -  Szabály-gyűjtési művelet – engedélyezés

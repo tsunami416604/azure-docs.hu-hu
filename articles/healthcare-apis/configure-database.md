@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839928"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042490"
 ---
 # <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása 
 
@@ -41,7 +41,7 @@ Ha az adatbázis átviteli sebessége nagyobb, mint 10 000 RU/s, vagy ha az adat
 Ebben a cikkben megtanulta, hogyan frissítheti a FHIR készült Azure API-t. Az ügyfél által felügyelt kulcsok adatbázis-beállításként való konfigurálásának megismeréséhez:
 
 >[!div class="nextstepaction"]
->[Ügyfél által felügyelt kulcsok konfigurálása](bring-your-own-key.md)
+>[Ügyfél által felügyelt kulcsok konfigurálása](customer-managed-key.md)
 
 Vagy üzembe helyezhet egy teljes körűen felügyelt Azure API-t a FHIR-hez:
  
