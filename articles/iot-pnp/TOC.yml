@@ -95,8 +95,6 @@
       href: howto-use-iot-explorer.md
     - name: Az IoT Plug and Play-híd telepítése és használata
       href: howto-use-iot-pnp-bridge.md
-    - name: Azure IoT CLI-bővítmény telepítése és használata
-      href: howto-use-iot-pnp-cli.md
     - name: DTDL tartalomkészítő eszközök telepítése és használata
       href: howto-use-dtdl-authoring-tools.md
     - name: Embedded C használata
