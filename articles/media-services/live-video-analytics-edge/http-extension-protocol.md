@@ -3,12 +3,12 @@ title: HTTP-bővítményi protokoll – Azure
 description: Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő videó elemzési modulja és az AI-vagy CV-modulja között a HTTP-bővítmény protokoll használatával.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: bfc8672185d284abc8f2985b44cea92000bc73db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448358"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016654"
 ---
 # <a name="http-extension-protocol"></a>HTTP-bővítmény-protokoll
 
@@ -98,6 +98,6 @@ Ha a modul "Application/JSON" típusú választ ad vissza, de a JSON-séma nem k
 
 ![osztály-hierarchia](./media/http-extension-protocol/class-hierarchy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[gRPC-adategyezmény](grpc-data-contract.md)
+[gRPC-adategyezmény](./grpc-extension-protocol.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 030b41e086d700c527107d2246bc7f7df07e860f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9804eb2af28108572688244d6d7b513454e375b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977714"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019001"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -269,10 +269,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Általános API-/SDK-használati megjegyzések
 
 > [!NOTE]
-> Vegye figyelembe, hogy az előzetes verzióban az Azure Digital Twins nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. Ennek eredményeképpen, ha egy böngésző-alkalmazásból, egy [API Management (APIM)](../api-management/api-management-key-concepts.md) vagy egy [Power apps](https://docs.microsoft.com/powerapps/powerapps-overview) -összekötőből REST API hív meg, akkor a rendszer házirend-hibát észlelt.
-> A hiba elhárításához a következők egyikét teheti:
-> * A CORS fejlécének leszalaga `Access-Control-Allow-Origin` az üzenetből. Ez a fejléc azt jelzi, hogy a válasz megosztható-e. 
-> * Alternatív megoldásként hozzon létre egy CORS-proxyt, és tegye elérhetővé az Azure digitális Twins REST API kérését. 
+> Vegye figyelembe, hogy az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. A hatás-és megoldási stratégiákkal kapcsolatos további információkért tekintse meg a *fogalmak: biztonság Azure digitális Twins-megoldásokhoz*című szakaszát. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
 
 Az alábbi lista további részleteket és általános irányelveket tartalmaz az API-k és SDK-k használatához.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438968"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016178"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
 
@@ -132,7 +132,7 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) használatával szerezze be az átjáró ResourceId. Ezután a **-GatewayResourceID** a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) vagy a [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)érték megadásával kapcsolja össze az átjáró erőforrását egy meglévő vagy egy új kiszolgálóval.
+A [Get-AzResource](/powershell/module/az.resources/get-azresource) használatával szerezze be az átjáró ResourceId. Ezután a **-GatewayResourceID** a [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) vagy a [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver)érték megadásával kapcsolja össze az átjáró erőforrását egy meglévő vagy egy új kiszolgálóval.
 
 Az átjáró erőforrás-AZONOSÍTÓjának lekérése:
 
@@ -153,7 +153,7 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 
 Ennyi az egész. Ha portok megnyitására vagy hibaelhárításra van szüksége, mindenképpen tekintse [meg a helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Analysis Services felügyelete](analysis-services-manage.md)   
 * [Adatlekérdezés az Azure Analysis Servicesből](analysis-services-connect.md)   

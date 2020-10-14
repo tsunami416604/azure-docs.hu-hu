@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 8e92c893d97ce9fadfa2d40476631c2b9ba5d177
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999274"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018270"
 ---
 # <a name="azure-security-center-data-security"></a>Adatbiztonság Azure Security Center
 
@@ -57,19 +57,19 @@ Ha nem használja az Azure Defendert, akkor a biztonsági házirendben letilthat
 
 Megadhatja azt a munkaterületet és régiót, ahol a gépekről gyűjtött adatokat tárolják. Az alapértelmezett érték a gépekről gyűjtött adatok tárolása a legközelebbi munkaterületen az alábbi táblázatban látható módon:
 
-| Virtuális gép geo                              | Munkaterület geo |
-|-------------------------------------|---------------|
-| Egyesült Államok, Brazília, Dél-Afrika | Egyesült Államok |
-| Kanada                              | Kanada        |
-| Európa (kivéve az Egyesült Királyságot)   | Európa        |
-| Egyesült Királyság                      | Egyesült Királyság |
-| Ázsia (kivéve India, Japán, Korea, Kína)   | Ázsia és a Csendes-óceáni térség  |
-| Dél-Korea                              | Ázsia és a Csendes-óceáni térség  |
-| India                               | India         |
-| Japán                               | Japán         |
-| Kína                               | Kína         |
-| Ausztrália                           | Ausztrália     |
-|||
+| Virtuális gép geo                                      | Munkaterület geo  |
+|---------------------------------------------|----------------|
+| Egyesült Államok, Brazília, Dél-Afrika         | Egyesült Államok  |
+| Kanada                                      | Kanada         |
+| Európa (kivéve az Egyesült Királyságot)           | Európa         |
+| Egyesült Királyság                              | Egyesült Királyság |
+| Ázsia (kivéve India, Japán, Korea, Kína) | Ázsia és a Csendes-óceáni térség   |
+| Dél-Korea                                       | Ázsia és a Csendes-óceáni térség   |
+| India                                       | India          |
+| Japán                                       | Japán          |
+| Kína                                       | Kína          |
+| Ausztrália                                   | Ausztrália      |
+|                                             |                |
 
 > [!NOTE]
 > Az **Azure Defender a Storage számára** a kapcsolódó Azure-erőforrás helye szerint regionálisan tárolja az összetevőket. További információ: az [Azure Defender for Storage bemutatása](defender-for-storage-introduction.md).
@@ -80,18 +80,16 @@ Megadhatja azt a munkaterületet és régiót, ahol a gépekről gyűjtött adat
 Az ügyfelek a következő adatfolyamokból érhetik el Security Center kapcsolódó adatait:
 
 
-|Adatfolyam  |Adattípusok  |
-|---------|---------|
-|[Azure-tevékenységnapló](../azure-monitor/platform/activity-log.md)| Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazás-vezérlők](security-center-adaptive-application.md) által generált riasztások |
-|[Naplók Azure Monitor](../azure-monitor/platform/data-platform.md)|Minden biztonsági riasztás.|
-|[Azure Resource Graph](../governance/resource-graph/overview.md)|A biztonsági riasztások, a biztonsági javaslatok, a sebezhetőségi felmérés eredményei, a biztonságos pontszám adatai, a megfelelőségi ellenőrzések állapota és egyebek.|
-|[Azure Security Center – REST API](https://docs.microsoft.com/rest/api/securitycenter/)|Biztonsági riasztások, biztonsági javaslatok és egyebek. .|
-|||
+| Adatfolyam                                                                                | Adattípusok                                                                                                                                                                                                          |
+|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Azure-tevékenységnapló](../azure-monitor/platform/activity-log.md)                       | Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.|
+| [Naplók Azure Monitor](../azure-monitor/platform/data-platform.md)                      | Minden biztonsági riasztás.                                                                                                                                                                                                |
+| [Azure Resource Graph](../governance/resource-graph/overview.md)                      | A biztonsági riasztások, a biztonsági javaslatok, a sebezhetőségi felmérés eredményei, a biztonságos pontszám adatai, a megfelelőségi ellenőrzések állapota és egyebek.                                                                       |
+| [Azure Security Center – REST API](https://docs.microsoft.com/rest/api/securitycenter/) | Biztonsági riasztások, biztonsági javaslatok és egyebek.                                                                                                                                                                |
+|                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudta, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik azok védelméről. 
 
-Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
-
-- [Mi az az Azure Security Center?](security-center-introduction.md)
+További információ a Azure Security Centerről: [Mi az Azure Security Center?](security-center-introduction.md)

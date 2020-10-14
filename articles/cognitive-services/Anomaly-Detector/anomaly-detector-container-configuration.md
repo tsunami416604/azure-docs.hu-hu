@@ -3,19 +3,19 @@ title: Tároló konfigurálása anomália-detektor API-hoz
 titleSuffix: Azure Cognitive Services
 description: Az anomália érzékelő API-tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.author: aahi
-ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: ae987a4239f478162e1e1f251e0d6607d63e02c5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903541"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019749"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomáliadetektor-tárolók konfigurálása
 
@@ -27,14 +27,14 @@ Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|Igen|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követésére szolgál.|
-|Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
-|Igen|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
-|Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
-|Nem|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
-|Nem|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
-|Nem|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
-|Nem|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
+|Yes|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követésére szolgál.|
+|No|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
+|Yes|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
+|Yes|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
+|No|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
+|No|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
+|No|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|No|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
 
 > [!IMPORTANT]
 > A [`ApiKey`](#apikey-configuration-setting) , a [`Billing`](#billing-configuration-setting) és a [`Eula`](#eula-setting) beállítások együtt használhatók, és mindhárom esetben érvényes értékeket kell megadnia, máskülönben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](anomaly-detector-container-howto.md#billing).
@@ -59,7 +59,7 @@ Ez a beállítás a következő helyen érhető el:
 
 * Azure Portal: **anomália-detektor** áttekintése, címkézve `Endpoint`
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Név | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](anomaly-detector-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -88,7 +88,7 @@ Az anomáliák Kiderítő tárolói nem használnak bemeneti vagy kimeneti csatl
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](anomaly-detector-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Name (Név) | Adattípus | Leírás |
+|Választható| Név | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Az anomália detektor tárolói nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|

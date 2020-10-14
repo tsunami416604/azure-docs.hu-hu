@@ -6,18 +6,18 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448605"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019137"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
 A Azure Automation és a PowerShell Runbookok használatával automatizált adatfrissítési műveleteket hajthat végre az Azure Analysis táblázatos modelleken.  
 
-A cikkben szereplő példa a [SQLServer PowerShell-modult](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)használja. A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
+A cikkben szereplő példa a [SQLServer PowerShell-modult](/powershell/module/sqlserver/?view=sqlserver-ps)használja. A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -104,7 +104,7 @@ Ezt a következőképpen lehet konfigurálni:
 
     ![Ütemterv konfigurálása](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Kattintson a **Létrehozás** lehetőségre.
+3. Kattintson a **Létrehozás** gombra.
 
 4. Adja meg az ütemterv paramétereit. Ezeket a rendszer minden alkalommal felhasználja, amikor a Runbook elindítják. Az **WEBHOOKDATA** paramétert üresen kell hagyni, ha egy ütemterven keresztül fut.
 
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>Következő lépések
 
 [Példák](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

@@ -3,20 +3,20 @@ title: 'Gyors útmutató: anomáliák észlelése az idősoros adataiban az anom
 titleSuffix: Azure Cognitive Services
 description: Ebből a témakörből megtudhatja, hogyan kezelheti az adatsorozatok rendellenességeit kötegként vagy adatfolyamként tárolt adatsorokban.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.custom: devx-track-java
-ms.author: aahi
-ms.openlocfilehash: 6c37ac4a8e43f8e11e37186e2438c4803556339e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: e23e9016b53a1d9f99809d792d710f865918a098
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90905766"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019681"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és a Java használatával
 

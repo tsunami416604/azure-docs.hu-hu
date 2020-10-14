@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: a99aa53e954fe0b2822628ff91989e0b618028ae
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0611297164f3fe0afb1e18afe3abbbac00fd9c9a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938406"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016365"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-kapcsolati partnerek és társviszony-létesítési helyszínek
 
@@ -351,7 +351,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[FlexManage](https://www.flexmanage.com/cloud)** | Észak-Amerika |
 | **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | Észak-Amerika |
 | **[The IT Consultancy Group](https://itconsult.com.au/)** | Ausztrália |
-| **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Ausztrália |
+| **[MOQdigital](https://www.moqdigital.com/insights)** | Ausztrália |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Európa (Németország) |
 | **[Nelite](https://www.exakis-nelite.com/offres/)** | Európa |
 | **[Új aláírás](https://newsignature.com/technologies/express-route/)** | Európa |

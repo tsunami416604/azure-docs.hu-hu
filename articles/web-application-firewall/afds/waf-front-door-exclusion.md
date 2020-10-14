@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77925929"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018644"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Webalkalmazási tűzfal (WAF) a bejárati ajtó szolgáltatás kizárási listájával 
 
@@ -46,6 +46,17 @@ A fejléc és a cookie neve nem megkülönbözteti a kis-és nagybetűket.
 
 Kizárási listát alkalmazhat a felügyelt szabálykészlet összes szabályára, egy adott szabálykészlet szabályaira vagy egyetlen, az előző példában látható szabályra. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Kizárás definiálása a webalkalmazási tűzfal naplófájljai alapján
+ Az [Azure webalkalmazási tűzfal figyelése és naplózása](waf-front-door-monitor.md) egy letiltott kérelem részletes adatait jeleníti meg. Ha egy fejléc értéke, a cookie értéke, a post argumentum értéke vagy a lekérdezési argumentum értéke hamis pozitív értéket hoz létre egyes szabályokhoz, kizárhatja a kérelemnek a szabály általi megítélésének a részét. Az alábbi táblázat a WAF-naplókból és a megfelelő kizárási feltételekből származó értékeket mutatja be.
+
+|matchVariableName a WAF-naplókból    |Szabály kizárása a portálon|
+|--------|------|
+|CookieValue: SOME_NAME  |A kérelem cookie-neve egyenlő SOME_NAME|
+|HeaderValue: SOME_NAME  |A kérelem fejlécének neve egyenlő SOME_NAME|
+|PostParamValue: SOME_NAME|  Kérelem törzse post ARG neve egyenlő SOME_NAME|
+|QueryParamValue: SOME_NAME| A lekérdezési karakterlánc-argumentumok neve egyenlő SOME_NAME|
+
+
+## <a name="next-steps"></a>Következő lépések
 
 A WAF beállításainak konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: a [bejárati ajtó diagnosztikája](../afds/waf-front-door-monitor.md).

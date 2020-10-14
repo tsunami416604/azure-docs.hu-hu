@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842835"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019885"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -62,7 +62,7 @@ Az alkalmazások végpontokon keresztül férnek hozzá a síkokhoz. A két sík
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
-| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Műveletek | Hozzáférés- &nbsp; vezérlési mechanizmus |
+| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Üzemeltetés | Hozzáférés- &nbsp; vezérlési mechanizmus |
 | --- | --- | --- | --- |
 | Felügyeleti sík | **Globális**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | Kulcstartók létrehozása, olvasása, frissítése és törlése<br><br>Key Vault hozzáférési szabályzatok beállítása<br><br>Key Vault címkék beállítása | Azure RBAC-vel |
 | Adatsík | **Globális**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Azure US government:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 | Kulcsok: titkosítás, visszafejtés, wrapKey, unwrapKey, aláírás, ellenőrzés, beolvasás, Listázás, létrehozás, frissítés, importálás, törlés, helyreállítás, biztonsági mentés, visszaállítás, kiürítés<br><br> Tanúsítványok: managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, beolvasás, Listázás, létrehozás, importálás, frissítés, törlés, helyreállítás, biztonsági mentés, visszaállítás, kiürítés<br><br>  Titkok: beolvasás, Listázás, beállítás, törlés, helyreállítás, biztonsági mentés, visszaállítás, kiürítés | Key Vault hozzáférési szabályzat vagy Azure RBAC (előzetes verzió)|
@@ -79,7 +79,7 @@ Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáf�
 
 Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md). 
 
-Önnek `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyeinek, például a [felhasználói hozzáférés rendszergazdájának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) vagy [tulajdonosának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner) kell lennie
+Önnek `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyeinek, például a [felhasználói hozzáférés rendszergazdájának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) vagy [tulajdonosának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) kell lennie
 
 > [!IMPORTANT]
 > Ha a felhasználó rendelkezik `Contributor` engedéllyel egy kulcstartó felügyeleti síkon, a felhasználó hozzáférést biztosíthat az adatsíkon az Key Vault hozzáférési szabályzat beállításával. Szigorúan szabályozhatja, `Contributor` hogy kik rendelkeznek szerepkör-hozzáféréssel a kulcstartóhoz. Győződjön meg arról, hogy csak a jogosult személyek férhetnek hozzá és kezelhetik a kulcstartókat, kulcsokat, titkos kulcsokat és tanúsítványokat.
@@ -197,7 +197,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 > [!NOTE]
 > Ez a példa azt mutatja be, hogy a Key Vault hozzáférés hogyan legyen zárolva az éles környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporthoz kell rendelkezniük, amely teljes körű engedélyekkel rendelkezik a tárolók, virtuális gépek és az alkalmazás fejlesztéséhez szükséges Storage-fiók kezeléséhez.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 [Tudnivalók Azure Key Vault](overview.md) 
  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 

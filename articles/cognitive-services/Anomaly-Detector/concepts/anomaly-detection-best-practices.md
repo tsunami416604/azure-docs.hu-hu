@@ -3,19 +3,19 @@ title: Az Anomaly Detector API használatával kapcsolatos ajánlott eljárások
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg az ajánlott eljárásokat az anomáliák észlelési API-val kapcsolatos rendellenességek észlelése során.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
-ms.author: aahi
-ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 6bf00d8b5327ddd539190b6e990c7edb35c876f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67721621"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018389"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Ajánlott eljárások az anomália-detektor API használatához
 
@@ -101,7 +101,7 @@ A legjobb eredmények érdekében 4 `period` értékű adatpontot adjon meg, és
 
 Ha a folyamatos átviteli adatokat rövid időn belül (például másodpercben vagy percben) mintavétel útján adja meg, az ajánlott számú adatpont elküldésével meghaladhatja a rendellenesség-érzékelő API megengedett maximális számát (8640 adatpont). Ha az adatok stabil szezonális mintát mutatnak, érdemes lehet az idősorozat-adatok egy mintáját egy nagyobb időintervallumban, például órákban elküldeni. Az ilyen módon mintavételezéssel az API-válaszidő is javítható. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)

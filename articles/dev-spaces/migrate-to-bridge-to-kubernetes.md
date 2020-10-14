@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: 2b923e87e1eefe9cb0ba4afc018eed728ee6aaba
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993929"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019936"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
@@ -80,9 +80,9 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 > [!TIP]
 > A [Microsoft Kubernetes bővítmény][kubernetes-extension] lehetővé teszi az Kubernetes-jegyzékek gyors fejlesztését az IntelliSense segítségével, és segít a bevezetési Helm-diagramok létrehozásában.  
 
-### <a name="use-visual-studio-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Áttérés a Kubernetes a Visual Studióval az Azure dev Spaces szolgáltatásból
+### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Áttérés a Kubernetes az Azure dev Spaces szolgáltatásból
 
-1. Frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace].
+1. Ha a Visual studiót használja, frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace]. Ha Visual Studio Code-ot használ, telepítse a [hidat a Kubernetes bővítményre][vsc-marketplace].
 1. Tiltsa le az Azure dev Spaces-vezérlőt az Azure Portal vagy az [Azure dev Spaces CLI][azds-delete]használatával.
 1. [Azure Cloud Shell](https://shell.azure.com)használata. Vagy Mac, Linux vagy Windows rendszerű számítógépeken, amelyeken bash van telepítve, nyisson meg egy bash shell parancssort. Győződjön meg arról, hogy a következő eszközök érhetők el a parancssori környezetben: Azure CLI, Docker, kubectl, Curl, Tar és gunzip.
 1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](../container-registry/index.yml) vagy a [Docker hub](https://hub.docker.com/)használatával.
@@ -109,18 +109,9 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
 1. Manuálisan telepítse át a *azds. YAML* fájlban lévő összes testreszabást, például a környezeti változók beállításait a projekt *Values. YML* fájljába.
 1. választható Távolítsa el a `azds.yaml` fájlt a projektből.
 1. Telepítse újra az alkalmazást.
-1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes a Visual Studióban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vs].
-1. Indítsa el a hibakeresést a Visual Studióban az újonnan létrehozott híd használatával a Kubernetes hibakeresési profiljához.
+1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes a Visual Studióban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes a Visual Studióban][use-btk-vs]. A VS Code esetében lásd: a [Bridge használata a Kubernetes a vs Code-ban][use-btk-vsc].
+1. Indítsa el a hibakeresést az újonnan létrehozott híd használatával a hibakeresési/indítási profil Kubernetes.
 1. A parancsfájlt szükség szerint újra futtathatja a fürtön való újbóli üzembe helyezéshez.
-
-### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>A Visual Studio Code használata a Kubernetes való áttéréshez az Azure dev Spaces használatával
-
-1. Telepítse a [hidat a Kubernetes bővítményre][vsc-marketplace].
-1. Tiltsa le az Azure dev Spaces-vezérlőt az Azure Portal vagy az [Azure dev Spaces CLI][azds-delete]használatával.
-1. Távolítsa el a `azds.yaml` fájlt a projektből.
-1. Telepítse újra az alkalmazást.
-1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes Visual Studio Code-ban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vsc].
-1. Indítsa el a hibakeresést a Visual Studio Code-ban az újonnan létrehozott híd használatával a Kubernetes indítási profilhoz.
 
 ## <a name="team-development-in-a-shared-cluster"></a>Csoport fejlesztése megosztott fürtben
 

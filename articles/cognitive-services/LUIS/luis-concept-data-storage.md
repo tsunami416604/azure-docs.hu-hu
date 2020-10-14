@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541883"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018032"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Adattárolás és eltávolítás Language Understanding (LUIS) Cognitive Services
 A LUIS a kulcs által meghatározott régiónak megfelelő Azure-adattárban tárolja a titkosított adatmennyiséget. Ezeket az adatkészleteket 30 napig tároljuk. 
@@ -50,9 +50,14 @@ Az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disabl
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Fiók eltávolítása
-Ha töröl egy fiókot, a rendszer törli az összes alkalmazást, valamint a hosszúságú kimondott szöveg és a naplókat. Az adat megőrzése 60 napig tart, mielőtt a fiók és az adat véglegesen törlődik.
+Ha nem telepíti át a rendszert, törölheti a fiókját, és az összes alkalmazás törölve lesz a példa hosszúságú kimondott szöveg és naplóival együtt. Az adat megőrzése 90 napig tart, mielőtt a fiók és az adat véglegesen törlődik.
 
 A fiók törlése a **Beállítások** lapon érhető el. Válassza ki a fiók nevét a jobb felső navigációs sávon a **Beállítások** lapra való lekéréshez.
+
+## <a name="delete-an-authoring-resource"></a>Szerzői erőforrás törlése
+Ha [egy szerzői erőforrásra migrált](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring), a Azure Portal törli az erőforráshoz társított összes alkalmazást, valamint a hozzájuk tartozó hosszúságú kimondott szöveg és naplókat is. Az adat megőrzése 90 nappal a végleges törlés előtt történik.    
+
+Az erőforrás törléséhez nyissa meg a [Azure Portal](https://ms.portal.azure.com/#home) , és válassza ki a Luis authoring-erőforrását. Nyissa meg az **Áttekintés** lapot, és kattintson a lap tetején található **Törlés** gombra. Ezután erősítse meg, hogy az erőforrás törölve lett. 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>Az inaktivitás lejárt előfizetésként
 Az adatmegőrzés és a törlés céljából az inaktív LUIS alkalmazás a _Microsoft belátása_ szerint lejárt előfizetésként kezelhető. Az alkalmazás akkor minősül inaktívnak, ha megfelel a következő feltételeknek az elmúlt 90 napban: 

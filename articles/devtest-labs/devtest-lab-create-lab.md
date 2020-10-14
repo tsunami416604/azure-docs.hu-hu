@@ -2,50 +2,79 @@
 title: Labor létrehozása az Azure DevTest Labs szolgáltatásban | Microsoft Docs
 description: Ez a cikk végigvezeti a labor létrehozásának folyamatán a Azure Portal és a Azure DevTest Labs használatával.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 09999c5b0187f924f9cfbbc2afad8954adee0fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 962997bcc66188c66fd9db856fe44e4926f8e70c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85481255"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019647"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
+
 Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet erőforráscsoportokat, például virtuális gépeket (VM-eket) magában foglaló infrastruktúra, amely korlátok és kvóták meghatározásával segíti ezen erőforráscsoportok jobb kezelését. Ez a cikk végigvezeti a tesztkörnyezet Azure Portalon való létrehozásának folyamatán.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Labor létrehozásához a következőkre van szüksége:
 
 * Azure-előfizetés. Az Azure megvásárlási lehetőségeinek ismertetése: [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/) vagy [Ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/). Az előfizetés tulajdonosának kell lennie a labor létrehozásához.
 
-## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>A labor létrehozásának lépései az Azure DevTest Labs szolgáltatásban
-A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor létrehozására az Azure DevTest Labs szolgáltatásban. 
+## <a name="get-started-with-azure-devtest-labs-in-minutes"></a>Percek alatt elsajátíthatja az Azure DevTest Labs használatát]
 
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. A bal oldali főmenüben kattintson a lista tetején látható **Minden szolgáltatás** elemre. Válassza a * (csillag) lehetőséget a **DevTest Labs** mellett a **DEVOPS** szakaszban. Ez a művelet hozzáadja a **DevTest Labs** szolgáltatást a bal oldali navigációs menühöz, hogy a következő alkalommal könnyen elérhető legyen. 
+A következő hivatkozásra kattintva átkerül a Azure Portal lapra, amely lehetővé teszi, hogy új labort hozzon létre a Azure DevTest Labsban.
 
-    ![Minden szolgáltatás – válassza a DevTest Labs lehetőséget](./media/devtest-lab-create-lab/all-services-select.png)
-2. Most válassza a **DevTest Labs** lehetőséget a bal oldali navigációs menüben. Válassza a **Hozzáadás** lehetőséget az eszköztáron. 
-   
-    ![Labor hozzáadása](./media/devtest-lab-create-lab/add-lab-button.png)
-1. A **DevTest Lab létrehozása** oldalon hajtsa végre a következő műveleteket: 
-    1. Adja meg a labor **nevét** .
-    2. Válassza ki a laborhoz társítani kívánt **Előfizetést**.
-    3. Adja meg a laborhoz tartozó **erőforráscsoport nevét** . 
-    4. Válassza ki azt a **helyet** , ahol a labort tárolni szeretné.
-    4. Válassza az **Automatikus leállítás** elemet annak megadásához, hogy engedélyezi-e az automatikus leállítást a labor összes virtuális gépénél (valamint az automatikus leállítás paramétereit is megadhatja). Az automatikus rendszerleállítási funkció elsősorban költségkímélő szolgáltatás, amelynek segítségével megadhatja a virtuális gép automatikus leállásának időpontját. A tesztkörnyezet létrehozása után módosíthatja az automatikus rendszerleállítás beállításait, ha követi az [Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelését](./devtest-lab-set-lab-policy.md#set-auto-shutdown) ismertető témakörben leírt lépéseket.
-    1. Írja be a **Címkék****NÉV** és **ÉRTÉK** információit, ha a laborban létrehozni kívánt minden erőforráshoz hozzáadott egyéni címkéket szeretne létrehozni. A címkék hasznos segítséget nyújtanak a laborerőforrások kategória alapján való kezeléséhez és rendezéséhez. A címkékről további információért (beleértve a labor létrehozása után a címkék hozzáadását) lásd: [Címke hozzáadása laborhoz](devtest-lab-add-tag.md).
-    6. Az **Automatizálási beállítások** lehetőséget választva elérheti az Azure Resource Manager-sablonokat a konfigurálás automatizálásához. 
-    7. Kattintson a **Létrehozás** gombra. A tesztkörnyezet létrehozásának folyamatát az **Értesítések** területen figyelheti. 
-    
-        ![A DevTest Labs labor szakaszának létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
-    8. Ha elkészült, válassza az **Ugrás az erőforráshoz** lehetőséget az értesítésben. Másik lehetőségként frissítse az **DevTest Labs** oldalt, hogy az újonnan létrehozott labor megjelenjen a laborok listájában.  Válassza ki a labort a listából. Megjelenik a labor kezdőlapja. 
+[Percek alatt elsajátíthatja az Azure DevTest Labs használatát]](https://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-        ![A labor kezdőlapja](./media/devtest-lab-create-lab/lab-home-page.png)
+## <a name="fill-out-settings-for-your-new-account"></a>Adja meg az új fiók beállításait
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+A **DevTest Labs létrehozása** lapon adja meg a következő beállításokat.
 
-## <a name="next-steps"></a>További lépések
+> [!TIP]
+> Minden oldal alján talál egy hivatkozást, amely lehetővé teszi **egy sablon letöltését az automatizáláshoz**.
+
+### <a name="basic-settings"></a>Alapbeállítások
+
+Alapértelmezés szerint az **alapbeállítások** lap jelenik meg. Adja meg az alábbi értékeket:
+
+|Név|Leírás|
+|---|---|
+|**Előfizetés** | Kötelező. Válassza ki a laborhoz társítani kívánt **Előfizetést**.|
+|**Erőforráscsoport**| Kötelező. Adja meg a laborhoz tartozó **erőforráscsoport nevét** . Ha még nem létezik, hozzon létre egy újat.|
+|**Labor neve**| Kötelező. Adja meg a labor **nevét** .|
+|**Hely**|Kötelező. Válassza ki azt a helyet, ahol a labort tárolni szeretné.|
+|**Nyilvános környezetek**| Lásd: [nyilvános környezetek konfigurálása és használata](devtest-lab-configure-use-public-environments.md).
+
+### <a name="auto-shutdown-settings"></a>Automatikus leállítás beállításai
+
+Váltson az **automatikus leállítás** lapra, és tekintse meg a beállításait. Az automatikus leállítás lehetővé teszi, hogy a laborban lévő összes gépet automatikusan leállítsa minden nap ütemezett időpontban.
+
+A lapon engedélyezheti az **automatikus leállítást** , és meghatározhatja a tesztkörnyezet összes virtuális gépe automatikus leállításának paramétereit. Az automatikus rendszerleállítási funkció elsősorban költségkímélő szolgáltatás, amelynek segítségével megadhatja a virtuális gép automatikus leállásának időpontját. A tesztkörnyezet létrehozása után módosíthatja az automatikus rendszerleállítás beállításait, ha követi az [Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelését](./devtest-lab-set-lab-policy.md#set-auto-shutdown) ismertető témakörben leírt lépéseket.
+
+### <a name="networking"></a>Hálózatkezelés
+
+Labor létrehozásakor a rendszer létrehoz egy alapértelmezett hálózatot.
+
+Váltson a **hálózatkezelés** lapra, hogy módosítsa/konfigurálja a beállítást, ahogy szeretné. Válasszon például egy meglévő virtuális hálózatot.
+
+### <a name="tags"></a>Címkék
+
+Írja be a **Címkék****NÉV** és **ÉRTÉK** információit, ha a laborban létrehozni kívánt minden erőforráshoz hozzáadott egyéni címkéket szeretne létrehozni. A címkék hasznos segítséget nyújtanak a laborerőforrások kategória alapján való kezeléséhez és rendezéséhez. A címkékről további információért (beleértve a labor létrehozása után a címkék hozzáadását) lásd: [Címke hozzáadása laborhoz](devtest-lab-add-tag.md).
+
+### <a name="review-and-create"></a>Áttekintés és létrehozás
+
+Ha elkészült, válassza a **Létrehozás**lehetőséget. A labor létrehozási folyamatának állapotát a portál oldal jobb felső sarkában látható **értesítések** terület megtekintésével figyelheti. 
+
+## <a name="completed-the-creation"></a>Befejeződött a létrehozás
+
+Ha elkészült, az **erőforrás ugrása** gomb jelenik meg az oldal alján és az értesítési ablakban. Másik lehetőségként frissítse az **DevTest Labs** oldalt, hogy az újonnan létrehozott labor megjelenjen a laborok listájában.  
+
+Nyomja le az **erőforrás** gomb megnyomása gombot, és az új DevTest Labs-fiók kezdőlapján jelenik meg.
+
+A **DevTest Labs** -t a Azure Portal is megkeresheti. Válassza ki az új fiókot a listából, és szerezze be a kezdőlapot. 
+
+## <a name="next-steps"></a>Következő lépések
+
 A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 
 * [Biztonságos hozzáférés a laborhoz](devtest-lab-add-devtest-user.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651752"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019834"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 és v3
 
@@ -74,7 +74,7 @@ Ez a cikk a Azure Media Services v3 verzióban bevezetett változásokat ismerte
 
 A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartalmaz. A hiányosságok lezárása folyamatban van.
 
-* A [prémium szintű kódoló](../previous/media-services-premium-workflow-encoder-formats.md) és az örökölt [Media Analytics-processzorok](../previous/media-services-analytics-overview.md) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül.<br/>Azok az ügyfelek, akik a Media Indexer 1 vagy 2 előzetes verzióról kívánnak áttérni, azonnal használhatják a AudioAnalyzer-készletet a V3 API-ban.  Ez az új beállításkészlet több funkciót tartalmaz, mint a régebbi Media Indexer 1 vagy 2. 
+* A [prémium szintű kódoló](../previous/media-services-encode-asset.md) és az örökölt [Media Analytics-processzorok](../previous/legacy-components.md) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül.<br/>Azok az ügyfelek, akik a Media Indexer 1 vagy 2 előzetes verzióról kívánnak áttérni, azonnal használhatják a AudioAnalyzer-készletet a V3 API-ban.  Ez az új beállításkészlet több funkciót tartalmaz, mint a régebbi Media Indexer 1 vagy 2. 
 * A v2 API-k [Media Encoder standard számos speciális funkciója](../previous/media-services-advanced-encoding-with-mes.md) jelenleg nem érhető el a v3 verzióban, például:
   
     * Eszközök összefűzése
@@ -115,7 +115,7 @@ A következő táblázat azt mutatja be, hogy az adategység tulajdonságai hogy
 
 Az adategységek védelméhez az eszközöket a tárolási oldal titkosításával kell titkosítani. A következő táblázat bemutatja, hogyan működik a tárolási oldal titkosítása Media Servicesban:
 
-|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs.|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
 |[Inaktív adatok Storage Service Encryption](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott|Támogatott|

@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050358"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018194"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services áthelyezése másik régióba
 
@@ -88,7 +88,7 @@ Sablon exportálása az Azure Portallal:
 
 Sablon exportálása a PowerShell használatával:
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ A sablon módosítása:
 
 #### <a name="regions"></a>Régiók
 
-Az Azure-régiók beszerzéséhez tekintse meg az [Azure-telephelyeket](https://azure.microsoft.com/global-infrastructure/locations/). Ha a PowerShell használatával szeretne régiókat beolvasni, futtassa a [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) parancsot.
+Az Azure-régiók beszerzéséhez tekintse meg az [Azure-telephelyeket](https://azure.microsoft.com/global-infrastructure/locations/). Ha a PowerShell használatával szeretne régiókat beolvasni, futtassa a [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) parancsot.
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> Egy régió elvégzése után javasolt, hogy az új célkiszolgáló ugyanazon a régión lévő Storage-tárolót használja a biztonsági mentéshez, a forráskiszolgáló régiójában lévő tároló helyett. 
+> Egy régió elvégzése után javasolt, hogy az új célkiszolgáló ugyanazon a régión lévő Storage-tárolót használja a biztonsági mentéshez, a forráskiszolgáló régiójában lévő tároló helyett.

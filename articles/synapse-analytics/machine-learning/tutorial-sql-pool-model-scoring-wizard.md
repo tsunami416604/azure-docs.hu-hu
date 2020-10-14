@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 14358f60b700e80c17b1dd8259f1d0566a854c43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91543388"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019970"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Oktatóanyag: a számítógép-tanulási modell pontozási varázslója a szinapszis SQL-készletekhez
 
@@ -50,7 +50,7 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
 1. Töltse le a [New York-i tipp. ipynb](https://go.microsoft.com/fwlink/?linkid=2144301).
 
-1. Indítsa el a Azure Machine Learning munkaterületet a [Azure Machine learning Studioban](https://ml.azure.com).
+1. Indítsa el a Azure Machine Learning munkaterületet a [Azure Machine learning Studióban](https://ml.azure.com).
 
 1. Nyissa meg a **jegyzetfüzeteket** , és kattintson a **fájlok feltöltése**elemre, válassza a "New York taxi tips. ipynb" lehetőséget, hogy letöltötte és feltöltse a fájlt.
    ![Fájl feltöltése](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
@@ -146,7 +146,7 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
    ![Előrejelzések futtatása](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00g.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása a Szinapszisban](quickstart-integrate-azure-machine-learning.md)
 - [Az Azure szinapszis Analytics Machine Learning képességei (munkaterületek előzetes verzió)](what-is-machine-learning.md)

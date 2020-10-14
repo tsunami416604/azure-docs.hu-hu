@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 2022a7448767b7ffea7baa70606a7f59e6d93951
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 9531a812d60c6e5a60ff0a0936fafde4a77e5a67
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952020"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017046"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
 Az Azure Digital Twins segítségével valós környezetei élő modelljeit hozhat létre és kezelhet. Ezt úgy teheti meg, hogy az egyes elemeket **digitális ikrekként**modellezi, majd összekapcsolja őket egy **olyan Tudásbázisban, amely** képes reagálni az élő eseményekre, és információkat kér le.
 
-Ebben a rövid útmutatóban egy előre elkészített Azure digitális Twins-gráfot fog felfedezni, amely az [**Azure Digital Twins (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)nevű minta alkalmazás segítségével készült. A ADT Explorer lehetővé teszi a forgatókönyvek feltöltését, az ikrek és gráf vizualizációs ábrázolásának megtekintését, valamint más felügyeleti tevékenységek végrehajtását egy böngészőalapú, vizuális felülettel.
+Ebben a rövid útmutatóban egy előre elkészített Azure digitális Twins-gráfot fog felfedezni, amely az [**Azure Digital Twins (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)nevű minta alkalmazás segítségével készült. A ADT Explorer lehetővé teszi egy környezet digitális megjelenítését, megtekintheti az ikrek és a gráf vizuális képeit, amelyek az Azure Digital Twins környezetének ábrázolására készültek, és más felügyeleti tevékenységeket végezhetnek egy böngészőalapú, vizuális felülettel.
 
 A rövid útmutató a következő főbb lépéseket tartalmazza:
 
@@ -307,13 +307,13 @@ Ebben a rövid útmutatóban létrehozott egy Azure Digital Twins-példányt, cs
 Ezután megvizsgálta a gráfot...
 1. Lekérdezés használata a forgatókönyvre vonatkozó kérdés megválaszolásához.
 2. Egy tulajdonság szerkesztése egy digitális Twin-ben.
-    * A lekérdezés ismételt futtatásával megtekintheti, hogy a válasz Hogyan módosult a frissítés eredményeként.
+3. A lekérdezés ismételt futtatásával megtekintheti, hogy a válasz Hogyan módosult a frissítés eredményeként.
 
 Ennek a gyakorlatnak a célja, hogy bemutassa, hogyan használhatja az Azure digitális Twins gráfot a környezettel kapcsolatos kérdések megválaszolására, még akkor is, ha a környezet folyamatosan változik. 
 
 Bár ebben a rövid útmutatóban manuálisan hajtotta végre a hőmérséklet-frissítést, gyakori az Azure digitális Twins-ben, hogy a digitális ikreket a valódi IoT-eszközökhöz csatlakoztassuk, hogy a telemetria-információk alapján automatikusan megkapják a frissítéseket. Így olyan élő gráfokat építhet ki, amelyek mindig tükrözik a környezet valós állapotát, és a lekérdezésekkel információt kaphatnak arról, hogy mi történik a környezetében valós időben.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A rövid útmutatóhoz tartozó munka becsomagolásához először fejezze be a futó konzol alkalmazást. Ezzel kikapcsolja a ADT Explorer alkalmazáshoz való kapcsolódást a böngészőben, és többé nem fogja tudni megtekinteni az élő adatmegjelenítést a böngészőben. A böngésző fület lezárhatja.
 
@@ -323,7 +323,7 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: df4b94702d14278a3279c504f52f46b922859db8
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822800"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018746"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -92,6 +92,19 @@ A Python-alkalmazások Linux rendszeren való futtatásával és a App Serviceá
 > [!NOTE]
 > Mindig relatív elérési utakat használjon az összes előre és post-Build parancsfájlban, mert az a Build-tároló, amelyben a Oryx fut, eltér az alkalmazást futtató futtatókörnyezeti tárolótól. Soha ne támaszkodjon az alkalmazás Project mappájának a tárolón belüli pontos elhelyezésére (például úgy, hogy az a *site/wwwroot*alá van helyezve).
 
+## <a name="production-settings-for-django-apps"></a>Django-alkalmazások üzemi beállításai
+
+Az olyan éles környezetekhez, mint a Azure App Service, a Django-alkalmazásoknak a Django [üzembe helyezési ellenőrzőlistáját](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) (djangoproject.com) kell követniük.
+
+Az alábbi táblázat az Azure-hoz kapcsolódó éles beállításokat ismerteti. Ezek a beállítások az alkalmazás *Setting.py* -fájljában vannak meghatározva.
+
+| Django-beállítás | Azure-utasítások |
+| --- | --- |
+| `SECRET_KEY` | Tárolja az értéket egy App Service-beállításban az [Access app Settings as környezeti változókként](#access-app-settings-as-environment-variables)leírt módon. Az értéket felválthatja ["secreting"-ként a Azure Key Vault](/azure/key-vault/secrets/quick-create-python). |
+| `DEBUG` | Hozzon létre egy `DEBUG` beállítást a app Service a 0 (false) értékkel, majd töltse be az értéket környezeti változóként. A fejlesztési környezetében hozzon létre egy `DEBUG` környezeti változót az 1 (igaz) értékkel. |
+| `ALLOWED_HOSTS` | Éles környezetben a Django megköveteli, hogy az alkalmazás URL-címét tartalmazza a `ALLOWED_HOSTS` *Settings.py*tömbben. Ezt az URL-címet futásidőben kérheti le a kóddal `os.environ['WEBSITE_HOSTNAME']` . App Service automatikusan beállítja a `WEBSITE_HOSTNAME` környezeti változót az alkalmazás URL-címére. |
+| `DATABASES` | Adja meg az adatbázis-kapcsolatok App Service beállításait, és töltse be azokat környezeti változókként a szótár feltöltéséhez [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Az értékeket (különösen a felhasználónevet és a jelszót) a [Azure Key Vault titokként](/azure/key-vault/secrets/quick-create-python)is tárolhatja. |
+
 ## <a name="container-characteristics"></a>A tároló jellemzői
 
 App Service rendszerbe való üzembe helyezéskor a Python-alkalmazások egy, a [app Service Python GitHub-tárházban](https://github.com/Azure-App-Service/python)meghatározott Linux Docker-tárolón belül futnak. A rendszerkép-konfigurációk a verziószámozási könyvtárakban találhatók.
@@ -109,6 +122,8 @@ Ez a tároló a következő jellemzőkkel rendelkezik:
 
     A telepítendő függőségekhez a *requirements.txt* fájlnak a projekt gyökerében *kell* lennie. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. " Ha ezt a hibát tapasztalja, ellenőrizze a követelmények fájljának helyét.
 
+- App Service automatikusan definiál egy nevű környezeti változót `WEBSITE_HOSTNAME` a webalkalmazás URL-címével, például a következővel: `msdocs-hello-world.azurewebsites.net` . Emellett `WEBSITE_SITE_NAME` az alkalmazás nevét is meghatározza, például: `msdocs-hello-world` . 
+   
 ## <a name="container-startup-process"></a>Tároló indítási folyamata
 
 Rendszerindítás során a Linux-tárolóban lévő App Service a következő lépéseket futtatja:

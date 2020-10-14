@@ -8,24 +8,16 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 6c29141a2e255588ffa581b84ffeb4ddd7fdb703
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87324709"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019630"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Gyors útmutató: Azure Key Vault a Javához készült ügyféloldali kódtár
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rövid útmutató: Azure Key Vault titkos ügyféloldali kódtár a Javához
 
-Ismerkedjen meg a Javához készült Azure Key Vault-ügyfél függvénytárával. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
-
-Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Javához készült Key Vault ügyféloldali kódtár a következőre használható:
-
-- Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
-- Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
-- Csökkentse a késést a felhő méretezésével és a globális redundanciával.
-- Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
-- Használja az FIPS 140-2 2-es szintű hitelesített HSM.
+Ismerkedjen meg a Javához készült Azure Key Vault Secret ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
 
 További források:
 
@@ -37,13 +29,29 @@ További források:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- A [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verziója
+- A [Java Development Kit (JDK)](/java/azure/jdk/) 8-as vagy újabb verziója
 - [Apache Maven](https://maven.apache.org)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t és az [Apache mavent](https://maven.apache.org) egy Linux-terminál ablakban futtatja.
+Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli) -t és az [Apache mavent](https://maven.apache.org) egy Linux-terminál ablakban futtatja.
 
 ## <a name="setting-up"></a>Beállítás
+
+Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez, további információért lásd: [az ügyfél hitelesítése az Azure Identity Client Library](https://docs.microsoft.com/java/api/overview/azure/identity-readme) segítségével
+
+### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+1. Futtassa a következő parancsot: `login`.
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el.
+
+    Ellenkező esetben nyisson meg egy böngészőt, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) és adja meg a terminálon megjelenő engedélyezési kódot.
+
+2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
 ### <a name="create-new-java-console-app"></a>Új Java Console-alkalmazás létrehozása
 
@@ -109,21 +117,35 @@ Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá az alábbi f�
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
+#### <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely titkos jogosultságot biztosít a felhasználói fiókjához
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+```
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+#### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-#### <a name="set-environmental-variables"></a>Környezeti változók beállítása
+Ez az alkalmazás a Key Vault nevét használja a nevű környezeti változóként `KEY_VAULT_NAME` .
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
+```
+
+macOS vagy Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Objektummodell
 
-A Java-hoz készült Azure Key Vault ügyféloldali kódtár lehetővé teszi a kulcsok és a kapcsolódó eszközök, például tanúsítványok és titkos kódok kezelését. Az alábbi kódrészletek megmutatják, hogyan hozhat létre egy ügyfelet, hogyan állíthat be titkos kulcsot, beolvashat egy titkos kulcsot, és törölhet egy titkos kulcsot.
+A Java-hez készült Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a titkok kezelését. A [példák](#code-examples) az ügyfelek létrehozására, a titkos kulcs beolvasására és a titkos kód törlésére mutatnak.
 
 A teljes konzolos alkalmazás [alább](#sample-code)látható.
 
@@ -143,7 +165,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van bontva, a következő formátumban: `https://<your-key-vault-name>.vault.azure.net` .
+Ebben a rövid útmutatóban a bejelentkezett felhasználó a Key Vault hitelesítésére szolgál, amely a helyi fejlesztés előnyben részesített módszere. Az Azure-ban üzembe helyezett alkalmazások esetében a felügyelt identitást App Service vagy virtuális géphez kell rendelni, további információért lásd: a [felügyelt identitás áttekintése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+
+Az alábbi példában a kulcstartó neve a Key Vault URI-ra van kibontva, a "https:// \<your-key-vault-name\> . Vault.Azure.net" formátumban. Ez a példa a  ["DefaultAzureCredential ()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot használja különböző környezetekben különböző beállításokkal az identitás biztosításához. További információ: az Azure-beli [hitelesítő adatok alapértelmezett hitelesítése](https://docs.microsoft.com/java/api/overview/azure/identity-readme). 
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -163,7 +187,7 @@ Most, hogy az alkalmazás hitelesítése megtörtént, a metódus használatáva
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Ellenőrizze, hogy a titkos kulcs be van-e állítva az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal:
+Ellenőrizze, hogy a titkos kulcs be van-e állítva az az kulcstartó [Secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) paranccsal:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -187,7 +211,7 @@ Végül törölje a titkos kulcsot a Key vaultból a `secretClient.beginDeleteSe
 secretClient.beginDeleteSecret(secretName);
 ```
 
-A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal ellenőrizhető:
+A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) paranccsal ellenőrizhető:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -266,10 +290,11 @@ public class App {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
+- [A Key vaulthoz való hozzáférés biztonságossá tétele](../general/secure-your-key-vault.md)
 - [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése

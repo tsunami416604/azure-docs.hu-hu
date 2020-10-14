@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229310"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018117"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktoppal
 
@@ -69,5 +69,5 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 
 Ha többé nincs szüksége rá, akkor ne mentse a jelentést, vagy törölje a fájlt, ha már kimentette.
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem ismeri az adatmodell létrehozását, tekintse meg az [Adventure Works Internet Sales táblázatos adatmodellezési oktatóanyagot](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) a SQL Server Analysis Services dokumentációjában.
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem ismeri az adatmodell létrehozását, tekintse meg az [Adventure Works Internet Sales táblázatos adatmodellezési oktatóanyagot](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) a SQL Server Analysis Services dokumentációjában.

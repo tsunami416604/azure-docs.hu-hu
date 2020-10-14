@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: fe9b0e9d2e2e46c7c4d04549777a5c27df6bdf18
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940106"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019375"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával (előzetes verzió)
 
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Előrejelzési végpont üzembe helyezése
 > * A modell tesztelése az R-ből
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -72,7 +72,7 @@ A https://github.com/Azure/azureml-sdk-for-r GitHub-tárház klónozása az okta
 
 1. A RStudio-ben navigáljon a "Terminal" (terminál) lapra, és a CD-t abba a könyvtárba, ahová az adattárat szeretné klónozott.
 
-1. Futtassa a "git Clone https://github.com/Azure/azureml-sdk-for-r " parancsot a terminálban a tárház klónozásához.
+1. Futtassa a parancsot `git clone https://github.com/Azure/azureml-sdk-for-r` a terminálban a tárház klónozásához.
 
 1. A RStudio-ben navigáljon a klónozott *azureml-SDK-for-r* mappa *matricák* mappájába.  A *matricák*területen válassza a *vonat-és üzembe helyezés – első modell elemet. RMD* -fájl az oktatóanyagban használt matrica kereséséhez. A matricához használt további fájlok a *vonat és üzembe helyezés – első modell* almappájában találhatók. Miután megnyitotta a matricát, állítsa be a munkakönyvtárat a fájl helyére a **munkamenet > a munkakönyvtár > beállítása a forrásfájl helyére**. 
 
@@ -369,7 +369,7 @@ A webszolgáltatás HTTP-végpontját is beolvashatja, amely fogadja a REST-ügy
 aci_service$scoring_uri
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, törölje az erőforrásokat. Ne töröljön olyan erőforrást, amelyet még használni szeretne. 
 

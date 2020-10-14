@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7df4df1f7c2fbb600b2350940f910f488827804d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875446"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018049"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -34,7 +34,7 @@ A Service-környezetekben az összetevőkből származó nyomkövetési adatok k
 
 ## <a name="example"></a>Példa
 
-Lássunk egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngészője a használatával nyit meg `GET /Home/Stock` . Az alkalmazás a HTTP-hívás használatával kérdezi le a Stock API-t `GET /api/stock/value` .
+Lássunk erre egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngészője a használatával nyit meg `GET /Home/Stock` . Az alkalmazás a HTTP-hívás használatával kérdezi le a Stock API-t `GET /api/stock/value` .
 
 Az eredményül kapott telemetria a következő lekérdezés futtatásával elemezheti:
 
@@ -147,7 +147,7 @@ Adja hozzá a következő konfigurációt:
       distributedTracingMode: 2 // DistributedTracingModes.W3C
   ```
 > [!IMPORTANT] 
-> A korreláció engedélyezéséhez szükséges összes konfiguráció megtekintéséhez tekintse meg a [JavaScript korrelációs dokumentációját](/app/javascript.md#enable-correlation).
+> A korreláció engedélyezéséhez szükséges összes konfiguráció megtekintéséhez tekintse meg a [JavaScript korrelációs dokumentációját](/azure/azure-monitor/app/javascript#enable-correlation).
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetria korreláció a OpenCensus Pythonban
 

@@ -3,12 +3,12 @@ title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41fa836321da7cdb42b9a3419bc0bb32963a5849
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89488813"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017863"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
@@ -22,11 +22,11 @@ Az Azure Lighthouse segítségével nyereségesen és hatékonyan hozhat létre 
 
 - Nagy **léptékű felügyelet**: az ügyfelek bevonása és a felhasználói erőforrások kezelésének életciklusa egyszerűbbé és méretezhető. A meglévő API-k, felügyeleti eszközök és munkafolyamatok a delegált erőforrásokkal is használhatók, függetlenül attól, hogy mely régiókban találhatók.
 - **Nagyobb láthatóság és pontosság az ügyfelek számára**: az ügyfelek jobban megtekinthetik a műveleteiket, és pontosan szabályozzák a felügyeletre delegált hatókört, beleértve a hozzáférés teljes eltávolításának lehetőségét is, az IP-cím megőrzése mellett.
-- **Átfogó és egységes platform-eszközök**: az eszközökön a legfontosabb szolgáltatói forgatókönyvek, többek között az EA, a CSP és az utólagos elszámolású licencelési modellek is elérhetők. Az új funkciók a meglévő eszközökkel, API-kkal, licencelési modellekkel és partneri programokkal, például a [felhőalapú megoldás-szolgáltatói programmal (CSP)](/partner-center/csp-overview)működnek. Az Azure Lighthouse integrálható a meglévő munkafolyamataiba és alkalmazásaiba, és nyomon követheti az ügyfelek bevonásait és a partnerek által szerzett kreditek fogadását a [partner azonosítójának összekapcsolásával](./how-to/partner-earned-credit.md).
+- **Átfogó és egységes platform-eszközök**: az eszközökön a legfontosabb szolgáltatói forgatókönyvek, többek között az EA, a CSP és az utólagos elszámolású licencelési modellek is elérhetők. Az új funkciók a meglévő eszközökkel, API-kkal, licencelési modellekkel és partneri programokkal, például a [felhőalapú megoldás-szolgáltatói programmal (CSP)](/partner-center/csp-overview)működnek. Az Azure Lighthouse integrálható a meglévő munkafolyamataiba és alkalmazásaiba, és nyomon követheti az ügyfelek bevonásával kapcsolatos hatásokat a [partner azonosítójának összekapcsolásával](./how-to/partner-earned-credit.md).
 
 Az Azure világítótorony az Azure-erőforrások kezeléséhez való használata nem jár további költségekkel. Bármely Azure-ügyfél vagy-partner használhatja az Azure Lighthouse-t.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Az Azure Lighthouse több módszert is kínál az elkötelezettség és a felügyelet egyszerűsítéséhez:
 

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885559"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018287"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics szolgáltatások összehasonlítása
 
@@ -44,7 +44,7 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |C# egyéni kód függvény és deszerializáló|Írásvédett mód|Igen|Nem|
 |JavaScript UDF és UDA     |Igen         |Igen         |Csak Windowson         |
 |Machine Learning szolgáltatás     |Igen        |Igen         |Nem         |
-|Machine Learning Studio     |Igen, de a lekérdezés nem tesztelhető        |Igen |Nem         |
+|Azure Machine Learning Studio (klasszikus)|Igen, de a lekérdezés nem tesztelhető        |Igen |Nem         |
 |Kompatibilitási szint     |1.0</br>1,1</br>1,2 (alapértelmezett)         |1.0</br>1,1</br>1,2 (alapértelmezett)           |1.0</br>1,1</br>1,2 (alapértelmezett)           |
 |Beépített ML-alapú anomáliák észlelési funkciói     |Igen         |Igen         |Igen         |
 |Beépített térinformatikai függvények     |Igen         |Igen         |Igen         |
@@ -63,8 +63,8 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |C# UDF     |Nem         |Igen         |Nem         |
 |Feladatok elküldése     |Igen         |Igen         |Nem         |
 |Feladatok listázása és feladat-entitások megtekintése     |Igen         |Igen         |Nem         |
-|Feladatok metrikáinak és diagramjának megtekintése     |Igen         |Részleges         |Nem         |
-|Feladatok futásidejű hibáinak megtekintése     |Igen         |Részleges         |Nem         |
+|Feladatok metrikáinak és diagramjának megtekintése     |Yes         |Részleges         |No         |
+|Feladatok futásidejű hibáinak megtekintése     |Yes         |Részleges         |No         |
 |CI/CD-támogatás     |Nem         |Nem         |Nem         |
 
 

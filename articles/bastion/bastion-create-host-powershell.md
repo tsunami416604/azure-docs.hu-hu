@@ -1,34 +1,34 @@
 ---
-title: Megerősített gazdagép létrehozása az Azure PowerShell használatával | Microsoft Docs
+title: Megerősített gazdagép létrehozása a Azure PowerShell használatával | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Bastion-gazdagépet
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0e7a66ef7d6947306f1b2ffec54b8e9d12737d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744255"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018593"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure-beli megerősített gazdagép létrehozása Azure PowerShell használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Azure Bastion-gazdagépet a PowerShell használatával. Miután kiépítte az Azure Bastion szolgáltatást a virtuális hálózatban, a zökkenőmentes RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető. Az Azure Bastion üzembe helyezése virtuális hálózatonként történik, nem pedig előfizetés/fiók vagy virtuális gép esetében.
+Ez a cikk bemutatja, hogyan hozhat létre egy Azure Bastion-gazdagépet a PowerShell használatával. A megerősített szolgáltatás telepítése után a saját IP-címén keresztül csatlakozhat a virtuális géphez a Azure Portal használatával. A virtuális gépe nem igényel nyilvános IP-címet, egy további ügyfelet vagy egy speciális szoftvert. Az Azure Bastion üzembe helyezése virtuális hálózatonként történik, nem pedig előfizetés/fiók vagy virtuális gép esetében. A zökkenőmentes RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető.
 
-A [Azure Portal](bastion-create-host-portal.md)használatával is létrehozhat egy Azure-beli megerősített gazdagépet.
+Ezek az utasítások a PowerShell üzembe helyezéséhez szükségesek. A [Azure Portal](tutorial-create-host-portal.md) vagy az [Azure CLI](create-host-cli.md)használatával is létrehozhat egy Azure-beli megerősített gazdagépet.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Megerősített gazdagép létrehozása
 
-Ez a szakasz segítséget nyújt egy új Azure-beli megerősített erőforrás létrehozásában Azure PowerShell használatával.
+Ez a szakasz segítséget nyújt a virtuális hálózat új Azure-beli megerősített erőforrásának létrehozásában Azure PowerShell használatával.
 
 1. Hozzon létre egy virtuális hálózatot és egy Azure Bastion-alhálózatot. Létre kell hoznia az Azure Bastion-alhálózatot a **AzureBastionSubnet**név értékkel. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Ez nem más, mint az átjáró alhálózata. Legalább/27 vagy nagyobb alhálózat (/27,/26 stb.) alhálózatot kell használnia. Hozza létre a **AzureBastionSubnet** útválasztási táblák vagy delegálások nélkül. Ha hálózati biztonsági csoportokat használ a **AzureBastionSubnet**, tekintse meg a [Work with NSG](bastion-nsg.md) című cikket.
 
@@ -50,8 +50,8 @@ Ez a szakasz segítséget nyújt egy új Azure-beli megerősített erőforrás l
    $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információért olvassa el a [megerősített gyakori kérdések](bastion-faq.md) című témakört.
-
-* Ha hálózati biztonsági csoportokat kíván használni az Azure megerősített alhálózattal, tekintse meg a következő témakört: a [NSG](bastion-nsg.md)használata.
+* Kapcsolódjon egy virtuális géphez.
+   * [Linux rendszerű virtuális gép](bastion-connect-vm-ssh.md)
+   * [Windows rendszerű virtuális gép](bastion-connect-vm-rdp.md)

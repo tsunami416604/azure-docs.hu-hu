@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 897df7f07a349457c49929b69993c75345f52241
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297433"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017811"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminológia és fogalmak
 
@@ -30,7 +30,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 
 > [!NOTE]
 > Jelenleg a [Azure Portal](https://portal.azure.com/) használható a következőhöz: Media Services v3 [élő események](live-events-outputs-concept.md), View (nem felügyelt) v3- [eszközök](assets-concept.md)kezelése, valamint az API-k [elérésére vonatkozó információk beszerzése](./access-api-howto.md).
-> Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+> Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/accountfilters), a [CLI](/cli/azure/ams)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +43,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 fogalmak
 
-|Alapelvek|Leírás|Hivatkozások|
+|Fogalmak|Description|Hivatkozások|
 |---|---|---|
 |Eszközök és tartalom feltöltése|Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a digitális fájlokat az **eszközökbe**.|[Felhőbe történő feltöltés és tárolás](storage-account-concept.md)<br/><br/>[Eszközök koncepciója](assets-concept.md)|
 |Tartalom kódolása|Miután feltölti a kiváló minőségű digitális médiafájlokat az eszközökbe, kódolhatja azokat formátumokba, amelyek számos böngészőben és eszközön játszhatók le. <br/><br/>Az Media Services v3 kódoláshoz **átalakításokat** és **feladatokat**kell létrehoznia.|[Átalakítások és feladatok](transforms-jobs-concept.md)<br/><br/>[Kódolás Media Services](encoding-concept.md)|

@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91606060"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016471"
 ---
 ![A Dsv3 dokumentációja](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -129,4 +129,21 @@ A virtuális gépek IO-korlátjának diagnosztizálását segítő mérőszámok
 - A virtuális **gép gyorsítótárazott sávszélességének** kihasználtsága (%) – a teljes lemez átviteli sebessége által kiszámított százalék a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátja alapján lesz lekorlátozva.
 - A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%) – a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS-korlátja alapján lesz lekorlátozva.
 - A virtuális gép nem **gyorsítótárazott sávszélességének** kihasználtsága (%) – a virtuális gépek teljes lemezének átviteli sebessége által kiszámított százalékos arány a virtuális gép maximálisan kiépített virtuálisgép-átviteli sebessége. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátja alapján lesz korlátozva.
+
+## <a name="storage-io-utilization-metrics-example"></a>Storage IO kihasználtsági mérőszámok – példa
+Futtassunk egy példát arra, hogyan használhatja ezeket az új Storage i/o-kihasználtsági mérőszámokat, hogy segítsen a rendszerünk szűk keresztmetszetének hibakeresésében. A rendszer beállítása pontosan azt jelenti, hogy mi volt az előző példában, de a csatlakoztatott operációsrendszer-lemez **nem** gyorsítótárazott.
+
+Beállítás:
+- Standard_D8s_v3 
+    - Gyorsítótárazott IOPS: 16 000
+    - Nem gyorsítótárazott IOPS: 12 800
+- P30 operációsrendszer-lemez 
+    - IOPS: 5 000
+    - Gazdagép gyorsítótárazása: letiltva
+- 2 P30 adatlemez X 2
+    - IOPS: 5 000
+    - Gazdagép gyorsítótárazása: olvasás/írás
+- 2 P30 adatlemez X 2
+    - IOPS: 5 000
+    - Gazdagép gyorsítótárazása: letiltva
 

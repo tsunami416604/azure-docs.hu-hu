@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6b7c8cbcf6685ca2e781789fc508d005bcb5f88
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255103"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018899"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrálás Media Indexer és Media Indexer 2 – Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Folyamatban van a [Azure Media Indexer](media-services-index-content.md) adathordozó-feldolgozó és [Azure Media Indexer 2 előzetes](media-services-process-content-with-indexer2.md) verziójú adathordozó-feldolgozó kivonása. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
+Folyamatban van a [Azure Media Indexer](media-services-index-content.md) adathordozó-feldolgozó és [Azure Media Indexer 2 előzetes](./legacy-components.md) verziójú adathordozó-feldolgozó kivonása. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
 
 A Azure Media Services Video Indexer Azure Media Analytics, Azure Cognitive Search, Cognitive Servicesra épül (például a Face API, a Microsoft Translator, a Computer Vision API és Custom Speech Service). Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel. Ha szeretné megtekinteni, hogy milyen forgatókönyvek Video Indexer használhatók a alkalmazásban, milyen funkciókat kínál, és hogyan kezdheti el az első lépéseket, tekintse meg [video Indexer videó-és hangmodelleket](../video-indexer/video-indexer-overview.md). 
 
@@ -52,7 +52,7 @@ A Azure Media Services V3 API lehetővé teszi, hogy kinyerje a videóból és h
 
 A **AudioAnalyzerPreset** lehetővé teszi több hang-elemzés kinyerését hang-vagy videofájl használatával. A kimenet tartalmaz egy VTT vagy TTML-fájlt a hangátirathoz és egy JSON-fájlhoz (az összes további hangelemzéssel). A hangelemzések közé tartoznak a kulcsszavak, a hangszórók indexelése és a beszéd hangulatának elemzése. A AudioAnalyzerPreset az egyes nyelvekhez is támogatja a nyelvfelismerés használatát. Részletes információk: [átalakítások](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Bevezetés
+### <a name="get-started"></a>Első lépések
 
 Első lépésként tekintse meg a következőt:
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b682e371a341c8dbd707652acc60773663326dc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715565"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019120"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Mi a jelenlegi IoT Plug and Play kiadás
 
@@ -41,10 +41,7 @@ Ha többet szeretne megtudni arról, hogy a IoT Plug and Play-eszközök hogyan 
 
 - Azure CLI-IoT bővítmény 0.10.0.
 
-    További információ: az Azure [IoT bővítmény telepítése és használata az Azure CLI-hez](howto-use-iot-pnp-cli.md).
-
-    > [!TIP]
-    > Az Azure IoT bővítmény olyan parancsokat tartalmaz, amelyek segítségével hitelesítheti az eszközöket. Lásd: `az iot product -h`.
+    Az Azure IoT bővítmény olyan parancsokat tartalmaz, amelyek segítségével hitelesítheti az eszközöket. Lásd: `az iot product -h`.
 
 ## <a name="libraries-and-sdks"></a>Kódtárak és SDK-k
 

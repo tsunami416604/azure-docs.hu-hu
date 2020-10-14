@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922948"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019434"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
@@ -40,13 +40,13 @@ A kiszolgálói rendszergazdáknak érvényes felhasználó, szolgáltatásnév 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Új kiszolgáló létrehozásakor a [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) parancsmag használatával adhatja meg a rendszergazda paramétert. <br>
-A [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) parancsmag használatával módosíthatja egy meglévő kiszolgáló rendszergazdai paraméterét.
+Új kiszolgáló létrehozásakor a [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) parancsmag használatával adhatja meg a rendszergazda paramétert. <br>
+A [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) parancsmag használatával módosíthatja egy meglévő kiszolgáló rendszergazdai paraméterét.
 
 ## <a name="rest-api"></a>REST API
 
-Új kiszolgáló létrehozásakor a [create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) paranccsal adhatja meg a asAdministrator tulajdonságot. <br>
-Egy meglévő kiszolgáló módosításakor a [frissítés](https://docs.microsoft.com/rest/api/analysisservices/servers/update) használatával adhatja meg a asAdministrator tulajdonságot. <br>
+Új kiszolgáló létrehozásakor a [create](/rest/api/analysisservices/servers/create) paranccsal adhatja meg a asAdministrator tulajdonságot. <br>
+Egy meglévő kiszolgáló módosításakor a [frissítés](/rest/api/analysisservices/servers/update) használatával adhatja meg a asAdministrator tulajdonságot. <br>
 
 
 
@@ -54,4 +54,4 @@ Egy meglévő kiszolgáló módosításakor a [frissítés](https://docs.microso
 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  
-[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)

@@ -3,12 +3,12 @@ title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálás
 description: Ismerje meg az Azure VMware-megoldások üzembe helyezését egy meglévő vagy egy új, az Azure-ban, az Azure-ban.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: bfd0da4f03eedaf215ddb55facffc2296a9d0b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580280"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019269"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
@@ -28,7 +28,7 @@ A helyszíni adatközpont, az Azure VMware Solution Private Cloud és a hub köz
 
 Az ábrán egy példa látható az Azure-ban a helyszíni és az Azure VMware-megoldáshoz kapcsolódó, az ExpressRoute Global Reach-en keresztül csatlakozó sugaras üzembe helyezésre.
 
-:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
+:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
 
 Az architektúra a következő fő összetevőkből áll:
 
@@ -65,12 +65,12 @@ Mivel az ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatl
 
 * **Helyszíni Azure-beli VMware-megoldás forgalmának folyamata**
 
-  :::image type="content" source="media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware-megoldás a VNET hub-forgalomhoz**
 
-  :::image type="content" source="media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Az Azure VMware megoldás hálózatkezelésével és a kapcsolati fogalmakkal kapcsolatos további részleteket az [Azure VMware megoldás termékdokumentációjában](./concepts-networking.md)talál.

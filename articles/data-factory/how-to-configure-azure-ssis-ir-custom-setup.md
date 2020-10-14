@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405241"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019856"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -127,7 +127,7 @@ A következő lépések végrehajtásával kiépítheti vagy újrakonfigurálhat
 
 #### <a name="running-cmdkey-command"></a>Cmdkey parancs futtatása
 
-Ha az expressz egyéni telepítéshez a **cmdkey futtatása parancsot** választja, akkor futtathatja a Windows cmdkey parancsot a Azure-SSIS IR. Ehhez adja meg a célként megadott számítógép nevét vagy tartománynevét, felhasználónevét vagy fiókjának nevét, valamint a jelszó vagy a fiók kulcsát az **/Add**, **/User**és **/pass** szövegmezőben. Ez lehetővé teszi az SQL-kiszolgálók,-fájlmegosztás vagy-Azure Files hozzáférési hitelesítő adatainak megőrzését a Azure-SSIS IR. A Azure Fileshoz való hozzáféréshez például megadhatja `YourAzureStorageAccountName.file.core.windows.net` a `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` következőt:, és az **/Add**, a **/User**és a **/pass**. Ez hasonló a Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) parancs helyi gépen való futtatásához.
+Ha az expressz egyéni telepítéshez a **cmdkey futtatása parancsot** választja, akkor futtathatja a Windows cmdkey parancsot a Azure-SSIS IR. Ehhez adja meg a célként megadott számítógép nevét vagy tartománynevét, felhasználónevét vagy fiókjának nevét, valamint a jelszó vagy a fiók kulcsát az **/Add**, **/User**és **/pass** szövegmezőben. Ez lehetővé teszi az SQL-kiszolgálók,-fájlmegosztás vagy-Azure Files hozzáférési hitelesítő adatainak megőrzését a Azure-SSIS IR. A Azure Fileshoz való hozzáféréshez például megadhatja `YourAzureStorageAccountName.file.core.windows.net` a `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` következőt:, és az **/Add**, a **/User**és a **/pass**. Ez hasonló a Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) parancs helyi gépen való futtatásához. Most már csak egy expressz egyéni telepítő futtatható a cmdkey parancs futtatásához. Ha több cmdkey-parancsot szeretne futtatni, használja helyette a szabványos egyéni telepítést.
 
 #### <a name="adding-environment-variables"></a>Környezeti változók hozzáadása
 
@@ -143,7 +143,7 @@ Ha bejelöli a **licencelt összetevő** típusának telepítése az expressz eg
 
    * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020.1.3**.
 
-   * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. IO](https://hedda.io/ssis-component/) adatminőség/tisztító összetevő a oh22 a Azure-SSIS IR. Ehhez előre kell megvásárolnia a szolgáltatást. Az aktuálisan integrált verzió a **1.0.14**.
+   * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) adatminőség/tisztító összetevő a oh22 a Azure-SSIS IR. Ehhez előre kell megvásárolnia a szolgáltatást. Az aktuálisan integrált verzió a **1.0.14**.
 
    * Ha a **oh22's SQLPhonetics.net** összetevőt választja, telepítheti a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét a oh22 a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **1.0.45**.
 
@@ -175,7 +175,7 @@ Ha az egyéni beállításokkal Azure PowerShell használatával szeretné kiép
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -242,6 +242,16 @@ Ha az egyéni beállításokkal Azure PowerShell használatával szeretné kiép
            $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
        }
+       if($ExpressCustomSetup -eq "CData.Standard")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "CData.Extended")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -288,6 +298,8 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
       * A *.NET-keretrendszer 3,5* mappája, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a .NET-keretrendszer egy korábbi verziójának telepítéséhez a Azure-SSIS IR mindegyik csomópontján. Előfordulhat, hogy ezt a verziót egyes egyéni összetevők igénylik.
 
       * Egy *BCP* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy SQL Server parancssori segédeszközöket (*MsSqlCmdLnUtils.msi*) telepítsen a Azure-SSIS IR egyes csomópontjaira. Ezen segédprogramok egyike a tömeges másolási program (*BCP*).
+
+      * A *DNS-utótag* mappája, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a saját DNS-utótag (például *test.com*) hozzáfűzéséhez a nem minősített egycímkés tartományhoz, és a teljes tartománynévre (FQDN) kapcsolja azt, mielőtt a Azure-SSIS IR DNS-lekérdezésekben használja azt.
 
       * Egy *Excel* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a C#-szerelvények és-tárak telepítéséhez a Azure-SSIS IR egyes csomópontjain. A szkriptek feladataiban felhasználhatja az Excel-fájlok dinamikus olvasását és írását. 
       

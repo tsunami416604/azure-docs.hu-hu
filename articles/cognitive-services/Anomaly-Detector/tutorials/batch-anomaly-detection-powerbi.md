@@ -3,19 +3,19 @@ title: 'Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével 
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan használhatja az anomália-Kiderítő API-t és a Power BI az idősorozat-adatvesztések megjelenítéséhez.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 887e7432151569eb07e3c9256c7f126e7f884d54
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660955"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017624"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
@@ -172,7 +172,7 @@ Színeket alkalmazhat a diagramra úgy, hogy a **Formátum** eszközre és az **
 
 ![Az utolsó diagram képe](../media/tutorials/final-chart.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Adatfolyam-rendellenességek észlelése Azure Databricks](anomaly-detection-streaming-databricks.md)

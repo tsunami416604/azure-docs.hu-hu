@@ -3,12 +3,13 @@ title: Service Fabric szolgáltatási végpontok meghatározása
 description: A végponti erőforrások leírása a szolgáltatás jegyzékfájljában, beleértve a HTTPS-végpontok beállítását is
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq1
+ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354759"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017590"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása a szolgáltatás jegyzékfájljában
 ## <a name="overview"></a>Áttekintés
@@ -198,7 +199,7 @@ Adja meg az alábbi paramétereket:
   </Parameters>
 ```
 
-Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Példa:
+Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Például:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -206,7 +207,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Megjegyzés: Ha egy adott ApplicationParameter megadott érték üres, a megfelelő Végpontneve tartozó ServiceManifest megadott alapértelmezett értékre megyünk vissza.
 
-Példa:
+Például:
 
 Ha a megadott ServiceManifest
 

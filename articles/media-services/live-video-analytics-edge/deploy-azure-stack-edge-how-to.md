@@ -3,12 +3,12 @@ title: Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videók elemzésének üzembe helyezéséhez az Azure Stack Edge-ben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935266"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019596"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 
@@ -21,27 +21,27 @@ Az élő videós elemzések esetében IoT Hubon keresztül fogjuk telepíteni, d
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés, amelyhez [tulajdonosi jogosultságokkal](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)rendelkezik.
-* [Azure stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) -erőforrás
+* Azure-előfizetés, amelyhez [tulajdonosi jogosultságokkal](../../role-based-access-control/built-in-roles.md#owner)rendelkezik.
+* [Azure stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) -erőforrás
    
-* [Egy IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* Az élő videó elemzési moduljának [egyszerű szolgáltatása](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal) .
+* [Egy IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* Az élő videó elemzési moduljának [egyszerű szolgáltatása](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) .
 
    Használja az alábbi régiók egyikét, ahol elérhető IoT Hub: USA 2. keleti régiója, az USA középső régiója, az USA északi középső régiója, az USA 2. nyugati régiója, az USA nyugati középső régiója, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
 * Tárfiók
 
     Javasoljuk, hogy az általános célú v2-(GPv2-) tárolási fiókokat használja.  
-    További információ az [általános célú v2-alapú Storage-fiókról](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal).
+    További információ az [általános célú v2-alapú Storage-fiókról](../../storage/common/storage-account-upgrade.md?tabs=azure-portal).
 * A [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen. Győződjön meg arról, hogy rendelkezik az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Győződjön meg arról, hogy a fejlesztői számítógép hálózata csatlakozik a speciális üzenetsor-kezelési protokoll engedélyezéséhez a 5671-es porton keresztül. Ez a telepítő lehetővé teszi az Azure IoT-eszközök számára az Azure IoT Hub való kommunikációt.
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Azure Stack Edge konfigurálása élő videó-elemzések használatához
 
-Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és egy hálózati adatátviteli képességekkel rendelkező AI-kompatibilis Edge számítástechnikai eszköz. További információ a [Azure stack Edge és a részletes beállítási utasításokról](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep). Az első lépésekhez kövesse az alábbi hivatkozások utasításait:
+Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és egy hálózati adatátviteli képességekkel rendelkező AI-kompatibilis Edge számítástechnikai eszköz. További információ a [Azure stack Edge és a részletes beállítási utasításokról](../../databox-online/azure-stack-edge-deploy-prep.md). Az első lépésekhez kövesse az alábbi hivatkozások utasításait:
 
-* [Azure Stack Edge/Data Box Gateway erőforrás létrehozása](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [Telepítés és beállítás](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [Kapcsolatok és aktiválás](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack Edge/Data Box Gateway erőforrás létrehozása](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [Telepítés és beállítás](../../databox-online/azure-stack-edge-deploy-install.md)
+* [Kapcsolatok és aktiválás](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>IoT Hub csatlakoztatása Azure Stack Edge-hez
 
@@ -55,7 +55,7 @@ Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és e
     | Mező|Érték|
     |---|---|
     |IoT Hub|Válasszon az új vagy a meglévő listából.<br/>Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást.<br/>A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, mint az Azure Stack Edge-erőforrás.|
-    |Name (Név)|Adja meg a IoT Hub erőforrás nevét.|
+    |Név|Adja meg a IoT Hub erőforrás nevét.|
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
@@ -80,7 +80,7 @@ A folytatás előtt győződjön meg az alábbiakról:
 
 * Aktiválta Azure Stack Edge-erőforrását.
 * Hozzáférése van egy PowerShell 5,0 vagy újabb rendszert futtató Windows rendszerű ügyfélhez az Azure Stack Edge-erőforráshoz való hozzáféréshez.
-* Kubernetes-fürt üzembe helyezéséhez konfigurálnia kell az Azure Stack Edge-erőforrást a [helyi webes felhasználói felületén](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup)keresztül. 
+* Kubernetes-fürt üzembe helyezéséhez konfigurálnia kell az Azure Stack Edge-erőforrást a [helyi webes felhasználói felületén](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup)keresztül. 
     
     * A számítás engedélyezéséhez az eszköz helyi webes FELÜLETén nyissa meg a számítási lapot.
     

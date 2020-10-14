@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072046"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019511"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services darabolt MP4 élő betöltési specifikáció 
 
@@ -39,7 +39,7 @@ Az alábbi ábrán a Media Services élő streaming szolgáltatásának magas sz
 ![folyamat betöltése][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstream formátum – ISO 14496-12 darabolt MP4
-A jelen dokumentumban tárgyalt élő adatfolyamok átviteli formátuma az [ISO-14496-12] alapján történik. A töredezett MP4 formátum és bővítmények részletes ismertetése a videó igény szerinti fájlokhoz és az élő adatfolyamok betöltéséhez: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
+A jelen dokumentumban tárgyalt élő adatfolyamok átviteli formátuma az [ISO-14496-12] alapján történik. A töredezett MP4 formátum és bővítmények részletes ismertetése a videó igény szerinti fájlokhoz és az élő adatfolyamok betöltéséhez: [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).
 
 ### <a name="live-ingest-format-definitions"></a>Élő betöltés formátumának definíciói
 Az alábbi lista a Azure Media Servicesba való élő betöltésre vonatkozó speciális formátum-definíciókat ismerteti:
@@ -70,7 +70,7 @@ A részletes követelmények a következők:
 1. Ha a HTTP POST kérelem leáll, vagy időtúllépést okoz a TCP-hibánál az adatfolyam vége előtt, akkor a kódolónak új bejegyzéssel kell kiállítania egy új bejegyzést, és követnie kell az előző követelményeket. Emellett a kódolónak újra el kell küldenie az előző két MP4-töredéket az adatfolyamban lévő egyes sávokhoz, és nem kell folytatnia a folytonosságot a média idővonalán. Az utolsó két MP4-töredék Újraküldés az egyes sávok esetében biztosítja, hogy nincs adatvesztés. Más szóval, ha egy stream egy hang-és egy videó-nyomkövetést is tartalmaz, és a jelenlegi POST kérelem meghiúsul, a kódolónak újra kell csatlakoznia, majd újra el kell küldenie a hangsáv utolsó két töredékét, amelyeket korábban sikeresen Elküldöttek, és a videó nyomon követésének utolsó két töredékét, amelyeket korábban sikeresen elküldtek, hogy ne legyen adatvesztés. A kódolónak meg kell őriznie egy "Forward" puffert, amely az újracsatlakozáskor újraküldi az adathordozó töredékeit.
 
 ## <a name="5-timescale"></a>5. időskála
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) a **SmoothStreamingMedia** (szakasz 2.2.2.1), a **StreamElement** (szakasz 2.2.2.3), a **StreamFragmentElement** (szakasz 2.2.2.6) és a **LiveSMIL** (szakasz: 2.2.7.3.1) időkeretének használatát ismerteti. Ha az időskála értéke nem létezik, az alapértelmezett érték 10 000 000 (10 MHz). Bár a Smooth Streaming formátum specifikációja nem blokkolja más időskála-értékek használatát, a legtöbb kódoló implementációja ezt az alapértelmezett értéket (10 MHz-et) használja a Smooth Streaming adatok betöltéséhez. Az [Azure Media Dynamic csomagolási](./previous/media-services-dynamic-packaging-overview.md) funkciója miatt javasoljuk, hogy a videó streamek és a 44,1 khz vagy 48,1 kHz esetében használjon 90-kHz-es időskálát a hangstreamek számára. Ha különböző időkeret-értékeket használ a különböző adatfolyamokhoz, az adatfolyam-szintű időkeretet el kell juttatni. További információ: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) a **SmoothStreamingMedia** (szakasz 2.2.2.1), a **StreamElement** (szakasz 2.2.2.3), a **StreamFragmentElement** (szakasz 2.2.2.6) és a **LiveSMIL** (szakasz: 2.2.7.3.1) időkeretének használatát ismerteti. Ha az időskála értéke nem létezik, az alapértelmezett érték 10 000 000 (10 MHz). Bár a Smooth Streaming formátum specifikációja nem blokkolja más időskála-értékek használatát, a legtöbb kódoló implementációja ezt az alapértelmezett értéket (10 MHz-et) használja a Smooth Streaming adatok betöltéséhez. Az [Azure Media Dynamic csomagolási](./previous/media-services-dynamic-packaging-overview.md) funkciója miatt javasoljuk, hogy a videó streamek és a 44,1 khz vagy 48,1 kHz esetében használjon 90-kHz-es időskálát a hangstreamek számára. Ha különböző időkeret-értékeket használ a különböző adatfolyamokhoz, az adatfolyam-szintű időkeretet el kell juttatni. További információ: [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).     
 
 ## <a name="6-definition-of-stream"></a>6. a "Stream" definíciója
 A stream az élő bemutatók előkészítésének, a folyamatos átvitel feladatátvételének és a redundancia-forgatókönyveknek a működésének alapvető működési egysége. Az adatfolyam egy egyedi, töredékes MP4-Bitstream van definiálva, amely egyetlen vagy több zeneszámot tartalmazhat. A teljes élő bemutató egy vagy több streamet tartalmazhat, az élő kódolók konfigurációjától függően. Az alábbi példák a streamek egy teljes élő bemutató összeállításához való használatának különböző lehetőségeit szemléltetik.

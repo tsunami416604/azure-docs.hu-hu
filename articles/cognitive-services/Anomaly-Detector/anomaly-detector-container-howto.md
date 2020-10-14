@@ -3,21 +3,21 @@ title: Docker-tárolók telepítése és futtatása az anomália-detektor API-ho
 titleSuffix: Azure Cognitive Services
 description: A rendellenesség-Kiderítő API algoritmusai segítségével a helyszíni adatrendellenességek a Docker-tároló használatával találhatók a helyszínen.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló, streaming, algoritmusok
-ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e20ff5022b9b4a5b601160516f255af991a540c6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460000"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018610"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Docker-tárolók telepítése és futtatása az anomália-detektor API-hoz 
 
@@ -35,7 +35,7 @@ Az anomália detektor egyetlen Docker-tárolót biztosít a helyszíni API haszn
 Az API-val kapcsolatos részletes információkért lásd:
 * [További információ az anomália-érzékelő API szolgáltatásáról](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -179,7 +179,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebből a cikkből megtudhatta, milyen fogalmakat és munkafolyamatokat használ az anomáliák-detektor tárolóinak letöltéséhez, telepítéséhez és futtatásához. Összegezve:
 

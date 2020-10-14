@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics integráció a Azure Machine Learning
-description: Ez a cikk azt ismerteti, hogyan lehet gyorsan beállítani egy egyszerű Azure Stream Analytics feladatot, amely egy felhasználó által definiált függvény használatával integrálja Azure Machine Learning.
+title: Azure Stream Analytics integráció Azure Machine Learning Studio (klasszikus)
+description: Ez a cikk azt ismerteti, hogyan lehet gyorsan beállítani egy egyszerű Azure Stream Analytics feladatot, amely egy felhasználó által definiált függvény használatával integrálja Azure Machine Learning Studio (klasszikus).
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236669"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019460"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus) a hangulat elemzése
 
-Ebből a cikkből megtudhatja, hogyan állíthat be egy egyszerű Azure Stream Analytics feladatot, amely a Azure Machine Learning Studio (klasszikus) szolgáltatást használja az érzelmek elemzéséhez. A Cortana Intelligence Gallery a Machine Learning hangulat elemzési modelljét használja a folyamatos szöveges adatok elemzéséhez és a hangulati pontszám meghatározásához.
+Ebből a cikkből megtudhatja, hogyan állíthat be egy egyszerű Azure Stream Analytics feladatot, amely a Azure Machine Learning Studio (klasszikus) szolgáltatást használja az érzelmek elemzéséhez. A Cortana Intelligence Gallery Studio (klasszikus) hangulatú elemzési modelljét használja a folyamatos szöveges adatok elemzéséhez és a hangulati pontszám meghatározásához.
 
 > [!TIP]
 > A jobb teljesítmény és megbízhatóság érdekében javasoljuk, hogy Azure Machine Learning Studio (klasszikus) UDF helyett [Azure Machine learning UDF](machine-learning-udf.md) használjon.
@@ -79,31 +79,31 @@ Most, hogy a mintaadatok egy blobban vannak, a Cortana Intelligence Galleryban e
 
 2. Válassza **a Megnyitás a Studióban (klasszikus)** lehetőséget.  
    
-   ![Stream Analytics Machine Learning, nyissa meg Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Stream Analytics Azure Machine Learning Studio (klasszikus), Open Studio (klasszikus)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. A munkaterületre való ugráshoz jelentkezzen be. Válasszon ki egy helyet.
 
 4. Válassza a **Futtatás** lehetőséget az oldal alján. A folyamat fut, ami körülbelül egy percet vesz igénybe.
 
-   ![kísérlet futtatása Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![Kísérlet futtatása a Studióban (klasszikus)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
 5. A folyamat sikeres futtatása után válassza a **webszolgáltatások üzembe helyezése** elemet az oldal alján.
 
-   ![kísérlet üzembe helyezése Machine Learning Studio webszolgáltatásként](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![Kísérlet üzembe helyezése a Studio (klasszikus) szolgáltatásban webszolgáltatásként](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. Annak ellenőrzéséhez, hogy a hangulat-elemzési modell készen áll-e a használatra, válassza a **teszt** gombot. Adja meg a szövegbeviteli adatokat, például a "szeretem a Microsoftot".
 
-   ![tesztelési kísérlet Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Tesztelési kísérlet a Studióban (klasszikus)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    Ha a teszt működik, az alábbi példához hasonló eredmény jelenik meg:
 
-   ![tesztelési eredmények Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Tesztelési eredmények a Studióban (klasszikus)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. Az **alkalmazások** oszlopban válassza az **Excel 2010 vagy korábbi munkafüzet** hivatkozását az Excel-munkafüzet letöltéséhez. A munkafüzet tartalmazza azt az API-kulcsot és URL-címet, amelyre később szükség lesz a Stream Analytics feladatokhoz.
 
-    ![Stream Analytics Machine Learning, gyors áttekintés](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Azure Machine Learning Studio (klasszikus), gyors áttekintés](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>A Machine Learning modellt használó Stream Analytics-feladatok létrehozása
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>A Studio (klasszikus) modellt használó Stream Analytics-feladatok létrehozása
 
 Most létrehozhat egy Stream Analytics feladatot, amely a blob Storage-ban lévő CSV-fájlból beolvassa a minta tweeteket.
 
@@ -147,9 +147,9 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
 
 3. Kattintson a **Mentés** gombra.
 
-### <a name="add-the-machine-learning-function"></a>A Machine Learning függvény hozzáadása
+### <a name="add-the-studio-classic-function"></a>A Studio (klasszikus) függvény hozzáadása
 
-Korábban egy Machine Learning modellt tett közzé egy webszolgáltatásban. Ebben az esetben a stream Analysis-feladatok futtatásakor a rendszer az összes minta tweetet elküldi a webszolgáltatásnak az érzelmek elemzéséhez. A Machine Learning webszolgáltatása egy érzelem ( `positive` , `neutral` , vagy) értéket ad vissza, és a `negative` csiripelés valószínűsége pozitív.
+Korábban egy Studio (klasszikus) modellt adott közzé egy webszolgáltatáshoz. Ebben az esetben a stream Analysis-feladatok futtatásakor a rendszer az összes minta tweetet elküldi a webszolgáltatásnak az érzelmek elemzéséhez. A Studio (klasszikus) webszolgáltatás egy érzelem ( `positive` ,, vagy) értéket ad vissza, `neutral` és a `negative` csiripelés valószínűsége pozitív.
 
 Ebben a szakaszban egy függvényt határoz meg a stream Analysis feladatban. A függvény meghívható úgy, hogy csipogt küldjön a webszolgáltatásnak, és visszakapja a választ.
 
@@ -169,7 +169,7 @@ Ebben a szakaszban egy függvényt határoz meg a stream Analysis feladatban. A 
 
 ### <a name="create-a-query-to-transform-the-data"></a>Lekérdezés létrehozása az adatátalakításhoz
 
-Stream Analytics egy deklaratív, SQL-alapú lekérdezést használ a bevitel vizsgálatára és feldolgozására. Ebben a szakaszban egy olyan lekérdezést hoz létre, amely beolvassa az egyes tweeteket a bemenetből, majd meghívja a Machine Learning függvényt az érzelmek elemzésének elvégzéséhez. A lekérdezés ezután elküldi az eredményt a megadott kimenetre (blob Storage).
+Stream Analytics egy deklaratív, SQL-alapú lekérdezést használ a bevitel vizsgálatára és feldolgozására. Ebben a szakaszban egy olyan lekérdezést hoz létre, amely beolvassa az egyes tweeteket a bemenetből, majd meghívja a Studio (klasszikus) függvényt az érzelmi elemzés elvégzéséhez. A lekérdezés ezután elküldi az eredményt a megadott kimenetre (blob Storage).
 
 1. Térjen vissza a Stream Analytics feladatok áttekintéséhez.
 
@@ -215,18 +215,18 @@ Most már elindíthatja a Stream Analytics feladatot.
 
 3. Nyissa meg a létrehozott CSV-fájlt. A következő példához hasonlóan jelenik meg:  
 
-   ![Stream Analytics Machine Learning, CSV-nézet](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Azure Machine Learning Studio (klasszikus), CSV-nézet](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>Metrikák megtekintése
 
-Azure Machine Learning függvényekkel kapcsolatos metrikákat is megtekintheti. A következő függvényhez kapcsolódó mérőszámok a feladat áttekintésének **figyelés** mezőjében jelennek meg:
+Emellett megtekintheti a Studio (klasszikus) függvényekkel kapcsolatos metrikákat is. A következő függvényhez kapcsolódó mérőszámok a feladat áttekintésének **figyelés** mezőjében jelennek meg:
 
-* A **függvények kérései** a Machine learning webszolgáltatásnak küldött kérések számát jelzik.  
-* A **függvény eseményei** a kérelemben szereplő események számát jelzik. Alapértelmezés szerint minden Machine Learning webszolgáltatásra irányuló kérelem legfeljebb 1 000 eseményt tartalmaz.
+* A **függvények kérései** a Studio (klasszikus) webszolgáltatás számára küldött kérések számát jelzik.  
+* A **függvény eseményei** a kérelemben szereplő események számát jelzik. Alapértelmezés szerint a Studio (klasszikus) webszolgáltatás minden kérése legfeljebb 1 000 eseményt tartalmaz.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API és Machine Learning integrálása](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [REST API és Machine Learning Studio integrálása (klasszikus)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

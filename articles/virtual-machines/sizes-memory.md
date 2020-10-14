@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2f18f830b690acdca67058da6ed6a0907406e66c
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945967"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019715"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Memória-optimalizált virtuális gépek méretei
 
@@ -53,7 +53,7 @@ Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amely
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
 

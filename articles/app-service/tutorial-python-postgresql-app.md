@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: cfc4341e4b3f0c894f9440b4910c3f8bec7326d1
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929778"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019409"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -114,7 +114,7 @@ A minta úgy is módosul, hogy éles környezetben fusson, például App Service
 - Az üzemi beállítások a *azuresite/Production. file.* fájlba kerülnek. A fejlesztés részletei a *azuresite/Settings.* a. a.
 - Az alkalmazás éles beállításokat használ, ha a `DJANGO_ENV` környezeti változó "éles" értékre van állítva. Ezt a környezeti változót később az oktatóanyagban fogja létrehozni, a PostgreSQL-adatbázis konfigurációjában használt többivel együtt.
 
-Ezek a módosítások a Django konfigurálására szolgálnak az éles környezetben való futtatáshoz, és nem kifejezetten App Service. További információ: [Django Deployment ellenőrzőlista](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/).
+Ezek a módosítások a Django konfigurálására szolgálnak az éles környezetben való futtatáshoz, és nem kifejezetten App Service. További információ: [Django Deployment ellenőrzőlista](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Tekintse meg az Azure-beli [Django üzemi beállításait](configure-language-python.md#production-settings-for-django-apps) is, ha néhány módosítással kapcsolatos információkat talál.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 

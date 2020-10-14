@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29a889fc15b1889711d08d3386920652a8bc8f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269046"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017233"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Speciális kódolás a Media Encoder Premium-munkafolyamattal
 
@@ -35,7 +35,7 @@ Microsoft Azure Media Services bevezeti a **Media Encoder Premium workflow** ada
 
 A következő témakörök a **Media Encoder Premium workflow**kapcsolatos részleteket ismertetik:
 
-* [A Media Encoder Premium workflow által támogatott formátumok](media-services-premium-workflow-encoder-formats.md) – a **Media Encoder Premium workflow**által támogatott fájlformátumokat és kodekeket tárgyalja.
+* [A Media Encoder Premium workflow által támogatott formátumok](./media-services-encode-asset.md) – a **Media Encoder Premium workflow**által támogatott fájlformátumokat és kodekeket tárgyalja.
 * Az [Azure on-demand adathordozó-kódolók áttekintése és összehasonlítása](media-services-encode-asset.md) a **Media Encoder Premium workflow** és **Media Encoder standard**kódolási képességeit hasonlítja össze.
 
 Ez a cikk bemutatja, hogyan kódolható a **Media Encoder Premium workflow** a .NET használatával.

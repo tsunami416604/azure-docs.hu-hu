@@ -1,235 +1,131 @@
 ---
-title: Az Azure IoT Model repository koncepcióinak megismerése | Microsoft Docs
-description: Megoldás fejlesztőként vagy informatikai szakemberként megismerheti az Azure IoT Model repository alapvető fogalmait.
-author: prashmo
-ms.author: prashmo
-ms.date: 07/24/2020
+title: Az eszköz modell-tárházával kapcsolatos fogalmak ismertetése | Microsoft Docs
+description: Megoldás fejlesztőként vagy informatikai szakemberként megismerheti az eszköz modell tárházának alapvető fogalmait.
+author: rido-min
+ms.author: rmpablos
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78accf9009e532b4f254bf1b96c9fe269815b8af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715071"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019171"
 ---
-# <a name="azure-iot-model-repository"></a>Azure IoT-modelladattár
+# <a name="device-model-repository"></a>Eszköz modell tárháza
 
-Az Azure IoT modelladattárral az eszközkészítők IoT Plug and Play-eszközmodelleket kezelhetnek és oszthatnak meg. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok. A Model repository szolgáltatásban tárolt modellek a hozzáférés-vezérléssel vagy nyilvánosan, a IoT Plug and Play felhőalapú megoldás integrálásához és fejlesztéséhez szükséges hitelesítés nélkül is megoszthatók a megoldás-fejlesztőknek.
+Az eszköz modellje (DMR) lehetővé teszi az eszközök építői számára a IoT Plug and Play eszköz modelljeinek felügyeletét és megosztását. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok.
+
+A DMR meghatározza azt a mintát, amely az DTDL-interfészeket az eszköz kettős modell-azonosítója (DTMI) alapján tárolja a mappák struktúrájában. A DMR található felületet úgy keresheti meg, hogy a DTMI egy relatív elérési útra konvertálja. Például a `dtmi:com:example:Thermostat;1` DTMI lefordítja a következőre: `/dtmi/com/example/thermostat-1.json` .
+
+## <a name="public-device-model-repository"></a>Nyilvános eszköz modell tárháza
+
+A Microsoft a következő tulajdonságokkal rendelkező nyilvános DMR üzemeltet:
+
+- Kurátori modellek. A Microsoft felülvizsgálja és jóváhagyja az összes elérhető felületet egy Open GitHub PR-ellenőrzési munkafolyamat használatával.
+- Módosíthatatlansági.  A közzétételt követően az illesztőfelület nem frissíthető.
+- Hyper-Scale. A Microsoft biztosítja az összes szükséges infrastruktúrát egy biztonságos és rugalmasan méretezhető végpont létrehozásához.
+
+## <a name="custom-device-model-repository"></a>Egyéni eszköz modell tárháza
+
+Az egyéni DMR létrehozásához használhatja ugyanazt a DMR-mintát bármilyen adathordozón, például a helyi fájlrendszerben vagy az egyéni HTTP-webkiszolgálókon is. A modelleket ugyanúgy kérheti le az egyéni DMR, mint a nyilvános DRM-ből, ha módosítja a DMR eléréséhez használt alap URL-címet.
 
 > [!NOTE]
-> Az eszközök építői dönthetnek úgy, hogy közvetlenül egy eszközön, modulok használatával vagy egy IoT Edge modulban implementálják a IoT Plug and Play eszköz modelljeit.
-
-A modell tárháza a használatával érhető el:
-
-- [Azure IoT Model adattár](https://aka.ms/iotmodelrepo) -portál
-- [Az Azure IoT Model repository REST API](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Azure CLI-IoT Model adattár parancsai](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
+> A nyilvános DMR található modellek ellenőrzéséhez használt eszközök újra felhasználhatók az egyéni adattárakban.
 
 ## <a name="public-models"></a>Nyilvános modellek
 
-A modell tárházában tárolt nyilvános digitális kettős modellek mindenki számára elérhetők, hogy hitelesítés nélkül használják fel és integrálják az alkalmazásaikat. Emellett a nyilvános modellekkel az eszköz-építők és a megoldások fejlesztői számára nyitott ökoszisztémák is megoszthatják és használhatják a IoT Plug and Play eszköz modelljeit.
+A modell tárházában tárolt nyilvános digitális kettős modellek mindenki számára elérhetők, hogy az alkalmazásaikat használják fel és integrálni. A nyilvános modellek lehetővé teszik, hogy az eszköz-építők és a megoldások fejlesztői számára nyílt öko-rendszer használatával megosszák és újra felhasználhassa a IoT Plug and Play eszköz modelljeit.
 
-Tekintse meg a [modell közzététele a](#publish-a-model) **vállalati modellekben** című szakaszt a modell közzétételéhez a modell-adattárban, hogy azok nyilvánosak legyenek.
+Tekintse át a modell [közzététele](#publish-a-model) című szakaszt, amely útmutatást nyújt ahhoz, hogyan tehet közzé egy modellt a modell-adattárban annak érdekében, hogy azok nyilvánosak legyenek.
 
-Nyilvános modell megtekintése a Model repository portál használatával:
+A felhasználók megkereshetik, megkereshetik és megtekinthetik a hivatalos [GitHub-tárházból](https://github.com/Azure/iot-plugandplay-models)származó nyilvános felületeket.
 
-1. Nyissa meg az [Azure IoT Model adattár-portált](https://aka.ms/iotmodelrepo).
+A mappákban található összes felület `dtmi` a nyilvános végpontról is elérhető. [https://devicemodels.azure.com](https://devicemodels.azure.com)
 
-1. Válassza a **nyilvános modellek megtekintése**lehetőséget.
+### <a name="resolve-models"></a>Modellek feloldása
 
-    ![Nyilvános modellek megtekintése](./media/concepts-model-repository/public-models.png)
+Ezen felületek programozott eléréséhez át kell alakítania egy dtmi egy relatív elérési útra, amelynek segítségével lekérdezheti a nyilvános végpontot. A következő mintakód bemutatja, hogyan teheti meg ezt:
 
-Ha a REST API használatával programozottan szeretné megtekinteni a nyilvános modellt, tekintse meg a modell REST API dokumentáció [beszerzése](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) című témakört.
+DTMI átalakítása abszolút elérési útra a függvényt használjuk a következővel `DtmiToPath` `IsValidDtmi` :
 
-```csharp
-var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
+```cs
+static string DtmiToPath(string dtmi)
+{
+    if (!IsValidDtmi(dtmi))
+    {
+        return null;
+    }
+    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
+    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
+}
 
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+static bool IsValidDtmi(string dtmi)
+{
+    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
+    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
+    return rx.IsMatch(dtmi);
+}
 ```
 
-Egy nyilvános modell parancssori felülettel való megtekintéséhez tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) parancsot.
+Az eredményül kapott elérési úttal és a tárház alap URL-címével a következő felületet tudjuk beszerezni:
 
-## <a name="company-models"></a>Vállalati modellek
+```cs
+const string _repositoryEndpoint = "https://devicemodels.azure.com";
 
-A vállalati modell tárháza az Azure IoT Model adattárának bérlője, amely a vállalaton vagy szervezeten belüli felhasználók által készített digitális kettős modelleket hozhat létre és kezelhet. A vállalati modellek csak a vállalat vagy szervezet hitelesített felhasználói számára érhetők el. A modell-tárház bérlői rendszergazdája engedélyeket rendelhet hozzá, és szabályozhatja a vállalat vagy szervezet más felhasználóinak hozzáférését a vállalati modell tárházában lévő modellekhez.
-
-### <a name="set-up-your-company-model-repository"></a>A vállalati modell tárházának beállítása
-
-A modell tárházának eléréséhez használja *munkahelyi vagy iskolai Azure Active Directory (Azure ad) fiókját* . Ha a szervezet már rendelkezik Azure AD-Bérlővel, az Azure AD-bérlőből felhasználói fiók (ok) és egyszerű szolgáltatásnév használható.
-
-Az Azure AD-bérlő beállításával és a felhasználók vagy szolgáltatások Azure AD-bérlőben való létrehozásával kapcsolatos további információkért lásd: [További információ](#additional-information) szakasz.
-
-- Ha Ön a szervezet első felhasználója a modell-adattár eléréséhez vagy a portálra való bejelentkezéshez, megkapja a **bérlői rendszergazda** szerepkört. Ez a szerepkör lehetővé teszi, hogy szerepköröket rendeljen a szervezet adattár-bérlője más felhasználóihoz.
-
-- Más szerepköröket egy **bérlői rendszergazda** , például **olvasási modellek** vagy **modellek létrehozásával**rendelhet hozzá.
-
-### <a name="understand-access-management"></a>A hozzáférés-kezelés ismertetése
-
-A következő táblázat összefoglalja a vállalati modell tárházának támogatott képességeit és a hozzájuk kapcsolódó engedélyeket:
-
-| Képesség  | Engedély| Leírás|
-|-------------|-----------|------------|
-|Modellek olvasása|Modellek olvasása|Alapértelmezés szerint a vállalati bérlő összes felhasználója megtekintheti a vállalati modelljeiket. Emellett a felhasználó megtekintheti a többi vállalat által mások számára megosztott privát modell (eke) t is.|
-|Hozzáférés kezelése|Hozzáférés kezelése|Kezelheti a felhasználói szerepkör-hozzárendelést (Hozzáadás vagy Eltávolítás) a szervezet többi felhasználója számára.|
-|Modellek létrehozása|Modellek létrehozása|Modellek létrehozása a vállalati modell adattárában.|
-|Modellek közzététele|Modellek közzététele|Tegye közzé a modelleket, hogy bárki megtekintse a modellt.|
-
-A következő táblázat összefoglalja a támogatott szerepköröket és azok képességeit a modell adattárában, amely a hozzáférés-kezeléshez használható.
-
-|Szerepkör|Képesség|
-|----|----------|
-|TenantAdministrator|Hozzáférés kezelése, modellek olvasása|
-|Létrehozó|Modellek létrehozása, modellek olvasása|
-|Publisher|Modellek közzététele, modellek olvasása|
-
-#### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>Biztonsági jogkivonat átadása a vállalati modellek REST APIhoz való elérésekor
-
-Ha a REST API-kat a privát vagy megosztott vállalati modellek kezelésére hívja meg, akkor JWT formátumban kell megadnia egy engedélyezési jogkivonatot a felhasználóhoz vagy az egyszerű szolgáltatáshoz. Tekintse meg a [További információk](#additional-information) című szakaszt, amelyből megtudhatja, hogyan KÉRHET le JWT tokent egy felhasználóhoz vagy egyszerű szolgáltatáshoz.
-
-A JWT jogkivonatot az API engedélyezési HTTP-fejlécében kell átadni a vállalati modellek vagy a megosztott modellek célzása során. A nyilvános modellek célzásakor nincs szükség az JWT tokenre.
-
-```csharp
-// sample token
-var authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCTI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
+string dtmiPath = DtmiToPath(dtmi.ToString());
+string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
+string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 ```
 
-### <a name="view-company-or-shared-models"></a>Vállalat vagy megosztott modellek megtekintése
+## <a name="publish-a-model"></a>Modell közzététele
 
-Az adattár-bérlő *olvasói* szerepkörének tagjának kell lennie, vagy a modellt meg kell osztani Önnel, hogy beolvassa a modellt. Megtekintheti az Önnel megosztott, közzé nem tett modellek listáját, valamint az Önnel megosztott közzétett modellek listáját. Alapértelmezés szerint a felhasználók elolvashatják a vállalat modelljeit, a többi vállalat által megosztott modelleket, valamint az összes nyilvános modellt.
+> [!Important]
+> Olyan GitHub-fiókkal kell rendelkeznie, amely lehetővé teszi modellek beküldését a nyilvános DMR.
 
-Vállalat vagy közös modell megtekintése a portál használatával:
+1. A nyilvános GitHub-tárház elágazása: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
+1. Az elágazó tárház klónozása. Opcionálisan létrehozhat egy új ágat, hogy a módosítások elszigetelve maradjanak a `main` fiókirodában.
+1. Adja hozzá az új felületeket a `dtmi` mappához a mappa/fájlnév konvenció használatával. Lásd: [Add-Model](#add-model) eszköz.
+1. Ellenőrizze a modelleket helyileg a [parancsfájlok használatával a változások érvényesítése](#validate-files) szakaszban.
+1. Véglegesítse a módosításokat helyileg, és küldje el az elágazásba.
+1. Az elágazásból hozzon létre egy olyan PR-t, amely az ágat célozza meg `main` . Lásd: [probléma létrehozása vagy lekéréses kérelmekre](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) vonatkozó dokumentumok.
+1. Tekintse át a [PR-követelményeket](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md).
 
-1. Jelentkezzen be az [Azure IoT Model adattár-portálra](https://aka.ms/iotmodelrepo).
+A PR egy sor GitHub-műveletet indít el, amely érvényesíti az új elküldött felületeket, és gondoskodik arról, hogy a lekéréses kérelmek megfeleljenek az összes ellenőrzésnek.
 
-1. **Vállalati modellek** kibontása – **Közzététel** nélkül a bal oldali panelen
+A Microsoft három munkanapon belül minden ellenőrzéssel megválaszolja a lekéréses kérelmeket.
 
-    ![Vállalati modellek megtekintése](./media/concepts-model-repository/view-company-models.png)
+### <a name="add-model"></a>modell hozzáadása
 
-1. Megosztott modellek kibontása **– Közzététel** nélkül a bal oldali panelen
+A következő lépések bemutatják, hogyan segíti az add-model.js-szkript az új felület hozzáadását. A parancsfájl futtatásához Node.js szükséges:
 
-    ![Megosztott modellek megtekintése](./media/concepts-model-repository/view-shared-models.png)
+1. A parancssorban navigáljon a helyi git-tárházhoz.
+1. Az `npm install` parancs futtatása
+1. Az `npm run add-model <path-to-file-to-add>` parancs futtatása
 
-Ha a REST API használatával szeretne megtekinteni egy vállalatot vagy közös modellt, tekintse meg a [modell Beolvasása](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) REST API dokumentációját. Tekintse meg a [biztonsági jogkivonatok átadása a vállalati modellekhez való hozzáféréskor REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) információt arról, hogyan lehet a http-KÉRELEMben JWT-hitelesítési fejlécet továbbítani.
+Tekintse meg a konzol kimenetét a hibaüzenetek megtekintéséhez.
 
-```csharp
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
-```
+### <a name="local-validation"></a>Helyi ellenőrzés
 
-Ha a parancssori felület használatával szeretné megtekinteni a vállalati modellt vagy a megosztott modellt, tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) parancsot.
+Ugyanezeket az ellenőrzési ellenőrzéseket helyileg is futtathatja, mielőtt elküldené a PR-t, hogy segítsen a problémák előzetes diagnosztizálásában.
 
-### <a name="manage-roles"></a>Szerepkörök kezelése
+#### <a name="validate-files"></a>érvényesítés – fájlok
 
-A bérlői rendszergazda szerepköröket rendelhet hozzá az adattár-bérlőben található felhasználókhoz, így saját modelleket hozhat létre a vállalat vagy szervezet számára, a modelleket tehet közzé vagy szerepköröket kezelhet más felhasználók számára.
+`npm run validate-files <file1.json> <file2.json>` ellenőrzi, hogy a fájl elérési útja megfelel-e a várt mappának és fájlneveknek.
 
-Felhasználó hozzáadása modell-tárház bérlői szerepkörhöz a portál használatával:
+#### <a name="validate-ids"></a>azonosítók ellenőrzése
 
-1. Jelentkezzen be az [Azure IoT Model adattár-portálra](https://aka.ms/iotmodelrepo).
+`npm run validate-ids <file1.json> <file2.json>` ellenőrzi, hogy a dokumentumban meghatározott összes azonosító ugyanazt a gyökeret használja-e, mint a fő azonosító.
 
-1. Válassza a **hozzáférés-kezelés** lehetőséget a bal oldali ablaktáblán, majd válassza a **+ Hozzáadás**lehetőséget. Az **engedély hozzáadása** panelen írja be annak a felhasználónak a munkahelyi címeit, amelyet hozzá szeretne adni a szerepkörhöz:
+#### <a name="validate-deps"></a>ellenőrzés – Deps
 
-    ![Munkahelyi címek hozzáadása](./media/concepts-model-repository/add-user.png)
+`npm run validate-deps <file1.json> <file2.json>` ellenőrzi, hogy az összes függőség elérhető-e a `dtmi` mappában.
 
-1. Válassza ki azt a szerepkört, amelyhez hozzá szeretné adni a felhasználót a **szerepkör** legördülő listából. Ezután válassza a **Mentés**lehetőséget:
+#### <a name="validate-models"></a>ellenőrzés – modellek
 
-    ![Szerepkör kiválasztása](./media/concepts-model-repository/choose-role.png)
-
-### <a name="upload-a-model"></a>Modell feltöltése
-
-A modellnek a vállalati modell tárházba való feltöltéséhez az adattár bérlője **létrehozói** szerepkörének tagjának kell lennie.
-
-Ezek a modellek nincsenek közzétéve, és alapértelmezés szerint csak a szervezeten belüli felhasználók férhetnek hozzá. Egy vagy több közzé nem tett modellt is megoszthat külső felhasználókkal.
-
-A feltöltött modellek nem változtathatók meg.
-
-Ezeknek a modelleknek a modell-azonosítóinak globálisan egyedinek kell lenniük az összes feltöltött modell összes tárház-bérlője között.
-
-Modell feltöltése a portál használatával:
-
-1. Jelentkezzen be az [Azure IoT Model adattár-portálra](https://aka.ms/iotmodelrepo).
-
-1. Bontsa ki a **vállalati modellek** elemet a bal oldali ablaktáblán, és válassza a **modell létrehozása**lehetőséget. Ezután válassza a **JSON importálása**lehetőséget.
-
-    ![Modell létrehozása](./media/concepts-model-repository/create-model.png)
-
-1. Válassza ki a feltölteni kívánt fájlt. Ha a portál sikeresen érvényesíti a modellt, válassza a **Mentés**lehetőséget.
-
-Modell feltöltéséhez a REST API használatával tekintse meg a [Model API létrehozása](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) című témakört. Tekintse meg a [biztonsági jogkivonatok átadása a vállalati modellekhez való hozzáféréskor REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) információt arról, hogyan lehet a http-KÉRELEMben JWT-hitelesítési fejlécet továbbítani.
-
-```csharp
-var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
-```
-
-Ha a parancssori felület használatával szeretne feltölteni egy modellt, tekintse meg az Azure CLI [modell létrehozása](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) parancsot.
-
-### <a name="publish-a-model"></a>Modell közzététele
-
-Modell közzétételéhez az alábbi követelményeknek kell megfelelni:
-
-1. Modell közzétételéhez a szervezetének a [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) tagjának kell lennie. Partnerközpontfiók létrehozásához lásd: [Partnerközpontfiók létrehozása](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). A fiók jóváhagyása után közzéteheti a modelleket. További információért lásd a [Partnerközponttal kapcsolatos gyakori kérdéseket](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
-
-2. A felhasználónak az adattár bérlője *közzétevői* szerepkör tagjának kell lennie.
-
-A szervezeten belüli felhasználók által létrehozott és közzétett modellek *közzétett modellként*láthatók. Ezek a modellek nyilvánosak, és a **nyilvános modellekben**bárki megtalálhatja őket.
-
-Modell közzététele a portálon:
-
-1. Jelentkezzen be az [Azure IoT Model adattár-portálra](https://aka.ms/iotmodelrepo).
-
-2. Bontsa ki a **vállalati modellek** elemet a bal oldali ablaktáblán, és válassza ki a közzétenni kívánt modellt. Ezután válassza a **Publish** (Közzététel) lehetőséget.
-
-    ![Modell közzététele](./media/concepts-model-repository/publish-model.png)
-
-> [!NOTE]
-> Ha értesítést kap arról, hogy nem rendelkezik Microsoft-partneri (MPN-) AZONOSÍTÓval, kövesse az értesítés regisztrációs lépéseit. További információt a szakasz elején található követelmények című témakörben talál.
-
-Ha a REST API használatával szeretne közzétenni egy modellt, tekintse meg a [modell közzététele](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API dokumentációját. Adja meg a lekérdezési karakterlánc paramétert `update-metadata=true` egy modell közzétételéhez a REST API használatával. Tekintse meg a [biztonsági jogkivonatok átadása a vállalati modellekhez való hozzáféréskor REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) információt arról, hogyan lehet a http-KÉRELEMben JWT-hitelesítési fejlécet továbbítani.
-
-Ha a parancssori felületen szeretné közzétenni a modelleket, tekintse meg a [modell közzététele](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) az Azure CLI-ben című témakört.
-
-> [!NOTE]
-> A minősítési tesztek futtatása előtt közzé kell tenni a modelleket a modell adattárában. További információ: [IoT Plug and Play-eszközök tanúsítása](howto-certify-device.md).
-
-### <a name="share-a-model"></a>Modell megosztása
-
-Megoszthatja a külső szervezetek felhasználóival létrehozott céges modelleket. Ily módon lehetővé teheti a közreműködők számára, hogy megtekintsék és fejlesszenek a saját vállalati modelljeivel rendelkező megoldásokat.
-
-Előfordulhat például, hogy egy eszköz gyártója a vállalat vagy a szervezet számára szeretné megőrizni a saját modelleket. Lehetnek olyan ügyfelek, akiknek szükségük van arra, hogy az eszköz képességei bizalmasak maradjanak.
-
-A modellek megosztása több vállalat vagy szervezet számára lehetővé teszi a nem nyilvános modellekhez való biztonságos hozzáférést.
-
-Vállalati modell megosztása a portál használatával:
-
-- Ha Ön a modell létrehozója, a **megosztás** és a gombokkal **való** megosztása aktív, ha megtekinti a modellt a **vállalati modellek** szakaszban.
-
-    ![Modell megosztása](./media/concepts-model-repository/share-model.png)
-
-- A modell külső felhasználóval való megosztásához válassza a **megosztás**lehetőséget. A **modell megosztása** panelen adja meg a külső felhasználó e-mail-címét, majd válassza a **Mentés**lehetőséget.
-
-- Ha meg szeretné tekinteni azokat a felhasználókat, akikkel megosztotta a modellt, válassza a **megosztott a**következővel lehetőséget.
-
-- Ha meg szeretné szüntetni a modell megosztását egy adott felhasználóval, válassza ki a felhasználót a **megosztott a** (z) ablaktáblán a felhasználók listájából. Ezután válassza az **Eltávolítás** lehetőséget, és erősítse meg, ha a rendszer kéri.
-
-    ![Megosztás leállítása](./media/concepts-model-repository/stop-sharing.png)
-
-## <a name="additional-information"></a>További információ
-
-Az alábbi témakörök hasznosak lehetnek az Azure AD használatakor:
-
-- Új Azure AD-bérlő létrehozásához tekintse meg [az új bérlő létrehozása az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)című témakört. A legtöbb szervezet már rendelkezik Azure AD-Bérlővel.
-
-- Ha felhasználókat vagy vendég felhasználókat szeretne hozzáadni egy Azure AD-bérlőhöz, tekintse meg a [felhasználók hozzáadása vagy törlése az Azure ad](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)-ben című témakört.
-
-- Egyszerű szolgáltatás Azure AD-bérlőhöz való hozzáadásával kapcsolatban tekintse meg a [hogyan használható a portál egy Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-- Ha szeretné megtudni, hogyan szerezhet be JWT tokent az Azure AD-ből a REST API-k hívásakor, tekintse meg [a jogkivonat beszerzése az Azure ad-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)című témakört.
+A [DTDL-ellenőrzési minta](https://github.com/Azure-Samples/DTDL-Validator) futtatásával ellenőrizheti a modelleket helyileg.
 
 ## <a name="next-steps"></a>Következő lépések
 

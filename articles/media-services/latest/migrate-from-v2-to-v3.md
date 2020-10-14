@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297739"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017743"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -44,8 +44,8 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 *  A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. Azure Resource Manager sablonok használatával átalakításokat, folyamatos átviteli végpontokat, élő eseményeket és egyéb műveleteket hozhat létre és helyezhet üzembe.
 * [OpenAPI-specifikáció (korábbi nevén henceg)](https://aka.ms/ams-v3-rest-sdk) dokumentum.
     Minden szolgáltatás-összetevő számára elérhetővé teszi a sémát, beleértve a fájl alapú kódolást is.
-* A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
-* [Azure CLI](https://aka.ms/ams-v3-cli-ref) -integráció az egyszerű parancsfájlok támogatásához.
+* A [.net](/dotnet/api/overview/azure/mediaservices/management), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management), a [Python](/python/api/overview/azure/mediaservices/management), a [Java](/java/api/overview/azure/mediaservices/management), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
+* [Azure CLI](/cli/azure/ams) -integráció az egyszerű parancsfájlok támogatásához.
 
 ### <a name="new-features"></a>Új funkciók
 
@@ -69,7 +69,7 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
     * v3- [eszközök](assets-concept.md)megtekintése (nem felügyelt) 
     * [az API-k elérésére vonatkozó információk beolvasása](./access-api-howto.md). 
 
-    Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+    Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), a [CLI](/cli/azure/ams)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 * A Media szolgáltatás számára fenntartott egységeket (MRUs-ket) a fiókjában kell kiépíteni a feladatok párhuzamosságának és teljesítményének szabályozása érdekében, különösen a videó-vagy hangelemzést is beleértve. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. A MRUs a parancssori felület 2,0-es verziójával kezelheti [Media Services v3](media-reserved-units-cli-how-to.md)esetén, a [Azure Portal](../previous/media-services-portal-scale-media-processing.md)vagy a [v2 API](../previous/media-services-dotnet-encoding-units.md)-k használatával. MRUs kell kiépíteni, függetlenül attól, hogy Media Services v2 vagy V3 API-t használ.
 * Media Services a V3 API-val létrehozott entitásokat nem lehet a v2 API-val felügyelni.  
 * A v2 API-ban lévő összes entitás automatikusan megjelenik a V3 API-ban.  A következő példa a két, nem kompatibilis verzióban található entitásokra mutat példát:  

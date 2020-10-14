@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88942378"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016995"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Oktatóanyag: Azure Media Services-események tárolása az Azure-ban Log Analytics
 
@@ -43,11 +43,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 > * [Azure-előfizetés](how-to-set-azure-subscription.md)
 > * Egy [Media Services](create-account-howto.md) fiók és erőforráscsoport.
 > * Az [FFmpeg](https://ffmpeg.org/download.html) telepítése az operációs rendszerhez.
-> * [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) munkaterület
+> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) munkaterület
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Előfizetés Media Services eseményre a Logic App használatával
 
-1. Ha még nem tette meg, hozzon létre egy [log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) munkaterületet a Azure Portalban. Szüksége lesz a munkaterület-AZONOSÍTÓra és az egyik kulcsra, hogy a böngészőablak nyitva legyen. Ezután nyissa meg a portált egy másik lapon vagy ablakban.
+1. Ha még nem tette meg, hozzon létre egy [log Analytics](../../azure-monitor/learn/quick-create-workspace.md) munkaterületet a Azure Portalban. Szüksége lesz a munkaterület-AZONOSÍTÓra és az egyik kulcsra, hogy a böngészőablak nyitva legyen. Ezután nyissa meg a portált egy másik lapon vagy ablakban.
 
 1. Navigáljon a Azure Media Services-fiókjához, és válassza az **események**lehetőséget. Ekkor megjelenik az Azure Media Services eseményekre való feliratkozás összes módszere.
     > [!div class="mx-imgBorder"]
@@ -140,7 +140,7 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
     > [!div class="mx-imgBorder"]
     > ![A törzs és a függvény lépéseinek ellenőrzése](media/tutorial-events-log-analytics/verify-changes-to-json.png)
 
-1. Ha megvizsgálja az erőforráscsoport összes erőforrását, egy logikai alkalmazás és két logikai alkalmazás API-összekötő jelenik meg, amelyek közül az egyik az esemény, egy pedig a Log Analytics. Event Grid rendszertémakörökkel kapcsolatos további információkért olvassa el [Event Grid Rendszertémaköröket](https://docs.microsoft.com/azure/event-grid/system-topics).
+1. Ha megvizsgálja az erőforráscsoport összes erőforrását, egy logikai alkalmazás és két logikai alkalmazás API-összekötő jelenik meg, amelyek közül az egyik az esemény, egy pedig a Log Analytics. Event Grid rendszertémakörökkel kapcsolatos további információkért olvassa el [Event Grid Rendszertémaköröket](../../event-grid/system-topics.md).
     > [!div class="mx-imgBorder"]
     > ![Az erőforráscsoport összes új erőforrásának megjelenítése](media/tutorial-events-log-analytics/contoso-rg-listing.png)
 
@@ -229,6 +229,6 @@ Az élő streamtel Azure Media Services a logikai alkalmazás folyamatát kivál
 
 Ha nem szeretné tovább használni az oktatóanyag során létrehozott erőforrásokat, győződjön meg róla, hogy törli az erőforráscsoport összes erőforrását, vagy továbbra is fizetnie kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Különböző lekérdezéseket hozhat létre, és mentheti őket. Ezek hozzáadhatók az [Azure irányítópulthoz](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards).
+Különböző lekérdezéseket hozhat létre, és mentheti őket. Ezek hozzáadhatók az [Azure irányítópulthoz](../../azure-monitor/learn/tutorial-logs-dashboards.md).

@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229361"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018695"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
- Ebben az oktatóanyagban az SQL Server Management Studio (SSMS) használatával fog csatlakozni Azure-beli kiszolgálójához, hogy konfigurálja a kiszolgáló rendszergazdája és a modelladatbázis szerepköreit. Megismerheti a [Táblázatos modell parancsnyelvét (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) is. A TMSL egy JSON-alapú parancsnyelv az 1200-as és magasabb kompatibilitási szintű táblázatos modellekhez. Számos táblázatos modellbeli feladat automatizálására használható. A TMSL-t gyakran a PowerShellel együtt használják, ebben az oktatóanyagban azonban az XMLA lekérdezésszerkesztőt fogja használni az SSMS-ben. Az oktatóanyag során a következő feladatokat fogja elvégezni: 
+ Ebben az oktatóanyagban az SQL Server Management Studio (SSMS) használatával fog csatlakozni Azure-beli kiszolgálójához, hogy konfigurálja a kiszolgáló rendszergazdája és a modelladatbázis szerepköreit. Megismerheti a [Táblázatos modell parancsnyelvét (TMSL)](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) is. A TMSL egy JSON-alapú parancsnyelv az 1200-as és magasabb kompatibilitási szintű táblázatos modellekhez. Számos táblázatos modellbeli feladat automatizálására használható. A TMSL-t gyakran a PowerShellel együtt használják, ebben az oktatóanyagban azonban az XMLA lekérdezésszerkesztőt fogja használni az SSMS-ben. Az oktatóanyag során a következő feladatokat fogja elvégezni: 
   
 > [!div class="checklist"]
 > * Kiszolgálónév lekérdezése a portálról
@@ -33,7 +33,7 @@ Az Azure Analysis Services felhasználói biztonságáról a [Hitelesítés és 
 - Létrehozott egy [Azure Analysis Services-kiszolgálót](../analysis-services-create-server.md) az előfizetésében.
 - [Kiszolgáló-rendszergazdai](../analysis-services-server-admins.md) engedélyekkel rendelkezik.
 - [Hozzáadta az adventureworks mintamodellt](../analysis-services-create-sample-model.md) a kiszolgálójához.
-- [Telepítette az SQL Server Management Studio (SSMS) legújabb verzióját](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+- [Telepítette az SQL Server Management Studio (SSMS) legújabb verzióját](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -82,7 +82,7 @@ Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozz�
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Felhasználó hozzáadása a modelladatbázis-rendszergazdai szerepkörhöz
 
-Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben már meglévő Internet Sales Administrator szerepkörhöz. Ez a szerepkör teljes (rendszergazdai) hozzáféréssel rendelkezik az adventureworks minta-modelladatbázishoz. A feladat a [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL-parancsot használja az Ön számára létrehozott szkriptben.
+Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben már meglévő Internet Sales Administrator szerepkörhöz. Ez a szerepkör teljes (rendszergazdai) hozzáféréssel rendelkezik az adventureworks minta-modelladatbázishoz. A feladat a [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) TMSL-parancsot használja az Ön számára létrehozott szkriptben.
 
 1. Az **Object Explorerben** bontsa ki az **Adatbázisok** > **adventureworks** > **Szerepkörök** elemet. 
 2. Kattintson a jobb gombbal az **Internet Sales Administrator** elemre, majd kattintson a **Szerepkör szkriptelése:** > **Létrehozás vagy áthelyezés ide:** > **Új lekérdezésszerkesztő ablak**.
@@ -98,7 +98,7 @@ Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Új modelladatbázis-szerepkör hozzáadása és felhasználó vagy csoport felvétele
 
-Ebben a feladatban a [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) parancsot fogja használni egy TMSL-szkriptben egy új Internet Sales Global szerepkör létrehozására, *olvasási* engedélyt ad a szerepkörnek, és hozzáad egy felhasználói vagy csoportfiókot az Azure AD-ból.
+Ebben a feladatban a [Create](/analysis-services/tmsl/create-command-tmsl) parancsot fogja használni egy TMSL-szkriptben egy új Internet Sales Global szerepkör létrehozására, *olvasási* engedélyt ad a szerepkörnek, és hozzáad egy felhasználói vagy csoportfiókot az Azure AD-ból.
 
 1. Az **Object Explorerben** kattintson a jobb gombbal az **adventureworks** adatbázisra, majd kattintson az **Új lekérdezés** > **XMLA** elemre. 
 2. Másolja ki és illessze be az alábbi TMSL-szkriptet a lekérdezésszerkesztőbe:
@@ -139,9 +139,8 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/analysis-services/tmsl/
 Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **szerepkör-tulajdonságok**  >  **tagság** használatával távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal a szerepkörre, majd kattintson a **Törlés**parancsra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanult csatlakozni Azure AS-kiszolgálójához, megismerkedett az adventureworks minta-modelladatbázissal és annak tulajdonságaival az SSMS-ben. Elsajátította az SSMS és a TMSL-szkriptek használatát felhasználók vagy csoportok meglévő vagy új szerepkörökhöz adására. Most, hogy konfigurálta a kiszolgáló és a minta-modelladatbázis felhasználói engedélyeit, Önnel együtt mások is csatlakozhatnak ahhoz olyan ügyfélalkalmazások használatával, mint a Power BI. További tudnivalók a következő oktatóanyagban. 
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Csatlakozás a Power BI Desktoppal](analysis-services-tutorial-pbid.md)
-

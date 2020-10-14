@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28f414c5eaaea7b987f2c3694cb8fc73b70838e9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050452"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018763"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Az Azure Analysis Services kezelése a PowerShell-lel
 
@@ -46,21 +46,21 @@ Dokumentáció – [SQLServer-hivatkozás](/powershell/module/sqlserver)
 
 |Parancsmag|Leírás|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Meghívás – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
-|[Meghívás – ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Adatbázis feldolgozása|  
-|[Meghívás – ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Partíció feldolgozása.| 
-|[Meghívás – ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Tábla feldolgozása|  
-|[Egyesítés – partíció](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Partíció egyesítése.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Analysis Services adatbázis visszaállítása.| 
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
+|[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
+|[Meghívás – ASCmd](/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
+|[Meghívás – ProcessASDatabase](/powershell/module/sqlserver/invoke-processasdatabase)|Adatbázis feldolgozása|  
+|[Meghívás – ProcessPartition](/powershell/module/sqlserver/invoke-processpartition)|Partíció feldolgozása.| 
+|[Meghívás – ProcessTable](/powershell/module/sqlserver/invoke-processtable)|Tábla feldolgozása|  
+|[Egyesítés – partíció](/powershell/module/sqlserver/merge-partition)|Partíció egyesítése.|  
+|[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase)|Analysis Services adatbázis visszaállítása.| 
   
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
-* [SQL Server PowerShell-modul letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [SSMS letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SQL Server PowerShell](/sql/powershell/sql-server-powershell)      
+* [SQL Server PowerShell-modul letöltése](/sql/ssms/download-sql-server-ps-module)   
+* [SSMS letöltése](/sql/ssms/download-sql-server-management-studio-ssms)   
 * [SqlServer modul a PowerShell-galéria](https://www.powershellgallery.com/packages/SqlServer)    
-* [Táblázatos modellek programozása a 1200-es és magasabb kompatibilitási szinthez](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)
+* [Táblázatos modellek programozása a 1200-es és magasabb kompatibilitási szinthez](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

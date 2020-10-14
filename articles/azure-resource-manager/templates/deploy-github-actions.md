@@ -3,12 +3,13 @@ title: Resource Manager-sablonok üzembe helyezése GitHub-műveletek használat
 description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-műveletek használatával telepíteni.
 ms.topic: conceptual
 ms.date: 07/02/2020
-ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: github-actions-azure
+ms.openlocfilehash: cea099088005fa91e1b3e9a793105df4796a66ee
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85854740"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018576"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -152,6 +153,6 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 1. Válassza a bal oldali menüben a **telepítés – Storage – fiók – sablon** (feladatnév) elemet. A feladatok neve a munkafolyamatban van definiálva.
 1. Válassza ki az **ARM-sablon üzembe helyezése** (lépés neve) elemet a kibontásához. Az REST API választ láthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).

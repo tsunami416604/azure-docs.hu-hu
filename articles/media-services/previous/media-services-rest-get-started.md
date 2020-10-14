@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264470"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019477"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Ismerkedés a tartalom igény szerinti kézbesítésével a REST használatával
 
@@ -353,7 +353,7 @@ Miután beállította a AccessPolicy és a lokátort, a rendszer feltölti a té
 További információ az Azure Storage-Blobok használatáról: [blob Service REST API](/rest/api/storageservices/blob-service-rest-api).
 
 ### <a name="update-the-assetfile"></a>A AssetFile frissítése
-Most, hogy feltöltötte a fájlt, frissítse a FileAsset méretét (és egyéb adatait). Példa:
+Most, hogy feltöltötte a fájlt, frissítse a FileAsset méretét (és egyéb adatait). Például:
 
 ```console
 MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
@@ -489,7 +489,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 ### <a name="create-a-job"></a>Feladat létrehozása
 Minden feladathoz egy vagy több feladat tartozhat, attól függően, hogy milyen típusú feldolgozást szeretne elvégezni. A REST APIon a feladatok és a hozzájuk kapcsolódó feladatok kétféleképpen hozhatók létre: a feladatok a feladat entitások navigációs tulajdonságában vagy a OData kötegelt feldolgozáson keresztül is meghatározhatók. A Media Services SDK batch-feldolgozást használ. A cikkben szereplő példák olvashatósága érdekében azonban a feladatok beágyazottnak vannak meghatározva. További információ a Batch-feldolgozásról: [Open adatprotokoll (OData) batch Processing](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Az alábbi példa bemutatja, hogyan hozhat létre és küldhet el egy feladatot egy adott feladattal egy adott felbontás és minőség alapján. A következő dokumentációs szakasz tartalmazza a Media Encoder Standard processzor által támogatott összes [feladathoz tartozó beállításkészlet](/azure/media-services/previous/media-services-mes-presets-overview) listáját.  
+Az alábbi példa bemutatja, hogyan hozhat létre és küldhet el egy feladatot egy adott feladattal egy adott felbontás és minőség alapján. A következő dokumentációs szakasz tartalmazza a Media Encoder Standard processzor által támogatott összes [feladathoz tartozó beállításkészlet](./media-services-mes-presets-overview.md) listáját.  
 
 **HTTP-kérés**
 
@@ -873,7 +873,7 @@ Miután beállította a AccessPolicy és a lokátort, letöltheti a fájlokat az
 
 További információ az Azure Storage-Blobok használatáról: [blob Service REST API](/rest/api/storageservices/blob-service-rest-api).
 
-A korábban végrehajtott kódolási feladatoknak köszönhetően (az adaptív MP4-készletbe való kódolás) több MP4-fájl is van, amelyeket fokozatosan le is tölthet. Példa:    
+A korábban végrehajtott kódolási feladatoknak köszönhetően (az adaptív MP4-készletbe való kódolás) több MP4-fájl is van, amelyeket fokozatosan le is tölthet. Például:    
 
 * `https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z`
 

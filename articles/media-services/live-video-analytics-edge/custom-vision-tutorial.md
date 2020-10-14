@@ -3,12 +3,12 @@ title: Élő videó elemzése a IoT Edge és az Azure élő videó-elemzésével
 description: Megtudhatja, hogyan használhatja a Custom Visiont olyan tárolós modell kiépítéséhez, amely képes észlelni a játékok teherautóját, és az élő videó-elemzések AI-bővíthetőségi funkcióját használja a IoT Edge (LVA) szolgáltatásban a modellnek az élő videó streamből való észlelésére.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 7989b3636fe953b8110e356506a5867fefd2d8b6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940174"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016790"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -32,12 +32,12 @@ Ez az oktatóanyag a következőket mutatja be:
 Javasoljuk, hogy a Kezdés előtt olvassa el a következő cikkeket: 
 
 * [Élő videó-elemzések IoT Edge áttekintése](overview.md)
-* [Az Azure Custom Vision áttekintése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)
+* [Az Azure Custom Vision áttekintése](../../cognitive-services/custom-vision-service/overview.md)
 * [Élő videó-elemzések IoT Edge terminológiában](terminology.md)
 * [A Media Graph alapfogalmai](media-graph-concept.md)
 * [Live Video Analytics videófelvétel nélkül](analyze-live-video-concept.md)
 * [Élő videó-elemzés futtatása saját modellel](use-your-model-quickstart.md)
-* [Oktatóanyag: IoT Edge modul fejlesztése](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Oktatóanyag: IoT Edge modul fejlesztése](../../iot-edge/tutorial-develop-for-linux.md)
 * [Az üzembe helyezés szerkesztése. * .template.jsbekapcsolva](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -64,17 +64,17 @@ Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-k
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Custom Vision áttekintése":::
 
 Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontját elérő video stream képkockasebességét.
-A HTTP-bővítmény csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a Custom Vision használatával létrehozott Toy Truck detektor modell. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub).
+A HTTP-bővítmény csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a Custom Vision használatával létrehozott Toy Truck detektor modell. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision Toy Detection-modell létrehozása és üzembe helyezése 
 
 Ahogy a neve Custom Vision sugallja, használhatja azt a saját egyéni objektum-Kiderítő vagy a felhőben való besorolás létrehozásához. Egy egyszerű, könnyen használható és intuitív kezelőfelületet biztosít a felhőben vagy az Edge-tárolón keresztül üzembe helyezhető egyéni látási modellek létrehozásához. 
 
-A Toy Truck-detektor létrehozásához azt javasoljuk, hogy kövesse ezt az egyéni jövőképet a web Portal [gyors üzembe helyezési cikke](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) segítségével.
+A Toy Truck-detektor létrehozásához azt javasoljuk, hogy kövesse ezt az egyéni jövőképet a web Portal [gyors üzembe helyezési cikke](../../cognitive-services/custom-vision-service/get-started-build-detector.md) segítségével.
 
 További megjegyzések:
  
-* Ebben az oktatóanyagban ne használja a gyors üzembe helyezési cikk [előfeltételeinek részeként](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#prerequisites)megadott mintaképeket. Ehelyett kihasználunk egy bizonyos képérzékelőt a Toy-detektor egyéni vizualizációs modelljének létrehozásához, javasoljuk, hogy [ezeket a képeket](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) akkor használja, ha a gyors útmutatóban megkéri a [betanítási lemezképek kiválasztását](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#choose-training-images) .
+* Ebben az oktatóanyagban ne használja a gyors üzembe helyezési cikk [előfeltételeinek részeként](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)megadott mintaképeket. Ehelyett kihasználunk egy bizonyos képérzékelőt a Toy-detektor egyéni vizualizációs modelljének létrehozásához, javasoljuk, hogy [ezeket a képeket](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) akkor használja, ha a gyors útmutatóban megkéri a [betanítási lemezképek kiválasztását](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) .
 * A gyors üzembe helyezési kép szakaszban győződjön meg arról, hogy a képen látható Truck a "Delivery Truck" címkével van megjelölve.
 
 Ha elkészült, a modell készen áll az Ön megelégedésére, a teljesítmény lapon lévő Exportálás gombra kattintva exportálhatja azt egy Docker-tárolóba. Győződjön meg arról, hogy a Linux lehetőséget választja a tároló platform típusaként. Ez az a platform, amelyen a tároló futni fog. A tárolót letöltő gép lehet Windows vagy Linux. Az alábbi utasítások a Windows rendszerű gépre letöltött tároló fájlon alapulnak.
@@ -171,7 +171,7 @@ A hívások következő sorozata törli az erőforrásokat:
     
 ## <a name="interpret-the-results"></a>Az eredmények értelmezése
 
-A Media Graph futtatásakor a HTTP-bővítmény processzor-csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A kimeneti ablakban látható üzenetek törzs szakaszt és applicationProperties szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+A Media Graph futtatásakor a HTTP-bővítmény processzor-csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A kimeneti ablakban látható üzenetek törzs szakaszt és applicationProperties szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 A következő üzenetekben az élő videó elemzési modulja az alkalmazás tulajdonságait és a törzs tartalmát határozza meg.
 
@@ -298,7 +298,7 @@ Vegye figyelembe a következőket a fenti üzenetekben:
 * a "Body" az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, ezért a törzs az "előrejelzések" elnevezésű következtetések tömbjét tartalmazza.
 * a "jóslatok" szakasz azon előrejelzések listáját tartalmazza, ahol a Toy Delivery Truck (címke = szállítási teherautó) található a keretben. Ahogy azt szeretné, a szállítási kamion az egyéni címkét adja meg, amelyet a Toy Truck számára a saját betanított modelljéhez adott meg, és a modell a játék teherautóját a különböző valószínűségi megbízhatósági pontszámokkal rendelkező bemeneti videóban azonosítja.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha szeretné kipróbálni a más oktatóanyagokat vagy gyors útmutatókat, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
@@ -307,7 +307,6 @@ Ha szeretné kipróbálni a más oktatóanyagokat vagy gyors útmutatókat, tart
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Megkeresheti az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőséggel](https://www.onvif.org/conformant-products/) rendelkező termékek oldalon. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
-* Az Azure Linux rendszerű virtuális gépek helyett AMD64-vagy x64-es Linux-eszközt használjon. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. A [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)című témakör útmutatását követheti. 
+* Az Azure Linux rendszerű virtuális gépek helyett AMD64-vagy x64-es Linux-eszközt használjon. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. A [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren](../../iot-edge/how-to-install-iot-edge-linux.md)című témakör útmutatását követheti. 
 
-Ezután regisztrálja az eszközt az Azure IoT Hub az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)című témakör útmutatását követve.
-
+Ezután regisztrálja az eszközt az Azure IoT Hub az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre](../../iot-edge/quickstart-linux.md)című témakör útmutatását követve.

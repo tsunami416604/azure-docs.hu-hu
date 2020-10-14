@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87047496"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018882"
 ---
 # <a name="animated-character-detection-preview"></a>Animált karakterek felismerése (előzetes verzió)
 
@@ -55,7 +55,7 @@ Mivel a próbaverziós fiókokban a Custom Vision-integrációt Video Indexer fe
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Custom Vision-fiók összekötése (csak fizetett fiókok esetében)
 
-Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fiókot kell összekötnie. Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
+Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fiókot kell összekötnie. Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](../../cognitive-services/custom-vision-service/overview.md).
 
 > [!NOTE]
 > Mindkét fióknak ugyanabban a régióban kell lennie. A Custom Vision integráció jelenleg nem támogatott a japán régióban.
@@ -160,7 +160,7 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
 1. Custom Vision-fiók összekötése.
 
     Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fiókot kell összekötnie. <br/>
-    Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
+    Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](../../cognitive-services/custom-vision-service/overview.md).
 
     [Custom Vision-fiókjának összekapcsolásához használja az API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)-t.
 1. Hozzon létre egy animált karakterekből álló modellt.
@@ -212,6 +212,6 @@ Tekintse meg az animált karaktereket a generált JSON-fájlban.
 * A videóban kis vagy nagy méretű karakterek nem azonosíthatók megfelelően, ha a videó minősége gyenge.
 * Javasoljuk, hogy az animált karakterek (például egy animált sorozat) esetében használjon modellt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

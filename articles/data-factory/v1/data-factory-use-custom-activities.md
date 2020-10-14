@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997455"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017403"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Egyéni tevékenységek használata egy Azure Data Factory 1-es verziójú adatcsatornán
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -31,7 +31,7 @@ ms.locfileid: "88997455"
 A Azure Data Factory-folyamatokban két típusú tevékenység használható.
 
 - Adatáthelyezési [tevékenységek](data-factory-data-movement-activities.md) a [támogatott forrás-és fogadó adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats)közötti adatátvitel céljából.
-- [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) az adatok számítási szolgáltatásokkal, például az Azure HDInsight, a Azure batch és a Azure Machine learning használatával történő átalakításához.
+- [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) az adatok számítási szolgáltatásokkal, például az Azure HDInsight, a Azure batch és a Azure Machine learning Studio (klasszikus) használatával történő átalakításához.
 
 Ha olyan adattárból/adattárba szeretne áthelyezni egy Data Factory, amelyet nem támogat, hozzon létre **egyéni tevékenységet** saját adatáthelyezési logikával, és használja a folyamatot egy folyamaton belül. Hasonlóképpen, ha a Data Factory által nem támogatott módon kívánja átalakítani vagy feldolgozni az adatfeldolgozást, hozzon létre egy egyéni tevékenységet a saját Adatátalakítási logikával, és használja a folyamatot egy folyamaton belül.
 
@@ -1025,7 +1025,7 @@ A GitHubon található [Azure Data Factory helyi környezeti](https://github.com
 | Sample | Milyen egyéni tevékenységet végez |
 | --- | --- |
 | [Http-adatletöltő](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Az adatok letöltése egy HTTP-végpontról az Azure-ba Blob Storage a Data Factory egyéni C#-tevékenységével. |
-| [Twitter Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Meghívja a Azure Machine Learning Studio modellt, és elvégzi az érzelmek elemzését, pontozását, előrejelzését stb. |
+| [Twitter Hangulatelemzés minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Egy Azure Machine Learning Studio (klasszikus) modellt hív meg, és elvégzi az érzelmek elemzését, pontozását, előrejelzését stb. |
 | [R-szkript futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Az R-szkript meghívása RScript.exe futtatásával a HDInsight-fürtön, amelyen már telepítve van az R. |
 | [Több alkalmazástartomány .NET-tevékenység](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |A Data Factory Launcher által használt különböző szerelvény-verziókat használ |
 | [Modell újrafeldolgozása Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Azure Analysis Services-modell újrafeldolgozása. |

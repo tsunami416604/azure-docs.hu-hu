@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 67309aafe5c1bc841399006285a9862f711e4296
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948714"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018559"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -66,6 +66,13 @@ A Microsoft és a Red Hat egy integrált, közös elhelyezésű támogatási csa
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise Edition, és ha igen, Mennyibe kerül?
 
 A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, amely *előzetes* funkcióként vagy szolgáltatásként érhető el. Habár az Azure VMware-megoldáshoz készült VMware HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX EE szolgáltatás elérhetővé válik, 30 napos értesítést kap arról, hogy a számlázás átvált. Lehetősége van a szolgáltatás kikapcsolására/letiltására is.
+
+#### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Az Azure VMware-megoldás virtuális gépei a VMRC-ben kezelhetők?
+Igen, ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ (így az ESXi-gazdagépeket képes megoldani).
+
+#### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Van-e speciális útmutatás a VMRC Azure VMware-megoldású virtuális gépekkel történő telepítéséhez és használatához?
+Nem, használja a [VMware által megadott utasításokat](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) , és teljesíti az utasításokban megadott virtuálisgép-előfeltételeket. 
+
 
 ## <a name="compute-network-storage-and-backup"></a>Számítás, hálózat, tárolás és biztonsági mentés
 
@@ -153,7 +160,7 @@ A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből
 
 A privát felhőalapú szoftverek olyan ütemterv szerint frissülnek, amely nyomon követi a VMware-től származó szoftveres csomag kiadását. A saját felhő nem igényel állásidőt a frissítésekhez.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Milyen hálózati IP-cím megtervezésére van szükség a privát felhők helyszíni környezetekben való beépítéséhez?
 

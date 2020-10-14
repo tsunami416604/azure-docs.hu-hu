@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598276"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016825"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -30,7 +30,7 @@ A Microsoft Azure Media Services számos médiafájl-formátum kódolására has
 Media Services a streaming- [végpont](streaming-endpoint-concept.md) (forrás) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és igény szerinti tartalmat közvetlenül az ügyfél-lejátszó alkalmazásnak kézbesíti. A következő szakaszban említett Common Streaming Media-protokollok egyikét használja. A *dinamikus csomagolás* egy olyan szolgáltatás, amely minden folyamatos átviteli végponton szabványos.
 
 > [!NOTE]
-> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](/rest/api/media/), a [CLI](/cli/azure/ams)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>A forrásfájlok előkészítése a kézbesítéshez
 
@@ -88,7 +88,7 @@ Az alábbi lépések egy közös Media Services streaming-munkafolyamatot mutatn
 1. [Töltsön fel egy bemeneti fájlt](job-input-from-http-how-to.md) , például MP4, QuickTime/MOV vagy más támogatott fájlformátumot. Ezt a fájlt a köztes vagy a forrásfájl is nevezik. A támogatott formátumok listáját lásd: [a standard kódoló által támogatott formátumok](media-encoder-standard-formats.md).
 1. A köztes fájl [kódolása](#encode-to-adaptive-bitrate-mp4s) egy H. 264/AAC MP4 adaptív sávszélesség-készletbe.
 
-    Ha már rendelkezik kódolt fájlokkal, és csak a fájlok másolását és továbbítását szeretné használni, használja a következőt: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) és [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API-k. Ennek eredményeképpen létrejön egy adatfolyam-jegyzékfájlt (. ISM fájlt) tartalmazó új MP4-fájl.
+    Ha már rendelkezik kódolt fájlokkal, és csak a fájlok másolását és továbbítását szeretné használni, használja a következőt: [CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) és [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API-k. Ennek eredményeképpen létrejön egy adatfolyam-jegyzékfájlt (. ISM fájlt) tartalmazó új MP4-fájl.
 1. Tegye közzé az adaptív sávszélességű MP4-készletet tartalmazó kimeneti eszközt. Egy [adatfolyam-kereső](streaming-locators-concept.md)létrehozásával teheti közzé.
 1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-címeket hozhat létre. A *folyamatos átviteli végpont* gondoskodik a megfelelő jegyzékfájl és kérések kiszolgálásáról a különböző formátumokhoz.
     

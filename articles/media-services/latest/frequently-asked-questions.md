@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268485"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019613"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -28,7 +28,7 @@ Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad vál
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Melyek a Media Services v3 Azure Portal korlátozásai?
 
-A [Azure Portal](https://portal.azure.com/) a v3 élő események kezelésére, a v3-eszközök és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. <br/>Minden egyéb felügyeleti feladathoz (például átalakítások és feladatok kezelése vagy v3 tartalom elemzése) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+A [Azure Portal](https://portal.azure.com/) a v3 élő események kezelésére, a v3-eszközök és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. <br/>Minden egyéb felügyeleti feladathoz (például átalakítások és feladatok kezelése vagy v3 tartalom elemzése) használja a [REST API](/rest/api/media/accountfilters), a [CLI](/cli/azure/ams)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V3 API-val, vagy a tartalom egy élő kimenet alapján lett létrehozva, akkor nem jelenik meg a **kódolás**, az **elemzés**vagy a **titkosítás** gomb a Azure Portal. Ezeket a feladatokat a Media Services V3 API-k használatával hajthatja végre.  
 
@@ -163,7 +163,7 @@ Jelenleg a [Azure Portal](https://portal.azure.com/) a következőket használha
 * V3- [eszközök](assets-concept.md)megtekintése (nem felügyelt). 
 * [Az API-k elérésére vonatkozó információk beolvasása](./access-api-howto.md). 
 
-Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), az [Azure CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), az [Azure CLI](/cli/azure/ams)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Létezik AssetFile-koncepció a v3-as verzióban?
 

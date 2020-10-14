@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616550"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019018"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -57,7 +57,7 @@ A DTDL-modell illesztőfelülete nulla, egy vagy több műveletet is tartalmazha
 
 Az Azure digitális ikrek modelljeinek tulajdonságai és telemetria közötti különbség a következő:
 * A **tulajdonságokat** a rendszer a tárolók biztonsági mentésére vár. Ez azt jelenti, hogy bármikor beolvashat egy tulajdonságot, és lekérheti annak értékét. Ha a tulajdonság írható, egy értéket is tárolhat a tulajdonságban.  
-* A **telemetria** több, mint az események streamje; Ez a rövid élettartamú adatüzenetek halmaza. Ha nem állítja be az esemény figyelését, és ha ez történik, akkor az eseményt nem lehet egy későbbi időpontban nyomon követni. Nem térhet vissza, és később is elolvashatja. 
+* A **telemetria** több, mint az események streamje; Ez a rövid élettartamú adatüzenetek halmaza. Ha nem állítja be az esemény figyelését, és ha ez történik, akkor az eseményt nem lehet egy későbbi időpontban nyomon követni. Nem térhet vissza hozzá, és később is elolvashatja. 
   - A C# kifejezésekben a telemetria olyan, mint egy C# esemény. 
   - A IoT feltételeiben a telemetria általában egyetlen, az eszköz által eljuttatott mérték.
 

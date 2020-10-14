@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan használhatja a anomália-Kiderítő API-t és a Azure Databricks az adataiban észlelt rendellenességek figyelésére.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 642012a638100a3ad1cb8d9334f5af01adb6ad7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mbullwin
+ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979172"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017658"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
@@ -682,7 +682,7 @@ Eredmény az alábbiak szerint:
 Ennyi az egész! A Azure Databricks használatával sikeresen továbbította az adatátvitelt az Azure Event Hubsba, a stream-adatmennyiséget az Event Hubs-összekötő használatával használta fel, majd közel valós időben futtatta az adatátviteli rendellenességek észlelését.
 Habár ebben az oktatóanyagban a részletesség óránként történik, bármikor módosíthatja a részletességet, hogy megfeleljen a szükséges követelményeknek.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Databricks munkaterületen válassza a **fürtök** lehetőséget a bal oldali ablaktáblán. A leállítani kívánt fürtnél vigye az egérmutatót a **műveletek** **oszlopban található három** pont fölé, majd válassza a Leállítás ikont, majd válassza a **megerősítés**lehetőséget.
 

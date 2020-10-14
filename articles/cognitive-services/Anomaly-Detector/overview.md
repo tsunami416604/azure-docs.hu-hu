@@ -3,21 +3,21 @@ title: Mi az az Anomaly Detector API?
 titleSuffix: Azure Cognitive Services
 description: Az anomáliák Kiderítő API algoritmusai segítségével alkalmazhatja a anomáliák észlelését az idősorozat-adatain.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/22/2020
-ms.author: aahi
+ms.author: mbullwin
 keywords: anomáliák észlelése, gépi tanulás, algoritmusok
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319316"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016603"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -29,7 +29,7 @@ A rendellenesség-Kiderítő API lehetővé teszi, hogy a gépi tanulás ismeret
 
 Az anomália detektor használata nem igényel korábbi felhasználói élményt a gépi tanulásban, és a REST API lehetővé teszi a szolgáltatás egyszerű integrálását az alkalmazásokba és folyamataiba.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az idősorozat-adataiban, vagy valós időben végezheti el azokat.
 
@@ -91,7 +91,7 @@ Ha többet szeretne megtudni a Microsoft által fejlesztett SR-CNN-algoritmusokr
 * Csatlakozás az [anomália-detektor Advisors csoportjához a Microsoft Teams](https://aka.ms/AdAdvisorsJoin) szolgáltatásban
 * A kiválasztott [felhasználó által létrehozott tartalom](user-generated-content.md) megjelenítése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](quickstarts/detect-data-anomalies-csharp.md)
 * Az anomália érzékelő API [online bemutatója](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)

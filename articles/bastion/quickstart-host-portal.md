@@ -1,23 +1,23 @@
 ---
 title: 'Gyors útmutató: megerősített gazdagép létrehozása virtuális gépről és magánhálózati IP-cím használatával történő összekapcsolás'
 titleSuffix: Azure Bastion
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Bastion-gazdagépet egy virtuális gépről, és hogyan csatlakozhat biztonságosan egy magánhálózati IP-cím használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Bastion-gazdagépet egy virtuális gépről, és hogyan csatlakozhat biztonságosan egy magánhálózati IP-cím használatával.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
 ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0ff85e6ceb6867db417d8d8202ff3281478e5687
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6f451e7b115c00bc7b2cf350e00b9f704ab1d29f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996936"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019052"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím és Azure-alapú megerősített kapcsolat használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy virtuális géphez egy magánhálózati IP-cím használatával a böngészőben az Azure Bastion és a Azure Portal használatával. A cikkben ismertetett lépéseket követve telepítheti a Bastion-t a virtuális gépre, majd csatlakozhat a virtuális géphez. A VNet közvetlenül a virtuális gépről való létrehozásának előnye, hogy a beállítások közül sok előre ki van töltve.
+Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez a böngészőben az Azure Bastion és a Azure Portal használatával. A Azure Portal az Azure-beli virtuális gépről üzembe helyezheti a virtuális hálózatát. A megerősített telepítés után a magánhálózati IP-címmel csatlakozhat a virtuális géphez a Azure Portal használatával. A virtuális gépe nem igényel nyilvános IP-címet vagy speciális szoftvert. Az egyik előnye, hogy a VNet közvetlenül a virtuális gépről hozzon létre egy megerősített gazdagépet, hogy a beállítások közül sok előre ki van töltve.
 
 A szolgáltatás üzembe helyezését követően az RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető. További információ az Azure Bastion-ről: [Mi az az Azure Bastion?](bastion-overview.md).
 
@@ -36,7 +36,7 @@ A szolgáltatás üzembe helyezését követően az RDP/SSH-élmény az azonos v
 
 |**Név** | **Érték** |
 | --- | --- |
-| Name |  TestVNet1-Bastion |
+| Név |  TestVNet1-Bastion |
 | Virtuális hálózat |  TestVNet1 (a virtuális gép alapján) |
 | + Alhálózat neve | AzureBastionSubnet |
 | AzureBastionSubnet-címek |  10.1.254.0/27 |
@@ -84,7 +84,7 @@ Miután a megerősített állapotot telepítette a virtuális hálózatra, a ké
 
    :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="virtuális gép beállításai":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett a virtuális hálózat és a virtuális gépek használatával, törölje az erőforráscsoportot és a benne található összes erőforrást:
 
@@ -96,7 +96,7 @@ Ha végzett a virtuális hálózat és a virtuális gépek használatával, tör
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy megerősített gazdagépet hozott létre a virtuális hálózathoz, majd biztonságosan kapcsolódott egy virtuális géphez a megerősített gazdagépen keresztül.
+Ebben a rövid útmutatóban egy megerősített gazdagépet hozott létre a virtuális hálózathoz, majd biztonságosan kapcsolódott egy virtuális géphez a megerősített gazdagépen keresztül. Ezután folytassa a következő lépéssel, ha egy virtuálisgép-méretezési csoporthoz szeretne csatlakozni.
 
-* További információ az Azure Bastion-ről: [Mi az Azure Bastion?](bastion-overview.md) és a [megerősített GYIK](bastion-faq.md).
-* A virtuálisgép-méretezési csoportokhoz való kapcsolódáshoz lásd: [Kapcsolódás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával](bastion-connect-vm-scale-set.md).
+> [!div class="nextstepaction"]
+> [Kapcsolódás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával](bastion-connect-vm-scale-set.md)

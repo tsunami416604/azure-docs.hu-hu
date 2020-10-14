@@ -3,16 +3,16 @@ title: Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásba
 description: Az Azure IoT Central-feladatok lehetővé teszik a csoportos eszközök felügyeleti funkcióinak használatát, például a tulajdonságok frissítését vagy egy parancs futtatását.
 ms.service: iot-central
 services: iot-central
-author: sarahhubbard
-ms.author: sahubbar
+author: philmea
+ms.author: philmea
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b8aba74cb0914cf26382e0d17a8ce2ba6bd4063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5fc349ae7d92bf36cfe9b1f3272cc1f4f7446b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91573960"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017947"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
 
@@ -85,7 +85,7 @@ A feladatok létrehozása után az **állapot** oszlop a legutóbbi feladatok á
 
 | Állapotüzenet       | Állapot jelentése                                          |
 | -------------------- | ------------------------------------------------------- |
-| Befejezve            | Ez a feladatok minden eszközön futottak.              |
+| Befejeződött            | Ez a feladatok minden eszközön futottak.              |
 | Sikertelen               | A feladatot nem sikerült végrehajtani, és nem futott teljesen teljes mértékben az eszközökön.  |
 | Függőben              | Ez a feladatok még nem kezdődött meg az eszközökön.         |
 | Futó              | Ez a feladatok jelenleg az eszközökön futnak.             |
@@ -103,7 +103,7 @@ A feladatok és az összes érintett eszköz állapotának megtekintéséhez nyi
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Befejezve            | A feladatot futtatták ezen az eszközön.                                     |
+| Befejeződött            | A feladatot futtatták ezen az eszközön.                                     |
 | Sikertelen               | A feladatot nem sikerült futtatni ezen az eszközön. A hibaüzenet további információkat jelenít meg.  |
 | Függőben              | A feladatot még nem futtatták ezen az eszközön.                                   |
 

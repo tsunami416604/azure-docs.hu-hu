@@ -3,12 +3,12 @@ title: Metaadat-séma következtetése – Azure
 description: Ebből a cikkből megtudhatja, milyen viszonyítási metaadatok sémája.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691861"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019494"
 ---
 # <a name="inference-metadata-schema"></a>Következtetéses metaadatok sémája 
 
@@ -18,7 +18,7 @@ Minden olyan következtetési objektum, amely HTTP-alapú vagy gRPC-alapú szerz
 
 ![Objektummodell](./media/inference-metadata-schema/object-model.png)
  
-|Típusdefiníció|Leírás|
+|Típusdefiníció|Description|
 |---|---|
 |Címke|Az eredményhez társított címke vagy címke. A címkézéssel való Alng a címkéhez társított megbízhatósági értéket is megkapja.|
 |Attribútum|Az eredményhez tartozó további attribútumok. Hozzáadhat új attribútumokat, amelyeket a rendszer a következtetési motortól kapott, a megbízhatósági értékkel együtt.|
@@ -121,7 +121,7 @@ Az alábbi példa egyetlen eseményt tartalmaz, néhány támogatott következte
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [gRPC-adategyezmény](grpc-data-contract.md)
-- [HTTP-adategyezmény](http-data-contract.md)
+- [gRPC-adategyezmény](./grpc-extension-protocol.md)
+- [HTTP-adategyezmény](./http-extension-protocol.md)

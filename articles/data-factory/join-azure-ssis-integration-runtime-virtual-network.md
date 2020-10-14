@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187812"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018208"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -151,7 +151,7 @@ Az egyik javasolt módszer a következő:
 További információ: névfeloldás, [amely a saját DNS-kiszolgálóját használja](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
 > [!NOTE]
-> Használjon egy teljes tartománynevet (FQDN) a saját magánhálózati neveként, például a `<your_private_server>.contoso.com` helyett használja `<your_private_server>` , mert Azure-SSIS IR nem fogja automatikusan hozzáfűzni a saját DNS-utótagját.
+> Használjon egy teljes tartománynevet (FQDN) a privát állomásnévhez (például a helyett használja a nevet `<your_private_server>.contoso.com` `<your_private_server>` ). Azt is megteheti, hogy a Azure-SSIS IR szabványos egyéni beállításával automatikusan hozzáfűzi a saját DNS-utótagját (például `contoso.com` ) a nem minősített egycímkés tartományhoz, és a DNS-lekérdezésekben való használat előtt kikapcsolja a teljes tartománynevet, és a [szabványos egyéni telepítési mintákat](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples)tartalmazza. 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> NSG beállítása
 Ha meg kell valósítania egy NSG a Azure-SSIS IR által használt alhálózathoz, engedélyezze a bejövő és kimenő forgalmat a következő portokon keresztül: 
@@ -172,7 +172,7 @@ Ha meg kell valósítania egy NSG a Azure-SSIS IR által használt alhálózatho
 | Kimenő | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az **Azure ExpressRoute vagy a UDR használatát** ismertető szakaszt.|
 | Kimenő | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a kiszolgáló által üzemeltetett SSISDB. Ha a kiszolgálói kapcsolódási házirend az **átirányítás**helyett **proxyra** van beállítva, akkor csak az 1433-es port szükséges. <br/><br/> Ez a kimenő biztonsági szabály nem alkalmazható a virtuális hálózatban lévő SQL felügyelt példány által üzemeltetett SSISDB, vagy a magánhálózati végponttal konfigurált SQL Database. |
 | Kimenő | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a virtuális hálózatban található SQL felügyelt példány által üzemeltetett SSISDB, vagy SQL Database privát végponttal konfigurálták. Ha a kiszolgálói kapcsolódási házirend az **átirányítás**helyett **proxyra** van beállítva, akkor csak az 1433-es port szükséges. |
-| Kimenő | TCP | VirtualNetwork | * | Storage | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
+| Kimenő | TCP | VirtualNetwork | * | Tárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Az Azure ExpressRoute vagy a UDR használata
@@ -597,7 +597,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 A parancs futása 20 – 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure-SSIS IRról a következő cikkekben talál további információt: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az IRs-vel kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IRt is. 

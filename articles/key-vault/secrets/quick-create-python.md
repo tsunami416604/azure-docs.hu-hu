@@ -8,58 +8,95 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: cd8a5751c018b9b3b3b2ef96765545f2edab685b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5159ce623c03d1158bf719611c158067fdd5b9e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89489204"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019103"
 ---
-# <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>Gyors útmutató: Azure Key Vault Secrets ügyféloldali kódtár a Pythonhoz
+# <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Gyors útmutató: Azure Key Vault titkos ügyféloldali kódtár a Pythonhoz
 
-Ismerkedés a Azure Key Vault a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot. A titkok tárolása Key Vault használatával elkerülhető, hogy a kódban ne tárolja a titkokat, ami növeli az alkalmazás biztonságát.
+Ismerkedjen meg a Azure Key Vault Secret ügyféloldali kódtáraval a Pythonhoz. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot. A titkok tárolása Key Vault használatával elkerülhető, hogy a kódban ne tárolja a titkokat, ami növeli az alkalmazás biztonságát.
 
-[API-referenciák dokumentációja](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault-secrets/)
+[API-referenciák dokumentációja](/python/api/overview/azure/keyvault-secrets-readme)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault-secrets/)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Python 2.7 + vagy 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Azure CLI](/cli/azure/install-azure-cli)
+
+Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli) -t egy Linux-terminál ablakban futtatja.
+
 
 ## <a name="set-up-your-local-environment"></a>A helyi környezet beállítása
+Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez, további információért lásd: [az ügyfél hitelesítése az Azure Identity Client Library](https://docs.microsoft.com/java/api/overview/azure/identity-readme) segítségével
 
-[!INCLUDE [Set up your local environment](../../../includes/key-vault-python-qs-setup.md)]
+### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-7. Telepítse a Key Vault Secrets könyvtárat:
+1. Futtassa a következő parancsot: `login`.
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el.
+
+    Ellenkező esetben nyisson meg egy böngészőt, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) és adja meg a terminálon megjelenő engedélyezési kódot.
+
+2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
+
+### <a name="install-the-packages"></a>A csomagok telepítése
+
+1. Egy terminálon vagy parancssorban hozzon létre egy megfelelő Project-mappát, majd hozzon létre és aktiváljan egy Python virtuális környezetet a [Python virtuális környezetek használata](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments) című cikkben leírtak szerint.
+
+1. Az Azure Active Directory Identity Library telepítése:
+
+    ```terminal
+    pip install azure.identity
+    ```
+
+
+1. Telepítse a Key Vault Secrets könyvtárat:
 
     ```terminal
     pip install azure-keyvault-secrets
     ```
 
-## <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
+### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-## <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
+### <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 
-Futtassa a következőt az a kulcstartó [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal, hogy engedélyezze az egyszerű szolgáltatásnév számára a Get, a List és a Secrets műveletekre vonatkozó beállításokat. Ez a parancs az `KEY_VAULT_NAME` `AZURE_CLIENT_ID` előző lépésekben létrehozott és környezeti változókra támaszkodik.
+Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely titkos jogosultságot biztosít a felhasználói fiókjához
 
-# <a name="cmd"></a>[cmd](#tab/cmd)
-
-```azurecli
-az keyvault set-policy --name %KEY_VAULT_NAME% --spn %AZURE_CLIENT_ID% --resource-group KeyVault-PythonQS-rg --secret-permissions delete get list set 
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
 ```
 
-# <a name="bash"></a>[bash](#tab/bash)
+#### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-```azurecli
-az keyvault set-policy --name $KEY_VAULT_NAME --spn $AZURE_CLIENT_ID --resource-group KeyVault-PythonQS-rg --secret-permissions delete get list set 
+Ez az alkalmazás a Key Vault nevét használja a nevű környezeti változóként `KEY_VAULT_NAME` .
+
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
----
-
-Ez a parancs az `KEY_VAULT_NAME` `AZURE_CLIENT_ID` előző lépésekben létrehozott és környezeti változókra támaszkodik.
-
-További információ: [hozzáférési szabályzatok társítása –](../general/assign-access-policy-cli.md) parancssori felület
+macOS vagy Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="create-the-sample-code"></a>A mintakód létrehozása
 
-A Pythonhoz készült Azure Key Vault ügyféloldali kódtár lehetővé teszi a titkok és a kapcsolódó eszközök, például a tanúsítványok és a titkosítási kulcsok kezelését. Az alábbi mintakód bemutatja, hogyan lehet ügyfelet létrehozni, titkos kulcsot beolvasni és titkos kulcsot törölni.
+A Pythonhoz készült Azure Key Vault Secret ügyféloldali kódtár lehetővé teszi a titkok kezelését. Az alábbi mintakód bemutatja, hogyan lehet ügyfelet létrehozni, titkos kulcsot beolvasni és titkos kulcsot törölni.
 
 Hozzon létre egy *kv_secrets.* -es nevű fájlt, amely tartalmazza ezt a kódot.
 
@@ -105,14 +142,16 @@ Győződjön meg arról, hogy az előző szakaszban található kód egy *kv_sec
 python kv_secrets.py
 ```
 
-- Ha az engedélyek hibába ütközik, győződjön meg arról, hogy a [ `az keyvault set-policy` parancsot](#give-the-service-principal-access-to-your-key-vault)futtatta.
+- Ha az engedélyek hibába ütközik, győződjön meg arról, hogy a [ `az keyvault set-policy` parancsot](#grant-access-to-your-key-vault)futtatta.
 - A kód újbóli futtatása ugyanazzal a titkos névvel a következő hibaüzenetet eredményezheti: "(ütközés) a titkos kulcs <name> jelenleg törölve, de helyreállítható állapotban van." Használjon másik titkos nevet.
 
 ## <a name="code-details"></a>Kód részletei
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-Az előző kódban az [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python) objektum az egyszerű szolgáltatásnév számára létrehozott környezeti változókat használja. Ezt a hitelesítő adatot akkor adja meg, amikor egy Azure-tárból hoz létre egy ügyféltanúsítványt, például az [`SecretClient`](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python) ügyfélen keresztül használni kívánt erőforrás URI-ját:
+Ebben a rövid útmutatóban a bejelentkezett felhasználó a Key Vault hitelesítésére szolgál, amely a helyi fejlesztés előnyben részesített módszere. Az Azure-ban üzembe helyezett alkalmazások esetében a felügyelt identitást App Service vagy virtuális géphez kell rendelni, további információért lásd: a [felügyelt identitás áttekintése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+
+Az alábbi példában a kulcstartó neve a Key Vault URI-ra van kibontva, a "https:// \<your-key-vault-name\> . Vault.Azure.net" formátumban. Ez a példa a  ["DefaultAzureCredential ()"](https://docs.microsoft.com/python/api/azure-identity/azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot használja különböző környezetekben különböző beállításokkal az identitás biztosításához. További információ: az Azure-beli [hitelesítő adatok alapértelmezett hitelesítése](https://docs.microsoft.com/python/api/overview/azure/identity-readme). 
 
 ```python
 credential = DefaultAzureCredential()
@@ -121,7 +160,7 @@ client = SecretClient(vault_url=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
 
-Miután megszerezte a Key vaulthoz tartozó ügyfél-objektumot, a [set_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-) metódussal tárolhatja a titkos kulcsot: 
+Miután megszerezte a Key vaulthoz tartozó ügyfél-objektumot, a [set_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#set-secret-name--value----kwargs-) metódussal tárolhatja a titkos kulcsot: 
 
 ```python
 client.set_secret(secretName, secretValue)
@@ -131,11 +170,9 @@ A hívás a `set_secret` kulcstartóhoz tartozó Azure-REST API hívását hívj
 
 A kérelem kezelésekor az Azure hitelesíti a hívó identitását (az egyszerű szolgáltatásnév) az ügyfél számára megadott hitelesítőadat-objektum használatával.
 
-Azt is ellenőrzi, hogy a hívó jogosult-e a kért művelet végrehajtására. Ezt az engedélyt a következő [ `az keyvault set-policy` paranccsal](#give-the-service-principal-access-to-your-key-vault)engedélyezte az egyszerű szolgáltatásnév számára:.
-
 ### <a name="retrieve-a-secret"></a>Titkos kód beolvasása
 
-Key Vault titkos kulcsának beolvasásához használja a [get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-) metódust:
+Key Vault titkos kulcsának beolvasásához használja a [get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#get-secret-name--version-none----kwargs-) metódust:
 
 ```python
 retrieved_secret = client.get_secret(secretName)
@@ -143,11 +180,11 @@ retrieved_secret = client.get_secret(secretName)
 
 A titkos érték a ben található `retrieved_secret.value` .
 
-Az Azure CLI-paranccsal is beolvashat egy titkos kulcsot az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show)parancs használatával.
+Az Azure CLI-paranccsal is beolvashat egy titkos kulcsot az kulcstartó [Secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show)parancs használatával.
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 
-A titkos kód törléséhez használja a [begin_delete_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-) metódust:
+A titkos kód törléséhez használja a [begin_delete_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#begin-delete-secret-name----kwargs-) metódust:
 
 ```python
 poller = client.begin_delete_secret(secretName)
@@ -156,7 +193,7 @@ deleted_secret = poller.result()
 
 A `begin_delete_secret` metódus aszinkron, és egy Poller objektumot ad vissza. A Poller metódusának meghívása `result` megvárja a befejezését.
 
-Ellenőrizheti, hogy a titkos kulcs el lett-e távolítva az Azure CLI-parancs az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show)paranccsal.
+Ellenőrizheti, hogy a titkos kulcs el lett-e távolítva az Azure CLI-parancs az kulcstartó [Secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show)paranccsal.
 
 A törlés után a titkos kód törölve marad, de egy ideig visszanyerhető állapotban van. Ha újra futtatja a kódot, használjon másik titkos nevet.
 
@@ -170,9 +207,10 @@ Ellenkező esetben, ha elkészült az ebben a cikkben létrehozott erőforrások
 az group delete --resource-group KeyVault-PythonQS-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Key Vault áttekintése](../general/overview.md)
+- [Biztonságos hozzáférés a kulcstartóhoz](../general/secure-your-key-vault.md)
 - [Azure Key Vault fejlesztői útmutató](../general/developers-guide.md)
 - [Azure Key Vault ajánlott eljárások](../general/best-practices.md)
 - [Hitelesítés Key Vault](../general/authentication.md)

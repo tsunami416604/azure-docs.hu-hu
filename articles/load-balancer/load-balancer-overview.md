@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299201"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017726"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -79,11 +79,9 @@ Lásd: [Load Balancer SLA](https://aka.ms/lbsla)-ja. Az alapszintű Load Balance
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb Azure Load Balancer szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) oldalon.
 
-## <a name="next-steps"></a>További lépések
-Lásd: [Alapszintű Load Balancer frissítése](upgrade-basic-standard.md) az alapszintű Load Balancer frissítéséhez standard Load Balancerre.
+## <a name="next-steps"></a>Következő lépések
 
-A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
+A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) című témakört.
 
 Azure Load Balancer korlátozásokkal és összetevőkkel kapcsolatos további információkért lásd: [Azure Load Balancer összetevők](./components.md) és [Azure Load Balancer fogalmak](./concepts.md)
 
-Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: az [Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
