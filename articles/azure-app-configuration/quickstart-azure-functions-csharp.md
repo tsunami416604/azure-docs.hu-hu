@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 24620351cdd831ec5079e1f37726b2aa65339205
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767778"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075858"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -120,7 +120,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-azure-functions-csharp.md)

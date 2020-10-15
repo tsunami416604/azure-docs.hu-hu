@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767735"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075790"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
 ## <a name="create-a-net-core-console-app"></a>.NET Core Console-alkalmazás létrehozása
 
-A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/tools/) használatával hozzon létre egy új .net Core Console alkalmazás-projektet. A a .NET Core parancssori felülete a Visual Studióban való használatának előnye, hogy a Windows, macOS és Linux platformokon is elérhető.  Másik lehetőségként használhatja a [Azure Cloud Shell](https://shell.azure.com)elérhető előtelepített eszközöket.
+A [.net Core parancssori felület (CLI)](/dotnet/core/tools/) használatával hozzon létre egy új .net Core Console alkalmazás-projektet. A a .NET Core parancssori felülete a Visual Studióban való használatának előnye, hogy a Windows, macOS és Linux platformokon is elérhető.  Másik lehetőségként használhatja a [Azure Cloud Shell](https://shell.azure.com)elérhető előtelepített eszközöket.
 
 1. Hozzon létre egy új mappát a projekthez.
 
@@ -124,7 +124,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a .NET Core-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a .NET Core-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-dotnet-core.md)

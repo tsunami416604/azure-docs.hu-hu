@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012330"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075960"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
 
@@ -40,7 +40,7 @@ A jelen útmutató lépéseinek követéséhez a következőkre lesz szüksége:
 * .NET Core. [A .net Core for Mac, Linux és Windows rendszerhez](https://www.microsoft.com/net/download)is letölthető.
 * Postman. [A Poster letölthető Mac, Windows vagy Linux rendszerű számítógépekre](https://www.getpostman.com/apps).
 * Az [Azure-előfizetéshez üzembe helyezett IoT hub](../iot-hub/iot-hub-create-through-portal.md). Az útmutató lépéseinek elvégzéséhez szüksége lesz az IoT hub kapcsolódási karakterláncára. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
-* Az [Azure-előfizetéshez üzembe helyezett Cosmos db-adatbázis](../cosmos-db/create-sql-api-dotnet.md#create-account) , amely az SQL API-t használja, és amely [erős konzisztencia](../cosmos-db/manage-account.md)használatára van konfigurálva. A jelen útmutató lépéseinek elvégzéséhez szüksége lesz a Cosmos DB adatbázisához tartozó kapcsolódási karakterláncra. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
+* Az [Azure-előfizetéshez üzembe helyezett Cosmos db-adatbázis](../cosmos-db/create-sql-api-dotnet.md#create-account) , amely az SQL API-t használja, és amely [erős konzisztencia](../cosmos-db/how-to-manage-database-account.md)használatára van konfigurálva. A jelen útmutató lépéseinek elvégzéséhez szüksége lesz a Cosmos DB adatbázisához tartozó kapcsolódási karakterláncra. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
 * Az [Azure-előfizetéshez üzembe helyezett Azure Storage-fiók](../storage/common/storage-account-create.md). Az útmutató lépéseinek elvégzéséhez szüksége lesz a Storage-fiók kapcsolódási karakterláncára. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
 
 ## <a name="prepare-your-development-environment"></a>A fejlesztőkörnyezet előkészítése
