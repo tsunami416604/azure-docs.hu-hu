@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664953"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072118"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Események feldolgozása az Azure kommunikációs szolgáltatásokban
 
@@ -36,9 +36,9 @@ Az Azure kommunikációs szolgáltatás a következő típusú eseményeket bocs
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft. Communication. SMSReceived                         | Közzétett, ha a kommunikációs szolgáltatáshoz társított telefonszám SMS-t fogad. |
 | Microsoft. Communication. SMSDeliveryReportReceived           | Közzététel a kommunikációs szolgáltatás által küldött SMS-kézbesítési jelentés érkezésekor.     |
-| Microsoft. Communication. ChatMessageReceived *                | Akkor jelenik meg, ha üzenet érkezik egy olyan csevegési szálhoz, amely tagja a felhasználónak.        |
-| Microsoft. Communication. ChatMessageEdited *                   | Akkor jelenik meg, amikor egy üzenet egy olyan csevegési szálban van szerkesztve, amelynek tagja a felhasználó.                |
-| Microsoft. Communication. ChatMessageDeleted *                  | Akkor jelenik meg, amikor egy üzenet törölve lett egy olyan csevegési szálban, amelynek tagja a felhasználó.               |
+| Microsoft. Communication. ChatMessageReceived                | Akkor jelenik meg, ha üzenet érkezik egy olyan csevegési szálhoz, amely tagja a felhasználónak.        |
+| Microsoft. Communication. ChatMessageEdited                   | Akkor jelenik meg, amikor egy üzenet egy olyan csevegési szálban van szerkesztve, amelynek tagja a felhasználó.                |
+| Microsoft. Communication. ChatMessageDeleted                  | Akkor jelenik meg, amikor egy üzenet törölve lett egy olyan csevegési szálban, amelynek tagja a felhasználó.               |
 | Microsoft. Communication. ChatThreadCreatedWithUser           | Akkor jelenik meg, ha a felhasználót tagként adja hozzá a csevegési szál létrehozásakor.           |
 | Microsoft. Communication. ChatThreadWithUserDeleted           | Közzétett csevegési szál törlésekor, amely a felhasználó tagja.                           |
 | Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser  | Akkor jelenik meg, ha a csevegési szál tulajdonságai frissülnek, hogy a felhasználó tagja.              |
@@ -47,7 +47,6 @@ Az Azure kommunikációs szolgáltatás a következő típusú eseményeket bocs
 
 A Azure Portal vagy az Azure CLI segítségével előfizethet a kommunikációs szolgáltatások erőforrásai által kibocsátott eseményekre. Ismerkedés az események kezelésével a [kommunikációs szolgáltatásokban lévő SMS-események](../quickstarts/telephony-sms/handle-sms-events.md) kezelésének megvizsgálása révén
 
-* Győződjön meg róla, hogy a "feladó neve" lehetőséget adja meg az "üzenet küldése" API-hívásokban az események indításához.
 
 ## <a name="event-subjects"></a>Esemény tárgya
 
@@ -350,7 +349,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 | [Az SMS-események kezelése a kommunikációs szolgáltatásokban](../quickstarts/telephony-sms/handle-sms-events.md) | A kommunikációs szolgáltatás által a webhook használatával fogadott összes SMS-esemény kezelését. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](https://docs.microsoft.com/azure/event-grid/overview)
 * Azure Event Grid fogalmak bevezetését lásd: [fogalmak a Event Gridban?](https://docs.microsoft.com/azure/event-grid/concepts)

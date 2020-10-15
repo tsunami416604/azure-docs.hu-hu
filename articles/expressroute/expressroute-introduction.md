@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 5de3d61f5b671f5ed6685e6cdee25be951fab69e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743063"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071880"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
 A ExpressRoute lehetővé teszi a helyszíni hálózatok kibővítését a Microsoft-felhőbe egy magánhálózati kapcsolaton keresztül egy kapcsolati szolgáltató segítségével. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services szolgáltatással, például a Microsoft Azure és a Microsoft 365sal.
@@ -36,7 +36,7 @@ További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 ## <a name="features"></a>Szolgáltatások
 
 ### <a name="layer-3-connectivity"></a>3. rétegbeli kapcsolatok
-A Microsoft a BGP-t, egy iparági szabványnak megfelelő dinamikus útválasztási protokollt használ. A helyszíni hálózat, az Azure-beli példányok és a Microsoft nyilvános címei közötti útvonalak cseréjéhez. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
+A Microsoft egy iparági szabványnak megfelelő dinamikus útválasztási protokollt, a BGP-t alkalmazza az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
 
 ### <a name="redundancy"></a>Redundancia
 Minden [ExpressRoute-áramkör](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) két, két Microsoft Enterprise Edge-útválasztóhoz (msee), a kapcsolati szolgáltatótól/a hálózat szélétől. A Microsoft kettős BGP-kapcsolatot igényel a kapcsolatszolgáltatótól/a peremhálózatról – egyet-egyet mindegyik MSEE-hez. Dönthet úgy, hogy nem helyez üzembe redundáns eszközöket/Ethernet-kapcsolatcsoportokat az Ön oldalán. A kapcsolatszolgáltatók azonban redundáns eszközöket használnak annak biztosítása érdekében, hogy az Ön kapcsolatai redundáns módon jussanak el a Microsofthoz. Az [SLA](https://azure.microsoft.com/support/legal/sla/) érvényességének előfeltétele a redundáns 3. rétegbeli kapcsolódási konfiguráció.
@@ -116,7 +116,7 @@ Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyak
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb ExpressRoute-frissítéseket az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 * [Az ExpressRoute kapcsolati modelljeinek](expressroute-connectivity-models.md) ismertetése.
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).

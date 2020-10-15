@@ -64,6 +64,8 @@
       href: ./deploy-vm-content-library.md
     - name: A GitHub Enterprise Server beállítása
       href: github-enterprise-server.md
+    - name: Nyilvános IP-cím használata
+      href: public-ip-usage.md
     - name: IPSec-alagút létrehozása
       href: create-ipsec-tunnel.md
     - name: Azure natív integrációja
@@ -84,8 +86,6 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
           href: deploy-traffic-manager-balance-workloads.md
-        - name: Nyilvános IP-cím használata
-          href: public-ip-usage.md
     - name: VMware-megoldások
       items:
         - name: A vRealize Operations beállítása

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a29c8c02093f47807ec71ffcc01e26514976ce79
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042118"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071710"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Privát végpontok használata az Azure app Configuration szolgáltatáshoz
 
@@ -61,7 +61,7 @@ Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek k
 
 A privát végpontok engedélyezéséhez [standard szintű](https://azure.microsoft.com/pricing/details/app-configuration/) alkalmazás-konfigurációs tárolóra van szükség.  A privát hivatkozások díjszabásával kapcsolatos további információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazás-konfigurációs tároló privát végpontjának létrehozásáról:
 
@@ -71,5 +71,5 @@ További információ az alkalmazás-konfigurációs tároló privát végpontj�
 
 Ismerje meg, hogyan konfigurálhatja a DNS-kiszolgálót magánhálózati végpontokkal:
 
-- [Azure virtuális hálózatokon található erőforrások névfeloldása](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [A magánhálózati végpontok DNS-konfigurációja](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure virtuális hálózatokon található erőforrások névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [A magánhálózati végpontok DNS-konfigurációja](../private-link/private-endpoint-overview.md#dns-configuration)

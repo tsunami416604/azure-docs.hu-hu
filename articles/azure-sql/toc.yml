@@ -37,6 +37,8 @@
           href: database/scale-resources.md
         - name: Felskálázás olvasása
           href: database/read-scale-out.md
+        - name: Elosztott tranzakciók
+          href: database/elastic-transactions-overview.md
         - name: Biztonság
           items:
             - name: Áttekintés
@@ -826,6 +828,20 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: Adatkeret beszúrása SQL-be
                           href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Adattípus-átalakítások
+                  items:
+                    - name: Pythonról SQL-re
+                      href: 'https://docs.microsoft.com/sql/machine-learning/python/python-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: R-ről SQL-re
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/r-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Üzembe helyezés
+                  items:
+                    - name: Üzembe helyezés tárolt eljárások használatával
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/operationalizing-your-r-code?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: R-kód konvertálása SQL Serverhez
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: Tárolt eljárás létrehozása az sqlrutils használatával
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: Előrejelzések
                   items:
                     - name: Natív pontozás PREDICT-T-SQL-lel
@@ -862,6 +878,8 @@
               href: managed-instance/public-endpoint-overview.md
             - name: Naplózás
               href: managed-instance/auditing-configure.md
+            - name: Kiszolgálói megbízhatósági csoportok
+              href: managed-instance/server-trust-group-overview.md
     - name: Útmutató
       items:
         - name: Áttekintés

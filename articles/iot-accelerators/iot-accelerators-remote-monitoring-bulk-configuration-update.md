@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363154"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071030"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Oktatóanyag: a csatlakoztatott eszközök tömeges kezelése
 
@@ -31,7 +31,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A konfiguráció üzembe helyezése az eszközön az eszközök csoportban
 > * A telepítés monitorozása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -59,7 +59,7 @@ Előkészületek:
 * Győződjön meg arról [, hogy a IoT fejlesztői készlet-eszközön található rendszerbetöltő a 1.4.0 vagy újabb verzióban van](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
 * Győződjön meg arról, hogy a IoT fejlesztői készlet SDK a rendszerbetöltővel megegyező verzióban található. A IoT fejlesztői készlet SDK-t a VS Code-ban az Azure IoT Workbench használatával frissítheti. Nyissa meg a parancssort, és írja be az **Arduino: Board Manager**parancsot. További információ: [a fejlesztési környezet előkészítése](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
-Emellett legalább egy IoT fejlesztői készlet-eszközt is csatlakoznia kell a távoli figyelési megoldáshoz. Ha még nem csatlakoztatott egy IoT fejlesztői készlet-eszközt, tekintse [meg a MXChip IoT fejlesztői készlet AZ3166 csatlakoztatása a IoT távoli figyelési megoldásának gyorsítása](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)című témakört.
+Emellett legalább egy IoT fejlesztői készlet-eszközt is csatlakoznia kell a távoli figyelési megoldáshoz. Ha még nem csatlakoztatott egy IoT fejlesztői készlet-eszközt, tekintse [meg a MXChip IoT fejlesztői készlet AZ3166 csatlakoztatása a IoT távoli figyelési megoldásának gyorsítása](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)című témakört.
 
 ## <a name="navigate-to-the-dashboard"></a>Lépjen az irányítópultra
 
@@ -272,6 +272,6 @@ A **központi telepítések** lapon kattintson a központi telepítésre, és te
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag bemutatta, hogyan frissítheti a megoldáshoz csatlakoztatott eszközök egy csoportjának belső vezérlőprogram-eszközét. Az eszközök frissítéséhez a megoldás automatikus eszközkezelés használatával működik. Ha többet szeretne megtudni a megoldás alapjául szolgáló IoT hub automatikus eszközkezelés szolgáltatásával kapcsolatban, tekintse meg a következő témakört: [IoT-eszközök konfigurálása és figyelése nagy méretekben a Azure Portal használatával](../iot-hub/iot-hub-auto-device-config.md).
+Ez az oktatóanyag bemutatta, hogyan frissítheti a megoldáshoz csatlakoztatott eszközök egy csoportjának belső vezérlőprogram-eszközét. Az eszközök frissítéséhez a megoldás automatikus eszközkezelés használatával működik. Ha többet szeretne megtudni a megoldás alapjául szolgáló IoT hub automatikus eszközkezelés szolgáltatásával kapcsolatban, tekintse meg a következő témakört: [IoT-eszközök konfigurálása és figyelése nagy méretekben a Azure Portal használatával](../iot-hub/iot-hub-automatic-device-management.md).

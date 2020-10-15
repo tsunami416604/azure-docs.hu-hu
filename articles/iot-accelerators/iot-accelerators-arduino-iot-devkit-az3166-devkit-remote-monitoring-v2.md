@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337670"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071676"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT fejlesztői készlet-eszköz csatlakoztatása a távoli figyelési megoldáshoz
 
@@ -28,7 +28,7 @@ A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Ar
 
 Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 
-* Készítse elő a fejlesztői készlet a [IoT fejlesztői készlet AZ3166 és a felhőben lévő Azure IoT hub összekapcsolásához](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)szükséges lépéseket követve.
+* Készítse elő a fejlesztői készlet a [IoT fejlesztői készlet AZ3166 és a felhőben lévő Azure IoT hub összekapcsolásához](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)szükséges lépéseket követve.
 
 ## <a name="open-sample-project"></a>Minta projekt megnyitása
 
@@ -124,9 +124,9 @@ Ha bármilyen probléma merül fel, tekintse meg [a IoT fejlesztői készlet gya
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan csatlakoztatható egy fejlesztői készlet-eszköz a távoli figyelési megoldás-gyorsító szolgáltatáshoz, néhány javasolt lépés:
 
-* [Az Azure IoT megoldás-gyorsítók áttekintése](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Az Azure IoT megoldás-gyorsítók áttekintése](./index.yml)
 * [A felhasználói felület testreszabása](iot-accelerators-remote-monitoring-customize.md)
