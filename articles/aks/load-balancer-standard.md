@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182122"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070503"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -229,7 +229,7 @@ A 100-csomópontok feletti biztonság érdekében további IP-címeket kell hozz
 > [!IMPORTANT]
 > Ki kell [számítania a szükséges kvótát, és ellenőriznie kell a követelményeket][requirements] , mielőtt testreszabja a *allocatedOutboundPorts* a kapcsolatok és a skálázási problémák elkerüléséhez.
 
-A **`load-balancer-outbound-ports`** paramétereket a fürt létrehozásakor is használhatja, de meg kell adnia a vagy a, **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** vagy is **`load-balancer-outbound-ip-prefixes`** .  Példa:
+A **`load-balancer-outbound-ports`** paramétereket a fürt létrehozásakor is használhatja, de meg kell adnia a vagy a, **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** vagy is **`load-balancer-outbound-ip-prefixes`** .  Például:
 
 ```azurecli-interactive
 az aks create \
@@ -322,7 +322,7 @@ Az alábbi lista a Kubernetes-szolgáltatások típussal támogatott megjegyzés
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` vagy `false`                     | Annak megadása, hogy a terheléselosztó belső legyen-e. Alapértelmezés szerint a nyilvános, ha nincs beállítva.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Az alhálózat neve                    | Határozza meg, hogy melyik alhálózathoz kell kötni a belső terheléselosztó. Ha nincs beállítva, a rendszer alapértelmezés szerint a Cloud config fájlban konfigurált alhálózatot állítja be.
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | A nyilvános IP-címeken lévő DNS-címke neve   | Adja meg a **nyilvános** szolgáltatás DNS-címkéjének nevét. Ha üres karakterláncra van beállítva, a rendszer nem használja a nyilvános IP-címen található DNS-bejegyzést.
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` vagy `false`                     | Annak megadása, hogy a szolgáltatás elérhető legyen egy másik szolgáltatással megosztható Azure biztonsági szabály használatával, a szabályok kereskedelmi sajátossága, amely az elérhető szolgáltatások számának növekedését eredményezi. Ez a jegyzet a hálózati biztonsági csoportok Azure [kibővített biztonsági szabályok](../virtual-network/security-overview.md#augmented-security-rules) funkcióját veszi alapul. 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` vagy `false`                     | Annak megadása, hogy a szolgáltatás elérhető legyen egy másik szolgáltatással megosztható Azure biztonsági szabály használatával, a szabályok kereskedelmi sajátossága, amely az elérhető szolgáltatások számának növekedését eredményezi. Ez a jegyzet a hálózati biztonsági csoportok Azure [kibővített biztonsági szabályok](../virtual-network/network-security-groups-overview.md#augmented-security-rules) funkcióját veszi alapul. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Az erőforráscsoport neve            | Itt adhatja meg a terheléselosztó nyilvános IP-címeinek azon erőforrásait, amelyek nem ugyanabban az erőforráscsoporthoz vannak, mint a fürt-infrastruktúra (csomópont-erőforráscsoport).
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | Engedélyezett szolgáltatási címkék listája          | Itt adhatja meg az engedélyezett [szolgáltatási címkék][service-tags] vesszővel elválasztott listáját.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP Üresjárati időkorlát (perc)          | Itt adhatja meg, hogy hány perc múlva történjen a TCP-kapcsolat üresjárati időtúllépése a terheléselosztó esetében. Az alapértelmezett és a minimális érték 4. A maximális érték 30. Egész számnak kell lennie.
@@ -426,4 +426,4 @@ További információk a belső Load Balancer a bejövő forgalomhoz való haszn
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

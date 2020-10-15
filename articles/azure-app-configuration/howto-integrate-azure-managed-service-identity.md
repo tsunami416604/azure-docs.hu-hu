@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029863"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078170"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -39,7 +39,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * [.Net Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure Cloud Shell konfigurálva](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+* [Azure Cloud Shell konfigurálva](../cloud-shell/quickstart.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -73,7 +73,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
     ![Felügyelt identitás hozzáadása](./media/add-managed-identity.png)
 
-1. Nem kötelező: Ha hozzáférést szeretne biztosítani Key Vaulthoz is, kövesse az [Key Vault hozzáférési szabályzat hozzárendelése](/azure/key-vault/general/assign-access-policy-portal)című témakör utasításait.
+1. Nem kötelező: Ha hozzáférést szeretne biztosítani Key Vaulthoz is, kövesse az [Key Vault hozzáférési szabályzat hozzárendelése](../key-vault/general/assign-access-policy-portal.md)című témakör utasításait.
 
 ## <a name="use-a-managed-identity"></a>Felügyelt identitás használata
 
@@ -185,7 +185,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     Mostantól ugyanúgy érheti el Key Vault hivatkozásokat, mint bármely más alkalmazás-konfigurációs kulcshoz. A konfigurációs szolgáltató a `KeyVaultClient` hitelesítést úgy konfigurálta, hogy Key Vault és beolvassa az értéket.
 
 > [!NOTE]
-> `ManagedIdentityCredential` csak a felügyelt identitások hitelesítését támogatja. Helyi környezetekben nem működik. Ha helyileg szeretné futtatni a kódot, érdemes lehet a `DefaultAzureCredential` szolgáltatást használni, amely támogatja a szolgáltatás egyszerű hitelesítését is. A részletekért olvassa el a [hivatkozást](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) .
+> `ManagedIdentityCredential` csak a felügyelt identitások hitelesítését támogatja. Helyi környezetekben nem működik. Ha helyileg szeretné futtatni a kódot, érdemes lehet a `DefaultAzureCredential` szolgáltatást használni, amely támogatja a szolgáltatás egyszerű hitelesítését is. A részletekért olvassa el a [hivatkozást](/dotnet/api/azure.identity.defaultazurecredential) .
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

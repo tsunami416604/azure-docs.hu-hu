@@ -3,12 +3,12 @@ title: Az Advisor-alkalmazás megbízhatóságának javítása
 description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405190"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078034"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
@@ -44,7 +44,7 @@ Ha egy Traffic Manager-profil földrajzi útválasztásra van konfigurálva, a r
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Az adatok mentése és helyreállítása a véletlen felülírás vagy törlés után a Soft delete használatával az Azure Storage-fiókban
 
-Engedélyezze a helyreállítható [törlést](../storage/blobs/soft-delete-overview.md) a Storage-fiókban, hogy a törölt Blobok a véglegesen törölt állapotba kerüljenek a végleges törlés helyett. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A Soft delete lehetővé teszi a helyreállítást véletlen törlések vagy felülírások esetén. Az Advisor olyan Azure Storage-fiókokat azonosít, amelyeken nincs engedélyezve a helyreállított törlés, és azt javasolja, hogy engedélyezze azt.
+Engedélyezze a helyreállítható [törlést](../storage/blobs/soft-delete-blob-overview.md) a Storage-fiókban, hogy a törölt Blobok a véglegesen törölt állapotba kerüljenek a végleges törlés helyett. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A Soft delete lehetővé teszi a helyreállítást véletlen törlések vagy felülírások esetén. Az Advisor olyan Azure Storage-fiókokat azonosít, amelyeken nincs engedélyezve a helyreállított törlés, és azt javasolja, hogy engedélyezze azt.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>VPN-átjáró konfigurálása aktív-aktív kapcsolati rugalmasságra
 
@@ -80,23 +80,23 @@ Azure Advisor észleli azokat a naplózási riasztási szabályokat, amelyekben 
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konzisztens indexelési mód konfigurálása a Azure Cosmos DB-gyűjteményen
 
-Azure Cosmos DB tárolók lusta indexelési móddal való konfigurálása hatással lehet a lekérdezési eredmények frissességére. Az Advisor észleli az így konfigurált tárolókat, és azt javasolja, hogy konzisztens módba váltson. [További információ a szabályzatok indexeléséről a Azure Cosmos DB.](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Azure Cosmos DB tárolók lusta indexelési móddal való konfigurálása hatással lehet a lekérdezési eredmények frissességére. Az Advisor észleli az így konfigurált tárolókat, és azt javasolja, hogy konzisztens módba váltson. [További információ a szabályzatok indexeléséről a Azure Cosmos DB.](../cosmos-db/how-to-manage-indexing-policy.md)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Azure Cosmos DB-tárolók konfigurálása partíciókulccsal
 
-Azure Advisor azonosítja Azure Cosmos DB nem particionált gyűjteményeket, amelyek megközelítik a kiépített tárolási kvótát. Azt javasolja, hogy ezeket a gyűjteményeket új gyűjteményekbe telepítse át egy partíciós kulcs-definícióval, hogy a szolgáltatás automatikusan bővítse őket. [További információ a partíciós kulcs kiválasztásáról.](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor azonosítja Azure Cosmos DB nem particionált gyűjteményeket, amelyek megközelítik a kiépített tárolási kvótát. Azt javasolja, hogy ezeket a gyűjteményeket új gyűjteményekbe telepítse át egy partíciós kulcs-definícióval, hogy a szolgáltatás automatikusan bővítse őket. [További információ a partíciós kulcs kiválasztásáról.](../cosmos-db/partitioning-overview.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>A Azure Cosmos DB .NET SDK frissítése a NuGet legújabb verziójára
 
-Azure Advisor azonosítja Azure Cosmos DB a .NET SDK régi verzióit használó fiókokat. Azt javasolja, hogy a legújabb verzióra, a teljesítménnyel kapcsolatos fejlesztésekre és a funkciókra vonatkozó funkciókra frissítsen a NuGet legújabb verziójára. [További információ a Azure Cosmos DB .NET SDK-ról.](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor azonosítja Azure Cosmos DB a .NET SDK régi verzióit használó fiókokat. Azt javasolja, hogy a legújabb verzióra, a teljesítménnyel kapcsolatos fejlesztésekre és a funkciókra vonatkozó funkciókra frissítsen a NuGet legújabb verziójára. [További információ a Azure Cosmos DB .NET SDK-ról.](../cosmos-db/sql-api-sdk-dotnet-standard.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Java SDK frissítése a legújabb verzióra a Mavenről
 
-Azure Advisor azonosítja Azure Cosmos DB a Java SDK régi verzióit használó fiókokat. Azt javasolja, hogy a Maven legújabb verziójára frissítsen a legújabb javítások, a teljesítménnyel kapcsolatos fejlesztések és a funkciók funkcióival. [További információ a Azure Cosmos DB Java SDK-ról.](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
+Azure Advisor azonosítja Azure Cosmos DB a Java SDK régi verzióit használó fiókokat. Azt javasolja, hogy a Maven legújabb verziójára frissítsen a legújabb javítások, a teljesítménnyel kapcsolatos fejlesztések és a funkciók funkcióival. [További információ a Azure Cosmos DB Java SDK-ról.](../cosmos-db/sql-api-sdk-java-v4.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>A Azure Cosmos DB Spark-összekötő frissítése a Maven legújabb verziójára
 
-Azure Advisor azonosítja Azure Cosmos DB a Azure Cosmos DB Spark-összekötő régi verzióit használó fiókokat. Azt javasolja, hogy a Maven legújabb verziójára frissítsen a legújabb javítások, a teljesítménnyel kapcsolatos fejlesztések és a funkciók funkcióival. [További információ a Azure Cosmos DB Spark-összekötőről.](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor azonosítja Azure Cosmos DB a Azure Cosmos DB Spark-összekötő régi verzióit használó fiókokat. Azt javasolja, hogy a Maven legújabb verziójára frissítsen a legújabb javítások, a teljesítménnyel kapcsolatos fejlesztések és a funkciók funkcióival. [További információ a Azure Cosmos DB Spark-összekötőről.](../cosmos-db/spark-connector.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>Érdemes áthelyezni a Kafka 2,1-et a HDInsight 4,0
 
@@ -110,10 +110,10 @@ Azure Advisor azonosítja Azure Cosmos DB a Azure Cosmos DB Spark-összekötő r
 Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy másik régióban, nem rugalmasak a regionális kimaradások terén. A virtuális gépek replikálása csökkenti az Azure-régiók leállása során fellépő hátrányos üzleti hatásokat. Az Advisor észleli azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és azt javasolja, hogy engedélyezze. Ha engedélyezi a replikációt, a virtuális gépek gyorsan üzembe helyezhetők egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Frissítés az Azure Connected Machine ügynök legfrissebb verziójára
-Az [Azure-beli csatlakoztatott gépi ügynök](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) rendszeresen frissül a hibajavítások, a stabilitási fejlesztések és az új funkciók segítségével. Azonosítjuk azokat az erőforrásokat, amelyek nem működnek a Machine Agent legújabb verziójával, és ez az Advisor javaslat arra utal, hogy az ügynököt az Azure-beli legjobb felület legújabb verziójára frissítse.
+Az [Azure-beli csatlakoztatott gépi ügynök](../azure-arc/servers/manage-agent.md) rendszeresen frissül a hibajavítások, a stabilitási fejlesztések és az új funkciók segítségével. Azonosítjuk azokat az erőforrásokat, amelyek nem működnek a Machine Agent legújabb verziójával, és ez az Advisor javaslat arra utal, hogy az ügynököt az Azure-beli legjobb felület legújabb verziójára frissítse.
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>A webhelyintegritás biztosítása érdekében ne írja felül a gazdagépnevet
-Az Advisor azt ajánlja, hogy a Application Gateway konfigurálásakor ne felülbírálja az állomásnév felülbírálását. Ha az Application Gateway előtere esetében más tartomány van megadva, mint amit a háttérrendszer eléréséhez használ, előfordulhat, hogy a cookie-k vagy az átirányítási URL-címek hibásak lesznek. Vegye figyelembe, hogy nem minden esetben ez a helyzet, és egyes háttérrendszertípusok (például a REST API-k) általában kevésbé érzékenyek erre. Győződjön meg arról, hogy a háttérrendszer képes kezelni ezt a problémát, vagy frissítse az Application Gateway konfigurációját úgy, hogy a gazdagépnevet ne kelljen felülírni a háttérrendszer esetében. App Service használatával való használat esetén csatoljon egy egyéni tartománynevet a webalkalmazáshoz, és ne használja a *. azurewebsites.net állomásnevet a háttér felé.* [További információ az egyéni tartományról](https://aka.ms/appgw-advisor-usecustomdomain).
+Az Advisor azt ajánlja, hogy a Application Gateway konfigurálásakor ne felülbírálja az állomásnév felülbírálását. Ha az Application Gateway előtere esetében más tartomány van megadva, mint amit a háttérrendszer eléréséhez használ, előfordulhat, hogy a cookie-k vagy az átirányítási URL-címek hibásak lesznek. Vegye figyelembe, hogy nem minden esetben ez a helyzet, és egyes háttérrendszertípusok (például a REST API-k) általában kevésbé érzékenyek erre. Győződjön meg arról, hogy a háttérrendszer képes kezelni ezt a problémát, vagy frissítse az Application Gateway konfigurációját úgy, hogy a gazdagépnevet ne kelljen felülírni a háttérrendszer esetében. App Service használatával való használat esetén csatoljon egy egyéni tartománynevet a webalkalmazáshoz, és ne használja a *. azurewebsites.net állomásnevet a háttér felé.* [További információ az egyéni tartományról](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állási javaslatok elérése az Advisorban
 

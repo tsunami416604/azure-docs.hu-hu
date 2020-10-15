@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250192"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071115"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Háttérszolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az Azure API Managementben
 
 API Management lehetővé teszi, hogy az Ügyféltanúsítványok segítségével biztonságossá tegye az API-k háttér-szolgáltatásának elérését. Ez az útmutató bemutatja, hogyan kezelheti a tanúsítványokat az Azure API Management Service-példányban a Azure Portalban. Azt is ismerteti, hogyan konfigurálhat egy API-t egy tanúsítvány használatára a háttér-szolgáltatás eléréséhez.
 
-A tanúsítványok a API Management REST API használatával történő kezelésével kapcsolatos információkért lásd: <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API Certificate Entity</a>.
+A tanúsítványok a API Management REST API használatával történő kezelésével kapcsolatos információkért lásd: <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API Certificate Entity</a>.
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>Előfeltételek
 
@@ -46,7 +46,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgálta
 3. Kattintson a **+ Hozzáadás** gombra.
     ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Keresse meg a tanúsítványt, adja meg annak AZONOSÍTÓját és jelszavát.
-5. Kattintson a **Létrehozás** elemre.
+5. Kattintson a **Létrehozás** gombra.
 
 > [!NOTE]
 > A tanúsítványnak **. pfx** formátumúnak kell lennie. Az önaláírt tanúsítványok engedélyezettek.

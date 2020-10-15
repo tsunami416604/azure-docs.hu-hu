@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055430"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078952"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rövid útmutató: Automation-fiók létrehozása ARM-sablon használatával
 
@@ -84,7 +84,7 @@ A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter 
 
 Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a következő konfigurációs adatokat. Az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor elkerülheti a hibák elhárítását.
 
-* [További részletekért](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
+* [További részletekért](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
 
 * Tekintse át a [munkaterület-leképezéseket](how-to/region-mappings.md) a támogatott régiók beágyazott vagy egy paraméterérték megadásához. Egy Log Analytics munkaterület és egy Automation-fiók összekapcsolása csak bizonyos régiókban támogatott az előfizetésben.
 
@@ -120,7 +120,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
 Ha már nincs szüksége rájuk, válassza le az Automation-fiókot a Log Analytics munkaterületről, majd törölje az Automation-fiókot és-munkaterületet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Automation-fiókot, egy Log Analytics munkaterületet, és összekapcsolta őket egymással.
 
