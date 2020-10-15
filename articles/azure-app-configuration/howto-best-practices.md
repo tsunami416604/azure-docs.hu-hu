@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588058"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078051"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -42,7 +42,7 @@ A *címkék* a kulcsok attribútumai. Egy kulcs változatának létrehozásához
 
 Az alkalmazás konfigurációja a vele együtt tárolt összes kulcsot független entitásként kezeli. Az alkalmazás konfigurációja nem kísérli meg a kulcsok közötti kapcsolat következtetését, illetve a kulcs értékének öröklését a hierarchiájuk alapján. A kulcsok több készletét is összesítheti, ha az alkalmazás kódjában a megfelelő konfiguráció halmozásával párosított címkéket használ.
 
-Lássunk egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
+Lássunk erre egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
 
 A kódban először le kell kérnie a kulcs értékeit címkék nélkül, majd a "fejlesztés" címkével megegyező számú kulcs-értéket kell lekérnie. Ha a második alkalommal kéri le az értékeket, a kulcsok korábbi értékei felül lesznek írva. A .NET Core konfigurációs rendszer lehetővé teszi, hogy az egymásra épülő konfigurációs adat több készletét "verem". Ha egy kulcs egynél több készletben található, az azt tartalmazó utolsó készletet használja. A modern programozási keretrendszer, például a .NET Core esetében ez a halmozási képesség ingyenesen elérhető, ha natív konfigurációs szolgáltatót használ az alkalmazás konfigurálásához. A következő kódrészlet azt mutatja be, hogyan valósítható meg a halmozás egy .NET Core-alkalmazásban:
 
@@ -69,7 +69,7 @@ A jobb lehetőség az Azure Active Directory felügyelt identitások funkciójá
 A következő módszerek bármelyikével biztosíthat hozzáférést a webalkalmazások vagy függvények alkalmazás-konfigurációjához:
 
 * A Azure Portalon adja meg a kapcsolódási karakterláncot az alkalmazás konfigurációs tárolójához a App Service Alkalmazásbeállítások között.
-* Tárolja a kapcsolódási karakterláncot az alkalmazás-konfigurációs tárolóban Key Vault és [hivatkozzon a app Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Tárolja a kapcsolódási karakterláncot az alkalmazás-konfigurációs tárolóban Key Vault és [hivatkozzon a app Service](../app-service/app-service-key-vault-references.md).
 * Az Azure által felügyelt identitások használatával érheti el az alkalmazás konfigurációs tárolóját. További információ: [integrálás az Azure felügyelt identitásokkal](howto-integrate-azure-managed-service-identity.md).
 * Az alkalmazás konfigurációjának leküldéses konfigurációja App Servicera. Az alkalmazás konfigurációja olyan exportálási függvényt biztosít (Azure Portal és az Azure CLI-ben), amely közvetlenül a App Serviceba küld adatokat. Ezzel a módszerrel egyáltalán nem kell módosítania az alkalmazás kódját.
 
@@ -85,12 +85,12 @@ Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Konfigurációs adatbázis importálása az alkalmazás-konfigurációba
 
-Az alkalmazás konfigurációja lehetőséget biztosít a konfigurációs beállítások tömeges [importálására](https://aka.ms/azconfig-importexport1) az aktuális konfigurációs fájlokból a Azure Portal vagy a parancssori felület használatával. Ugyanezeket a beállításokat használhatja az alkalmazások konfigurációjában lévő értékek exportálására is, például a kapcsolódó tárolók között. Ha egy folyamatos szinkronizálást szeretne beállítani a GitHub-adattárral, a [GitHub-művelettel](https://aka.ms/azconfig-gha2) is használhatja, hogy továbbra is használhassa a meglévő verziókövetés gyakorlatait, miközben az alkalmazások konfigurációjának előnyeit is kihasználhatja.
+Az alkalmazás konfigurációja lehetőséget biztosít a konfigurációs beállítások tömeges [importálására](./howto-import-export-data.md) az aktuális konfigurációs fájlokból a Azure Portal vagy a parancssori felület használatával. Ugyanezeket a beállításokat használhatja az alkalmazások konfigurációjában lévő értékek exportálására is, például a kapcsolódó tárolók között. Ha egy folyamatos szinkronizálást szeretne beállítani a GitHub-adattárral, a [GitHub-művelettel](./concept-github-action.md) is használhatja, hogy továbbra is használhassa a meglévő verziókövetés gyakorlatait, miközben az alkalmazások konfigurációjának előnyeit is kihasználhatja.
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>Többrégiós üzembe helyezés az alkalmazás konfigurációjában
 
 Az alkalmazás konfigurációja regionális szolgáltatás. Régiónként eltérő konfigurációval rendelkező alkalmazások esetén a konfigurációk egyetlen példányban való tárolása egyetlen meghibásodási pontot is létrehozhat. Egy alkalmazás-konfigurációs példányok régiónként több régióban való üzembe helyezése jobb megoldás lehet. Segíthet a regionális katasztrófa-helyreállításban, a teljesítményben és a biztonsági silóban. A régió szerinti konfigurálás Emellett javítja a késést, és elválasztott szabályozási kvótákat használ, mivel a szabályozás egy példányon alapul. A vész-helyreállítási enyhítés alkalmazásához [több konfigurációs tárolót](./concept-disaster-recovery.md)is használhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kulcsok és értékek](./concept-key-value.md)

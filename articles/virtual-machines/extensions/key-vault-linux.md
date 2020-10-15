@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bdab132d4d22dced97273e9d1d051f155f9d69b6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e10336b9c817c71026c167144a190b2ed6b4ab6d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970724"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070265"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -85,7 +85,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
@@ -106,6 +106,10 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a tanúsítványok telepítés utáni frissítését igénylik. A bővítmény az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra is telepíthető. A séma és a konfiguráció a sablonok típusainál is gyakori. 
 
 A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-erőforrás szilánkján belül kell beágyazni, kifejezetten `"resources": []` a virtuálisgép-sablonhoz, és az objektum alatt található virtuálisgép-méretezési csoport esetében `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` .
+
+ > [!NOTE]
+> A virtuálisgép-bővítmény megkövetelheti a rendszer vagy a felhasználó által felügyelt identitás hozzárendelését a Key vaulthoz való hitelesítéshez.  Tekintse meg, [Hogyan hitelesítheti Key Vault és hozzárendelhet egy Key Vault hozzáférési szabályzatot.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+> 
 
 ```json
     {

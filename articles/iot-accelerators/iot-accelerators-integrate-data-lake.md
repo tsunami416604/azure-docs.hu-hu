@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889238"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069845"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása a Azure Data Lake Store
 
@@ -67,7 +67,7 @@ Hozzon létre egy Azure Stream Analytics feladatot az IoT hub adatainak a Azure 
 
 1. Győződjön meg arról, hogy az üzemeltetési környezetet az alapértelmezett **felhőként**hagyja.
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** gombra.
 
     ![Stream Analytics-feladatok létrehozása](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -178,6 +178,6 @@ A Azure Stream Analytics egy SQL-szerű lekérdezési nyelvet használ egy olyan
 
     ![Az adatfolyamok megismerése](./media/iot-accelerators-integrate-data-lake/data-lake-store-file-preview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Azure Data Lake Analytics big data elemzések elvégzésére használható a Data Lake Store adatkészletekben. További információt a [Data Lake Analytics dokumentációjában talál](https://docs.microsoft.com/azure/data-lake-analytics).
+A Azure Data Lake Analytics big data elemzések elvégzésére használható a Data Lake Store adatkészletekben. További információt a [Data Lake Analytics dokumentációjában talál](../data-lake-analytics/index.yml).
