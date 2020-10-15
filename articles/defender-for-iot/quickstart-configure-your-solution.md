@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3ecb2e2022cab80abf6a8692ac8cc3ba54eff1e4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947803"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092086"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Gyors útmutató: Azure Defender konfigurálása IoT-megoldáshoz
 
@@ -43,7 +43,7 @@ Az összes erőforrás-kapcsolat definiálását követően a Defender for IoT k
 Ha új erőforrást szeretne hozzáadni a IoT-megoldáshoz, tegye a következőket:
 
 1. Nyissa meg a **IoT Hubt** Azure Portal.
-1. Válassza ki és nyissa meg a **Beállítások** lehetőséget a bal oldali menüben a **Biztonság** szakaszban, majd válassza a **figyelt erőforrások**lehetőséget.
+1. A **biztonsági** válassza az **Áttekintés** elemet, majd a **Beállítások**elemet, majd válassza a **figyelt erőforrások**lehetőséget.
 1. Válassza a **Szerkesztés** lehetőséget, és válassza ki a IoT-megoldáshoz tartozó megfigyelt erőforrásokat.
 1. Kattintson a **Hozzáadás** parancsra.
 
@@ -51,7 +51,7 @@ Gratulálunk! Új erőforráscsoportot adott hozzá a IoT-megoldáshoz.
 
 A IoT Defender mostantól figyeli az újonnan hozzáadott erőforráscsoportokat, és a IoT-megoldás részeként felfedi a megfelelő biztonsági javaslatokat és riasztásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan hozhat létre biztonsági modulokat...
 

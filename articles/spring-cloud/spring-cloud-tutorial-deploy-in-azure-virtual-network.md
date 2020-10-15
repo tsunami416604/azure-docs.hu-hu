@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892893"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088669"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
 
@@ -27,7 +27,7 @@ Az üzembe helyezés a következőket teszi lehetővé:
 * Az Azure Spring Cloud bejövő és kimenő hálózati kommunikációjának szabályozása az ügyfelek számára
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure Spring Cloud erőforrás-szolgáltatót regisztrálnia kell az `Microsoft.AppPlatform` [erőforrás-szolgáltató regisztrálása Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) vagy a következő az CLI-parancs futtatásával:
+Az Azure Spring Cloud erőforrás-szolgáltatót regisztrálnia kell az `Microsoft.AppPlatform` [erőforrás-szolgáltató regisztrálása Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) vagy a következő az CLI-parancs futtatásával:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
@@ -57,7 +57,7 @@ Ha már rendelkezik virtuális hálózattal az Azure Spring Cloud Service-péld�
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Name (Név)             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
+    |Név             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
     |Hely         |Válassza ki az **USA keleti** régióját                                |
 
 1. Kattintson a **Tovább gombra: IP-címek >**. 
@@ -83,7 +83,7 @@ Válassza ki a korábban létrehozott *Azure-Spring-Cloud-vnet* virtuális hál�
     |Beállítás  |Érték                                             |
     |---------|--------------------------------------------------|
     |Szerepkör     |**Tulajdonos** kiválasztása                                  |
-    |Kiválasztás   |Adja meg az *Azure Spring Cloud erőforrás-szolgáltatót*      |
+    |Válassza ezt:   |Adja meg az *Azure Spring Cloud erőforrás-szolgáltatót*      |
 
     Ezután válassza az *Azure Spring Cloud erőforrás-szolgáltató*elemet, majd kattintson a **Mentés**gombra.
 
@@ -150,7 +150,7 @@ Ezek a hálózati erőforrások a fent létrehozott virtuális hálózathoz csat
    > [!Important]
    > Az erőforráscsoportok teljes mértékben az Azure Spring Cloud Service szolgáltatással kezelhetők. Ne törölje kézzel az erőforrást, vagy ne módosítsa a-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 

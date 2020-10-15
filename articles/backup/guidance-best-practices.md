@@ -3,16 +3,16 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985514"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092307"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A Azure Backup az Azure-beli adategységeket egy egyszerű, biztonságos és költséghatékony megoldással biztosítja, amely nulla infrastruktúrát igényel. Ez a Azure's beépített adatvédelmi megoldás a számítási feladatok széles köréhez. Segít a felhőben futó, kritikus fontosságú számítási feladatok elleni védelemben, és gondoskodik arról, hogy a biztonsági mentések mindig elérhetők legyenek, és a teljes biztonsági mentési hagyatékon is kezelhetők legyenek.
 
@@ -42,13 +42,13 @@ Azure Backup lehetővé teszi az adatvédelem különböző számítási feladat
 
 * **Rosszindulatú Törlés elleni védelem –** A biztonsági mentések törlésével megakadályozható a véletlen és rosszindulatú kísérletek elleni védelem. A törölt biztonsági mentési adatok tárolása 14 napig díjmentes, és lehetővé teszi, hogy ezt az állapotból lehessen helyreállítani.
 
-* **Biztonságos titkosított biztonsági másolatok –** Azure Backup biztosítja, hogy a biztonsági mentési adatait biztonságos módon tárolják, és az Azure platform beépített biztonsági funkcióit, például a RBAC és a titkosítást használja.
+* **Biztonságos titkosított biztonsági másolatok –** Azure Backup biztosítja, hogy a biztonsági mentési adatait biztonságos módon tárolják, az Azure platform, például az Azure RBAC és a titkosítás beépített biztonsági képességeinek kihasználásával.
 
 * **Biztonsági másolatok életciklusának kezelése –** Azure Backup automatikusan törli a régebbi biztonsági mentési adatokból az adatmegőrzési szabályzatoknak való megfelelést. Az adatok az operatív tárolóból a tár tárterületére is felhasználhatók.
 
 ### <a name="management-plane"></a>Felügyeleti sík
 
-* **Hozzáférés-vezérlés** – a tárolók (Recovery Services és Backup-tárolók) biztosítják a felügyeleti képességeket, és elérhetők a Azure Portal, a Backup Center, a tároló irányítópultok, az SDK, a CLI és a REST API-k segítségével. Emellett egy RBAC határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
+* **Hozzáférés-vezérlés** – a tárolók (Recovery Services és Backup-tárolók) biztosítják a felügyeleti képességeket, és elérhetők a Azure Portal, a Backup Center, a tároló irányítópultok, az SDK, a CLI és a REST API-k segítségével. Ez egy Azure RBAC-határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
 
 * **Házirend-kezelés** – az egyes tárakon belül Azure Backup szabályzatok határozzák meg, hogy a biztonsági mentések Mikor legyenek aktiválva, és mennyi ideig kell megőrizni őket. Ezeket a szabályzatokat kezelheti, és több elem között is alkalmazhatja őket.
 

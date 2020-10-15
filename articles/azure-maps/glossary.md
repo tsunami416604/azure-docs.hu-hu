@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83742219"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089468"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -53,7 +53,7 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location based Services (LBS)**: a Azure Maps korábbi neve, amikor az előzetes verzióban volt.
 
-<a name="azure-active-directory"></a>**Azure Active Directory (Azure ad)**: az Azure ad a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Azure Maps Azure AD-integráció jelenleg előzetes verzióban érhető el az összes Azure Maps API-hoz. Az Azure AD támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) a Azure Maps erőforrásainak részletes hozzáférésének lehetővé tételéhez. Az Azure Maps Azure AD-integrációval kapcsolatos további tudnivalókért tekintse meg a [Azure Maps és az Azure ad](azure-maps-authentication.md) és [a hitelesítés kezelése a Azure Maps-ben](how-to-manage-authentication.md)című témakört.
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure ad)**: az Azure ad a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Azure Maps Azure AD-integráció jelenleg előzetes verzióban érhető el az összes Azure Maps API-hoz. Az Azure AD támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) a Azure Maps erőforrások részletes elérésének lehetővé tételéhez. Az Azure Maps Azure AD-integrációval kapcsolatos további tudnivalókért tekintse meg a [Azure Maps és az Azure ad](azure-maps-authentication.md) és [a hitelesítés kezelése a Azure Maps-ben](how-to-manage-authentication.md)című témakört.
 
 <a name="azure-maps-key"></a>**Azure Maps kulcs**: Tekintse meg a [megosztott kulcsos hitelesítést](#shared-key-authentication).
 
@@ -71,7 +71,7 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="bounding-box"></a>**Határolókeret**: a térképen egy téglalap alakú terület ábrázolására szolgáló koordináták halmaza. 
 
-## <a name="c"></a>C
+## <a name="c"></a>C#
 
 <a name="cadastre"></a>**Kataszter**: a regisztrált földterületek és tulajdonságok nyilvántartása. Lásd még: [parcella](#parcel).
 

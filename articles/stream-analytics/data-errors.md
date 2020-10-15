@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053150"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071999"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>AdatAzure Stream Analyticsi hibák
 
@@ -211,6 +211,10 @@ Az erőforrás-naplók sémájának megtekintéséhez tekintse meg az [Azure str
 ```
 
 ## <a name="output-data-errors"></a>Kimeneti adathibák
+
+A Azure Stream Analytics a konfigurációtól függően a kimeneti adathibákat a kimeneti fogadó I/O-kérelmével vagy anélkül tudja azonosítani. Például hiányzik egy szükséges oszlop, például:  `PartitionKey` , ha az Azure Table output használata I/O-kérelem nélkül azonosítható. Az SQL-kimenetben azonban a korlátozás megsértése I/O-kérést igényel.
+
+Több olyan Adathiba is észlelhető, amelyet a rendszer csak a kimeneti fogadó hívása után észlel, ami lelassíthatja a feldolgozást. Ennek megoldásához módosítsa a feladatok konfigurációját vagy az adathibát okozó lekérdezést.
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 

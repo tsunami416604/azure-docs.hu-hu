@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe6f72b60257a1101765dcb539cc3e0eb1d2346e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336258"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090046"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -21,7 +21,7 @@ ms.locfileid: "91336258"
 Ez a rövid útmutató ismerteti, hogyan helyezhet üzembe egy egyszerű Azure Spring Cloud Service-alkalmazást az Azure-ban való futtatáshoz.
 
 >[!NOTE]
-> Az Azure Spring Cloud Steeltoe-támogatása jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ az előzetes verziók támogatásáról: [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)fájl.
+> Az Azure Spring Cloud Steeltoe-támogatása jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ az előzetes verziók támogatásáról: [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md)fájl.
 
 Ennek a rövid útmutatónak a követésével megismerheti a következőket:
 
@@ -37,7 +37,7 @@ Az ebben a rövid útmutatóban használt alkalmazás kódja egy .NET Core web A
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Az Azure Spring Cloud Service a .NET Core 3,1-as és újabb verzióit támogatja.
-* Az [Azure CLI verziója 2.0.67 vagy újabb verzió](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* Az [Azure CLI verziója 2.0.67 vagy újabb verzió](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
@@ -338,10 +338,10 @@ Ez a rövid útmutató a következőket ismerteti:
 
 Az oktatóanyag elvégzéséhez:
 
-* [A JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [A JDK 8 telepítése](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) , és az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
-* Választható [A Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és a [Bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) telepítése
+* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) , és az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
+* Választható [A Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és a [Bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) telepítése
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud-projekt létrehozása
 
@@ -439,7 +439,7 @@ Az alábbi eljárás az Azure Spring Cloud IntelliJ beépülő moduljának haszn
     ![Projekt importálása](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
-Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetését.  A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetését.  A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure**-  ->  **üzembe helyezés az Azure Spring Cloud**-ban lehetőséget.
 
@@ -448,7 +448,7 @@ Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával
 1. Fogadja el az alkalmazás nevét a **név** mezőben. A **név** a konfigurációra hivatkozik, nem az alkalmazás nevére. A felhasználóknak általában nem kell módosítaniuk.
 1. Az összetevő **szövegmezőben** válassza a *hellospring-0.0.1-Snapshot. jar*elemet.
 1. Az **előfizetés** szövegmezőben ellenőrizze az előfizetését.
-1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)című részben hozott létre.
+1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](./spring-cloud-quickstart-provision-service-instance.md)című részben hozott létre.
 1. Az *engedélyezéshez*állítsa be a **nyilvános végpontot** .
 1. Az **alkalmazás:** szövegmezőben válassza az **alkalmazás létrehozása...** lehetőséget.
 1. Adja meg a *hellospring*, majd kattintson **az OK**gombra.
@@ -506,7 +506,7 @@ Az előző lépésekben olyan Azure-erőforrásokat hozott létre, amelyek tová
 az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

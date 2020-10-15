@@ -8,22 +8,22 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 40e674594c80a076fc9775fd4315aee938a43593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79d9b2a0d706dd2d9861d068de0e4671db1c5158
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888700"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089111"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>CI/CD az Azure Spring Cloud-hoz
 
-A folyamatos integráció és a folyamatos kézbesítési eszközök lehetővé teszik a meglévő alkalmazások frissítéseinek gyors üzembe helyezését minimális erőfeszítéssel és kockázattal. Az Azure DevOps segítségével rendszerezheti és kezelheti ezeket a kulcsfontosságú feladatokat. Az Azure Spring Cloud jelenleg nem biztosít konkrét Azure DevOps beépülő modult.  A Spring Cloud-alkalmazásokat azonban integrálhatja a DevOps egy [Azure CLI-feladat](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops&preserve-view=true)használatával.
+A folyamatos integráció és a folyamatos kézbesítési eszközök lehetővé teszik a meglévő alkalmazások frissítéseinek gyors üzembe helyezését minimális erőfeszítéssel és kockázattal. Az Azure DevOps segítségével rendszerezheti és kezelheti ezeket a kulcsfontosságú feladatokat. Az Azure Spring Cloud jelenleg nem biztosít konkrét Azure DevOps beépülő modult.  A Spring Cloud-alkalmazásokat azonban integrálhatja a DevOps egy [Azure CLI-feladat](/azure/devops/pipelines/tasks/deploy/azure-cli?preserve-view=true&view=azure-devops)használatával.
 
 Ebből a cikkből megtudhatja, hogyan használható az Azure Spring Cloud Azure CLI-feladata az Azure DevOps való integráláshoz.
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager szolgáltatási kapcsolatok létrehozása
 
-[Ebből a cikkből](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true) megtudhatja, hogyan hozhat létre Azure Resource Manager szolgáltatás-kapcsolódást az Azure DevOps-projekthez. Ügyeljen arra, hogy ugyanazt az előfizetést válassza, amelyet az Azure Spring Cloud Service-példányhoz használ.
+[Ebből a cikkből](/azure/devops/pipelines/library/connect-to-azure?preserve-view=true&view=azure-devops) megtudhatja, hogyan hozhat létre Azure Resource Manager szolgáltatás-kapcsolódást az Azure DevOps-projekthez. Ügyeljen arra, hogy ugyanazt az előfizetést válassza, amelyet az Azure Spring Cloud Service-példányhoz használ.
 
 ## <a name="azure-cli-task-templates"></a>Azure CLI-feladatok sablonjai
 ::: zone pivot="programming-language-csharp"

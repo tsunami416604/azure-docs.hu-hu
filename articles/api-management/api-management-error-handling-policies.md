@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243545"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070945"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hibakezelés az API Management-szabályzatokban
 
@@ -82,13 +82,13 @@ Ha hiba lép fel, és a vezérlő a `on-error` házirend szakaszra ugrik, a rend
 
 | Név       | Típus   | Leírás                                                                                               | Kötelező |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | sztring | Annak az elemnek a neve, ahol a hiba történt. Lehet házirend vagy beépített folyamat lépésének neve.      | Igen      |
-| `Reason`   | sztring | Számítógép-barát hibakód, amely a hibakezelés során használható.                                       | Nem       |
-| `Message`  | sztring | Ember által olvasható hiba leírása.                                                                         | Igen      |
-| `Scope`    | sztring | Annak a hatókörnek a neve, ahol a hiba történt, és a "globális", "termék", "API" vagy "művelet" lehet. | Nem       |
-| `Section`  | sztring | A szakasz neve, ahol a hiba történt. Lehetséges értékek: "bejövő", "háttér", "kimenő" vagy "on-Error".      | Nem       |
-| `Path`     | sztring | Beágyazott szabályzatot határoz meg, például "válasszon [3]/when [2]".                                                 | Nem       |
-| `PolicyId` | sztring | Az attribútum értéke `id` , ha az ügyfél megadja azt a házirendet, ahol a hiba történt             | Nem       |
+| `Source`   | sztring | Annak az elemnek a neve, ahol a hiba történt. Lehet házirend vagy beépített folyamat lépésének neve.      | Yes      |
+| `Reason`   | sztring | Számítógép-barát hibakód, amely a hibakezelés során használható.                                       | No       |
+| `Message`  | sztring | Ember által olvasható hiba leírása.                                                                         | Yes      |
+| `Scope`    | sztring | Annak a hatókörnek a neve, ahol a hiba történt, és a "globális", "termék", "API" vagy "művelet" lehet. | No       |
+| `Section`  | sztring | A szakasz neve, ahol a hiba történt. Lehetséges értékek: "bejövő", "háttér", "kimenő" vagy "on-Error".      | No       |
+| `Path`     | sztring | Beágyazott szabályzatot határoz meg, például "válasszon [3]/when [2]".                                                 | No       |
+| `PolicyId` | sztring | Az attribútum értéke `id` , ha az ügyfél megadja azt a házirendet, ahol a hiba történt             | No       |
 
 > [!TIP]
 > Az állapotkódot a kontextusban érheti el. Response. StatusCode.
@@ -183,11 +183,11 @@ a jogosulatlan kérések küldése a következő választ eredményezi:
 
 ![Jogosulatlan hiba válasza](media/api-management-error-handling-policies/error-response.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a házirendek használatáról:
 
 -   [Szabályzatok API Management](api-management-howto-policies.md)
 -   [API-k átalakítása](transform-api.md)
 -   Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
--   [Házirend-minták](policy-samples.md)
+-   [Házirend-minták](./policy-reference.md)

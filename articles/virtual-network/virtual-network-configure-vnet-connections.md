@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400706"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089690"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
 
@@ -64,7 +64,7 @@ A társítás konfigurációjának vizsgálatához használja a következő met�
 
 ![A virtuális hálózat társítási konfigurációjának ellenőrzéséhez kiválasztott beállítások](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez. Bemutatunk egy példát:
+Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez. Íme egy példa:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -122,7 +122,7 @@ Létrehozhat egy kapcsolatot a különböző előfizetésekben és különböző
 
 Egy klasszikus virtuális hálózat és egy Resource Manager-alapú virtuális hálózat közötti kapcsolat konfigurálásához lásd: [a virtuális hálózatok összekapcsolása különböző üzemi modellekkel a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
 
-![Klasszikus virtuális hálózati kapcsolódás Azure Resource Manager virtuális hálózathoz](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![A Azure Resource Manager virtuális hálózathoz klasszikus virtuális hálózati kapcsolatokat bemutató diagram.](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 Ha a klasszikus virtuális hálózat Azure Resource Manager virtuális hálózathoz való összekapcsolásakor szeretné megtekinteni a konfigurációt, kövesse az alábbi utasításokat.
 
@@ -258,7 +258,7 @@ A kapcsolási objektumnak BGP-kompatibilisnek kell lennie. Az értéket beállí
 
 ### <a name="validate-the-bgp-configuration"></a>A BGP-konfiguráció ellenőrzése
 
-Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva, futtathatja a `get-AzureRmVirtualNetworkGateway` és a `get-AzureRmLocalNetworkGateway` parancsmagok. Ezután észreveheti a BGP-vel kapcsolatos kimenetet a `BgpSettingsText` részben. Példa:
+Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva, futtathatja a `get-AzureRmVirtualNetworkGateway` és a `get-AzureRmLocalNetworkGateway` parancsmagok. Ezután észreveheti a BGP-vel kapcsolatos kimenetet a `BgpSettingsText` részben. Például:
 
 ```
 {
