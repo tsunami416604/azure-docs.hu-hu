@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72965373"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076453"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge-eszköz hozzáadása a távoli figyelési megoldáshoz – gyorssegéd
 
@@ -40,16 +40,16 @@ IoT Edge eszköz közvetlenül is regisztrálható a megoldás-gyorsító IoT Hu
 
 Ha közvetlenül regisztrálja az eszközt az IoT hub-ban a távoli figyelési megoldás-gyorsító eszközben, a rendszer a webes felhasználói felület **Device Explorer** oldalán találja.
 
-## <a name="install-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet telepítése
+## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése
 
 Mielőtt üzembe helyezi a modulokat a peremhálózati eszközön, telepítenie kell a IoT Edge futtatókörnyezetet a valós eszközre. A következő útmutatók bemutatják, hogyan telepítheti a futtatókörnyezetet az általános eszköz-platformokon:
 
 - [A Azure IoT Edge Runtime telepítése Linux rendszeren (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
-- [Azure IoT Edge futtatókörnyezet telepítése Windows rendszerű tárolókkal való használatra](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
+- [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux.md)
+- [Azure IoT Edge futtatókörnyezet telepítése Windows rendszerű tárolókkal való használatra](../iot-edge/how-to-install-iot-edge-windows.md)
 - [Telepítse a Windows rendszerhez készült Azure IoT Edge futtatókörnyezetet Linux-tárolókkal való használatra.](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [A IoT Edge Runtime telepítése a Windows IoT Core-on](../iot-edge/how-to-install-iot-core.md)
+- [A IoT Edge Runtime telepítése a Windows IoT Core-on](../iot-edge/how-to-install-iot-edge-windows.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy előkészítette a IoT Edge eszközt, a következő lépés a modulok üzembe helyezése. Lásd: [IoT Edge csomag importálása a távoli figyelési megoldás-gyorsító](iot-accelerators-remote-monitoring-import-edge-package.md)

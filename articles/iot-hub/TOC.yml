@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: Fejlesztés az Android Things platformra
               href: iot-hub-how-to-android-things.md
+        - name: Fejlesztés Azure IoT SDK nélkül
+          href: iot-hub-devguide-no-sdk.md
         - name: Avro-adatok lekérdezése központi útvonalról
           href: iot-hub-query-avro-data.md
         - name: Eszközök kapcsolati állapotára vonatkozó események beszerzése az Event Gridről

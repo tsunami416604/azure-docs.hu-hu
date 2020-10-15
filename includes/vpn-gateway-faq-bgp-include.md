@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91025223"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082255"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
 A BGP az alapszintű SKU kivételével az összes Azure VPN Gateway SKU esetében támogatott.
@@ -108,3 +108,6 @@ Igen.
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Mit kell felvennem a helyszíni VPN-eszközön a BGP társviszony-munkamenethez?
 Vegye fel a VPN-eszközén az Azure BGP-társgép IP-címének gazdaútvonalát, amely az IPsec S2S VPN-alagútra mutat. Ha például az Azure VPN-társgép IP-címe „10.12.255.30”, akkor a VPN-eszköz megfelelő IPsec alagútkapcsolatának a „10.12.255.30” címre mutató gazdaútvonalat kell megadnia egy következő ugrás felülettel.
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>A Virtual Network átjáró támogatja a kétirányú továbbítási észlelést (BFD) a helyek közötti kapcsolatokhoz a BGP-vel?
+Nem. A kétirányú továbbítási észlelés (BFD) egy olyan protokoll, amely a BGP-vel együtt használható a szomszéd-állásidő gyorsabb észlelésére, mint a Standard BGP-Keepalives. A BFD olyan másodlagos időzítőket használ, amelyek LAN-környezetekben működnek, de nem a nyilvános interneten vagy a nagykiterjedésű hálózati kapcsolatokon keresztül. A nyilvános interneten keresztül létesített kapcsolatok esetében, hogy bizonyos csomagok késleltetve vannak, vagy akár el is dobva, az agresszív időzítők bevezetése olyan instabilitást eredményezne, amely esetlegesen a BGP által elfojtott útvonalakat okoz. Alternatív megoldásként konfigurálhatja a helyszíni eszközt, amely az alapértelmezett 60 – második életben tartási időtartamnál alacsonyabb időzítővel és a 180-Second Hold időzítővel is rendelkezik a gyorsabb konvergencia érdekében.

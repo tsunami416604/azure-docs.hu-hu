@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: Felhasználók és szerepkörök kezelése
               href: how-to-assign-roles.md
+            - name: Felügyelt identitások használata hozzáférés-vezérléshez
+              href: how-to-use-managed-identities.md
             - name: Az Azure AD Identity használata AKS-környezetekben
               href: how-to-use-azure-ad-identity.md
         - name: Hálózati biztonság

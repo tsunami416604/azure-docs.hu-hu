@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460116"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076572"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Nem indítható Cloud Service-szerepkörök – problémamegoldás
 Íme néhány gyakori probléma és megoldás az Azure Cloud Services-szerepkörökkel kapcsolatban, amelyek nem indulnak el.
@@ -77,7 +77,7 @@ A webhelyre való navigálás ekkor több explicit hibaüzenetet ad vissza:
 * Leírás: kezeletlen kivétel történt az aktuális webes kérelem végrehajtása során. A hibával kapcsolatos további információkért tekintse át a verem nyomkövetését, és hogy honnan származik a kód.
 * Kivétel részletei: System. IO. FIleNotFoundException: nem tölthető be a következő fájl vagy szerelvény: "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = semleges, PublicKeyToken = 31bf856ad364e35" vagy annak valamelyik függősége. A megadott fájl nem található.
 
-Példa:
+Például:
 
 ![Explicit Kiszolgálóhiba a következő alkalmazásban: "/".](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -122,6 +122,6 @@ A DLL-fájl hiányzó és szerelvény-hibáinak elhárításához kövesse az al
 Miután meggyőződött róla, hogy az összes hibát kijavította, a szolgáltatás központi telepítését a **IntelliTrace engedélyezése a .net 4-szerepkörökhöz** jelölőnégyzet bejelölése nélkül végezheti el.
 
 ## <a name="next-steps"></a>Következő lépések
-További [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a Cloud Services szolgáltatáshoz.
+További [hibaelhárítási cikkek](../index.yml?product=cloud-services&tag=top-support-issue) a Cloud Services szolgáltatáshoz.
 
-Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

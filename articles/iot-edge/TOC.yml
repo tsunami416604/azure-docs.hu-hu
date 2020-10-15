@@ -111,28 +111,26 @@
       href: iot-edge-glossary.md
 - name: Útmutatók
   items:
-    - name: IoT Edge-eszköz regisztrálása
-      href: how-to-register-device.md
-    - name: Az IoT Edge telepítése és kezelése
+    - name: IoT Edge-eszköz létrehozása
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Linux-tárolók Windowson
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Windows Server rendszerű virtuális gép
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Ubuntu rendszerű virtuális gép
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: Futtatókörnyezet telepítése
+          href: how-to-install-iot-edge.md
+        - name: Eszköz regisztrálása és hitelesítése
+          items:
+            - name: Tartalomkulcs-hitelesítés
+              href: how-to-manual-provision-symmetric-key.md
+            - name: X.509-es tanúsítványhitelesítés
+              href: how-to-manual-provision-x509.md
+        - name: Futtatókörnyezet frissítése
+          href: how-to-update-iot-edge.md
         - name: Eszköztanúsítványok kezelése
           href: how-to-manage-device-certificates.md
         - name: Teszttanúsítványok létrehozása
           href: how-to-create-test-certificates.md
-        - name: Futtatókörnyezet verziójának frissítése
-          href: how-to-update-iot-edge.md
+        - name: IoT Edge a Kubernetesen
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: IoT Edge virtuális gép ARM-sablonnal
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: Automatikus regisztráció DPS-sel
       items:
         - name: TPM-igazolás
@@ -183,6 +181,10 @@
           href: how-to-monitor-module-twins.md
         - name: Közvetlen EdgeAgent-metódusok
           href: how-to-edgeagent-direct-method.md
+        - name: IoT Edge-naplók lekérése
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: Beépített mérőszámok elérése
+          href: how-to-access-built-in-metrics.md
     - name: IoT Edge-eszközök használata átjáróként
       items:
         - name: Transzparens átjáró konfigurálása
@@ -225,36 +227,38 @@
           href: troubleshoot-common-errors.md
 - name: Referencia
   items:
+    - name: Windowsos eszközkezelési szkriptek
+      href: reference-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ./index.yml
         - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT-minták
       items:
         - name: C# (.NET)

@@ -1,14 +1,14 @@
 ---
 title: 'Minta: egy házirend-definícióban szereplő Count operátor'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan használható a Count operátor egy házirend-definícióban.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 807890b7fb08d790deff6e0be9e08ad91c4ec44d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1339dff7f8bc92a8e38ec5635690cc2069dd8df4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565743"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076402"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy minta: a Count operátor
 
@@ -30,7 +30,7 @@ A **Count** operátor alapvető összetevői a _mezők_, _ahol_és a feltételt.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-count-operator.json" range="12-32" highlight="3,4,20":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
