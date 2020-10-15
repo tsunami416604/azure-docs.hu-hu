@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844240"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076861"
 ---
 # <a name="api-management-policy-expressions"></a>API Management házirend-kifejezések
 Ez a cikk a házirend-kifejezések szintaxisát ismerteti a C# 7-es verziójában. Mindegyik kifejezés rendelkezik hozzáféréssel a implicit módon megadott [környezeti](api-management-policy-expressions.md#ContextVariables) változóhoz, valamint a .NET-keretrendszer engedélyezett [részhalmazához](api-management-policy-expressions.md#CLRTypes) .
@@ -156,7 +156,7 @@ A következő táblázat a .NET-keretrendszer típusait és azok tagjait sorolja
 |System. Security. kriptográfia. SymmetricAlgorithm|Mind|
 |System. Security. kriptográfia. X509Certificates. PublicKey|Mind|
 |System. Security. kriptográfia. X509Certificates. RSACertificateExtensions|Mind|
-|System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Name (Név)|
+|System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Név|
 |System. Security. kriptográfia. X509Certificates. X509|Mind|
 |System. Security. kriptográfia. X509Certificates. X509certificate2)|Mind|
 |System. Security. kriptográfia. X509Certificates. X509ContentType|Mind|
@@ -253,4 +253,4 @@ További információ a házirendek használatáról:
 + [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](policy-samples.md)
++ [Házirend-minták](./policy-reference.md)

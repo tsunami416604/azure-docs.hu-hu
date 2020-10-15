@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872136"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077184"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan lehet becsomagolni?
 A felhőalapú szolgáltatás három összetevőből, a szolgáltatás-definícióból ( *. csdef)*, a szolgáltatás-konfigurációból *(. cscfg)* és egy szolgáltatáscsomag *(. cspkg)* jön létre. A **ServiceDefinition. csdef** és a **ServiceConfig. CSCFG** fájl is XML-alapú, és leírja a Cloud Service szerkezetét és konfigurálását. együttesen nevezik a modellt. A **szervizcsomag. cspkg** egy zip-fájl, amely a **ServiceDefinition. csdef** és egyebek között jön létre, és tartalmazza az összes szükséges bináris-alapú függőséget. Az Azure létrehoz egy felhőalapú szolgáltatást mind a **szervizcsomaggal. cspkg** , mind a **ServiceConfig. cscfg**.
@@ -273,7 +273,7 @@ Ahol a változók a következőképpen vannak meghatározva:
 | \[PhysicalPath\] |A szolgáltatás definíciójának hely csomópontjában meghatározott virtuális elérési utak tartalmának fizikai könyvtára. |
 | \[RoleAssemblyName\] |A szerepkör bináris fájljának neve. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Létrehozok egy Cloud Service-csomagot, és szeretnék...
 
 * [Távoli asztal beállítása Cloud Service-példányhoz][remotedesktop]
@@ -289,9 +289,6 @@ Visual studiót használok, és szeretnék...
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
 [vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
-[vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
-[vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
-[vs_create]: ../vs-azure-tools-azure-project-create.md
-
-
-
+[vs_deploy]: /visualstudio/azure/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio
+[vs_reconfigure]: /visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service
+[vs_create]: /visualstudio/azure/vs-azure-tools-azure-project-create

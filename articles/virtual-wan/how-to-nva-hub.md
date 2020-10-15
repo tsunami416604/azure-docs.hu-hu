@@ -1,6 +1,6 @@
 ---
 title: 'Azure Virtual WAN: hozzon létre egy hálózati virtuális berendezést (NVA) a központban'
-description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy hálózati virtuális berendezést a virtuális WAN-központban.
+description: Ismerje meg, hogyan helyezhet üzembe egy hálózati virtuális berendezést a virtuális WAN-központban.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773246"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077303"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Hálózati virtuális berendezés létrehozása Azure-beli virtuális WAN-központban (előzetes verzió)
 
-Ez az oktatóanyag bemutatja, hogyan használható a Virtual WAN az Azure-beli erőforrásokhoz való kapcsolódáshoz egy **hálózati virtuális berendezésen** (NVA) keresztül az Azure-ban. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
+Ez a cikk bemutatja, hogyan használható a Virtual WAN az Azure-beli erőforrásokhoz való kapcsolódáshoz egy **hálózati virtuális berendezésen** (NVA) keresztül az Azure-ban. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. A virtuális WAN-ról további információt a [Mi a virtuális WAN?](virtual-wan-about.md)című témakörben talál.
 
 A cikkben ismertetett lépések segítséget nyújtanak a **Barracuda CLOUDGEN WAN** hálózati virtuális berendezés létrehozásában a virtuális WAN-központban. Ennek a gyakorlatnak a végrehajtásához a Barracuda Cloud bevezetési eszközt (CPE) és a Barracuda CloudGen WAN-berendezés licencét kell megadnia, mielőtt megkezdené a központi telepítést.
 
 A **Cisco SD-WAN** Azure Virtual WAN-on belüli üzembe helyezési dokumentációjában küldjön e-mailt a Cisco-nak a következő e-mail-címre: vwan_public_preview@external.cisco.com
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -55,7 +55,7 @@ A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek köz�
    **Projekt részletei**
 
    * Régió (korábbi nevén hely)
-   * Name (Név)
+   * Név
    * Hub magánhálózati címtartomány. A minimális címtartomány/24 a hub létrehozásához, ami azt jelenti, hogy a/25-től/32-ig terjedő minden tartomány hibát eredményez a létrehozás során. Az Azure Virtual WAN a Microsoft által felügyelt szolgáltatás, amely a megfelelő alhálózatokat hozza létre a virtuális központban a különböző átjárók/szolgáltatások számára. (Például: hálózati virtuális berendezések, VPN-átjárók, ExpressRoute-átjárók, felhasználói VPN/pont – hely átjárók, tűzfal, útválasztás stb.). Nincs szükség arra, hogy a felhasználó explicit módon tervezze meg a virtuális központ szolgáltatásainak alhálózati címterület-területét, mert a Microsoft ezt a szolgáltatást részeként kezeli.
 1. Válassza a **felülvizsgálat + létrehozás** elemet az ellenőrzéshez.
 1. Válassza a **Létrehozás** lehetőséget a központ létrehozásához.
@@ -98,5 +98,5 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.
+* A virtuális WAN-ról további információt a [Mi a virtuális WAN?](virtual-wan-about.md) lapon talál.
 * Ha többet szeretne megtudni a virtuális WAN-központban található NVA, tekintse meg [a virtuális WAN-központ (előzetes verzió) hálózati virtuális berendezéssel](about-nva-hub.md)foglalkozó témakörét.
