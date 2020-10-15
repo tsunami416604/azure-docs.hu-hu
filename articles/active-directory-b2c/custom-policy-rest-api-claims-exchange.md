@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259594"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089570"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Forgatókönyv: REST API-jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
@@ -75,7 +75,7 @@ A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárol
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>A REST API technikai profiljának konfigurálása 
+## <a name="add-the-restful-api-technical-profile"></a>A REST API technikai profiljának hozzáadása 
 
 A [Rest-es technikai profil](restful-technical-profile.md) támogatást nyújt a saját Rest-szolgáltatással való együttműködéshez. Azure AD B2C adatokat küld a REST-szolgáltatásnak egy `InputClaims` gyűjteményben, és adatokat fogad vissza egy `OutputClaims` gyűjteményben. Keresse meg a **ClaimsProviders** elemet a <em>**`TrustFrameworkExtensions.xml`**</em> fájlban, és vegyen fel egy új jogcím-szolgáltatót az alábbiak szerint:
 
@@ -87,6 +87,7 @@ A [Rest-es technikai profil](restful-technical-profile.md) támogatást nyújt a
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ A [Rest-es technikai profil](restful-technical-profile.md) támogatást nyújt a
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 Ebben a példában a a `userLanguage` rendszer elküldi a REST szolgáltatásnak a `lang` JSON-adattartalommal. A `userLanguage` jogcím értéke az aktuális felhasználói nyelvi azonosítót tartalmazza. További információ: jogcím- [feloldó](claim-resolver-overview.md).
+
+### <a name="configure-the-restful-api-technical-profile"></a>A REST API technikai profiljának konfigurálása 
+
+A REST API üzembe helyezése után állítsa be a `REST-ValidateProfile` technikai profil metaadatait úgy, hogy az tükrözze a saját Rest APIét, beleértve a következőket:
+
+- **ServiceUrl**. Adja meg az REST API végpont URL-címét.
+- **SendClaimsIn**. Adja meg, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak.
+- **AuthenticationType**. Állítsa be a REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusát. 
+- **AllowInsecureAuthInProduction**. Éles környezetben ügyeljen arra, hogy a metaadatokat a következőre állítsa be: `true`
+    
+További konfigurációkért tekintse meg a [Rest technikai profil metaadatait](restful-technical-profile.md#metadata) .
 
 A fenti megjegyzések `AuthenticationType` és az `AllowInsecureAuthInProduction` éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez lásd: [biztonságos REST API](secure-rest-api.md).
 

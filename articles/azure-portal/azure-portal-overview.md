@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763924"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072390"
 ---
 # <a name="azure-portal-overview"></a>Az Azure Portal áttekintése
 
@@ -54,7 +54,7 @@ Az irányítópultok célzott áttekintést nyújtanak az előfizetésben talál
 
 ## <a name="getting-around-the-portal"></a>Ismerkedés a portál körül
 
-Hasznos megérteni az alapszintű portál elrendezését és a velük való interakciót. Itt bemutatjuk a felhasználói felület összetevőit és az utasításokhoz használt terminológiát. A portál részletes ismertetését [lásd a tanfolyamot bemutató leckében](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal).
+Hasznos megérteni az alapszintű portál elrendezését és a velük való interakciót. Itt bemutatjuk a felhasználói felület összetevőit és az utasításokhoz használt terminológiát. A portál részletes ismertetését [lásd a tanfolyamot bemutató leckében](/learn/modules/tour-azure-portal/3-navigate-the-portal).
 
 A Azure Portal menü és az oldal fejléce olyan globális elemek, amelyek mindig jelen vannak. Ezek az állandó funkciók az egyes szolgáltatásokhoz vagy szolgáltatásokhoz társított felhasználói felület "rendszerhéja", a fejléc pedig hozzáférést biztosít a globális vezérlőkhöz. Az erőforrásokhoz tartozó konfigurációs lap (más néven "panel") is rendelkezhet erőforrás-menüvel, amely segítséget nyújt a szolgáltatások közötti váltáshoz.
 
@@ -94,7 +94,7 @@ Tekintse meg ezt a videót, amely bemutatja, hogyan használható a globális ke
 
 [A globális keresés használata a Azure Portalban](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Portal futtatásáról a [támogatott böngészőkben és eszközökön](../azure-portal/azure-portal-supported-browsers-devices.md)
 * Útközben is kapcsolódhat [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
