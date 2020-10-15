@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559405"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094075"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
 
@@ -28,7 +28,7 @@ A Azure Portal felügyelt identitásának beállításához először létre kel
 
 2. Válassza az **identitás**lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
 
@@ -65,7 +65,7 @@ Az Azure Signaler szolgáltatás egy teljes körűen felügyelt szolgáltatás, 
     - [Azure-szolgáltatás erőforrás-azonosítója](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > Ha a szolgáltatásban saját maga érvényesít egy hozzáférési jogkivonatot, kiválaszthatja az egyik erőforrás-formátumot is. Győződjön meg arról, hogy az **erőforrás** -érték a **hitelesítési** beállításokban és az érvényesítés konzisztens. Ha szerepköralapú hozzáférés-vezérlést (RBAC) használ egy adatsíkon, akkor a szolgáltató által igényelt erőforrást kell használnia.
+    > Ha a szolgáltatásban saját maga érvényesít egy hozzáférési jogkivonatot, kiválaszthatja az egyik erőforrás-formátumot is. Győződjön meg arról, hogy az **erőforrás** -érték a **hitelesítési** beállításokban és az érvényesítés konzisztens. Ha Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ egy adatsíkon, akkor a szolgáltató által igényelt erőforrást kell használnia.
 
 ### <a name="validate-access-tokens"></a>Hozzáférési tokenek ellenőrzése
 
@@ -77,6 +77,6 @@ A Azure Active Directory (Azure AD) middleware beépített képességekkel rende
 
 Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. A JSON Web Token (JWT) érvényesítéséhez több nyílt forráskódú partneri függvénytár is elérhető. Szinte minden platformhoz és nyelvhez legalább egy lehetőség van. További információ az Azure AD-hitelesítési könyvtárakról és a mintakód-mintákról: [Microsoft Identity platform Authentication librarys](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](signalr-concept-serverless-development-config.md)

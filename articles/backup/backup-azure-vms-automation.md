@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a
 description: Az Azure-beli virtuális gépek biztonsági mentését és helyreállítását ismerteti a PowerShell-lel Azure Backup használatával
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975105"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094092"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -529,7 +529,7 @@ A lemezek visszaállítása után a következő lépésekkel hozza létre és ko
 > [!NOTE]
 >
 > 1. A AzureAz modul 3.0.0 vagy újabb verziója szükséges. <br>
-> 2. Ahhoz, hogy titkosított virtuális gépeket hozzon létre a visszaállított lemezekről, az Azure-szerepkörnek engedéllyel kell rendelkeznie a művelet elvégzéséhez, Microsoft. kulcstartó/tárolók/ **üzembe helyezés/művelet**. Ha a szerepkör nem rendelkezik ezzel az engedéllyel, hozzon létre egy egyéni szerepkört ehhez a művelethez. További információ: [Egyéni szerepkörök az Azure RBAC-ben](../role-based-access-control/custom-roles.md). <br>
+> 2. Ahhoz, hogy titkosított virtuális gépeket hozzon létre a visszaállított lemezekről, az Azure-szerepkörnek engedéllyel kell rendelkeznie a művelet elvégzéséhez, Microsoft. kulcstartó/tárolók/ **üzembe helyezés/művelet**. Ha a szerepkör nem rendelkezik ezzel az engedéllyel, hozzon létre egy egyéni szerepkört ehhez a művelethez. További információ: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md). <br>
 > 3. A lemezek visszaállítása után már beszerezheti a központi telepítési sablont, amelyet közvetlenül használhat új virtuális gép létrehozásához. Nem kell más PowerShell-parancsmagokkal felügyelt/nem felügyelt virtuális gépeket létrehozni, amelyek titkosított/nem titkosítottak.<br>
 > <br>
 

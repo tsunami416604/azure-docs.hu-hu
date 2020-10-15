@@ -8,19 +8,19 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: df59d944a15e22e9884b0d177deedb9968ea1aef
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994991"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072764"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
 Key Vault lehetővé teszi a bizalmas adatok biztonságos elérését az alkalmazásokon belülről:
 
 - A kulcsok, titkos kódok és tanúsítványok védelme a kód írása nélkül történik, és az alkalmazások egyszerűen használhatók.
-- Lehetősége van arra, hogy az ügyfelek saját kulcsaikat, titkos kulcsokat és tanúsítványokat tudjanak kezelni, így az alapszintű szoftverek funkcióinak biztosítására koncentrálhat. Így az alkalmazásai nem felelnek meg az ügyfeleknek a bérlői kulcsokkal, titkokkal és tanúsítványokkal kapcsolatos felelősségének vagy lehetséges felelősségének.
+- Lehetővé teszi, hogy az ügyfelek saját kulcsaikat, titkos kulcsokat és tanúsítványokat tudjanak kezelni, így az alapvető szoftver-funkciók biztosítására koncentrálhat. Így az alkalmazásai nem felelnek meg az ügyfeleknek a bérlői kulcsokkal, titkokkal és tanúsítványokkal kapcsolatos felelősségének vagy lehetséges felelősségének.
 - Az alkalmazás a kulcsokat az aláíráshoz és a titkosításhoz is használhatja, és az alkalmazásból külső kulcskezelő is megtartja. A kulcsokkal kapcsolatos további információkért lásd: [a kulcsok ismertetése](../keys/about-keys.md)
 - Kezelheti a hitelesítő adatokat, például a jelszavakat, a hozzáférési kulcsokat, az olyan sas-jogkivonatokat, amelyeket az Key Vault a titokként tárol, lásd [a titkok](../secrets/about-secrets.md)
 - Tanúsítványok kezelése. További információ: [a tanúsítványok ismertetése](../certificates/about-certificates.md)

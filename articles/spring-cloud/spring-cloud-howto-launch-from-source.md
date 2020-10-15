@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: ee64343a040f4ed3288f8c4addb64c1ef2437cc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d6c9bea3d0ff95a3cb9d8fcce41eaa6f8bbfed21
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326184"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093939"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>A Spring Cloud-alkalmazás elindítása forráskódból
 
@@ -37,7 +37,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure-előfizetése rendel
 1. [A Git telepítése](https://git-scm.com/)
 2. [A JDK 8 telepítése](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
-4. [Az Azure CLI összetevő telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [Az Azure CLI összetevő telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
 
 > [!TIP]
@@ -152,7 +152,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

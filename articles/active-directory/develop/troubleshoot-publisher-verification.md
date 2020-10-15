@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873149"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073733"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -33,7 +33,7 @@ Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [k�
 ## <a name="common-issues"></a>Gyakori problémák
 Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat során fordulhatnak elő. 
 
-- **Nem tudom a Microsoft Partner Network AZONOSÍTÓját (MPN-AZONOSÍTÓját), vagy nem vagyok a fiók elsődleges kapcsolattartója** 
+- **Nem tudom a Microsoft Partner Network AZONOSÍTÓját (MPN-AZONOSÍTÓját), vagy nem tudom, ki a fiók elsődleges kapcsolattartója** 
     1. Navigáljon az [MPN-regisztráció oldalra](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. Bejelentkezés felhasználói fiókkal a szervezeti elsődleges Azure AD-bérlőben 
     1. Ha egy MPN-fiók már létezik, a rendszer felismeri, és hozzáadja a fiókhoz. 

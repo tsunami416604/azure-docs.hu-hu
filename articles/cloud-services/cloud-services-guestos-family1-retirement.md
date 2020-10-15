@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458824"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073393"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>1. vendég operációsrendszer-család használatból való kivonásáról szóló értesítés
 Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jelent meg.
@@ -23,7 +23,7 @@ Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jel
 
 **November 3., 2014** A vendég operációs rendszer 1. családjának kiterjesztett támogatása befejeződött, és teljes mértékben megszűnik. A rendszer minden, az 1. családban található szolgáltatást érint. Ezeket a szolgáltatásokat bármikor leállíthatja. Nem garantálható, hogy a szolgáltatások továbbra is futnak, hacsak manuálisan nem frissíti őket.
 
-Ha további kérdése van, látogasson el a [Microsoft Q&a Cloud Servicesra](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) , vagy [forduljon az Azure ügyfélszolgálatához](https://azure.microsoft.com/support/options/).
+Ha további kérdése van, látogasson el a [Microsoft Q&a Cloud Servicesra](/answers/topics/azure-cloud-services.html) , vagy [forduljon az Azure ügyfélszolgálatához](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Érintett?
 A Cloud Services érintik, ha a következők valamelyike érvényes:
@@ -32,7 +32,7 @@ A Cloud Services érintik, ha a következők valamelyike érvényes:
 2. Nem rendelkezik a felhőalapú szolgáltatáshoz tartozó ServiceConfiguration. cscfg fájlban explicit módon megadott osFamily-értékkel. A rendszer jelenleg az alapértelmezett "1" értéket használja ebben az esetben.
 3. A Azure Portal a vendég operációs rendszer családjának értékét a "Windows Server 2008" értékkel listázza.
 
-Annak megállapításához, hogy a Cloud Services melyik operációsrendszer-családot futtatja, a következő parancsfájlt futtathatja Azure PowerShellban, de először [be kell állítania a Azure PowerShell](/powershell/azure/) . További információ a parancsfájlról: [Azure vendég operációs rendszer 1. családjának vége: június 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
+Annak megállapításához, hogy a Cloud Services melyik operációsrendszer-családot futtatja, a következő parancsfájlt futtathatja Azure PowerShellban, de először [be kell állítania a Azure PowerShell](/powershell/azure/) . További információ a parancsfájlról: [Azure vendég operációs rendszer 1. családjának vége: június 2014](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

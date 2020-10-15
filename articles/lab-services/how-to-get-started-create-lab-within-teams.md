@@ -1,16 +1,16 @@
 ---
-title: Első lépések és Azure Lab Services labor létrehozása csapatokból
-description: Megtudhatja, hogyan kezdheti el és hozhat létre Azure Lab Services laborokat a csapatokból.
+title: Első lépések és Azure Lab Services labor létrehozása a csapatokon belül
+description: Megtudhatja, hogyan kezdheti el és hozhat létre Azure Lab Services laborokat a csapatokon belül.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 0604e2934ff6b011acfa9dd4a4b25fa58193e69b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044445"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092137"
 ---
-# <a name="get-started-and-create-a-lab-services-lab-from-teams"></a>Első lépések és labor Services-tesztkörnyezet létrehozása a csapatokból
+# <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Első lépések és labor Services-tesztkörnyezet létrehozása a csapatokon belül
 
 Ez a cikk bemutatja, hogyan adhatja hozzá a **Azure Lab Services** alkalmazást egy csoporthoz, majd hogyan hozhat létre labort az MS Teams-környezetben.
 
@@ -34,40 +34,38 @@ Csapatának tulajdonosaként közvetlenül is hozzáadhat **Azure Lab Services**
 
     > [!NOTE]
     > Csak a csapat **tulajdonosai** hozhatnak létre Labs-t a csapat számára.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="Lap hozzáadása":::
 1. Válassza ki a labor Services-fiókot, amelyet az osztályterem Labs létrehozásához szeretne használni ebben a csapatban. 
 
     Azure Lab Services egyszeri bejelentkezést használ a [Azure Lab Services webhelyre](https://labs.azure.com) , és lekéri az összes olyan labor-fiókot, amelyhez hozzáféréssel rendelkezik. 
 
     Azok a fiókok, amelyek ugyanabban a bérlőben találhatók, mint a csapatok, és amelyek **tulajdonosa**, **közreműködői**vagy **létrehozói** hozzáférése van jelen. 
 
-   ![Üdvözöljük az ALS-ben](./media/integrate-with-teams/welcome.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Lap hozzáadása":::
 1. Nyomja meg a **Save (Mentés** ) gombot, és a lap bekerül a csatornába.
 
-    Most kiválaszthatja a csatorna **Azure Lab Services** lapját, és megkezdheti a laborok kezelését a következő lépésben leírtak szerint.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Lap hozzáadása":::
+
+    Most kiválaszthatja a csatorna **Azure Lab Services** lapját, és megkezdheti a laborok kezelését a következő cikkekben leírtak szerint.
 
 A labor-fiók kiválasztása után a csapat tulajdonosai létrehozhatnak Labs-t a csapat számára. A teljes tesztkörnyezet-létrehozási folyamat és a labor szinten található összes feladat elvégezhető a csapatokon belül. A felhasználók több labort is létrehozhatnak ugyanazon a csapaton belül, és a csapat tulajdonosa, a megfelelő hozzáféréssel a labor fiók szintjén, csak az adott csapathoz társított Labs-t fogja látni.
-
-## <a name="deleting-classroom-labs"></a>Tantermi laborok törlése
-
-A Teams-ben létrehozott laborokat a labor [Services webhelyén](https://labs.azure.com) törölheti, ha közvetlenül törli a labort a [Azure Lab Servicesban](how-to-manage-classroom-labs.md). 
-
-A labor törlése a csapat törlésekor is aktiválódik. Ha az a csapat, amelyben a labor létrejött, törölve lesz, a labor automatikusan törlődik 24 órával az automatikus felhasználói lista szinkronizálásának elindítása után. 
-
-A lap törlése vagy az alkalmazás eltávolítása nem eredményezi a labor törlését. Ha a lap törölve van, akkor a csoport tagsága listán szereplő felhasználók továbbra is hozzáférhetnek a virtuális gépekhez a [labor Services webhelyén](https://labs.azure.com) , kivéve, ha a labor törlését explicit módon aktiválja a tesztkörnyezet törlésével vagy a csapat törlésével. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ha labort hoz létre a csapatokon belül, a rendszer automatikusan kitölti és szinkronizálja a labor felhasználói listáját a csoport tagságával. A csapat minden tagja, beleértve a tulajdonosokat, a tagokat és a vendégeket is, automatikusan hozzáadja a labor felhasználói listához. Az Azure Lab Services 24 óránként szinkronizálja a csoport tagságát, és automatikus szinkronizálást indít el. Részletes információ:
 
-[A labor Services felhasználói listájainak kezelése a csapatokból](how-to-manage-user-lists-within-teams.md)
+[A labor Services felhasználói listájainak kezelése a csapatokon belül](how-to-manage-user-lists-within-teams.md)
 
 ### <a name="see-also"></a>Lásd még
 
 Lásd még a következő cikkeket:
 
 - [Azure Lab Services használata a csapatokon belül – áttekintés](lab-services-within-teams-overview.md)
-- [Tesztkörnyezet felhasználói listájainak kezelése a csapatokon belül](how-to-manage-user-lists-within-teams.md)
 - [A labor virtuálisgép-készletének kezelése a csapatokon belül](how-to-manage-vm-pool-within-teams.md)
 - [Labor-ütemtervek létrehozása és kezelése a csapatokon belül](how-to-create-schedules-within-teams.md)
 - [Hozzáférés a csapatokon belüli virtuális gépekhez – tanuló nézet](how-to-access-vm-for-students-within-teams.md)
-
+- [A csapaton belüli laborok törlése](how-to-delete-lab-within-teams.md)

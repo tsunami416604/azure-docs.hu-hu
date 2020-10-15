@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546312"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073597"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>A távoli monitorozási megoldásgyorsító áttekintése
 
@@ -106,7 +106,7 @@ A szolgáltatás egy REST-végpontot biztosít a szifilisz-műveletekhez a kulcs
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-A megoldás-gyorsító környezetekben a [Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/) a szabályok, a riasztások, a konfigurációs beállítások és az összes többi hideg tárterület tárolására használható.
+A megoldás-gyorsító környezetekben a [Azure Cosmos db](../cosmos-db/index.yml) a szabályok, a riasztások, a konfigurációs beállítások és az összes többi hideg tárterület tárolására használható.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics Manager-szolgáltatás
 
@@ -120,11 +120,11 @@ Az ASA-feladatok biztosítják a telemetria a csatlakoztatott eszközökről Tim
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-[Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) egy eseményvezérelt motor, amely lehetővé teszi az eszközökről érkező nagy mennyiségű adatfolyam vizsgálatát.
+[Azure stream Analytics](../stream-analytics/index.yml) egy eseményvezérelt motor, amely lehetővé teszi az eszközökről érkező nagy mennyiségű adatfolyam vizsgálatát.
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-[Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) a telemetria a megoldás-gyorssegédhez csatlakoztatott eszközökről tárolja. Emellett lehetővé teszi az eszközök telemetria megjelenítését és lekérdezését a megoldás webes felhasználói felületén.
+[Azure Time Series Insights](../time-series-insights/index.yml) a telemetria a megoldás-gyorssegédhez csatlakoztatott eszközökről tárolja. Emellett lehetővé teszi az eszközök telemetria megjelenítését és lekérdezését a megoldás webes felhasználói felületén.
 
 ### <a name="configuration-microservice"></a>Konfigurációs szolgáltatás
 
@@ -136,7 +136,7 @@ A [hitelesítési és engedélyezési szolgáltatás](https://github.com/Azure/r
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-A megoldás-gyorsító telepítések OpenID Connect-szolgáltatóként [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) használnak. Azure Active Directory tárolja a felhasználói adatokat, és tanúsítványokat biztosít a JWT-jogkivonat aláírásának ellenőrzéséhez.
+A megoldás-gyorsító telepítések OpenID Connect-szolgáltatóként [Azure Active Directory](../active-directory/index.yml) használnak. Azure Active Directory tárolja a felhasználói adatokat, és tanúsítványokat biztosít a JWT-jogkivonat aláírásának ellenőrzéséhez.
 
 ## <a name="presentation"></a>Megjelenítés
 
@@ -157,7 +157,7 @@ A felhasználói felület integrálja a Azure Time Series Insights Explorert, ho
 
 A konfigurálási szolgáltatás lehetővé teszi a felhasználói felület számára a konfigurációs beállítások tárolását és beolvasását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné vizsgálni a forráskódot és a fejlesztői dokumentációt, kezdje a következő két GitHub-tárház egyikével:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 191ea575ed8ce84d2d96227bf93cc4890edd00de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc796b4d9708c18f4d0612e6f3ebde9b2485d2f7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400483"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093140"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez az Azure CLI-vel való csatlakoztatásával
 Ha a linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatti hibát észlel, lehetséges, hogy a virtuális merevlemezen hibaelhárítási lépéseket kell végrehajtania. Egy gyakori példa lehet egy olyan bejegyzés, `/etc/fstab` amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan lehet az Azure CLI használatával összekapcsolni a virtuális merevlemezt egy másik linuxos virtuális géppel a hibák kijavítása érdekében, majd újból létre kell hoznia az eredeti virtuális gépet. 
@@ -35,6 +35,8 @@ A hibaelhárítási folyamat a következő:
 1. Módosítsa az érintett virtuális gép operációsrendszer-lemezét.
 
 A hibaelhárítási lépések elvégzéséhez a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t kell telepítenie, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
+
+Az 1., 2., 3., 4., 6. és 7. lépések automatizálásához használhatja a virtuális gép javítási parancsait. További dokumentáció és útmutatás: linuxos virtuális [gép javítása az Azure-beli virtuális gépek javítási parancsaival](repair-linux-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 > [!Important]
 > A cikkben szereplő parancsfájlok csak a [felügyelt lemezt](../managed-disks-overview.md)használó virtuális gépekre vonatkoznak. 
