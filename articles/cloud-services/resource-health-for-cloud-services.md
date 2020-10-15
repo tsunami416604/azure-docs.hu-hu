@@ -7,17 +7,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056054"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072713"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Az Azure Cloud Services (klasszikus) Resource Health-ellenőrzési (RHC) támogatása
 Ez a cikk a [Microsoft Azure Cloud Services (klasszikus)](https://azure.microsoft.com/services/cloud-services) Resource Health-ellenőrzési (RHC-) támogatásáról beszél.
 
-A Cloud Services [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) segítséget nyújt a cloud Service &-telepítést befolyásoló szolgáltatási problémák diagnosztizálásában és támogatásában. A felhőalapú szolgáltatások jelenlegi és múltbeli állapotáról szóló jelentést a telepítés, a szerepkör & a szerepkör-példány szintjén.
+A Cloud Services [Azure Resource Health](../service-health/resource-health-overview.md) segítséget nyújt a cloud Service &-telepítést befolyásoló szolgáltatási problémák diagnosztizálásában és támogatásában. A felhőalapú szolgáltatások jelenlegi és múltbeli állapotáról szóló jelentést a telepítés, a szerepkör & a szerepkör-példány szintjén.
 
 Azure-állapotjelentések az Azure-ügyfelek széles körét érintő problémákról. A Resource Health személyre szabott irányítópultot biztosít az erőforrások állapotáról. Resource Health azt mutatja, hogy az erőforrások az Azure-szolgáltatásokkal kapcsolatos problémák miatt nem voltak elérhetők. Ezek az információk megkönnyítik annak megtekintését, hogy az SLA-t megsértették-e.
 
@@ -30,7 +30,7 @@ Az erőforrás-állapotot egy központi telepítés vagy szerepkör szintjén ke
 Az erőforrás-állapot ellenőrzése csak az üzemi tárolóhelyek telepítéséhez használható. Az átmeneti tárolóhely üzembe helyezése még nem támogatott. 
 
 ## <a name="does-resource-health-check-also-check-the-health-of-the-application"></a>Resource Health az alkalmazás állapotának ellenőrzését is?
-Nem, az állapot-ellenőrzés csak a szerepkör-példányok esetében fordul elő, és nem figyeli az alkalmazás állapotát. Például Az alkalmazás továbbra is elérhető marad, még akkor is, ha a 3 szerepkör-példány állapota nem kifogástalan. A RHC nem használ [terheléselosztó-próbákat](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) vagy a vendég ügynök mintavételét. Ezért az ügyfeleknek továbbra is a Load Balancer-teszteket kell használnia az alkalmazás állapotának figyelésére. 
+Nem, az állapot-ellenőrzés csak a szerepkör-példányok esetében fordul elő, és nem figyeli az alkalmazás állapotát. Például Az alkalmazás továbbra is elérhető marad, még akkor is, ha a 3 szerepkör-példány állapota nem kifogástalan. A RHC nem használ [terheléselosztó-próbákat](../load-balancer/load-balancer-custom-probe-overview.md) vagy a vendég ügynök mintavételét. Ezért az ügyfeleknek továbbra is a Load Balancer-teszteket kell használnia az alkalmazás állapotának figyelésére. 
 
 ## <a name="what-are-the-annotations-for-cloud-services"></a>Mik a jegyzetek a Cloud Serviceshoz?
 A jegyzetek az üzemelő példány vagy a szerepkörök állapota. Különböző jegyzetek szerepelnek az állapotadatok alapján, az állapot változásának indoklása stb. 

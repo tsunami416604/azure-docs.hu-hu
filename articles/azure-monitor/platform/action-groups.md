@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327731"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093752"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -287,7 +287,32 @@ Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, h
 
 Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
 
+### <a name="service-tag"></a>Szolgáltatás címkéje
+A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatás címkéjét a címek változásával, minimalizálva a ActionGroup vonatkozó hálózati biztonsági szabályok gyakori frissítéseinek összetettségét.
 
+1. Azure Portal az Azure-szolgáltatások területen keresse meg a *hálózati biztonsági csoportot*.
+2. Kattintson a **Hozzáadás** gombra, és hozzon létre egy hálózati biztonsági csoportot.
+
+   1. Adja hozzá az erőforráscsoport nevét, majd adja meg a *példány részleteit*.
+   1. Kattintson a **felülvizsgálat + létrehozás** elemre, majd a *Létrehozás*gombra.
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Példa hálózati biztonsági csoport létrehozására."border="true":::
+
+3. Nyissa meg az erőforráscsoportot, majd kattintson a létrehozott *hálózati biztonsági csoportra* .
+
+    1. Válassza a *bejövő biztonsági szabályok*lehetőséget.
+    1. Kattintson a **Hozzáadás**gombra.
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Példa szolgáltatási címke hozzáadására."border="true":::
+
+4. Ekkor megnyílik egy új ablak a jobb oldali ablaktáblán.
+    1.  Forrás kiválasztása: **szolgáltatás címkéje**
+    1.  Forrásoldali szolgáltatás címkéje: **ActionGroup**
+    1.  Kattintson a **Hozzáadás** parancsra.
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
+
+A ActionGroup **szolgáltatással** való használata segít minimalizálni az IP-címek gyakori frissítéseinek összetettségét.
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  

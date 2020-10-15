@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42157223c0c9a0b326c400388ea2b564e42f7f2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620035"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088941"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -95,7 +96,7 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)

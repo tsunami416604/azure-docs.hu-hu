@@ -5,16 +5,16 @@ services: synapse-analytics
 author: alehall
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 065e24c12e0750cd7a1f3ce2d4cad5c7ad4b95df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4606dc1c4daa8e54f8fce03cedd9709a7a5c4367
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260694"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093905"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása az Azure CLI-vel
 
@@ -65,7 +65,7 @@ az extension add --name synapse
     |StorageAccountResourceGroup| A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve. |
     |FileShareName| A meglévő Storage-fájlrendszer neve.|
     |SynapseResourceGroup| Válassza ki az Azure szinapszis-erőforráscsoport új nevét. |
-    |Region| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+    |Régió| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
     |SynapseWorkspaceName| Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez. |
     |SqlUser| Válasszon egy értéket egy új felhasználónévhez.|
     |SqlPassword| Válasszon biztonságos jelszót.|
@@ -147,6 +147,6 @@ Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a köv
 az synapse workspace delete --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561601"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072475"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Az Azure-irányítópultok struktúrája
 Ez a dokumentum egy Azure-irányítópult szerkezetét mutatja be példaként a következő irányítópult használatával:
 
 ![minta-irányítópult](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Mivel a közös [Azure-irányítópultok erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ez az irányítópult JSON-ként is megjeleníthető.  A következő JSON a fent látható irányítópultot jelöli.
+Mivel a közös [Azure-irányítópultok erőforrások](../azure-resource-manager/management/overview.md), ez az irányítópult JSON-ként is megjeleníthető.  A következő JSON a fent látható irányítópultot jelöli.
 
 ```json
 
@@ -303,7 +303,7 @@ A név az erőforrás-azonosító azon szegmense, amely nem tartalmazza az előf
 Minden irányítópult __Microsoft. Portal/irányítópult__típusú.
 
 ### <a name="the-location-property"></a>A Location tulajdonság
-Más erőforrásokkal ellentétben az irányítópultok nem rendelkeznek futtatókörnyezet-összetevővel.  Az irányítópultok esetében a hely azt az elsődleges földrajzi helyet jelzi, amely az irányítópult JSON-ábrázolását tárolja. Az értéknek a helyek API használatával beolvasható Helykód egyikének kell lennie [az előfizetések erőforráson](https://docs.microsoft.com/rest/api/resources/subscriptions).
+Más erőforrásokkal ellentétben az irányítópultok nem rendelkeznek futtatókörnyezet-összetevővel.  Az irányítópultok esetében a hely azt az elsődleges földrajzi helyet jelzi, amely az irányítópult JSON-ábrázolását tárolja. Az értéknek a helyek API használatával beolvasható Helykód egyikének kell lennie [az előfizetések erőforráson](/rest/api/resources/subscriptions).
 
 ### <a name="the-tags-property"></a>A címkék tulajdonság
 A címkék az Azure-erőforrások egyik gyakori funkciója, amely lehetővé teszi, hogy tetszőleges érték párokkal szervezze az erőforrást. Az irányítópultok esetében egy __rejtett cím__nevű speciális címke található. Ha az irányítópulton ez a tulajdonság fel van töltve, akkor a portálon az irányítópult megjelenítendő neve lesz. Az Azure-erőforrás-azonosítókat nem lehet átnevezni, de a címkéket is. Ez a címke lehetővé teszi, hogy a renamable megjelenítse az irányítópult nevét.

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336156"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089043"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -68,7 +68,7 @@ Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az a
 
 
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört.
+Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört.
 ::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Az alkalmazás CPU- vagy memóriahasználata magas
@@ -91,7 +91,7 @@ További információ: [mérőszámok az Azure Spring Cloud](spring-cloud-concep
 
 Ha minden példány fut, lépjen az Azure Log Analyticsra az alkalmazás naplófájljainak lekérdezéséhez, és tekintse át a kód logikáját. Ez segít megtekinteni, hogy ezek bármelyike érintheti-e a méretezési particionálást. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md).
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört. A naplókat a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával kérdezheti le.
+Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
 
 ::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Ellenőrzőlista a Spring-alkalmazás üzembe helyezéséhez az Azure Spring Cloud-ban
@@ -113,14 +113,14 @@ Az alkalmazás előkészítése előtt győződjön meg arról, hogy az megfelel
 
 Ha az Azure Spring Cloud Service-példányt a Azure Portal használatával állítja be, az Azure Spring Cloud végrehajtja az érvényesítést.
 
-Ha azonban az Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) vagy a [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/)használatával próbálja beállítani az Azure Spring Cloud Service-példányt, ellenőrizze a következőket:
+Ha azonban az Azure [CLI](/cli/azure/get-started-with-azure-cli) vagy a [Azure Resource Manager sablon](../azure-resource-manager/index.yml)használatával próbálja beállítani az Azure Spring Cloud Service-példányt, ellenőrizze a következőket:
 
 * Az előfizetés aktív.
 * A helyet az Azure Spring Cloud [támogatja](spring-cloud-faq.md) .
 * A példányhoz tartozó erőforráscsoport már létre van hozva.
 * Az erőforrás neve megfelel az elnevezési szabálynak. Csak kisbetűket, számokat és kötőjeleket tartalmazhat. Az első karakternek betűnek kell lennie. Az utolsó karakternek betűnek vagy számnak kell lennie. Az értéknek 2 és 32 karakter közöttinek kell lennie.
 
-Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretné beállítani, először olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)ismertető témakört.
+Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretné beállítani, először olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](../azure-resource-manager/templates/template-syntax.md)ismertető témakört.
 
 A rendszer az Azure Spring Cloud Service-példány nevét fogja használni a (z) altartomány nevének megadásához `azureapps.io` , így a telepítés sikertelen lesz, ha a név ütközik egy meglévővel. Előfordulhat, hogy további részleteket talál a tevékenység naplóiban.
 
@@ -129,7 +129,7 @@ A rendszer az Azure Spring Cloud Service-példány nevét fogja használni a (z)
 
 A .NET Core Steeltoe alkalmazáshoz nem tölthet fel *. zip* fájlt a Azure Portal vagy a Resource Manager-sablon használatával.
 
-Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
+Az alkalmazáscsomag [Azure CLI](/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
 
 Győződjön meg arról, hogy az alkalmazás a megfelelő *. zip* -fájlformátumban van csomagolva. Ha nem megfelelően van csomagolva, a folyamat nem válaszol, vagy hibaüzenet jelenik meg.
 ::: zone-end
@@ -139,7 +139,7 @@ Győződjön meg arról, hogy az alkalmazás a megfelelő *. zip* -fájlformátu
 
 A Java Archive file (JAR)/Source csomag nem tölthető fel a Azure Portal vagy a Resource Manager-sablon használatával.
 
-Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
+Az alkalmazáscsomag [Azure CLI](/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
 
 Ha a lekérdezés megszakad, továbbra is használhatja a következő parancsot az üzembehelyezési naplók lekéréséhez:
 
@@ -153,7 +153,7 @@ Győződjön meg arról, hogy az alkalmazás a megfelelő [végrehajtható jar-f
 
 A Azure Portal vagy a Resource Manager-sablon használatával nem tölthet fel JAR/forrásoldali csomagot.
 
-Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
+Az alkalmazáscsomag [Azure CLI](/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
 
 Ha a lekérdezés megszakad, továbbra is használhatja a következő parancsot a buildelési és üzembehelyezési naplók lekéréséhez:
 
@@ -171,7 +171,7 @@ Ha egy meglévő Spring Cloud-alapú megoldást telepít át az Azure-ba, győz�
 
 A _szolgáltatás beállításjegyzékbeli_ ügyfél-naplófájljait is megtekintheti az Azure log Analyticsban. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md)
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört. A naplókat a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával kérdezheti le.
+Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Meg szeretném vizsgálni az alkalmazás környezeti változóit
 
@@ -231,7 +231,7 @@ Ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az a
 </dependency>
 ```
 
-Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](../azure-monitor/learn/quick-create-workspace.md). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 ::: zone-end
 
 ## <a name="next-steps"></a>Következő lépések

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766862"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074838"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzembe helyezésével a Helm használatával
 
@@ -23,17 +23,17 @@ A kiadási folyamat során a Helm a megfelelő konfigurációval egyesíti a dia
 
 A *Values. YAML* tárolt értékek felülbírálása érdekében további YAML konfigurációs fájlok is megadhatók a parancssorban a Helm futtatásakor. Az Azure app Configuration támogatja a konfigurációs értékek exportálását a YAML-fájlokba. Az exportálási funkció integrálása az üzembe helyezésbe lehetővé teszi, hogy a Kubernetes-alkalmazások kihasználják az alkalmazás konfigurációjában tárolt konfigurációs értékeket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Alkalmazások konfigurációjának használata az alkalmazás Kubernetes való telepítésekor a Helm használatával.
 > * Hozzon létre egy Kubernetes titkot egy Key Vault hivatkozás alapján az alkalmazás konfigurációjában.
 
-Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyeletének alapvető ismerete. További információ az alkalmazások az [Azure Kubernetes szolgáltatásban](https://docs.microsoft.com/azure/aks/kubernetes-helm)történő telepítéséről.
+Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyeletének alapvető ismerete. További információ az alkalmazások az [Azure Kubernetes szolgáltatásban](../aks/kubernetes-helm.md)történő telepítéséről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítése (2.4.0 vagy újabb verzió)
+- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítése (2.4.0 vagy újabb verzió)
 - A [Helm](https://helm.sh/docs/intro/install/) telepítése (2.14.0 vagy újabb verzió)
 - Egy Kubernetes-fürt.
 
@@ -51,7 +51,7 @@ Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyel
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és adjon hozzá egy titkos kulcsot a **jelszó** és az érték **SajátJelszó** [Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) . 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és adjon hozzá egy titkos kulcsot a **jelszó** és az érték **SajátJelszó** [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) . 
 2. Válassza ki az előző szakaszban létrehozott alkalmazás-konfigurációs tároló példányát.
 
 3. Válassza a **Configuration Explorer**lehetőséget.
@@ -185,7 +185,7 @@ settings:
 Először töltse le a konfigurációt az alkalmazás konfigurációjától egy *konfig. YAML* fájlba. A kulcs szűrő használatával csak azokat a kulcsokat töltse le, amelyek a **beállításokkal**kezdődnek. Ha az adott esetben a kulcs szűrője nem elegendő a Key Vault hivatkozások kulcsainak kizárásához, akkor a **--skip-** kulcstartó argumentumot használhatja a kizáráshoz. 
 
 > [!TIP]
-> További információ az [exportálási parancsról](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
+> További információ az [exportálási parancsról](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -225,7 +225,7 @@ else{
 
 ```
 
-A [Kubernetes irányítópultjának](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)használatával ellenőrizze, hogy a konfigurációk és a titkos kulcsok beállítása sikeres volt-e. Láthatja, hogy az alkalmazás konfigurációjának **szín** -és **üzenet** -értékei a tároló környezeti változói között lettek feltöltve.
+A [Kubernetes irányítópultjának](../aks/kubernetes-dashboard.md)használatával ellenőrizze, hogy a konfigurációk és a titkos kulcsok beállítása sikeres volt-e. Láthatja, hogy az alkalmazás konfigurációjának **szín** -és **üzenet** -értékei a tároló környezeti változói között lettek feltöltve.
 
 ![Gyorsindítás alkalmazás elindítása helyi](./media/kubernetes-dashboard-env-variables.png)
 
@@ -237,9 +237,9 @@ Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jel
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure-alkalmazás konfigurációs beállításait exportálta egy Kubernetes-telepítésben a Helm használatával. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

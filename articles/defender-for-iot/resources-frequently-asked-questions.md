@@ -4,124 +4,65 @@ description: Válaszok az Azure Defender IoT funkcióinak és szolgáltatásána
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 97dd4e13754175e9c81ae308b86faae811e4d554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/07/2020
+ms.author: rkarlin
+ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939756"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089196"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender a IoT-hez – gyakori kérdések
 
 Ez a cikk a Defender for IoT szolgáltatással kapcsolatos gyakori kérdések és válaszok listáját tartalmazza.
 
-## <a name="does-azure-provide-support-for-iot-security"></a>Az Azure támogatást nyújt a IoT biztonsághoz?
-
-Az Azure egy integrált nézetet biztosít a IoT-biztonság monitorozásához és kezeléséhez a teljes biztonsági megoldás részeként Azure Security Centeron keresztül. Ha Ön egy alkalmazás fejlesztője, a IoT-alkalmazás biztonságának kezeléséhez IoT Hub nézetet használhatja.
-
 ## <a name="what-is-azures-unique-value-proposition-for-iot-security"></a>Mi az Azure egyedi Value IoT biztonsága?
 
 A Defender for IoT lehetővé teszi a vállalatok számára, hogy a meglévő Cyber-biztonsági nézetet a teljes IoT-megoldásra terjesszek. Az Azure teljes körű áttekintést nyújt az üzleti megoldásról, amely lehetővé teszi, hogy üzleti tevékenységeit és döntéseit a vállalati biztonsági helyzet és az összegyűjtött adatok alapján tegye elérhetővé. Az Azure IoT, a Azure IoT Edge és a Azure Security Center együttes biztonsága lehetővé teszi a kívánt megoldás létrehozását a szükséges biztonsággal.
 
-## <a name="who-is-defender-for-iot-made-for"></a>Kik a IoT Defender?
+## <a name="our-organization-uses-proprietary-non-standard-industrial-protocols-are-they-supported"></a>A szervezetünk szabadalmaztatott, nem szabványos ipari protokollokat használ. Ezeket támogatja a szolgáltatás? 
 
-A IoT Defender az Azure IoT Hub Security szolgáltatásban van integrálva, és felügyeletet biztosít a napi üzleti megoldás biztonsági műveletei számára. A IoT Defender a Azure Security Center képességeibe is integrálva van, és integrált nézetet biztosít a IoT biztonság monitorozásához és kezeléséhez a teljes biztonsági megoldás részeként.
+A IoT készült Azure Defender átfogó protokoll-támogatást biztosít. A beágyazott protokoll támogatásán kívül a védett és egyéni protokollokat futtató eszközök, illetve a szabványostól eltérő protokollok IoT is biztonságossá tehetők. A Horizon Open Development Environment (ODE) SDK-val a fejlesztők olyan, nem ágazati beépülő modulokat hozhatnak létre, amelyek a megadott protokollok alapján dekódolják a hálózati forgalmat. A szolgáltatások elemzik a forgalmat, hogy teljes körű monitorozást, riasztást és jelentéskészítést nyújtsanak. Horizont használata:
+- A láthatóság és a vezérlés kibontása anélkül, hogy új verzióra kellene frissítenie.
+- Külső beépülő modulként a helyszínen fejlesztheti a védett adatokat. 
+- A riasztások, események és protokollok paramétereinek honosítása.
+
+Ez az egyedi megoldás a protokollok beépülő modulként való fejlesztéséhez, nem igényel dedikált fejlesztői csapatot vagy verziót az új protokoll támogatásához. A fejlesztők, a partnerek és az ügyfelek biztonságosan fejleszthet protokollokat, és megoszthatják a horizonton keresztüli információkat és ismereteket. 
+
+## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>Kell-e hardveres készülékeket vásárolni a Microsoft partnereitől?
+Az Azure Defender for IoT-érzékelő a [hardver specifikációs útmutatójában](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)leírtak szerint a hardveres specifikációk útmutatójában leírtak szerint a Microsoft partnereitől származó minősített hardvereket vásárolhat, vagy használhatja a mellékelt anyagjegyzéket, és saját maga is megvásárolhatja azokat. 
+
+A minősítéssel rendelkező hardvereket a laborban teszteltük az illesztőprogramok stabilitása, a csomagok elejtése és a hálózat méretezése érdekében.
+
+
+## <a name="regulation-does-not-allow-us-to-connect-our-system-to-the-internet-can-we-still-utilize-defender-for-iot"></a>A szabályozás nem teszi lehetővé, hogy a rendszer az internethez kapcsolódjon. Továbbra is használhatom a Defendert a IoT?
+
+Igen, lehet! Az Azure Defender for IoT platform helyszíni megoldását olyan fizikai vagy virtuális érzékelő berendezésként helyezi üzembe, amely passzívan betölti a hálózati forgalmat (a SPAN, a RSPAN vagy a TAP használatával) a hálózatok elemzéséhez, felderítéséhez és folyamatos figyeléséhez, valamint az OT és a IoT. Nagyobb vállalatok esetében több érzékelő is összesítheti az adatokat egy helyszíni felügyeleti konzolra.
+
+## <a name="where-in-the-network-should-i-connect-monitoring-ports"></a>A hálózatban hol kell csatlakozni a figyelési portokhoz?
+
+Az Azure Defender for IoT érzékelő egy SPAN porthoz vagy egy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi az INTERNETKAPCSOLATtal rendelkező hálózati forgalom összegyűjtését a passzív (ügynök nélküli) figyelés használatával. Ez a funkció nulla hatással van az OT hálózatokra, mivel az nem az adatelérési útra van helyezve, és nem vizsgálja aktívan az eszközökön.
+
+Például:
+- Egyetlen berendezés (virtuális fizikai) lehet az Üzemirányítási rétegben, amely az összes, a réteg felé irányuló, az összes üzemi cella forgalmát átirányítja.
+- Azt is megteheti, hogy megkeresi a kisméretű mini-szenzorokat az egyes üzemi cellákban, amelyek Felhőbeli vagy helyi felügyelettel rendelkeznek, amely az Üzemirányítási rétegben található. Egy másik készülék (virtuális vagy fizikai) figyelheti a forgalmat az Üzemirányítási rétegben (a SCADA, a történész vagy a MES esetében).
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Hogyan hasonlítja össze a Defender a IoT a versenyt?
 
 Míg más megoldások olyan képességeket biztosítanak, amelyek lehetővé teszik, hogy az ügyfelek saját megoldásaikat hozzanak létre, a Defender for IoT egyedi, teljes körű IoT biztonsági megoldást nyújt, amely átfogó képet nyújt az összes kapcsolódó Azure-erőforrás biztonságáról. Az Azure lehetővé teszi a gyors üzembe helyezést és a teljes integrációt IoT Hub Modulos ikrek használatával, így könnyen integrálható a meglévő eszközök felügyeleti eszközeivel.
 
-## <a name="do-i-have-to-be-an-azure-security-center-customer-to-use-this-service"></a>A szolgáltatás használatához Azure Security Center ügyfélnek kell lennie?
-
-Nem, de ajánlott. Azure Security Center nélkül a Defender for IoT korlátozott számú csatlakoztatott erőforrás-adatmennyiséget kap, és korlátozott elemzést nyújt a lehetséges támadási felületről, fenyegetésekről és lehetséges támadásokról.
 
 ## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Egy Azure IoT-ügyfélnek kell lennie?
 
-Igen. A IoT Defender az Azure IoT-kapcsolaton és-infrastruktúrán alapul.
-
-## <a name="do-i-have-to-install-an-agent"></a>Kell-e ügynököt telepíteni?
-
-Az ügynök telepítése a IoT-eszközökön nem kötelező, hogy a Defender IoT legyen engedélyezve. A következő három lehetőség közül választhat, és a kiválasztott beállításoknak megfelelően különböző szintű biztonsági monitorozási és felügyeleti képességeket kaphat:
-
-1. Telepítse a Defender for IoT biztonsági ügynököt módosításokkal vagy anélkül. Ez a lehetőség a legmagasabb szintű biztonsági elemzéseket biztosítja az eszközök viselkedésének és elérésének.
-
-1. Hozzon létre saját ügynököt, és implementálja a Defender for IoT biztonsági üzenet sémáját. Ez a beállítás lehetővé teszi a Defender használatát a IoT Analysis Tools számára az eszköz biztonsági ügynökén felül.
-
-1. Nincs biztonsági ügynök telepítése a IoT-eszközökön. Ez a beállítás lehetővé teszi IoT Hub kommunikáció figyelését, csökkentve a biztonsági monitorozási és felügyeleti képességeket.
-
-## <a name="what-does-the-defender-for-iot-agent-do"></a>Mi a IoT-ügynök Defenderje?
-
-A Defender for IoT-ügynök az eszközök konfigurálására, viselkedésére és hozzáférésére (a konfiguráció vizsgálatával) biztosítja az eszköz szintű veszélyforrások lefedettségét, feldolgozza & a kapcsolatot. A IoT biztonsági ügynök Defender nem vizsgálja meg az üzleti tevékenységgel kapcsolatos adatait vagy tevékenységeit.
-
-## <a name="where-can-i-get-the-defender-for-iot-security-agent"></a>Honnan szerezhetem be a Defender for IoT biztonsági ügynököt?
-
-A Defender for IoT biztonsági ügynök nyílt forráskódú, és elérhető a GitHubon a 32 bites és a 64-bites Windows-és Linux-verziókon: https://github.com/Azure/Azure-IoT-Security .
-
-## <a name="where-does-the-defender-for-iot-agent-get-installed"></a>Hová kell telepíteni a Defender for IoT-ügynököt?
-
-Részletes telepítési és ügynök-telepítési információk találhatók a GitHubban: https://github.com/Azure/Azure-IoT-Security .
-
-## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Mik az ügynök függőségei és előfeltételei?
-
-A IoT Defender számos platformot támogat. Az adott eszközök támogatásának ellenőrzéséhez tekintse meg a [támogatott eszközök platformot](how-to-deploy-agent.md) .
-
-## <a name="which-data-is-collected-by-the-agent"></a>Milyen adatokat gyűjt az ügynök?
-
-A kapcsolat, a hozzáférés, a tűzfal konfigurációja, a folyamatok listája & az operációs rendszer alapkonfigurációját az ügynök gyűjti.
-
-## <a name="how-much-data-will-the-agent-generate"></a>Mennyi adattal fog létrejönni az ügynök?
-
-Az ügynök adatgenerálását az eszköz, az alkalmazás, a kapcsolat típusa és az ügyfél-ügynök konfigurációja vezérli. Az eszközök és a IoT megoldások közötti nagyfokú változékonyság miatt javasoljuk, hogy először üzembe helyezze az ügynököt egy tesztkörnyezetben vagy tesztelési beállításban, hogy megfigyelje, megismerje és beállítsa az igényeinek megfelelő egyedi konfigurációt, miközben megméri a generált adatmennyiséget. A szolgáltatás elindítása után a IoT Agent Defender az ügynök átviteli sebességének optimalizálásához nyújt operatív javaslatokat a konfiguráció és a Testreszabás folyamatának elősegítése érdekében.
-
-## <a name="how-can-i-control-my-billing"></a>Hogyan szabályozható a számlázás?
-
-A IoT Defender konfigurálható ügynökök vizsgálatait, adatpuffereket és egyéni riasztások létrehozását teszi lehetővé, amelyek növelhetik vagy csökkenthetik az ügynök által generált adatmennyiséget.
-
-## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Az ügynök üzenetei kvótát használnak a IoT Hubtól?
-
-Igen. Az ügynök által továbbított adatokat a rendszer a IoT Hub kvótába számítja.
-
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Mi a következő lépés? Telepítettem az ügynököt, és nem látok semmilyen tevékenységet vagy naplót...
-
-1. Győződjön meg arról, hogy az [ügynök típusa megfelel az eszköz kijelölt operációsrendszer-platformjának](how-to-deploy-agent.md)
-
-1. Ellenőrizze, hogy az [ügynök fut-e az eszközön](how-to-agent-configuration.md).
-
-1. Győződjön meg arról, hogy a [szolgáltatás sikeresen engedélyezve lett](quickstart-onboard-iot-hub.md) a IoT hub **biztonsága** érdekében.
-
-1. Győződjön meg arról, hogy az eszköz [konfigurálva van IoT hub a Defender for IoT modullal](quickstart-create-security-twin.md).
-
-Ha a tevékenységek vagy naplók még nem érhetők el, további segítségért forduljon a Defender for IoT partnerhez.
-
-## <a name="what-happens-when-the-internet-connection-stops-working"></a>Mi történik, ha az internetkapcsolat leáll?
-
-Az ügynök továbbra is futtatja és tárolja az adattárolást, amíg az eszköz fut. A rendszer a biztonsági üzenet gyorsítótárában tárolja az adatmennyiséget a méret konfigurációjának megfelelően. Amikor az eszköz visszanyeri a kapcsolatot, a biztonsági üzenetek folytatják a küldést.
-
-## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Ha az eszköz újraindul, a biztonsági ügynök önállóan helyreállítható?
-
-A biztonsági ügynök úgy lett kialakítva, hogy automatikusan újrafusson az egyes eszközök újraindításakor.
-
-## <a name="can-the-agent-affect-the-performance-of-the-device-or-other-installed-software"></a>Hatással lehet az ügynök az eszköz vagy más telepített szoftver teljesítményére?
-
-Az ügynök bármilyen más alkalmazásként vagy folyamatként felhasználja a gépi erőforrásokat, és nem zavarja meg a normál eszköz tevékenységeit. Az erőforrás-használat azon az eszközön, amelyen az ügynök fut, a beállítással és a konfigurációval párosul. Azt javasoljuk, hogy az ügynök konfigurációját egy foglalt környezetben tesztelje, valamint a többi IoT-alkalmazással és-funkcióval való együttműködéssel, mielőtt éles környezetben telepítené az üzembe helyezést.
-
-## <a name="im-making-some-maintenance-on-the-device-can-i-turn-off-the-agent"></a>Karbantartást végezek az eszközön. Ki tudom kapcsolni az ügynököt?
-
-Az ügynök nem kapcsolható ki.
-
-## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Van mód annak tesztelésére, hogy az ügynök megfelelően működik-e?
-
-Ha az ügynök leállítja a kommunikációt, vagy nem tudja elküldeni a biztonsági üzeneteket, az **eszköz csendes** riasztást generál.
-
+Igen. A felhőben csatlakoztatott üzemelő példányok esetében az Azure Defender for IoT az Azure IoT-kapcsolaton és-infrastruktúrán alapul.
 ## <a name="can-i-create-my-own-alerts"></a>Létrehozhatom a saját riasztásokat?
 
 Igen. Az előre meghatározott viselkedések, például az IP-címek és a nyitott portok esetében beállíthatja a testreszabott riasztásokat. Az egyéni riasztásokkal és azok létrehozásával kapcsolatos további tudnivalókért tekintse meg az [egyéni riasztások létrehozása](quickstart-create-custom-alerts.md) című témakört.
@@ -132,9 +73,15 @@ Igen. Az előre meghatározott viselkedések, például az IP-címek és a nyito
 
 - A biztonsági ügynökből származó nyers adatok a Log Analytics-fiókban is tárolhatók. A beállítás konfigurációjának módosítása előtt vegye figyelembe a méretet, az időtartamot, a tárolási követelményeket és a kapcsolódó költségeket.
 
-## <a name="why-should-i-add-defender-for-iot-to-the-module-identity-what-is-it-used-for"></a>Miért érdemes a IoT-hez hozzáadni a Defendert a modul identitásához? Mire használható?
 
-Az ügynökök konfigurálásához és felügyeletéhez a Defender for IoT modult használjuk.
+
+## <a name="what-happens-when-the-internet-connection-stops-working"></a>Mi történik, ha az internetkapcsolat leáll?
+
+Az érzékelők és ügynökök továbbra is futtatják és tárolják az adataikat, amíg az eszköz fut. A rendszer a biztonsági üzenet gyorsítótárában tárolja az adatmennyiséget a méret konfigurációjának megfelelően. Amikor az eszköz visszanyeri a kapcsolatot, a biztonsági üzenetek folytatják a küldést.
+
+
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

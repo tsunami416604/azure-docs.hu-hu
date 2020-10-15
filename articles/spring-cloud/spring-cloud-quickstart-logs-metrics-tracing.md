@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326252"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093055"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel
 
 ::: zone pivot="programming-language-csharp"
-Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud integrálja a Steeltoe [elosztott nyomkövetését](https://steeltoe.io/docs/3/tracing/distributed-tracing) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból.
+Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud integrálja a Steeltoe [elosztott nyomkövetését](https://steeltoe.io/docs/3/tracing/distributed-tracing) az Azure [Application Insightsával](../azure-monitor/app/app-insights-overview.md). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból.
 
 Az alábbi eljárások azt ismertetik, hogyan használhatók a naplózási adatfolyamok, a Log Analytics, a metrikák és az elosztott nyomkövetés az előző rövid útmutatókba telepített minta alkalmazással.
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Szerkessze a lekérdezést, és távolítsa el azokat a WHERE záradékokat, amelyek a figyelmeztetési és a hibajelentési naplókra korlátozzák a megjelenítést.
 
-1. Ezután válassza `Run` a () lehetőséget, és látni fogja a naplókat. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) talál.
+1. Ezután válassza `Run` a () lehetőséget, és látni fogja a naplókat. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](../azure-monitor/log-query/get-started-queries.md) talál.
 
    [![Naplók Analytics-lekérdezés – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból. Az alábbi eljárások azt ismertetik, hogyan használhatók a naplózási adatfolyamok, a Log Analytics, a metrikák és az elosztott nyomkövetés a telepített PiggyMetrics-alkalmazásokkal.
+Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](../azure-monitor/app/app-insights-overview.md). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból. Az alábbi eljárások azt ismertetik, hogyan használhatók a naplózási adatfolyamok, a Log Analytics, a metrikák és az elosztott nyomkövetés a telepített PiggyMetrics-alkalmazásokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -165,7 +165,7 @@ Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
    [![Naplók Analytics-bejegyzés ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Ezután megjelennek a szűrt naplók. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) talál.
+1. Ezután megjelennek a szűrt naplók. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](../azure-monitor/log-query/get-started-queries.md) talál.
 
    [![Naplók Analytics-lekérdezés ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
@@ -217,7 +217,7 @@ Egy korábbi rövid útmutatóban az erőforráscsoport alapértelmezett nevét 
 az configure --defaults group=
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Spring Cloud további figyelési képességeinek megismeréséhez lásd:
 

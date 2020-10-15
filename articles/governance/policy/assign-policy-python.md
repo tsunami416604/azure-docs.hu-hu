@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés a Pythonban'
 description: Ebben a rövid útmutatóban a Python használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: a160b9bc389bc0c902f9644887aa478f80822e60
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2bbe38ce979dd12694908240a6adab317332a35
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136514"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074090"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Python használatával
 
@@ -170,7 +170,7 @@ print(policyAssignment)
 
 Cserélje le `{scope}` ugyanazt a hatókört, amelyet a szabályzat-hozzárendelés létrehozásához használt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 

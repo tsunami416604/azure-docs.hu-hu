@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042422"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093701"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT Plug and Play Service – fejlesztői útmutató
 
@@ -30,14 +30,14 @@ A szolgáltatás SDK-k lehetővé teszik, hogy egy megoldásról, például egy 
 
 - IOT hub szolgáltatás ügyfelének. Ez a szolgáltatás a modell AZONOSÍTÓját a Device Twin tulajdonságként teszi elérhetővé.
 
-- Digitális Twins szolgáltatás-ügyfél. Az új digitális Twins API a [digitális Twins Definition Language (DTDL)](concepts-digital-twin.md) modellen alapuló szerkezeteket (például összetevőket, tulajdonságokat és parancsokat) üzemeltet. A digitális Twin API-k megkönnyítik a megoldás-építők számára, hogy IoT Plug and Play megoldásokat hozzanak létre.
+- Digitális Twins-ügyfél. Az új digitális Twins API a [digitális Twins Definition Language (DTDL)](concepts-digital-twin.md) modellen alapuló szerkezeteket (például összetevőket, tulajdonságokat és parancsokat) üzemeltet. A digitális Twin API-k megkönnyítik a megoldás-építők számára, hogy IoT Plug and Play megoldásokat hozzanak létre.
 
-| Platform | IoT Hub szolgáltatási ügyfél | Digitális Twins szolgáltatás ügyfele |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [Dokumentáció](/dotnet/api/microsoft.azure.devices) <br/> [Példák](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [Példák](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [Dokumentáció](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [Példák](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [Példák](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [Dokumentáció](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Dokumentáció](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [Dokumentáció](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Dokumentáció](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| Platform | Dokumentáció | Példák |
+| -------- | ------------- | ------- |
+| .NET     | [Referencia](/dotnet/api/microsoft.azure.devices) | [Szolgáltatási ügyfél](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [Digital Twins](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [Referencia](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [Szolgáltatási ügyfél](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[Digital Twins](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [Referencia](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [Szolgáltatási ügyfél](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [Referencia](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [Szolgáltatási ügyfél](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub szolgáltatási ügyfélre vonatkozó példák
 
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>Digitális kettős példák
+## <a name="iot-hub-digital-twin-examples"></a>IoT Hub digitális kettős példák
 
 A **DigitalTwinClient** osztály használatával a digitális Twins használatával kommunikálhat az eszköz állapotával. Az eszköz [DTDL](concepts-digital-twin.md) -modellje az eszköz által megvalósított tulajdonságokat és parancsokat határozza meg.
 
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST API
-
-Az alábbi példák a IoT Hub REST API használatával kommunikálnak a csatlakoztatott IoT Plug and Play eszközzel. Az API jelenlegi verziója: `2020-09-30` . Hozzáfűzés `?api-version=2020-09-30` a REST PI-hívásokhoz.
-
-> [!NOTE]
-> Az API jelenleg nem támogatja az ikrek modulját `digitalTwins` .
-
-Ha a termosztátos eszközt hívja meg `t-123` , az eszköz összes tulajdonságát egy REST API Get hívással érheti el:
-
-```REST
-GET /digitalTwins/t-123
-```
-
-Ez a hívás tartalmazza a JSON-tulajdonságot az `$metadata.$model` eszköz által bejelentett modell-azonosítóval.
-
-Az összes csatoló összes tulajdonsága a REST API sablonnal érhető el, ahol az az `GET /DigitalTwin/{device-id}` `{device-id}` eszköz azonosítója:
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha az `Thermostat` `t-123` eszközön található összetevő rendelkezik `restart` paranccsal, meghívhatja REST API post hívással:
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-Általánosabban a parancsok a REST API sablonnal is meghívhatók:
-
-- `device-id`: az eszköz azonosítója.
-- `component-name`: az eszköz képességei modellének megvalósítások szakaszában található felület neve.
-- `command-name`: a parancs neve.
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>Eszköz telemetria beolvasása
