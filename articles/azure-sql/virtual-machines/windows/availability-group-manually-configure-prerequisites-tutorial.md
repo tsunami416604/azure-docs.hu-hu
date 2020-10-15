@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263232"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075705"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -122,7 +122,7 @@ Az új virtuális hálózat egy **rendszergazda**nevű alhálózattal rendelkezi
 
 5. Második alhálózat létrehozásához válassza a **+ alhálózat**lehetőséget.
 6. Az **alhálózat hozzáadása**területen konfigurálja az alhálózatot úgy, hogy beírja a **sqlsubnet** **nevet**. Az Azure automatikusan megadja a **címtartomány érvényes tartományát**. Győződjön meg arról, hogy ez a címtartomány legalább 10 címmel rendelkezik. Éles környezetben több címet is igényelhet.
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
     ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
@@ -397,7 +397,7 @@ Ezután hozzon létre három virtuális gépet – két SQL Server virtuális g�
 | A virtuális gép konfigurációjának **alapjai** |**Név** = fürt – FSW<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-0<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-1<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |
 | Virtuális gép konfigurációjának **mérete** |**Size** = DS1 \_ v2 (1 VCPU, 3,5 GB) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB)</br>A méretnek támogatnia kell az SSD-tárolót (prémium szintű lemezes támogatás). )) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB) |
 | Virtuális gép konfigurációs **beállításai** |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |
-| A virtuális gép konfigurációjának **SQL Server beállításai** |Nem alkalmazható |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |
+| A virtuális gép konfigurációjának **SQL Server beállításai** |Nem értelmezhető |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |
 
 <br/>
 
@@ -415,10 +415,14 @@ Most már csatlakoztathatja a virtuális gépeket a **Corp.contoso.com**-hez. Ha
 2. A **Kiszolgálókezelőben**válassza a **helyi kiszolgáló**lehetőséget.
 3. Válassza ki a **munkacsoport** hivatkozást.
 4. A **számítógép neve** szakaszban válassza a **módosítás**lehetőséget.
-5. Jelölje be a **tartomány** jelölőnégyzetet, és írja be a **Corp.contoso.com** szöveget a szövegmezőbe. Kattintson az **OK** gombra.
+5. Jelölje be a **tartomány** jelölőnégyzetet, és írja be a **Corp.contoso.com** szöveget a szövegmezőbe. Válassza az **OK** lehetőséget.
 6. A **Windows biztonsági** előugró ablakban határozza meg az alapértelmezett tartományi rendszergazdai fiók (**CORP\DomainAdmin**) és a jelszó (**contoso! 0000**) hitelesítő adatait.
 7. Amikor megjelenik az "üdvözli a corp.contoso.com tartomány" üzenet, kattintson az **OK gombra**.
 8. Válassza a **Bezárás**lehetőséget, majd az előugró ablakban válassza az **Újraindítás most** lehetőséget.
+
+## <a name="add-accounts"></a>Fiókok hozzáadása
+
+Adja hozzá a telepítési fiókot rendszergazdaként az egyes virtuális gépeken, adjon engedélyt a telepítési fióknak és a helyi fiókoknak SQL Serveron belül, és frissítse a SQL Server szolgáltatásfiókot. 
 
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>A Corp\Install-felhasználó hozzáadása rendszergazdaként az egyes fürtökön futó virtuális gépeken
 
@@ -438,16 +442,6 @@ Miután minden virtuális gép újraindult a tartomány tagjaként, adja hozzá 
 7. A **rendszergazda tulajdonságok** párbeszédpanel bezárásához kattintson **az OK gombra** .
 8. Ismételje meg az előző lépéseket a **SQLServer-1** és a **cluster-FSW**.
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>A SQL Server-szolgáltatásfiókok beállítása
-
-Az egyes SQL Server VMeken állítsa be a SQL Server szolgáltatásfiókot. A tartományi fiókok konfigurálásakor létrehozott fiókokat használja.
-
-1. Nyissa meg az **SQL Server Configuration Manager** eszközt.
-2. Kattintson a jobb gombbal a SQL Server szolgáltatásra, majd válassza a **Tulajdonságok parancsot**.
-3. Állítsa be a fiókot és a jelszót.
-4. Ismételje meg ezeket a lépéseket a többi SQL Server VM.  
-
-SQL Server rendelkezésre állási csoportok esetében minden SQL Server VM tartományi fiókként kell futnia.
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Bejelentkezés létrehozása minden SQL Server VM a telepítési fiókhoz
 
@@ -467,13 +461,54 @@ A rendelkezésre állási csoport konfigurálásához használja a telepítési 
 
 1. Adja meg a tartományi rendszergazda hálózati hitelesítő adatait.
 
-1. Használja a telepítési fiókot.
+1. Használja a telepítési fiókot (CORP\install).
 
 1. A bejelentkezést úgy állítsa be, hogy a sysadmin ( **rendszergazda** ) rögzített kiszolgálói szerepkör tagja legyen.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Ismételje meg a fenti lépéseket a másik SQL Server VM.
+
+### <a name="configure-system-account-permissions"></a>Rendszerfiók engedélyeinek konfigurálása
+
+Hozzon létre egy fiókot a rendszerfiókhoz, és adja meg a megfelelő engedélyeket, hajtsa végre az alábbi lépéseket minden SQL Server példányon:
+
+1. Hozzon létre egy fiókot az `[NT AUTHORITY\SYSTEM]` egyes SQL Server-példányokhoz. A következő szkript hozza létre ezt a fiókot:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. Adja meg a következő engedélyeket az `[NT AUTHORITY\SYSTEM]` egyes SQL Server példányokon:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   A következő parancsfájl megadja ezeket az engedélyeket:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>A SQL Server-szolgáltatásfiókok beállítása
+
+Az egyes SQL Server VMeken állítsa be a SQL Server szolgáltatásfiókot. A tartományi fiókok konfigurálásakor létrehozott fiókokat használja.
+
+1. Nyissa meg az **SQL Server Configuration Manager** eszközt.
+2. Kattintson a jobb gombbal a SQL Server szolgáltatásra, majd válassza a **Tulajdonságok parancsot**.
+3. Állítsa be a fiókot és a jelszót.
+4. Ismételje meg ezeket a lépéseket a többi SQL Server VM.  
+
+SQL Server rendelkezésre állási csoportok esetében minden SQL Server VM tartományi fiókként kell futnia.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Feladatátvételi fürtszolgáltatási funkciók hozzáadása SQL Server virtuális gépekhez
 
@@ -524,35 +559,6 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 
 Ismételje meg ezeket a lépéseket a második SQL Server VM.
 
-## <a name="configure-system-account-permissions"></a>Rendszerfiók engedélyeinek konfigurálása
-
-Hozzon létre egy fiókot a rendszerfiókhoz, és adja meg a megfelelő engedélyeket, hajtsa végre az alábbi lépéseket minden SQL Server példányon:
-
-1. Hozzon létre egy fiókot az `[NT AUTHORITY\SYSTEM]` egyes SQL Server-példányokhoz. A következő szkript hozza létre ezt a fiókot:
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. Adja meg a következő engedélyeket az `[NT AUTHORITY\SYSTEM]` egyes SQL Server példányokon:
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   A következő parancsfájl megadja ezeket az engedélyeket:
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>Következő lépések
 

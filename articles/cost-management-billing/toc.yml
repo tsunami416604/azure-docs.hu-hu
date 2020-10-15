@@ -180,8 +180,10 @@
               href: manage/pay-by-invoice.md
             - name: További előfizetések létrehozása
               href: manage/create-subscription.md
-            - name: Előfizetések programozott létrehozása
+            - name: Előfizetések programozott létrehozása a legfrissebb API-val
               href: manage/programmatically-create-subscription.md
+            - name: Előfizetések programozott létrehozása az API előzetes verziójával
+              href: manage/programmatically-create-subscription-preview.md
             - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
               href: manage/grant-access-to-create-subscription.md
             - name: Előfizetési adatok exportálása
@@ -338,6 +340,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: Hibaelhárítás
       items:
+        - name: EA – használatiadat-fájlokkal kapcsolatos számlázási problémák
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: MCA – használatiadat-fájlokkal kapcsolatos számlázási problémák
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: CSP – használatiadat-fájlokkal kapcsolatos számlázási problémák
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: Nem található előfizetés
           href: manage/no-subscriptions-found.md
         - name: Fizetési problémák

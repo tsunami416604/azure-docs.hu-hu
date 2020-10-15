@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 94f3fd9f9c66082beace47d675539e9f73c21e83
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824203"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075535"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -23,7 +23,7 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Támogatott [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) a 8-as verzióval.
+* Támogatott [Java Development Kit SDK](/java/azure/jdk) a 8-as verzióval.
 * Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
 
 ## <a name="create-an-app-configuration-instance"></a>Alkalmazás-konfigurációs példány létrehozása
@@ -304,7 +304,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](https://go.microsoft.com/fwlink/?linkid=2074664)használatával.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)használatával.
 
 * További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
 * [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
