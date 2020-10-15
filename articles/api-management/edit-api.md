@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: d3ce7318266f3fbaf818e5bcfa245ce5f64d74ba
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4241ba55c464169257ec0a4b2d20eaa5e76534d5
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076929"
+ms.locfileid: "92092698"
 ---
 # <a name="edit-an-api"></a>API szerkesztése
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan szerkeszthet egy API-t az API Management (A
 
 ## <a name="edit-an-api-in-apim"></a>API szerkesztése az APIM szolgáltatásban
 
-![API szerkesztése](./media/edit-api/edit-api001.png)
+![Képernyőfelvétel: az API APIM való szerkesztésének folyamata.](./media/edit-api/edit-api001.png)
 
 1. Kattintson az **API-k** lapfülre.
 2. Válassza ki az egyik korábban importált API-t.
@@ -50,7 +50,7 @@ A háttérrendszer API-ját frissítheti az Azure Portalról. Ehhez tegye a köv
 1. Válassza ki a **Minden művelet** lehetőséget.
 2. Az **Előtér** ablakban kattintson a ceruza ikonra.
 
-    ![API szerkesztése](./media/edit-api/edit-api002.png)
+    ![Képernyőkép, amely kiemeli a ceruza ikont a előtér-képernyőn.](./media/edit-api/edit-api002.png)
 
     Megjelenik az API swaggerje.
 

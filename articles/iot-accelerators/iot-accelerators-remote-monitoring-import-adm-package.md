@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443334"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073869"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Automatikus Eszközkezelő csomag importálása a távoli figyelési megoldás-gyorsító eszközbe
 
 Az automatikus eszközkezelés konfigurációja meghatározza az eszközök egy csoportjára való központi telepítés konfigurációs módosításait. Ez a cikk azt feltételezi, hogy a szervezet egyik fejlesztője már létrehozott egy automatikus eszközkezelés-konfigurációt. Ha szeretné megtudni, hogyan hozza létre a fejlesztő a konfigurációt, tekintse meg a következő IoT Hub útmutatók egyikét:
 
-- [IoT-eszközök konfigurálása és figyelése nagy méretekben a Azure Portal használatával](../iot-hub/iot-hub-auto-device-config.md)
-- [IoT-eszközök konfigurálása és figyelése méretezéssel az Azure CLI használatával](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [IoT-eszközök konfigurálása és figyelése nagy méretekben a Azure Portal használatával](../iot-hub/iot-hub-automatic-device-management.md)
+- [IoT-eszközök konfigurálása és figyelése méretezéssel az Azure CLI használatával](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 A fejlesztők egy automatikus Eszközkezelő konfigurációt hoznak létre és tesztelnek egy fejlesztési környezetben. Ha elkészült, importálhatja a konfigurációt a távoli figyelési megoldás-gyorsító szolgáltatásba.
 
@@ -59,6 +59,6 @@ Az alábbi lépéseket követve importálhat egy automatikus eszközkezelés kon
 
 Mostantól csomagként feltöltött egy automatikus eszközkezelés-konfigurációt. A **központi telepítések** lapon telepítheti ezt a csomagot a csatlakoztatott eszközökre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan hozhat létre egy konfigurációs csomagot, és hogyan importálhatja azt a távoli figyelési megoldásból, a következő lépés a [távoli figyeléshez kapcsolódó eszközök tömeges](iot-accelerators-remote-monitoring-bulk-configuration-update.md)felügyeletének megismerése.

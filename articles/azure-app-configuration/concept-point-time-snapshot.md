@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601078"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073070"
 ---
 # <a name="point-in-time-snapshot"></a>Adott időpontban készült pillanatképek
 
@@ -23,7 +23,7 @@ Az Azure-alkalmazás konfigurációja a kulcs-értékeken végrehajtott módosí
 
 A korábbi kulcs-értékek lekéréséhez Azure Portal vagy CLI-t használhat. Az Azure CLI-ben `az appconfig revision list` a szükséges értékek beolvasásához használja a t, és adja hozzá a megfelelő paramétereket.  Adja meg az Azure-alkalmazás konfigurációs példányát úgy, hogy az áruház nevét ( `--name <app-config-store-name>` ) vagy egy () adatforrást használ `--connection-string <your-connection-string>` . Korlátozza a kimenetet egy adott időpontot () megadva `--datetime` , valamint a visszaadni kívánt elemek maximális számának megadásával ( `--top` ).
 
-Ha nem helyileg telepítette az Azure CLI-t, igény szerint [Azure Cloud Shell](/azure/cloud-shell/overview)is használhatja.
+Ha nem helyileg telepítette az Azure CLI-t, igény szerint [Azure Cloud Shell](../cloud-shell/overview.md)is használhatja.
 
 A Key-Values összes rögzített módosításának beolvasása.
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)

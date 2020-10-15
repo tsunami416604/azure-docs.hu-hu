@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932542"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073801"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -33,7 +33,7 @@ Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és
 Az alkalmazás [üzenetsor-központú munkasémát](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatív architektúra: App Service és webjobs
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként futtassa az előtér- [Azure app Service](/azure/app-service/) , és használja a [webjobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkciót a háttérrendszer számára. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. További információ a forgatókönyvhöz legjobban illeszkedő szolgáltatások kiválasztásáról: [Azure app Service, Cloud Services és Virtual Machines összehasonlítás](/azure/architecture/guide/technology-choices/compute-decision-tree).
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként futtassa az előtér- [Azure app Service](../app-service/index.yml) , és használja a [webjobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkciót a háttérrendszer számára. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. További információ a forgatókönyvhöz legjobban illeszkedő szolgáltatások kiválasztásáról: [Azure app Service, Cloud Services és Virtual Machines összehasonlítás](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.
@@ -125,7 +125,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás** elemre.
+5. Kattintson a **Létrehozás** gombra.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
@@ -154,7 +154,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás** elemre.
+10. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -169,7 +169,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
 
 4. A **Replikáció** legördülő listában válassza a **Helyileg redundáns tárolás** elemet.
 
-    Ha a georeplikáció engedélyezve van a tárfiókban, a tárolt tartalom replikálása egy másodlagos adatközpontba történik, amely ezáltal a feladatátvétel helyévé válik, amennyiben az elsődleges helyen jelentős katasztrófa következik be. A georeplikáció további költségeket vonhat maga után. A teszt- és fejlesztői fiókok esetében általában nem érdemes fizetni a georeplikációért. További információ: [Tárfiók létrehozása, kezelése vagy törlése](../storage/common/storage-create-storage-account.md).
+    Ha a georeplikáció engedélyezve van a tárfiókban, a tárolt tartalom replikálása egy másodlagos adatközpontba történik, amely ezáltal a feladatátvétel helyévé válik, amennyiben az elsődleges helyen jelentős katasztrófa következik be. A georeplikáció további költségeket vonhat maga után. A teszt- és fejlesztői fiókok esetében általában nem érdemes fizetni a georeplikációért. További információ: [Tárfiók létrehozása, kezelése vagy törlése](../storage/common/storage-account-create.md).
 
 5. Az **Erőforráscsoport** szakaszban kattintson a **Meglévő használata** elemre, majd válassza ki a felhőszolgáltatáshoz használt erőforráscsoportot.
 6. A **Hely** legördülő listában válassza ugyanazt a régiót, amelyet a felhőszolgáltatás számára is választott.
@@ -177,7 +177,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Létrehozás** elemre.
+7. Kattintson a **Létrehozás** gombra.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -290,7 +290,7 @@ Az `<Instances>` beállítás megadja azon virtuális gépek számát, amelyeken
 
     ![Beállítások lépés](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    A **Speciális** lapon szereplő alapértelmezett beállítások megfelelnek a jelen oktatóanyag céljainak. A Speciális lappal kapcsolatos további információkért lásd: [Publish Azure Application Wizard](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard) (Azure-alkalmazás közzététele varázsló).
+    A **Speciális** lapon szereplő alapértelmezett beállítások megfelelnek a jelen oktatóanyag céljainak. A Speciális lappal kapcsolatos további információkért lásd: [Publish Azure Application Wizard](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard) (Azure-alkalmazás közzététele varázsló).
 4. Az **Összegzés** lépésben kattintson a **Közzététel** lehetőségre.
 
     ![Összegzés lépés](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -776,5 +776,5 @@ További információkat találhat az alábbi forrásokban:
 
 * [Azure Cloud Services – 1. rész: Bevezetés](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services kezelése](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure Storage](../storage/index.yml)
 * [Felhőszolgáltató kiválasztása](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385331"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089536"
 ---
 # <a name="secure-your-restful-services"></a>A REST-szolgáltatások biztonságossá tétele 
 
@@ -312,7 +312,7 @@ A fenti kódrészletek hozzáadása után a technikai profilnak a következő XM
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>Adja hozzá a OAuth2 tulajdonosi jogkivonat-házirendjének kulcsát
 
-Hozzon létre egy házirend-kulcsot a tulajdonosi jogkivonat értékének tárolásához.
+Ha egy REST API műszaki profilt OAuth2 tulajdonosi jogkivonattal szeretne konfigurálni, szerezze be a hozzáférési jogkivonatot a REST API tulajdonosától. Ezután hozza létre a következő titkosítási kulcsot a tulajdonosi jogkivonat tárolásához.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
@@ -365,6 +365,6 @@ A következő példa egy olyan REST-alapú műszaki profilt mutat be, amely a tu
 </ClaimsProvider>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az IEF-referenciában található [Rest technikai profil](restful-technical-profile.md) elemről. 

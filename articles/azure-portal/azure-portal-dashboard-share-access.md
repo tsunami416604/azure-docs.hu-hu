@@ -1,6 +1,6 @@
 ---
-title: Azure Portal irányítópultok megosztása Role-Based használatával Access Control
-description: Ez a cikk azt ismerteti, hogyan oszthat meg egy irányítópultot a Azure Portal Role-Based Access Control használatával.
+title: Azure Portal irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával
+description: Ez a cikk azt ismerteti, hogyan oszthat meg irányítópultokat a Azure Portal az Azure szerepköralapú hozzáférés-vezérlés használatával.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 89c2b90b12a4fc16dd48571c00ff46dc62168d42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077881"
+ms.locfileid: "92092205"
 ---
-# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
+# <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure-irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával
 
 Az irányítópult konfigurálását követően közzéteheti és megoszthatja azt a szervezet más felhasználóival. Lehetővé teszi mások számára az irányítópult megtekintését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával. Rendeljen hozzá egy felhasználót vagy egy felhasználói csoportot egy szerepkörhöz. Ez a szerepkör határozza meg, hogy a felhasználók megtekinthetik vagy módosíthatják a közzétett irányítópultot.
 
@@ -33,7 +33,7 @@ Minden közzétett irányítópult Azure-erőforrásként van megvalósítva. Az
 
 ## <a name="understanding-access-control-for-dashboards"></a>Az irányítópultok hozzáférés-vezérlésének ismertetése
 
-A Role-Based Access Control (RBAC) használatával a felhasználók a hatókör három különböző szintjén rendelhetők hozzá a szerepkörökhöz:
+Az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) a hatókör három különböző szintjén rendelhet hozzá felhasználókat a szerepkörökhöz:
 
 * előfizetést
 * erőforráscsoport

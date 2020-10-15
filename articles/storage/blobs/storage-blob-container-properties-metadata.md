@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 115ab9767c23afd5876eb23821bd1283777cdb5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fb77179a00969da7a3dc372dc70c99cfe4220ca
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018926"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090998"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Tároló tulajdonságainak és metaadatainak kezelése a .NET-tel
 
-A blob-tárolók támogatják a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az általuk tartalmazott adatokon kívül. Ez a cikk bemutatja, hogyan kezelheti a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az [Azure Storage .net-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)szolgáltatásával.
+A blob-tárolók támogatják a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az általuk tartalmazott adatokon kívül. Ez a cikk bemutatja, hogyan kezelheti a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az [Azure Storage .net-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage)szolgáltatásával.
 
 ## <a name="about-properties-and-metadata"></a>A tulajdonságok és a metaadatok
 

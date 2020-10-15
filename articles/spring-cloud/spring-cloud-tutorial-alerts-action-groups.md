@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892529"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089978"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: a Spring Cloud-erőforrások figyelése riasztások és műveleti csoportok használatával
 
@@ -108,12 +108,12 @@ A **metrikák** lapról is létrehozhat egy szabályt:
 
 ![Képernyőkép-portál új riasztási szabálya 7](media/alerts-action-groups/alerts-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan állíthat be riasztásokat és műveleti csoportokat egy Azure Spring Cloud-alkalmazáshoz. A műveleti csoportokról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Műveletcsoportok létrehozása és kezelése az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Műveletcsoportok létrehozása és kezelése az Azure Portalon](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [SMS-riasztás viselkedése a műveleti csoportokban](../azure-monitor/platform/alerts-sms-behavior.md)

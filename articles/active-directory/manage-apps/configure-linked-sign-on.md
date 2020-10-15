@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597844"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073971"
 ---
 # <a name="understand-linked-sign-on"></a>A csatolt bejelentkezés ismertetése
 
@@ -35,7 +35,7 @@ Néhány gyakori forgatókönyv, ahol a hivatkozás lehetőség értékes:
 
 Az ismeretek gyors bejárásához járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . A rövid útmutatóban, ahol az egyszeri bejelentkezést konfigurálja, megtalálhatja a **csatolt** lehetőséget is. 
 
-A **csatolt** lehetőség nem nyújt bejelentkezési funkciókat az Azure ad-n keresztül. A beállítás egyszerűen beállítja, hogy a rendszer a felhasználók számára küldje el az [alkalmazást az alkalmazásokban vagy a](https://myapps.microsoft.com/) Microsoft 365 app launcherben.
+A **csatolt** lehetőség nem nyújt bejelentkezési funkciókat az Azure ad-n keresztül. A beállítás egyszerűen beállítja, hogy a rendszer a felhasználók számára küldje el az [alkalmazást az alkalmazásokban vagy a](https://myapps.microsoft.com/) Microsoft 365 app launcherben.  Mivel a bejelentkezés nem biztosít bejelentkezési funkciókat az Azure AD-n keresztül, a feltételes hozzáférés nem érhető el a csatolt egyszeri bejelentkezéssel konfigurált alkalmazásokhoz.
 
 > [!IMPORTANT] 
 > Vannak olyan helyzetek, amikor az **egyszeri bejelentkezési** lehetőség nem lesz a **vállalati alkalmazásokban**lévő alkalmazás navigációjában. 

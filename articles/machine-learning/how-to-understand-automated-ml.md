@@ -1,81 +1,67 @@
 ---
-title: Az automatizált ML-eredmények ismertetése
+title: AutoML kísérletek eredményeinek kiértékelése
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan tekintheti meg és értelmezheti a diagramokat és mérőszámokat az egyes automatizált gépi tanulási futtatásokhoz.
+description: Megtudhatja, hogyan tekintheti meg és értékelheti ki az egyes automatizált gépi tanulási kísérletek futtatásához szükséges diagramokat és mérőszámokat.
 services: machine-learning
 author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 12/05/2019
+ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, contperfq2
+ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315541"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092460"
 ---
-# <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulási eredmények értelmezése
+# <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
+Ebből a cikkből megtudhatja, hogyan tekintheti meg és értékelheti ki az automatizált gépi tanulás, a AutoML és a kísérletek eredményeit. Ezek a kísérletek több futtatásból állnak, ahol minden Futtatás létrehoz egy modellt. Az egyes modellek kiértékelése érdekében a AutoML automatikusan generál teljesítménymutatókat és diagramokat a kísérlet típusához. 
 
-Ebből a cikkből megtudhatja, hogyan tekintheti meg és értelmezheti az egyes automatizált gépi tanulási folyamatokhoz tartozó diagramokat és mérőszámokat. 
+Például a AutoML különböző diagramokat biztosít a besorolási és regressziós modellekhez. 
 
-További információk:
-+ [Mérőszámok és diagramok besorolási modellekhez](#classification)
-+ [Metrikák és diagramok a regressziós modellekhez](#regression)
-+ [Modell-értelmező és-funkció fontossága](#explain-model)
+|Osztályozás|Regresszió
+|---|---|
+|<li> [Keveredési mátrix](#confusion-matrix) <li>[Precíziós visszahívási diagram](#precision-recall-chart) <li> [Fogadó működési jellemzői (vagy ROC)](#roc) <li> [Emelő görbe](#lift-curve)<li> [Nyereségi görbe](#gains-curve)<li> [Kalibrálási ábra](#calibration-plot) | <li> [Előre jelzett vagy igaz](#pvt) <li> [Maradványok hisztogramja](#histo)|
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Hozzon létre egy kísérletet az automatizált gépi tanuláshoz, vagy az SDK-val vagy a Azure Machine Learning Studióban.
 
     * Az SDK használata [besorolási modell](how-to-auto-train-remote.md) vagy [regressziós modell](tutorial-auto-train-models.md) létrehozásához
     * A megfelelő adatfeltöltés használatával hozzon létre egy besorolási vagy regressziós modellt a [Azure Machine learning Studióval](how-to-use-automated-ml-for-ml-models.md) .
 
-## <a name="view-the-run"></a>A Futtatás megtekintése
+## <a name="view-run-results"></a>Futtatási eredmények megtekintése
 
-Az automatizált gépi tanulási kísérlet futtatása után a futtatások előzményei a Machine learning-munkaterületen találhatók. 
+Az automatizált gépi tanulási kísérlet befejezése után a futtatások előzményei a Machine learning-munkaterületen találhatók a [Azure Machine learning studión](overview-what-is-machine-learning-studio.md)keresztül. 
 
-1. Lépjen a munkaterülethez.
+Az SDK-kísérletek esetében ugyanezeket az eredményeket tekintheti meg a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)használja.
 
-1. A munkaterület bal oldali paneljén válassza a **kísérletek**lehetőséget.
+A következő lépések és animációk bemutatják, hogyan lehet megtekinteni egy adott modell futtatási előzményeit és teljesítmény-metrikáit és diagramját a Studióban.
 
-   ![A kísérlet menü képernyőképe](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
+![A futtatási előzmények és a modell teljesítmény-metrikáinak és diagramjainak megtekintéséhez szükséges lépések](./media/how-to-understand-automated-ml/view-run-metrics-ui.gif)
 
+A futtatási előzmények és a modell teljesítmény-metrikáinak és diagramjainak megtekintése a Studióban: 
+
+1. [Jelentkezzen be a studióba](https://ml.azure.com/) , és navigáljon a munkaterületére.
+1. A munkaterület bal oldali paneljén válassza a **Futtatás**lehetőséget.
 1. A kísérletek listájában válassza ki a felderíteni kívánt elemet.
-
-   [![Kísérletek listája](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
-
 1. Az alsó táblázatban válassza a **Futtatás**lehetőséget.
+1. A **modellek** lapon válassza ki a felderíteni kívánt modellhez tartozó **algoritmus nevét** .
+1. A **metrikák** lapon válassza ki, hogy milyen mérőszámokat és diagramokat szeretne kiértékelni a modellhez. 
 
-   [ ![ Kísérlet futtatása](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. A modellek területen válassza ki a modellhez használni kívánt **algoritmus nevét** .
+<a name="classification"></a> 
 
-   [![Kísérleti modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
+## <a name="classification-performance-metrics"></a>Besorolási teljesítmény mérőszámai
 
-Ugyanezeket az eredményeket is láthatja a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)használja.
-
-## <a name="classification-results"></a><a name="classification"></a> Besorolási eredmények
-
-A következő mérőszámokat és diagramokat minden olyan besorolási modell esetében elérhetővé teszi, amelyet a Azure Machine Learning gépi tanulási képességeinek felhasználásával épít fel.
-
-+ [Metrikák](#classification-metrics)
-+ [Keveredési mátrix](#confusion-matrix)
-+ [Precíziós visszahívási diagram](#precision-recall-chart)
-+ [Fogadó működési jellemzői (vagy ROC)](#roc)
-+ [Emelő görbe](#lift-curve)
-+ [Nyereségi görbe](#gains-curve)
-+ [Kalibrálási ábra](#calibration-plot)
-
-### <a name="classification-metrics"></a>Besorolási metrikák
-
-A következő metrikákat menti a rendszer minden egyes futtatási iterációban egy besorolási feladathoz.
+A következő táblázat összefoglalja a modell teljesítményének mérőszámait, amelyeket a AutoML a kísérlethez generált egyes besorolási modellekhez kiszámít. 
 
 Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--
@@ -104,125 +90,126 @@ weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes pé
 
 A AutoML nem tesz különbséget a bináris és a többosztályos metrikák között. Ugyanazokat az érvényesítési metrikákat kell jelenteni, hogy az adatkészlet két osztályból vagy kettőből áll-e. Néhány metrika azonban többosztályos besorolásra szolgál. Bináris adatkészletre alkalmazva ezek a mérőszámok nem kezelik osztályként az osztályt `true` , ahogy az várható. A többosztályos használatra szánt metrikák a, a vagy a utótaggal vannak ellátva `micro` `macro` `weighted` . Ilyenek például a következők:,,, `average_precision_score` `f1_score` `precision_score` `recall_score` és `AUC` .
 
-Egy konkrét példa ezt a különbségtételt teszi lehetővé: a felidézés helyett `tp / (tp + fn)` a többosztályos átlagot ( `micro` , `macro` , vagy `weighted` ) átlagot a bináris besorolási adatkészlet mindkét osztályán. Ez egyenértékű az osztály és az osztály visszahívásának kiszámításával `true` `false` , majd a kettő átlagának megtételével.
+Például a felidézés helyett `tp / (tp + fn)` a többosztályos átlagú visszahívás ( `micro` , `macro` , vagy `weighted` ) átlaga szerepel a bináris besorolási adatkészlet mindkét osztályán. Ez egyenértékű az osztály és az osztály visszahívásának kiszámításával `true` `false` , majd a kettő átlagát veszi figyelembe.
 
-<a name="confusion-matrix"></a>
+## <a name="confusion-matrix"></a>Keveredési mátrix
 
-### <a name="confusion-matrix"></a>Keveredési mátrix
+A zűrzavaros mátrix leírja a besorolási modell teljesítményét. Minden sor megjeleníti az adott adatkészlet igaz vagy tényleges osztályának példányait, és minden oszlop az osztály azon példányaira vonatkozik, amelyeket a modell előre jelzett. 
 
-#### <a name="what-is-a-confusion-matrix"></a>Mi az a zűrzavaros mátrix?
-A rendszer a besorolási modell teljesítményének leírására használja a zűrzavaros mátrixot. Minden sor megjeleníti az adott adatkészlet igaz vagy tényleges osztályának példányait, és minden oszlop az osztály azon példányaira vonatkozik, amelyeket a modell előre jelzett. 
+Az automatikus ML minden egyes zavart mátrix esetében megjeleníti az összes előre jelzett címke (oszlop) gyakoriságát, összehasonlítva az igaz címkével (sor). Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. 
 
-#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Mit tesz az automatikus ML a zavartsági mátrixmal?
-Besorolási problémák esetén Azure Machine Learning automatikusan egy összekeverhető mátrixot biztosít minden létrehozott modellhez. Az automatikus ML minden egyes zavart mátrix esetében megjeleníti az összes előre jelzett címke (oszlop) gyakoriságát, összehasonlítva az igaz címkével (sor). Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. 
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
-Összehasonlítjuk az adatkészlet tényleges értékét a modell által megadott előre jelzett értékekkel. Emiatt a gépi tanulási modellek nagyobb pontossággal rendelkeznek, ha a modellben a legtöbb érték az átló mentén van, ami azt jelenti, hogy a modell a helyes értéket jelezte. Ha a modellnek van osztály-egyensúlyhiánya, a zavart mátrix segít felderíteni egy elfogult modellt.
+A zűrzavaros mátrix összehasonlítja az adatkészlet tényleges értékét a modell által megadott előre jelzett értékekkel. Emiatt a gépi tanulási modellek nagyobb pontossággal rendelkeznek, ha a modellben a legtöbb érték az átló mentén van, ami azt jelenti, hogy a modell a helyes értéket jelezte. Ha a modellnek van osztály-egyensúlyhiánya, a zavart mátrix segít felderíteni egy elfogult modellt.
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>1. példa: gyenge pontosságú besorolási modell
+#### <a name="example-1-a-classification-model-with-poor-accuracy"></a>1. példa: gyenge pontosságú besorolási modell
 ![Gyenge pontosságú besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>2. példa: nagy pontosságú besorolási modell 
+#### <a name="example-2-a-classification-model-with-high-accuracy"></a>2. példa: nagy pontosságú besorolási modell 
 ![Nagy pontosságú besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 ##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>3. példa: egy nagy pontosságú és nagy mértékű torzulást biztosító besorolási modell a modell-előrejelzésekben
 ![Nagy pontosságú és nagy mértékű torzulást biztosító besorolási modell a modell-előrejelzésekben](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>Precíziós visszahívási diagram
-#### <a name="what-is-a-precision-recall-chart"></a>Mi az a precíziós visszahívás diagram?
-A precíziós visszahívás görbe a modellből származó pontosság és visszahívás közötti kapcsolatot mutatja. A pontosság kifejezés azt jelenti, hogy a modell képes az összes példány megfelelő címkézésére. A visszahívás azt jelöli, hogy egy osztályozó képes-e egy adott címke összes példányának megkeresésére.
 
-#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Mit tesz az automatizált ML a precíziós visszahívás diagrammal?
+## <a name="precision-recall-chart"></a>Precíziós visszahívási diagram
+
+A precíziós visszahívás görbe a modellből származó pontosság és visszahívás közötti kapcsolatot mutatja. A pontosság kifejezés azt jelenti, hogy a modell képes az összes példány megfelelő címkézésére. A visszahívás azt jelöli, hogy egy osztályozó képes-e egy adott címke összes példányának megkeresésére.
 
 Ezzel a diagrammal összevetheti az egyes modellek pontossági felidézési görbéit, és meghatározhatja, hogy melyik modell elfogadható kapcsolata legyen a pontosság és az adott üzleti probléma felidézése között. Ebben a diagramban a makrók pontossága – visszahívás, a mikro-átlag pontossága – visszahívás, valamint a modell összes osztályához társított pontossági visszahívás látható. 
 
-A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. A mikro-átlag előnyben részesített, ha az adatkészletben van osztálybeli egyensúlyhiány.
+A **Macro-átlag** minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt kezeli. A **mikro-átlag** azonban összesíti az összes osztály hozzájárulását az átlag kiszámításához. A mikro-átlag előnyben részesített, ha az adatkészletben van osztálybeli egyensúlyhiány.
 
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
-Az üzleti probléma céljától függően az ideális precíziós visszahívás görbe eltérő lehet. Néhány példát alább találhat
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+Az üzleti probléma céljától függően az ideális precíziós visszahívás görbe eltérő lehet. 
 
 ##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>1. példa: alacsony pontosságú és alacsony visszahívású besorolási modell
 ![Alacsony precizitású és alacsony visszahívású besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
 ##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>2. példa: besorolási modell ~ 100% pontossággal és ~ 100% visszahívás 
 ![Besorolási modell nagy pontossággal és visszahívás](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
-<a name="roc"></a>
-### <a name="roc-chart"></a>ROC-diagram
 
-#### <a name="what-is-a-roc-chart"></a>Mi az a ROC-diagram?
+<a name="roc"></a>
+
+## <a name="roc-chart"></a>ROC-diagram
+
 A fogadó működési jellemzője (vagy a ROC) a helyesen besorolt címkék és egy adott modell helytelen besorolású címkéi. A ROC-görbe kevésbé informatív lehet, ha magas osztályú egyensúlyhiánysal rendelkező adatkészleteken tanít modelleket, mivel a többségi osztály kiszoríthatja a kisebbségi osztályokból származó hozzájárulásokat.
 
-#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Mit tesz az automatizált ML a ROC-diagrammal?
 A ROC-diagram alatti terület a helyesen besorolt minták arányában jeleníthető meg. A ROC-diagram haladó felhasználója a görbe alatti terület fölé kerülhet, és a besorolási küszöb vagy a döntési határ függvényében a valódi pozitív és a hamis pozitív díjakra vonatkozó intuíciót kaphat.
 
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 Egy ROC-görbe, amely a bal felső sarokban, 100%-os True pozitív arányban és 0%-os hamis pozitív arányban közelíti meg a legjobb modellt. Egy véletlenszerű modell a bal felső sarokban látható egyenes vonalként fog megjelenni. Rosszabb, mint az y = x vonal alatt Beúszás.
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>1. példa: alacsony igaz címkékkel és magas hamis címkékkel rendelkező besorolási modell
+#### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>1. példa: alacsony igaz címkékkel és magas hamis címkékkel rendelkező besorolási modell
 ![Besorolási modell alacsony igaz címkékkel és magas hamis címkékkel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>2. példa: magas igaz címkéket és alacsony hamis címkéket tartalmazó besorolási modell
+#### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>2. példa: magas igaz címkéket és alacsony hamis címkéket tartalmazó besorolási modell
+
 ![magas igaz címkéket és alacsony hamis címkéket tartalmazó besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+
+
 <a name="lift-curve"></a>
-### <a name="lift-chart"></a>Diagram emelése
-#### <a name="what-is-a-lift-chart"></a>Mi az a lift-diagram?
-A kiemelési diagramok a besorolási modellek teljesítményének kiértékelésére szolgálnak. A felvonó diagram azt mutatja, hogy a modellek hányszor jobbak egy véletlenszerű modellhez képest. Ez viszonylagos teljesítményt nyújt, amely figyelembe veszi, hogy a besorolás nehezebben növekszik az osztályok számának növelésével. A véletlenszerű modell nem fogja előre jelezni a minták nagyobb hányadát egy olyan adatkészletből, amelynek tíz osztálya a két osztályt tartalmazó adatkészlethez hasonlít.
 
-#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Mit jelent az automatizált ML a felvonó diagrammal?
-Az adott modell értékének megszerzéséhez összehasonlíthatja a modell azon felvonóját, amelyet a rendszer automatikusan Azure Machine Learning az alaptervhez.
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+## <a name="lift-chart"></a>Diagram emelése
 
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>1. példa: egy véletlenszerű kiválasztási modellnél rosszabb besorolási modell
+A lift-diagramok kiértékelik a besorolási modellek teljesítményét. A felvonó diagram azt mutatja, hogy a modellek hányszor jobbak egy véletlenszerű modellhez képest. Ez viszonylagos teljesítményt nyújt, amely figyelembe veszi, hogy a besorolás nehezebben növekszik az osztályok számának növelésével. A véletlenszerű modell helytelenül Jósolja meg, hogy egy adatkészletből származó minták nagyobb hányada van-e, mint a két osztályt tartalmazó adatkészlethez képest.
+
+Összehasonlíthatja a modell azon felvonóját, amelyet a rendszer automatikusan Azure Machine Learning az alaptervhez (véletlenszerű modell), hogy megtekintse az adott modell értékeit.
+
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+
+Egy magasabb szintű lift-görbe, amely a modell magasabb az alaptervnél, jobb teljesítményt biztosító modellt jelez. 
+
+#### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>1. példa: egy véletlenszerű kiválasztási modellhez képest rosszul elvégezhető besorolási modell
 ![Egy véletlenszerű kiválasztási modellnél rosszabb besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>2. példa: egy véletlenszerű kiválasztási modellnél jobb teljesítményű besorolási modell
+
+#### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>2. példa: egy véletlenszerű kiválasztási modellnél jobb teljesítményű besorolási modell
 ![Jobb teljesítményű besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+
 <a name="gains-curve"></a>
-### <a name="cumulative-gains-chart"></a>Halmozott nyereségek diagramja
-#### <a name="what-is-a-cumulative-gains-chart"></a>Mi az összesítő nyereségű diagram?
 
-Az összesítő nyereség diagram a besorolási modell teljesítményét értékeli ki az egyes adatrészeken. Az adathalmaz minden egyes százalékában a diagramon látható, hogy hány minta lett pontosan besorolva.
+## <a name="cumulative-gains-chart"></a>Halmozott nyereségek diagramja
 
-#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Mit tesz az automatizált ML a nyereség diagrammal?
-A halmozott nyereség diagram segítségével kiválaszthatja a besorolást a modell kívánt nyereségének megfelelő százalékos arány használatával. Ez az információ egy másik módszert biztosít a kapcsolódó felvonó diagram eredményeinek megtekintésére.
+Az összesítő nyereség diagram a besorolási modell teljesítményét értékeli ki az egyes adatrészeken. Az adatkészlet minden egyes százalékában a diagram azt mutatja, hogy az adathalmazok közül hányan vannak pontosan kategorizálva, mint egy mindig helytelen modell. Ez az információ egy másik módszert biztosít a kapcsolódó felvonó diagram eredményeinek megtekintésére.
+
+Az összesítő nyereség diagram segítségével kiválaszthatja a besorolást a modell kívánt nyereségének megfelelő százalékos arány használatával. Összehasonlíthatja az összesített nyereség diagramot az alapkonfigurációval (nem megfelelő modell), hogy megtekintse az egyes megbízhatósági százalékos értékekben helyesen besorolt minták százalékos arányát.
 
 #### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+
+A felvonóhoz hasonlóan az összesített nyereségi görbe magasabb az alapkonfigurációnál, annál jobb lesz a modell teljesítménye. Emellett az összesített nyereségek görbéje a gráf bal felső sarkában található, a modell nagyobb nyeresége pedig az alaptervhez képest. 
+
 ##### <a name="example-1-a-classification-model-with-minimal-gain"></a>1. példa: osztályozási modell minimális nyereséggel
-![besorolási modell minimális nyereséggel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+![besorolási modell minimális nyereséggel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 
 ##### <a name="example-2-a-classification-model-with-significant-gain"></a>2. példa: jelentős nyereségű besorolási modell
-![Jelentős nyereségű besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
-<a name="calibration-plot"></a>
-### <a name="calibration-chart"></a>Kalibrációs diagram
+![Jelentős nyereségű besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-#### <a name="what-is-a-calibration-chart"></a>Mi az a kalibrációs diagram?
-Egy kalibrációs terület a prediktív modell megbízhatóságának megjelenítésére szolgál. Ez az előre jelzett valószínűség és a tényleges valószínűség közötti kapcsolat bemutatásával történik, ahol a "valószínűség" azt jelzi, hogy egy adott példány egy adott címkéhez tartozik-e.
-#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Mit tesz a kalibrációs diagramon az automatikus ML?
+<a name="calibration-plot"></a>
+
+## <a name="calibration-chart"></a>Kalibrációs diagram
+
+A kalibrációs mintaterületek egy prediktív modell megbízhatóságát jelenítik meg. Ez az előre jelzett valószínűség és a tényleges valószínűség közötti kapcsolat bemutatásával történik, ahol a "valószínűség" azt jelzi, hogy egy adott példány egy adott címkéhez tartozik-e.
+
 Az összes besorolási probléma esetében áttekintheti a kalibrációs vonalat a mikro-átlag, a makro-átlag és az egyes osztályok számára egy adott prediktív modellben.
 
-A Macro-átlag minden osztálytól függetlenül kiszámítja a metrikát, majd az átlagot, és az összes osztályt egyformán kezeli. A mikro-átlag azonban összesíti az összes osztály hozzájárulását az átlag számításához. 
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+A **Macro-átlag** minden osztálytól függetlenül kiszámítja a metrikát, majd elvégzi az átlagot, és az összes osztályt egyformán kezeli. A **mikro-átlag** azonban összesíti az összes osztály hozzájárulását az átlag kiszámításához. 
+
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 A jól kalibrált modell az y = x sorral összhangban van, ahol helyesen Jósolja meg, hogy a minták az egyes osztályokhoz tartoznak-e. A túlzottan nagy valószínűséggel megjósolható, hogy az egyes minták osztályának értéke nem lehet nulla és egy.
 
-
-##### <a name="example-1-a-well-calibrated-model"></a>1. példa: egy jól kalibrált modell
+#### <a name="example-1-a-well-calibrated-model"></a>1. példa: egy jól kalibrált modell
 ![ több jól kalibrált modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-##### <a name="example-2-an-over-confident-model"></a>2. példa: egy magabiztos modell
+#### <a name="example-2-an-over-confident-model"></a>2. példa: egy magabiztos modell
 ![Egy több mint magabiztos modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a> Regressziós eredmények
 
-A következő mérőszámok és diagramok érhetők el minden olyan regressziós modellhez, amelyet a Azure Machine Learning automatizált gépi tanulási képességeivel épít fel.
+<a name="regression"></a> 
 
-+ [Metrikák](#reg-metrics)
-+ [Előre jelzett vagy igaz](#pvt)
-+ [Maradványok hisztogramja](#histo)
+## <a name="regression-performance-metrics"></a>Regressziós teljesítmény mérőszámai
 
-
-### <a name="regression-metrics"></a><a name="reg-metrics"></a> Regressziós metrikák
-
-A rendszer a következő metrikákat menti a regressziós vagy előrejelzési feladatokhoz minden futtatási iteráció során.
+A következő táblázat összefoglalja a modell teljesítményének mérőszámait, amelyeket a AutoML a kísérlethez generált egyes regressziós vagy előrejelzési modellekhez számít ki. 
 
 |Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
@@ -238,39 +225,44 @@ normalized_root_mean_squared_error|Normalizált legfelső szintű, négyzetes hi
 root_mean_squared_log_error|A legfelső szintű négyzetes naplózási hiba a várt szögletes logaritmikus hiba négyzetének gyökere.|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Nincsenek|
 normalized_root_mean_squared_log_error|Normalizált legfelső szintű, négyzetes naplózási hiba: legfelső szintű négyzetes naplózási hiba az adattartomány szerint elosztva|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Osztás az adattartomány szerint|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Előre jelzett és igaz diagram
-#### <a name="what-is-a-predicted-vs-true-chart"></a>Mi az az előre jelzett vagy igaz diagram?
-Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós probléma esetén az előre jelzett érték és a korrelációs valódi értéke közötti kapcsolat látható. Ez a gráf felhasználható egy modell teljesítményének mérésére, ahogy az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell pontossága.
+<a name="pvt"></a>
 
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Mit tesz az automatikus ML az előre jelzett és az igaz diagrammal?
+## <a name="predicted-vs-true-chart"></a>Előre jelzett és igaz diagram
+
+Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós probléma esetén az előre jelzett érték és a korrelációs valódi értéke közötti kapcsolat látható. 
+
 Az egyes futtatások után megtekintheti az egyes regressziós modellekhez tartozó, előre jelzett és igaz gráfot is. Az adatok védelme érdekében az értékek együtt dobozolni, és az egyes raktárhelyek mérete a diagramterület alsó részén oszlopdiagramként jelenik meg. A prediktív modellt összehasonlíthatja a világosabb árnyalattal, amely a hibák margóit mutatja, így a modellnek ideális értékkel kell rendelkeznie.
 
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>1. példa: kis pontosságú besorolási modell
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+Ez a gráf felhasználható egy modell teljesítményének mérésére, ahogy az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell pontossága.
+
+#### <a name="example-1-a-classification-model-with-low-accuracy"></a>1. példa: kis pontosságú besorolási modell
 ![Regressziós modell alacsony pontossággal a jóslatokban](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>2. példa: nagy pontosságú regressziós modell 
-[![Regressziós modell nagy pontossággal az előrejelzések szerint](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+#### <a name="example-2-a-regression-model-with-high-accuracy"></a>2. példa: nagy pontosságú regressziós modell 
+![Regressziós modell nagy pontossággal az előrejelzések szerint](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
+<a name="histo"></a> 
 
+## <a name="histogram-of-residuals-chart"></a>Maradványok diagramjának hisztogramja
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Maradványok diagramjának hisztogramja
-#### <a name="what-is-a-residuals-chart"></a>Mi az a fennmaradó diagram?
-A maradék az előrejelzés és a tényleges érték () közötti különbség `y_pred - y_true` . Ha alacsony torzítású hibát szeretne megjeleníteni, a maradékok hisztogramját harang alakú görbévé kell alakítani, a 0 körüli középpontba. 
-#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Mit jelent az automatizált ML a fennmaradó diagrammal?
-Az automatikus ML automatikusan megjelenít egy fennmaradó diagramot, amely megjeleníti a hibák eloszlását a jóslatokban.
-#### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
-A jó modell általában a nullához közel álló maradványokat tartalmaz.
+Az automatikus ML automatikusan biztosít egy fennmaradó diagramot, amely megjeleníti a hibák eloszlását a regressziós modell előrejelzésében. A maradék az előrejelzés és a tényleges érték () közötti különbség `y_pred - y_true` . 
 
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>1. példa: egy regressziós modell, amely torzulást okoz a hibáknál
+### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
+Ha alacsony torzítású hibát szeretne megjeleníteni, a maradékok hisztogramját harang alakú görbének kell megadnia, amely nullára van kialakítva.
+
+#### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>1. példa: egy regressziós modell, amely torzulást okoz a hibáknál
 ![SA regressziós modell a hibák torzításával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>2. példa: egy regressziós modell a hibák egyenletes eloszlásával
+#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>2. példa: egy regressziós modell a hibák egyenletes eloszlásával
 ![Egy regressziós modell, amely a hibák egyenletes eloszlásával rendelkezik](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> Modell-értelmező és-funkció fontossága
+<a name="explain-model"></a>
+
+## <a name="model-interpretability-and-feature-importance"></a>Modell-értelmező és-funkció fontossága
 Az automatikus ML gépi tanulásra vonatkozó értelmező irányítópultot biztosít a futtatásához.
-A tolmácsolási funkciók engedélyezésével kapcsolatos további információkért tekintse [meg az AUTOMATIZÁLT](how-to-machine-learning-interpretability-automl.md) ml-kísérletek értelmezésének engedélyezése című témakört.
+
+A tolmácsolási funkciók engedélyezésével kapcsolatos további információkért tekintse meg a következőt [: a tolmácsolási modell magyarázata az automatizált gépi tanulásban](how-to-machine-learning-interpretability-automl.md).
 
 > [!NOTE]
 > A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
@@ -278,4 +270,4 @@ A tolmácsolási funkciók engedélyezésével kapcsolatos további információ
 ## <a name="next-steps"></a>Következő lépések
 
 + További információ a Azure Machine Learning [automatizált ml](concept-automated-ml.md) -ről.
-+ Próbálja ki az [automatizált Machine learning Model magyarázat](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) minta jegyzetfüzeteket.
++ Próbálja ki a [gépi tanulási modell magyarázó](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) mintájának jegyzetfüzeteit.

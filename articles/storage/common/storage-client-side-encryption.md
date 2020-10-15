@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f54b91ab1ea4521c17a3b40c88214f5637ab47a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021612"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091661"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Titkosítás és Azure Key Vault Client-Side Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage?view=azure-dotnet) támogatja az ügyfeleken belüli adattitkosítást az Azure Storage-ba való feltöltés előtt, és az adattitkosítást az ügyfélre való letöltéskor. A függvénytár támogatja a Storage-fiókok kulcsának felügyeletéhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) integrációt is.
+Az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage) támogatja az ügyfeleken belüli adattitkosítást az Azure Storage-ba való feltöltés előtt, és az adattitkosítást az ügyfélre való letöltéskor. A függvénytár támogatja a Storage-fiókok kulcsának felügyeletéhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) integrációt is.
 
 A Blobok ügyféloldali titkosítással és Azure Key Vault használatával történő titkosításának folyamatán alapuló lépésenkénti oktatóanyagért lásd: [Blobok titkosítása és visszafejtése Microsoft Azure Storage a Azure Key Vault használatával](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
