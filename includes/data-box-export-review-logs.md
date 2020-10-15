@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 526b3ad89e128d264b5d14d8cc87d9a81d431a9c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86210411"
 ---
-Az Adatmásolás megkezdése előtt:
+Az adatok másolásának megkezdése előtt végezze el a következőket:
 
-1. Töltse le a *másolási naplót*. A **kapcsolat és másolás** lapon válassza a **napló másolása**lehetőséget. Ha a rendszer kéri, mentse a naplót a rendszeren. 
+1. Töltse le a *másolási naplót*. A **Kapcsolódás és másolás** lapon válassza a **Másolási napló** elemet. Amikor a rendszer rákérdez, mentse a naplót a rendszerre. 
 
     ![Az 1. másolási napló letöltése](../articles/databox/media/data-box-deploy-export-copy-data/download-copy-log-1.png)
 
   
-    A *részletes napló*letöltéséhez ismételje meg a lépéseket. 
+    Ismételje meg ezeket a lépéseket a *részletes napló* letöltéséhez. 
 
-2. Tekintse át a *részletes naplót*. A *részletes napló* tartalmazza az Azure Storage-fiókból sikeresen exportált fájlok listáját. A naplófájl a fájl méretét és az ellenőrzőösszeg számítását is tartalmazza.
+2. Tekintse át a *részletes naplót*. A *részletes napló* az Azure Storage-fiókból sikeresen exportált összes fájl listáját tartalmazza. A napló a fájlméreteket és az ellenőrzőösszegek számítását is tartalmazza.
 
     ```powershell
     <File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3.4" Size="1024" crc64="7573843669953104266">
@@ -52,9 +52,9 @@ Az Adatmásolás megkezdése előtt:
     </File>
     ``````
 
-3. Tekintse át a hibákat a *másolási naplóban* . Ez a napló a hibák miatt nem másolható fájlokat jelzi.
+3. Ellenőrizze, hogy nincsenek-e hibák a *másolási naplóban*. Ez a napló az olyan fájlokat tartalmazza, amelyeket hiba miatt nem lehetett másolni.
 
-    Itt látható a másolási napló kimenete, ha nem voltak hibák, és az összes fájl másolása az Azure-ból Data Box eszközre történő Adatmásolás során történt.
+    Itt látható egy másolási napló mintakimenete, ha nem történt hiba, és minden fájl át lett másolva az Azure és a Data Box szolgáltatás közötti adatmásolás során.
 
     ```powershell
     <CopyLog Summary="Summary">
@@ -63,7 +63,7 @@ Az Adatmásolás megkezdése előtt:
       <FilesErrored>0</FilesErrored>
     </CopyLog>
     ``` 
-    Íme egy minta kimenet, ha a másolási napló hibákat tartalmaz, és néhány fájl nem másolható az Azure-ból.
+    Itt látható egy mintakimenet, ha a másolási napló hibákat tartalmaz, mert egyes fájlokat nem sikerült átmásolni az Azure-ból.
 
     ```powershell
     <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -88,7 +88,7 @@ Az Adatmásolás megkezdése előtt:
     </CopyLog>    
     ```
 
-    A következő lehetőségek közül választhat a fájlok exportálásához: 
+    Az alábbi lehetőségek állnak rendelkezésére, hogy exportálja ezeket a fájlokat: 
 
-    - Átviheti azokat a fájlokat, amelyek nem másolhatók a hálózaton keresztül. 
-    - Ha az adatméret nagyobb, mint a felhasználható eszköz kapacitása, akkor részleges másolás történik, és az összes másolt fájl ebben a naplóban szerepel. Ezt a naplót bemeneti XML-ként használva új Data Box sorrendet hozhat létre, majd átmásolhatja ezeket a fájlokat.
+    - Átviheti azokat a fájlokat, amelyeket a hálózaton nem sikerült átmásolni. 
+    - Ha az adatméret meghaladja a felhasználható eszközkapacitást, akkor részleges másolás történik, és a másolásból kihagyott fájlok mind szerepelnek ebben a naplóban. Ezt a naplót használhatja bemeneti XML-ként egy új Data Box-megrendelés létrehozásához, majd átmásolhatja ezeket a fájlokat.

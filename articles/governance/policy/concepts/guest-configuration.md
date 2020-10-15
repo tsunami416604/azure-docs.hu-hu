@@ -1,14 +1,14 @@
 ---
 title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974719"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075484"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -18,8 +18,7 @@ A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, m
 - Alkalmazás konfigurációja vagy jelenléte
 - Környezeti beállítások
 
-Jelenleg az Azure Policy vendégkonfigurációs szabályzatok többsége csak a gépen belüli beállításokat naplózza.
-Nem alkalmaznak konfigurációkat. A kivétel egy, az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített szabályzat.
+Jelenleg a legtöbb Azure Policy vendég konfigurációs házirend definíciója csak a számítógépen belüli naplózási beállításokat definiálja. Nem alkalmaznak konfigurációkat. A kivétel egy, az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített szabályzat.
 
 ## <a name="enable-guest-configuration"></a>Vendég konfiguráció engedélyezése
 
@@ -59,10 +58,9 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 
 ## <a name="supported-client-types"></a>Támogatott ügyfelek típusai
 
-A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis.
-Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
+A vendég-konfigurációs szabályzatok definíciói az új verziókhoz tartoznak. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis. Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Name|Verziók|
+|Publisher|Név|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|
@@ -72,7 +70,7 @@ Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek
 |Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
 |SUSE|SLES|12 SP3 – SP5|
 
-Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirendek támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
+Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirend definíciói támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -86,7 +84,7 @@ A virtuális hálózatokat használó virtuális gépek számára a porton elér
 
 ### <a name="communicate-over-private-link-in-azure"></a>Kommunikáció privát kapcsolaton keresztül az Azure-ban
 
-A virtuális gépek [privát hivatkozást](../../../private-link/private-link-overview.md) is használhatnak a vendég konfigurációs szolgáltatással való kommunikációhoz. Alkalmazza a címkét a név `EnablePrivateNeworkGC` és az érték `TRUE` használatával a funkció engedélyezéséhez. A címkét a rendszer a számítógépre vonatkozó vendég-konfigurációs házirendek előtt vagy után is alkalmazhatja.
+A virtuális gépek [privát hivatkozást](../../../private-link/private-link-overview.md) is használhatnak a vendég konfigurációs szolgáltatással való kommunikációhoz. Alkalmazza a címkét a név `EnablePrivateNeworkGC` és az érték `TRUE` használatával a funkció engedélyezéséhez. A címke a vendég-konfigurációs házirend definícióinak a gépre való alkalmazása előtt vagy után is alkalmazható.
 
 A forgalmat az Azure [virtuális nyilvános IP-címével](../../../virtual-network/what-is-ip-address-168-63-129-16.md) irányítjuk, hogy biztonságos, hitelesített csatornát hozzon létre az Azure platform erőforrásaival.
 
@@ -111,9 +109,9 @@ Ha a gépnek jelenleg van felhasználó által hozzárendelt rendszeridentitása
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 
-A vendég-konfigurációs házirendek a **AuditIfNotExists** hatást használják. A definíció hozzárendelésekor a háttérrendszer automatikusan kezeli az Azure erőforrás-szolgáltató összes követelményének életciklusát `Microsoft.GuestConfiguration` .
+A vendég-konfigurációs házirend definíciói a **AuditIfNotExists** hatást használják. A definíció hozzárendelésekor a háttérrendszer automatikusan kezeli az Azure erőforrás-szolgáltató összes követelményének életciklusát `Microsoft.GuestConfiguration` .
 
-A **AuditIfNotExists** szabályzatok nem adják vissza a megfelelőségi eredményeket, amíg az összes követelmény nem teljesül a gépen. A követelményekről az Azure-beli [virtuális gépek üzembe helyezési követelményei](#deploy-requirements-for-azure-virtual-machines) című szakaszban olvashat.
+A **AuditIfNotExists** házirend-definíciók nem adják vissza a megfelelőségi eredményeket, amíg az összes követelmény nem teljesül a gépen. A követelmények az Azure-beli [virtuális gépek üzembe helyezési követelményei](#deploy-requirements-for-azure-virtual-machines) című szakaszban olvashatók.
 
 > [!IMPORTANT]
 > A vendég konfigurációjának előzetes kiadásában egy kezdeményezésre volt szükség a **DeployIfNoteExists** és a **AuditIfNotExists** -definíciók összevonásához. A **DeployIfNotExists** -definíciók már nem szükségesek. A definíciók és a intiaitives címkével vannak ellátva, `[Deprecated]` de a meglévő hozzárendelések továbbra is működni fognak. További információért lásd a következő blogbejegyzéset: a [vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
@@ -138,15 +136,15 @@ Csak a _Windows rendszerű gépeken beállított időzónát_ definiáló defin�
 Ha a _konfigurálással_kezdődő definíciókat rendeli hozzá, akkor a definíciók _központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés_ Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
 
 > [!NOTE]
-> A beépített időzóna-házirend az egyetlen olyan definíció, amely támogatja a gépeken belüli beállítások konfigurálását, és a gépeken belüli beállításokat konfiguráló egyéni házirendek nem támogatottak.
+> A beépített időzóna-házirend az egyetlen olyan definíció, amely támogatja a gépeken belüli beállítások konfigurálását, és az egyéni szabályzat-definíciókat, amelyek a gépek beállításait nem támogatják.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Szabályzatok kiosztása az Azure-on kívüli gépekhez
 
-A vendég konfigurációhoz elérhető naplózási házirendek közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus. Az Azure-ív részét képező, a házirend-hozzárendelés hatókörében lévő kiszolgálók automatikusan beletartoznak a [szolgáltatásba](../../../azure-arc/servers/overview.md) .
+A vendég konfigurációhoz elérhető naplózási házirend-definíciók közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus. Az Azure-ív részét képező, a házirend-hozzárendelés hatókörében lévő kiszolgálók automatikusan beletartoznak a [szolgáltatásba](../../../azure-arc/servers/overview.md) .
 
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
-A vendég-konfigurációs házirendek jelenleg csak egyszer használják a vendég-hozzárendelést egy gépenként, még akkor is, ha a házirend-hozzárendelés eltérő paramétereket használ.
+A vendég-konfiguráció házirendjének definíciói jelenleg csak egyszer kell hozzárendelni ugyanazt a vendég-hozzárendelést, még akkor is, ha a házirend-hozzárendelés eltérő paramétereket használ.
 
 ## <a name="client-log-files"></a>Ügyfél naplófájljai
 
