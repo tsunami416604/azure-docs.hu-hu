@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776289"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078833"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -71,7 +71,7 @@ A runbookok tartalmaznia kell a logikai [erőforrásokat](/rest/api/resources/re
 
 ## <a name="security"></a>Biztonság
 
-A Azure Automation a [Azure Security Center (ASC)](../security-center/security-center-intro.md) használatával biztosítja az erőforrások biztonságát, és felismeri a támadásokat a Linux rendszerekben. A biztonság a munkaterhelések között érhető el, függetlenül attól, hogy az erőforrások az Azure-ban vannak-e. Lásd: [Bevezetés a hitelesítésbe Azure Automation](automation-security-overview.md).
+A Azure Automation a [Azure Security Center (ASC)](../security-center/security-center-introduction.md) használatával biztosítja az erőforrások biztonságát, és felismeri a támadásokat a Linux rendszerekben. A biztonság a munkaterhelések között érhető el, függetlenül attól, hogy az erőforrások az Azure-ban vannak-e. Lásd: [Bevezetés a hitelesítésbe Azure Automation](automation-security-overview.md).
 
 ASC – olyan felhasználók számára, akik aláírt vagy aláíratlan parancsfájlokat futtathatnak egy virtuális gépen. Ha olyan felhasználó, aki rendszergazdai jogosultságokkal rendelkezik egy virtuális géphez, explicit módon konfigurálnia kell a gépet digitális aláírással, vagy ki kell kapcsolni. Ellenkező esetben csak olyan parancsfájlt futtathat, amely az operációs rendszer frissítéseit az Automation-fiók létrehozása és a megfelelő funkció engedélyezése után alkalmazza.
 
@@ -139,7 +139,7 @@ A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti. Megt
 
 | Állapot | Leírás |
 |:--- |:--- |
-| Befejezve |A feladat sikeresen befejeződött. |
+| Befejeződött |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Nem sikerült elindítani egy PowerShell-runbook, vagy kivétel történt a feladatokban. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
 | Sikertelen, várakozás erőforrásokra |A feladatot nem sikerült végrehajtani, mert elérte a [valós megosztási](#fair-share) korlátot háromszor, és ugyanabból az ellenőrzőpontból vagy a runbook elejétől indul el. |
 | Várólistán |A művelet arra vár, hogy az automatizálási feldolgozón lévő erőforrások elérhetővé váljanak, hogy el lehessen indítani. |

@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763822"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078510"
 ---
 # <a name="region-or-sku-unavailable"></a>Nem elérhető régió vagy termékváltozat
 
@@ -80,8 +80,8 @@ Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy **előfizetés-k
 
 ## <a name="send-us-your-suggestions"></a>Küldje el nekünk javaslatait
 
-Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy a [Microsoft Q&egy kérdés oldalon](https://docs.microsoft.com/answers/products/azure)is felveheti velünk a kapcsolatot.
+Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy a [Microsoft Q&egy kérdés oldalon](/answers/products/azure)is felveheti velünk a kapcsolatot.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információk
 
 [Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq)

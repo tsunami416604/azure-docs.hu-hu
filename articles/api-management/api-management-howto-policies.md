@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: a0786c1ce5d3a693dabe422b65af7177e16c20b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3886f82180728bc6f454b1a49b5551bc4831869e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905516"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070894"
 ---
 # <a name="policies-in-azure-api-management"></a>Az Azure API Management szabályzatai
 
@@ -70,7 +70,7 @@ A szabályzatokra vonatkozó utasítások és azok beállításainak teljes list
 
 ## <a name="policy-samples"></a>Házirend-minták
 
-További [példákat a](policy-samples.md) szabályzatok című témakörben talál.
+További [példákat a](./policy-reference.md) szabályzatok című témakörben talál.
 
 ## <a name="examples"></a>Példák
 
@@ -119,7 +119,7 @@ További információ a házirendek használatáról:
 
 + [API-k átalakítása](transform-api.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](policy-samples.md)   
++ [Házirend-minták](./policy-reference.md)   
 
 [Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md

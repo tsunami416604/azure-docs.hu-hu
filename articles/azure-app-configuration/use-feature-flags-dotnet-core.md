@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317310"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078901"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -27,7 +27,7 @@ A .NET Core-szolgáltatások felügyeleti könyvtárai köznyelvi támogatást b
 
 A szolgáltatás-felügyeleti kódtárak a funkciók jelző életciklusait is kezelik a színfalak mögött. Például a tárak frissítési és gyorsítótár-jelző állapota, vagy ha egy kérelem hívásakor a jelző állapot nem változtatható meg. Emellett a ASP.NET Core-függvénytár beépített integrációkat is kínál, beleértve az MVC vezérlő műveleteit, nézeteit, útvonalait és köztes integrálását.
 
-A szolgáltatás-jelzők [hozzáadása egy ASP.net Core-alkalmazáshoz](./quickstart-feature-flag-aspnet-core.md) rövid útmutató azt mutatja be, hogyan adhatók hozzá szolgáltatások jelzői egy ASP.net Core alkalmazásban. Ez az oktatóanyag részletesen ismerteti ezeket a módszereket. A teljes referenciáért tekintse meg a [ASP.net Core szolgáltatás-felügyeleti dokumentációját](https://go.microsoft.com/fwlink/?linkid=2091410).
+A szolgáltatás-jelzők [hozzáadása egy ASP.net Core-alkalmazáshoz](./quickstart-feature-flag-aspnet-core.md) rövid útmutató azt mutatja be, hogyan adhatók hozzá szolgáltatások jelzői egy ASP.net Core alkalmazásban. Ez az oktatóanyag részletesen ismerteti ezeket a módszereket. A teljes referenciáért tekintse meg a [ASP.net Core szolgáltatás-felügyeleti dokumentációját](/dotnet/api/microsoft.featuremanagement).
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 
@@ -297,10 +297,10 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan implementálhatja a szolgáltatás-jelzőket a ASP.NET Core alkalmazásban a `Microsoft.FeatureManagement` kódtárak használatával. A ASP.NET Core és az alkalmazások konfigurációjának funkció-kezelési támogatásáról az alábbi forrásokban talál további információt:
 
-* [ASP.NET Core funkció jelölője mintakód](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [A Microsoft. FeatureManagement dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [ASP.NET Core funkció jelölője mintakód](./quickstart-feature-flag-aspnet-core.md)
+* [A Microsoft. FeatureManagement dokumentációja](/dotnet/api/microsoft.featuremanagement)
 * [Funkciójelölők kezelése](./manage-feature-flags.md)

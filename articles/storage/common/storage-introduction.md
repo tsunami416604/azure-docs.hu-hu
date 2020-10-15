@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714988"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079224"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
 
@@ -173,8 +173,7 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 - [Azure CLI-parancsmagok a Storage-hoz](https://docs.microsoft.com/cli/azure/storage)
 - [AzCopy Command-Line segédprogram](https://aka.ms/downloadazcopy)
 - Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a Microsoft ingyenes, önálló alkalmazása, amellyel vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
-- [Azure Storage-ügyféleszközök](../storage-explorers.md)
-- [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/)
+- [Azure Storage-sablonok Azure Resource Manager](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ## <a name="next-steps"></a>Következő lépések
 

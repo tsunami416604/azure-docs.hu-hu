@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801029"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070486"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Szolgáltatás üzembehelyezési problémáinak elhárítása
 
@@ -82,7 +82,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor okozható, ha a díjszabási csomag nem egyezik az előfizetés számlázási modelljével. További információ: [a használat figyelése és a becsült költségek Azure monitorban](https://aka.ms/PricingTierWarning).
+Ez a hiba akkor okozható, ha a díjszabási csomag nem egyezik az előfizetés számlázási modelljével. További információ: [a használat figyelése és a becsült költségek Azure monitorban](../../azure-monitor/platform/usage-estimated-costs.md).
 
 #### <a name="resolution"></a>Feloldás
 
@@ -237,7 +237,7 @@ Ez a típusú hiba azért fordul elő, mert a virtuális gép a telepítés sor�
 
 Ha a virtuális gép alacsonyabb terhelés alatt van, próbálja meg telepíteni a Windows-bővítmény Log Analytics-ügynökét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77469527"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078595"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Teljesítményszámlálók gyűjtése az Azure Cloud Service-hez
 
@@ -70,7 +70,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-Ezek az egyéni számlálók elérési útjai hozzáadhatók a felhőalapú szolgáltatás által használt diagnosztikai keretrendszerhez. További információ a teljesítményszámláló elérési útjának létrehozásáról: [számláló elérési](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))útjának megadása.
+Ezek az egyéni számlálók elérési útjai hozzáadhatók a felhőalapú szolgáltatás által használt diagnosztikai keretrendszerhez. További információ a teljesítményszámláló elérési útjának létrehozásáról: [számláló elérési](/windows/win32/perfctrs/specifying-a-counter-path)útjának megadása.
 
 ## <a name="collect-a-performance-counter"></a>Teljesítményszámláló összegyűjtése
 
@@ -290,8 +290,5 @@ Ahogy azt korábban említettük, a gyűjteni kívánt teljesítményszámláló
 
 - [Application Insights az Azure Cloud Servicesben](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Rendszerteljesítmény-számlálók a Application Insightsban](../azure-monitor/app/performance-counters.md)
-- [Számláló elérési útjának megadása](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
+- [Számláló elérési útjának megadása](/windows/win32/perfctrs/specifying-a-counter-path)
 - [Azure Diagnostics séma – teljesítményszámlálók](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-
-
-

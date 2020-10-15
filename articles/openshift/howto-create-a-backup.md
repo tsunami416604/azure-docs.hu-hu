@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470068"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078578"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift-alkalmazás biztonsági másolatának létrehozása
 
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 A sikeres biztonsági mentés kimenetet fog eredményezni `phase:Completed` , és az objektumok a Storage-fiókban lesznek élő tárolóban.
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Pillanatképeket tartalmazó biztonsági másolat létrehozása a Velero
+
+Ahhoz, hogy egy alkalmazás biztonsági másolatát a Velero együtt hozza létre az alkalmazás állandó kötetei közé, meg kell adnia azt a névteret, amelyet az alkalmazás is tartalmaz, valamint a `snapshot-volumes=true` jelzőt a biztonsági mentés létrehozásakor.
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+A biztonsági mentés állapotát a futtatásával tekintheti meg:
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+Sikeres biztonsági mentés kimenettel `phase:Completed` , és az objektumok a Storage-fiókban lesznek élő tárolóban.
+
+További információ a biztonsági másolatok létrehozásáról és a Velero használatával történő visszaállításról: [OpenShift-erőforrások biztonsági mentése a natív módon](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy, a Red Hat OpenShift 4 fürtözött alkalmazásról készített biztonsági mentést. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * OpenShift v4-fürt alkalmazás biztonsági másolatának létrehozása a Velero használatával
+> * OpenShift v4-fürt alkalmazás biztonsági másolatának létrehozása pillanatképekkel a Velero használatával
 
 
 Folytassa a következő cikktel, amelyből megtudhatja, hogyan hozhat létre egy Azure Red Hat OpenShift 4 fürtözött alkalmazás-visszaállítást.
 
 * [Azure Red Hat OpenShift 4-fürt alkalmazás-visszaállításának létrehozása](howto-create-a-restore.md)
+* [Azure Red Hat OpenShift 4 rendszerű fürtbeli alkalmazások visszaállításának létrehozása pillanatképekkel együtt](howto-create-a-restore.md)
