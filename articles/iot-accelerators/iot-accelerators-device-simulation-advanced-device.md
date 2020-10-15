@@ -13,18 +13,18 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261430"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076045"
 ---
 # <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
 Ez a útmutató az egyéni eszköz modelljét definiáló JSON-és JavaScript-fájlokat ismerteti. A cikk néhány minta típusú eszköz-definíciós fájlt tartalmaz, és bemutatja, hogyan töltheti fel őket az eszköz szimulációs példányára. Speciális eszköz-modelleket hozhat létre, amelyek reális eszköz-viselkedést szimulálnak a teszteléshez.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -173,7 +173,7 @@ A sémában felsorolt mezők a következő típusokból állhatnak:
 
 ### <a name="supported-methods"></a>Támogatott módszerek
 
-A szimulált eszközök reagálnak a metódus hívására is, ebben az esetben bizonyos logikát hajtanak végre, és választ nyújtanak. A szimulációhoz hasonlóan a metódus logikáját egy JavaScript-fájlban tárolja a rendszer, és az eszköz állapota is használható. Példa:
+A szimulált eszközök reagálnak a metódus hívására is, ebben az esetben bizonyos logikát hajtanak végre, és választ nyújtanak. A szimulációhoz hasonlóan a metódus logikáját egy JavaScript-fájlban tárolja a rendszer, és az eszköz állapota is használható. Például:
 
 ```json
 "CloudToDeviceMethods": {
@@ -263,7 +263,7 @@ A JavaScript-fájloknak rendelkeznie kell egy **fő** függvénnyel, amely két 
     * **deviceModel**. Például: **lift**.
 * Egy **állapot** -objektum, amely az előző hívás függvényében visszaadott érték. Az eszköz állapotát a szimulációs szolgáltatás tartja karban, és telemetria-üzenetek létrehozásához használja.
 
-A **fő** függvény az új eszköz állapotát adja vissza. Példa:
+A **fő** függvény az új eszköz állapotát adja vissza. Például:
 
 ```JavaScript
 function main(context, state) {
@@ -520,4 +520,4 @@ Ha a fájlok ellenőrzése sikeres, kattintson a **Save (Mentés** ) gombra, és
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a útmutatóban megismerte az eszköz-szimulációban használt eszköz-modell fájljait, valamint a speciális eszköz modell létrehozását. Következő lépésként érdemes megvizsgálni, hogyan [használhatók a Time Series Insights az eszköz-szimulációs megoldás-gyorssegédből eljuttatott telemetria megjelenítéséhez](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).
+Ebben a útmutatóban megismerte az eszköz-szimulációban használt eszköz-modell fájljait, valamint a speciális eszköz modell létrehozását. Következő lépésként érdemes megvizsgálni, hogyan [használhatók a Time Series Insights az eszköz-szimulációs megoldás-gyorssegédből eljuttatott telemetria megjelenítéséhez](./iot-accelerators-device-simulation-time-series-insights.md).

@@ -6,18 +6,11 @@
     - name: Mit jelent az alkalmazások üzembe helyezése?
       href: user-provisioning.md
 - name: Oktatóanyagok
+  expanded: true
   items:
-    - name: G Suite
-      href: ../saas-apps/google-apps-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: ServiceNow
-      href: ../saas-apps/servicenow-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Amazon Web Services (AWS) – szerepkörkiépítés
-      href: ../saas-apps/amazon-web-service-tutorial.md?context=azure/active-directory/app-provisioning/context/app-provisioning-context#configure-azure-ad-sso
-    - name: Workday
-      href: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SAP SuccessFactors
-      href: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Minden integrált katalógusalkalmazás
+    - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Alkalmazásspecifikus üzembehelyezési oktatóanyagok
       href: /azure/active-directory/saas-apps
 - name: Alapelvek
   expanded: true
@@ -28,17 +21,15 @@
       href: plan-auto-user-provisioning.md
     - name: Felhőalapú HR-üzembehelyezés tervezése
       href: plan-cloud-hr-provision.md
+    - name: Az Azure Monitorral történő naplózás megismerése
+      href: application-provisioning-log-analytics.md
 - name: Útmutatók
   expanded: true
   items:
     - name: Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében
       href: configure-automatic-user-provisioning-portal.md
-    - name: Attribútumleképezések szerkesztése
-      items:
-        - name: Attribútumleképezések testreszabása
-          href: customize-application-attributes.md
-        - name: Kifejezések írása attribútumleképezésekhez
-          href: functions-for-customizing-application-data.md
+    - name: Attribútumleképezések testreszabása
+      href: customize-application-attributes.md
     - name: Felhasználók és csoportok hatókörbe foglalása vagy hatókörből való kizárása
       items:
         - name: Átadásra váró felhasználók vagy csoportok hatókörkezelése
@@ -57,6 +48,8 @@
           href: export-import-provisioning-configuration.md
         - name: Üzembehelyezési jelentések
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: Automatikus konfigurálás az MS Graph használatával
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: Az alkalmazás üzembe helyezésének hibaelhárítása
       items:
         - name: Ismert problémák
@@ -65,26 +58,20 @@
           href: application-provisioning-config-problem.md
         - name: Karantén állapota
           href: application-provisioning-quarantine-status.md
-        - name: Engedélyezési probléma (nem lehet menteni a rendszergazdai hitelesítési adatokat)
-          href: application-provisioning-config-problem-storage-limit.md
         - name: Nem lettek felhasználók átadva
           href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: Nem a megfelelő felhasználók lettek átadva
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Hiányzó forrásattribútum
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: Üzembehelyezési naplók
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása
-      href: use-scim-to-provision-users-and-groups.md
-    - name: Automatikus konfigurálás az MS Graph használatával
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: Referencia
   items:
     - name: SCIM 2.0 protokoll szerinti megfelelőség
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM- és Graph-forgatókönyvek
       href: scim-graph-scenarios.md
+    - name: Függvényreferenciák az attribútumleképezések kifejezéseinek megírásához
+      href: functions-for-customizing-application-data.md
     - name: Felhőalapú HR üzembe helyezése
       items:
         - name: SuccessFactors-integráció
@@ -93,8 +80,6 @@
           href: sap-successfactors-attribute-reference.md
         - name: Workday-attribútumok referenciája
           href: workday-attribute-reference.md
-    - name: Azure AD Connect-kiépítési ügynök
-      items:
         - name: Kiépítési ügynök verzióelőzményei
           href: provisioning-agent-release-version-history.md
 - name: További források

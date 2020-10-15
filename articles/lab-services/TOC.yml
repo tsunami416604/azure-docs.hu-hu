@@ -54,6 +54,22 @@
               href: class-type-matlab.md
             - name: SolidWorks – számítógéppel segített tervezés (CAD)
               href: class-type-solidworks.md
+        - name: Az Azure Lab Services használata a Teamsen belül
+          items:
+            - name: Áttekintés
+              href: lab-services-within-teams-overview.md
+            - name: Labor létrehozása a Teamsből
+              href: how-to-get-started-create-lab-within-teams.md
+            - name: Felhasználói listák kezelése
+              href: how-to-manage-user-lists-within-teams.md
+            - name: Virtuálisgép-készlet kezelése
+              href: how-to-manage-vm-pool-within-teams.md
+            - name: Tesztkörnyezetek törlése
+              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+            - name: Ütemezések és beállítások
+              href: how-to-create-schedules-within-teams.md
+            - name: Virtuális gép hozzáférése (hallgatói nézet)
+              href: how-to-access-vm-for-students-within-teams.md
 - name: Útmutatók
   items:
     - name: Rendszergazdai útmutató
