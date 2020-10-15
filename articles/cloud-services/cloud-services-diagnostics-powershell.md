@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bf7fa56ca511981820f63cd7178493a7d048e3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141074"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077507"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával
 A Azure Diagnostics-bővítmény használatával diagnosztikai adatokat gyűjthet, például az alkalmazás naplóit, a teljesítményszámlálókat stb. a felhőalapú szolgáltatásokból. Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Diagnostics bővítmény a Cloud Service-hez a PowerShell használatával.  Tekintse meg, [hogyan telepítheti és konfigurálhatja a Azure PowerShell](/powershell/azure/) a cikkhez szükséges előfeltételekhez.
@@ -131,8 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Következő lépések
 * Az Azure Diagnostics és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: [a diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* A [diagnosztika konfigurációs sémája](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) a diagnosztikai bővítmény különböző XML-konfigurációk beállításait ismerteti.
-* Ha meg szeretné tudni, hogyan engedélyezhető a Virtual Machines diagnosztikai bővítménye, tekintse meg a [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai Azure Resource Manager sablon használatával](../virtual-machines/windows/extensions-diagnostics-template.md) című témakört.
-
-
-
+* A [diagnosztika konfigurációs sémája](../azure-monitor/platform/diagnostics-extension-schema-windows.md) a diagnosztikai bővítmény különböző XML-konfigurációk beállításait ismerteti.
+* Ha meg szeretné tudni, hogyan engedélyezhető a Virtual Machines diagnosztikai bővítménye, tekintse meg a [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai Azure Resource Manager sablon használatával](../virtual-machines/extensions/diagnostics-template.md) című témakört.
