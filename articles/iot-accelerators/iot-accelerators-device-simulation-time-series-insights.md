@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540574"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076249"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights használata az eszköz-szimulációs megoldás-gyorsító által eljuttatott telemetria megjelenítéséhez
 
@@ -21,7 +21,7 @@ Az eszköz-szimulációs megoldás gyorsítása lehetővé teszi a szimulált es
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 A útmutató lépései azt feltételezik, hogy telepítette az eszköz szimulációs megoldásának gyorssegédét az Azure-előfizetéséhez. Ha még nem telepítette a megoldás-gyorsító eszközt, kövesse a [felhőalapú eszköz-szimulációs megoldás üzembe helyezése és futtatása](quickstart-device-simulation-deploy.md) című rövid útmutatót.
 
@@ -77,7 +77,7 @@ A [Azure Time Series Insights](../../articles/time-series-insights/time-series-i
     > [!NOTE]
     > Ha hozzáadja a Time Series Insights környezetet ugyanahhoz az erőforráscsoporthoz, mint a megoldás-gyorsító, azt jelenti, hogy törli a megoldás-gyorsító törlését.
 
-1. Kattintson a **Létrehozás** lehetőségre. A környezet létrehozása több percet is igénybe vehet.
+1. Kattintson a **Létrehozás** gombra. A környezet létrehozása több percet is igénybe vehet.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
@@ -110,10 +110,10 @@ Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Hasz
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** gombra.
 
 > [!NOTE]
-> [További felhasználóknak is hozzáférést biztosíthat](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) a Time Series Insights Explorerrel.
+> [További felhasználóknak is hozzáférést biztosíthat](../time-series-insights/concepts-access-policies.md#grant-data-access) a Time Series Insights Explorerrel.
 
 ## <a name="start-a-simulation"></a>Szimuláció indítása
 
