@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405156"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077813"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -142,22 +142,22 @@ A cache-példányok akkor működnek a legjobban, ha nem a nagy memória, a kisz
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Régiókat adhat hozzá a Azure Cosmos DB-fiókjához tartozó adatforgalomhoz
 
-Az Advisor olyan Azure Cosmos DB-fiókokat észlel, amelyeknek jelenleg nincs konfigurált régiója a forgalma. A régió hozzáadását javasolja. Ezzel növeli az adott régiótól érkező kérelmek késését, és biztosítja a rendelkezésre állást a régiók kiesése esetén. [További információ a globális adatterjesztésről Azure Cosmos DB.](https://aka.ms/cosmos/globaldistribution)
+Az Advisor olyan Azure Cosmos DB-fiókokat észlel, amelyeknek jelenleg nincs konfigurált régiója a forgalma. A régió hozzáadását javasolja. Ezzel növeli az adott régiótól érkező kérelmek késését, és biztosítja a rendelkezésre állást a régiók kiesése esetén. [További információ a globális adatterjesztésről Azure Cosmos DB.](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Az Azure Cosmos DB indexelési házirend konfigurálása egyéni, belefoglalt vagy kizárt elérési utak használatával
 
-Az Advisor azonosítja Azure Cosmos DB tárolókat, amelyek az alapértelmezett indexelési házirendet használják, de az egyéni indexelési házirendek előnyeit is kihasználhatják. Ez a meghatározás a számítási feladatok mintáján alapul. Az alapértelmezett indexelési házirend indexeli az összes tulajdonságot. A lekérdezési szűrőben használt explicit belefoglalt vagy kizárt elérési úttal rendelkező egyéni indexelési házirend csökkentheti az indexeléshez felhasznált RUs-t és tárterületet. [További információ az index-házirendek módosításáról.](https://aka.ms/cosmosdb/modify-index-policy)
+Az Advisor azonosítja Azure Cosmos DB tárolókat, amelyek az alapértelmezett indexelési házirendet használják, de az egyéni indexelési házirendek előnyeit is kihasználhatják. Ez a meghatározás a számítási feladatok mintáján alapul. Az alapértelmezett indexelési házirend indexeli az összes tulajdonságot. A lekérdezési szűrőben használt explicit belefoglalt vagy kizárt elérési úttal rendelkező egyéni indexelési házirend csökkentheti az indexeléshez felhasznált RUs-t és tárterületet. [További információ az index-házirendek módosításáról.](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB lekérdezési oldal méretének (MaxItemCount) beállítása a-1 értékre 
 
-A Azure Advisor a 100-es lekérdezési oldal méretét használó Azure Cosmos DB tárolókat azonosítja. Azt javasolja, hogy az oldal mérete (1) legyen a gyorsabb keresésekhez. [További információ a MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+A Azure Advisor a 100-es lekérdezési oldal méretét használó Azure Cosmos DB tárolókat azonosítja. Azt javasolja, hogy az oldal mérete (1) legyen a gyorsabb keresésekhez. [További információ a MaxItemCount.](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>A fürt teljesítményének növelése érdekében érdemes lehet gyorsított írási funkciót használni a HBase-fürtben
 Azure Advisor elemzi a rendszernaplókat az elmúlt 7 napban, és megállapítja, hogy a fürt a következő helyzetekben észlelt-e:
 1. A WAL-szinkronizálás időbeli késése magas 
 2. Az írási kérelmek száma magas (legalább 3 db egyórás ablak több mint 1000 átlagos_írási_kérelem/másodperc/csomópont aránnyal)
 
-Ezek a feltételek azt jelzik, hogy a fürtön nagy írási késés tapasztalható. Ennek oka lehet a fürtön végrehajtott nagy terhelés. A fürt teljesítményének növeléséhez érdemes lehet az Azure HDInsight HBase által biztosított gyorsított írási funkciót használni. A HDInsight Apache HBase-fürtök gyorsított írási funkciója felhőalapú tároló használata helyett prémium szintű, SSD-alapú felügyelt lemezeket csatol az egyes régiók kiszolgálóihoz (feldolgozó csomópontjához), ezáltal pedig alacsony írási késést és nagyobb rugalmasságot biztosít alkalmazásai számára. További információk a szolgáltatásról további [információt itt](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight) olvashat
+Ezek a feltételek azt jelzik, hogy a fürtön nagy írási késés tapasztalható. Ennek oka lehet a fürtön végrehajtott nagy terhelés. A fürt teljesítményének növeléséhez érdemes lehet az Azure HDInsight HBase által biztosított gyorsított írási funkciót használni. A HDInsight Apache HBase-fürtök gyorsított írási funkciója felhőalapú tároló használata helyett prémium szintű, SSD-alapú felügyelt lemezeket csatol az egyes régiók kiszolgálóihoz (feldolgozó csomópontjához), ezáltal pedig alacsony írási késést és nagyobb rugalmasságot biztosít alkalmazásai számára. További információk a szolgáltatásról további [információt itt](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight) olvashat
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>A jobb teljesítmény érdekében tekintse át az Azure Adatkezelő Table cache – időszak (házirend) című szakaszát (előzetes verzió)
 Ez az ajánlás megmutatja azokat az Azure Data Explorer-táblákat, amelyekben sok olyan lekérdezés található, amely visszatekint a konfigurált gyorsítótárazási időszakon (szabályzaton) túlra. (A lekérdezések százalékos aránya alapján az a leggyakoribb 10 tábla jelenik meg, amely a gyorsítótáron kívüli adatokhoz fér hozzá.) A fürt teljesítményének javítására javasolt művelet a következő: Korlátozza a lekérdezéseket a táblában a minimálisan szükséges időtartományra (a megadott szabályzaton belül). Vagy ha a teljes időtartományból szükség van adatokra, növelje a gyorsítótárazási időszakot az ajánlott értékre.
@@ -169,11 +169,11 @@ Az Advisor Analysis azt jelzi, hogy a MySQL-kiszolgáló szükségtelen I/O-terh
 Az Advisor azon kiszolgálócsoportok azonosítására szolgál, amelyekben az adat nem lett elosztva, de a koordinátoron marad. Ennek alapján az Advisor azt javasolja, hogy a teljes nagy kapacitású (Citus) előnyök a kiszolgálói csoportok munkavégző csomópontjain legyenek kiterjesztve. Ez javítja a lekérdezési teljesítményt úgy, hogy kihasználja a kiszolgálócsoport egyes csomópontjainak erőforrásait. [További információ](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>A virtuális gépek a Windows rendszerű virtuális asztali környezetbe való központi telepítésével növelheti a felhasználói élményt és a kapcsolatokat.
-Megállapítottuk, hogy a virtuális gépek más régióban vagy messze vannak attól a régiótól, ahonnan a felhasználók a Windows Virtual Desktop (WVD) használatával csatlakoznak. Ez hosszabb kapcsolódási válaszidőkhöz vezethet és hatással van a WVD általános felhasználói élményére. Amikor virtuális gépeket hoz létre a gazdagépkészleteihez, próbáljon meg a felhasználóhoz közelebbi régiót használni. A közelség biztosítja a WVD szolgáltatás megfelelő működését és a jobb általános élményt. [További információ a kapcsolatok késéséről](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+Megállapítottuk, hogy a virtuális gépek más régióban vagy messze vannak attól a régiótól, ahonnan a felhasználók a Windows Virtual Desktop (WVD) használatával csatlakoznak. Ez hosszabb kapcsolódási válaszidőkhöz vezethet és hatással van a WVD általános felhasználói élményére. Amikor virtuális gépeket hoz létre a gazdagépkészleteihez, próbáljon meg a felhasználóhoz közelebbi régiót használni. A közelség biztosítja a WVD szolgáltatás megfelelő működését és a jobb általános élményt. [További információ a kapcsolatok késéséről](../virtual-desktop/connection-latency.md).
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Frissítsen a Modern olvasó SDK legfrissebb verziójára.
 Azt észleltük, hogy az előfizetésben lévő erőforrások a Modern olvasó elavult SDK-verzióit használják. A Modern olvasó legújabb SDK-verzióját javított biztonság és teljesítmény mellett használhatja, továbbá bővített funkciókészlettel rendelkezik az integráció testre szabása és fejlesztése érdekében.
-További információ a [magával ejtő olvasói SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)-ról.
+További információ a [magával ejtő olvasói SDK](../cognitive-services/immersive-reader/index.yml)-ról.
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban

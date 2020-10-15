@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82792377"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078255"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott Factory megoldás-gyorsító szolgáltatásról
 
@@ -125,7 +125,7 @@ Másik lehetőségként jelentkezzen be a virtuális gépre SSH-n keresztül, é
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan ellenőrizhető, hogy a szimuláció adatokat küld a felhőbe?
 
-Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) vagy az [Azure IoT CLI-figyelő-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) paranccsal ellenőrizheti, hogy az egyes eszközökről IoT hub küldött adatok megtekinthetők-e. Ezeknek az eszközöknek a használatához ismernie kell a IoT hub kapcsolódási karakterláncát az üzemelő példányban. Lásd: [hogyan a saját megoldás által használt IoT hub-beli kapcsolatok karakterláncának megkeresése?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) vagy az [Azure IoT CLI-figyelő-Events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) paranccsal ellenőrizheti, hogy az egyes eszközökről IoT hub küldött adatok megtekinthetők-e. Ezeknek az eszközöknek a használatához ismernie kell a IoT hub kapcsolódási karakterláncát az üzemelő példányban. Lásd: [hogyan a saját megoldás által használt IoT hub-beli kapcsolatok karakterláncának megkeresése?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Vizsgálja meg az egyik közzétevő eszköz által továbbított adatmennyiséget:
 
@@ -190,10 +190,10 @@ Telemetria-adatok küldése nem OPC UA-eszközökről a csatlakoztatott gyárba:
 
 1. Indítsa újra a csatlakoztatott gyári App Service.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
+* [A prediktív karbantartási megoldásgyorsító áttekintése](./iot-accelerators-predictive-walkthrough.md)
 * [Csatlakoztatott gyári megoldás-gyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
-* [IoT-biztonság létrehozása az alapoktól](/azure/iot-fundamentals/iot-security-ground-up)
+* [IoT-biztonság létrehozása az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

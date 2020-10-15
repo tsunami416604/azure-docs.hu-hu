@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3357cb40ff476a3cc0bce259930068aeccf2c10c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0849eb0c421883ecb0510451ff81b604538c9cc3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767382"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069891"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
@@ -214,7 +214,7 @@ Engedélyezheti Azure Automation annak ellenőrzését, hogy a Key Vault és a f
 * Engedélyek megadása Key Vault számára.
 * Adja meg a hozzáférési házirendet.
 
-A PowerShell-galéria [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) parancsfájllal megadhatja a futtató fiók engedélyeit Key Vault. A Key Vault engedélyeinek beállításával kapcsolatos további részletekért tekintse meg [a Key Vault hozzáférési szabályzatának hozzárendelését](/azure/key-vault/general/assign-access-policy-powershell) ismertető témakört.
+A PowerShell-galéria [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) parancsfájllal megadhatja a futtató fiók engedélyeit Key Vault. A Key Vault engedélyeinek beállításával kapcsolatos további részletekért tekintse meg [a Key Vault hozzáférési szabályzatának hozzárendelését](../key-vault/general/assign-access-policy-powershell.md) ismertető témakört.
 
 ## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>A futtató fiókok konfigurációs problémáinak elhárítása
 

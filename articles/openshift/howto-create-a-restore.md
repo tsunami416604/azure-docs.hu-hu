@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 0cd6797bcdfadca807e25f8b3decf34bd553fc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac34d643ba0df4be79a064858c580c884de727
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470051"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078561"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>Azure Red Hat OpenShift 4-fürt alkalmazás-visszaállításának létrehozása
 
@@ -23,7 +23,7 @@ Ebben a cikkben előkészíti a környezetet egy Azure Red Hat OpenShift 4 fürt
 > * Az előfeltételek beállítása és a szükséges eszközök telepítése
 > * Azure Red Hat OpenShift 4 alkalmazás-visszaállítás létrehozása
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -45,7 +45,7 @@ oc get backups -n velero
 Ha rendelkezik a visszaállítani kívánt biztonsági másolattal, a visszaállítást a következő paranccsal kell végrehajtania:
 
 ```bash
-velero restore create --from-backup <name of backup from above output list>
+velero restore create <name of restore> --from-backup <name of backup from above output list>
 ```
 
 Ez a lépés hozza létre azokat az Kubernetes objektumokat, amelyekről biztonsági másolat létrehozásakor az előző lépésben készített biztonsági mentést.
@@ -57,14 +57,36 @@ oc get restore -n velero <name of restore created previously> -o yaml
 ```
 Ha a fázis azt mondja `Completed` , az Azure Red Hat 4 alkalmazást vissza kell állítani.
 
+## <a name="restore-an-azure-red-hat-openshift-4-application-with-included-snapshots"></a>Azure Red Hat OpenShift 4 alkalmazás visszaállítása a mellékelt pillanatképekkel
+
+
+Ha az Azure Red Hat OpenShift 4 alkalmazást a Velero használatával állandó kötetekkel szeretné visszaállítani, a visszaállítást a következő paranccsal kell végrehajtania:
+
+```bash
+velero restore create <name of the restore> --from-backup <name of backup from above output list> --exclude-resources="nodes,events,events.events.k8s.io,backups.ark.heptio.com,backups.velero.io,restores.ark.heptio.com,restores.velero.io"
+```
+Ez a lépés hozza létre azokat az Kubernetes objektumokat, amelyekről biztonsági másolat létrehozásakor az előző lépésben készített biztonsági mentést.
+
+A visszaállítás állapotának megtekintéséhez hajtsa végre a következő lépést:
+
+```bash
+oc get restore -n velero <name of restore created previously> -o yaml
+```
+Ha a fázis azt mondja `Completed` , az Azure Red Hat 4 alkalmazást vissza kell állítani.
+
+További információ a biztonsági másolatok létrehozásáról és a Velero használatával történő visszaállításról: [OpenShift-erőforrások biztonsági mentése a natív módon](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Red Hat OpenShift 4 fürtözött alkalmazást állítottak vissza. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * OpenShift v4-fürt alkalmazás-visszaállításának létrehozása a Velero használatával
+> * OpenShift v4-fürtbeli alkalmazások visszaállításának létrehozása pillanatképekkel a Velero használatával
 
 
 A következő cikkből megismerheti az Azure Red Hat OpenShift 4 támogatott erőforrásait.
 
 * [Azure Red Hat OpenShift v4 – támogatott források](supported-resources.md)
+
+

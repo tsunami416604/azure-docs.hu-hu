@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015649"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078153"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -21,8 +21,7 @@ A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásb
 
 A privát fürt olyan nyilvános régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* Az Azure China 21Vianet jelenleg nem támogatott.
-* A US Gov Texas jelenleg nem támogatott, mert hiányzik a privát kapcsolat támogatása.
+A US Gov Texas jelenleg nem támogatott, mert hiányzik a privát kapcsolat támogatása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +29,7 @@ A privát fürt olyan nyilvános régiókban érhető el, ahol az [AK támogatot
 
 ## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot az AK-fürthöz.
 

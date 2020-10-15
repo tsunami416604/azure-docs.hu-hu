@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445853"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078102"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
@@ -84,6 +84,31 @@ A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfe
     > A megfelelőségi irányítópulton néhány órát is igénybe vehet, hogy egy újonnan hozzáadott szabvány megjelenjen.
 
     [![A korábbi és az új Azure CIS-t bemutató szabályozási megfelelőségi irányítópult](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
+
+
+## <a name="removing-a-standard-from-your-dashboard"></a>Standard eltávolítása az irányítópultról
+
+Ha a megadott szabályozási szabványok bármelyike nem felel meg a szervezete számára, egyszerű folyamat, amellyel egyszerűen eltávolíthatja őket a felhasználói felületről. Ez lehetővé teszi a szabályozási megfelelőségi irányítópult további testreszabását, és csak az Önre vonatkozó szabványokra koncentrálhat.
+
+Standard eltávolítása:
+
+1. A Security Center menüjében válassza a **biztonsági szabályzat**elemet.
+
+1. Válassza ki a megfelelő előfizetést, amelyből el kívánja távolítani a standardot.
+
+    > [!NOTE]
+    > A standardokat eltávolíthat egy előfizetésből, de nem felügyeleti csoportból. 
+
+    Megnyílik a biztonsági házirend lap. A kiválasztott előfizetéshez az alapértelmezett házirend, az iparági és a szabályozási szabványok, valamint a létrehozott egyéni kezdeményezések láthatók.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Szabályozási szabvány eltávolítása a szabályozási megfelelőségi irányítópultról Azure Security Center":::
+
+1. Az eltávolítani kívánt szabványhoz válassza a **Letiltás**lehetőséget. Megjelenik egy megerősítő ablak.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Szabályozási szabvány eltávolítása a szabályozási megfelelőségi irányítópultról Azure Security Center":::
+
+1. Válassza az **Igen** lehetőséget. A standard el lesz távolítva. 
+
 
 ## <a name="next-steps"></a>Következő lépések
 

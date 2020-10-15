@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571373"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078969"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Több-bérlős virtuális hálózatok összekötése egy virtuális WAN-hubhoz
 
@@ -54,7 +54,7 @@ Ahhoz, hogy a fölérendelt előfizetés a virtuális központtal módosítható
 1. Ezután adja hozzá a távoli bérlői előfizetést és a szülő bérlői előfizetést a PowerShell aktuális munkamenetéhez. Futtassa az alábbi parancsot. Ha bejelentkezett a szülőbe, csak a távoli bérlőhöz tartozó parancsot kell futtatnia.
 
    ```azurepowershell-interactive
-   Add-AzAccount “xxxxx-b34a-4df9-9451-4402dcaecc5b”
+   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. Ellenőrizze, hogy a szerepkör-hozzárendelés sikeres-e, ha bejelentkezik Azure PowerShell a szülő hitelesítő adataival, és futtatja a következő parancsot:
@@ -72,25 +72,25 @@ A következő lépésekben váltania kell a két előfizetés kontextusa közöt
 1. A következő parancs futtatásával győződjön meg arról, hogy a távoli fiók környezetében van:
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[remote ID]”
+   Select-AzSubscription -SubscriptionId "[remote ID]"
    ```
 
 1. Hozzon létre egy helyi változót annak a virtuális hálózatnak a metaadatainak tárolására, amelyhez csatlakozni szeretne a központhoz.
 
    ```azurepowershell-interactive
-   $remote = Get-AzVirtualNetwork -Name "[v-net name]" -ResourceGroupName "[resource group name]"
+   $remote = Get-AzVirtualNetwork -Name "[vnet name]" -ResourceGroupName "[resource group name]"
    ```
 
 1. Váltson vissza a fölérendelt fiókra.
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[parent ID]”
+   Select-AzSubscription -SubscriptionId "[parent ID]"
    ```
 
 1. Csatlakoztatja a VNet a hubhoz.
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[Parent Resource Group Name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
    ```
 
 1. Az új kapcsolatokat a PowerShellben vagy a Azure Portal is megtekintheti.

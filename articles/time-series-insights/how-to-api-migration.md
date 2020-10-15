@@ -10,18 +10,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653740"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078238"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Áttelepítés új Azure Time Series Insights Gen2 API-verzióra
 
 ## <a name="overview"></a>Áttekintés
 
-Ha a nyilvános előzetes verzióban (2020. július 16. előtt) létrehozott egy Azure Time Series Insights Gen2-környezetet, frissítse az ÁME-környezetet, hogy az új, általánosan elérhető API-kat használja a jelen cikkben ismertetett lépéseket követve.
+Ha a nyilvános előzetes verzióban (2020. július 16. előtt) létrehozott egy Azure Time Series Insights Gen2-környezetet, frissítse az ÁME-környezetet, hogy az új, általánosan elérhető API-kat használja a jelen cikkben ismertetett lépéseket követve. Ez a változás nem érinti azokat a felhasználókat, akik a Azure Time Series Insights Gen1 verzióját használják.
+
+> [!IMPORTANT]
+> A jelen cikkben ismertetett frissítések csak az ÁME-környezet által használt API-verziókat frissítik. Ez a változás nem kapcsolódik a Gen2-környezetekben bevezetett új [JSON-összeolvasztási és Escape-szabályokhoz](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) .
 
 Az új API-verzió a `2020-07-31` és a frissített [idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)használja.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Bastion-gazdagép létrehozása: Windows virtuális gép: portál'
+title: 'Oktatóanyag: Azure Bastion-gazdagép létrehozása: Windows virtuális gép: portál'
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Bastion-gazdagépet, és hogyan csatlakozhat egy Windows rendszerű virtuális géphez.
 services: bastion
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: c5361a777b2fdab20fab70214ddcb3bbf5248acb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015259"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078544"
 ---
 # <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Oktatóanyag: Azure Bastion-gazdagép létrehozása és Windows rendszerű virtuális gépekhez való kapcsolódás böngésző használatával
 
@@ -87,4 +87,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy megerősített gazdagépet, és hozzárendelte azt egy virtuális hálózathoz, és kapcsolódott egy Windows rendszerű virtuális géphez. Dönthet úgy, hogy hálózati biztonsági csoportokat használ az Azure-beli megerősített alhálózattal. Ehhez tekintse meg a [NSG használata](bastion-nsg.md)című témakört.
+Ebben az oktatóanyagban létrehozott egy megerősített gazdagépet, és hozzárendelte azt egy virtuális hálózathoz, majd kapcsolódott egy Windows rendszerű virtuális géphez. Dönthet úgy, hogy hálózati biztonsági csoportokat használ az Azure-beli megerősített alhálózattal. Ehhez tekintse meg a következőt:
+
+> [!div class="nextstepaction"]
+> [Hálózati biztonsági csoportok használata](bastion-nsg.md)

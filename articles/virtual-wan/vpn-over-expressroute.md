@@ -1,18 +1,18 @@
 ---
 title: 'ExpressRoute-titkosítás konfigurálása: IPsec a ExpressRoute-en keresztül az Azure Virtual WAN-hoz'
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Virtual WAN-t helyek közötti VPN-kapcsolat létrehozására a ExpressRoute privát társításával.
+description: Ismerje meg, hogyan hozhat létre helyek közötti VPN-kapcsolatot az Azure Virtual WAN használatával a ExpressRoute privát kapcsolatain keresztül.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828004"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079054"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz
 
