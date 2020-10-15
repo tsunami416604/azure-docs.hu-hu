@@ -1,22 +1,22 @@
 ---
-title: IoT-Plug and Play eszköz konvertálása általános modulba | Microsoft Docs
-description: A C# PnP-eszköz kódját használja, és alakítsa át modulra.
+title: Általános IoT-Plug and Play általános moduljának összekötése | Microsoft Docs
+description: Használjon C# IoT Plug and Play az eszköz kódját egy általános modulban.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046336"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089162"
 ---
-# <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Oktatóanyag: IoT Plug and Play eszköz konvertálása modulba (C#)
+# <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Oktatóanyag: IoT Plug and Play modul összekötése (C#)
 
-Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át a IoT Plug and Play eszköz kódját általános modulként való futtatásra.
+Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy általános IoT Plug and Play [modulhoz](../iot-hub/iot-hub-devguide-module-twins.md).
 
 Az eszköz egy IoT Plug and Play eszköz, ha közzéteszi a modell AZONOSÍTÓját, amikor csatlakozik egy IoT hubhoz, és megvalósítja a modell azonosítója által azonosított digitális Twins Definition Language (DTDL) modellben ismertetett tulajdonságokat és metódusokat. Ha többet szeretne megtudni arról, hogy az eszközök hogyan használják a DTDL és a modell AZONOSÍTÓját, olvassa el a következőt: [IoT Plug and Play fejlesztői útmutató](./concepts-developer-guide-device-csharp.md). A modulok ugyanúgy használják a modell-azonosítókat és a DTDL modelleket.
 

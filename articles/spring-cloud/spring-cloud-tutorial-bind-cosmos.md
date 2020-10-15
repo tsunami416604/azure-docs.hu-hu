@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b7af755c7f0903787bb3798ea1f6877cae180f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20926988d554d562f36587734bd99c34b4731e69
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908305"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088720"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB-adatbázis kötése az Azure Spring Cloud-alkalmazáshoz
 
@@ -29,7 +29,7 @@ Előfeltételek:
 
 Azure Cosmos DB öt különböző API-típust támogat, amelyek támogatják a kötést. A következő eljárás azt szemlélteti, hogyan használhatók:
 
-1. Létrehoz egy Azure Cosmos DB-adatbázist. Az [adatbázis létrehozásával](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) kapcsolatos útmutatót a súgóban találja. 
+1. Létrehoz egy Azure Cosmos DB-adatbázist. Az [adatbázis létrehozásával](../cosmos-db/create-cosmosdb-resources-portal.md) kapcsolatos útmutatót a súgóban találja. 
 
 1. Jegyezze fel az adatbázis nevét. Ehhez az eljáráshoz az adatbázis neve **testdb**.
 

@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664987"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088533"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata az Azure Spring Cloud app Azure Functionsának meghívásához
 
@@ -23,12 +23,12 @@ A Azure Functions és a App Services egyaránt támogatja az Azure Active Direct
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](/cli/azure/install-azure-cli)
 * [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
-* [A Azure Functions Core Tools 3.0.2009 vagy újabb verziójának telepítése](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+* [A Azure Functions Core Tools 3.0.2009 vagy újabb verziójának telepítése](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Function alkalmazást és a Spring Cloudt is tartalmazza a parancs az [Group Create](/cli/azure/group#az-group-create)paranccsal történő használatával:
 
 ```azurecli-interactive
@@ -77,7 +77,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-Alapértelmezés szerint a függvények a kulcs alapú hitelesítést használják a http-végpontok biztonságossá tételéhez. Mivel az Azure AD-hitelesítés lehetővé teszi a függvények hozzáférésének biztosítását, [a függvény hitelesítési szintjét névtelen értékre szeretnénk állítani](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger#secure-an-http-endpoint-in-production).
+Alapértelmezés szerint a függvények a kulcs alapú hitelesítést használják a http-végpontok biztonságossá tételéhez. Mivel az Azure AD-hitelesítés lehetővé teszi a függvények hozzáférésének biztosítását, [a függvény hitelesítési szintjét névtelen értékre szeretnénk állítani](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
 
 ```json function.json
 {
@@ -124,7 +124,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>A függvény meghívásához hozzon létre egy minta Spring boot-alkalmazást
 
-Ez a minta elindítja a http által aktivált függvényt, ha először egy hozzáférési jogkivonatot kér az [MSI-végponttól](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) , és ezzel a tokenrel hitelesíti a függvény http-kérelmét.
+Ez a minta elindítja a http által aktivált függvényt, ha először egy hozzáférési jogkivonatot kér az [MSI-végponttól](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http) , és ezzel a tokenrel hitelesíti a függvény http-kérelmét.
 
 1. A minta projekt klónozása. 
 
@@ -171,8 +171,8 @@ Ez a minta elindítja a http által aktivált függvényt, ha először egy hozz
     
     A Path paraméter módosításával különböző értékeket adhat át a függvénynek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Daemon-ügyfélalkalmazás konfigurálása a szolgáltatások közötti hívásokhoz](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad#configure-a-daemon-client-application-for-service-to-service-calls)
+* [Daemon-ügyfélalkalmazás konfigurálása a szolgáltatások közötti hívásokhoz](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)

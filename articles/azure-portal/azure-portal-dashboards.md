@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764009"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089485"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Irányítópultok létrehozása és megosztása az Azure Portalon
 
@@ -142,7 +142,7 @@ Ha egy meglévő irányítópultot sablonként szeretne használni egy új irán
 
 ## <a name="publish-and-share-a-dashboard"></a>Irányítópult közzététele és megosztása
 
-Amikor létrehoz egy irányítópultot, az alapértelmezés szerint magánjellegű, ami azt jelenti, hogy Ön az egyetlen, aki láthatja. Ahhoz, hogy az irányítópultok mások számára is elérhetők legyenek, közzéteheti és megoszthatja azokat. További információ: Azure- [irányítópultok megosztása Role-Based Access Control használatával](azure-portal-dashboard-share-access.md).
+Amikor létrehoz egy irányítópultot, az alapértelmezés szerint magánjellegű, ami azt jelenti, hogy Ön az egyetlen, aki láthatja. Ahhoz, hogy az irányítópultok mások számára is elérhetők legyenek, közzéteheti és megoszthatja azokat. További információ: Azure- [irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával](azure-portal-dashboard-share-access.md).
 
 ### <a name="open-a-shared-dashboard"></a>Megosztott irányítópult megnyitása
 
@@ -176,7 +176,7 @@ Egy privát vagy megosztott irányítópult végleges törléséhez kövesse az 
 
     ![Képernyőkép a törlés megerősítéséről](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Azure-irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával](azure-portal-dashboard-share-access.md)
+* [Azure-irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával](azure-portal-dashboard-share-access.md)
 * [Azure-irányítópultok létrehozása programozott módon](azure-portal-dashboards-create-programmatically.md)

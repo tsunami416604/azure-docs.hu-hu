@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945770"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088754"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 
@@ -26,7 +26,7 @@ A tanúsítványok titkosítják a webes forgalmat. Ezek a TLS/SSL-tanúsítván
 * Azure Spring Cloud üzembe helyezett alkalmazás (lásd: gyors útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md), vagy meglévő alkalmazás használata).
 * Egy tartománynév, amely hozzáféréssel rendelkezik a tartományi szolgáltató DNS-beállításjegyzékéhez, például a GoDaddyhez.
 * Privát tanúsítvány (azaz önaláírt tanúsítvány) egy harmadik féltől származó szolgáltatótól. A tanúsítványnak meg kell egyeznie a tartománnyal.
-* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) üzembe helyezett példánya
+* [Azure Key Vault](../key-vault/general/overview.md) üzembe helyezett példánya
 
 ## <a name="import-certificate"></a>Tanúsítvány importálása
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>A tanúsítványfájl előkészítése PFX-formátumban (nem kötelező)
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.
 
 ## <a name="see-also"></a>Lásd még
-* [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Tanúsítvány importálása](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Mi az Azure Key Vault?](../key-vault/general/overview.md)
+* [Tanúsítvány importálása](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](./spring-cloud-quickstart.md)

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715450"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074957"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
@@ -45,11 +45,11 @@ Igen. Az alkalmazás konfigurációja titkosítja az összes általa birtokolt k
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>Hol találhatók az alkalmazások konfigurációjában tárolt adategységek? 
 
-Az alkalmazás konfigurációjában tárolt ügyféladatok abban a régióban találhatók, ahol az ügyfél alkalmazás-konfigurációs tárolóját létrehozták. Az alkalmazás konfigurációja replikálhatja az adataikat a [párosított régiókba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) az adatrugalmasság érdekében, de nem replikálja vagy nem helyezi át az ügyféladatokat az [Azure-ban tárolt adattárolási](https://azure.microsoft.com/global-infrastructure/data-residency/)tartományon kívülre. Az ügyfelek és a végfelhasználók bármikor áthelyezhetik, másolhatják és érhetik el az ügyféladatokat bármely helyről.
+Az alkalmazás konfigurációjában tárolt ügyféladatok abban a régióban találhatók, ahol az ügyfél alkalmazás-konfigurációs tárolóját létrehozták. Az alkalmazás konfigurációja replikálhatja az adataikat a [párosított régiókba](../best-practices-availability-paired-regions.md) az adatrugalmasság érdekében, de nem replikálja vagy nem helyezi át az ügyféladatokat az [Azure-ban tárolt adattárolási](https://azure.microsoft.com/global-infrastructure/data-residency/)tartományon kívülre. Az ügyfelek és a végfelhasználók bármikor áthelyezhetik, másolhatják és érhetik el az ügyféladatokat bármely helyről.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Miben különbözik az alkalmazás konfigurációja a Azure App Service beállításaitól?
 
-Azure App Service lehetővé teszi az egyes App Service-példányok Alkalmazásbeállítások megadását. Ezeket a beállításokat környezeti változókként adja át az alkalmazás kódjának. Ha kívánja, társíthat egy beállítást egy adott üzembe helyezési ponthoz. További információ: az [Alkalmazásbeállítások konfigurálása](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service lehetővé teszi az egyes App Service-példányok Alkalmazásbeállítások megadását. Ezeket a beállításokat környezeti változókként adja át az alkalmazás kódjának. Ha kívánja, társíthat egy beállítást egy adott üzembe helyezési ponthoz. További információ: az [Alkalmazásbeállítások konfigurálása](../app-service/configure-common.md#configure-app-settings).
 
 Ezzel szemben az Azure-alkalmazás konfigurációja lehetővé teszi olyan beállítások megadását, amelyek több alkalmazás között megoszthatók. Ide tartoznak a App Serviceon futó alkalmazások, valamint a többi platform is. Az alkalmazás kódja az Azure SDK-n keresztül, vagy közvetlenül a REST API-kon keresztül fér hozzá ezekhez a beállításokhoz a .NET és a Java konfigurációs szolgáltatóján keresztül.
 

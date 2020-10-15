@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932260"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089315"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -80,9 +80,9 @@ Igen, legfeljebb öt szabályt állíthat be egyetlen NFS-exportálási háziren
 
 Nem, jelenleg nem alkalmazhat hálózati biztonsági csoportokat a Azure NetApp Files meghatalmazott alhálózatára vagy a szolgáltatás által létrehozott hálózati adapterekre.
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Használhatom az Azure IAM-t a Azure NetApp Files?
+### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Használhatom az Azure RBAC-t a Azure NetApp Files?
 
-Igen, Azure NetApp Files támogatja az Azure IAM RBAC funkcióit.
+Igen, Azure NetApp Files támogatja az Azure RBAC funkcióit.
 
 ## <a name="performance-faqs"></a>Gyakori kérdések a teljesítményről
 

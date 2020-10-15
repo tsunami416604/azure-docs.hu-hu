@@ -4,45 +4,54 @@ description: Ismerkedjen meg a Defender IoT szolgáltatásaival és szolgáltat�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 434a977a6d8c5b2243996063f758f409c20723fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/07/2020
+ms.author: rkarlin
+ms.openlocfilehash: 1d039208ba99ba11cb562f82301a5bb3c02c6603
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940917"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089995"
 ---
-# <a name="introducing-azure-defender-for-iot"></a>Az Azure Defender IoT bemutatása
+# <a name="introducing-azure-defender-for-iot-preview"></a>Az Azure Defender IoT előzetes verziójának bemutatása
 
-Egyesítheti a biztonsági felügyeletet, és engedélyezheti a teljes körű fenyegetések észlelését és elemzését a hibrid Felhőbeli számítási feladatokban és az Azure IoT-megoldásban.
+> [!IMPORTANT]
+> A IoT készült Azure Defender jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>A teljes IoT-megoldás védelme a IoT-eszközökről az Azure-felhőbe
+Mivel a vállalatok a nagyobb hatékonyság és termelékenység érdekében a digitális átalakítást implementálják, a táblák és a felügyeleti csapatok egyre inkább a nagy számú nem felügyelt eszközök internetes hálózata (IoT) és az operatív technológiák (OT) eszközeinek üzembe helyezésével kapcsolatos felelősséggel és pénzügyi kockázatokkal foglalkoznak.
+A kibővített támadási felületet célzó veszélyforrások jelentős mértékben befolyásolhatják a vállalati hatásokat, például a biztonsági és környezeti incidenseket, a költséges üzemi állásidőt és a bizalmas szellemi tulajdonjogok ellopását.
 
-Válassza ki a zökkenőmentes ügynök nélküli megoldást, vagy használja ki az ügynök-alapú átfogó biztonságot, a IoT-hez készült Azure Defender minden eszközre, IoT Edgera és IoT Hub-ra kiterjedő veszélyforrások megelőzését és elemzését teszi lehetővé a IoT-eszközökön.
+Az örökölt IoT és az OT-eszközök nem támogatják az ügynököket, és gyakran nem teszik lehetővé az informatikai csapatok számára a kijavítását, a helytelen konfigurálását és a láthatatlan használatát, így azok a veszélyforrások, akik mélyebbre szeretnének osztani a vállalati hálózatokat 
 
-Mivel a több milliárd új eszköz csatlakozik az internethez, és integrálva van a mindennapi életünkbe és a vállalkozásaiba, a biztonsági operatív csapatoknak biztosítaniuk kell, hogy a biztonsági stratégiák elég gyorsan fejlődnek az új támadási felületek lefedéséhez. Más rendszerekhez hasonlóan a IoT-megoldás teljes körű biztonságossá tételéhez a megvalósítás minden fázisában védelmet kell biztosítani.
+A vállalati IT-hálózatokra fejlesztett hagyományos hálózati biztonsági monitorozási eszközök nem tudják kezelni ezeket a környezeteket, mert nem értik a IoT és az OT-környezetekben található speciális protokollok, eszközök és számítógép-gép (MESTERi) viselkedéseket.
 
-A Defender for IoT leegyszerűsíti a hibrid munkaterhelések védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások elleni védelmet, valamint intelligens veszélyforrások észlelését és reagálást tesz elérhetővé az Edge, a helyszíni, az Azure és más felhőkben futó munkaterhelések között.
+A IoT készült Azure Defender egy átfogó megoldás, amely folyamatosan felkeresi, figyeli és felügyeli a IoT és a fenyegetéseket, a kockázatokat és a biztonsági réseket az összes IoT-és OT-eszközön, függetlenül attól, hogy az Azure IoT Hub vagy örökölt nem felügyelt eszközökön keresztül felügyelt újabb eszközök. A IoT készült Azure Defender segít felgyorsítani az incidensekre adott válaszokat, betekintést nyújt a működési kihívásokra, és leegyszerűsíti a hibrid számítási feladatok védelmét az egységes IoT, valamint az e-szabályozás és az
 
-![Defender a IoT architektúrához](./media/architecture/azure-iot-security-architecture.png)
+Ez a holisztikus megoldás a következő kulcsfontosságú használati eseteket tartalmazza:
+- Automatikus eszköz-felderítés minden IoT és OT-eszközön
+- Folyamatos IoT és az OT veszélyeztető biztonsági rések kezelése
+- A IoT és az OT Threat-elhárítás
+- Működési hatékonyság 
 
-### <a name="unified-visibility-and-control"></a>Egységes láthatóság és vezérlés
+Az Azure Defender for IoT egy egységes megoldás az összes eszközön a IoT és az OT biztonsága számára. Az eszköz lehetővé teszi, hogy az Azure IoT Hub által felügyelt új IoT és OT-eszközökre, valamint a nem felügyelt IoT és az eszközökre vonatkozó, ügynök nélküli hálózati figyelési képességekre épülő eszközöket biztosítson.
+
+## <a name="unified-visibility-and-control"></a>Egységes láthatóság és vezérlés
 
 A helyszíni és Felhőbeli számítási feladatokban, például az Azure IoT-megoldásban is egységes biztonsági képet kaphat. Új eszközök beléptetése és biztonsági szabályzatok alkalmazása a számítási feladatokban (Leaf-eszközök, Microsoft Edge-eszközök, IoT Hub) a biztonsági szabványok és a jobb biztonsági helyzetek megfelelőségének biztosítása érdekében.
 
-### <a name="adaptive-threat-prevention"></a>Adaptív veszélyforrások megelőzése
+## <a name="adaptive-threat-prevention"></a>Adaptív veszélyforrások megelőzése
 
 A Defender for IoT segítségével folyamatosan figyelheti a gépek, a hálózatok és az Azure-szolgáltatások biztonságát. Több száz beépített biztonsági értékelés közül választhat, vagy létrehozhat egy sajátot a központi Defender IoT Hub irányítópulton. Optimalizálhatja biztonsági beállításait, és javíthatja a biztonsági pontszámát a virtuális gépek, hálózatok, alkalmazások és az adategységek működés közbeni javaslataival. Az újonnan hozzáadott IoT képességekkel csökkentheti az Azure IoT-megoldás támadási felületét, és elháríthatja a problémákat, mielőtt kiaknázni tudná őket.
 
-### <a name="intelligent-threat-detection-and-response"></a>Intelligens fenyegetések észlelése és válasza
+## <a name="intelligent-threat-detection-and-response"></a>Intelligens fenyegetések észlelése és válasza
 
 A speciális elemzések és a Microsoft Intelligens biztonsági gráf segítségével megkezdheti a fejlődő cyber-támadások előnyeit. A beépített viselkedési elemzések és gépi tanulás azonosítja a támadásokat és a nulla napi kihasználat. Figyelje a IoT-megoldást a bejövő támadásokhoz és a szabálysértés utáni tevékenységekhez. Egyszerűsítse az eszközök vizsgálatát és szervizelését az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
 
@@ -51,8 +60,4 @@ A speciális elemzések és a Microsoft Intelligens biztonsági gráf segítség
 Ebben az áttekintésben megtanulta a Defender for IoT funkcióit és szolgáltatásait. Ha többet szeretne megtudni a IoT architektúrával kapcsolatos Defenderről, az előfeltételekről és az első lépésekről, tekintse meg a következő cikkeket:
 
 - [Architektúra](architecture.md)
-- [A szolgáltatás előfeltételei](service-prerequisites.md)
 - [Bevezetés](getting-started.md)
-- [A megoldás meghatározása](quickstart-configure-your-solution.md)
-- [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
-- [IoT-riasztások Defender](concept-security-alerts.md)

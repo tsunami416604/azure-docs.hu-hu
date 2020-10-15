@@ -7,19 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86223686"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076674"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Felhőalapú szolgáltatás automatikus skálázásának konfigurálása a portálon
 
 A Felhőbeli szolgáltatások feldolgozói szerepkörhöz olyan feltételek állíthatók be, amelyek egy méretezési vagy kimenő műveletet indítanak el. A szerepkör feltételei a szerepkör PROCESSZORán, lemezén vagy hálózati terhelésén alapulnak. Beállíthat egy olyan feltételt is, amely egy üzenetsor vagy egy másik, az előfizetéshez társított Azure-erőforrás metrikája alapján is megadható.
 
 > [!NOTE]
-> Ez a cikk a Cloud Service webes és feldolgozói szerepköreire koncentrál. Amikor közvetlenül hoz létre egy virtuális gépet (klasszikus), azt egy felhőalapú szolgáltatás üzemelteti. A standard szintű virtuális gépeket a [rendelkezésre állási csoportokhoz](../virtual-machines/windows/classic/configure-availability-classic.md) társíthatja, majd manuálisan be-és kikapcsolhatja őket.
+> Ez a cikk a Cloud Service webes és feldolgozói szerepköreire koncentrál. Amikor közvetlenül hoz létre egy virtuális gépet (klasszikus), azt egy felhőalapú szolgáltatás üzemelteti. A standard szintű virtuális gépeket a [rendelkezésre állási csoportokhoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) társíthatja, majd manuálisan be-és kikapcsolhatja őket.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 Az alkalmazás skálázásának konfigurálása előtt vegye figyelembe a következő információkat:
@@ -105,6 +105,3 @@ Ezzel a beállítással eltávolíthatja az automatikus skálázást a szerepkö
 3. A szerepkör azon példányai, amelyek méretezése a következőre:.
 
 A méretezési beállítások konfigurálása után kattintson a felül található **Mentés** ikonra.
-
-
-
