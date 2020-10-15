@@ -3,12 +3,12 @@ title: Az operatív Uram fejlesztése az Advisor szolgáltatással
 description: Az Azure-előfizetések működési kiválóságának optimalizálása Azure Advisor használatával.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258475"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077388"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor használatával
 
@@ -38,7 +38,7 @@ Ha a készlet elavult belső összetevőt használ, törölje, majd hozza létre
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 
-Azure Advisor észleli azokat a riasztási szabályokat, amelyekben a feltételek szakaszban megadott lekérdezések érvénytelenek. A naplózási riasztási szabályokat a Azure Monitorban hozhatja létre, és a segítségével meghatározott időközönként futtathatja az elemzési lekérdezéseket. A lekérdezés eredményei határozzák meg, hogy egy riasztást aktiválni kell-e. Az elemzési lekérdezések a hivatkozott erőforrások, táblák vagy parancsok változásai miatt változhatnak az idő múlásával. Az Advisor azt javasolja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza, hogy a rendszer automatikusan letiltsa, és biztosítsa az Azure-beli erőforrások lefedettségét. [További információ a riasztási szabályok hibaelhárításáról.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor észleli azokat a riasztási szabályokat, amelyekben a feltételek szakaszban megadott lekérdezések érvénytelenek. A naplózási riasztási szabályokat a Azure Monitorban hozhatja létre, és a segítségével meghatározott időközönként futtathatja az elemzési lekérdezéseket. A lekérdezés eredményei határozzák meg, hogy egy riasztást aktiválni kell-e. Az elemzési lekérdezések a hivatkozott erőforrások, táblák vagy parancsok változásai miatt változhatnak az idő múlásával. Az Advisor azt javasolja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza, hogy a rendszer automatikusan letiltsa, és biztosítsa az Azure-beli erőforrások lefedettségét. [További információ a riasztási szabályok hibaelhárításáról.](../azure-monitor/platform/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>Azure Policy javaslatok használata
 
@@ -55,7 +55,7 @@ Azure Policy egy Azure-szolgáltatás, amely szabályzatok létrehozására, hoz
 **Engedélyezi *a címke öröklését az erőforráscsoportok közül*.** Ez a szabályzat az erőforrások minden létrehozásakor vagy frissítésekor hozzáadja vagy lecseréli a megadott címkét és értéket a fölérendelt erőforráscsoportból. A meglévő erőforrásokat szervizelési feladat aktiválásával javíthatja.
 
 ## <a name="no-validation-environment-enabled"></a>Nincs engedélyezve ellenőrzési környezet
-Azure Advisor megállapítja, hogy a jelenlegi előfizetésben nincs engedélyezve az érvényesítési környezet. A gazdagépek létrehozásakor \" \" \" \" a Properties (Tulajdonságok) lapon a nem for érvényesítési környezet lehetőséget választotta. Ha legalább egy, engedélyezett ellenőrzési környezettel rendelkező gazdagép biztosítja az üzleti folytonosságot a Windows Virtual Desktop szolgáltatás üzemelő példányán, a lehetséges problémák korai észlelésével. [További információ](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure Advisor megállapítja, hogy a jelenlegi előfizetésben nincs engedélyezve az érvényesítési környezet. A gazdagépek létrehozásakor \" \" \" \" a Properties (Tulajdonságok) lapon a nem for érvényesítési környezet lehetőséget választotta. Ha legalább egy, engedélyezett ellenőrzési környezettel rendelkező gazdagép biztosítja az üzleti folytonosságot a Windows Virtual Desktop szolgáltatás üzemelő példányán, a lehetséges problémák korai észlelésével. [További információ](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Biztosítsa az éles (nem ellenőrzési) környezet stabil működését
 Azure Advisor észleli, hogy a gazdagép-készletek túl sok engedélyezett ellenőrzési környezettel rendelkezik. Ahhoz, hogy az ellenőrzési környezetek a legjobban kiszolgálják a céljukat, rendelkeznie kell legalább egy, de soha nem több mint fele a gazdagép-készletek érvényesítési környezetben. Ha a gazdagép-készletek és az általa letiltott ellenőrzési környezet között kifogástalan egyensúlyt biztosít, akkor a legjobb megoldás, ha kihasználja a Windows virtuális asztal által az egyes frissítésekkel elérhető többfokozatú központi telepítések előnyeit. A probléma megoldásához nyissa meg a gazdagép készletének tulajdonságait, és válassza \" a nem lehetőséget \" az \" érvényesítési környezet \" beállítása mellett.

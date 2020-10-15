@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 503b1ca8c8f1ff06bbdd54316611d886fb1e9d87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462309"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077155"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Felhőalapú szolgáltatás teljesítményének tesztelése helyileg az Azure számítási emulátorban a Visual Studio Profiler használatával
 A Cloud Services teljesítményének teszteléséhez különféle eszközök és technikák állnak rendelkezésre.
@@ -166,9 +166,9 @@ Gratulálunk! A Profiler elindult.
 ## <a name="next-steps"></a>Következő lépések
 A Visual Studio Profiler nem támogatja az Azure bináris fájljainak az emulátorban való kiosztását, de ha a memóriát le szeretné tesztelni, kiválaszthatja ezt a lehetőséget a profilkészítés során. A párhuzamossági profilkészítést is választhatja, amely segítségével meghatározhatja, hogy a szálak a zárolások vagy a rétegbeli interakciók profilkészítését használják-e, ami segít nyomon követni a teljesítménnyel kapcsolatos problémákat, amikor interakciót végez az alkalmazás szintjei között, ami leggyakrabban az adatréteg és a feldolgozói szerepkör között van.  Megtekintheti az alkalmazás által generált adatbázis-lekérdezéseket, és a profilkészítési adatait használva javíthatja az adatbázis használatát. További információ a szinttel kapcsolatos interakciós profilkészítésről: a [platformon elérhető interakciós Profiler használata a Visual Studio Team System 2010-ben][3]című blogbejegyzésben.
 
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: https://docs.microsoft.com/archive/blogs/habibh/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010
+[1]: ../azure-monitor/app/profiler.md
+[2]: /previous-versions/azure/hh411542(v=azure.100)
+[3]: /archive/blogs/habibh/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

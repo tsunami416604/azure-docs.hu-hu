@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566420"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077354"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -242,6 +242,9 @@ Igen. Ha nem hirdette meg az alapértelmezett útvonalakat (0.0.0.0/0) vagy az i
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>Letilthatom az internetkapcsolatot a ExpressRoute-áramkörökhöz csatlakoztatott virtuális hálózatokkal?
 
 Igen. Az alapértelmezett útvonalak (0.0.0.0/0) megadásával letilthatja az összes internetkapcsolatot a virtuális hálózaton belül üzembe helyezett virtuális gépekre, és átirányíthatja az összes forgalmat a ExpressRoute áramkörön keresztül.
+
+> [!NOTE]
+> Ha a 0.0.0.0/0 hirdetett útvonal a meghirdetett útvonalakról (például leállás vagy helytelen konfiguráció miatt) visszavonásra kerül, az Azure [rendszerútvonalat](../virtual-network/virtual-networks-udr-overview.md#system-routes) biztosít a csatlakoztatott Virtual Network erőforrásaihoz az internethez való kapcsolódás biztosításához.  Annak biztosítása érdekében, hogy a kimenő forgalom az internetre le legyen tiltva, ajánlott egy hálózati biztonsági csoportot elhelyezni az összes alhálózaton az internetes forgalomra vonatkozó kimenő megtagadási szabállyal.
 
 Ha az alapértelmezett útvonalakat hirdeti meg, a Microsoft-partnereken (például az Azure Storage-ban és az SQL Database-ben) kínált szolgáltatásokra is kényszerítjük a forgalmat a helyszíni környezetbe. Az útválasztókat úgy kell konfigurálnia, hogy az Azure-ba irányuló forgalmat a Microsoft-partneri útvonalon vagy az interneten keresztül adja vissza. Ha engedélyezte a szolgáltatási végpontot a szolgáltatáshoz, a szolgáltatás felé irányuló forgalom nem kényszerül a telephelyére. A forgalom az Azure gerinc hálózatán belül marad. További információ a szolgáltatási végpontokról: [virtuális hálózati szolgáltatás végpontjai](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 

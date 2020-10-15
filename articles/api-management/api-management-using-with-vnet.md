@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 67b855beae4ea36bf4ef7e6bb396c6b7ae1d89e3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbff4cc067ce831e9d9f69a457f348a94257e86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874339"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076912"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 <a name="required-ports"> </a> Ha egy API Management Service-példány egy VNET üzemel, a rendszer a következő táblázatban található portokat használja.
 
-| Forrás/cél port (ok) | Irány          | Átviteli protokoll |   [Szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) <br> Forrás/cél   | Cél ( \* )                                                 | Virtual Network típusa |
+| Forrás/cél port (ok) | Irány          | Átviteli protokoll |   [Szolgáltatás címkéi](../virtual-network/network-security-groups-overview.md#service-tags) <br> Forrás/cél   | Cél ( \* )                                                 | Virtual Network típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Bejövő            | TCP                | INTERNET/VIRTUAL_NETWORK            | Ügyfél-kommunikáció API Management                      | Külső             |
 | */3443                     | Bejövő            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Felügyeleti végpont a Azure Portal és a PowerShell számára         | Külső & belső  |
@@ -153,7 +153,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 + **Azure Load Balancer**: a szolgáltatási címke bejövő kérelmének engedélyezése `AZURE_LOAD_BALANCER` nem követelmény az SKU számára `Developer` , mivel csak egy egységet helyezünk üzembe a számítási feladatokból. A [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) bejövő állapota azonban kritikusra vált, ha a magasabb szintű SKU-ra, például a `Premium` Load Balancer állapotának meghibásodása miatt nem sikerül üzembe helyezést végrehajtani.
 
-+ **Application Insights**: Ha az [Azure Application Insights](api-management-howto-app-insights.md) -figyelés engedélyezve van a API Managementon, akkor engedélyeznie kell a kimenő kapcsolatot a [telemetria-végpontnak](/azure/azure-monitor/app/ip-addresses#outgoing-ports) a Virtual Network. 
++ **Application Insights**: Ha az [Azure Application Insights](api-management-howto-app-insights.md) -figyelés engedélyezve van a API Managementon, akkor engedélyeznie kell a kimenő kapcsolatot a [telemetria-végpontnak](../azure-monitor/app/ip-addresses.md#outgoing-ports) a Virtual Network. 
 
 + A helyszíni **tűzfal felé irányuló forgalom kényszerítése az expressz útvonal vagy a hálózati virtuális berendezés használatával**: a közös ügyfél-konfiguráció a saját alapértelmezett útvonal (0.0.0.0/0) meghatározása, amely a API Management delegált alhálózatról a helyszíni tűzfalon vagy egy hálózati virtuális berendezésen keresztül áramlik át a forgalmat. Ez a forgalmi folyamat mindig megszakítja az Azure API Management kapcsolatát, mivel a kimenő forgalom vagy a helyszínen van letiltva, vagy a NAT-t olyan, a különböző Azure-végpontokkal már nem működő címekből álló halmazba kívánja felismerni. A megoldáshoz pár dolgot kell tennie:
 
@@ -272,7 +272,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a **globálisan** megjelöl
 * [Virtual Network csatlakoztatása különböző üzembe helyezési modellből](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Az API Inspector használata a hívások nyomkövetéséhez az Azure-ban API Management](api-management-howto-api-inspector.md)
 * [Virtual Network gyakori kérdések](../virtual-network/virtual-networks-faq.md)
-* [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags)
+* [Szolgáltatáscímkék](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -285,6 +285,6 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a **globálisan** megjelöl
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags
