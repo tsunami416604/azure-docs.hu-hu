@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400517"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070690"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -84,7 +84,7 @@ A Azure Security Center igény szerinti hálózati hozzáférésével korlátozh
 
 * [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 * [Azure Security Center adaptív hálózat megerősítésének ismertetése](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ Az Azure-tervrajzok segítségével a nagy léptékű Azure-környezeteket is le
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minták a hálózatkezeléshez](/azure/governance/policy/samples/#network)
+* [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ Ha azonban az Azure Virtual Machines szolgáltatással támogatott hibrid Runboo
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -720,7 +720,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 * [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Policy minta beépített Azure Automation](./policy-samples.md)
+* [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -854,7 +854,7 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 
 * [Az Azure webalkalmazási tűzfal áttekintése](../web-application-firewall/overview.md)
 
-* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
+* [Hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md)
 
 * [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
 
@@ -882,7 +882,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 * [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minta beépített Azure Automation](./policy-samples.md)
+* [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
 * [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor Azure Security Cente
 
 * [Automation-fiók üzembe helyezése Azure Resource Manager sablon használatával](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure Policy minta beépített Azure Automation](./policy-samples.md)
+* [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -984,7 +984,7 @@ A hibrid Runbook Worker szolgáltatás használatakor győződjön meg arról, h
 
 * [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Policy minta beépített Azure Automation](./policy-samples.md)
+* [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1014,7 +1014,7 @@ A hibrid Runbook Worker szolgáltatás használatakor a Azure Security Center ki
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minta beépített Azure Automation](./policy-samples.md)
+* [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

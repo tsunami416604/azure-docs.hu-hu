@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 14ea9113bf5712d6ffce356d02abb7224c21771a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc6f60397c2d432dd6547a8be34280fcf3acd05d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70067719"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078408"
 ---
 # <a name="implement-x-csrf-pattern"></a>Az X-CSRF minta implementálása
 
-Ez a cikk egy Azure API Management Policy-mintát mutat be, amely bemutatja, hogyan valósítható meg a sok API által használt X-CSRF minta. Ez a példa kifejezetten az SAP-átjáróra vonatkozik. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
+Ez a cikk egy Azure API Management Policy-mintát mutat be, amely bemutatja, hogyan valósítható meg a sok API által használt X-CSRF minta. Ez a példa kifejezetten az SAP-átjáróra vonatkozik. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-reference.md).
 
 ## <a name="policy"></a>Szabályzat
 
@@ -29,10 +29,9 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get X-CSRF token from SAP gateway using send request.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
-
++ [Házirend-minták](../policy-reference.md)

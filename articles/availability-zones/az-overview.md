@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773739"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078374"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és rendelkezésre állási zónák az Azure-ban
 
@@ -37,7 +37,7 @@ A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segí
 
 ## <a name="regions"></a>Régiók
 
-A régió a késés által meghatározott kerületen belül üzembe helyezett adatközpontok készlete, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. Az Azure rugalmasságot biztosít olyan alkalmazások üzembe helyezéséhez, ahol szükség van rá, több régiót is beleértve a régiók közötti rugalmasság biztosításához. További információ: [a rugalmassági pillér áttekintése](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview).
+A régió a késés által meghatározott kerületen belül üzembe helyezett adatközpontok készlete, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. Az Azure rugalmasságot biztosít olyan alkalmazások üzembe helyezéséhez, ahol szükség van rá, több régiót is beleértve a régiók közötti rugalmasság biztosításához. További információ: [a rugalmassági pillér áttekintése](/azure/architecture/framework/resiliency/overview).
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
@@ -131,7 +131,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-Series |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: H sorozat |
 > |  | Cognitive Services: Speech Services | Virtual Machines: LS-Series |
-> |  | Tárolópéldányok | Virtual Machines: LSv2-Series |
+> |  | Container Instances | Virtual Machines: LSv2-Series |
 > |  | Container Registry | Virtual Machines: Mv2-Series |
 > |  | Data Factory | Virtual Machines: NC-Series |
 > |  | Event Grid | Virtual Machines: NCv2-Series |
@@ -170,9 +170,9 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Felügyelt lemez hozzáadása a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Zónában redundáns virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Virtuális gépek terheléselosztása zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Virtuális gépek terheléselosztása zónán belül egy standard Load Balancer és egy zóna-előtérbeli felület használatával](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
+- [Virtuális gépek terheléselosztása zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Virtuális gépek terheléselosztása zónán belül egy standard Load Balancer és egy zóna-előtérbeli felület használatával](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Zónaredundáns tárolás](../storage/common/storage-redundancy.md)
 - [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Event Hubs georeplikációs vészhelyreállítás](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus georeplikációs vészhelyreállítás](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

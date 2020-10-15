@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358253"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070656"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Az AK-fürtöket befolyásoló Resource Health események keresése (előzetes verzió)
 
 
-Ha a tároló számítási feladatait az AK-on futtatja, azt szeretné, hogy a probléma megoldásához a számítási feladatok lehető leghamarabb, a munkaterhelések rendelkezésre állásának csökkentése érdekében javítsa a problémákat. [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) betekintést nyújt a különböző egészségügyi eseményekre, amelyek hatására előfordulhat, hogy az AK-fürt nem érhető el.
+Ha a tároló számítási feladatait az AK-on futtatja, azt szeretné, hogy a probléma megoldásához a számítási feladatok lehető leghamarabb, a munkaterhelések rendelkezésre állásának csökkentése érdekében javítsa a problémákat. [Azure Resource Health](../service-health/resource-health-overview.md) betekintést nyújt a különböző egészségügyi eseményekre, amelyek hatására előfordulhat, hogy az AK-fürt nem érhető el.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ A Resource Health jeleket fogad a felügyelt fürthöz a fürt állapotának meg
 
 - **Csökkentett teljesítményű**: Ha a beavatkozást igénylő állapotra vonatkozó probléma merül fel, Resource Health a fürtöt *csökkentett teljesítményű*jelenti.
 
-Az egyes állapotok állapotával kapcsolatos további részletekért tekintse meg a [Resource Health áttekintését](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status).
+Az egyes állapotok állapotával kapcsolatos további részletekért tekintse meg a [Resource Health áttekintését](../service-health/resource-health-overview.md#health-status).
 
 ### <a name="view-historical-data"></a>Korábbi adatértékek megtekintése
 
@@ -57,4 +57,4 @@ Megtekintheti az elmúlt 30 nap korábbi Resource Health információkat is az *
 
 ## <a name="next-steps"></a>Következő lépések
 
-Futtasson ellenőrzéseket a fürtön a fürtökkel kapcsolatos problémák további hibaelhárításához az [AK-diagnosztika](https://docs.microsoft.com/azure/aks/concepts-diagnostics)használatával.
+Futtasson ellenőrzéseket a fürtön a fürtökkel kapcsolatos problémák további hibaelhárításához az [AK-diagnosztika](./concepts-diagnostics.md)használatával.

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 462db76b06e5071571ae475d420a627e57dad92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f2794c2d72dd460f0b3edf5fb7ec4035746c6e4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70067758"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078442"
 ---
 # <a name="filter-response-content"></a>Válasz tartalmának szűrése
 
-Ez a cikk egy Azure API Management házirend-mintát mutat be, amely bemutatja, hogyan szűrhetők a kéréshez társított termék alapján a válasz adatelemeinek szűrése. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
+Ez a cikk egy Azure API Management házirend-mintát mutat be, amely bemutatja, hogyan szűrhetők a kéréshez társított termék alapján a válasz adatelemeinek szűrése. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-reference.md).
 
 ## <a name="policy"></a>Szabályzat
 
@@ -29,10 +29,9 @@ Illessze be a kódot a **kimenő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Filter response content based on product name.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
-
++ [Házirend-minták](../policy-reference.md)

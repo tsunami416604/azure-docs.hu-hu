@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 450ea0b8024192f6f351b4893fe6e8e07db236f7
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 333a7ec4ae0e5c8cbc94a603e2ccf81ee92e7d48
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931978"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078459"
 ---
 ## <a name="query-language-features"></a>Nyelvi funkciók lekérdezése
 
@@ -33,6 +33,7 @@ A lekérdezéseket tovább növelheti a következő műveletekkel:
   - Az előzetes verzióban legfeljebb öt szint `JOIN` adható meg.
 * Csak a legfelső szintű lekérdezés eredményeinek kiválasztása ( `Select TOP` operátor)
 * Egy eredményhalmaz elemeinek darabszáma a következő használatával: `Select COUNT`
+* Kivetítések használata a lekérdezés által visszaadott oszlopok kiválasztásához
 * Skaláris függvények használata:,,,,,,, `IS_BOOL` `IS_DEFINED` `IS_NULL` `IS_NUMBER` `IS_OBJECT` `IS_PRIMITIVE` `IS_STRING` `STARTSWITH` , `ENDSWITH` .
 * Lekérdezés-összehasonlító operátorok használata:,,, `IN` / `NIN` `=` `!=` `<` , `>` , `<=` , `>=` .
 * Tetszőleges kombinációt ( `AND` , `OR` `NOT` operátort) `IS_OF_MODEL` , skaláris függvényeket és összehasonlító operátorokat használhat.

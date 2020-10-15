@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318398"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070707"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez
 
@@ -155,7 +155,7 @@ Igény szerint a webes felhasználói felület helyi futó példányát a felhő
 
 1. Telepítse a megoldás-gyorsító **alapszintű** példányát a **számítógépek** CLI használatával. Jegyezze fel az üzemelő példány nevét és a virtuális géphez megadott hitelesítő adatokat. További információ: [üzembe helyezés a parancssori felület használatával](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Az Azure Portal vagy az az az [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával engedélyezze az SSH-hozzáférést a megoldásban a-szolgáltatásokat üzemeltető virtuális géphez. Példa:
+1. Az Azure Portal vagy az az az [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) használatával engedélyezze az SSH-hozzáférést a megoldásban a-szolgáltatásokat üzemeltető virtuális géphez. Például:
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ Igény szerint a webes felhasználói felület helyi futó példányát a felhő
 
     Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, a lehető leghamarabb le kell tiltania](../security/fundamentals/network-best-practices.md).
 
-1. A virtuális gép nevének és nyilvános IP-címének megkereséséhez használja a Azure Portal vagy az az az [parancssori](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) felületet. Példa:
+1. A virtuális gép nevének és nyilvános IP-címének megkereséséhez használja a Azure Portal vagy az az az [parancssori](/cli/azure/install-azure-cli?view=azure-cli-latest) felületet. Például:
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table
