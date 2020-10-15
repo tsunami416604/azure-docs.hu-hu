@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1802708c3b9e15a2459f29d15da72f2dc1da1a4f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888583"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093990"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
 
@@ -23,7 +23,7 @@ Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identit�
 Ez a cikk bemutatja, hogyan engedélyezheti és tilthatja le a rendszerhez rendelt felügyelt identitásokat egy Azure Spring Cloud-alkalmazáshoz a Azure Portal és a CLI használatával (az 0.2.4 verzióban elérhető).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](../active-directory/managed-identities-azure-resources/overview.md).
 Szüksége lesz egy üzembe helyezett Azure Spring Cloud-példányra. Kövesse a gyors [üzembe helyezést az Azure CLI használatával](spring-cloud-quickstart.md).
 
 ## <a name="add-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
@@ -59,9 +59,9 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ## <a name="obtain-tokens-for-azure-resources"></a>Jogkivonatok beszerzése az Azure-erőforrásokhoz
 Egy alkalmazás a felügyelt identitásával lekérheti a jogkivonatokat a Azure Active Directory által védett egyéb erőforrások, például a Azure Key Vault eléréséhez. Ezek a jogkivonatok az erőforráshoz hozzáférő alkalmazást jelölik, nem az alkalmazás adott felhasználóját.
 
-Előfordulhat, hogy [a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal). Ha például jogkivonatot kér a Key Vaulthoz való hozzáféréshez, győződjön meg arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication).
+Előfordulhat, hogy [a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Ha például jogkivonatot kér a Key Vaulthoz való hozzáféréshez, győződjön meg arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Az Azure Spring Cloud ugyanazt a végpontot osztja meg az Azure virtuális géppel való jogkivonat-beszerzéshez. A jogkivonatok beszerzéséhez a Java SDK vagy a Spring boot Starter használatát javasoljuk.  Lásd: a virtuálisgép- [token használata](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) különböző kód-és parancsfájl-példákhoz, valamint útmutatás a fontos témakörökhöz, például a jogkivonat lejáratának és a http-hibák kezeléséhez.
+Az Azure Spring Cloud ugyanazt a végpontot osztja meg az Azure virtuális géppel való jogkivonat-beszerzéshez. A jogkivonatok beszerzéséhez a Java SDK vagy a Spring boot Starter használatát javasoljuk.  Lásd: a virtuálisgép- [token használata](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) különböző kód-és parancsfájl-példákhoz, valamint útmutatás a fontos témakörökhöz, például a jogkivonat lejáratának és a http-hibák kezeléséhez.
 
 Ajánlott: használja a Java SDK-t vagy a Spring boot Starter-t a jogkivonatok lekéréséhez.  Tekintse meg a mintákat a [következő lépésekben](#next-steps).
 
@@ -88,4 +88,3 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 * [Felügyelt identitásokkal rendelkező Azure Key Vault elérése a Spring boot Starter-ben](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Felügyelt identitások használata a Java SDK-val](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
-

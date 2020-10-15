@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045398"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092953"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Gyors útmutató: alkalmazások létrehozása és üzembe helyezése az Azure Spring Cloud-ban
 
@@ -187,10 +187,10 @@ Az Azure CLI vagy Maven használatával történő üzembe helyezés előtt vég
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [A JDK 8 telepítése](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
-* Választható [A Azure Toolkit for IntelliJ telepítése](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és [Bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
+* Választható [A Azure Toolkit for IntelliJ telepítése](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és [Bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>Üzembe helyezési eljárások
 
@@ -304,7 +304,7 @@ Egy webböngészőn keresztül elérhetővé kell tennie az alkalmazást. Az át
     ![Projekt importálása](media/spring-cloud-intellij-howto/revision-import-project-1.png)
 
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Gateway-alkalmazás üzembe helyezése az Azure Spring Cloud-on
-Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával Azure Toolkit for IntelliJval, és ki kell választania az előfizetését. A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával Azure Toolkit for IntelliJval, és ki kell választania az előfizetését. A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure**-  ->  **üzembe helyezés az Azure Spring Cloud**-ban lehetőséget.
 
@@ -313,7 +313,7 @@ Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával
 1. A **név** mezőben adja hozzá a következőt *: átjáró* a meglévő **névhez**.
 1. Az összetevő **szövegmezőben** válassza a *com. piggymetrics: Gateway: 1.0-pillanatkép*elemet.
 1. Az **előfizetés** szövegmezőben ellenőrizze az előfizetését.
-1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)című részben hozott létre.
+1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](./spring-cloud-quickstart-provision-service-instance.md)című részben hozott létre.
 1. Az *engedélyezéshez*állítsa be a **nyilvános végpontot** .
 1. Az **alkalmazás:** szövegmezőben válassza az **alkalmazás létrehozása...** lehetőséget.
 1. Adja meg az *átjárót*, majd kattintson **az OK**gombra.

@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243239"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093582"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
 Az Azure Monitorral az egyes Azure-erőforrásoktól az Azure-ba érkező metrikákat vagy naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Tevékenységnaplók megtekintése
@@ -75,18 +75,18 @@ A riasztások konfigurálása:
 
 1. Válassza ki a **riasztások** elemet az oldal alján található menüsorban.
 
-    ![riasztások](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![Képernyőkép, amely az oldal alján található menüben jeleníti meg a riasztásokat.](./media/api-management-azure-monitor/alert-menu-item.png)
 
 2. Kattintson egy **új riasztási szabályra** ehhez a riasztáshoz.
 3. Kattintson a **feltétel hozzáadása**elemre.
 4. Válassza a **metrikák** lehetőséget a jel típusa legördülő listából.
 5. Válassza a **jogosulatlan átjáró kérése** lehetőséget a figyelni kívánt jelként.
 
-    ![riasztások](./media/api-management-azure-monitor/signal-type.png)
+    ![Képernyőfelvétel: a jel típusa mező és a nem engedélyezett átjáró által kért jel neve.](./media/api-management-azure-monitor/signal-type.png)
 
 6. A **jel logikájának konfigurálása** nézetben adja meg azt a küszöbértéket, amelyet követően a riasztást aktiválni kell, majd kattintson a **kész**gombra.
 
-    ![riasztások](./media/api-management-azure-monitor/threshold.png)
+    ![A jel logikai nézetének konfigurálását bemutató képernyőkép.](./media/api-management-azure-monitor/threshold.png)
 
 7. Válasszon egy meglévő műveleti csoportot, vagy hozzon létre egy újat. Az alábbi példában a rendszer e-mailt küld a rendszergazdáknak. 
 

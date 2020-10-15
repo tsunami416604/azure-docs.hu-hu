@@ -3,12 +3,13 @@ title: BLOB Storage-események küldése webes végpontnak – sablon
 description: A blob Storage-fiók létrehozásához használja a Azure Event Grid és egy Azure Resource Manager sablont, és fizessen elő eseményeket. Küldje el az eseményeket egy webhookba. "
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598353"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093650"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Gyors útmutató: blob Storage-események átirányítása a webes végpontba ARM-sablon használatával
 
@@ -82,11 +83,11 @@ Amikor feltölti a fájlt az Azure Blob Storage-ba, Event Grid üzenetet küld a
 Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
 ).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Azure Resource Manager dokumentáció](../azure-resource-manager/index.yml)
+* [Az Azure Resource Manager dokumentációja](../azure-resource-manager/index.yml)
 * [Erőforrások definiálása Azure Resource Manager-sablonokban](/azure/templates/)
-* [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/)
+* [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

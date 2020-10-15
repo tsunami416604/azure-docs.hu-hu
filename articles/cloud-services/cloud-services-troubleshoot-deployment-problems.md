@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 3b86ff205981cfe7bb00ecb3ca58804fba3e80b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460099"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075076"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>A Cloud Service üzembe helyezésével kapcsolatos problémák elhárítása
 Ha felhőalapú szolgáltatásalkalmazás-csomagot telepít az Azure-ba, a Azure Portal **Tulajdonságok** paneljén szerezheti be az üzembe helyezésre vonatkozó információkat. Az ezen a panelen található részletek segítségével elháríthatja a felhőalapú szolgáltatással kapcsolatos problémákat, és az új támogatási kérelem megnyitásakor megadhatja ezeket az információkat az Azure-támogatáshoz.
@@ -49,7 +49,7 @@ A szolgáltatás-gyógyulás automatikusan megtörténik, amikor az Azure észle
 2. A Azure Portal **Tulajdonságok** ablaktáblájában tekintse át az információkat, és állapítsa meg, hogy a szolgáltatás-gyógyulás a szerepkörök újrahasznosításának ideje alatt történt-e.
 
 A szerepkörök a gazdagép-operációs rendszer és a vendég-operációsrendszer-frissítések során körülbelül havonta egyszer újra újraindulnak.  
-További információkért lásd a blogbejegyzések az [operációs rendszer frissítései miatti újraindítását](https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades) ismertető témakört.
+További információkért lásd a blogbejegyzések az [operációs rendszer frissítései miatti újraindítását](/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades) ismertető témakört.
 
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Probléma: nem tudok VIP-swap-cserét végezni, és hibaüzenetet kapok
 A virtuális IP-címek cseréje nem engedélyezett, ha a központi telepítés frissítése folyamatban van. A központi telepítés frissítései automatikusan megjelenhetnek a következő esetekben:
@@ -67,14 +67,14 @@ Annak megállapítása, hogy az automatikus frissítés megakadályozza-e a VIP-
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Probléma: A szerepkör-példány a megkezdett, az inicializálás, a foglalt és a leállított művelet között hurkos
 Ez az állapot problémára mutathat vissza az alkalmazás kódjában, csomagjában, vagy konfigurációs fájljában. Ebben az esetben a néhány percenként változó állapotot kell látnia, és a Azure Portal az **újrahasznosítást**, a **foglalt**vagy az **inicializálást**is elmondhatja. Ez azt jelzi, hogy hiba történt azzal az alkalmazással, amely a szerepkör-példány futtatását tartja.
 
-A probléma elhárításával kapcsolatos további információkért tekintse meg az [Azure Pásti számítási diagnosztikai adatokkal](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) és a [szerepkörök újrahasznosítását okozó gyakori problémákkal](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)foglalkozó blogbejegyzést.
+A probléma elhárításával kapcsolatos további információkért tekintse meg az [Azure Pásti számítási diagnosztikai adatokkal](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) és a [szerepkörök újrahasznosítását okozó gyakori problémákkal](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)foglalkozó blogbejegyzést.
 
 ## <a name="problem-my-application-stopped-working"></a>Probléma: az alkalmazás működése leállt
 1. A Azure Portal kattintson a szerepkör-példányra.
 2. A Azure Portal **Tulajdonságok** ablaktábláján vegye figyelembe a következő feltételeket a probléma megoldásához:
    * Ha a szerepkör-példány nemrég leállt (megtekintheti a **megszakítások számát**), a központi telepítés frissíthető. Várjon, és ellenőrizze, hogy a szerepkör-példány folytatja-e a működést saját maga.
    * Ha a szerepkör-példány **foglalt**, ellenőrizze az alkalmazás kódját, hogy a [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -eseményt kezeli-e a rendszer. Előfordulhat, hogy az eseményt kezelő kódot kell felvennie vagy kijavítania.
-   * Tekintse át a diagnosztikai adatok és hibaelhárítási forgatókönyveket a blogbejegyzésben, az [Azure Pásti számítási diagnosztikai adatok](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+   * Tekintse át a diagnosztikai adatok és hibaelhárítási forgatókönyveket a blogbejegyzésben, az [Azure Pásti számítási diagnosztikai adatok](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
 > [!WARNING]
 > Ha újrahasznosítja a felhőalapú szolgáltatást, alaphelyzetbe állítja a központi telepítés tulajdonságait, és ténylegesen törli az eredeti problémával kapcsolatos információkat.
@@ -82,6 +82,6 @@ A probléma elhárításával kapcsolatos további információkért tekintse me
 >
 
 ## <a name="next-steps"></a>Következő lépések
-További [hibaelhárítási cikkek](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) a Cloud Services szolgáltatáshoz.
+További [hibaelhárítási cikkek](./cloud-services-allocation-failures.md) a Cloud Services szolgáltatáshoz.
 
-Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

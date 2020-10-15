@@ -121,6 +121,8 @@
       href: ../../storage/common/security-baseline.md
     - name: Az Azure Traffic Manager biztonsági alapkonfigurációja
       href: ../../traffic-manager/security-baseline.md
+    - name: Az Azure Web Application Firewall biztonsági alapkonfigurációja
+      href: ../../web-application-firewall/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
     - name: A Cognitive Services biztonsági alapkonfigurációja

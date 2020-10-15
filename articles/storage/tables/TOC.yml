@@ -164,10 +164,10 @@
   items:
     - name: Azure-frissítések
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: A Microsoft Azure Storage-ére vonatkozó kérdések és válaszok
+    - name: Table Storage a Microsoft Q&A oldalán
       href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Az Azure Storage a Stack Overflow-n
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Table Storage a Stack Overflow-n
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: A Table Storage díjszabása
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Azure-díjkalkulátor

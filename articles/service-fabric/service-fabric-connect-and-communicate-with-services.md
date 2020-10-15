@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005378"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093327"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
 Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Áthelyezhető az egyik helyről a másikra, akár a szolgáltatás tulajdonosa, akár a Service Fabric automatikusan. A szolgáltatások nem statikusan vannak társítva egy adott géphez vagy címhez.
@@ -30,7 +30,7 @@ Az elosztott rendszerekben a szolgáltatások az egyik gépről a másikra az id
 
 Service Fabric egy elnevezési szolgáltatás nevű felderítési és feloldási szolgáltatást biztosít. A elnevezési szolgáltatás egy olyan táblát tart fenn, amely elnevezett szolgáltatási példányokat képez le a végponti címekre, amelyeket figyelnek. A Service Fabric összes elnevezett szolgáltatás-példányában egyedi nevek szerepelnek URI-ként, például: `"fabric:/MyApplication/MyService"` . A szolgáltatás neve nem változik a szolgáltatás élettartama során, hanem csak azok a végpont-címek, amelyek megváltoztathatják a szolgáltatások áthelyezésekor. Ez hasonló olyan webhelyekhez, amelyek állandó URL-címekkel rendelkeznek, de az IP-cím változhat. És hasonló a webes DNS-hez, amely feloldja a webhely URL-címeit az IP-címekre, Service Fabric rendelkezik egy regisztrátorral, amely a szolgáltatás nevét a végpont címére képezi le.
 
-![szolgáltatási végpontok][2]
+![Diagram, amely azt mutatja, hogy Service Fabric rendelkezik egy olyan regisztrálóval, amely a szolgáltatás nevét a végponti címmé képezi.][2]
 
 A szolgáltatások feloldásához és a szolgáltatáshoz való csatlakozáshoz a következő lépések futnak egy hurokban:
 
@@ -47,14 +47,14 @@ Mivel számos szolgáltatás, különösen a tároló szolgáltatások, rendelke
 
 Ahogy az a következő ábrán is látható, a Service Fabric-fürtön futó DNS-szolgáltatás leképezi a DNS-neveket a szolgáltatás neveként, amelyeket a elnevezési szolgáltatás feloldott a végpontok címeinek a kapcsolódáshoz való visszaadásához. A szolgáltatás DNS-neve a létrehozás időpontjában van megadva. 
 
-![szolgáltatási végpontok][9]
+![Diagram, amely bemutatja, hogy a DNS-szolgáltatás hogyan fut a Service Fabric-fürtön, hogyan képezi le a DNS-neveket a szolgáltatás neveként, amelyeket a elnevezési szolgáltatás feloldott a végpontok címeinek a csatlakozáshoz való visszaküldéséhez.][9]
 
 További információ a DNS szolgáltatás használatáról: [DNS szolgáltatás az Azure-ban Service Fabric](service-fabric-dnsservice.md) cikkben.
 
 ### <a name="reverse-proxy-service"></a>Fordított proxy szolgáltatás
 A fordított proxy a fürtben olyan HTTP-végpontokat tesz elérhetővé, amelyek a HTTPS-t is beleértve. A fordított proxy nagy mértékben leegyszerűsíti az egyéb szolgáltatások és azok módszereinek meghívását egy adott URI-formátummal, és kezeli a feloldási, csatlakozási és újrapróbálkozási lépéseket, amelyek ahhoz szükségesek, hogy az egyik szolgáltatás kommunikáljon a elnevezési szolgáltatás használatával. Más szóval elrejti a elnevezési szolgáltatás, amikor más szolgáltatásokat hív meg, így egyszerűvé teheti az URL-cím meghívását.
 
-![szolgáltatási végpontok][10]
+![Diagram, amely bemutatja, hogyan kezeli a fordított proxy a fürtben olyan HTTP-végpontokat, mint a HTTPS.][10]
 
 További információ a fordított proxy szolgáltatás használatáról: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md) cikkben.
 
@@ -153,7 +153,7 @@ Ha például a **80**-es porton el szeretné fogadni a külső forgalmat, a köv
     ![Port megnyitása csomópont-típuson][4]
 3. Miután létrehozta a fürtöt, konfigurálja a Azure Load Balancer a fürt erőforráscsoporthoz, hogy továbbítsa a forgalmat az 80-as porton. Amikor a Azure Portalon keresztül hoz létre fürtöt, a rendszer automatikusan beállítja a konfigurált egyéni végpontok portját.
 
-    ![Forgalom továbbítása a Azure Load Balancerban][5]
+    ![Képernyőfelvétel: a háttér-port mező kiemelése a terheléselosztási szabályok alatt.][5]
 4. A Azure Load Balancer mintavételt használ annak megállapítására, hogy egy adott csomópontra küld-e forgalmat. A mintavétel időszakonként ellenőrzi a végpontokat az egyes csomópontokon annak megállapítása érdekében, hogy a csomópont válaszol-e. Ha a mintavétel a beállított számú alkalommal nem tud választ kapni, a terheléselosztó nem küld forgalmat a csomópontnak. Amikor a Azure Portalon keresztül hoz létre fürtöt, a rendszer automatikusan beállítja a mintavételt a konfigurált egyéni végponti portokhoz.
 
     ![Forgalom továbbítása a Azure Load Balancerban][8]

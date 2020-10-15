@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b03e3857bc5b01c25112f2a0d60c6468ecd42a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888494"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093922"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
 
@@ -22,7 +22,7 @@ Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CL
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse az [Azure CLI-bővítményt](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) a Spring Cloud számára, a minimális verzió 0.2.0.
+* Telepítse az [Azure CLI-bővítményt](/cli/azure/install-azure-cli) a Spring Cloud számára, a minimális verzió 0.2.0.
 * Egy futó alkalmazást használó **Azure Spring Cloud** -példány, például a [Spring Cloud app](./spring-cloud-quickstart.md).
 
 > [!NOTE]
@@ -92,10 +92,4 @@ az spring-cloud app logs -h
 ## <a name="next-steps"></a>Következő lépések
 * [Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](./diagnostic-services.md)
-
- 
-
-
-
-
 

@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Recovery Services-tárolók áttekintése.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975151"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093667"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
@@ -18,7 +18,7 @@ Ez a cikk egy Recovery Services-tároló funkcióit ismerteti. A Recovery Servic
 
 - **A hibrid informatikai környezet központi monitorozása**: Recovery Services-tárolókkal nem csak az [Azure IaaS virtuális gépeket](backup-azure-manage-vms.md) , hanem a központi portálon található helyszíni [eszközöket](backup-azure-manage-windows-server.md#manage-backup-items) is figyelheti. [További információ](backup-azure-monitoring-built-in-monitor.md)
 
-- **Szerepköralapú Access Control (RBAC)**: a RBAC részletes hozzáférés-kezelési vezérlést biztosít az Azure-ban. Az [Azure számos beépített szerepkört kínál](../role-based-access-control/built-in-roles.md), és a Azure Backup három [beépített szerepkörrel rendelkezik a helyreállítási pontok kezeléséhez](backup-rbac-rs-vault.md). Recovery Services-tárolók kompatibilisek a RBAC-mel, amely korlátozza a biztonsági mentést, és visszaállítja a felhasználói szerepkörök meghatározott készletéhez való hozzáférést. [További információ](backup-rbac-rs-vault.md)
+- **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)**: az Azure RBAC részletes hozzáférés-vezérlési felügyeletet biztosít az Azure-ban. Az [Azure számos beépített szerepkört kínál](../role-based-access-control/built-in-roles.md), és a Azure Backup három [beépített szerepkörrel rendelkezik a helyreállítási pontok kezeléséhez](backup-rbac-rs-vault.md). Recovery Services-tárolók kompatibilisek az Azure RBAC, amely korlátozza a biztonsági mentést és a hozzáférés visszaállítását a meghatározott felhasználói szerepkörökhöz. [További információ](backup-rbac-rs-vault.md)
 
 - Helyreállítható **Törlés**: a helyreállítható törléssel még akkor is, ha rosszindulatú színész törli a biztonsági másolatokat (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig tart, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok megőrzésének további 14 napja nem jár semmilyen költséggel. [További információk](backup-azure-security-feature-cloud.md).
 

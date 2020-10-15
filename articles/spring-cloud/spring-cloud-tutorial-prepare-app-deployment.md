@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945447"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092800"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -23,7 +23,7 @@ Az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Steeltoe-alkalmaz
 Ez a cikk ismerteti azokat a függőségeket, konfigurációkat és kódokat, amelyek szükségesek a .NET Core Steeltoe alkalmazás Azure Spring Cloud-beli futtatásához. További információ az alkalmazások Azure Spring Cloud-beli üzembe helyezéséről: [az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md).
 
 >[!Note]
-> Az Azure Spring Cloud Steeltoe-támogatása jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ az előzetes verziók támogatásáról: [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)fájl.
+> Az Azure Spring Cloud Steeltoe-támogatása jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ az előzetes verziók támogatásáról: [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md)fájl.
 
 ##  <a name="supported-versions"></a>Támogatott verziók
 
@@ -99,7 +99,7 @@ Ez a cikk a szükséges függőségeket és azok hozzáadását ismerteti a POM-
 
 Csak a Spring/Java-alkalmazások futhatnak az Azure Spring Cloud-ban.
 
-Az Azure Spring Cloud a Java 8 és a Java 11 használatát is támogatja. Az üzemeltetési környezet tartalmazza az Azure-hoz készült Azul Zulu OpenJDK legújabb verzióját. További információ az Azure-hoz készült Azul Zulu OpenJDK: [a JDK telepítése](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Az Azure Spring Cloud a Java 8 és a Java 11 használatát is támogatja. Az üzemeltetési környezet tartalmazza az Azure-hoz készült Azul Zulu OpenJDK legújabb verzióját. További információ az Azure-hoz készült Azul Zulu OpenJDK: [a JDK telepítése](/azure/developer/java/fundamentals/java-jdk-install).
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>A Spring boot és a Spring Cloud verziói
 
@@ -305,13 +305,13 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
  Emellett engedélyeznie kell egy Azure Application Insights-példány működését az Azure Spring Cloud Service-példányával. Az Azure Spring Cloudtel való Application Insights használatáról az [elosztott nyomkövetés dokumentációjában](spring-cloud-tutorial-distributed-tracing.md)talál további információt.
 
 ## <a name="see-also"></a>Lásd még
-* [Alkalmazások naplófájljainak és metrikáinak elemzése](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
-* [A Config Server beállítása](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Elosztott nyomkövetés használata az Azure Spring Cloud használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Alkalmazások naplófájljainak és metrikáinak elemzése](./diagnostic-services.md)
+* [A Config Server beállítása](./spring-cloud-tutorial-config-server.md)
+* [Elosztott nyomkövetés használata az Azure Spring Cloud használatával](./spring-cloud-tutorial-distributed-tracing.md)
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

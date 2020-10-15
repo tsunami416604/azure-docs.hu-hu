@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430793"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092885"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Az Azure API Management fejlesztői portál testreszabása sablonok használatával
 
@@ -41,7 +41,7 @@ A sablonok szerkesztését a **fejlesztői portálon** végezheti el, miközben 
 
 A fejlesztői portál sablonjainak eléréséhez kattintson a bal oldali Testreszabás ikonra a Testreszabás menü megjelenítéséhez, majd kattintson a **sablonok**elemre.
 
-![Fejlesztői portál sablonjai][api-management-customize-menu]
+![Képernyőkép, amely kiemeli a Testreszabás ikont a testreszabási menü megjelenítéséhez.][api-management-customize-menu]
 
 A sablonok listája a fejlesztői portál különböző lapjaira kiterjedő sablonok különböző kategóriáit jeleníti meg. Az egyes sablonok eltérőek, de a szerkesztési lépések és a módosítások közzétételének lépései megegyeznek. Sablon szerkesztéséhez kattintson a sablon nevére.
 
@@ -145,7 +145,7 @@ A mentett sablonok egyenként vagy akár egyszerre is közzétehető. Egyéni sa
 
 Az **Igen** gombra kattintva erősítse meg, hogy a sablon élő legyen a fejlesztői portálon.
 
-![Közzététel megerősítése][api-management-publish-template-confirm]
+![Képernyőfelvétel: az Igen gombot választva a sablon élővé tétele.][api-management-publish-template-confirm]
 
 A jelenleg közzé nem tett sablonok összes verziójának közzétételéhez kattintson a **Közzététel** elemre a sablonok listájában. A nem közzétett sablonokat a sablon nevét követő csillag jelöli. Ebben a példában a **Terméklista** **és a** sablonfájlok közzététel alatt állnak.
 
@@ -160,11 +160,11 @@ Az újonnan közzétett sablonok azonnal érvénybe lépnek a fejlesztői portá
 ## <a name="to-revert-a-template-to-the-previous-version"></a>Sablon visszaállítása az előző verzióra
 Ha vissza szeretne állítani egy sablont az előző közzétett verzióra, kattintson a Recover (vissza) gombra a sablon szerkesztőjében.
 
-![Sablon visszaállítása][api-management-revert-template]
+![Képernyőfelvétel: a sablon visszavonásához használt ikon kiemelése.][api-management-revert-template]
 
 Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
-![Jóváhagyás][api-management-revert-template-confirm]
+![Képernyőfelvétel: az Igen gombra kattintva erősítse meg a módosításokat.][api-management-revert-template-confirm]
 
 A sablon korábban közzétett verziója a fejlesztői portálon érhető el, miután a visszavert művelet befejeződött.
 
@@ -185,7 +185,7 @@ Ha az összes sablont az alapértelmezett verzióra szeretné visszaállítani, 
 
 A visszaállított sablonokat ezután egyenként vagy egyszerre kell közzétenni a [sablon közzétételéhez](#to-publish-a-template)szükséges lépések követésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fejlesztői portál sablonjaival, karakterlánc-erőforrásaival, ikonjaival és oldal-vezérlőelemekkel kapcsolatos információkért lásd: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
 
 [modify-content-layout]: api-management-modify-content-layout.md

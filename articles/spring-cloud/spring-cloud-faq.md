@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945396"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094007"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -54,7 +54,7 @@ Melyiket érdemes használni, és mi a határértékek az egyes rétegeken belü
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hogyan adhatok visszajelzést és jelenthetem a jelentéssel kapcsolatos problémákat?
 
-Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létre egy [Azure-támogatási kérelmet](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Ha beküld egy szolgáltatási kérelmet, vagy visszajelzést szeretne küldeni, ugorjon az [Azure-visszajelzések](https://feedback.azure.com/forums/34192--general-feedback)lehetőségre.
+Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létre egy [Azure-támogatási kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md). Ha beküld egy szolgáltatási kérelmet, vagy visszajelzést szeretne küldeni, ugorjon az [Azure-visszajelzések](https://feedback.azure.com/forums/34192--general-feedback)lehetőségre.
 
 ## <a name="development"></a>Fejlesztés
 
@@ -70,9 +70,9 @@ Az Azure Spring Cloud támogatja a Java 8 és a 11 platformot. Lásd: [Java-futt
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Hol tekinthetem meg a Spring Cloud Application-naplókat és-metrikákat?
 
-A metrikák kereséséhez az alkalmazás áttekintése lapon és a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) lapon.
+A metrikák kereséséhez az alkalmazás áttekintése lapon és a [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) lapon.
 
-Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérőszámok exportálását az Azure Storage, a EventHub és a [log Analyticsba](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). A Log Analytics *AppPlatformLogsforSpring*a táblázat neve. Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a [diagnosztikai szolgáltatásokat](diagnostic-services.md)ismertető témakört.
+Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérőszámok exportálását az Azure Storage, a EventHub és a [log Analyticsba](../azure-monitor/platform/data-platform-logs.md#log-queries). A Log Analytics *AppPlatformLogsforSpring*a táblázat neve. Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a [diagnosztikai szolgáltatásokat](diagnostic-services.md)ismertető témakört.
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Támogatja az Azure Spring Cloud az elosztott nyomkövetést?
 
@@ -106,7 +106,7 @@ A Spring Cloud diagnosztikai beállításait az Azure CLI használatával törö
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>A Java Runtime mely verzióit támogatja az Azure Spring Cloud?
 
-Az Azure Spring Cloud a legújabb buildekkel támogatja a Java LTS-verziókat, amely jelenleg június 2020, a Java 8 build 252 és a Java 11 Build 7 támogatott. Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Az Azure Spring Cloud a legújabb buildekkel támogatja a Java LTS-verziókat, amely jelenleg június 2020, a Java 8 build 252 és a Java 11 Build 7 támogatott. Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Kik építették ezeket a Java-futtatókörnyezeteket?
 
@@ -118,14 +118,14 @@ Az LTS és az MTS JDK-kiadásai negyedéves biztonsági frissítéseket, hibajav
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Mennyi ideig lesz támogatott a Java 8 és a Java 11 LTS verzió?
 
-Lásd: [a Java hosszú távú támogatása az Azure-ban és a Azure stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Lásd: [a Java hosszú távú támogatása az Azure-ban és a Azure stack](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * A Java 8 LTS 2030. decembertől lesz támogatott.
 * A Java 11 LTS 2027 szeptemberéig lesz támogatott.
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Hogyan tölthetők le támogatott Java-futtatókörnyezet a helyi fejlesztéshez?
 
-Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](/azure/developer/java/fundamentals/java-jdk-install).
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Mi a régebbi Java-futtatókörnyezetek kivonási szabályzata?
 
@@ -136,7 +136,7 @@ A nyilvános hirdetményt 12 hónappal a régi futtatókörnyezet-verzió kivon�
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Hogyan Kérhetek támogatást a Java futtatókörnyezeti szinten felmerülő problémákhoz?
 
-A támogatási jegyet Azure-támogatással is megnyithatja.  Lásd: [Azure-támogatási kérelem létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+A támogatási jegyet Azure-támogatással is megnyithatja.  Lásd: [Azure-támogatási kérelem létrehozása](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>Mi az az operációs rendszer az alkalmazások futtatásához?
 
@@ -206,6 +206,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

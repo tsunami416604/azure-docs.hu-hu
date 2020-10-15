@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851222"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092783"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Csoportok létrehozása és használata fejlesztői fiókok kezeléséhez az Azure API Managementben
 
@@ -66,10 +66,10 @@ Most, hogy létrejött a csoport, hozzá lehet rendelni a termékekhez és a fej
 3. Kattintson a **hozzáférés-vezérlés**gombra.
 4. Kattintson a **+ Csoport hozzáadása**elemre.
 
-    ![Csoport hozzárendelése termékhez](./media/api-management-howto-create-groups/groups002.png)
+    ![Képernyőfelvétel: a csoport hozzáadása gomb kiemelése.](./media/api-management-howto-create-groups/groups002.png)
 5. Válassza ki a hozzáadni kívánt csoportot.
 
-    ![Csoport hozzárendelése termékhez](./media/api-management-howto-create-groups/groups003.png)
+    ![A kiválasztott csoportot megjelenítő képernyőkép, amely kiemeli a kiválasztás gombot.](./media/api-management-howto-create-groups/groups003.png)
 
     Ha el szeretne távolítani egy csoportot a termékből, kattintson a **Törlés**gombra.
 
@@ -90,7 +90,7 @@ Ez a szakasz bemutatja, hogyan lehet csoportokat társítani a tagokkal.
     ![Tag felvétele](./media/api-management-howto-create-groups/groups005.png)
 3. Kattintson a **+ Hozzáadás** gombra, és válasszon ki egy tagot.
 
-    ![Tag felvétele](./media/api-management-howto-create-groups/groups006.png)
+    ![Képernyőfelvétel: a Hozzáadás gomb, a kiválasztott felhasználó és a kiválasztás gomb.](./media/api-management-howto-create-groups/groups006.png)
 4. Kattintson a **kiválasztás**gombra.
 
 Miután hozzáadta a társítást a fejlesztőhöz és a csoporthoz, a **felhasználók** lapon tekintheti meg.

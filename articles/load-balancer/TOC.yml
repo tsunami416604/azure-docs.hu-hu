@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: Több előtérrendszer
       href: load-balancer-multivip-overview.md
-    - name: Kimenő kapcsolatok
+    - name: Kimenő proxy
       href: load-balancer-outbound-connections.md
     - name: A TCP alaphelyzetbe állítása és a TCP üresjárati időtúllépése
+    - name: Kimenő szabályok
+      href: outbound-rules.md
+    - name: A TCP visszaállítása üresjárati időtúllépés esetén
       href: load-balancer-tcp-reset.md
     - name: A Standard Load Balancer és a rendelkezésre állási zónák
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +82,7 @@
       href: backend-pool-management.md
     - name: A Standard Load Balancer és a Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: Útmutató
+- name: Használati útmutató
   items:
     - name: Portálbeállítások
       href: manage.md

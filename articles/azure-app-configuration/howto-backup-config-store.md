@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207137"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074855"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Alkalmazás-konfigurációs tárolók automatikus biztonsági mentése
 
@@ -124,7 +124,7 @@ Ebben a cikkben olyan C#-függvényeket fog dolgozni, amelyek a következő tula
 - Azure Functions futtatókörnyezet 3. x verziója
 - Az időzítő által aktivált függvény 10 percenként
 
-Annak érdekében, hogy megkönnyítse az adatai biztonsági mentését, [teszteltük és közzétettünk egy olyan függvényt](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) , amelyet a kód módosítása nélkül használhat. Töltse le a Project-fájlokat, és [tegye közzé őket a Visual studióból a saját Azure Function-alkalmazásban](/azure/azure-functions/functions-develop-vs#publish-to-azure).
+Annak érdekében, hogy megkönnyítse az adatai biztonsági mentését, [teszteltük és közzétettünk egy olyan függvényt](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) , amelyet a kód módosítása nélkül használhat. Töltse le a Project-fájlokat, és [tegye közzé őket a Visual studióból a saját Azure Function-alkalmazásban](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 > [!IMPORTANT]
 > A letöltött kódban ne módosítsa a környezeti változókat. A szükséges Alkalmazásbeállítások a következő szakaszban hozhatók létre.
@@ -133,13 +133,13 @@ Annak érdekében, hogy megkönnyítse az adatai biztonsági mentését, [teszte
 ### <a name="build-your-own-function"></a>Saját függvény létrehozása
 
 Ha a korábban megadott mintakód nem felel meg a követelményeknek, saját függvényt is létrehozhat. A biztonsági mentés befejezéséhez a függvénynek képesnek kell lennie a következő feladatok végrehajtására:
-- Rendszeresen olvassa el a várólista tartalmát, és ellenőrizze, hogy tartalmaz-e értesítéseket a Event Gridról. A megvalósítás részleteiért tekintse meg a [Storage ÜZENETSOR SDK](/azure/storage/queues/storage-quickstart-queues-dotnet) -t.
-- Ha a várólista [Event Grid származó esemény-értesítéseket](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)tartalmaz, bontsa `<key, label>` ki az esemény üzeneteiből származó összes egyedi információt. A kulcs és a címke kombinációja az elsődleges tároló kulcs-érték változásainak egyedi azonosítója.
+- Rendszeresen olvassa el a várólista tartalmát, és ellenőrizze, hogy tartalmaz-e értesítéseket a Event Gridról. A megvalósítás részleteiért tekintse meg a [Storage ÜZENETSOR SDK](../storage/queues/storage-quickstart-queues-dotnet.md) -t.
+- Ha a várólista [Event Grid származó esemény-értesítéseket](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)tartalmaz, bontsa `<key, label>` ki az esemény üzeneteiből származó összes egyedi információt. A kulcs és a címke kombinációja az elsődleges tároló kulcs-érték változásainak egyedi azonosítója.
 - Az elsődleges tároló összes beállításának olvasása. Csak azokat a beállításokat frissítse a másodlagos tárolóban, amelyek megfelelő eseménnyel rendelkeznek a várólistában. Törölje az összes olyan beállítást a másodlagos tárolóból, amely szerepel a várólistában, de az elsődleges tárolóban nem. Az [app CONFIGURATION SDK](https://github.com/Azure/AppConfiguration#sdks) használatával programozott módon érheti el a konfigurációs tárolókat.
 - Üzenetek törlése a sorból, ha a feldolgozás során nem történt kivétel.
 - A hibakezelés megvalósítása igény szerint. Tekintse át az előző kódrészletet, hogy lásson néhány olyan gyakori kivételt, amelyet érdemes lehet kezelni.
 
-A függvények létrehozásáról további információt a következő témakörben talál: a [függvény létrehozása az Azure-ban, amely időzítővel aktiválódik](/azure/azure-functions/functions-create-scheduled-function) , és [Azure functions a Visual Studióval](/azure/azure-functions/functions-develop-vs).
+A függvények létrehozásáról további információt a következő témakörben talál: a [függvény létrehozása az Azure-ban, amely időzítővel aktiválódik](../azure-functions/functions-create-scheduled-function.md) , és [Azure functions a Visual Studióval](../azure-functions/functions-develop-vs.md).
 
 
 > [!IMPORTANT]
@@ -167,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>Hozzáférés biztosítása a Function alkalmazás felügyelt identitásához
 
-A következő parancs vagy a [Azure Portal](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) használatával adja hozzá a rendszerhez rendelt felügyelt identitást a Function alkalmazáshoz.
+A következő parancs vagy a [Azure Portal](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) használatával adja hozzá a rendszerhez rendelt felügyelt identitást a Function alkalmazáshoz.
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> A szükséges erőforrás-létrehozási és-szerepkör-kezelés végrehajtásához a fióknak `Owner` a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléshez, Ismerje meg, [hogyan adhat hozzá vagy távolíthat el Azure-beli szerepkör-hozzárendeléseket az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal).
+> A szükséges erőforrás-létrehozási és-szerepkör-kezelés végrehajtásához a fióknak `Owner` a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléshez, Ismerje meg, [hogyan adhat hozzá vagy távolíthat el Azure-beli szerepkör-hozzárendeléseket az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
-Az alábbi parancsokkal vagy a [Azure Portal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) használatával biztosíthatja, hogy a Function app felügyelt identitása hozzáférjen az alkalmazás konfigurációs tárolói számára. A következő szerepkörök használata:
+Az alábbi parancsokkal vagy a [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) használatával biztosíthatja, hogy a Function app felügyelt identitása hozzáférjen az alkalmazás konfigurációs tárolói számára. A következő szerepkörök használata:
 - Rendelje hozzá a `App Configuration Data Reader` szerepkört az elsődleges alkalmazás konfigurációs tárolójához.
 - Rendelje hozzá a `App Configuration Data Owner` szerepkört a másodlagos alkalmazás konfigurációs tárolójához.
 
@@ -196,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-A következő parancs vagy a [Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) használatával biztosíthatja a Function app-hozzáférésének felügyelt identitását a várólistához. Rendelje hozzá a `Storage Queue Data Contributor` szerepkört a várólistában.
+A következő parancs vagy a [Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) használatával biztosíthatja a Function app-hozzáférésének felügyelt identitását a várólistához. Rendelje hozzá a `Storage Queue Data Contributor` szerepkört a várólistában.
 
 ```azurecli-interactive
 az role assignment create \
@@ -216,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 Kiváltotta az eseményt. Néhány pillanat múlva a Event Grid elküldi az eseményről szóló értesítést a várólistára. *A függvény következő ütemezett futtatása után*tekintse meg a másodlagos tároló konfigurációs beállításait, és ellenőrizze, hogy tartalmazza-e az elsődleges tároló frissített kulcs-értékét.
 
 > [!NOTE]
-> A [függvényt](/azure/azure-functions/functions-manually-run-non-http) a tesztelés és a hibaelhárítás során manuálisan is aktiválhatja anélkül, hogy az ütemezett időzítő-triggerre kellene várnia.
+> A [függvényt](../azure-functions/functions-manually-run-non-http.md) a tesztelés és a hibaelhárítás során manuálisan is aktiválhatja anélkül, hogy az ütemezett időzítő-triggerre kellene várnia.
 
 Miután ellenőrizte, hogy a biztonsági mentési függvény sikeresen lefutott, láthatja, hogy a kulcs már szerepel a másodlagos tárolóban.
 
@@ -243,9 +243,9 @@ Ha nem látja az új beállítást a másodlagos tárolóban:
 
 - Győződjön meg arról, hogy a biztonsági mentési függvény aktiválva lett, *miután* létrehozta a beállítást az elsődleges tárolóban.
 - Lehetséges, hogy Event Grid nem tudta időben elküldeni az esemény-értesítést a várólistára. Ellenőrizze, hogy az üzenetsor továbbra is tartalmazza-e az eseményről szóló értesítést az elsődleges tárolóból. Ha igen, aktiválja újra a biztonsági mentési függvényt.
-- Az esetleges hibákkal és figyelmeztetésekkel kapcsolatban keresse meg [Azure functions naplókat](/azure/azure-functions/functions-create-scheduled-function#test-the-function) .
-- A [Azure Portal](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) használatával győződjön meg arról, hogy az Azure Function alkalmazás helyes értékeket tartalmaz a Azure functions által beolvasni próbált Alkalmazásbeállítások számára.
-- Az [Azure Application Insights](/azure/azure-functions/functions-monitoring?tabs=cmd)használatával beállíthatja a Azure functions figyelését és riasztását is. 
+- Az esetleges hibákkal és figyelmeztetésekkel kapcsolatban keresse meg [Azure functions naplókat](../azure-functions/functions-create-scheduled-function.md#test-the-function) .
+- A [Azure Portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) használatával győződjön meg arról, hogy az Azure Function alkalmazás helyes értékeket tartalmaz a Azure functions által beolvasni próbált Alkalmazásbeállítások számára.
+- Az [Azure Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd)használatával beállíthatja a Azure functions figyelését és riasztását is. 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

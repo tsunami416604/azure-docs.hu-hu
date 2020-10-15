@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563896"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093089"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -34,7 +34,7 @@ Az eszközök Azure AD-be való integrálásának több módja is van:
 
 * [Hibrid Azure ad-csatlakozás létrehozása](concept-azure-ad-join-hybrid.md) a helyszíni Active Directory és az Azure ad-ban található eszközök között. 
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 Mielőtt elkezdené, győződjön meg róla, hogy már ismeri az [Eszközállapot-kezelés áttekintését](overview.md).
 
@@ -62,7 +62,7 @@ A környezetében érdemes figyelembe vennie a szervezeti igényeket is.
 
 ### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és hogy a projektben szereplő, az érintett felek szerepkörei jól megértettek. 
+A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és hogy a projektben szereplő, az érintett felek szerepkörei jól megértettek. 
 
 Ehhez a csomaghoz adja hozzá a következő érintett feleket a listához:
 

@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 930dae7ae163a04fb8b5fc5ae44b9170a7e3c6ce
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893135"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074413"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -206,7 +206,7 @@ Ha egy Azure-beli kubernetes-fürt (ak vagy nem) gyakran vertikális fel-vagy le
 Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
 ```
 
-Ezek a szabályozási hibák részletes leírása [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling) és [itt](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshooting-throttling-errors) található.
+Ezek a szabályozási hibák részletes leírása [itt](../azure-resource-manager/management/request-limits-and-throttling.md) és [itt](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md) található.
 
 Az AK mérnöki csapatának átirányításával gondoskodhat arról, hogy legalább 1,18. x verziót futtasson, amely számos fejlesztést tartalmaz. További részleteket [itt](https://github.com/Azure/AKS/issues/1413) és [itt](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)találhat.
 
@@ -230,14 +230,14 @@ Ezek a szabályozási hibák az előfizetés szintjén mérhetők, de a követke
 
 A Kubernetes 1,10-es verziójában a MountVolume. WaitForAttach egy Azure-lemez újracsatlakoztatásával meghiúsulhat.
 
-Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Példa:
+Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Például:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Példa:
+A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Például:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -284,7 +284,7 @@ spec:
   >[!NOTE]
   > Mivel a GID és az UID alapértelmezés szerint root-ként vagy 0-ként van csatlakoztatva. Ha a GID vagy az UID nem legfelső szintűként van beállítva, például 1000, a Kubernetes az `chown` adott lemezen lévő összes könyvtárat és fájlt módosítani fogja. Ez a művelet időt vehet igénybe, és nagyon lassú lehet a lemez csatlakoztatása.
 
-* `chown`A initContainers használata a GID és az UID beállításához. Példa:
+* `chown`A initContainers használata a GID és az UID beállításához. Például:
 
 ```yaml
 initContainers:
@@ -443,13 +443,13 @@ Ha a Storage-fiók kulcsa módosult, Azure Files csatlakoztatási hibák merülh
 
 A mezőt manuálisan is frissítheti `azurestorageaccountkey` egy Azure-fájl titkos kódjában, a Base64-kódolású Storage-fiók kulcsa alapján.
 
-A Storage-fiók kulcsának Base64-ben történő kódolásához használhatja a következőt: `base64` . Példa:
+A Storage-fiók kulcsának Base64-ben történő kódolásához használhatja a következőt: `base64` . Például:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Az Azure-beli titkos fájl frissítéséhez használja a következőt: `kubectl edit secret` . Példa:
+Az Azure-beli titkos fájl frissítéséhez használja a következőt: `kubectl edit secret` . Például:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

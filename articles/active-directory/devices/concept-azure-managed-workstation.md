@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601384"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093310"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
@@ -64,7 +64,7 @@ A biztonságos munkaállomás használatakor minden felhasználó és operátor 
 * Nagyon érzékeny munkaállomás, például gyors fizetési terminál
 * Kereskedelmi titkokat kezelő munkaállomás
 
-A kockázat csökkentése érdekében emelt szintű biztonsági ellenőrzéseket kell megvalósítani a fiókokat használó, Kiemelt munkaállomások számára. További információ: [Azure Active Directory funkció üzembe helyezési útmutatója](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 ütemterv](https://aka.ms/o365secroadmap), valamint a [privilegizált hozzáférési ütemterv biztonságossá tétele](https://aka.ms/sparoadmap)).
+A kockázat csökkentése érdekében emelt szintű biztonsági ellenőrzéseket kell megvalósítani a fiókokat használó, Kiemelt munkaállomások számára. További információ: [Azure Active Directory funkció üzembe helyezési útmutatója](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 ütemterv](/microsoft-365/security/office-365-security/security-roadmap), valamint a [privilegizált hozzáférési ütemterv biztonságossá tétele](/windows-server/identity/securing-privileged-access/securing-privileged-access)).
 
 ## <a name="why-use-dedicated-workstations"></a>Miért érdemes dedikált munkaállomásokat használni?
 
