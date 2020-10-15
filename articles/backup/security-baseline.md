@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334837"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093361"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -486,7 +486,7 @@ A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-ke
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
-- [Azure Backup helyreállítási pontok kezelése Role-Based Access Control használatával](./backup-rbac-rs-vault.md)
+- [Az Azure szerepköralapú hozzáférés-vezérlés használata Azure Backup helyreállítási pontok kezeléséhez](./backup-rbac-rs-vault.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 

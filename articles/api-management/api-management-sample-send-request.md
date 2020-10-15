@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210345"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093276"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Külső szolgáltatások használata az Azure API Management szolgáltatásból
 Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos munkát végezhetnek, tisztán a bejövő kérelem, a kimenő válasz és az alapszintű konfigurációs információk alapján. A külső szolgáltatásokkal való interakcióhoz azonban API Management házirendek számos lehetőséget nyitnak meg.
@@ -178,7 +178,7 @@ Az irányítópult-erőforrás létrehozásának első lépése egy új művelet
 ### <a name="making-the-requests"></a>A kérések elkészítése
 A művelet létrehozása után beállíthat egy házirendet kifejezetten ehhez a művelethez. 
 
-![Irányítópult-művelet](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Képernyőfelvétel a szabályzat hatókörét megjelenítő képernyőről.](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 Az első lépés a lekérdezési paraméterek kibontása a bejövő kérelemből, hogy továbbítsa azokat a háttérbe. Ebben a példában az irányítópult egy adott időtartamon alapuló információkat jelenít meg, ezért a `fromDate` és `toDate` paraméterrel rendelkezik. A `set-variable` szabályzat segítségével kibonthatja az adatokat a kérelem URL-címéből.
 
@@ -286,5 +286,5 @@ A teljes szabályzat a következőképpen néz ki:
 
 A helyőrző művelet konfigurációjában beállíthatja, hogy az irányítópult-erőforrás legalább egy órán át legyen gyorsítótárazva. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management szolgáltatás rugalmas szabályzatokat biztosít, amelyek szelektíven alkalmazhatók a HTTP-forgalomra, és lehetővé teszik a háttér-szolgáltatások összeállítását. Az API-átjárót a riasztási funkciókkal, az ellenőrzéssel, az érvényesítési lehetőségekkel vagy az új összetett erőforrások több háttér-szolgáltatáson alapuló létrehozásával szeretné növelni, a `send-request` és a kapcsolódó szabályzatok pedig megnyitják a lehetőségeket.
