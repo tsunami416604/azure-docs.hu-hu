@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564083"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075331"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -68,7 +68,7 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
 4. Adjon nevet az alkalmazásnak.
 5. Az alkalmazás típusa mezőben válassza a **natív**lehetőséget.
 6. Adjon meg egy helyőrző URL-címet `http://resources` , például az **átirányítási URI**esetében, mivel ez egy kötelező mező, de az értéket nem használja később. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Létrehozás** gombra.
 
 ### <a name="add-an-application"></a>Alkalmazás hozzáadása
 
@@ -235,7 +235,7 @@ Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási 
 
 -   [Azure API Management-fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Az API Management biztonsági mentésének és helyreállításának automatizálása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: konfiguráció](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
+-   [Azure API Management: konfiguráció](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
      biztonsági mentése és visszaállítása _A Stuart által részletezett megközelítés nem felel meg a hivatalos útmutatásnak, de érdekes._
 
 [backup an api management service]: #step1
