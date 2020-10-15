@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f5a10eb2ebc3b3a7c527dd718e37faf03c927bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442352"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076096"
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 használata az átjáró és a háttér közötti engedélyezéshez
 
 Ez a cikk egy Azure API Management-szabályzatot mutat be, amely bemutatja, hogyan használható a OAuth2 az átjáró és a háttér közötti hitelesítéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek. 
 
-A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
+A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-reference.md).
 
 A következő parancsfájl a {{Property}} alkalmazásban megjelenő tulajdonságokat használja. További információ a tulajdonságokról és azok használatáról API Management házirendekben: [ebben a](../api-management-howto-properties.md) témakörben.
  
@@ -34,10 +34,9 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get OAuth2 access token from AAD and forward it to the backend.policy.xml)]
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
-
++ [Házirend-minták](../policy-reference.md)
