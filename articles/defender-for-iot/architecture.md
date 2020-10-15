@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: ea62592ed155215b14666d0d56e09dbb1a83ed6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093463"
+ms.locfileid: "92096317"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
@@ -29,12 +29,19 @@ Ez a cikk a Defender IoT-megoldás működési rendszerarchitektúráját ismert
 A IoT Defender az Azure-felhőhöz és a helyszíni összetevőkhöz egyaránt csatlakozik. A megoldás nagy és földrajzilag elosztott környezetekben, több távoli hellyel való méretezhetőségre lett tervezve. Ez a megoldás lehetővé teszi a többrétegű elosztott architektúra használatát ország, régió, üzleti egység vagy zóna szerint. 
 
 A IoT készült Azure Defender a következő összetevőket tartalmazza: 
-- Azure Defender IoT-érzékelőkhöz
-- Felügyeleti konzolok:
-    - Érzékelő konzol
-    - Helyszíni felügyeleti konzol
-    - Azure Portal
-- Beágyazott biztonsági ügynök (biztonsági modul és IoT SDK)
+
+**Felhőben csatlakoztatott üzemelő példányok**
+
+- Azure Defender IoT-érzékelő virtuális géphez vagy készülékhez
+- Azure Portal a felhőalapú felügyelethez és az Azure Sentinel-integrációhoz
+- Helyszíni felügyeleti konzol helyi felügyelethez
+- Beágyazott biztonsági ügynök (nem kötelező)
+
+**Air-gapped (offline) üzemelő példányok**
+
+- Azure Defender IoT-érzékelő virtuális géphez vagy készülékhez
+- Helyszíni felügyeleti konzol a helyi hely kezeléséhez
+
 
 ![Defender a IoT architektúrához](./media/architecture/defender-iot-security-architecture.png)
 
@@ -110,7 +117,7 @@ Az elemzési folyamat használatával a Defender for IoT az összes adatfolyamot
 
 A IoT ajánlásai és értesítései (analitikai folyamat kimenete) az egyes ügyfelek Log Analytics munkaterületére íródnak. A munkaterületen található nyers események, valamint a riasztások és javaslatok segítségével a gyanús tevékenységek pontos részleteivel részletesen elmerülhetnek a felderítéssel kapcsolatos vizsgálatok és lekérdezések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan hozhatja ki a Defender IoT-megoldás alapszintű architektúráját és munkafolyamatát. Ha többet szeretne megtudni az előfeltételekről, az első lépésekről és a biztonsági megoldás engedélyezéséről IoT Hubban, tekintse meg a következő cikkeket:
 

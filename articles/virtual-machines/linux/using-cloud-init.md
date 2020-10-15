@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978628"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096657"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
@@ -97,10 +97,10 @@ Ezek a SLES-lemezképek a Cloud-init használatával lettek kiépítve, a Gen2 l
 ### <a name="debian"></a>Debian
 | Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| Debian (Gen1) |Debian – 10 | 10 – cloudinit |Cloud-init – előzetes verzió| Igen (csak előzetes verzió) | Nem, előzetes verzióban. |
-| Debian (Gen2) |Debian – 10 | 10 – cloudinit – Gen2 |Cloud-init – előzetes verzió| Igen (csak előzetes verzió) | Nem, előzetes verzióban. |
-
-
+| Debian (Gen1) |Debian – 10 | 10 – cloudinit |Cloud-init – előzetes verzió| Igen (Megjegyzés: ez egy előnézeti kép, **és nem használható többé, ezért ez** a 2021. január 1-től lesz eltávolítva) | Nem, előzetes verzióban. |
+| Debian (Gen2) |Debian – 10 | 10 – cloudinit – Gen2 |Cloud-init – előzetes verzió| Igen (Megjegyzés: ez egy előnézeti kép, **és nem használható többé, ezért ez** a 2021. január 1-től lesz eltávolítva) | Nem, előzetes verzióban. |
+| Debian (Gen1) |Debian – 10 | 10 – cloudinit |10:0.20201013.422| igen | igen – a csomag verziójának támogatása: `20.2-2~deb10u1` |
+| Debian (Gen2) |Debian – 10 | 10 – cloudinit – Gen2 |0.20201013.422| igen | igen – a csomag verziójának támogatása: `20.2-2~deb10u1` |
 
 
 Jelenleg Azure Stack támogatni fogja a Cloud-init-kompatibilis lemezképek kiépítési folyamatát.
@@ -162,7 +162,7 @@ A virtuális gép üzembe helyezése után a Cloud-init a `--custom-data` virtu�
 
 A Cloud-init naplózással kapcsolatos további részletekért tekintse meg a [Cloud-init dokumentációját](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Cloud-init hibáinak elhárítása](cloud-init-troubleshooting.md).
 

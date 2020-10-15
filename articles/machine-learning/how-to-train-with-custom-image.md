@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537616"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095942"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Modell betanítása egyéni Docker-rendszerkép használatával
 
@@ -29,7 +29,7 @@ Míg Azure Machine Learning biztosít egy alapértelmezett Docker-alapképet, a 
 Futtassa ezt a kódot ezen környezetek bármelyikén:
 * Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
     * Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
-    * A Azure Machine Learning [példák tárházában](https://github.com/Azure/azureml-examples)keressen egy befejezett jegyzetfüzetet a következő könyvtárra való navigálással: **útmutató – használat – azureml > ml-keretrendszerek > fastai >** 
+    * A Azure Machine Learning [példák tárházában](https://github.com/Azure/azureml-examples)keressen egy befejezett jegyzetfüzetet a következő könyvtárra való navigálással: **jegyzetfüzetek > fastai > Train-pets-resnet34. ipynb** 
 
 * Saját Jupyter Notebook-kiszolgáló
     * Hozzon létre egy [munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
@@ -157,7 +157,7 @@ run.wait_for_completion(show_output=True)
 > [!WARNING]
 > Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja a [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)használatával férhet hozzá az adataihoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy modellt egy egyéni Docker-rendszerkép használatával tanított ki. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 * A [futtatási metrikák nyomon követése](how-to-track-experiments.md) a betanítás során
 * [Modell üzembe helyezése](how-to-deploy-custom-docker-image.md) egyéni Docker-rendszerkép használatával.

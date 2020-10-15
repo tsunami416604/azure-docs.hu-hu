@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 440d8af17bccaf8d3fcb92f65e5d91ed969aec31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971321"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097286"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: térbeli horgonyok megosztása a munkamenetek és az eszközök között
 
@@ -86,7 +86,7 @@ Válassza az **OK** lehetőséget.
 
 Nyissa meg a Visual Studio Code-ot, majd nyissa meg a projektet a *Sharing\SharingServiceSample* mappában. 
 
-A megosztási szolgáltatás Visual Studio code-on keresztüli üzembe helyezéséhez kövesse az <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">ASP.net Core alkalmazás közzététele az Azure-ban Visual Studio Code</a>-ban című témakör utasításait. Kezdje a "Megnyitás a Visual Studio Code-ban" című szakaszban. Ne hozzon létre egy másik ASP.NET-projektet az előző lépésben leírtak szerint, mert már van egy üzembe helyezett és közzétett projekt: SharingServiceSample.
+A megosztási szolgáltatás Visual Studio code-on keresztüli üzembe helyezéséhez kövesse az <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">ASP.net Core alkalmazás közzététele az Azure-ban Visual Studio Code</a>-ban című témakör utasításait. Kezdje a "Megnyitás a Visual Studio Code-ban" című szakaszban. Ne hozzon létre egy másik ASP.NET-projektet az előző lépésben leírtak szerint, mert már van egy üzembe helyezett és közzétett projekt: SharingServiceSample.
 
 ---
 
@@ -96,7 +96,7 @@ A megosztási szolgáltatás Visual Studio code-on keresztüli üzembe helyezés
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy ASP.NET Core webalkalmazást az Azure-ban, és egy Unity-alkalmazást konfigurált és telepített. A térbeli horgonyok az alkalmazással lettek létrehozva, és a ASP.NET Core webalkalmazás használatával megosztva más eszközökkel.
 
@@ -104,4 +104,3 @@ Javíthatja ASP.NET Core webalkalmazását úgy, hogy az Azure Cosmos DB haszná
 
 > [!div class="nextstepaction"]
 > [A Azure Cosmos DB használata a horgonyok tárolásához](./tutorial-use-cosmos-db-to-store-anchors.md)
-

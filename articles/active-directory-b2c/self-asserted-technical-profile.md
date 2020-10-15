@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203452"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096215"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -202,11 +202,13 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 | Setting. showSignupLink <sup>2</sup>| Nem | Megjeleníti a regisztrációs gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
 | Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
 | Setting. enableRememberMe <sup>2</sup>| Nem| Megjeleníti a [bejelentkezett marad](custom-policy-keep-me-signed-in.md) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
+| Setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nem| Javítja a felhasználói élményt, ha megvárja, amíg a felhasználó leállítja a beírást, majd érvényesíti az értéket. Az alapértelmezett érték 2000 ezredmásodperc. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 Megjegyzések:
 1. Elérhető a Content definition [DataUri](contentdefinitions.md#datauri) típusa `unifiedssp` vagy `unifiedssd` .
 1. Elérhető a Content definition [DataUri](contentdefinitions.md#datauri) típusa `unifiedssp` vagy `unifiedssd` . Az [oldal elrendezésének](page-layout.md) 1.1.0-es vagy újabb verziója.
+1. A 1.2.0 és újabb [verziókhoz](page-layout.md) érhető el.
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 

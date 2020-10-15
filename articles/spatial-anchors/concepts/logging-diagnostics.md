@@ -9,12 +9,12 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da941aa8b616fffeb2e283480c2a1e2f9cf7a093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45d345e8d8dbe45ecb4873904f31141111827647
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003116"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097354"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Naplózás és diagnosztika az Azure térbeli Horgonyokban
 
@@ -43,9 +43,9 @@ A felhasználó számára két visszahívási számot kell megkeresni. Az alább
 
 Ezek az események visszahívása a naplók és hibák feldolgozására szolgál a munkamenetből:
 
-- [Naplózási szint](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): a futtatókörnyezetből fogadott események részletességi szintjét adja meg.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): szabványos hibakeresési naplózási eseményeket biztosít.
-- [Hiba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): olyan naplózási eseményeket biztosít, amelyekben a futtatókörnyezet hibát jelez.
+- [Naplózási szint](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): a futtatókörnyezetből fogadott események részletességi szintjét adja meg.
+- [OnLogDebug](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): szabványos hibakeresési naplózási eseményeket biztosít.
+- [Hiba](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): olyan naplózási eseményeket biztosít, amelyekben a futtatókörnyezet hibát jelez.
 
 ## <a name="diagnostics-logging"></a>Diagnosztika naplózása
 

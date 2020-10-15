@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 134c9996690d629ad8acb348d1928904741b6b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df9dbdf61dbc7d83f1cf74871ddc864488ed9d47
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654469"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097218"
 ---
 Ha Univerzális Windows-platform (UWP) fejlesztéshez szeretne létrehozni Visual Studio-projektet, be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, be kell állítania a hangrögzítést, és telepítenie kell a Speech SDK-t.
 
@@ -59,7 +59,7 @@ Ezután hozza létre a projektet:
 
 1. A **cél verziója** (az első legördülő lista) mezőben válasszon egy azonos vagy annál újabb értéket a **minimális verziónál**.
 
-1. Kattintson az **OK** gombra. A rendszer visszaadja a Visual Studio IDE-nek, és a **megoldáskezelő** ablaktáblán létrehozott és látható új projekttel rendelkezik.
+1. Válassza az **OK** lehetőséget. A rendszer visszaadja a Visual Studio IDE-nek, és a **megoldáskezelő** ablaktáblán létrehozott és látható új projekttel rendelkezik.
 
    ![HelloWorld projekt – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 

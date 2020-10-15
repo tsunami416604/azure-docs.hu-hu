@@ -3,18 +3,20 @@ title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873914"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097388"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
-Az Azure Policy segít a szervezeti szabványok betartatásában és a megfelelőségi követelmények nagy léptékű kiértékelésében. A megfelelőségi irányítópulton egy összesített nézetet biztosít a környezet általános állapotának kiértékeléséhez, amely lehetővé teszi az erőforrás-alapú, a házirendek részletességét. Emellett a meglévő erőforrások tömeges szervizelésével és az új erőforrások automatikus szervizelésével is lehetővé teszi az erőforrások megfelelőségét.
+Az Azure Policy segít a szervezeti szabványok betartatásában és a megfelelőségi követelmények nagy léptékű kiértékelésében. A megfelelőségi irányítópulton egy összesített nézetet biztosít a környezet általános állapotának kiértékeléséhez, amely lehetővé teszi, hogy lebontsa az erőforrás-alapú, a házirendek részletességét. Emellett a meglévő erőforrások tömeges szervizelésével és az új erőforrások automatikus szervizelésével is lehetővé teszi az erőforrások megfelelőségét.
 
 A Azure Policy gyakori használati esetei közé tartozik az erőforrás-konzisztencia megvalósítása, a szabályozások megfelelősége, a biztonság, a költséghatékonyság és a felügyelet. Ezeknek a gyakori használati eseteknek a szabályzat-definíciói már elérhetők az Azure-környezetben olyan beépített modulként, amely segítséget nyújt az első lépésekhez.
+
+Minden Azure Policy adatok és objektumok inaktív állapotban vannak titkosítva. További információ: Azure-beli [adattitkosítás](../../security/fundamentals/encryption-atrest.md).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -172,7 +174,7 @@ A hozzárendelések portálon keresztüli beállításával kapcsolatos további
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 

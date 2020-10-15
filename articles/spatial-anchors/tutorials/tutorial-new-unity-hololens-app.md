@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee7a0ca1abedd2f80cd8f5fe66e603315a10966f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939528"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096538"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -25,7 +25,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 1. Egy Windows rendszerű gép, amelyen a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepítve van a **univerzális Windows-platform fejlesztési** számítási feladattal és a **Windows 10 SDK-val (10.0.18362.0 vagy újabb)** és a <a href="https://git-scm.com/download/win" target="_blank">git for Windows</a>rendszerrel.
 2. A Visual studióhoz készült [C++/WinRT Visual Studio bővítményt (VSIX)](https://aka.ms/cppwinrt/vsix) a [Visual Studio piactérről](https://marketplace.visualstudio.com/)kell telepíteni.
-3. HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020 )-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
+3. HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](/windows/mixed-reality/whats-new/release-notes-may-2020)-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -89,7 +89,7 @@ Az Unity-alkalmazást a 2D-nézet helyett magával a nézettel kell konfiguráln
 Most már rendelkeznie kell egy gömb panelrel a **projekt** ablaktáblában.
 
 ## <a name="trying-it-out"></a>Kipróbálás
-Ha szeretné kipróbálni, hogy minden megfelelően működik-e, hozzon létre egy **egységet** , és telepítse a **Visual studióból**. Kövesse a 6. fejezetet a [ **MR alapjai 100: első lépések az Unity** tanfolyamon](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) . Ekkor látnia kell az Unity Start képernyőt, majd egy tiszta képernyőt.
+Ha szeretné kipróbálni, hogy minden megfelelően működik-e, hozzon létre egy **egységet** , és telepítse a **Visual studióból**. Kövesse a 6. fejezetet a [ **MR alapjai 100: első lépések az Unity** tanfolyamon](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) . Ekkor látnia kell az Unity Start képernyőt, majd egy tiszta képernyőt.
 
 ## <a name="place-an-object-in-the-real-world"></a>Egy objektum elhelyezése a valós világban
 Hozzuk létre & helyezzen egy objektumot az alkalmazás használatával. Nyissa meg az [alkalmazás üzembe helyezésekor](#trying-it-out)létrehozott Visual Studio-megoldást.
@@ -208,7 +208,7 @@ Végül Ismerkedjen meg egymással. A `CreateAndSaveSphere()` metódusban adja h
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a [Kimenet ablakban](https://docs.microsoft.com/visualstudio/ide/reference/output-window) is használhatja a **Visual Studióban** történő hibakeresést az alkalmazás által küldött naplóüzenetek figyelésére. Győződjön meg arról, hogy az alkalmazás konfigurációját üzembe helyezi a `Debug` Visual Studióban a naplóüzenetek megtekintéséhez. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
+Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a [Kimenet ablakban](/visualstudio/ide/reference/output-window) is használhatja a **Visual Studióban** történő hibakeresést az alkalmazás által küldött naplóüzenetek figyelésére. Győződjön meg arról, hogy az alkalmazás konfigurációját üzembe helyezi a `Debug` Visual Studióban a naplóüzenetek megtekintéséhez. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
 
 > [!NOTE]
 > Ha "DllNotFoundException: nem tölthető be a DLL-fájl" AzureSpatialAnchors ": a megadott modul nem található.", **törölje** , majd hozza **létre** újra a megoldást.

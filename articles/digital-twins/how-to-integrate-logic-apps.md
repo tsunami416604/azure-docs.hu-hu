@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045295"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097524"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -93,9 +93,9 @@ Ekkor megjelenik az összekötő üzembe helyezési lapja. Ha befejezte az üzem
 
 Ezután konfigurálja a létrehozott összekötőt az Azure digitális Twins eléréséhez.
 
-Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy lett módosítva, hogy működjön a Logic Apps. Töltse le az **Azure Digital Twins egyéni hencegő** mintáját [**ebből a hivatkozásból**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) a *zip letöltése* gomb megnyomásával. Navigáljon a letöltött *Azure_Digital_Twins_Custom_Swaggers.zip* mappára, és csomagolja ki. 
+Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy lett módosítva, hogy működjön a Logic Apps. Töltse le az **Azure Digital Twins Custom hencegő (Logic apps Connector)** mintát [**ebből a hivatkozásból**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) a *zip letöltése* gomb megnyomásával. Navigáljon a letöltött *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* mappára, és csomagolja ki. 
 
-Az oktatóanyaghoz tartozó egyéni hencegés a _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ mappában található. Ez a mappa a *STABLE* és a *Preview*nevű almappákat tartalmaz, amelyek mindegyike dátum szerint rendezi a hencegés különböző verzióit. A legutóbbi dátummal rendelkező mappa a hencegés legújabb példányát fogja tartalmazni. Bármelyik verziót választja, a hencegő fájl neve _**digitaltwins.json**_.
+Az oktatóanyaghoz tartozó egyéni hencegés a _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps **_ mappában található. Ez a mappa a *STABLE* és a *Preview*nevű almappákat tartalmaz, amelyek mindegyike dátum szerint rendezi a hencegés különböző verzióit. A legutóbbi dátummal rendelkező mappa a hencegés legújabb példányát fogja tartalmazni. A kiválasztható verziótól függően a hencegő fájl neve _** digitaltwins.jsa * * _.
 
 > [!NOTE]
 > Hacsak nem dolgozik előzetes verziójú szolgáltatással, általánosan ajánlott a hencegés legújabb *stabil* verziójának használata. A hencegés korábbi verziói és előzetes verziói azonban továbbra is támogatottak. 
@@ -208,7 +208,7 @@ Lekérdezheti a Twin metódust a választott módszer (például [Egyéni ügyf�
 
 Ha többet szeretne megtudni az Azure Digital Twins-példány lekérdezéséről, olvassa el [*az útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy olyan logikai alkalmazást hozott létre, amely rendszeresen frissít egy Twin-et az Azure Digital Twins-példányban egy megadott javítással. Kipróbálhatja a többi API-t az egyéni összekötőn, hogy Logic Apps hozzon létre különböző műveletekhez a példányon.
 

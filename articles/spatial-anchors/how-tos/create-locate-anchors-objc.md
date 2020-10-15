@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 119cf971a18ce7a9c2f2c22aba18d4dd3d9642ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4de1bf048284a630b5f07be53445404eeb450fb
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74277334"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097490"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Horgonyok létrehozása és megkeresése az Objective-C-ben az Azure térbeli horgonyok használatával
 
@@ -43,7 +43,7 @@ Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a követ
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-További információ a [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) osztályról.
+További információ a [ASACloudSpatialAnchorSession](/objectivec/api/spatial-anchors/asacloudspatialanchorsession) osztályról.
 
 ```objc
     ASACloudSpatialAnchorSession *_cloudSession;
@@ -53,7 +53,7 @@ További információ a [ASACloudSpatialAnchorSession](https://docs.microsoft.co
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-További információ a [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) osztályról.
+További információ a [ASASessionConfiguration](/objectivec/api/spatial-anchors/asasessionconfiguration) osztályról.
 
 ```objc
     _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -67,7 +67,7 @@ További információ a [ASASessionConfiguration](https://docs.microsoft.com/obj
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-További információ a [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokoll módszeréről.
+További információ a [tokenRequired](/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokoll módszeréről.
 
 ```objc
     - (void)tokenRequired:(ASACloudSpatialAnchorSession *)cloudSession :(ASATokenRequiredEventArgs *)args {
@@ -115,7 +115,7 @@ További információ a [tokenRequired](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
-További információ az [indítási](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) módszerről.
+További információ az [indítási](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) módszerről.
 
 ```objc0
     _cloudSession.session = self.sceneView.session;
@@ -125,7 +125,7 @@ További információ az [indítási](https://docs.microsoft.com/objectivec/api/
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-További információ a [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) metódusról.
+További információ a [processFrame](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) metódusról.
 
 ```objc
     [_cloudSession processFrame:_sceneView.session.currentFrame];
@@ -133,7 +133,7 @@ További információ a [processFrame](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-További információ a [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokoll módszeréről.
+További információ a [sessionUpdated](/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokoll módszeréről.
 
 ```objc
     - (void)sessionUpdated:(ASACloudSpatialAnchorSession *)cloudSession :(ASASessionUpdatedEventArgs *)args {
@@ -148,7 +148,7 @@ További információ a [sessionUpdated](https://docs.microsoft.com/objectivec/a
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-További információ a [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) osztályról.
+További információ a [ASACloudSpatialAnchor](/objectivec/api/spatial-anchors/asacloudspatialanchor) osztályról.
 
 ```objc
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -175,7 +175,7 @@ További információ a [ASACloudSpatialAnchor](https://docs.microsoft.com/objec
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-További információ a [getSessionStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) metódusról.
+További információ a [getSessionStatusWithCompletionHandler](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) metódusról.
 
 ```objc
     [_cloudSession getSessionStatusWithCompletionHandler:^(ASASessionStatus *value, NSError *error) {
@@ -190,7 +190,7 @@ További információ a [getSessionStatusWithCompletionHandler](https://docs.mic
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-További információ a [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) tulajdonságról.
+További információ a [appProperties](/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) tulajdonságról.
 
 ```objc
     ASACloudSpatialAnchor *cloudAnchor = [[ASACloudSpatialAnchor alloc] init];
@@ -203,7 +203,7 @@ További információ a [appProperties](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-További információ a [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metódusról.
+További információ a [updateAnchorProperties](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metódusról.
 
 ```objc
     ASACloudSpatialAnchor *anchor = /* locate your anchor */;
@@ -215,7 +215,7 @@ További információ a [updateAnchorProperties](https://docs.microsoft.com/obje
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-További információ a [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) metódusról.
+További információ a [getAnchorProperties](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) metódusról.
 
 ```objc
     [_cloudSession getAnchorProperties:@"anchorId" withCompletionHandler:^(SCCCloudSpatialAnchor *anchor, NSError *error) {
@@ -234,7 +234,7 @@ További információ a [getAnchorProperties](https://docs.microsoft.com/objecti
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-További információ a [lejárat](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) tulajdonságról.
+További információ a [lejárat](/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) tulajdonságról.
 
 ```objc
     int secondsInAWeek = 60 * 60 * 24 * 7;
@@ -244,7 +244,7 @@ További információ a [lejárat](https://docs.microsoft.com/objectivec/api/spa
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-További információ a [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) metódusról.
+További információ a [createWatcher](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) metódusról.
 
 ```objc
     ASAAnchorLocateCriteria *criteria = [ASAAnchorLocateCriteria new];
@@ -254,7 +254,7 @@ További információ a [createWatcher](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-További információ a [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokoll módszeréről.
+További információ a [anchorLocated](/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokoll módszeréről.
 
 ```objc
     - (void)anchorLocated:(ASACloudSpatialAnchorSession *)cloudSession :(ASAAnchorLocatedEventArgs *)args {
@@ -282,7 +282,7 @@ További információ a [anchorLocated](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-További információ a [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) metódusról.
+További információ a [deleteAnchor](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) metódusról.
 
 ```objc
     [_cloudSession deleteAnchor:cloudAnchor withCompletionHandler:^(NSError *error) {
@@ -292,7 +292,7 @@ További információ a [deleteAnchor](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a [leállítási](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) módszerről.
+További információ a [leállítási](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) módszerről.
 
 ```objc
     [_cloudSession stop];
@@ -300,7 +300,7 @@ További információ a [leállítási](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) módszerről.
+További információ az [alaphelyzetbe állítási](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) módszerről.
 
 ```objc
     [_cloudSession reset];

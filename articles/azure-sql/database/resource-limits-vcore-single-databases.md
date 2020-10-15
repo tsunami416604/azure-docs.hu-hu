@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/21/2020
-ms.openlocfilehash: 1d9fc9f50ac21e2ea621e26ad2b1fe0f146116de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618488"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097575"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Önálló adatbázisok erőforráskorlátai a virtuálismag-alapú vásárlási modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,7 +50,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|320|640|1280|1920|2560|
-|Maximális naplózási arány (MBps)|3,8|7,5|15|22,5|30|
+|Maximális naplózási arány (MBps)|4,5|9|18|27|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|75|150|300|450|600|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|
@@ -76,7 +76,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|3200|3840|4480|5120|
-|Maximális naplózási arány (MBps)|30|30|30|30|
+|Maximális naplózási arány (MBps)|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|750|900|1050|1200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|
@@ -102,7 +102,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|5760|6400|7680|10240|12800|
-|Maximális naplózási arány (MBps)|30|30|30|30|30|
+|Maximális naplózási arány (MBps)|36|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|1350|1500|1800|2400|3000|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|
@@ -251,7 +251,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|320|640|960|1280|1600|1920|
-|Maximális naplózási arány (MBps)|3,75|7,5|11,25|15|18,75|22,5|
+|Maximális naplózási arány (MBps)|4,5|9|13,5|18|22,5|27|
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|
@@ -276,7 +276,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)
 |Maximális adatmennyiség IOPS *|2240|2560|2880|3200|5120|7680|
-|Maximális naplózási arány (MBps)|26,3|30|30|30|30|30|
+|Maximális naplózási arány (MBps)|31,5|36|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|1400|1600|1800|2000|3200|4800|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|
@@ -303,7 +303,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|640|1280|1920|2560|3200|3840|4480|
-|Maximális naplózási arány (MBps)|7,5|15|22,5|30|30|30|30|
+|Maximális naplózási arány (MBps)|9|18|27|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|1400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|1|
@@ -328,7 +328,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|5120|5760|6400|7680|10240|12800|12800|
-|Maximális naplózási arány (MBps)|30|30|30|30|30|30|30|
+|Maximális naplózási arány (MBps)|36|36|36|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|1|
@@ -355,7 +355,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|2560|3200|3840|4480|5120|
-|Maximális naplózási arány (MBps)|30|30|30|30|30|
+|Maximális naplózási arány (MBps)|36|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|400|500|600|700|800|
 |Egyidejű bejelentkezések maximális száma|800|1000|1200|1400|1600|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
@@ -381,7 +381,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
 |Maximális adatmennyiség IOPS *|5760|6400|7680|10240|11520|23040|
-|Maximális naplózási arány (MBps)|30|30|30|30|30|30|
+|Maximális naplózási arány (MBps)|36|36|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|900|1000|1200|1600|1800|3600|
 |Egyidejű bejelentkezések maximális száma|1800|2000|2400|3200|3600|7200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -565,7 +565,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Egyetlen adatbázis DTU erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md)
 - A rugalmas készletek virtuális mag erőforrás-korlátaival kapcsolatban lásd: [rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-elastic-pools.md)

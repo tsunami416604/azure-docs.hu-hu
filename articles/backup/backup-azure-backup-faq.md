@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 50cbd1d28ca3f04b8963c58b443765d4280b14ed
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058080"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096623"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -57,6 +57,10 @@ Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltan
 
 - Az ILR az olyan Azure-beli virtuális gépeknél támogatott, amelyeknek a biztonsági másolata az Azure VM Backup használatával készült. További információkért tekintse meg ezt a [cikket](backup-azure-restore-files-from-vm.md).
 - A ILR nem támogatott a Azure Backup Server (MABS) vagy a System Center DPM által készített helyszíni virtuális gépek online helyreállítási pontjain.
+
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hogyan helyezhetők át adatok a Recovery Services-tárolóból a helyszíni rendszerbe?
+
+Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) vagy [Importálás/exportálás](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)használatával áthelyezhető a helyszíni környezetbe.
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 
@@ -224,7 +228,7 @@ A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosít�
 
 Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tart fenn másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További gyakori kérdéseket is áttekinthet:
 

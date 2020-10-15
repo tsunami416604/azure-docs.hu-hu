@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653638"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097337"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. A ExpressRoute egy nagy sebességű privát kommunikációs hivatkozás az Azure szolgáltatásaihoz. 
@@ -21,7 +21,7 @@ A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszon
 A ExpressRoute a magas rendelkezésre állású áramkörökből áll, amelyek egyetlen ügyfél előfizetéséhez vannak csatolva, és nem oszthatók meg több ügyfél között. A két kapcsolatcsoport végét külön útválasztókra kell csatlakoztatni a magas rendelkezésre állás biztosítása érdekében.
 
 > [!NOTE]
-> Az ExpressRoute sávszélesség- és kapcsolatkorlátokkal rendelkezik, ami azt jelenti, hogy a nagyméretű/összetett megvalósításokhoz több ExpressRoute-kapcsolatcsoport szükséges ügyfelenként.
+> Az egyes ExpressRoute-körökben a sávszélesség és a kapcsolatok száma korlátozva van. Ha egy ügyfél igénye meghaladja ezeket a korlátokat, több ExpressRoute-áramkörre van szükségük a hibrid hálózati megvalósításhoz.
 > 
 > 
 
@@ -75,30 +75,30 @@ A ExpressRoute a 50 MB/s és 10 GB/s közötti hálózati sebességet támogatja
 Az ExpressRoute több vNet csatlakoztatását is támogatja egyetlen ExpressRoute-kapcsolatcsoporthoz a nagyobb sebességű kapcsolatok jobb kihasználása érdekében. Egyetlen ExpressRoute-kapcsolatcsoport egy adott ügyfél több Azure-előfizetése között is megosztható.
 
 ## <a name="configuring-expressroute"></a>Az ExpressRoute konfigurálása
-Az ExpressRoute három típusú forgalom ([útválasztási tartomány](#expressroute-routing-domains)) támogatására konfigurálható egyetlen ExpressRoute-kapcsolatcsoportban. Ezek a forgalomtípusok a Microsoft társviszony-létesítés, az Azure nyilvános társviszony-létesítés és a privát társviszony-létesítés. Egyetlen ExpressRoute-kapcsolatcsoportban egy vagy több forgalomtípust is továbbíthat, vagy használhat több ExpressRoute-kapcsolatcsoportot is, az ExpressRoute-kapcsolatcsoport méretétől és az ügyfél által igényelt elkülönítéstől függően. Előfordulhat, hogy az ügyfél biztonsági irányelvei, tiltják hogy a nyilvános forgalom és a privát forgalom ugyanazon a körön folyjanak.
+Az ExpressRoute három típusú forgalom ([útválasztási tartomány](#expressroute-routing-domains)) támogatására konfigurálható egyetlen ExpressRoute-kapcsolatcsoportban. Ezt a forgalmat a rendszer elkülöníti a privát és a Microsoft-partnerek között, és a nyilvános (elavult). Egyetlen ExpressRoute-kapcsolatcsoportban egy vagy több forgalomtípust is továbbíthat, vagy használhat több ExpressRoute-kapcsolatcsoportot is, az ExpressRoute-kapcsolatcsoport méretétől és az ügyfél által igényelt elkülönítéstől függően. Előfordulhat, hogy az ügyfél biztonsági irányelvei, tiltják hogy a nyilvános forgalom és a privát forgalom ugyanazon a körön folyjanak.
 
 ### <a name="connect-through-model"></a>Szolgáltatón keresztüli csatlakozás modell
-A kapcsolaton keresztüli konfigurációban az összes hálózatkezelési műveletért felelős, hogy az ügyfelek adatközpont-erőforrásait az Azure-ban üzemeltetett előfizetésekhez kapcsolja. Mindegyik ügyfélnek, aki Azure-funkciókat kíván használni, saját ExpressRoute-kapcsolatra van szüksége, amelyet Ön kezel majd. Ön ugyanazon módon igényelhet ExpressRoute-kapcsolatcsoportot, ahogyan az ügyfél. Ezt követően az [ExpressRoute workflows for circuit provisioning and circuit states](expressroute-workflows.md) (Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai) című cikkben ismertetett lépéseket kell követnie. Ezután konfigurálnia kell a Border Gateway Protocol- (BGP-) útvonalakat a helyszíni hálózat és az Azure vNet közötti forgalom vezérléséhez.
+A kapcsolaton keresztüli konfigurációban az összes hálózatkezelési műveletért felelős az ügyfél adatközpont-erőforrásainak az Azure-ban üzemeltetett előfizetésekhez való összekapcsolásához. Az Azure-képességeket használni kívánó ügyfeleknek saját ExpressRoute-kapcsolatra van szükségük, amelyet Ön kezel. Ugyanazokat a módszereket fogja használni, amelyeket az ügyfél az ExpressRoute áramkör beszerzéséhez használ. Ugyanezeket a lépéseket követve a [ExpressRoute-munkafolyamatok](expressroute-workflows.md) az áramköri kiépítés és az áramköri állapotok című cikkben is szerepelnek. Ezután konfigurálja a Border Gateway Protocol (BGP) útvonalakat a helyszíni hálózat és az Azure vNet közötti forgalom szabályozásához.
 
 ### <a name="connect-to-model"></a>Szolgáltatóhoz való csatlakozás
-Szolgáltatóhoz való csatlakozási konfigurációban az ügyfél már rendelkezik meglévő Azure-kapcsolattal, vagy kezdeményezni fog egy kapcsolatot internetszolgáltatója felé, amely ExpressRoute-összeköttetést biztosít az ügyfél saját adatközpontjából közvetlenül az Azure-ba az Ön adatközpontja helyett. A kiépítési folyamat megkezdéséhez az ügyfélnek ugyanúgy a Szolgáltatón keresztüli csatlakozás modellnél fentebb ismertetett lépéseket kell végrehajtania. A kapcsolatcsoport létrehozását követően az ügyfélnek konfigurálnia kell a helyszíni útválasztókat, hogy elérhesse az Ön hálózatát és az Azure vNet hálózatokat is.
+A kapcsolódási konfigurációban az ügyfél már rendelkezik egy meglévő Azure-kapcsolattal, vagy kapcsolatot kezdeményez az internetszolgáltatóval, amely a saját adatközpontja helyett közvetlenül az Azure-ba kapcsolja össze a ExpressRoute. A kiépítési folyamat megkezdéséhez az ügyfélnek ugyanúgy a Szolgáltatón keresztüli csatlakozás modellnél fentebb ismertetett lépéseket kell végrehajtania. Az áramkör létrehozása után az ügyfélnek konfigurálnia kell a helyszíni útválasztókat, hogy hozzáférjenek a hálózathoz és az Azure-virtuális hálózatok.
 
 Támogatást nyújthat a kapcsolat beállításában és az útvonalak konfigurálásában, hogy az adatközpont(ok)ban található erőforrások kommunikálhassanak az ügyfél erőforrásaival az Ön adatközpontjában, vagy az Azure-ban futtatott erőforrásokkal.
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute útválasztási tartományok
-Az ExpressRoute három útválasztási tartományt kínál: nyilvános, privát és Microsoft társviszony-létesítés. Az útválasztási tartományok mindegyike azonos útválasztókkal van konfigurálva az aktív-aktív konfigurációban a magas rendelkezésre állás érdekében. Az ExpressRoute útválasztási tartományokkal kapcsolatos további részleteket lásd [itt](expressroute-circuit-peerings.md).
+A ExpressRoute két útválasztási tartományt kínál az új áramkörökhöz: privát és Microsoft-partnerek. Az útválasztási tartományok mindegyike azonos útválasztókkal van konfigurálva az aktív-aktív konfigurációban a magas rendelkezésre állás érdekében. Az ExpressRoute útválasztási tartományokkal kapcsolatos további részleteket lásd [itt](expressroute-circuit-peerings.md).
 
 Az egyéni útvonalszűrőket meghatározhatja úgy is, hogy kizárólag a kívánt vagy szükséges útvonal(ak)at engedélyezzék. A módosítások végrehajtásával kapcsolatos további információkért tekintse meg a [Create and modify routing for an ExpressRoute circuit using PowerShell](expressroute-howto-routing-classic.md) (ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása a PowerShell használatával) című cikket, amely az útválasztási szűrőkkel kapcsolatban is biztosít részletes információkat.
 
 > [!NOTE]
-> A Microsoft és a társviszony-létesítéshez a kapcsolatoknak egy, az ügyfél vagy a CSP által birtokolt nyilvános IP-címen keresztül kell megvalósulniuk, és az összes meghatározott szabálynak meg kell felelniük. További információkért lásd az [ExpressRoute-előfeltételek](expressroute-prerequisites.md) lapot.  
+> A Microsoft-társak esetében a kapcsolatnak azonban az ügyfél vagy a CSP által birtokolt nyilvános IP-címnek kell lennie, és meg kell felelnie az összes meghatározott szabálynak. További információkért lásd az [ExpressRoute-előfeltételek](expressroute-prerequisites.md) lapot.  
 > 
 > 
 
 ## <a name="routing"></a>Útválasztás
 Az ExpressRoute az Azure Virtual Network Gatewayen keresztül csatlakozik az Azure-hálózatokhoz. A hálózati átjárók biztosítják az útvonalválasztást az Azure virtuális hálózatok számára.
 
-Az Azure Virtual Networks létrehozásával egy alapértelmezett útválasztási tábla is létrejön a vNet számára a vNet alhálózataira irányuló, illetve onnan érkező forgalom irányításához. Ha az alapértelmezett útválasztási tábla nem elegendő a megoldáshoz, egyéni útvonalak is létrehozhatók a kimenő forgalom egyedi készülékekre való átirányításához, vagy az egyes alhálózatokra vagy külső hálózatokra irányuló útvonalak blokkolásához.
+Az Azure Virtual Networks létrehozásával egy alapértelmezett útválasztási tábla is létrejön a vNet számára a vNet alhálózataira irányuló, illetve onnan érkező forgalom irányításához. Ha az alapértelmezett útválasztási táblázat nem elegendő a megoldáshoz, a rendszer egyéni útvonalakat hozhat létre a kimenő forgalom egyéni készülékekre való irányításához, illetve az útvonalak adott alhálózatokra vagy külső hálózatokra való letiltásához.
 
 ### <a name="default-routing"></a>Alapértelmezett útválasztás
 Az alapértelmezett útválasztási tábla az alábbi útvonalakat tartalmazza:
@@ -124,7 +124,7 @@ A használt modelltől – Szolgáltatóhoz való csatlakozás vagy Szolgáltat�
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A felhőszolgáltatói szolgáltatás segítségével anélkül növelheti az ügyfelei számára nyújtott értéket, hogy költséges infrastruktúra- és képességberuházásokat kellene eszközölnie, és így megtarthatja pozícióját, mint első számú szolgáltató a kiszervezések terén. A Microsoft Azure-ral való zökkenőmentes integráció a CSP API-n keresztül valósítható meg, amelynek segítségével a Microsoft Azure felügyelete integrálható meglévő felügyeleti keretrendszerekbe.  
 
 További információt az alábbi hivatkozásokat követve tekinthet meg:

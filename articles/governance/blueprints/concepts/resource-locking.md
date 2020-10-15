@@ -3,12 +3,12 @@ title: Az erőforrás-zárolás megismerése
 description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744015"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095994"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -39,7 +39,7 @@ Ez a biztonsági mérték védi a definiált terv és az olyan környezet egysé
 
 ### <a name="assign-at-management-group"></a>Hozzárendelés felügyeleti csoportban
 
-Egy további lehetőség, amely megakadályozza, hogy az előfizetések tulajdonosai a terv hozzárendelésének eltávolítását egy felügyeleti csoportba rendelje. Ebben az esetben csak a felügyeleti csoport **tulajdonosai** rendelkeznek a terv-hozzárendelés eltávolításához szükséges engedélyekkel.
+Az egyetlen lehetőség, amely megakadályozza, hogy az előfizetések tulajdonosai kivonják a terv hozzárendelését, hogy a tervet egy felügyeleti csoporthoz rendelje. Ebben az esetben csak a felügyeleti csoport **tulajdonosai** rendelkeznek a terv-hozzárendelés eltávolításához szükséges engedélyekkel.
 
 Ha a tervet egy előfizetés helyett egy felügyeleti csoporthoz szeretné rendelni, a REST API a következőképpen fog megjelenni:
 
@@ -179,7 +179,7 @@ Hasonlóan a [megtagadási hozzárendelések](../../../role-based-access-control
 
 Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések az `*` erőforrás-szolgáltatói műveletek helyettesítő karaktereit is használhatják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
 - Tudnivalók a [tervek életciklusáról](./lifecycle.md).

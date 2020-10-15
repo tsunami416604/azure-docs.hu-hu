@@ -9,12 +9,12 @@ ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: caa343b0715e3e4b33c45fcc9ba6441533c3d056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42598b6471ea29c779b1863852169c4a1025e229
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858506"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097456"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok segítségével Unity
 
@@ -44,7 +44,7 @@ Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a követ
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-További információ a [CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) osztályról.
+További információ a [CloudSpatialAnchorSession](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) osztályról.
 
 ```csharp
     CloudSpatialAnchorSession cloudSession;
@@ -54,7 +54,7 @@ További információ a [CloudSpatialAnchorSession](https://docs.microsoft.com/d
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-További információ a [SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) osztályról.
+További információ a [SessionConfiguration](/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) osztályról.
 
 ```csharp
     this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -68,7 +68,7 @@ További információ a [SessionConfiguration](https://docs.microsoft.com/dotnet
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-További információ a [TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) delegált szolgáltatásról.
+További információ a [TokenRequiredDelegate](/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) delegált szolgáltatásról.
 
 ```csharp
     this.cloudSession.TokenRequired += (object sender, TokenRequiredEventArgs args) =>
@@ -118,7 +118,7 @@ További információ a [TokenRequiredDelegate](https://docs.microsoft.com/dotne
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-További információ az [indítási](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) módszerről.
+További információ az [indítási](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) módszerről.
 
 ```csharp
 #if UNITY_ANDROID || UNITY_IOS
@@ -134,7 +134,7 @@ További információ az [indítási](https://docs.microsoft.com/dotnet/api/micr
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-További információ a [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) metódusról.
+További információ a [ProcessFrame](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) metódusról.
 
 ```csharp
 #if UNITY_ANDROID || UNITY_IOS
@@ -156,7 +156,7 @@ További információ a [ProcessFrame](https://docs.microsoft.com/dotnet/api/mic
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-További információ a [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) delegált szolgáltatásról.
+További információ a [SessionUpdatedDelegate](/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) delegált szolgáltatásról.
 
 ```csharp
     this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args) =>
@@ -170,7 +170,7 @@ További információ a [SessionUpdatedDelegate](https://docs.microsoft.com/dotn
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-További információ a [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) osztályról.
+További információ a [CloudSpatialAnchor](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) osztályról.
 
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
@@ -206,7 +206,7 @@ További információ a [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/a
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-További információ a [GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) metódusról.
+További információ a [GetSessionStatusAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) metódusról.
 
 ```csharp
     SessionStatus value = await this.cloudSession.GetSessionStatusAsync();
@@ -216,7 +216,7 @@ További információ a [GetSessionStatusAsync](https://docs.microsoft.com/dotne
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-További információ a [AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) tulajdonságról.
+További információ a [AppProperties](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) tulajdonságról.
 
 ```csharp
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor() { LocalAnchor = localAnchor };
@@ -227,7 +227,7 @@ További információ a [AppProperties](https://docs.microsoft.com/dotnet/api/mi
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-További információ a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metódusról.
+További információ a [UpdateAnchorPropertiesAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metódusról.
 
 ```csharp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -237,7 +237,7 @@ További információ a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-További információ a [GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) metódusról.
+További információ a [GetAnchorPropertiesAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) metódusról.
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
@@ -250,7 +250,7 @@ További információ a [GetAnchorPropertiesAsync](https://docs.microsoft.com/do
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-További információ a [lejárat](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) tulajdonságról.
+További információ a [lejárat](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) tulajdonságról.
 
 ```csharp
     cloudAnchor.Expiration = DateTimeOffset.Now.AddDays(7);
@@ -258,7 +258,7 @@ További információ a [lejárat](https://docs.microsoft.com/dotnet/api/microso
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-További információ a [CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) metódusról.
+További információ a [CreateWatcher](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) metódusról.
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -268,7 +268,7 @@ További információ a [CreateWatcher](https://docs.microsoft.com/dotnet/api/mi
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-További információ a [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) delegált szolgáltatásról.
+További információ a [AnchorLocatedDelegate](/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) delegált szolgáltatásról.
 
 ```csharp
     this.cloudSession.AnchorLocated += (object sender, AnchorLocatedEventArgs args) =>
@@ -297,7 +297,7 @@ További információ a [AnchorLocatedDelegate](https://docs.microsoft.com/dotne
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-További információ a [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metódusról.
+További információ a [DeleteAnchorAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metódusról.
 
 ```csharp
     await this.cloudSession.DeleteAnchorAsync(cloudAnchor);
@@ -306,7 +306,7 @@ További információ a [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/ap
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a [leállítási](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) módszerről.
+További információ a [leállítási](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) módszerről.
 
 ```csharp
     this.cloudSession.Stop();
@@ -314,7 +314,7 @@ További információ a [leállítási](https://docs.microsoft.com/dotnet/api/mi
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) módszerről.
+További információ az [alaphelyzetbe állítási](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) módszerről.
 
 ```csharp
     this.cloudSession.Reset();
@@ -322,7 +322,7 @@ További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
 
-További információ az elvetési [módszerről](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) .
+További információ az elvetési [módszerről](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) .
 
 ```csharp
     this.cloudSession.Dispose();

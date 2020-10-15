@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eace1ee1f97acaf04608d37c9edba482622bd59
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548288"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097371"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Horgonyok létrehozása és megkeresése durva újrahonosítással a C++/WinRT
 
@@ -31,7 +31,7 @@ Az Azure térbeli horgonyok a létrehozott horgonyokkal társíthatók az eszkö
 
 Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
 
-- Alapszintű ismeretek a C++ és a <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows-futtatókörnyezet API</a>-khoz.
+- Alapszintű ismeretek a C++ és a <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows-futtatókörnyezet API</a>-khoz.
 - Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
 - Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
 - Olvassa el a [create (létrehozás), majd a horgonyok megkeresése című témakört](../create-locate-anchors-overview.md).

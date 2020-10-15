@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631341"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096334"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Tudnivalók az Azure-beli virtuális gépek vész-helyreállításáról
 
@@ -40,13 +40,13 @@ A hálózatok általában tűzfalak és hálózati biztonsági csoportok (NSG-EK
 >[!IMPORTANT]
 > Site Recovery nem támogatja hitelesített proxy használatát a hálózati kapcsolat vezérléséhez, és a replikáció nem engedélyezhető.
 
+>[!NOTE]
+> Az IP-cím alapú szűrés nem hajtható végre a kimenő kapcsolatok vezérléséhez.
+> Azure Site Recovery IP-címeket nem szabad hozzáadni az Azure útválasztási táblában a kimenő kapcsolatok vezérléséhez.
 
 ## <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
 
 Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolat vezérléséhez, engedélyezze ezeket a Site Recovery URL-címeket:
-
->[!NOTE]
-> Az IP-cím alapú szűrés nem hajtható végre a kimenő kapcsolatok vezérléséhez.
 
 **URL-cím** | **Részletek**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | Az engedélyezéshez és a hitelesítéshez szüksé
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Kimenő kapcsolat szolgáltatás-címkék használatával
 
-Ha NSG használ a kimenő kapcsolatok vezérlésére, akkor ezeket a szolgáltatási címkéket engedélyezni kell.
+A kimenő kapcsolatok vezérléséhez a NSG használatakor engedélyezni kell a szolgáltatás címkéit.
 
 - A forrás régióban lévő Storage-fiókok esetében:
     - Hozzon létre egy [tárolási szolgáltatás címkén](../virtual-network/security-overview.md#service-tags) ALAPULó NSG-szabályt a forrás régióhoz.
@@ -125,7 +125,7 @@ Létrehozhat egy hálózati szolgáltatási végpontot a virtuális hálózatban
 
 Az Azure alapértelmezett rendszerútvonalát felülbírálhatja a 0.0.0.0/0 címek előtagja számára egy [Egyéni útvonallal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) , és átirányíthatja a virtuális gépek forgalmát egy helyszíni hálózati virtuális készülékre (NVA), de ez a konfiguráció nem ajánlott site Recovery replikáláshoz. Ha egyéni útvonalakat használ, [hozzon létre egy virtuális hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a "Storage" virtuális hálózatában, hogy a replikálási forgalom ne hagyja el az Azure-határt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md)megkezdheti a számítási feladatok védelmét.
 - További információ az Azure-beli virtuális gépek feladatátvételének [IP-címének megőrzéséről](site-recovery-retain-ip-azure-vm-failover.md) .
 - További információ az Azure-beli [virtuális gépek ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md)-mel való vész-helyreállításáról.

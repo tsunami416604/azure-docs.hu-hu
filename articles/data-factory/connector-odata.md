@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 146f9ea918f75e0521209d9db712bdcab76a8e7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845765"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096589"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Adatok másolása OData-forrásból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,7 +59,8 @@ Egy OData társított szolgáltatás esetében a következő tulajdonságok tám
 |:--- |:--- |:--- |
 | típus | A **Type** tulajdonságot **OData**értékre kell beállítani. |Igen |
 | url | A OData szolgáltatás gyökerének URL-címe. |Igen |
-| authenticationType | A OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **Windows**és **AadServicePrincipal**. A felhasználó-alapú OAuth nem támogatott. | Igen |
+| authenticationType | A OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **Windows**és **AadServicePrincipal**. A felhasználó-alapú OAuth nem támogatott. Emellett a tulajdonságban konfigurálhatja a hitelesítési fejléceket is `authHeader` .| Igen |
+| authHeaders | További HTTP-kérelmek fejlécei a hitelesítéshez.<br/> Az API-kulcsos hitelesítés használatához például válassza a "névtelen" lehetőséget, és adja meg az API-kulcsot a fejlécben. | Nem |
 | userName (Felhasználónév) | Ha alapszintű vagy Windows-hitelesítést használ, a **felhasználónevet** kell megadnia. | Nem |
 | jelszó | Adja meg a **felhasználónévhez**megadott felhasználói fiókhoz tartozó **jelszót** . A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Nem |
 | servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Nem |
@@ -197,6 +198,31 @@ Egy OData társított szolgáltatás esetében a következő tulajdonságok tám
 }
 ```
 
+**6. példa: API-kulcsos hitelesítés használata**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of OData source>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "APIKey": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
 Ez a szakasz a OData-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
@@ -311,6 +337,6 @@ Amikor OData másol az adatokból, a következő leképezések használatosak a 
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054746"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096198"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -143,7 +143,7 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **cancel_message** | A felhasználó megszakította az önérvényesített információk megadását |
 | **preloader_alt** | várj, kérlek |
 | **ver_but_send** | Ellenőrző kód küldése |
-| **alert_yes** | Yes |
+| **alert_yes** | Igen |
 | **error_fieldIncorrect** | Egy vagy több mező kitöltése helytelen. Ellenőrizze a bejegyzéseket, és próbálkozzon újra. |
 | **év** | Year |
 | **verifying_blurb** | Várjon, amíg feldolgozzuk az adatokat. |
@@ -161,7 +161,7 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **ver_incorrect_format** | Helytelen formátumú. |
 | **ver_but_edit** | E-mail módosítása |
 | **ver_but_verify** | Kód ellenőrzése |
-| **alert_no** | No |
+| **alert_no** | Nem |
 | **ver_info_msg** | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe. |
 | **nap** | Nap |
 | **ver_fail_throttled** | Túl sok kérelem érkezett az e-mail-cím ellenőrzéséhez. Várjon egy kicsit, és próbálkozzon újra. |
@@ -343,7 +343,42 @@ Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatj
 
 ## <a name="verification-display-control-user-interface-elements"></a>Ellenőrzési képernyő vezérlő felhasználói felület elemei
 
-Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-control-verification.md) tartoznak.
+A következő egy [ellenőrzési megjelenítési vezérlő](display-control-verification.md) azonosítói a lapelrendezés 2.1.0 vagy újabb [verziójával](page-layout.md) .
+
+| ID (Azonosító) | Alapértelmezett érték |
+| -- | ------------- |
+|intro_msg| Ellenőrzés szükséges. Kattintson a Küldés gombra.|
+|success_send_code_msg | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe.|
+|failure_send_code_msg | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra.|
+|success_verify_code_msg | Az E-mail cím ellenőrizve. Most már folytathatja.|
+|failure_verify_code_msg | Nem sikerül ellenőrizni az e-mail-címét. Próbálkozzon újra.|
+|but_send_code | Ellenőrző kód küldése|
+|but_verify_code | Kód ellenőrzése|
+|but_send_new_code | Új kód küldése|
+|but_change_claims | E-mail módosítása|
+
+### <a name="verification-display-control-example"></a>Példa ellenőrző megjelenítési vezérlőelemre
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Ellenőrzési megjelenítés vezérlő felhasználói felület elemei (elavult)
+
+A következő azonosítók egy [ellenőrzési megjelenítési vezérlőhöz](display-control-verification.md) tartoznak, [és a lapelrendezés 2.0.0](page-layout.md) .
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
@@ -355,7 +390,7 @@ Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-co
 |verification_control_but_verify_code |Kód ellenőrzése |
 |verification_control_code_sent| Az ellenőrző kód elküldése megtörtént. Másolja az alábbi beviteli mezőbe. |
 
-### <a name="verification-display-control-example"></a>Példa ellenőrző megjelenítési vezérlőelemre
+### <a name="verification-display-control-example-deprecated"></a>Ellenőrzési megjelenítési vezérlő – példa (elavult)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ A következő azonosítók egy [egyszeri jelszó technikai profiljának](one-tim
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
@@ -499,7 +534,7 @@ A jogcím-átalakítási hibaüzenetek azonosítói a következők:
 </LocalizedResources>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A honosítási példákat a következő cikkekben találja:
 

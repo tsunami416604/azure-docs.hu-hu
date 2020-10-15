@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269573"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097303"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -56,7 +56,7 @@ A hibrid Azure AD JOIN a Windows-eszközök széles körét támogatja. Mivel a 
 
 - Windows 10
 - Windows Server 2016
-  - **Megjegyzés**: az Azure National Cloud-ügyfeleknek az 1809-es verzióra van szükségük
+  - **Megjegyzés**: az Azure National Cloud-ügyfeleknek az 1803-es verzióra van szükségük
 - Windows Server 2019
 
 A Windows asztali operációs rendszert futtató eszközök esetében a támogatott verzió a [Windows 10 kiadási információi](/windows/release-information/)című cikkben szerepel. Ajánlott eljárásként a Microsoft azt javasolja, hogy frissítsen a Windows 10-es legújabb verziójára.
@@ -169,7 +169,7 @@ Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Window
 | Irányítható | Felügyelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
 | Nem irányítható | Felügyelt | Nem támogatott | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md) 

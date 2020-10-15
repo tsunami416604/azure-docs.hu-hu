@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab414b877bd2d098c6e340267ff579fb58aec9d9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91540370"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097320"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -37,10 +37,10 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
     - <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
     - <a href="https://git-lfs.github.com/">Git-LFS</a>.
   - MacOS használata esetén:
-    - A <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 +</a>verziójának naprakész verziója.
+    - A <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 +</a>verziójának naprakész verziója.
     - <a href="https://git-scm.com/download/mac" target="_blank">Git MacOS rendszerhez</a>.
     - <a href="https://git-lfs.github.com/">Git-LFS</a>.
-- A Xamarin. Android legújabb verziója telepítve van és fut a választott platformon. A Xamarin. Android telepítésével kapcsolatos útmutatóért tekintse meg a [Xamarin. Android telepítési](https://docs.microsoft.com/xamarin/android/get-started/installation/index) útmutatóit.
+- A Xamarin. Android legújabb verziója telepítve van és fut a választott platformon. A Xamarin. Android telepítésével kapcsolatos útmutatóért tekintse meg a [Xamarin. Android telepítési](/xamarin/android/get-started/installation/index) útmutatóit.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
   - Előfordulhat, hogy a számítógépe számára további eszközillesztők szükségesek az Android-eszközkel való kommunikációhoz. További információ: [itt](https://developer.android.com/studio/run/device.html).
 - Az alkalmazásnak a **1,8**ARCore kell megcéloznia.

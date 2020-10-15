@@ -9,19 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057807"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097252"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Az SQL Server nélküli Azure szinapszis-kapcsolaton keresztüli lekérdezés Azure Cosmos DB
 
 A szinapszis SQL Server nélküli (korábban SQL on-demand) lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az [Azure szinapszis-hivatkozással](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
-
-> [!NOTE]
-> Az SQL Server nélküli Azure Cosmos DB analitikus tároló lekérdezésének támogatása jelenleg a GateD Preview-ban érhető el. A nyilvános előzetes verzió megnyitása az [Azure Service Updates](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) oldalon lesz bejelentve.
 
 Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. Az SQL Server nélküli lekérdezési eredményeket jelenleg nem tárolhatja a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
 
@@ -262,6 +259,15 @@ A Mongo DB API-fajta Azure Cosmos DB-fiókjainak lekérdezéséhez további info
 
 - Az **aliast** a függvény után kell megadni `OPENROWSET` (például: `OPENROWSET (...) AS function_alias` ). Az alias kihagyása okozhatja a csatlakoztatási problémákat, és a kiszolgáló nélküli SQL-végpont átmenetileg nem érhető el. Ezt a problémát november 2020-én oldja fel a rendszer.
 - A szinapszis kiszolgáló nélküli SQL jelenleg nem támogatja [Azure Cosmos db teljes hűségű sémát](../../cosmos-db/analytical-store-introduction.md#schema-representation). A szinapszis kiszolgáló nélküli SQL-t használja csak Cosmos DB jól definiált sémához való hozzáféréshez.
+
+A lehetséges hibák és hibaelhárítási műveletek listája a következő táblázatban látható:
+
+| Hiba | Gyökérok |
+| --- | --- |
+| Szintaktikai hibák:<br/> -Helytelen szintaxis a "OpenRowset" közelében<br/> - `...` a nem egy felismert TÖMEGES OPENROWSET-szolgáltatói beállítás.<br/> -Helytelen szintaxis közel `...` | Lehetséges kiváltó okok<br/> – Nem a "CosmosDB" paramétert használja az első paraméterként.<br/> -Karakterlánc használata az azonosító helyett a harmadik paraméterben,<br/> -Nem adja meg a harmadik paramétert (tároló neve) |
+| Hiba történt a CosmosDB-kapcsolatok karakterláncában | -A fiók, az adatbázis, a kulcs nincs megadva <br/> – A rendszer nem ismeri fel a kapcsolatok karakterláncának néhány lehetőségét.<br/> – A pontosvesszőt `;` a rendszer a kapcsolatok karakterláncának végére helyezi |
+| A CosmosDB elérési útjának feloldása sikertelen volt, hiba: "helytelen fiók/adatbázis neve" | A megadott fióknév vagy adatbázis neve nem található. |
+| A CosmosDB elérési útjának feloldása sikertelen volt, mert a titkos kulcs helytelen értéke null vagy üres. | A fiók kulcsa érvénytelen vagy hiányzik. |
 
 A javaslatok és a problémák jelentése az [Azure szinapszis visszajelzéseit ismertető oldalon](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)található.
 

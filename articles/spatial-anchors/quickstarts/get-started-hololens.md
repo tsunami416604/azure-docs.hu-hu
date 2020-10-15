@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 582fd38e54d08bdc8e1d892c569df9031dc8dc7a
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 66b8008312c1cf81d4fca7fb8ee5f26fc4c98f60
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939630"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096163"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure térbeli Horgonyokkal, C++/WinRT és DirectX-ben
 
@@ -33,7 +33,7 @@ A következőket fogja megtanulni:
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 - A **univerzális Windows-platform-fejlesztési** számítási feladattal és a **Windows 10 SDK-val (10.0.18362.0 vagy újabb** verzióval) telepített Windows-gép a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> -es verziójával. <a href="https://git-scm.com/download/win" target="_blank">A git for Windows és a</a> <a href="https://git-lfs.github.com/">git LFS</a>is telepítenie kell.
 - A Visual studióhoz készült [C++/WinRT Visual Studio bővítményt (VSIX)](https://aka.ms/cppwinrt/vsix) a [Visual Studio piactérről](https://marketplace.visualstudio.com/)kell telepíteni.
-- HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020 )-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
+- HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](/windows/mixed-reality/whats-new/release-notes-may-2020)-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
 - Az alkalmazásnak a AppX-jegyzékben kell beállítania a **spatialPerception** képességet.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]

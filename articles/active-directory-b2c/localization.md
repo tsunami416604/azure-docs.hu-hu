@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005378"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095899"
 ---
 # <a name="localization-element"></a>Honosítási elem
 
@@ -163,6 +163,7 @@ A ElementType, a jogcím-átalakításra vagy a házirend felhasználói felüle
 |Predikátum felhasználói üzenet|`Predicate`|A predikátum neve| A honosítani kívánt predikátum attribútuma. Lehetséges értékek: `HelpText` .|
 |Predikátum-csoport felhasználói üzenete|`InputValidation`|A PredicateValidation elem azonosítója.|A PredicateGroup elem azonosítója. A predikátum-csoportnak a predikátum-ellenőrzési elem gyermekének kell lennie a ElementId definiált módon.|
 |Felhasználó felület elemei |`UxElement` | | A honosítani kívánt felhasználói felületi elem azonosítója.|
+|[Vezérlőelem megjelenítése](display-controls.md) |`DisplayControl` |A megjelenítési vezérlő azonosítója. | A honosítani kívánt felhasználói felületi elem azonosítója.|
 
 ## <a name="examples"></a>Példák
 
@@ -330,6 +331,23 @@ A UxElement érték a felhasználói felület egyik elemének honosítására sz
 ```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+```
+
+### <a name="displaycontrol"></a>DisplayControl
+
+A DisplayControl érték a [megjelenítési vezérlő](display-controls.md) felhasználói felületének egyik elemének honosítására szolgál. Az alábbi példa bemutatja, hogyan honosítható a Küldés és ellenőrzés gomb. 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+Az önérvényesített műszaki profilok metaadatok szakaszában a hivatkozott ContentDefinition-nek a DataUri 2.1.0 vagy újabb [verzióra](page-layout.md) kell beállítania. Példa:
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
 ```
 
 ## <a name="next-steps"></a>További lépések

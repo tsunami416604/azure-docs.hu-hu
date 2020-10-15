@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ab08d23fe7448e50db42ea126e8158ad284b3320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 854c988346bce9be06811d386b3798d2d0427dd7
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653468"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095925"
 ---
 # <a name="ncv3-series"></a>NCv3 sorozat
 
@@ -25,8 +25,9 @@ Az NCv3 sorozatú virtuális gépeket NVIDIA Tesla V100 GPU-k működtetik. Ezek
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 
 > [!IMPORTANT]
-> Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-portal/supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-portal/supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/). Ezek az SKU-elemek nem érhetők el próbaverziós vagy Visual Studio-előfizetői Azure-előfizetésekhez. Előfordulhat, hogy az előfizetési szint nem támogatja ezen SKU-elemek kijelölését és telepítését. 
 >
+
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|---|
 | Standard_NC6s_v3    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
@@ -57,6 +58,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

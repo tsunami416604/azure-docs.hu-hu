@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
-ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d11f350c82fa09abf0803e795a92fdb373c36c
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119368"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097609"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Szolgáltatások összehasonlítása: Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -123,7 +123,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | Automatikus méretezés | Igen, de csak [kiszolgáló nélküli modellben](serverless-tier-overview.md). A nem kiszolgáló nélküli modellben a szolgáltatási réteg (virtuális mag, tárterület vagy DTU) változása gyors és online állapotú. A szolgáltatási rétegek változásához minimális vagy nem állásidő szükséges. | Nem, a fenntartott számítási és tárolási kapacitást kell választania. A szolgáltatási szintek (virtuális mag vagy maximális tárterület) módosítása online állapotú, és minimális vagy leállást igényel. |
 | [Automatikus biztonsági mentések](automated-backups-overview.md) | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. |
 | [Automatikus hangolás (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](automatic-tuning-overview.md)| Nem |
-| [Rendelkezésre állási zónák](/azure/availability-zones/az-overview) | Igen | Nem |
+| [Availability Zones](/azure/availability-zones/az-overview) | Igen | Nem |
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | Igen | Nem |
 | Biztonsági mentés megőrzése | Igen. 7 nap alapértelmezett, max. 35 nap. | Igen. 7 nap alapértelmezett, max. 35 nap. |
 | [Adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Igen | Igen |
@@ -177,14 +177,14 @@ A különböző áttelepítési módszerek használatával áthelyezheti az adat
 | --- | --- | --- |
 | SQL Server (helyszíni, AzureVM, Amazon RDS) | **Online:** [adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Natív biztonsági mentés/visszaállítás, [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) |
 | Önálló adatbázis | **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| Felügyelt SQL-példány | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Példányok közötti időponthoz tartozó visszaállítás ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) vagy [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natív biztonsági mentés/visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) |
+| SQL Managed Instance | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Példányok közötti időponthoz tartozó visszaállítás ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) vagy [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natív biztonsági mentés/visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Microsoft továbbra is felveszi a szolgáltatásokat a Azure SQL Databasehoz. Az alábbi szűrőket használó legújabb frissítésekért látogasson el az Azure Service Updates weblapjára:
 
 - [Azure SQL Databasera](https://azure.microsoft.com/updates/?service=sql-database)szűrve.
-- Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
+- Kiszűrve az [általánosan elérhető \( ga- \) hirdetményekben](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) SQL Database-funkciókhoz.
 
 A Azure SQL Database és az Azure SQL felügyelt példányával kapcsolatos további információkért lásd:
 

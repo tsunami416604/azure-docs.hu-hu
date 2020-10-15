@@ -8,12 +8,12 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d55890fc97ff24bd4b77628791bdda60c5f54347
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006132"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096147"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Összefogás az Azure térbeli Horgonyokkal
 
@@ -22,12 +22,12 @@ A következő platformok támogatottak:
 
 **HoloLens egység**
 
-[Gyors útmutató: Azure térbeli horgonyokat használó Unity HoloLens-alkalmazás létrehozása](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[Gyors útmutató: Azure térbeli horgonyokat használó Unity HoloLens-alkalmazás létrehozása](./quickstarts/get-started-unity-hololens.md)
 
 **Egység az Androidhoz**
 
-[Gyors útmutató: Azure térbeli horgonyokat használó Unity Android-alkalmazás létrehozása](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[Gyors útmutató: Azure térbeli horgonyokat használó Unity Android-alkalmazás létrehozása](./quickstarts/get-started-unity-android.md)
 
 **Az iOS egysége**
 
-[Rövid útmutató: Azure térbeli horgonyokat használó Unity iOS-alkalmazás létrehozása](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[Rövid útmutató: Azure térbeli horgonyokat használó Unity iOS-alkalmazás létrehozása](./quickstarts/get-started-unity-ios.md)

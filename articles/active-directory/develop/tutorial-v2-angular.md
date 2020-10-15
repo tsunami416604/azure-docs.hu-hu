@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096249"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
@@ -194,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Ezután adja meg a védett erőforrások leképezését a következőre, és adja hozzá a `MsalModule.forRoot()` `protectedResourceMap` hatókört a következőhöz `consentScopes` :
+Ezután adja meg a védett erőforrások leképezését, `MsalModule.forRoot()` `protectedResourceMap` és adja meg a hatókörét a alkalmazásban `consentScopes` . A `protectedResourceMap` gyűjteményben megadott URL-címek megkülönböztetik a kis-és nagybetűket.
 
 ```javascript
 @NgModule({
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Ebben a kódban az `scopes` API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz.
 
-Például:
+Példa:
 
 * `["user.read"]` Microsoft Graph
 * `["<Application ID URL>/scope"]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Előfordulhat, hogy a felhasználónak a Microsoft Identity platform-végponttal kell kommunikálnia. Például:
+Előfordulhat, hogy a felhasználónak a Microsoft Identity platform-végponttal kell kommunikálnia. Példa:
 
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
 * Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.

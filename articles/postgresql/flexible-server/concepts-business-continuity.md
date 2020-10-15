@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 264bb8c66510c90fecf12d2e4e68bd969b4fb474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1854b8cf65b8747e07fb3d25413432c108b29071
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935789"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096708"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL-rugalmas kiszolgálóval
 
@@ -61,10 +61,10 @@ Az alábbiakban néhány nem tervezett meghibásodási forgatókönyv és a hely
 
 | **Forgatókönyv** | **Helyreállítási folyamat [nem HA]** | **Helyreállítási folyamat [HA]** |
 | ---------- | ---------- | ------- |
-| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló nem érhető el, az Azure megkísérli az adatbázis-kiszolgáló újraindítását. Ha ez nem sikerül, az adatbázis-kiszolgáló egy másik fizikai csomóponton indul újra.  <br /> <br /> A helyreállítási idő (RTO) függ a különböző tényezőktől, például a meghibásodás időpontjában végzett tevékenységtől, például a nagy tranzakciótól, valamint az adatbázis-kiszolgáló indítási folyamata során végrehajtandó helyreállítás mennyiségétől. <br /> <br /> A PostgreSQL-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat. | Ha az adatbázis-kiszolgáló meghibásodása észlelhető, a kiszolgáló feladatátvételt végez a készenléti kiszolgálóval, így csökkentve az állásidőt. További információ: [Ha fogalmak oldal](../concepts-high-availability.md). A RTO várhatóan 60 120s, és nulla adatvesztéssel jár. |
-| <B>Tárolási hiba | Az alkalmazások nem érintik a tárterülettel kapcsolatos problémákat, például a lemez meghibásodását vagy a fizikai blokk sérülését. Mivel az adatmennyiség három másolatban tárolódik, az adatmásolatot a túlélő tároló tárolja. A rendszer automatikusan kijavítja a sérült adatblokkot, és automatikusan létrehozza az adatgyűjtés új másolatát. | A ritka és a nem helyreállítható hibák, például a teljes tárterület nem érhető el, a rugalmas kiszolgáló feladatátvétele a tartalék replikára történik, hogy csökkentse az állásidőt. További információ: [Ha fogalmak oldal](../concepts-high-availability.md). |
+| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló nem érhető el, az Azure megkísérli az adatbázis-kiszolgáló újraindítását. Ha ez nem sikerül, az adatbázis-kiszolgáló egy másik fizikai csomóponton indul újra.  <br /> <br /> A helyreállítási idő (RTO) függ a különböző tényezőktől, például a meghibásodás időpontjában végzett tevékenységtől, például a nagy tranzakciótól, valamint az adatbázis-kiszolgáló indítási folyamata során végrehajtandó helyreállítás mennyiségétől. <br /> <br /> A PostgreSQL-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat. | Ha az adatbázis-kiszolgáló meghibásodása észlelhető, a kiszolgáló feladatátvételt végez a készenléti kiszolgálóval, így csökkentve az állásidőt. További információ: [Ha fogalmak oldal](./concepts-high-availability.md). A RTO várhatóan 60 120s, és nulla adatvesztéssel jár. |
+| <B>Tárolási hiba | Az alkalmazások nem érintik a tárterülettel kapcsolatos problémákat, például a lemez meghibásodását vagy a fizikai blokk sérülését. Mivel az adatmennyiség három másolatban tárolódik, az adatmásolatot a túlélő tároló tárolja. A rendszer automatikusan kijavítja a sérült adatblokkot, és automatikusan létrehozza az adatgyűjtés új másolatát. | A ritka és a nem helyreállítható hibák, például a teljes tárterület nem érhető el, a rugalmas kiszolgáló feladatátvétele a tartalék replikára történik, hogy csökkentse az állásidőt. További információ: [Ha fogalmak oldal](./concepts-high-availability.md). |
 | <b> Logikai/felhasználói hibák | A felhasználói hibáktól, például a véletlenül eldobott tábláktól vagy a helytelenül frissített adatoktól való helyreállításhoz [időponthoz tartozó helyreállítást](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) kell végrehajtania. A visszaállítási művelet végrehajtása közben adja meg az egyéni visszaállítási pontot, amely a hiba előtti idő.<br> <br>  Ha csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani az adatbázis-kiszolgáló összes adatbázisa helyett, akkor az adatbázis-kiszolgálót visszaállíthatja egy új példányban, majd exportálhatja a táblázat (oka) t [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html), majd a [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) használatával visszaállíthatja ezeket a táblákat az adatbázisba. | Ezek a felhasználói hibák nem védik a magas rendelkezésre állást, mivel a rendszer szinkron módon replikálja az összes módosítást a készenléti replikára. Az ilyen hibák helyreállításához az időponthoz tartozó visszaállítást kell végrehajtani. |
-| <b> Rendelkezésre állási zóna hibája | A zóna szintű hibákból való helyreállításhoz a biztonsági mentés használatával időponthoz való visszaállítást hajthat végre, és kiválaszthat egy egyéni visszaállítási pontot a legújabb adatok visszaállításához. Egy új rugalmas kiszolgáló egy másik, nem érintett zónában lesz telepítve. A visszaállításhoz szükséges idő az előző biztonsági mentéstől és a helyreállítható tranzakciónaplók mennyiségétől függ. | A rugalmas kiszolgálót a rendszer automatikusan átadja a készenléti kiszolgálónak a 120s-n belül, nulla adatvesztéssel. További információ: [Ha fogalmak oldal](../concepts-high-availability.md). | 
+| <b> Rendelkezésre állási zóna hibája | A zóna szintű hibákból való helyreállításhoz a biztonsági mentés használatával időponthoz való visszaállítást hajthat végre, és kiválaszthat egy egyéni visszaállítási pontot a legújabb adatok visszaállításához. Egy új rugalmas kiszolgáló egy másik, nem érintett zónában lesz telepítve. A visszaállításhoz szükséges idő az előző biztonsági mentéstől és a helyreállítható tranzakciónaplók mennyiségétől függ. | A rugalmas kiszolgálót a rendszer automatikusan átadja a készenléti kiszolgálónak a 120s-n belül, nulla adatvesztéssel. További információ: [Ha fogalmak oldal](./concepts-high-availability.md). | 
 | <b> Régió meghibásodása | A többrégiós olvasási replika és a biztonsági mentési funkciók geo-visszaállítása még nem támogatott az előzetes verzióban. | |
 
 
@@ -72,7 +72,7 @@ Az alábbiakban néhány nem tervezett meghibásodási forgatókönyv és a hely
 > A törölt kiszolgálók **nem**állíthatók   vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Az [Azure erőforrás-zárolás](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)segítségével   megakadályozhatja a kiszolgáló véletlen törlését.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 -   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
 -   Tudnivalók a [biztonsági mentésről és a helyreállításról](./concepts-backup-restore.md)

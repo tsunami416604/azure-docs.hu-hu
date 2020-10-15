@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97142e0c512f4f95235ad08c94c852906d3efd8
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660849"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095856"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 A Azure Active Directory (Azure AD) összekapcsolása lehetővé teszi a helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) és az Azure AD-vel való összevonás konfigurálását. Az összevonási bejelentkezés lehetővé teszi a felhasználók számára, hogy az Azure AD-alapú szolgáltatásokba jelentkezzenek be helyszíni jelszavával – és közben a vállalati hálózaton, anélkül, hogy újra meg kellene adniuk a jelszavukat. A AD FS összevonásával telepítheti AD FS új telepítését, vagy megadhat egy meglévő telepítést egy Windows Server 2012 R2-farmban.
@@ -34,7 +34,7 @@ Ez a témakör a Azure AD Connect összevonásával kapcsolatos funkciókról ny
 | **Felhasználói bejelentkezési beállítások Azure AD Connect** | |
 | [Felhasználói bejelentkezési beállítások ismertetése](plan-connect-user-signin.md) |Ismerje meg a felhasználói bejelentkezési lehetőségek különböző beállításait, valamint azt, hogy ezek milyen hatással vannak az Azure bejelentkezési felhasználói felületére. |
 | **AD FS telepítése Azure AD Connect használatával** | |
-| [Előfeltételek](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Tekintse meg a sikeres AD FS telepítésének előfeltételeit Azure AD Connect használatával. |
+| [Előfeltételek](how-to-connect-install-custom.md#ad-fs-configuration-prerequisites) |Tekintse meg a sikeres AD FS telepítésének előfeltételeit Azure AD Connect használatával. |
 | [AD FS Farm konfigurálása](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Új AD FS Farm telepítése Azure AD Connect használatával. |
 | [Összevonása az Azure AD-vel alternatív bejelentkezési azonosító használatával](how-to-connect-fed-management.md#alternateid) | Összevonás konfigurálása alternatív bejelentkezési azonosító használatával  |
 | **A AD FS konfigurációjának módosítása** | |

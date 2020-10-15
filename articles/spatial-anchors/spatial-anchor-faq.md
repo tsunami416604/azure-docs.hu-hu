@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854949"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097405"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Az Azure térbeli Horgonyokkal kapcsolatos gyakori kérdések
 
@@ -33,7 +33,7 @@ További információ: [Azure térbeli horgonyok – áttekintés](overview.md).
 
 **K: milyen kapcsolati követelmények vonatkoznak az Azure térbeli horgonyokra?**
 
-**A:** Az Azure térbeli horgonyok Wi-Fi-és mobil szélessávú kapcsolatokkal működnek.
+**A:** Az Azure térbeli horgonyok Wi-Fi és mobil szélessávú kapcsolatokkal működnek.
 
 **K: milyen pontosan tud az Azure térbeli horgonyok megtalálni a horgonyokat?**
 
@@ -128,4 +128,4 @@ Kezdje el a [fejlesztést itt](index.yml).
 
 **K: milyen portokat és protokollokat használnak az Azure térbeli horgonyok?**
 
-**A:** Az Azure térbeli horgonyok a 443-as TCP-porton keresztül kommunikálnak titkosított protokoll használatával. A hitelesítéshez [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)használ, amely a HTTPS protokollon keresztül kommunikál a 443-as porton keresztül.
+**A:** Az Azure térbeli horgonyok a 443-as TCP-porton keresztül kommunikálnak titkosított protokoll használatával. A hitelesítéshez [Azure Active Directory](../active-directory/index.yml)használ, amely a HTTPS protokollon keresztül kommunikál a 443-as porton keresztül.
