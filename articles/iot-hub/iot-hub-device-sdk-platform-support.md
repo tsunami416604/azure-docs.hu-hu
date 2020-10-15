@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423082"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072271"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
@@ -60,7 +60,7 @@ Az [Azure IoT hub Python-eszköz SDK](https://github.com/Azure/azure-iot-sdk-pyt
 | Operációs rendszer                  | Fordítóprogram                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7. *, 3,5 vagy újabb |
-| MacOS magas Sierra   | Python 2,7. *, 3,5 vagy újabb |
+| macOS High Sierra   | Python 2,7. *, 3,5 vagy újabb |
 | Windows 10 termékcsalád   | Python 2,7. *, 3,5 vagy újabb |
 
 Csak a Python 3.5.3 vagy újabb verziója támogatja az aszinkron API-kat, javasoljuk, hogy a 3,7-es vagy újabb verziót használja.
@@ -120,7 +120,7 @@ A Microsoft számos partnerrel működik együtt az Azure IoT-univerzum folyamat
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Csatlakozás a IoT Hub SDK nélkül
 
-Ha nem tudja használni az IoT Hub eszköz SDK-kat, közvetlenül is csatlakozhat a IoT Hubhoz a [IOT hub REST API](https://docs.microsoft.com/rest/api/iothub/) -k használatával a HTTPS-kérések és válaszok küldésére és fogadására képes bármely alkalmazásból.
+Ha nem tudja használni az IoT Hub eszköz SDK-kat, csatlakozhat közvetlenül a IoT Hubhoz egy támogatott kommunikációs protokoll használatával. További információ: [fejlesztés Azure IOT SDK nélkül](iot-hub-devguide-no-sdk.md).
 
 ## <a name="support-and-other-resources"></a>Támogatás és egyéb forrásanyagok
 
@@ -144,7 +144,7 @@ A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https
 
 **Szolgáltatásra vonatkozó kérelmek** – az Azure IoT szolgáltatásra vonatkozó kérelmeket a termék [felhasználói hangja oldalon](https://feedback.azure.com/forums/321918-azure-iot)követheti nyomon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszköz és szolgáltatás SDK-k](iot-hub-devguide-sdks.md)
 * [A Porting útmutatója](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

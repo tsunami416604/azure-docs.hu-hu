@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 6662761df005211729dffb16282b8e0a8e2a8444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89428e9a64c6d4ae78d333c0cf597531588b1638
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442442"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072067"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>Hibák küldése a Stackify a naplózáshoz
 
-Ez a cikk egy Azure API Management-szabályzatot mutat be, amely bemutatja, hogyan adhat hozzá hiba-naplózási szabályzatot, hogy hibákat küldjön a Stackify a naplózáshoz. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
+Ez a cikk egy Azure API Management-szabályzatot mutat be, amely bemutatja, hogyan adhat hozzá hiba-naplózási szabályzatot, hogy hibákat küldjön a Stackify a naplózáshoz. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-reference.md).
 
 ## <a name="policy"></a>Szabályzat
 
@@ -30,10 +30,9 @@ Illessze be a kódot az **on-Error** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Log errors to Stackify.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 
 + [Átalakítási szabályzatok](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
-
++ [Házirend-minták](../policy-reference.md)

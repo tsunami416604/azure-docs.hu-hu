@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325623"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072152"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz
 
@@ -26,11 +26,11 @@ A Nfsv4 névleképezője bevezeti a hitelesítési tartomány fogalmát. Azure N
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>A felhasználó/csoport leképezésének alapértelmezett viselkedése
 
-A gyökér-leképezés alapértelmezett értéke a `nobody` felhasználó, mert a nfsv4 névleképezője tartománya a következőre van beállítva: `localdomain` . Ha a Azure NetApp Files NFSv 4.1-es kötetet root-ként csatlakoztatja, a fájlok engedélyei a következőképpen jelennek meg:  
+A gyökér-leképezés alapértelmezett értéke a `nobody` felhasználó, mert a nfsv4 névleképezője tartomány alapértelmezés szerint be van állítva `localdomain` . Ha a Azure NetApp Files NFSv 4.1-es kötetet root-ként csatlakoztatja, a fájlok engedélyei a következőképpen jelennek meg:  
 
 ![A felhasználó/csoport leképezésének alapértelmezett viselkedése a NFSv 4.1 esetében](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Ahogy a fenti példában is látható, a felhasználónak kell `file1` lennie `root` , de alapértelmezés szerint le van képezve `nobody` .  Ez a cikk bemutatja, hogyan állíthatja be a felhasználót a következőre: `file1` `root` .  
+Ahogy a fenti példában is látható, a felhasználónak kell `file1` lennie `root` , de alapértelmezés szerint le van képezve `nobody` .  Ez a cikk bemutatja, hogyan állíthatja be a felhasználót úgy, hogy `file1` `root` a beállítást a értékre módosítja `idmap Domain` `defaultv4iddomain.com` .  
 
 ## <a name="steps"></a>Lépések 
 

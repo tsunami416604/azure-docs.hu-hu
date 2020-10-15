@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017472"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072033"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből munkanapokra
 Ennek az oktatóanyagnak a célja, hogy megmutassa az attribútumok Azure AD-ből munkanapokra történő visszaírási elvégzendő lépéseket. A munkanap visszaírási kiépítési alkalmazás támogatja az értékek hozzárendelését a következő munkanap-attribútumokhoz:
@@ -144,16 +144,31 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
+1. A **hatókör** legördülő menüben válassza a **minden felhasználó és csoport szinkronizálása**lehetőséget. Ha ezt a lehetőséget választja, a visszaírási-alkalmazás az Azure ad-ból minden felhasználóhoz tartozó leképezett attribútumokat ír a munkanapokra, a **társítási**szabályok  ->  **hatókörében**meghatározott hatóköri szabályok alapján. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Visszaírási hatókörének kiválasztása](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > A munkanap visszaírási kiépítési alkalmazás nem támogatja a **csak a hozzárendelt felhasználók és csoportok szinkronizálását**.
+ 
+
 2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a forrás címtárban lévő felhasználók számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 
-4. A Azure Portal **naplók** lapján bármikor megtekintheti a kiépítési szolgáltatás által végrehajtott műveleteket. A naplók a kiépítési szolgáltatás által végrehajtott összes egyéni szinkronizálási eseményt felsorolják, például hogy mely felhasználók importálhatók a forrásból, és exportálhatók a célalkalmazás.  
+4. A Azure Portal **kiépítési naplók** lapján bármikor megtekintheti a kiépítési szolgáltatás által végrehajtott műveleteket. A naplók a kiépítési szolgáltatás által végrehajtott összes egyéni szinkronizálási eseményt felsorolják, például hogy mely felhasználók importálhatók a forrásból, és exportálhatók a célalkalmazás.  
 
 5. A kezdeti szinkronizálás befejeződése után egy összegző jelentést fog írni a **létesítés** lapon az alábbi ábrán látható módon.
 
      > [!div class="mx-imgBorder"]
      > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
+
+* A visszaírási alkalmazás egy előre meghatározott értéket használ a paraméterekhez **Communication_Usage_Type_ID** és **Phone_Device_Type_ID**. Ha a munkanap bérlője más értéket használ ezeknek az attribútumoknak az esetében, akkor a visszaírási művelet sikertelen lesz. A javasolt Áthidaló megoldás a Type_IDs frissítése munkanapokon. 
+* Ha a visszaírási alkalmazás a másodlagos telefonszámok frissítésére van konfigurálva, nem helyettesíti a meglévő másodlagos telefonszámot a munkanapokon. Hozzáadja még egy másodlagos telefonszámot a feldolgozói rekordhoz. Ehhez a viselkedéshez nem kerülő megoldás. 
+
 
 ## <a name="next-steps"></a>További lépések
 
