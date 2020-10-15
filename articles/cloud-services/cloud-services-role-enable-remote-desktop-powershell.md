@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 13d5be5b1e0bcdf84001f21a45364296d67a5da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7742267f5ce199f3a5bffc52200374d2323f0622
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87013897"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072458"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a PowerShell használatával
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a távoli asztal a Cloud Servic
 ## <a name="configure-remote-desktop-from-powershell"></a>Távoli asztal konfigurálása a PowerShellből
 A [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag lehetővé teszi, hogy az távoli asztal a megadott szerepkörökön vagy a Cloud Service-telepítés összes szerepkörén engedélyezze. A parancsmag segítségével megadhatja a távoli asztal felhasználójának felhasználónevét és jelszavát a *hitelesítő adatok* paraméterrel, amely elfogadja a PSCredential objektumot.
 
-Ha interaktívan használja a PowerShellt, a [Get-hitelesítőadats](https://technet.microsoft.com/library/hh849815.aspx) parancsmag meghívásával egyszerűen beállíthatja a PSCredential objektumot.
+Ha interaktívan használja a PowerShellt, a [Get-hitelesítőadats](/powershell/module/microsoft.powershell.security/get-credential) parancsmag meghívásával egyszerűen beállíthatja a PSCredential objektumot.
 
 ```powershell
 $remoteusercredentials = Get-Credential
@@ -38,7 +38,7 @@ $remoteusercredentials = Get-Credential
 
 Ez a parancs egy párbeszédpanelt jelenít meg, amely lehetővé teszi, hogy biztonságos módon adja meg a távoli felhasználó felhasználónevét és jelszavát.
 
-Mivel a PowerShell segítséget nyújt az automatizálási forgatókönyvekben, a **PSCredential** objektumot úgy is beállíthatja, hogy ne kelljen felhasználói beavatkozást végeznie. Először be kell állítania egy biztonságos jelszót. Egy egyszerű szöveges jelszó megadásával kezdődik a [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)használatával történő biztonságos karakterláncra konvertálása. Ezután a biztonságos karakterláncot egy titkosított szabványos karakterlánccá kell konvertálnia a [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx)használatával. Most már mentheti a titkosított szabványos karakterláncot egy fájlra a [set-Content](https://technet.microsoft.com/library/ee176959.aspx)paranccsal.
+Mivel a PowerShell segítséget nyújt az automatizálási forgatókönyvekben, a **PSCredential** objektumot úgy is beállíthatja, hogy ne kelljen felhasználói beavatkozást végeznie. Először be kell állítania egy biztonságos jelszót. Egy egyszerű szöveges jelszó megadásával kezdődik a [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)használatával történő biztonságos karakterláncra konvertálása. Ezután a biztonságos karakterláncot egy titkosított szabványos karakterlánccá kell konvertálnia a [ConvertFrom-SecureString](/powershell/module/microsoft.powershell.security/convertfrom-securestring)használatával. Most már mentheti a titkosított szabványos karakterláncot egy fájlra a [set-Content](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176959(v=technet.10))paranccsal.
 
 Létrehozhat egy biztonságos jelszavas fájlt is, így nem kell minden alkalommal beírnia a jelszót. Emellett a biztonságos jelszavas fájl is jobb, mint egy egyszerű szövegfájl. A következő PowerShell használatával hozzon létre egy biztonságos jelszavas fájlt:
 
@@ -47,9 +47,9 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 ```
 
 > [!IMPORTANT]
-> A jelszó beállításakor győződjön meg arról, hogy megfelel az [összetettségi követelményeknek](https://technet.microsoft.com/library/cc786468.aspx).
+> A jelszó beállításakor győződjön meg arról, hogy megfelel az [összetettségi követelményeknek](/previous-versions/windows/it-pro/windows-server-2003/cc786468(v=ws.10)).
 
-Ahhoz, hogy a hitelesítő adatokat a biztonságos jelszó fájlból hozza létre, el kell olvasnia a fájl tartalmát, és vissza kell alakítania azokat egy biztonságos karakterláncra az [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)használatával.
+Ahhoz, hogy a hitelesítő adatokat a biztonságos jelszó fájlból hozza létre, el kell olvasnia a fájl tartalmát, és vissza kell alakítania azokat egy biztonságos karakterláncra az [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)használatával.
 
 A [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag egy *lejárati* paramétert is elfogad, amely meghatározza azt a **dátumot** és időpontot, amikor a felhasználói fiók lejár. Például beállíthatja, hogy a fiók az aktuális dátumtól és időponttól néhány napig lejárjon.
 
@@ -101,5 +101,3 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>További források
 
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)
-
-

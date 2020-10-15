@@ -3,12 +3,12 @@ title: A Backup-tárolók áttekintése
 description: A Backup-tárolók áttekintése.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995564"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091287"
 ---
 # <a name="backup-vaults-overview"></a>Backup-tárolók áttekintése
 
@@ -16,7 +16,7 @@ Ez a cikk a Backup-tároló funkcióit ismerteti. A Backup-tároló egy Azure-be
 
 - **Továbbfejlesztett funkciók a biztonsági mentési adatokat biztonságossá tételéhez**: a Backup-tárolókkal a Azure Backup biztonsági képességeket biztosít a Felhőbeli biztonsági másolatok védelméhez. A biztonsági funkciók biztosítják, hogy biztonságban legyenek a biztonsági másolatok, és biztonságosan helyreállítsák az adatokat, még akkor is, ha a termelési és a biztonsági mentési kiszolgálók biztonsága sérül. [További információ](backup-azure-security-feature.md)
 
-- **Szerepköralapú Access Control (RBAC)**: a RBAC részletes hozzáférés-kezelési vezérlést biztosít az Azure-ban. Az [Azure számos beépített szerepkört kínál](../role-based-access-control/built-in-roles.md), és a Azure Backup három [beépített szerepkörrel rendelkezik a helyreállítási pontok kezeléséhez](backup-rbac-rs-vault.md). A Backup-tárolók kompatibilisek a RBAC-mel, amely korlátozza a biztonsági mentést és a hozzáférés visszaállítását a felhasználói szerepkörök meghatározott készletéhez. [További információ](backup-rbac-rs-vault.md)
+- **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)**: az Azure RBAC részletes hozzáférés-vezérlési felügyeletet biztosít az Azure-ban. Az [Azure számos beépített szerepkört kínál](../role-based-access-control/built-in-roles.md), és a Azure Backup három [beépített szerepkörrel rendelkezik a helyreállítási pontok kezeléséhez](backup-rbac-rs-vault.md). A Backup-tárolók kompatibilisek az Azure RBAC, amely korlátozza a biztonsági mentést, és visszaállítja a hozzáférést a megadott felhasználói szerepkörökhöz. [További információ](backup-rbac-rs-vault.md)
 
 ## <a name="storage-settings-in-the-backup-vault"></a>Tárolási beállítások a Backup-tárolóban
 

@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836734"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091168"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Ismerkedjen meg Cloud Services és Service Fabric közötti különbségekkel az alkalmazások áttelepítése előtt.
 A Microsoft Azure Service Fabric a felhőalapú alkalmazások következő platformja, amely rugalmasan méretezhető, megbízható elosztott alkalmazások számára készült. Számos új funkciót vezet be az elosztott felhőalapú alkalmazások csomagolásához, üzembe helyezéséhez, frissítéséhez és felügyeletéhez. 
@@ -69,7 +69,7 @@ A közvetlen kommunikáció révén a rétegek közvetlenül kommunikálhatnak a
 
 A Service Fabric egy elnevezési szolgáltatás nevű szolgáltatás-felderítési mechanizmust biztosít, amely a szolgáltatások végponti címeinek feloldására használható. 
 
-![Közvetlen kommunikáció Service Fabric][6]
+![Diagram, amely azt mutatja, hogy a Service Fabric hogyan biztosít egy szolgáltatás-felderítési mechanizmust, az úgynevezett elnevezési szolgáltatás, amely a szolgáltatások végponti címeinek feloldására használható.][6]
 
 ### <a name="queues"></a>Üzenetsorok
 Az állapot nélküli környezetekben a rétegek közötti közös kommunikációs mechanizmus, például a Cloud Services egy külső tárolási várólista használata a tartósan az egyik rétegből a másikba való tárolásához. A gyakori forgatókönyv egy olyan webes szint, amely feladatokat küld egy Azure-várólistába, vagy Service Bus, ahol a feldolgozói szerepkör példányai elhelyezhetők és feldolgozhatják a feladatokat.

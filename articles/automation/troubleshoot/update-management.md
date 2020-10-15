@@ -2,15 +2,15 @@
 title: Azure Automation Update Management problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
-ms.date: 09/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858404"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070333"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -486,6 +486,8 @@ Ellenőrizze, hogy a rendszerfiók rendelkezik-e olvasási hozzáféréssel a **
 A frissítések alapértelmezett karbantartási időszaka 120 perc. A karbantartási időszakot legfeljebb 6 órára növelheti, vagy 360 percet is igénybe vehet.
 
 ### <a name="resolution"></a>Feloldás
+
+Ha meg szeretné tudni, hogy ez miért fordult elő a frissítés sikeres elindítása után, tekintse meg az érintett gépről a futtatási [kimenetet](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) . Előfordulhat, hogy olyan hibaüzeneteket talál a gépekről, amelyeken kutatást végezhet, és műveleteket hajthat végre.  
 
 Szerkessze a sikertelen ütemezett frissítések telepítését, és növelje a karbantartási időszakot.
 

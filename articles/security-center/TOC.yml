@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender Kuberneteshez
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: Azure Defender tárolóregisztrációs adatbázisokhoz
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: További fenyegetésvédelem
           href: other-threat-protections.md
     - name: A Security Center tárolóbiztonsági szolgáltatásai
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: Díjszabás
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: Előkészítés automatizálása a PowerShell használatával
       href: security-center-powershell-onboarding.md
+    - name: A Security Center engedélyezése felügyeleti csoportokhoz
+      href: onboard-management-group.md
     - name: Adatgyűjtés konfigurálása
       href: security-center-enable-data-collection.md
     - name: E-mail-értesítések beállítása
@@ -140,8 +142,6 @@
             - name: Javaslatokra adott válaszok automatizálása
               displayName: workflow
               href: workflow-automation.md
-            - name: Javaslatok exportálása
-              href: continuous-export.md
             - name: Erőforrás kivonása egy javaslatból
               href: exempt-resource.md
     - name: Azure Defender-riasztások
@@ -169,17 +169,20 @@
           href: update-regulatory-compliance-packages.md
     - name: Az Azure Defender használata kiszolgálókhoz
       items:
-        - name: A biztonsági rések ellenőrzése virtuális gépeken
+        - name: Biztonsági rések vizsgálata
           items:
-            - name: A virtuális gépek vizsgálata az integrált sebezhetőség-felmérési megoldással
-              displayName: 'qualys, vulnerability'
+            - name: Integrált biztonságirés-felmérési vizsgálat gépekhez
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: A virtuális gépek vizsgálata BYOL sebezhetőség-felmérési megoldással
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: Virtuális gépek biztonsági réseinek áttekintése és javítása
+            - name: Biztonsági rések áttekintése és javítása
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: Meghatározott sebezhetőségi eredmények letiltása
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Felügyeleti portok biztosítása a virtuális gépek igény szerinti elérésével
           items:
             - name: A virtuális gépek igény szerinti elérésének áttekintése
@@ -213,6 +216,15 @@
     - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: Riasztások és javaslatok exportálása
+      items:
+        - name: 'Exportálás SIEM-be, SOAR-ba vagy ITSM-be'
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: Exportálás Log Analytics-munkaterületbe vagy az Azure Event Hubba
+          href: continuous-export.md
+        - name: Az összes riasztás CSV-jelentésének letöltése
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: Azure Defender-riasztások kezelése
       items:
         - name: Biztonsági riasztások kezelése
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: Fenyegetésfelderítési jelentés előállítása
           href: security-center-threat-report.md
-        - name: Riasztási konfiguráció érvényesítése (EICAR-tesztfájl)
+        - name: Riasztási konfiguráció érvényesítése
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: Riasztásokra adott válaszok automatizálása
           displayName: workflow
           href: workflow-automation.md
-        - name: Riasztások exportálása
-          displayName: continuous
-          href: continuous-export.md
     - name: A Kubernetes számítási feladatok védelme
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: Felhasználói adatok vizsgálatának kezelése
       href: security-center-investigation-user-data.md

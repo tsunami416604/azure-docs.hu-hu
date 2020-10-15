@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888470"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090709"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az átmeneti üzembe helye
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már üzembe helyezte a PiggyMetrics alkalmazást az [Azure Spring Cloud-alkalmazás elindításáról szóló oktatóanyagban](spring-cloud-quickstart-launch-app-portal.md). A PiggyMetrics három alkalmazást tartalmaz: "Gateway", "Account-Service" és "Auth-Service".  
+Ez a cikk azt feltételezi, hogy már üzembe helyezte a PiggyMetrics alkalmazást az [Azure Spring Cloud-alkalmazás elindításáról szóló oktatóanyagban](./spring-cloud-quickstart.md). A PiggyMetrics három alkalmazást tartalmaz: "Gateway", "Account-Service" és "Auth-Service".  
 
 Ha ehhez a példához egy másik alkalmazást szeretne használni, egyszerű módosítást kell végeznie az alkalmazás nyilvános részén.  Ez a változás megkülönbözteti az átmeneti üzembe helyezést az éles környezetben.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706357"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070384"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -31,7 +31,7 @@ Az Azure AD ezt az integrációt használja a következő Felhőbeli HR-alkalmaz
 - **Írjon vissza a Cloud HR alkalmazásba:** Az Azure AD-beli e-mail-címek és felhasználónevek attribútumainak megírása a Cloud HR alkalmazásba.
 
 > [!NOTE]
-> Ez a telepítési terv bemutatja, hogyan helyezheti üzembe a Felhőbeli HR-alkalmazás munkafolyamatait az Azure AD-beli felhasználók kiépítésével. További információ az automatikus felhasználó-kiépítési szolgáltatás (SaaS) alkalmazásaiban történő üzembe helyezéséről: [automatikus felhasználó üzembe helyezésének megtervezése](https://aka.ms/deploymentplans/provisioning).
+> Ez a telepítési terv bemutatja, hogyan helyezheti üzembe a Felhőbeli HR-alkalmazás munkafolyamatait az Azure AD-beli felhasználók kiépítésével. További információ az automatikus felhasználó-kiépítési szolgáltatás (SaaS) alkalmazásaiban történő üzembe helyezéséről: [automatikus felhasználó üzembe helyezésének megtervezése](./plan-auto-user-provisioning.md).
 
 ## <a name="enabled-hr-scenarios"></a>Engedélyezett HR-forgatókönyvek
 
@@ -52,7 +52,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - E-mailek Microsoft 365 használata.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -73,7 +73,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
@@ -126,7 +126,7 @@ A környezetében érdemes figyelembe vennie a szervezeti igényeket is.
 
 ### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-Ha a technológiai projektek sikertelenek, ezek általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans). Győződjön meg arról is, hogy a projektben szereplő érintett szerepkörök jól megértettek. Dokumentálja az érintett feleket és a projekt bemenetét és elszámoltathatóság.
+Ha a technológiai projektek sikertelenek, ezek általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md). Győződjön meg arról is, hogy a projektben szereplő érintett szerepkörök jól megértettek. Dokumentálja az érintett feleket és a projekt bemenetét és elszámoltathatóság.
 
 Vegyen fel egy képviselőt a HR-szervezetből, amely a meglévő HR üzleti folyamatokon és a feldolgozó identitáson, valamint a feladatok adatfeldolgozási követelményein keresztül biztosít bemeneteket.
 
@@ -378,7 +378,7 @@ Az Azure AD további betekintést nyújt a szervezet felhasználó általi haszn
 
 A sikeres [kezdeti ciklust](../app-provisioning/how-provisioning-works.md#initial-cycle)követően az Azure ad-kiépítési szolgáltatás továbbra is határozatlan ideig futtatja az egyes alkalmazásokra vonatkozó oktatóanyagokban meghatározott időközöket, amíg az alábbi események valamelyike be nem következik:
 
-- A szolgáltatás kézi leállítása megtörténik. Az új kezdeti ciklust a [Azure Portal](https://portal.azure.com/) vagy a megfelelő [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -parancs használatával indítja el.
+- A szolgáltatás kézi leállítása megtörténik. Az új kezdeti ciklust a [Azure Portal](https://portal.azure.com/) vagy a megfelelő [Microsoft Graph API](/graph/api/resources/synchronization-overview) -parancs használatával indítja el.
 - Az attribútum-hozzárendelések és a hatóköri szűrők módosítása miatt új kezdeti ciklust indítunk el.
 - A kiépítési folyamat a nagy hibák miatt Karanténba kerül. Több mint négy hétig marad karanténba helyezve, ekkor automatikusan le van tiltva.
 
@@ -416,6 +416,6 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 ### <a name="next-steps"></a>Következő lépések
 
 - [Kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md)
-- [Az Azure AD szinkronizációs API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Az Azure AD szinkronizációs API áttekintése](/graph/api/resources/synchronization-overview)
 - [A hatókörön kívüli felhasználói fiókok törlésének kihagyása](skip-out-of-scope-deletions.md)
 - [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)

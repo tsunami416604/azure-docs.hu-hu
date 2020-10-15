@@ -1,14 +1,14 @@
 ---
 title: 'Minta: egy házirend-definícióban szereplő érték operátor'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan használható a Value operátor egy házirend-definícióban.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8392c69ff3d63ff4ecad2a26d5d914b4766147b8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565662"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072883"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy minta: az érték operátor
 
@@ -31,7 +31,7 @@ Az **érték** operátor a ' policyrule osztály belül használatos **. Ha** a 
 
 az **érték** a [resourceGroup ()](../../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup) függvény eredményét értékeli ki egy üres érték **notEquals** . Ha a szülő erőforráscsoport **TagName** megadott címke neve létezik, a feltételes kiértékelés igaz értéket ad vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

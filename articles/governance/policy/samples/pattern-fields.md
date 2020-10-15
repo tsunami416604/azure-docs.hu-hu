@@ -1,14 +1,14 @@
 ---
 title: 'Minta: mezőtulajdonságok a házirend-definícióban'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan használható a Mezőtulajdonságok a házirend-definícióban.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 87c550e5fb3ef0efbf219efc738a69071d2e89ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 267c687f78f0bbb100843faee40ab6f3d3cbb64c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565713"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072968"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy minta: mező tulajdonságai
 
@@ -32,7 +32,7 @@ A **mező** operátor háromszor van használatban a [logikai operátor](../conc
 
 Ha a **allOf** logikai operátor mindhárom feltétel-utasítása igaz értéket ad meg, a Azure Policy blokkolja az erőforrás-létrehozási vagy-frissítési műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

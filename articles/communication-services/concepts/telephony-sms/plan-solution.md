@@ -10,19 +10,19 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048219"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070350"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>A telefonos és SMS-megoldás megtervezése
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok használatát hanghívások készítésére és SMS-üzenetek küldésére a nyilvános kapcsolású telefonos hálózattal (PSTN). Ebben a dokumentumban áttekintjük a telefonos és SMS-megoldások kommunikációs szolgáltatásokkal történő megtervezéséhez szükséges telefonszámokat, terveket és régiókat.
+Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok használatát hanghívások készítésére és SMS-üzenetek küldésére a nyilvános kapcsolású telefonos hálózattal (PSTN). Ebben a dokumentumban áttekintjük a telefonszámokat, a konfigurációs beállításokat és a régió rendelkezésre állását a telefonos és SMS-megoldás kommunikációs szolgáltatásokkal történő megtervezéséhez.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -51,19 +51,19 @@ Az alábbi táblázat összefoglalja a következő telefonszámokat:
 | Toll-Free         | + 1 (díjmentes terület *kódja*) xxx XX XX | USA                      | Calling (kimenő), SMS (bejövő/kimenő)| Telefonszámok kiosztása interaktív hangválaszi (IVR) rendszerekhez/robotokhoz, SMS-alkalmazásokhoz                                        |
 
 
-## <a name="phone-number-plans-in-azure-communication-services"></a>Telefonos csomagok az Azure kommunikációs szolgáltatásokban 
+## <a name="phone-number-features-in-azure-communication-services"></a>Az Azure kommunikációs szolgáltatások telefonszám-szolgáltatásai 
 
-A legtöbb telefonszám esetében lehetővé tesszük a "a la carte" csomagok készletének konfigurálását. Bizonyos fejlesztőknek csak kimenő hívási tervre van szükségük; Előfordulhat, hogy egyesek a kimenő hívások és a kimenő SMS-csomagok közül választhatnak. Ezeket a csomagokat kiválaszthatja a telefonszámok Azure kommunikációs szolgáltatásokban való bérletének megadásával.
+A legtöbb telefonszám esetében lehetővé tesszük a "a la carte" szolgáltatások beállításának konfigurálását. Ezek a funkciók kiválaszthatók, ha az Azure kommunikációs szolgáltatásokban adhatja meg a telefonszámokat.
 
-A rendelkezésre álló csomagok attól függnek, hogy melyik országból, a használati esethez és a kiválasztott telefonszám-típushoz tartoznak. Ezek a csomagok országonként változnak, a szabályozási követelmények miatt. Az Azure kommunikációs szolgáltatás a következő terveket kínálja:
+Az Ön számára elérhető funkciók attól függnek, hogy melyik országban működik, a használati eset és a kiválasztott telefonszám típusa. Ezek a szolgáltatások országonként változnak, a szabályozási követelmények miatt. Az Azure kommunikációs szolgáltatások a következő telefonszám-funkciókat kínálja:
 
-- **Egyirányú kimenő SMS** Ez a csomag lehetővé teszi, hogy SMS-üzeneteket küldjön a felhasználóknak. Ez a csomag olyan forgatókönyvek esetén hasznos, mint az értesítések és a kétfaktoros hitelesítési riasztások. 
-- **Kétirányú bejövő és kimenő SMS** Ez a csomag lehetővé teszi üzenetek küldését és fogadását a felhasználóktól a telefonszámok használatával. Ez a csomag az ügyfél-szolgáltatási forgatókönyvekben hasznos.
-- **Egyirányú kimenő telefonhívás** Ezzel a csomaggal hívásokat indíthat a felhasználók számára, és konfigurálhatja a hívó AZONOSÍTÓját a szolgáltatás által elhelyezett kimenő hívásokhoz. Ez a csomag az ügyfélszolgálati és a hangalapú értesítési forgatókönyvekben hasznos.
+- **Egyirányú kimenő SMS** Ez a beállítás lehetővé teszi, hogy SMS-üzeneteket küldjön a felhasználóknak. Ez az értesítési és a kétfaktoros hitelesítési helyzetekben lehet hasznos. 
+- **Kétirányú bejövő és kimenő SMS** Ez a beállítás lehetővé teszi üzenetek küldését és fogadását a felhasználóktól a telefonszámok használatával. Ez az ügyfél-szolgáltatási forgatókönyvek esetében hasznos lehet.
+- **Egyirányú kimenő telefonhívás** Ezzel a beállítással hívásokat indíthat a felhasználók számára, és konfigurálhatja a hívó AZONOSÍTÓját a szolgáltatás által elhelyezett kimenő hívásokhoz. Ez hasznos lehet az ügyfélszolgálatnál és a hangalapú értesítési forgatókönyvekben.
 
 ## <a name="countryregion-availability"></a>Ország/régió elérhetősége
 
-A következő táblázat bemutatja, hogy hol szerezhetők be különböző típusú telefonszámok, valamint a bejövő és kimenő hívási és SMS-funkciók, amelyek az ilyen típusú telefonszámokhoz vannak társítva.
+A következő táblázat azt mutatja be, hogy hol szerezhetők be különböző típusú telefonszámok, valamint a bejövő és kimenő hívási és SMS-funkciók, amelyek az ilyen típusú telefonszámokhoz vannak társítva.
 
 |Szám típusa| Számok beolvasása a | Hívások kezdeményezése                                        | Hívások fogadása innen:                                    |Üzenetek küldése a következőnek       | Üzenetek fogadása innen: |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
