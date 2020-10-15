@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001416"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091423"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez
 
@@ -33,7 +33,7 @@ Használja az Azure Blob Storage .NET-hez készült ügyféloldali kódtárat a 
 
 További források:
 
-* [API-referenciadokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API-referenciadokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [Példák](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -205,7 +205,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőke
 
 ### <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Az alábbi kód ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolódási karakterláncot, amely elemezhető egy olyan [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) objektum létrehozásához, amely a Storage-fiókra mutat. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) metódust. Ha `TryParse` a sikeres, inicializálja a `storageAccount` változót, és visszatér `true` .
+Az alábbi kód ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolódási karakterláncot, amely elemezhető egy olyan [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) objektum létrehozásához, amely a Storage-fiókra mutat. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metódust. Ha `TryParse` a sikeres, inicializálja a `storageAccount` változót, és visszatér `true` .
 
 Adja hozzá ezt a kódot a `ProcessAsync` metódushoz:
 
@@ -392,7 +392,7 @@ Az **Enter** billentyű lenyomása után az alkalmazás törli a Storage-tárol�
 
 A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

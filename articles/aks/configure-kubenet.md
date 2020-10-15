@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc245fa02f57a433a76a316caac67ed5d884fe9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264609"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072747"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -56,7 +56,7 @@ Az *Azure CNI*minden Pod IP-címet kap az IP-alhálózatban, és közvetlenül t
 * Az Azure CNI-fürtökkel ellentétben több kubenet-fürt nem tud alhálózatot megosztani.
 * **A kubenet-ben nem támogatott szolgáltatások a** következők:
    * Az [Azure hálózati házirendjei](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), de a kubenet támogatottak a tarka hálózati házirendek
-   * [Windows-csomópontos készletek](windows-node-limitations.md)
+   * [Windows-csomópontos készletek](./windows-faq.md)
    * [Virtuális csomópontok bővítmény](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP-cím rendelkezésre állása és kimerülése

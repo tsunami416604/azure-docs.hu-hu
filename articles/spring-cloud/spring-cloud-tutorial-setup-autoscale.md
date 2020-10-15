@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905384"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091066"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Oktatóanyag: a Service-alkalmazások autoskálázásának beállítása
 
@@ -24,8 +24,8 @@ Az autoscale az Azure Spring Cloud beépített funkciója, amely segítséget ny
 
 Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
-* Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) foglalkozó rövid útmutatót.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](./spring-cloud-quickstart.md) foglalkozó rövid útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Navigáljon a Azure Portal
@@ -68,7 +68,7 @@ Az Azure CLI használatával is beállíthatja az autoskálázási módokat.  Az
 
 Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen korláttal van korlátozva, a standard szintre válthat. Ehhez nyissa meg az **árképzési** szint menüt úgy, hogy először kiválasztja a *standard* szintű oszlopot, és a **frissítés** gombra kattint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az autoskálázás áttekintése Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Az Azure CLI figyelésének autoskálázása](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
+* [Az autoskálázás áttekintése Microsoft Azure](../azure-monitor/platform/autoscale-overview.md)
+* [Az Azure CLI figyelésének autoskálázása](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

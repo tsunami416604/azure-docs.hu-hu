@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: új szabályzat-hozzárendelés REST API'
 description: Ebben a rövid útmutatóban a REST API használatával hozhat létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136523"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074005"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához REST API
 
@@ -23,7 +23,7 @@ REST API Azure-erőforrások létrehozására és kezelésére szolgál. Ez az �
 
 - Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-- Ha még nem tette meg, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient). Ez egy olyan eszköz, amely HTTP-kéréseket küld Azure Resource Manager-alapú REST API-khoz. Azt is megteheti, hogy a REST dokumentációjában a "kipróbálás" funkciót használja, például a PowerShell [meghívása – RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) vagy [Poster](https://www.postman.com).
+- Ha még nem tette meg, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient). Ez egy olyan eszköz, amely HTTP-kéréseket küld Azure Resource Manager-alapú REST API-khoz. Használhatja a REST dokumentációban található "kipróbálás" funkciót is, vagy olyan eszközt is használhat, mint például a PowerShell [meghívása – RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) vagy [Poster](https://www.postman.com).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +112,7 @@ DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/po
 
 Cserélje le a helyére `{scope}` a szabályzat-hozzárendelés első létrehozásakor használt hatókört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 

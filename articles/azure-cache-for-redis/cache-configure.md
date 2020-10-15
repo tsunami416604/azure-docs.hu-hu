@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000187"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089723"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -31,7 +31,7 @@ Az Azure cache for Redis beállításait az **erőforrás menü**használatával
 A következő beállításokat tekintheti meg és konfigurálhatja az **erőforrás menüben**.
 
 * [Áttekintés](#overview)
-* [Műveletnapló](#activity-log)
+* [Tevékenységnapló](#activity-log)
 * [Hozzáférés-vezérlés (IAM)](#access-control-iam)
 * [Címkék](#tags)
 * [Problémák diagnosztizálása és megoldása](#diagnose-and-solve-problems)
@@ -72,7 +72,7 @@ A gyorsítótárban végrehajtott műveletek megtekintéséhez kattintson a **m�
 
 ### <a name="access-control-iam"></a>Hozzáférés-vezérlés (IAM)
 
-A **hozzáférés-vezérlés (iam)** szakasz támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) a Azure Portal. Ez a konfiguráció segít a szervezeteknek egyszerűen és pontosan teljesíteni a hozzáférés-kezelési követelményeiket. További információ: [szerepköralapú hozzáférés-vezérlés a Azure Portalban](../role-based-access-control/role-assignments-portal.md).
+A **hozzáférés-vezérlés (iam)** szakasz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) támogatását biztosítja a Azure Portalban. Ez a konfiguráció segít a szervezeteknek egyszerűen és pontosan teljesíteni a hozzáférés-kezelési követelményeiket. További információ: [Azure szerepköralapú hozzáférés-vezérlés a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Címkék
 
@@ -386,7 +386,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 >
 
-| Beállítás | Alapértelmezett érték | Description |
+| Beállítás | Alapértelmezett érték | Leírás |
 | --- | --- | --- |
 | `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0, a és a közötti kapcsolaton keresztül választhat egy másikat `connection.GetDatabase(dbid)` `dbid` `0` `databases - 1` . |
 | `maxclients` |A<sup>2</sup> . árképzési szinttől függ |Ez az érték a csatlakoztatott ügyfelek által egyszerre engedélyezett maximális szám. Ha elérte a korlátot, a Redis lezárja az összes új kapcsolatot, és "az ügyfelek maximális száma elérte a hibát" hibaüzenetet adja vissza. |

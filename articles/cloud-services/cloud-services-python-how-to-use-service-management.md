@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851511"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073988"
 ---
 # <a name="use-service-management-from-python"></a>A Service Management használata a Pythonból
 Ez az útmutató bemutatja, hogyan hajthat végre általános szolgáltatás-felügyeleti feladatokat a Pythonból. A [Pythonhoz készült Azure SDK](https://github.com/Azure/azure-sdk-for-python) **ServiceManagementService** osztálya támogatja a programozott hozzáférést a [Azure Portalban][management-portal]elérhető szolgáltatás-felügyeleti funkciók nagy része számára. Ezt a funkciót használhatja a Cloud Services, az üzemelő példányok, az adatkezelési szolgáltatások és a virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a funkció hasznos lehet olyan alkalmazások létrehozásához, amelyeknek programozott hozzáférésre van szükségük a Service Management szolgáltatáshoz.
@@ -194,7 +194,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Tárolási szolgáltatás létrehozása
-A [Storage szolgáltatás](../storage/common/storage-create-storage-account.md) hozzáférést biztosít az Azure- [blobokhoz](../storage/blobs/storage-python-how-to-use-blob-storage.md),- [táblákhoz](../cosmos-db/table-storage-how-to-use-python.md)és- [várólistákhoz](../storage/queues/storage-python-how-to-use-queue-storage.md). A tárolási szolgáltatás létrehozásához szüksége lesz a szolgáltatás nevére (3 – 24 kisbetűs karakter és az Azure-on belül egyedi). Szükség van egy leírásra is, egy címkére (legfeljebb 100 karakter, automatikusan Base64-re kódolva) és egy helyre. Az alábbi példa bemutatja, hogyan hozhat létre tárolási szolgáltatást egy hely megadásával:
+A [Storage szolgáltatás](../storage/common/storage-account-create.md) hozzáférést biztosít az Azure- [blobokhoz](../storage/blobs/storage-quickstart-blobs-python.md),- [táblákhoz](../cosmos-db/table-storage-how-to-use-python.md)és- [várólistákhoz](../storage/queues/storage-python-how-to-use-queue-storage.md). A tárolási szolgáltatás létrehozásához szüksége lesz a szolgáltatás nevére (3 – 24 kisbetűs karakter és az Azure-on belül egyedi). Szükség van egy leírásra is, egy címkére (legfeljebb 100 karakter, automatikusan Base64-re kódolva) és egy helyre. Az alábbi példa bemutatja, hogyan hozhat létre tárolási szolgáltatást egy hely megadásával:
 
 ```python
 from azure import *
@@ -446,9 +446,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-A Linux rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Linux rendszerű virtuális gép rögzítése](../virtual-machines/linux/classic/capture-image-classic.md).
+A Linux rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Linux rendszerű virtuális gép rögzítése](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic).
 
-A Windows rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép rögzítése](../virtual-machines/windows/classic/capture-image-classic.md).
+A Windows rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép rögzítése](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic).
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>Következő lépések
 Most, hogy megismerte a Service Management alapjait, elérheti az [Azure PYTHON SDK-hoz készült teljes API-dokumentációt](https://azure-sdk-for-python.readthedocs.org/) , és a Python-alkalmazások felügyeletére szolgáló összetett feladatokat is könnyedén elvégezheti.
@@ -474,7 +474,7 @@ További információ: [Python fejlesztői központ](https://azure.microsoft.com
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/
