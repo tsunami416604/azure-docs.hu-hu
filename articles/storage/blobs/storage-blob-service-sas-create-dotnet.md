@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab8993a98ce202964ade9fb5deae5c741ac7eb6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758305"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090352"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Service SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a Storage-fiók kulcsát egy olyan tárolóhoz vagy blobhoz készült szolgáltatás SAS létrehozásához, amely az [Azure Storage ügyféloldali kódtárat](/dotnet/api/overview/azure/storage?view=azure-dotnet)használja a .net-hez.
+Ez a cikk bemutatja, hogyan használhatja a Storage-fiók kulcsát egy olyan tárolóhoz vagy blobhoz készült szolgáltatás SAS létrehozásához, amely az [Azure Storage ügyféloldali kódtárat](/dotnet/api/overview/azure/storage)használja a .net-hez.
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Service SAS létrehozása blob-tárolóhoz
 

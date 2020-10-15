@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311103"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089451"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -41,7 +41,7 @@ Az alkalmazásra vonatkozó igényektől függően az alkalmazás biztonságoss�
 Az alábbi táblázat a Azure Maps gyakori hitelesítési és engedélyezési forgatókönyveit ismerteti. A táblázat az egyes forgatókönyvek által kínált védelmi típusok összehasonlítását biztosítja.
 
 > [!IMPORTANT]
-> A Microsoft azt javasolja, hogy az éles alkalmazások esetében szerepköralapú hozzáférés-vezérléssel (RBAC) implementálja Azure Active Directory (Azure AD).
+> A Microsoft az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alkalmazásával javasolja a Azure Active Directory (Azure AD) megvalósítását.
 
 | Forgatókönyv                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
@@ -63,10 +63,10 @@ A Azure Maps számára elérhető Azure-szerepkörök megtekintéséhez lépjen 
 
 ## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
 
-A Azure Maps RBAC megadott felhasználók és alkalmazások megtekintéséhez lépjen a **Access Control (iam)** elemre. Itt válassza ki a **szerepkör-hozzárendelések**lehetőséget, majd a szűrést **Azure Maps**alapján.
+A Azure Mapshoz hozzáféréssel rendelkező felhasználók és alkalmazások megtekintéséhez lépjen a **Access Control (iam)** elemre. Itt válassza ki a **szerepkör-hozzárendelések**lehetőséget, majd a szűrést **Azure Maps**alapján.
 
 > [!div class="mx-imgBorder"]
-> ![A RBAC megadott felhasználók és alkalmazások megtekintése](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![Hozzáférésre jogosult felhasználók és alkalmazások megtekintése](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Azure Maps igénylési jogkivonatai
 

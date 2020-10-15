@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80258294"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072254"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldás gyorsító üzembe helyezése a parancssori felület használatával
 
@@ -73,12 +73,12 @@ Az alapszintű üzembe helyezés a következő szolgáltatásokat hozza létre a
 | 1     | [Linuxos virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Szolgáltatók üzemeltetése |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – standard szint | Eszközkezelés és kommunikáció |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | A konfigurációs, a szabályok, a riasztások és az egyéb hűtőházi tárolók tárolása |  
-| 1     | [Azure Storage-tárfiók neve](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Tároló a virtuális gép és a folyamatos átviteli ellenőrzőpontok számára |
+| 1     | [Azure Storage-tárfiók neve](../storage/common/storage-introduction.md#types-of-storage-accounts)  | Standard        | Tároló a virtuális gép és a folyamatos átviteli ellenőrzőpontok számára |
 | 1     | [Webalkalmazás](https://azure.microsoft.com/services/app-service/web/)        |                 | Előtér-webalkalmazás üzemeltetése |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások és biztonság kezelése |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszköz helyeinek megtekintése |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egység              | Valós idejű elemzések engedélyezése |
-| 1     | [Azure Device kiépítési szolgáltatás](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Eszközök kiépítés nagy méretben |
+| 1     | [Azure Device kiépítési szolgáltatás](../iot-dps/index.yml)        |       S1          | Eszközök kiépítés nagy méretben |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Az üzenetek tárolására szolgáló tárterület, amely lehetővé teszi a részletes telemetria elemzését |
 
 ### <a name="standard"></a>Standard
@@ -94,12 +94,12 @@ A standard szintű üzembe helyezés a következő szolgáltatásokat hozza lét
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Teljes körűen felügyelt Kubernetes-tárolói szolgáltatás használata, alapértelmezett érték 3 ügynök|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – standard szint | Eszközkezelés, parancs és vezérlés |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | A konfigurációs és az eszközök telemetria (például szabályok, riasztások és üzenetek) tárolása |
-| 5     | [Azure Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 virtuálisgép-tároláshoz és 1 a folyamatos átviteli ellenőrzőpontokhoz |
+| 5     | [Azure Storage-fiókok](../storage/common/storage-introduction.md#types-of-storage-accounts)    | Standard        | 4 virtuálisgép-tároláshoz és 1 a folyamatos átviteli ellenőrzőpontokhoz |
 | 1     | [APP SERVICE](https://azure.microsoft.com/services/app-service/web/)             | S1 – Standard     | Application Gateway TLS-kapcsolaton keresztül |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások és biztonság kezelése |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszköz helyeinek megtekintése |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 egység              | Valós idejű elemzések engedélyezése |
-| 1     | [Azure Device kiépítési szolgáltatás](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Eszközök kiépítés nagy méretben |
+| 1     | [Azure Device kiépítési szolgáltatás](../iot-dps/index.yml)        |       S1          | Eszközök kiépítés nagy méretben |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Az üzenetek tárolására szolgáló tárterület, amely lehetővé teszi a részletes telemetria elemzését |
 
 > [!NOTE]
@@ -144,7 +144,7 @@ pcs -h
 
 További információ a parancssori felületről: [a parancssori felület használata](https://github.com/Azure/pcs-cli/blob/master/README.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 

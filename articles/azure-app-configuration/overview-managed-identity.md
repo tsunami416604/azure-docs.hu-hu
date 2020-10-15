@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82981221"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072798"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Felügyelt identitások használata az Azure-alkalmazások konfigurálásához
 
@@ -33,7 +33,7 @@ Felügyelt identitás Azure CLI használatával történő beállításához has
 
 - Használja [Azure Cloud Shell](../cloud-shell/overview.md) a Azure Portal.
 - A beágyazott Azure Cloud Shell az alábbi, az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-- [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 vagy újabb), ha inkább egy helyi CLI-konzolt szeretne használni.
+- [Telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) (2,1 vagy újabb), ha inkább egy helyi CLI-konzolt szeretne használni.
 
 Az alábbi lépések végigvezetik az alkalmazás konfigurációs tárolójának létrehozásán és identitás hozzárendelésének lépésein a parancssori felület használatával:
 
@@ -66,7 +66,7 @@ Felügyelt identitás Azure CLI használatával történő beállításához has
 
 - Használja [Azure Cloud Shell](../cloud-shell/overview.md) a Azure Portal.
 - A beágyazott Azure Cloud Shell az alábbi, az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-- [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 vagy újabb), ha helyi CLI-konzolt szeretne használni.
+- [Telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) (2.0.31 vagy újabb), ha helyi CLI-konzolt szeretne használni.
 
 A következő lépések végigvezetik a felhasználó által hozzárendelt identitás és az alkalmazás konfigurációs tárolójának létrehozásán, majd az identitásnak az áruházba való hozzárendelésével a parancssori felület használatával:
 
@@ -101,7 +101,7 @@ A következő lépések végigvezetik a felhasználó által hozzárendelt ident
 
 A rendszer által hozzárendelt identitás eltávolításához tiltsa le a szolgáltatást az Azure CLI az [appconfig Identity Remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) paranccsal. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek a HRE-ből az alkalmazás-erőforrás törlésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core-alkalmazás létrehozása az Azure app Configurationvel](quickstart-aspnet-core-app.md)

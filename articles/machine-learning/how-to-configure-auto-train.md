@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709087"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091202"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -343,7 +343,7 @@ Nincsenek &nbsp; feltételek | Ha nem ad meg kilépési paramétereket, a kísé
 
 Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha egy jegyzetfüzetben van. További részletekért tekintse meg a [modellek követése és értékelése](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) című témakört.
 
-Lásd: a [gépi tanulási eredmények megismerése](how-to-understand-automated-ml.md) az egyes futtatásokhoz megadott teljesítmény-diagramok és mérőszámok definíciói és példái alapján. 
+Lásd: az [automatizált gépi tanulási kísérlet eredményeinek kiértékelése](how-to-understand-automated-ml.md) az egyes futtatásokhoz megadott teljesítménymutatók és mérőszámok definíciói és példái alapján. 
 
 A featurization összegzéséhez és az adott modellhez hozzáadott funkciók megismeréséhez lásd: [featurization átlátszósága](how-to-configure-auto-features.md#featurization-transparency). 
 

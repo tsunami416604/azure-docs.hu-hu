@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319622"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090216"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Webalkalmazás biztonságossá tétele felhasználói bejelentkezéssel
 
@@ -59,7 +59,7 @@ A bejelentkezéshez létre kell hoznia a webalkalmazást az Azure AD-ben a felha
    * A nem AspNetCore megvalósításához vagy más megoldáshoz lásd: [token beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) az Azure ad dokumentációjában.
    * A biztonságos jogkivonat-végpont feladata a hitelesített és jogosult felhasználó hozzáférési jogkivonatának visszaküldése Azure Maps REST API-k meghívásához.
 
-8. Azure szerepköralapú hozzáférés-vezérlés konfigurálása felhasználókhoz vagy csoportokhoz. Lásd: [szerepkör-alapú hozzáférés engedélyezése a felhasználók számára](#grant-role-based-access-for-users-to-azure-maps).
+8. Konfigurálja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) felhasználókhoz vagy csoportokhoz. Lásd: [szerepköralapú hozzáférés engedélyezése a felhasználók számára](#grant-role-based-access-for-users-to-azure-maps).
 
 9. Konfigurálja a webalkalmazás lapot a Azure Maps web SDK-val a biztonságos jogkivonat-végpont eléréséhez. 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

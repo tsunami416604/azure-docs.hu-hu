@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906865"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090675"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java és alap operációs rendszer a Spring mikroszolgáltatás-alapú alkalmazásokhoz
 
@@ -46,7 +46,7 @@ A Azul Systems folyamatosan ellenőrzi az alapoperációs rendszerek változása
     * Ubuntu 20,04 LTS (gyújtóponti Fossa). Az alkalmazások továbbra is az Ubuntu legújabb LTS-verziójában maradnak.
     * Lásd: [Ubuntu 20,04 LTS (gyújtóponti Fossa)](http://releases.ubuntu.com/focal/)
 * Hogyan tölthetők le egy támogatott Java-futtatókörnyezet a helyi fejlesztési környezethez? 
-    * Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+    * Lásd: [Az Azure-hoz készült JDK telepítése és Azure stack](/azure/developer/java/fundamentals/java-jdk-install)
 * Hogyan Kérhetek támogatást a Java futtatókörnyezeti szinten felmerülő problémákhoz?
     * Nyisson meg egy támogatási jegyet az Azure-támogatással.
  
@@ -57,4 +57,4 @@ A Azul Systems folyamatosan ellenőrzi az alapoperációs rendszerek változása
 ## <a name="next-steps"></a>Következő lépések
 
 * [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)
-* [Java hosszú távú támogatás az Azure-hoz és Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java hosszú távú támogatás az Azure-hoz és Azure Stack](/azure/developer/java/fundamentals/java-jdk-long-term-support)

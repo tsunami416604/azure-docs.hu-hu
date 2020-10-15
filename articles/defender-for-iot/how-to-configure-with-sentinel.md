@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 71147352c5b75195ed0dff2b05acc5315f3183cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940056"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090794"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>Az adatok összekötése a Defender for IoT és az Azure Sentinel között (előzetes verzió)
 
-Az Azure Sentinel IoT-adatösszekötő Azure Security Center jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
+Az Azure Sentinel for IoT adatösszekötője jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
 
 Ebből az útmutatóból megtudhatja, hogyan csatlakoztatható a Defender a IoT-hez az Azure Sentinel szolgáltatáshoz.
 
@@ -32,6 +32,8 @@ Ebből az útmutatóból megtudhatja, hogyan csatlakoztatható a Defender a IoT-
 
 Riasztások összekapcsolását a Defendertől a IoT, és közvetlenül az Azure Sentinelben továbbíthatja őket.
 
+Ha szorosabban integrálja az Azure Defendert a IoT az Azure Sentineltel, az első Felhőbeli natív SIEM-vel és az első SIEM-szel, a natív IoT és az OT biztonsággal, a Microsoft egyszerűbb megoldást kínál az informatikai és ipari hálózatok egységes biztonságára. Az Azure Sentinel gépi tanulásával kombinálva ez az integráció lehetővé teszi a szervezetek számára, hogy gyorsan azonosítsák a sokszor határokon átnyúló, illetve a határokon átívelő többfokozatú támadásokat. Emellett az Azure Defender a IoT integrációja az Azure Sentinel biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) képességeivel lehetővé teszi az automatikus válaszadást és a megelőzést a beépített, nem optimalizált forgatókönyvek használatával. 
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A munkaterület **olvasási** és **írási** engedélyekkel kell rendelkeznie.
@@ -39,8 +41,6 @@ Riasztások összekapcsolását a Defendertől a IoT, és közvetlenül az Azure
 - **Olvasási** és **írási** engedéllyel kell rendelkeznie az **Azure-IoT hubhoz** , amelyhez csatlakozni szeretne.
 - Az **Azure IoT hub erőforráscsoporthoz** **olvasási** és **írási** engedélyekkel is rendelkeznie kell.
 
-> [!NOTE]
-> Az általános Azure-erőforrásokra vonatkozó riasztások elküldéséhez az előfizetéshez tartozó Azure Security Center standard szintű licencelésnek kell futnia. A Defender for IoT ingyenes szintjére vonatkozó licenccel csak a IoT kapcsolatos riasztások továbbítva lesznek az Azure Sentinel szolgáltatáshoz.
 
 ## <a name="connect-to-defender-for-iot"></a>Kapcsolódás a Defenderhez a IoT-hez
 
@@ -53,7 +53,7 @@ Riasztások összekapcsolását a Defendertől a IoT, és közvetlenül az Azure
 > [!NOTE]
 >A kapcsolatok módosítása után akár 10 másodpercig is eltarthat a központ listájának frissítése.
 
-## <a name="log-analytics-alert-display"></a>Log Analytics riasztás megjelenítése
+## <a name="using-log-analytics-for-alert-display"></a>Log Analytics használata a riasztások megjelenítéséhez
 
 A Log Analytics vonatkozó sémájának használata a IoT riasztások megjelenítéséhez:
 

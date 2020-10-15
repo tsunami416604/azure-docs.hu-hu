@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142366"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072424"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 A tanúsítványok az Azure for Cloud Services ([szolgáltatás-tanúsítványok](#what-are-service-certificates)) és a felügyeleti API ([felügyeleti tanúsítványok](#what-are-management-certificates)) használatával történő hitelesítéshez használatosak. Ez a témakör általános áttekintést nyújt mindkét tanúsítvány típusáról, valamint arról, hogyan [hozhatja létre](#create) és helyezheti üzembe őket az Azure-ban.
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > Ha tartomány helyett IP-címmel szeretné használni a tanúsítványt, használja az IP-címet a-DnsName paraméterben.
 
 
-Ha ezt [a tanúsítványt a felügyeleti portálon](../azure-api-management-certs.md)szeretné használni, exportálja egy **. cer** fájlba:
+Ha ezt [a tanúsítványt a felügyeleti portálon](/previous-versions/azure/azure-api-management-certs)szeretné használni, exportálja egy **. cer** fájlba:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Az interneten sok oldal található, amely az IIS használatával foglalkozik. [
 ## <a name="next-steps"></a>Következő lépések
 [Töltse fel a szolgáltatási tanúsítványt a Azure Portalba](cloud-services-configure-ssl-certificate-portal.md).
 
-Töltsön fel egy [felügyeleti API-tanúsítványt](../azure-api-management-certs.md) a Azure Portalba.
-
-
-
-
+Töltsön fel egy [felügyeleti API-tanúsítványt](/previous-versions/azure/azure-api-management-certs) a Azure Portalba.

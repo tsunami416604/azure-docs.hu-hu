@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851853"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073699"
 ---
 # <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
@@ -39,7 +39,7 @@ Az Azure korlátlan támogatást biztosít az előfizetés-kezeléshez, amely ma
 
 A Azure Portal Súgó és **támogatás** szolgáltatását is elérheti. A szolgáltatás a Azure Portal menüjéből, a globális fejlécből vagy a szolgáltatások erőforrás-menüjéből érhető el. Ha támogatási kérést szeretne beküldeni, rendelkeznie kell a megfelelő engedélyekkel.
 
-### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
+### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
 Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-control/built-in-roles.md#owner), [közreműködőnek](../../role-based-access-control/built-in-roles.md#contributor) kell lennie, vagy a [támogatási kérelem közreműködői](../../role-based-access-control/built-in-roles.md#support-request-contributor) szerepköréhez kell rendelni az előfizetés szintjén. Ha előfizetést nem tartalmazó támogatási kérelmet szeretne létrehozni, például egy Azure Active Directory-forgatókönyv [, rendszergazdának](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)kell lennie.
 
@@ -102,7 +102,7 @@ Fejezze be az összes szükséges információt az egyes lapokon, majd válassza
 A támogatási szakember felveszi Önnel a kapcsolatot a megadott módszer használatával. További információ a kezdeti válaszidőt: [támogatás hatóköre és reagálási](https://azure.microsoft.com/support/plans/response/)idő.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure önsegítő támogatási lehetőségeiről, tekintse meg ezt a videót:
 
@@ -114,5 +114,5 @@ További információért kövesse az alábbi hivatkozásokat:
 * [Azure-beli támogatási jegy REST API](/rest/api/support)
 * [Küldje el nekünk visszajelzését és javaslatait](https://feedback.azure.com/forums/266794-support-feedback)
 * Részvétel a [Twitteren](https://twitter.com/azuresupport)
-* Segítség kérése a társaitól a [Microsoft Q&a kérdéses oldalon](https://docs.microsoft.com/answers/products/azure)
+* Segítség kérése a társaitól a [Microsoft Q&a kérdéses oldalon](/answers/products/azure)
 * További információ az [Azure-támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq)

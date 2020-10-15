@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: e25ebd181d0017885a24310e3dac3ff30a59a21e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c2e0f7736aa5d6779e4ed7cb3824f6606c121565
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973359"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073138"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Gyors útmutató: ExpressRoute-kör létrehozása és módosítása
 
@@ -162,9 +162,9 @@ Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés va
 >* Ha a szolgáltató kiépítte az áramkört (a szolgáltató kiépítési állapota **nincs kiépítve**), törölheti az áramkört. Ez leállítja a kapcsolatcsoport számlázását.
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A **Törlés** ikonra kattintva törölheti a ExpressRoute áramkörét. 
+A **Törlés** ikonra kattintva törölheti a ExpressRoute áramkörét. A folytatás előtt győződjön meg arról, hogy a szolgáltató állapota *nincs kiépítve* .
 
 :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 

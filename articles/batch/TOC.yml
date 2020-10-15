@@ -43,7 +43,19 @@
         - name: Batch-mintatár
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Batch-fiók létrehozása Batch szolgáltatás módban
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: Batch-fiók létrehozása felhasználói előfizetési módban
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: Linux-készlet létrehozása és kezelése
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: Windows-készlet létrehozása és kezelése
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: Feladatok és tevékenységek futtatása
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: Alapelvek
   items:
     - name: Biztonság

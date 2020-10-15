@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936215"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090845"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: biztonsági ügynökök konfigurálása
 
@@ -117,8 +117,8 @@ A következő táblázat a Defender által a IoT biztonsági ügynökök számá
 
 Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
-| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+|----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.|
 |snapshotFrequency |Kötelező: false|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték PT13H |Az Eszközállapot-Pillanatképek létrehozásának időintervalluma.|
@@ -129,7 +129,7 @@ Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-def
 ### <a name="supported-security-events"></a>Támogatott biztonsági események
 
 |Esemény neve| PropertyName | Alapértelmezett érték| Pillanatkép-esemény| Részletek állapota  |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|-|---------|----|----|
 |Diagnosztikai esemény|eventPriorityDiagnostic| Ki| Hamis| Ügynökkel kapcsolatos diagnosztikai események. Ezt az eseményt részletes naplózásra használhatja.|
 |Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |Hamis |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémán.|
 |Eldobott események statisztikája |eventPriorityDroppedEventsStatistics |Alacsony |Igaz|Ügynökkel kapcsolatos események statisztikája. |

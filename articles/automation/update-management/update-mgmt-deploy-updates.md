@@ -3,18 +3,18 @@ title: Frissítési központi telepítések létrehozása Azure Automation Updat
 description: Ez a cikk a frissítések központi telepítésének ütemezett és állapotának áttekintését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 09/16/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: fa5cabd5410f0cbe7382db0289d98bc69d4a01fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f7d86ff668a151bdf83908c3199d01a0a53246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294716"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073750"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
-Ez a cikk bemutatja, hogyan ütemezhet egy frissítés központi telepítését, és hogyan tekintheti át a folyamatot az üzembe helyezés befejeződése után. A frissítés központi telepítését egy kiválasztott Azure-beli virtuális gépről, a kijelölt ív-kiszolgálóról vagy az Automation-fiókból az összes konfigurált gépen és kiszolgálón is konfigurálhatja. 
+Ez a cikk bemutatja, hogyan ütemezhet egy frissítés központi telepítését, és hogyan tekintheti át a folyamatot az üzembe helyezés befejeződése után. A frissítés központi telepítését egy kiválasztott Azure-beli virtuális gépről, a kijelölt ív-kiszolgálóról vagy az Automation-fiókból az összes konfigurált gépen és kiszolgálón is konfigurálhatja.
 
 Az egyes forgatókönyvek esetében a központi telepítéshez a kiválasztott gép vagy kiszolgáló célokat kell létrehoznia, vagy az Automation-fiókból történő központi telepítés létrehozása esetén egy vagy több gépet is megcélozhat. Ha egy Azure-beli virtuális gépről vagy ív-kompatibilis kiszolgálóról ütemezett frissítést ütemezhet, a lépések ugyanazok, mint az Automation-fiókból való üzembe helyezés, a következő kivételekkel:
 
@@ -59,7 +59,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
     > [!NOTE]
     > Ez a beállítás nem érhető el, ha Azure-beli virtuális gépet vagy ív-kompatibilis kiszolgálót jelölt ki. A gép automatikusan az ütemezett telepítéshez van rendelve.
 
-6. A **frissítendő gépek** területen válasszon ki egy mentett keresést, egy importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ezzel a beállítással megtekintheti az egyes gépek Log Analytics ügynökének készültségét. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md).
+6. A **frissítendő gépek** területen válasszon ki egy mentett keresést, egy importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ezzel a beállítással megtekintheti az egyes gépek Log Analytics ügynökének készültségét. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md). Az ütemezett frissítések telepítése legfeljebb 500 gépet tartalmazhat.
 
     > [!NOTE]
     > Ez a beállítás nem érhető el, ha Azure-beli virtuális gépet vagy ív-kompatibilis kiszolgálót jelölt ki. A gép automatikusan az ütemezett telepítéshez van rendelve.
@@ -89,7 +89,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
 
     * A karbantartási időszakok azt szabályozzák, hogy a rendszer hány frissítést telepítsen.
     * A Update Management nem állítja le az új frissítések telepítését, ha a karbantartási időszak végére közeledik.
-    * A Update Management nem szakítja meg a folyamatban lévő frissítéseket, ha a karbantartási időszak túllépve.
+    * A Update Management nem szakítja meg a folyamatban lévő frissítéseket, ha a karbantartási időszak túllépve. A rendszer nem próbálkozik a telepítendő többi frissítéssel. Ha ez folyamatosan történik, újra kell értékelnie a karbantartási időszak időtartamát.
     * Ha a karbantartási időszak túllépi a Windowst, gyakran előfordul, hogy a szervizcsomag frissítése hosszú időt vesz igénybe.
 
     > [!NOTE]

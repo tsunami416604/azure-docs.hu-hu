@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536606"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072645"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -68,7 +68,7 @@ Ezután telepítse a Time Series Insightst további erőforrásként a távoli f
 
     ![A Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Kattintson a **Létrehozás** elemre. A környezet létrehozása eltarthat egy kis ideig.
+1. Kattintson a **Létrehozás** gombra. A környezet létrehozása eltarthat egy kis ideig.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
@@ -101,7 +101,7 @@ Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Győ
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="configure-the-data-access-policy"></a>Az adatelérési házirend konfigurálása
 
@@ -126,7 +126,7 @@ Annak ellenőrzéséhez, hogy a távoli figyelési megoldáshoz hozzáféréssel
 1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához. Néhány pillanat elteltével a rendszerbiztonsági tag hozzá van rendelve a szerepkörhöz az adatelérési házirendekben.
 
 > [!NOTE]
-> Ha további felhasználóknak is hozzáférést kell biztosítania a Time Series Insights Intézőhöz, az alábbi lépésekkel biztosíthatja az [adathozzáférést](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
+> Ha további felhasználóknak is hozzáférést kell biztosítania a Time Series Insights Intézőhöz, az alábbi lépésekkel biztosíthatja az [adathozzáférést](../time-series-insights/concepts-access-policies.md#grant-data-access).
 
 ## <a name="configure-azure-stream-analytics"></a>Azure Stream Analytics konfigurálása 
 
@@ -217,7 +217,7 @@ Konfigurálja az üzemelő példányok környezetét `basic` a frissített Servi
 
 1. A legfrissebb címkével lekérheti a GitHub-tárház [legújabb YAML-fájlját](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) . 
 
-1. SSH-t a virtuális gépre az [ssh-kulcsok létrehozása és használata](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)című témakör lépéseit követve.
+1. SSH-t a virtuális gépre az [ssh-kulcsok létrehozása és használata](../virtual-machines/linux/ssh-from-windows.md)című témakör lépéseit követve.
 
 1. Csatlakozás után írja be a következőt: `cd /app` .
 
@@ -296,8 +296,8 @@ Konfigurálja az üzemelő `standard` példány környezetét a fenti frissítet
             key: telemetry.storage.type
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan vizsgálhatja meg adatait, és hogyan diagnosztizálhatja a riasztásokat a Time Series Insights Explorerben, tekintse meg a [kiváltó okok elemzését](iot-accelerators-remote-monitoring-root-cause-analysis.md)ismertető oktatóanyagot.
 
-* Az Time Series Insights Explorerben megjelenő információk megismeréséhez és lekérdezéséhez tekintse meg a [Azure Time Series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)dokumentációját.
+* Az Time Series Insights Explorerben megjelenő információk megismeréséhez és lekérdezéséhez tekintse meg a [Azure Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md)dokumentációját.
