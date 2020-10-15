@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706453"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069721"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -111,7 +111,7 @@ Az SAML JIT az SAML-jogkivonat jogcím-információi alapján hozza létre és f
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Egyszeri bejelentkezés engedélyezése az alkalmazáshoz](../manage-apps/isv-sso-content.md)
+* [Egyszeri bejelentkezés engedélyezése az alkalmazáshoz](../develop/v2-howto-app-gallery-listing.md)
 
 * [Küldje el alkalmazásait](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a Microsoft webhelyéről, és ossza meg a Microsofttal.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713779"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077439"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -100,7 +100,7 @@ A Azure Security Center integrált fenyegetési intelligencia használatával me
 
 * [A Azure DDoS Protection standard konfigurálása](../virtual-network/manage-ddos-protection.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -588,7 +588,7 @@ A speciális figyelést a API Management használatával konfigurálhatja a `log
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Emellett az Azure Policy használatával korlátozásokat állíthat be az ügyf
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1114,7 +1114,7 @@ A felügyelt identitások használatával Azure Key Vault tanúsítványok szere
 
 A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
 
-* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

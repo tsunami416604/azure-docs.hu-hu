@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9c9bac20beb415f8bc29ca63d530e5cd8492d2d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8ffb2d2f52e1bdfece7fe1bdcd04dcf9b1b600f3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997013"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077643"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Kapcsolódás Windowsos virtuális géphez az Azure Bastion használatával
 
@@ -20,7 +20,7 @@ Az Azure Bastion használatával biztonságosan és zökkenőmentesen csatlakozh
 
 Az Azure Bastion biztonságos kapcsolatot biztosít a virtuális hálózatban lévő összes olyan virtuális géphez, amelyben kiépítve van. Az Azure Bastion használatával megvédheti a virtuális gépeket az RDP/SSH-portok a külvilág felé való kitéve, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. További információ: [Mi az az Azure Bastion?](bastion-overview.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, ellenőrizze, hogy teljesültek-e az alábbi feltételek:
 
