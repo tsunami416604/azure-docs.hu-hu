@@ -194,7 +194,7 @@
     - name: Képzési terv
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Díjkalkulátor

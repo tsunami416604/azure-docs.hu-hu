@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282136"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079003"
 ---
 # <a name="run-opc-publisher"></a>Az OPC Publisher futtatása
 
@@ -370,7 +370,7 @@ Ellenőrizze a [Docker hub](https://hub.docker.com/_/microsoft-iotedge-opc-publi
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>Futtatás Azure IoT Edge modulként
 
-Az OPC-közzétevő készen áll [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) modulként való használatra. Ha az OPC-közzétevőt IoT Edge modulként használja, az egyetlen támogatott átviteli protokoll **Amqp_Tcp_Only** és **Mqtt_Tcp_Only**.
+Az OPC-közzétevő készen áll [Azure IoT Edge](../iot-edge/index.yml) modulként való használatra. Ha az OPC-közzétevőt IoT Edge modulként használja, az egyetlen támogatott átviteli protokoll **Amqp_Tcp_Only** és **Mqtt_Tcp_Only**.
 
 Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helyezéséhez, lépjen a Azure Portal IoT Hub beállításaihoz, és végezze el a következő lépéseket:
 

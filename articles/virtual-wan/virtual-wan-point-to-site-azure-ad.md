@@ -2,17 +2,17 @@
 title: 'Azure AD-hitelesítés konfigurálása a felhasználói VPN-kapcsolathoz: virtuális WAN'
 description: Megtudhatja, hogyan konfigurálhat Azure Active Directory hitelesítést a felhasználói VPN-hez.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832518"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079173"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory hitelesítés konfigurálása a felhasználói VPN-hez
 
@@ -22,15 +22,14 @@ Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámít�
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Virtuális WAN létrehozása
-> * Virtuális központ létrehozása
-> * Felhasználói VPN-konfiguráció létrehozása
-> * Virtuális WAN-felhasználói VPN-profil letöltése
-> * Felhasználói VPN-konfiguráció alkalmazása egy virtuális hubhoz
-> * VNet összekötése virtuális hubhoz
-> * A felhasználó VPN-ügyfél konfigurációjának letöltése és alkalmazása
-> * Virtuális WAN megtekintése
+* Virtuális WAN létrehozása
+* Virtuális központ létrehozása
+* Felhasználói VPN-konfiguráció létrehozása
+* Virtuális WAN-felhasználói VPN-profil letöltése
+* Felhasználói VPN-konfiguráció alkalmazása egy virtuális hubhoz
+* VNet összekötése virtuális hubhoz
+* A felhasználó VPN-ügyfél konfigurációjának letöltése és alkalmazása
+* Virtuális WAN megtekintése
 
 ![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwanp2s.png)
 

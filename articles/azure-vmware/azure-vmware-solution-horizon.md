@@ -3,12 +3,12 @@ title: Horizont üzembe helyezése az Azure VMware-megoldáson
 description: Ismerje meg, hogyan helyezhet üzembe VMware horizontot az Azure VMware-megoldáson.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729049"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078884"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Horizont üzembe helyezése az Azure VMware-megoldáson 
 
@@ -197,11 +197,14 @@ Működjön együtt a VMware EUC értékesítési csapatával, és határozza me
 
 A standard telepítési architektúra alapján a Horizon infrastruktúra virtuális gépei a kapcsolódási kiszolgálók, a UAGs, az alkalmazások kötet-kezelői, és az ügyfél Azure-Virtual Network üzembe helyezhetők. További Azure-beli natív példányokra van szükség a magas rendelkezésre állás (HA), a Microsoft SQL vagy a Microsoft Active Directory (AD) szolgáltatások támogatásához az Azure-ban. Az alábbi lista az Azure-példányok listáját tartalmazza egy 2 000 – asztali telepítési példa alapján. 
 
+>[!NOTE]
+>Ahhoz, hogy kezelni tudja a hibát, helyezzen üzembe egy több kiszolgálót, mint amennyi szükséges a kapcsolatok számához (n + 1). A Csatlakozáskezelő, a UAG és az App Volumes Manager példányainak minimálisan ajánlott száma 2, a szükséges érték pedig a környezet által támogatott felhasználók mennyiségétől függően növekszik.  Egyetlen kapcsolódási kiszolgáló legfeljebb 4 000 munkamenetet támogat, bár a 2 000 ajánlott eljárás. Legfeljebb hét kapcsolati kiszolgáló támogatott a pod-on, 12 000 aktív munkamenetek esetén pedig összesen/Pod. A legfrissebb számokért tekintse meg a VMware [Horizon 7 méretezési korlátait és javaslatait a VMware Tudásbázisban](https://kb.vmware.com/s/article/2150348).
+
 | Horizont infrastruktúra-összetevő | Azure-példány | Szükséges példányok száma (2 000-asztali gépekhez)    | Megjegyzés  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| Kapcsolatkezelő                | D4sv3          | 2       | *1 példányt tartalmaz a HA*             |    
-| UAG                              | F2sv2          | 2       | *1 példányt tartalmaz a HA*             |
-| Az alkalmazás köteteinek kezelője              | D4sv3          | 2       | *1 példányt tartalmaz a HA*             |
+| Kapcsolatkezelő                | D4sv3          | 2       | *Lásd a fenti megjegyzést*                         |    
+| UAG                              | F2sv2          | 2       | *Lásd a fenti megjegyzést*                         |
+| Az alkalmazás köteteinek kezelője              | D4sv3          | 2       | *Lásd a fenti megjegyzést*                         |
 | Felhőalapú összekötő                  | D4sv3          | 1       |                                          |
 | AD-vezérlő                    | D4sv3          | 2       | *Az MSFT AD szolgáltatás használatának lehetősége az Azure-ban* |
 | MS-SQL Database                  | D4sv3          | 2       | *Az Azure-beli SQL-szolgáltatás használatának lehetősége*     |

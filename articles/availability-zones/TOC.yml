@@ -3,11 +3,11 @@
     - name: Az Azure Resiliency szolgáltatáslapja
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: Rugalmas alkalmazások tervezése az Azure-hoz
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
+      href: /azure/architecture/resiliency/
 - name: Magas rendelkezésre állás
   items:
     - name: Magas rendelkezésre állás az Azure-alkalmazásokhoz
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: Régiók és Availability Zones
       href: az-overview.md
     - name: Rendelkezésre állási zónák dokumentációja
@@ -39,34 +39,34 @@
             - name: A Load Balancer Standard és a rendelkezésre állási zónák
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása
-              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)
-                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (parancssori felület)
-                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: Zónaszintű nyilvános Standard Load Balancer létrehozása
-              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Zónaszintű nyilvános Standard Load Balancer létrehozása (PowerShell)
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: Zónaszintű nyilvános Standard Load Balancer létrehozása (parancssori felület)
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
-              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
               items:
                 - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között az Azure-ral (CLI)
-                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: Nyilvános IP-cím
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
             - name: Rendelkezésre állási zónák és SQL Database
-              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
         - name: Storage
           items:
             - name: Zónaredundáns tárolás
-              href: ../storage/common/storage-redundancy-zrs.md
+              href: ../storage/common/storage-redundancy.md
         - name: Event Hubs
           items:
             - name: Event Hubs georeplikációs vészhelyreállítás
@@ -102,11 +102,11 @@
 - name: Vészhelyreállítás
   items:
     - name: Az Azure Site Recovery használata
-      href: 'https://docs.microsoft.com/azure/site-recovery/'
+      href: ../site-recovery/index.yml
 - name: Azure Backup
   items:
     - name: Az Azure Backup használata
-      href: 'https://docs.microsoft.com/azure/backup/'
+      href: ../backup/index.yml
 - name: További források
   items:
     - name: Azure-ütemterv

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092728"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069925"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Egyéni tartománynév konfigurálása Azure felhőszolgáltatáshoz
 Felhőalapú szolgáltatás létrehozásakor az Azure a **cloudapp.net**altartományához rendeli hozzá. Ha például a Cloud Service neve "contoso", a felhasználók az alkalmazáshoz hasonló URL-címen érhetik el az alkalmazást `http://contoso.cloudapp.net` . Az Azure egy virtuális IP-címet is hozzárendel.
@@ -119,11 +119,11 @@ A következő rekord például a **contoso.com** -ről a **137.135.70.239**-re i
 Ez a példa egy rekord létrehozását mutatja be a gyökértartomány számára. Ha olyan helyettesítő karaktert szeretne létrehozni, amely az összes altartományra kiterjed, akkor a "* * * * *" altartományként kell megadnia a következőt: "* * * * *".
 
 > [!WARNING]
-> Alapértelmezés szerint az Azure-beli IP-címek dinamikusak. Érdemes egy [fenntartott IP-címet](../virtual-network/virtual-networks-reserved-public-ip.md) használni annak biztosítására, hogy az IP-cím ne változzon.
+> Alapértelmezés szerint az Azure-beli IP-címek dinamikusak. Érdemes egy [fenntartott IP-címet](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) használni annak biztosítására, hogy az IP-cím ne változzon.
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)
 * [CDN-tartalom leképezése egyéni tartományra](../cdn/cdn-map-content-to-custom-domain.md)
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
@@ -138,6 +138,3 @@ Ez a példa egy rekord létrehozását mutatja be a gyökértartomány számára
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

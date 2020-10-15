@@ -2,21 +2,21 @@
 title: 'Azure Bastion: virtuális gép munkamenetének megtekintése: teljes képernyő'
 description: Megtudhatja, hogyan módosíthatja a virtuális gép nézetét teljes képernyőre, és visszatérhet a böngészőben egy RDP-vagy SSH-kapcsolatra az Azure-ban.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
-ms.author: charwen
-ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cherylmc
+ms.openlocfilehash: 7db85c5e1d5f67c30adf08969c51bb4c57838fb5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88270291"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079139"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Váltás a virtuális gép munkamenetének teljes képernyős nézetére: Azure Bastion
 
-Ebből a cikkből megtudhatja, hogyan módosíthatja a virtuális gép nézetét teljes képernyős és vissza a böngészőben. A virtuális gép használata előtt győződjön meg arról, hogy követte a [megerősített gazdagép létrehozásának](bastion-create-host-portal.md)lépéseit. Ezután csatlakozzon ahhoz a virtuális géphez, amelyet [RDP](bastion-connect-vm-rdp.md) vagy [SSH](bastion-connect-vm-ssh.md)használatával szeretne használni.
+Ebből a cikkből megtudhatja, hogyan módosíthatja a virtuális gép nézetét teljes képernyős és vissza a böngészőben. A virtuális gép használata előtt győződjön meg arról, hogy követte a [megerősített gazdagép létrehozásának](./tutorial-create-host-portal.md)lépéseit. Ezután csatlakozzon ahhoz a virtuális géphez, amelyet [RDP](bastion-connect-vm-rdp.md) vagy [SSH](bastion-connect-vm-ssh.md)használatával szeretne használni.
 
 ## <a name="launch-the-clipboard-tool"></a>A vágólap eszköz elindítása
 

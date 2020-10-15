@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330111"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079071"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -107,7 +107,7 @@ Ha úgy dönt, hogy a helyi gépen ("konfigurálás helyi futtatásként") van b
 
 Az R SDK lehetővé teszi az R nyelv használatát a Azure Machine Learning. Az SDK a reticulate csomagot használja a Azure Machine Learning Python SDK-hoz való kötéshez. Ez hozzáférést biztosít a Python SDK-ban megvalósított alapvető objektumokhoz és módszerekhez bármilyen R-környezetből.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Oktatóanyag: logisztikai regressziós modell létrehozása](tutorial-1st-r-experiment.md)
 * [Az R-hez készült Azure Machine Learning SDK-referenciák](https://azure.github.io/azureml-sdk-for-r/index.html)
@@ -118,11 +118,6 @@ A Designer lehetővé teszi a modellek betanítását egy fogd és vidd felület
 
 + [Mi a tervező?](concept-designer.md)
 + [Oktatóanyag: autó árának előrejelzése](tutorial-designer-automobile-price-train-score.md)
-+ [Regresszió: előrejelzési ár](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [Besorolás: bevétel előrejelzése](how-to-designer-sample-classification-predict-income.md)
-+ [Besorolás: forgalom előrejelzése, szolgáltatóváltást és értékesítés](how-to-designer-sample-classification-churn.md)
-+ [Besorolás egyéni R-parancsfájllal: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)
-+ [Szöveg besorolása: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>Számos modell megoldás-gyorsító
 

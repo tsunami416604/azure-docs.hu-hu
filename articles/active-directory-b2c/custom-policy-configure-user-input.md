@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9093872b2a5e069aef43ae2230b08447eea602
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389360"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069857"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C
 
@@ -95,12 +95,12 @@ Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, 
    </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-<ClaimsProvider>
 ```
 
 A városi jogcímek összevont fiókkal való első bejelentkezés után történő összegyűjtéséhez hozzá kell adni a technikai profil kimeneti jogcímeként `SelfAsserted-Social` . Ahhoz, hogy a helyi és összevont fiókok a felhasználók később szerkesszék a profiljaikat, adja hozzá a kimeneti jogcímet a `SelfAsserted-ProfileUpdate` technikai profilhoz. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
 
 ```xml
+<ClaimsProvider>
   <DisplayName>Self Asserted</DisplayName>
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->
@@ -235,7 +235,7 @@ Az alkalmazásnak visszaadott jogkivonat tartalmazza a `city` jogcímet.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [ClaimsSchema](claimsschema.md) elemről a IEF-hivatkozásban.
 - Megtudhatja, hogyan használhatja az egyéni [attribútumokat egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md).

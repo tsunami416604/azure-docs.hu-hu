@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8837bf7a7196eb5ac86bd7634560c52d1da6c05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654403"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92082180"
 ---
 Ha Visual Studio-projektet szeretne létrehozni a platformfüggetlen Mobile App .NET-fejlesztéshez a Xamarin-mel, a következőket kell tennie:
 - A Visual Studio fejlesztési lehetőségeinek beállítása.
@@ -50,7 +50,7 @@ A kezdéshez győződjön meg arról, hogy helyesen van beállítva a Visual Stu
 
 1. Válassza a **Létrehozás** lehetőséget az **új Mobile apps Xamarin űrlapok projekt** ablak megnyitásához.
 
-   ![A Visual Studióban látható új Univerzális Windows-platform projekt párbeszédpanelt megjelenítő képernyőkép.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![A Visual Studio új Mobile App Xamarin Forms Project párbeszédpanelét bemutató képernyőkép.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
 1. Válassza ki az **üres** sablont.
 

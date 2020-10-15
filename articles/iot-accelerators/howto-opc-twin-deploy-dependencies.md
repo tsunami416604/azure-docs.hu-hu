@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42024fc506de7befed7c44ebcc410756b6f43a35
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282102"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078986"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Függőségek üzembe helyezése helyi fejlesztéshez
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan helyezhető üzembe csak a helyi fejlesztéshez 
 
 ## <a name="deploy-azure-platform-services"></a>Az Azure platform szolgáltatásainak üzembe helyezése
 
-1. Győződjön meg arról, hogy telepítve van a PowerShell és a [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) -bővítmények.  Nyisson meg egy parancssort vagy terminált, és futtassa a parancsot:
+1. Győződjön meg arról, hogy telepítve van a PowerShell és a [AzureRM PowerShell](/powershell/azure/azurerm/install-azurerm-ps) -bővítmények.  Nyisson meg egy parancssort vagy terminált, és futtassa a parancsot:
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
