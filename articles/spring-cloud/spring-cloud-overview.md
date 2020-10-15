@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 159851f5b1ca38cc34da785b39229a6a91e1e4dd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758897"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090692"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Mi az az Azure Spring Cloud?
 
 Az Azure Spring Cloud segítségével egyszerűen üzembe helyezhetők a Spring boot-alapú Service-alkalmazások az Azure-ban nulla kód módosításával.  Az Azure Spring Cloud a Spring Cloud Applications infrastruktúráját kezeli, így a fejlesztők a kódra is koncentrálhat.  A Spring Cloud átfogó monitorozást és diagnosztikát, a konfiguráció felügyeletét, a szolgáltatások felderítését, a CI/CD-integrációt, a kék zöld környezeteket és egyebeket is lehetővé teszi.
 
-Az Azure Spring Cloud a Java [Spring boot](https://spring.io/projects/spring-boot) és a ASP.net Core [Steeltoe](https://steeltoe.io/) -alkalmazásokat egyaránt támogatja. A Steeltoe-támogatás jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes verzióban elérhető ajánlatok lehetővé teszik, hogy a hivatalos kiadás előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ: a [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)fájl.
+Az Azure Spring Cloud a Java [Spring boot](https://spring.io/projects/spring-boot) és a ASP.net Core [Steeltoe](https://steeltoe.io/) -alkalmazásokat egyaránt támogatja. A Steeltoe-támogatás jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes verzióban elérhető ajánlatok lehetővé teszik, hogy a hivatalos kiadás előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  További információ: a [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md)fájl.
 
 Az Azure-ökoszisztéma részeként az Azure Spring Cloud egyszerű kötést tesz lehetővé más Azure-szolgáltatásokhoz, többek között a tároláshoz, az adatbázisokhoz, a figyeléshez és egyebekhez.
 

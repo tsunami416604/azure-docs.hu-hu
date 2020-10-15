@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906956"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093973"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD GitHub-műveletekkel
 
 A GitHub-műveletek egy automatizált szoftverfejlesztési életciklus-munkafolyamatot támogatnak. Az Azure Spring Cloud GitHub-műveleteivel munkafolyamatokat hozhat létre a tárházban az Azure-ban történő létrehozásához, teszteléséhez, csomagolásához, kiadásához és üzembe helyezéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ehhez a példához az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)szükséges.
+Ehhez a példához az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)szükséges.
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub-adattár beállítása és hitelesítése
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Üzembe helyezés a Maven beépülő modullal
-Egy másik lehetőség, hogy a [Maven beépülő modult](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) használja a jar üzembe helyezéséhez és az alkalmazás beállításainak frissítéséhez. A parancs `mvn azure-spring-cloud:deploy` idempotens, és szükség esetén automatikusan hozza létre az alkalmazásokat. Nem kell előre létrehoznia a megfelelő alkalmazásokat.
+Egy másik lehetőség, hogy a [Maven beépülő modult](./spring-cloud-quickstart.md) használja a jar üzembe helyezéséhez és az alkalmazás beállításainak frissítéséhez. A parancs `mvn azure-spring-cloud:deploy` idempotens, és szükség esetén automatikusan hozza létre az alkalmazásokat. Nem kell előre létrehoznia a megfelelő alkalmazásokat.
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ Ha a művelet hibát jelez, például ha még nem állította be az Azure-beli h
 ## <a name="next-steps"></a>Következő lépések
 
 * [Key Vault a Spring Cloud GitHub-műveletekhez](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory egyszerű szolgáltatások](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Azure Active Directory egyszerű szolgáltatások](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [GitHub-műveletek az Azure-hoz](https://github.com/Azure/actions/)

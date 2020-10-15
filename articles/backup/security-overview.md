@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012551"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093344"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -16,7 +16,7 @@ Az adatai védelme érdekében a legfontosabb lépések egyike, hogy megbízhat�
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Az identitás-és felhasználói hozzáférés kezelése és felügyelete
 
-A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett. A Azure Backup lehetővé teszi az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](./backup-rbac-rs-vault.md)használatával történő részletes hozzáférés révén a felügyelt műveletek szabályozását. A RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
+A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett. A Azure Backup lehetővé teszi az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](./backup-rbac-rs-vault.md)használatával történő részletes hozzáférés révén a felügyelt műveletek szabályozását. Az Azure RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
 
 A Azure Backup három [beépített szerepkört](../role-based-access-control/built-in-roles.md) biztosít a biztonságimásolat-kezelési műveletek vezérléséhez:
 
@@ -24,7 +24,7 @@ A Azure Backup három [beépített szerepkört](../role-based-access-control/bui
 * Backup operátor – minden közreműködő a biztonsági mentés és a biztonsági mentési házirendek kezelése kivételével
 * Backup Reader – engedélyek az összes biztonsági mentési kezelési művelet megtekintéséhez
 
-További információ a [szerepköralapú hozzáférés-vezérlésről Azure Backup kezeléséhez](./backup-rbac-rs-vault.md).
+További információ az [Azure szerepköralapú hozzáférés-vezérléséről Azure Backup kezeléséhez](./backup-rbac-rs-vault.md).
 
 A Azure Backup számos, a szolgáltatásba beépített biztonsági vezérlőt tartalmaz a biztonsági rések megelőzésére, észlelésére és reagálására. További információ a [Azure Backup biztonsági vezérlőinek](./backup-security-controls.md).
 
@@ -64,7 +64,7 @@ A Azure Backup [beépített figyelési és riasztási képességeket](./backup-a
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági másolatok védelme érdekében
 
-A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a funkciók a következők:
+A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a lehetőségek a következők:
 
 * A rendszer egy további hitelesítési réteget ad hozzá, amikor egy kritikus művelet, például a jelszó módosítása történik. Ez az ellenőrzés biztosítja, hogy ezeket a műveleteket csak azok a felhasználók tudják végrehajtani, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal. [További információ a támadásokat megakadályozó funkciókról](./backup-azure-security-feature.md#prevent-attacks).
 

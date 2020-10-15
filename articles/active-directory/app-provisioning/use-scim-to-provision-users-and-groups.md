@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3a6f7bd282dbfc5087c5ddcb066c8e38a478c99f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018661"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070197"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -747,7 +747,7 @@ TLS 1,2 titkosítási csomagok minimális sávja:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-címtartományok
-Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)felsorolt AzureActiveDirectory IP-címtartományok alatt működik. A AzureActiveDirectory címke alatt felsorolt IP-címtartományok hozzáadásával engedélyezheti az Azure AD kiépítési szolgáltatásból érkező adatforgalmat az alkalmazásba. Vegye figyelembe, hogy a számított címek esetében alaposan át kell tekintenie az IP-címtartomány listáját. A "40.126.25.32" címet az IP-címtartomány listában "40.126.0.0/18"-ként lehet megjeleníteni. Az IP-programozott módon az alábbi [API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)használatával is lekérheti.
+Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)felsorolt AzureActiveDirectory IP-címtartományok alatt működik. A AzureActiveDirectory címke alatt felsorolt IP-címtartományok hozzáadásával engedélyezheti az Azure AD kiépítési szolgáltatásból érkező adatforgalmat az alkalmazásba. Vegye figyelembe, hogy a számított címek esetében alaposan át kell tekintenie az IP-címtartomány listáját. A "40.126.25.32" címet az IP-címtartomány listában "40.126.0.0/18"-ként lehet megjeleníteni. Az IP-programozott módon az alábbi [API](/rest/api/virtualnetwork/servicetags/list)használatával is lekérheti.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. lépés: SCIM-végpont létrehozása
 

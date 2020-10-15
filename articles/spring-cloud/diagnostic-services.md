@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892564"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093038"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
@@ -27,7 +27,7 @@ Az Azure Spring Cloud diagnosztikai funkciójának használatával a naplók és
 Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát.
 
 > [!TIP]
-> Csak szeretné továbbítani a naplókat? Tekintse meg ezt az [Azure CLI-parancsot](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)!
+> Csak szeretné továbbítani a naplókat? Tekintse meg ezt az [Azure CLI-parancsot](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)!
 
 ## <a name="logs"></a>Naplók
 
@@ -38,7 +38,7 @@ Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóri
 
 ## <a name="metrics"></a>Mérőszámok
 
-A metrikák teljes listájáért lásd: [Spring Cloud mérőszámok](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
+A metrikák teljes listájáért lásd: [Spring Cloud mérőszámok](./spring-cloud-concept-metrics.md#user-metrics-options).
 
 A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadást. A Log Analytics konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört.
 
@@ -52,7 +52,7 @@ A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadá
     * **Küldés a Log Analyticsnek**
 
 1. Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát, majd adja meg a megőrzési időt (napokban). A megőrzési idő csak a Storage-fiókra vonatkozik.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 > [!NOTE]
 > 1. A naplók és a metrikák kibocsátása között akár 15 percet is igénybe vehet, és amikor megjelennek a Storage-fiókban, az Event hub vagy a Log Analytics.
@@ -110,7 +110,7 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
 > [!NOTE]
 > `==` megkülönbözteti a kis-és nagybetűket, de `=~` nem.
 
-Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](../azure-monitor/log-query/query-language.md)ismertető témakört.
+Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](/azure/data-explorer/kusto/query/)ismertető témakört.
 
 ### <a name="use-your-storage-account"></a>A Storage-fiók használata
 
@@ -131,7 +131,7 @@ A diagnosztikai adatok Storage-fiókba való küldésével kapcsolatos további 
 1. Az alkalmazás naplófájljainak áttekintéséhez keressen rá az "elemzések – **naplók – applicationconsole**" nevű Event hub kifejezésre.
 1. Az alkalmazás-metrikák áttekintéséhez keressen rá az **pt1m**nevű Event hub kifejezésre.
 
-Ha többet szeretne megtudni a diagnosztikai információk esemény-központba küldéséről, olvassa el a következő témakört: [Streaming Azure Diagnostics adatok a gyors elérési úton Event Hubs használatával](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
+Ha többet szeretne megtudni a diagnosztikai információk esemény-központba küldéséről, olvassa el a következő témakört: [Streaming Azure Diagnostics adatok a gyors elérési úton Event Hubs használatával](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>A naplók elemzése
 

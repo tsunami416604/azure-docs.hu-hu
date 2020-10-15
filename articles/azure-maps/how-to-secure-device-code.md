@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319758"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090437"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Egy bemeneti korlátozott eszköz biztonságossá tétele az Azure AD-vel és a Azure Maps REST API-kkal
 
@@ -55,7 +55,7 @@ Hozza létre az eszközön alapuló alkalmazást az Azure AD-ben az Azure AD-bej
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek kiválasztása](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. Azure szerepköralapú hozzáférés-vezérlés konfigurálása felhasználókhoz vagy csoportokhoz. Lásd: [szerepkör-alapú hozzáférés engedélyezése a felhasználók számára Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
+6. Konfigurálja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) felhasználókhoz vagy csoportokhoz. Lásd: [szerepköralapú hozzáférés biztosítása a felhasználók számára a Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
 
 7. Kód hozzáadása a jogkivonat-adatfolyam beszerzéséhez az alkalmazásban a megvalósítás részleteiért lásd: az [eszköz kódjának folyamata](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). A jogkivonatok beszerzése során hivatkozzon a hatókörre: `user_impersonation` Ez a korábbi lépéseknél lett kiválasztva.
 
@@ -110,7 +110,7 @@ Törzse
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

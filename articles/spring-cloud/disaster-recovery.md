@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892555"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092902"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud vész-helyreállítás
 
@@ -50,7 +50,7 @@ Két különböző régióban (az USA keleti régiójában és Nyugat-Európába
 
 2. Egyéni tartomány beállítása a Service-hez egyéni tartomány- [dokumentum](spring-cloud-tutorial-custom-domain.md) beállítása a két meglévő szolgáltatási példány egyéni tartományának beállításához. A sikeres beállítás után mindkét szolgáltatási példány az egyéni tartományhoz lesz kötve: bcdr-test.contoso.com
 
-3. Hozzon létre egy Traffic Managert és két végpontot: [hozzon létre egy Traffic Manager profilt a Azure Portal használatával](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+3. Hozzon létre egy Traffic Managert és két végpontot: [hozzon létre egy Traffic Manager profilt a Azure Portal használatával](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 Itt látható a Traffic Manager-profil:
 * Traffic Manager DNS-név: `http://asc-bcdr.trafficmanager.net`
@@ -68,4 +68,3 @@ Itt látható a Traffic Manager-profil:
 ## <a name="next-steps"></a>Következő lépések
 
 * [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)
- 

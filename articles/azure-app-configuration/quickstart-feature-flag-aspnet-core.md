@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767729"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074447"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Az előző módosítással az alkalmazás konfigurációjának [szolgáltatója](https://go.microsoft.com/fwlink/?linkid=2074664) regisztrálva van a .net Core konfigurációs API-val.
+    Az előző módosítással az alkalmazás konfigurációjának [szolgáltatója](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) regisztrálva van a .net Core konfigurációs API-val.
 
 1. A *Startup.cs*-ben adjon hozzá egy hivatkozást a .net Core Feature Managerhez:
 
@@ -260,7 +260,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy ASP.NET Core webalkalmazás funkcióinak kezelésére a [szolgáltatás-felügyeleti kódtárak](https://go.microsoft.com/fwlink/?linkid=2074664)segítségével.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy ASP.NET Core webalkalmazás funkcióinak kezelésére a [szolgáltatás-felügyeleti kódtárak](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)segítségével.
 
 * További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
 * [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).

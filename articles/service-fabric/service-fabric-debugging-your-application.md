@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000107"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093395"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Service Fabric-alkalmazás hibakeresése a Visual Studióval
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe hel
 1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started.md)című témakör lépéseit követve.
 2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés**  >  **indítása**gombra.
    
-    ![Alkalmazás hibakeresésének megkezdése][startdebugging]
+    ![A hibakeresés menüt megjelenítő képernyőkép.][startdebugging]
 3. A **hibakeresés** menüben a parancsok elemre kattintva adja meg a töréspontokat a kódban, és lépjen az alkalmazásba.
    
    > [!NOTE]
