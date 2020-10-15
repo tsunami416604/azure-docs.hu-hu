@@ -5,6 +5,7 @@
     - name: Mi az a Virtual WAN?
       href: virtual-wan-about.md
 - name: Oktatóanyagok
+  expanded: true
   items:
     - name: Helyek közötti kapcsolat létrehozása
       href: virtual-wan-site-to-site-portal.md
