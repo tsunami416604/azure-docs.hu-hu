@@ -555,6 +555,8 @@
           href: client-images.md
         - name: Meglévő lemez letöltése
           href: download-vhd.md
+        - name: Rendszerképverzióból származó felügyelt lemezek
+          href: ../managed-disk-from-image-version.md
     - name: Virtuális gépek védelme
       items:
         - name: Javaslatok
