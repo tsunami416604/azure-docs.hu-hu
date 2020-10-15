@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683790"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075671"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>A TLS 1,2-et nem támogató alkalmazások hibaelhárítása
 Ez a cikk bemutatja, hogyan engedélyezheti a régebbi TLS protokollokat (TLS 1,0 és 1,1), valamint az örökölt titkosítási csomagok alkalmazását a Windows Server 2019 Cloud Service webes és feldolgozói szerepköreinek további protokolljainak támogatásához. 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a régebbi TLS protokollokat (TLS 1,
 Tisztában vagyunk vele, hogy a TLS 1,0 és a TLS 1,1 elavult lépéseinek elvégzése közben ügyfeleinknek a régebbi protokollokat és a titkosítási csomagokat is támogatniuk kell, amíg meg nem tervezik az elavult műveleteket.  Habár nem javasoljuk a régi értékek újbóli engedélyezését, útmutatást nyújtunk az ügyfeleknek. Javasoljuk, hogy a jelen cikkben ismertetett módosítások végrehajtása előtt értékelje a regresszió kockázatát. 
 
 > [!NOTE]
-> A vendég operációsrendszer-család 6 kiadásának kikényszeríti a TLS 1,2-et a TLS 1,0 és 1,1 explicit módon történő letiltásával, valamint a titkosítási csomagok meghatározott készletének definiálásával. A vendég operációsrendszer-családokkal kapcsolatos további információkért lásd: [vendég operációs rendszer kiadási hírei](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> A vendég operációsrendszer-család 6 kiadásának kikényszeríti a TLS 1,2-et a TLS 1,0 és 1,1 explicit módon történő letiltásával, valamint a titkosítási csomagok meghatározott készletének definiálásával. A vendég operációsrendszer-családokkal kapcsolatos további információkért lásd: [vendég operációs rendszer kiadási hírei](./cloud-services-guestos-update-matrix.md#family-6-releases)
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>A TLS 1,0, a TLS 1,1 és a régebbi titkosítási csomagok támogatásának eldobása 
@@ -362,4 +362,3 @@ Most, hogy a fenti lépések befejeződik, tegye közzé a frissítést a meglé
 
 Az [SSLLabs](https://www.ssllabs.com/) használatával ellenőrizheti a végpontok TLS-állapotát 
 
- 

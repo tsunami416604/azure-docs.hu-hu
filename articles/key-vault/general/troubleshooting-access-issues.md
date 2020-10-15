@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3110e02c2c4cb8b254e80a55997577db95ba1be0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595988"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075654"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -53,6 +53,8 @@ Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt ide
 
 Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A Key Vault hozzáférési házirendjeinek megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal, hogy elkerülje a hozzáférés kimaradását.
 
+Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy RBAC-szerepköröket használjon a hozzáférési házirendek alternatívájaként. A RBAC segítségével újra üzembe helyezheti a kulcstartót anélkül, hogy újra megadta a szabályzatot. Ebben a megoldásban [itt](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)találhat további tudnivalókat.
+
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>A következő típusú hibák ajánlott hibaelhárítási lépései
 
 * HTTP 401: Nem hitelesített kérelem – [Hibaelhárítási lépések](rest-error-codes.md#http-401-unauthenticated-request)
@@ -64,6 +66,6 @@ Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáfé
 ### <a name="what-are-the-best-practices-i-should-implement-when-key-vault-is-getting-throttled"></a>Milyen bevált eljárásokat kell megvalósítani a Key Vault szabályozásakor?
 Kövesse az [itt](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits) dokumentált ajánlott eljárásokat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan lehet elhárítani a Key Vault hitelesítési hibáit: [Key Vault hibaelhárítási útmutató](rest-error-codes.md).
