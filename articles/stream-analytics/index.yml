@@ -10,12 +10,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 0ed62ea8b209fd1bd959a714d457b447653c4f00
+  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86119650"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92016229"
 landingContent:
 - title: Az Azure Stream Analytics ismertetése
   linkLists:
@@ -143,7 +143,7 @@ landingContent:
       url: stream-analytics-machine-learning-anomaly-detection.md
     - text: Hangulatelemzés az Azure Machine Learning Studióval (klasszikus)
       url: stream-analytics-machine-learning-integration-tutorial.md
-    - text: Feladatok skálázása a Machine Learning Studio funkcióival
+    - text: Feladatok skálázása az Azure Machine Learning Studio (klasszikus) függvényeivel
       url: stream-analytics-scale-with-machine-learning-functions.md
 - title: Feladatok létrehozása és kezelése fejlesztői eszközökkel
   linkLists:

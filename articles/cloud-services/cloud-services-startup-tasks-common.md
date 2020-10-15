@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85920076"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075178"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Gyakori Cloud Service indítási feladatai
 Ez a cikk néhány példát ismertet a Cloud Service-ben elvégzendő gyakori indítási feladatokra. Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdése előtt. A végrehajtani kívánt műveletek közé tartozik például az összetevők telepítése, a COM-összetevők regisztrálása, a beállításkulcsok beállítása vagy a hosszú ideig futó folyamat elindítása. 
@@ -52,7 +52,7 @@ A változók [érvényes Azure XPath-értéket](cloud-services-role-config-xpath
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>AZ IIS-indítás konfigurálása AppCmd.exe
-Az [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) parancssori eszköz használatával az Azure-beli indításkor kezelheti az IIS-beállításokat. *AppCmd.exe* kényelmes, parancssori hozzáférést biztosít a konfigurációs beállításokhoz az Azure-beli indítási feladatokban való használathoz. A *AppCmd.exe*használatával a webhely beállításai hozzáadhatók, módosíthatók vagy eltávolíthatók az alkalmazásokhoz és a webhelyekhez.
+Az [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) parancssori eszköz használatával az Azure-beli indításkor kezelheti az IIS-beállításokat. *AppCmd.exe* kényelmes, parancssori hozzáférést biztosít a konfigurációs beállításokhoz az Azure-beli indítási feladatokban való használathoz. A *AppCmd.exe*használatával a webhely beállításai hozzáadhatók, módosíthatók vagy eltávolíthatók az alkalmazásokhoz és a webhelyekhez.
 
 Azonban van néhány dolog, amit a *AppCmd.exe* indítási feladatként való használatakor kell megnéznie:
 
@@ -491,7 +491,7 @@ Nem minden szerepkör-újraindítást tartalmaz, de az összes szerepkör-újrai
 ### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Helyi tároló használata a szerepkörben elérhető fájlok tárolására
 Ha olyan fájlt szeretne másolni vagy létrehozni az indítási feladatban, amely elérhető a szerepkör számára, akkor azt a fájlt helyi tárolóba kell helyeznie. Lásd az [előző szakaszt](#create-files-in-local-storage-from-a-startup-task).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Cloud [Service-modell és-csomag](cloud-services-model-and-package.md) áttekintése
 
 További információ a [feladatok](cloud-services-startup-tasks.md) működéséről.
@@ -499,14 +499,14 @@ További információ a [feladatok](cloud-services-startup-tasks.md) működés�
 [Hozza létre és telepítse](cloud-services-how-to-create-deploy-portal.md) a Cloud Service-csomagot.
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Feladat]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Végpontok]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Feladat]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Environment]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Változó]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[Végpontok]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
