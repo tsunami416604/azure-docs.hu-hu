@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292965"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093718"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -376,7 +376,7 @@ Ez a funkció úgy lett felépítve, hogy hozzáférjen a virtuálisgép-inform�
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Válassza ki a helyreállítási pontot (ki tud parancsfájlt előállítani)
 
-A parancsfájl hozzáférést biztosít a virtuális gépekhez, ezért fontos annak szabályozása, hogy ki hozhatja elő az első helyen. Be kell jelentkeznie a Azure Portalba, és engedélyezni kell a [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) a szkript létrehozásához.
+A parancsfájl hozzáférést biztosít a virtuális gépekhez, ezért fontos annak szabályozása, hogy ki hozhatja elő az első helyen. Be kell jelentkeznie a Azure Portalba, és a szkript létrehozásához engedélyezni kell az [Azure RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) .
 
 A fájl-helyreállításhoz a virtuális gépek visszaállításához és a lemezek visszaállításához azonos szintű engedélyezési szint szükséges. Más szóval csak a jogosultsággal rendelkező felhasználók tekinthetik meg a virtuális gépeket, és létrehozhatják a parancsfájlt.
 

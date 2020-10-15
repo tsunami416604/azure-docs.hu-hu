@@ -1,5 +1,6 @@
 ---
 title: ADAL az Androidhoz készült MSAL-áttelepítési útmutatóhoz | Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan telepítheti át a Azure Active Directory Authentication Library (ADAL) Android-alkalmazást a Microsoft hitelesítési tárba (MSAL).
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965998"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074668"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
@@ -31,7 +32,7 @@ A ADAL az Azure Active Directory v 1.0-s végponttal működik. A Microsoft Auth
 Támogatja
   - Szervezeti identitás (Azure Active Directory)
   - Nem szervezeti identitások, például Outlook.com, Xbox Live stb.
-  - (Csak B2C) Összevont bejelentkezés a Google, a Facebook, a Twitter és az Amazon között
+  - (Csak Azure AD B2C) Összevont bejelentkezés a Google, a Facebook, a Twitter és az Amazon között
 
 - A szabványokkal kompatibilis szabványok:
   - OAuth 2.0-s verzió
@@ -67,7 +68,7 @@ Ha az alkalmazás regisztrálva van a portálon, megjelenik az **API-engedélyek
 
 ### <a name="user-consent"></a>Felhasználói beleegyezés
 
-A ADAL és a HRE v1 végpont esetében az első használatkor a felhasználó beleegyezik a saját erőforrásaiba. A MSAL és a Microsoft Identity platformmal Növekményesen is kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó a magas jogosultsággal rendelkezők számára is megvizsgálhat, vagy ha nem, akkor az engedély szükségességének egyértelmű magyarázata nélkül is megkérdőjelezheti azt. Előfordulhat, hogy ezek az engedélyek ADAL a felhasználótól az alkalmazásba való bejelentkezést.
+A ADAL és az Azure AD v1 végpontjának használatával a felhasználók az első használat során megadták a saját erőforrásaikat. A MSAL és a Microsoft Identity platformmal Növekményesen is kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó a magas jogosultsággal rendelkezők számára is megvizsgálhat, vagy ha nem, akkor az engedély szükségességének egyértelmű magyarázata nélkül is megkérdőjelezheti azt. Előfordulhat, hogy ezek az engedélyek ADAL a felhasználótól az alkalmazásba való bejelentkezést.
 
 > [!TIP]
 > Javasoljuk, hogy növekményes beleegyezést alkalmazzon olyan helyzetekben, ahol további kontextust kell megadnia a felhasználónak arról, hogy miért van szüksége az alkalmazásnak egy engedélyre.
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>Migrálás az új kivételekre
@@ -238,18 +237,29 @@ public interface SilentAuthenticationCallback {
 A ADAL egyetlen kivételt `AuthenticationException` tartalmaz, amely magában foglal egy metódust az `ADALError` enumerálás értékének beolvasásához.
 A MSAL-ben van egy kivételek hierarchiája, és mindegyikhez tartozik egy adott hibakód.
 
-| Kivétel                                        | Description                                                         |
+| Kivétel                                        | Leírás                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
-| `MsalException`                                  | A MSAL által kiváltott alapértelmezett kivétel.                           |
-| `MsalClientException`                            | Kidobás, ha a hiba ügyféloldali.                                 |
 | `MsalArgumentException`                          | Ha egy vagy több bemeneti argumentum érvénytelen.                 |
-| `MsalServiceException`                           | Ha a hiba a kiszolgáló oldalon van kiváltva.                                 |
-| `MsalUserCancelException`                        | A rendszer eldobta, ha a felhasználó megszakította a hitelesítési folyamatot.                |
-| `MsalUiRequiredException`                        | Ha a jogkivonat nem frissíthető csendesen.                    |
+| `MsalClientException`                            | Kidobás, ha a hiba ügyféloldali.                                 |
 | `MsalDeclinedScopeException`                     | Akkor következik be, ha a kiszolgáló egy vagy több kért hatókört visszautasított. |
+| `MsalException`                                  | A MSAL által kiváltott alapértelmezett kivétel.                           |
 | `MsalIntuneAppProtectionPolicyRequiredException` | Akkor dobták, ha az erőforráshoz engedélyezve van a MAMCA védelmi szabályzat.         |
+| `MsalServiceException`                           | Ha a hiba a kiszolgáló oldalon van kiváltva.                                 |
+| `MsalUiRequiredException`                        | Ha a jogkivonat nem frissíthető csendesen.                    |
+| `MsalUserCancelException`                        | A rendszer eldobta, ha a felhasználó megszakította a hitelesítési folyamatot.                |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError a MsalException ErrorCode
+### <a name="adalerror-to-msalexception-translation"></a>ADALError – MsalException fordítás
+
+| Ha ezeket a hibákat a ADAL...  | ... a következő MSAL-kivételek elfogása:                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *Nincs egyenértékű ADALError* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *Nincs egyenértékű ADALError* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *Nincs egyenértékű ADALError* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *Nincs egyenértékű ADALError* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>ADAL naplózása a MSAL-Naplózásba
 

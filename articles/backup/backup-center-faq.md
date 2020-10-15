@@ -3,12 +3,12 @@ title: Backup Center – gyakori kérdések
 description: Ez a cikk a Backup centerrel kapcsolatos gyakori kérdésekre ad választ.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995779"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094041"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Backup Center – gyakori kérdések
 
@@ -34,7 +34,7 @@ Nem. A Backup Center készen áll a dobozra. Azonban a Backup Center alatt a [bi
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Szükségem van-e különleges engedélyekre a Backup Center használatához?
 
-A Backup Centernek nincs szüksége új engedélyekre. Ha a felügyelt erőforrások számára megfelelő szintű RBAC-hozzáférésre van szüksége, használhatja a biztonsági mentési központot ezekhez az erőforrásokhoz. Ha például a biztonsági másolatok adatait szeretné megtekinteni, az **olvasónak** hozzá kell férnie a tárolóhoz. A biztonsági mentés konfigurálásához és a biztonsági mentéssel kapcsolatos egyéb műveletek végrehajtásához **biztonsági mentési közreműködő** vagy **biztonságimásolat-felelős** szerepkörre van szükség. További információ a [Azure Backup RBAC szerepköreiről](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+A Backup Centernek nincs szüksége új engedélyekre. Ha az Ön által kezelt erőforrások számára megfelelő szintű Azure RBAC-hozzáférésre van szüksége, használhatja a Backup centert ezekhez az erőforrásokhoz. Ha például a biztonsági másolatok adatait szeretné megtekinteni, az **olvasónak** hozzá kell férnie a tárolóhoz. A biztonsági mentés konfigurálásához és a biztonsági mentéssel kapcsolatos egyéb műveletek végrehajtásához **biztonsági mentési közreműködő** vagy **biztonságimásolat-felelős** szerepkörre van szükség. További információ a [Azure Backup Azure-szerepköreiről](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="pricing"></a>Díjszabás
 

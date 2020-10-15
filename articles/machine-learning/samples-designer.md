@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15f8e424529513b2932dcb18de941a8fe1867c1d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045448"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074600"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára
 
@@ -67,8 +67,8 @@ Ismerkedjen meg ezekkel a beépített regressziós mintákkal.
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [Regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
-| [Regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
+| [Regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
+| [Regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
 
 ## <a name="classification"></a>Osztályozás
 
@@ -76,10 +76,10 @@ Ismerkedjen meg ezekkel a beépített besorolási mintákkal. A mintákról a mi
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [Bináris besorolás a szolgáltatás kiválasztásával – bevétel előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | A bevételt magas vagy alacsony értékűre becsülheti, kétosztályos kibővített döntési fában. A Pearson korreláció használatával válassza ki a funkciókat.
-| [Bináris besorolás egyéni Python-parancsfájllal – hitelkockázat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Magas vagy alacsony kockázatú kredit alkalmazások besorolása. Az adatai súlyozásához használja a Python-szkript végrehajtása modult.
-| [Bináris besorolás – ügyfélkapcsolatok előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | A kétosztályos, megnövelt döntési fák használatával megjósolhatja az ügyfelek adatforgalmát. A ARCUL ütötte használata az elfogult adatértékek megkóstolására.
-| [Szöveg besorolása – wikipedia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Vállalati típusok besorolása a wikipedia-cikkekből többosztályos logisztikai regresszióval. |
+| [Bináris besorolás a szolgáltatás kiválasztásával – bevétel előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | A bevételt magas vagy alacsony értékűre becsülheti, kétosztályos kibővített döntési fában. A Pearson korreláció használatával válassza ki a funkciókat.
+| [Bináris besorolás egyéni Python-parancsfájllal – hitelkockázat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | Magas vagy alacsony kockázatú kredit alkalmazások besorolása. Az adatai súlyozásához használja a Python-szkript végrehajtása modult.
+| [Bináris besorolás – ügyfélkapcsolatok előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | A kétosztályos, megnövelt döntési fák használatával megjósolhatja az ügyfelek adatforgalmát. A ARCUL ütötte használata az elfogult adatértékek megkóstolására.
+| [Szöveg besorolása – wikipedia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | Vállalati típusok besorolása a wikipedia-cikkekből többosztályos logisztikai regresszióval. |
 | Többosztályos besorolás – levél felismerése | Hozzon létre a bináris osztályozók együttesét írásos betűk besorolásához. |
 
 ## <a name="computer-vision"></a>Számítógépes látástechnológia
@@ -104,7 +104,7 @@ További információ a Machine learning segédprogramokat és szolgáltatásoka
 | Mintacím | Leírás | 
 | --- | --- |
 | Bináris besorolás a Vowpal Wabbit Model használatával – felnőtt jövedelmek előrejelzése | A Vowpal Wabbit egy gépi tanulási rendszer, amely leküldi a gépi tanulás határát olyan technikákkal, mint az online, a kivonatolás, a allreduce, a csökkenés, a learning2search, az aktív és az interaktív tanulás. Ez a minta bemutatja, hogyan használható a Vowpal Wabbit-modell bináris besorolási modell létrehozásához. 
-| [Egyéni R-szkript használata – repülési késleltetés előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | A testreszabott R-szkripttel előre jelezheti, hogy egy ütemezett utasszállító járat 15 percnél hosszabb ideig késleltetve lesz-e.
+| [Egyéni R-szkript használata – repülési késleltetés előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | A testreszabott R-szkripttel előre jelezheti, hogy egy ütemezett utasszállító járat 15 percnél hosszabb ideig késleltetve lesz-e.
 | Több ellenőrzés a bináris besorolásnál – felnőtt bevétel előrejelzése | Használjon kereszt-érvényesítést a felnőtt jövedelmek bináris besorolásának kiépítéséhez.
 | A permutáció funkció fontossága | Az adatkészlethez tartozó számítási fontossági pontszámok kiszámításához használja a permutáció funkció fontosságát. 
 | Paraméterek hangolása bináris besoroláshoz – felnőtt bevétel előrejelzése | A Hiperparaméterek beállítása hangolása segítségével optimális hiperparaméterek beállítása találhat a bináris osztályozók létrehozásához. |

@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: pipeline
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 72eea7c46dd005cd16ae5b8f0022c1174dd28f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bda70fab431037637d68eaaebbc37e8ca1d098d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89667475"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093565"
 ---
 # <a name="orchestrate-with-pipelines"></a>Összehangolás folyamatokkal
 
@@ -36,7 +37,7 @@ Az Azure szinapszis számos feladatát felhasználhatja.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatok megjelenítése Power BI használatával](get-started-visualize-power-bi.md)

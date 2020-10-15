@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 8/13/2020
-ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225716"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074804"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
@@ -39,7 +39,7 @@ A kiszolgáló létrehozása után a virtuális mag száma és az árképzési s
 
 A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. A Gen 5 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3-GHz-es processzorok.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Az Ön által kiépített tárterület a Azure Database for MariaDB-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tároló az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a MariaDB-kiszolgáló naplóihoz használható. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
@@ -71,7 +71,10 @@ A tárolási korlátokat a általános célú és a memória optimalizált szint
 | IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!IMPORTANT]
-> A nagyméretű tároló jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA északi középső régiója, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Kelet-Ausztrália Korea, Közép-Korea
+> A nagyméretű tárterület jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA nyugati régiója, az USA északi középső régiója, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Kanada, Közép-Korea, Dél-Korea, Kelet-Ausztrália, Kelet-Kanada
+>
+> Minden más régió akár 4TB, akár 6000 IOPS is támogat.
+>
 
 ### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
 

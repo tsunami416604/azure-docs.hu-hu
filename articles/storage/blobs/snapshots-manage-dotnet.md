@@ -10,16 +10,16 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44ea49d7ed0cec6fc56cb2462a25d38866ce9a76
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226131"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093684"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>BLOB-pillanatkép létrehozása és kezelése a .NET-ben
 
-A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet blob-pillanatképeket a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.
+A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet blob-pillanatképeket a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage)használatával.
 
 További információ az Azure Storage-beli blob-pillanatképekről: [blob-Pillanatképek](snapshots-overview.md).
 

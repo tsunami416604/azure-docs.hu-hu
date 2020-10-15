@@ -14,15 +14,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142485"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074226"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Hozzárendelési hibák elhárítása a Cloud Services telepítése során az Azure szolgáltatásban
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ha példányokat helyez üzembe egy felhőalapú szolgáltatásban, vagy új webes vagy feldolgozói szerepkört ad hozzá, a Microsoft Azure kiosztja a számítási erőforrásokat. Időnként előfordulhat, hogy az Azure-előfizetések korlátainak megkezdése előtt ezeket a műveleteket is elvégezheti. Ez a cikk ismerteti a gyakori lefoglalási hibák okait, és javaslatot tesz a lehetséges szervizelésre. Az információk akkor is hasznosak lehetnek, ha a szolgáltatások üzembe helyezését tervezi.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -70,4 +70,4 @@ Az alábbi gyakori foglalási forgatókönyvek azt okozzák, hogy a foglalási k
      ```
    * Kövesse #2 a fentiekben leírtak szerint, és győződjön meg arról, hogy az új foglalt IP meg van határozva a szolgáltatás CSCFG.
 4. Az új központi telepítések affinitási csoportjának eltávolítása – az affinitási csoportok már nem ajánlottak. Új felhőszolgáltatás üzembe helyezéséhez kövesse a fenti 1-es pont lépéseit. Győződjön meg arról, hogy a felhőalapú szolgáltatás nem egy affinitási csoportban van.
-5. Átalakítás regionális Virtual Networkra – lásd: az [áttelepítést az affinitási csoportokból egy regionális Virtual Networkra (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+5. Átalakítás regionális Virtual Networkra – lásd: az [áttelepítést az affinitási csoportokból egy regionális Virtual Networkra (VNet)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet).

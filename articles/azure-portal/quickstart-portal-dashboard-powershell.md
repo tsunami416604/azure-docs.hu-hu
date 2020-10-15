@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.author: mblythe
 ms.date: 07/24/2020
-ms.openlocfilehash: 6b7a4f6d4ad7f5e94d19b9d531992f54ff13fec0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: de0394f9b3254931537441d9f44606d16392a62d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87440774"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073886"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Rövid útmutató: Azure Portal irányítópult létrehozása a PowerShell-lel
 
@@ -23,7 +23,7 @@ Az irányítópulton egy virtuális gép (VM) teljesítménye, valamint néhány
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Az az **. Portal** PowerShell-modul előzetes verzióban érhető el, és a parancsmag használatával külön kell telepítenie az az PowerShell-modulból `Install-Module` . Miután a PowerShell-modul általánosan elérhetővé válik, az a PowerShell-modul kiadásainak részévé válik, és natív módon elérhető lesz a Azure Cloud Shellon belülről.
@@ -36,7 +36,7 @@ Install-Module -Name Az.Portal
 
 ## <a name="choose-a-specific-azure-subscription"></a>Adott Azure-előfizetés kiválasztása
 
-Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat számlázni kell. Válasszon ki egy adott előfizetést a [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
+Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat számlázni kell. Válasszon ki egy adott előfizetést a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -66,9 +66,9 @@ $subscriptionID = (Get-AzContext).Subscription.Id
 $vmName = 'SimpleWinVM'
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
 A következő példa létrehoz egy erőforráscsoportot a változóban `$resourceGroupName` megadott régióban található változó alapján `$location` .
 
@@ -102,7 +102,7 @@ A virtuális gép üzembe helyezése most elindul, és általában néhány perc
 
 ## <a name="download-the-dashboard-template"></a>Az irányítópult-sablon letöltése
 
-Mivel az Azure-irányítópultok erőforrások, JSON-ként is képviseltetik magukat. A következő kód egy minta irányítópult JSON-ábrázolását tölti le. További információ: [Az Azure-irányítópultok szerkezete](/azure/azure-portal/azure-portal-dashboards-structure).
+Mivel az Azure-irányítópultok erőforrások, JSON-ként is képviseltetik magukat. A következő kód egy minta irányítópult JSON-ábrázolását tölti le. További információ: [Az Azure-irányítópultok szerkezete](./azure-portal-dashboards-structure.md).
 
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
@@ -175,9 +175,9 @@ A virtuális gép és a hozzá tartozó irányítópult eltávolításához tör
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az az. Portal PowerShell-modulban található parancsmagokkal kapcsolatos további információkért lásd:
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure PowerShell: portál irányítópult-parancsmagok](https://docs.microsoft.com/powershell/module/Az.Portal/)
+> [Microsoft Azure PowerShell: portál irányítópult-parancsmagok](/powershell/module/Az.Portal/)

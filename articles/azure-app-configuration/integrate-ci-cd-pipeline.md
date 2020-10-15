@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211638"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074736"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 
@@ -35,9 +35,9 @@ Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha helyileg épít, töltse le és telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t, ha még nem tette meg.
+Ha helyileg épít, töltse le és telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t, ha még nem tette meg.
 
-A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze, hogy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van-e a Build rendszerbe.
+A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze, hogy az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van-e a Build rendszerbe.
 
 ### <a name="export-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló exportálása
 
@@ -102,9 +102,9 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban exportálta az Azure-alkalmazás konfigurációs szolgáltatásait egy központi telepítési folyamat során. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

@@ -3,12 +3,12 @@ title: Azure-beli számítási feladatok optimalizálása az Advisor score haszn
 description: Az Advisor pontszám használata a legtöbbet kihasználhatja az Azure-ban
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335619"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074022"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Azure-beli számítási feladatok optimalizálása az Advisor score használatával
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335619"
 Azure Advisor a számítási feladatokra vonatkozó ajánlott eljárásokat nyújt. Ezek a javaslatok személyre szabottak, és a következőkhöz nyújtanak segítséget:
 * A számítási feladatok testtartásának javítása és az Azure-beli üzembe helyezések optimalizálása
 * Az ajánlott eljárások követésével proaktív módon megelőzheti a leggyakoribb problémákat
-* Mérje fel Azure-beli számítási feladatait a [Microsoft Azure Well-Architected-keretrendszer](https://docs.microsoft.com/azure/architecture/framework/) öt pillérére
+* Mérje fel Azure-beli számítási feladatait a [Microsoft Azure Well-Architected-keretrendszer](/azure/architecture/framework/) öt pillérére
 
 Az Advisor alapszolgáltatásként az **Advisor pontszáma** úgy van kialakítva, hogy segítsen a célok hatékony és hatékony elérésében. 
 
@@ -56,7 +56,7 @@ Az Advisor pontszámának kiszámítása négy lépésben végezhető el:
   * A hosszú távú javaslatokat tartalmazó erőforrások többek között a pontszám alapján lesznek kiszámítva.
   * A tanácsadóban elhalasztott vagy elhagyott erőforrások teljes egészében törlődnek a pontszám kiszámítása során. 
     
-Az Advisor ezt a modellt az Advisor kategóriájának szintjén alkalmazza (a biztonság [biztonságos pontszám](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) modellt használ), és minden egyes kategóriához az USA Advisor pontszámát adja meg, és egy egyszerű átlagot eredményez.
+Az Advisor ezt a modellt az Advisor kategóriájának szintjén alkalmazza (a biztonság [biztonságos pontszám](../security-center/secure-score-security-controls.md#introduction-to-secure-score) modellt használ), és minden egyes kategóriához az USA Advisor pontszámát adja meg, és egy egyszerű átlagot eredményez.
 
 
 ## <a name="advisor-score-faq"></a>Advisor pontszám – GYIK
