@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002930"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076708"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése a Azure Portal
 A Azure Portal **Cloud Services** területén a következőket teheti:
@@ -83,7 +83,7 @@ Vegye figyelembe, hogy a vendég operációs rendszer frissítései és a szolg�
 
 **Felmerül a swap-állásidő az alkalmazásom esetében? Hogyan kezelhető?**
 
-Az előző szakaszban leírtaknak megfelelően a rendszer általában gyors üzembe helyezést végez, mert csak az Azure Load Balancer konfigurációjának változása. Bizonyos esetekben 10 vagy több másodpercet is igénybe vehet, és átmeneti csatlakoztatási hibákat eredményezhet. Az ügyfelekre gyakorolt hatás korlátozásához érdemes lehet megvalósítani az [ügyfél újrapróbálkozási logikáját](../best-practices-retry-general.md).
+Az előző szakaszban leírtaknak megfelelően a rendszer általában gyors üzembe helyezést végez, mert csak az Azure Load Balancer konfigurációjának változása. Bizonyos esetekben 10 vagy több másodpercet is igénybe vehet, és átmeneti csatlakoztatási hibákat eredményezhet. Az ügyfelekre gyakorolt hatás korlátozásához érdemes lehet megvalósítani az [ügyfél újrapróbálkozási logikáját](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Központi telepítések és felhőalapú szolgáltatások törlése
 A felhőalapú szolgáltatások törléséhez minden meglévő telepítést törölnie kell.
@@ -119,11 +119,8 @@ Az **Áttekintés** panel tetején egy állapotsor található. Amikor kiválasz
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
 * Konfigurálja a [TLS/SSL-tanúsítványokat](cloud-services-configure-ssl-certificate-portal.md).
-
-
-
