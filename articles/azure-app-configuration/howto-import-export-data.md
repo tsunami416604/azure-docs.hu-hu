@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588075"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074617"
 ---
 # <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása vagy exportálása
 
 Az Azure-alkalmazás konfigurációja támogatja az adatok importálási és exportálási műveleteit. Ezekkel a műveletekkel tömegesen dolgozhat a konfigurációs adatokkal, és az alkalmazások konfigurációs tárolója és a kód projektje között cserélheti az adatait. Beállíthat például egy alkalmazás-konfigurációs tárolót tesztelésre, egy másikat pedig éles környezetben. Átmásolhatja az alkalmazások beállításait, így nem kell kétszer megadnia az adatbevitelt.
 
-Ez a cikk útmutatást nyújt az alkalmazások alkalmazás-konfigurációval történő importálásához és exportálásához. Ha egy folyamatos szinkronizálást szeretne beállítani a GitHub-tárházral, tekintse meg a [GitHub-műveletet](https://aka.ms/azconfig-gha1).
+Ez a cikk útmutatást nyújt az alkalmazások alkalmazás-konfigurációval történő importálásához és exportálásához. Ha egy folyamatos szinkronizálást szeretne beállítani a GitHub-tárházral, tekintse meg a [GitHub-műveletet](./concept-github-action.md).
 
 ## <a name="import-data"></a>Adatok importálása
 
@@ -62,7 +62,7 @@ Az adatexportálás az [Azure Portal](https://portal.azure.com) vagy az [Azure C
 
     ![A fájl exportálása befejeződött](./media/export-file-complete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)

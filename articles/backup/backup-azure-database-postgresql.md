@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Database for PostgreSQL biztonsági mentésse
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995593"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093888"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
 
@@ -17,7 +17,7 @@ A Azure Backup és az Azure Database Services együttes használatával olyan na
 
 A hosszú távú adatmegőrzés mellett a megoldás számos más képességgel is rendelkezik, az alább látható módon:
 
-- RBAC-alapú hozzáférés az adatbázishoz Azure Active Directory és Managed Service Identity (MSI) hitelesítés használatával.
+- Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az adatbázishoz Azure Active Directory és Managed Service Identity (MSI) hitelesítés használatával.
 - Az ügyfél által vezérelt ütemezett és igény szerinti biztonsági mentés az egyes adatbázis szintjén.
 - Az adatbázis-szintű visszaállítás bármely postgres-kiszolgálóra vagy közvetlenül a blob Storage-tárolóba.
 - Hosszú távú megőrzés.

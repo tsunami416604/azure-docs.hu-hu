@@ -52,10 +52,12 @@
           items:
             - name: A VMware virtuális gépek migrálási lehetőségeinek bemutatása
               href: server-migrate-overview.md
-            - name: VMware virtuális gépek migrálása ügynök nélkül
+            - name: VMware virtuális gépek migrálása ügynök nélkül – Azure Portal
               href: tutorial-migrate-vmware.md
             - name: VMware virtuális gépek migrálása ügynökalapú migrálással
               href: tutorial-migrate-vmware-agent.md
+            - name: VMware virtuális gépek migrálása ügynök nélkül – PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V virtuális gépek migrálása
           href: tutorial-migrate-hyper-v.md
         - name: Fizikai kiszolgálók migrálása

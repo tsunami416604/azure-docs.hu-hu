@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019953"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074260"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -111,7 +111,7 @@ A következő erőforrás-szolgáltatói mód teljes mértékben támogatott:
 A következő erőforrás-szolgáltatói módok jelenleg **előzetes**verzióként támogatottak:
 
 - `Microsoft.ContainerService.Data` a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó definícióknak a [EnforceRegoPolicy](./effects.md#enforceregopolicy) effektust **kell** használniuk. Ez a mód _elavult_.
-- `Microsoft.KeyVault.Data` a [Azure Key Vault](../../../key-vault/general/overview.md)tárolók és tanúsítványok kezeléséhez.
+- `Microsoft.KeyVault.Data` a [Azure Key Vault](../../../key-vault/general/overview.md)tárolók és tanúsítványok kezeléséhez. A szabályzat-definíciókkal kapcsolatos további információkért lásd: [a Azure Key Vault integrálása Azure Policyokkal](../../../key-vault/general/azure-policy.md).
 
 > [!NOTE]
 > Az erőforrás-szolgáltatói módok csak a beépített szabályzat-definíciókat támogatják, és nem támogatják a [kivételeket](./exemption-structure.md).
@@ -609,8 +609,20 @@ A következő függvények csak a házirend-szabályokban érhetők el:
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **tartomány**: [kötelező] karakterlánc – karakterlánc, amely az IP-címek tartományát határozza meg.
+    - **targetRange**: [kötelező] karakterlánc-karakterlánc, amely az IP-címek tartományát határozza meg.
+
+    Azt adja vissza, hogy a megadott IP-címtartomány tartalmazza-e a célként megadott IP-címtartományt. Az üres tartományok, illetve az IP-családok közötti keverés nem engedélyezett, és kiértékelési hibát eredményez.
+
+    Támogatott formátumok:
+    - Egyetlen IP-cím (példák: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+    - CIDR-tartomány (példák: `10.0.0.0/24` , `2001:0DB8::/110` )
+    - A kezdő és a záró IP-címek által meghatározott tartomány (példák: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+
+
 #### <a name="policy-function-example"></a>Példa a házirend-függvényre
 
 Ez a házirend-szabály például az erőforrás-függvénnyel kéri le `resourceGroup` a **Name (név** ) tulajdonságot, `concat` amely a tömb és objektum függvénnyel együtt egy olyan `like` feltételt hoz létre, amely kikényszeríti az erőforrás nevét, hogy az erőforráscsoport nevével kezdődjön.
