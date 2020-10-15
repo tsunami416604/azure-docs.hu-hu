@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976006"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070911"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Távoli figyelési adatmegjelenítés Power BI használatával
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatainak a Cosmo
 
 4. Az áttekintő lapon kattintson arra az elemre, amelynek típusa "Azure Cosmos DB fiók", ezt követően a IoT-megoldáshoz tartozó Cosmos DB stream áttekintés lapjára kerül.
 
-    ![Erőforráscsoport](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
+    ![Resource Group](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
 5. A bal oldali panelen kattintson a "Keys" (kulcsok) szakaszra, és jegyezze fel a következő értékeket a Power BI:
 
@@ -94,9 +94,9 @@ A stream csatlakoztatása után készen áll a személyre szabott irányítópul
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Az irányítópult közzététele és az adatgyűjtés frissítése
 
-Az irányítópultok sikeres létrehozása után javasoljuk, hogy [tegye közzé a Power bi-irányítópultokat](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) másokkal való megosztáshoz.
+Az irányítópultok sikeres létrehozása után javasoljuk, hogy [tegye közzé a Power bi-irányítópultokat](/power-bi/desktop-upload-desktop-files) másokkal való megosztáshoz.
 
-Emellett [frissítenie](https://docs.microsoft.com/power-bi/refresh-data) kell a közzétett irányítópulton lévőket is, hogy megbizonyosodjon arról, hogy rendelkezik a legújabb adatkészlettel.
+Emellett [frissítenie](/power-bi/refresh-data) kell a közzétett irányítópulton lévőket is, hogy megbizonyosodjon arról, hogy rendelkezik a legújabb adatkészlettel.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -107,4 +107,3 @@ A távoli figyelési megoldás testreszabásával kapcsolatos további informác
 * [A távoli figyelési megoldás felhasználói felületének testreszabása](iot-accelerators-remote-monitoring-customize.md)
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-

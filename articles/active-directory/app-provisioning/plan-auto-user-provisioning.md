@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235701"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070367"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -26,7 +26,7 @@ A Azure Active Directory (Azure AD) automatikus felhasználó-kiépítés leegys
 
 A funkciók jobb megismeréséhez lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](../app-provisioning/user-provisioning.md) segítségével.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz, és javítja a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -42,7 +42,7 @@ Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a köv
 
 * **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetővé az alkalmazás-katalógus menüjében található sablonok használatával. A licencekre vonatkozó követelmények teljes listáját az [Azure ad licencelési lapján](https://azure.microsoft.com/pricing/details/active-directory/)tekintheti meg.
 
@@ -129,7 +129,7 @@ Gondolja át, hogy a szervezetnek meg kell határoznia a felhasználói kiépít
 
 ### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségi körök eltérő elvárásai vannak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és hogy a projektben érintett szerepköröket jól megértette az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
+A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségi körök eltérő elvárásai vannak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és hogy a projektben érintett szerepköröket jól megértette az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 
@@ -264,7 +264,7 @@ A kiépítési szolgáltatás mindkét rendszer állapotát a kezdeti ciklus ut�
 
 A [Azure Portal](https://portal.azure.com/) segítségével kezelheti a felhasználói fiókok automatikus üzembe helyezését és kiépítheti az azt támogató alkalmazások felügyeletét. Kövesse a Hogyan az [automatikus kiépítés beállítása egy alkalmazáshoz](../app-provisioning/user-provisioning.md) című szakasz lépéseit.
 
-Az Azure AD-beli felhasználói kiépítési szolgáltatás a [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)használatával is konfigurálható és kezelhető.
+Az Azure AD-beli felhasználói kiépítési szolgáltatás a [Microsoft Graph API](/graph/api/resources/synchronization-overview)használatával is konfigurálható és kezelhető.
 
 ## <a name="manage-automatic-user-provisioning"></a>Automatikus felhasználó-kiépítés kezelése
 
@@ -274,7 +274,7 @@ Most, hogy üzembe helyezte, felügyelni kell a megoldást.
 
 A sikeres [kezdeti ciklust](../app-provisioning/user-provisioning.md)követően az Azure ad kiépítési szolgáltatás határozatlan ideig, az egyes alkalmazásokra jellemző időközönként futtatja a növekményes frissítéseket, amíg az alábbi események egyike nem következik be:
 
-* A szolgáltatás kézi leállítása megtörtént, és a rendszer elindítja az új kezdeti ciklust a [Azure Portal](https://portal.azure.com/)használatával, vagy a megfelelő [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -parancs használatával.
+* A szolgáltatás kézi leállítása megtörtént, és a rendszer elindítja az új kezdeti ciklust a [Azure Portal](https://portal.azure.com/)használatával, vagy a megfelelő [Microsoft Graph API](/graph/api/resources/synchronization-overview) -parancs használatával.
 
 * Az attribútum-hozzárendelések vagy a hatóköri szűrők változása új kezdeti ciklust indít el.
 
@@ -310,7 +310,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Kifejezések írása attribútum-hozzárendelésekhez](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Az Azure AD szinkronizációs API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Az Azure AD szinkronizációs API áttekintése](/graph/api/resources/synchronization-overview)
 
 * [A hatókörön kívüli felhasználói fiókok törlésének kihagyása](skip-out-of-scope-deletions.md)
 

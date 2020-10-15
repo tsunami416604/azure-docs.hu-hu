@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875556"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078289"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet-VNet közötti kapcsolatok konfigurálása (klasszikus)
 
@@ -32,8 +32,6 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre VPN Gateway-kapcsolatot a vi
 >
 
 ![VNet a VNet kapcsolati diagramhoz](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>Tudnivalók a virtuális hálózatok közötti kapcsolatokról
 
@@ -61,7 +59,7 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
 A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, [A virtuális hálózatok közötti kapcsolatokra vonatkozó szempontok](#faq) című részben talál.
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>A Azure PowerShell használata
+## <a name="prerequisites"></a>Előfeltételek
 
 A legtöbb lépésben a portált használjuk, de a PowerShell használatával kell létrehoznia a virtuális hálózatok közötti kapcsolatokat. A kapcsolatok nem hozhatók létre a Azure Portal használatával. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -87,7 +85,7 @@ Ebben a lépésben két klasszikus virtuális hálózatot hoz létre. Ha gyakorl
 Név: TestVNet1<br>
 Címterület: 10.11.0.0/16, 10.12.0.0/16 (nem kötelező)<br>
 Alhálózat neve: default<br>
-Alhálózati címtartomány: 10.11.0.1/24<br>
+Alhálózati címtartomány: 10.11.0.0/24<br>
 Erőforráscsoport: ClassicRG<br>
 Hely: East US<br>
 GatewaySubnet: 10.11.1.0/27

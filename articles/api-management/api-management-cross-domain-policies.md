@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499613"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071234"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
-Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](./api-management-policies.md).
 
 ## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a> Tartományok közötti házirendek
 
@@ -55,7 +55,7 @@ A `cross-domain` szabályzat segítségével elérhetővé teheti az API-t az Ad
 
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Igen|
+|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -126,21 +126,21 @@ Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelme
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|CORS|Gyökérelem.|Igen|N/A|
-|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins` tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Igen|N/A|
-|forrás (origin)|Az érték lehet az `*` összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Igen|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
-|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. `method`A támogatott http-műveleteket megadó elemeket tartalmazza. Az érték az `*` összes metódust jelzi.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
-|method|HTTP-műveletet ad meg.|`method`Ha a szakasz jelen van, legalább egy elem megadása kötelező `allowed-methods` .|N/A|
-|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|Nem|N/A|
-|fejlécek közzététele|Ez az elem olyan elemeket tartalmaz, `header` amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|Nem|N.A.|
-|fejléc|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` Ha a szakasz jelen van.|N/A|
+|CORS|Gyökérelem.|Yes|N.A.|
+|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins` tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Yes|N.A.|
+|forrás (origin)|Az érték lehet az `*` összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Yes|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
+|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. `method`A támogatott http-műveleteket megadó elemeket tartalmazza. Az érték az `*` összes metódust jelzi.|No|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
+|method|HTTP-műveletet ad meg.|`method`Ha a szakasz jelen van, legalább egy elem megadása kötelező `allowed-methods` .|N.A.|
+|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|No|N.A.|
+|fejlécek közzététele|Ez az elem olyan elemeket tartalmaz, `header` amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|No|N.A.|
+|fejléc|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` Ha a szakasz jelen van.|N.A.|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|hitelesítő adatok engedélyezése|Az `Access-Control-Allow-Credentials` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben.|Nem|hamis|
-|Elővizsgálat – eredmény-Max-Age|Az `Access-Control-Max-Age` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására.|Nem|0|
+|hitelesítő adatok engedélyezése|Az `Access-Control-Allow-Credentials` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben.|No|hamis|
+|Elővizsgálat – eredmény-Max-Age|Az `Access-Control-Max-Age` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására.|No|0|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -171,13 +171,13 @@ Ha hozzáadja a visszahívási paramétert `?cb=XXX` , a visszaadja a jsnop tám
 
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|jsnop támogatással|Gyökérelem.|Igen|
+|jsnop támogatással|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Igen|N/A|
+|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -185,11 +185,11 @@ Ez a szabályzat a következő házirend- [részekben](./api-management-howto-po
 - **Házirend fejezetei:** kimenő
 - **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](policy-samples.md)
++ [Házirend-minták](./policy-reference.md)
