@@ -115,3 +115,5 @@
       href: faq.md
     - name: Termelési készenlét és ajánlott eljárások
       href: production-readiness.md
+    - name: Átláthatóság és a felelősségteljes MI alapelvei
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

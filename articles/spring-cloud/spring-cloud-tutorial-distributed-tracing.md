@@ -8,16 +8,16 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908300"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088635"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
-Az Azure Spring Cloud elosztott nyomkövetési eszközeivel könnyedén hibakeresést végezhet, és figyelheti az összetett problémákat. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony elosztott nyomkövetési képességet biztosít a Azure Portal.
+Az Azure Spring Cloud elosztott nyomkövetési eszközeivel könnyedén hibakeresést végezhet, és figyelheti az összetett problémákat. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](../azure-monitor/app/app-insights-overview.md). Ez az integráció hatékony elosztott nyomkövetési képességet biztosít a Azure Portal.
 
 ::: zone pivot="programming-language-csharp"
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a .NET Core Steeltoe-alkalmazások számára az elosztott nyomkövetés használatát.
@@ -144,15 +144,15 @@ Ha már létrehozott és telepített egy alkalmazást, módosíthatja a mintavé
 
 ## <a name="view-the-application-map"></a>Az alkalmazás-hozzárendelés megtekintése
 
-Térjen vissza az **elosztott nyomkövetés** lapra, és válassza az **alkalmazás-hozzárendelés megtekintése**lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazás-hozzárendelés használatának megismeréséhez tekintse meg az [Application Map: elosztott alkalmazások osztályozása](https://docs.microsoft.com/azure/azure-monitor/app/app-map)című témakört.
+Térjen vissza az **elosztott nyomkövetés** lapra, és válassza az **alkalmazás-hozzárendelés megtekintése**lehetőséget. Tekintse át az alkalmazás és a figyelési beállítások vizuális megjelenítését. Az alkalmazás-hozzárendelés használatának megismeréséhez tekintse meg az [Application Map: elosztott alkalmazások osztályozása](../azure-monitor/app/app-map.md)című témakört.
 
 ## <a name="use-search"></a>Keresés használata
 
-Más konkrét telemetria-elemek lekérdezéséhez használja a Search függvényt. Az **elosztott nyomkövetés** lapon válassza a **Keresés**lehetőséget. További információ a keresési funkció használatáról: [Keresés használata Application Insightsban](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
+Más konkrét telemetria-elemek lekérdezéséhez használja a Search függvényt. Az **elosztott nyomkövetés** lapon válassza a **Keresés**lehetőséget. További információ a keresési funkció használatáról: [Keresés használata Application Insightsban](../azure-monitor/app/diagnostic-search.md).
 
 ## <a name="use-application-insights"></a>Application Insights használata
 
-A Application Insights az Application Map és a Search függvény mellett biztosít figyelési képességeket. Keresse meg az alkalmazás neve Azure Portal, majd nyisson meg egy Application Insights lapot a figyelési információk megkereséséhez. Az eszközök használatáról további útmutatásért tekintse meg Azure Monitor a [naplók lekérdezéseit](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+A Application Insights az Application Map és a Search függvény mellett biztosít figyelési képességeket. Keresse meg az alkalmazás neve Azure Portal, majd nyisson meg egy Application Insights lapot a figyelési információk megkereséséhez. Az eszközök használatáról további útmutatásért tekintse meg Azure Monitor a [naplók lekérdezéseit](/azure/data-explorer/kusto/query/).
 
 ## <a name="disable-application-insights"></a>Application Insights letiltása
 

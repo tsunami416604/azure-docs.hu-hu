@@ -493,6 +493,8 @@
                   items:
                     - name: Általánosított
                       href: ../vm-generalized-image-version-cli.md
+                    - name: Specializált
+                      href: ../vm-specialized-image-version-cli.md
                 - name: Rendszerkép-erőforrások frissítése
                   href: ../update-image-resources-cli.md
                 - name: Alkalmazásregisztráció megosztás céljából
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: Meglévő lemez letöltése
           href: download-vhd.md
+        - name: Rendszerképverzióból származó felügyelt lemezek
+          href: ../managed-disk-from-image-version.md
     - name: Virtuális gépek védelme
       items:
         - name: Javaslatok

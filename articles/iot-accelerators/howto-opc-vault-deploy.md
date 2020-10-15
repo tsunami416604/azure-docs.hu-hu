@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282023"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071489"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás létrehozása és üzembe helyezése
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan helyezheti üzembe az OPC Vault tanúsítványkezel�
 
 Jelenleg a létrehozási és üzembe helyezési művelet a Windowsra korlátozódik.
 A minták mind a C# .NET szabványhoz készültek, amelyhez létre kell hoznia a szolgáltatást, és mintákat kell vennie az üzembe helyezéshez.
-A .NET szabványhoz szükséges összes eszköz a .NET Core-eszközökkel együtt érhető el. Lásd: [a .net Core első lépései](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+A .NET szabványhoz szükséges összes eszköz a .NET Core-eszközökkel együtt érhető el. Lásd: [a .net Core első lépései](/dotnet/articles/core/getting-started).
 
 1. [Telepítse a .net Core 2.1 +][dotnet-install]-ot.
 2. A [Docker telepítése][docker-url] (nem kötelező, csak akkor, ha a helyi Docker-Build szükséges).
