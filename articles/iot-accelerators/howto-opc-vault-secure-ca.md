@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399635"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071455"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault tanúsítványkezelő szolgáltatás biztonságos futtatása
 
@@ -97,7 +97,7 @@ Minden rendszert folyamatosan figyelni és frissíteni kell a legújabb biztons�
 Előfizetés a megfelelő biztonsági figyelésre vagy megvalósításra. Tegyük fel például, hogy előfizet egy központi figyelési megoldásra (például Azure Security Center vagy Microsoft 365 figyelési megoldásra), és konfigurálja megfelelően annak biztosításához, hogy a biztonsági események továbbítva legyenek a figyelési megoldásnak.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az OPC Vault szolgáltatás üzembe helyezése az [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) figyelési megoldásként történik. A [Azure Security Centerhoz](https://azure.microsoft.com/services/security-center/) hasonló biztonsági megoldás hozzáadása kifejezetten ajánlott.
+> Alapértelmezés szerint az OPC Vault szolgáltatás üzembe helyezése az [Azure Application Insights](../azure-monitor/app/devops.md) figyelési megoldásként történik. A [Azure Security Centerhoz](https://azure.microsoft.com/services/security-center/) hasonló biztonsági megoldás hozzáadása kifejezetten ajánlott.
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>A nyílt forráskódú szoftverek összetevőinek biztonságának felmérése
 
@@ -145,7 +145,7 @@ Adja meg az elmúlt 12 hónapban kiállított összes tanúsítvány teljes kés
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>A titkosítási kulcsok biztonságos törlésére szolgáló szabványos működési eljárás dokumentálása
 
-A HITELESÍTÉSSZOLGÁLTATÓ élettartama során a kulcsok törlése csak ritkán történhet meg. Ezért nincs olyan felhasználó, akinek nincs Key Vault tanúsítvány-törlési jogosultsága, és miért nincsenek elérhető API-k egy kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törléséhez. A hitelesítésszolgáltató titkosítási kulcsainak biztonságos törléséhez szükséges manuális szabványos működési eljárás csak a Azure Portal Key Vault közvetlen elérésével érhető el. Key Vault is törölheti a tanúsítványt. Az azonnali törlés érdekében tiltsa le a [Key Vault Soft delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) funkciót.
+A HITELESÍTÉSSZOLGÁLTATÓ élettartama során a kulcsok törlése csak ritkán történhet meg. Ezért nincs olyan felhasználó, akinek nincs Key Vault tanúsítvány-törlési jogosultsága, és miért nincsenek elérhető API-k egy kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törléséhez. A hitelesítésszolgáltató titkosítási kulcsainak biztonságos törléséhez szükséges manuális szabványos működési eljárás csak a Azure Portal Key Vault közvetlen elérésével érhető el. Key Vault is törölheti a tanúsítványt. Az azonnali törlés érdekében tiltsa le a [Key Vault Soft delete](../key-vault/general/soft-delete-overview.md) funkciót.
 
 ## <a name="certificates"></a>Tanúsítványok
 

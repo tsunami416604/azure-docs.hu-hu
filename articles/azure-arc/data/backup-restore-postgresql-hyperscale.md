@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630423"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071438"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoportok biztonsági mentése és visszaállítása
 
@@ -82,7 +82,12 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>Manuális teljes biztonsági mentés készítése
 
+
 Ezután készítsen manuális teljes biztonsági mentést.
+
+> [!CAUTION]
+> **Csak az Azure Kubernetes Service (ak) felhasználói számára:** tisztában vagyunk azzal, hogy az Azure Kubernetes szolgáltatásban (ak) üzemeltetett kiszolgálócsoport biztonsági mentéseit vesszük figyelembe. Már dolgozunk a javításán. Amíg a frissítés egy későbbi kiadásban/frissítésben van telepítve, a biztonsági mentés előtt törölnie kell a kiszolgálói csoportok hüvelyét. A kubectl minden egyes hüvelyéhez (a hüvelyek **lekérése \<namespace name> **után a hüvelyek kilistázásához) törölje azokat a **kubectl delete Pod \<server group pod name> \<namespace name> -n **futtatásával. Ne törölje azokat a hüvelyeket, amelyek nem részei a kiszolgálói csoportnak. A hüvelyek törlése nem veszélyezteti az adatfeldolgozást. Várjon, amíg az összes hüvely online állapotba kerül, és a STATUS = futtatása előtt a biztonsági másolat készítése előtt. A hüvely állapota a kubectl Get hüvelyek parancs kimenetében található.
+
 
 A következő parancs futtatásával teljes biztonsági mentést készíthet a kiszolgálócsoport összes adat-és naplófájl-mappájáról:
 
@@ -96,12 +101,12 @@ Ebben a példában:
 
 Ez a parancs egy elosztott teljes biztonsági mentést koordinál az összes olyan csomóponton, amely az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport részét képezi. Más szóval a koordinátor és a munkavégző csomópontok összes adatait biztonsági másolatot készít.
 
-Példa:
+Például:
 ```console
 azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
 ```
 
-A biztonsági mentés befejezésekor a rendszer a biztonsági másolat AZONOSÍTÓját, nevét és állapotát adja vissza. Példa:
+A biztonsági mentés befejezésekor a rendszer a biztonsági másolat AZONOSÍTÓját, nevét és állapotát adja vissza. Például:
 ```console
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
@@ -125,7 +130,7 @@ A visszaállítani kívánt biztonsági másolatok listázásához futtassa a k�
 azdata arc postgres backup list --server-name <servergroup name>
 ```
 
-Példa:
+Például:
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
@@ -151,7 +156,7 @@ Ebben a példában:
 - a Backup __-ID__ a Backup (biztonsági mentés) parancsban látható biztonsági másolat azonosítója (lásd a 3. lépést).
 Ez összehangolja az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport összes csomópontjának elosztott teljes visszaállítását. Más szóval a koordinátor és a munkavégző csomópontok összes adatait visszaállítja.
 
-Példa:
+Például:
 ```console
 azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```
