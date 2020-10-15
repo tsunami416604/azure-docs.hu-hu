@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092745"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070010"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -77,7 +77,7 @@ Ez a cikk a [Microsoft Azure Cloud Services](https://azure.microsoft.com/service
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Miért nem fejeződött be a Cloud Service TLS/SSL-tanúsítványának tanúsítványlánc?
     
-Azt javasoljuk, hogy az ügyfél a teljes tanúsítványláncot (levél-tanúsítvány, közbenső tanúsítványok és főtanúsítvány) telepítse a levél-tanúsítvány helyett. Ha csak a levél tanúsítványát telepíti, a Windows rendszerre támaszkodva kiépítheti a tanúsítványláncot a CTL bejárásával. Ha időszakos hálózati vagy DNS-problémák történnek az Azure-ban vagy Windows Update ha a Windows a tanúsítvány érvényesítését kísérli meg, akkor a tanúsítvány érvénytelennek tekintendő. A teljes tanúsítványlánc telepítésével elkerülhető a probléma. A [LÁNCOLT SSL-tanúsítványok telepítéséhez](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) szükséges blog bemutatja, hogyan teheti ezt meg.
+Azt javasoljuk, hogy az ügyfél a teljes tanúsítványláncot (levél-tanúsítvány, közbenső tanúsítványok és főtanúsítvány) telepítse a levél-tanúsítvány helyett. Ha csak a levél tanúsítványát telepíti, a Windows rendszerre támaszkodva kiépítheti a tanúsítványláncot a CTL bejárásával. Ha időszakos hálózati vagy DNS-problémák történnek az Azure-ban vagy Windows Update ha a Windows a tanúsítvány érvényesítését kísérli meg, akkor a tanúsítvány érvénytelennek tekintendő. A teljes tanúsítványlánc telepítésével elkerülhető a probléma. A [LÁNCOLT SSL-tanúsítványok telepítéséhez](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate) szükséges blog bemutatja, hogyan teheti ezt meg.
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Mi a célja a "Windows Azure-eszközök titkosítási tanúsítványa bővítmények számára"?
 
@@ -111,11 +111,11 @@ Ezt a feladatot indítási parancsfájl (batch/cmd/PowerShell) használatával a
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Mi a "Microsoft Azure Service Management for MachineKey" tanúsítvány célja?
 
-Ezzel a tanúsítvánnyal titkosíthatja a számítógép kulcsait az Azure web roles szolgáltatásban. További információért tekintse meg [ezt a tanácsadót](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
+Ezzel a tanúsítvánnyal titkosíthatja a számítógép kulcsait az Azure web roles szolgáltatásban. További információért tekintse meg [ezt a tanácsadót](/security-updates/securityadvisories/2018/4092731).
 
-További információkért tekintse át a következő cikkeket:
-- [Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [Gyakori Cloud Service indítási feladatai](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+További információért tekintse át a következő cikkeket:
+- [Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](./cloud-services-startup-tasks.md)
+- [Gyakori Cloud Service indítási feladatai](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -139,16 +139,16 @@ Kimerítette a helyi tárolási kvótát a naplózási könyvtárba való írás
 * Növelje a helyi erőforrások kvótájának korlátját.
 
 További információ a következő dokumentumokban található:
-* [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](/azure/storage/common/storage-introduction)
-* [IIS-naplók – írások leállítása a Cloud Service-ben](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](../storage/common/storage-introduction.md)
+* [IIS-naplók – írások leállítása a Cloud Service-ben](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan a WAD-naplózás engedélyezése a Cloud Serviceshoz?
 A Windows Azure Diagnostics (WAD) naplózását a következő beállításokkal engedélyezheti:
-1. [Engedélyezés a Visual studióból](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [Engedélyezés .NET-kóddal](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [Engedélyezés a PowerShell-lel](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [Engedélyezés a Visual studióból](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [Engedélyezés .NET-kóddal](./cloud-services-dotnet-diagnostics.md)
+3. [Engedélyezés a PowerShell-lel](./cloud-services-diagnostics-powershell.md)
 
-A Cloud Service jelenlegi WAD-beállításainak beszerzéséhez használja a [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) PS cmd parancsot, vagy megtekintheti a portálon a "Cloud Services--> Extensions" panelen.
+A Cloud Service jelenlegi WAD-beállításainak beszerzéséhez használja a [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd parancsot, vagy megtekintheti a portálon a "Cloud Services--> Extensions" panelen.
 
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
@@ -248,7 +248,7 @@ Ha további információt szeretne arról, hogyan használhatja az egyéni metri
 
 A Azure Diagnostics és a Cloud Services Application Insights integrálásával kapcsolatos további információkért lásd: [felhőalapú szolgáltatás, virtuális gép vagy Service Fabric diagnosztikai adatok küldése Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
-További információ a Cloud Services Application Insightsének engedélyezéséről: [Application Insights for Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+További információ a Cloud Services Application Insightsének engedélyezéséről: [Application Insights for Azure Cloud Services](../azure-monitor/app/cloudservices.md)
 
 További információ a Cloud Services Azure Diagnostics naplózásának engedélyezéséről: [diagnosztika beállítása az Azure Cloud Services és a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) szolgáltatáshoz
 
@@ -313,7 +313,7 @@ A SNI kötést a következő PowerShell **-** parancsmaggal konfigurálhatja egy
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-Az [itt](https://technet.microsoft.com/library/ee790567.aspx)leírtak szerint a $sslFlags az alábbi értékek egyike lehet:
+Az [itt](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10))leírtak szerint a $sslFlags az alábbi értékek egyike lehet:
 
 |Érték|Értelmezés|
 ------|------
@@ -324,7 +324,7 @@ Az [itt](https://technet.microsoft.com/library/ee790567.aspx)leírtak szerint a 
  
 **2. módszer: kód használata**
 
-Az SNI-kötés a következő [blogbejegyzésben](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)leírtak szerint is konfigurálható kód használatával a szerepkör indításakor:
+Az SNI-kötés a következő [blogbejegyzésben](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service)leírtak szerint is konfigurálható kód használatával a szerepkör indításakor:
 
 ```csharp
 //<code snip> 
@@ -356,7 +356,6 @@ Egy már üzembe helyezett felhőalapú szolgáltatás számlázása a felhaszn�
 
 A szolgáltatáshoz tartozó IP-cím elvesztése nélkül elvégezhető a számlázás csökkentése:
 
-1. A központi telepítések törlése előtt [foglalja le az IP-címet](../virtual-network/virtual-networks-reserved-public-ip.md) .  Ezt az IP-címet csak a számlázás után számítjuk fel. Az IP-cím számlázásával kapcsolatos további információkért lásd: az [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
+1. A központi telepítések törlése előtt [foglalja le az IP-címet](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) .  Ezt az IP-címet csak a számlázás után számítjuk fel. Az IP-cím számlázásával kapcsolatos további információkért lásd: az [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
 2. Törölje az üzemelő példányokat. Ne törölje a xxx.cloudapp.net, hogy később is használhassa.
 3. Ha a Cloud Service-t ugyanazzal a tartalék IP-címmel szeretné telepíteni, amelyet az előfizetésében foglalt le, tekintse meg a [Cloud Services és a Virtual Machines fenntartott IP címei](https://azure.microsoft.com/blog/reserved-ip-addresses/)című témakört.
-

@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 49a5fd51a62dd6c90d7b1bac8d99296ddc81287f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044768"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070095"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Gyors útmutató: telefonszám beszerzése a Azure Portal használatával
 
@@ -45,16 +45,16 @@ Először ki kell választania, hogy `Country/region` Hol szeretné kiépíteni 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
-### <a name="select-a-phone-plan"></a>Válasszon egy telefonos csomagot
+### <a name="select-your-phone-number-features"></a>Telefonszám-funkciók kiválasztása
 
-A telefonos csomag kiválasztása két lépésből áll: 
+A telefonszám beállítása két lépésből áll: 
 
 1. A [szám típusának](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) kiválasztása
-2. A [csomag](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services) kiválasztása
+2. A [szám funkcióinak](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services) kiválasztása
 
-Jelenleg két típusú típust kínálunk: `Geographic` és `Toll-free` . Ha kiválasztott egy számot, a rendszer több csomagot is kínál, amelyek közül választhat.
+A következő két telefonszám közül választhat: `Geographic` és `Toll-free` . Ha kiválasztott egy számot, válassza ki a szolgáltatást.
 
-A példánkban kiválasztottunk egy `Toll-free` számot a `Outbound calling` és a `Inbound and Outbound SMS` csomagokkal.
+A példánkban kiválasztottunk egy `Toll-free` számot a `Outbound calling` és a `Inbound and Outbound SMS` szolgáltatással.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
@@ -74,7 +74,7 @@ Válassza ki a `Area code` listából az elérhető körzetszámot, és adja meg
 :::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 > [!NOTE]
-> A rendelkezésre állás a típustól, a helytől és a kiválasztott tervtől függ.
+> A rendelkezésre állás a szám típusától, a helytől és a kiválasztott funkcióktól függ.
 > A szám a tranzakció lejárta előtt rövid ideig van lefoglalva. Ha a tranzakció lejár, akkor újra ki kell választania a számokat.
 
 A vásárlás összegzésének megtekintéséhez és a megrendelés megrendeléséhez kattintson az `Next: Summary` oldal alján található gombra.
@@ -103,12 +103,14 @@ A telefonszámok kezeléséhez válassza a menüben a telefonszámok panelt.
 > [!NOTE]
 > Eltarthat néhány percig, amíg a kiépített számok megjelennek ezen az oldalon.
 
-### <a name="customizing-phone-number-features"></a>Telefonszám-funkciók testreszabása
-A `Numbers` lapon kiválaszthatja a telefonszámot, ha arra a számra kattint, amelynek testre szeretné szabni a csomagot.
+
+### <a name="customizing-phone-numbers"></a>Telefonszámok testreszabása
+
+A `Numbers` lapon kiválaszthatja a konfigurálni kívánt telefonszámot.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
-Válassza ki a lehetőségeket az elérhető hívási és SMS-funkciók listájából, majd kattintson a `Confirm` kijelölés alkalmazásához.
+Válassza ki a szolgáltatásokat az elérhető lehetőségek közül, majd kattintson a lehetőségre a `Confirm` kijelölés alkalmazásához.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
