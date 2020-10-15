@@ -4,12 +4,12 @@ description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS op
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d0f66d034bb0566674e521ced3e3887e29e3aaa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297756"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071727"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -151,7 +151,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
-[byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
+[byok-azure-portal]: ../storage/common/customer-managed-keys-configure-key-vault.md
 [customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
 [customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md

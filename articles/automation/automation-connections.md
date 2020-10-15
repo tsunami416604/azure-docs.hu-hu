@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186656"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071761"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
 
@@ -54,7 +54,7 @@ A következő táblázatban található belső parancsmag a runbookok és a DSC-
 
 |Belső parancsmag|Leírás|
 |---|---|
-|`Get-AutomationConnection` | Lekéri a kapcsolatok különböző mezőinek értékeit, és visszaadja őket [szórótábla](https://go.microsoft.com/fwlink/?LinkID=324844). Ezt a szórótábla a megfelelő parancsokkal használhatja a runbook vagy a DSC-konfigurációban.|
+|`Get-AutomationConnection` | Lekéri a kapcsolatok különböző mezőinek értékeit, és visszaadja őket [szórótábla](/powershell/module/microsoft.powershell.core/about/about_hash_tables). Ezt a szórótábla a megfelelő parancsokkal használhatja a runbook vagy a DSC-konfigurációban.|
 
 >[!NOTE]
 >Ne használjon változókat a `Name` paraméterrel `Get-AutomationConnection` . Ebben az esetben a változók használata megnehezítheti a runbookok vagy DSC-konfigurációk és a kapcsolati erőforrások közötti függőségek felderítését a tervezési időszakban.
@@ -190,7 +190,7 @@ runas_connection = automationassets.get_automation_connection(
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a kapcsolatok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](shared-resources/modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](automation-runbook-execution.md).

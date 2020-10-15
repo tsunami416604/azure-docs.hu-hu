@@ -1,18 +1,18 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494264"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071778"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
 
@@ -56,19 +56,36 @@ Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az 
 
 Mindhárom ilyen egyedi értéket tartalmaz. A formátum hasonló ahhoz, ahogyan jelenleg az [Azure Marketplace-lemezképekhez](../articles/virtual-machines/windows/cli-ps-findimage.md) tartozó közzétevőt, ajánlatot és SKU-t megadhatja Azure PowerShell a Piactéri lemezkép legújabb verziójának beszerzéséhez. Minden rendszerkép-definíciónak egyedi készlettel kell rendelkeznie ezeknek az értékeknek.
 
+A képdefinícióknak meg kell határozniuk a következő paramétereket, amelyek meghatározzák, hogy milyen típusú képverziókat tartalmazhatnak:
+-   Operációs rendszer állapota – [általánosított vagy specializált](#generalized-and-specialized-images)operációsrendszer-állapotot állíthat be.
+- Operációs rendszer – lehet Windows vagy Linux.
+
+
+
 A következő más paraméterek is megadhatók a képdefinícióban, így könnyebben nyomon követheti az erőforrásokat:
 
-* Operációs rendszer állapota – [általánosított vagy specializált](#generalized-and-specialized-images)operációsrendszer-állapotot állíthat be.
-* Operációs rendszer – lehet Windows vagy Linux.
-* Leírás – a Leírás használatával részletesebb információkat adhat meg arról, hogy miért létezik a rendszerkép definíciója. Előfordulhat például, hogy rendelkezik egy rendszerkép-definícióval az előtér-kiszolgálóhoz, amelyen az alkalmazás előre telepítve van.
-* Végfelhasználói licencszerződés – a rendszerkép-definícióra vonatkozó végfelhasználói licencszerződésre mutathat.
-* Adatvédelmi nyilatkozat és kibocsátási megjegyzések – a kibocsátási megjegyzések és az adatvédelmi nyilatkozatok tárolása az Azure Storage-ban, valamint egy URI megadása a rendszerkép definíciójának részeként való hozzáféréshez.
-* Élettartam dátuma – a rendszerkép definíciójának élettartama után az Automation használatával törölheti a régi képdefiníciókat.
-* Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md)
-* Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
-* Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
-* Hyper-V-generáció – megadhatja, hogy a rendszerkép egy 1. vagy 2. generációs Hyper-V virtuális merevlemezről lett-e létrehozva.
-* A Piactéri rendszerképekre vonatkozó vásárlási terv adatai –, `-PurchasePlanPublisher ` `-PurchasePlanName` és `-PurchasePlanProduct` . További információ a vásárlási tervekről: [rendszerképek keresése az Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) -en, valamint a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információi](../articles/virtual-machines/marketplace-images.md).
+- Leírás – a Leírás használatával részletesebb információkat adhat meg arról, hogy miért létezik a rendszerkép definíciója. Előfordulhat például, hogy rendelkezik egy rendszerkép-definícióval az előtér-kiszolgálóhoz, amelyen az alkalmazás előre telepítve van.
+- Végfelhasználói licencszerződés – a rendszerkép-definícióra vonatkozó végfelhasználói licencszerződésre mutathat.
+- Adatvédelmi nyilatkozat és kibocsátási megjegyzések – a kibocsátási megjegyzések és az adatvédelmi nyilatkozatok tárolása az Azure Storage-ban, valamint egy URI megadása a rendszerkép definíciójának részeként való hozzáféréshez.
+- Élettartam dátuma – a rendszerkép definíciójának élettartama után az Automation használatával törölheti a régi képdefiníciókat.
+- Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md)
+- Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
+- Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
+-   Hyper-V generáció – megadhatja, hogy a rendszerkép az 1. generációból vagy [2. generációs](../articles/virtual-machines/generation-2.md) Hyper-v virtuális merevlemezből lett-e létrehozva. Az alapértelmezett érték az 1. generáció.
+- A Piactéri rendszerképekre vonatkozó vásárlási terv adatai –, `-PurchasePlanPublisher` `-PurchasePlanName` és `-PurchasePlanProduct` . További információ a vásárlási tervekről: [rendszerképek keresése az Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) -en, valamint a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információi](../articles/virtual-machines/marketplace-images.md).
+
+
+## <a name="image-versions"></a>Rendszerkép-verziók
+
+A **rendszerkép verziója** a virtuális gép létrehozásához használatos. A környezethez szükség lehet a rendszerkép több verziójára. Ha **rendszerkép-verziót** használ a virtuális gép létrehozásához, a rendszer a rendszerkép verzióját használja a virtuális gép új lemezének létrehozásához. A rendszerkép verziója többször is használható.
+
+A rendszerkép verziójának tulajdonságai a következők:
+
+- Verziószám. Ezt használja a rendszerkép verziójának neve. A formátuma mindig a következő: MajorVersion. MinorVersion. Patch. Ha a virtuális gép létrehozásakor a **legújabbat** adja meg, a rendszer a legújabb képet választja ki a legmagasabb MajorVersion, majd a MinorVersion, majd a javítást. 
+- Forrás. A forrás lehet egy virtuális gép, felügyelt lemez, pillanatkép, felügyelt lemezkép vagy más lemezkép verziója. 
+- A legutóbbi kizárása. A verziót megtarthatja a legújabb lemezkép-verzióként való használathoz. 
+- Az élettartam dátuma. Az a dátum, amely után a virtuális gépek nem hozhatók létre ebből a rendszerképből.
+
 
 ## <a name="generalized-and-specialized-images"></a>Általánosított és speciális rendszerképek
 
@@ -123,7 +140,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
