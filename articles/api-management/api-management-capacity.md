@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86205881"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071319"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Az Azure API Management-példányok kapacitása
 
@@ -104,7 +104,7 @@ A **kapacitás** azt a mérőszámot határozza meg, amely szerint a API Managem
 >[!TIP]  
 > Ha előre tudja megbecsülni a forgalmat, tesztelje a APIM-példányt a várt számítási feladatokon. A kérések terhelését fokozatosan növelheti a bérlőn, és megfigyelheti, hogy a kapacitás metrikájának mekkora értéke felel meg a maximális terhelésnek. Az előző szakasz lépéseit követve Azure Portal használatával megtudhatja, mennyi kapacitást használ a rendszer egy adott időpontban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure API Management Service-példány méretezése vagy frissítése](upgrade-and-scale.md)
-- [Optimalizálja és mentse a Felhőbeli kiadásait](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Optimalizálja és mentse a Felhőbeli kiadásait](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
