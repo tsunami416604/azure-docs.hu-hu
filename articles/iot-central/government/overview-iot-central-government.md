@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972288"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126566"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások létrehozása az Azure IoT Centrallal
 
@@ -72,10 +72,10 @@ A csatlakoztatott hulladékkezelési alkalmazás sablonja előre konfigurált:
 
 Ismerkedés a [csatlakoztatott hulladékgazdálkodási alkalmazás oktatóanyagával](./tutorial-connected-waste-management.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki a IoT Centralban az ingyenes [create app](https://apps.azureiotcentral.com/build/government) (kormányzati alkalmazás sablonjait)
 * További tudnivalók a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md)
 * További információ a víz-használat [figyelésével kapcsolatos fogalmakról](./concepts-waterconsumptionmonitoring-architecture.md)
 * További tudnivalók a [kapcsolódó hulladékgazdálkodási fogalmakról](./concepts-connectedwastemanagement-architecture.md)  
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) 
+* További információ a IoT Centralről: [IoT Central áttekintése](../core/overview-iot-central.md)

@@ -37,6 +37,8 @@
       href: concepts-route-events.md
     - name: Az Azure Digital Twins-megoldások biztonsága
       href: concepts-security.md
+    - name: Magas rendelkezésre állás és vészhelyreállítás
+      href: concepts-high-availability-disaster-recovery.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés
@@ -199,7 +201,7 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: Integrációs minta a DPS-hez és az IoT Hubhoz
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Az Azure Digital Twins egyéni swaggerei
+        - name: Az Azure Digital Twins egyéni swaggerei Logic Apps-összekötőhöz
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: A SignalR integrációs mintája
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/

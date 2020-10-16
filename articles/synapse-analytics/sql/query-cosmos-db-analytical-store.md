@@ -1,5 +1,5 @@
 ---
-title: Az SQL Server nélküli Azure szinapszis-kapcsolaton keresztüli lekérdezés Azure Cosmos DB
+title: A kiszolgáló nélküli SQL-készlettel Azure Cosmos DB-adatlekérdezés az Azure szinapszis hivatkozásában (előzetes verzió)
 description: Ebből a cikkből megtudhatja, hogyan kérdezheti le Azure Cosmos DB az SQL igény szerinti használatával az Azure szinapszis-hivatkozáson (előzetes verzió).
 services: synapse analytics
 author: jovanpop-msft
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102357"
+ms.locfileid: "92122721"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Az SQL Server nélküli Azure szinapszis-kapcsolaton keresztüli lekérdezés Azure Cosmos DB
+# <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Lekérdezés Azure Cosmos DB az Azure-beli kiszolgáló nélküli SQL-készlettel az Azure szinapszis-hivatkozás (előzetes verzió)
 
-A szinapszis SQL Server nélküli (korábban SQL on-demand) lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az [Azure szinapszis-hivatkozással](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
+A szinapszis kiszolgáló nélküli SQL-készlete (korábban SQL on-demand) lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az [Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
 
-Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. Az SQL Server nélküli lekérdezési eredményeket jelenleg nem tárolhatja a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
+Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL Server nélküli lekérdezéssel, amely lekérdezi az Azure Cosmos DB tárolók adatait, amelyeken engedélyezve van a szinapszis-hivatkozás. Ezután további információt kaphat az SQL Server nélküli nézetek Azure Cosmos DB tárolókkal való létrehozásáról, valamint [az oktatóanyagban](./tutorial-data-analyst.md) található Power bi modellekhez való csatlakozásról. 
+Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel, amely az Azure Cosmos DB tárolók adatait fogja lekérdezni, amelyeken engedélyezve van a szinapszis-hivatkozás. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket [az oktatóanyag Power bi](./tutorial-data-analyst.md) modelljeivel. 
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Cosmos DB analitikus tárolóban található adatok lekérdezéséhez és elemzéséhez az SQL Server a következő `OPENROWSET` szintaxist használja:
+Azure Cosmos DB analitikus tárolóban található adatok lekérdezéséhez és elemzéséhez a kiszolgáló nélküli SQL-készlet a következő `OPENROWSET` szintaxist használja:
 
 ```sql
 OPENROWSET( 
@@ -49,7 +49,7 @@ A kapcsolatok karakterláncának formátuma a következő:
 A Azure Cosmos DB tároló neve idézőjelek nélkül van megadva a `OPENROWSET` szintaxisban. Ha a tároló neve speciális karaktereket tartalmaz (például kötőjelet (-)), a nevet a `[]` szintaxisban a (szögletes zárójelben) belül kell becsomagolni `OPENROWSET` .
 
 > [!NOTE]
-> Az SQL Server nélküli nem támogatja Azure Cosmos DB tranzakciós tároló lekérdezését.
+> A kiszolgáló nélküli SQL-készlet nem támogatja Azure Cosmos DB tranzakciós tároló lekérdezését.
 
 ## <a name="sample-data-set"></a>Minta adathalmaz
 
@@ -57,14 +57,14 @@ A jelen cikkben szereplő példák az [Európai Betegségmegelőzési és Járv�
 
 Ezen lapokon láthatja a licenceket és az adatszerkezetet, és letölthető mintaadatok az [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) és a [Cord19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) adatkészletekhez.
 
-Ahhoz, hogy követni tudja, hogyan lehet lekérdezni Cosmos DB SQL Server nélküli lekérdezéseket, győződjön meg arról, hogy a következő erőforrásokat hozza létre:
+Ahhoz, hogy követni tudja, hogyan lehet lekérdezni Cosmos DB-adatbázisokat kiszolgáló nélküli SQL-készlettel, győződjön meg arról, hogy a következő erőforrásokat hozza létre:
 * Olyan Azure Cosmos DB adatbázis-fiók, amely engedélyezve van a [szinapszis-hivatkozás](../../cosmos-db/configure-synapse-link.md)
 * Egy Azure Cosmos DB adatbázis neve `covid`
 * Két Azure Cosmos DB tároló `EcdcCases` és `Cord19` a fenti minta adatkészletek betöltve.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Ismerkedjen meg Azure Cosmos DBával az automatikus séma-következtetéssel
 
-Azure Cosmos DBban az adatelemzés legegyszerűbb módja az automatikus séma-következtetési képesség kihasználása. Ha kihagyja a `WITH` záradékot az `OPENROWSET` utasításból, megadhatja az SQL-kiszolgálótól a Azure Cosmos db tároló analitikai tárolójának sémájának automatikus észlelését (következtetését).
+Azure Cosmos DBban az adatelemzés legegyszerűbb módja az automatikus séma-következtetési képesség kihasználása. Ha kihagyja a `WITH` záradékot az `OPENROWSET` utasításból, utasíthatja a kiszolgáló nélküli SQL-készletet az Azure Cosmos db tároló analitikai tárolójának sémájának automatikus észlelésére (következtetésre).
 
 ```sql
 SELECT TOP 10 *
@@ -73,7 +73,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-A fenti példában arra utasítja az SQL Servert, hogy az adatbázishoz kapcsolódjon `covid` Azure Cosmos db fiókjában, amelyet `MyCosmosDbAccount` a Azure Cosmos db kulcs használatával hitelesített (a fenti példában szereplő dummy). Ezután elérjük a tároló `EcdcCases` analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, `OPENROWSET` a Function a Azure Cosmos db elemek összes tulajdonságát visszaküldi.
+A fenti példában arra utasítja a kiszolgáló nélküli SQL-készletet, hogy a `covid` `MyCosmosDbAccount` Azure Cosmos db kulcs használatával hitelesített Azure Cosmos db fiókban található adatbázishoz kapcsolódjon. Ezután elérjük a tároló `EcdcCases` analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, `OPENROWSET` a Function a Azure Cosmos db elemek összes tulajdonságát visszaküldi.
 
 Ha más tárolóból származó adatokkal kell megvizsgálnia ugyanabban a Azure Cosmos DB-adatbázisban, használhatja ugyanazt a kapcsolódási karakterláncot és a hivatkozáshoz szükséges tárolót harmadik paraméterként:
 
@@ -120,7 +120,7 @@ Tekintse át a cikk végén található [SQL Type-hozzárendelések szabályait]
 
 ## <a name="querying-nested-objects-and-arrays"></a>Beágyazott objektumok és tömbök lekérdezése
 
-A Azure Cosmos DB lehetővé teszi, hogy összetettebb adatmodelleket képviselje beágyazott objektumokként vagy tömbökként. A szinapszis-hivatkozás automatikus szinkronizálási funkciója Azure Cosmos DB kezeli a séma megjelenítését az analitikai tárolóban, amely magában foglalja a beágyazott adattípusok kezelését, amelyek lehetővé teszik az SQL Server nélküli lekérdezéseket.
+A Azure Cosmos DB lehetővé teszi, hogy összetettebb adatmodelleket képviselje beágyazott objektumokként vagy tömbökként. A szinapszis-hivatkozás automatikus szinkronizálási funkciója Azure Cosmos DB kezeli a séma megjelenítését az analitikai tárolóban, amely magában foglalja a beágyazott adattípusok kezelését, amely lehetővé teszi a kiszolgáló nélküli SQL-készletből történő részletes lekérdezéseket.
 
 Például a [kábel-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) adathalmaz JSON-dokumentumokkal rendelkezik a következő szerkezettel:
 
@@ -172,7 +172,7 @@ FROM
     ) AS docs;
 ```
 
-További információ az [összetett adattípusok elemzéséről a szinapszis-hivatkozásokban](../how-to-analyze-complex-schema.md) és [az SQL Server nélküli beágyazott struktúrákban](query-parquet-nested-types.md).
+További információ az [összetett adattípusok elemzéséről a szinapszis-hivatkozásokban](../how-to-analyze-complex-schema.md) és [a beágyazott struktúrákban a kiszolgáló nélküli SQL-készletben](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
 > Ha a szövegben nem várt karakterek jelennek meg, például `MÃƒÂ©lade` ahelyett, `Mélade` hogy az adatbázis-rendezés nem az [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) -rendezésre van beállítva. 
@@ -203,7 +203,7 @@ Azure Cosmos DB adatok lehetnek beágyazott altömbök, például a szerző töm
 }
 ```
 
-Bizonyos esetekben előfordulhat, hogy a felső elemből (metaadatok) a tömb (szerzők) minden elemével "csatlakoztatni kell" a tulajdonságokat. Az SQL Server nélküli lehetővé teszi, hogy beágyazott struktúrákat alkalmazzon a `OPENJSON` beágyazott tömbben lévő függvény alkalmazásával:
+Bizonyos esetekben előfordulhat, hogy a felső elemből (metaadatok) a tömb (szerzők) minden elemével "csatlakoztatni kell" a tulajdonságokat. A kiszolgáló nélküli SQL-készlet lehetővé teszi a beágyazott struktúrák összeolvasztását a `OPENJSON` függvény a beágyazott tömbön való alkalmazásával:
 
 ```sql
 SELECT
@@ -238,7 +238,7 @@ Kiegészítő információk öko-epidemi... | `[{"first":"Nicolas","last":"4#","
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB az SQL-típusok megfeleltetéséhez
 
-Fontos megjegyezni, hogy habár Azure Cosmos DB tranzakciós tároló séma-agnosztikus, az analitikai tároló sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. A szinapszisok automatikus szinkronizálási funkciójával a Azure Cosmos DB kezeli a séma megjelenítését az analitikus tárolóban, amely magában foglalja a beágyazott adattípusok kezelését. Mivel az SQL Server nélküli lekérdezi az analitikai tárolót, fontos tisztában lennie azzal, hogyan képezhetők le Azure Cosmos DB bemeneti adattípusok az SQL-adattípusokhoz.
+Fontos megjegyezni, hogy habár Azure Cosmos DB tranzakciós tároló séma-agnosztikus, az analitikai tároló sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. A szinapszisok automatikus szinkronizálási funkciójával a Azure Cosmos DB kezeli a séma megjelenítését az analitikus tárolóban, amely magában foglalja a beágyazott adattípusok kezelését. Mivel a kiszolgáló nélküli SQL-készlet lekérdezi az analitikai tárolót, fontos tisztában lennie azzal, hogyan képezhetők le Azure Cosmos DB bemeneti adattípusok az SQL-adattípusokhoz.
 
 Azure Cosmos DB SQL (Core) API-fiókok esetében a JSON-tulajdonságok száma, karakterlánc, logikai, null, beágyazott objektum vagy tömb. Olyan SQL-típusokat kell választania, amelyek megfelelnek ezeknek a JSON-típusoknak, ha a `WITH` záradékot használja `OPENROWSET` . Tekintse meg azokat az SQL-oszlopokat, amelyeket a Azure Cosmos DB különböző típusú tulajdonságainál kíván használni.
 
@@ -258,9 +258,9 @@ A Mongo DB API-fajta Azure Cosmos DB-fiókjainak lekérdezéséhez további info
 ## <a name="known-issues"></a>Ismert problémák
 
 - Az **aliast** a függvény után kell megadni `OPENROWSET` (például: `OPENROWSET (...) AS function_alias` ). Az alias kihagyása okozhatja a csatlakoztatási problémákat, és a kiszolgáló nélküli SQL-végpont átmenetileg nem érhető el. Ezt a problémát november 2020-én oldja fel a rendszer.
-- A szinapszis kiszolgáló nélküli SQL jelenleg nem támogatja [Azure Cosmos db teljes hűségű sémát](../../cosmos-db/analytical-store-introduction.md#schema-representation). A szinapszis kiszolgáló nélküli SQL-t használja csak Cosmos DB jól definiált sémához való hozzáféréshez.
+- A kiszolgáló nélküli SQL-készlet jelenleg nem támogatja [Azure Cosmos db teljes hűségű sémát](../../cosmos-db/analytical-store-introduction.md#schema-representation). A kiszolgáló nélküli SQL-készlet használata csak Cosmos DB jól definiált sémához való hozzáféréshez.
 
-A lehetséges hibák és hibaelhárítási műveletek listája a következő táblázatban látható:
+A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban láthatók:
 
 | Hiba | Gyökérok |
 | --- | --- |
@@ -269,7 +269,7 @@ A lehetséges hibák és hibaelhárítási műveletek listája a következő tá
 | A CosmosDB elérési útjának feloldása sikertelen volt, hiba: "helytelen fióknév" vagy "helytelen adatbázisnév" | A megadott fióknév, adatbázisnév vagy tároló nem található, vagy az analitikai tár nincs engedélyezve a megadott gyűjteményben.|
 | A CosmosDB elérési útjának feloldása sikertelen volt, hiba: "helytelen titkos érték" vagy "titkos kód null vagy üres" | A fiók kulcsa érvénytelen vagy hiányzik. |
 | A `column name` típusú oszlop `type name` nem kompatibilis a külső adattípussal `type name` | A megadott oszlop típusa a `WITH` záradékban nem egyezik meg Cosmos db tárolóban szereplő típussal. Próbálja meg módosítani az oszlop típusát, ahogy az a következő szakaszban szerepel: [Azure Cosmos db SQL Type-hozzárendelések](#azure-cosmos-db-to-sql-type-mappings) vagy- `VARCHAR` típus használata. |
-| Az oszlop az `NULL` összes cellában található értékeket tartalmaz. | Valószínűleg helytelen oszlopnév vagy elérésiút-kifejezés a `WITH` záradékban. Az oszlopnév (vagy az oszlop típusa után a Path kifejezés) a `WITH` záradékban meg kell egyeznie a Cosmos db gyűjteményben szereplő egyes tulajdonságnév nevével. Az összehasonlítás megkülönbözteti a **kis**  -és nagybetűket (például `productCode` `ProductCode` különböző tulajdonságok). |
+| Az oszlop az `NULL` összes cellában található értékeket tartalmaz. | Valószínűleg helytelen oszlopnév vagy elérésiút-kifejezés a `WITH` záradékban. Az oszlopnév (vagy az oszlop típusa után a Path kifejezés) a `WITH` záradékban meg kell egyeznie a Cosmos db gyűjteményben szereplő egyes tulajdonságnév nevével. Az összehasonlítás megkülönbözteti a **kis-és nagybetűket**  (például `productCode` `ProductCode` különböző tulajdonságokat). |
 
 A javaslatok és a problémák jelentése az [Azure szinapszis visszajelzéseit ismertető oldalon](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)található.
 

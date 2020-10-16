@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cdc9e242c2254cafaf0af75bcb8f8879cf3eb58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287828"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127011"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
@@ -33,7 +33,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 
 | Kategória              | Leírás |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL Server nélküli](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| **Futásidejű támogatás** |Az Azure szinapszis futtatókörnyezetének támogatása a Azure Cosmos DB eléréséhez| ✓ | [Kapcsolatfelvétel](mailto:cosmosdbsynapselink@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB) |
+| **Futásidejű támogatás** |Az Azure szinapszis futtatókörnyezetének támogatása a Azure Cosmos DB eléréséhez| ✓ | ✓ |
 | **API-támogatás Azure Cosmos DB** | Támogatott Azure Cosmos DB API-típus | SQL/MongoDB | SQL/MongoDB |
 | **Objektum**  |Olyan objektumok, mint például egy létrehozható tábla, amely közvetlenül a Azure Cosmos DB tárolóra mutat| Dataframe, megtekintés, tábla | Nézet |
 | **Olvasás**    | Az olvasható Azure Cosmos DB tároló típusa | OLTP/HTAP | HTAP  |

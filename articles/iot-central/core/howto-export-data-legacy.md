@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974417"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126737"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával (örökölt)
 
@@ -63,7 +63,7 @@ Ha a Service Bus exportálás célhelyként választja, akkor a várólisták é
 
 Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/blobs/data-lake-storage-quickstart-create-account.md)létrehozása. Az adatexportálás csak a blokk blobokat támogató Storage-fiókokba tud írni. A következő lista az ismert kompatibilis Storage-fiókok típusait mutatja be:
+1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](../../storage/blobs/storage-quickstart-blobs-portal.md) vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/common/storage-account-create.md)létrehozása. Az adatexportálás csak a blokk blobokat támogató Storage-fiókokba tud írni. A következő lista az ismert kompatibilis Storage-fiókok típusait mutatja be:
 
     |Teljesítményszint|Fiók típusa|
     |-|-|
@@ -156,7 +156,7 @@ Az alábbi példa egy Event hub vagy Service Bus üzenetsor vagy témakör álta
 
 Ez az üzenet nem tartalmazza a küldő eszköz AZONOSÍTÓját.
 
-Ha Azure Stream Analytics lekérdezésben lévő üzenet adatait szeretné lekérni, használja a [GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) függvényt. Példaként tekintse meg a lekérdezést az [Azure IoT Central kiterjesztése egyéni szabályokkal stream Analytics, Azure functions és SendGrid használatával](./howto-create-custom-rules.md).
+Ha Azure Stream Analytics lekérdezésben lévő üzenet adatait szeretné lekérni, használja a [GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue) függvényt. Példaként tekintse meg a lekérdezést az [Azure IoT Central kiterjesztése egyéni szabályokkal stream Analytics, Azure functions és SendGrid használatával](./howto-create-custom-rules.md).
 
 Az eszköz AZONOSÍTÓjának lekéréséhez Azure Databricks vagy Apache Spark munkaterületen használja a [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md). Példaként tekintse meg a Databricks munkaterületet az [Azure IoT Central kiterjesztése egyéni elemzéssel az Azure Databricks használatával](./howto-create-custom-analytics.md).
 
@@ -557,7 +557,7 @@ Ez a példa egy olyan üzenetet mutat be, amely a blob Storage-ban lévő eszkö
 
 Ha az előnézeti alkalmazásban már van egy meglévő adatexportálás az *eszközök* és az *eszköz sablonjainak* bekapcsolásával, frissítse az exportálást **2020. június 30-ig**. Ez a követelmény az Azure Blob Storage-ba, az Azure Event Hubs-ra és a Azure Service Bus-re való exportálásra vonatkozik.
 
-A 2020. február 3-án kezdődően az eszközökön és az eszközök sablonjain lévő összes új Exportálás a fent ismertetett adatformátummal fog rendelkezni. Az ezen dátum előtt létrehozott összes exportálás a régi adatformátumban, 2020. június 30-ig marad, ekkor a rendszer automatikusan áttelepíti ezeket az exportálásokat az új adatformátumba. Az új adatformátum megegyezik a IoT Central nyilvános API-ban található [eszköz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [eszköz tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [eszköz felhő tulajdonság](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)és [eszköz sablon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objektumokkal.
+A 2020. február 3-án kezdődően az eszközökön és az eszközök sablonjain lévő összes új Exportálás a fent ismertetett adatformátummal fog rendelkezni. Az ezen dátum előtt létrehozott összes exportálás a régi adatformátumban, 2020. június 30-ig marad, ekkor a rendszer automatikusan áttelepíti ezeket az exportálásokat az új adatformátumba. Az új adatformátum megegyezik a IoT Central nyilvános API-ban található [eszköz](/rest/api/iotcentral/devices/get), [eszköz tulajdonság](/rest/api/iotcentral/devices/getproperties), [eszköz felhő tulajdonság](/rest/api/iotcentral/devices/getcloudproperties)és [eszköz sablon](/rest/api/iotcentral/devicetemplates/get) objektumokkal.
 
 Az **eszközök**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
 - `@id` az eszköz eltávolításakor a `deviceId` rendszer átnevezi `id` 

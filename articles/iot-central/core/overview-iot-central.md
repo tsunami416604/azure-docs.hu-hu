@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812437"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127403"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -114,7 +114,7 @@ A [feladatok](howto-run-a-job.md) lehetővé teszik az eszközökön történő 
 
 ## <a name="integrate-with-other-services"></a>Integráció más szolgáltatásokkal
 
-Az alkalmazási platformként a IoT Central lehetővé teszi a IoT-információk átalakítását az üzleti elemzésekben, amelyek a gyakorlatban hasznosítható eredményeket vezetnek. A [szabályok](./tutorial-create-telemetry-rules.md), az [adatexportálás](./howto-export-data.md)és a [nyilvános REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) példák arra, hogyan integrálható az IoT Central az üzletági alkalmazásokkal:
+Az alkalmazási platformként a IoT Central lehetővé teszi a IoT-információk átalakítását az üzleti elemzésekben, amelyek a gyakorlatban hasznosítható eredményeket vezetnek. A [szabályok](./tutorial-create-telemetry-rules.md), az [adatexportálás](./howto-export-data.md)és a [nyilvános REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) példák arra, hogyan integrálható az IoT Central az üzletági alkalmazásokkal:
 
 ![Hogyan alakíthatja át a IoT Central a IoT-adatait](media/overview-iot-central/transform.png)
 

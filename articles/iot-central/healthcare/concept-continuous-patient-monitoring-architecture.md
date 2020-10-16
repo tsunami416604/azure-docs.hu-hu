@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122151"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>A folyamatos betegfigyelés architektúrája
 
@@ -33,11 +33,11 @@ Az egészségügyi IoT-megoldásokban használt számos orvosi eszköz a készü
 
 ### <a name="mobile-phone-gateway"></a>Mobile Phone-átjáró
 
-A mobiltelefonos alkalmazás elsődleges funkciója az, hogy az orvostechnikai eszközökből származó adatokat gyűjtsön, és IoT Central kommunikáljon. Az alkalmazás a betegeket az eszköz beállításán keresztül is irányítja, és lehetővé teszi a személyes állapotadatok megtekintését. Más megoldások is használhatnak táblaszámítógép-átjárót vagy statikus átjárót egy kórházi helyiségben. Az Android és az iOS rendszerhez készült nyílt forráskódú minta Mobile-alkalmazás kiindulási pontként használható az alkalmazások fejlesztéséhez. További információért lásd a [IoT Central folyamatos beteg monitorozása Mobile alkalmazást](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+A mobiltelefonos alkalmazás elsődleges funkciója az, hogy az orvostechnikai eszközökből származó adatokat gyűjtsön, és IoT Central kommunikáljon. Az alkalmazás a betegeket az eszköz beállításán keresztül is irányítja, és lehetővé teszi a személyes állapotadatok megtekintését. Más megoldások is használhatnak táblaszámítógép-átjárót vagy statikus átjárót egy kórházi helyiségben. Az Android és az iOS rendszerhez készült nyílt forráskódú minta Mobile-alkalmazás kiindulási pontként használható az alkalmazások fejlesztéséhez. További információért lásd a [IoT Central folyamatos beteg monitorozása Mobile alkalmazást](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>Exportálás az Azure API-ba FHIR&reg;
 
-Az Azure IoT Central HIPAA-kompatibilis és HITRUST &reg; tanúsítvánnyal rendelkezik. A [FHIR készült Azure API](../../healthcare-apis/overview.md)használatával más szolgáltatásokhoz is küldhet beteg-egészségügyi adataikat. A FHIR készült Azure API egy szabványon alapuló API a klinikai egészségügyi adatkezeléshez. A [FHIR készült Azure IoT-összekötő](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart) lehetővé teszi, hogy a FHIR Azure API-ját folyamatos adatexportálási célként használja IoT Central.
+Az Azure IoT Central HIPAA-kompatibilis és HITRUST &reg; tanúsítvánnyal rendelkezik. A [FHIR készült Azure API](../../healthcare-apis/overview.md)használatával más szolgáltatásokhoz is küldhet beteg-egészségügyi adataikat. A FHIR készült Azure API egy szabványon alapuló API a klinikai egészségügyi adatkezeléshez. A [FHIR készült Azure IoT-összekötő](../../healthcare-apis/iot-fhir-portal-quickstart.md) lehetővé teszi, hogy a FHIR Azure API-ját folyamatos adatexportálási célként használja IoT Central.
 
 ### <a name="machine-learning"></a>Gépi tanulás
 
@@ -47,6 +47,6 @@ A gépi tanulási modellek segítségével FHIR-adataival elemzési és támogat
 
 Az Azure API-val FHIR-adatokkal egy beteg-elemzési irányítópultot hozhat létre, vagy integrálhatja azt közvetlenül egy Care Teams által használt elektronikus orvosi rekordba. A Care Teams az irányítópultot használva segíti a betegeket, és azonosíthatja a korai előrejelző jeleinek romlását. További tudnivalókat a Power BI- [szolgáltatói irányítópult létrehozása](howto-health-data-triage.md) című oktatóanyagban talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés az, hogy [megtudja, hogyan helyezhet üzembe egy folyamatos beteg monitorozási alkalmazás sablonját](tutorial-continuous-patient-monitoring.md).

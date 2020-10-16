@@ -23,6 +23,10 @@
 - name: Rövid útmutatók
   expanded: true
   items:
+    - name: Hálózat előkészítése
+      href: quickstart-prepare-network-for-defender-for-iot.md
+    - name: Érzékelők előkészítése
+      href: quickstart-onboard-sensors.md
     - name: Az Azure RTOS biztonsági moduljának konfigurálása
       href: quickstart-azure-rtos-security-module.md
     - name: Az Azure Defender for IoT előkészítése az IoT Hubban
@@ -63,6 +67,10 @@
       href: concept-pricing.md
 - name: Útmutatók
   items:
+    - name: Érzékelők megtekintése és kezelése
+      href: how-to-deploy-view-sensors.md
+    - name: Helyszíni felügyeleti konzol üzembe helyezése
+      href: how-to-deploy-management-console-appliance.md
     - name: Az Azure RTOS biztonsági moduljának használata
       href: how-to-azure-rtos-security-module.md
     - name: Melyik ügynököt telepítsem?
@@ -95,14 +103,16 @@
       href: how-to-investigate-device.md
     - name: Csatlakozás az Azure Sentinelhez
       href: how-to-configure-with-sentinel.md
-    - name: A megoldás testreszabása
+    - name: Ügynök testreszabása
       href: how-to-customize-solution.md
 - name: Hivatkozások
   items:
     - name: Az Azure RTOS biztonsági moduljának API-ja
       href: azure-rtos-security-module-api.md
-    - name: Gyakori kérdések
+    - name: Gyakori kérdések – szolgáltatás
       href: resources-frequently-asked-questions.md
+    - name: Gyakori kérdések – ügynök
+      href: resources-agent-frequently-asked-questions.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: További források

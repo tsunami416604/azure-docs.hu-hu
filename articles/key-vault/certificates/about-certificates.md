@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923687"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126773"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
@@ -103,14 +103,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N/A |
-|DecipherOnly|visszafejteni| N/A  |
+|DataEncipherment|titkosítás, visszafejtés| N.A. |
+|DecipherOnly|visszafejteni| N.A.  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N/A |
-|KeyCertSign|aláírás, ellenőrzés|N/A|
+|EncipherOnly|encrypt| N.A. |
+|KeyCertSign|aláírás, ellenőrzés|N.A.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
-|crlsign|aláírás, ellenőrzés| N/A |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
+|crlsign|aláírás, ellenőrzés| N.A. |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 
@@ -141,44 +141,13 @@ A kiállító objektumok a tárolóban jönnek létre, és csak a KV tanúsítv�
 
 ## <a name="certificate-contacts"></a>Tanúsítványhoz tartozó névjegyek
 
-A tanúsítványhoz tartozó névjegyek kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartama eseményei által aktivált értesítések küldéséhez. A kapcsolattartási adatokat a Key Vault összes tanúsítványa megosztja. A Key Vault bármelyik tanúsítványa esetében értesítést küld a rendszer az adott esemény összes megadott ügyfelének.  
-
-Ha a tanúsítvány házirendje automatikus megújításra van beállítva, akkor a rendszer értesítést küld a következő eseményekről.  
-
-- A tanúsítvány megújítása előtt
-- A tanúsítvány megújítása után, ha a tanúsítvány sikeres megújítása megtörtént, vagy ha hiba történt, a tanúsítvány manuális megújítását kell megkövetelni.  
-
-  Ha egy manuálisan megújított tanúsítvány-házirend (csak e-mail-cím), akkor a rendszer értesítést küld, amikor a tanúsítvány megújítására kerül sor.  
+A tanúsítványhoz tartozó névjegyek kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartama eseményei által aktivált értesítések küldéséhez. A kapcsolattartási adatokat a Key Vault összes tanúsítványa megosztja. A Key Vault bármelyik tanúsítványa esetében értesítést küld a rendszer az adott esemény összes megadott ügyfelének. További információ a tanúsítvány-kapcsolattartó beállításáról: [itt](overview-renew-certificate.md#steps-to-set-certificate-notifications)  
 
 ## <a name="certificate-access-control"></a>Tanúsítvány Access Control
 
- A tanúsítványok hozzáférés-vezérlését a Key Vault kezeli, és az adott tanúsítványokat tartalmazó Key Vault biztosítja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  
+ A tanúsítványok hozzáférés-vezérlését a Key Vault kezeli, és az adott tanúsítványokat tartalmazó Key Vault biztosítja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  A tanúsítvány-hozzáférés-vezérléssel kapcsolatos további információkért lásd [itt](certificate-access-control.md) :
 
- A következő engedélyek a Key Vault Secrets hozzáférés-vezérlési bejegyzésében, és a titkos objektumon engedélyezett műveletek részletes tükrözése céljából használhatók:  
-
-- Tanúsítványkezelő műveletekhez szükséges engedélyek
-  - *beolvasás*: a tanúsítvány aktuális verziójának vagy bármely verziójának lekérése 
-  - *lista*: a tanúsítvány aktuális tanúsítványait vagy verzióit sorolja fel.  
-  - *frissítés*: tanúsítvány frissítése
-  - *Létrehozás*: Key Vault tanúsítvány létrehozása
-  - *Importálás*: tanúsítvány importálása Key Vault tanúsítványba
-  - *Törlés*: tanúsítvány törlése, házirendje és minden verziója  
-  - *helyreállítás*: törölt tanúsítvány helyreállítása
-  - *biztonsági mentés*: tanúsítvány biztonsági mentése egy kulcstartóban
-  - *visszaállítás*: biztonsági másolat készítése a tanúsítványról egy kulcstartóra
-  - *managecontacts*: Key Vault tanúsítványok kapcsolatainak kezelése  
-  - *manageissuers*: Key Vault hitelesítésszolgáltatók/kiállítók kezelése
-  - *getissuers*: tanúsítvány hitelesítő szerveinek/kiállítóinak beszerzése
-  - *listissuers*: a tanúsítvány hatóságainak/kiállítóinak listázása  
-  - *setissuers*: Key Vault tanúsítvány szerveinek/kiállítóinak létrehozása vagy frissítése  
-  - *deleteissuers*: Key Vault tanúsítvány hatóságainak/kiállítóinak törlése  
- 
-- Jogosultsági szintű műveletek engedélyei
-  - *kiürítés*: törölt tanúsítvány törlése (végleges törlése)
-
-További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tudnivalók a Key Vaultról](../general/overview.md)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)

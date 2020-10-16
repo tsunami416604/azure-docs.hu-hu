@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575571"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122466"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -164,7 +164,7 @@ Ha **az XML-fájl használata**lehetőséget választja, megadhatja az exportál
 2. A tároló létrehozásához kattintson a **+ tároló** elemre.
     ![Képernyőfelvétel a tárolók szakaszról.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. Az **új tároló** lapon, amely a Azure Portal jobb oldalán jelenik meg, adja meg a tároló nevét. A névnek kisebbnek kell lennie, és tartalmazhat számokat és kötőjeleket (-). Ezután válassza ki a **nyilvános hozzáférési szintet** a legördülő listából. Javasoljuk, hogy a **magánjellegű (névtelen hozzáférés)** beállítással megakadályozza, hogy mások hozzáférjenek az adatokhoz. A tárolók hozzáférési szintjeivel kapcsolatos további információkért lásd: [tárolók hozzáférési engedélyei](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
+3. Az **új tároló** lapon, amely a Azure Portal jobb oldalán jelenik meg, adja meg a tároló nevét. A névnek kisebbnek kell lennie, és tartalmazhat számokat és kötőjeleket (-). Ezután válassza ki a **nyilvános hozzáférési szintet** a legördülő listából. Javasoljuk, hogy a **magánjellegű (névtelen hozzáférés)** beállítással megakadályozza, hogy mások hozzáférjenek az adatokhoz. A tárolók hozzáférési szintjeivel kapcsolatos további információkért lásd: [tárolók hozzáférési engedélyei](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
    ![Képernyőkép az új tároló lapról, amely a privát (nincs névtelen hozzáférés) beállítást jelöli.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 

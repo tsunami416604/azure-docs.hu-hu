@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6a7784d052a03971fad84c90cdd70cd16b4a872
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534200"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Oktatóanyag: Azure Active Directory integráció a Sprinklerrel
 
@@ -136,11 +136,11 @@ Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfi
 
 1. Kattintson az **+ egyszeri bejelentkezések hozzáadása**lehetőségre.
 
-    ![Egyszeri bejelentkezések](./media/sprinklr-tutorial/ic782909.png "Egyetlen Sign-Ons")
+    ![A képernyőképen az egyszeri bejelentkezések hozzáadása gomb látható.](./media/sprinklr-tutorial/ic782909.png "Egyetlen Sign-Ons")
 
 1. Az **egyszeri bejelentkezés** oldalon hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezések](./media/sprinklr-tutorial/ic782910.png "Egyetlen Sign-Ons")
+    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen megadhatja a leírt értékeket.](./media/sprinklr-tutorial/ic782910.png "Egyetlen Sign-Ons")
 
     a. A **név** szövegmezőbe írja be a konfiguráció nevét (például: *WAADSSOTest*).
 
@@ -187,7 +187,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -225,11 +225,11 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. Lépjen a bal oldali ablaktábla **ügyfél- \> felhasználók kezelése** elemére.
 
-    ![Beállítások](./media/sprinklr-tutorial/ic782914.png "Beállítások")
+    ![Képernyőfelvétel: a felhasználó hozzáadása gomb a beállítások/felhasználók elemben.](./media/sprinklr-tutorial/ic782914.png "Beállítások")
 
 1. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 
-    ![Beállítások](./media/sprinklr-tutorial/ic782915.png "Beállítások")
+    ![Képernyőfelvétel: a felhasználó szerkesztése párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/sprinklr-tutorial/ic782915.png "Beállítások")
 
 1. A **felhasználó szerkesztése** párbeszédpanelen hajtsa végre a következő lépéseket:
 

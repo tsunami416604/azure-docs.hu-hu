@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee5927e19dfb6864d7edcde9dceadfd744d7ddbf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525385"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126618"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Oktatóanyag: Azure Active Directory integráció kis mértékű Tökéletesítésekkel
 
@@ -128,15 +128,15 @@ Az Azure AD egyszeri bejelentkezés kis mértékű Tökéletesítésekkel való 
 
 1. A fő irányítópult lapon kattintson a bal oldali **Adminisztráció** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Képernyőfelvétel: a kiválasztott adminisztráció gomb.](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. Kattintson az **integrációk** részben az **SAML SSO** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![A képernyőképen az integrációs szolgáltatásban kiválasztott SAML S S O ikon látható.](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. Az egyszeri bejelentkezés beállítása lapon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![A képernyőképen az S S O Setup (S S O Setup) oldal jelenik meg, ahol megadhatja a leírt értékeket.](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. A **http-végpont** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
@@ -171,7 +171,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -211,15 +211,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók kis javításokban je
 
 1. Kattintson a felhasználói **könyvtár** gombra a felhasználói kezelés szakaszban.
 
-    ![Azure AD-tesztkörnyezet létrehozása](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![A képernyőképen a felügyeleti áttekintésből kiválasztott felhasználói könyvtár látható.](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. Kattintson a **felhasználók hozzáadása**elemre.
 
-    ![Azure AD-tesztkörnyezet létrehozása](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![Képernyőfelvétel: a felhasználók hozzáadása gomb.](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. A **felhasználók hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket: 
 
-    ![Azure AD-tesztkörnyezet létrehozása](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![Képernyőfelvétel: a felhasználók hozzáadása párbeszédpanel, ahol megadhatja a leírt értékeket.](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
     a. Adja meg a felhasználó utónevét, például a **Britta** **nevet** .
 

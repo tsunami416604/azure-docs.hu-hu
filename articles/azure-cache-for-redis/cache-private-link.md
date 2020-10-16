@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838653"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122704"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális hálózatot és egy Azure cache-t a Redis-példányhoz egy privát végponttal a Azure Portal használatával. Azt is megtudhatja, hogyan adhat hozzá privát végpontot egy meglévő Azure cache-hez a Redis-példányhoz.
@@ -21,8 +21,9 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli priv
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 
-> [!NOTE]
+> [!IMPORTANT]
 > A privát végpontok használatához a Redis-példányhoz tartozó Azure cache-t a 2020. július 28-ig kell létrehozni.
+> Jelenleg a Geo-replikálás, a tűzfalszabályok, a portál konzol támogatása, a fürtözött gyorsítótárban több végpont, a tűzfal és a VNet Beinjektált gyorsítótárak használata nem támogatott. 
 >
 >
 
@@ -109,6 +110,23 @@ Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.
 
 Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés**   oldalon. Ha az **állapot**    **futásra**mutat, a gyorsítótár készen áll a használatra. 
     
+> [!IMPORTANT]
+> 
+> `publicNetworkAccess`Alapértelmezés szerint van egy jelző `Enabled` . 
+> Ennek a jelzőnek a célja, hogy lehetővé tegye a nyilvános és a privát végpontok hozzáférését a gyorsítótárhoz, ha az értéke `Enabled` . Ha a értékre `Disabled` van állítva, akkor csak a privát végpontok hozzáférését engedélyezi. Az értéket a `Disabled` következő javítási kérelemmel állíthatja be.
+> ```http
+> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+> {    "properties": {
+>        "publicNetworkAccess":"Disabled"
+>    }
+> }
+> ```
+>
+
+> [!IMPORTANT]
+> 
+> Fürtözött gyorsítótárhoz való kapcsolódáshoz be kell `publicNetworkAccess` állítani a-t, `Disabled` és csak egyetlen privát végponti kapcsolat lehet. 
+>
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Privát végpont létrehozása meglévő Azure cache-sel a Redis-példányhoz 
 

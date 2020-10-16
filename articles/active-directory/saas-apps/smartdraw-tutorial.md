@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f99993792c2d5f4300025f26d8409207382553d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b4387252be7e0b76f6e0733d6fd4f95d39e2f0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527619"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SmartDraw
 
@@ -118,7 +118,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -152,11 +152,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson az **egyszeri bejelentkezés** lehetőségre a SmartDraw-licenc kezelése területen.
 
-    ![SmartDraw-konfiguráció](./media/smartdraw-tutorial/configure01.png)
+    ![Képernyőfelvétel: a SmartDraw-licenc kezelése párbeszédpanel, ahol kiválaszthatja az egyszeri bejelentkezés lehetőséget.](./media/smartdraw-tutorial/configure01.png)
 
 1. A konfiguráció lapon hajtsa végre a következő lépéseket:
 
-    ![SmartDraw-konfiguráció](./media/smartdraw-tutorial/configure02.png)
+    ![Képernyőfelvétel: a konfigurációs oldal, ahol megadhatja a leírt értékeket.](./media/smartdraw-tutorial/configure02.png)
 
     a. A **saját tartományában (például Acme.com)** szövegmezőbe írja be a tartományt.
 

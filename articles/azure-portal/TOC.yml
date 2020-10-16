@@ -21,7 +21,7 @@
           href: quick-create-template.md
 - name: Alapelvek
   items:
-    - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel
+    - name: Irányítópultok megosztása Azure szerepköralapú hozzáférés-vezérléssel
       href: azure-portal-dashboard-share-access.md
     - name: Azure-irányítópultok létrehozása programozott módon
       href: azure-portal-dashboards-create-programmatically.md

@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: c8c64dadebb092d7f376fd2b6590b26f4dde0ee0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000983"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122176"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal az Azure CLI használatával (előzetes verzió)
 
@@ -118,6 +118,8 @@ Nyissa meg [„Helló világ!” alkalmazás az enklávé](#hello-world) üzembe
 ```azurecli-interactive
 az aks update --enable-addons confcom --resource-group myResourceGroup --name myAKSCluster
 ```
+
+![DCSv2 AK-fürt létrehozása](./media/confidential-nodes-aks-overview/CLIAKSProvisioning.gif)
 
 ## <a name="adding-confidential-computing-node-to-existing-aks-cluster"></a>Bizalmas számítástechnikai csomópont hozzáadása meglévő AK-fürthöz<a id="existing-cluster"></a>
 
@@ -234,7 +236,7 @@ Removing the confidential computing node pool
 az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resource-group myResourceGroup
 ``````
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Python, node stb. futtatása Bizalmas tárolókban bizalmasan kezelheti az alkalmazásokat a [bizalmas tárolók mintáinak](https://github.com/Azure-Samples/confidential-container-samples)meglátogatásával.
 

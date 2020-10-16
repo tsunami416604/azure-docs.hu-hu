@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a40d4c82391f8f8cb55374c8c2d02bee5bf24ae4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525496"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Oktatóanyag: Azure Active Directory integráció a SilkRoad Life Suite-nal
 
@@ -104,15 +104,15 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
     a. Kattintson a **metaadat-fájl feltöltése**elemre.
 
-    ![image](common/upload-metadata.png)
+    ![Képernyőfelvétel: alapszintű SAML-konfiguráció a metaadatok feltöltése hivatkozással.](common/upload-metadata.png)
 
     b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Képernyőfelvétel: egy párbeszédpanel, amelyen kiválaszthatja és feltöltheti a fájlokat.](common/browse-upload-metadata.png)
 
     c. A metaadat-fájl feltöltése után a rendszer az alapszintű SAML-konfiguráció szakaszban automatikusan feltölti az **azonosítót** és a **Válasz URL-** értékeket:
 
-    ![image](common/sp-identifier-reply.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/sp-identifier-reply.png)
 
     > [!Note]
     > Ha az **azonosító** és a **Válasz URL-** értékei nem kapnak automatikus polulated, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
@@ -161,23 +161,23 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
 1. Nyissa meg a **szolgáltatót**, majd kattintson az **összevonás részletei**elemre.
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
+    ![A képernyőképen a szolgáltatótól kiválasztott összevonási adatok láthatók.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
 1. Kattintson az **összevonási metaadatok letöltése**elemre, majd mentse a metaadat-fájlt a számítógépen. A letöltött összevonási metaadatokat **szolgáltatói metaadat fájlként** használhatja a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában.
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
+    ![A képernyőképen az összevonás-metaadatok letöltése hivatkozás látható.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
 1. A **Silkroad** -alkalmazásban kattintson a **hitelesítési források**elemre.
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
+    ![A képernyőképen a kiválasztott hitelesítési források láthatók.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
 
 1. Kattintson a **hitelesítési forrás hozzáadása**lehetőségre.
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
+    ![A képernyőképen a hitelesítési forrás hozzáadása hivatkozás látható.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
 
 1. A **hitelesítési forrás hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
+    ![Képernyőfelvétel: a hitelesítési forrás hozzáadása az identitás-szolgáltató létrehozása a kiválasztott fájl adatai gomb használatával.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
     a. A **2. lehetőség – metaadat-fájl**területen kattintson a **Tallózás** gombra a letöltött metaadat-fájl Azure Portal való feltöltéséhez.
   
@@ -185,11 +185,11 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
 1. A **hitelesítési források** szakaszban kattintson a **Szerkesztés**elemre.
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
+    ![A képernyőképen a kiválasztott szerkesztési lehetőséggel rendelkező hitelesítési források láthatók.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
 
 1. A **hitelesítési forrás szerkesztése** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
+    ![Képernyőfelvétel: a hitelesítési forrás szerkesztése párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
     a. Ha **engedélyezve van**, válassza az **Igen**lehetőséget.
 
@@ -209,7 +209,7 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
 1. Tiltsa le az összes többi hitelesítési forrást.
 
-    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
+    ![A képernyőképen olyan hitelesítési források láthatók, amelyeken más forrásokat is le lehet tiltani. ](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -234,7 +234,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b65d1be9fa3ddb28a216d51e91ce2a8b20f15e6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051168"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127182"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -236,8 +236,8 @@ A.  Amikor az adatait a Data Boxba másolja, attól függően, hogy az adatblokk
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
 A.  Ha a tárolók nevei nagybetűvel rendelkeznek, a rendszer automatikusan kisbetűvé alakítja ezeket a neveket. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információk a megosztások, tárolók és fájlok elnevezésének ajánlott eljárásairól:
-- [Megosztások elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blokkblobok és lapblobok konvenciói](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+- [Megosztások elnevezése és hivatkozása](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Blokkblobok és lapblobok konvenciói](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>K. Hogyan tudom ellenőrizni a Data Boxra feltöltött adataimat?
 A.  Az adatmásolást követően a **szállításra való előkészítés** művelet futtatásakor a rendszer ellenőrzi az adatokat. Az ellenőrzési folyamat során létrehoz egy listát az adatfájlokról és azok ellenőrzőösszegeiről. Letöltheti a fájlok listáját, és ellenőrizheti a listát a forrásadatok fájljaiban. További információ [a szállításra való előkészítésről](data-box-deploy-picked-up.md#prepare-to-ship).

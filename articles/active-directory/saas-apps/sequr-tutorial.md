@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543108"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Oktatóanyag: Azure Active Directory integráció a Sequr
 
@@ -131,15 +131,15 @@ Az Azure AD egyszeri bejelentkezés Sequr való konfigurálásához hajtsa végr
 
 1. Kattintson az **integrációk** elemre a bal oldali navigációs panelen.
 
-    ![Sequr-konfiguráció](./media/sequr-tutorial/configure1.png)
+    ![A képernyőképen a navigációs panelen kiválasztott integráció látható.](./media/sequr-tutorial/configure1.png)
 
 1. Görgessen le az **egyszeri bejelentkezés** szakaszhoz, és kattintson a **kezelés**elemre.
 
-    ![Sequr-konfiguráció](./media/sequr-tutorial/configure2.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés szakasz, amelyen a kezelés gomb van kiválasztva.](./media/sequr-tutorial/configure2.png)
 
 1. Az **egyszeri bejelentkezés kezelése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Sequr-konfiguráció](./media/sequr-tutorial/configure3.png)
+    ![Képernyőfelvétel: az egyetlen Sign-On kezelése szakasz, ahol megadhatja a leírt értékeket.](./media/sequr-tutorial/configure3.png)
 
     a. Az **Identitáskezelő egyetlen Sign-On URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
@@ -171,7 +171,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

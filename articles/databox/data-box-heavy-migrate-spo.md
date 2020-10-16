@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396858"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127114"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>A fájlmegosztás tartalmának migrálása a SharePoint Online-ba a Azure Data Box Heavy használatával
 
@@ -21,9 +21,9 @@ Az Azure Data Box Heavy és a SharePoint áttelepítési eszköz (SPMT) használ
 
 A Microsoft Azure Data Box egy olyan szolgáltatás, amely lehetővé teszi egy eszköz megrendelését a Microsoft Azure Portal. Ezután a kiszolgálókról az eszközre másolhat terabájt adatmennyiséget. A Microsoft felé történő szállítás után az adatai az Azure-ba lesznek másolva. Az átvinni kívánt adatok méretétől függően a következő lehetőség közül választhat:
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) a 35 TB-os felhasználható kapacitással, kis-közepes adatkészletek esetén.
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) a 80 TB-os felhasználható kapacitást a közepes és a nagy adatkészletek esetében.
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) a 770 TB-os felhasználható kapacitással a nagyméretű adatkészletek esetében.
+- [Data Box Disk](./data-box-disk-overview.md) a 35 TB-os felhasználható kapacitással, kis-közepes adatkészletek esetén.
+- [Data Box](./data-box-overview.md) a 80 TB-os felhasználható kapacitást a közepes és a nagy adatkészletek esetében.
+- [Data Box Heavy](./data-box-heavy-overview.md) a 770 TB-os felhasználható kapacitással a nagyméretű adatkészletek esetében.
 
 Ez a cikk részletesen ismerteti, hogyan lehet az Data Box Heavy használatával áttelepíteni a fájlmegosztás tartalmát a SharePoint Online-ba.
 
@@ -37,7 +37,7 @@ Ez a cikk részletesen ismerteti, hogyan lehet az Data Box Heavy használatával
 
 ### <a name="for-sharepoint-online"></a>A SharePoint Online-hoz
 
-- Tekintse át a [SharePoint áttelepítési eszköz (SPMT) minimális követelményeit](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Tekintse át a [SharePoint áttelepítési eszköz (SPMT) minimális követelményeit](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 ## <a name="workflow-overview"></a>A munkafolyamat áttekintése
 
@@ -84,7 +84,7 @@ A legjobb teljesítmény és kapcsolat érdekében javasoljuk, hogy hozzon létr
 3. [Töltse le a SharePoint áttelepítési eszközt](https://spmtreleasescus.blob.core.windows.net/install/default.htm) , és telepítse az Azure-beli virtuális gépre.
 4. Indítsa el a SharePoint áttelepítési eszközét. Kattintson a **Bejelentkezés** elemre, és adja meg a munkahelyi vagy iskolai fiókjához tartozó felhasználónevet és jelszót.
 5. Ha a rendszer kéri, **hogy hol található az adatai?**, válassza a **fájlmegosztás**lehetőséget. Adja meg az Azure-fájlmegosztás elérési útját, ahol az adatai találhatók.
-6. A többi kérést a szokásos módon követheti, beleértve a célhelyet is. További információért látogasson el [a SharePoint áttelepítési eszköz használatára](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+6. A többi kérést a szokásos módon követheti, beleértve a célhelyet is. További információért látogasson el [a SharePoint áttelepítési eszköz használatára](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
 > - Az adatok SharePoint Online-ba való betöltésének gyorsasága számos tényezőt érint, függetlenül attól, hogy az adatok már az Azure-ban vannak-e. Ezen tényezők megismerése segít megtervezni és maximalizálni az áttelepítés hatékonyságát.  További információért látogasson el a [SharePoint Online-ba és a OneDrive áttelepítési sebességre](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).

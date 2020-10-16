@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: Minden alkalmazás integrálása az Azure AD-vel
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Hitelesítési és üzembehelyezési protokollok
+          items:
+            - name: Áttekintés
+              href: auth-sync-overview.md
+            - name: Fejlécalapú hitelesítés
+              href: auth-header-based.md
+            - name: LDAP-hitelesítés
+              href: auth-ldap.md
+            - name: OAuth 2.0 típusú hitelesítés
+              href: auth-oauth2.md
+            - name: Open ID Connect-hitelesítés
+              href: auth-oidc.md
+            - name: Jelszóalapú hitelesítés
+              href: auth-password-based-sso.md
+            - name: RADIUS-hitelesítés
+              href: auth-radius.md
+            - name: Távoli asztali átjáró hitelesítése
+              href: auth-remote-desktop-gateway.md
+            - name: SAML-hitelesítés
+              href: auth-saml.md
+            - name: Windows-hitelesítés – KCD
+              href: auth-kcd.md
+            - name: Címtár-szinkronizálás
+              href: sync-directory.md
+            - name: LDAP-szinkronizálás
+              href: sync-ldap.md
+            - name: SCIM-szinkronizálás
+              href: sync-scim.md
     - name: Üzembehelyezési útmutató
       items:
         - name: 'Üzembe helyezés 30, 90 vagy hosszabb idő alatt'

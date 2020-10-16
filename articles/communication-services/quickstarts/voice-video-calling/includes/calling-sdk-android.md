@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082116"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126797"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -143,8 +143,8 @@ A mobil leküldéses értesítések a mobil eszközökön látható előugró é
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A szakasz elvégzéséhez hozzon létre egy Firebase-fiókot, és engedélyezze a Cloud Messaging (FCM) szolgáltatást. Győződjön meg arról, hogy a Firebase Cloud Messaging csatlakozik egy Azure Notification hub-példányhoz. Útmutatásért lásd: [Firebase összekötése az Azure-](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) ban.
-Ez a szakasz azt is feltételezi, hogy a Android Studio 3,6-es vagy újabb verzióját használja az alkalmazás létrehozásához.
+A Firebase-fiók engedélyezve van a felhőalapú üzenetküldéssel (FCM), valamint az Azure Notification hub-példányhoz csatlakoztatott Firebase Cloud Messaging szolgáltatással. További információért lásd: [kommunikációs szolgáltatások értesítései](https://docs.microsoft.com/azure/communication-services/concepts/notifications) .
+Emellett az oktatóanyag azt feltételezi, hogy a Android Studio 3,6-es vagy újabb verzióját használja az alkalmazás létrehozásához.
 
 Az Android-alkalmazáshoz engedélyekre van szükség ahhoz, hogy fogadni tudja az értesítési üzeneteket a Firebase Cloud Messaging szolgáltatásból. A `AndroidManifest.xml` fájlban adja hozzá a következő engedélyeket közvetlenül a *<manifest... >* vagy a címke alatt. *</application>*
 
@@ -195,21 +195,21 @@ Adja hozzá ezt a kódrészletet a jogkivonat lekéréséhez:
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 Regisztrálja az eszköz regisztrációs tokenjét a Calling Services ügyféloldali függvénytárában a bejövő hívások leküldéses értesítéseihez:
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -226,16 +226,16 @@ A Firebase Cloud Messaging szolgáltatásból származó hasznos adatok beszerz�
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +252,9 @@ Adja hozzá a következő szolgáltatási definíciót a `AndroidManifest.xml` f
         </service>
 ```
 
-A hasznos adatok lekérése után a rendszer átadhatja azt a kommunikációs szolgáltatások ügyféloldali függvénytárának, amelyet a `handlePushNotification` metódus egy példányon történő meghívásával kezel `CallAgent` .
+- A hasznos adatok beolvasása után a *handlePushNotification* metódus meghívásával átadható a *kommunikációs szolgáltatások* ügyféloldali könyvtára a *CallAgent* -példányon. A `CallAgent` példány létrehozásához hívja meg a `createCallAgent(...)` metódust az `CallClient` osztályban.
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }

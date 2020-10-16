@@ -1,38 +1,42 @@
 ---
 title: App Service alkalmazás létrehozása Azure Resource Manager sablon használatával
-description: Hozza létre az első alkalmazást, hogy másodpercek alatt Azure App Service a Azure Resource Manager sablon használatával, amely a App Service üzembe helyezésének számos módszerének egyike.
+description: Hozza létre az első alkalmazást, hogy másodpercek alatt Azure App Service egy Azure Resource Manager sablon (ARM-sablon) használatával, amely a App Service üzembe helyezésének számos módszere.
 author: msangapu-msft
 ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 10/15/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e577616e0976ca050a55c8524e68129545ed1912
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ca8301e9be51279cd9b80791126b41b99d89d6b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653574"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127386"
 ---
-# <a name="create-app-service-app-using-an-azure-resource-manager-template"></a>App Service alkalmazás létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rövid útmutató: App Service alkalmazás létrehozása ARM-sablon használatával
 
-A [Azure app Service](overview.md) használatának első lépései az alkalmazások felhőbe való telepítésével Azure Resource Manager sablonnal és az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -vel Cloud shell. Mivel ingyenes App Service szintet használ, a rövid útmutató elvégzéséhez nem jár költséggel.
+A [Azure app Service](overview.md) használatának első lépései a Felhőbeli alkalmazások üzembe helyezésével Azure Resource Manager SABLONNAL (ARM-sablon) és az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -vel Cloud shell. Mivel ingyenes App Service szintet használ, a rövid útmutató elvégzéséhez nem jár költséggel.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+A **Linux**rendszeren történő üzembe helyezéshez használja a következő gombot:
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-azure-app-service-app"></a>Azure App Service-alkalmazás létrehozása
-
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="review-the-template"></a>A sablon áttekintése
 
 ::: zone pivot="platform-windows"
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://github.com/Azure/azure-quickstart-templates/) származik. Üzembe helyez egy App Service csomagot és egy App Service alkalmazást a Windows rendszeren. Kompatibilis a .NET Core, a .NET Framework, a PHP, a Node.js és a statikus HTML-alkalmazásokkal. A Java esetében lásd: [Java-alkalmazás létrehozása](app-service-web-get-started-java.md). 
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows) közül származik. Üzembe helyez egy App Service csomagot és egy App Service alkalmazást a Windows rendszeren. Kompatibilis a .NET Core, a .NET Framework, a PHP, a Node.js és a statikus HTML-alkalmazásokkal. A Java esetében lásd: [Java-alkalmazás létrehozása](app-service-web-get-started-java.md).
 
-[!code-json[<Azure Resource Manager template App Service Windows app>](~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
@@ -51,9 +55,9 @@ Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vann
 | reszakadás    | sztring  | " "                          | Külső git-tárház (opcionális) |
 ::: zone-end
 ::: zone pivot="platform-linux"
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://github.com/Azure/azure-quickstart-templates/) származik. Üzembe helyez egy App Service csomagot és egy App Service alkalmazást Linuxon. Kompatibilis a App Service összes támogatott programozási nyelvével.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux) közül származik. Üzembe helyez egy App Service csomagot és egy App Service alkalmazást Linuxon. Kompatibilis a App Service összes támogatott programozási nyelvével.
 
-[!code-json[<Azure Resource Manager template App Service Linux app>](~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
@@ -73,10 +77,9 @@ Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vann
 ---
 ::: zone-end
 
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
-
-A sablon üzembe helyezéséhez az Azure CLI használatos. Használhatja a Azure Portal, Azure PowerShell és REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md). 
+A sablon üzembe helyezéséhez az Azure CLI használatos. Használhatja a Azure Portal, Azure PowerShell és REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 
 A következő kód egy erőforráscsoportot, egy App Service tervet és egy webalkalmazást hoz létre. A rendszer alapértelmezett erőforráscsoportot, App Service tervet és helyet állított be. Cserélje le `<app-name>` egy globálisan egyedi alkalmazás nevére (érvényes karakterek:, `a-z` `0-9` és `-` ).
 
@@ -86,11 +89,11 @@ Futtassa az alábbi kódot a .NET-keretrendszer alkalmazás Windows rendszeren v
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
---parameters language=".net" sample="true" webAppName="<app-name>" \
+--parameters language=".net" helloWorld="true" webAppName="<app-name>" \
 --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-windows/azuredeploy.json"
 ::: zone-end
 ::: zone pivot="platform-linux"
-Run the code below to create a Python app on Linux. 
+Run the code below to create a Python app on Linux.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -115,7 +118,6 @@ Egy másik nyelvi verem telepítéséhez a `linuxFxVersion` megfelelő értékek
 > [!NOTE]
 > Itt találhat további [Azure app Service sablon mintákat](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites).
 
-
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
 Tallózással keresse `http://<app_name>.azurewebsites.net/` meg és ellenőrizze, hogy létrejött-e.
@@ -124,7 +126,7 @@ Tallózással keresse `http://<app_name>.azurewebsites.net/` meg és ellenőrizz
 
 Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Üzembe helyezés a helyi Gitből](deploy-local-git.md)

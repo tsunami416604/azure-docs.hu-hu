@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449718"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127524"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
@@ -206,7 +206,7 @@ Az SMB-aláírás engedélyezése az Azure-eszközön:
 
 A webes felhasználói felület felhasználói biztonsági mentési operátori jogosultságokkal rendelkeznek az SMB-megosztásokon alapértelmezés szerint. Ha ezt nem szeretné, a jogosultságok letiltásához vagy engedélyezéséhez használja az **operátori jogosultságok engedélyezése** lehetőséget.
 
-További információ: Backup Operators in [Active Directory Security groups](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators).
+További információ: Backup Operators in [Active Directory Security groups](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators).
 
 Biztonsági mentési operátori jogosultságok engedélyezése az Azure-eszközön:
 

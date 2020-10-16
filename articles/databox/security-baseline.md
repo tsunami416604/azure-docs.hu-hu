@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225604"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127097"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box Azure biztonsági alapterve
 
 Az Azure Data Box Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: az [Azure biztonsági alaptervek áttekintése](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+További információ: az [Azure biztonsági alaptervek áttekintése](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -70,9 +70,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 **Útmutató**: az Azure Data Box által használt végpontokat a Microsoft felügyeli. Ön felelős minden olyan további ellenőrzésért, amelyet telepíteni kíván a helyszíni rendszerekre.
 
-* [A Azure Data Box biztonság megismerése](https://docs.microsoft.com/azure/databox/data-box-security)
+* [A Azure Data Box biztonság megismerése](./data-box-security.md)
 
-* [A Azure Data Box portjának adatai](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [A Azure Data Box portjának adatai](./data-box-system-requirements.md#port-requirements)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -120,7 +120,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
@@ -134,7 +134,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 **Útmutató**: a Data Box sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
 
-* [A Azure Data Box követésének és eseménynaplózásának megismerése](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -144,7 +144,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 **Útmutató**: a Data Box sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
 
-* [A Azure Data Box követésének és eseménynaplózásának megismerése](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -170,7 +170,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 **Útmutató**: a Data Box sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
 
-* [A Azure Data Box követésének és eseménynaplózásának megismerése](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -180,7 +180,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 **Útmutató**: a Data Box sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
 
-* [A Azure Data Box követésének és eseménynaplózásának megismerése](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -212,17 +212,17 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
 **Útmutató**: a Azure Data boxhoz rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal identitás és hozzáférés-vezérlés (IAM) paneljét az előfizetéséhez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. a rendelés első létrehozásakor beállíthatja, hogy ki férhet hozzá a rendeléshez. Állítsa be az Azure-szerepköröket különböző hatókörökön a Data Boxi sorrend elérésének szabályozásához. Az Azure-szerepkörök határozzák meg a hozzáférés típusát – írható és olvasható, írásvédett, írás és olvasás a műveletek egy részhalmazára.
 
-* [Egyéni szerepkörök ismertetése](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [Egyéni szerepkörök ismertetése](../role-based-access-control/custom-roles.md)
 
-* [Az Azure RBAC konfigurálása a munkafüzetek számára](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Az Azure RBAC konfigurálása a munkafüzetek számára](../sentinel/quickstart-get-visibility.md)
 
-* [Ismerje meg, hogyan állíthatja be a hozzáférés-vezérlést a rendelésen](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Ismerje meg, hogyan állíthatja be a hozzáférés-vezérlést a rendelésen](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center figyelés**: nem
 
@@ -245,9 +245,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 - A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-* [Az identitás és a hozzáférés figyelésének Azure Security Center használata (előzetes verzió)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Az identitás és a hozzáférés figyelésének Azure Security Center használata (előzetes verzió)](../security-center/security-center-identity-access.md)
 
-* [A Azure Policy használata](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [A Azure Policy használata](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -273,9 +273,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 **Útmutató**: az Azure multi-Factor Authentication (MFA) szolgáltatással való bejelentkezéshez és konfiguráláshoz engedélyezett, Kiemelt hozzáférési munkaállomás (Paw) használata a Azure Data Box-rendelésekhez.
 
-* [Emelt hozzáférési szintű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Felhőalapú Azure Multi-Factor Authentication-telepítés megtervezése](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Felhőalapú Azure Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -287,9 +287,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos felhasználói viselkedéssel kapcsolatos riasztások és jelentések megtekintéséhez.
 
-* [Privileged Identity Management (PIM) üzembe helyezése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Az Azure AD kockázati észlelések ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -299,7 +299,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel engedélyezheti a hozzáférést a Azure Portalhoz az IP-címtartományok vagy országok/régiók adott logikai csoportjaiból.
 
-* [Elnevezett helyszínek konfigurálása az Azure-ban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -309,7 +309,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 **Útmutató**: a Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerekként, ahol alkalmazható. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
-* [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -321,9 +321,9 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 A Data Box készülék esetében ez valós időben nem támogatott. A naplókat a feladatok végén tekintheti át.
 
-* [Az Azure AD jelentéskészítés ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
-* [Az Azure Identity hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -339,9 +339,9 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkaterületre.
 
-* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [A fedélzeti Azure Sentinel ismertetése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -351,11 +351,11 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 **Útmutató**: a fiók bejelentkezési viselkedése a vezérlési síkon (például Azure Portal) a Azure ad Identity Protection és a kockázati észlelési funkciók használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-* [Az Azure AD kockázatos bejelentkezésének megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Az Azure AD kockázatos bejelentkezésének megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -365,7 +365,7 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 **Útmutató**: a Ügyfélszéf jelenleg nem támogatott Azure Data Box esetén.
 
-* [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -373,7 +373,7 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -389,7 +389,7 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adatok feltöltésére használt szolgáltatás elkülönített.
 
-* [Az Azure Data Box első lépései](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Az Azure Data Box első lépései](./data-box-quickstart-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -399,7 +399,7 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 **Útmutató**: a Microsoft kezeli a Azure Data Box alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére. Ha Data Box az ügyfél webhelyén található, kövesse az ajánlott eljárásokat az átvitt bizalmas adatok védelmének biztosításához.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -409,9 +409,9 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 **Útmutató**: a Microsoft kezeli a Azure Data Box alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére. Ha Data Box az ügyfél webhelyén található, kövesse az ajánlott eljárásokat az átvitt bizalmas adatok védelmének biztosításához.
 
-* [Az adatáttelepítés ismertetése a Azure Data Boxban](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [Az adatáttelepítés ismertetése a Azure Data Boxban](./data-box-faq.md)
 
-* [Data Box biztonsági áttekintés](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box biztonsági áttekintés](./data-box-security.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -421,7 +421,7 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 **Útmutató**: jelenleg nem érhető el; az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el Azure Data Box számára. a Microsoft kezeli az alapul szolgáló infrastruktúrát Azure Data Box és szigorú ellenőrzéseket hajtott végre az ügyféladatok elvesztése vagy kitettségének megelőzése érdekében.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -431,9 +431,9 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 **Útmutató**: Ellenőrizze, hogy az előfizetéshez tartozik-e tulajdonos vagy közreműködői hozzáférés Data Box rendelés létrehozásához. Az erőforrás szintjén Data Box olvasót és Data Box közreműködői szerepköröket is megadhat.
 
-* [Ismerje meg, hogyan kezdheti el a Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Ismerje meg, hogyan kezdheti el a Azure Data Box](./data-box-quickstart-portal.md)
 
-* [A hozzáférés-vezérlés beállításának ismertetése](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [A hozzáférés-vezérlés beállításának ismertetése](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -443,7 +443,7 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft kezeli a Azure Data Box alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-* [Azure Customer-adatvédelem](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure Customer-adatvédelem](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -455,9 +455,9 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokhoz. Emellett a Azure Data Box megvédi az eszköz zárolási kulcsát (más néven eszköz jelszavát), amely az eszköz titkosítási kulcson keresztüli zárolására szolgál. Alapértelmezés szerint egy Data Box-rendelés eszközének feloldási kulcsa egy Microsoft által felügyelt kulccsal van titkosítva. Az eszköz feloldási kulcsának további szabályozásához megadhatja az ügyfél által felügyelt kulcsot is. Az ügyfél által felügyelt kulcsokat egy Azure Key Vault kell létrehozni és tárolni.
 
-* [Data Box adatvédelem ismertetése](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Data Box adatvédelem ismertetése](./data-box-security.md)
 
-* [Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -467,7 +467,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure Data Box, valamint más kritikus vagy kapcsolódó erőforrások esetében is megtörténik.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -475,7 +475,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -519,7 +519,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -605,7 +605,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: az Azure feltételes hozzáférésének konfigurálása a felhasználók "Microsoft Azure felügyelet" alkalmazáshoz való hozzáférésének tiltása a Azure Resource Manager való interakcióra.
 
-* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -629,7 +629,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -715,7 +715,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: az ügyfél által felügyelt kulcsokat egy Azure Key Vault kell létrehozni és tárolni.
 
-* [Az ügyfél által felügyelt kulcsok használata a Azure Key Vaultban Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Az ügyfél által felügyelt kulcsok használata a Azure Key Vaultban Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -725,7 +725,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható; A Azure Data Box nem használja a felügyelt identitásokat.
 
-* [Felügyelt identitásokat támogató Azure-szolgáltatások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [Felügyelt identitásokat támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -743,7 +743,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -773,7 +773,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
@@ -809,7 +809,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -831,9 +831,9 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-* [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -853,7 +853,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-* [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -863,9 +863,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-* [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-* [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -875,7 +875,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
 
-* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -883,7 +883,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -899,5 +899,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

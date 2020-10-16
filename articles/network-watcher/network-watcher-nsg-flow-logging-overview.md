@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7d477e50ef4fc47042d57aa973d483a784465d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070581"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127335"
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
+# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -360,6 +360,10 @@ A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozo
 **A felhasználó által megadott bejövő TCP-szabályokkal kapcsolatos problémák**: a [hálózati biztonsági csoportok (NSG-EK) állapot-](https://docs.microsoft.com/azure/virtual-network/security-overview) [nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. Azonban a platform jelenlegi korlátai miatt a bejövő TCP-forgalmat befolyásoló felhasználó által definiált szabályok állapot nélküli módon lesznek implementálva. Ennek következtében a felhasználó által definiált Bejövő szabályok által érintett folyamatok nem állnak le. Ezen folyamatok esetében a bájtok és a csomagok száma nem kerül rögzítésre. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma nem lehet azonos a tényleges számokkal. Az ezeket a problémákat kijavító opt-in jelzőt a rendszer legkésőbb 2020-ig elérhetővé válik. Ebben az esetben az ilyen viselkedés miatt jelentős problémákkal szembesülő ügyfelek támogatást kérhetnek a támogatási szolgálattól, ha Network Watcher > NSG-adatforgalmi naplóban szeretne támogatási kérelmet készíteni.  
 
 Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
+
+Nem **kompatibilis szolgáltatások**: az aktuális NSG miatt az Azure-szolgáltatások egy kis készlete nem támogatott a folyamat naplófájljaiban. A nem kompatibilis szolgáltatások aktuális listája
+- [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

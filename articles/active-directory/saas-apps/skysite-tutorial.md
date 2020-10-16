@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ae70314a5f9bf691e935f1f171cd66c938b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528029"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122381"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SKYSITE
 
@@ -88,15 +88,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A SKYSITE alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 1. A fentieken kívül a SKYSITE alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
     a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek új jogcím hozzáadására szolgáló lehetőséggel jelennek meg.](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek kezelése párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/skysite-tutorial/config02.png)
 
     b. Válassza az **összes csoport** lehetőséget a választógombok listájáról.
 
@@ -122,7 +122,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -148,11 +148,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Kattintson a lap jobb felső sarkában található **Beállítások** elemre, majd keresse meg a **fiók beállítást**.
 
-    ![Konfiguráció](./media/skysite-tutorial/config03.png)
+    ![A képernyőfelvételen a beállítások közül kiválasztott Fiókbeállítások láthatók.](./media/skysite-tutorial/config03.png)
 
 5. Váltson át az **egyszeri bejelentkezés (SSO)** lapra, hajtsa végre a következő lépéseket:
 
-    ![Konfiguráció](./media/skysite-tutorial/config04.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, amelyen megadhatja a leírt értékeket.](./media/skysite-tutorial/config04.png)
 
     a. Az **Identity Provider bejelentkezési URL-címe** szövegmezőbe illessze be a **felhasználói hozzáférési URL-cím**értékét, amelyet a Azure Portal **Tulajdonságok** lapján másolt.
 

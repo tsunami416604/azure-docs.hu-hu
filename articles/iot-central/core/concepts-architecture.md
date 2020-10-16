@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337143"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126173"
 ---
 # <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
@@ -104,7 +104,7 @@ Az Azure IoT Central az Azure IoT Hubt használja Felhőbeli átjáróként, ame
 - Eszközkezelés.
 - Biztonságos eszközök kapcsolata.
 
-További információ a IoT Hubről: [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/).
+További információ a IoT Hubről: [Azure IoT hub](../../iot-hub/index.yml).
 
 Ha többet szeretne megtudni az Azure IoT Central eszközével való kapcsolatról, tekintse meg az [eszköz kapcsolatát](concepts-get-connected.md)ismertető témakört.
 
@@ -170,6 +170,6 @@ A rendszergazdák egyéni témák alkalmazásával szabhatják testre az alkalma
 
 Az operátorok személyre szabott alkalmazás-irányítópultokat hozhatnak létre. Több irányítópultot is beállíthat, amelyek különböző adathalmazokat jelenítenek meg, és válthatnak egymás között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az Azure-IoT Central architektúráját, a javasolt következő lépés az [eszköz kapcsolatának](concepts-get-connected.md) megismerése az Azure IoT Centralban.

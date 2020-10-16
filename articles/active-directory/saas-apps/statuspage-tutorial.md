@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ee2eb7586489527272d92dd1eaef6976bc41f94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532983f2df6689f840b71673ede3fd86842c1d22
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524775"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Oktatóanyag: Azure Active Directory integráció a StatusPage
 
@@ -138,17 +138,17 @@ Az Azure AD egyszeri bejelentkezés StatusPage való konfigurálásához hajtsa 
 
 1. A fő eszköztáron kattintson a **fiók kezelése**lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Képernyőfelvétel: a StatusPage vállalati webhelyről kiválasztott fiók kezelése.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
 1. Kattintson az **egyszeri bejelentkezés** fülre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![A képernyőképen az egyszeri bejelentkezés lap látható.](./media/statuspage-tutorial/tutorial_statuspage_07.png)
 
 1. Az egyszeri bejelentkezés beállítása lapon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![A képernyőképen az S S O Setup (S S O Setup) oldal jelenik meg, ahol megadhatja a leírt értékeket.](./media/statuspage-tutorial/tutorial_statuspage_08.png)
 
-    ![Egyetlen Sign-On konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![Képernyőfelvétel: a konfiguráció mentése gomb.](./media/statuspage-tutorial/tutorial_statuspage_09.png)
 
     a. Az **SSO cél URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -179,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -219,19 +219,19 @@ A StatusPage az igény szerinti üzembe helyezést is támogatja. Már engedély
 
 1. A felső menüben kattintson a **fiók kezelése**lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Képernyőfelvétel: a StatusPage vállalati webhelyről kiválasztott fiók kezelése.](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
 1. Kattintson a **csapattagok** fülre.
   
-    ![Azure AD-tesztkörnyezet létrehozása](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![Képernyőfelvétel: a csapattagok lapot jeleníti meg.](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
 
 1. Kattintson a **csapattag hozzáadása**elemre.
   
-    ![Azure AD-tesztkörnyezet létrehozása](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![Képernyőfelvétel: a csapattag hozzáadása gomb.](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
 
 1. Írja be annak az érvényes felhasználónak az **E-mail címét**, **utónevét**és **vezetéknevét** , amelyet szeretne a kapcsolódó szövegmezőbe beírni. 
 
-    ![Azure AD-tesztkörnyezet létrehozása](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![Képernyőfelvétel: a felhasználó hozzáadása párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
 
 1. **Szerepkörként**válassza az **ügyfél rendszergazdája**elemet.
 

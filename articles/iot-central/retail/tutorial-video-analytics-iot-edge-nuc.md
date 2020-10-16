@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873302"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127045"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Oktatóanyag: IoT Edge-példány létrehozása a video analyticshez (Intel NUC)
 
@@ -27,7 +27,7 @@ IoT Edge ezek a szolgáltatások közvetlenül futnak a platformfüggetlen IoT-e
 
 Ebből az oktatóanyagból megtudhatja, hogyan telepítheti és konfigurálhatja a IoT Edge futtatókörnyezetet egy Intel NUC-eszközön.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * IoT Edge frissítése és konfigurálása
 > * Az IoT Edge-átjáró beállítása
@@ -37,13 +37,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Mielőtt elkezdené, végezze el az előző [Live Video Analytics-alkalmazás létrehozása az azure IoT Centralban (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) , vagy [hozzon létre egy videó-elemzést az Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md)oktatóanyagban.
 * Egy olyan eszköz, például egy Linux rendszerű Intel-NUC, amely Docker-tárolókat képes futtatni, és elegendő feldolgozási teljesítménnyel rendelkezik a videó-elemzések futtatásához.
-* Az eszközön telepített és futó [IoT Edge futtatókörnyezet](../../iot-edge/how-to-install-iot-edge-linux.md) .
+* Az eszközön telepített és futó [IoT Edge futtatókörnyezet](../../iot-edge/how-to-install-iot-edge.md) .
 * Képesnek kell lennie csatlakozni a IoT Edge eszközre a Windows rendszerű gépről, szüksége lesz a [PUTTY SSH-ügyfélre](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) vagy egy ezzel egyenértékű eszközre.
 * Szüksége lesz egy Azure-előfizetésre is. Ha nem rendelkezik Azure-előfizetéssel, az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription)ingyenesen létrehozhat egyet.
 
 ## <a name="configure-the-iot-edge-device"></a>Az IoT Edge-eszköz konfigurálása
 
-Ha nem rendelkezik az Intel NUC-gépen telepített IoT Edge futtatókörnyezettel, olvassa el [a Azure IoT Edge futtatókörnyezet telepítése Debian-alapú Linux rendszerekre](../../iot-edge/how-to-install-iot-edge-linux.md) vonatkozó utasításokat.
+Ha nem rendelkezik az Intel NUC-gépen telepített IoT Edge futtatókörnyezettel, olvassa el [a Azure IoT Edge futtatókörnyezet telepítése Debian-alapú Linux rendszerekre](../../iot-edge/how-to-install-iot-edge.md) vonatkozó utasításokat.
 
 A IoT Edge futtatókörnyezet frissítése:
 

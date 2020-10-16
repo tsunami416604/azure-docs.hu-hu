@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3c5fc8e7ac4e61d44bb6cd54e1690d7c053526
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540215"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127165"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow
 
@@ -290,11 +290,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
              > [!NOTE]
              > Ha a teszt-kapcsolódás sikertelen, és nem tudja aktiválni ezt a kapcsolódást, akkor a ServiceNow a felülbírálás kapcsolót is biztosítja. Sys_properties kell megadnia **. ** Megjelenik a **Keresés navigációs sávon** , és megnyílik a Rendszertulajdonságok új lapja. Itt létre kell hoznia egy olyan új tulajdonságot, amelynek a neve **Glide. hitelesítés. multisso. test.** retesze. kötelező az **adattípus** értéke **TRUE/FALSE** , majd állítsa be az értéket **hamis** **értékre** .
 
-             > ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/testconnection-fail.png "Egyszeri bejelentkezés konfigurálása")
+             > ![Képernyőfelvétel: a Rendszertulajdonságok lap, amelynek a tesztelési kapcsolatainak a neve látható.](./media/servicenow-tutorial/testconnection-fail.png "Egyszeri bejelentkezés konfigurálása")
         
           1. Ha a rendszer kéri a hitelesítő adatait, adja meg őket. A következő oldal jelenik meg. Az **SSO-Kijelentkezési A teszt eredményei** hibát várt. Hagyja figyelmen kívül a hibát, és kattintson az  **aktiválás**gombra.
 
-             ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/servicenowactivate.png "Egyszeri bejelentkezés konfigurálása")
+             ![A képernyőképen az S S O bejelentkezési A teszt eredményei és az s S O kijelentkezési A teszt eredményei, valamint az aktiválás gomb látható.](./media/servicenow-tutorial/servicenowactivate.png "Egyszeri bejelentkezés konfigurálása")
   
 1. A **ServiceNow** manuális konfigurálásához kövesse az alábbi lépéseket:
 
@@ -347,11 +347,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
           > [!NOTE]
           > Ha a teszt-kapcsolódás sikertelen, és nem tudja aktiválni ezt a kapcsolódást, akkor a ServiceNow a felülbírálás kapcsolót is biztosítja. Sys_properties kell megadnia **. ** Megjelenik a **Keresés navigációs sávon** , és megnyílik a Rendszertulajdonságok új lapja. Itt létre kell hoznia egy olyan új tulajdonságot, amelynek a neve **Glide. hitelesítés. multisso. test.** retesze. kötelező az **adattípus** értéke **TRUE/FALSE** , majd állítsa be az értéket **hamis** **értékre** .
 
-          > ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/testconnection-fail.png "Egyszeri bejelentkezés konfigurálása")
+          > ![Képernyőfelvétel: a Rendszertulajdonságok lap, amelynek a tesztelési kapcsolatainak a neve látható.](./media/servicenow-tutorial/testconnection-fail.png "Egyszeri bejelentkezés konfigurálása")
 
         * Ha a rendszer kéri a hitelesítő adatait, adja meg őket. A következő oldal jelenik meg. Az **SSO-Kijelentkezési A teszt eredményei** hibát várt. Hagyja figyelmen kívül a hibát, és kattintson az  **aktiválás**gombra.
 
-          ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/servicenowactivate.png "Egyszeri bejelentkezés konfigurálása")
+          ![A képernyőképen az S S O bejelentkezési A teszt eredményei és az s S O kijelentkezési A teszt eredményei, valamint az aktiválás gomb látható.](./media/servicenow-tutorial/servicenowactivate.png "Egyszeri bejelentkezés konfigurálása")
 
 ### <a name="create-servicenow-test-user"></a>ServiceNow-tesztelési felhasználó létrehozása
 

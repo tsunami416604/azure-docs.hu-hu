@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761226"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126190"
 ---
 # <a name="pricing-scenarios"></a>Díjszabási forgatókönyvek
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Az Azure kommunikációs szolgáltatások díjai az utólagos elszámolású modelleken alapulnak, előzetes költségek nélkül. Csak a szolgáltatások felhasználására és használatára számítunk fel díjat.
+Az Azure kommunikációs szolgáltatások díjszabása általában az utólagos elszámolású modellen alapul.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Hang/videó hívása és a képernyő megosztása
 
@@ -84,6 +79,16 @@ Rose látja az üzeneteket, és elindítja a csevegést. Az időpontban egy hív
 ## <a name="price"></a>Ár 
 
 A telefonos szolgáltatások díjszabása percenként történik, az SMS-t pedig az üzenetek díjszabása alapján számítjuk fel. A díjszabást a használt szám típusa és helye, valamint a hívások és az SMS-üzenetek rendeltetése határozza meg.
+
+### <a name="telephone-number-leasing"></a>Telefonszám-lízing
+
+A telefonszám-bérlet díjait előre fel kell tölteni, majd a hónapról hónapra megismétlődnek a következők:
+
+|Számtípus   |Havi díj   |
+|--------------|-----------|
+|Helyi (Egyesült Államok)     |1/hó        |
+|Díjmentes (Egyesült Államok) |2/hó |
+
 
 ### <a name="telephone-calling"></a>Telefonos hívás
 

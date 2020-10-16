@@ -230,12 +230,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Probléma egy Microsoft-alkalmazásba való bejelentkezéskor
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: Probléma az összevont egyszeri bejelentkezéskor – nem katalógusbeli alkalmazás
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: Probléma az összevont egyszeri bejelentkezéskor – katalógusbeli alkalmazás
+            - name: Egyszeri bejelentkezéssel kapcsolatos probléma
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: Probléma egy egyénileg fejlesztett alkalmazásban
-              href: application-sign-in-problem-custom-dev.md
         - name: Helyszíni alkalmazások hibaelhárítása
           items:
             - name: Alkalmazásproxy hibaelhárítása

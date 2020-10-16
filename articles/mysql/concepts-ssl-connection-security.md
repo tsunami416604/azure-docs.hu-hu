@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2969c963b491e4b08a0959d548e43ba11276d28a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439943"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126549"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-kapcsolat a Azure Database for MySQL
 
@@ -20,8 +20,11 @@ A Azure Database for MySQL a SSL (SSL) használatával támogatja az adatbázis-
 > [!NOTE]
 > A `require_secure_transport` kiszolgáló paraméter értékének frissítése nem befolyásolja a MySQL szolgáltatás viselkedését. A cikkben ismertetett SSL-és TLS-kényszerítési funkciókkal biztonságossá teheti az adatbázishoz való kapcsolódást.
 
+>[!NOTE]
+> Az ügyfelek visszajelzései alapján kibővítettük a meglévő Baltimore legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ főtanúsítványának elavulttá tételét a 2021. február 15-ig (02/15/2021).
+
 > [!IMPORTANT] 
-> Az SSL főtanúsítványa az 2020-as (10/26/2020-as) október 26. és újabb lejárati időpontra van állítva. Frissítse az alkalmazást az [új tanúsítvány](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)használatára. További információ: [tervezett tanúsítványok frissítései](concepts-certificate-rotation.md)
+> Az SSL-főtanúsítvány az 2021-as (02/15/2021-as) 15. február 15-től lejár. Frissítse az alkalmazást az [új tanúsítvány](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)használatára. További információ: [tervezett tanúsítványok frissítései](concepts-certificate-rotation.md)
 
 ## <a name="ssl-default-settings"></a>Alapértelmezett SSL-beállítások
 

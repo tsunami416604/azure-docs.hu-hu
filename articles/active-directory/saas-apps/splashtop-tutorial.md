@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 934953437c2d156f220d5b0a1847e16358e3bfb8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524566"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126875"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Splashtop
 
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Splashtop alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, míg a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A TicketManager alkalmazás a **NameIdentifier** a **User. mail**használatával rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
 
-    ![image](common/edit-attribute.png)
+    ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -104,7 +104,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -129,15 +129,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 Ebben a szakaszban egy új SSO-módszert kell alkalmaznia a [Splashtop web Portalról](https://my.splashtop.com/login).
 1. A Splashtop web Portalon lépjen a **fiók adatai**  /  **csapat** lapra, és görgessen le az **egyszeri bejelentkezés** szakasz kereséséhez. Ezután kattintson **az alkalmaz új SSO-metódusra**elemre.
 
-    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen az új S O-metódus alkalmazása lehetőség kiválasztható.](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
 1. Az alkalmazás ablakban adjon meg egy **egyszeri bejelentkezési nevet**. Például: új Azure, válassza az **Azure** -t a identitásszolgáltató típusaként, és szúrja be a **bejelentkezési URL-címet** és az **Azure ad-azonosítót** a Splashtop alkalmazásból a Azure Portal.
 
-    ![image](media/splashtop-tutorial/azure-sso-1.png)
+    ![A képernyőfelvétel megjeleníti az S S S O-metódusok érvényes oldalát, ahol megadhatja a nevet és egyéb információkat.](media/splashtop-tutorial/azure-sso-1.png)
 
 1. A tanúsítvány adatainak megtekintéséhez kattintson a jobb gombbal a Splashtop alkalmazásból letöltött tanúsítvány fájlra Azure Portal, szerkessze a jegyzettömböt, majd másolja ki a tartalmat, illessze be a **tanúsítvány letöltése (Base64)** mezőbe.
 
-    ![rendszerkép ](media/splashtop-tutorial/cert-1.png) ![ képe ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
+    ![Képernyőfelvétel: a tanúsítványfájl kiválasztásának és a Jegyzettömbvel való megnyitásának megjelenítése.](media/splashtop-tutorial/cert-1.png)
+    ![Képernyőfelvétel: a tanúsítványfájl tartalmát jeleníti meg.](media/splashtop-tutorial/cert-2.png)
+    ![Képernyőfelvétel: a tanúsítvány letöltése szövegmező.](media/splashtop-tutorial/azure-sso-2.png)
 
 1. Ennyi az egész! Kattintson a **Save (Mentés** ) gombra, és a Splashtop SSO ellenőrzési csapat felveszi Önnel a kapcsolatot az ellenőrzési adatokkal, majd aktiválja az egyszeri bejelentkezés módját.
 
@@ -145,11 +147,11 @@ Ebben a szakaszban egy új SSO-módszert kell alkalmaznia a [Splashtop web Porta
 
 1. Az SSO-módszer aktiválása után ellenőrizze az újonnan létrehozott egyszeri bejelentkezéses módszert az **egyszeri bejelentkezés** szakaszban való engedélyezéséhez.
 
-    ![image](media/splashtop-tutorial/enable.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen engedélyezheti az új metódust.](media/splashtop-tutorial/enable.png)
 
 1. Meghívja a teszt felhasználót, például a `B.Simon@contoso.com` Splashtop csapata számára az újonnan létrehozott SSO-metódussal.
 
-    ![image](media/splashtop-tutorial/invite.png)
+    ![Képernyőfelvétel: a felhasználók meghívása oldal, ahol kiválaszthatja az új metódust.](media/splashtop-tutorial/invite.png)
 
 1. A meglévő Splashtop-fiókokat egy SSO-fiókra is módosíthatja, lásd: [utasítások](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 

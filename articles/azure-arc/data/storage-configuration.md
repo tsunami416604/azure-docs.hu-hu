@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317327"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127233"
 ---
 # <a name="storage-configuration"></a>Tárolási konfiguráció
 
@@ -134,7 +134,7 @@ A tárolásnak általában két típusa van:
 
 Az Azure-beli adatszolgáltatásokhoz tartozó egyes szolgáltatások a távoli, megosztott tárterület használatára való konfigurálástól függenek, mivel a szolgáltatások nem képesek replikálni az adatok replikálását. Ezek a szolgáltatások az adatkezelő hüvelyek gyűjteményében találhatók:
 
-|**Service**|**Állandó kötet jogcímei**|
+|**Szolgáltatás**|**Állandó kötet jogcímei**|
 |---|---|
 |**ElasticSearch**|`<namespace>/logs-logsdb-0`, `<namespace>/data-logsdb-0`|
 |**InfluxDB**|`<namespace>/logs-metricsdb-0`, `<namespace>/data-metricsdb-0`|
@@ -238,6 +238,6 @@ A nyilvános felhőalapú, felügyelt Kubernetes-szolgáltatásokhoz a következ
 
 |Nyilvános felhőalapú szolgáltatás|Ajánlás|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Az Azure Kubernetes Service (ak) két típusú Storage-Azure Files és Azure-lemezzel rendelkezik. Az egyes tárolási típusok két díjszabási/teljesítményi szinttel rendelkeznek – standard (HDD) és prémium (SSD). Így az AK-ban megadott négy tárolási osztály `azurefile` (Azure Files standard szint), `azurefile-premium` (Azure Files prémium szint), `default` (az Azure Disks standard szintű csomag) és az `managed-premium` (Azure Disks prémium szintű). Az alapértelmezett tárolási osztály `default` (Azure Disks standard szint). Jelentős **[díjszabási különbségek](https://azure.microsoft.com/en-us/pricing/details/storage/)** vannak a különböző típusok és rétegek között, amelyeket figyelembe kell venni a döntésében. A nagy teljesítményű követelményekkel rendelkező éles számítási feladatokhoz az `managed-premium` összes tárolási osztály használatát javasoljuk. A fejlesztési és tesztelési feladatokhoz, a koncepció igazolásához stb., ahol a költségeket figyelembe kell venni, akkor `azurefile` a legdrágább megoldás. Mind a négy lehetőség olyan helyzetekben használható, amelyek távoli, megosztott tárterületet igényelnek, mivel az összes hálózattal csatlakoztatott tárolóeszköz az Azure-ban. További információ az [AK Storage](../../aks/concepts-storage.md)-ról.|
+|**Azure Kubernetes Service (AKS)**|Az Azure Kubernetes Service (ak) két típusú Storage-Azure Files és Azure Managed Disks rendelkezik. Az egyes tárolási típusok két díjszabási/teljesítményi szinttel rendelkeznek – standard (HDD) és prémium (SSD). Így az AK-ban megadott négy tárolási osztály `azurefile` (Azure Files standard szint), `azurefile-premium` (Azure Files prémium szint), `default` (az Azure Disks standard szintű csomag) és az `managed-premium` (Azure Disks prémium szintű). Az alapértelmezett tárolási osztály `default` (Azure Disks standard szint). Jelentős **[díjszabási különbségek](https://azure.microsoft.com/en-us/pricing/details/storage/)** vannak a különböző típusok és rétegek között, amelyeket figyelembe kell venni a döntésében. A nagy teljesítményű követelményekkel rendelkező éles számítási feladatokhoz az `managed-premium` összes tárolási osztály használatát javasoljuk. A fejlesztési és tesztelési feladatokhoz, a koncepció igazolásához stb., ahol a költségeket figyelembe kell venni, akkor `azurefile` a legdrágább megoldás. Mind a négy lehetőség olyan helyzetekben használható, amelyek távoli, megosztott tárterületet igényelnek, mivel az összes hálózattal csatlakoztatott tárolóeszköz az Azure-ban. További információ az [AK Storage](../../aks/concepts-storage.md)-ról.|
 |**AWS Elastic Kubernetes Service (EKS)**| Az Amazon rugalmas Kubernetes szolgáltatásának egyetlen elsődleges tárolási osztálya van, amely az [EBS CSI Storage-illesztőprogramon](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)alapul. Ez éles számítási feladatokhoz ajánlott. Egy új Storage-illesztőprogram – [EFS CSI Storage-illesztőprogram](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) –, amely hozzáadható egy EKS-fürthöz, de jelenleg egy bétaverziós szakaszban van, és változhat. Bár az AWS azt mondja, hogy ez a tároló-illesztőprogram éles környezetben támogatott, ezért nem ajánlott használni, mert továbbra is bétaverzióban van, és változhat. Az EBS tárolási osztálya az alapértelmezett, és a neve `gp2` . További információ a [EKS Storage](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)-ról.|
 |**Google Kubernetes Engine (GKE)**|A Google Kubernetes Engine (GKE) csak egy nevű tárolási osztályt tartalmaz, `standard` amely a [GCE állandó lemezek](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)esetében használatos. Az egyetlen, az alapértelmezett érték is. Bár van egy [helyi, statikus kötet-kiépítő](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) a GKE, amelyet közvetlenül csatlakoztatott SSD-k használatával használhat, nem ajánlott azt használni, mert a Google nem tartja karban és nem támogatja. További információ a [GKE Storage](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)-ról.

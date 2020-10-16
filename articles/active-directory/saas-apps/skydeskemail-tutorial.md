@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72aaa1a19ef5a375ec1ee6c2938f64cb37aac139
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518657"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Oktatóanyag: Azure Active Directory integráció a SkyDesk e-mail-címmel
 
@@ -126,32 +126,32 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
 1. A felső menüben kattintson a **telepítés**elemre, majd válassza a **szervezeti**elemet.
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Képernyőfelvétel: a beállítás menüből kiválasztva látható.](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. Kattintson a **tartományok** elemre a bal oldali panelen.
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![A képernyőképen a Vezérlőpulton kiválasztott tartományok láthatók.](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. Kattintson a **tartomány hozzáadása**lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Képernyőfelvétel: a kijelölt tartomány hozzáadása.](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Adja meg a tartomány nevét, majd ellenőrizze a tartományt.
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Képernyőfelvétel: a tartomány hozzáadása lap, amelyen megadhatja a tartományt.](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. Kattintson az **SAML-hitelesítés** elemre a bal oldali panelen.
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![A képernyőfelvételen a Vezérlőpulton kiválasztott SAML-hitelesítés látható.](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. Az **SAML-hitelesítés** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Képernyőfelvétel: az SAML-hitelesítés részletei párbeszédpanel, ahol megadhatja a leírt értékeket.](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
     > Az SAML-alapú hitelesítés használatához ellenőriznie kell a **tartomány** vagy a **portál URL-címének** beállítását. Megadhatja a portál URL-címét az egyedi névvel.
 
-    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![A képernyőképen az U R L portálon látható, ahol megadhatja a nevet.](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -188,7 +188,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -222,7 +222,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a SkyDesk e-
 
 Kattintson a SkyDesk e-mailben a bal oldali panelen a **felhasználói hozzáférés** elemre, majd írja be a felhasználónevét.
 
-![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![A képernyőfelvételen a Vezérlőpultról kiválasztott felhasználói hozzáférés látható.](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Ha tömeges felhasználókat kell létrehoznia, lépjen kapcsolatba a [SkyDesk E-mail ügyfélprogram ügyfélszolgálatával](https://www.skydesk.jp/apps/support/).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99355a88a52e318b231d9032ede770ee0ba5208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3520597ef8c02bc225e6f8a7625e6a961a7e37
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548684"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Oktatóanyag: Azure Active Directory integráció az emberiséggel
 
@@ -131,11 +131,11 @@ Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához h
     ![Felügyelet](./media/shiftplanning-tutorial/iC786619.png "Rendszergazda")
 3. Az **integráció**alatt kattintson az **egyszeri bejelentkezés**elemre.
 
-    ![Egyszeri bejelentkezés](./media/shiftplanning-tutorial/iC786620.png "Egyszeri bejelentkezés")
+    ![Képernyőfelvétel: az integrációs menüből kiválasztható egyetlen Sign-On.](./media/shiftplanning-tutorial/iC786620.png "Egyszeri bejelentkezés")
 
 4. Az **egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés](./media/shiftplanning-tutorial/iC786905.png "Egyszeri bejelentkezés")
+    ![Képernyőfelvétel: az egyetlen Sign-On szakasz, ahol megadhatja a leírt értékeket.](./media/shiftplanning-tutorial/iC786905.png "Egyszeri bejelentkezés")
 
     a. Válassza az **SAML engedélyezve**lehetőséget.
 
@@ -172,7 +172,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

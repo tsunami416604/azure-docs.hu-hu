@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322449"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127369"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
@@ -34,9 +34,9 @@ Ez a szakasz segít megállapítani, hogy az adatai eljussanak-e IoT Central.
 
 Ha még nem tette meg, telepítse az `az cli` eszközt és a `azure-iot` bővítményt.
 
-A telepítésének megismeréséhez `az cli` lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+A telepítésének megismeréséhez `az cli` lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-A [install](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) bővítmény telepítéséhez `azure-iot` futtassa a következő parancsot:
+A [install](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) bővítmény telepítéséhez `azure-iot` futtassa a következő parancsot:
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -155,7 +155,7 @@ Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |
 | 404 | Az eszköz kiépítési szolgáltatásának példánya vagy egy erőforrás, például egy regisztráció nem létezik. | Az [ügyfélszolgálatot tartalmazó jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 412 | A `ETag` kérelemben szereplő nem felel meg a `ETag` meglévő erőforrásnak, mint RFC7232. | Az [ügyfélszolgálatot tartalmazó jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | Csökkentse az üzenetek gyakoriságát, Ossza szét a feladatokat több eszköz között. |
+| 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Csökkentse az üzenetek gyakoriságát, Ossza szét a feladatokat több eszköz között. |
 | 500 | Belső hiba történt. | Nyújtson be [egy jegyet az ügyfélszolgálattal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és ellenőrizze, hogy tud-e további segítséget nyújtani. |
 
 ## <a name="payload-shape-issues"></a>Hasznos adattartalom-alakzatokkal kapcsolatos problémák

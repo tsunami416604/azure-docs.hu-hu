@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995839"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122203"
 ---
 # <a name="confidential-containers"></a>Bizalmas tárolók
 
@@ -67,7 +67,7 @@ A bizalmas számítástechnikai csomópontokon Scone üzemelő példányok telje
 
 ### <a name="anjuna"></a>Anjuna
 
-A [Anjuna](https://www.anjuna.io/) olyan SGX enklávéhoz platformot biztosít, amely lehetővé teszi a nem módosított tárolók futtatását az AK-on. További információ a **közelgő** funkciókról és a felhasználói folyamatról [itt](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)olvasható.
+A [Anjuna](https://www.anjuna.io/) olyan SGX enklávéhoz platformot biztosít, amely lehetővé teszi a nem módosított tárolók futtatását az AK-on. Tudjon meg többet a funkcionalitásról, és tekintse meg a minta alkalmazásokat [itt](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp).
 
 Ismerkedjen meg a minta Redis Cache és a Python egyéni [alkalmazással](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)
 

@@ -1,17 +1,17 @@
 ---
-title: Replikák olvasása – Azure Database for MySQL.
+title: Replikák olvasása – Azure Database for MySQL
 description: 'Ismerkedjen meg a Azure Database for MySQL olvasási replikákkal: régiók kiválasztása, replikák létrehozása, replikák csatlakoztatása, replikáció figyelése és replikáció leállítása.'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876549"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126659"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -38,7 +38,7 @@ Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kap
 Az olvasási replika funkció MySQL aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A forrás és a replika között mérhető késleltetés történik. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
 
 > [!IMPORTANT]
-> A Azure Database for MySQL **sor** alapú bináris naplózást használ. Ha a táblából hiányzik egy elsődleges kulcs, a rendszer a tábla összes sorát ellenőrzi a DML-műveleteknél. Ez nagyobb replikációs késést okoz. Annak biztosítása érdekében, hogy a replika képes legyen lépést tartani a forrás változásaival, javasoljuk, hogy hozzon létre egy elsődleges kulcsot a forráskiszolgálón a replika-kiszolgáló létrehozása előtt, vagy ha már rendelkezik ilyennel, hozza létre újra a replikát.
+> Az Azure Database for MySQL **SOR**alapú bináris naplózást használ. Ha a táblázatból hiányzik egy elsődleges kulcs, akkor a rendszer a táblázat összes sorában ellenőrzi a DML-műveleteket. Ez megnövekedett replikációs késést okoz. Ahhoz, hogy a replika képes legyen lépést tartani a forrás változásaival, általában azt javasoljuk, hogy adjon hozzá egy elsődleges kulcsot a forráskiszolgálón lévő táblázatokhoz, mielőtt replikakiszolgálót hozna létre, vagy mielőtt újból létrehozná a replikakiszolgálót, ha már van.
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 A forráskiszolgáló egy másik régióban is létrehozhat egy olvasási replikát. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
@@ -50,7 +50,7 @@ A forráskiszolgáló bármely [Azure Database for MySQL régióban](https://azu
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiókban hozhat létre olvasási replikát, függetlenül attól, hogy hol található a forráskiszolgáló. A támogatott univerzális replika-régiók a következők:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati középső régiója
+Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-Európa, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak-Európa, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa
 
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a forráskiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).

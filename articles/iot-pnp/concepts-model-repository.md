@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 95c9b6dee402bc0c2dd2cab8ef3200cfd9213d61
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042881"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126824"
 ---
 # <a name="device-model-repository"></a>Eszköz modell tárháza
 
@@ -30,7 +30,7 @@ A Microsoft a következő tulajdonságokkal rendelkező nyilvános DMR üzemelte
 
 ## <a name="custom-device-model-repository"></a>Egyéni eszköz modell tárháza
 
-Az egyéni DMR létrehozásához használhatja ugyanazt a DMR-mintát bármilyen adathordozón, például a helyi fájlrendszerben vagy az egyéni HTTP-webkiszolgálókon is. A modelleket ugyanúgy kérheti le az egyéni DMR, mint a nyilvános DRM-ből, ha módosítja a DMR eléréséhez használt alap URL-címet.
+Az egyéni DMR létrehozásához használhatja ugyanazt a DMR-mintát bármilyen adathordozón, például a helyi fájlrendszerben vagy az egyéni HTTP-webkiszolgálókon is. Az egyéni DMR származó modelleket ugyanúgy lekérheti, mint a nyilvános DMR, így egyszerűen megváltoztathatja a DMR eléréséhez használt alap URL-címet.
 
 > [!NOTE]
 > A nyilvános DMR található modellek ellenőrzéséhez használt eszközök újra felhasználhatók az egyéni adattárakban.

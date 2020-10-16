@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497046"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127080"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának összeállítása
 
@@ -29,7 +29,7 @@ Az alapszintű architektúra a következő struktúrát fogja követni:
 >[!div class="mx-imgBorder"] 
 >![Szolgáltató osztályozása irányítópult](media/dashboard-architecture.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Adatok exportálása az Azure IoT Centralból az Azure-ba Event Hubs
@@ -44,14 +44,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Egy Azure IoT Central folyamatos beteg monitorozási alkalmazás sablonja. Ha még nem rendelkezik ilyennel, kövesse az [alkalmazás-sablonok üzembe helyezésének](overview-iot-central-healthcare.md)lépéseit.
 
-* Egy Azure [Event Hubs névtér és Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+* Egy Azure [Event Hubs névtér és Event hub](../../event-hubs/event-hubs-create.md).
 
-* Az Event hub eléréséhez használni kívánt logikai alkalmazás. A logikai alkalmazás Azure Event Hubs triggerrel való indításához [üres logikai alkalmazásra](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)van szükség.
+* Az Event hub eléréséhez használni kívánt logikai alkalmazás. A logikai alkalmazás Azure Event Hubs triggerrel való indításához [üres logikai alkalmazásra](../../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
 
-* Egy Power BI szolgáltatás-fiók. Ha még nem rendelkezik ilyennel, [létrehozhat egy ingyenes próbaverziós fiókot Power bi szolgáltatáshoz](https://app.powerbi.com/). Ha még nem használta Power BI korábban, hasznos lehet a [Power bi](https://docs.microsoft.com/power-bi/service-get-started)használatának megkezdéséhez.
+* Egy Power BI szolgáltatás-fiók. Ha még nem rendelkezik ilyennel, [létrehozhat egy ingyenes próbaverziós fiókot Power bi szolgáltatáshoz](https://app.powerbi.com/). Ha még nem használta Power BI korábban, hasznos lehet a [Power bi](/power-bi/service-get-started)használatának megkezdéséhez.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Folyamatos adatexportálás beállítása az Azure-ba Event Hubs
-Először be kell állítania egy folyamatos adatexportálást az Azure IoT Central-alkalmazás sablonból az előfizetésében található Azure Event hub-ba. Ezt az Azure IoT Central oktatóanyag lépéseit követve végezheti el [Event Hubs exportálásához](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Ehhez az oktatóanyaghoz csak a telemetria kell exportálni.
+Először be kell állítania egy folyamatos adatexportálást az Azure IoT Central-alkalmazás sablonból az előfizetésében található Azure Event hub-ba. Ezt az Azure IoT Central oktatóanyag lépéseit követve végezheti el [Event Hubs exportálásához](../core/howto-export-data.md). Ehhez az oktatóanyaghoz csak a telemetria kell exportálni.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI folyamatos átviteli adatkészlet létrehozása
 
@@ -72,10 +72,10 @@ Először be kell állítania egy folyamatos adatexportálást az Azure IoT Cent
     >[!div class="mx-imgBorder"] 
     >![Adatkészlet értékeinek megadása](media/enter-dataset-values.png)
 
-Ha többet szeretne megtudni a Power BI lévő adatfolyam-adatkészletekről, olvassa el a következő dokumentumot [valós idejű adatfolyamként Power BIban:](https://docs.microsoft.com/power-bi/service-real-time-streaming).
+Ha többet szeretne megtudni a Power BI lévő adatfolyam-adatkészletekről, olvassa el a következő dokumentumot [valós idejű adatfolyamként Power BIban:](/power-bi/service-real-time-streaming).
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>A logikai alkalmazás összekötése az Azure Event Hubs
-A logikai alkalmazás Azure Event Hubshoz való összekapcsolásához kövesse a jelen dokumentumban ismertetett utasításokat az [események az azure Event Hubs és a Azure Logic Apps használatával való elküldéséhez](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Néhány javasolt paraméter:
+A logikai alkalmazás Azure Event Hubshoz való összekapcsolásához kövesse a jelen dokumentumban ismertetett utasításokat az [események az azure Event Hubs és a Azure Logic Apps használatával való elküldéséhez](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action). Néhány javasolt paraméter:
 
 |Paraméter|Érték|
 |---|---|
@@ -91,7 +91,7 @@ Ennek a lépésnek a végén a Logic app designernek így kell kinéznie:
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Stream-adatok Power BI a logikai alkalmazásból
 A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a korábban létrehozott Power BI adatkészletekben.
 
-1. A művelet megkezdése előtt meg kell ismernie az eszközről az Event hub-ba küldött JSON-adattartalmat. Ehhez tekintse meg ezt a [minta sémát](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) , és módosítsa úgy, hogy az megfeleljen a sémának, vagy a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) használatával vizsgálja meg az üzeneteket. Ha a folyamatos beteg monitorozási alkalmazásokat használja, az üzenetek a következőképpen fognak kinézni:
+1. A művelet megkezdése előtt meg kell ismernie az eszközről az Event hub-ba küldött JSON-adattartalmat. Ehhez tekintse meg ezt a [minta sémát](../core/howto-export-data.md#telemetry-format) , és módosítsa úgy, hogy az megfeleljen a sémának, vagy a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) használatával vizsgálja meg az üzeneteket. Ha a folyamatos beteg monitorozási alkalmazásokat használja, az üzenetek a következőképpen fognak kinézni:
 
 **Smart Vitals – javítási telemetria**
 
@@ -205,6 +205,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 
 2. IoT Central alkalmazásához lépjen az adminisztráció lapra, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [folyamatos beteg monitorozási architektúrával kapcsolatos útmutatót](concept-continuous-patient-monitoring-architecture.md).

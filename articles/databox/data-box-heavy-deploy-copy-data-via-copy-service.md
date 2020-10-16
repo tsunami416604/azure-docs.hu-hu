@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77560220"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127148"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Oktatóanyag: az adatmásolási szolgáltatás használata az Adatmásolás Azure Data Box Heavyba (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az adatmásolási szolgáltatás használata:
 - Olyan NAS-környezetekben, ahol előfordulhat, hogy a közbenső gazdagépek nem érhetők el.
 - Az adatok betöltéséhez és feltöltéséhez szükséges heteket tartalmazó kisméretű fájlok. Az adatmásolási szolgáltatás jelentősen javítja a kis méretű fájlok betöltését és feltöltési idejét.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Adatok másolása a Data Box Heavyre
@@ -64,7 +64,7 @@ Az adatok adatmásolási szolgáltatással történő másolásához létre kell
     |**Cél tárfiók**    |Válassza ki a cél Storage-fiókot, hogy az adatok a listáról legyenek feltöltve.         |
     |**Cél típusa**       |Válassza ki a cél tárolási típust a listából: **blob letiltása**, **oldal blobja**vagy **Azure Files**.        |
     |**Cél tároló/megosztás**    |Adja meg annak a tárolónak vagy megosztásnak a nevét, amelyhez fel kívánja tölteni az adatait a célhely Storage-fiókjába. A név lehet egy megosztás neve vagy egy tároló neve. Például használhatja a következőket: `myshare` vagy `mycontainer`. A nevet megadhatja a (z) formátumban is `sharename\directory_name` `containername\virtual_directory_name` .        |
-    |**Fájlokra vonatkozó megfelelő minta másolása**    | A fájlnév-megfeleltetési mintát a következő két módon adhatja meg:<ul><li>**Helyettesítő kifejezések használata:** Csak `*` `?` a helyettesítő karakteres kifejezésekben támogatott. A kifejezés például megfelel a `*.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . Hasonlóképpen, a `*.dl?` kiterjesztéssel `.dl` vagy a-vel kezdődő összes fájlra megegyezik `.dl` , például: `.dll` . Hasonlóképpen, `*foo` az összes olyan fájlra illeszkedik, amelynek a nevei véget ért `foo` .<br>A mezőbe közvetlenül is beírhatja a helyettesítő karaktert. Alapértelmezés szerint a mezőben megadott értéket helyettesítő kifejezésként kezeli a rendszer.</li><li>**Reguláris kifejezések használata:** A POSIX-alapú reguláris kifejezések támogatottak. A reguláris kifejezés például megfelel a `.*\.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . A reguláris kifejezések esetében adja meg a közvetlenül a következőt: `<pattern>` `regex(<pattern>)` . További információ a reguláris kifejezésekről: [reguláris kifejezés nyelve – gyors hivatkozás](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Fájlokra vonatkozó megfelelő minta másolása**    | A fájlnév-megfeleltetési mintát a következő két módon adhatja meg:<ul><li>**Helyettesítő kifejezések használata:** Csak `*` `?` a helyettesítő karakteres kifejezésekben támogatott. A kifejezés például megfelel a `*.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . Hasonlóképpen, a `*.dl?` kiterjesztéssel `.dl` vagy a-vel kezdődő összes fájlra megegyezik `.dl` , például: `.dll` . Hasonlóképpen, `*foo` az összes olyan fájlra illeszkedik, amelynek a nevei véget ért `foo` .<br>A mezőbe közvetlenül is beírhatja a helyettesítő karaktert. Alapértelmezés szerint a mezőben megadott értéket helyettesítő kifejezésként kezeli a rendszer.</li><li>**Reguláris kifejezések használata:** A POSIX-alapú reguláris kifejezések támogatottak. A reguláris kifejezés például megfelel a `.*\.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . A reguláris kifejezések esetében adja meg a közvetlenül a következőt: `<pattern>` `regex(<pattern>)` . További információ a reguláris kifejezésekről: [reguláris kifejezés nyelve – gyors hivatkozás](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Fájl optimalizálása**              |Ha ez a funkció engedélyezve van, az 1 MB-nál kisebb fájlok a betöltés során lesznek csomagolva. Ez a csomagolás felgyorsítja a kis méretű fájlok adatmásolási feladatait. Emellett jelentős időt takaríthat meg, ha a fájlok száma messze meghaladja a címtárak számát.        |
  
 4. Válassza az **Indítás** elemet. A rendszer érvényesíti a bemeneteket, és ha az érvényesítés sikeres, akkor elindul a feladatok. Eltarthat néhány percig, amíg a feladatok elindulnak.
@@ -141,10 +141,9 @@ A másolási feladatok befejezése után kiválaszthatja **szállításra való 
 >[!NOTE]
 > A **szállításra való előkészítés** nem futtatható, amíg a másolási feladatok folyamatban vannak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan szállíthatja vissza Data Box Heavy eszközét a Microsoftnak.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Heavy eszköz szállítása a Microsoftnak](./data-box-heavy-deploy-picked-up.md)
-

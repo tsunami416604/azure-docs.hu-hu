@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660125"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123045"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
 
-Ez az útmutató bemutatja, hogyan bővíthető a IoT Central alkalmazása egyéni elemzésekkel és vizualizációkkal. A példa egy [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) munkaterületet használ a IoT Central telemetria stream elemzéséhez, valamint vizualizációk, például [Box-ábrázolások](https://wikipedia.org/wiki/Box_plot)létrehozásához.
+Ez az útmutató bemutatja, hogyan bővíthető a IoT Central alkalmazása egyéni elemzésekkel és vizualizációkkal. A példa egy [Azure Databricks](/azure/azure-databricks/) munkaterületet használ a IoT Central telemetria stream elemzéséhez, valamint vizualizációk, például [Box-ábrázolások](https://wikipedia.org/wiki/Box_plot)létrehozásához.
 
 Ez a útmutató azt mutatja be, hogyan terjeszthető ki IoT Central, hogy mit tehet a [beépített elemzési eszközökkel](./howto-create-custom-analytics.md).
 
@@ -31,7 +31,7 @@ Ebben a útmutatóban a következőket sajátíthatja el:
 
 A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
@@ -61,7 +61,7 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Name (Név)    | Adja meg a névtér nevét |
+| Név    | Adja meg a névtér nevét |
 | Tarifacsomag | Alapszintű |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
@@ -136,7 +136,7 @@ A fürt létrehozásához használja a következő táblázatban található inf
 | Fürt üzemmód | Standard |
 | Databricks Runtime verziója | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Python-verzió | 3 |
-| Automatikus skálázás engedélyezése | Nem |
+| Automatikus skálázás engedélyezése | No |
 | Megszakítás ennyi perc inaktivitás után | 30 |
 | Feldolgozó típusa | Standard_DS3_v2 |
 | Feldolgozók | 1 |
@@ -224,7 +224,7 @@ A fenti útmutató és a szükségtelen költségek elkerülése érdekében tö
 
 A IoT Central alkalmazást a **felügyeleti** lapról törölheti az alkalmazáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 

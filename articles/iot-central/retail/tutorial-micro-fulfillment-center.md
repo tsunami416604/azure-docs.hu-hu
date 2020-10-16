@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840438"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125969"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonja
 
@@ -47,7 +47,7 @@ Az előzetes verziójú funkciókat használó új, Micro-beteljesülő központ
 
 1. Ha Azure-előfizetéssel rendelkezik, adja meg a címtárat, az Azure-előfizetést és a régiót. Ha nem rendelkezik előfizetéssel, engedélyezheti a 7 napos ingyenes próbaidőszakot, és elvégezheti a szükséges kapcsolattartási adatokat.  
 
-    További információ a címtárakról és az előfizetésekről: [alkalmazás létrehozása](../preview/quick-deploy-iot-central.md) – rövid útmutató.
+    További információ a címtárakról és az előfizetésekről: [alkalmazás létrehozása](../core/quick-deploy-iot-central.md) – rövid útmutató.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -90,10 +90,10 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 
 ![Képernyőkép a Micro-beteljesülés központ Alkalmazásbeállítások oldaláról](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ
 > [!div class="nextstepaction"]
 > [Micro-teljesítési központ megoldási architektúrája](./architecture-micro-fulfillment-center.md)
 * További információ az [Azure IoT Central kiskereskedelmi sablonjairól](./overview-iot-central-retail.md)
-* További információ az [Azure IoT Central](../preview/overview-iot-central.md)
+* További információ az [Azure IoT Central](../core/overview-iot-central.md)

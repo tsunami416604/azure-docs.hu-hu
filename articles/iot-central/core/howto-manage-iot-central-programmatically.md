@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/19/2020
 ms.topic: how-to
-ms.openlocfilehash: ba0ee0a610299bbe6b7e550f204cd2fd50d6d71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773793c7681890098fea1a37cc5b9912c0ecb75c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83749206"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122994"
 ---
 # <a name="manage-iot-central-programmatically"></a>IoT Central programozott kezelése
 
@@ -35,8 +35,8 @@ A következő táblázat felsorolja az SDK-Tárházak és a csomag telepítési 
 
 ## <a name="samples"></a>Példák
 
-Az [azure IOT Central ARM SDK Samples](https://docs.microsoft.com/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) adattárában több programozási nyelv is szerepel, amelyek bemutatják az Azure IoT Central-alkalmazások létrehozását, frissítését, listázását és törlését.
+Az [azure IOT Central ARM SDK Samples](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) adattárában több programozási nyelv is szerepel, amelyek bemutatják az Azure IoT Central-alkalmazások létrehozását, frissítését, listázását és törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan felügyelheti az Azure IoT Central-alkalmazásokat programozott módon, egy javasolt következő lépés az [Azure Resource Manager](../../azure-resource-manager/management/overview.md) szolgáltatás további megismerése.

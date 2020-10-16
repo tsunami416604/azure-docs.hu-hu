@@ -3,12 +3,12 @@ title: Az operatív Uram fejlesztése az Advisor szolgáltatással
 description: Az Azure-előfizetések működési kiválóságának optimalizálása Azure Advisor használatával.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077388"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122619"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor használatával
 
@@ -53,6 +53,12 @@ Azure Policy egy Azure-szolgáltatás, amely szabályzatok létrehozására, hoz
 ***Felügyelt lemezeket nem használó virtuális gépek naplózása*.**
 
 **Engedélyezi *a címke öröklését az erőforráscsoportok közül*.** Ez a szabályzat az erőforrások minden létrehozásakor vagy frissítésekor hozzáadja vagy lecseréli a megadott címkét és értéket a fölérendelt erőforráscsoportból. A meglévő erőforrásokat szervizelési feladat aktiválásával javíthatja.
+
+Az Advisor néhány egyéni Azure-szabályzatot javasol, amelyek segítségével az ügyfelek operatív kiválóságot érhetnek el az ajánlott eljárások bevezetésével. Ha az ügyfél úgy dönt, hogy egy javasolt szabályzatot rendel hozzá, akkor a rendszer letiltja a javaslatot. Ha az ügyfél úgy dönt, hogy később eltávolítja a szabályzatot, az Advisor továbbra is letiltja a javaslatot, mert az eltávolítását a következők erős jelzésének megfelelően értelmezi:
+
+1.  Az ügyfél eltávolította a szabályzatot, mert az Advisor javaslata ellenére nem vonatkozik az adott használati esetre. 
+2.  Az ügyfél ismeri és ismeri a szabályzatot a hozzárendelés és a törlés után, és szükség esetén újra hozzárendelheti vagy eltávolíthatja azt anélkül, hogy ez a használati eset későbbi részévé válik. Ha az ügyfél megtalálta a legjobb érdeklődését arra, hogy ismét ugyanazt a szabályzatot rendelje hozzá, akkor Azure Policy az Advisor javaslata nélkül is megteheti. Vegye figyelembe, hogy ez a logika kifejezetten az Operational Excellence kategóriába tartozó szabályzati javaslatra vonatkozik. Ezek a szabályok nem vonatkoznak a biztonsági javaslatokra.  
+
 
 ## <a name="no-validation-environment-enabled"></a>Nincs engedélyezve ellenőrzési környezet
 Azure Advisor megállapítja, hogy a jelenlegi előfizetésben nincs engedélyezve az érvényesítési környezet. A gazdagépek létrehozásakor \" \" \" \" a Properties (Tulajdonságok) lapon a nem for érvényesítési környezet lehetőséget választotta. Ha legalább egy, engedélyezett ellenőrzési környezettel rendelkező gazdagép biztosítja az üzleti folytonosságot a Windows Virtual Desktop szolgáltatás üzemelő példányán, a lehetséges problémák korai észlelésével. [További információ](../virtual-desktop/create-validation-host-pool.md)

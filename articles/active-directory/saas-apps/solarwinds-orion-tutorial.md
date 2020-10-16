@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f93457edc4276422eb97b56c90b83ad6a19a65
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545097"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126892"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SolarWinds Orionval
 
@@ -120,7 +120,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -144,19 +144,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Jelentkezzen be a SolarWinds orionba, és lépjen a **Beállítások**  ->  **minden beállítás**menüpontra.
 
-    ![ Konfiguráció SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Képernyőfelvétel: a beállítások közül kiválasztott összes beállítás megjelenítése.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. A **felhasználói fiókok** szakaszban válassza ki az **SAML-konfiguráció**elemet.
 
-    ![ Konfiguráció SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![Képernyőfelvétel: a felhasználói fiókokból kiválasztott SAML-konfiguráció megjelenítése.](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. Kattintson az **Identity Provider hozzáadása**elemre.
 
-    ![ Konfiguráció SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![A képernyőfelvételen az SAML-konfiguráció látható, ahol kiválaszthatja az identitás-szolgáltató hozzáadása lehetőséget.](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. Hajtsa végre a következő lépéseket az **identitás-szolgáltató hozzáadása** lapon:
 
-    ![ Konfiguráció SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![A képernyőképen az Identity Provider hozzáadása lap látható, ahol megadhatja a leírt értékeket.](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. Lépjen a **configure (Konfigurálás** ) lapra.
 
@@ -174,25 +174,25 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Jelentkezzen be a SolarWinds Orion webhelyére, és lépjen a **Beállítások**  ->  **minden beállítás**menüpontra.
 
-    ![ SolarWinds Orion Create test User ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Képernyőfelvétel: a beállítások közül kiválasztott összes beállítás megjelenítése.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. A **felhasználói fiókok** szakaszban válassza a **fiókok kezelése**lehetőséget.
 
-    ![ SolarWinds Orion Create test User ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![Képernyőfelvétel: kiválasztott SAML-konfiguráció.](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. Az **egyes fiókok** lapon kattintson az **új fiók hozzáadása**lehetőségre.
 
-    ![ SolarWinds Orion Create test User ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![A képernyőfelvételen a fiókok kezelése elemnél kiválasztott új fiók hozzáadása látható.](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. Válassza ki a fiók típusát, amelyet SAML-felhasználók vagy-csoportok létrehozásához kell létrehoznia.
 
-    ![ SolarWinds Orion Create test User ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![Képernyőfelvétel: új fiók hozzáadása, ahol kiválaszthatja a fiók típusát.](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  A **név azonosító** szövegmezőbe írja be azt a nevet, amelynek meg kell egyeznie a felhasználónévvel vagy a csoport nevével pontosan az Azure ad-ben.
 
 1.  Kattintson a **tovább** gombra, majd küldje el a lapot.
 
-    ![ SolarWinds Orion Create test User ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![Képernyőfelvétel: új fiók hozzáadása, ahol megadhatja az I D nevet az Azure A D-től.](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

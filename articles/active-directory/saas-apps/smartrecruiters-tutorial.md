@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542564"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Oktatóanyag: Azure Active Directory integráció a SmartRecruiters
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés SmartRecruiters való konfigurálásához ha
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![SmartRecruiters tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés SmartRecruiters való konfigurálásához ha
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![SmartRecruiters tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
@@ -134,19 +134,19 @@ Az Azure AD egyszeri bejelentkezés SmartRecruiters való konfigurálásához ha
 
 1. Lépjen a **Beállítások/rendszergazda**menüpontra.
 
-    ![SmartRecruiters-konfiguráció](./media/smartrecruiters-tutorial/configure.png)
+    ![A képernyőképen a menüből kiválasztott beállítások/rendszergazda látható.](./media/smartrecruiters-tutorial/configure.png)
 
 1. A **konfiguráció** szakaszban kattintson a **webes egyszeri bejelentkezés**lehetőségre.
 
-    ![SmartRecruiters-konfiguráció](./media/smartrecruiters-tutorial/configure1.png)
+    ![A képernyőképen a konfigurációból kiválasztott Web S S kimenet látható.](./media/smartrecruiters-tutorial/configure1.png)
 
 1. Váltás a **webes egyszeri bejelentkezés engedélyezésére**.
 
-    ![SmartRecruiters-konfiguráció](./media/smartrecruiters-tutorial/configure2.png)
+    ![A képernyőképen a web S S O-vezérlő engedélyezése látható.](./media/smartrecruiters-tutorial/configure2.png)
 
 1. Az **identitás-szolgáltató konfigurációja**területen hajtsa végre a következő lépéseket:
 
-    ![SmartRecruiters-konfiguráció](./media/smartrecruiters-tutorial/configure4.png)
+    ![A képernyőképen látható az identitás-szolgáltató konfigurációja, ahol megadhatja a leírt értékeket.](./media/smartrecruiters-tutorial/configure4.png)
 
     a. Az **Identitáskezelő URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
@@ -177,7 +177,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

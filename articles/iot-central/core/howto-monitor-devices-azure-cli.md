@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015976"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122960"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Eszközkapcsolatok monitorozása az Azure CLI-vel
 
@@ -22,11 +22,11 @@ ms.locfileid: "90015976"
 
 Az Azure CLI IoT bővítmény használatával megtekintheti, hogy az eszközök milyen üzeneteket küldenek IoT Centralnek, és megfigyelik a Twin eszközök változásait. Ezt az eszközt használhatja az eszközök kapcsolatának hibakeresésére és figyelésére, valamint a felhőbe nem lépő eszközök üzeneteinek diagnosztizálására, illetve a kettős módosításokra nem válaszoló eszközökre.
 
-[További részletekért tekintse meg az Azure CLI-bővítmények referenciáját](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[További részletekért tekintse meg az Azure CLI-bővítmények referenciáját](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Az Azure CLI telepítve van, és a verziója 2.7.0 vagy újabb. Az Azure CLI verziójának futtatásával keresse meg az alkalmazást `az --version` . Ismerje meg, hogyan telepítheti és frissítheti az [Azure CLI-docs](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Az Azure CLI telepítve van, és a verziója 2.7.0 vagy újabb. Az Azure CLI verziójának futtatásával keresse meg az alkalmazást `az --version` . Ismerje meg, hogyan telepítheti és frissítheti az [Azure CLI-docs](/cli/azure/install-azure-cli)
 + Munkahelyi vagy iskolai fiók az Azure-ban, amely felhasználóként van hozzáadva egy IoT Central alkalmazásban.
 
 ## <a name="install-the-iot-central-extension"></a>Az IoT Central-bővítmény telepítése

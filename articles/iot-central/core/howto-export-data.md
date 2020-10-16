@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cbdeca41746099643fb06ff5861a39b2e032b33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974403"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126703"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
@@ -93,7 +93,7 @@ Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövess
 
 Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/blobs/data-lake-storage-quickstart-create-account.md)létrehozása. Az adatexportálás csak a blokk blobokat támogató Storage-fiókokba tud írni. A következő lista az ismert kompatibilis Storage-fiókok típusait mutatja be:
+1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](../../storage/blobs/storage-quickstart-blobs-portal.md) vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/common/storage-account-create.md)létrehozása. Az adatexportálás csak a blokk blobokat támogató Storage-fiókokba tud írni. A következő lista az ismert kompatibilis Storage-fiókok típusait mutatja be:
 
     |Teljesítményszint|Fiók típusa|
     |-|-|
@@ -272,11 +272,11 @@ Az alábbi példa egy exportált tulajdonság-módosítási üzenetet mutat be a
 
 Az alábbi táblázat az [örökölt adatexportálás](howto-export-data-legacy.md) és az új adatexportálási funkciók közötti különbségeket mutatja be:
 
-| Funkciók  | Örökölt adatexportálás | Új adatexportálás |
+| Képességek  | Örökölt adatexportálás | Új adatexportálás |
 | :------------- | :---------- | :----------- |
 | Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, tulajdonságok módosításai |
-| Szűrés | Nincs | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
-| Modellbővítések | Nincs | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
+| Szűrés | Nincsenek | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
+| Modellbővítések | Nincsenek | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
 | Célhelyek | Azure Event Hubs, Azure Service Bus várólisták és témakörök, Azure Blob Storage | Ugyanaz, mint a korábbi adatexportáláshoz és webhookokhoz|
 | Támogatott alkalmazások verziói | V2, V3 | Csak v3 |
 | Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint |

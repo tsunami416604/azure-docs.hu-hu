@@ -3,12 +3,12 @@ title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: e3194a59607563656f6624dabf51e9369e9258ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d53c704645fdeb1e68898c4cadf8429bcb5645
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843243"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122432"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
@@ -39,11 +39,11 @@ A következő táblázat felsorolja a Service Fabric verzióit és azok támogat
 | 6,3. * | 6.1.480.* |Kisebb vagy egyenlő, mint a 3,2-es verzió |Március 31., 2019  |
 | 6,4. * | 6.2.301.* |Kisebb vagy egyenlő, mint a 3,3-es verzió |Szeptember 15., 2019 |
 | 6,5. * | 6.4.617.* |Kisebb vagy egyenlő, mint a 3,4-es verzió |Augusztus 1-től 2020 |
-| 7.0.466.* | 6.4.664.* |Kisebb vagy egyenlő, mint a 4,0-es verzió|November 1., 2020  |
-| 7.0.466.* | 6,5. * |Kisebb vagy egyenlő, mint a 4,0-es verzió|November 1., 2020 |
-| 7.0.470.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |November 1., 2020  |
-| 7.0.472.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |November 1., 2020  |
-| 7.0.478.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |November 1., 2020  |
+| 7.0.466.* | 6.4.664.* |Kisebb vagy egyenlő, mint a 4,0-es verzió|2021. január 31.  |
+| 7.0.466.* | 6,5. * |Kisebb vagy egyenlő, mint a 4,0-es verzió|2021. január 31. |
+| 7.0.470.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |2021. január 31.  |
+| 7.0.472.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |2021. január 31.  |
+| 7.0.478.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |2021. január 31.  |
 | 7.1.409.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,1-es verzió |Aktuális verzió, így nincs befejező dátum |
 | 7.1.417.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,1-es verzió |Aktuális verzió, így nincs befejező dátum |
 | 7.1.428.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,1-es verzió |Aktuális verzió, így nincs befejező dátum |
@@ -59,11 +59,11 @@ A következő táblázat felsorolja a támogatott Service Fabric-verziókhoz tar
 | --- | --- |
 | Windows Server 2012 R2 | Az összes verzió |
 | Windows Server 2016 | Az összes verzió |
-| Windows Server 1709 | 6,0 |
+| Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6,0 |
+| Linux Ubuntu 16,04 | 6.0 |
 | Linux Ubuntu 18,04 | 7.1 |
 
 ## <a name="supported-version-names"></a>Támogatott verziók nevei

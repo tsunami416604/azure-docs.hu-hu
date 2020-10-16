@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 613f42905c88da7669881dfcae7ae038341b2434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeeb421104a09fe164c8bc93e47d7cf254a802e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548643"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Oktatóanyag: Azure Active Directory integráció a Showpad
 
@@ -129,15 +129,15 @@ Az Azure AD egyszeri bejelentkezés Showpad való konfigurálásához hajtsa vé
 
 1. A felső menüben kattintson a **Beállítások**elemre.
 
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/showpad-tutorial/tutorial_showpad_001.png)
+    ![A képernyőfelvétel a beállítások menüből kiválasztott beállításokat jeleníti meg.](./media/showpad-tutorial/tutorial_showpad_001.png)
 
 1. Navigáljon az **egyszeri bejelentkezéshez** , és kattintson az **Engedélyezés**elemre.
 
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/showpad-tutorial/tutorial_showpad_002.png)
+    ![A képernyőképen egyetlen Sign-On van kiválasztva az Enable (Engedélyezés) lehetőséggel.](./media/showpad-tutorial/tutorial_showpad_002.png)
 
 1. Az **SAML 2,0 szolgáltatás hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/showpad-tutorial/tutorial_showpad_003.png) 
+    ![Képernyőfelvétel: az SAML 2,0 szolgáltatás hozzáadása párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/showpad-tutorial/tutorial_showpad_003.png) 
 
     a. A **név** szövegmezőbe írja be az azonosító szolgáltató nevét (például: a vállalat neve).
 
@@ -172,7 +172,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

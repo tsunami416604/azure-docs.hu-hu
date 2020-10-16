@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873278"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127028"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Oktatóanyag: IoT Edge-példány létrehozása videó-elemzéshez (linuxos virtuális gép)
 
@@ -27,7 +27,7 @@ IoT Edge ezek a szolgáltatások közvetlenül futnak a platformfüggetlen IoT-e
 
 Ez az oktatóanyag bemutatja, hogyan készítheti elő IoT Edge-eszközét egy Azure-beli virtuális gépen. A IoT Edge példány futtatja az élő videó elemzési modulokat, amelyeket az Azure IoT Central video Analytics-Object és a Motion Detection alkalmazás sablonja használ.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Azure-beli virtuális gép létrehozása a telepített Azure IoT Edge futtatókörnyezettel
 > * Készítse elő a IoT Edge telepítést az élő videó elemzési moduljának üzemeltetéséhez, és kapcsolódjon a IoT Central
@@ -94,7 +94,7 @@ A központi telepítés a következő öt IoT Edge modul futtatását állított
 
 Az üzembe helyezés során létrehozott egy egyéni IoT Edge-környezetet az élő videó elemzéséhez szükséges modulokkal. A központi telepítés az alapértelmezett **config. YAML** frissítette, hogy a IoT Edge Runtime a IoT-eszköz kiépítési szolgáltatását használta a IoT Centralhoz való kapcsolódáshoz. Az üzembe helyezés egy **state.js** nevű fájlt is létrehozott a **/Data/Storage** mappában a modulok további konfigurációs információinak megadásához. További információ: [IoT Edge-példány létrehozása a video Analytics (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) oktatóanyaghoz.
 
-A IoT Edge eszköz hibáinak megoldásához tekintse [meg a IoT Edge eszköz hibáinak megoldása](https://docs.microsoft.com/azure/iot-edge/troubleshoot) című témakört.
+A IoT Edge eszköz hibáinak megoldásához tekintse [meg a IoT Edge eszköz hibáinak megoldása](../../iot-edge/troubleshoot.md) című témakört.
 
 ## <a name="use-the-rtsp-simulator"></a>Az RTSP-szimulátor használata
 
