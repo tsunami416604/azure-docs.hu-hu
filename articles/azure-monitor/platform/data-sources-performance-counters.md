@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955488"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131190"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
@@ -25,7 +25,7 @@ Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat
 
 A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesítményszámlálók egy adott példányát. A Linux-teljesítményszámlálók esetében az egyes kiválasztott számlálók a szülő számláló összes alárendelt számlálóján érvényesek. A következő táblázat a Linux és a Windows teljesítményszámlálói számára elérhető általános példányokat mutatja be.
 
-| Példány neve | Leírás |
+| Példány neve | Description |
 | --- | --- |
 | \_Összesen |Összes példány összesen |
 | \* |Minden példány |
@@ -75,7 +75,7 @@ A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kateg�
 
 Az ebben az elemben található paramétereket a következő táblázat ismerteti.
 
-| Paraméterek | Leírás |
+| Paraméterek | Description |
 |:--|:--|
 | objektum \_ neve | A gyűjtemény objektumának neve. |
 | példányok \_ regexje |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: az `.*` összes példányt megadja. Ha csak az összes példány processzor-metrikáit szeretné összegyűjteni \_ , megadhatja a következőt: `_Total` . Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)` . |
@@ -109,14 +109,14 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Memória | Lap/mp |
 | Memória | Felhasznált memória (MB) – lapozófájl |
 | Memória | Felhasznált memória (MB) |
-| Network (Hálózat) | Továbbított bájtok összesen |
-| Network (Hálózat) | Fogadott bájtok összesen |
-| Network (Hálózat) | Bájtok összesen |
-| Network (Hálózat) | Továbbított csomagok összesen |
-| Network (Hálózat) | Fogadott csomagok összesen |
-| Network (Hálózat) | Rx-hibák összesen |
-| Network (Hálózat) | TX-hibák összesen |
-| Network (Hálózat) | Ütközések összesen |
+| Hálózat | Továbbított bájtok összesen |
+| Hálózat | Fogadott bájtok összesen |
+| Hálózat | Bájtok összesen |
+| Hálózat | Továbbított csomagok összesen |
+| Hálózat | Fogadott csomagok összesen |
+| Hálózat | Rx-hibák összesen |
+| Hálózat | TX-hibák összesen |
+| Hálózat | Ütközések összesen |
 | Fizikai lemez | Átlagos írási idő (mp/olvasás) |
 | Fizikai lemez | Átlagos műveleti idő (mp/átvitel) |
 | Fizikai lemez | Átlagos írási idő (mp/írás) |
@@ -156,7 +156,7 @@ A teljesítmény-metrikák alapértelmezett konfigurációja a következő:
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +164,7 @@ A teljesítmény-metrikák alapértelmezett konfigurációja a következő:
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
@@ -203,7 +203,7 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 ## <a name="log-queries-with-performance-records"></a>Lekérdezések naplózása a teljesítménnyel kapcsolatos rekordokkal
 Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatokat lekérő lekérdezések naplózására.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | Teljesítmény |Minden teljesítményadatok |
 | Teljesítményfigyelő &#124;, ahol a számítógép = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |
@@ -220,7 +220,7 @@ Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatoka
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Teljesítményszámlálók gyűjtése Linux-alkalmazásokból](data-sources-linux-applications.md) , beleértve a MySQL-t és az Apache HTTP-kiszolgálót.
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
 * Az összegyűjtött adatok [Power BIba](powerbi.md) való exportálása további vizualizációk és elemzések céljából.

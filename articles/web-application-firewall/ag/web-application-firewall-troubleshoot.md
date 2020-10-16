@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82983074"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131836"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfalának (WAF) hibáinak megoldása
 
@@ -174,7 +174,7 @@ A [Hegedűs](https://www.telerik.com/fiddler)segítségével megvizsgálhatja az
 
 Ebben a példában láthatja, hogy az *1 = 1* karakterláncot megadó mező neve **TEXT1**.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="Képernyőkép a Telerik Hegedűs web Debugger folyamatáról. A RAW lapon az 1 = 1 érték látható a TEXT1 neve után." border="false":::
 
 Ezt a mezőt kizárhatja. Ha többet szeretne megtudni a kizárási listáról, tekintse meg a [webalkalmazási tűzfal kérelmekre vonatkozó korlátozásait és a kizárási listát](application-gateway-waf-configuration.md#waf-exclusion-lists). Ebben az esetben kizárhatja a kiértékelést a következő kizárás konfigurálásával:
 
@@ -299,7 +299,7 @@ A második (942130-es szabály) az egyik érdekes. Megtekintheti a részleteket,
 
 A Hegedűs egy hasznos eszköz a kérelmek fejlécének neveinek megkereséséhez. A következő képernyőképen megtekintheti a GET kérelem fejléceit, amelyek közé tartozik a *Content-Type*, a *User-Agent*stb.
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Képernyőkép a Telerik Hegedűs web Debugger folyamatáról. A nyers lap felsorolja a kérelmek fejlécének részleteit, például a kapcsolat, a tartalom típusát és a felhasználói ügynököt." border="false":::
 
 A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a Chrome fejlesztői eszközein belül keres. Nyomja le az F12 billentyűt, vagy kattintson a jobb gombbal > **vizsgálja**meg  ->  a**fejlesztői eszközök**, majd válassza a **hálózat** fület. töltsön be egy weblapot, és kattintson a vizsgálni kívánt kérelemre.
 
@@ -334,6 +334,6 @@ A v1-es webalkalmazási tűzfalak esetében a következő metrikák érhetők el
      
 A metrikák engedélyezéséhez válassza a **metrikák** fület a portálon, és válasszon egyet a három mérőszám közül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [webalkalmazási tűzfal konfigurálása Application Gatewayon](tutorial-restrict-web-traffic-powershell.md).

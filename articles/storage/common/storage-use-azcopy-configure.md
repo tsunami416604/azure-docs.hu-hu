@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a54c77844498beb4fd052153cbcf8cbe498cdb75
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037184"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132210"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -87,7 +87,7 @@ A `cap-mbps` parancsokban a jelzőt használhatja, hogy a felső korlátot az ad
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Az átviteli sebesség kisebb fájlok átvitele esetén csökkenhet. A környezeti változó beállításával növelheti az átviteli sebességet is `AZCOPY_CONCURRENCY_VALUE` . Ez a változó meghatározza az egyidejű kérelmek lehetséges számát.  
+Az átviteli sebesség kisebb fájlok átvitele esetén csökkenhet. A környezeti változó beállításával növelheti az átviteli sebességet `AZCOPY_CONCURRENCY_VALUE` . Ez a változó meghatározza az egyidejű kérelmek lehetséges számát.  
 
 Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke a következő lesz: `32` . Egyéb esetben az alapértelmezett érték a CPU-k száma szorozva 16-tal. Ennek a változónak a maximális alapértelmezett értéke a `3000` , de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
 

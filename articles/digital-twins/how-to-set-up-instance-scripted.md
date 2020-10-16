@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047420"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132516"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -28,11 +28,11 @@ A jelen cikk ezen verziója a lépéseket egy [ **automatizált üzembehelyezés
 
 ## <a name="prerequisites-download-the-script"></a>Előfeltételek: töltse le a szkriptet
 
-A minta parancsfájl a PowerShellben van megírva. Az [**Azure digitális Twins-minták**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)részét képezi, amelyeket letöltheti a gépre, ha megnyitja az adott minta hivatkozást, és a cím alatt a *zip letöltése* gombot választja.
+A minta parancsfájl a PowerShellben van megírva. Része az [**Azure digitális Twins végpontok közötti mintáknak**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), amelyeket letöltheti a gépre, ehhez navigáljon az adott példához, és válassza a cím alatt található *zip letöltése* gombot.
 
-Ezzel letölti a minta projektet a gépre _**Azure_Digital_Twins_samples.zip**_. Navigáljon a számítógép mappájához, és csomagolja ki a fájlokat a fájlok kibontásához.
+Ezzel letölti a minta projektet a gépre _**Azure_Digital_Twins_end_to_end_samples.zip**_. Navigáljon a számítógép mappájához, és csomagolja ki a fájlokat a fájlok kibontásához.
 
-A kibontott mappában a telepítési parancsfájl a _Azure_Digital_Twins_samples > parancsfájlok > **deploy.ps1** _található.
+A kibontott mappában a telepítési parancsfájl a _Azure_Digital_Twins_end_to_end_samples > parancsfájlok > **deploy.ps1** _található.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -7,18 +7,18 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327938"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132771"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Oktatóanyag: WAF szabályzat létrehozása Azure CDN a Azure Portal használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy alapszintű Azure webalkalmazási tűzfal-(WAF-) szabályzatot, és hogyan alkalmazhatja azt egy Azure Content Delivery Network (CDN) végpontján.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * WAF szabályzat létrehozása
@@ -43,7 +43,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapér
     | Erőforráscsoport          |Válassza ki az első ajtóhoz tartozó erőforráscsoport nevét.|
     | Házirend neve             |Adja meg a WAF szabályzat egyedi nevét.|
 
-   ![WAF szabályzat létrehozása](../media/waf-cdn-create-portal/basic.png)
+   :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="Képernyőkép: a W A F-szabályzat létrehozása lap, amely a különböző beállításokhoz megadott felülvizsgálat + létrehozás gombbal és értékekkel rendelkezik." border="false":::
 
 3. A **WAF házirend létrehozása** lap **társítás** lapján válassza a **CDN-végpont hozzáadása**lehetőséget, adja meg a következő beállításokat, majd válassza a **Hozzáadás**lehetőséget:
 
@@ -64,7 +64,7 @@ A WAF házirend alapértelmezés szerint *észlelési* módban van, amikor létr
 
 Ha működés közben szeretné látni a WAF, az *észleléstől* kezdve a *megelőzés*lehetőségre módosíthatja a mód beállításait. A *megelőzési* módban az alapértelmezett SZABÁLYKÉSZLET (DRS) által meghatározott szabályoknak megfelelő kérelmeket a rendszer letiltja és naplózza a WAF-naplókban.
 
- ![WAF házirend mód módosítása](../media/waf-cdn-create-portal/policy.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="Képernyőkép: a W A F-szabályzat létrehozása lap, amely a különböző beállításokhoz megadott felülvizsgálat + létrehozás gombbal és értékekkel rendelkezik." border="false":::
 
 ### <a name="custom-rules"></a>Egyéni szabályok
 
@@ -72,24 +72,24 @@ Egyéni szabály létrehozásához válassza az egyéni **szabály hozzáadása*
 
 Az alábbi képernyőfelvételen egy egyéni egyeztetési szabály látható, amely letilt egy kérést, ha a lekérdezési karakterlánc tartalmazza a **blockme**értéket.
 
-![Egyéni egyezési szabály hozzáadása](../media/waf-cdn-create-portal/custommatch.png)
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="Képernyőkép: a W A F-szabályzat létrehozása lap, amely a különböző beállításokhoz megadott felülvizsgálat + létrehozás gombbal és értékekkel rendelkezik." border="false":::
 
 A díjszabási korlát szabályai két további mezőt igényelnek: a **díjszabási korlát időtartamát** és a **díjszabási küszöbértéket (kérelmeket)** az alábbi példában látható módon:
 
-![Díjszabási korlát hozzáadása szabály](../media/waf-cdn-create-portal/customrate.png)
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="Képernyőkép: a W A F-szabályzat létrehozása lap, amely a különböző beállításokhoz megadott felülvizsgálat + létrehozás gombbal és értékekkel rendelkezik." border="false":::
 
 ### <a name="default-rule-set-drs"></a>Alapértelmezett szabálykészlet (DRS)
 
 Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés szerint engedélyezve van. Ha le szeretne tiltani egy szabály csoportjának egy adott szabályát, bontsa ki a szabály csoporton belüli szabályokat, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a **Letiltás** lehetőséget a fenti lapon. Ha módosítani szeretné a szabálykészlet egyes szabályainak típusát, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a fenti **módosítási művelet** fület.
 
- ![WAF-szabálykészlet módosítása](../media/waf-cdn-create-portal/managed2.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="Képernyőkép: a W A F-szabályzat létrehozása lap, amely a különböző beállításokhoz megadott felülvizsgálat + létrehozás gombbal és értékekkel rendelkezik." border="false":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure webalkalmazási tűzfalról](../overview.md)

@@ -5,15 +5,15 @@ author: msangapu-msft
 ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-ms.date: 10/15/2020
+ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0ca8301e9be51279cd9b80791126b41b99d89d6b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: aad41ed1fb270acb38ec599484e137fbe5a6dceb
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127386"
+ms.locfileid: "92131343"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rövid útmutató: App Service alkalmazás létrehozása ARM-sablon használatával
 
@@ -26,6 +26,10 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 A **Linux**rendszeren történő üzembe helyezéshez használja a következő gombot:
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
+
+A következő gomb használatával telepítheti a **Windows rendszert**:
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +49,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vannak az Ön kényelme érdekében. Tekintse meg az alábbi táblázatot a paraméterek alapértelmezett értékeinek és leírásának megtekintéséhez:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
+| Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Alkalmazás-régió |
@@ -66,7 +70,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vannak az Ön kényelme érdekében. Tekintse meg az alábbi táblázatot a paraméterek alapértelmezett értékeinek és leírásának megtekintéséhez:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
+| Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Alkalmazás-régió |

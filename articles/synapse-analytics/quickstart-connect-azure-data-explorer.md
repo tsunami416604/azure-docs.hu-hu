@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure-Adatkezelő összekötése egy szinapszis-munkaterülettel'
-description: Azure Adatkezelő-fürt összekötése egy szinapszis-munkaterülettel az Azure szinapszis használatával Apache Spark
+title: 'Gyors útmutató: Azure-Adatkezelő összekötése egy Azure-beli szinapszis Analytics-munkaterülettel'
+description: Azure Adatkezelő-fürt összekötése egy Azure szinapszis Analytics-munkaterülettel az Azure szinapszis Analytics Apache Spark használatával.
 services: synapse-analytics
 author: manojraheja
 ms.service: synapse-analytics
@@ -9,73 +9,74 @@ ms.subservice: overview
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99ccc2f4d7e3adbba704f784025abfdfa8b96f52
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7412e595d3ae0604f57467701852743b737a591a
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090658"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132193"
 ---
-# <a name="connect-to-azure-data-explorer-using-synapse-apache-spark"></a>Kapcsolódás az Azure Adatkezelőhoz a szinapszis használatával Apache Spark
+# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Kapcsolódás az Azure Adatkezelőhoz az Azure szinapszis Analytics Apache Spark használatával
 
-Ez a cikk azt ismerteti, hogyan lehet hozzáférni egy Azure Adatkezelő-adatbázishoz a szinapszis Studio és a szinapszis Apache Spark használatával. 
+Ez a cikk azt ismerteti, hogyan lehet hozzáférni egy Azure Adatkezelő-adatbázishoz a szinapszis studióból az Azure szinapszis Analytics Apache Spark használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Hozzon létre egy Azure adatkezelő-fürtöt és-adatbázist](/azure/data-explorer/create-cluster-database-portal).
-* Meglévő szinapszis munkaterület, vagy hozzon létre egy új munkaterületet [a rövid](./quickstart-create-workspace.md) útmutató után 
-* Meglévő szinapszis Apache Spark készlet vagy új készlet [létrehozása a rövid](./quickstart-create-apache-spark-pool-portal.md) útmutató után
-* [Hozzon létre Azure AD-alkalmazást egy Azure AD-alkalmazás üzembe helyezésével.](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app)
-* Adja meg az Azure AD-alkalmazás hozzáférését az adatbázishoz az [azure adatkezelő Database-engedélyek kezelése](/azure/data-explorer/manage-database-permissions) után
+* Rendelkezzen egy meglévő Azure szinapszis Analytics-munkaterülettel, vagy hozzon létre egy új munkaterületet a gyors útmutató [: Azure szinapszis-munkaterület létrehozása](./quickstart-create-workspace.md)című témakör lépéseit követve.
+* Rendelkezzen meglévő Apache Spark készlettel, vagy hozzon létre egy új készletet a gyors útmutató [: Apache Spark-készlet létrehozása a Azure Portal használatával](./quickstart-create-apache-spark-pool-portal.md).
+* [Hozzon létre egy Azure Active Directory (Azure ad) alkalmazást egy Azure ad-alkalmazás üzembe](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app)helyezésével.
+* Adja meg az Azure AD-alkalmazás hozzáférését az adatbázishoz az [azure adatkezelő Database-engedélyek kezelése](/azure/data-explorer/manage-database-permissions)című témakör lépéseit követve.
 
-## <a name="navigate-to-synapse-studio"></a>Navigáljon a szinapszis studióhoz
+## <a name="go-to-synapse-studio"></a>Ugrás a szinapszis Studióra
 
-A szinapszis munkaterületen válassza a **szinapszis Studio elindítása**lehetőséget. A szinapszis Studio kezdőlapján **válassza az adatelemet**, amely végigvezeti az **adatObject Explorer**.
+Egy Azure szinapszis-munkaterületről válassza a **szinapszis Studio elindítása**lehetőséget. A szinapszis Studio kezdőlapján **válassza az** **adatObject Explorer**.
 
-## <a name="connect-an-azure-data-explorer-database-to-a-synapse-workspace"></a>Azure Adatkezelő-adatbázis összekötése egy szinapszis-munkaterülettel
+## <a name="connect-an-azure-data-explorer-database-to-an-azure-synapse-workspace"></a>Azure Adatkezelő-adatbázis összekötése egy Azure-beli szinapszis-munkaterülettel
 
-Az Azure Adatkezelő-adatbázisok munkaterülethez való csatlakoztatása a társított szolgáltatáson keresztül történik. Egy Azure-beli adat-összevonási szolgáltatás lehetővé teszi a felhasználók számára az adatok tallózását, olvasását és írását az Azure szinapszis Analytics Apache Spark, valamint az integrációs feladatok egy folyamaton belüli futtatását.
+Az Azure Adatkezelő-adatbázisok munkaterülethez való csatlakoztatása egy társított szolgáltatáson keresztül történik. Az Azure Adatkezelő társított szolgáltatásokkal böngészhet és megtekintheti az adatApache Spark az Azure szinapszis számára, és megkeresheti és megkeresheti az adatforrásokat. Az integrációs feladatokat egy folyamaton keresztül is futtathatja.
 
 Az adatok Object Explorer egy Azure Adatkezelő-fürt közvetlen összekapcsolásához kövesse az alábbi lépéseket:
 
-1. Válassza ki **+** az ikont az adatközpont közelében
-2. Külső **adatkapcsolat kiválasztása**
-3. **Azure-adatkezelő kiválasztása (Kusto)**
-5. Válassza a **Folytatás** elemet
-6. Nevezze el a társított szolgáltatást. A név megjelenik a Object Explorerban, és a szinapszis futtatási idejének használatával csatlakozik az adatbázishoz. A felhasználóbarát név használatát javasoljuk
-7. Válassza ki az Azure-beli adatok feltárása fürtöt az előfizetésből, vagy adja meg az URI-t.
-8. Adja meg a "szolgáltatás egyszerű azonosítója" és az "egyszerű szolgáltatásnév" kulcsot. (gondoskodjon arról, hogy ez az egyszerű szolgáltatásnév az olvasási művelethez és a betöltéshez szükséges adatfeldolgozáshoz a hozzáférés megtekintése az adatbázisban.)
-9. Adja meg az Azure Adatkezelő-adatbázis nevét
-10. A megfelelő engedélyek biztosításához kattintson a **Kapcsolódás tesztelése** lehetőségre.
-11. Kattintson a **Létrehozás** elemre.
+1. Válassza ki az **+** ikont a közelében. **Data**
+1. A külső adatforrásokhoz való kapcsolódáshoz válassza a **Kapcsolódás** lehetőséget.
+1. Válassza az **Azure adatkezelő (Kusto)** lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
+1. A társított szolgáltatás neveként adjon meg egy rövid nevet. A név megjelenik az adatObject Explorerban, és az Azure szinapszis-futtatókörnyezetek használják az adatbázishoz való kapcsolódásra.
+1. Válassza ki az Azure Adatkezelő-fürtöt az előfizetésből, vagy adja meg az URI-t.
+1. Adja meg az **egyszerű szolgáltatás azonosítóját** és a **szolgáltatásnév kulcsát**. Győződjön meg arról, hogy ez a szolgáltatásnév az olvasási művelethez és a betöltéshez való hozzáféréshez tekint hozzáférést az adatbázishoz az adatfeldolgozáshoz.
+1. Adja meg az Azure Adatkezelő-adatbázis nevét.
+1. Válassza a **Kapcsolódás tesztelése** lehetőséget a megfelelő engedélyek biztosításához.
+1. Kattintson a **Létrehozás** gombra.
 
-    ![Új társított szolgáltatás](./media/quickstart-connect-azure-data-explorer/003-new-linked-service.png)
+    ![Képernyőkép, amely egy új társított szolgáltatást jelenít meg.](./media/quickstart-connect-azure-data-explorer/003-new-linked-service.png)
 
     > [!NOTE]
-    > Választható A kapcsolat tesztelése nem ellenőrzi az írási hozzáférést, győződjön meg arról, hogy a szolgáltatásnév azonosítójának írási hozzáférése van az Azure Adatkezelő-adatbázishoz.
+    > Választható A **kapcsolat tesztelése** nem ellenőrzi az írási hozzáférést. Győződjön meg arról, hogy az egyszerű szolgáltatásnév AZONOSÍTÓjának írási hozzáférése van az Azure Adatkezelő adatbázisához.
 
-12. Az Azure Adatkezelő-fürtök és-adatbázisok az Azure Adatkezelő szakasz  **csatolt** lapján láthatók. 
+1. Az Azure Adatkezelő-fürtök és-adatbázisok az **azure adatkezelő** szakaszban található **csatolt** lapon jelennek meg.
 
-    ![Fürtök tallózása](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
+    ![A fürtök böngészését bemutató képernyőkép.](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
 
-    > [!NOTE] 
-    > Az aktuális kiadásban az adatbázis-objektumok a HRE-fiók engedélyei alapján vannak feltöltve az Azure Adatkezelő-adatbázisokban. A Apache Spark notebookok vagy integrációs feladatok futtatásakor a rendszer a kapcsolati szolgáltatás hitelesítő adatait fogja használni (az egyszerű szolgáltatásnév).
-
+    > [!NOTE]
+    > Az aktuális kiadásban az adatbázis-objektumok az Azure AD-fiók engedélyei alapján vannak feltöltve az Azure Adatkezelő-adatbázisokban. A Apache Spark notebookok vagy integrációs feladatok futtatásakor a rendszer a kapcsolati szolgáltatás hitelesítő adatait fogja használni (például egyszerű szolgáltatásnév).
 
 ## <a name="quickly-interact-with-code-generated-actions"></a>Gyors interakció a kód által generált műveletekkel
 
-* Ha a jobb gombbal egy adatbázisra vagy táblára kattint, megjelenik a kézmozdulatok listája, amely egy minta Spark notebookot indít el az adatolvasáshoz, az adatíráshoz, az adatátvitelhez és az Azure-Adatkezelő. 
-    [![Új minta notebookok](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png)](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png#lightbox)
+Ha a jobb gombbal egy adatbázisra vagy táblára kattint, megjelenik a minta Spark-jegyzetfüzetek listája. Válassza ki az Azure Adatkezelőba való beolvasásához, írásához vagy továbbításához szükséges lehetőséget.
 
-* Íme egy példa az adatolvasásra. Csatolja a notebookot a Spark-készlethez, és futtassa a cella [ ![ új olvasási jegyzetfüzetét](./media/quickstart-connect-azure-data-explorer/006-read-data.png)](./media/quickstart-connect-azure-data-explorer/006-read-data.png#lightbox)
+[![Képernyőkép, amely új minta-jegyzetfüzeteket jelenít meg.](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png)](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png#lightbox)
 
-   > [!NOTE] 
-   > Az első végrehajtás több mint három percet is igénybe vehet a Spark-munkamenet elindításához. A későbbi végrehajtások jelentősen gyorsabbak lesznek.  
+Íme egy példa az adatolvasásra. Csatlakoztassa a notebookot a Spark-készlethez, és futtassa a cellát.
 
+[![Képernyőkép, amely egy új olvasási jegyzetfüzetet jelenít meg.](./media/quickstart-connect-azure-data-explorer/006-read-data.png)](./media/quickstart-connect-azure-data-explorer/006-read-data.png#lightbox)
+
+   > [!NOTE]
+   > Az első végrehajtás több mint három percet is igénybe vehet a Spark-munkamenet elindításához. A későbbi végrehajtások jelentősen gyorsabbak lesznek.
 
 ## <a name="limitations"></a>Korlátozások
-Az Azure Adatkezelő Connector jelenleg nem támogatott az Azure szinapszis által felügyelt VNET.
 
+Az Azure Adatkezelő-összekötő jelenleg nem támogatott az Azure szinapszis által felügyelt virtuális hálózatokkal.
 
 ## <a name="next-steps"></a>Következő lépések
 

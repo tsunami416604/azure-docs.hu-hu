@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046808"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131683"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrikák Advisor – gyakori kérdések
 
@@ -31,7 +31,7 @@ A [bemutató webhelye](https://anomaly-detector.azurewebsites.net/) nyilvánosan
 
 :::image type="content" source="media/pricing.png" alt-text="Üzenet, ha már létezik egy F0-erőforrás":::
 
-A nyilvános előzetes verzióban a metrikai tanácsadó csak egy példánya hozható létre egy előfizetésben, egy régióban.
+A nyilvános előzetes verzióban a metrikus tanácsadók csak egy példánya hozható létre régiónként egy előfizetésen belül.
 
 Ha már van olyan példánya, amely ugyanabban a régióban lett létrehozva ugyanazzal az előfizetéssel, akkor egy másik régiót vagy egy másik előfizetést is kipróbálhat egy új példány létrehozásához. Meglévő példányt is törölhet, hogy újat hozzon létre.
 
@@ -108,6 +108,40 @@ Az "intelligens észlelés" képes megtanulni az Adatmintázatot, beleértve az 
 
 Ha az adatai általában meglehetősen instabilak, és nagy mértékben ingadoznak, és ha riasztást szeretne kapni, ha túl stabil, vagy akár egy vonalra vált, akkor a "változási küszöb" beállítás beállítható úgy, hogy az ilyen adatpontok észlelése túl kicsi legyen.
 A részletekért tekintse meg a [anomáliák észlelésének konfigurációit](how-tos/configure-metrics.md#anomaly-detection-methods) .
+
+## <a name="advanced-concepts"></a>Speciális fogalmak
+
+### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>Hogyan hoz létre a metrikus Advisor egy incidens fát a többdimenziós mérőszámokhoz?
+
+A metrikák több idősorozatra is bonthatók dimenziók szerint. A metrikát például a `Response latency` csapat tulajdonában lévő összes szolgáltatáshoz figyeli a rendszer. A `Service` Kategória felhasználható dimenzióként a metrika bővítéséhez, így a (z `Response latency` `Service1` `Service2` ) és a (z), stb. felosztásra kerül. Minden szolgáltatás különböző gépeken telepíthető több adatközpontban, így a metrika tovább osztható a és a használatával `Machine` `Data center` .
+
+|Szolgáltatás| Adatközpont| Gép  | 
+|----|------|----------------   |
+| S1 |  DC1 |   M1 verzióban |
+| S1 |  DC1 |   M2 |
+| S1 |  DC2 |   M3 |
+| S1 |  DC2 |   M4 |
+| S2 |  DC1 |   M1 verzióban |
+| S2 |  DC1 |   M2 |
+| S2 |  DC2 |   M5 |
+| S2 |  DC2 |   M6 |
+| ...|      |      |
+
+A teljes összegtől kezdődően `Response latency` a mérőszámot a és a érték alapján részletezjük `Service` `Data center` `Machine` . Előfordulhat azonban, hogy több értelme van a szolgáltatás tulajdonosai számára az elérési út használatára `Service`  ->  `Data center`  ->  `Machine` , vagy talán több értelme van az infrastruktúra-mérnököknek az elérési út használatára `Data Center`  ->  `Machine`  ->  `Service` . Mindez a felhasználók egyedi üzleti követelményeitől függ. 
+
+A metrikus tanácsadóban a felhasználók bármilyen elérési utat megadhatnak a hierarchikus topológia egyik csomópontjának a részletezéséhez vagy összesítéséhez. Pontosabban a hierarchikus topológia egy irányított aciklikus gráf, nem pedig fastruktúra. Az összes lehetséges dimenzió kombinációból álló teljes hierarchikus topológia a következőhöz hasonló: 
+
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="Üzenet, ha már létezik egy F0-erőforrás" lightbox="media/dimension-combinations-view.png":::
+
+Elméletileg, ha a dimenzióban eltérő értékek szerepelnek, a dimenziónak eltérő értékekkel kell rendelkezniük, `Service` `Ls` és a `Data center` `Ldc` dimenziónak `Machine` `Lm` eltérő értékekkel kell rendelkezniük, akkor `(Ls + 1) * (Ldc + 1) * (Lm + 1)` a hierarchikus topológiában lehetnek dimenzió-kombinációk. 
+
+De általában nem minden dimenzió kombináció érvényes, ami jelentősen csökkentheti az összetettséget. Jelenleg ha a felhasználók maguk összesítik a metrikát, nem korlátozzuk a méretek számát. Ha a metrikai tanácsadó által biztosított kumulatív funkciót kell használnia, a méretek száma nem lehet nagyobb, mint 6. Az idősorozatok számát azonban a mérőszámok méretei szerint kibontva, 10 000-nél kisebbre korlátozzuk.
+
+Az **incidens faszerkezetének** eszköze a diagnosztika oldalon csak azokat a csomópontokat jeleníti meg, amelyekben a teljes topológia helyett anomália észlelhető. Ez segít az aktuális probléma kiépítésében. Emellett előfordulhat, hogy nem jeleníti meg az összes rendellenességet a metrikán belül, hanem a legfontosabb rendellenességeket fogja megjeleníteni a hozzájárulás alapján. Így gyorsan megtalálhatja a rendellenes adatmennyiség következményeit, hatókörét és oldalpár-elérési útját. Ez jelentősen csökkenti a szükséges anomáliák számát, és segít a felhasználóknak megérteni és megtalálni a legfontosabb problémákat. 
+ 
+Ha például egy rendellenesség bekövetkezik `Service = S2 | Data Center = DC2 | Machine = M5` , a rendellenesség eltérése hatással van a szülő csomópontra `Service= S2` , amely szintén a rendellenességet észlelte, de a rendellenesség nem érinti a teljes adatközpontot `DC2` és a összes szolgáltatást `M5` . Az incidens faszerkezete az alábbi képernyőképen fog megjelenni, a legfelső anomáliát a rendszer rögzíti `Service = S2` , a kiváltó ok pedig két olyan elérési úton elemezhető, amely mindkettőt eredményezi `Service = S2 | Data Center = DC2 | Machine = M5` .
+
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5 a címkézett csúcspontok, amelyek két különböző elérési úttal rendelkeznek, és az S2 címkével ellátott közös csomóponttal vannak összekötve. A legfontosabb anomália a Service = S2-ben van rögzítve, és a kiváltó ok a két elérési út alapján elemezhető, mindkettő a Service = S2-hez vezet | Adatközpont = DC2 | Gép = M5" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>Következő lépések
 - [A metrikai tanácsadó áttekintése](overview.md)

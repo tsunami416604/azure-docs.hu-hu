@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074260"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132482"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -589,8 +589,8 @@ A következő függvény használható egy házirend-szabályban, de eltér a ha
 A következő függvények csak a házirend-szabályokban érhetők el:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime**: [Required] String-String az univerzális ISO 8601 datetime formátumban `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
-  - **numberOfDaysToAdd**: [kötelező] egész szám – a hozzáadandó napok száma.
+  - **datetime**: [Required] String-String az univerzális ISO 8601 datetime formátumban éééé-hh-NNTóó: PP: mm. FFFFFFFZ'
+  - **numberOfDaysToAdd**: [kötelező] egész szám – hozzáadandó napok száma
 - `field(fieldName)`
   - **Mezőnév**: [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
   - Annak az erőforrásnak az értékét adja vissza, amelyet az IF feltétel kiértékel.
@@ -711,7 +711,7 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
 
 ### <a name="understanding-the--alias"></a>A [*] alias ismertetése
 
-A rendelkezésre álló aliasok közül több olyan verzióval rendelkezik, amely "normál" néven jelenik meg, és egy másik, amely hozzá van **\[\*\]** csatolva. Például:
+A rendelkezésre álló aliasok közül több olyan verzióval rendelkezik, amely "normál" néven jelenik meg, és egy másik, amely hozzá van **\[\*\]** csatolva. Példa:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

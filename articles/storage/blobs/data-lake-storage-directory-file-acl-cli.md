@@ -10,16 +10,16 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503939"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131598"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat és engedélyeket a hierarchikus névtérrel rendelkező Storage-fiókokban az [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) használatával. 
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat és engedélyeket a hierarchikus névtérrel rendelkező Storage-fiókokban az [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/) használatával. 
 
 [Példák](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
 
@@ -32,14 +32,14 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Győződjön meg arról, hogy az Azure CLI megfelelő verziója van telepítve
 
-1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
+1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
 2. A következő parancs használatával ellenőrizze, hogy a telepített Azure CLI `2.6.0` -verzió vagy magasabb-e.
 
    ```azurecli
     az --version
    ```
-   Ha az Azure CLI verziója alacsonyabb, mint a `2.6.0` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Ha az Azure CLI verziója alacsonyabb, mint a `2.6.0` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 
@@ -216,7 +216,7 @@ Ez a példa töröl egy nevű fájlt. `my-file.txt`
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-permissions"></a>Engedélyek kezelése
+## <a name="manage-access-control-lists-acls"></a>Hozzáférés-vezérlési listák (ACL-ek) kezelése
 
 Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
 
@@ -273,7 +273,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 Az alábbi képen egy fájl ACL-listájának beállítása után a kimenet látható.
 
-![ACL kimenetének beolvasása](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![A 2. ACL-kimenet beolvasása](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
 Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olvasási és írási engedéllyel rendelkezik. Minden más felhasználó írási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
 

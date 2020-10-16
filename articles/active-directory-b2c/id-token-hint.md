@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564840"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132074"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>AZONOSÍTÓ jogkivonat-útmutató technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -34,7 +34,7 @@ A id_token_hint a jogkivonat kiállítója (egy függő entitás vagy egy identi
 
 A id_token_hintnak érvényes JWT-tokennek kell lennie. A következő táblázat felsorolja a kötelező jogcímeket. További jogcímek megadása nem kötelező.
 
-| Name (Név) | Jogcím | Példaérték | Leírás |
+| Név | Jogcím | Példaérték | Description |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Azonosítja a jogkivonat kívánt címzettjét. Ez egy tetszőleges karakterlánc, amelyet a jogkivonat kiállítója meghatároz. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
 | Kiállító | `iss` |`https://localhost` | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez a jogkivonat-kiállító által definiált tetszőleges URI. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
@@ -84,16 +84,16 @@ A szimmetrikus kulcs használatakor a következő metaadatok érvényesek.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| kiállító | Igen | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ennek az értéknek meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belül. | 
-| IdTokenAudience | Igen | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. | 
+| kiállító | Yes | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ennek az értéknek meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belül. | 
+| IdTokenAudience | Yes | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. | 
 
-Szimmetrikus kulcs használata esetén a következő metaadatok érvényesek. 
+Aszimmetrikus kulcs használata esetén a következő metaadatok érvényesek. 
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| METAADATOK| Igen | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
-| kiállító | Nem | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
-| IdTokenAudience | Nem | Azonosítja a jogkivonat kívánt címzettjét. Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `aud` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
+| METAADATOK| Yes | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
+| kiállító | No | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
+| IdTokenAudience | No | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. |  
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -101,7 +101,7 @@ Szimmetrikus kulcs használatakor a **CryptographicKeys** elem a következő att
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | Az JWT-jogkivonat aláírásának ellenőrzéséhez használt kriptográfiai kulcs.|
+| client_secret | Yes | Az JWT-jogkivonat aláírásának ellenőrzéséhez használt kriptográfiai kulcs.|
 
 
 ## <a name="how-to-guide"></a>Útmutató
@@ -219,7 +219,7 @@ A következő technikai profil ellenőrzi a jogkivonatot, és Kinyeri a jogcíme
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <!-- <Item Key="IdTokenAudience">your_optional_audience_override</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

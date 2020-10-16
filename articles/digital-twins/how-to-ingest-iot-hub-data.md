@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048049"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131496"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -242,7 +242,7 @@ Az esemény-előfizetés létrehozásához kattintson a _Létrehozás_ gombra.
 
 ## <a name="send-simulated-iot-data"></a>Szimulált IoT-adatgyűjtés küldése
 
-Az új beáramlási funkció teszteléséhez használja az eszköz-szimulátort az [*oktatóanyag: végpontok közötti megoldás csatlakoztatása*](./tutorial-end-to-end.md). Ezt az oktatóanyagot C# nyelven írt minta projekt vezérli. A mintakód itt található: [Azure digitális Twins-minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A **DeviceSimulator** projektet a tárházban fogja használni.
+Az új beáramlási funkció teszteléséhez használja az eszköz-szimulátort az [*oktatóanyag: végpontok közötti megoldás csatlakoztatása*](./tutorial-end-to-end.md). Ezt az oktatóanyagot C# nyelven írt minta projekt vezérli. A mintakód itt található: [Azure digitális Twins végpontok közötti minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A **DeviceSimulator** projektet a tárházban fogja használni.
 
 A végpontok közötti oktatóanyagban hajtsa végre a következő lépéseket:
 1. [*A szimulált eszköz regisztrálása IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

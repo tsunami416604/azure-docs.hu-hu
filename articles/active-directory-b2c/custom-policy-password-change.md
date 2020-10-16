@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/13/2018
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6faf9fb3d15709d3897db9a77bf14ebf238e8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116372"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131751"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó módosításának konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
         <ClaimType Id="oldPassword">
           <DisplayName>Old Password</DisplayName>
           <DataType>string</DataType>
-          <UserHelpText>Enter password</UserHelpText>
+          <UserHelpText>Enter your old password</UserHelpText>
           <UserInputType>Password</UserInputType>
         </ClaimType>
       </ClaimsSchema>
@@ -179,8 +179,8 @@ Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy 
 
 1. Nyissa meg a módosított szabályzatot. Például *B2C_1A_profile_edit_password_change*.
 2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-3. Kattintson a **Futtatás most** parancsra. Jelentkezzen be a korábban létrehozott acouunt. Most lehetősége van a jelszó módosítására.
+3. Kattintson a **Futtatás most** parancsra. Jelentkezzen be a korábban létrehozott fiókkal. Most lehetősége van a jelszó módosítására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [konfigurálhatja a jelszó-bonyolultságot a Azure Active Directory B2C lévő egyéni szabályzatok használatával](custom-policy-password-complexity.md).

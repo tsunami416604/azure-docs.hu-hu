@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263776"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132703"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -76,7 +76,7 @@ A következő táblázat felsorolja, hogy milyen típusú adatok gyűjthetők ö
 
 A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Analytics munkaterületre, amely támogatja Azure Monitor naplókat.
 
-| Adatforrás | Célhelyek | Leírás |
+| Adatforrás | Célhelyek | Description |
 |:---|:---|:---|
 | Teljesítmény        | Azure Monitor metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | Windows-eseménynaplók | Log Analytics-munkaterület | A Windows eseménynaplózási rendszernek eljuttatott információk. |
@@ -84,7 +84,7 @@ A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Ana
 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-A Log Analytics ügynök által jelenleg támogatott Windows és Linux operációsrendszer-verziók listáját a [támogatott operációs rendszerek](agents-overview.md#supported-operating-systems) című részben tekintheti meg.
+A Azure Monitor ügynök által jelenleg támogatott Windows és Linux operációsrendszer-verziók listáját a [támogatott operációs rendszerek](agents-overview.md#supported-operating-systems) című részben tekintheti meg.
 
 
 

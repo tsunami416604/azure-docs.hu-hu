@@ -10,18 +10,18 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8083d42d9ce79bcf31e3875f2ff5d5f06970a7ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713408"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131513"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
 Ez a cikk bemutatja, hogyan lehet a PowerShell használatával könyvtárakat, fájlokat és engedélyeket létrehozni és kezelni olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
-[Hivatkozás](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  |  [Gen1 a Gen2-megfeleltetéshez](#gen1-gen2-map)  |  [Visszajelzés küldése](https://github.com/Azure/azure-powershell/issues)
+[Hivatkozás](https://docs.microsoft.com/powershell/module/Az.Storage/)  |  [Gen1 a Gen2-megfeleltetéshez](#gen1-gen2-map)  |  [Visszajelzés küldése](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ Ez a cikk bemutatja, hogyan lehet a PowerShell használatával könyvtárakat, f
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+   A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
     
 2. Telepítse **az az. Storage** modult.
 
@@ -47,7 +47,7 @@ Ez a cikk bemutatja, hogyan lehet a PowerShell használatával könyvtárakat, f
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 ## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 
@@ -266,9 +266,9 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 A (z `-Force` ) paraméterrel a fájl parancssor nélkül is eltávolítható.
 
-## <a name="manage-access-permissions"></a>Hozzáférési engedélyek kezelése
+## <a name="manage-access-control-lists-acls"></a>Hozzáférés-vezérlési listák (ACL-ek) kezelése
 
-Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit. Ezeket az engedélyeket a hozzáférés-vezérlési listák (ACL-ek) rögzítik.
+Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
 
 > [!NOTE]
 > Ha Azure Active Directory (Azure AD) használatával engedélyezi a parancsokat, akkor győződjön meg arról, hogy a rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.

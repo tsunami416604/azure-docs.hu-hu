@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 4ef53b2249f8ce57255c13126c9310f1c889d64f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94a84220b276edf8eaf539151964715675693dec
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855055"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131377"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -46,9 +46,9 @@ Data Lake Storage Gen2 egy hozzáférés-vezérlési modellt használ, amely tá
 
 A RBAC szerepkör-hozzárendeléseket használ az Azure-erőforrásokhoz tartozó felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz tartozó engedélyek hatékony alkalmazására. Ezek az Azure-erőforrások jellemzően felső szintű erőforrásokra (például Azure Blob Storage-fiókokra) korlátozzák. Az Azure Blob Storage esetében, valamint Data Lake Storage Gen2 is, ez a mechanizmus a fájlrendszer erőforrására lett kiterjesztve.
 
-További információ a RBAC-mel rendelkező fájlokra vonatkozó engedélyekről: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+További információ a RBAC-mel rendelkező fájlokra vonatkozó engedélyekről: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
-Az ACL-ekkel rendelkező fájlengedélyek részletes ismertetését lásd: [hozzáférés-vezérlési listák a fájlokon és könyvtárakon](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
+Az ACL-ekkel rendelkező fájlengedélyek részletes ismertetését lásd: [hozzáférés-vezérlési listák a fájlokon és könyvtárakon](../storage/blobs/data-lake-storage-access-control.md).
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Hogyan szabályozhatja az adataik elérését Data Lake Storage Gen2ban?
 

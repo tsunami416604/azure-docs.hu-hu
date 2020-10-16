@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069475"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131308"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -615,6 +615,37 @@ Az alábbi példa egy jó forgatókönyv megjelenését mutatja be.
 
     ![TCP 4 kézfogás munkafolyamata](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
+
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>E-mail fogadása a hálózati konfiguráció frissítéséhez az új IP-címekkel való kommunikáció engedélyezéséhez
+
+#### <a name="symptoms"></a>Hibajelenségek
+
+Az alábbi e-mail-értesítés jelenhet meg, amely azt ajánlja, hogy frissítse a hálózati konfigurációt, hogy az új IP-címekkel kommunikáljon Azure Data Factory a 2020. november 8. között:
+
+   ![E-mailes értesítés](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="resolution"></a>Feloldás
+
+Ez az értesítés a helyszíni vagy egy Azure **-** beli **virtuális magánhálózaton** a szolgáltatásnak az ADF-be történő továbbítására szolgáló **Integration Runtime** **kimenő kommunikációra** szolgál. Ha például saját üzemeltetésű IR-vagy Azure-SQL Server Integration Services (SSIS) IR-vel rendelkezik az Azure VNET-ben, az ADF szolgáltatás eléréséhez szükséges, akkor ellenőriznie kell, hogy hozzá kell-e adnia ezt az új IP-tartományt a **hálózati biztonsági csoport (NSG)** szabályaiban. Ha a kimenő NSG-szabály szolgáltatási címkét használ, akkor nem lesz hatással.
+
+#### <a name="more-details"></a>További részletek
+
+Ezek az új IP-címtartományok csak a **helyi tűzfal** vagy az **Azure virtuális magánhálózat** **kimenő kommunikációs szabályaira hatással vannak** a szolgáltatásra (lásd: a [tűzfal konfigurálása és az IP-cím beállításának engedélyezése](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) a hivatkozáshoz), olyan forgatókönyvek esetén, ahol saját üzemeltetésű vagy SSIS IR-vel rendelkezik a helyszíni hálózaton vagy az Azure Virtual Networkben, amelyeknek kommunikálnia kell az ADF szolgáltatással.
+
+**Azure VPN-** t használó meglévő felhasználók esetén:
+
+1. A SSIS vagy az Azure SSIS konfigurálásakor győződjön meg a magánhálózaton található bármely kimenő NSG-szabályról. Ha nincsenek kimenő korlátozások, akkor nincs rájuk hatással.
+1. Ha a kimenő szabályok korlátozásai vannak, ellenőrizze, hogy a szolgáltatás címkéjét használja-e. Ha a szolgáltatás címkét használja, akkor nem kell módosítania vagy semmit hozzáadnia, mivel az új IP-címtartományok a meglévő szolgáltatási címke alatt találhatók. 
+  
+    ![Cél-ellenőrzési](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+1. Ha közvetlenül a szabály-beállításban használ IP-címeket, akkor ellenőrizze, hogy az összes IP-tartományt hozzáadja-e a [szolgáltatási címkék IP-címtartomány letöltése hivatkozáshoz](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files). Az új IP-címtartományok már fel lettek helyezve ebben a fájlban. Új felhasználók számára: csak a dokumentumban lévő, saját üzemeltetésű IR vagy SSIS IR-konfigurációt kell követnie a NSG szabályok konfigurálásához.
+
+A SSIS IR-t vagy saját üzemeltetésű **helyi**integrációs modult használó meglévő felhasználók számára:
+
+- Érvényesítse a hálózati infrastruktúra csapatát, és ellenőrizze, hogy szükség van-e az új IP-címtartomány címére a kimenő szabályokkal kapcsolatos kommunikációhoz.
+- Az FQDN-neveken alapuló tűzfalszabályok esetében nem szükséges frissítés, ha a tűzfal konfigurációjában dokumentált beállításokat használja, [és az engedélyezési lista az IP-cím beállításra van beállítva](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
+- Egyes helyszíni tűzfalak támogatják a szolgáltatás címkéit, ha az Azure-szolgáltatás frissített konfigurációs fájlját használja, más módosítások nem szükségesek.
 
 ## <a name="self-hosted-ir-sharing"></a>Saját üzemeltetésű integrációs modul megosztása
 

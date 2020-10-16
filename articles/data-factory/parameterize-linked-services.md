@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276455"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131394"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
@@ -38,6 +38,7 @@ Bármilyen típusú társított szolgáltatást parametrizálja.
 A társított szolgáltatás felhasználói felületen való létrehozásakor Data Factory a következő típusú összekötők számára biztosít beépített paraméterezés élményt. A társított szolgáltatás létrehozása/szerkesztése panelen megtalálhatja az új paraméterek beállításait, és hozzáadhat dinamikus tartalmakat is.
 
 - Amazon Redshift
+- Amazon S3
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
 - Azure SQL Database

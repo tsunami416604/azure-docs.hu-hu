@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88922565"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131768"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -92,7 +92,7 @@ A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti tel
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
-        Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 64 bites operációs rendszeren, valamint egy 32 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
+        Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 32 bites operációs rendszeren, valamint egy 64 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
 
         A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a Teams Machine-Wide telepítőjének megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows beállításaiban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat.
 

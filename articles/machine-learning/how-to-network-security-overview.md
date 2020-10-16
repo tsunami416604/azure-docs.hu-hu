@@ -1,5 +1,5 @@
 ---
-title: Virtual Network elkülönítés és Adatvédelem – áttekintés
+title: A Virtual Network elkülönítése és biztonsági áttekintése
 titleSuffix: Azure Machine Learning
 description: A munkaterület-erőforrások és a számítási környezetek védelméhez használjon egy elkülönített Azure-Virtual Network Azure Machine Learning használatával.
 services: machine-learning
@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825504"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131938"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Forgatókönyv | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Használati eset | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 

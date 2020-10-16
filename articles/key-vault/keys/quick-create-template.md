@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 5f8c1436b7e1a4155a99b20ced5c35614f1966f9
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 55641dacf8f7efb18b479dd4b4253787df540341
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128642"
+ms.locfileid: "92132448"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Rövid útmutató: Azure Key Vault és kulcs létrehozása ARM-sablon használatával 
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rövid útmutató: Azure Key Vault és kulcs létrehozása ARM-sablonnal (előzetes verzió)
 
 A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára, például kulcsokat, jelszavakat, tanúsítványokat és egyéb titkokat. Ez a rövid útmutató egy Azure Resource Manager sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja kulcstartó és kulcs létrehozásához.
 
@@ -210,7 +210,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy kulcstartót és egy titkos kulcsot egy ARM-sablonnal, és ellenőrizte az üzembe helyezést. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy kulcstartót és egy kulcsot egy ARM-sablon használatával, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)

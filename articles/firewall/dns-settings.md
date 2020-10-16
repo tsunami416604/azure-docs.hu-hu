@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610642"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132006"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall DNS-beállítások (előzetes verzió)
 
@@ -57,6 +57,7 @@ A DNS-proxy konfigurálásához konfigurálnia kell a virtuális hálózati DNS-
 3. Válassza az **Egyéni** lehetőséget a **DNS-kiszolgálók**területen.
 4. Adja meg a tűzfal magánhálózati IP-címét.
 5. Kattintson a **Mentés** gombra.
+6. Indítsa újra a virtuális hálózathoz csatlakozó virtuális gépeket, hogy azok hozzá legyenek rendelve az új DNS-kiszolgáló beállításaihoz. A virtuális gépek továbbra is a jelenlegi DNS-beállításokat használják, amíg újra nem indítják őket.
 
 #### <a name="enable-dns-proxy-preview"></a>DNS-proxy engedélyezése (előzetes verzió)
 
@@ -68,6 +69,6 @@ A DNS-proxy konfigurálásához konfigurálnia kell a virtuális hálózati DNS-
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS-kiszolgálók":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [FQDN-szűrés a hálózati szabályokban](fqdn-filtering-network-rules.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 848894518077ca41d3166570bf0dc39914f1c439
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048508"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131156"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -39,7 +39,7 @@ A gépen **Node.js** is szüksége lesz. A legújabb verziót a következő hiva
 
 Végül le kell töltenie két mintát is a gyors üzembe helyezés során:
 * A **ADT Explorer** minta alkalmazás. Ez a minta a rövid útmutatóban használt fő alkalmazást tartalmazza egy Azure digitális Twins-forgatókönyv betöltéséhez és megismeréséhez. Az alkalmazás beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins__ADT__explorer.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
-* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv eléréséhez navigáljon ide: [Azure Digital Twins-minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins_samples.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
+* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv beszerzéséhez navigáljon ide: [Azure digitális ikrek végpontok közötti minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre. Ezzel letölti a-t. A ZIP-mappát _**Azure_Digital_Twins_end_to_end_samples.zipként **_. Bontsa ki a mappát, és bontsa ki a fájlokat.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Az Azure digitális Twins és a ADT Explorer beállítása
 
@@ -118,7 +118,7 @@ Ha megjelenik a Microsoft előugró ablakát *kérő engedély* , adja meg az al
 
 Ezután importálni fogja a minta forgatókönyvet és a Graphot a ADT Explorerben.
 
-A minta forgatókönyv a letöltött és kibontott  _**Azure_Digital_Twins_samples**_ mappában található, ezért most navigáljon a mappához.
+A minta forgatókönyv a letöltött és kibontott  _**Azure_Digital_Twins_end_to_end_samples**_ mappában található, ezért most navigáljon a mappához.
 
 ### <a name="models"></a>Modellek
 
@@ -141,7 +141,7 @@ A *modell nézet* mezőben nyomja meg a *modell feltöltése* ikont.
 
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. A megjelenő fájl kiválasztása mezőben navigáljon a letöltött adattár *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp/models* mappájába.
+1. A megjelenő fájl kiválasztása mezőben navigáljon a letöltött adattár *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp/models* mappájába.
 2. Válassza a *Room.js* be és *Floor.js*be lehetőséget, majd kattintson az OK gombra. (Ha szeretné, feltöltheti a többi modellt is, de ebben a rövid útmutatóban nem használható.)
 3. Az Azure-fiókba való bejelentkezéshez kattintson a felugró ablakra.
 
@@ -179,7 +179,7 @@ A *gráf nézet* mezőben kattintson a *diagram importálása* ikonra.
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-A fájl kiválasztása mezőben navigáljon a *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
+A fájl kiválasztása mezőben navigáljon a *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
 
 Néhány másodperc elteltével a ADT Explorer megnyílik egy *importálási* nézet, amely megjeleníti a betöltendő gráf előnézetét.
 
@@ -321,7 +321,7 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
+Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_end_to_end_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
 ## <a name="next-steps"></a>Következő lépések 
 

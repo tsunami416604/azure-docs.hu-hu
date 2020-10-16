@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993172"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132057"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -26,7 +26,7 @@ Ez a cikk a naplók Active Directory B2Cból (Azure AD B2C) való összegyűjté
 Az itt leírt részletes tevékenység-naplókat **csak** az egyéni szabályzatok fejlesztése során lehet engedélyezni.
 
 > [!WARNING]
-> A fejlesztési üzemmódot ne engedélyezze éles környezetben. A naplók begyűjtik az identitás-szolgáltatóktól érkező és az azoktól érkező összes jogcímet Ön, mint a fejlesztő vállalja a felelősséget a Application Insights naplókban gyűjtött személyes adatokért. A részletes naplók gyűjtése csak akkor történik meg, ha a házirend **fejlesztői módba**kerül.
+> Ne állítsa be `DeploymentMode` `Developer` éles környezetekben. A naplók begyűjtik az identitás-szolgáltatóktól érkező és az azoktól érkező összes jogcímet Ön, mint a fejlesztő vállalja a felelősséget a Application Insights naplókban gyűjtött személyes adatokért. A részletes naplók gyűjtése csak akkor történik meg, ha a házirend **fejlesztői módba**kerül.
 
 ## <a name="set-up-application-insights"></a>Application Insights beállítása
 
@@ -58,11 +58,11 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * `DeveloperMode="true"` azt jelzi, hogy a ApplicationInsights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Kiválóan használható a fejlesztéshez, de nagy mennyiségekben korlátozott.
+    * `DeveloperMode="true"` azt jelzi, hogy a ApplicationInsights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Kiválóan használható a fejlesztéshez, de nagy mennyiségekben korlátozott. Az éles környezetben állítsa be a következőt: `DeveloperMode` `false` .
     * `ClientEnabled="true"` a ApplicationInsights ügyféloldali parancsfájlt küld a követési oldal nézetre és az ügyféloldali hibákra. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A beállítással `ClientEnabled= "true"` Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldal betöltésének és az Ajax-hívások, a számok, a böngészőbeli kivételek és az Ajax-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint be van állítva `false` .
     * `ServerEnabled="true"` a meglévő UserJourneyRecorder JSON-t egy egyéni eseményként küldi a Application Insights.
 
-    Például:
+    Példa:
 
     ```xml
     <TrustFrameworkPolicy
@@ -94,7 +94,7 @@ Az új naplók a Application Insightsban való megtekintése előtt rövid késl
 
 Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |---------------------|--------------------|
 `traces` | A Azure AD B2C által generált naplók megtekintése |
 `traces | where timestamp > ago(1d)` | Az elmúlt nap Azure AD B2C által generált naplók megtekintése
@@ -102,6 +102,31 @@ Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezé
 Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb keresés céljából.
 
 A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="configure-application-insights-in-production"></a>Application Insights konfigurálása éles környezetben
+
+Az éles környezet teljesítményének és jobb felhasználói élményének javítása érdekében fontos, hogy a házirendet úgy konfigurálja, hogy figyelmen kívül hagyja a nem fontos üzeneteket. A következő konfiguráció használatával csak a kritikus hibaüzeneteket küldheti el a Application Insights. 
+
+1. Állítsa be a `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) attribútumát a következőre: `Production` . 
+
+   ```xml
+   <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+   TenantId="yourtenant.onmicrosoft.com"
+   PolicyId="B2C_1A_signup_signin"
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin"
+   DeploymentMode="Production"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+   ```
+
+1. Állítsa be a JourneyInsights a következőre: `DeveloperMode` [JourneyInsights](relyingparty.md#journeyinsights) `false` .
+
+   ```xml
+   <UserJourneyBehaviors>
+     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="false" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   </UserJourneyBehaviors>
+   ```
+   
+1. Töltse fel és tesztelje a szabályzatot.
 
 ## <a name="next-steps"></a>Következő lépések
 

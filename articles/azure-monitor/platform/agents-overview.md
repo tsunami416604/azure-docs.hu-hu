@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: de9623eb0eb14957c1554b7b0f74baa256a15d47
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 8ca6794024d3a6327b918eb1c369a627837e0bd0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108388"
+ms.locfileid: "92131020"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -35,7 +35,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni | 
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Eseménynaplók<br>Teljesítmény | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>Összeomlási memóriaképek<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor metrikák | Azure Storage<br>Azure Monitor metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | Metrikaböngésző | Azure Monitor virtuális gépekhez<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor virtuális gépekhez<br>Szolgáltatástérkép |
@@ -45,7 +45,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni |
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Rendszernapló<br>Teljesítmény | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor metrikák | Azure Storage<br>Eseményközpont | Azure Monitor metrikák | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | | Metrikaböngésző | Azure Monitor virtuális gépekhez<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor virtuális gépekhez<br>Szolgáltatástérkép |
@@ -148,9 +148,9 @@ A következő táblázatok a Azure Monitor ügynökök által támogatott operá
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(több munkamenetet is beleértve) és Pro  | X | X | X | X |
-| Windows 8 Enterprise és Pro                             |   | X | X |   |
-| Windows 7 SP1                                            |   | X | X |   |
+| Windows 10 Enterprise<br>(több munkamenetet is beleértve) és Pro<br>(Csak kiszolgálói forgatókönyvek)  | X | X | X | X |
+| Windows 8 Enterprise és Pro<br>(Csak kiszolgálói forgatókönyvek)  |   | X | X |   |
+| Windows 7 SP1<br>(Csak kiszolgálói forgatókönyvek)                 |   | X | X |   |
 
 
 ### <a name="linux"></a>Linux
@@ -205,7 +205,7 @@ Mivel a függőségi ügynök a kernel szintjén működik, a támogatás a kern
 | Debian                          | 9      | 4.9  | 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További részleteket az egyes ügynökökről a következő címen talál:
 

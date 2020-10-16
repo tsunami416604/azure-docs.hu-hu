@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 94abc54c63b7d2a9998cffe7cf1396f81a26a5a1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 530aa17a165092fc9219629180c81014039c3dac
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107980"
+ms.locfileid: "92132686"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)
 Ez a cikk azt mutatja be, hogyan lehet a HTTP-adatgyűjtő API használatával elküldeni a naplófájlokat a Azure Monitor REST API-ügyfélről.  Ismerteti, hogyan lehet a parancsfájl vagy alkalmazás által gyűjtött adatokat formázni, belefoglalni egy kérelembe, és hogy az Azure Monitor által jóváhagyott kérést.  Ilyenek például a PowerShell, a C# és a Python.
@@ -49,7 +49,7 @@ A HTTP-adatgyűjtő API használatához létre kell hoznia egy POST-kérelmet, a
 | API-verzió |A kérelemmel használni kívánt API verziója. Jelenleg ez 2016-04-01. |
 
 ### <a name="request-headers"></a>Kérésfejlécek
-| Fejléc | Leírás |
+| Fejléc | Description |
 |:--- |:--- |
 | Engedélyezés |Az engedélyezési aláírás. A cikk későbbi részében olvashat arról, hogyan hozhat létre egy HMAC-SHA256 fejlécet. |
 | Log-Type |Adja meg az elküldött adatok bejegyzéstípusát. Csak betűket, számokat és aláhúzást (_) tartalmazhat, és nem lehet hosszabb 100 karakternél. |
@@ -183,7 +183,7 @@ A 200-es HTTP-állapotkód azt jelenti, hogy a kérelem feldolgozásra érkezett
 
 Ez a táblázat felsorolja a szolgáltatás által visszaadott állapotkódok teljes készletét:
 
-| Code | Állapot | Hibakód | Leírás |
+| Code | Állapot | Hibakód | Description |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |A kérés elfogadása sikeresen megtörtént. |
 | 400 |Hibás kérelem |InactiveCustomer |A munkaterület le lett zárva. |
@@ -552,17 +552,109 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 
+### <a name="java-sample"></a>Java-minta
+
+```java
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.springframework.http.MediaType;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.TimeZone;
+
+import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
+
+public class ApiExample {
+
+  private static final String workspaceId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+  private static final String sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+  private static final String logName = "DemoExample";
+  /*
+  You can use an optional field to specify the timestamp from the data. If the time field is not specified,
+  Azure Monitor assumes the time is the message ingestion time
+   */
+  private static final String timestamp = "";
+  private static final String json = "{\"name\": \"test\",\n" + "  \"id\": 1\n" + "}";
+  private static final String RFC_1123_DATE = "EEE, dd MMM yyyy HH:mm:ss z";
+
+  public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+    String dateString = getServerTime();
+    String httpMethod = "POST";
+    String contentType = "application/json";
+    String xmsDate = "x-ms-date:" + dateString;
+    String resource = "/api/logs";
+    String stringToHash = String
+        .join("\n", httpMethod, String.valueOf(json.getBytes(StandardCharsets.UTF_8).length), contentType,
+            xmsDate , resource);
+    String hashedString = getHMAC254(stringToHash, sharedKey);
+    String signature = "SharedKey " + workspaceId + ":" + hashedString;
+
+    postData(signature, dateString, json);
+  }
+
+  private static String getServerTime() {
+    Calendar calendar = Calendar.getInstance();
+    SimpleDateFormat dateFormat = new SimpleDateFormat(RFC_1123_DATE);
+    dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+    return dateFormat.format(calendar.getTime());
+  }
+
+  private static void postData(String signature, String dateString, String json) throws IOException {
+    String url = "https://" + workspaceId + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
+    HttpPost httpPost = new HttpPost(url);
+    httpPost.setHeader("Authorization", signature);
+    httpPost.setHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+    httpPost.setHeader("Log-Type", logName);
+    httpPost.setHeader("x-ms-date", dateString);
+    httpPost.setHeader("time-generated-field", timestamp);
+    httpPost.setEntity(new StringEntity(json));
+    try(CloseableHttpClient httpClient = HttpClients.createDefault()){
+      HttpResponse response = httpClient.execute(httpPost);
+      int statusCode = response.getStatusLine().getStatusCode();
+      System.out.println("Status code: " + statusCode);
+    }
+  }
+
+  private static String getHMAC254(String input, String key) throws InvalidKeyException, NoSuchAlgorithmException {
+    String hash;
+    Mac sha254HMAC = Mac.getInstance("HmacSHA256");
+    Base64.Decoder decoder = Base64.getDecoder();
+    SecretKeySpec secretKey = new SecretKeySpec(decoder.decode(key.getBytes(StandardCharsets.UTF_8)), "HmacSHA256");
+    sha254HMAC.init(secretKey);
+    Base64.Encoder encoder = Base64.getEncoder();
+    hash = new String(encoder.encode(sha254HMAC.doFinal(input.getBytes(StandardCharsets.UTF_8))));
+    return hash;
+  }
+
+}
+
+
+```
+
+
 ## <a name="alternatives-and-considerations"></a>Alternatívák és szempontok
 Habár az adatgyűjtő API-nak le kell fednie a legtöbb szükséges adatot a szabad formátumú adatok Azure-naplókba való gyűjtéséhez, vannak olyan példányok, amelyekben szükség lehet az API bizonyos korlátainak leküzdésére. Az összes lehetőség a következő:
 
-| Alternatív | Leírás | Legmegfelelőbb a következőhöz: |
+| Alternatív | Description | Legmegfelelőbb a következőhöz: |
 |---|---|---|
 | [Egyéni események](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): natív SDK-alapú betöltés Application Insights | Application Insights, amely jellemzően az alkalmazáson belüli SDK-n keresztül lett kialakítva, lehetővé teszi, hogy egyéni eseményeken keresztül küldjön egyéni adatait. | <ul><li> Az alkalmazásban létrehozott, de az SDK által az alapértelmezett adattípusok (kérések, függőségek, kivételek stb.) egyikén keresztül generált adatmennyiség.</li><li> A leggyakrabban a Application Insightsban lévő egyéb alkalmazásadatok korrelációját képező adatértékek </li></ul> |
 | Adatgyűjtő API a Azure Monitor-naplókban | A Azure Monitor-naplókban található adatgyűjtő API teljesen nyitott módon tölti fel az adatmennyiséget. A JSON-objektumokban formázott összes adat itt küldhető el. Az elküldés után a rendszer feldolgozza és elérhetővé teszi a naplókban, hogy a naplókban vagy más Application Insights-adatszolgáltatásokban is korreláljon. <br/><br/> Az adatok egy Azure Blob-blobba való feltöltése viszonylag egyszerű, így a fájlok feldolgozására és a Log Analyticsba való feltöltésére is sor kerül. Tekintse meg [ezt](./create-pipeline-datacollector-api.md) a folyamatot, amely egy ilyen folyamat megvalósítását ismerteti. | <ul><li> A Application Insightson belüli alkalmazásban nem szükségszerűen generált adatértékek.</li><li> Ilyenek például a keresési és a egyedkapcsolati táblázatok, a hivatkozási adatok, az előre összevont statisztikák és így tovább. </li><li> Más Azure Monitor-adattípusokkal (Application Insights, egyéb naplók adattípusokkal, Security Centerekkel, a tárolók/virtuális gépek Azure Monitorával stb.) kapcsolatban felhasználható adatkezelési célokra szolgál. </li></ul> |
 | [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Az Azure Adatkezelő (ADX) az adatplatform, amely Application Insights elemzési és Azure Monitor naplókra épül. A már általánosan elérhető ("GA") az adatplatform nyers formájában való használata biztosítja a teljes rugalmasságot (de a felügyelet terhelését igényli) a fürtön (RBAC, megőrzési arány, séma stb.). A ADX számos betöltési [lehetőséget](/azure/data-explorer/ingest-data-overview#ingestion-methods) biztosít, többek között a [CSV-, a TSV-és a JSON](/azure/kusto/management/mappings?branch=master) -fájlokat. | <ul><li> Olyan adat, amely nem felel meg a Application Insights vagy a naplók alatt lévő többi adatnak. </li><li> Olyan speciális betöltési vagy feldolgozási képességeket igénylő adatfeldolgozási funkciók, amelyek jelenleg nem érhetők el Azure Monitor naplókban. </li></ul> |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az Log Analytics munkaterületről származó adatok lekérdezéséhez használja a [log Search API](../log-query/log-query-overview.md) -t.
 
 - További információ arról, hogyan [hozhat létre adatfolyamatot az adatgyűjtő API-val az](create-pipeline-datacollector-api.md) Logic apps munkafolyamattal Azure monitor.

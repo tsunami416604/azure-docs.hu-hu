@@ -9,12 +9,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277193"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131207"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway és Azure Security Center közötti integráció áttekintése
 
@@ -44,7 +44,7 @@ Ha nem rendelkezik meglévő Application Gatewayval, vagy újat szeretne létreh
 
 Ha már rendelkezik egy meglévő Application Gateway **szolgáltatással, a meglévő megoldás használata** alatt választhatja ki
 
-![Webalkalmazási tűzfal hozzáadására szolgáló oldal][4]
+![Képernyőkép a webalkalmazási tűzfal hozzáadása oldalról. A meglévő megoldás használata területen látható az Application Gateway.][4]
 
 Webalkalmazás hozzáadása egy Application Gateway-hez Security Centeron keresztül nem adja hozzá az erőforrást a háttérbeli készlet tagjaként. Ezt közvetlenül az Application Gateway-erőforráson kell elvégezni.
 
@@ -62,7 +62,7 @@ Az **alkalmazás csatolása elemre kattintva** megnyithatja az **alkalmazások h
 
 Security Center nyomon követi az Application Gateway számára védett erőforrásként hozzáadott alkalmazásokat.  Figyeli az erőforrás állapotát, és biztosítja, hogy az egy Application Gateway által védett. A következő lépés a virtuális gép magánhálózati IP-címének, nyilvános IP-címének vagy hálózati adapterének hozzáadása az Application Gateway háttér-készletéhez. Amíg ez nem történik meg, az **alkalmazás védelmének véglegesítésére** vonatkozó további javaslat jelenik meg, amíg hozzá nem adja az erőforrást.
 
-![Webalkalmazási tűzfal hozzáadására szolgáló oldal][5]
+![Képernyőkép az alkalmazás-védelem véglegesítése oldalról, amely egy alkalmazással látható. A szöveg leírja, hogy milyen lépéseket kell tennie az alkalmazás védelemmel való ellátásához.][5]
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -74,7 +74,7 @@ Egy szabály kiválasztásával megadhatja az adott WAF-szabályhoz tartozó ria
  
 ![riasztás részletei][9]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan engedélyezheti a webalkalmazási tűzfalat egy meglévő Application Gateway-példányon, látogasson el [Az Azure-Application Gateway webalkalmazási tűzfallal való létrehozására vagy frissítésére](application-gateway-web-application-firewall-portal.md).
 

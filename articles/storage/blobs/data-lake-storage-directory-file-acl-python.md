@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98a1fbf30e7b653598aac6b83c0d8155582e2051
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017115"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131479"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -164,39 +164,6 @@ def delete_directory():
      print(e) 
 ```
 
-## <a name="manage-directory-permissions"></a>Címtár engedélyeinek kezelése
-
-A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeDirectoryClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeDirectoryClient.set_access_control** metódus meghívásával.
-
-> [!NOTE]
-> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
-
-Ez a példa lekérdezi és beállítja a nevű könyvtár ACL-listáját `my-directory` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
-
-```python
-def manage_directory_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_dir_permissions = "rwxr-xrw-"
-        
-        directory_client.set_access_control(permissions=new_dir_permissions)
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-    
-    except Exception as e:
-     print(e) 
-```
-
-Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient._get_root_directory_client** metódust.
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba 
 
@@ -252,40 +219,6 @@ def upload_file_to_directory_bulk():
       print(e) 
 ```
 
-## <a name="manage-file-permissions"></a>Fájlengedélyek kezelése
-
-Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeFileClient.set_access_control** metódus meghívásával.
-
-> [!NOTE]
-> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
-
-Ez a példa lekérdezi és beállítja a nevű fájl hozzáférés-vezérlési listáját `my-file.txt` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
-
-```python
-def manage_file_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_file_permissions = "rwxr-xrw-"
-        
-        file_client.set_access_control(permissions=new_file_permissions)
-        
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e) 
-```
-
 ## <a name="download-from-a-directory"></a>Letöltés egy címtárból 
 
 Nyisson meg egy helyi fájlt írásra. Ezután hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. Hívja meg a **DataLakeFileClient.read_filet** a fájl bájtjainak olvasásához, majd írja be a bájtokat a helyi fájlba. 
@@ -333,7 +266,82 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="set-an-acl-recursively-preview"></a>ACL rekurzív beállítása (előzetes verzió)
+## <a name="manage-access-control-lists-acls"></a>Hozzáférés-vezérlési listák (ACL-ek) kezelése
+
+Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
+
+> [!NOTE]
+> Ha Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy a rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
+
+### <a name="manage-directory-acls"></a>Címtár-ACL-ek kezelése
+
+A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeDirectoryClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeDirectoryClient.set_access_control** metódus meghívásával.
+
+> [!NOTE]
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
+
+Ez a példa lekérdezi és beállítja a nevű könyvtár ACL-listáját `my-directory` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
+
+```python
+def manage_directory_permissions():
+    try:
+        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+
+        directory_client = file_system_client.get_directory_client("my-directory")
+        
+        acl_props = directory_client.get_access_control()
+        
+        print(acl_props['permissions'])
+        
+        new_dir_permissions = "rwxr-xrw-"
+        
+        directory_client.set_access_control(permissions=new_dir_permissions)
+        
+        acl_props = directory_client.get_access_control()
+        
+        print(acl_props['permissions'])
+    
+    except Exception as e:
+     print(e) 
+```
+
+Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient._get_root_directory_client** metódust.
+
+### <a name="manage-file-permissions"></a>Fájlengedélyek kezelése
+
+Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeFileClient.set_access_control** metódus meghívásával.
+
+> [!NOTE]
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
+
+Ez a példa lekérdezi és beállítja a nevű fájl hozzáférés-vezérlési listáját `my-file.txt` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
+
+```python
+def manage_file_permissions():
+    try:
+        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+
+        directory_client = file_system_client.get_directory_client("my-directory")
+        
+        file_client = directory_client.get_file_client("uploaded-file.txt")
+
+        acl_props = file_client.get_access_control()
+        
+        print(acl_props['permissions'])
+        
+        new_file_permissions = "rwxr-xrw-"
+        
+        file_client.set_access_control(permissions=new_file_permissions)
+        
+        acl_props = file_client.get_access_control()
+        
+        print(acl_props['permissions'])
+
+    except Exception as e:
+     print(e) 
+```
+
+### <a name="set-an-acl-recursively-preview"></a>ACL rekurzív beállítása (előzetes verzió)
 
 Az ACL-eket a szülő könyvtár meglévő alárendelt elemein is hozzáadhatja, frissítheti és eltávolíthatja anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](recursive-access-control-lists.md).
 

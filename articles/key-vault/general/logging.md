@@ -10,27 +10,27 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a51e9a628f67269357d42bd1d3af10c1d86f301a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739782"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131173"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a kulcstartók elérésének módját és időpontját. Ezt úgy teheti meg, hogy engedélyezi a Azure Key Vault naplózását, amely az Ön által megadott Azure Storage-fiókban tárolja az adatokat. A megadott Storage-fiókhoz automatikusan létrejön egy elemzések – **naplók – AuditEvent** nevű új tároló. Ugyanazt a Storage-fiókot használhatja a naplók több kulcstartóhoz való gyűjtéséhez.
+Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a kulcstartók elérésének módját és időpontját. Ezt úgy teheti meg, hogy engedélyezi a Azure Key Vault naplózását, amely az Ön által megadott Azure Storage-fiókban tárolja az adatokat. További információ a beállításáról: a [Key Vault naplózásának engedélyezése](howto-logging.md).
 
 A naplózási adatokat a Key Vault művelet után 10 perccel (legfeljebb) érheti el. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A tárfiók naplófájljait Önnek kell kezelnie:
 
 * Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
 * Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
 
-További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md)). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/). További információ a [Key Vault Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)használatáról.
+További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/). További információ a [Key Vault Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)használatáról.
 
 ## <a name="interpret-your-key-vault-logs"></a>A Key Vault naplóinak értelmezése
+
+Ha engedélyezi a naplózást, a rendszer automatikusan létrehozza az elemzések – **naplók-AuditEvent** nevű új tárolót a megadott Storage-fiókhoz. Ugyanazt a Storage-fiókot használhatja a naplók több kulcstartóhoz való gyűjtéséhez.
 
 Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük meg egy példa naplóbejegyzést. 
 
@@ -59,9 +59,9 @@ Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük me
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
-| **idő** |Dátum és idő (UTC). |
+| **time** |Dátum és idő (UTC). |
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
 | **operationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
 | **operationVersion** |REST API az ügyfél által kért verziót. |
@@ -75,7 +75,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
 | **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen érkezik (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját (as), a tároló `id` URI-ját vagy a titkos kódot is tartalmazza. |
 
-A **OperationName** *ObjectVerb* formátumban vannak. Például:
+A **OperationName** *ObjectVerb* formátumban vannak. Példa:
 
 * A Key Vault összes műveletének `Vault<action>` formátuma, például `VaultGet` és `VaultCreate` .
 * Az összes kulcsfontosságú művelet `Key<action>` formátuma, például `KeySign` és `KeyList` .
@@ -122,16 +122,15 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **CertificateNearExpiryEventGridNotification** |Tanúsítvány közel lejárati eseménye közzétéve |
 | **CertificateExpiredEventGridNotification** |A tanúsítvány lejárt esemény közzétéve |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor naplók használata
+## <a name="use-azure-monitor-logs"></a>Az Azure Monitor-naplók használata
 
 A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key Vault megoldását `AuditEvent` . Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 
 További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a><a id="next"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata webalkalmazásból](tutorial-net-create-vault-azure-web-app.md).
-
-Programozási hivatkozások: [Azure Key Vault developer’s guide](developers-guide.md) (Az Azure Key Vault fejlesztői útmutatója).
-
-Azure Key Vault Azure PowerShell 1,0-parancsmagok listáját itt tekintheti meg: [Azure Key Vault parancsmagok](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
+- [Key Vault naplózás engedélyezése](howto-logging.md)
+- A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata webalkalmazásból](tutorial-net-create-vault-azure-web-app.md).
+- Programozási hivatkozások: [Azure Key Vault developer’s guide](developers-guide.md) (Az Azure Key Vault fejlesztői útmutatója).
+- Azure Key Vault Azure PowerShell 1,0-parancsmagok listáját itt tekintheti meg: [Azure Key Vault parancsmagok](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
