@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 8e9b1faf2521e0698052dd1cdd1253191ae6f8bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84187407"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125030"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -100,17 +100,17 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 | Adatinterfész                                          | USB   |
 | Biztonság                                                | Előre titkosítva BitLocker és biztonságos frissítés használatával <br> Hozzáférési kulcs által védett lemezek <br> Mindig titkosított adatok  |
 | Adatátviteli sebesség                                      | maximum 430 MBps a fájlmérettől függően      |
-|Felügyelet                                               | Azure Portal |
+|Kezelés                                               | Azure Portal |
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A régió rendelkezésre állásával kapcsolatos információkért tekintse meg a [régiók által elérhető Azure-termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+A régió rendelkezésre állásával kapcsolatos információkért tekintse meg a [régiók által elérhető Azure-termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](../azure-government/documentation-government-welcome.md)
 
 ## <a name="pricing"></a>Díjszabás
 
 A díjszabással kapcsolatos információkért lépjen a [díjszabás oldalra](https://azure.microsoft.com/pricing/details/databox/disk/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.

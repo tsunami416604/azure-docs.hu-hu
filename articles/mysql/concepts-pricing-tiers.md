@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7cc19adcc4769baaf34a75ef7217de639d0a357c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1d1a7e760a709c7068f16ca415a00de424b7e339
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079037"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124083"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Árképzési szintek Azure Database for MySQL
 
@@ -51,7 +51,7 @@ Az Ön által kiépített tárterület a Azure Database for MySQL-kiszolgáló s
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea, Közép-Korea, Dél Kelet-Ausztrália-Brazília és Közép-Kanada.
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, Dél-Brazília, USA nyugati régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Dél-Kelet-Ausztrália Korea, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea , Kelet-Kanada, Közép-Kanada.
 >
 > Minden más régió akár 4TB, akár 6000 IOPS is támogat.
 >

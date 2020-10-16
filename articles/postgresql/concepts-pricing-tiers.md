@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: e0ac1ec93dba23eb6ab3380e342141618a1ab6e4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069657"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123252"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az egykiszolgálós Azure Database for PostgreSQL tarifacsomagjai
 
@@ -51,7 +51,7 @@ Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgá
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea, Közép-Korea, Dél Kelet-Ausztrália-Brazília és Közép-Kanada.
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, Dél-Brazília, Közép-USA, USA nyugati régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea, Közép-Kelet-Ausztrália Korea , Kelet-Kanada, Közép-Kanada.
 >
 > Minden más régió támogatja a 4TB és a 6000 IOPS.
 >

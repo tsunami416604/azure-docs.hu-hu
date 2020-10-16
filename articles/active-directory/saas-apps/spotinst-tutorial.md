@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4028cb8d4f206a0e62dda1cb130cc55e71831c78
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587956"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Spotinst
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -139,7 +139,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Kattintson a képernyő jobb felső részén található **felhasználó ikonra** , majd a **Beállítások**elemre.
 
-    ![Spotinst-beállítások](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![A képernyőképen a felhasználó ikonból kiválasztott beállítások láthatók.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
 3. Kattintson a felül található **Biztonság** lapra, majd válassza az **identitás-szolgáltatók** lehetőséget, majd hajtsa végre a következő lépéseket:
 
@@ -161,15 +161,15 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
    b. Kattintson a képernyő jobb felső részén található **felhasználó ikonra** , majd a **Beállítások**elemre.
 
-    ![Spotinst-beállítások](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![A képernyőképen a felhasználó ikonból kiválasztott beállítások láthatók.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
     c. Kattintson a **felhasználók** elemre, majd válassza a **felhasználó hozzáadása**elemet.
 
-    ![Spotinst-beállítások](./media/spotinst-tutorial/adduser1.png)
+    ![Képernyőfelvétel: a felhasználók által kiválasztott felhasználó hozzáadása.](./media/spotinst-tutorial/adduser1.png)
 
     d. A felhasználó hozzáadása szakaszban hajtsa végre a következő lépéseket:
 
-    ![Spotinst-beállítások](./media/spotinst-tutorial/adduser2.png)
+    ![Képernyőfelvétel: a felhasználó hozzáadása szakasz, ahol megadhatja a leírt értékeket.](./media/spotinst-tutorial/adduser2.png)
 
     * A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét (például **BrittaSimon**).
 

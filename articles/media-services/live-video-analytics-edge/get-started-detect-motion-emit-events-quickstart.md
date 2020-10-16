@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825927"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125013"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -18,6 +18,10 @@ A telepítés lépéseinek elvégzése után egy szimulált élő videó streame
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
+
+Az alábbi videót részletesen megtekintheti a IoT Edge élő videó-elemzéssel való ismerkedéshez:
+
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +66,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 Ez a parancs a következő modulokat telepíti a peremhálózati eszközre, amely ebben az esetben a Linux rendszerű virtuális gép.
 
 * Élő videó-elemzés a IoT Edgeon (modul neve `lvaEdge` )
-* Valós idejű Streaming Protocol (RTSP) szimulátor (modul neve `rtspsim` )
+* Real-Time Streaming Protocol (RTSP) szimulátor (modul neve `rtspsim` )
 
 Az RTSP-szimulátor modul egy élő videó streamet szimulál egy olyan videofájl használatával, amelyet a peremhálózati eszközre másoltak, amikor futtatta az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 

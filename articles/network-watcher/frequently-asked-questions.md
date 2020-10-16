@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471856"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123527"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -81,6 +81,14 @@ Network Watcher csak egyszer kell engedélyezni ahhoz, hogy az előfizetése mű
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Hogyan kezelhetem a Network Watcher erőforrást? 
 A Network Watcher erőforrás a Network Watcher háttér-szolgáltatást jelöli, és teljes mértékben az Azure felügyeli. Az ügyfeleknek nem kell kezelnie. Az olyan műveletek, mint az áthelyezés, nem támogatottak az erőforráson. [Az erőforrás azonban törölhető is](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
 
+## <a name="service-availability-and-redundancy"></a>Szolgáltatás rendelkezésre állása és redundancia 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Rugalmas a Network Watcher szolgáltatási zóna? 
+Igen. A Network Watcher szolgáltatás alapértelmezés szerint rugalmas zónában van. 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Hogyan konfigurálja a Network Watcher szolgáltatást zónákra rugalmasan? 
+A zóna rugalmasságának engedélyezéséhez nincs szükség ügyfél-konfigurációra. A Network Watcher erőforrások rugalmassága alapértelmezés szerint elérhető, és maga a szolgáltatás kezeli. 
+
 ## <a name="nsg-flow-logs"></a>NSG
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Mit jelentenek a NSG flow-naplók?
@@ -106,5 +114,5 @@ A NSG-folyamatok további konfigurációk nélkül kompatibilisek a szolgáltat�
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?
 A flow-naplók 2. verziója bevezeti a *folyamat állapotának* fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  - Néhány oktatóanyagért tekintse át a [dokumentáció áttekintését ismertető oldalt](https://docs.microsoft.com/azure/network-watcher/) , amellyel elsajátíthatja a Network Watcher.

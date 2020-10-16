@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c83e46932e8d2a28d8503fe3fb6514988c364d97
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950941"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125269"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk rendelése
 
@@ -49,7 +49,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 Jelentkezzen be ide:
 
 * A Azure Portal ezen az URL-címen: https://portal.azure.com rendelés Data Box Disk.
-* Vagy a Azure Government portál ezen az URL-címen: https://portal.azure.us . További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+* Vagy a Azure Government portál ezen az URL-címen: https://portal.azure.us . További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](../azure-government/documentation-government-get-started-connect-with-portal.md).
 
 Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
@@ -57,7 +57,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
    ![Keresse meg az Azure Data Box lehetőséget 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Kattintson a **Létrehozás** gombra.
+2. Kattintson a **Létrehozás** lehetőségre.
 
 3. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre.
 
@@ -83,7 +83,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
     |Azure-beli célrégió| Válasszon ki egy régiót a tárfiókhoz.<br> Jelenleg csak az USA régióiban, Nyugat-és Észak-Európában, Kanadában és Ausztráliában működő tárfiókok támogatottak. |
     |Adatok becsült mérete (TB)| Adjon meg egy becsült mennyiséget TB-ban. <br>Az adatmennyiség alapján a Microsoft kiküldi Önnek a megfelelő számú 8 TB-os SSD-t (7 TB felhasználható kapacitás). <br>5 lemez maximális felhasználható kapacitása 35 TB. |
     |Lemez hozzáférési kulcsa| Ha bejelölte az **Egyéni kulcs használata az Azure által létrehozott hozzáférési kulcs helyett** lehetőséget, adja meg a lemez hozzáférési kulcsát. <br> Adjon meg egy 12 – 32 karakterből álló alfanumerikus kulcsot, amely legalább egy numerikus és egy speciális karakterből áll. Az engedélyezett speciális karakterek a következők: `@?_+`. <br> Úgy is dönthet, hogy kihagyja ezt a lehetőséget, és az Azure által létrehozott hozzáférési kulcsot használja a lemezek feloldásához.|
-    |Tárolási célhely     | Válassz a Tárfiók vagy a Felügyelt lemezek lehetőséget, vagy mindkettőt. <br> A megadott Azure-régió alapján válassza ki a Storage-fiókot egy meglévő Storage-fiók szűrt listájából. Data Box Disk csak 1 Storage-fiókkal lehet összekapcsolni. <br> Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. <br>A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információ: [Azure Data Box hozzáadása megbízható szolgáltatásként](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
+    |Tárolási célhely     | Válassz a Tárfiók vagy a Felügyelt lemezek lehetőséget, vagy mindkettőt. <br> A megadott Azure-régió alapján válassza ki a Storage-fiókot egy meglévő Storage-fiók szűrt listájából. Data Box Disk csak 1 Storage-fiókkal lehet összekapcsolni. <br> Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. <br>A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információ: [Azure Data Box hozzáadása megbízható szolgáltatásként](../storage/common/storage-network-security.md#exceptions).|
 
     Ha tárfiókot használ tárolási célhelyként, a következő képernyőképet fogja látni:
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 517344e0bae0a48dbee04da33d28c8777d7c142d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440247"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124962"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
@@ -175,7 +175,7 @@ A megoldás üzembe helyezésének megismeréséhez tekintse meg a [video Analyt
 
 Az [élő videó Analytics](https://github.com/Azure/live-video-analytics) platformot biztosít a peremhálózat és a felhőre kiterjedő intelligens video-alkalmazások létrehozásához. A platform lehetővé teszi az élő videók rögzítését, rögzítését, elemzését, valamint az eredmények közzétételét az Azure-szolgáltatások számára videó-vagy videó-elemzéssel. Az Azure-szolgáltatások a felhőben vagy az Edge-ben is futhatnak. A platform segítségével növelheti a IoT-megoldásokat a video Analytics segítségével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kereskedelmi megoldások létrehozásának megkezdéséhez:
 
@@ -185,4 +185,4 @@ A kereskedelmi megoldások létrehozásának megkezdéséhez:
 * [Helyezzen üzembe és járjon el egy intelligens leltár-kezelési alkalmazás sablonján](./tutorial-iot-central-smart-inventory-management.md).
 * [Üzembe helyezheti és végigvezeti a Micro-teljesítési központ alkalmazás sablonján](./tutorial-micro-fulfillment-center.md).
 * [A video Analytics-alkalmazás sablonjának üzembe helyezése és átjárása](./tutorial-video-analytics-deploy.md).
-* További információ a IoT Centralről a [IoT Central áttekintésében](../preview/overview-iot-central.md).
+* További információ a IoT Centralről a [IoT Central áttekintésében](../core/overview-iot-central.md).

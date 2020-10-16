@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84608706"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125064"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Az adatküldés Azure Data Box vagy Azure Data Box Heavy használatával a megfelelő Azure Storage blob-szintjére
 
@@ -29,11 +29,11 @@ Az Azure Storage lehetővé teszi, hogy az adatok a leghatékonyabb módon, a gy
 
 A ritka elérésű tárolási szint a ritkán használt adatokra vonatkozik, amelyeket legalább 30 napig kell tárolni. A hideg réteg tárolási költségei alacsonyabbak, mint a gyakori tárolási rétegnél, de az adatelérési díjak magasak a gyors szinthez képest.
 
-Az Azure archiválási szintje offline állapotban van, és a legalacsonyabb tárolási költségeket, valamint a legmagasabb hozzáférési költségeket kínálja. Ez a szint az archiválási tárolóban maradó, legalább 180 napos adatmennyiséget jelenti. Az egyes szintek és a díjszabási modell részleteiért lásd [a tárolási rétegek összehasonlítását](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Az Azure archiválási szintje offline állapotban van, és a legalacsonyabb tárolási költségeket, valamint a legmagasabb hozzáférési költségeket kínálja. Ez a szint az archiválási tárolóban maradó, legalább 180 napos adatmennyiséget jelenti. Az egyes szintek és a díjszabási modell részleteiért lásd [a tárolási rétegek összehasonlítását](../storage/blobs/storage-blob-storage-tiers.md).
 
 A rendszer feltölti a Data Box vagy Data Box Heavy adatait a Storage-fiókhoz társított tárolási szintjére. A Storage-fiók létrehozásakor megadhatja a hozzáférési szintet gyors vagy Hidegként. A számítási feladat és a Cost hozzáférési mintája alapján áthelyezheti ezeket az értékeket az alapértelmezett csomagból egy másik tárolási szintjére.
 
-Az objektum tárolási adatait csak blob Storage vagy általános célú v2 (GPv2) fiókokban lehet elősegíteni. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az adatokhoz megfelelő tárolási szint kiválasztásához tekintse át az Azure Blob Storage-ban részletesen ismertetett szempontokat [: prémium, gyakori, ritka elérésű és archív tárolási szint](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Az objektum tárolási adatait csak blob Storage vagy általános célú v2 (GPv2) fiókokban lehet elősegíteni. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az adatokhoz megfelelő tárolási szint kiválasztásához tekintse át az Azure Blob Storage-ban részletesen ismertetett szempontokat [: prémium, gyakori, ritka elérésű és archív tárolási szint](../storage/blobs/storage-blob-storage-tiers.md).
 
 ## <a name="set-a-default-blob-tier"></a>Alapértelmezett blob-rétegek beállítása
 
@@ -41,13 +41,13 @@ Az alapértelmezett blob-szintet akkor kell megadni, ha a Storage-fiókot a Azur
 
 A rétegek nem adhatók meg, ha új fiókot próbál létrehozni Data Box vagy Data Box Heavy rendezése során. A fiók létrehozása után módosíthatja a fiókot a portálon az alapértelmezett hozzáférési szintek beállításához.
 
-Azt is megteheti, hogy először létrehoz egy Storage-fiókot a megadott hozzáférési szintű attribútummal. Data Box vagy Data Box Heavy rendelés létrehozásakor válassza ki a meglévő Storage-fiókot. A Storage-fiók létrehozása során az alapértelmezett blob-rétegek beállításával kapcsolatos további információkért nyissa meg a [Storage-fiók létrehozása Azure Portalban](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)című témakört.
+Azt is megteheti, hogy először létrehoz egy Storage-fiókot a megadott hozzáférési szintű attribútummal. Data Box vagy Data Box Heavy rendelés létrehozásakor válassza ki a meglévő Storage-fiókot. A Storage-fiók létrehozása során az alapértelmezett blob-rétegek beállításával kapcsolatos további információkért nyissa meg a [Storage-fiók létrehozása Azure Portalban](../storage/common/storage-account-create.md?tabs=portal)című témakört.
 
 ## <a name="move-data-to-a-non-default-tier"></a>Az adatáthelyezés nem alapértelmezett rétegbe
 
 Ha Data Box eszközről származó adatok feltöltése az alapértelmezett rétegbe történik, előfordulhat, hogy át szeretné helyezni az adatok egy nem alapértelmezett szintjére. Ezeket az értékeket kétféleképpen helyezheti át egy nem alapértelmezett rétegbe.
 
-- Az **Azure Blob Storage életciklus-kezelője** – házirend-alapú megközelítéssel automatikusan elvégezheti az adatréteget, vagy lejárhat az életciklus végén. További információért látogasson el [Az Azure Blob Storage életciklusának kezelésére](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
+- Az **Azure Blob Storage életciklus-kezelője** – házirend-alapú megközelítéssel automatikusan elvégezheti az adatréteget, vagy lejárhat az életciklus végén. További információért látogasson el [Az Azure Blob Storage életciklusának kezelésére](../storage/blobs/storage-lifecycle-management-concepts.md).
 - **Parancsfájlok** – parancsfájlokkal elválasztott megközelítést használhat Azure PowerShellon keresztül a blob szintű rétegek engedélyezéséhez. A művelet meghívásával `SetBlobTier` beállíthatja a szintet a blobon.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>A blob-rétegek beállításához használja a Azure PowerShell
@@ -114,7 +114,6 @@ A következő lépések azt írják le, hogyan állíthatja be a blob-rétegek a
    > [!TIP]
    > Ha azt szeretné, hogy az adatok betöltés közben is archiválva legyenek, állítsa a fiók alapértelmezett rétegét Gyorsra. Ha az alapértelmezett szint nem megfelelő, akkor a rendszer egy 30 napos korai törlési szankciót alkalmaz, ha az adatok azonnal archiválásra kerülnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
--  Ismerje meg, hogyan lehet kezelni a [közös adatfeldolgozási forgatókönyveket életciklus-szabályzatokkal](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
-
+-  Ismerje meg, hogyan lehet kezelni a [közös adatfeldolgozási forgatókönyveket életciklus-szabályzatokkal](../storage/blobs/storage-lifecycle-management-concepts.md#examples)

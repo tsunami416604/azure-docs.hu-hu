@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 9c95760d03db976b59537adcecbe39a942b72126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 178ad169c1b576458f38b440ca79f4bb9eb012f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86209569"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124911"
 ---
 # <a name="use-customer-lockbox-for-azure-data-box-preview"></a>Azure Data Box Ügyfélszéf használata (előzetes verzió)
 
@@ -74,9 +74,8 @@ Az ügyféladatok elérésére irányuló kérelem nyomon követéséhez és jó
 A probléma megoldása után az adatmásolási feladatot a rendszer befejezi.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Ügyfélszéf a Microsoft Azure-hoz](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Ügyfélszéf a Microsoft Azure-hoz](../security/fundamentals/customer-lockbox-overview.md)
 
 <!--- [Approve, audit support access requests to VMs using Customer Lockbox for Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/)-->
-

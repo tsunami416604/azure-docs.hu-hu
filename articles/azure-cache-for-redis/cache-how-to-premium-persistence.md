@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3e8cef04e0711492b6e76d4c865695ac75e21422
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000020"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125679"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja az adatmegőrzést egy prémium szintű Azure cache-ben a Redis-példányhoz a Azure Portalon keresztül. A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. 
@@ -63,7 +63,7 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Biztonsági mentés gyakorisága** | Legördülő menüből válassza ki a biztonsági mentés időközét, a választható lehetőségek közé **15 perc**, **30 perc**, **60 perc**, **6 óra**, **12 óra**és **24 óra**. | Ez az intervallum az előző biztonsági mentési művelet sikeres befejezését és az új biztonsági mentés eltelte után kezdődik. | 
-   | **Storage-fiók** | Legördülő menüből válassza ki a Storage-fiókját. | Ki kell választania egy Storage-fiókot a gyorsítótárral azonos régióban, és a **Premium Storage** fiók használata javasolt, mivel a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
+   | **Tárfiók** | Legördülő menüből válassza ki a Storage-fiókját. | A Storage-fióknak ugyanabban a régióban és előfizetésben kell kiválasztania, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik.  | 
    | **Storage-kulcs** | Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből. | 
 
     Az első biztonsági mentés a biztonsági mentés gyakorisági intervallumának eltelte után indul el.
@@ -72,9 +72,9 @@ Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-ad
    
    | Beállítás      | Ajánlott érték  | Leírás |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Első Storage-fiók** | Legördülő menüből válassza ki a Storage-fiókját. | Ennek a Storage-fióknak ugyanabban a régióban kell lennie, mint a gyorsítótárnak, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik. | 
+   | **Első Storage-fiók** | Legördülő menüből válassza ki a Storage-fiókját. | Ennek a Storage-fióknak ugyanabban a régióban és előfizetésben kell lennie, mint a gyorsítótár, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik. | 
    | **Első tároló kulcsa** | Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből. | 
-   | **Második Storage-fiók** | Választható Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Opcionálisan beállíthat egy további Storage-fiókot is. Ha egy második Storage-fiók van konfigurálva, a replika gyorsítótárba való írás a második Storage-fiókba kerül. | 
+   | **Második Storage-fiók** | Választható Legördülő menüből válassza ki a másodlagos Storage-fiókját. | Opcionálisan beállíthat egy további Storage-fiókot is. Ha egy második Storage-fiók van konfigurálva, a replika gyorsítótárba való írás a második Storage-fiókba kerül. | 
    | **Második Storage-kulcs** | Választható Legördülő menüből válassza ki a használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . | Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből. | 
 
     Ha a AOF megőrzése engedélyezve van, a gyorsítótárba való írási műveletek a kijelölt Storage-fiókba lesznek mentve (vagy ha konfigurált egy második Storage-fiókot). Abban az esetben, ha az elsődleges és a replika gyorsítótárat is igénybe vevő végzetes hiba esetén a rendszer a tárolt AOF-naplót használja a gyorsítótár újraépítéséhez.

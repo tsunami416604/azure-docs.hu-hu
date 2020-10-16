@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: aac5e35f3d0c42e97069ecb38fedaadcdc7794dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9f5e1ba52390191409d8da4bc4c41faaa859a4a8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001842"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125611"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – intelligens fogyasztásmérő alkalmazás architektúrája
 
@@ -28,7 +28,7 @@ Az architektúra az alábbi összetevőkből áll. Előfordulhat, hogy egyes meg
 
 ## <a name="smart-meters-and-connectivity"></a>Intelligens mérőórák és kapcsolat 
 
-Egy intelligens fogyasztásmérő az összes energiaellátási eszköz egyik legfontosabb eszköze. Az energiafogyasztással kapcsolatos adatokat rögzíti és közli a segédprogramokkal a figyelési és más használati esetekre, például a számlázásra és az igényre adott válaszra vonatkozóan. A mérési típus alapján az átjárók vagy más köztes eszközök vagy rendszerek, például az Edge-eszközök és a Head-end rendszerek használatával kapcsolódhat IoT Centralhoz. Hozzon létre IoT Central Device Bridge-et az eszközök csatlakoztatásához, amelyek nem csatlakoztathatók közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)találja a teljes részleteket. 
+Egy intelligens fogyasztásmérő az összes energiaellátási eszköz egyik legfontosabb eszköze. Az energiafogyasztással kapcsolatos adatokat rögzíti és közli a segédprogramokkal a figyelési és más használati esetekre, például a számlázásra és az igényre adott válaszra vonatkozóan. A mérési típus alapján az átjárók vagy más köztes eszközök vagy rendszerek, például az Edge-eszközök és a Head-end rendszerek használatával kapcsolódhat IoT Centralhoz. Hozzon létre IoT Central Device Bridge-et az eszközök csatlakoztatásához, amelyek nem csatlakoztathatók közvetlenül. A IoT Central Device Bridge egy nyílt forráskódú megoldás, és [itt](../core/howto-build-iotc-device-bridge.md)találja a teljes részleteket. 
 
 
 ## <a name="iot-central-platform"></a>IoT Central platform
@@ -39,7 +39,7 @@ Az Azure IoT Central egy olyan platform, amely leegyszerűsíti a IoT-megoldás 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>Bővíthetőségi lehetőségek a IoT Central létrehozásához
 A IoT Central platform két bővíthetőségi lehetőséget kínál: folyamatos adatexportálást (CDE) és API-kat. Az ügyfelek és a partnerek választhatnak ezek között a lehetőségek közül, hogy testre szabják az adott igényeknek megfelelő megoldásokat. Például az egyik partner konfigurálta az Azure Data Lake Storage (ADLS) CDE. A ADLS használják a hosszú távú adatmegőrzésre és más, a lassú elérésű útvonalak tárolási helyzetére, az ilyen kötegelt feldolgozásra, a naplózásra és a jelentéskészítésre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy megismerte az architektúrát, [ingyenes Smart Meter-alkalmazást készíthet](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)
+* További információ a IoT Centralről: [IoT Central áttekintése](../index.yml)

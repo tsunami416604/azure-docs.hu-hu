@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2477bab244b8864fa9c82b52d5577d42fa47a7e0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588803"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124151"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault-tanúsítványok megújítása
 
@@ -25,12 +25,20 @@ A rövid élettartamú tanúsítványok vagy a tanúsítvány-elforgatás gyakor
 
 Ez a cikk a Azure Key Vault-tanúsítványok megújítását ismerteti.
 
-## <a name="get-notified-about-certificate-expirations"></a>Értesítés a tanúsítvány lejáratáról
-Ha értesítést szeretne kapni, ha a tanúsítványok hamarosan lejárnak, tegye a következőket:
+## <a name="get-notified-about-certificate-expiration"></a>Értesítés a tanúsítvány lejáratáról
+Ha értesítést szeretne kapni a tanúsítványok élettartamával kapcsolatos eseményekről, hozzá kell adnia a tanúsítvány kapcsolattartóját. A tanúsítványhoz tartozó névjegyek kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartama eseményei által aktivált értesítések küldéséhez. A kapcsolattartási adatokat a Key Vault összes tanúsítványa megosztja. A Key Vault bármelyik tanúsítványa esetében értesítést küld a rendszer az adott esemény összes megadott ügyfelének.
 
-Először adjon hozzá egy tanúsítványt a Key vaulthoz a [Add-AzureKeyVaultCertificateContact PowerShell-](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)parancsmag használatával.
+### <a name="steps-to-set-certificate-notifications"></a>A tanúsítványok értesítéseinek beállításához szükséges lépések:
+Először vegyen fel egy tanúsítványt a kulcstartóba. Azure Portal vagy PowerShell-parancsmag használatával adhat hozzá [`Add-AzureKeyVaultCertificateContact`](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) .
 
 Másodszor, konfigurálja, ha értesítést szeretne kapni a tanúsítvány lejáratáról. A tanúsítvány életciklus-attribútumainak konfigurálásához tekintse [meg a tanúsítvány autorotációjának konfigurálása Key Vaultban](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)című témakört.
+
+Ha a tanúsítvány házirendje automatikus megújításra van beállítva, akkor a rendszer értesítést küld a következő eseményekről.
+
+- A tanúsítvány megújítása előtt
+- A tanúsítvány megújítása után, ha a tanúsítvány sikeres megújítása megtörtént, vagy ha hiba történt, a tanúsítvány manuális megújítását kell megkövetelni.  
+
+  Ha egy manuálisan megújított tanúsítvány-házirend (csak e-mail-cím), akkor a rendszer értesítést küld, amikor a tanúsítvány megújítására kerül sor.  
 
 Key Vault a tanúsítványok három kategóriába sorolhatók:
 -   Integrált hitelesítésszolgáltatóval (CA) létrehozott tanúsítványok, például DigiCert vagy GlobalSign
@@ -77,6 +85,6 @@ Hozzon létre egy **hónap**érvényességével rendelkező tanúsítványt, maj
 
 Igen, a címkék az automatikus megújítás után replikálódnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 *   [Key Vault integrálása DigiCert-hitelesítésszolgáltatóval](how-to-integrate-certificate-authority.md)
 *   [Oktatóanyag: a tanúsítvány autorotációjának konfigurálása Key Vaultban](tutorial-rotate-certificates.md)

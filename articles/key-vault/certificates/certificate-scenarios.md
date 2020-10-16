@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224859"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124221"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Bevezetés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -37,7 +37,7 @@ A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amely
 
 **1. lépés** – hitelesítésszolgáltatói szolgáltatók  
 -   Az adott vállalat számára az informatikai rendszergazdaként, PKI-rendszergazdaként vagy a hitelesítésszolgáltatókkal rendelkező fiókok kezelésével foglalkozó felhasználó (pl. A contoso) Key Vault tanúsítványok használatának előfeltétele.  
-    A következő hitelesítésszolgáltatók az aktuális partneri szolgáltatók Key Vault:  
+    A következő hitelesítésszolgáltatók az aktuális partneri szolgáltatók Key Vault. További információt [itt](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers) talál   
     -   A DigiCert-Key Vault OV TLS/SSL-tanúsítványokat kínál a DigiCert.  
     -   A GlobalSign-Key Vault OV TLS/SSL-tanúsítványokat kínál a GlobalSign.  
 

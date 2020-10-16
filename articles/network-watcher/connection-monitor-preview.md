@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408874"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123732"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
@@ -143,9 +143,7 @@ A hálózati figyelők a következő skálázási korlátokkal rendelkeznek:
 * Az előfizetések maximális száma régiónként: 100
 * Tesztelési csoportok maximális száma kapcsolatonként: 20
 * Maximális források és célhelyek kapcsolatonként: 100
-* A tesztelési konfigurációk maximális száma kapcsolatonként: 
-    * 20 ARMClient keresztül
-    * 2 a Azure Portal keresztül
+* A tesztelési konfigurációk maximális száma kapcsolatonként: 20
 
 ## <a name="analyze-monitoring-data-and-set-alerts"></a>Figyelési adatelemzés és riasztások beállítása
 

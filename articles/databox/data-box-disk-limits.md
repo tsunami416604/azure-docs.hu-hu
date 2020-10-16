@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203511"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124169"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
@@ -35,9 +35,9 @@ Ez a szakasz az Azure Storage szolgáltatásra vonatkozó korlátozásokat, vala
 
 Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és fájlok elnevezésére vonatkozó ajánlott eljárásokkal kapcsolatos legfrissebb információkért keresse fel a következőt:
 
-- [Tárolók elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Megosztások elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blobok és lapok blob-konvencióinak letiltása](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Tárolók elnevezése és hivatkozása](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Megosztások elnevezése és hivatkozása](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Blobok és lapok blob-konvencióinak letiltása](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > Ha vannak olyan fájlok vagy könyvtárak, amelyek túllépik az Azure Storage szolgáltatás korlátozásait, vagy nem felelnek meg Azure Files/blob elnevezési konvencióknak, akkor ezeket a fájlokat vagy könyvtárakat a rendszer nem tölti be az Azure Storage-ba a Data Box szolgáltatáson keresztül.
@@ -64,7 +64,7 @@ Az alábbiakban megtalálhatja a Storage-fiókba másolható adatméret korláto
 
 | Adatok típusa             | Alapértelmezett korlát          |
 |--------------------------|------------------------|
-| BLOB blokkolása, oldal blobja    | A korlátokkal kapcsolatos aktuális információk: [Azure Blob Storage méretezési célok](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [Azure standard Storage méretezési célok](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)és [Azure Files méretezési cél](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> A korlátok tartalmazzák az összes forrás adatait, beleértve a Data Box Disk is.|
+| BLOB blokkolása, oldal blobja    | A korlátokkal kapcsolatos aktuális információk: [Azure Blob Storage méretezési célok](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Azure standard Storage méretezési célok](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)és [Azure Files méretezési cél](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> A korlátok tartalmazzák az összes forrás adatait, beleértve a Data Box Disk is.|
 
 
 ## <a name="azure-object-size-limits"></a>Azure-objektum méretének korlátai
@@ -93,6 +93,6 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 |-------------------|-----------------------------------------------------------|
 | Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A névnek nem lehetnek szóközök vagy `/` .                                              |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [rendszerkövetelmények áttekintése Data Box Disk](data-box-disk-system-requirements.md)

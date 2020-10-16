@@ -4,12 +4,12 @@ description: Ismerkedjen meg a Azure Migrate szolgáltatás új és legújabb fr
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a36e73496b07df18c61b07df9d90992c0ab399ce
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667078"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124656"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
@@ -17,7 +17,7 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 
 ## <a name="update-september-2020"></a>Frissítés (2020. szeptember)
 - A kiszolgálók Availability Zonesre való áttelepítése mostantól támogatott.
-- Az UEFI-alapú virtuális gépek és fizikai kiszolgálók áttelepítése már támogatott az Azure 2. generációs virtuális gépekre
+- Az UEFI-alapú virtuális gépek és fizikai kiszolgálók áttelepítése már támogatott az Azure 2. generációs virtuális gépekre. Ebben a kiadásban Azure Migrate: a kiszolgáló áttelepítési eszköze nem hajtja végre a 2. generációs virtuális gépekről az 1. generációs virtuális gépekre való átalakítást az áttelepítés során.
 - Új Azure Migrate Power BI Assessment-irányítópult elérhető, amely segít összehasonlítani a költségeket a különböző értékelési beállítások között. Az irányítópult egy PowerShell-segédprogramot tartalmaz, amely automatikusan létrehozza a Power BI irányítópulthoz csatlakozó értékeléseket. [Részletek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
 - A függőségek elemzése (ügynök nélküli) mostantól egy 1000 virtuális gépen is futhat egyszerre.
 - A függőségek elemzése (ügynök nélküli) mostantól engedélyezhető vagy letiltható a PowerShell-parancsfájlok használatával. [Részletek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
@@ -100,7 +100,7 @@ Ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMware vir
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
 - Tekintse meg az Azure Migrate használatával kapcsolatban felmerülő [gyakori kérdéseket](resources-faq.md).

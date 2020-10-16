@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5001864bd80917aef6d8631fe2b5097b22afbe03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074804"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125782"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
@@ -71,7 +71,7 @@ A tárolási korlátokat a általános célú és a memória optimalizált szint
 | IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!IMPORTANT]
-> A nagyméretű tárterület jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA nyugati régiója, az USA északi középső régiója, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Kanada, Közép-Korea, Dél-Korea, Kelet-Ausztrália, Kelet-Kanada
+> A nagyméretű tárterület jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, Dél-Brazília, Közép-USA, USA nyugati régiója, az USA északi középső régiója, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-közép-Korea, Dél-Korea, Kelet-Kanada, Dél-Ausztrália Kelet-Ausztrália és Közép-Kanada.
 >
 > Minden más régió akár 4TB, akár 6000 IOPS is támogat.
 >

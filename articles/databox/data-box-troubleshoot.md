@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053453"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124675"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy kapcsolatos problémák elhárítása
 
@@ -56,7 +56,7 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - Példák érvényes nevekre: `my-folder-1` , `my-really-extra-long-folder-111`
     - Példák a nem érvényes nevekre: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` , `myfolder!`
 
-    További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    További információ: az Azure elnevezési konvenciói a [tárolók neveihez](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
@@ -75,7 +75,7 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - Példák érvényes nevekre: `my-folder-1` , `my-really-extra-long-folder-111`
     - Példák a nem érvényes nevekre: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` , `myfolder!`
 
-    További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    További információ: az Azure elnevezési konvenciói a [tárolók neveihez](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
@@ -93,7 +93,7 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - Példák érvényes nevekre: `my-folder-1` , `my-really-extra-long-folder-111`
     - Példák a nem érvényes nevekre: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` , `myfolder!`
 
-    További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    További információ: az Azure elnevezési konvenciói a [tárolók neveihez](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
     
 ### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
@@ -104,7 +104,7 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
 - A helyi webes felhasználói felület kapcsolódás és másolás lapján töltse le a fájlt, és tekintse át a hibákat tartalmazó mappanevek azonosításához szükséges fájlokat. 
 - Nevezze át a könyvtárat vagy a tárolókat annak biztosítására, hogy megfeleljenek az Azure elnevezési konvencióinak.
 
-További információ: az Azure elnevezési konvenciói a [címtárakhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   és a [tárolóhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
+További információ: az Azure elnevezési konvenciói a [címtárakhoz](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   és a [tárolóhoz](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Tároló vagy megosztási méretkorlát hibái
 
@@ -190,7 +190,7 @@ Az Adatmásolás során látható Blobok, fájlok vagy tárolók neveivel kapcso
 A helyi webes felhasználói felület **csatlakozási és másolás** lapján töltse le és tekintse át a hibaüzeneteket.
 A nem támogatott karakterek eltávolításához távolítsa el vagy nevezze át a fájlokat.
 
-További információ: az Azure elnevezési konvenciói a [Blobok neveihez](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) [és fájlnevekhez.](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)
+További információ: az Azure elnevezési konvenciói a [Blobok neveihez](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) [és fájlnevekhez.](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
@@ -201,7 +201,7 @@ További információ: az Azure elnevezési konvenciói a [Blobok neveihez](http
 A helyi webes felhasználói felület **csatlakozási és másolás** lapján töltse le és tekintse át a hibaüzeneteket.
 A nem támogatott karakterek eltávolításához távolítsa el vagy nevezze át a fájlokat.
 
-További információ: az Azure elnevezési konvenciói a [Blobok neveihez](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) [és fájlnevekhez.](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)
+További információ: az Azure elnevezési konvenciói a [Blobok neveihez](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) [és fájlnevekhez.](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
@@ -213,7 +213,7 @@ További információ: az Azure elnevezési konvenciói a [Blobok neveihez](http
 A helyi webes felhasználói felület **csatlakozási és másolás** lapján töltse le és tekintse át a hibaüzeneteket.
 A nem támogatott karakterek eltávolításához távolítsa el vagy nevezze át a fájlokat.
 
-További információ: az Azure elnevezési konvenciói a [Blobok neveihez](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) [és fájlnevekhez.](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)
+További információ: az Azure elnevezési konvenciói a [Blobok neveihez](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) [és fájlnevekhez.](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
@@ -223,7 +223,7 @@ További információ: az Azure elnevezési konvenciói a [Blobok neveihez](http
 **Javasolt megoldás:** A Blobok vagy a másolt fájlok száma túllépi az elérésiút-szegmensek maximális számát. Az elérésiút-szegmens az egymást követő elválasztó karakterek (például a perjel/) közötti karakterlánc.
 
 - A helyi webes felhasználói felület **csatlakozási és másolás** lapján töltse le és tekintse át a hibaüzeneteket.
-- Győződjön meg arról, hogy a [Blobok nevei](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) és [fájlnevei](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) megfelelnek az Azure elnevezési konvencióinak.
+- Győződjön meg arról, hogy a [Blobok nevei](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) és [fájlnevei](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) megfelelnek az Azure elnevezési konvencióinak.
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
@@ -244,7 +244,7 @@ További információ: az Azure elnevezési konvenciói a Blobok neveihez és f�
 **Javasolt megoldás:** A blob vagy a fájlnév egyik elérésiút-szegmense meghaladja a karakterek maximális számát. Az elérésiút-szegmens az egymást követő elválasztó karakterek (például a perjel/) közötti karakterlánc.
 
 - A helyi webes felhasználói felület **csatlakozási és másolás** lapján töltse le és tekintse át a hibaüzeneteket.
-- Győződjön meg arról, hogy a [Blobok nevei](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) és [fájlnevei](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) megfelelnek az Azure elnevezési konvencióinak.
+- Győződjön meg arról, hogy a [Blobok nevei](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) és [fájlnevei](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) megfelelnek az Azure elnevezési konvencióinak.
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE

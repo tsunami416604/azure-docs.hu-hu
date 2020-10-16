@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: d03b9ba3a78664e7050313f361c94c2930a87c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fa7aef6c4c094ae391f9649a810971d4a33e670
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548703"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>Oktatóanyag: Azure Active Directory integráció a Shibumi
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés Shibumi való konfigurálásához hajtsa vé
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Shibumi tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.shibumi.com`
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés Shibumi való konfigurálásához hajtsa vé
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Shibumi tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.shibumi.com/saml/SSO`
 
@@ -156,7 +156,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

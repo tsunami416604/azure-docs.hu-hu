@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5035e511b0f3a105a047738fed1c5cc17e88d086
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7e2240e3f74f82186827ec82bb1aa39a5b93f6c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114634"
+ms.locfileid: "92123834"
 ---
 # <a name="teams-interoperability"></a>Csapatok együttműködése
 
-[!INCLUDE [Public Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatásaival egyéni Meeting-élmények hozhatók létre, amelyek a Microsoft csapatait használják. A kommunikációs szolgáltatási megoldás (ok) felhasználóinak interakcióba léphetnek a csapat résztvevőinek a hang-, videó-és nyomtatómegosztást.
 
@@ -37,11 +37,11 @@ Míg egyes csapatok olyan funkciókat tartanak fenn, mint a Kiemelt Hand, a köz
 
 Amikor a kommunikációs szolgáltatások felhasználója összekapcsolja a csapatok értekezletét, a hívó ügyfél függvénytárában megadott megjelenítendő név jelenik meg a csapatok felhasználói számára. A kommunikációs szolgáltatások felhasználója más módon lesz kezelve, mint a Teams névtelen felhasználója. Az egyéni alkalmazásnak meg kell fontolnia a felhasználók hitelesítését és más biztonsági intézkedéseket a csapatok üléseinek védelme érdekében. Vegye figyelembe, hogy a névtelen felhasználók hogyan csatlakozhatnak értekezletekhez, és a [csapatok biztonsági útmutató](https://docs.microsoft.com/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) segítségével konfigurálhatják a névtelen felhasználók számára elérhető képességeket.
 
-Vegye figyelembe, hogy a kommunikációs szolgáltatások felhasználói csatlakozhatnak az ütemezett csapatok üléseihez, amíg a névtelen illesztések engedélyezve vannak az [értekezlet beállításaiban](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams).
+A kommunikációs szolgáltatások felhasználói csatlakozhatnak az ütemezett csapatok üléseihez, amíg a névtelen illesztések engedélyezve vannak az [értekezlet beállításaiban](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams).
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A hívó alkalmazás csatlakoztatása egy Teams-értekezlethez](../../quickstarts/voice-video-calling/get-started-teams-interop.md)

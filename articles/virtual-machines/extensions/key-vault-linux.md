@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e10336b9c817c71026c167144a190b2ed6b4ab6d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fa6f569a1a857c09f1e7d1173a5948b1747c05ed
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070265"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124361"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -87,7 +87,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 | Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
 | típus | KeyVaultForLinux | sztring |
 | typeHandlerVersion | 1.0 | int |
@@ -222,6 +222,11 @@ Vegye figyelembe a következő korlátozásokat/követelményeket:
 
 A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalból és a Azure PowerShell használatával. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot a Azure PowerShell használatával.
 
+### <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+* A beállítható observedCertificates száma korlátozott?
+  Nem, Key Vault virtuálisgép-bővítmény nem korlátozza a observedCertificates számát.
+  
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>

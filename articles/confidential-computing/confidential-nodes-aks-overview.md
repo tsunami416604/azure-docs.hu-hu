@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940769"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125441"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Bizalmas számítástechnikai csomópontok az Azure Kubernetes szolgáltatásban (nyilvános előzetes verzió)
 
-Az [Azure bizalmas számítástechnikai](overview.md) szolgáltatása lehetővé teszi a bizalmas adatok védelmét a használat közben. A mögöttes infrastruktúrák más alkalmazásokból, rendszergazdákból és felhőalapú szolgáltatóktól származó adatokat védik. 
+Az [Azure bizalmas számítástechnikai](overview.md) szolgáltatása lehetővé teszi a bizalmas adatok védelmét a használat közben. A mögöttes infrastruktúrák más alkalmazásokból, rendszergazdákból és felhőalapú szolgáltatóktól származó adatokat védik a hardveres megbízható végrehajtási tároló környezetével.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Kubernetes Service (ak) támogatja a [DCsv2 bizalmas számítástechnikai csomópontjainak](confidential-computing-enclaves.md) az Intel SGX enklávéhoz való hozzáadását. Ezek a csomópontok érzékeny munkaterheléseket futtatnak a hardveres megbízható végrehajtási környezetben (TEE), mivel lehetővé teszik a felhasználói szintű kód számára a memória privát régiói számára való kiosztását. Ezeket a saját memória-régiókat enklávéknak nevezzük. Az enklávék úgy vannak kialakítva, hogy a magasabb szintű jogosultságokkal rendelkező folyamatokból származó kódok és adatok védelme érdekében. A SGX ENKLÁVÉHOZ végrehajtási modellje eltávolítja a vendég operációs rendszer és a hypervisor közbenső rétegeit. Ez lehetővé teszi, hogy a tároló alkalmazásait közvetlenül a PROCESSZORon hajtsa végre, miközben a speciális memória-blokkot titkosítva tartja. 
-
+Az Azure Kubernetes Service (ak) támogatja az Intel SGX ENKLÁVÉHOZ által működtetett [DCsv2 bizalmas számítástechnikai csomópontok](confidential-computing-enclaves.md) hozzáadását. A futtatott csomópontok a hardveres megbízható végrehajtási környezetben (TEE) belül is futtathatnak bizalmas munkaterheléseket azáltal, hogy lehetővé teszik a felhasználói szintű kód számára a memória privát régiói számára való kiosztását. Ezeket a saját memória-régiókat enklávéknak nevezzük. Az enklávék úgy vannak kialakítva, hogy a magasabb szintű jogosultságokkal rendelkező folyamatokból származó kódok és adatok védelme érdekében. A SGX ENKLÁVÉHOZ végrehajtási modellje eltávolítja a vendég operációs rendszer, a gazdagép operációs rendszere és a hypervisor közbenső rétegeit. A *Container-alapú hardverek által elkülönített végrehajtási* modell lehetővé teszi, hogy az alkalmazások közvetlenül a CPU-val fussanak, miközben a speciális memória-blokkot titkosítják. A bizalmas számítástechnikai csomópontok segítséget nyújtanak az AK-ra kiterjedő tároló-alkalmazások általános biztonsági állapotának kialakításában, valamint a védelem részletes tárolási stratégiájának kiegészítéseként. 
 
 ![a SGX enklávéhoz csomópont áttekintése](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Az Azure Kubernetes Service (ak) támogatja a [DCsv2 bizalmas számítástechnik
 - Folyamaton kívüli igazolás segítője az AK daemonset elemet
 - Linux-tárolók támogatása az Ubuntu 18,04 Gen 2 VM Worker-csomópontokon
 
-## <a name="aks-provided-daemon-sets"></a>AK megadott démon-készletek
+## <a name="aks-provided-daemon-sets-addon"></a>AK megadott démon-készletek (Addon)
 
 #### <a name="sgx-device-plugin"></a>SGX ENKLÁVÉHOZ-eszköz beépülő modul <a id="sgx-plugin"></a>
 

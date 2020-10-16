@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3110e02c2c4cb8b254e80a55997577db95ba1be0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075654"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125252"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -51,7 +51,7 @@ Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt ide
 
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Hogyan telepíthetem újra Key Vault az ARM-sablonnal a meglévő hozzáférési szabályzatok törlése nélkül?
 
-Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A Key Vault hozzáférési házirendjeinek megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal, hogy elkerülje a hozzáférés kimaradását.
+Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A hozzáférési szabályzatok Key Vaultban való megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal a hozzáférési kimaradások elkerülése érdekében.
 
 Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy RBAC-szerepköröket használjon a hozzáférési házirendek alternatívájaként. A RBAC segítségével újra üzembe helyezheti a kulcstartót anélkül, hogy újra megadta a szabályzatot. Ebben a megoldásban [itt](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)találhat további tudnivalókat.
 

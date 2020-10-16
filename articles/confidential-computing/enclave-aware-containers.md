@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01f10d3ba83d23478a7113cf4935181ee34959e3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000977"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125286"
 ---
 # <a name="enclave-aware-containers"></a>Enklávé-Aware tárolók
 
@@ -51,14 +51,19 @@ Ez a megoldás lehetővé teszi, hogy meglévő ML betanított modellt használj
 
 Ismerkedjen meg a ML Model lifttel, és váltson át a [ONNX runtimere](https://aka.ms/confidentialinference)
 
-## <a name="container-samples-implementations"></a>A Container Samples implementációi
+### <a name="edgeless-rt"></a>Edge nélküli RT
 
-[Azure Samples for enklávé Aware-tárolók az AK-ban](https://github.com/Azure-Samples/enclave-aware-container-samples)
+Az Edge nélküli RT egy nyílt forráskódú projekt, amely az Open enklávé SDK-ra épül. Támogatja a Go és a további C++ funkciókat. Ismerkedjen meg egy egyszerű, bizalmas go-alkalmazással az ismerős VS Code [-környezet használatával](https://github.com/edgelesssys/edgelessrt). Az egyazon nélküli alkalmazások esetében kövesse az [alábbi utasításokat](https://github.com/edgelesssys/edgelessrt/blob/master/docs/ERTAzureAKSDeployment.md)
+
+
+## <a name="container-based-sample-implementations"></a>Tároló-alapú minták implementációi
+
+[Azure Samples for enklávé Aware-tárolók az AK-ban](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure-igazolás](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
-[Confidential Containers]: /confidential-computing/containercompute/confidential-containers
+[DC virtuális gép](/confidential-computing/virtual-machine-solutions) 
+ [Bizalmas tárolók](/confidential-computing/containercompute/confidential-containers)

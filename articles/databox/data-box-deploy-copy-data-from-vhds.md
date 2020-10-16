@@ -9,18 +9,18 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739867"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124013"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: az adatData Box használata felügyelt lemezként az Azure-ban
 
 Ez az oktatóanyag leírja, hogyan telepítheti át a helyszíni virtuális merevlemezeket a felügyelt lemezekre az Azure-ban a Azure Data Box használatával. A helyszíni virtuális gépekről származó virtuális merevlemezeket a rendszer átmásolja Data Boxba, és az Azure-ba felügyelt lemezként feltölti őket. Ezek a felügyelt lemezek ezután az Azure-beli virtuális gépekhez csatlakoztathatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -38,7 +38,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 4. Áttekintette a következőket:
 
     - Támogatott [felügyelt lemezek mérete az Azure-objektumok méretének korlátaiban](data-box-limits.md#azure-object-size-limits).
-    - [Bevezetés az Azure Managed Disks](/azure/virtual-machines/windows/managed-disks-overview)használatába. 
+    - [Bevezetés az Azure Managed Disks](../virtual-machines/managed-disks-overview.md)használatába. 
 
 5. Megőrizte a forrásadatok másolatát, amíg meg nem erősítette, hogy a Data Box átvitte adatait az Azure Storage szolgáltatásba.
 
@@ -76,7 +76,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     > [!NOTE]
     > A felügyelt lemezek összes megosztásának hitelesítő adatai azonosak.
 
-    ![Megosztási hitelesítő adatok beolvasása](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Megosztások hitelesítő adatainak beszerzése](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. A hozzáférés megosztása és adatok másolása párbeszédpanelen másolja a megosztáshoz tartozó **felhasználónevet** és **jelszót** . Kattintson az **OK** gombra.
     
@@ -102,7 +102,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>\<ShareName>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
-    ![Kapcsolódás megosztáshoz a fájlkezelő használatával](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     Ekkor a következő előre létrehozott mappákat kell látnia az egyes megosztásokon belül.
     
@@ -169,7 +169,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
 A másolási feladatok befejezése után **szállításra való előkészítés**léphet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
@@ -183,4 +183,3 @@ Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)
-

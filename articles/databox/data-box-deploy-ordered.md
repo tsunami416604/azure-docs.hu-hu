@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8143a19d7e18b24e202018698b37e1b2855db4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575299"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125422"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -55,7 +55,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 #### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-* Telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -verziót 2.0.67 vagy újabb verzióra. Másik megoldásként az MSI-t is [telepítheti](https://aka.ms/installazurecliwindows).
+* Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -verziót 2.0.67 vagy újabb verzióra. Másik megoldásként az MSI-t is [telepítheti](https://aka.ms/installazurecliwindows).
 
 **Bejelentkezés az Azure-ba**
 
@@ -164,13 +164,13 @@ A következő kimenet jelenik meg:
     WSManStackVersion              3.0
 ```
 
-Ha a verzió alacsonyabb, mint a 6.2.4, frissítenie kell a Windows PowerShell verzióját. A Windows PowerShell legújabb verziójának telepítéséhez tekintse meg a következőt: [install Azure PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7).
+Ha a verzió alacsonyabb, mint a 6.2.4, frissítenie kell a Windows PowerShell verzióját. A Windows PowerShell legújabb verziójának telepítéséhez tekintse meg a következőt: [install Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7).
 
 **Azure PowerShell és Data Box modulok telepítése**
 
 A Azure Data Box megrendeléséhez telepítenie kell a Azure PowerShell modulokat a Azure PowerShell használatához. A Azure PowerShell modulok telepítése:
 
-1. Telepítse a [Azure PowerShell az modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+1. Telepítse a [Azure PowerShell az modult](/powershell/azure/new-azureps-module-az).
 2. Ezután telepítse az az. DataBox parancsot a parancs használatával `Install-Module -Name Az.DataBox` .
 
 ```azurepowershell
@@ -184,7 +184,7 @@ Version              Name                                Repository           De
 
 #### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Nyisson meg egy Windows PowerShell-parancssorablakot, és jelentkezzen be az Azure-ba a [Kapcsolódás-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) paranccsal:
+Nyisson meg egy Windows PowerShell-parancssorablakot, és jelentkezzen be az Azure-ba a [Kapcsolódás-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) paranccsal:
 
 ```azurepowershell
 PS C:\Windows> Connect-AzAccount
@@ -202,7 +202,7 @@ gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaa
 PS C:\Windows\System32>
 ```
 
-Az Azure-ba a Windows PowerShell használatával történő bejelentkezéssel kapcsolatos részletes információkért lásd: [bejelentkezés Azure PowerShellsal](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Az Azure-ba a Windows PowerShell használatával történő bejelentkezéssel kapcsolatos részletes információkért lásd: [bejelentkezés Azure PowerShellsal](/powershell/azure/authenticate-azureps).
 
 ---
 
@@ -338,7 +338,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
-2. A választott vagy terminálos parancssorban használja az az [adatmező-feladatsort](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) a Azure Data Box rendelés létrehozásához.
+2. A választott vagy terminálos parancssorban használja az az [adatmező-feladatsort](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) a Azure Data Box rendelés létrehozásához.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -431,7 +431,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
     $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
    ```
 
-2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
+2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
 
     | Beállítás (paraméter) | Leírás |  Mintaérték |
     |---|---|---|
@@ -452,7 +452,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
     |CompanyName| Annak a vállalatnak a neve, amelyhez dolgozni szeretne.| "Contoso, LTD" |
     |StorageAccountResourceId [kötelező]| Az Azure Storage-fiók azonosítója, amelyből az adatok importálására kerül.| <AzStorageAccount>. azonosító |
 
-3. A parancssorban válassza a választás vagy a terminál lehetőséget, a [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) használatával hozza létre a Azure Data Box sorrendjét.
+3. A parancssorban válassza a választás vagy a terminál lehetőséget, a [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) használatával hozza létre a Azure Data Box sorrendjét.
 
    ```azurepowershell
     PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
@@ -506,7 +506,7 @@ A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvar
 
 ### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
 
-Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéréséhez futtassa [az az databox Job show](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
+Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéréséhez futtassa [az az databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +547,7 @@ Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéré
 
 ### <a name="list-all-orders"></a>Az összes megrendelés listázása
 
-Ha több eszközt is megrendelt, az [az databox Job List](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) parancs futtatásával megtekintheti az összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
+Ha több eszközt is megrendelt, az [az databox Job List](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) parancs futtatásával megtekintheti az összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
 A parancs az egyes sorrendek időbélyegeit is megjeleníti.
 
 ```azurecli
@@ -590,7 +590,7 @@ A következő táblázat a paraméterekkel kapcsolatos információkat tartalmaz
 
 ### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
 
-Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekéréséhez futtassa a [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
+Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekéréséhez futtassa a [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
 
 > [!NOTE]
 > `Get-AzDataBoxJob` egy és több megrendelés megjelenítésére szolgál. A különbség az, hogy megadja a rendelés nevét az egyes rendelésekhez.
@@ -623,7 +623,7 @@ Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekérés
 
 ### <a name="list-all-orders"></a>Az összes megrendelés listázása
 
-Ha több eszközt is megrendelt, a [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) futtatásával megtekintheti az összes Azure Data Box-rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
+Ha több eszközt is megrendelt, a [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) futtatásával megtekintheti az összes Azure Data Box-rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
 A parancs az egyes sorrendek időbélyegeit is megjeleníti.
 
 ```azurepowershell
@@ -666,7 +666,7 @@ Egy megszakított megrendelés törléséhez lépjen az **Áttekintés** elemre,
 
 ### <a name="cancel-an-order"></a>Rendelés visszavonása
 
-Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)parancsot. Meg kell adnia a megrendelés megszakításának okát.
+Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)parancsot. Meg kell adnia a megrendelés megszakításának okát.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +703,7 @@ Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](
 
 ### <a name="delete-an-order"></a>Megrendelés törlése
 
-Ha megszakította Azure Data Box rendelést, az az [databox Job delete](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) paranccsal törölheti a sorrendet.
+Ha megszakította Azure Data Box rendelést, az az [databox Job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) paranccsal törölheti a sorrendet.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -742,7 +742,7 @@ Ha megszakította Azure Data Box rendelést, az az [databox Job delete](https://
 
 ### <a name="cancel-an-order"></a>Rendelés visszavonása
 
-Azure Data Box rendelés megszakításához futtassa a [stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob)parancsot. Meg kell adnia a megrendelés megszakításának okát.
+Azure Data Box rendelés megszakításához futtassa a [stop-AzDataBoxJob](/powershell/module/az.databox/stop-azdataboxjob)parancsot. Meg kell adnia a megrendelés megszakításának okát.
 
 ```azurepowershell
 Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
@@ -776,7 +776,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Megrendelés törlése
 
-Ha megszakított egy Azure Data Box rendelést, a [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) parancsot futtatva törölheti a sorrendet.
+Ha megszakított egy Azure Data Box rendelést, a [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) parancsot futtatva törölheti a sorrendet.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>
@@ -808,7 +808,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

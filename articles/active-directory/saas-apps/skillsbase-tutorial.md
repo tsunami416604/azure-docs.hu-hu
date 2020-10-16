@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e93827278fb501bc6d857d3cb39f9e0ba24d5d0a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552237"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Oktatóanyag: Azure Active Directory a képességek alapszintű integrációja
 
@@ -134,11 +134,11 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő lépésekkel konfigurá
 
 3. A **hitelesítés** lapon válasszon ki egy Sign-On **SAML 2**néven.
 
-    ![Az egyetlen](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Képernyőfelvétel: a hitelesítés lap, az SAML 2 kiválasztva az Sing bejelentkezéshez.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. A **hitelesítés** lapon hajtsa végre a következő lépéseket:
 
-    ![Az egyetlen](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Képernyőfelvétel: a hitelesítés oldal, ahol megadhatja a leírt értékeket.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. Kattintson a **identitásszolgáltató-metaadatok frissítése** gombra az **állapot** lehetőség mellett, és illessze be a metaadatokat tartalmazó XML-fájl tartalmát, amelyet a megadott szövegmezőből Azure Portal letöltött.
 
@@ -170,7 +170,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962989"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124585"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -30,7 +30,7 @@ Az Azure kommunikációs szolgáltatások **csoport csevegési hőse minta** azt
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
 
 > [!IMPORTANT]
-> [A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+> [A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -100,14 +100,14 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 2. Hozzon létre egy új közzétételi profilt, és válassza ki az Azure-előfizetését.
 3. A közzététel előtt adja hozzá a (z `Edit App Service Settings` ) és a (z), és adja meg a `ResourceConnectionString` (z) kulcsot, és adja meg a (appsettings.json) értéket a (z) értékként.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"] 
->[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+>[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 További információért tekintse át a következő cikkeket:
 

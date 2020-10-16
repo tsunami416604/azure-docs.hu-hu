@@ -8,12 +8,12 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
-ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017693"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123423"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -21,7 +21,7 @@ ms.locfileid: "90017693"
 
 Ez a cikk bemutatja, hogyan csatlakoztatható egy Azure Sphere (fejlesztői készlet) eszköz egy Azure IoT Central-alkalmazáshoz.
 
-Az Azure Sphere biztonságos, magas szintű alkalmazásplatform, amely beépített kommunikációt és biztonsági funkciókat nyújt az internethez kapcsolódó eszközökhöz. Tartalmaz egy biztonságos, csatlakoztatott, crossover mikrovezérlő-egységet (MCU), egy egyéni, magas szintű Linux-alapú operációs rendszert (OS) és egy felhőalapú biztonsági szolgáltatást, amely folyamatos, megújítható biztonságot nyújt. További információ: [Mi az Azure Sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)
+Az Azure Sphere biztonságos, magas szintű alkalmazásplatform, amely beépített kommunikációt és biztonsági funkciókat nyújt az internethez kapcsolódó eszközökhöz. Tartalmaz egy biztonságos, csatlakoztatott, crossover mikrovezérlő-egységet (MCU), egy egyéni, magas szintű Linux-alapú operációs rendszert (OS) és egy felhőalapú biztonsági szolgáltatást, amely folyamatos, megújítható biztonságot nyújt. További információ: [Mi az Azure Sphere?](/azure-sphere/product-overview/what-is-azure-sphere)
 
 [Azure Sphere fejlesztői készletek](https://azure.microsoft.com/services/azure-sphere/get-started/) biztosítják mindazt, amire szüksége lehet a prototípus-készítéshez és a Azure Sphere alkalmazások fejlesztéséhez. Az Azure IoT Central with Azure Sphere lehetővé teszi egy teljes körű verem használatát egy IoT-megoldáshoz. A Azure Sphere biztosítja az eszközök támogatását, és a IoT Centralt nulla kód, felügyelt IoT alkalmazási platformként.
 
@@ -38,7 +38,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 - Azure IoT Central-alkalmazás.
 - Visual Studio 2019, 16,4 vagy újabb verzió.
-- Egy [Azure Sphere MT3620 Development Kit a Seeed studióból](https://docs.microsoft.com/azure-sphere/hardware/mt3620-reference-board-design).
+- Egy [Azure Sphere MT3620 Development Kit a Seeed studióból](/azure-sphere/hardware/mt3620-reference-board-design).
 
 > [!NOTE]
 > Ha nem rendelkezik fizikai eszközzel, az első lépés után ugorjon az utolsó szakaszra egy szimulált eszköz kipróbálásához.

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.date: 10/15/2020
+ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939834"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123294"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -43,7 +43,7 @@ Egyetlen [Azure Database for PostgreSQL régióban](https://azure.microsoft.com/
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiókban bármikor létrehozhat egy olvasási replikát, függetlenül attól, hogy az elsődleges kiszolgáló hol található. Ezek az univerzális replika-régiók:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati középső régiója
+Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-Európa, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak-Európa, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa
 
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replika régión kívül az elsődleges kiszolgáló Azure párosított régiójában is létrehozhat egy olvasási replikát. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).

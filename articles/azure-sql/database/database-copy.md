@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67f123472a5fd6060bc4e2de36fb7ac1ea46d356
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443790"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124395"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -29,7 +29,7 @@ Azure SQL Database számos módszert biztosít egy meglévő [adatbázis](single
 Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe, amely a másolási kérelem elindítása utáni időpontra mutat. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthat a másoláshoz. Dönthet úgy is, hogy megtartja a biztonsági mentési redundanciát, a szolgáltatási szintet és a forrás-adatbázis számítási méretét, vagy a biztonsági mentési tárhelyet, illetve az azonos vagy egy másik szolgáltatási szinten lévő számítási méretet használja. A másolás befejezése után teljesen működőképes, független adatbázis lesz. A másolt adatbázisban a bejelentkezések, a felhasználók és az engedélyek a forrás-adatbázistól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre. Ha a replika index-összehangolása befejeződött, a georeplikációs hivatkozás automatikusan megszűnik. A georeplikáció használatára vonatkozó követelmények az adatbázis-másolási műveletnél is érvényesülnek. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
 
 > [!NOTE]
-> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak nyilvános előzetes verzióban érhető el a Délkelet-ázsiai Azure-régióban. Az előzetes verzióban, ha a forrásadatbázis helyileg redundáns vagy Zone-redundáns biztonságimásolat-tárolási redundanciával jön létre, az adatbázis másolása egy másik Azure-régióban található kiszolgálóra nem támogatott. 
+> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak a Délkelet-ázsiai Azure-régióban általánosan elérhető. Az előzetes verzióban, ha a forrásadatbázis helyileg redundáns vagy Zone-redundáns biztonságimásolat-tárolási redundanciával jön létre, az adatbázis másolása egy másik Azure-régióban található kiszolgálóra nem támogatott. 
 
 ## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis-másolatban
 

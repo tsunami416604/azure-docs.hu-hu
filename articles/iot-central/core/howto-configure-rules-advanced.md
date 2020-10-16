@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398578"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123320"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Munkafolyamatok használata az Azure IoT Central alkalmazás integrálásához más felhőalapú szolgáltatásokkal
 
@@ -27,12 +27,12 @@ A Power automatizálás és a Azure Logic Apps Azure IoT Central v3-összekötő
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 A megoldás beállításához a 3. verziójú IoT Central alkalmazásra van szükség. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört. IoT Central alkalmazások létrehozásával kapcsolatos további információkért lásd: [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md).
 
 > [!NOTE]
-> Ha 2. verziójú IoT Central alkalmazást használ, tekintse meg a következő témakört: [munkafolyamatok létrehozása az IoT Central-összekötővel Azure Logic apps](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) az előző verziók dokumentációs webhelyén, és az Azure IoT Central v2-összekötő használata
+> Ha 2. verziójú IoT Central alkalmazást használ, tekintse meg a következő témakört: [munkafolyamatok létrehozása az IoT Central-összekötővel Azure Logic apps](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) az előző verziók dokumentációs webhelyén, és az Azure IoT Central v2-összekötő használata
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Munkafolyamat elindítása szabályból
 

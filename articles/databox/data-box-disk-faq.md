@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9305ff5904588241ff8319f28eab2ce20ad77876
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826140"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125115"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -66,7 +66,7 @@ Ha például az Azure-beli WestUS-fiókba kívánja helyezni az adatait, az alá
 
 ### <a name="option-1"></a>1. módszer: 
 
-Az [Azure import/export szolgáltatásból](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) származó adatokkal rendelkező [támogatott lemez](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) szállítása a kanadai forrás helyéről az Azure WestUS adatközpontba.
+Az [Azure import/export szolgáltatásból](../storage/common/storage-import-export-service.md) származó adatokkal rendelkező [támogatott lemez](../storage/common/storage-import-export-requirements.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#supported-disks) szállítása a kanadai forrás helyéről az Azure WestUS adatközpontba.
 
 ### <a name="option-2"></a>2. lehetőség:
 
@@ -77,7 +77,7 @@ Az [Azure import/export szolgáltatásból](https://docs.microsoft.com/azure/sto
 3. Ezt követően egy olyan eszközzel is elvégezheti az AzCopy, amely az WestUS-ben lévő Storage-fiókba másolja az adatfájlokat. Ez a lépés a Data Box Disk számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
-A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, vegye fel a [kapcsolatot a Microsoft ügyfélszolgálataval](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
+A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, vegye fel a [kapcsolatot a Microsoft ügyfélszolgálataval](./data-box-disk-contact-microsoft-support.md).
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
  
@@ -147,7 +147,7 @@ A.  A másolási folyamat felgyorsításához:
 - Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A ténylegesen használt parancsokkal kapcsolatban további információkat a következő oktatóanyagban talál: [Oktatóanyag: Adatok másolása az Azure Data Box Disk-lemezre, és az adatok ellenőrzése](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyre a lemezeket csatlakoztatja.
-- Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [USBView eszközt](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview), amellyel azonosíthatja a számítógép USB-vezérlőit és a számítógéphez kapcsolódó USB-s eszközöket.
+- Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [USBView eszközt](/windows-hardware/drivers/debugger/usbview), amellyel azonosíthatja a számítógép USB-vezérlőit és a számítógéphez kapcsolódó USB-s eszközöket.
 - Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>K. Hogyan lehet felgyorsítani az adatok másolását, ha a forrásadatok között sok kisméretű fájl található (KB-os vagy néhány MB-os méretűek)?
@@ -206,7 +206,7 @@ A. Igen. Az adatai az Azure-ba lettek feltöltve, de ha nem lát felügyelt leme
  - A Azure Files egy blokk blob-tárolóba kerül, amely a *databoxdisk-érvénytelen-AF-*-vel kezdődik.
  - A felügyelt lemezek egy blokk blob-tárolóba kerülnek, amely a következővel kezdődik: *databoxdisk-érvénytelen-MD-*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Data Box Disk rendszerkövetelményeit](data-box-disk-system-requirements.md).
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.

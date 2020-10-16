@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206230"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123562"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -82,7 +82,7 @@ A Data Box eszköz jelen kiadása az alábbi funkciókkal rendelkezik.
 | Adatátviteli felület                                     | RJ45, SFP + 10 GbE réz Ethernet  |
 | Biztonság                                                | Ütésálló eszköztok, az illetéktelen hozzáférést gátló, egyedi csavarokkal <br> Az illetéktelen hozzáférést jelző matricák az eszköz alján|
 | Adatátviteli sebesség                                      | Legfeljebb 80 TB naponta, 10 GbE sávszélességű hálózati adapter használata esetén        |
-| Felügyelet                                              | Helyi webes felhasználói felület – egyszeri kezdeti beállítás és konfigurálás <br> Azure Portal – mindennapos eszközkezelés        |
+| Kezelés                                              | Helyi webes felhasználói felület – egyszeri kezdeti beállítás és konfigurálás <br> Azure Portal – mindennapos eszközkezelés        |
 
 ## <a name="data-box-components"></a>Data Box-összetevők
 
@@ -144,17 +144,13 @@ A Data Box a szolgáltatás üzembe helyezése, az adott ország/régió, valami
 
 - **Szolgáltatás rendelkezésre állása** – ha az importálási vagy exportálási megrendelésekhez Data Box használ, a régió rendelkezésre állásával kapcsolatos információk eléréséhez nyissa meg az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). A Data Box exportálási funkciója jelenleg előzetes verzióban érhető el. 
 
-    Importálási rendelések esetén Data Box a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) 
+    Importálási rendelések esetén Data Box a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](../azure-government/documentation-government-welcome.md) 
 
 - **Cél Storage-fiókok** – az adattárolást tároló fiókok az összes Azure-régióban elérhetők, ahol a szolgáltatás elérhető.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.
 - Az [Azure Data Box](data-box-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.
-
-
-
-
