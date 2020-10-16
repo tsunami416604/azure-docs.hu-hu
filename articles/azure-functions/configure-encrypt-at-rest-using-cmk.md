@@ -3,12 +3,12 @@ title: Az alkalmazás forrásának titkosítása nyugalmi állapotban
 description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag fájlként történő üzembe helyezése.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282330"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108031"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Az alkalmazásban tárolt adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
@@ -22,7 +22,7 @@ A Function alkalmazásban tárolt alkalmazásadatok titkosításához Azure Stor
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md) , és [titkosítsa az ügyfél által felügyelt kulcsokkal](../storage/common/encryption-customer-managed-keys.md). A Storage-fiók létrehozása után a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával töltse fel a csomagok fájljait.
+Először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md) , és [titkosítsa az ügyfél által felügyelt kulcsokkal](../storage/common/customer-managed-keys-overview.md). A Storage-fiók létrehozása után a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával töltse fel a csomagok fájljait.
 
 Ezután a Storage Explorer használatával [állítson be sas](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)-t. 
 
@@ -99,7 +99,7 @@ Ha a rendszer elforgatja a Storage-fiók SAS-kulcsát, a Function alkalmazás m�
 
 A Function alkalmazás hozzáférését visszavonhatja a hely adatához, ha letiltja a Function alkalmazás hozzáférését a Key Vaulthoz. Ehhez távolítsa el a Function alkalmazás identitásához tartozó hozzáférési szabályzatot. Ez ugyanaz az identitás, amelyet korábban hozott létre a Key Vault-referenciák konfigurálása során.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az alkalmazás fájljai mostantól titkosítva vannak a Storage-fiókban. A Function alkalmazás indításakor lekéri a SAS URL-címét a kulcstartóból. Végül a Function alkalmazás betölti az alkalmazás fájljait a Storage-fiókból. 
 

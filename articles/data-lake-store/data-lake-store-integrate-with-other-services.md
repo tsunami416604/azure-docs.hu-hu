@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9318ce7d73f2d05dde6815a0ded4269510760251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 388c0db11c38f3dcdb9c4452b8d7283b2e811885
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441986"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108694"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal
 A Azure Data Lake Storage Gen1 más Azure-szolgáltatásokkal együtt is használható, így szélesebb körű forgatókönyvek engedélyezhetők. A következő cikk felsorolja azokat a szolgáltatásokat, amelyeket a Data Lake Storage Gen1 integrálhat.
@@ -51,7 +51,7 @@ Az adatok elemzéséhez és megjelenítéséhez Power BI használhat Data Lake S
 Az adatok a Data Lake Storage Gen1ba való regisztrálásával az adatok a szervezeten belül felderíthetővé tehetik a Azure Data Catalog. További információ: [adatok regisztrálása a Azure Data Catalog Data Lake Storage Gen1ban](data-lake-store-with-data-catalog.md).
 
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Data Lake Storage Gen1 használata SQL Server Integration Services (SSIS)
-A SSIS Data Lake Storage Gen1 Csatlakozáskezelőt használva csatlakoztathat egy SSIS-csomagot a Data Lake Storage Gen1hoz. További információ: [Data Lake Storage Gen1 használata a SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+A SSIS Data Lake Storage Gen1 Csatlakozáskezelőt használva csatlakoztathat egy SSIS-csomagot a Data Lake Storage Gen1hoz. További információ: [Data Lake Storage Gen1 használata a SSIS](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Data Lake Storage Gen1 használata az Azure szinapszis Analytics használatával
 A Data Lake Storage Gen1ból származó adatok az Azure szinapszis Analyticsbe (korábbi nevén SQL Data Warehouse) való betöltéséhez használhat albase-t. További információ: [Data Lake Storage Gen1 használata az Azure szinapszis Analytics használatával](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
@@ -62,5 +62,4 @@ A Azure Data Lake Storage Gen1 az Azure Event Hubs által fogadott adatok archiv
 ## <a name="see-also"></a>Lásd még
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Ismerkedés a Data Lake Storage Gen1 portál használatával](data-lake-store-get-started-portal.md)
-* [Ismerkedés a Data Lake Storage Gen1 a PowerShell használatával](data-lake-store-get-started-powershell.md)  
-
+* [Ismerkedés a Data Lake Storage Gen1 a PowerShell használatával](data-lake-store-get-started-powershell.md)

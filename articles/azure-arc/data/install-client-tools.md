@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3eb41b868aba7e7350f54594fa43f01eeeabebc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940677"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108218"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Ügyféleszközök telepítése az Azure Arc-kompatibilis adatszolgáltatások üzembe helyezéséhez és felügyeletéhez
 
@@ -32,7 +32,7 @@ Az alábbi táblázat az Azure arc-kompatibilis adatszolgáltatások létrehozá
 | Eszköz | Kötelező | Leírás | Telepítés |
 |---|---|---|---|
 | Azure-adatcli (azdata) | Igen | Big data-fürt telepítésére és felügyeletére szolgáló parancssori eszköz. Az Azure-beli adatcli tartalmaz egy parancssori segédprogramot is, amely az Azure SQL-és SQL Server-példányok és a postgres-kiszolgálók `azdata sql query` (egyetlen lekérdezés futtatása a parancssorból), `azdata sql shell` (interaktív rendszerhéj) és a parancsokkal való kapcsolódáshoz és lekérdezésekhez használható `azdata postgres query` `azdata postgres shell` . | [Telepítse](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
-| Azure Data Studio | Igen | Sokoldalú eszköz a különböző adatbázisok, például az Azure SQL, a SQL Server, a PostrgreSQL és a MySQL összekapcsolásához és lekérdezéséhez. A Azure Data Studio bővítmények felügyeleti élményt nyújtanak az Azure arc-kompatibilis adatszolgáltatásokhoz. | [Telepítse](https://aka.ms/getazuredatastudio) |
+| Azure Data Studio | Igen | Sokoldalú eszköz a különböző adatbázisok, például az Azure SQL, a SQL Server, a PostrgreSQL és a MySQL összekapcsolásához és lekérdezéséhez. A Azure Data Studio bővítmények felügyeleti élményt nyújtanak az Azure arc-kompatibilis adatszolgáltatásokhoz. | [Telepítse](/sql/azure-data-studio/download-azure-data-studio) |
 | Azure-adatcli-bővítmény a Azure Data Studio | Igen | Azure Data Studio bővítmény, amely telepíti az Azure-beli adatcli-t, ha még nem tette meg.| Telepítés a bővítmények katalógusában Azure Data Studio.|
 | Azure arc-bővítmény a Azure Data Studiohoz | Igen | Az Azure arc-kompatibilis adatszolgáltatások kezelési élményét biztosító Azure Data Studio bővítménye. A Azure Data Studiohoz tartozó Azure-adatcli-bővítmény függőséggel rendelkezik. | Telepítés a bővítmények katalógusában Azure Data Studio.|
 | PostgreSQL-bővítmény Azure Data Studio | Nem | PostgreSQL-bővítmény Azure Data Studio számára, amely felügyeleti funkciókat biztosít a PostgreSQL-hez. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Telepítés a bővítmények katalógusában Azure Data Studio.|
@@ -49,6 +49,6 @@ Az alábbi táblázat az Azure arc-kompatibilis adatszolgáltatások létrehozá
 
 <sup>3</sup> ha a PowerShellt használja, a curl a Invoke-WebRequest parancsmag aliasa.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure arc-adatkezelő létrehozása](create-data-controller.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3eae2a21c902b49b8e76fcb45e45577231e8b9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528553"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Oktatóanyag: Azure Active Directory integráció a bukóív
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Bukóív tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://saml.rollbar.com`
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Bukóív tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://rollbar.com/<accountname>/saml/login/azure/`
 
@@ -134,15 +134,15 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
 1. Kattintson a jobb felső sarokban található **Profilbeállítások** lehetőségre, majd a **fiók neve beállítások**elemre.
 
-    ![Konfiguráció](./media/rollbar-tutorial/general.png)
+    ![A képernyőfelvételen a Profilbeállítások közül kiválasztott fióknév-beállítások láthatók.](./media/rollbar-tutorial/general.png)
 
 1. Kattintson a biztonság területen a **személyazonosság-szolgáltató** elemre.
 
-    ![Konfiguráció](./media/rollbar-tutorial/configure1.png)
+    ![A képernyőképen a biztonság területen kiválasztott identitás-szolgáltató látható.](./media/rollbar-tutorial/configure1.png)
 
 1. A **SAML-identitás szolgáltatója** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Konfiguráció](./media/rollbar-tutorial/configure2.png)
+    ![Képernyőfelvétel: az SAML-identitás szolgáltatója, ahol megadhatja a leírt értékeket.](./media/rollbar-tutorial/configure2.png)
 
     a. Válassza ki az **Azure** -t az **SAML-identitás szolgáltatójának** legördülő menüből.
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
 1. A Save (Mentés) gombra kattintva a képernyő a következőképpen fog megjelenni:
 
-    ![Konfiguráció](./media/rollbar-tutorial/configure3.png)
+    ![A képernyőfelvétel az SAML-identitás szolgáltatójának eredményeit jeleníti meg.](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
     > A következő lépés végrehajtásához először fel kell vennie a felhasználót a bukóív alkalmazásba az Azure-ban.
@@ -187,7 +187,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -233,11 +233,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a bu
 
 1. Kattintson a **csapat tagjainak meghívása**elemre.
 
-    ![Személyek meghívása](./media/rollbar-tutorial/user2.png)
+    ![Képernyőfelvétel: a csapattagok meghívása lehetőség be van jelölve.](./media/rollbar-tutorial/user2.png)
 
 1. A szövegmezőbe írja be a felhasználó nevét (például **brittasimon \@ contoso.com** ), majd kattintson a **Hozzáadás/meghívás**gombra.
 
-    ![Személyek meghívása](./media/rollbar-tutorial/user3.png)
+    ![Képernyőfelvétel: a tagok hozzáadása vagy meghívása egy megadott címen.](./media/rollbar-tutorial/user3.png)
 
 1. A felhasználó egy meghívót kap, és elfogadja, hogy a rendszer létrehozta őket a rendszeren.
 

@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09dd868dc9e05241943899654d7c8bb427a8f268
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87055441"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104835"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Rövid útmutató: az első HTTP-triggert tartalmazó függvény létrehozása a Kotlin és a IntelliJ
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre [kiszolgáló](https://azure
 
 Ha Kotlin-és IntelliJ-függvényt szeretne létrehozni, telepítse a következő szoftvereket:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks) (JDK), 8-as verzió
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK), 8-as verzió
 - [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
 - [INTELLIJ Idea](https://www.jetbrains.com/idea/download), közösségi vagy Ultimate verziók a Maven használatával
 - [Azure CLI](/cli/azure)

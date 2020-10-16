@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045686"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109000"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>A Azure IoT Edge futtatókörnyezet telepítése vagy eltávolítása
 
@@ -83,6 +83,12 @@ A Linux-tárolókkal rendelkező IoT Edge a Windows bármely olyan verzióját f
 A Azure IoT Edge egy [OCI-kompatibilis](https://www.opencontainers.org/) tároló motorra támaszkodik. Győződjön meg arról, hogy az eszköz támogatja a tárolókat.
 
 Ha virtuális gépen telepíti a IoT Edget, engedélyezze a beágyazott virtualizációt, és foglaljon le legalább 2 GB memóriát. A Hyper-V esetében a 2. generációs virtuális gépekhez alapértelmezés szerint engedélyezve van a beágyazott virtualizálás. A VMware esetében van egy váltógomb, amely engedélyezi a szolgáltatást a virtuális gépen.
+
+Ha a IoT Edge IoT Core-eszközre telepíti, a [távoli PowerShell-munkamenetben](/windows/iot-core/connect-your-device/powershell) a következő paranccsal ellenőrizze, hogy a Windows-tárolók támogatottak-e az eszközön:
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -160,6 +166,9 @@ Ha a telepíteni kívánt verzió nem szerepel a listáján, kövesse a követke
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
+>[!TIP]
+>A IoT Core-eszközök esetében javasoljuk, hogy a telepítési parancsokat távoli PowerShell-munkamenet használatával futtassa. További információ: a [PowerShell használata a Windows IoT](/windows/iot-core/connect-your-device/powershell).
+
 1. Futtassa a PowerShellt rendszergazdaként.
 
    Használjon a PowerShell AMD64-munkamenetét, ne a PowerShellt (x86). Ha nem tudja biztosan, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
@@ -186,7 +195,7 @@ Ha a telepíteni kívánt verzió nem szerepel a listáján, kövesse a követke
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. Ekkor a kimenet felszólítja az újraindításra. Ha igen, indítsa újra az eszközt.
+3. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítást kérik. Ha igen, indítsa újra az eszközt.
 
 Ha IoT Edge telepít egy eszközre, további paramétereket is használhat a folyamat módosításához, beleértve a következőket:
 
@@ -322,11 +331,13 @@ Ha el szeretné távolítani a IoT Edge telepítését a Windows-eszközről, ha
 Uninstall-IoTEdge
 ```
 
+A `Uninstall-IoTEdge` parancs nem működik a Windows IoT Core-on. IoT Edge eltávolításához újra kell telepítenie a Windows IoT Core-lemezképet.
+
 Az eltávolítási lehetőségekkel kapcsolatos további információkért használja az parancsot `Get-Help Uninstall-IoTEdge -full` .
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A IoT Edge futtatókörnyezet telepítése után konfigurálja az eszközt IoT Hubhoz való kapcsolódásra. A következő cikkek végigvezetik az új eszköz felhőben való regisztrálásán, majd az eszköz identitás-és hitelesítési adataival.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394091"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107521"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
 
@@ -90,7 +90,7 @@ Emellett konfigurálhat egy előtér-átjárót, például az Azure webalkalmaz�
 
 - [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 - [Azure Security Center adaptív hálózat megerősítésének ismertetése](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -545,7 +545,7 @@ A hálózati elkülönítés végrehajtásához privát végpontokat is használ
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](../governance/management-groups/create.md)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -649,7 +649,7 @@ Az Azure Function apps biztonságossá tételéhez a Azure Security Center aján
 
 - [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -727,7 +727,7 @@ Emellett az Azure Policy használatával korlátozásokat állíthat be az ügyf
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](../governance/management-groups/create.md)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -1087,7 +1087,7 @@ Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy 
 
 - [Azure Storage-titkosítás inaktív állapotban](../storage/common/storage-service-encryption.md)
 
-- [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: igen
 
@@ -1181,7 +1181,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

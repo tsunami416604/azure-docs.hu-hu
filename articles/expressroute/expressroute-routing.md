@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ddc15e9da3eaa3609b039f2f92e424b9d9449c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569611"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106314"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -218,7 +218,7 @@ A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket 
 ### <a name="service-to-bgp-community-value"></a>Szolgáltatás a BGP közösségi értékre
 A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címkével látja el az előtagokat. Ez csak a Microsoft társviszony-létesítésre vonatkozik. Az alábbi táblázat a szolgáltatások BGP-közösségértékre való leképezéseit tartalmazza. A "Get-AzBgpServiceCommunity" parancsmagot futtathatja a legfrissebb értékek teljes listájához.
 
-| **Service** | **BGP-közösségérték** |
+| **Szolgáltatás** | **BGP-közösségérték** |
 | --- | --- |
 | Exchange Online\*\* | 12076:5010 |
 | SharePoint Online\*\* | 12076:5020 |
@@ -258,9 +258,10 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Vállalati online verzió |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)

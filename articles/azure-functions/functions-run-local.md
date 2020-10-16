@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88929489"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108490"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> A Java a Maven archetípus használatával hozza létre a helyi functions projektet, valamint az első HTTP által aktivált függvényt. A Java-projekt létrehozásához használja a következő parancsot: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . A Maven archetípusot használó példát a [parancssori](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)útmutatóban talál.  
+> A Java a Maven archetípus használatával hozza létre a helyi functions projektet, valamint az első HTTP által aktivált függvényt. A Java-projekt létrehozásához használja a következő parancsot: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . A Maven archetípusot használó példát a [parancssori](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)útmutatóban talál.  
 
 Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
 A 3. x/2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
@@ -333,7 +333,7 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép lehetővé teszi az eseményindítók használatát a projektben lévő összes függvénynél. A Start parancs a projekt nyelvétől függően változhat.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 ```
 func start --build
@@ -589,7 +589,7 @@ Megtekintheti a függvények által a helyi számítógépen lévő parancssori 
 Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integrációjának engedélyezése szükséges a Function alkalmazáshoz.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).

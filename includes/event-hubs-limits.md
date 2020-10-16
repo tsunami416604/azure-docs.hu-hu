@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371727"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116731"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -71,7 +71,7 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 | Méret bájt/séma szerint | 1 MB |   
 | Tulajdonságok száma Schema csoportonként | 1024 |
 | Méret bájtban csoportonként a Group tulajdonság kulcsa | 256 | 
-| Méret bájtban csoportonként a Group tulajdonság kulcsa | 1024 | 
+| Méret (bájt/csoport) tulajdonság értéke | 1024 | 
 
 
 #### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>A **standard** és a **dedikált** szint esetében eltérő korlátok 

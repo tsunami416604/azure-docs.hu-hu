@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 943aba9c25df6cd279dc651cfad343a6509c069b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548961"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Oktatóanyag: Azure Active Directory integráció a Questetra BPM Suite szolgáltatással
 
@@ -128,11 +128,11 @@ Az Azure AD egyszeri bejelentkezés Questetra BPM Suite-vel való konfigurálás
 
 2. A felső menüben kattintson a **Rendszerbeállítások**elemre. 
    
-    ![Azure AD – egyetlen Sign-On][10]
+    ![A képernyőképen a Questetra BPM Suite vállalati webhelyről kiválasztott rendszerbeállítások láthatók.][10]
 
 3. A **SingleSignOnSAML** lap megnyitásához kattintson az **SSO (SAML)** elemre. 
    
-    ![Azure AD – egyetlen Sign-On][11]
+    ![Képernyőfelvétel: kiválasztva S S O (SAML).][11]
 
 4. A **QUESTETRA BPM Suite** céges webhelyén, az **SP Information** szakaszban hajtsa végre a következő lépéseket:
 
@@ -180,7 +180,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

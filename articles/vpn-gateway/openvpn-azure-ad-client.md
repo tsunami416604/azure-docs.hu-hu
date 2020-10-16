@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.author: alzam
+ms.openlocfilehash: 09d39acc867124acfd5c3c38d5c26053218972e7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819763"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109102"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory hitelesítés: VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -154,6 +154,10 @@ Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan k
 
 ## <a name="faq"></a>GYIK
 
+### <a name="is-the-azure-vpn-client-supported-with-windows-fips-mode"></a>Támogatott-e az Azure VPN-ügyfél Windows FIPS módban?
+
+Igen, a [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-kb4577063) gyorsjavításával.
+
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Hogyan DNS-utótagokat hozzáadni a VPN-ügyfélhez?
 
 Megváltoztathatja a letöltött profil XML-fájlját, ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** és hozzáadhatja a címkéket
@@ -239,6 +243,6 @@ azurevpn -i azurevpnconfig.xml
 az importálás kényszerítéséhez használja az **-f** kapcsolót is
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322176"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104869"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvények létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és tehet közzé Java-függ
 
 Ha függvényeket szeretne fejleszteni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
 
-- A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
+- A [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 8-as verziója
 - [Azure CLI]
 - [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
 - [Gradle](https://gradle.org/), 4,10-es vagy újabb verzió

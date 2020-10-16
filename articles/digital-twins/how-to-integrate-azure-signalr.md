@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048117"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108354"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -195,7 +195,7 @@ Ebben a konzolban nem kell mást tennie, de a következő lépések elvégzése 
 ### <a name="configure-the-sample-client-web-app"></a>A minta-ügyfél webalkalmazásának konfigurálása
 
 Ezután állítsa be a **signaler Integration Web App-mintát** a következő lépésekkel:
-1. A Visual Studio vagy bármely más Kódszerkesztő használatával nyissa meg az [*Előfeltételek*](#prerequisites) szakaszban letöltött kibontott _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ mappát.
+1. A Visual Studióval vagy bármely más szövegszerkesztővel nyissa meg a [*minta alkalmazások letöltése*](#download-the-sample-applications) szakaszban letöltött kibontott _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ mappát.
 
 1. Nyissa meg a *src/App.js* fájlt, és cserélje le az URL-címet a `HubConnectionBuilder` korábban mentett **egyeztetési** függvény http-végpont URL-címére:
 
@@ -254,7 +254,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*Azure_Digital_Twins_samples.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a Signaler Azure functions szolgáltatással állíthatja be az Azure Digital Twins telemetria-eseményeit egy minta ügyfélalkalmazás számára.
 

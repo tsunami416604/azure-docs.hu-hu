@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305210"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107776"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -206,7 +206,7 @@ A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és
 A Azure Load Balancer megtervezéséhez és üzembe helyezéséhez tekintse meg a [Mi az a Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)című témakört. Alapszintű terheléselosztó üzembe helyezéséhez kövesse az ebben a rövid útmutatóban ismertetett lépéseket, a **háttér-kiszolgálók létrehozása**című szakaszban ismertetett lépéseket [kizárva.](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)   
 
 > [!NOTE]
-> A Azure Load Balancer **alapszintű SKU**-val történő konfigurálásához az szükséges, hogy az Azure-beli virtuális gépek rendelkezésre állási csoportba tartozzanak. A rendelkezésre állási csoportokkal kapcsolatos további tudnivalókért lásd: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../../virtual-machines/windows/manage-availability.md). Meglévő virtuális gépek rendelkezésre állási csoportba való felvételéhez tekintse meg [Azure Resource Manager virtuális gép rendelkezésre állási csoportjának beállítása](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)című témakört.
+> A Azure Load Balancer **alapszintű SKU**-val történő konfigurálásához az szükséges, hogy az Azure-beli virtuális gépek rendelkezésre állási csoportba tartozzanak. A rendelkezésre állási csoportokkal kapcsolatos további tudnivalókért lásd: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../../virtual-machines/manage-availability.md). Meglévő virtuális gépek rendelkezésre állási csoportba való felvételéhez tekintse meg [Azure Resource Manager virtuális gép rendelkezésre állási csoportjának beállítása](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)című témakört.
 > 
 
 A terheléselosztó létrehozása után létre kell hozni egy háttér-készletet, amely egy vagy több átjárókiszolgáló forgalmát osztja el. Kövesse a következő témakörben ismertetett lépéseket: a [terheléselosztó erőforrásainak létrehozása](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)szakasz.  
@@ -285,7 +285,7 @@ Adott kiszolgálók vagy csoportok konfigurálása a Log Analytics átjárókisz
 1. Nyissa meg a Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületet.  
 1. A szerzői műveletek munkaterületen válassza a **szabályok**lehetőséget. 
 1. A Operations Manager eszköztáron kattintson a **hatókör** gombra. Ha a gomb nem érhető el, győződjön meg róla, hogy a **figyelés** ablaktáblán egy objektumot, nem pedig mappát jelölt ki. A **hatókör felügyeleti csomag objektumai** párbeszédpanel megjeleníti a közös megcélzott osztályok, csoportok vagy objektumok listáját. 
-1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Kattintson az **OK** gombra.  
+1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Válassza az **OK** lehetőséget.  
 1. Keresse meg az **Advisor proxy beállítási szabályát**. 
 1. A Operations Manager eszköztáron válassza a felülbírálások **elemet, majd a** **Rule\For felülbírálása a következő osztály egy adott objektumához: állapotfigyelő szolgáltatás** és válasszon ki egy objektumot a listából.  Vagy hozzon létre egy egyéni csoportot, amely tartalmazza azon kiszolgálók állapotfigyelő szolgáltatási objektumát, amelyekre alkalmazni kívánja ezt a felülbírálást. Ezután alkalmazza a felülbírálást az egyéni csoportra.
 1. A **felülbírálás tulajdonságai** párbeszédpanelen vegyen fel egy pipát a **felülbírálás** oszlopban a **WebProxyAddress** paraméter mellett.  A **felülbírálás értéke** mezőben adja meg az log Analytics átjárókiszolgáló URL-címét. Ügyeljen arra, hogy az előtaggal kezdődjön `http://` .  
@@ -389,4 +389,3 @@ Ha segítséget szeretne kérni, válassza a portál jobb felső sarkában láth
 ## <a name="next-steps"></a>További lépések
 
 [Adatforrások hozzáadásával](./agent-data-sources.md) adatokat gyűjthet a csatlakoztatott forrásokból, és tárolhatja az adatokat a log Analytics munkaterületen.
-

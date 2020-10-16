@@ -3,15 +3,15 @@ title: Azure-Multi-Factor Authentication beállítása a Windows rendszerű virt
 description: Az Azure Multi-Factor Authentication beállítása a fokozott biztonság érdekében a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089921"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108983"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Az Azure Multi-Factor Authentication engedélyezése Windows Virtual Desktophoz
 
@@ -64,6 +64,8 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
 
    >[!IMPORTANT]
    > Ne válassza ki a Windows rendszerű virtuális asztali Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63) nevű alkalmazást. Ez az alkalmazás csak a felhasználói hírcsatorna beolvasására szolgál, és nem rendelkezhet MFA-val.
+   > 
+   > Ha a Windowsos virtuális asztalt (klasszikus) használja, ha a feltételes hozzáférési házirend blokkolja az összes hozzáférést, és csak a Windows rendszerű virtuális asztali alkalmazás-azonosítókat zárja ki, ezt úgy is megteheti, hogy hozzáadja az alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07 a szabályzathoz. Ha nem adja hozzá az alkalmazás AZONOSÍTÓját, a Windows rendszerű virtuális asztali (klasszikus) erőforrások hírcsatornáinak felderítését letiltja.
 
 10. Lépjen a **feltételek**  >  **ügyfélalkalmazások**elemre, majd válassza ki, hogy hová szeretné alkalmazni a szabályzatot:
     
@@ -87,7 +89,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
 14. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 15. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a feltételes hozzáférési házirendekről](../active-directory/conditional-access/concept-conditional-access-policies.md)
 

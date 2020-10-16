@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fc09f9145b7a1652b621ed38a8bf9af7c4c82a8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692289"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106569"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 
@@ -40,11 +40,9 @@ A következő táblázat bemutatja, hogyan támogatott a végfelhasználók és 
 <i>* Kattintson a <b>✔ \* </b> szimbólumra. Ez egy hivatkozás.</i><br>
 <i>* * Az MFA a többtényezős hitelesítéshez</i>
 
-Az Azure Active Directory hitelesítéshez való használatáról további információt a  [Azure Active Directory hitelesítési forgatókönyvei](../active-directory/develop/authentication-scenarios.md) című témakörben talál.
+Az Azure Active Directory hitelesítéshez való használatáról további információt a  [Azure Active Directory hitelesítési forgatókönyvei](../active-directory/develop/authentication-vs-authorization.md) című témakörben talál.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
 * [Szolgáltatások közötti hitelesítés](data-lake-store-service-to-service-authenticate-using-active-directory.md)
-
-

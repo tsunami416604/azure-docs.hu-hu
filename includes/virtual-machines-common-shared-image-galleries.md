@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071778"
+ms.locfileid: "92116801"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
 
@@ -56,10 +56,11 @@ Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az 
 
 Mindhárom ilyen egyedi értéket tartalmaz. A formátum hasonló ahhoz, ahogyan jelenleg az [Azure Marketplace-lemezképekhez](../articles/virtual-machines/windows/cli-ps-findimage.md) tartozó közzétevőt, ajánlatot és SKU-t megadhatja Azure PowerShell a Piactéri lemezkép legújabb verziójának beszerzéséhez. Minden rendszerkép-definíciónak egyedi készlettel kell rendelkeznie ezeknek az értékeknek.
 
-A képdefinícióknak meg kell határozniuk a következő paramétereket, amelyek meghatározzák, hogy milyen típusú képverziókat tartalmazhatnak:
--   Operációs rendszer állapota – [általánosított vagy specializált](#generalized-and-specialized-images)operációsrendszer-állapotot állíthat be.
-- Operációs rendszer – lehet Windows vagy Linux.
+A következő paraméterek határozzák meg, hogy milyen típusú képverziókat tartalmazhatnak:
 
+- Operációs rendszer állapota – [általánosított vagy specializált](#generalized-and-specialized-images)operációsrendszer-állapotot állíthat be. A mező kitöltése kötelező.
+- Operációs rendszer – lehet Windows vagy Linux. A mező kitöltése kötelező.
+-   Hyper-V generáció – megadhatja, hogy a rendszerkép az 1. generációból vagy [2. generációs](../articles/virtual-machines/generation-2.md) Hyper-v virtuális merevlemezből lett-e létrehozva. Az alapértelmezett érték az 1. generáció.
 
 
 A következő más paraméterek is megadhatók a képdefinícióban, így könnyebben nyomon követheti az erőforrásokat:
@@ -71,7 +72,6 @@ A következő más paraméterek is megadhatók a képdefinícióban, így könny
 - Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md)
 - Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
 - Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
--   Hyper-V generáció – megadhatja, hogy a rendszerkép az 1. generációból vagy [2. generációs](../articles/virtual-machines/generation-2.md) Hyper-v virtuális merevlemezből lett-e létrehozva. Az alapértelmezett érték az 1. generáció.
 - A Piactéri rendszerképekre vonatkozó vásárlási terv adatai –, `-PurchasePlanPublisher` `-PurchasePlanName` és `-PurchasePlanProduct` . További információ a vásárlási tervekről: [rendszerképek keresése az Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) -en, valamint a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információi](../articles/virtual-machines/marketplace-images.md).
 
 

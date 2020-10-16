@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323077"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109187"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatmásolás Data Lake Storage Gen1 és Azure SQL Database között az Sqoop használatával
 
@@ -31,7 +31,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A fiók létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépéseivel](data-lake-store-get-started-portal.md) foglalkozó témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Ez a cikk feltételezi, hogy rendelkezik egy Data Lake Storage Gen1 hozzáféréssel rendelkező HDInsight Linux-fürttel.
-* **Azure SQL Database**. Az adatbázisok Azure SQL Databaseban való létrehozásával kapcsolatos utasításokért lásd: [adatbázis létrehozása a Azure SQL Database](../sql-database/sql-database-get-started.md)
+* **Azure SQL Database**. Az adatbázisok Azure SQL Databaseban való létrehozásával kapcsolatos utasításokért lásd: [adatbázis létrehozása a Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)
 
 ## <a name="create-sample-tables-in-the-database"></a>Minta táblák létrehozása az adatbázisban
 
@@ -156,7 +156,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Teljesítménnyel kapcsolatos megfontolások a Sqoop használata során
 
-A Sqoop-feladatnak a Data Lake Storage Gen1ba való másolásához szükséges teljesítmény hangolásával kapcsolatos információkért tekintse meg a [Sqoop Performance blogbejegyzését](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
+A Sqoop-feladatnak a Data Lake Storage Gen1ba való másolásához szükséges teljesítmény hangolásával kapcsolatos információkért tekintse meg a [Sqoop Performance blogbejegyzését](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
 
 ## <a name="next-steps"></a>További lépések
 

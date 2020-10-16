@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071159"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108473"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -143,7 +143,7 @@ A következő közös paraméterek is támogatottak:
 * `PipelineVariable`
 * `OutVariable` 
 
-További információ: [About általánosparaméterek](https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: [About általánosparaméterek](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding példa: HTTP-válaszok
 
@@ -560,7 +560,7 @@ A számítási feladatok típusától függően néhány Párhuzamossági modell
 
 Ezeket a környezeti változókat a Function alkalmazás [Alkalmazásbeállítások](functions-app-settings.md) között állíthatja be.
 
-A használati esettől függően Durable Functions jelentősen növelheti a méretezhetőséget. További információ: [Durable functions alkalmazási minták](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns).
+A használati esettől függően Durable Functions jelentősen növelheti a méretezhetőséget. További információ: [Durable functions alkalmazási minták](./durable/durable-functions-overview.md?tabs=powershell#application-patterns).
 
 >[!NOTE]
 > Előfordulhat, hogy a "kérelmek várólistára helyezése az elérhető futási terek hiányában" figyelmeztetést kap, ne feledje, hogy ez nem jelent hibát. Az üzenet közli, hogy a kérések várólistára kerülnek, és az előző kérések befejezésekor lesznek kezelve.
@@ -655,7 +655,7 @@ Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-sc
 
 A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

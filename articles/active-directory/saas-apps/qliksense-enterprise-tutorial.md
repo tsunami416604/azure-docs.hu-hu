@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4995f813bbfe7ef368f83085cdd61ab97fa330e8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552356"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108524"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Oktatóanyag: a Qlik Sense Enterprise integrálása a Azure Active Directory
 
@@ -109,7 +109,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -136,7 +136,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
     > [!NOTE]
     > Mielőtt feltölti a identitásszolgáltató-metaadatokat a Qlik Sense-kiszolgálóra, a fájlt módosítani kell, hogy eltávolítsa az adatokat az Azure AD és a Qlik Sense Server megfelelő működésének biztosítása érdekében.
 
-    ![QlikSense][qs24]
+    ![Képernyőfelvétel: egy Visual Studio Code-ablak, amely az összevonási metaadatok X M-fájlját tartalmazza.][qs24]
 
     a. Nyissa meg a FederationMetaData.xml fájlt, amelyet Azure Portal egy szövegszerkesztőben töltött le.
 
@@ -150,19 +150,19 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 3. A QMC kattintson a **virtuális proxyk** menüpontra.
 
-    ![QlikSense][qs6]
+    ![A képernyőfelvételen a rendszer konfigurálása elemből kiválasztott virtuális proxyk láthatók.][qs6]
 
 4. A képernyő alján kattintson az **új létrehozása** gombra.
 
-    ![QlikSense][qs7]
+    ![A képernyőképen az új létrehozása lehetőség látható.][qs7]
 
 5. Megjelenik a virtuális proxy szerkesztési képernyője.  A képernyő jobb oldalán egy menü jelenik meg a konfigurációs beállítások láthatóvá tételéhez.
 
-    ![QlikSense][qs9]
+    ![A képernyőfelvétel a tulajdonságok közül kiválasztott azonosítást jeleníti meg.][qs9]
 
 6. Az azonosító menü beállítás bejelölésével adja meg az Azure virtuális proxy konfigurációjának azonosító adatait.
 
-    ![QlikSense][qs8]  
+    ![Képernyőfelvétel: a virtuális proxy azonosításának szerkesztése szakasz, ahol megadhatja a leírt értékeket.][qs8]  
 
     a. A **Leírás** mező a virtuális proxy konfigurációjának rövid neve.  Adja meg a Leírás értékét.
 
@@ -174,7 +174,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. Kattintson a hitelesítési menü lehetőségre, hogy láthatóvá tegye azt.  Megjelenik a hitelesítés képernyő.
 
-    ![QlikSense][qs10]
+    ![Képernyőfelvétel: a virtuális proxy hitelesítésének szerkesztése szakasz, ahol megadhatja a leírt értékeket.][qs10]
 
     a. A **Névtelen hozzáférési mód** legördülő lista meghatározza, hogy a névtelen felhasználók hozzáférhetnek-e a Qlik a virtuális proxyn keresztül.  Az alapértelmezett beállítás nem névtelen felhasználó.
 
@@ -196,55 +196,55 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 8. Kattintson a **terheléselosztás** menüpontra, hogy láthatóvá tegye azt.  Megjelenik a terheléselosztás képernyője.
 
-    ![QlikSense][qs11]
+    ![A képernyőfelvételen a virtuális proxy szerkesztési képernyője látható a TERHELÉSELOSZTÁShoz, ahol kiválaszthatja az új kiszolgáló hozzáadása csomópontot.][qs11]
 
 9. Kattintson az **új kiszolgáló csomópont hozzáadása** gombra, válassza a motor csomópont vagy a csomópontok Qlik a munkamenetek küldése terheléselosztás céljából lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
-    ![QlikSense][qs12]
+    ![Képernyőfelvétel: a kiszolgáló-csomópontok hozzáadása az egyenleg betöltéséhez párbeszédpanel, ahol kiszolgálókat adhat hozzá.][qs12]
 
 10. A Speciális menü lehetőségre kattintva láthatóvá teheti azt. Megjelenik a speciális képernyő.
 
-    ![QlikSense][qs13]
+    ![A képernyőképen a virtuális proxy szerkesztése speciális képernyő látható.][qs13]
 
     A gazdagép engedélyezési listája azonosítja azokat a gazdagépeket, amelyeket a rendszer az Qlik Sense-kiszolgálóhoz való csatlakozáskor elfogad.  **Adja meg a hostname Users (állomásnév) felhasználók által megadott értéket a Qlik Sense Serverhez való csatlakozáskor.** Az állomásnév ugyanaz az érték, mint az SAML-gazdagép URI-ja a https://nélkül.
 
 11. Kattintson az **alkalmaz** gombra.
 
-    ![QlikSense][qs14]
+    ![A képernyőképen az Apply (alkalmaz) gomb látható.][qs14]
 
 12. Kattintson az OK gombra azon figyelmeztető üzenet elfogadásához, amelyet a virtuális proxyhoz kapcsolódó állapotú proxyk újraindítása fog.
 
-    ![QlikSense][qs15]
+    ![A képernyőfelvételen a virtuális proxy megerősítő üzenet módosításainak alkalmazása látható.][qs15]
 
 13. A képernyő jobb oldalán megjelenik a társított elemek menü.  Kattintson a **proxyk** menüpontra.
 
-    ![QlikSense][qs16]
+    ![A képernyőképen a társított elemek közül kiválasztott proxyk láthatók.][qs16]
 
 14. Megjelenik a proxy képernyő.  Kattintson a lenti **hivatkozás** gombra a proxy virtuális proxyhoz való csatolásához.
 
-    ![QlikSense][qs17]
+    ![Képernyőfelvétel: a hivatkozás gomb.][qs17]
 
 15. Válassza ki azt a proxy csomópontot, amely támogatni fogja ezt a virtuális proxy-kapcsolatot, majd kattintson a **hivatkozás** gombra.  A csatolás után a proxy a társított proxyk területen jelenik meg.
 
-    ![QlikSense][qs18]
+    ![Képernyőfelvétel: Select proxy Services.][qs18]
   
-    ![QlikSense][qs19]
+    ![Képernyőfelvétel: a társított proxyk megjelenítése a virtuális proxyhoz társított elemek párbeszédpanelen.][qs19]
 
 16. Körülbelül öt – tíz másodperc elteltével megjelenik a frissítési QMC üzenet.  Kattintson a **QMC frissítése** gombra.
 
-    ![QlikSense][qs20]
+    ![Képernyőfelvétel: az az üzenet, amelyen a munkamenet véget ért.][qs20]
 
 17. A QMC frissítésekor kattintson a **virtuális proxyk** menüpontra. Az új SAML virtuális proxy bejegyzés megjelenik a képernyőn látható táblázatban.  Egyetlen kattintással a virtuális proxy bejegyzésére.
 
-    ![QlikSense][qs51]
+    ![A képernyőfelvételen egyetlen bejegyzéssel rendelkező virtuális proxyk láthatók.][qs51]
 
 18. A képernyő alján az SP-metaadatok letöltése gomb aktiválva lesz.  A metaadatok fájlba mentéséhez kattintson az **SP-metaadatok letöltése** gombra.
 
-    ![QlikSense][qs52]
+    ![A képernyőképen a letöltés S P metaadatokat ábrázoló gomb látható.][qs52]
 
 19. Nyissa meg az SP metaadat-fájlt.  Figyelje meg a **entityID** bejegyzést és a **AssertionConsumerService** bejegyzést.  Ezek az értékek egyenértékűek az **azonosítóval**, a **bejelentkezési URL** -címmel és a **Válasz URL-címével** az Azure ad-alkalmazás konfigurációjában. Illessze be ezeket az értékeket a **Qlik Sense Enterprise domain és URLs** szakaszba az Azure ad-alkalmazás konfigurációjában, ha nem megfelelőek, majd cserélje le őket a Azure ad alkalmazás konfigurációs varázslóban.
 
-    ![QlikSense][qs53]
+    ![A képernyőfelvétel egy egyszerű szövegszerkesztőt mutat be a entityID és a AssertionConsumerService nevű EntityDescriptor.][qs53]
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Qlik Sense Enterprise test User létrehozása
 

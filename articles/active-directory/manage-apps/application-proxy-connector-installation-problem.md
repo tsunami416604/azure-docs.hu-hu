@@ -1,37 +1,32 @@
 ---
-title: Probléma az alkalmazásproxy-ügynök összekötő telepítésekor | Microsoft Docs
-description: Az alkalmazásproxy-ügynök összekötő telepítésekor esetlegesen felmerülő problémák elhárítása
+title: Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
+description: Az alkalmazásproxy-ügynök összekötő Azure Active Directory való telepítésekor esetlegesen felmerülő problémák elhárítása.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764689"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108201"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
-A Microsoft HRE alkalmazásproxy-összekötő egy belső tartomány-összetevő, amely kimenő kapcsolatokat használ a felhőben elérhető végpont és a belső tartomány közötti kapcsolat létrehozásához.
+Microsoft Azure Active Directory alkalmazásproxy-összekötő egy belső tartomány-összetevő, amely kimenő kapcsolatokat használ a felhőben elérhető végpont és a belső tartomány közötti kapcsolat létrehozásához.
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Általános problémás területek az összekötő telepítésével
 
 Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az alábbi területek egyike:
 
-1.  **Kapcsolat** – a sikeres telepítés befejezéséhez az új összekötőnek regisztrálnia kell és meg kell teremtenie a jövőbeli megbízhatósági tulajdonságokat. Ezt úgy teheti meg, hogy csatlakozik a HRE Application proxy Cloud Service-hez.
+1.  **Kapcsolat** – a sikeres telepítés befejezéséhez az új összekötőnek regisztrálnia kell és meg kell teremtenie a jövőbeli megbízhatósági tulajdonságokat. Ezt úgy teheti meg, hogy csatlakozik a Azure Active Directory Application Proxy Cloud Service-hez.
 
 2.  **Megbízhatósági kapcsolat létesítése** – az új összekötő létrehoz egy önaláírt tanúsítványt, és regisztrálja magát a Cloud Service-ben.
 
@@ -42,7 +37,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>A Cloud Application proxy szolgáltatás és a Microsoft bejelentkezési oldal kapcsolatának ellenőrzése
 
-**Cél:** Ellenőrizze, hogy az összekötő számítógép tud-e csatlakozni a HRE-alkalmazásproxy-regisztrációs végponthoz és a Microsoft bejelentkezési oldalához.
+**Cél:** Ellenőrizze, hogy az összekötő számítógép tud-e csatlakozni az alkalmazásproxy regisztrációs végponthoz, valamint a Microsoft bejelentkezési lapjához.
 
 1.  Az összekötő-kiszolgálón futtassa a port tesztet a [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) vagy más port tesztelési eszköz használatával annak ellenőrzéséhez, hogy a 443-es és a 80-es portok nyitva vannak-e.
 
@@ -67,7 +62,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 **Az ügyféltanúsítvány ellenőrzése:**
 
-Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítványtároló a%ProgramData%\microsoft\Microsoft HRE-alkalmazásproxyban található Connector\Config\TrustSettings.xml
+Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítványtároló a következő címen található: `%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml` .
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,23 +74,17 @@ Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítván
 </ConnectorTrustSettingsFile>
 ```
 
-Itt láthatók a lehetséges **IsInUserStore** értékek és jelentések:
+A lehetséges **IsInUserStore** értékek értéke **igaz** és **hamis**. Az **igaz** érték azt jelenti, hogy az automatikusan megújított tanúsítványt a hálózati szolgáltatás felhasználói tanúsítványtárolójának személyes tárolójában tárolja a rendszer. A **false** érték azt jelenti, hogy az ügyféltanúsítvány a Register-AppProxyConnector parancs által kezdeményezett telepítés vagy regisztráció során lett létrehozva, és a rendszer a helyi gép tanúsítványtárolójának személyes tárolójában tárolja.
 
-- **false (hamis** ) – az ügyféltanúsítvány a Register-AppProxyConnector parancs által kezdeményezett telepítés vagy regisztráció során lett létrehozva. A rendszer a helyi gép tanúsítványtárolójának személyes tárolójában tárolja. 
-
-A tanúsítvány ellenőrzéséhez kövesse az alábbi lépéseket:
-
-1. A **certlm. msc** futtatása
-2. A felügyeleti konzolon bontsa ki a személyes tárolót, és kattintson a tanúsítványok elemre.
-3. A **connectorregistrationca.msappproxy.net** által kiállított tanúsítvány megkeresése
-
-- **true (igaz** ) – az automatikusan megújított tanúsítványt a hálózati szolgáltatás felhasználói tanúsítványtárolójának személyes tárolójában tárolja a rendszer. 
-
-A tanúsítvány ellenőrzéséhez kövesse az alábbi lépéseket:
-
+Ha az érték **true (igaz**), kövesse az alábbi lépéseket a tanúsítvány ellenőrzéséhez:
 1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) letöltése
 2. Bontsa ki a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) a csomagból, és futtassa a **PsExec-i-u "NT AUTHORITY \ szolgáltatás" cmd.exe** egy rendszergazda jogú parancssorból.
 3. Futtassa a **certmgr. msc fájlt** az újonnan megjelenő parancssorban
+4. A felügyeleti konzolon bontsa ki a személyes tárolót, és kattintson a tanúsítványok elemre.
+5. A **connectorregistrationca.msappproxy.net** által kiállított tanúsítvány megkeresése
+
+Ha az érték **hamis**, kövesse az alábbi lépéseket a tanúsítvány ellenőrzéséhez:
+1. A **certlm. msc** futtatása
 2. A felügyeleti konzolon bontsa ki a személyes tárolót, és kattintson a tanúsítványok elemre.
 3. A **connectorregistrationca.msappproxy.net** által kiállított tanúsítvány megkeresése
 

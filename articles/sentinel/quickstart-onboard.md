@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057518"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106977"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Gyorsútmutató: Az Azure Sentinel előkészítése
 
@@ -52,7 +52,6 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
     | Ausztrália | Ausztrália |
     | Egyesült Királyság | Egyesült Királyság |
     | Kanada | Kanada |
-    | Ázsia és a Csendes-óceáni térség | Ázsia és a Csendes-óceáni térség (Szingapúr) |
     | Japán | Japán |
     |
 
@@ -97,7 +96,7 @@ Ha például bejelöli a **Azure Active Directory** adatforrást, amely lehetőv
 
 Az adatforrások csatlakoztatása után az adatai streamet kezdenek az Azure Sentinelbe, és készen állnak a használat megkezdésére. Megtekintheti a naplókat a [beépített munkafüzetekben](quickstart-get-visibility.md) , és megkezdheti a lekérdezések létrehozását a log Analyticsban [az adatvizsgálathoz](tutorial-investigate-cases.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan lehet bevezetni és csatlakoztatni az adatforrásokat az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

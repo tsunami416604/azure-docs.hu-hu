@@ -3,17 +3,17 @@ title: 'Gyors útmutató: Azure Blob Storage Library V12 – Xamarin'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a 12-es verzióban a Xamarin használatával tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a mobileszközön, és hogyan listázhatja az összes blobot egy tárolóban.
 author: codemillmatt
 ms.author: masoucou
-ms.date: 05/08/2020
+ms.date: 10/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 60381d68dc2c1bae5afb2655558e8a35b65c965d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093956"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109017"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár V12 és Xamarin
 
@@ -267,7 +267,7 @@ A tisztítási folyamat megkezdése előtt ellenőrizze, hogy a blob tartalmána
 
 Miután ellenőrizte az értékeket, erősítse meg a tároló törlésére és a bemutató befejezésére vonatkozó kérést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat az Azure Blob Storage ügyféloldali Library V12 és a Xamarin használatával.
 

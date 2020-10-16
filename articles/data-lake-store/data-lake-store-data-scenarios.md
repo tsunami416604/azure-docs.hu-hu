@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441051"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109255"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>A Azure Data Lake Storage Gen1 használata big data követelményekhez
 
@@ -48,9 +48,9 @@ Ez olyan adatforrásokat jelent, amelyeket különböző források, például al
 
 A következő eszközök használhatók:
 
-* [Azure stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) – a Event Hubsba betöltött események Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen1 kimenet használatával is megírhatók.
+* [Azure stream Analytics](../stream-analytics/stream-analytics-define-outputs.md) – a Event Hubsba betöltött események Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen1 kimenet használatával is megírhatók.
 * [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) – az adatok közvetlenül a Storm-fürtről Data Lake Storage Gen1 is írhatók.
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – események fogadása Event Hubsről, majd a [Data Lake Storage Gen1 .net SDK](data-lake-store-get-started-net-sdk.md)-val való Data Lake Storage Gen1ának megírása.
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) – események fogadása Event Hubsről, majd a [Data Lake Storage Gen1 .net SDK](data-lake-store-get-started-net-sdk.md)-val való Data Lake Storage Gen1ának megírása.
 
 ### <a name="relational-data"></a>Relációs adatok
 A kapcsolódó adatbázisok adatait is megtekintheti. Egy adott időszakban a kapcsolati adatbázisok nagy mennyiségű adatot gyűjtenek, amelyek kulcsfontosságú elemzéseket biztosítanak, ha big data folyamaton keresztül dolgozzák fel őket. Az alábbi eszközök használatával helyezheti át ezeket az eszközöket Data Lake Storage Gen1ba.
@@ -131,4 +131,4 @@ A szolgáltatások együttes használatával a Data Lake Storage Gen1ban tárolt
 ![Az Data Lake Storage Gen1ban lévő adatmegjelenítés](./media/data-lake-store-data-scenarios/visualize-data.png "Az Data Lake Storage Gen1ban lévő adatmegjelenítés")
 
 * Az [adatok Data Lake Storage Gen1ból az Azure szinapszis analyticsbe való áthelyezéséhez Azure Data Factory használatával indítható (korábban SQL Data Warehouse)](../data-factory/copy-activity-overview.md)
-* Ezután [integrálhatja Power bi az Azure szinapszis Analytics szolgáltatással](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) , hogy vizuálisan jelenítse meg az adatmegjelenítést.
+* Ezután [integrálhatja Power bi az Azure szinapszis Analytics szolgáltatással](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) , hogy vizuálisan jelenítse meg az adatmegjelenítést.

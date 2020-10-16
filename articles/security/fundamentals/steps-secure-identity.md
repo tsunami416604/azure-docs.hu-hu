@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399805"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107810"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
-Ha elolvassa ezt a dokumentumot, tisztában van a biztonság fontosságával. Valószínűleg már viseli a felelősséget a szervezet védelme érdekében. Ha meg kell győznie másokat a biztonság fontosságáról, küldje el a [Microsoft biztonsági intelligencia legújabb jelentését](https://go.microsoft.com/fwlink/p/?linkid=2073747).
+Ha elolvassa ezt a dokumentumot, tisztában van a biztonság fontosságával. Valószínűleg már viseli a felelősséget a szervezet védelme érdekében. Ha meg kell győznie másokat a biztonság fontosságáról, küldje el a [Microsoft biztonsági intelligencia legújabb jelentését](https://www.microsoft.com/security/business/security-intelligence-report).
 
 Ez a dokumentum segítséget nyújt a Azure Active Directory képességeinek biztonságosabbá tételéhez egy öt lépésből álló ellenőrzőlista használatával, amellyel a szervezetet a számítógépes támadásokkal szemben beoltották.
 
@@ -211,7 +211,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](https://aka.ms/deploymentplans) .
 

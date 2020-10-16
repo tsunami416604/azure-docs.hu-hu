@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55ab6b339d6cb71bf46340e458bcc93cd73e2ba9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548928"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Oktatóanyag: Azure Active Directory integráció a QuickHelp
 
@@ -130,17 +130,17 @@ Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához hajtsa v
 
 2. A felső menüben kattintson a **rendszergazda**elemre.
    
-    ![Egyetlen Sign-On konfigurálása][21]
+    ![A képernyőképen az ötletgyűjtéshez használható felügyeleti menüelem látható.][21]
 
 3. A **QuickHelp-rendszergazda** menüben kattintson a **Beállítások**elemre.
    
-    ![Egyetlen Sign-On konfigurálása][22]
+    ![A képernyőképen a QuickHelp felügyeleti menüjében kiválasztott beállítások láthatók.][22]
 
 4. Kattintson a **hitelesítési beállítások**elemre.
 
 5. A **hitelesítési beállítások** lapon végezze el a következő lépéseket
    
-    ![Egyetlen Sign-On konfigurálása][23]
+    ![Képernyőfelvétel: a hitelesítési beállítások oldal, ahol megadhatja a leírt értékeket.][23]
    
     a. **SSO-típusként**válassza a **WSFederation**lehetőséget.
    
@@ -176,7 +176,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

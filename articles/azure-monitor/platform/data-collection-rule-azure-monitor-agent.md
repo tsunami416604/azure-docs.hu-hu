@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968401"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108014"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező és a küldendő adatforrásokat határozzák meg. Ez a cikk azt ismerteti, hogyan lehet adatgyűjtési szabályt létrehozni a virtuális gépekről az Azure Monitor ügynök használatával történő adatgyűjtéshez.
@@ -64,10 +64,10 @@ Kattintson az **adatforrás hozzáadása** lehetőségre, majd **tekintse át a 
 ## <a name="createusingrestapi"></a>Létrehozás a REST API használatával
 Az alábbi lépéseket követve hozzon létre egy DCR-t és egy társítást a REST API használatával. 
 1.Manuálisan hozza létre a DCR-fájlt a [DCR](data-collection-rule-overview.md#sample-data-collection-rule)-ben látható JSON-formátum használatával.
-2.Hozza létre a szabályt a [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)használatával.
-3.Hozzon létre egy társítást az egyes virtuális gépekhez az adatgyűjtési szabályhoz a [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)használatával.
+2.Hozza létre a szabályt a [REST API](/rest/api/monitor/datacollectionrules/create#examples)használatával.
+3.Hozzon létre egy társítást az egyes virtuális gépekhez az adatgyűjtési szabályhoz a [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor-ügynökről](azure-monitor-agent-overview.md).
 - További információ az [adatgyűjtési szabályokról](data-collection-rule-overview.md).

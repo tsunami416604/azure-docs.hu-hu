@@ -4,12 +4,12 @@ description: Az általános riasztási séma megismerése, miért érdemes haszn
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539482"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108830"
 ---
 # <a name="common-alert-schema"></a>Gyakori riasztási séma
 
@@ -39,7 +39,7 @@ Az általános riasztási séma elsődlegesen a riasztási értesítésekben is 
 
 Az új séma többek között a Azure Portal és a Azure mobile app is lehetővé teszi, hogy az azonnali jövőben is gazdagabb legyen a riasztások felhasználásának élménye. 
 
-[További információ a webhookok/Logic Apps/Azure Functions/Automation Runbookok sémájának definícióit ismertető témakörben.](https://aka.ms/commonAlertSchemaDefinitions)
+[További információ a webhookok/Logic Apps/Azure Functions/Automation Runbookok sémájának definícióit ismertető témakörben.](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > A következő műveletek nem támogatják az általános riasztási sémát: ITSM-csatoló.
@@ -120,5 +120,5 @@ Például a [Létrehozás vagy frissítés](/rest/api/monitor/actiongroups/creat
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyakori riasztási séma-definíciók webhookok/Logic Apps/Azure Functions/Automation Runbookok.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.](./alerts-common-schema-integrations.md) 
+- [Gyakori riasztási séma-definíciók webhookok/Logic Apps/Azure Functions/Automation Runbookok.](./alerts-common-schema-definitions.md)
+- [Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.](./alerts-common-schema-integrations.md)

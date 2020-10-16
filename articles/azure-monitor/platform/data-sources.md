@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48336b65ec564f834ef8a1e8f4911c89b1a37f31
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802063"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107946"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
 Azure Monitor egy [közös figyelési adatplatformon](data-platform.md) alapul, amely [naplókat](data-platform-logs.md) és [mérőszámokat](data-platform-metrics.md)tartalmaz. Az adatok ebbe a platformba való gyűjtése lehetővé teszi, hogy a több erőforrásból származó adatok együttesen legyenek elemezve az Azure Monitor-ban lévő eszközök közös eszközkészletének használatával. A figyelési adatokat más helyszínekre is elküldheti bizonyos forgatókönyvek támogatása céljából, és egyes erőforrások a naplókba vagy metrikába való összegyűjtésük előtt más helyszínekre is írhatnak.
@@ -20,7 +20,7 @@ Ez a cikk az Azure-erőforrások által létrehozott figyelési adatok mellett A
 
 ## <a name="application-tiers"></a>Alkalmazásrétegek
 
-Az Azure-alkalmazásokból származó monitorozási adatok forrásai rétegekbe rendezhetők, a legmagasabb szinten pedig az alkalmazás, és az alacsonyabb szintek az Azure platform összetevői. Az egyes rétegek adatainak elérési módja változó. Az alkalmazási rétegeket az alábbi táblázat foglalja össze, és az egyes rétegekben található megfigyelési adatforrások az alábbi részekben láthatók. Az egyes adatterületek leírását és az azokhoz való hozzáférés módját lásd: az [Azure-beli adathelyek figyelése](data-locations.md) .
+Az Azure-alkalmazásokból származó monitorozási adatok forrásai rétegekbe rendezhetők, a legmagasabb szinten pedig az alkalmazás, és az alacsonyabb szintek az Azure platform összetevői. Az egyes rétegek adatainak elérési módja változó. Az alkalmazási rétegeket az alábbi táblázat foglalja össze, és az egyes rétegekben található megfigyelési adatforrások az alábbi részekben láthatók. Az egyes adatterületek leírását és az azokhoz való hozzáférés módját lásd: az [Azure-beli adathelyek figyelése](../monitor-reference.md) .
 
 
 ![Megfigyelési szintek](../media/overview/overview.png)
@@ -190,7 +190,7 @@ Az alkalmazások standard szintjein kívül előfordulhat, hogy figyelnie kell m
 
 ![Egyéni gyűjtemény](media/data-sources/custom.png)
 
-| Cél | Módszer | Leírás | Referencia |
+| Cél | Metódus | Leírás | Referencia |
 |:---|:---|:---|:---|
 | Azure Monitor-naplók | Data Collector API | Gyűjtsön adatokat a REST-ügyfélről, és tárolja Log Analytics munkaterületen. | [Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)](data-collector-api.md) |
 | Azure Monitor metrikák | Egyéni metrikák API | Metrikus adatokat gyűjthet a REST-ügyfélről, és Azure Monitor metrikák adatbázisában tárolja őket. | [Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával](metrics-store-custom-rest-api.md) |
@@ -205,7 +205,7 @@ Az Azure egyéb szolgáltatásai a Azure Monitor adatplatformba írnak be adatf�
 | [Azure Sentinel](../../sentinel/index.yml) | Azure Monitor-naplók | Az Azure Sentinel a különböző adatforrásokból gyűjtött adatokat egy Log Analytics munkaterületen tárolja, amely lehetővé teszi, hogy a rendszer a Azure Monitor által gyűjtött egyéb naplózási adatokkal elemezze.  | [Adatforrások csatlakoztatása](../../sentinel/quickstart-onboard.md) |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor által gyűjtött megfigyelési adatok típusairól](data-platform.md) , valamint az adatok megtekintésének és elemzésének módjáról.
-- Sorolja fel azokat a [különböző helyeket, amelyekben az Azure-erőforrások tárolják az adattárolási](data-locations.md) és elérési módját. 
+- Sorolja fel azokat a [különböző helyeket, amelyekben az Azure-erőforrások tárolják az adattárolási](../monitor-reference.md) és elérési módját.

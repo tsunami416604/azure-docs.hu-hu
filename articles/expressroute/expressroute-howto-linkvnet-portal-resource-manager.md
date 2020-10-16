@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855353"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107283"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Oktatóanyag: virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a portál használatával
 
@@ -27,7 +27,7 @@ ms.locfileid: "91855353"
 
 Ez az oktatóanyag segítséget nyújt egy kapcsolat létrehozásához egy virtuális hálózat Azure ExpressRoute-áramkörhöz való összekapcsolásához a Azure Portal használatával. Az Azure ExpressRoute-áramkörhöz csatlakozó virtuális hálózatok lehetnek ugyanahhoz az előfizetéshez, vagy egy másik előfizetés részét képezik.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > - Egy virtuális hálózat összekapcsolása ugyanahhoz az előfizetéshez tartozó áramkörhöz.
 > - Virtuális hálózat összekapcsolása egy másik előfizetésben található áramkörhöz.
@@ -63,11 +63,19 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/express-route-circuit.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
-2. Most már megkezdheti a kapcsolat létesítését, hogy a virtuális hálózati átjárót a ExpressRoute áramkörhöz kapcsolja. Válassza a **Kapcsolódás**  >  **Hozzáadás** lehetőséget a **Kapcsolódás hozzáadása** lap megnyitásához, majd konfigurálja az értékeket.
+1. Most már megkezdheti a kapcsolat létesítését, hogy a virtuális hálózati átjárót a ExpressRoute áramkörhöz kapcsolja. **Connection**  >  A kapcsolódás hozzáadása lap megnyitásához **Add connection** válassza a kapcsolódás**Hozzáadás** lehetőséget.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
-3. A kapcsolat sikeres konfigurálását követően a kapcsolati objektum megjeleníti a kapcsolat információit.
+1. Adja meg a kapcsolatok nevét, majd kattintson a **Tovább gombra: beállítások >**.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
+
+1. Válassza ki azt az átjárót, amely az áramkörhöz kapcsolni kívánt virtuális hálózathoz tartozik, majd válassza a **felülvizsgálat + létrehozás**lehetőséget. Ezután válassza a **Létrehozás** az érvényesítés befejezése után lehetőséget.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
+
+1. A kapcsolat sikeres konfigurálását követően a kapcsolati objektum megjeleníti a kapcsolat információit.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
@@ -109,7 +117,13 @@ Az áramkör tulajdonosa létrehoz egy engedélyt, amely létrehoz egy engedély
 
 **A kapcsolódási engedélyek törlése**
 
-A kapcsolatok törléséhez válassza a **Törlés** ikont a kapcsolatok lapján.
+A kapcsolatok törléséhez válassza a **Törlés** ikont a kapcsolatok engedélyezési kulcsához.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
+
+Ha törölni szeretné a kapcsolatot, de megtartja az engedélyezési kulcsot, törölheti a kapcsolatot az áramkör kapcsolat lapján.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
 ### <a name="circuit-user-operations"></a>Áramkör felhasználói műveletei
 
@@ -117,33 +131,35 @@ Az áramkör-felhasználónak szüksége van az erőforrás-AZONOSÍTÓra és eg
 
 **A kapcsolódási engedély beváltása**
 
-1. Kattintson az **+ új** gombra.
+1. Válassza az **+ erőforrás létrehozása** gombot. Keressen rá a **kapcsolatok** kifejezésre, és válassza a **Létrehozás**lehetőséget.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
-2. Keresse meg a **"kapcsolatok"** kifejezést a piactéren, jelölje ki, majd válassza a **Létrehozás**lehetőséget.
+1. Győződjön meg arról, hogy a *kapcsolattípus* **ExpressRoute**értékre van állítva. Válassza ki az *erőforráscsoportot* és a *helyet*, majd kattintson az **OK gombra** az alapok lapon.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/search-connection.png" alt-text="Képernyőkép a ExpressRoute áramkörről" értékre van állítva.
-4. Adja meg a részleteket, majd az alapismeretek lapon kattintson az **OK gombra** .
+    > [!NOTE]
+    > A helynek *meg kell* egyeznie annak a virtuális hálózati átjárónak a helyével, amelyhez a kapcsolatokat létrehozza.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
-5. A **Beállítások** lapon válassza ki a **virtuális hálózati átjárót** , és jelölje be az **Engedélyezés beváltása** jelölőnégyzetet.
-6. Adja meg az **engedélyezési kulcsot** és a **társ áramköri URI** -t, és adjon nevet a kapcsolatnak. Kattintson az **OK** gombra. A **társ áramköri URI** a ExpressRoute áramkör erőforrás-azonosítója (amelyet a ExpressRoute-áramkör tulajdonságok beállítása paneljén talál).
+1. A **Beállítások** lapon válassza ki a *virtuális hálózati átjárót* , és jelölje be az **Engedélyezés beváltása** jelölőnégyzetet. Adja meg az *engedélyezési kulcsot* és a *társ áramköri URI* -t, és adjon nevet a kapcsolatnak. Válassza az **OK** lehetőséget. 
+ 
+    > [!NOTE]
+    > A *társ áramköri URI* a ExpressRoute áramkör erőforrás-azonosítója (amelyet a ExpressRoute-áramkör tulajdonságok beállítása paneljén talál).
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
-7. Tekintse át az **Összegzés** lapon található információkat, majd kattintson **az OK gombra**.
+1. Tekintse át az **Összegzés** lapon található információkat, majd kattintson **az OK gombra**.
 
-**A kapcsolódási engedély felszabadítása**
-
-Az engedélyezést a ExpressRoute áramkört a virtuális hálózathoz összekötő kapcsolat törlésével lehet felszabadítani.
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölheti a kapcsolatot, és leválaszthatja a VNet egy ExpressRoute-áramkörhöz úgy, hogy a kapcsolat lapján a **Törlés** ikonra kattint.
 
-## <a name="next-steps"></a>Következő lépések
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="Képernyőkép a ExpressRoute áramkörről":::
+
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztatható egy virtuális hálózat egy adott előfizetésben és egy másik előfizetésben található áramkörhöz. Az ExpressRoute-átjáróval kapcsolatos további információkért lásd: 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Application Proxy gyakori kérdések | Microsoft Docs
+title: Azure Active Directory Application Proxy gyakori kérdések
 description: Megtudhatja, milyen válaszokat kaphat az Azure AD Application Proxy a belső, helyszíni alkalmazások távoli felhasználók számára történő közzétételére vonatkozó gyakori kérdésekre (GYIK).
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589163"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104563"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -84,7 +84,6 @@ Az alkalmazásproxy használatához a Windows Server 2012 R2 vagy újabb verzió
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
 
-
 ## <a name="application-configuration"></a>Alkalmazáskonfiguráció
 
 ### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Hibaüzenetet kapok egy érvénytelen tanúsítványról vagy a lehetséges helytelen jelszóról
@@ -124,6 +123,12 @@ További információkért tekintse meg a [Kerberos által korlátozott delegál
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Az NTLM-hitelesítés együttműködik az Azure AD Application Proxy?
 
 Az NTLM-hitelesítés nem használható előhitelesítés vagy egyszeri bejelentkezési módszerként. Az NTLM-hitelesítés csak akkor használható, ha közvetlenül az ügyfél és a közzétett webes alkalmazás között lehet egyeztetni. Az NTLM-hitelesítés használata általában egy bejelentkezési üzenet megjelenítését okozza a böngészőben.
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>Használhatom a "helyszíni felhasználó egyszerű neve" vagy a "helyszíni SAM-fiók neve" kifejezést egy B2B IWA egyszeri bejelentkezési forgatókönyvben?
+
+Nem, ez nem fog működni, mert az Azure AD-beli vendég felhasználó nem rendelkezik a fent említett bejelentkezési identitások által igényelt attribútummal.
+
+Ebben az esetben az "egyszerű felhasználónév" lesz tartalék. A B2B-forgatókönyvről további információért olvassa el a [B2B-felhasználók Azure ad-beli hozzáférésének engedélyezése a helyszíni alkalmazásokhoz](../external-identities/hybrid-cloud-to-on-premises.md)című témakört.
 
 ## <a name="pass-through-authentication"></a>Átmenő hitelesítés
 
@@ -198,5 +203,5 @@ Ez a forgatókönyv nem támogatott közvetlenül. A forgatókönyv beállítás
 1. Tegye közzé mind a HTTP-, mind a HTTPS-URL-címet külön alkalmazásként egy helyettesítő karakterrel, de adjon nekik egy másik egyéni tartományt. Ez a konfiguráció úgy fog működni, mert eltérő külső URL-címekkel rendelkeznek.
 
 2. A HTTPS URL-cím közzététele helyettesítő alkalmazás használatával. Tegye közzé a HTTP-alkalmazásokat az alábbi alkalmazásproxy PowerShell-parancsmagok használatával:
-   - [Alkalmazásproxy-alkalmazások kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [Alkalmazásproxy-összekötő kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [Alkalmazásproxy-alkalmazások kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Alkalmazásproxy-összekötő kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

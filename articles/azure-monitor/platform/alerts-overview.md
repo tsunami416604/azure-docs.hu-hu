@@ -4,12 +4,12 @@ description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus ri
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317140"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108796"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -84,7 +84,7 @@ A következő riasztási állapotok támogatottak.
 
 A *riasztási állapot* különbözik, és független a *figyelő feltételtől*. A riasztási állapotot a felhasználó állítja be. A figyelő feltételét a rendszer állítja be. Riasztás esetén a riasztás figyelési feltétele *"tüzelt"* lesz, és ha a riasztást a tüzet jelző mögöttes feltétel kiüríti, a figyelő feltétele *"megoldva"* értékűre van állítva. 
 
-A riasztási állapot addig nem változik, amíg a felhasználó nem módosítja. Útmutató a [riasztások és az intelligens csoportok állapotának módosításához](https://aka.ms/managing-alert-smart-group-states).
+A riasztási állapot addig nem változik, amíg a felhasználó nem módosítja. Útmutató a [riasztások és az intelligens csoportok állapotának módosításához](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
 ## <a name="alerts-experience"></a>Riasztások felhasználói élmény 
 Az alapértelmezett riasztások lap egy adott időtartományon belül létrehozott riasztások összegzését tartalmazza. Megjeleníti az egyes súlyossági szintekhez tartozó összes riasztást, és azokat az oszlopokat, amelyek meghatározzák az egyes állapotokban lévő riasztások teljes számát. Válassza ki bármelyik csomópontot a súlyosság szerint szűrt [összes riasztás](#all-alerts-page) oldal megnyitásához.
@@ -181,7 +181,7 @@ A riasztási példányok felhasználása és kezelése megköveteli, hogy a felh
 
 Előfordulhat, hogy programozott módon kívánja lekérdezni az előfizetéssel létrehozott riasztásokat. Előfordulhat, hogy a lekérdezések a Azure Portalon kívül egyéni nézeteket hoznak létre, vagy a minták és trendek azonosításához a riasztások elemzését végzik.
 
-Az előfizetésekhez kapcsolódó riasztásokat a [Alert Management REST API](https://aka.ms/alert-management-api) vagy az [Azure Resource Graph](../../governance/resource-graph/overview.md) és az [erőforrások REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)használatával kérdezheti le.
+Az előfizetésekhez kapcsolódó riasztásokat a [Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) vagy az [Azure Resource Graph](../../governance/resource-graph/overview.md) és az [erőforrások REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)használatával kérdezheti le.
 
 Az erőforrások erőforrás-gráf REST API lehetővé teszi a riasztási példányok lekérdezését a skálán. Az erőforrás-gráf használata akkor ajánlott, ha több előfizetésben létrehozott riasztásokat kell kezelnie. 
 
@@ -200,16 +200,16 @@ Ezen erőforrás-gráf lekérdezés eredményét a portálon is láthatja az Azu
 
 A riasztásokat lekérdezheti az [alapvető](alerts-common-schema-definitions.md#essentials) mezőire.
 
-Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségével további információkat kaphat az egyes riasztásokról, például a [riasztási környezet](alerts-common-schema-definitions.md#alert-context) mezőiről.
+Az [Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) segítségével további információkat kaphat az egyes riasztásokról, például a [riasztási környezet](alerts-common-schema-definitions.md#alert-context) mezőiről.
 
 ## <a name="smart-groups"></a>Intelligens csoportok
 
-Az intelligens csoportok a gépi tanulási algoritmusok alapján összesítik a riasztásokat, ami segít csökkenteni a riasztási zajt és a hibaelhárítási segítséget. [További információ az intelligens csoportokról](https://aka.ms/smart-groups) és [az intelligens csoportok kezeléséről](https://aka.ms/managing-smart-groups).
+Az intelligens csoportok a gépi tanulási algoritmusok alapján összesítik a riasztásokat, ami segít csökkenteni a riasztási zajt és a hibaelhárítási segítséget. [További információ az intelligens csoportokról](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) és [az intelligens csoportok kezeléséről](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [További információ az intelligens csoportokról](https://aka.ms/smart-groups)
+- [További információ az intelligens csoportokról](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [A műveleti csoportok ismertetése](./action-groups.md)
-- [Riasztási példányok kezelése az Azure-ban](https://aka.ms/managing-alert-instances)
-- [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
+- [Riasztási példányok kezelése az Azure-ban](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Intelligens csoportok kezelése](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [További információ az Azure-riasztások díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/)

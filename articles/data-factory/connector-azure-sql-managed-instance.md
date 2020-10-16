@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure SQL felügyelt példányaiba és onnan
-description: Megtudhatja, hogyan helyezheti át adatait az Azure SQL felügyelt példányaiba és onnan az Azure Data Factory használatával.
+title: Az Azure SQL felügyelt példányain tárolt Adatmásolás és átalakítás
+description: Megtudhatja, hogyan másolhatja és alakíthatja át az Azure SQL felügyelt példányain a Azure Data Factory használatával.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,31 +10,30 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 3a9216c665cfdcdaf07980ace0399fd927885262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: a8b79cea8d502222d08dd3f1f0fb40d1982f565d
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332117"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107742"
 ---
-# <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Adatok másolása az Azure SQL felügyelt példányára és onnan a Azure Data Factory használatával
+# <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Az Azure SQL felügyelt példányain lévő Adatmásolás és átalakítás Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok másolásához az Azure SQL felügyelt példányain. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok másolásához az Azure SQL felügyelt példányaira, és hogyan lehet adatfolyamot használni az adatok átalakításához az Azure SQL felügyelt példányain. A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 A felügyelt SQL-példány összekötője a következő tevékenységek esetében támogatott:
 
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 
-Az SQL által felügyelt példányokból származó adatok bármely támogatott fogadó adattárba másolhatók. Az adatok másolása bármely támogatott forrás adattárból az SQL felügyelt példányára is elvégezhető. A másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
-
-Ez az SQL felügyelt példány-összekötő a következőket támogatja:
+Másolási tevékenység esetén ez az Azure SQL Database-összekötő támogatja ezeket a funkciókat:
 
 - Az adatok másolása SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat-hitelesítéssel az Azure-erőforrások egyszerű szolgáltatásával vagy felügyelt identitásával.
 - Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával beolvashatja az adatokból. A részleteket az SQL mi forrásból származó párhuzamos másolással is választhatja. a részletekért tekintse meg a [párhuzamos másolás az SQL-ből](#parallel-copy-from-sql-mi) című szakaszt.
@@ -476,7 +475,7 @@ A particionált másolás engedélyezésekor a másolási tevékenység párhuza
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be az SQL-ből. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása esetén ajánlott több fájlként írni egy mappába (csak a mappa nevét adja meg), ebben az esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Forgatókönyv                                                     | Javasolt beállítások                                           |
+| Használati eset                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés nagyméretű táblából, fizikai partíciókkal.        | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. <br><br/>Ha szeretné megnézni, hogy a tábla rendelkezik-e fizikai partícióval, tekintse át [ezt a lekérdezést](#sample-query-to-check-physical-partition). |
 | Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, egész számmal vagy datetime oszloppal az adatok particionálásához. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Partíciós oszlop** (nem kötelező): az adatparticionáláshoz használt oszlop megadása. Ha nincs megadva, a rendszer az indexet vagy az elsődleges kulcs oszlopot használja.<br/>**Partíció felső határa** és a **partíció alsó határa** (nem kötelező): adja meg, hogy meg szeretné-e állapítani a partíciós lépéseket. Ez nem a tábla sorainak szűrésére szolgál, a tábla összes sorát particionálja és másolja a rendszer. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értékeket.<br><br>Ha például az "ID" partíciós oszlop értéke 1 és 100 között van, és az alsó határ 20-ra van állítva, a felső határ pedig 80, és a párhuzamos másolás 4 Data Factory, akkor az adatok 4 partíció-azonosítóval vannak lekérdezve a következő tartományban: <= 20, [21, 50], [51, 80] és >= 81. |
@@ -638,9 +637,77 @@ Az alábbi minta azt mutatja be, hogyan használható egy tárolt eljárás egy 
     }
     ```
 
+## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
+
+Az adatok leképezési folyamatba való átalakításakor az Azure SQL felügyelt példányaiból származó táblákat olvashat és írhat. További információ: a forrás- [átalakítás](data-flow-source.md) és a fogadó [transzformáció](data-flow-sink.md) a leképezési adatfolyamatokban.
+
+> [!NOTE]
+> Az Azure SQL felügyelt példány-összekötő a leképezési adatforgalomban jelenleg nyilvános előzetes verzióként érhető el. Csatlakozhat az SQL felügyelt példány nyilvános végponthoz, de még nem rendelkezik privát végponttal.
+
+### <a name="source-transformation"></a>Forrás-átalakítás
+
+Az alábbi táblázat felsorolja az Azure SQL felügyelt példányok forrása által támogatott tulajdonságokat. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
+
+| Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tábla | Ha a tábla bemenetként lehetőséget választja, az adatfolyam beolvassa az adatkészletben megadott tábla összes adatát. | Nem | - |- |
+| Lekérdezés | Ha a lekérdezés bemenetként lehetőséget választja, adjon meg egy SQL-lekérdezést az adatok forrásból való beolvasásához, amely felülbírálja az adatkészletben megadott összes táblát. A lekérdezések használatával csökkentheti a sorok tesztelési vagy keresési lehetőségeit.<br><br>Az **Order by** záradék nem támogatott, de beállíthat egy teljes select from utasítást. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF, amely az SQL-ben egy olyan táblázatot ad vissza, amely az adatfolyamban használható.<br>Példa lekérdezésre: `Select * from MyTable where customerId > 1000 and customerId < 2000`| Nem | Sztring | lekérdezés |
+| Köteg mérete | Egy batch-méret megadása a nagyméretű adathalmazok beolvasásához. | Nem | Egész szám | batchSize |
+| Elkülönítési szint | Válasszon egyet a következő elkülönítési szintek közül:<br>– Olvasás véglegesítve<br>– Nem véglegesített olvasás (alapértelmezett)<br>– Ismételhető olvasás<br>– Szerializálható<br>-None (az elkülönítési szint figyelmen kívül hagyása) | Nem | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SZERIALIZÁLHATÓ<br/>NEZ egy</small> |isolationLevel |
+
+#### <a name="azure-sql-managed-instance-source-script-example"></a>Példa az Azure SQL felügyelt példány forrásának parancsfájlra
+
+Ha a forrás típusaként az Azure SQL felügyelt példányát használja, a társított adatfolyam-parancsfájl a következő:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SQLMISource
+```
+
+### <a name="sink-transformation"></a>Fogadó transzformáció
+
+Az alábbi táblázat felsorolja az Azure SQL felügyelt példányának fogadója által támogatott tulajdonságokat. Ezeket a tulajdonságokat a fogadó **beállításai** lapon módosíthatja.
+
+| Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Frissítési módszer | Adja meg, hogy milyen műveletek engedélyezettek az adatbázis célhelyén. Az alapértelmezett érték a beszúrások engedélyezése.<br>Sorok frissítéséhez, upsert vagy törléséhez [módosítási sor átalakítására](data-flow-alter-row.md) van szükség a műveletek sorainak címkézéséhez. | Igen | `true` vagy `false` | törölhető <br/>Insertable <br/>frissíthető <br/>upsertable |
+| Kulcsok oszlopai | A frissítések, a upsert és a törlések esetében meg kell adni a kulcs oszlop (oka) t, hogy meghatározza, melyik sort kell megváltoztatni.<br>A kulcsként kiválasztott oszlopnevet a következő frissítés, upsert, törlés részeként fogja használni a rendszer. Ezért ki kell választania egy oszlopot, amely szerepel a fogadó leképezésében. | Nem | Tömb | keys |
+| Kulcsok oszlopainak kihagyása | Ha nem szeretné az értéket a kulcs oszlopba írni, válassza a "kulcs oszlopainak kihagyása" lehetőséget. | Nem | `true` vagy `false` | skipKeyWrites |
+| Tábla művelete |Meghatározza, hogy a rendszer az összes sort újra létrehozza vagy eltávolítja a célhelyről az írás előtt.<br>- **Nincs**: a rendszer nem hajt végre műveletet a táblán.<br>- **Újból létrehozva**: a tábla eldobása és újbóli létrehozása megtörténik. Új tábla dinamikus létrehozásakor szükséges.<br>- **Csonkítás**: a céltábla összes sora el lesz távolítva. | Nem | `true` vagy `false` | hozza létre újra<br/>truncate |
+| Köteg mérete | Itt adhatja meg, hogy hány sort kell írni az egyes kötegekben. A nagyobb méretű kötegek növelik a tömörítési és a memória-optimalizálást, de a gyorsítótárban tárolt adatmennyiség miatt kifogytak a memória | Nem | Egész szám | batchSize |
+| SQL-parancsfájlok előtti és utáni | Adja meg azokat a többsoros SQL-parancsfájlokat, amelyeket a rendszer a (pre-Processing) és a (post-Processing) (utómunka) adatainak a fogadó adatbázisba való írása előtt hajt végre. | Nem | Sztring | preSQLs<br>postSQLs |
+
+#### <a name="azure-sql-managed-instance-sink-script-example"></a>Példa a felügyelt Azure SQL-példányra
+
+Ha az Azure SQL felügyelt példányát használja a fogadó típusaként, a társított adatfolyam-parancsfájl a következő:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SQLMISink
+```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
+
 ## <a name="data-type-mapping-for-sql-managed-instance"></a>SQL felügyelt példány adattípusának leképezése
 
-Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer az SQL felügyelt példány adattípusait használja az ideiglenes adattípusok Azure Data Factoryához. Annak megismeréséhez, hogy a másolási tevékenység hogyan legyen leképezve a forrás sémából és az adattípusból a fogadóba, lásd: [séma és adattípus-leképezések](copy-activity-schema-and-type-mapping.md).
+Ha az SQL felügyelt példányról a másolási tevékenység használatával másolt adatokra, a következő leképezéseket használja az SQL felügyelt példány adattípusaiból Azure Data Factory ideiglenes adattípusokra. Annak megismeréséhez, hogy a másolási tevékenység hogyan legyen leképezve a forrás sémából és az adattípusból a fogadóba, lásd: [séma és adattípus-leképezések](copy-activity-schema-and-type-mapping.md).
 
 | SQL felügyelt példány adattípusa | Azure Data Factory időközi adattípus |
 |:--- |:--- |
@@ -648,7 +715,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 | binary |Bájt [] |
 | bit |Logikai |
 | char |Karakterlánc, char [] |
-| dátum |DateTime |
+| date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
@@ -680,14 +747,6 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 >[!NOTE]
 > A decimális átmeneti típusra leképezett adattípusok esetén a másolási tevékenység jelenleg legfeljebb 28-ig támogatja a pontosságot. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
-
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
-
-## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
-
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
-
 ## <a name="using-always-encrypted"></a>Always Encrypted használata
 
 Ha az Azure SQL felügyelt példányára vagy [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)-ra másol adatokból, az [általános ODBC-összekötőt](connector-odbc.md) és az SQL Server ODBC-illesztőt a saját üzemeltetésű Integration Runtime segítségével. Az Azure SQL felügyelt példány-összekötője jelenleg nem támogatja a Always Encrypted. 
@@ -717,5 +776,5 @@ Pontosabban:
 
 4. Ennek megfelelően hozzon létre adatkészletet és másolási tevékenységet az ODBC-típussal. További tudnivalók az [ODBC-összekötőről](connector-odbc.md) című cikkben olvashatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

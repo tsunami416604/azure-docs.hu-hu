@@ -4,12 +4,12 @@ description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azu
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848687"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108099"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
 
@@ -105,7 +105,7 @@ Ha új diagnosztikai beállítást szeretne létrehozni a Azure Portalban, köve
 6. Válassza ki a **ServiceLog**, a **AllMetrics**vagy mindkettőt.
 7. A diagnosztikai beállítás létrehozásához válassza a **Mentés** lehetőséget.
 
-[A Azure Portal Azure monitoron keresztül is engedélyezheti a gyűjteményt a](../azure-monitor/platform/diagnostic-settings.md) diagnosztikai beállítások konfigurálásához egy [Resource Manager-sablon](../azure-monitor/platform/diagnostic-settings-template.md), illetve az Azure POWERSHELL vagy az Azure CLI használatával. További információ: [Az Azure platform naplófájljainak áttekintése](../azure-monitor/platform/platform-logs-overview.md).
+[A Azure Portal Azure monitoron keresztül is engedélyezheti a gyűjteményt a](../azure-monitor/platform/diagnostic-settings.md) diagnosztikai beállítások konfigurálásához egy [Resource Manager-sablon](../azure-monitor/samples/resource-manager-diagnostic-settings.md), illetve az Azure POWERSHELL vagy az Azure CLI használatával. További információ: [Az Azure platform naplófájljainak áttekintése](../azure-monitor/platform/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Diagnosztikai naplók elérése a Storage-ban
 
@@ -176,7 +176,7 @@ A Batch szolgáltatás által kibocsátott szolgáltatás-naplózási események
 - [Sikertelen feladat](batch-task-fail-event.md)
 - [Sikertelen feladat-ütemterv](batch-task-schedule-fail-event.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - További információ a [Batch-megoldások figyeléséről](monitoring-overview.md).

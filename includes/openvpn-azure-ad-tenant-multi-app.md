@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/21/2020
+ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3d1c34fe0fc045e829c2ea9166664f06fd3127
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606183"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116793"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. az Azure AD-bérlő létrehozása
 
@@ -70,6 +70,10 @@ Regisztrálja a VPN-ügyfelet az Azure AD-bérlőben.
     ```
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
+
+> [!NOTE]
+> Ha olyan globális rendszergazdai fiókot használ, amely nem natív az Azure AD-bérlőn a beleegyezőség biztosításához, az URL-címben cserélje le az "általános" kifejezést az Azure AD-címtár azonosítójával. Előfordulhat, hogy a "Common" kifejezést a címtár-azonosítójával együtt kell lecserélnie bizonyos más esetekben is.
+>
 
 5. Ha a rendszer kéri, válassza a **globális rendszergazdai** fiókot.
 
@@ -136,6 +140,6 @@ Rendelje hozzá a felhasználókat az alkalmazásaihoz.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. A **hozzárendelés hozzáadása**alatt kattintson a **felhasználók és csoportok**elemre. Válassza ki azokat a felhasználókat, akik számára elérhetővé szeretné tenni a VPN-alkalmazást. Kattintson a **Kiválasztás** elemre.
+3. A **hozzárendelés hozzáadása**alatt kattintson a **felhasználók és csoportok**elemre. Válassza ki azokat a felhasználókat, akik számára elérhetővé szeretné tenni a VPN-alkalmazást. Válassza a **Kiválasztás** lehetőséget.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

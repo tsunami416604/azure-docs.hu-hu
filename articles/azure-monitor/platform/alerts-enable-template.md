@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb44b7133e5644991d7413f4f824a8b55ffdd75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87849019"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108371"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -400,6 +400,5 @@ A Resource Manager-sablonokon a riasztások leggyakrabban akkor hasznosak, ha eg
 
 ## <a name="next-steps"></a>Következő lépések
 * [További információ a riasztásokról](alerts-overview.md)
-* [Diagnosztikai beállítások hozzáadása](./diagnostic-settings-template.md) a Resource Manager-sablonhoz
+* [Diagnosztikai beállítások hozzáadása](../samples/resource-manager-diagnostic-settings.md) a Resource Manager-sablonhoz
 * A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. alertrules/](/azure/templates/microsoft.insights/alertrules) a sablon referenciája.
-

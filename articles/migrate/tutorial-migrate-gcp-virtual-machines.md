@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan telepíthet át GCP virtuális gépeket
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cd3bf225c6de0401aaa625cf3bb037b3beb58a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bee73c6bbad9eef91e867b55ffde453a4012914
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716563"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108575"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform-(GCP-) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -29,7 +29,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson teljes áttelepítést az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="discover-and-assess"></a>Felderítés és Értékelés
 
@@ -399,7 +399,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 **Válasz:** Előfordulhat, hogy a EC2 virtuális gépek Azure-ba való migrálása előtt el kell végeznie ezeket a módosításokat:
 
 - Ha Cloud-init-t használ a virtuális gépek üzembe helyezéséhez, érdemes lehet letiltani a Cloud-init szolgáltatást a virtuális gépen az Azure-ba való replikálás előtt. A Cloud-init által a virtuális gépen végrehajtott kiépítési lépések valószínűleg GCP, és az Azure-ba való Migrálás után nem lesznek érvényesek.  
-- Tekintse át az [Előfeltételek](#prerequisites) szakaszt, és állapítsa meg, hogy van-e szükség módosításra az operációs rendszerhez
+- Tekintse át az [Előfeltételek](#prerequisites) szakaszt, és állapítsa meg, hogy szükséges-e az operációs rendszer módosítása az Azure-ba való Migrálás előtt.
 - Javasoljuk, hogy a végső áttelepítés előtt futtasson egy teszt-áttelepítést.  
 
 ## <a name="next-steps"></a>További lépések

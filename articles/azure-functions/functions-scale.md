@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372663"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108456"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -26,7 +26,7 @@ A használat és a Prémium csomag is automatikusan hozzáadja a számítási te
 
 A Prémium csomag további funkciókat kínál, például a prémium szintű számítási példányokat, a példányok határozatlan idejű megtartásának és VNet-kapcsolatának lehetőségét.
 
-A App Service-csomag lehetővé teszi, hogy kihasználhassa az Ön által felügyelt dedikált infrastruktúrát. A Function alkalmazás nem méretezhető az események alapján, ami azt jelenti, hogy soha nem méretezi a nulla értéket. (Megköveteli, hogy [a always on](#always-on) engedélyezve legyen.)
+A App Service-csomag lehetővé teszi, hogy kihasználhassa az Ön által felügyelt dedikált infrastruktúrát. A Function alkalmazás az események alapján nem méretezhető, ami azt jelenti, hogy soha nem méretezi a nulla értéket. (Megköveteli, hogy [a always on](#always-on) engedélyezve legyen.)
 
 A különböző üzemeltetési csomagok (beleértve a Kubernetes-alapú üzemeltetést is) részletes összehasonlítását lásd: [üzemeltetési csomagok összehasonlítása szakasz](#hosting-plans-comparison).
 
@@ -168,7 +168,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 
 A Function alkalmazásnak számos aspektusa van, amely hatással lesz a méretezésre, beleértve a gazdagép konfigurációját, a futásidejű lábnyomot és az erőforrás-hatékonyságot.  További információ: a [teljesítmény szempontjairól szóló cikk méretezhetőségi szakasza](functions-best-practices.md#scalability-best-practices). Azt is figyelembe kell vennie, hogy a kapcsolatok hogyan viselkednek, mint a Function app Scales. További információ: a [kapcsolatok kezelése a Azure Functionsban](manage-connections.md).
 
-A Python és a Node.js méretezésével kapcsolatos további információkért lásd: [Azure functions Python fejlesztői útmutató – skálázás és Egyidejűség](functions-reference-python.md#scaling-and-concurrency) és [Azure functions Node.js fejlesztői útmutató – skálázás és Egyidejűség](functions-reference-node.md#scaling-and-concurrency).
+A Python és a Node.js méretezésével kapcsolatos további információkért lásd: [Azure functions Python fejlesztői útmutató – skálázás és Egyidejűség](functions-reference-python.md#scaling-and-performance) és [Azure functions Node.js fejlesztői útmutató – skálázás és Egyidejűség](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Számlázási modell
 
@@ -255,7 +255,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 
 <sup>1</sup> a különböző app Service-csomagokra vonatkozó beállításokra vonatkozó meghatározott korlátokat a [app Service csomag korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)című részben tekintheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával](functions-create-first-function-vs-code.md)
 + [Üzembe helyezési technológiák Azure Functions](functions-deployment-technologies.md) 

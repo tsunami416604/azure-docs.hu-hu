@@ -1,6 +1,6 @@
 ---
-title: A dinamikus szabályozási megfelelőség monitorozásának frissítése a Azure Security Center szabályozási megfelelőségi irányítópulton | Microsoft Docs
-description: A szabályozási megfelelőségi csomagok frissítése
+title: A szabályozási megfelelőségi irányítópult használata Azure Security Center
+description: Megtudhatja, hogyan adhat hozzá és távolíthat el szabályozási szabványokat a megfelelőségi irányítópultról Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078102"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106263"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
@@ -110,7 +110,7 @@ Standard eltávolítása:
 1. Válassza az **Igen** lehetőséget. A standard el lesz távolítva. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi csomagokat** a megfelelőség további szabványokkal való figyeléséhez. 
 
