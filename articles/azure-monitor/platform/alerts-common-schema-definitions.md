@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330876"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105991"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
-Ez a cikk a Azure Monitor [általános riasztási sémájának definícióit](https://aka.ms/commonAlertSchemaDocs) ismerteti, beleértve a webhookok, a Azure Logic apps, a Azure functions és a Azure Automation runbookok. 
+Ez a cikk a Azure Monitor [általános riasztási sémájának definícióit](./alerts-common-schema.md) ismerteti, beleértve a webhookok, a Azure Logic apps, a Azure functions és a Azure Automation runbookok. 
 
 Minden riasztási példány leírja az érintett erőforrást és a riasztás okát. Ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
 * **Essentials**: az összes riasztási típussal közös szabványosított mezők összessége, amelyek leírják, hogy a riasztás milyen erőforrást tartalmaz, valamint további gyakori riasztási metaadatok (például a súlyosság vagy a leírás). 
@@ -539,7 +539,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
-- Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](./alerts-common-schema-integrations.md). 
+- További információ a [közös riasztási sémáról](./alerts-common-schema.md).
+- Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](./alerts-common-schema-integrations.md).

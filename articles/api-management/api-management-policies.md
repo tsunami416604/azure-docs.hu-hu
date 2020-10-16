@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076895"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107589"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](api-management-howto-policies.md).
@@ -79,10 +79,10 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
     -   [XML átalakítása XSLT használatával](api-management-transformation-policies.md#XSLTransform) – XSL-transzformációt alkalmaz a kérelem vagy válasz törzsében lévő XML formátumra.
 - [Dapr-integrációs szabályzatok](api-management-dapr-policies.md)
     - [Kérelem küldése a szolgáltatásnak](api-management-dapr-policies.md#invoke) – a Dapr Runtime használatával megkeresheti és megbízhatóan kommunikálhat egy Dapr-szolgáltatással.
-    -  [Üzenet küldése a pub/sub témakörbe](api-management-dapr-policies.md#pubsub) – a Dapr Runtime használatával tesz közzé egy üzenetet egy közzétételi/előfizetési témakörben. közzététel – előfizetés-üzenetküldés/readme. MD) További információ a Dapr-beli közzétételről és előfizetésekről.
+    -  [Üzenet küldése a pub/sub témakörbe](api-management-dapr-policies.md#pubsub) – a Dapr Runtime használatával tesz közzé egy üzenetet közzététel/előfizetés témakörben.
     -  [Kimeneti kötés kiváltása](api-management-dapr-policies.md#bind) – a Dapr Runtime használatával külső rendszereket hívhat meg kimeneti kötés használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)

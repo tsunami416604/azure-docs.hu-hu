@@ -3,16 +3,16 @@ title: Mi a Microsoft kereskedelmi piactér?
 description: A Microsoft kereskedelmi piactéren megoldásokat listázó Microsoft-partnereknek nyújtott előnyök és lehetőségek áttekintése.
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dannyevers
+ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
-ms.date: 10/01/2020
-ms.openlocfilehash: 91ae1ce8cb61a0bbc4907c21f0e5e6b869cedb85
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/15/2020
+ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654311"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107045"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Mi a Microsoft kereskedelmi piactér?
 
@@ -20,27 +20,47 @@ A Microsoft kereskedelmi piactér a független szoftvergyártói partnereinktől
 
 A kereskedelmi piactér több mint 100 országban és régióban érhető el, és számos esetben kezeljük az adó fizetését. Ha eladja a Microsoft-ügyfeleket, a meglévő Microsoft-vásárlási szerződések keretében a kereskedelmi piactéren vásárolt vásárlások előnyeit is felhasználhatja, hogy a Microsoft konszolidált számlát kapjon.
 
-## <a name="commercial-marketplace-online-stores"></a>Kereskedelmi piactér online áruházak
+## <a name="commercial-marketplace-online-stores"></a>A kereskedelmi piactér webáruházai
 
 A Microsoft kereskedelmi piactéren két online áruház érhető el: [Microsoft AppSource](https://appsource.microsoft.com/) és az [Azure Marketplace](https://azuremarketplace.microsoft.com/). AZ Microsoft AppSource üzleti megoldásokat és Azure Marketplace-t tartalmaz. A kereskedelmi piactér szoftverei és szolgáltatásai olyan Microsoft-termékekben is megtalálhatók, mint a Microsoft 365, a Dynamics 365, a Microsoft Power platform és az Azure. Az online áruházak és a terméken belüli tapasztalatok havonta több millió potenciális ügyfelet mutatnak be. Minden online áruház különböző forgatókönyveket kínál annak biztosítására, hogy a megoldás vagy szolgáltatás elérhető legyen a megfelelő ügyfelek számára.
 
 Ha kereskedelmi Piactéri ajánlatot hoz létre a partner Centerben, akkor az az ajánlat típusa, a kategóriák és a kiválasztott egyéb beállítások alapján az egyik vagy mindkét online áruházban szerepel. Abban a ritka esetben, ha az ajánlat mindkét online áruház felhasználója számára releváns, akkor mindkettőben megjelenhet. További információ: [Select a Online Store](determine-your-listing-type.md#selecting-an-online-store) és [a vevő útmutatója Microsoft AppSource és az Azure Marketplace](https://aka.ms/MarketplaceBuyerGuide)-en.
 
-**Microsoft AppSource** az üzleti megoldások, például a szolgáltatott szoftverek (SaaS) alkalmazásai, valamint a Dynamics 365, a Microsoft 365 és a Microsoft Power platform közvetlen bővítésére szolgáló alkalmazások is. A AppSource Consulting Services olyan Professional Services-ajánlatok, amelyek segítenek az ügyfeleknek a Dynamics 365 és Power BI használatának megkezdésében vagy felgyorsításában.
+### <a name="microsoft-appsource"></a>Microsoft AppSource
+
+[Microsoft AppSource](https://appsource.microsoft.com/) az üzleti megoldások, például a szolgáltatott szoftverek (SaaS) alkalmazásai, valamint a Dynamics 365, a Microsoft 365 és a Microsoft Power platform közvetlen bővítésére szolgáló alkalmazások is. A AppSource Consulting Services olyan Professional Services-ajánlatok, amelyek segítenek az ügyfeleknek a Dynamics 365 és Power BI használatának megkezdésében vagy felgyorsításában.
 
 Íme egy példa a AppSource található ajánlati lista oldalára:
 
 :::image type="content" source="media/overview/example-appsource.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be.":::
 
-Az **Azure Marketplace** az Azure-ra épülő vagy az informatikai szakembereknek és fejlesztőknek szánt megoldások esetében használható. Ide tartozik a tanácsadás és a felügyelt szolgáltatások listái is. Az Azure Marketplace Consulting Services olyan professzionális szolgáltatási ajánlatok, amelyek segítenek az ügyfeleknek az Azure használatának első lépéseiben vagy felgyorsításában.
+####  <a name="appsource-in-product-experience"></a>AppSource a terméken belül
+
+Az ügyfelek a Microsoft 365, a Dynamics 365, a Power platform és az Azure által kínált AppSource-ajánlatokat is használhatják. Az alábbi példa bemutatja, hogyan érheti el a AppSource beépülő modulokat a Power BI **fájl** menüből.
+
+:::image type="content" source="media/overview/power-bi.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+
+Ezzel a beállítással megnyitható egy ablak, ahol az ügyfél név vagy kategória alapján kereshet Power BI beépülő modulokat. 
+
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+
+### <a name="azure-marketplace"></a>Azure Piactér
+
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) az Azure-ra épülő vagy az informatikai szakembereknek és fejlesztőknek szánt megoldások esetében használható. Ide tartozik a tanácsadás és a felügyelt szolgáltatások listái is. Az Azure Marketplace Consulting Services olyan professzionális szolgáltatási ajánlatok, amelyek segítenek az ügyfeleknek az Azure használatának első lépéseiben vagy felgyorsításában.
 
 Íme egy példa az ajánlati lista oldalára az Azure Marketplace-en:
 
 :::image type="content" source="media/overview/example-marketplace.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
 
-Mivel az Azure Marketplace az Azure-ra épül, az ügyfelek a Azure Portal **erőforrás létrehozása** lehetőségével érhetik [Azure portal](https://portal.azure.com/)el a megoldásokat.
+#### <a name="azure-marketplace-in-the-azure-portal"></a>Az Azure Marketplace a Azure Portal
+
+Az Azure-ügyfelek felfedezhetik és üzembe helyezhetik az Azure Marketplace-megoldásokat a [Azure Portal](https://portal.azure.com/) **erőforrás létrehozása** lehetőségével.
 
 :::image type="content" source="media/overview/create-resource.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
+
+Ezzel a beállítással megnyithatja az Azure Marketplace-t a Azure Portalon belül, ahol megkereshetik a megoldásokat név szerint vagy kategóriánként.
+
+:::image type="content" source="media/overview/search-portal.png" alt-text="A Microsoft AppSource ajánlati lista lapját mutatja be."::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>A Microsofttal való értékesítés előnyei
 

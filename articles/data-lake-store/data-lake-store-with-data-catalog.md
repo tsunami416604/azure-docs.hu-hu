@@ -6,15 +6,15 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578512"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106620"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Adatok regisztrálása Azure Data Lake Storage Gen1ról Azure Data Catalog
-Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Data Lake Storage Gen1t a Azure Data Catalogekkel, hogy a szervezeten belül felfedjék az adatait a Data Catalog integrálásával. További információ az adatok katalogizálása: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). A Data Catalog használatára szolgáló forgatókönyvek megismeréséhez tekintse meg a [Azure Data Catalog gyakori forgatókönyvek](../data-catalog/data-catalog-common-scenarios.md)című témakört.
+Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Data Lake Storage Gen1t a Azure Data Catalogekkel, hogy a szervezeten belül felfedjék az adatait a Data Catalog integrálásával. További információ az adatok katalogizálása: [Azure Data Catalog](../data-catalog/overview.md). A Data Catalog használatára szolgáló forgatókönyvek megismeréséhez tekintse meg a [Azure Data Catalog gyakori forgatókönyvek](../data-catalog/data-catalog-common-scenarios.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:

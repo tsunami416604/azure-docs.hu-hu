@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083021"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104750"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>HTTP-végpont testreszabása Azure Functions
 
@@ -75,7 +75,7 @@ A következő szakaszban az API-t egy proxyn keresztül fogja felsurface. Az Azu
 A proxyk bármilyen HTTP-erőforrásra mutathatnak, például:
 - Azure Functions 
 - API Apps alkalmazások az [Azure App Service-ben](../app-service/overview.md)
-- Docker-tárolók a [Linuxon futó App Service-ben](../app-service/containers/app-service-linux-intro.md)
+- Docker-tárolók a [Linuxon futó App Service-ben](../app-service/overview.md#app-service-on-linux)
 - Bármely más üzemeltetett API
 
 További információ a proxykról: [Azure Functions-proxyk használata].
@@ -107,7 +107,7 @@ Ismételje meg a [Függvényalkalmazás létrehozása](./functions-create-first-
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
-    | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
+    | Név | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
     | Útvonalsablon | /api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
     | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
 

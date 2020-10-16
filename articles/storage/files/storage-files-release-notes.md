@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 9/24/2020
+ms.date: 10/15/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0b99ce2afcdb5fd7462827fb9893e34577fc6c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a4e23c690b68ba5aac1e1685cf2aa5aeb3616e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371201"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105651"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -23,7 +23,7 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 A következő Azure File Sync-ügynök verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott |
 | 2020. május kumulatív frissítés – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | Május 19., 2020 | Támogatott |
@@ -35,7 +35,7 @@ A következő Azure File Sync-ügynök verziói támogatottak:
 ## <a name="unsupported-versions"></a>Nem támogatott verziók
 A következő Azure File Sync ügynök verziói lejártak, és már nem támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
 | V7-kiadás | 7.0.0.0 - 7.2.0.0 | N.A. | Nem támogatott – az ügynök verziói 2020 szeptember 1-jén elévültek |
 | V6-os kiadás | 6.0.0.0 – 6.3.0.0 | N.A. | Nem támogatott – az ügynök verziószáma 2020. április 21-én lejárt |

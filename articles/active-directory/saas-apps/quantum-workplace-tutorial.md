@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99d11f6cffa42aa706a863c3061583eab3f98f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4e23a9d5334af5ebdaab2ef15a5c39f232095
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552254"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Oktatóanyag: Azure Active Directory a Quantum munkahely-integrációval
 
@@ -99,11 +99,11 @@ Az Azure AD egyszeri bejelentkezés a Quantum munkahely használatával történ
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
-    ![Quantum Workplace-tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható.](common/preintegrated.png)
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Quantum Workplace-tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://auth.quantumworkplace.com/Account/Login`
 
@@ -137,7 +137,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

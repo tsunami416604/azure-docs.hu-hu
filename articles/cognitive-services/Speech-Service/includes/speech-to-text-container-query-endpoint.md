@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 54ccaebd84c6af308ddcfa956add7f84b6e55832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba789b6a40dd23309bb94289b187209893908e3
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321034"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116789"
 ---
 A tároló olyan WebSocket-alapú lekérdezési végpont API-kat biztosít, amelyek a [SPEECH SDK](../index.yml)-n keresztül érhetők el. Alapértelmezés szerint a Speech SDK az online Speech Services szolgáltatást használja. A tároló használatához módosítania kell az inicializálási módszert.
 
@@ -29,7 +29,7 @@ Váltás az Azure-felhő inicializálási hívásának használatával:
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-Ehhez a híváshoz a Container [Host](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)használatával:
+A hívás használata a tároló [gazdagépével](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet):
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -43,6 +43,13 @@ Váltás az Azure-felhő inicializálási hívásának használatával:
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
+```
+
+A hívás használata a tároló [végponttal](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python):
+
+```python
+speech_config = speechsdk.SpeechConfig(
+    endpoint="ws://localhost:5000/speech/recognition/conversation/cognitiveservices/v1"
 ```
 
 ---

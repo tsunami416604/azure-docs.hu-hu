@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kerülheti el a teljesítménnyel kapcsolatos p
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213962"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106093"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése Azure Functionsban
 
@@ -103,7 +103,25 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+Ha az v3. x függvényekkel dolgozik, refernce kell Microsoft.Azure.DocumentDB. Core-hoz. Adjon hozzá egy hivatkozást a kódban:
 
+```cs
+#r "Microsoft.Azure.DocumentDB.Core"
+```
+Emellett hozzon létre egy "Function. Proj" nevű fájlt az triggerhez, és adja hozzá az alábbi tartalmat:
+
+```cs
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.12.0" />
+    </ItemGroup>
+</Project>
+
+```
 ### <a name="cosmosclient-code-example-javascript"></a>CosmosClient – példa (JavaScript)
 A [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) egy Azure Cosmos db-példányhoz csatlakozik. Az Azure Cosmos DB dokumentációja azt javasolja, hogy [az alkalmazás élettartama során egy egyedi Azure Cosmos db ügyfelet használjon](../cosmos-db/performance-tips.md#sdk-usage). Az alábbi példa egy függvényt ábrázol egy mintát:
 
@@ -130,7 +148,7 @@ A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL
 > [!TIP]
 > Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projektben lévő [local.settings.jsfájljának](functions-run-local.md#local-settings-file) a **kapcsolódási karakterláncok** gyűjteményéből. Ha a [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy a statikus ügyfelek miért javasoltak: [helytelen példány-létrehozási minta](/azure/architecture/antipatterns/improper-instantiation/).
 

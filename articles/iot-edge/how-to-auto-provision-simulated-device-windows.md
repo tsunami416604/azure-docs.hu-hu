@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a1c679ca5a7ff08a4d2490f94548b34e4db49f4d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56696f138fbf58993e990e263d2fa8e490672bb6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966185"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106297"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Szimulált IoT Edge eszköz létrehozása és kiépítése virtuális TPM-sel Windows rendszeren
 
@@ -65,7 +65,7 @@ Az egyéni regisztráció létrehozásakor a True ( **igaz** ) érték kiválasz
 
 Szimulált eszköz és egyéni beléptetési útmutatók:
 
-* [C](../iot-dps/quick-create-simulated-device.md)
+* [C#](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
 * [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
@@ -73,7 +73,7 @@ Szimulált eszköz és egyéni beléptetési útmutatók:
 
 Az egyéni regisztráció létrehozása után mentse a **regisztrációs azonosító**értékét. Ezt az értéket használja a IoT Edge futtatókörnyezet konfigurálásakor.
 
-## <a name="install-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet telepítése
+## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható. Telepítse a IoT Edge futtatókörnyezetet a szimulált TPM-t futtató eszközre.
 
@@ -97,7 +97,7 @@ Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszk�
    Deploy-IoTEdge
    ```
 
-1. Ekkor a kimenet felszólítja az újraindításra. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
+1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítást kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
 
 1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés. A `-Dps` jelző használatával a manuális kiépítés helyett a Device kiépítési szolgáltatást használhatja.
 
@@ -130,6 +130,6 @@ Futó modulok listázása.
 iotedge list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-at-scale.md) [Azure CLI használatával](how-to-deploy-cli-at-scale.md)

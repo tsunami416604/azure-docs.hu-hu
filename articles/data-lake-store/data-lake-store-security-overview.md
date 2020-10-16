@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192830"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106824"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság a Azure Data Lake Storage Gen1
 
@@ -31,7 +31,7 @@ A hitelesítés az a folyamat, amellyel a felhasználó identitása ellenőrizhe
 Minden Azure-előfizetés társítható Azure Active Directory egy példányával. Csak a Azure Active Directory szolgáltatásban definiált felhasználók és szolgáltatások férhetnek hozzá a Data Lake Storage Gen1-fiókhoz a Azure Portal, parancssori eszközök vagy a szervezet által az Data Lake Storage Gen1 SDK használatával létrehozott ügyfélalkalmazások használatával. A Azure Active Directory központi hozzáférés-vezérlési mechanizmusként való használatának fő előnyei a következők:
 
 * Egyszerűsített identitás-életciklus kezelése. Egy felhasználó vagy szolgáltatás (egyszerű szolgáltatásnév) identitása gyorsan létrehozható és gyorsan visszavonható, ha egyszerűen törli vagy letiltja a fiókot a címtárban.
-* Multi-Factor Authentication. A [többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md) további biztonsági réteget biztosít a felhasználói bejelentkezések és tranzakciók számára.
+* Multi-Factor Authentication. A [többtényezős hitelesítés](../active-directory/authentication/concept-mfa-howitworks.md) további biztonsági réteget biztosít a felhasználói bejelentkezések és tranzakciók számára.
 * Hitelesítés bármely ügyféltől egy szabványos nyílt protokollon keresztül, például OAuth vagy OpenID.
 * Összevonás az Enterprise Directory Services és a Cloud Identity Providers szolgáltatással.
 

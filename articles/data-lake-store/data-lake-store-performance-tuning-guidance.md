@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c9cb1d0496fe05c208cfd446a51cbf4ef8e8d4e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190247"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108609"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 teljesítményének hangolása
 
@@ -39,15 +39,15 @@ A forrásadatok és a Data Lake Storage Gen1 közötti hálózati kapcsolat eset
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Adatfeldolgozási eszközök konfigurálása a maximális párhuzamos
 
-Miután megoldotta a forrás hardver és a hálózati kapcsolat szűk keresztmetszeteit, készen áll a betöltési eszközök konfigurálására. A következő táblázat összefoglalja a számos népszerű betöltési eszköz főbb beállításait, és részletes teljesítmény-finomhangolási cikkeket biztosít számukra. Ha többet szeretne megtudni a forgatókönyvhöz használt eszközről, tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
+Miután megoldotta a forrás hardver és a hálózati kapcsolat szűk keresztmetszeteit, készen áll a betöltési eszközök konfigurálására. A következő táblázat összefoglalja a számos népszerű betöltési eszköz főbb beállításait, és részletes teljesítmény-finomhangolási cikkeket biztosít számukra. Ha többet szeretne megtudni a forgatókönyvhöz használt eszközről, tekintse meg ezt a [cikket](./data-lake-store-data-scenarios.md).
 
 | Eszköz          | Beállítások | További részletek                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics egységek | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (Mapper) | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Hivatkozás](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics egységek | [Hivatkozás](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (Mapper) | [Hivatkozás](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [Hivatkozás](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Hivatkozás](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Hivatkozás](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Az adathalmaz szerkezete
 

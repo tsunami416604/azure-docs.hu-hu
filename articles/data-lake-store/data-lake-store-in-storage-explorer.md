@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508792"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108745"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával
 
-[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) a nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adat tárolására szolgáló szolgáltatás. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. A Azure Storage Explorer Data Lake Storage Gen1 lehetővé teszi a Data Lake Storage Gen1-és egyéb Azure-entitások, például a blobok és a várólisták elérését és kezelését. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
+[Azure Data Lake Storage Gen1](./data-lake-store-overview.md) a nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adat tárolására szolgáló szolgáltatás. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. A Azure Storage Explorer Data Lake Storage Gen1 lehetővé teszi a Data Lake Storage Gen1-és egyéb Azure-entitások, például a blobok és a várólisták elérését és kezelését. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
 
 A másik előnye, hogy nem kell előfizetési engedéllyel rendelkeznie Data Lake Storage Gen1-adatkezeléshez. Storage Explorer a **helyi és a csatolt** csomóponthoz is csatlakoztathatja a Data Lake Storage Gen1 elérési utat, ha valaki megadja az engedélyt.
 
@@ -24,7 +24,7 @@ A másik előnye, hogy nem kell előfizetési engedéllyel rendelkeznie Data Lak
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial).
-* Egy Data Lake Storage Gen1-fiók. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)című témakört.
+* Egy Data Lake Storage Gen1-fiók. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](./data-lake-store-get-started-portal.md)című témakört.
 
 ## <a name="install-storage-explorer"></a>A Storage Explorer telepítése
 
@@ -195,7 +195,7 @@ Az URL-címeket egyszerűen beírhatja a Fájlkezelő vagy a böngésző címsor
 ## <a name="next-steps"></a>További lépések
 
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
-* Megtudhatja, hogyan [kezelheti a Azure Cosmos db a Azure Storage Explorerban](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
-* [A Storage Explorer első lépései](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [A Azure Data Lake Storage Gen1 első lépései](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+* Megtudhatja, hogyan [kezelheti a Azure Cosmos db a Azure Storage Explorerban](../cosmos-db/storage-explorer.md).
+* [A Storage Explorer első lépései](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+* [A Azure Data Lake Storage Gen1 első lépései](./data-lake-store-overview.md).
 * Tekintse meg ezt a [YouTube-videót az Azure Cosmos DB az Azure Storage Explorerben történő használatáról](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

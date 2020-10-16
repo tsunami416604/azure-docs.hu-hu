@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715317"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102153"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -77,14 +77,14 @@ További információ az adatoknak a virtuális gép vendég operációs rendsze
 > Ha a vendég metrikákat úgy konfigurálta, hogy egy Log Analytics munkaterületre legyenek küldve, a metrikák a Log Analytics munkaterület-erőforrás alatt jelennek meg, és **csak** az azokat figyelő riasztási szabály létrehozása után kezdenek adatokat megjeleníteni. Ehhez kövesse a [naplók metrikariasztásának konfigurálására](./alerts-metric-logs.md#configuring-metric-alert-for-logs) szolgáló lépéseket.
 
 > [!NOTE] 
-> A metrikai riasztások jelenleg nem támogatják a vendég metrikájának figyelését egyetlen riasztási szabállyal rendelkező több virtuális géphez. Ezt a [napló riasztási szabályával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)érheti el. Ehhez győződjön meg arról, hogy a vendég metrikák gyűjtése egy Log Analytics munkaterületre történik, és hozzon létre egy napló-riasztási szabályt a munkaterületen.
+> A metrikai riasztások jelenleg nem támogatják a vendég metrikájának figyelését egyetlen riasztási szabállyal rendelkező több virtuális géphez. Ezt a [napló riasztási szabályával](./alerts-unified-log.md)érheti el. Ehhez győződjön meg arról, hogy a vendég metrikák gyűjtése egy Log Analytics munkaterületre történik, és hozzon létre egy napló-riasztási szabályt a munkaterületen.
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nem található a riasztáshoz használandó metrika
 
-Ha a riasztást egy adott metrika esetében szeretné megjeleníteni, de riasztási szabály létrehozásakor nem látja, ellenőrizze a következőket:
-- Ha nem látja az erőforráshoz tartozó mérőszámokat, ellenőrizze, hogy [az erőforrás típusa támogatott-e metrikus riasztások](./alerts-metric-near-real-time.md)esetén.
-- Ha az erőforráshoz bizonyos mérőszámok láthatók, de nem talál egy adott mérőszámot, [ellenőrizze, hogy a metrika elérhető-e](./metrics-supported.md), és ha igen, tekintse meg a metrika leírását, és ellenőrizze, hogy csak az erőforrás adott verzióiban és kiadásaiban érhető-e el.
-- Ha a metrika nem érhető el az erőforráshoz, lehet, hogy elérhető az erőforrás-naplókban, és a naplózási riasztások segítségével figyelhető. Az [Azure-erőforrásokból származó erőforrás-naplók gyűjtésével és elemzésével](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)kapcsolatban itt talál további információt.
+Ha egy adott metrikához szeretne riasztást létrehozni, de nem látja a metrikát a riasztási szabály létrehozásakor, ellenőrizze az alábbiakat:
+- Ha nem lát az erőforrásra vonatkozó metrikákat, [ellenőrizze, hogy a metrikaalapú riasztások támogatják-e az erőforrás típusát](./alerts-metric-near-real-time.md).
+- Ha lát az erőforrásra vonatkozó metrikákat, de egy adott metrikát nem talál, [ellenőrizze, hogy a metrika elérhető-e](./metrics-supported.md), és ha igen, a leírásában ellenőrizze, hogy nem csak az erőforrás bizonyos verzióiban vagy kiadásában érhető-e el.
+- Ha a metrika nem érhető el az erőforráshoz, előfordulhat, hogy az erőforrásnaplókban elérhető lesz, és naplóriasztásokkal monitorozható. Itt tekinthet meg további információt az [erőforrásnaplóknak az Azure-erőforrásokból történő gyűjtésével és elemzésével](../learn/tutorial-resource-logs.md) kapcsolatban.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nem található a riasztásra vonatkozó metrikai dimenzió.
 
@@ -264,6 +264,6 @@ Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesíté
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

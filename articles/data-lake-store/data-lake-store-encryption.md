@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497182"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109153"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1ban lévő adattitkosítás
 
@@ -33,7 +33,7 @@ Az átvitt adatforgalom (más néven a mozgásban lévő adatforgalom) is mindig
 
 A Data Lake Storage Gen1 titkosítása a fiók létrehozása során van beállítva, és alapértelmezés szerint mindig engedélyezve van. Saját maga is kezelheti a kulcsokat, vagy engedélyezheti Data Lake Storage Gen1 számára, hogy kezelje őket (ez az alapértelmezett beállítás).
 
-További részletekért lásd [az első lépéseket](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+További részletekért lásd [az első lépéseket](./data-lake-store-get-started-portal.md).
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>A titkosítás működése Data Lake Storage Gen1
 
@@ -105,7 +105,7 @@ Az alapelveket a következő ábra mutatja be:
 
 ## <a name="key-rotation"></a>Kulcsrotálás
 
-Felhasználó által kezelt kulcsok használata esetén a titkosítási főkulcs rotálható. Az ügyfél által felügyelt kulcsokkal rendelkező Data Lake Storage Gen1-fiókok beállításával kapcsolatos további információkért lásd: [első lépések](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Felhasználó által kezelt kulcsok használata esetén a titkosítási főkulcs rotálható. Az ügyfél által felügyelt kulcsokkal rendelkező Data Lake Storage Gen1-fiókok beállításával kapcsolatos további információkért lásd: [első lépések](./data-lake-store-get-started-portal.md).
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -135,4 +135,4 @@ Vegye figyelembe, hogy ha az alapértelmezett titkosítási beállításokat has
 Ez a művelet kevesebb mint két percet vehet igénybe, és a kulcsrotálás nem jár várt leállással. A művelet befejezését követően a kulcs új verziója lesz használatban.
 
 > [!IMPORTANT]
-> A kulcsrotáció után a rendszer nem használja tovább aktívan a kulcs régi verzióját az adatok titkosítására.  Az olyan ritka esetekben, amikor a váratlan meghibásodások az adatok redundáns másolatait is érinthetik, lehetséges, hogy az adatokat egy olyan biztonsági másolatból kell visszaállítani, amely továbbra is a régi kulcsot használja. Annak érdekében, hogy az adatok az ilyen ritka esetekben is elérhetők maradjanak, őrizze meg a titkosítási kulcsa előző verzióját. A vész-helyreállítási tervezéssel kapcsolatos ajánlott eljárásokért tekintse meg a vész [-helyreállítási útmutatót Data Lake Storage Gen1ban](data-lake-store-disaster-recovery-guidance.md) . 
+> A kulcsrotáció után a rendszer nem használja tovább aktívan a kulcs régi verzióját az adatok titkosítására.  Az olyan ritka esetekben, amikor a váratlan meghibásodások az adatok redundáns másolatait is érinthetik, lehetséges, hogy az adatokat egy olyan biztonsági másolatból kell visszaállítani, amely továbbra is a régi kulcsot használja. Annak érdekében, hogy az adatok az ilyen ritka esetekben is elérhetők maradjanak, őrizze meg a titkosítási kulcsa előző verzióját. A vész-helyreállítási tervezéssel kapcsolatos ajánlott eljárásokért tekintse meg a vész [-helyreállítási útmutatót Data Lake Storage Gen1ban](data-lake-store-disaster-recovery-guidance.md) .

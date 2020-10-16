@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322397"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108405"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Alert Management megoldás az Azure-ban Log Analytics
 
 ![Alert Management ikon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  A Azure Monitor mostantól támogatja a [riasztások nagy léptékű kezelésére](https://aka.ms/azure-alerts-overview)szolgáló továbbfejlesztett képességeket, beleértve az olyan [figyelési eszközök által generált eszközöket is, mint a System Center Operations Manager, a Zabbix vagy a Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  A Azure Monitor mostantól támogatja a [riasztások nagy léptékű kezelésére](./alerts-overview.md)szolgáló továbbfejlesztett képességeket, beleértve az olyan [figyelési eszközök által generált eszközöket is, mint a System Center Operations Manager, a Zabbix vagy a Nagios](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 >  
 
 
@@ -120,4 +120,3 @@ A következő táblázat a megoldás által gyűjtött riasztási rekordokra von
 
 ## <a name="next-steps"></a>További lépések
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](./alerts-overview.md).
-

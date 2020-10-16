@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653e0b557f7c5c04184628b3266e8f2909130f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190215"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108286"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage Gen1 MapReduce
 
@@ -20,8 +20,8 @@ ms.locfileid: "88190215"
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg az Ismerkedés [a Azure Data Lake Storage Gen1rel](data-lake-store-get-started-portal.md) című témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
-* **A MapReduce használata a HDInsight-on**. További információ: [MapReduce használata a Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Tekintse át a Data Lake Storage Gen1 teljesítmény-hangolási irányelveit**. Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **A MapReduce használata a HDInsight-on**. További információ: [MapReduce használata a Hadoop on HDInsight](../hdinsight/hadoop/hdinsight-use-mapreduce.md)
+* **Tekintse át a Data Lake Storage Gen1 teljesítmény-hangolási irányelveit**. Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató](./data-lake-store-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>Paraméterek
 

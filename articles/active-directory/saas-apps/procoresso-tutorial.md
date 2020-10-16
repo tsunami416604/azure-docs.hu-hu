@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea69f1e634c66bff98462d41f3eeef19f8e15eb0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553614"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directory integráció a beépített SSO-val
 
@@ -121,11 +121,11 @@ Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigur�
 
 2. Az eszközkészlet legördülő menüben kattintson a **rendszergazda** elemre az SSO-beállítások lap megnyitásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Képernyőfelvétel: a vállalati webhely, amelyen a címtár van kiválasztva.](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Illessze be a mezőkben szereplő értékeket az alább leírtak szerint:
 
-    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Képernyőfelvétel: a személy hozzáadása párbeszédpanel.](./media/procoresso-tutorial/procore_setting_admin.png) 
 
     a. Az **egyszeri bejelentkezés kiállítójának URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
@@ -159,7 +159,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -195,11 +195,11 @@ Az alábbi lépések végrehajtásával hozzon létre egy alapszintű, egyszeri 
 
 2. Az eszközkészlet legördülő menüjében kattintson a **könyvtár** elemre a vállalati könyvtár lap megnyitásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Képernyőfelvétel: a vállalat webhelye, amely az eszközkészletből kiválasztott könyvtárat tartalmazza.](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Kattintson a **személy hozzáadása** lehetőségre az űrlap megnyitásához, és adja meg a következő beállítások végrehajtását –
 
-    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Képernyőfelvétel: az a személy hozzáadása a Boylan-konstrukcióhoz, ahol megadhatja a felhasználói adatokat.](./media/procoresso-tutorial/Procore_user_add.png)
 
     a. Az **Utónév** szövegmezőbe írja be a felhasználó vezetéknevét (például **Britta**).
 
@@ -209,15 +209,15 @@ Az alábbi lépések végrehajtásával hozzon létre egy alapszintű, egyszeri 
 
     d. Válasszon **engedélyt** sablonként az **alkalmazási engedély sablonnal később**.
 
-    e. Kattintson a **Létrehozás** elemre.
+    e. Kattintson a **Létrehozás** lehetőségre.
 
 4. Keresse meg és frissítse az újonnan hozzáadott partner adatait.
 
-    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_user_check.png)
+    ![A képernyőképen egy szerkesztési oldal látható, ahol ellenőrizheti a felhasználói beállításokat.](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. A felhasználó regisztrációjának befejezéséhez kattintson a **Mentés gombra, és küldje el a meghívót** (ha meg kell adni az e-mail meghívását), vagy **mentenie** kell a (Save közvetlenül)
     
-    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Képernyőfelvétel: az aktuális Project-beállítások, ahol a meghívót mentheti és küldheti el.](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949850"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107827"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -101,10 +101,9 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 > [!NOTE]
 > Ahogy az [index korlátaiban](#index-limits)is említettük, az indexek az összes összetett gyűjteményre vonatkozó, a legújabb GA API-verziótól kezdődően a felső 3000 korlátot is kikényszerítik az összes, a ( `2019-05-06` Ez azt jelenti, hogy ha az indexelő korábbi API-verzióval hozta létre, a korlát nem vonatkozik rá. A maximális kompatibilitás megőrzése érdekében egy korábbi API-verzióval létrehozott indexelő, majd egy API-verzióval `2019-05-06` vagy később frissülve a rendszer továbbra is **kizárja** a korlátokat. Az ügyfeleknek tisztában kell lenniük azzal, hogy milyen negatív hatással vannak a nagyon nagy összetett gyűjtemények (a korábban említettek szerint), és javasoljuk, hogy hozzon létre minden új indexelő a legújabb GA API-verzióval.
 
-### <a name="shared-private-link-resource-limits"></a>Megosztott magánhálózati kapcsolati erőforrások korlátai
+## <a name="shared-private-link-resource-limits"></a>Megosztott magánhálózati kapcsolati erőforrások korlátai
 
-> [!NOTE]
-> Az indexelő biztonságosan férhetnek hozzá az erőforrásokhoz a [megosztott magánhálózati kapcsolat erőforrás-API](/rest/api/searchmanagement/sharedprivatelinkresources) -n keresztül kezelt privát végpontokon keresztül, a [jelen](search-indexer-howto-access-private.md) útmutatóban ismertetett módon.
+Az indexelő más Azure-erőforrásokhoz is hozzáférhetnek a [megosztott privát kapcsolati erőforrás API](/rest/api/searchmanagement/sharedprivatelinkresources)-n keresztül kezelt [privát végpontokon](search-indexer-howto-access-private.md) keresztül. Ez a szakasz az ehhez a képességhez kapcsolódó korlátokat ismerteti.
 
 | Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -113,7 +112,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 | Privát végpontok maximális száma | N.A. | 10 vagy 30 | 100 | 400 | 400 | N.A. | 20 | 20 |
 | Maximális eltérő erőforrástípusok<sup>2</sup> | N.A. | 4 | 7 | 15 | 15 | N.A. | 4 | 4 |
 
-<sup>1</sup> a mesterséges intelligenciával és a képelemzéssel kapcsolatos elemzések számítási szempontból intenzívek, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényelnek, ezért az alacsonyabb keresési szolgáltatási rétegek számára, hogy a saját környezetben futnak, negatív hatással lehetnek a keresési szolgáltatás teljesítményére és stabilitására.
+<sup>1</sup> a mesterséges intelligencia és a képek elemzése számítási igényű, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényel. Emiatt a magánhálózati kapcsolatok le vannak tiltva az alacsonyabb szinten, hogy elkerülje a keresési szolgáltatás teljesítményére és stabilitására gyakorolt negatív hatást.
 
 <sup>2</sup> a különböző erőforrástípusok számát a rendszer az `groupId` adott keresési szolgáltatás összes megosztott magánhálózati kapcsolati erőforrásában használt egyedi értékek számaként számítja ki, az erőforrás állapotától függetlenül.
 

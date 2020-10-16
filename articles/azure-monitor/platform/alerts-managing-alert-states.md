@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358963"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104801"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Riasztási és intelligenscsoport-állapotok kezelése
 
-A Azure Monitor riasztásai mostantól [riasztási állapottal és figyelési feltétellel](https://aka.ms/azure-alerts-overview) rendelkeznek, és Hasonlóképpen az intelligens csoportok [intelligens csoporttal](https://aka.ms/smart-groups)rendelkeznek. Az állapot változásai mostantól a megfelelő riasztáshoz vagy intelligens csoporthoz tartozó előzményekben vannak rögzítve. Ez a cikk végigvezeti az állapot módosításának folyamatán a riasztások és az intelligens csoportok esetében is.
+A Azure Monitor riasztásai mostantól [riasztási állapottal és figyelési feltétellel](./alerts-overview.md) rendelkeznek, és Hasonlóképpen az intelligens csoportok [intelligens csoporttal](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)rendelkeznek. Az állapot változásai mostantól a megfelelő riasztáshoz vagy intelligens csoporthoz tartozó előzményekben vannak rögzítve. Ez a cikk végigvezeti az állapot módosításának folyamatán a riasztások és az intelligens csoportok esetében is.
 
 ## <a name="change-the-state-of-an-alert"></a>Riasztás állapotának módosítása
 
@@ -46,4 +46,3 @@ A Azure Monitor riasztásai mostantól [riasztási állapottal és figyelési fe
 
 1. Ha ez megtörtént, az állapot változása a megfelelő intelligens csoport előzményeiben lesz rögzítve. A megtekintéshez nyissa meg a megfelelő részletek lapot, és ellenőrizze az előzmények szakaszt.     
 ![A képernyőképen az intelligens csoport változásainak előzményei láthatók.](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627765"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108133"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Oktatóanyag: az API átalakítása és biztosítása
 
@@ -20,7 +20,7 @@ Az oktatóanyag bemutatja, hogyan alakíthatja át az API-t, hogy az ne fedje fe
 
 Ez az oktatóanyag azt is bemutatja, hogy milyen egyszerű a háttérrendszer-API védelme, ha az Azure API Management-vel korlátozza a díjszabást. Előfordulhat például, hogy korlátozni szeretné az API-hívások sebességét, hogy az API-t ne használja a fejlesztők. További információ: [API Management szabályzatok](api-management-policies.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -60,7 +60,7 @@ Az eredeti válasznak a következőhöz hasonlóan kell kinéznie:
 
 :::image type="content" source="media/transform-api/original-response.png" alt-text="Szabályzatok a portálon":::
 
-Amint láthatja, a válasz tartalmazza az **x-AspNet-Version**és az **x-powered-by** fejléceket.
+Amint láthatja, a válasz tartalmazza az **x-AspNet-Version** és az **x-powered-by** fejléceket.
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
@@ -70,7 +70,7 @@ Amint láthatja, a válasz tartalmazza az **x-AspNet-Version**és az **x-powered
    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Szabályzatok a portálon" border="false":::
 
 1. Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
-1. A jobb oldali ablak **átalakítási házirendek**területén válassza a * * HTTP-fejléc beállítása * * kétszer (két szabályzat beszúrásához) lehetőséget.
+1. A jobb oldali ablak **átalakítási házirendek**területén válassza a **http-fejléc beállítása** kétszer (két szabályzat beszúrásához) lehetőséget.
 
    :::image type="content" source="media/transform-api/transform-api.png" alt-text="Szabályzatok a portálon":::
 
@@ -115,7 +115,7 @@ Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k
 
 1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás**elemet.
 1.  A **bejövő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
-1.  Vigye a kurzort a ** &lt; bejövő &gt; ** elemen belülre.
+1.  Vigye a kurzort a ** &lt; bejövő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
 
     :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Szabályzatok a portálon" border="false":::
 

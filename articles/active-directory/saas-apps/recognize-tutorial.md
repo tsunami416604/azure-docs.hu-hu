@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e415cbec3b2e8c834ee02630d7f849ccf3e1e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548881"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Oktatóanyag: Azure Active Directory integráció felismeréssel
 
@@ -139,15 +139,15 @@ Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához haj
 
 2. A jobb felső sarokban kattintson a **menü**elemre. Válassza a **vállalati rendszergazda**lehetőséget.
    
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![A képernyőfelvételen a beállítások menüből kiválasztott vállalati rendszergazda látható.](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**elemre.
    
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![A képernyőképen a navigációs oldalon kiválasztott beállítások láthatók.](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. Hajtsa végre az alábbi lépéseket az **SSO-beállítások** szakaszban.
    
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Képernyőfelvétel: az S S O beállításai, ahol megadhatja a leírt értékeket.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
     a. Az **SSO engedélyezése**beállításnál válassza **a be**lehetőséget.
 
@@ -163,11 +163,11 @@ Az Azure AD egyszeri bejelentkezés felismeréssel való konfigurálásához haj
 
 5. Az **SSO-beállítások** szakasz mellett másolja az URL-címet a **szolgáltatói metaadatok URL-címe**alatt.
    
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![A képernyőképen láthatók a szolgáltatói metaadatok másolásához használható megjegyzések.](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. A metaadat-dokumentum letöltéséhez nyissa meg a **metaadatok URL-hivatkozását** egy üres böngésző alatt. Ezután másolja a EntityDescriptor értéket (entityID) a fájlból, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfigurációban** Azure Portalon.
     
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![A képernyőképen egy egyszerű szöveget tartalmazó szövegmező jelenik meg, ahol lekérheti a D entitást.](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -191,7 +191,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

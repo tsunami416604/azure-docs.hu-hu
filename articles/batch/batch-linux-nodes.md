@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatait a
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6cd8a13d67c1ce169e6c9300f7ee017fd3a59d96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146334"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108065"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -25,7 +25,7 @@ Amikor számítási csomópontok készletét hozza létre a Batchben, két lehet
 
 A **Cloud Services-konfiguráció***kizárólag* windowsos számítási csomópontok létrehozására használható. Az elérhető számítási csomópontok méretei a [Cloud Services méretében](../cloud-services/cloud-services-sizes-specs.md)vannak felsorolva, és a rendelkezésre álló operációs rendszerek az [Azure vendég operációs rendszer kiadásaiban és az SDK-kompatibilitási mátrixban](../cloud-services/cloud-services-guestos-update-matrix.md)szerepelnek. Ha Azure Cloud Services csomópontokat tartalmazó készletet hoz létre, akkor a csomópont méretét és az operációsrendszer-családot kell megadnia, amelyek a korábban említett cikkekben vannak leírva. A Windows számítási csomópontok készletei esetében a Cloud Services leggyakrabban használatos.
 
-A **virtuálisgép-konfiguráció** Linux-és Windows-rendszerképeket is biztosít a számítási csomópontokhoz. Az elérhető számítási csomópontok méretei az Azure-beli [virtuális gépek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) és az Azure-ban (Windows) lévő [virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) szerint vannak felsorolva. Ha virtuális gépek konfigurációs csomópontjait tartalmazó készletet hoz létre, meg kell adnia a csomópontok méretét, a virtuális gép képhivatkozását és a csomópontokra telepítendő batch-csomóponti ügynök SKU-t.
+A **virtuálisgép-konfiguráció** Linux-és Windows-rendszerképeket is biztosít a számítási csomópontokhoz. Az elérhető számítási csomópontok méretei az Azure-beli [virtuális gépek](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux) és az Azure-ban (Windows) lévő [virtuális gépek méretei](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) szerint vannak felsorolva. Ha virtuális gépek konfigurációs csomópontjait tartalmazó készletet hoz létre, meg kell adnia a csomópontok méretét, a virtuális gép képhivatkozását és a csomópontokra telepítendő batch-csomóponti ügynök SKU-t.
 
 ### <a name="virtual-machine-image-reference"></a>Virtuális gép képének referenciája
 
@@ -280,7 +280,7 @@ Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológi�
 
 Ha [alkalmazáscsomag](batch-application-packages.md)használatával helyezi üzembe az alkalmazásokat a Batch-csomópontokon, akkor az alkalmazáscsomag által felhasznált Azure Storage-erőforrásokért is fizetnie kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GitHubon az [Azure-batch-Samples][github_samples] adattárában található [Python-kód][github_samples_py] olyan parancsfájlokat tartalmaz, amelyek bemutatják, hogyan hajtható végre az általános batch-műveletek, például a készlet, a feladat és a feladat létrehozása. A Python-mintákhoz tartozó [readme][github_py_readme] tartalmazza a szükséges csomagok telepítésének részleteit.
 

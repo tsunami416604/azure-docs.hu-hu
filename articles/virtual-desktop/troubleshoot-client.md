@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134479"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108966"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Az Távoli asztal-ügyfél hibáinak megoldása
 
@@ -84,7 +84,21 @@ Ha a webes ügyfél a hitelesítő adatok megadását kéri, kövesse az alábbi
 4. Törölje a böngésző-gyorsítótár tartalmát. További információ: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
 5. Nyissa meg a böngészőt privát módban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows-ügyfél blokkolja a Windows rendszerű virtuális asztali (klasszikus) hírcsatornát
+
+Ha a Windows-ügyfél hírcsatorna nem jeleníti meg a Windows rendszerű virtuális asztali (klasszikus) alkalmazásokat, kövesse az alábbi utasításokat:
+
+1. Ellenőrizze, hogy a feltételes hozzáférési szabályzat tartalmazza-e a Windows rendszerű virtuális asztallal (klasszikus) társított alkalmazás-azonosítókat.
+2. Ellenőrizze, hogy a feltételes hozzáférési házirend blokkolja-e az összes hozzáférést, kivéve a Windows rendszerű virtuális asztali (klasszikus) alkalmazás-azonosítókat. Ha igen, hozzá kell adnia az alkalmazás-azonosító **9cdead84-A844-4324-93f2-b2e6bb768d07** a Szabályzathoz, hogy az ügyfél felderítse a hírcsatornákat.
+
+Ha nem találja az alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07 a listában, regisztrálnia kell a Windows rendszerű virtuális asztali erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása:
+
+1. Jelentkezzen be az Azure portálra.
+2. Nyissa meg az **előfizetést**, majd válassza ki az előfizetését.
+3. Az oldal bal oldalán található menüben válassza az **erőforrás-szolgáltató**elemet.
+4. Keresse meg és válassza ki a **Microsoft. DesktopVirtualization**elemet, majd válassza az **ismételt regisztrálás**lehetőséget.
+
+## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört

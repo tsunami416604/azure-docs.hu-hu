@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 693a1ae8a8c84479448c2475db12d5bf1b25dbd5
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803500"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107487"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -49,7 +49,7 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 | blob  | Igen |
 | boolean  | Igen |
 | számláló  | Igen |
-| dátum  | Igen |
+| date  | Igen |
 | tizedes tört  | Igen |
 | double  | Igen |
 | float  | Igen |
@@ -151,6 +151,7 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 | FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | Nem |
 | DELETE | Igen |
 | Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Igen |
+| DISTINCT | Nem |
 | ÖSSZESÍTÉS ELDOBÁSA | Nem |
 | DROP FÜGGVÉNY | Nem |
 | DROP INDEX | Igen |

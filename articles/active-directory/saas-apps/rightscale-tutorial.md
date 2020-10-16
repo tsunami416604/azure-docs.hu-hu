@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f071a66fef632afe9e54fecfa253e4604679baa2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553376"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Oktatóanyag: Azure Active Directory integráció a RightScale
 
@@ -99,11 +99,11 @@ Az Azure AD egyszeri bejelentkezés RightScale való konfigurálásához hajtsa 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-    ![RightScale tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
+    ![Képernyőfelvétel: az alapszintű SAML-konfiguráció lapja.](common/preintegrated.png)
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![RightScale tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://login.rightscale.com/`
 
@@ -127,32 +127,31 @@ Az Azure AD egyszeri bejelentkezés RightScale való konfigurálásához hajtsa 
 
 2. A felső menüben kattintson a **Beállítások** fülre, és válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![A képernyőfelvételen a beállítások közül kiválasztott Sign-On látható.](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. Az **SAML-szolgáltatók**hozzáadásához kattintson az **új** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![A képernyőfelvételen az SAML-identitás szolgáltatójának hozzáadására kiválasztott új gombok láthatók.](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. A **megjelenítendő név**szövegmezőben adja meg a vállalat nevét.
 
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![A képernyőképen a megjelenítendő név megadása látható.](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. Jelölje be a **RightScale által kezdeményezett egyszeri bejelentkezés engedélyezése felderítési mutató használatával lehetőséget** , majd adja meg a **tartománynevet** az alábbi szövegmezőben.
 
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Képernyőfelvétel: Itt adható meg a bejelentkezési módszer.](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt az **SAML SSO-végpontra** a RightScale-ben.
 
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Képernyőfelvétel: Itt adhatja meg az SAML-s kimeneti végpontot.](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt az **SAML-EntityID** a RightScale-ben.
 
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Képernyőfelvétel: Itt adhatja meg a D SAML-entitást.](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Kattintson a **böngésző** gombra a Azure Portalból letöltött tanúsítvány feltöltéséhez.
 
-
-    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Képernyőfelvétel: Itt adhatja meg az SAML-aláíró tanúsítványt.](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. Kattintson a **Mentés** gombra.
 
@@ -179,7 +178,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

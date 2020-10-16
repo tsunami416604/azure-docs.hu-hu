@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 4bb40cc1f5d1ae2563ddd802cd8b7de11427503b
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bdc236c3ba4c70ba44e61457e2bade7df65f3153
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893220"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108048"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
 
@@ -30,8 +30,6 @@ Ismerkedjen meg a [GitHub-műveletekkel](https://help.github.com/en/articles/abo
     - Python: [Python-alkalmazás létrehozása Azure app Service](quickstart-python.md)
 
 ## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése
-
-Azure App Service munkafolyamat-fájlok három résszel rendelkeznek:
 
 A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
@@ -731,7 +729,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760306"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108150"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal
 
@@ -30,7 +30,7 @@ A jövőben két mód lesz az Azure arc-kompatibilis adatszolgáltatások futtat
 - **Közvetett** csatlakozás – nincs közvetlen kapcsolat az Azure-hoz. Az adatok csak az exportálási/feltöltési folyamaton keresztül érkeznek az Azure-ba. Az Azure arc-adatszolgáltatások összes központi telepítése ebben a módban jelenleg előzetes verzióban működik.
 - **Közvetlen csatlakozás** – ebben a módban az Azure arc-kompatibilis Kubernetes szolgáltatástól függ, hogy közvetlen kapcsolatot biztosít az Azure és a Kubernetes-fürt között, amelyen az Azure arc-kompatibilis adatszolgáltatások futnak. Ez lehetővé teszi a további képességeket, és lehetővé teszi, hogy a Azure Portal és az Azure CLI-vel kezelje az Azure arc-kompatibilis adatszolgáltatásait ugyanúgy, mint az Azure-beli adatszolgáltatások kezelését.  Ez a csatlakozási mód még nem érhető el előzetes verzióban, de hamarosan elérhető lesz.
 
-További információt a [kapcsolati módok](https://docs.microsoft.com/azure/azure-arc/data/connectivity)közötti különbségről itt olvashat.
+További információt a [kapcsolati módok](./connectivity.md)közötti különbségről itt olvashat.
 
 A közvetve csatlakoztatott módban a számlázási adatmennyiséget az Azure arc-adatvezérlőből egy biztonságos fájlba exportálja a rendszer, majd feltölti az Azure-ba, majd feldolgozza azokat.  A közelgő közvetlen csatlakozású módban a számlázási adatait körülbelül 1/óra múlva automatikusan elküldi az Azure-ba, hogy közel valós időben megtekintse a szolgáltatások költségeit. A közvetetten csatlakoztatott módban tárolt adatexportálás és-feltöltés folyamata parancsfájlok használatával is automatizálható, vagy létrehozhatunk egy olyan szolgáltatást, amely elvégzi Önt.
 

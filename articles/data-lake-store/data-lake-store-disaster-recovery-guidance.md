@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: fe5940083d04c1b5cc60b21834adf609e523e059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666245"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109119"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Magas rendelkezésre állású és vész-helyreállítási útmutatás a Data Lake Storage Gen1
 
@@ -21,8 +21,8 @@ A Data Lake Storage Gen1 helyileg redundáns tárolást (LRS) biztosít. Ezért 
 
 Fontos, hogy előkészítse a vész-helyreállítási tervet. Tekintse át az ebben a cikkben található információkat, valamint ezeket a további forrásokat, hogy segítsen a saját terv létrehozásában.
 
-* [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Műszaki útmutató az Azure rugalmasságáról](../resiliency/resiliency-technical-guidance.md)
+* [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Műszaki útmutató az Azure rugalmasságáról](/azure/architecture/framework/resiliency/overview)
 
 ### <a name="best-practice-recommendations"></a>Ajánlott eljárások
 
@@ -38,7 +38,7 @@ A véletlen törlés megelőzése érdekében javasoljuk, hogy először állít
 
 A [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) is engedélyezheti egy Data Lake Storage Gen1-fiókhoz az adathozzáférés naplózási nyomvonalának gyűjtéséhez. A naplózási információk arról tájékoztatnak, hogy ki vagy módosított egy fájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

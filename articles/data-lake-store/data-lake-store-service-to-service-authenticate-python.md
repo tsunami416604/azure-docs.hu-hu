@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref, devx-track-python
-ms.openlocfilehash: 95da32c6f684946bf6d394c282246f2f329b8620
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe987070438c689e899dee18edaf4f708555ab11
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873976"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106756"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ A Data Lake Storage Gen1 Python használatával való használatához három mod
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modul, amely tartalmazza a Data Lake Storage Gen1 Fiókkezelés műveleteit. További információ erről a modulról: [Azure Data Lake Storage Gen1 felügyeleti modul referenciája](/python/api/azure-mgmt-datalake-store/).
-* A `azure-datalake-store` modul, amely tartalmazza a Data Lake Storage Gen1 fájlrendszer műveleteit. További információ erről a modulról: [Azure-datalake-Store fájlrendszeri modul referenciája](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* A `azure-datalake-store` modul, amely tartalmazza a Data Lake Storage Gen1 fájlrendszer műveleteit. További információ erről a modulról: [Azure-datalake-Store fájlrendszeri modul referenciája](/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -127,7 +127,7 @@ Use this snippet to authenticate with Azure AD for account management operations
     mgmt_token = context.acquire_token_with_client_certificate(resource_uri, client_id, client_cert, client_cert_thumbprint)
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 a Python használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használható a Python a Data Lake Storage Gen1 való együttműködéshez.
 
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md)

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799a2d20513f331890bec0882fec852c462c5840
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85856920"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108269"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Spark on HDInsight és Azure Data Lake Storage Gen1
 
@@ -22,8 +22,8 @@ A Spark teljesítményének finomhangolásakor figyelembe kell vennie a fürtön
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg az Ismerkedés [a Azure Data Lake Storage Gen1rel](data-lake-store-get-started-portal.md) című témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
-* **Spark-fürt futtatása Data Lake Storage Gen1on**. További információ: a [HDInsight Spark-fürt használata az adatok elemzéséhez Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen1**. Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
+* **Spark-fürt futtatása Data Lake Storage Gen1on**. További információ: a [HDInsight Spark-fürt használata az adatok elemzéséhez Data Lake Storage Gen1](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)
+* **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen1**. Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató](./data-lake-store-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>Paraméterek
 

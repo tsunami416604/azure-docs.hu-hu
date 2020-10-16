@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeafe41888163c27f583529bed1998f067e107f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819379"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107623"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
@@ -43,7 +43,7 @@ Ahhoz, hogy a B2B-felhasználók hozzáférhessenek az integrált Windows-hitele
 - **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban**. Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
 
    > [!NOTE]
-   > Az Azure AD Application Proxy konfigurálásakor győződjön meg arról, hogy a **delegált bejelentkezési identitás** a IWA egyszeri bejelentkezéshez az **egyszerű felhasználónév** (alapértelmezett) értékre van beállítva.
+   > Az Azure-AD Application Proxy konfigurálásakor győződjön meg arról, hogy a **delegált bejelentkezési identitás** az integrált Windows-hitelesítés (IWA) egyszeri bejelentkezési konfigurációjában a **felhasználó egyszerű neve** (alapértelmezett) értékre van beállítva.
 
    A B2B felhasználói forgatókönyvben két módszer áll rendelkezésre, amelyek segítségével létrehozhatja az engedélyezéshez szükséges vendég felhasználói objektumokat a helyszíni címtárban:
 
@@ -85,7 +85,7 @@ A szkript használata előtt győződjön meg arról, hogy áttekinti az előfel
 
 Győződjön meg arról, hogy rendelkezik a megfelelő ügyféllicencekkel a külső vendég felhasználók számára, akik hozzáférnek a helyszíni alkalmazásokhoz. További információ: az [ügyfél-hozzáférési licencek és a felügyeleti licencek](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"külső összekötők" szakasza. Forduljon a Microsoft képviselőjéhez vagy a helyi viszonteladóhoz az adott licencelési igényekkel kapcsolatban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
 

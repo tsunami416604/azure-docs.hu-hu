@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7b732537d5b0ba517c5d638381c07f229c500081
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047012"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107793"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -78,9 +78,9 @@ IoT Edge-eszköz:
 >
 > Ez a rövid útmutató az egyszerűség kedvéért egy Windows rendszerű virtuális gépet használ. További információ arról, hogy mely Windows operációs rendszerek érhetők el általánosan az éles környezetekben: [Azure IoT Edge támogatott rendszerek](support.md).
 >
-> Ha a IoT Edge saját Windows-eszközét szeretné konfigurálni, kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit.
+> Ha saját Windows-eszközét szeretné konfigurálni IoT Edgehoz, beleértve az IoT Core-ot futtató eszközöket is, kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit.
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
@@ -253,7 +253,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330786"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107895"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ Az alábbi ábra egy olyan adatbázist mutat be, amely sok időt tölt tétlenü
 
    ![egy készletbe illő önálló adatbázis](./media/elastic-pool-overview/one-database.png)
 
-Az ábrázolt ötperces periódus során a DB1 adatbázis maximális DTU-használata 90, de az összesített átlagos használati érték öt DTU alatt van. Ezen munkaterhelés egyetlen adatbázisban való futtatásához S3 számítási méret szükséges, azonban ez a művelet az alacsony tevékenységű időszakok során nem használt erőforrások többségét elhagyja.
+A diagram a DTU használatát mutatja be egy 1 órás időszakban, 12:00 és 1:00 között, ahol minden egyes adatpontnak 1 perces részletessége van. 12:10 DB1 legfeljebb 90 DTU, de a teljes átlagos használat kevesebb, mint öt DTU. Ezen munkaterhelés egyetlen adatbázisban való futtatásához S3 számítási méret szükséges, azonban ez a művelet az alacsony tevékenységű időszakok során nem használt erőforrások többségét elhagyja.
 
 Egy készletben ezek a használaton kívüli DTU-k több adatbázis között lehetnek megosztva, így a szükséges DTU-k száma és az összköltség is csökken.
 
@@ -219,7 +219,7 @@ További információ: [SQL Database riasztások létrehozása Azure Portalokban
 
    A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A díjszabással kapcsolatos információkért lásd a [rugalmas készlet díjszabását](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Rugalmas készletek méretezése: [rugalmas készletek skálázása](elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/monitor-and-scale-pool-powershell.md)

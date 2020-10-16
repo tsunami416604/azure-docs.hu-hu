@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de9623eb0eb14957c1554b7b0f74baa256a15d47
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825768"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108388"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -35,7 +35,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni | 
-| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Eseménynaplók<br>Teljesítmény | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>Összeomlási memóriaképek<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor metrikák | Azure Storage<br>Azure Monitor metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | Metrikaböngésző | Azure Monitor virtuális gépekhez<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor virtuális gépekhez<br>Szolgáltatástérkép |
@@ -45,7 +45,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni |
-| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Rendszernapló<br>Teljesítmény | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor metrikák | Azure Storage<br>Eseményközpont | Azure Monitor metrikák | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | | Metrikaböngésző | Azure Monitor virtuális gépekhez<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor virtuális gépekhez<br>Szolgáltatástérkép |
@@ -60,7 +60,7 @@ Ha a következőkre van szüksége, használja a Azure Monitor-ügynököt:
 - Adatok küldése Azure Monitor naplókba és Azure Monitor metrikák elemzéshez a Azure Monitor használatával. 
 - Az Azure Storage-ba történő adatküldés archiválás céljából.
 - Adatküldés harmadik féltől származó eszközökre az [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md)használatával.
-- A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-intro.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával. (Előzetes verzióban nem érhető el.)
+- A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-introduction.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával. (Előzetes verzióban nem érhető el.)
 
 A Azure Monitor-ügynök korlátai a következők:
 
@@ -81,7 +81,7 @@ Ha a következőkre van szüksége, használja a Log Analytics-ügynököt:
 * Naplókat és teljesítményadatokat gyűjthet az Azure-on belüli vagy kívüli virtuális vagy fizikai gépekről. 
 * Adatküldés egy Log Analytics munkaterületre, hogy kihasználhassa a [Azure monitor naplók](data-platform-logs.md) , például a [naplózási lekérdezések](../log-query/log-query-overview.md)által támogatott funkciókat.
 * A [Azure monitor for VMS](../insights/vminsights-overview.md) használata lehetővé teszi a virtuális gépek méretezését, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra.  
-* A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-intro.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával.
+* A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-introduction.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával.
 * Az Azure-beli virtuális gépek teljes körű felügyeletének biztosításához használja [Azure Automation Update managementet](../../automation/update-management/update-mgmt-overview.md), [Azure Automation az állapot konfigurációját](../../automation/automation-dsc-overview.md), vagy [Azure Automation Change Tracking és leltárt](../../automation/change-tracking.md) .
 * Különböző [megoldásokat](../monitor-reference.md#insights-and-core-solutions) használhat egy adott szolgáltatás vagy alkalmazás figyelésére.
 
@@ -205,11 +205,10 @@ Mivel a függőségi ügynök a kernel szintjén működik, a támogatás a kern
 | Debian                          | 9      | 4.9  | 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részleteket az egyes ügynökökről a következő címen talál:
 
 - [A Log Analytics ügynök áttekintése](log-analytics-agent.md)
 - [Az Azure Diagnostics bővítmény áttekintése](diagnostics-extension-overview.md)
 - [Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel](collect-custom-metrics-linux-telegraf.md)
-

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: 9ee5959c124636e64ef73b901fbc461f36cd27f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.author: alzam
+ms.openlocfilehash: 451323b8ea4006ba6e2b63d12cc54b2b7c0b60c6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817290"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109034"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
@@ -75,6 +75,9 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
+> [!NOTE]
+> Ha olyan globális rendszergazdai fiókot használ, amely nem natív az Azure AD-bérlőn a beleegyezőség biztosításához, az URL-címben cserélje le az "általános" kifejezést az Azure AD-címtár azonosítójával. Előfordulhat, hogy a "Common" kifejezést a címtár-azonosítójával együtt kell lecserélnie bizonyos más esetekben is.
+>
 
 5. Ha a rendszer kéri, válassza a **globális rendszergazdai** fiókot.
 
@@ -109,6 +112,6 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 13. Jegyezze fel a "azurevpnconfig.xml" fájl helyét. A azurevpnconfig.xml a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális hálózathoz való csatlakozáshoz létre kell hoznia és konfigurálnia kell egy VPN-ügyféloldali profilt. Lásd: [VPN-ügyfél konfigurálása P2S VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).

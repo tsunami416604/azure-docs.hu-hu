@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ac3c0809c08719d77457c59ef311ad43ef99cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458212"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108337"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 
@@ -19,18 +19,18 @@ ms.locfileid: "89458212"
 
 A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket big data feldolgozás néhány kulcsfontosságú aspektusa mellett. Az Azure Blob Storage egy általános célú, skálázható objektum-tároló, amelyet számos tárolási forgatókönyvhöz terveztek. A Azure Data Lake Storage Gen1 big data elemzési számítási feladatokhoz optimalizált, Hyper-Scale adattár.
 
-| Kategória | 1. generációs Azure Data Lake Storage | Azure Blob Storage |
+| Kategória | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | -------- | ---------------------------- | ------------------ |
 | Cél |Optimalizált tároló big data elemzési számítási feladatokhoz |Általános célú objektumok tárolója számos különböző tárolási forgatókönyvhöz, beleértve a big data elemzéseket |
 | Használati esetek |Kötegelt, interaktív, adatfolyam-elemzési és gépi tanulási adatokat, például naplófájlokat, IoT adatokat, kattintson a streamek és a nagyméretű adatkészletek elemre. |Bármilyen típusú szöveges vagy bináris adat, például alkalmazás-háttér, biztonsági mentési adat, adathordozó-tároló a folyamatos átvitelhez és az általános célú adatmennyiség. Emellett teljes körű támogatást nyújt az elemzési számítási feladatokhoz; kötegelt, interaktív, adatfolyam-elemzési és gépi tanulási adatokat, például naplófájlokat, IoT adatokat, kattintson a streamek és a nagyméretű adatkészletek elemre. |
 | Fő fogalmak |Data Lake Storage Gen1 fiók olyan mappákat tartalmaz, amelyek a fájlban tárolt adatfájlok |A Storage-fiók rendelkezik tárolókkal, amelyek viszont Blobok formájában vannak tárolva. |
 | Struktúra |Hierarchikus fájlrendszer |Objektum-tároló sík névtérrel |
 | API |REST API HTTPS-kapcsolaton keresztül |REST API HTTP/HTTPS protokollon keresztül |
-| Kiszolgálóoldali API |[WebHDFS – kompatibilis REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| Kiszolgálóoldali API |[WebHDFS – kompatibilis REST API](/rest/api/datalakestore/) |[Azure Blob Storage REST API](/rest/api/storageservices/Blob-Service-REST-API) |
 | Hadoop fájlrendszerbeli ügyfél |Igen |Igen |
-| Adatműveletek – hitelesítés |[Azure Active Directory identitások](../active-directory/develop/authentication-scenarios.md) alapján |Közös titkokon alapuló [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) és [közös hozzáférésű aláírási kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Adatműveletek – hitelesítés |[Azure Active Directory identitások](../active-directory/develop/authentication-vs-authorization.md) alapján |Közös titkokon alapuló [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) és [közös hozzáférésű aláírási kulcsok](../storage/common/storage-sas-overview.md). |
 | Adatműveletek – hitelesítési protokoll |[OpenID-kapcsolat](https://openid.net/connect/). A hívásoknak tartalmazniuk kell egy Azure Active Directory által kiadott érvényes JWT (JSON webes tokent).|Kivonatoló alapú üzenethitelesítő kód (HMAC). A hívásoknak Base64 kódolású SHA-256 kivonatot kell tartalmazniuk a HTTP-kérelem egy részén. |
-| Adatműveletek – engedélyezés |POSIX Access Control listák (ACL-ek).  A Azure Active Directory identitások alapján megadott ACL-ek a fájl-és mappa szintjén állíthatók be. |Fiók szintű engedélyezés – [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) használata<br>Fiók, tároló vagy blob engedélyezése esetén – [közös hozzáférésű aláírási kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) használata |
+| Adatműveletek – engedélyezés |POSIX Access Control listák (ACL-ek).  A Azure Active Directory identitások alapján megadott ACL-ek a fájl-és mappa szintjén állíthatók be. |Fiók szintű engedélyezés – [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) használata<br>Fiók, tároló vagy blob engedélyezése esetén – [közös hozzáférésű aláírási kulcsok](../storage/common/storage-sas-overview.md) használata |
 | Adatműveletek – naplózás |Elérhető. További [információ:.](data-lake-store-diagnostic-logs.md) |Elérhető |
 | Inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
 | Felügyeleti műveletek (például fiók létrehozása) |[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) a fiókok felügyeletéhez |[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) a fiókok felügyeletéhez |

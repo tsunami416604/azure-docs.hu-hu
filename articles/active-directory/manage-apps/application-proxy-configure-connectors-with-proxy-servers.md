@@ -1,6 +1,6 @@
 ---
-title: Meglévő helyszíni proxykiszolgálók és Azure AD használata | Microsoft Docs
-description: Ismerteti, hogyan használható a meglévő helyszíni proxykiszolgálók használata.
+title: A meglévő helyszíni proxykiszolgálók és Azure Active Directory használata
+description: Ismerteti, hogyan használható a meglévő helyszíni proxykiszolgálók a Azure Active Directory használatával.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2311b905aeeaacb6c445f441d5268d06a150de64
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077509"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107640"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -117,12 +116,12 @@ A következő URL-címek elérésének engedélyezése:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az összekötő ezeket az URL-eket használja a tanúsítványok ellenőrzéséhez |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
-Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, akkor engedélyezheti a \* . msappproxy.net és a \* . servicebus.Windows.net kapcsolatait. Ha nem, engedélyeznie kell az [Azure adatközpont IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
+Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, akkor engedélyezheti a \* . msappproxy.net és a \* . servicebus.Windows.net kapcsolatait.
 
 Ha a teljes tartománynév nem engedélyezhető, és az IP-címtartományok megadására van szükség, használja a következő beállításokat:
 
 * Az összekötő kimenő hozzáférésének engedélyezése az összes célhelyre.
-* Az összekötő kimenő hozzáférésének engedélyezése az összes [Azure Datacenter IP-tartományhoz](https://www.microsoft.com//download/details.aspx?id=41653). Az Azure Datacenter IP-címtartományok listájának használatával kapcsolatos kihívás az, hogy hetente frissül. Egy olyan folyamatot kell létrehoznia, amely biztosítja, hogy a hozzáférési szabályok megfelelően frissüljenek. A konfigurációt csak az IP-címek egy részhalmaza használatával lehet megszakítani.
+* Az összekötő kimenő hozzáférésének engedélyezése az összes Azure Datacenter IP-tartományhoz. Az Azure Datacenter IP-címtartományok listájának használatával kapcsolatos kihívás az, hogy hetente frissül. Egy olyan folyamatot kell létrehoznia, amely biztosítja, hogy a hozzáférési szabályok megfelelően frissüljenek. A konfigurációt csak az IP-címek egy részhalmaza használatával lehet megszakítani. A legújabb Azure-adatközpont IP-címtartományok letöltéséhez navigáljon az [https://download.microsoft.com](https://download.microsoft.com) "Azure IP-címtartományok és szolgáltatás-címkék" kifejezésre. Ügyeljen arra, hogy a megfelelő felhőt válassza ki. A nyilvános Felhőbeli IP-címtartományok például az "Azure IP-címtartományok és a szolgáltatás-címkék – nyilvános felhő" című részben találhatók. Az USA kormányzati-felhőjét az "Azure IP-címtartományok és szolgáltatás-címkék – US kormányzati Cloud" kifejezésre keresve találja meg.
 
 #### <a name="proxy-authentication"></a>Proxy hitelesítése
 
@@ -204,7 +203,7 @@ Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válasz
 
 Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

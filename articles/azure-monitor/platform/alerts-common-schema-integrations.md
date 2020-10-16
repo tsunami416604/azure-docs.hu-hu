@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322091"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108881"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A közös riasztási séma integrálása a Logic Apps
 
@@ -17,7 +17,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy logikai alkalmazást, amely kihasz
 
 ## <a name="overview"></a>Áttekintés
 
-A [Common Alert séma](https://aka.ms/commonAlertSchemaDocs) szabványosított és bővíthető JSON-sémát biztosít az összes különböző riasztási típusban. A gyakori riasztási séma a leggyakrabban a webhookok, a runbookok és a Logic Apps használatával történő programozott használat esetén hasznos. Ebben a cikkben bemutatjuk, hogyan hozhat létre egyetlen logikai alkalmazást az összes riasztás kezeléséhez. Ugyanezen alapelvek alkalmazhatók más programozott módszerekre is. Az ebben a cikkben ismertetett logikai alkalmazás jól definiált változókat hoz létre az ["Essential" mezőkhöz](alerts-common-schema-definitions.md#essentials), valamint leírja, hogyan kezelheti a [riasztás típusának](alerts-common-schema-definitions.md#alert-context) adott logikáját.
+A [Common Alert séma](./alerts-common-schema.md) szabványosított és bővíthető JSON-sémát biztosít az összes különböző riasztási típusban. A gyakori riasztási séma a leggyakrabban a webhookok, a runbookok és a Logic Apps használatával történő programozott használat esetén hasznos. Ebben a cikkben bemutatjuk, hogyan hozhat létre egyetlen logikai alkalmazást az összes riasztás kezeléséhez. Ugyanezen alapelvek alkalmazhatók más programozott módszerekre is. Az ebben a cikkben ismertetett logikai alkalmazás jól definiált változókat hoz létre az ["Essential" mezőkhöz](alerts-common-schema-definitions.md#essentials), valamint leírja, hogyan kezelheti a [riasztás típusának](alerts-common-schema-definitions.md#alert-context) adott logikáját.
 
 
 ## <a name="prerequisites"></a>Előfeltételek 
@@ -138,5 +138,4 @@ Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt
 ## <a name="next-steps"></a>További lépések
 
 * [További információ a műveleti csoportokról](./action-groups.md).
-* [További információ a közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
-
+* [További információ a közös riasztási sémáról](./alerts-common-schema.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093752"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104393"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -67,7 +67,7 @@ A **példány részletei**területen:
 
     c. **Részletek**: a kiválasztott értesítési típus alapján írjon be egy e-mail-címet, telefonszámot stb.
     
-    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
 
     ![Az értesítések lap](./media/action-groups/action-group-2-notifications.png)
     
@@ -83,7 +83,7 @@ A **példány részletei**területen:
 
     c. **Részletek**: a Művelettípus alapján adjon meg egy webhook URI-t, egy Azure-alkalmazást, egy ITSM-kapcsolat vagy egy Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
     
-    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
     
     ![A műveletek lap](./media/action-groups/action-group-3-actions.png)
 
@@ -314,11 +314,10 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
 
 A ActionGroup **szolgáltatással** való használata segít minimalizálni az IP-címek gyakori frissítéseinek összetettségét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](./itsmc-overview.md).
 * További információ a riasztások [díjszabásának korlátozásáról](./alerts-rate-limiting.md) .
 * [Tekintse át a tevékenységek naplójának riasztásait](./alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
 * Megtudhatja, hogyan [konfigurálhatja a riasztásokat, amikor egy szolgáltatás állapotáról értesítést küldenek](../../service-health/alerts-activity-log-service-notifications-portal.md).
-

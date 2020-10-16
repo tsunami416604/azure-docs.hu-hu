@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bfe1109640f158b92f54b945d314ac65a93ddc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403551"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107912"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplóadatok feldolgozási ideje az Azure Monitorban
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -57,7 +57,7 @@ Egyes megoldások nem gyűjtik az adatokat az ügynöktől, és olyan gyűjtemé
 A gyűjtemény gyakoriságának meghatározásához tekintse meg az egyes megoldások dokumentációját.
 
 ### <a name="pipeline-process-time"></a>Folyamat – feldolgozási idő
-Miután betöltötte a naplóbejegyzések betöltését a Azure Monitori folyamatba (ahogy az a [_TimeReceived](log-standard-properties.md#_timereceived) tulajdonságban van meghatározva), a bérlők elkülönítésének biztosításához, valamint az adatok nem elvesztésének megtételéhez a rendszer az ideiglenes tárhelyre írja őket. Ez a folyamat általában 5-15 másodpercet vesz igénybe. Egyes felügyeleti megoldások súlyosabb algoritmusokat implementálnak az adatösszesítéshez és az elemzések kinyeréséhez, mivel az adatátviteli szolgáltatás a ben. A hálózati teljesítmény figyelése például 3 perces intervallumokban összesíti a bejövő adatokat, ami gyakorlatilag 3 perces késéssel jár. Egy másik folyamat, amely a késést adja meg, az egyéni naplókat kezelő folyamat. Bizonyos esetekben előfordulhat, hogy a folyamat néhány percet vesz igénybe az ügynök által a fájlokból gyűjtött naplók számára.
+Miután betöltötte a naplóbejegyzések betöltését a Azure Monitori folyamatba (ahogy az a [_TimeReceived](./log-standard-columns.md#_timereceived) tulajdonságban van meghatározva), a bérlők elkülönítésének biztosításához, valamint az adatok nem elvesztésének megtételéhez a rendszer az ideiglenes tárhelyre írja őket. Ez a folyamat általában 5-15 másodpercet vesz igénybe. Egyes felügyeleti megoldások súlyosabb algoritmusokat implementálnak az adatösszesítéshez és az elemzések kinyeréséhez, mivel az adatátviteli szolgáltatás a ben. A hálózati teljesítmény figyelése például 3 perces intervallumokban összesíti a bejövő adatokat, ami gyakorlatilag 3 perces késéssel jár. Egy másik folyamat, amely a késést adja meg, az egyéni naplókat kezelő folyamat. Bizonyos esetekben előfordulhat, hogy a folyamat néhány percet vesz igénybe az ügynök által a fájlokból gyűjtött naplók számára.
 
 ### <a name="new-custom-data-types-provisioning"></a>Új egyéni adattípusok kiépítés
 Amikor új egyéni adattípust hoz létre egy [Egyéni naplóból](data-sources-custom-logs.md) vagy az adatgyűjtő [API](data-collector-api.md)-ból, a rendszer létrehoz egy dedikált tároló-tárolót. Ez egy egyszeri többletterhelés, amely csak ezen adattípus első megjelenésekor jelentkezik.
@@ -77,8 +77,8 @@ A betöltési idő különböző körülmények között eltérő lehet. A napl�
 
 | Lépés | Tulajdonság vagy függvény | Megjegyzések |
 |:---|:---|:---|
-| Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived-val megegyező időpontra lesz beállítva. |
-| Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| Rekord létrehozva az adatforrásban | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived-val megegyező időpontra lesz beállítva. |
+| Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Betöltési késés késése
@@ -141,6 +141,5 @@ Heartbeat
 | top 20 by NoHeartbeatPeriod desc 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Monitor [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) beolvasása.
-

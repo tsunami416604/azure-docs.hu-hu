@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016093"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107606"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
 
@@ -30,22 +30,6 @@ Azure Analysis Services esetén a telepítő az átjáróval való első alkalom
 
 - **Az átjáró erőforrásának csatlakoztatása a kiszolgálókhoz** – ha átjáró-erőforrást használ, megkezdheti a kiszolgálók csatlakoztatását. Több kiszolgálót és más erőforrást is összekapcsolhat, ha azok ugyanabban a régióban találhatók.
 
-
-
-## <a name="how-it-works"></a>Működés
-A szervezet egyik számítógépén telepített átjáró Windows-szolgáltatásként, helyszíni **adatátjáróként**fut. Ez a helyi szolgáltatás az Azure Service Buson keresztül van regisztrálva a Gateway felhőszolgáltatásban. Ezután létrehoz egy helyszíni adatátjáró-erőforrást egy Azure-előfizetéshez. Az Azure Analysis Services-kiszolgálók ezután csatlakoznak az Azure Gateway-erőforráshoz. Ha a kiszolgálón lévő modelleknek lekérdezésekhez vagy feldolgozáshoz kell csatlakozniuk a helyszíni adatforrásokhoz, a lekérdezés és az adatfolyam áthalad az átjáró erőforrásán, Azure Service Bus, a helyi helyszíni adatátjáró szolgáltatáson és az adatforrásokon. 
-
-![Működés](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-Lekérdezések és adatfolyam:
-
-1. A felhőszolgáltatás létrehoz egy lekérdezést a helyszíni adatforráshoz tartozó titkosított hitelesítő adatokkal. Ezt a rendszer elküldi az átjáró várólistájára feldolgozásra.
-2. Az átjáró Cloud Service elemzi a lekérdezést, és leküldi a kérést a [Azure Service Busnak](https://azure.microsoft.com/documentation/services/service-bus/).
-3. A helyszíni adatátjáró lekérdezi a függőben lévő kéréseket az Azure Service Busról.
-4. Az átjáróhoz beérkezik a lekérdezés, az elvégzi a hitelesítő adatok visszafejtését, majd kapcsolódik az adatforrásokhoz ezekkel a hitelesítő adatokkal.
-5. A futtatáshoz az átjáró a lekérdezést elküldi az adatforrásnak.
-6. A futtatás eredményeit az adatforrás visszaküldi az átjárónak, majd a felhőszolgáltatásnak és az Ön kiszolgálójának.
-
 ## <a name="installing"></a>Telepítés
 
 Azure Analysis Services környezet telepítésekor fontos, hogy kövesse a helyszíni [adatátjáró telepítése és konfigurálása a Azure Analysis Services számára](analysis-services-gateway-install.md)című témakörben ismertetett lépéseket. Ez a cikk Azure Analysis Servicesra vonatkozik. További lépéseket is tartalmaz, amelyek szükségesek egy helyszíni adatátjáró-erőforrás beállításához az Azure-ban, és a Azure Analysis Services-kiszolgáló összekapcsolása az erőforrással.
@@ -62,7 +46,7 @@ Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalo
 
 A következő az átjáró által használt teljes tartománynevek.
 
-| Tartománynevek | Kimenő portok | Description |
+| Tartománynevek | Kimenő portok | Leírás |
 | --- | --- | --- |
 | *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP-cím. |
 | *.powerbi.com |443 |HTTPS |
@@ -77,17 +61,7 @@ A következő az átjáró által használt teljes tartománynevek.
 | *.microsoftonline-p.com |443 |Hitelesítésre használható a konfigurációtól függően. |
 | dc.services.visualstudio.com    |443 |A AppInsights használja a telemetria gyűjtésére. |
 
-### <a name="forcing-https-communication-with-azure-service-bus"></a>HTTPS-kommunikáció kényszerítése az Azure Service Bus felé
-
-Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS használatával kommunikáljon Azure Service Busekkel. Ez azonban nagy mértékben csökkentheti a teljesítményt. Módosíthatja a *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* fájlt úgy, hogy módosítja a értékét a következőre: `AutoDetect` `Https` . Ez a fájl általában a *C:\Program Files\On-premises adatátjáróban*található.
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
-
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 A következő cikkek tartalmazzák a helyszíni adatátjáró általános tartalmát, amely az átjáró által támogatott összes szolgáltatásra vonatkozik:
 

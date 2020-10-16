@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876243"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107572"
 ---
 # <a name="azure-data-studio-dashboards"></a>Irányítópultok Azure Data Studio
 
-A [Azure Data Studio](https://aka.ms/azuredatastudio) az Azure arc erőforrásaival kapcsolatos információk megtekintéséhez hasonló élményt nyújt a Azure Portalhoz.  Ezeket a nézeteket **irányítópultoknak** nevezzük, és olyan elrendezéssel és lehetőségekkel rendelkeznek, amelyek a Azure Portal adott erőforrásával kapcsolatban látszanak, de rugalmasságot biztosítanak az információk helyi környezetben való megjelenítéséhez olyan esetekben, amikor nem áll rendelkezésre az Azure-hoz elérhető kapcsolódás.
+A [Azure Data Studio](/sql/azure-data-studio/what-is) az Azure arc erőforrásaival kapcsolatos információk megtekintéséhez hasonló élményt nyújt a Azure Portalhoz.  Ezeket a nézeteket **irányítópultoknak** nevezzük, és olyan elrendezéssel és lehetőségekkel rendelkeznek, amelyek a Azure Portal adott erőforrásával kapcsolatban látszanak, de rugalmasságot biztosítanak az információk helyi környezetben való megjelenítéséhez olyan esetekben, amikor nem áll rendelkezésre az Azure-hoz elérhető kapcsolódás.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -26,7 +26,7 @@ A [Azure Data Studio](https://aka.ms/azuredatastudio) az Azure arc erőforrásai
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- [Azure Data Studio](https://aka.ms/getazuredatastudio) letöltése
+- [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) letöltése
 - Az Azure arc bővítmény telepítve van
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>Az adatvezérlő kiszolgáló API-végpontjának URL-címének meghatározása

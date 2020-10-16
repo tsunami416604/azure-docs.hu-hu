@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723860"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107963"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező, illetve az adatküldés és-tárolás helyét adja meg. Ez a cikk áttekintést nyújt az adatgyűjtési szabályokról, beleértve azok tartalmát és szerkezetét, valamint azt, hogy miként hozhat létre és dolgozhat velük.
@@ -68,7 +68,7 @@ A következő táblázat felsorolja az egyes adatgyűjtési szabályokra jelenle
 Jelenleg két elérhető módszer létezik a DCR létrehozásához:
 
 - [Az Azure Portal használatával](data-collection-rule-azure-monitor-agent.md) hozzon létre egy adatgyűjtési szabályt, és társítsa azt egy vagy több virtuális géphez.
-- Közvetlenül szerkessze az adatgyűjtési szabályt a JSON-ban, és [küldje el a REST API használatával](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
+- Közvetlenül szerkessze az adatgyűjtési szabályt a JSON-ban, és [küldje el a REST API használatával](/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Minta adatgyűjtési szabály
 Az alábbi minta adatgyűjtési szabály az Azure felügyeleti ügynökkel rendelkező virtuális gépekre vonatkozik, és az alábbi adatokat tartalmaz:

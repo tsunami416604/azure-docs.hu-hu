@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 991201429bdc09a03ddc46c5beb9d0f4d6744ed5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548888"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Azure Active Directory integráció a Rackspace SSO-val
 
@@ -101,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés Rackspace SSO-vel való konfigurálásához 
 
     a. Kattintson a **metaadat-fájl feltöltése**elemre.
 
-    ![image](common/upload-metadata.png)
+    ![Képernyőfelvétel: alapszintű SAML-konfiguráció a metaadatok feltöltése hivatkozással.](common/upload-metadata.png)
 
     b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Képernyőfelvétel: egy párbeszédpanel, amelyen kiválaszthatja és feltöltheti a fájlokat.](common/browse-upload-metadata.png)
 
     c. A metaadat-fájl feltöltése után a szükséges URL-címek automatikus feltöltése automatikusan megtörténik.
 
@@ -153,7 +153,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

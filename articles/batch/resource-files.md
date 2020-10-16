@@ -3,12 +3,12 @@ title: Erőforrás-fájlok létrehozása és használata
 description: Megtudhatja, hogyan hozhat létre batch-forrásfájlokat különböző bemeneti forrásokból. Ez a cikk néhány gyakori módszert ismertet a virtuális gépek létrehozásához és elhelyezéséhez.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230942"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109289"
 ---
 # <a name="creating-and-using-resource-files"></a>Erőforrás-fájlok létrehozása és használata
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Az SAS URL-cím generálásának alternatívája a névtelen, nyilvános olvasási hozzáférés engedélyezése egy tárolóhoz és a blobokhoz az Azure Blob Storage-ban. Így csak olvasási hozzáférést biztosíthat ezekhez az erőforrásokhoz anélkül, hogy meg kellene osztania a fiók kulcsát, és nem igényel SAS-t. A nyilvános olvasási hozzáférés jellemzően olyan esetekben használható, amikor azt szeretné, hogy bizonyos Blobok mindig elérhetők legyenek a névtelen olvasási hozzáféréshez. Ha ez a forgatókönyv megfelel a megoldásnak, a blob-adataihoz való hozzáférés kezelésével kapcsolatos további tudnivalókért tekintse meg a Blobok [Névtelen elérését](../storage/blobs/storage-manage-access-to-resources.md) ismertető cikket.
+Az SAS URL-cím generálásának alternatívája a névtelen, nyilvános olvasási hozzáférés engedélyezése egy tárolóhoz és a blobokhoz az Azure Blob Storage-ban. Így csak olvasási hozzáférést biztosíthat ezekhez az erőforrásokhoz anélkül, hogy meg kellene osztania a fiók kulcsát, és nem igényel SAS-t. A nyilvános olvasási hozzáférés jellemzően olyan esetekben használható, amikor azt szeretné, hogy bizonyos Blobok mindig elérhetők legyenek a névtelen olvasási hozzáféréshez. Ha ez a forgatókönyv megfelel a megoldásnak, a blob-adataihoz való hozzáférés kezelésével kapcsolatos további tudnivalókért tekintse meg a Blobok [Névtelen elérését](../storage/blobs/anonymous-read-access-configure.md) ismertető cikket.
 
 ### <a name="storage-container-name"></a>Storage-tároló neve
 
@@ -101,7 +101,7 @@ Ha egy feladatban több száz erőforrás van megadva, akkor a Batch túl nagyna
 
 Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja a különböző "Container" [metódusokat](/dotnet/api/microsoft.azure.batch.resourcefile#methods) az erőforrás-fájlokhoz. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg az [alkalmazás csomagjait](batch-application-packages.md) az erőforrás-fájlok alternatívájaként.
 - További információ a tárolók erőforrás-fájlokhoz való használatáról: [tároló munkaterhelések](batch-docker-container-workloads.md).

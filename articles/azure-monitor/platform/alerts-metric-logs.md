@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446181"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108847"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
@@ -62,7 +62,7 @@ A Log Analytics-adatokon összegyűjtött naplók metrikája előtt be kell áll
 
  A metrikai riasztások a Azure Portal, a Resource Manager-sablonok, a REST API, a PowerShell és az Azure CLI használatával hozhatók létre és kezelhetők. Mivel a naplók metrikai riasztásai, a metrikus riasztások egy változata – amint az előfeltételek teljesülnek, a naplók metrikai riasztása a megadott Log Analytics munkaterülethez hozható létre. A [metrikai riasztások](./alerts-metric-near-real-time.md) minden jellemzője és funkciója a naplók metrikájának riasztására is vonatkozik. beleértve a hasznos adatok sémáját, a vonatkozó kvóta korlátait és a számlázás díját.
 
-Részletes részletekért és példákért tekintse meg a [metrikai riasztások létrehozásával és kezelésével](https://aka.ms/createmetricalert)foglalkozó témakört. A naplók metrikai riasztásai esetében kövesse a metrikai riasztások kezelésével kapcsolatos útmutatást, és győződjön meg a következőkről:
+Részletes részletekért és példákért tekintse meg a [metrikai riasztások létrehozásával és kezelésével](./alerts-metric.md)foglalkozó témakört. A naplók metrikai riasztásai esetében kövesse a metrikai riasztások kezelésével kapcsolatos útmutatást, és győződjön meg a következőkről:
 
 - A metrikai riasztás célja érvényes *log Analytics munkaterület*
 - A kiválasztott *log Analytics-munkaterület* metrikai riasztására kiválasztott jel a következő típusú: **metrika**
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - További információ a [metrikai riasztásokról](alerts-metric.md).
 - További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
 - További információ [Az Azure-beli riasztásokról](alerts-overview.md).
-

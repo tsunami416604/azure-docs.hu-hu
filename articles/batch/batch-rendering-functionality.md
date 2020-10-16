@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957460"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107470"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
 
@@ -75,7 +75,7 @@ Arnold 2017 parancssor|kick.exe|ARNOLD_2017_EXEC|
 
 Más számítási feladatokhoz hasonlóan a renderelési alkalmazások rendszerkövetelményei eltérőek, és a teljesítményre vonatkozó követelmények a feladatok és a projektek esetében eltérőek.  Számos virtuálisgép-család elérhető az Azure-ban a követelményektől függően – a legalacsonyabb költség, a legjobb ár/teljesítmény, a legjobb teljesítmény és így tovább.
 Egyes renderelési alkalmazások, például Arnold, CPU-alapúak; mások, például a V-Ray és a Blender ciklusok a processzorokat és/vagy a GPU-t is használhatják.
-A rendelkezésre álló virtuálisgép-családok és a virtuálisgép-méretek leírását [lásd: VM-típusok és-méretek](../virtual-machines/windows/sizes.md).
+A rendelkezésre álló virtuálisgép-családok és a virtuálisgép-méretek leírását [lásd: VM-típusok és-méretek](../virtual-machines/sizes.md).
 
 ### <a name="low-priority-vms"></a>Alacsony prioritású virtuális gépek
 

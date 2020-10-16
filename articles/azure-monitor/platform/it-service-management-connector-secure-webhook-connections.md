@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328853"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107759"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -51,7 +51,7 @@ A biztonságos exportálás a BMC Helix-t támogatja. Az integráció néhány e
 
 * **Jobb hitelesítés**: az Azure ad biztonságosabb hitelesítést biztosít a ITSMC-ben gyakran előforduló időtúllépések nélkül.
 * **A ITSM eszközben megoldott riasztások: a**metrikus riasztások "tüzelt" és "megoldott" állapotokat valósítanak meg. Ha a feltétel teljesül, a riasztás állapota "tüzelt". Ha a feltétel már nem teljesül, a riasztás állapota "feloldva". A ITSMC-ben a riasztások nem oldhatók fel automatikusan. A biztonságos exportálással a megoldott állapot a ITSM eszközre áramlik, így automatikusan frissül.
-* **[Gyakori riasztási séma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**: a ITSMC a riasztási adatok sémája eltér a riasztás típusa alapján. A biztonságos exportálásnál létezik egy általános séma az összes riasztási típushoz. Ez a közös séma tartalmazza a CI-t az összes riasztási típushoz. Az összes riasztási típus képes lesz a CI és a CMDB kötésére.
+* **[Gyakori riasztási séma](./alerts-common-schema.md)**: a ITSMC a riasztási adatok sémája eltér a riasztás típusa alapján. A biztonságos exportálásnál létezik egy általános séma az összes riasztási típushoz. Ez a közös séma tartalmazza a CI-t az összes riasztási típushoz. Az összes riasztási típus képes lesz a CI és a CMDB kötésére.
 
 Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 
@@ -63,7 +63,7 @@ Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 
 Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 
-1. Kövesse az [alkalmazás regisztrálása a Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)című témakör lépéseit.
+1. Kövesse az [alkalmazás regisztrálása a Microsoft Identity platformmal](../../active-directory/develop/quickstart-register-app.md)című témakör lépéseit.
 1. Az Azure AD-ben válassza az **alkalmazás közzététele**lehetőséget.
 1. Adja **meg** az **alkalmazás azonosítójának URI**azonosítóját.
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 Miután az alkalmazás regisztrálva lett az Azure AD-ben, létrehozhat munkaelemeket a ITSM eszközön az Azure-riasztások alapján, a biztonságos webhook művelettel a műveleti csoportokban.
 
 A műveleti csoportok moduláris és újrahasznosítható módszert biztosítanak az Azure-riasztások műveleteinek elindításához. A műveleti csoportokat metrikus riasztásokkal, műveletnapló riasztásokkal és Azure Log Analytics riasztásokkal is használhatja a Azure Portal.
-A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](./action-groups.md).
 
 Használja a következő eljárást a BMC Helix-környezetben:
 
@@ -89,7 +89,7 @@ Webhook egy művelethez való hozzáadásához kövesse az alábbi utasításoka
 
 1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza a **figyelő**elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 1. Válassza a **riasztások**  >  **kezelése műveletek**lehetőséget.
-1. Válassza a [műveleti csoport hozzáadása](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)lehetőséget, és töltse ki a mezőket.
+1. Válassza a [műveleti csoport hozzáadása](./action-groups.md#create-an-action-group-by-using-the-azure-portal)lehetőséget, és töltse ki a mezőket.
 1. Írjon be egy nevet a **műveleti csoport neve** mezőbe, és adjon meg egy nevet a **rövid név** mezőben. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 1. Válassza a **biztonságos webhook**lehetőséget.
 1. Válassza ki az alábbi adatokat:
@@ -138,6 +138,6 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 ![A BMC-konfigurációt megjelenítő képernyőkép.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [ITSM-munkaelemek létrehozása az Azure-riasztásokból](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md)

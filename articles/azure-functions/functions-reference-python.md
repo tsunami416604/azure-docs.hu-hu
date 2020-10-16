@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642197"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108422"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -295,21 +295,38 @@ Ebben a függvényben a lekérdezési paraméter értékét a rendszer a `name` 
 
 Hasonlóképpen beállíthatja a és a `status_code` `headers` válaszüzenetet is a visszaadott [HttpResponse] objektumban.
 
-## <a name="scaling-and-concurrency"></a>Skálázás és Egyidejűség
+## <a name="scaling-and-performance"></a>Skálázás és teljesítmény
 
-Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Pythonhoz. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Fontos megérteni, hogy a függvények hogyan működnek, és hogy a teljesítmény milyen hatással van a Function alkalmazás skálázásának módjára. Ez különösen fontos a nagy teljesítményű alkalmazások tervezésekor. A következő szempontokat érdemes figyelembe venni a functions-alkalmazások tervezése, írása és konfigurálása során.
 
-Ez a skálázási viselkedés számos alkalmazás esetében elegendő. A következő jellemzők bármelyikével rendelkező alkalmazások esetében azonban nem lehet hatékonyan méretezni:
+### <a name="horizontal-scaling"></a>Horizontális skálázás
+Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Pythonhoz. A függvények beépített küszöbértékeket használnak a különböző típusú triggerekhez, hogy eldöntsék, mikor kell hozzáadni a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. Ezek a küszöbértékek nem állíthatók be a felhasználó számára. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-- Az alkalmazásnak számos egyidejű hívást kell kezelnie.
-- Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel.
-- Az alkalmazás I/O-kötésű.
+### <a name="improving-throughput-performance"></a>Az átviteli teljesítmény javítása
 
-Ilyen esetekben az aszinkron minták és a több nyelvű munkavégző folyamat használatával tovább javíthatja a teljesítményt.
+A teljesítmény javítására szolgáló kulcs azt mutatja be, hogy az alkalmazás hogyan használja az erőforrásokat, és hogy ennek megfelelően tudja konfigurálni a Function alkalmazást.
 
-### <a name="async"></a>Aszinkron
+#### <a name="understanding-your-workload"></a>A számítási feladatok ismertetése
 
-Mivel a Python egy egyszálas futtatókörnyezet, a Pythonhoz tartozó gazdagép-példány egyszerre csak egy függvényt tud feldolgozni. A nagy mennyiségű I/O-eseményt feldolgozó alkalmazások és/vagy I/O-kötések esetén a függvények aszinkron futtatásával javítható a teljesítmény.
+Az alapértelmezett konfigurációk a legtöbb Azure Functions alkalmazáshoz megfelelőek. Az alkalmazások teljesítményének növelését azonban a munkaterhelés-profilon alapuló konfigurációk alkalmazásával növelheti. Első lépésként ismernie kell a futtatott számítási feladatok típusát.
+
+|| I/O-kötésű munkaterhelés | PROCESSZORral kötött munkaterhelés |
+|--| -- | -- |
+|Function alkalmazás jellemzői| <ul><li>Az alkalmazásnak számos egyidejű hívást kell kezelnie.</li> <li> Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket.</li> </ul>| <ul><li>Az alkalmazás hosszú ideig futó számításokat végez, például a képek átméretezését.</li> <li>Az alkalmazás adatátalakítást végez.</li> </ul> |
+|Példák| <ul><li>Webes API-k</li><ul> | <ul><li>Adatfeldolgozás</li><li> Gépi tanulás – következtetés</li><ul>|
+
+ 
+> [!NOTE]
+>  A valós működéshez kapcsolódó számítási feladatok leggyakrabban az I/O-és a CPU-kötések kombinációját jelentik, javasoljuk, hogy a munkaterhelést a reális üzemi terhelések alatt profilba hozza.
+
+
+#### <a name="performance-specific-configurations"></a>Teljesítmény-specifikus konfigurációk
+
+A Function alkalmazás munkaterhelés-profiljának megismerése után a következő konfigurációkat használhatja a függvények teljesítményének növeléséhez.
+
+##### <a name="async"></a>Aszinkron
+
+Mivel a [Python egy egyszálas futtatókörnyezet](https://wiki.python.org/moin/GlobalInterpreterLock), a Pythonhoz tartozó gazdagép-példány egyszerre csak egy függvényt tud feldolgozni. A nagy mennyiségű I/O-eseményt feldolgozó alkalmazások és/vagy I/O-kötések esetében a függvények aszinkron futtatásával növelheti a teljesítményt.
 
 A függvények aszinkron futtatásához használja az `async def` utasítást, amely a függvényt a [asyncio](https://docs.python.org/3/library/asyncio.html) közvetlenül futtatja:
 
@@ -317,6 +334,21 @@ A függvények aszinkron futtatásához használja az `async def` utasítást, a
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+Íme egy példa a HTTP-triggert használó függvényre, amely [aiohttp](https://pypi.org/project/aiohttp/) http-ügyfelet használ:
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 A kulcsszó nélküli függvény `async` automatikusan fut egy asyncio szál-készletben:
 
@@ -327,17 +359,31 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>Több nyelvet használó munkavégző folyamat használata
+Ahhoz, hogy a függvények aszinkron módon elérhetők legyenek, a kódban használt I/O műveletnek/könyvtárnak is aszinkron módon kell megvalósítani. A szinkron I/O-műveletek használata az aszinkron módon definiált függvényeknél **megsértheti** a teljes teljesítményt.
+
+Íme néhány példa arra, hogy az ügyféloldali kódtárak implementálták az aszinkron mintát:
+- [aiohttp](https://pypi.org/project/aiohttp/) – http-ügyfél/-kiszolgáló asyncio 
+- [Streams API](https://docs.python.org/3/library/asyncio-stream.html) – magas szintű aszinkron/várakozásra kész primitívek a hálózati kapcsolatban való együttműködéshez
+- [Janus üzenetsor](https://pypi.org/project/janus/) – Thread-Safe asyncio-kompatibilis üzenetsor a Pythonhoz
+- [pyzmq](https://pypi.org/project/pyzmq/) – Python-kötések a ZeroMQ
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>Több nyelvet használó munkavégző folyamat használata
 
 Alapértelmezés szerint minden functions Host-példány egyetlen nyelvi munkavégző folyamattal rendelkezik. A [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) alkalmazás beállításával növelheti a munkavégző folyamatok számát a gazdagépen (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között.
 
+A CPU-kötésű alkalmazások esetében állítsa be, hogy a nyelvi feldolgozó hány vagy annál nagyobb legyen, mint a Function app által elérhető magok száma. További információ: [elérhető példány SKU](functions-premium-plan.md#available-instance-skus)-i. 
+
+Az I/O-kötésű alkalmazások is kihasználhatják a munkavégző folyamatok számának növelését az elérhető magok száma után. Ne feledje, hogy a feldolgozók számának beállítása túl nagy hatással lehet az általános teljesítményre a szükséges környezeti kapcsolók megnövekedett száma miatt. 
+
 A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez.
+
 
 ## <a name="context"></a>Környezet
 
 Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) meg az argumentumot az aláírásában.
 
-Például:
+Példa:
 
 ```python
 import azure.functions

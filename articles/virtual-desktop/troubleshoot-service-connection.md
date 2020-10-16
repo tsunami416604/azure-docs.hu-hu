@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali kapcsolat hibáinak megoldása �
 description: Problémák megoldása a Windows rendszerű virtuális asztali bérlői környezetben a szolgáltatási kapcsolatok beállítása során.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089904"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108949"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
 
@@ -46,7 +46,14 @@ Ez a hiba általában akkor jelenik meg, ha egy felhasználó áthelyezte az el�
 
 Ennek megoldásához mindössze annyit kell tennie, hogy újra hozzárendeli a felhasználókat az alkalmazás-csoportjaihoz.
 
-## <a name="next-steps"></a>Következő lépések
+Ez akkor is előfordulhat, ha egy CSP-szolgáltató létrehozta az előfizetést, majd átviszi az ügyfelet. Az erőforrás-szolgáltató újbóli regisztrálásának feloldásához.
+
+1. Jelentkezzen be az Azure portálra.
+2. Nyissa meg az **előfizetést**, majd válassza ki az előfizetését.
+3. Az oldal bal oldalán található menüben válassza az **erőforrás-szolgáltató**elemet.
+4. Keresse meg és válassza ki a **Microsoft. DesktopVirtualization**elemet, majd válassza az **ismételt regisztrálás**lehetőséget.
+
+## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört

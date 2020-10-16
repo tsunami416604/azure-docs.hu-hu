@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8539f3f2a5882f12f131c95b0c17efd3acba3cf
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542581"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105175"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Oktatóanyag: a RingCentral és a Azure Active Directory integrálása
 
@@ -117,7 +117,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -151,19 +151,19 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. A felső részen kattintson az **eszközök**elemre.
 
-    ![image](./media/ringcentral-tutorial/ringcentral1.png)
+    ![A képernyőképen a RingCentral vállalati webhelyről kiválasztott eszközök láthatók.](./media/ringcentral-tutorial/ringcentral1.png)
 
 1. Navigáljon az **egyszeri bejelentkezéshez**.
 
-    ![image](./media/ringcentral-tutorial/ringcentral2.png)
+    ![Képernyőfelvétel: a Tools (eszközök) menüből kiválasztva egy Sign-On.](./media/ringcentral-tutorial/ringcentral2.png)
 
 1. Az **egyszeri bejelentkezési** oldalon az **SSO-konfiguráció** szakaszban az **1. lépésben** kattintson a **Szerkesztés** elemre, és hajtsa végre a következő lépéseket:
 
-    ![image](./media/ringcentral-tutorial/ringcentral3.png)
+    ![Képernyőfelvétel: az S S O konfiguráció lapja, amelyen kiválaszthatja a szerkesztés lehetőséget.](./media/ringcentral-tutorial/ringcentral3.png)
 
 1. Az **egyszeri bejelentkezés beállítása** oldalon hajtsa végre a következő lépéseket:
 
-    ![image](./media/ringcentral-tutorial/ringcentral4.png)
+    ![A képernyőképen az egy Sign-On beállítása oldalon látható, ahol feltöltheti a D P-metaadatokat.](./media/ringcentral-tutorial/ringcentral4.png)
 
     a. Kattintson a **Tallózás** gombra a Azure Portal letöltött metaadat-fájl feltöltéséhez.
 
@@ -175,11 +175,11 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     e. A **2. lépésben** kattintson a **Letöltés** gombra a **szolgáltatói metaadat-fájl** letöltéséhez, és töltse fel azt az **SAML alapszintű konfigurációs** szakaszba az **azonosító** és a **Válasz URL-cím** értékének automatikus kitöltéséhez Azure Portalban.
 
-    ![image](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![Képernyőfelvétel: az S S O konfiguráció lapja, amelyen kiválaszthatja a letöltés lehetőséget.](./media/ringcentral-tutorial/ringcentral6.png) 
 
     f. Ugyanazon a lapon navigáljon az **SSO engedélyezése** szakaszhoz, és hajtsa végre a következő lépéseket:
 
-    ![image](./media/ringcentral-tutorial/ringcentral5.png)
+    ![A képernyőképen az Enable S S O szakasz látható, ahol befejezheti a konfigurációt.](./media/ringcentral-tutorial/ringcentral5.png)
 
     * Válassza az **egyszeri bejelentkezési szolgáltatás engedélyezése**lehetőséget.
 

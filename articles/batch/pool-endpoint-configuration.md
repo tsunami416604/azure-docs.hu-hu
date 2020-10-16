@@ -3,12 +3,12 @@ title: Csomópont-végpontok konfigurálása Azure Batch készletben
 description: Az SSH-vagy RDP-portok elérésének konfigurálása vagy letiltása egy Azure Batch készlet számítási csomópontjain.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7df7da539be75ef1befdff4b4e1fe5244c1702
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83780289"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109306"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>A Azure Batch-készletben lévő számítási csomópontok távoli elérésének konfigurálása vagy letiltása
 
@@ -19,7 +19,7 @@ A környezetében előfordulhat, hogy korlátozni vagy le kell tiltania ezeket a
 ## <a name="about-the-pool-endpoint-configuration"></a>A készlet végpont-konfigurációjának ismertetése
 A végpont-konfiguráció a előtér-portok egy vagy több hálózati címfordítási [(NAT) készletét](/rest/api/batchservice/pool/add#inboundnatpool) tartalmazza. (Ne keverje össze a NAT-készletet a számítási csomópontok batch-készletével.) Az egyes NAT-készleteket úgy állíthatja be, hogy felülbírálja a készlet számítási csomópontjain lévő alapértelmezett kapcsolódási beállításokat. 
 
-Minden NAT-készlet konfigurációja tartalmaz egy vagy több [hálózati biztonsági csoport (NSG) szabályt](/rest/api/batchservice/pool/add#networksecuritygrouprule). Minden NSG-szabály engedélyezi vagy megtagadja a végpontra irányuló bizonyos hálózati forgalmat. Dönthet úgy, hogy engedélyezi vagy megtagadja az összes forgalmat, a [szolgáltatási címke](../virtual-network/security-overview.md#service-tags) által azonosított forgalmat (például az "internetet") vagy adott IP-címekről vagy alhálózatokról érkező forgalmat.
+Minden NAT-készlet konfigurációja tartalmaz egy vagy több [hálózati biztonsági csoport (NSG) szabályt](/rest/api/batchservice/pool/add#networksecuritygrouprule). Minden NSG-szabály engedélyezi vagy megtagadja a végpontra irányuló bizonyos hálózati forgalmat. Dönthet úgy, hogy engedélyezi vagy megtagadja az összes forgalmat, a [szolgáltatási címke](../virtual-network/network-security-groups-overview.md#service-tags) által azonosított forgalmat (például az "internetet") vagy adott IP-címekről vagy alhálózatokról érkező forgalmat.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 * A készlet végpontjának konfigurációja a készlet [hálózati konfigurációjának](/rest/api/batchservice/pool/add#networkconfiguration)részét képezi. A hálózati konfiguráció opcionálisan tartalmazhat olyan beállításokat, amelyekkel csatlakoztathatja a készletet egy Azure-beli [virtuális hálózathoz](batch-virtual-network.md). Ha a készletet egy virtuális hálózatban állítja be, létrehozhat olyan NSG-szabályokat, amelyek a virtuális hálózatban a címek beállításait használják.
@@ -121,4 +121,4 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
-- További információ az Azure-beli NSG-szabályokról: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md).
+- További információ az Azure-beli NSG-szabályokról: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/network-security-groups-overview.md).

@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 926e9bc5302403063d536e31fe304d837bca8ec5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873213"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109068"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -242,18 +242,18 @@ New-AzSubscriptionDeployment -Name <deploymentName> `
 # Log in first with az login if you're not using Cloud Shell
 
 # Deploy Azure Resource Manager template using template and parameter file locally
-az deployment create --name <deploymentName> \
-                     --location <AzureRegion> \
-                     --template-file <pathToTemplateFile> \
-                     --parameters <parameters/parameterFile> \
-                     --verbose
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-file <pathToTemplateFile> \
+                         --parameters <parameters/parameterFile> \
+                         --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create --name <deploymentName> \
-                     --location <AzureRegion> \
-                     --template-uri <templateUri> \
-                     --parameters <parameterFile> \
-                     --verbose
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-uri <templateUri> \
+                         --parameters <parameterFile> \
+                         --verbose
 ```
 
 ## <a name="confirm-successful-onboarding"></a>Sikeres előkészítés megerősítése
@@ -296,7 +296,7 @@ Get-AzContext
 az account list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

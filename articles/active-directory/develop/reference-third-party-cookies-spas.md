@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87311755"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104580"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Az ITP kezelése a Safariban és más böngészőkben, ahol a harmadik féltől származó cookie-k blokkolva vannak
 
@@ -49,7 +49,7 @@ A SPAs két további korlátozást tartalmaz:
 * [Az átirányítási URI-t típusként `spa` kell megjelölni](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) . a CORS engedélyezése a bejelentkezési végpontokon.
 * Az engedélyezési kód által az `spa` URI-k átirányításához kiadott tokenek frissítése 24 órás élettartammal, nem pedig 90 napos élettartammal történik.
 
-![A SPA-alkalmazások kódjának folyamatábrája](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="A OAuth 2 engedélyezési kód egy egyoldalas alkalmazás és a biztonsági jogkivonat szolgáltatás végpontja közötti folyamatát ábrázoló diagram." border="false":::
 
 ## <a name="performance-and-ux-implications"></a>Teljesítmény-és UX-következmények
 

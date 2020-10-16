@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
-ms.openlocfilehash: 667ca4701ed8e781a2270b42802bab31e6e9c8ee
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 532d96163e2ec66730dc3fdf87f10904fd584224
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096232"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107997"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -304,7 +304,7 @@ A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas inform�
 > [!NOTE]
 > Log Analytics lekérdezések a használt forgatókönyvtől függően különböző áruházakban menthetők. A lekérdezések a következő helyzetekben titkosítva maradnak a Microsoft Key (MMK) szolgáltatással: Azure Monitor, Azure-irányítópultok, Azure Logic app, Azure Notebooks és Automation Runbookok-munkafüzetek.
 
-Ha saját tárolót (BYOS) használ, és összekapcsolja azt a munkaterülettel, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](../../storage/common/encryption-customer-managed-keys.md) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
+Ha saját tárolót (BYOS) használ, és összekapcsolja azt a munkaterülettel, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](../../storage/common/customer-managed-keys-overview.md) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
 
 **Szempontok a lekérdezések CMK beállítása előtt**
 * A munkaterület és a Storage-fiók "Write" engedélyekkel kell rendelkeznie
@@ -374,7 +374,7 @@ A kulcstároló segítségével engedélyezheti vagy elutasíthatja a Microsoft 
 
 A Azure Monitor a Log Analytics dedikált fürthöz társított munkaterületeken található adathoz irányítja ezt a vezérlőt. A kulcstároló-vezérlő a Log Analytics dedikált fürtben tárolt adatra vonatkozik, ahol a rendszer elkülönítetten tárolja a fürt Storage-fiókjaiban a kulcstároló által védett előfizetését.  
 
-További információ a [Microsoft Azure Ügyfélszéfről](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+További információ a [Microsoft Azure Ügyfélszéfről](../../security/fundamentals/customer-lockbox-overview.md)
 
 ## <a name="cmk-management"></a>CMK-kezelés
 
