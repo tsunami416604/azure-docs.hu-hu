@@ -168,6 +168,7 @@
         - name: Feladatok előkészítési és befejezési műveletei
           href: batch-job-prep-release.md
         - name: Párhuzamosan futó csomóponti feladatok
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Tevékenységfüggőségek
           href: batch-task-dependencies.md

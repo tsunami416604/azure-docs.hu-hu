@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: A VMware Horizon üzembe helyezése
           href: azure-vmware-solution-horizon.md
+    - name: VMware-ökoszisztéma
+      items:
+        - name: Biztonsági mentési megoldások virtuális gépekhez
+          href: ecosystem-back-up-vms.md
 - name: További források
   items:
     - name: Hibaelhárítás

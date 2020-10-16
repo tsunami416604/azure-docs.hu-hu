@@ -386,7 +386,7 @@
       items:
         - name: Áttekintés
           href: security-overview.md
-        - name: Szerepköralapú hozzáférés-vezérlés
+        - name: Azure-beli szerepköralapú hozzáférés-vezérlés
           href: backup-rbac-rs-vault.md
         - name: Helyreállítható törlés
           items:

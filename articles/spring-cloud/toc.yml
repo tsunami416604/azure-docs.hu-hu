@@ -40,7 +40,7 @@
     - name: Azure Spring Cloud-példány üzembe helyezése a Terraform használatával
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: CI/CD – Jenkins
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/developer/jenkins/deploy-to-azure-spring-cloud-using-azure-cli
     - name: A Key Vault összekapcsolása egy Azure Spring Cloud-alkalmazással felügyelt identitás segítségével
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Az Azure Spring Cloud üzembe helyezése virtuális hálózaton
@@ -114,15 +114,15 @@
 - name: Referencia
   items:
     - name: Azure CLI beépülő modul
-      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+      href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
+      href: /powershell/module/az.springcloud
     - name: További források
       href: spring-cloud-resources.md
     - name: Gyakori kérdések
       href: spring-cloud-faq.md
     - name: REST API-referencia
-      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+      href: /rest/api/azurespringclould/
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
