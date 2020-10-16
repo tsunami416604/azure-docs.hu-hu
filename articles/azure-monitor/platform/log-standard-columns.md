@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 01c0b6f280b8179760c6ecc55fd7feca3ddf2080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039056"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104240"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Szabványos oszlopok a Azure Monitor-naplókban
-Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](../log-query/logs-structure.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi oszlopokkal rendelkezik. Számos adattípus szabványos oszlopokat tartalmaz, amelyek több típusra is jellemzőek. Ez a cikk ezeket az oszlopokat ismerteti, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
+Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](./data-platform-logs.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi oszlopokkal rendelkezik. Számos adattípus szabványos oszlopokat tartalmaz, amelyek több típusra is jellemzőek. Ez a cikk ezeket az oszlopokat ismerteti, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
 
 A Application Insights munkaterület-alapú alkalmazásai Log Analytics munkaterületen tárolják az állapotukat, és ugyanazokat a szabványos oszlopokat használják, mint a munkaterületen lévő többi tábla. A klasszikus alkalmazások külön tárolják az adattárolást, és eltérő szabványos oszlopokkal rendelkeznek a jelen cikkben megadott módon.
 
@@ -207,9 +207,8 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor naplózási adatainak tárolásáról](../log-query/log-query-overview.md).
 - Vegyen fel egy leckét a [naplók írásához](../log-query/get-started-queries.md).
 - Bemutatjuk [, hogyan csatlakozhatnak táblákhoz a naplók lekérdezésében](../log-query/joins.md).
-

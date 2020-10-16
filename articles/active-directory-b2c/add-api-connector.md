@@ -1,5 +1,5 @@
 ---
-title: API-összekötők hozzáadása felhasználói folyamatokhoz
+title: API-összekötők hozzáadása felhasználói folyamatokhoz (előzetes verzió)
 description: A felhasználói folyamatokban használandó API-összekötő konfigurálása.
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854358"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102272"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz (előzetes verzió)
 
 Az API- [Összekötők](api-connectors-overview.md)használatához először létre kell hoznia az API-összekötőt, majd engedélyeznie kell azt egy felhasználói folyamaton.
 
@@ -238,8 +238,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | Sztring            | Igen      | Az API verziója.                                                                                                                                                                                                                                                                |
 | művelet                                             | Sztring            | Igen      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | Az értékeket a címtárban tárolhatja, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumaiban** való **fogadásra vonatkozó jogcímként** van kijelölve. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként**van kiválasztva.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . Az értékeket a címtárban kell tárolni, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumában** való **fogadásra vonatkozó jogcímként** vannak megadva. Egyéni attribútumok nem küldhetők vissza a jogkivonatban. |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként**van kiválasztva.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként**van kiválasztva.  |
 
 ### <a name="example-of-a-blocking-response"></a>Blokkoló válasz – példa
 
@@ -267,6 +267,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Érvényesítési hiba – példa
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -285,6 +287,8 @@ Content-type: application/json
 | művelet      | Sztring  | Igen      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
 | status      | Egész szám | Igen      | ValidationError-válasz értékének kell lennie `400` .                        |
 | userMessage | Sztring  | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
+
+*Megjegyzés:* A válasz törzsében szereplő "status" érték mellett a HTTP-állapotkód "400" értékűnek kell lennie.
 
 **Végfelhasználói élmény érvényesítéssel – hiba-válasz**
 
@@ -312,6 +316,6 @@ Győződjön meg a következőket:
 * Ha szükséges, használjon agresszívebb naplózási szintet (például "trace" vagy "debug") a fejlesztésben.
 * Az API figyelése hosszú válaszidő esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - Ismerkedjen meg az [Azure Function](code-samples.md#api-connectors)gyors üzembe helyezési mintákkal.

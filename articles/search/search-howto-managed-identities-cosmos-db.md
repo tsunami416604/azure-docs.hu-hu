@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275285"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102693"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával
 
 Ez a lap azt ismerteti, hogyan állítható be egy indexelő-kapcsolódás egy Azure Cosmos DB-adatbázishoz felügyelt identitás használatával ahelyett, hogy hitelesítő adatokat kellene megadnia az adatforrás-objektum kapcsolódási karakterláncában.
 
 Mielőtt többet szeretne megtudni a szolgáltatásról, javasoljuk, hogy Ismerje meg, mi az indexelő, és hogyan állítható be egy indexelő az adatforráshoz. További információt az alábbi hivatkozásokon talál:
+
 * [Az indexelő áttekintése](search-indexer-overview.md)
 * [Azure Cosmos DB-indexelő](search-howto-index-cosmosdb.md)
 
@@ -143,9 +144,8 @@ Ha azt tapasztalja, hogy nem tudja indexelni a Cosmos DB adatait, vegye figyelem
 
 1. Ha nemrég elforgatta a Cosmos DB-fiók kulcsait, akkor a felügyelt identitás-kapcsolódási karakterlánc működéséhez akár 15 percet is várnia kell.
 
-1. Ellenőrizze, hogy a Cosmos DB-fiók hozzáférése korlátozott-e a hálózatok kiválasztásához. Ha igen, tekintse meg az [adatforrásokhoz való indexeléshez való hozzáférést az Azure hálózati biztonsági funkcióinak használatával](search-indexer-securing-resources.md).
+1. Ellenőrizze, hogy a Cosmos DB-fiók hozzáférése korlátozott-e a hálózatok kiválasztásához. Ha igen, tekintse át az [Indexelő hozzáférését az Azure hálózati biztonsági funkciói által védett tartalmakhoz](search-indexer-securing-resources.md)című témakört.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
-További információ a Cosmos DB indexelő szolgáltatásról:
 * [Azure Cosmos DB-indexelő](search-howto-index-cosmosdb.md)

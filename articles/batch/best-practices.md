@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849489"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102778"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -63,7 +63,7 @@ Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg
 
 ### <a name="third-party-images"></a>Harmadik féltől származó rendszerképek
 
-A készleteket az Azure Marketplace-en közzétett harmadik féltől származó rendszerképek használatával hozhatja létre. A felhasználói előfizetés módú batch-fiókok esetében előfordulhat, hogy a "kiosztási hiba a piactér-vásárlási jogosultság ellenőrzése miatt" hibaüzenet jelenik meg, ha a készletet bizonyos harmadik féltől származó rendszerképekkel hozza létre. A hiba megoldásához fogadja el a rendszerkép közzétevője által beállított feltételeket. Ezt a [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms)használatával teheti meg.
+A készleteket az Azure Marketplace-en közzétett harmadik féltől származó rendszerképek használatával hozhatja létre. A felhasználói előfizetés módú batch-fiókok esetében előfordulhat, hogy a "kiosztási hiba a piactér-vásárlási jogosultság ellenőrzése miatt" hibaüzenet jelenik meg, ha a készletet bizonyos harmadik féltől származó rendszerképekkel hozza létre. A hiba megoldásához fogadja el a rendszerkép közzétevője által beállított feltételeket. Ezt a [Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) vagy az [Azure CLI](/cli/azure/vm/image/terms)használatával teheti meg.
 
 ### <a name="azure-region-dependency"></a>Azure region-függőség
 
@@ -173,7 +173,7 @@ Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tan
 
 A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 Tekintse át a következő útmutatást, amikor a Batch-megoldások kapcsolatát fontolgatja.
 

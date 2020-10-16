@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 75aec9f3509881c35de9309fa1532b961fb2bc03
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 11d2172d085fe9b47587f4084908f99d7b54437e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875555"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103237"
 ---
-Ha a Azure Portal klasszikus virtuális hálózatok hoz létre, a megtekintett név nem a PowerShellhez használt teljes név. Előfordulhat például, hogy a portálon a **TestVNet1** nevű VNet sokkal több nevet tartalmaz a hálózati konfigurációs fájlban. A név valahogy így néz ki: **Group ClassicRG TestVNet1**. A kapcsolatok létrehozásakor fontos, hogy a hálózati konfigurációs fájlban látható értékeket használja.
+Ha a Azure Portal klasszikus virtuális hálózatok hoz létre, a megtekintett név nem a PowerShellhez használt teljes név. Előfordulhat például, hogy a portálon a **TestVNet1** nevű VNet sokkal több nevet tartalmaz a hálózati konfigurációs fájlban. A "ClassicRG" nevű erőforráscsoport VNet a következőhöz hasonló lehet: **Group ClassicRG TestVNet1**. A kapcsolatok létrehozásakor fontos, hogy a hálózati konfigurációs fájlban látható értékeket használja.
 
 A következő lépésekben csatlakozni fog az Azure-fiókjához, és letölti és megtekinti a hálózati konfigurációs fájlt a kapcsolatokhoz szükséges értékek beszerzéséhez.
 
@@ -36,9 +36,10 @@ A következő lépésekben csatlakozni fog az Azure-fiókjához, és letölti é
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
-1. Exportálja és tekintse meg a hálózati konfigurációs fájlt. Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a rendszer a **C:\AzureNet**exportálja.
+1. Hozzon létre egy könyvtárat a számítógépén. Például: C:\AzureVNet
+1. Exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a rendszer a **C:\AzureNet**exportálja.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-1. Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a virtuális hálózatok és a webhelyek nevét. Ezek a nevek lesznek a kapcsolatok létrehozásakor használt nevek.<br>A VNet nevei a **VirtualNetworkSite neve =**<br>A helyek nevei a **LocalNetworkSiteRef neve =**
+1. Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a virtuális hálózatok és a webhelyek nevét. Ezek a nevek lesznek a kapcsolatok létrehozásakor használt nevek.<br>A **VNet** nevei a **VirtualNetworkSite neve =**<br>A **helyek** nevei a **LocalNetworkSiteRef neve =**

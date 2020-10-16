@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7cb9d5c5c2ca850678d3f3194a9af8de526ada4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856976"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103390"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>A Azure PowerShell használatával hozzon létre egy HDInsight-fürtöt Azure Data Lake Storage Gen1 (további tárterületként)
 
@@ -250,7 +250,7 @@ A HDInsight-fürt konfigurálását követően tesztelési feladatokat futtathat
 
 Ebben a szakaszban az SSH-t fogja létrehozni a létrehozott HDInsight Linux-fürtön, és futtatta a minta struktúra-lekérdezést.
 
-* Ha Windows-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata a HDInsight a Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)rendszerből című témakört.
+* Ha Windows-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata a HDInsight a Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)rendszerből című témakört.
 * Ha Linux-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata Linux-alapú Hadoop a HDInsight Linuxon](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) című témakört.
 
 1. A csatlakozás után indítsa el a kaptár CLI-t a következő parancs használatával:
@@ -287,7 +287,7 @@ Miután konfigurálta a HDInsight-fürtöt Data Lake Storage Gen1 használatára
 
 Ebben a szakaszban az SSH-t fogja létrehozni a létrehozott HDInsight Linux-fürtön, és futtatja a HDFS-parancsokat.
 
-* Ha Windows-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata a HDInsight a Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)rendszerből című témakört.
+* Ha Windows-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata a HDInsight a Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)rendszerből című témakört.
 * Ha Linux-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata Linux-alapú Hadoop a HDInsight Linuxon](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) című témakört.
 
 A csatlakozás után a következő HDFS fájlrendszer-paranccsal listázhatja a Storage-fiókban lévő fájlokat a Data Lake Storage Gen1 használatával.
@@ -310,5 +310,5 @@ A parancs használatával is `hdfs dfs -put` feltölthet néhány fájlt a Data 
 * [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Portál: hozzon létre egy HDInsight-fürtöt Data Lake Storage Gen1 használatához](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
-[pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
+[pvk2pfx]: /windows-hardware/drivers/devtest/pvk2pfx

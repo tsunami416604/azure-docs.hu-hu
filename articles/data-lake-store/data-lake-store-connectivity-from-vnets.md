@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191405"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104036"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Hozzáférési Azure Data Lake Storage Gen1 egy Azure-VNET belüli virtuális gépekről
 Azure Data Lake Storage Gen1 egy nyilvános internetes IP-címeken futó, Minden olyan kiszolgáló, amely csatlakozhat a nyilvános internethez, jellemzően Azure Data Lake Storage Gen1 végpontokhoz is csatlakozhat. Alapértelmezés szerint az Azure virtuális hálózatok-ban található összes virtuális gép hozzáfér az internethez, így a Azure Data Lake Storage Gen1hoz is hozzáférhet. Előfordulhat azonban, hogy a virtuális gépeket egy VNET konfigurálja, hogy ne legyen hozzáférése az internethez. Ilyen virtuális gépek esetén a Azure Data Lake Storage Gen1hoz való hozzáférés is korlátozott. Az Azure virtuális hálózatok-beli virtuális gépek nyilvános internet-hozzáférésének blokkolása az alábbi módszerek bármelyikével végezhető el:
@@ -46,7 +46,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>A NSG használatával korlátozott virtuális gépekről való kapcsolódás engedélyezése
-Ha egy NSG-szabály az Internet elérésének blokkolására szolgál, létrehozhat egy másik NSG, amely hozzáférést biztosít a Data Lake Storage Gen1 IP-címhez. További információ a NSG-szabályokról: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md). A NSG létrehozásával kapcsolatos útmutatásért tekintse meg [a hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)című témakört.
+Ha egy NSG-szabály az Internet elérésének blokkolására szolgál, létrehozhat egy másik NSG, amely hozzáférést biztosít a Data Lake Storage Gen1 IP-címhez. További információ a NSG-szabályokról: [hálózati biztonsági csoportok áttekintése](../virtual-network/network-security-groups-overview.md). A NSG létrehozásával kapcsolatos útmutatásért tekintse meg [a hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)című témakört.
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>A UDR vagy a ExpressRoute által korlátozva lévő virtuális gépek kapcsolatának engedélyezése
 Ha az útvonalak UDR vagy BGP-Exchange-útvonalakat használnak az internethez való hozzáférés blokkolására, akkor egy speciális útvonalat kell konfigurálni, hogy az ilyen alhálózatokban lévő virtuális gépek hozzáférhessenek Data Lake Storage Gen1 végpontokhoz. További információ: [felhasználó által megadott útvonalak áttekintése](../virtual-network/virtual-networks-udr-overview.md). A UDR létrehozásával kapcsolatos utasításokért lásd: [UDR létrehozása a Resource Managerben](../virtual-network/tutorial-create-route-table-powershell.md).
@@ -57,4 +57,3 @@ Ha egy ExpressRoute-áramkör konfigurálva van, a helyszíni kiszolgálók hozz
 ## <a name="see-also"></a>Lásd még
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme](data-lake-store-security-overview.md)
-

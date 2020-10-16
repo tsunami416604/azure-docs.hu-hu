@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985789"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103628"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>A Azure Data Lake Storage Gen1 használatának első lépései az Azure CLI-vel
 
@@ -26,7 +26,7 @@ ms.locfileid: "85985789"
 
 Megtudhatja, hogyan hozhat létre Azure Data Lake Storage Gen1 fiókot az Azure CLI használatával, és hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, az adatfájlok feltöltése és letöltése, a fiók törlése stb. További információ a Data Lake Storage Gen1ről: [Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md).
 
-Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információ: [Az Azure CLI áttekintése](https://docs.microsoft.com/cli/azure). A parancsok és a szintaxis teljes listájának megjelenítéséhez tekintse meg a [Azure Data Lake Storage GEN1 CLI-referenciát](https://docs.microsoft.com/cli/azure/dls) is.
+Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információ: [Az Azure CLI áttekintése](/cli/azure). A parancsok és a szintaxis teljes listájának megjelenítéséhez tekintse meg a [Azure Data Lake Storage GEN1 CLI-referenciát](/cli/azure/dls) is.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -34,11 +34,11 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure CLI** – lásd: az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) utasításokhoz.
+* **Azure CLI** – lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli) utasításokhoz.
 
 ## <a name="authentication"></a>Hitelesítés
 
-Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1, ahol végfelhasználói felhasználóként jelentkezik be. Ezt követően a Data Lake Storage Gen1 fiók és fájlrendszer hozzáférési szintjét a bejelentkezett felhasználó hozzáférési szintje szabályozza. Vannak azonban más megközelítések is, amelyek a hitelesítéshez Data Lake Storage Gen1, amelyek **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
+Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1, ahol végfelhasználói felhasználóként jelentkezik be. Ezt követően a Data Lake Storage Gen1 fiók és fájlrendszer hozzáférési szintjét a bejelentkezett felhasználó hozzáférési szintje szabályozza. Vannak azonban más megközelítések is, amelyek a hitelesítéshez Data Lake Storage Gen1, amelyek **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](./data-lake-store-service-to-service-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe

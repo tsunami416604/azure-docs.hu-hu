@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206741"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104070"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -93,7 +93,7 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
 A nyelvtől függően ezek a többi fájl is létrejön:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 * A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Ezen a ponton adhat hozzá bemeneti és kimeneti kötéseket a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -145,7 +145,7 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A rendszer új C#-függvénytárat (. cs) ad hozzá a projekthez.
 
@@ -161,7 +161,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy nevű Storage-várólistához csatlakoznak `outqueue` , ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local.settings.jsalkalmazás beállításában van beállítva.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
 
@@ -297,7 +297,7 @@ A functions-projekt helyi futtatásához meg kell felelnie a következő tovább
     | Nyelv | Követelmény |
     | -------- | --------- |
     | **C#** | [C#-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI-eszközök](/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Hibakereső a Java-bővítményhez](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 vagy újabb](https://maven.apache.org/) |
+    | **Java** | [Hibakereső a Java-bővítményhez](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 vagy újabb](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python-3.6.8](https://www.python.org/downloads/) ajánlott|
 
@@ -431,7 +431,7 @@ A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azur
 | **Azure Functions Core Tools telepítése vagy frissítése** | A [Azure functions Core Tools]telepítése vagy frissítése, amely a függvények helyi futtatására szolgál. |
 | **Ismételt üzembe helyezés**  | Lehetővé teszi, hogy egy csatlakoztatott git-tárházból újratelepítse a projektfájlok egy adott üzembe helyezését az Azure-ban. Ha újra közzé szeretné tenni a helyi frissítéseket a Visual Studio Code-ból, [tegye közzé újra a projektet](#republish-project-files). |
 | **Beállítások átnevezése** | Megváltoztatja egy meglévő Function app-beállítás kulcsának nevét az Azure-ban. Ez a parancs nem érinti a local.settings.jsfájljának beállításait. Miután átnevezte az Azure-beli beállításokat, [töltse le ezeket a módosításokat a helyi projektbe](#download-settings-from-azure). |
-| **Indítsa újra** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
+| **Újraindítás** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
 | **AzureWebJobsStorage beállítása**| Az Alkalmazásbeállítás értékének beállítása `AzureWebJobsStorage` . Ezt a beállítást a Azure Functions kötelező megadni. Akkor van beállítva, amikor egy Function-alkalmazás létrejön az Azure-ban. |
 | **Kezdés** | Elindít egy leállított Function alkalmazást az Azure-ban. |
 | **Adatfolyam-naplók indítása** | Elindítja az Azure-beli Function alkalmazás adatfolyam-naplóit. Ha a naplózási információkat közel valós időben kell megtekinteni, használja az Azure-ban a távoli hibaelhárítás során használt adatfolyam-naplókat. További információ: [streaming logs](#streaming-logs). |
@@ -443,7 +443,7 @@ A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azur
 | **Véglegesítés megtekintése a GitHubon** | Megjeleníti a legutóbbi véglegesítés egy adott központi telepítésben, ha a Function alkalmazás egy adattárhoz csatlakozik. |
 | **Telepítési naplók megtekintése** | Megjeleníti az Azure-beli Function alkalmazáshoz megadott központi telepítés naplóit. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Functions Core Toolsről: [a Azure functions Core Tools használata](functions-run-local.md).
 

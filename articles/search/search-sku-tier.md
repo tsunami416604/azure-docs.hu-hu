@@ -1,23 +1,23 @@
 ---
-title: Válasszon árképzési szintet vagy SKU-t
+title: Árképzési szintek kiválasztása
 titleSuffix: Azure Cognitive Search
-description: 'Az Azure Cognitive Search kiépíthető ezekben az SKU-ban: az ingyenes, az alapszintű és a standard szintű, valamint a standard szint számos erőforrás-konfigurációban és kapacitási szinten érhető el.'
+description: 'Az Azure Cognitive Search az alábbi szinteken hozhatók létre: az ingyenes, az alapszintű és a standard, valamint a standard szint számos erőforrás-konfigurációban és kapacitási szinten érhető el.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948085"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101273"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
-Azure Cognitive Search szolgáltatás létrehozásakor a rendszer egy [erőforrást hoz létre](search-create-service-portal.md) a szolgáltatás élettartamára rögzített árképzési szinten (vagy SKU-ban). A rétegek közé tartoznak az ingyenes, az alapszintű, a standard és a Storage optimalizált funkciók. A standard és a Storage optimalizált szolgáltatás számos konfigurációval és kapacitással érhető el.
+Azure Cognitive Search szolgáltatás létrehozásakor a rendszer egy [erőforrást hoz létre](search-create-service-portal.md) a szolgáltatás élettartamára rögzített díjszabási szinten. A rétegek közé tartoznak az ingyenes, az alapszintű, a standard és a Storage optimalizált funkciók. A standard és a Storage optimalizált szolgáltatás számos konfigurációval és kapacitással érhető el.
 
 A legtöbb ügyfél az ingyenes szintjével kezdődik, így kiértékelheti a szolgáltatást. Az értékelés után a rendszer közösen létrehoz egy második szolgáltatást a magasabb szintű fejlesztési és éles környezetekben való üzembe helyezéshez.
 
@@ -27,15 +27,15 @@ Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ism
 
 | Szolgáltatás | Korlátozások |
 |---------|-------------|
-| [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben. |
+| [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben.  |
 | [MI-bővítés](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
 | [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) | Az ingyenes szinten nem érhető el. |
 | [IP-tűzfal-hozzáférés](service-configure-firewall.md) | Az ingyenes szinten nem érhető el. |
-| [Integráció az Azure Private linkkel](service-create-private-endpoint.md) | Az ingyenes szinten nem érhető el. |
+| [Privát végpont (az Azure Private Linktel való integráció)](service-create-private-endpoint.md) | A keresési szolgáltatáshoz való bejövő kapcsolatok esetében az ingyenes szinten nem érhető el. Az indexelő által más Azure-erőforrásokhoz való kimenő kapcsolatok esetén az ingyenes vagy az S3 HD-on nem érhető el. Az szakértelmével-t használó indexelő esetében az ingyenes, az alapszintű, az S1 vagy az S3 HD nem érhető el.|
 
 A legtöbb funkció minden szinten elérhető, beleértve az ingyenes, de az erőforrás-igényes funkciók nem működnek megfelelően, kivéve, ha elegendő kapacitást biztosít. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
 
-## <a name="tiers-skus"></a>Rétegek (SKU)
+## <a name="tiers"></a>Szolgáltatási szintek
 
 A rétegek a következők szerint különböztethetők meg:
 
@@ -158,7 +158,7 @@ Az indexek méretének meghatározásához [létre kell egyet](search-what-is-an
 A teljes szöveges kereséshez az elsődleges adatstruktúra egy [fordított index](https://en.wikipedia.org/wiki/Inverted_index) -struktúra, amely különböző tulajdonságokkal rendelkezik, mint a forrásadatok. A fordított indexek esetében a méretet és az összetettséget a tartalom határozza meg, nem feltétlenül a betáplált adatmennyiség. Egy nagy redundanciával rendelkező nagyméretű adatforrás kisebb indexet eredményezhet, mint egy nagy mértékben változó tartalmat tartalmazó kisebb adathalmaz. Így ritkán lehet az index méretét az eredeti adatkészlet méretétől függően kikövetkeztetni.
 
 > [!NOTE] 
-> Annak ellenére, hogy az indexek és a tárolás jövőbeli igényeit is megbecsülik, érdemes meggondolni. Ha a rétegek kapacitása túl alacsonyra vált, egy új szolgáltatást kell kiépíteni egy magasabb szintű szinten, majd [újra kell töltenie az indexeket](search-howto-reindex.md). A szolgáltatás egyik SKU-ról egy másikra történő frissítése nem történik meg.
+> Annak ellenére, hogy az indexek és a tárolás jövőbeli igényeit is megbecsülik, érdemes meggondolni. Ha a rétegek kapacitása túl alacsonyra vált, egy új szolgáltatást kell kiépíteni egy magasabb szintű szinten, majd [újra kell töltenie az indexeket](search-howto-reindex.md). A szolgáltatás egyik rétegből a másikba való helyben történő frissítése nem történik meg.
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Becslés az ingyenes szintjével

@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761413"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102306"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -24,7 +24,7 @@ Ez a szakasz a Function alkalmazás lehető legbiztonságosabb konfigurálását
 
 ### <a name="security-center"></a>Security Center
 
-A Security Center a portálon integrálható a Function alkalmazással. A szolgáltatás ingyenes, gyors értékelést nyújt a konfigurációval kapcsolatos lehetséges biztonsági rések biztonságáról. A dedikált csomagban futtatott functions-alkalmazások felár ellenében a Security Center valós idejű biztonsági funkcióit is használhatják. További információ: [a Azure app Service webalkalmazások és API-k elleni védelem](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction). 
+A Security Center a portálon integrálható a Function alkalmazással. A szolgáltatás ingyenes, gyors értékelést nyújt a konfigurációval kapcsolatos lehetséges biztonsági rések biztonságáról. A dedikált csomagban futtatott functions-alkalmazások felár ellenében a Security Center valós idejű biztonsági funkcióit is használhatják. További információ: [a Azure app Service webalkalmazások és API-k elleni védelem](../security-center/defender-for-app-service-introduction.md). 
 
 ### <a name="log-and-monitor"></a>Naplózás és monitorozás
 
@@ -217,7 +217,7 @@ A hozzáférési korlátozások lehetővé teszik az engedélyezési/megtagadás
 
 Az átjáró-szolgáltatások, például az [azure Application Gateway](../application-gateway/overview.md) és az [Azure bejárati ajtó](../frontdoor/front-door-overview.md) lehetővé teszik a webalkalmazási tűzfal (WAF) beállítását. A WAF-szabályok az észlelt támadások figyelésére vagy letiltására szolgálnak, amelyek további védelmi réteget biztosítanak a függvények számára. A WAF beállításához a Function app-nak egy beadási vagy privát végpontok (előzetes verzió) használatával kell futnia. További információt a [privát végpontok használata](../app-service/networking/private-endpoint.md)című témakörben talál.    
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Azure Functions Azure biztonsági alapterve](security-baseline.md)
 + [Azure Functions diagnosztika](functions-diagnostics.md)

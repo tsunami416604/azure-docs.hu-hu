@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097252"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102357"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Az SQL Server nélküli Azure szinapszis-kapcsolaton keresztüli lekérdezés Azure Cosmos DB
 
@@ -266,8 +266,10 @@ A lehetséges hibák és hibaelhárítási műveletek listája a következő tá
 | --- | --- |
 | Szintaktikai hibák:<br/> -Helytelen szintaxis a "OpenRowset" közelében<br/> - `...` a nem egy felismert TÖMEGES OPENROWSET-szolgáltatói beállítás.<br/> -Helytelen szintaxis közel `...` | Lehetséges kiváltó okok<br/> – Nem a "CosmosDB" paramétert használja az első paraméterként.<br/> -Karakterlánc használata az azonosító helyett a harmadik paraméterben,<br/> -Nem adja meg a harmadik paramétert (tároló neve) |
 | Hiba történt a CosmosDB-kapcsolatok karakterláncában | -A fiók, az adatbázis, a kulcs nincs megadva <br/> – A rendszer nem ismeri fel a kapcsolatok karakterláncának néhány lehetőségét.<br/> – A pontosvesszőt `;` a rendszer a kapcsolatok karakterláncának végére helyezi |
-| A CosmosDB elérési útjának feloldása sikertelen volt, hiba: "helytelen fiók/adatbázis neve" | A megadott fióknév vagy adatbázis neve nem található. |
-| A CosmosDB elérési útjának feloldása sikertelen volt, mert a titkos kulcs helytelen értéke null vagy üres. | A fiók kulcsa érvénytelen vagy hiányzik. |
+| A CosmosDB elérési útjának feloldása sikertelen volt, hiba: "helytelen fióknév" vagy "helytelen adatbázisnév" | A megadott fióknév, adatbázisnév vagy tároló nem található, vagy az analitikai tár nincs engedélyezve a megadott gyűjteményben.|
+| A CosmosDB elérési útjának feloldása sikertelen volt, hiba: "helytelen titkos érték" vagy "titkos kód null vagy üres" | A fiók kulcsa érvénytelen vagy hiányzik. |
+| A `column name` típusú oszlop `type name` nem kompatibilis a külső adattípussal `type name` | A megadott oszlop típusa a `WITH` záradékban nem egyezik meg Cosmos db tárolóban szereplő típussal. Próbálja meg módosítani az oszlop típusát, ahogy az a következő szakaszban szerepel: [Azure Cosmos db SQL Type-hozzárendelések](#azure-cosmos-db-to-sql-type-mappings) vagy- `VARCHAR` típus használata. |
+| Az oszlop az `NULL` összes cellában található értékeket tartalmaz. | Valószínűleg helytelen oszlopnév vagy elérésiút-kifejezés a `WITH` záradékban. Az oszlopnév (vagy az oszlop típusa után a Path kifejezés) a `WITH` záradékban meg kell egyeznie a Cosmos db gyűjteményben szereplő egyes tulajdonságnév nevével. Az összehasonlítás megkülönbözteti a **kis**  -és nagybetűket (például `productCode` `ProductCode` különböző tulajdonságok). |
 
 A javaslatok és a problémák jelentése az [Azure szinapszis visszajelzéseit ismertető oldalon](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)található.
 

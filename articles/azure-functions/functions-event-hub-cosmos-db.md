@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ba15047d04d3af25518e8c55a50c55bcacf9037
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372450"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103934"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 Az oktatóanyag elvégzéséhez a következőket kell telepíteni:
 
-* A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
+* A [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 8-as verziója
 * Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
 * Ha inkább nem kívánja használni az [Azure CLI](/cli/azure/install-azure-cli) -t Cloud Shell
 * [Azure functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 2.6.666 vagy újabb verzió
@@ -74,7 +74,7 @@ LOCATION=<value>
 
 Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő összes kapcsolódó erőforrást. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha elkészült velük.
 

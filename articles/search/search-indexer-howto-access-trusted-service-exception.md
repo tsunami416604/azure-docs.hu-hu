@@ -1,34 +1,34 @@
 ---
-title: Tárolóhoz való hozzáférés engedélyezése a megbízható szolgáltatásokkal kapcsolatos kivételek használatával
+title: Indexelő hozzáférés az Azure Storage-hoz a megbízható szolgáltatásokkal kapcsolatos kivétel használatával
 titleSuffix: Azure Cognitive Search
-description: Útmutató, amely leírja, hogyan állíthat be megbízható szolgáltatási kivételt a Storage-fiókok adatainak biztonságos eléréséhez.
+description: Az Azure-Cognitive Search indexelő általi hozzáférésének engedélyezése az Azure Storage-ban biztonságosan tárolt adateléréshez.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950024"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101375"
 ---
-# <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>A Storage-fiókokban tárolt adatok biztonságos elérése a megbízható szolgáltatásokkal kapcsolatos kivételek használatával
+# <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>Indexelő hozzáférés az Azure Storage-hoz a megbízható szolgáltatási kivétel (Azure Cognitive Search) használatával
 
-A Storage-fiókokban tárolt adathozzáférésű indexelő használhatják a [megbízható szolgáltatás kivételi](../storage/common/storage-network-security.md#exceptions) funkcióját az adathozzáférés biztonságos eléréséhez. Ez a mechanizmus olyan ügyfelek számára biztosít egyszerű, biztonságos és ingyenes alternatívát, akik nem tudnak [hozzáférni az indexelő számára az IP-tűzfalszabályok](search-indexer-howto-access-ip-restricted.md) használatával.
+Az Azure-Cognitive Search szolgáltatásban az Azure Storage-fiókokban lévő adathozzáférést használó indexelő a [megbízható szolgáltatásokra vonatkozó kivételi](../storage/common/storage-network-security.md#exceptions) képességet használhatják az adathozzáférés biztonságos eléréséhez. Ez a mechanizmus olyan ügyfelek számára biztosít egyszerű, biztonságos és ingyenes alternatívát, akik a Storage-fiókokban lévő adatok eléréséhez nem tudnak [Indexelő hozzáférést biztosítani az IP-tűzfalszabályok használatával](search-indexer-howto-access-ip-restricted.md) .
 
 > [!NOTE]
 > A Storage-fiókokban lévő adatok megbízható szolgáltatási kivételen keresztüli elérésének támogatása az Azure Blob Storage-ra és Azure Data Lake Gen2-tárolóra korlátozódik. Az Azure Table Storage nem támogatott.
 
-## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>1. lépés: a Storage-fiókhoz való kapcsolódás konfigurálása identitás használatával
+## <a name="step-1-configure-a-connection-using-a-managed-identity"></a>1. lépés: a kapcsolatok konfigurálása felügyelt identitás használatával
 
-Kövesse a [felügyelt identitás-hozzáférési útmutatóban](search-howto-managed-identities-storage.md) ismertetett részleteket, és konfigurálja az Indexelő szolgáltatást a keresési szolgáltatás felügyelt identitásán keresztül a Storage-fiókok eléréséhez.
+Kövesse az [Azure Storage-fiókkal felügyelt identitás használatával létesített kapcsolatok beállítása](search-howto-managed-identities-storage.md)című témakör utasításait. Ha elkészült, a keresési szolgáltatást Azure Active Directory megbízható szolgáltatásként regisztrálja, és az Azure Storage-ban engedélyeket kap az adatokhoz és információkhoz való hozzáféréshez szükséges keresési identitáshoz.
 
 ## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>2. lépés: a megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz
 
-A Azure Portal navigáljon a Storage-fiók "tűzfalak és virtuális hálózatok" lapjára. Győződjön meg arról, hogy a "megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiókhoz" beállítás be van jelölve. Ez a beállítás csak az adott keresőszolgáltatás-példány megfelelő szerepköralapú hozzáférését teszi lehetővé a Storage-fiókhoz (erős hitelesítés) a Storage-fiókban lévő adateléréshez, még akkor is, ha az IP-tűzfalszabályok védelme alatt áll.
+A Azure Portal navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára. Győződjön meg arról, hogy a **megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz** jelölőnégyzet be van jelölve. Ez a beállítás csak az adott keresőszolgáltatás-példány megfelelő szerepköralapú hozzáférését teszi lehetővé a Storage-fiókhoz (erős hitelesítés) a Storage-fiókban lévő adateléréshez, még akkor is, ha az IP-tűzfalszabályok védelme alatt áll.
 
 ![Megbízható szolgáltatás kivétele](media\search-indexer-howto-secure-access\exception.png "Megbízható szolgáltatás kivétele")
 

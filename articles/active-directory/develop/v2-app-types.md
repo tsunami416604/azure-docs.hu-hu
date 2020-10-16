@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256756"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103152"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -46,7 +46,7 @@ Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás-előtérrel, a
 
 Az alábbi folyamatábra a OAuth 2,0 engedélyezési kód engedélyezését mutatja be (a PKCE kihagyott részletekkel), ahol az alkalmazás kódot kap a Microsoft Identity platform `authorize` végponttól, és visszaváltja a tokenekhez, és frissíti a tokeneket a helyek közötti webes kérelmek használatával. A frissítési jogkivonat 24 óránként lejár, és az alkalmazásnak egy másik kódot kell igényelnie. A hozzáférési tokenen kívül a `id_token` bejelentkezett felhasználót az ügyfélalkalmazás számára általában ugyanarra a folyamatra és/vagy egy külön OpenID Connect-kérelemre is kéri (itt nem látható).
 
-![A SPA-alkalmazások kódjának folyamatábrája](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="A OAuth 2 engedélyezési kód egy egyoldalas alkalmazás és a biztonsági jogkivonat szolgáltatás végpontja közötti folyamatát ábrázoló diagram." border="false":::
 
 Ha szeretné megtekinteni ezt a forgatókönyvet működés közben, tekintse meg az [oktatóanyagot: Jelentkezzen be a felhasználókba, és hívja meg a Microsoft Graph API-t egy JavaScript Spa-beli hitelesítési kód használatával](tutorial-v2-javascript-auth-code.md).
 
@@ -131,6 +131,6 @@ Ebben a folyamatban az alkalmazás közvetlenül a `/token` végpontot használj
 
 Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait tartalmazó dokumentációt](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a Microsoft Identity platform által támogatott típusú alkalmazásokat, ismerkedjen meg a [OAuth 2,0 és az OpenID Connecttel](active-directory-v2-protocols.md) , hogy megértse a különböző forgatókönyvekben használt protokoll-összetevőket.

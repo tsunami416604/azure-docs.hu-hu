@@ -3,12 +3,12 @@ title: Hozzáférés egy virtuális géphez (Student View) az Azure Lab csapatok
 description: Ismerje meg, hogyan érheti el a virtuális gépeket (Student View) az Azure Lab csapatokból.
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 346f4bcd75356b0466b1eea46e1da74aa2c63784
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c786a8b3fcee57cefb551a61087d4b49ee5e93c0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043445"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102408"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Hozzáférés egy virtuális géphez (Student View) az Azure Lab csapatokból
 
@@ -16,7 +16,7 @@ Ha labort hoz létre a csapatokon belül, a felhasználók megtekinthetik és é
 
 ## <a name="view-labs"></a>Laborok megtekintése
 
-Ha a labort még közzé kell tenni, vagy a szinkronizálást a csapathoz való hozzáadásuk után még nem indítja el a rendszer, hasonló üzenetküldés jelenik meg a tanulók számára. Ahhoz, hogy a labor még közzé legyen téve, vagy a szinkronizálás még a csapathoz való hozzáadása után is aktiválódik, hasonló üzenetküldés jelenik meg a csapattagok számára.
+Ha a labort még közzé kell tenni, vagy a szinkronizálást a csapathoz való hozzáadásuk után még nem indítja el a rendszer, hasonló üzenetküldés jelenik meg a csapattagok számára.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure Lab Services labor":::
@@ -26,7 +26,7 @@ Ha a labort még közzé kell tenni, vagy a szinkronizálást a csapathoz való 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/not-published-lab.png" alt-text="Azure Lab Services labor":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket:
 

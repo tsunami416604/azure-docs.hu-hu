@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0df3c6b1851767616111308ad0bacce227ba1a83
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 135e0ccfd9b4681932a9a69df0372aa400933124
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948901"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102574"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -27,7 +27,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |------------------------------|----------|-------------|---------------|
 | [Felügyelt szolgáltatás identitása](search-howto-managed-identities-data-sources.md) | Indexelő, biztonság | Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását, majd RBAC engedélyek használatával engedélyezze az Azure-adatforrásokhoz való hozzáférést. Ez a megközelítés nem teszi szükségessé a hitelesítő adatok megadását a kapcsolatok karakterláncán. <br><br>A felügyelt szolgáltatás identitásának további módja a [megbízható szolgáltatásokkal kapcsolatos kivétel](search-indexer-howto-access-trusted-service-exception.md) , ha az IP-szabályok nem választhatók. | Általánosan elérhető. Hozzáférés a funkcióhoz a portál használatakor vagy az [adatforrás (REST) létrehozásakor](/rest/api/searchservice/create-data-source) API-Version = 2020-06-30 használatával. |
-| [Privát hivatkozást használó kimenő kérelmek](search-indexer-howto-access-private.md) | Indexelő, biztonság | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet az indexelő használhatnak az Azure Private link által védett Azure-erőforrások eléréséhez. Az indexelő kapcsolatainak biztonságossá tételével kapcsolatos további információkért lásd: [az indexelő erőforrásainak védelme az Azure hálózati biztonsági szolgáltatásaival](search-indexer-securing-resources.md). | Általánosan elérhető. Ez a funkció a portál vagy a [megosztott magánhálózati kapcsolati erőforrás](/rest/api/searchmanagement/sharedprivatelinkresources) API-Version = 2020-08-01 használatával való használata esetén érhető el. |
+| [Privát hivatkozást használó kimenő kérelmek](search-indexer-howto-access-private.md) | Indexelő, biztonság | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet az indexelő használhatnak az Azure Private link által védett Azure-erőforrások eléréséhez. Az indexelő kapcsolatainak biztonságossá tételével kapcsolatos további információkért lásd: [Indexelő hozzáférés az Azure-beli hálózati biztonsági funkciók által védett tartalmakhoz](search-indexer-securing-resources.md). | Általánosan elérhető. Ez a funkció a portál vagy a [megosztott magánhálózati kapcsolati erőforrás](/rest/api/searchmanagement/sharedprivatelinkresources) API-Version = 2020-08-01 használatával való használata esetén érhető el. |
 | [Felügyeleti REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | Az új stabil REST API támogatja a megosztott magánhálózati kapcsolati erőforrások létrehozását. | Általánosan elérhető. |
 | [Felügyeleti REST API (2020-08-01 – előzetes verzió)](/rest/api/searchmanagement/management-api-versions) | REST | Megosztott privát kapcsolati erőforrást hoz létre Azure Functions és az Azure SQL for MySQL-adatbázisokhoz. | Nyilvános előzetes verzió. |
 | [Felügyelet .NET SDK 4,0](/dotnet/api/overview/azure/search/management) | .NET SDK | Az Azure SDK frissítése a Management SDK-hoz, az 2020-08-01-es verzió megcélozva REST API. | Általánosan elérhető. |

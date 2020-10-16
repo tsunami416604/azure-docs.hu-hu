@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273313"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101783"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: a Salesforce-homokozó konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -73,15 +73,15 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 1. A Salesforce-beli sandbox biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce sandbox-beli rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
 
-     ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
+     ![Képernyőfelvétel: a Beállítások hivatkozás kiválasztva.](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 1. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása**elemre.
   
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőfelvétel: a személyes adatokból kiválasztott biztonsági jogkivonat alaphelyzetbe állítása.](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 1. A **biztonsági jogkivonat alaphelyzetbe** állítása lapon kattintson a **biztonsági jogkivonat alaphelyzetbe állítása** gombra.
 
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőfelvétel a REST biztonsági jogkivonat oldalon, a magyarázó szöveggel és a biztonsági jogkivonat alaphelyzetbe állítására szolgáló lehetőséggel](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 1. Keresse meg a rendszergazdai fiókhoz társított e-mailek mappáját. Keressen egy e-mailt a Salesforce Sandbox.com, amely az új biztonsági jogkivonatot tartalmazza.
 

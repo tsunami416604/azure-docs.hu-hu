@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212714"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102323"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -43,7 +43,7 @@ Az Azure Virtual WAN lehetővé teszi a globális átviteli hálózatok architek
 
 **2. ábra: globális tranzit hálózat és virtuális WAN**
 
-Az Azure Virtual WAN architektúrában a virtuális WAN-hubok az Azure-régiókban vannak kiépítve, amelyekhez az ágakat, a virtuális hálózatok és a távoli felhasználókat is összekapcsolhatjuk. A fizikai fiókirodák prémium szintű ExpressRoute vagy helyek közötti VPN-kapcsolattal csatlakoznak a központhoz, a virtuális hálózatok a VNet-kapcsolatok segítségével csatlakoznak a központhoz, a távoli felhasználók pedig közvetlenül kapcsolódhatnak a hubhoz a felhasználó VPN-je (pont – hely VPN) használatával. A Virtual WAN támogatja a régiók közötti VNet kapcsolatot is, ahol az egyik régióban lévő VNet egy másik régióban lévő virtuális WAN-hubhoz is csatlakoztathatók.
+Az Azure Virtual WAN architektúrában a virtuális WAN-hubok az Azure-régiókban vannak kiépítve, amelyekhez az ágakat, a virtuális hálózatok és a távoli felhasználókat is összekapcsolhatjuk. A fizikai fiókirodák prémium vagy standard szintű ExpressRoute vagy helyek közötti VPN-en keresztül csatlakoznak a központhoz, a virtuális hálózatok pedig VNet-kapcsolatokkal csatlakoznak a központhoz, a távoli felhasználók pedig közvetlenül kapcsolódhatnak a hubhoz a felhasználói VPN (pont – hely VPN) használatával. A Virtual WAN támogatja a régiók közötti VNet kapcsolatot is, ahol az egyik régióban lévő VNet egy másik régióban lévő virtuális WAN-hubhoz is csatlakoztathatók.
 
 Létrehozhat egy virtuális WAN-t úgy, hogy létrehoz egy virtuális WAN-központot a régiójában, amely a legnagyobb számú küllőt (ágakat, virtuális hálózatok, felhasználókat) és a más régiókban lévő küllőket csatlakoztatja a hubhoz. Ez jó megoldás, ha egy nagyvállalati lábnyom főleg egy régióban, néhány távoli küllővel.  
   
@@ -87,7 +87,7 @@ A VNet az Azure Virtual WAN által támogatott elsődleges elérési út. Ez az 
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach és virtuális WAN
 
-A ExpressRoute egy privát és rugalmas módszer a helyi hálózatok Microsoft Cloudhoz való összekapcsolására. A Virtual WAN támogatja az Express Route Circuit-kapcsolatokat. Ha egy fiókirodai helyet a Virtual WAN-hoz csatlakoztat, az Express Route 1) Premium Circuit 2) áramkört Global Reach engedélyezett helyen kell lennie.
+A ExpressRoute egy privát és rugalmas módszer a helyi hálózatok Microsoft Cloudhoz való összekapcsolására. A Virtual WAN támogatja az Express Route Circuit-kapcsolatokat. Ha egy fiókirodai helyet a Virtual WAN-hoz csatlakoztat, az Express Route 1) Prémium vagy standard 2. szintű áramkört igényel, Global Reach engedélyezett helyen kell lennie.
 
 A ExpressRoute Global Reach a ExpressRoute kiegészítő szolgáltatása. A Global Reach segítségével összekapcsolhatja a ExpressRoute-áramköröket, hogy magánhálózat legyen a helyszíni hálózatok között. Azok az ágak, amelyek az Azure Virtual WAN-hoz csatlakoznak a ExpressRoute használatával, az ExpressRoute Global Reach kell kommunikálni egymással.
 
@@ -171,7 +171,7 @@ Ha a virtuális központ már megtanulta egy alapértelmezett útvonalat (a BGP-
 > Jelenleg nincs lehetőség a helyszíni tűzfal vagy a Azure Firewall (és a megbízható biztonsági szolgáltató) kiválasztására a virtuális hálózatok, ágakból vagy felhasználókból származó, interneten keresztül kötött forgalomhoz. Az Azure Firewall Manager beállításban megismert alapértelmezett útvonal mindig előnyben részesített az egyik ág által megismert alapértelmezett útvonalon.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy virtuális WAN-kapcsolaton keresztüli kapcsolatokat, és telepítse a Azure Firewallt az VWAN hub (ok) ban.
 

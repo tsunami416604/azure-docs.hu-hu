@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d898d3825fa40cbfd13337067c24cf14f9a544
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78184248"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102017"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>A Azure AD B2C számára elérhető Microsoft Graph műveletek
 
@@ -33,6 +33,15 @@ A következő részben található hivatkozások a Microsoft Graph API-referenci
 - [Felhasználó törlése](https://docs.microsoft.com/graph/api/user-delete)
 
 Azure AD B2C felhasználói fiókok Microsoft Graph API-val való kezelésével kapcsolatos további információkért lásd: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graphokkal](manage-user-accounts-graph-api.md).
+
+## <a name="user-phone-number-management"></a>Felhasználói telefonszámok kezelése
+
+- [Hozzáadás](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
+- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
+- [Frissítés](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
+- [Törlés](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+
+A felhasználó bejelentkezési telefonszámának Microsoft Graph API-val való kezelésével kapcsolatos további információkért lásd a [B2C hitelesítési módszereit](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)ismertető témakört.
 
 ## <a name="identity-providers-user-flow"></a>Identitás-szolgáltatók (felhasználói folyamat)
 
@@ -98,7 +107,7 @@ A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendsz
 
 - [Bővítmény tulajdonságainak listázása](https://docs.microsoft.com/graph/api/application-list-extensionproperty)
 
-Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot tud tárolni. A felhasználói folyamatok esetében ezek a bővítmény-tulajdonságok [a Azure Portal használatával kezelhetők](custom-policy-custom-attributes.md). Egyéni házirendek esetén a Azure AD B2C létrehozza a tulajdonságot az első alkalommal, amikor a házirend egy értéket ír a bővítmény tulajdonságba.
+Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot tud tárolni. A felhasználói folyamatok esetében ezek a bővítmény-tulajdonságok [a Azure Portal használatával kezelhetők](custom-policy-custom-attributes.md). Egyéni házirendek esetén a Azure AD B2C létrehozza a tulajdonságot, amikor a házirend első alkalommal ír egy értéket a bővítmény tulajdonságba.
 
 ## <a name="audit-logs"></a>Naplók
 

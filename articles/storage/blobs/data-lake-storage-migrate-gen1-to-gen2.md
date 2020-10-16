@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716137"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102642"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migrálása a Gen1-ből a Gen2-be
 
@@ -122,7 +122,7 @@ Ismerkedjen meg közelebbről az egyes mintákhoz.
  
 ### <a name="lift-and-shift-pattern"></a>Emelési és eltolási minta
 
-Ez a legegyszerűbb minta.
+Ez a legegyszerűbb minta. 
 
 1. Állítsa le az összes írást a Gen1.
 
@@ -131,6 +131,8 @@ Ez a legegyszerűbb minta.
 3. Mutasson a műveletek és a számítási feladatok Gen2.
 
 4. A Gen1 leszerelése.
+
+Tekintse meg a lift és a SHIFT minta minta kódját a lift és a [SHIFT áttelepítési mintában](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md).
 
 > [!div class="mx-imgBorder"]
 > ![emelési és eltolási minta](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Ez a legegyszerűbb minta.
 
 4. A Gen1 leszerelése.
 
+Tekintse meg a növekményes másolási minta növekményes másolási mintájának mintáját [.](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)
+
+
 > [!div class="mx-imgBorder"]
 > ![Növekményes másolási minta](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Ez a legegyszerűbb minta.
 
 4. Állítsa le az összes írást a Gen1, majd szerelje le a Gen1.
 
+Tekintse meg a kétfolyamatos [áttelepítési mintában](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md)a kettős feldolgozási minta mintáját.
+
 > [!div class="mx-imgBorder"]
 > ![Kettős folyamat mintája](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -193,6 +200,8 @@ Ez a legegyszerűbb minta.
 
 4. A Gen1 leszerelése.
 
+Tekintse meg a kétirányú szinkronizálási minta mintáját a [kétirányú szinkronizációs áttelepítési mintában](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md).
+
 > [!div class="mx-imgBorder"]
 > ![Kétirányú minta](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
@@ -202,7 +211,7 @@ Ez a legegyszerűbb minta.
 
 : heavy_check_mark: az áttelepítési erőfeszítés magas, de párhuzamosan támogatja a Gen1 és a Gen2.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a Storage-fiók biztonsági beállításainak különböző részeit. Lásd: az [Azure Storage biztonsági útmutatója](../common/storage-security-guide.md).
 - Optimalizálja a Data Lake Store teljesítményét. Lásd: [Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez](data-lake-storage-performance-tuning-guidance.md)

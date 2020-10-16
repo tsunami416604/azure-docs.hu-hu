@@ -4,16 +4,16 @@ description: Riasztási példányok kezelése az Azure-ban
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77667618"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102870"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Riasztási példányok kezelése egyesített riasztásokkal
 
-A Azure Monitor [egységes riasztások terén](https://aka.ms/azure-alerts-overview) az összes különböző típusú riasztást láthatja az Azure-ban. Ez több előfizetést ölel fel egyetlen ablaktáblán. Ez a cikk bemutatja, hogyan tekintheti meg a riasztási példányokat, és hogyan keresheti meg a hibaelhárításhoz adott riasztási példányokat.
+A Azure Monitor [egységes riasztások terén](./alerts-overview.md) az összes különböző típusú riasztást láthatja az Azure-ban. Ez több előfizetést ölel fel egyetlen ablaktáblán. Ez a cikk bemutatja, hogyan tekintheti meg a riasztási példányokat, és hogyan keresheti meg a hibaelhárításhoz adott riasztási példányokat.
 
 > [!NOTE]
 > Csak az elmúlt 30 napban generált riasztások érhetők el.
@@ -54,5 +54,4 @@ Az előző oldalon elérhető szűrőktől eltekintve a figyelési szolgáltatá
 
 Bármelyik riasztási példány kiválasztásával megnyílik a **riasztás részletei** lap, amely lehetővé teszi az adott riasztási példányra vonatkozó további részletek megtekintését.   
 
-![A riasztás részletei lap képernyőképe](media/alerts-managing-alert-instances/alert-details.jpg)  
-
+![A riasztás részletei lap képernyőképe](media/alerts-managing-alert-instances/alert-details.jpg)

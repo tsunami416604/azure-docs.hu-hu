@@ -1,25 +1,25 @@
 ---
 title: Indexelő IP-címtartományok elérésének engedélyezése
 titleSuffix: Azure Cognitive Search
-description: Útmutató, amely leírja, hogyan állítható be az IP-tűzfalszabályok, hogy az indexelő hozzáférhessenek.
+description: Konfigurálja az IP-tűzfalszabályok használatát, hogy engedélyezze az Azure Cognitive Search indexelő számára az adatelérést.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950193"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101392"
 ---
-# <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>Az IP-tűzfalszabályok beállítása az indexelő hozzáférésének engedélyezéséhez
+# <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>IP-tűzfalszabályok konfigurálása az indexelő kapcsolatainak engedélyezéséhez (Azure Cognitive Search)
 
 Az Azure-erőforrások (például a Storage-fiókok, a Cosmos DB-fiókok és az Azure SQL-kiszolgálók) IP-tűzfalszabályok csak adott IP-tartományokból származó forgalmat engedélyezik az adatok eléréséhez.
 
-Ez a cikk azt ismerteti, hogyan konfigurálható az IP-szabályok Azure Portalon keresztül egy Storage-fiókhoz, hogy az Azure Cognitive Search indexelő biztonságosan hozzáférhessenek az adatszolgáltatásokhoz. A tárterületre jellemző módon ez az útmutató közvetlenül lefordítható más Azure-erőforrásokra is, amelyek az adathozzáférés biztonságossá tételéhez is biztosítanak IP-tűzfalszabályok.
+Ez a cikk azt ismerteti, hogyan konfigurálható az IP-szabályok Azure Portalon keresztül egy Storage-fiókhoz, hogy az Azure Cognitive Search indexelő biztonságosan hozzáférhessenek az adatkezeléshez. Az Azure Storage-ra jellemző módon a módszer más Azure-erőforrások esetében is működik, amelyek IP-tűzfalszabályok használatával biztosítják az adathozzáférés biztosítását.
 
 > [!NOTE]
 > A Storage-fiók IP-tűzfalszabályok csak akkor lépnek érvénybe, ha a Storage-fiók és a keresési szolgáltatás különböző régiókban található. Ha a telepítő nem engedélyezi ezt a beállítást, javasoljuk, hogy használja a [megbízható szolgáltatás kivételét](search-indexer-howto-access-trusted-service-exception.md).
@@ -30,7 +30,7 @@ Szerezze be a keresési szolgáltatás teljes tartománynevét (FQDN). Ez a köv
 
    ![Szolgáltatás teljes tartománynevének beszerzése](media\search-indexer-howto-secure-access\search-service-portal.png "Szolgáltatás teljes tartománynevének beszerzése")
 
-A keresési szolgáltatás IP-címe `nslookup` a teljes tartománynév (vagy a) használatával szerezhető be `ping` . Ez lesz a tűzfalszabályok számára hozzáadandó IP-címek egyike.
+A keresési szolgáltatás IP-címe `nslookup` a teljes tartománynév (vagy a) használatával szerezhető be `ping` . Az alábbi példában a "10.50.10.50" kifejezést adja hozzá egy bejövő szabályhoz az Azure Storage-tűzfalon.
 
 ```azurepowershell
 
@@ -45,6 +45,8 @@ Aliases:  contoso.search.windows.net
 ```
 
 ## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>Az IP-címtartományok beolvasása a "AzureCognitiveSearch" szolgáltatás címkéjéhez
+
+A további IP-címek az indexelő [több-bérlős végrehajtási környezetből](search-indexer-securing-resources.md#indexer-execution-environment)származó kérelmekhez használatosak. Ezt az IP-címtartományt a szolgáltatás címkéjéből érheti el.
 
 A szolgáltatás címkéjének IP-címtartományok a `AzureCognitiveSearch` [Discovery API (előzetes verzió)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) vagy a [letölthető JSON-fájl](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)segítségével szerezhetők be.
 
@@ -75,20 +77,18 @@ A/32 IP-címek esetében dobja el a "/32" (52.253.133.74/32-> 52.253.133.74), m�
 
 ## <a name="add-the-ip-address-ranges-to-ip-firewall-rules"></a>Az IP-címtartományok hozzáadása az IP-tűzfalszabályok számára
 
-Az IP-címtartományok a Storage-fiók tűzfalszabály-szabályához való hozzáadásának legegyszerűbb módja a Azure Portal. Keresse meg a Storage-fiókot a portálon, és keresse meg a "**tűzfalak és virtuális hálózatok**" lapot.
+Az IP-címtartományok a Storage-fiók tűzfalszabály-szabályához való hozzáadásának legegyszerűbb módja a Azure Portal. Keresse meg a Storage-fiókot a portálon, és navigáljon a **tűzfalak és a virtuális hálózatok** lapra.
 
    ![Tűzfal és virtuális hálózatok](media\search-indexer-howto-secure-access\storage-firewall.png "Tűzfal és virtuális hálózatok")
 
-Adja hozzá a korábban beszerzett három IP-címet (1 a keresési szolgáltatás IP-címéhez, 2 a `AzureCognitiveSearch` szolgáltatási címkéhez) a címtartomány területen, majd kattintson a**Mentés**gombra.
+Adja hozzá a korábban beszerzett három IP-címet (1 a keresési szolgáltatás IP-címéhez, 2 a `AzureCognitiveSearch` szolgáltatási címkéhez) a címtartomány területen, majd válassza a **Mentés**lehetőséget.
 
    ![Tűzfal IP-szabályai](media\search-indexer-howto-secure-access\storage-firewall-ip.png "Tűzfal IP-szabályai")
 
-A tűzfalszabályok 5-10 percet vesznek igénybe, amely után frissülnek az indexelő a Storage-fiókban tárolt információkkal.
+A tűzfalszabályok 5-10 percet vesznek igénybe, és azt követően, hogy mely indexelő férhetnek hozzá a Storage-fiókban lévő információhoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy tudja, hogyan kérheti le a két IP-címet az indexekhez való hozzáférés engedélyezéséhez, az alábbi hivatkozásokkal frissítheti az IP-tűzfalszabályok egyes gyakori adatforrások esetében.
-
 - [Azure Storage-tűzfalak konfigurálása](../storage/common/storage-network-security.md)
-- [IP-tűzfal konfigurálása a CosmosDB-hez](../cosmos-db/firewall-support.md)
-- [Az IP-tűzfal konfigurálása az Azure SQL Serverhez](../azure-sql/database/firewall-configure.md)
+- [A Cosmos DB IP-tűzfalának konfigurálása](../cosmos-db/firewall-support.md)
+- [Az Azure SQL Server IP-tűzfalának konfigurálása](../azure-sql/database/firewall-configure.md)

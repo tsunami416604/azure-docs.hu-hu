@@ -3,12 +3,12 @@ title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 344bd2c801cb21932b35bcdfdcc38cc3fa73783b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979155"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102982"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -90,7 +90,7 @@ Szolgáltatás címkéi:
 
 URLs
 
-| Ügynök erőforrása | Description |
+| Ügynök erőforrása | Leírás |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -100,12 +100,12 @@ URLs
 
 Az előzetes verziójú ügynököknek (0,11-es és alacsonyabb verzió) a következő URL-címekhez is hozzáférést kell adni:
 
-| Ügynök erőforrása | Description |
+| Ügynök erőforrása | Leírás |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Vendégkonfiguráció|
 |`*-agentservice-prod-1.azure-automation.net`|Vendégkonfiguráció|
 
-Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](../../virtual-network/security-overview.md#service-tags).
+Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-címtartomány információi mellett is meg kell adni, mivel a szolgáltatások többsége jelenleg nem rendelkezik a szolgáltatási címke regisztrálásával. Ennek megfelelően az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
 
@@ -164,7 +164,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Description |
+    |Mappa |Leírás |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |%ProgramData%\AzureConnectedMachineAgent |Az ügynök konfigurációs fájljait tartalmazza.|
@@ -176,21 +176,21 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök telepítése során a következő Windows-szolgáltatások jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |A kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló kód.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Name |Alapértelmezett érték |Description |
+    |Név |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Description |
+    |Napló |Leírás |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -215,7 +215,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Description |
+    |Mappa |Leírás |
     |-------|------------|
     |/var/opt/azcmagent/ |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |/opt/azcmagent/ |
@@ -227,14 +227,14 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során a következő démonok jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez a kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló rendszerbeállításai.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Description |
+    |Napló |Leírás |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |/var/opt/azcmagent/log/azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -245,7 +245,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Alapértelmezett érték |Description |
+    |Név |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -255,7 +255,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
 

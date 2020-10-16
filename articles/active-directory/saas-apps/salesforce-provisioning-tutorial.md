@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273296"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101766"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -77,15 +77,15 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 6. A Salesforce biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce-rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
 
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőfelvétel: a Beállítások hivatkozás kiválasztva.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 7. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása**elemre.
   
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőfelvétel: a személyes adatokból kiválasztott biztonsági jogkivonat alaphelyzetbe állítása.](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 8. A **biztonsági jogkivonat alaphelyzetbe állítása** lapon kattintson a **biztonsági jogkivonat alaphelyzetbe állítása** gombra.
 
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőfelvétel a REST biztonsági jogkivonat oldalon, a magyarázó szöveggel és a biztonsági jogkivonat alaphelyzetbe állítására szolgáló lehetőséggel](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 9. Keresse meg a rendszergazdai fiókhoz társított e-mailek mappáját. Keressen egy e-mailt az új biztonsági jogkivonatot tartalmazó Salesforce.com.
 

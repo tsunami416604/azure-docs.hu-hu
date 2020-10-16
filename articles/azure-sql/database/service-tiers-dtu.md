@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848857"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102999"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,10 +37,10 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 ||Alapszintű|Standard|Prémium|
 | :-- | --: |--:| --:|
 |**Cél munkaterhelés**|Fejlesztés és gyártás|Fejlesztés és gyártás|Fejlesztés és gyártás|
-|**Rendelkezésre állási SLA**|99,99%|99,99%|99,99%|
+|**Rendelkezésre állási SLA**|99.99%|99.99%|99.99%|
 |**Biztonsági másolatok maximális megőrzése**|7 nap|35 nap|35 nap|
 |**CPU**|Alacsony|Alacsony, közepes és magas|Közepes, magas|
-|**IOPS (hozzávetőleges)**\* |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
+|**IOPS (hozzávetőleges)**\* |1-4 IOPS/DTU| 1-4 IOPS/DTU | 25 IOPS/DTU|
 |**IO-késés (hozzávetőleges)**|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
 |**Oszlopcentrikus indexelése** |N.A.|S3 és újabb verziók|Támogatott|
 |**Memóriabeli OLTP**|N.A.|N.A.|Támogatott|
@@ -179,7 +179,7 @@ A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő
 | Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
 | Alapszintű |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az önálló adatbázisok esetében elérhető számítási méretekről és a tárolási méretekről az önálló [adatbázisok SQL Database DTU-alapú erőforrás-korlátozásai](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)című témakörben olvashat bővebben.
 - Az adott számítási méretek és a rugalmas készletekhez rendelkezésre álló tárolási méretek részleteiért lásd: [SQL Database DTU-alapú erőforrás-korlátok](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

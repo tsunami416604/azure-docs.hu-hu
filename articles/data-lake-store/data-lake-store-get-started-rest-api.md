@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857182"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103492"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fiókkezelés Azure Data Lake Storage Gen1 a REST API használatával
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Az Azure Active Directory használatával történő hitelesítést két módon 
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
-Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) definiált REST API-híváson alapul.
+Ez a művelet az [itt](/rest/api/datalakestore/accounts/create) definiált REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a helyére **\<yourstoragegen1name>** a Data Lake Storage Gen1 nevét.
 
@@ -57,7 +57,7 @@ A fenti parancsban cserélje le a(z) \<`REDACTED`\> részt a korábban kapott en
 ```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 fiók törlése
-Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) definiált REST API-híváson alapul.
+Ez a művelet az [itt](/rest/api/datalakestore/accounts/delete) definiált REST API-híváson alapul.
 
 Data Lake Storage Gen1 fiók törléséhez használja a következő cURL-parancsot. Cserélje le a helyére **\<yourstoragegen1name>** a Data Lake Storage Gen1 fiók nevét.
 
@@ -77,6 +77,5 @@ HTTP/1.1 200 OK
 * [Fájlrendszer-műveletek Data Lake Storage Gen1 a REST API használatával](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="see-also"></a>Lásd még
-* [Azure Data Lake Storage Gen1 REST API-hivatkozás](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage Gen1 REST API-hivatkozás](/rest/api/datalakestore/)
 * [Azure Data Lake Storage Gen1-kompatibilis nyílt forráskódú Big adatalkalmazások](data-lake-store-compatible-oss-other-applications.md)
-

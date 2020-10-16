@@ -1,32 +1,37 @@
 ---
-title: A biztonságos erőforrásokhoz privát végpontokon keresztül hozzáférő indexelő
+title: Indexelő kapcsolatai egy privát végponton keresztül
 titleSuffix: Azure Cognitive Search
-description: Útmutató, amely leírja, hogyan kell beállítani a privát végpontokat az indexelő számára a biztonságos erőforrásokkal való kommunikációhoz
+description: Az indexelő kapcsolatainak konfigurálásával más Azure-erőforrásoktól származó tartalmakat is elérhet, amelyeket privát végponton keresztül véd.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: 9ffd7d2513e87f818001d7ccf96212a4dbef7ac2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950142"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102727"
 ---
-# <a name="accessing-secure-resources-via-private-endpoints"></a>Biztonságos erőforrások elérése privát végpontokon keresztül
+# <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Indexelő kapcsolatai egy privát végponton keresztül (Azure Cognitive Search)
 
-Az Azure-erőforrások (például az adatforrásként használt Storage-fiókok) úgy konfigurálhatók, hogy csak a virtuális hálózatok egy adott listájáról férhessenek hozzá. Az is beállítható, hogy ne engedélyezzék a "nyilvános hálózat" elérését.
-Az ügyfelek igénybe vehetik az Azure Cognitive Search egy (kimenő) [magánhálózati végponti kapcsolat](../private-link/private-endpoint-overview.md) létrehozására, hogy az adatforrásokból származó adatok biztonságosan hozzáférhessenek az indexelő használatával.
+Számos Azure-erőforrás (például az Azure Storage-fiókok) konfigurálható úgy, hogy fogadja a virtuális hálózatok egy adott listájáról érkező kapcsolatokat, és elutasítja a nyilvános hálózatról származó kapcsolaton kívüli kapcsolatokat. Ha indexelő használatával indexeli az adatait az Azure Cognitive Searchban, és az adatforrás egy magánhálózaton található, létrehozhat egy (kimenő) [privát végponti kapcsolattal](../private-link/private-endpoint-overview.md) az adatelérést.
+
+Az indexelő kapcsolódási módszer használatához két követelmény van:
+
++ A tartalmat vagy kódot biztosító Azure-erőforrást előzőleg regisztrálni kell az [Azure Private link Service](https://azure.microsoft.com/services/private-link/)-ben.
+
++ Az Azure Cognitive Search szolgáltatásnak alapszintű vagy magasabbnak kell lennie (az ingyenes szint nem érhető el). Emellett a készségkészlet rendelkező indexelő esetében a keresési szolgáltatásnak S2 vagy magasabbnak kell lennie. További információ: [szolgáltatási korlátok](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
 
 ## <a name="shared-private-link-resources-management-apis"></a>Megosztott privát kapcsolatok erőforrásainak kezelési API-jai
 
-Az Azure Cognitive Search által az ügyfél kérésére létrehozott privát végpontok a "biztonságos" erőforrásokhoz való hozzáféréshez *megosztott privát kapcsolati erőforrásoknak*nevezzük. Az ügyfél egy olyan erőforráshoz (például egy Storage-fiókhoz) való hozzáférés "megosztása", amely az [Azure Private link szolgáltatásba](https://azure.microsoft.com/services/private-link/)van bejelentkezve.
+Az Azure Cognitive Search API-kon keresztül létrehozott biztonságos erőforrások privát végpontait *megosztott privát kapcsolati erőforrásoknak* nevezzük, mivel olyan erőforráshoz (például egy Storage-fiókhoz) való hozzáférésre van szüksége, amelyet az [Azure Private link Service](https://azure.microsoft.com/services/private-link/)-be állítottak be.
 
-Az Azure Cognitive Search a keresési felügyeleti API-val, a [megosztott privát kapcsolati erőforrások létrehozására vagy frissítésére](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)való képességgel rendelkezik. Ezt az API-t a többi *megosztott magánhálózati kapcsolati erőforrás* -kezelési API-val együtt használva konfigurálhatja egy biztonságos erőforráshoz való hozzáférést egy Azure Cognitive Search indexelő használatával.
+A felügyeleti REST API az Azure Cognitive Search [CreateOrUpdate](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) műveletet biztosít, amellyel konfigurálhatja az Azure Cognitive Search indexelő szolgáltatáshoz való hozzáférést.
 
-Az egyes erőforrásokhoz tartozó magánhálózati végpontok csak a Search Management API () előzetes verziójával hozhatók létre, amely az `2020-08-01-Preview` alábbi táblázatban látható "Preview" címkével van megjelölve. A "Preview" címkével nem rendelkező erőforrások a Preview API-val és a GA API-val () is létrehozhatók. `2020-08-01`
+Az egyes erőforrásokhoz tartozó magánhálózati végpontok csak a Search Management API (vagy újabb) előzetes verziójával hozhatók létre, és az `2020-08-01-Preview` alábbi táblázatban az "Előnézet" címke szerepel. Az "Előnézet" címkével nem rendelkező erőforrások az előnézet vagy az általánosan elérhető API-verzió ( `2020-08-01` vagy újabb) használatával hozhatók létre.
 
 Az alábbi lista azokat az Azure-erőforrásokat sorolja fel, amelyekhez a kimenő magánhálózati végpontok létrehozhatók az Azure Cognitive Searchból. `groupId` az alábbi táblázatban szereplő adatokat pontosan (kis-és nagybetűk megkülönböztetése) kell használni az API-ban egy megosztott privát kapcsolati erőforrás létrehozásához.
 
@@ -40,23 +45,23 @@ Az alábbi lista azokat az Azure-erőforrásokat sorolja fel, amelyekhez a kimen
 | Azure Key Vault | `vault` |
 | Azure Functions (előzetes verzió) | `sites` |
 
-Azoknak az Azure-erőforrásoknak a listája, amelyekhez támogatott a kimenő magánhálózati végponti kapcsolatok, a [támogatott API-k listáján](/rest/api/searchmanagement/privatelinkresources/listsupported)keresztül is lekérdezhető.
+A [támogatott API-k listájának](/rest/api/searchmanagement/privatelinkresources/listsupported)használatával lekérdezhető az Azure-erőforrások listája, amelyekhez a kimenő magánhálózati végpontok kapcsolatai támogatottak.
 
-Ebben az útmutatóban a [ARMClient](https://github.com/projectkudu/ARMClient) és a [Poster](https://www.postman.com/) együttes használatával mutatjuk be a REST API hívásokat.
+Ebben a cikkben a [ARMClient](https://github.com/projectkudu/ARMClient) és a [Poster](https://www.postman.com/) együttes használatával mutatjuk be a REST API hívásokat.
 
 > [!NOTE]
-> Ebben az útmutatóban feltételezzük, hogy a Search szolgáltatás neve a __contoso-Search__ , amely létezik az előfizetés __00000000-0000-0000-0000-000000000000__-es azonosítójú előfizetése __erőforráscsoporthoz.__ A keresési szolgáltatás erőforrás-azonosítója a következő lesz `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> Ez a cikk azt feltételezi, hogy a Search szolgáltatás neve a __contoso-Search__ , amely létezik az előfizetés __00000000-0000-0000-0000-000000000000__-es azonosítójú előfizetésben. __contoso__ A keresési szolgáltatás erőforrás-azonosítója a következő lesz `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
-A további útmutató bemutatja, hogyan konfigurálható a __contoso-Search__ szolgáltatás úgy, hogy az indexelő hozzáférhessenek a biztonságos Storage-fiókból származó adatokhoz `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
+A további példák azt mutatják be, hogy a __contoso-Search__ szolgáltatás hogyan konfigurálható úgy, hogy az indexelő hozzáférhessenek az adatokhoz a biztonságos Storage-fiókból. `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 
 ## <a name="securing-your-storage-account"></a>A Storage-fiók biztonságossá tétele
 
-Konfigurálja úgy a Storage-fiókot, hogy [csak adott alhálózatokról engedélyezze a hozzáférést](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network). Ha bejelöli ezt a beállítást, és hagyja üresen a készletet, akkor a Azure Portalon keresztül nem engedélyezett a virtuális hálózatról érkező forgalom.
+Konfigurálja úgy a Storage-fiókot, hogy [csak adott alhálózatokról engedélyezze a hozzáférést](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network). Ha bejelöli ezt a beállítást, és hagyja üresen a készletet, akkor a Azure Portalban nem engedélyezett a virtuális hálózatról érkező forgalom.
 
    ![Virtual Network hozzáférés](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "Virtual Network hozzáférés")
 
 > [!NOTE]
-> A [megbízható Microsoft-szolgáltatás megközelítés](../storage/common/storage-network-security.md#trusted-microsoft-services) használatával kikerülheti a virtuális hálózat vagy az IP-korlátozásokat egy ilyen Storage-fiókra, és engedélyezheti a keresési szolgáltatás számára a Storage-fiókban tárolt információk elérését a [útmutató](search-indexer-howto-access-trusted-service-exception.md)című témakörben leírtak szerint. Ha azonban ezt a módszert használja az Azure Cognitive Search és a Storage-fiók közötti kommunikációra, a Storage-fiók nyilvános IP-címén keresztül történik a biztonságos Microsoft gerinces hálózaton.
+> A [megbízható Microsoft-szolgáltatás megközelítés](../storage/common/storage-network-security.md#trusted-microsoft-services) használatával kikerülheti a virtuális hálózat vagy az IP-korlátozásokat egy ilyen Storage-fiókra, és engedélyezheti a keresési szolgáltatás számára a Storage-fiókban tárolt adatelérést, az [Indexelő hozzáférés az Azure Storage-hoz a megbízható szolgáltatás kivételével ](search-indexer-howto-access-trusted-service-exception.md). Ha azonban ezt a módszert használja az Azure Cognitive Search és a Storage-fiók közötti kommunikációra, a Storage-fiók nyilvános IP-címén keresztül történik a biztonságos Microsoft gerinces hálózaton.
 
 ## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>1. lépés: megosztott magánhálózati kapcsolati erőforrás létrehozása a Storage-fiókhoz
 
@@ -143,12 +148,12 @@ Ha az `properties.provisioningState` erőforrás `Succeeded` és az is, az azt `
 > [!NOTE]
 > Ezt a lépést még a privát végponti kapcsolatok jóváhagyása előtt is el lehet elvégezni. A magánhálózati végponti kapcsolatok jóváhagyása előtt minden olyan indexelő, amely egy biztonságos erőforrással (például a Storage-fiókkal) kommunikálni próbál, egy átmeneti meghibásodási állapotba kerül. Az új indexelő létrehozása sikertelen lesz. A privát végponti kapcsolat jóváhagyása után az indexelő hozzáférhetnek a privát Storage-fiókhoz.
 
-1. [Hozzon létre egy adatforrást](/rest/api/searchservice/create-data-source) , amely a biztonságos Storage-fiókra és a Storage-fiókban található megfelelő tárolóra mutat. Az alábbi ábrán a Poster használatával végezhető el a kérelem.
+1. [Hozzon létre egy adatforrást](/rest/api/searchservice/create-data-source) , amely a biztonságos Storage-fiókra és a Storage-fiókban található megfelelő tárolóra mutat. A következő üzenet ezt a kérelmet mutatja be Poster-ben.
 ![Adatforrás létrehozása](media\search-indexer-howto-secure-access\create-ds.png "Adatforrás létrehozása")
 
-2. Hasonlóképpen [hozzon létre egy indexet](/rest/api/searchservice/create-index) , és opcionálisan [hozzon létre egy készségkészlet](/rest/api/searchservice/create-skillset) a REST API használatával.
+1. Hasonlóképpen [hozzon létre egy indexet](/rest/api/searchservice/create-index) , és opcionálisan [hozzon létre egy készségkészlet](/rest/api/searchservice/create-skillset) a REST API használatával.
 
-3. [Hozzon létre egy indexelő](/rest/api/searchservice/create-indexer) , amely a fent létrehozott adatforrásra, indexre és készségkészlet mutat. Továbbá kényszerítse az indexelő futtatását a privát végrehajtási környezetben, az indexelő konfigurációs tulajdonságának beállításával `executionEnvironment` `"Private"` .
+1. [Hozzon létre egy indexelő](/rest/api/searchservice/create-indexer) , amely a fent létrehozott adatforrásra, indexre és készségkészlet mutat. Továbbá kényszerítse az indexelő futtatását a privát végrehajtási környezetben, az indexelő konfigurációs tulajdonságának beállításával `executionEnvironment` `"Private"` .
 ![Indexelő létrehozása](media\search-indexer-howto-secure-access\create-idr.png "Indexelő létrehozása")
 
 Az indexelő sikeresen létre kell hozni, és előrehaladást kell biztosítania a Storage-fiókból a privát végponti kapcsolaton keresztül. Az indexelő állapota az [Indexelő status API](/rest/api/searchservice/get-indexer-status)használatával figyelhető.

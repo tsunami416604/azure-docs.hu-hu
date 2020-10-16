@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014562"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104104"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
@@ -98,6 +98,10 @@ Az elemzési tárban lévő adatok particionálása a tranzakciós tárolóban l
 
 Az adatelemek jelenleg nem alakíthatók át, ha automatikusan propagálják őket a tranzakciós tárolóból az analitikai tárolóba. Ha ezt a korlátozást a forgatókönyvek blokkolják, küldje el a [Azure Cosmos db csapatnak](mailto:cosmosdbsynapselink@microsoft.com).
 
+### <a name="is-analytical-store-supported-by-terraform"></a>A Terraform támogatja az analitikus tárolót?
+
+Az Terraform jelenleg nem támogatja az analitikai tárolók tárolóit. További információért tekintse meg a [Terraform GitHub-problémáit](https://github.com/hashicorp/terraform/issues) .
+
 ## <a name="analytical-time-to-live-ttl"></a>Analitikai élettartam (TTL)
 
 ### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>A a tárolók és az elemek szintjén támogatott analitikai adatértékek élettartama?
@@ -158,7 +162,7 @@ A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló t�
 
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg az [Azure szinapszis-hivatkozás előnyeit](synapse-link.md#synapse-link-benefits)
 

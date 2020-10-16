@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006517"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103339"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -23,11 +23,11 @@ Ez a cikk azokat a lépéseket ismerteti, amelyekkel biztonságossá teheti a HD
 
 A HDInsight-fürtöket általában virtuális hálózatban helyezik üzembe. A fürt a virtuális hálózaton kívüli szolgáltatásokkal kapcsolatos függőségeket tartalmaz.
 
-Több függőség is van, amelyek bejövő forgalmat igényelnek. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és [itt](hdinsight-management-ip-addresses.md)lesznek közzétéve. A hálózati biztonsági csoportokra (NSG) vonatkozó szabályokat ezen információk alapján is létrehozhatja a fürtre irányuló bejövő forgalom biztonságossá tételéhez.
+A bejövő felügyeleti forgalmat nem lehet tűzfalon keresztül elküldeni. A bejövő forgalomhoz a NSG szolgáltatás címkéit az [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)dokumentált módon használhatja. 
 
-A HDInsight kimenő forgalmának függőségei szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával. Nem rendelkezik a mögöttes statikus IP-címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok (NSG-EK) nem tudják zárolni a fürtről érkező kimenő forgalmat. A címek gyakran változnak, az aktuális névfeloldás és használat alapján nem állíthatók be szabályok.
+A HDInsight kimenő forgalmának függőségei szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával. Nem rendelkezik a mögöttes statikus IP-címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok (NSG-EK) nem tudják zárolni a fürtről érkező kimenő forgalmat. Az IP-címek elég gyakran változnak, az aktuális névfeloldás és használat alapján nem állíthatók be szabályok.
 
-Biztonságos kimenő címek olyan tűzfallal, amely a kimenő forgalmat a tartománynevek alapján tudja vezérelni. Azure Firewall a cél vagy [FQDN címkék](../firewall/fqdn-tags.md)teljes tartományneve alapján korlátozza a kimenő forgalmat.
+Biztonságos kimenő címek olyan tűzfallal, amely a kimenő forgalmat a teljes tartománynevek alapján szabályozhatja. Azure Firewall a cél vagy [FQDN címkék](../firewall/fqdn-tags.md)teljes tartományneve alapján korlátozza a kimenő forgalmat.
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Azure Firewall konfigurálása a HDInsight
 
@@ -63,23 +63,23 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Name (Név)| FwAppRule|
+    |Név| FwAppRule|
     |Prioritás|200|
     |Művelet|Engedélyezés|
 
     **FQDN-címkék szakasz**
 
-    | Name (Név) | Forrás címe | FQDN címke | Jegyzetek |
+    | Név | Forrás címe | FQDN címke | Jegyzetek |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | A HDI-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynevek szakasz**
 
-    | Name (Név) | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Jegyzetek |
+    | Név | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Jegyzetek |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Cserélje le a helyére a `storage_account_name` tényleges Storage-fiók nevét. Ha a fürtöt a WASB támogatja, vegyen fel egy szabályt a WASB. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](../storage/common/storage-require-secure-transfer.md) beállítás engedélyezve van a Storage-fiókon. |
+    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Cserélje le a helyére a `storage_account_name` tényleges Storage-fiók nevét. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](../storage/common/storage-require-secure-transfer.md) beállítás engedélyezve van a Storage-fiókon. Ha privát végpontot használ a Storage-fiókok eléréséhez, ez a lépés nem szükséges, és a tárolási forgalmat nem továbbítja a tűzfal.|
 
    ![Title: adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -97,25 +97,16 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Name (Név)| FwNetRule|
+    |Név| FwNetRule|
     |Prioritás|200|
     |Művelet|Engedélyezés|
 
-    **IP-címek szakasz**
-
-    | Name (Név) | Protokoll | Forrásoldali címek | Cél címei | Célportok | Jegyzetek |
-    | --- | --- | --- | --- | --- | --- |
-    | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
-    | Rule_2 | Bármelyik | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
-    | Rule_3 | TCP | * | A Data Lake Storage fiókjának IP-címe | * | Ha Azure Data Lake Storage használ, akkor az IP-címek szakaszban hozzáadhat egy hálózati szabályt, amely ADLS Gen1 és a Gen2 SNI probléma megoldásához használható. Ezzel a beállítással a rendszer átirányítja a forgalmat a tűzfalra. Ami magasabb költségekkel járhat a nagyméretű adatterhelések esetében, a forgalom pedig naplózható és naplózható a tűzfal naplófájljaiban. Határozza meg a Data Lake Storage fiókjának IP-címét. Használhat egy PowerShell-parancsot, például a `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` teljes tartománynevet az IP-címek feloldásához.|
-    | Rule_4 | TCP | * | * | 12000 | Választható Ha Log Analytics használ, hozzon létre egy hálózati szabályt az IP-címek szakaszban, hogy engedélyezze a kommunikációt a Log Analytics munkaterülettel. |
-
     **A szolgáltatás címkéi szakasza**
 
-    | Name (Név) | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Jegyzetek |
+    | Név | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Jegyzetek |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | Konfiguráljon egy hálózati szabályt az SQL-hez tartozó szolgáltatás-címkék szakaszban, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. |
-    | Rule_8 | TCP | * | Azure Monitor | * | választható Azok az ügyfelek, akik automatikus méretezési funkciót terveznek, hozzá kell adni ezt a szabályt. |
+    | Rule_5 | TCP | * | SQL | 1433 | Ha a HDInsight által biztosított alapértelmezett SQL Server-kiszolgálókat használja, állítson be egy hálózati szabályt az SQL-hez tartozó szolgáltatás címkék szakaszában, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. Ha egyéni SQL Servert használ a Ambari, a Oozie, a Ranger és a kaptár metastroes, akkor csak a saját egyéni SQL-kiszolgálóira kell engedélyeznie a forgalmat.|
+    | Rule_6 | TCP | * | Azure Monitor | * | választható Azok az ügyfelek, akik automatikus méretezési funkciót terveznek, hozzá kell adni ezt a szabályt. |
     
    ![Title: adja meg az alkalmazási szabálygyűjtemény gyűjteményét](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -125,9 +116,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
 Hozzon létre egy útválasztási táblázatot a következő bejegyzésekkel:
 
-* Az [állapot-és felügyeleti szolgáltatásokból](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) származó összes IP-cím: minden olyan régió, amely egy következő ugrási típusú **internettel**rendelkezik.
-
-* Két IP-cím ahhoz a régióhoz, ahol a fürtöt az [állapot-és felügyeleti szolgáltatásokból](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions) hozták létre: a következő ugrás típusú **internettel**rendelkező régiókat.
+* Az [állapot-és felügyeleti szolgáltatások](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) összes IP-címe az **Internet**következő ugrási típusával. Tartalmaznia kell az általános régiók 4 IP-címeit, valamint az adott régió 2 IP-címeit. Ez a szabály csak akkor szükséges, ha a ResourceProviderConnection *bejövő*értékre van beállítva. Ha a ResourceProviderConnection *kimenő* értékre van állítva, akkor ezek az IP-címek nem szükségesek a UDR. 
 
 * A 0.0.0.0/0 IP-címhez tartozó egyik virtuális készülék útvonala a következő ugrás a Azure Firewall magánhálózati IP-címe.
 
@@ -157,7 +146,7 @@ Fejezze be az útválasztási táblázat konfigurációját:
 
 1. Az **alhálózat hozzárendelése** képernyőn válassza ki azt a virtuális hálózatot, amelyre a fürtöt létrehozta. És a HDInsight-fürthöz használt **alhálózat** .
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-Node vagy egyéni alkalmazás forgalma
 

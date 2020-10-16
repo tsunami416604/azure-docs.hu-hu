@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842580"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102931"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
@@ -62,7 +62,7 @@ A Microsoft támogatja a négy apache-szolgáltatást a következő táblázatba
 | Apache Livy | Aktív átjárócsomóponthoz | Spark | Egyszerű interakciót tesz lehetővé egy Spark-fürttel REST-felületen keresztül |
 
 >[!Note]
-> A HDInsight Enterprise Security Package (ESP) fürtök jelenleg csak magas rendelkezésre állást biztosítanak a Ambari-kiszolgáló számára.
+> A HDInsight Enterprise Security Package (ESP) fürtök jelenleg csak magas rendelkezésre állást biztosítanak a Ambari-kiszolgáló számára. Az alkalmazás idővonal-kiszolgálója, a Livy-kiszolgáló és a headnode0 csak a fut, és a Ambari failsover nem végez feladatátvételt a headnode1. Az alkalmazás idővonal-adatbázisa a headnode0-on is megtalálható, nem pedig a Ambari SQL Serveren.
 
 ### <a name="architecture"></a>Architektúra
 
@@ -137,7 +137,7 @@ A fonal erőforráskezelő magas rendelkezésre állása független a NameNode �
 
 A HDInsight HBase-fürtök támogatják HBase Master magas rendelkezésre állást. A átjárócsomópontokkal-on futó egyéb HA-szolgáltatásokkal ellentétben a HBase-főkiszolgálók a három Zookeeper csomóponton futnak, ahol az egyik az aktív főkiszolgáló, a másik kettő pedig készenléti. A NameNode-hez hasonlóan HBase Master az Apache Zookeeper-vel való koordinátákat a Leader-választásokhoz, és automatikus feladatátvételt hajt végre, ha a jelenlegi aktív főkiszolgáló problémába Egyszerre csak egy aktív HBase Master van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
 - [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

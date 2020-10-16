@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba51c96e3195f75a0ccf49baded67737f4665615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077738"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103730"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Ismerkedés a Azure Data Lake Storage Gen1 használatával Azure PowerShell
 
@@ -36,7 +36,7 @@ Megtudhatja, hogyan hozhat létre Azure PowerShell egy Azure Data Lake Storage G
 
 ## <a name="authentication"></a>Hitelesítés
 
-Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1, ahol a rendszer felszólítja az Azure-fiók hitelesítő adatainak megadására. A fiók és a fájlrendszer Data Lake Storage Gen1 hozzáférési szintjét a bejelentkezett felhasználó hozzáférési szintje szabályozza. Vannak azonban más megközelítések a hitelesítéshez Data Lake Storage Gen1, amelyek végfelhasználói hitelesítés vagy szolgáltatások közötti hitelesítés. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
+Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1, ahol a rendszer felszólítja az Azure-fiók hitelesítő adatainak megadására. A fiók és a fájlrendszer Data Lake Storage Gen1 hozzáférési szintjét a bejelentkezett felhasználó hozzáférési szintje szabályozza. Vannak azonban más megközelítések a hitelesítéshez Data Lake Storage Gen1, amelyek végfelhasználói hitelesítés vagy szolgáltatások közötti hitelesítés. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](./data-lake-store-service-to-service-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
 
@@ -162,7 +162,7 @@ Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Teljesítmény-finomhangolási útmutató a PowerShell és a Azure Data Lake Storage Gen1 használatával](data-lake-store-performance-tuning-powershell.md)
 * [Azure Data Lake Storage Gen1 használata big data követelményekhez](data-lake-store-data-scenarios.md)

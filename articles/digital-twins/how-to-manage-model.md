@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5fd297545e7f07844e28a1f56e724a7f61916bee
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057739"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102493"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Például:
+A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Példa:
 
 ```json
 [
@@ -174,10 +174,7 @@ Ehelyett, ha módosítani szeretné a modelleket – például a frissítést `d
 
 #### <a name="model-versioning"></a>Modell verziószámozása
 
-Meglévő modell új verziójának létrehozásához kezdje az eredeti modell DTDL. Frissítse a módosítani kívánt mezőket.
-
->[!NOTE]
->Az előzetes verzióban a modell verziófrissítése csak új mezők hozzáadását teszi lehetővé, és nem távolítja el a meglévőket. A mezők eltávolításához egyszerűen [hozzon létre egy új modellt](#create-models).
+Meglévő modell új verziójának létrehozásához kezdje az eredeti modell DTDL. Frissítse, adja hozzá vagy távolítsa el a módosítani kívánt mezőket.
 
 Ezután a modell mezőjét frissítve a modell újabb verziójára kell megjelölnie `id` . A modell AZONOSÍTÓjának utolsó szakasza, amely után a `;` , a modell számát jelöli. Annak jelzéséhez, hogy ez a modell most már egy frissített verziója, növelje az érték végén lévő számot az `id` aktuális verziószámnál nagyobb számra.
 
@@ -291,7 +288,7 @@ A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancso
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)
