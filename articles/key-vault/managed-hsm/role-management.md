@@ -8,19 +8,19 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818029"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149112"
 ---
 # <a name="managed-hsm-role-management"></a>A Managed HSM szerepkörkezelése
 
 > [!NOTE]
 > Key Vault két típusú erőforrást támogat: a tárolókat és a felügyelt HSM. Ez a cikk a **felügyelt HSM**-ről szól. Ha szeretné megismerni a tárolók kezelését, tekintse meg [a Key Vault kezelése az Azure CLI használatával](../general/manage-with-cli2.md)című témakört.
 
-A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Ez a cikk bemutatja, hogyan kezelheti a felügyelt HSM-adatsíkok szerepköreit. A felügyelt HSM hozzáférés-vezérlési modelljével kapcsolatos további tudnivalókért lásd: [felügyelt HSM hozzáférés-vezérlése](access-control.md).
 
@@ -70,7 +70,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 `az keyvault role assignment list`A szerepkör-hozzárendelések listázására használható.
 
-Összes szerepkör-hozzárendelés a hatókör/(alapértelmezés szerint, ha nincs megadva hatókör) minden felhasználóhoz
+Összes szerepkör-hozzárendelés a hatókör/(alapértelmezés szerint, ha nincs megadva hatókör) az összes felhasználó számára (alapértelmezés szerint, ha nincs megadva a--megbízott)
 
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM
@@ -111,7 +111,7 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)áttekintését.
 - A [felügyelt HSM szerepkör-kezelésről](role-management.md) szóló oktatóanyag megtekintése

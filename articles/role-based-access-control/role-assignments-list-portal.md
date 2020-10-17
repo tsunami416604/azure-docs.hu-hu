@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361845"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151709"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával
 
@@ -140,14 +140,9 @@ Ha a maximális számhoz közeledik, és további szerepkör-hozzárendeléseket
 
 ![Hozzáférés-vezérlés – szerepkör-hozzárendelési figyelmeztetés hozzáadása](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="download-role-assignments-preview"></a>Szerepkör-hozzárendelések letöltése (előzetes verzió)
+## <a name="download-role-assignments"></a>Szerepkör-hozzárendelések letöltése
 
 A szerepkör-hozzárendeléseket CSV-vagy JSON-formátumú hatókörben töltheti le. Ez akkor lehet hasznos, ha meg kell vizsgálnia a listát egy számolótáblában, vagy leltározást kell végeznie egy előfizetés áttelepítésekor.
-
-> [!IMPORTANT]
-> A szerepkör-hozzárendelések letöltése jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A szerepkör-hozzárendelések letöltésekor vegye figyelembe a következő feltételeket:
 
@@ -163,7 +158,7 @@ A szerepkör-hozzárendelések hatókörön való letöltéséhez kövesse az al
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. Kattintson a **szerepkör-hozzárendelések letöltése (előzetes verzió)** elemre a szerepkör-hozzárendelések letöltése panel megnyitásához.
+1. Kattintson a **szerepkör-hozzárendelések letöltése** elemre a szerepkör-hozzárendelések letöltése panel megnyitásához.
 
     ![Hozzáférés-vezérlés – szerepkör-hozzárendelések letöltése](./media/role-assignments-list-portal/download-role-assignments.png)
 
@@ -185,7 +180,7 @@ A szerepkör-hozzárendelések hatókörön való letöltéséhez kövesse az al
 
     ![Szerepkör-hozzárendelések letöltése CSV-fájlként](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
 - [Az Azure RBAC hibáinak megoldása](troubleshooting.md)

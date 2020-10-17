@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3acac0c85aa6f3e3725dcf54a646f8ac16250e24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24f1332e940929cff6aeb6a0d5d3c43e28d36f22
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324046"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149174"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
 
@@ -38,7 +38,7 @@ Ez a cikk bemutatja a C-hez készült Azure IoT Device SDK architektúráját. A
 
 ## <a name="sdk-architecture"></a>SDK-architektúra
 
-A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](/azure/iot-hub/iot-c-sdk-ref/).
 
 A kódtárak legújabb verziója az adattár **fő** ágában található:
 
@@ -587,4 +587,4 @@ Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg az [Azure
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398357"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149208"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
 
@@ -280,7 +280,7 @@ Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába. Lépjen
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
+Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +288,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Erőforrások törlése a PowerShell használatával
 
-Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsot. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
+Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -298,7 +298,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Előfordulhat, hogy törölni szeretné a Beérkezett üzenetek mappában lévő azon e-mailek mennyiségét is, amelyek a logikai alkalmazáson keresztül jöttek létre, miközben az eszköz fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a kétrészes oktatóanyagban megtanulta, hogyan lehet az üzenet-útválasztás használatával átirányítani IoT Hub üzeneteket a különböző célhelyekre az alábbi feladatok végrehajtásával.  
 

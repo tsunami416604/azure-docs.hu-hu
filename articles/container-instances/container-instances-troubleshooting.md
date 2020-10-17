@@ -4,12 +4,12 @@ description: Ismerje meg, hogy miként lehet elhárítani a gyakori problémáka
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260745"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148621"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances gyakori hibáinak elhárítása
 
@@ -198,7 +198,7 @@ A kezdeti létrehozáskor előfordulhat, hogy a Windows-tárolók nem rendelkezn
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nem lehet csatlakozni a mögöttes Docker API-hoz vagy a privilegizált tárolók futtatásához.
 
-A Azure Container Instances nem tesz elérhetővé közvetlen hozzáférést a tároló-csoportokat működtető mögöttes infrastruktúrához. Ez magában foglalja a tároló gazdagépén futó Docker API hozzáférését és a Kiemelt tárolók futtatását. Ha a Docker-interakcióra van szüksége, tekintse meg a [Rest-dokumentációt](https://aka.ms/aci/rest) , ahol megtekintheti az ACI API által támogatott műveleteket. Ha hiányzik valami, küldjön egy kérelmet az [ACI visszajelzési fórumokra](https://aka.ms/aci/feedback).
+A Azure Container Instances nem tesz elérhetővé közvetlen hozzáférést a tároló-csoportokat működtető mögöttes infrastruktúrához. Ez magában foglalja a tároló gazdagépén futó Docker API hozzáférését és a Kiemelt tárolók futtatását. Ha a Docker-interakcióra van szüksége, tekintse meg a [Rest-dokumentációt](/rest/api/container-instances/) , ahol megtekintheti az ACI API által támogatott műveleteket. Ha hiányzik valami, küldjön egy kérelmet az [ACI visszajelzési fórumokra](https://aka.ms/aci/feedback).
 
 ### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Előfordulhat, hogy a tárolócsoport IP-címe nem érhető el az eltérő portok miatt
 
@@ -223,7 +223,7 @@ Ha szeretné ellenőrizni, hogy Azure Container Instances tud-e figyelni a táro
     az container delete --resource-group myResourceGroup --name mycontainer
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [kérhet le tároló naplókat és eseményeket](container-instances-get-logs.md) a tárolók hibakereséséhez.
 

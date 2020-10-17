@@ -3,12 +3,12 @@ title: Tűzfal-hozzáférési szabályok
 description: Az Azure Container Registry tűzfal mögötti elérésére vonatkozó szabályok konfigurálása a ("engedélyezési") REST API és az adatvégponti tartománynevek vagy a szolgáltatás-specifikus IP-címtartományok elérésének engedélyezésével.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246979"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148508"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez
 
@@ -113,7 +113,7 @@ Keresse meg az adott régiót, például a **Storage. AustraliaCentral**.
 
 ## <a name="allow-access-by-service-tag"></a>Hozzáférés engedélyezése a Service tag számára
 
-Egy Azure-beli virtuális hálózatban a hálózati biztonsági szabályok használatával szűrheti a forgalmat egy erőforrásból, például egy virtuális gépről egy tároló-beállításjegyzékbe. Az Azure-beli hálózati szabályok létrehozásának egyszerűbbé tételéhez használja a **AzureContainerRegistry** [szolgáltatás címkéjét](../virtual-network/security-overview.md#service-tags). A szolgáltatási címke az IP-címek egy csoportját jelöli, amely egy Azure-szolgáltatás globális vagy Azure-régióhoz való elérésére szolgál. A rendszer automatikusan frissíti a címkét a címek változásakor. 
+Egy Azure-beli virtuális hálózatban a hálózati biztonsági szabályok használatával szűrheti a forgalmat egy erőforrásból, például egy virtuális gépről egy tároló-beállításjegyzékbe. Az Azure-beli hálózati szabályok létrehozásának egyszerűbbé tételéhez használja a **AzureContainerRegistry** [szolgáltatás címkéjét](../virtual-network/network-security-groups-overview.md#service-tags). A szolgáltatási címke az IP-címek egy csoportját jelöli, amely egy Azure-szolgáltatás globális vagy Azure-régióhoz való elérésére szolgál. A rendszer automatikusan frissíti a címkét a címek változásakor. 
 
 Hozzon létre például egy kimenő hálózati biztonsági csoportra vonatkozó szabályt a cél **AzureContainerRegistry** , hogy engedélyezze a forgalmat egy Azure Container registrybe. Ha csak egy adott régióban szeretné engedélyezni a szolgáltatás címkéhez való hozzáférést, a következő formátumban kell megadnia a régiót: **AzureContainerRegistry**. [*régió neve*].
 
@@ -179,11 +179,11 @@ Miután beállította a dedikált adatvégpontokat a beállításjegyzékhez, en
 
 Ha tűzfal mögött szeretné elérni a Microsoft Container Registryt (MCR), tekintse meg a [MCR-ügyfél tűzfalszabályok](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)konfigurálására vonatkozó útmutatót. A MCR az összes Microsoft által közzétett Docker-rendszerkép elsődleges beállításjegyzéke, például Windows Server-lemezképek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [hálózati biztonsággal kapcsolatos Azure ajánlott eljárások](../security/fundamentals/network-best-practices.md) ismertetése
 
-* További információ az Azure Virtual Network [biztonsági csoportjairól](../virtual-network/security-overview.md)
+* További információ az Azure Virtual Network [biztonsági csoportjairól](../virtual-network/network-security-groups-overview.md)
 
 * További információ a tároló-beállításjegyzék [privát hivatkozásának](container-registry-private-link.md) beállításáról
 

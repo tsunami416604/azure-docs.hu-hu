@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3191552421091bc0a2c4e6855c0271c142af1882
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91356417"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152375"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
 
@@ -31,7 +31,7 @@ Az oktatóanyag elvégzéséhez:
 
 - <a href="https://hub.docker.com/" target="_blank">Regisztráció Docker Hub-fiókra</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows rendszerhez készült Docker telepítése</a>.
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
 
     - A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
@@ -169,7 +169,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 ![Frissített webalkalmazás az Azure-ban](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Áttelepítés az Azure-ban található Windows-tárolókba](tutorial-custom-container.md)
@@ -242,7 +242,7 @@ A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

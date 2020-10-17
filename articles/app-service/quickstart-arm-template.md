@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aad41ed1fb270acb38ec599484e137fbe5a6dceb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131343"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152348"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rövid útmutató: App Service alkalmazás létrehozása ARM-sablon használatával
 
-A [Azure app Service](overview.md) használatának első lépései a Felhőbeli alkalmazások üzembe helyezésével Azure Resource Manager SABLONNAL (ARM-sablon) és az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -vel Cloud shell. Mivel ingyenes App Service szintet használ, a rövid útmutató elvégzéséhez nem jár költséggel.
+A [Azure app Service](overview.md) használatának első lépései a Felhőbeli alkalmazások üzembe helyezésével Azure Resource Manager SABLONNAL (ARM-sablon) és az [Azure CLI](/cli/azure/get-started-with-azure-cli) -vel Cloud shell. Mivel ingyenes App Service szintet használ, a rövid útmutató elvégzéséhez nem jár költséggel.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,7 +38,7 @@ A következő gomb használatával telepítheti a **Windows rendszert**:
 ## <a name="review-the-template"></a>A sablon áttekintése
 
 ::: zone pivot="platform-windows"
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows) közül származik. Üzembe helyez egy App Service csomagot és egy App Service alkalmazást a Windows rendszeren. Kompatibilis a .NET Core, a .NET Framework, a PHP, a Node.js és a statikus HTML-alkalmazásokkal. A Java esetében lásd: [Java-alkalmazás létrehozása](app-service-web-get-started-java.md).
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows) közül származik. Üzembe helyez egy App Service csomagot és egy App Service alkalmazást a Windows rendszeren. Kompatibilis a .NET Core, a .NET Framework, a PHP, a Node.js és a statikus HTML-alkalmazásokkal. A Java esetében lásd: [Java-alkalmazás létrehozása](./quickstart-java.md).
 
 :::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
 
@@ -51,8 +51,8 @@ Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vann
 
 | Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
-| webAppName | sztring  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Alkalmazás neve |
-| location   | sztring  | "[[resourceGroup (). location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Alkalmazás-régió |
+| webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
+| location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
 | SKU        | sztring  | F1                         | Példány mérete (F1 = ingyenes csomag) |
 | language   | sztring  | .net                       | Programozási nyelv stack (.net, php, node, HTML) |
 | helloWorld | boolean | Hamis                        | True = "„Helló világ!” alkalmazás" alkalmazás üzembe helyezése |
@@ -72,8 +72,8 @@ Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vann
 
 | Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
-| webAppName | sztring  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Alkalmazás neve |
-| location   | sztring  | "[[resourceGroup (). location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Alkalmazás-régió |
+| webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
+| location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
 | SKU        | sztring  | F1                         | Példány mérete (F1 = ingyenes csomag) |
 | linuxFxVersion   | sztring  | "DOTNETCORE&#124;3,0        | "Programozási nyelvi verem &#124; verziója" |
 | reszakadás    | sztring  | " "                          | Külső git-tárház (opcionális) |
@@ -145,7 +145,7 @@ Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resour
 > [PHP és MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Kapcsolódás az Azure SQL Database-hez a Javával](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

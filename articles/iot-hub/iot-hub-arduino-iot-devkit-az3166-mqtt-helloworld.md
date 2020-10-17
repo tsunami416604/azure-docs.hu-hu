@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356026"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151763"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
 
@@ -31,7 +31,7 @@ Ebben a projektben a következőket tanulhatja meg:
 
 ## <a name="what-you-need"></a>Amire szükség lesz
 
-Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
+Fejezze be a [első lépések útmutatót](./iot-hub-arduino-iot-devkit-az3166-get-started.md) a következőre:
 
 * A fejlesztői készlet csatlakoztatva van Wi-Fi
 * A fejlesztési környezet előkészítése
@@ -88,4 +88,4 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megtanulta, hogyan konfigurálhatja a MXChip IOT fejlesztői készlet MQTT-ügyfélként, és az MQTT-ügyfél kódtár használatával küldhet üzeneteket egy MQTT-közvetítőnek, itt látható a következő lépés: az [Azure IOT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+Most, hogy megtanulta, hogyan konfigurálhatja a MXChip IOT fejlesztői készlet MQTT-ügyfélként, és az MQTT-ügyfél kódtár használatával küldhet üzeneteket egy MQTT-közvetítőnek, itt látható a következő lépés: az [Azure IOT távoli monitorozási megoldásának gyorsítása – áttekintés](/azure/iot-suite/)

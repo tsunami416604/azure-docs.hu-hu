@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: b8cba8f7a21b04dc722124eb2873c64f67fd6def
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9e2182ee67683c4dfb963aeb320984a82d78b26c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83727131"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148845"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon C alkalmazásproxy-alkalmazással (előzetes verzió)
 
@@ -48,13 +48,13 @@ Az alábbi ábra azt szemlélteti, hogy az eszköz és a szolgáltatás helyi pr
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 
-  * Az USA középső régiója
+  * USA középső régiója
   * USA középső – EUAP
   * Észak-Európa
   * Délkelet-Ázsia
@@ -120,13 +120,13 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
 
 1. Az eszköz identitásának létrehozásához futtassa a következő parancsot Cloud Shellban:
 
@@ -223,7 +223,7 @@ Az alábbi képen az SSH-ügyfélprogram konzoljának kimenete látható. Az SSH
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, egy eszköz-és egy szolgáltatás-helyi proxy program üzembe helyezésével hozhat létre adatfolyamot IoT Hubon keresztül, és a proxykat az SSH-forgalom bújtatásához használta.
 

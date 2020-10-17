@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87428973"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148831"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -40,7 +40,7 @@ Az IoT Hub biztonságos kommunikációs csatornát nyújt az eszközöknek az ad
 
 * Teljeskörűen irányíthatja az eszközök hozzáférését, és eszközönként szabályozhatja a kapcsolatokat.
 
-* Az [IoT Hub Device Provisioning szolgáltatás](https://docs.microsoft.com/azure/iot-dps/) automatikusan a megfelelő IoT Hubhoz irányítja az eszközöket, amikor először indulnak el.
+* Az [IoT Hub Device Provisioning szolgáltatás](../iot-dps/index.yml) automatikusan a megfelelő IoT Hubhoz irányítja az eszközöket, amikor először indulnak el.
 
 * Több hitelesítéstípus különböző eszközképességeket támogat:
 
@@ -64,13 +64,13 @@ A beépített üzenet-útválasztási funkció rugalmasságot biztosít az autom
 
 Az IoT Hub integrálható más Azure-szolgáltatásokkal teljes, végpontok közötti megoldások felépítése érdekében. Például használhatja a következőket:
 
-* Az [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) lehetővé teszi, hogy gyorsan, megbízhatóan, biztonságosan és skálázható módon reagáljon a kritikus eseményekre.
+* Az [Azure Event Grid](../event-grid/index.yml) lehetővé teszi, hogy gyorsan, megbízhatóan, biztonságosan és skálázható módon reagáljon a kritikus eseményekre.
 
-* Az [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) az üzleti folyamatok automatizálására használható.
+* Az [Azure Logic Apps](../logic-apps/index.yml) az üzleti folyamatok automatizálására használható.
 
 * Az [Azure Machine Learninggel](iot-hub-weather-forecast-machine-learning.md) gépi tanulást és mesterségesintelligencia-modelleket adhat a megoldáshoz.
 
-* Az [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) használatával valós idejű elemző számításokat futtathat az adatstreameken az eszközökről.
+* Az [Azure Stream Analytics](../stream-analytics/index.yml) használatával valós idejű elemző számításokat futtathat az adatstreameken az eszközökről.
 
 ## <a name="configure-and-control-your-devices"></a>Az eszközök konfigurálása és vezérlése
 
@@ -88,7 +88,7 @@ Az [IoT Hubhoz](https://azure.microsoft.com/support/legal/sla/iot-hub/) 99,9%-os
 
 ## <a name="connect-your-devices"></a>Az eszközök csatlakoztatása
 
-Az [Azure IoT eszközoldali SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)-kódtárakkal olyan alkalmazásokat készíthet, amelyek az eszközökön futnak, és az IoT Hubbal kommunikálnak. A támogatott platformok közé tartozik több Linux-disztribúció, Windows és valós idejű operációs rendszer. A támogatott nyelvek közé tartoznak a következők:
+Az [Azure IoT eszközoldali SDK](./iot-hub-devguide-sdks.md)-kódtárakkal olyan alkalmazásokat készíthet, amelyek az eszközökön futnak, és az IoT Hubbal kommunikálnak. A támogatott platformok közé tartozik több Linux-disztribúció, Windows és valós idejű operációs rendszer. A támogatott nyelvek közé tartoznak a következők:
 
 * C#
 * C#
@@ -108,7 +108,7 @@ Ha a megoldása nem tudja használni az eszközkódtárakat, az eszközök natí
 
 Ha a megoldás nem tudja használni egyik támogatott protokollt sem, kibővítheti az IoT Hubot az egyéni protokollok támogatásához:
 
-* Az [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) használatával hozzon létre egy helyi átjárót a peremhálózaton végzett protokollfordításhoz.
+* Az [Azure IoT Edge](../iot-edge/index.yml) használatával hozzon létre egy helyi átjárót a peremhálózaton végzett protokollfordításhoz.
 
 * Szabja testre az [Azure IoT-protokollátjárót](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md), hogy protokollfordítást hajtson végre a felhőben.
 
@@ -120,7 +120,7 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, a
 
 * [Az IoT Hub szabályozása és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 

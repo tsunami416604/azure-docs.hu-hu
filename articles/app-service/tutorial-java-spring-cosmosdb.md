@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0531ff7765fbcfb304d58e5b444eafdb3ad4fb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404799"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152013"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
@@ -20,7 +20,7 @@ Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létreho
 
 ![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Cosmos DB adatbázist.
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Saját számítógépre telepített [Azure CLI](/cli/azure/overview). 
 * [Git](https://git-scm.com/)
-* [Java JDK](https://aka.ms/azure-jdks)
+* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>A minta TODO-alkalmazás klónozása és a tárház előkészítése
@@ -307,7 +307,7 @@ az group delete --name <your-azure-group-name>
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Java-fejlesztőknek](/java/azure/) 
  [Spring boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos db](../cosmos-db/introduction.md) és [app Service Linux](overview.md) [Spring-adatvédelme](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable).

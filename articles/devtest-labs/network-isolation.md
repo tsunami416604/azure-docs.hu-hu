@@ -3,12 +3,12 @@ title: Hálózati elkülönítés Azure DevTest Labs
 description: A Azure DevTest Labs hálózati elkülönítésének megismerése.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875769"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149161"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Hálózati elkülönítés a DevTest Labs szolgáltatásban
 
@@ -57,7 +57,7 @@ Tekintse át a következő cikkeket is:
  
    > [!div class="mx-imgBorder"]
    > ![Contoso-teszt](./media/network-isolation/contoso-test.png)
-1. A Storage-fiókban válassza a tűzfalak és virtuális hálózatok lehetőséget, és győződjön meg arról, hogy a "megbízható Microsoft-szolgáltatások hozzáférhetnek ehhez a Storage-fiókhoz" jelölőnégyzet be van jelölve. Mivel a [DevTest Labs egy megbízható Microsoft-szolgáltatás](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), ez a beállítás lehetővé teszi, hogy a labor szabályosan működjön a hálózat elkülönített üzemmódjában. 
+1. A Storage-fiókban válassza a tűzfalak és virtuális hálózatok lehetőséget, és győződjön meg arról, hogy a "megbízható Microsoft-szolgáltatások hozzáférhetnek ehhez a Storage-fiókhoz" jelölőnégyzet be van jelölve. Mivel a [DevTest Labs egy megbízható Microsoft-szolgáltatás](../storage/common/storage-network-security.md#trusted-microsoft-services), ez a beállítás lehetővé teszi, hogy a labor szabályosan működjön a hálózat elkülönített üzemmódjában. 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso Lab tűzfalak](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ Ezzel az Azure Storage lehetővé teszi a hozzáadott virtuális hálózat bejö
 
 Ezen beállítások automatizálását is beállíthatja úgy, hogy több laborhoz is konfigurálja ezt a beállítást. 
 
-[További információ az Azure Storage-hoz készült alapértelmezett hálózati hozzáférési szabályok kezeléséről a PowerShell és a parancssori felület használatával](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[További információ az Azure Storage-hoz készült alapértelmezett hálózati hozzáférési szabályok kezeléséről a PowerShell és a parancssori felület használatával](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Megjegyezhető dolgok a hálózat izolált üzemmódjában lévő laborok használatakor
 
@@ -82,7 +82,7 @@ Ezen beállítások automatizálását is beállíthatja úgy, hogy több laborh
 
 A hálózati elkülönített laboron belül olyan műveletekhez, mint például a virtuális merevlemez feltöltése a labor Storage-fiókjába egyéni rendszerképek létrehozásához, a labor tulajdonosának explicit módon engedélyeznie kell a Storage-fiók elérését egy engedélyezett végpontról. Ezt úgy teheti meg, hogy létrehoz egy virtuális gépet, és biztonságosan hozzáfér a laborhoz a virtuális gépről. 
 
-[További információ a Storage-fiókok virtuális gépről való magánhálózati eléréséről](../private-link/create-private-endpoint-storage-portal.md)
+[További információ a Storage-fiókok virtuális gépről való magánhálózati eléréséről](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>Használati adatok exportálása a laborból 
 

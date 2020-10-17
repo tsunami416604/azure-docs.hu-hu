@@ -3,12 +3,12 @@ title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára 
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy távoli asztali átjáróval, hogy biztosítsa a laboratóriumi virtuális gépek biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288082"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144704"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
 Azure DevTest Labs egy távoli asztali átjárót konfigurálhat a laborhoz, így biztosíthatja a labor virtuális gépek (VM-EK) biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni. A labor központi helyet biztosít a labor felhasználói számára az összes olyan virtuális gép megtekintésére és a hozzájuk való kapcsolódásra, amelyhez hozzáférése van. A **virtuális gép** oldalon a **Kapcsolódás** gomb egy, a géphez való kapcsolódáshoz megnyitható RDP-fájlt hoz létre. Az RDP-kapcsolatot tovább testreszabhatja és biztonságossá teheti úgy, hogy a labort egy távoli asztali átjáróhoz csatlakoztatja. 
@@ -79,7 +79,7 @@ Konfigurálja a labort a jogkivonat-hitelesítés használatára az alábbi lép
 1. **Mentés** Változások.
 
     > [!NOTE] 
-    > A **Save (Mentés**) gombra kattintva elfogadja [Távoli asztali átjáró licencfeltételeket](https://www.microsoft.com/licensing/product-licensing/products). A távoli átjáróval kapcsolatos további információkért tekintse meg a távoli asztali környezet [Távoli asztali szolgáltatásokét](https://aka.ms/rds) és [üzembe helyezését](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ismertető témakört.
+    > A **Save (Mentés**) gombra kattintva elfogadja [Távoli asztali átjáró licencfeltételeket](https://www.microsoft.com/licensing/product-licensing/products). A távoli átjáróval kapcsolatos további információkért tekintse meg a távoli asztali környezet [Távoli asztali szolgáltatásokét](/windows-server/remote/remote-desktop-services/Welcome-to-rds) és [üzembe helyezését](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ismertető témakört.
 
 
 Ha a labor automatizáláson keresztüli konfigurálását részesíti előnyben, tekintse meg a minta PowerShell-parancsfájl [Set-DevTestLabGateway.ps1át ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) az **átjáró állomásneve** és az **átjáró-jogkivonat titkos** beállításainak beállításához. A [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestlab) egy Azure Resource Manager sablont is biztosít, amely létrehoz vagy frissít egy labort az **átjárói állomásnév** és az **átjáró-jogkivonat titkos** beállításainak használatával.
@@ -94,7 +94,7 @@ A labor további biztonságossá tételéhez hálózati biztonsági csoportot (N
 ## <a name="sample-to-create-a-remote-desktop-gateway"></a>Példa távoli asztali átjáró létrehozására
 
 > [!NOTE] 
-> A sablonok használatával elfogadja a [Távoli asztali átjáró licencfeltételeket](https://www.microsoft.com/licensing/product-licensing/products). A távoli átjáróval kapcsolatos további információkért tekintse meg a távoli asztali környezet [Távoli asztali szolgáltatásokét](https://aka.ms/rds) és [üzembe helyezését](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ismertető témakört.
+> A sablonok használatával elfogadja a [Távoli asztali átjáró licencfeltételeket](https://www.microsoft.com/licensing/product-licensing/products). A távoli átjáróval kapcsolatos további információkért tekintse meg a távoli asztali környezet [Távoli asztali szolgáltatásokét](/windows-server/remote/remote-desktop-services/Welcome-to-rds) és [üzembe helyezését](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ismertető témakört.
 
 A [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestlab) több mintát is biztosít, amelyek segítségével beállíthatja a token-hitelesítés és a távoli asztali átjáró DevTest Labs szolgáltatással való használatához szükséges erőforrásokat. Ezek a minták Azure Resource Manager sablonokat tartalmaznak az átjáró gépekhez, a labor beállításaihoz és a Function alkalmazáshoz.
 

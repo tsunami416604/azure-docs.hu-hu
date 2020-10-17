@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: c19d6d2513d1bf266d10e90dfb1d6fe79c9410d1
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 32f5ae0e06c38f610ae9751d81b7bf77a0ebc050
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993449"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149296"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Melyik megoldásokkal futtatható az Oracle WebLogic Server az Azure Virtual Machinesben?
 
-Ez az oldal az Oracle WebLogic Server (WLS) Azure-beli virtuális gépeken való futtatásának megoldásait ismerteti. Ezeket a megoldásokat az Oracle és a Microsoft közösen fejleszti ki.
+Ez az oldal az Oracle WebLogic Server (WLS) Azure-beli virtuális gépeken való futtatásának megoldásait ismerteti. Ezeket a megoldásokat az Oracle és a Microsoft közösen fejleszti és támogatja.
 
 A WLS egy vezető Java-alkalmazáskiszolgáló, amely a legtöbb kritikus vállalati Java-alkalmazást futtatja szerte a világon. A WLS az Oracle Software Suite-hoz készült middleware Foundation-t képezi. Az Oracle és a Microsoft elkötelezte magát arra, hogy az Azure-ban vezető felhőalapú platformként futtatott munkaterheléseket és rugalmasságot biztosító WLS ügyfelei számára.
 
@@ -24,29 +24,29 @@ Az Azure WLS-megoldások célja, hogy a lehető legegyszerűbb legyen a Java EE-
 
 :::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="A WebLogic-kiszolgáló Azure-beli üzembe helyezéséhez használhatja a Azure Portal":::
 
-A különböző forgatókönyvek teljesítéséhez négy ajánlat áll rendelkezésre: egyetlen csomópont rendszergazdai kiszolgáló nélkül, egyetlen csomópont rendszergazdai kiszolgálóval, fürttel és dinamikus fürttel. Az ajánlatok díjmentesen elérhetők. Ezek az ajánlatok alább olvashatók és kapcsolhatók.
+A különböző forgatókönyvek teljesítéséhez négy ajánlat áll rendelkezésre: [egyetlen csomópont rendszergazdai kiszolgáló nélkül](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls), [egyetlen csomópont rendszergazdai kiszolgálóval](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin), [fürttel](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)és [dinamikus fürttel](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster). Az ajánlatok díjmentesen elérhetők. Ezek az ajánlatok alább olvashatók és kapcsolhatók.
 
 _Ezek az ajánlatok saját licencet kapnak_. Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok Azure-beli futtatásához.
 
 Az ajánlatok számos operációsrendszer-, Java-és WLS-verziót támogatnak alaplemezképeken keresztül (például WebLogic Server 14 és JDK 11 Oracle Linux 7,6). Ezek az alaplemezképek az Azure-ban is elérhetők az Azure-ban. Az alaplemezképek olyan ügyfelek számára alkalmasak, akik összetett, testreszabott Azure-alapú üzembe helyezést igényelnek. Az alapképek aktuális készlete [itt](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)érhető el.
 
-_Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan együttműködve legyenek az ezen ajánlatokat fejlesztő mérnöki csapattal, válassza a [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) _ [Piactéri ajánlat – áttekintés oldalon](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)található Kapcsolatfelvétel gombot. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és megkezdik a szoros együttműködést. Az áttelepítési forgatókönyvben való együttműködés lehetősége ingyenes, amíg az ajánlatok aktív fejlesztés alatt állnak.
+_Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan együttműködve legyenek az ezen ajánlatokat fejlesztő mérnöki csapattal, válassza a [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) _ [Piactéri ajánlat – áttekintés oldalon](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)található Kapcsolatfelvétel gombot. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és megkezdik a szoros együttműködést. Az áttelepítési forgatókönyvben való együttműködés lehetősége ingyenes, amíg az ajánlatok aktív kezdeti fejlesztés alatt állnak.
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server – egyetlen csomópont
 
-Ez az ajánlat egyetlen virtuális gépet foglal le, és telepíti a WLS. Nem hoz létre tartományt, vagy nem indítja el a felügyeleti kiszolgálót. Az egycsomópontos ajánlat olyan forgatókönyvekhez hasznos, amelyek nagyvállalati konfigurációval rendelkeznek.
+[Ez az ajánlat](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls) egyetlen virtuális gépet foglal le, és telepíti a WLS. Nem hoz létre tartományt, vagy nem indítja el a felügyeleti kiszolgálót. Az egycsomópontos ajánlat olyan forgatókönyvekhez hasznos, amelyek nagyvállalati konfigurációval rendelkeznek.
 
 ## <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic-kiszolgáló felügyeleti kiszolgálóval
 
-Ez az ajánlat egyetlen virtuális gépet foglal le, és telepíti a WLS. Létrehoz egy tartományt, és elindítja a felügyeleti kiszolgálót. A tartományt kezelheti, és azonnal megkezdheti az alkalmazások központi telepítésének megkezdését.
+[Ez az ajánlat](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin) egyetlen virtuális gépet foglal le, és telepíti a WLS. Létrehoz egy tartományt, és elindítja a felügyeleti kiszolgálót. A tartományt kezelheti, és azonnal megkezdheti az alkalmazások központi telepítésének megkezdését.
 
 ## <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server-fürt
 
-Ez az ajánlat egy magasan elérhető WLS virtuális gépekből álló fürtöt hoz létre. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló elindult. Kezelheti a fürtöt, és azonnal megkezdheti a magasan elérhető alkalmazások első lépéseit.
+[Ez az ajánlat](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster) egy magasan elérhető WLS virtuális gépekből álló fürtöt hoz létre. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló elindult. Kezelheti a fürtöt, és azonnal megkezdheti a magasan elérhető alkalmazások első lépéseit.
 
 ## <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server dinamikus fürt
 
-Ez az ajánlat egy magasan elérhető és méretezhető dinamikus fürtöt hoz létre a WLS virtuális gépekhez. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló elindult.
+[Ez az ajánlat](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster) egy magasan elérhető és méretezhető dinamikus fürtöt hoz létre a WLS virtuális gépekhez. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló elindult.
 
 A megoldások az éles környezetben felépíthető üzembe helyezési architektúrák széles választékát teszik lehetővé. Az üzleti alkalmazások fejlesztésére összpontosítva az áttelepítési esetek többségét a lehető legtermelékenyebb módon lehet teljesíteni.
 

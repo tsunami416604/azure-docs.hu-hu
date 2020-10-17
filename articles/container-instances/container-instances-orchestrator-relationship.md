@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan működnek együtt az Azure Container instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74533661"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148603"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances és Container-szervezők
 
@@ -54,13 +54,13 @@ A fürtben lévő virtuális gépek számának horizontális felskálázása hel
 
 Az alkalmazások számítási feladatainak gyors méretezéséhez egy [Azure Kubernetes szolgáltatásbeli](../aks/intro-kubernetes.md) (ak-beli) fürtben a Azure Container instances dinamikusan létrehozott *virtuális csomópontokat* használhatja. A virtuális csomópontok lehetővé teszik a hálózati kommunikációt az ACI-ban és az AK-fürtben futó hüvelyek között. 
 
-A virtuális csomópontok jelenleg támogatják a Linux Container instances-t. A virtuális csomópontok használatának első lépései az [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) vagy a [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545)használatával.
+A virtuális csomópontok jelenleg támogatják a Linux Container instances-t. A virtuális csomópontok használatának első lépései az [Azure CLI](../aks/virtual-nodes-cli.md) vagy a [Azure Portal](../aks/virtual-nodes-portal.md)használatával.
 
 A virtuális csomópontok a nyílt forráskódú [virtuális Kubelet][aci-connector-k8s] használatával utánozzák a Kubernetes- [Kubelet][kubelet-doc] úgy, hogy korlátlan kapacitással rendelkező csomópontként regisztrálják őket. A virtuális Kubelet elküldi a [hüvelyek][pod-doc] létrehozását a Azure Container Instancesban.
 
 A Kubernetes API kiszolgáló nélküli tároló platformokra való kiterjesztésével kapcsolatos további példákért tekintse meg a [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projektet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre az első tárolóját a Azure Container Instances a gyors [üzembe helyezési útmutató](container-instances-quickstart.md)segítségével.
 

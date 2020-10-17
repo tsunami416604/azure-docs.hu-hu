@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461000"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148774"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>A felhasználói regisztráció és a termék-előfizetés delegálása
 
@@ -61,21 +61,19 @@ Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell v
    * HMAC-SHA512 kivonatának kiszámítása a **returnUrl** és a **Salt** lekérdezési paraméterek alapján ([példa az alább megadott kódra]):
      
      > HMAC (**Salt** + "\n" + **returnUrl**)
-     > 
-     > 
+
    * Hasonlítsa össze a fenti számított kivonatot a **SIG** Query paraméter értékével. Ha a két kivonat egyezik, lépjen a következő lépésre, ellenkező esetben tagadja meg a kérést.
 3. Győződjön meg arról, hogy a bejelentkezéshez vagy a regisztrációhoz kér kérést: a **művelet** lekérdezési paramétere "**bejelentkezési**" lesz.
 4. A felhasználó bejelentkezett felhasználói FELÜLETtel a bejelentkezéshez vagy a regisztrációhoz
 5. Ha a felhasználó regisztrál, létre kell hoznia egy hozzá tartozó fiókot API Managementban. [Hozzon létre egy felhasználót] a API Management REST API. Ha így tesz, győződjön meg arról, hogy a felhasználói azonosító értéke megegyezik a felhasználói tárolóban szereplő értékkel, vagy egy olyan AZONOSÍTÓval, amely nyomon követhető.
 6. A felhasználó sikeres hitelesítése után:
    
-   * [egyszeri bejelentkezéses (SSO) token kérése] a API Management használatával REST API
-   * fűzze hozzá a returnUrl lekérdezési paramétert a fenti API-hívásból kapott SSO URL-címhez:
+   * [Közös hozzáférési token kérése] a API Management REST API
+   * Fűzze hozzá a returnUrl lekérdezési paramétert a fenti API-hívásból kapott SSO URL-címhez:
      
-     > például: `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * a felhasználó átirányítása a fenti létrehozott URL-címre
+     > például: `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * A felhasználó átirányítása a fenti létrehozott URL-címre
 
 A **bejelentkezési** műveleten kívül az előző lépések végrehajtásával és a következő műveletek egyikének használatával is elvégezheti a fiókok felügyeletét:
 
@@ -177,7 +175,7 @@ var signature = digest.toString('base64');
 > [!IMPORTANT]
 > A delegálási módosítások életbe léptetéséhez újra közzé kell tennie [a fejlesztői portált](api-management-howto-developer-portal-customize.md#publish) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A delegálással kapcsolatos további információkért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]
@@ -186,7 +184,7 @@ A delegálással kapcsolatos további információkért tekintse meg a következ
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[egyszeri bejelentkezéses (SSO) jogkivonat kérése]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[Megosztott hozzáférési jogkivonat kérése]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [felhasználó létrehozása]: /rest/api/apimanagement/2019-12-01/user/createorupdate
 [az előfizetések REST APIának meghívása]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps

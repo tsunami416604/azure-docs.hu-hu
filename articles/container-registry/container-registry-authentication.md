@@ -3,12 +3,12 @@ title: Beállításjegyzék-hitelesítési beállítások
 description: A privát Azure Container Registry hitelesítési lehetőségei, beleértve a Azure Active Directory identitással való bejelentkezést, az egyszerű szolgáltatásnév használatát és a nem kötelező rendszergazdai hitelesítő adatok használatát.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1747dfa0664778283d0cea06940ea95982c269a2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048015"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148560"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Hitelesítés Azure Container registryvel
 
@@ -20,7 +20,7 @@ Az ajánlott módszerek közé tartozik a beállításjegyzék közvetlen hitele
 
 Az alábbi táblázat az elérhető hitelesítési módszereket és a tipikus forgatókönyveket sorolja fel. További részletekért tekintse meg a csatolt tartalmakat.
 
-| Metódus                               | Hitelesítés                                           | Forgatókönyvek                                                            | Szerepköralapú hozzáférés-vezérlés (RBAC)                             | Korlátozások                                |
+| Metódus                               | Hitelesítés                                           | Forgatókönyvek                                                            | Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)                             | Korlátozások                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [Egyedi AD-identitás](#individual-login-with-azure-ad)                | `az acr login` Az Azure CLI-ben                             | Interaktív Leküldés/lekérés fejlesztőknek, tesztelőknek                                    | Yes                              | Az AD-jogkivonatot 3 óránként meg kell újítani     |
 | [AD egyszerű szolgáltatás](#service-principal)                  | `docker login`<br/><br/>`az acr login` Az Azure CLI-ben<br/><br/> Beállításjegyzék-bejelentkezési beállítások az API-kon vagy az eszközökön<br/><br/> [Kubernetes-lekérési titok](container-registry-auth-kubernetes.md)                                           | Felügyelet nélküli leküldés CI/CD-folyamatból<br/><br/> Felügyelet nélküli lekérés az Azure-ba vagy a külső szolgáltatásokra  | Yes                              | Az SP-jelszó alapértelmezett lejárati ideje 1 év       |                                                           
@@ -98,7 +98,7 @@ A rendszergazdai fiókra jelenleg azért van szükség, hogy egyes esetekben lem
 > A rendszergazdai fiók úgy van kialakítva, hogy egyetlen felhasználó hozzáférjen a beállításjegyzékhez, főleg tesztelési célokra. A rendszergazdai fiók hitelesítő adatait nem ajánlott több felhasználó között megosztani. A rendszergazdai fiókkal hitelesítő összes felhasználó egyetlen felhasználóként jelenik meg a beállításjegyzék leküldéses és lekéréses hozzáférésével. A fiók módosítása vagy letiltása letiltja a beállításjegyzék-hozzáférést minden olyan felhasználó számára, aki hitelesítő adatait használja. A felhasználók és a szolgáltatásokhoz egyéni identitást kell használni a fej nélküli forgatókönyvek esetében.
 >
 
-A rendszergazdai fiók két jelszóval van ellátva, amelyek közül mindkettő újra létrehozhatók. Két jelszó lehetővé teszi a beállításjegyzékhez való kapcsolódást úgy, hogy egy jelszót használ a másik létrehozásakor. Ha a rendszergazdai fiók engedélyezve van, a felhasználónevet és a jelszót is átadhatja a `docker login` parancsnak, amikor a rendszer az alapszintű hitelesítést kéri a beállításjegyzékben. Például:
+A rendszergazdai fiók két jelszóval van ellátva, amelyek közül mindkettő újra létrehozhatók. Két jelszó lehetővé teszi a beállításjegyzékhez való kapcsolódást úgy, hogy egy jelszót használ a másik létrehozásakor. Ha a rendszergazdai fiók engedélyezve van, a felhasználónevet és a jelszót is átadhatja a `docker login` parancsnak, amikor a rendszer az alapszintű hitelesítést kéri a beállításjegyzékben. Példa:
 
 ```
 docker login myregistry.azurecr.io 

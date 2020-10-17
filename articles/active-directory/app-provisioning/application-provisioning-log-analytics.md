@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d3fd553e6903951de64c301df94ea9f2fc3eb471
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132091"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145594"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>A kiépítés integrálása Azure Monitor naplókkal
 
@@ -26,7 +26,7 @@ A kiépítés integrálható Azure Monitor naplók és Log Analytics. Az Azure m
 
 Már ismernie kell az Azure monitoringot és a Log Analytics. Ha nem, ugorjon át a megismeréséhez, és térjen vissza az alkalmazás-kiépítési naplók megismeréséhez. További információ az Azure monitoring szolgáltatásról: [Azure monitor Overview (áttekintés](../../azure-monitor/overview.md)). További információ a Azure Monitor naplókról és Log Analyticsekről: [a Azure monitor-lekérdezések áttekintése](../../azure-monitor/log-query/log-query-overview.md).
 
-Miután konfigurálta az Azure-figyelést, engedélyezheti a naplók számára az alkalmazások üzembe helyezését. A beállítás a **diagnosztika beállításai** oldalon található.
+Miután konfigurálta az Azure monitoringot, engedélyezheti a naplók számára az alkalmazások üzembe helyezését. A beállítás a **diagnosztika beállításai** oldalon található.
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs GYIK | Microsoft Docs
 description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289375"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144586"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -145,7 +145,7 @@ Különálló erőforráscsoport-forgatókönyv:
 -   A DevTest Labs létrehoz egy erőforráscsoportot a megosztott IP-gépekhez, amelyek ugyanahhoz a mérethez tartoznak.
 
 Általános erőforráscsoport-forgatókönyv:
--   Az összes virtuális gép megpördült a megadott általános erőforráscsoport szerint. További információ [az erőforráscsoport kiosztásáról a laborban](https://aka.ms/RGControl).
+-   Az összes virtuális gép megpördült a megadott általános erőforráscsoport szerint. További információ [az erőforráscsoport kiosztásáról a laborban](./resource-group-control.md).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hogyan fenntartani az DevTest Labs-környezet elnevezési konvencióját?
 Érdemes lehet kiterjeszteni az aktuális vállalati elnevezési konvenciókat az Azure-műveletekre, és az DevTest Labs-környezetben is konzisztensen kell lennie. A DevTest Labs telepítésekor javasoljuk, hogy konkrét kezdő házirendekkel rendelkezzen. Ezeket a házirendeket központi parancsfájlokkal és JSON-sablonokkal helyezheti üzembe a konzisztencia kikényszerítása érdekében. Az elnevezési házirendek az előfizetési szinten alkalmazott Azure-szabályzatok segítségével valósíthatók meg. A Azure Policy JSON-minták esetében lásd: [Azure Policy minták](../governance/policy/samples/index.md).
@@ -200,7 +200,7 @@ Meglévő virtuális gépek másolása a DevTest Labs szolgáltatásba:
 Igen, több lemezt is csatolhat a virtuális gépekhez.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>A DevTest Labs támogatja a 2. generációs képeket?
-Igen. A DevTest Labs szolgáltatás a [2. generációs rendszerképeket](../virtual-machines/windows/generation-2.md)támogatja. Ha azonban az 1. és a 2. generációs verziók egyaránt elérhetők egy képhez, a DevTest Labs csak a rendszerkép 1. generációs verzióját jeleníti meg a virtuális gép létrehozásakor. Ekkor megjelenik a rendszerkép, ha csak a 2. generációs verziója érhető el. 
+Igen. A DevTest Labs szolgáltatás a [2. generációs rendszerképeket](../virtual-machines/generation-2.md)támogatja. Ha azonban az 1. és a 2. generációs verziók egyaránt elérhetők egy képhez, a DevTest Labs csak a rendszerkép 1. generációs verzióját jeleníti meg a virtuális gép létrehozásakor. Ekkor megjelenik a rendszerkép, ha csak a 2. generációs verziója érhető el. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Ha Windows operációsrendszer-rendszerképet kívánok használni a teszteléshez, meg kell vásárolni egy MSDN-előfizetést?
 Ha a Windows ügyfél operációsrendszer-lemezképeit (Windows 7 vagy újabb verziót) szeretné használni a fejlesztéshez vagy a teszteléshez az Azure-ban, hajtsa végre a következő lépések egyikét:

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420880"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149075"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
@@ -145,8 +145,8 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
 | Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a [Key Vault hozzáférési házirendhez](/azure/key-vault/general/assign-access-policy-portal)tartozó lépéseket követve. |
-| Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](/azure/key-vault/general/network-security) című témakör lépéseit követve. |
+| Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a [Key Vault hozzáférési házirendhez](../key-vault/general/assign-access-policy-portal.md)tartozó lépéseket követve. |
+| Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/general/network-security.md) című témakör lépéseit követve. |
 
 Miután kiválasztotta a tárolót, zárjuk be a **Key Vault adattár** lapot. Az **1. lépés: tárolási** lehetőségnek zöld pipa jelzést kell mutatnia a sikeres művelethez. Tartsa nyitva a lapot a következő lépéshez.
 
@@ -189,7 +189,7 @@ Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanús�
 Ha a Azure Key Vault használatával kezeli a tanúsítványokat, a PKCS12/pfx-profil-tanúsítványt Key Vaultból App Service importálhatja, feltéve, hogy [megfelel a követelményeknek](#private-certificate-requirements).
 
 ### <a name="authorize-app-service-to-read-from-the-vault"></a>App Service engedélyezése a tárolóból való olvasásra
-Alapértelmezés szerint a App Service erőforrás-szolgáltató nem fér hozzá a Key Vaulthoz. Ha Key Vault szeretne használni a tanúsítvány telepítéséhez, engedélyeznie kell [az erőforrás-szolgáltatónak az olvasási hozzáférést a](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)kulcstartóhoz. 
+Alapértelmezés szerint a App Service erőforrás-szolgáltató nem fér hozzá a Key Vaulthoz. Ha Key Vault szeretne használni a tanúsítvány telepítéséhez, engedélyeznie kell [az erőforrás-szolgáltatónak az olvasási hozzáférést a](../key-vault/general/assign-access-policy-cli.md)kulcstartóhoz. 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd`  az erőforrás-szolgáltató egyszerű neve a App Servicehoz, és az összes Azure-előfizetés esetében azonos. Azure Government felhőalapú környezet esetében használja `6a02c803-dafd-4136-b4c3-5a6f318b4714` helyette az erőforrás-szolgáltatói szolgáltatás egyszerű nevét.
 

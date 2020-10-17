@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337942"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148784"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -28,7 +28,7 @@ Ezt a példát követve figyelheti a MXChip IoT fejlesztői készlet WiFi-inform
 
 ## <a name="what-you-need"></a>Amire szükség lesz
 
-- Állítsa be a fejlesztési környezetet az [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)követve.
+- Állítsa be a fejlesztési környezetet az [első lépések útmutatót](./iot-hub-arduino-iot-devkit-az3166-get-started.md)követve.
 
 - A GitBash-terminál ablakban (vagy más git parancssori felületen) írja be a következő parancsokat:
 
@@ -108,10 +108,10 @@ A MXChip IoT fejlesztői készlet csatlakozik a számítógéphez:
 > [!NOTE]
 > A Azure Portal: IoT hub- \> IoT Devices- \> *\<your device\>*  - \> Device Twin-eszközökön láthatók a Twin eszközök nyers adatkészletei.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta a következőket:
 - Csatlakoztasson egy MXChip-IoT fejlesztői készlet-eszközt az Azure IoT távoli figyelési megoldásának gyorsító eszközéhez.
 - Használja az Azure IoT-eszköz Twins függvényét az fejlesztői készlet RGB LED-ének színének értelmezésére és szabályozására.
 
-Íme a javasolt következő lépés: az [Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+Íme a javasolt következő lépés: az [Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](/azure/iot-suite/)

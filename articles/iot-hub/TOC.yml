@@ -176,15 +176,15 @@
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
         - name: Javaslatok
-          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc
         - name: Biztonság az alapoktól
-          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-ground-up.md?context=azure%252fiot-hub%252frc%252frc
         - name: Ajánlott biztonsági eljárások
-          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-best-practices.md?context=azure%252fiot-hub%252frc%252frc
         - name: Biztonsági architektúra
-          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-architecture.md?context=azure%252fiot-hub%252frc%252frc
         - name: Az IoT üzemelő példányának védelme
-          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-deployment.md?context=azure%252fiot-hub%252frc%252frc
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -431,33 +431,33 @@
     - name: .NET (Szolgáltatás)
       href: /dotnet/api/microsoft.azure.devices
     - name: .NET (Felügyelet)
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
+      href: /dotnet/api/overview/azure/iot/management
     - name: Java (Eszköz)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (Szolgáltatás)
       href: /java/api/com.microsoft.azure.sdk.iot.service
     - name: Node.js (Eszköz)
-      href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
+      href: /javascript/api/azure-iot-device/
     - name: Node.js (Szolgáltatás)
-      href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+      href: /javascript/api/azure-iothub/
     - name: Node.js (Felügyelet)
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+      href: /javascript/api/overview/azure/iothub/management
     - name: Python (Eszköz)
-      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+      href: /python/api/azure-iot-device
     - name: Python (Szolgáltatás)
-      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+      href: /python/api/azure-iot-hub
     - name: Python (Felügyelet)
-      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
+      href: /python/api/azure-mgmt-iothub
     - name: C eszköz SDK
-      href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
+      href: /azure/iot-hub/iot-c-sdk-ref/
     - name: REST (eszköz)
-      href: 'https://docs.microsoft.com/rest/api/iothub/device'
+      href: /rest/api/iothub/device
     - name: REST (szolgáltatás)
-      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
+      href: /rest/api/iothub/service/configuration
     - name: REST (IoT Hub-erőforrás)
-      href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
+      href: /rest/api/iothub/iothubresource
     - name: REST (tanúsítványok)
-      href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
+      href: /rest/api/iothub/certificates
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.devices/iothub-allversions
     - name: Az Azure Policy beépített elemei
@@ -474,31 +474,31 @@
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ./index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT-minták
       items:
         - name: C# (.NET)

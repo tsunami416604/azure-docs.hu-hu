@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948164"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144988"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Útmutató: az MFA megkövetelése a nem megbízható hálózatokból való hozzáféréshez feltételes hozzáféréssel   
 
@@ -26,10 +26,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat olyan feltételes hozzáfé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy ismeri a következőket: 
-
-- Az Azure AD feltételes hozzáférés [alapvető fogalmai](overview.md) 
-- A feltételes hozzáférési házirendek konfigurálásának [ajánlott eljárásai](best-practices.md) a Azure Portal
+Ez a cikk azt feltételezi, hogy ismeri a feltételes hozzáférés [alapvető fogalmait](overview.md) . 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -65,8 +62,8 @@ Ahelyett, hogy az összes olyan helyet meg kellene határozni, amely nem megbíz
 
 ## <a name="policy-deployment"></a>Szabályzat érvénybe léptetése
 
-A jelen cikkben ismertetett megközelítéssel mostantól konfigurálhat feltételes hozzáférési szabályzatot nem megbízható helyszínekhez. Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információ: [új szabályzat üzembe helyezése](best-practices.md#how-should-you-deploy-a-new-policy). 
+A jelen cikkben ismertetett megközelítéssel mostantól konfigurálhat feltételes hozzáférési szabályzatot nem megbízható helyszínekhez. Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [Mi a feltételes hozzáférés Azure Active Directory?](./overview.md) című témakört.

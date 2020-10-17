@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192635"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148719"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Nagyméretű fájlok letöltésének optimalizálása Azure CDN
 
@@ -44,10 +44,10 @@ Miután az adathalmaz megérkezik a CDN-peremre, a rendszer gyorsítótárazza �
 
 A byte-Range kérelemmel kapcsolatos további információkért lásd: [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-A CDN gyorsítótárazza a kapott adattömböket. A teljes fájlt nem kell gyorsítótárazni a CDN-gyorsítótárban. A fájl-vagy byte-tartományokra vonatkozó további kérelmek a CDN-gyorsítótárból lesznek kézbesítve. Ha nem az összes adathalmaz gyorsítótárazva van a CDN-ben, a rendszer a visszahívásokat használja a forrásokból származó adattömbök igénylésére. Ez az optimalizálás arra támaszkodik, hogy a forráskiszolgáló képes támogatni a bájtos tartományokra vonatkozó kérelmeket; Ha a forráskiszolgáló nem támogatja a bájtok közötti kérelmeket, ez az optimalizálás nem érvényes. 
+A CDN gyorsítótárazza a kapott adattömböket. A teljes fájlt nem kell gyorsítótárazni a CDN-gyorsítótárban. A fájl-vagy byte-tartományokra vonatkozó további kérelmek a CDN-gyorsítótárból lesznek kézbesítve. Ha nem az összes adathalmaz gyorsítótárazva van a CDN-ben, a rendszer a visszahívásokat használja a forrásokból származó adattömbök igénylésére. Ez az optimalizálás arra támaszkodik, hogy a forráskiszolgáló képes támogatni a bájtos tartományokra vonatkozó kérelmeket; Ha a forráskiszolgáló nem támogatja a bájtok közötti tartományra vonatkozó kérelmeket, a 8 MB-nál nagyobb adatletöltési kérelmek sikertelenek lesznek. 
 
 ### <a name="conditions-for-large-file-optimization"></a>A nagyméretű fájlok optimalizálásának feltételei
-A **Microsoft Azure CDN szabványának** nagyméretű fájl-optimalizálási funkciói alapértelmezés szerint be vannak kapcsolva az általános webes kézbesítés optimalizálási típusának használatakor. A fájlok maximális mérete nem korlátozható.
+A fájlok maximális mérete nem korlátozható.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Nagy méretű fájlok kézbesítésének optimalizálása a Verizon Azure CDN
@@ -110,7 +110,7 @@ A nagyméretű fájlok optimalizálása az általános webes kézbesítéstől e
 | Gyorsítótárazás  | Általános web | Nagyméretű fájlok optimalizálása 
 --- | --- | --- 
 Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |1 nap  
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc 
+Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincsenek | 1 másodperc 
 
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése
 

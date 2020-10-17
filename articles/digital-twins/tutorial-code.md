@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 830052237580101d9141bbf812c050430c6269f2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057484"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144560"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -320,13 +320,20 @@ Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul el
 
 Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban**. A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
 
-Ahhoz, hogy kapcsolatokat lehessen létrehozni, szüksége lesz a `Azure.DigitalTwins.Core.Serialization` névtérre. Ezt az utasítást korábban a projekthez adta hozzá `using` :
+Ha segítségre van a kapcsolatok létrehozásában, ez a mintakód a `Azure.DigitalTwins.Core.Serialization` névteret használja. Ezt az utasítást korábban a projekthez adta hozzá `using` :
 
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` nem szükséges a digitális ikrek és a kapcsolatok használatához; Ez egy opcionális névtér, amely segíthet a megfelelő formátumban beolvasni az adatgyűjtést. Néhány alternatíva a következők használatára:
+>* Karakterláncok összefűzése JSON-objektumok formájában
+>* Egy JSON-elemző használata `System.Text.Json` , mint egy JSON-objektum dinamikus létrehozása
+>* Egyéni típusok modellezése a C#-ban, a létrehozásuk és a karakterláncok szerializálása
+
 Adjon hozzá egy új statikus metódust a `Program` osztályhoz a `Main` metódus alá:
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +355,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Ezután adja hozzá a következő kódot a metódus végéhez a `Main` kód meghívásához `CreateRelationship` :
+Ezután adja hozzá a következő kódot a metódus végéhez `Main` , hogy meghívja a `CreateRelationship` metódust, és használja az imént írt kódot:
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");

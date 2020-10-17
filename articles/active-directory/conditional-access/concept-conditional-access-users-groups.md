@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552900"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145409"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
-A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. 
+A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. Azure Active Directory kiértékeli az összes házirendet, és biztosítja, hogy minden követelmény teljesül, mielőtt hozzáférést adna a felhasználóhoz.
 
 ![A felhasználó mint jel a feltételes hozzáférés által hozott döntésekben](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -30,7 +30,7 @@ A felhasználók ezen listája általában a feltételes hozzáférési szabály
 
 A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások érhetők el.
 
-- Nincs
+- Nincsenek
    - Nincs kijelölt felhasználó
 - Minden felhasználó
    - Minden olyan felhasználó, aki szerepel a címtárban, beleértve a B2B vendégeket is.
@@ -73,6 +73,8 @@ Annak megakadályozása érdekében, hogy a rendszergazda a saját címtárában
 Alapértelmezés szerint a házirend lehetővé teszi az aktuális felhasználó kizárását a házirendből, de ezt az alapértelmezett beállítást a rendszergazda felülbírálhatja, ahogy az alábbi képen is látható. 
 
 ![Figyelmeztetés, ne zárja ki magát!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[Mi a teendő, ha ki van zárva a Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Következő lépések
 

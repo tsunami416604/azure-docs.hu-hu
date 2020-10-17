@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324726"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148341"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
 
@@ -78,7 +78,7 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
   
     *További olvasnivalók*:
     * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
-    * [IoT-eszközök konfigurálása és figyelése nagy méretekben](iot-hub-auto-device-config.md)
+    * [IoT-eszközök konfigurálása és figyelése nagy méretekben](./iot-hub-automatic-device-management.md)
     * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
 
 * **Figyelés**: A teljes eszközgyűjtemény és a folyamatban lévő műveletek állapotának figyelése, valamint a kezelők riasztása az esetlegesen figyelmet érdemlő problémák kapcsán.  Az ikereszközök alkalmazásával az eszközök képesek a valós idejű működési feltételek és a frissítési műveletek állapotának jelentésére. Nagyteljesítményű irányítópulti jelentések hozhatók létre, amelyek az ikereszköz-lekérdezések használatával felszínre hozzák az azonnali intézkedést igénylő problémákat.
@@ -86,7 +86,7 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
     *További olvasnivalók*: 
     * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
     * [Az ikrek, a feladatok és az üzenet-útválasztás IoT Hub lekérdezési nyelve](iot-hub-devguide-query-language.md)
-    * [IoT-eszközök konfigurálása és figyelése nagy méretekben](iot-hub-auto-device-config.md)
+    * [IoT-eszközök konfigurálása és figyelése nagy méretekben](./iot-hub-automatic-device-management.md)
     * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
 
 * **Kivonás: az**eszközök lecserélése vagy leszerelése meghibásodás után, frissítési ciklus vagy a szolgáltatás élettartama végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.

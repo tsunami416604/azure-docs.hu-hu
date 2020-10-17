@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962156"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145250"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
@@ -84,13 +84,6 @@ Számos szervezet rendelkezik olyan [általános hozzáféréssel, amelyekkel a 
 - Megadott helyekről való hozzáférés letiltása vagy megadása
 - Kockázatos bejelentkezési viselkedések blokkolása
 - Szervezet által felügyelt eszközök megkövetelése adott alkalmazásokhoz
-
-## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
-
-Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes hozzáférést az automatizált hozzáférés-vezérlési döntések definiálásához és megvalósításához. A következő Kiemelt történetek bemutatják, hogyan teljesítik ezeket az ügyfelek igényeit.
-
-* [A Wipro a Microsoft Cloud Security eszközeivel fejleszti a mobil termelékenységet az ügyfelek bevonásának javítása érdekében.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Az Azure AD feltételes hozzáférési szabályzatai lehetővé tették a vállalat számára, hogy megosszák a megbízható külső entitásokkal rendelkező dokumentumokat, erőforrásokat és alkalmazásokat,---akik saját hitelesítő adataikat használhatják---a saját vállalati adatok feletti felügyelet fenntartása mellett.
-* [A Aramex Delivery Limited – a globális logisztika és a szállítmányozási vállalat felhőalapú, identitás-és hozzáférés-kezelési megoldással rendelkező irodát hoz létre](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). A biztonságos hozzáférés biztosítása különösen nehéz volt a Aramex távoli alkalmazottaival. A vállalat mostantól feltételes hozzáférést alkalmaz arra, hogy ezek a távoli alkalmazottak a hálózaton kívülről férhessenek hozzá SaaS-alkalmazásaihoz. A feltételes hozzáférési szabály eldönti, hogy kikényszeríti-e Multi-Factor Authenticationt, és csak a megfelelő személyeket adja meg a megfelelő hozzáféréssel.
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 

@@ -3,12 +3,12 @@ title: Privát hivatkozás beállítása
 description: Hozzon létre egy privát végpontot egy tároló-beállításjegyzékben, és engedélyezze a hozzáférést egy helyi virtuális hálózatban lévő privát kapcsolaton keresztül. A Private link Access a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bea4b2a6bedeac9dd0ff36631ba46adf4be4f8f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743641"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148476"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Privát csatlakozás Azure Container registryhez az Azure Private link használatával
 
@@ -213,7 +213,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | ------- | ----- |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
-    | Name (Név) | Adjon meg egy egyedi nevet. |
+    | Név | Adjon meg egy egyedi nevet. |
     | Alerőforrás |**Beállításjegyzék** kiválasztása|
     | **Hálózat** | |
     | Virtuális hálózat| Válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMVNET*. |
@@ -375,7 +375,7 @@ az acr private-endpoint-connection list \
   --registry-name $REGISTRY_NAME 
 ```
 
-Ha a jelen cikkben ismertetett lépésekkel állít be egy privát végponti kapcsolatot, a beállításjegyzék automatikusan fogadja a RBAC-engedélyekkel rendelkező ügyfelek és szolgáltatások kapcsolatait a beállításjegyzékben. Beállíthatja a végpontot a kapcsolatok manuális jóváhagyásának megköveteléséhez. További információ a privát végpontok kapcsolatainak jóváhagyásáról és elutasításáról: [privát végponti kapcsolat kezelése](../private-link/manage-private-endpoint.md).
+Ha a jelen cikkben ismertetett lépésekkel állít be egy privát végponti kapcsolatot, a beállításjegyzék automatikusan fogadja az ügyfelek és szolgáltatások olyan kapcsolatait, amelyek Azure RBAC engedélyekkel rendelkeznek a beállításjegyzékben. Beállíthatja a végpontot a kapcsolatok manuális jóváhagyásának megköveteléséhez. További információ a privát végpontok kapcsolatainak jóváhagyásáról és elutasításáról: [privát végponti kapcsolat kezelése](../private-link/manage-private-endpoint.md).
 
 ## <a name="add-zone-records-for-replicas"></a>Zónaadatok hozzáadása a replikák számára
 

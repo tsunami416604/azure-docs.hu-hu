@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f47e201f0fe6f44eb33916b2b3ed71ef963d5a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531210"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148144"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -35,7 +35,7 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
    3. **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben létre kell hozni a fiókot. 
    4. **Hely**: az Data Lake Analytics-fiókhoz tartozó Azure-adatközpont. 
    5. **Data Lake Store**: a Data Lake Analytics-fiókhoz használandó alapértelmezett tároló. A Azure Data Lake Store fióknak és a Data Lake Analytics fióknak ugyanazon a helyen kell lennie.
-4. Kattintson a **Létrehozás** elemre. 
+4. Kattintson a **Létrehozás** lehetőségre. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics fiók törlése
 
@@ -58,7 +58,7 @@ A Data Lake Analytics a következő adatforrásokat támogatja:
 
 A Adatkezelő használatával böngészheti az adatforrásokat, és alapszintű fájlkezelési műveleteket hajthat végre. 
 
-### <a name="add-a-data-source"></a>Adatforrás hozzáadása
+### <a name="add-a-data-source"></a>Adatforrások felvétele
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
 2. Kattintson **az adatforrások**elemre.
@@ -87,13 +87,13 @@ A **felhasználó hozzáadása varázslóval** egyszerűen kiépítheti az új D
 3. Válasszon ki egy felhasználót, majd kattintson a **kiválasztás**elemre.
 4. Válasszon ki egy szerepkört, majd kattintson a **kiválasztás**elemre. Ha új fejlesztőt szeretne beállítani Azure Data Lake használatára, válassza ki a **Data Lake Analytics fejlesztői** szerepkört.
 5. Válassza ki a U-SQL-adatbázisokhoz tartozó hozzáférés-vezérlési listákat (ACL-eket). Ha elégedett a lehetőségeivel, kattintson a **kiválasztás**elemre.
-6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Kattintson a **Kiválasztás** elemre.
+6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Válassza a **Kiválasztás** lehetőséget.
 7. Tekintse át a kiválasztott módosításokat, majd kattintson a **Futtatás**gombra.
 8. A varázsló befejezése után kattintson a **kész**gombra.
 
-## <a name="manage-role-based-access-control"></a>Role-Based kezelése Access Control
+## <a name="manage-azure-role-based-access-control"></a>Azure szerepköralapú hozzáférés-vezérlés kezelése
 
-A többi Azure-szolgáltatáshoz hasonlóan a Role-Based Access Control (RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
+A többi Azure-szolgáltatáshoz hasonlóan az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
 
 A standard Azure-szerepkörök a következő képességekkel rendelkeznek:
 * **Tulajdonos**: feladatokat küldhet be, figyelheti a feladatokat, megszakíthatja a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.
@@ -159,7 +159,7 @@ Az ismétlődő U-SQL-feladatok listájának megtekintése:
 2. Kattintson a **Job bepillantások**elemre. A "minden feladat" lap alapértelmezésben megjelenik, amely megjeleníti a futó, a várólistán lévő és a Befejezett feladatok listáját.
 3. Kattintson az **ismétlődő feladatok** fülre. Az ismétlődő feladatok listája az egyes ismétlődő feladatokhoz tartozó összesített statisztikával együtt jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Azure Data Lake Analytics kezelése Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)

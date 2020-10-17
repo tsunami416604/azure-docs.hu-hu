@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019130"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149187"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
@@ -40,7 +40,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 
@@ -190,7 +190,7 @@ Most állítson be néhány mérőszámot, amelyből megnézheti, hogy mikor kü
 
 Nyissa meg a hubot a portálon. Kattintson az **erőforráscsoportok**elemre, válassza a *ContosoResources*lehetőséget, majd válassza a IoT hub *ContosoTestHub*elemet. 
 
-A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure-monitor/platform/data-collection#metrics) ; [klasszikus riasztásokat](/azure/azure-monitor/platform/alerts-classic.overview)kell használnia.
+A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](../azure-monitor/platform/data-platform.md#metrics) ; [klasszikus riasztásokat](../azure-monitor/platform/alerts-classic.overview.md)kell használnia.
 
 1. A **figyelés**területen kattintson a **riasztások** elemre, amely a fő riasztási képernyőt jeleníti meg. 
 
@@ -369,13 +369,13 @@ Kattintson a **Letöltés** gombra a letöltéshez és a megnyitásához. Ekkor 
 
 Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben eltávolítja az IoT hubot, a Storage-fiókot és magát az erőforráscsoportot. Ha az irányítópulthoz rögzített mérőszámok vannak, akkor azokat manuálisan kell eltávolítania a jobb felső sarokban lévő három pontra, majd az **Eltávolítás**lehetőségre kattintva.
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el.
+Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatók a metrikák és a diagnosztikai naplók a következő feladatok végrehajtásával:
 

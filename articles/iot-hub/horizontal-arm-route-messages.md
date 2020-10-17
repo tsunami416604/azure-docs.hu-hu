@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89462666"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148922"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Gyors útmutató: Azure IoT Hub és Storage-fiók üzembe helyezése ARM-sablon használatával
 
@@ -46,7 +46,7 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
 
     [![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Töltse le és csomagolja ki a [IoT C#-mintákat](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/).
+1. Töltse le és csomagolja ki a [IoT C#-mintákat](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/).
 
 1. Nyisson meg egy parancssorablakot, és keresse meg azt a mappát, ahová a IoT C#-mintákat kibonthatja. Keresse meg az ARM-Read-Write. csproj fájlt tartalmazó mappát. Ebben a parancsablakban hozza létre a környezeti változókat. A kulcsok lekéréséhez jelentkezzen be a [Azure Portal] ( https://portal.azure.com ]-ba. Válassza az **erőforráscsoportok** lehetőséget, majd válassza ki az ehhez a rövid útmutatóhoz használt erőforráscsoportot.
 
@@ -131,7 +131,7 @@ Most a környezeti változók vannak beállítva, futtassa az alkalmazást ugyan
 
 A rövid útmutató során hozzáadott erőforrások eltávolításához jelentkezzen be a [Azure Portalba](https://portal.azure.com). Válassza ki az **erőforráscsoportok**elemet, majd keresse meg az ehhez a rövid útmutatóhoz használt erőforráscsoportot. Válassza ki az erőforráscsoportot, majd válassza a *Törlés*lehetőséget. A csoport összes erőforrását törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

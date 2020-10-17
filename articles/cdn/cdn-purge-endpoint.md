@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192533"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148983"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN végpont kiürítése
 ## <a name="overview"></a>Áttekintés
@@ -69,7 +69,7 @@ Ez az oktatóanyag végigvezeti a végpontok összes peremhálózati csomópontj
     ![Törlés gomb](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> A végleges törlési kérelmek körülbelül 10 percet vesznek igénybe a **Microsoft Azure CDNával**, körülbelül 2 perc **Azure CDN a verizontól** (standard és prémium), és körülbelül 10 másodpercig, a **Akamai Azure CDN**.  A Azure CDN legfeljebb 50 egyidejű kiürítési kérelmet a profil szintjén megadott időben. 
+> A végleges törlési kérelmek körülbelül 10 percet vesznek igénybe a **Microsoft Azure CDNával**, körülbelül 2 perc **Azure CDN a verizontól** (standard és prémium), és körülbelül 10 másodpercig, a **Akamai Azure CDN**.  A Azure CDN legfeljebb 100 egyidejű kiürítési kérelmet a profil szintjén megadott időben. 
 > 
 > 
 

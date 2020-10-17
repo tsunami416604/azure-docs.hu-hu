@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613900"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149086"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -224,7 +224,7 @@ Most az egyéni Service Bus-végpont úgy van beállítva, hogy a hub rendszerhe
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>A fájlok feltöltésekor használt Storage-fiókokhoz való kimenő kapcsolatok
 
-IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/create-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
+IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/tutorial-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -252,7 +252,7 @@ Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
-Most már használhatja az Azure IoT REST API-kat [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatban. Meg kell adnia a `storageAuthenticationType="identityBased"` kérés törzsét, és használnia kell a `inputBlobContainerUri="https://..."` és `outputBlobContainerUri="https://..."` a, valamint a Storage-fiók bemeneti és kimeneti URL-címét.
+Most már használhatja az Azure IoT REST API-kat [importálási exportálási feladatok létrehozásához](/rest/api/iothub/service/jobs/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatban. Meg kell adnia a `storageAuthenticationType="identityBased"` kérés törzsét, és használnia kell a `inputBlobContainerUri="https://..."` és `outputBlobContainerUri="https://..."` a, valamint a Storage-fiók bemeneti és kimeneti URL-címét.
 
 Az Azure IoT Hub SDK-k a szolgáltatás-ügyfél beállításjegyzék-kezelőjében is támogatják ezt a funkciót. A következő kódrészletből megtudhatja, hogyan kezdeményezzen importálási feladatot vagy exportálási feladatot a C# SDK használatával.
 
@@ -295,4 +295,4 @@ Az alábbi hivatkozásokra kattintva további információt találhat IoT Hub sz
 
 * [Üzenetek útválasztása](./iot-hub-devguide-messages-d2c.md)
 * [Fájlfeltöltés](./iot-hub-devguide-file-upload.md)
-* [Tömeges eszköz importálása/exportálása](./iot-hub-bulk-identity-mgmt.md) 
+* [Tömeges eszköz importálása/exportálása](./iot-hub-bulk-identity-mgmt.md)

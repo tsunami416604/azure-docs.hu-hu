@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358287"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148754"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása fájltömörítéssel az Azure CDN-ben
 A fájltömörítés egy egyszerű és hatékony módszer a fájlátvitel sebességének javítására, valamint a lapozófájl teljesítményének növelésére azáltal, hogy a fájl méretét a kiszolgálóról való elküldésük előtt csökkenti. A fájltömörítés csökkentheti a sávszélesség-költségeket, és rugalmasabb felhasználói élményt nyújt a felhasználóknak.
@@ -112,6 +112,8 @@ Ezek a profilok a következő tömörítési kódolásokat támogatják:
 Ha a kérelem több tömörítési típust is támogat, a brotli tömörítés elsőbbséget élvez.
 
 Ha egy adott eszközre vonatkozó kérelem a gzip-tömörítést adja meg, és a kérés gyorsítótár-hiányt eredményez, a Azure CDN az eszköz gzip-tömörítését közvetlenül a POP-kiszolgálón hajtja végre. Ezt követően a tömörített fájlt a rendszer a gyorsítótárból kézbesíti.
+
+Ha a forrás darabolásos átvitelt (TÁBLAKIFEJEZÉSEK) használ a tömörített adatoknak a CDN-POP-ba való küldéséhez, akkor a 8 MB-nál nagyobb válaszok nem támogatottak. 
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN Verizon-profilokból
 

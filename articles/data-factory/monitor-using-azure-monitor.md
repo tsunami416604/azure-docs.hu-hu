@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6862fa6c9dfa3e8ba26d6f07dc1d9096cf16f092
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563551"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151905"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -40,7 +40,7 @@ A Data Factory csak 45 napig tárolja az adatfeldolgozási folyamatokat. Akkor h
   * Összetett lekérdezéseket szeretne írni egy Data Factory által a figyelésre közzétett mérőszámok gazdag készletén. A lekérdezésekhez egyéni riasztásokat is létrehozhat.
   * Az adatüzemek között szeretne figyelni. Több adatgyárból is átirányíthat adatait egyetlen figyelő munkaterületre.
 
-Használhat olyan Storage-fiókot vagy Event-hub névteret is, amely nem szerepel a naplókat kibocsátó erőforrás előfizetésében. A beállítást konfiguráló felhasználónak megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) hozzáféréssel kell rendelkeznie mindkét előfizetéshez.
+Használhat olyan Storage-fiókot vagy Event-hub névteret is, amely nem szerepel a naplókat kibocsátó erőforrás előfizetésében. A beállítást konfiguráló felhasználónak megfelelő Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) hozzáféréssel kell rendelkeznie mindkét előfizetéshez.
 
 ## <a name="configure-diagnostic-settings-and-workspace"></a>Diagnosztikai beállítások és munkaterület konfigurálása
 
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | --- | --- | --- |
 | **storageAccountId** |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyhez diagnosztikai naplókat szeretne küldeni. |
 | **serviceBusRuleId** |Sztring | Annak a Service-Bus-névtérnek az azonosítója, amelyben a Event Hubs létre kívánja hozni a stream diagnosztikai naplóihoz. A szabály AZONOSÍTÓjának formátuma `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -446,7 +446,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 | --- | --- | --- | --- |
 | **Szintű** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
 | **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **time** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**activityRunId**| Sztring| A tevékenység futtatásának azonosítója. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**pipelineRunId**| Sztring| A folyamat futtatásának azonosítója. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
@@ -455,7 +455,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 |**operationName**| Sztring | Az állapottal rendelkező tevékenység neve. Ha a tevékenység a kezdő szívverés, a tulajdonság értéke `MyActivity -` . Ha a tevékenység a záró szívverés, a tulajdonság értéke `MyActivity - Succeeded` . | `MyActivity - Succeeded` |
 |**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
 |**activityName**| Sztring | A tevékenység neve. | `MyActivity` |
-|**start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`|
+|**Start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`|
 |**végén**| Sztring | A tevékenység befejezési időpontja TimeSpan UTC formátumban fut. Ha a diagnosztikai napló azt mutatja, hogy egy tevékenység megkezdődött, de még nem fejeződött be, a tulajdonság értéke `1601-01-01T00:00:00Z` . | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>Folyamat – naplózási attribútumok futtatása
@@ -492,14 +492,14 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 | --- | --- | --- | --- |
 | **Szintű** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
 | **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **time** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**runId**| Sztring| A folyamat futtatásának azonosítója. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**Kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `PipelineRuns` . | `PipelineRuns` |
 |**szint**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
 |**operationName**| Sztring | A folyamat neve az állapotával együtt. A folyamat futásának befejeződése után a tulajdonság értéke `Pipeline - Succeeded` . | `MyPipeline - Succeeded`. |
 |**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
-|**start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`. |
+|**Start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`. |
 |**végén**| Sztring | A tevékenység befejezési időpontja TimeSpan UTC formátumban fut. Ha a diagnosztikai naplóban egy tevékenység megkezdődött, de még nem fejeződött be, a tulajdonság értéke `1601-01-01T00:00:00Z` .  | `2017-06-26T20:55:29.5007959Z` |
 |**állapota**| Sztring | A folyamat futásának végső állapota. A lehetséges tulajdonságok értékei a következők: `Succeeded` és `Failed` . | `Succeeded`|
 
@@ -535,7 +535,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 | --- | --- | --- | --- |
 | **Szintű** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
 | **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **time** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**triggerId**| Sztring| Az trigger futtatásának azonosítója. | `08587023010602533858661257311` |
 |**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**Kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `PipelineRuns` . | `PipelineRuns` |
@@ -544,7 +544,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 |**triggerName**| Sztring | Az trigger neve. | `MyTrigger` |
 |**triggerType**| Sztring | Az trigger típusa. A lehetséges tulajdonságok értékei a következők: `Manual Trigger` és `Schedule Trigger` . | `ScheduleTrigger` |
 |**triggerEvent**| Sztring | Az eseményindító eseménye. | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**start**| Sztring | A trigger égetésének kezdési időpontja TimeSpan UTC formátumban. | `2017-06-26T20:55:29.5007959Z`|
+|**Start**| Sztring | A trigger égetésének kezdési időpontja TimeSpan UTC formátumban. | `2017-06-26T20:55:29.5007959Z`|
 |**állapota**| Sztring | Az a végső állapot, amely azt jelzi, hogy az trigger sikeresen kirúgták-e. A lehetséges tulajdonságok értékei a következők: `Succeeded` és `Failed` . | `Succeeded`|
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>SSIS integrációs modul naplózási attribútumai
@@ -570,7 +570,7 @@ Itt láthatók a SSIS IR indítási/leállítási/karbantartási műveleteinek n
 
 | Tulajdonság                   | Típus   | Leírás                                                   | Példa                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **time**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Sztring | A SSIS IR-műveletének neve                            | `Start/Stop/Maintenance` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                               | `SSISIntegrationRuntimeLogs` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
@@ -610,7 +610,7 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott esem�
 
 | Tulajdonság                   | Típus   | Leírás                                                          | Példa                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **time**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                      | `SSISPackageEventMessageContext` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -660,7 +660,7 @@ Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott es
 
 | Tulajdonság                   | Típus   | Leírás                                                        | Példa                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **time**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                    | `SSISPackageEventMessages` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -709,7 +709,7 @@ Az alábbi, a SSIS IR SSIS-csomag végrehajtásával létrehozott végrehajthat�
 
 | Tulajdonság                   | Típus   | Leírás                                                      | Példa                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **time**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                  | `SSISPackageExecutableStatistics` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -754,7 +754,7 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott adatf
 
 | Tulajdonság                   | Típus   | Leírás                                                         | Példa                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **time**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                     | `SSISPackageExecutionComponentPhases` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -802,7 +802,7 @@ Itt láthatók az adatáramlási folyamatok egyes szakaszain átmenő adatmozgá
 
 | Tulajdonság                     | Típus   | Leírás                                                        | Példa                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **idő**                     | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **time**                     | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **Kategória**                 | Sztring | A diagnosztikai naplók kategóriája                                    | `SSISPackageExecutionDataStatistics` |
 | **correlationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -833,7 +833,7 @@ A Log Analytics a következő kivételekkel örökli a sémát a Figyelőtől:
     | --- | --- | --- |
     | $. properties. UserProperties | UserProperties | Dinamikus |
     | $. properties. Széljegyzetek | Széljegyzetek | Dinamikus |
-    | $. properties. Bemeneti | Input (Bemenet) | Dinamikus |
+    | $. properties. Bemeneti | Bevitel | Dinamikus |
     | $. properties. Kimeneti | Kimenet | Dinamikus |
     | $. properties. Hiba. errorCode | ErrorCode | int |
     | $. properties. Hiba. üzenet | ErrorMessage | sztring |

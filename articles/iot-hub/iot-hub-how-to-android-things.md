@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673382"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151726"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Android-eszközök platformon az Azure IoT SDK-k használatával
 
-Az [Azure IoT hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) -k biztosítják az első szintű támogatást olyan népszerű platformokhoz, mint például a Windows, a Linux, az OSX, a MBED és a mobil platformok, például az Android és az iOS.  A IoT-alapú üzembe helyezések nagyobb választékának és rugalmasságának biztosítása érdekében a Java SDK is támogatja az [Android](https://developer.android.com/things/) -eszközök platformot.  A fejlesztők igénybe vehetik az Android-eszközök operációs rendszerének előnyeit az eszköz oldalán, miközben az [Azure IoT hub](about-iot-hub.md) -t használja a központi üzenetküldési központként, amely több millió egyidejű csatlakoztatott eszközre méretezhető.
+Az [Azure IoT hub SDK](./iot-hub-devguide-sdks.md) -k biztosítják az első szintű támogatást olyan népszerű platformokhoz, mint például a Windows, a Linux, az OSX, a MBED és a mobil platformok, például az Android és az iOS.  A IoT-alapú üzembe helyezések nagyobb választékának és rugalmasságának biztosítása érdekében a Java SDK is támogatja az [Android](https://developer.android.com/things/) -eszközök platformot.  A fejlesztők igénybe vehetik az Android-eszközök operációs rendszerének előnyeit az eszköz oldalán, miközben az [Azure IoT hub](about-iot-hub.md) -t használja a központi üzenetküldési központként, amely több millió egyidejű csatlakoztatott eszközre méretezhető.
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet az Azure IoT Java SDK használatával Android-eszközökön felépíteni egy eszköz oldali alkalmazást.
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet az Azure IoT Java SDK használat�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -99,7 +99,7 @@ az iot hub monitor-events --device-id MyAndroidThingsDevice --hub-name YourIoTHu
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan kezelheti a kapcsolatot és a megbízható üzenetkezelést](iot-hub-reliability-features-in-sdks.md) az IoT hub SDK-k használatával.
 * Ismerje meg, hogyan [fejleszthet a mobil platformokra](iot-hub-how-to-develop-for-mobile-devices.md) , például az iOS-re és az Androidra.

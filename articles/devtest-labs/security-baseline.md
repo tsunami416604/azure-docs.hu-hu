@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398322"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151871"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -52,7 +52,7 @@ További információ: [diagnosztikai beállítások létrehozása a platform na
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 **Útmutató:** Azure DevTest Labs virtuális gépeket (VM) az ügyfél hozza létre és birtokolja. Tehát a szervezet feladata a figyelés. A számítási operációs rendszer figyeléséhez Azure Security Center is használhatja. Az operációs rendszer Security Center által összegyűjtött adatok közé tartozik az operációs rendszer típusa és verziója, az operációs rendszer (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is gyűjti.
 
-További információkért tekintse át a következő cikkeket: 
+További információért tekintse át a következő cikkeket: 
 
 - [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
 - [Az Azure Security Center adatgyűjtés ismertetése](../security-center/security-center-enable-data-collection.md)
@@ -73,7 +73,7 @@ További információ: a [napló megőrzési paramétereinek beállítása](../a
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 **Útmutató:** Engedélyezze az Azure-tevékenység naplójának diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre. Log Analytics lekérdezéseket futtathat a kifejezésekben, azonosíthatja a trendeket, elemezheti a mintákat, és számos más elemzést is elvégezhet a Azure DevTest Labs számára összegyűjtött tevékenységi naplók alapján.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/diagnostic-settings.md)
 - [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/platform/activity-log.md)
@@ -264,7 +264,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 **Útmutató:** A címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
-- [Címkék létrehozása és használata](../azure-resource-manager/resource-group-using-tags.md)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -273,10 +273,10 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 **Útmutató:** Külön előfizetések vagy felügyeleti csoportok implementálása fejlesztési, tesztelési és éles környezetekben. Azure DevTest Labs példányokat virtuális hálózat/alhálózat szerint kell elválasztani, és a címkét megfelelően címkézve kell megadni. 
 
-- [További Azure-előfizetések létrehozása](../billing/billing-create-subscription.md)
-- [Felügyeleti csoportok létrehozása](../governance/management-groups/create.md)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 - [Virtuális hálózat konfigurálása a DevTest Labs szolgáltatáshoz](devtest-lab-configure-vnet.md)
-- [Címkék létrehozása és használata](../azure-resource-manager/resource-group-using-tags.md)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 - [Címkék létrehozása és használata a DevTest Labs szolgáltatásban](devtest-lab-add-tag.md)
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
@@ -380,7 +380,7 @@ A Microsoft a Azure DevTest Labst támogató mögöttes erőforrásokon hajtja v
 **Útmutató:** Az Azure Update Management használatával biztosíthatja, hogy a legújabb biztonsági frissítések telepítve legyenek a DevTest Labs szolgáltatásban üzemeltetett Windows-és Linux-alapú virtuális gépekre. Windows rendszerű virtuális gépek esetén győződjön meg arról, hogy Windows Update engedélyezve van, és automatikus frissítésre van beállítva. Ez a beállítás jelenleg nem érhető el a DevTest Labs szolgáltatáson keresztül történő konfiguráláshoz, azonban a laboratóriumi rendszergazda/előfizetés-rendszergazda konfigurálhatja ezt a beállítást az előfizetése mögöttes számítási virtuális gépeken. 
 
 - [Virtuális gépek Update Management konfigurálása az Azure-ban](../automation/update-management/update-mgmt-overview.md)
-- [A Security Center által figyelt Azure biztonsági házirendek ismertetése](../security-center/security-center-policy-definitions.md)
+- [A Security Center által figyelt Azure biztonsági házirendek ismertetése](../security-center/policy-reference.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -444,7 +444,7 @@ Előfizetés-rendszergazdaként használhatja az Azure Update Management megold�
 **Útmutató:** A laborok és a laborokkal kapcsolatos erőforrások rendszerezéséhez és nyomon követéséhez használja a címkézést, a felügyeleti csoportokat és a különálló előfizetéseket, valamint a különböző Labs-ket. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy az előfizetés gyorsan törölje a jogosulatlan erőforrásokat.
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
-- [Management Groups létrehozása](../governance/management-groups/create.md)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 - [Labor létrehozása a DevTest Labs használatával](devtest-lab-create-lab.md)
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 - [Címkék konfigurálása laborhoz](devtest-lab-add-tag.md)
@@ -517,7 +517,7 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 
 Lásd az alábbi cikkeket: 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/not-allowed-resource-types.md)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés:** igen
 
@@ -559,7 +559,7 @@ Lásd az alábbi cikkeket:
 - [A DevTest Labs virtuális hálózatának konfigurálása](devtest-lab-configure-vnet.md)
 - [Azure Firewall áttekintése](../firewall/overview.md)
 - [Webalkalmazási tűzfal – áttekintés](../web-application-firewall/overview.md)
-- [Hálózati biztonság áttekintése](../virtual-network/security-overview.md)
+- [Hálózati biztonság áttekintése](../virtual-network/network-security-groups-overview.md)
 - [Az Azure Virtual Network áttekintése]()
 - [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../governance/management-groups/overview.md)
 - [Útmutató az előfizetéssel kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendszerképeket a Microsoft felügyeli és tartja karban.
 
-- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
 - [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [Rendszerkép-előállító létrehozása a DevTest Labs szolgáltatásban](image-factory-create.md)
@@ -629,8 +629,8 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 **Útmutató:** Az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, Azure Resource Manager sablonokat és a kívánt állapotú konfigurációs parancsfájlokat. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára az Azure DevOps-vel való integráció esetén.
 
-- [Az Azure Repos git oktatóanyaga](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [Az engedélyek és a csoportok](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Az Azure Repos git oktatóanyaga](/azure/devops/repos/git/gitworkflow)
+- [Az engedélyek és a csoportok](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Integráció a Azure DevTest Labs és az Azure DevOps munkafolyamat között](devtest-lab-dev-ops.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -681,7 +681,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
 **Útmutató:** A Azure Security Center használatával elvégezheti a tárolók operációsrendszer-és Docker-beállításainak alapkonfigurációját.
 
-- [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/security-center-container-recommendations.md)
+- [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/container-security.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -692,7 +692,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Felügyelt identitás konfigurálása Azure Resource Manager környezetek telepítéséhez a DevTest Labs szolgáltatásban](use-managed-identities-environments.md)
 - [Felügyelt identitás konfigurálása virtuális gépek üzembe helyezéséhez a DevTest Labs szolgáltatásban](enable-managed-identities-lab-vms.md)
-- [Kulcstartó létrehozása](../key-vault/quick-create-portal.md)
+- [Kulcstartó létrehozása](../key-vault/secrets/quick-create-portal.md)
 - [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 - [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 

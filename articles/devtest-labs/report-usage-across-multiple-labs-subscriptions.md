@@ -3,16 +3,16 @@ title: Azure DevTest Labs használat több Labs és előfizetés között
 description: Megtudhatja, hogyan jelentheti Azure DevTest Labs használatát több Labs és előfizetés között.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287280"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152192"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Jelentés Azure DevTest Labs használat több Labs és előfizetés között
 
-A legtöbb nagy vállalat szeretné nyomon követni az erőforrás-használatot, hogy hatékonyabb legyen ezekkel az erőforrásokkal a trendek és a kiugró értékek megjelenítésével a használatban. Az erőforrás-használat alapján a labor tulajdonosai vagy kezelői testre szabhatják a laborokat az [erőforrás-használat és a költségek javítása](../cost-management-billing/manage/getting-started.md)érdekében. Azure DevTest Labs az erőforrás-használatot a laborban töltheti le, így mélyebben megtekintheti a használati mintákat. Ezek a használati minták segíthetik a változások meghatározását a hatékonyság növelése érdekében. A legtöbb vállalat azt szeretné, hogy az egyéni labor-használat és az általános használat [több laboron és előfizetésen](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)keresztül történjen. 
+A legtöbb nagy vállalat szeretné nyomon követni az erőforrás-használatot, hogy hatékonyabb legyen ezekkel az erőforrásokkal a trendek és a kiugró értékek megjelenítésével a használatban. Az erőforrás-használat alapján a labor tulajdonosai vagy kezelői testre szabhatják a laborokat az [erőforrás-használat és a költségek javítása](../cost-management-billing/cost-management-billing-overview.md)érdekében. Azure DevTest Labs az erőforrás-használatot a laborban töltheti le, így mélyebben megtekintheti a használati mintákat. Ezek a használati minták segíthetik a változások meghatározását a hatékonyság növelése érdekében. A legtöbb vállalat azt szeretné, hogy az egyéni labor-használat és az általános használat [több laboron és előfizetésen](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)keresztül történjen. 
 
 Ez a cikk azt ismerteti, hogyan kezelheti az erőforrás-használati adatokat több Labs és előfizetés között.
 

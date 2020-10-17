@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715416"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149016"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
-A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
+A [Azure app Service](./overview.md) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -96,11 +96,11 @@ Ha le szeretné tiltani az alapszintű hitelesítési hozzáférést a webtelep�
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Annak ellenőrzéséhez, hogy a közzétételi profil hitelesítő adatai le vannak-e tiltva a webtelepítésben, próbáljon meg [közzétenni egy webalkalmazást a Visual Studio 2019 használatával](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Annak ellenőrzéséhez, hogy a közzétételi profil hitelesítő adatai le vannak-e tiltva a webtelepítésben, próbáljon meg [közzétenni egy webalkalmazást a Visual Studio 2019 használatával](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 ### <a name="disable-access-to-the-api"></a>Az API elérésének letiltása
 
-Az előző szakaszban található API egy Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC), ami azt jelenti, hogy [létrehozhat egy egyéni szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) , és alacsonyabb priveldged felhasználókat rendelhet hozzá a szerepkörhöz, így az alapszintű hitelesítés nem engedélyezhető egyetlen helyen sem. Az egyéni szerepkör konfigurálásához [kövesse az alábbi utasításokat](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Az előző szakaszban található API egy Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC), ami azt jelenti, hogy [létrehozhat egy egyéni szerepkört](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) , és alacsonyabb priveldged felhasználókat rendelhet hozzá a szerepkörhöz, így az alapszintű hitelesítés nem engedélyezhető egyetlen helyen sem. Az egyéni szerepkör konfigurálásához [kövesse az alábbi utasításokat](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 A [Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) használatával is naplózhatja a sikeres hitelesítési kérelmeket, és a [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) használatával kényszerítheti ki ezt a konfigurációt az előfizetésben található összes webhelyre.
 

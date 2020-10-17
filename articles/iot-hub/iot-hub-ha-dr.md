@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021428"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151669"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub magas rendelkezésre állása és vészhelyreállítása
 
-A rugalmas IoT-megoldások megvalósításának első lépéseként az építészeknek, fejlesztőknek és üzlettulajdonosoknak meg kell határozniuk a kiépített megoldásokhoz szükséges üzemidői célokat. Ezeket a célokat elsősorban az egyes forgatókönyvek konkrét üzleti céljai alapján lehet meghatározni. Ebben a kontextusban az [Azure üzletmenet-folytonossági műszaki útmutatója](https://docs.microsoft.com/azure/architecture/resiliency/) egy általános keretrendszert ismertet, amely segítséget nyújt az üzletmenet folytonosságának és a vész-helyreállításnak. Az [Azure-alkalmazások vész-helyreállítási és magas rendelkezésre állása](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) az Azure-alkalmazások magas rendelkezésre állást (ha) és a vész-helyreállítást (Dr) biztosító stratégiákra vonatkozó architektúrával kapcsolatos útmutatást nyújt.
+A rugalmas IoT-megoldások megvalósításának első lépéseként az építészeknek, fejlesztőknek és üzlettulajdonosoknak meg kell határozniuk a kiépített megoldásokhoz szükséges üzemidői célokat. Ezeket a célokat elsősorban az egyes forgatókönyvek konkrét üzleti céljai alapján lehet meghatározni. Ebben a kontextusban az [Azure üzletmenet-folytonossági műszaki útmutatója](/azure/architecture/resiliency/) egy általános keretrendszert ismertet, amely segítséget nyújt az üzletmenet folytonosságának és a vész-helyreállításnak. Az [Azure-alkalmazások vész-helyreállítási és magas rendelkezésre állása](/azure/architecture/reliability/disaster-recovery) az Azure-alkalmazások magas rendelkezésre állást (ha) és a vész-helyreállítást (Dr) biztosító stratégiákra vonatkozó architektúrával kapcsolatos útmutatást nyújt.
 
 Ez a cikk a IoT Hub szolgáltatás által kifejezetten kínált HA és DR funkciókat ismerteti. A cikkben tárgyalt általános területek a következők:
 
@@ -64,7 +64,7 @@ Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről é
 >
 > - Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített események végponthoz, előfordulhat, hogy **újra kell indítania**a műveletet. Ennek az az oka, hogy a feladatátvétel során a korábbi eltolások már nem érvényesek.
 >
-> - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. További információ: [Azure Storage útválasztási végpontként](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. További információ: [Azure Storage útválasztási végpontként](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft által kezdeményezett feladatátvétel
 
@@ -134,9 +134,9 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 | HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincs|Nincs|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincs|
-| Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magas|> 1 IoT hub díja|
+| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|No|Nincsenek|Nincsenek|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Yes|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincsenek|
+| Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|No|Magas|> 1 IoT hub díja|
 
 ## <a name="next-steps"></a>Következő lépések
 

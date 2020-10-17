@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327684"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152166"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz streamek (előzetes verzió)
 
@@ -103,7 +103,7 @@ A kimenet az összes végpont JSON-objektuma, amelyet a hub eszközének és szo
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oldaláról töltheti le.
+> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) oldaláról töltheti le.
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Kimenő kapcsolat engedélyezése az eszköz streaming végpontjai számára
@@ -119,7 +119,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oldaláról töltheti le.
+> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) oldaláról töltheti le.
 >
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Hibák az eszköz stream-tevékenység naplóin keresztül
@@ -156,7 +156,7 @@ Az egyes streamek két oldala (az eszközön és a szolgáltatáson) a IoT Hub S
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT Hub Device stream-minták
 
-A IoT Hub oldalon két gyors [példa](/azure/iot-hub) érhető el. Ezek az eszközökön futó adatfolyamok használatát mutatják be.
+A IoT Hub oldalon két gyors [példa](./index.yml) érhető el. Ezek az eszközökön futó adatfolyamok használatát mutatják be.
 
 * Az *echo* -minta az eszköz-adatfolyamok programozott használatát mutatja be (az SDK API-k közvetlen meghívásával).
 
@@ -212,7 +212,7 @@ Az alábbi hivatkozásokra kattintva megtudhatja, hogyan futtathatja a helyi pro
 
 * [C eszköz program](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg az eszközök streamekről.
 

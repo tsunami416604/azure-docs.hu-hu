@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094075"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152308"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
 
@@ -28,7 +28,7 @@ A Azure Portal felügyelt identitásának beállításához először létre kel
 
 2. Válassza az **identitás**lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Válassza a **Mentés** lehetőséget.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
 
@@ -62,20 +62,20 @@ Az Azure Signaler szolgáltatás egy teljes körűen felügyelt szolgáltatás, 
     - Üres
     - Az egyszerű szolgáltatásnév alkalmazás-(ügyfél-) azonosítója
     - Az egyszerű szolgáltatásnév alkalmazásspecifikus AZONOSÍTÓjának URI-ja
-    - [Azure-szolgáltatás erőforrás-azonosítója](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Azure-szolgáltatás erőforrás-azonosítója](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
     > Ha a szolgáltatásban saját maga érvényesít egy hozzáférési jogkivonatot, kiválaszthatja az egyik erőforrás-formátumot is. Győződjön meg arról, hogy az **erőforrás** -érték a **hitelesítési** beállításokban és az érvényesítés konzisztens. Ha Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ egy adatsíkon, akkor a szolgáltató által igényelt erőforrást kell használnia.
 
 ### <a name="validate-access-tokens"></a>Hozzáférési tokenek ellenőrzése
 
-A fejlécben szereplő jogkivonat a `Authorization` [Microsoft Identity platform hozzáférési jogkivonata](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens).
+A fejlécben szereplő jogkivonat a `Authorization` [Microsoft Identity platform hozzáférési jogkivonata](../active-directory/develop/access-tokens.md#validating-tokens).
 
 A hozzáférési jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a célközönséget és az aláíró jogkivonatokat is. Ezeket érvényesíteni kell az OpenID-felderítési dokumentum értékeivel. Tekintse meg például a [dokumentum bérlői független verzióját](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-A Azure Active Directory (Azure AD) middleware beépített képességekkel rendelkezik a hozzáférési jogkivonatok érvényesítéséhez. A [minták](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) között böngészhet, és megkeresheti az Ön által választott nyelven.
+A Azure Active Directory (Azure AD) middleware beépített képességekkel rendelkezik a hozzáférési jogkivonatok érvényesítéséhez. A [minták](../active-directory/develop/sample-v2-code.md) között böngészhet, és megkeresheti az Ön által választott nyelven.
 
-Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. A JSON Web Token (JWT) érvényesítéséhez több nyílt forráskódú partneri függvénytár is elérhető. Szinte minden platformhoz és nyelvhez legalább egy lehetőség van. További információ az Azure AD-hitelesítési könyvtárakról és a mintakód-mintákról: [Microsoft Identity platform Authentication librarys](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries).
+Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. A JSON Web Token (JWT) érvényesítéséhez több nyílt forráskódú partneri függvénytár is elérhető. Szinte minden platformhoz és nyelvhez legalább egy lehetőség van. További információ az Azure AD-hitelesítési könyvtárakról és a mintakód-mintákról: [Microsoft Identity platform Authentication librarys](../active-directory/develop/reference-v2-libraries.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

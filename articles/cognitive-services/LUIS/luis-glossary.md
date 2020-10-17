@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309489"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151976"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) Szószedet a LUIS szolgáltatással való munka során felmerülő feltételeket ismerteti.
@@ -96,7 +96,7 @@ Egy [példa egy](#intent) osztályozó példára.
 
 ## <a name="collaborator"></a>Közreműködő
 
-Egy közreműködő fogalmilag ugyanaz, mint a [közreműködő](#contributor). A közreműködő hozzáférést kap, ha a tulajdonos hozzáadja a közreműködő e-mail-címét egy olyan alkalmazáshoz, amely nem az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) van vezérelve. Ha továbbra is használja a közreműködőket, telepítse át a LUIS-fiókját, és használja a LUIS authoring-erőforrásokat a közreműködők RBAC való kezeléséhez.
+Egy közreműködő fogalmilag ugyanaz, mint a [közreműködő](#contributor). A közreműködő hozzáférést kap, ha a tulajdonos hozzáadja a közreműködő e-mail-címét egy olyan alkalmazáshoz, amely nem az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) van vezérelve. Ha továbbra is használja a közreműködőket, telepítse át a LUIS-fiókját, és a LUIS authoring Resources használatával kezelhesse a közreműködőket az Azure RBAC.
 
 ## <a name="contributor"></a>Közreműködő
 
@@ -162,7 +162,7 @@ A [reguláris kifejezés entitás](reference-entity-regular-expression.md) regul
 
 Előre összeépített [entitáshoz](#prebuilt-entity) tartozó előre felépített modell bejegyzésének megjelenítése
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A gépi tanulásban a funkció olyan jellemző, amely segít a modellnek egy adott fogalom felismerésében. Ez egy olyan tipp, amelyet a LUIS használhat, de nem kemény szabályt.
 
@@ -292,7 +292,7 @@ A LUIS- [lista entitásokban](reference-entity-list.md)normalizált értéket ho
 
 A modell az entitás normalizált értékét adja vissza, ha a bemenet valamelyik szinonimája látható.
 
-## <a name="test"></a>Tesztelés
+## <a name="test"></a>Teszt
 
 A LUIS-alkalmazás [tesztelése](luis-concept-test.md) a modell-előrejelzések megtekintését jelenti.
 

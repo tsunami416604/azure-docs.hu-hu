@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
       href: howto-conditional-access-session-lifetime.md
-    - name: Ajánlott eljárások
-      href: best-practices.md
     - name: Hibaelhárítás
       items:
         - name: Bejelentkezési problémák elhárítása

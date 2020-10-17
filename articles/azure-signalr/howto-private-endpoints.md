@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84300203"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152336"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Privát végpontok használata az Azure Signaler szolgáltatáshoz
 
@@ -82,8 +82,8 @@ Az Azure Signaler szolgáltatáshoz tartozó privát végpontok ajánlott DNS-z�
 
 A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Azure virtuális hálózatokon található erőforrások névfeloldása](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [A magánhálózati végpontok DNS-konfigurációja](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure virtuális hálózatokon található erőforrások névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [A magánhálózati végpontok DNS-konfigurációja](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
@@ -198,8 +198,8 @@ Ez a megkötés a DNS-módosítások eredményeként történt, amikor az Azure 
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Hálózat biztonsági csoportok szabályai a privát végpontokkal rendelkező alhálózatok esetében
 
-Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../virtual-network/security-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok a magánhálózati végpontra lesznek alkalmazva. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
+Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok a magánhálózati végpontra lesznek alkalmazva. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati Access Control konfigurálása](howto-network-access-control.md)

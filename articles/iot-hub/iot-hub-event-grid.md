@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072305"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152140"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
 Az Azure IoT Hub és az Azure Event Grid integrációja révén eseményekkel kapcsolatos értesítéseket küldhet más szolgáltatásokba, és alsóbb rétegbeli folyamatokat aktiválhat. Üzleti alkalmazásait úgy konfigurálhatja, hogy figyeljék az IoT Hub-eseményeket, így megbízható, skálázható és biztonságos módon reagálhat a kritikus eseményekre.Készíthet például olyan alkalmazást, amely frissít egy adatbázist, létrehoz egy munkajegyet és e-mail-értesítést küld minden alkalommal, amikor új IoT-eszközt regisztrálnak az IoT-központba.
 
-A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, például a [Azure Functionshoz](../azure-functions/functions-overview.md) és a [Azure Logic Appshoz](../logic-apps/logic-apps-what-are-logic-apps.md), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../event-grid/overview.md)című témakört.
+A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, például a [Azure Functionshoz](../azure-functions/functions-overview.md) és a [Azure Logic Appshoz](../logic-apps/logic-apps-overview.md), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../event-grid/overview.md)című témakört.
 
 ![Azure Event Grid architektúra](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -184,13 +184,13 @@ A IoT-események tárgya a formátumot használja:
 devices/{deviceId}
 ```
 
-A Event Grid az egyes események attribútumain is lehetővé teszi a szűrést, beleértve az adattartalmat is. Így kiválaszthatja, hogy milyen események érkeznek a telemetria üzenet alapján. A példák megtekintéséhez tekintse meg a [speciális szűrést](../event-grid/event-filtering.md#advanced-filtering) ismertető témakört. A telemetria **-** üzenet törzsének szűréséhez a ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket.
+A Event Grid az egyes események attribútumain is lehetővé teszi a szűrést, beleértve az adattartalmat is. Így kiválaszthatja, hogy milyen események érkeznek a telemetria üzenet alapján. A példák megtekintéséhez tekintse meg a [speciális szűrést](../event-grid/event-filtering.md#advanced-filtering) ismertető témakört. A telemetria **-** üzenet törzsének szűréséhez a ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](./iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket.
 
 A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. 
 
 Ha a Event Grid-on keresztül előfizet a telemetria-eseményekre, IoT Hub létrehoz egy alapértelmezett üzenet-útvonalat, amely az eszköz üzeneteinek küldését Event Grid küldi. További információ az üzenetek útválasztásáról: [IoT hub üzenet-útválasztás](iot-hub-devguide-messages-d2c.md). Ez az útvonal a portálon jelenik meg IoT Hub > üzenet-útválasztás alatt. Az telemetria-eseményekhez létrehozott előfizetések számától függetlenül csak egy Event Grid útvonal jön létre. Ha tehát több előfizetésre van szüksége különböző szűrőkkel, a lekérdezésekben szereplő vagy operátort is használhatja ugyanazon az útvonalon. Az útvonal létrehozását és törlését a telemetria-események Event Gridon keresztüli előfizetése vezérli. IoT Hub üzenet-útválasztás használatával nem hozhat létre vagy törölhet Event Grid útvonalat.
 
-Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a **contentEncoding értékre** kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
+Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a **contentEncoding értékre** kell állítania az üzenetrendszer [tulajdonságai](./iot-hub-devguide-routing-query-syntax.md#system-properties)között.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Csatlakoztatott és nem csatlakoztatott eszközökhöz kapcsolódó események korlátozásai
 

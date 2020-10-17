@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80b0c357bbad79a31d8b7153248b73c1231629c8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613492"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145036"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
@@ -148,23 +148,28 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 Az `.AddMicrosoftIdentityWebApp` alkalmazáshoz a Microsoft Identity platform hitelesítésének hozzáadását tartalmazó sor. Ezt követően a rendszer úgy konfigurálja, hogy a Microsoft Identity platform végpontjának használatával jelentkezzen be a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |
 | `TenantId`             | A bérlő vagy a bérlői azonosító (GUID) neve, *vagy a felhasználók* munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal való bejelentkezéséhez.                             |
 
-A `Configure()` metódus két fontos módszert tartalmaz, `app.UseCookiePolicy()` `app.UseAuthentication()` amelyek lehetővé teszik a megnevezett funkciókat.
+A `Configure()` metódus két fontos módszert tartalmaz, `app.UseAuthentication()` `app.UseAuthorization()` amelyek lehetővé teszik a megnevezett funkciókat. Emellett a `Configure()` metódusban regisztrálnia kell a Microsoft Identity web útvonalait legalább egy hívással `endpoints.MapControllerRoute()` vagy egy hívással `endpoints.MapControllers()` .
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
 {
-    // more code
-    app.UseAuthentication();
-    app.UseAuthorization();
-    // more code
-}
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+});
+
+// endpoints.MapControllers(); // REQUIRED if MapControllerRoute() isn't called.
 ```
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Egy vezérlő vagy egy vezérlő metódusának védelme
@@ -173,7 +178,7 @@ A vezérlő vagy vezérlő metódusait az attribútum használatával lehet véd
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ASP.NET Core oktatóanyagot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek az alábbiakat mutatják be:
 

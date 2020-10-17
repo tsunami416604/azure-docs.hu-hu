@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072271"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152218"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
@@ -74,7 +74,7 @@ Az [Azure IoT hub .net (C#) eszköz SDK](https://github.com/Azure/azure-iot-sdk-
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 asztali és kiszolgálói SKU   | .NET Core 2,1, .NET-keretrendszer 4.5.1 vagy .NET-keretrendszer 4,7 |
 
-A .NET SDK a Windows IoT Core-ban is használható az [Azure-eszköz ügynökével](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) vagy [olyan egyéni NTService, amely az RPC használatával képes kommunikálni a UWP-alkalmazásokkal](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
+A .NET SDK a Windows IoT Core-ban is használható az [Azure-eszköz ügynökével](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) vagy [olyan egyéni NTService, amely az RPC használatával képes kommunikálni a UWP-alkalmazásokkal](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
@@ -124,7 +124,7 @@ Ha nem tudja használni az IoT Hub eszköz SDK-kat, csatlakozhat közvetlenül a
 
 ## <a name="support-and-other-resources"></a>Támogatás és egyéb forrásanyagok
 
-Ha az Azure IoT Device SDK-k használata során problémákba ütközik, többféleképpen is megkeresheti az alább összefoglalt támogatást. Az összes támogatási lehetőségről az [Azure IoT támogatási és súgójában](https://aka.ms/iothelp)talál további információt. 
+Ha az Azure IoT Device SDK-k használata során problémákba ütközik, többféleképpen is megkeresheti az alább összefoglalt támogatást. Az összes támogatási lehetőségről az [Azure IoT támogatási és súgójában](../iot-fundamentals/iot-support-help.md)talál további információt. 
 
 **Hibajelentések** – az eszköz SDK-k hibáit a megfelelő GitHub-projekt problémák lapján lehet jelenteni. Gyorsan megtörténik a javítások a projektből a termékek frissítéseibe való beüzemelése.
 
@@ -138,7 +138,7 @@ Ha az Azure IoT Device SDK-k használata során problémákba ütközik, többf�
 
 * [Azure IoT Hub Python SDK-problémák](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**Technikai kérdések** – technikai kérdéseket tehet fel mind a [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) , mind a [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) az *Azure-IOT-SDK*címke használatával.
+**Technikai kérdések** – technikai kérdéseket tehet fel mind a [Microsoft Q&a](/answers/topics/azure-iot-sdk.html) , mind a [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) az *Azure-IOT-SDK*címke használatával.
 
 A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkező felhasználók a Microsoft ügyfélszolgálati csapatával új támogatási kérést hozhatnak létre közvetlenül a [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 

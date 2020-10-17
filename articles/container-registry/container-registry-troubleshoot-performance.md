@@ -3,12 +3,12 @@ title: Regisztrációs adatbázis teljesítményproblémáinak elhárítása
 description: A beállításjegyzék teljesítményével kapcsolatos gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227474"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148410"
 ---
 # <a name="troubleshoot-registry-performance"></a>Regisztrációs adatbázis teljesítményproblémáinak elhárítása
 
@@ -115,7 +115,5 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
   * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md)
   * [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)
-
-

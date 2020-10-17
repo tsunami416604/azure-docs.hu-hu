@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019563"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152185"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Hivatkozás – IoT Hub végpontok
 
@@ -95,7 +95,7 @@ A felvehető végpontok számának korlátozásait lásd: [kvóták és szabály
 
 Egy IoT-megoldásban a *Field Gateway* az eszközök és a IoT hub végpontok között helyezkedik el. Általában az eszközök közelében található. Az eszközök közvetlenül kommunikálnak a helyszíni átjáróval az eszközök által támogatott protokoll használatával. A Field Gateway egy IoT Hub által támogatott protokoll használatával csatlakozik egy IoT Hub végponthoz. A helyszíni átjáró lehet egy dedikált hardvereszköz vagy egy kis teljesítményű számítógép, amely egyéni átjáró szoftvert futtat.
 
-A [Azure IoT Edge](/azure/iot-edge/) használható a Field Gateway megvalósításához. IoT Edge olyan funkciókat kínál, mint például a több eszközről származó többszörös kommunikáció ugyanarra a IoT Hub kapcsolatra.
+A [Azure IoT Edge](../iot-edge/index.yml) használható a Field Gateway megvalósításához. IoT Edge olyan funkciókat kínál, mint például a több eszközről származó többszörös kommunikáció ugyanarra a IoT Hub kapcsolatra.
 
 ## <a name="next-steps"></a>Következő lépések
 

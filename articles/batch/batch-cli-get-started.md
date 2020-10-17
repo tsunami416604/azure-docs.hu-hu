@@ -4,12 +4,12 @@ description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásai
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055511"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144762"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -28,7 +28,7 @@ A legújabb Azure CLI-t az [Azure Cloud Shellben](../cloud-shell/overview.md) fu
 
 ## <a name="command-help"></a>Segítség a parancsokhoz
 
-Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Például:
+Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Példa:
 
 * Ha segítséget szeretne kérni az `az` parancshoz, írja be a következőt: `az -h`
 * Ha le szeretné kérni az összes Batch parancs listáját a parancssori felületen, használja a következőt: `az batch -h`
@@ -79,7 +79,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
     
     Amikor az interaktív bejelentkezés segítségével lép be az Azure-ba, ahogyan azt az előző részben is említettük, a hitelesítő adatait a rendszer a gyorsítótárba helyezi, így az Azure CLI ugyanezeket a hitelesítő adatokat használva be tud jelentkezni Batch-fiókjába is. Ha szolgáltatásnév használatával jelentkezik be az Azure-ba, a rendszer a szolgáltatásnév hitelesítő adatait használva fog bejelentkezni Batch-fiókjába.
 
-    Az Azure AD előnye a szerepköralapú hozzáférés-vezérlés (RBAC) használatában rejlik. Szerepköralapú hozzáférés-vezérlés használatával a felhasználók hozzáférése a kiosztott szerepkörtől függ, nem pedig attól, hogy rendelkeznek-e a fiókhoz tartozó hitelesítőkulccsal. A fiókok kulcsainak kezelése helyett kezelheti az Azure-szerepköröket, és engedélyezheti az Azure AD kezeli a hozzáférést és a hitelesítést.  
+    Az Azure AD előnye, hogy Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít. Az Azure RBAC a felhasználó hozzáférése a hozzárendelt szerepkörtől függ, nem pedig a fiók kulcsaival. A fiókok kulcsainak kezelése helyett kezelheti az Azure-szerepköröket, és engedélyezheti az Azure AD kezeli a hozzáférést és a hitelesítést.  
 
      Ahhoz, hogy az Azure AD használatával jelentkezzen be Batch-fiókjába, használja a [az batch account login](/cli/azure/batch/account#az-batch-account-login) parancsot: 
 
@@ -111,7 +111,7 @@ A gyakori feladatok végrehajtásával kapcsolatban tekintse meg a Batch [paranc
 
 ## <a name="json-files-for-resource-creation"></a>Erőforrás létrehozása JSON-fájlok használatával
 
-Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Például:
+Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Példa:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -141,7 +141,7 @@ Ha a `list` művelettel küld lekérdezést a Batch-szolgáltatásnak, megadhat 
 
 A következő táblázat bemutatja azokat, az OData-záradékokat, amelyeket a Batch szolgáltatás támogat:
 
-| Záradék | Leírás |
+| Záradék | Description |
 |---|---|
 | `--select-clause [select-clause]` | A tulajdonságok egy részét adja vissza minden entitás esetében. |
 | `--filter-clause [filter-clause]` | Csak olyan entitásokat ad vissza, amelyek megfelelnek a megadott OData-kifejezésnek. |

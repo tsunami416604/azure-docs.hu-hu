@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992858"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145283"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -291,11 +291,7 @@ Az Azure Active Directory lehetővé teszi, hogy [elnevezett helyszíneket](loca
 
 ### <a name="plan-your-policy-deployment"></a>A szabályzat központi telepítésének megtervezése
 
-Ha az új szabályzatok készen állnak a környezetére, mindenképpen tekintse át az egyes szabályzatokat, hogy elkerülje a nemkívánatos eredmények elkerülését. A szabályzatok alkalmazásával és a problémák elkerülésével kapcsolatos fontos információk megismeréséhez tekintse meg a következő dokumentációt:
-
-* [Alapismeretek](best-practices.md)
-
-* [Mit érdemes elkerülni](best-practices.md)
+Ha az új szabályzatok készen állnak a környezetére, mindenképpen tekintse át az egyes szabályzatokat, hogy elkerülje a nemkívánatos eredmények elkerülését.
 
 ## <a name="common-policies"></a>Gyakori szabályzatok
 
@@ -380,7 +376,7 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. Állítsa be a forgatókönyveket és a várt eredményeket a HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásának módja alapján.
 
-| Szabályzat| Forgatókönyv| Várt eredmény |
+| Szabályzat| Használati eset| Várt eredmény |
 | - | - | - |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| A meghatalmazott felhasználó bejelentkezik az alkalmazásba egy megbízható helyen/munkahelyen| A felhasználónak nem kell megadnia az MFA-t |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| Az engedélyezve lévő felhasználó bejelentkezik az alkalmazásba, és nem megbízható helyen/munkahelyen| A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet |
@@ -462,10 +458,6 @@ Az [Egyéni vezérlők](controls.md) átirányítják a felhasználókat egy kom
 ### <a name="terms-of-use"></a>Használati feltételek
 
 A környezet bizonyos felhőalapú alkalmazásaihoz való hozzáféréshez a felhasználók beleegyeznek a Használati feltételek (használati feltételek) elfogadásával. Kövesse ezt a rövid útmutatót [a használati feltételek létrehozásához](require-tou.md).
-
-### <a name="classic-policies"></a>Klasszikus szabályzatok
-
-A [Azure Portal](https://portal.azure.com/)Azure Active Directory > biztonság > feltételes hozzáférés területen találja a hitelesítésszolgáltatói házirendeket. Előfordulhat, hogy a szervezet nem ezen a lapon hozta létre a régebbi HITELESÍTÉSSZOLGÁLTATÓI házirendeket. Ezeket a szabályzatokat klasszikus szabályzatoknak nevezzük. Javasoljuk, hogy [a klasszikus szabályzatokat a Azure Portalba migrálja](best-practices.md).
 
 ## <a name="troubleshoot-conditional-access"></a>A feltételes hozzáférés hibaelhárítása
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: a09989e57729862cb18f148f95eb83f81a775b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542223"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149263"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -77,7 +77,7 @@ További információ a [verzió importálásával kapcsolatos hibákról](luis-
 
 ## <a name="collaborating-and-contributing"></a>Együttműködés és közreműködés
 
-### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hogyan az Azure Active Directory (Azure AD) vagy a szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosítson közreműködőket a LUIS számára?
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-azure-role-based-access-control-azure-rbac"></a>Hogyan a közreműködők hozzáférhetnek a LUIShoz Azure Active Directory (Azure AD) vagy az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)?
 
 A közreműködők hozzáférésének megismeréséhez tekintse meg [Azure Active Directory erőforrásokat](luis-how-to-collaborate.md#azure-active-directory-resources)  és [Azure Active Directory bérlői felhasználót](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
 

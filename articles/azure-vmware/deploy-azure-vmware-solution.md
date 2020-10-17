@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegy�
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776425"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152030"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -82,7 +82,7 @@ Kövesse az [NSX-t hálózati szegmens létrehozása az Azure VMware-megoldás](
 
 Lépjen vissza a [meghirdetett hálózati útvonalak ellenőrzése](#verify-network-routes-advertised) lépésre. Az előző lépésben létrehozott hálózati szegmens (ek) et jelölő listában egy további útvonal (ok) látható.  
 
-A virtuális gépek esetében a [meghirdetett NSX-T szegmens ellenőrzése](#verify-advertised-nsx-t-segment) lépésben létrehozott szegmens (eke) t hozzá kell rendelnie.  
+A virtuális gépek esetében a [hálózati szegmens létrehozása az Azure VMware megoldásba](#create-a-network-segment-on-azure-vmware-solution) lépésben létrehozott szegmens (eke) t fogja hozzárendelni.  
 
 Mivel a DNS szükséges, azonosítsa a használni kívánt DNS-kiszolgálót.  
 
@@ -127,7 +127,7 @@ Jelentkezzen be az előző lépésben létrehozott virtuális gépre, és ellen�
 >[!IMPORTANT]
 >Ezen a ponton az Azure VMware-megoldás működik, és sikeresen létesített kapcsolatot az Azure Virtual Network és az internet között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő szakaszban az Azure VMware-megoldást a helyszíni hálózathoz a ExpressRoute-on keresztül kapcsolhatja össze.
 > [!div class="nextstepaction"]

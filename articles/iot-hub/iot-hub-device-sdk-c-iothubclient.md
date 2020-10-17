@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732603"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149138"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>A C-hez készült Azure IoT eszközoldali SDK – további információ a Iothubclientről
 
@@ -28,7 +28,7 @@ A cikk több különböző témakörre következtet, beleértve az eszköz hitel
 
 Ezeket a témákat a **iothubclientről** SDK-minták használatával mutatjuk be. Ha követni szeretné a lépéseket, tekintse meg a **iothub \_ ügyfél- \_ minta \_ http** -és **iothub ügyfél- \_ \_ példaként szolgáló \_ Amqp** -alkalmazásokat, amelyek szerepelnek a C Azure IoT eszközoldali SDK-ban. az alábbi szakaszokban ismertetett összes Leírás a példákban látható.
 
-A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-lower-level-apis"></a>Az alsó szintű API-k
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Kezdjük a **IoTHubMessage \_ tulajdonságainak** meghívásával és az üzenet leírójának átadásával. A mi visszakapott funkció egy **Térkép- \_ leíró** hivatkozás, amely lehetővé teszi, hogy megkezdje a tulajdonságok hozzáadását. Az utóbbit a **map \_ AddOrUpdate**meghívásával lehet elérni, amely egy Térkép \_ fogópontra, a tulajdonság nevére és a tulajdonság értékére hivatkozik. Ezzel az API-val tetszőleges számú tulajdonságot adhat hozzá.
 
-Ha az esemény beolvasása **Event Hubsból**történik, a fogadó képes enumerálni a tulajdonságokat, és beolvasni a megfelelő értékeket. Például a .NET-ben ez a [EventData objektum Tulajdonságok gyűjteményének](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)elérésével valósítható meg.
+Ha az esemény beolvasása **Event Hubsból**történik, a fogadó képes enumerálni a tulajdonságokat, és beolvasni a megfelelő értékeket. Például a .NET-ben ez a [EventData objektum Tulajdonságok gyűjteményének](/dotnet/api/microsoft.servicebus.messaging.eventdata)elérésével valósítható meg.
 
 Az előző példában a tulajdonságokat csatoljuk egy IoT Hubnak küldött eseményhez. A tulajdonságok a IoT Hubból fogadott üzenetekhez is csatolhatók. Ha egy üzenetből szeretnénk beolvasni a tulajdonságokat, használhatunk kódot, például a következőt az üzenet visszahívási függvényében:
 
@@ -271,10 +271,10 @@ A leggyakrabban használt lehetőségek:
 
 A kötegelt beállítás fontos. Alapértelmezés szerint a könyvtár ingresses az eseményeket (egyetlen esemény, amit a **iothubclientről \_ ll \_ SendEventAsync**-nek továbbít). Ha a kötegelt beállítás értéke **true (igaz**), a tár annyi eseményt gyűjt, amennyit a pufferből tud (az IoT hub által elfogadásra kerülő üzenetek maximális méretére).  Az Event batch egyetlen HTTPS-hívásban IoT Hub érkezik (az egyes események egy JSON-tömbbe vannak csomagolva). A kötegelt feldolgozás engedélyezése általában nagy teljesítménybeli nyereséget eredményez, mivel csökkenti a hálózati ciklikus utakat. Emellett jelentősen csökkenti a sávszélességet, mivel a HTTPS-fejlécek egyetlen készletét küldi el egy eseményvezérelt kötegtel, és nem az egyes eseményekhez tartozó fejléceket. Ha nem rendelkezik konkrét indoklással, akkor általában engedélyezni szeretné a kötegelt feldolgozást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti a **C Azure IoT Device SDK**-ban található **iothubclientről** -függvénytár viselkedését. Ezekkel az információkkal tisztában kell lennie a **iothubclientről** -könyvtár képességeivel. A sorozat második cikke a [C-szerializáló Azure IoT Device SDK-](iot-hub-device-sdk-c-serializer.md)je, amely a **szerializálási** függvénytárhoz hasonló részleteket tartalmaz.
 
 Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat.
 
-A IoT Hub képességeinek további megismeréséhez tekintse meg a [mesterséges intelligenciát használó eszközökre való telepítését Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)használatával című témakört.
+A IoT Hub képességeinek további megismeréséhez tekintse meg a [mesterséges intelligenciát használó eszközökre való telepítését Azure IoT Edge](../iot-edge/quickstart-linux.md)használatával című témakört.

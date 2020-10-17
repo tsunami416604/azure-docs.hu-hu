@@ -5,22 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032968"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145099"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>A feltételes hozzáféréssel kapcsolatos bejelentkezési problémák elhárítása
 
 A cikkben található információk segítségével a feltételes hozzáféréssel kapcsolatos váratlan bejelentkezési eredmények a hibaüzenetek és az Azure AD bejelentkezési naplójának használatával is orvosolhatók.
+
+## <a name="select-all-consequences"></a>Az "összes" következmény kiválasztása
+
+A feltételes hozzáférési keretrendszer nagyszerű konfigurációs rugalmasságot biztosít. A nagy rugalmasság azonban azt is jelenti, hogy az egyes konfigurációs házirendeket alaposan át kell tekintenie, mielőtt a nemkívánatos eredmények elkerülnek. Ebben a kontextusban különös figyelmet kell fordítani a teljes készleteket érintő hozzárendelésekre, például az **összes felhasználó/csoport/Felhőbeli alkalmazásra**.
+
+A szervezeteknek el kell kerülniük a következő konfigurációkat:
+
+**Minden felhasználó, minden felhőalapú alkalmazás:**
+
+- **Hozzáférés letiltása** – ez a konfiguráció blokkolja a teljes szervezetet.
+- **Eszköz megfelelőként való megjelölésének megkövetelése** – azon felhasználók számára, akik még nem regisztrálták az eszközeiket, ez a szabályzat blokkolja az összes hozzáférést, beleértve az Intune-portálhoz való hozzáférést is. Ha a rendszergazda regisztrált eszköz nélkül van, akkor ez a szabályzat megakadályozza, hogy visszalépjen a Azure Portal a szabályzat módosításához.
+- **Hibrid Azure ad-tartományhoz csatlakoztatott eszköz megkövetelése** – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha nem rendelkezik hibrid Azure ad-hez csatlakoztatott eszközzel.
+- **Alkalmazás-védelmi házirend megkövetelése** – ez a házirend-blokkolási hozzáférés a szervezet összes felhasználója számára is letilthatja a hozzáférést, ha nem rendelkezik Intune-házirenddel. Ha Ön az Intune app Protection-szabályzattal nem rendelkező ügyfélalkalmazás, akkor ez a szabályzat megakadályozza, hogy visszajusson a portálokra, például az Intune-ba és az Azure-ba.
+
+**Minden felhasználó, minden felhőalapú alkalmazás, minden eszköz platform:**
+
+- **Hozzáférés letiltása** – ez a konfiguráció blokkolja a teljes szervezetet.
 
 ## <a name="conditional-access-sign-in-interrupt"></a>Feltételes hozzáférés bejelentkezési megszakítása
 
@@ -82,8 +99,14 @@ Az incidens elküldésekor adja meg a kérelem AZONOSÍTÓját, valamint az idő
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>Mi a teendő, ha ki van zárva a Azure Portal?
+
+Ha a feltételes hozzáférési házirend helytelen beállítása miatt kizárja a Azure Portalt:
+
+- Győződjön meg arról, hogy a szervezet más rendszergazdái még nincsenek letiltva. A Azure Portalhoz hozzáféréssel rendelkező rendszergazda letilthatja a bejelentkezést befolyásoló házirendet. 
+- Ha a szervezet egyik rendszergazdája sem tudja frissíteni a szabályzatot, küldjön be támogatási kérelmet. A Microsoft támogatási szolgálata megtekintheti és megerősítheti a hozzáférést megakadályozó feltételes hozzáférési szabályzatokat.
+
 ## <a name="next-steps"></a>Következő lépések
 
 - [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon](../reports-monitoring/concept-sign-ins.md)
 - [Feltételes hozzáférés hibaelhárítása a What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
-- Ajánlott eljárások a [feltételes hozzáféréshez Azure Active Directory](best-practices.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470136"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152264"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
 A Cloud Shell az Azure file Storage-t használja a fájlok munkamenetek közötti megőrzéséhez. A kezdeti indításkor Cloud Shell egy új vagy meglévő fájlmegosztás hozzárendelését kéri a fájlok munkamenetek közötti megőrzéséhez.
@@ -55,7 +55,7 @@ Amikor megjelenik a Storage telepítője, válassza a **Speciális beállításo
 ![Az erőforráscsoport-beállítás](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>A tárterület-hozzáférés biztonságossá tétele
-A biztonság érdekében minden felhasználónak ki kell építenie a saját Storage-fiókját.  A szerepköralapú hozzáférés-vezérlés (RBAC) esetében a felhasználóknak a Storage-fiók szintjén kell megadniuk a közreműködő vagy annál magasabb szintű hozzáférést.
+A biztonság érdekében minden felhasználónak ki kell építenie a saját Storage-fiókját.  Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) esetében a felhasználóknak a Storage-fiók szintjén kell megadniuk a közreműködő vagy annál magasabb szintű hozzáférést.
 
 Cloud Shell egy Azure-fájlmegosztást használ egy Storage-fiókban egy adott előfizetésen belül. Az örökölt engedélyek miatt az előfizetéshez megfelelő hozzáférési jogosultsággal rendelkező felhasználók hozzáférhetnek az összes Storage-fiókhoz, és az előfizetésben található fájlmegosztást is.
 

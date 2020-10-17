@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81767014"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152238"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>A C-hez készült Azure IoT Device SDK – további információ a szerializáló szolgáltatásról
 
@@ -28,7 +28,7 @@ Végül a cikk a korábbi cikkek, például az üzenetek és a tulajdonságok ke
 
 A cikkben leírt összes művelet a **szerializáló** SDK-mintákon alapul. Ha követni szeretné a lépéseket, tekintse meg a **simplesample \_ amqp** és a **simplesample \_ http** -alkalmazásait a C Azure IoT Device SDK-ban.
 
-A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>A modellezés nyelve
 
@@ -65,7 +65,7 @@ Ez a minta nem mutatja be az SDK által támogatott további adattípusokat. A k
 
 A következő adattípusok támogatottak a **szerializáló** függvénytárral létrehozott modellekben:
 
-| Típus | Leírás |
+| Típus | Description |
 | --- | --- |
 | double |dupla pontosságú lebegőpontos szám |
 | int |32 bites egész szám |
@@ -662,7 +662,7 @@ serializer_deinit();
 
 Ellenkező esetben a fent felsorolt többi funkció ugyanúgy működik a **szerializáló** könyvtárában, mint a **iothubclientről** -könyvtárban. További információt ezekről a témakörökről a sorozat [előző cikkében](iot-hub-device-sdk-c-iothubclient.md) talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti a **C-hez készült Azure IoT Device SDK**-ban található **szerializáló** függvénytár egyedi szempontjait. A megadott információkkal tisztában kell lennie azzal, hogyan használhatók modellek az események küldéséhez és az üzenetek fogadásához IoT Hubról.
 
@@ -670,4 +670,4 @@ Ez a három részből álló sorozatot is megköti, hogy miként fejleszthet alk
 
 Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat.
 
-A IoT Hub képességeinek további megismeréséhez tekintse meg a [mesterséges intelligenciát használó eszközökre való telepítését Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)használatával című témakört.
+A IoT Hub képességeinek további megismeréséhez tekintse meg a [mesterséges intelligenciát használó eszközökre való telepítését Azure IoT Edge](../iot-edge/quickstart-linux.md)használatával című témakört.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393428"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148636"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances Azure biztonsági alapterve
 
@@ -73,7 +73,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 * [Azure Security Center adaptív hálózat megerősítésének ismertetése](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 * [A szolgáltatási címkék megismerése és használata](../virtual-network/service-tags-overview.md) 
 
-* [Az alkalmazás biztonsági csoportjai megismerése és használata](../virtual-network/security-overview.md#application-security-groups)
+* [Az alkalmazás biztonsági csoportjai megismerése és használata](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [Üzembe helyezés virtuális hálózatban – Azure Container Instances](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy minták a hálózatkezeléshez](/azure/governance/policy/samples/#network)
+* [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ A címke-és verziójú tároló lemezképei a bizalmas adatokat tároló vagy f
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Felügyeleti csoportok létrehozása](../governance/management-groups/create.md)
+* [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 * [A Azure Container Instances biztonsági szempontjai](./container-instances-image-security.md)
 
-* [Azure Container Registry integráció a Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -652,7 +652,7 @@ Egyéni vagy harmadik féltől származó megoldás használata a tároló lemez
 
 * [A Azure Container Instances biztonsági szempontjai](./container-instances-image-security.md)
 
-* [Azure Container Registry integráció a Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -664,7 +664,7 @@ Egyéni vagy harmadik féltől származó megoldás használata a tároló lemez
 
 * [A Azure Container Instances biztonsági szempontjai](./container-instances-image-security.md)
 
-* [Azure Container Registry integráció a Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -707,7 +707,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](../governance/management-groups/create.md)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ Figyelje Azure Container Instances naplókat a rendellenes működéshez, és re
 * [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
 * [A Azure Container Instances biztonsági szempontjai](./container-instances-image-security.md)
-* [Azure Container Registry integráció a Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ Figyelje Azure Container Instances naplókat a rendellenes működéshez, és re
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -825,7 +825,7 @@ Különböző Azure-előfizetések vagy-felügyeleti csoportok használatával k
 
 * [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Felügyeleti csoportok létrehozása](../governance/management-groups/create.md)
+* [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
 * [Üzembe helyezés virtuális hálózatban – Azure Container Instances](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ Egyéni vagy harmadik féltől származó megoldás használata a tároló lemez
 
 * [Tároló-figyelési és-ellenőrzési biztonsági javaslatok a Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integráció a Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)
 * [Az Azure Container Registry-feladatok alaprendszerképének frissítései](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ A tároló lemezképeit a beállításjegyzékből egy másikba importálva is i
 
 **Útmutató**: engedélyezheti Soft-Deleteét Azure Key Vault a kulcsok véletlen vagy rosszindulatú Törlés elleni védelemmel való ellátásához.
 
-* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 

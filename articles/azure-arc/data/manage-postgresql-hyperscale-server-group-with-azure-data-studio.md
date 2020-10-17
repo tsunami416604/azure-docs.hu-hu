@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a073df78adbf0104d81a96eb92ea427f60e53b01
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940785"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151848"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>A Azure Data Studio használata az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport kezelésére
 
@@ -61,9 +61,8 @@ A PostgreSQL irányítópult nézete:
 
 Ez az ablaktábla bal oldalán több irányítópultot is tartalmaz:
 
-- **Áttekintés:** Megjeleníti a példány összegző információit, például a nevét, az Azure-előfizetés AZONOSÍTÓját, az adatbázismotor konfigurációját, a Grafana és a Kibana tartozó végpontokat...
+- **Áttekintés:** Megjeleníti a példány összegző információit, például a nevet, a PostgreSQL rendszergazdai felhasználónevét, az Azure-előfizetés AZONOSÍTÓját, a konfigurációt, az adatbázismotor verzióját, a Grafana és a Kibana tartozó végpontokat...
 - **Kapcsolatok karakterláncai:** Különböző kapcsolati karakterláncokat jelenít meg, amelyekhez szükség lehet a PostgreSQL-példányhoz való kapcsolódásra, például a psql, a Node.js, a PHP, a Ruby...
-- **Tulajdonságok:** Különböző tulajdonságokat jelenít meg, például a PostgreSQL rendszergazdai felhasználónevét, a társított erőforrások csoportot az árnyékmásolat-erőforráshoz...
 - **Problémák diagnosztizálása és megoldása:** A kezdőlapon számos olyan erőforrást talál, amely segít a példányok hibaelhárításában, amikor kibővítjük a hibaelhárító jegyzetfüzeteket
 - **Új támogatási kérelem:** Az a Kezdőlap, amelyből a terméktámogatási szolgálattól kérhet segítséget a nyilvános előzetes bejelentés megkezdése után.
 

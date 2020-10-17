@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326813"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152277"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -33,7 +33,7 @@ A HTTP-n keresztül elérhető összes Cognitive Services-végpont TLS 1,2. A k�
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag <span class="docon docon-navigate-external x-hidden-focus"></span> </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. Több Cognitive Services ajánlat, beleértve a szerepköralapú hozzáférés-vezérlést (RBAC). A RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével kapcsolatos ünnepségek egyszerűsítésére. További részletek: [szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
+A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag <span class="docon docon-navigate-external x-hidden-focus"></span> </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. A Cognitive Services számos ajánlata tartalmaz Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC). Az Azure RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével foglalkozó néhány ünnepség leegyszerűsítésére. További részletek: [Azure szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
 
 Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
@@ -201,12 +201,12 @@ NSString* value =
 
 Ügyfélszéf érhető el ehhez a kognitív szolgáltatáshoz:
 
-* Fordító
+* Translator
 
 A következő szolgáltatások esetében a Microsoft Engineers nem fér hozzá a E0-szinten található összes ügyfél-adatszolgáltatáshoz: 
 
 * Language Understanding
-* Arcfelismerés
+* Face
 * Tartalommoderátor
 * Personalizer
 

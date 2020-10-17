@@ -4,16 +4,16 @@ description: Létrehozhat egy Azure Container Registryt, georeplikációt konfig
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259523"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148390"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
-Az Azure Container Registryk az Azure-ban üzembe helyezett privát Docker-tárolójegyzékek, amelyeket a hálózaton elérhető távolságban tarthat az üzemelő példányokhoz. Ebből a háromrészes oktatóanyagból megtudhatja, hogyan használhat georeplikációt egy Linux-tárolóban futó ASP.NET Core-webalkalmazás két [Web Apps for Containers](../app-service/containers/index.yml)-példányban történő üzembe helyezéséhez. Láthatja, hogyan helyezi üzembe automatikusan az Azure a rendszerképet minden Web App-példányon a legközelebbi georeplikált adattárból.
+Az Azure Container Registryk az Azure-ban üzembe helyezett privát Docker-tárolójegyzékek, amelyeket a hálózaton elérhető távolságban tarthat az üzemelő példányokhoz. Ebből a háromrészes oktatóanyagból megtudhatja, hogyan használhat georeplikációt egy Linux-tárolóban futó ASP.NET Core-webalkalmazás két [Web Apps for Containers](../app-service/index.yml)-példányban történő üzembe helyezéséhez. Láthatja, hogyan helyezi üzembe automatikusan az Azure a rendszerképet minden Web App-példányon a legközelebbi georeplikált adattárból.
 
 A háromrészes sorozat első oktatóanyagának tartalma:
 
@@ -233,7 +233,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy privát, georeplikált tárolójegyzéket, felépített egy tárolórendszerképet, majd ezt a rendszerképet leküldte a tárolójegyzékbe.
 

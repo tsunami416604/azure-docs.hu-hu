@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d17fb9bee77aae9945c12d45a5ffff316f9d639
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460033"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144239"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -32,7 +32,7 @@ Ismerje meg, hogyan teheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Jegyzetfüzetek létrehozása
@@ -221,6 +221,9 @@ A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példány
     conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+
+> [!NOTE]
+> Jegyzetfüzeten belüli csomagkezelő esetén használja a következőt: **% pip** vagy **% Conda** Magic functions automatikusan telepítse a csomagokat a **jelenleg futó kernelre** , nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
 
 A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) bármelyike telepíthető.
 

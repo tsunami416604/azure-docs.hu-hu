@@ -3,12 +3,12 @@ title: Tesztkörnyezet által használt Azure Storage-fiók titkosítása Azure 
 description: Megtudhatja, hogyan konfigurálhatja a labor által használt Azure-tárolók titkosítását Azure DevTest Labs
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433562"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149311"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>A labor által használt Azure Storage titkosítása Azure DevTest Labs
 A Azure DevTest Labsban létrehozott összes labor egy társított Azure Storage-fiókkal jön létre. A Storage-fiók a következő célokra szolgál: 
@@ -36,13 +36,13 @@ A Azure DevTest Labsban létrehozott összes labor egy társított Azure Storage
 ## <a name="encrypt-the-lab-storage-account"></a>A labor Storage-fiók titkosítása
 Az Azure Storage automatikusan titkosítja az adatait, ha a felhőben is megmarad. Az Azure Storage-titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. További információ: az [Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
 
-A Lab Storage-fiókban tárolt adatforgalom **Microsoft által felügyelt kulccsal**van titkosítva. Hivatkozhat a Microsoft által felügyelt kulcsokra az adatok titkosításához, vagy kezelheti a titkosítást a saját kulcsaival. Ha úgy dönt, hogy a labor Storage-fiókjához tartozó saját kulcsokkal kezeli a titkosítást, megadhat egy **ügyfél által felügyelt kulcsot** , amely Azure Key Vault használható a blob Storage-ban és a Azure Filesban tárolt adattitkosításhoz/visszafejtéshez. Az ügyfél által felügyelt kulcsokkal kapcsolatos további információkért lásd: [ügyfelek által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../storage/common/encryption-customer-managed-keys.md).
+A Lab Storage-fiókban tárolt adatforgalom **Microsoft által felügyelt kulccsal**van titkosítva. Hivatkozhat a Microsoft által felügyelt kulcsokra az adatok titkosításához, vagy kezelheti a titkosítást a saját kulcsaival. Ha úgy dönt, hogy a labor Storage-fiókjához tartozó saját kulcsokkal kezeli a titkosítást, megadhat egy **ügyfél által felügyelt kulcsot** , amely Azure Key Vault használható a blob Storage-ban és a Azure Filesban tárolt adattitkosításhoz/visszafejtéshez. Az ügyfél által felügyelt kulcsokkal kapcsolatos további információkért lásd: [ügyfelek által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../storage/common/customer-managed-keys-overview.md).
 
 A következő cikkekből megtudhatja, hogyan konfigurálhat ügyfél által felügyelt kulcsokat az Azure Storage encryption szolgáltatáshoz: 
 
-- [Azure Portalra](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
+- [Azure Portalra](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>Az Azure Blob Storage életciklusának kezelése
@@ -98,11 +98,9 @@ A következő szabály például egy 90 napos lejárati szabály beállításár
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan konfigurálhat ügyfél által felügyelt kulcsokat az Azure Storage encryption szolgáltatáshoz: 
 
-- [Azure Portalra](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure Portalra](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)

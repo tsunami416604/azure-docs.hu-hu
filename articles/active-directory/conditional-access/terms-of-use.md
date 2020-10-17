@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085909"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145396"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -94,8 +94,8 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
    | Lejárat kezdete | Frequency | Eredmény |
    | --- | --- | --- |
-   | Mai dátum  | havonta | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket, majd minden hónapban újra el kell fogadniuk azokat. |
-   | Jövőbeli dátum  | havonta | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket. A jövőbeli dátum esetén a beleegyezések lejárnak, majd minden hónapban újra el kell fogadniuk a felhasználókat.  |
+   | Mai dátum  | Havi | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket, majd minden hónapban újra el kell fogadniuk azokat. |
+   | Jövőbeli dátum  | Havi | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket. A jövőbeli dátum esetén a beleegyezések lejárnak, majd minden hónapban újra el kell fogadniuk a felhasználókat.  |
 
    Ha például úgy állítja be a lejárat napját, hogy az **1** . és a **havi**gyakorisága is megtörténjen, Itt láthatja, hogyan fordulhat elő lejárat két felhasználó esetében:
 
@@ -117,7 +117,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
    ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
-   | Sablon | Leírás |
+   | Sablon | Description |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie és be kell jelentkeznie. |
@@ -392,4 +392,3 @@ A: a Használati feltételek a következő végpontokat használja a hitelesít�
 ## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md)
-- [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](best-practices.md)

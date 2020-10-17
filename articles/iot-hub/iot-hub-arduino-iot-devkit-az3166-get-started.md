@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5147d6d7f1bd1fcd43835f6a66196c7642ad4ff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839554"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151949"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>A IoT fejlesztői készlet AZ3166 összekapcsolásával az Azure IoT Hub
 
@@ -33,7 +33,7 @@ A [MXChip IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-develo
 
 Még nincs fejlesztői készlet? Próbálja ki a [fejlesztői készlet szimulátort](https://azure-samples.github.io/iot-devkit-web-simulator/) , vagy [vásároljon egy fejlesztői készlet](https://aka.ms/iot-devkit-purchase).
 
-A [Code Samples](https://docs.microsoft.com/samples/browse/?term=mxchip)katalógusból megtalálhatja az összes fejlesztői készlet-oktatóanyag forráskódját.
+A [Code Samples](/samples/browse/?term=mxchip)katalógusból megtalálhatja az összes fejlesztői készlet-oktatóanyag forráskódját.
 
 ## <a name="what-you-need"></a>Amire szükség lesz
 
@@ -66,7 +66,7 @@ A fejlesztői készlet a számítógéphez való kapcsolódáshoz kövesse az al
 
 A rövid útmutató az előre lefordított fejlesztői készlet belső vezérlőprogram használatával küldi el a telemetria a IoT Hub. A futtatása előtt létre kell hoznia egy IoT hubot, és regisztrálnia kell egy eszközt a hubhoz.
 
-### <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+### <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -267,7 +267,7 @@ Az Azure IoT Hub és az eszköznek a Azure Portalból való kiépítése helyett
 
     ![Altípus kiválasztása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
 
-1. Ezután válasszon ki vagy hozzon létre egy új [erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology).
+1. Ezután válasszon ki vagy hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/management/overview.md#terminology).
 
     ![Erőforráscsoport kiválasztása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
 

@@ -3,12 +3,12 @@ title: Aláírt lemezképek kezelése
 description: Megtudhatja, hogyan engedélyezheti a tartalom megbízhatóságát az Azure Container registryben, valamint leküldheti és lekérheti az aláírt képeket. A tartalom megbízhatósága a Docker tartalmi megbízhatóságát valósítja meg, és a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409164"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148573"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>A tartalmak megbízhatósága az Azure Container Registryben
 
@@ -115,7 +115,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 A `<service principal ID>` lehet a szolgáltatásnév **appId** vagy **objectId** azonosítója, illetve valamely hozzá tartozó **servicePrincipalName**. A szolgáltatásnevek és az Azure Container Registry használatával kapcsolatos további információért tekintse meg [a szolgáltatásnevek az Azure Container Registryben való hitelesítését ismertető cikket](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
-> A szerepkör módosítása után futtassa a parancsot az `az acr login` Azure CLI helyi identitási jogkivonatának frissítéséhez, hogy az új szerepkörök érvénybe lépnek. Az identitás szerepköreinek ellenőrzésével kapcsolatos információkért lásd: az [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md) és az [Azure RBAC kapcsolatos hibák megoldása](../role-based-access-control/troubleshooting.md).
+> A szerepkör módosítása után futtassa a parancsot az `az acr login` Azure CLI helyi identitási jogkivonatának frissítéséhez, hogy az új szerepkörök érvénybe lépnek. Az identitás szerepköreinek ellenőrzésével kapcsolatos információkért lásd: Azure-beli [szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI](../role-based-access-control/role-assignments-cli.md) -vel és az [Azure-RBAC kapcsolatos hibák](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Megbízható rendszerképek leküldése
 

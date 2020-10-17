@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: ddd586bf9a88b1246fcf20fc19493f5003bbb530
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259013"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151734"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Az Azure Data Share támogatott adattárai
 
@@ -26,7 +26,7 @@ Az alábbi táblázat az Azure-adatmegosztás támogatott adatforrásait részle
 | Adattár | Pillanatkép-alapú megosztás | Helyi megosztás 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ | |
-| 1. generációs Azure Data Lake Storage |✓ | |
+| Azure Data Lake Storage Gen1 |✓ | |
 | 2. generációs Azure Data Lake Storage |✓ ||
 | Azure SQL Database |Nyilvános előzetes verzió | |
 | Azure szinapszis Analytics (korábban Azure SQL DW) |Nyilvános előzetes verzió | |
@@ -41,7 +41,7 @@ Az alábbi táblázat a különböző kombinációkat és választásokat ismert
 | Adattár | Azure Blob Storage | 1. generációs Azure Data Lake Storage | 2. generációs Azure Data Lake Storage | Azure SQL Database | Azure Synapse Analytics | Azure Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage | ✓ || ✓ ||
-| 1. generációs Azure Data Lake Storage | ✓ | | ✓ ||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
 | 2. generációs Azure Data Lake Storage | ✓ | | ✓ ||
 | Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
 | Azure szinapszis Analytics (korábban Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||

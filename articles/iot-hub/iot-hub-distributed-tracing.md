@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462036"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152144"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -93,7 +93,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
 ### <a name="clone-the-source-code-and-initialize"></a>A forráskód klónozása és az inicializálás
 
-1. Telepítse az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) -ban" számítási feladatot a Visual Studio 2019-es verzióra. A Visual Studio 2017 és a 2015 is támogatott.
+1. Telepítse az ["asztali fejlesztés C++](/cpp/build/vscpp-step-0-installation?view=vs-2019) -ban" számítási feladatot a Visual Studio 2019-es verzióra. A Visual Studio 2017 és a 2015 is támogatott.
 
 1. Telepítse a [cmakt](https://cmake.org/). Győződjön meg arról, hogy a `PATH` parancs beírásával írja be a `cmake -version` parancssorba.
 
@@ -115,7 +115,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
     cmake ..
     ```
 
-    Ha `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatásakor hibákba ütközhet. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Ha `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatásakor hibákba ütközhet. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
@@ -234,7 +234,7 @@ A felhőből nyomon követett üzenetek százalékos arányának módosításáh
 
 ### <a name="bulk-update-for-multiple-devices"></a>Több eszköz tömeges frissítése
 
-Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való frissítéséhez használja az [automatikus eszköz konfigurációját](iot-hub-auto-device-config.md). Győződjön meg arról, hogy ezt a kettős sémát követi:
+Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való frissítéséhez használja az [automatikus eszköz konfigurációját](./iot-hub-automatic-device-management.md). Győződjön meg arról, hogy ezt a kettős sémát követi:
 
 ```json
 {
@@ -252,7 +252,7 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 | Elem neve | Kötelező | Típus | Leírás |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1` a és a, `2` ki van kapcsolva. |
-| `sampling_rate` | Igen | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
+| `sampling_rate` | Yes | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
 
 ## <a name="query-and-visualize"></a>Lekérdezés és megjelenítés
 
@@ -260,7 +260,7 @@ Ha meg szeretné tekinteni a IoT Hub által naplózott összes nyomkövetést, k
 
 ### <a name="query-using-log-analytics"></a>Lekérdezés Log Analytics használatával
 
-Ha a [log Analyticst a diagnosztikai naplók](../azure-monitor/platform/resource-logs-collect-storage.md)használatával állította be, a lekérdezés a kategória naplói alapján keresi a lekérdezést `DistributedTracing` . Ez a lekérdezés például az összes naplózott nyomkövetést megjeleníti:
+Ha a [log Analyticst a diagnosztikai naplók](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)használatával állította be, a lekérdezés a kategória naplói alapján keresi a lekérdezést `DistributedTracing` . Ez a lekérdezés például az összes naplózott nyomkövetést megjeleníti:
 
 ```Kusto
 // All distributed traces 
@@ -282,7 +282,7 @@ A különböző típusú naplók megismeréséhez tekintse meg az [Azure IoT hub
 
 ### <a name="application-map"></a>Alkalmazástérkép
 
-A IoT-üzenetek folyamatának megjelenítéséhez állítsa be az alkalmazás-hozzárendelési minta alkalmazást. A minta alkalmazás egy Azure-függvény és egy Event hub használatával küldi el az elosztott nyomkövetési naplókat az [Application Map](../application-insights/app-insights-app-map.md) szolgáltatásnak.
+A IoT-üzenetek folyamatának megjelenítéséhez állítsa be az alkalmazás-hozzárendelési minta alkalmazást. A minta alkalmazás egy Azure-függvény és egy Event hub használatával küldi el az elosztott nyomkövetési naplókat az [Application Map](../azure-monitor/app/app-map.md) szolgáltatásnak.
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">A minta beolvasása a GitHubon</a>
@@ -295,11 +295,11 @@ Az alábbi képen az App Map elosztott nyomkövetése látható három útválas
 
 ### <a name="context"></a>Környezet
 
-Számos IoT-megoldás, beleértve a saját [hivatkozási architektúrát](https://aka.ms/iotrefarchitecture) (csak angol nyelven), általában a [Service architektúrájának](https://docs.microsoft.com/azure/architecture/microservices/)egy változatát követi. Mivel a IoT-megoldás összetettebb, a végén egy tucat vagy több szolgáltatást használ. Előfordulhat, hogy ezek a szolgáltatások nem az Azure-ból származnak. Kihívást jelenthet a IoT üzenetek eldobásának és lelassulásának a kimutatása. Például egy IoT-megoldással rendelkezik, amely 5 különböző Azure-szolgáltatást és 1500 aktív eszközt használ. Minden eszköz 10 eszközről a felhőbe irányuló üzenetet küld/másodpercet (összesen 15 000 üzenet/másodperc), de észreveheti, hogy a webalkalmazás csak 10 000 üzenetet lát/másodpercet. Hol található a probléma? Hogyan találják meg a bűnöst?
+Számos IoT-megoldás, beleértve a saját [hivatkozási architektúrát](https://aka.ms/iotrefarchitecture) (csak angol nyelven), általában a [Service architektúrájának](/azure/architecture/microservices/)egy változatát követi. Mivel a IoT-megoldás összetettebb, a végén egy tucat vagy több szolgáltatást használ. Előfordulhat, hogy ezek a szolgáltatások nem az Azure-ból származnak. Kihívást jelenthet a IoT üzenetek eldobásának és lelassulásának a kimutatása. Például egy IoT-megoldással rendelkezik, amely 5 különböző Azure-szolgáltatást és 1500 aktív eszközt használ. Minden eszköz 10 eszközről a felhőbe irányuló üzenetet küld/másodpercet (összesen 15 000 üzenet/másodperc), de észreveheti, hogy a webalkalmazás csak 10 000 üzenetet lát/másodpercet. Hol található a probléma? Hogyan találják meg a bűnöst?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Elosztott nyomkövetési minta a Service Architecture architektúrában
 
-Ahhoz, hogy egy IoT-üzenet folyamatát újra létre lehessen alakítani a különböző szolgáltatások között, minden szolgáltatásnak egy *korrelációs azonosítót* kell propagálnia, amely egyedileg azonosítja az üzenetet. A központi rendszerbe való begyűjtést követően a korrelációs azonosítók lehetővé teszik az üzenetek folyamatának megtekintését. Ezt a metódust [elosztott nyomkövetési mintának](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)nevezzük.
+Ahhoz, hogy egy IoT-üzenet folyamatát újra létre lehessen alakítani a különböző szolgáltatások között, minden szolgáltatásnak egy *korrelációs azonosítót* kell propagálnia, amely egyedileg azonosítja az üzenetet. A központi rendszerbe való begyűjtést követően a korrelációs azonosítók lehetővé teszik az üzenetek folyamatának megtekintését. Ezt a metódust [elosztott nyomkövetési mintának](/azure/architecture/microservices/logging-monitoring#distributed-tracing)nevezzük.
 
 Az elosztott nyomkövetés szélesebb körű bevezetésének támogatásához a Microsoft hozzájárul az [elosztott nyomkövetéshez készült W3C standard javaslathoz](https://w3c.github.io/trace-context/).
 
@@ -328,5 +328,5 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 ## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az általános elosztott nyomkövetési mintával kapcsolatban, tekintse meg a következő témakört [: a Service architektúrájának mintája: elosztott nyomkövetés](https://microservices.io/patterns/observability/distributed-tracing.html).
-- Ha úgy szeretné beállítani a konfigurációt, hogy az elosztott nyomkövetési beállításokat nagy számú eszközre alkalmazza, tekintse meg a [IoT-eszközök konfigurálása és figyelése skálán](iot-hub-auto-device-config.md)című témakört
+- Ha úgy szeretné beállítani a konfigurációt, hogy az elosztott nyomkövetési beállításokat nagy számú eszközre alkalmazza, tekintse meg a [IoT-eszközök konfigurálása és figyelése skálán](./iot-hub-automatic-device-management.md)című témakört
 - Ha többet szeretne megtudni a Azure Monitorről, tekintse meg a [Mi az a Azure monitor?](../azure-monitor/overview.md)című témakört.

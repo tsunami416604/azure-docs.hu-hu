@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: c7ad38dc43280164fc9dbca5d5f2381e613dc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbe277c7451b02887ec5657b1a183fcd001d134e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281334"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148297"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -454,7 +454,7 @@ A jogkivonat-szolgáltatás mintájának fő lépései a következők:
 4. Az eszköz/modul a tokent közvetlenül az IoT hub használatával használja.
 
 > [!NOTE]
-> A token szolgáltatásban a .NET Class [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) vagy a Java Class [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) használatával hozhat létre jogkivonatot.
+> A token szolgáltatásban a .NET Class [SharedAccessSignatureBuilder](/dotnet/api/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder) vagy a Java Class [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) használatával hozhat létre jogkivonatot.
 
 A jogkivonat-szolgáltatás igény szerint állíthatja be a jogkivonat lejáratát. Ha a jogkivonat lejár, az IoT hub megszakítja az eszköz/modul kapcsolatát. Ezt követően az eszköznek/modulnak új jogkivonatot kell igényelnie a jogkivonat-szolgáltatástól. A rövid lejárati idő növeli az eszköz/modul és a jogkivonat-szolgáltatás terhelését.
 

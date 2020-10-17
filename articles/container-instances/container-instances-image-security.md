@@ -4,12 +4,12 @@ description: Javaslatok a lemezképek és a titkos kulcsok biztonságossá téte
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922234"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148663"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>A Azure Container Instances biztonsági szempontjai
 
@@ -34,7 +34,7 @@ Egy nyilvánosan elérhető tároló-rendszerkép nem garantálja A biztonságot
 
 Használja ki a megoldások előnyeit a tároló-lemezképek egy privát beállításjegyzékben való vizsgálatához, és azonosítsa a lehetséges biztonsági réseket. Fontos megérteni a különböző megoldások által nyújtott veszélyforrások észlelésének mélységét.
 
-Például Azure Container Registry opcionálisan [integrálható Azure Security Center](../security-center/azure-container-registry-integration.md) a beállításjegyzékbe leküldett összes Linux-lemezkép automatikus vizsgálatához. Azure Security Center integrált Qualys képolvasó észleli a képbiztonsági réseket, osztályozza őket, és szervizelési útmutatást nyújt.
+Például Azure Container Registry opcionálisan [integrálható Azure Security Center](../security-center/defender-for-container-registries-introduction.md) a beállításjegyzékbe leküldett összes Linux-lemezkép automatikus vizsgálatához. Azure Security Center integrált Qualys képolvasó észleli a képbiztonsági réseket, osztályozza őket, és szervizelési útmutatást nyújt.
 
 Az Azure piactéren a biztonsági monitorozási és a képvizsgálati megoldások, például a [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) és az [Aqua biztonság](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) is elérhető.  
 
@@ -138,7 +138,7 @@ Figyelje az erőforrás-tevékenységeket, például a fájlokat, a hálózatot 
 
 A tároló ökoszisztémájának, például a Kubernetes-fürt, a tároló-beállításjegyzék és a tárolók rendszerképeinek pontos naplózási nyomvonalának fenntartása. Előfordulhat, hogy ezek a naplók naplózási célokra szükségesek, és a biztonsági incidensek után törvényszéki bizonyítékként lesznek hasznosak. Az Azure-megoldások a következők:
 
-* Az [Azure Kubernetes szolgáltatás integrálása a Azure Security Center](../security-center/azure-kubernetes-service-integration.md) a fürt környezetének biztonsági konfigurációjának figyelésére és biztonsági javaslatok előállítására
+* Az [Azure Kubernetes szolgáltatás integrálása a Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) a fürt környezetének biztonsági konfigurációjának figyelésére és biztonsági javaslatok előállítására
 * [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md)
 * [Azure Container instances](container-instances-log-analytics.md) és [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) erőforrás-naplói
 

@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016127"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145372"
 ---
 # <a name="building-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
 Ahogy azt a cikk ismerteti, [Mi a feltételes hozzáférés](overview.md), a feltételes hozzáférési szabályzat a **hozzárendelések** és a **hozzáférés-vezérlések**if-then utasítása. A feltételes hozzáférési szabályzatok együttesen, a döntések meghozatalához és a szervezeti szabályzatok betartatásához biztosítanak jeleket.
 
-Hogyan hozza létre a szervezet ezeket a szabályzatokat? Mi szükséges?
+Hogyan hozza létre a szervezet ezeket a szabályzatokat? Mi szükséges? Hogyan alkalmazzák?
 
 ![Feltételes hozzáférés (jelek + döntések + kényszerítés = szabályzatok)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+Egyszerre több feltételes hozzáférési szabályzat is alkalmazható az egyes felhasználókra. Ebben az esetben minden érvényes szabályzatnak teljesülnie kell. Ha például egy házirendhez többtényezős hitelesítés (MFA) szükséges, és egy másiknak megfelelő eszközre van szüksége, akkor az MFA-t kell elvégeznie, és egy megfelelő eszközt kell használnia. Minden hozzárendelés logikailag **ANDed**. Ha egynél több hozzárendelés van konfigurálva, minden hozzárendelésnek meg kell felelnie a szabályzat elindításának.
+
+Az összes házirend kikényszerítve két fázisban:
+
+- 1. fázis: a munkamenet részleteinek összegyűjtése 
+   - Összegyűjtheti a munkamenet részleteit, például a hálózati hely és az eszköz identitását, amely a szabályzat kiértékeléséhez szükséges lesz. 
+   - A házirend kiértékelésének 1. fázisa az engedélyezett házirendek és házirendek esetében a [csak jelentési módban](concept-conditional-access-report-only.md)történik.
+- 2. fázis: kényszerítés 
+   - A nem teljesített követelmények azonosításához használja az 1. fázisban összegyűjtött munkamenet részleteit. 
+   - Ha van olyan házirend, amely a hozzáférés blokkolására van konfigurálva, a tiltás engedélyezése vezérlővel a kényszerítés le lesz tiltva, és a felhasználó blokkolva lesz. 
+   - A rendszer felszólítja a felhasználót, hogy hajtsa végre az 1. fázisban az alábbi sorrendben nem teljesített további engedélyezési ellenőrzési követelményeket, amíg a szabályzat nem teljesül:  
+      - Multi-Factor Authentication 
+      - Jóváhagyott ügyfélalkalmazás/alkalmazás-védelmi szabályzat 
+      - Felügyelt eszköz (megfelelő vagy hibrid Azure AD-csatlakozás) 
+      - Használati feltételek 
+      - Egyéni vezérlők  
+   - Ha az összes engedélyezési ellenőrzés teljesült, alkalmazza a munkamenet-vezérlőket (alkalmazás kényszerített, Microsoft Cloud App Security és jogkivonat élettartama) 
+   - A házirend kiértékelésének 2. fázisa az összes engedélyezett házirend esetében bekövetkezik. 
 
 ## <a name="assignments"></a>Hozzárendelések
 

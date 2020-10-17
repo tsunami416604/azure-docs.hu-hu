@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743369"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148456"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -103,7 +103,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="configure-service-access"></a>Szolgáltatás-hozzáférés konfigurálása
 
-Jelenleg Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Emellett a következő szolgáltatások erőforrásai nem férnek hozzá a tároló-beállításjegyzékhez hálózati korlátozásokkal:
+Jelenleg Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Emellett a következő szolgáltatások erőforrásai nem férnek hozzá a tároló-beállításjegyzékhez hálózati korlátozásokkal:
 
 * Azure DevOps Services 
 * Azure Container Instances
@@ -113,7 +113,7 @@ Ha az Azure-szolgáltatások hozzáférése vagy integrálása szükséges a tá
 
 Kapcsolódó hivatkozások:
 
-* [Security Center Azure Container Registry képvizsgálat](../security-center/azure-container-registry-integration.md)
+* [Security Center Azure Container Registry képvizsgálat](../security-center/defender-for-container-registries-introduction.md)
 * [Visszajelzés küldése](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
 * [Nyilvános IP-hálózati szabályok konfigurálása](container-registry-access-selected-networks.md)
 * [Privát csatlakozás Azure Container registryhez az Azure Private link használatával](container-registry-private-link.md)
@@ -138,7 +138,5 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
   * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md) 
   * [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)
-
-

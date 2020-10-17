@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6951dfe3eecc8764dda9788393a7348e9267cef8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d54c939f0ecc78d7734345b23fd2b75f150243c1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86248866"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148499"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -32,7 +32,7 @@ A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a t�
 
 Az ACR-feladatok konfigurálásával automatikusan újraépítheti az alkalmazás lemezképeit az alaplemezképek frissítésekor, vagy automatizálhatja a lemezképeket, amikor a csapata egy git-tárházban véglegesíti a kódot. Többlépéses feladatok létrehozásával automatizálhatja a felhőben párhuzamosan több tároló lemezképének létrehozását, tesztelését és javítását.
 
-Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azure Portal és az API-támogatás az Azure Container-nyilvántartások kezeléséhez. Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
+Az Azure olyan eszközöket biztosít, mint az Azure Command-Line Interface, a Azure Portal és az API-támogatás az Azure Container-nyilvántartások kezeléséhez. Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
@@ -43,9 +43,9 @@ Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azu
   > [!IMPORTANT]
   > 2020. január 13-án Azure Container Registry a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,2 engedélyezése a legutóbbi Docker-ügyfél (18.03.0 vagy újabb verzió) használatával. A TLS 1,0 és 1,1 támogatása megszűnik. 
 
-  Egy tároló-beállításjegyzékhez való hozzáférést egy Azure-identitás, egy Azure Active Directory-alapú [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md)vagy egy megadott rendszergazdai fiók használatával [szabályozhatja](container-registry-authentication.md) . Szerepköralapú hozzáférés-vezérlés (RBAC) használatával felhasználók vagy rendszerek részletes engedélyeit rendelheti hozzá egy beállításjegyzékhez.
+  Egy tároló-beállításjegyzékhez való hozzáférést egy Azure-identitás, egy Azure Active Directory-alapú [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md)vagy egy megadott rendszergazdai fiók használatával [szabályozhatja](container-registry-authentication.md) . Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával felhasználók vagy rendszerek részletes engedélyeit rendelheti hozzá egy beállításjegyzékhez.
 
-  A prémium szintű szolgáltatási szint biztonsági funkciói közé tartozik a Képcímke-aláírás [megbízhatósága](container-registry-content-trust.md) , valamint a [tűzfalak és virtuális hálózatok (előzetes verzió)](container-registry-vnet.md) a beállításjegyzékhez való hozzáférés korlátozása érdekében. Azure Security Center opcionálisan integrálható a Azure Container Registry a [rendszerképek vizsgálatára](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) , amikor egy lemezképet egy beállításjegyzékbe küldenek.
+  A prémium szintű szolgáltatási szint biztonsági funkciói közé tartozik a Képcímke-aláírás [megbízhatósága](container-registry-content-trust.md) , valamint a [tűzfalak és virtuális hálózatok (előzetes verzió)](container-registry-vnet.md) a beállításjegyzékhez való hozzáférés korlátozása érdekében. Azure Security Center opcionálisan integrálható a Azure Container Registry a [rendszerképek vizsgálatára](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) , amikor egy lemezképet egy beállításjegyzékbe küldenek.
 
 * **Támogatott lemezképek és** összetevők – egy adattárba csoportosítva minden rendszerkép egy Docker-kompatibilis tároló írásvédett pillanatképe. Az Azure tároló-beállításjegyzékek Windows- és Linux-rendszerképeket is tartalmazhatnak. A rendszerképek neveit Ön határozza meg mindegyik tárolókörnyezetben. A rendszerképek szabványos [Docker-parancsokkal](https://docs.docker.com/engine/reference/commandline/) küldhetők le egy adattárba, vagy hívhatók elő onnan. A Docker-tároló rendszerképein kívül a Azure Container Registry a [kapcsolódó tartalom formátumait](container-registry-image-formats.md) , például [Helm-diagramokat](container-registry-helm-repos.md) és rendszerképeket is tartalmaz, amelyek az [Open Container Initiative (OCI) képformátum-specifikációra](https://github.com/opencontainers/image-spec/blob/master/spec.md)épülnek.
 
@@ -53,7 +53,7 @@ Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azu
 
   A [többlépéses tevékenységek](container-registry-tasks-overview.md#multi-step-tasks) a Felhőbeli tároló-lemezképek létrehozásához, teszteléséhez és javításához szükséges lépéseken alapuló feladatok meghatározását és végrehajtását teszik lehetővé. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
 * [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)

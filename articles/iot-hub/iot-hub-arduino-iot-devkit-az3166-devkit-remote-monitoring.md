@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337959"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148811"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>A MXChip IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása
 
@@ -24,7 +24,7 @@ A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Ar
 
 ## <a name="what-you-need"></a>Amire szükség lesz
 
-Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
+Fejezze be a [első lépések útmutatót](./iot-hub-arduino-iot-devkit-az3166-get-started.md) a következőre:
 
 * A fejlesztői készlet csatlakoztatva van Wi-Fi
 * A fejlesztési környezet előkészítése
@@ -129,10 +129,10 @@ Ha problémákba ütközik, tekintse meg [a IoT Developer Kit GYIK](https://micr
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT távoli figyelési megoldás-gyorsító szolgáltatáshoz, és Hogyan jeleníthető meg az érzékelők adatai, az alábbiakban a javasolt következő lépések láthatók:
 
-* [Az Azure IoT megoldás-gyorsítók áttekintése](https://docs.microsoft.com/azure/iot-suite/)
+* [Az Azure IoT megoldás-gyorsítók áttekintése](/azure/iot-suite/)
 
-* [IoT fejlesztői csomag](https://microsoft.github.io/azure-iot-developer-kit/) 
+* [IoT fejlesztői csomag](https://microsoft.github.io/azure-iot-developer-kit/)

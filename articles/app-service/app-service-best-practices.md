@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962451"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144881"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Gyakorlati tanácsok az Azure App Service-hez
-Ez a cikk a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)használatának ajánlott eljárásait foglalja össze. 
+Ez a cikk a [Azure app Service](./overview.md)használatának ajánlott eljárásait foglalja össze. 
 
 ## <a name="colocation"></a><a name="colocation"></a>Bérelt kiszolgálói
 Ha olyan Azure-erőforrások, mint például egy webalkalmazás és egy adatbázis különböző régiókban találhatók, a következő hatásokkal járhat:

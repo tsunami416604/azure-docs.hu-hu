@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fc5029f26e5d615502925c4def4e2973c118f38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421066ef30e23a79b26f97939cdfffb5be83afb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029987"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148236"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
@@ -38,4 +38,4 @@ A HTTPS-alapú felhőből az eszközre irányuló üzenetek támogatott mintája
 
 Azt is megteheti, hogy kibővíti az eszköz oldalának logikáját a várólistára helyezett üzenetek gyors elvégzéséhez, elutasításához vagy kivonásához, lerövidíti az élettartamot vagy kevesebb üzenetet Lásd [a C2D-üzenetek élettartamával foglalkozó részt](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live).
 
-Végül érdemes lehet a [törlési várólista API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) -t használni a függőben lévő üzenetek rendszeres tisztításához a korlát elérésekor.
+Végül érdemes lehet a [törlési várólista API](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) -t használni a függőben lévő üzenetek rendszeres tisztításához a korlát elérésekor.

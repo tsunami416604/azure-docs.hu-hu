@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978105"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152121"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer magas rendelkezésre állása Red Hat Enterprise Linux 
 
@@ -219,6 +219,9 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
       1. Válassza az **OK** lehetőséget.
 
+   > [!IMPORTANT]
+   > A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
+   
    > [!Note]
    > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 

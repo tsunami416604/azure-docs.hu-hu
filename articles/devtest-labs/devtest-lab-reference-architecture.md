@@ -4,12 +4,12 @@ description: Ez a cikk a vállalat Azure DevTest Labsához nyújt útmutatást.
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367750"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144544"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs a vállalatok hivatkozási architektúrája
 Ez a cikk olyan hivatkozási architektúrát tartalmaz, amely a vállalatok Azure DevTest Labs alapján történő központi telepítésében nyújt segítséget. A következőket tartalmazza:
@@ -30,7 +30,7 @@ Ezek a hivatkozási architektúra legfontosabb elemei:
     - Olyan helyszíni adattal rendelkezik, amely nem helyezhető át a felhőbe.
     - Szeretné csatlakoztatni a labor virtuális gépeket a helyszíni tartományhoz.
     - A felhőalapú környezet összes hálózati forgalmát a biztonsági/megfelelőségi helyszíni tűzfalon keresztül szeretné kényszeríteni.
-- **Hálózati biztonsági csoportok**: a forrás-és cél IP-címek alapján a Felhőbeli környezet (vagy a felhőalapú környezet) forgalmának korlátozása egy [hálózati biztonsági csoport](../virtual-network/security-overview.md)használata. Tegyük fel például, hogy csak a vállalati hálózatról származó forgalmat kívánja engedélyezni a tesztkörnyezet hálózatai között.
+- **Hálózati biztonsági csoportok**: a forrás-és cél IP-címek alapján a Felhőbeli környezet (vagy a felhőalapú környezet) forgalmának korlátozása egy [hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md)használata. Tegyük fel például, hogy csak a vállalati hálózatról származó forgalmat kívánja engedélyezni a tesztkörnyezet hálózatai között.
 - **Távoli asztali átjáró**: a vállalatok általában letiltják a kimenő távoli asztali kapcsolatokat a vállalati tűzfalon. Számos lehetőség áll rendelkezésre a DevTest Labs felhőalapú környezetéhez való kapcsolódás engedélyezéséhez, beleértve a következőket:
   - Használjon [Távoli asztali átjárót](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture), és engedélyezze az átjáró Load Balancer statikus IP-címét.
   - A ExpressRoute/helyek közötti VPN-kapcsolaton keresztül [irányítsa az összes bejövő RDP-forgalmat](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) . Ez a funkció közös szempont, ha a vállalatok DevTest Labs-telepítést terveznek.

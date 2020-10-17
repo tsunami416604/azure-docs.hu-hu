@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: a03b7bd63385b7cc16e4dafb5cd12ccd212dc959
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089383"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144102"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-verziójának nyugdíjazása
 A Microsoft legalább 12 hónappal korábban értesítést küld egy API kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Megjelent egy új verzió (2020-08-01) a **OperationalInsights** erőforrás-szolgáltató API-khoz, és minden korábbi API-verziót kivonja a 2023. október 31-én.
@@ -69,4 +69,4 @@ A használt konfigurációs módszertől függően frissítenie kell az új verz
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse [meg a OperationalInsights-munkaterület API-ra mutató hivatkozást](https://docs.microsoft.com/rest/api/loganalytics/workspaces).
+- Tekintse [meg a OperationalInsights-munkaterület API-ra mutató hivatkozást](/rest/api/loganalytics/workspaces).

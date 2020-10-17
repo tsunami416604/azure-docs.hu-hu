@@ -4,24 +4,24 @@ titleSuffix: Azure App Configuration
 description: Ismerje meg, hogyan hozhat létre Azure-alkalmazás-konfigurációs tárolót Azure Resource Manager sablon (ARM-sablon) használatával.
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824173"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149000"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rövid útmutató: Azure-alkalmazás konfigurációs tárolójának létrehozása ARM-sablonnal
 
 Ez a rövid útmutató a következőket ismerteti:
 
-- Alkalmazás-konfigurációs tároló üzembe helyezése ARM-sablon használatával
-- Kulcs-érték létrehozása az alkalmazás konfigurációs tárolójában ARM-sablon használatával
-- Az ARM-sablonban lévő alkalmazás-konfigurációs tárolóban lévő kulcs-értékek olvasása
+- Alkalmazás-konfigurációs tároló üzembe helyezése Azure Resource Manager sablon használatával (ARM-sablon).
+- Hozzon létre kulcs-értékeket egy alkalmazás-konfigurációs tárolóban ARM-sablon használatával.
+- Az ARM-sablonban lévő alkalmazás-konfigurációs tárolóban lévő kulcs-értékek beolvasása.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,14 +35,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/) közül származik. Létrehoz egy új alkalmazás-konfigurációs tárolót, amely két kulcs-értékkel rendelkezik belül. Ezután a függvény használatával `reference` kiírja a két kulcs-érték erőforrás értékét. A kulcs értékének olvasása így lehetővé teszi, hogy a sablon más helyein is használni lehessen.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/) közül származik. Létrehoz egy új alkalmazás-konfigurációs tárolót, amely két kulcs-értékkel rendelkezik belül. Ezután a függvény használatával `reference` kiírja a két kulcs-érték erőforrás értékét. A kulcs értékének olvasása így lehetővé teszi, hogy a sablon más helyein is használni lehessen.
 
 A rövid útmutató a `copy` kulcs-érték erőforrás több példányának létrehozásához használja az elemet. Az elemmel kapcsolatos további tudnivalókért `copy` tekintse meg az [erőforrás-ITERÁCIÓ az ARM-sablonokban](../azure-resource-manager/templates/copy-resources.md)című témakört.
 
 > [!IMPORTANT]
 > Ehhez a sablonhoz az alkalmazás-konfiguráció erőforrás-szolgáltatójának vagy újabb verziójára van szükség `2020-07-01-preview` . Ez a verzió a `reference` függvényt használja a kulcsok értékének olvasására. Az `listKeyValue` előző verzióban a kulcs-érték olvasására használt függvény nem érhető el a verziótól kezdődően `2020-07-01-preview` .
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
@@ -83,10 +83,10 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A Azure Portal keresőmezőbe írja be az **alkalmazás konfigurációja**kifejezést. Válassza ki az **alkalmazás konfigurációját** a listából.
 1. Válassza ki az újonnan létrehozott alkalmazás-konfigurációs erőforrást.
-1. A **műveletek**területen kattintson a **Configuration Explorer** elemre.
+1. A **műveletek**területen kattintson a **Configuration Explorer**elemre.
 1. Ellenőrizze, hogy a két kulcs-érték létezik-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

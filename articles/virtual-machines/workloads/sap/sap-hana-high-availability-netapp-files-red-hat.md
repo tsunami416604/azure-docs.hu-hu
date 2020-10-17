@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/30/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8800adae73de2672dd89678a6346fe6b0df755ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978169"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144188"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -227,6 +227,13 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
 5.  Hozzon létre egy 1. virtuális gépet (**hanadb1**). 
 6.  A 2. virtuális gép (**hanadb2**) létrehozása.  
 7.  A virtuális gép létrehozása során nem adunk hozzá lemezeket, mert az összes csatlakoztatási pont a Azure NetApp Files NFS-megosztásokon lesz. 
+
+> [!IMPORTANT]
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
+
+> [!NOTE] 
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).
+
 8.  Ha standard Load balancert használ, kövesse az alábbi konfigurációs lépéseket:
     1.  Először hozzon létre egy előtér-IP-címkészletet:
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -255,8 +262,6 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
         1.  Válassza az **OK** lehetőséget.
 
-> [!NOTE] 
-> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).
 
 9. Ha a forgatókönyv az alapszintű Load Balancer használatát is megköveteli, kövesse az alábbi konfigurációs lépéseket:
     1.  Konfigurálja a Load balancert. Először hozzon létre egy előtér-IP-címkészletet:

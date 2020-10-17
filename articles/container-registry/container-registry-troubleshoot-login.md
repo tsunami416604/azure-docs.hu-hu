@@ -3,12 +3,12 @@ title: A beállításjegyzékbe való bejelentkezés hibáinak megoldása
 description: Az Azure Container registrybe való bejelentkezés során felmerülő gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253354"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148440"
 ---
 # <a name="troubleshoot-registry-login"></a>Beállításjegyzékbeli bejelentkezés – problémamegoldás
 
@@ -95,7 +95,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Hitelesítő adatok megerősítése jogosult a beállításjegyzék elérésére
 
-Erősítse meg a hitelesítő adatokhoz társított beállításjegyzék-engedélyeket, például a `AcrPull` RBAC szerepkört a lemezképek lekéréséhez a beállításjegyzékből vagy a `AcrPush` lemezképek leküldésének szerepkörét. 
+Erősítse meg a hitelesítő adatokhoz társított beállításjegyzék-engedélyeket, például az `AcrPull` Azure-szerepkört a lemezképek a beállításjegyzékből való lekéréséhez, vagy a `AcrPush` lemezképek leküldési szerepköréhez. 
 
 Ha az Azure CLI-vel szeretne hozzáférni egy beállításjegyzékhez a portálon vagy a beállításjegyzék-kezelésben, legalább `Reader` Azure Resource Manager művelet végrehajtásához szükséges szerepkört kell használnia.
 
@@ -103,7 +103,7 @@ A szerepkör-hozzárendelések hozzáadásához vagy eltávolításához az elő
 
 Kapcsolódó hivatkozások:
 
-* [RBAC szerepkörök és engedélyek – Azure Container Registry](container-registry-roles.md)
+* [Azure-szerepkörök és-engedélyek – Azure Container Registry](container-registry-roles.md)
 * [Bejelentkezés adattár-hatókörű jogkivonattal](container-registry-repository-scoped-permissions.md)
 * [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 * [Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
   * [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
   * [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/) – az Ön által megadott információk alapján egy gyors diagnosztika is futtatható a beállításjegyzékben található hitelesítési hibák esetén.
-
-

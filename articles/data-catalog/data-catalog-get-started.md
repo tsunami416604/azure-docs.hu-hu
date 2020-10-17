@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118790"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152003"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Azure Data Catalog létrehozása
 
@@ -24,7 +24,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!Note]
-> Az Azure biztonsági követelményei miatt Azure Data Catalog enfored Transport Layer Security (TLS) 1,2. A TLS 1,0 és a TLS 1,1 le lett tiltva. Előfordulhat, hogy a regisztrációs eszköz futtatásakor hibák léptek fel, ha a gép nem frissült a TLS 1,2-hez. A TLS 1,2-es számítógép frissítéséhez lásd: [Transport Layer Security engedélyezése (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
+> Az Azure biztonsági követelményei miatt Azure Data Catalog enfored Transport Layer Security (TLS) 1,2. A TLS 1,0 és a TLS 1,1 le lett tiltva. Előfordulhat, hogy a regisztrációs eszköz futtatásakor hibák léptek fel, ha a gép nem frissült a TLS 1,2-hez. A TLS 1,2-es számítógép frissítéséhez lásd: [Transport Layer Security engedélyezése (1,2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
 
 A kezdéshez a következőkre lesz szüksége:
 
@@ -77,7 +77,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 
 10. Bontsa ki a **portál címét** , és adjon hozzá további szöveget, amely megjelenik a portál címében.
 
-    ![Azure Data Catalog – portál címe](media/data-catalog-get-started/data-catalog-portal-title.png)
+    ![Az Azure-beli adatCatalog-Portal címe](media/data-catalog-get-started/data-catalog-portal-title.png)
 
 11. Miután elvégezte a **Beállítások** lapot, a következő navigáljon a **közzétételi** lapra.
 
@@ -103,7 +103,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 
     ![Azure Data Catalog – tarifacsomag](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Data Catalog szervezete számára. Most már regisztrálhat adatforrásokat a adatkatalógusban.
 
