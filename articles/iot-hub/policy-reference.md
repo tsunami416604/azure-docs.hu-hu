@@ -7,16 +7,16 @@ author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bcb7a8e040a8e32a8513e5e0e73d6c124e04563a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66b74fd8fe326666d3c34b59acba383fd4205e17
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816268"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151326"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Az Azure IoT Hub beépített definíciói Azure Policy
 
-Az általános IoT forgatókönyvek megvalósítását bemutató IoT Hub mintakód a [IoT hub](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-cli)rövid útmutatókban található. Több programozási nyelv is elérhető, például C, Node.js és Python.
+Az általános IoT forgatókönyvek megvalósítását bemutató IoT Hub mintakód a [IoT hub](./quickstart-send-telemetry-cli.md)rövid útmutatókban található. Több programozási nyelv is elérhető, például C, Node.js és Python.
 
 Ez az oldal az Azure IoT Hub beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 988077a8a14339dea51bc36fdf6405b0f2f549ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019461"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139307"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Python)
 
@@ -109,7 +109,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
             return (False, ex)
     ```
 
-    Ez a függvény elemzi az átadott *blob_info* struktúrát az [Azure. Storage. blob. BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)inicializálásához használt URL-cím létrehozásához. Ezután feltölti a fájlt az Azure Blob Storage-ba az ügyfél használatával.
+    Ez a függvény elemzi az átadott *blob_info* struktúrát az [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)inicializálásához használt URL-cím létrehozásához. Ezután feltölti a fájlt az Azure Blob Storage-ba az ügyfél használatával.
 
 1. Adja hozzá a következő kódot az ügyfél összekapcsolásához és a fájl feltöltéséhez:
 
@@ -179,7 +179,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
 
 1. Mentse és zárjuk be a **UploadFile.py** fájlt.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Most már készen áll az alkalmazás futtatására.
 
@@ -209,6 +209,6 @@ Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöl
 
 További információ az Azure Blob Storage az alábbi hivatkozásokkal:
 
-* [Az Azure Blob Storage dokumentációja](https://docs.microsoft.com/azure/storage/blobs/)
+* [Az Azure Blob Storage dokumentációja](../storage/blobs/index.yml)
 
-* [Azure Blob Storage a Python API-hoz – dokumentáció](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Azure Blob Storage a Python API-hoz – dokumentáció](/python/api/overview/azure/storage-blob-readme?view=azure-python)

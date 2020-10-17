@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793323"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150584"
 ---
 # <a name="troubleshooting-message-routing"></a>Üzenetek útválasztásának hibaelhárítása
 
@@ -42,7 +42,7 @@ Az útválasztással kapcsolatos összes [IoT hub-metrika](iot-hub-devguide-endp
 Figyelje meg az **útvonalak** [diagnosztikai naplóit](iot-hub-monitor-resource-health.md#routes) , hogy további információkat kapjon az útválasztási és végponti [műveletekről](#operation-names) , vagy azonosítsa a hibákat és a vonatkozó [hibakódot](#common-error-codes) a probléma további megismeréséhez. A naplóban szereplő művelet neve például azt jelzi, hogy az útvonal nem értékelhető ki az **RouteEvaluationError** miatt. A probléma megoldásához használja az adott [művelet neveként](#operation-names) megadott tippeket. Ha egy esemény hibát jelez, a napló további információkat is tartalmaz arról, hogy miért nem sikerült a kiértékelés. Ha például a művelet neve **EndpointUnhealthy**, a 403004 [hibakód](#common-error-codes) azt jelzi, hogy a végpont elfogyott.
 
 #### <a name="the-health-of-the-endpoint"></a>A végpont állapota
-A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. A *végponti állapot beolvasása* API emellett információt nyújt az üzenet sikeres elküldéséről a végpontra, a [legutóbbi ismert hibára](#last-known-errors-for-iot-hub-routing-endpoints), a legutóbbi ismert hibára és az utolsó alkalommal, amikor egy küldési kísérletet hajtottak végre ehhez a végponthoz. Használja a megadott [utolsó ismert hiba](#last-known-errors-for-iot-hub-routing-endpoints)lehetséges enyhítését.
+A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. A *végponti állapot beolvasása* API emellett információt nyújt az üzenet sikeres elküldéséről a végpontra, a [legutóbbi ismert hibára](#last-known-errors-for-iot-hub-routing-endpoints), a legutóbbi ismert hibára és az utolsó alkalommal, amikor egy küldési kísérletet hajtottak végre ehhez a végponthoz. Használja a megadott [utolsó ismert hiba](#last-known-errors-for-iot-hub-routing-endpoints)lehetséges enyhítését.
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>Hirtelen leállt az üzenetek beolvasása a beépített végponton
 
@@ -52,9 +52,9 @@ A probléma megoldásához elemezze a következőket.
 Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Annak biztosítása érdekében, hogy az üzenetek továbbra is a beépített végpontra haladjanak, ha új útvonalat adnak hozzá, konfigurálja az útvonalat az *események* végpontjának. 
 
 #### <a name="was-the-fallback-route-disabled"></a>Le lett tiltva a tartalék útvonal?
-A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a [beépített Event Hubs](iot-hub-devguide-messages-read-builtin.md) (üzenetek/események) számára, amely kompatibilis a [Event Hubsokkal](https://docs.microsoft.com/azure/event-hubs/). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
+A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a [beépített Event Hubs](iot-hub-devguide-messages-read-builtin.md) (üzenetek/események) számára, amely kompatibilis a [Event Hubsokkal](../event-hubs/index.yml). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
 
-Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-útválasztás panelen. A [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) Azure Resource Manager is használhat egyéni végpontot a tartalék útvonalhoz.
+Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-útválasztás panelen. A [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) Azure Resource Manager is használhat egyéni végpontot a tartalék útvonalhoz.
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>IoT Hub útválasztási végpontok utolsó ismert hibái
 
@@ -75,6 +75,6 @@ A következő műveletek nevei és hibakódok vannak naplózva a [diagnosztikai 
 
 [!INCLUDE [iot-hub-diagnostics-error-codes](../../includes/iot-hub-diagnostics-error-codes.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure [-szakértőkkel az MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

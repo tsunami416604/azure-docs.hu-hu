@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: b22573fc98d4647c2b05763d9b67c37f6f023f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322720"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150765"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
 
@@ -109,11 +109,11 @@ Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekk
 
 * Ha az eszköz MQTT protokollt használ, ellenőrizze, hogy a 8883-es port nyitva van-e. További információ: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-* Segítség kérése a Microsoft Q&az Azure IoT Hub, a [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)vagy az [Azure-támogatás](https://azure.microsoft.com/support/options/) [kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-iot-hub.html).
+* Segítség kérése a Microsoft Q&az Azure IoT Hub, a [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)vagy az [Azure-támogatás](https://azure.microsoft.com/support/options/) [kérdéseit tartalmazó oldalon](/answers/topics/azure-iot-hub.html).
 
 Ha segítségre van szüksége mindenki számára, az alábbi visszajelzések szakaszban hagyja meg a megjegyzéseit, ha az útmutató nem segít Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az átmeneti problémák megoldásával kapcsolatos további tudnivalókért lásd: az [átmeneti hibák kezelésének](/azure/architecture/best-practices/transient-faults)ismertetése.
 

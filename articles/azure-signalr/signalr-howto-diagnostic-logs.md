@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85132008"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151062"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
 
@@ -20,8 +20,8 @@ Ez az oktatóanyag azt ismerteti, hogy milyen erőforrás-naplók érhetők el a
 ## <a name="prerequisites"></a>Előfeltételek
 Az erőforrás-naplók engedélyezéséhez a naplófájlok tárolásához valahol szüksége lesz. Ez az oktatóanyag az Azure Storage és a Log Analytics használatát ismerteti.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) – erőforrás-naplókat tart fenn a házirendek naplózása, a statikus elemzés vagy a biztonsági mentés számára.
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
+* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – erőforrás-naplókat tart fenn a házirendek naplózása, a statikus elemzés vagy a biztonsági mentés számára.
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Erőforrás-naplók beállítása Azure Signaler szolgáltatáshoz
 
@@ -162,7 +162,7 @@ A és a közötti különbség a `ConnectionAborted` `ConnectionEnded` `Connecti
 
 A megszakítás okai a következő táblázatban láthatók:
 
-Ok | Leírás
+Ok | Description
 ------- | ------- 
 A kapcsolatok száma eléri a korlátot | A kapcsolatok száma eléri a jelenlegi árszint korlátját. A szolgáltatási egység vertikális felskálázása
 Az alkalmazáskiszolgáló lezárta a kapcsolatokat | Az App Server elindítja az abortuszt. A várt abortusznak számít

@@ -28,6 +28,7 @@
     - name: Statikus HTML-webhely
       href: quickstart-html.md
     - name: ARM-sablon
+      displayName: Resource Manager
       href: quickstart-arm-template.md
     - name: Egyéni tároló
       href: quickstart-custom-container.md

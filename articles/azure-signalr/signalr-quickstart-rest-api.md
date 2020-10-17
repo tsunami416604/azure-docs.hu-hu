@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89050505"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150978"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
 
@@ -64,7 +64,7 @@ Azt is megtalálhatja, hogyan hozhat létre hozzáférési jogkivonatot az Azure
 
 ### <a name="build-the-executable-file"></a>A végrehajtható fájl létrehozása
 
-A példához a MacOS osx.10.13-x64 rendszert használjuk. A más platformokon való létrehozáshoz tekintse meg a [referenciákat](https://docs.microsoft.com/dotnet/core/rid-catalog).
+A példához a MacOS osx.10.13-x64 rendszert használjuk. A más platformokon való létrehozáshoz tekintse meg a [referenciákat](/dotnet/core/rid-catalog).
 
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
@@ -202,7 +202,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Válasz állapotkódja | Leírás
+Válasz állapotkódja | Description
 ---|---
 `200` | A felhasználó létezik
 `404` | A felhasználó nem létezik
@@ -252,7 +252,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Válasz állapotkódja | Leírás
+Válasz állapotkódja | Description
 ---|---
 `200` | A szolgáltatás jó
 `5xx` | Szolgáltatáshiba
@@ -263,7 +263,7 @@ Válasz állapotkódja | Leírás
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Signaler szolgáltatásból az ügyfeleknek küldött valós idejű üzenetek szórására. Következő lépésként tájékozódjon arról, hogyan fejlesztheti és helyezheti üzembe a Azure Functionst a Signal Service-kötéssel, amely REST APIra épül.
 

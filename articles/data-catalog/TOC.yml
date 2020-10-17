@@ -68,7 +68,7 @@
     - name: Az Azure Data Catalog billentyűparancsai
       href: data-catalog-keyboard-shortcuts.md
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
+      href: /answers/topics/azure-data-catalog.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: Díjkalkulátor

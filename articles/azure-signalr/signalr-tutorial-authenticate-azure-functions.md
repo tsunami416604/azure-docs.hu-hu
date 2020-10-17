@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327618"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150905"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
 
@@ -52,7 +52,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Az új Azure-erőforrások létrehozásához kattintson az **erőforrás létrehozása** ( **+** ) gombra.
 
-1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** elemre.
+1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
@@ -65,7 +65,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
     | Hely | Válasszon ki egy Önhöz közel eső helyet |
     | Tarifacsomag | Ingyenes |
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló*nélkülire.
 
@@ -317,7 +317,7 @@ Eddig mind a függvényalkalmazást, mind a csevegőalkalmazást helyileg futtat
 
 1. A bejelentkezési folyamat végrehajtásához kövesse a böngészőben megjelenő utasításokat.
 
-### <a name="create-a-storage-account"></a>Storage-fiók létrehozása
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége. A csevegés felhasználói felületének weblapját az Azure Storage statikus webhelyek funkciójának használatával is üzemeltetheti.
 
@@ -356,13 +356,13 @@ Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége.
 
 ### <a name="configure-function-app-for-authentication"></a>A függvényalkalmazás konfigurálása hitelesítés használatához
 
-Eddig a csevegőalkalmazás névtelenül működött. Az Azure-ban az [App Service-hitelesítéssel](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) fogja a felhasználókat hitelesíteni. A hitelesített felhasználó felhasználóazonosítója vagy felhasználóneve átadható a *SignalRConnectionInfo* kötésnek, amellyel a felhasználóhoz kapcsolt, hitelesítéshez használható kapcsolati adatokat lehet létrehozni.
+Eddig a csevegőalkalmazás névtelenül működött. Az Azure-ban az [App Service-hitelesítéssel](../app-service/overview-authentication-authorization.md) fogja a felhasználókat hitelesíteni. A hitelesített felhasználó felhasználóazonosítója vagy felhasználóneve átadható a *SignalRConnectionInfo* kötésnek, amellyel a felhasználóhoz kapcsolt, hitelesítéshez használható kapcsolati adatokat lehet létrehozni.
 
 Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott ügyfélnek, vagy csak az adott felhasználó esetében hitelesített ügyfeleknek küldje-e el.
 
 1. A VS Code-ban nyissa meg az **egyeztetés/function.jsa**következőn:.
 
-1. A*SignalRConnectionInfo* kötés *userId* tulajdonságában adjon meg egy [kötési kifejezést](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings): `{headers.x-ms-client-principal-name}`. Ez az értéket a hitelesített felhasználó felhasználónevére állítja be. Az attribútumnak most így kell kinéznie:
+1. A*SignalRConnectionInfo* kötés *userId* tulajdonságában adjon meg egy [kötési kifejezést](../azure-functions/functions-triggers-bindings.md): `{headers.x-ms-client-principal-name}`. Ez az értéket a hitelesített felhasználó felhasználónevére állítja be. Az attribútumnak most így kell kinéznie:
 
     ```json
     {
@@ -431,11 +431,11 @@ Az App Service-hitelesítés a Microsoft-fiókkal végzett, illetve az Azure Act
 
 1. A konfigurációs folyamat befejezéséhez kövesse a kiválasztott hitelesítési szolgáltató dokumentációját.
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
-    - [Microsoft-fiók](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
-    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
+    - [Azure Active Directory](../app-service/configure-authentication-provider-aad.md)
+    - [Facebook](../app-service/configure-authentication-provider-facebook.md)
+    - [Twitter](../app-service/configure-authentication-provider-twitter.md)
+    - [Microsoft-fiók](../app-service/configure-authentication-provider-microsoft.md)
+    - [Google](../app-service/configure-authentication-provider-google.md)
 
 ### <a name="update-the-web-app"></a>A webalkalmazás frissítése
 
@@ -509,7 +509,7 @@ Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erő
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból elsajátította, hogyan használható az Azure Functions az Azure SignalR Service szolgáltatással. További információkat is találhat arról, hogyan lehet valós idejű, kiszolgáló nélküli alkalmazásokat létrehozni az Azure Functions SignalR Service-kötéseivel.
 
@@ -517,4 +517,3 @@ Ebből az oktatóanyagból elsajátította, hogyan használható az Azure Functi
 > [Valós idejű alkalmazások létrehozása Azure Functions](signalr-concept-azure-functions.md)
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
-

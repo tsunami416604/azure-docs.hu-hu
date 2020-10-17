@@ -4,7 +4,7 @@ description: Az alsóbb rétegbeli vagy a levélben lévő eszközök konfigurá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 979ed3d21986ad43d805446a520a59333a6798ed
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045839"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149328"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
 
@@ -25,11 +25,11 @@ Ez a cikk útmutatást nyújt az alsóbb rétegbeli eszközök és a IoT Edge tr
 
 A sikeres transzparens átjáró-kapcsolatok létrehozásához három általános lépés szükséges. Ez a cikk a harmadik lépést ismerteti:
 
-1. Konfigurálja az átjáró-eszközt kiszolgálóként, hogy az alsóbb rétegbeli eszközök biztonságosan kapcsolódjanak hozzá. Állítsa be az átjárót, hogy üzeneteket kapjon az alsóbb rétegbeli eszközökről, és irányítsa azokat a megfelelő helyre. További információ: [IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)használatra.
-2. Hozzon létre egy eszköz-identitást az alsóbb rétegbeli eszköz számára, hogy a hitelesítés a IoT Hub használatával történjen. Az alsóbb rétegbeli eszköz konfigurálásával üzeneteket küldhet az átjáró eszközön keresztül. További információ: [alsóbb rétegbeli eszköz hitelesítése az Azure IoT Hubban](how-to-authenticate-downstream-device.md).
+1. Konfigurálja az átjáró-eszközt kiszolgálóként, hogy az alsóbb rétegbeli eszközök biztonságosan kapcsolódjanak hozzá. Állítsa be az átjárót, hogy üzeneteket kapjon az alsóbb rétegbeli eszközökről, és irányítsa azokat a megfelelő helyre. Ezekhez a lépésekhez lásd: [IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)használatra.
+2. Hozzon létre egy eszköz-identitást az alsóbb rétegbeli eszköz számára, hogy a hitelesítés a IoT Hub használatával történjen. Az alsóbb rétegbeli eszköz konfigurálásával üzeneteket küldhet az átjáró eszközön keresztül. Ezekről a lépésekről további információt a következő témakörben talál: [alárendelt eszköz hitelesítése az Azure IoT hub](how-to-authenticate-downstream-device.md).
 3. **Az alárendelt eszköz csatlakoztatása az átjáró eszközhöz és az üzenetek küldésének megkezdése.**
 
-Ez a cikk az alsóbb rétegbeli eszközök kapcsolataival kapcsolatos gyakori problémákat ismerteti, és végigvezeti az alsóbb rétegbeli eszközök beállításán:
+Ez a cikk az alsóbb rétegbeli eszközök kapcsolatainak alapvető fogalmait ismerteti, és végigvezeti az alsóbb rétegbeli eszközök beállításán:
 
 * A Transport Layer Security (TLS) és a tanúsítvány alapjainak ismertetése.
 * Annak ismertetése, hogyan működnek a TLS-kódtárak a különböző operációs rendszereken, és hogy az egyes operációs rendszerek hogyan tárgyalják a tanúsítványokat.
@@ -67,7 +67,7 @@ Amikor az ügyfél egy kiszolgálóhoz csatlakozik, a kiszolgáló a tanúsítv�
 
 Amikor egy eszköz csatlakozik az Azure IoT Hubhoz, az eszköz az ügyfél, a IoT Hub Cloud Service pedig a-kiszolgáló. A IoT Hub Cloud Service-t a **Baltimore CyberTrust root**nevű legfelső szintű hitelesítésszolgáltatói tanúsítvány támogatja, amely nyilvánosan elérhető és széles körben használatban van. Mivel a IoT Hub HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány már telepítve van a legtöbb eszközön, számos TLS-implementáció (OpenSSL, Schannel, LibreSSL) automatikusan használja azt a kiszolgálói tanúsítvány érvényesítése során. Azonban előfordulhat, hogy egy IoT Hub sikeresen csatlakozó eszköz problémába ütközik egy IoT Edge-átjáróhoz való csatlakozással.
 
-Amikor egy eszköz csatlakozik egy IoT Edge-átjáróhoz, az alárendelt eszköz az ügyfél, és az átjáró-eszköz a-kiszolgáló. Azure IoT Edge lehetővé teszi az operátorok (vagy felhasználók) számára, hogy az átjáró-tanúsítványok láncok számára is megjelenjenek. Az operátor dönthet úgy, hogy nyilvános HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt (például a Baltimore-t) használ, vagy önaláírt (vagy házon belüli) legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ. A nyilvános HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok gyakran rendelkeznek a velük járó díjakkal, ezért általában éles környezetben használatosak. Az önaláírt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fejlesztési és tesztelési célokra ajánlottak. A bevezetésben felsorolt transzparens átjáró beállítási cikkei önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat használnak.
+Amikor egy eszköz csatlakozik egy IoT Edge-átjáróhoz, az alárendelt eszköz az ügyfél, és az átjáró-eszköz a-kiszolgáló. Azure IoT Edge lehetővé teszi, hogy az átjáró-tanúsítványok láncok kiépítését lássuk. Dönthet úgy, hogy nyilvános HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt (például Baltimore) használ, vagy önaláírt (vagy házon belüli) legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ. A nyilvános HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok gyakran rendelkeznek a velük járó díjakkal, ezért általában éles környezetben használatosak. Az önaláírt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fejlesztési és tesztelési célokra ajánlottak. Ha a bemutató tanúsítványokat használja, ezek önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok.
 
 Ha egy IoT Edge átjáróhoz önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ, azt az átjáróhoz csatlakozni próbáló összes alsóbb rétegbeli eszközre telepíteni kell, vagy meg kell adni.
 
@@ -80,6 +80,8 @@ Ha többet szeretne megtudni a IoT Edge tanúsítványokról és néhány üzemi
 Az átjáró-eszköz tanúsítványainak ellenőrzéséhez az alárendelt eszköznek a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány saját példányát kell használnia. Ha a IoT Edge git-tárházban megadott parancsfájlokat használta a tesztelési tanúsítványok létrehozásához, akkor a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány neve **Azure-IOT-test-only. root. ca. CERT. PEM**. Ha még nem tette meg a többi alsóbb rétegbeli eszköz előkészítésének lépéseit, helyezze át a tanúsítványfájl bármely könyvtárba az alsóbb rétegbeli eszközön. Használhat olyan szolgáltatásokat, mint a [Azure Key Vault](../key-vault/index.yml) , vagy egy olyan függvény, mint például a [biztonságos másolási protokoll](https://www.ssh.com/ssh/scp/) a tanúsítványfájl áthelyezéséhez.
 
 ## <a name="install-certificates-in-the-os"></a>Tanúsítványok telepítése az operációs rendszeren
+
+Ha a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány az alsóbb rétegbeli eszközön van, meg kell győződnie arról, hogy az átjáróhoz csatlakozó alkalmazások el tudják érni a tanúsítványt.
 
 A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány telepítése az operációs rendszer tanúsítványtárolójában általában lehetővé teszi, hogy a legtöbb alkalmazás a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használja. Vannak kivételek, például olyan NodeJS alkalmazások, amelyek nem használják az operációs rendszer tanúsítványtárolóját, hanem a csomópont-futtatókörnyezet belső tanúsítványtárolóját használják. Ha nem tudja telepíteni a tanúsítványt az operációs rendszer szintjén, ugorjon a [tanúsítványok használata az Azure IoT SDK](#use-certificates-with-azure-iot-sdks)-k használatával című részre.
 
@@ -157,7 +159,7 @@ Ez a szakasz egy Azure IoT .NET-eszköz ügyfelének egy IoT Edge átjáróhoz v
 
 Ha egy .NET-alkalmazás használatával szeretne programozott módon telepíteni egy megbízható tanúsítványt a tanúsítványtárolóban, tekintse meg a **InstallCACert ()** függvényt a **EdgeDownstreamDevice/program.cs** fájlban. Ez a művelet idempotens, így többször is futhat ugyanazzal az értékekkel, további hatás nélkül.
 
-### <a name="c"></a>C#
+### <a name="c"></a>C
 
 Ez a szakasz egy Azure IoT C-eszköz ügyfelének egy IoT Edge átjáróhoz való csatlakoztatására szolgáló minta alkalmazást mutat be. A C SDK számos TLS-függvénytárral működhet, beleértve az OpenSSL-t, a WolfSSL-t és a Schannel-t. További információkért lásd az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-t.
 
@@ -192,7 +194,7 @@ Ez a szakasz egy Azure IoT Python-eszköz ügyfelének egy IoT Edge átjáróhoz
 
 ## <a name="test-the-gateway-connection"></a>Az átjáró-kapcsolatok tesztelése
 
-Ezzel a minta paranccsal ellenőrizheti, hogy az alsóbb rétegbeli eszköz tud-e csatlakozni az átjáró eszközéhez:
+Használja ezt a minta parancsot az alsóbb rétegbeli eszközön annak ellenőrzéséhez, hogy tud-e csatlakozni az átjáró eszközhöz:
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts

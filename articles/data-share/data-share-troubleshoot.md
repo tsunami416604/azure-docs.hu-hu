@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/02/2020
-ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761532"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151361"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure Data Share gyakori hibáinak elhárítása 
 
@@ -61,12 +61,20 @@ Ha első alkalommal oszt meg vagy fogad el egy Azure-adattárat, szüksége lesz
 Az SQL-alapú megosztáshoz további engedélyek szükségesek. Az előfeltételek részletes listájáért lásd: [SQL-források megosztása](how-to-share-from-sql.md) .
 
 ## <a name="snapshot-failed"></a>A pillanatkép nem sikerült
-A pillanatkép különböző okok miatt sikertelen lehet. A részletes hibaüzenetet a pillanatkép kezdési időpontjára, majd az egyes adatkészletek állapotára kattintva tekintheti meg. A következő okok miatt nem sikerül a pillanatkép:
+A pillanatkép különböző okok miatt sikertelen lehet. A részletes hibaüzenetet a pillanatkép kezdési időpontjára, majd az egyes adatkészletek állapotára kattintva tekintheti meg. A következők gyakori okai a pillanatkép meghibásodásának:
 
 * Az adatmegosztásnak nincs engedélye a forrás-adattárból való olvasásra vagy a cél adattárba való írásra. A részletes engedélyekkel kapcsolatos követelményekért lásd a [szerepkörök és követelmények](concepts-roles-permissions.md) című témakört. Ha először készít pillanatképet, eltarthat néhány percig, amíg az adatmegosztási erőforrás hozzáférést kap az Azure-adattárhoz. Várjon néhány percet, és próbálkozzon újra.
 * A tűzfal blokkolja az adatmegosztási kapcsolatokat a forrás-vagy a célként megadott adattárhoz.
 * A rendszer törli a megosztott adatkészletet vagy a forrás vagy a cél adattárát.
-* SQL-megosztás esetén a pillanatkép-készítési folyamat vagy a cél adattár nem támogatja az adattípusokat. A részletekért tekintse [meg az SQL-források megosztását](how-to-share-from-sql.md#supported-data-types) ismertető témakört.
+
+SQL-források esetén a pillanatkép-hibák további okai a következők: 
+
+* Az adatmegosztási engedélyt megadó forrás vagy cél SQL-parancsfájl nem fut, vagy Azure Active Directory hitelesítés helyett SQL-hitelesítéssel fut.  
+* A forrás vagy a cél SQL-adattár szüneteltetve van.
+* Az SQL-adattípusokat nem támogatja a pillanatkép-készítési folyamat vagy a célként megadott adattár. A részletekért tekintse [meg az SQL-források megosztását](how-to-share-from-sql.md#supported-data-types) ismertető témakört.
+* A forrás vagy a cél SQL-adattár más folyamatok által zárolva van. Az Azure-beli adatmegosztás nem alkalmazza a forrás és a cél SQL-adattár zárolásait. A forrás és a cél SQL-adattár meglévő zárolásai azonban pillanatkép-hibát okozhatnak.
+* A célként megadott SQL-táblázatot egy Foreign Key korlátozás hivatkozik. Ha már létezik ilyen nevű céltábla, az Azure-adatmegosztás elveszíti a táblát, és új táblát hoz létre. Ha a cél SQL-táblát egy idegenkulcs-megkötés hivatkozik, a tábla nem helyezhető el.
+* A rendszer létrehozza a cél CSV-fájlt, de az Excelben nem olvashatók be az adathalmazok. Ez akkor fordulhat elő, ha a forrás SQL-táblázat nem angol karakterből álló adatkészletet tartalmaz. Az Excelben válassza az "adatlekérdezés" fület, és válassza ki a CSV-fájlt, válassza a fájl forrása 65001: Unicode (UTF-8) és az adatbetöltése lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

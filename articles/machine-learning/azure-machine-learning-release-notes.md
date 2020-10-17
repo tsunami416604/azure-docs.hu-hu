@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996749"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139358"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -27,38 +27,19 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
 ### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK a Python v 1.16.0
 + **Hibajavítások és javítások**
   + **Azure-CLI-ml**
-    + A AKSWebservice és a AKSEndpoints mostantól támogatja a pod szintű CPU-és memória-erőforrásokra vonatkozó korlátozásokat. Ezeket a választható korlátozásokat az 1 értékkel lehet meghatározni. Beállítás `cpu_cores_limit` és `memory_gb_limit` paraméterek a `AKSEndpoint.deploy_configuration()` és a `AKSWebservice.deploy_configuration()` 2. módszerben. Beállítások `--cpu-cores-limit` és `--memory-gb-limit` jelzők a megfelelő CLI-hívásokban 3. Beállítás `cpuLimit` és a `memoryInGBLimit` `containerResourceRequirements` telepítési konfiguráció. JSON/. YML-fájlok további információk a Kubernetes-erőforrásokról és-korlátokról a következő helyen találhatók: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml-contrib-interpret**
-    + a csomagok leírásának javítása okozza a feltöltési hibát, hogy PyPI a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
-  + **azureml – k8s**
-    + A ArcKubernetes-számítás csatolásának támogatása
-  + **azureml – megterhelés – Mir**
-    + A AKSWebservice és a AKSEndpoints mostantól támogatja a pod szintű CPU-és memória-erőforrásokra vonatkozó korlátozásokat. Ezeket a választható korlátozásokat az 1 értékkel lehet meghatározni. Beállítás `cpu_cores_limit` és `memory_gb_limit` paraméterek a `AKSEndpoint.deploy_configuration()` és a `AKSWebservice.deploy_configuration()` 2. módszerben. Beállítások `--cpu-cores-limit` és `--memory-gb-limit` jelzők a megfelelő CLI-hívásokban 3. Beállítás `cpuLimit` és a `memoryInGBLimit` `containerResourceRequirements` telepítési konfiguráció. JSON/. YML-fájlok további információk a Kubernetes-erőforrásokról és-korlátokról a következő helyen találhatók: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml – kiszolgáló**
-    + A AKSWebservice és a AKSEndpoints mostantól támogatja a pod szintű CPU-és memória-erőforrásokra vonatkozó korlátozásokat. Ezeket a választható korlátozásokat az 1 értékkel lehet meghatározni. Beállítás `cpu_cores_limit` és `memory_gb_limit` paraméterek a `AKSEndpoint.deploy_configuration()` és a `AKSWebservice.deploy_configuration()` 2. módszerben. Beállítások `--cpu-cores-limit` és `--memory-gb-limit` jelzők a megfelelő CLI-hívásokban 3. Beállítás `cpuLimit` és a `memoryInGBLimit` `containerResourceRequirements` telepítési konfiguráció. JSON/. YML-fájlok további információk a Kubernetes-erőforrásokról és-korlátokról a következő helyen találhatók: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + A AKSWebservice és a AKSEndpoints mostantól támogatja a pod szintű CPU-és memória-erőforrásokra vonatkozó korlátozásokat. Ezeket a választható korlátozásokat `--cpu-cores-limit` a beállítás és `--memory-gb-limit` a jelzők is használhatják a megfelelő CLI-hívásokban
   + **azureml-core**
     + A azureml-Core közvetlen függőségeinek fő verzióinak rögzítése
-    + A AKSWebservice és a AKSEndpoints mostantól támogatja a pod szintű CPU-és memória-erőforrásokra vonatkozó korlátozásokat. A Kubernetes-erőforrásokkal és-korlátokkal kapcsolatos további információkért tekintse meg a következőt: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + A AKSWebservice és a AKSEndpoints mostantól támogatja a pod szintű CPU-és memória-erőforrásokra vonatkozó korlátozásokat. További információ a [Kubernetes erőforrásairól és korlátairól](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)
     + Frissült run.log_table az egyes sorok naplózásának engedélyezéséhez.
-    + Statikus metódus hozzáadva `Run.get(workspace, run_id)` egy futtatáshoz, amely csak munkaterület által hozzáadott példány metódus használatával `Workspace.get_run(run_id)` lekéri a futtatást a munkaterületen belül
+    + Statikus metódus hozzáadva `Run.get(workspace, run_id)` egy Futtatás csak munkaterületről történő lekéréséhez 
+    + Példány metódusának hozzáadása `Workspace.get_run(run_id)` a munkaterületen belüli Futtatás lekéréséhez
     + A parancs tulajdonságának futtatása a futtatási konfigurációban, amely lehetővé teszi a felhasználók számára a parancs küldését parancsfájl & argumentumok helyett.
-  + **azureml – adatelőkészítés – natív**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` hivatalosan támogassa a Python 3,8-es frissítést.
-  + **azureml – magyarázat – modell**
-    + a csomagok leírásának javítása okozza a feltöltési hibát, hogy PyPI a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
   + **azureml-interpret**
     + rögzített magyarázatú ügyfél is_raw jelző viselkedése a azureml – értelmezés
-    + a csomagok leírásának javítása okozza a feltöltési hibát, hogy PyPI a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
-  + **azureml-pipeline-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` hivatalosan támogassa a Python 3,8-es frissítést.
   + **azureml – SDK**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` hivatalosan támogassa a Python 3,8-es frissítést.
-  + **azureml-tensorboard**
-    + a csomagok leírásának javítása okozza a feltöltési hibát, hogy PyPI a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
-  + **azureml – képzés**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` hivatalosan támogassa a Python 3,8-es frissítést.
+    + `azureml-sdk` hivatalosan támogassa a Python 3,8-es frissítést.
   + **azureml-train-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` hivatalosan támogassa a Python 3,8-es frissítést.
     + TensorFlow 2,3 kurátori környezet hozzáadása
     + A parancs tulajdonságának futtatása a futtatási konfigurációban, amely lehetővé teszi a felhasználók számára a parancs küldését parancsfájl & argumentumok helyett.
   + **azureml-widgets**
@@ -91,7 +72,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
     + azureml – a csomag frissítése, hogy az értelmezhető közösségi 0.15.0 függ
     + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     +  Rögzített folyamattal kapcsolatos probléma, ha `OutputFileDatasetConfig` a rendszer nem válaszol, ha a `register_on_complete` `name` paramétert egy már létező adatkészlet neveként beállított paraméterrel hívja meg.
   + **azureml-pipeline-steps**
     + Elavult databricks-jegyzetfüzetek eltávolítva.
@@ -182,7 +163,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Javítsa ki a Dataset.get_by_name hibát, amely a legújabb adatkészlet verziójának címkéit jeleníti meg, még akkor is, ha egy adott régebbi verziót beolvasott.
   + **azureml-interpret**
     + Hozzáadott valószínűségi kimenetek a pontozási magyarázatok alakításához a azureml-értelmezésben az eredeti magyarázat shap_values_output paramétere alapján.
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + Javított `PipelineOutputAbstractDataset.register` dokumentáció.
   + **azureml-train-automl-client**
     + Frissített AutoML-függőségek: `scikit-learn` (most 0.22.1), `pandas` (most 0.25.1), `numpy` (most 1.18.2).
@@ -371,7 +352,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-train-automl-runtime**
     + A több csomópontos, több GPU-val elosztott featurization korlátozott rendelkezésre állása a BERT-mel.
     + Az ADB-alapú automatizált gépi tanulási folyamatokban a nem kompatibilis csomagok esetében hozzáadott hibakezelés.
-  + **azureml – widgetek**
+  + **azureml-widgets**
     + A azureml-widgetek dokumentum-frissítései.
 
   
@@ -423,7 +404,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A MLFlow-mel támogatja a pénzmosás-modell beállításjegyzékét.
   + **azureml – opendatasets**
     + Python 3,8-támogatás hozzáadva
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + A frissített `PipelineDataset` dokumentációja egyértelművé teszi, hogy ez egy belső osztály.
     + A ParallelRunStep-frissítések több értéket is elfogadnak egy argumentumhoz, például: "--group_column_names", "Col1", "Col2", "Col3"
     + A köztes adathasználatra vonatkozó passthru_automl_config-követelmény el lett távolítva a AutoMLStep a folyamatokban.
@@ -491,7 +472,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Kis csípések a jegyzetfüzetekhez, a hibakeresés támogatásához
   + **azureml – opendatasets**
     + a azureml-opendatasets a azureml-adatelőkészítés 1.4.0 vagy újabb verziójára van szüksége. Figyelmeztetés hozzáadva, ha az alacsonyabb verzió észlelhető
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Ez a módosítás lehetővé teszi, hogy a felhasználó opcionális runconfig adjon meg a moduleVersion a modul meghívásakor. Publish_python_script.
     + A Node-fiók engedélyezése lehet egy ParallelRunStep a azureml. pipeline folyamatban. lépések
   + **azureml-pipeline-steps**
@@ -583,10 +564,10 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-interpret**
     + Dokumentációs frissítések a azureml-értelmező csomaghoz.
     + Rögzített értelmező csomagok és jegyzetfüzetek a legújabb sklearn-frissítéssel való kompatibilitás érdekében
-  + **azureml-opendatasets**
+  + **azureml – opendatasets**
     + Ha nem ad vissza értéket, a none értéket adja vissza.
     + Javítsa to_pandas_dataframe teljesítményét.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Gyors javítás azon ParallelRunStep, ahol a YAML-be való betöltés megszakadt
     + A ParallelRunStep általánosan elérhetővé vált – azureml... a folyamat. a lépések elavult figyelmeztetéssel rendelkeznek, és a azureml. pipeline. Steps verzióra kerülnek. lépések – az új funkciók a következők: 1. Adatkészletek a PipelineParameter 2. Új paraméter: run_max_retry 3. Konfigurálható append_row kimeneti fájl neve
   + **azureml-pipeline-steps**
@@ -616,7 +597,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A training_data cv_split_column_names használatának támogatása
   + **azureml-train-core**
     + Új HyperDrive-specifikus kivételek lettek hozzáadva. a azureml. Train. HyperDrive mostantól részletes kivételeket fog eldobni.
-  + **azureml-widgets**
+  + **azureml – widgetek**
     + A AzureML widgetek nem jelennek meg a JupyterLab
   
 
@@ -680,9 +661,9 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-interpret**
     + A magyarázatok elérési útjának hossza korlátozott a Windows-korlát
     + Hibajavítás az adatutánozó-magyarázattal létrehozott, lineáris helyettesítő modell használatával készült ritka magyarázatokhoz.
-  + **azureml – opendatasets**
+  + **azureml-opendatasets**
     + A MNIST oszlopainak kijavítása karakterláncként van elemezve, amely csak int lehet.
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + A ModuleStep beágyazott modul használatakor regenerate_outputs lehetőség engedélyezése.
   + **azureml-train-automl-client**
     + A AutoML elavult Tensorflow modelljei.
@@ -720,7 +701,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  |
+| Webalapú eszköz  |     Description  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -785,7 +766,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Frissített azureml – a következő értelmezési értelmezést használja: Community 0,9. *
     + Kijavítva a probléma a ritka kiértékelési adattal rendelkező magyarázat letöltésével
     + A magyarázat objektum ritka formátumának támogatása a AutoML-ben
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + A ComputeInstance támogatása a folyamatok számítási céljaként
   + **azureml-train-automl-client**
     + További telemetria bővült a betanítás utáni műveletek köré.
@@ -982,7 +963,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + **azureml-interpret**
     + azureml-stílusú kivételek hozzáadva a azureml-értelmezéshez
     + rögzített DeepScoringExplainer szerializálás kerasz-modellekhez
-  + **azureml – folyamat – mag**
+  + **azureml-pipeline-core**
     + A pipeline batch pontozási jegyzetfüzet mostantól a ParallelRunStep-t használja
   + **azureml-pipeline-steps**
     + Áthelyezte a `AutoMLStep` `azureml-pipeline-steps` csomagot a csomagba. A belül elavult `AutoMLStep` `azureml-train-automl-runtime` .
@@ -1232,7 +1213,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | 
+| Webalapú eszköz | Description | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 
@@ -1735,7 +1716,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
   + **azureml – opendatasets**
     + Az automatikus tesztelési környezet észlelése és naplózása.
     + Osztályok hozzáadásával az Egyesült államokbeli lakosságot a megye és a zip alapján szerezheti be.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + A Label tulajdonság hozzáadva a bemeneti és a kimeneti port definícióhoz.
   + **azureml-telemetry**
     + Helytelen telemetria-konfiguráció lett kijavítva.
@@ -1748,7 +1729,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + A AutoML-adatGuardrail már nyilvános előzetes verzióban érhető el. A felhasználó az Guardrail jelentést (besorolási/regressziós feladatok esetén) fogja látni a képzés után, és az SDK API-n keresztül is elérhetővé teheti.
   + **azureml-train-core**
     + A Torch 1,2-támogatás hozzáadva a PyTorch kalkulátorhoz.
-  + **azureml-widgets**
+  + **azureml – widgetek**
     + Továbbfejlesztett összetéveszthető mátrix-diagramok a besorolási képzéshez.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning adat-előkészítési SDK v 1.1.12
@@ -1945,7 +1926,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Javítva lett a probléma a Ensemble kiválasztási eljárásban, amely szükségtelenül bővült az eredményül kapott együttesnél, még akkor is, ha a pontszámok változatlanok maradnak
     + Kijavítva a list_models engedélyezése és a list_models beállítások letiltása a AutoMLStep-ben című témakört.
     + Kijavítottuk a problémát, amely megakadályozta az előfeldolgozás használatát, ha az AutoML az Azure ML-folyamatok kontextusában használták volna.
-  + **azureml – opendatasets**
+  + **azureml-opendatasets**
     + Áthelyezett azureml-opendatasets-azureml-opendatasets.
     + Az engedélyezett nyitott adatkészlet-osztályok regisztrálva lesznek Azure Machine Learning munkaterületen, és zökkenőmentesen használhatják a pénzmosás-adatkészletek képességeit.
     + A NoaaIsdWeather továbbfejlesztett teljesítményének növelése a nem SPARK verzióban jelentős mértékben.

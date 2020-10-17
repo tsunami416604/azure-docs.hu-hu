@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883084"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151646"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Fejlesztés a mobileszközök számára az Azure IoT SDK-k használatával
 
-A eszközök internetes hálózataban szereplő dolgok számos különböző képességgel rendelkező eszközre vonatkozhatnak: érzékelők, mikroprocesszorok, intelligens eszközök, ipari átjárók és akár mobileszközök is.  A mobileszköz lehet egy IoT-eszköz, amely az eszközről a felhőbe irányuló telemetria és a felhő által felügyelt adatokat küld.  Azt is megteheti, hogy az eszköz olyan háttér-szolgáltatási alkalmazást futtat, amely más IoT-eszközöket kezel.  Az [Azure IoT hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) -k mindkét esetben használhatók a mobileszközökön dolgozó alkalmazások fejlesztéséhez.  
+A eszközök internetes hálózataban szereplő dolgok számos különböző képességgel rendelkező eszközre vonatkozhatnak: érzékelők, mikroprocesszorok, intelligens eszközök, ipari átjárók és akár mobileszközök is.  A mobileszköz lehet egy IoT-eszköz, amely az eszközről a felhőbe irányuló telemetria és a felhő által felügyelt adatokat küld.  Azt is megteheti, hogy az eszköz olyan háttér-szolgáltatási alkalmazást futtat, amely más IoT-eszközöket kezel.  Az [Azure IoT hub SDK](./iot-hub-devguide-sdks.md) -k mindkét esetben használhatók a mobileszközökön dolgozó alkalmazások fejlesztéséhez.  
 
 ## <a name="develop-for-native-ios-platform"></a>Fejlesztés natív iOS platformon
 
@@ -50,7 +50,7 @@ Ezek a dokumentumok bemutatják, hogyan fejleszthető egy eszköz-alkalmazás va
 * [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-android.md)  
 * [Gyors útmutató: eszköz vezérlése](quickstart-control-device-android.md) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [IoT Hub REST API-hivatkozás](https://docs.microsoft.com/rest/api/iothub/)
+* [IoT Hub REST API-hivatkozás](/rest/api/iothub/)
 * [Azure IoT C SDK-forráskód](https://github.com/Azure/azure-iot-sdk-c)

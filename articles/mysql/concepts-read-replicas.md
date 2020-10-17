@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126659"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151183"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -128,6 +128,26 @@ Ha úgy döntött, hogy feladatátvételt kíván replikálni egy replikára,
     
 Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
 
+## <a name="global-transaction-identifier-gtid"></a>Globális tranzakció-azonosító (GTID)
+
+A globális tranzakció-azonosító (GTID) a forráskiszolgáló minden véglegesített tranzakciójának egyedi azonosítója, és alapértelmezés szerint ki van kapcsolva Azure Database for MySQLban. A GTID a 5,7-es és a 8,0-es verziókban támogatott, és csak a 16 TB-nál több tárolót támogató kiszolgálókon. Ha többet szeretne megtudni a GTID és annak használatáról a replikációban, tekintse meg a MySQL [replikációját a GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) dokumentációjában.
+
+A MySQL két típusú tranzakciót támogat: GTID-tranzakciókat (azonosított GTID) és névtelen tranzakciókat (nincs GTID lefoglalva)
+
+A GTID konfigurálásához a következő kiszolgálói paraméterek érhetők el: 
+
+|**Kiszolgáló paraméter**|**Leírás**|**Alapértelmezett érték**|**Értékek**|
+|--|--|--|--|
+|`gtid_mode`|Azt jelzi, hogy a GTIDs a tranzakciók azonosítására szolgálnak-e. Az üzemmódok közötti változások csak egy lépéssel állíthatók be növekvő sorrendben (pl. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Az új és a replikációs tranzakcióknak névtelennek kell lenniük <br> `OFF_PERMISSIVE`: Az új tranzakciók névtelenek. A replikált tranzakciók lehetnek névtelenek vagy GTID tranzakciók. <br> `ON_PERMISSIVE`: Az új tranzakciók GTID-tranzakciók. A replikált tranzakciók lehetnek névtelenek vagy GTID tranzakciók. <br> `ON`: Az új és a replikált tranzakcióknak is GTID tranzakcióknak kell lenniük.|
+|`enforce_gtid_consistency`|Kikényszeríti a GTID egységességét azáltal, hogy csak azokat az utasításokat engedélyezi, amelyek tranzakciós szempontból biztonságos módon naplózhatók. Ezt az értéket a GTID- `ON` replikáció engedélyezése előtt kell beállítani. |`OFF`|`OFF`: Az összes tranzakció megsértheti a GTID konzisztenciáját.  <br> `ON`: Egyetlen tranzakció sem engedélyezett a GTID konzisztenciájának megsértése érdekében. <br> `WARN`: Az összes tranzakció megsértheti a GTID konzisztenciáját, de a rendszer figyelmeztetést generál. | 
+
+> [!NOTE]
+> Ha a GTID engedélyezve van, nem kapcsolhatja vissza. Ha ki kell kapcsolnia a GTID-t, forduljon az ügyfélszolgálathoz. 
+
+A GTID engedélyezéséhez és a konzisztencia-viselkedés konfigurálásához frissítse a `gtid_mode` és a `enforce_gtid_consistency` kiszolgálói paramétereket a [Azure Portal](howto-server-parameters.md), az [Azure CLI](howto-configure-server-parameters-using-cli.md)vagy a [PowerShell](howto-configure-server-parameters-using-powershell.md)használatával.
+
+Ha a GTID engedélyezve van a forráskiszolgálón ( `gtid_mode` = on), az újonnan létrehozott replikák GTID is engedélyezve lesznek, és GTID-replikációt is használhatnak. A replikáció konzisztenciájának megőrzése érdekében nem lehet frissíteni `gtid_mode` a forrás-vagy a replika-kiszolgáló (k) ra.
+
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
 ### <a name="pricing-tiers"></a>Árképzési szintek
@@ -178,9 +198,18 @@ A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-vari
 
 A fenti paraméterek egyikének a forráskiszolgálón való frissítéséhez törölje a replika-kiszolgálókat, frissítse a paraméter értékét a főkiszolgálón, majd hozza létre újra a replikákat.
 
+### <a name="gtid"></a>GTID
+
+A GTID a következő címen támogatott:
+- MySQL verziók 5,7 és 8,0 
+- A 16 TB-nál több tárterületet támogató kiszolgálók. A 16 TB-os tárterületet támogató régiók teljes listájáért tekintse meg a [díjszabási szintet](concepts-pricing-tiers.md#storage) ismertető cikket. 
+
+A GTID alapértelmezés szerint ki van kapcsolva. Ha a GTID engedélyezve van, nem kapcsolhatja vissza. Ha ki kell kapcsolnia a GTID-t, forduljon az ügyfélszolgálathoz. 
+
+Ha a GTID engedélyezve van a forráskiszolgálón, az újonnan létrehozott replikák GTID is engedélyezve lesznek, és GTID-replikációt is használhatnak. A replikáció konzisztenciájának megőrzése érdekében nem lehet frissíteni `gtid_mode` a forrás-vagy a replika-kiszolgáló (k) ra.
+
 ### <a name="other"></a>Egyéb
 
-- A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 - Replika replikájának létrehozása nem támogatott.
 - A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MySQL-replikációs technológia korlátozása. További információt a [MySQL dokumentációjában talál](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
 - Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.

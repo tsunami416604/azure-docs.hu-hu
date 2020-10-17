@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292979"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150813"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -82,18 +82,20 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 |  | Győződjön meg arról, hogy a [titkosítás az átvitelben](./encryption-in-transit.md) funkció engedélyezve van a TLS és az IPSec használatára a fürtön belüli kommunikációhoz. | Ügyfél |
 |  | [Ügyfél által felügyelt kulcsok](../../storage/common/storage-encryption-keys-portal.md) konfigurálása az Azure Storage encryption szolgáltatáshoz | Ügyfél |
 |  | Az Azure-támogatás által az adataihoz való hozzáférés vezérlése az [ügyfél kulcstárolójának](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) használatával | Ügyfél |
-| Alkalmazás-és middleware-biztonság | Integráció a HRE-DS szolgáltatással és a [hitelesítés konfigurálása](apache-domain-joined-configure-using-azure-adds.md) | Ügyfél |
+| Alkalmazás-és middleware-biztonság | Integráció a HRE-DS-sel és az [ESP konfigurálása](apache-domain-joined-configure-using-azure-adds.md) vagy [a hib használata a OAuth-hitelesítéshez](identity-broker.md)| Ügyfél |
 |  | [Apache Ranger-engedélyezési](apache-domain-joined-run-hive.md) házirendek konfigurálása | Ügyfél |
 |  | [Azure monitor naplók](../hdinsight-hadoop-oms-log-analytics-tutorial.md) használata | Ügyfél |
 | Operációs rendszer biztonsága | Fürtök létrehozása a legújabb biztonságos alapképpel | Ügyfél |
 |  | Az [operációs rendszer javításának](../hdinsight-os-patching.md) rendszeres időközönkénti ellenőrzése | Ügyfél |
+|  | [CMK-lemezek titkosításának biztosítása a virtuális gépek számára](../disk-encryption.md) | Ügyfél |
 | Hálózati biztonság | [Virtuális hálózat](../hdinsight-plan-virtual-network-deployment.md) konfigurálása |
-|  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../control-network-traffic.md) konfigurálása | Ügyfél |
+|  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../control-network-traffic.md) vagy [privát hivatkozásának](../hdinsight-private-link.md) konfigurálása | Ügyfél |
 |  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal | Ügyfél |
-| Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
-| Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
+|  | [Az IPSec-titkosítás konfigurálása a fürtcsomópontok közötti átvitelben](encryption-in-transit.md) | Ügyfél |
+| Virtualizált infrastruktúra | N.A. | HDInsight (felhőalapú szolgáltató) |
+| Fizikai infrastruktúra biztonsága | N.A. | HDInsight (felhőalapú szolgáltató) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az ESP-vel rendelkező HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md)

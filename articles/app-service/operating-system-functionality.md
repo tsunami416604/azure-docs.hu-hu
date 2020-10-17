@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080198"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150159"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer funkciójának Azure App Service
-Ez a cikk a [Azure app Serviceon](https://go.microsoft.com/fwlink/?LinkId=529714)futó összes Windows-alkalmazás számára elérhető általános alapkonfiguráció operációs rendszer funkcióit ismerteti. Ez a funkció magában foglalja a fájl-, hálózat-és beállításjegyzék-hozzáférést, valamint a diagnosztikai naplókat és eseményeket. 
+Ez a cikk a [Azure app Serviceon](./overview.md)futó összes Windows-alkalmazás számára elérhető általános alapkonfiguráció operációs rendszer funkcióit ismerteti. Ez a funkció magában foglalja a fájl-, hálózat-és beállításjegyzék-hozzáférést, valamint a diagnosztikai naplókat és eseményeket. 
 
 > [!NOTE] 
 > A App Service [linuxos alkalmazásai](overview.md#app-service-on-linux) saját tárolókban futnak. A gazdagép operációs rendszeréhez való hozzáférés nem engedélyezett, a tárolóhoz rendszergazdai hozzáférése van. Hasonlóképpen, a [Windows-tárolókban futó alkalmazások](quickstart-custom-container.md?pivots=container-windows)esetében rendszergazdai hozzáféréssel rendelkezik a tárolóhoz, de nem fér hozzá a gazdagép operációs rendszeréhez. 
@@ -126,4 +126,3 @@ App Service nem biztosít távoli asztali hozzáférést a virtuálisgép-péld�
 ## <a name="more-information"></a>További információ
 
 [Azure app Service sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – a app Service végrehajtási környezetével kapcsolatos legfrissebb információk. Ezt az oldalt közvetlenül a App Service fejlesztői csapat tartja karban.
-

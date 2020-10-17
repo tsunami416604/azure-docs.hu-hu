@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255196"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150233"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Többrétegű biztonsági architektúra megvalósítása App Service környezetekkel
 Mivel App Service környezetek egy virtuális hálózaton üzembe helyezett elkülönített futtatókörnyezeti környezetet biztosítanak, a fejlesztők létrehozhatnak egy rétegzett biztonsági architektúrát, amely különböző szintű hálózati hozzáférést biztosít az egyes fizikai alkalmazások szintjeihez.
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 Az alhálózatra alkalmazott NSG csak a három felsőbb rétegbeli App Service környezet és az API-háttért tartalmazó App Service Environment hívhatók meg a "apiase" környezetbe.
 
 ## <a name="additional-links-and-information"></a>További hivatkozások és információk
-A [hálózati biztonsági csoportokkal](../../virtual-network/security-overview.md)kapcsolatos információk.
+A [hálózati biztonsági csoportokkal](../../virtual-network/network-security-groups-overview.md)kapcsolatos információk.
 
 A [kimenő IP-címek][NetworkArchitecture] és app Service környezetek ismertetése.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75429151"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151648"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
 
@@ -107,7 +107,7 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Keresse meg az eredeti hubot, és exportálja egy erőforrás-sablonba.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 
 1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt hubot tartalmazza. Az **erőforrásokra** is rákereshet, és megkeresheti a hubot. Válassza ki a hubot.
 
@@ -347,7 +347,7 @@ Most már rendelkezik egy olyan sablonnal, amely egy olyan új hubot hoz létre,
 
 Hozza létre az új hubot az új helyen a sablon használatával. Ha útválasztási erőforrásokkal rendelkezik, amelyeket át szeretne helyezni, az erőforrásokat az új helyen kell beállítani, és a sablonban szereplő hivatkozások a megfelelő értékre frissülnek. Ha nem helyezi át az útválasztási erőforrásokat, a frissített kulcsokkal rendelkező sablonban kell lenniük.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget. 
 
@@ -385,7 +385,7 @@ A portál most ellenőrzi a sablont, és üzembe helyezi a klónozott hubot. Ha 
 
 Most, hogy már telepítette a klónozást, az összes eszközt át kell másolnia az eredeti hubhoz a klónba. 
 
-Ezt többféle módon is elvégezheti. Eredetileg a [Device kiépítési szolgáltatás (DPS)](/azure/iot-dps/about-iot-dps)használatával helyezi üzembe az eszközöket, vagy nem. Ha igen, ez nem nehéz. Ha nem, akkor ez nagyon bonyolult lehet. 
+Ezt többféle módon is elvégezheti. Eredetileg a [Device kiépítési szolgáltatás (DPS)](../iot-dps/about-iot-dps.md)használatával helyezi üzembe az eszközöket, vagy nem. Ha igen, ez nem nehéz. Ha nem, akkor ez nagyon bonyolult lehet. 
 
 Ha nem használta a DPS-t az eszközök kiépítéséhez, ugorja át a következő szakaszt, és kezdje az [Importálás/exportálás használatával az eszközök az új hubhoz való áthelyezéséhez](#using-import-export-to-move-the-devices-to-the-new-hub).
 
@@ -421,7 +421,7 @@ Az alkalmazás a .NET Core-t célozza meg, így azt Windows vagy Linux rendszere
 
    Ennek oka az, hogy a kapcsolódási karakterláncok hosszúak és nem túl nagyok, és nem valószínű, hogy módosítani szeretnék, de előfordulhat, hogy módosítania kell a beállításokat, és többször is futtatnia kell az alkalmazást. Egy környezeti változó értékének módosításához be kell állítani a parancssorablakot és a Visual studiót vagy a VS Code-ot, attól függően, hogy melyik van használatban. 
 
-### <a name="options"></a>Lehetőségek
+### <a name="options"></a>Beállítások
 
 Az alábbi öt lehetőség az alkalmazás futtatásakor adható meg. Ezeket a parancssorba helyezi egy percen belül.
 
@@ -589,7 +589,7 @@ Ne törölje a tisztítást, amíg nem biztos benne, hogy az új hub működik, 
 
 * Ha rendelkezik olyan útválasztási erőforrásokkal, amelyeket az új helyre helyezett át, akkor törölheti a régi útválasztási erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az IoT hub egy új régióban található új hubhoz klónozott, és az eszközön is elkészült. További információ a IoT Hub található Identity registryben végzett tömeges műveletek végrehajtásáról: [IoT hub eszköz-identitások tömeges importálása és exportálása](iot-hub-bulk-identity-mgmt.md).
 
@@ -601,4 +601,4 @@ A központ IoT Hubával és fejlesztésével kapcsolatos további információk�
 
 * [IoT Hub eszközkezelés – áttekintés](iot-hub-device-management-overview.md)
 
-* Ha telepíteni szeretné a minta alkalmazást, tekintse meg a [.net Core-alkalmazás üzembe helyezése](https://docs.microsoft.com/dotnet/core/deploying/index)című témakört.
+* Ha telepíteni szeretné a minta alkalmazást, tekintse meg a [.net Core-alkalmazás üzembe helyezése](/dotnet/core/deploying/index)című témakört.

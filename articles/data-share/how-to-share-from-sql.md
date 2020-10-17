@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/02/2020
-ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761923"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150384"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
@@ -77,7 +77,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Name (Név) | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -277,7 +277,23 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 > 1. A decimális ideiglenes típusra leképezett adattípusok esetén a pillanatkép jelenleg legfeljebb 28 pontosságot támogat. Ha a 28-nál nagyobb pontosságú adatmennyiségre van szüksége, érdemes lehet karakterlánccá konvertálni. 
 > 1.  Ha az Azure SQL Database-ből származó adatok megosztása az Azure szinapszis Analytics szolgáltatásba történik, nem minden adattípus támogatott. A részletekért tekintse meg a [SZINAPSZIS SQL-készlet Table adattípusait](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) . 
 
+## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted vagy dinamikus adatmaszkolás
+Az Azure-beli adatmegosztás jelenleg nem támogatja az Azure SQL-adatbázisokat, Always Encrypted konfigurálva. 
+
+A dinamikus adatmaszkolást tartalmazó forrás SQL-táblák esetében az adat a címzett oldalon maszkoltan fog megjelenni.
+
+## <a name="sql-snapshot-performance"></a>SQL-pillanatkép teljesítménye
+Az SQL-Pillanatképek teljesítményét számos tényező befolyásolja. A saját teljesítményű tesztelést mindig ajánlott elvégezni. Az alábbiakban néhány példát befolyásoló tényezők befolyásolják a teljesítményt.
+
+* A forrás és a cél SQL-adattár hardveres konfigurációja (például virtuális mag, memória, DWU). 
+* Párhuzamos hozzáférés a forrás-és a célként megadott adattárakhoz. Ha ugyanazt az SQL-adattárból több táblát és nézetet oszt meg, vagy több táblát és nézetet is fogad ugyanabba az SQL-adattárba, a rendszer hatással lesz a teljesítményre.   
+* A forrás és a cél adattárolók helye. 
+
+## <a name="troubleshoot-sql-snapshot-failure"></a>SQL-pillanatkép hibáinak hibaelhárítása
+A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy cél SQL-adattár számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshot-failed)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
-Megtanulta, hogyan oszthat meg és fogadhat adatait a Storage-fiókból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).
+Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).
+
+
 

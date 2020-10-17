@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408369"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150994"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása a ASP.NET és a Signaler szolgáltatással
 
-Az Azure Signaler szolgáltatás a [ASP.NET Core 2,1-es jelzőn](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapul, amely **nem** 100%-kompatibilis a ASP.net-jelzővel. Az Azure Signaler szolgáltatás a legújabb ASP.NET Core technológiák alapján újra implementálta a ASP.NET Signaler adatprotokollját. Ha az Azure Signaler szolgáltatást a ASP.NET-jelzőhöz használja, akkor egyes ASP.NET-jelző funkciók már nem támogatottak, például az Azure-szignáló nem küldi újra az üzeneteket, amikor az ügyfél újrakapcsolódik. Emellett a Forever frame Transport és a JSNOP támogatással nem támogatott. A ASP.NET-szignáló alkalmazás a Signaler szolgáltatással való működéséhez szükség van a Code Changes és a függő könyvtárak megfelelő verziójára.
+Az Azure Signaler szolgáltatás a [ASP.NET Core 2,1-es jelzőn](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapul, amely **nem** 100%-kompatibilis a ASP.net-jelzővel. Az Azure Signaler szolgáltatás a legújabb ASP.NET Core technológiák alapján újra implementálta a ASP.NET Signaler adatprotokollját. Ha az Azure Signaler szolgáltatást a ASP.NET-jelzőhöz használja, akkor egyes ASP.NET-jelző funkciók már nem támogatottak, például az Azure-szignáló nem küldi újra az üzeneteket, amikor az ügyfél újrakapcsolódik. Emellett a Forever frame Transport és a JSNOP támogatással nem támogatott. A ASP.NET-szignáló alkalmazás a Signaler szolgáltatással való működéséhez szükség van a Code Changes és a függő könyvtárak megfelelő verziójára.
 
-A ASP.NET-jelző és a ASP.NET Core-jelző közötti szolgáltatások összehasonlításának teljes listájáért tekintse meg a [verzió-különbségek dokumentációját](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1) .
+A ASP.NET-jelző és a ASP.NET Core-jelző közötti szolgáltatások összehasonlításának teljes listájáért tekintse meg a [verzió-különbségek dokumentációját](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1) .
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az Azure Signaler szolgáltatást egy hasonló [Chat Room-alkalmazáshoz](./signalr-quickstart-dotnet-core.md).
 
@@ -123,7 +123,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást, és felhasználta azt egy ASP.NET-webalkalmazással. Következő lépésként megtudhatja, hogyan fejleszthet valós idejű alkalmazásokat az Azure Signaler szolgáltatással a ASP.NET Core használatával.
 

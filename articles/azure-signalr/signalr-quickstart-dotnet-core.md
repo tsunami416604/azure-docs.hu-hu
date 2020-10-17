@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874016"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151016"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
-Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. A szolgáltatás eredetileg [ASP.NET Core 2,1-es jelzőn](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapult, de mostantól támogatja a későbbi verziókat.
+Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. A szolgáltatás eredetileg [ASP.NET Core 2,1-es jelzőn](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapult, de mostantól támogatja a későbbi verziókat.
 
 Ez a cikk segítséget nyújt az első lépések megtételében az Azure SignalR szolgáltatás használatakor. Ebben a rövid útmutatóban egy ASP.NET Core MVC-webalkalmazás használatával hoz létre csevegési alkalmazást. Az alkalmazás kapcsolatot létesít az Azure SignalR szolgáltatási erőforrással a valós idejű tartalomfrissítések engedélyezéséhez. A webalkalmazást helyileg fogja üzemeltetni, és több böngésző-ügyféllel is csatlakozhat. Minden ügyfél képes lesz tartalomfrissítéseket küldeni a többi ügyfélnek. 
 
@@ -42,7 +42,7 @@ Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjáb
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
-Ebben a szakaszban a [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/tools/) használatával hoz létre egy ASP.net Core MVC webalkalmazás-projektet. A a .NET Core parancssori felülete a Visual Studióban való használatának előnye, hogy a Windows, macOS és Linux platformokon is elérhető. 
+Ebben a szakaszban a [.net Core parancssori felület (CLI)](/dotnet/core/tools/) használatával hoz létre egy ASP.net Core MVC webalkalmazás-projektet. A a .NET Core parancssori felülete a Visual Studióban való használatának előnye, hogy a Windows, macOS és Linux platformokon is elérhető. 
 
 1. Hozzon létre egy mappát a projekt számára. Ez a rövid útmutató a *E:\Testing\chattest* mappát használja.
 
@@ -56,7 +56,7 @@ Ebben a szakaszban a [.net Core parancssori felület (CLI)](https://docs.microso
 
 ## <a name="add-secret-manager-to-the-project"></a>A Secret Manager hozzáadása a projekthez
 
-Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/security/app-secrets) adja hozzá a projekthez. A Secret Manager eszköz bizalmas adatokat tárol a projekt fáján kívüli fejlesztési munkához. Ez a módszer segít megelőzni az alkalmazás titkos kódjának véletlen megosztását a forráskódban.
+Ebben a szakaszban a [Secret Manager eszközt](/aspnet/core/security/app-secrets) adja hozzá a projekthez. A Secret Manager eszköz bizalmas adatokat tárol a projekt fáján kívüli fejlesztési munkához. Ez a módszer segít megelőzni az alkalmazás titkos kódjának véletlen megosztását a forráskódban.
 
 1. Nyissa meg a *.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference` elemet a *Microsoft.Extensions.SecretManager.Tools* belefoglalásához. Vegyen fel egy `UserSecretsId` elemet is, ahogy az a következő kódban látható a *csevegő. csproj*, és mentse a fájlt.
 
@@ -107,12 +107,13 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
     Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Nyissa meg a *Startup.cs* fájlt, és frissítse a `ConfigureServices` metódust úgy, hogy a `AddSignalR()` metódus meghívásával használja az Azure SignalR szolgáltatást:
+4. Nyissa meg a *Startup.cs* , és frissítse a `ConfigureServices` metódust az Azure signaler szolgáltatás használatára a `AddSignalR()` és metódusok meghívásával `AddAzureSignalR()` :
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAzureSignalR();
+        services.AddSignalR()
+                .AddAzureSignalR();
     }
     ```
 
@@ -325,7 +326,7 @@ A `HubConnection.start()` kommunikálni kezd a központtal. Ezután `onConnected
 
 ## <a name="add-a-development-runtime-profile"></a>Fejlesztési futtatási profil hozzáadása
 
-Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét fogja hozzáadni. További információ: [több környezet használata ASP.net Coreban](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét fogja hozzáadni. További információ: [több környezet használata ASP.net Coreban](/aspnet/core/fundamentals/environments).
 
 1. Hozzon létre egy *Tulajdonságok* nevű mappát a projektben.
 

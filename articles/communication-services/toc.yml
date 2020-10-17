@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: Értesítések
       href: concepts/notifications.md
+    - name: Naplózás és diagnosztika
+      href: concepts/logging-and-diagnostics.md
+    - name: Mérőszámok
+      href: concepts/metrics.md
 - name: Példák
   items:
     - name: Csoportos hívás kiemelt mintája

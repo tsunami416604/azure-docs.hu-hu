@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022020"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139333"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub Operations monitoring (elavult)
 
@@ -191,7 +191,7 @@ Az üzenet-útválasztási kategória nyomon követi az üzenetek útvonalának 
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Kapcsolódás a figyelési végponthoz
 
-Az IoT hub figyelési végpontja egy Event hub-kompatibilis végpont. A Event Hubs használható bármely mechanizmust használhat a végpontról származó figyelési üzenetek olvasásához. Az alábbi minta egy alapszintű olvasót hoz létre, amely nem alkalmas nagy teljesítményű telepítésre. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) ismertető oktatóanyagot.
+Az IoT hub figyelési végpontja egy Event hub-kompatibilis végpont. A Event Hubs használható bármely mechanizmust használhat a végpontról származó figyelési üzenetek olvasásához. Az alábbi minta egy alapszintű olvasót hoz létre, amely nem alkalmas nagy teljesítményű telepítésre. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) ismertető oktatóanyagot.
 
 A figyelési végponthoz való kapcsolódáshoz szükség van egy kapcsolati sztringre és a végpont nevére. A következő lépések bemutatják, hogyan keresheti meg a szükséges értékeket a portálon:
 
@@ -271,4 +271,4 @@ A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
 
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)

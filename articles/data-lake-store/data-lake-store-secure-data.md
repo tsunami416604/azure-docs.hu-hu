@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574143"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149269"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme
-A Azure Data Lake Storage Gen1ban lévő adatvédelme egy három lépésből álló megközelítés.  Mind a szerepköralapú hozzáférés-vezérlést (RBAC), mind a hozzáférés-vezérlési listákat (ACL-eket) úgy kell beállítani, hogy teljes mértékben engedélyezzék a felhasználók és biztonsági csoportok számára az adathozzáférést.
+A Azure Data Lake Storage Gen1ban lévő adatvédelme egy három lépésből álló megközelítés.  Az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a hozzáférés-vezérlési listákat (ACL-eket) úgy kell beállítani, hogy teljes mértékben engedélyezze a felhasználók és biztonsági csoportok számára az adathozzáférést.
 
 1. Első lépésként hozzon létre biztonsági csoportokat a Azure Active Directoryban (Azure AD). Ezek a biztonsági csoportok az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) megvalósítására szolgálnak a Azure Portal. További információ: [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. Rendelje hozzá az Azure AD biztonsági csoportokat a Data Lake Storage Gen1-fiókhoz. Ez szabályozza a Data Lake Storage Gen1 fiók hozzáférését a portálról vagy API-kból a portálról és a felügyeleti műveletekről.
@@ -68,7 +68,7 @@ Amikor felhasználókat vagy biztonsági csoportokat rendel hozzá Data Lake Sto
     Az adatműveletek esetében egyéni fájlrendszerbeli engedélyek határozzák meg, hogy a felhasználók mit tehetnek. Ezért az olvasó szerepkörrel rendelkező felhasználók csak a fiókhoz társított felügyeleti beállításokat tekinthetik meg, de a hozzájuk rendelt fájlrendszer-engedélyek alapján is olvashatók és írhatók. Data Lake Storage Gen1 fájlrendszerbeli engedélyeket [a biztonsági csoport társítása ACL-ként a Azure Data Lake Storage Gen1 fájlrendszerhez](#filepermissions)című témakörben talál.
 
     > [!IMPORTANT]
-    > Csak a **tulajdonosi** szerepkör engedélyezi automatikusan a fájlrendszer-hozzáférést. A **közreműködő**, az **olvasó**és az összes többi szerepkör hozzáférés-vezérlési listákat igényel a mappákhoz és fájlokhoz való hozzáférés bármely szintjének engedélyezéséhez.  A **tulajdonosi** szerepkör olyan felügyelői fájl-és mappaengedélyek-engedélyeket biztosít, amelyeket nem lehet felülbírálni az ACL-eken keresztül. További információ arról, hogy a RBAC-szabályzatok hogyan képezhetők le az adatokhoz való hozzáférésről: [RBAC](data-lake-store-security-overview.md#rbac-for-account-management).
+    > Csak a **tulajdonosi** szerepkör engedélyezi automatikusan a fájlrendszer-hozzáférést. A **közreműködő**, az **olvasó**és az összes többi szerepkör hozzáférés-vezérlési listákat igényel a mappákhoz és fájlokhoz való hozzáférés bármely szintjének engedélyezéséhez.  A **tulajdonosi** szerepkör olyan felügyelői fájl-és mappaengedélyek-engedélyeket biztosít, amelyeket nem lehet felülbírálni az ACL-eken keresztül. Az Azure RBAC-szabályzatok az adatokhoz való hozzáférésével kapcsolatos további információkért lásd: [Azure RBAC for Account Management](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. Ha olyan csoportot/felhasználót szeretne hozzáadni, amely nem szerepel az **engedélyek hozzáadása** panelen, meghívja őket úgy, hogy beírja az e-mail-címét a **kijelölés** szövegmezőbe, majd kiválasztja őket a listából.
    

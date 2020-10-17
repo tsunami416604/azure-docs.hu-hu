@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83ec4d09389d91c2dd427c9840885c0b829eafb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688908"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150318"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Belső hibák
 
@@ -37,4 +37,4 @@ Az IoT Hubre irányuló kérelme egy, a 500-as és/vagy valamilyen "kiszolgáló
 
 ## <a name="solution"></a>Megoldás
 
-A 500xxx hibák enyhítéséhez adjon meg egy újrapróbálkozást az eszközről. Az [újrapróbálkozások automatikus kezeléséhez](./iot-hub-reliability-features-in-sdks.md#connection-and-retry)győződjön meg arról, hogy az [Azure IoT SDK](./iot-hub-devguide-sdks.md)-k legújabb verzióját használja. Az átmeneti hibák kezelésével és az újrapróbálkozásokkal kapcsolatos ajánlott eljárásokért lásd: [átmeneti hibák kezelésére](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults).  Ha a probléma továbbra is fennáll, tekintse meg a [Resource Health](./iot-hub-monitor-resource-health.md#use-azure-resource-health) és az [Azure állapotát](https://status.azure.com/) , és ellenőrizze, hogy az IoT hub ismert problémával rendelkezik-e. Használhatja a [manuális feladatátvétel funkciót](./tutorial-manual-failover.md)is. Ha nincsenek ismert problémák, és a probléma továbbra is fennáll, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/) a további vizsgálathoz.
+A 500xxx hibák enyhítéséhez adjon meg egy újrapróbálkozást az eszközről. Az [újrapróbálkozások automatikus kezeléséhez](./iot-hub-reliability-features-in-sdks.md#connection-and-retry)győződjön meg arról, hogy az [Azure IoT SDK](./iot-hub-devguide-sdks.md)-k legújabb verzióját használja. Az átmeneti hibák kezelésével és az újrapróbálkozásokkal kapcsolatos ajánlott eljárásokért lásd: [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).  Ha a probléma továbbra is fennáll, tekintse meg a [Resource Health](./iot-hub-monitor-resource-health.md#use-azure-resource-health) és az [Azure állapotát](https://status.azure.com/) , és ellenőrizze, hogy az IoT hub ismert problémával rendelkezik-e. Használhatja a [manuális feladatátvétel funkciót](./tutorial-manual-failover.md)is. Ha nincsenek ismert problémák, és a probléma továbbra is fennáll, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/) a további vizsgálathoz.

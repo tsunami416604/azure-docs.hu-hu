@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736292"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151460"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminológia
 
@@ -39,7 +39,7 @@ A strukturális metaadatok az adategység szerkezetét leíró adatforrásból k
 
 ## <a name="descriptive-metadata"></a>Leíró metaadatok
 
-A leíró metaadatok olyan metaadatok, amelyek egy adategység célját vagy szándékát írják le. Általában a Azure Data Catalog portál használatával adja hozzá a katalógus-felhasználók a leíró metaadatokat, de az adatforrásból is kinyerhető a regisztráció során. A Azure Data Catalog regisztrációs eszköz például Kinyeri a leírásokat a SQL Server Analysis Services és a SQL Server Reporting Services Description tulajdonságában, illetve a SQL Server-adatbázisok [ms_description kiterjesztett tulajdonságában](https://technet.microsoft.com/library/ms190243.aspx) , ha ezek a tulajdonságok értékkel vannak feltöltve.
+A leíró metaadatok olyan metaadatok, amelyek egy adategység célját vagy szándékát írják le. Általában a Azure Data Catalog portál használatával adja hozzá a katalógus-felhasználók a leíró metaadatokat, de az adatforrásból is kinyerhető a regisztráció során. A Azure Data Catalog regisztrációs eszköz például Kinyeri a leírásokat a SQL Server Analysis Services és a SQL Server Reporting Services Description tulajdonságában, illetve a SQL Server-adatbázisok [ms_description kiterjesztett tulajdonságában](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) , ha ezek a tulajdonságok értékkel vannak feltöltve.
 
 ## <a name="request-access"></a>Hozzáférés kérése
 
@@ -84,6 +84,6 @@ A tulajdonos olyan felhasználó, aki további jogosultságokkal rendelkezik a A
 
 A regisztráció az adategység metaadatainak adatforrásból való kinyerésének és a Azure Data Catalog szolgáltatásba való másolásának a feladata. A regisztrált adategységeket ezután megjegyzéseket és felderíteni lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Gyors útmutató: Azure Data Catalog létrehozása](data-catalog-get-started.md) 
+[Gyors útmutató: Azure Data Catalog létrehozása](data-catalog-get-started.md)

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102727"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150413"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Indexelő kapcsolatai egy privát végponton keresztül (Azure Cognitive Search)
 
@@ -33,7 +33,7 @@ A felügyeleti REST API az Azure Cognitive Search [CreateOrUpdate](/rest/api/sea
 
 Az egyes erőforrásokhoz tartozó magánhálózati végpontok csak a Search Management API (vagy újabb) előzetes verziójával hozhatók létre, és az `2020-08-01-Preview` alábbi táblázatban az "Előnézet" címke szerepel. Az "Előnézet" címkével nem rendelkező erőforrások az előnézet vagy az általánosan elérhető API-verzió ( `2020-08-01` vagy újabb) használatával hozhatók létre.
 
-Az alábbi lista azokat az Azure-erőforrásokat sorolja fel, amelyekhez a kimenő magánhálózati végpontok létrehozhatók az Azure Cognitive Searchból. `groupId` az alábbi táblázatban szereplő adatokat pontosan (kis-és nagybetűk megkülönböztetése) kell használni az API-ban egy megosztott privát kapcsolati erőforrás létrehozásához.
+Az alábbi lista azokat az Azure-erőforrásokat sorolja fel, amelyekhez a kimenő magánhálózati végpontok létrehozhatók az Azure Cognitive Searchból. Az `groupId` alábbi táblázatban felsorolt értékeket pontosan úgy kell használni, ahogy az API-ban (kis-és nagybetűk megkülönböztetése) az API-ban megosztott privát kapcsolati erőforrás létrehozásához.
 
 | Azure-erőforrás | Csoportazonosító |
 | --- | --- |
@@ -47,7 +47,7 @@ Az alábbi lista azokat az Azure-erőforrásokat sorolja fel, amelyekhez a kimen
 
 A [támogatott API-k listájának](/rest/api/searchmanagement/privatelinkresources/listsupported)használatával lekérdezhető az Azure-erőforrások listája, amelyekhez a kimenő magánhálózati végpontok kapcsolatai támogatottak.
 
-Ebben a cikkben a [ARMClient](https://github.com/projectkudu/ARMClient) és a [Poster](https://www.postman.com/) együttes használatával mutatjuk be a REST API hívásokat.
+A cikk további részében a [ARMClient](https://github.com/projectkudu/ARMClient) és a [Poster](https://www.postman.com/) együttes használatával mutatjuk be a REST API hívásokat.
 
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy a Search szolgáltatás neve a __contoso-Search__ , amely létezik az előfizetés __00000000-0000-0000-0000-000000000000__-es azonosítójú előfizetésben. __contoso__ A keresési szolgáltatás erőforrás-azonosítója a következő lesz `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
@@ -169,7 +169,7 @@ Szerezze be a megosztott privát kapcsolati erőforrás állapotát a [Get API](
 - Ha az indexelő létrehozása a és a sikeres futtatása nélkül történik, az azt `executionEnvironment` jelenti, hogy az Azure Cognitive Search úgy döntött, hogy végrehajtási környezete a keresési szolgáltatás specifikus "privát" környezete. Ez azonban a különböző tényezők (az indexelő által felhasznált erőforrások, a keresési szolgáltatás terhelése stb.) alapján változhat, és egy későbbi időpontban meghiúsulhat – javasoljuk, hogy állítsa be úgy, hogy a `executionEnvironment` `"Private"` későbbiekben ne legyen sikertelen.
 - A [kvóták és a korlátok](search-limits-quotas-capacity.md) határozzák meg, hogy hány megosztott magánhálózati kapcsolati erőforrás hozható létre, és függ a keresési szolgáltatás SKU-jának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a privát végpontokról:
 

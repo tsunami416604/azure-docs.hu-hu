@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: e2b8eecc629e9da75ea15815ee38844c48abb019
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ffcdf8d2baf7a449234ca14d603583f62949159d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499908"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150625"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és az Azure CLI-vel való figyelése
 
@@ -55,7 +55,7 @@ Ebben a szakaszban két Azure CLI-munkamenetet készít elő. Ha a Cloud Shell h
 
 Az Azure CLI használatához be kell jelentkeznie az Azure-fiókjába. Az Azure CLI rendszerhéj-munkamenet és az IoT hub közötti kommunikáció hitelesítése és titkosítása megtörtént. Ennek eredményeképpen ehhez a rövid útmutatóhoz nincs szükség olyan további hitelesítésre, amelyet valódi eszközzel használ, például egy kapcsolatok sztringjét.
 
-*  Futtassa az az [Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) parancsot az Azure CLI-hez készült Microsoft Azure IoT-BŐVÍTMÉNY a CLI-rendszerhéjhoz való hozzáadásához. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+*  Futtassa az az [Extension Add](/cli/azure/extension?view=azure-cli-latest#az-extension-add) parancsot az Azure CLI-hez készült Microsoft Azure IoT-BŐVÍTMÉNY a CLI-rendszerhéjhoz való hozzáadásához. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ Ebben a szakaszban az Azure CLI használatával hozzon létre egy erőforráscso
 > [!TIP]
 > Igény szerint létrehozhat egy Azure-erőforráscsoportot, egy IoT Hub és más erőforrásokat a [Azure Portal](iot-hub-create-through-portal.md), a [Visual Studio Code](iot-hub-create-use-iot-toolkit.md)vagy más programozott módszer használatával.  
 
-1. Futtassa az az [Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) parancsot egy erőforráscsoport létrehozásához. A következő parancs létrehoz egy *MyResourceGroup* nevű erőforráscsoportot a *eastus* helyen. 
+1. Futtassa az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) parancsot egy erőforráscsoport létrehozásához. A következő parancs létrehoz egy *MyResourceGroup* nevű erőforráscsoportot a *eastus* helyen. 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Futtassa az az [IOT hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) parancsot egy IOT hub létrehozásához. Az IoT hub létrehozása eltarthat néhány percig. 
+1. Futtassa az az [IOT hub Create](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) parancsot egy IOT hub létrehozásához. Az IoT hub létrehozása eltarthat néhány percig. 
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. Az IoT hub nevének globálisan egyedinek kell lennie az Azure-ban. Ezt a helyőrzőt használjuk a rövid útmutató további részében, hogy az IoT hub nevét képviseljék.
 
@@ -94,7 +94,7 @@ Ebben a szakaszban az Azure CLI használatával hozzon létre egy erőforráscso
 Ebben a szakaszban egy szimulált eszközt hoz létre az első CLI-munkamenetben. A szimulált eszköz az eszköz telemetria az IoT hubhoz küldi. A második CLI-munkamenetben figyelheti az eseményeket és a telemetria, és elküldheti a felhőből az eszközre irányuló üzeneteket a szimulált eszközre.
 
 Szimulált eszköz létrehozása és elindítása:
-1. Futtassa az az [IOT hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) parancsot az első CLI-munkamenetben. Ezzel létrehozza a szimulált eszköz identitását. 
+1. Futtassa az az [IOT hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) parancsot az első CLI-munkamenetben. Ezzel létrehozza a szimulált eszköz identitását. 
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. 
 
@@ -104,7 +104,7 @@ Szimulált eszköz létrehozása és elindítása:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. Futtassa az az [IOT Device szimulálás](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate) parancsot az első CLI-munkamenetben.  Ezzel elindítja a szimulált eszközt. Az eszköz telemetria küld az IoT hubhoz, és üzeneteket fogad belőle.  
+1. Futtassa az az [IOT Device szimulálás](/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate) parancsot az első CLI-munkamenetben.  Ezzel elindítja a szimulált eszközt. Az eszköz telemetria küld az IoT hubhoz, és üzeneteket fogad belőle.  
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. 
 
@@ -113,7 +113,7 @@ Szimulált eszköz létrehozása és elindítása:
     ```
 
 Eszköz figyelése:
-1. A második CLI-munkamenetben futtassa az az [IOT hub monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) parancsot. Ez elindítja a szimulált eszköz figyelését. A kimenetben látható, hogy a szimulált eszköz az IoT hubhoz küldi a telemetria.
+1. A második CLI-munkamenetben futtassa az az [IOT hub monitor-Events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) parancsot. Ez elindítja a szimulált eszköz figyelését. A kimenetben látható, hogy a szimulált eszköz az IoT hubhoz küldi a telemetria.
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. 
 
@@ -136,7 +136,7 @@ Ebben a szakaszban a második CLI-munkamenet használatával küld üzenetet a s
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. A második CLI-munkamenetben futtassa az az [IOT Device C2D-Message Send](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send) parancsot. Ez egy felhőből az eszközre irányuló üzenetet küld az IoT hub-ról a szimulált eszközre. Az üzenet tartalmaz egy karakterláncot és két kulcs-érték párokat.  
+1. A második CLI-munkamenetben futtassa az az [IOT Device C2D-Message Send](/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send) parancsot. Ez egy felhőből az eszközre irányuló üzenetet küld az IoT hub-ról a szimulált eszközre. Az üzenet tartalmaz egy karakterláncot és két kulcs-érték párokat.  
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. 
 
@@ -184,18 +184,18 @@ Ha folytatja a következő javasolt cikket, megtarthatja a már létrehozott er�
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
 
 Erőforráscsoport törlése név alapján:
-1. Futtassa az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) parancsot. Ezzel eltávolítja az erőforráscsoportot, a IoT Hub és a létrehozott eszköz regisztrációját.
+1. Futtassa az az [Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) parancsot. Ezzel eltávolítja az erőforráscsoportot, a IoT Hub és a létrehozott eszköz regisztrációját.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Futtassa az az [Group List](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list) parancsot az erőforráscsoport törlésének megerősítéséhez.  
+1. Futtassa az az [Group List](/cli/azure/group?view=azure-cli-latest#az-group-list) parancsot az erőforráscsoport törlésének megerősítéséhez.  
 
     ```azurecli
     az group list
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban az Azure CLI-t használta egy IoT hub létrehozásához, egy szimulált eszköz létrehozásához, a telemetria elküldéséhez, a telemetria figyeléséhez, a felhőből az eszközre irányuló üzenetek küldéséhez és az erőforrások törléséhez. Az eszközön az üzenetküldési metrikák megjelenítéséhez a Azure Portal használta.
 
 Ha Ön egy eszköz fejlesztője, a javasolt következő lépés a telemetria rövid útmutatója, amely az Azure IoT Device SDK-t használja a C-hez. opcionálisan tekintse meg az egyik elérhető Azure IoT Hub telemetria gyors üzembe helyezési cikkét az Ön által választott nyelven vagy SDK-ban.

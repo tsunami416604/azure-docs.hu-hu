@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9884b109db3f3a34ceb323bef9fba1d5bfc23147
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81532582"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150258"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Az alkalmazás üzembe helyezése az Azure App Service FTP/S használatával
 
-Ez a cikk bemutatja, hogyan használható az FTP vagy a FTPS a webalkalmazások, a Mobile apps-háttérrendszer vagy az API-alkalmazások [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)való üzembe helyezéséhez.
+Ez a cikk bemutatja, hogyan használható az FTP vagy a FTPS a webalkalmazások, a Mobile apps-háttérrendszer vagy az API-alkalmazások [Azure app Service](./overview.md)való üzembe helyezéséhez.
 
 Az alkalmazáshoz tartozó FTP/S végpont már aktív. Az FTP/S központi telepítésének engedélyezéséhez nincs szükség konfigurációra.
 
@@ -108,7 +108,7 @@ Győződjön meg arról, hogy a helyes állomásnevet és [hitelesítő adatokat
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?
 Azure App Service támogatja az aktív és passzív módban történő csatlakozást. A passzív üzemmód használata ajánlott, mert az üzembe helyezési gépek általában tűzfal mögött vannak (az operációs rendszeren vagy otthoni vagy üzleti hálózat részeként). Tekintse meg [a megnyerő dokumentációban található példát](https://winscp.net/docs/ui_login_connection). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A speciális üzembe helyezési forgatókönyvek esetében próbálja meg [üzembe helyezni az Azure-ban a git használatával](deploy-local-git.md). Az Azure-hoz készült git-alapú üzembe helyezés lehetővé teszi a verziókövetés, a csomagok visszaállítása, az MSBuild és egyebek használatát.
 

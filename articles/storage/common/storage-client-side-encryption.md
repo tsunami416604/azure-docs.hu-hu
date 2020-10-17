@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091661"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151151"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Titkosítás és Azure Key Vault Client-Side Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -53,7 +53,7 @@ A burkológörbe technikán keresztüli visszafejtés a következő módon műk�
 A Storage ügyféloldali kódtára [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) -t használ a felhasználói adattartalom titkosításához. Pontosabban, AES-sel rendelkező [titkosítási blokkoló (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mód. Az egyes szolgáltatások némileg eltérően működnek, ezért ezeket itt fogjuk megbeszélni.
 
 ### <a name="blobs"></a>Blobok
-Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás akkor támogatott, ha a felhasználók a **UploadFrom** metódusokat vagy a **OpenWrite** metódust használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak.
+Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak.
 
 A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inicializálási vektort (IV) állít elő, amely egy 32 bájtos véletlenszerű tartalom-titkosítási kulccsal (CEK), valamint a Blobok adatainak ezen információk használatával történő titkosítását is elvégezheti. A burkolt CEK és néhány további titkosítási metaadat ezután blob-metaadatokként tárolódik a szolgáltatás titkosított blobja mellett.
 
@@ -62,9 +62,9 @@ A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inic
 > 
 > 
 
-A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **DownloadTo** / **BlobReadStream** kényelmi módszereinek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
+Egy teljes blob letöltésekor a burkolt CEK kicsomagolása és használata a IV-vel együtt (ebben az esetben a blob-metaadatokban tárolódik), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
 
-Egy tetszőleges tartomány (**DownloadRange** metódus) a titkosított blobban való letöltése magában foglalja a felhasználók által megadott tartomány beállítását, hogy egy kis mennyiségű további adat kapjon segítséget, amely a kért tartomány sikeres visszafejtéséhez használható.
+A titkosított blob tetszőleges tartományának letöltése magában foglalja a felhasználók által megadott tartomány beállítását, hogy egy kis mennyiségű további adat kerüljön beszerzésre, amely a kért tartomány sikeres visszafejtéséhez használható.
 
 Az összes blob-típus (Blobok, blobok és hozzáfűző Blobok) titkosítása/visszafejtése a séma használatával lehetséges.
 
@@ -77,9 +77,14 @@ A titkosítás során az ügyféloldali kódtár a 16 bájtos véletlenszerű CE
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-A visszafejtés során a rendszer kinyeri a beburkolt kulcsot az üzenetsor-üzenetből, és csomagolja ki. A rendszer kinyeri a IV-t az üzenetsor-üzenetből is, és a nem burkolt kulccsal együtt használja az üzenetsor-üzenet adatainak visszafejtéséhez. Vegye figyelembe, hogy a titkosítási metaadatok kis méretűek (500 bájtnál), így amíg a várólista-üzenet 64 kb-korlátja megesik, a hatásnak kezelhető kell lennie.
+A visszafejtés során a rendszer kinyeri a beburkolt kulcsot az üzenetsor-üzenetből, és csomagolja ki. A rendszer kinyeri a IV-t az üzenetsor-üzenetből is, és a nem burkolt kulccsal együtt használja az üzenetsor-üzenet adatainak visszafejtéséhez. Vegye figyelembe, hogy a titkosítási metaadatok kis méretűek (500 bájtnál), így amíg a várólista-üzenet 64 kb-korlátja megesik, a hatásnak kezelhető kell lennie. Vegye figyelembe, hogy a titkosított üzenet Base64 kódolású lesz, ahogy az a fenti kódrészletben is látható, amely az elküldött üzenet méretét is kibővíti.
 
 ### <a name="tables"></a>Táblák
+> [!NOTE]
+> A Table service csak a 9. x verzióban támogatott az Azure Storage ügyféloldali kódtáraban.
+> 
+> 
+
 Az ügyféloldali kódtár támogatja a INSERT és a Replace műveletekhez tartozó entitás-tulajdonságok titkosítását.
 
 > [!NOTE]
@@ -111,22 +116,34 @@ A Batch-műveletekben ugyanezt a KEK-et fogja használni a Batch-művelet össze
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Azure Key Vault használatával a felhasználók titkosítják a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. További információ: [Mi az Azure Key Vault?](../../key-vault/general/overview.md).
 
-A Storage ügyféloldali kódtára a Key Vault Core könyvtárat használja, hogy az Azure-ban közös keretrendszert biztosítson a kulcsok kezeléséhez. A felhasználók a Key Vault Extensions Library használatának további előnyeit is igénybe vehetik. A bővítmények könyvtára hasznos funkciókat biztosít az egyszerű és zökkenőmentes szimmetrikus/RSA helyi és Felhőbeli kulcsos szolgáltatók, valamint az Összesítés és a gyorsítótárazás terén.
+A Storage ügyféloldali kódtár az Alapkönyvtár Key Vault felületét használja ahhoz, hogy közös keretrendszert biztosítson az Azure-ban a kulcsok kezeléséhez. A felhasználók igénybe vehetik az általuk nyújtott további előnyökre Key Vault kódtárakat, például az egyszerű és a zökkenőmentes szimmetrikus/RSA helyi és a Felhőbeli kulcstartók hasznos funkcióit, valamint segítséget nyújtanak az összesítéshez és a gyorsítótárazáshoz.
 
 ### <a name="interface-and-dependencies"></a>Felület és függőségek
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Két szükséges csomag Key Vault integrációhoz:
+
+* Az Azure. Core tartalmazza a `IKeyEncryptionKey` és a `IKeyEncryptionKeyResolver` felületet. A Storage ügyféloldali kódtára a .NET-hez már meg van határozva függőségként.
+* Az Azure. Security. kulcstartó. Keys (v4. x) tartalmazza a Key Vault REST-ügyfelet, valamint az ügyféloldali titkosításhoz használt kriptográfiai ügyfeleket.
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 Három Key Vault csomag létezik:
 
 * A Microsoft. Azure. kulcstartó. Core tartalmazza a Rendszerállapotkulcsot és a IKeyResolver. Ez egy kis csomag, amely nem rendelkezik függőségekkel. A Storage ügyféloldali kódtára a .NET-hez definiálja függőségként.
-* A Microsoft. Azure. kulcstartó tartalmazza a Key Vault REST-ügyfelet.
-* Microsoft. Azure. kulcstartó. a bővítmények tartalmazzák a titkosítási algoritmusok, valamint az RSAKey és a SymmetricKey implementációit tartalmazó kiterjesztési kódokat. Ez az alapszintű és a kulcstartó névtertől függ, és funkciókat biztosít az összesített feloldó definiálásához (ha a felhasználók több Key providert kívánnak használni) és a gyorsítótárazási kulcs feloldóját. Bár a Storage ügyféloldali kódtár nem függ közvetlenül ettől a csomagtól, ha a felhasználók Azure Key Vault szeretnék tárolni a kulcsaikat, vagy hogy a Key Vault-bővítményeket használják a helyi és a felhőalapú titkosítási szolgáltatók felhasználásához, erre a csomagra lesz szükségük.
+* A Microsoft. Azure. kulcstartó (v3. x) tartalmazza a Key Vault REST-ügyfelet.
+* A Microsoft. Azure. kulcstartó. Extensions (v3. x) olyan bővítményi kódot tartalmaz, amely titkosítási algoritmusok, valamint egy RSAKey és egy SymmetricKey implementációit tartalmazza. Ez az alapszintű és a kulcstartó névtertől függ, és funkciókat biztosít az összesített feloldó definiálásához (ha a felhasználók több Key providert kívánnak használni) és a gyorsítótárazási kulcs feloldóját. Bár a Storage ügyféloldali kódtár nem függ közvetlenül ettől a csomagtól, ha a felhasználók Azure Key Vault szeretnék tárolni a kulcsaikat, vagy hogy a Key Vault-bővítményeket használják a helyi és a felhőalapú titkosítási szolgáltatók felhasználásához, erre a csomagra lesz szükségük.
+
+A v11 Key Vault használatáról további információt a [v11 titkosítási kód mintáit](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)ismertető témakörben talál.
+
+---
 
 A Key Vault a nagy értékű főkulcsok számára készült, és az egyes Key Vault sávszélesség-szabályozási korlátját szem előtt tartva tervezték. Ha Key Vault használatával ügyféloldali titkosítást végez, az előnyben részesített modell a titokként tárolt szimmetrikus főkulcsok használata Key Vault és helyi gyorsítótárban. A felhasználóknak a következőket kell tenniük:
 
 1. Hozzon létre egy titkos kulcsot, és töltse fel Key Vaultba.
 2. A titkos kulcs alapazonosítójának használatával oldja fel a titkosítás jelenlegi verzióját, és gyorsítótárazza ezeket az információkat helyileg. CachingKeyResolver használata a gyorsítótárazáshoz; a felhasználók nem várhatóan saját gyorsítótárazási logikát implementálnak.
 3. Használja a gyorsítótárazási feloldót bemenetként a titkosítási házirend létrehozásakor.
-
-Key Vault használattal kapcsolatos további információkért tekintse meg a [titkosítási kód mintáit](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 A titkosítási támogatás csak a .NET-hez készült Storage ügyféloldali kódtáraban érhető el. Windows Phone-telefon és Windows-futtatókörnyezet jelenleg nem támogatja a titkosítást.
@@ -138,45 +155,175 @@ A titkosítási támogatás csak a .NET-hez készült Storage ügyféloldali kó
 > * A táblákhoz hasonló korlátozás létezik. Ügyeljen arra, hogy ne frissítse a titkosított tulajdonságokat a titkosítási metaadatok frissítése nélkül.
 > * Ha a titkosított blobon beállítja a metaadatokat, felülírhatja a titkosítással kapcsolatos metaadatokat a visszafejtéshez, mivel a metaadatok beállítása nem adalékanyag. Ez a pillanatképek esetében is igaz. Kerülje a metaadatok megadását egy titkosított blob pillanatképének létrehozása közben. Ha be kell állítani a metaadatokat, először hívja meg a **FetchAttributes** metódust, hogy lekérje a jelenlegi titkosítási metaadatokat, és elkerülje a párhuzamos írásokat a metaadatok beállításakor.
 > * Engedélyezze a **RequireEncryption** tulajdonságot az alapértelmezett kérési beállításokban azon felhasználók számára, akik csak titkosított adattal működnek. További információért lásd alább.
-> 
-> 
+>
+>
 
 ## <a name="client-api--interface"></a>Ügyfél API/Interface
-Egy EncryptionPolicy objektum létrehozásakor a felhasználók csak a kulcsot (Rendszerállapotkulcsot-t), csak a feloldót (IKeyResolver) vagy mindkettőt tudják biztosítani. A Rendszerállapotkulcsot az alapszintű kulcs típusa, amelyet a rendszer a kulcs azonosítójának használatával azonosít, és amely a burkoló/kicsomagolási logikát biztosítja. A IKeyResolver egy kulcs feloldására szolgál a visszafejtési folyamat során. Definiál egy ResolveKey metódust, amely egy Rendszerállapotkulcsot ad vissza. Ez lehetővé teszi a felhasználók számára, hogy több helyen felügyelt kulcsok közül választhatnak.
+A felhasználók csak egy kulcsot, csak egy feloldót vagy mindkettőt biztosíthatnak. A kulcsok azonosítása a kulcs azonosítójának használatával történik, és a becsomagolás/kicsomagolás logikáját biztosítja. A rendszer feloldókat használ a kulcsok feloldására a visszafejtési folyamat során. Definiál egy feloldási metódust, amely egy kulcs azonosítóját adja vissza. Ez lehetővé teszi a felhasználók számára, hogy több helyen felügyelt kulcsok közül választhatnak.
 
 * A titkosításhoz mindig a kulcsot használja a rendszer, és a kulcs hiánya hibát eredményez.
 * Visszafejtéshez:
+  * Ha a kulcs meg van adva, és az azonosítója megegyezik a szükséges kulcs-azonosítóval, a rendszer ezt a kulcsot használja a visszafejtéshez. Ellenkező esetben a rendszer megkísérli a feloldót. Ha nincs feloldó ehhez a kísérlethez, a rendszer hibát jelez.
   * Ha meg van adva a kulcs, a kulcs feloldója meghívásra kerül. Ha a feloldó meg van adva, de nem rendelkezik leképezéssel a kulcs-azonosítóhoz, a rendszer hibát jelez.
-  * Ha a feloldó nincs megadva, de a kulcs meg van adva, akkor a rendszer akkor használja a kulcsot, ha annak azonosítója megegyezik a szükséges kulcs-azonosítóval. Ha az azonosító nem egyezik, a rendszer hibát jelez.
 
-A cikkben szereplő példák azt mutatják be, hogyan állíthatja be a titkosítási házirendet, és hogyan dolgozhat a titkosított adatbázisokkal, de nem mutatja be a Azure Key Vault használatát. A GitHubon található [titkosítási minták](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) részletesebben szemléltetik a Blobok, a várólisták és a táblák, valamint a Key Vault integrációját.
-
-### <a name="requireencryption-mode"></a>RequireEncryption mód
+### <a name="requireencryption-mode-v11-only"></a>RequireEncryption mód (csak v11)
 A felhasználók opcionálisan engedélyezhetik a művelet módját, ahol a feltöltéseket és a letöltéseket titkosítani kell. Ebben a módban az adatok titkosítási házirend nélkül tölthetők fel, vagy a szolgáltatásban nem titkosított adatok letöltése sikertelen lesz az ügyfélen. A kérési beállítások objektum **RequireEncryption** tulajdonsága ezt a viselkedést vezérli. Ha az alkalmazás az Azure Storage-ban tárolt összes objektumot titkosítani fogja, akkor a **RequireEncryption** tulajdonságot a szolgáltatás ügyféloldali objektumához tartozó alapértelmezett kérési beállításoknál állíthatja be. Állítsa be például a **CloudBlobClient. DefaultRequestOptions. RequireEncryption** értéket az **igaz** értékre, hogy titkosítást igényel az adott ügyfélalkalmazás által végrehajtott összes blob-művelethez.
 
 
 ### <a name="blob-service-encryption"></a>Titkosítás Blob service
+
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+Hozzon létre egy **ClientSideEncryptionOptions** objektumot, és állítsa be az ügyfél-létrehozáshoz a **SpecializedBlobClientOptions**. API-alapon nem állíthatók be titkosítási beállítások. Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+BlobClientOptions options = new SpecializedBlobClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your blob client with client-side encryption enabled.
+// Client-side encryption options are passed from service to container clients, and container to blob clients.
+// Attempting to construct a BlockBlobClient, PageBlobClient, or AppendBlobClient from a BlobContainerClient
+// with client-side encryption options present will throw, as this functionality is only supported with BlobClient.
+BlobClient blob = new BlobServiceClient(connectionString, options).GetBlobContainerClient("myContainer").GetBlobClient("myBlob");
+
+// Upload the encrypted contents to the blob.
+blob.Upload(stream);
+
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadTo(outputStream);
+```
+
+A titkosítási beállítások alkalmazásához nem szükséges **BlobServiceClient** . Átadhatók olyan **BlobContainerClient** / **BlobClient** konstruktoroknak is, amelyek elfogadják a **BlobClientOptions** objektumokat.
+
+Ha egy kívánt **BlobClient** objektum már létezik, de ügyféloldali titkosítási beállítások nélkül van, egy bővítményi metódus létezik az objektum egy példányának létrehozásához a megadott **ClientSideEncryptionOptions**. Ez a kiterjesztési módszer elkerüli az új **BlobClient** -objektum elejétől való felépítési terhelést.
+
+```csharp
+using Azure.Storage.Blobs.Specialized;
+
+// Your existing BlobClient instance and encryption options
+BlobClient plaintextBlob;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextBlob that uses client-side encryption
+BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
 
 ```csharp
 // Create the IKey used for encryption.
- RsaKey key = new RsaKey("private:key1" /* key identifier */);
+RsaKey key = new RsaKey("private:key1" /* key identifier */);
 
- // Create the encryption policy to be used for upload and download.
- BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
+// Create the encryption policy to be used for upload and download.
+BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
 
- // Set the encryption policy on the request options.
- BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
+// Set the encryption policy on the request options.
+BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
 
- // Upload the encrypted contents to the blob.
- blob.UploadFromStream(stream, size, null, options, null);
+// Upload the encrypted contents to the blob.
+blob.UploadFromStream(stream, size, null, options, null);
 
- // Download and decrypt the encrypted contents from the blob.
- MemoryStream outputStream = new MemoryStream();
- blob.DownloadToStream(outputStream, null, options, null);
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadToStream(outputStream, null, options, null);
 ```
 
+---
+
 ### <a name="queue-service-encryption"></a>Titkosítás Queue szolgáltatás
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+Hozzon létre egy **ClientSideEncryptionOptions** objektumot, és állítsa be az ügyfél-létrehozáshoz a **SpecializedQueueClientOptions**. API-alapon nem állíthatók be titkosítási beállítások. Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+QueueClientOptions options = new SpecializedQueueClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your queue client with client-side encryption enabled.
+// Client-side encryption options are passed from service to queue clients.
+QueueClient queue = new QueueServiceClient(connectionString, options).GetQueueClient("myQueue");
+
+// Send an encrypted queue message.
+queue.SendMessage("Hello, World!");
+
+// Download queue messages, decrypting ones that are detected to be encrypted
+QueueMessage[] queue.ReceiveMessages(); 
+```
+
+A titkosítási beállítások alkalmazásához nem szükséges **QueueServiceClient** . A **QueueClientOptions** objektumokat fogadó **QueueClient** -konstruktorokban is átadhatók.
+
+Ha egy kívánt **QueueClient** objektum már létezik, de ügyféloldali titkosítási beállítások nélkül van, egy bővítményi metódus létezik az objektum egy példányának létrehozásához a megadott **ClientSideEncryptionOptions**. Ez a kiterjesztési módszer elkerüli az új **QueueClient** -objektum elejétől való felépítési terhelést.
+
+```csharp
+using Azure.Storage.Queues.Specialized;
+
+// Your existing QueueClient instance and encryption options
+QueueClient plaintextQueue;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextQueue that uses client-side encryption
+QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+Egyes felhasználók olyan várólistákkal rendelkezhetnek, amelyekben nem sikerült az összes fogadott üzenet visszafejtése, és a kulcsnak vagy a feloldónak el kell dobnia. Ebben az esetben a fenti példa utolsó sora jelenik meg, és a fogadott üzenetek egyike sem lesz elérhető. Ezekben a forgatókönyvekben az alosztály **QueueClientSideEncryptionOptions** használhatók az ügyfelek titkosítási lehetőségeinek biztosításához. Olyan Event **DecryptionFailed** tesz elérhetővé, amely akkor aktiválódik, amikor egy üzenetsor-üzenetet nem lehet visszafejteni, amíg legalább egy hívást felvettek az eseményre. Az önálló sikertelen üzenetek így kezelhetők, és a rendszer kiszűri a **ReceiveMessages**által visszaadott utolsó **QueueMessage []** .
+
+```csharp
+// Create your encryption options using the sub-class.
+QueueClientSideEncryptionOptions encryptionOptions = new QueueClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Add a handler to the DecryptionFailed event.
+encryptionOptions.DecryptionFailed += (source, args) => {
+   QueueMessage failedMessage = (QueueMessage)source;
+   Exception exceptionThrown = args.Exception;
+   // do something
+};
+
+// Use these options with your client objects.
+QueueClient queue = new QueueClient(connectionString, queueName, new SpecializedQueueClientOptions()
+{
+   ClientSideEncryption = encryptionOptions
+});
+
+// Retrieve 5 messages from the queue.
+// Assume 5 messages come back and one throws during decryption.
+QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
+Debug.Assert(messages.Length == 4)
+```
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
 
 ```csharp
@@ -194,7 +341,9 @@ Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kér�
  CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 ```
 
-### <a name="table-service-encryption"></a>Titkosítás Table service
+---
+
+### <a name="table-service-encryption-v11-only"></a>Table service titkosítás (csak v11)
 A titkosítási szabályzat létrehozása és a kérési beállítások megadása mellett meg kell adnia egy **EncryptionResolver** a **TableRequestOptions**-ben, vagy az entitáson a [EncryptProperty] attribútumot kell beállítania.
 
 #### <a name="using-the-resolver"></a>A feloldó használata

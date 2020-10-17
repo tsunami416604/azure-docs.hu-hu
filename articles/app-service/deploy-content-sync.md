@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86221136"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150303"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Tartalom szinkronizálása egy Felhőbeli mappából a Azure App Serviceba
-Ez a cikk bemutatja, hogyan szinkronizálhat tartalmat [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) a dropboxból és a OneDrive. 
+Ez a cikk bemutatja, hogyan szinkronizálhat tartalmat [Azure app Service](./overview.md) a dropboxból és a OneDrive. 
 
 Az igény szerinti tartalom-szinkronizálási telepítést a App Service [kudu üzembe helyezési motorja](https://github.com/projectkudu/kudu/wiki)látja el. Az alkalmazás kódjával és tartalmával egy kijelölt Felhőbeli mappában is dolgozhat, majd a gombra kattintva szinkronizálhatja App Service. A Content Sync a kudu Build-kiszolgálót használja. 
 
@@ -60,7 +60,7 @@ A bal oldali menüben kattintson a **központi telepítési központ**  >  **kap
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Üzembe helyezés helyi git-tárházból](deploy-local-git.md)

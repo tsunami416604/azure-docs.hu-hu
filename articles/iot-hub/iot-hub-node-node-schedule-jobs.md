@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: 2c5ce219e40117a2b656b7acab6dd68a1d20dffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251932"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151430"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (Node.js)
 
@@ -57,7 +57,7 @@ Az oktatóanyag végén két Node.js alkalmazást használhat:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -300,4 +300,4 @@ Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen met
 
 Ha továbbra is szeretné megkezdeni a IoT Hub és az eszközkezelés mintáit, például a távoli belső vezérlőprogram frissítését, tekintse meg az [oktatóanyag: a belső vezérlőprogram frissítését](tutorial-firmware-update.md)ismertető témakört.
 
-A IoT Hub első lépéseinek folytatásához tekintse meg a [Azure IoT Edge első lépéseivel](../iot-edge/tutorial-simulate-device-linux.md)foglalkozó témakört.
+A IoT Hub első lépéseinek folytatásához tekintse meg a [Azure IoT Edge első lépéseivel](../iot-edge/quickstart-linux.md)foglalkozó témakört.
