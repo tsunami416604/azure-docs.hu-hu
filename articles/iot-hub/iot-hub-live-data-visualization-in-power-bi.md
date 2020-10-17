@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84634519"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146769"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT Hub használatával Power BI
 
@@ -42,7 +42,7 @@ Megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amely
   * Az előfizetéshez tartozó Azure IoT hub.
   * Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub-nak.
 
-* Egy Power BI-fiók. ([Power bi ingyenes kipróbálása](https://powerbi.microsoft.com/))
+* Power BI-fiók. ([Power bi ingyenes kipróbálása](https://powerbi.microsoft.com/))
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
@@ -140,9 +140,9 @@ A stream Analyticsi feladatokban válassza az **Áttekintés**lehetőséget, maj
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Power BI jelentés létrehozása és közzététele az adatgyűjtés megjelenítéséhez
 
-A következő lépések bemutatják, hogyan hozhat létre és tehet közzé jelentést a Power BI szolgáltatás használatával. Ezeket a lépéseket néhány módosítással követheti, ha az "új Look" kifejezést szeretné használni Power BIban. A különbségek megismeréséhez és az "új nézet" megkereséséhez tekintse meg az [Power bi szolgáltatás új megjelenését](https://docs.microsoft.com/power-bi/consumer/service-new-look).
+A következő lépések bemutatják, hogyan hozhat létre és tehet közzé jelentést a Power BI szolgáltatás használatával. Ezeket a lépéseket néhány módosítással követheti, ha az "új Look" kifejezést szeretné használni Power BIban. A különbségek megismeréséhez és az "új nézet" megkereséséhez tekintse meg az [Power bi szolgáltatás új megjelenését](/power-bi/consumer/service-new-look).
 
-1. Győződjön meg arról, hogy az eszközön fut a minta alkalmazás. Ha nem, tekintse át az oktatóanyagokat az [eszköz beállítása](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)alatt.
+1. Győződjön meg arról, hogy az eszközön fut a minta alkalmazás. Ha nem, tekintse át az oktatóanyagokat az [eszköz beállítása](./iot-hub-raspberry-pi-kit-node-get-started.md)alatt.
 
 2. Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/en-us/)-fiókjába.
 
@@ -195,7 +195,7 @@ Megadhatja a jelentés hivatkozását, amelyet bárki megoszthat a jelentésekhe
 
 A Microsoft a mobileszköz-irányítópultok és-jelentések megtekintését és Power BI interakcióját is biztosítja a [Power bi Mobile apps](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen felhasználta Power BI az Azure IoT hub valós idejű érzékelői adatainak megjelenítéséhez.
 

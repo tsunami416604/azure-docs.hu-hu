@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b762b77788c3df05fbd0db349457abadcbe39b51
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766948"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147734"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -59,7 +59,7 @@ IoT Hub támogatja az Azure Storage-ba való adatírást az [Apache Avro](https:
 
 A kódolási formátum csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. meglévő végpont esetében nem módosítható. Meglévő végpont kódolási formátumának váltásához törölnie kell, majd újra létre kell hoznia az egyéni végpontot a kívánt formátumban. Az egyik hasznos stratégia lehet egy új egyéni végpont létrehozása a kívánt kódolási formátummal, és egy párhuzamos útvonal hozzáadása a végponthoz. Így ellenőrizheti az adatait, mielőtt törölné a meglévő végpontot.
 
-A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)használatával. Az alábbi képen látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
+A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy a [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)használatával. Az alábbi képen látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
 
 ![BLOB Storage-végpont kódolása](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -71,7 +71,7 @@ IoT Hub a kötegek üzeneteit, és az adatot a tárolóba írja, amikor a köteg
 
 Bármilyen fájl elnevezési konvenciót használhat, azonban az összes felsorolt tokent kell használnia. A IoT Hub egy üres blobba ír, ha nincs írási adatként.
 
-Javasoljuk, hogy a Blobok vagy fájlok felsorolását, majd azok ismételt megismétlését, hogy minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. Tekintse át a következő mintát útmutatásként.
+Javasoljuk, hogy a Blobok vagy fájlok felsorolását, majd azok ismételt megismétlését, hogy minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A [Blobok listázása API](/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. Tekintse át a következő mintát útmutatásként.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
@@ -115,12 +115,12 @@ Az alábbi oktatóanyagok segítségével megtudhatja, hogyan olvashatja el a v�
 
 * Olvasás [Service Bus várólistákból](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 
-* Olvasás [Service Bus témakörökből](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
+* Olvasás [Service Bus témakörökből](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 
 ## <a name="fallback-route"></a>Tartalék útvonal
 
-A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a beépített Event Hubs (**üzenetek/események**) számára, amely kompatibilis a [Event Hubsokkal](/azure/event-hubs/). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
+A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a beépített Event Hubs (**üzenetek/események**) számára, amely kompatibilis a [Event Hubsokkal](../event-hubs/index.yml). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
 
 Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-útválasztás panelen. A [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) Azure Resource Manager is használhat egyéni végpontot a tartalék útvonalhoz.
 
@@ -148,7 +148,7 @@ A legtöbb esetben a késés átlagos növekedése kevesebb, mint 500 MS. A kés
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 
-IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. [IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára. Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub által észlelt módon. A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. 
+IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. [IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára. Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub által észlelt módon. A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. 
 
 További részletekért és az Útválasztás hibaelhárításához használja a [hibaelhárítási útmutatót](troubleshoot-message-routing.md) .
 

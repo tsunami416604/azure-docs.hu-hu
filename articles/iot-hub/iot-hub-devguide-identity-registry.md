@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 709ebacc66382d75b79cd41edf88cad962dfd7c2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029834"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147717"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
 
@@ -84,7 +84,7 @@ Használjon aszinkron műveleteket a [IoT hub erőforrás-szolgáltató végpont
 
 További információ az importálási és exportálási API-król: [IoT hub erőforrás-szolgáltató REST API](/rest/api/iothub/iothubresource)-k. Ha többet szeretne megtudni az importálási és exportálási feladatok futtatásáról, tekintse meg [a IoT hub-eszköz identitások tömeges kezelése](iot-hub-bulk-identity-mgmt.md)című témakört.
 
-Az eszközök identitásai a Service API-n keresztül is exportálhatók és importálhatók IoT Hub a [REST API](/rest/api/iothub/service/jobs/createimportexportjob) vagy a IoT hub [Service SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)-k egyikével.
+Az eszközök identitásai a Service API-n keresztül is exportálhatók és importálhatók IoT Hub a [REST API](/rest/api/iothub/service/jobs/createimportexportjob) vagy a IoT hub [Service SDK](./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)-k egyikével.
 
 ## <a name="device-provisioning"></a>Eszköz kiépítés
 
@@ -112,7 +112,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 
 Értesítési üzenet az eszközhöz:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | --- | --- |
 |$content típusa | application/json |
 |$iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -148,7 +148,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ike
 ```
 Értesítési üzenet a modulhoz:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | --- | --- |
 $content típusa | application/json |
 $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -188,7 +188,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 
 Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Lehetőségek | Leírás |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
@@ -212,7 +212,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 
 A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Lehetőségek | Leírás |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

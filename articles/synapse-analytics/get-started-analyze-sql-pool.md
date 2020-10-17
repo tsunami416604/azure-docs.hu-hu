@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a42157223c0c9a0b326c400388ea2b564e42f7f2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088941"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147558"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -24,6 +24,7 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>A New York-i taxi-szolgáltatás betöltése a SQLDB1
 
 1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, majd hozzon létre új SQL-parancsfájlt.
+1. Válassza ki a "SQLDB1" készletet (az oktatóanyag [1. lépésében](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) létrehozott készletet) a parancsfájl "kapcsolódás" szakaszában.
 1. Írja be a következő kódot:
     ```
     CREATE TABLE [dbo].[Trip]

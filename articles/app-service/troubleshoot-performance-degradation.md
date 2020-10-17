@@ -7,15 +7,15 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958252"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147515"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service
-Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714).
+Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában [Azure app Service](./overview.md).
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre.
 

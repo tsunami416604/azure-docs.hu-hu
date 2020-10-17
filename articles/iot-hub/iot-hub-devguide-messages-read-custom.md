@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61244344"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147652"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetekhez tartozó üzenetek és egyéni végpontok használata
 
@@ -46,13 +46,13 @@ További információ az egyéni végpontokról való olvasásról:
 
 * Az [Azure Storage](../storage/blobs/storage-blobs-introduction.md)-tárolók beolvasása.
 
-* Olvasás [Event Hubsról](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+* Olvasás [Event Hubsról](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 * [Service Bus várólistákból](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)való olvasás.
 
 * [Service Bus témakörök](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)olvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * IoT Hub végpontokkal kapcsolatos további információkért lásd: [IoT hub-végpontok](iot-hub-devguide-endpoints.md).
 

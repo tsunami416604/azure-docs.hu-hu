@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4a02fc8a04da658b3b6cbbb41e57114d6c4a0527
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d01808eac854e0a694608fc963bd97b035d29ac8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231486"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146185"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics Azure biztonsági alapterve
 
@@ -412,7 +412,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 * [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-* [Role-Based kezelése Access Control](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure szerepköralapú hozzáférés-vezérlés kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
 
 * [Tűzfalszabályok](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
 
@@ -460,7 +460,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata annak szabályozására, hogy a felhasználók hogyan használják a szolgáltatást.
 
-* [Azure-RBAC kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure-RBAC kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 

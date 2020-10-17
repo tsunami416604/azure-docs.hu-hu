@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106824"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146303"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság a Azure Data Lake Storage Gen1
 
@@ -42,7 +42,7 @@ Miután Azure Active Directory hitelesíti a felhasználót, hogy a felhasznál�
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) a fiókok felügyeletéhez
 * Az áruházban tárolt adatok elérésére szolgáló POSIX ACL
 
-### <a name="rbac-for-account-management"></a>RBAC
+### <a name="azure-rbac-for-account-management"></a>Azure-RBAC a fiókok felügyeletéhez
 
 Alapértelmezés szerint négy alapszintű szerepkör van definiálva Data Lake Storage Gen1hoz. A szerepkörök a Azure Portal, a PowerShell-parancsmagok és a REST API-k használatával engedélyezhetik a különböző műveleteket egy Data Lake Storage Gen1 fiókon. A tulajdonos és a közreműködő szerepkör számos felügyeleti funkciót képes végrehajtani a fiókon. Az olvasó szerepkört hozzárendelheti azokhoz a felhasználókhoz, akik csak a fiókkezelés-adatbázisokat tekintik meg.
 
@@ -52,7 +52,7 @@ Vegye figyelembe, hogy bár a szerepkörök hozzá vannak rendelve a fiókok fel
 
 | Szerepkörök | Felügyeleti jogosultságok | Adathozzáférési jogosultságok | Magyarázat |
 | --- | --- | --- | --- |
-| Nincs hozzárendelt szerepkör |Nincs |Az ACL szabályozza |A felhasználó nem használhatja a Azure Portal vagy Azure PowerShell parancsmagot a Data Lake Storage Gen1 tallózásához. A felhasználó csak parancssori eszközöket tud használni. |
+| Nincs hozzárendelt szerepkör |Nincsenek |Az ACL szabályozza |A felhasználó nem használhatja a Azure Portal vagy Azure PowerShell parancsmagot a Data Lake Storage Gen1 tallózásához. A felhasználó csak parancssori eszközöket tud használni. |
 | Tulajdonos |Mind |Mind |A tulajdonosi szerepkör a rendszergazda. Ez a szerepkör mindent tud kezelni, és teljes hozzáféréssel rendelkezik az összes adathoz. |
 | Olvasó |Csak olvasható |Az ACL szabályozza |Az olvasó szerepkör mindent megtekinthet a fiókok kezelésével kapcsolatban, például azt, hogy melyik felhasználóhoz van hozzárendelve a szerepkör. Az olvasó szerepkör nem végezhet módosításokat. |
 | Közreműködő |A Szerepkörök hozzáadása és eltávolítása kivételével |Az ACL szabályozza |A közreműködői szerepkör a fiókok bizonyos aspektusait képes kezelni, például a központi telepítéseket, valamint a riasztások létrehozását és kezelését. A közreműködő szerepkör nem tudja hozzáadni vagy eltávolítani a szerepköröket. |

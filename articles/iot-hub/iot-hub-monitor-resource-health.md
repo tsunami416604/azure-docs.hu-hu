@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fec74938adea4058041766a5c28c5a5200aa189e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438398"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146552"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
 
@@ -36,7 +36,7 @@ A IoT Hub saját mérőszámokat is biztosít, amelyek segítségével megismerh
 
 A Azure Monitor diagnosztikai adatokat biztosít az Azure-erőforrásokhoz, ami azt jelenti, hogy nyomon követheti az IoT hub-ban elvégezhető műveleteket.
 
-Ha többet szeretne megtudni az órákat Azure Monitor kapcsolódó mérőszámokról és eseményekről, tekintse meg a [támogatott mérőszámokat Azure monitor](../azure-monitor/platform/metrics-supported.md) és [támogatott szolgáltatásokkal, sémákkal és kategóriákkal az Azure diagnosztikai naplókhoz](../azure-monitor/platform/diagnostic-logs-schema.md).
+Ha többet szeretne megtudni az órákat Azure Monitor kapcsolódó mérőszámokról és eseményekről, tekintse meg a [támogatott mérőszámokat Azure monitor](../azure-monitor/platform/metrics-supported.md) és [támogatott szolgáltatásokkal, sémákkal és kategóriákkal az Azure diagnosztikai naplókhoz](../azure-monitor/platform/resource-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -122,7 +122,7 @@ Az Eszközállapot-üzemeltetési kategória azokat a hibákat követi, amelyek 
 
 #### <a name="routes"></a>Útvonalak
 
-Az [üzenet-útválasztási](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) kategória nyomon követi az üzenetek útvonalának kiértékelése és a végpont állapota során az IoT hub által észlelt hibákat. Ez a kategória olyan eseményeket tartalmaz, mint például:
+Az [üzenet-útválasztási](./iot-hub-devguide-messages-d2c.md) kategória nyomon követi az üzenetek útvonalának kiértékelése és a végpont állapota során az IoT hub által észlelt hibákat. Ez a kategória olyan eseményeket tartalmaz, mint például:
 
 * Egy szabály "nem definiált" értékre értékeli ki a következőt:
 * IoT Hub a végpontot Holtként jelöli meg, vagy
@@ -352,7 +352,7 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 
 Itt `durationMs` nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
@@ -386,7 +386,7 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
 | **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
@@ -418,7 +418,7 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Végpontneve** | Sztring | Az útválasztási végpont neve |
 | **endpointType** | Sztring | Az útválasztási végpont típusa |

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498803"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147939"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>A Azure Data Box nyomon követése és eseménynaplózása, valamint Azure Data Box Heavy importálási sorrend
 
@@ -23,7 +23,7 @@ Az alábbi táblázat a Data Box vagy Data Box Heavy importálási sorrend lép�
 
 | Data Box importálási sorrend szakasza       | Nyomon követhető és naplózható eszköz                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Rendelés létrehozása               | [Hozzáférés-vezérlés beállítása a rendelésen a RBAC használatával](#set-up-access-control-on-the-order)                                                    |
+| Rendelés létrehozása               | [A megrendelés hozzáférés-vezérlésének beállítása az Azure RBAC](#set-up-access-control-on-the-order)                                                    |
 | Megrendelés feldolgozva            | [A sorrend nyomon követése](#track-the-order) <ul><li> Azure Portal </li><li> Szállítási szolgáltató webhelye </li><li>E-mail-értesítések</ul> |
 | Eszköz beállítása              | Az eszköz hitelesítő adatai naplózása a [tevékenység naplófájljaiban](#query-activity-logs-during-setup)                                              |
 | Adatmásolás az eszközre        | Adatmásolási [ *error.xml* fájlok megtekintése](#view-error-log-during-data-copy)                                                             |
@@ -47,7 +47,7 @@ Egy megrendelés elérésének korlátozásához a következőket teheti:
 - Rendeljen hozzá egy szerepkört egy rendelési szinten. A felhasználónak csak a szerepkörök által meghatározott engedélyekkel kell megfelelnie az adott Data Box sorrendtel való interakcióhoz, és semmi más nem.
 - Rendeljen hozzá egy szerepkört az erőforráscsoport szintjén, a felhasználó hozzáfér az adott erőforráscsoporthoz tartozó összes Data Box-rendeléshez.
 
-További információ a javasolt RBAC használatáról: [Az Azure RBAC kapcsolatos ajánlott eljárások](../role-based-access-control/best-practices.md).
+További információ az Azure-RBAC használatáról: ajánlott [eljárások az Azure RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
@@ -411,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogy miként lehet [elhárítani a Data Box és Data Box Heavy kapcsolatos problémákat](data-box-troubleshoot.md).

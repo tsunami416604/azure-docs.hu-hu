@@ -7,15 +7,15 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd67ff4f7346daf7a590ab4fb45a32d227f1c3e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958326"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147546"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>A "502 hibás átjáró" és "503 szolgáltatás nem érhető el" HTTP-hibák elhárítása Azure App Service
-a "502 hibás átjáró" és a "503 szolgáltatás nem érhető el" gyakori hibák a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714)üzemeltetett alkalmazásban. Ez a cikk segít a hibák elhárításában.
+a "502 hibás átjáró" és a "503 szolgáltatás nem érhető el" gyakori hibák a [Azure app Serviceban](./overview.md)üzemeltetett alkalmazásban. Ez a cikk segít a hibák elhárításában.
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre.
 

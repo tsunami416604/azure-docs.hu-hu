@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: d148bc81e81c4afa32682fa1462ecfbf5427f164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db7112516941e53c07e1521f15140a8b9c28e47
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079228"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147960"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -45,7 +45,7 @@ Ha még nem rendelkezik Azure-előfizetéssel, első lépésként [hozzon létre
 ### <a name="azure-roles"></a>Azure-szerepkörök
 A adat-előállító példányok létrehozásához az Azure-ba való bejelentkezéshez használt felhasználói fióknak *közreműködői* vagy *tulajdonosi* szerepkörrel kell rendelkeznie, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
 
-Az előfizetésben található engedélyek megtekintéséhez kattintson az Azure Portalon a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md) című cikket.
+Az előfizetésben található engedélyek megtekintéséhez kattintson az Azure Portalon a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. A felhasználók szerepkörhöz való hozzáadásával kapcsolatos útmutatásért tekintse meg az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal](../role-based-access-control/role-assignments-portal.md) cikkben.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
 Ebben az oktatóanyagban egy SQL Server-adatbázist használ *forrásként* szolgáló adattárként. Az oktatóanyagban létrehozott adatfeldolgozó folyamata a SQL Server-adatbázisból (forrás) származó adatok másolása az Azure Blob Storage-ba (fogadó). Ezután létre fog hozni egy **emp** nevű táblát az SQL Server-adatbázisban, és beszúr a táblába néhány mintabejegyzést.
@@ -716,7 +716,7 @@ A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `a
     ![Kimeneti fájl](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

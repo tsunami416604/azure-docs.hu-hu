@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766972"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147687"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -24,7 +24,7 @@ A protokollok közötti zökkenőmentes együttműködési képesség támogatá
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub az eszközről a felhőbe irányuló üzenetküldést adatfolyam-üzenetküldési minta használatával valósítja meg. A IoT Hub eszközről a felhőbe irányuló üzenetek többek között a [Service Bus](/azure/service-bus-messaging/) *üzenetekben* [Event Hubs](/azure/event-hubs/) *események* , így nagy mennyiségű esemény halad át a szolgáltatáson keresztül, amely több olvasó által is olvasható.
+IoT Hub az eszközről a felhőbe irányuló üzenetküldést adatfolyam-üzenetküldési minta használatával valósítja meg. A IoT Hub eszközről a felhőbe irányuló üzenetek többek között a [Service Bus](../service-bus-messaging/index.yml) *üzenetekben* [Event Hubs](../event-hubs/index.yml) *események* , így nagy mennyiségű esemény halad át a szolgáltatáson keresztül, amely több olvasó által is olvasható.
 
 Egy IoT Hub üzenet a következőkből áll:
 
@@ -54,27 +54,27 @@ További információ a különböző protokollok használatával elküldött ü
 
 | Tulajdonság | Leírás  |A felhasználó beállítható?|Kulcsszó a következőhöz: </br>útválasztási lekérdezés|
 | --- | --- | --- | --- |
-| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Igen | messageId |
-| iothub – enqueuedtime |Az [eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) irányuló üzenet IoT hub általi fogadásának dátuma és időpontja. | Nem | enqueuedTime |
-| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a következő lesz: `{iot hub name}` . | Igen | userId |
-| iothub--összekötő-eszköz-azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Tartalmazza az üzenetet küldő eszköz **deviceId** -számát. | Nem | connectionDeviceId |
-| iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | Nem | connectionModuleId |
-| iothub – kapcsolatok – hitelesítés – generálási azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |connectionDeviceGenerationId |
-| iothub – kapcsolatok – hitelesítés – módszer |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| Nem | connectionAuthMethod |
-| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. | Nem | N.A. |
-| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. | Igen | N.A. |
+| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Yes | messageId |
+| iothub – enqueuedtime |Az [eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) irányuló üzenet IoT hub általi fogadásának dátuma és időpontja. | No | enqueuedTime |
+| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a következő lesz: `{iot hub name}` . | Yes | userId |
+| iothub--összekötő-eszköz-azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Tartalmazza az üzenetet küldő eszköz **deviceId** -számát. | No | connectionDeviceId |
+| iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | No | connectionModuleId |
+| iothub – kapcsolatok – hitelesítés – generálási azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | No |connectionDeviceGenerationId |
+| iothub – kapcsolatok – hitelesítés – módszer |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| No | connectionAuthMethod |
+| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. | No | N.A. |
+| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. | Yes | N.A. |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT hub üzenetek rendszertulajdonságai
 
 | Tulajdonság | Leírás  |A felhasználó beállítható?|
 | --- | --- | --- |
-| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Igen|
-| sorozatszám |Az egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (egyedi eszközönként). |Nem|
-| a következőre: |A [felhőből az eszközre irányuló](iot-hub-devguide-c2d-guidance.md) üzenetekben megadott célhely. |Nem|
-| abszolút – lejárat – idő |Az üzenetek lejáratának dátuma és időpontja. |Nem|   |
-| korrelációs azonosító |Egy válaszüzenet karakterlánc-tulajdonsága, amely általában tartalmazza a kérelem MessageId a kérelem-válasz mintákban. |Igen|
-| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a következő lesz: `{iot hub name}` . |Igen|
-| iothub-ACK |Visszajelzési üzenet generátora. Ez a tulajdonság a felhőből az eszközre irányuló üzenetekben használatos, hogy az üzenetnek az eszköz általi felhasználásának eredményeképpen a visszajelzési üzenetek létrehozásához IoT Hub kérjenek. Lehetséges értékek: **nincs (alapértelmezett): nem** jön létre visszajelzési üzenet **, pozitív**: visszajelzési üzenet küldése, ha az üzenet elkészült, **negatív**: visszajelzési üzenet küldése, ha az üzenet lejárt (vagy elérte a maximális kézbesítési értéket) az eszköz befejezése nélkül, vagy **teljes**: pozitív és negatív. |Igen|
+| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Yes|
+| sorozatszám |Az egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (egyedi eszközönként). |No|
+| a következőre: |A [felhőből az eszközre irányuló](iot-hub-devguide-c2d-guidance.md) üzenetekben megadott célhely. |No|
+| abszolút – lejárat – idő |Az üzenetek lejáratának dátuma és időpontja. |No|   |
+| korrelációs azonosító |Egy válaszüzenet karakterlánc-tulajdonsága, amely általában tartalmazza a kérelem MessageId a kérelem-válasz mintákban. |Yes|
+| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a következő lesz: `{iot hub name}` . |Yes|
+| iothub-ACK |Visszajelzési üzenet generátora. Ez a tulajdonság a felhőből az eszközre irányuló üzenetekben használatos, hogy az üzenetnek az eszköz általi felhasználásának eredményeképpen a visszajelzési üzenetek létrehozásához IoT Hub kérjenek. Lehetséges értékek: **nincs (alapértelmezett): nem** jön létre visszajelzési üzenet **, pozitív**: visszajelzési üzenet küldése, ha az üzenet elkészült, **negatív**: visszajelzési üzenet küldése, ha az üzenet lejárt (vagy elérte a maximális kézbesítési értéket) az eszköz befejezése nélkül, vagy **teljes**: pozitív és negatív. |Yes|
 
 ### <a name="system-property-names"></a>Rendszertulajdonságok nevei
 

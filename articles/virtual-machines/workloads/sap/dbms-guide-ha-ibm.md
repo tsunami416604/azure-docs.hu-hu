@@ -4,15 +4,15 @@ description: Magas rendelkezésre állású IBM DB2-LUW létrehozása Azure-beli
 author: msjuergent
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 03/06/2020
+ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 17df60cd039601d3f8036125c5c0098a8000667c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993307"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146430"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel
 
@@ -26,7 +26,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Leírás |
+| SAP-Megjegyzés | Description |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -393,6 +393,9 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
 > [!NOTE]
 > A standard Load Balancer SKU korlátozza a nyilvános IP-címek elérését a Load Balancer alatti csomópontok között. Az [Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával történő Virtual Machines nyilvános végponti kapcsolata](./high-availability-guide-standard-load-balancer-outbound-connections.md) című cikk leírja, hogyan engedélyezheti a csomópontok számára a nyilvános IP-címek elérését.
+
+> [!IMPORTANT]
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
 
 1. Előtér-IP-címkészlet létrehozása:
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285315"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148059"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoport vertikális fel-és leskálázása a CLI-vel (azdata vagy kubectl)
 
@@ -185,5 +185,4 @@ A kiszolgálócsoport méretezéséhez hajtsa végre ugyanazt a parancsot, de á
 
 - [A rugalmas skálázású Azure Database for PostgreSQL-kiszolgálócsoport horizontális felskálázása](scale-out-postgresql-hyperscale-server-group.md)
 - [Tárolási konfiguráció és Kubernetes-tárolási fogalmak](storage-configuration.md)
-- [Állandó mennyiségi jogcímek kiterjesztése](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes erőforrás-modell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eed12593168975b1dfda6e51b07b256cbd0c246
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004068"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145810"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Avro-adatbázis lekérdezése Azure Data Lake Analytics használatával
 
@@ -171,7 +171,7 @@ Ebben a szakaszban lekérdezi a Avro, és exportálja azt egy CSV-fájlba az Azu
 
 Ebből az oktatóanyagból megtudhatta, hogyan kérdezheti le a Avro adatait az Azure IoT Hubról az Azure-szolgáltatásokra irányuló üzenetek hatékony továbbításához.
 
-Az IoT Hubt használó teljes körű megoldások részletes ismertetését az [Azure IoT megoldás-gyorsító dokumentációjában](/azure/iot-accelerators)találja.
+Az IoT Hubt használó teljes körű megoldások részletes ismertetését az [Azure IoT megoldás-gyorsító dokumentációjában](../iot-accelerators/index.yml)találja.
 
 Ha többet szeretne megtudni a IoT Hub-megoldások fejlesztéséről, tekintse meg a [IoT hub fejlesztői útmutatót](iot-hub-devguide.md).
 

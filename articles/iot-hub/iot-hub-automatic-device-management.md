@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6d3661128008c13e5d4d459f6f8e7925aa18a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e30daa3f81ed5dcae1323e721bf85cfed8fa9614
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322771"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147807"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>IoT-eszközök és -modulok automatikus felügyelete az Azure Portal használatával
 
@@ -108,7 +108,7 @@ Mindegyik konfiguráció legfeljebb öt egyéni metrikával rendelkezhet.
 
 2. Adja meg a **mérőszám feltételeinek**lekérdezését.  A lekérdezés az eszköz Twin jelentett tulajdonságain alapul.  A metrika a lekérdezés által visszaadott sorok számát jelöli.
 
-Például:
+Példa:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -123,7 +123,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Ha mérőszámot épít be a konfigurált modulok jelentésére, válassza `moduleId` a from elemet `devices.modules` . Például:
+Ha mérőszámot épít be a konfigurált modulok jelentésére, válassza `moduleId` a from elemet `devices.modules` . Példa:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -231,7 +231,7 @@ Ha töröl egy konfigurációt, minden eszköz-ikrek a következő legmagasabb p
 
 5. A rendszer kérni fogja a megerősítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a IoT-eszközök méretét. Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
@@ -242,8 +242,8 @@ Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a IoT-eszköz
 A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)
 
 Ha szeretné megtekinteni a IoT Hub Device Provisioning Service használatát a nulla érintéses, igény szerinti kiépítés engedélyezéséhez, olvassa el a következő témakört: 
 
-* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning Service](../iot-dps/index.yml)

@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962009"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148073"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -833,7 +833,7 @@ A példányok által létrehozott összes naplóhoz `ILogger` társítva `Catego
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincs        | 6 |
+|Nincsenek        | 6 |
 
 Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek feldolgozásához, de `Error` minden más esetében csak a magasabbra.
 
@@ -986,7 +986,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-Az `SamplingPercentageEstimatorSettings` objektum [adaptív mintavételezést](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)konfigurál. Ez azt jelenti, hogy bizonyos nagy mennyiségű forgatókönyvekben az alkalmazás-elemzések a telemetria-adatok kiválasztott részhalmazát küldi el a kiszolgálónak.
+Az `SamplingPercentageEstimatorSettings` objektum [adaptív mintavételezést](../azure-monitor/app/sampling.md)konfigurál. Ez azt jelenti, hogy bizonyos nagy mennyiségű forgatókönyvekben az alkalmazás-elemzések a telemetria-adatok kiválasztott részhalmazát küldi el a kiszolgálónak.
 
 A telemetria-előállító létrehozása után átadja azt a Application Insights naplózási szolgáltatónak:
 

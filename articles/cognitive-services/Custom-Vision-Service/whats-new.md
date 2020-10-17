@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 019a9264beddafbd4585810967551e064592e94d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4fbfbd1d578eb77d50d91413efb9f9fbf28e115f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90602523"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146310"
 ---
 # <a name="whats-new-in-custom-vision"></a>A Custom Vision újdonságai
 
@@ -23,9 +23,9 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegy
 
 ## <a name="july-2020"></a>2020. július
 
-### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+### <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
-* Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), az Azure-erőforrásokhoz való egyéni hozzáférés kezelésére szolgáló engedélyezési rendszert. A Custom Vision-projektekhez való hozzáférés kezelésének megismeréséhez tekintse meg a [szerepköralapú hozzáférés-vezérlés](./role-based-access-control.md)című témakört.
+* Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), az Azure-erőforrásokhoz való egyéni hozzáférés kezelésére szolgáló engedélyezési rendszert. A Custom Vision-projektekhez való hozzáférés kezelésének megismeréséhez tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés](./role-based-access-control.md)című témakört.
 
 ### <a name="subset-training"></a>A betanítás részhalmaza
 

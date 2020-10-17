@@ -39,7 +39,7 @@
       href: use-prediction-api.md
     - name: Intelligens feliratozó használata
       href: suggested-tags.md
-    - name: Szerepköralapú hozzáférés-vezérlés
+    - name: Azure-beli szerepköralapú hozzáférés-vezérlés
       href: role-based-access-control.md
     - name: Modellek exportálása
       items:

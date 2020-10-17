@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: e6006444e933dd93467dde01affd29c5d0c4a146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a02dc94c0dc0939e6c1eef624fc6fe65fb98ac6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019546"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147014"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Java) használatával
 
@@ -52,7 +52,7 @@ Az oktatóanyag végén két Java-konzol alkalmazást futtat:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -284,4 +284,4 @@ Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöl
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Eszköz szimulálása IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Eszköz szimulálása IoT Edge](../iot-edge/quickstart-linux.md)

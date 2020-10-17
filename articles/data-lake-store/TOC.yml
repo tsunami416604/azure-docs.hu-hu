@@ -22,6 +22,13 @@
       href: data-lake-store-get-started-powershell.md
     - name: Az Azure parancssori felület használata
       href: data-lake-store-get-started-cli-2.0.md
+- name: Alapelvek
+  items:
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Útmutató
   items:
     - name: Adatok betöltése és áthelyezése

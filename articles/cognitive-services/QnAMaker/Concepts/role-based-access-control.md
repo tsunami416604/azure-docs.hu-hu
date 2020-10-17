@@ -5,28 +5,28 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 967fdae49f904f6c1cb450b637a8dbc5c481b135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776884"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147527"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
-Együttműködik más szerzőkkel és szerkesztőkkel a QnA Maker erőforráson elhelyezett szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+Együttműködik más szerzőkkel és szerkesztőkkel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával, amely a QnA Maker-erőforrásra van helyezve.
 
 ## <a name="access-is-provided-on-the-qna-maker-resource"></a>A hozzáférés a QnA Maker erőforráson van megadva
 
 Minden engedélyt a QnA Maker erőforrásra helyezett engedélyek szabályoznak. Ezek az engedélyek az olvasási, írási, közzétételi és teljes hozzáférésre vannak igazítva.
 
-Ez a RBAC szolgáltatás a következőket tartalmazza:
-* A Azure Active Directory (HRE) 100%-os visszamenőleges kompatibilitást biztosít a tulajdonosok és a közreműködők kulcs alapú hitelesítésével. A kérések során az ügyfelek használhatnak kulcs alapú hitelesítést vagy RBAC-alapú hitelesítést.
+Ez az Azure RBAC szolgáltatás a következőket tartalmazza:
+* A Azure Active Directory (HRE) 100%-os visszamenőleges kompatibilitást biztosít a tulajdonosok és a közreműködők kulcs alapú hitelesítésével. A felhasználók a kérelmekben kulcs alapú hitelesítést vagy Azure RBAC-alapú hitelesítést használhatnak.
 * A szerzők és szerkesztők gyorsan hozzáadhatók az erőforrás összes tudásbázisához, mivel a vezérlő az erőforrás szintjén van, nem pedig a Tudásbázis szintjén.
 
 ## <a name="access-is-provided-by-a-defined-role"></a>A hozzáférést egy meghatározott szerepkör adta meg
 
-[!INCLUDE [RBAC permissions table](../includes/role-based-access-control.md)]
+[!INCLUDE [Azure RBAC permissions table](../includes/role-based-access-control.md)]
 
 ## <a name="authentication-flow"></a>Hitelesítési folyamat
 

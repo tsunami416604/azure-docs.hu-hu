@@ -11,12 +11,12 @@ ms.date: 06/01/2020
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327701"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147673"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -53,7 +53,7 @@ Ha Event Hubs SDK-kat vagy olyan termék-integrációt használ, amely nem tud I
 
 A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostname (Gazdanév) | abcd1234namespace.servicebus.windows.net |
@@ -72,14 +72,14 @@ A beépített, az Event hub-kompatibilis végponthoz való kapcsolódáshoz hasz
 
 A beépített, az Event hub-kompatibilis végponttal használható termék-integrációk, amelyeket IoT Hub tesznek elérhetővé:
 
-* [Azure functions](https://docs.microsoft.com/azure/azure-functions/). Lásd: [adatok feldolgozása IoT Hubról Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
-* [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Lásd: [stream-adatok bevitele stream Analyticsba](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
-* [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Lásd: [az IoT hub-eseményforrás hozzáadása a Time Series Insights-környezethez](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
+* [Azure functions](../azure-functions/index.yml). Lásd: [adatok feldolgozása IoT Hubról Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure stream Analytics](../stream-analytics/index.yml). Lásd: [stream-adatok bevitele stream Analyticsba](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* [Time Series Insights](../time-series-insights/index.yml). Lásd: [az IoT hub-eseményforrás hozzáadása a Time Series Insights-környezethez](../time-series-insights/how-to-ingest-data-iot-hub.md).
 * [Apache Storm kiöntő](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). A [kiöntő forrás](https://github.com/apache/storm/tree/master/external/storm-eventhubs) a githubon tekinthető meg.
-* [Apache Spark integráció](../hdinsight/spark/apache-spark-eventhub-streaming.md).
-* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
+* [Apache Spark integráció](../hdinsight/spark/apache-spark-ipython-notebook-machine-learning.md).
+* [Azure Databricks](/azure/azure-databricks/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * IoT Hub végpontokkal kapcsolatos további információkért lásd: [IoT hub-végpontok](iot-hub-devguide-endpoints.md).
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004340"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147860"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT fejlesztői készlet-AZ3166 használata Azure Functions és Cognitive Services a nyelvi fordítók elvégzéséhez
 
@@ -26,7 +26,7 @@ A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Ar
 
 Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 
-* Készítse elő a fejlesztői készlet a [IoT fejlesztői készlet AZ3166 és a felhőben lévő Azure IoT hub összekapcsolásához](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)szükséges lépéseket követve.
+* Készítse elő a fejlesztői készlet a [IoT fejlesztői készlet AZ3166 és a felhőben lévő Azure IoT hub összekapcsolásához](./iot-hub-arduino-iot-devkit-az3166-get-started.md)szükséges lépéseket követve.
 
 ## <a name="create-azure-cognitive-service"></a>Az Azure kognitív szolgáltatás létrehozása
 
@@ -152,4 +152,4 @@ Megtanulta, hogyan használhatja a IoT-fejlesztői készlet fordítóként Azure
 Folytassa a további oktatóanyagokkal:
 
 > [!div class="nextstepaction"]
-> [A IoT fejlesztői készlet AZ3166 és az Azure IoT távoli monitorozási megoldásának gyorsítása](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [A IoT fejlesztői készlet AZ3166 és az Azure IoT távoli monitorozási megoldásának gyorsítása](./iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)

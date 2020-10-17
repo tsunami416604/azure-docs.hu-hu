@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49ecf753b1dd547eab251222a6c2709d96e9c89b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767624"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146519"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
 # <a name="understand-iot-hub-metrics"></a>IoT Hub mérőszámok ismertetése
@@ -44,7 +44,7 @@ A metrikák alapértelmezés szerint engedélyezve vannak. A Azure Portal IoT Hu
 
 A IoT Hub számos mérőszámot biztosít, amely áttekintést nyújt a központ állapotáról és a csatlakoztatott eszközök teljes számáról. Több mérőszámból is egyesítheti az adatokat, így az IoT hub állapotának nagyobb képe is kifesthető. A következő táblázat ismerteti az egyes IoT hub-sávok metrikáit, valamint azt, hogy az egyes mérőszámok hogyan kapcsolódnak az IoT hub általános állapotához.
 
-|Metrika|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |RoutingDeliveries | Útválasztási kézbesítési kísérletek (előzetes verzió) | Darabszám | Összesen |Ez az útválasztási kézbesítési metrika. A méretek segítségével azonosíthatja egy adott végpont vagy egy adott útválasztási forrás kézbesítési állapotát.| ResourceId<br>Eredmény,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Végpontneve<br>*A dimenziókkal kapcsolatos [**here**](#dimensions)további részletek*. |
 |RoutingDeliveryLatency| Útválasztási késés (előzetes verzió) | Ezredmásodpercben | Átlag |Ez az útválasztási kézbesítés késésének mérőszáma. A méretek segítségével azonosíthatja egy adott végpont késését, vagy egy adott útválasztási forrás esetében.| ResourceId<br>RoutingSource,<br>EndpointType,<br>Végpontneve<br>*A dimenziókkal kapcsolatos [**here**](#dimensions)további részletek*.|
@@ -139,4 +139,4 @@ A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
 
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)

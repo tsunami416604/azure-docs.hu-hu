@@ -80,6 +80,10 @@
           href: redirect-overview.md
         - name: HTTP-fejlécek és URL átírása
           href: rewrite-http-headers-url.md
+        - name: Biztonság
+          items:
+            - name: Biztonsági alapkonfiguráció
+              href: security-baseline.md
     - name: SSL
       items:
         - name: SSL leállítása és végpontok közötti SSL

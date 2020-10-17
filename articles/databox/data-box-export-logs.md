@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494485"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147944"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>A Azure Data Box nyomon követése és eseménynaplózása, valamint Azure Data Box Heavy exportálási megrendelések
 
@@ -25,7 +25,7 @@ Az alábbi táblázat a Data Box exportálási sorrend lépéseinek összegzés�
 
 | Data Box exportálási sorrend szakasza       | Nyomon követhető és naplózható eszköz                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Rendelés létrehozása               | [Hozzáférés-vezérlés beállítása a rendelésen a RBAC használatával](#set-up-access-control-on-the-order) <br> [Részletes napló engedélyezése a sorrendben](#enable-verbose-log-in-the-order)                                                    |
+| Rendelés létrehozása               | [A megrendelés hozzáférés-vezérlésének beállítása az Azure RBAC](#set-up-access-control-on-the-order) <br> [Részletes napló engedélyezése a sorrendben](#enable-verbose-log-in-the-order)                                                    |
 | Megrendelés feldolgozva            | [A sorrend nyomon követése](#track-the-order) <ul><li> Azure Portal </li><li> Szállítási szolgáltató webhelye </li><li>E-mail-értesítések</ul> |
 | Eszköz beállítása              | Az eszköz hitelesítő adatai naplózása a [tevékenység naplófájljaiban](#query-activity-logs-during-setup)              |
 | Adatok másolása az eszközről        | [A másolási naplók áttekintése](#copy-log) <br> [Részletes naplók áttekintése](#verbose-log) az Adatmásolás előtt            |
@@ -46,7 +46,7 @@ Egy megrendelés elérésének korlátozásához a következőket teheti:
 - Rendeljen hozzá egy szerepkört egy rendelési szinten. A felhasználónak csak a szerepkörök által meghatározott engedélyekkel kell megfelelnie az adott Data Box sorrendtel való interakcióhoz, és semmi más nem.
 - Rendeljen hozzá egy szerepkört az erőforráscsoport szintjén, a felhasználó hozzáfér az adott erőforráscsoporthoz tartozó összes Data Box-rendeléshez.
 
-További információ a javasolt RBAC használatáról: [Az Azure RBAC kapcsolatos ajánlott eljárások](../role-based-access-control/best-practices.md).
+További információ az Azure-RBAC használatáról: ajánlott [eljárások az Azure RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="enable-verbose-log-in-the-order"></a>Részletes napló engedélyezése a sorrendben
 
@@ -122,14 +122,14 @@ Itt látható a *másolási napló* kimenete, ha nem voltak hibák, és az össz
 </CopyLog>    
 ```
 
-A következő lehetőségek közül választhat a fájlok exportálásához: 
+Az alábbi lehetőségek állnak rendelkezésére, hogy exportálja ezeket a fájlokat: 
 
-- Átviheti azokat a fájlokat, amelyek nem másolhatók a hálózaton keresztül. 
-- Ha az adatméret nagyobb, mint a felhasználható eszköz kapacitása, akkor részleges másolás történik, és az összes másolt fájl ebben a naplóban szerepel. Ezt a naplót bemeneti XML-ként használva új Data Box sorrendet hozhat létre, majd átmásolhatja ezeket a fájlokat.
+- Átviheti azokat a fájlokat, amelyeket a hálózaton nem sikerült átmásolni. 
+- Ha az adatméret meghaladja a felhasználható eszközkapacitást, akkor részleges másolás történik, és a másolásból kihagyott fájlok mind szerepelnek ebben a naplóban. Ezt a naplót használhatja bemeneti XML-ként egy új Data Box-megrendelés létrehozásához, majd átmásolhatja ezeket a fájlokat.
 
 ### <a name="verbose-log"></a>Részletes napló
 
-A *részletes napló* tartalmazza az Azure Storage-fiókból sikeresen exportált fájlok listáját. A naplófájl a fájl méretét és az ellenőrzőösszeg számítását is tartalmazza.
+A *részletes napló* az Azure Storage-fiókból sikeresen exportált összes fájl listáját tartalmazza. A napló a fájlméreteket és az ellenőrzőösszegek számítását is tartalmazza.
 
 A részletes napló a következő formátumban adja meg az adatokat:
 
@@ -303,6 +303,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogy miként lehet [elhárítani a Data Box és Data Box Heavy kapcsolatos problémákat](data-box-troubleshoot.md).

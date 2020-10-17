@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327463"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145864"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Málna PI összekötése az Azure IoT Hub (C)
 
@@ -81,7 +81,7 @@ A következő elemek választhatók:
 > Ezek az elemek nem kötelezőek, mert a kód minta támogatja a szimulált érzékelői adatokat.
 >
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -154,7 +154,7 @@ Az érzékelő PIN-kódokhoz használja a következő huzalozást:
 | SDI (PIN 23F üvegajtó)            | SPI0-MOSI (19. PIN)     | Zöld kábel   |
 | CS (PIN-kód 24F)             | SPI0 CS (PIN-kód 24)       | Kék kábel    |
 
-Kattintson ide a [málna pi 2 & 3 PIN-kód megfeleltetésének](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) megtekintéséhez a hivatkozáshoz.
+Kattintson ide a [málna pi 2 & 3 PIN-kód megfeleltetésének](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) megtekintéséhez a hivatkozáshoz.
 
 Miután sikeresen csatlakoztatta a BME280 a málna PI-hoz, az alábbihoz hasonlónak kell lennie.
 
@@ -236,7 +236,7 @@ Az IoT hub által az eszközről fogadott üzenetek figyelésének egyik módja 
 
 Az eszköz által elküldhető adatfeldolgozás további módjairól folytassa a következő szakasszal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy minta alkalmazást futtatott az érzékelő adatainak összegyűjtéséhez és az IoT hubhoz való elküldéséhez.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: c51b99ed04357cdebaabbde2b2bd0400adcfef30
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134153"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147916"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -56,7 +56,7 @@ A privát hivatkozás, amely alapértelmezés szerint le van tiltva, széles kö
 
 Ha `privateLink` az *engedélyezve*értékre van állítva, a rendszer belső [standard Load balancereket](../load-balancer/load-balancer-overview.md) (SLB-ket) hoz létre, és minden egyes SLB kiépít egy Azure Private link Service-t. A Private link Service lehetővé teszi, hogy a HDInsight-fürtöt privát végpontokból elérje.
 
-A standard Load balancerek nem biztosítják automatikusan a nyilvános kimenő NAT-t, például az alapszintű Load balancert. A kimenő függőségekhez meg kell adnia a saját NAT-megoldását, például [Virtual Network NAT](../virtual-network/nat-overview.md) -t vagy [tűzfalat](./hdinsight-restrict-outbound-traffic.md). A HDInsight-fürtnek továbbra is hozzá kell férnie a kimenő függőségeihez. Ha ezek a kimenő függőségek nem engedélyezettek, a fürt létrehozása sikertelen lehet.
+A standard Load balancerek nem biztosítják automatikusan a [nyilvános kimenő NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) -t, például az alapszintű Load balancert. A kimenő függőségekhez meg kell adnia a saját NAT-megoldását, például [Virtual Network NAT](../virtual-network/nat-overview.md) -t vagy [tűzfalat](./hdinsight-restrict-outbound-traffic.md). A HDInsight-fürtnek továbbra is hozzá kell férnie a kimenő függőségeihez. Ha ezek a kimenő függőségek nem engedélyezettek, a fürt létrehozása sikertelen lehet.
 
 ### <a name="prepare-your-environment"></a>A környezet előkészítése
 

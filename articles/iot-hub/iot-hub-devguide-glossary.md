@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023466"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147787"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
 
@@ -28,19 +28,19 @@ A [speciális üzenetsor-kezelési protokoll (AMQP)](https://www.amqp.org/) a [I
 
 ## <a name="automatic-device-management"></a>Automatikus eszközfelügyelet
 
-Az Azure-ban az automatikus eszközkezelés IoT Hub automatizálja a nagyméretű eszközök flottáinak teljes életciklusával kapcsolatos ismétlődő és összetett feladatokat. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, és hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek.  [Automatikus eszköz-konfigurációkból](iot-hub-auto-device-config.md) és [IoT Edge automatikus központi telepítésből](../iot-edge/how-to-deploy-at-scale.md)áll.
+Az Azure-ban az automatikus eszközkezelés IoT Hub automatizálja a nagyméretű eszközök flottáinak teljes életciklusával kapcsolatos ismétlődő és összetett feladatokat. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, és hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek.  [Automatikus eszköz-konfigurációkból](./iot-hub-automatic-device-management.md) és [IoT Edge automatikus központi telepítésből](../iot-edge/how-to-deploy-at-scale.md)áll.
 
 ## <a name="automatic-device-configuration"></a>Eszköz automatikus konfigurálása
 
-A megoldás háttérbe állítása [automatikus eszköz-konfigurációk](iot-hub-auto-device-config.md) használatával rendelhető hozzá a kívánt tulajdonságok az [eszközök](#device-twin) egy készletéhez és a jelentés állapotához a rendszermetrikák és az egyéni metrikák használatával. 
+A megoldás háttérbe állítása [automatikus eszköz-konfigurációk](./iot-hub-automatic-device-management.md) használatával rendelhető hozzá a kívánt tulajdonságok az [eszközök](#device-twin) egy készletéhez és a jelentés állapotához a rendszermetrikák és az egyéni metrikák használatával. 
 
 ## <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-A [klasszikus Azure CLI](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők. A parancssori felület ezen verzióját csak a klasszikus központi telepítésekhez szabad használni.
+A [klasszikus Azure CLI](/cli/azure/install-classic-cli) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők. A parancssori felület ezen verzióját csak a klasszikus központi telepítésekhez szabad használni.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők.
+Az [Azure CLI](/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők.
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-eszközök SDK-k
 
@@ -72,7 +72,7 @@ A [Azure Resource Manager](../azure-resource-manager/management/overview.md) leh
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 
-A [Service Bus](../service-bus/index.md) felhőalapú kommunikációt tesz lehetővé vállalati üzenetkezeléssel és közvetített kommunikációval, amely segít a helyszíni megoldások felhővel való összekapcsolásában. Egyes IoT Hub oktatóanyagok Service Bus [várólisták](../service-bus-messaging/service-bus-messaging-overview.md)használatát teszik elérhetővé.
+A [Service Bus](../service-bus-messaging/index.yml) felhőalapú kommunikációt tesz lehetővé vállalati üzenetkezeléssel és közvetített kommunikációval, amely segít a helyszíni megoldások felhővel való összekapcsolásában. Egyes IoT Hub oktatóanyagok Service Bus [várólisták](../service-bus-messaging/service-bus-messaging-overview.md)használatát teszik elérhetővé.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -96,7 +96,7 @@ Egy IoT hub-ból egy csatlakoztatott eszközre küldött üzenetekre hivatkozik.
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az [automatikus eszköz-konfiguráció](iot-hub-auto-device-config.md)kontextusában a IoT hub belüli konfiguráció határozza meg az eszközök egy készletének kívánt konfigurációját, és mérőszámokat biztosít az állapot és a folyamat jelentéséhez.
+Az [automatikus eszköz-konfiguráció](./iot-hub-automatic-device-management.md)kontextusában a IoT hub belüli konfiguráció határozza meg az eszközök egy készletének kívánt konfigurációját, és mérőszámokat biztosít az állapot és a folyamat jelentéséhez.
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
@@ -164,7 +164,7 @@ Az [IoT hub](#iot-hub) lehetővé teszi a közös eszközkezelés mintázatát, 
 
 ## <a name="device-rest-api"></a>Eszköz REST API
 
-Az eszközről [REST API eszközről](https://docs.microsoft.com/rest/api/iothub/device) az eszközről a felhőbe irányuló üzeneteket küldhet egy IoT hubhoz, és a [felhőből az eszközre](#cloud-to-device) irányuló üzeneteket fogadhat egy IoT hub-ból. Általában a IoT Hub oktatóanyagokban látható, a magasabb szintű [eszközök SDK](#azure-iot-device-sdks) -k egyikét kell használnia.
+Az eszközről [REST API eszközről](/rest/api/iothub/device) az eszközről a felhőbe irányuló üzeneteket küldhet egy IoT hubhoz, és a [felhőből az eszközre](#cloud-to-device) irányuló üzeneteket fogadhat egy IoT hub-ból. Általában a IoT Hub oktatóanyagokban látható, a magasabb szintű [eszközök SDK](#azure-iot-device-sdks) -k egyikét kell használnia.
 
 ## <a name="device-provisioning"></a>Eszköz kiépítés
 
@@ -184,7 +184,7 @@ Az IoT hub több [végpontot](iot-hub-devguide-endpoints.md) tesz elérhetővé,
 
 ## <a name="event-hubs-service"></a>Event Hubs szolgáltatás
 
-A [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) egy rugalmasan méretezhető adatbeviteli szolgáltatás, amely másodpercenként több millió eseményt képes fogadni. A szolgáltatás segítségével feldolgozhatja és elemezheti a csatlakoztatott eszközök és alkalmazások által előállított nagy mennyiségű adatmennyiséget. Az IoT Hub szolgáltatással való összehasonlításért tekintse meg az [azure IoT hub és az azure Event Hubs összehasonlítását](iot-hub-compare-event-hubs.md)ismertető témakört.
+A [Event Hubs](../event-hubs/event-hubs-about.md) egy rugalmasan méretezhető adatbeviteli szolgáltatás, amely másodpercenként több millió eseményt képes fogadni. A szolgáltatás segítségével feldolgozhatja és elemezheti a csatlakoztatott eszközök és alkalmazások által előállított nagy mennyiségű adatmennyiséget. Az IoT Hub szolgáltatással való összehasonlításért tekintse meg az [azure IoT hub és az azure Event Hubs összehasonlítását](iot-hub-compare-event-hubs.md)ismertető témakört.
 
 ## <a name="event-hub-compatible-endpoint"></a>Event hub-kompatibilis végpont
 
@@ -226,7 +226,7 @@ A [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy olyan SQ
 
 ## <a name="iot-hub-resource-rest-api"></a>Erőforrás-REST API IoT Hub
 
-A [IoT hub erőforrás-REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) segítségével kezelheti az [Azure-előfizetéshez](#subscription) tartozó IoT-hubokat olyan műveletek végrehajtásához, mint például a hubok létrehozása, frissítése és törlése.
+A [IoT hub erőforrás-REST API](/rest/api/iothub/iothubresource) segítségével kezelheti az [Azure-előfizetéshez](#subscription) tartozó IoT-hubokat olyan műveletek végrehajtásához, mint például a hubok létrehozása, frissítése és törlése.
 
 ## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
 
@@ -304,7 +304,7 @@ SASL PLAIN egy protokoll, amelyet a AMQP protokoll a biztonsági jogkivonatok á
 
 ## <a name="service-rest-api"></a>Szolgáltatás REST API-ja
 
-Az eszközök kezeléséhez használhatja a megoldás háttér- [REST API a szolgáltatását](https://docs.microsoft.com/rest/api/iothub/service/configuration) . Az API lehetővé teszi az [eszközök Twin](#device-twin) tulajdonságainak lekérését és frissítését, a [közvetlen metódusok](#direct-method)meghívását és a [feladatok](#job)ütemezését. Általában a magasabb szintű [szolgáltatási SDK](#azure-iot-service-sdks) -k egyikét kell használnia, ahogy az a IoT hub oktatóanyagokban is látható.
+Az eszközök kezeléséhez használhatja a megoldás háttér- [REST API a szolgáltatását](/rest/api/iothub/service/configuration) . Az API lehetővé teszi az [eszközök Twin](#device-twin) tulajdonságainak lekérését és frissítését, a [közvetlen metódusok](#direct-method)meghívását és a [feladatok](#job)ütemezését. Általában a magasabb szintű [szolgáltatási SDK](#azure-iot-service-sdks) -k egyikét kell használnia, ahogy az a IoT hub oktatóanyagokban is látható.
 
 ## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 

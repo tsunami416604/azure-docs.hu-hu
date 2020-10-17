@@ -3,12 +3,12 @@ title: Az alkalmazás forrásának titkosítása nyugalmi állapotban
 description: Ismerje meg, hogyan titkosíthatja az alkalmazásadatok adatait az Azure Storage-ban, és hogyan telepítheti csomagfájlként.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978478"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146044"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
@@ -22,7 +22,7 @@ A webalkalmazásban tárolt alkalmazásadatok titkosításához Azure Storage-fi
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md) , és [titkosítsa az ügyfél által felügyelt kulcsokkal](../storage/common/encryption-customer-managed-keys.md). A Storage-fiók létrehozása után a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával töltse fel a csomagok fájljait.
+Először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md) , és [titkosítsa az ügyfél által felügyelt kulcsokkal](../storage/common/customer-managed-keys-overview.md). A Storage-fiók létrehozása után a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával töltse fel a csomagok fájljait.
 
 Ezután a Storage Explorer használatával [állítson be sas](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)-t. 
 

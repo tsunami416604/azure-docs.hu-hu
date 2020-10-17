@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4a4058cc6317e863fa20406449e64aa877810a54
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977731"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147467"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
@@ -87,7 +87,7 @@ ms.locfileid: "91977731"
 | Svéd               |     `sv`      |     ✓      |            |                                 |                    |
 | Török               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > A 2020-07-01 előtti Kulcsszókeresés modellek 64 karakteres korláttal rendelkeznek. Ez a korlát nem szerepel a modell későbbi verzióiban.
@@ -119,13 +119,108 @@ ms.locfileid: "91977731"
 
 #### <a name="language-detection"></a>[Nyelvfelismerés](#tab/language-detection)
 
-A Text Analytics API számos nyelvet, változatot, dialektust és néhány regionális/kulturális nyelvet képes felderíteni.  Nyelvfelismerés a nyelv "szkriptjét" adja vissza. Ha például a "Nekem van egy kutyám" kifejezés, akkor a helyett a értéket fogja visszaadni  `en`  `en-US` . Az egyetlen különleges eset a kínai, ahol a nyelvi észlelési képesség vissza fog térni, `zh_CHS` vagy `zh_CHT` Ha meg tudja határozni a parancsfájlt a megadott szöveg alapján. Azokban az esetekben, amikor egy kínai dokumentumhoz nem azonosítható egy adott parancsfájl, a rendszer egyszerűen visszaadja `zh` .
-
-Nem tesszük közzé a funkcióhoz tartozó nyelvek pontos listáját, de számos nyelvet, változatot, dialektust és bizonyos regionális/kulturális nyelvet képes felderíteni. 
+A Text Analytics API számos nyelvet, változatot, dialektust és néhány regionális/kulturális nyelvet képes észlelni, és az észlelt nyelveket a nevükkel és kóddal kell visszaadnia. Text Analytics Nyelvfelismerés nyelvkód-paraméterek a [BCP-47](https://tools.ietf.org/html/bcp47) szabványnak felelnek meg, és a legtöbbjük megfelel az [ISO-639-1](https://www.iso.org/iso-639-language-codes.html) azonosítóknak. 
 
 Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejezve, kipróbálhatja, Nyelvfelismerés, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `unknown` .
 
+| Nyelv | Nyelvkód |  v3 támogatás | A v3 modell verziójától kezdődően érhető el: |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|
+|búr|`af`|✓|    |
+|albán|`sq`|✓|    |
+|Arab|`ar`|✓|    |
+|örmény|`hy`|✓|    |
+|Baszk|`eu`|✓|    |
+|belorusz|`be`|✓|    |
+|bengáli|`bn`|✓|    |
+|boszniai|`bs`|✓|2020-09-01|
+|Bolgár|`bg`|✓|    |
+|Burmai|`my`|✓|    |
+|Katalán, valenciai|`ca`|✓|    |
+|Közép-khmer|`km`|✓|    |
+|Kínai|`zh`|✓|    |
+|kínai (egyszerűsített)|`zh_chs`|✓|    |
+|kínai (hagyományos)|`zh_cht`|✓|    |
+|Horvát|`hr`|✓|    |
+|Cseh|`cs`|✓|    |
+|Dán|`da`|✓|    |
+|Dari|`prs`|✓|2020-09-01|
+|Divehi, dhivehi, Maldív|`dv`|✓|    |
+|Holland, flamand|`nl`|✓|    |
+|Angol|`en`|✓|    |
+|Eszperantó|`eo`|✓|    |
+|Észt|`et`|✓|    |
+|Fidzsi|`fj`|✓|2020-09-01|
+|Finn|`fi`|✓|    |
+|Francia|`fr`|✓|    |
+|Gallego|`gl`|✓|    |
+|grúz|`ka`|✓|    |
+|Német|`de`|✓|    |
+|Görög|`el`|✓|    |
+|gudzsaráti|`gu`|✓|    |
+|Haiti, Haiti kreol|`ht`|✓|    |
+|Héber|`he`|✓|    |
+|Hindi|`hi`|✓|    |
+|Hmong DAW|`mww`|✓|2020-09-01|
+|Magyar|`hu`|✓|    |
+|Izlandi|`is`|✓|    |
+|Indonéz|`id`|✓|    |
+|Inuktitut|`iu`|✓|    |
+|Ír|`ga`|✓|    |
+|Olasz|`it`|✓|    |
+|Japán|`ja`|✓|    |
+|kannada|`kn`|✓|    |
+|Kazak|`kk`|✓|2020-09-01|
+|Koreai|`ko`|✓|    |
+|Kurd|`ku`|✓|    |
+|Lao|`lo`|✓|    |
+|Latin betűs|`la`|✓|    |
+|Lett|`lv`|✓|    |
+|Litván|`lt`|✓|    |
+|Macedón|`mk`|✓|    |
+|Malgas|`mg`|✓|2020-09-01|
+|Maláj|`ms`|✓|    |
+|malajálam|`ml`|✓|    |
+|Máltai|`mt`|✓|    |
+|maori|`mi`|✓|2020-09-01|
+|marathi|`mr`|✓|2020-09-01|
+|Norvég|`no`|✓|    |
+|Norvég nynorsk|`nn`|✓|    |
+|Oriya|`or`|✓|    |
+|Pastu, Pushto|`ps`|✓|    |
+|perzsa|`fa`|✓|    |
+|Lengyel|`pl`|✓|    |
+|Portugál|`pt`|✓|    |
+|Pandzsábi, pandzsábi|`pa`|✓|    |
+|Queretaro otomi|`otq`|✓|2020-09-01|
+|Román, Moldova, Moldován|`ro`|✓|    |
+|Orosz|`ru`|✓|    |
+|Szamoai|`sm`|✓|2020-09-01|
+|Szerb|`sr`|✓|    |
+|Szingaléz, szingaléz|`si`|✓|    |
+|Szlovák|`sk`|✓|    |
+|Szlovén|`sl`|✓|    |
+|Szomáli|`so`|✓|    |
+|Spanyol, kasztíliai|`es`|✓|    |
+|szuahéli|`sw`|✓|    |
+|Svéd|`sv`|✓|    |
+|Tagalog|`tl`|✓|    |
+|Tahitian|`ty`|✓|2020-09-01|
+|tamil|`ta`|✓|    |
+|telugu|`te`|✓|    |
+|Thai|`th`|✓|    |
+|Tongai|`to`|✓|2020-09-01|
+|Török|`tr`|✓|    |
+|Ukrán|`uk`|✓|    |
+|urdu|`ur`|✓|    |
+|Üzbég|`uz`|✓|    |
+|Vietnámi|`vi`|✓|    |
+|walesi|`cy`|✓|    |
+|Jiddis|`yi`|✓|    |
+|Yucatec Maya|`yua`|✓|    |
+
+
 ---
+
 
 ## <a name="see-also"></a>Lásd még
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356196"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147265"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Eszközkapcsolati események megrendelése az Azure IoT Hubról az Azure Cosmos DB használatával
 
@@ -29,7 +29,7 @@ A sorozatszám egy hexadecimális szám karakterláncos ábrázolása. A nagyobb
 
 * Egy gyűjtemény az adatbázisban. Lásd: [gyűjtemény hozzáadása](../cosmos-db/create-sql-api-java.md#add-a-container) egy útmutatóhoz. A gyűjtemény létrehozásakor használja `/id` a () partíciót a partíciós kulcshoz.
 
-* Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást.
+* Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](./quickstart-send-telemetry-dotnet.md) ismertető cikkben talál útmutatást.
 
 ## <a name="create-a-stored-procedure"></a>Tárolt eljárás létrehozása
 
@@ -335,7 +335,7 @@ A végrehajtott tárolt eljárás eredményeit a Cosmos DB dokumentumban tekinth
 
 ## <a name="use-the-azure-cli"></a>Az Azure CLI használata
 
-A [Azure Portal](https://portal.azure.com)használata helyett a IoT hub lépéseket az Azure CLI használatával hajthatja végre. Részletekért lásd: Azure CLI-lapok az [esemény-előfizetések létrehozásához](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozásához](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
+A [Azure Portal](https://portal.azure.com)használata helyett a IoT hub lépéseket az Azure CLI használatával hajthatja végre. Részletekért lásd: Azure CLI-lapok az [esemény-előfizetések létrehozásához](/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozásához](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -361,7 +361,7 @@ Ha nem szeretné elveszteni a logikai alkalmazásba fektetett munkáját, a tör
 
 7. Válassza a **Törlés** elemet.
 
-Azure Cosmos DB fióknak a Azure Portalból való eltávolításához kattintson a jobb gombbal a fiók nevére, és kattintson a **fiók törlése**parancsra. [Azure Cosmos db fiók törlésének](https://docs.microsoft.com/azure/cosmos-db/manage-account)részletes utasításait itt tekintheti meg.
+Azure Cosmos DB fióknak a Azure Portalból való eltávolításához kattintson a jobb gombbal a fiók nevére, és kattintson a **fiók törlése**parancsra. [Azure Cosmos db fiók törlésének](../cosmos-db/how-to-manage-database-account.md)részletes utasításait itt tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

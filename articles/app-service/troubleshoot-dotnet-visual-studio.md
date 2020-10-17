@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983013"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147746"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazás hibakeresési [módban](/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
+Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](./overview.md)alkalmazás hibakeresési [módban](/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
 
 Az oktatóanyagból a következőket sajátíthatja el:
 
@@ -49,7 +49,7 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
    >
    >
 
-    További információ az Azure-erőforrásokhoz való csatlakozásról a Visual studióból: [fiókok, előfizetések és rendszergazdai szerepkörök kezelése](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+    További információ az Azure-erőforrásokhoz való csatlakozásról a Visual studióból: [fiókok, előfizetések és rendszergazdai szerepkörök kezelése](../role-based-access-control/role-assignments-portal.md).
 2. A **Server Explorerben**bontsa ki az **Azure** elemet, majd bontsa ki a **app Service**elemet.
 3. Bontsa ki azt az erőforráscsoportot, amely magában foglalja a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](quickstart-dotnet-framework.md)létrehozott alkalmazást, majd kattintson a jobb gombbal az alkalmazás csomópontjára, majd kattintson a **beállítások megtekintése**elemre.
 
@@ -125,7 +125,7 @@ Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NE
     }
     ```
 
-1. [Töréspont beállítása](https://docs.microsoft.com/visualstudio/debugger/) a `ViewBag.Message` sorban.
+1. [Töréspont beállítása](/visualstudio/debugger/) a `ViewBag.Message` sorban.
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd kattintson a **Közzététel**elemre.
 
@@ -176,7 +176,7 @@ A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. 
 
 2. A ContosoAdsWebJob projektben nyissa meg a *functions.cs*.
 
-3. [Állítsa be a töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a metódus első utasítására `GnerateThumbnail` .
+3. [Állítsa be a töréspontot](/visualstudio/debugger/) a metódus első utasítására `GnerateThumbnail` .
 
     ![Töréspont beállítása](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -241,7 +241,7 @@ Ha a függvény [naplókat írt](https://github.com/Azure/azure-webjobs-sdk/wiki
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* Ha úgy találja, hogy a hibakereső nem lép be a hibakereséshez használni kívánt kódra, előfordulhat, hogy módosítania kell a Saját kód beállítást.  További információ: [annak megadása, hogy csak a felhasználói kódokat kell-e hibakeresést végezni a Visual studióban saját kód használatával](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
+* Ha úgy találja, hogy a hibakereső nem lép be a hibakereséshez használni kívánt kódra, előfordulhat, hogy módosítania kell a Saját kód beállítást.  További információ: [annak megadása, hogy csak a felhasználói kódokat kell-e hibakeresést végezni a Visual studióban saját kód használatával](/visualstudio/debugger/just-my-code).
 * A Távoli hibakeresési funkció engedélyezésekor egy időzítő indul el a kiszolgálón, és 48 óra elteltével a szolgáltatás automatikusan ki lesz kapcsolva. Ez a 48 órás korlát biztonsági és teljesítménybeli okokból történik. A funkció egyszerűen visszakapcsolható, ahányszor csak szeretné. Azt javasoljuk, hogy a rendszer letiltsa a letiltást, ha nem aktívan végzi a hibakeresést.
 * Manuálisan is csatlakoztathatja a hibakeresőt bármely folyamathoz, nem csak az alkalmazás folyamatához (w3wp.exe). További információ a hibakeresési mód a Visual Studióban történő használatáról: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio).
 
@@ -330,7 +330,7 @@ További információ az alkalmazások naplóinak a webjobs-ben való létrehoz�
     ```
 
 A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintését `/trace.axd` .
-1. Vegyen fel egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elemet</a> `<system.web>` a Web.config fájlban, például a következő példában:
+1. Vegyen fel egy <a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">nyomkövetési elemet</a> `<system.web>` a Web.config fájlban, például a következő példában:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -505,7 +505,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -624,7 +624,7 @@ A Azure App Service alkalmazások hibaelhárításával kapcsolatos további inf
 Ha segítségre van egy konkrét hibaelhárítási kérdésben, indítson el egy szálat az alábbi fórumok valamelyikében:
 
 * [Az Azure Forum a ASP.net webhelyen](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Az Azure-fórum a Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-webapps.html)-ben.
+* [Az Azure-fórum a Microsoft Q&a](/answers/topics/azure-webapps.html)-ben.
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Hibakeresés a Visual Studióban

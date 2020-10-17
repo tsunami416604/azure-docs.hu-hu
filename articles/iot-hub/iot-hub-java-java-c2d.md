@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9e05adc07c02265dbb511c073b42df44ea95
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446900"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146859"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Java)
 
@@ -51,7 +51,7 @@ Az oktatóanyag végén két Java-konzol alkalmazást futtat:
 
 * Az [eszközről a IoT hub](quickstart-send-telemetry-java.md) gyors üzembe helyezése, illetve az telemetria- [Útválasztás konfigurálása IoT hub](tutorial-routing.md) oktatóanyag használatával.
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

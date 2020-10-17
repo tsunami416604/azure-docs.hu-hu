@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Ismerje meg, hogyan irányíthatja az eseményeket az Azure Digital Twins szolgáltatásban és más Azure-szolgáltatásokba.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044292"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145973"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -91,6 +91,20 @@ await client.CreateEventRoute("routeName", er);
 > Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
 
 Az útvonalakat az [Azure Digital Twins CLI](how-to-use-cli.md)használatával is létrehozhatja.
+
+## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
+Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük. Az Azure Digital Twins egy eseményt fog kézbesíteni, ha teljesülnek **az alábbi feltételek valamelyike** . 
+
+- Az esemény nem az adott időszakon belül érkezik
+- Az esemény kézbesítésére tett kísérletek száma túllépte a korlátot
+
+Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása nem történik meg.  Alapértelmezés szerint az egyes végpontok **nem** kapcsolják be a kézbesítetlen betűket. Ennek engedélyezéséhez meg kell adnia egy Storage-fiókot, amely a végpont létrehozásakor a nem kézbesítési eseményeket fogja tárolni. A kézbesítések feloldásához le kell kérnie az eseményeket ebből a Storage-fiókból.
+
+A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Adja meg a tároló URL-címét a végpont létrehozásakor. A kézbesítetlen levél egy SAS-tokent tároló URL-ként van megadva. A jogkivonat csak a `write` Storage-fiókban lévő cél tárolóra vonatkozó engedélyre van szüksége. A teljesen formázott URL-cím a (z) formátumban jelenik meg: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+
+További információ az SAS-tokenekről: [ *korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+
+A következő témakörből megtudhatja, hogyan állíthat be egy kézbesítetlen levelet [*: hogyan kezelheti a végpontokat és az útvonalakat az Azure digitális Twins (API-k és parancssori felület)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)használatával.
 
 ### <a name="types-of-event-messages"></a>Az esemény típusú üzenetek típusai
 

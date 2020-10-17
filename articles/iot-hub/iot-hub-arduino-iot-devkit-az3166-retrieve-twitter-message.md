@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356067"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147906"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Shake, Shake for a tweet – Twitter-üzenet beolvasása Azure Functions
 
@@ -23,7 +23,7 @@ Ebből a projektből megtudhatja, hogyan indíthat el egy eseményt a mozgásér
 
 ## <a name="what-you-need"></a>Amire szükség lesz
 
-Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
+Fejezze be a [első lépések útmutatót](./iot-hub-arduino-iot-devkit-az3166-get-started.md) a következőre:
 
 * Csatlakoztassa a fejlesztői készlet a Wi-Fi-hez.
 * Készítse elő a fejlesztési környezetet.
@@ -207,4 +207,4 @@ Ha más problémákat tapasztal, tekintse meg a [IoT fejlesztői készlet GYIK](
 
 Most, hogy megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT-alapú távoli figyelési megoldás-gyorsító szolgáltatáshoz, és hogyan kérhet le egy tweetet, a következő lépéseket ajánljuk:
 
-* [Az Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+* [Az Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](/azure/iot-suite/)

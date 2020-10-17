@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81680723"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146646"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT távoli figyelés és értesítések Azure Logic Apps az IoT hub és a postaláda csatlakoztatásával
 
@@ -22,7 +22,7 @@ ms.locfileid: "81680723"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-A [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) segítséget nyújt a munkafolyamatok a helyszíni és a felhőalapú szolgáltatások, egy vagy több vállalat és különböző protokollok közötti összehangolása során. A logikai alkalmazások egy triggerrel kezdődnek, amelyet aztán egy vagy több olyan művelet követ, amely a beépített vezérlőkkel, például a feltételekkel és az iterációkkal végezhető el. Ez a rugalmasság a IoT-figyelési forgatókönyvek ideális IoT-megoldását teszi Logic Apps. Például egy IoT Hub végponton lévő eszközről érkező telemetria adatok beérkezése esetén a Logic app-munkafolyamatok elindíthatják az Azure Storage-blobokban tárolt adatok tárházát, e-mailes riasztásokat küldhetnek az adatrendellenességek figyelmeztetésére, ha az eszköz hibát jelez, és így tovább.
+A [Azure Logic apps](../logic-apps/index.yml) segítséget nyújt a munkafolyamatok a helyszíni és a felhőalapú szolgáltatások, egy vagy több vállalat és különböző protokollok közötti összehangolása során. A logikai alkalmazások egy triggerrel kezdődnek, amelyet aztán egy vagy több olyan művelet követ, amely a beépített vezérlőkkel, például a feltételekkel és az iterációkkal végezhető el. Ez a rugalmasság a IoT-figyelési forgatókönyvek ideális IoT-megoldását teszi Logic Apps. Például egy IoT Hub végponton lévő eszközről érkező telemetria adatok beérkezése esetén a Logic app-munkafolyamatok elindíthatják az Azure Storage-blobokban tárolt adatok tárházát, e-mailes riasztásokat küldhetnek az adatrendellenességek figyelmeztetésére, ha az eszköz hibát jelez, és így tovább.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
@@ -104,7 +104,7 @@ Hozzon létre egy Service Bus-névteret és üzenetsort. A jelen témakör kés�
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Egyéni végpont és útválasztási szabály hozzáadása az IoT hub-hoz
 
-Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubhoz, és hozzon létre egy üzenet-útválasztási szabályt, amely az adott végpontra vonatkozó hőmérséklet-riasztást tartalmazó üzeneteket irányítja, ahol azokat a logikai alkalmazás fogja felvenni. Az útválasztási szabály útválasztási lekérdezést használ, az `temperatureAlert = "true"` üzenetek továbbításához az `temperatureAlert` eszközön futó ügyfélalkalmazás által beállított Application tulajdonság értéke alapján. További információ: üzenet- [útválasztási lekérdezés üzenet tulajdonságai alapján](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubhoz, és hozzon létre egy üzenet-útválasztási szabályt, amely az adott végpontra vonatkozó hőmérséklet-riasztást tartalmazó üzeneteket irányítja, ahol azokat a logikai alkalmazás fogja felvenni. Az útválasztási szabály útválasztási lekérdezést használ, az `temperatureAlert = "true"` üzenetek továbbításához az `temperatureAlert` eszközön futó ügyfélalkalmazás által beállított Application tulajdonság értéke alapján. További információ: üzenet- [útválasztási lekérdezés üzenet tulajdonságai alapján](./iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-properties).
 
 ### <a name="add-a-custom-endpoint"></a>Egyéni végpont hozzáadása
 
@@ -249,7 +249,7 @@ A logikai alkalmazás most már készen áll arra, hogy feldolgozza a hőmérsé
    > [!NOTE]
    > Előfordulhat, hogy az e-mail-szolgáltatónak ellenőriznie kell a küldő identitását, hogy az Ön, aki elküldi az e-mailt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen létrehozott egy logikai alkalmazást, amely összekapcsolja az IoT hubot és a postaládáját a hőmérséklet-figyeléshez és az értesítésekhez.
 

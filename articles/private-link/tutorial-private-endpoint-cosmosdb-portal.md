@@ -1,24 +1,24 @@
 ---
 title: 'Oktatóanyag: Kapcsolódás Azure Cosmos-fiókhoz Azure Private-végpont használatával'
 titleSuffix: Azure Private Link
-description: Ismerkedés az Azure Private-végponttal egy Azure Cosmos-fiókhoz való nyilvános kapcsolódáshoz.
+description: Ismerkedjen meg ezzel az Oktatóanyaggal az Azure Private Endpoint használatával, hogy egy privát Azure Cosmos-fiókhoz kapcsolódjon.
 author: asudbring
 ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 8b38c72efff5b76392d23837696c340e3cfb58de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91844251"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145682"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás Azure Cosmos-fiókhoz Azure Private-végpont használatával
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
@@ -26,7 +26,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzon létre egy Cosmos DB fiókot egy privát végponttal.
 > * Cosmos DB fiók magánhálózati végpontjának kapcsolatának tesztelése.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -49,7 +53,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Erőforráscsoport   | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Region           | Válassza ki az **USA keleti** régióját |
+    | Régió           | Válassza ki az **USA keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -100,7 +104,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Region | Válassza ki az **USA keleti** régióját |
+    | Régió | Válassza ki az **USA keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -250,7 +254,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 11. A **Kapcsolódás az Azure Storage-hoz** képernyőn válassza a **Mégse**lehetőséget.
 
-12. Storage Explorer kattintson a jobb gombbal az **Cosmos db fiókok** elemre, majd válassza **a Kapcsolódás a**következőhöz Cosmos db lehetőséget.
+12. A Storage Explorer kattintson a jobb gombbal **Cosmos db fiókok** elemre, és válassza a **Kapcsolódás a**következőhöz: Cosmos db.
 
 13. Hagyja meg az alapértelmezett **SQL** -t a **Select API**alatt.
 
