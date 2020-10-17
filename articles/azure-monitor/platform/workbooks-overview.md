@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932396"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143634"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
@@ -97,7 +97,7 @@ Ha a Szerkesztés gombot azonnal bejelöli a kérelmek adatainak rácsa alatt, l
 
 ![Képernyőkép az alapul szolgáló Kusto-lekérdezésről](./media/workbooks-overview/kusto.png)
 
-A jobb oldalon található egyéb **szerkesztési** gombokra kattintva megjelenítheti a munkafüzetek, például a Markdown-alapú [szövegmezők](workbooks-visualizations.md#text), a [paraméter-kiválasztási](workbooks-parameters.md) felhasználóifelület-elemek, valamint az egyéb [diagram/vizualizáció típusok](workbooks-visualizations.md)számát. 
+A jobb oldalon található egyéb **szerkesztési** gombokra kattintva megjelenítheti a munkafüzetek, például a Markdown-alapú [szövegmezők](workbooks-text-visualizations.md), a [paraméter-kiválasztási](workbooks-parameters.md) felhasználóifelület-elemek, valamint az egyéb [diagram/vizualizáció típusok](#visualizations)számát. 
 
 Szerkessze az előre elkészített sablonokat szerkesztési módban, majd módosítsa őket az igényeinek megfelelően, és mentse a saját egyéni munkafüzetét, hogy megismerkedjen a Azure Monitor munkafüzetek lehetséges lehetőségeivel.
 
@@ -129,5 +129,5 @@ Miután elindította saját munkafüzet-sablonjait, érdemes megosztania azt a s
 
 ## <a name="next-step"></a>Következő lépés
 
-* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* [Ismerkedjen](#visualizations) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

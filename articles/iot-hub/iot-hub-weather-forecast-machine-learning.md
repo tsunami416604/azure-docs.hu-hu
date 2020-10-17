@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777156"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145771"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning Studio (klasszikus)
 
@@ -46,7 +46,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
   - Az előfizetéshez tartozó Azure IoT hub.
   - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub-nak.
 - Egy [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) fiók.
-- Egy [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts), egy **általános célú v2-** fiók használata javasolt, de az Azure Blob Storage-t támogató Azure Storage-fiókok is működni fognak.
+- Egy [Azure Storage-fiók](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts), egy **általános célú v2-** fiók használata javasolt, de az Azure Blob Storage-t támogató Azure Storage-fiókok is működni fognak.
 
 > [!Note]
 > Ez a cikk Azure Stream Analytics és számos más fizetős szolgáltatást használ. Az adatoknak az Azure-régiókban való átadásakor a Azure Stream Analytics további díjakat számítunk fel. Ezért jó lenne gondoskodni arról, hogy az erőforráscsoport, a IoT Hub és az Azure Storage-fiók, valamint az oktatóanyagban később hozzáadott Machine Learning Studio (klasszikus) munkaterület és Azure Stream Analytics-feladatok is elérhetők legyenek, amelyek ugyanabban az Azure-régióban találhatók. Az [Azure-termékek rendelkezésre állása régiónként lapon](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)a Azure Machine learning Studio (klasszikus) és más Azure-szolgáltatások regionális támogatását is megtekintheti.
@@ -248,7 +248,7 @@ Futtassa az ügyfélalkalmazás a hőmérséklet és a páratartalom adatok IoT 
 
    ![Időjárás-előrejelzési eredmény beolvasása Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Sikeresen használta a Azure Machine Learning Studio (klasszikus) szolgáltatást, hogy az IoT hub hőmérséklet-és páratartalom-adatai alapján előkészítse az eső esélyét.
 

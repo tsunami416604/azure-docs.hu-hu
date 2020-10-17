@@ -4,12 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d84086e3fa59c1e04df5b2717738da44f5c14b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533512"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144827"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -103,7 +103,7 @@ Az **API-engedélyek** szakasz azt mutatja, hogy az Azure ad-alkalmazás a Micro
 Felügyelet nélküli alkalmazást futtató alkalmazás hitelesítéséhez használjon egyszerű szolgáltatásnevet. Az alkalmazás regisztrálása után kövesse az alábbi lépéseket a Azure Portal egy egyszerű szolgáltatásnév konfigurálásához:
 
 1. Kérjen titkos kulcsot az alkalmazáshoz.
-1. Rendeljen szerepköralapú hozzáférés-vezérlést (RBAC) az alkalmazáshoz.
+1. Rendeljen Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) az alkalmazáshoz.
 
 ### <a name="request-a-secret-for-your-application"></a>Titkos kód kérése az alkalmazáshoz
 
@@ -119,15 +119,15 @@ Hajtsa végre a következő lépéseket az Azure Portalon:
 
     ![Titkos kulcs létrehozása](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-rbac-to-your-application"></a>RBAC-hozzárendelés az alkalmazáshoz
+### <a name="assign-azure-rbac-to-your-application"></a>Azure-RBAC kiosztása az alkalmazáshoz
 
-Az egyszerű szolgáltatással történő hitelesítéshez hozzá kell rendelnie a RBAC az alkalmazáshoz. Kövesse az alábbi lépéseket:
+Az egyszerű szolgáltatással történő hitelesítéshez Azure-RBAC kell rendelnie az alkalmazáshoz. Kövesse az alábbi lépéseket:
 
 1. A Azure Portal navigáljon az alkalmazás által használt batch-fiókhoz.
 1. A Batch-fiók **Beállítások** szakaszában válassza a **Access Control (iam)** lehetőséget.
 1. Válassza ki a **szerepkör-hozzárendelések** lapot.
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
-1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [Role-Based Access Control első lépései a Azure Portal](../role-based-access-control/overview.md).
+1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [Az Azure szerepköralapú hozzáférés-vezérlésének első lépései a Azure Portal](../role-based-access-control/overview.md).
 1. A **Select (kiválasztás** ) mezőben adja meg az alkalmazás nevét. Válassza ki az alkalmazást a listából, majd válassza a **Mentés**lehetőséget.
 
 Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállításaiban egy hozzárendelt Azure-szerepkörrel.
@@ -138,7 +138,7 @@ Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállít�
 
 Az egyéni szerepkörök részletes engedélyeket biztosítanak a felhasználóknak a feladatok, feladatok és egyebek elküldéséhez. Ezzel megakadályozható, hogy a felhasználók a költségeket befolyásoló műveleteket végezzenek, például készletek létrehozását vagy csomópontok módosítását.
 
-Az alábbi RBAC műveletekhez egyéni szerepkört is használhat az Azure AD-felhasználók,-csoportok vagy-szolgáltatások engedélyeinek megadásához:
+A következő Azure RBAC-műveletekhez egyéni szerepkörrel adhat engedélyeket egy Azure AD-felhasználónak,-csoportnak vagy egyszerű szolgáltatásnév számára:
 
 - Microsoft.BatCH/batchAccounts/készletek/írás
 - Microsoft.BatCH/batchAccounts/készletek/törlés
@@ -417,7 +417,7 @@ A **BatchServiceClient** objektum megnyitásához használja az egyszerű szolg�
 )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](../active-directory/index.yml). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
 

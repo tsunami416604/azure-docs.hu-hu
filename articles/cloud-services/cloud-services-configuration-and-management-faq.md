@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070010"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144683"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -217,7 +217,7 @@ További információ: [http/2 az IIS](https://blogs.iis.net/davidso/http2)-ben.
 ## <a name="permissions"></a>Engedélyek
 
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Hogyan valósítható meg a Cloud Services szerepköralapú hozzáférés?
-A Cloud Services nem támogatja a szerepköralapú hozzáférés-vezérlési (RBAC) modellt, mert nem Azure Resource Manager-alapú szolgáltatás.
+A Cloud Services nem támogatja az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) modelljét, mert nem Azure Resource Manager-alapú szolgáltatás.
 
 Lásd: [Az Azure különböző szerepköreinek megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
 

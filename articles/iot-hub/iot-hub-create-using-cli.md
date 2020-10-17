@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6daed4f5f1871d76da707edec00010cd27dfa8db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087847"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142322"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>IoT hub létrehozása az Azure CLI használatával
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy IoT hubot az Azure CLI használat�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,7 +30,7 @@ A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha nem rende
 
 Ha a Cloud Shell használata helyett helyileg futtatja az Azure CLI-t, be kell jelentkeznie az Azure-fiókjába.
 
-A parancssorban futtassa a [login parancsot](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
+A parancssorban futtassa a [login parancsot](/cli/azure/get-started-with-azure-cli):
 
    ```azurecli
    az login
@@ -42,7 +42,7 @@ Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezz
 
 Az Azure CLI használatával hozzon létre egy erőforráscsoportot, majd vegyen fel egy IoT hubot.
 
-1. IoT hub létrehozásakor létre kell hoznia egy erőforráscsoportot. Használhat meglévő erőforráscsoportot, vagy futtathatja a következő [parancsot erőforráscsoport létrehozásához](https://docs.microsoft.com/cli/azure/resource):
+1. IoT hub létrehozásakor létre kell hoznia egy erőforráscsoportot. Használhat meglévő erőforráscsoportot, vagy futtathatja a következő [parancsot erőforráscsoport létrehozásához](/cli/azure/resource):
     
    ```azurecli-interactive
    az group create --name {your resource group name} --location westus
@@ -56,7 +56,7 @@ Az Azure CLI használatával hozzon létre egy erőforráscsoportot, majd vegyen
    > ```
    >
 
-2. A következő parancs futtatásával [hozzon létre egy IoT hubot](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) az erőforráscsoporthoz az IoT hub globálisan egyedi nevének használatával:
+2. A következő parancs futtatásával [hozzon létre egy IoT hubot](/cli/azure/iot/hub#az-iot-hub-create) az erőforráscsoporthoz az IoT hub globálisan egyedi nevének használatával:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -70,16 +70,16 @@ Az előző parancs egy IoT hubot hoz létre az S1 díjszabási szinten, amelynek
 
 ## <a name="remove-an-iot-hub"></a>IoT Hub eltávolítása
 
-Az Azure CLI-vel [törölhet egy adott erőforrást](https://docs.microsoft.com/cli/azure/resource), például egy IoT hubot, vagy törölhet egy erőforráscsoportot és annak összes erőforrását, beleértve az IoT-hubokat is.
+Az Azure CLI-vel [törölhet egy adott erőforrást](/cli/azure/resource), például egy IoT hubot, vagy törölhet egy erőforráscsoportot és annak összes erőforrását, beleértve az IoT-hubokat is.
 
-Az [IoT hub törléséhez](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)futtassa a következő parancsot:
+Az [IoT hub törléséhez](/cli/azure/iot/hub#az-iot-hub-delete)futtassa a következő parancsot:
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-Egy erőforráscsoport és az összes erőforrás [törléséhez](https://docs.microsoft.com/cli/azure/group#az-group-delete) futtassa a következő parancsot:
+Egy erőforráscsoport és az összes erőforrás [törléséhez](/cli/azure/group#az-group-delete) futtassa a következő parancsot:
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397300"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151969"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog gyakori kérdések
 Ez a cikk a Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
@@ -87,7 +87,7 @@ Az adott tulajdonságok eltérnek az adatforrástól az adatforrástól, de ált
 >
 
 > [!NOTE]
-> Az olyan adatforrások esetében, mint az első osztályú **description** tulajdonsággal rendelkező SQL Server Analysis Services, a Data Catalog adatforrás-regisztrációs eszköz kibontja a tulajdonság értékét. A *helyszíni SQL Server olyan, a (* z) Data Catalog adatforrás-regisztrációs eszköz, amely nem rendelkezik első osztályú **leírási** tulajdonsággal, kibontja az értéket az objektumok és oszlopok **ms_description** kiterjesztett tulajdonságában. Ez a tulajdonság SQL Azure esetén nem támogatott. További információ: [kiterjesztett tulajdonságok használata adatbázis-objektumokon](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Az olyan adatforrások esetében, mint az első osztályú **description** tulajdonsággal rendelkező SQL Server Analysis Services, a Data Catalog adatforrás-regisztrációs eszköz kibontja a tulajdonság értékét. A *helyszíni SQL Server olyan, a (* z) Data Catalog adatforrás-regisztrációs eszköz, amely nem rendelkezik első osztályú **leírási** tulajdonsággal, kibontja az értéket az objektumok és oszlopok **ms_description** kiterjesztett tulajdonságában. Ez a tulajdonság SQL Azure esetén nem támogatott. További információ: [kiterjesztett tulajdonságok használata adatbázis-objektumokon](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 
@@ -122,7 +122,7 @@ A Data Catalog egy felhőalapú szolgáltatás, amely a Felhőbeli és a helysz�
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>Kinyerhetek több vagy gazdagabb metaadatokat a regisztrálni kívánt adatforrásokból?
 Aktívan dolgozunk a Data Catalog képességeinek bővítésén. Ha további metaadatokat szeretne kinyerni az adatforrásból a regisztráció során, javasoljon (vagy szavazzon rá, ha már javasolt) az [Azure-visszajelzési fórumokon Data Catalog](https://feedback.azure.com/forums/906052-data-catalog). 
 
-Ha az oszlop/séma metaadatait, az előzeteseket és az adatprofilokat is bele kívánja foglalni olyan adatforrások esetében, amelyekben ezt a metaadatokat nem az adatforrás-regisztrációs eszköz kinyeri, a metaadatok hozzáadásához használhatja a Data Catalog API-t. További információ: [Azure Data Catalog REST API](https://docs.microsoft.com/rest/api/datacatalog/).
+Ha az oszlop/séma metaadatait, az előzeteseket és az adatprofilokat is bele kívánja foglalni olyan adatforrások esetében, amelyekben ezt a metaadatokat nem az adatforrás-regisztrációs eszköz kinyeri, a metaadatok hozzáadásához használhatja a Data Catalog API-t. További információ: [Azure Data Catalog REST API](/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Hogyan korlátozni a regisztrált adategységek láthatóságát, hogy csak bizonyos személyek tudják felderíteni őket?
 Válassza ki az adategységeket a Data Catalogban, majd kattintson a **tulajdonosi részvétel** gombra. Az adategységek tulajdonosai a Data Catalogban megváltoztathatják a láthatósági beállításokat, hogy az összes felhasználó felderítse a tulajdonban lévő eszközöket, vagy korlátozni tudja az adott felhasználók láthatóságát. További információ: [adategységek kezelése Azure Data Catalogban](data-catalog-how-to-manage.md).

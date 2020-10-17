@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616895"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147435"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -305,7 +305,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 ```
 Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
-#### <a name="pipelines"></a>Folyamatok
+#### <a name="pipelines"></a>Pipelines
     
 * Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
@@ -656,7 +656,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
     - A adatfeldolgozó-entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, és az adatkészletek és az egyéb folyamatok függenek egymástól. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedést és hibákat eredményezhet.
     - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások éles környezete](#hotfix-production-environment).
 
-- Az Azure Data Factory csapat nem javasolja, hogy RBAC-vezérlőket rendeljen az egyes entitásokhoz (folyamatok, adatkészletek stb.) egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy egy adatkészlethez, el kell tudnia érni az adat-előállító összes folyamatát vagy adatkészletét. Ha úgy érzi, hogy számos RBAC-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
+- Az Azure Data Factory csapat nem javasolja, hogy az Azure RBAC-vezérlőket az egyes entitásokhoz (adatcsatornákhoz, adatkészletekhez stb.) rendeljen egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy egy adatkészlethez, el kell tudnia érni az adat-előállító összes folyamatát vagy adatkészletét. Ha úgy érzi, hogy számos Azure-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
 
 -   Privát ágakból nem lehet közzétenni.
 
@@ -675,7 +675,7 @@ Az üzembe helyezés előtti parancsfájl futtatásakor meg kell adnia a követk
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-![Azure PowerShell feladat](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell-feladat](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Itt látható az üzembe helyezés előtti és utáni telepítéshez használható szkript. A törölt erőforrásokhoz és erőforrás-hivatkozásokhoz tartozó fiókok.
 

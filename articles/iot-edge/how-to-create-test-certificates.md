@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84430660"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147888"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Bemutató tanúsítvány létrehozása az IoT Edge-eszköz funkcióinak teszteléséhez
 
@@ -32,9 +32,9 @@ A következő lépésekkel hozhat létre bemutató tanúsítványokat a IoT Edge
 1. [Hozzon létre parancsfájlokat](#set-up-scripts) a tanúsítvány létrehozásához az eszközön.
 2. [Hozza létre a legfelső szintű hitelesítésszolgáltatói tanúsítványt](#create-root-ca-certificate) , amelyet a forgatókönyv összes többi tanúsítványának aláírásához használ.
 3. A tesztelni kívánt forgatókönyvhöz szükséges tanúsítványok létrehozása:
-   * [Hozzon létre IoT Edge eszköz-identitási tanúsítványokat](#create-iot-edge-device-identity-certificates) az automatikus kiépítés teszteléséhez a IoT hub Device Provisioning Service használatával.
-   * [Hozzon létre IoT Edge eszköz hitelesítésszolgáltatói tanúsítványokat](#create-iot-edge-device-ca-certificates) a termelési forgatókönyvek vagy az átjárói forgatókönyvek teszteléséhez.
-   * [Alsóbb rétegbeli eszközök tanúsítványainak létrehozásával](#create-downstream-device-certificates) tesztelheti az alsóbb rétegbeli eszközöket a IoT hub egy átjáró-forgatókönyvben.
+   * [Hozzon létre IoT Edge eszköz-azonosító tanúsítványokat](#create-iot-edge-device-identity-certificates) az automatikus kiépítés céljából a IoT hub Device Provisioning Service.
+   * [Hozzon létre IoT Edge eszköz hitelesítésszolgáltatói tanúsítványokat](#create-iot-edge-device-ca-certificates) IoT Edge eszközökhöz az átjáró forgatókönyvei között.
+   * [Alsóbb rétegbeli eszközök tanúsítványainak létrehozása](#create-downstream-device-certificates) átjáró-forgatókönyvben lévő alsóbb rétegbeli eszközök hitelesítéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ Ha bemutató tanúsítványokat szeretne létrehozni egy Windows-eszközön, tel
 #### <a name="install-openssl"></a>OpenSSL telepítése
 
 Telepítse a Windows rendszerhez készült OpenSSL-t arra a gépre, amelyet a tanúsítványok létrehozásához használ.
-Ha már telepítve van az OpenSSL a Windows-eszközön, akkor kihagyhatja ezt a lépést, de gondoskodhat arról, hogy a openssl.exe elérhető legyen a PATH környezeti változóban.
+Ha már telepítve van az OpenSSL a Windows-eszközön, győződjön meg arról, hogy a openssl.exe elérhető a PATH környezeti változóban.
 
 Az OpenSSL több módon is telepíthető, többek között a következő lehetőségek közül:
 
@@ -183,7 +183,7 @@ Az ebben a szakaszban ismertetett lépések elvégzése előtt kövesse a [paran
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>IoT Edge eszköz-identitási tanúsítványok létrehozása
 
-Az eszköz-identitási tanúsítványok az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)keresztül IoT Edge eszközök kiépítésére szolgálnak.
+Az eszköz-identitási tanúsítványok az Azure IoT Hub Device Provisioning Service (DPS) keresztül IoT Edge eszközök kiépítésére szolgálnak.
 
 Az eszköz identitásának tanúsítványai a IoT Edge eszköz config. YAML fájljának **kiépítési** szakaszában találhatók.
 
@@ -247,8 +247,6 @@ Az ebben a szakaszban ismertetett lépések végrehajtása előtt kövesse a [pa
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
 A **New-CACertsEdgeDevice** parancsnak átadott név nem egyezhet meg a config. YAML, illetve az eszköz azonosítójában a következőben: IoT hub.
-A parancsfájl a ". ca" karakterláncnak a tanúsítvány neveként való hozzáfűzésével segít elkerülni, hogy megakadályozza a név ütközését abban az esetben, ha egy felhasználó a két helyen ugyanazt a nevet állítja be IoT Edge.
-Azonban érdemes elkerülni ugyanazt a nevet.
 
 ### <a name="linux"></a>Linux
 
@@ -266,8 +264,6 @@ Azonban érdemes elkerülni ugyanazt a nevet.
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
 A **create_edge_device_certificate** parancsnak átadott név nem egyezhet meg a config. YAML, illetve az eszköz azonosítójában a IoT Hubban.
-A parancsfájl a ". ca" karakterláncnak a tanúsítvány neveként való hozzáfűzésével segít elkerülni, hogy megakadályozza a név ütközését abban az esetben, ha egy felhasználó a két helyen ugyanazt a nevet állítja be IoT Edge.
-Azonban érdemes elkerülni ugyanazt a nevet.
 
 ## <a name="create-downstream-device-certificates"></a>Alsóbb rétegbeli eszközök tanúsítványainak létrehozása
 
@@ -293,7 +289,7 @@ A IoT-eszköznek szüksége van az eszköz tanúsítványának egy másolatára 
 
 1. Navigáljon ahhoz a munkakönyvtárhoz, amely a tanúsítvány-létrehozási parancsfájlokat és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tartalmaz.
 
-2. Hozzon létre két tanúsítványt (elsődleges és másodlagos) az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció a használatával hozza létre a tanúsítványokat a IoT-eszköz nevével, majd az elsődleges vagy másodlagos címkét. Például:
+2. Hozzon létre két tanúsítványt (elsődleges és másodlagos) az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció a használatával hozza létre a tanúsítványokat a IoT-eszköz nevével, majd az elsődleges vagy másodlagos címkét. Példa:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -323,7 +319,7 @@ A IoT-eszköznek szüksége van az eszköz tanúsítványának egy másolatára 
 
 1. Navigáljon ahhoz a munkakönyvtárhoz, amely a tanúsítvány-létrehozási parancsfájlokat és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tartalmaz.
 
-2. Hozzon létre két tanúsítványt (elsődleges és másodlagos) az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció a használatával hozza létre a tanúsítványokat a IoT-eszköz nevével, majd az elsődleges vagy másodlagos címkét. Például:
+2. Hozzon létre két tanúsítványt (elsődleges és másodlagos) az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció a használatával hozza létre a tanúsítványokat a IoT-eszköz nevével, majd az elsődleges vagy másodlagos címkét. Példa:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

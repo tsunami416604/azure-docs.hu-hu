@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302525"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142616"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>IoT Hub fájlfeltöltés konfigurálása az Azure CLI-vel
 
@@ -21,21 +21,21 @@ ms.locfileid: "78302525"
 
 Ha [fájlokat szeretne feltölteni egy eszközről](iot-hub-devguide-file-upload.md), először társítson egy Azure Storage-fiókot az IoT hubhoz. Használhat meglévő Storage-fiókot, vagy létrehozhat egy újat.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 
-* Egy Azure IoT hub. Ha nem rendelkezik IoT-hubhoz, a [ `az iot hub create` paranccsal](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) létrehozhat egyet, vagy [létrehozhat egy IoT hubot a portál használatával](iot-hub-create-through-portal.md).
+* Egy Azure IoT hub. Ha nem rendelkezik IoT-hubhoz, a [ `az iot hub create` paranccsal](/cli/azure/iot/hub#az-iot-hub-create) létrehozhat egyet, vagy [létrehozhat egy IoT hubot a portál használatával](iot-hub-create-through-portal.md).
 
-* Egy Azure Storage-fiók. Ha nem rendelkezik Azure Storage-fiókkal, akkor az Azure CLI használatával létrehozhat egyet. További információ: [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md).
+* Egy Azure Storage-fiók. Ha nem rendelkezik Azure Storage-fiókkal, akkor az Azure CLI használatával létrehozhat egyet. További információ: [Tárfiók létrehozása](../storage/common/storage-account-create.md).
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be Azure-fiókját
 
 Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A parancssorban futtassa a [login parancsot](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
+1. A parancssorban futtassa a [login parancsot](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
 
     ```azurecli
     az login
@@ -43,7 +43,7 @@ Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
     Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
 
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat](https://docs.microsoft.com/cli/azure/account):
+2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat](/cli/azure/account):
 
     ```azurecli
     az account list
@@ -131,7 +131,7 @@ Az IoT hub fájlfeltöltés-konfigurációját a következő parancs használat�
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a IoT Hub fájl feltöltési képességeiről: [fájlok feltöltése eszközről](iot-hub-devguide-file-upload.md).
 
@@ -144,5 +144,5 @@ Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure
 A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/quickstart-linux.md)
 * [A IoT-megoldás biztonságossá tétele az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

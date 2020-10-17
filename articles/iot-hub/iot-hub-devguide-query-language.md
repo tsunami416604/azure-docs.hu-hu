@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031177"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147666"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-lekérdezési nyelv az ikereszközökhöz - és modulokhoz, feladatokhoz, valamint az üzenetirányításhoz
 
@@ -234,7 +234,7 @@ A lekérdezési objektum több **következő** értéket tesz elérhetővé a le
 ### <a name="limitations"></a>Korlátozások
 
 > [!IMPORTANT]
-> A lekérdezési eredmények néhány percet is igénybe vehetnek az eszközökre vonatkozó legfrissebb értékekkel kapcsolatban. Ha az egyedi eszközökről származó ikreket az azonosító alapján kérdezi le, használja a [Get twin REST API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Ez az API mindig a legújabb értékeket adja vissza, és magasabb szabályozási korlátokat tartalmaz. A REST API közvetlenül, vagy az egyik [Azure IoT hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)-ban is használhatja az egyenértékű funkciókat.
+> A lekérdezési eredmények néhány percet is igénybe vehetnek az eszközökre vonatkozó legfrissebb értékekkel kapcsolatban. Ha az egyedi eszközökről származó ikreket az azonosító alapján kérdezi le, használja a [Get twin REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Ez az API mindig a legújabb értékeket adja vissza, és magasabb szabályozási korlátokat tartalmaz. A REST API közvetlenül, vagy az egyik [Azure IoT hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)-ban is használhatja az egyenértékű funkciókat.
 
 Az összehasonlítások jelenleg csak az egyszerű típusok (nincsenek objektumok) között támogatottak, például `... WHERE properties.desired.config = properties.reported.config` csak akkor támogatott, ha ezek a tulajdonságok primitív értékeket tartalmaznak.
 
@@ -454,7 +454,7 @@ A következő operátorok támogatottak:
 | Logikai |ÉS, VAGY NEM |
 | Összehasonlítás |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Függvények
 
 Az ikrek és a feladatok lekérdezése az egyetlen támogatott függvény:
 

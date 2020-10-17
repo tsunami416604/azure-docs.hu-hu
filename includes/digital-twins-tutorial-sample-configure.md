@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 4ac748c606d8ec3c8ba754c34d9c9e7512344a83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44e15e4592de5e874ee50ebd390940e8ab16a22
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292682"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92158039"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
 Ezután állítson be egy példa ügyfélalkalmazás-alkalmazást, amely az Azure Digital Twins-példánnyal fog működni.
 
-Navigáljon a gépre az [*Azure Digital Twins-mintákból*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) korábban letöltött fájlra (és ha még nem tette meg, csomagolja ki).
+Navigáljon a gépre az [*Azure Digital Twins teljes körű mintáit*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) korábban letöltött fájlra (és ha még nem tette meg, bontsa ki).
 
 A mappa belsejében navigáljon a _AdtSampleApp_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
 
